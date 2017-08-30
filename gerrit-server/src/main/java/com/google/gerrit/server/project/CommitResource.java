@@ -192,16 +192,16 @@ operator|=
 name|commit
 expr_stmt|;
 block|}
-DECL|method|getProject ()
+DECL|method|getProjectState ()
 specifier|public
-name|ProjectControl
-name|getProject
+name|ProjectState
+name|getProjectState
 parameter_list|()
 block|{
 return|return
 name|project
 operator|.
-name|getControl
+name|getProjectState
 argument_list|()
 return|;
 block|}

@@ -870,14 +870,6 @@ name|repo
 argument_list|)
 init|)
 block|{
-name|ProjectControl
-name|pctl
-init|=
-name|resource
-operator|.
-name|getControl
-argument_list|()
-decl_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -888,7 +880,10 @@ name|all
 init|=
 name|visibleTags
 argument_list|(
-name|pctl
+name|resource
+operator|.
+name|getProjectState
+argument_list|()
 argument_list|,
 name|repo
 argument_list|,
@@ -936,10 +931,7 @@ name|ref
 argument_list|,
 name|rw
 argument_list|,
-name|pctl
-operator|.
-name|getProject
-argument_list|()
+name|resource
 operator|.
 name|getNameKey
 argument_list|()
@@ -1112,14 +1104,6 @@ argument_list|(
 name|tagName
 argument_list|)
 decl_stmt|;
-name|ProjectControl
-name|pctl
-init|=
-name|resource
-operator|.
-name|getControl
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|ref
@@ -1129,7 +1113,10 @@ operator|&&
 operator|!
 name|visibleTags
 argument_list|(
-name|pctl
+name|resource
+operator|.
+name|getProjectState
+argument_list|()
 argument_list|,
 name|repo
 argument_list|,
@@ -1157,7 +1144,7 @@ name|permissionBackend
 operator|.
 name|user
 argument_list|(
-name|pctl
+name|resource
 operator|.
 name|getUser
 argument_list|()
@@ -1183,10 +1170,7 @@ name|ref
 argument_list|,
 name|rw
 argument_list|,
-name|pctl
-operator|.
-name|getProject
-argument_list|()
+name|resource
 operator|.
 name|getNameKey
 argument_list|()
@@ -1433,7 +1417,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-DECL|method|visibleTags ( ProjectControl pctl, Repository repo, Map<String, Ref> tags)
+DECL|method|visibleTags (ProjectState state, Repository repo, Map<String, Ref> tags)
 specifier|private
 name|Map
 argument_list|<
@@ -1443,8 +1427,8 @@ name|Ref
 argument_list|>
 name|visibleTags
 parameter_list|(
-name|ProjectControl
-name|pctl
+name|ProjectState
+name|state
 parameter_list|,
 name|Repository
 name|repo
@@ -1463,10 +1447,7 @@ name|refFilterFactory
 operator|.
 name|create
 argument_list|(
-name|pctl
-operator|.
-name|getProjectState
-argument_list|()
+name|state
 argument_list|,
 name|repo
 argument_list|)

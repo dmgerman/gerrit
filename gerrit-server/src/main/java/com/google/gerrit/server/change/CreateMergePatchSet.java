@@ -544,7 +544,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectCache
 import|;
 end_import
 
@@ -920,9 +920,15 @@ operator|.
 name|Factory
 name|patchSetInserterFactory
 decl_stmt|;
+DECL|field|projectCache
+specifier|private
+specifier|final
+name|ProjectCache
+name|projectCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateMergePatchSet ( Provider<ReviewDb> db, GitRepositoryManager gitManager, CommitsCollection commits, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> user, ChangeJson.Factory json, PatchSetUtil psUtil, MergeUtil.Factory mergeUtilFactory, RetryHelper retryHelper, PatchSetInserter.Factory patchSetInserterFactory)
+DECL|method|CreateMergePatchSet ( Provider<ReviewDb> db, GitRepositoryManager gitManager, CommitsCollection commits, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> user, ChangeJson.Factory json, PatchSetUtil psUtil, MergeUtil.Factory mergeUtilFactory, RetryHelper retryHelper, PatchSetInserter.Factory patchSetInserterFactory, ProjectCache projectCache)
 name|CreateMergePatchSet
 parameter_list|(
 name|Provider
@@ -968,6 +974,9 @@ name|PatchSetInserter
 operator|.
 name|Factory
 name|patchSetInserterFactory
+parameter_list|,
+name|ProjectCache
+name|projectCache
 parameter_list|)
 block|{
 name|super
@@ -1031,6 +1040,12 @@ operator|.
 name|patchSetInserterFactory
 operator|=
 name|patchSetInserterFactory
+expr_stmt|;
+name|this
+operator|.
+name|projectCache
+operator|=
+name|projectCache
 expr_stmt|;
 block|}
 annotation|@
@@ -1133,24 +1148,18 @@ name|getNotes
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 init|=
+name|projectCache
+operator|.
+name|checkedGet
+argument_list|(
 name|rsrc
 operator|.
-name|getControl
+name|getProject
 argument_list|()
-operator|.
-name|getProjectControl
-argument_list|()
-decl_stmt|;
-name|ProjectState
-name|state
-init|=
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
+argument_list|)
 decl_stmt|;
 name|Change
 name|change
@@ -1241,7 +1250,7 @@ name|commits
 operator|.
 name|canRead
 argument_list|(
-name|state
+name|projectState
 argument_list|,
 name|git
 argument_list|,
@@ -1322,7 +1331,7 @@ name|createMergeCommit
 argument_list|(
 name|in
 argument_list|,
-name|projectControl
+name|projectState
 argument_list|,
 name|dest
 argument_list|,
@@ -1502,7 +1511,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|createMergeCommit ( MergePatchSetInput in, ProjectControl projectControl, Branch.NameKey dest, Repository git, ObjectInserter oi, RevWalk rw, RevCommit currentPsCommit, RevCommit sourceCommit, PersonIdent author, ObjectId changeId)
+DECL|method|createMergeCommit ( MergePatchSetInput in, ProjectState projectState, Branch.NameKey dest, Repository git, ObjectInserter oi, RevWalk rw, RevCommit currentPsCommit, RevCommit sourceCommit, PersonIdent author, ObjectId changeId)
 specifier|private
 name|RevCommit
 name|createMergeCommit
@@ -1510,8 +1519,8 @@ parameter_list|(
 name|MergePatchSetInput
 name|in
 parameter_list|,
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|Branch
 operator|.
@@ -1688,10 +1697,7 @@ name|mergeUtilFactory
 operator|.
 name|create
 argument_list|(
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 argument_list|)
 operator|.
 name|mergeStrategyName

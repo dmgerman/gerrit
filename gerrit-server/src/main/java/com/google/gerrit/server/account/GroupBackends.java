@@ -122,7 +122,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -203,7 +203,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectControl)} and filters the result to return the    * best suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the best single GroupReference suggestion    */
+comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectState)} and filters the result to return the    * best suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the best single GroupReference suggestion    */
 annotation|@
 name|Nullable
 DECL|method|findBestSuggestion (GroupBackend groupBackend, String name)
@@ -230,10 +230,10 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectControl)} and filters the result to return the    * best suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @param project the project for which to suggest groups    * @return the best single GroupReference suggestion    */
+comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectState)} and filters the result to return the    * best suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @param project the project for which to suggest groups    * @return the best single GroupReference suggestion    */
 annotation|@
 name|Nullable
-DECL|method|findBestSuggestion ( GroupBackend groupBackend, String name, @Nullable ProjectControl project)
+DECL|method|findBestSuggestion ( GroupBackend groupBackend, String name, @Nullable ProjectState project)
 specifier|public
 specifier|static
 name|GroupReference
@@ -247,7 +247,7 @@ name|name
 parameter_list|,
 annotation|@
 name|Nullable
-name|ProjectControl
+name|ProjectState
 name|project
 parameter_list|)
 block|{
@@ -312,7 +312,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectControl)} and filters the result to return the    * exact suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the exact single GroupReference suggestion    */
+comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectState)} and filters the result to return the    * exact suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the exact single GroupReference suggestion    */
 annotation|@
 name|Nullable
 DECL|method|findExactSuggestion (GroupBackend groupBackend, String name)
@@ -339,10 +339,10 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectControl)} and filters the result to return the    * exact suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @param project the project for which to suggest groups    * @return the exact single GroupReference suggestion    */
+comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectState)} and filters the result to return the    * exact suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @param project the project for which to suggest groups    * @return the exact single GroupReference suggestion    */
 annotation|@
 name|Nullable
-DECL|method|findExactSuggestion ( GroupBackend groupBackend, String name, ProjectControl project)
+DECL|method|findExactSuggestion ( GroupBackend groupBackend, String name, ProjectState project)
 specifier|public
 specifier|static
 name|GroupReference
@@ -354,7 +354,7 @@ parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|ProjectControl
+name|ProjectState
 name|project
 parameter_list|)
 block|{

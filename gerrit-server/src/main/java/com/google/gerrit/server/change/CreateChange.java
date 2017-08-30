@@ -1820,9 +1820,6 @@ name|baseChange
 argument_list|,
 name|rsrc
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getUser
 argument_list|()
 argument_list|)
@@ -2268,7 +2265,7 @@ name|rw
 argument_list|,
 name|rsrc
 operator|.
-name|getControl
+name|getProjectState
 argument_list|()
 argument_list|,
 name|mergeTip
@@ -2668,7 +2665,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|newMergeCommit ( Repository repo, ObjectInserter oi, RevWalk rw, ProjectControl projectControl, RevCommit mergeTip, MergeInput merge, PersonIdent authorIdent, String commitMessage)
+DECL|method|newMergeCommit ( Repository repo, ObjectInserter oi, RevWalk rw, ProjectState projectState, RevCommit mergeTip, MergeInput merge, PersonIdent authorIdent, String commitMessage)
 specifier|private
 name|RevCommit
 name|newMergeCommit
@@ -2682,8 +2679,8 @@ parameter_list|,
 name|RevWalk
 name|rw
 parameter_list|,
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|RevCommit
 name|mergeTip
@@ -2722,14 +2719,6 @@ literal|"merge.source must be non-empty"
 argument_list|)
 throw|;
 block|}
-name|ProjectState
-name|state
-init|=
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
-decl_stmt|;
 name|RevCommit
 name|sourceCommit
 init|=
@@ -2753,7 +2742,7 @@ name|commits
 operator|.
 name|canRead
 argument_list|(
-name|state
+name|projectState
 argument_list|,
 name|repo
 argument_list|,
@@ -2780,7 +2769,7 @@ name|mergeUtilFactory
 operator|.
 name|create
 argument_list|(
-name|state
+name|projectState
 argument_list|)
 decl_stmt|;
 comment|// default merge strategy from project settings

@@ -494,7 +494,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -1064,7 +1064,7 @@ throws|throws
 name|OrmException
 function_decl|;
 block|}
-DECL|method|suggestReviewers ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectControl projectControl, VisibilityControl visibilityControl, boolean excludeGroups)
+DECL|method|suggestReviewers ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, VisibilityControl visibilityControl, boolean excludeGroups)
 specifier|public
 name|List
 argument_list|<
@@ -1078,8 +1078,8 @@ parameter_list|,
 name|SuggestReviewers
 name|suggestReviewers
 parameter_list|,
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|VisibilityControl
 name|visibilityControl
@@ -1172,7 +1172,7 @@ name|changeNotes
 argument_list|,
 name|suggestReviewers
 argument_list|,
-name|projectControl
+name|projectState
 argument_list|,
 name|candidateList
 argument_list|)
@@ -1290,7 +1290,7 @@ name|suggestAccountGroups
 argument_list|(
 name|suggestReviewers
 argument_list|,
-name|projectControl
+name|projectState
 argument_list|,
 name|visibilityControl
 argument_list|,
@@ -1445,7 +1445,7 @@ return|;
 block|}
 block|}
 block|}
-DECL|method|recommendAccounts ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectControl projectControl, List<Account.Id> candidateList)
+DECL|method|recommendAccounts ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, List<Account.Id> candidateList)
 specifier|private
 name|List
 argument_list|<
@@ -1461,8 +1461,8 @@ parameter_list|,
 name|SuggestReviewers
 name|suggestReviewers
 parameter_list|,
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|List
 argument_list|<
@@ -1503,7 +1503,7 @@ name|changeNotes
 argument_list|,
 name|suggestReviewers
 argument_list|,
-name|projectControl
+name|projectState
 argument_list|,
 name|candidateList
 argument_list|)
@@ -1615,7 +1615,7 @@ name|reviewer
 return|;
 block|}
 block|}
-DECL|method|suggestAccountGroups ( SuggestReviewers suggestReviewers, ProjectControl projectControl, VisibilityControl visibilityControl, int limit)
+DECL|method|suggestAccountGroups ( SuggestReviewers suggestReviewers, ProjectState projectState, VisibilityControl visibilityControl, int limit)
 specifier|private
 name|List
 argument_list|<
@@ -1626,8 +1626,8 @@ parameter_list|(
 name|SuggestReviewers
 name|suggestReviewers
 parameter_list|,
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|VisibilityControl
 name|visibilityControl
@@ -1675,7 +1675,7 @@ name|suggestAccountGroups
 argument_list|(
 name|suggestReviewers
 argument_list|,
-name|projectControl
+name|projectState
 argument_list|)
 control|)
 block|{
@@ -1686,7 +1686,7 @@ name|suggestGroupAsReviewer
 argument_list|(
 name|suggestReviewers
 argument_list|,
-name|projectControl
+name|projectState
 operator|.
 name|getProject
 argument_list|()
@@ -1801,7 +1801,7 @@ name|groups
 return|;
 block|}
 block|}
-DECL|method|suggestAccountGroups ( SuggestReviewers suggestReviewers, ProjectControl ctl)
+DECL|method|suggestAccountGroups ( SuggestReviewers suggestReviewers, ProjectState projectState)
 specifier|private
 name|List
 argument_list|<
@@ -1812,8 +1812,8 @@ parameter_list|(
 name|SuggestReviewers
 name|suggestReviewers
 parameter_list|,
-name|ProjectControl
-name|ctl
+name|ProjectState
+name|projectState
 parameter_list|)
 block|{
 return|return
@@ -1834,7 +1834,7 @@ operator|.
 name|getQuery
 argument_list|()
 argument_list|,
-name|ctl
+name|projectState
 argument_list|)
 argument_list|,
 name|suggestReviewers

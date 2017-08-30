@@ -398,7 +398,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -1149,7 +1149,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|suggest (String name, ProjectControl project)
+DECL|method|suggest (String name, ProjectState project)
 specifier|public
 name|Collection
 argument_list|<
@@ -1160,7 +1160,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|ProjectControl
+name|ProjectState
 name|project
 parameter_list|)
 block|{

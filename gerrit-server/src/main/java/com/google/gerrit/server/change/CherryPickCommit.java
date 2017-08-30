@@ -716,7 +716,7 @@ name|projectName
 init|=
 name|rsrc
 operator|.
-name|getProject
+name|getProjectState
 argument_list|()
 operator|.
 name|getProject
@@ -757,8 +757,16 @@ name|checkValidCLA
 argument_list|(
 name|rsrc
 operator|.
-name|getProject
+name|getProjectState
 argument_list|()
+operator|.
+name|controlFor
+argument_list|(
+name|user
+operator|.
+name|get
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|permissionBackend
@@ -815,7 +823,7 @@ name|NameKey
 argument_list|(
 name|rsrc
 operator|.
-name|getProject
+name|getProjectState
 argument_list|()
 operator|.
 name|getProject

@@ -270,7 +270,7 @@ argument_list|>
 argument_list|()
 block|{}
 decl_stmt|;
-DECL|method|create ( GitRepositoryManager repoManager, ProjectControl project, ObjectId rev, String path)
+DECL|method|create ( GitRepositoryManager repoManager, ProjectState projectState, ObjectId rev, String path)
 specifier|public
 specifier|static
 name|FileResource
@@ -279,8 +279,8 @@ parameter_list|(
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
-name|ProjectControl
-name|project
+name|ProjectState
+name|projectState
 parameter_list|,
 name|ObjectId
 name|rev
@@ -302,7 +302,7 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|project
+name|projectState
 operator|.
 name|getProject
 argument_list|()
@@ -351,7 +351,7 @@ return|return
 operator|new
 name|FileResource
 argument_list|(
-name|project
+name|projectState
 argument_list|,
 name|rev
 argument_list|,
@@ -373,11 +373,11 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-DECL|field|project
+DECL|field|projectState
 specifier|private
 specifier|final
-name|ProjectControl
-name|project
+name|ProjectState
+name|projectState
 decl_stmt|;
 DECL|field|rev
 specifier|private
@@ -391,12 +391,12 @@ specifier|final
 name|String
 name|path
 decl_stmt|;
-DECL|method|FileResource (ProjectControl project, ObjectId rev, String path)
+DECL|method|FileResource (ProjectState projectState, ObjectId rev, String path)
 specifier|public
 name|FileResource
 parameter_list|(
-name|ProjectControl
-name|project
+name|ProjectState
+name|projectState
 parameter_list|,
 name|ObjectId
 name|rev
@@ -407,9 +407,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|project
+name|projectState
 operator|=
-name|project
+name|projectState
 expr_stmt|;
 name|this
 operator|.
@@ -424,14 +424,14 @@ operator|=
 name|path
 expr_stmt|;
 block|}
-DECL|method|getProject ()
+DECL|method|getProjectState ()
 specifier|public
-name|ProjectControl
-name|getProject
+name|ProjectState
+name|getProjectState
 parameter_list|()
 block|{
 return|return
-name|project
+name|projectState
 return|;
 block|}
 DECL|method|getRev ()

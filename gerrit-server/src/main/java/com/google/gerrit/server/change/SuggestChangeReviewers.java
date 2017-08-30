@@ -571,6 +571,9 @@ argument_list|()
 operator|.
 name|getProjectControl
 argument_list|()
+operator|.
+name|getProjectState
+argument_list|()
 argument_list|,
 name|getVisibility
 argument_list|(

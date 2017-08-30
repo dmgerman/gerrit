@@ -611,7 +611,7 @@ name|scan
 argument_list|(
 name|rsrc
 operator|.
-name|getControl
+name|getProjectState
 argument_list|()
 argument_list|,
 name|project
@@ -659,14 +659,6 @@ init|=
 name|scan
 argument_list|(
 name|ps
-operator|.
-name|controlFor
-argument_list|(
-name|user
-operator|.
-name|get
-argument_list|()
-argument_list|)
 argument_list|,
 name|project
 argument_list|,
@@ -822,7 +814,7 @@ name|values
 argument_list|()
 return|;
 block|}
-DECL|method|scan (ProjectControl ctl, String project, boolean setDefault)
+DECL|method|scan (ProjectState state, String project, boolean setDefault)
 specifier|private
 name|List
 argument_list|<
@@ -830,8 +822,8 @@ name|DashboardInfo
 argument_list|>
 name|scan
 parameter_list|(
-name|ProjectControl
-name|ctl
+name|ProjectState
+name|state
 parameter_list|,
 name|String
 name|project
@@ -851,7 +843,7 @@ operator|.
 name|NameKey
 name|projectName
 init|=
-name|ctl
+name|state
 operator|.
 name|getProject
 argument_list|()
@@ -873,7 +865,7 @@ argument_list|)
 operator|.
 name|project
 argument_list|(
-name|ctl
+name|state
 operator|.
 name|getProject
 argument_list|()
@@ -960,7 +952,7 @@ name|addAll
 argument_list|(
 name|scanDashboards
 argument_list|(
-name|ctl
+name|state
 operator|.
 name|getProject
 argument_list|()

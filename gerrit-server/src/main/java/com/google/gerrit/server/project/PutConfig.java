@@ -902,20 +902,20 @@ name|apply
 argument_list|(
 name|rsrc
 operator|.
-name|getControl
+name|getProjectState
 argument_list|()
 argument_list|,
 name|input
 argument_list|)
 return|;
 block|}
-DECL|method|apply (ProjectControl ctrl, ConfigInput input)
+DECL|method|apply (ProjectState projectState, ConfigInput input)
 specifier|public
 name|ConfigInfo
 name|apply
 parameter_list|(
-name|ProjectControl
-name|ctrl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|ConfigInput
 name|input
@@ -932,7 +932,7 @@ operator|.
 name|NameKey
 name|projectName
 init|=
-name|ctrl
+name|projectState
 operator|.
 name|getProject
 argument_list|()
@@ -1286,10 +1286,7 @@ condition|)
 block|{
 name|setPluginConfigValues
 argument_list|(
-name|ctrl
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 argument_list|,
 name|projectConfig
 argument_list|,

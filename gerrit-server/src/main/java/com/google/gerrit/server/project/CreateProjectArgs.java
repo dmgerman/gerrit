@@ -165,7 +165,9 @@ name|ownerIds
 decl_stmt|;
 DECL|field|newParent
 specifier|public
-name|ProjectControl
+name|Project
+operator|.
+name|NameKey
 name|newParent
 decl_stmt|;
 DECL|field|projectDescription

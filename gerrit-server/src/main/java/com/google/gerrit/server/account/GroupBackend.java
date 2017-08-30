@@ -170,7 +170,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -223,7 +223,7 @@ name|uuid
 parameter_list|)
 function_decl|;
 comment|/** @return suggestions for the group name sorted by name. */
-DECL|method|suggest (String name, @Nullable ProjectControl project)
+DECL|method|suggest (String name, @Nullable ProjectState project)
 name|Collection
 argument_list|<
 name|GroupReference
@@ -235,7 +235,7 @@ name|name
 parameter_list|,
 annotation|@
 name|Nullable
-name|ProjectControl
+name|ProjectState
 name|project
 parameter_list|)
 function_decl|;

@@ -275,7 +275,7 @@ name|project
 init|=
 name|rsrc
 operator|.
-name|getProject
+name|getProjectState
 argument_list|()
 operator|.
 name|getProject
