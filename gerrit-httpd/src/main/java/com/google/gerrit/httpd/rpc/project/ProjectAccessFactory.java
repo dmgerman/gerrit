@@ -1610,6 +1610,9 @@ name|setLabelTypes
 argument_list|(
 name|pc
 operator|.
+name|getProjectState
+argument_list|()
+operator|.
 name|getLabelTypes
 argument_list|()
 argument_list|)
