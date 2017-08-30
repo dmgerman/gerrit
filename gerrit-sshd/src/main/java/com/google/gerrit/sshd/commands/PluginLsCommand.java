@@ -308,7 +308,7 @@ operator|=
 name|MASTER_OR_SLAVE
 argument_list|)
 DECL|class|PluginLsCommand
-specifier|final
+specifier|public
 class|class
 name|PluginLsCommand
 extends|extends

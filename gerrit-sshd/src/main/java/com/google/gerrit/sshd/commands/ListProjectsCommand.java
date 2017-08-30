@@ -183,7 +183,7 @@ operator|=
 name|MASTER_OR_SLAVE
 argument_list|)
 DECL|class|ListProjectsCommand
-specifier|final
+specifier|public
 class|class
 name|ListProjectsCommand
 extends|extends
