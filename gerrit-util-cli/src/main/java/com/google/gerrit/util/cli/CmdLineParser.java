@@ -2212,8 +2212,6 @@ argument_list|)
 expr_stmt|;
 name|parseAdditionalOptions
 argument_list|(
-literal|""
-argument_list|,
 name|bean
 argument_list|,
 operator|new
@@ -2472,14 +2470,11 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|parseAdditionalOptions (String prefix, Object bean, Set<Object> parsedBeans)
+DECL|method|parseAdditionalOptions (Object bean, Set<Object> parsedBeans)
 specifier|private
 name|void
 name|parseAdditionalOptions
 parameter_list|(
-name|String
-name|prefix
-parameter_list|,
 name|Object
 name|bean
 parameter_list|,
@@ -2571,8 +2566,6 @@ throw|;
 block|}
 name|parseWithPrefix
 argument_list|(
-name|prefix
-operator|+
 name|f
 operator|.
 name|getAnnotation
