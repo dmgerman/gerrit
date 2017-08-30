@@ -2814,10 +2814,10 @@ name|BYPASS_REVIEW
 init|=
 literal|"bypass-review"
 decl_stmt|;
-DECL|enum|Error
+DECL|enum|ReceiveError
 specifier|private
 enum|enum
-name|Error
+name|ReceiveError
 block|{
 DECL|enumConstant|CONFIG_UPDATE
 name|CONFIG_UPDATE
@@ -2871,8 +2871,8 @@ specifier|final
 name|String
 name|value
 decl_stmt|;
-DECL|method|Error (String value)
-name|Error
+DECL|method|ReceiveError (String value)
+name|ReceiveError
 parameter_list|(
 name|String
 name|value
@@ -3492,7 +3492,7 @@ specifier|private
 specifier|final
 name|ListMultimap
 argument_list|<
-name|Error
+name|ReceiveError
 argument_list|,
 name|String
 argument_list|>
@@ -4521,7 +4521,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|Error
+name|ReceiveError
 name|error
 range|:
 name|errors
@@ -5671,12 +5671,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|buildError (Error error, List<String> branches)
+DECL|method|buildError (ReceiveError error, List<String> branches)
 specifier|private
 name|String
 name|buildError
 parameter_list|(
-name|Error
+name|ReceiveError
 name|error
 parameter_list|,
 name|List
@@ -7195,7 +7195,7 @@ name|errors
 operator|.
 name|put
 argument_list|(
-name|Error
+name|ReceiveError
 operator|.
 name|CONFIG_UPDATE
 argument_list|,
@@ -7211,7 +7211,7 @@ name|errors
 operator|.
 name|put
 argument_list|(
-name|Error
+name|ReceiveError
 operator|.
 name|UPDATE
 argument_list|,
@@ -7357,7 +7357,7 @@ name|errors
 operator|.
 name|put
 argument_list|(
-name|Error
+name|ReceiveError
 operator|.
 name|DELETE_CHANGES
 argument_list|,
@@ -7433,7 +7433,7 @@ name|errors
 operator|.
 name|put
 argument_list|(
-name|Error
+name|ReceiveError
 operator|.
 name|DELETE
 argument_list|,
@@ -9499,7 +9499,7 @@ name|errors
 operator|.
 name|put
 argument_list|(
-name|Error
+name|ReceiveError
 operator|.
 name|CODE_REVIEW
 argument_list|,
@@ -9541,7 +9541,7 @@ name|errors
 operator|.
 name|put
 argument_list|(
-name|Error
+name|ReceiveError
 operator|.
 name|CODE_REVIEW
 argument_list|,
@@ -9582,7 +9582,7 @@ name|errors
 operator|.
 name|put
 argument_list|(
-name|Error
+name|ReceiveError
 operator|.
 name|CODE_REVIEW
 argument_list|,
