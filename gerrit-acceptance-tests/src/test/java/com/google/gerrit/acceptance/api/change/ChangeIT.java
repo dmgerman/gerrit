@@ -3525,10 +3525,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|userCannotMarkPrivateAfterMerging ()
+DECL|method|ownerCannotMarkPrivateAfterMerging ()
 specifier|public
 name|void
-name|userCannotMarkPrivateAfterMerging
+name|ownerCannotMarkPrivateAfterMerging
 parameter_list|()
 throws|throws
 name|Exception
@@ -3645,10 +3645,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|userCannotUnmarkPrivateAfterMerging ()
+DECL|method|ownerCanUnmarkPrivateAfterMerging ()
 specifier|public
 name|void
-name|userCannotUnmarkPrivateAfterMerging
+name|ownerCanUnmarkPrivateAfterMerging
 parameter_list|()
 throws|throws
 name|Exception
@@ -3788,22 +3788,6 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|AuthException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"not allowed to unmark private"
-argument_list|)
-expr_stmt|;
 name|gApi
 operator|.
 name|changes
@@ -3820,6 +3804,27 @@ literal|false
 argument_list|,
 literal|null
 argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|changeId
+argument_list|)
+operator|.
+name|get
+argument_list|()
+operator|.
+name|isPrivate
+argument_list|)
+operator|.
+name|isNull
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
