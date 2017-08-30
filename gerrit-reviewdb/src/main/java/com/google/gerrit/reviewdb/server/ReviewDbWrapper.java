@@ -431,21 +431,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|accounts ()
-specifier|public
-name|AccountAccess
-name|accounts
-parameter_list|()
-block|{
-return|return
-name|delegate
-operator|.
-name|accounts
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|accountGroups ()
 specifier|public
 name|AccountGroupAccess
