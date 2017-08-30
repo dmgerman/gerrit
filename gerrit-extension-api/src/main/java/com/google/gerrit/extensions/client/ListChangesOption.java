@@ -240,6 +240,13 @@ name|SUBMITTABLE
 argument_list|(
 literal|20
 argument_list|)
+block|,
+comment|/** If tracking Ids are included, include detailed tracking Ids info. */
+DECL|enumConstant|TRACKING_IDS
+name|TRACKING_IDS
+argument_list|(
+literal|21
+argument_list|)
 block|;
 DECL|field|value
 specifier|private
