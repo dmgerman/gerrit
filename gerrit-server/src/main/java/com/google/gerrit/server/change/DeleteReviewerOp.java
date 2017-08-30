@@ -478,6 +478,22 @@ name|server
 operator|.
 name|project
 operator|.
+name|ProjectCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
 name|RemoveReviewerControl
 import|;
 end_import
@@ -595,6 +611,16 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -776,6 +802,12 @@ specifier|final
 name|RemoveReviewerControl
 name|removeReviewerControl
 decl_stmt|;
+DECL|field|projectCache
+specifier|private
+specifier|final
+name|ProjectCache
+name|projectCache
+decl_stmt|;
 DECL|field|reviewer
 specifier|private
 specifier|final
@@ -830,7 +862,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteReviewerOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, IdentifiedUser.GenericFactory userFactory, ReviewerDeleted reviewerDeleted, Provider<IdentifiedUser> user, DeleteReviewerSender.Factory deleteReviewerSenderFactory, NotesMigration migration, NotifyUtil notifyUtil, RemoveReviewerControl removeReviewerControl, @Assisted Account reviewerAccount, @Assisted DeleteReviewerInput input)
+DECL|method|DeleteReviewerOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, IdentifiedUser.GenericFactory userFactory, ReviewerDeleted reviewerDeleted, Provider<IdentifiedUser> user, DeleteReviewerSender.Factory deleteReviewerSenderFactory, NotesMigration migration, NotifyUtil notifyUtil, RemoveReviewerControl removeReviewerControl, ProjectCache projectCache, @Assisted Account reviewerAccount, @Assisted DeleteReviewerInput input)
 name|DeleteReviewerOp
 parameter_list|(
 name|ApprovalsUtil
@@ -869,6 +901,9 @@ name|notifyUtil
 parameter_list|,
 name|RemoveReviewerControl
 name|removeReviewerControl
+parameter_list|,
+name|ProjectCache
+name|projectCache
 parameter_list|,
 annotation|@
 name|Assisted
@@ -943,6 +978,12 @@ name|removeReviewerControl
 expr_stmt|;
 name|this
 operator|.
+name|projectCache
+operator|=
+name|projectCache
+expr_stmt|;
+name|this
+operator|.
 name|reviewer
 operator|=
 name|reviewerAccount
@@ -972,6 +1013,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|IOException
 block|{
 name|Account
 operator|.
@@ -1043,13 +1086,28 @@ expr_stmt|;
 name|LabelTypes
 name|labelTypes
 init|=
+name|projectCache
+operator|.
+name|checkedGet
+argument_list|(
 name|ctx
 operator|.
-name|getControl
+name|getProject
 argument_list|()
+argument_list|)
 operator|.
 name|getLabelTypes
+argument_list|(
+name|ctx
+operator|.
+name|getNotes
 argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getUser
+argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// removing a reviewer will remove all her votes
 for|for

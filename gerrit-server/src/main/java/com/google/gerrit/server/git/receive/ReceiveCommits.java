@@ -4040,6 +4040,9 @@ name|labelTypes
 operator|=
 name|projectControl
 operator|.
+name|getProjectState
+argument_list|()
+operator|.
 name|getLabelTypes
 argument_list|()
 expr_stmt|;

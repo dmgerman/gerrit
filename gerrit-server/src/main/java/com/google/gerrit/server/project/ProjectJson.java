@@ -323,13 +323,13 @@ operator|=
 name|webLinks
 expr_stmt|;
 block|}
-DECL|method|format (ProjectState state)
+DECL|method|format (ProjectState projectState)
 specifier|public
 name|ProjectInfo
 name|format
 parameter_list|(
 name|ProjectState
-name|state
+name|projectState
 parameter_list|)
 block|{
 name|ProjectInfo
@@ -337,7 +337,7 @@ name|info
 init|=
 name|format
 argument_list|(
-name|state
+name|projectState
 operator|.
 name|getProject
 argument_list|()
@@ -357,7 +357,7 @@ control|(
 name|LabelType
 name|t
 range|:
-name|state
+name|projectState
 operator|.
 name|getLabelTypes
 argument_list|()
