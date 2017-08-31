@@ -89,6 +89,15 @@ specifier|final
 class|class
 name|ReceiveConstants
 block|{
+DECL|field|PUSH_OPTION_SKIP_VALIDATION
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PUSH_OPTION_SKIP_VALIDATION
+init|=
+literal|"skip-validation"
+decl_stmt|;
 annotation|@
 name|VisibleForTesting
 DECL|field|ONLY_OWNER_CAN_MODIFY_WIP

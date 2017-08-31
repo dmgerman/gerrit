@@ -242,6 +242,26 @@ name|receive
 operator|.
 name|ReceiveConstants
 operator|.
+name|PUSH_OPTION_SKIP_VALIDATION
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|receive
+operator|.
+name|ReceiveConstants
+operator|.
 name|SAME_CHANGE_ID_IN_MULTIPLE_CHANGES
 import|;
 end_import
@@ -2804,15 +2824,6 @@ name|ReceiveCommits
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-DECL|field|BYPASS_REVIEW
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|BYPASS_REVIEW
-init|=
-literal|"bypass-review"
 decl_stmt|;
 DECL|enum|ReceiveError
 specifier|private
@@ -16554,7 +16565,7 @@ name|pushOptions
 operator|.
 name|containsKey
 argument_list|(
-name|BYPASS_REVIEW
+name|PUSH_OPTION_SKIP_VALIDATION
 argument_list|)
 condition|)
 block|{
@@ -16566,7 +16577,7 @@ name|check
 argument_list|(
 name|RefPermission
 operator|.
-name|BYPASS_REVIEW
+name|SKIP_VALIDATION
 argument_list|)
 expr_stmt|;
 if|if
@@ -16586,7 +16597,7 @@ name|AuthException
 argument_list|(
 literal|"reject-commits prevents "
 operator|+
-name|BYPASS_REVIEW
+name|PUSH_OPTION_SKIP_VALIDATION
 argument_list|)
 throw|;
 block|}
