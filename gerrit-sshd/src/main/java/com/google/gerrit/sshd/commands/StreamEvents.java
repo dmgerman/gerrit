@@ -961,6 +961,26 @@ name|create
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|removeEventListenerRegistration ()
+specifier|private
+name|void
+name|removeEventListenerRegistration
+parameter_list|()
+block|{
+if|if
+condition|(
+name|eventListenerRegistration
+operator|!=
+literal|null
+condition|)
+block|{
+name|eventListenerRegistration
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Override
 DECL|method|onExit (int rc)
@@ -972,9 +992,7 @@ name|int
 name|rc
 parameter_list|)
 block|{
-name|eventListenerRegistration
-operator|.
-name|remove
+name|removeEventListenerRegistration
 argument_list|()
 expr_stmt|;
 synchronized|synchronized
@@ -1003,9 +1021,7 @@ name|void
 name|destroy
 parameter_list|()
 block|{
-name|eventListenerRegistration
-operator|.
-name|remove
+name|removeEventListenerRegistration
 argument_list|()
 expr_stmt|;
 specifier|final
@@ -1185,9 +1201,7 @@ comment|// The other side either requested a shutdown by calling our
 comment|// destroy() above, or it closed the stream and is no longer
 comment|// accepting output. Either way terminate this instance.
 comment|//
-name|eventListenerRegistration
-operator|.
-name|remove
+name|removeEventListenerRegistration
 argument_list|()
 expr_stmt|;
 name|flush
