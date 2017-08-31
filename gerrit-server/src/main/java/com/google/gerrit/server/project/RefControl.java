@@ -3132,7 +3132,7 @@ literal|true
 argument_list|)
 return|;
 case|case
-name|BYPASS_REVIEW
+name|SKIP_VALIDATION
 case|:
 return|return
 name|canForgeAuthor

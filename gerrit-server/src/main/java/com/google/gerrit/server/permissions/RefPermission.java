@@ -166,8 +166,8 @@ operator|,
 DECL|enumConstant|MERGE
 name|MERGE
 operator|,
-DECL|enumConstant|BYPASS_REVIEW
-name|BYPASS_REVIEW
+DECL|enumConstant|SKIP_VALIDATION
+name|SKIP_VALIDATION
 operator|,
 comment|/** Create a change to code review a commit. */
 DECL|enumConstant|CREATE_CHANGE
