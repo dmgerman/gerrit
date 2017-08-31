@@ -16723,7 +16723,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|int
-name|i
+name|limit
+init|=
+name|receiveConfig
+operator|.
+name|maxBatchCommits
+decl_stmt|;
+name|int
+name|n
 init|=
 literal|0
 decl_stmt|;
@@ -16745,9 +16752,50 @@ literal|null
 condition|;
 control|)
 block|{
-name|i
+if|if
+condition|(
 operator|++
+name|n
+operator|>
+name|limit
+condition|)
+block|{
+name|logDebug
+argument_list|(
+literal|"Number of new commits exceeds limit of {}"
+argument_list|,
+name|limit
+argument_list|)
 expr_stmt|;
+name|addMessage
+argument_list|(
+literal|"Cannot push more than "
+operator|+
+name|limit
+operator|+
+literal|" commits to "
+operator|+
+name|branch
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|" without "
+operator|+
+name|PUSH_OPTION_SKIP_VALIDATION
+operator|+
+literal|" option"
+argument_list|)
+expr_stmt|;
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"too many commits"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 if|if
 condition|(
 name|existing
@@ -16826,7 +16874,7 @@ name|logDebug
 argument_list|(
 literal|"Validated {} new commits"
 argument_list|,
-name|i
+name|n
 argument_list|)
 expr_stmt|;
 block|}
