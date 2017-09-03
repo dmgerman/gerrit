@@ -2103,7 +2103,17 @@ throw|throw
 operator|new
 name|AccountException
 argument_list|(
-literal|"Identity in use by another account"
+literal|"Identity '"
+operator|+
+name|extId
+operator|.
+name|key
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"' in use by another account"
 argument_list|)
 throw|;
 block|}

@@ -4867,12 +4867,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|String
+name|email
+init|=
+literal|"new.email@example.com"
+decl_stmt|;
 name|EmailInput
 name|input
 init|=
 name|newEmailInput
 argument_list|(
-literal|"new.email@example.com"
+name|email
 argument_list|)
 decl_stmt|;
 name|gApi
@@ -4901,7 +4906,11 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"in use by another account"
+literal|"Identity 'mailto:"
+operator|+
+name|email
+operator|+
+literal|"' in use by another account"
 argument_list|)
 expr_stmt|;
 name|gApi
