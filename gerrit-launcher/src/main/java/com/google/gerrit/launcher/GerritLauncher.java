@@ -3736,17 +3736,6 @@ name|SOURCE_ROOT_RESOURCE
 argument_list|)
 init|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"URL: "
-operator|+
-name|stream
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|stream
