@@ -338,6 +338,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -503,6 +515,19 @@ operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
+comment|// The REST call is just a trigger for async reindexing, so it is safe to ignore the future's
+comment|// return value.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+name|Future
+argument_list|<
+name|Void
+argument_list|>
+name|ignored
+init|=
 name|executor
 operator|.
 name|submit
@@ -520,7 +545,7 @@ argument_list|,
 name|mpt
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 return|return
 name|Response
 operator|.
