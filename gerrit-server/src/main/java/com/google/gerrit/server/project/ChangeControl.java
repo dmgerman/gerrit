@@ -564,16 +564,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -1702,27 +1692,6 @@ argument_list|(
 name|RefPermission
 operator|.
 name|CREATE_CHANGE
-argument_list|)
-return|;
-block|}
-comment|/** All value ranges of any allowed label permission. */
-DECL|method|getLabelRanges ()
-specifier|public
-name|List
-argument_list|<
-name|PermissionRange
-argument_list|>
-name|getLabelRanges
-parameter_list|()
-block|{
-return|return
-name|getRefControl
-argument_list|()
-operator|.
-name|getLabelRanges
-argument_list|(
-name|isOwner
-argument_list|()
 argument_list|)
 return|;
 block|}
