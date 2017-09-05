@@ -5832,7 +5832,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-comment|// Don't use Maps.newTreeMap(Comparator) due to OpenJDK bug 100167.
 name|Map
 argument_list|<
 name|String

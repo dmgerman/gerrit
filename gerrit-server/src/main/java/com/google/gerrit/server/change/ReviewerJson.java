@@ -985,7 +985,6 @@ operator|.
 name|getLabelTypes
 argument_list|()
 decl_stmt|;
-comment|// Don't use Maps.newTreeMap(Comparator) due to OpenJDK bug 100167.
 name|out
 operator|.
 name|approvals
