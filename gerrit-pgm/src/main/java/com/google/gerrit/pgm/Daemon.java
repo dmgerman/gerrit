@@ -1906,6 +1906,26 @@ specifier|private
 name|boolean
 name|migrateToNoteDb
 decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--trial"
+argument_list|,
+name|usage
+operator|=
+literal|"(With --migrate-to-note-db) "
+operator|+
+name|MigrateToNoteDb
+operator|.
+name|TRIAL_USAGE
+argument_list|)
+DECL|field|trial
+specifier|private
+name|boolean
+name|trial
+decl_stmt|;
 DECL|field|manager
 specifier|private
 specifier|final
@@ -3366,7 +3386,9 @@ operator|new
 name|OnlineNoteDbMigrator
 operator|.
 name|Module
-argument_list|()
+argument_list|(
+name|trial
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

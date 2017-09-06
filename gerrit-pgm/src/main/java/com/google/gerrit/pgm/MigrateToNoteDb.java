@@ -480,6 +480,16 @@ name|MigrateToNoteDb
 extends|extends
 name|SiteProgram
 block|{
+DECL|field|TRIAL_USAGE
+specifier|static
+specifier|final
+name|String
+name|TRIAL_USAGE
+init|=
+literal|"Trial mode: migrate changes and turn on reading from NoteDb, but leave ReviewDb as the"
+operator|+
+literal|" source of truth"
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -583,9 +593,7 @@ literal|"--trial"
 argument_list|,
 name|usage
 operator|=
-literal|"trial mode: migrate changes and turn on reading from NoteDb, but leave ReviewDb as"
-operator|+
-literal|" the source of truth"
+name|TRIAL_USAGE
 argument_list|)
 DECL|field|trial
 specifier|private

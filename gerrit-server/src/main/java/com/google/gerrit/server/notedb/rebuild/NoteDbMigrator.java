@@ -606,7 +606,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GerritServerConfig
+name|GerritServerConfigProvider
 import|;
 end_import
 
@@ -1157,6 +1157,15 @@ name|AUTO_MIGRATE
 init|=
 literal|"autoMigrate"
 decl_stmt|;
+DECL|field|TRIAL
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|TRIAL
+init|=
+literal|"trial"
+decl_stmt|;
 DECL|method|getAutoMigrate (Config cfg)
 specifier|public
 specifier|static
@@ -1216,6 +1225,68 @@ argument_list|,
 name|AUTO_MIGRATE
 argument_list|,
 name|autoMigrate
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getTrialMode (Config cfg)
+specifier|public
+specifier|static
+name|boolean
+name|getTrialMode
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|)
+block|{
+return|return
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+name|SECTION_NOTE_DB
+argument_list|,
+name|NoteDbTable
+operator|.
+name|CHANGES
+operator|.
+name|key
+argument_list|()
+argument_list|,
+name|TRIAL
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+DECL|method|setTrialMode (Config cfg, boolean trial)
+specifier|public
+specifier|static
+name|void
+name|setTrialMode
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|,
+name|boolean
+name|trial
+parameter_list|)
+block|{
+name|cfg
+operator|.
+name|setBoolean
+argument_list|(
+name|SECTION_NOTE_DB
+argument_list|,
+name|NoteDbTable
+operator|.
+name|CHANGES
+operator|.
+name|key
+argument_list|()
+argument_list|,
+name|TRIAL
+argument_list|,
+name|trial
 argument_list|)
 expr_stmt|;
 block|}
@@ -1370,13 +1441,11 @@ name|autoMigrate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Builder ( @erritServerConfig Config cfg, SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilder rebuilder, WorkQueue workQueue, MutableNotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator)
+DECL|method|Builder ( GerritServerConfigProvider configProvider, SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilder rebuilder, WorkQueue workQueue, MutableNotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator)
 name|Builder
 parameter_list|(
-annotation|@
-name|GerritServerConfig
-name|Config
-name|cfg
+name|GerritServerConfigProvider
+name|configProvider
 parameter_list|,
 name|SitePaths
 name|sitePaths
@@ -1414,11 +1483,17 @@ name|PrimaryStorageMigrator
 name|primaryStorageMigrator
 parameter_list|)
 block|{
+comment|// Reload gerrit.config/notedb.config on each migrator invocation, in case a previous
+comment|// migration in the same process modified the on-disk contents. This ensures the defaults for
+comment|// trial/autoMigrate get set correctly below.
 name|this
 operator|.
 name|cfg
 operator|=
-name|cfg
+name|configProvider
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -1479,6 +1554,24 @@ operator|.
 name|primaryStorageMigrator
 operator|=
 name|primaryStorageMigrator
+expr_stmt|;
+name|this
+operator|.
+name|trial
+operator|=
+name|getTrialMode
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|autoMigrate
+operator|=
+name|getAutoMigrate
+argument_list|(
+name|cfg
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Set the number of threads used by parallelizable phases of the migration, such as rebuilding      * all changes.      *      *<p>Not all phases are parallelizable, and calling {@link #rebuild()} directly will do      * substantial work in the calling thread regardless of the number of threads configured.      *      *<p>By default, all work is done in the calling thread.      *      * @param threads thread count; if less than 2, all work happens in the calling thread.      * @return this.      */
@@ -2309,28 +2402,9 @@ literal|"Cannot force rebuild changes; NoteDb is already the primary storage for
 argument_list|)
 throw|;
 block|}
-if|if
-condition|(
-name|autoMigrate
-condition|)
-block|{
-if|if
-condition|(
-name|trial
-condition|)
-block|{
-throw|throw
-operator|new
-name|MigrationException
-argument_list|(
-literal|"Auto-migration cannot be used with trial mode"
-argument_list|)
-throw|;
-block|}
-name|enableAutoMigrate
+name|setControlFlags
 argument_list|()
 expr_stmt|;
-block|}
 name|boolean
 name|rebuilt
 init|=
@@ -3201,13 +3275,18 @@ block|}
 end_function
 
 begin_function
-DECL|method|enableAutoMigrate ()
+DECL|method|setControlFlags ()
 specifier|private
 name|void
-name|enableAutoMigrate
+name|setControlFlags
 parameter_list|()
 throws|throws
 name|MigrationException
+block|{
+synchronized|synchronized
+init|(
+name|globalNotesMigration
+init|)
 block|{
 try|try
 block|{
@@ -3220,7 +3299,14 @@ name|setAutoMigrate
 argument_list|(
 name|noteDbConfig
 argument_list|,
-literal|true
+name|autoMigrate
+argument_list|)
+expr_stmt|;
+name|setTrialMode
+argument_list|(
+name|noteDbConfig
+argument_list|,
+name|trial
 argument_list|)
 expr_stmt|;
 name|noteDbConfig
@@ -3246,6 +3332,7 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 end_function

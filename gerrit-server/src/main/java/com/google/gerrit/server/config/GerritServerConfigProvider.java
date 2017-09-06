@@ -283,11 +283,12 @@ import|;
 end_import
 
 begin_comment
-comment|/** Provides {@link Config} annotated with {@link GerritServerConfig}. */
+comment|/**  * Provides {@link Config} annotated with {@link GerritServerConfig}.  *  *<p>Note that this class is not a singleton, so the few callers that need a reloaded-on-demand  * config can inject a {@code GerritServerConfigProvider}. However, most callers won't need this,  * and will just inject {@code @GerritServerConfig Config} directly, which is bound as a singleton  * in {@link GerritServerConfigModule}.  */
 end_comment
 
 begin_class
 DECL|class|GerritServerConfigProvider
+specifier|public
 class|class
 name|GerritServerConfigProvider
 implements|implements
