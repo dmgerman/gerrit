@@ -314,22 +314,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|AllProjectsName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|MetaDataUpdate
@@ -349,22 +333,6 @@ operator|.
 name|git
 operator|.
 name|ProjectConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|group
-operator|.
-name|GroupsCollection
 import|;
 end_import
 
@@ -567,7 +535,7 @@ name|accessUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetAccess ( GroupBackend groupBackend, PermissionBackend permissionBackend, Provider<MetaDataUpdate.User> metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GroupsCollection groupsCollection, ProjectCache projectCache, GetAccess getAccess, Provider<IdentifiedUser> identifiedUser, SetAccessUtil accessUtil)
+DECL|method|SetAccess ( GroupBackend groupBackend, PermissionBackend permissionBackend, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GetAccess getAccess, Provider<IdentifiedUser> identifiedUser, SetAccessUtil accessUtil)
 specifier|private
 name|SetAccess
 parameter_list|(
@@ -584,18 +552,6 @@ operator|.
 name|User
 argument_list|>
 name|metaDataUpdateFactory
-parameter_list|,
-name|AllProjectsName
-name|allProjects
-parameter_list|,
-name|Provider
-argument_list|<
-name|SetParent
-argument_list|>
-name|setParent
-parameter_list|,
-name|GroupsCollection
-name|groupsCollection
 parameter_list|,
 name|ProjectCache
 name|projectCache
