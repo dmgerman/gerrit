@@ -619,7 +619,7 @@ operator|==
 literal|null
 return|;
 block|}
-comment|/**    * Get the control for the caller's user.    *    * @return the control for the caller's user (as opposed to the reviewer's user as returned by    *     {@link #getReviewerControl()}).    */
+comment|/** @return the control for the caller's user */
 DECL|method|getControl ()
 specifier|public
 name|ChangeControl
@@ -631,34 +631,6 @@ name|change
 operator|.
 name|getControl
 argument_list|()
-return|;
-block|}
-comment|/**    * Get the control for the reviewer's user.    *    * @return the control for the reviewer's user (as opposed to the caller's user as returned by    *     {@link #getControl()}).    */
-DECL|method|getReviewerControl ()
-specifier|public
-name|ChangeControl
-name|getReviewerControl
-parameter_list|()
-block|{
-name|checkArgument
-argument_list|(
-name|user
-operator|!=
-literal|null
-argument_list|,
-literal|"no user provided"
-argument_list|)
-expr_stmt|;
-return|return
-name|change
-operator|.
-name|getControl
-argument_list|()
-operator|.
-name|forUser
-argument_list|(
-name|user
-argument_list|)
 return|;
 block|}
 block|}
