@@ -116,6 +116,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|ChangeInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|ProjectInfo
 import|;
 end_import
@@ -219,6 +235,16 @@ function_decl|;
 DECL|method|access (ProjectAccessInput p)
 name|ProjectAccessInfo
 name|access
+parameter_list|(
+name|ProjectAccessInput
+name|p
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|accessChange (ProjectAccessInput p)
+name|ChangeInfo
+name|accessChange
 parameter_list|(
 name|ProjectAccessInput
 name|p
@@ -597,6 +623,25 @@ specifier|public
 name|ProjectAccessInfo
 name|access
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|accessChange (ProjectAccessInput input)
+specifier|public
+name|ChangeInfo
+name|accessChange
+parameter_list|(
+name|ProjectAccessInput
+name|input
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
