@@ -2727,9 +2727,6 @@ operator|+
 name|receiveEvent
 operator|.
 name|project
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 name|e
 argument_list|)

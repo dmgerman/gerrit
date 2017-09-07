@@ -3440,6 +3440,9 @@ operator|.
 name|create
 argument_list|(
 name|ctl
+operator|.
+name|getNotes
+argument_list|()
 argument_list|,
 name|psId
 argument_list|,

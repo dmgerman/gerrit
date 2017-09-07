@@ -604,22 +604,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|InvalidChangeOperationException
 import|;
 end_import
@@ -1941,13 +1925,14 @@ condition|)
 block|{
 comment|// The change key exists on the destination branch. The cherry pick
 comment|// will be added as a new patch set.
-name|ChangeControl
-name|destCtl
-init|=
-name|projectControl
-operator|.
-name|controlFor
+name|result
+operator|=
+name|insertPatchSet
 argument_list|(
+name|bu
+argument_list|,
+name|git
+argument_list|,
 name|destChanges
 operator|.
 name|get
@@ -1957,17 +1942,6 @@ argument_list|)
 operator|.
 name|notes
 argument_list|()
-argument_list|)
-decl_stmt|;
-name|result
-operator|=
-name|insertPatchSet
-argument_list|(
-name|bu
-argument_list|,
-name|git
-argument_list|,
-name|destCtl
 argument_list|,
 name|cherryPickCommit
 argument_list|,
@@ -2377,7 +2351,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-DECL|method|insertPatchSet ( BatchUpdate bu, Repository git, ChangeControl destCtl, CodeReviewCommit cherryPickCommit, CherryPickInput input)
+DECL|method|insertPatchSet ( BatchUpdate bu, Repository git, ChangeNotes destNotes, CodeReviewCommit cherryPickCommit, CherryPickInput input)
 specifier|private
 name|Change
 operator|.
@@ -2390,8 +2364,8 @@ parameter_list|,
 name|Repository
 name|git
 parameter_list|,
-name|ChangeControl
-name|destCtl
+name|ChangeNotes
+name|destNotes
 parameter_list|,
 name|CodeReviewCommit
 name|cherryPickCommit
@@ -2411,7 +2385,7 @@ block|{
 name|Change
 name|destChange
 init|=
-name|destCtl
+name|destNotes
 operator|.
 name|getChange
 argument_list|()
@@ -2445,10 +2419,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|destCtl
-operator|.
-name|getNotes
-argument_list|()
+name|destNotes
 argument_list|)
 decl_stmt|;
 name|PatchSetInserter
@@ -2458,7 +2429,7 @@ name|patchSetInserterFactory
 operator|.
 name|create
 argument_list|(
-name|destCtl
+name|destNotes
 argument_list|,
 name|psId
 argument_list|,
