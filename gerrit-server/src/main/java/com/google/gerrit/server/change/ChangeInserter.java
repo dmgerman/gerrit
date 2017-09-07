@@ -2529,6 +2529,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|PermissionBackendException
 block|{
 name|change
 operator|=
@@ -2884,7 +2886,7 @@ name|patchSet
 argument_list|,
 name|ctx
 operator|.
-name|getControl
+name|getUser
 argument_list|()
 argument_list|,
 name|approvals
