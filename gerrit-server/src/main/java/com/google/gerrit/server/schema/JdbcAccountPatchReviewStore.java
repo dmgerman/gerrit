@@ -1284,7 +1284,7 @@ literal|"file_name VARCHAR(4096) DEFAULT '' NOT NULL, "
 operator|+
 literal|"CONSTRAINT primary_key_account_patch_reviews "
 operator|+
-literal|"PRIMARY KEY (account_id, change_id, patch_set_id, file_name)"
+literal|"PRIMARY KEY (change_id, patch_set_id, account_id, file_name)"
 operator|+
 literal|")"
 argument_list|)
