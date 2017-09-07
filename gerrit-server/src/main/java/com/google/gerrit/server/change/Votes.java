@@ -604,6 +604,9 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
+name|getChangeResource
+argument_list|()
+operator|.
 name|getControl
 argument_list|()
 argument_list|,

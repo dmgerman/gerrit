@@ -196,22 +196,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|TypeLiteral
@@ -617,20 +601,6 @@ return|return
 name|user
 operator|==
 literal|null
-return|;
-block|}
-comment|/** @return the control for the caller's user */
-DECL|method|getControl ()
-specifier|public
-name|ChangeControl
-name|getControl
-parameter_list|()
-block|{
-return|return
-name|change
-operator|.
-name|getControl
-argument_list|()
 return|;
 block|}
 block|}
