@@ -739,7 +739,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getControl
+name|getChangeResource
 argument_list|()
 operator|.
 name|getNotes

@@ -1153,7 +1153,7 @@ argument_list|()
 argument_list|,
 name|r
 operator|.
-name|getControl
+name|getChangeResource
 argument_list|()
 operator|.
 name|getUser
