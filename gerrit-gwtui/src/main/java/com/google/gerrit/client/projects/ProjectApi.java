@@ -482,7 +482,7 @@ name|call
 return|;
 block|}
 comment|/** Create a new tag */
-DECL|method|createTag ( Project.NameKey name, String ref, String revision, AsyncCallback<TagInfo> cb)
+DECL|method|createTag ( Project.NameKey name, String ref, String revision, String annotation, AsyncCallback<TagInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -498,6 +498,9 @@ name|ref
 parameter_list|,
 name|String
 name|revision
+parameter_list|,
+name|String
+name|annotation
 parameter_list|,
 name|AsyncCallback
 argument_list|<
@@ -519,6 +522,13 @@ operator|.
 name|setRevision
 argument_list|(
 name|revision
+argument_list|)
+expr_stmt|;
+name|input
+operator|.
+name|setMessage
+argument_list|(
+name|annotation
 argument_list|)
 expr_stmt|;
 name|project
@@ -2334,6 +2344,17 @@ name|String
 name|r
 parameter_list|)
 comment|/*-{ if(r)this.revision=r; }-*/
+function_decl|;
+DECL|method|setMessage (String m)
+specifier|final
+specifier|native
+name|void
+name|setMessage
+parameter_list|(
+name|String
+name|m
+parameter_list|)
+comment|/*-{ if(m)this.message=m; }-*/
 function_decl|;
 block|}
 DECL|class|BranchInput

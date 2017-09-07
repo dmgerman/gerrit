@@ -154,6 +154,11 @@ name|String
 name|defaultRevisionSpec
 parameter_list|()
 function_decl|;
+DECL|method|annotation ()
+name|String
+name|annotation
+parameter_list|()
+function_decl|;
 DECL|method|buttonDeleteIncludedGroup ()
 name|String
 name|buttonDeleteIncludedGroup
@@ -532,6 +537,11 @@ function_decl|;
 DECL|method|columnTagRevision ()
 name|String
 name|columnTagRevision
+parameter_list|()
+function_decl|;
+DECL|method|columnTagAnnotation ()
+name|String
+name|columnTagAnnotation
 parameter_list|()
 function_decl|;
 DECL|method|initialRevision ()
