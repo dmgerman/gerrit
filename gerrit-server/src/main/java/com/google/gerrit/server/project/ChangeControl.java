@@ -1728,7 +1728,7 @@ return|;
 block|}
 comment|/** The range of permitted values associated with a label permission. */
 DECL|method|getRange (String permission)
-specifier|public
+specifier|private
 name|PermissionRange
 name|getRange
 parameter_list|(
