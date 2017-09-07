@@ -1427,9 +1427,6 @@ name|gitMgr
 operator|.
 name|openRepository
 argument_list|(
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 argument_list|)
@@ -1533,9 +1530,6 @@ name|rulesCache
 operator|.
 name|loadMachine
 argument_list|(
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 argument_list|,
@@ -1608,6 +1602,36 @@ name|getProject
 argument_list|()
 return|;
 block|}
+DECL|method|getNameKey ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|getNameKey
+parameter_list|()
+block|{
+return|return
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
+return|;
+block|}
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|getNameKey
+argument_list|()
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 DECL|method|getConfig ()
 specifier|public
 name|ProjectConfig
@@ -1666,9 +1690,6 @@ name|gitMgr
 operator|.
 name|openRepository
 argument_list|(
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 argument_list|)
@@ -1700,9 +1721,6 @@ name|fileName
 operator|+
 literal|" for "
 operator|+
-name|getProject
-argument_list|()
-operator|.
 name|getName
 argument_list|()
 argument_list|,
@@ -1879,9 +1897,6 @@ name|SectionMatcher
 operator|.
 name|wrap
 argument_list|(
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 argument_list|,

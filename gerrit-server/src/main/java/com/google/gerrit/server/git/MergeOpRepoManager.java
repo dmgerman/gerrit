@@ -731,9 +731,6 @@ block|{
 return|return
 name|project
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 return|;

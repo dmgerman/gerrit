@@ -3134,9 +3134,6 @@ literal|"Cannot consult rules.pl for "
 operator|+
 name|parentState
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getName
 argument_list|()
 argument_list|,
@@ -3247,9 +3244,6 @@ argument_list|()
 argument_list|,
 name|parentState
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getName
 argument_list|()
 argument_list|)
@@ -3283,9 +3277,6 @@ name|get
 argument_list|()
 argument_list|,
 name|parentState
-operator|.
-name|getProject
-argument_list|()
 operator|.
 name|getName
 argument_list|()
@@ -3634,9 +3625,6 @@ name|getProjectControl
 argument_list|()
 operator|.
 name|getProjectState
-argument_list|()
-operator|.
-name|getProject
 argument_list|()
 operator|.
 name|getName

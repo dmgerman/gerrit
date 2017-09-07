@@ -250,9 +250,6 @@ operator|.
 name|getChild
 argument_list|()
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getName
 argument_list|()
 argument_list|)

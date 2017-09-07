@@ -719,9 +719,6 @@ operator|.
 name|getProjectState
 argument_list|()
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 decl_stmt|;
@@ -824,9 +821,6 @@ argument_list|(
 name|rsrc
 operator|.
 name|getProjectState
-argument_list|()
-operator|.
-name|getProject
 argument_list|()
 operator|.
 name|getNameKey

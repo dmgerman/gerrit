@@ -635,9 +635,6 @@ operator|.
 name|getProjectState
 argument_list|()
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 argument_list|,
@@ -976,9 +973,6 @@ block|{
 return|return
 name|p
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 operator|.
@@ -1008,9 +1002,6 @@ operator|+
 literal|" and "
 operator|+
 name|parent
-operator|.
-name|getProject
-argument_list|()
 operator|.
 name|getName
 argument_list|()
