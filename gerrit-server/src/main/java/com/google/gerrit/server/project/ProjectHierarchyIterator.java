@@ -292,9 +292,6 @@ name|add
 argument_list|(
 name|firstResult
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 argument_list|)

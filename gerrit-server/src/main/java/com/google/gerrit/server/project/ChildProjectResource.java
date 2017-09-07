@@ -247,9 +247,6 @@ name|equals
 argument_list|(
 name|firstParent
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 argument_list|)

@@ -934,9 +934,6 @@ name|projectName
 init|=
 name|projectState
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 decl_stmt|;
@@ -2122,9 +2119,6 @@ argument_list|,
 name|pluginName
 argument_list|,
 name|projectState
-operator|.
-name|getProject
-argument_list|()
 operator|.
 name|getName
 argument_list|()

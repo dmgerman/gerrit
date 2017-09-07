@@ -804,9 +804,6 @@ name|project
 init|=
 name|state
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 decl_stmt|;
@@ -984,9 +981,6 @@ name|name
 argument_list|()
 argument_list|,
 name|state
-operator|.
-name|getProject
-argument_list|()
 operator|.
 name|getNameKey
 argument_list|()

@@ -1166,9 +1166,6 @@ name|suggestReviewers
 argument_list|(
 name|projectState
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 argument_list|,
@@ -1825,9 +1822,6 @@ operator|.
 name|project
 argument_list|(
 name|projectState
-operator|.
-name|getProject
-argument_list|()
 operator|.
 name|getName
 argument_list|()

@@ -2258,9 +2258,6 @@ name|parent
 operator|=
 name|parent
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getName
 argument_list|()
 expr_stmt|;
@@ -2276,9 +2273,6 @@ operator|.
 name|get
 argument_list|(
 name|parent
-operator|.
-name|getProject
-argument_list|()
 operator|.
 name|getName
 argument_list|()
@@ -2313,9 +2307,6 @@ operator|.
 name|put
 argument_list|(
 name|parent
-operator|.
-name|getProject
-argument_list|()
 operator|.
 name|getName
 argument_list|()
@@ -3104,9 +3095,6 @@ argument_list|()
 argument_list|,
 name|ps
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getName
 argument_list|()
 argument_list|)
@@ -3152,9 +3140,6 @@ name|NameKey
 name|name
 init|=
 name|p
-operator|.
-name|getProject
-argument_list|()
 operator|.
 name|getNameKey
 argument_list|()

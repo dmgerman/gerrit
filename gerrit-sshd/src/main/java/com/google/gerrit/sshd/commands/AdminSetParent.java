@@ -1426,9 +1426,6 @@ name|s
 lambda|->
 name|s
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getNameKey
 argument_list|()
 argument_list|)

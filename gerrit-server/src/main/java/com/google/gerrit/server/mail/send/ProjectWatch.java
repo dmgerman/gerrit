@@ -899,9 +899,6 @@ literal|"Project {} has invalid notify {} filter \"{}\": {}"
 argument_list|,
 name|state
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getName
 argument_list|()
 argument_list|,
