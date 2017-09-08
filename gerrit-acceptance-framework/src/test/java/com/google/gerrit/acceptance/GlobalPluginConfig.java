@@ -153,7 +153,7 @@ specifier|public
 annotation_defn|@interface
 name|GlobalPluginConfig
 block|{
-comment|/** Name of the plugin, corresponding to {@code $site/etc/@pluginName.comfig}. */
+comment|/** Name of the plugin, corresponding to {@code $site/etc/@pluginName.config}. */
 DECL|method|pluginName ()
 name|String
 name|pluginName
