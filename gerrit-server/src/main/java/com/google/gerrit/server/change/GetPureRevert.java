@@ -990,6 +990,8 @@ return|;
 block|}
 comment|// Any differences between claimed original's parent and the rebase result indicate that the
 comment|// claimedRevert is not a pure revert but made content changes
+try|try
+init|(
 name|DiffFormatter
 name|df
 init|=
@@ -1000,7 +1002,8 @@ operator|new
 name|ByteArrayOutputStream
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|df
 operator|.
 name|setRepository
@@ -1041,6 +1044,7 @@ name|isEmpty
 argument_list|()
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 DECL|method|setClaimedOriginal (String claimedOriginal)
