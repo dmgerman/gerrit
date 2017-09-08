@@ -327,6 +327,40 @@ name|getPatchSetId
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|method|formatChangeUrl (String canonicalWebUrl, Change change)
+specifier|public
+specifier|static
+name|String
+name|formatChangeUrl
+parameter_list|(
+name|String
+name|canonicalWebUrl
+parameter_list|,
+name|Change
+name|change
+parameter_list|)
+block|{
+return|return
+name|canonicalWebUrl
+operator|+
+literal|"#/c/"
+operator|+
+name|change
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"/+/"
+operator|+
+name|change
+operator|.
+name|getChangeId
+argument_list|()
+return|;
+block|}
 comment|/** @return a new unique identifier for change message entities. */
 DECL|method|messageUuid ()
 specifier|public

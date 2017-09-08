@@ -4848,7 +4848,7 @@ control|)
 block|{
 name|addMessage
 argument_list|(
-name|formatChangeUrl
+name|formatChangeMessage
 argument_list|(
 name|canonicalWebUrl
 argument_list|,
@@ -5052,7 +5052,7 @@ expr_stmt|;
 block|}
 name|addMessage
 argument_list|(
-name|formatChangeUrl
+name|formatChangeMessage
 argument_list|(
 name|canonicalWebUrl
 argument_list|,
@@ -5093,11 +5093,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|formatChangeUrl ( String url, Change change, String subject, boolean draft, boolean edit)
+DECL|method|formatChangeMessage ( String url, Change change, String subject, boolean draft, boolean edit)
 specifier|private
 specifier|static
 name|String
-name|formatChangeUrl
+name|formatChangeMessage
 parameter_list|(
 name|String
 name|url
@@ -5129,15 +5129,14 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|url
-argument_list|)
+name|ChangeUtil
 operator|.
-name|append
+name|formatChangeUrl
 argument_list|(
+name|url
+argument_list|,
 name|change
-operator|.
-name|getChangeId
-argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|append
