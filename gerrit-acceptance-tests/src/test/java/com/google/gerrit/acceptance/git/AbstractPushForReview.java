@@ -3725,6 +3725,13 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
+name|r
+operator|.
+name|assertMessage
+argument_list|(
+literal|" [PRIVATE]"
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|r
@@ -3759,6 +3766,13 @@ name|r
 operator|.
 name|assertOkStatus
 argument_list|()
+expr_stmt|;
+name|r
+operator|.
+name|assertMessage
+argument_list|(
+literal|" [PRIVATE]"
+argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -3795,6 +3809,13 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
+name|r
+operator|.
+name|assertNotMessage
+argument_list|(
+literal|" [PRIVATE]"
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|r
@@ -3830,6 +3851,13 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
+name|r
+operator|.
+name|assertNotMessage
+argument_list|(
+literal|" [PRIVATE]"
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|r
@@ -3859,6 +3887,13 @@ name|r
 operator|.
 name|assertOkStatus
 argument_list|()
+expr_stmt|;
+name|r
+operator|.
+name|assertMessage
+argument_list|(
+literal|" [PRIVATE]"
+argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -3917,6 +3952,13 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
+name|r
+operator|.
+name|assertMessage
+argument_list|(
+literal|" [WIP]"
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|r
@@ -3963,6 +4005,13 @@ name|r
 operator|.
 name|assertOkStatus
 argument_list|()
+expr_stmt|;
+name|r
+operator|.
+name|assertMessage
+argument_list|(
+literal|" [WIP]"
+argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -4011,6 +4060,13 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
+name|r
+operator|.
+name|assertNotMessage
+argument_list|(
+literal|" [WIP]"
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|r
@@ -4058,6 +4114,13 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
+name|r
+operator|.
+name|assertNotMessage
+argument_list|(
+literal|" [WIP]"
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|r
@@ -4104,6 +4167,13 @@ name|r
 operator|.
 name|assertOkStatus
 argument_list|()
+expr_stmt|;
+name|r
+operator|.
+name|assertMessage
+argument_list|(
+literal|" [WIP]"
+argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
