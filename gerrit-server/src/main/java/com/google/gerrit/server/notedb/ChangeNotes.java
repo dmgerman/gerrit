@@ -1515,7 +1515,10 @@ condition|(
 name|change
 operator|==
 literal|null
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|args
 operator|.
 name|migration
@@ -1524,29 +1527,23 @@ name|readChanges
 argument_list|()
 condition|)
 block|{
-comment|// Change isn't in ReviewDb, but its primary storage might be in NoteDb.
-comment|// Prepopulate the change exists with proper noteDbState field.
-name|change
-operator|=
+return|return
 name|newNoteDbOnlyChange
 argument_list|(
 name|project
 argument_list|,
 name|changeId
 argument_list|)
-expr_stmt|;
+return|;
 block|}
-else|else
-block|{
-name|checkNotNull
+throw|throw
+operator|new
+name|NoSuchChangeException
 argument_list|(
-name|change
-argument_list|,
-literal|"change %s not found in ReviewDb"
-argument_list|,
 name|changeId
 argument_list|)
-expr_stmt|;
+throw|;
+block|}
 name|checkArgument
 argument_list|(
 name|change
@@ -1571,9 +1568,6 @@ name|getProject
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-comment|// TODO: Throw NoSuchChangeException when the change is not found in the
-comment|// database
 return|return
 name|change
 return|;
