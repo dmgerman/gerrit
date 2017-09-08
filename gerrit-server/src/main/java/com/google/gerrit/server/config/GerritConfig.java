@@ -103,17 +103,26 @@ name|GerritConfig
 extends|extends
 name|Config
 block|{
+DECL|field|gerritConfig
+specifier|private
+specifier|final
+name|Config
+name|gerritConfig
+decl_stmt|;
 DECL|field|secureStore
 specifier|private
 specifier|final
 name|SecureStore
 name|secureStore
 decl_stmt|;
-DECL|method|GerritConfig (Config baseConfig, SecureStore secureStore)
+DECL|method|GerritConfig (Config noteDbConfigOverGerritConfig, Config gerritConfig, SecureStore secureStore)
 name|GerritConfig
 parameter_list|(
 name|Config
-name|baseConfig
+name|noteDbConfigOverGerritConfig
+parameter_list|,
+name|Config
+name|gerritConfig
 parameter_list|,
 name|SecureStore
 name|secureStore
@@ -121,8 +130,14 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|baseConfig
+name|noteDbConfigOverGerritConfig
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|gerritConfig
+operator|=
+name|gerritConfig
 expr_stmt|;
 name|this
 operator|.
@@ -247,6 +262,23 @@ name|subsection
 argument_list|,
 name|name
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|toText ()
+specifier|public
+name|String
+name|toText
+parameter_list|()
+block|{
+comment|// Only show the contents of gerrit.config, hiding the implementation detail that some values
+comment|// may come from secure.config (or another secure store) and notedb.config.
+return|return
+name|gerritConfig
+operator|.
+name|toText
+argument_list|()
 return|;
 block|}
 block|}
