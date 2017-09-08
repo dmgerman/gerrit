@@ -83,6 +83,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth8
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -902,9 +918,6 @@ parameter_list|()
 block|{
 name|assertThat
 argument_list|(
-operator|(
-name|Object
-operator|)
 name|repoCfg
 operator|.
 name|getBasePath
@@ -986,9 +999,6 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|(
-name|Object
-operator|)
 name|repoCfg
 operator|.
 name|getBasePath
