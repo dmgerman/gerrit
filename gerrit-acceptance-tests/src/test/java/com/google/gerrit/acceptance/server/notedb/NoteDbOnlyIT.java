@@ -134,6 +134,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ListChangesOption
+operator|.
+name|MESSAGES
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -231,22 +249,6 @@ operator|.
 name|changes
 operator|.
 name|ReviewInput
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|client
-operator|.
-name|ListChangesOption
 import|;
 end_import
 
@@ -421,16 +423,6 @@ operator|.
 name|util
 operator|.
 name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|EnumSet
 import|;
 end_import
 
@@ -2054,14 +2046,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|EnumSet
-operator|.
-name|of
-argument_list|(
-name|ListChangesOption
-operator|.
 name|MESSAGES
-argument_list|)
 argument_list|)
 operator|.
 name|messages
