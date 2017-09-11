@@ -166,22 +166,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|query
 operator|.
 name|change
@@ -564,7 +548,7 @@ name|Project
 operator|.
 name|NameKey
 argument_list|,
-name|ChangeControl
+name|ChangeData
 argument_list|>
 name|builder
 init|=
@@ -581,29 +565,16 @@ range|:
 name|changesToAbandon
 control|)
 block|{
-name|ChangeControl
-name|control
-init|=
-name|cd
-operator|.
-name|changeControl
-argument_list|(
-name|internalUser
-argument_list|)
-decl_stmt|;
 name|builder
 operator|.
 name|put
 argument_list|(
-name|control
+name|cd
 operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
+name|project
 argument_list|()
 argument_list|,
-name|control
+name|cd
 argument_list|)
 expr_stmt|;
 block|}
@@ -618,7 +589,7 @@ name|Project
 operator|.
 name|NameKey
 argument_list|,
-name|ChangeControl
+name|ChangeData
 argument_list|>
 name|abandons
 init|=
@@ -650,7 +621,7 @@ control|)
 block|{
 name|Collection
 argument_list|<
-name|ChangeControl
+name|ChangeData
 argument_list|>
 name|changes
 init|=
@@ -708,7 +679,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|ChangeControl
+name|ChangeData
 name|change
 range|:
 name|changes
@@ -793,19 +764,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getValidChanges ( Collection<ChangeControl> changeControls, String query)
+DECL|method|getValidChanges (Collection<ChangeData> changes, String query)
 specifier|private
 name|Collection
 argument_list|<
-name|ChangeControl
+name|ChangeData
 argument_list|>
 name|getValidChanges
 parameter_list|(
 name|Collection
 argument_list|<
-name|ChangeControl
+name|ChangeData
 argument_list|>
-name|changeControls
+name|changes
 parameter_list|,
 name|String
 name|query
@@ -817,7 +788,7 @@ name|QueryParseException
 block|{
 name|Collection
 argument_list|<
-name|ChangeControl
+name|ChangeData
 argument_list|>
 name|validChanges
 init|=
@@ -828,10 +799,10 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|ChangeControl
-name|cc
+name|ChangeData
+name|cd
 range|:
-name|changeControls
+name|changes
 control|)
 block|{
 name|String
@@ -841,7 +812,7 @@ name|query
 operator|+
 literal|" change:"
 operator|+
-name|cc
+name|cd
 operator|.
 name|getId
 argument_list|()
@@ -888,7 +859,7 @@ name|validChanges
 operator|.
 name|add
 argument_list|(
-name|cc
+name|cd
 argument_list|)
 expr_stmt|;
 block|}
@@ -902,7 +873,7 @@ literal|"Change data with id \"{}\" does not satisfy the query \"{}\""
 operator|+
 literal|" any more, hence skipping it in clean up"
 argument_list|,
-name|cc
+name|cd
 operator|.
 name|getId
 argument_list|()

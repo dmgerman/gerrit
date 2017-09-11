@@ -396,9 +396,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|query
 operator|.
-name|ChangeControl
+name|change
+operator|.
+name|ChangeData
 import|;
 end_import
 
@@ -1018,8 +1020,8 @@ name|getChange
 argument_list|()
 return|;
 block|}
-comment|/**    * If an extension has more than one changes to abandon that belong to the same project, they    * should use the batch instead of abandoning one by one.    *    *<p>It's the caller's responsibility to ensure that all jobs inside the same batch have the    * matching project from its ChangeControl. Violations will result in a ResourceConflictException.    */
-DECL|method|batchAbandon ( BatchUpdate.Factory updateFactory, Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+comment|/**    * If an extension has more than one changes to abandon that belong to the same project, they    * should use the batch instead of abandoning one by one.    *    *<p>It's the caller's responsibility to ensure that all jobs inside the same batch have the    * matching project from its ChangeData. Violations will result in a ResourceConflictException.    */
+DECL|method|batchAbandon ( BatchUpdate.Factory updateFactory, Project.NameKey project, CurrentUser user, Collection<ChangeData> changes, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|batchAbandon
@@ -1039,9 +1041,9 @@ name|user
 parameter_list|,
 name|Collection
 argument_list|<
-name|ChangeControl
+name|ChangeData
 argument_list|>
-name|controls
+name|changes
 parameter_list|,
 name|String
 name|msgTxt
@@ -1066,7 +1068,7 @@ name|UpdateException
 block|{
 if|if
 condition|(
-name|controls
+name|changes
 operator|.
 name|isEmpty
 argument_list|()
@@ -1119,10 +1121,10 @@ init|)
 block|{
 for|for
 control|(
-name|ChangeControl
-name|control
+name|ChangeData
+name|change
 range|:
-name|controls
+name|changes
 control|)
 block|{
 if|if
@@ -1132,12 +1134,9 @@ name|project
 operator|.
 name|equals
 argument_list|(
-name|control
+name|change
 operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
+name|project
 argument_list|()
 argument_list|)
 condition|)
@@ -1152,12 +1151,9 @@ name|format
 argument_list|(
 literal|"Project name \"%s\" doesn't match \"%s\""
 argument_list|,
-name|control
+name|change
 operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -1175,7 +1171,7 @@ name|u
 operator|.
 name|addOp
 argument_list|(
-name|control
+name|change
 operator|.
 name|getId
 argument_list|()
@@ -1202,7 +1198,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|batchAbandon ( BatchUpdate.Factory updateFactory, Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt)
+DECL|method|batchAbandon ( BatchUpdate.Factory updateFactory, Project.NameKey project, CurrentUser user, Collection<ChangeData> changes, String msgTxt)
 specifier|public
 name|void
 name|batchAbandon
@@ -1222,9 +1218,9 @@ name|user
 parameter_list|,
 name|Collection
 argument_list|<
-name|ChangeControl
+name|ChangeData
 argument_list|>
-name|controls
+name|changes
 parameter_list|,
 name|String
 name|msgTxt
@@ -1242,7 +1238,7 @@ name|project
 argument_list|,
 name|user
 argument_list|,
-name|controls
+name|changes
 argument_list|,
 name|msgTxt
 argument_list|,
@@ -1257,7 +1253,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|batchAbandon ( BatchUpdate.Factory updateFactory, Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls)
+DECL|method|batchAbandon ( BatchUpdate.Factory updateFactory, Project.NameKey project, CurrentUser user, Collection<ChangeData> changes)
 specifier|public
 name|void
 name|batchAbandon
@@ -1277,9 +1273,9 @@ name|user
 parameter_list|,
 name|Collection
 argument_list|<
-name|ChangeControl
+name|ChangeData
 argument_list|>
-name|controls
+name|changes
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -1294,7 +1290,7 @@ name|project
 argument_list|,
 name|user
 argument_list|,
-name|controls
+name|changes
 argument_list|,
 literal|""
 argument_list|,
