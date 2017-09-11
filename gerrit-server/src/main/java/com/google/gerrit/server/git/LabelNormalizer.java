@@ -274,6 +274,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -354,7 +368,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
+name|ProjectCache
 import|;
 end_import
 
@@ -405,6 +419,16 @@ operator|.
 name|inject
 operator|.
 name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -564,14 +588,6 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|changeFactory
-specifier|private
-specifier|final
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeFactory
-decl_stmt|;
 DECL|field|userFactory
 specifier|private
 specifier|final
@@ -586,9 +602,15 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|projectCache
+specifier|private
+specifier|final
+name|ProjectCache
+name|projectCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LabelNormalizer ( Provider<ReviewDb> db, ChangeControl.GenericFactory changeFactory, IdentifiedUser.GenericFactory userFactory, PermissionBackend permissionBackend)
+DECL|method|LabelNormalizer ( Provider<ReviewDb> db, IdentifiedUser.GenericFactory userFactory, PermissionBackend permissionBackend, ProjectCache projectCache)
 name|LabelNormalizer
 parameter_list|(
 name|Provider
@@ -597,11 +619,6 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeFactory
-parameter_list|,
 name|IdentifiedUser
 operator|.
 name|GenericFactory
@@ -609,6 +626,9 @@ name|userFactory
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|ProjectCache
+name|projectCache
 parameter_list|)
 block|{
 name|this
@@ -619,12 +639,6 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|changeFactory
-operator|=
-name|changeFactory
-expr_stmt|;
-name|this
-operator|.
 name|userFactory
 operator|=
 name|userFactory
@@ -634,16 +648,22 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
+name|projectCache
+operator|=
+name|projectCache
 expr_stmt|;
 block|}
-comment|/**    * @param change change containing the given approvals.    * @param approvals list of approvals.    * @return copies of approvals normalized to the defined ranges for the label type and permissions    *     for the user. Approvals for unknown labels are not included in the output, nor are    *     approvals where the user has no permissions for that label.    * @throws OrmException    */
-DECL|method|normalize (Change change, Collection<PatchSetApproval> approvals)
+comment|/**    * @param notes change containing the given approvals.    * @param approvals list of approvals.    * @return copies of approvals normalized to the defined ranges for the label type and permissions    *     for the user. Approvals for unknown labels are not included in the output, nor are    *     approvals where the user has no permissions for that label.    * @throws OrmException    */
+DECL|method|normalize (ChangeNotes notes, Collection<PatchSetApproval> approvals)
 specifier|public
 name|Result
 name|normalize
 parameter_list|(
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|Collection
 argument_list|<
@@ -655,6 +675,8 @@ throws|throws
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|IOException
 block|{
 name|IdentifiedUser
 name|user
@@ -663,7 +685,10 @@ name|userFactory
 operator|.
 name|create
 argument_list|(
-name|change
+name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|getOwner
 argument_list|()
@@ -672,32 +697,25 @@ decl_stmt|;
 return|return
 name|normalize
 argument_list|(
-name|changeFactory
-operator|.
-name|controlFor
-argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
-name|change
+name|notes
 argument_list|,
 name|user
-argument_list|)
 argument_list|,
 name|approvals
 argument_list|)
 return|;
 block|}
-comment|/**    * @param ctl change control containing the given approvals.    * @param approvals list of approvals.    * @return copies of approvals normalized to the defined ranges for the label type and permissions    *     for the user. Approvals for unknown labels are not included in the output, nor are    *     approvals where the user has no permissions for that label.    */
-DECL|method|normalize (ChangeControl ctl, Collection<PatchSetApproval> approvals)
+comment|/**    * @param notes change notes containing the given approvals.    * @param user current user.    * @param approvals list of approvals.    * @return copies of approvals normalized to the defined ranges for the label type and permissions    *     for the user. Approvals for unknown labels are not included in the output, nor are    *     approvals where the user has no permissions for that label.    */
+DECL|method|normalize ( ChangeNotes notes, CurrentUser user, Collection<PatchSetApproval> approvals)
 specifier|public
 name|Result
 name|normalize
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|Collection
 argument_list|<
@@ -707,6 +725,8 @@ name|approvals
 parameter_list|)
 throws|throws
 name|PermissionBackendException
+throws|,
+name|IOException
 block|{
 name|List
 argument_list|<
@@ -759,25 +779,21 @@ decl_stmt|;
 name|LabelTypes
 name|labelTypes
 init|=
-name|ctl
+name|projectCache
 operator|.
-name|getProjectControl
-argument_list|()
+name|checkedGet
+argument_list|(
+name|notes
 operator|.
-name|getProjectState
+name|getProjectName
 argument_list|()
+argument_list|)
 operator|.
 name|getLabelTypes
 argument_list|(
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|)
 decl_stmt|;
 for|for
@@ -810,9 +826,9 @@ name|changeId
 operator|.
 name|equals
 argument_list|(
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|)
 argument_list|,
@@ -823,7 +839,7 @@ operator|.
 name|getKey
 argument_list|()
 argument_list|,
-name|ctl
+name|notes
 operator|.
 name|getChange
 argument_list|()
@@ -898,10 +914,7 @@ condition|(
 operator|!
 name|applyRightFloor
 argument_list|(
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
 name|label
 argument_list|,

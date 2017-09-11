@@ -4796,7 +4796,13 @@ name|byPatchSet
 argument_list|(
 name|db
 argument_list|,
+name|notes
+argument_list|()
+argument_list|,
 name|changeControl
+argument_list|()
+operator|.
+name|getUser
 argument_list|()
 argument_list|,
 name|c

@@ -444,6 +444,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -513,6 +527,22 @@ operator|.
 name|strategy
 operator|.
 name|CommitMergeStatus
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNotes
 import|;
 end_import
 
@@ -2444,6 +2474,14 @@ range|:
 name|safeGetApprovals
 argument_list|(
 name|ctl
+operator|.
+name|getNotes
+argument_list|()
+argument_list|,
+name|ctl
+operator|.
+name|getUser
+argument_list|()
 argument_list|,
 name|psId
 argument_list|)
@@ -2912,7 +2950,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|safeGetApprovals (ChangeControl ctl, PatchSet.Id psId)
+DECL|method|safeGetApprovals ( ChangeNotes notes, CurrentUser user, PatchSet.Id psId)
 specifier|private
 name|Iterable
 argument_list|<
@@ -2920,8 +2958,11 @@ name|PatchSetApproval
 argument_list|>
 name|safeGetApprovals
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|PatchSet
 operator|.
@@ -2941,7 +2982,9 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|ctl
+name|notes
+argument_list|,
+name|user
 argument_list|,
 name|psId
 argument_list|,

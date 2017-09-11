@@ -913,7 +913,15 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
+name|cd
+operator|.
+name|notes
+argument_list|()
+argument_list|,
 name|ctl
+operator|.
+name|getUser
+argument_list|()
 argument_list|,
 name|psId
 argument_list|,

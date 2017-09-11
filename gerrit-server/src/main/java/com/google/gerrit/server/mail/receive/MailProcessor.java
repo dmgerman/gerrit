@@ -2121,6 +2121,14 @@ name|getDb
 argument_list|()
 argument_list|,
 name|changeControl
+operator|.
+name|getNotes
+argument_list|()
+argument_list|,
+name|changeControl
+operator|.
+name|getUser
+argument_list|()
 argument_list|,
 name|psId
 argument_list|,
