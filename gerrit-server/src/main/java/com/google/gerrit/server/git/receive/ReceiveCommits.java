@@ -10716,12 +10716,14 @@ name|cmd
 argument_list|,
 literal|"change "
 operator|+
-name|canonicalWebUrl
-operator|+
-name|change
+name|ChangeUtil
 operator|.
-name|getId
-argument_list|()
+name|formatChangeUrl
+argument_list|(
+name|canonicalWebUrl
+argument_list|,
+name|change
+argument_list|)
 operator|+
 literal|" closed"
 argument_list|)
