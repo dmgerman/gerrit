@@ -344,6 +344,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|UseLocalDisk
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -792,6 +806,8 @@ begin_class
 annotation|@
 name|Sandboxed
 annotation|@
+name|UseLocalDisk
+annotation|@
 name|NoHttpd
 DECL|class|OnlineNoteDbMigrationIT
 specifier|public
@@ -897,10 +913,10 @@ specifier|private
 name|Sequences
 name|sequences
 decl_stmt|;
-DECL|field|gerritConfig
+DECL|field|noteDbConfig
 specifier|private
 name|FileBasedConfig
-name|gerritConfig
+name|noteDbConfig
 decl_stmt|;
 annotation|@
 name|Before
@@ -930,14 +946,15 @@ operator|.
 name|OFF
 argument_list|)
 expr_stmt|;
-name|gerritConfig
+comment|// Unlike in the running server, for tests, we don't stack notedb.config on gerrit.config.
+name|noteDbConfig
 operator|=
 operator|new
 name|FileBasedConfig
 argument_list|(
 name|sitePaths
 operator|.
-name|gerrit_config
+name|notedb_config
 operator|.
 name|toFile
 argument_list|()
@@ -2885,7 +2902,7 @@ name|NoteDbMigrator
 operator|.
 name|getAutoMigrate
 argument_list|(
-name|gerritConfig
+name|noteDbConfig
 argument_list|)
 argument_list|)
 operator|.
@@ -2920,7 +2937,7 @@ name|NoteDbMigrator
 operator|.
 name|getAutoMigrate
 argument_list|(
-name|gerritConfig
+name|noteDbConfig
 argument_list|)
 argument_list|)
 operator|.
@@ -2945,7 +2962,7 @@ name|NoteDbMigrator
 operator|.
 name|getAutoMigrate
 argument_list|(
-name|gerritConfig
+name|noteDbConfig
 argument_list|)
 argument_list|)
 operator|.
@@ -2979,7 +2996,7 @@ argument_list|(
 name|expected
 argument_list|)
 expr_stmt|;
-name|gerritConfig
+name|noteDbConfig
 operator|.
 name|load
 argument_list|()
@@ -2990,7 +3007,7 @@ name|NotesMigrationState
 operator|.
 name|forConfig
 argument_list|(
-name|gerritConfig
+name|noteDbConfig
 argument_list|)
 argument_list|)
 operator|.
@@ -3011,7 +3028,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|gerritConfig
+name|noteDbConfig
 operator|.
 name|load
 argument_list|()
@@ -3020,10 +3037,10 @@ name|state
 operator|.
 name|setConfigValues
 argument_list|(
-name|gerritConfig
+name|noteDbConfig
 argument_list|)
 expr_stmt|;
-name|gerritConfig
+name|noteDbConfig
 operator|.
 name|save
 argument_list|()
