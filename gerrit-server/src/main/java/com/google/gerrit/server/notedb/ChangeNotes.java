@@ -1634,11 +1634,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|checkArgument
+name|checkNotNull
 argument_list|(
 name|change
-operator|!=
-literal|null
 argument_list|,
 literal|"change %s not found in ReviewDb"
 argument_list|,
