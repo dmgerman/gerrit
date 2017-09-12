@@ -212,7 +212,7 @@ name|canonicalWebUrl
 argument_list|,
 name|input
 operator|.
-name|getChange
+name|change
 argument_list|()
 argument_list|)
 argument_list|)
@@ -252,7 +252,7 @@ name|url
 argument_list|,
 name|input
 operator|.
-name|getChange
+name|change
 argument_list|()
 argument_list|)
 argument_list|)
@@ -270,7 +270,7 @@ name|cropSubject
 argument_list|(
 name|input
 operator|.
-name|getSubject
+name|subject
 argument_list|()
 argument_list|)
 argument_list|)
