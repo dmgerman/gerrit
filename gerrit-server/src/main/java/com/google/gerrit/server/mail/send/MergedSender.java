@@ -506,7 +506,15 @@ argument_list|()
 argument_list|,
 name|changeData
 operator|.
+name|notes
+argument_list|()
+argument_list|,
+name|changeData
+operator|.
 name|changeControl
+argument_list|()
+operator|.
+name|getUser
 argument_list|()
 argument_list|,
 name|patchSet

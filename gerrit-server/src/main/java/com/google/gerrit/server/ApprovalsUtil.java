@@ -598,22 +598,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|util
 operator|.
 name|LabelVote
@@ -2467,7 +2451,7 @@ name|getApprovals
 argument_list|()
 return|;
 block|}
-DECL|method|byPatchSet ( ReviewDb db, ChangeControl ctl, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
+DECL|method|byPatchSet ( ReviewDb db, ChangeNotes notes, CurrentUser user, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 specifier|public
 name|Iterable
 argument_list|<
@@ -2478,8 +2462,11 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|PatchSet
 operator|.
@@ -2530,7 +2517,9 @@ name|getForPatchSet
 argument_list|(
 name|db
 argument_list|,
-name|ctl
+name|notes
+argument_list|,
+name|user
 argument_list|,
 name|psId
 argument_list|,
@@ -2540,7 +2529,7 @@ name|repoConfig
 argument_list|)
 return|;
 block|}
-DECL|method|byPatchSetUser ( ReviewDb db, ChangeControl ctl, PatchSet.Id psId, Account.Id accountId, @Nullable RevWalk rw, @Nullable Config repoConfig)
+DECL|method|byPatchSetUser ( ReviewDb db, ChangeNotes notes, CurrentUser user, PatchSet.Id psId, Account.Id accountId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 specifier|public
 name|Iterable
 argument_list|<
@@ -2551,8 +2540,11 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|PatchSet
 operator|.
@@ -2610,7 +2602,9 @@ name|byPatchSet
 argument_list|(
 name|db
 argument_list|,
-name|ctl
+name|notes
+argument_list|,
+name|user
 argument_list|,
 name|psId
 argument_list|,

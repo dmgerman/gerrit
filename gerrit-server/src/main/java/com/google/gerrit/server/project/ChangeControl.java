@@ -1829,7 +1829,11 @@ name|byPatchSet
 argument_list|(
 name|db
 argument_list|,
-name|this
+name|getNotes
+argument_list|()
+argument_list|,
+name|getUser
+argument_list|()
 argument_list|,
 name|getChange
 argument_list|()
