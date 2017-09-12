@@ -956,7 +956,7 @@ argument_list|()
 argument_list|,
 name|resource
 operator|.
-name|getControl
+name|getChangeResource
 argument_list|()
 argument_list|)
 decl_stmt|;

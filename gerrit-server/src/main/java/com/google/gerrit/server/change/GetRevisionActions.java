@@ -527,9 +527,6 @@ name|user
 init|=
 name|rsrc
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getUser
 argument_list|()
 decl_stmt|;

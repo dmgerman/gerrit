@@ -276,22 +276,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|TypeLiteral
@@ -465,20 +449,6 @@ return|return
 name|change
 return|;
 block|}
-DECL|method|getControl ()
-specifier|public
-name|ChangeControl
-name|getControl
-parameter_list|()
-block|{
-return|return
-name|getChangeResource
-argument_list|()
-operator|.
-name|getControl
-argument_list|()
-return|;
-block|}
 DECL|method|getChange ()
 specifier|public
 name|Change
@@ -486,7 +456,7 @@ name|getChange
 parameter_list|()
 block|{
 return|return
-name|getControl
+name|getChangeResource
 argument_list|()
 operator|.
 name|getChange
@@ -614,7 +584,7 @@ name|getUser
 parameter_list|()
 block|{
 return|return
-name|getControl
+name|getChangeResource
 argument_list|()
 operator|.
 name|getUser

@@ -280,22 +280,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|query
 operator|.
 name|change
@@ -658,14 +642,14 @@ specifier|static
 class|class
 name|Base
 block|{
-DECL|method|create (ChangeControl ctl, PatchSet ps)
+DECL|method|create (ChangeNotes notes, PatchSet ps)
 specifier|private
 specifier|static
 name|Base
 name|create
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|PatchSet
 name|ps
@@ -673,7 +657,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|ctl
+name|notes
 operator|==
 literal|null
 condition|)
@@ -686,16 +670,16 @@ return|return
 operator|new
 name|AutoValue_RebaseUtil_Base
 argument_list|(
-name|ctl
+name|notes
 argument_list|,
 name|ps
 argument_list|)
 return|;
 block|}
-DECL|method|control ()
+DECL|method|notes ()
 specifier|abstract
-name|ChangeControl
-name|control
+name|ChangeNotes
+name|notes
 parameter_list|()
 function_decl|;
 DECL|method|patchSet ()
@@ -758,10 +742,10 @@ operator|.
 name|getParentKey
 argument_list|()
 decl_stmt|;
-name|ChangeControl
-name|baseCtl
+name|ChangeNotes
+name|baseNotes
 init|=
-name|controlFor
+name|notesFor
 argument_list|(
 name|rsrc
 argument_list|,
@@ -770,7 +754,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|baseCtl
+name|baseNotes
 operator|!=
 literal|null
 condition|)
@@ -780,7 +764,7 @@ name|Base
 operator|.
 name|create
 argument_list|(
-name|controlFor
+name|notesFor
 argument_list|(
 name|rsrc
 argument_list|,
@@ -796,10 +780,7 @@ name|get
 argument_list|(
 name|db
 argument_list|,
-name|baseCtl
-operator|.
-name|getNotes
-argument_list|()
+name|baseNotes
 argument_list|,
 name|basePatchSetId
 argument_list|)
@@ -825,10 +806,10 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|ChangeControl
-name|baseCtl
+name|ChangeNotes
+name|baseNotes
 init|=
-name|controlFor
+name|notesFor
 argument_list|(
 name|rsrc
 argument_list|,
@@ -843,7 +824,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|baseCtl
+name|baseNotes
 operator|!=
 literal|null
 condition|)
@@ -853,7 +834,7 @@ name|Base
 operator|.
 name|create
 argument_list|(
-name|baseCtl
+name|baseNotes
 argument_list|,
 name|psUtil
 operator|.
@@ -861,10 +842,7 @@ name|current
 argument_list|(
 name|db
 argument_list|,
-name|baseCtl
-operator|.
-name|getNotes
-argument_list|()
+name|baseNotes
 argument_list|)
 argument_list|)
 return|;
@@ -956,21 +934,10 @@ name|Base
 operator|.
 name|create
 argument_list|(
-name|rsrc
-operator|.
-name|getControl
-argument_list|()
-operator|.
-name|getProjectControl
-argument_list|()
-operator|.
-name|controlFor
-argument_list|(
 name|cd
 operator|.
 name|notes
 argument_list|()
-argument_list|)
 argument_list|,
 name|ps
 argument_list|)
@@ -982,10 +949,10 @@ return|return
 name|ret
 return|;
 block|}
-DECL|method|controlFor (RevisionResource rsrc, Change.Id id)
+DECL|method|notesFor (RevisionResource rsrc, Change.Id id)
 specifier|private
-name|ChangeControl
-name|controlFor
+name|ChangeNotes
+name|notesFor
 parameter_list|(
 name|RevisionResource
 name|rsrc
@@ -1017,13 +984,11 @@ block|{
 return|return
 name|rsrc
 operator|.
-name|getControl
+name|getNotes
 argument_list|()
 return|;
 block|}
-name|ChangeNotes
-name|notes
-init|=
+return|return
 name|notesFactory
 operator|.
 name|createChecked
@@ -1039,20 +1004,6 @@ name|getProject
 argument_list|()
 argument_list|,
 name|id
-argument_list|)
-decl_stmt|;
-return|return
-name|rsrc
-operator|.
-name|getControl
-argument_list|()
-operator|.
-name|getProjectControl
-argument_list|()
-operator|.
-name|controlFor
-argument_list|(
-name|notes
 argument_list|)
 return|;
 block|}

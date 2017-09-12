@@ -142,7 +142,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectCache
 import|;
 end_import
 
@@ -225,6 +225,12 @@ specifier|final
 name|FileContentUtil
 name|fileContentUtil
 decl_stmt|;
+DECL|field|projectCache
+specifier|private
+specifier|final
+name|ProjectCache
+name|projectCache
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -239,11 +245,14 @@ name|parent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DownloadContent (FileContentUtil fileContentUtil)
+DECL|method|DownloadContent (FileContentUtil fileContentUtil, ProjectCache projectCache)
 name|DownloadContent
 parameter_list|(
 name|FileContentUtil
 name|fileContentUtil
+parameter_list|,
+name|ProjectCache
+name|projectCache
 parameter_list|)
 block|{
 name|this
@@ -251,6 +260,12 @@ operator|.
 name|fileContentUtil
 operator|=
 name|fileContentUtil
+expr_stmt|;
+name|this
+operator|.
+name|projectCache
+operator|=
+name|projectCache
 expr_stmt|;
 block|}
 annotation|@
@@ -283,21 +298,12 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|ProjectState
-name|projectState
+name|RevisionResource
+name|rev
 init|=
 name|rsrc
 operator|.
 name|getRevision
-argument_list|()
-operator|.
-name|getControl
-argument_list|()
-operator|.
-name|getProjectControl
-argument_list|()
-operator|.
-name|getProjectState
 argument_list|()
 decl_stmt|;
 name|ObjectId
@@ -307,10 +313,7 @@ name|ObjectId
 operator|.
 name|fromString
 argument_list|(
-name|rsrc
-operator|.
-name|getRevision
-argument_list|()
+name|rev
 operator|.
 name|getPatchSet
 argument_list|()
@@ -327,7 +330,15 @@ name|fileContentUtil
 operator|.
 name|downloadContent
 argument_list|(
-name|projectState
+name|projectCache
+operator|.
+name|checkedGet
+argument_list|(
+name|rev
+operator|.
+name|getProject
+argument_list|()
+argument_list|)
 argument_list|,
 name|revstr
 argument_list|,

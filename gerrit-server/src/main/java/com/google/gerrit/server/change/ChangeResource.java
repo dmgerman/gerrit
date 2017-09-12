@@ -708,8 +708,7 @@ name|permissionBackend
 operator|.
 name|user
 argument_list|(
-name|getControl
-argument_list|()
+name|control
 operator|.
 name|getUser
 argument_list|()
@@ -722,16 +721,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getControl ()
-specifier|public
-name|ChangeControl
-name|getControl
-parameter_list|()
-block|{
-return|return
-name|control
-return|;
-block|}
 DECL|method|getUser ()
 specifier|public
 name|CurrentUser
@@ -739,8 +728,7 @@ name|getUser
 parameter_list|()
 block|{
 return|return
-name|getControl
-argument_list|()
+name|control
 operator|.
 name|getUser
 argument_list|()
@@ -755,8 +743,7 @@ name|getId
 parameter_list|()
 block|{
 return|return
-name|getControl
-argument_list|()
+name|control
 operator|.
 name|getId
 argument_list|()
@@ -772,8 +759,7 @@ block|{
 name|CurrentUser
 name|user
 init|=
-name|getControl
-argument_list|()
+name|control
 operator|.
 name|getUser
 argument_list|()
@@ -816,8 +802,7 @@ name|getChange
 parameter_list|()
 block|{
 return|return
-name|getControl
-argument_list|()
+name|control
 operator|.
 name|getChange
 argument_list|()
@@ -846,8 +831,7 @@ name|getNotes
 parameter_list|()
 block|{
 return|return
-name|getControl
-argument_list|()
+name|control
 operator|.
 name|getNotes
 argument_list|()

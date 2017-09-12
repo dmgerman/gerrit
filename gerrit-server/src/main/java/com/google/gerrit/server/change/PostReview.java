@@ -1982,9 +1982,17 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|changeControlFactory
+specifier|private
+specifier|final
+name|ChangeControl
+operator|.
+name|GenericFactory
+name|changeControlFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangesCollection changes, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, PostReviewers postReviewers, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache)
+DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangesCollection changes, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, PostReviewers postReviewers, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, ChangeControl.GenericFactory changeControlFactory)
 name|PostReview
 parameter_list|(
 name|Provider
@@ -2051,6 +2059,11 @@ name|workInProgressOpFactory
 parameter_list|,
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|ChangeControl
+operator|.
+name|GenericFactory
+name|changeControlFactory
 parameter_list|)
 block|{
 name|super
@@ -2159,6 +2172,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|changeControlFactory
+operator|=
+name|changeControlFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -3867,13 +3886,15 @@ block|}
 name|ChangeControl
 name|ctl
 init|=
+name|changeControlFactory
+operator|.
+name|controlFor
+argument_list|(
 name|rev
 operator|.
-name|getControl
+name|getNotes
 argument_list|()
-operator|.
-name|forUser
-argument_list|(
+argument_list|,
 name|reviewer
 argument_list|)
 decl_stmt|;
@@ -4526,7 +4547,7 @@ argument_list|()
 argument_list|,
 name|revision
 operator|.
-name|getControl
+name|getChangeResource
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -7661,9 +7682,6 @@ name|get
 argument_list|()
 argument_list|,
 name|ctx
-operator|.
-name|getControl
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|ReviewerSet

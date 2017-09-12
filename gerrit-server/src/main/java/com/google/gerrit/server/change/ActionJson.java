@@ -1405,9 +1405,6 @@ condition|(
 operator|!
 name|rsrc
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getUser
 argument_list|()
 operator|.

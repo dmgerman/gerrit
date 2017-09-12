@@ -2362,9 +2362,6 @@ name|getDb
 argument_list|()
 argument_list|,
 name|ctx
-operator|.
-name|getControl
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|MailRecipients
