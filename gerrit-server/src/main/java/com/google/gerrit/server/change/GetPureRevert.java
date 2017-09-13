@@ -788,8 +788,6 @@ name|IOException
 throws|,
 name|BadRequestException
 throws|,
-name|AuthException
-throws|,
 name|ResourceConflictException
 block|{
 name|PatchSet
