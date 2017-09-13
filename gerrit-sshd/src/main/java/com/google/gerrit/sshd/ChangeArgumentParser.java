@@ -296,22 +296,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|ProjectControl
 import|;
 end_import
@@ -436,14 +420,6 @@ operator|.
 name|Factory
 name|changeNotesFactory
 decl_stmt|;
-DECL|field|changeControlFactory
-specifier|private
-specifier|final
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -452,7 +428,7 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeArgumentParser ( CurrentUser currentUser, ChangesCollection changesCollection, ChangeFinder changeFinder, ReviewDb db, ChangeNotes.Factory changeNotesFactory, ChangeControl.GenericFactory changeControlFactory, PermissionBackend permissionBackend)
+DECL|method|ChangeArgumentParser ( CurrentUser currentUser, ChangesCollection changesCollection, ChangeFinder changeFinder, ReviewDb db, ChangeNotes.Factory changeNotesFactory, PermissionBackend permissionBackend)
 name|ChangeArgumentParser
 parameter_list|(
 name|CurrentUser
@@ -471,11 +447,6 @@ name|ChangeNotes
 operator|.
 name|Factory
 name|changeNotesFactory
-parameter_list|,
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -510,12 +481,6 @@ operator|.
 name|changeNotesFactory
 operator|=
 name|changeNotesFactory
-expr_stmt|;
-name|this
-operator|.
-name|changeControlFactory
-operator|=
-name|changeControlFactory
 expr_stmt|;
 name|this
 operator|.
