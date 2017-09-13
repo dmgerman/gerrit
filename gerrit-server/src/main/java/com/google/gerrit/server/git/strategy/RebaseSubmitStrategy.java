@@ -1158,9 +1158,6 @@ argument_list|()
 argument_list|,
 name|toMerge
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getNotes
 argument_list|()
 argument_list|,
@@ -1180,7 +1177,7 @@ name|create
 argument_list|(
 name|toMerge
 operator|.
-name|getControl
+name|notes
 argument_list|()
 argument_list|,
 name|origPs
@@ -1540,11 +1537,11 @@ argument_list|)
 expr_stmt|;
 name|newCommit
 operator|.
-name|setControl
+name|setNotes
 argument_list|(
 name|ctx
 operator|.
-name|getControl
+name|getNotes
 argument_list|()
 argument_list|)
 expr_stmt|;

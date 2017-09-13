@@ -1630,11 +1630,11 @@ argument_list|)
 expr_stmt|;
 name|toMerge
 operator|.
-name|setControl
+name|setNotes
 argument_list|(
 name|ctx
 operator|.
-name|getControl
+name|getNotes
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1726,11 +1726,11 @@ condition|)
 block|{
 name|alreadyMergedCommit
 operator|.
-name|setControl
+name|setNotes
 argument_list|(
 name|ctx
 operator|.
-name|getControl
+name|getNotes
 argument_list|()
 argument_list|)
 expr_stmt|;
