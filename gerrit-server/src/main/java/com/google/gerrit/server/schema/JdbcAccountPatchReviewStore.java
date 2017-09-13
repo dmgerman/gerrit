@@ -1140,7 +1140,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|"com.mysql.jdbc.Driver"
+literal|"com.mysql.cj.jdbc.Driver"
 return|;
 block|}
 if|if
