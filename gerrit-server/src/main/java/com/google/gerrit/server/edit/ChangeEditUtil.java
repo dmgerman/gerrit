@@ -456,22 +456,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|update
 operator|.
 name|BatchUpdate
@@ -1118,8 +1102,8 @@ return|;
 block|}
 block|}
 block|}
-comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param updateFactory factory for creating updates.    * @param ctl the {@code ChangeControl} of the change to which the change edit belongs    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications should be sent after the    *     change edit is published.    * @param accountsToNotify Accounts that should be notified after the change edit is published.    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
-DECL|method|publish ( BatchUpdate.Factory updateFactory, ChangeControl ctl, final ChangeEdit edit, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param updateFactory factory for creating updates.    * @param notes the {@code ChangeNotes} of the change to which the change edit belongs    * @param user the current user    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications should be sent after the    *     change edit is published.    * @param accountsToNotify Accounts that should be notified after the change edit is published.    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
+DECL|method|publish ( BatchUpdate.Factory updateFactory, ChangeNotes notes, CurrentUser user, final ChangeEdit edit, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|publish
@@ -1129,8 +1113,11 @@ operator|.
 name|Factory
 name|updateFactory
 parameter_list|,
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 specifier|final
 name|ChangeEdit
@@ -1281,10 +1268,7 @@ name|patchSetInserterFactory
 operator|.
 name|create
 argument_list|(
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
 name|psId
 argument_list|,
@@ -1433,10 +1417,7 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|,
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|,
 name|TimeUtil
 operator|.

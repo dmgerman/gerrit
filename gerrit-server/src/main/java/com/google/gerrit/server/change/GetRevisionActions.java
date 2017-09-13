@@ -527,9 +527,6 @@ name|user
 init|=
 name|rsrc
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getUser
 argument_list|()
 decl_stmt|;
@@ -604,8 +601,10 @@ name|create
 argument_list|(
 name|cd
 operator|.
-name|changeControl
+name|notes
 argument_list|()
+argument_list|,
+name|user
 argument_list|)
 operator|.
 name|prepareETag

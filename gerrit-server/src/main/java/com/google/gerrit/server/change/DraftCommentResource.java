@@ -110,22 +110,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Change
 import|;
 end_import
@@ -172,9 +156,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ChangeControl
+name|CurrentUser
 import|;
 end_import
 
@@ -258,16 +240,16 @@ operator|=
 name|c
 expr_stmt|;
 block|}
-DECL|method|getControl ()
+DECL|method|getUser ()
 specifier|public
-name|ChangeControl
-name|getControl
+name|CurrentUser
+name|getUser
 parameter_list|()
 block|{
 return|return
 name|rev
 operator|.
-name|getControl
+name|getUser
 argument_list|()
 return|;
 block|}
@@ -278,8 +260,7 @@ name|getChange
 parameter_list|()
 block|{
 return|return
-name|getControl
-argument_list|()
+name|rev
 operator|.
 name|getChange
 argument_list|()
@@ -318,24 +299,6 @@ operator|.
 name|key
 operator|.
 name|uuid
-return|;
-block|}
-DECL|method|getAuthorId ()
-name|Account
-operator|.
-name|Id
-name|getAuthorId
-parameter_list|()
-block|{
-return|return
-name|getControl
-argument_list|()
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|getAccountId
-argument_list|()
 return|;
 block|}
 block|}

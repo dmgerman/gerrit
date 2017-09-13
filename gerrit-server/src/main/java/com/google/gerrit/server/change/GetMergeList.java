@@ -648,7 +648,7 @@ name|toCommit
 argument_list|(
 name|rsrc
 operator|.
-name|getControl
+name|getProject
 argument_list|()
 argument_list|,
 name|rw

@@ -3203,7 +3203,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getControl
+name|getChangeResource
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -9896,7 +9896,7 @@ name|commit
 operator|=
 name|toCommit
 argument_list|(
-name|ctl
+name|project
 argument_list|,
 name|rw
 argument_list|,
@@ -10104,6 +10104,14 @@ operator|.
 name|create
 argument_list|(
 name|ctl
+operator|.
+name|getNotes
+argument_list|()
+argument_list|,
+name|ctl
+operator|.
+name|getUser
+argument_list|()
 argument_list|)
 argument_list|,
 name|in
@@ -10175,12 +10183,14 @@ return|return
 name|out
 return|;
 block|}
-DECL|method|toCommit ( ChangeControl ctl, RevWalk rw, RevCommit commit, boolean addLinks, boolean fillCommit)
+DECL|method|toCommit ( Project.NameKey project, RevWalk rw, RevCommit commit, boolean addLinks, boolean fillCommit)
 name|CommitInfo
 name|toCommit
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|RevWalk
 name|rw
@@ -10197,19 +10207,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|Project
-operator|.
-name|NameKey
-name|project
-init|=
-name|ctl
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
-argument_list|()
-decl_stmt|;
 name|CommitInfo
 name|info
 init|=

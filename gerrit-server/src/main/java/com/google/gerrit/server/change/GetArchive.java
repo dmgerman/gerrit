@@ -447,13 +447,7 @@ name|openRepository
 argument_list|(
 name|rsrc
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getProject
-argument_list|()
-operator|.
-name|getNameKey
 argument_list|()
 argument_list|)
 decl_stmt|;
