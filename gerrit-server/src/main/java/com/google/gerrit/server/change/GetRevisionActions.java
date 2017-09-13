@@ -601,8 +601,10 @@ name|create
 argument_list|(
 name|cd
 operator|.
-name|changeControl
+name|notes
 argument_list|()
+argument_list|,
+name|user
 argument_list|)
 operator|.
 name|prepareETag
