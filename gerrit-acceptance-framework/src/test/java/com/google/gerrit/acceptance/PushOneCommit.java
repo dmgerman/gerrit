@@ -910,6 +910,7 @@ block|}
 DECL|field|CHANGE_ID_COUNTER
 specifier|private
 specifier|static
+specifier|final
 name|AtomicInteger
 name|CHANGE_ID_COUNTER
 init|=
