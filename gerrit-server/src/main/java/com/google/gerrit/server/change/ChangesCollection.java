@@ -328,22 +328,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|query
 operator|.
 name|change
@@ -497,17 +481,9 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|changeControlFactory
-specifier|private
-specifier|final
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangesCollection ( Provider<ReviewDb> db, Provider<CurrentUser> user, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeFinder changeFinder, CreateChange createChange, ChangeResource.Factory changeResourceFactory, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlFactory)
+DECL|method|ChangesCollection ( Provider<ReviewDb> db, Provider<CurrentUser> user, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeFinder changeFinder, CreateChange createChange, ChangeResource.Factory changeResourceFactory, PermissionBackend permissionBackend)
 name|ChangesCollection
 parameter_list|(
 name|Provider
@@ -550,11 +526,6 @@ name|changeResourceFactory
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
 parameter_list|)
 block|{
 name|this
@@ -604,12 +575,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|changeControlFactory
-operator|=
-name|changeControlFactory
 expr_stmt|;
 block|}
 annotation|@
