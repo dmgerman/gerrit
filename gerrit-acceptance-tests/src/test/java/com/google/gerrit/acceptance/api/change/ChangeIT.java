@@ -27572,6 +27572,9 @@ argument_list|)
 init|)
 block|{
 name|TestRepository
+argument_list|<
+name|?
+argument_list|>
 name|testRepo
 init|=
 operator|new
