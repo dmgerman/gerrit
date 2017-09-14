@@ -194,6 +194,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|BadRequestException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
 import|;
 end_import
@@ -503,7 +519,7 @@ name|exception
 operator|.
 name|expect
 argument_list|(
-name|ResourceNotFoundException
+name|BadRequestException
 operator|.
 name|class
 argument_list|)
@@ -512,7 +528,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"inherited"
+literal|"inherited flag can only be used with default"
 argument_list|)
 expr_stmt|;
 name|gApi

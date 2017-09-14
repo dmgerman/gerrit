@@ -174,6 +174,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|BadRequestException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|IdString
 import|;
 end_import
@@ -207,6 +223,22 @@ operator|.
 name|restapi
 operator|.
 name|ResourceNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
 import|;
 end_import
 
@@ -395,9 +427,7 @@ name|DashboardResource
 name|resource
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
-throws|,
-name|ResourceConflictException
+name|RestApiException
 throws|,
 name|IOException
 throws|,
@@ -414,12 +444,11 @@ name|isProjectDefault
 argument_list|()
 condition|)
 block|{
-comment|// inherited flag can only be used with default.
 throw|throw
 operator|new
-name|ResourceNotFoundException
+name|BadRequestException
 argument_list|(
-literal|"inherited"
+literal|"inherited flag can only be used with default"
 argument_list|)
 throw|;
 block|}
