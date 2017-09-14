@@ -528,11 +528,6 @@ argument_list|()
 throw|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Override
 DECL|method|post (ChangeResource parent)
 specifier|public

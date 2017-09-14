@@ -83,14 +83,11 @@ parameter_list|>
 block|{
 comment|/**    * Handle creation of a child resource by POST on the collection.    *    * @param parent parent collection handle.    * @return a view to perform the creation. The id of the newly created resource should be    *     determined from the input body.    * @throws RestApiException the view cannot be constructed.    */
 DECL|method|post (P parent)
-parameter_list|<
-name|I
-parameter_list|>
 name|RestModifyView
 argument_list|<
 name|P
 argument_list|,
-name|I
+name|?
 argument_list|>
 name|post
 parameter_list|(
