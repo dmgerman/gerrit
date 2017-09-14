@@ -1355,14 +1355,17 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getControl ()
+DECL|method|getNotes ()
 specifier|public
-name|ChangeControl
-name|getControl
+name|ChangeNotes
+name|getNotes
 parameter_list|()
 block|{
 return|return
 name|ctl
+operator|.
+name|getNotes
+argument_list|()
 return|;
 block|}
 annotation|@

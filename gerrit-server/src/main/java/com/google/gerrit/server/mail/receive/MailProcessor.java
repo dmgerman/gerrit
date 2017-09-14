@@ -498,9 +498,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|notedb
 operator|.
-name|PatchListCache
+name|ChangeNotes
 import|;
 end_import
 
@@ -514,9 +514,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|patch
 operator|.
-name|ChangeControl
+name|PatchListCache
 import|;
 end_import
 
@@ -1791,10 +1791,10 @@ specifier|private
 name|PatchSet
 name|patchSet
 decl_stmt|;
-DECL|field|changeControl
+DECL|field|notes
 specifier|private
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 decl_stmt|;
 DECL|method|Op (PatchSet.Id psId, List<MailComment> parsedComments, String messageId)
 specifier|private
@@ -1851,13 +1851,6 @@ name|OrmException
 throws|,
 name|UnprocessableEntityException
 block|{
-name|changeControl
-operator|=
-name|ctx
-operator|.
-name|getControl
-argument_list|()
-expr_stmt|;
 name|patchSet
 operator|=
 name|psUtil
@@ -1876,6 +1869,13 @@ argument_list|()
 argument_list|,
 name|psId
 argument_list|)
+expr_stmt|;
+name|notes
+operator|=
+name|ctx
+operator|.
+name|getNotes
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2067,10 +2067,7 @@ operator|.
 name|create
 argument_list|()
 argument_list|,
-name|changeControl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
 name|patchSet
 argument_list|,
@@ -2120,12 +2117,9 @@ operator|.
 name|getDb
 argument_list|()
 argument_list|,
-name|changeControl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
-name|changeControl
+name|ctx
 operator|.
 name|getUser
 argument_list|()
@@ -2177,7 +2171,7 @@ name|commentAdded
 operator|.
 name|fire
 argument_list|(
-name|changeControl
+name|notes
 operator|.
 name|getChange
 argument_list|()
