@@ -474,22 +474,10 @@ parameter_list|)
 throws|throws
 name|NoSuchChangeException
 block|{
-name|ChangeControl
-name|changeControl
-init|=
-name|changeControlFactory
-operator|.
-name|controlFor
-argument_list|(
-name|notes
-argument_list|,
-name|currentUser
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 operator|!
-name|changeControl
+name|notes
 operator|.
 name|getChange
 argument_list|()
@@ -505,27 +493,27 @@ return|return
 literal|false
 return|;
 block|}
-comment|// A user can always remove themselves.
 if|if
 condition|(
-name|changeControl
-operator|.
-name|getUser
-argument_list|()
+name|currentUser
 operator|.
 name|isIdentifiedUser
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|changeControl
+name|Account
 operator|.
-name|getUser
-argument_list|()
+name|Id
+name|aId
+init|=
+name|currentUser
 operator|.
 name|getAccountId
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|aId
 operator|.
 name|equals
 argument_list|(
@@ -536,21 +524,12 @@ block|{
 return|return
 literal|true
 return|;
-comment|// can remove self
+comment|// A user can always remove themselves.
 block|}
-block|}
-comment|// The change owner may remove any zero or positive score.
+elseif|else
 if|if
 condition|(
-name|currentUser
-operator|.
-name|isIdentifiedUser
-argument_list|()
-operator|&&
-name|currentUser
-operator|.
-name|getAccountId
-argument_list|()
+name|aId
 operator|.
 name|equals
 argument_list|(
@@ -571,9 +550,23 @@ block|{
 return|return
 literal|true
 return|;
+comment|// The change owner may remove any zero or positive score.
+block|}
 block|}
 comment|// Users with the remove reviewer permission, the branch owner, project
 comment|// owner and site admin can remove anyone
+name|ChangeControl
+name|changeControl
+init|=
+name|changeControlFactory
+operator|.
+name|controlFor
+argument_list|(
+name|notes
+argument_list|,
+name|currentUser
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|changeControl
