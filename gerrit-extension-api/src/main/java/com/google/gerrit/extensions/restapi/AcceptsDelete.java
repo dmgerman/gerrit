@@ -83,14 +83,11 @@ parameter_list|>
 block|{
 comment|/**    * Handle deletion of a child resource by DELETE on the collection.    *    * @param parent parent collection handle.    * @param id id of the resource being created (optional).    * @return a view to perform the deletion.    * @throws RestApiException the view cannot be constructed.    */
 DECL|method|delete (P parent, IdString id)
-parameter_list|<
-name|I
-parameter_list|>
 name|RestModifyView
 argument_list|<
 name|P
 argument_list|,
-name|I
+name|?
 argument_list|>
 name|delete
 parameter_list|(
