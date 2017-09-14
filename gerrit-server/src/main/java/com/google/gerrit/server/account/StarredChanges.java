@@ -790,11 +790,6 @@ block|}
 return|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Override
 DECL|method|create (AccountResource parent, IdString id)
 specifier|public

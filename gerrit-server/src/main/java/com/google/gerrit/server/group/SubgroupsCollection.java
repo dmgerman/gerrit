@@ -640,11 +640,6 @@ throw|;
 block|}
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Override
 DECL|method|create (GroupResource group, IdString id)
 specifier|public

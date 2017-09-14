@@ -968,11 +968,6 @@ name|views
 return|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Override
 DECL|method|create (TopLevelResource parent, IdString username)
 specifier|public

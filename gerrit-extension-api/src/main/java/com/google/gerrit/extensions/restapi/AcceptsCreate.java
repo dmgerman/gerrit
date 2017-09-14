@@ -83,14 +83,11 @@ parameter_list|>
 block|{
 comment|/**    * Handle creation of a child resource.    *    * @param parent parent collection handle.    * @param id id of the resource being created.    * @return a view to perform the creation. The create method must embed the id into the newly    *     returned view object, as it will not be passed.    * @throws RestApiException the view cannot be constructed.    */
 DECL|method|create (P parent, IdString id)
-parameter_list|<
-name|I
-parameter_list|>
 name|RestModifyView
 argument_list|<
 name|P
 argument_list|,
-name|I
+name|?
 argument_list|>
 name|create
 parameter_list|(
