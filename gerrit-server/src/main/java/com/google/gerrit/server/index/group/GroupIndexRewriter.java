@@ -152,11 +152,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|group
 operator|.
-name|AccountGroup
+name|InternalGroup
 import|;
 end_import
 
@@ -194,7 +194,7 @@ name|GroupIndexRewriter
 implements|implements
 name|IndexRewriter
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 block|{
 DECL|field|indexes
@@ -221,17 +221,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|rewrite (Predicate<AccountGroup> in, QueryOptions opts)
+DECL|method|rewrite (Predicate<InternalGroup> in, QueryOptions opts)
 specifier|public
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|rewrite
 parameter_list|(
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|in
 parameter_list|,

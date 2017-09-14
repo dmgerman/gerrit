@@ -127,14 +127,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|IncludedGroupResource
+DECL|class|SubgroupResource
 specifier|public
 class|class
-name|IncludedGroupResource
+name|SubgroupResource
 extends|extends
 name|GroupResource
 block|{
-DECL|field|INCLUDED_GROUP_KIND
+DECL|field|SUBGROUP_KIND
 specifier|public
 specifier|static
 specifier|final
@@ -142,17 +142,17 @@ name|TypeLiteral
 argument_list|<
 name|RestView
 argument_list|<
-name|IncludedGroupResource
+name|SubgroupResource
 argument_list|>
 argument_list|>
-name|INCLUDED_GROUP_KIND
+name|SUBGROUP_KIND
 init|=
 operator|new
 name|TypeLiteral
 argument_list|<
 name|RestView
 argument_list|<
-name|IncludedGroupResource
+name|SubgroupResource
 argument_list|>
 argument_list|>
 argument_list|()
@@ -166,9 +166,9 @@ operator|.
 name|Basic
 name|member
 decl_stmt|;
-DECL|method|IncludedGroupResource (GroupResource group, GroupDescription.Basic member)
+DECL|method|SubgroupResource (GroupResource group, GroupDescription.Basic member)
 specifier|public
-name|IncludedGroupResource
+name|SubgroupResource
 parameter_list|(
 name|GroupResource
 name|group

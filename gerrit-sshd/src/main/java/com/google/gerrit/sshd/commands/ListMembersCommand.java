@@ -188,9 +188,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupDetailFactory
-operator|.
-name|Factory
+name|GroupControl
 import|;
 end_import
 
@@ -415,15 +413,17 @@ name|groupCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListMembersCommandImpl ( GroupCache groupCache, Factory groupDetailFactory, AccountLoader.Factory accountLoaderFactory)
+DECL|method|ListMembersCommandImpl ( GroupCache groupCache, GroupControl.Factory groupControlFactory, AccountLoader.Factory accountLoaderFactory)
 specifier|protected
 name|ListMembersCommandImpl
 parameter_list|(
 name|GroupCache
 name|groupCache
 parameter_list|,
+name|GroupControl
+operator|.
 name|Factory
-name|groupDetailFactory
+name|groupControlFactory
 parameter_list|,
 name|AccountLoader
 operator|.
@@ -435,7 +435,7 @@ name|super
 argument_list|(
 name|groupCache
 argument_list|,
-name|groupDetailFactory
+name|groupControlFactory
 argument_list|,
 name|accountLoaderFactory
 argument_list|)

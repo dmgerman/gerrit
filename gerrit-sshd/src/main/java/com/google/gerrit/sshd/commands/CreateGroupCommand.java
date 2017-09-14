@@ -238,7 +238,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|AddIncludedGroups
+name|AddMembers
 import|;
 end_import
 
@@ -254,7 +254,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|AddMembers
+name|AddSubgroups
 import|;
 end_import
 
@@ -685,12 +685,12 @@ specifier|private
 name|AddMembers
 name|addMembers
 decl_stmt|;
-DECL|field|addIncludedGroups
+DECL|field|addSubgroups
 annotation|@
 name|Inject
 specifier|private
-name|AddIncludedGroups
-name|addIncludedGroups
+name|AddSubgroups
+name|addSubgroups
 decl_stmt|;
 annotation|@
 name|Override
@@ -740,7 +740,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|addIncludedGroups
+name|addSubgroups
 argument_list|(
 name|rsrc
 argument_list|)
@@ -912,10 +912,10 @@ name|input
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addIncludedGroups (GroupResource rsrc)
+DECL|method|addSubgroups (GroupResource rsrc)
 specifier|private
 name|void
-name|addIncludedGroups
+name|addSubgroups
 parameter_list|(
 name|GroupResource
 name|rsrc
@@ -924,13 +924,15 @@ throws|throws
 name|RestApiException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
-name|AddIncludedGroups
+name|AddSubgroups
 operator|.
 name|Input
 name|input
 init|=
-name|AddIncludedGroups
+name|AddSubgroups
 operator|.
 name|Input
 operator|.
@@ -957,7 +959,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|addIncludedGroups
+name|addSubgroups
 operator|.
 name|apply
 argument_list|(

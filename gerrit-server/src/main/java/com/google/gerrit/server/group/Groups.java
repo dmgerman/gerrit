@@ -649,11 +649,11 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/**    * Indicates whether the specified group is a subgroup of the specified parent group.    *    *<p>The parent group must be an internal group whereas the subgroup may either be an internal or    * an external group.    *    *<p><strong>Note</strong>: This method doesn't check whether the subgroup exists!    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param parentGroupUuid the UUID of the parent group    * @param includedGroupUuid the UUID of the subgroup    * @return {@code true} if the group is a subgroup of the other group, or else {@code false}    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
-DECL|method|isIncluded ( ReviewDb db, AccountGroup.UUID parentGroupUuid, AccountGroup.UUID includedGroupUuid)
+comment|/**    * Indicates whether the specified group is a subgroup of the specified parent group.    *    *<p>The parent group must be an internal group whereas the subgroup may either be an internal or    * an external group.    *    *<p><strong>Note</strong>: This method doesn't check whether the subgroup exists!    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param parentGroupUuid the UUID of the parent group    * @param subgroupUuid the UUID of the subgroup    * @return {@code true} if the group is a subgroup of the other group, or else {@code false}    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
+DECL|method|isSubgroup ( ReviewDb db, AccountGroup.UUID parentGroupUuid, AccountGroup.UUID subgroupUuid)
 specifier|public
 name|boolean
-name|isIncluded
+name|isSubgroup
 parameter_list|(
 name|ReviewDb
 name|db
@@ -666,7 +666,7 @@ parameter_list|,
 name|AccountGroup
 operator|.
 name|UUID
-name|includedGroupUuid
+name|subgroupUuid
 parameter_list|)
 throws|throws
 name|OrmException
@@ -698,7 +698,7 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|includedGroupUuid
+name|subgroupUuid
 argument_list|)
 decl_stmt|;
 return|return
@@ -785,7 +785,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Returns the subgroups of a group.    *    *<p>This parent group must be an internal group whereas the subgroups can either be internal or    * external groups.    *    *<p><strong>Note</strong>: This method doesn't check whether the subgroups exist!    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the parent group    * @return a stream of the UUIDs of the subgroups    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
-DECL|method|getIncludes (ReviewDb db, AccountGroup.UUID groupUuid)
+DECL|method|getSubgroups (ReviewDb db, AccountGroup.UUID groupUuid)
 specifier|public
 name|Stream
 argument_list|<
@@ -793,7 +793,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|getIncludes
+name|getSubgroups
 parameter_list|(
 name|ReviewDb
 name|db
@@ -910,8 +910,8 @@ name|getAccountGroupId
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the parent groups of the specified (sub)group.    *    *<p>The subgroup may either be an internal or an external group whereas the returned parent    * groups represent only internal groups.    *    *<p><strong>Note</strong>: This method returns an empty stream if the specified group doesn't    * exist. This method doesn't check whether the parent groups exist.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param includedGroupUuid the UUID of the subgroup    * @return a stream of the IDs of the parent groups    * @throws OrmException if an error occurs while reading from ReviewDb    */
-DECL|method|getParentGroups (ReviewDb db, AccountGroup.UUID includedGroupUuid)
+comment|/**    * Returns the parent groups of the specified (sub)group.    *    *<p>The subgroup may either be an internal or an external group whereas the returned parent    * groups represent only internal groups.    *    *<p><strong>Note</strong>: This method returns an empty stream if the specified group doesn't    * exist. This method doesn't check whether the parent groups exist.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param subgroupUuid the UUID of the subgroup    * @return a stream of the IDs of the parent groups    * @throws OrmException if an error occurs while reading from ReviewDb    */
+DECL|method|getParentGroups (ReviewDb db, AccountGroup.UUID subgroupUuid)
 specifier|public
 name|Stream
 argument_list|<
@@ -927,7 +927,7 @@ parameter_list|,
 name|AccountGroup
 operator|.
 name|UUID
-name|includedGroupUuid
+name|subgroupUuid
 parameter_list|)
 throws|throws
 name|OrmException
@@ -945,7 +945,7 @@ argument_list|()
 operator|.
 name|byIncludeUUID
 argument_list|(
-name|includedGroupUuid
+name|subgroupUuid
 argument_list|)
 decl_stmt|;
 return|return

@@ -258,11 +258,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountGroup
+name|AccountState
 import|;
 end_import
 
@@ -276,9 +276,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
+name|group
 operator|.
-name|AccountState
+name|InternalGroup
 import|;
 end_import
 
@@ -1161,7 +1161,7 @@ argument_list|()
 expr_stmt|;
 name|Schema
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|groupSchema
 init|=

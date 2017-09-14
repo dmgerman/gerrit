@@ -174,6 +174,22 @@ name|AccountGroup
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|InternalGroup
+import|;
+end_import
+
 begin_class
 DECL|class|IndexedGroupQuery
 specifier|public
@@ -186,15 +202,15 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 implements|implements
 name|DataSource
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 block|{
-DECL|method|IndexedGroupQuery ( Index<AccountGroup.UUID, AccountGroup> index, Predicate<AccountGroup> pred, QueryOptions opts)
+DECL|method|IndexedGroupQuery ( Index<AccountGroup.UUID, InternalGroup> index, Predicate<InternalGroup> pred, QueryOptions opts)
 specifier|public
 name|IndexedGroupQuery
 parameter_list|(
@@ -204,13 +220,13 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|index
 parameter_list|,
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|pred
 parameter_list|,

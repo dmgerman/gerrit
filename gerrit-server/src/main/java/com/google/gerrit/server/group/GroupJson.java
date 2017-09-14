@@ -397,14 +397,14 @@ name|ListMembers
 argument_list|>
 name|listMembers
 decl_stmt|;
-DECL|field|listIncludes
+DECL|field|listSubgroups
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|ListIncludedGroups
+name|ListSubgroups
 argument_list|>
-name|listIncludes
+name|listSubgroups
 decl_stmt|;
 DECL|field|options
 specifier|private
@@ -416,7 +416,7 @@ name|options
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupJson ( GroupBackend groupBackend, GroupControl.Factory groupControlFactory, Provider<ListMembers> listMembers, Provider<ListIncludedGroups> listIncludes)
+DECL|method|GroupJson ( GroupBackend groupBackend, GroupControl.Factory groupControlFactory, Provider<ListMembers> listMembers, Provider<ListSubgroups> listSubgroups)
 name|GroupJson
 parameter_list|(
 name|GroupBackend
@@ -435,9 +435,9 @@ name|listMembers
 parameter_list|,
 name|Provider
 argument_list|<
-name|ListIncludedGroups
+name|ListSubgroups
 argument_list|>
-name|listIncludes
+name|listSubgroups
 parameter_list|)
 block|{
 name|this
@@ -460,9 +460,9 @@ name|listMembers
 expr_stmt|;
 name|this
 operator|.
-name|listIncludes
+name|listSubgroups
 operator|=
-name|listIncludes
+name|listSubgroups
 expr_stmt|;
 name|options
 operator|=
@@ -541,7 +541,7 @@ name|getGroup
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|initMembersAndIncludes
+name|initMembersAndSubgroups
 argument_list|(
 name|rsrc
 argument_list|,
@@ -604,7 +604,7 @@ name|group
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|initMembersAndIncludes
+name|initMembersAndSubgroups
 argument_list|(
 name|rsrc
 argument_list|,
@@ -829,10 +829,10 @@ operator|.
 name|Internal
 return|;
 block|}
-DECL|method|initMembersAndIncludes (GroupResource rsrc, GroupInfo info)
+DECL|method|initMembersAndSubgroups (GroupResource rsrc, GroupInfo info)
 specifier|private
 name|GroupInfo
-name|initMembersAndIncludes
+name|initMembersAndSubgroups
 parameter_list|(
 name|GroupResource
 name|rsrc
@@ -897,7 +897,7 @@ name|info
 operator|.
 name|includes
 operator|=
-name|listIncludes
+name|listSubgroups
 operator|.
 name|get
 argument_list|()

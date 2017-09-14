@@ -904,6 +904,19 @@ operator|.
 name|evict
 argument_list|(
 name|updatedGroup
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|,
+name|updatedGroup
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|updatedGroup
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1157,6 +1170,19 @@ operator|.
 name|evict
 argument_list|(
 name|group
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|,
+name|group
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|group
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|groupCache
@@ -1249,7 +1275,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Adds several accounts as members to a group. Only accounts which currently aren't members of    * the group are added.    *    *<p><strong>Note</strong>: This method doesn't check whether the accounts exist!    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group    * @param accountIds a set of IDs of accounts to add    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the cache entry of one of the new members couldn't be invalidated    * @throws NoSuchGroupException if the specified group doesn't exist    */
+comment|/**    * Adds several accounts as members to a group. Only accounts which currently aren't members of    * the group are added.    *    *<p><strong>Note</strong>: This method doesn't check whether the accounts exist!    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group    * @param accountIds a set of IDs of accounts to add    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the group or one of the new members couldn't be indexed    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|addGroupMembers (ReviewDb db, AccountGroup.UUID groupUuid, Set<Account.Id> accountIds)
 specifier|public
 name|void
@@ -1458,6 +1484,26 @@ argument_list|(
 name|newMembers
 argument_list|)
 expr_stmt|;
+name|groupCache
+operator|.
+name|evict
+argument_list|(
+name|group
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|,
+name|group
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|group
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|AccountGroupMember
@@ -1478,7 +1524,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Removes several members (accounts) from a group. Only accounts which currently are members of    * the group are removed.    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group    * @param accountIds a set of IDs of accounts to remove    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the cache entry of one of the removed members couldn't be invalidated    * @throws NoSuchGroupException if the specified group doesn't exist    */
+comment|/**    * Removes several members (accounts) from a group. Only accounts which currently are members of    * the group are removed.    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group    * @param accountIds a set of IDs of accounts to remove    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the group or one of the removed members couldn't be indexed    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|removeGroupMembers ( ReviewDb db, AccountGroup.UUID groupUuid, Set<Account.Id> accountIds)
 specifier|public
 name|void
@@ -1637,6 +1683,26 @@ argument_list|(
 name|membersToRemove
 argument_list|)
 expr_stmt|;
+name|groupCache
+operator|.
+name|evict
+argument_list|(
+name|group
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|,
+name|group
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|group
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|AccountGroupMember
@@ -1657,11 +1723,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Adds several groups as subgroups to a group. Only groups which currently aren't subgroups of    * the group are added.    *    *<p>The parent group must be an internal group whereas the subgroups can either be internal or    * external groups.    *    *<p><strong>Note</strong>: This method doesn't check whether the subgroups exist!    *    * @param db the {@code ReviewDb} instance to update    * @param parentGroupUuid the UUID of the parent group    * @param includedGroupUuids a set of IDs of the groups to add as subgroups    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
-DECL|method|addIncludedGroups ( ReviewDb db, AccountGroup.UUID parentGroupUuid, Set<AccountGroup.UUID> includedGroupUuids)
+comment|/**    * Adds several groups as subgroups to a group. Only groups which currently aren't subgroups of    * the group are added.    *    *<p>The parent group must be an internal group whereas the subgroups can either be internal or    * external groups.    *    *<p><strong>Note</strong>: This method doesn't check whether the subgroups exist!    *    * @param db the {@code ReviewDb} instance to update    * @param parentGroupUuid the UUID of the parent group    * @param subgroupUuids a set of IDs of the groups to add as subgroups    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the parent group couldn't be indexed    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
+DECL|method|addSubgroups ( ReviewDb db, AccountGroup.UUID parentGroupUuid, Set<AccountGroup.UUID> subgroupUuids)
 specifier|public
 name|void
-name|addIncludedGroups
+name|addSubgroups
 parameter_list|(
 name|ReviewDb
 name|db
@@ -1677,12 +1743,14 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|includedGroupUuids
+name|subgroupUuids
 parameter_list|)
 throws|throws
 name|OrmException
 throws|,
 name|NoSuchGroupException
+throws|,
+name|IOException
 block|{
 name|AccountGroup
 name|parentGroup
@@ -1710,7 +1778,7 @@ name|Set
 argument_list|<
 name|AccountGroupById
 argument_list|>
-name|newIncludedGroups
+name|newSubgroups
 init|=
 operator|new
 name|HashSet
@@ -1724,15 +1792,15 @@ operator|.
 name|UUID
 name|includedGroupUuid
 range|:
-name|includedGroupUuids
+name|subgroupUuids
 control|)
 block|{
 name|boolean
-name|isIncluded
+name|isSubgroup
 init|=
 name|groups
 operator|.
-name|isIncluded
+name|isSubgroup
 argument_list|(
 name|db
 argument_list|,
@@ -1744,7 +1812,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|isIncluded
+name|isSubgroup
 condition|)
 block|{
 name|AccountGroupById
@@ -1762,7 +1830,7 @@ argument_list|,
 name|includedGroupUuid
 argument_list|)
 decl_stmt|;
-name|newIncludedGroups
+name|newSubgroups
 operator|.
 name|add
 argument_list|(
@@ -1777,7 +1845,7 @@ block|}
 block|}
 if|if
 condition|(
-name|newIncludedGroups
+name|newSubgroups
 operator|.
 name|isEmpty
 argument_list|()
@@ -1801,7 +1869,7 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|newIncludedGroups
+name|newSubgroups
 argument_list|)
 expr_stmt|;
 block|}
@@ -1812,7 +1880,27 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|newIncludedGroups
+name|newSubgroups
+argument_list|)
+expr_stmt|;
+name|groupCache
+operator|.
+name|evict
+argument_list|(
+name|parentGroup
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|,
+name|parentGroup
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|parentGroup
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 for|for
@@ -1820,7 +1908,7 @@ control|(
 name|AccountGroupById
 name|newIncludedGroup
 range|:
-name|newIncludedGroups
+name|newSubgroups
 control|)
 block|{
 name|groupIncludeCache
@@ -1842,11 +1930,11 @@ name|parentGroupUuid
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Removes several subgroups from a parent group. Only groups which currently are subgroups of the    * group are removed.    *    *<p>The parent group must be an internal group whereas the subgroups can either be internal or    * external groups.    *    * @param db the {@code ReviewDb} instance to update    * @param parentGroupUuid the UUID of the parent group    * @param includedGroupUuids a set of IDs of the subgroups to remove from the parent group    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
-DECL|method|deleteIncludedGroups ( ReviewDb db, AccountGroup.UUID parentGroupUuid, Set<AccountGroup.UUID> includedGroupUuids)
+comment|/**    * Removes several subgroups from a parent group. Only groups which currently are subgroups of the    * group are removed.    *    *<p>The parent group must be an internal group whereas the subgroups can either be internal or    * external groups.    *    * @param db the {@code ReviewDb} instance to update    * @param parentGroupUuid the UUID of the parent group    * @param subgroupUuids a set of IDs of the subgroups to remove from the parent group    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the parent group couldn't be indexed    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
+DECL|method|removeSubgroups ( ReviewDb db, AccountGroup.UUID parentGroupUuid, Set<AccountGroup.UUID> subgroupUuids)
 specifier|public
 name|void
-name|deleteIncludedGroups
+name|removeSubgroups
 parameter_list|(
 name|ReviewDb
 name|db
@@ -1862,12 +1950,14 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|includedGroupUuids
+name|subgroupUuids
 parameter_list|)
 throws|throws
 name|OrmException
 throws|,
 name|NoSuchGroupException
+throws|,
+name|IOException
 block|{
 name|AccountGroup
 name|parentGroup
@@ -1895,7 +1985,7 @@ name|Set
 argument_list|<
 name|AccountGroupById
 argument_list|>
-name|includedGroupsToRemove
+name|subgroupsToRemove
 init|=
 operator|new
 name|HashSet
@@ -1907,28 +1997,28 @@ control|(
 name|AccountGroup
 operator|.
 name|UUID
-name|includedGroupUuid
+name|subgroupUuid
 range|:
-name|includedGroupUuids
+name|subgroupUuids
 control|)
 block|{
 name|boolean
-name|isIncluded
+name|isSubgroup
 init|=
 name|groups
 operator|.
-name|isIncluded
+name|isSubgroup
 argument_list|(
 name|db
 argument_list|,
 name|parentGroupUuid
 argument_list|,
-name|includedGroupUuid
+name|subgroupUuid
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|isIncluded
+name|isSubgroup
 condition|)
 block|{
 name|AccountGroupById
@@ -1943,10 +2033,10 @@ name|Key
 argument_list|(
 name|parentGroupId
 argument_list|,
-name|includedGroupUuid
+name|subgroupUuid
 argument_list|)
 decl_stmt|;
-name|includedGroupsToRemove
+name|subgroupsToRemove
 operator|.
 name|add
 argument_list|(
@@ -1961,7 +2051,7 @@ block|}
 block|}
 if|if
 condition|(
-name|includedGroupsToRemove
+name|subgroupsToRemove
 operator|.
 name|isEmpty
 argument_list|()
@@ -1985,7 +2075,7 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|includedGroupsToRemove
+name|subgroupsToRemove
 argument_list|)
 expr_stmt|;
 block|}
@@ -1996,7 +2086,27 @@ argument_list|()
 operator|.
 name|delete
 argument_list|(
-name|includedGroupsToRemove
+name|subgroupsToRemove
+argument_list|)
+expr_stmt|;
+name|groupCache
+operator|.
+name|evict
+argument_list|(
+name|parentGroup
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|,
+name|parentGroup
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|parentGroup
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 for|for
@@ -2004,7 +2114,7 @@ control|(
 name|AccountGroupById
 name|groupToRemove
 range|:
-name|includedGroupsToRemove
+name|subgroupsToRemove
 control|)
 block|{
 name|groupIncludeCache

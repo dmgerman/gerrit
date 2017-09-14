@@ -368,6 +368,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -435,17 +451,17 @@ name|createGroupFactory
 decl_stmt|;
 DECL|field|group1
 specifier|private
-name|AccountGroup
+name|InternalGroup
 name|group1
 decl_stmt|;
 DECL|field|group2
 specifier|private
-name|AccountGroup
+name|InternalGroup
 name|group2
 decl_stmt|;
 DECL|field|group3
 specifier|private
-name|AccountGroup
+name|InternalGroup
 name|group3
 decl_stmt|;
 DECL|field|user1
@@ -1803,7 +1819,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|AccountGroup
+name|InternalGroup
 name|largeGroup
 init|=
 name|group
@@ -1811,7 +1827,7 @@ argument_list|(
 literal|"large"
 argument_list|)
 decl_stmt|;
-name|AccountGroup
+name|InternalGroup
 name|mediumGroup
 init|=
 name|group
@@ -3003,7 +3019,7 @@ return|;
 block|}
 DECL|method|group (String name)
 specifier|private
-name|AccountGroup
+name|InternalGroup
 name|group
 parameter_list|(
 name|String
@@ -3049,9 +3065,14 @@ operator|.
 name|id
 argument_list|)
 argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 return|;
 block|}
-DECL|method|user (String name, String fullName, String emailName, AccountGroup... groups)
+DECL|method|user (String name, String fullName, String emailName, InternalGroup... groups)
 specifier|private
 name|TestAccount
 name|user
@@ -3065,7 +3086,7 @@ parameter_list|,
 name|String
 name|emailName
 parameter_list|,
-name|AccountGroup
+name|InternalGroup
 modifier|...
 name|groups
 parameter_list|)
@@ -3085,7 +3106,7 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|AccountGroup
+name|InternalGroup
 operator|::
 name|getName
 argument_list|)
@@ -3121,7 +3142,7 @@ name|groupNames
 argument_list|)
 return|;
 block|}
-DECL|method|user (String name, String fullName, AccountGroup... groups)
+DECL|method|user (String name, String fullName, InternalGroup... groups)
 specifier|private
 name|TestAccount
 name|user
@@ -3132,7 +3153,7 @@ parameter_list|,
 name|String
 name|fullName
 parameter_list|,
-name|AccountGroup
+name|InternalGroup
 modifier|...
 name|groups
 parameter_list|)
@@ -3276,7 +3297,7 @@ operator|.
 name|changeId
 return|;
 block|}
-DECL|method|assertReviewers ( List<SuggestedReviewerInfo> actual, List<TestAccount> expectedUsers, List<AccountGroup> expectedGroups)
+DECL|method|assertReviewers ( List<SuggestedReviewerInfo> actual, List<TestAccount> expectedUsers, List<InternalGroup> expectedGroups)
 specifier|private
 name|void
 name|assertReviewers
@@ -3295,7 +3316,7 @@ name|expectedUsers
 parameter_list|,
 name|List
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|expectedGroups
 parameter_list|)
