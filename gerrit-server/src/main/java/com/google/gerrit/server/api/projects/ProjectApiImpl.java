@@ -244,6 +244,24 @@ name|api
 operator|.
 name|projects
 operator|.
+name|DashboardApi
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|projects
+operator|.
 name|DeleteBranchesInput
 import|;
 end_import
@@ -1047,9 +1065,17 @@ operator|.
 name|Factory
 name|commitApi
 decl_stmt|;
+DECL|field|dashboardApi
+specifier|private
+specifier|final
+name|DashboardApiImpl
+operator|.
+name|Factory
+name|dashboardApi
+decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
 name|CurrentUser
@@ -1132,6 +1158,11 @@ name|CommitApiImpl
 operator|.
 name|Factory
 name|commitApi
+parameter_list|,
+name|DashboardApiImpl
+operator|.
+name|Factory
+name|dashboardApi
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1189,13 +1220,15 @@ name|commitsCollection
 argument_list|,
 name|commitApi
 argument_list|,
+name|dashboardApi
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, @Assisted String name)
+DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, @Assisted String name)
 name|ProjectApiImpl
 parameter_list|(
 name|CurrentUser
@@ -1279,6 +1312,11 @@ operator|.
 name|Factory
 name|commitApi
 parameter_list|,
+name|DashboardApiImpl
+operator|.
+name|Factory
+name|dashboardApi
+parameter_list|,
 annotation|@
 name|Assisted
 name|String
@@ -1335,11 +1373,13 @@ name|commitsCollection
 argument_list|,
 name|commitApi
 argument_list|,
+name|dashboardApi
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, ProjectResource project, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, String name)
+DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, ProjectResource project, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, String name)
 specifier|private
 name|ProjectApiImpl
 parameter_list|(
@@ -1426,6 +1466,11 @@ name|CommitApiImpl
 operator|.
 name|Factory
 name|commitApi
+parameter_list|,
+name|DashboardApiImpl
+operator|.
+name|Factory
+name|dashboardApi
 parameter_list|,
 name|String
 name|name
@@ -1580,6 +1625,12 @@ operator|.
 name|createAccessChange
 operator|=
 name|createAccessChange
+expr_stmt|;
+name|this
+operator|.
+name|dashboardApi
+operator|=
+name|dashboardApi
 expr_stmt|;
 block|}
 annotation|@
@@ -2570,6 +2621,49 @@ throw|throw
 name|asRestApiException
 argument_list|(
 literal|"Cannot parse commit"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|dashboard (String name)
+specifier|public
+name|DashboardApi
+name|dashboard
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+try|try
+block|{
+return|return
+name|dashboardApi
+operator|.
+name|create
+argument_list|(
+name|checkExists
+argument_list|()
+argument_list|,
+name|name
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|asRestApiException
+argument_list|(
+literal|"Cannot parse dashboard"
 argument_list|,
 name|e
 argument_list|)

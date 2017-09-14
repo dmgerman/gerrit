@@ -614,6 +614,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|DashboardsCollection
+specifier|public
 class|class
 name|DashboardsCollection
 implements|implements

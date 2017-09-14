@@ -318,6 +318,7 @@ end_import
 
 begin_class
 DECL|class|GetDashboard
+specifier|public
 class|class
 name|GetDashboard
 implements|implements
@@ -363,6 +364,25 @@ name|dashboards
 operator|=
 name|dashboards
 expr_stmt|;
+block|}
+DECL|method|setInherited (boolean inherited)
+specifier|public
+name|GetDashboard
+name|setInherited
+parameter_list|(
+name|boolean
+name|inherited
+parameter_list|)
+block|{
+name|this
+operator|.
+name|inherited
+operator|=
+name|inherited
+expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 annotation|@
 name|Override

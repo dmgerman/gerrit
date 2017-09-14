@@ -542,6 +542,17 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Lookup a dashboard by its name.    *    * @param name the name.    * @return API for accessing the dashboard.    */
+DECL|method|dashboard (String name)
+name|DashboardApi
+name|dashboard
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -903,6 +914,25 @@ name|commit
 parameter_list|(
 name|String
 name|commit
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|dashboard (String name)
+specifier|public
+name|DashboardApi
+name|dashboard
+parameter_list|(
+name|String
+name|name
 parameter_list|)
 throws|throws
 name|RestApiException
