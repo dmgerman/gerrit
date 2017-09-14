@@ -550,22 +550,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|query
 operator|.
 name|change
@@ -970,13 +954,13 @@ specifier|final
 name|AllUsersName
 name|allUsers
 decl_stmt|;
-DECL|field|changeControlFactory
+DECL|field|changeNotesFactory
 specifier|private
 specifier|final
-name|ChangeControl
+name|ChangeNotes
 operator|.
-name|GenericFactory
-name|changeControlFactory
+name|Factory
+name|changeNotesFactory
 decl_stmt|;
 DECL|field|rebuilder
 specifier|private
@@ -1053,7 +1037,7 @@ name|testEnsureRebuiltRetryer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PrimaryStorageMigrator ( @erritServerConfig Config cfg, Provider<ReviewDb> db, GitRepositoryManager repoManager, AllUsersName allUsers, ChangeRebuilder rebuilder, ChangeControl.GenericFactory changeControlFactory, Provider<InternalChangeQuery> queryProvider, ChangeUpdate.Factory updateFactory, InternalUser.Factory internalUserFactory, RetryHelper retryHelper)
+DECL|method|PrimaryStorageMigrator ( @erritServerConfig Config cfg, Provider<ReviewDb> db, GitRepositoryManager repoManager, AllUsersName allUsers, ChangeRebuilder rebuilder, ChangeNotes.Factory changeNotesFactory, Provider<InternalChangeQuery> queryProvider, ChangeUpdate.Factory updateFactory, InternalUser.Factory internalUserFactory, RetryHelper retryHelper)
 name|PrimaryStorageMigrator
 parameter_list|(
 annotation|@
@@ -1076,10 +1060,10 @@ parameter_list|,
 name|ChangeRebuilder
 name|rebuilder
 parameter_list|,
-name|ChangeControl
+name|ChangeNotes
 operator|.
-name|GenericFactory
-name|changeControlFactory
+name|Factory
+name|changeNotesFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1115,7 +1099,7 @@ name|rebuilder
 argument_list|,
 literal|null
 argument_list|,
-name|changeControlFactory
+name|changeNotesFactory
 argument_list|,
 name|queryProvider
 argument_list|,
@@ -1129,7 +1113,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|PrimaryStorageMigrator ( Config cfg, Provider<ReviewDb> db, GitRepositoryManager repoManager, AllUsersName allUsers, ChangeRebuilder rebuilder, @Nullable Retryer<NoteDbChangeState> testEnsureRebuiltRetryer, ChangeControl.GenericFactory changeControlFactory, Provider<InternalChangeQuery> queryProvider, ChangeUpdate.Factory updateFactory, InternalUser.Factory internalUserFactory, RetryHelper retryHelper)
+DECL|method|PrimaryStorageMigrator ( Config cfg, Provider<ReviewDb> db, GitRepositoryManager repoManager, AllUsersName allUsers, ChangeRebuilder rebuilder, @Nullable Retryer<NoteDbChangeState> testEnsureRebuiltRetryer, ChangeNotes.Factory changeNotesFactory, Provider<InternalChangeQuery> queryProvider, ChangeUpdate.Factory updateFactory, InternalUser.Factory internalUserFactory, RetryHelper retryHelper)
 specifier|public
 name|PrimaryStorageMigrator
 parameter_list|(
@@ -1159,10 +1143,10 @@ name|NoteDbChangeState
 argument_list|>
 name|testEnsureRebuiltRetryer
 parameter_list|,
-name|ChangeControl
+name|ChangeNotes
 operator|.
-name|GenericFactory
-name|changeControlFactory
+name|Factory
+name|changeNotesFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1216,9 +1200,9 @@ name|testEnsureRebuiltRetryer
 expr_stmt|;
 name|this
 operator|.
-name|changeControlFactory
+name|changeNotesFactory
 operator|=
-name|changeControlFactory
+name|changeNotesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2231,9 +2215,9 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|changeControlFactory
+name|changeNotesFactory
 operator|.
-name|controlFor
+name|createChecked
 argument_list|(
 name|db
 operator|.
@@ -2243,12 +2227,12 @@ argument_list|,
 name|project
 argument_list|,
 name|id
+argument_list|)
 argument_list|,
 name|internalUserFactory
 operator|.
 name|create
 argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|update

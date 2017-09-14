@@ -240,22 +240,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -506,7 +490,7 @@ specifier|protected
 name|boolean
 name|rootOnly
 decl_stmt|;
-DECL|method|AbstractChangeUpdate ( Config cfg, NotesMigration migration, ChangeControl ctl, PersonIdent serverIdent, String anonymousCowardName, ChangeNoteUtil noteUtil, Date when)
+DECL|method|AbstractChangeUpdate ( Config cfg, NotesMigration migration, ChangeNotes notes, CurrentUser user, PersonIdent serverIdent, String anonymousCowardName, ChangeNoteUtil noteUtil, Date when)
 specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
@@ -516,8 +500,11 @@ parameter_list|,
 name|NotesMigration
 name|migration
 parameter_list|,
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|PersonIdent
 name|serverIdent
@@ -566,10 +553,7 @@ name|this
 operator|.
 name|notes
 operator|=
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 expr_stmt|;
 name|this
 operator|.
@@ -586,10 +570,7 @@ name|accountId
 operator|=
 name|accountId
 argument_list|(
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|)
 expr_stmt|;
 name|Account
@@ -599,10 +580,7 @@ name|realAccountId
 init|=
 name|accountId
 argument_list|(
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 operator|.
 name|getRealUser
 argument_list|()
@@ -632,10 +610,7 @@ name|serverIdent
 argument_list|,
 name|anonymousCowardName
 argument_list|,
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|,
 name|when
 argument_list|)
