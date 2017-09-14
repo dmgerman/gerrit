@@ -424,7 +424,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
+name|ProjectState
 import|;
 end_import
 
@@ -638,27 +638,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// Note: no guarantees are made about the user passed in the ChangeControl; do
-comment|// not depend on this directly. Either use .forUser(otherUser) to get a
-comment|// control for a specific known user, or use CURRENT_USER, which may be null
-comment|// for rule types that may not depend on the current user.
-DECL|field|CHANGE_CONTROL
-specifier|public
-specifier|static
-specifier|final
-name|StoredValue
-argument_list|<
-name|ChangeControl
-argument_list|>
-name|CHANGE_CONTROL
-init|=
-name|create
-argument_list|(
-name|ChangeControl
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 DECL|field|CURRENT_USER
 specifier|public
 specifier|static
@@ -672,6 +651,23 @@ init|=
 name|create
 argument_list|(
 name|CurrentUser
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+DECL|field|PROJECT_STATE
+specifier|public
+specifier|static
+specifier|final
+name|StoredValue
+argument_list|<
+name|ProjectState
+argument_list|>
+name|PROJECT_STATE
+init|=
+name|create
+argument_list|(
+name|ProjectState
 operator|.
 name|class
 argument_list|)
