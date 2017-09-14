@@ -87,6 +87,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|DashboardsCollection
+operator|.
+name|DEFAULT_DASHBOARD_NAME
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -2669,6 +2687,23 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|defaultDashboard ()
+specifier|public
+name|DashboardApi
+name|defaultDashboard
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+return|return
+name|dashboard
+argument_list|(
+name|DEFAULT_DASHBOARD_NAME
+argument_list|)
+return|;
 block|}
 DECL|method|checkExists ()
 specifier|private

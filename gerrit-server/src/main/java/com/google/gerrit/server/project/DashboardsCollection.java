@@ -631,7 +631,7 @@ name|ProjectResource
 argument_list|>
 block|{
 DECL|field|DEFAULT_DASHBOARD_NAME
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
