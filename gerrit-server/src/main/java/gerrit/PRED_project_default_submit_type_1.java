@@ -100,7 +100,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
+name|ProjectState
 import|;
 end_import
 
@@ -310,12 +310,12 @@ operator|.
 name|dereference
 argument_list|()
 decl_stmt|;
-name|ChangeControl
-name|control
+name|ProjectState
+name|projectState
 init|=
 name|StoredValues
 operator|.
-name|CHANGE_CONTROL
+name|PROJECT_STATE
 operator|.
 name|get
 argument_list|(
@@ -325,7 +325,7 @@ decl_stmt|;
 name|SubmitType
 name|submitType
 init|=
-name|control
+name|projectState
 operator|.
 name|getProject
 argument_list|()
