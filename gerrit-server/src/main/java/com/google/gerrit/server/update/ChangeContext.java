@@ -146,22 +146,6 @@ name|ChangeUpdate
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
 begin_comment
 comment|/**  * Context for performing the {@link BatchUpdateOp#updateChange} phase.  *  *<p>A single {@code ChangeContext} corresponds to updating a single change; if a {@link  * BatchUpdate} spans multiple changes, then multiple {@code ChangeContext} instances will be  * created.  */
 end_comment
@@ -185,10 +169,10 @@ name|Id
 name|psId
 parameter_list|)
 function_decl|;
-comment|/**    * Get the control for this change, encapsulating the user and up-to-date change data.    *    *<p>The user will be the same as {@link #getUser()}, and the change data is read within the same    * transaction that {@link BatchUpdateOp#updateChange(ChangeContext)} is executing.    *    * @return control for this change.    */
-DECL|method|getControl ()
-name|ChangeControl
-name|getControl
+comment|/**    * Get the up-to-date notes for this change.    *    *<p>The change data is read within the same transaction that {@link    * BatchUpdateOp#updateChange(ChangeContext)} is executing.    *    * @return notes for this change.    */
+DECL|method|getNotes ()
+name|ChangeNotes
+name|getNotes
 parameter_list|()
 function_decl|;
 comment|/**    * Don't bump the value of {@link Change#getLastUpdatedOn()}.    *    *<p>If called, don't bump the timestamp before storing to ReviewDb. Only has an effect in    * ReviewDb, and the only usage should be to match the behavior of NoteDb. Specifically, in NoteDb    * the timestamp is updated if and only if the change meta graph is updated, and is not updated    * when only drafts are modified.    */
@@ -203,25 +187,7 @@ name|void
 name|deleteChange
 parameter_list|()
 function_decl|;
-comment|/**    * Get notes corresponding to {@link #getControl()}.    *    * @return loaded notes instance.    */
-DECL|method|getNotes ()
-specifier|default
-name|ChangeNotes
-name|getNotes
-parameter_list|()
-block|{
-return|return
-name|checkNotNull
-argument_list|(
-name|getControl
-argument_list|()
-operator|.
-name|getNotes
-argument_list|()
-argument_list|)
-return|;
-block|}
-comment|/** @return change corresponding to {@link #getControl()}. */
+comment|/** @return change corresponding to {@link #getNotes()}. */
 DECL|method|getChange ()
 specifier|default
 name|Change
@@ -231,7 +197,7 @@ block|{
 return|return
 name|checkNotNull
 argument_list|(
-name|getControl
+name|getNotes
 argument_list|()
 operator|.
 name|getChange

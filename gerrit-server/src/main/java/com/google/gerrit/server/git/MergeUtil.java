@@ -558,22 +558,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|ProjectState
 import|;
 end_import
@@ -1179,7 +1163,7 @@ operator|=
 name|changeMessageModifiers
 expr_stmt|;
 block|}
-DECL|method|generate ( RevCommit original, RevCommit mergeTip, ChangeControl ctl, String current)
+DECL|method|generate ( RevCommit original, RevCommit mergeTip, Branch.NameKey dest, String current)
 specifier|public
 name|String
 name|generate
@@ -1190,8 +1174,10 @@ parameter_list|,
 name|RevCommit
 name|mergeTip
 parameter_list|,
-name|ChangeControl
-name|ctl
+name|Branch
+operator|.
+name|NameKey
+name|dest
 parameter_list|,
 name|String
 name|current
@@ -1241,13 +1227,7 @@ name|original
 argument_list|,
 name|mergeTip
 argument_list|,
-name|ctl
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getDest
-argument_list|()
+name|dest
 argument_list|)
 expr_stmt|;
 name|checkNotNull
@@ -2200,8 +2180,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**    * Adds footers to existing commit message based on the state of the change.    *    *<p>This adds the following footers if they are missing:    *    *<ul>    *<li>Reviewed-on:<i>url</i>    *<li>Reviewed-by | Tested-by |<i>Other-Label-Name</i>:<i>reviewer</i>    *<li>Change-Id    *</ul>    *    * @param n    * @param ctl    * @param psId    * @return new message    */
-DECL|method|createDetailedCommitMessage (RevCommit n, ChangeControl ctl, PatchSet.Id psId)
+comment|/**    * Adds footers to existing commit message based on the state of the change.    *    *<p>This adds the following footers if they are missing:    *    *<ul>    *<li>Reviewed-on:<i>url</i>    *<li>Reviewed-by | Tested-by |<i>Other-Label-Name</i>:<i>reviewer</i>    *<li>Change-Id    *</ul>    *    * @param n    * @param notes    * @param user    * @param psId    * @return new message    */
+DECL|method|createDetailedCommitMessage ( RevCommit n, ChangeNotes notes, CurrentUser user, PatchSet.Id psId)
 specifier|private
 name|String
 name|createDetailedCommitMessage
@@ -2209,8 +2189,11 @@ parameter_list|(
 name|RevCommit
 name|n
 parameter_list|,
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|PatchSet
 operator|.
@@ -2221,7 +2204,7 @@ block|{
 name|Change
 name|c
 init|=
-name|ctl
+name|notes
 operator|.
 name|getChange
 argument_list|()
@@ -2473,15 +2456,9 @@ name|a
 range|:
 name|safeGetApprovals
 argument_list|(
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|,
 name|psId
 argument_list|)
@@ -2855,8 +2832,24 @@ name|mergeTip
 argument_list|,
 name|n
 operator|.
-name|getControl
+name|notes
 argument_list|()
+argument_list|,
+name|identifiedUserFactory
+operator|.
+name|create
+argument_list|(
+name|n
+operator|.
+name|notes
+argument_list|()
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getOwner
+argument_list|()
+argument_list|)
 argument_list|,
 name|n
 operator|.
@@ -2865,8 +2858,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Creates a commit message for a change, which can be customized by plugins.    *    *<p>By default, adds footers to existing commit message based on the state of the change.    * Plugins implementing {@link ChangeMessageModifier} can modify the resulting commit message    * arbitrarily.    *    * @param n    * @param mergeTip    * @param ctl    * @param id    * @return new message    */
-DECL|method|createCommitMessageOnSubmit ( RevCommit n, RevCommit mergeTip, ChangeControl ctl, Id id)
+comment|/**    * Creates a commit message for a change, which can be customized by plugins.    *    *<p>By default, adds footers to existing commit message based on the state of the change.    * Plugins implementing {@link ChangeMessageModifier} can modify the resulting commit message    * arbitrarily.    *    * @param n    * @param mergeTip    * @param notes    * @param user    * @param id    * @return new message    */
+DECL|method|createCommitMessageOnSubmit ( RevCommit n, RevCommit mergeTip, ChangeNotes notes, CurrentUser user, Id id)
 specifier|public
 name|String
 name|createCommitMessageOnSubmit
@@ -2877,8 +2870,11 @@ parameter_list|,
 name|RevCommit
 name|mergeTip
 parameter_list|,
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|Id
 name|id
@@ -2893,13 +2889,21 @@ name|n
 argument_list|,
 name|mergeTip
 argument_list|,
-name|ctl
+name|notes
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getDest
+argument_list|()
 argument_list|,
 name|createDetailedCommitMessage
 argument_list|(
 name|n
 argument_list|,
-name|ctl
+name|notes
+argument_list|,
+name|user
 argument_list|,
 name|id
 argument_list|)
@@ -4139,11 +4143,11 @@ argument_list|)
 decl_stmt|;
 name|mergeResult
 operator|.
-name|setControl
+name|setNotes
 argument_list|(
 name|n
 operator|.
-name|getControl
+name|getNotes
 argument_list|()
 argument_list|)
 expr_stmt|;

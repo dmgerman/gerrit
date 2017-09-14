@@ -1096,11 +1096,11 @@ comment|// Don't copy approvals, as this is already taken care of by
 comment|// SubmitStrategyOp.
 name|newCommit
 operator|.
-name|setControl
+name|setNotes
 argument_list|(
 name|ctx
 operator|.
-name|getControl
+name|getNotes
 argument_list|()
 argument_list|)
 expr_stmt|;

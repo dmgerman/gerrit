@@ -164,22 +164,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -585,11 +569,10 @@ operator|.
 name|Id
 name|patchsetId
 decl_stmt|;
-comment|/** Change control for the change owner. */
-DECL|field|control
+DECL|field|notes
 specifier|private
-name|ChangeControl
-name|control
+name|ChangeNotes
+name|notes
 decl_stmt|;
 comment|/**    * The result status for this commit.    *    *<p>Only valid if {@link #patchsetId} is not null.    */
 DECL|field|statusCode
@@ -618,11 +601,7 @@ name|notes
 parameter_list|()
 block|{
 return|return
-name|getControl
-argument_list|()
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 return|;
 block|}
 DECL|method|getStatusCode ()
@@ -690,11 +669,11 @@ name|CodeReviewCommit
 name|src
 parameter_list|)
 block|{
-name|control
+name|notes
 operator|=
 name|src
 operator|.
-name|control
+name|notes
 expr_stmt|;
 name|patchsetId
 operator|=
@@ -716,37 +695,37 @@ name|change
 parameter_list|()
 block|{
 return|return
-name|getControl
+name|getNotes
 argument_list|()
 operator|.
 name|getChange
 argument_list|()
 return|;
 block|}
-DECL|method|getControl ()
+DECL|method|getNotes ()
 specifier|public
-name|ChangeControl
-name|getControl
+name|ChangeNotes
+name|getNotes
 parameter_list|()
 block|{
 return|return
-name|control
+name|notes
 return|;
 block|}
-DECL|method|setControl (ChangeControl control)
+DECL|method|setNotes (ChangeNotes notes)
 specifier|public
 name|void
-name|setControl
+name|setNotes
 parameter_list|(
-name|ChangeControl
-name|control
+name|ChangeNotes
+name|notes
 parameter_list|)
 block|{
 name|this
 operator|.
-name|control
+name|notes
 operator|=
-name|control
+name|notes
 expr_stmt|;
 block|}
 block|}

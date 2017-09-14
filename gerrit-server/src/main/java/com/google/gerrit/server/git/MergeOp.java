@@ -818,9 +818,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|permissions
+name|notedb
 operator|.
-name|PermissionBackendException
+name|ChangeNotes
 import|;
 end_import
 
@@ -834,9 +834,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|permissions
 operator|.
-name|ChangeControl
+name|PermissionBackendException
 import|;
 end_import
 
@@ -4584,19 +4584,19 @@ operator|.
 name|getId
 argument_list|()
 decl_stmt|;
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
 decl_stmt|;
 name|Change
 name|chg
 decl_stmt|;
 try|try
 block|{
-name|ctl
+name|notes
 operator|=
 name|cd
 operator|.
-name|changeControl
+name|notes
 argument_list|()
 expr_stmt|;
 name|chg
@@ -4940,12 +4940,11 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|// TODO(dborowitz): Consider putting ChangeData in CodeReviewCommit.
 name|commit
 operator|.
-name|setControl
+name|setNotes
 argument_list|(
-name|ctl
+name|notes
 argument_list|)
 expr_stmt|;
 name|commit
