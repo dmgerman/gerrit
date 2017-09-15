@@ -252,6 +252,15 @@ specifier|public
 class|class
 name|ChangeUtil
 block|{
+DECL|field|TOPIC_MAX_LENGTH
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|TOPIC_MAX_LENGTH
+init|=
+literal|2048
+decl_stmt|;
 DECL|field|UUID_RANDOM
 specifier|private
 specifier|static
