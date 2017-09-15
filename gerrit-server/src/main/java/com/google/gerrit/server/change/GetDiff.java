@@ -588,22 +588,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|InvalidChangeOperationException
 import|;
 end_import
@@ -1004,14 +988,6 @@ specifier|final
 name|WebLinks
 name|webLinks
 decl_stmt|;
-DECL|field|changeControlFactory
-specifier|private
-specifier|final
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
-decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -1111,7 +1087,7 @@ name|webLinksOnly
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetDiff ( ProjectCache projectCache, PatchScriptFactory.Factory patchScriptFactoryFactory, Revisions revisions, WebLinks webLinks, ChangeControl.GenericFactory changeControlFactory)
+DECL|method|GetDiff ( ProjectCache projectCache, PatchScriptFactory.Factory patchScriptFactoryFactory, Revisions revisions, WebLinks webLinks)
 name|GetDiff
 parameter_list|(
 name|ProjectCache
@@ -1127,11 +1103,6 @@ name|revisions
 parameter_list|,
 name|WebLinks
 name|webLinks
-parameter_list|,
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
 parameter_list|)
 block|{
 name|this
@@ -1157,12 +1128,6 @@ operator|.
 name|webLinks
 operator|=
 name|webLinks
-expr_stmt|;
-name|this
-operator|.
-name|changeControlFactory
-operator|=
-name|changeControlFactory
 expr_stmt|;
 block|}
 annotation|@
