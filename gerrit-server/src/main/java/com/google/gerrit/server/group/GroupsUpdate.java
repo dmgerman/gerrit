@@ -83,6 +83,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|Groups
+operator|.
+name|getExistingGroupFromReviewDb
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -946,9 +964,7 @@ block|{
 name|AccountGroup
 name|group
 init|=
-name|groups
-operator|.
-name|getExistingGroup
+name|getExistingGroupFromReviewDb
 argument_list|(
 name|db
 argument_list|,
@@ -1012,9 +1028,7 @@ block|{
 name|AccountGroup
 name|group
 init|=
-name|groups
-operator|.
-name|getExistingGroup
+name|getExistingGroupFromReviewDb
 argument_list|(
 name|db
 argument_list|,
@@ -1302,9 +1316,7 @@ block|{
 name|AccountGroup
 name|group
 init|=
-name|groups
-operator|.
-name|getExistingGroup
+name|getExistingGroupFromReviewDb
 argument_list|(
 name|db
 argument_list|,
@@ -1551,9 +1563,7 @@ block|{
 name|AccountGroup
 name|group
 init|=
-name|groups
-operator|.
-name|getExistingGroup
+name|getExistingGroupFromReviewDb
 argument_list|(
 name|db
 argument_list|,
@@ -1750,9 +1760,7 @@ block|{
 name|AccountGroup
 name|parentGroup
 init|=
-name|groups
-operator|.
-name|getExistingGroup
+name|getExistingGroupFromReviewDb
 argument_list|(
 name|db
 argument_list|,
@@ -1957,9 +1965,7 @@ block|{
 name|AccountGroup
 name|parentGroup
 init|=
-name|groups
-operator|.
-name|getExistingGroup
+name|getExistingGroupFromReviewDb
 argument_list|(
 name|db
 argument_list|,
