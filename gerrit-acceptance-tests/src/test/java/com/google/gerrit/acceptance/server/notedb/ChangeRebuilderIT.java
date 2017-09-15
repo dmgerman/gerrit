@@ -500,6 +500,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|ChangeInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|CommentInfo
 import|;
 end_import
@@ -3926,22 +3942,22 @@ block|}
 block|}
 comment|// TODO(dborowitz): Re-enable these assertions once we fix auto-rebuilding
 comment|// in the BatchUpdate path.
-comment|//// As an implementation detail, change wasn't actually rebuilt inside the
-comment|//// BatchUpdate transaction, but it was rebuilt during read for the
-comment|//// subsequent reindex. Thus it's impossible to actually observe an
-comment|//// out-of-date state in the caller.
-comment|//assertChangeUpToDate(true, id);
-comment|//// Check that the bundles are equal.
-comment|//ChangeNotes notes = notesFactory.create(dbProvider.get(), project, id);
-comment|//ChangeBundle actual = ChangeBundle.fromNotes(commentsUtil, notes);
-comment|//ChangeBundle expected = bundleReader.fromReviewDb(getUnwrappedDb(), id);
-comment|//assertThat(actual.differencesFrom(expected)).isEmpty();
-comment|//assertThat(
+comment|// As an implementation detail, change wasn't actually rebuilt inside the
+comment|// BatchUpdate transaction, but it was rebuilt during read for the
+comment|// subsequent reindex. Thus it's impossible to actually observe an
+comment|// out-of-date state in the caller.
+comment|// assertChangeUpToDate(true, id);
+comment|// Check that the bundles are equal.
+comment|// ChangeNotes notes = notesFactory.create(dbProvider.get(), project, id);
+comment|// ChangeBundle actual = ChangeBundle.fromNotes(commentsUtil, notes);
+comment|// ChangeBundle expected = bundleReader.fromReviewDb(getUnwrappedDb(), id);
+comment|// assertThat(actual.differencesFrom(expected)).isEmpty();
+comment|// assertThat(
 comment|//        Iterables.transform(
 comment|//            notes.getChangeMessages(),
 comment|//            ChangeMessage::getMessage))
 comment|//    .contains(msg);
-comment|//assertThat(actual.getChange().getTopic()).isEqualTo(topic);
+comment|// assertThat(actual.getChange().getTopic()).isEqualTo(topic);
 block|}
 annotation|@
 name|Test
@@ -6070,91 +6086,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|PushOneCommit
-name|push
-init|=
-name|pushFactory
-operator|.
-name|create
-argument_list|(
-name|db
-argument_list|,
-name|admin
-operator|.
-name|getIdent
-argument_list|()
-argument_list|,
-name|testRepo
-argument_list|)
-decl_stmt|;
-name|PushOneCommit
-operator|.
-name|Result
+name|String
 name|r
 init|=
-name|push
-operator|.
-name|to
-argument_list|(
-literal|"refs/drafts/master"
-argument_list|)
-decl_stmt|;
-name|push
-operator|=
-name|pushFactory
-operator|.
-name|create
-argument_list|(
-name|db
-argument_list|,
-name|admin
-operator|.
-name|getIdent
-argument_list|()
-argument_list|,
-name|testRepo
-argument_list|,
-name|PushOneCommit
-operator|.
-name|SUBJECT
-argument_list|,
-literal|"b.txt"
-argument_list|,
-literal|"4711"
-argument_list|,
-name|r
-operator|.
-name|getChangeId
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|r
-operator|=
-name|push
-operator|.
-name|to
-argument_list|(
-literal|"refs/drafts/master"
-argument_list|)
-expr_stmt|;
-name|PatchSet
-operator|.
-name|Id
-name|psId
-init|=
-name|r
-operator|.
-name|getPatchSetId
-argument_list|()
-decl_stmt|;
-name|Change
-operator|.
-name|Id
-name|id
-init|=
-name|psId
-operator|.
-name|getParentKey
+name|createDraftChangeWith2PS
 argument_list|()
 decl_stmt|;
 name|gApi
@@ -6165,9 +6100,6 @@ operator|.
 name|id
 argument_list|(
 name|r
-operator|.
-name|getChangeId
-argument_list|()
 argument_list|)
 operator|.
 name|revision
@@ -6178,6 +6110,29 @@ operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+name|ChangeInfo
+name|changeInfo
+init|=
+name|get
+argument_list|(
+name|r
+argument_list|)
+decl_stmt|;
+name|Change
+operator|.
+name|Id
+name|id
+init|=
+operator|new
+name|Change
+operator|.
+name|Id
+argument_list|(
+name|changeInfo
+operator|.
+name|_number
+argument_list|)
+decl_stmt|;
 name|checker
 operator|.
 name|rebuildAndCheckChanges
@@ -6217,9 +6172,9 @@ name|keySet
 argument_list|()
 argument_list|)
 operator|.
-name|containsExactly
+name|hasSize
 argument_list|(
-name|psId
+literal|1
 argument_list|)
 expr_stmt|;
 block|}

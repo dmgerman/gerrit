@@ -76,20 +76,6 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Gerrit
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
 name|info
 operator|.
 name|AccountInfo
@@ -242,22 +228,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|PatchSet
 import|;
 end_import
@@ -366,7 +336,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Create a new change.    *    *<p>The new change is created as DRAFT unless the draft workflow is disabled by    * `change.allowDrafts = false` in the configuration, in which case the new change is created as    * NEW.    */
+comment|/** Create a new work-in-progress change. */
 DECL|method|createChange ( String project, String branch, String topic, String subject, String base, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
@@ -453,35 +423,13 @@ name|base
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|Gerrit
-operator|.
-name|info
-argument_list|()
-operator|.
-name|change
-argument_list|()
-operator|.
-name|allowDrafts
-argument_list|()
-condition|)
-block|{
 name|input
 operator|.
-name|status
+name|workInProgress
 argument_list|(
-name|Change
-operator|.
-name|Status
-operator|.
-name|DRAFT
-operator|.
-name|toString
-argument_list|()
+literal|true
 argument_list|)
 expr_stmt|;
-block|}
 operator|new
 name|RestApi
 argument_list|(
@@ -2468,6 +2416,18 @@ name|String
 name|b
 parameter_list|)
 comment|/*-{ if(b)this.base_change=b; }-*/
+function_decl|;
+DECL|method|workInProgress (Boolean b)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|workInProgress
+parameter_list|(
+name|Boolean
+name|b
+parameter_list|)
+comment|/*-{ if(b)this.work_in_progress=b; }-*/
 function_decl|;
 DECL|method|CreateChangeInput ()
 specifier|protected

@@ -4213,7 +4213,7 @@ operator|.
 name|Result
 name|draft
 init|=
-name|amendChangeAsDraft
+name|amendChangeAndMarkPatchSetAsDraft
 argument_list|(
 name|change
 operator|.
