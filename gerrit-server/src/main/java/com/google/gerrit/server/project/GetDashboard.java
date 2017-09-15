@@ -85,6 +85,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|DashboardsCollection
+operator|.
+name|isDefaultDashboard
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -532,9 +550,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-literal|"default"
-operator|.
-name|equals
+name|isDefaultDashboard
 argument_list|(
 name|id
 argument_list|)
@@ -606,9 +622,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-literal|"default"
-operator|.
-name|equals
+name|isDefaultDashboard
 argument_list|(
 name|id
 argument_list|)
