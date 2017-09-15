@@ -2634,9 +2634,6 @@ operator|.
 name|getRevisionInfo
 argument_list|(
 name|cd
-operator|.
-name|changeControl
-argument_list|()
 argument_list|,
 name|cd
 operator|.
