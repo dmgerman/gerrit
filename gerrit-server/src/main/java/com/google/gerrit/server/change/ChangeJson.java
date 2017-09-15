@@ -3881,6 +3881,9 @@ operator|.
 name|check
 argument_list|(
 name|ctl
+operator|.
+name|getNotes
+argument_list|()
 argument_list|,
 name|fix
 argument_list|)
@@ -4180,6 +4183,9 @@ operator|.
 name|check
 argument_list|(
 name|ctl
+operator|.
+name|getNotes
+argument_list|()
 argument_list|,
 name|fix
 argument_list|)

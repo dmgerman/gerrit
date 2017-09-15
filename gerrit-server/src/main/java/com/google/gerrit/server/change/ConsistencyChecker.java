@@ -620,22 +620,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|update
 operator|.
 name|BatchUpdate
@@ -1063,14 +1047,14 @@ specifier|static
 class|class
 name|Result
 block|{
-DECL|method|create (ChangeControl ctl, List<ProblemInfo> problems)
+DECL|method|create (ChangeNotes notes, List<ProblemInfo> problems)
 specifier|private
 specifier|static
 name|Result
 name|create
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|List
 argument_list|<
@@ -1083,12 +1067,12 @@ return|return
 operator|new
 name|AutoValue_ConsistencyChecker_Result
 argument_list|(
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
-name|ctl
+name|notes
 operator|.
 name|getChange
 argument_list|()
@@ -1126,14 +1110,6 @@ name|problems
 parameter_list|()
 function_decl|;
 block|}
-DECL|field|changeControlFactory
-specifier|private
-specifier|final
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
-decl_stmt|;
 DECL|field|notesFactory
 specifier|private
 specifier|final
@@ -1228,10 +1204,10 @@ specifier|private
 name|FixInput
 name|fix
 decl_stmt|;
-DECL|field|ctl
+DECL|field|notes
 specifier|private
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
 decl_stmt|;
 DECL|field|repo
 specifier|private
@@ -1283,7 +1259,7 @@ name|problems
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ConsistencyChecker ( @erritPersonIdent Provider<PersonIdent> serverIdent, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, Accounts accounts, DynamicItem<AccountPatchReviewStore> accountPatchReviewStore, GitRepositoryManager repoManager, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, PatchSetUtil psUtil, Provider<CurrentUser> user, Provider<ReviewDb> db, RetryHelper retryHelper)
+DECL|method|ConsistencyChecker ( @erritPersonIdent Provider<PersonIdent> serverIdent, ChangeNotes.Factory notesFactory, Accounts accounts, DynamicItem<AccountPatchReviewStore> accountPatchReviewStore, GitRepositoryManager repoManager, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, PatchSetUtil psUtil, Provider<CurrentUser> user, Provider<ReviewDb> db, RetryHelper retryHelper)
 name|ConsistencyChecker
 parameter_list|(
 annotation|@
@@ -1293,11 +1269,6 @@ argument_list|<
 name|PersonIdent
 argument_list|>
 name|serverIdent
-parameter_list|,
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
 parameter_list|,
 name|ChangeNotes
 operator|.
@@ -1354,12 +1325,6 @@ operator|.
 name|accountPatchReviewStore
 operator|=
 name|accountPatchReviewStore
-expr_stmt|;
-name|this
-operator|.
-name|changeControlFactory
-operator|=
-name|changeControlFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1429,7 +1394,7 @@ name|updateFactory
 operator|=
 literal|null
 expr_stmt|;
-name|ctl
+name|notes
 operator|=
 literal|null
 expr_stmt|;
@@ -1456,19 +1421,19 @@ name|change
 parameter_list|()
 block|{
 return|return
-name|ctl
+name|notes
 operator|.
 name|getChange
 argument_list|()
 return|;
 block|}
-DECL|method|check (ChangeControl cc, @Nullable FixInput f)
+DECL|method|check (ChangeNotes notes, @Nullable FixInput f)
 specifier|public
 name|Result
 name|check
 parameter_list|(
-name|ChangeControl
-name|cc
+name|ChangeNotes
+name|notes
 parameter_list|,
 annotation|@
 name|Nullable
@@ -1478,7 +1443,7 @@ parameter_list|)
 block|{
 name|checkNotNull
 argument_list|(
-name|cc
+name|notes
 argument_list|)
 expr_stmt|;
 try|try
@@ -1502,9 +1467,11 @@ name|updateFactory
 operator|=
 name|buf
 expr_stmt|;
-name|ctl
+name|this
+operator|.
+name|notes
 operator|=
-name|cc
+name|notes
 expr_stmt|;
 name|fix
 operator|=
@@ -1575,7 +1542,7 @@ name|logAndReturnOneProblem
 argument_list|(
 name|e
 argument_list|,
-name|cc
+name|notes
 argument_list|,
 literal|"Error checking change: "
 operator|+
@@ -1597,14 +1564,14 @@ name|logAndReturnOneProblem
 argument_list|(
 name|e
 argument_list|,
-name|cc
+name|notes
 argument_list|,
 literal|"Error checking change"
 argument_list|)
 return|;
 block|}
 block|}
-DECL|method|logAndReturnOneProblem (Exception e, ChangeControl cc, String problem)
+DECL|method|logAndReturnOneProblem (Exception e, ChangeNotes notes, String problem)
 specifier|private
 name|Result
 name|logAndReturnOneProblem
@@ -1612,8 +1579,8 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|,
-name|ChangeControl
-name|cc
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|String
 name|problem
@@ -1625,9 +1592,9 @@ name|warn
 argument_list|(
 literal|"Error checking change "
 operator|+
-name|cc
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 name|e
@@ -1638,7 +1605,7 @@ name|Result
 operator|.
 name|create
 argument_list|(
-name|cc
+name|notes
 argument_list|,
 name|ImmutableList
 operator|.
@@ -1760,10 +1727,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|)
 expr_stmt|;
 if|if
@@ -1927,10 +1891,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3439,10 +3400,7 @@ name|patchSetInserterFactory
 operator|.
 name|create
 argument_list|(
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
 name|psId
 argument_list|,
@@ -3482,9 +3440,9 @@ name|bu
 operator|.
 name|addOp
 argument_list|(
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 operator|new
@@ -3534,9 +3492,9 @@ name|bu
 operator|.
 name|addOp
 argument_list|(
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 operator|new
@@ -3557,9 +3515,9 @@ name|bu
 operator|.
 name|addOp
 argument_list|(
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 name|inserter
@@ -3596,9 +3554,9 @@ name|bu
 operator|.
 name|addOp
 argument_list|(
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 operator|new
@@ -3614,11 +3572,11 @@ name|execute
 argument_list|()
 expr_stmt|;
 block|}
-name|ctl
+name|notes
 operator|=
-name|changeControlFactory
+name|notesFactory
 operator|.
-name|controlFor
+name|createChecked
 argument_list|(
 name|db
 operator|.
@@ -3628,11 +3586,6 @@ argument_list|,
 name|inserter
 operator|.
 name|getChange
-argument_list|()
-argument_list|,
-name|ctl
-operator|.
-name|getUser
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3829,9 +3782,9 @@ name|bu
 operator|.
 name|addOp
 argument_list|(
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 operator|new
@@ -3861,9 +3814,9 @@ name|warn
 argument_list|(
 literal|"Error marking "
 operator|+
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 operator|+
 literal|"as merged"
@@ -3909,9 +3862,9 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|,
-name|ctl
+name|user
 operator|.
-name|getUser
+name|get
 argument_list|()
 argument_list|,
 name|TimeUtil
@@ -4176,9 +4129,9 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -4187,9 +4140,9 @@ name|bu
 operator|.
 name|addOp
 argument_list|(
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 name|op
@@ -4200,9 +4153,9 @@ name|bu
 operator|.
 name|addOp
 argument_list|(
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 operator|new
@@ -5043,9 +4996,9 @@ name|warn
 argument_list|(
 literal|"Error in consistency check of change "
 operator|+
-name|ctl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 name|t
@@ -5063,7 +5016,7 @@ name|Result
 operator|.
 name|create
 argument_list|(
-name|ctl
+name|notes
 argument_list|,
 name|problems
 argument_list|)
