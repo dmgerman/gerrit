@@ -5133,6 +5133,9 @@ argument_list|(
 name|out
 argument_list|,
 name|ctl
+operator|.
+name|getNotes
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

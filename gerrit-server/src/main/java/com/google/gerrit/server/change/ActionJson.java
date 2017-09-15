@@ -312,6 +312,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|extensions
 operator|.
 name|webui
@@ -330,9 +344,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|notedb
 operator|.
-name|ChangeControl
+name|ChangeNotes
 import|;
 end_import
 
@@ -359,6 +373,18 @@ operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
 import|;
 end_import
 
@@ -481,9 +507,18 @@ name|ActionVisitor
 argument_list|>
 name|visitorSet
 decl_stmt|;
+DECL|field|userProvider
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|userProvider
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ActionJson ( Revisions revisions, ChangeJson.Factory changeJsonFactory, ChangeResource.Factory changeResourceFactory, UiActions uiActions, DynamicMap<RestView<ChangeResource>> changeViews, DynamicSet<ActionVisitor> visitorSet)
+DECL|method|ActionJson ( Revisions revisions, ChangeJson.Factory changeJsonFactory, ChangeResource.Factory changeResourceFactory, UiActions uiActions, DynamicMap<RestView<ChangeResource>> changeViews, DynamicSet<ActionVisitor> visitorSet, Provider<CurrentUser> userProvider)
 name|ActionJson
 parameter_list|(
 name|Revisions
@@ -516,6 +551,12 @@ argument_list|<
 name|ActionVisitor
 argument_list|>
 name|visitorSet
+parameter_list|,
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|userProvider
 parameter_list|)
 block|{
 name|this
@@ -553,6 +594,12 @@ operator|.
 name|visitorSet
 operator|=
 name|visitorSet
+expr_stmt|;
+name|this
+operator|.
+name|userProvider
+operator|=
+name|userProvider
 expr_stmt|;
 block|}
 DECL|method|format (RevisionResource rsrc)
@@ -677,7 +724,7 @@ name|visitorSet
 argument_list|)
 return|;
 block|}
-DECL|method|addChangeActions (ChangeInfo to, ChangeControl ctl)
+DECL|method|addChangeActions (ChangeInfo to, ChangeNotes notes)
 specifier|public
 name|ChangeInfo
 name|addChangeActions
@@ -685,8 +732,8 @@ parameter_list|(
 name|ChangeInfo
 name|to
 parameter_list|,
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
 parameter_list|)
 block|{
 name|List
@@ -704,7 +751,7 @@ name|actions
 operator|=
 name|toActionMap
 argument_list|(
-name|ctl
+name|notes
 argument_list|,
 name|visitors
 argument_list|,
@@ -1140,7 +1187,7 @@ return|return
 name|copy
 return|;
 block|}
-DECL|method|toActionMap ( ChangeControl ctl, List<ActionVisitor> visitors, ChangeInfo changeInfo)
+DECL|method|toActionMap ( ChangeNotes notes, List<ActionVisitor> visitors, ChangeInfo changeInfo)
 specifier|private
 name|Map
 argument_list|<
@@ -1150,8 +1197,8 @@ name|ActionInfo
 argument_list|>
 name|toActionMap
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|List
 argument_list|<
@@ -1163,6 +1210,14 @@ name|ChangeInfo
 name|changeInfo
 parameter_list|)
 block|{
+name|CurrentUser
+name|user
+init|=
+name|userProvider
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -1179,10 +1234,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 operator|.
 name|isIdentifiedUser
 argument_list|()
@@ -1210,15 +1262,9 @@ name|changeResourceFactory
 operator|.
 name|create
 argument_list|(
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1228,7 +1274,7 @@ comment|// resulting action map.
 name|Status
 name|status
 init|=
-name|ctl
+name|notes
 operator|.
 name|getChange
 argument_list|()
