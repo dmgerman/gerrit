@@ -171,15 +171,39 @@ name|url
 parameter_list|()
 comment|/*-{ return this.url; }-*/
 function_decl|;
-DECL|method|isDefault ()
-specifier|public
+DECL|method|isDefaultLegacy ()
+specifier|private
 specifier|final
 specifier|native
 name|boolean
-name|isDefault
+name|isDefaultLegacy
 parameter_list|()
 comment|/*-{ return this['default'] ? true : false; }-*/
 function_decl|;
+DECL|method|isDefaultNew ()
+specifier|private
+specifier|final
+specifier|native
+name|boolean
+name|isDefaultNew
+parameter_list|()
+comment|/*-{ return this.is_default ? true : false; }-*/
+function_decl|;
+DECL|method|isDefault ()
+specifier|public
+specifier|final
+name|boolean
+name|isDefault
+parameter_list|()
+block|{
+return|return
+name|isDefaultLegacy
+argument_list|()
+operator|||
+name|isDefaultNew
+argument_list|()
+return|;
+block|}
 DECL|method|DashboardInfo ()
 specifier|protected
 name|DashboardInfo
