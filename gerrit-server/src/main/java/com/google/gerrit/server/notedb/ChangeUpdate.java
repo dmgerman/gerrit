@@ -808,6 +808,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|GerritPersonIdent
 import|;
 end_import
@@ -873,22 +887,6 @@ operator|.
 name|mail
 operator|.
 name|Address
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ChangeControl
 import|;
 end_import
 
@@ -1273,20 +1271,26 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ChangeControl ctl)
+DECL|method|create (ChangeNotes notes, CurrentUser user)
 name|ChangeUpdate
 name|create
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 function_decl|;
-DECL|method|create (ChangeControl ctl, Date when)
+DECL|method|create (ChangeNotes notes, CurrentUser user, Date when)
 name|ChangeUpdate
 name|create
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|Date
 name|when
@@ -1338,12 +1342,15 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|VisibleForTesting
-DECL|method|create (ChangeControl ctl, Date when, Comparator<String> labelNameComparator)
+DECL|method|create ( ChangeNotes notes, CurrentUser user, Date when, Comparator<String> labelNameComparator)
 name|ChangeUpdate
 name|create
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|Date
 name|when
@@ -1608,7 +1615,7 @@ name|deleteCommentRewriter
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted CurrentUser user, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1658,8 +1665,13 @@ name|projectCache
 parameter_list|,
 annotation|@
 name|Assisted
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+annotation|@
+name|Assisted
+name|CurrentUser
+name|user
 parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
@@ -1687,7 +1699,9 @@ name|deleteCommentRewriterFactory
 argument_list|,
 name|projectCache
 argument_list|,
-name|ctl
+name|notes
+argument_list|,
+name|user
 argument_list|,
 name|serverIdent
 operator|.
@@ -1700,7 +1714,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted CurrentUser user, @Assisted Date when, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1750,8 +1764,13 @@ name|projectCache
 parameter_list|,
 annotation|@
 name|Assisted
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+annotation|@
+name|Assisted
+name|CurrentUser
+name|user
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1782,7 +1801,9 @@ name|robotCommentUpdateFactory
 argument_list|,
 name|deleteCommentRewriterFactory
 argument_list|,
-name|ctl
+name|notes
+argument_list|,
+name|user
 argument_list|,
 name|when
 argument_list|,
@@ -1790,10 +1811,10 @@ name|projectCache
 operator|.
 name|get
 argument_list|(
+name|notes
+operator|.
 name|getProjectName
-argument_list|(
-name|ctl
-argument_list|)
+argument_list|()
 argument_list|)
 operator|.
 name|getLabelTypes
@@ -1805,28 +1826,6 @@ argument_list|,
 name|noteUtil
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|getProjectName (ChangeControl ctl)
-specifier|private
-specifier|static
-name|Project
-operator|.
-name|NameKey
-name|getProjectName
-parameter_list|(
-name|ChangeControl
-name|ctl
-parameter_list|)
-block|{
-return|return
-name|ctl
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
-argument_list|()
-return|;
 block|}
 DECL|method|approvals ( Comparator<String> nameComparator)
 specifier|private
@@ -1871,7 +1870,7 @@ return|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, @Assisted ChangeNotes notes, @Assisted CurrentUser user, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1918,8 +1917,13 @@ name|deleteCommentRewriterFactory
 parameter_list|,
 annotation|@
 name|Assisted
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+annotation|@
+name|Assisted
+name|CurrentUser
+name|user
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1944,7 +1948,9 @@ name|cfg
 argument_list|,
 name|migration
 argument_list|,
-name|ctl
+name|notes
+argument_list|,
+name|user
 argument_list|,
 name|serverIdent
 argument_list|,
