@@ -862,6 +862,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -1048,13 +1060,19 @@ decl_stmt|;
 DECL|field|listBranches
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ListBranches
+argument_list|>
 name|listBranches
 decl_stmt|;
 DECL|field|listTags
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ListTags
+argument_list|>
 name|listTags
 decl_stmt|;
 DECL|field|deleteBranches
@@ -1093,7 +1111,7 @@ name|dashboardApi
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
 name|CurrentUser
@@ -1157,10 +1175,16 @@ parameter_list|,
 name|PutConfig
 name|putConfig
 parameter_list|,
+name|Provider
+argument_list|<
 name|ListBranches
+argument_list|>
 name|listBranches
 parameter_list|,
+name|Provider
+argument_list|<
 name|ListTags
+argument_list|>
 name|listTags
 parameter_list|,
 name|DeleteBranches
@@ -1246,7 +1270,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, @Assisted String name)
+DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, @Assisted String name)
 name|ProjectApiImpl
 parameter_list|(
 name|CurrentUser
@@ -1310,10 +1334,16 @@ parameter_list|,
 name|PutConfig
 name|putConfig
 parameter_list|,
+name|Provider
+argument_list|<
 name|ListBranches
+argument_list|>
 name|listBranches
 parameter_list|,
+name|Provider
+argument_list|<
 name|ListTags
+argument_list|>
 name|listTags
 parameter_list|,
 name|DeleteBranches
@@ -1397,7 +1427,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, ProjectResource project, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, String name)
+DECL|method|ProjectApiImpl ( CurrentUser user, PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, ProjectResource project, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, String name)
 specifier|private
 name|ProjectApiImpl
 parameter_list|(
@@ -1462,10 +1492,16 @@ parameter_list|,
 name|PutConfig
 name|putConfig
 parameter_list|,
+name|Provider
+argument_list|<
 name|ListBranches
+argument_list|>
 name|listBranches
 parameter_list|,
+name|Provider
+argument_list|<
 name|ListTags
+argument_list|>
 name|listTags
 parameter_list|,
 name|DeleteBranches
@@ -2110,6 +2146,9 @@ block|{
 return|return
 name|listBranches
 operator|.
+name|get
+argument_list|()
+operator|.
 name|request
 argument_list|(
 name|this
@@ -2176,6 +2215,9 @@ try|try
 block|{
 return|return
 name|listTags
+operator|.
+name|get
+argument_list|()
 operator|.
 name|request
 argument_list|(
