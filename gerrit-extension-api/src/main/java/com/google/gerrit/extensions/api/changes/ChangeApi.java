@@ -518,6 +518,14 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Check if this change is ignored.    *    * @return true if the change is ignored    */
+DECL|method|ignored ()
+name|boolean
+name|ignored
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Mute or un-mute this change.    *    * @param mute mute the change if true    */
 DECL|method|mute (boolean mute)
 name|void
@@ -2000,6 +2008,22 @@ parameter_list|(
 name|boolean
 name|ignore
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|ignored ()
+specifier|public
+name|boolean
+name|ignored
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
