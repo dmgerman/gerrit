@@ -4147,10 +4147,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|ignoreChange ()
+DECL|method|ignoreChangeBySetStars ()
 specifier|public
 name|void
-name|ignoreChange
+name|ignoreChangeBySetStars
 parameter_list|()
 throws|throws
 name|Exception
