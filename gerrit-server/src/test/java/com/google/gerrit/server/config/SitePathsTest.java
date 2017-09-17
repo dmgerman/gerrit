@@ -94,6 +94,8 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|testing
+operator|.
 name|PathSubject
 import|;
 end_import

@@ -112,6 +112,8 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|testing
+operator|.
 name|EditInfoSubject
 operator|.
 name|assertThat

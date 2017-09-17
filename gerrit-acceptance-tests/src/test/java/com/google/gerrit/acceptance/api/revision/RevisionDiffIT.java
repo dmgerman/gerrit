@@ -112,6 +112,8 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|testing
+operator|.
 name|DiffInfoSubject
 operator|.
 name|assertThat
@@ -129,6 +131,8 @@ operator|.
 name|extensions
 operator|.
 name|common
+operator|.
+name|testing
 operator|.
 name|FileInfoSubject
 operator|.

@@ -182,6 +182,8 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|testing
+operator|.
 name|EditInfoSubject
 operator|.
 name|assertThat
@@ -199,6 +201,8 @@ operator|.
 name|extensions
 operator|.
 name|restapi
+operator|.
+name|testing
 operator|.
 name|BinaryResultSubject
 operator|.

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.common
+DECL|package|com.google.gerrit.extensions.common.testing
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|extensions
 operator|.
 name|common
+operator|.
+name|testing
 package|;
 end_package
 
@@ -107,6 +109,38 @@ operator|.
 name|truth
 operator|.
 name|Subject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|FixSuggestionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|RobotCommentInfo
 import|;
 end_import
 

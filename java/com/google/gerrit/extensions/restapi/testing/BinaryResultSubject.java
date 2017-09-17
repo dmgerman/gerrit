@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.restapi
+DECL|package|com.google.gerrit.extensions.restapi.testing
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|extensions
 operator|.
 name|restapi
+operator|.
+name|testing
 package|;
 end_package
 
@@ -149,6 +151,22 @@ operator|.
 name|truth
 operator|.
 name|Truth
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|BinaryResult
 import|;
 end_import
 

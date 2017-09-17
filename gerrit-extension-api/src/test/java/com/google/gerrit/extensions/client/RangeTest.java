@@ -78,6 +78,8 @@ name|extensions
 operator|.
 name|client
 operator|.
+name|testing
+operator|.
 name|RangeSubject
 operator|.
 name|assertThat
