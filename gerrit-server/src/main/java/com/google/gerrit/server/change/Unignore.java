@@ -298,7 +298,7 @@ argument_list|)
 operator|.
 name|setVisible
 argument_list|(
-name|canUnignore
+name|isIgnored
 argument_list|(
 name|rsrc
 argument_list|)
@@ -326,10 +326,9 @@ name|RestApiException
 throws|,
 name|OrmException
 block|{
-comment|// Don't try to unignore own changes or not ignored changes
 if|if
 condition|(
-name|canUnignore
+name|isIgnored
 argument_list|(
 name|rsrc
 argument_list|)
@@ -349,28 +348,6 @@ operator|.
 name|ok
 argument_list|(
 literal|""
-argument_list|)
-return|;
-block|}
-DECL|method|canUnignore (ChangeResource rsrc)
-specifier|private
-name|boolean
-name|canUnignore
-parameter_list|(
-name|ChangeResource
-name|rsrc
-parameter_list|)
-block|{
-return|return
-operator|!
-name|rsrc
-operator|.
-name|isUserOwner
-argument_list|()
-operator|&&
-name|isIgnored
-argument_list|(
-name|rsrc
 argument_list|)
 return|;
 block|}
