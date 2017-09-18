@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.gpg.testutil
+DECL|package|com.google.gerrit.gpg.testing
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|gpg
 operator|.
-name|testutil
+name|testing
 package|;
 end_package
 

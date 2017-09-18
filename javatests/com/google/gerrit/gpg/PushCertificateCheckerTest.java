@@ -106,7 +106,7 @@ name|gerrit
 operator|.
 name|gpg
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestKeys
 operator|.
@@ -124,7 +124,7 @@ name|gerrit
 operator|.
 name|gpg
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestKeys
 operator|.
@@ -142,7 +142,7 @@ name|gerrit
 operator|.
 name|gpg
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestKeys
 operator|.
@@ -186,7 +186,7 @@ name|gerrit
 operator|.
 name|gpg
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestKey
 import|;
