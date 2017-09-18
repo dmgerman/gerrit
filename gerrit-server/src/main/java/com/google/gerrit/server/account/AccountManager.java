@@ -362,22 +362,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
-operator|.
-name|ServerInitiated
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|ProjectCache
@@ -710,18 +694,17 @@ operator|.
 name|Server
 name|externalIdsUpdateFactory
 decl_stmt|;
-DECL|field|groupsUpdateProvider
+DECL|field|groupsUpdateFactory
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|GroupsUpdate
-argument_list|>
-name|groupsUpdateProvider
+operator|.
+name|Factory
+name|groupsUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountManager ( SchemaFactory<ReviewDb> schema, Sequences sequences, @GerritServerConfig Config cfg, Accounts accounts, AccountsUpdate.Server accountsUpdateFactory, AccountCache byIdCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, ChangeUserName.Factory changeUserNameFactory, ProjectCache projectCache, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.Server externalIdsUpdateFactory, @ServerInitiated Provider<GroupsUpdate> groupsUpdateProvider)
+DECL|method|AccountManager ( SchemaFactory<ReviewDb> schema, Sequences sequences, @GerritServerConfig Config cfg, Accounts accounts, AccountsUpdate.Server accountsUpdateFactory, AccountCache byIdCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, ChangeUserName.Factory changeUserNameFactory, ProjectCache projectCache, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.Server externalIdsUpdateFactory, GroupsUpdate.Factory groupsUpdateFactory)
 name|AccountManager
 parameter_list|(
 name|SchemaFactory
@@ -779,13 +762,10 @@ operator|.
 name|Server
 name|externalIdsUpdateFactory
 parameter_list|,
-annotation|@
-name|ServerInitiated
-name|Provider
-argument_list|<
 name|GroupsUpdate
-argument_list|>
-name|groupsUpdateProvider
+operator|.
+name|Factory
+name|groupsUpdateFactory
 parameter_list|)
 block|{
 name|this
@@ -881,9 +861,9 @@ name|externalIdsUpdateFactory
 expr_stmt|;
 name|this
 operator|.
-name|groupsUpdateProvider
+name|groupsUpdateFactory
 operator|=
-name|groupsUpdateProvider
+name|groupsUpdateFactory
 expr_stmt|;
 block|}
 comment|/** @return user identified by this external identity string */
@@ -1732,22 +1712,17 @@ operator|.
 name|getUUID
 argument_list|()
 decl_stmt|;
+comment|// The user initiated this request by logging in. -> Attribute all modifications to that user.
 name|GroupsUpdate
 name|groupsUpdate
 init|=
-name|groupsUpdateProvider
+name|groupsUpdateFactory
 operator|.
-name|get
-argument_list|()
-decl_stmt|;
-comment|// The user initiated this request by logging in. -> Attribute all modifications to that user.
-name|groupsUpdate
-operator|.
-name|setCurrentUser
+name|create
 argument_list|(
 name|user
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 try|try
 block|{
 name|groupsUpdate
