@@ -1255,11 +1255,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|submitType (ChangeData cd, PatchSet ps, boolean visible)
+DECL|method|submitType (CurrentUser user, ChangeData cd, PatchSet ps, boolean visible)
 specifier|private
 name|SubmitType
 name|submitType
 parameter_list|(
+name|CurrentUser
+name|user
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -1327,6 +1330,8 @@ name|submitRuleEvaluatorFactory
 operator|.
 name|create
 argument_list|(
+name|user
+argument_list|,
 name|cd
 argument_list|)
 operator|.
@@ -1848,6 +1853,8 @@ if|if
 condition|(
 name|submitType
 argument_list|(
+name|user
+argument_list|,
 name|cd
 argument_list|,
 name|ps

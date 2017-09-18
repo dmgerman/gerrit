@@ -2376,7 +2376,8 @@ name|create
 argument_list|(
 name|db
 argument_list|,
-name|this
+name|getNotes
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -2615,9 +2616,8 @@ name|create
 argument_list|(
 name|reviewDb
 argument_list|,
-name|ChangeControl
-operator|.
-name|this
+name|getNotes
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
