@@ -4119,6 +4119,8 @@ name|RestApiException
 block|{
 comment|// TODO(dborowitz): Convert to RetryingRestModifyView. Needs to plumb BatchUpdate.Factory into
 comment|// StarredChangesUtil.
+try|try
+block|{
 if|if
 condition|(
 name|ignore
@@ -4155,6 +4157,22 @@ name|Input
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|asRestApiException
+argument_list|(
+literal|"Cannot ignore change"
+argument_list|,
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 annotation|@
@@ -4220,6 +4238,8 @@ name|RestApiException
 block|{
 comment|// TODO(dborowitz): Convert to RetryingRestModifyView. Needs to plumb BatchUpdate.Factory into
 comment|// StarredChangesUtil.
+try|try
+block|{
 if|if
 condition|(
 name|mute
@@ -4256,6 +4276,22 @@ name|Input
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|asRestApiException
+argument_list|(
+literal|"Cannot mute change"
+argument_list|,
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 annotation|@

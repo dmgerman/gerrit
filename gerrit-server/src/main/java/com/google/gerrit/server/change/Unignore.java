@@ -323,8 +323,8 @@ name|input
 parameter_list|)
 throws|throws
 name|RestApiException
-block|{
-try|try
+throws|,
+name|OrmException
 block|{
 comment|// Don't try to unignore own changes or not ignored changes
 if|if
@@ -351,23 +351,6 @@ argument_list|(
 literal|""
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RestApiException
-argument_list|(
-literal|"failed to unignore change"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|canUnignore (ChangeResource rsrc)
 specifier|private
