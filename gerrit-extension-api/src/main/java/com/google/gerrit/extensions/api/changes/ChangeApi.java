@@ -537,6 +537,14 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Check if this change is muted.    *    * @return true if the change is muted.    */
+DECL|method|muted ()
+name|boolean
+name|muted
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Create a new change that reverts this change.    *    * @see Changes#id(int)    */
 DECL|method|revert ()
 name|ChangeApi
@@ -2043,6 +2051,22 @@ parameter_list|(
 name|boolean
 name|mute
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|muted ()
+specifier|public
+name|boolean
+name|muted
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
