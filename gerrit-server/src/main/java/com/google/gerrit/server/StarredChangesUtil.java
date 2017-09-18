@@ -1090,7 +1090,7 @@ specifier|static
 class|class
 name|IllegalLabelException
 extends|extends
-name|IllegalArgumentException
+name|Exception
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -1502,6 +1502,8 @@ name|labelsToRemove
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IllegalLabelException
 block|{
 try|try
 init|(
@@ -2331,6 +2333,8 @@ name|rsrc
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IllegalLabelException
 block|{
 name|star
 argument_list|(
@@ -2382,6 +2386,8 @@ name|rsrc
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IllegalLabelException
 block|{
 name|star
 argument_list|(
@@ -2534,6 +2540,8 @@ name|change
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IllegalLabelException
 block|{
 name|star
 argument_list|(
@@ -2583,6 +2591,8 @@ name|change
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IllegalLabelException
 block|{
 name|star
 argument_list|(
@@ -2772,6 +2782,8 @@ name|labels
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|InvalidLabelsException
 block|{
 name|validateLabels
 argument_list|(
@@ -2847,6 +2859,8 @@ name|String
 argument_list|>
 name|labels
 parameter_list|)
+throws|throws
+name|MutuallyExclusiveLabelsException
 block|{
 if|if
 condition|(
@@ -2888,6 +2902,8 @@ name|String
 argument_list|>
 name|labels
 parameter_list|)
+throws|throws
+name|InvalidLabelsException
 block|{
 if|if
 condition|(
@@ -2981,6 +2997,8 @@ throws|throws
 name|IOException
 throws|,
 name|OrmException
+throws|,
+name|InvalidLabelsException
 block|{
 try|try
 init|(

@@ -1338,6 +1338,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|IllegalLabelException
 block|{
 if|if
 condition|(
