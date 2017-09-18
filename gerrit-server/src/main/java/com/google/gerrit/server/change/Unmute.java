@@ -395,8 +395,8 @@ name|input
 parameter_list|)
 throws|throws
 name|RestApiException
-block|{
-try|try
+throws|,
+name|OrmException
 block|{
 if|if
 condition|(
@@ -448,23 +448,6 @@ name|getChange
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RestApiException
-argument_list|(
-literal|"failed to unmute change"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 return|return
 name|Response
 operator|.

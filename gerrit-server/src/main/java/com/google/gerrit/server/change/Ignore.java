@@ -371,6 +371,8 @@ name|input
 parameter_list|)
 throws|throws
 name|RestApiException
+throws|,
+name|OrmException
 block|{
 try|try
 block|{
@@ -430,22 +432,6 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RestApiException
-argument_list|(
-literal|"failed to ignore change"
-argument_list|,
-name|e
 argument_list|)
 throw|;
 block|}
