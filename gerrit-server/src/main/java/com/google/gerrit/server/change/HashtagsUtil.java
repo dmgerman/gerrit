@@ -154,6 +154,51 @@ specifier|public
 class|class
 name|HashtagsUtil
 block|{
+DECL|class|InvalidHashtagException
+specifier|public
+specifier|static
+class|class
+name|InvalidHashtagException
+extends|extends
+name|Exception
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+DECL|method|hashtagsMayNotContainCommas ()
+specifier|static
+name|InvalidHashtagException
+name|hashtagsMayNotContainCommas
+parameter_list|()
+block|{
+return|return
+operator|new
+name|InvalidHashtagException
+argument_list|(
+literal|"hashtags may not contain commas"
+argument_list|)
+return|;
+block|}
+DECL|method|InvalidHashtagException (String message)
+name|InvalidHashtagException
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|field|LEADER
 specifier|private
 specifier|static
@@ -312,7 +357,7 @@ argument_list|>
 name|input
 parameter_list|)
 throws|throws
-name|IllegalArgumentException
+name|InvalidHashtagException
 block|{
 if|if
 condition|(
@@ -358,11 +403,10 @@ argument_list|)
 condition|)
 block|{
 throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Hashtags may not contain commas"
-argument_list|)
+name|InvalidHashtagException
+operator|.
+name|hashtagsMayNotContainCommas
+argument_list|()
 throw|;
 block|}
 name|hashtag
