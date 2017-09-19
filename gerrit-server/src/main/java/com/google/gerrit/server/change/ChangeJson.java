@@ -1732,22 +1732,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|NoSuchChangeException
 import|;
 end_import
@@ -2224,6 +2208,12 @@ operator|.
 name|of
 argument_list|(
 name|ALL_REVISIONS
+argument_list|,
+name|CHANGE_ACTIONS
+argument_list|,
+name|CHECK
+argument_list|,
+name|CURRENT_ACTIONS
 argument_list|,
 name|MESSAGES
 argument_list|)
@@ -3773,25 +3763,17 @@ name|ChangeData
 name|cd
 parameter_list|)
 block|{
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
 decl_stmt|;
 try|try
 block|{
-name|ctl
+name|notes
 operator|=
 name|cd
 operator|.
-name|changeControl
+name|notes
 argument_list|()
-operator|.
-name|forUser
-argument_list|(
-name|userProvider
-operator|.
-name|get
-argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -3880,10 +3862,7 @@ argument_list|()
 operator|.
 name|check
 argument_list|(
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
 name|fix
 argument_list|)
@@ -4150,19 +4129,6 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|ChangeControl
-name|ctl
-init|=
-name|cd
-operator|.
-name|changeControl
-argument_list|()
-operator|.
-name|forUser
-argument_list|(
-name|user
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|has
@@ -4182,9 +4148,9 @@ argument_list|()
 operator|.
 name|check
 argument_list|(
-name|ctl
+name|cd
 operator|.
-name|getNotes
+name|notes
 argument_list|()
 argument_list|,
 name|fix
@@ -4748,8 +4714,6 @@ name|labelsFor
 argument_list|(
 name|perm
 argument_list|,
-name|ctl
-argument_list|,
 name|cd
 argument_list|,
 name|has
@@ -4883,7 +4847,7 @@ name|removableReviewers
 operator|=
 name|removableReviewers
 argument_list|(
-name|ctl
+name|cd
 argument_list|,
 name|out
 argument_list|)
@@ -5029,8 +4993,6 @@ name|messages
 operator|=
 name|messages
 argument_list|(
-name|ctl
-argument_list|,
 name|cd
 argument_list|,
 name|src
@@ -5055,8 +5017,6 @@ name|revisions
 operator|=
 name|revisions
 argument_list|(
-name|ctl
-argument_list|,
 name|cd
 argument_list|,
 name|src
@@ -5138,9 +5098,9 @@ name|addChangeActions
 argument_list|(
 name|out
 argument_list|,
-name|ctl
+name|cd
 operator|.
-name|getNotes
+name|notes
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5503,7 +5463,7 @@ name|SUBMIT_RULE_OPTIONS_LENIENT
 argument_list|)
 return|;
 block|}
-DECL|method|labelsFor ( PermissionBackend.ForChange perm, ChangeControl ctl, ChangeData cd, boolean standard, boolean detailed)
+DECL|method|labelsFor ( PermissionBackend.ForChange perm, ChangeData cd, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -5517,9 +5477,6 @@ name|PermissionBackend
 operator|.
 name|ForChange
 name|perm
-parameter_list|,
-name|ChangeControl
-name|ctl
 parameter_list|,
 name|ChangeData
 name|cd
@@ -5542,17 +5499,6 @@ name|standard
 operator|&&
 operator|!
 name|detailed
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-if|if
-condition|(
-name|ctl
-operator|==
-literal|null
 condition|)
 block|{
 return|return
@@ -8350,7 +8296,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|messages ( ChangeControl ctl, ChangeData cd, Map<PatchSet.Id, PatchSet> map)
+DECL|method|messages (ChangeData cd, Map<PatchSet.Id, PatchSet> map)
 specifier|private
 name|Collection
 argument_list|<
@@ -8358,9 +8304,6 @@ name|ChangeMessageInfo
 argument_list|>
 name|messages
 parameter_list|(
-name|ChangeControl
-name|ctl
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -8469,7 +8412,10 @@ name|patchNum
 operator|==
 literal|null
 operator|||
-name|ctl
+name|cd
+operator|.
+name|changeControl
+argument_list|()
 operator|.
 name|isPatchVisible
 argument_list|(
@@ -8599,7 +8545,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|removableReviewers (ChangeControl ctl, ChangeInfo out)
+DECL|method|removableReviewers (ChangeData cd, ChangeInfo out)
 specifier|private
 name|Collection
 argument_list|<
@@ -8607,8 +8553,8 @@ name|AccountInfo
 argument_list|>
 name|removableReviewers
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeData
+name|cd
 parameter_list|,
 name|ChangeInfo
 name|out
@@ -8617,6 +8563,8 @@ throws|throws
 name|PermissionBackendException
 throws|,
 name|NoSuchChangeException
+throws|,
+name|OrmException
 block|{
 comment|// Although this is called removableReviewers, this method also determines
 comment|// which CCs are removable.
@@ -8727,14 +8675,11 @@ name|removeReviewerControl
 operator|.
 name|testRemoveReviewer
 argument_list|(
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|cd
 argument_list|,
-name|ctl
+name|userProvider
 operator|.
-name|getUser
+name|get
 argument_list|()
 argument_list|,
 name|id
@@ -8838,14 +8783,11 @@ name|removeReviewerControl
 operator|.
 name|testRemoveReviewer
 argument_list|(
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|cd
 argument_list|,
-name|ctl
+name|userProvider
 operator|.
-name|getUser
+name|get
 argument_list|()
 argument_list|,
 name|id
@@ -9062,13 +9004,15 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|openRepoIfNecessary (ChangeControl ctl)
+DECL|method|openRepoIfNecessary (Project.NameKey project)
 specifier|private
 name|Repository
 name|openRepoIfNecessary
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|)
 throws|throws
 name|IOException
@@ -9096,13 +9040,7 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|ctl
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
-argument_list|()
+name|project
 argument_list|)
 return|;
 block|}
@@ -9137,7 +9075,7 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|revisions ( ChangeControl ctl, ChangeData cd, Map<PatchSet.Id, PatchSet> map, Optional<PatchSet.Id> limitToPsId, ChangeInfo changeInfo)
+DECL|method|revisions ( ChangeData cd, Map<PatchSet.Id, PatchSet> map, Optional<PatchSet.Id> limitToPsId, ChangeInfo changeInfo)
 specifier|private
 name|Map
 argument_list|<
@@ -9147,9 +9085,6 @@ name|RevisionInfo
 argument_list|>
 name|revisions
 parameter_list|(
-name|ChangeControl
-name|ctl
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -9203,7 +9138,10 @@ name|repo
 init|=
 name|openRepoIfNecessary
 argument_list|(
-name|ctl
+name|cd
+operator|.
+name|project
+argument_list|()
 argument_list|)
 init|;
 name|RevWalk
@@ -9284,9 +9222,9 @@ name|id
 operator|.
 name|equals
 argument_list|(
-name|ctl
+name|cd
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|currentPatchSetId
@@ -9298,7 +9236,10 @@ if|if
 condition|(
 name|want
 operator|&&
-name|ctl
+name|cd
+operator|.
+name|changeControl
+argument_list|()
 operator|.
 name|isPatchVisible
 argument_list|(
@@ -9325,8 +9266,6 @@ argument_list|()
 argument_list|,
 name|toRevisionInfo
 argument_list|(
-name|ctl
-argument_list|,
 name|cd
 argument_list|,
 name|in
@@ -9532,13 +9471,13 @@ return|return
 name|map
 return|;
 block|}
-DECL|method|getRevisionInfo (ChangeControl ctl, PatchSet in)
+DECL|method|getRevisionInfo (ChangeData cd, PatchSet in)
 specifier|public
 name|RevisionInfo
 name|getRevisionInfo
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeData
+name|cd
 parameter_list|,
 name|PatchSet
 name|in
@@ -9571,7 +9510,10 @@ name|repo
 init|=
 name|openRepoIfNecessary
 argument_list|(
-name|ctl
+name|cd
+operator|.
+name|project
+argument_list|()
 argument_list|)
 init|;
 name|RevWalk
@@ -9588,19 +9530,7 @@ name|rev
 init|=
 name|toRevisionInfo
 argument_list|(
-name|ctl
-argument_list|,
-name|changeDataFactory
-operator|.
-name|create
-argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
-name|ctl
-argument_list|)
+name|cd
 argument_list|,
 name|in
 argument_list|,
@@ -9623,14 +9553,11 @@ name|rev
 return|;
 block|}
 block|}
-DECL|method|toRevisionInfo ( ChangeControl ctl, ChangeData cd, PatchSet in, @Nullable Repository repo, @Nullable RevWalk rw, boolean fillCommit, @Nullable ChangeInfo changeInfo)
+DECL|method|toRevisionInfo ( ChangeData cd, PatchSet in, @Nullable Repository repo, @Nullable RevWalk rw, boolean fillCommit, @Nullable ChangeInfo changeInfo)
 specifier|private
 name|RevisionInfo
 name|toRevisionInfo
 parameter_list|(
-name|ChangeControl
-name|ctl
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -9667,9 +9594,9 @@ block|{
 name|Change
 name|c
 init|=
-name|ctl
+name|cd
 operator|.
-name|getChange
+name|change
 argument_list|()
 decl_stmt|;
 name|RevisionInfo
@@ -9759,7 +9686,7 @@ name|fetch
 operator|=
 name|makeFetchMap
 argument_list|(
-name|ctl
+name|cd
 argument_list|,
 name|in
 argument_list|)
@@ -9932,9 +9859,9 @@ name|repo
 operator|.
 name|exactRef
 argument_list|(
-name|ctl
+name|cd
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|getDest
@@ -9998,14 +9925,14 @@ name|commit
 argument_list|,
 name|mergeTip
 argument_list|,
-name|ctl
+name|cd
 operator|.
-name|getNotes
+name|notes
 argument_list|()
 argument_list|,
-name|ctl
+name|userProvider
 operator|.
-name|getUser
+name|get
 argument_list|()
 argument_list|,
 name|in
@@ -10120,14 +10047,14 @@ name|changeResourceFactory
 operator|.
 name|create
 argument_list|(
-name|ctl
+name|cd
 operator|.
-name|getNotes
+name|notes
 argument_list|()
 argument_list|,
-name|ctl
+name|userProvider
 operator|.
-name|getUser
+name|get
 argument_list|()
 argument_list|)
 argument_list|,
@@ -10433,7 +10360,7 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|makeFetchMap (ChangeControl ctl, PatchSet in)
+DECL|method|makeFetchMap (ChangeData cd, PatchSet in)
 specifier|private
 name|Map
 argument_list|<
@@ -10443,8 +10370,8 @@ name|FetchInfo
 argument_list|>
 name|makeFetchMap
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeData
+name|cd
 parameter_list|,
 name|PatchSet
 name|in
@@ -10533,7 +10460,10 @@ name|isAuthSupported
 argument_list|()
 operator|&&
 operator|!
-name|ctl
+name|cd
+operator|.
+name|changeControl
+argument_list|()
 operator|.
 name|forUser
 argument_list|(
@@ -10556,12 +10486,9 @@ block|}
 name|String
 name|projectName
 init|=
-name|ctl
+name|cd
 operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
+name|project
 argument_list|()
 operator|.
 name|get
