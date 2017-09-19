@@ -324,7 +324,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ProjectResource project, String name)
+DECL|method|create (ProjectResource project, String id)
 name|DashboardApiImpl
 name|create
 parameter_list|(
@@ -332,7 +332,7 @@ name|ProjectResource
 name|project
 parameter_list|,
 name|String
-name|name
+name|id
 parameter_list|)
 function_decl|;
 block|}
@@ -357,15 +357,15 @@ specifier|final
 name|ProjectResource
 name|project
 decl_stmt|;
-DECL|field|name
+DECL|field|id
 specifier|private
 specifier|final
 name|String
-name|name
+name|id
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DashboardApiImpl ( DashboardsCollection dashboards, Provider<GetDashboard> getDashboard, @Assisted ProjectResource project, @Assisted String name)
+DECL|method|DashboardApiImpl ( DashboardsCollection dashboards, Provider<GetDashboard> getDashboard, @Assisted ProjectResource project, @Assisted String id)
 name|DashboardApiImpl
 parameter_list|(
 name|DashboardsCollection
@@ -385,7 +385,7 @@ parameter_list|,
 annotation|@
 name|Assisted
 name|String
-name|name
+name|id
 parameter_list|)
 block|{
 name|this
@@ -408,9 +408,9 @@ name|project
 expr_stmt|;
 name|this
 operator|.
-name|name
+name|id
 operator|=
-name|name
+name|id
 expr_stmt|;
 block|}
 annotation|@
@@ -508,7 +508,7 @@ name|IdString
 operator|.
 name|fromDecoded
 argument_list|(
-name|name
+name|id
 argument_list|)
 argument_list|)
 return|;
