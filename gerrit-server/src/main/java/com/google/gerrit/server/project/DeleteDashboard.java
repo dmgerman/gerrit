@@ -94,6 +94,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|SetDashboardInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -269,9 +285,7 @@ name|RestModifyView
 argument_list|<
 name|DashboardResource
 argument_list|,
-name|SetDashboard
-operator|.
-name|Input
+name|SetDashboardInput
 argument_list|>
 block|{
 DECL|field|defaultSetter
@@ -304,7 +318,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (DashboardResource resource, SetDashboard.Input input)
+DECL|method|apply (DashboardResource resource, SetDashboardInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -315,9 +329,7 @@ parameter_list|(
 name|DashboardResource
 name|resource
 parameter_list|,
-name|SetDashboard
-operator|.
-name|Input
+name|SetDashboardInput
 name|input
 parameter_list|)
 throws|throws
@@ -343,15 +355,11 @@ name|isProjectDefault
 argument_list|()
 condition|)
 block|{
-name|SetDashboard
-operator|.
-name|Input
+name|SetDashboardInput
 name|in
 init|=
 operator|new
-name|SetDashboard
-operator|.
-name|Input
+name|SetDashboardInput
 argument_list|()
 decl_stmt|;
 name|in
