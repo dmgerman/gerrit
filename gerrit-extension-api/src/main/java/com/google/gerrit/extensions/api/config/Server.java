@@ -213,16 +213,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|checkAccess (AccessCheckInput in)
-name|AccessCheckInfo
-name|checkAccess
-parameter_list|(
-name|AccessCheckInput
-name|in
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -340,25 +330,6 @@ name|ConsistencyCheckInfo
 name|checkConsistency
 parameter_list|(
 name|ConsistencyCheckInput
-name|in
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|checkAccess (AccessCheckInput in)
-specifier|public
-name|AccessCheckInfo
-name|checkAccess
-parameter_list|(
-name|AccessCheckInput
 name|in
 parameter_list|)
 throws|throws

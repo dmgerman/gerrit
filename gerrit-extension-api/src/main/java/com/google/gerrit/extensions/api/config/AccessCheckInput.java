@@ -93,11 +93,6 @@ specifier|public
 name|String
 name|account
 decl_stmt|;
-DECL|field|project
-specifier|public
-name|String
-name|project
-decl_stmt|;
 DECL|field|ref
 annotation|@
 name|Nullable
@@ -105,15 +100,12 @@ specifier|public
 name|String
 name|ref
 decl_stmt|;
-DECL|method|AccessCheckInput (String account, String project, @Nullable String ref)
+DECL|method|AccessCheckInput (String account, @Nullable String ref)
 specifier|public
 name|AccessCheckInput
 parameter_list|(
 name|String
 name|account
-parameter_list|,
-name|String
-name|project
 parameter_list|,
 annotation|@
 name|Nullable
@@ -126,12 +118,6 @@ operator|.
 name|account
 operator|=
 name|account
-expr_stmt|;
-name|this
-operator|.
-name|project
-operator|=
-name|project
 expr_stmt|;
 name|this
 operator|.
