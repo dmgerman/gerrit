@@ -198,6 +198,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|AccountVisibility
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|InstallPluginInput
 import|;
 end_import
@@ -303,6 +319,18 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Test
+comment|// accounts
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
+literal|"accounts.visibility"
+argument_list|,
+name|value
+operator|=
+literal|"VISIBLE_GROUP"
+argument_list|)
 comment|// auth
 annotation|@
 name|GerritConfig
@@ -593,6 +621,23 @@ operator|.
 name|getInfo
 argument_list|()
 decl_stmt|;
+comment|// accounts
+name|assertThat
+argument_list|(
+name|i
+operator|.
+name|accounts
+operator|.
+name|visibility
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|AccountVisibility
+operator|.
+name|VISIBLE_GROUP
+argument_list|)
+expr_stmt|;
 comment|// auth
 name|assertThat
 argument_list|(
