@@ -122,6 +122,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|SetDashboardInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -294,24 +310,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|SetDashboard
-operator|.
-name|Input
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -389,7 +387,7 @@ name|RestModifyView
 argument_list|<
 name|DashboardResource
 argument_list|,
-name|Input
+name|SetDashboardInput
 argument_list|>
 block|{
 DECL|field|cache
@@ -487,7 +485,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (DashboardResource resource, Input input)
+DECL|method|apply (DashboardResource resource, SetDashboardInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -498,7 +496,7 @@ parameter_list|(
 name|DashboardResource
 name|resource
 parameter_list|,
-name|Input
+name|SetDashboardInput
 name|input
 parameter_list|)
 throws|throws
@@ -524,7 +522,7 @@ block|{
 name|input
 operator|=
 operator|new
-name|Input
+name|SetDashboardInput
 argument_list|()
 expr_stmt|;
 comment|// Delete would set input to null.
@@ -893,9 +891,7 @@ name|RestModifyView
 argument_list|<
 name|ProjectResource
 argument_list|,
-name|SetDashboard
-operator|.
-name|Input
+name|SetDashboardInput
 argument_list|>
 block|{
 DECL|field|setDefault
@@ -944,7 +940,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ProjectResource resource, Input input)
+DECL|method|apply (ProjectResource resource, SetDashboardInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -955,7 +951,7 @@ parameter_list|(
 name|ProjectResource
 name|resource
 parameter_list|,
-name|Input
+name|SetDashboardInput
 name|input
 parameter_list|)
 throws|throws
