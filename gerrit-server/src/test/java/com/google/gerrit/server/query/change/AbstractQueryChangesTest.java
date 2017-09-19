@@ -1512,7 +1512,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|ConfigSuite
 import|;
@@ -1526,7 +1526,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|DisabledReviewDb
 import|;
@@ -1540,7 +1540,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|GerritServerTests
 import|;
@@ -1554,7 +1554,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryDatabase
 import|;
@@ -1568,7 +1568,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryRepositoryManager
 import|;
@@ -1582,7 +1582,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryRepositoryManager
 operator|.
@@ -1598,7 +1598,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestTimeUtil
 import|;

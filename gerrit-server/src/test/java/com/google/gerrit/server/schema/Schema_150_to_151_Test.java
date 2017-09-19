@@ -236,7 +236,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|SchemaUpgradeTestEnvironment
 import|;
@@ -250,7 +250,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestUpdateUI
 import|;
@@ -267,6 +267,20 @@ operator|.
 name|jdbc
 operator|.
 name|JdbcSchema
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|ResultSet
 import|;
 end_import
 

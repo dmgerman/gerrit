@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.testutil
+DECL|package|com.google.gerrit.testing
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 package|;
 end_package
 
@@ -108,97 +108,24 @@ name|Strings
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|MutableNotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigrationState
-import|;
-end_import
+begin_comment
+comment|/**  * Whether to enable/disable tests using SSH by inspecting the global environment.  *  *<p>Acceptance tests should generally not inspect this directly, since SSH may also be disabled on  * a per-class or per-method basis. Inject {@code @SshEnabled boolean} instead.  */
+end_comment
 
 begin_enum
-DECL|enum|NoteDbMode
+DECL|enum|SshMode
 specifier|public
 enum|enum
-name|NoteDbMode
+name|SshMode
 block|{
-comment|/** NoteDb is disabled. */
-DECL|enumConstant|OFF
-name|OFF
-parameter_list|(
-name|NotesMigrationState
-operator|.
-name|REVIEW_DB
-parameter_list|)
-operator|,
-comment|/** Writing data to NoteDb is enabled. */
-DECL|enumConstant|WRITE
-constructor|WRITE(NotesMigrationState.WRITE
-block|)
-enum|,
-comment|/** Reading and writing all data to NoteDb is enabled. */
-DECL|enumConstant|READ_WRITE
-name|READ_WRITE
-argument_list|(
-name|NotesMigrationState
-operator|.
-name|READ_WRITE_WITH_SEQUENCE_REVIEW_DB_PRIMARY
-argument_list|)
-operator|,
-comment|/** Changes are created with their primary storage as NoteDb. */
-DECL|enumConstant|PRIMARY
-name|PRIMARY
-argument_list|(
-name|NotesMigrationState
-operator|.
-name|READ_WRITE_WITH_SEQUENCE_NOTE_DB_PRIMARY
-argument_list|)
-operator|,
-comment|/** All change tables are entirely disabled, and code/meta ref updates are fused. */
-DECL|enumConstant|ON
-name|ON
-argument_list|(
-name|NotesMigrationState
-operator|.
-name|NOTE_DB
-argument_list|)
-operator|,
-comment|/**    * Run tests with NoteDb disabled, then convert ReviewDb to NoteDb and check that the results    * match.    */
-DECL|enumConstant|CHECK
-name|CHECK
-argument_list|(
-name|NotesMigrationState
-operator|.
-name|REVIEW_DB
-argument_list|)
-enum|;
-end_enum
-
-begin_decl_stmt
+comment|/** Tests annotated with UseSsh will be disabled. */
+DECL|enumConstant|NO
+name|NO
+block|,
+comment|/** Tests annotated with UseSsh will be enabled. */
+DECL|enumConstant|YES
+name|YES
+block|;
 DECL|field|ENV_VAR
 specifier|private
 specifier|static
@@ -206,11 +133,8 @@ specifier|final
 name|String
 name|ENV_VAR
 init|=
-literal|"GERRIT_NOTEDB"
+literal|"GERRIT_USE_SSH"
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|field|SYS_PROP
 specifier|private
 specifier|static
@@ -218,15 +142,12 @@ specifier|final
 name|String
 name|SYS_PROP
 init|=
-literal|"gerrit.notedb"
+literal|"gerrit.use.ssh"
 decl_stmt|;
-end_decl_stmt
-
-begin_function
 DECL|method|get ()
 specifier|public
 specifier|static
-name|NoteDbMode
+name|SshMode
 name|get
 parameter_list|()
 block|{
@@ -271,7 +192,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|OFF
+name|YES
 return|;
 block|}
 name|value
@@ -280,22 +201,15 @@ name|value
 operator|.
 name|toUpperCase
 argument_list|()
-operator|.
-name|replace
-argument_list|(
-literal|"-"
-argument_list|,
-literal|"_"
-argument_list|)
 expr_stmt|;
-name|NoteDbMode
+name|SshMode
 name|mode
 init|=
 name|Enums
 operator|.
 name|getIfPresent
 argument_list|(
-name|NoteDbMode
+name|SshMode
 operator|.
 name|class
 argument_list|,
@@ -365,86 +279,22 @@ return|return
 name|mode
 return|;
 block|}
-end_function
-
-begin_function
-DECL|method|newNotesMigrationFromEnv ()
+DECL|method|useSsh ()
 specifier|public
 specifier|static
-name|MutableNotesMigration
-name|newNotesMigrationFromEnv
+name|boolean
+name|useSsh
 parameter_list|()
 block|{
-name|MutableNotesMigration
-name|m
-init|=
-name|MutableNotesMigration
-operator|.
-name|newDisabled
-argument_list|()
-decl_stmt|;
-name|resetFromEnv
-argument_list|(
-name|m
-argument_list|)
-expr_stmt|;
 return|return
-name|m
-return|;
-block|}
-end_function
-
-begin_function
-DECL|method|resetFromEnv (MutableNotesMigration migration)
-specifier|public
-specifier|static
-name|void
-name|resetFromEnv
-parameter_list|(
-name|MutableNotesMigration
-name|migration
-parameter_list|)
-block|{
-name|migration
-operator|.
-name|setFrom
-argument_list|(
 name|get
 argument_list|()
-operator|.
-name|state
-argument_list|)
-expr_stmt|;
+operator|==
+name|YES
+return|;
 block|}
-end_function
-
-begin_decl_stmt
-DECL|field|state
-specifier|private
-specifier|final
-name|NotesMigrationState
-name|state
-decl_stmt|;
-end_decl_stmt
-
-begin_constructor
-DECL|method|NoteDbMode (NotesMigrationState state)
-specifier|private
-name|NoteDbMode
-parameter_list|(
-name|NotesMigrationState
-name|state
-parameter_list|)
-block|{
-name|this
-operator|.
-name|state
-operator|=
-name|state
-expr_stmt|;
 block|}
-end_constructor
+end_enum
 
-unit|}
 end_unit
 

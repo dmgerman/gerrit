@@ -328,7 +328,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|GerritBaseTests
 import|;
@@ -342,7 +342,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestChanges
 import|;
@@ -356,7 +356,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestTimeUtil
 import|;

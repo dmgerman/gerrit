@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.testutil
+DECL|package|com.google.gerrit.testing
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 package|;
 end_package
 
@@ -253,6 +253,7 @@ class|class
 name|IndexVersions
 block|{
 DECL|field|ALL
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -261,6 +262,7 @@ init|=
 literal|"all"
 decl_stmt|;
 DECL|field|CURRENT
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -269,6 +271,7 @@ init|=
 literal|"current"
 decl_stmt|;
 DECL|field|PREVIOUS
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -445,7 +448,8 @@ return|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|get (SchemaDefinitions<V> schemaDef, String name, String value)
+DECL|method|get ( SchemaDefinitions<V> schemaDef, String name, String value)
+specifier|public
 specifier|static
 parameter_list|<
 name|V

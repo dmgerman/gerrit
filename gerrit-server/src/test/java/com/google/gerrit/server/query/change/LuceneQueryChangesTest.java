@@ -126,7 +126,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|ConfigSuite
 import|;
@@ -140,7 +140,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryModule
 import|;
@@ -154,7 +154,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryRepositoryManager
 operator|.
@@ -170,7 +170,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|IndexVersions
 import|;

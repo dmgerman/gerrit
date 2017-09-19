@@ -230,7 +230,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryDatabase
 import|;
@@ -244,7 +244,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryModule
 import|;

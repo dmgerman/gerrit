@@ -428,7 +428,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|ConfigSuite
 import|;

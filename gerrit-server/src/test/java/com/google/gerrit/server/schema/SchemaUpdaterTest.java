@@ -324,7 +324,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryDatabase
 import|;
@@ -338,7 +338,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryH2Type
 import|;
@@ -352,7 +352,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryRepositoryManager
 import|;
@@ -366,7 +366,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestUpdateUI
 import|;

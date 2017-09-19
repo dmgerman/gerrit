@@ -362,7 +362,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|SchemaUpgradeTestEnvironment
 import|;
@@ -376,7 +376,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestUpdateUI
 import|;

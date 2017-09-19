@@ -620,6 +620,8 @@ name|server
 operator|.
 name|project
 operator|.
+name|testing
+operator|.
 name|Util
 operator|.
 name|category
@@ -637,6 +639,8 @@ operator|.
 name|server
 operator|.
 name|project
+operator|.
+name|testing
 operator|.
 name|Util
 operator|.
@@ -2042,6 +2046,8 @@ name|server
 operator|.
 name|project
 operator|.
+name|testing
+operator|.
 name|Util
 import|;
 end_import
@@ -2102,7 +2108,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|FakeEmailSender
 operator|.
@@ -2118,7 +2124,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestTimeUtil
 import|;

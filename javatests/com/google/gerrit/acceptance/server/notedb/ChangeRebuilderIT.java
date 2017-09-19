@@ -1016,6 +1016,8 @@ name|server
 operator|.
 name|project
 operator|.
+name|testing
+operator|.
 name|Util
 import|;
 end_import
@@ -1110,7 +1112,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|ConfigSuite
 import|;
@@ -1124,7 +1126,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|NoteDbChecker
 import|;
@@ -1138,7 +1140,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|NoteDbMode
 import|;
@@ -1152,7 +1154,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestChanges
 import|;
@@ -1166,7 +1168,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestTimeUtil
 import|;

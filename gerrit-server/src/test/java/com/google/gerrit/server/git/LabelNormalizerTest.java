@@ -114,6 +114,8 @@ name|server
 operator|.
 name|project
 operator|.
+name|testing
+operator|.
 name|Util
 operator|.
 name|allow
@@ -132,6 +134,8 @@ name|server
 operator|.
 name|project
 operator|.
+name|testing
+operator|.
 name|Util
 operator|.
 name|category
@@ -149,6 +153,8 @@ operator|.
 name|server
 operator|.
 name|project
+operator|.
+name|testing
 operator|.
 name|Util
 operator|.
@@ -552,7 +558,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryDatabase
 import|;
@@ -566,7 +572,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryModule
 import|;

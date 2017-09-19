@@ -256,6 +256,8 @@ name|server
 operator|.
 name|project
 operator|.
+name|testing
+operator|.
 name|Util
 operator|.
 name|ADMIN
@@ -273,6 +275,8 @@ operator|.
 name|server
 operator|.
 name|project
+operator|.
+name|testing
 operator|.
 name|Util
 operator|.
@@ -292,6 +296,8 @@ name|server
 operator|.
 name|project
 operator|.
+name|testing
+operator|.
 name|Util
 operator|.
 name|allow
@@ -309,6 +315,8 @@ operator|.
 name|server
 operator|.
 name|project
+operator|.
+name|testing
 operator|.
 name|Util
 operator|.
@@ -328,6 +336,8 @@ name|server
 operator|.
 name|project
 operator|.
+name|testing
+operator|.
 name|Util
 operator|.
 name|deny
@@ -346,6 +356,8 @@ name|server
 operator|.
 name|project
 operator|.
+name|testing
+operator|.
 name|Util
 operator|.
 name|doNotInherit
@@ -360,7 +372,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryRepositoryManager
 operator|.
@@ -802,6 +814,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|project
+operator|.
+name|testing
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|schema
 operator|.
 name|SchemaCreator
@@ -848,7 +878,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryDatabase
 import|;
@@ -862,7 +892,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryModule
 import|;
@@ -876,7 +906,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|InMemoryRepositoryManager
 import|;

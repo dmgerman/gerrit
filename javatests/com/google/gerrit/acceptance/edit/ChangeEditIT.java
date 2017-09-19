@@ -806,6 +806,8 @@ name|server
 operator|.
 name|project
 operator|.
+name|testing
+operator|.
 name|Util
 import|;
 end_import
@@ -818,7 +820,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 operator|.
 name|TestTimeUtil
 import|;
