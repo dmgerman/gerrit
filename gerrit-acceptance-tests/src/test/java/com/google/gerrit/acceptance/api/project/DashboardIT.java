@@ -205,7 +205,7 @@ argument_list|)
 operator|.
 name|dashboard
 argument_list|(
-literal|"dashboard"
+literal|"my:dashboard"
 argument_list|)
 operator|.
 name|get
