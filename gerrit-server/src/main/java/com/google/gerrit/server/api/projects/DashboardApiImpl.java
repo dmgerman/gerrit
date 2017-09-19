@@ -342,14 +342,14 @@ specifier|final
 name|DashboardsCollection
 name|dashboards
 decl_stmt|;
-DECL|field|getDashboard
+DECL|field|get
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
 name|GetDashboard
 argument_list|>
-name|getDashboard
+name|get
 decl_stmt|;
 DECL|field|project
 specifier|private
@@ -365,7 +365,7 @@ name|id
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DashboardApiImpl ( DashboardsCollection dashboards, Provider<GetDashboard> getDashboard, @Assisted ProjectResource project, @Assisted String id)
+DECL|method|DashboardApiImpl ( DashboardsCollection dashboards, Provider<GetDashboard> get, @Assisted ProjectResource project, @Assisted String id)
 name|DashboardApiImpl
 parameter_list|(
 name|DashboardsCollection
@@ -375,7 +375,7 @@ name|Provider
 argument_list|<
 name|GetDashboard
 argument_list|>
-name|getDashboard
+name|get
 parameter_list|,
 annotation|@
 name|Assisted
@@ -396,9 +396,9 @@ name|dashboards
 expr_stmt|;
 name|this
 operator|.
-name|getDashboard
+name|get
 operator|=
-name|getDashboard
+name|get
 expr_stmt|;
 name|this
 operator|.
@@ -446,7 +446,7 @@ block|{
 try|try
 block|{
 return|return
-name|getDashboard
+name|get
 operator|.
 name|get
 argument_list|()
