@@ -1977,8 +1977,6 @@ name|or
 argument_list|,
 name|db
 argument_list|,
-name|user
-argument_list|,
 name|b
 argument_list|,
 name|visibleHashes
@@ -2028,8 +2026,6 @@ argument_list|(
 name|or
 argument_list|,
 name|db
-argument_list|,
-name|user
 argument_list|,
 name|b
 argument_list|,
@@ -2239,7 +2235,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, ReviewDb db, CurrentUser user, Branch.NameKey branch, Set<String> hashes)
+DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, ReviewDb db, Branch.NameKey branch, Set<String> hashes)
 specifier|private
 name|List
 argument_list|<
@@ -2252,9 +2248,6 @@ name|or
 parameter_list|,
 name|ReviewDb
 name|db
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|Branch
 operator|.
