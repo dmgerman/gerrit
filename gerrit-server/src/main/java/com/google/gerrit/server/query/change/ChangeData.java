@@ -5905,8 +5905,6 @@ parameter_list|(
 name|SubmitRuleOptions
 name|options
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
@@ -6025,8 +6023,6 @@ specifier|public
 name|SubmitTypeRecord
 name|submitTypeRecord
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(

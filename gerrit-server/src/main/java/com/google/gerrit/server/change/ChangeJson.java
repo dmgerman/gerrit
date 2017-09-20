@@ -5420,8 +5420,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|SubmitRecord
@@ -5451,8 +5449,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|cd
@@ -5784,8 +5780,6 @@ parameter_list|,
 name|boolean
 name|standard
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Map
 argument_list|<

@@ -4995,8 +4995,6 @@ parameter_list|,
 name|SubmitRuleOptions
 name|opts
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|storedSubmitRecords
