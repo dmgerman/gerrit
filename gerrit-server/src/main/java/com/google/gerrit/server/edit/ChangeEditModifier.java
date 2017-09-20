@@ -3143,9 +3143,26 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"update failed: "
+literal|"cannot update "
 operator|+
 name|ru
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" in "
+operator|+
+name|repository
+operator|.
+name|getDirectory
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|ru
+operator|.
+name|getResult
+argument_list|()
 argument_list|)
 throw|;
 block|}
