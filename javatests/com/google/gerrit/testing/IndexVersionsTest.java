@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.testutil
+DECL|package|com.google.gerrit.testing
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|testing
 package|;
 end_package
 
@@ -159,34 +159,6 @@ operator|.
 name|change
 operator|.
 name|ChangeSchemaDefinitions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|IndexVersions
 import|;
 end_import
 
