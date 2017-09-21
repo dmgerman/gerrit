@@ -3708,6 +3708,30 @@ name|cd
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|e
+operator|instanceof
+name|NoSuchChangeException
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"NoSuchChangeException: Omitting corrupt change "
+operator|+
+name|cd
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" from results. Seems to be stale in the index."
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 else|else
 block|{
 name|log
