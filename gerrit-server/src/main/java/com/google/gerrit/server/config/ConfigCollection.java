@@ -273,6 +273,11 @@ name|views
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unlikely-arg-type"
+argument_list|)
+annotation|@
 name|Override
 DECL|method|parse (TopLevelResource root, IdString id)
 specifier|public
