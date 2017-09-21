@@ -52,13 +52,15 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.audit
+DECL|package|com.google.gerrit.server.audit
 package|package
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
+operator|.
+name|server
 operator|.
 name|audit
 package|;

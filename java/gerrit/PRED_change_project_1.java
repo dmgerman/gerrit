@@ -82,6 +82,8 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|server
+operator|.
 name|rules
 operator|.
 name|StoredValues

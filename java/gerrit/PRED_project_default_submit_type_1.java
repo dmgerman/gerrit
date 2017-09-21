@@ -82,9 +82,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|rules
+name|server
 operator|.
-name|StoredValues
+name|project
+operator|.
+name|ProjectState
 import|;
 end_import
 
@@ -98,9 +100,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|rules
 operator|.
-name|ProjectState
+name|StoredValues
 import|;
 end_import
 

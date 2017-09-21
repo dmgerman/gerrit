@@ -66,9 +66,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|rules
+name|server
 operator|.
-name|StoredValues
+name|query
+operator|.
+name|change
+operator|.
+name|ChangeData
 import|;
 end_import
 
@@ -82,11 +86,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
+name|rules
 operator|.
-name|change
-operator|.
-name|ChangeData
+name|StoredValues
 import|;
 end_import
 

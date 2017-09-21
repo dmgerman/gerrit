@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.audit
+DECL|package|com.google.gerrit.server.rules
 package|package
 name|com
 operator|.
@@ -60,9 +60,25 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|audit
+name|server
+operator|.
+name|rules
 package|;
 end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
 
 begin_import
 import|import
@@ -80,21 +96,40 @@ name|ExtensionPoint
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|googlecode
+operator|.
+name|prolog_cafe
+operator|.
+name|lang
+operator|.
+name|Predicate
+import|;
+end_import
+
+begin_comment
+comment|/**  * Provides additional packages that contain Prolog predicates that should be made available in the  * Prolog environment. The predicates can e.g. be used in the project submit rules.  *  *<p>Each Java class defining a Prolog predicate must be in one of the provided packages and its  * name must apply to the 'PRED_[functor]_[arity]' format. In addition it must extend {@link  * Predicate}.  */
+end_comment
+
 begin_interface
 annotation|@
 name|ExtensionPoint
-DECL|interface|AuditListener
+DECL|interface|PredicateProvider
 specifier|public
 interface|interface
-name|AuditListener
+name|PredicateProvider
 block|{
-DECL|method|onAuditableAction (AuditEvent action)
-name|void
-name|onAuditableAction
-parameter_list|(
-name|AuditEvent
-name|action
-parameter_list|)
+comment|/** Return set of packages that contain Prolog predicates */
+DECL|method|getPackages ()
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|getPackages
+parameter_list|()
 function_decl|;
 block|}
 end_interface

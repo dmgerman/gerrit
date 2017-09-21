@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.rules
+DECL|package|com.google.gerrit.server.audit
 package|package
 name|com
 operator|.
@@ -60,23 +60,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|rules
+name|server
+operator|.
+name|audit
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableSet
-import|;
-end_import
 
 begin_import
 import|import
@@ -88,9 +76,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|annotations
+name|registration
 operator|.
-name|ExtensionPoint
+name|DynamicSet
 import|;
 end_import
 
@@ -98,39 +86,64 @@ begin_import
 import|import
 name|com
 operator|.
-name|googlecode
+name|google
 operator|.
-name|prolog_cafe
+name|inject
 operator|.
-name|lang
-operator|.
-name|Predicate
+name|AbstractModule
 import|;
 end_import
 
-begin_comment
-comment|/**  * Provides additional packages that contain Prolog predicates that should be made available in the  * Prolog environment. The predicates can e.g. be used in the project submit rules.  *  *<p>Each Java class defining a Prolog predicate must be in one of the provided packages and its  * name must apply to the 'PRED_[functor]_[arity]' format. In addition it must extend {@link  * Predicate}.  */
-end_comment
-
-begin_interface
-annotation|@
-name|ExtensionPoint
-DECL|interface|PredicateProvider
+begin_class
+DECL|class|AuditModule
 specifier|public
-interface|interface
-name|PredicateProvider
+class|class
+name|AuditModule
+extends|extends
+name|AbstractModule
 block|{
-comment|/** Return set of packages that contain Prolog predicates */
-DECL|method|getPackages ()
-name|ImmutableSet
-argument_list|<
-name|String
-argument_list|>
-name|getPackages
+annotation|@
+name|Override
+DECL|method|configure ()
+specifier|protected
+name|void
+name|configure
 parameter_list|()
-function_decl|;
+block|{
+name|DynamicSet
+operator|.
+name|setOf
+argument_list|(
+name|binder
+argument_list|()
+argument_list|,
+name|AuditListener
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|DynamicSet
+operator|.
+name|setOf
+argument_list|(
+name|binder
+argument_list|()
+argument_list|,
+name|GroupMemberAuditListener
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|AuditService
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

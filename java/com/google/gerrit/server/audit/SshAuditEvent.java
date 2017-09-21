@@ -52,13 +52,15 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.audit
+DECL|package|com.google.gerrit.server.audit
 package|package
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
+operator|.
+name|server
 operator|.
 name|audit
 package|;
@@ -93,35 +95,16 @@ import|;
 end_import
 
 begin_class
-DECL|class|HttpAuditEvent
+DECL|class|SshAuditEvent
 specifier|public
 class|class
-name|HttpAuditEvent
+name|SshAuditEvent
 extends|extends
 name|AuditEvent
 block|{
-DECL|field|httpMethod
+DECL|method|SshAuditEvent ( String sessionId, CurrentUser who, String what, long when, ListMultimap<String, ?> params, Object result)
 specifier|public
-specifier|final
-name|String
-name|httpMethod
-decl_stmt|;
-DECL|field|httpStatus
-specifier|public
-specifier|final
-name|int
-name|httpStatus
-decl_stmt|;
-DECL|field|input
-specifier|public
-specifier|final
-name|Object
-name|input
-decl_stmt|;
-comment|/**    * Creates a new audit event with results    *    * @param sessionId session id the event belongs to    * @param who principal that has generated the event    * @param what object of the event    * @param when time-stamp of when the event started    * @param params parameters of the event    * @param httpMethod HTTP method    * @param input input    * @param status HTTP status    * @param result result of the event    */
-DECL|method|HttpAuditEvent ( String sessionId, CurrentUser who, String what, long when, ListMultimap<String, ?> params, String httpMethod, Object input, int status, Object result)
-specifier|public
-name|HttpAuditEvent
+name|SshAuditEvent
 parameter_list|(
 name|String
 name|sessionId
@@ -143,15 +126,6 @@ name|?
 argument_list|>
 name|params
 parameter_list|,
-name|String
-name|httpMethod
-parameter_list|,
-name|Object
-name|input
-parameter_list|,
-name|int
-name|status
-parameter_list|,
 name|Object
 name|result
 parameter_list|)
@@ -170,24 +144,6 @@ name|params
 argument_list|,
 name|result
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|httpMethod
-operator|=
-name|httpMethod
-expr_stmt|;
-name|this
-operator|.
-name|input
-operator|=
-name|input
-expr_stmt|;
-name|this
-operator|.
-name|httpStatus
-operator|=
-name|status
 expr_stmt|;
 block|}
 block|}
