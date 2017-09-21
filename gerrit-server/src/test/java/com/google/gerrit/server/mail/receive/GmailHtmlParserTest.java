@@ -110,7 +110,7 @@ name|email
 init|=
 literal|""
 operator|+
-literal|"<div dir=\"ltr\">"
+literal|"<div class=\"gmail_default\" dir=\"ltr\">"
 operator|+
 operator|(
 name|changeMessage
