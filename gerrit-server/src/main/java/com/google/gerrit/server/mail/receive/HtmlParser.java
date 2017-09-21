@@ -92,6 +92,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Iterators
 import|;
 end_import
@@ -200,6 +214,26 @@ specifier|public
 class|class
 name|HtmlParser
 block|{
+DECL|field|MAIL_PROVIDER_EXTRAS
+specifier|private
+specifier|static
+name|ImmutableList
+argument_list|<
+name|String
+argument_list|>
+name|MAIL_PROVIDER_EXTRAS
+init|=
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+literal|"gmail_extra"
+argument_list|,
+comment|// "On 01/01/2017 User<user@gmail.com> wrote:"
+literal|"gmail_quote"
+comment|// Used for quoting original content
+argument_list|)
+decl_stmt|;
 DECL|method|HtmlParser ()
 specifier|private
 name|HtmlParser
@@ -497,14 +531,14 @@ literal|"div"
 argument_list|)
 operator|&&
 operator|!
+name|MAIL_PROVIDER_EXTRAS
+operator|.
+name|contains
+argument_list|(
 name|e
 operator|.
 name|className
 argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-literal|"gmail"
 argument_list|)
 condition|)
 block|{
