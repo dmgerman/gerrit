@@ -1643,6 +1643,11 @@ literal|"Administrators"
 argument_list|)
 argument_list|)
 operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
+operator|.
 name|getId
 argument_list|()
 operator|.
@@ -2324,6 +2329,11 @@ name|NameKey
 argument_list|(
 name|groupName
 argument_list|)
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
 argument_list|)
 operator|.
 name|getGroupUUID

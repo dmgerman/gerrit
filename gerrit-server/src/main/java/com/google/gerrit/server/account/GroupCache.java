@@ -142,8 +142,12 @@ specifier|public
 interface|interface
 name|GroupCache
 block|{
+comment|/**    * Looks up an internal group by its ID.    *    * @param groupId the ID of the internal group    * @return an {@code Optional} of the internal group, or an empty {@code Optional} if no internal    *     group with this ID exists on this server or an error occurred during lookup    */
 DECL|method|get (AccountGroup.Id groupId)
-name|AccountGroup
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
 name|get
 parameter_list|(
 name|AccountGroup
@@ -152,8 +156,12 @@ name|Id
 name|groupId
 parameter_list|)
 function_decl|;
+comment|/**    * Looks up an internal group by its name.    *    * @param name the name of the internal group    * @return an {@code Optional} of the internal group, or an empty {@code Optional} if no internal    *     group with this name exists on this server or an error occurred during lookup    */
 DECL|method|get (AccountGroup.NameKey name)
-name|AccountGroup
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
 name|get
 parameter_list|(
 name|AccountGroup
@@ -186,14 +194,12 @@ name|all
 parameter_list|()
 function_decl|;
 comment|/** Notify the cache that a new group was constructed. */
-DECL|method|onCreateGroup (AccountGroup.NameKey newGroupName)
+DECL|method|onCreateGroup (AccountGroup group)
 name|void
 name|onCreateGroup
 parameter_list|(
 name|AccountGroup
-operator|.
-name|NameKey
-name|newGroupName
+name|group
 parameter_list|)
 throws|throws
 name|IOException
@@ -220,7 +226,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|evictAfterRename (AccountGroup.NameKey oldName, AccountGroup.NameKey newName)
+DECL|method|evictAfterRename (AccountGroup.NameKey oldName)
 name|void
 name|evictAfterRename
 parameter_list|(
@@ -228,11 +234,6 @@ name|AccountGroup
 operator|.
 name|NameKey
 name|oldName
-parameter_list|,
-name|AccountGroup
-operator|.
-name|NameKey
-name|newName
 parameter_list|)
 throws|throws
 name|IOException

@@ -140,11 +140,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|group
 operator|.
-name|AccountGroup
+name|InternalGroup
 import|;
 end_import
 
@@ -228,13 +228,13 @@ name|isEmpty
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertGroupInfo (AccountGroup group, GroupInfo info)
+DECL|method|assertGroupInfo (InternalGroup group, GroupInfo info)
 specifier|public
 specifier|static
 name|void
 name|assertGroupInfo
 parameter_list|(
-name|AccountGroup
+name|InternalGroup
 name|group
 parameter_list|,
 name|GroupInfo

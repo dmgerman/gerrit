@@ -214,6 +214,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|GroupCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|VersionedAuthorizedKeys
 import|;
 end_import
@@ -266,7 +282,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|Groups
+name|GroupsUpdate
 import|;
 end_import
 
@@ -282,7 +298,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|GroupsUpdate
+name|InternalGroup
 import|;
 end_import
 
@@ -524,11 +540,11 @@ operator|.
 name|Accessor
 name|authorizedKeys
 decl_stmt|;
-DECL|field|groups
+DECL|field|groupCache
 specifier|private
 specifier|final
-name|Groups
-name|groups
+name|GroupCache
+name|groupCache
 decl_stmt|;
 DECL|field|groupsUpdateProvider
 specifier|private
@@ -561,7 +577,7 @@ name|sshEnabled
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, Sequences sequences, AccountsUpdate.Server accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, Groups groups, @ServerInitiated Provider<GroupsUpdate> groupsUpdateProvider, SshKeyCache sshKeyCache, ExternalIdsUpdate.Server externalIdsUpdate, @SshEnabled boolean sshEnabled)
+DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, Sequences sequences, AccountsUpdate.Server accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, @ServerInitiated Provider<GroupsUpdate> groupsUpdateProvider, SshKeyCache sshKeyCache, ExternalIdsUpdate.Server externalIdsUpdate, @SshEnabled boolean sshEnabled)
 name|AccountCreator
 parameter_list|(
 name|SchemaFactory
@@ -583,8 +599,8 @@ operator|.
 name|Accessor
 name|authorizedKeys
 parameter_list|,
-name|Groups
-name|groups
+name|GroupCache
+name|groupCache
 parameter_list|,
 annotation|@
 name|ServerInitiated
@@ -639,9 +655,9 @@ name|authorizedKeys
 expr_stmt|;
 name|this
 operator|.
-name|groups
+name|groupCache
 operator|=
-name|groups
+name|groupCache
 expr_stmt|;
 name|this
 operator|.
@@ -881,16 +897,14 @@ argument_list|)
 decl_stmt|;
 name|Optional
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|group
 init|=
-name|groups
+name|groupCache
 operator|.
-name|getGroup
+name|get
 argument_list|(
-name|db
-argument_list|,
 name|k
 argument_list|)
 decl_stmt|;

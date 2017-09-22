@@ -198,6 +198,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -224,7 +240,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|AccountGroup
+name|InternalGroup
 name|group
 init|=
 name|groupCache
@@ -238,6 +254,11 @@ name|NameKey
 argument_list|(
 literal|"Administrators"
 argument_list|)
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertWithMessage

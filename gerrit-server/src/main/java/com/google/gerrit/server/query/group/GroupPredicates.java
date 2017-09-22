@@ -196,6 +196,36 @@ specifier|public
 class|class
 name|GroupPredicates
 block|{
+DECL|method|id (AccountGroup.Id groupId)
+specifier|public
+specifier|static
+name|Predicate
+argument_list|<
+name|InternalGroup
+argument_list|>
+name|id
+parameter_list|(
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+parameter_list|)
+block|{
+return|return
+operator|new
+name|GroupPredicate
+argument_list|(
+name|GroupField
+operator|.
+name|ID
+argument_list|,
+name|groupId
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|uuid (AccountGroup.UUID uuid)
 specifier|public
 specifier|static
