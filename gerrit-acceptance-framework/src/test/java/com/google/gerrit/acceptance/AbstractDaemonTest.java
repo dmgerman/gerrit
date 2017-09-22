@@ -1322,6 +1322,22 @@ name|server
 operator|.
 name|group
 operator|.
+name|Groups
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
 name|InternalGroup
 import|;
 end_import
@@ -2836,6 +2852,13 @@ name|ReviewDb
 argument_list|>
 name|reviewDbProvider
 decl_stmt|;
+DECL|field|groups
+annotation|@
+name|Inject
+specifier|private
+name|Groups
+name|groups
+decl_stmt|;
 DECL|field|toClose
 specifier|private
 name|List
@@ -3270,6 +3293,13 @@ argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|db
+operator|=
+name|reviewDbProvider
+operator|.
+name|open
+argument_list|()
+expr_stmt|;
 comment|// All groups which were added during the server start (e.g. in SchemaCreator) aren't contained
 comment|// in the instance of the group index which is available here and in tests. There are two
 comment|// reasons:
@@ -3284,10 +3314,18 @@ control|(
 name|AccountGroup
 name|group
 range|:
-name|groupCache
+name|groups
 operator|.
-name|all
+name|getAll
+argument_list|(
+name|db
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toList
 argument_list|()
+argument_list|)
 control|)
 block|{
 name|groupCache
@@ -3365,13 +3403,6 @@ name|server
 argument_list|,
 name|user
 argument_list|)
-expr_stmt|;
-name|db
-operator|=
-name|reviewDbProvider
-operator|.
-name|open
-argument_list|()
 expr_stmt|;
 name|testRequiresSsh
 operator|=
