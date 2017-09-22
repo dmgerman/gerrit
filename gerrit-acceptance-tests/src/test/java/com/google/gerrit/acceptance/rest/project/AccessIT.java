@@ -654,6 +654,7 @@ name|AbstractDaemonTest
 block|{
 DECL|field|PROJECT_NAME
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|PROJECT_NAME
@@ -662,6 +663,7 @@ literal|"newProject"
 decl_stmt|;
 DECL|field|REFS_ALL
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|REFS_ALL
@@ -674,6 +676,7 @@ literal|"*"
 decl_stmt|;
 DECL|field|REFS_HEADS
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|REFS_HEADS
@@ -686,6 +689,7 @@ literal|"*"
 decl_stmt|;
 DECL|field|LABEL_CODE_REVIEW
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|LABEL_CODE_REVIEW
