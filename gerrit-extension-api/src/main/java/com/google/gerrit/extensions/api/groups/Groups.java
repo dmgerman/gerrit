@@ -343,6 +343,11 @@ specifier|private
 name|String
 name|regex
 decl_stmt|;
+DECL|field|ownedBy
+specifier|private
+name|String
+name|ownedBy
+decl_stmt|;
 DECL|method|get ()
 specifier|public
 name|List
@@ -712,6 +717,25 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|withOwnedBy (String ownedBy)
+specifier|public
+name|ListRequest
+name|withOwnedBy
+parameter_list|(
+name|String
+name|ownedBy
+parameter_list|)
+block|{
+name|this
+operator|.
+name|ownedBy
+operator|=
+name|ownedBy
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|getOptions ()
 specifier|public
 name|EnumSet
@@ -839,6 +863,16 @@ parameter_list|()
 block|{
 return|return
 name|suggest
+return|;
+block|}
+DECL|method|getOwnedBy ()
+specifier|public
+name|String
+name|getOwnedBy
+parameter_list|()
+block|{
+return|return
+name|ownedBy
 return|;
 block|}
 block|}
