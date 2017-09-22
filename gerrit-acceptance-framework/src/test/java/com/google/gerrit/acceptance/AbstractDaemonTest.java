@@ -3309,23 +3309,27 @@ comment|// 2) During the on-init part of the server start, we use another instan
 comment|// later on. As test indexes are non-permanent, closing an instance and opening another one
 comment|// removes all indexed data.
 comment|// As a workaround, we simply reindex all available groups here.
-for|for
-control|(
+name|Iterable
+argument_list|<
 name|AccountGroup
-name|group
-range|:
+argument_list|>
+name|allGroups
+init|=
 name|groups
 operator|.
 name|getAll
 argument_list|(
 name|db
 argument_list|)
-operator|.
-name|collect
-argument_list|(
-name|toList
-argument_list|()
-argument_list|)
+operator|::
+name|iterator
+decl_stmt|;
+for|for
+control|(
+name|AccountGroup
+name|group
+range|:
+name|allGroups
 control|)
 block|{
 name|groupCache
