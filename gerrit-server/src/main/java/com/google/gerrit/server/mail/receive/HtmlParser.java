@@ -217,6 +217,7 @@ block|{
 DECL|field|MAIL_PROVIDER_EXTRAS
 specifier|private
 specifier|static
+specifier|final
 name|ImmutableList
 argument_list|<
 name|String
