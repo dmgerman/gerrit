@@ -1754,18 +1754,6 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-name|Collection
-argument_list|<
-name|RevCommit
-argument_list|>
-name|toWalk
-init|=
-name|visible
-condition|?
-name|visibleCommits
-else|:
-name|nonVisibleCommits
-decl_stmt|;
 comment|// Pick a revision to use for traversal.  If any of the patch sets
 comment|// is visible, we use the most recent one.  Otherwise, use the current
 comment|// patch set.
@@ -1929,13 +1917,29 @@ decl_stmt|;
 comment|// Always include the input, even if merged. This allows
 comment|// SubmitStrategyOp to correct the situation later, assuming it gets
 comment|// returned by byCommitsOnBranchNotMerged below.
-name|toWalk
+if|if
+condition|(
+name|visible
+condition|)
+block|{
+name|visibleCommits
 operator|.
 name|add
 argument_list|(
 name|commit
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|nonVisibleCommits
+operator|.
+name|add
+argument_list|(
+name|commit
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|Set
 argument_list|<
