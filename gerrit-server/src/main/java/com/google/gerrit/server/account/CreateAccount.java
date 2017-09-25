@@ -444,24 +444,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|index
-operator|.
-name|account
-operator|.
-name|AccountIndexer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|mail
 operator|.
 name|send
@@ -701,12 +683,6 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
-DECL|field|indexer
-specifier|private
-specifier|final
-name|AccountIndexer
-name|indexer
-decl_stmt|;
 DECL|field|byEmailCache
 specifier|private
 specifier|final
@@ -752,7 +728,7 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount ( ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountIndexer indexer, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, ExternalIdsUpdate.User externalIdsUpdateFactory, @Assisted String username)
+DECL|method|CreateAccount ( ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, ExternalIdsUpdate.User externalIdsUpdateFactory, @Assisted String username)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
@@ -777,9 +753,6 @@ name|sshKeyCache
 parameter_list|,
 name|AccountCache
 name|accountCache
-parameter_list|,
-name|AccountIndexer
-name|indexer
 parameter_list|,
 name|AccountByEmailCache
 name|byEmailCache
@@ -844,12 +817,6 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
-expr_stmt|;
-name|this
-operator|.
-name|indexer
-operator|=
-name|indexer
 expr_stmt|;
 name|this
 operator|.
@@ -1455,6 +1422,14 @@ block|}
 block|}
 name|accountCache
 operator|.
+name|evict
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+comment|// triggers reindex
+name|accountCache
+operator|.
 name|evictByUsername
 argument_list|(
 name|username
@@ -1467,13 +1442,6 @@ argument_list|(
 name|input
 operator|.
 name|email
-argument_list|)
-expr_stmt|;
-name|indexer
-operator|.
-name|index
-argument_list|(
-name|id
 argument_list|)
 expr_stmt|;
 name|AccountLoader
