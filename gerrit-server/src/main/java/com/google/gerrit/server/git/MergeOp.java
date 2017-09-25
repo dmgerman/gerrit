@@ -2582,6 +2582,8 @@ parameter_list|,
 name|boolean
 name|allowClosed
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
 name|cd
@@ -2980,6 +2982,8 @@ parameter_list|,
 name|boolean
 name|allowClosed
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 name|checkArgument
 argument_list|(
@@ -4553,6 +4557,9 @@ decl_stmt|;
 name|Change
 name|chg
 decl_stmt|;
+name|SubmitType
+name|st
+decl_stmt|;
 try|try
 block|{
 name|notes
@@ -4568,6 +4575,13 @@ name|cd
 operator|.
 name|change
 argument_list|()
+expr_stmt|;
+name|st
+operator|=
+name|getSubmitType
+argument_list|(
+name|cd
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -4587,14 +4601,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-name|SubmitType
-name|st
-init|=
-name|getSubmitType
-argument_list|(
-name|cd
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|st
@@ -5221,6 +5227,8 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 name|SubmitTypeRecord
 name|str

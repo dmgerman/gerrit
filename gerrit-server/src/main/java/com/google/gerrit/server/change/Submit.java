@@ -2374,11 +2374,7 @@ argument_list|()
 decl_stmt|;
 name|ChangeData
 name|cd
-decl_stmt|;
-try|try
-block|{
-name|cd
-operator|=
+init|=
 name|changeDataFactory
 operator|.
 name|create
@@ -2387,22 +2383,10 @@ name|db
 argument_list|,
 name|resource
 operator|.
-name|getChangeResource
+name|getNotes
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NoSuchChangeException
-name|e
-parameter_list|)
-block|{
-return|return
-literal|null
-return|;
-comment|// submit not visible
-block|}
+decl_stmt|;
 try|try
 block|{
 name|MergeOp

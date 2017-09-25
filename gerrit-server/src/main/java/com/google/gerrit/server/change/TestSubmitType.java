@@ -517,6 +517,11 @@ name|submitRuleEvaluatorFactory
 operator|.
 name|create
 argument_list|(
+name|rsrc
+operator|.
+name|getUser
+argument_list|()
+argument_list|,
 name|changeDataFactory
 operator|.
 name|create
@@ -528,7 +533,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getChangeResource
+name|getNotes
 argument_list|()
 argument_list|)
 argument_list|)

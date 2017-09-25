@@ -266,6 +266,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|AccountLoader
@@ -662,6 +676,14 @@ name|info
 init|=
 name|format
 argument_list|(
+name|rsrc
+operator|.
+name|getChangeResource
+argument_list|()
+operator|.
+name|getUser
+argument_list|()
+argument_list|,
 operator|new
 name|ReviewerInfo
 argument_list|(
@@ -755,11 +777,14 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|format (ReviewerInfo out, PermissionBackend.ForChange perm, ChangeData cd)
+DECL|method|format ( CurrentUser user, ReviewerInfo out, PermissionBackend.ForChange perm, ChangeData cd)
 specifier|public
 name|ReviewerInfo
 name|format
 parameter_list|(
+name|CurrentUser
+name|user
+parameter_list|,
 name|ReviewerInfo
 name|out
 parameter_list|,
@@ -792,6 +817,8 @@ decl_stmt|;
 return|return
 name|format
 argument_list|(
+name|user
+argument_list|,
 name|out
 argument_list|,
 name|perm
@@ -836,11 +863,14 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|format ( ReviewerInfo out, PermissionBackend.ForChange perm, ChangeData cd, Iterable<PatchSetApproval> approvals)
+DECL|method|format ( CurrentUser user, ReviewerInfo out, PermissionBackend.ForChange perm, ChangeData cd, Iterable<PatchSetApproval> approvals)
 specifier|public
 name|ReviewerInfo
 name|format
 parameter_list|(
+name|CurrentUser
+name|user
+parameter_list|,
 name|ReviewerInfo
 name|out
 parameter_list|,
@@ -961,6 +991,8 @@ name|submitRuleEvaluatorFactory
 operator|.
 name|create
 argument_list|(
+name|user
+argument_list|,
 name|cd
 argument_list|)
 operator|.
