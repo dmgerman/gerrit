@@ -1673,6 +1673,9 @@ name|groupsRefs
 init|=
 name|projectControl
 operator|.
+name|getProjectState
+argument_list|()
+operator|.
 name|getAllGroups
 argument_list|()
 decl_stmt|;

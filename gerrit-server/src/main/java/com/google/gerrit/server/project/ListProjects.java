@@ -2136,6 +2136,9 @@ operator|&&
 operator|!
 name|pctl
 operator|.
+name|getProjectState
+argument_list|()
+operator|.
 name|getLocalGroups
 argument_list|()
 operator|.
