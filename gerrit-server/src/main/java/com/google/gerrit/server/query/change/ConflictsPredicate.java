@@ -853,8 +853,6 @@ block|}
 catch|catch
 parameter_list|(
 name|NoSuchProjectException
-decl||
-name|OrmException
 name|e
 parameter_list|)
 block|{
@@ -1237,8 +1235,6 @@ name|ProjectState
 name|getProjectState
 parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|NoSuchProjectException
 block|{
 if|if
