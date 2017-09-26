@@ -1742,9 +1742,28 @@ operator|.
 name|OK
 return|;
 block|}
+comment|/** Does this user have ownership on at least one reference name? */
+DECL|method|isOwnerAnyRef ()
+specifier|public
+name|boolean
+name|isOwnerAnyRef
+parameter_list|()
+block|{
+return|return
+name|canPerformOnAnyRef
+argument_list|(
+name|Permission
+operator|.
+name|OWNER
+argument_list|)
+operator|||
+name|isAdmin
+argument_list|()
+return|;
+block|}
 comment|/** Can the user run upload pack? */
 DECL|method|canRunUploadPack ()
-specifier|public
+specifier|private
 name|boolean
 name|canRunUploadPack
 parameter_list|()
@@ -1778,7 +1797,7 @@ return|;
 block|}
 comment|/** Can the user run receive pack? */
 DECL|method|canRunReceivePack ()
-specifier|public
+specifier|private
 name|boolean
 name|canRunReceivePack
 parameter_list|()
@@ -3265,6 +3284,20 @@ name|CREATE_CHANGE
 case|:
 return|return
 name|canCreateChanges
+argument_list|()
+return|;
+case|case
+name|RUN_RECEIVE_PACK
+case|:
+return|return
+name|canRunReceivePack
+argument_list|()
+return|;
+case|case
+name|RUN_UPLOAD_PACK
+case|:
+return|return
+name|canRunUploadPack
 argument_list|()
 return|;
 block|}
