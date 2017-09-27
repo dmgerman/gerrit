@@ -256,6 +256,22 @@ name|server
 operator|.
 name|project
 operator|.
+name|ContributorAgreementsChecker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
 name|NoSuchProjectException
 import|;
 end_import
@@ -494,7 +510,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeProjectAccess ( ProjectAccessFactory.Factory projectAccessFactory, ProjectControl.Factory projectControlFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ChangeProjectAccess ( ProjectAccessFactory.Factory projectAccessFactory, ProjectControl.Factory projectControlFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, ContributorAgreementsChecker contributorAgreements, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ChangeProjectAccess
 parameter_list|(
 name|ProjectAccessFactory
@@ -529,6 +545,9 @@ name|setParent
 parameter_list|,
 name|GitReferenceUpdated
 name|gitRefUpdated
+parameter_list|,
+name|ContributorAgreementsChecker
+name|contributorAgreements
 parameter_list|,
 annotation|@
 name|Assisted
@@ -596,6 +615,8 @@ argument_list|,
 name|parentProjectName
 argument_list|,
 name|message
+argument_list|,
+name|contributorAgreements
 argument_list|,
 literal|true
 argument_list|)

@@ -538,6 +538,22 @@ name|server
 operator|.
 name|project
 operator|.
+name|ContributorAgreementsChecker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
 name|ProjectCache
 import|;
 end_import
@@ -872,7 +888,7 @@ name|updateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewProjectAccess ( final ProjectControl.Factory projectControlFactory, PermissionBackend permissionBackend, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, ReviewDb db, Provider<PostReviewers> reviewersProvider, ProjectCache projectCache, AllProjectsName allProjects, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Provider<SetParent> setParent, Sequences seq, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ReviewProjectAccess ( final ProjectControl.Factory projectControlFactory, PermissionBackend permissionBackend, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, ReviewDb db, Provider<PostReviewers> reviewersProvider, ProjectCache projectCache, AllProjectsName allProjects, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Provider<SetParent> setParent, Sequences seq, ContributorAgreementsChecker contributorAgreements, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ReviewProjectAccess
 parameter_list|(
 specifier|final
@@ -928,6 +944,9 @@ name|setParent
 parameter_list|,
 name|Sequences
 name|seq
+parameter_list|,
+name|ContributorAgreementsChecker
+name|contributorAgreements
 parameter_list|,
 annotation|@
 name|Assisted
@@ -995,6 +1014,8 @@ argument_list|,
 name|parentProjectName
 argument_list|,
 name|message
+argument_list|,
+name|contributorAgreements
 argument_list|,
 literal|false
 argument_list|)
