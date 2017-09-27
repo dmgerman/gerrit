@@ -255,7 +255,7 @@ name|Config
 name|cfg
 decl_stmt|;
 DECL|method|VersionedAccountPreferences (String ref)
-specifier|private
+specifier|protected
 name|VersionedAccountPreferences
 parameter_list|(
 name|String

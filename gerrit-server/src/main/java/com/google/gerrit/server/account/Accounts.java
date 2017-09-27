@@ -841,7 +841,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|readUserRefs (Repository repo)
-specifier|private
+specifier|public
 specifier|static
 name|Stream
 argument_list|<
