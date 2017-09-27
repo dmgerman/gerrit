@@ -338,22 +338,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|GroupCache
 import|;
 end_import
@@ -561,12 +545,6 @@ specifier|final
 name|AuditService
 name|auditService
 decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 DECL|field|renameGroupOpFactory
 specifier|private
 specifier|final
@@ -591,7 +569,7 @@ name|committerIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsUpdate ( Groups groups, GroupCache groupCache, GroupIncludeCache groupIncludeCache, AuditService auditService, AccountCache accountCache, RenameGroupOp.Factory renameGroupOpFactory, @GerritPersonIdent PersonIdent serverIdent, @Assisted @Nullable IdentifiedUser currentUser)
+DECL|method|GroupsUpdate ( Groups groups, GroupCache groupCache, GroupIncludeCache groupIncludeCache, AuditService auditService, RenameGroupOp.Factory renameGroupOpFactory, @GerritPersonIdent PersonIdent serverIdent, @Assisted @Nullable IdentifiedUser currentUser)
 name|GroupsUpdate
 parameter_list|(
 name|Groups
@@ -605,9 +583,6 @@ name|groupIncludeCache
 parameter_list|,
 name|AuditService
 name|auditService
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|RenameGroupOp
 operator|.
@@ -650,12 +625,6 @@ operator|.
 name|auditService
 operator|=
 name|auditService
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -1482,25 +1451,6 @@ name|getNameKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|AccountGroupMember
-name|newMember
-range|:
-name|newMembers
-control|)
-block|{
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|newMember
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/**    * Removes several members (accounts) from a group. Only accounts which currently are members of    * the group are removed.    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group    * @param accountIds a set of IDs of accounts to remove    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the group or one of the removed members couldn't be indexed    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|removeGroupMembers ( ReviewDb db, AccountGroup.UUID groupUuid, Set<Account.Id> accountIds)
@@ -1679,25 +1629,6 @@ name|getNameKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|AccountGroupMember
-name|member
-range|:
-name|membersToRemove
-control|)
-block|{
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|member
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/**    * Adds several groups as subgroups to a group. Only groups which currently aren't subgroups of    * the group are added.    *    *<p>The parent group must be an internal group whereas the subgroups can either be internal or    * external groups.    *    *<p><strong>Note</strong>: This method doesn't check whether the subgroups exist!    *    * @param db the {@code ReviewDb} instance to update    * @param parentGroupUuid the UUID of the parent group    * @param subgroupUuids a set of IDs of the groups to add as subgroups    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the parent group couldn't be indexed    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
 DECL|method|addSubgroups ( ReviewDb db, AccountGroup.UUID parentGroupUuid, Set<AccountGroup.UUID> subgroupUuids)

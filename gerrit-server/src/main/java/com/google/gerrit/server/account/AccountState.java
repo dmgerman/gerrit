@@ -200,22 +200,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -440,17 +424,6 @@ specifier|final
 name|Account
 name|account
 decl_stmt|;
-DECL|field|internalGroups
-specifier|private
-specifier|final
-name|Set
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
-name|internalGroups
-decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -489,7 +462,7 @@ name|Object
 argument_list|>
 name|properties
 decl_stmt|;
-DECL|method|AccountState ( AllUsersName allUsersName, Account account, Set<AccountGroup.UUID> actualGroups, Collection<ExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
+DECL|method|AccountState ( AllUsersName allUsersName, Account account, Collection<ExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
 specifier|public
 name|AccountState
 parameter_list|(
@@ -498,14 +471,6 @@ name|allUsersName
 parameter_list|,
 name|Account
 name|account
-parameter_list|,
-name|Set
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
-name|actualGroups
 parameter_list|,
 name|Collection
 argument_list|<
@@ -536,12 +501,6 @@ operator|.
 name|account
 operator|=
 name|account
-expr_stmt|;
-name|this
-operator|.
-name|internalGroups
-operator|=
-name|actualGroups
 expr_stmt|;
 name|this
 operator|.
@@ -764,22 +723,6 @@ parameter_list|()
 block|{
 return|return
 name|projectWatches
-return|;
-block|}
-comment|/** The set of groups maintained directly within the Gerrit database. */
-DECL|method|getInternalGroups ()
-specifier|public
-name|Set
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
-name|getInternalGroups
-parameter_list|()
-block|{
-return|return
-name|internalGroups
 return|;
 block|}
 DECL|method|getUserName (Collection<ExternalId> ids)

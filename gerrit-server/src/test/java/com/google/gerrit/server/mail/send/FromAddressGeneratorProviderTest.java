@@ -2583,11 +2583,6 @@ operator|.
 name|emptySet
 argument_list|()
 argument_list|,
-name|Collections
-operator|.
-name|emptySet
-argument_list|()
-argument_list|,
 operator|new
 name|HashMap
 argument_list|<>

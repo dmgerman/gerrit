@@ -484,11 +484,6 @@ operator|.
 name|of
 argument_list|()
 argument_list|,
-name|ImmutableSet
-operator|.
-name|of
-argument_list|()
-argument_list|,
 operator|new
 name|HashMap
 argument_list|<>

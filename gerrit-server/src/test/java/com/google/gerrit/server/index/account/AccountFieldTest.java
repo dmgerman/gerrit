@@ -415,11 +415,6 @@ operator|.
 name|of
 argument_list|()
 argument_list|,
-name|ImmutableSet
-operator|.
-name|of
-argument_list|()
-argument_list|,
 name|ImmutableMap
 operator|.
 name|of
@@ -603,11 +598,6 @@ argument_list|(
 literal|null
 argument_list|,
 name|account
-argument_list|,
-name|ImmutableSet
-operator|.
-name|of
-argument_list|()
 argument_list|,
 name|ImmutableSet
 operator|.
