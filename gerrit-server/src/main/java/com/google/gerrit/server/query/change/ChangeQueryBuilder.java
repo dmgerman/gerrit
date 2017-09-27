@@ -3289,8 +3289,6 @@ parameter_list|(
 name|String
 name|statusName
 parameter_list|)
-throws|throws
-name|QueryParseException
 block|{
 if|if
 condition|(
@@ -3941,29 +3939,12 @@ literal|"'is:wip' operator is not supported by change index version"
 argument_list|)
 throw|;
 block|}
-try|try
-block|{
 return|return
 name|status
 argument_list|(
 name|value
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// not status: alias?
-block|}
-throw|throw
-name|error
-argument_list|(
-literal|"Invalid query"
-argument_list|)
-throw|;
 block|}
 annotation|@
 name|Operator
