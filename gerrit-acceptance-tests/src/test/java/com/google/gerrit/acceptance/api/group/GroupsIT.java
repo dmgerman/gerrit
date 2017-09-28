@@ -319,6 +319,8 @@ operator|.
 name|groups
 operator|.
 name|Groups
+operator|.
+name|ListRequest
 import|;
 end_import
 
@@ -580,6 +582,22 @@ name|server
 operator|.
 name|group
 operator|.
+name|Groups
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
 name|GroupsUpdate
 import|;
 end_import
@@ -747,6 +765,13 @@ argument_list|<
 name|GroupsUpdate
 argument_list|>
 name|groupsUpdateProvider
+decl_stmt|;
+DECL|field|groups
+annotation|@
+name|Inject
+specifier|private
+name|Groups
+name|groups
 decl_stmt|;
 annotation|@
 name|Test
@@ -3744,13 +3769,12 @@ name|String
 argument_list|>
 name|expectedGroups
 init|=
-name|groupCache
+name|groups
 operator|.
-name|all
-argument_list|()
-operator|.
-name|stream
-argument_list|()
+name|getAll
+argument_list|(
+name|db
+argument_list|)
 operator|.
 name|map
 argument_list|(
@@ -5514,13 +5538,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertBadRequest (Groups.ListRequest req)
+DECL|method|assertBadRequest (ListRequest req)
 specifier|private
 name|void
 name|assertBadRequest
 parameter_list|(
-name|Groups
-operator|.
 name|ListRequest
 name|req
 parameter_list|)

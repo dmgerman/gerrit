@@ -72,20 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -183,15 +169,6 @@ operator|.
 name|UUID
 name|groupUuid
 parameter_list|)
-function_decl|;
-comment|/** @return sorted list of groups. */
-DECL|method|all ()
-name|ImmutableList
-argument_list|<
-name|AccountGroup
-argument_list|>
-name|all
-parameter_list|()
 function_decl|;
 comment|/** Notify the cache that a new group was constructed. */
 DECL|method|onCreateGroup (AccountGroup group)
