@@ -584,6 +584,8 @@ name|void
 name|run
 parameter_list|()
 block|{
+try|try
+block|{
 if|if
 condition|(
 operator|!
@@ -662,6 +664,28 @@ argument_list|(
 literal|"Error listing logs to compress in "
 operator|+
 name|logs_dir
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Failed to compress log files: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
