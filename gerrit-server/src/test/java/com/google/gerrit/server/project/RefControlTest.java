@@ -1235,32 +1235,6 @@ name|isFalse
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertOwnerAnyRef (ProjectControl u)
-specifier|private
-name|void
-name|assertOwnerAnyRef
-parameter_list|(
-name|ProjectControl
-name|u
-parameter_list|)
-block|{
-name|assertThat
-argument_list|(
-name|u
-operator|.
-name|isOwnerAnyRef
-argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"owns ref"
-argument_list|)
-operator|.
-name|isTrue
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|assertNotOwner (String ref, ProjectControl u)
 specifier|private
 name|void
@@ -2850,11 +2824,6 @@ argument_list|(
 name|uDev
 argument_list|)
 expr_stmt|;
-name|assertOwnerAnyRef
-argument_list|(
-name|uDev
-argument_list|)
-expr_stmt|;
 name|assertOwner
 argument_list|(
 literal|"refs/heads/x/*"
@@ -2956,11 +2925,6 @@ argument_list|(
 name|uDev
 argument_list|)
 expr_stmt|;
-name|assertOwnerAnyRef
-argument_list|(
-name|uDev
-argument_list|)
-expr_stmt|;
 name|assertOwner
 argument_list|(
 literal|"refs/heads/x/*"
@@ -3007,11 +2971,6 @@ name|fixers
 argument_list|)
 decl_stmt|;
 name|assertNotOwner
-argument_list|(
-name|uFix
-argument_list|)
-expr_stmt|;
-name|assertOwnerAnyRef
 argument_list|(
 name|uFix
 argument_list|)

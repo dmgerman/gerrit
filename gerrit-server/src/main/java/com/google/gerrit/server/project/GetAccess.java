@@ -582,6 +582,22 @@ name|server
 operator|.
 name|permissions
 operator|.
+name|GlobalPermission
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
 name|PermissionBackend
 import|;
 end_import
@@ -1737,15 +1753,23 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|&&
-name|pc
+name|permissionBackend
 operator|.
-name|isOwnerAnyRef
-argument_list|()
+name|user
+argument_list|(
+name|user
+argument_list|)
+operator|.
+name|test
+argument_list|(
+name|GlobalPermission
+operator|.
+name|ADMINISTRATE_SERVER
+argument_list|)
 condition|)
 block|{
 comment|// Special case: If the section list is empty, this project has no current
-comment|// access control information. Rely on what ProjectControl determines
-comment|// is ownership, which probably means falling back to site administrators.
+comment|// access control information. Fall back to site administrators.
 name|info
 operator|.
 name|ownerOf

@@ -1809,25 +1809,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** Does this user have ownership on at least one reference name? */
-DECL|method|isOwnerAnyRef ()
-specifier|public
-name|boolean
-name|isOwnerAnyRef
-parameter_list|()
-block|{
-return|return
-name|canPerformOnAnyRef
-argument_list|(
-name|Permission
-operator|.
-name|OWNER
-argument_list|)
-operator|||
-name|isAdmin
-argument_list|()
-return|;
-block|}
 comment|/** Returns whether the project is hidden. */
 DECL|method|isHidden ()
 specifier|private
@@ -1875,7 +1856,7 @@ operator|.
 name|CREATE
 argument_list|)
 operator|||
-name|isOwnerAnyRef
+name|isAdmin
 argument_list|()
 operator|)
 return|;
