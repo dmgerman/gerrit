@@ -372,9 +372,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gwtorm
 operator|.
-name|Inject
+name|server
+operator|.
+name|SchemaFactory
 import|;
 end_import
 
@@ -386,7 +388,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
+name|Inject
 import|;
 end_import
 
@@ -1327,18 +1329,18 @@ specifier|final
 name|Groups
 name|groups
 decl_stmt|;
-DECL|field|db
+DECL|field|schema
 specifier|private
 specifier|final
-name|Provider
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|db
+name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NameCheck (@erritServerConfig Config cfg, Groups groups, Provider<ReviewDb> db)
+DECL|method|NameCheck (@erritServerConfig Config cfg, Groups groups, SchemaFactory<ReviewDb> schema)
 name|NameCheck
 parameter_list|(
 annotation|@
@@ -1349,11 +1351,11 @@ parameter_list|,
 name|Groups
 name|groups
 parameter_list|,
-name|Provider
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|db
+name|schema
 parameter_list|)
 block|{
 name|this
@@ -1370,9 +1372,9 @@ name|groups
 expr_stmt|;
 name|this
 operator|.
-name|db
+name|schema
 operator|=
-name|db
+name|schema
 expr_stmt|;
 block|}
 annotation|@
@@ -1500,9 +1502,9 @@ name|groups
 operator|.
 name|getAll
 argument_list|(
-name|db
+name|schema
 operator|.
-name|get
+name|open
 argument_list|()
 argument_list|)
 operator|.
