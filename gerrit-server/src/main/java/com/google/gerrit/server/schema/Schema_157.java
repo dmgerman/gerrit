@@ -261,6 +261,14 @@ literal|"accounts_byPreferredEmail"
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|ex
+parameter_list|)
+block|{
+comment|// Ignore. The index did not exist.
+block|}
 block|}
 block|}
 end_class
