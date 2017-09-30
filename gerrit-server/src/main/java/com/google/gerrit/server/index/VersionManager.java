@@ -648,7 +648,7 @@ operator|.
 name|toAbsolutePath
 argument_list|()
 operator|+
-literal|" reindex"
+literal|" reindex --index %s"
 expr_stmt|;
 block|}
 annotation|@
@@ -997,6 +997,11 @@ operator|.
 name|format
 argument_list|(
 name|runReindexMsg
+argument_list|,
+name|def
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|def
 operator|.
