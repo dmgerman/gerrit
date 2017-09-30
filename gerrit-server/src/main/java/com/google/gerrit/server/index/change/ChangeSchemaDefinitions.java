@@ -468,6 +468,8 @@ name|REVERT_OF
 argument_list|)
 decl_stmt|;
 DECL|field|V46
+annotation|@
+name|Deprecated
 specifier|static
 specifier|final
 name|Schema
