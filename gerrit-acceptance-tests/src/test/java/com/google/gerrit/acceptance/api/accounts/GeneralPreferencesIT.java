@@ -671,7 +671,7 @@ argument_list|)
 operator|.
 name|hasSize
 argument_list|(
-literal|7
+literal|6
 argument_list|)
 expr_stmt|;
 name|assertThat

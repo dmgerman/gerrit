@@ -761,13 +761,6 @@ name|suggestions
 operator|.
 name|add
 argument_list|(
-literal|"is:draft"
-argument_list|)
-expr_stmt|;
-name|suggestions
-operator|.
-name|add
-argument_list|(
 literal|"is:private"
 argument_list|)
 expr_stmt|;
@@ -860,13 +853,6 @@ operator|.
 name|add
 argument_list|(
 literal|"status:abandoned"
-argument_list|)
-expr_stmt|;
-name|suggestions
-operator|.
-name|add
-argument_list|(
-literal|"status:draft"
 argument_list|)
 expr_stmt|;
 name|suggestions

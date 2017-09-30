@@ -1153,14 +1153,6 @@ name|uploader
 expr_stmt|;
 name|copy
 operator|.
-name|draft
-operator|=
-name|revisionInfo
-operator|.
-name|draft
-expr_stmt|;
-name|copy
-operator|.
 name|fetch
 operator|=
 name|revisionInfo

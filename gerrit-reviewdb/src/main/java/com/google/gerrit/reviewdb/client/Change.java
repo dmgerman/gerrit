@@ -1401,16 +1401,6 @@ name|STATUS_NEW
 init|=
 literal|'n'
 decl_stmt|;
-comment|/** Database constant for {@link Status#DRAFT}. */
-DECL|field|STATUS_DRAFT
-specifier|public
-specifier|static
-specifier|final
-name|char
-name|STATUS_DRAFT
-init|=
-literal|'d'
-decl_stmt|;
 comment|/** Maximum database status constant for an open change. */
 DECL|field|MAX_OPEN
 specifier|private
@@ -1468,34 +1458,24 @@ operator|.
 name|NEW
 parameter_list|)
 operator|,
-comment|/**      * Change is a draft change that only consists of draft patchsets.      *      *<p>This is a change that is not meant to be submitted or reviewed yet. If the uploader      * publishes the change, it becomes a NEW change. Publishing is a one-way action, a change      * cannot return to DRAFT status. Draft changes are only visible to the uploader and those      * explicitly added as reviewers.      *      *<p>Changes in the DRAFT state can be moved to:      *      *<ul>      *<li>{@link #NEW} - when the change is published, it becomes a new change;      *</ul>      */
-DECL|enumConstant|DRAFT
-constructor|DRAFT(STATUS_DRAFT
+comment|/**      * Change is closed, and submitted to its destination branch.      *      *<p>Once a change has been merged, it cannot be further modified by adding a replacement patch      */
+DECL|enumConstant|MERGED
+constructor|MERGED(STATUS_MERGED
 operator|,
-constructor|ChangeStatus.DRAFT
+constructor|ChangeStatus.MERGED
 block|)
 enum|,
-comment|/**      * Change is closed, and submitted to its destination branch.      *      *<p>Once a change has been merged, it cannot be further modified by adding a replacement patch      * set. Draft comments however may be published, supporting a post-submit review.      */
-DECL|enumConstant|MERGED
-name|MERGED
-parameter_list|(
-name|STATUS_MERGED
-parameter_list|,
-name|ChangeStatus
-operator|.
-name|MERGED
-parameter_list|)
-operator|,
 comment|/**      * Change is closed, but was not submitted to its destination branch.      *      *<p>Once a change has been abandoned, it cannot be further modified by adding a replacement      * patch set, and it cannot be merged. Draft comments however may be published, permitting      * reviewers to send constructive feedback.      */
 DECL|enumConstant|ABANDONED
-constructor|ABANDONED('A'
-operator|,
-constructor|ChangeStatus.ABANDONED
-block|)
-class|;
-end_class
-
-begin_static
+name|ABANDONED
+argument_list|(
+literal|'A'
+argument_list|,
+name|ChangeStatus
+operator|.
+name|ABANDONED
+argument_list|)
+enum|;
 static|static
 block|{
 name|boolean
@@ -1591,50 +1571,38 @@ argument_list|)
 throw|;
 block|}
 block|}
-end_static
-
-begin_decl_stmt
 DECL|field|code
 specifier|private
 specifier|final
 name|char
 name|code
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|field|closed
 specifier|private
 specifier|final
 name|boolean
 name|closed
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|field|changeStatus
 specifier|private
 specifier|final
 name|ChangeStatus
 name|changeStatus
 decl_stmt|;
-end_decl_stmt
-
-begin_expr_stmt
 DECL|method|Status (char c, ChangeStatus cs)
 name|Status
-argument_list|(
+parameter_list|(
 name|char
 name|c
-argument_list|,
+parameter_list|,
 name|ChangeStatus
 name|cs
-argument_list|)
+parameter_list|)
 block|{
 name|code
 operator|=
 name|c
-block|;
+expr_stmt|;
 name|closed
 operator|=
 operator|!
@@ -1647,24 +1615,22 @@ name|c
 operator|<=
 name|MAX_OPEN
 operator|)
-block|;
+expr_stmt|;
 name|changeStatus
 operator|=
 name|cs
-block|;     }
+expr_stmt|;
+block|}
 DECL|method|getCode ()
 specifier|public
 name|char
 name|getCode
-argument_list|()
+parameter_list|()
 block|{
 return|return
 name|code
 return|;
 block|}
-end_expr_stmt
-
-begin_function
 DECL|method|isOpen ()
 specifier|public
 name|boolean
@@ -1676,9 +1642,6 @@ operator|!
 name|closed
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|isClosed ()
 specifier|public
 name|boolean
@@ -1689,9 +1652,6 @@ return|return
 name|closed
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|asChangeStatus ()
 specifier|public
 name|ChangeStatus
@@ -1702,9 +1662,6 @@ return|return
 name|changeStatus
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|forCode (char c)
 specifier|public
 specifier|static
@@ -1740,13 +1697,27 @@ name|s
 return|;
 block|}
 block|}
+comment|// TODO(davido): Remove in 3.0, after all sites upgraded to version,
+comment|// where DRAFT status was removed. This code path is still needed,
+comment|// when changes are deserialized from the secondary index, during
+comment|// the online migration to the new schema version wasn't completed.
+if|if
+condition|(
+name|c
+operator|==
+literal|'d'
+condition|)
+block|{
+return|return
+name|Status
+operator|.
+name|NEW
+return|;
+block|}
 return|return
 literal|null
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|forChangeStatus (ChangeStatus cs)
 specifier|public
 specifier|static
@@ -1786,15 +1757,15 @@ return|return
 literal|null
 return|;
 block|}
-end_function
+block|}
+end_class
 
 begin_comment
-unit|}
 comment|/** Locally assigned unique identifier of the change */
 end_comment
 
-begin_expr_stmt
-unit|@
+begin_decl_stmt
+annotation|@
 name|Column
 argument_list|(
 name|id
@@ -1805,8 +1776,8 @@ DECL|field|changeId
 specifier|protected
 name|Id
 name|changeId
-expr_stmt|;
-end_expr_stmt
+decl_stmt|;
+end_decl_stmt
 
 begin_comment
 comment|/** Globally assigned unique identifier of the change */

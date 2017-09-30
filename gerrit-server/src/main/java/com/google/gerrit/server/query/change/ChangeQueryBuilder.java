@@ -3289,8 +3289,6 @@ parameter_list|(
 name|String
 name|statusName
 parameter_list|)
-throws|throws
-name|QueryParseException
 block|{
 if|if
 condition|(
@@ -3691,8 +3689,6 @@ name|ReviewerPredicate
 operator|.
 name|cc
 argument_list|(
-name|args
-argument_list|,
 name|self
 argument_list|()
 argument_list|)
@@ -3943,29 +3939,12 @@ literal|"'is:wip' operator is not supported by change index version"
 argument_list|)
 throw|;
 block|}
-try|try
-block|{
 return|return
 name|status
 argument_list|(
 name|value
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// not status: alias?
-block|}
-throw|throw
-name|error
-argument_list|(
-literal|"Invalid query"
-argument_list|)
-throw|;
 block|}
 annotation|@
 name|Operator
@@ -8267,8 +8246,6 @@ name|ReviewerByEmailPredicate
 operator|.
 name|forState
 argument_list|(
-name|args
-argument_list|,
 name|address
 argument_list|,
 name|state
@@ -8331,8 +8308,6 @@ name|ReviewerPredicate
 operator|.
 name|forState
 argument_list|(
-name|args
-argument_list|,
 name|id
 argument_list|,
 name|state

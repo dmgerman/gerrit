@@ -1065,7 +1065,7 @@ operator|+
 literal|"Subject: Some subject of a change\n"
 argument_list|)
 expr_stmt|;
-name|assertParseSucceeds
+name|assertParseFails
 argument_list|(
 literal|"Update change\n"
 operator|+

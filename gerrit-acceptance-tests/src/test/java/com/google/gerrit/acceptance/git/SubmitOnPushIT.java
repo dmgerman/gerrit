@@ -1334,32 +1334,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|submitOnPushingDraft_Error ()
-specifier|public
-name|void
-name|submitOnPushingDraft_Error
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|PushOneCommit
-operator|.
-name|Result
-name|r
-init|=
-name|pushTo
-argument_list|(
-literal|"refs/for/master%draft,submit"
-argument_list|)
-decl_stmt|;
-name|r
-operator|.
-name|assertErrorStatus
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|submitOnPushToNonExistingBranch_Error ()
 specifier|public
 name|void

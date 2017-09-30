@@ -1225,14 +1225,6 @@ argument_list|(
 literal|"Rebase"
 argument_list|)
 operator|.
-name|setDraft
-argument_list|(
-name|originalPatchSet
-operator|.
-name|isDraft
-argument_list|()
-argument_list|)
-operator|.
 name|setNotify
 argument_list|(
 name|NotifyHandling

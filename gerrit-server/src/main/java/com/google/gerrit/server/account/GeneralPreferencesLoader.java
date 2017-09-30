@@ -1050,23 +1050,6 @@ argument_list|(
 operator|new
 name|MenuItem
 argument_list|(
-literal|"Drafts"
-argument_list|,
-literal|"#/q/owner:self+is:draft"
-argument_list|,
-literal|null
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|r
-operator|.
-name|my
-operator|.
-name|add
-argument_list|(
-operator|new
-name|MenuItem
-argument_list|(
 literal|"Draft Comments"
 argument_list|,
 literal|"#/q/has:draft"

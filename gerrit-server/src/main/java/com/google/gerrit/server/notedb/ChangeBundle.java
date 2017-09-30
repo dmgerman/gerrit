@@ -1977,8 +1977,6 @@ literal|3
 argument_list|,
 literal|4
 argument_list|,
-literal|5
-argument_list|,
 literal|6
 argument_list|,
 literal|8

@@ -138,11 +138,6 @@ argument_list|(
 literal|false
 argument_list|)
 operator|.
-name|allowDraft
-argument_list|(
-literal|false
-argument_list|)
-operator|.
 name|allowClosed
 argument_list|(
 literal|false
@@ -164,13 +159,6 @@ specifier|public
 specifier|abstract
 name|boolean
 name|fastEvalLabels
-parameter_list|()
-function_decl|;
-DECL|method|allowDraft ()
-specifier|public
-specifier|abstract
-name|boolean
-name|allowDraft
 parameter_list|()
 function_decl|;
 DECL|method|allowClosed ()
@@ -217,18 +205,6 @@ name|fastEvalLabels
 parameter_list|(
 name|boolean
 name|fastEvalLabels
-parameter_list|)
-function_decl|;
-DECL|method|allowDraft (boolean allowDraft)
-specifier|public
-specifier|abstract
-name|SubmitRuleOptions
-operator|.
-name|Builder
-name|allowDraft
-parameter_list|(
-name|boolean
-name|allowDraft
 parameter_list|)
 function_decl|;
 DECL|method|allowClosed (boolean allowClosed)
@@ -290,12 +266,6 @@ operator|.
 name|fastEvalLabels
 argument_list|(
 name|fastEvalLabels
-argument_list|()
-argument_list|)
-operator|.
-name|allowDraft
-argument_list|(
-name|allowDraft
 argument_list|()
 argument_list|)
 operator|.

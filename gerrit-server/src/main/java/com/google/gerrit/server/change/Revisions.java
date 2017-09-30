@@ -632,8 +632,6 @@ operator|&&
 name|visible
 argument_list|(
 name|change
-argument_list|,
-name|ps
 argument_list|)
 condition|)
 block|{
@@ -692,11 +690,6 @@ condition|(
 name|visible
 argument_list|(
 name|change
-argument_list|,
-name|rsrc
-operator|.
-name|getPatchSet
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -767,16 +760,13 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|visible (ChangeResource change, PatchSet ps)
+DECL|method|visible (ChangeResource change)
 specifier|private
 name|boolean
 name|visible
 parameter_list|(
 name|ChangeResource
 name|change
-parameter_list|,
-name|PatchSet
-name|ps
 parameter_list|)
 throws|throws
 name|OrmException
@@ -797,10 +787,8 @@ name|getUser
 argument_list|()
 argument_list|)
 operator|.
-name|isPatchVisible
+name|isVisible
 argument_list|(
-name|ps
-argument_list|,
 name|dbProvider
 operator|.
 name|get

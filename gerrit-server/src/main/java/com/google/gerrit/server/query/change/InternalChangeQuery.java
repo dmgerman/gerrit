@@ -611,8 +611,9 @@ name|status
 parameter_list|)
 block|{
 return|return
-operator|new
 name|ChangeStatusPredicate
+operator|.
+name|forStatus
 argument_list|(
 name|status
 argument_list|)

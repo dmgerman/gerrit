@@ -874,18 +874,7 @@ specifier|protected
 name|Timestamp
 name|createdOn
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|5
-argument_list|)
-DECL|field|draft
-specifier|protected
-name|boolean
-name|draft
-decl_stmt|;
+comment|// @Column(id = 5)
 comment|/**    * Opaque group identifier, usually assigned during creation.    *    *<p>This field is actually a comma-separated list of values, as in rare cases involving merge    * commits a patch set may belong to multiple groups.    *    *<p>Changes on the same branch having patch sets with intersecting groups are considered    * related, as in the "Related Changes" tab.    */
 annotation|@
 name|Column
@@ -1018,14 +1007,6 @@ name|createdOn
 expr_stmt|;
 name|this
 operator|.
-name|draft
-operator|=
-name|src
-operator|.
-name|draft
-expr_stmt|;
-name|this
-operator|.
 name|groups
 operator|=
 name|src
@@ -1148,30 +1129,6 @@ block|{
 name|createdOn
 operator|=
 name|ts
-expr_stmt|;
-block|}
-DECL|method|isDraft ()
-specifier|public
-name|boolean
-name|isDraft
-parameter_list|()
-block|{
-return|return
-name|draft
-return|;
-block|}
-DECL|method|setDraft (boolean draftStatus)
-specifier|public
-name|void
-name|setDraft
-parameter_list|(
-name|boolean
-name|draftStatus
-parameter_list|)
-block|{
-name|draft
-operator|=
-name|draftStatus
 expr_stmt|;
 block|}
 DECL|method|getGroups ()

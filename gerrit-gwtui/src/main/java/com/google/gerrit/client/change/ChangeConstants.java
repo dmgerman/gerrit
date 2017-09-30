@@ -155,11 +155,6 @@ name|String
 name|author
 parameter_list|()
 function_decl|;
-DECL|method|draft ()
-name|String
-name|draft
-parameter_list|()
-function_decl|;
 DECL|method|notAvailable ()
 name|String
 name|notAvailable
@@ -243,11 +238,6 @@ function_decl|;
 DECL|method|deleteChange ()
 name|String
 name|deleteChange
-parameter_list|()
-function_decl|;
-DECL|method|deleteDraftRevision ()
-name|String
-name|deleteDraftRevision
 parameter_list|()
 function_decl|;
 block|}

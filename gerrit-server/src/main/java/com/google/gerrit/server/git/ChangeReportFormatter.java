@@ -143,15 +143,6 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Nullable
-DECL|method|isDraft ()
-specifier|public
-specifier|abstract
-name|Boolean
-name|isDraft
-parameter_list|()
-function_decl|;
-annotation|@
-name|Nullable
 DECL|method|isEdit ()
 specifier|public
 specifier|abstract
@@ -223,16 +214,6 @@ name|String
 name|val
 parameter_list|)
 function_decl|;
-DECL|method|setIsDraft (Boolean val)
-specifier|public
-specifier|abstract
-name|Builder
-name|setIsDraft
-parameter_list|(
-name|Boolean
-name|val
-parameter_list|)
-function_decl|;
 DECL|method|setIsEdit (Boolean val)
 specifier|public
 specifier|abstract
@@ -273,12 +254,6 @@ DECL|method|subject ()
 specifier|abstract
 name|String
 name|subject
-parameter_list|()
-function_decl|;
-DECL|method|isDraft ()
-specifier|abstract
-name|Boolean
-name|isDraft
 parameter_list|()
 function_decl|;
 DECL|method|isEdit ()
@@ -331,29 +306,6 @@ name|getSubject
 argument_list|()
 else|:
 name|subject
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|setIsDraft
-argument_list|(
-name|isDraft
-argument_list|()
-operator|==
-literal|null
-condition|?
-name|Change
-operator|.
-name|Status
-operator|.
-name|DRAFT
-operator|==
-name|change
-argument_list|()
-operator|.
-name|getStatus
-argument_list|()
-else|:
-name|isDraft
 argument_list|()
 argument_list|)
 expr_stmt|;

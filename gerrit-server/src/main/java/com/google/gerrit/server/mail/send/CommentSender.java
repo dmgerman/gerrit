@@ -1155,12 +1155,6 @@ operator|.
 name|ALL_COMMENTS
 argument_list|,
 operator|!
-name|patchSet
-operator|.
-name|isDraft
-argument_list|()
-operator|&&
-operator|!
 name|change
 operator|.
 name|isWorkInProgress

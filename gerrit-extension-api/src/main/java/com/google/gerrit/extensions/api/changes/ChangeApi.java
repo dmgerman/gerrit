@@ -618,6 +618,8 @@ throws|throws
 name|RestApiException
 function_decl|;
 comment|/** Publishes a draft change. */
+annotation|@
+name|Deprecated
 DECL|method|publish ()
 name|void
 name|publish
@@ -1388,6 +1390,8 @@ name|NotImplementedException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Deprecated
 annotation|@
 name|Override
 DECL|method|rebase ()

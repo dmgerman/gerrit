@@ -1999,9 +1999,6 @@ comment|// $FALL-THROUGH$
 case|case
 name|ABANDONED
 case|:
-case|case
-name|DRAFT
-case|:
 default|default:
 throw|throw
 operator|new
@@ -2335,14 +2332,6 @@ operator|!
 name|resource
 operator|.
 name|isCurrent
-argument_list|()
-operator|||
-name|resource
-operator|.
-name|getPatchSet
-argument_list|()
-operator|.
-name|isDraft
 argument_list|()
 operator|||
 operator|!
@@ -3713,10 +3702,8 @@ name|getUser
 argument_list|()
 argument_list|)
 operator|.
-name|isPatchVisible
+name|isVisible
 argument_list|(
-name|ps
-argument_list|,
 name|dbProvider
 operator|.
 name|get

@@ -156,26 +156,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
-name|ChangeQueryBuilder
-operator|.
-name|Arguments
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -191,7 +171,7 @@ name|ReviewerByEmailPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
-DECL|method|forState (Arguments args, Address adr, ReviewerStateInternal state)
+DECL|method|forState (Address adr, ReviewerStateInternal state)
 specifier|static
 name|Predicate
 argument_list|<
@@ -199,9 +179,6 @@ name|ChangeData
 argument_list|>
 name|forState
 parameter_list|(
-name|Arguments
-name|args
-parameter_list|,
 name|Address
 name|adr
 parameter_list|,
@@ -221,17 +198,12 @@ literal|"can't query by removed reviewer"
 argument_list|)
 expr_stmt|;
 return|return
-name|create
-argument_list|(
-name|args
-argument_list|,
 operator|new
 name|ReviewerByEmailPredicate
 argument_list|(
 name|state
 argument_list|,
 name|adr
-argument_list|)
 argument_list|)
 return|;
 block|}

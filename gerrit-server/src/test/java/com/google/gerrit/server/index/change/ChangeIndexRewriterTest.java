@@ -154,46 +154,6 @@ name|Change
 operator|.
 name|Status
 operator|.
-name|ABANDONED
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-operator|.
-name|Status
-operator|.
-name|DRAFT
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-operator|.
-name|Status
-operator|.
 name|MERGED
 import|;
 end_import
@@ -1225,7 +1185,7 @@ name|in
 init|=
 name|parse
 argument_list|(
-literal|"(status:new OR status:draft) bar:p file:a"
+literal|"status:new bar:p file:a"
 argument_list|)
 decl_stmt|;
 name|Predicate
@@ -1635,16 +1595,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assertThat
-argument_list|(
-name|status
-argument_list|(
-literal|"file:a"
-argument_list|)
-argument_list|)
+name|Set
+argument_list|<
+name|Change
 operator|.
-name|isEqualTo
-argument_list|(
+name|Status
+argument_list|>
+name|all
+init|=
 name|EnumSet
 operator|.
 name|allOf
@@ -1655,6 +1613,18 @@ name|Status
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|status
+argument_list|(
+literal|"file:a"
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|all
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1668,23 +1638,6 @@ operator|.
 name|containsExactly
 argument_list|(
 name|NEW
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|status
-argument_list|(
-literal|"-is:new"
-argument_list|)
-argument_list|)
-operator|.
-name|containsExactly
-argument_list|(
-name|DRAFT
-argument_list|,
-name|MERGED
-argument_list|,
-name|ABANDONED
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1706,6 +1659,19 @@ name|assertThat
 argument_list|(
 name|status
 argument_list|(
+literal|"is:new OR is:x"
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|all
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|status
+argument_list|(
 literal|"is:new is:merged"
 argument_list|)
 argument_list|)
@@ -1717,7 +1683,7 @@ name|assertThat
 argument_list|(
 name|status
 argument_list|(
-literal|"(is:new is:draft) (is:merged)"
+literal|"(is:new) (is:merged)"
 argument_list|)
 argument_list|)
 operator|.
@@ -1728,7 +1694,7 @@ name|assertThat
 argument_list|(
 name|status
 argument_list|(
-literal|"(is:new is:draft) (is:merged)"
+literal|"(is:new) (is:merged)"
 argument_list|)
 argument_list|)
 operator|.
@@ -1739,13 +1705,13 @@ name|assertThat
 argument_list|(
 name|status
 argument_list|(
-literal|"(is:new is:draft) OR (is:merged)"
+literal|"is:new is:x"
 argument_list|)
 argument_list|)
 operator|.
 name|containsExactly
 argument_list|(
-name|MERGED
+name|NEW
 argument_list|)
 expr_stmt|;
 block|}

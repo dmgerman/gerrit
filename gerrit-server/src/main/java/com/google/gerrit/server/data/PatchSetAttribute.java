@@ -136,11 +136,6 @@ specifier|public
 name|AccountAttribute
 name|author
 decl_stmt|;
-DECL|field|isDraft
-specifier|public
-name|boolean
-name|isDraft
-decl_stmt|;
 DECL|field|kind
 specifier|public
 name|ChangeKind

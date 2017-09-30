@@ -5928,10 +5928,8 @@ operator|!
 name|changeControl
 argument_list|()
 operator|.
-name|isPatchVisible
+name|isVisible
 argument_list|(
-name|ps
-argument_list|,
 name|db
 argument_list|)
 condition|)

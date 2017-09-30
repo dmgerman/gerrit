@@ -744,10 +744,8 @@ name|getUser
 argument_list|()
 argument_list|)
 operator|.
-name|isPatchVisible
+name|isVisible
 argument_list|(
-name|currentPatchSet
-argument_list|,
 name|dbProvider
 operator|.
 name|get

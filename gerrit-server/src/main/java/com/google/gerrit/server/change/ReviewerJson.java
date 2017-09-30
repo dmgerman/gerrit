@@ -1001,11 +1001,6 @@ argument_list|(
 literal|true
 argument_list|)
 operator|.
-name|setAllowDraft
-argument_list|(
-literal|true
-argument_list|)
-operator|.
 name|evaluate
 argument_list|()
 control|)

@@ -76,10 +76,6 @@ comment|/** Published and visible to anyone who can see the change; the default.
 DECL|enumConstant|PUBLISHED
 name|PUBLISHED
 block|,
-comment|/** Draft patch set, only visible to certain users. */
-DECL|enumConstant|DRAFT
-name|DRAFT
-block|,
 comment|/**    * Deleted patch set.    *    *<p>Used internally as a tombstone; patch sets exposed by public NoteDb interfaces never have    * this state.    */
 DECL|enumConstant|DELETED
 name|DELETED

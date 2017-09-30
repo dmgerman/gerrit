@@ -279,22 +279,6 @@ if|if
 condition|(
 name|input
 operator|.
-name|isDraft
-argument_list|()
-condition|)
-block|{
-name|m
-operator|.
-name|append
-argument_list|(
-literal|" [DRAFT]"
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|input
-operator|.
 name|isEdit
 argument_list|()
 condition|)

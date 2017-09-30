@@ -2218,8 +2218,6 @@ name|psId
 argument_list|,
 name|alreadyMergedCommit
 argument_list|,
-literal|false
-argument_list|,
 name|groups
 argument_list|,
 literal|null

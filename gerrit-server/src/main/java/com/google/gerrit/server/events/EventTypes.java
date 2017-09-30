@@ -186,17 +186,6 @@ argument_list|)
 expr_stmt|;
 name|register
 argument_list|(
-name|DraftPublishedEvent
-operator|.
-name|TYPE
-argument_list|,
-name|DraftPublishedEvent
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|register
-argument_list|(
 name|HashtagsChangedEvent
 operator|.
 name|TYPE

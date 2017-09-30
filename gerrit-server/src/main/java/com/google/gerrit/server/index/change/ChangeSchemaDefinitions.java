@@ -481,6 +481,21 @@ argument_list|(
 name|V45
 argument_list|)
 decl_stmt|;
+comment|// Removal of draft change workflow requires reindexing
+DECL|field|V47
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|V47
+init|=
+name|schema
+argument_list|(
+name|V46
+argument_list|)
+decl_stmt|;
 DECL|field|NAME
 specifier|public
 specifier|static

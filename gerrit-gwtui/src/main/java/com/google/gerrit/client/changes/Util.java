@@ -192,15 +192,6 @@ name|status
 condition|)
 block|{
 case|case
-name|DRAFT
-case|:
-return|return
-name|C
-operator|.
-name|statusLongDraft
-argument_list|()
-return|;
-case|case
 name|NEW
 case|:
 return|return
