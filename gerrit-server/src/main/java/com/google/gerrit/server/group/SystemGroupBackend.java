@@ -1491,6 +1491,15 @@ argument_list|>
 name|conflictingGroup
 decl_stmt|;
 try|try
+init|(
+name|ReviewDb
+name|db
+init|=
+name|schema
+operator|.
+name|open
+argument_list|()
+init|)
 block|{
 name|conflictingGroup
 operator|=
@@ -1498,10 +1507,7 @@ name|groups
 operator|.
 name|getAll
 argument_list|(
-name|schema
-operator|.
-name|open
-argument_list|()
+name|db
 argument_list|)
 operator|.
 name|filter
