@@ -240,9 +240,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gwtorm
 operator|.
-name|Inject
+name|server
+operator|.
+name|SchemaFactory
 import|;
 end_import
 
@@ -254,7 +256,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
+name|Inject
 import|;
 end_import
 
@@ -328,14 +330,14 @@ specifier|final
 name|Groups
 name|groups
 decl_stmt|;
-DECL|field|db
+DECL|field|schema
 specifier|private
 specifier|final
-name|Provider
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|db
+name|schema
 decl_stmt|;
 DECL|field|groupMembershipFactory
 specifier|private
@@ -347,7 +349,7 @@ name|groupMembershipFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InternalGroupBackend ( GroupControl.Factory groupControlFactory, GroupCache groupCache, Groups groups, Provider<ReviewDb> db, IncludingGroupMembership.Factory groupMembershipFactory)
+DECL|method|InternalGroupBackend ( GroupControl.Factory groupControlFactory, GroupCache groupCache, Groups groups, SchemaFactory<ReviewDb> schema, IncludingGroupMembership.Factory groupMembershipFactory)
 name|InternalGroupBackend
 parameter_list|(
 name|GroupControl
@@ -361,11 +363,11 @@ parameter_list|,
 name|Groups
 name|groups
 parameter_list|,
-name|Provider
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|db
+name|schema
 parameter_list|,
 name|IncludingGroupMembership
 operator|.
@@ -393,9 +395,9 @@ name|groups
 expr_stmt|;
 name|this
 operator|.
-name|db
+name|schema
 operator|=
-name|db
+name|schema
 expr_stmt|;
 name|this
 operator|.
@@ -498,6 +500,15 @@ name|project
 parameter_list|)
 block|{
 try|try
+init|(
+name|ReviewDb
+name|db
+init|=
+name|schema
+operator|.
+name|open
+argument_list|()
+init|)
 block|{
 return|return
 name|groups
@@ -505,9 +516,6 @@ operator|.
 name|getAll
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|)
 operator|.
 name|filter
