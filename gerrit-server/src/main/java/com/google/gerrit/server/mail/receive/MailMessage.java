@@ -128,13 +128,11 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|joda
+name|java
 operator|.
 name|time
 operator|.
-name|DateTime
+name|Instant
 import|;
 end_import
 
@@ -191,7 +189,7 @@ comment|// Metadata
 DECL|method|dateReceived ()
 specifier|public
 specifier|abstract
-name|DateTime
+name|Instant
 name|dateReceived
 parameter_list|()
 function_decl|;
@@ -372,14 +370,14 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|dateReceived (DateTime val)
+DECL|method|dateReceived (Instant instant)
 specifier|public
 specifier|abstract
 name|Builder
 name|dateReceived
 parameter_list|(
-name|DateTime
-name|val
+name|Instant
+name|instant
 parameter_list|)
 function_decl|;
 DECL|method|additionalHeadersBuilder ()

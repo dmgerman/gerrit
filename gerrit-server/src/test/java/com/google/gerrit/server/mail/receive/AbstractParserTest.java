@@ -146,6 +146,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|time
+operator|.
+name|Instant
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -159,18 +169,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|joda
-operator|.
-name|time
-operator|.
-name|DateTime
 import|;
 end_import
 
@@ -609,8 +607,9 @@ name|b
 operator|.
 name|dateReceived
 argument_list|(
-operator|new
-name|DateTime
+name|Instant
+operator|.
+name|now
 argument_list|()
 argument_list|)
 expr_stmt|;
