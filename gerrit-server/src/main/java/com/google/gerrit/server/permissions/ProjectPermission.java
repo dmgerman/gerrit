@@ -121,6 +121,10 @@ operator|.
 name|READ
 parameter_list|)
 operator|,
+comment|/**    * Can read all non-config references in the repository.    *    *<p>This is the same as {@code READ} but does not check if they user can see refs/meta/config.    * Therefore, callers should check {@code READ} before excluding config refs in a short-circuit.    */
+DECL|enumConstant|READ_NO_CONFIG
+constructor|READ_NO_CONFIG
+operator|,
 comment|/**    * Can create at least one reference in the project.    *    *<p>This project level permission only validates the user may create some type of reference    * within the project. The exact reference name must be checked at creation:    *    *<pre>permissionBackend    *    .user(user)    *    .project(proj)    *    .ref(ref)    *    .check(RefPermission.CREATE);    *</pre>    */
 DECL|enumConstant|CREATE_REF
 constructor|CREATE_REF
@@ -128,6 +132,14 @@ operator|,
 comment|/**    * Can create at least one change in the project.    *    *<p>This project level permission only validates the user may create a change for some branch    * within the project. The exact reference name must be checked at creation:    *    *<pre>permissionBackend    *    .user(user)    *    .project(proj)    *    .ref(ref)    *    .check(RefPermission.CREATE_CHANGE);    *</pre>    */
 DECL|enumConstant|CREATE_CHANGE
 constructor|CREATE_CHANGE
+operator|,
+comment|/** Can run receive pack. */
+DECL|enumConstant|RUN_RECEIVE_PACK
+constructor|RUN_RECEIVE_PACK
+operator|,
+comment|/** Can run upload pack. */
+DECL|enumConstant|RUN_UPLOAD_PACK
+constructor|RUN_UPLOAD_PACK
 empty_stmt|;
 DECL|field|name
 specifier|private

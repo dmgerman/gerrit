@@ -272,7 +272,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|NoSuchProjectException
+name|ContributorAgreementsChecker
 import|;
 end_import
 
@@ -288,7 +288,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|NoSuchProjectException
 import|;
 end_import
 
@@ -576,17 +576,15 @@ specifier|final
 name|NotifyUtil
 name|notifyUtil
 decl_stmt|;
-DECL|field|projectControlFactory
+DECL|field|contributorAgreementsChecker
 specifier|private
 specifier|final
-name|ProjectControl
-operator|.
-name|GenericFactory
-name|projectControlFactory
+name|ContributorAgreementsChecker
+name|contributorAgreementsChecker
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Publish ( RetryHelper retryHelper, ChangeEditUtil editUtil, NotifyUtil notifyUtil, ProjectControl.GenericFactory projectControlFactory)
+DECL|method|Publish ( RetryHelper retryHelper, ChangeEditUtil editUtil, NotifyUtil notifyUtil, ContributorAgreementsChecker contributorAgreementsChecker)
 name|Publish
 parameter_list|(
 name|RetryHelper
@@ -598,10 +596,8 @@ parameter_list|,
 name|NotifyUtil
 name|notifyUtil
 parameter_list|,
-name|ProjectControl
-operator|.
-name|GenericFactory
-name|projectControlFactory
+name|ContributorAgreementsChecker
+name|contributorAgreementsChecker
 parameter_list|)
 block|{
 name|super
@@ -623,9 +619,9 @@ name|notifyUtil
 expr_stmt|;
 name|this
 operator|.
-name|projectControlFactory
+name|contributorAgreementsChecker
 operator|=
-name|projectControlFactory
+name|contributorAgreementsChecker
 expr_stmt|;
 block|}
 annotation|@
@@ -662,13 +658,9 @@ name|ConfigInvalidException
 throws|,
 name|NoSuchProjectException
 block|{
-name|CreateChange
+name|contributorAgreementsChecker
 operator|.
-name|checkValidCLA
-argument_list|(
-name|projectControlFactory
-operator|.
-name|controlFor
+name|check
 argument_list|(
 name|rsrc
 operator|.
@@ -679,7 +671,6 @@ name|rsrc
 operator|.
 name|getUser
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|Optional

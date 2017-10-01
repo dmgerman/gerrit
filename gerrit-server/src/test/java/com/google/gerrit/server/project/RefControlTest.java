@@ -2170,15 +2170,6 @@ specifier|private
 name|ThreadLocalRequestContext
 name|requestContext
 decl_stmt|;
-DECL|field|metrics
-annotation|@
-name|Inject
-specifier|private
-name|ProjectControl
-operator|.
-name|Metrics
-name|metrics
-decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -5950,9 +5941,6 @@ argument_list|,
 comment|// commitsCollection
 name|changeControlFactory
 argument_list|,
-literal|"http://localhost"
-argument_list|,
-comment|// canonicalWebUrl
 name|permissionBackend
 argument_list|,
 operator|new
@@ -5967,8 +5955,6 @@ name|newProjectState
 argument_list|(
 name|local
 argument_list|)
-argument_list|,
-name|metrics
 argument_list|)
 return|;
 block|}
