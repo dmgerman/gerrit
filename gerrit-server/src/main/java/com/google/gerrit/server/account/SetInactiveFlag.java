@@ -152,20 +152,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -256,7 +242,7 @@ operator|=
 name|accountsUpdate
 expr_stmt|;
 block|}
-DECL|method|deactivate (IdentifiedUser user)
+DECL|method|deactivate (Account.Id accountId)
 specifier|public
 name|Response
 argument_list|<
@@ -264,8 +250,10 @@ name|?
 argument_list|>
 name|deactivate
 parameter_list|(
-name|IdentifiedUser
-name|user
+name|Account
+operator|.
+name|Id
+name|accountId
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -293,10 +281,7 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-name|user
-operator|.
-name|getAccountId
-argument_list|()
+name|accountId
 argument_list|,
 name|a
 lambda|->
@@ -369,7 +354,7 @@ name|none
 argument_list|()
 return|;
 block|}
-DECL|method|activate (IdentifiedUser user)
+DECL|method|activate (Account.Id accountId)
 specifier|public
 name|Response
 argument_list|<
@@ -377,8 +362,10 @@ name|String
 argument_list|>
 name|activate
 parameter_list|(
-name|IdentifiedUser
-name|user
+name|Account
+operator|.
+name|Id
+name|accountId
 parameter_list|)
 throws|throws
 name|ResourceNotFoundException
@@ -406,10 +393,7 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-name|user
-operator|.
-name|getAccountId
-argument_list|()
+name|accountId
 argument_list|,
 name|a
 lambda|->
