@@ -5578,13 +5578,6 @@ name|accountResolver
 operator|.
 name|findAll
 argument_list|(
-name|args
-operator|.
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|who
 argument_list|)
 decl_stmt|;
@@ -7909,13 +7902,6 @@ name|accountResolver
 operator|.
 name|findAll
 argument_list|(
-name|args
-operator|.
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|who
 argument_list|)
 decl_stmt|;
