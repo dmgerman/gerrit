@@ -9536,7 +9536,7 @@ name|TestTimeUtil
 operator|.
 name|START
 operator|.
-name|getMillis
+name|toEpochMilli
 argument_list|()
 decl_stmt|;
 name|Change
@@ -9767,7 +9767,7 @@ name|TestTimeUtil
 operator|.
 name|START
 operator|.
-name|getMillis
+name|toEpochMilli
 argument_list|()
 decl_stmt|;
 name|Change
@@ -9933,7 +9933,7 @@ name|TestTimeUtil
 operator|.
 name|START
 operator|.
-name|getMillis
+name|toEpochMilli
 argument_list|()
 decl_stmt|;
 name|Change
