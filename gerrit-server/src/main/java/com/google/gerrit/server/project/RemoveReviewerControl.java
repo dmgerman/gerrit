@@ -292,6 +292,16 @@ name|Singleton
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -315,17 +325,17 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
-DECL|field|changeControlFactory
+DECL|field|projectControlFactory
 specifier|private
 specifier|final
-name|ChangeControl
+name|ProjectControl
 operator|.
 name|GenericFactory
-name|changeControlFactory
+name|projectControlFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RemoveReviewerControl ( PermissionBackend permissionBackend, Provider<ReviewDb> dbProvider, ChangeControl.GenericFactory changeControlFactory)
+DECL|method|RemoveReviewerControl ( PermissionBackend permissionBackend, Provider<ReviewDb> dbProvider, ProjectControl.GenericFactory projectControlFactory)
 name|RemoveReviewerControl
 parameter_list|(
 name|PermissionBackend
@@ -337,10 +347,10 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 parameter_list|,
-name|ChangeControl
+name|ProjectControl
 operator|.
 name|GenericFactory
-name|changeControlFactory
+name|projectControlFactory
 parameter_list|)
 block|{
 name|this
@@ -357,9 +367,9 @@ name|dbProvider
 expr_stmt|;
 name|this
 operator|.
-name|changeControlFactory
+name|projectControlFactory
 operator|=
-name|changeControlFactory
+name|projectControlFactory
 expr_stmt|;
 block|}
 comment|/** @throws AuthException if this user is not allowed to remove this approval. */
@@ -382,9 +392,11 @@ name|PermissionBackendException
 throws|,
 name|AuthException
 throws|,
-name|NoSuchChangeException
+name|NoSuchProjectException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -459,9 +471,11 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 throws|,
-name|NoSuchChangeException
+name|NoSuchProjectException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -530,9 +544,11 @@ name|int
 name|value
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
+name|NoSuchProjectException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -609,47 +625,44 @@ block|}
 block|}
 comment|// Users with the remove reviewer permission, the branch owner, project
 comment|// owner and site admin can remove anyone
-name|ChangeControl
-name|changeControl
+name|ProjectControl
+name|ctl
 init|=
-name|changeControlFactory
+name|projectControlFactory
 operator|.
 name|controlFor
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|change
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|currentUser
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|changeControl
+name|ctl
 operator|.
-name|getRefControl
+name|controlForRef
+argument_list|(
+name|change
+operator|.
+name|getDest
 argument_list|()
+argument_list|)
 operator|.
 name|isOwner
 argument_list|()
 comment|// branch owner
 operator|||
-name|changeControl
-operator|.
-name|getProjectControl
-argument_list|()
+name|ctl
 operator|.
 name|isOwner
 argument_list|()
 comment|// project owner
 operator|||
-name|changeControl
-operator|.
-name|getProjectControl
-argument_list|()
+name|ctl
 operator|.
 name|isAdmin
 argument_list|()
