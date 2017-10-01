@@ -5932,8 +5932,6 @@ operator|>
 name|emptySet
 argument_list|()
 argument_list|,
-name|projectCache
-argument_list|,
 name|sectionSorter
 argument_list|,
 literal|null

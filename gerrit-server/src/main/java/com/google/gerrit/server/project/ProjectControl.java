@@ -1149,7 +1149,7 @@ name|declaredOwner
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl ( @itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, CommitsCollection commits, ChangeControl.Factory changeControlFactory, PermissionBackend permissionBackend, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl ( @itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, PermissionCollection.Factory permissionFilter, CommitsCollection commits, ChangeControl.Factory changeControlFactory, PermissionBackend permissionBackend, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -1171,9 +1171,6 @@ operator|.
 name|UUID
 argument_list|>
 name|receiveGroups
-parameter_list|,
-name|ProjectCache
-name|pc
 parameter_list|,
 name|PermissionCollection
 operator|.
