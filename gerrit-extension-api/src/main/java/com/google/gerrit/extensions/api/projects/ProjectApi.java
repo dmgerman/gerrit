@@ -618,6 +618,14 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/** Remove the project's default dashboard. */
+DECL|method|removeDefaultDashboard ()
+name|void
+name|removeDefaultDashboard
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|class|ListDashboardsRequest
 specifier|abstract
 class|class
@@ -1094,6 +1102,22 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|removeDefaultDashboard ()
+specifier|public
+name|void
+name|removeDefaultDashboard
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{

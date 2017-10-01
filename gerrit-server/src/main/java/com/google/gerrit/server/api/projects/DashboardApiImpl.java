@@ -94,6 +94,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -403,7 +417,7 @@ name|id
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DashboardApiImpl ( DashboardsCollection dashboards, Provider<GetDashboard> get, SetDashboard set, @Assisted ProjectResource project, @Assisted String id)
+DECL|method|DashboardApiImpl ( DashboardsCollection dashboards, Provider<GetDashboard> get, SetDashboard set, @Assisted ProjectResource project, @Assisted @Nullable String id)
 name|DashboardApiImpl
 parameter_list|(
 name|DashboardsCollection
@@ -425,6 +439,8 @@ name|project
 parameter_list|,
 annotation|@
 name|Assisted
+annotation|@
+name|Nullable
 name|String
 name|id
 parameter_list|)
@@ -579,10 +595,28 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Cannot %s default dashboard"
+argument_list|,
+name|id
+operator|!=
+literal|null
+condition|?
+literal|"set"
+else|:
+literal|"remove"
+argument_list|)
+decl_stmt|;
 throw|throw
 name|asRestApiException
 argument_list|(
-literal|"Cannot set default dashboard"
+name|msg
 argument_list|,
 name|e
 argument_list|)
