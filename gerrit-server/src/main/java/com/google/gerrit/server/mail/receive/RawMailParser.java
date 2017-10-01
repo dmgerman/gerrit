@@ -492,6 +492,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|mimeMessage
+operator|.
+name|getDate
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|messageBuilder
 operator|.
 name|dateReceived
@@ -505,6 +515,7 @@ name|toInstant
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Add From, To and Cc
 if|if
 condition|(
