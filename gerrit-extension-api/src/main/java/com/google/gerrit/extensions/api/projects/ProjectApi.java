@@ -607,6 +607,17 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Set the project's default dashboard.    *    * @param name the dashboard to set as default.    */
+DECL|method|defaultDashboard (String name)
+name|void
+name|defaultDashboard
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|class|ListDashboardsRequest
 specifier|abstract
 class|class
@@ -1064,6 +1075,25 @@ specifier|public
 name|ListDashboardsRequest
 name|dashboards
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|defaultDashboard (String name)
+specifier|public
+name|void
+name|defaultDashboard
+parameter_list|(
+name|String
+name|name
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
