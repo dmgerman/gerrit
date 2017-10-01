@@ -123,6 +123,13 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|setDefault ()
+name|void
+name|setDefault
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -156,6 +163,22 @@ parameter_list|(
 name|boolean
 name|inherited
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setDefault ()
+specifier|public
+name|void
+name|setDefault
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
