@@ -310,6 +310,9 @@ name|rsrc
 operator|.
 name|getUser
 argument_list|()
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|)
 return|;
 block|}

@@ -132,6 +132,30 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|naming
+operator|.
+name|NamingException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|login
+operator|.
+name|LoginException
+import|;
+end_import
+
 begin_interface
 DECL|interface|Realm
 specifier|public
@@ -214,6 +238,31 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**    * @return true if the account is active.    * @throws NamingException    * @throws LoginException    * @throws AccountException    */
+DECL|method|isActive (@uppressWarningsR) String username)
+specifier|default
+name|boolean
+name|isActive
+parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+name|String
+name|username
+parameter_list|)
+throws|throws
+name|LoginException
+throws|,
+name|NamingException
+throws|,
+name|AccountException
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_interface
 
