@@ -1303,6 +1303,7 @@ name|views
 return|;
 block|}
 DECL|method|newDashboardInfo (String ref, String path)
+specifier|public
 specifier|static
 name|DashboardInfo
 name|newDashboardInfo

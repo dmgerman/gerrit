@@ -607,6 +607,31 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|class|ListDashboardsRequest
+specifier|abstract
+class|class
+name|ListDashboardsRequest
+block|{
+DECL|method|get ()
+specifier|public
+specifier|abstract
+name|List
+argument_list|<
+name|DashboardInfo
+argument_list|>
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+block|}
+DECL|method|dashboards ()
+name|ListDashboardsRequest
+name|dashboards
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -1022,6 +1047,22 @@ DECL|method|defaultDashboard ()
 specifier|public
 name|DashboardApi
 name|defaultDashboard
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|dashboards ()
+specifier|public
+name|ListDashboardsRequest
+name|dashboards
 parameter_list|()
 throws|throws
 name|RestApiException

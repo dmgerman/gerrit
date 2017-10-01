@@ -474,6 +474,7 @@ end_import
 
 begin_class
 DECL|class|ListDashboards
+specifier|public
 class|class
 name|ListDashboards
 implements|implements
