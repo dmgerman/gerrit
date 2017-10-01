@@ -178,15 +178,6 @@ name|bind
 argument_list|(
 name|ChangeControl
 operator|.
-name|GenericFactory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|bind
-argument_list|(
-name|ChangeControl
-operator|.
 name|Factory
 operator|.
 name|class

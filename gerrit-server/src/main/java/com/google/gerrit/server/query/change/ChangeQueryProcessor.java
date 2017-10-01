@@ -382,22 +382,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -502,14 +486,6 @@ name|CurrentUser
 argument_list|>
 name|userProvider
 decl_stmt|;
-DECL|field|changeControlFactory
-specifier|private
-specifier|final
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
-decl_stmt|;
 DECL|field|notesFactory
 specifier|private
 specifier|final
@@ -556,7 +532,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend)
+DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend)
 name|ChangeQueryProcessor
 parameter_list|(
 name|Provider
@@ -587,11 +563,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
-parameter_list|,
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
 parameter_list|,
 name|ChangeNotes
 operator|.
@@ -651,12 +622,6 @@ operator|.
 name|userProvider
 operator|=
 name|userProvider
-expr_stmt|;
-name|this
-operator|.
-name|changeControlFactory
-operator|=
-name|changeControlFactory
 expr_stmt|;
 name|this
 operator|.
@@ -901,8 +866,6 @@ argument_list|(
 name|db
 argument_list|,
 name|notesFactory
-argument_list|,
-name|changeControlFactory
 argument_list|,
 name|userProvider
 operator|.
