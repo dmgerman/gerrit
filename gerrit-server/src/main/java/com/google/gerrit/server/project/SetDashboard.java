@@ -230,6 +230,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|SetDashboard
+specifier|public
 class|class
 name|SetDashboard
 implements|implements
