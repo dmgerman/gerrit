@@ -545,6 +545,17 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Mark this change as reviewed/unreviewed.    *    * @param reviewed flag to decide if this change should be marked as reviewed ({@code true}) or    *     unreviewed ({@code false})    */
+DECL|method|markAsReviewed (boolean reviewed)
+name|void
+name|markAsReviewed
+parameter_list|(
+name|boolean
+name|reviewed
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Create a new change that reverts this change.    *    * @see Changes#id(int)    */
 DECL|method|revert ()
 name|ChangeApi
@@ -2071,6 +2082,25 @@ specifier|public
 name|boolean
 name|muted
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|markAsReviewed (boolean reviewed)
+specifier|public
+name|void
+name|markAsReviewed
+parameter_list|(
+name|boolean
+name|reviewed
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
