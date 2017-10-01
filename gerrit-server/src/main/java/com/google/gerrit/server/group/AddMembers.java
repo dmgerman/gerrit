@@ -1149,11 +1149,6 @@ name|accountResolver
 operator|.
 name|find
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|nameOrEmailOrId
 argument_list|)
 operator|==

@@ -13281,8 +13281,6 @@ name|add
 argument_list|(
 name|getRecipientsFromFooters
 argument_list|(
-name|db
-argument_list|,
 name|accountResolver
 argument_list|,
 name|footerLines

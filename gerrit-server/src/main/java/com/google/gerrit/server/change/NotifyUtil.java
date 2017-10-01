@@ -230,22 +230,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|account
@@ -277,18 +261,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -378,15 +350,6 @@ specifier|public
 class|class
 name|NotifyUtil
 block|{
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|accountResolver
 specifier|private
 specifier|final
@@ -395,25 +358,13 @@ name|accountResolver
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NotifyUtil (Provider<ReviewDb> dbProvider, AccountResolver accountResolver)
+DECL|method|NotifyUtil (AccountResolver accountResolver)
 name|NotifyUtil
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-parameter_list|,
 name|AccountResolver
 name|accountResolver
 parameter_list|)
 block|{
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
-expr_stmt|;
 name|this
 operator|.
 name|accountResolver
@@ -680,11 +631,6 @@ argument_list|()
 argument_list|,
 name|find
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|accounts
 argument_list|)
 argument_list|)
@@ -704,7 +650,7 @@ name|of
 argument_list|()
 return|;
 block|}
-DECL|method|find (ReviewDb db, List<String> nameOrEmails)
+DECL|method|find (List<String> nameOrEmails)
 specifier|private
 name|List
 argument_list|<
@@ -714,9 +660,6 @@ name|Id
 argument_list|>
 name|find
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|List
 argument_list|<
 name|String
@@ -781,8 +724,6 @@ name|accountResolver
 operator|.
 name|find
 argument_list|(
-name|db
-argument_list|,
 name|nameOrEmail
 argument_list|)
 decl_stmt|;
