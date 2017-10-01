@@ -233,11 +233,6 @@ specifier|public
 name|Boolean
 name|starred
 decl_stmt|;
-DECL|field|muted
-specifier|public
-name|Boolean
-name|muted
-decl_stmt|;
 DECL|field|stars
 specifier|public
 name|Collection

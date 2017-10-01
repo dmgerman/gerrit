@@ -879,15 +879,6 @@ name|starred
 parameter_list|()
 comment|/*-{ return this.starred ? true : false; }-*/
 function_decl|;
-DECL|method|muted ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|muted
-parameter_list|()
-comment|/*-{ return this.muted ? true : false; }-*/
-function_decl|;
 DECL|method|reviewed ()
 specifier|public
 specifier|final

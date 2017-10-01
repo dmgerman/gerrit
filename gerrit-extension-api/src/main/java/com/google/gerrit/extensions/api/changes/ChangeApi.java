@@ -526,25 +526,6 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Mute or un-mute this change.    *    * @param mute mute the change if true    */
-DECL|method|mute (boolean mute)
-name|void
-name|mute
-parameter_list|(
-name|boolean
-name|mute
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
-comment|/**    * Check if this change is muted.    *    * @return true if the change is muted.    */
-DECL|method|muted ()
-name|boolean
-name|muted
-parameter_list|()
-throws|throws
-name|RestApiException
-function_decl|;
 comment|/**    * Mark this change as reviewed/unreviewed.    *    * @param reviewed flag to decide if this change should be marked as reviewed ({@code true}) or    *     unreviewed ({@code false})    */
 DECL|method|markAsReviewed (boolean reviewed)
 name|void
@@ -2046,41 +2027,6 @@ DECL|method|ignored ()
 specifier|public
 name|boolean
 name|ignored
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|mute (boolean mute)
-specifier|public
-name|void
-name|mute
-parameter_list|(
-name|boolean
-name|mute
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|muted ()
-specifier|public
-name|boolean
-name|muted
 parameter_list|()
 throws|throws
 name|RestApiException

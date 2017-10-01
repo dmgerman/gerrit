@@ -485,6 +485,8 @@ argument_list|)
 decl_stmt|;
 comment|// Removal of draft change workflow requires reindexing
 DECL|field|V47
+annotation|@
+name|Deprecated
 specifier|static
 specifier|final
 name|Schema
@@ -496,6 +498,21 @@ init|=
 name|schema
 argument_list|(
 name|V46
+argument_list|)
+decl_stmt|;
+comment|// Rename of star label 'mute' to 'reviewed' requires reindexing
+DECL|field|V48
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|V48
+init|=
+name|schema
+argument_list|(
+name|V47
 argument_list|)
 decl_stmt|;
 DECL|field|NAME
