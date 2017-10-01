@@ -82,6 +82,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|TimeUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|nio
@@ -104,6 +118,20 @@ name|Path
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|attribute
+operator|.
+name|FileTime
+import|;
+end_import
+
 begin_class
 DECL|class|WarDocServlet
 class|class
@@ -119,6 +147,23 @@ name|long
 name|serialVersionUID
 init|=
 literal|1L
+decl_stmt|;
+DECL|field|NOW
+specifier|private
+specifier|static
+specifier|final
+name|FileTime
+name|NOW
+init|=
+name|FileTime
+operator|.
+name|fromMillis
+argument_list|(
+name|TimeUtil
+operator|.
+name|nowMs
+argument_list|()
+argument_list|)
 decl_stmt|;
 DECL|field|warFs
 specifier|private
@@ -175,6 +220,23 @@ literal|"/Documentation/"
 operator|+
 name|pathInfo
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getLastModifiedTime (Path p)
+specifier|protected
+name|FileTime
+name|getLastModifiedTime
+parameter_list|(
+name|Path
+name|p
+parameter_list|)
+block|{
+comment|// Return initialization time of this class, since the WAR outputs from the build process all
+comment|// have mtimes of 1980/1/1.
+return|return
+name|NOW
 return|;
 block|}
 block|}
