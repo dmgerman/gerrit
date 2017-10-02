@@ -754,7 +754,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|PatchListNotAvailableException
+name|PatchListObjectTooLargeException
 argument_list|(
 literal|"Error computing "
 operator|+
