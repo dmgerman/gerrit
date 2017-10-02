@@ -80,6 +80,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -90,13 +104,13 @@ end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|joda
+name|util
 operator|.
-name|time
+name|function
 operator|.
-name|DateTimeUtils
+name|LongSupplier
 import|;
 end_import
 
@@ -108,13 +122,33 @@ begin_class
 annotation|@
 name|GwtIncompatible
 argument_list|(
-literal|"Unemulated org.joda.time.DateTimeUtils"
+literal|"Unemulated Java 8 functionalities"
 argument_list|)
 DECL|class|TimeUtil
 specifier|public
 class|class
 name|TimeUtil
 block|{
+DECL|field|SYSTEM_CURRENT_MILLIS_SUPPLIER
+specifier|private
+specifier|static
+specifier|final
+name|LongSupplier
+name|SYSTEM_CURRENT_MILLIS_SUPPLIER
+init|=
+name|System
+operator|::
+name|currentTimeMillis
+decl_stmt|;
+DECL|field|currentMillisSupplier
+specifier|private
+specifier|static
+specifier|volatile
+name|LongSupplier
+name|currentMillisSupplier
+init|=
+name|SYSTEM_CURRENT_MILLIS_SUPPLIER
+decl_stmt|;
 DECL|method|nowMs ()
 specifier|public
 specifier|static
@@ -122,10 +156,12 @@ name|long
 name|nowMs
 parameter_list|()
 block|{
+comment|// We should rather use Instant.now(Clock).toEpochMilli() instead but this would require some
+comment|// changes in our testing code as we wouldn't have clock steps anymore.
 return|return
-name|DateTimeUtils
+name|currentMillisSupplier
 operator|.
-name|currentTimeMillis
+name|getAsLong
 argument_list|()
 return|;
 block|}
@@ -171,6 +207,37 @@ operator|*
 literal|1000
 argument_list|)
 return|;
+block|}
+annotation|@
+name|VisibleForTesting
+DECL|method|setCurrentMillisSupplier (LongSupplier customCurrentMillisSupplier)
+specifier|public
+specifier|static
+name|void
+name|setCurrentMillisSupplier
+parameter_list|(
+name|LongSupplier
+name|customCurrentMillisSupplier
+parameter_list|)
+block|{
+name|currentMillisSupplier
+operator|=
+name|customCurrentMillisSupplier
+expr_stmt|;
+block|}
+annotation|@
+name|VisibleForTesting
+DECL|method|resetCurrentMillisSupplier ()
+specifier|public
+specifier|static
+name|void
+name|resetCurrentMillisSupplier
+parameter_list|()
+block|{
+name|currentMillisSupplier
+operator|=
+name|SYSTEM_CURRENT_MILLIS_SUPPLIER
+expr_stmt|;
 block|}
 DECL|method|TimeUtil ()
 specifier|private

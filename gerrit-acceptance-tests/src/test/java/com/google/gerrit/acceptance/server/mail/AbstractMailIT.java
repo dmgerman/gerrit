@@ -216,21 +216,19 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|time
 operator|.
-name|HashMap
+name|Instant
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|joda
+name|util
 operator|.
-name|time
-operator|.
-name|DateTime
+name|HashMap
 import|;
 end_import
 
@@ -309,8 +307,9 @@ name|b
 operator|.
 name|dateReceived
 argument_list|(
-operator|new
-name|DateTime
+name|Instant
+operator|.
+name|now
 argument_list|()
 argument_list|)
 expr_stmt|;

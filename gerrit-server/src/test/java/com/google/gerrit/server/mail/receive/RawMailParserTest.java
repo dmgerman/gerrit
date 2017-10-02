@@ -462,9 +462,6 @@ name|have
 operator|.
 name|dateReceived
 argument_list|()
-operator|.
-name|getMillis
-argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -472,9 +469,6 @@ argument_list|(
 name|want
 operator|.
 name|dateReceived
-argument_list|()
-operator|.
-name|getMillis
 argument_list|()
 argument_list|)
 expr_stmt|;

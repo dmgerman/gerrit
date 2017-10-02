@@ -326,18 +326,6 @@ name|DefaultMessageBuilder
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|joda
-operator|.
-name|time
-operator|.
-name|DateTime
-import|;
-end_import
-
 begin_comment
 comment|/** Parses raw email content received through POP3 or IMAP into an internal {@link MailMessage}. */
 end_comment
@@ -504,20 +492,30 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|mimeMessage
+operator|.
+name|getDate
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|messageBuilder
 operator|.
 name|dateReceived
-argument_list|(
-operator|new
-name|DateTime
 argument_list|(
 name|mimeMessage
 operator|.
 name|getDate
 argument_list|()
-argument_list|)
+operator|.
+name|toInstant
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Add From, To and Cc
 if|if
 condition|(
