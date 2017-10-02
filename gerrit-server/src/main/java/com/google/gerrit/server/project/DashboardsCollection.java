@@ -1544,7 +1544,7 @@ name|getName
 argument_list|()
 expr_stmt|;
 name|String
-name|query
+name|title
 init|=
 name|config
 operator|.
@@ -1565,7 +1565,7 @@ name|replace
 argument_list|(
 name|project
 argument_list|,
-name|query
+name|title
 operator|==
 literal|null
 condition|?
@@ -1573,7 +1573,7 @@ name|info
 operator|.
 name|path
 else|:
-name|query
+name|title
 argument_list|)
 expr_stmt|;
 name|info
