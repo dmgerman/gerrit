@@ -865,6 +865,7 @@ name|dynamicBeanCl
 argument_list|,
 operator|new
 name|WeakReference
+argument_list|<>
 argument_list|(
 name|mergedCl
 argument_list|)
