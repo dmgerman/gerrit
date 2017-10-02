@@ -1803,6 +1803,12 @@ parameter_list|)
 block|{
 return|return
 name|input
+operator|==
+literal|null
+condition|?
+name|input
+else|:
+name|input
 operator|.
 name|replace
 argument_list|(
