@@ -1788,7 +1788,7 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|replace (String project, String query)
+DECL|method|replace (String project, String input)
 specifier|private
 specifier|static
 name|String
@@ -1798,11 +1798,11 @@ name|String
 name|project
 parameter_list|,
 name|String
-name|query
+name|input
 parameter_list|)
 block|{
 return|return
-name|query
+name|input
 operator|.
 name|replace
 argument_list|(
