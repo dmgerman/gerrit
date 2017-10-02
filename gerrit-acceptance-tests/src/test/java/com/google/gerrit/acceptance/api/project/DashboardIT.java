@@ -1222,11 +1222,13 @@ name|content
 init|=
 literal|"[dashboard]\n"
 operator|+
-literal|"Description = Test\n"
+literal|"Title = Reviewer\n"
+operator|+
+literal|"Description = Own review requests\n"
 operator|+
 literal|"foreach = owner:self\n"
 operator|+
-literal|"[section \"Mine\"]\n"
+literal|"[section \"Open\"]\n"
 operator|+
 literal|"query = is:open"
 decl_stmt|;
