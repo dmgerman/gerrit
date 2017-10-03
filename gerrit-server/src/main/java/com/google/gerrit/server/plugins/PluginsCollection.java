@@ -126,7 +126,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|MethodNotAllowedException
+name|ResourceNotFoundException
 import|;
 end_import
 
@@ -142,7 +142,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|RestApiException
 import|;
 end_import
 
@@ -445,27 +445,13 @@ name|IdString
 name|id
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
-throws|,
-name|MethodNotAllowedException
+name|RestApiException
 block|{
-if|if
-condition|(
-operator|!
 name|loader
 operator|.
-name|isRemoteAdminEnabled
+name|checkRemoteAdminEnabled
 argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|MethodNotAllowedException
-argument_list|(
-literal|"remote installation is disabled"
-argument_list|)
-throw|;
-block|}
+expr_stmt|;
 return|return
 name|install
 operator|.

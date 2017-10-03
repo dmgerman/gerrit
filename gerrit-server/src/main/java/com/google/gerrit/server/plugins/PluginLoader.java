@@ -260,6 +260,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|restapi
+operator|.
+name|MethodNotAllowedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|systemstatus
 operator|.
 name|ServerInformation
@@ -1083,6 +1099,29 @@ block|{
 return|return
 name|remoteAdmin
 return|;
+block|}
+DECL|method|checkRemoteAdminEnabled ()
+specifier|public
+name|void
+name|checkRemoteAdminEnabled
+parameter_list|()
+throws|throws
+name|MethodNotAllowedException
+block|{
+if|if
+condition|(
+operator|!
+name|remoteAdmin
+condition|)
+block|{
+throw|throw
+operator|new
+name|MethodNotAllowedException
+argument_list|(
+literal|"remote plugin administration is disabled"
+argument_list|)
+throw|;
+block|}
 block|}
 DECL|method|get (String name)
 specifier|public

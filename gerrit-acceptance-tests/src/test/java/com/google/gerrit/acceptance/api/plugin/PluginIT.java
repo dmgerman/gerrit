@@ -1122,7 +1122,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"remote installation is disabled"
+literal|"remote plugin administration is disabled"
 argument_list|)
 expr_stmt|;
 name|gApi
