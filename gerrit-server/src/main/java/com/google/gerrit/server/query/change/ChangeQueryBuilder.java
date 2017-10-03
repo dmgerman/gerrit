@@ -962,6 +962,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|QueryRequiresAuthException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -2640,7 +2656,7 @@ name|IdentifiedUser
 name|getIdentifiedUser
 parameter_list|()
 throws|throws
-name|QueryParseException
+name|QueryRequiresAuthException
 block|{
 try|try
 block|{
@@ -2667,7 +2683,7 @@ return|;
 block|}
 throw|throw
 operator|new
-name|QueryParseException
+name|QueryRequiresAuthException
 argument_list|(
 name|NotSignedInException
 operator|.
@@ -2683,7 +2699,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|QueryParseException
+name|QueryRequiresAuthException
 argument_list|(
 name|NotSignedInException
 operator|.
@@ -2699,7 +2715,7 @@ name|CurrentUser
 name|getUser
 parameter_list|()
 throws|throws
-name|QueryParseException
+name|QueryRequiresAuthException
 block|{
 try|try
 block|{
@@ -2718,7 +2734,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|QueryParseException
+name|QueryRequiresAuthException
 argument_list|(
 name|NotSignedInException
 operator|.
