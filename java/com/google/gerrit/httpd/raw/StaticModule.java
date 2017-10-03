@@ -691,6 +691,8 @@ literal|"/"
 argument_list|,
 literal|"/c/*"
 argument_list|,
+literal|"/p/*"
+argument_list|,
 literal|"/q/*"
 argument_list|,
 literal|"/x/*"
