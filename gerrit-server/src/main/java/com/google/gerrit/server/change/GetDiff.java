@@ -1586,8 +1586,6 @@ operator|new
 name|DiffInfo
 argument_list|()
 decl_stmt|;
-comment|// TODO referring to the parent commit by refs/changes/12/60012/1^1
-comment|// will likely not work for inline edits
 name|String
 name|revA
 init|=
@@ -1600,18 +1598,9 @@ operator|.
 name|getRefName
 argument_list|()
 else|:
-name|resource
+name|content
 operator|.
-name|getRevision
-argument_list|()
-operator|.
-name|getPatchSet
-argument_list|()
-operator|.
-name|getRefName
-argument_list|()
-operator|+
-literal|"^1"
+name|commitIdA
 decl_stmt|;
 name|String
 name|revB
