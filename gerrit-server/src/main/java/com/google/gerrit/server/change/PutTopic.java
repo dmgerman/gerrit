@@ -104,9 +104,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|common
 operator|.
-name|BadRequestException
+name|TopicInput
 import|;
 end_import
 
@@ -122,7 +122,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|DefaultInput
+name|BadRequestException
 import|;
 end_import
 
@@ -247,24 +247,6 @@ operator|.
 name|server
 operator|.
 name|ChangeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|PutTopic
-operator|.
-name|Input
 import|;
 end_import
 
@@ -508,7 +490,7 @@ name|RetryingRestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
-name|Input
+name|TopicInput
 argument_list|,
 name|Response
 argument_list|<
@@ -542,20 +524,6 @@ specifier|final
 name|TopicEdited
 name|topicEdited
 decl_stmt|;
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-DECL|field|topic
-annotation|@
-name|DefaultInput
-specifier|public
-name|String
-name|topic
-decl_stmt|;
-block|}
 annotation|@
 name|Inject
 DECL|method|PutTopic ( Provider<ReviewDb> dbProvider, ChangeMessagesUtil cmUtil, RetryHelper retryHelper, TopicEdited topicEdited)
@@ -603,7 +571,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource req, Input input)
+DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource req, TopicInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -619,7 +587,7 @@ parameter_list|,
 name|ChangeResource
 name|req
 parameter_list|,
-name|Input
+name|TopicInput
 name|input
 parameter_list|)
 throws|throws
@@ -695,7 +663,7 @@ condition|?
 name|input
 else|:
 operator|new
-name|Input
+name|TopicInput
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -786,7 +754,7 @@ block|{
 DECL|field|input
 specifier|private
 specifier|final
-name|Input
+name|TopicInput
 name|input
 decl_stmt|;
 DECL|field|change
@@ -804,10 +772,10 @@ specifier|private
 name|String
 name|newTopicName
 decl_stmt|;
-DECL|method|Op (Input input)
+DECL|method|Op (TopicInput input)
 name|Op
 parameter_list|(
-name|Input
+name|TopicInput
 name|input
 parameter_list|)
 block|{
