@@ -140,7 +140,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|MethodNotAllowedException
+name|ResourceConflictException
 import|;
 end_import
 
@@ -156,7 +156,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceConflictException
+name|RestApiException
 import|;
 end_import
 
@@ -302,27 +302,13 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|ResourceConflictException
-throws|,
-name|MethodNotAllowedException
+name|RestApiException
 block|{
-if|if
-condition|(
-operator|!
 name|loader
 operator|.
-name|isRemoteAdminEnabled
+name|checkRemoteAdminEnabled
 argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|MethodNotAllowedException
-argument_list|(
-literal|"remote plugin administration is disabled"
-argument_list|)
-throw|;
-block|}
+expr_stmt|;
 name|String
 name|name
 init|=

@@ -158,7 +158,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|MethodNotAllowedException
+name|Response
 import|;
 end_import
 
@@ -174,7 +174,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|Response
+name|RestApiException
 import|;
 end_import
 
@@ -403,29 +403,15 @@ name|InstallPluginInput
 name|input
 parameter_list|)
 throws|throws
-name|BadRequestException
-throws|,
-name|MethodNotAllowedException
+name|RestApiException
 throws|,
 name|IOException
 block|{
-if|if
-condition|(
-operator|!
 name|loader
 operator|.
-name|isRemoteAdminEnabled
+name|checkRemoteAdminEnabled
 argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|MethodNotAllowedException
-argument_list|(
-literal|"remote installation is disabled"
-argument_list|)
-throw|;
-block|}
+expr_stmt|;
 try|try
 block|{
 try|try
@@ -714,9 +700,7 @@ name|InstallPluginInput
 name|input
 parameter_list|)
 throws|throws
-name|BadRequestException
-throws|,
-name|MethodNotAllowedException
+name|RestApiException
 throws|,
 name|IOException
 block|{
