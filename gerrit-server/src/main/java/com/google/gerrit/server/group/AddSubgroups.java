@@ -862,16 +862,9 @@ name|RestModifyView
 argument_list|<
 name|GroupResource
 argument_list|,
-name|PutSubgroup
-operator|.
 name|Input
 argument_list|>
 block|{
-DECL|class|Input
-specifier|static
-class|class
-name|Input
-block|{}
 DECL|field|addSubgroups
 specifier|private
 specifier|final
@@ -1022,8 +1015,6 @@ name|RestModifyView
 argument_list|<
 name|SubgroupResource
 argument_list|,
-name|PutSubgroup
-operator|.
 name|Input
 argument_list|>
 block|{
@@ -1057,7 +1048,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (SubgroupResource resource, PutSubgroup.Input input)
+DECL|method|apply (SubgroupResource resource, Input input)
 specifier|public
 name|GroupInfo
 name|apply
@@ -1065,8 +1056,6 @@ parameter_list|(
 name|SubgroupResource
 name|resource
 parameter_list|,
-name|PutSubgroup
-operator|.
 name|Input
 name|input
 parameter_list|)

@@ -532,6 +532,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|Input
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|MergePatchSetInput
 import|;
 end_import
@@ -4044,8 +4060,6 @@ argument_list|(
 name|change
 argument_list|,
 operator|new
-name|Index
-operator|.
 name|Input
 argument_list|()
 argument_list|)
@@ -4098,8 +4112,6 @@ argument_list|(
 name|change
 argument_list|,
 operator|new
-name|Ignore
-operator|.
 name|Input
 argument_list|()
 argument_list|)
@@ -4114,8 +4126,6 @@ argument_list|(
 name|change
 argument_list|,
 operator|new
-name|Unignore
-operator|.
 name|Input
 argument_list|()
 argument_list|)
@@ -4206,8 +4216,6 @@ argument_list|(
 name|change
 argument_list|,
 operator|new
-name|MarkAsReviewed
-operator|.
 name|Input
 argument_list|()
 argument_list|)
@@ -4222,8 +4230,6 @@ argument_list|(
 name|change
 argument_list|,
 operator|new
-name|MarkAsUnreviewed
-operator|.
 name|Input
 argument_list|()
 argument_list|)

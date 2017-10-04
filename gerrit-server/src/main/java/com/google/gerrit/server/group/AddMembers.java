@@ -1414,16 +1414,9 @@ name|RestModifyView
 argument_list|<
 name|GroupResource
 argument_list|,
-name|PutMember
-operator|.
 name|Input
 argument_list|>
 block|{
-DECL|class|Input
-specifier|static
-class|class
-name|Input
-block|{}
 DECL|field|put
 specifier|private
 specifier|final
@@ -1461,7 +1454,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (GroupResource resource, PutMember.Input input)
+DECL|method|apply (GroupResource resource, Input input)
 specifier|public
 name|AccountInfo
 name|apply
@@ -1469,8 +1462,6 @@ parameter_list|(
 name|GroupResource
 name|resource
 parameter_list|,
-name|PutMember
-operator|.
 name|Input
 name|input
 parameter_list|)
@@ -1573,8 +1564,6 @@ name|RestModifyView
 argument_list|<
 name|MemberResource
 argument_list|,
-name|PutMember
-operator|.
 name|Input
 argument_list|>
 block|{
@@ -1602,7 +1591,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (MemberResource resource, PutMember.Input input)
+DECL|method|apply (MemberResource resource, Input input)
 specifier|public
 name|AccountInfo
 name|apply
@@ -1610,8 +1599,6 @@ parameter_list|(
 name|MemberResource
 name|resource
 parameter_list|,
-name|PutMember
-operator|.
 name|Input
 name|input
 parameter_list|)
