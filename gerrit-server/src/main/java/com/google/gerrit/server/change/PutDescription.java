@@ -104,9 +104,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|common
 operator|.
-name|DefaultInput
+name|DescriptionInput
 import|;
 end_import
 
@@ -450,9 +450,7 @@ name|RetryingRestModifyView
 argument_list|<
 name|RevisionResource
 argument_list|,
-name|PutDescription
-operator|.
-name|Input
+name|DescriptionInput
 argument_list|,
 name|Response
 argument_list|<
@@ -486,20 +484,6 @@ specifier|final
 name|PatchSetUtil
 name|psUtil
 decl_stmt|;
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-DECL|field|description
-annotation|@
-name|DefaultInput
-specifier|public
-name|String
-name|description
-decl_stmt|;
-block|}
 annotation|@
 name|Inject
 DECL|method|PutDescription ( Provider<ReviewDb> dbProvider, ChangeMessagesUtil cmUtil, RetryHelper retryHelper, PatchSetUtil psUtil)
@@ -547,7 +531,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, RevisionResource rsrc, Input input)
+DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, RevisionResource rsrc, DescriptionInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -563,7 +547,7 @@ parameter_list|,
 name|RevisionResource
 name|rsrc
 parameter_list|,
-name|Input
+name|DescriptionInput
 name|input
 parameter_list|)
 throws|throws
@@ -598,7 +582,7 @@ condition|?
 name|input
 else|:
 operator|new
-name|Input
+name|DescriptionInput
 argument_list|()
 argument_list|,
 name|rsrc
@@ -700,7 +684,7 @@ block|{
 DECL|field|input
 specifier|private
 specifier|final
-name|Input
+name|DescriptionInput
 name|input
 decl_stmt|;
 DECL|field|psId
@@ -721,10 +705,10 @@ specifier|private
 name|String
 name|newDescription
 decl_stmt|;
-DECL|method|Op (Input input, PatchSet.Id psId)
+DECL|method|Op (DescriptionInput input, PatchSet.Id psId)
 name|Op
 parameter_list|(
-name|Input
+name|DescriptionInput
 name|input
 parameter_list|,
 name|PatchSet
