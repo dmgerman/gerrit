@@ -2456,6 +2456,26 @@ literal|false
 return|;
 block|}
 block|}
+DECL|method|canRead ()
+specifier|public
+name|boolean
+name|canRead
+parameter_list|()
+block|{
+return|return
+operator|!
+name|isHidden
+argument_list|()
+operator|&&
+name|allRefsAreVisible
+argument_list|(
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|asForProject ()
 name|ForProject
 name|asForProject

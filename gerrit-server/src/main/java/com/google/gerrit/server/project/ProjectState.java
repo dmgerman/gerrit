@@ -3157,6 +3157,37 @@ name|INHERIT
 return|;
 block|}
 block|}
+DECL|method|toProjectData ()
+specifier|public
+name|ProjectData
+name|toProjectData
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ProjectData
+argument_list|(
+name|getProject
+argument_list|()
+argument_list|,
+name|parents
+argument_list|()
+operator|.
+name|transform
+argument_list|(
+name|s
+lambda|->
+name|s
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|readFile (Path p)
 specifier|private
 name|String
