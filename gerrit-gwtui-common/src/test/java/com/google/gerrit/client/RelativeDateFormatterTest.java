@@ -574,7 +574,7 @@ literal|1824
 argument_list|,
 name|DAY_IN_MILLIS
 argument_list|,
-literal|"4 years, 12 months ago"
+literal|"5 years ago"
 argument_list|)
 expr_stmt|;
 block|}
