@@ -298,6 +298,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -391,13 +403,19 @@ block|{
 DECL|field|postGpgKeys
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|PostGpgKeys
+argument_list|>
 name|postGpgKeys
 decl_stmt|;
 DECL|field|gpgKeys
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|GpgKeys
+argument_list|>
 name|gpgKeys
 decl_stmt|;
 DECL|field|gpgKeyApiFactory
@@ -418,13 +436,19 @@ name|pushCertCheckerFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GpgApiAdapterImpl ( PostGpgKeys postGpgKeys, GpgKeys gpgKeys, GpgKeyApiImpl.Factory gpgKeyApiFactory, GerritPushCertificateChecker.Factory pushCertCheckerFactory)
+DECL|method|GpgApiAdapterImpl ( Provider<PostGpgKeys> postGpgKeys, Provider<GpgKeys> gpgKeys, GpgKeyApiImpl.Factory gpgKeyApiFactory, GerritPushCertificateChecker.Factory pushCertCheckerFactory)
 name|GpgApiAdapterImpl
 parameter_list|(
+name|Provider
+argument_list|<
 name|PostGpgKeys
+argument_list|>
 name|postGpgKeys
 parameter_list|,
+name|Provider
+argument_list|<
 name|GpgKeys
+argument_list|>
 name|gpgKeys
 parameter_list|,
 name|GpgKeyApiImpl
@@ -499,6 +523,9 @@ try|try
 block|{
 return|return
 name|gpgKeys
+operator|.
+name|get
+argument_list|()
 operator|.
 name|list
 argument_list|()
@@ -588,6 +615,9 @@ block|{
 return|return
 name|postGpgKeys
 operator|.
+name|get
+argument_list|()
+operator|.
 name|apply
 argument_list|(
 name|account
@@ -643,6 +673,9 @@ operator|.
 name|create
 argument_list|(
 name|gpgKeys
+operator|.
+name|get
+argument_list|()
 operator|.
 name|parse
 argument_list|(
