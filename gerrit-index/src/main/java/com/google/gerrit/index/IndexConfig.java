@@ -319,6 +319,7 @@ name|maxLimit
 parameter_list|)
 function_decl|;
 DECL|method|maxLimit ()
+specifier|public
 specifier|abstract
 name|int
 name|maxLimit
@@ -335,6 +336,7 @@ name|maxPages
 parameter_list|)
 function_decl|;
 DECL|method|maxPages ()
+specifier|public
 specifier|abstract
 name|int
 name|maxPages
@@ -351,6 +353,7 @@ name|maxTerms
 parameter_list|)
 function_decl|;
 DECL|method|maxTerms ()
+specifier|public
 specifier|abstract
 name|int
 name|maxTerms
