@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2015 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.api.projects
+DECL|package|com.google.gerrit.extensions.common
 package|package
 name|com
 operator|.
@@ -62,34 +62,41 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|api
-operator|.
-name|projects
+name|common
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
-DECL|class|DescriptionInput
+DECL|class|GpgKeysInput
 specifier|public
 class|class
-name|DescriptionInput
-extends|extends
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|DescriptionInput
+name|GpgKeysInput
 block|{
-DECL|field|commitMessage
+DECL|field|add
 specifier|public
+name|List
+argument_list|<
 name|String
-name|commitMessage
+argument_list|>
+name|add
+decl_stmt|;
+DECL|field|delete
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|delete
 decl_stmt|;
 block|}
 end_class

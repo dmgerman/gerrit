@@ -286,6 +286,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|GpgKeysInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|BadRequestException
@@ -407,24 +423,6 @@ operator|.
 name|gpg
 operator|.
 name|PublicKeyStore
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|gpg
-operator|.
-name|server
-operator|.
-name|PostGpgKeys
-operator|.
-name|Input
 import|;
 end_import
 
@@ -888,32 +886,9 @@ name|RestModifyView
 argument_list|<
 name|AccountResource
 argument_list|,
-name|Input
+name|GpgKeysInput
 argument_list|>
 block|{
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-DECL|field|add
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|add
-decl_stmt|;
-DECL|field|delete
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|delete
-decl_stmt|;
-block|}
 DECL|field|log
 specifier|private
 specifier|final
@@ -1095,7 +1070,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (AccountResource rsrc, Input input)
+DECL|method|apply (AccountResource rsrc, GpgKeysInput input)
 specifier|public
 name|Map
 argument_list|<
@@ -1108,7 +1083,7 @@ parameter_list|(
 name|AccountResource
 name|rsrc
 parameter_list|,
-name|Input
+name|GpgKeysInput
 name|input
 parameter_list|)
 throws|throws
@@ -1384,7 +1359,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|readKeysToRemove (Input input, Collection<ExternalId> existingExtIds)
+DECL|method|readKeysToRemove ( GpgKeysInput input, Collection<ExternalId> existingExtIds)
 specifier|private
 name|Set
 argument_list|<
@@ -1392,7 +1367,7 @@ name|Fingerprint
 argument_list|>
 name|readKeysToRemove
 parameter_list|(
-name|Input
+name|GpgKeysInput
 name|input
 parameter_list|,
 name|Collection
@@ -1487,7 +1462,7 @@ return|return
 name|fingerprints
 return|;
 block|}
-DECL|method|readKeysToAdd (Input input, Set<Fingerprint> toRemove)
+DECL|method|readKeysToAdd (GpgKeysInput input, Set<Fingerprint> toRemove)
 specifier|private
 name|List
 argument_list|<
@@ -1495,7 +1470,7 @@ name|PGPPublicKeyRing
 argument_list|>
 name|readKeysToAdd
 parameter_list|(
-name|Input
+name|GpgKeysInput
 name|input
 parameter_list|,
 name|Set

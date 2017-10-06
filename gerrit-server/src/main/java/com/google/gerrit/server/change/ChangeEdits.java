@@ -122,6 +122,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|Input
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|registration
 operator|.
 name|DynamicMap
@@ -1255,17 +1271,9 @@ name|RestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
-name|DeleteFile
-operator|.
 name|Input
 argument_list|>
 block|{
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{}
 DECL|interface|Factory
 interface|interface
 name|Factory
@@ -1320,7 +1328,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource rsrc, DeleteFile.Input in)
+DECL|method|apply (ChangeResource rsrc, Input in)
 specifier|public
 name|Response
 argument_list|<
@@ -1331,8 +1339,6 @@ parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|,
-name|DeleteFile
-operator|.
 name|Input
 name|in
 parameter_list|)
@@ -2177,17 +2183,9 @@ name|RestModifyView
 argument_list|<
 name|ChangeEditResource
 argument_list|,
-name|DeleteContent
-operator|.
 name|Input
 argument_list|>
 block|{
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{}
 DECL|field|editModifier
 specifier|private
 specifier|final
@@ -2227,7 +2225,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeEditResource rsrc, DeleteContent.Input input)
+DECL|method|apply (ChangeEditResource rsrc, Input input)
 specifier|public
 name|Response
 argument_list|<
@@ -2238,8 +2236,6 @@ parameter_list|(
 name|ChangeEditResource
 name|rsrc
 parameter_list|,
-name|DeleteContent
-operator|.
 name|Input
 name|input
 parameter_list|)

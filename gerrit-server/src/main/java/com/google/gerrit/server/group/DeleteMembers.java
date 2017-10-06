@@ -671,16 +671,9 @@ name|RestModifyView
 argument_list|<
 name|MemberResource
 argument_list|,
-name|DeleteMember
-operator|.
 name|Input
 argument_list|>
 block|{
-DECL|class|Input
-specifier|static
-class|class
-name|Input
-block|{}
 DECL|field|delete
 specifier|private
 specifier|final

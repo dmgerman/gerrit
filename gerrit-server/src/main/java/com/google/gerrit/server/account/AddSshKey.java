@@ -152,6 +152,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|SshKeyInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -263,24 +279,6 @@ operator|.
 name|server
 operator|.
 name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|AddSshKey
-operator|.
-name|Input
 import|;
 end_import
 
@@ -482,7 +480,7 @@ name|RestModifyView
 argument_list|<
 name|AccountResource
 argument_list|,
-name|Input
+name|SshKeyInput
 argument_list|>
 block|{
 DECL|field|log
@@ -501,18 +499,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-DECL|field|raw
-specifier|public
-name|RawInput
-name|raw
-decl_stmt|;
-block|}
 DECL|field|self
 specifier|private
 specifier|final
@@ -611,7 +597,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (AccountResource rsrc, Input input)
+DECL|method|apply (AccountResource rsrc, SshKeyInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -622,7 +608,7 @@ parameter_list|(
 name|AccountResource
 name|rsrc
 parameter_list|,
-name|Input
+name|SshKeyInput
 name|input
 parameter_list|)
 throws|throws
@@ -678,7 +664,7 @@ name|input
 argument_list|)
 return|;
 block|}
-DECL|method|apply (IdentifiedUser user, Input input)
+DECL|method|apply (IdentifiedUser user, SshKeyInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -689,7 +675,7 @@ parameter_list|(
 name|IdentifiedUser
 name|user
 parameter_list|,
-name|Input
+name|SshKeyInput
 name|input
 parameter_list|)
 throws|throws
@@ -709,7 +695,7 @@ block|{
 name|input
 operator|=
 operator|new
-name|Input
+name|SshKeyInput
 argument_list|()
 expr_stmt|;
 block|}
