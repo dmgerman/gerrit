@@ -170,13 +170,19 @@ begin_import
 import|import
 name|org
 operator|.
-name|eclipse
+name|junit
 operator|.
-name|jgit
+name|AfterClass
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|util
+name|junit
 operator|.
-name|RelativeDateFormatter
+name|BeforeClass
 import|;
 end_import
 
@@ -196,6 +202,51 @@ specifier|public
 class|class
 name|RelativeDateFormatterTest
 block|{
+annotation|@
+name|BeforeClass
+DECL|method|setConstants ()
+specifier|public
+specifier|static
+name|void
+name|setConstants
+parameter_list|()
+block|{
+name|Constants
+name|c
+init|=
+operator|new
+name|Constants
+argument_list|()
+decl_stmt|;
+name|RelativeDateFormatter
+operator|.
+name|setConstants
+argument_list|(
+name|c
+argument_list|,
+name|c
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|AfterClass
+DECL|method|unsetConstants ()
+specifier|public
+specifier|static
+name|void
+name|unsetConstants
+parameter_list|()
+block|{
+name|RelativeDateFormatter
+operator|.
+name|setConstants
+argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|assertFormat (long ageFromNow, long timeUnit, String expectedFormat)
 specifier|private
 specifier|static
@@ -289,7 +340,7 @@ literal|1
 argument_list|,
 name|SECOND_IN_MILLIS
 argument_list|,
-literal|"1 seconds ago"
+literal|"1 second ago"
 argument_list|)
 expr_stmt|;
 name|assertFormat
@@ -523,7 +574,7 @@ literal|1824
 argument_list|,
 name|DAY_IN_MILLIS
 argument_list|,
-literal|"4 years, 12 months ago"
+literal|"5 years ago"
 argument_list|)
 expr_stmt|;
 block|}
@@ -553,6 +604,342 @@ argument_list|,
 literal|"60 years ago"
 argument_list|)
 expr_stmt|;
+block|}
+DECL|class|Constants
+specifier|private
+specifier|static
+class|class
+name|Constants
+implements|implements
+name|CommonConstants
+implements|,
+name|CommonMessages
+block|{
+annotation|@
+name|Override
+DECL|method|inTheFuture ()
+specifier|public
+name|String
+name|inTheFuture
+parameter_list|()
+block|{
+return|return
+literal|"in the future"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|month ()
+specifier|public
+name|String
+name|month
+parameter_list|()
+block|{
+return|return
+literal|"month"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|months ()
+specifier|public
+name|String
+name|months
+parameter_list|()
+block|{
+return|return
+literal|"months"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|year ()
+specifier|public
+name|String
+name|year
+parameter_list|()
+block|{
+return|return
+literal|"year"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|years ()
+specifier|public
+name|String
+name|years
+parameter_list|()
+block|{
+return|return
+literal|"years"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|oneSecondAgo ()
+specifier|public
+name|String
+name|oneSecondAgo
+parameter_list|()
+block|{
+return|return
+literal|"1 second ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|oneMinuteAgo ()
+specifier|public
+name|String
+name|oneMinuteAgo
+parameter_list|()
+block|{
+return|return
+literal|"1 minute ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|oneHourAgo ()
+specifier|public
+name|String
+name|oneHourAgo
+parameter_list|()
+block|{
+return|return
+literal|"1 hour ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|oneDayAgo ()
+specifier|public
+name|String
+name|oneDayAgo
+parameter_list|()
+block|{
+return|return
+literal|"1 day ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|oneWeekAgo ()
+specifier|public
+name|String
+name|oneWeekAgo
+parameter_list|()
+block|{
+return|return
+literal|"1 week ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|oneMonthAgo ()
+specifier|public
+name|String
+name|oneMonthAgo
+parameter_list|()
+block|{
+return|return
+literal|"1 month ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|oneYearAgo ()
+specifier|public
+name|String
+name|oneYearAgo
+parameter_list|()
+block|{
+return|return
+literal|"1 year ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|secondsAgo (long seconds)
+specifier|public
+name|String
+name|secondsAgo
+parameter_list|(
+name|long
+name|seconds
+parameter_list|)
+block|{
+return|return
+name|seconds
+operator|+
+literal|" seconds ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|minutesAgo (long minutes)
+specifier|public
+name|String
+name|minutesAgo
+parameter_list|(
+name|long
+name|minutes
+parameter_list|)
+block|{
+return|return
+name|minutes
+operator|+
+literal|" minutes ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|hoursAgo (long hours)
+specifier|public
+name|String
+name|hoursAgo
+parameter_list|(
+name|long
+name|hours
+parameter_list|)
+block|{
+return|return
+name|hours
+operator|+
+literal|" hours ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|daysAgo (long days)
+specifier|public
+name|String
+name|daysAgo
+parameter_list|(
+name|long
+name|days
+parameter_list|)
+block|{
+return|return
+name|days
+operator|+
+literal|" days ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|weeksAgo (long weeks)
+specifier|public
+name|String
+name|weeksAgo
+parameter_list|(
+name|long
+name|weeks
+parameter_list|)
+block|{
+return|return
+name|weeks
+operator|+
+literal|" weeks ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|monthsAgo (long months)
+specifier|public
+name|String
+name|monthsAgo
+parameter_list|(
+name|long
+name|months
+parameter_list|)
+block|{
+return|return
+name|months
+operator|+
+literal|" months ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|yearsAgo (long years)
+specifier|public
+name|String
+name|yearsAgo
+parameter_list|(
+name|long
+name|years
+parameter_list|)
+block|{
+return|return
+name|years
+operator|+
+literal|" years ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|years0MonthsAgo (long years, String yearLabel)
+specifier|public
+name|String
+name|years0MonthsAgo
+parameter_list|(
+name|long
+name|years
+parameter_list|,
+name|String
+name|yearLabel
+parameter_list|)
+block|{
+return|return
+name|years
+operator|+
+literal|" "
+operator|+
+name|yearLabel
+operator|+
+literal|" ago"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|yearsMonthsAgo (long years, String yearLabel, long months, String monthLabel)
+specifier|public
+name|String
+name|yearsMonthsAgo
+parameter_list|(
+name|long
+name|years
+parameter_list|,
+name|String
+name|yearLabel
+parameter_list|,
+name|long
+name|months
+parameter_list|,
+name|String
+name|monthLabel
+parameter_list|)
+block|{
+return|return
+name|years
+operator|+
+literal|" "
+operator|+
+name|yearLabel
+operator|+
+literal|", "
+operator|+
+name|months
+operator|+
+literal|" "
+operator|+
+name|monthLabel
+operator|+
+literal|" ago"
+return|;
+block|}
 block|}
 block|}
 end_class
