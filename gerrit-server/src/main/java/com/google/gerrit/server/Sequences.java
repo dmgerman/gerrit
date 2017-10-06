@@ -254,6 +254,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|GitReferenceUpdated
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -478,7 +496,7 @@ name|nextIdLatency
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Sequences ( @erritServerConfig Config cfg, Provider<ReviewDb> db, NotesMigration migration, GitRepositoryManager repoManager, AllProjectsName allProjects, AllUsersName allUsers, MetricMaker metrics)
+DECL|method|Sequences ( @erritServerConfig Config cfg, Provider<ReviewDb> db, NotesMigration migration, GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllProjectsName allProjects, AllUsersName allUsers, MetricMaker metrics)
 name|Sequences
 parameter_list|(
 annotation|@
@@ -497,6 +515,9 @@ name|migration
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|GitReferenceUpdated
+name|gitRefUpdated
 parameter_list|,
 name|AllProjectsName
 name|allProjects
@@ -542,6 +563,8 @@ operator|new
 name|RepoSequence
 argument_list|(
 name|repoManager
+argument_list|,
+name|gitRefUpdated
 argument_list|,
 name|allUsers
 argument_list|,
@@ -608,6 +631,8 @@ operator|new
 name|RepoSequence
 argument_list|(
 name|repoManager
+argument_list|,
+name|gitRefUpdated
 argument_list|,
 name|allProjects
 argument_list|,

@@ -474,6 +474,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|RefNames
 import|;
 end_import
@@ -535,6 +551,24 @@ operator|.
 name|config
 operator|.
 name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|GitReferenceUpdated
 import|;
 end_import
 
@@ -947,9 +981,15 @@ name|PersonIdent
 argument_list|>
 name|serverIdent
 decl_stmt|;
+DECL|field|gitRefUpdated
+specifier|private
+specifier|final
+name|GitReferenceUpdated
+name|gitRefUpdated
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Server ( GitRepositoryManager repoManager, AccountCache accountCache, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent)
+DECL|method|Server ( GitRepositoryManager repoManager, AccountCache accountCache, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent, GitReferenceUpdated gitRefUpdated)
 specifier|public
 name|Server
 parameter_list|(
@@ -978,6 +1018,9 @@ argument_list|<
 name|PersonIdent
 argument_list|>
 name|serverIdent
+parameter_list|,
+name|GitReferenceUpdated
+name|gitRefUpdated
 parameter_list|)
 block|{
 name|this
@@ -1022,6 +1065,12 @@ name|serverIdent
 operator|=
 name|serverIdent
 expr_stmt|;
+name|this
+operator|.
+name|gitRefUpdated
+operator|=
+name|gitRefUpdated
+expr_stmt|;
 block|}
 DECL|method|create ()
 specifier|public
@@ -1056,6 +1105,10 @@ argument_list|,
 name|i
 argument_list|,
 name|i
+argument_list|,
+literal|null
+argument_list|,
+name|gitRefUpdated
 argument_list|)
 return|;
 block|}
@@ -1108,9 +1161,15 @@ name|PersonIdent
 argument_list|>
 name|serverIdent
 decl_stmt|;
+DECL|field|gitRefUpdated
+specifier|private
+specifier|final
+name|GitReferenceUpdated
+name|gitRefUpdated
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ServerNoReindex ( GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent)
+DECL|method|ServerNoReindex ( GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent, GitReferenceUpdated gitRefUpdated)
 specifier|public
 name|ServerNoReindex
 parameter_list|(
@@ -1136,6 +1195,9 @@ argument_list|<
 name|PersonIdent
 argument_list|>
 name|serverIdent
+parameter_list|,
+name|GitReferenceUpdated
+name|gitRefUpdated
 parameter_list|)
 block|{
 name|this
@@ -1174,6 +1236,12 @@ name|serverIdent
 operator|=
 name|serverIdent
 expr_stmt|;
+name|this
+operator|.
+name|gitRefUpdated
+operator|=
+name|gitRefUpdated
+expr_stmt|;
 block|}
 DECL|method|create ()
 specifier|public
@@ -1208,6 +1276,10 @@ argument_list|,
 name|i
 argument_list|,
 name|i
+argument_list|,
+literal|null
+argument_list|,
+name|gitRefUpdated
 argument_list|)
 return|;
 block|}
@@ -1275,9 +1347,15 @@ name|IdentifiedUser
 argument_list|>
 name|identifiedUser
 decl_stmt|;
+DECL|field|gitRefUpdated
+specifier|private
+specifier|final
+name|GitReferenceUpdated
+name|gitRefUpdated
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|User ( GitRepositoryManager repoManager, AccountCache accountCache, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent, Provider<IdentifiedUser> identifiedUser)
+DECL|method|User ( GitRepositoryManager repoManager, AccountCache accountCache, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent, Provider<IdentifiedUser> identifiedUser, GitReferenceUpdated gitRefUpdated)
 specifier|public
 name|User
 parameter_list|(
@@ -1312,6 +1390,9 @@ argument_list|<
 name|IdentifiedUser
 argument_list|>
 name|identifiedUser
+parameter_list|,
+name|GitReferenceUpdated
+name|gitRefUpdated
 parameter_list|)
 block|{
 name|this
@@ -1362,6 +1443,12 @@ name|identifiedUser
 operator|=
 name|identifiedUser
 expr_stmt|;
+name|this
+operator|.
+name|gitRefUpdated
+operator|=
+name|gitRefUpdated
+expr_stmt|;
 block|}
 DECL|method|create ()
 specifier|public
@@ -1369,6 +1456,14 @@ name|ExternalIdsUpdate
 name|create
 parameter_list|()
 block|{
+name|IdentifiedUser
+name|user
+init|=
+name|identifiedUser
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 name|PersonIdent
 name|i
 init|=
@@ -1397,13 +1492,14 @@ name|createPersonIdent
 argument_list|(
 name|i
 argument_list|,
-name|identifiedUser
-operator|.
-name|get
-argument_list|()
+name|user
 argument_list|)
 argument_list|,
 name|i
+argument_list|,
+name|user
+argument_list|,
+name|gitRefUpdated
 argument_list|)
 return|;
 block|}
@@ -1572,6 +1668,20 @@ specifier|final
 name|PersonIdent
 name|authorIdent
 decl_stmt|;
+DECL|field|currentUser
+annotation|@
+name|Nullable
+specifier|private
+specifier|final
+name|IdentifiedUser
+name|currentUser
+decl_stmt|;
+DECL|field|gitRefUpdated
+specifier|private
+specifier|final
+name|GitReferenceUpdated
+name|gitRefUpdated
+decl_stmt|;
 DECL|field|afterReadRevision
 specifier|private
 specifier|final
@@ -1593,7 +1703,7 @@ specifier|final
 name|Counter0
 name|updateCount
 decl_stmt|;
-DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, @Nullable AccountCache accountCache, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent)
+DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, @Nullable AccountCache accountCache, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent, @Nullable IdentifiedUser currentUser, GitReferenceUpdated gitRefUpdated)
 specifier|private
 name|ExternalIdsUpdate
 parameter_list|(
@@ -1622,6 +1732,14 @@ name|committerIdent
 parameter_list|,
 name|PersonIdent
 name|authorIdent
+parameter_list|,
+annotation|@
+name|Nullable
+name|IdentifiedUser
+name|currentUser
+parameter_list|,
+name|GitReferenceUpdated
+name|gitRefUpdated
 parameter_list|)
 block|{
 name|this
@@ -1642,6 +1760,10 @@ name|committerIdent
 argument_list|,
 name|authorIdent
 argument_list|,
+name|currentUser
+argument_list|,
+name|gitRefUpdated
+argument_list|,
 name|Runnables
 operator|.
 name|doNothing
@@ -1653,7 +1775,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, @Nullable AccountCache accountCache, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent, Runnable afterReadRevision, Retryer<RefsMetaExternalIdsUpdate> retryer)
+DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, @Nullable AccountCache accountCache, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent, @Nullable IdentifiedUser currentUser, GitReferenceUpdated gitRefUpdated, Runnable afterReadRevision, Retryer<RefsMetaExternalIdsUpdate> retryer)
 specifier|public
 name|ExternalIdsUpdate
 parameter_list|(
@@ -1682,6 +1804,14 @@ name|committerIdent
 parameter_list|,
 name|PersonIdent
 name|authorIdent
+parameter_list|,
+annotation|@
+name|Nullable
+name|IdentifiedUser
+name|currentUser
+parameter_list|,
+name|GitReferenceUpdated
+name|gitRefUpdated
 parameter_list|,
 name|Runnable
 name|afterReadRevision
@@ -1763,6 +1893,23 @@ argument_list|(
 name|authorIdent
 argument_list|,
 literal|"authorIdent"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|currentUser
+operator|=
+name|currentUser
+expr_stmt|;
+name|this
+operator|.
+name|gitRefUpdated
+operator|=
+name|checkNotNull
+argument_list|(
+name|gitRefUpdated
+argument_list|,
+literal|"gitRefUpdated"
 argument_list|)
 expr_stmt|;
 name|this
@@ -3832,6 +3979,8 @@ name|newRev
 init|=
 name|commit
 argument_list|(
+name|allUsersName
+argument_list|,
 name|repo
 argument_list|,
 name|rw
@@ -3847,6 +3996,10 @@ argument_list|,
 name|committerIdent
 argument_list|,
 name|authorIdent
+argument_list|,
+name|currentUser
+argument_list|,
+name|gitRefUpdated
 argument_list|)
 decl_stmt|;
 name|updateCount
@@ -3868,12 +4021,17 @@ argument_list|)
 return|;
 block|}
 comment|/** Commits updates to the external IDs. */
-DECL|method|commit ( Repository repo, RevWalk rw, ObjectInserter ins, ObjectId rev, NoteMap noteMap, String commitMessage, PersonIdent committerIdent, PersonIdent authorIdent)
+DECL|method|commit ( Project.NameKey project, Repository repo, RevWalk rw, ObjectInserter ins, ObjectId rev, NoteMap noteMap, String commitMessage, PersonIdent committerIdent, PersonIdent authorIdent, @Nullable IdentifiedUser user, GitReferenceUpdated gitRefUpdated)
 specifier|public
 specifier|static
 name|ObjectId
 name|commit
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
@@ -3897,6 +4055,14 @@ name|committerIdent
 parameter_list|,
 name|PersonIdent
 name|authorIdent
+parameter_list|,
+annotation|@
+name|Nullable
+name|IdentifiedUser
+name|user
+parameter_list|,
+name|GitReferenceUpdated
+name|gitRefUpdated
 parameter_list|)
 throws|throws
 name|IOException
@@ -4161,6 +4327,26 @@ name|res
 argument_list|)
 throw|;
 block|}
+name|gitRefUpdated
+operator|.
+name|fire
+argument_list|(
+name|project
+argument_list|,
+name|u
+argument_list|,
+name|user
+operator|!=
+literal|null
+condition|?
+name|user
+operator|.
+name|getAccount
+argument_list|()
+else|:
+literal|null
+argument_list|)
+expr_stmt|;
 return|return
 name|rw
 operator|.

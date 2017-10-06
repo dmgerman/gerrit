@@ -122,6 +122,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|GitReferenceUpdated
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -298,6 +316,12 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
+DECL|field|gitRefUpdated
+specifier|private
+specifier|final
+name|GitReferenceUpdated
+name|gitRefUpdated
+decl_stmt|;
 DECL|field|allUsersName
 specifier|private
 specifier|final
@@ -346,12 +370,15 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExternalIdsBatchUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, @GerritPersonIdent PersonIdent serverIdent, ExternalIdCache externalIdCache)
+DECL|method|ExternalIdsBatchUpdate ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllUsersName allUsersName, @GerritPersonIdent PersonIdent serverIdent, ExternalIdCache externalIdCache)
 specifier|public
 name|ExternalIdsBatchUpdate
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|GitReferenceUpdated
+name|gitRefUpdated
 parameter_list|,
 name|AllUsersName
 name|allUsersName
@@ -370,6 +397,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|gitRefUpdated
+operator|=
+name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -564,6 +597,8 @@ name|ExternalIdsUpdate
 operator|.
 name|commit
 argument_list|(
+name|allUsersName
+argument_list|,
 name|repo
 argument_list|,
 name|rw
@@ -579,6 +614,10 @@ argument_list|,
 name|serverIdent
 argument_list|,
 name|serverIdent
+argument_list|,
+literal|null
+argument_list|,
+name|gitRefUpdated
 argument_list|)
 decl_stmt|;
 name|externalIdCache
