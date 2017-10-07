@@ -94,7 +94,7 @@ specifier|public
 interface|interface
 name|ProjectIndexedListener
 block|{
-comment|/**    * Invoked when a project is indexed    *    * @param name of the project    */
+comment|/**    * Invoked when a project is indexed    *    * @param project name of the project    */
 DECL|method|onProjectIndexed (String project)
 name|void
 name|onProjectIndexed
