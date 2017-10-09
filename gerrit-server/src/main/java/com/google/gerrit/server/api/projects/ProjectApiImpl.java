@@ -2329,6 +2329,8 @@ parameter_list|)
 throws|throws
 name|RestApiException
 block|{
+try|try
+block|{
 return|return
 name|putConfig
 operator|.
@@ -2340,6 +2342,22 @@ argument_list|,
 name|in
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|asRestApiException
+argument_list|(
+literal|"Cannot list tags"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override

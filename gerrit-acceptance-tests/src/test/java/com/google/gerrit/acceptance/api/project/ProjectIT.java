@@ -1820,7 +1820,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"restricted to project owner"
+literal|"write config not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi

@@ -139,6 +139,9 @@ operator|,
 DECL|enumConstant|FORCE_UPDATE
 name|FORCE_UPDATE
 operator|,
+DECL|enumConstant|SET_HEAD
+name|SET_HEAD
+operator|,
 DECL|enumConstant|FORGE_AUTHOR
 name|FORGE_AUTHOR
 argument_list|(
