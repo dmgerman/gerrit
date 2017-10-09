@@ -1106,9 +1106,6 @@ operator|.
 name|DETECTED
 argument_list|)
 decl_stmt|;
-name|FileKey
-name|loc
-decl_stmt|;
 if|if
 condition|(
 name|dir
@@ -1155,22 +1152,16 @@ name|name
 argument_list|)
 throw|;
 block|}
-name|loc
-operator|=
-name|FileKey
-operator|.
-name|exact
+throw|throw
+operator|new
+name|IllegalStateException
 argument_list|(
-name|dir
-argument_list|,
-name|FS
-operator|.
-name|DETECTED
+literal|"Repository already exists: "
+operator|+
+name|name
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
-else|else
-block|{
 comment|// It doesn't exist under any of the standard permutations
 comment|// of the repository name, so prefer the standard bare name.
 comment|//
@@ -1186,8 +1177,9 @@ name|Constants
 operator|.
 name|DOT_GIT_EXT
 decl_stmt|;
+name|FileKey
 name|loc
-operator|=
+init|=
 name|FileKey
 operator|.
 name|exact
@@ -1206,8 +1198,7 @@ name|FS
 operator|.
 name|DETECTED
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 try|try
 block|{
 name|Repository
