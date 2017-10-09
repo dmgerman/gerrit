@@ -198,7 +198,7 @@ name|NEW_CHANGE
 init|=
 literal|"refs/for/"
 decl_stmt|;
-comment|// TODO: remove after 'repo' supports private/wip changes.
+comment|// TODO(xchangcheng): remove after 'repo' supports private/wip changes.
 DECL|field|NEW_DRAFT_CHANGE
 specifier|public
 specifier|static
@@ -207,6 +207,16 @@ name|String
 name|NEW_DRAFT_CHANGE
 init|=
 literal|"refs/drafts/"
+decl_stmt|;
+comment|// TODO(xchangcheng): remove after migrating tools which are using this magic branch.
+DECL|field|NEW_PUBLISH_CHANGE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NEW_PUBLISH_CHANGE
+init|=
+literal|"refs/publish/"
 decl_stmt|;
 comment|/** Extracts the destination from a ref name */
 DECL|method|getDestBranchName (String refName)
@@ -237,6 +247,22 @@ block|{
 name|magicBranch
 operator|=
 name|NEW_DRAFT_CHANGE
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|refName
+operator|.
+name|startsWith
+argument_list|(
+name|NEW_PUBLISH_CHANGE
+argument_list|)
+condition|)
+block|{
+name|magicBranch
+operator|=
+name|NEW_PUBLISH_CHANGE
 expr_stmt|;
 block|}
 return|return
@@ -274,6 +300,13 @@ name|refName
 operator|.
 name|startsWith
 argument_list|(
+name|NEW_PUBLISH_CHANGE
+argument_list|)
+operator|||
+name|refName
+operator|.
+name|startsWith
+argument_list|(
 name|NEW_CHANGE
 argument_list|)
 return|;
@@ -301,6 +334,20 @@ condition|)
 block|{
 return|return
 name|NEW_DRAFT_CHANGE
+return|;
+block|}
+if|if
+condition|(
+name|refName
+operator|.
+name|startsWith
+argument_list|(
+name|NEW_PUBLISH_CHANGE
+argument_list|)
+condition|)
+block|{
+return|return
+name|NEW_PUBLISH_CHANGE
 return|;
 block|}
 if|if
@@ -365,6 +412,30 @@ operator|=
 name|checkMagicBranchRef
 argument_list|(
 name|NEW_DRAFT_CHANGE
+argument_list|,
+name|repo
+argument_list|,
+name|project
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|result
+operator|!=
+name|Capable
+operator|.
+name|OK
+condition|)
+block|{
+return|return
+name|result
+return|;
+block|}
+name|result
+operator|=
+name|checkMagicBranchRef
+argument_list|(
+name|NEW_PUBLISH_CHANGE
 argument_list|,
 name|repo
 argument_list|,
