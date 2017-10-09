@@ -5223,6 +5223,24 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TODO(xchangcheng): remove after migrating tools which are using this magic branch.
+if|if
+condition|(
+name|magicBranch
+operator|!=
+literal|null
+operator|&&
+name|magicBranch
+operator|.
+name|publish
+condition|)
+block|{
+name|addMessage
+argument_list|(
+literal|"Pushing to refs/publish/* is deprecated, use refs/for/* instead."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|insertChangesAndPatchSets ()
 specifier|private
@@ -7949,6 +7967,10 @@ DECL|field|draft
 name|boolean
 name|draft
 decl_stmt|;
+DECL|field|publish
+name|boolean
+name|publish
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -8542,6 +8564,22 @@ argument_list|(
 name|MagicBranch
 operator|.
 name|NEW_DRAFT_CHANGE
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|publish
+operator|=
+name|cmd
+operator|.
+name|getRefName
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|MagicBranch
+operator|.
+name|NEW_PUBLISH_CHANGE
 argument_list|)
 expr_stmt|;
 name|this
