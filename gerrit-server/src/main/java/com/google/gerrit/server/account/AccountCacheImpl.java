@@ -1613,6 +1613,13 @@ name|groupIndexProvider
 operator|.
 name|get
 argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|groupIndexProvider
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getSchema
 argument_list|()
