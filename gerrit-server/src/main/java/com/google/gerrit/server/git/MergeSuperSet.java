@@ -258,22 +258,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Project
 import|;
 end_import
@@ -437,22 +421,6 @@ operator|.
 name|project
 operator|.
 name|NoSuchProjectException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|SubmitRuleEvaluator
 import|;
 end_import
 
@@ -918,14 +886,6 @@ argument_list|>
 argument_list|>
 name|heads
 decl_stmt|;
-DECL|field|submitRuleEvaluatorFactory
-specifier|private
-specifier|final
-name|SubmitRuleEvaluator
-operator|.
-name|Factory
-name|submitRuleEvaluatorFactory
-decl_stmt|;
 DECL|field|orm
 specifier|private
 name|MergeOpRepoManager
@@ -938,7 +898,7 @@ name|closeOrm
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeSuperSet ( @erritServerConfig Config cfg, ChangeData.Factory changeDataFactory, Provider<InternalChangeQuery> queryProvider, Provider<MergeOpRepoManager> repoManagerProvider, PermissionBackend permissionBackend, SubmitRuleEvaluator.Factory submitRuleEvaluatorFactory)
+DECL|method|MergeSuperSet ( @erritServerConfig Config cfg, ChangeData.Factory changeDataFactory, Provider<InternalChangeQuery> queryProvider, Provider<MergeOpRepoManager> repoManagerProvider, PermissionBackend permissionBackend)
 name|MergeSuperSet
 parameter_list|(
 annotation|@
@@ -965,11 +925,6 @@ name|repoManagerProvider
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|SubmitRuleEvaluator
-operator|.
-name|Factory
-name|submitRuleEvaluatorFactory
 parameter_list|)
 block|{
 name|this
@@ -1001,12 +956,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|submitRuleEvaluatorFactory
-operator|=
-name|submitRuleEvaluatorFactory
 expr_stmt|;
 name|queryCache
 operator|=
@@ -1189,63 +1138,23 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|submitType (CurrentUser user, ChangeData cd, PatchSet ps)
+DECL|method|submitType (ChangeData cd)
 specifier|private
 name|SubmitType
 name|submitType
 parameter_list|(
-name|CurrentUser
-name|user
-parameter_list|,
 name|ChangeData
 name|cd
-parameter_list|,
-name|PatchSet
-name|ps
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-comment|// Submit type prolog rules mean that the submit type can depend on the
-comment|// submitting user and the content of the change.
-comment|//
-comment|// If the current user can see the change, run that evaluation to get a
-comment|// preview of what would happen on submit.  If the current user can't see
-comment|// the change, instead of guessing who would do the submitting, rely on the
-comment|// project configuration and ignore the prolog rule.  If the prolog rule
-comment|// doesn't match that, we may pick the wrong submit type and produce a
-comment|// misleading (but still nonzero) count of the non visible changes that
-comment|// would be submitted together with the visible ones.
 name|SubmitTypeRecord
 name|str
 init|=
-name|ps
-operator|==
-name|cd
-operator|.
-name|currentPatchSet
-argument_list|()
-condition|?
 name|cd
 operator|.
 name|submitTypeRecord
-argument_list|()
-else|:
-name|submitRuleEvaluatorFactory
-operator|.
-name|create
-argument_list|(
-name|user
-argument_list|,
-name|cd
-argument_list|)
-operator|.
-name|setPatchSet
-argument_list|(
-name|ps
-argument_list|)
-operator|.
-name|getSubmitType
 argument_list|()
 decl_stmt|;
 if|if
@@ -1664,23 +1573,11 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-name|PatchSet
-name|ps
-init|=
-name|cd
-operator|.
-name|currentPatchSet
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|submitType
 argument_list|(
-name|user
-argument_list|,
 name|cd
-argument_list|,
-name|ps
 argument_list|)
 operator|==
 name|SubmitType
@@ -1717,7 +1614,10 @@ comment|// Get the underlying git commit object
 name|String
 name|objIdStr
 init|=
-name|ps
+name|cd
+operator|.
+name|currentPatchSet
+argument_list|()
 operator|.
 name|getRevision
 argument_list|()
