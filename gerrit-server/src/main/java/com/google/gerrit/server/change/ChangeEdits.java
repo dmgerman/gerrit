@@ -1503,6 +1503,8 @@ throws|,
 name|ResourceNotFoundException
 throws|,
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 name|Optional
 argument_list|<
