@@ -1664,9 +1664,6 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-comment|// Pick a revision to use for traversal.  If any of the patch sets
-comment|// is visible, we use the most recent one.  Otherwise, use the current
-comment|// patch set.
 name|PatchSet
 name|ps
 init|=
