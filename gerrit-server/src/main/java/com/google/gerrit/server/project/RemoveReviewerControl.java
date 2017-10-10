@@ -394,8 +394,6 @@ name|AuthException
 throws|,
 name|NoSuchProjectException
 throws|,
-name|OrmException
-throws|,
 name|IOException
 block|{
 if|if
@@ -545,8 +543,6 @@ name|value
 parameter_list|)
 throws|throws
 name|NoSuchProjectException
-throws|,
-name|OrmException
 throws|,
 name|IOException
 block|{

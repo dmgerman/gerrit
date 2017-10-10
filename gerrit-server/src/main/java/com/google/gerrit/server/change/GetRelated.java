@@ -621,8 +621,6 @@ name|OrmException
 throws|,
 name|IOException
 throws|,
-name|NoSuchProjectException
-throws|,
 name|PermissionBackendException
 block|{
 name|Set

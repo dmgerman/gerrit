@@ -9590,8 +9590,6 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
-throws|,
-name|PermissionBackendException
 block|{
 name|Change
 name|c
@@ -10356,10 +10354,6 @@ parameter_list|,
 name|boolean
 name|isWorldReadable
 parameter_list|)
-throws|throws
-name|OrmException
-throws|,
-name|PermissionBackendException
 block|{
 name|Map
 argument_list|<
@@ -10753,7 +10747,7 @@ name|approval
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * @return {@link PermissionBackend.ForChange} constructed from either an index-backed or a    *     database-backed {@link ChangeData} depending on {@code lazyload}.    */
+comment|/**    * @return {@link com.google.gerrit.server.permissions.PermissionBackend.ForChange} constructed    *     from either an index-backed or a database-backed {@link ChangeData} depending on {@code    *     lazyload}.    */
 DECL|method|permissionBackendForChange (CurrentUser user, ChangeData cd)
 specifier|private
 name|PermissionBackend

@@ -1205,8 +1205,6 @@ name|ps
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|IOException
 block|{
 comment|// Submit type prolog rules mean that the submit type can depend on the
 comment|// submitting user and the content of the change.
