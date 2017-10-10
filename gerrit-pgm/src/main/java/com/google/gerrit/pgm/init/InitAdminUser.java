@@ -750,11 +750,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-argument_list|(
-name|optional
-operator|=
-literal|true
-argument_list|)
 DECL|method|set (AccountIndexCollection accountIndexCollection)
 name|void
 name|set
@@ -772,11 +767,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-argument_list|(
-name|optional
-operator|=
-literal|true
-argument_list|)
 DECL|method|set (GroupIndexCollection groupIndexCollection)
 name|void
 name|set
