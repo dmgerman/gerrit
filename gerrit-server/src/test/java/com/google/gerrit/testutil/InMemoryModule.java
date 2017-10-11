@@ -576,6 +576,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|LocalMergeSuperSetComputation
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|PerThreadRequestScope
 import|;
 end_import
@@ -2083,7 +2099,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|//Replacement of DiffExecutorModule to not use thread pool in the tests
+comment|// Replacement of DiffExecutorModule to not use thread pool in the tests
 name|install
 argument_list|(
 operator|new
@@ -2158,6 +2174,15 @@ name|install
 argument_list|(
 operator|new
 name|InMemoryAccountPatchReviewStore
+operator|.
+name|Module
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|install
+argument_list|(
+operator|new
+name|LocalMergeSuperSetComputation
 operator|.
 name|Module
 argument_list|()
