@@ -592,6 +592,12 @@ operator|.
 name|project
 argument_list|(
 literal|"not found"
+argument_list|,
+operator|new
+name|NoSuchProjectException
+argument_list|(
+name|project
+argument_list|)
 argument_list|)
 return|;
 block|}
