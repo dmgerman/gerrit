@@ -600,22 +600,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|SetParent
 import|;
 end_import
@@ -918,15 +902,9 @@ name|updateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewProjectAccess ( final ProjectControl.Factory projectControlFactory, PermissionBackend permissionBackend, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, ReviewDb db, Provider<PostReviewers> reviewersProvider, ProjectCache projectCache, AllProjectsName allProjects, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Provider<SetParent> setParent, Sequences seq, ContributorAgreementsChecker contributorAgreements, Provider<CurrentUser> user, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ReviewProjectAccess ( PermissionBackend permissionBackend, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, ReviewDb db, Provider<PostReviewers> reviewersProvider, ProjectCache projectCache, AllProjectsName allProjects, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Provider<SetParent> setParent, Sequences seq, ContributorAgreementsChecker contributorAgreements, Provider<CurrentUser> user, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ReviewProjectAccess
 parameter_list|(
-specifier|final
-name|ProjectControl
-operator|.
-name|Factory
-name|projectControlFactory
-parameter_list|,
 name|PermissionBackend
 name|permissionBackend
 parameter_list|,
@@ -1031,8 +1009,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|projectControlFactory
-argument_list|,
 name|groupBackend
 argument_list|,
 name|metaDataUpdateFactory
@@ -1121,16 +1097,13 @@ literal|"deprecation"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|updateProjectConfig ( ProjectControl projectControl, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
+DECL|method|updateProjectConfig ( ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
 specifier|protected
 name|Change
 operator|.
 name|Id
 name|updateProjectConfig
 parameter_list|(
-name|ProjectControl
-name|projectControl
-parameter_list|,
 name|ProjectConfig
 name|config
 parameter_list|,
@@ -1158,20 +1131,14 @@ name|permissionBackend
 operator|.
 name|user
 argument_list|(
-name|projectControl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|)
 operator|.
 name|project
 argument_list|(
-name|projectControl
+name|config
 operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
+name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1354,10 +1321,7 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|,
-name|projectControl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|,
 name|TimeUtil
 operator|.

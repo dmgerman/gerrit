@@ -610,7 +610,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -790,14 +790,6 @@ name|CurrentUser
 argument_list|>
 name|user
 decl_stmt|;
-DECL|field|projectControlFactory
-specifier|private
-specifier|final
-name|ProjectControl
-operator|.
-name|GenericFactory
-name|projectControlFactory
-decl_stmt|;
 DECL|field|groupControlFactory
 specifier|private
 specifier|final
@@ -835,7 +827,7 @@ name|webLinks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAccessFactory ( GroupBackend groupBackend, ProjectCache projectCache, PermissionBackend permissionBackend, Provider<CurrentUser> user, ProjectControl.GenericFactory projectControlFactory, GroupControl.Factory groupControlFactory, MetaDataUpdate.Server metaDataUpdateFactory, AllProjectsName allProjectsName, WebLinks webLinks, @Assisted final Project.NameKey name)
+DECL|method|ProjectAccessFactory ( GroupBackend groupBackend, ProjectCache projectCache, PermissionBackend permissionBackend, Provider<CurrentUser> user, GroupControl.Factory groupControlFactory, MetaDataUpdate.Server metaDataUpdateFactory, AllProjectsName allProjectsName, WebLinks webLinks, @Assisted final Project.NameKey name)
 name|ProjectAccessFactory
 parameter_list|(
 name|GroupBackend
@@ -852,11 +844,6 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|user
-parameter_list|,
-name|ProjectControl
-operator|.
-name|GenericFactory
-name|projectControlFactory
 parameter_list|,
 name|GroupControl
 operator|.
@@ -909,12 +896,6 @@ name|user
 expr_stmt|;
 name|this
 operator|.
-name|projectControlFactory
-operator|=
-name|projectControlFactory
-expr_stmt|;
-name|this
-operator|.
 name|groupControlFactory
 operator|=
 name|groupControlFactory
@@ -960,10 +941,10 @@ name|ConfigInvalidException
 throws|,
 name|PermissionBackendException
 block|{
-name|ProjectControl
-name|pc
+name|ProjectState
+name|projectState
 init|=
-name|checkProjectControl
+name|checkProjectState
 argument_list|()
 decl_stmt|;
 comment|// Load the current configuration from the repository, ensuring its the most
@@ -1029,9 +1010,9 @@ name|getProject
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|pc
+name|projectState
 operator|=
-name|checkProjectControl
+name|checkProjectState
 argument_list|()
 expr_stmt|;
 block|}
@@ -1053,10 +1034,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|pc
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 operator|.
 name|getConfig
 argument_list|()
@@ -1076,9 +1054,9 @@ name|getProject
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|pc
+name|projectState
 operator|=
-name|checkProjectControl
+name|checkProjectState
 argument_list|()
 expr_stmt|;
 block|}
@@ -1657,10 +1635,7 @@ name|detail
 operator|.
 name|setLabelTypes
 argument_list|(
-name|pc
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 operator|.
 name|getLabelTypes
 argument_list|()
@@ -1883,10 +1858,10 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|checkProjectControl ()
+DECL|method|checkProjectState ()
 specifier|private
-name|ProjectControl
-name|checkProjectControl
+name|ProjectState
+name|checkProjectState
 parameter_list|()
 throws|throws
 name|NoSuchProjectException
@@ -1895,19 +1870,14 @@ name|IOException
 throws|,
 name|PermissionBackendException
 block|{
-name|ProjectControl
-name|pc
+name|ProjectState
+name|state
 init|=
-name|projectControlFactory
+name|projectCache
 operator|.
-name|controlFor
+name|checkedGet
 argument_list|(
 name|projectName
-argument_list|,
-name|user
-operator|.
-name|get
-argument_list|()
 argument_list|)
 decl_stmt|;
 try|try
@@ -1947,7 +1917,7 @@ argument_list|)
 throw|;
 block|}
 return|return
-name|pc
+name|state
 return|;
 block|}
 DECL|method|check (PermissionBackend.ForProject ctx, String ref, RefPermission perm)

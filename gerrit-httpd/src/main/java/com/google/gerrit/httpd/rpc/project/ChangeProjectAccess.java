@@ -334,22 +334,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|SetParent
 import|;
 end_import
@@ -540,18 +524,13 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeProjectAccess ( ProjectAccessFactory.Factory projectAccessFactory, ProjectControl.Factory projectControlFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, ContributorAgreementsChecker contributorAgreements, Provider<CurrentUser> user, PermissionBackend permissionBackend, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ChangeProjectAccess ( ProjectAccessFactory.Factory projectAccessFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, ContributorAgreementsChecker contributorAgreements, Provider<CurrentUser> user, PermissionBackend permissionBackend, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ChangeProjectAccess
 parameter_list|(
 name|ProjectAccessFactory
 operator|.
 name|Factory
 name|projectAccessFactory
-parameter_list|,
-name|ProjectControl
-operator|.
-name|Factory
-name|projectControlFactory
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -635,8 +614,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|projectControlFactory
-argument_list|,
 name|groupBackend
 argument_list|,
 name|metaDataUpdateFactory
@@ -688,14 +665,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateProjectConfig ( ProjectControl projectControl, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
+DECL|method|updateProjectConfig ( ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
 specifier|protected
 name|ProjectAccess
 name|updateProjectConfig
 parameter_list|(
-name|ProjectControl
-name|projectControl
-parameter_list|,
 name|ProjectConfig
 name|config
 parameter_list|,
@@ -747,10 +721,7 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|projectControl
-operator|.
-name|getUser
-argument_list|()
+name|user
 operator|.
 name|asIdentifiedUser
 argument_list|()
