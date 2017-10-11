@@ -463,14 +463,11 @@ operator|new
 name|ProjectResource
 argument_list|(
 name|projectState
-operator|.
-name|controlFor
-argument_list|(
+argument_list|,
 name|self
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|ListChildProjects

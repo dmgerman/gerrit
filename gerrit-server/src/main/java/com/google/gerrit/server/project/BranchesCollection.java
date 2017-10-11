@@ -664,7 +664,12 @@ name|BranchResource
 argument_list|(
 name|parent
 operator|.
-name|getControl
+name|getProjectState
+argument_list|()
+argument_list|,
+name|parent
+operator|.
+name|getUser
 argument_list|()
 argument_list|,
 name|ref

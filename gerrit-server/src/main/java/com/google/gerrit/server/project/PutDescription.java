@@ -477,18 +477,10 @@ argument_list|()
 expr_stmt|;
 comment|// Delete would set description to null.
 block|}
-name|ProjectControl
-name|ctl
-init|=
-name|resource
-operator|.
-name|getControl
-argument_list|()
-decl_stmt|;
 name|IdentifiedUser
 name|user
 init|=
-name|ctl
+name|resource
 operator|.
 name|getUser
 argument_list|()
@@ -626,7 +618,10 @@ name|cache
 operator|.
 name|evict
 argument_list|(
-name|ctl
+name|resource
+operator|.
+name|getProjectState
+argument_list|()
 operator|.
 name|getProject
 argument_list|()

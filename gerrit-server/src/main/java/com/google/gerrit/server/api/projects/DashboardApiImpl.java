@@ -581,7 +581,12 @@ name|projectDefault
 argument_list|(
 name|project
 operator|.
-name|getControl
+name|getProjectState
+argument_list|()
+argument_list|,
+name|project
+operator|.
+name|getUser
 argument_list|()
 argument_list|)
 argument_list|,

@@ -444,6 +444,14 @@ operator|new
 name|ProjectResource
 argument_list|(
 name|projectControl
+operator|.
+name|getProjectState
+argument_list|()
+argument_list|,
+name|projectControl
+operator|.
+name|getUser
+argument_list|()
 argument_list|)
 argument_list|,
 name|input

@@ -336,6 +336,14 @@ operator|new
 name|ProjectResource
 argument_list|(
 name|project
+operator|.
+name|getProjectState
+argument_list|()
+argument_list|,
+name|project
+operator|.
+name|getUser
+argument_list|()
 argument_list|)
 argument_list|,
 name|input

@@ -104,6 +104,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|TypeLiteral
@@ -156,21 +170,26 @@ argument_list|>
 argument_list|()
 block|{}
 decl_stmt|;
-DECL|method|projectDefault (ProjectControl ctl)
+DECL|method|projectDefault (ProjectState projectState, CurrentUser user)
 specifier|public
 specifier|static
 name|DashboardResource
 name|projectDefault
 parameter_list|(
-name|ProjectControl
-name|ctl
+name|ProjectState
+name|projectState
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 block|{
 return|return
 operator|new
 name|DashboardResource
 argument_list|(
-name|ctl
+name|projectState
+argument_list|,
+name|user
 argument_list|,
 literal|null
 argument_list|,
@@ -182,11 +201,17 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|field|control
+DECL|field|projectState
 specifier|private
 specifier|final
-name|ProjectControl
-name|control
+name|ProjectState
+name|projectState
+decl_stmt|;
+DECL|field|user
+specifier|private
+specifier|final
+name|CurrentUser
+name|user
 decl_stmt|;
 DECL|field|refName
 specifier|private
@@ -212,12 +237,15 @@ specifier|final
 name|boolean
 name|projectDefault
 decl_stmt|;
-DECL|method|DashboardResource ( ProjectControl control, String refName, String pathName, Config config, boolean projectDefault)
+DECL|method|DashboardResource ( ProjectState projectState, CurrentUser user, String refName, String pathName, Config config, boolean projectDefault)
 specifier|public
 name|DashboardResource
 parameter_list|(
-name|ProjectControl
-name|control
+name|ProjectState
+name|projectState
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|String
 name|refName
@@ -234,9 +262,15 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|control
+name|projectState
 operator|=
-name|control
+name|projectState
+expr_stmt|;
+name|this
+operator|.
+name|user
+operator|=
+name|user
 expr_stmt|;
 name|this
 operator|.
@@ -263,14 +297,24 @@ operator|=
 name|projectDefault
 expr_stmt|;
 block|}
-DECL|method|getControl ()
+DECL|method|getProjectState ()
 specifier|public
-name|ProjectControl
-name|getControl
+name|ProjectState
+name|getProjectState
 parameter_list|()
 block|{
 return|return
-name|control
+name|projectState
+return|;
+block|}
+DECL|method|getUser ()
+specifier|public
+name|CurrentUser
+name|getUser
+parameter_list|()
+block|{
+return|return
+name|user
 return|;
 block|}
 DECL|method|getRefName ()

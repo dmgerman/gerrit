@@ -106,6 +106,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|TypeLiteral
@@ -150,12 +164,15 @@ specifier|final
 name|TagInfo
 name|tagInfo
 decl_stmt|;
-DECL|method|TagResource (ProjectControl control, TagInfo tagInfo)
+DECL|method|TagResource (ProjectState projectState, CurrentUser user, TagInfo tagInfo)
 specifier|public
 name|TagResource
 parameter_list|(
-name|ProjectControl
-name|control
+name|ProjectState
+name|projectState
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|TagInfo
 name|tagInfo
@@ -163,7 +180,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|control
+name|projectState
+argument_list|,
+name|user
 argument_list|)
 expr_stmt|;
 name|this

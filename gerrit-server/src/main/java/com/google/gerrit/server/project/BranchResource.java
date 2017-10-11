@@ -104,6 +104,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|TypeLiteral
@@ -168,12 +182,15 @@ specifier|final
 name|String
 name|revision
 decl_stmt|;
-DECL|method|BranchResource (ProjectControl control, Ref ref)
+DECL|method|BranchResource (ProjectState projectState, CurrentUser user, Ref ref)
 specifier|public
 name|BranchResource
 parameter_list|(
-name|ProjectControl
-name|control
+name|ProjectState
+name|projectState
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|Ref
 name|ref
@@ -181,7 +198,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|control
+name|projectState
+argument_list|,
+name|user
 argument_list|)
 expr_stmt|;
 name|this
