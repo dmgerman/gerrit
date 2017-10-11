@@ -706,7 +706,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -1049,12 +1049,12 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ProjectControl projectControl, Branch.NameKey dest, boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, PatchSetInfo info, List<String> groups, @Nullable MagicBranchInput magicBranch, @Nullable PushCertificate pushCertificate)
+DECL|method|create ( ProjectState projectState, Branch.NameKey dest, boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, PatchSetInfo info, List<String> groups, @Nullable MagicBranchInput magicBranch, @Nullable PushCertificate pushCertificate)
 name|ReplaceOp
 name|create
 parameter_list|(
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|Branch
 operator|.
@@ -1244,11 +1244,11 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|projectControl
+DECL|field|projectState
 specifier|private
 specifier|final
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 decl_stmt|;
 DECL|field|dest
 specifier|private
@@ -1409,7 +1409,7 @@ name|requestScopePropagator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalCopier approvalCopier, ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, EmailReviewComments.Factory emailCommentsFactory, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, ProjectCache projectCache, @SendEmailExecutor ExecutorService sendEmailExecutor, @Assisted ProjectControl projectControl, @Assisted Branch.NameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommitId, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
+DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalCopier approvalCopier, ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, EmailReviewComments.Factory emailCommentsFactory, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, ProjectCache projectCache, @SendEmailExecutor ExecutorService sendEmailExecutor, @Assisted ProjectState projectState, @Assisted Branch.NameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommitId, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
 name|ReplaceOp
 parameter_list|(
 name|AccountResolver
@@ -1469,8 +1469,8 @@ name|sendEmailExecutor
 parameter_list|,
 annotation|@
 name|Assisted
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1640,9 +1640,9 @@ name|sendEmailExecutor
 expr_stmt|;
 name|this
 operator|.
-name|projectControl
+name|projectState
 operator|=
-name|projectControl
+name|projectState
 expr_stmt|;
 name|this
 operator|.
@@ -1752,10 +1752,7 @@ name|changeKindCache
 operator|.
 name|getChangeKind
 argument_list|(
-name|projectControl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getNameKey
 argument_list|()
@@ -2346,10 +2343,7 @@ argument_list|()
 argument_list|,
 name|update
 argument_list|,
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 operator|.
 name|getLabelTypes
 argument_list|()
@@ -2412,10 +2406,7 @@ argument_list|()
 argument_list|,
 name|update
 argument_list|,
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 operator|.
 name|getLabelTypes
 argument_list|()
@@ -2904,10 +2895,7 @@ block|}
 name|LabelType
 name|lt
 init|=
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 operator|.
 name|getLabelTypes
 argument_list|()
@@ -3415,10 +3403,7 @@ name|replacePatchSetFactory
 operator|.
 name|create
 argument_list|(
-name|projectControl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getNameKey
 argument_list|()
