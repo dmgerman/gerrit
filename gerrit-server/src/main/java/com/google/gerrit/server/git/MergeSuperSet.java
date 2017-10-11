@@ -714,14 +714,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|reloadChanges (ChangeSet cs)
+DECL|method|reloadChanges (ChangeSet changeSet)
 specifier|public
 specifier|static
 name|void
 name|reloadChanges
 parameter_list|(
 name|ChangeSet
-name|cs
+name|changeSet
 parameter_list|)
 throws|throws
 name|OrmException
@@ -732,7 +732,7 @@ control|(
 name|ChangeData
 name|cd
 range|:
-name|cs
+name|changeSet
 operator|.
 name|changes
 argument_list|()
@@ -1051,7 +1051,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|ChangeSet
-name|cs
+name|changeSet
 init|=
 operator|new
 name|ChangeSet
@@ -1098,7 +1098,7 @@ name|completeChangeSetIncludingTopics
 argument_list|(
 name|db
 argument_list|,
-name|cs
+name|changeSet
 argument_list|,
 name|user
 argument_list|)
@@ -1109,7 +1109,7 @@ name|completeChangeSetWithoutTopic
 argument_list|(
 name|db
 argument_list|,
-name|cs
+name|changeSet
 argument_list|,
 name|user
 argument_list|)
@@ -1402,7 +1402,7 @@ return|return
 name|destHashes
 return|;
 block|}
-DECL|method|completeChangeSetWithoutTopic (ReviewDb db, ChangeSet changes, CurrentUser user)
+DECL|method|completeChangeSetWithoutTopic ( ReviewDb db, ChangeSet changeSet, CurrentUser user)
 specifier|private
 name|ChangeSet
 name|completeChangeSetWithoutTopic
@@ -1411,7 +1411,7 @@ name|ReviewDb
 name|db
 parameter_list|,
 name|ChangeSet
-name|changes
+name|changeSet
 parameter_list|,
 name|CurrentUser
 name|user
@@ -1463,12 +1463,12 @@ name|Iterables
 operator|.
 name|concat
 argument_list|(
-name|changes
+name|changeSet
 operator|.
 name|changes
 argument_list|()
 argument_list|,
-name|changes
+name|changeSet
 operator|.
 name|nonVisibleChanges
 argument_list|()
@@ -1537,7 +1537,7 @@ block|{
 name|boolean
 name|visible
 init|=
-name|changes
+name|changeSet
 operator|.
 name|ids
 argument_list|()
@@ -2087,8 +2087,8 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * Completes {@code cs} with any additional changes from its topics    *    *<p>{@link #completeChangeSetIncludingTopics} calls this repeatedly, alternating with {@link    * #completeChangeSetWithoutTopic}, to discover what additional changes should be submitted with a    * change until the set stops growing.    *    *<p>{@code topicsSeen} and {@code visibleTopicsSeen} keep track of topics already explored to    * avoid wasted work.    *    * @return the resulting larger {@link ChangeSet}    */
-DECL|method|topicClosure ( ReviewDb db, ChangeSet cs, CurrentUser user, Set<String> topicsSeen, Set<String> visibleTopicsSeen)
+comment|/**    * Completes {@code changeSet} with any additional changes from its topics    *    *<p>{@link #completeChangeSetIncludingTopics} calls this repeatedly, alternating with {@link    * #completeChangeSetWithoutTopic}, to discover what additional changes should be submitted with a    * change until the set stops growing.    *    *<p>{@code topicsSeen} and {@code visibleTopicsSeen} keep track of topics already explored to    * avoid wasted work.    *    * @return the resulting larger {@link ChangeSet}    */
+DECL|method|topicClosure ( ReviewDb db, ChangeSet changeSet, CurrentUser user, Set<String> topicsSeen, Set<String> visibleTopicsSeen)
 specifier|private
 name|ChangeSet
 name|topicClosure
@@ -2097,7 +2097,7 @@ name|ReviewDb
 name|db
 parameter_list|,
 name|ChangeSet
-name|cs
+name|changeSet
 parameter_list|,
 name|CurrentUser
 name|user
@@ -2146,7 +2146,7 @@ control|(
 name|ChangeData
 name|cd
 range|:
-name|cs
+name|changeSet
 operator|.
 name|changes
 argument_list|()
@@ -2254,7 +2254,7 @@ control|(
 name|ChangeData
 name|cd
 range|:
-name|cs
+name|changeSet
 operator|.
 name|nonVisibleChanges
 argument_list|()
@@ -2337,7 +2337,7 @@ name|nonVisibleChanges
 argument_list|)
 return|;
 block|}
-DECL|method|completeChangeSetIncludingTopics ( ReviewDb db, ChangeSet changes, CurrentUser user)
+DECL|method|completeChangeSetIncludingTopics ( ReviewDb db, ChangeSet changeSet, CurrentUser user)
 specifier|private
 name|ChangeSet
 name|completeChangeSetIncludingTopics
@@ -2346,7 +2346,7 @@ name|ReviewDb
 name|db
 parameter_list|,
 name|ChangeSet
-name|changes
+name|changeSet
 parameter_list|,
 name|CurrentUser
 name|user
@@ -2394,13 +2394,13 @@ name|oldSeen
 operator|=
 name|seen
 expr_stmt|;
-name|changes
+name|changeSet
 operator|=
 name|topicClosure
 argument_list|(
 name|db
 argument_list|,
-name|changes
+name|changeSet
 argument_list|,
 name|user
 argument_list|,
@@ -2409,13 +2409,13 @@ argument_list|,
 name|visibleTopicsSeen
 argument_list|)
 expr_stmt|;
-name|changes
+name|changeSet
 operator|=
 name|completeChangeSetWithoutTopic
 argument_list|(
 name|db
 argument_list|,
-name|changes
+name|changeSet
 argument_list|,
 name|user
 argument_list|)
@@ -2441,7 +2441,7 @@ name|oldSeen
 condition|)
 do|;
 return|return
-name|changes
+name|changeSet
 return|;
 block|}
 DECL|method|query ()
