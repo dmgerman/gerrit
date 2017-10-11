@@ -480,22 +480,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|ProjectState
 import|;
 end_import
@@ -890,24 +874,6 @@ name|usage
 operator|=
 literal|"projects for which the groups should be listed"
 argument_list|)
-DECL|method|addProject (ProjectControl project)
-specifier|public
-name|void
-name|addProject
-parameter_list|(
-name|ProjectControl
-name|project
-parameter_list|)
-block|{
-name|addProject
-argument_list|(
-name|project
-operator|.
-name|getProjectState
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|addProject (ProjectState project)
 specifier|public
 name|void

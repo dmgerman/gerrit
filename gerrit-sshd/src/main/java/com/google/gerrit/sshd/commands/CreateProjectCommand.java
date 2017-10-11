@@ -300,7 +300,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -518,7 +518,7 @@ literal|"parent project"
 argument_list|)
 DECL|field|newParent
 specifier|private
-name|ProjectControl
+name|ProjectState
 name|newParent
 decl_stmt|;
 annotation|@
@@ -1062,9 +1062,6 @@ operator|.
 name|parent
 operator|=
 name|newParent
-operator|.
-name|getProject
-argument_list|()
 operator|.
 name|getName
 argument_list|()

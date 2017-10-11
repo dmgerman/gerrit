@@ -240,7 +240,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -503,10 +503,10 @@ name|usage
 operator|=
 literal|"project for which the refs should be listed"
 argument_list|)
-DECL|field|projectControl
+DECL|field|projectState
 specifier|private
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 decl_stmt|;
 annotation|@
 name|Option
@@ -626,10 +626,7 @@ operator|.
 name|NameKey
 name|projectName
 init|=
-name|projectControl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getNameKey
 argument_list|()
@@ -674,10 +671,7 @@ name|refFilterFactory
 operator|.
 name|create
 argument_list|(
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 argument_list|,
 name|repo
 argument_list|)

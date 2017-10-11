@@ -128,7 +128,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectResource
 import|;
 end_import
 
@@ -144,7 +144,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectResource
+name|ProjectState
 import|;
 end_import
 
@@ -280,7 +280,7 @@ DECL|field|projects
 specifier|private
 name|List
 argument_list|<
-name|ProjectControl
+name|ProjectState
 argument_list|>
 name|projects
 init|=
@@ -331,13 +331,13 @@ name|index
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|index (ProjectControl projectControl)
+DECL|method|index (ProjectState projectState)
 specifier|private
 name|void
 name|index
 parameter_list|(
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|)
 block|{
 try|try
@@ -349,15 +349,9 @@ argument_list|(
 operator|new
 name|ProjectResource
 argument_list|(
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 argument_list|,
-name|projectControl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|)
 argument_list|,
 literal|null
@@ -380,10 +374,7 @@ name|format
 argument_list|(
 literal|"Unable to index %s: %s"
 argument_list|,
-name|projectControl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getName
 argument_list|()

@@ -242,7 +242,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -468,10 +468,10 @@ name|usage
 operator|=
 literal|"project containing the change"
 argument_list|)
-DECL|field|projectControl
+DECL|field|projectState
 specifier|private
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 decl_stmt|;
 annotation|@
 name|Option
@@ -587,7 +587,7 @@ name|token
 argument_list|,
 name|changes
 argument_list|,
-name|projectControl
+name|projectState
 argument_list|)
 expr_stmt|;
 block|}

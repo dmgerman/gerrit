@@ -1112,11 +1112,6 @@ specifier|private
 name|DeleteSshKey
 name|deleteSshKey
 decl_stmt|;
-DECL|field|user
-specifier|private
-name|IdentifiedUser
-name|user
-decl_stmt|;
 DECL|field|rsrc
 specifier|private
 name|AccountResource
@@ -1296,6 +1291,9 @@ operator|new
 name|AccountResource
 argument_list|(
 name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
 argument_list|)
 expr_stmt|;
 try|try
@@ -1747,6 +1745,9 @@ operator|.
 name|SshKey
 argument_list|(
 name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
 argument_list|,
 name|sshKey
 argument_list|)
@@ -1889,6 +1890,9 @@ operator|.
 name|Email
 argument_list|(
 name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
 argument_list|,
 name|e
 operator|.
@@ -1914,6 +1918,9 @@ operator|.
 name|Email
 argument_list|(
 name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
 argument_list|,
 name|email
 argument_list|)
@@ -1979,6 +1986,9 @@ operator|.
 name|Email
 argument_list|(
 name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
 argument_list|,
 name|email
 argument_list|)

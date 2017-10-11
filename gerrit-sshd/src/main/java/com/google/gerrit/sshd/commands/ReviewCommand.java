@@ -388,22 +388,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|ProjectState
 import|;
 end_import
@@ -776,7 +760,7 @@ name|parsePatchSet
 argument_list|(
 name|token
 argument_list|,
-name|projectControl
+name|projectState
 argument_list|,
 name|branch
 argument_list|)
@@ -840,10 +824,10 @@ name|usage
 operator|=
 literal|"project containing the specified patch set(s)"
 argument_list|)
-DECL|field|projectControl
+DECL|field|projectState
 specifier|private
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 decl_stmt|;
 annotation|@
 name|Option

@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toList
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -223,22 +237,6 @@ operator|.
 name|project
 operator|.
 name|ProjectCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ProjectControl
 import|;
 end_import
 
@@ -511,7 +509,7 @@ literal|"new parent project"
 argument_list|)
 DECL|field|newParent
 specifier|private
-name|ProjectControl
+name|ProjectState
 name|newParent
 decl_stmt|;
 annotation|@
@@ -531,7 +529,7 @@ literal|"parent project for which the child projects should be reparented"
 argument_list|)
 DECL|field|oldParent
 specifier|private
-name|ProjectControl
+name|ProjectState
 name|oldParent
 decl_stmt|;
 annotation|@
@@ -553,7 +551,7 @@ DECL|field|excludedChildren
 specifier|private
 name|List
 argument_list|<
-name|ProjectControl
+name|ProjectState
 argument_list|>
 name|excludedChildren
 init|=
@@ -589,7 +587,7 @@ DECL|field|children
 specifier|private
 name|List
 argument_list|<
-name|ProjectControl
+name|ProjectState
 argument_list|>
 name|children
 init|=
@@ -806,33 +804,24 @@ name|NameKey
 argument_list|>
 name|childProjects
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|ProjectControl
-name|pc
-range|:
 name|children
-control|)
-block|{
-name|childProjects
 operator|.
-name|add
-argument_list|(
-name|pc
-operator|.
-name|getProject
+name|stream
 argument_list|()
 operator|.
+name|map
+argument_list|(
+name|ProjectState
+operator|::
 name|getNameKey
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toList
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 if|if
 condition|(
 name|oldParent
@@ -1219,7 +1208,7 @@ throw|;
 block|}
 block|}
 comment|/**    * Returns the children of the specified parent project that should be reparented. The returned    * list of child projects does not contain projects that were specified to be excluded from    * reparenting.    */
-DECL|method|getChildrenForReparenting (ProjectControl parent)
+DECL|method|getChildrenForReparenting (ProjectState parent)
 specifier|private
 name|List
 argument_list|<
@@ -1229,7 +1218,7 @@ name|NameKey
 argument_list|>
 name|getChildrenForReparenting
 parameter_list|(
-name|ProjectControl
+name|ProjectState
 name|parent
 parameter_list|)
 throws|throws
@@ -1270,7 +1259,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|ProjectControl
+name|ProjectState
 name|excludedChild
 range|:
 name|excludedChildren
@@ -1340,14 +1329,8 @@ operator|new
 name|ProjectResource
 argument_list|(
 name|parent
-operator|.
-name|getProjectState
-argument_list|()
 argument_list|,
-name|parent
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|)
 argument_list|)
 control|)

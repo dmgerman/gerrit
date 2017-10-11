@@ -232,7 +232,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -464,7 +464,7 @@ operator|=
 name|changeFinder
 expr_stmt|;
 block|}
-DECL|method|parsePatchSet (String token, ProjectControl projectControl, String branch)
+DECL|method|parsePatchSet (String token, ProjectState projectState, String branch)
 specifier|public
 name|PatchSet
 name|parsePatchSet
@@ -472,8 +472,8 @@ parameter_list|(
 name|String
 name|token
 parameter_list|,
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|String
 name|branch
@@ -517,7 +517,7 @@ name|cds
 decl_stmt|;
 if|if
 condition|(
-name|projectControl
+name|projectState
 operator|!=
 literal|null
 condition|)
@@ -527,10 +527,7 @@ operator|.
 name|NameKey
 name|p
 init|=
-name|projectControl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getNameKey
 argument_list|()
@@ -626,7 +623,7 @@ name|inProject
 argument_list|(
 name|c
 argument_list|,
-name|projectControl
+name|projectState
 argument_list|)
 operator|&&
 name|inBranch
@@ -773,7 +770,7 @@ name|notes
 init|=
 name|getNotes
 argument_list|(
-name|projectControl
+name|projectState
 argument_list|,
 name|patchSetId
 operator|.
@@ -818,7 +815,7 @@ throw|;
 block|}
 if|if
 condition|(
-name|projectControl
+name|projectState
 operator|!=
 literal|null
 operator|||
@@ -842,7 +839,7 @@ name|inProject
 argument_list|(
 name|change
 argument_list|,
-name|projectControl
+name|projectState
 argument_list|)
 condition|)
 block|{
@@ -858,10 +855,7 @@ argument_list|()
 operator|+
 literal|" not in project "
 operator|+
-name|projectControl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getName
 argument_list|()
@@ -911,15 +905,15 @@ literal|"\" is not a valid patch set"
 argument_list|)
 throw|;
 block|}
-DECL|method|getNotes (@ullable ProjectControl projectControl, Change.Id changeId)
+DECL|method|getNotes (@ullable ProjectState projectState, Change.Id changeId)
 specifier|private
 name|ChangeNotes
 name|getNotes
 parameter_list|(
 annotation|@
 name|Nullable
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|Change
 operator|.
@@ -933,7 +927,7 @@ name|UnloggedFailure
 block|{
 if|if
 condition|(
-name|projectControl
+name|projectState
 operator|!=
 literal|null
 condition|)
@@ -948,10 +942,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|projectControl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getNameKey
 argument_list|()
@@ -1009,7 +1000,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|inProject (Change change, ProjectControl projectControl)
+DECL|method|inProject (Change change, ProjectState projectState)
 specifier|private
 specifier|static
 name|boolean
@@ -1018,13 +1009,13 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|,
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|)
 block|{
 if|if
 condition|(
-name|projectControl
+name|projectState
 operator|==
 literal|null
 condition|)
@@ -1035,10 +1026,7 @@ literal|true
 return|;
 block|}
 return|return
-name|projectControl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getNameKey
 argument_list|()

@@ -126,22 +126,6 @@ name|extensions
 operator|.
 name|client
 operator|.
-name|ProjectState
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|client
-operator|.
 name|SubmitType
 import|;
 end_import
@@ -190,7 +174,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectResource
 import|;
 end_import
 
@@ -206,7 +190,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectResource
+name|ProjectState
 import|;
 end_import
 
@@ -328,10 +312,10 @@ name|usage
 operator|=
 literal|"name of the project"
 argument_list|)
-DECL|field|projectControl
+DECL|field|projectState
 specifier|private
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 decl_stmt|;
 annotation|@
 name|Option
@@ -826,6 +810,12 @@ operator|.
 name|state
 operator|=
 name|state
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getState
+argument_list|()
 expr_stmt|;
 name|configInput
 operator|.
@@ -860,7 +850,7 @@ name|configInput
 operator|.
 name|description
 operator|=
-name|projectControl
+name|projectState
 operator|.
 name|getProject
 argument_list|()
@@ -878,15 +868,9 @@ argument_list|(
 operator|new
 name|ProjectResource
 argument_list|(
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 argument_list|,
-name|projectControl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|)
 argument_list|,
 name|configInput

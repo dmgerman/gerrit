@@ -296,7 +296,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -524,7 +524,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addChange ( String id, Map<Change.Id, ChangeResource> changes, ProjectControl projectControl)
+DECL|method|addChange ( String id, Map<Change.Id, ChangeResource> changes, ProjectState projectState)
 specifier|public
 name|void
 name|addChange
@@ -542,8 +542,8 @@ name|ChangeResource
 argument_list|>
 name|changes
 parameter_list|,
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|)
 throws|throws
 name|UnloggedFailure
@@ -558,13 +558,13 @@ name|id
 argument_list|,
 name|changes
 argument_list|,
-name|projectControl
+name|projectState
 argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addChange ( String id, Map<Change.Id, ChangeResource> changes, ProjectControl projectControl, boolean useIndex)
+DECL|method|addChange ( String id, Map<Change.Id, ChangeResource> changes, ProjectState projectState, boolean useIndex)
 specifier|public
 name|void
 name|addChange
@@ -582,8 +582,8 @@ name|ChangeResource
 argument_list|>
 name|changes
 parameter_list|,
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|boolean
 name|useIndex
@@ -691,7 +691,7 @@ argument_list|)
 operator|&&
 name|inProject
 argument_list|(
-name|projectControl
+name|projectState
 argument_list|,
 name|notes
 operator|.
@@ -933,13 +933,13 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|inProject (ProjectControl projectControl, Project.NameKey project)
+DECL|method|inProject (ProjectState projectState, Project.NameKey project)
 specifier|private
 name|boolean
 name|inProject
 parameter_list|(
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|Project
 operator|.
@@ -949,16 +949,13 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|projectControl
+name|projectState
 operator|!=
 literal|null
 condition|)
 block|{
 return|return
-name|projectControl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getNameKey
 argument_list|()

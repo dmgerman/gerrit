@@ -154,18 +154,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -377,15 +365,6 @@ name|LfsSshPluginAuth
 argument_list|>
 name|auth
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
-decl_stmt|;
 annotation|@
 name|Argument
 argument_list|(
@@ -416,7 +395,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LfsPluginAuthCommand (DynamicItem<LfsSshPluginAuth> auth, Provider<CurrentUser> user)
+DECL|method|LfsPluginAuthCommand (DynamicItem<LfsSshPluginAuth> auth)
 name|LfsPluginAuthCommand
 parameter_list|(
 name|DynamicItem
@@ -424,12 +403,6 @@ argument_list|<
 name|LfsSshPluginAuth
 argument_list|>
 name|auth
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
 parameter_list|)
 block|{
 name|this
@@ -437,12 +410,6 @@ operator|.
 name|auth
 operator|=
 name|auth
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 block|}
 annotation|@
@@ -498,9 +465,6 @@ operator|.
 name|authenticate
 argument_list|(
 name|user
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|args
 argument_list|)
