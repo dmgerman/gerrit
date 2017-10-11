@@ -385,9 +385,6 @@ name|pp
 range|:
 name|p
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getProjectState
 argument_list|()
 operator|.

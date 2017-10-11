@@ -582,7 +582,12 @@ name|ban
 argument_list|(
 name|rsrc
 operator|.
-name|getControl
+name|getNameKey
+argument_list|()
+argument_list|,
+name|rsrc
+operator|.
+name|getUser
 argument_list|()
 argument_list|,
 name|commitsToBan

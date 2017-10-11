@@ -325,13 +325,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|parse (ProjectResource resource, IdString id)
+DECL|method|parse (ProjectResource rsrc, IdString id)
 specifier|public
 name|TagResource
 name|parse
 parameter_list|(
 name|ProjectResource
-name|resource
+name|rsrc
 parameter_list|,
 name|IdString
 name|id
@@ -345,9 +345,14 @@ return|return
 operator|new
 name|TagResource
 argument_list|(
-name|resource
+name|rsrc
 operator|.
-name|getControl
+name|getProjectState
+argument_list|()
+argument_list|,
+name|rsrc
+operator|.
+name|getUser
 argument_list|()
 argument_list|,
 name|list
@@ -357,7 +362,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|resource
+name|rsrc
 argument_list|,
 name|id
 argument_list|)

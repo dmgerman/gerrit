@@ -532,7 +532,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (DashboardResource resource, SetDashboardInput input)
+DECL|method|apply (DashboardResource rsrc, SetDashboardInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -541,7 +541,7 @@ argument_list|>
 name|apply
 parameter_list|(
 name|DashboardResource
-name|resource
+name|rsrc
 parameter_list|,
 name|SetDashboardInput
 name|input
@@ -581,19 +581,11 @@ operator|.
 name|id
 argument_list|)
 expr_stmt|;
-name|ProjectControl
-name|ctl
-init|=
-name|resource
-operator|.
-name|getControl
-argument_list|()
-decl_stmt|;
 name|permissionBackend
 operator|.
 name|user
 argument_list|(
-name|ctl
+name|rsrc
 operator|.
 name|getUser
 argument_list|()
@@ -601,9 +593,9 @@ argument_list|)
 operator|.
 name|project
 argument_list|(
-name|ctl
+name|rsrc
 operator|.
-name|getProject
+name|getProjectState
 argument_list|()
 operator|.
 name|getNameKey
@@ -642,7 +634,15 @@ argument_list|(
 operator|new
 name|ProjectResource
 argument_list|(
-name|ctl
+name|rsrc
+operator|.
+name|getProjectState
+argument_list|()
+argument_list|,
+name|rsrc
+operator|.
+name|getUser
+argument_list|()
 argument_list|)
 argument_list|,
 name|IdString
@@ -703,9 +703,9 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|ctl
+name|rsrc
 operator|.
-name|getProject
+name|getProjectState
 argument_list|()
 operator|.
 name|getNameKey
@@ -814,7 +814,7 @@ name|md
 operator|.
 name|setAuthor
 argument_list|(
-name|ctl
+name|rsrc
 operator|.
 name|getUser
 argument_list|()
@@ -841,7 +841,10 @@ name|cache
 operator|.
 name|evict
 argument_list|(
-name|ctl
+name|rsrc
+operator|.
+name|getProjectState
+argument_list|()
 operator|.
 name|getProject
 argument_list|()
@@ -899,7 +902,10 @@ throw|throw
 operator|new
 name|ResourceNotFoundException
 argument_list|(
-name|ctl
+name|rsrc
+operator|.
+name|getProjectState
+argument_list|()
 operator|.
 name|getProject
 argument_list|()
@@ -1038,7 +1044,12 @@ name|projectDefault
 argument_list|(
 name|resource
 operator|.
-name|getControl
+name|getProjectState
+argument_list|()
+argument_list|,
+name|resource
+operator|.
+name|getUser
 argument_list|()
 argument_list|)
 argument_list|,

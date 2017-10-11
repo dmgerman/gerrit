@@ -66,6 +66,20 @@ name|project
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|CurrentUser
+import|;
+end_import
+
 begin_class
 DECL|class|RefResource
 specifier|public
@@ -75,17 +89,22 @@ name|RefResource
 extends|extends
 name|ProjectResource
 block|{
-DECL|method|RefResource (ProjectControl control)
+DECL|method|RefResource (ProjectState projectState, CurrentUser user)
 specifier|public
 name|RefResource
 parameter_list|(
-name|ProjectControl
-name|control
+name|ProjectState
+name|projectState
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|control
+name|projectState
+argument_list|,
+name|user
 argument_list|)
 expr_stmt|;
 block|}

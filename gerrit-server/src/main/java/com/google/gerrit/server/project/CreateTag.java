@@ -690,6 +690,14 @@ specifier|final
 name|WebLinks
 name|links
 decl_stmt|;
+DECL|field|projectControlFactory
+specifier|private
+specifier|final
+name|ProjectControl
+operator|.
+name|GenericFactory
+name|projectControlFactory
+decl_stmt|;
 DECL|field|ref
 specifier|private
 name|String
@@ -697,7 +705,7 @@ name|ref
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateTag ( PermissionBackend permissionBackend, Provider<IdentifiedUser> identifiedUser, GitRepositoryManager repoManager, TagCache tagCache, GitReferenceUpdated referenceUpdated, WebLinks webLinks, @Assisted String ref)
+DECL|method|CreateTag ( PermissionBackend permissionBackend, Provider<IdentifiedUser> identifiedUser, GitRepositoryManager repoManager, TagCache tagCache, GitReferenceUpdated referenceUpdated, WebLinks webLinks, ProjectControl.GenericFactory projectControlFactory, @Assisted String ref)
 name|CreateTag
 parameter_list|(
 name|PermissionBackend
@@ -720,6 +728,11 @@ name|referenceUpdated
 parameter_list|,
 name|WebLinks
 name|webLinks
+parameter_list|,
+name|ProjectControl
+operator|.
+name|GenericFactory
+name|projectControlFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -765,6 +778,12 @@ name|webLinks
 expr_stmt|;
 name|this
 operator|.
+name|projectControlFactory
+operator|=
+name|projectControlFactory
+expr_stmt|;
+name|this
+operator|.
 name|ref
 operator|=
 name|ref
@@ -789,6 +808,8 @@ throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
+throws|,
+name|NoSuchProjectException
 block|{
 if|if
 condition|(
@@ -858,13 +879,24 @@ argument_list|(
 name|ref
 argument_list|)
 expr_stmt|;
+comment|// TODO(hiesel): Remove dependency on RefControl
 name|RefControl
 name|refControl
 init|=
+name|projectControlFactory
+operator|.
+name|controlFor
+argument_list|(
 name|resource
 operator|.
-name|getControl
+name|getNameKey
 argument_list|()
+argument_list|,
+name|resource
+operator|.
+name|getUser
+argument_list|()
+argument_list|)
 operator|.
 name|controlForRef
 argument_list|(

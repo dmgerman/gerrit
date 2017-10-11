@@ -1085,13 +1085,11 @@ specifier|final
 name|GroupsCollection
 name|groupsCollection
 decl_stmt|;
-DECL|field|groupMembersFactory
+DECL|field|groupMembers
 specifier|private
 specifier|final
 name|GroupMembers
-operator|.
-name|Factory
-name|groupMembersFactory
+name|groupMembers
 decl_stmt|;
 DECL|field|accountLoaderFactory
 specifier|private
@@ -1181,7 +1179,7 @@ name|validator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewers ( AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, PermissionBackend permissionBackend, GroupsCollection groupsCollection, GroupMembers.Factory groupMembersFactory, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RetryHelper retryHelper, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ReviewerJson json, NotesMigration migration, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, PostReviewersOp.Factory postReviewersOpFactory, OutgoingEmailValidator validator)
+DECL|method|PostReviewers ( AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, PermissionBackend permissionBackend, GroupsCollection groupsCollection, GroupMembers groupMembers, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RetryHelper retryHelper, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ReviewerJson json, NotesMigration migration, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, PostReviewersOp.Factory postReviewersOpFactory, OutgoingEmailValidator validator)
 name|PostReviewers
 parameter_list|(
 name|AccountsCollection
@@ -1199,9 +1197,7 @@ name|GroupsCollection
 name|groupsCollection
 parameter_list|,
 name|GroupMembers
-operator|.
-name|Factory
-name|groupMembersFactory
+name|groupMembers
 parameter_list|,
 name|AccountLoader
 operator|.
@@ -1290,9 +1286,9 @@ name|groupsCollection
 expr_stmt|;
 name|this
 operator|.
-name|groupMembersFactory
+name|groupMembers
 operator|=
-name|groupMembersFactory
+name|groupMembers
 expr_stmt|;
 name|this
 operator|.
@@ -2187,15 +2183,7 @@ try|try
 block|{
 name|members
 operator|=
-name|groupMembersFactory
-operator|.
-name|create
-argument_list|(
-name|rsrc
-operator|.
-name|getUser
-argument_list|()
-argument_list|)
+name|groupMembers
 operator|.
 name|listAccounts
 argument_list|(

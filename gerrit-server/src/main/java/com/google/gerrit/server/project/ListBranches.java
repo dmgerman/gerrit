@@ -1272,14 +1272,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|ProjectControl
-name|pctl
-init|=
-name|rsrc
-operator|.
-name|getControl
-argument_list|()
-decl_stmt|;
 name|PermissionBackend
 operator|.
 name|ForProject
@@ -1504,7 +1496,15 @@ argument_list|)
 argument_list|,
 name|ref
 argument_list|,
-name|pctl
+name|rsrc
+operator|.
+name|getProjectState
+argument_list|()
+argument_list|,
+name|rsrc
+operator|.
+name|getUser
+argument_list|()
 argument_list|,
 name|targets
 argument_list|)
@@ -1646,7 +1646,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|createBranchInfo ( PermissionBackend.ForRef perm, Ref ref, ProjectControl pctl, Set<String> targets)
+DECL|method|createBranchInfo ( PermissionBackend.ForRef perm, Ref ref, ProjectState projectState, CurrentUser user, Set<String> targets)
 specifier|private
 name|BranchInfo
 name|createBranchInfo
@@ -1659,8 +1659,11 @@ parameter_list|,
 name|Ref
 name|ref
 parameter_list|,
-name|ProjectControl
-name|pctl
+name|ProjectState
+name|projectState
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|Set
 argument_list|<
@@ -1740,7 +1743,9 @@ init|=
 operator|new
 name|BranchResource
 argument_list|(
-name|pctl
+name|projectState
+argument_list|,
+name|user
 argument_list|,
 name|ref
 argument_list|)
@@ -1810,10 +1815,7 @@ name|webLinks
 operator|.
 name|getBranchLinks
 argument_list|(
-name|pctl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getName
 argument_list|()

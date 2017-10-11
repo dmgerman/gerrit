@@ -1463,14 +1463,11 @@ argument_list|(
 name|serverEnableSignedPush
 argument_list|,
 name|state
-operator|.
-name|controlFor
-argument_list|(
+argument_list|,
 name|user
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|config
 argument_list|,
