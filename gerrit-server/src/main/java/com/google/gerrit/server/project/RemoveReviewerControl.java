@@ -621,6 +621,7 @@ block|}
 block|}
 comment|// Users with the remove reviewer permission, the branch owner, project
 comment|// owner and site admin can remove anyone
+comment|// TODO(hiesel): Remove all Control usage
 name|ProjectControl
 name|ctl
 init|=

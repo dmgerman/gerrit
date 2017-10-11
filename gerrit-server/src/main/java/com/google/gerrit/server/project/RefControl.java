@@ -2871,6 +2871,15 @@ name|canForceUpdate
 argument_list|()
 return|;
 case|case
+name|SET_HEAD
+case|:
+return|return
+name|projectControl
+operator|.
+name|isOwner
+argument_list|()
+return|;
+case|case
 name|FORGE_AUTHOR
 case|:
 return|return

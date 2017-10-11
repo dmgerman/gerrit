@@ -1487,7 +1487,6 @@ return|;
 block|}
 comment|/** Is this user a project owner? */
 DECL|method|isOwner ()
-specifier|public
 name|boolean
 name|isOwner
 parameter_list|()
@@ -2871,6 +2870,22 @@ name|RUN_UPLOAD_PACK
 case|:
 return|return
 name|canRunUploadPack
+argument_list|()
+return|;
+case|case
+name|BAN_COMMIT
+case|:
+case|case
+name|READ_REFLOG
+case|:
+case|case
+name|READ_CONFIG
+case|:
+case|case
+name|WRITE_CONFIG
+case|:
+return|return
+name|isOwner
 argument_list|()
 return|;
 block|}

@@ -140,6 +140,22 @@ operator|,
 comment|/** Can run upload pack. */
 DECL|enumConstant|RUN_UPLOAD_PACK
 constructor|RUN_UPLOAD_PACK
+operator|,
+comment|/** Allow read access to refs/meta/config. */
+DECL|enumConstant|READ_CONFIG
+constructor|READ_CONFIG
+operator|,
+comment|/** Allow write access to refs/meta/config. */
+DECL|enumConstant|WRITE_CONFIG
+constructor|WRITE_CONFIG
+operator|,
+comment|/** Allow banning commits from Gerrit preventing pushes of these commits. */
+DECL|enumConstant|BAN_COMMIT
+constructor|BAN_COMMIT
+operator|,
+comment|/** Allow accessing the project's reflog. */
+DECL|enumConstant|READ_REFLOG
+constructor|READ_REFLOG
 empty_stmt|;
 DECL|field|name
 specifier|private
