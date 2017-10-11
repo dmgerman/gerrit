@@ -1139,6 +1139,17 @@ name|req
 operator|.
 name|getRequestURI
 argument_list|()
+operator|.
+name|substring
+argument_list|(
+name|req
+operator|.
+name|getContextPath
+argument_list|()
+operator|.
+name|length
+argument_list|()
+argument_list|)
 argument_list|,
 name|req
 argument_list|,
