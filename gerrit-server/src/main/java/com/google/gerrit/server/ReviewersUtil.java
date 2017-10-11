@@ -899,13 +899,11 @@ specifier|final
 name|GroupBackend
 name|groupBackend
 decl_stmt|;
-DECL|field|groupMembersFactory
+DECL|field|groupMembers
 specifier|private
 specifier|final
 name|GroupMembers
-operator|.
-name|Factory
-name|groupMembersFactory
+name|groupMembers
 decl_stmt|;
 DECL|field|currentUser
 specifier|private
@@ -930,7 +928,7 @@ name|metrics
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewersUtil ( AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder accountQueryBuilder, Provider<AccountQueryProcessor> queryProvider, GroupBackend groupBackend, GroupMembers.Factory groupMembersFactory, Provider<CurrentUser> currentUser, ReviewerRecommender reviewerRecommender, Metrics metrics)
+DECL|method|ReviewersUtil ( AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder accountQueryBuilder, Provider<AccountQueryProcessor> queryProvider, GroupBackend groupBackend, GroupMembers groupMembers, Provider<CurrentUser> currentUser, ReviewerRecommender reviewerRecommender, Metrics metrics)
 name|ReviewersUtil
 parameter_list|(
 name|AccountLoader
@@ -951,9 +949,7 @@ name|GroupBackend
 name|groupBackend
 parameter_list|,
 name|GroupMembers
-operator|.
-name|Factory
-name|groupMembersFactory
+name|groupMembers
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1029,9 +1025,9 @@ name|groupBackend
 expr_stmt|;
 name|this
 operator|.
-name|groupMembersFactory
+name|groupMembers
 operator|=
-name|groupMembersFactory
+name|groupMembers
 expr_stmt|;
 name|this
 operator|.
@@ -1935,15 +1931,7 @@ name|Account
 argument_list|>
 name|members
 init|=
-name|groupMembersFactory
-operator|.
-name|create
-argument_list|(
-name|currentUser
-operator|.
-name|get
-argument_list|()
-argument_list|)
+name|groupMembers
 operator|.
 name|listAccounts
 argument_list|(
