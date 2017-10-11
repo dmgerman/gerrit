@@ -328,7 +328,7 @@ name|set
 argument_list|(
 literal|"driver"
 argument_list|,
-literal|"com.mysql.cj.jdbc.Driver"
+literal|"com.mysql.jdbc.Driver"
 argument_list|)
 expr_stmt|;
 block|}
