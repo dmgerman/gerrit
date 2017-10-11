@@ -905,15 +905,6 @@ specifier|final
 name|GroupMembers
 name|groupMembers
 decl_stmt|;
-DECL|field|currentUser
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|currentUser
-decl_stmt|;
 DECL|field|reviewerRecommender
 specifier|private
 specifier|final
@@ -928,7 +919,7 @@ name|metrics
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewersUtil ( AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder accountQueryBuilder, Provider<AccountQueryProcessor> queryProvider, GroupBackend groupBackend, GroupMembers groupMembers, Provider<CurrentUser> currentUser, ReviewerRecommender reviewerRecommender, Metrics metrics)
+DECL|method|ReviewersUtil ( AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder accountQueryBuilder, Provider<AccountQueryProcessor> queryProvider, GroupBackend groupBackend, GroupMembers groupMembers, ReviewerRecommender reviewerRecommender, Metrics metrics)
 name|ReviewersUtil
 parameter_list|(
 name|AccountLoader
@@ -950,12 +941,6 @@ name|groupBackend
 parameter_list|,
 name|GroupMembers
 name|groupMembers
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|currentUser
 parameter_list|,
 name|ReviewerRecommender
 name|reviewerRecommender
@@ -1010,12 +995,6 @@ operator|.
 name|queryProvider
 operator|=
 name|queryProvider
-expr_stmt|;
-name|this
-operator|.
-name|currentUser
-operator|=
-name|currentUser
 expr_stmt|;
 name|this
 operator|.
@@ -2045,15 +2024,7 @@ block|}
 catch|catch
 parameter_list|(
 name|NoSuchGroupException
-name|e
-parameter_list|)
-block|{
-return|return
-name|result
-return|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|NoSuchProjectException
 name|e
 parameter_list|)
