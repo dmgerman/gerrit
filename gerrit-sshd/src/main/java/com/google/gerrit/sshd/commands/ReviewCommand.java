@@ -1010,22 +1010,6 @@ name|Option
 argument_list|(
 name|name
 operator|=
-literal|"--strict-labels"
-argument_list|,
-name|usage
-operator|=
-literal|"Strictly check if the labels specified can be applied to the given patch set(s)"
-argument_list|)
-DECL|field|strictLabels
-specifier|private
-name|boolean
-name|strictLabels
-decl_stmt|;
-annotation|@
-name|Option
-argument_list|(
-name|name
-operator|=
 literal|"--tag"
 argument_list|,
 name|aliases
@@ -1699,12 +1683,6 @@ operator|.
 name|DraftHandling
 operator|.
 name|PUBLISH
-expr_stmt|;
-name|review
-operator|.
-name|strictLabels
-operator|=
-name|strictLabels
 expr_stmt|;
 for|for
 control|(
