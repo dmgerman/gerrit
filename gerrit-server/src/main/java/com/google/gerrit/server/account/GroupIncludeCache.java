@@ -134,7 +134,7 @@ name|Id
 name|memberId
 parameter_list|)
 function_decl|;
-comment|/** @return groups directly a member of the passed group. */
+comment|/**    * Returns the subgroups of a group.    *    * @param group the UUID of the group    * @return the UUIDs of all direct subgroups    */
 DECL|method|subgroupsOf (AccountGroup.UUID group)
 name|Collection
 argument_list|<
@@ -150,7 +150,7 @@ name|UUID
 name|group
 parameter_list|)
 function_decl|;
-comment|/** @return any groups the passed group belongs to. */
+comment|/**    * Returns the parent groups of a subgroup.    *    * @param groupId the UUID of the subgroup    * @return the UUIDs of all direct parent groups    */
 DECL|method|parentGroupsOf (AccountGroup.UUID groupId)
 name|Collection
 argument_list|<
