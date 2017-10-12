@@ -344,6 +344,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -548,6 +558,13 @@ name|input
 operator|.
 name|stream
 argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|Objects
+operator|::
+name|nonNull
+argument_list|)
 operator|.
 name|map
 argument_list|(
