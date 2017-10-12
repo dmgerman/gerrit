@@ -722,6 +722,11 @@ operator|.
 name|create
 argument_list|(
 name|projectControl
+operator|.
+name|getProjectState
+argument_list|()
+argument_list|,
+name|currentUser
 argument_list|,
 name|repo
 argument_list|,
