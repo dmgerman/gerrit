@@ -555,7 +555,7 @@ specifier|final
 name|String
 name|PARENT_GROUPS_NAME
 init|=
-literal|"groups_byinclude"
+literal|"groups_bysubgroup"
 decl_stmt|;
 DECL|field|SUBGROUPS_NAME
 specifier|private
@@ -564,7 +564,7 @@ specifier|final
 name|String
 name|SUBGROUPS_NAME
 init|=
-literal|"groups_members"
+literal|"groups_subgroups"
 decl_stmt|;
 DECL|field|GROUPS_WITH_MEMBER_NAME
 specifier|private
