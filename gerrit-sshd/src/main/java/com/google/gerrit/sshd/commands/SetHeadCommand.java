@@ -94,7 +94,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectResource
 import|;
 end_import
 
@@ -110,7 +110,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectResource
+name|ProjectState
 import|;
 end_import
 
@@ -252,7 +252,7 @@ literal|"name of the project"
 argument_list|)
 DECL|field|project
 specifier|private
-name|ProjectControl
+name|ProjectState
 name|project
 decl_stmt|;
 annotation|@
@@ -336,14 +336,8 @@ operator|new
 name|ProjectResource
 argument_list|(
 name|project
-operator|.
-name|getProjectState
-argument_list|()
 argument_list|,
-name|project
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|)
 argument_list|,
 name|input

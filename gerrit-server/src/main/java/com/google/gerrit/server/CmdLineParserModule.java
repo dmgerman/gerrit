@@ -252,7 +252,7 @@ name|server
 operator|.
 name|args4j
 operator|.
-name|ProjectControlHandler
+name|ProjectHandler
 import|;
 end_import
 
@@ -300,7 +300,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -515,11 +515,11 @@ argument_list|)
 expr_stmt|;
 name|registerOptionHandler
 argument_list|(
-name|ProjectControl
+name|ProjectState
 operator|.
 name|class
 argument_list|,
-name|ProjectControlHandler
+name|ProjectHandler
 operator|.
 name|class
 argument_list|)

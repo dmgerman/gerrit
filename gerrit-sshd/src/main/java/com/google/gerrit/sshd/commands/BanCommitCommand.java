@@ -158,7 +158,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectResource
 import|;
 end_import
 
@@ -174,7 +174,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectResource
+name|ProjectState
 import|;
 end_import
 
@@ -344,10 +344,10 @@ name|usage
 operator|=
 literal|"name of the project for which the commit should be banned"
 argument_list|)
-DECL|field|projectControl
+DECL|field|projectState
 specifier|private
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 decl_stmt|;
 annotation|@
 name|Argument
@@ -443,15 +443,9 @@ argument_list|(
 operator|new
 name|ProjectResource
 argument_list|(
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 argument_list|,
-name|projectControl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|)
 argument_list|,
 name|input

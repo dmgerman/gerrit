@@ -721,10 +721,7 @@ name|factory
 operator|.
 name|create
 argument_list|(
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 argument_list|,
 name|currentUser
 argument_list|,
@@ -829,10 +826,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|projectControl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getName
 argument_list|()
@@ -947,10 +941,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|projectControl
-operator|.
-name|getProject
-argument_list|()
+name|projectState
 operator|.
 name|getName
 argument_list|()

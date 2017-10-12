@@ -788,6 +788,13 @@ specifier|private
 name|ExitCallback
 name|exit
 decl_stmt|;
+DECL|field|user
+annotation|@
+name|Inject
+specifier|protected
+name|CurrentUser
+name|user
+decl_stmt|;
 DECL|field|sshScope
 annotation|@
 name|Inject
@@ -826,13 +833,6 @@ name|Inject
 specifier|private
 name|PermissionBackend
 name|permissionBackend
-decl_stmt|;
-DECL|field|user
-annotation|@
-name|Inject
-specifier|private
-name|CurrentUser
-name|user
 decl_stmt|;
 DECL|field|context
 annotation|@
