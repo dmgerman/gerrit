@@ -422,22 +422,6 @@ name|common
 operator|.
 name|data
 operator|.
-name|Capable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
 name|LabelType
 import|;
 end_import
@@ -1517,12 +1501,8 @@ argument_list|(
 literal|"can upload"
 argument_list|)
 operator|.
-name|isEqualTo
-argument_list|(
-name|Capable
-operator|.
-name|OK
-argument_list|)
+name|isTrue
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|assertCreateChange (String ref, ProjectControl u)
@@ -1595,12 +1575,8 @@ argument_list|(
 literal|"cannot upload"
 argument_list|)
 operator|.
-name|isNotEqualTo
-argument_list|(
-name|Capable
-operator|.
-name|OK
-argument_list|)
+name|isFalse
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|assertCannotCreateChange (String ref, ProjectControl u)

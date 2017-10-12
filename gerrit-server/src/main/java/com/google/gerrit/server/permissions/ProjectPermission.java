@@ -156,6 +156,10 @@ operator|,
 comment|/** Allow accessing the project's reflog. */
 DECL|enumConstant|READ_REFLOG
 constructor|READ_REFLOG
+operator|,
+comment|/** Can push to at least one reference within the repository. */
+DECL|enumConstant|PUSH_AT_LEAST_ONE_REF
+constructor|PUSH_AT_LEAST_ONE_REF
 empty_stmt|;
 DECL|field|name
 specifier|private
