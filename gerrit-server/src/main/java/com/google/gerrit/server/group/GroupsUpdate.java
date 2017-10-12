@@ -1451,6 +1451,25 @@ name|getNameKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|AccountGroupMember
+name|newMember
+range|:
+name|newMembers
+control|)
+block|{
+name|groupIncludeCache
+operator|.
+name|evictGroupsWithMember
+argument_list|(
+name|newMember
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**    * Removes several members (accounts) from a group. Only accounts which currently are members of    * the group are removed.    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group    * @param accountIds a set of IDs of accounts to remove    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the group or one of the removed members couldn't be indexed    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|removeGroupMembers ( ReviewDb db, AccountGroup.UUID groupUuid, Set<Account.Id> accountIds)
@@ -1629,6 +1648,25 @@ name|getNameKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|AccountGroupMember
+name|member
+range|:
+name|membersToRemove
+control|)
+block|{
+name|groupIncludeCache
+operator|.
+name|evictGroupsWithMember
+argument_list|(
+name|member
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**    * Adds several groups as subgroups to a group. Only groups which currently aren't subgroups of    * the group are added.    *    *<p>The parent group must be an internal group whereas the subgroups can either be internal or    * external groups.    *    *<p><strong>Note</strong>: This method doesn't check whether the subgroups exist!    *    * @param db the {@code ReviewDb} instance to update    * @param parentGroupUuid the UUID of the parent group    * @param subgroupUuids a set of IDs of the groups to add as subgroups    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the parent group couldn't be indexed    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
 DECL|method|addSubgroups ( ReviewDb db, AccountGroup.UUID parentGroupUuid, Set<AccountGroup.UUID> subgroupUuids)
