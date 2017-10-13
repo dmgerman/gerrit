@@ -1486,7 +1486,7 @@ return|return;
 block|}
 name|Optional
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|conflictingGroup
 decl_stmt|;
@@ -1509,6 +1509,8 @@ name|getAll
 argument_list|(
 name|db
 argument_list|)
+comment|// TODO(aliceks): Filter the groups by name as early as possible and avoid loading
+comment|// them (if possible with NoteDb).
 operator|.
 name|filter
 argument_list|(
@@ -1542,7 +1544,7 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|AccountGroup
+name|InternalGroup
 name|group
 init|=
 name|conflictingGroup
@@ -1589,7 +1591,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|hasConfiguredName ( Map<String, AccountGroup.UUID> byLowerCaseConfiguredName, AccountGroup group)
+DECL|method|hasConfiguredName ( Map<String, AccountGroup.UUID> byLowerCaseConfiguredName, InternalGroup group)
 specifier|private
 specifier|static
 name|boolean
@@ -1605,7 +1607,7 @@ name|UUID
 argument_list|>
 name|byLowerCaseConfiguredName
 parameter_list|,
-name|AccountGroup
+name|InternalGroup
 name|group
 parameter_list|)
 block|{

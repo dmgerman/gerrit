@@ -1050,16 +1050,9 @@ block|{
 return|return
 name|groups
 operator|.
-name|getAll
+name|getAllUuids
 argument_list|(
 name|db
-argument_list|)
-operator|.
-name|map
-argument_list|(
-name|AccountGroup
-operator|::
-name|getGroupUUID
 argument_list|)
 operator|.
 name|collect

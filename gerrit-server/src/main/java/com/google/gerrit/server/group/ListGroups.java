@@ -180,22 +180,6 @@ name|common
 operator|.
 name|data
 operator|.
-name|GroupDescriptions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
 name|GroupReference
 import|;
 end_import
@@ -1770,6 +1754,8 @@ name|existingGroups
 init|=
 name|getAllExistingGroups
 argument_list|()
+comment|// TODO(aliceks): Filter groups by UUID/name before loading them (if possible with
+comment|// NoteDb).
 operator|.
 name|filter
 argument_list|(
@@ -1962,9 +1948,9 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|GroupDescriptions
+name|InternalGroupDescription
 operator|::
-name|forAccountGroup
+operator|new
 argument_list|)
 return|;
 block|}
@@ -2274,6 +2260,8 @@ argument_list|()
 decl_stmt|;
 name|Stream
 argument_list|<
+name|?
+extends|extends
 name|GroupDescription
 operator|.
 name|Internal
@@ -2292,10 +2280,12 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|GroupDescriptions
+name|InternalGroupDescription
 operator|::
-name|forAccountGroup
+operator|new
 argument_list|)
+comment|// TODO(aliceks): Filter groups by UUID/name before loading them (if possible with
+comment|// NoteDb).
 operator|.
 name|filter
 argument_list|(

@@ -200,6 +200,22 @@ name|server
 operator|.
 name|group
 operator|.
+name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
 name|InternalGroupDescription
 import|;
 end_import
@@ -517,6 +533,7 @@ name|getAll
 argument_list|(
 name|db
 argument_list|)
+comment|// TODO(aliceks): Filter the groups by name before loading them (if possible with NoteDb).
 operator|.
 name|filter
 argument_list|(
@@ -528,6 +545,13 @@ name|group
 argument_list|,
 name|name
 argument_list|)
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|InternalGroupDescription
+operator|::
+operator|new
 argument_list|)
 operator|.
 name|filter
@@ -565,13 +589,13 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|startsWithIgnoreCase (AccountGroup group, String name)
+DECL|method|startsWithIgnoreCase (InternalGroup group, String name)
 specifier|private
 specifier|static
 name|boolean
 name|startsWithIgnoreCase
 parameter_list|(
-name|AccountGroup
+name|InternalGroup
 name|group
 parameter_list|,
 name|String
@@ -601,12 +625,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|isVisible (AccountGroup group)
+DECL|method|isVisible (GroupDescription.Internal group)
 specifier|private
 name|boolean
 name|isVisible
 parameter_list|(
-name|AccountGroup
+name|GroupDescription
+operator|.
+name|Internal
 name|group
 parameter_list|)
 block|{

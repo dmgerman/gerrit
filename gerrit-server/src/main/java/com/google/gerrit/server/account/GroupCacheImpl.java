@@ -1033,13 +1033,15 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onCreateGroup (AccountGroup group)
+DECL|method|onCreateGroup (AccountGroup.UUID groupUuid)
 specifier|public
 name|void
 name|onCreateGroup
 parameter_list|(
 name|AccountGroup
-name|group
+operator|.
+name|UUID
+name|groupUuid
 parameter_list|)
 throws|throws
 name|IOException
@@ -1051,10 +1053,7 @@ argument_list|()
 operator|.
 name|index
 argument_list|(
-name|group
-operator|.
-name|getGroupUUID
-argument_list|()
+name|groupUuid
 argument_list|)
 expr_stmt|;
 block|}

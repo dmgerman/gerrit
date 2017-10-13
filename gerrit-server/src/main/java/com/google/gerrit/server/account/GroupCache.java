@@ -171,12 +171,14 @@ name|groupUuid
 parameter_list|)
 function_decl|;
 comment|/** Notify the cache that a new group was constructed. */
-DECL|method|onCreateGroup (AccountGroup group)
+DECL|method|onCreateGroup (AccountGroup.UUID groupUuid)
 name|void
 name|onCreateGroup
 parameter_list|(
 name|AccountGroup
-name|group
+operator|.
+name|UUID
+name|groupUuid
 parameter_list|)
 throws|throws
 name|IOException
