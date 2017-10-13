@@ -152,22 +152,6 @@ name|common
 operator|.
 name|data
 operator|.
-name|Capable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
 name|Permission
 import|;
 end_import
@@ -622,18 +606,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Singleton
 import|;
 end_import
@@ -838,7 +810,6 @@ end_comment
 
 begin_class
 DECL|class|ProjectControl
-specifier|public
 class|class
 name|ProjectControl
 block|{
@@ -859,7 +830,6 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|class|GenericFactory
-specifier|public
 specifier|static
 class|class
 name|GenericFactory
@@ -885,7 +855,6 @@ name|pc
 expr_stmt|;
 block|}
 DECL|method|controlFor (Project.NameKey nameKey, CurrentUser user)
-specifier|public
 name|ProjectControl
 name|controlFor
 parameter_list|(
@@ -938,66 +907,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|class|Factory
-specifier|public
-specifier|static
-class|class
-name|Factory
-block|{
-DECL|field|userCache
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|PerRequestProjectControlCache
-argument_list|>
-name|userCache
-decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|Factory (Provider<PerRequestProjectControlCache> uc)
-name|Factory
-parameter_list|(
-name|Provider
-argument_list|<
-name|PerRequestProjectControlCache
-argument_list|>
-name|uc
-parameter_list|)
-block|{
-name|userCache
-operator|=
-name|uc
-expr_stmt|;
-block|}
-DECL|method|controlFor (Project.NameKey nameKey)
-specifier|public
-name|ProjectControl
-name|controlFor
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|nameKey
-parameter_list|)
-throws|throws
-name|NoSuchProjectException
-block|{
-return|return
-name|userCache
-operator|.
-name|get
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|nameKey
-argument_list|)
-return|;
-block|}
-block|}
 DECL|interface|AssistedFactory
-specifier|public
 interface|interface
 name|AssistedFactory
 block|{
@@ -1250,7 +1160,6 @@ name|ps
 expr_stmt|;
 block|}
 DECL|method|forUser (CurrentUser who)
-specifier|public
 name|ProjectControl
 name|forUser
 parameter_list|(
@@ -1280,7 +1189,6 @@ name|r
 return|;
 block|}
 DECL|method|controlFor (ReviewDb db, Change change)
-specifier|public
 name|ChangeControl
 name|controlFor
 parameter_list|(
@@ -1321,7 +1229,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|controlFor (ChangeNotes notes)
-specifier|public
 name|ChangeControl
 name|controlFor
 parameter_list|(
@@ -1350,7 +1257,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|controlForRef (Branch.NameKey ref)
-specifier|public
 name|RefControl
 name|controlForRef
 parameter_list|(
@@ -1371,7 +1277,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|controlForRef (String refName)
-specifier|public
 name|RefControl
 name|controlForRef
 parameter_list|(
@@ -1453,7 +1358,6 @@ name|ctl
 return|;
 block|}
 DECL|method|getUser ()
-specifier|public
 name|CurrentUser
 name|getUser
 parameter_list|()
@@ -1463,7 +1367,6 @@ name|user
 return|;
 block|}
 DECL|method|getProjectState ()
-specifier|public
 name|ProjectState
 name|getProjectState
 parameter_list|()
@@ -1473,7 +1376,6 @@ name|state
 return|;
 block|}
 DECL|method|getProject ()
-specifier|public
 name|Project
 name|getProject
 parameter_list|()
@@ -1516,53 +1418,27 @@ return|;
 block|}
 comment|/**    * @return {@code Capable.OK} if the user can upload to at least one reference. Does not check    *     Contributor Agreements.    */
 DECL|method|canPushToAtLeastOneRef ()
-specifier|public
-name|Capable
+name|boolean
 name|canPushToAtLeastOneRef
 parameter_list|()
 block|{
-if|if
-condition|(
-operator|!
+return|return
 name|canPerformOnAnyRef
 argument_list|(
 name|Permission
 operator|.
 name|PUSH
 argument_list|)
-operator|&&
-operator|!
+operator|||
 name|canPerformOnAnyRef
 argument_list|(
 name|Permission
 operator|.
 name|CREATE_TAG
 argument_list|)
-operator|&&
-operator|!
+operator|||
 name|isOwner
 argument_list|()
-condition|)
-block|{
-return|return
-operator|new
-name|Capable
-argument_list|(
-literal|"Upload denied for project '"
-operator|+
-name|state
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"'"
-argument_list|)
-return|;
-block|}
-return|return
-name|Capable
-operator|.
-name|OK
 return|;
 block|}
 comment|/** Can the user run upload pack? */
@@ -2456,7 +2332,6 @@ return|;
 block|}
 block|}
 DECL|method|canRead ()
-specifier|public
 name|boolean
 name|canRead
 parameter_list|()
@@ -2870,6 +2745,13 @@ name|RUN_UPLOAD_PACK
 case|:
 return|return
 name|canRunUploadPack
+argument_list|()
+return|;
+case|case
+name|PUSH_AT_LEAST_ONE_REF
+case|:
+return|return
+name|canPushToAtLeastOneRef
 argument_list|()
 return|;
 case|case
