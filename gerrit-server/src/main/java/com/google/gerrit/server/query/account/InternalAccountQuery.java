@@ -720,7 +720,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"for accounts: "
+literal|" for accounts: "
 argument_list|)
 expr_stmt|;
 name|Joiner
