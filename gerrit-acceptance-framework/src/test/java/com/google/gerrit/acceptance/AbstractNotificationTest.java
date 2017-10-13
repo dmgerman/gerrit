@@ -178,7 +178,7 @@ name|common
 operator|.
 name|truth
 operator|.
-name|FailureStrategy
+name|FailureMetadata
 import|;
 end_import
 
@@ -193,20 +193,6 @@ operator|.
 name|truth
 operator|.
 name|Subject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|SubjectFactory
 import|;
 end_import
 
@@ -664,52 +650,6 @@ name|conf
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
-specifier|static
-specifier|final
-name|SubjectFactory
-argument_list|<
-name|FakeEmailSenderSubject
-argument_list|,
-name|FakeEmailSender
-argument_list|>
-DECL|field|FAKE_EMAIL_SENDER_SUBJECT_FACTORY
-name|FAKE_EMAIL_SENDER_SUBJECT_FACTORY
-init|=
-operator|new
-name|SubjectFactory
-argument_list|<
-name|FakeEmailSenderSubject
-argument_list|,
-name|FakeEmailSender
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|FakeEmailSenderSubject
-name|getSubject
-parameter_list|(
-name|FailureStrategy
-name|failureStrategy
-parameter_list|,
-name|FakeEmailSender
-name|target
-parameter_list|)
-block|{
-return|return
-operator|new
-name|FakeEmailSenderSubject
-argument_list|(
-name|failureStrategy
-argument_list|,
-name|target
-argument_list|)
-return|;
-block|}
-block|}
-decl_stmt|;
 DECL|method|assertThat (FakeEmailSender sender)
 specifier|protected
 specifier|static
@@ -723,7 +663,9 @@ block|{
 return|return
 name|assertAbout
 argument_list|(
-name|FAKE_EMAIL_SENDER_SUBJECT_FACTORY
+name|FakeEmailSenderSubject
+operator|::
+operator|new
 argument_list|)
 operator|.
 name|that
@@ -879,11 +821,11 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|FakeEmailSenderSubject (FailureStrategy failureStrategy, FakeEmailSender target)
+DECL|method|FakeEmailSenderSubject (FailureMetadata failureMetadata, FakeEmailSender target)
 name|FakeEmailSenderSubject
 parameter_list|(
-name|FailureStrategy
-name|failureStrategy
+name|FailureMetadata
+name|failureMetadata
 parameter_list|,
 name|FakeEmailSender
 name|target
@@ -891,7 +833,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|failureStrategy
+name|failureMetadata
 argument_list|,
 name|target
 argument_list|)

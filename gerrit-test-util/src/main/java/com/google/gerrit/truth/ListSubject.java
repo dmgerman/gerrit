@@ -106,7 +106,7 @@ name|common
 operator|.
 name|truth
 operator|.
-name|FailureStrategy
+name|FailureMetadata
 import|;
 end_import
 
@@ -135,20 +135,6 @@ operator|.
 name|truth
 operator|.
 name|Subject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|SubjectFactory
 import|;
 end_import
 
@@ -275,12 +261,12 @@ name|list
 argument_list|)
 return|;
 block|}
-DECL|method|ListSubject ( FailureStrategy failureStrategy, List<E> list, Function<E, S> elementAssertThatFunction)
+DECL|method|ListSubject ( FailureMetadata failureMetadata, List<E> list, Function<E, S> elementAssertThatFunction)
 specifier|private
 name|ListSubject
 parameter_list|(
-name|FailureStrategy
-name|failureStrategy
+name|FailureMetadata
+name|failureMetadata
 parameter_list|,
 name|List
 argument_list|<
@@ -299,7 +285,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|failureStrategy
+name|failureMetadata
 argument_list|,
 name|list
 argument_list|)
@@ -472,8 +458,10 @@ parameter_list|>
 parameter_list|,
 name|T
 parameter_list|>
-extends|extends
-name|SubjectFactory
+implements|implements
+name|Subject
+operator|.
+name|Factory
 argument_list|<
 name|IterableSubject
 argument_list|,
@@ -519,7 +507,7 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|getSubject (FailureStrategy failureStrategy, Iterable<?> objects)
+DECL|method|createSubject (FailureMetadata failureMetadata, Iterable<?> objects)
 specifier|public
 name|ListSubject
 argument_list|<
@@ -527,10 +515,10 @@ name|S
 argument_list|,
 name|T
 argument_list|>
-name|getSubject
+name|createSubject
 parameter_list|(
-name|FailureStrategy
-name|failureStrategy
+name|FailureMetadata
+name|failureMetadata
 parameter_list|,
 name|Iterable
 argument_list|<
@@ -546,7 +534,7 @@ operator|new
 name|ListSubject
 argument_list|<>
 argument_list|(
-name|failureStrategy
+name|failureMetadata
 argument_list|,
 operator|(
 name|List
