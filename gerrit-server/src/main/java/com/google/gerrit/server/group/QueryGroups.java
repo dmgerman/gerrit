@@ -689,6 +689,22 @@ literal|"missing query field"
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|queryProcessor
+operator|.
+name|isDisabled
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|MethodNotAllowedException
+argument_list|(
+literal|"query disabled"
+argument_list|)
+throw|;
+block|}
 name|GroupIndex
 name|searchIndex
 init|=
