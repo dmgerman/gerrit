@@ -577,6 +577,19 @@ argument_list|,
 literal|"5 years ago"
 argument_list|)
 expr_stmt|;
+name|assertFormat
+argument_list|(
+literal|2
+operator|*
+literal|365
+operator|-
+literal|10
+argument_list|,
+name|DAY_IN_MILLIS
+argument_list|,
+literal|"2 years ago"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
