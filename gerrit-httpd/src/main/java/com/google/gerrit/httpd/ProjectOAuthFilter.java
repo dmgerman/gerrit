@@ -66,6 +66,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
+name|ProjectBasicAuthFilter
+operator|.
+name|authenticationFailedMsg
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -1052,11 +1068,14 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Authentication failed for "
-operator|+
+name|authenticationFailedMsg
+argument_list|(
 name|authInfo
 operator|.
 name|username
+argument_list|,
+name|req
+argument_list|)
 operator|+
 literal|": account inactive or not provisioned in Gerrit"
 argument_list|)
@@ -1203,11 +1222,14 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Authentication failed for "
-operator|+
+name|authenticationFailedMsg
+argument_list|(
 name|authInfo
 operator|.
 name|username
+argument_list|,
+name|req
+argument_list|)
 argument_list|,
 name|e
 argument_list|)

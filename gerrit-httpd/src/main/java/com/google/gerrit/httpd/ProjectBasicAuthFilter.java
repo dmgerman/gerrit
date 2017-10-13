@@ -992,6 +992,8 @@ argument_list|(
 name|rsp
 argument_list|,
 name|username
+argument_list|,
+name|req
 argument_list|)
 return|;
 block|}
@@ -1068,9 +1070,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Authentication failed for "
-operator|+
+name|authenticationFailedMsg
+argument_list|(
 name|username
+argument_list|,
+name|req
+argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -1096,9 +1101,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Authentication failed for "
-operator|+
+name|authenticationFailedMsg
+argument_list|(
 name|username
+argument_list|,
+name|req
+argument_list|)
 operator|+
 literal|": "
 operator|+
@@ -1129,9 +1137,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Authentication failed for "
-operator|+
+name|authenticationFailedMsg
+argument_list|(
 name|username
+argument_list|,
+name|req
+argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -1172,7 +1183,7 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|failAuthentication (Response rsp, String username)
+DECL|method|failAuthentication (Response rsp, String username, HttpServletRequest req)
 specifier|private
 name|boolean
 name|failAuthentication
@@ -1182,6 +1193,9 @@ name|rsp
 parameter_list|,
 name|String
 name|username
+parameter_list|,
+name|HttpServletRequest
+name|req
 parameter_list|)
 throws|throws
 name|IOException
@@ -1190,7 +1204,14 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Authentication failed for {}: password does not match the one stored in Gerrit"
+name|authenticationFailedMsg
+argument_list|(
+name|username
+argument_list|,
+name|req
+argument_list|)
+operator|+
+literal|": password does not match the one stored in Gerrit"
 argument_list|,
 name|username
 argument_list|)
@@ -1204,6 +1225,34 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|false
+return|;
+block|}
+DECL|method|authenticationFailedMsg (String username, HttpServletRequest req)
+specifier|static
+name|String
+name|authenticationFailedMsg
+parameter_list|(
+name|String
+name|username
+parameter_list|,
+name|HttpServletRequest
+name|req
+parameter_list|)
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Authentication from %s failed for %s"
+argument_list|,
+name|req
+operator|.
+name|getRemoteAddr
+argument_list|()
+argument_list|,
+name|username
+argument_list|)
 return|;
 block|}
 DECL|method|setUserIdentified (Account.Id id)
