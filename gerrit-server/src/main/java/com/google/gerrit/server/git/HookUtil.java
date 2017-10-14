@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.receive
+DECL|package|com.google.gerrit.server.git
 package|package
 name|com
 operator|.
@@ -63,8 +63,6 @@ operator|.
 name|server
 operator|.
 name|git
-operator|.
-name|receive
 package|;
 end_package
 
@@ -145,16 +143,18 @@ import|;
 end_import
 
 begin_comment
-comment|/** Static utilities for writing {@link ReceiveCommits}-related hooks. */
+comment|/** Static utilities for writing git protocol hooks. */
 end_comment
 
 begin_class
 DECL|class|HookUtil
+specifier|public
 class|class
 name|HookUtil
 block|{
 comment|/**    * Scan and advertise all refs in the repo if refs have not already been advertised; otherwise,    * just return the advertised map.    *    * @param rp receive-pack handler.    * @return map of refs that were advertised.    * @throws ServiceMayNotContinueException if a problem occurred.    */
 DECL|method|ensureAllRefsAdvertised (BaseReceivePack rp)
+specifier|public
 specifier|static
 name|Map
 argument_list|<
