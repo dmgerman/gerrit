@@ -1468,6 +1468,15 @@ name|System
 operator|.
 name|err
 operator|.
+name|println
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
 name|flush
 argument_list|()
 expr_stmt|;
