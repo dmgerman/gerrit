@@ -708,10 +708,10 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Adds/Creates the specified group for the specified members (accounts).    *    * @param db the {@code ReviewDb} instance to update    * @param group the group to add    * @param memberIds the IDs of the accounts which should be members of the created group    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the cache entry of one of the new members couldn't be invalidated, or    *     the new group couldn't be indexed    */
+comment|/**    * Adds/Creates the specified group for the specified members (accounts).    *    * @param db the {@code ReviewDb} instance to update    * @param group the group to add    * @param memberIds the IDs of the accounts which should be members of the created group    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the cache entry of one of the new members couldn't be invalidated, or    *     the new group couldn't be indexed    * @return the created group    */
 DECL|method|addGroup (ReviewDb db, AccountGroup group, Set<Account.Id> memberIds)
 specifier|public
-name|void
+name|InternalGroup
 name|addGroup
 parameter_list|(
 name|ReviewDb
@@ -759,6 +759,26 @@ name|getGroupUUID
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+name|InternalGroup
+operator|.
+name|create
+argument_list|(
+name|group
+argument_list|,
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
+name|memberIds
+argument_list|)
+argument_list|,
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
+argument_list|)
+return|;
 block|}
 comment|/**    * Adds the specified group.    *    *<p><strong>Note</strong>: This method doesn't update the index! It just adds the group to the    * database. Use this method with care.    *    * @param db the {@code ReviewDb} instance to update    * @param group the group to add    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    */
 DECL|method|addNewGroup (ReviewDb db, AccountGroup group)

@@ -162,22 +162,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|GroupDescriptions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|annotations
@@ -1329,9 +1313,8 @@ name|json
 operator|.
 name|format
 argument_list|(
-name|GroupDescriptions
-operator|.
-name|forAccountGroup
+operator|new
+name|InternalGroupDescription
 argument_list|(
 name|createGroup
 argument_list|(
@@ -1395,7 +1378,7 @@ return|;
 block|}
 DECL|method|createGroup (CreateGroupArgs createGroupArgs)
 specifier|private
-name|AccountGroup
+name|InternalGroup
 name|createGroup
 parameter_list|(
 name|CreateGroupArgs
@@ -1646,6 +1629,7 @@ expr_stmt|;
 block|}
 try|try
 block|{
+return|return
 name|groupsUpdateProvider
 operator|.
 name|get
@@ -1666,7 +1650,7 @@ operator|.
 name|initialMembers
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -1689,9 +1673,6 @@ literal|"' already exists"
 argument_list|)
 throw|;
 block|}
-return|return
-name|group
-return|;
 block|}
 block|}
 end_class
