@@ -1891,7 +1891,7 @@ name|ru
 operator|.
 name|setNewObjectId
 argument_list|(
-name|src
+name|newId
 argument_list|)
 expr_stmt|;
 name|ru
