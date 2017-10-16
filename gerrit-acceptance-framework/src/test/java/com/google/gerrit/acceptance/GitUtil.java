@@ -1393,7 +1393,15 @@ argument_list|(
 operator|new
 name|RefSpec
 argument_list|(
+operator|(
 name|source
+operator|!=
+literal|null
+condition|?
+name|source
+else|:
+literal|""
+operator|)
 operator|+
 literal|":"
 operator|+
