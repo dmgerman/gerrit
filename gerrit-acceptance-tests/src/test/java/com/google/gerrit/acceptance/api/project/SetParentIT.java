@@ -459,7 +459,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"cycle exists between"
+literal|"cannot set parent to self"
 argument_list|)
 expr_stmt|;
 name|gApi
