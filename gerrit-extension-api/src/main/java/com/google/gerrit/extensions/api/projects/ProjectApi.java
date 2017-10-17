@@ -670,6 +670,25 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/** Get the name of the project's parent. */
+DECL|method|parent ()
+name|String
+name|parent
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set the project's parent.    *    * @param parent the parent    */
+DECL|method|parent (String parent)
+name|void
+name|parent
+parameter_list|(
+name|String
+name|parent
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -1171,6 +1190,41 @@ name|head
 parameter_list|(
 name|String
 name|head
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|parent ()
+specifier|public
+name|String
+name|parent
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|parent (String parent)
+specifier|public
+name|void
+name|parent
+parameter_list|(
+name|String
+name|parent
 parameter_list|)
 throws|throws
 name|RestApiException

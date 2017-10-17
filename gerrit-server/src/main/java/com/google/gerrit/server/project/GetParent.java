@@ -142,6 +142,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|GetParent
+specifier|public
 class|class
 name|GetParent
 implements|implements
