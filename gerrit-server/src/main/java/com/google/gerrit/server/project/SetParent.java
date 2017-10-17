@@ -134,9 +134,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|common
 operator|.
-name|AuthException
+name|ParentInput
 import|;
 end_import
 
@@ -152,7 +152,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|DefaultInput
+name|AuthException
 import|;
 end_import
 
@@ -352,24 +352,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|SetParent
-operator|.
-name|Input
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -438,28 +420,9 @@ name|RestModifyView
 argument_list|<
 name|ProjectResource
 argument_list|,
-name|Input
+name|ParentInput
 argument_list|>
 block|{
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-DECL|field|parent
-annotation|@
-name|DefaultInput
-specifier|public
-name|String
-name|parent
-decl_stmt|;
-DECL|field|commitMessage
-specifier|public
-name|String
-name|commitMessage
-decl_stmt|;
-block|}
 DECL|field|cache
 specifier|private
 specifier|final
@@ -533,7 +496,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ProjectResource rsrc, Input input)
+DECL|method|apply (ProjectResource rsrc, ParentInput input)
 specifier|public
 name|String
 name|apply
@@ -541,7 +504,7 @@ parameter_list|(
 name|ProjectResource
 name|rsrc
 parameter_list|,
-name|Input
+name|ParentInput
 name|input
 parameter_list|)
 throws|throws
@@ -568,7 +531,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|apply (ProjectResource rsrc, Input input, boolean checkIfAdmin)
+DECL|method|apply (ProjectResource rsrc, ParentInput input, boolean checkIfAdmin)
 specifier|public
 name|String
 name|apply
@@ -576,7 +539,7 @@ parameter_list|(
 name|ProjectResource
 name|rsrc
 parameter_list|,
-name|Input
+name|ParentInput
 name|input
 parameter_list|,
 name|boolean
