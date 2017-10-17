@@ -92,6 +92,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|AccountGroup
 import|;
 end_import
@@ -103,6 +119,16 @@ operator|.
 name|sql
 operator|.
 name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -190,6 +216,26 @@ function_decl|;
 DECL|method|getCreatedOn ()
 name|Timestamp
 name|getCreatedOn
+parameter_list|()
+function_decl|;
+DECL|method|getMembers ()
+name|Set
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|getMembers
+parameter_list|()
+function_decl|;
+DECL|method|getSubgroups ()
+name|Set
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+name|getSubgroups
 parameter_list|()
 function_decl|;
 block|}
