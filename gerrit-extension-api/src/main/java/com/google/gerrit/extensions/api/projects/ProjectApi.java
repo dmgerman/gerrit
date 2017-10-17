@@ -651,6 +651,25 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/** Get the name of the branch to which {@code HEAD} points. */
+DECL|method|head ()
+name|String
+name|head
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set the project's {@code HEAD}.    *    * @param head the HEAD    */
+DECL|method|head (String head)
+name|void
+name|head
+parameter_list|(
+name|String
+name|head
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -1118,6 +1137,41 @@ specifier|public
 name|void
 name|removeDefaultDashboard
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|head ()
+specifier|public
+name|String
+name|head
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|head (String head)
+specifier|public
+name|void
+name|head
+parameter_list|(
+name|String
+name|head
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
