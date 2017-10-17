@@ -146,6 +146,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|schema
+operator|.
+name|ReviewDbFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gson
 operator|.
 name|JsonArray
@@ -494,9 +510,11 @@ name|statement
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|QueryShell ( final SchemaFactory<ReviewDb> dbFactory, @Assisted final InputStream in, @Assisted final OutputStream out)
+DECL|method|QueryShell ( @eviewDbFactory final SchemaFactory<ReviewDb> dbFactory, @Assisted final InputStream in, @Assisted final OutputStream out)
 name|QueryShell
 parameter_list|(
+annotation|@
+name|ReviewDbFactory
 specifier|final
 name|SchemaFactory
 argument_list|<
