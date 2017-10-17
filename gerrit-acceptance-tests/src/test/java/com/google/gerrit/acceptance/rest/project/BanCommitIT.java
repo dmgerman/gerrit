@@ -168,11 +168,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|project
+name|common
 operator|.
-name|BanCommit
+name|BanCommitInput
 import|;
 end_import
 
@@ -282,9 +282,7 @@ argument_list|()
 operator|+
 literal|"/ban/"
 argument_list|,
-name|BanCommit
-operator|.
-name|Input
+name|BanCommitInput
 operator|.
 name|fromCommits
 argument_list|(
@@ -436,9 +434,7 @@ argument_list|()
 operator|+
 literal|"/ban/"
 argument_list|,
-name|BanCommit
-operator|.
-name|Input
+name|BanCommitInput
 operator|.
 name|fromCommits
 argument_list|(
@@ -466,9 +462,7 @@ argument_list|()
 operator|+
 literal|"/ban/"
 argument_list|,
-name|BanCommit
-operator|.
-name|Input
+name|BanCommitInput
 operator|.
 name|fromCommits
 argument_list|(
@@ -560,9 +554,7 @@ argument_list|()
 operator|+
 literal|"/ban/"
 argument_list|,
-name|BanCommit
-operator|.
-name|Input
+name|BanCommitInput
 operator|.
 name|fromCommits
 argument_list|(
