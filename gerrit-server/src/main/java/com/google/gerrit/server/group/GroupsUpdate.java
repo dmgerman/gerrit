@@ -1888,13 +1888,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|groupIncludeCache
-operator|.
-name|evictSubgroupsOf
-argument_list|(
-name|parentGroupUuid
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**    * Removes several subgroups from a parent group. Only groups which currently are subgroups of the    * group are removed.    *    *<p>The parent group must be an internal group whereas the subgroups can either be internal or    * external groups.    *    * @param db the {@code ReviewDb} instance to update    * @param parentGroupUuid the UUID of the parent group    * @param subgroupUuids a set of IDs of the subgroups to remove from the parent group    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the parent group couldn't be indexed    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
 DECL|method|removeSubgroups ( ReviewDb db, AccountGroup.UUID parentGroupUuid, Set<AccountGroup.UUID> subgroupUuids)
@@ -2092,13 +2085,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|groupIncludeCache
-operator|.
-name|evictSubgroupsOf
-argument_list|(
-name|parentGroupUuid
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class

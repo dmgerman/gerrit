@@ -134,22 +134,6 @@ name|Id
 name|memberId
 parameter_list|)
 function_decl|;
-comment|/**    * Returns the subgroups of a group.    *    * @param group the UUID of the group    * @return the UUIDs of all direct subgroups    */
-DECL|method|subgroupsOf (AccountGroup.UUID group)
-name|Collection
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
-name|subgroupsOf
-parameter_list|(
-name|AccountGroup
-operator|.
-name|UUID
-name|group
-parameter_list|)
-function_decl|;
 comment|/**    * Returns the parent groups of a subgroup.    *    * @param groupId the UUID of the subgroup    * @return the UUIDs of all direct parent groups    */
 DECL|method|parentGroupsOf (AccountGroup.UUID groupId)
 name|Collection
@@ -185,16 +169,6 @@ name|Account
 operator|.
 name|Id
 name|memberId
-parameter_list|)
-function_decl|;
-DECL|method|evictSubgroupsOf (AccountGroup.UUID groupId)
-name|void
-name|evictSubgroupsOf
-parameter_list|(
-name|AccountGroup
-operator|.
-name|UUID
-name|groupId
 parameter_list|)
 function_decl|;
 DECL|method|evictParentGroupsOf (AccountGroup.UUID groupId)
