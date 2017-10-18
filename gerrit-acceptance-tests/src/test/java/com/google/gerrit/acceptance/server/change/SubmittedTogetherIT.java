@@ -963,10 +963,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|respectsWholeTopicAndAncestors ()
+DECL|method|respectWholeTopic ()
 specifier|public
 name|void
-name|respectsWholeTopicAndAncestors
+name|respectWholeTopic
 parameter_list|()
 throws|throws
 name|Exception
@@ -1277,7 +1277,6 @@ init|=
 name|getRemoteHead
 argument_list|()
 decl_stmt|;
-comment|// Create two independent commits and push.
 name|RevCommit
 name|c1_1
 init|=
@@ -1381,12 +1380,12 @@ name|add
 argument_list|(
 literal|"b.txt"
 argument_list|,
-literal|"2"
+literal|"3"
 argument_list|)
 operator|.
 name|message
 argument_list|(
-literal|"subject: 2"
+literal|"subject: 3"
 argument_list|)
 operator|.
 name|create
