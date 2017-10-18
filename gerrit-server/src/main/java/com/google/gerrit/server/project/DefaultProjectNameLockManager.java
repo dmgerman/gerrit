@@ -146,24 +146,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
-operator|.
-name|NameKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|AbstractModule
@@ -330,6 +312,8 @@ specifier|public
 name|Lock
 name|load
 parameter_list|(
+name|Project
+operator|.
 name|NameKey
 name|key
 parameter_list|)
@@ -347,11 +331,13 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|getLock (NameKey name)
+DECL|method|getLock (Project.NameKey name)
 specifier|public
 name|Lock
 name|getLock
 parameter_list|(
+name|Project
+operator|.
 name|NameKey
 name|name
 parameter_list|)
