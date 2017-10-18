@@ -963,10 +963,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|respectsWholeTopicAndAncestors ()
+DECL|method|respectWholeTopic ()
 specifier|public
 name|void
-name|respectsWholeTopicAndAncestors
+name|respectWholeTopic
 parameter_list|()
 throws|throws
 name|Exception
