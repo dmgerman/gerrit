@@ -4801,12 +4801,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|setRecursive
-argument_list|(
-literal|true
-argument_list|)
-operator|.
-name|apply
+name|getTransitiveMembers
 argument_list|(
 name|group
 argument_list|)

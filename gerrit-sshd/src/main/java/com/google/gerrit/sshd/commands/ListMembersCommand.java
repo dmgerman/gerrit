@@ -536,14 +536,11 @@ name|AccountInfo
 argument_list|>
 name|members
 init|=
-name|apply
+name|getDirectMembers
 argument_list|(
 name|group
 operator|.
 name|get
-argument_list|()
-operator|.
-name|getGroupUUID
 argument_list|()
 argument_list|)
 decl_stmt|;
