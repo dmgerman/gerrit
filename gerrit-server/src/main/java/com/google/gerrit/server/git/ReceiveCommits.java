@@ -2546,7 +2546,9 @@ block|,
 DECL|enumConstant|DELETE
 name|DELETE
 argument_list|(
-literal|"You need 'Push' rights with the 'Force Push'\nflag set to delete references."
+literal|"You need 'Delete Reference' rights or 'Push' rights with the \n"
+operator|+
+literal|"'Force Push' flag set to delete references."
 argument_list|)
 block|,
 DECL|enumConstant|DELETE_CHANGES
