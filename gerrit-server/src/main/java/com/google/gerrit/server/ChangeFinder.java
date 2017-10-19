@@ -795,7 +795,7 @@ operator|.
 name|noFields
 argument_list|()
 decl_stmt|;
-comment|//Try commit hash
+comment|// Try commit hash
 if|if
 condition|(
 name|id
