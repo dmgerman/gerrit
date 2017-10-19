@@ -91,6 +91,15 @@ specifier|final
 class|class
 name|RevId
 block|{
+DECL|field|ABBREV_LEN
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|ABBREV_LEN
+init|=
+literal|7
+decl_stmt|;
 DECL|field|LEN
 specifier|public
 specifier|static
