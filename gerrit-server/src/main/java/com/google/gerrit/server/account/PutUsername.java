@@ -92,9 +92,11 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|client
+name|api
 operator|.
-name|AccountFieldName
+name|accounts
+operator|.
+name|UsernameInput
 import|;
 end_import
 
@@ -108,9 +110,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
-name|UsernameInput
+name|AccountFieldName
 import|;
 end_import
 

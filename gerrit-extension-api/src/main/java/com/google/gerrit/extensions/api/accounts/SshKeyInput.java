@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.common
+DECL|package|com.google.gerrit.extensions.api.accounts
 package|package
 name|com
 operator|.
@@ -62,7 +62,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|api
+operator|.
+name|accounts
 package|;
 end_package
 
@@ -78,22 +80,20 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|DefaultInput
+name|RawInput
 import|;
 end_import
 
 begin_class
-DECL|class|UsernameInput
+DECL|class|SshKeyInput
 specifier|public
 class|class
-name|UsernameInput
+name|SshKeyInput
 block|{
-DECL|field|username
-annotation|@
-name|DefaultInput
+DECL|field|raw
 specifier|public
-name|String
-name|username
+name|RawInput
+name|raw
 decl_stmt|;
 block|}
 end_class

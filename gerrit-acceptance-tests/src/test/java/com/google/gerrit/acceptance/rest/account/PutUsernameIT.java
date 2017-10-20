@@ -122,7 +122,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|api
+operator|.
+name|accounts
 operator|.
 name|UsernameInput
 import|;
