@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|LabelFunction
+operator|.
+name|MAX_WITH_BLOCK
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -362,7 +380,10 @@ name|LABEL_VERIFIED
 argument_list|,
 name|KEY_FUNCTION
 argument_list|,
-literal|"MaxWithBlock"
+name|MAX_WITH_BLOCK
+operator|.
+name|getFunctionName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|cfg

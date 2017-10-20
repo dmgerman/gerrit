@@ -456,6 +456,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|LabelFunction
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|LabelType
 import|;
 end_import
@@ -10306,7 +10322,7 @@ name|config
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|configLabel (String label, String func)
+DECL|method|configLabel (String label, LabelFunction func)
 specifier|protected
 name|void
 name|configLabel
@@ -10314,7 +10330,7 @@ parameter_list|(
 name|String
 name|label
 parameter_list|,
-name|String
+name|LabelFunction
 name|func
 parameter_list|)
 throws|throws
@@ -10352,7 +10368,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|configLabel ( Project.NameKey project, String label, String func, LabelValue... value)
+DECL|method|configLabel ( Project.NameKey project, String label, LabelFunction func, LabelValue... value)
 specifier|protected
 name|void
 name|configLabel
@@ -10365,7 +10381,7 @@ parameter_list|,
 name|String
 name|label
 parameter_list|,
-name|String
+name|LabelFunction
 name|func
 parameter_list|,
 name|LabelValue
@@ -10400,7 +10416,7 @@ argument_list|)
 decl_stmt|;
 name|labelType
 operator|.
-name|setFunctionName
+name|setFunction
 argument_list|(
 name|func
 argument_list|)

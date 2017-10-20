@@ -1975,8 +1975,8 @@ name|getLabelId
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// Only keep those veto votes:
-comment|// 1- the label function is "MaxWithBlock" or "AnyWithBlock".
+comment|// Only keep veto votes, defined as votes where:
+comment|// 1- the label function allows minimum values to block submission.
 comment|// 2- the vote holds the minimum value.
 if|if
 condition|(
@@ -1987,27 +1987,13 @@ argument_list|(
 name|psa
 argument_list|)
 operator|&&
-operator|(
 name|type
 operator|.
-name|getFunctionName
+name|getFunction
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|"MaxWithBlock"
-argument_list|)
-operator|||
-name|type
-operator|.
-name|getFunctionName
+name|isBlock
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"AnyWithBlock"
-argument_list|)
-operator|)
 condition|)
 block|{
 continue|continue;

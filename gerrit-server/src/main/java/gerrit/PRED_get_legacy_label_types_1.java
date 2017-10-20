@@ -518,6 +518,9 @@ name|intern
 argument_list|(
 name|type
 operator|.
+name|getFunction
+argument_list|()
+operator|.
 name|getFunctionName
 argument_list|()
 argument_list|)
