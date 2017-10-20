@@ -1209,10 +1209,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|normalizeByPermission ()
+DECL|method|noNormalizeByPermission ()
 specifier|public
 name|void
-name|normalizeByPermission
+name|noNormalizeByPermission
 parameter_list|()
 throws|throws
 name|Exception
@@ -1298,18 +1298,13 @@ name|create
 argument_list|(
 name|list
 argument_list|(
+name|cr
+argument_list|,
 name|v
 argument_list|)
 argument_list|,
 name|list
-argument_list|(
-name|copy
-argument_list|(
-name|cr
-argument_list|,
-literal|1
-argument_list|)
-argument_list|)
+argument_list|()
 argument_list|,
 name|list
 argument_list|()
@@ -1462,10 +1457,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|emptyPermissionRangeOmitsResult ()
+DECL|method|emptyPermissionRangeKeepsResult ()
 specifier|public
 name|void
-name|emptyPermissionRangeOmitsResult
+name|emptyPermissionRangeKeepsResult
 parameter_list|()
 throws|throws
 name|Exception
@@ -1501,17 +1496,17 @@ operator|.
 name|create
 argument_list|(
 name|list
-argument_list|()
-argument_list|,
-name|list
-argument_list|()
-argument_list|,
-name|list
 argument_list|(
 name|cr
 argument_list|,
 name|v
 argument_list|)
+argument_list|,
+name|list
+argument_list|()
+argument_list|,
+name|list
+argument_list|()
 argument_list|)
 argument_list|,
 name|norm
@@ -1603,15 +1598,15 @@ argument_list|(
 name|list
 argument_list|(
 name|cr
+argument_list|,
+name|v
 argument_list|)
 argument_list|,
 name|list
 argument_list|()
 argument_list|,
 name|list
-argument_list|(
-name|v
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|,
 name|norm
