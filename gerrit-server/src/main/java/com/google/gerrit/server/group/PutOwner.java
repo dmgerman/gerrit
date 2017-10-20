@@ -122,9 +122,11 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|api
 operator|.
-name|GroupInfo
+name|groups
+operator|.
+name|OwnerInput
 import|;
 end_import
 
@@ -140,7 +142,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|OwnerInput
+name|GroupInfo
 import|;
 end_import
 
