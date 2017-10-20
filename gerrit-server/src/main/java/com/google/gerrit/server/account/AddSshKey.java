@@ -136,9 +136,11 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|api
 operator|.
-name|SshKeyInfo
+name|accounts
+operator|.
+name|SshKeyInput
 import|;
 end_import
 
@@ -154,7 +156,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|SshKeyInput
+name|SshKeyInfo
 import|;
 end_import
 
