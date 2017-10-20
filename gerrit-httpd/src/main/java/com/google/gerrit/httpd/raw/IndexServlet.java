@@ -314,7 +314,7 @@ name|byte
 index|[]
 name|indexSource
 decl_stmt|;
-DECL|method|IndexServlet (String canonicalURL, @Nullable String cdnPath)
+DECL|method|IndexServlet (String canonicalURL, @Nullable String cdnPath, @Nullable String faviconPath)
 name|IndexServlet
 parameter_list|(
 name|String
@@ -324,6 +324,11 @@ annotation|@
 name|Nullable
 name|String
 name|cdnPath
+parameter_list|,
+annotation|@
+name|Nullable
+name|String
+name|faviconPath
 parameter_list|)
 throws|throws
 name|URISyntaxException
@@ -389,6 +394,8 @@ argument_list|(
 name|canonicalURL
 argument_list|,
 name|cdnPath
+argument_list|,
+name|faviconPath
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -515,7 +522,7 @@ literal|""
 argument_list|)
 return|;
 block|}
-DECL|method|getTemplateData (String canonicalURL, String cdnPath)
+DECL|method|getTemplateData (String canonicalURL, String cdnPath, String faviconPath)
 specifier|static
 name|SoyMapData
 name|getTemplateData
@@ -525,6 +532,9 @@ name|canonicalURL
 parameter_list|,
 name|String
 name|cdnPath
+parameter_list|,
+name|String
+name|faviconPath
 parameter_list|)
 throws|throws
 name|URISyntaxException
@@ -596,6 +606,10 @@ argument_list|,
 literal|"staticResourcePath"
 argument_list|,
 name|sanitizedStaticPath
+argument_list|,
+literal|"faviconPath"
+argument_list|,
+name|faviconPath
 argument_list|)
 return|;
 block|}

@@ -139,7 +139,7 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|TestIndexServlet (String canonicalURL, String cdnPath)
+DECL|method|TestIndexServlet (String canonicalURL, String cdnPath, String faviconPath)
 name|TestIndexServlet
 parameter_list|(
 name|String
@@ -147,6 +147,9 @@ name|canonicalURL
 parameter_list|,
 name|String
 name|cdnPath
+parameter_list|,
+name|String
+name|faviconPath
 parameter_list|)
 throws|throws
 name|URISyntaxException
@@ -156,6 +159,8 @@ argument_list|(
 name|canonicalURL
 argument_list|,
 name|cdnPath
+argument_list|,
+name|faviconPath
 argument_list|)
 expr_stmt|;
 block|}
@@ -191,6 +196,8 @@ operator|.
 name|getTemplateData
 argument_list|(
 literal|"http://example.com/"
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)
@@ -252,6 +259,8 @@ argument_list|(
 literal|"http://example.com/gerrit/"
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -311,6 +320,8 @@ argument_list|(
 literal|"http://example.com/"
 argument_list|,
 literal|"http://my-cdn.com/foo/bar/"
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -370,6 +381,8 @@ argument_list|(
 literal|"http://example.com/gerrit"
 argument_list|,
 literal|"http://my-cdn.com/foo/bar/"
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -429,6 +442,11 @@ name|testCdnPath
 init|=
 literal|"bar-cdn"
 decl_stmt|;
+name|String
+name|testFaviconURL
+init|=
+literal|"zaz-url"
+decl_stmt|;
 name|TestIndexServlet
 name|servlet
 init|=
@@ -438,6 +456,8 @@ argument_list|(
 name|testCanonicalUrl
 argument_list|,
 name|testCdnPath
+argument_list|,
+name|testFaviconURL
 argument_list|)
 decl_stmt|;
 name|String
@@ -480,6 +500,22 @@ argument_list|(
 literal|"<link rel=\"preload\" href=\""
 operator|+
 name|testCdnPath
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|output
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"<link rel=\"icon\" type=\"image/x-icon\" href=\""
+operator|+
+name|testCanonicalUrl
+operator|+
+literal|"/"
+operator|+
+name|testFaviconURL
 argument_list|)
 expr_stmt|;
 block|}
