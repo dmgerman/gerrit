@@ -270,9 +270,11 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|api
 operator|.
-name|GpgKeyInfo
+name|accounts
+operator|.
+name|GpgKeysInput
 import|;
 end_import
 
@@ -288,7 +290,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|GpgKeysInput
+name|GpgKeyInfo
 import|;
 end_import
 
