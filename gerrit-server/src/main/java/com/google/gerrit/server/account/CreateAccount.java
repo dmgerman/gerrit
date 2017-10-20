@@ -488,7 +488,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|GroupsUpdate
+name|UserInitiated
 import|;
 end_import
 
@@ -504,7 +504,9 @@ name|server
 operator|.
 name|group
 operator|.
-name|UserInitiated
+name|db
+operator|.
+name|GroupsUpdate
 import|;
 end_import
 

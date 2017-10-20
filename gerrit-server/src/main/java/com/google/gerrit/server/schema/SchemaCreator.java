@@ -248,7 +248,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|GroupsUpdate
+name|InternalGroup
 import|;
 end_import
 
@@ -264,7 +264,9 @@ name|server
 operator|.
 name|group
 operator|.
-name|InternalGroup
+name|db
+operator|.
+name|GroupsUpdate
 import|;
 end_import
 

@@ -154,7 +154,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|Groups
+name|InternalGroup
 import|;
 end_import
 
@@ -170,7 +170,9 @@ name|server
 operator|.
 name|group
 operator|.
-name|InternalGroup
+name|db
+operator|.
+name|Groups
 import|;
 end_import
 
