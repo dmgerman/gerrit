@@ -92,6 +92,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ListChangesOption
+operator|.
+name|MESSAGES
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|group
@@ -513,6 +531,8 @@ init|=
 name|get
 argument_list|(
 name|changeId
+argument_list|,
+name|MESSAGES
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -669,6 +689,8 @@ name|a
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+name|MESSAGES
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -737,6 +759,8 @@ name|b
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+name|MESSAGES
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1456,6 +1480,8 @@ init|=
 name|get
 argument_list|(
 name|changeId
+argument_list|,
+name|MESSAGES
 argument_list|)
 decl_stmt|;
 name|assertThat

@@ -9810,7 +9810,7 @@ expr_stmt|;
 name|ChangeInfo
 name|info
 init|=
-name|get
+name|info
 argument_list|(
 name|changeId
 argument_list|)
@@ -9946,7 +9946,7 @@ expr_stmt|;
 name|ChangeInfo
 name|info
 init|=
-name|get
+name|info
 argument_list|(
 name|changeId
 argument_list|)
@@ -17973,6 +17973,8 @@ name|r
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+name|REVIEWED
 argument_list|)
 operator|.
 name|reviewed
@@ -18002,6 +18004,8 @@ name|r
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+name|REVIEWED
 argument_list|)
 operator|.
 name|reviewed

@@ -99,6 +99,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ListChangesOption
+operator|.
+name|MESSAGES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -518,6 +536,8 @@ init|=
 name|get
 argument_list|(
 name|changeId
+argument_list|,
+name|MESSAGES
 argument_list|)
 decl_stmt|;
 name|Iterable

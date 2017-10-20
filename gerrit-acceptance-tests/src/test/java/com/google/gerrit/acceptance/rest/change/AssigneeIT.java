@@ -108,6 +108,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ListChangesOption
+operator|.
+name|DETAILED_LABELS
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|group
@@ -1426,6 +1444,8 @@ name|r
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+name|DETAILED_LABELS
 argument_list|)
 operator|.
 name|reviewers
