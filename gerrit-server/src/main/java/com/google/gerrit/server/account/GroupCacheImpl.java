@@ -350,6 +350,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|BooleanSupplier
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -1081,7 +1093,7 @@ decl_stmt|;
 DECL|field|hasGroupIndex
 specifier|private
 specifier|final
-name|boolean
+name|BooleanSupplier
 name|hasGroupIndex
 decl_stmt|;
 DECL|field|groupQueryProvider
@@ -1129,10 +1141,10 @@ name|groups
 operator|=
 name|groups
 expr_stmt|;
-name|this
-operator|.
 name|hasGroupIndex
 operator|=
+parameter_list|()
+lambda|->
 name|groupIndexCollection
 operator|.
 name|getSearchIndex
@@ -1168,6 +1180,9 @@ block|{
 if|if
 condition|(
 name|hasGroupIndex
+operator|.
+name|getAsBoolean
+argument_list|()
 condition|)
 block|{
 return|return
