@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.common
+DECL|package|com.google.gerrit.extensions.api.projects
 package|package
 name|com
 operator|.
@@ -62,7 +62,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|api
+operator|.
+name|projects
 package|;
 end_package
 
@@ -83,17 +85,22 @@ import|;
 end_import
 
 begin_class
-DECL|class|OwnerInput
+DECL|class|ParentInput
 specifier|public
 class|class
-name|OwnerInput
+name|ParentInput
 block|{
-DECL|field|owner
+DECL|field|parent
 annotation|@
 name|DefaultInput
 specifier|public
 name|String
-name|owner
+name|parent
+decl_stmt|;
+DECL|field|commitMessage
+specifier|public
+name|String
+name|commitMessage
 decl_stmt|;
 block|}
 end_class
