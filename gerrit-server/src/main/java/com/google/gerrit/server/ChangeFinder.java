@@ -795,14 +795,20 @@ operator|.
 name|noFields
 argument_list|()
 decl_stmt|;
-comment|//Try commit hash
+comment|// Try commit hash
 if|if
 condition|(
 name|id
 operator|.
 name|matches
 argument_list|(
-literal|"^([0-9a-fA-F]{4,"
+literal|"^([0-9a-fA-F]{"
+operator|+
+name|RevId
+operator|.
+name|ABBREV_LEN
+operator|+
+literal|","
 operator|+
 name|RevId
 operator|.
