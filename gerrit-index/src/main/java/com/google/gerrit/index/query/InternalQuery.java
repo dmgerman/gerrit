@@ -67,6 +67,36 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toSet
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -91,6 +121,20 @@ operator|.
 name|collect
 operator|.
 name|Lists
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
+name|FieldDef
 import|;
 end_import
 
@@ -170,7 +214,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Arrays
 import|;
 end_import
 
@@ -180,7 +224,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|List
 import|;
 end_import
 
@@ -333,7 +377,13 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setRequestedFields (Set<String> fields)
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+comment|// Can't set @SafeVarargs on a non-final method.
+DECL|method|setRequestedFields (FieldDef<T, ?>.... fields)
 specifier|public
 name|InternalQuery
 argument_list|<
@@ -341,18 +391,50 @@ name|T
 argument_list|>
 name|setRequestedFields
 parameter_list|(
-name|Set
+name|FieldDef
 argument_list|<
-name|String
+name|T
+argument_list|,
+name|?
 argument_list|>
+modifier|...
 name|fields
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|fields
+operator|.
+name|length
+operator|>
+literal|0
+argument_list|,
+literal|"requested field list is empty"
+argument_list|)
+expr_stmt|;
 name|queryProcessor
 operator|.
 name|setRequestedFields
 argument_list|(
+name|Arrays
+operator|.
+name|stream
+argument_list|(
 name|fields
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|FieldDef
+operator|::
+name|getName
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toSet
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -374,9 +456,6 @@ name|setRequestedFields
 argument_list|(
 name|ImmutableSet
 operator|.
-expr|<
-name|String
-operator|>
 name|of
 argument_list|()
 argument_list|)
