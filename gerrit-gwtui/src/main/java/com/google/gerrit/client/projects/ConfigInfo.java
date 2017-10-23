@@ -409,6 +409,15 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|defaultSubmitType ()
+specifier|public
+specifier|final
+specifier|native
+name|SubmitTypeInfo
+name|defaultSubmitType
+parameter_list|()
+comment|/*-{ return this.default_submit_type; }-*/
+function_decl|;
 DECL|method|pluginConfig ()
 specifier|public
 specifier|final
@@ -1159,6 +1168,98 @@ block|}
 DECL|method|ConfigParameterValue ()
 specifier|protected
 name|ConfigParameterValue
+parameter_list|()
+block|{}
+block|}
+DECL|class|SubmitTypeInfo
+specifier|public
+specifier|static
+class|class
+name|SubmitTypeInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|value ()
+specifier|public
+specifier|final
+name|SubmitType
+name|value
+parameter_list|()
+block|{
+return|return
+name|SubmitType
+operator|.
+name|valueOf
+argument_list|(
+name|valueRaw
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|configuredValue ()
+specifier|public
+specifier|final
+name|SubmitType
+name|configuredValue
+parameter_list|()
+block|{
+return|return
+name|SubmitType
+operator|.
+name|valueOf
+argument_list|(
+name|configuredValueRaw
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|inheritedValue ()
+specifier|public
+specifier|final
+name|SubmitType
+name|inheritedValue
+parameter_list|()
+block|{
+return|return
+name|SubmitType
+operator|.
+name|valueOf
+argument_list|(
+name|inheritedValueRaw
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|valueRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|valueRaw
+parameter_list|()
+comment|/*-{ return this.value; }-*/
+function_decl|;
+DECL|method|configuredValueRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|configuredValueRaw
+parameter_list|()
+comment|/*-{ return this.configured_value; }-*/
+function_decl|;
+DECL|method|inheritedValueRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|inheritedValueRaw
+parameter_list|()
+comment|/*-{ return this.inherited_value; }-*/
+function_decl|;
+DECL|method|SubmitTypeInfo ()
+specifier|protected
+name|SubmitTypeInfo
 parameter_list|()
 block|{}
 block|}

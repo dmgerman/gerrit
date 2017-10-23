@@ -409,6 +409,11 @@ name|String
 name|headingProjectSubmitType
 parameter_list|()
 function_decl|;
+DECL|method|projectSubmitType_INHERIT ()
+name|String
+name|projectSubmitType_INHERIT
+parameter_list|()
+function_decl|;
 DECL|method|projectSubmitType_FAST_FORWARD_ONLY ()
 name|String
 name|projectSubmitType_FAST_FORWARD_ONLY

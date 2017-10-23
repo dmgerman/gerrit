@@ -217,6 +217,17 @@ name|type
 condition|)
 block|{
 case|case
+name|INHERIT
+case|:
+return|return
+name|AdminConstants
+operator|.
+name|I
+operator|.
+name|projectSubmitType_INHERIT
+argument_list|()
+return|;
+case|case
 name|FAST_FORWARD_ONLY
 case|:
 return|return

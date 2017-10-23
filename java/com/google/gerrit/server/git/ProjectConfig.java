@@ -101,6 +101,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+operator|.
+name|DEFAULT_SUBMIT_TYPE
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -481,22 +499,6 @@ operator|.
 name|client
 operator|.
 name|ProjectState
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|client
-operator|.
-name|SubmitType
 import|;
 end_import
 
@@ -1432,17 +1434,6 @@ name|String
 name|PLUGIN
 init|=
 literal|"plugin"
-decl_stmt|;
-DECL|field|DEFAULT_SUBMIT_ACTION
-specifier|private
-specifier|static
-specifier|final
-name|SubmitType
-name|DEFAULT_SUBMIT_ACTION
-init|=
-name|SubmitType
-operator|.
-name|MERGE_IF_NECESSARY
 decl_stmt|;
 DECL|field|DEFAULT_STATE_VALUE
 specifier|private
@@ -3282,7 +3273,7 @@ literal|null
 argument_list|,
 name|KEY_ACTION
 argument_list|,
-name|DEFAULT_SUBMIT_ACTION
+name|DEFAULT_SUBMIT_TYPE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6374,10 +6365,10 @@ name|KEY_ACTION
 argument_list|,
 name|p
 operator|.
-name|getSubmitType
+name|getConfiguredSubmitType
 argument_list|()
 argument_list|,
-name|DEFAULT_SUBMIT_ACTION
+name|DEFAULT_SUBMIT_TYPE
 argument_list|)
 expr_stmt|;
 name|set

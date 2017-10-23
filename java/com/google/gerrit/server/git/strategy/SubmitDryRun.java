@@ -1020,6 +1020,9 @@ argument_list|,
 name|toMergeCommit
 argument_list|)
 return|;
+case|case
+name|INHERIT
+case|:
 default|default:
 name|String
 name|errorMsg
