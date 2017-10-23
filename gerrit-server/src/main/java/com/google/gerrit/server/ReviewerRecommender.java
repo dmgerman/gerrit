@@ -1590,7 +1590,7 @@ name|of
 argument_list|(
 name|ChangeField
 operator|.
-name|REVIEWER
+name|APPROVAL
 operator|.
 name|getName
 argument_list|()
