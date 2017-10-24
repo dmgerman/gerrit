@@ -173,6 +173,18 @@ specifier|abstract
 class|class
 name|InternalGroupUpdate
 block|{
+DECL|method|getName ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|AccountGroup
+operator|.
+name|NameKey
+argument_list|>
+name|getName
+parameter_list|()
+function_decl|;
 comment|// TODO(aliceks): Mention empty string (not null!) -> unset value in Javadoc.
 DECL|method|getDescription ()
 specifier|public
@@ -296,6 +308,18 @@ specifier|static
 class|class
 name|Builder
 block|{
+DECL|method|setName (AccountGroup.NameKey name)
+specifier|public
+specifier|abstract
+name|Builder
+name|setName
+parameter_list|(
+name|AccountGroup
+operator|.
+name|NameKey
+name|name
+parameter_list|)
+function_decl|;
 DECL|method|setDescription (String description)
 specifier|public
 specifier|abstract
