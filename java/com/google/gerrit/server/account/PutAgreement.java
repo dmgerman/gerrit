@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableList
+name|ImmutableSet
 import|;
 end_import
 
@@ -752,7 +752,7 @@ name|addMembers
 argument_list|(
 name|uuid
 argument_list|,
-name|ImmutableList
+name|ImmutableSet
 operator|.
 name|of
 argument_list|(
