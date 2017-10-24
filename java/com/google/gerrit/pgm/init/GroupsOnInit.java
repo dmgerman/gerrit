@@ -724,6 +724,7 @@ name|OrmException
 throws|,
 name|NoSuchGroupException
 block|{
+comment|// TODO(aliceks): Add implementation for NoteDb.
 name|AccountGroupName
 name|accountGroupName
 init|=
