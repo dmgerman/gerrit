@@ -162,6 +162,20 @@ name|gerrit
 operator|.
 name|index
 operator|.
+name|FieldDef
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
 name|IndexConfig
 import|;
 end_import
@@ -459,16 +473,22 @@ name|this
 return|;
 block|}
 annotation|@
+name|SafeVarargs
+annotation|@
 name|Override
-DECL|method|setRequestedFields (Set<String> fields)
+DECL|method|setRequestedFields (FieldDef<AccountState, ?>.... fields)
 specifier|public
+specifier|final
 name|InternalAccountQuery
 name|setRequestedFields
 parameter_list|(
-name|Set
+name|FieldDef
 argument_list|<
-name|String
+name|AccountState
+argument_list|,
+name|?
 argument_list|>
+modifier|...
 name|fields
 parameter_list|)
 block|{
