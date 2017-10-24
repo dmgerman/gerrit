@@ -82,6 +82,11 @@ specifier|public
 name|boolean
 name|inheritParent
 decl_stmt|;
+DECL|field|baseChange
+specifier|public
+name|String
+name|baseChange
+decl_stmt|;
 DECL|field|merge
 specifier|public
 name|MergeInput

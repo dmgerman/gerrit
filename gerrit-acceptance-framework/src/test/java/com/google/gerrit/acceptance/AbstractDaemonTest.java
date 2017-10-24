@@ -4896,6 +4896,32 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|createBranch (String branch)
+specifier|protected
+name|BranchApi
+name|createBranch
+parameter_list|(
+name|String
+name|branch
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|createBranch
+argument_list|(
+operator|new
+name|Branch
+operator|.
+name|NameKey
+argument_list|(
+name|project
+argument_list|,
+name|branch
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|createBranch (Branch.NameKey branch)
 specifier|protected
 name|BranchApi
