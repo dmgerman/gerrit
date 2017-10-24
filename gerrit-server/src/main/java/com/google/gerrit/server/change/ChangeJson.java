@@ -2194,9 +2194,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// Submit rule options in this class should always use fastEvalLabels for
-comment|// efficiency reasons. Callers that care about submittability after taking
-comment|// vote squashing into account should be looking at the submit action.
 DECL|field|SUBMIT_RULE_OPTIONS_LENIENT
 specifier|public
 specifier|static
@@ -2210,11 +2207,6 @@ name|SUBMIT_RULE_OPTIONS_LENIENT
 operator|.
 name|toBuilder
 argument_list|()
-operator|.
-name|fastEvalLabels
-argument_list|(
-literal|true
-argument_list|)
 operator|.
 name|build
 argument_list|()
@@ -2232,11 +2224,6 @@ name|SUBMIT_RULE_OPTIONS_STRICT
 operator|.
 name|toBuilder
 argument_list|()
-operator|.
-name|fastEvalLabels
-argument_list|(
-literal|true
-argument_list|)
 operator|.
 name|build
 argument_list|()
