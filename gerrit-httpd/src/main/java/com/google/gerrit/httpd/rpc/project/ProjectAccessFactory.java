@@ -1061,6 +1061,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|// The following implementation must match the GetAccess REST API endpoint.
 name|List
 argument_list|<
 name|AccessSection

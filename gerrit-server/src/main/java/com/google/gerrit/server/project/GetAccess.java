@@ -1398,6 +1398,7 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+comment|// The following implementation must match the ProjectAccessFactory JSON RPC endpoint.
 name|info
 operator|.
 name|local
@@ -1438,9 +1439,11 @@ name|check
 argument_list|(
 name|perm
 argument_list|,
-name|ProjectPermission
+name|RefNames
 operator|.
-name|READ_CONFIG
+name|REFS_CONFIG
+argument_list|,
+name|READ
 argument_list|)
 decl_stmt|;
 name|boolean
