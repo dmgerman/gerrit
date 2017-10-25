@@ -7769,7 +7769,7 @@ name|Exception
 block|{
 name|assertThat
 argument_list|(
-name|get
+name|info
 argument_list|(
 name|changeId
 argument_list|)

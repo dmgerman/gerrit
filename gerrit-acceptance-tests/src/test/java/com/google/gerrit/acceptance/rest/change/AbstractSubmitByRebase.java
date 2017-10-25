@@ -3020,7 +3020,7 @@ expr_stmt|;
 name|ChangeInfo
 name|info2
 init|=
-name|get
+name|info
 argument_list|(
 name|change2
 operator|.

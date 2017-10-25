@@ -5323,32 +5323,6 @@ name|info
 argument_list|()
 return|;
 block|}
-DECL|method|get (String id)
-specifier|protected
-name|ChangeInfo
-name|get
-parameter_list|(
-name|String
-name|id
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-return|return
-name|gApi
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|id
-argument_list|(
-name|id
-argument_list|)
-operator|.
-name|get
-argument_list|()
-return|;
-block|}
 DECL|method|getEdit (String id)
 specifier|protected
 name|Optional

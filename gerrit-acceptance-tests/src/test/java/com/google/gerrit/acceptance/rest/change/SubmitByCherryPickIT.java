@@ -101,6 +101,42 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ListChangesOption
+operator|.
+name|CURRENT_REVISION
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ListChangesOption
+operator|.
+name|MESSAGES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -926,6 +962,8 @@ name|change
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+name|CURRENT_REVISION
 argument_list|)
 decl_stmt|;
 name|RevCommit
@@ -2614,6 +2652,8 @@ name|change2
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+name|MESSAGES
 argument_list|)
 decl_stmt|;
 name|assertThat

@@ -92,6 +92,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ListChangesOption
+operator|.
+name|DETAILED_LABELS
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|group
@@ -949,7 +967,7 @@ comment|// push a new revision with +1 vote
 name|ChangeInfo
 name|c
 init|=
-name|get
+name|info
 argument_list|(
 name|r
 operator|.
@@ -1629,6 +1647,8 @@ name|r
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+name|DETAILED_LABELS
 argument_list|)
 decl_stmt|;
 name|LabelInfo
@@ -1848,6 +1868,8 @@ name|r
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+name|DETAILED_LABELS
 argument_list|)
 expr_stmt|;
 name|q
