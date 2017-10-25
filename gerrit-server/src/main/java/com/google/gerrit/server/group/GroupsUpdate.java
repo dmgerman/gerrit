@@ -338,22 +338,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|GroupCache
 import|;
 end_import
@@ -561,12 +545,6 @@ specifier|final
 name|AuditService
 name|auditService
 decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 DECL|field|renameGroupOpFactory
 specifier|private
 specifier|final
@@ -591,7 +569,7 @@ name|committerIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsUpdate ( Groups groups, GroupCache groupCache, GroupIncludeCache groupIncludeCache, AuditService auditService, AccountCache accountCache, RenameGroupOp.Factory renameGroupOpFactory, @GerritPersonIdent PersonIdent serverIdent, @Assisted @Nullable IdentifiedUser currentUser)
+DECL|method|GroupsUpdate ( Groups groups, GroupCache groupCache, GroupIncludeCache groupIncludeCache, AuditService auditService, RenameGroupOp.Factory renameGroupOpFactory, @GerritPersonIdent PersonIdent serverIdent, @Assisted @Nullable IdentifiedUser currentUser)
 name|GroupsUpdate
 parameter_list|(
 name|Groups
@@ -605,9 +583,6 @@ name|groupIncludeCache
 parameter_list|,
 name|AuditService
 name|auditService
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|RenameGroupOp
 operator|.
@@ -650,12 +625,6 @@ operator|.
 name|auditService
 operator|=
 name|auditService
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -1490,9 +1459,9 @@ range|:
 name|newMembers
 control|)
 block|{
-name|accountCache
+name|groupIncludeCache
 operator|.
-name|evict
+name|evictGroupsWithMember
 argument_list|(
 name|newMember
 operator|.
@@ -1687,9 +1656,9 @@ range|:
 name|membersToRemove
 control|)
 block|{
-name|accountCache
+name|groupIncludeCache
 operator|.
-name|evict
+name|evictGroupsWithMember
 argument_list|(
 name|member
 operator|.

@@ -78,6 +78,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|AccountGroup
 import|;
 end_import
@@ -102,7 +118,23 @@ specifier|public
 interface|interface
 name|GroupIncludeCache
 block|{
-comment|/** @return groups directly a member of the passed group. */
+comment|/**    * Returns the UUIDs of all groups of which the specified account is a direct member.    *    * @param memberId the ID of the account    * @return the UUIDs of all groups having the account as member    */
+DECL|method|getGroupsWithMember (Account.Id memberId)
+name|Collection
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+name|getGroupsWithMember
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|memberId
+parameter_list|)
+function_decl|;
+comment|/**    * Returns the subgroups of a group.    *    * @param group the UUID of the group    * @return the UUIDs of all direct subgroups    */
 DECL|method|subgroupsOf (AccountGroup.UUID group)
 name|Collection
 argument_list|<
@@ -118,7 +150,7 @@ name|UUID
 name|group
 parameter_list|)
 function_decl|;
-comment|/** @return any groups the passed group belongs to. */
+comment|/**    * Returns the parent groups of a subgroup.    *    * @param groupId the UUID of the subgroup    * @return the UUIDs of all direct parent groups    */
 DECL|method|parentGroupsOf (AccountGroup.UUID groupId)
 name|Collection
 argument_list|<
@@ -144,6 +176,16 @@ name|UUID
 argument_list|>
 name|allExternalMembers
 parameter_list|()
+function_decl|;
+DECL|method|evictGroupsWithMember (Account.Id memberId)
+name|void
+name|evictGroupsWithMember
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|memberId
+parameter_list|)
 function_decl|;
 DECL|method|evictSubgroupsOf (AccountGroup.UUID groupId)
 name|void
