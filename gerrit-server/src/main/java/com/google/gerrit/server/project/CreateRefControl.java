@@ -362,18 +362,9 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateRefControl ( PermissionBackend permissionBackend, ProjectCache projectCache, Provider<CurrentUser> user)
+DECL|method|CreateRefControl (PermissionBackend permissionBackend, ProjectCache projectCache)
 name|CreateRefControl
 parameter_list|(
 name|PermissionBackend
@@ -381,12 +372,6 @@ name|permissionBackend
 parameter_list|,
 name|ProjectCache
 name|projectCache
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
 parameter_list|)
 block|{
 name|this
@@ -401,19 +386,21 @@ name|projectCache
 operator|=
 name|projectCache
 expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
-expr_stmt|;
 block|}
-comment|/**    * Checks whether the {@link CurrentUser} can create a new Git ref.    *    * @param repo repository on which user want to create    * @param branch the branch the new {@link RevObject} should be created on    * @param object the object the user will start the reference with    * @throws AuthException if creation is denied; the message explains the denial.    * @throws PermissionBackendException on failure of permission checks.    */
-DECL|method|checkCreateRef (Repository repo, Branch.NameKey branch, RevObject object)
+comment|/**    * Checks whether the {@link CurrentUser} can create a new Git ref.    *    * @param user the user performing the operation    * @param repo repository on which user want to create    * @param branch the branch the new {@link RevObject} should be created on    * @param object the object the user will start the reference with    * @throws AuthException if creation is denied; the message explains the denial.    * @throws PermissionBackendException on failure of permission checks.    */
+DECL|method|checkCreateRef ( Provider<? extends CurrentUser> user, Repository repo, Branch.NameKey branch, RevObject object)
 specifier|public
 name|void
 name|checkCreateRef
 parameter_list|(
+name|Provider
+argument_list|<
+name|?
+extends|extends
+name|CurrentUser
+argument_list|>
+name|user
+parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
@@ -523,6 +510,8 @@ argument_list|)
 expr_stmt|;
 name|checkCreateCommit
 argument_list|(
+name|user
+argument_list|,
 name|repo
 argument_list|,
 operator|(
@@ -677,6 +666,8 @@ condition|)
 block|{
 name|checkCreateCommit
 argument_list|(
+name|user
+argument_list|,
 name|repo
 argument_list|,
 operator|(
@@ -694,6 +685,8 @@ else|else
 block|{
 name|checkCreateRef
 argument_list|(
+name|user
+argument_list|,
 name|repo
 argument_list|,
 name|branch
@@ -790,11 +783,19 @@ block|}
 block|}
 block|}
 comment|/**    * Check if the user is allowed to create a new commit object if this creation would introduce a    * new commit to the repository.    */
-DECL|method|checkCreateCommit ( Repository repo, RevCommit commit, ProjectState projectState, PermissionBackend.ForRef forRef)
+DECL|method|checkCreateCommit ( Provider<? extends CurrentUser> user, Repository repo, RevCommit commit, ProjectState projectState, PermissionBackend.ForRef forRef)
 specifier|private
 name|void
 name|checkCreateCommit
 parameter_list|(
+name|Provider
+argument_list|<
+name|?
+extends|extends
+name|CurrentUser
+argument_list|>
+name|user
+parameter_list|,
 name|Repository
 name|repo
 parameter_list|,

@@ -2298,6 +2298,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|util
+operator|.
+name|Providers
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -7060,10 +7074,19 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+comment|// Must pass explicit user instead of injecting a provider into CreateRefControl, since
+comment|// Provider<CurrentUser> within ReceiveCommits will always return anonymous.
 name|createRefControl
 operator|.
 name|checkCreateRef
 argument_list|(
+name|Providers
+operator|.
+name|of
+argument_list|(
+name|user
+argument_list|)
+argument_list|,
 name|rp
 operator|.
 name|getRepository

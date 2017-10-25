@@ -955,6 +955,8 @@ name|createRefControl
 operator|.
 name|checkCreateRef
 argument_list|(
+name|identifiedUser
+argument_list|,
 name|repo
 argument_list|,
 name|name
