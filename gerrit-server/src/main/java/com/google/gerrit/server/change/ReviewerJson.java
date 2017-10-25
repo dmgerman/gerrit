@@ -996,11 +996,6 @@ argument_list|,
 name|cd
 argument_list|)
 operator|.
-name|setFastEvalLabels
-argument_list|(
-literal|true
-argument_list|)
-operator|.
 name|evaluate
 argument_list|()
 control|)

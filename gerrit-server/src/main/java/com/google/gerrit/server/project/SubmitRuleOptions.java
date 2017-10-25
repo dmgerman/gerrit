@@ -133,11 +133,6 @@ return|return
 name|builder
 argument_list|()
 operator|.
-name|fastEvalLabels
-argument_list|(
-literal|false
-argument_list|)
-operator|.
 name|allowClosed
 argument_list|(
 literal|false
@@ -154,13 +149,6 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|fastEvalLabels ()
-specifier|public
-specifier|abstract
-name|boolean
-name|fastEvalLabels
-parameter_list|()
-function_decl|;
 DECL|method|allowClosed ()
 specifier|public
 specifier|abstract
@@ -195,18 +183,6 @@ specifier|static
 class|class
 name|Builder
 block|{
-DECL|method|fastEvalLabels (boolean fastEvalLabels)
-specifier|public
-specifier|abstract
-name|SubmitRuleOptions
-operator|.
-name|Builder
-name|fastEvalLabels
-parameter_list|(
-name|boolean
-name|fastEvalLabels
-parameter_list|)
-function_decl|;
 DECL|method|allowClosed (boolean allowClosed)
 specifier|public
 specifier|abstract
@@ -262,12 +238,6 @@ block|{
 return|return
 name|builder
 argument_list|()
-operator|.
-name|fastEvalLabels
-argument_list|(
-name|fastEvalLabels
-argument_list|()
-argument_list|)
 operator|.
 name|allowClosed
 argument_list|(

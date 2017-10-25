@@ -90,22 +90,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|index
@@ -4391,8 +4375,6 @@ return|;
 block|}
 argument_list|)
 decl_stmt|;
-comment|// Submit rule options in this class should never use fastEvalLabels. This
-comment|// slows down indexing slightly but produces correct search results.
 DECL|field|SUBMIT_RULE_OPTIONS_LENIENT
 specifier|public
 specifier|static
@@ -4821,15 +4803,6 @@ name|ChangeData
 name|out
 parameter_list|)
 block|{
-name|checkArgument
-argument_list|(
-operator|!
-name|opts
-operator|.
-name|fastEvalLabels
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|SubmitRecord
@@ -4858,28 +4831,6 @@ operator|.
 name|setSubmitRecords
 argument_list|(
 name|opts
-argument_list|,
-name|records
-argument_list|)
-expr_stmt|;
-comment|// Cache the fastEvalLabels variant as well so it can be used by
-comment|// ChangeJson.
-name|out
-operator|.
-name|setSubmitRecords
-argument_list|(
-name|opts
-operator|.
-name|toBuilder
-argument_list|()
-operator|.
-name|fastEvalLabels
-argument_list|(
-literal|true
-argument_list|)
-operator|.
-name|build
-argument_list|()
 argument_list|,
 name|records
 argument_list|)

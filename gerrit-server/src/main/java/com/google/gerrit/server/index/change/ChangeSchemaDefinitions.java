@@ -502,6 +502,8 @@ argument_list|)
 decl_stmt|;
 comment|// Rename of star label 'mute' to 'reviewed' requires reindexing
 DECL|field|V48
+annotation|@
+name|Deprecated
 specifier|static
 specifier|final
 name|Schema
@@ -513,6 +515,20 @@ init|=
 name|schema
 argument_list|(
 name|V47
+argument_list|)
+decl_stmt|;
+DECL|field|V49
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|V49
+init|=
+name|schema
+argument_list|(
+name|V48
 argument_list|)
 decl_stmt|;
 DECL|field|NAME
