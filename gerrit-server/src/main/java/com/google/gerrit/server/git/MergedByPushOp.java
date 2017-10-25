@@ -940,14 +940,6 @@ return|return
 literal|true
 return|;
 block|}
-if|if
-condition|(
-name|status
-operator|.
-name|isOpen
-argument_list|()
-condition|)
-block|{
 name|change
 operator|.
 name|setCurrentPatchSet
@@ -984,7 +976,6 @@ operator|.
 name|setCurrentPatchSet
 argument_list|()
 expr_stmt|;
-block|}
 name|StringBuilder
 name|msgBuf
 init|=
