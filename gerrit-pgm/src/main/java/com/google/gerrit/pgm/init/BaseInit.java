@@ -504,6 +504,22 @@ name|server
 operator|.
 name|schema
 operator|.
+name|ReviewDbFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|schema
+operator|.
 name|SchemaUpdater
 import|;
 end_import
@@ -2450,7 +2466,7 @@ name|repositoryManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SiteRun ( ConsoleUI ui, SitePaths site, InitFlags flags, SchemaUpdater schemaUpdater, SchemaFactory<ReviewDb> schema, GitRepositoryManager repositoryManager)
+DECL|method|SiteRun ( ConsoleUI ui, SitePaths site, InitFlags flags, SchemaUpdater schemaUpdater, @ReviewDbFactory SchemaFactory<ReviewDb> schema, GitRepositoryManager repositoryManager)
 name|SiteRun
 parameter_list|(
 name|ConsoleUI
@@ -2465,6 +2481,8 @@ parameter_list|,
 name|SchemaUpdater
 name|schemaUpdater
 parameter_list|,
+annotation|@
+name|ReviewDbFactory
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
