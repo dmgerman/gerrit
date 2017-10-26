@@ -399,18 +399,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -1877,16 +1865,6 @@ operator|.
 name|junit
 operator|.
 name|After
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
 import|;
 end_import
 
@@ -6481,8 +6459,6 @@ operator|+
 literal|":userRef"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"user branch is visible although no READ permission is granted"

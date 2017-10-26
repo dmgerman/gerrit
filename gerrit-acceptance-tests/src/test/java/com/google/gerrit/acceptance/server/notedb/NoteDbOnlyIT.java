@@ -94,22 +94,6 @@ name|common
 operator|.
 name|truth
 operator|.
-name|Truth
-operator|.
-name|assert_
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|truth
-operator|.
 name|Truth8
 operator|.
 name|assertThat
@@ -1119,9 +1103,6 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
 name|fail
 argument_list|(
 literal|"expected ResourceConflictException"

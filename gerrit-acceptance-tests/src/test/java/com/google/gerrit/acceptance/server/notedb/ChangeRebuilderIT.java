@@ -94,22 +94,6 @@ name|common
 operator|.
 name|truth
 operator|.
-name|Truth
-operator|.
-name|assert_
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|truth
-operator|.
 name|TruthJUnit
 operator|.
 name|assume
@@ -253,18 +237,6 @@ operator|.
 name|Constants
 operator|.
 name|OBJ_BLOB
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -9039,9 +9011,6 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
 name|fail
 argument_list|(
 literal|"expected rebuild to fail"
