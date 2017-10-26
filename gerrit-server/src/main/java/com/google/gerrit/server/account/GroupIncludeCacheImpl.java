@@ -1412,8 +1412,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 try|try
 init|(
 name|ReviewDb
@@ -1462,7 +1460,6 @@ name|toImmutableSet
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 block|}
@@ -1745,8 +1742,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 try|try
 init|(
 name|ReviewDb
@@ -1795,7 +1790,6 @@ name|toImmutableList
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 block|}
