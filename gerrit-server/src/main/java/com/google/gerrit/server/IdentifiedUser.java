@@ -1123,6 +1123,13 @@ operator|.
 name|CASE_INSENSITIVE_ORDER
 argument_list|)
 decl_stmt|;
+DECL|field|realUser
+specifier|private
+specifier|final
+name|CurrentUser
+name|realUser
+decl_stmt|;
+comment|// Must be final since cached properties depend on it.
 DECL|field|remotePeerProvider
 specifier|private
 specifier|final
@@ -1162,11 +1169,6 @@ DECL|field|effectiveGroups
 specifier|private
 name|GroupMembership
 name|effectiveGroups
-decl_stmt|;
-DECL|field|realUser
-specifier|private
-name|CurrentUser
-name|realUser
 decl_stmt|;
 DECL|field|properties
 specifier|private
