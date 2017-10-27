@@ -263,6 +263,16 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|isImpersonating ()
+specifier|public
+name|boolean
+name|isImpersonating
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 comment|/**    * If the {@link #getRealUser()} has an account ID associated with it, call the given setter with    * that ID.    */
 DECL|method|updateRealAccountId (Consumer<Account.Id> setter)
 specifier|public
