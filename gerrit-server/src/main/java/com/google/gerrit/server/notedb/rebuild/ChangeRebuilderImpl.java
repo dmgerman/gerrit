@@ -1701,6 +1701,8 @@ argument_list|,
 name|manager
 argument_list|,
 name|checkReadOnly
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
@@ -1881,10 +1883,12 @@ argument_list|,
 name|manager
 argument_list|,
 literal|true
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|execute ( ReviewDb db, Change.Id changeId, NoteDbUpdateManager manager, boolean checkReadOnly)
+DECL|method|execute ( ReviewDb db, Change.Id changeId, NoteDbUpdateManager manager, boolean checkReadOnly, boolean executeManager)
 specifier|public
 name|Result
 name|execute
@@ -1902,6 +1906,9 @@ name|manager
 parameter_list|,
 name|boolean
 name|checkReadOnly
+parameter_list|,
+name|boolean
+name|executeManager
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2174,17 +2181,22 @@ name|CHANGES_READ_ONLY
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|executeManager
+condition|)
+block|{
 name|manager
 operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|r
 return|;
 block|}
 DECL|method|checkNoteDbState (Change c)
-specifier|private
 specifier|static
 name|Change
 name|checkNoteDbState
