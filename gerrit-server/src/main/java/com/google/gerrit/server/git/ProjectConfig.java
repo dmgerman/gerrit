@@ -1814,24 +1814,6 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|getExtensionPanelSections ()
-specifier|public
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|List
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
-name|getExtensionPanelSections
-parameter_list|()
-block|{
-return|return
-name|extensionPanelSections
-return|;
-block|}
 DECL|method|buildCommentLink (Config cfg, String name, boolean allowRaw)
 specifier|public
 specifier|static
@@ -2092,6 +2074,24 @@ parameter_list|()
 block|{
 return|return
 name|accountsSection
+return|;
+block|}
+DECL|method|getExtensionPanelSections ()
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|getExtensionPanelSections
+parameter_list|()
+block|{
+return|return
+name|extensionPanelSections
 return|;
 block|}
 DECL|method|getAccessSection (String name)

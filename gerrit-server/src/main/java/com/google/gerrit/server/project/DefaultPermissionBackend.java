@@ -971,10 +971,8 @@ if|if
 condition|(
 name|user
 operator|.
-name|getRealUser
+name|isImpersonating
 argument_list|()
-operator|!=
-name|user
 condition|)
 block|{
 name|r
