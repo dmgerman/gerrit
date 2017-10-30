@@ -663,6 +663,11 @@ condition|)
 block|{
 name|rw
 operator|.
+name|reset
+argument_list|()
+expr_stmt|;
+name|rw
+operator|.
 name|markStart
 argument_list|(
 name|revision
