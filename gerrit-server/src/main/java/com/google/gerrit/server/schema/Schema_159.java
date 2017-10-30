@@ -272,7 +272,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"UPDATE changes SET %s = 'Y' WHERE status = 'd' OR "
+literal|"UPDATE changes SET %s = 'Y', created_on = created_on WHERE status = 'd' OR "
 operator|+
 literal|"EXISTS (SELECT * FROM patch_sets WHERE "
 operator|+
@@ -287,7 +287,7 @@ name|e
 operator|.
 name|execute
 argument_list|(
-literal|"UPDATE changes SET status = 'n' WHERE status = 'd'"
+literal|"UPDATE changes SET status = 'n', created_on = created_on WHERE status = 'd'"
 argument_list|)
 expr_stmt|;
 block|}
