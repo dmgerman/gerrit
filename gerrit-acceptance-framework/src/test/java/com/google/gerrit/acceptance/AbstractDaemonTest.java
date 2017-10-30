@@ -10337,7 +10337,7 @@ name|cfg
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fail (@ullable String format, Object ... args)
+DECL|method|fail (@ullable String format, Object... args)
 specifier|protected
 name|void
 name|fail
