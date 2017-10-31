@@ -3213,8 +3213,6 @@ return|return
 name|subject
 return|;
 block|}
-else|else
-block|{
 return|return
 name|subject
 operator|.
@@ -3227,7 +3225,6 @@ argument_list|)
 operator|+
 literal|"..."
 return|;
-block|}
 block|}
 DECL|method|getEmailsByState (ReviewerStateInternal state)
 specifier|private
