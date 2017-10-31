@@ -308,6 +308,20 @@ begin_import
 import|import static
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
 name|util
 operator|.
 name|Comparator
@@ -2327,6 +2341,26 @@ operator|.
 name|io
 operator|.
 name|StringWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URLDecoder
 import|;
 end_import
 
@@ -8466,7 +8500,9 @@ name|String
 name|token
 parameter_list|)
 block|{
-comment|// git push does not allow spaces in refs.
+comment|// Many characters have special meaning in the context of a git ref.
+comment|//
+comment|// Clients can use underscores to represent spaces.
 name|message
 operator|=
 name|token
@@ -8478,6 +8514,47 @@ argument_list|,
 literal|" "
 argument_list|)
 expr_stmt|;
+try|try
+block|{
+comment|// Other characters can be represented using percent-encoding.
+name|message
+operator|=
+name|URLDecoder
+operator|.
+name|decode
+argument_list|(
+name|message
+argument_list|,
+name|UTF_8
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// Ignore decoding errors; leave message as percent-encoded.
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+comment|// This shouldn't happen; surely URLDecoder recognizes UTF-8.
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Option
