@@ -191,7 +191,7 @@ name|e
 operator|.
 name|execute
 argument_list|(
-literal|"UPDATE changes SET status = 'n' created_on = created_on WHERE status = 's'"
+literal|"UPDATE changes SET status = 'n', created_on = created_on WHERE status = 's'"
 argument_list|)
 expr_stmt|;
 block|}
