@@ -199,7 +199,7 @@ name|e
 operator|.
 name|execute
 argument_list|(
-literal|"UPDATE changes SET review_started = 'Y' WHERE work_in_progress = 'N'"
+literal|"UPDATE changes SET review_started = 'Y', created_on = created_on WHERE work_in_progress = 'N'"
 argument_list|)
 expr_stmt|;
 block|}
