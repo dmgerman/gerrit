@@ -1553,7 +1553,12 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 operator|+
-literal|" from branch 'master'"
+literal|" from branch 'master'\n  to "
+operator|+
+name|subHEAD
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// The next commit should generate only its commit message,
@@ -1592,7 +1597,12 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 operator|+
-literal|" from branch 'master'"
+literal|" from branch 'master'\n  to "
+operator|+
+name|subHEAD
+operator|.
+name|getName
+argument_list|()
 operator|+
 literal|"\n  - "
 operator|+
@@ -1698,7 +1708,12 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 operator|+
-literal|" from branch 'master'"
+literal|" from branch 'master'\n  to "
+operator|+
+name|subHEAD
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// The next commit should generate only its commit message,
@@ -1737,7 +1752,12 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 operator|+
-literal|" from branch 'master'"
+literal|" from branch 'master'\n  to "
+operator|+
+name|subHEAD
+operator|.
+name|getName
+argument_list|()
 operator|+
 literal|"\n  - "
 operator|+
@@ -3077,7 +3097,7 @@ literal|"submodule.maxCombinedCommitMessageSize"
 argument_list|,
 name|value
 operator|=
-literal|"175"
+literal|"220"
 argument_list|)
 DECL|method|submoduleSubjectCommitMessageSizeLimit ()
 specifier|public
@@ -3207,12 +3227,17 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Update git submodules\n\n* Update %s from branch 'master'\n  - %s\n\n[...]"
+literal|"Update git submodules\n\n* Update %s from branch 'master'\n  to %s\n  - %s\n\n[...]"
 argument_list|,
 name|name
 argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
+argument_list|,
+name|subHEAD
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|subCommitMsg
 operator|.
