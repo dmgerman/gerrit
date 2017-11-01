@@ -1537,7 +1537,12 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 operator|+
-literal|" from branch 'master'"
+literal|" from branch 'master'\n  to "
+operator|+
+name|subHEAD
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// The next commit should generate only its commit message,
@@ -1576,7 +1581,12 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 operator|+
-literal|" from branch 'master'"
+literal|" from branch 'master'\n  to "
+operator|+
+name|subHEAD
+operator|.
+name|getName
+argument_list|()
 operator|+
 literal|"\n  - "
 operator|+
@@ -1682,7 +1692,12 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 operator|+
-literal|" from branch 'master'"
+literal|" from branch 'master'\n  to "
+operator|+
+name|subHEAD
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// The next commit should generate only its commit message,
@@ -1721,7 +1736,12 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 operator|+
-literal|" from branch 'master'"
+literal|" from branch 'master'\n  to "
+operator|+
+name|subHEAD
+operator|.
+name|getName
+argument_list|()
 operator|+
 literal|"\n  - "
 operator|+
