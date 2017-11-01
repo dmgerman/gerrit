@@ -3694,6 +3694,18 @@ argument_list|(
 literal|"'"
 argument_list|)
 expr_stmt|;
+name|msgbuf
+operator|.
+name|append
+argument_list|(
+literal|"\n  to "
+operator|+
+name|newCommit
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// newly created submodule gitlink, do not append whole history
 if|if
 condition|(
