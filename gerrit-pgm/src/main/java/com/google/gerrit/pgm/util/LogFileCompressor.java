@@ -765,6 +765,13 @@ name|endsWith
 argument_list|(
 literal|".pid"
 argument_list|)
+operator|||
+name|name
+operator|.
+name|endsWith
+argument_list|(
+literal|".json"
+argument_list|)
 return|;
 block|}
 DECL|method|isCompressed (Path entry)
