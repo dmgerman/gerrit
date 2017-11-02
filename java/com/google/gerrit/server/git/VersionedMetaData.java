@@ -1869,6 +1869,8 @@ name|ru
 operator|.
 name|getResult
 argument_list|()
+argument_list|,
+name|ru
 argument_list|)
 throw|;
 case|case

@@ -584,6 +584,22 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|getInsertedObjectCount ()
+specifier|public
+name|int
+name|getInsertedObjectCount
+parameter_list|()
+block|{
+return|return
+name|inserted
+operator|.
+name|values
+argument_list|()
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
 DECL|method|clear ()
 specifier|public
 name|void

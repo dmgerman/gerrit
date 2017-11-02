@@ -352,6 +352,8 @@ argument_list|(
 literal|"Update aborted with one or more lock failures: "
 operator|+
 name|bru
+argument_list|,
+name|bru
 argument_list|)
 throw|;
 block|}

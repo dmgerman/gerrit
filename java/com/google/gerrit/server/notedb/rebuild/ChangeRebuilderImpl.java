@@ -1701,6 +1701,8 @@ argument_list|,
 name|manager
 argument_list|,
 name|checkReadOnly
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
@@ -1881,10 +1883,12 @@ argument_list|,
 name|manager
 argument_list|,
 literal|true
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|execute ( ReviewDb db, Change.Id changeId, NoteDbUpdateManager manager, boolean checkReadOnly)
+DECL|method|execute ( ReviewDb db, Change.Id changeId, NoteDbUpdateManager manager, boolean checkReadOnly, boolean executeManager)
 specifier|public
 name|Result
 name|execute
@@ -1902,6 +1906,9 @@ name|manager
 parameter_list|,
 name|boolean
 name|checkReadOnly
+parameter_list|,
+name|boolean
+name|executeManager
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2174,17 +2181,22 @@ name|CHANGES_READ_ONLY
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|executeManager
+condition|)
+block|{
 name|manager
 operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|r
 return|;
 block|}
 DECL|method|checkNoteDbState (Change c)
-specifier|private
 specifier|static
 name|Change
 name|checkNoteDbState
@@ -2311,6 +2323,39 @@ name|getId
 argument_list|()
 argument_list|)
 throw|;
+block|}
+if|if
+condition|(
+name|change
+operator|.
+name|getLastUpdatedOn
+argument_list|()
+operator|.
+name|compareTo
+argument_list|(
+name|change
+operator|.
+name|getCreatedOn
+argument_list|()
+argument_list|)
+operator|<
+literal|0
+condition|)
+block|{
+comment|// A bug in data migration might set created_on to the time of the migration. The
+comment|// correct timestamps were lost, but we can at least set it so created_on is not after
+comment|// last_updated_on.
+comment|// See https://bugs.chromium.org/p/gerrit/issues/detail?id=7397
+name|change
+operator|.
+name|setCreatedOn
+argument_list|(
+name|change
+operator|.
+name|getLastUpdatedOn
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|// We will rebuild all events, except for draft comments, in buckets based on author and
 comment|// timestamp.
@@ -3213,7 +3258,8 @@ name|sort
 argument_list|()
 expr_stmt|;
 comment|// Ensure the first event in the list creates the change, setting the author and any required
-comment|// footers.
+comment|// footers. Also force the creation time of the first patch set to match the creation time of
+comment|// the change.
 name|Event
 name|first
 init|=
@@ -3243,6 +3289,15 @@ name|user
 argument_list|)
 condition|)
 block|{
+name|first
+operator|.
+name|when
+operator|=
+name|change
+operator|.
+name|getCreatedOn
+argument_list|()
+expr_stmt|;
 operator|(
 operator|(
 name|PatchSetEvent
