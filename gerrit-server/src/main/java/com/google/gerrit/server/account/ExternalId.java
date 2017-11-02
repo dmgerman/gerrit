@@ -707,6 +707,12 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the SHA1 of the external ID that is used as note ID in the refs/meta/external-ids      * notes branch.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+comment|// Use Hashing.sha1 for compatibility.
 DECL|method|sha1 ()
 specifier|public
 name|ObjectId

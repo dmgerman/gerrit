@@ -1758,6 +1758,12 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+comment|// Use Hashing.md5 for compatibility.
 DECL|method|randSuffix ()
 specifier|private
 specifier|static

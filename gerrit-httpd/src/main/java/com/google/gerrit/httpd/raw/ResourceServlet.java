@@ -1967,6 +1967,12 @@ name|byte
 index|[]
 name|raw
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+comment|// Use Hashing.md5 for compatibility.
 DECL|method|Resource (FileTime lastModified, String contentType, byte[] raw)
 name|Resource
 parameter_list|(

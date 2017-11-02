@@ -1599,6 +1599,12 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+comment|// Use Hashing.sha1 for compatibility.
 DECL|method|verifyFileChecksum ()
 specifier|private
 name|void

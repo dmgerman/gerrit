@@ -486,6 +486,12 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+comment|// Use Hashing.md5 for compatibility.
 DECL|method|getETag (RevisionResource rsrc)
 specifier|public
 name|String

@@ -870,6 +870,12 @@ name|page
 decl_stmt|;
 annotation|@
 name|Inject
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+comment|// Use Hashing.md5 for compatibility.
 DECL|method|HostPageServlet ( Provider<CurrentUser> cu, SitePaths sp, ThemeFactory themeFactory, ServletContext servletContext, DynamicSet<WebUiPlugin> webUiPlugins, DynamicSet<MessageOfTheDay> motd, @GerritServerConfig Config cfg, SiteStaticDirectoryServlet ss, NotesMigration migration, GetDiffPreferences diffPref)
 name|HostPageServlet
 parameter_list|(

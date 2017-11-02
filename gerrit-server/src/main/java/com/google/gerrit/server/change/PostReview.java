@@ -4766,6 +4766,12 @@ name|range
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+comment|// Use Hashing.sha1 for compatibility.
 DECL|method|create (Comment comment)
 specifier|public
 specifier|static
