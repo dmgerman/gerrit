@@ -958,8 +958,6 @@ name|changeObjects
 operator|=
 name|changeRepo
 operator|.
-name|tempIns
-operator|.
 name|getInsertedObjects
 argument_list|()
 expr_stmt|;
@@ -1003,8 +1001,6 @@ expr_stmt|;
 name|allUsersObjects
 operator|=
 name|allUsersRepo
-operator|.
-name|tempIns
 operator|.
 name|getInsertedObjects
 argument_list|()
@@ -1058,6 +1054,9 @@ argument_list|>
 name|changeCommands
 parameter_list|()
 function_decl|;
+comment|/**      * Objects inserted into the change repo for this change.      *      *<p>Includes all objects inserted for any change in this repo that may have been processed by      * the corresponding {@link NoteDbUpdateManager} instance, not just those objects that were      * inserted to handle this specific change's updates.      *      * @return inserted objects, or null if the corresponding {@link NoteDbUpdateManager} was      *     configured not to {@link NoteDbUpdateManager#setSaveObjects(boolean) save objects}.      */
+annotation|@
+name|Nullable
 DECL|method|changeObjects ()
 specifier|public
 specifier|abstract
@@ -1078,6 +1077,9 @@ argument_list|>
 name|allUsersCommands
 parameter_list|()
 function_decl|;
+comment|/**      * Objects inserted into the All-Users repo for this change.      *      *<p>Includes all objects inserted into All-Users for any change that may have been processed      * by the corresponding {@link NoteDbUpdateManager} instance, not just those objects that were      * inserted to handle this specific change's updates.      *      * @return inserted objects, or null if the corresponding {@link NoteDbUpdateManager} was      *     configured not to {@link NoteDbUpdateManager#setSaveObjects(boolean) save objects}.      */
+annotation|@
+name|Nullable
 DECL|method|allUsersObjects ()
 specifier|public
 specifier|abstract
@@ -1168,10 +1170,16 @@ specifier|final
 name|ChainedReceiveCommands
 name|cmds
 decl_stmt|;
-DECL|field|tempIns
+DECL|field|inMemIns
 specifier|private
 specifier|final
 name|InMemoryInserter
+name|inMemIns
+decl_stmt|;
+DECL|field|tempIns
+specifier|private
+specifier|final
+name|ObjectInserter
 name|tempIns
 decl_stmt|;
 DECL|field|finalIns
@@ -1188,7 +1196,13 @@ specifier|final
 name|boolean
 name|close
 decl_stmt|;
-DECL|method|OpenRepo ( Repository repo, RevWalk rw, @Nullable ObjectInserter ins, ChainedReceiveCommands cmds, boolean close)
+DECL|field|saveObjects
+specifier|private
+specifier|final
+name|boolean
+name|saveObjects
+decl_stmt|;
+DECL|method|OpenRepo ( Repository repo, RevWalk rw, @Nullable ObjectInserter ins, ChainedReceiveCommands cmds, boolean close, boolean saveObjects)
 specifier|private
 name|OpenRepo
 parameter_list|(
@@ -1208,6 +1222,9 @@ name|cmds
 parameter_list|,
 name|boolean
 name|close
+parameter_list|,
+name|boolean
+name|saveObjects
 parameter_list|)
 block|{
 name|ObjectReader
@@ -1250,9 +1267,14 @@ argument_list|(
 name|repo
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|saveObjects
+condition|)
+block|{
 name|this
 operator|.
-name|tempIns
+name|inMemIns
 operator|=
 operator|new
 name|InMemoryInserter
@@ -1263,6 +1285,35 @@ name|getObjectReader
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|tempIns
+operator|=
+name|inMemIns
+expr_stmt|;
+block|}
+else|else
+block|{
+name|checkArgument
+argument_list|(
+name|ins
+operator|!=
+literal|null
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|inMemIns
+operator|=
+literal|null
+expr_stmt|;
+name|this
+operator|.
+name|tempIns
+operator|=
+name|ins
+expr_stmt|;
+block|}
 name|this
 operator|.
 name|rw
@@ -1296,6 +1347,12 @@ operator|.
 name|close
 operator|=
 name|close
+expr_stmt|;
+name|this
+operator|.
+name|saveObjects
+operator|=
+name|saveObjects
 expr_stmt|;
 block|}
 DECL|method|getObjectId (String refName)
@@ -1344,6 +1401,27 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
+DECL|method|getInsertedObjects ()
+name|ImmutableList
+argument_list|<
+name|InsertedObject
+argument_list|>
+name|getInsertedObjects
+parameter_list|()
+block|{
+return|return
+name|saveObjects
+condition|?
+name|inMemIns
+operator|.
+name|getInsertedObjects
+argument_list|()
+else|:
+literal|null
+return|;
+block|}
 DECL|method|flush ()
 name|void
 name|flush
@@ -1367,6 +1445,14 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+operator|!
+name|saveObjects
+condition|)
+block|{
+return|return;
+block|}
 name|checkState
 argument_list|(
 name|finalIns
@@ -1379,7 +1465,7 @@ control|(
 name|InsertedObject
 name|obj
 range|:
-name|tempIns
+name|inMemIns
 operator|.
 name|getInsertedObjects
 argument_list|()
@@ -1404,7 +1490,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|tempIns
+name|inMemIns
 operator|.
 name|clear
 argument_list|()
@@ -1579,6 +1665,20 @@ DECL|field|checkExpectedState
 specifier|private
 name|boolean
 name|checkExpectedState
+init|=
+literal|true
+decl_stmt|;
+DECL|field|saveObjects
+specifier|private
+name|boolean
+name|saveObjects
+init|=
+literal|true
+decl_stmt|;
+DECL|field|atomicRefUpdates
+specifier|private
+name|boolean
+name|atomicRefUpdates
 init|=
 literal|true
 decl_stmt|;
@@ -1828,6 +1928,8 @@ argument_list|,
 name|cmds
 argument_list|,
 literal|false
+argument_list|,
+name|saveObjects
 argument_list|)
 expr_stmt|;
 return|return
@@ -1877,6 +1979,8 @@ argument_list|,
 name|cmds
 argument_list|,
 literal|false
+argument_list|,
+name|saveObjects
 argument_list|)
 expr_stmt|;
 return|return
@@ -1897,6 +2001,46 @@ operator|.
 name|checkExpectedState
 operator|=
 name|checkExpectedState
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**    * Set whether to save objects and make them available in {@link StagedResult}s.    *    *<p>If set, all objects inserted into all repos managed by this instance will be buffered in    * memory, and the {@link StagedResult}s will return non-null lists from {@link    * StagedResult#changeObjects()} and {@link StagedResult#allUsersObjects()}.    *    *<p>Not recommended if modifying a large number of changes with a single manager.    *    * @param saveObjects whether to save objects; defaults to true.    * @return this    */
+DECL|method|setSaveObjects (boolean saveObjects)
+specifier|public
+name|NoteDbUpdateManager
+name|setSaveObjects
+parameter_list|(
+name|boolean
+name|saveObjects
+parameter_list|)
+block|{
+name|this
+operator|.
+name|saveObjects
+operator|=
+name|saveObjects
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**    * Set whether to use atomic ref updates.    *    *<p>Can be set to false when the change updates represented by this manager aren't logically    * related, e.g. when the updater is only used to group objects together with a single inserter.    *    * @param atomicRefUpdates whether to use atomic ref updates; defaults to true.    * @return this    */
+DECL|method|setAtomicRefUpdates (boolean atomicRefUpdates)
+specifier|public
+name|NoteDbUpdateManager
+name|setAtomicRefUpdates
+parameter_list|(
+name|boolean
+name|atomicRefUpdates
+parameter_list|)
+block|{
+name|this
+operator|.
+name|atomicRefUpdates
+operator|=
+name|atomicRefUpdates
 expr_stmt|;
 return|return
 name|this
@@ -2110,6 +2254,8 @@ name|repo
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|saveObjects
 argument_list|)
 block|{
 annotation|@
@@ -3170,6 +3316,13 @@ else|else
 block|{
 comment|// OpenRepo buffers objects separately; caller may assume that objects are available in the
 comment|// inserter it previously passed via setChangeRepo.
+name|checkState
+argument_list|(
+name|saveObjects
+argument_list|,
+literal|"cannot use dryrun with saveObjects = false"
+argument_list|)
+expr_stmt|;
 name|or
 operator|.
 name|flushToFinalInserter
@@ -3245,6 +3398,13 @@ name|serverIdent
 operator|.
 name|get
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|bru
+operator|.
+name|setAtomic
+argument_list|(
+name|atomicRefUpdates
 argument_list|)
 expr_stmt|;
 name|or

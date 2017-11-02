@@ -4296,6 +4296,8 @@ argument_list|(
 literal|"Updating external IDs failed with "
 operator|+
 name|res
+argument_list|,
+name|u
 argument_list|)
 throw|;
 case|case
