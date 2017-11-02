@@ -997,6 +997,25 @@ name|get
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|After
+DECL|method|cleanUp ()
+specifier|public
+name|void
+name|cleanUp
+parameter_list|()
+block|{
+name|lifecycle
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+name|db
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|newRequestContext (Account.Id requestUserId)
 specifier|protected
 name|RequestContext
