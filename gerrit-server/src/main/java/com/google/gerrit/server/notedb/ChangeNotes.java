@@ -4847,6 +4847,17 @@ name|staged
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|r
+operator|.
+name|staged
+argument_list|()
+operator|.
+name|changeObjects
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|LoadHandle
 operator|.
