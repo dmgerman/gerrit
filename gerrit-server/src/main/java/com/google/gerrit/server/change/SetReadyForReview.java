@@ -603,7 +603,7 @@ argument_list|()
 operator|.
 name|setLabel
 argument_list|(
-literal|"Ready"
+literal|"Start Review"
 argument_list|)
 operator|.
 name|setTitle
