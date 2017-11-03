@@ -2175,6 +2175,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// Any decoding that is done here must also be done in {@link LuceneChangeIndex}.
 comment|// Patch sets.
 name|cd
 operator|.

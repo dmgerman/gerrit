@@ -3316,6 +3316,7 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Any decoding that is done here must also be done in {@link ElasticChangeIndex}.
 if|if
 condition|(
 name|fields
