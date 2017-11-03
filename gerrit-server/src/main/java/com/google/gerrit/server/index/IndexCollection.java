@@ -552,11 +552,6 @@ condition|)
 block|{
 name|write
 operator|.
-name|stop
-argument_list|()
-expr_stmt|;
-name|write
-operator|.
 name|close
 argument_list|()
 expr_stmt|;
