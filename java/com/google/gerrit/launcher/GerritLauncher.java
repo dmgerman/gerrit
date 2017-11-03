@@ -4069,10 +4069,8 @@ block|{
 name|Path
 name|out
 init|=
-name|resolveInSourceRoot
-argument_list|(
-literal|"eclipse-out"
-argument_list|)
+name|getDeveloperEclipseOut
+argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
