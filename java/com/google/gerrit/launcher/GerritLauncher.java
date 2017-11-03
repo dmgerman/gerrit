@@ -328,6 +328,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -3661,7 +3671,56 @@ block|}
 end_function
 
 begin_comment
-comment|/**    * Locate the path of the {@code eclipse-out} directory in a source tree.    *    * @return local path of the {@code eclipse-out} directory in a source tree.    * @throws FileNotFoundException if the directory cannot be found.    */
+comment|/**    * Check whether the process is running in Eclipse.    *    *<p>Unlike {@link #getDeveloperEclipseOut()}, this method checks the actual runtime stack, not    * the classpath.    *    * @return true if any thread has a stack frame in {@code org.eclipse.jdt}.    */
+end_comment
+
+begin_function
+DECL|method|isRunningInEclipse ()
+specifier|public
+specifier|static
+name|boolean
+name|isRunningInEclipse
+parameter_list|()
+block|{
+return|return
+name|Thread
+operator|.
+name|getAllStackTraces
+argument_list|()
+operator|.
+name|values
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|flatMap
+argument_list|(
+name|Arrays
+operator|::
+name|stream
+argument_list|)
+operator|.
+name|anyMatch
+argument_list|(
+name|e
+lambda|->
+name|e
+operator|.
+name|getClassName
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"org.eclipse.jdt."
+argument_list|)
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_comment
+comment|/**    * Locate the path of the {@code eclipse-out} directory in a source tree.    *    *<p>Unlike {@link #isRunningInEclipse()}, this method only inspects files relative to the    * classpath, not the runtime stack.    *    * @return local path of the {@code eclipse-out} directory in a source tree.    * @throws FileNotFoundException if the directory cannot be found.    */
 end_comment
 
 begin_function
@@ -4069,10 +4128,8 @@ block|{
 name|Path
 name|out
 init|=
-name|resolveInSourceRoot
-argument_list|(
-literal|"eclipse-out"
-argument_list|)
+name|getDeveloperEclipseOut
+argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
