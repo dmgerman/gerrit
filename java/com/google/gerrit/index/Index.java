@@ -196,13 +196,6 @@ argument_list|>
 name|getSchema
 parameter_list|()
 function_decl|;
-comment|/** Stop and await termination of all executor threads */
-DECL|method|stop ()
-specifier|default
-name|void
-name|stop
-parameter_list|()
-block|{}
 comment|/** Close this index. */
 DECL|method|close ()
 name|void
