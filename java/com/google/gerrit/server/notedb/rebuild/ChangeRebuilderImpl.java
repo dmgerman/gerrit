@@ -2115,8 +2115,9 @@ name|AbortUpdateException
 name|e
 parameter_list|)
 block|{
-if|if
-condition|(
+name|NoteDbChangeState
+name|state
+init|=
 name|NoteDbChangeState
 operator|.
 name|parse
@@ -2125,6 +2126,14 @@ name|changeId
 argument_list|,
 name|newNoteDbState
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|state
+operator|!=
+literal|null
+operator|&&
+name|state
 operator|.
 name|isUpToDate
 argument_list|(
