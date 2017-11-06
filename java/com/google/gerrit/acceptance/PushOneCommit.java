@@ -1647,7 +1647,7 @@ expr_stmt|;
 block|}
 DECL|method|setParents (List<RevCommit> parents)
 specifier|public
-name|void
+name|PushOneCommit
 name|setParents
 parameter_list|(
 name|List
@@ -1680,10 +1680,13 @@ name|p
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|this
+return|;
 block|}
 DECL|method|setParent (RevCommit parent)
 specifier|public
-name|void
+name|PushOneCommit
 name|setParent
 parameter_list|(
 name|RevCommit
@@ -1704,6 +1707,9 @@ argument_list|(
 name|parent
 argument_list|)
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 DECL|method|to (String ref)
 specifier|public
