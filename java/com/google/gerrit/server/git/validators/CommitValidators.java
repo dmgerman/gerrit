@@ -4360,7 +4360,6 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/** Rejects updates to 'account.config' in user branches. */
 DECL|class|AccountCommitValidator
 specifier|public
 specifier|static
