@@ -1900,6 +1900,11 @@ expr_stmt|;
 block|}
 name|ru
 operator|.
+name|disableRefLog
+argument_list|()
+expr_stmt|;
+name|ru
+operator|.
 name|setNewObjectId
 argument_list|(
 name|newId
