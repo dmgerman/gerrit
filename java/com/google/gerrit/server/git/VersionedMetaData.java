@@ -914,6 +914,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|BatchMetaDataUpdate
 name|batch
 init|=
@@ -921,8 +923,7 @@ name|openUpdate
 argument_list|(
 name|update
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|batch
 operator|.
@@ -941,14 +942,6 @@ name|commit
 argument_list|()
 return|;
 block|}
-finally|finally
-block|{
-name|batch
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**    * Creates a new commit and a new ref based on this commit.    *    * @param update helper information to define the update that will occur.    * @param refName name of the ref that should be created    * @return the commit that was created    * @throws IOException if there is a storage problem and the update cannot be executed as    *     requested or if it failed because of a concurrent update to the same reference    */
 DECL|method|commitToNewRef (MetaDataUpdate update, String refName)
@@ -965,6 +958,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|BatchMetaDataUpdate
 name|batch
 init|=
@@ -972,8 +967,7 @@ name|openUpdate
 argument_list|(
 name|update
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|batch
 operator|.
@@ -994,19 +988,13 @@ name|refName
 argument_list|)
 return|;
 block|}
-finally|finally
-block|{
-name|batch
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|interface|BatchMetaDataUpdate
 specifier|public
 interface|interface
 name|BatchMetaDataUpdate
+extends|extends
+name|AutoCloseable
 block|{
 DECL|method|write (CommitBuilder commit)
 name|void
@@ -1058,6 +1046,8 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+annotation|@
+name|Override
 DECL|method|close ()
 name|void
 name|close
