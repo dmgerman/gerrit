@@ -162,6 +162,10 @@ name|ProjectConfig
 import|;
 end_import
 
+begin_comment
+comment|/**  * Contains functions to modify permissions. For all these functions, any of the groups may be null  * in which case it is ignored.  */
+end_comment
+
 begin_class
 DECL|class|AclUtil
 specifier|public
