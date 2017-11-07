@@ -242,6 +242,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|Version
 import|;
 end_import
@@ -823,27 +837,34 @@ operator|.
 name|FIRST_CHANGE_ID
 decl_stmt|;
 DECL|field|admin
+annotation|@
+name|Nullable
 specifier|private
 name|GroupReference
 name|admin
 decl_stmt|;
 DECL|field|batch
+annotation|@
+name|Nullable
 specifier|private
 name|GroupReference
 name|batch
 decl_stmt|;
 DECL|field|anonymous
 specifier|private
+specifier|final
 name|GroupReference
 name|anonymous
 decl_stmt|;
 DECL|field|registered
 specifier|private
+specifier|final
 name|GroupReference
 name|registered
 decl_stmt|;
 DECL|field|owners
 specifier|private
+specifier|final
 name|GroupReference
 name|owners
 decl_stmt|;
@@ -928,6 +949,7 @@ name|PROJECT_OWNERS
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** If called, grant default permissions to this admin group */
 DECL|method|setAdministrators (GroupReference admin)
 specifier|public
 name|AllProjectsCreator
@@ -947,6 +969,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/** If called, grant stream-events permission and set appropriate priority for this group */
 DECL|method|setBatchUsers (GroupReference batch)
 specifier|public
 name|AllProjectsCreator

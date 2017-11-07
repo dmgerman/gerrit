@@ -112,6 +112,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|Version
 import|;
 end_import
@@ -453,6 +467,8 @@ name|GroupReference
 name|registered
 decl_stmt|;
 DECL|field|admin
+annotation|@
+name|Nullable
 specifier|private
 name|GroupReference
 name|admin
@@ -507,6 +523,7 @@ name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * If setAdministrators() is called, grant the given administrator group permissions on the    * default user.    */
 DECL|method|setAdministrators (GroupReference admin)
 specifier|public
 name|AllUsersCreator
@@ -795,6 +812,13 @@ argument_list|,
 name|registered
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|admin
+operator|!=
+literal|null
+condition|)
+block|{
 name|AccessSection
 name|defaults
 init|=
@@ -896,6 +920,7 @@ argument_list|,
 name|admin
 argument_list|)
 expr_stmt|;
+block|}
 name|config
 operator|.
 name|commit
