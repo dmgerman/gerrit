@@ -1437,6 +1437,7 @@ block|}
 block|}
 block|}
 DECL|method|setParentName ( IdentifiedUser identifiedUser, ProjectConfig config, Project.NameKey projectName, Project.NameKey newParentProjectName, boolean checkAdmin)
+specifier|public
 name|void
 name|setParentName
 parameter_list|(
@@ -1465,6 +1466,8 @@ throws|,
 name|AuthException
 throws|,
 name|PermissionBackendException
+throws|,
+name|BadRequestException
 block|{
 if|if
 condition|(
