@@ -284,6 +284,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CreateGroupPermissionSyncer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -549,9 +563,15 @@ specifier|final
 name|SetAccessUtil
 name|accessUtil
 decl_stmt|;
+DECL|field|createGroupPermissionSyncer
+specifier|private
+specifier|final
+name|CreateGroupPermissionSyncer
+name|createGroupPermissionSyncer
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetAccess ( GroupBackend groupBackend, PermissionBackend permissionBackend, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GetAccess getAccess, Provider<IdentifiedUser> identifiedUser, SetAccessUtil accessUtil)
+DECL|method|SetAccess ( GroupBackend groupBackend, PermissionBackend permissionBackend, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GetAccess getAccess, Provider<IdentifiedUser> identifiedUser, SetAccessUtil accessUtil, CreateGroupPermissionSyncer createGroupPermissionSyncer)
 specifier|private
 name|SetAccess
 parameter_list|(
@@ -583,6 +603,9 @@ name|identifiedUser
 parameter_list|,
 name|SetAccessUtil
 name|accessUtil
+parameter_list|,
+name|CreateGroupPermissionSyncer
+name|createGroupPermissionSyncer
 parameter_list|)
 block|{
 name|this
@@ -626,6 +649,12 @@ operator|.
 name|accessUtil
 operator|=
 name|accessUtil
+expr_stmt|;
+name|this
+operator|.
+name|createGroupPermissionSyncer
+operator|=
+name|createGroupPermissionSyncer
 expr_stmt|;
 block|}
 annotation|@
@@ -956,6 +985,11 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|createGroupPermissionSyncer
+operator|.
+name|syncIfNeeded
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
