@@ -710,7 +710,6 @@ return|;
 block|}
 DECL|method|getGroupFromNoteDb ( Repository allUsersRepository, AccountGroup.UUID groupUuid)
 specifier|private
-specifier|static
 name|Optional
 argument_list|<
 name|InternalGroup
@@ -735,8 +734,10 @@ name|groupConfig
 init|=
 name|GroupConfig
 operator|.
-name|loadForGroup
+name|loadForGroupNoOwnerUpdate
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepository
 argument_list|,
 name|groupUuid

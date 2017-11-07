@@ -104,6 +104,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|GroupReference
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -196,16 +212,14 @@ argument_list|>
 name|getDescription
 parameter_list|()
 function_decl|;
-DECL|method|getOwnerGroupUUID ()
+DECL|method|getOwnerGroupReference ()
 specifier|public
 specifier|abstract
 name|Optional
 argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
+name|GroupReference
 argument_list|>
-name|getOwnerGroupUUID
+name|getOwnerGroupReference
 parameter_list|()
 function_decl|;
 DECL|method|getVisibleToAll ()
@@ -330,16 +344,14 @@ name|String
 name|description
 parameter_list|)
 function_decl|;
-DECL|method|setOwnerGroupUUID (AccountGroup.UUID ownerGroupUUID)
+DECL|method|setOwnerGroupReference (GroupReference ownerGroupReference)
 specifier|public
 specifier|abstract
 name|Builder
-name|setOwnerGroupUUID
+name|setOwnerGroupReference
 parameter_list|(
-name|AccountGroup
-operator|.
-name|UUID
-name|ownerGroupUUID
+name|GroupReference
+name|ownerGroupReference
 parameter_list|)
 function_decl|;
 DECL|method|setVisibleToAll (boolean visibleToAll)
