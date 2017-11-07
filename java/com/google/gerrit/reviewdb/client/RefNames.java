@@ -254,6 +254,16 @@ name|REFS_USERS
 init|=
 literal|"refs/users/"
 decl_stmt|;
+comment|/** NoteDb ref for a group {@code refs/groups} */
+DECL|field|REFS_GROUPS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_GROUPS
+init|=
+literal|"refs/groups/"
+decl_stmt|;
 comment|/** Draft inline comments of a user on a change */
 DECL|field|REFS_DRAFT_COMMENTS
 specifier|public
