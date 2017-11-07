@@ -11720,6 +11720,43 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|addMalformedGpgKey ()
+specifier|public
+name|void
+name|addMalformedGpgKey
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|key
+init|=
+literal|"-----BEGIN PGP PUBLIC KEY BLOCK-----\n\ntest\n-----END PGP PUBLIC KEY BLOCK-----"
+decl_stmt|;
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|BadRequestException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"Failed to parse GPG keys"
+argument_list|)
+expr_stmt|;
+name|addGpgKey
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 annotation|@
 name|UseSsh
 DECL|method|sshKeys ()
