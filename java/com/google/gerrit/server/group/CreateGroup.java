@@ -466,6 +466,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|Sequences
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|CreateGroupArgs
@@ -901,9 +915,15 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
+DECL|field|sequences
+specifier|private
+specifier|final
+name|Sequences
+name|sequences
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateGroup ( Provider<IdentifiedUser> self, @GerritPersonIdent PersonIdent serverIdent, ReviewDb db, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, GroupCache groupCache, GroupsCollection groups, GroupJson json, DynamicSet<GroupCreationValidationListener> groupCreationValidationListeners, AddMembers addMembers, SystemGroupBackend systemGroupBackend, @GerritServerConfig Config cfg, @Assisted String name)
+DECL|method|CreateGroup ( Provider<IdentifiedUser> self, @GerritPersonIdent PersonIdent serverIdent, ReviewDb db, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, GroupCache groupCache, GroupsCollection groups, GroupJson json, DynamicSet<GroupCreationValidationListener> groupCreationValidationListeners, AddMembers addMembers, SystemGroupBackend systemGroupBackend, @GerritServerConfig Config cfg, @Assisted String name, Sequences sequences)
 name|CreateGroup
 parameter_list|(
 name|Provider
@@ -958,6 +978,9 @@ annotation|@
 name|Assisted
 name|String
 name|name
+parameter_list|,
+name|Sequences
+name|sequences
 parameter_list|)
 block|{
 name|this
@@ -1040,6 +1063,12 @@ operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+name|this
+operator|.
+name|sequences
+operator|=
+name|sequences
 expr_stmt|;
 block|}
 DECL|method|addOption (ListGroupsOption o)
@@ -1570,9 +1599,9 @@ name|AccountGroup
 operator|.
 name|Id
 argument_list|(
-name|db
+name|sequences
 operator|.
-name|nextAccountGroupId
+name|nextGroupId
 argument_list|()
 argument_list|)
 decl_stmt|;
