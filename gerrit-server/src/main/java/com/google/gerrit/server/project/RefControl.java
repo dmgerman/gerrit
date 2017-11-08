@@ -2776,7 +2776,10 @@ operator|.
 name|describeForException
 argument_list|()
 operator|+
-literal|" not permitted"
+literal|" not permitted for "
+operator|+
+name|getRefName
+argument_list|()
 argument_list|)
 throw|;
 block|}
