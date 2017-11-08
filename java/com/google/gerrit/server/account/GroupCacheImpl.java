@@ -1085,12 +1085,6 @@ name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
-DECL|field|groups
-specifier|private
-specifier|final
-name|Groups
-name|groups
-decl_stmt|;
 DECL|field|hasGroupIndex
 specifier|private
 specifier|final
@@ -1108,7 +1102,7 @@ name|groupQueryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByIdLoader ( SchemaFactory<ReviewDb> schema, Groups groups, GroupIndexCollection groupIndexCollection, Provider<InternalGroupQuery> groupQueryProvider)
+DECL|method|ByIdLoader ( SchemaFactory<ReviewDb> schema, GroupIndexCollection groupIndexCollection, Provider<InternalGroupQuery> groupQueryProvider)
 name|ByIdLoader
 parameter_list|(
 name|SchemaFactory
@@ -1116,9 +1110,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schema
-parameter_list|,
-name|Groups
-name|groups
 parameter_list|,
 name|GroupIndexCollection
 name|groupIndexCollection
@@ -1135,12 +1126,6 @@ operator|.
 name|schema
 operator|=
 name|schema
-expr_stmt|;
-name|this
-operator|.
-name|groups
-operator|=
-name|groups
 expr_stmt|;
 name|hasGroupIndex
 operator|=
@@ -1210,9 +1195,9 @@ argument_list|()
 init|)
 block|{
 return|return
-name|groups
+name|Groups
 operator|.
-name|getGroup
+name|getGroupFromReviewDb
 argument_list|(
 name|db
 argument_list|,

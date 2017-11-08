@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableSet
+name|Lists
 import|;
 end_import
 
@@ -104,7 +104,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Lists
+name|Sets
 import|;
 end_import
 
@@ -502,6 +502,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|db
+operator|.
+name|InternalGroupUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -563,16 +581,6 @@ operator|.
 name|util
 operator|.
 name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
 import|;
 end_import
 
@@ -1223,7 +1231,7 @@ name|e
 throw|;
 block|}
 block|}
-DECL|method|addMembers (AccountGroup.UUID groupUuid, Collection<Account.Id> newMemberIds)
+DECL|method|addMembers (AccountGroup.UUID groupUuid, Set<Account.Id> newMemberIds)
 specifier|public
 name|void
 name|addMembers
@@ -1233,7 +1241,7 @@ operator|.
 name|UUID
 name|groupUuid
 parameter_list|,
-name|Collection
+name|Set
 argument_list|<
 name|Account
 operator|.
@@ -1250,12 +1258,37 @@ name|NoSuchGroupException
 throws|,
 name|ConfigInvalidException
 block|{
+name|InternalGroupUpdate
+name|groupUpdate
+init|=
+name|InternalGroupUpdate
+operator|.
+name|builder
+argument_list|()
+operator|.
+name|setMemberModification
+argument_list|(
+name|memberIds
+lambda|->
+name|Sets
+operator|.
+name|union
+argument_list|(
+name|memberIds
+argument_list|,
+name|newMemberIds
+argument_list|)
+argument_list|)
+operator|.
+name|build
+argument_list|()
+decl_stmt|;
 name|groupsUpdateProvider
 operator|.
 name|get
 argument_list|()
 operator|.
-name|addGroupMembers
+name|updateGroup
 argument_list|(
 name|db
 operator|.
@@ -1264,12 +1297,7 @@ argument_list|()
 argument_list|,
 name|groupUuid
 argument_list|,
-name|ImmutableSet
-operator|.
-name|copyOf
-argument_list|(
-name|newMemberIds
-argument_list|)
+name|groupUpdate
 argument_list|)
 expr_stmt|;
 block|}
