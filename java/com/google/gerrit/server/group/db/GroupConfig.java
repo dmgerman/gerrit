@@ -2666,7 +2666,7 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-literal|"Remove: group "
+literal|"Remove-group: "
 operator|::
 name|concat
 argument_list|)
@@ -2696,7 +2696,7 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-literal|"Add: group "
+literal|"Add-group: "
 operator|::
 name|concat
 argument_list|)
