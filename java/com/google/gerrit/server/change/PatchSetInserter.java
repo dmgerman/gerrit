@@ -2248,6 +2248,16 @@ name|ctx
 operator|.
 name|getRevWalk
 argument_list|()
+argument_list|,
+name|projectCache
+operator|.
+name|checkedGet
+argument_list|(
+name|ctx
+operator|.
+name|getProject
+argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|validate

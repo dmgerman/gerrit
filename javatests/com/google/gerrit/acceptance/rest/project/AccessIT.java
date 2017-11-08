@@ -3485,7 +3485,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Permissions on refs/groups/ is managed by Gerrit and cannot be modified"
+literal|"permissions on refs/groups/ are managed by gerrit and cannot be modified"
 argument_list|)
 expr_stmt|;
 name|gApi
