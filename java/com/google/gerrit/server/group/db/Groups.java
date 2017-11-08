@@ -85,6 +85,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+operator|.
+name|comparing
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -430,6 +442,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -514,9 +536,15 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|auditLogReader
+specifier|private
+specifier|final
+name|AuditLogReader
+name|auditLogReader
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Groups ( GroupsMigration groupsMigration, GitRepositoryManager repoManager, AllUsersName allUsersName)
+DECL|method|Groups ( GroupsMigration groupsMigration, GitRepositoryManager repoManager, AllUsersName allUsersName, AuditLogReader auditLogReader)
 specifier|public
 name|Groups
 parameter_list|(
@@ -528,6 +556,9 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|AuditLogReader
+name|auditLogReader
 parameter_list|)
 block|{
 name|this
@@ -547,6 +578,12 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
+expr_stmt|;
+name|this
+operator|.
+name|auditLogReader
+operator|=
+name|auditLogReader
 expr_stmt|;
 block|}
 comment|/**    * Returns the {@code AccountGroup} for the specified ID if it exists.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupId the ID of the group    * @return the found {@code AccountGroup} if it exists, or else an empty {@code Optional}    * @throws OrmException if the group couldn't be retrieved from ReviewDb    */
@@ -1477,7 +1514,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the membership audit records for a given group.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the group    * @return the audit records, in arbitrary order; empty if the group does not exist    * @throws OrmException if an error occurs while reading from ReviewDb    */
+comment|/**    * Returns the membership audit records for a given group.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the group    * @return the audit records, in arbitrary order; empty if the group does not exist    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the group couldn't be retrieved from NoteDb    */
 DECL|method|getMembersAudit (ReviewDb db, AccountGroup.UUID groupUuid)
 specifier|public
 name|List
@@ -1496,6 +1533,10 @@ name|groupUuid
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 if|if
 condition|(
@@ -1505,14 +1546,14 @@ name|readFromNoteDb
 argument_list|()
 condition|)
 block|{
-comment|// TODO(dborowitz): Implement.
-throw|throw
-operator|new
-name|OrmException
+return|return
+name|auditLogReader
+operator|.
+name|getMembersAudit
 argument_list|(
-literal|"Audit logs not yet implemented in NoteDb"
+name|groupUuid
 argument_list|)
-throw|;
+return|;
 block|}
 name|Optional
 argument_list|<
@@ -1543,7 +1584,12 @@ name|of
 argument_list|()
 return|;
 block|}
-return|return
+name|List
+argument_list|<
+name|AccountGroupMemberAudit
+argument_list|>
+name|audits
+init|=
 name|db
 operator|.
 name|accountGroupMembersAudit
@@ -1562,9 +1608,32 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
+decl_stmt|;
+name|Collections
+operator|.
+name|sort
+argument_list|(
+name|audits
+argument_list|,
+name|comparing
+argument_list|(
+parameter_list|(
+name|AccountGroupMemberAudit
+name|a
+parameter_list|)
+lambda|->
+name|a
+operator|.
+name|getAddedOn
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|audits
 return|;
 block|}
-comment|/**    * Returns the subgroup audit records for a given group.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the group    * @return the audit records, in arbitrary order; empty if the group does not exist    * @throws OrmException if an error occurs while reading from ReviewDb    */
+comment|/**    * Returns the subgroup audit records for a given group.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the group    * @return the audit records, in arbitrary order; empty if the group does not exist    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the group couldn't be retrieved from NoteDb    */
 DECL|method|getSubgroupsAudit (ReviewDb db, AccountGroup.UUID groupUuid)
 specifier|public
 name|List
@@ -1583,6 +1652,10 @@ name|groupUuid
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 if|if
 condition|(
@@ -1592,14 +1665,14 @@ name|readFromNoteDb
 argument_list|()
 condition|)
 block|{
-comment|// TODO(dborowitz): Implement.
-throw|throw
-operator|new
-name|OrmException
+return|return
+name|auditLogReader
+operator|.
+name|getSubgroupsAudit
 argument_list|(
-literal|"Audit logs not yet implemented in NoteDb"
+name|groupUuid
 argument_list|)
-throw|;
+return|;
 block|}
 name|Optional
 argument_list|<
@@ -1630,7 +1703,12 @@ name|of
 argument_list|()
 return|;
 block|}
-return|return
+name|List
+argument_list|<
+name|AccountGroupByIdAud
+argument_list|>
+name|audits
+init|=
 name|db
 operator|.
 name|accountGroupByIdAud
@@ -1649,6 +1727,29 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
+decl_stmt|;
+name|Collections
+operator|.
+name|sort
+argument_list|(
+name|audits
+argument_list|,
+name|comparing
+argument_list|(
+parameter_list|(
+name|AccountGroupByIdAud
+name|a
+parameter_list|)
+lambda|->
+name|a
+operator|.
+name|getAddedOn
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|audits
 return|;
 block|}
 block|}

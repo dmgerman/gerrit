@@ -108,26 +108,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|testing
-operator|.
-name|CommitInfoSubject
-operator|.
-name|assertThat
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -342,22 +322,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|AllUsersName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|AllUsersNameProvider
 import|;
 end_import
@@ -458,20 +422,6 @@ name|gerrit
 operator|.
 name|testing
 operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
 name|TestTimeUtil
 import|;
 end_import
@@ -483,16 +433,6 @@ operator|.
 name|sql
 operator|.
 name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TimeZone
 import|;
 end_import
 
@@ -608,20 +548,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|PersonIdent
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|Repository
 import|;
 end_import
@@ -662,40 +588,8 @@ specifier|public
 class|class
 name|GroupRebuilderTest
 extends|extends
-name|GerritBaseTests
+name|AbstractGroupTest
 block|{
-DECL|field|SERVER_NAME
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|SERVER_NAME
-init|=
-literal|"Gerrit Server"
-decl_stmt|;
-DECL|field|SERVER_EMAIL
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|SERVER_EMAIL
-init|=
-literal|"noreply@gerritcodereview.com"
-decl_stmt|;
-DECL|field|TZ
-specifier|private
-specifier|static
-specifier|final
-name|TimeZone
-name|TZ
-init|=
-name|TimeZone
-operator|.
-name|getTimeZone
-argument_list|(
-literal|"America/Los_Angeles"
-argument_list|)
-decl_stmt|;
 DECL|field|idCounter
 specifier|private
 name|AtomicInteger
@@ -718,6 +612,8 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|TestTimeUtil
 operator|.
@@ -759,13 +655,7 @@ name|GroupRebuilderTest
 operator|::
 name|newPersonIdent
 argument_list|,
-operator|new
-name|AllUsersName
-argument_list|(
-name|AllUsersNameProvider
-operator|.
-name|DEFAULT
-argument_list|)
+name|allUsersName
 argument_list|,
 parameter_list|(
 name|project
@@ -792,52 +682,17 @@ argument_list|,
 comment|// Note that the expected name/email values in tests are not necessarily realistic,
 comment|// since they use these trivial name/email functions. GroupRebuilderIT checks the actual
 comment|// values.
-parameter_list|(
-name|id
-parameter_list|,
-name|ident
-parameter_list|)
-lambda|->
-operator|new
-name|PersonIdent
-argument_list|(
-literal|"Account "
-operator|+
-name|id
+name|AbstractGroupTest
+operator|::
+name|newPersonIdent
 argument_list|,
-name|id
-operator|+
-literal|"@server-id"
+name|AbstractGroupTest
+operator|::
+name|getAccountNameEmail
 argument_list|,
-name|ident
-operator|.
-name|getWhen
-argument_list|()
-argument_list|,
-name|ident
-operator|.
-name|getTimeZone
-argument_list|()
-argument_list|)
-argument_list|,
-name|id
-lambda|->
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Account %s<%s@server-id>"
-argument_list|,
-name|id
-argument_list|,
-name|id
-argument_list|)
-argument_list|,
-name|uuid
-lambda|->
-literal|"Group "
-operator|+
-name|uuid
+name|AbstractGroupTest
+operator|::
+name|getGroupName
 argument_list|)
 expr_stmt|;
 block|}
@@ -1224,9 +1079,9 @@ literal|"Add: Account 1<1@server-id>\n"
 operator|+
 literal|"Add: Account 2<2@server-id>\n"
 operator|+
-literal|"Add-group: Group x\n"
+literal|"Add-group: Group<x>\n"
 operator|+
-literal|"Add-group: Group y"
+literal|"Add-group: Group<y>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1942,7 +1797,7 @@ argument_list|(
 literal|1
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group y"
+literal|"Update group\n\nAdd-group: Group<y>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -1958,7 +1813,7 @@ argument_list|(
 literal|2
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group x"
+literal|"Update group\n\nAdd-group: Group<x>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -1974,7 +1829,7 @@ argument_list|(
 literal|3
 argument_list|)
 argument_list|,
-literal|"Update group\n\nRemove-group: Group y"
+literal|"Update group\n\nRemove-group: Group<y>"
 argument_list|,
 literal|"Account 9"
 argument_list|,
@@ -2124,7 +1979,7 @@ argument_list|(
 literal|1
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group x"
+literal|"Update group\n\nAdd-group: Group<x>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -2140,7 +1995,7 @@ argument_list|(
 literal|2
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group y\nAdd-group: Group z"
+literal|"Update group\n\nAdd-group: Group<y>\nAdd-group: Group<z>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2416,11 +2271,11 @@ literal|"Update group\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Add-group: Group x\n"
+literal|"Add-group: Group<x>\n"
 operator|+
-literal|"Add-group: Group y\n"
+literal|"Add-group: Group<y>\n"
 operator|+
-literal|"Add-group: Group z"
+literal|"Add-group: Group<z>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -2436,7 +2291,7 @@ argument_list|(
 literal|4
 argument_list|)
 argument_list|,
-literal|"Update group\n\nRemove-group: Group z"
+literal|"Update group\n\nRemove-group: Group<z>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -2705,7 +2560,7 @@ argument_list|(
 literal|2
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group x\nAdd-group: Group z"
+literal|"Update group\n\nAdd-group: Group<x>\nAdd-group: Group<z>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -2737,7 +2592,7 @@ argument_list|(
 literal|4
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group y"
+literal|"Update group\n\nAdd-group: Group<y>"
 argument_list|,
 literal|"Account 9"
 argument_list|,
@@ -2922,7 +2777,7 @@ argument_list|(
 literal|1
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group x"
+literal|"Update group\n\nAdd-group: Group<x>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -2938,7 +2793,7 @@ argument_list|(
 literal|2
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group y\nAdd-group: Group z"
+literal|"Update group\n\nAdd-group: Group<y>\nAdd-group: Group<z>"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -3722,169 +3577,6 @@ name|REFS_GROUPNAMES
 argument_list|)
 return|;
 block|}
-DECL|method|assertServerCommit (CommitInfo commitInfo, String expectedMessage)
-specifier|private
-specifier|static
-name|void
-name|assertServerCommit
-parameter_list|(
-name|CommitInfo
-name|commitInfo
-parameter_list|,
-name|String
-name|expectedMessage
-parameter_list|)
-block|{
-name|assertCommit
-argument_list|(
-name|commitInfo
-argument_list|,
-name|expectedMessage
-argument_list|,
-name|SERVER_NAME
-argument_list|,
-name|SERVER_EMAIL
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|assertCommit ( CommitInfo commitInfo, String expectedMessage, String expectedName, String expectedEmail)
-specifier|private
-specifier|static
-name|void
-name|assertCommit
-parameter_list|(
-name|CommitInfo
-name|commitInfo
-parameter_list|,
-name|String
-name|expectedMessage
-parameter_list|,
-name|String
-name|expectedName
-parameter_list|,
-name|String
-name|expectedEmail
-parameter_list|)
-block|{
-name|assertThat
-argument_list|(
-name|commitInfo
-argument_list|)
-operator|.
-name|message
-argument_list|()
-operator|.
-name|isEqualTo
-argument_list|(
-name|expectedMessage
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|commitInfo
-argument_list|)
-operator|.
-name|author
-argument_list|()
-operator|.
-name|name
-argument_list|()
-operator|.
-name|isEqualTo
-argument_list|(
-name|expectedName
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|commitInfo
-argument_list|)
-operator|.
-name|author
-argument_list|()
-operator|.
-name|email
-argument_list|()
-operator|.
-name|isEqualTo
-argument_list|(
-name|expectedEmail
-argument_list|)
-expr_stmt|;
-comment|// Committer should always be the server, regardless of author.
-name|assertThat
-argument_list|(
-name|commitInfo
-argument_list|)
-operator|.
-name|committer
-argument_list|()
-operator|.
-name|name
-argument_list|()
-operator|.
-name|isEqualTo
-argument_list|(
-name|SERVER_NAME
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|commitInfo
-argument_list|)
-operator|.
-name|committer
-argument_list|()
-operator|.
-name|email
-argument_list|()
-operator|.
-name|isEqualTo
-argument_list|(
-name|SERVER_EMAIL
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|commitInfo
-argument_list|)
-operator|.
-name|committer
-argument_list|()
-operator|.
-name|date
-argument_list|()
-operator|.
-name|isEqualTo
-argument_list|(
-name|commitInfo
-operator|.
-name|author
-operator|.
-name|date
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|commitInfo
-argument_list|)
-operator|.
-name|committer
-argument_list|()
-operator|.
-name|tz
-argument_list|()
-operator|.
-name|isEqualTo
-argument_list|(
-name|commitInfo
-operator|.
-name|author
-operator|.
-name|tz
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|removeRefState (InternalGroup group)
 specifier|private
 specifier|static
@@ -3910,30 +3602,6 @@ argument_list|)
 operator|.
 name|build
 argument_list|()
-return|;
-block|}
-DECL|method|newPersonIdent ()
-specifier|private
-specifier|static
-name|PersonIdent
-name|newPersonIdent
-parameter_list|()
-block|{
-return|return
-operator|new
-name|PersonIdent
-argument_list|(
-name|SERVER_NAME
-argument_list|,
-name|SERVER_EMAIL
-argument_list|,
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
-argument_list|,
-name|TZ
-argument_list|)
 return|;
 block|}
 block|}
