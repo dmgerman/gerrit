@@ -926,6 +926,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|AddSubgroups
 operator|.

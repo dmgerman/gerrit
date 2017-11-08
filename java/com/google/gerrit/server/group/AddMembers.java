@@ -1223,7 +1223,7 @@ name|e
 throw|;
 block|}
 block|}
-DECL|method|addMembers (AccountGroup.UUID groupUuid, Collection<? extends Account.Id> newMemberIds)
+DECL|method|addMembers (AccountGroup.UUID groupUuid, Collection<Account.Id> newMemberIds)
 specifier|public
 name|void
 name|addMembers
@@ -1235,8 +1235,6 @@ name|groupUuid
 parameter_list|,
 name|Collection
 argument_list|<
-name|?
-extends|extends
 name|Account
 operator|.
 name|Id
@@ -1249,6 +1247,8 @@ throws|,
 name|IOException
 throws|,
 name|NoSuchGroupException
+throws|,
+name|ConfigInvalidException
 block|{
 name|groupsUpdateProvider
 operator|.
