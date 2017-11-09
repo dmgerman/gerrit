@@ -1212,6 +1212,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CreateGroupPermissionSyncer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -3449,6 +3463,12 @@ specifier|final
 name|CreateRefControl
 name|createRefControl
 decl_stmt|;
+DECL|field|createGroupPermissionSyncer
+specifier|private
+specifier|final
+name|CreateGroupPermissionSyncer
+name|createGroupPermissionSyncer
+decl_stmt|;
 comment|// Assisted injected fields.
 DECL|field|allRefsWatcher
 specifier|private
@@ -3680,7 +3700,7 @@ name|changeFormatter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, AccountsUpdate.Server accountsUpdate, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, CreateRefControl createRefControl, DynamicItem<ChangeReportFormatter> changeFormatterProvider, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, AccountsUpdate.Server accountsUpdate, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, CreateRefControl createRefControl, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CreateGroupPermissionSyncer createGroupPermissionSyncer, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -3821,6 +3841,9 @@ argument_list|<
 name|ChangeReportFormatter
 argument_list|>
 name|changeFormatterProvider
+parameter_list|,
+name|CreateGroupPermissionSyncer
+name|createGroupPermissionSyncer
 parameter_list|,
 annotation|@
 name|Assisted
@@ -4058,6 +4081,12 @@ operator|.
 name|createRefControl
 operator|=
 name|createRefControl
+expr_stmt|;
+name|this
+operator|.
+name|createGroupPermissionSyncer
+operator|=
+name|createGroupPermissionSyncer
 expr_stmt|;
 comment|// Assisted injected fields.
 name|this
@@ -16072,6 +16101,46 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|allProjectsName
+operator|.
+name|equals
+argument_list|(
+name|project
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+condition|)
+block|{
+try|try
+block|{
+name|createGroupPermissionSyncer
+operator|.
+name|syncIfNeeded
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+decl||
+name|ConfigInvalidException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Can't sync create group permissions"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}

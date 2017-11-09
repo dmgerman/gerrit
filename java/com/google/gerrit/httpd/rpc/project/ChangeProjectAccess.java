@@ -156,6 +156,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CreateGroupPermissionSyncer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|CurrentUser
 import|;
 end_import
@@ -538,9 +552,15 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|createGroupPermissionSyncer
+specifier|private
+specifier|final
+name|CreateGroupPermissionSyncer
+name|createGroupPermissionSyncer
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeProjectAccess ( ProjectAccessFactory.Factory projectAccessFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, AllUsersName allUsers, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, ContributorAgreementsChecker contributorAgreements, Provider<CurrentUser> user, PermissionBackend permissionBackend, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ChangeProjectAccess ( ProjectAccessFactory.Factory projectAccessFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, AllUsersName allUsers, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, ContributorAgreementsChecker contributorAgreements, Provider<CurrentUser> user, PermissionBackend permissionBackend, CreateGroupPermissionSyncer createGroupPermissionSyncer, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ChangeProjectAccess
 parameter_list|(
 name|ProjectAccessFactory
@@ -585,6 +605,9 @@ name|user
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|CreateGroupPermissionSyncer
+name|createGroupPermissionSyncer
 parameter_list|,
 annotation|@
 name|Assisted
@@ -683,6 +706,12 @@ name|gitRefUpdated
 operator|=
 name|gitRefUpdated
 expr_stmt|;
+name|this
+operator|.
+name|createGroupPermissionSyncer
+operator|=
+name|createGroupPermissionSyncer
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -760,6 +789,11 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|createGroupPermissionSyncer
+operator|.
+name|syncIfNeeded
+argument_list|()
 expr_stmt|;
 return|return
 name|projectAccessFactory

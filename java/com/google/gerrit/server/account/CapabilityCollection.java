@@ -427,6 +427,15 @@ name|PermissionRule
 argument_list|>
 name|queryLimit
 decl_stmt|;
+DECL|field|createGroup
+specifier|public
+specifier|final
+name|ImmutableList
+argument_list|<
+name|PermissionRule
+argument_list|>
+name|createGroup
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|CapabilityCollection ( SystemGroupBackend systemGroupBackend, @AdministrateServerGroups ImmutableSet<GroupReference> admins, @Assisted @Nullable AccessSection section)
@@ -783,6 +792,15 @@ argument_list|(
 name|GlobalCapability
 operator|.
 name|QUERY_LIMIT
+argument_list|)
+expr_stmt|;
+name|createGroup
+operator|=
+name|getPermission
+argument_list|(
+name|GlobalCapability
+operator|.
+name|CREATE_GROUP
 argument_list|)
 expr_stmt|;
 block|}
