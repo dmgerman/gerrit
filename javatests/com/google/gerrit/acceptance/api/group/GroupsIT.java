@@ -5028,14 +5028,14 @@ name|expectedGroups
 init|=
 name|groups
 operator|.
-name|getAll
+name|getAllGroupReferences
 argument_list|(
 name|db
 argument_list|)
 operator|.
 name|map
 argument_list|(
-name|InternalGroup
+name|GroupReference
 operator|::
 name|getName
 argument_list|)

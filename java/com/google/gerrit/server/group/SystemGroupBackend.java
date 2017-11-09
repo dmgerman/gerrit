@@ -412,6 +412,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -515,6 +525,20 @@ operator|.
 name|util
 operator|.
 name|TreeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
 import|;
 end_import
 
@@ -1504,7 +1528,7 @@ return|return;
 block|}
 name|Optional
 argument_list|<
-name|InternalGroup
+name|GroupReference
 argument_list|>
 name|conflictingGroup
 decl_stmt|;
@@ -1523,12 +1547,10 @@ name|conflictingGroup
 operator|=
 name|groups
 operator|.
-name|getAll
+name|getAllGroupReferences
 argument_list|(
 name|db
 argument_list|)
-comment|// TODO(aliceks): Filter the groups by name as early as possible and avoid loading
-comment|// them (if possible with NoteDb).
 operator|.
 name|filter
 argument_list|(
@@ -1549,6 +1571,10 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|IOException
+decl||
+name|ConfigInvalidException
 name|ignored
 parameter_list|)
 block|{
@@ -1562,7 +1588,7 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|InternalGroup
+name|GroupReference
 name|group
 init|=
 name|conflictingGroup
@@ -1600,7 +1626,7 @@ name|groupName
 argument_list|,
 name|group
 operator|.
-name|getGroupUUID
+name|getUUID
 argument_list|()
 argument_list|,
 name|systemGroupUuid
@@ -1609,7 +1635,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|hasConfiguredName ( Map<String, AccountGroup.UUID> byLowerCaseConfiguredName, InternalGroup group)
+DECL|method|hasConfiguredName ( Map<String, AccountGroup.UUID> byLowerCaseConfiguredName, GroupReference group)
 specifier|private
 specifier|static
 name|boolean
@@ -1625,7 +1651,7 @@ name|UUID
 argument_list|>
 name|byLowerCaseConfiguredName
 parameter_list|,
-name|InternalGroup
+name|GroupReference
 name|group
 parameter_list|)
 block|{
