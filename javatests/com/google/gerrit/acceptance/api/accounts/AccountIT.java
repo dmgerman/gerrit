@@ -8775,6 +8775,26 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|TestAccount
+name|oooUser
+init|=
+name|accountCreator
+operator|.
+name|create
+argument_list|(
+literal|"away"
+argument_list|,
+literal|"away@mail.invalid"
+argument_list|,
+literal|"Ambrose Way"
+argument_list|)
+decl_stmt|;
+name|setApiUser
+argument_list|(
+name|oooUser
+argument_list|)
+expr_stmt|;
+comment|// Must clone as oooUser to ensure the push is allowed.
 name|TestRepository
 argument_list|<
 name|InMemoryRepository
@@ -8784,6 +8804,8 @@ init|=
 name|cloneProject
 argument_list|(
 name|allUsers
+argument_list|,
+name|oooUser
 argument_list|)
 decl_stmt|;
 name|fetch
@@ -8794,7 +8816,7 @@ name|RefNames
 operator|.
 name|refsUsers
 argument_list|(
-name|admin
+name|oooUser
 operator|.
 name|id
 argument_list|)
@@ -8834,13 +8856,18 @@ argument_list|,
 literal|"out-of-office"
 argument_list|)
 expr_stmt|;
+name|accountIndexedCounter
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|pushFactory
 operator|.
 name|create
 argument_list|(
 name|db
 argument_list|,
-name|admin
+name|oooUser
 operator|.
 name|getIdent
 argument_list|()
@@ -8863,7 +8890,12 @@ name|to
 argument_list|(
 name|RefNames
 operator|.
-name|REFS_USERS_SELF
+name|refsUsers
+argument_list|(
+name|oooUser
+operator|.
+name|id
+argument_list|)
 argument_list|)
 operator|.
 name|assertOkStatus
@@ -8873,7 +8905,7 @@ name|accountIndexedCounter
 operator|.
 name|assertReindexOf
 argument_list|(
-name|admin
+name|oooUser
 argument_list|)
 expr_stmt|;
 name|AccountInfo
@@ -8899,7 +8931,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|admin
+name|oooUser
 operator|.
 name|email
 argument_list|)
@@ -8913,7 +8945,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|admin
+name|oooUser
 operator|.
 name|fullName
 argument_list|)
@@ -12871,7 +12903,7 @@ literal|"Administrators"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//TODO: update when test user is fixed to be included in "Anonymous Users" and
+comment|// TODO: update when test user is fixed to be included in "Anonymous Users" and
 comment|//      "Registered Users" groups
 name|assertGroups
 argument_list|(
@@ -14054,6 +14086,7 @@ return|return
 name|ac
 return|;
 block|}
+comment|/** Checks if an account is indexed the correct number of times. */
 DECL|class|AccountIndexedCounter
 specifier|private
 specifier|static
