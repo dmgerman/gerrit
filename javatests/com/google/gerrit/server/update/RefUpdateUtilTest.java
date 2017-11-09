@@ -463,6 +463,9 @@ throws|throws
 name|Exception
 block|{
 name|checkResults
+argument_list|()
+expr_stmt|;
+name|checkResults
 argument_list|(
 name|OK
 argument_list|)
