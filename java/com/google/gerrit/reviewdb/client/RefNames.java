@@ -264,6 +264,16 @@ name|REFS_GROUPS
 init|=
 literal|"refs/groups/"
 decl_stmt|;
+comment|/** NoteDb ref for the NoteMap of all group names */
+DECL|field|REFS_GROUPNAMES
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_GROUPNAMES
+init|=
+literal|"refs/meta/group-names"
+decl_stmt|;
 comment|/** Draft inline comments of a user on a change */
 DECL|field|REFS_DRAFT_COMMENTS
 specifier|public
