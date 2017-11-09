@@ -110,6 +110,20 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|CommitBuilder
+import|;
+end_import
+
 begin_interface
 annotation|@
 name|FunctionalInterface
@@ -118,6 +132,7 @@ specifier|public
 interface|interface
 name|MetaDataUpdateFactory
 block|{
+comment|/**    * Create a {@link MetaDataUpdate} for the given project.    *    *<p>The {@link CommitBuilder} of the returned {@link MetaDataUpdate} must have author and    * committer set.    *    * @param projectName The project for which meta data should be updated.    * @return A new {@link MetaDataUpdate} instance for the given project.    */
 DECL|method|create (Project.NameKey projectName)
 name|MetaDataUpdate
 name|create
