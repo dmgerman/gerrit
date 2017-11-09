@@ -776,7 +776,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|asInternalGroup (ReviewDb db, AccountGroup accountGroup)
-specifier|private
+specifier|public
 specifier|static
 name|InternalGroup
 name|asInternalGroup
