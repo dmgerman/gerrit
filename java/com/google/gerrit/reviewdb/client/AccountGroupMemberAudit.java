@@ -484,6 +484,36 @@ return|return
 name|key
 return|;
 block|}
+DECL|method|getGroupId ()
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|getGroupId
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|getGroupId
+argument_list|()
+return|;
+block|}
+DECL|method|getMemberId ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getMemberId
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|getParentKey
+argument_list|()
+return|;
+block|}
 DECL|method|isActive ()
 specifier|public
 name|boolean
@@ -546,6 +576,19 @@ parameter_list|()
 block|{
 return|return
 name|addedBy
+return|;
+block|}
+DECL|method|getAddedOn ()
+specifier|public
+name|Timestamp
+name|getAddedOn
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|getAddedOn
+argument_list|()
 return|;
 block|}
 DECL|method|getRemovedBy ()
