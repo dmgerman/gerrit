@@ -912,6 +912,9 @@ operator|&&
 operator|!
 name|allProjects
 operator|.
+name|get
+argument_list|()
+operator|.
 name|equals
 argument_list|(
 name|newParent
