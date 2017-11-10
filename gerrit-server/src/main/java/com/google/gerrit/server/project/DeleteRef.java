@@ -104,6 +104,22 @@ name|lib
 operator|.
 name|Constants
 operator|.
+name|R_REFS
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
+operator|.
 name|R_TAGS
 import|;
 end_import
@@ -908,7 +924,7 @@ name|ref
 operator|.
 name|startsWith
 argument_list|(
-name|prefix
+name|R_REFS
 argument_list|)
 condition|)
 block|{
@@ -1262,7 +1278,7 @@ name|ref
 operator|.
 name|startsWith
 argument_list|(
-name|prefix
+name|R_REFS
 argument_list|)
 condition|?
 name|ref
