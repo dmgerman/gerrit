@@ -1307,7 +1307,7 @@ name|getObjectId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|boolean
+name|Boolean
 name|canDelete
 init|=
 name|perm
@@ -1318,6 +1318,10 @@ name|RefPermission
 operator|.
 name|DELETE
 argument_list|)
+condition|?
+literal|true
+else|:
+literal|null
 decl_stmt|;
 name|List
 argument_list|<
