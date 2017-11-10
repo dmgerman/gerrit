@@ -120,6 +120,17 @@ parameter_list|()
 throws|throws
 name|OrmException
 function_decl|;
+comment|/** @return read from the database and return the raw results. */
+DECL|method|readRaw ()
+name|ResultSet
+argument_list|<
+name|FieldBundle
+argument_list|>
+name|readRaw
+parameter_list|()
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
