@@ -188,7 +188,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|diff
 operator|.
 name|PatchList
 import|;
@@ -204,7 +204,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|diff
 operator|.
 name|PatchListCache
 import|;
@@ -220,7 +220,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|diff
 operator|.
 name|PatchListEntry
 import|;
@@ -236,7 +236,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|diff
 operator|.
 name|PatchListKey
 import|;
@@ -252,7 +252,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|diff
 operator|.
 name|PatchListNotAvailableException
 import|;

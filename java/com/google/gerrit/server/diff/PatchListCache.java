@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.patch
+DECL|package|com.google.gerrit.server.diff
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|diff
 package|;
 end_package
 
@@ -72,11 +72,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|auto
+name|gerrit
 operator|.
-name|value
+name|reviewdb
 operator|.
-name|AutoValue
+name|client
+operator|.
+name|Change
 import|;
 end_import
 
@@ -88,23 +90,27 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|reviewdb
 operator|.
 name|client
 operator|.
-name|DiffPreferencesInfo
-operator|.
-name|Whitespace
+name|PatchSet
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|io
+name|google
 operator|.
-name|Serializable
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
 import|;
 end_import
 
@@ -122,77 +128,88 @@ name|ObjectId
 import|;
 end_import
 
-begin_class
-annotation|@
-name|AutoValue
-DECL|class|IntraLineDiffKey
+begin_comment
+comment|/** Provides a cached list of {@link PatchListEntry}. */
+end_comment
+
+begin_interface
+DECL|interface|PatchListCache
 specifier|public
-specifier|abstract
-class|class
-name|IntraLineDiffKey
-implements|implements
-name|Serializable
+interface|interface
+name|PatchListCache
 block|{
-DECL|field|serialVersionUID
-specifier|public
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|8L
-decl_stmt|;
-DECL|method|create (ObjectId aId, ObjectId bId, Whitespace whitespace)
-specifier|public
-specifier|static
-name|IntraLineDiffKey
-name|create
+DECL|method|get (PatchListKey key, Project.NameKey project)
+name|PatchList
+name|get
 parameter_list|(
-name|ObjectId
-name|aId
+name|PatchListKey
+name|key
 parameter_list|,
-name|ObjectId
-name|bId
-parameter_list|,
-name|Whitespace
-name|whitespace
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|)
-block|{
-return|return
-operator|new
-name|AutoValue_IntraLineDiffKey
-argument_list|(
-name|aId
-argument_list|,
-name|bId
-argument_list|,
-name|whitespace
-argument_list|)
-return|;
-block|}
-DECL|method|getBlobA ()
-specifier|public
-specifier|abstract
+throws|throws
+name|PatchListNotAvailableException
+function_decl|;
+DECL|method|get (Change change, PatchSet patchSet)
+name|PatchList
+name|get
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|)
+throws|throws
+name|PatchListNotAvailableException
+function_decl|;
+DECL|method|getOldId (Change change, PatchSet patchSet, Integer parentNum)
 name|ObjectId
-name|getBlobA
-parameter_list|()
+name|getOldId
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|,
+name|Integer
+name|parentNum
+parameter_list|)
+throws|throws
+name|PatchListNotAvailableException
 function_decl|;
-DECL|method|getBlobB ()
-specifier|public
-specifier|abstract
-name|ObjectId
-name|getBlobB
-parameter_list|()
+DECL|method|getIntraLineDiff (IntraLineDiffKey key, IntraLineDiffArgs args)
+name|IntraLineDiff
+name|getIntraLineDiff
+parameter_list|(
+name|IntraLineDiffKey
+name|key
+parameter_list|,
+name|IntraLineDiffArgs
+name|args
+parameter_list|)
 function_decl|;
-DECL|method|getWhitespace ()
-specifier|public
-specifier|abstract
-name|Whitespace
-name|getWhitespace
-parameter_list|()
+DECL|method|getDiffSummary (DiffSummaryKey key, Project.NameKey project)
+name|DiffSummary
+name|getDiffSummary
+parameter_list|(
+name|DiffSummaryKey
+name|key
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|)
+throws|throws
+name|PatchListNotAvailableException
 function_decl|;
 block|}
-end_class
+end_interface
 
 end_unit
 

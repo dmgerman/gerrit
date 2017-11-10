@@ -120,9 +120,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|diff
 operator|.
-name|GitRepositoryManager
+name|PatchListCache
 import|;
 end_import
 
@@ -136,9 +136,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|git
 operator|.
-name|PatchListCache
+name|GitRepositoryManager
 import|;
 end_import
 
