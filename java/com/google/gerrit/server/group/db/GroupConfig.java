@@ -1388,17 +1388,12 @@ operator|.
 name|isPresent
 argument_list|()
 argument_list|,
-name|String
-operator|.
-name|format
-argument_list|(
 literal|"Cannot update non-existent group %s"
 argument_list|,
 name|groupUuid
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|createdOn
@@ -1580,17 +1575,12 @@ name|checkState
 argument_list|(
 name|isLoaded
 argument_list|,
-name|String
-operator|.
-name|format
-argument_list|(
 literal|"Group %s not loaded yet"
 argument_list|,
 name|groupUuid
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
