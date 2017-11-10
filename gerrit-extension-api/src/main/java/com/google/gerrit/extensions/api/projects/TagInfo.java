@@ -141,7 +141,7 @@ name|WebLinkInfo
 argument_list|>
 name|webLinks
 decl_stmt|;
-DECL|method|TagInfo (String ref, String revision, boolean canDelete, List<WebLinkInfo> webLinks)
+DECL|method|TagInfo (String ref, String revision, Boolean canDelete, List<WebLinkInfo> webLinks)
 specifier|public
 name|TagInfo
 parameter_list|(
@@ -151,7 +151,7 @@ parameter_list|,
 name|String
 name|revision
 parameter_list|,
-name|boolean
+name|Boolean
 name|canDelete
 parameter_list|,
 name|List
@@ -186,7 +186,7 @@ operator|=
 name|webLinks
 expr_stmt|;
 block|}
-DECL|method|TagInfo ( String ref, String revision, String object, String message, GitPerson tagger, boolean canDelete, List<WebLinkInfo> webLinks)
+DECL|method|TagInfo ( String ref, String revision, String object, String message, GitPerson tagger, Boolean canDelete, List<WebLinkInfo> webLinks)
 specifier|public
 name|TagInfo
 parameter_list|(
@@ -205,7 +205,7 @@ parameter_list|,
 name|GitPerson
 name|tagger
 parameter_list|,
-name|boolean
+name|Boolean
 name|canDelete
 parameter_list|,
 name|List
