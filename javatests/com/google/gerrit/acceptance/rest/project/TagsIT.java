@@ -1526,7 +1526,7 @@ operator|.
 name|canDelete
 argument_list|)
 operator|.
-name|isFalse
+name|isNull
 argument_list|()
 expr_stmt|;
 name|eventRecorder
