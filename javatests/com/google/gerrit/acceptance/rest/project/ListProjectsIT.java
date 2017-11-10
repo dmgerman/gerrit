@@ -360,22 +360,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|AllUsersName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|ProjectConfig
@@ -397,18 +381,6 @@ operator|.
 name|testing
 operator|.
 name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
 import|;
 end_import
 
@@ -454,13 +426,6 @@ name|ListProjectsIT
 extends|extends
 name|AbstractDaemonTest
 block|{
-DECL|field|allUsers
-annotation|@
-name|Inject
-specifier|private
-name|AllUsersName
-name|allUsers
-decl_stmt|;
 annotation|@
 name|Test
 DECL|method|listProjects ()
