@@ -2018,7 +2018,6 @@ name|subgroups
 argument_list|)
 argument_list|)
 decl_stmt|;
-empty_stmt|;
 if|if
 condition|(
 name|updatedSubgroups
