@@ -304,9 +304,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|api
-operator|.
-name|accounts
+name|account
 operator|.
 name|GpgApiAdapter
 import|;
