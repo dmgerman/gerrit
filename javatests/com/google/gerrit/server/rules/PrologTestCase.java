@@ -394,11 +394,23 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_comment
 comment|/** Base class for any tests written in Prolog. */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
 DECL|class|PrologTestCase
 specifier|public
 specifier|abstract
