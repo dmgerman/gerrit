@@ -721,11 +721,6 @@ return|return
 name|info
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|addInternalDetails ( GroupInfo info, GroupDescription.Internal internalGroup, Supplier<GroupControl> groupControlSupplier)
 specifier|private
 name|void

@@ -3370,11 +3370,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|format (Iterable<GroupInfo> groups)
 specifier|protected
 name|String

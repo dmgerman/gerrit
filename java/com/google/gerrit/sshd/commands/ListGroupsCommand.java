@@ -446,11 +446,6 @@ condition|(
 name|verboseOutput
 condition|)
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 name|Optional
 argument_list|<
 name|InternalGroup
