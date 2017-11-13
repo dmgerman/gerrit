@@ -1077,6 +1077,25 @@ name|REFS_USERS
 argument_list|)
 return|;
 block|}
+DECL|method|isRefsGroups (String ref)
+specifier|public
+specifier|static
+name|boolean
+name|isRefsGroups
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+block|{
+return|return
+name|ref
+operator|.
+name|startsWith
+argument_list|(
+name|REFS_GROUPS
+argument_list|)
+return|;
+block|}
 DECL|method|parseShardedRefPart (String name)
 specifier|static
 name|Integer

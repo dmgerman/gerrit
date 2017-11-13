@@ -803,6 +803,7 @@ return|return
 name|isOwner
 return|;
 block|}
+comment|// Keep this logic in sync with VisibleRefFilter#isOwner(...).
 if|if
 condition|(
 name|group
