@@ -222,7 +222,7 @@ name|gitPerson
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|creationDate ()
+DECL|method|date ()
 specifier|public
 name|ComparableSubject
 argument_list|<
@@ -230,7 +230,7 @@ name|?
 argument_list|,
 name|Timestamp
 argument_list|>
-name|creationDate
+name|date
 parameter_list|()
 block|{
 name|isNotNull

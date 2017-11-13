@@ -2230,7 +2230,7 @@ operator|.
 name|committer
 argument_list|()
 operator|.
-name|creationDate
+name|date
 argument_list|()
 operator|.
 name|isNotEqualTo
@@ -2436,7 +2436,7 @@ operator|.
 name|committer
 argument_list|()
 operator|.
-name|creationDate
+name|date
 argument_list|()
 operator|.
 name|isNotEqualTo
