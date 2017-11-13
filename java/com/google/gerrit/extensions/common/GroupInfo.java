@@ -116,15 +116,11 @@ name|Integer
 name|groupId
 decl_stmt|;
 DECL|field|owner
-annotation|@
-name|Deprecated
 specifier|public
 name|String
 name|owner
 decl_stmt|;
 DECL|field|ownerId
-annotation|@
-name|Deprecated
 specifier|public
 name|String
 name|ownerId
