@@ -331,6 +331,106 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** {@link AutoCloseable} handle returned by {@link #withClockStep(long, TimeUnit)}. */
+DECL|class|TempClockStep
+specifier|public
+specifier|static
+class|class
+name|TempClockStep
+implements|implements
+name|AutoCloseable
+block|{
+DECL|field|oldClockStepMs
+specifier|private
+specifier|final
+name|long
+name|oldClockStepMs
+decl_stmt|;
+DECL|method|TempClockStep (long clockStep, TimeUnit clockStepUnit)
+specifier|private
+name|TempClockStep
+parameter_list|(
+name|long
+name|clockStep
+parameter_list|,
+name|TimeUnit
+name|clockStepUnit
+parameter_list|)
+block|{
+name|oldClockStepMs
+operator|=
+name|clockStepMs
+expr_stmt|;
+name|setClockStep
+argument_list|(
+name|clockStep
+argument_list|,
+name|clockStepUnit
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|close ()
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{
+name|setClockStep
+argument_list|(
+name|oldClockStepMs
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/**    * Set a clock step only for the scope of a single try-with-resources block.    *    * @param clockStep amount to increment clock by on each lookup.    * @param clockStepUnit time unit for {@code clockStep}.    * @return {@link AutoCloseable} handle which resets the clock step to its old value on close.    */
+DECL|method|withClockStep (long clockStep, TimeUnit clockStepUnit)
+specifier|public
+specifier|static
+name|TempClockStep
+name|withClockStep
+parameter_list|(
+name|long
+name|clockStep
+parameter_list|,
+name|TimeUnit
+name|clockStepUnit
+parameter_list|)
+block|{
+return|return
+operator|new
+name|TempClockStep
+argument_list|(
+name|clockStep
+argument_list|,
+name|clockStepUnit
+argument_list|)
+return|;
+block|}
+comment|/**    * Freeze the clock to stop moving only for the scope of a single try-with-resources block.    *    * @return {@link AutoCloseable} handle which resets the clock step to its old value on close.    */
+DECL|method|freezeClock ()
+specifier|public
+specifier|static
+name|TempClockStep
+name|freezeClock
+parameter_list|()
+block|{
+return|return
+name|withClockStep
+argument_list|(
+literal|0
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+return|;
+block|}
 comment|/**    * Set the clock to a specific timestamp.    *    * @param ts time to set    */
 DECL|method|setClock (Timestamp ts)
 specifier|public
