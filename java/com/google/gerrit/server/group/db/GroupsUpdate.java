@@ -308,6 +308,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -547,22 +563,6 @@ operator|.
 name|group
 operator|.
 name|InternalGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ProjectCache
 import|;
 end_import
 
@@ -817,12 +817,6 @@ operator|.
 name|Factory
 name|renameGroupOpFactory
 decl_stmt|;
-DECL|field|projectCache
-specifier|private
-specifier|final
-name|ProjectCache
-name|projectCache
-decl_stmt|;
 DECL|field|serverId
 specifier|private
 specifier|final
@@ -857,7 +851,7 @@ name|writeGroupsToNoteDb
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, GroupCache groupCache, GroupIncludeCache groupIncludeCache, AuditService auditService, AccountCache accountCache, @AnonymousCowardName String anonymousCowardName, RenameGroupOp.Factory renameGroupOpFactory, ProjectCache projectCache, @GerritServerId String serverId, @GerritPersonIdent PersonIdent serverIdent, MetaDataUpdate.User metaDataUpdateUserFactory, MetaDataUpdate.Server metaDataUpdateServerFactory, @GerritServerConfig Config config, @Assisted @Nullable IdentifiedUser currentUser)
+DECL|method|GroupsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, GroupCache groupCache, GroupIncludeCache groupIncludeCache, AuditService auditService, AccountCache accountCache, @AnonymousCowardName String anonymousCowardName, RenameGroupOp.Factory renameGroupOpFactory, @GerritServerId String serverId, @GerritPersonIdent PersonIdent serverIdent, MetaDataUpdate.User metaDataUpdateUserFactory, MetaDataUpdate.Server metaDataUpdateServerFactory, @GerritServerConfig Config config, @Assisted @Nullable IdentifiedUser currentUser)
 name|GroupsUpdate
 parameter_list|(
 name|GitRepositoryManager
@@ -887,9 +881,6 @@ name|RenameGroupOp
 operator|.
 name|Factory
 name|renameGroupOpFactory
-parameter_list|,
-name|ProjectCache
-name|projectCache
 parameter_list|,
 annotation|@
 name|GerritServerId
@@ -971,12 +962,6 @@ operator|.
 name|renameGroupOpFactory
 operator|=
 name|renameGroupOpFactory
-expr_stmt|;
-name|this
-operator|.
-name|projectCache
-operator|=
-name|projectCache
 expr_stmt|;
 name|this
 operator|.
@@ -1639,22 +1624,14 @@ argument_list|)
 expr_stmt|;
 name|groupUpdate
 operator|.
-name|getOwnerGroupReference
+name|getOwnerGroupUUID
 argument_list|()
 operator|.
 name|ifPresent
 argument_list|(
-name|r
-lambda|->
 name|group
-operator|.
+operator|::
 name|setOwnerGroupUUID
-argument_list|(
-name|r
-operator|.
-name|getUUID
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|groupUpdate
@@ -1826,11 +1803,6 @@ operator|.
 name|setModifiedSubgroups
 argument_list|(
 name|modifiedSubgroups
-argument_list|)
-operator|.
-name|setProjectPermissionsModified
-argument_list|(
-literal|false
 argument_list|)
 decl_stmt|;
 if|if
@@ -2706,13 +2678,9 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
-name|allUsersName
-argument_list|,
 name|allUsersRepo
 argument_list|,
 name|groupCreation
-argument_list|,
-name|metaDataUpdateFactory
 argument_list|)
 decl_stmt|;
 comment|// TODO(aliceks): Find a way to ensure unique names with NoteDb.
@@ -2796,13 +2764,9 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
-name|allUsersName
-argument_list|,
 name|allUsersRepo
 argument_list|,
 name|groupUuid
-argument_list|,
-name|metaDataUpdateFactory
 argument_list|)
 decl_stmt|;
 if|if
@@ -2950,25 +2914,6 @@ name|getSubgroups
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|boolean
-name|ownerModified
-init|=
-operator|!
-name|Objects
-operator|.
-name|equals
-argument_list|(
-name|originalGroup
-operator|.
-name|getOwnerGroupUUID
-argument_list|()
-argument_list|,
-name|updatedGroup
-operator|.
-name|getOwnerGroupUUID
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|UpdateResult
 operator|.
 name|Builder
@@ -3011,11 +2956,6 @@ operator|.
 name|setModifiedSubgroups
 argument_list|(
 name|modifiedSubgroups
-argument_list|)
-operator|.
-name|setProjectPermissionsModified
-argument_list|(
-name|ownerModified
 argument_list|)
 decl_stmt|;
 if|if
@@ -3355,20 +3295,6 @@ name|modifiedSubgroup
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|writeGroupsToNoteDb
-condition|)
-block|{
-comment|// Creating a group in NoteDb changes the owner permissions which are cached in ProjectState.
-name|projectCache
-operator|.
-name|evict
-argument_list|(
-name|allUsersName
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|updateCachesOnGroupUpdate (UpdateResult result)
 specifier|private
@@ -3521,24 +3447,26 @@ name|modifiedSubgroup
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|result
-operator|.
-name|isProjectPermissionsModified
-argument_list|()
-condition|)
-block|{
-comment|// Updating the group in NoteDb may update the owner permissions which are cached in
-comment|// ProjectState.
-name|projectCache
-operator|.
-name|evict
-argument_list|(
-name|allUsersName
-argument_list|)
-expr_stmt|;
 block|}
+annotation|@
+name|FunctionalInterface
+DECL|interface|MetaDataUpdateFactory
+specifier|private
+interface|interface
+name|MetaDataUpdateFactory
+block|{
+DECL|method|create (Project.NameKey projectName)
+name|MetaDataUpdate
+name|create
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 block|}
 annotation|@
 name|AutoValue
@@ -3603,12 +3531,6 @@ operator|.
 name|UUID
 argument_list|>
 name|getModifiedSubgroups
-parameter_list|()
-function_decl|;
-DECL|method|isProjectPermissionsModified ()
-specifier|abstract
-name|boolean
-name|isProjectPermissionsModified
 parameter_list|()
 function_decl|;
 DECL|method|builder ()
@@ -3705,15 +3627,6 @@ operator|.
 name|UUID
 argument_list|>
 name|modifiedSubgroups
-parameter_list|)
-function_decl|;
-DECL|method|setProjectPermissionsModified (boolean modified)
-specifier|abstract
-name|Builder
-name|setProjectPermissionsModified
-parameter_list|(
-name|boolean
-name|modified
 parameter_list|)
 function_decl|;
 DECL|method|build ()
