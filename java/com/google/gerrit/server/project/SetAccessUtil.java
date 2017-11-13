@@ -334,22 +334,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RefNames
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -369,22 +353,6 @@ operator|.
 name|config
 operator|.
 name|AllProjectsName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AllUsersName
 import|;
 end_import
 
@@ -532,12 +500,6 @@ specifier|final
 name|AllProjectsName
 name|allProjects
 decl_stmt|;
-DECL|field|allUsers
-specifier|private
-specifier|final
-name|AllUsersName
-name|allUsers
-decl_stmt|;
 DECL|field|setParent
 specifier|private
 specifier|final
@@ -549,7 +511,7 @@ name|setParent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetAccessUtil ( GroupsCollection groupsCollection, AllProjectsName allProjects, AllUsersName allUsers, Provider<SetParent> setParent)
+DECL|method|SetAccessUtil ( GroupsCollection groupsCollection, AllProjectsName allProjects, Provider<SetParent> setParent)
 specifier|private
 name|SetAccessUtil
 parameter_list|(
@@ -558,9 +520,6 @@ name|groupsCollection
 parameter_list|,
 name|AllProjectsName
 name|allProjects
-parameter_list|,
-name|AllUsersName
-name|allUsers
 parameter_list|,
 name|Provider
 argument_list|<
@@ -580,12 +539,6 @@ operator|.
 name|allProjects
 operator|=
 name|allProjects
-expr_stmt|;
-name|this
-operator|.
-name|allUsers
-operator|=
-name|allUsers
 expr_stmt|;
 name|this
 operator|.
@@ -955,7 +908,7 @@ return|return
 name|sections
 return|;
 block|}
-comment|/**    * Checks that the removals and additions are logically valid, but doesn't check current user's    * permission. In addition, checks that no Gerrit-managed permissions are added or removed.    */
+comment|/**    * Checks that the removals and additions are logically valid, but doesn't check current user's    * permission.    */
 DECL|method|validateChanges ( ProjectConfig config, List<AccessSection> removals, List<AccessSection> additions)
 name|void
 name|validateChanges
@@ -1043,46 +996,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-block|}
-if|if
-condition|(
-name|isGroupsMutationDisallowed
-argument_list|(
-name|config
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-operator|&&
-name|section
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-name|RefNames
-operator|.
-name|REFS_GROUPS
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|BadRequestException
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Permissions on %s is managed by Gerrit and cannot be modified"
-argument_list|,
-name|RefNames
-operator|.
-name|REFS_GROUPS
-argument_list|)
-argument_list|)
-throw|;
 block|}
 block|}
 comment|// Perform addition checks
@@ -1558,33 +1471,6 @@ name|newParentProjectName
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-DECL|method|isGroupsMutationDisallowed (Project.NameKey project)
-specifier|private
-name|boolean
-name|isGroupsMutationDisallowed
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|)
-block|{
-return|return
-name|allProjects
-operator|.
-name|equals
-argument_list|(
-name|project
-argument_list|)
-operator|||
-name|allUsers
-operator|.
-name|equals
-argument_list|(
-name|project
-argument_list|)
-return|;
 block|}
 block|}
 end_class
