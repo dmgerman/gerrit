@@ -150,21 +150,23 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|Locale
+name|inject
+operator|.
+name|Singleton
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|inject
+name|util
 operator|.
-name|Singleton
+name|Locale
 import|;
 end_import
 
