@@ -1075,7 +1075,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"permissions on %s are managed by gerrit and cannot be modified"
+literal|"Permissions on %s is managed by Gerrit and cannot be modified"
 argument_list|,
 name|RefNames
 operator|.
