@@ -214,22 +214,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Project
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|SystemConfig
 import|;
 end_import
@@ -1199,6 +1183,9 @@ argument_list|,
 name|batchUsers
 argument_list|,
 name|admins
+operator|.
+name|getUUID
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1275,7 +1262,7 @@ name|groupUpdate
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createBatchUsersGroup ( ReviewDb db, Sequences seqs, Repository repository, GroupReference groupReference, GroupReference admins)
+DECL|method|createBatchUsersGroup ( ReviewDb db, Sequences seqs, Repository repository, GroupReference groupReference, AccountGroup.UUID adminsGroupUuid)
 specifier|private
 name|void
 name|createBatchUsersGroup
@@ -1292,8 +1279,10 @@ parameter_list|,
 name|GroupReference
 name|groupReference
 parameter_list|,
-name|GroupReference
-name|admins
+name|AccountGroup
+operator|.
+name|UUID
+name|adminsGroupUuid
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1325,9 +1314,9 @@ argument_list|(
 literal|"Users who perform batch actions on Gerrit"
 argument_list|)
 operator|.
-name|setOwnerGroupReference
+name|setOwnerGroupUUID
 argument_list|(
-name|admins
+name|adminsGroupUuid
 argument_list|)
 operator|.
 name|build
@@ -1523,18 +1512,9 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
-name|allUsersName
-argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
-argument_list|,
-name|p
-lambda|->
-name|createMetaDataUpdate
-argument_list|(
-name|p
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// We don't add any initial members or subgroups and hence the provided functions should never
@@ -1594,40 +1574,6 @@ literal|"Created group wasn't automatically loaded"
 argument_list|)
 argument_list|)
 return|;
-block|}
-DECL|method|createMetaDataUpdate (Project.NameKey project)
-specifier|private
-name|MetaDataUpdate
-name|createMetaDataUpdate
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-try|try
-init|(
-name|Repository
-name|repository
-init|=
-name|repoManager
-operator|.
-name|openRepository
-argument_list|(
-name|project
-argument_list|)
-init|)
-block|{
-return|return
-name|createMetaDataUpdate
-argument_list|(
-name|repository
-argument_list|)
-return|;
-block|}
 block|}
 DECL|method|createMetaDataUpdate (Repository repository)
 specifier|private

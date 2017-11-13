@@ -215,9 +215,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * @return owning group info.    * @deprecated for groups in NoteDb, use READ/PUSH permissions on the group ref to express    *     ownership.    */
-annotation|@
-name|Deprecated
+comment|/** @return owning group info. */
 DECL|method|owner ()
 name|GroupInfo
 name|owner
@@ -225,9 +223,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Set group owner.    *    * @param owner identifier of new group owner.    * @throws RestApiException    * @deprecated for groups in NoteDb, use READ/PUSH permissions on the group ref to express    *     ownership.    */
-annotation|@
-name|Deprecated
+comment|/**    * Set group owner.    *    * @param owner identifier of new group owner.    * @throws RestApiException    */
 DECL|method|owner (String owner)
 name|void
 name|owner

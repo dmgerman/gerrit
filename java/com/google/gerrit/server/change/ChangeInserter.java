@@ -3579,8 +3579,6 @@ name|ctx
 operator|.
 name|getRevWalk
 argument_list|()
-argument_list|,
-name|projectState
 argument_list|)
 operator|.
 name|validate
