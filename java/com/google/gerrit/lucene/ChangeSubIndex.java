@@ -630,6 +630,8 @@ argument_list|)
 throw|;
 block|}
 comment|// Make method public so that it can be used in LuceneChangeIndex
+annotation|@
+name|Override
 DECL|method|toFieldBundle (Document doc)
 specifier|public
 name|FieldBundle
