@@ -2640,7 +2640,7 @@ argument_list|(
 name|req
 argument_list|)
 decl_stmt|;
-comment|// Special case assets during development that are built by Buck and not
+comment|// Special case assets during development that are built by Bazel and not
 comment|// served out of the source tree.
 comment|//
 comment|// In the war case, these are either inlined by vulcanize, or live under
