@@ -734,12 +734,12 @@ argument_list|,
 name|newCommandLine
 argument_list|)
 decl_stmt|;
+name|ctx
+operator|.
 name|cleanup
 operator|.
 name|add
 argument_list|(
-name|ctx
-operator|.
 name|cleanup
 argument_list|)
 expr_stmt|;
