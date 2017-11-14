@@ -503,7 +503,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A database accessor for read calls related to groups.  *  *<p>All calls which read group related details from the database (either ReviewDb or NoteDb) are  * gathered here. Other classes should always use this class instead of accessing the database  * directly. There are a few exceptions though: schema classes, wrapper classes, and classes  * executed during init. The latter ones should use {@code GroupsOnInit} instead.  *  *<p>If not explicitly stated, all methods of this class refer to<em>internal</em> groups.  */
+comment|/**  * A database accessor for read calls related to groups.  *  *<p>All calls which read group related details from the database (either ReviewDb or NoteDb) are  * gathered here. Other classes should always use this class instead of accessing the database  * directly. There are a few exceptions though: schema classes, wrapper classes, and classes  * executed during init. The latter ones should use {@code GroupsOnInit} instead.  *  *<p>Most callers should not need to read groups directly from the database; they should use the  * {@link com.google.gerrit.server.account.GroupCache GroupCache} instead.  *  *<p>If not explicitly stated, all methods of this class refer to<em>internal</em> groups.  */
 end_comment
 
 begin_class
