@@ -4645,6 +4645,23 @@ name|arr
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|Arrays
+operator|.
+name|hashCode
+argument_list|(
+name|arr
+argument_list|)
+return|;
+block|}
 block|}
 block|}
 end_class
