@@ -4577,6 +4577,7 @@ block|}
 comment|/** Boiler plate code to check two byte arrays for equality */
 DECL|class|ByteArrayWrapper
 specifier|private
+specifier|static
 class|class
 name|ByteArrayWrapper
 block|{

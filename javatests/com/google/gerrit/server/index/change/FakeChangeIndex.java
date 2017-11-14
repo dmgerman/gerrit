@@ -274,6 +274,7 @@ name|ChangeIndex
 block|{
 DECL|field|V1
 specifier|static
+specifier|final
 name|Schema
 argument_list|<
 name|ChangeData
@@ -306,6 +307,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|V2
 specifier|static
+specifier|final
 name|Schema
 argument_list|<
 name|ChangeData
