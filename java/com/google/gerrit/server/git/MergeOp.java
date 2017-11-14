@@ -1295,7 +1295,7 @@ name|SUBMIT_RULE_OPTIONS
 init|=
 name|SubmitRuleOptions
 operator|.
-name|defaults
+name|builder
 argument_list|()
 operator|.
 name|build
