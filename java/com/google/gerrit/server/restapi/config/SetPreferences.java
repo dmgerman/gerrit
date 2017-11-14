@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.config
+DECL|package|com.google.gerrit.server.restapi.config
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|restapi
 operator|.
 name|config
 package|;
@@ -129,6 +131,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|restapi
 operator|.
 name|config
 operator|.
@@ -263,6 +267,38 @@ operator|.
 name|account
 operator|.
 name|VersionedAccountPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|ConfigResource
 import|;
 end_import
 

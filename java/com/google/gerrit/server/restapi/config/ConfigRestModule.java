@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.config
+DECL|package|com.google.gerrit.server.restapi.config
 package|package
 name|com
 operator|.
@@ -62,27 +62,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|config
 package|;
 end_package
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|CapabilityResource
-operator|.
-name|CAPABILITY_KIND
-import|;
-end_import
 
 begin_import
 import|import static
@@ -121,24 +105,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|TopMenuResource
-operator|.
-name|TOP_MENU_KIND
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -170,11 +136,43 @@ name|RestApiModule
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|CapabilityResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|TopMenuResource
+import|;
+end_import
+
 begin_class
-DECL|class|Module
+DECL|class|ConfigRestModule
 specifier|public
 class|class
-name|Module
+name|ConfigRestModule
 extends|extends
 name|RestApiModule
 block|{
@@ -193,6 +191,8 @@ argument_list|(
 name|binder
 argument_list|()
 argument_list|,
+name|CapabilityResource
+operator|.
 name|CAPABILITY_KIND
 argument_list|)
 expr_stmt|;
@@ -223,6 +223,8 @@ argument_list|(
 name|binder
 argument_list|()
 argument_list|,
+name|TopMenuResource
+operator|.
 name|TOP_MENU_KIND
 argument_list|)
 expr_stmt|;

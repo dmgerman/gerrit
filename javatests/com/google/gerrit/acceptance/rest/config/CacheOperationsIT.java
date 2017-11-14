@@ -94,6 +94,26 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|group
+operator|.
+name|SystemGroupBackend
+operator|.
+name|REGISTERED_USERS
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|restapi
+operator|.
 name|config
 operator|.
 name|PostCaches
@@ -114,6 +134,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|config
 operator|.
 name|PostCaches
@@ -121,24 +143,6 @@ operator|.
 name|Operation
 operator|.
 name|FLUSH_ALL
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|group
-operator|.
-name|SystemGroupBackend
-operator|.
-name|REGISTERED_USERS
 import|;
 end_import
 
@@ -196,6 +200,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|config
 operator|.
 name|ListCaches
@@ -213,6 +219,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|restapi
 operator|.
 name|config
 operator|.
