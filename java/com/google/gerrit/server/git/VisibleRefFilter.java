@@ -1076,6 +1076,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|projectState
+operator|.
+name|isAllUsers
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
 name|checkProjectPermission
 argument_list|(
 name|forProject
@@ -1109,6 +1118,7 @@ argument_list|(
 name|refs
 argument_list|)
 return|;
+block|}
 block|}
 name|Account
 operator|.

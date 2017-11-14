@@ -955,8 +955,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Remove read permissions for all users besides admin. This method is
-comment|// idempotent, so is safe to call on every test setup.
+comment|// Remove read permissions for all users besides admin. This method is idempotent, so is safe
+comment|// to call on every test setup.
 name|ProjectConfig
 name|pc
 init|=
@@ -1009,6 +1009,48 @@ expr_stmt|;
 name|saveProjectConfig
 argument_list|(
 name|allProjects
+argument_list|,
+name|pc
+argument_list|)
+expr_stmt|;
+comment|// Remove all read permissions on All-Users. This method is idempotent, so is safe to call on
+comment|// every test setup.
+name|pc
+operator|=
+name|projectCache
+operator|.
+name|checkedGet
+argument_list|(
+name|allUsers
+argument_list|)
+operator|.
+name|getConfig
+argument_list|()
+expr_stmt|;
+for|for
+control|(
+name|AccessSection
+name|sec
+range|:
+name|pc
+operator|.
+name|getAccessSections
+argument_list|()
+control|)
+block|{
+name|sec
+operator|.
+name|removePermission
+argument_list|(
+name|Permission
+operator|.
+name|READ
+argument_list|)
+expr_stmt|;
+block|}
+name|saveProjectConfig
+argument_list|(
+name|allUsers
 argument_list|,
 name|pc
 argument_list|)
@@ -3703,6 +3745,10 @@ argument_list|,
 name|RefNames
 operator|.
 name|REFS_EXTERNAL_IDS
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|)
 decl_stmt|;
 name|List
@@ -3778,11 +3824,6 @@ operator|.
 name|addAll
 argument_list|(
 name|expectedMetaRefs
-argument_list|)
-expr_stmt|;
-name|setApiUser
-argument_list|(
-name|user
 argument_list|)
 expr_stmt|;
 try|try
