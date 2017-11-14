@@ -1510,6 +1510,33 @@ name|ref
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|isRefsUsersSelf
+argument_list|(
+name|ref
+argument_list|)
+condition|)
+block|{
+comment|// viewMetadata allows to see all account refs, hence refs/users/self should be included as
+comment|// well
+if|if
+condition|(
+name|viewMetadata
+condition|)
+block|{
+name|result
+operator|.
+name|put
+argument_list|(
+name|name
+argument_list|,
+name|ref
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 comment|// If we have tags that were deferred, we need to do a revision walk
 comment|// to identify what tags we can actually reach, and what we cannot.
@@ -2480,6 +2507,28 @@ argument_list|(
 name|Constants
 operator|.
 name|R_TAGS
+argument_list|)
+return|;
+block|}
+DECL|method|isRefsUsersSelf (Ref ref)
+specifier|private
+specifier|static
+name|boolean
+name|isRefsUsersSelf
+parameter_list|(
+name|Ref
+name|ref
+parameter_list|)
+block|{
+return|return
+name|ref
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|REFS_USERS_SELF
 argument_list|)
 return|;
 block|}

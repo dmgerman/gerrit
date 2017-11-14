@@ -3177,6 +3177,10 @@ name|containsExactly
 argument_list|(
 name|RefNames
 operator|.
+name|REFS_USERS_SELF
+argument_list|,
+name|RefNames
+operator|.
 name|refsUsers
 argument_list|(
 name|user
