@@ -2444,22 +2444,6 @@ name|isRefsEdit
 argument_list|(
 name|name
 argument_list|)
-operator|||
-operator|(
-name|projectState
-operator|.
-name|isAllUsers
-argument_list|()
-operator|&&
-name|name
-operator|.
-name|equals
-argument_list|(
-name|RefNames
-operator|.
-name|REFS_EXTERNAL_IDS
-argument_list|)
-operator|)
 return|;
 block|}
 DECL|method|isTag (Ref ref)
