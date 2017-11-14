@@ -745,7 +745,6 @@ name|loadedGroup
 return|;
 block|}
 DECL|method|setGroupCreation (InternalGroupCreation groupCreation)
-specifier|private
 name|void
 name|setGroupCreation
 parameter_list|(

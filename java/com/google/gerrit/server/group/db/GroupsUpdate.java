@@ -3190,11 +3190,17 @@ name|build
 argument_list|()
 return|;
 block|}
-DECL|method|getAccountNameEmail (Account.Id accountId)
-specifier|private
+DECL|method|getAccountName ( AccountCache accountCache, String anonymousCowardName, Account.Id accountId)
+specifier|static
 name|String
-name|getAccountNameEmail
+name|getAccountName
 parameter_list|(
+name|AccountCache
+name|accountCache
+parameter_list|,
+name|String
+name|anonymousCowardName
+parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -3211,9 +3217,7 @@ argument_list|(
 name|accountId
 argument_list|)
 decl_stmt|;
-name|String
-name|accountName
-init|=
+return|return
 name|Optional
 operator|.
 name|ofNullable
@@ -3244,6 +3248,39 @@ name|orElse
 argument_list|(
 name|anonymousCowardName
 argument_list|)
+return|;
+block|}
+DECL|method|getAccountNameEmail ( AccountCache accountCache, String anonymousCowardName, Account.Id accountId, String serverId)
+specifier|static
+name|String
+name|getAccountNameEmail
+parameter_list|(
+name|AccountCache
+name|accountCache
+parameter_list|,
+name|String
+name|anonymousCowardName
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|,
+name|String
+name|serverId
+parameter_list|)
+block|{
+name|String
+name|accountName
+init|=
+name|getAccountName
+argument_list|(
+name|accountCache
+argument_list|,
+name|anonymousCowardName
+argument_list|,
+name|accountId
+argument_list|)
 decl_stmt|;
 return|return
 name|formatNameEmail
@@ -3260,7 +3297,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|getEmailForAuditLog (Account.Id accountId, String serverId)
-specifier|private
 specifier|static
 name|String
 name|getEmailForAuditLog
@@ -3285,11 +3321,38 @@ operator|+
 name|serverId
 return|;
 block|}
-DECL|method|getGroupName (AccountGroup.UUID groupUuid)
+DECL|method|getAccountNameEmail (Account.Id accountId)
 specifier|private
+name|String
+name|getAccountNameEmail
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|)
+block|{
+return|return
+name|getAccountNameEmail
+argument_list|(
+name|accountCache
+argument_list|,
+name|anonymousCowardName
+argument_list|,
+name|accountId
+argument_list|,
+name|serverId
+argument_list|)
+return|;
+block|}
+DECL|method|getGroupName (GroupCache groupCache, AccountGroup.UUID groupUuid)
+specifier|static
 name|String
 name|getGroupName
 parameter_list|(
+name|GroupCache
+name|groupCache
+parameter_list|,
 name|AccountGroup
 operator|.
 name|UUID
@@ -3332,6 +3395,26 @@ name|groupUuid
 operator|.
 name|get
 argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|getGroupName (AccountGroup.UUID groupUuid)
+specifier|private
+name|String
+name|getGroupName
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|groupUuid
+parameter_list|)
+block|{
+return|return
+name|getGroupName
+argument_list|(
+name|groupCache
+argument_list|,
+name|groupUuid
 argument_list|)
 return|;
 block|}

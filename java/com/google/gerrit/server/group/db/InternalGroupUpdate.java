@@ -366,6 +366,12 @@ name|MemberModification
 name|memberModification
 parameter_list|)
 function_decl|;
+DECL|method|getMemberModification ()
+specifier|abstract
+name|MemberModification
+name|getMemberModification
+parameter_list|()
+function_decl|;
 DECL|method|setSubgroupModification (SubgroupModification subgroupModification)
 specifier|public
 specifier|abstract
@@ -375,6 +381,12 @@ parameter_list|(
 name|SubgroupModification
 name|subgroupModification
 parameter_list|)
+function_decl|;
+DECL|method|getSubgroupModification ()
+specifier|abstract
+name|SubgroupModification
+name|getSubgroupModification
+parameter_list|()
 function_decl|;
 DECL|method|build ()
 specifier|public
