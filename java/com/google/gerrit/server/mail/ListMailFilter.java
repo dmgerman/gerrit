@@ -102,11 +102,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|mail
 operator|.
-name|config
-operator|.
-name|GerritServerConfig
+name|MailMessage
 import|;
 end_import
 
@@ -120,11 +118,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
+name|config
 operator|.
-name|receive
-operator|.
-name|MailMessage
+name|GerritServerConfig
 import|;
 end_import
 
@@ -350,7 +346,8 @@ operator|.
 name|from
 argument_list|()
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|find

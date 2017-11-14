@@ -154,11 +154,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|mail
 operator|.
-name|MailUtil
+name|MailMessage
 import|;
 end_import
 
@@ -170,13 +168,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|mail
 operator|.
-name|receive
-operator|.
-name|MailMessage
+name|MailProcessingUtil
 import|;
 end_import
 
@@ -348,7 +342,7 @@ decl_stmt|;
 name|String
 name|ts
 init|=
-name|MailUtil
+name|MailProcessingUtil
 operator|.
 name|rfcDateformatter
 operator|.
@@ -564,7 +558,7 @@ decl_stmt|;
 name|String
 name|ts
 init|=
-name|MailUtil
+name|MailProcessingUtil
 operator|.
 name|rfcDateformatter
 operator|.
@@ -868,7 +862,7 @@ decl_stmt|;
 name|String
 name|ts
 init|=
-name|MailUtil
+name|MailProcessingUtil
 operator|.
 name|rfcDateformatter
 operator|.
@@ -1180,7 +1174,7 @@ decl_stmt|;
 name|String
 name|ts
 init|=
-name|MailUtil
+name|MailProcessingUtil
 operator|.
 name|rfcDateformatter
 operator|.
@@ -1398,7 +1392,7 @@ decl_stmt|;
 name|String
 name|ts
 init|=
-name|MailUtil
+name|MailProcessingUtil
 operator|.
 name|rfcDateformatter
 operator|.
@@ -1630,7 +1624,7 @@ expr_stmt|;
 name|String
 name|ts
 init|=
-name|MailUtil
+name|MailProcessingUtil
 operator|.
 name|rfcDateformatter
 operator|.

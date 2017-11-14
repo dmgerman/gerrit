@@ -108,13 +108,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|mail
 operator|.
-name|index
-operator|.
-name|change
-operator|.
-name|ChangeField
+name|Address
 import|;
 end_import
 
@@ -128,9 +124,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
+name|index
 operator|.
-name|Address
+name|change
+operator|.
+name|ChangeField
 import|;
 end_import
 

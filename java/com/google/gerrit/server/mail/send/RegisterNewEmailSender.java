@@ -126,9 +126,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|mail
 operator|.
-name|IdentifiedUser
+name|Address
 import|;
 end_import
 
@@ -142,9 +142,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
-operator|.
-name|Address
+name|IdentifiedUser
 import|;
 end_import
 
