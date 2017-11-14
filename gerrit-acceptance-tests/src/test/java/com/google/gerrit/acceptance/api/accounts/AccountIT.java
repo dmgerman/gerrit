@@ -7324,6 +7324,15 @@ name|name
 argument_list|(
 literal|"foo"
 argument_list|)
+argument_list|,
+name|name
+argument_list|(
+literal|"foo"
+argument_list|)
+operator|+
+literal|"@example.com"
+argument_list|,
+literal|"Foo"
 argument_list|)
 decl_stmt|;
 name|String
@@ -7352,6 +7361,8 @@ init|=
 name|cloneProject
 argument_list|(
 name|allUsers
+argument_list|,
+name|foo
 argument_list|)
 decl_stmt|;
 name|fetch
@@ -7411,7 +7422,7 @@ name|create
 argument_list|(
 name|db
 argument_list|,
-name|admin
+name|foo
 operator|.
 name|getIdent
 argument_list|()
@@ -8207,6 +8218,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Sandboxed
 DECL|method|pushAccountConfigToUserBranchForReviewDeactivateOtherAccount ()
 specifier|public
 name|void
@@ -8215,6 +8228,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|allowGlobalCapabilities
+argument_list|(
+name|REGISTERED_USERS
+argument_list|,
+name|GlobalCapability
+operator|.
+name|ACCESS_DATABASE
+argument_list|)
+expr_stmt|;
 name|TestAccount
 name|foo
 init|=
@@ -9251,6 +9273,15 @@ name|name
 argument_list|(
 literal|"foo"
 argument_list|)
+argument_list|,
+name|name
+argument_list|(
+literal|"foo"
+argument_list|)
+operator|+
+literal|"@example.com"
+argument_list|,
+literal|"Foo"
 argument_list|)
 decl_stmt|;
 name|String
@@ -9296,27 +9327,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|InternalGroup
-name|adminGroup
-init|=
-name|groupCache
-operator|.
-name|get
-argument_list|(
-operator|new
-name|AccountGroup
-operator|.
-name|NameKey
-argument_list|(
-literal|"Administrators"
-argument_list|)
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
 name|grant
 argument_list|(
 name|allUsers
@@ -9329,10 +9339,7 @@ name|PUSH
 argument_list|,
 literal|false
 argument_list|,
-name|adminGroup
-operator|.
-name|getGroupUUID
-argument_list|()
+name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
 name|TestRepository
@@ -9344,6 +9351,8 @@ init|=
 name|cloneProject
 argument_list|(
 name|allUsers
+argument_list|,
+name|foo
 argument_list|)
 decl_stmt|;
 name|fetch
@@ -9398,7 +9407,7 @@ name|create
 argument_list|(
 name|db
 argument_list|,
-name|admin
+name|foo
 operator|.
 name|getIdent
 argument_list|()
@@ -9513,6 +9522,15 @@ name|name
 argument_list|(
 literal|"foo"
 argument_list|)
+argument_list|,
+name|name
+argument_list|(
+literal|"foo"
+argument_list|)
+operator|+
+literal|"@example.com"
+argument_list|,
+literal|"Foo"
 argument_list|)
 decl_stmt|;
 name|String
@@ -9580,6 +9598,8 @@ init|=
 name|cloneProject
 argument_list|(
 name|allUsers
+argument_list|,
+name|foo
 argument_list|)
 decl_stmt|;
 name|fetch
@@ -9634,7 +9654,7 @@ name|create
 argument_list|(
 name|db
 argument_list|,
-name|admin
+name|foo
 operator|.
 name|getIdent
 argument_list|()
@@ -9844,6 +9864,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Sandboxed
 DECL|method|pushAccountConfigToUserBranchDeactivateOtherAccount ()
 specifier|public
 name|void
@@ -9852,6 +9874,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|allowGlobalCapabilities
+argument_list|(
+name|REGISTERED_USERS
+argument_list|,
+name|GlobalCapability
+operator|.
+name|ACCESS_DATABASE
+argument_list|)
+expr_stmt|;
 name|TestAccount
 name|foo
 init|=
@@ -12895,7 +12926,7 @@ literal|"Administrators"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//TODO: update when test user is fixed to be included in "Anonymous Users" and
+comment|// TODO: update when test user is fixed to be included in "Anonymous Users" and
 comment|//      "Registered Users" groups
 name|assertGroups
 argument_list|(
