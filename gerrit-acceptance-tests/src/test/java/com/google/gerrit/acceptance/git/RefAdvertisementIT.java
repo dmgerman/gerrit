@@ -3689,6 +3689,10 @@ operator|+
 name|Sequences
 operator|.
 name|NAME_ACCOUNTS
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_EXTERNAL_IDS
 argument_list|)
 decl_stmt|;
 name|List
@@ -3705,10 +3709,6 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
-name|RefNames
-operator|.
-name|REFS_EXTERNAL_IDS
-argument_list|,
 name|mr
 operator|.
 name|getPatchSetId
