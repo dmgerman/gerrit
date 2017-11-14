@@ -82,6 +82,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkNotNull
 import|;
 end_import
@@ -9046,6 +9062,17 @@ argument_list|,
 literal|null
 argument_list|,
 name|c
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+name|statusCode
+operator|>=
+literal|400
+argument_list|,
+literal|"non-error status: %s"
+argument_list|,
+name|statusCode
 argument_list|)
 expr_stmt|;
 name|res
