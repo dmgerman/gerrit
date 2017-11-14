@@ -610,6 +610,28 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
+DECL|method|readRaw ()
+specifier|public
+name|ResultSet
+argument_list|<
+name|FieldBundle
+argument_list|>
+name|readRaw
+parameter_list|()
+throws|throws
+name|OrmException
+block|{
+comment|// TOOD(hiesel): Implement
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not implemented"
+argument_list|)
+throw|;
+block|}
 DECL|method|readImpl ()
 specifier|private
 name|ResultSet

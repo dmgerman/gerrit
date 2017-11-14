@@ -218,6 +218,22 @@ name|index
 operator|.
 name|query
 operator|.
+name|FieldBundle
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
+name|query
+operator|.
 name|Predicate
 import|;
 end_import
@@ -612,6 +628,25 @@ argument_list|(
 literal|"don't use ChangeSubIndex directly"
 argument_list|)
 throw|;
+block|}
+comment|// Make method public so that it can be used in LuceneChangeIndex
+DECL|method|toFieldBundle (Document doc)
+specifier|public
+name|FieldBundle
+name|toFieldBundle
+parameter_list|(
+name|Document
+name|doc
+parameter_list|)
+block|{
+return|return
+name|super
+operator|.
+name|toFieldBundle
+argument_list|(
+name|doc
+argument_list|)
+return|;
 block|}
 annotation|@
 name|Override
