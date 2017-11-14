@@ -84,6 +84,11 @@ specifier|public
 name|CheckAccountExternalIdsInput
 name|checkAccountExternalIds
 decl_stmt|;
+DECL|field|checkGroups
+specifier|public
+name|CheckGroupsInput
+name|checkGroups
+decl_stmt|;
 DECL|class|CheckAccountsInput
 specifier|public
 specifier|static
@@ -95,6 +100,12 @@ specifier|public
 specifier|static
 class|class
 name|CheckAccountExternalIdsInput
+block|{}
+DECL|class|CheckGroupsInput
+specifier|public
+specifier|static
+class|class
+name|CheckGroupsInput
 block|{}
 block|}
 end_class
