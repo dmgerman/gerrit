@@ -114,6 +114,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -412,6 +426,8 @@ operator|=
 name|emailValidator
 expr_stmt|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|get (Account.Id accountId)
 specifier|public
 name|Account
@@ -797,6 +813,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Nullable
 DECL|method|read (Repository allUsersRepository, Account.Id accountId)
 specifier|private
 name|Account
