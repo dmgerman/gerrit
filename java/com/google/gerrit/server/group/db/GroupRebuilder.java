@@ -224,6 +224,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|TimeUtil
 import|;
 end_import
@@ -652,6 +666,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|BatchRefUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|CommitBuilder
 import|;
 end_import
@@ -964,7 +992,7 @@ operator|=
 name|getGroupNameFunc
 expr_stmt|;
 block|}
-DECL|method|rebuild (Repository allUsersRepo, GroupBundle bundle)
+DECL|method|rebuild (Repository allUsersRepo, GroupBundle bundle, @Nullable BatchRefUpdate bru)
 specifier|public
 name|void
 name|rebuild
@@ -974,6 +1002,11 @@ name|allUsersRepo
 parameter_list|,
 name|GroupBundle
 name|bundle
+parameter_list|,
+annotation|@
+name|Nullable
+name|BatchRefUpdate
+name|bru
 parameter_list|)
 throws|throws
 name|IOException
@@ -1152,7 +1185,7 @@ name|allUsers
 argument_list|,
 name|allUsersRepo
 argument_list|,
-literal|null
+name|bru
 argument_list|)
 decl_stmt|;
 comment|// Creation is done by the server (unlike later audit events).
