@@ -4384,7 +4384,7 @@ name|SUBMIT_RULE_OPTIONS_LENIENT
 init|=
 name|SubmitRuleOptions
 operator|.
-name|defaults
+name|builder
 argument_list|()
 operator|.
 name|allowClosed
@@ -4404,7 +4404,7 @@ name|SUBMIT_RULE_OPTIONS_STRICT
 init|=
 name|SubmitRuleOptions
 operator|.
-name|defaults
+name|builder
 argument_list|()
 operator|.
 name|build

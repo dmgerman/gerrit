@@ -120,18 +120,6 @@ name|AutoValue_SubmitRuleOptions
 operator|.
 name|Builder
 argument_list|()
-return|;
-block|}
-DECL|method|defaults ()
-specifier|public
-specifier|static
-name|Builder
-name|defaults
-parameter_list|()
-block|{
-return|return
-name|builder
-argument_list|()
 operator|.
 name|allowClosed
 argument_list|(

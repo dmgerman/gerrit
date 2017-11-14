@@ -769,7 +769,7 @@ name|optsBuilder
 init|=
 name|SubmitRuleOptions
 operator|.
-name|defaults
+name|builder
 argument_list|()
 decl_stmt|;
 DECL|field|opts
@@ -937,7 +937,7 @@ name|optsBuilder
 operator|=
 name|SubmitRuleOptions
 operator|.
-name|defaults
+name|builder
 argument_list|()
 expr_stmt|;
 block|}
