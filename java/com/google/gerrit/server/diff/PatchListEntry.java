@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.patch
+DECL|package|com.google.gerrit.server.diff
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|diff
 package|;
 end_package
 
@@ -513,6 +513,7 @@ init|=
 block|{}
 decl_stmt|;
 DECL|method|empty (String fileName)
+specifier|public
 specifier|static
 name|PatchListEntry
 name|empty
@@ -635,6 +636,7 @@ decl_stmt|;
 comment|// Note: When adding new fields, the serialVersionUID in PatchListKey must be
 comment|// incremented so that entries from the cache are automatically invalidated.
 DECL|method|PatchListEntry ( FileHeader hdr, List<Edit> editList, Set<Edit> editsDueToRebase, long size, long sizeDelta)
+specifier|public
 name|PatchListEntry
 parameter_list|(
 name|FileHeader
@@ -988,6 +990,7 @@ name|sizeDelta
 expr_stmt|;
 block|}
 DECL|method|weigh ()
+specifier|public
 name|int
 name|weigh
 parameter_list|()
@@ -2002,8 +2005,6 @@ case|case
 name|ADD
 case|:
 return|return
-name|Patch
-operator|.
 name|ChangeType
 operator|.
 name|ADDED
@@ -2012,8 +2013,6 @@ case|case
 name|MODIFY
 case|:
 return|return
-name|Patch
-operator|.
 name|ChangeType
 operator|.
 name|MODIFIED
@@ -2022,8 +2021,6 @@ case|case
 name|DELETE
 case|:
 return|return
-name|Patch
-operator|.
 name|ChangeType
 operator|.
 name|DELETED
@@ -2032,8 +2029,6 @@ case|case
 name|RENAME
 case|:
 return|return
-name|Patch
-operator|.
 name|ChangeType
 operator|.
 name|RENAMED
@@ -2042,8 +2037,6 @@ case|case
 name|COPY
 case|:
 return|return
-name|Patch
-operator|.
 name|ChangeType
 operator|.
 name|COPIED
@@ -2089,8 +2082,6 @@ name|UNIFIED
 case|:
 name|pt
 operator|=
-name|Patch
-operator|.
 name|PatchType
 operator|.
 name|UNIFIED
@@ -2104,8 +2095,6 @@ name|BINARY
 case|:
 name|pt
 operator|=
-name|Patch
-operator|.
 name|PatchType
 operator|.
 name|BINARY

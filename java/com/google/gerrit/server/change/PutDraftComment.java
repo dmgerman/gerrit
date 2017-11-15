@@ -314,9 +314,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
+name|diff
 operator|.
-name|ChangeUpdate
+name|PatchListCache
 import|;
 end_import
 
@@ -330,9 +330,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|notedb
 operator|.
-name|PatchListCache
+name|ChangeUpdate
 import|;
 end_import
 

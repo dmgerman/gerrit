@@ -238,7 +238,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|diff
 operator|.
 name|PatchListNotAvailableException
 import|;

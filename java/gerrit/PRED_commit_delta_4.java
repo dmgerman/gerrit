@@ -84,7 +84,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|diff
 operator|.
 name|PatchList
 import|;
@@ -100,7 +100,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|diff
 operator|.
 name|PatchListEntry
 import|;
