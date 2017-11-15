@@ -160,6 +160,20 @@ name|Timestamp
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_class
 annotation|@
 name|AutoValue
@@ -204,6 +218,48 @@ operator|.
 name|UUID
 argument_list|>
 name|subgroups
+parameter_list|)
+block|{
+return|return
+name|create
+argument_list|(
+name|accountGroup
+argument_list|,
+name|members
+argument_list|,
+name|subgroups
+argument_list|,
+literal|null
+argument_list|)
+return|;
+block|}
+DECL|method|create ( AccountGroup accountGroup, ImmutableSet<Account.Id> members, ImmutableSet<AccountGroup.UUID> subgroups, ObjectId refState)
+specifier|public
+specifier|static
+name|InternalGroup
+name|create
+parameter_list|(
+name|AccountGroup
+name|accountGroup
+parameter_list|,
+name|ImmutableSet
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|members
+parameter_list|,
+name|ImmutableSet
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+name|subgroups
+parameter_list|,
+name|ObjectId
+name|refState
 parameter_list|)
 block|{
 return|return
@@ -274,6 +330,11 @@ operator|.
 name|setSubgroups
 argument_list|(
 name|subgroups
+argument_list|)
+operator|.
+name|setRefState
+argument_list|(
+name|refState
 argument_list|)
 operator|.
 name|build
@@ -375,6 +436,22 @@ operator|.
 name|UUID
 argument_list|>
 name|getSubgroups
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nullable
+DECL|method|getRefState ()
+specifier|public
+specifier|abstract
+name|ObjectId
+name|getRefState
+parameter_list|()
+function_decl|;
+DECL|method|toBuilder ()
+specifier|public
+specifier|abstract
+name|Builder
+name|toBuilder
 parameter_list|()
 function_decl|;
 DECL|method|builder ()
@@ -511,6 +588,16 @@ operator|.
 name|UUID
 argument_list|>
 name|subgroups
+parameter_list|)
+function_decl|;
+DECL|method|setRefState (ObjectId refState)
+specifier|public
+specifier|abstract
+name|Builder
+name|setRefState
+parameter_list|(
+name|ObjectId
+name|refState
 parameter_list|)
 function_decl|;
 DECL|method|build ()

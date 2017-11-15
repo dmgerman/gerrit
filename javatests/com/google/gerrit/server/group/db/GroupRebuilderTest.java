@@ -2958,6 +2958,8 @@ throws|throws
 name|Exception
 block|{
 return|return
+name|removeRefState
+argument_list|(
 name|GroupConfig
 operator|.
 name|loadForGroup
@@ -2975,6 +2977,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|newGroup (String name)
@@ -3627,6 +3630,33 @@ operator|.
 name|tz
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|removeRefState (InternalGroup group)
+specifier|private
+specifier|static
+name|InternalGroup
+name|removeRefState
+parameter_list|(
+name|InternalGroup
+name|group
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|group
+operator|.
+name|toBuilder
+argument_list|()
+operator|.
+name|setRefState
+argument_list|(
+literal|null
+argument_list|)
+operator|.
+name|build
+argument_list|()
+return|;
 block|}
 block|}
 end_class

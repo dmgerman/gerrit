@@ -594,6 +594,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|group
+operator|.
+name|InternalGroup
+operator|.
+name|Builder
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|update
 operator|.
 name|RefUpdateUtil
@@ -757,6 +775,20 @@ operator|.
 name|lib
 operator|.
 name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -1601,6 +1633,11 @@ argument_list|,
 name|updateResult
 operator|.
 name|getModifiedSubgroups
+argument_list|()
+argument_list|,
+name|updateResult
+operator|.
+name|getRefState
 argument_list|()
 argument_list|)
 return|;
@@ -3152,6 +3189,14 @@ name|setModifiedSubgroups
 argument_list|(
 name|modifiedSubgroups
 argument_list|)
+operator|.
+name|setRefState
+argument_list|(
+name|updatedGroup
+operator|.
+name|getRefState
+argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -3916,6 +3961,15 @@ argument_list|>
 name|getModifiedSubgroups
 parameter_list|()
 function_decl|;
+annotation|@
+name|Nullable
+DECL|method|getRefState ()
+specifier|public
+specifier|abstract
+name|ObjectId
+name|getRefState
+parameter_list|()
+function_decl|;
 DECL|method|builder ()
 specifier|static
 name|Builder
@@ -4010,6 +4064,16 @@ operator|.
 name|UUID
 argument_list|>
 name|modifiedSubgroups
+parameter_list|)
+function_decl|;
+DECL|method|setRefState (ObjectId refState)
+specifier|public
+specifier|abstract
+name|Builder
+name|setRefState
+parameter_list|(
+name|ObjectId
+name|refState
 parameter_list|)
 function_decl|;
 DECL|method|build ()
