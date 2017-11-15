@@ -496,21 +496,21 @@ name|Exception
 block|{
 name|group1
 operator|=
-name|group
+name|newGroup
 argument_list|(
 literal|"users1"
 argument_list|)
 expr_stmt|;
 name|group2
 operator|=
-name|group
+name|newGroup
 argument_list|(
 literal|"users2"
 argument_list|)
 expr_stmt|;
 name|group3
 operator|=
-name|group
+name|newGroup
 argument_list|(
 literal|"users3"
 argument_list|)
@@ -1822,7 +1822,7 @@ block|{
 name|InternalGroup
 name|largeGroup
 init|=
-name|group
+name|newGroup
 argument_list|(
 literal|"large"
 argument_list|)
@@ -1830,7 +1830,7 @@ decl_stmt|;
 name|InternalGroup
 name|mediumGroup
 init|=
-name|group
+name|newGroup
 argument_list|(
 literal|"medium"
 argument_list|)
@@ -3017,10 +3017,10 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|group (String name)
+DECL|method|newGroup (String name)
 specifier|private
 name|InternalGroup
-name|group
+name|newGroup
 parameter_list|(
 name|String
 name|name
@@ -3051,9 +3051,7 @@ literal|null
 argument_list|)
 decl_stmt|;
 return|return
-name|groupCache
-operator|.
-name|get
+name|group
 argument_list|(
 operator|new
 name|AccountGroup
@@ -3064,11 +3062,6 @@ name|group
 operator|.
 name|id
 argument_list|)
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|null
 argument_list|)
 return|;
 block|}
