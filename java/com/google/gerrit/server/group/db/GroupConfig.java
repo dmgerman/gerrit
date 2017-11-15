@@ -505,7 +505,7 @@ extends|extends
 name|VersionedMetaData
 block|{
 DECL|field|GROUP_CONFIG_FILE
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String

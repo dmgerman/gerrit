@@ -1930,6 +1930,7 @@ throws|throws
 name|MergeValidationException
 block|{
 comment|// Groups are stored inside 'refs/groups/' refs inside the 'All-Users' repository.
+comment|// Group names are stored inside 'refs/meta/group-names' inside the 'All-Users' repository.
 if|if
 condition|(
 operator|!
@@ -1943,6 +1944,7 @@ name|getNameKey
 argument_list|()
 argument_list|)
 operator|||
+operator|(
 operator|!
 name|destBranch
 operator|.
@@ -1955,6 +1957,20 @@ name|RefNames
 operator|.
 name|REFS_GROUPS
 argument_list|)
+operator|&&
+operator|!
+name|destBranch
+operator|.
+name|get
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_GROUPNAMES
+argument_list|)
+operator|)
 condition|)
 block|{
 return|return;

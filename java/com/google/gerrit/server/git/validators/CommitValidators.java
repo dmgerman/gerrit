@@ -4749,7 +4749,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/** Rejects updates to group branches. */
+comment|/** Rejects updates to group branches (refs/groups/* and refs/meta/group-names). */
 DECL|class|GroupCommitValidator
 specifier|public
 specifier|static
@@ -4796,6 +4796,7 @@ throws|throws
 name|CommitValidationException
 block|{
 comment|// Groups are stored inside 'refs/groups/' refs inside the 'All-Users' repository.
+comment|// Group names are stored inside 'refs/meta/group-names' refs inside the 'All-Users' repository.
 if|if
 condition|(
 operator|!
@@ -4859,6 +4860,20 @@ argument_list|(
 name|RefNames
 operator|.
 name|REFS_GROUPS
+argument_list|)
+operator|||
+name|receiveEvent
+operator|.
+name|command
+operator|.
+name|getRefName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_GROUPNAMES
 argument_list|)
 condition|)
 block|{
