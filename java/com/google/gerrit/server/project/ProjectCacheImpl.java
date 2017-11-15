@@ -962,6 +962,17 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot read project "
+operator|+
+name|projectName
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
@@ -1573,6 +1584,17 @@ name|ExecutionException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot look up projects for prefix "
+operator|+
+name|pfx
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 name|Collections
 operator|.
