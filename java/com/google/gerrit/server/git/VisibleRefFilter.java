@@ -1634,6 +1634,7 @@ operator|.
 name|isAllUsers
 argument_list|()
 operator|&&
+operator|(
 name|name
 operator|.
 name|equals
@@ -1642,9 +1643,20 @@ name|RefNames
 operator|.
 name|REFS_EXTERNAL_IDS
 argument_list|)
+operator|||
+name|name
+operator|.
+name|equals
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_GROUPNAMES
+argument_list|)
+operator|)
 condition|)
 block|{
-comment|// The notes branch with the external IDs of all users must not be exposed to normal users.
+comment|// The notes branches with the external IDs / group names must not be exposed to normal
+comment|// users.
 if|if
 condition|(
 name|viewMetadata
