@@ -296,6 +296,11 @@ specifier|private
 name|boolean
 name|showTree
 decl_stmt|;
+DECL|field|all
+specifier|private
+name|boolean
+name|all
+decl_stmt|;
 DECL|field|type
 specifier|private
 name|FilterType
@@ -586,6 +591,22 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|withAll ()
+specifier|public
+name|ListRequest
+name|withAll
+parameter_list|()
+block|{
+name|this
+operator|.
+name|all
+operator|=
+literal|true
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|getDescription ()
 specifier|public
 name|boolean
@@ -682,6 +703,16 @@ parameter_list|()
 block|{
 return|return
 name|type
+return|;
+block|}
+DECL|method|isAll ()
+specifier|public
+name|boolean
+name|isAll
+parameter_list|()
+block|{
+return|return
+name|all
 return|;
 block|}
 block|}

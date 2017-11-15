@@ -843,6 +843,16 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+name|lp
+operator|.
+name|setAll
+argument_list|(
+name|request
+operator|.
+name|isAll
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|lp
 operator|.
