@@ -369,6 +369,11 @@ specifier|private
 name|int
 name|start
 decl_stmt|;
+DECL|field|suggest
+specifier|private
+name|boolean
+name|suggest
+decl_stmt|;
 DECL|field|options
 specifier|private
 name|EnumSet
@@ -454,6 +459,25 @@ operator|.
 name|start
 operator|=
 name|start
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|withSuggest (boolean suggest)
+specifier|public
+name|QueryRequest
+name|withSuggest
+parameter_list|(
+name|boolean
+name|suggest
+parameter_list|)
+block|{
+name|this
+operator|.
+name|suggest
+operator|=
+name|suggest
 expr_stmt|;
 return|return
 name|this
@@ -559,6 +583,16 @@ parameter_list|()
 block|{
 return|return
 name|start
+return|;
+block|}
+DECL|method|getSuggest ()
+specifier|public
+name|boolean
+name|getSuggest
+parameter_list|()
+block|{
+return|return
+name|suggest
 return|;
 block|}
 DECL|method|getOptions ()
