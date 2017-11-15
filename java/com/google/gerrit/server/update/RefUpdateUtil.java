@@ -156,6 +156,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|revwalk
 operator|.
 name|RevWalk
@@ -186,7 +200,44 @@ specifier|public
 class|class
 name|RefUpdateUtil
 block|{
-comment|/**    * Execute a batch ref update, throwing a checked exception if not all updates succeeded.    *    * @param bru batch update; should already have been executed.    * @throws LockFailureException if the transaction was aborted due to lock failure; see {@link    *     #checkResults(BatchRefUpdate)} for details.    * @throws IOException if any result was not {@code OK}.    */
+comment|/**    * Execute a batch ref update, throwing a checked exception if not all updates succeeded.    *    *<p>Creates a new {@link RevWalk} used only for this operation.    *    * @param bru batch update; should already have been executed.    * @param repo repository that created {@code bru}.    * @throws LockFailureException if the transaction was aborted due to lock failure; see {@link    *     #checkResults(BatchRefUpdate)} for details.    * @throws IOException if any result was not {@code OK}.    */
+DECL|method|executeChecked (BatchRefUpdate bru, Repository repo)
+specifier|public
+specifier|static
+name|void
+name|executeChecked
+parameter_list|(
+name|BatchRefUpdate
+name|bru
+parameter_list|,
+name|Repository
+name|repo
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+try|try
+init|(
+name|RevWalk
+name|rw
+init|=
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
+init|)
+block|{
+name|executeChecked
+argument_list|(
+name|bru
+argument_list|,
+name|rw
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/**    * Execute a batch ref update, throwing a checked exception if not all updates succeeded.    *    * @param bru batch update; should already have been executed.    * @param rw walk for executing the update.    * @throws LockFailureException if the transaction was aborted due to lock failure; see {@link    *     #checkResults(BatchRefUpdate)} for details.    * @throws IOException if any result was not {@code OK}.    */
 DECL|method|executeChecked (BatchRefUpdate bru, RevWalk rw)
 specifier|public
 specifier|static

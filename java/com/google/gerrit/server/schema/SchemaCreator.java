@@ -766,20 +766,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
-import|;
-end_import
-
 begin_comment
 comment|/** Creates the current database schema and populates initial code rows. */
 end_comment
@@ -1746,28 +1732,15 @@ name|metaDataUpdate
 argument_list|)
 expr_stmt|;
 block|}
-try|try
-init|(
-name|RevWalk
-name|revWalk
-init|=
-operator|new
-name|RevWalk
-argument_list|(
-name|allUsersRepo
-argument_list|)
-init|)
-block|{
 name|RefUpdateUtil
 operator|.
 name|executeChecked
 argument_list|(
 name|batchRefUpdate
 argument_list|,
-name|revWalk
+name|allUsersRepo
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|createMetaDataUpdate ( Repository allUsersRepo, @Nullable BatchRefUpdate batchRefUpdate)
 specifier|private
