@@ -4577,6 +4577,7 @@ block|}
 comment|/** Boiler plate code to check two byte arrays for equality */
 DECL|class|ByteArrayWrapper
 specifier|private
+specifier|static
 class|class
 name|ByteArrayWrapper
 block|{
@@ -4641,6 +4642,23 @@ operator|)
 name|other
 operator|)
 operator|.
+name|arr
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|Arrays
+operator|.
+name|hashCode
+argument_list|(
 name|arr
 argument_list|)
 return|;

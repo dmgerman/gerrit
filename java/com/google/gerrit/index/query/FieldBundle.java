@@ -278,8 +278,6 @@ operator|)
 name|result
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|(
 name|T
@@ -291,7 +289,6 @@ argument_list|(
 name|result
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 end_class
