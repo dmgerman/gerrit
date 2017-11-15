@@ -766,7 +766,7 @@ condition|(
 name|autoReindexIfStale
 condition|)
 block|{
-comment|// Don't retry indefinitely; if this fails the change will be stale.
+comment|// Don't retry indefinitely; if this fails the group will be stale.
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -785,7 +785,7 @@ argument_list|)
 decl_stmt|;
 block|}
 block|}
-comment|/**    * Asynchronously check if a group is stale, and reindex if it is.    *    *<p>Always run on the batch executor, even if this indexer instance is configured to use a    * different executor.    *    * @param uuid the unique identified of the group.    * @return future for reindexing the group; returns true if the change was stale.    */
+comment|/**    * Asynchronously check if a group is stale, and reindex if it is.    *    *<p>Always run on the batch executor, even if this indexer instance is configured to use a    * different executor.    *    * @param uuid the unique identifier of the group.    * @return future for reindexing the group; returns true if the group was stale.    */
 annotation|@
 name|SuppressWarnings
 argument_list|(
