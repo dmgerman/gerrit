@@ -875,7 +875,7 @@ name|GerritConfig
 argument_list|(
 name|name
 operator|=
-literal|"user.writeGroupsToNoteDb"
+literal|"noteDb.groups.write"
 argument_list|,
 name|value
 operator|=

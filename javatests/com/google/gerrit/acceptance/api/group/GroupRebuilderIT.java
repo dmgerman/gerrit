@@ -121,6 +121,60 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NoteDbTable
+operator|.
+name|GROUPS
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NotesMigration
+operator|.
+name|READ
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NotesMigration
+operator|.
+name|SECTION_NOTE_DB
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -699,16 +753,19 @@ name|Config
 argument_list|()
 decl_stmt|;
 comment|// This test is explicitly testing the migration from ReviewDb to NoteDb, and handles reading
-comment|// from NoteDb manually. It should work regardless of the value of writeGroupsToNoteDb, however.
+comment|// from NoteDb manually. It should work regardless of the value of noteDb.groups.write, however.
 name|config
 operator|.
 name|setBoolean
 argument_list|(
-literal|"user"
+name|SECTION_NOTE_DB
 argument_list|,
-literal|null
+name|GROUPS
+operator|.
+name|key
+argument_list|()
 argument_list|,
-literal|"readGroupsFromNoteDb"
+name|READ
 argument_list|,
 literal|false
 argument_list|)

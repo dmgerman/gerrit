@@ -75,6 +75,9 @@ block|{
 DECL|enumConstant|ACCOUNTS
 name|ACCOUNTS
 block|,
+DECL|enumConstant|GROUPS
+name|GROUPS
+block|,
 DECL|enumConstant|CHANGES
 name|CHANGES
 block|;
