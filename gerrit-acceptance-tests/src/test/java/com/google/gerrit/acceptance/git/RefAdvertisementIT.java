@@ -3727,10 +3727,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|hideMetaRefs ()
+DECL|method|hideMetadata ()
 specifier|public
 name|void
-name|hideMetaRefs
+name|hideMetadata
 parameter_list|()
 throws|throws
 name|Exception
