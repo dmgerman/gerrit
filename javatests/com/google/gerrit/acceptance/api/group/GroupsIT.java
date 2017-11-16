@@ -8032,7 +8032,9 @@ name|groupsByUUIDCache
 operator|.
 name|invalidate
 argument_list|(
-name|groupUuid
+name|groupInfo
+operator|.
+name|id
 argument_list|)
 expr_stmt|;
 name|assertThat
