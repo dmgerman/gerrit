@@ -78,22 +78,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableList
-operator|.
-name|toImmutableList
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|ImmutableSet
 operator|.
 name|toImmutableSet
@@ -142,7 +126,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableList
+name|ImmutableSet
 import|;
 end_import
 
@@ -696,7 +680,7 @@ function_decl|;
 DECL|method|members ()
 specifier|public
 specifier|abstract
-name|ImmutableList
+name|ImmutableSet
 argument_list|<
 name|AccountGroupMember
 argument_list|>
@@ -706,7 +690,7 @@ function_decl|;
 DECL|method|memberAudit ()
 specifier|public
 specifier|abstract
-name|ImmutableList
+name|ImmutableSet
 argument_list|<
 name|AccountGroupMemberAudit
 argument_list|>
@@ -716,7 +700,7 @@ function_decl|;
 DECL|method|byId ()
 specifier|public
 specifier|abstract
-name|ImmutableList
+name|ImmutableSet
 argument_list|<
 name|AccountGroupById
 argument_list|>
@@ -726,7 +710,7 @@ function_decl|;
 DECL|method|byIdAudit ()
 specifier|public
 specifier|abstract
-name|ImmutableList
+name|ImmutableSet
 argument_list|<
 name|AccountGroupByIdAud
 argument_list|>
@@ -808,7 +792,7 @@ argument_list|)
 operator|.
 name|collect
 argument_list|(
-name|toImmutableList
+name|toImmutableSet
 argument_list|()
 argument_list|)
 argument_list|)
@@ -830,7 +814,7 @@ argument_list|)
 operator|.
 name|collect
 argument_list|(
-name|toImmutableList
+name|toImmutableSet
 argument_list|()
 argument_list|)
 argument_list|)
