@@ -1026,6 +1026,24 @@ operator|.
 name|getId
 argument_list|()
 decl_stmt|;
+comment|// Check of removing this reviewer (even if there is no vote processed by the loop below) is OK
+name|removeReviewerControl
+operator|.
+name|checkRemoveReviewer
+argument_list|(
+name|ctx
+operator|.
+name|getNotes
+argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getUser
+argument_list|()
+argument_list|,
+name|reviewerId
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1199,6 +1217,7 @@ name|reviewerId
 argument_list|)
 control|)
 block|{
+comment|// Check if removing this vote is OK
 name|removeReviewerControl
 operator|.
 name|checkRemoveReviewer
