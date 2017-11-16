@@ -354,11 +354,6 @@ name|name
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|owner (AccountGroup.UUID ownerUuid)
 specifier|public
 specifier|static
