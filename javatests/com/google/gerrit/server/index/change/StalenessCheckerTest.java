@@ -667,7 +667,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|StalenessChecker
+name|RefState
 operator|.
 name|parseStates
 argument_list|(
@@ -748,7 +748,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|StalenessChecker
+name|RefState
 operator|.
 name|parseStates
 argument_list|(
