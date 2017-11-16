@@ -2105,7 +2105,7 @@ literal|"user"
 argument_list|,
 literal|null
 argument_list|,
-literal|"readGroupsFromNoteDb"
+literal|"blockReviewDbGroupUpdates"
 argument_list|,
 name|block
 argument_list|)
