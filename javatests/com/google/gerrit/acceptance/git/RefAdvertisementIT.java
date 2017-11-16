@@ -4355,10 +4355,10 @@ name|value
 operator|=
 literal|"true"
 argument_list|)
-DECL|method|hideMetaRefs ()
+DECL|method|hideMetadata ()
 specifier|public
 name|void
-name|hideMetaRefs
+name|hideMetadata
 parameter_list|()
 throws|throws
 name|Exception
