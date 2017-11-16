@@ -917,6 +917,12 @@ specifier|final
 name|boolean
 name|writeGroupsToNoteDb
 decl_stmt|;
+DECL|field|reviewDbUpdatesAreBlocked
+specifier|private
+specifier|final
+name|boolean
+name|reviewDbUpdatesAreBlocked
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|GroupsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, GroupCache groupCache, GroupIncludeCache groupIncludeCache, AuditService auditService, AccountCache accountCache, @AnonymousCowardName String anonymousCowardName, RenameGroupOp.Factory renameGroupOpFactory, @GerritServerId String serverId, @GerritPersonIdent PersonIdent serverIdent, MetaDataUpdate.InternalFactory metaDataUpdateInternalFactory, @GerritServerConfig Config config, GitReferenceUpdated gitRefUpdated, @Assisted @Nullable IdentifiedUser currentUser)
@@ -1086,6 +1092,21 @@ argument_list|,
 literal|null
 argument_list|,
 literal|"writeGroupsToNoteDb"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|reviewDbUpdatesAreBlocked
+operator|=
+name|config
+operator|.
+name|getBoolean
+argument_list|(
+literal|"user"
+argument_list|,
+literal|null
+argument_list|,
+literal|"blockReviewDbGroupUpdates"
 argument_list|,
 literal|false
 argument_list|)
@@ -1532,6 +1553,9 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|checkIfReviewDbUpdatesAreBlocked
+argument_list|()
+expr_stmt|;
 name|AccountGroupName
 name|gn
 init|=
@@ -1767,6 +1791,9 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|checkIfReviewDbUpdatesAreBlocked
+argument_list|()
+expr_stmt|;
 name|AccountGroup
 operator|.
 name|NameKey
@@ -3823,6 +3850,28 @@ argument_list|(
 name|modifiedSubgroup
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+DECL|method|checkIfReviewDbUpdatesAreBlocked ()
+specifier|private
+name|void
+name|checkIfReviewDbUpdatesAreBlocked
+parameter_list|()
+throws|throws
+name|OrmException
+block|{
+if|if
+condition|(
+name|reviewDbUpdatesAreBlocked
+condition|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+literal|"Updates to groups in ReviewDb are blocked"
+argument_list|)
+throw|;
 block|}
 block|}
 annotation|@
