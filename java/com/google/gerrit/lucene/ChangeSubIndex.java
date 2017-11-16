@@ -770,6 +770,25 @@ name|values
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|fromDocument (Document doc)
+specifier|protected
+name|ChangeData
+name|fromDocument
+parameter_list|(
+name|Document
+name|doc
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"don't use ChangeSubIndex directly"
+argument_list|)
+throw|;
+block|}
 block|}
 end_class
 
