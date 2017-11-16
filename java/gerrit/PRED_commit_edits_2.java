@@ -730,6 +730,11 @@ condition|)
 block|{
 comment|// This cast still seems to be needed on JDK 8 as workaround for:
 comment|// https://bugs.openjdk.java.net/browse/JDK-8039214
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"cast"
+argument_list|)
 name|List
 argument_list|<
 name|Edit
