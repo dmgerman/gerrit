@@ -105,60 +105,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NoteDbTable
-operator|.
-name|GROUPS
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-operator|.
-name|SECTION_NOTE_DB
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-operator|.
-name|WRITE
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -648,6 +594,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|GroupsMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|update
 operator|.
 name|RefUpdateUtil
@@ -959,17 +921,17 @@ specifier|final
 name|MetaDataUpdateFactory
 name|metaDataUpdateFactory
 decl_stmt|;
+DECL|field|groupsMigration
+specifier|private
+specifier|final
+name|GroupsMigration
+name|groupsMigration
+decl_stmt|;
 DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
-decl_stmt|;
-DECL|field|writeGroupsToNoteDb
-specifier|private
-specifier|final
-name|boolean
-name|writeGroupsToNoteDb
 decl_stmt|;
 DECL|field|reviewDbUpdatesAreBlocked
 specifier|private
@@ -979,7 +941,7 @@ name|reviewDbUpdatesAreBlocked
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, GroupCache groupCache, GroupIncludeCache groupIncludeCache, AuditService auditService, AccountCache accountCache, @AnonymousCowardName String anonymousCowardName, RenameGroupOp.Factory renameGroupOpFactory, @GerritServerId String serverId, @GerritPersonIdent PersonIdent serverIdent, MetaDataUpdate.InternalFactory metaDataUpdateInternalFactory, @GerritServerConfig Config config, GitReferenceUpdated gitRefUpdated, @Assisted @Nullable IdentifiedUser currentUser)
+DECL|method|GroupsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, GroupCache groupCache, GroupIncludeCache groupIncludeCache, AuditService auditService, AccountCache accountCache, @AnonymousCowardName String anonymousCowardName, RenameGroupOp.Factory renameGroupOpFactory, @GerritServerId String serverId, @GerritPersonIdent PersonIdent serverIdent, MetaDataUpdate.InternalFactory metaDataUpdateInternalFactory, GroupsMigration groupsMigration, @GerritServerConfig Config config, GitReferenceUpdated gitRefUpdated, @Assisted @Nullable IdentifiedUser currentUser)
 name|GroupsUpdate
 parameter_list|(
 name|GitRepositoryManager
@@ -1024,6 +986,9 @@ name|MetaDataUpdate
 operator|.
 name|InternalFactory
 name|metaDataUpdateInternalFactory
+parameter_list|,
+name|GroupsMigration
+name|groupsMigration
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -1097,6 +1062,12 @@ name|serverId
 expr_stmt|;
 name|this
 operator|.
+name|groupsMigration
+operator|=
+name|groupsMigration
+expr_stmt|;
+name|this
+operator|.
 name|gitRefUpdated
 operator|=
 name|gitRefUpdated
@@ -1129,28 +1100,6 @@ argument_list|(
 name|serverIdent
 argument_list|,
 name|currentUser
-argument_list|)
-expr_stmt|;
-comment|// TODO(aliceks): Remove this flag when all other necessary TODOs for writing groups to NoteDb
-comment|// have been addressed.
-comment|// Don't flip this flag in a production setting! We only added it to spread the implementation
-comment|// of groups in NoteDb among several changes which are gradually merged.
-name|writeGroupsToNoteDb
-operator|=
-name|config
-operator|.
-name|getBoolean
-argument_list|(
-name|SECTION_NOTE_DB
-argument_list|,
-name|GROUPS
-operator|.
-name|key
-argument_list|()
-argument_list|,
-name|WRITE
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|reviewDbUpdatesAreBlocked
@@ -1435,7 +1384,10 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|writeGroupsToNoteDb
+name|groupsMigration
+operator|.
+name|writeToNoteDb
+argument_list|()
 condition|)
 block|{
 name|updateCachesOnGroupCreation
@@ -1563,7 +1515,10 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|writeGroupsToNoteDb
+name|groupsMigration
+operator|.
+name|writeToNoteDb
+argument_list|()
 condition|)
 block|{
 return|return

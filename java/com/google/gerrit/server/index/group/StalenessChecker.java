@@ -69,60 +69,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NoteDbTable
-operator|.
-name|GROUPS
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-operator|.
-name|READ
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-operator|.
-name|SECTION_NOTE_DB
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -224,9 +170,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
+name|git
 operator|.
-name|GerritServerConfig
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -240,9 +186,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|notedb
 operator|.
-name|GitRepositoryManager
+name|GroupsMigration
 import|;
 end_import
 
@@ -287,20 +233,6 @@ operator|.
 name|util
 operator|.
 name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
 import|;
 end_import
 
@@ -411,15 +343,15 @@ specifier|final
 name|AllUsersName
 name|allUsers
 decl_stmt|;
-DECL|field|config
+DECL|field|groupsMigration
 specifier|private
 specifier|final
-name|Config
-name|config
+name|GroupsMigration
+name|groupsMigration
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|StalenessChecker ( GroupIndexCollection indexes, GitRepositoryManager repoManager, IndexConfig indexConfig, AllUsersName allUsers, @GerritServerConfig Config config)
+DECL|method|StalenessChecker ( GroupIndexCollection indexes, GitRepositoryManager repoManager, IndexConfig indexConfig, AllUsersName allUsers, GroupsMigration groupsMigration)
 name|StalenessChecker
 parameter_list|(
 name|GroupIndexCollection
@@ -434,10 +366,8 @@ parameter_list|,
 name|AllUsersName
 name|allUsers
 parameter_list|,
-annotation|@
-name|GerritServerConfig
-name|Config
-name|config
+name|GroupsMigration
+name|groupsMigration
 parameter_list|)
 block|{
 name|this
@@ -466,9 +396,9 @@ name|allUsers
 expr_stmt|;
 name|this
 operator|.
-name|config
+name|groupsMigration
 operator|=
-name|config
+name|groupsMigration
 expr_stmt|;
 block|}
 DECL|method|isStale (AccountGroup.UUID uuid)
@@ -487,21 +417,10 @@ block|{
 if|if
 condition|(
 operator|!
-name|config
+name|groupsMigration
 operator|.
-name|getBoolean
-argument_list|(
-name|SECTION_NOTE_DB
-argument_list|,
-name|GROUPS
-operator|.
-name|key
+name|readFromNoteDb
 argument_list|()
-argument_list|,
-name|READ
-argument_list|,
-literal|false
-argument_list|)
 condition|)
 block|{
 return|return

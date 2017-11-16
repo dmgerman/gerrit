@@ -67,60 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NoteDbTable
-operator|.
-name|GROUPS
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-operator|.
-name|SECTION_NOTE_DB
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-operator|.
-name|WRITE
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -630,6 +576,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|GroupsMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|NotesMigration
 import|;
 end_import
@@ -880,11 +842,11 @@ specifier|final
 name|GroupIndexCollection
 name|indexCollection
 decl_stmt|;
-DECL|field|writeGroupsToNoteDb
+DECL|field|groupsMigration
 specifier|private
 specifier|final
-name|boolean
-name|writeGroupsToNoteDb
+name|GroupsMigration
+name|groupsMigration
 decl_stmt|;
 DECL|field|config
 specifier|private
@@ -912,7 +874,7 @@ name|allProjectsName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaCreator ( SitePaths site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, @GerritServerConfig Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
+DECL|method|SchemaCreator ( SitePaths site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, GroupsMigration gm, @GerritServerConfig Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
 specifier|public
 name|SchemaCreator
 parameter_list|(
@@ -941,6 +903,9 @@ name|dst
 parameter_list|,
 name|GroupIndexCollection
 name|ic
+parameter_list|,
+name|GroupsMigration
+name|gm
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -977,6 +942,8 @@ name|dst
 argument_list|,
 name|ic
 argument_list|,
+name|gm
+argument_list|,
 name|config
 argument_list|,
 name|metricMaker
@@ -987,7 +954,7 @@ name|apName
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SchemaCreator ( @itePath Path site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
+DECL|method|SchemaCreator ( @itePath Path site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, GroupsMigration gm, Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
 specifier|public
 name|SchemaCreator
 parameter_list|(
@@ -1018,6 +985,9 @@ name|dst
 parameter_list|,
 name|GroupIndexCollection
 name|ic
+parameter_list|,
+name|GroupsMigration
+name|gm
 parameter_list|,
 name|Config
 name|config
@@ -1068,27 +1038,9 @@ name|indexCollection
 operator|=
 name|ic
 expr_stmt|;
-comment|// TODO(aliceks): Remove this flag when all other necessary TODOs for writing groups to NoteDb
-comment|// have been addressed.
-comment|// Don't flip this flag in a production setting! We only added it to spread the implementation
-comment|// of groups in NoteDb among several changes which are gradually merged.
-name|writeGroupsToNoteDb
+name|groupsMigration
 operator|=
-name|config
-operator|.
-name|getBoolean
-argument_list|(
-name|SECTION_NOTE_DB
-argument_list|,
-name|GROUPS
-operator|.
-name|key
-argument_list|()
-argument_list|,
-name|WRITE
-argument_list|,
-literal|false
-argument_list|)
+name|gm
 expr_stmt|;
 name|this
 operator|.
@@ -1492,7 +1444,10 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|writeGroupsToNoteDb
+name|groupsMigration
+operator|.
+name|writeToNoteDb
+argument_list|()
 condition|)
 block|{
 name|index
