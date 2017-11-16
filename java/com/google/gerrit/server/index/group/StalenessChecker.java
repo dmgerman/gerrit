@@ -417,7 +417,7 @@ operator|=
 name|config
 expr_stmt|;
 block|}
-DECL|method|isStale (AccountGroup.UUID id)
+DECL|method|isStale (AccountGroup.UUID uuid)
 specifier|public
 name|boolean
 name|isStale
@@ -425,7 +425,7 @@ parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|id
+name|uuid
 parameter_list|)
 throws|throws
 name|IOException
@@ -501,7 +501,7 @@ name|i
 operator|.
 name|getRaw
 argument_list|(
-name|id
+name|uuid
 argument_list|,
 name|IndexedGroupQuery
 operator|.
@@ -526,10 +526,42 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-comment|// No document in the index
+comment|// The document is missing in the index.
+try|try
+init|(
+name|Repository
+name|repo
+init|=
+name|repoManager
+operator|.
+name|openRepository
+argument_list|(
+name|allUsers
+argument_list|)
+init|)
+block|{
+name|Ref
+name|ref
+init|=
+name|repo
+operator|.
+name|exactRef
+argument_list|(
+name|RefNames
+operator|.
+name|refsGroups
+argument_list|(
+name|uuid
+argument_list|)
+argument_list|)
+decl_stmt|;
+comment|// Stale if the group actually exists.
 return|return
-literal|true
+name|ref
+operator|!=
+literal|null
 return|;
+block|}
 block|}
 try|try
 init|(
@@ -555,7 +587,7 @@ name|RefNames
 operator|.
 name|refsGroups
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 argument_list|)
 decl_stmt|;
