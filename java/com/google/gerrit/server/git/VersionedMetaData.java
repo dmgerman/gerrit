@@ -98,6 +98,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -637,7 +651,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** The revision at which the data was loaded. Is null for data yet to be created. */
 DECL|field|revision
+annotation|@
+name|Nullable
 specifier|protected
 name|RevCommit
 name|revision
@@ -763,7 +780,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Load a specific version from the repository.    *    *<p>This method is primarily useful for applying updates to a specific revision that was shown    * to an end-user in the user interface. If there are conflicts with another user's concurrent    * changes, these will be automatically detected at commit time.    *    *<p>The repository is not held after the call completes, allowing the application to retain this    * object for long periods of time.    *    * @param db repository to access.    * @param id revision to load.    * @throws IOException    * @throws ConfigInvalidException    */
-DECL|method|load (Repository db, ObjectId id)
+DECL|method|load (Repository db, @Nullable ObjectId id)
 specifier|public
 name|void
 name|load
@@ -771,6 +788,8 @@ parameter_list|(
 name|Repository
 name|db
 parameter_list|,
+annotation|@
+name|Nullable
 name|ObjectId
 name|id
 parameter_list|)
