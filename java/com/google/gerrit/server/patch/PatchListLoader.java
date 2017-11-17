@@ -3286,9 +3286,7 @@ decl_stmt|;
 name|long
 name|sizeDelta
 init|=
-name|bContent
-operator|.
-name|length
+name|size
 operator|-
 name|aContent
 operator|.
