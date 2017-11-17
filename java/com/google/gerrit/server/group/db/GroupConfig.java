@@ -474,6 +474,20 @@ name|jgit
 operator|.
 name|revwalk
 operator|.
+name|FooterKey
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
 name|RevCommit
 import|;
 end_import
@@ -512,6 +526,54 @@ name|String
 name|GROUP_CONFIG_FILE
 init|=
 literal|"group.config"
+decl_stmt|;
+DECL|field|FOOTER_ADD_MEMBER
+specifier|static
+specifier|final
+name|FooterKey
+name|FOOTER_ADD_MEMBER
+init|=
+operator|new
+name|FooterKey
+argument_list|(
+literal|"Add"
+argument_list|)
+decl_stmt|;
+DECL|field|FOOTER_REMOVE_MEMBER
+specifier|static
+specifier|final
+name|FooterKey
+name|FOOTER_REMOVE_MEMBER
+init|=
+operator|new
+name|FooterKey
+argument_list|(
+literal|"Remove"
+argument_list|)
+decl_stmt|;
+DECL|field|FOOTER_ADD_GROUP
+specifier|static
+specifier|final
+name|FooterKey
+name|FOOTER_ADD_GROUP
+init|=
+operator|new
+name|FooterKey
+argument_list|(
+literal|"Add-group"
+argument_list|)
+decl_stmt|;
+DECL|field|FOOTER_REMOVE_GROUP
+specifier|static
+specifier|final
+name|FooterKey
+name|FOOTER_REMOVE_GROUP
+init|=
+operator|new
+name|FooterKey
+argument_list|(
+literal|"Remove-group"
+argument_list|)
 decl_stmt|;
 DECL|field|MEMBERS_FILE
 specifier|private
@@ -2348,7 +2410,14 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-literal|"Remove: "
+operator|(
+name|FOOTER_REMOVE_MEMBER
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|": "
+operator|)
 operator|::
 name|concat
 argument_list|)
@@ -2378,7 +2447,14 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-literal|"Add: "
+operator|(
+name|FOOTER_ADD_MEMBER
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|": "
+operator|)
 operator|::
 name|concat
 argument_list|)
@@ -2444,7 +2520,14 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-literal|"Remove-group: "
+operator|(
+name|FOOTER_REMOVE_GROUP
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|": "
+operator|)
 operator|::
 name|concat
 argument_list|)
@@ -2474,7 +2557,14 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-literal|"Add-group: "
+operator|(
+name|FOOTER_ADD_GROUP
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|": "
+operator|)
 operator|::
 name|concat
 argument_list|)

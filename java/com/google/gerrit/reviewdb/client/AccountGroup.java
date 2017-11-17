@@ -1160,6 +1160,54 @@ name|createdOn
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|"{"
+operator|+
+literal|"name="
+operator|+
+name|name
+operator|+
+literal|", groupId="
+operator|+
+name|groupId
+operator|+
+literal|", description="
+operator|+
+name|description
+operator|+
+literal|", visibleToAll="
+operator|+
+name|visibleToAll
+operator|+
+literal|", groupUUID="
+operator|+
+name|groupUUID
+operator|+
+literal|", ownerGroupUUID="
+operator|+
+name|ownerGroupUUID
+operator|+
+literal|", createdOn="
+operator|+
+name|createdOn
+operator|+
+literal|"}"
+return|;
+block|}
 block|}
 end_class
 

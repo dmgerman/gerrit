@@ -390,6 +390,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -423,6 +433,20 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
 import|;
 end_import
 
@@ -568,6 +592,10 @@ throws|,
 name|MethodNotAllowedException
 throws|,
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|GroupDescription
 operator|.
@@ -915,7 +943,7 @@ operator|.
 name|fill
 argument_list|()
 expr_stmt|;
-comment|// sort by date in reverse order so that the newest audit event comes first
+comment|// sort by date and then reverse so that the newest audit event comes first
 name|Collections
 operator|.
 name|sort
@@ -933,9 +961,13 @@ name|a
 operator|.
 name|date
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|Collections
 operator|.
-name|reversed
-argument_list|()
+name|reverse
+argument_list|(
+name|auditEvents
 argument_list|)
 expr_stmt|;
 return|return

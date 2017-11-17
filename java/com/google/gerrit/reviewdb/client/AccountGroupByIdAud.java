@@ -698,6 +698,42 @@ name|removedOn
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|"{"
+operator|+
+literal|"key="
+operator|+
+name|key
+operator|+
+literal|", addedBy="
+operator|+
+name|addedBy
+operator|+
+literal|", removedBy="
+operator|+
+name|removedBy
+operator|+
+literal|", removedOn="
+operator|+
+name|removedOn
+operator|+
+literal|"}"
+return|;
+block|}
 block|}
 end_class
 
