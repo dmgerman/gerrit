@@ -66,22 +66,6 @@ name|patch
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|diff
-operator|.
-name|PatchListNotAvailableException
-import|;
-end_import
-
 begin_comment
 comment|/**  * Exception thrown when the PatchList could not be computed because previous attempts failed with  * {@code LargeObjectException}. This is not thrown on the first computation.  */
 end_comment

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.diff
+DECL|package|com.google.gerrit.server.patch
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|diff
+name|patch
 package|;
 end_package
 

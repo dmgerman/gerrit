@@ -210,22 +210,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|diff
-operator|.
-name|PatchListEntry
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -1021,7 +1005,6 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|ContextAwareEdit
-specifier|public
 specifier|abstract
 specifier|static
 class|class

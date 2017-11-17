@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.diff
+DECL|package|com.google.gerrit.server.patch
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|diff
+name|patch
 package|;
 end_package
 
@@ -82,7 +82,6 @@ end_import
 
 begin_class
 DECL|class|CharText
-specifier|public
 class|class
 name|CharText
 extends|extends
@@ -95,7 +94,6 @@ name|String
 name|content
 decl_stmt|;
 DECL|method|CharText (Text text, int s, int e)
-specifier|public
 name|CharText
 parameter_list|(
 name|Text
@@ -124,7 +122,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|charAt (int idx)
-specifier|public
 name|char
 name|charAt
 parameter_list|(
@@ -142,7 +139,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|isLineStart (int b)
-specifier|public
 name|boolean
 name|isLineStart
 parameter_list|(
@@ -166,7 +162,6 @@ literal|'\n'
 return|;
 block|}
 DECL|method|contains (int b, int e, char c)
-specifier|public
 name|boolean
 name|contains
 parameter_list|(

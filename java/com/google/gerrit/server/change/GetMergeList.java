@@ -186,9 +186,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|diff
+name|git
 operator|.
-name|MergeListBuilder
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -202,9 +202,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|patch
 operator|.
-name|GitRepositoryManager
+name|MergeListBuilder
 import|;
 end_import
 

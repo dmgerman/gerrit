@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.diff
+DECL|package|com.google.gerrit.server.patch
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|diff
+name|patch
 package|;
 end_package
 
@@ -396,7 +396,6 @@ argument_list|>
 name|edits
 decl_stmt|;
 DECL|method|IntraLineDiff (Status status)
-specifier|public
 name|IntraLineDiff
 parameter_list|(
 name|Status
@@ -420,7 +419,6 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|IntraLineDiff (List<Edit> edits)
-specifier|public
 name|IntraLineDiff
 parameter_list|(
 name|List

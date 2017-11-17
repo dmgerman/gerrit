@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -77,38 +77,6 @@ operator|.
 name|cache
 operator|.
 name|Weigher
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|diff
-operator|.
-name|IntraLineDiff
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|diff
-operator|.
-name|IntraLineDiffKey
 import|;
 end_import
 

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.diff
+DECL|package|com.google.gerrit.server.patch
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|diff
+name|patch
 package|;
 end_package
 
@@ -72,13 +72,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|auto
 operator|.
-name|reviewdb
+name|value
 operator|.
-name|client
-operator|.
-name|Change
+name|AutoValue
 import|;
 end_import
 
@@ -90,27 +88,23 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|PatchSet
+name|DiffPreferencesInfo
+operator|.
+name|Whitespace
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|io
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
+name|Serializable
 import|;
 end_import
 
@@ -128,88 +122,77 @@ name|ObjectId
 import|;
 end_import
 
-begin_comment
-comment|/** Provides a cached list of {@link PatchListEntry}. */
-end_comment
-
-begin_interface
-DECL|interface|PatchListCache
+begin_class
+annotation|@
+name|AutoValue
+DECL|class|IntraLineDiffKey
 specifier|public
-interface|interface
-name|PatchListCache
-block|{
-DECL|method|get (PatchListKey key, Project.NameKey project)
-name|PatchList
-name|get
-parameter_list|(
-name|PatchListKey
-name|key
-parameter_list|,
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|)
-throws|throws
-name|PatchListNotAvailableException
-function_decl|;
-DECL|method|get (Change change, PatchSet patchSet)
-name|PatchList
-name|get
-parameter_list|(
-name|Change
-name|change
-parameter_list|,
-name|PatchSet
-name|patchSet
-parameter_list|)
-throws|throws
-name|PatchListNotAvailableException
-function_decl|;
-DECL|method|getOldId (Change change, PatchSet patchSet, Integer parentNum)
-name|ObjectId
-name|getOldId
-parameter_list|(
-name|Change
-name|change
-parameter_list|,
-name|PatchSet
-name|patchSet
-parameter_list|,
-name|Integer
-name|parentNum
-parameter_list|)
-throws|throws
-name|PatchListNotAvailableException
-function_decl|;
-DECL|method|getIntraLineDiff (IntraLineDiffKey key, IntraLineDiffArgs args)
-name|IntraLineDiff
-name|getIntraLineDiff
-parameter_list|(
+specifier|abstract
+class|class
 name|IntraLineDiffKey
-name|key
-parameter_list|,
-name|IntraLineDiffArgs
-name|args
-parameter_list|)
-function_decl|;
-DECL|method|getDiffSummary (DiffSummaryKey key, Project.NameKey project)
-name|DiffSummary
-name|getDiffSummary
+implements|implements
+name|Serializable
+block|{
+DECL|field|serialVersionUID
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|8L
+decl_stmt|;
+DECL|method|create (ObjectId aId, ObjectId bId, Whitespace whitespace)
+specifier|public
+specifier|static
+name|IntraLineDiffKey
+name|create
 parameter_list|(
-name|DiffSummaryKey
-name|key
+name|ObjectId
+name|aId
 parameter_list|,
-name|Project
-operator|.
-name|NameKey
-name|project
+name|ObjectId
+name|bId
+parameter_list|,
+name|Whitespace
+name|whitespace
 parameter_list|)
-throws|throws
-name|PatchListNotAvailableException
+block|{
+return|return
+operator|new
+name|AutoValue_IntraLineDiffKey
+argument_list|(
+name|aId
+argument_list|,
+name|bId
+argument_list|,
+name|whitespace
+argument_list|)
+return|;
+block|}
+DECL|method|getBlobA ()
+specifier|public
+specifier|abstract
+name|ObjectId
+name|getBlobA
+parameter_list|()
+function_decl|;
+DECL|method|getBlobB ()
+specifier|public
+specifier|abstract
+name|ObjectId
+name|getBlobB
+parameter_list|()
+function_decl|;
+DECL|method|getWhitespace ()
+specifier|public
+specifier|abstract
+name|Whitespace
+name|getWhitespace
+parameter_list|()
 function_decl|;
 block|}
-end_interface
+end_class
 
 end_unit
 

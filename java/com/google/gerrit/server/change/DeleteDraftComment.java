@@ -262,7 +262,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|diff
+name|patch
 operator|.
 name|PatchListCache
 import|;
