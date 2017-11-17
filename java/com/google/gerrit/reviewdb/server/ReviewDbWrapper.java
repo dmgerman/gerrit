@@ -368,6 +368,11 @@ specifier|final
 name|ReviewDb
 name|delegate
 decl_stmt|;
+DECL|field|inTransaction
+specifier|private
+name|boolean
+name|inTransaction
+decl_stmt|;
 DECL|method|ReviewDbWrapper (ReviewDb delegate)
 specifier|protected
 name|ReviewDbWrapper
@@ -386,6 +391,27 @@ name|delegate
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|inTransaction ()
+specifier|public
+name|boolean
+name|inTransaction
+parameter_list|()
+block|{
+return|return
+name|inTransaction
+return|;
+block|}
+DECL|method|beginTransaction ()
+specifier|public
+name|void
+name|beginTransaction
+parameter_list|()
+block|{
+name|inTransaction
+operator|=
+literal|true
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|commit ()
@@ -396,11 +422,21 @@ parameter_list|()
 throws|throws
 name|OrmException
 block|{
+if|if
+condition|(
+operator|!
+name|inTransaction
+condition|)
+block|{
+comment|// This reads a little weird, we're not in a transaction, so why are we calling commit?
+comment|// Because we want to let the underlying ReviewDb do its normal thing in this case (which may
+comment|// be throwing an exception, or not, depending on implementation).
 name|delegate
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -412,11 +448,25 @@ parameter_list|()
 throws|throws
 name|OrmException
 block|{
+if|if
+condition|(
+name|inTransaction
+condition|)
+block|{
+name|inTransaction
+operator|=
+literal|false
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// See comment in commit(): we want to let the underlying ReviewDb do its thing.
 name|delegate
 operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override

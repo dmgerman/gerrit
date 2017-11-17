@@ -211,7 +211,7 @@ init|=
 literal|"write"
 decl_stmt|;
 DECL|field|DISABLE_REVIEW_DB
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String

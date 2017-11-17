@@ -1385,6 +1385,15 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+if|if
+condition|(
+operator|!
+name|groupsMigration
+operator|.
+name|disableGroupReviewDb
+argument_list|()
+condition|)
+block|{
 comment|// TODO(ekempin): Don't read groups from ReviewDb if reading groups from NoteDb is configured
 name|InternalGroup
 name|createdGroupInReviewDb
@@ -1420,6 +1429,7 @@ expr_stmt|;
 return|return
 name|createdGroupInReviewDb
 return|;
+block|}
 block|}
 comment|// TODO(aliceks): Add retry mechanism.
 name|InternalGroup
@@ -1512,6 +1522,20 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+name|UpdateResult
+name|reviewDbUpdateResult
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|groupsMigration
+operator|.
+name|disableGroupReviewDb
+argument_list|()
+condition|)
+block|{
 comment|// TODO(ekempin): Don't read groups from ReviewDb if reading groups from NoteDb is configured
 name|AccountGroup
 name|group
@@ -1528,9 +1552,8 @@ argument_list|,
 name|groupUuid
 argument_list|)
 decl_stmt|;
-name|UpdateResult
 name|reviewDbUpdateResult
-init|=
+operator|=
 name|updateGroupInReviewDb
 argument_list|(
 name|ReviewDbUtil
@@ -1544,7 +1567,7 @@ name|group
 argument_list|,
 name|groupUpdate
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1557,6 +1580,7 @@ block|{
 return|return
 name|reviewDbUpdateResult
 return|;
+block|}
 block|}
 comment|// TODO(aliceks): Add retry mechanism.
 name|Optional

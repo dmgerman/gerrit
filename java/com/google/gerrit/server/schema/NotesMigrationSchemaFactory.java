@@ -281,6 +281,30 @@ parameter_list|()
 throws|throws
 name|OrmException
 block|{
+comment|// There are two levels at which this class disables access to Changes and related tables,
+comment|// corresponding to two phases of the NoteDb migration:
+comment|//
+comment|// 1. When changes are read from NoteDb but some changes might still have their primary storage
+comment|//    in ReviewDb, it is generally programmer error to read changes from ReviewDb. However,
+comment|//    since ReviewDb is still the primary storage for most or all changes, we still need to
+comment|//    support writing to ReviewDb. This behavior is accomplished by wrapping in a
+comment|//    DisallowReadFromChangesReviewDbWrapper.
+comment|//
+comment|//    Some codepaths might need to be able to read from ReviewDb if they really need to,
+comment|//    because they need to operate on the underlying source of truth, for example when reading
+comment|//    a change to determine its primary storage. To support this, ReviewDbUtil#unwrapDb can
+comment|//    detect and unwrap databases of this type.
+comment|//
+comment|// 2. After all changes have their primary storage in NoteDb, we can completely shut off access
+comment|//    to the change tables. At this point in the migration, we are by definition not using the
+comment|//    ReviewDb tables at all; we could even delete the tables at this point, and Gerrit would
+comment|//    continue to function.
+comment|//
+comment|//    This is accomplished by setting the delegate ReviewDb *underneath*
+comment|//    DisallowReadFromChanges to be a complete no-op, with NoChangesReviewDbWrapper. With this
+comment|//    wrapper, all read operations return no results, and write operations silently do nothing.
+comment|//    This wrapper is not a public class and nobody should ever attempt to unwrap it.
+comment|// First create the wrappers which can not be removed by ReviewDbUtil#unwrapDb(ReviewDb).
 name|ReviewDb
 name|db
 init|=
@@ -295,40 +319,14 @@ name|migration
 operator|.
 name|readChanges
 argument_list|()
-condition|)
-block|{
-comment|// There are two levels at which this class disables access to Changes and related tables,
-comment|// corresponding to two phases of the NoteDb migration:
-comment|//
-comment|// 1. When changes are read from NoteDb but some changes might still have their primary
-comment|//    storage in ReviewDb, it is generally programmer error to read changes from ReviewDb.
-comment|//    However, since ReviewDb is still the primary storage for most or all changes, we still
-comment|//    need to support writing to ReviewDb. This behavior is accomplished by wrapping in a
-comment|//    DisallowReadFromChangesReviewDbWrapper.
-comment|//
-comment|//    Some codepaths might need to be able to read from ReviewDb if they really need to,
-comment|//    because they need to operate on the underlying source of truth, for example when
-comment|//    reading a change to determine its primary storage. To support this,
-comment|//    ReviewDbUtil#unwrapDb can detect and unwrap databases of this type.
-comment|//
-comment|// 2. After all changes have their primary storage in NoteDb, we can completely shut off
-comment|//    access to the change tables. At this point in the migration, we are by definition not
-comment|//    using the ReviewDb tables at all; we could even delete the tables at this point, and
-comment|//    Gerrit would continue to function.
-comment|//
-comment|//    This is accomplished by setting the delegate ReviewDb *underneath*
-comment|//    DisallowReadFromChanges to be a complete no-op, with NoChangesReviewDbWrapper. With
-comment|//    this wrapper, all read operations return no results, and write operations silently do
-comment|//    nothing. This wrapper is not a public class and nobody should ever attempt to unwrap
-comment|//    it.
-if|if
-condition|(
+operator|&&
 name|migration
 operator|.
 name|disableChangeReviewDb
 argument_list|()
 condition|)
 block|{
+comment|// Disable writes to change tables in ReviewDb (ReviewDb access for changes are No-Ops).
 name|db
 operator|=
 operator|new
@@ -338,6 +336,40 @@ name|db
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|groupsMigration
+operator|.
+name|readFromNoteDb
+argument_list|()
+operator|&&
+name|groupsMigration
+operator|.
+name|disableGroupReviewDb
+argument_list|()
+condition|)
+block|{
+comment|// Disable writes to group tables in ReviewDb (ReviewDb access for groups are No-Ops).
+name|db
+operator|=
+operator|new
+name|NoGroupsReviewDbWrapper
+argument_list|(
+name|db
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Second create the wrappers which can be removed by ReviewDbUtil#unwrapDb(ReviewDb).
+if|if
+condition|(
+name|migration
+operator|.
+name|readChanges
+argument_list|()
+condition|)
+block|{
+comment|// If reading changes from NoteDb is configured, changes should not be read from ReviewDb.
+comment|// Make sure that any attempt to read a change from ReviewDb anyway fails with an exception.
 name|db
 operator|=
 operator|new
