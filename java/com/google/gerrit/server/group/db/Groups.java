@@ -1514,8 +1514,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the membership audit records for a given group.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the group    * @return the audit records, in arbitrary order; empty if the group does not exist    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the group couldn't be retrieved from NoteDb    */
-DECL|method|getMembersAudit (ReviewDb db, AccountGroup.UUID groupUuid)
+comment|/**    * Returns the membership audit records for a given group.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param repo All-Users repository.    * @param groupUuid the UUID of the group    * @return the audit records, in arbitrary order; empty if the group does not exist    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the group couldn't be retrieved from NoteDb    */
+DECL|method|getMembersAudit ( ReviewDb db, Repository repo, AccountGroup.UUID groupUuid)
 specifier|public
 name|List
 argument_list|<
@@ -1525,6 +1525,9 @@ name|getMembersAudit
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|Repository
+name|repo
 parameter_list|,
 name|AccountGroup
 operator|.
@@ -1551,6 +1554,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|repo
+argument_list|,
 name|groupUuid
 argument_list|)
 return|;
@@ -1633,8 +1638,8 @@ return|return
 name|audits
 return|;
 block|}
-comment|/**    * Returns the subgroup audit records for a given group.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the group    * @return the audit records, in arbitrary order; empty if the group does not exist    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the group couldn't be retrieved from NoteDb    */
-DECL|method|getSubgroupsAudit (ReviewDb db, AccountGroup.UUID groupUuid)
+comment|/**    * Returns the subgroup audit records for a given group.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param repo All-Users repository.    * @param groupUuid the UUID of the group    * @return the audit records, in arbitrary order; empty if the group does not exist    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the group couldn't be retrieved from NoteDb    */
+DECL|method|getSubgroupsAudit ( ReviewDb db, Repository repo, AccountGroup.UUID groupUuid)
 specifier|public
 name|List
 argument_list|<
@@ -1644,6 +1649,9 @@ name|getSubgroupsAudit
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|Repository
+name|repo
 parameter_list|,
 name|AccountGroup
 operator|.
@@ -1670,6 +1678,8 @@ name|auditLogReader
 operator|.
 name|getSubgroupsAudit
 argument_list|(
+name|repo
+argument_list|,
 name|groupUuid
 argument_list|)
 return|;
