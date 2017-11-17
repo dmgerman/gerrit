@@ -156,7 +156,7 @@ literal|false
 argument_list|)
 argument_list|)
 block|,
-comment|/** Reading/writing groups from/to NoteDb is enabled. */
+comment|/**    * Reading/writing groups from/to NoteDb is enabled. Trying to read groups from ReviewDb throws an    * exception.    */
 DECL|enumConstant|READ_WRITE
 name|READ_WRITE
 argument_list|(
