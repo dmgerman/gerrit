@@ -660,21 +660,6 @@ name|nextChangeId
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|changesTablesEnabled ()
-specifier|public
-name|boolean
-name|changesTablesEnabled
-parameter_list|()
-block|{
-return|return
-name|delegate
-operator|.
-name|changesTablesEnabled
-argument_list|()
-return|;
-block|}
 DECL|class|ChangeAccessWrapper
 specifier|public
 specifier|static
