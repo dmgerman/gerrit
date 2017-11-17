@@ -239,11 +239,11 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|roundToSecond (Timestamp t)
+DECL|method|truncateToSecond (Timestamp t)
 specifier|public
 specifier|static
 name|Timestamp
-name|roundToSecond
+name|truncateToSecond
 parameter_list|(
 name|Timestamp
 name|t

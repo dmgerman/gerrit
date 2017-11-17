@@ -2983,7 +2983,7 @@ name|testStartTime
 init|=
 name|TimeUtil
 operator|.
-name|roundToSecond
+name|truncateToSecond
 argument_list|(
 name|TimeUtil
 operator|.
