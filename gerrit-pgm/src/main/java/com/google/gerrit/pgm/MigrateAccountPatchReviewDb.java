@@ -651,6 +651,17 @@ operator|.
 name|size
 argument_list|()
 expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|printf
+argument_list|(
+literal|"%8d rows migrated\n"
+argument_list|,
+name|offset
+argument_list|)
+expr_stmt|;
 name|rows
 operator|=
 name|selectRows
@@ -661,6 +672,15 @@ name|offset
 argument_list|)
 expr_stmt|;
 block|}
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Done"
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 literal|0
