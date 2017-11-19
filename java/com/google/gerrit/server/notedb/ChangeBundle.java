@@ -126,7 +126,7 @@ name|common
 operator|.
 name|TimeUtil
 operator|.
-name|roundToSecond
+name|truncateToSecond
 import|;
 end_import
 
@@ -6493,7 +6493,7 @@ name|tsFromNoteDb
 operator|.
 name|equals
 argument_list|(
-name|roundToSecond
+name|truncateToSecond
 argument_list|(
 name|tsFromNoteDb
 argument_list|)

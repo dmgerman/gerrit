@@ -829,7 +829,7 @@ name|isEqualTo
 argument_list|(
 name|reviewDbBundle
 operator|.
-name|roundToSecond
+name|truncateToSecond
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1003,7 +1003,7 @@ name|isEqualTo
 argument_list|(
 name|reviewDbBundle
 operator|.
-name|roundToSecond
+name|truncateToSecond
 argument_list|()
 argument_list|)
 expr_stmt|;

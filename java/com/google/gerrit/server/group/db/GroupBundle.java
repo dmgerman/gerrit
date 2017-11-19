@@ -1011,10 +1011,10 @@ name|Builder
 name|toBuilder
 parameter_list|()
 function_decl|;
-DECL|method|roundToSecond ()
+DECL|method|truncateToSecond ()
 specifier|public
 name|GroupBundle
-name|roundToSecond
+name|truncateToSecond
 parameter_list|()
 block|{
 name|AccountGroup
@@ -1043,7 +1043,7 @@ name|setCreatedOn
 argument_list|(
 name|TimeUtil
 operator|.
-name|roundToSecond
+name|truncateToSecond
 argument_list|(
 name|newGroup
 operator|.
@@ -1074,7 +1074,7 @@ name|map
 argument_list|(
 name|GroupBundle
 operator|::
-name|roundToSecond
+name|truncateToSecond
 argument_list|)
 operator|.
 name|collect
@@ -1096,7 +1096,7 @@ name|map
 argument_list|(
 name|GroupBundle
 operator|::
-name|roundToSecond
+name|truncateToSecond
 argument_list|)
 operator|.
 name|collect
@@ -1110,11 +1110,11 @@ name|build
 argument_list|()
 return|;
 block|}
-DECL|method|roundToSecond (AccountGroupMemberAudit a)
+DECL|method|truncateToSecond (AccountGroupMemberAudit a)
 specifier|private
 specifier|static
 name|AccountGroupMemberAudit
-name|roundToSecond
+name|truncateToSecond
 parameter_list|(
 name|AccountGroupMemberAudit
 name|a
@@ -1149,7 +1149,7 @@ argument_list|()
 argument_list|,
 name|TimeUtil
 operator|.
-name|roundToSecond
+name|truncateToSecond
 argument_list|(
 name|a
 operator|.
@@ -1188,7 +1188,7 @@ argument_list|()
 argument_list|,
 name|TimeUtil
 operator|.
-name|roundToSecond
+name|truncateToSecond
 argument_list|(
 name|a
 operator|.
@@ -1202,11 +1202,11 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|roundToSecond (AccountGroupByIdAud a)
+DECL|method|truncateToSecond (AccountGroupByIdAud a)
 specifier|private
 specifier|static
 name|AccountGroupByIdAud
-name|roundToSecond
+name|truncateToSecond
 parameter_list|(
 name|AccountGroupByIdAud
 name|a
@@ -1241,7 +1241,7 @@ argument_list|()
 argument_list|,
 name|TimeUtil
 operator|.
-name|roundToSecond
+name|truncateToSecond
 argument_list|(
 name|a
 operator|.
@@ -1280,7 +1280,7 @@ argument_list|()
 argument_list|,
 name|TimeUtil
 operator|.
-name|roundToSecond
+name|truncateToSecond
 argument_list|(
 name|a
 operator|.

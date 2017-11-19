@@ -110,7 +110,7 @@ name|common
 operator|.
 name|TimeUtil
 operator|.
-name|roundToSecond
+name|truncateToSecond
 import|;
 end_import
 
@@ -6874,7 +6874,7 @@ name|ps1
 operator|.
 name|setCreatedOn
 argument_list|(
-name|roundToSecond
+name|truncateToSecond
 argument_list|(
 name|TimeUtil
 operator|.
@@ -7207,7 +7207,7 @@ name|ps1
 operator|.
 name|setCreatedOn
 argument_list|(
-name|roundToSecond
+name|truncateToSecond
 argument_list|(
 name|TimeUtil
 operator|.
@@ -9488,7 +9488,7 @@ name|short
 operator|)
 literal|1
 argument_list|,
-name|roundToSecond
+name|truncateToSecond
 argument_list|(
 name|TimeUtil
 operator|.
@@ -11027,7 +11027,7 @@ name|accountId
 argument_list|,
 literal|null
 argument_list|,
-name|roundToSecond
+name|truncateToSecond
 argument_list|(
 name|TimeUtil
 operator|.
