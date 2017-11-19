@@ -435,16 +435,6 @@ parameter_list|()
 throws|throws
 name|OrmException
 function_decl|;
-DECL|method|changesTablesEnabled ()
-specifier|default
-name|boolean
-name|changesTablesEnabled
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
 block|}
 end_interface
 
