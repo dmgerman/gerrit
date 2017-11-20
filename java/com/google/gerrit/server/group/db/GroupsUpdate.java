@@ -2981,6 +2981,8 @@ throws|,
 name|ConfigInvalidException
 throws|,
 name|OrmDuplicateKeyException
+throws|,
+name|NoSuchGroupException
 block|{
 try|try
 init|(
@@ -3034,7 +3036,22 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-comment|// TODO(aliceks): Throw a NoSuchGroupException here when all groups are stored in NoteDb.
+if|if
+condition|(
+name|groupsMigration
+operator|.
+name|readFromNoteDb
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|NoSuchGroupException
+argument_list|(
+name|groupUuid
+argument_list|)
+throw|;
+block|}
 return|return
 name|Optional
 operator|.
