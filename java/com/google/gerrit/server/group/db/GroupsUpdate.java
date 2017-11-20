@@ -1394,7 +1394,6 @@ name|disableGroupReviewDb
 argument_list|()
 condition|)
 block|{
-comment|// TODO(ekempin): Don't read groups from ReviewDb if reading groups from NoteDb is configured
 name|InternalGroup
 name|createdGroupInReviewDb
 init|=
@@ -1536,7 +1535,6 @@ name|disableGroupReviewDb
 argument_list|()
 condition|)
 block|{
-comment|// TODO(ekempin): Don't read groups from ReviewDb if reading groups from NoteDb is configured
 name|AccountGroup
 name|group
 init|=
