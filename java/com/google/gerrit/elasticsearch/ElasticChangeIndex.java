@@ -1274,6 +1274,9 @@ name|Override
 DECL|method|getSource (Predicate<ChangeData> p, QueryOptions opts)
 specifier|public
 name|DataSource
+argument_list|<
+name|ChangeData
+argument_list|>
 name|getSource
 parameter_list|(
 name|Predicate
