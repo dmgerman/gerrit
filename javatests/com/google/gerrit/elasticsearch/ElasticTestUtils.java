@@ -1014,6 +1014,9 @@ argument_list|)
 operator|.
 name|execute
 argument_list|()
+operator|.
+name|actionGet
+argument_list|()
 expr_stmt|;
 block|}
 DECL|class|NodeInfo
