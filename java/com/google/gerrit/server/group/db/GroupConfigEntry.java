@@ -215,9 +215,12 @@ operator|.
 name|getId
 argument_list|()
 decl_stmt|;
+comment|// Do not use config.setInt(...) to write the group ID because config.setInt(...) persists
+comment|// integers that can be expressed in KiB as a unit strings, e.g. "1024" is stored as "1k".
+comment|// Using config.setString(...) ensures that group IDs are human readable.
 name|config
 operator|.
-name|setInt
+name|setString
 argument_list|(
 name|SECTION_NAME
 argument_list|,
@@ -227,10 +230,15 @@ name|super
 operator|.
 name|keyName
 argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|id
 operator|.
 name|get
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
