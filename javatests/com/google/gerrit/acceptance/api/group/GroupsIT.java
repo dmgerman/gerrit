@@ -8229,7 +8229,7 @@ argument_list|()
 operator|.
 name|that
 argument_list|(
-name|groupsInNoteDb
+name|readGroupsFromNoteDb
 argument_list|()
 argument_list|)
 operator|.
@@ -9525,6 +9525,17 @@ name|WRITE
 argument_list|,
 literal|false
 argument_list|)
+return|;
+block|}
+DECL|method|readGroupsFromNoteDb ()
+specifier|private
+name|boolean
+name|readGroupsFromNoteDb
+parameter_list|()
+block|{
+return|return
+name|groupsInNoteDb
+argument_list|()
 operator|&&
 name|cfg
 operator|.
