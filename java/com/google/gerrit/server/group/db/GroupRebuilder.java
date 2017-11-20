@@ -348,7 +348,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupCache
+name|GroupBackend
 import|;
 end_import
 
@@ -790,7 +790,7 @@ name|getGroupNameFunc
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupRebuilder ( @nonymousCowardName String anonymousCowardName, @GerritPersonIdent Provider<PersonIdent> serverIdent, @GerritServerId String serverId, AllUsersName allUsers, MetaDataUpdate.InternalFactory metaDataUpdateFactory, AccountCache accountCache, GroupCache groupCache)
+DECL|method|GroupRebuilder ( @nonymousCowardName String anonymousCowardName, @GerritPersonIdent Provider<PersonIdent> serverIdent, @GerritServerId String serverId, AllUsersName allUsers, MetaDataUpdate.InternalFactory metaDataUpdateFactory, AccountCache accountCache, GroupBackend groupBackend)
 name|GroupRebuilder
 parameter_list|(
 annotation|@
@@ -822,8 +822,8 @@ parameter_list|,
 name|AccountCache
 name|accountCache
 parameter_list|,
-name|GroupCache
-name|groupCache
+name|GroupBackend
+name|groupBackend
 parameter_list|)
 block|{
 name|this
@@ -896,7 +896,7 @@ name|GroupsUpdate
 operator|.
 name|getGroupName
 argument_list|(
-name|groupCache
+name|groupBackend
 argument_list|,
 name|uuid
 argument_list|)
