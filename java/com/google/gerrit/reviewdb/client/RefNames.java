@@ -274,6 +274,16 @@ name|REFS_GROUPNAMES
 init|=
 literal|"refs/meta/group-names"
 decl_stmt|;
+comment|/**    * NoteDb ref for deleted groups {@code refs/deleted-groups}. This ref namespace is foreseen as an    * attic for deleted groups (it's reserved but not used yet)    */
+DECL|field|REFS_DELETED_GROUPS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_DELETED_GROUPS
+init|=
+literal|"refs/deleted-groups/"
+decl_stmt|;
 comment|/** Draft inline comments of a user on a change */
 DECL|field|REFS_DRAFT_COMMENTS
 specifier|public
@@ -553,6 +563,30 @@ parameter_list|)
 block|{
 return|return
 name|REFS_GROUPS
+operator|+
+name|shardUuid
+argument_list|(
+name|groupUuid
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|refsDeletedGroups (AccountGroup.UUID groupUuid)
+specifier|public
+specifier|static
+name|String
+name|refsDeletedGroups
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|groupUuid
+parameter_list|)
+block|{
+return|return
+name|REFS_DELETED_GROUPS
 operator|+
 name|shardUuid
 argument_list|(
@@ -1107,7 +1141,27 @@ name|REFS_GROUPS
 argument_list|)
 return|;
 block|}
-comment|/**    * Whether the ref is used for storing group data in NoteDb. Returns {@code true} for all group    * branches and refs/meta/group-names.    */
+comment|/**    * Whether the ref is a group branch that stores NoteDb data of a deleted group. Returns {@code    * true} for all refs that start with {@code refs/deleted-groups/}.    */
+DECL|method|isRefsDeletedGroups (String ref)
+specifier|public
+specifier|static
+name|boolean
+name|isRefsDeletedGroups
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+block|{
+return|return
+name|ref
+operator|.
+name|startsWith
+argument_list|(
+name|REFS_DELETED_GROUPS
+argument_list|)
+return|;
+block|}
+comment|/**    * Whether the ref is used for storing group data in NoteDb. Returns {@code true} for all group    * branches, refs/meta/group-names and deleted group branches.    */
 DECL|method|isGroupRef (String ref)
 specifier|public
 specifier|static
@@ -1120,6 +1174,11 @@ parameter_list|)
 block|{
 return|return
 name|isRefsGroups
+argument_list|(
+name|ref
+argument_list|)
+operator|||
+name|isRefsDeletedGroups
 argument_list|(
 name|ref
 argument_list|)
