@@ -291,13 +291,6 @@ specifier|private
 specifier|static
 parameter_list|<
 name|T
-parameter_list|,
-name|K
-extends|extends
-name|Key
-argument_list|<
-name|?
-argument_list|>
 parameter_list|>
 DECL|method|emptyFuture ()
 name|com
