@@ -783,6 +783,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|repo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|,
@@ -823,6 +825,8 @@ name|auditLogReader
 operator|.
 name|getSubgroupsAudit
 argument_list|(
+name|repo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)

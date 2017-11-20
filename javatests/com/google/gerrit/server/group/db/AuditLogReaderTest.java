@@ -340,10 +340,6 @@ operator|new
 name|AuditLogReader
 argument_list|(
 name|SERVER_ID
-argument_list|,
-name|repoManager
-argument_list|,
-name|allUsersName
 argument_list|)
 expr_stmt|;
 block|}
@@ -403,6 +399,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -443,6 +441,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|group
 operator|.
 name|getGroupUUID
@@ -512,6 +512,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -580,6 +582,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -632,6 +636,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -710,6 +716,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -812,6 +820,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -931,6 +941,8 @@ name|auditLogReader
 operator|.
 name|getSubgroupsAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -984,6 +996,8 @@ name|auditLogReader
 operator|.
 name|getSubgroupsAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -1151,6 +1165,8 @@ name|auditLogReader
 operator|.
 name|getSubgroupsAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -1229,6 +1245,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -1423,6 +1441,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -1492,6 +1512,8 @@ name|auditLogReader
 operator|.
 name|getSubgroupsAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -1548,6 +1570,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -1652,6 +1676,8 @@ name|auditLogReader
 operator|.
 name|getSubgroupsAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -1754,6 +1780,8 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -1846,6 +1874,8 @@ name|auditLogReader
 operator|.
 name|getSubgroupsAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
@@ -1901,6 +1931,8 @@ name|auditLogReader
 operator|.
 name|getSubgroupsAudit
 argument_list|(
+name|allUsersRepo
+argument_list|,
 name|uuid
 argument_list|)
 argument_list|)
