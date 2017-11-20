@@ -296,6 +296,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|testing
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -1164,6 +1182,132 @@ comment|//
 operator|+
 literal|"  value = -1 Negative\n"
 comment|//
+comment|// No leading space before 0.
+operator|+
+literal|"  value = 0 No Score\n"
+comment|//
+operator|+
+literal|"  value =  1 Positive\n"
+argument_list|)
+argument_list|)
+comment|//
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|ProjectConfig
+name|cfg
+init|=
+name|read
+argument_list|(
+name|rev
+argument_list|)
+decl_stmt|;
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|LabelType
+argument_list|>
+name|labels
+init|=
+name|cfg
+operator|.
+name|getLabelSections
+argument_list|()
+decl_stmt|;
+name|Short
+name|dv
+init|=
+name|labels
+operator|.
+name|entrySet
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|getDefaultValue
+argument_list|()
+decl_stmt|;
+name|assertThat
+argument_list|(
+operator|(
+name|int
+operator|)
+name|dv
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|readConfigLabelOldStyleWithLeadingSpace ()
+specifier|public
+name|void
+name|readConfigLabelOldStyleWithLeadingSpace
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|RevCommit
+name|rev
+init|=
+name|util
+operator|.
+name|commit
+argument_list|(
+name|util
+operator|.
+name|tree
+argument_list|(
+comment|//
+name|util
+operator|.
+name|file
+argument_list|(
+literal|"groups"
+argument_list|,
+name|util
+operator|.
+name|blob
+argument_list|(
+name|group
+argument_list|(
+name|developers
+argument_list|)
+argument_list|)
+argument_list|)
+argument_list|,
+comment|//
+name|util
+operator|.
+name|file
+argument_list|(
+literal|"project.config"
+argument_list|,
+name|util
+operator|.
+name|blob
+argument_list|(
+literal|""
+comment|//
+operator|+
+literal|"[label \"CustomLabel\"]\n"
+comment|//
+operator|+
+literal|"  value = -1 Negative\n"
+comment|//
+comment|// Leading space before 0.
 operator|+
 literal|"  value =  0 No Score\n"
 comment|//
@@ -1289,7 +1433,7 @@ operator|+
 literal|"  value = -1 Negative\n"
 comment|//
 operator|+
-literal|"  value =  0 No Score\n"
+literal|"  value = 0 No Score\n"
 comment|//
 operator|+
 literal|"  value =  1 Positive\n"
@@ -1417,7 +1561,7 @@ operator|+
 literal|"  value = -1 Negative\n"
 comment|//
 operator|+
-literal|"  value =  0 No Score\n"
+literal|"  value = 0 No Score\n"
 comment|//
 operator|+
 literal|"  value =  1 Positive\n"
@@ -1956,6 +2100,120 @@ literal|"\tdefaultValue = 0\n"
 argument_list|)
 expr_stmt|;
 comment|//  label gets this value when it is created
+block|}
+annotation|@
+name|Test
+DECL|method|editConfigLabelValues ()
+specifier|public
+name|void
+name|editConfigLabelValues
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|RevCommit
+name|rev
+init|=
+name|util
+operator|.
+name|commit
+argument_list|(
+name|util
+operator|.
+name|tree
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|update
+argument_list|(
+name|rev
+argument_list|)
+expr_stmt|;
+name|ProjectConfig
+name|cfg
+init|=
+name|read
+argument_list|(
+name|rev
+argument_list|)
+decl_stmt|;
+name|cfg
+operator|.
+name|getLabelSections
+argument_list|()
+operator|.
+name|put
+argument_list|(
+literal|"My-Label"
+argument_list|,
+name|Util
+operator|.
+name|category
+argument_list|(
+literal|"My-Label"
+argument_list|,
+name|Util
+operator|.
+name|value
+argument_list|(
+operator|-
+literal|1
+argument_list|,
+literal|"Negative"
+argument_list|)
+argument_list|,
+name|Util
+operator|.
+name|value
+argument_list|(
+literal|0
+argument_list|,
+literal|"No score"
+argument_list|)
+argument_list|,
+name|Util
+operator|.
+name|value
+argument_list|(
+literal|1
+argument_list|,
+literal|"Positive"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|rev
+operator|=
+name|commit
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|text
+argument_list|(
+name|rev
+argument_list|,
+literal|"project.config"
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"[label \"My-Label\"]\n"
+operator|+
+literal|"\tfunction = MaxWithBlock\n"
+operator|+
+literal|"\tdefaultValue = 0\n"
+operator|+
+literal|"\tvalue = -1 Negative\n"
+operator|+
+literal|"\tvalue = 0 No score\n"
+operator|+
+literal|"\tvalue = +1 Positive\n"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
