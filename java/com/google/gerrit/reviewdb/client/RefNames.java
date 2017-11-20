@@ -1087,6 +1087,7 @@ name|REFS_USERS
 argument_list|)
 return|;
 block|}
+comment|/**    * Whether the ref is a group branch that stores NoteDb data of a group. Returns {@code true} for    * all refs that start with {@code refs/groups/}.    */
 DECL|method|isRefsGroups (String ref)
 specifier|public
 specifier|static
@@ -1103,6 +1104,31 @@ operator|.
 name|startsWith
 argument_list|(
 name|REFS_GROUPS
+argument_list|)
+return|;
+block|}
+comment|/**    * Whether the ref is used for storing group data in NoteDb. Returns {@code true} for all group    * branches and refs/meta/group-names.    */
+DECL|method|isGroupRef (String ref)
+specifier|public
+specifier|static
+name|boolean
+name|isGroupRef
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+block|{
+return|return
+name|isRefsGroups
+argument_list|(
+name|ref
+argument_list|)
+operator|||
+name|REFS_GROUPNAMES
+operator|.
+name|equals
+argument_list|(
+name|ref
 argument_list|)
 return|;
 block|}
