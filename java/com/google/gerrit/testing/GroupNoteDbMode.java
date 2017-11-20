@@ -140,6 +140,8 @@ argument_list|(
 literal|false
 argument_list|,
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 block|,
@@ -153,6 +155,8 @@ argument_list|(
 literal|true
 argument_list|,
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 block|,
@@ -163,6 +167,23 @@ argument_list|(
 operator|new
 name|GroupsMigration
 argument_list|(
+literal|true
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+block|,
+comment|/**    * All group tables in ReviewDb are entirely disabled. Trying to read groups from ReviewDb throws    * an exception. Reading groups through an unwrapped ReviewDb instance writing groups to ReviewDb    * is a No-Op.    */
+DECL|enumConstant|ON
+name|ON
+argument_list|(
+operator|new
+name|GroupsMigration
+argument_list|(
+literal|true
+argument_list|,
 literal|true
 argument_list|,
 literal|true

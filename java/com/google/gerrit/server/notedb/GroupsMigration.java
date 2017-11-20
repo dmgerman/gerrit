@@ -98,6 +98,24 @@ name|notedb
 operator|.
 name|NotesMigration
 operator|.
+name|DISABLE_REVIEW_DB
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NotesMigration
+operator|.
 name|READ
 import|;
 end_import
@@ -259,6 +277,12 @@ specifier|final
 name|boolean
 name|readFromNoteDb
 decl_stmt|;
+DECL|field|disableGroupReviewDb
+specifier|private
+specifier|final
+name|boolean
+name|disableGroupReviewDb
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|GroupsMigration (@erritServerConfig Config cfg)
@@ -308,10 +332,26 @@ name|READ
 argument_list|,
 literal|false
 argument_list|)
+argument_list|,
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+name|SECTION_NOTE_DB
+argument_list|,
+name|GROUPS
+operator|.
+name|key
+argument_list|()
+argument_list|,
+name|DISABLE_REVIEW_DB
+argument_list|,
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GroupsMigration (boolean writeToNoteDb, boolean readFromNoteDb)
+DECL|method|GroupsMigration ( boolean writeToNoteDb, boolean readFromNoteDb, boolean disableGroupReviewDb)
 specifier|public
 name|GroupsMigration
 parameter_list|(
@@ -320,6 +360,9 @@ name|writeToNoteDb
 parameter_list|,
 name|boolean
 name|readFromNoteDb
+parameter_list|,
+name|boolean
+name|disableGroupReviewDb
 parameter_list|)
 block|{
 name|this
@@ -333,6 +376,12 @@ operator|.
 name|readFromNoteDb
 operator|=
 name|readFromNoteDb
+expr_stmt|;
+name|this
+operator|.
+name|disableGroupReviewDb
+operator|=
+name|disableGroupReviewDb
 expr_stmt|;
 block|}
 DECL|method|writeToNoteDb ()
@@ -353,6 +402,16 @@ parameter_list|()
 block|{
 return|return
 name|readFromNoteDb
+return|;
+block|}
+DECL|method|disableGroupReviewDb ()
+specifier|public
+name|boolean
+name|disableGroupReviewDb
+parameter_list|()
+block|{
+return|return
+name|disableGroupReviewDb
 return|;
 block|}
 DECL|method|setConfigValuesIfNotSetYet (Config cfg)
@@ -422,6 +481,23 @@ argument_list|,
 name|READ
 argument_list|,
 name|readFromNoteDb
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|cfg
+operator|.
+name|setBoolean
+argument_list|(
+name|SECTION_NOTE_DB
+argument_list|,
+name|GROUPS
+operator|.
+name|key
+argument_list|()
+argument_list|,
+name|DISABLE_REVIEW_DB
+argument_list|,
+name|disableGroupReviewDb
 argument_list|()
 argument_list|)
 expr_stmt|;
