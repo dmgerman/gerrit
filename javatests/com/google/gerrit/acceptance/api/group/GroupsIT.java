@@ -6254,7 +6254,7 @@ argument_list|()
 operator|.
 name|withSubstring
 argument_list|(
-literal|"foo"
+literal|"non-existing-substring"
 argument_list|)
 operator|.
 name|getAsMap
@@ -7098,7 +7098,7 @@ name|create
 argument_list|(
 name|name
 argument_list|(
-literal|"fo"
+literal|"foo"
 argument_list|)
 argument_list|)
 operator|.
@@ -7208,7 +7208,7 @@ name|create
 argument_list|(
 name|name
 argument_list|(
-literal|"fo"
+literal|"foo"
 argument_list|)
 argument_list|)
 operator|.
