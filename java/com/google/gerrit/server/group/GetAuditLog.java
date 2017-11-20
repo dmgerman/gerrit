@@ -961,13 +961,9 @@ name|a
 operator|.
 name|date
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|Collections
 operator|.
-name|reverse
-argument_list|(
-name|auditEvents
+name|reversed
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
