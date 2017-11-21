@@ -94,6 +94,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|SitePaths
 import|;
 end_import
@@ -174,6 +190,20 @@ name|PatternLayout
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_class
 DECL|class|GarbageCollectionLogFile
 specifier|public
@@ -184,12 +214,17 @@ name|LifecycleListener
 block|{
 annotation|@
 name|Inject
-DECL|method|GarbageCollectionLogFile (SitePaths sitePaths)
+DECL|method|GarbageCollectionLogFile (SitePaths sitePaths, @GerritServerConfig Config config)
 specifier|public
 name|GarbageCollectionLogFile
 parameter_list|(
 name|SitePaths
 name|sitePaths
+parameter_list|,
+annotation|@
+name|GerritServerConfig
+name|Config
+name|config
 parameter_list|)
 block|{
 if|if
@@ -205,6 +240,17 @@ argument_list|(
 name|sitePaths
 operator|.
 name|logs_dir
+argument_list|,
+name|config
+operator|.
+name|getBoolean
+argument_list|(
+literal|"log"
+argument_list|,
+literal|"rotate"
+argument_list|,
+literal|true
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -238,7 +284,7 @@ name|removeAllAppenders
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|initLogSystem (Path logdir)
+DECL|method|initLogSystem (Path logdir, boolean rotate)
 specifier|private
 specifier|static
 name|void
@@ -246,6 +292,9 @@ name|initLogSystem
 parameter_list|(
 name|Path
 name|logdir
+parameter_list|,
+name|boolean
+name|rotate
 parameter_list|)
 block|{
 name|Logger
@@ -284,6 +333,8 @@ name|PatternLayout
 argument_list|(
 literal|"[%d] %-5p %x: %m%n"
 argument_list|)
+argument_list|,
+name|rotate
 argument_list|)
 argument_list|)
 expr_stmt|;

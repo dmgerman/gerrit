@@ -478,6 +478,20 @@ operator|||
 operator|!
 name|json
 decl_stmt|;
+name|boolean
+name|rotate
+init|=
+name|config
+operator|.
+name|getBoolean
+argument_list|(
+literal|"log"
+argument_list|,
+literal|"rotate"
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|text
@@ -500,6 +514,8 @@ name|PatternLayout
 argument_list|(
 literal|"[%d] [%t] %-5p %c %x: %m%n"
 argument_list|)
+argument_list|,
+name|rotate
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -526,6 +542,8 @@ argument_list|,
 operator|new
 name|JSONEventLayoutV1
 argument_list|()
+argument_list|,
+name|rotate
 argument_list|)
 argument_list|)
 expr_stmt|;
