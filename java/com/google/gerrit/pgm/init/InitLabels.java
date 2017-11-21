@@ -406,7 +406,7 @@ index|[]
 block|{
 literal|"-1 Fails"
 block|,
-literal|" 0 No score"
+literal|"0 No score"
 block|,
 literal|"+1 Verified"
 block|}
