@@ -13093,7 +13093,6 @@ operator|.
 name|SUBMIT
 argument_list|)
 expr_stmt|;
-comment|// TODO(ekempin): This permission should also be exclusive
 name|assertLabelPermission
 argument_list|(
 name|allUsers
@@ -13105,7 +13104,7 @@ argument_list|)
 argument_list|,
 name|userRef
 argument_list|,
-literal|false
+literal|true
 argument_list|,
 literal|"Code-Review"
 argument_list|,
