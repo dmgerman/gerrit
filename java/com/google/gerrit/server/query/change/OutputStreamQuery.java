@@ -218,20 +218,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|TrackingFooters
@@ -702,12 +688,6 @@ specifier|final
 name|TrackingFooters
 name|trackingFooters
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|CurrentUser
-name|user
-decl_stmt|;
 DECL|field|submitRuleEvaluatorFactory
 specifier|private
 specifier|final
@@ -786,7 +766,7 @@ name|out
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OutputStreamQuery ( ReviewDb db, GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, ChangeQueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, CurrentUser user, SubmitRuleEvaluator.Factory submitRuleEvaluatorFactory)
+DECL|method|OutputStreamQuery ( ReviewDb db, GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, ChangeQueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, SubmitRuleEvaluator.Factory submitRuleEvaluatorFactory)
 name|OutputStreamQuery
 parameter_list|(
 name|ReviewDb
@@ -806,9 +786,6 @@ name|eventFactory
 parameter_list|,
 name|TrackingFooters
 name|trackingFooters
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|SubmitRuleEvaluator
 operator|.
@@ -851,12 +828,6 @@ operator|.
 name|trackingFooters
 operator|=
 name|trackingFooters
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 name|this
 operator|.
@@ -1509,8 +1480,6 @@ name|submitRuleEvaluatorFactory
 operator|.
 name|create
 argument_list|(
-name|user
-argument_list|,
 name|d
 argument_list|)
 operator|.

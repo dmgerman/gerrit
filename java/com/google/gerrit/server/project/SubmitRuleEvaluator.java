@@ -218,20 +218,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|account
 operator|.
 name|AccountCache
@@ -708,13 +694,10 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (CurrentUser user, ChangeData cd)
+DECL|method|create (ChangeData cd)
 name|SubmitRuleEvaluator
 name|create
 parameter_list|(
-name|CurrentUser
-name|user
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
@@ -772,11 +755,6 @@ specifier|private
 name|Change
 name|change
 decl_stmt|;
-DECL|field|user
-specifier|private
-name|CurrentUser
-name|user
-decl_stmt|;
 DECL|field|patchSet
 specifier|private
 name|PatchSet
@@ -806,7 +784,7 @@ name|submitRule
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitRuleEvaluator ( AccountCache accountCache, Accounts accounts, Emails emails, ProjectCache projectCache, @Assisted CurrentUser user, @Assisted ChangeData cd)
+DECL|method|SubmitRuleEvaluator ( AccountCache accountCache, Accounts accounts, Emails emails, ProjectCache projectCache, @Assisted ChangeData cd)
 name|SubmitRuleEvaluator
 parameter_list|(
 name|AccountCache
@@ -820,11 +798,6 @@ name|emails
 parameter_list|,
 name|ProjectCache
 name|projectCache
-parameter_list|,
-annotation|@
-name|Assisted
-name|CurrentUser
-name|user
 parameter_list|,
 annotation|@
 name|Assisted
@@ -855,12 +828,6 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 name|this
 operator|.
@@ -1190,8 +1157,6 @@ argument_list|,
 literal|"locate_submit_filter"
 argument_list|,
 literal|"filter_submit_results"
-argument_list|,
-name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -1992,11 +1957,6 @@ argument_list|,
 literal|"locate_submit_type_filter"
 argument_list|,
 literal|"filter_submit_type_results"
-argument_list|,
-comment|// Do not include current user in submit type evaluation. This is used
-comment|// for mergeability checks, which are stored persistently and so must
-comment|// have a consistent view of the submit type.
-literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -2236,7 +2196,7 @@ name|err
 argument_list|)
 return|;
 block|}
-DECL|method|evaluateImpl ( String userRuleLocatorName, String userRuleWrapperName, String filterRuleLocatorName, String filterRuleWrapperName, CurrentUser user)
+DECL|method|evaluateImpl ( String userRuleLocatorName, String userRuleWrapperName, String filterRuleLocatorName, String filterRuleWrapperName)
 specifier|private
 name|List
 argument_list|<
@@ -2255,9 +2215,6 @@ name|filterRuleLocatorName
 parameter_list|,
 name|String
 name|filterRuleWrapperName
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|)
 throws|throws
 name|RuleEvalException
@@ -2266,9 +2223,7 @@ name|PrologEnvironment
 name|env
 init|=
 name|getPrologEnvironment
-argument_list|(
-name|user
-argument_list|)
+argument_list|()
 decl_stmt|;
 try|try
 block|{
@@ -2538,14 +2493,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|getPrologEnvironment (CurrentUser user)
+DECL|method|getPrologEnvironment ()
 specifier|private
 name|PrologEnvironment
 name|getPrologEnvironment
-parameter_list|(
-name|CurrentUser
-name|user
-parameter_list|)
+parameter_list|()
 throws|throws
 name|RuleEvalException
 block|{
@@ -2709,25 +2661,6 @@ argument_list|,
 name|cd
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|user
-operator|!=
-literal|null
-condition|)
-block|{
-name|env
-operator|.
-name|set
-argument_list|(
-name|StoredValues
-operator|.
-name|CURRENT_USER
-argument_list|,
-name|user
-argument_list|)
-expr_stmt|;
-block|}
 name|env
 operator|.
 name|set

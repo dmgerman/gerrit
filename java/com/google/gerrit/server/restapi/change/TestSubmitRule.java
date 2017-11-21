@@ -585,11 +585,6 @@ name|submitRuleEvaluatorFactory
 operator|.
 name|create
 argument_list|(
-name|rsrc
-operator|.
-name|getUser
-argument_list|()
-argument_list|,
 name|changeDataFactory
 operator|.
 name|create
