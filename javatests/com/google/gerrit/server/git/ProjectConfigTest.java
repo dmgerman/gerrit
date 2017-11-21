@@ -314,25 +314,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|client
+name|testing
 operator|.
-name|KeyUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|StandardKeyEncoder
+name|GerritBaseTests
 import|;
 end_import
 
@@ -426,9 +412,31 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|junit
+name|internal
 operator|.
-name|LocalDiskRepositoryTestCase
+name|storage
+operator|.
+name|dfs
+operator|.
+name|DfsRepositoryDescription
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|internal
+operator|.
+name|storage
+operator|.
+name|dfs
+operator|.
+name|InMemoryRepository
 import|;
 end_import
 
@@ -562,16 +570,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|BeforeClass
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -582,7 +580,7 @@ specifier|public
 class|class
 name|ProjectConfigTest
 extends|extends
-name|LocalDiskRepositoryTestCase
+name|GerritBaseTests
 block|{
 DECL|field|LABEL_SCORES_CONFIG
 specifier|private
@@ -599,7 +597,6 @@ operator|.
 name|DEF_COPY_MIN_SCORE
 operator|+
 literal|"\n"
-comment|//
 operator|+
 literal|"  copyMaxScore = "
 operator|+
@@ -609,7 +606,6 @@ operator|.
 name|DEF_COPY_MAX_SCORE
 operator|+
 literal|"\n"
-comment|//
 operator|+
 literal|"  copyAllScoresOnMergeFirstParentUpdate = "
 operator|+
@@ -619,7 +615,6 @@ operator|.
 name|DEF_COPY_ALL_SCORES_ON_MERGE_FIRST_PARENT_UPDATE
 operator|+
 literal|"\n"
-comment|//
 operator|+
 literal|"  copyAllScoresOnTrivialRebase = "
 operator|+
@@ -629,7 +624,6 @@ operator|.
 name|DEF_COPY_ALL_SCORES_ON_TRIVIAL_REBASE
 operator|+
 literal|"\n"
-comment|//
 operator|+
 literal|"  copyAllScoresIfNoCodeChange = "
 operator|+
@@ -639,7 +633,6 @@ operator|.
 name|DEF_COPY_ALL_SCORES_IF_NO_CODE_CHANGE
 operator|+
 literal|"\n"
-comment|//
 operator|+
 literal|"  copyAllScoresIfNoChange = "
 operator|+
@@ -695,35 +688,14 @@ specifier|private
 name|Repository
 name|db
 decl_stmt|;
-DECL|field|util
+DECL|field|tr
 specifier|private
 name|TestRepository
 argument_list|<
-name|Repository
+name|?
 argument_list|>
-name|util
+name|tr
 decl_stmt|;
-annotation|@
-name|BeforeClass
-DECL|method|setUpOnce ()
-specifier|public
-specifier|static
-name|void
-name|setUpOnce
-parameter_list|()
-block|{
-name|KeyUtil
-operator|.
-name|setEncoderImpl
-argument_list|(
-operator|new
-name|StandardKeyEncoder
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -734,17 +706,19 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 name|db
 operator|=
-name|createBareRepository
-argument_list|()
+operator|new
+name|InMemoryRepository
+argument_list|(
+operator|new
+name|DfsRepositoryDescription
+argument_list|(
+literal|"repo"
+argument_list|)
+argument_list|)
 expr_stmt|;
-name|util
+name|tr
 operator|=
 operator|new
 name|TestRepository
@@ -767,91 +741,56 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"groups"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
 name|group
 argument_list|(
 name|developers
 argument_list|)
 argument_list|)
-argument_list|)
-argument_list|,
-comment|//
-name|util
 operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[access \"refs/heads/*\"]\n"
-comment|//
 operator|+
 literal|"  exclusiveGroupPermissions = read submit create\n"
-comment|//
 operator|+
 literal|"  submit = group Developers\n"
-comment|//
 operator|+
 literal|"  push = group Developers\n"
-comment|//
 operator|+
 literal|"  read = group Developers\n"
-comment|//
 operator|+
 literal|"[accounts]\n"
-comment|//
 operator|+
 literal|"  sameGroupVisibility = deny group Developers\n"
-comment|//
 operator|+
 literal|"  sameGroupVisibility = block group Staff\n"
-comment|//
 operator|+
 literal|"[contributor-agreement \"Individual\"]\n"
-comment|//
 operator|+
 literal|"  description = A simple description\n"
-comment|//
 operator|+
 literal|"  accepted = group Developers\n"
-comment|//
 operator|+
 literal|"  accepted = group Staff\n"
-comment|//
 operator|+
 literal|"  autoVerify = group Developers\n"
-comment|//
 operator|+
 literal|"  agreementUrl = http://www.example.com/agree\n"
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|ProjectConfig
 name|cfg
@@ -1137,62 +1076,37 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"groups"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
 name|group
 argument_list|(
 name|developers
 argument_list|)
 argument_list|)
-argument_list|)
-argument_list|,
-comment|//
-name|util
 operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[label \"CustomLabel\"]\n"
-comment|//
 operator|+
 literal|"  value = -1 Negative\n"
-comment|//
 comment|// No leading space before 0.
 operator|+
 literal|"  value = 0 No Score\n"
-comment|//
 operator|+
 literal|"  value =  1 Positive\n"
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|ProjectConfig
 name|cfg
@@ -1262,62 +1176,37 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"groups"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
 name|group
 argument_list|(
 name|developers
 argument_list|)
 argument_list|)
-argument_list|)
-argument_list|,
-comment|//
-name|util
 operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[label \"CustomLabel\"]\n"
-comment|//
 operator|+
 literal|"  value = -1 Negative\n"
-comment|//
 comment|// Leading space before 0.
 operator|+
 literal|"  value =  0 No Score\n"
-comment|//
 operator|+
 literal|"  value =  1 Positive\n"
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|ProjectConfig
 name|cfg
@@ -1387,64 +1276,38 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"groups"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
 name|group
 argument_list|(
 name|developers
 argument_list|)
 argument_list|)
-argument_list|)
-argument_list|,
-comment|//
-name|util
 operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[label \"CustomLabel\"]\n"
-comment|//
 operator|+
 literal|"  value = -1 Negative\n"
-comment|//
 operator|+
 literal|"  value = 0 No Score\n"
-comment|//
 operator|+
 literal|"  value =  1 Positive\n"
-comment|//
 operator|+
 literal|"  defaultValue = -1\n"
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|ProjectConfig
 name|cfg
@@ -1515,64 +1378,38 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"groups"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
 name|group
 argument_list|(
 name|developers
 argument_list|)
 argument_list|)
-argument_list|)
-argument_list|,
-comment|//
-name|util
 operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[label \"CustomLabel\"]\n"
-comment|//
 operator|+
 literal|"  value = -1 Negative\n"
-comment|//
 operator|+
 literal|"  value = 0 No Score\n"
-comment|//
 operator|+
 literal|"  value =  1 Positive\n"
-comment|//
 operator|+
 literal|"  defaultValue = -2\n"
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|ProjectConfig
 name|cfg
@@ -1630,55 +1467,32 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"groups"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
 name|group
 argument_list|(
 name|developers
 argument_list|)
 argument_list|)
-argument_list|)
-argument_list|,
-comment|//
-name|util
 operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[label \"CustomLabel\"]\n"
-comment|//
 operator|+
 name|LABEL_SCORES_CONFIG
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|ProjectConfig
 name|cfg
@@ -1822,94 +1636,58 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"groups"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
 name|group
 argument_list|(
 name|developers
 argument_list|)
 argument_list|)
-argument_list|)
-argument_list|,
-comment|//
-name|util
 operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[access \"refs/heads/*\"]\n"
-comment|//
 operator|+
 literal|"  exclusiveGroupPermissions = read submit\n"
-comment|//
 operator|+
 literal|"  submit = group Developers\n"
-comment|//
 operator|+
 literal|"  upload = group Developers\n"
-comment|//
 operator|+
 literal|"  read = group Developers\n"
-comment|//
 operator|+
 literal|"[accounts]\n"
-comment|//
 operator|+
 literal|"  sameGroupVisibility = deny group Developers\n"
-comment|//
 operator|+
 literal|"  sameGroupVisibility = block group Staff\n"
-comment|//
 operator|+
 literal|"[contributor-agreement \"Individual\"]\n"
-comment|//
 operator|+
 literal|"  description = A simple description\n"
-comment|//
 operator|+
 literal|"  accepted = group Developers\n"
-comment|//
 operator|+
 literal|"  autoVerify = group Developers\n"
-comment|//
 operator|+
 literal|"  agreementUrl = http://www.example.com/agree\n"
-comment|//
 operator|+
 literal|"[label \"CustomLabel\"]\n"
-comment|//
 operator|+
 name|LABEL_SCORES_CONFIG
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|update
 argument_list|(
@@ -2050,46 +1828,31 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[access \"refs/heads/*\"]\n"
-comment|//
 operator|+
 literal|"  exclusiveGroupPermissions = read submit\n"
-comment|//
 operator|+
 literal|"  submit = group Developers\n"
-comment|//
 operator|+
 literal|"\tsubmit = group Staff\n"
-comment|//
 operator|+
 literal|"  upload = group Developers\n"
-comment|//
 operator|+
 literal|"  read = group Developers\n"
-comment|//
 operator|+
 literal|"[accounts]\n"
-comment|//
 operator|+
 literal|"  sameGroupVisibility = group Staff\n"
-comment|//
 operator|+
 literal|"[contributor-agreement \"Individual\"]\n"
-comment|//
 operator|+
 literal|"  description = A new description\n"
-comment|//
 operator|+
 literal|"  accepted = group Staff\n"
-comment|//
 operator|+
 literal|"  agreementUrl = http://www.example.com/agree\n"
 operator|+
 literal|"[label \"CustomLabel\"]\n"
-comment|//
 operator|+
 name|LABEL_SCORES_CONFIG
 operator|+
@@ -2114,15 +1877,13 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
-operator|.
-name|tree
 argument_list|()
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|update
 argument_list|(
@@ -2228,64 +1989,38 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"groups"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
 name|group
 argument_list|(
 name|developers
 argument_list|)
 argument_list|)
-argument_list|)
-argument_list|,
-comment|//
-name|util
 operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[access \"refs/heads/*\"]\n"
-comment|//
 operator|+
 literal|"  exclusiveGroupPermissions = read submit\n"
-comment|//
 operator|+
 literal|"  submit = group People Who Can Submit\n"
-comment|//
 operator|+
 literal|"  upload = group Developers\n"
-comment|//
 operator|+
 literal|"  read = group Developers\n"
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|update
 argument_list|(
@@ -2357,23 +2092,15 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[access \"refs/heads/*\"]\n"
-comment|//
 operator|+
 literal|"  exclusiveGroupPermissions = read submit\n"
-comment|//
 operator|+
 literal|"  submit = group People Who Can Submit\n"
-comment|//
 operator|+
 literal|"\tsubmit = group Staff\n"
-comment|//
 operator|+
 literal|"  upload = group Developers\n"
-comment|//
 operator|+
 literal|"  read = group Developers\n"
 argument_list|)
@@ -2392,42 +2119,26 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[plugin \"somePlugin\"]\n"
-comment|//
 operator|+
 literal|"  key1 = value1\n"
-comment|//
 operator|+
 literal|"  key2 = value2a\n"
 operator|+
 literal|"  key2 = value2b\n"
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|update
 argument_list|(
@@ -2575,43 +2286,26 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[plugin \"somePlugin\"]\n"
-comment|//
 operator|+
 literal|"  key1 = value1\n"
-comment|//
 operator|+
 literal|"  key2 = value2a\n"
-comment|//
 operator|+
 literal|"  key2 = value2b\n"
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|update
 argument_list|(
@@ -2680,17 +2374,11 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|""
-comment|//
-operator|+
 literal|"[plugin \"somePlugin\"]\n"
-comment|//
 operator|+
 literal|"\tkey1 = updatedValue1\n"
-comment|//
 operator|+
 literal|"\tkey2 = updatedValue2a\n"
-comment|//
 operator|+
 literal|"\tkey2 = updatedValue2b\n"
 argument_list|)
@@ -2709,62 +2397,35 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"groups"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
 name|group
 argument_list|(
 name|developers
 argument_list|)
 argument_list|)
-argument_list|)
-argument_list|,
-comment|//
-name|util
 operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
-literal|"[plugin \"somePlugin\"]\n"
-comment|//
-operator|+
-literal|"key1 = "
+literal|"[plugin \"somePlugin\"]\nkey1 = "
 operator|+
 name|developers
 operator|.
 name|toConfigValue
 argument_list|()
-operator|+
-literal|"\n"
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|update
 argument_list|(
@@ -2834,62 +2495,35 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"groups"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
 name|group
 argument_list|(
 name|developers
 argument_list|)
 argument_list|)
-argument_list|)
-argument_list|,
-comment|//
-name|util
 operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
-literal|"[plugin \"somePlugin\"]\n"
-comment|//
-operator|+
-literal|"key1 = "
+literal|"[plugin \"somePlugin\"]\nkey1 = "
 operator|+
 name|staff
 operator|.
 name|toConfigValue
 argument_list|()
-operator|+
-literal|"\n"
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|update
 argument_list|(
@@ -2963,62 +2597,35 @@ block|{
 name|RevCommit
 name|rev
 init|=
-name|util
+name|tr
 operator|.
 name|commit
-argument_list|(
-name|util
+argument_list|()
 operator|.
-name|tree
-argument_list|(
-comment|//
-name|util
-operator|.
-name|file
+name|add
 argument_list|(
 literal|"groups"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
 name|group
 argument_list|(
 name|developers
 argument_list|)
 argument_list|)
-argument_list|)
-argument_list|,
-comment|//
-name|util
 operator|.
-name|file
+name|add
 argument_list|(
 literal|"project.config"
 argument_list|,
-name|util
-operator|.
-name|blob
-argument_list|(
-literal|""
-comment|//
-operator|+
-literal|"[plugin \"somePlugin\"]\n"
-comment|//
-operator|+
-literal|"key1 = "
+literal|"[plugin \"somePlugin\"]\nkey1 = "
 operator|+
 name|developers
 operator|.
 name|toConfigValue
 argument_list|()
-operator|+
-literal|"\n"
 argument_list|)
-argument_list|)
-comment|//
-argument_list|)
-argument_list|)
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 name|update
 argument_list|(
@@ -3102,13 +2709,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|""
-comment|//
-operator|+
-literal|"[plugin \"somePlugin\"]\n"
-comment|//
-operator|+
-literal|"\tkey1 = "
+literal|"[plugin \"somePlugin\"]\n\tkey1 = "
 operator|+
 name|staff
 operator|.
@@ -3131,10 +2732,8 @@ operator|.
 name|isEqualTo
 argument_list|(
 literal|"# UUID\tGroup Name\n"
-comment|//
 operator|+
 literal|"#\n"
-comment|//
 operator|+
 name|staff
 operator|.
@@ -3235,14 +2834,14 @@ name|db
 argument_list|)
 init|)
 block|{
-name|util
+name|tr
 operator|.
 name|tick
 argument_list|(
 literal|5
 argument_list|)
 expr_stmt|;
-name|util
+name|tr
 operator|.
 name|setAuthorAndCommitter
 argument_list|(
@@ -3279,7 +2878,7 @@ name|REFS_CONFIG
 argument_list|)
 decl_stmt|;
 return|return
-name|util
+name|tr
 operator|.
 name|getRevWalk
 argument_list|()
@@ -3386,7 +2985,7 @@ block|{
 name|RevObject
 name|blob
 init|=
-name|util
+name|tr
 operator|.
 name|get
 argument_list|(
