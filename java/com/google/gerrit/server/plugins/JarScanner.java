@@ -1420,7 +1420,7 @@ name|super
 argument_list|(
 name|Opcodes
 operator|.
-name|ASM5
+name|ASM6
 argument_list|)
 expr_stmt|;
 name|this
@@ -1749,7 +1749,7 @@ name|super
 argument_list|(
 name|Opcodes
 operator|.
-name|ASM5
+name|ASM6
 argument_list|)
 expr_stmt|;
 block|}
