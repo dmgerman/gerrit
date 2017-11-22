@@ -452,12 +452,16 @@ name|boolean
 name|autoReindexIfStale
 decl_stmt|;
 DECL|field|indexes
+annotation|@
+name|Nullable
 specifier|private
 specifier|final
 name|AccountIndexCollection
 name|indexes
 decl_stmt|;
 DECL|field|index
+annotation|@
+name|Nullable
 specifier|private
 specifier|final
 name|AccountIndex
@@ -547,7 +551,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|AccountIndexerImpl ( AccountCache byIdCache, DynamicSet<AccountIndexedListener> indexedListener, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @GerritServerConfig Config config, @Assisted AccountIndex index)
+DECL|method|AccountIndexerImpl ( AccountCache byIdCache, DynamicSet<AccountIndexedListener> indexedListener, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @GerritServerConfig Config config, @Assisted @Nullable AccountIndex index)
 name|AccountIndexerImpl
 parameter_list|(
 name|AccountCache
@@ -577,6 +581,8 @@ name|config
 parameter_list|,
 annotation|@
 name|Assisted
+annotation|@
+name|Nullable
 name|AccountIndex
 name|index
 parameter_list|)
