@@ -70,6 +70,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|hamcrest
@@ -905,10 +921,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|nameInConfigMustBeDefined ()
+DECL|method|nameInConfigMayBeUndefined ()
 specifier|public
 name|void
-name|nameInConfigMustBeDefined
+name|nameInConfigMayBeUndefined
 parameter_list|()
 throws|throws
 name|Exception
@@ -920,22 +936,9 @@ argument_list|,
 literal|"[group]\n\tid = 42\n\townerGroupUuid = owners\n"
 argument_list|)
 expr_stmt|;
-name|expectedException
-operator|.
-name|expect
-argument_list|(
-name|ConfigInvalidException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|expectedException
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Name of the group users-XYZ"
-argument_list|)
-expr_stmt|;
+name|GroupConfig
+name|groupConfig
+init|=
 name|GroupConfig
 operator|.
 name|loadForGroup
@@ -944,6 +947,70 @@ name|repository
 argument_list|,
 name|groupUuid
 argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|groupConfig
+operator|.
+name|getLoadedGroup
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|nameInConfigMayBeEmpty ()
+specifier|public
+name|void
+name|nameInConfigMayBeEmpty
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|populateGroupConfig
+argument_list|(
+name|groupUuid
+argument_list|,
+literal|"[group]\n\tname=\n\tid = 42\n\townerGroupUuid = owners\n"
+argument_list|)
+expr_stmt|;
+name|GroupConfig
+name|groupConfig
+init|=
+name|GroupConfig
+operator|.
+name|loadForGroup
+argument_list|(
+name|repository
+argument_list|,
+name|groupUuid
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|groupConfig
+operator|.
+name|getLoadedGroup
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

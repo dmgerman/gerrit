@@ -1040,6 +1040,11 @@ argument_list|()
 decl_stmt|;
 name|groupConfig
 operator|.
+name|setAllowSaveEmptyName
+argument_list|()
+expr_stmt|;
+name|groupConfig
+operator|.
 name|setGroupCreation
 argument_list|(
 name|InternalGroupCreation

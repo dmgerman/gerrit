@@ -346,34 +346,19 @@ operator|.
 name|keyName
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+comment|// An empty name is invalid in NoteDb; GroupConfig will refuse to store it and it might be
+comment|// unusable in permissions. But, it was technically valid in the ReviewDb storage layer, and
+comment|// the NoteDb migration converted such groups faithfully, so we need to be able to read them
+comment|// back here.
+name|name
+operator|=
 name|Strings
 operator|.
-name|isNullOrEmpty
+name|nullToEmpty
 argument_list|(
 name|name
 argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|ConfigInvalidException
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Name of the group %s must be defined"
-argument_list|,
-name|groupUuid
-operator|.
-name|get
-argument_list|()
-argument_list|)
-argument_list|)
-throw|;
-block|}
+expr_stmt|;
 name|group
 operator|.
 name|setNameKey
