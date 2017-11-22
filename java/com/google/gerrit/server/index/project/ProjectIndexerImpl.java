@@ -298,12 +298,16 @@ argument_list|>
 name|indexedListener
 decl_stmt|;
 DECL|field|indexes
+annotation|@
+name|Nullable
 specifier|private
 specifier|final
 name|ProjectIndexCollection
 name|indexes
 decl_stmt|;
 DECL|field|index
+annotation|@
+name|Nullable
 specifier|private
 specifier|final
 name|ProjectIndex
@@ -356,7 +360,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectIndexerImpl ( ProjectCache projectCache, DynamicSet<ProjectIndexedListener> indexedListener, @Assisted ProjectIndex index)
+DECL|method|ProjectIndexerImpl ( ProjectCache projectCache, DynamicSet<ProjectIndexedListener> indexedListener, @Assisted @Nullable ProjectIndex index)
 name|ProjectIndexerImpl
 parameter_list|(
 name|ProjectCache
@@ -370,6 +374,8 @@ name|indexedListener
 parameter_list|,
 annotation|@
 name|Assisted
+annotation|@
+name|Nullable
 name|ProjectIndex
 name|index
 parameter_list|)
