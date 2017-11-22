@@ -214,20 +214,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
-operator|.
-name|Sandboxed
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|common
 operator|.
 name|data
@@ -1090,8 +1076,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|setAssigneeToInactiveUser ()
 specifier|public
 name|void

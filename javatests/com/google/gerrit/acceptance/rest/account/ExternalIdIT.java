@@ -1101,8 +1101,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Sandboxed
 DECL|class|ExternalIdIT
 specifier|public
 class|class
@@ -5327,6 +5325,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Sandboxed
 DECL|method|checkNoReloadAfterUpdate ()
 specifier|public
 name|void
@@ -5510,6 +5510,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Sandboxed
 DECL|method|byAccountFailIfReadingExternalIdsFails ()
 specifier|public
 name|void
@@ -5563,6 +5565,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Sandboxed
 DECL|method|byEmailFailIfReadingExternalIdsFails ()
 specifier|public
 name|void

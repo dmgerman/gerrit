@@ -448,6 +448,36 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
+name|ProjectResetter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|ProjectResetter
+operator|.
+name|Builder
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
 name|PushOneCommit
 import|;
 end_import
@@ -1728,6 +1758,38 @@ name|isEmpty
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|resetProjects (Builder resetter)
+specifier|protected
+name|ProjectResetter
+name|resetProjects
+parameter_list|(
+name|Builder
+name|resetter
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// Don't reset All-Users since deleting users makes groups inconsistent (e.g. groups would
+comment|// contain members that no longer exist) and as result of this the group consistency checker
+comment|// that is executed after each test would fail.
+return|return
+name|resetter
+operator|.
+name|reset
+argument_list|(
+name|allProjects
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_CONFIG
+argument_list|)
+operator|.
+name|build
+argument_list|()
+return|;
 block|}
 annotation|@
 name|Test
@@ -8141,8 +8203,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|cannotCreateGroupBranch ()
 specifier|public
 name|void
@@ -8179,8 +8239,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|cannotCreateDeletedGroupBranch ()
 specifier|public
 name|void
@@ -8218,8 +8276,6 @@ block|}
 annotation|@
 name|Test
 annotation|@
-name|Sandboxed
-annotation|@
 name|IgnoreGroupInconsistencies
 DECL|method|cannotCreateGroupNamesBranch ()
 specifier|public
@@ -8241,6 +8297,30 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
+comment|// Use ProjectResetter to restore the group names ref
+try|try
+init|(
+name|ProjectResetter
+name|resetter
+init|=
+name|projectResetter
+operator|.
+name|builder
+argument_list|()
+operator|.
+name|reset
+argument_list|(
+name|allUsers
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_GROUPNAMES
+argument_list|)
+operator|.
+name|build
+argument_list|()
+init|)
+block|{
 comment|// Manually delete group names ref
 try|try
 init|(
@@ -8363,6 +8443,7 @@ name|REFS_GROUPNAMES
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|method|testCannotCreateGroupBranch (String refPattern, String groupRef)
 specifier|private
 name|void
@@ -8482,8 +8563,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|cannotDeleteGroupBranch ()
 specifier|public
 name|void
@@ -8524,8 +8603,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|cannotDeleteDeletedGroupBranch ()
 specifier|public
 name|void
@@ -8574,8 +8651,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|cannotDeleteGroupNamesBranch ()
 specifier|public
 name|void

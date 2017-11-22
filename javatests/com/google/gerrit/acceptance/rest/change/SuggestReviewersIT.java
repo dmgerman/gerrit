@@ -182,20 +182,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|Sandboxed
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
 name|TestAccount
 import|;
 end_import
@@ -431,8 +417,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Sandboxed
 DECL|class|SuggestReviewersIT
 specifier|public
 class|class
