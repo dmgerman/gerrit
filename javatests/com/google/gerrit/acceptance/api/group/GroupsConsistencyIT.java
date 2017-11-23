@@ -618,6 +618,7 @@ decl_stmt|;
 DECL|field|BOGUS_UUID
 specifier|private
 specifier|static
+specifier|final
 name|String
 name|BOGUS_UUID
 init|=
