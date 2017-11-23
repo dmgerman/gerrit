@@ -152,6 +152,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|ImmutableBiMap
@@ -2026,6 +2040,10 @@ decl_stmt|;
 name|String
 name|name
 init|=
+name|Strings
+operator|.
+name|nullToEmpty
+argument_list|(
 name|config
 operator|.
 name|getString
@@ -2036,14 +2054,11 @@ literal|null
 argument_list|,
 name|NAME_PARAM
 argument_list|)
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
 name|uuid
-operator|==
-literal|null
-operator|||
-name|name
 operator|==
 literal|null
 condition|)
@@ -2056,9 +2071,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"UUID '%s' and name '%s' must be defined"
-argument_list|,
-name|uuid
+literal|"UUID for group '%s' must be defined"
 argument_list|,
 name|name
 argument_list|)
