@@ -534,7 +534,11 @@ literal|"NoteDb  : []"
 argument_list|,
 literal|"AccountGroupMemberAudits differ\n"
 operator|+
-literal|"ReviewDb: [AccountGroupMemberAudit{key=1000,1, addedBy=2000, removedBy=null, removedOn=null}]\n"
+operator|(
+literal|"ReviewDb: [AccountGroupMemberAudit{key=1000,1, addedBy=2000, removedBy=null,"
+operator|+
+literal|" removedOn=null}]\n"
+operator|)
 operator|+
 literal|"NoteDb  : []"
 argument_list|,
@@ -546,7 +550,11 @@ literal|"NoteDb  : []"
 argument_list|,
 literal|"AccountGroupByIdAudits differ\n"
 operator|+
-literal|"ReviewDb: [AccountGroupByIdAud{key=1,subgroup, addedBy=3000, removedBy=null, removedOn=null}]\n"
+operator|(
+literal|"ReviewDb: [AccountGroupByIdAud{key=1,subgroup, addedBy=3000, removedBy=null,"
+operator|+
+literal|" removedOn=null}]\n"
+operator|)
 operator|+
 literal|"NoteDb  : []"
 argument_list|)
