@@ -366,6 +366,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * Superset of all information related to an Account. This includes external IDs, project watches,  * and properties from the account config file. AccountState maps one-to-one to Account.  */
+end_comment
+
 begin_class
 DECL|class|AccountState
 specifier|public
