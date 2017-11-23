@@ -831,15 +831,12 @@ operator|=
 name|addr
 expr_stmt|;
 block|}
-comment|/**    * Formats an account name.    *    *<p>If the account has a full name, it returns only the full name. Otherwise it returns a longer    * form that includes the email address.    */
-DECL|method|getName (String anonymousCowardName)
+comment|/**    * Formats an account name.    *    *<p>The return value goes into NoteDb commits and audit logs, so it should not be changed.    *    *<p>This method deliberately does not use {@code Anonymous Coward} because it can be changed    * using a {@code gerrit.config} option which is a problem for NoteDb commits that still refer to    * a previously defined value.    *    * @return the fullname, if present, otherwise the preferred email, if present, as a last resort a    *     generic string containing the accountId.    */
+DECL|method|getName ()
 specifier|public
 name|String
 name|getName
-parameter_list|(
-name|String
-name|anonymousCowardName
-parameter_list|)
+parameter_list|()
 block|{
 if|if
 condition|(
@@ -864,10 +861,12 @@ name|preferredEmail
 return|;
 block|}
 return|return
-name|getNameEmail
-argument_list|(
-name|anonymousCowardName
-argument_list|)
+literal|"GerritAccount #"
+operator|+
+name|accountId
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 comment|/**    * Get the name and email address.    *    *<p>Example output:    *    *<ul>    *<li>{@code A U. Thor&lt;author@example.com&gt;}: full populated    *<li>{@code A U. Thor (12)}: missing email address    *<li>{@code Anonymous Coward&lt;author@example.com&gt;}: missing name    *<li>{@code Anonymous Coward (12)}: missing name and email address    *</ul>    */
@@ -934,13 +933,7 @@ literal|">"
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-name|accountId
-operator|!=
-literal|null
-condition|)
+else|else
 block|{
 name|b
 operator|.

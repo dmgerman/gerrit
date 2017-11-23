@@ -280,22 +280,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|AnonymousCowardName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -701,7 +685,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeDraftUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|ChangeDraftUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
 name|ChangeDraftUpdate
 parameter_list|(
@@ -714,11 +698,6 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-annotation|@
-name|AnonymousCowardName
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|NotesMigration
 name|migration
@@ -775,8 +754,6 @@ name|noteUtil
 argument_list|,
 name|serverIdent
 argument_list|,
-name|anonymousCowardName
-argument_list|,
 name|notes
 argument_list|,
 literal|null
@@ -799,7 +776,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeDraftUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|ChangeDraftUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
 name|ChangeDraftUpdate
 parameter_list|(
@@ -812,11 +789,6 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-annotation|@
-name|AnonymousCowardName
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|NotesMigration
 name|migration
@@ -872,8 +844,6 @@ argument_list|,
 name|noteUtil
 argument_list|,
 name|serverIdent
-argument_list|,
-name|anonymousCowardName
 argument_list|,
 literal|null
 argument_list|,

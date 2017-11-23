@@ -1644,8 +1644,6 @@ name|nowTs
 argument_list|()
 argument_list|,
 name|serverIdent
-argument_list|,
-literal|"Anonymous Coward"
 argument_list|)
 argument_list|,
 literal|false
@@ -1723,8 +1721,6 @@ name|nowTs
 argument_list|()
 argument_list|,
 name|serverIdent
-argument_list|,
-literal|"Anonymous Coward"
 argument_list|)
 argument_list|,
 name|initWorkInProgress
