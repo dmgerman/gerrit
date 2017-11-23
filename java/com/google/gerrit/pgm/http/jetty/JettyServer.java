@@ -1629,7 +1629,7 @@ name|getFile
 argument_list|(
 name|cfg
 argument_list|,
-literal|"sslcrl"
+literal|"sslCrl"
 argument_list|,
 literal|"etc/crl.pem"
 argument_list|)
