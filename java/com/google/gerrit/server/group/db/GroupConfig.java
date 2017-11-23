@@ -507,7 +507,7 @@ import|;
 end_import
 
 begin_comment
-comment|// TODO(aliceks): Add Javadoc descriptions to this file.
+comment|/**  * Holds code for reading and writing internal group data for a single group to/from NoteDB.  *  *<p>The configuration is spread across three files: 'group.config', which holds global properties,  * 'members', which has one numberic account ID per line, and 'subgroups', which has one group UUID  * per line. The code that does the work of parsing 'group.config' is in {@link GroupConfigEntry}.  *  *<p>TODO(aliceks): expand docs.  */
 end_comment
 
 begin_class
@@ -814,6 +814,51 @@ operator|.
 name|load
 argument_list|(
 name|repository
+argument_list|)
+expr_stmt|;
+return|return
+name|groupConfig
+return|;
+block|}
+comment|/** Loads a group at a specific revision. */
+DECL|method|loadForGroupSnapshot ( Repository repository, AccountGroup.UUID groupUuid, ObjectId commitId)
+specifier|public
+specifier|static
+name|GroupConfig
+name|loadForGroupSnapshot
+parameter_list|(
+name|Repository
+name|repository
+parameter_list|,
+name|AccountGroup
+operator|.
+name|UUID
+name|groupUuid
+parameter_list|,
+name|ObjectId
+name|commitId
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|ConfigInvalidException
+block|{
+name|GroupConfig
+name|groupConfig
+init|=
+operator|new
+name|GroupConfig
+argument_list|(
+name|groupUuid
+argument_list|)
+decl_stmt|;
+name|groupConfig
+operator|.
+name|load
+argument_list|(
+name|repository
+argument_list|,
+name|commitId
 argument_list|)
 expr_stmt|;
 return|return

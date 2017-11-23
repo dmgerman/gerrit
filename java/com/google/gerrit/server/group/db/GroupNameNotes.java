@@ -539,7 +539,7 @@ import|;
 end_import
 
 begin_comment
-comment|// TODO(aliceks): Add Javadoc descriptions.
+comment|/**  * Holds code for reading and writing group names for a single group as NoteDb data. The data is  * stored in a refs/meta/group-names branch. The data is stored as SHA1(name) => config file with  * the config file holding UUID and Name.  *  *<p>TODO(aliceks): more javadoc.  */
 end_comment
 
 begin_class
@@ -904,6 +904,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// Returns UUID<=> Name bimap.
 DECL|method|toBiMap ( Collection<GroupReference> groupReferences)
 specifier|private
 specifier|static
@@ -1835,6 +1836,7 @@ argument_list|)
 annotation|@
 name|VisibleForTesting
 DECL|method|getNoteKey (AccountGroup.NameKey groupName)
+specifier|public
 specifier|static
 name|ObjectId
 name|getNoteKey
@@ -1976,7 +1978,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|getFromNoteData (byte[] noteData)
-specifier|private
 specifier|static
 name|GroupReference
 name|getFromNoteData
