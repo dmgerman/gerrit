@@ -1382,7 +1382,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Anonymous Coward (3)"
+literal|"Name of user not set (3)"
 argument_list|)
 expr_stmt|;
 name|assertThat

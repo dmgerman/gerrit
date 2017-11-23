@@ -122,7 +122,7 @@ specifier|final
 name|String
 name|DEFAULT
 init|=
-literal|"Anonymous Coward"
+literal|"Name of user not set"
 decl_stmt|;
 DECL|field|anonymousCoward
 specifier|private
