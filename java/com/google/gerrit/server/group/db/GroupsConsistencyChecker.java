@@ -256,22 +256,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|GerritServerConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -307,20 +291,6 @@ operator|.
 name|notedb
 operator|.
 name|GroupsMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -470,20 +440,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|ObjectId
 import|;
 end_import
@@ -616,7 +572,7 @@ name|groupsMigration
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsConsistencyChecker ( Accounts accounts, GroupBackend groupBackend, AllUsersName allUsersName, GitRepositoryManager repositoryManager, GroupsMigration groupsMigration, @GerritServerConfig Config config)
+DECL|method|GroupsConsistencyChecker ( Accounts accounts, GroupBackend groupBackend, AllUsersName allUsersName, GitRepositoryManager repositoryManager, GroupsMigration groupsMigration)
 name|GroupsConsistencyChecker
 parameter_list|(
 name|Accounts
@@ -633,11 +589,6 @@ name|repositoryManager
 parameter_list|,
 name|GroupsMigration
 name|groupsMigration
-parameter_list|,
-annotation|@
-name|GerritServerConfig
-name|Config
-name|config
 parameter_list|)
 block|{
 name|this
@@ -681,8 +632,6 @@ argument_list|>
 name|check
 parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 if|if
@@ -734,8 +683,6 @@ name|Repository
 name|repo
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 comment|// Get all refs in an attempt to avoid seeing half committed group updates.
