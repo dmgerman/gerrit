@@ -711,6 +711,16 @@ argument_list|()
 operator|!=
 literal|null
 operator|&&
+name|realm
+operator|.
+name|accountBelongsToRealm
+argument_list|(
+name|account
+operator|.
+name|getExternalIds
+argument_list|()
+argument_list|)
+operator|&&
 operator|!
 name|realm
 operator|.
