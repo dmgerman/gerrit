@@ -3752,9 +3752,9 @@ name|getMembers
 argument_list|()
 control|)
 block|{
-name|accountCache
+name|groupIncludeCache
 operator|.
-name|evict
+name|evictGroupsWithMember
 argument_list|(
 name|modifiedMember
 argument_list|)
