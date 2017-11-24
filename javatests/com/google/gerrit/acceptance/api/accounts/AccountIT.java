@@ -2025,6 +2025,21 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+comment|// Disable the staleness checker so that tests that verify the number of expected index events
+comment|// are stable.
+name|cfg
+operator|.
+name|setBoolean
+argument_list|(
+literal|"index"
+argument_list|,
+literal|null
+argument_list|,
+literal|"autoReindexIfStale"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 return|return
 name|cfg
 return|;
