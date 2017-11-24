@@ -324,22 +324,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|AnonymousCowardName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -1146,12 +1130,6 @@ specifier|final
 name|PersonIdent
 name|serverIdent
 decl_stmt|;
-DECL|field|anonymousCowardName
-specifier|private
-specifier|final
-name|String
-name|anonymousCowardName
-decl_stmt|;
 DECL|field|serverId
 specifier|private
 specifier|final
@@ -1175,7 +1153,7 @@ name|writeJson
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeNoteUtil ( AccountCache accountCache, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, @GerritServerId String serverId, @GerritServerConfig Config config)
+DECL|method|ChangeNoteUtil ( AccountCache accountCache, @GerritPersonIdent PersonIdent serverIdent, @GerritServerId String serverId, @GerritServerConfig Config config)
 specifier|public
 name|ChangeNoteUtil
 parameter_list|(
@@ -1186,11 +1164,6 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-annotation|@
-name|AnonymousCowardName
-name|String
-name|anonymousCowardName
 parameter_list|,
 annotation|@
 name|GerritServerId
@@ -1217,12 +1190,6 @@ name|serverIdent
 expr_stmt|;
 name|this
 operator|.
-name|anonymousCowardName
-operator|=
-name|anonymousCowardName
-expr_stmt|;
-name|this
-operator|.
 name|serverId
 operator|=
 name|serverId
@@ -1245,7 +1212,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|newIdent ( Account author, Date when, PersonIdent serverIdent, String anonymousCowardName)
+DECL|method|newIdent (Account author, Date when, PersonIdent serverIdent)
 specifier|public
 name|PersonIdent
 name|newIdent
@@ -1258,9 +1225,6 @@ name|when
 parameter_list|,
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-name|String
-name|anonymousCowardName
 parameter_list|)
 block|{
 return|return
@@ -1270,9 +1234,7 @@ argument_list|(
 name|author
 operator|.
 name|getName
-argument_list|(
-name|anonymousCowardName
-argument_list|)
+argument_list|()
 argument_list|,
 name|author
 operator|.
@@ -4471,8 +4433,6 @@ argument_list|,
 name|ts
 argument_list|,
 name|serverIdent
-argument_list|,
-name|anonymousCowardName
 argument_list|)
 decl_stmt|;
 name|StringBuilder

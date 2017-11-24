@@ -1670,9 +1670,7 @@ name|getAccount
 argument_list|()
 operator|.
 name|getName
-argument_list|(
-name|anonymousCowardName
-argument_list|)
+argument_list|()
 return|;
 block|}
 DECL|method|getNameEmail ()

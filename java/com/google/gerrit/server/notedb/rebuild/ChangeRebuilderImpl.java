@@ -600,22 +600,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|AnonymousCowardName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -1345,12 +1329,6 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|anonymousCowardName
-specifier|private
-specifier|final
-name|String
-name|anonymousCowardName
-decl_stmt|;
 DECL|field|serverId
 specifier|private
 specifier|final
@@ -1365,7 +1343,7 @@ name|skewMs
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeRebuilderImpl ( @erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, AccountCache accountCache, ChangeBundleReader bundleReader, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil changeNoteUtil, ChangeNotes.Factory notesFactory, ChangeUpdate.Factory updateFactory, CommentsUtil commentsUtil, NoteDbUpdateManager.Factory updateManagerFactory, NotesMigration migration, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @AnonymousCowardName String anonymousCowardName, @GerritServerId String serverId)
+DECL|method|ChangeRebuilderImpl ( @erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, AccountCache accountCache, ChangeBundleReader bundleReader, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil changeNoteUtil, ChangeNotes.Factory notesFactory, ChangeUpdate.Factory updateFactory, CommentsUtil commentsUtil, NoteDbUpdateManager.Factory updateManagerFactory, NotesMigration migration, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @GerritServerId String serverId)
 name|ChangeRebuilderImpl
 parameter_list|(
 annotation|@
@@ -1426,11 +1404,6 @@ annotation|@
 name|Nullable
 name|ProjectCache
 name|projectCache
-parameter_list|,
-annotation|@
-name|AnonymousCowardName
-name|String
-name|anonymousCowardName
 parameter_list|,
 annotation|@
 name|GerritServerId
@@ -1514,12 +1487,6 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
-expr_stmt|;
-name|this
-operator|.
-name|anonymousCowardName
-operator|=
-name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
@@ -3871,8 +3838,6 @@ name|getWhen
 argument_list|()
 argument_list|,
 name|serverIdent
-argument_list|,
-name|anonymousCowardName
 argument_list|)
 return|;
 block|}

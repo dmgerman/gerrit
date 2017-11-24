@@ -413,12 +413,6 @@ specifier|final
 name|ChangeNoteUtil
 name|noteUtil
 decl_stmt|;
-DECL|field|anonymousCowardName
-specifier|protected
-specifier|final
-name|String
-name|anonymousCowardName
-decl_stmt|;
 DECL|field|accountId
 specifier|protected
 specifier|final
@@ -490,7 +484,7 @@ specifier|protected
 name|boolean
 name|rootOnly
 decl_stmt|;
-DECL|method|AbstractChangeUpdate ( Config cfg, NotesMigration migration, ChangeNotes notes, CurrentUser user, PersonIdent serverIdent, String anonymousCowardName, ChangeNoteUtil noteUtil, Date when)
+DECL|method|AbstractChangeUpdate ( Config cfg, NotesMigration migration, ChangeNotes notes, CurrentUser user, PersonIdent serverIdent, ChangeNoteUtil noteUtil, Date when)
 specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
@@ -508,9 +502,6 @@ name|user
 parameter_list|,
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
@@ -542,12 +533,6 @@ name|serverIdent
 argument_list|,
 name|when
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|anonymousCowardName
-operator|=
-name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
@@ -608,8 +593,6 @@ name|noteUtil
 argument_list|,
 name|serverIdent
 argument_list|,
-name|anonymousCowardName
-argument_list|,
 name|user
 argument_list|,
 name|when
@@ -633,7 +616,7 @@ name|cfg
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AbstractChangeUpdate ( Config cfg, NotesMigration migration, ChangeNoteUtil noteUtil, PersonIdent serverIdent, String anonymousCowardName, @Nullable ChangeNotes notes, @Nullable Change change, Account.Id accountId, Account.Id realAccountId, PersonIdent authorIdent, Date when)
+DECL|method|AbstractChangeUpdate ( Config cfg, NotesMigration migration, ChangeNoteUtil noteUtil, PersonIdent serverIdent, @Nullable ChangeNotes notes, @Nullable Change change, Account.Id accountId, Account.Id realAccountId, PersonIdent authorIdent, Date when)
 specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
@@ -648,9 +631,6 @@ name|noteUtil
 parameter_list|,
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-name|String
-name|anonymousCowardName
 parameter_list|,
 annotation|@
 name|Nullable
@@ -727,12 +707,6 @@ name|serverIdent
 argument_list|,
 name|when
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|anonymousCowardName
-operator|=
-name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
@@ -853,7 +827,7 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|ident ( ChangeNoteUtil noteUtil, PersonIdent serverIdent, String anonymousCowardName, CurrentUser u, Date when)
+DECL|method|ident ( ChangeNoteUtil noteUtil, PersonIdent serverIdent, CurrentUser u, Date when)
 specifier|private
 specifier|static
 name|PersonIdent
@@ -864,9 +838,6 @@ name|noteUtil
 parameter_list|,
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|CurrentUser
 name|u
@@ -903,8 +874,6 @@ argument_list|,
 name|when
 argument_list|,
 name|serverIdent
-argument_list|,
-name|anonymousCowardName
 argument_list|)
 return|;
 block|}
@@ -1088,8 +1057,6 @@ argument_list|,
 name|when
 argument_list|,
 name|serverIdent
-argument_list|,
-name|anonymousCowardName
 argument_list|)
 return|;
 block|}

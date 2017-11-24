@@ -380,22 +380,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|AnonymousCowardName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|GerritServerId
 import|;
 end_import
@@ -790,14 +774,9 @@ name|getGroupNameFunc
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupRebuilder ( @nonymousCowardName String anonymousCowardName, @GerritPersonIdent Provider<PersonIdent> serverIdent, @GerritServerId String serverId, AllUsersName allUsers, MetaDataUpdate.InternalFactory metaDataUpdateFactory, AccountCache accountCache, GroupBackend groupBackend)
+DECL|method|GroupRebuilder ( @erritPersonIdent Provider<PersonIdent> serverIdent, @GerritServerId String serverId, AllUsersName allUsers, MetaDataUpdate.InternalFactory metaDataUpdateFactory, AccountCache accountCache, GroupBackend groupBackend)
 name|GroupRebuilder
 parameter_list|(
-annotation|@
-name|AnonymousCowardName
-name|String
-name|anonymousCowardName
-parameter_list|,
 annotation|@
 name|GerritPersonIdent
 name|Provider
@@ -850,8 +829,6 @@ name|getAccountName
 argument_list|(
 name|accountCache
 argument_list|,
-name|anonymousCowardName
-argument_list|,
 name|id
 argument_list|)
 argument_list|,
@@ -882,8 +859,6 @@ operator|.
 name|getAccountNameEmail
 argument_list|(
 name|accountCache
-argument_list|,
-name|anonymousCowardName
 argument_list|,
 name|id
 argument_list|,

@@ -5950,8 +5950,6 @@ name|getWhen
 argument_list|()
 argument_list|,
 name|committer
-argument_list|,
-name|anonymousCowardName
 argument_list|)
 decl_stmt|;
 name|testRepo

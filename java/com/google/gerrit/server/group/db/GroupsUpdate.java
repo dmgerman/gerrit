@@ -514,22 +514,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|AnonymousCowardName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -935,12 +919,6 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
-DECL|field|anonymousCowardName
-specifier|private
-specifier|final
-name|String
-name|anonymousCowardName
-decl_stmt|;
 DECL|field|renameGroupOpFactory
 specifier|private
 specifier|final
@@ -995,7 +973,7 @@ name|reviewDbUpdatesAreBlocked
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, GroupBackend groupBackend, GroupCache groupCache, GroupIncludeCache groupIncludeCache, AuditService auditService, AccountCache accountCache, @AnonymousCowardName String anonymousCowardName, RenameGroupOp.Factory renameGroupOpFactory, @GerritServerId String serverId, @GerritPersonIdent PersonIdent serverIdent, MetaDataUpdate.InternalFactory metaDataUpdateInternalFactory, GroupsMigration groupsMigration, @GerritServerConfig Config config, GitReferenceUpdated gitRefUpdated, @Assisted @Nullable IdentifiedUser currentUser)
+DECL|method|GroupsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, GroupBackend groupBackend, GroupCache groupCache, GroupIncludeCache groupIncludeCache, AuditService auditService, AccountCache accountCache, RenameGroupOp.Factory renameGroupOpFactory, @GerritServerId String serverId, @GerritPersonIdent PersonIdent serverIdent, MetaDataUpdate.InternalFactory metaDataUpdateInternalFactory, GroupsMigration groupsMigration, @GerritServerConfig Config config, GitReferenceUpdated gitRefUpdated, @Assisted @Nullable IdentifiedUser currentUser)
 name|GroupsUpdate
 parameter_list|(
 name|GitRepositoryManager
@@ -1018,11 +996,6 @@ name|auditService
 parameter_list|,
 name|AccountCache
 name|accountCache
-parameter_list|,
-annotation|@
-name|AnonymousCowardName
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|RenameGroupOp
 operator|.
@@ -1107,12 +1080,6 @@ name|accountCache
 expr_stmt|;
 name|this
 operator|.
-name|anonymousCowardName
-operator|=
-name|anonymousCowardName
-expr_stmt|;
-name|this
-operator|.
 name|renameGroupOpFactory
 operator|=
 name|renameGroupOpFactory
@@ -1152,8 +1119,6 @@ argument_list|,
 name|serverIdent
 argument_list|,
 name|serverId
-argument_list|,
-name|anonymousCowardName
 argument_list|)
 expr_stmt|;
 name|authorIdent
@@ -1181,7 +1146,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getMetaDataUpdateFactory ( MetaDataUpdate.InternalFactory metaDataUpdateInternalFactory, @Nullable IdentifiedUser currentUser, PersonIdent serverIdent, String serverId, String anonymousCowardName)
+DECL|method|getMetaDataUpdateFactory ( MetaDataUpdate.InternalFactory metaDataUpdateInternalFactory, @Nullable IdentifiedUser currentUser, PersonIdent serverIdent, String serverId)
 specifier|private
 specifier|static
 name|MetaDataUpdateFactory
@@ -1202,9 +1167,6 @@ name|serverIdent
 parameter_list|,
 name|String
 name|serverId
-parameter_list|,
-name|String
-name|anonymousCowardName
 parameter_list|)
 block|{
 return|return
@@ -1270,8 +1232,6 @@ argument_list|,
 name|serverIdent
 argument_list|,
 name|serverId
-argument_list|,
-name|anonymousCowardName
 argument_list|)
 expr_stmt|;
 block|}
@@ -1298,7 +1258,7 @@ return|;
 block|}
 return|;
 block|}
-DECL|method|getAuditLogAuthorIdent ( Account author, PersonIdent serverIdent, String serverId, String anonymousCowardName)
+DECL|method|getAuditLogAuthorIdent ( Account author, PersonIdent serverIdent, String serverId)
 specifier|private
 specifier|static
 name|PersonIdent
@@ -1312,9 +1272,6 @@ name|serverIdent
 parameter_list|,
 name|String
 name|serverId
-parameter_list|,
-name|String
-name|anonymousCowardName
 parameter_list|)
 block|{
 return|return
@@ -1324,9 +1281,7 @@ argument_list|(
 name|author
 operator|.
 name|getName
-argument_list|(
-name|anonymousCowardName
-argument_list|)
+argument_list|()
 argument_list|,
 name|getEmailForAuditLog
 argument_list|(
@@ -3361,16 +3316,13 @@ name|build
 argument_list|()
 return|;
 block|}
-DECL|method|getAccountName ( AccountCache accountCache, String anonymousCowardName, Account.Id accountId)
+DECL|method|getAccountName (AccountCache accountCache, Account.Id accountId)
 specifier|static
 name|String
 name|getAccountName
 parameter_list|(
 name|AccountCache
 name|accountCache
-parameter_list|,
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|Account
 operator|.
@@ -3410,27 +3362,26 @@ lambda|->
 name|account
 operator|.
 name|getName
-argument_list|(
-name|anonymousCowardName
+argument_list|()
 argument_list|)
-argument_list|)
+comment|// Historically, the database did not enforce relational integrity, so it is
+comment|// possible for groups to have non-existing members.
 operator|.
 name|orElse
 argument_list|(
-name|anonymousCowardName
+literal|"No Account for Id #"
+operator|+
+name|accountId
 argument_list|)
 return|;
 block|}
-DECL|method|getAccountNameEmail ( AccountCache accountCache, String anonymousCowardName, Account.Id accountId, String serverId)
+DECL|method|getAccountNameEmail ( AccountCache accountCache, Account.Id accountId, String serverId)
 specifier|static
 name|String
 name|getAccountNameEmail
 parameter_list|(
 name|AccountCache
 name|accountCache
-parameter_list|,
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|Account
 operator|.
@@ -3447,8 +3398,6 @@ init|=
 name|getAccountName
 argument_list|(
 name|accountCache
-argument_list|,
-name|anonymousCowardName
 argument_list|,
 name|accountId
 argument_list|)
@@ -3507,8 +3456,6 @@ return|return
 name|getAccountNameEmail
 argument_list|(
 name|accountCache
-argument_list|,
-name|anonymousCowardName
 argument_list|,
 name|accountId
 argument_list|,
