@@ -524,12 +524,21 @@ name|lastComment
 argument_list|)
 condition|)
 block|{
-comment|// Merge the two comments
+comment|// Merge the two comments. Links should just be appended, while regular text that came from
+comment|// different<div> elements should be separated by a paragraph.
 name|lastComment
 operator|.
 name|message
 operator|+=
+operator|(
+name|comment
+operator|.
+name|isLink
+condition|?
+literal|" "
+else|:
 literal|"\n\n"
+operator|)
 operator|+
 name|comment
 operator|.
