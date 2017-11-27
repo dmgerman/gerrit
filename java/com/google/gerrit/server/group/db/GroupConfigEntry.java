@@ -214,12 +214,14 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"ID of the group %s must not be negative"
+literal|"ID of the group %s must not be negative, found %d"
 argument_list|,
 name|groupUuid
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|id
 argument_list|)
 argument_list|)
 throw|;
