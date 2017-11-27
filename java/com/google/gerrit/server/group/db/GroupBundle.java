@@ -2728,10 +2728,25 @@ name|reviewDbIndex
 operator|++
 expr_stmt|;
 block|}
+comment|// The order of the entries is not perfect as ReviewDb included milliseconds for timestamps
+comment|// and we cut off everything below seconds due to NoteDb/git. Consequently, we don't have a
+comment|// way to know in this method in which exact order additions/removals within the same second
+comment|// happened. The best we can do is to group all additions within the same second as
+comment|// redundant entries and the removals afterward. To compensate that we possibly group
+comment|// non-redundant additions/removals, we also accept NoteDb audit entries which just occur
+comment|// anywhere as ReviewDb audit entries.
 if|if
 condition|(
 operator|!
 name|redundantReviewDbAuditEntries
+operator|.
+name|contains
+argument_list|(
+name|noteDbAuditEntry
+argument_list|)
+operator|&&
+operator|!
+name|reviewDbAuditEntries
 operator|.
 name|contains
 argument_list|(
