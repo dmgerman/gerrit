@@ -774,25 +774,6 @@ block|}
 if|if
 condition|(
 operator|!
-name|validator
-operator|.
-name|isValid
-argument_list|(
-name|email
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|BadRequestException
-argument_list|(
-literal|"invalid email address"
-argument_list|)
-throw|;
-block|}
-if|if
-condition|(
-operator|!
 name|realm
 operator|.
 name|allowsEdit
@@ -823,6 +804,7 @@ name|input
 argument_list|)
 return|;
 block|}
+comment|/** To be used from plugins that want to create emails without permission checks. */
 DECL|method|apply (IdentifiedUser user, EmailInput input)
 specifier|public
 name|Response
@@ -896,6 +878,25 @@ operator|new
 name|BadRequestException
 argument_list|(
 literal|"email address must match URL"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+operator|!
+name|validator
+operator|.
+name|isValid
+argument_list|(
+name|email
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+literal|"invalid email address"
 argument_list|)
 throw|;
 block|}
