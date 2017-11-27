@@ -3338,14 +3338,6 @@ operator|.
 name|nowTs
 argument_list|()
 decl_stmt|;
-name|Timestamp
-name|t6
-init|=
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
-decl_stmt|;
 name|GroupBundle
 name|b
 init|=
@@ -3388,7 +3380,7 @@ literal|1
 argument_list|,
 literal|10
 argument_list|,
-name|t3
+name|t2
 argument_list|)
 argument_list|,
 name|addAndRemoveMember
@@ -3399,11 +3391,11 @@ literal|1
 argument_list|,
 literal|8
 argument_list|,
-name|t4
+name|t3
 argument_list|,
 literal|9
 argument_list|,
-name|t5
+name|t4
 argument_list|)
 argument_list|,
 name|addMember
@@ -3414,7 +3406,7 @@ literal|1
 argument_list|,
 literal|8
 argument_list|,
-name|t6
+name|t5
 argument_list|)
 argument_list|)
 operator|.
