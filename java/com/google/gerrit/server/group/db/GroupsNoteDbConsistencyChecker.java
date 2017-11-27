@@ -91,28 +91,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|api
-operator|.
-name|config
-operator|.
-name|ConsistencyCheckInfo
-operator|.
-name|ConsistencyProblemInfo
-operator|.
-name|warning
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -235,22 +213,6 @@ operator|.
 name|group
 operator|.
 name|InternalGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|GroupsMigration
 import|;
 end_import
 
@@ -484,12 +446,6 @@ specifier|public
 class|class
 name|GroupsNoteDbConsistencyChecker
 block|{
-DECL|field|groupsMigration
-specifier|private
-specifier|final
-name|GroupsMigration
-name|groupsMigration
-decl_stmt|;
 comment|/**    * The result of a consistency check. The UUID map is only non-null if no problems were detected.    */
 DECL|class|Result
 specifier|public
@@ -522,23 +478,11 @@ decl_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|GroupsNoteDbConsistencyChecker (GroupsMigration groupsMigration)
+DECL|method|GroupsNoteDbConsistencyChecker ()
 name|GroupsNoteDbConsistencyChecker
-parameter_list|(
-name|GroupsMigration
-name|groupsMigration
-parameter_list|)
-block|{
-name|this
-operator|.
-name|groupsMigration
-operator|=
-name|groupsMigration
-expr_stmt|;
-block|}
-comment|/**    * Checks for problems with the given All-Users repo. Returns null if we are not writing to    * NoteDb.    */
-annotation|@
-name|Nullable
+parameter_list|()
+block|{}
+comment|/** Checks for problems with the given All-Users repo. */
 DECL|method|check (Repository repo)
 specifier|public
 name|Result
@@ -550,19 +494,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-operator|!
-name|groupsMigration
-operator|.
-name|writeToNoteDb
-argument_list|()
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
 name|Result
 name|r
 init|=
@@ -593,8 +524,6 @@ return|return
 name|r
 return|;
 block|}
-annotation|@
-name|Nullable
 DECL|method|doCheck (Repository repo)
 specifier|private
 name|Result
@@ -957,17 +886,7 @@ name|problems
 operator|.
 name|add
 argument_list|(
-name|groupsMigration
-operator|.
-name|readFromNoteDb
-argument_list|()
-condition|?
 name|error
-argument_list|(
-name|msg
-argument_list|)
-else|:
-name|warning
 argument_list|(
 name|msg
 argument_list|)
