@@ -597,6 +597,15 @@ operator|.
 name|email
 operator|=
 name|email
+operator|!=
+literal|null
+condition|?
+name|email
+operator|.
+name|trim
+argument_list|()
+else|:
+literal|null
 expr_stmt|;
 name|this
 operator|.
