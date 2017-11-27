@@ -92,7 +92,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableList
+name|ImmutableSet
 import|;
 end_import
 
@@ -218,13 +218,13 @@ DECL|field|MAIL_PROVIDER_EXTRAS
 specifier|private
 specifier|static
 specifier|final
-name|ImmutableList
+name|ImmutableSet
 argument_list|<
 name|String
 argument_list|>
 name|MAIL_PROVIDER_EXTRAS
 init|=
-name|ImmutableList
+name|ImmutableSet
 operator|.
 name|of
 argument_list|(
@@ -233,6 +233,30 @@ argument_list|,
 comment|// "On 01/01/2017 User<user@gmail.com> wrote:"
 literal|"gmail_quote"
 comment|// Used for quoting original content
+argument_list|)
+decl_stmt|;
+DECL|field|WHITELISTED_HTML_TAGS
+specifier|private
+specifier|static
+specifier|final
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|WHITELISTED_HTML_TAGS
+init|=
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+literal|"div"
+argument_list|,
+comment|// Most user-typed comments are contained in a<div> tag
+literal|"a"
+argument_list|,
+comment|// We allow links to be contained in a comment
+literal|"font"
+comment|// Some email clients like nesting input in a new font tag
 argument_list|)
 decl_stmt|;
 DECL|method|HtmlParser ()
@@ -535,23 +559,15 @@ block|}
 if|if
 condition|(
 operator|!
-name|elementName
+name|WHITELISTED_HTML_TAGS
 operator|.
-name|equals
+name|contains
 argument_list|(
-literal|"div"
-argument_list|)
-operator|&&
-operator|!
 name|elementName
-operator|.
-name|equals
-argument_list|(
-literal|"a"
 argument_list|)
 condition|)
 block|{
-comment|// We only accept div and a since these tags contain user input
+comment|// We only accept a set of whitelisted tags that can contain user input
 continue|continue;
 block|}
 if|if
