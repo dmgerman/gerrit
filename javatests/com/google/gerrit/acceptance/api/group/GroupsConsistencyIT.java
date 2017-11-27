@@ -903,26 +903,9 @@ name|FORCED
 argument_list|)
 expr_stmt|;
 block|}
-name|assertConsistency
+name|assertError
 argument_list|(
 literal|"refs/meta/group-names does not exist"
-argument_list|,
-name|groupsMigration
-operator|.
-name|readFromNoteDb
-argument_list|()
-condition|?
-name|ConsistencyProblemInfo
-operator|.
-name|Status
-operator|.
-name|ERROR
-else|:
-name|ConsistencyProblemInfo
-operator|.
-name|Status
-operator|.
-name|WARNING
 argument_list|)
 expr_stmt|;
 block|}
