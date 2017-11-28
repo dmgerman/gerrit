@@ -591,17 +591,20 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|withAll ()
+DECL|method|withAll (boolean all)
 specifier|public
 name|ListRequest
 name|withAll
-parameter_list|()
+parameter_list|(
+name|boolean
+name|all
+parameter_list|)
 block|{
 name|this
 operator|.
 name|all
 operator|=
-literal|true
+name|all
 expr_stmt|;
 return|return
 name|this
