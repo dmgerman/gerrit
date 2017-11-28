@@ -316,6 +316,32 @@ name|groupId
 block|}
 empty_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Key{"
+operator|+
+literal|"groupId="
+operator|+
+name|groupId
+operator|+
+literal|", accountId="
+operator|+
+name|accountId
+operator|+
+literal|", addedOn="
+operator|+
+name|addedOn
+operator|+
+literal|'}'
+return|;
+block|}
 block|}
 annotation|@
 name|Column

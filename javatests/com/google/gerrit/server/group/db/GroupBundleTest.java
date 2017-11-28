@@ -535,7 +535,9 @@ argument_list|,
 literal|"AccountGroupMemberAudits differ\n"
 operator|+
 operator|(
-literal|"ReviewDb: [AccountGroupMemberAudit{key=1000,1, addedBy=2000, removedBy=null,"
+literal|"ReviewDb: [AccountGroupMemberAudit{key=Key{groupId=1, accountId=1000,"
+operator|+
+literal|" addedOn=2009-09-30 17:00:00.0}, addedBy=2000, removedBy=null,"
 operator|+
 literal|" removedOn=null}]\n"
 operator|)
@@ -551,7 +553,9 @@ argument_list|,
 literal|"AccountGroupByIdAudits differ\n"
 operator|+
 operator|(
-literal|"ReviewDb: [AccountGroupByIdAud{key=1,subgroup, addedBy=3000, removedBy=null,"
+literal|"ReviewDb: [AccountGroupByIdAud{key=Key{groupId=1, includeUUID=subgroup,"
+operator|+
+literal|" addedOn=2009-09-30 17:00:00.0}, addedBy=3000, removedBy=null,"
 operator|+
 literal|" removedOn=null}]\n"
 operator|)
