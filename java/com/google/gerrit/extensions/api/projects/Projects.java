@@ -78,6 +78,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|client
+operator|.
+name|ProjectState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|common
 operator|.
 name|ProjectInfo
@@ -309,6 +325,13 @@ init|=
 name|FilterType
 operator|.
 name|ALL
+decl_stmt|;
+DECL|field|state
+specifier|private
+name|ProjectState
+name|state
+init|=
+literal|null
 decl_stmt|;
 DECL|method|get ()
 specifier|public
@@ -591,17 +614,39 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|withAll ()
+DECL|method|withAll (boolean all)
 specifier|public
 name|ListRequest
 name|withAll
-parameter_list|()
+parameter_list|(
+name|boolean
+name|all
+parameter_list|)
 block|{
 name|this
 operator|.
 name|all
 operator|=
-literal|true
+name|all
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|withState (ProjectState state)
+specifier|public
+name|ListRequest
+name|withState
+parameter_list|(
+name|ProjectState
+name|state
+parameter_list|)
+block|{
+name|this
+operator|.
+name|state
+operator|=
+name|state
 expr_stmt|;
 return|return
 name|this
@@ -713,6 +758,16 @@ parameter_list|()
 block|{
 return|return
 name|all
+return|;
+block|}
+DECL|method|getState ()
+specifier|public
+name|ProjectState
+name|getState
+parameter_list|()
+block|{
+return|return
+name|state
 return|;
 block|}
 block|}
