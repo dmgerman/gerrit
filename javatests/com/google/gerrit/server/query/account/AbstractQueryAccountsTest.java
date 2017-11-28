@@ -3272,6 +3272,17 @@ operator|.
 name|_accountId
 argument_list|)
 expr_stmt|;
+comment|// The field EXTERNAL_ID_STATE is only supported from schema version 6.
+if|if
+condition|(
+name|getSchemaVersion
+argument_list|()
+operator|<
+literal|6
+condition|)
+block|{
+return|return;
+block|}
 name|List
 argument_list|<
 name|AccountExternalIdInfo
@@ -4600,6 +4611,25 @@ name|arr
 argument_list|)
 return|;
 block|}
+block|}
+DECL|method|getSchemaVersion ()
+specifier|protected
+name|int
+name|getSchemaVersion
+parameter_list|()
+block|{
+return|return
+name|indexes
+operator|.
+name|getSearchIndex
+argument_list|()
+operator|.
+name|getSchema
+argument_list|()
+operator|.
+name|getVersion
+argument_list|()
+return|;
 block|}
 block|}
 end_class
