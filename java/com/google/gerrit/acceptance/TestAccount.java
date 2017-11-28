@@ -360,11 +360,6 @@ specifier|final
 name|String
 name|httpPassword
 decl_stmt|;
-DECL|field|status
-specifier|public
-name|String
-name|status
-decl_stmt|;
 DECL|method|TestAccount ( Account.Id id, String username, String email, String fullName, KeyPair sshKey, String httpPassword)
 name|TestAccount
 parameter_list|(
