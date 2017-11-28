@@ -288,6 +288,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|group
+operator|.
+name|db
+operator|.
+name|GroupsNoteDbConsistencyChecker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|index
 operator|.
 name|IndexExecutor
@@ -919,6 +937,15 @@ block|{
 name|index
 operator|.
 name|delete
+argument_list|(
+name|uuid
+argument_list|)
+expr_stmt|;
+comment|// The UUID here is read from group name notes. If it fails to load from group
+comment|// cache, there exists an inconsistency.
+name|GroupsNoteDbConsistencyChecker
+operator|.
+name|logFailToLoadFromGroupRefAsWarning
 argument_list|(
 name|uuid
 argument_list|)
