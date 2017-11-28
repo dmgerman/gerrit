@@ -294,16 +294,6 @@ name|javax
 operator|.
 name|inject
 operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|inject
-operator|.
 name|Singleton
 import|;
 end_import
@@ -476,12 +466,6 @@ argument_list|>
 name|uuidToGroupMap
 decl_stmt|;
 block|}
-annotation|@
-name|Inject
-DECL|method|GroupsNoteDbConsistencyChecker ()
-name|GroupsNoteDbConsistencyChecker
-parameter_list|()
-block|{}
 comment|/** Checks for problems with the given All-Users repo. */
 DECL|method|check (Repository repo)
 specifier|public
