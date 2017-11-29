@@ -134,6 +134,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collection
@@ -148,7 +158,7 @@ specifier|public
 interface|interface
 name|GroupMemberAuditListener
 block|{
-DECL|method|onAddAccountsToGroup (Account.Id actor, Collection<AccountGroupMember> added)
+DECL|method|onAddAccountsToGroup ( Account.Id actor, Collection<AccountGroupMember> added, Timestamp addedOn)
 name|void
 name|onAddAccountsToGroup
 parameter_list|(
@@ -162,9 +172,12 @@ argument_list|<
 name|AccountGroupMember
 argument_list|>
 name|added
+parameter_list|,
+name|Timestamp
+name|addedOn
 parameter_list|)
 function_decl|;
-DECL|method|onDeleteAccountsFromGroup (Account.Id actor, Collection<AccountGroupMember> removed)
+DECL|method|onDeleteAccountsFromGroup ( Account.Id actor, Collection<AccountGroupMember> removed, Timestamp removedOn)
 name|void
 name|onDeleteAccountsFromGroup
 parameter_list|(
@@ -178,9 +191,12 @@ argument_list|<
 name|AccountGroupMember
 argument_list|>
 name|removed
+parameter_list|,
+name|Timestamp
+name|removedOn
 parameter_list|)
 function_decl|;
-DECL|method|onAddGroupsToGroup (Account.Id actor, Collection<AccountGroupById> added)
+DECL|method|onAddGroupsToGroup (Account.Id actor, Collection<AccountGroupById> added, Timestamp addedOn)
 name|void
 name|onAddGroupsToGroup
 parameter_list|(
@@ -194,9 +210,12 @@ argument_list|<
 name|AccountGroupById
 argument_list|>
 name|added
+parameter_list|,
+name|Timestamp
+name|addedOn
 parameter_list|)
 function_decl|;
-DECL|method|onDeleteGroupsFromGroup (Account.Id actor, Collection<AccountGroupById> deleted)
+DECL|method|onDeleteGroupsFromGroup ( Account.Id actor, Collection<AccountGroupById> deleted, Timestamp removedOn)
 name|void
 name|onDeleteGroupsFromGroup
 parameter_list|(
@@ -210,6 +229,9 @@ argument_list|<
 name|AccountGroupById
 argument_list|>
 name|deleted
+parameter_list|,
+name|Timestamp
+name|removedOn
 parameter_list|)
 function_decl|;
 block|}

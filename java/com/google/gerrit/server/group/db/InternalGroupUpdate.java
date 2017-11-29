@@ -132,6 +132,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Optional
@@ -272,6 +282,23 @@ name|SubgroupModification
 name|getSubgroupModification
 parameter_list|()
 function_decl|;
+DECL|method|getUpdatedOn ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|Timestamp
+argument_list|>
+name|getUpdatedOn
+parameter_list|()
+function_decl|;
+DECL|method|toBuilder ()
+specifier|public
+specifier|abstract
+name|Builder
+name|toBuilder
+parameter_list|()
+function_decl|;
 DECL|method|builder ()
 specifier|public
 specifier|static
@@ -387,6 +414,16 @@ specifier|abstract
 name|SubgroupModification
 name|getSubgroupModification
 parameter_list|()
+function_decl|;
+DECL|method|setUpdatedOn (Timestamp timestamp)
+specifier|public
+specifier|abstract
+name|Builder
+name|setUpdatedOn
+parameter_list|(
+name|Timestamp
+name|timestamp
+parameter_list|)
 function_decl|;
 DECL|method|build ()
 specifier|public

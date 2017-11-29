@@ -98,16 +98,6 @@ name|AccountGroup
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
 begin_comment
 comment|// TODO(aliceks): Add Javadoc descriptions to this file.
 end_comment
@@ -146,13 +136,6 @@ name|AccountGroup
 operator|.
 name|UUID
 name|getGroupUUID
-parameter_list|()
-function_decl|;
-DECL|method|getCreatedOn ()
-specifier|public
-specifier|abstract
-name|Timestamp
-name|getCreatedOn
 parameter_list|()
 function_decl|;
 DECL|method|builder ()
@@ -221,18 +204,6 @@ name|AccountGroup
 operator|.
 name|UUID
 name|groupUuid
-parameter_list|)
-function_decl|;
-DECL|method|setCreatedOn (Timestamp createdOn)
-specifier|public
-specifier|abstract
-name|InternalGroupCreation
-operator|.
-name|Builder
-name|setCreatedOn
-parameter_list|(
-name|Timestamp
-name|createdOn
 parameter_list|)
 function_decl|;
 DECL|method|build ()

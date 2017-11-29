@@ -212,6 +212,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|TimeUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|GroupDescription
@@ -709,6 +723,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
 import|;
 end_import
 
@@ -1396,6 +1420,39 @@ name|disableGroupReviewDb
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|groupUpdate
+operator|.
+name|getUpdatedOn
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// Set updatedOn to a specific value so that the same timestamp is used for ReviewDb and
+comment|// NoteDb.
+name|groupUpdate
+operator|=
+name|groupUpdate
+operator|.
+name|toBuilder
+argument_list|()
+operator|.
+name|setUpdatedOn
+argument_list|(
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|)
+operator|.
+name|build
+argument_list|()
+expr_stmt|;
+block|}
 name|InternalGroup
 name|createdGroupInReviewDb
 init|=
@@ -1537,6 +1594,39 @@ name|disableGroupReviewDb
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|groupUpdate
+operator|.
+name|getUpdatedOn
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// Set updatedOn to a specific value so that the same timestamp is used for ReviewDb and
+comment|// NoteDb.
+name|groupUpdate
+operator|=
+name|groupUpdate
+operator|.
+name|toBuilder
+argument_list|()
+operator|.
+name|setUpdatedOn
+argument_list|(
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|)
+operator|.
+name|build
+argument_list|()
+expr_stmt|;
+block|}
 name|AccountGroup
 name|group
 init|=
@@ -1659,12 +1749,29 @@ name|gn
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Timestamp
+name|createdOn
+init|=
+name|groupUpdate
+operator|.
+name|getUpdatedOn
+argument_list|()
+operator|.
+name|orElseGet
+argument_list|(
+name|TimeUtil
+operator|::
+name|nowTs
+argument_list|)
+decl_stmt|;
 name|AccountGroup
 name|group
 init|=
 name|createAccountGroup
 argument_list|(
 name|groupCreation
+argument_list|,
+name|createdOn
 argument_list|)
 decl_stmt|;
 name|UpdateResult
@@ -1716,12 +1823,29 @@ name|InternalGroupUpdate
 name|groupUpdate
 parameter_list|)
 block|{
+name|Timestamp
+name|createdOn
+init|=
+name|groupUpdate
+operator|.
+name|getUpdatedOn
+argument_list|()
+operator|.
+name|orElseGet
+argument_list|(
+name|TimeUtil
+operator|::
+name|nowTs
+argument_list|)
+decl_stmt|;
 name|AccountGroup
 name|group
 init|=
 name|createAccountGroup
 argument_list|(
 name|groupCreation
+argument_list|,
+name|createdOn
 argument_list|)
 decl_stmt|;
 name|applyUpdate
@@ -1735,7 +1859,7 @@ return|return
 name|group
 return|;
 block|}
-DECL|method|createAccountGroup (InternalGroupCreation groupCreation)
+DECL|method|createAccountGroup ( InternalGroupCreation groupCreation, Timestamp createdOn)
 specifier|private
 specifier|static
 name|AccountGroup
@@ -1743,6 +1867,9 @@ name|createAccountGroup
 parameter_list|(
 name|InternalGroupCreation
 name|groupCreation
+parameter_list|,
+name|Timestamp
+name|createdOn
 parameter_list|)
 block|{
 return|return
@@ -1764,10 +1891,7 @@ operator|.
 name|getGroupUUID
 argument_list|()
 argument_list|,
-name|groupCreation
-operator|.
-name|getCreatedOn
-argument_list|()
+name|createdOn
 argument_list|)
 return|;
 block|}
@@ -2175,6 +2299,21 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|Timestamp
+name|updatedOn
+init|=
+name|groupUpdate
+operator|.
+name|getUpdatedOn
+argument_list|()
+operator|.
+name|orElseGet
+argument_list|(
+name|TimeUtil
+operator|::
+name|nowTs
+argument_list|)
+decl_stmt|;
 name|ImmutableSet
 argument_list|<
 name|Account
@@ -2254,6 +2393,8 @@ argument_list|,
 name|groupId
 argument_list|,
 name|addedMembers
+argument_list|,
+name|updatedOn
 argument_list|)
 expr_stmt|;
 block|}
@@ -2290,6 +2431,8 @@ argument_list|,
 name|groupId
 argument_list|,
 name|removedMembers
+argument_list|,
+name|updatedOn
 argument_list|)
 expr_stmt|;
 block|}
@@ -2307,7 +2450,7 @@ name|immutableCopy
 argument_list|()
 return|;
 block|}
-DECL|method|addGroupMembersInReviewDb ( ReviewDb db, AccountGroup.Id groupId, Set<Account.Id> newMemberIds)
+DECL|method|addGroupMembersInReviewDb ( ReviewDb db, AccountGroup.Id groupId, Set<Account.Id> newMemberIds, Timestamp addedOn)
 specifier|private
 name|void
 name|addGroupMembersInReviewDb
@@ -2327,6 +2470,9 @@ operator|.
 name|Id
 argument_list|>
 name|newMemberIds
+parameter_list|,
+name|Timestamp
+name|addedOn
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2387,6 +2533,8 @@ name|getAccountId
 argument_list|()
 argument_list|,
 name|newMembers
+argument_list|,
+name|addedOn
 argument_list|)
 expr_stmt|;
 block|}
@@ -2401,7 +2549,7 @@ name|newMembers
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|removeGroupMembersInReviewDb ( ReviewDb db, AccountGroup.Id groupId, Set<Account.Id> accountIds)
+DECL|method|removeGroupMembersInReviewDb ( ReviewDb db, AccountGroup.Id groupId, Set<Account.Id> accountIds, Timestamp removedOn)
 specifier|private
 name|void
 name|removeGroupMembersInReviewDb
@@ -2421,6 +2569,9 @@ operator|.
 name|Id
 argument_list|>
 name|accountIds
+parameter_list|,
+name|Timestamp
+name|removedOn
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2481,6 +2632,8 @@ name|getAccountId
 argument_list|()
 argument_list|,
 name|membersToRemove
+argument_list|,
+name|removedOn
 argument_list|)
 expr_stmt|;
 block|}
@@ -2519,6 +2672,21 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|Timestamp
+name|updatedOn
+init|=
+name|groupUpdate
+operator|.
+name|getUpdatedOn
+argument_list|()
+operator|.
+name|orElseGet
+argument_list|(
+name|TimeUtil
+operator|::
+name|nowTs
+argument_list|)
+decl_stmt|;
 name|ImmutableSet
 argument_list|<
 name|AccountGroup
@@ -2598,6 +2766,8 @@ argument_list|,
 name|groupId
 argument_list|,
 name|addedSubgroups
+argument_list|,
+name|updatedOn
 argument_list|)
 expr_stmt|;
 block|}
@@ -2634,6 +2804,8 @@ argument_list|,
 name|groupId
 argument_list|,
 name|removedSubgroups
+argument_list|,
+name|updatedOn
 argument_list|)
 expr_stmt|;
 block|}
@@ -2651,7 +2823,7 @@ name|immutableCopy
 argument_list|()
 return|;
 block|}
-DECL|method|addSubgroupsInReviewDb ( ReviewDb db, AccountGroup.Id parentGroupId, Set<AccountGroup.UUID> subgroupUuids)
+DECL|method|addSubgroupsInReviewDb ( ReviewDb db, AccountGroup.Id parentGroupId, Set<AccountGroup.UUID> subgroupUuids, Timestamp addedOn)
 specifier|private
 name|void
 name|addSubgroupsInReviewDb
@@ -2671,6 +2843,9 @@ operator|.
 name|UUID
 argument_list|>
 name|subgroupUuids
+parameter_list|,
+name|Timestamp
+name|addedOn
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2731,6 +2906,8 @@ name|getAccountId
 argument_list|()
 argument_list|,
 name|newSubgroups
+argument_list|,
+name|addedOn
 argument_list|)
 expr_stmt|;
 block|}
@@ -2745,7 +2922,7 @@ name|newSubgroups
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|removeSubgroupsInReviewDb ( ReviewDb db, AccountGroup.Id parentGroupId, Set<AccountGroup.UUID> subgroupUuids)
+DECL|method|removeSubgroupsInReviewDb ( ReviewDb db, AccountGroup.Id parentGroupId, Set<AccountGroup.UUID> subgroupUuids, Timestamp removedOn)
 specifier|private
 name|void
 name|removeSubgroupsInReviewDb
@@ -2765,6 +2942,9 @@ operator|.
 name|UUID
 argument_list|>
 name|subgroupUuids
+parameter_list|,
+name|Timestamp
+name|removedOn
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2825,6 +3005,8 @@ name|getAccountId
 argument_list|()
 argument_list|,
 name|subgroupsToRemove
+argument_list|,
+name|removedOn
 argument_list|)
 expr_stmt|;
 block|}
