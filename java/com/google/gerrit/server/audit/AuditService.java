@@ -158,6 +158,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collection
@@ -284,7 +294,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|dispatchAddAccountsToGroup (Account.Id actor, Collection<AccountGroupMember> added)
+DECL|method|dispatchAddAccountsToGroup ( Account.Id actor, Collection<AccountGroupMember> added, Timestamp addedOn)
 specifier|public
 name|void
 name|dispatchAddAccountsToGroup
@@ -299,6 +309,9 @@ argument_list|<
 name|AccountGroupMember
 argument_list|>
 name|added
+parameter_list|,
+name|Timestamp
+name|addedOn
 parameter_list|)
 block|{
 for|for
@@ -318,6 +331,8 @@ argument_list|(
 name|actor
 argument_list|,
 name|added
+argument_list|,
+name|addedOn
 argument_list|)
 expr_stmt|;
 block|}
@@ -339,7 +354,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|dispatchDeleteAccountsFromGroup ( Account.Id actor, Collection<AccountGroupMember> removed)
+DECL|method|dispatchDeleteAccountsFromGroup ( Account.Id actor, Collection<AccountGroupMember> removed, Timestamp removedOn)
 specifier|public
 name|void
 name|dispatchDeleteAccountsFromGroup
@@ -354,6 +369,9 @@ argument_list|<
 name|AccountGroupMember
 argument_list|>
 name|removed
+parameter_list|,
+name|Timestamp
+name|removedOn
 parameter_list|)
 block|{
 for|for
@@ -373,6 +391,8 @@ argument_list|(
 name|actor
 argument_list|,
 name|removed
+argument_list|,
+name|removedOn
 argument_list|)
 expr_stmt|;
 block|}
@@ -394,7 +414,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|dispatchAddGroupsToGroup (Account.Id actor, Collection<AccountGroupById> added)
+DECL|method|dispatchAddGroupsToGroup ( Account.Id actor, Collection<AccountGroupById> added, Timestamp addedOn)
 specifier|public
 name|void
 name|dispatchAddGroupsToGroup
@@ -409,6 +429,9 @@ argument_list|<
 name|AccountGroupById
 argument_list|>
 name|added
+parameter_list|,
+name|Timestamp
+name|addedOn
 parameter_list|)
 block|{
 for|for
@@ -428,6 +451,8 @@ argument_list|(
 name|actor
 argument_list|,
 name|added
+argument_list|,
+name|addedOn
 argument_list|)
 expr_stmt|;
 block|}
@@ -449,7 +474,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|dispatchDeleteGroupsFromGroup ( Account.Id actor, Collection<AccountGroupById> removed)
+DECL|method|dispatchDeleteGroupsFromGroup ( Account.Id actor, Collection<AccountGroupById> removed, Timestamp removedOn)
 specifier|public
 name|void
 name|dispatchDeleteGroupsFromGroup
@@ -464,6 +489,9 @@ argument_list|<
 name|AccountGroupById
 argument_list|>
 name|removed
+parameter_list|,
+name|Timestamp
+name|removedOn
 parameter_list|)
 block|{
 for|for
@@ -483,6 +511,8 @@ argument_list|(
 name|actor
 argument_list|,
 name|removed
+argument_list|,
+name|removedOn
 argument_list|)
 expr_stmt|;
 block|}

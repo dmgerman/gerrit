@@ -1598,14 +1598,6 @@ name|setId
 argument_list|(
 name|groupId
 argument_list|)
-operator|.
-name|setCreatedOn
-argument_list|(
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
-argument_list|)
 return|;
 block|}
 DECL|method|populateGroupConfig (AccountGroup.UUID uuid, String fileContent)

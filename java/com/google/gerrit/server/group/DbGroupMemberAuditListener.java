@@ -88,20 +88,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|TimeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -314,6 +300,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|text
 operator|.
 name|MessageFormat
@@ -462,7 +458,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onAddAccountsToGroup (Account.Id me, Collection<AccountGroupMember> added)
+DECL|method|onAddAccountsToGroup ( Account.Id me, Collection<AccountGroupMember> added, Timestamp addedOn)
 specifier|public
 name|void
 name|onAddAccountsToGroup
@@ -477,6 +473,9 @@ argument_list|<
 name|AccountGroupMember
 argument_list|>
 name|added
+parameter_list|,
+name|Timestamp
+name|addedOn
 parameter_list|)
 block|{
 name|List
@@ -508,10 +507,7 @@ name|m
 argument_list|,
 name|me
 argument_list|,
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
+name|addedOn
 argument_list|)
 decl_stmt|;
 name|auditInserts
@@ -565,7 +561,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onDeleteAccountsFromGroup (Account.Id me, Collection<AccountGroupMember> removed)
+DECL|method|onDeleteAccountsFromGroup ( Account.Id me, Collection<AccountGroupMember> removed, Timestamp removedOn)
 specifier|public
 name|void
 name|onDeleteAccountsFromGroup
@@ -580,6 +576,9 @@ argument_list|<
 name|AccountGroupMember
 argument_list|>
 name|removed
+parameter_list|,
+name|Timestamp
+name|removedOn
 parameter_list|)
 block|{
 name|List
@@ -680,10 +679,7 @@ name|removed
 argument_list|(
 name|me
 argument_list|,
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
+name|removedOn
 argument_list|)
 expr_stmt|;
 name|auditUpdates
@@ -705,10 +701,7 @@ name|m
 argument_list|,
 name|me
 argument_list|,
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
+name|removedOn
 argument_list|)
 expr_stmt|;
 name|audit
@@ -767,7 +760,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onAddGroupsToGroup (Account.Id me, Collection<AccountGroupById> added)
+DECL|method|onAddGroupsToGroup ( Account.Id me, Collection<AccountGroupById> added, Timestamp addedOn)
 specifier|public
 name|void
 name|onAddGroupsToGroup
@@ -782,6 +775,9 @@ argument_list|<
 name|AccountGroupById
 argument_list|>
 name|added
+parameter_list|,
+name|Timestamp
+name|addedOn
 parameter_list|)
 block|{
 name|List
@@ -813,10 +809,7 @@ name|groupInclude
 argument_list|,
 name|me
 argument_list|,
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
+name|addedOn
 argument_list|)
 decl_stmt|;
 name|includesAudit
@@ -870,7 +863,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onDeleteGroupsFromGroup (Account.Id me, Collection<AccountGroupById> removed)
+DECL|method|onDeleteGroupsFromGroup ( Account.Id me, Collection<AccountGroupById> removed, Timestamp removedOn)
 specifier|public
 name|void
 name|onDeleteGroupsFromGroup
@@ -885,6 +878,9 @@ argument_list|<
 name|AccountGroupById
 argument_list|>
 name|removed
+parameter_list|,
+name|Timestamp
+name|removedOn
 parameter_list|)
 block|{
 specifier|final
@@ -975,10 +971,7 @@ name|removed
 argument_list|(
 name|me
 argument_list|,
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
+name|removedOn
 argument_list|)
 expr_stmt|;
 name|auditUpdates
