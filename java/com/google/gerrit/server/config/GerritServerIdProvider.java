@@ -263,6 +263,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|GerritServerIdProvider (@erritServerConfig Config cfg, SitePaths sitePaths)
+specifier|public
 name|GerritServerIdProvider
 parameter_list|(
 annotation|@

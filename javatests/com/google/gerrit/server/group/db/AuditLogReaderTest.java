@@ -560,6 +560,10 @@ argument_list|(
 name|uuid
 argument_list|,
 literal|"Update group\n\nAdd: Account 100002<100002@server-id>"
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -602,6 +606,10 @@ argument_list|(
 name|uuid
 argument_list|,
 literal|"Update group\n\nRemove: Account 100002<100002@server-id>"
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|expAudit2
@@ -798,6 +806,10 @@ operator|+
 literal|"Add: Account 100002<100002@server-id>\n"
 operator|+
 literal|"Add: Account 100003<100003@server-id>"
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -899,6 +911,10 @@ literal|"Update group\n\nAdd-group: Group<%s>"
 argument_list|,
 name|subgroupUuid
 argument_list|)
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|AccountGroupByIdAud
@@ -962,6 +978,10 @@ literal|"Update group\n\nRemove-group: Group<%s>"
 argument_list|,
 name|subgroupUuid
 argument_list|)
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|expAudit
@@ -1103,6 +1123,10 @@ literal|"Add-group: Group<%s>"
 argument_list|,
 name|subgroupUuid2
 argument_list|)
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|AccountGroupByIdAud
@@ -1385,6 +1409,10 @@ name|id2
 argument_list|,
 name|id2
 argument_list|)
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|AccountGroupMemberAudit
@@ -1470,6 +1498,10 @@ literal|"Update group\n\nAdd-group: Group<%s>"
 argument_list|,
 name|subgroupUuid1
 argument_list|)
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|AccountGroupByIdAud
@@ -1536,6 +1568,10 @@ name|id2
 argument_list|,
 name|id2
 argument_list|)
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|expMemberAudit2
@@ -1614,6 +1650,10 @@ literal|"Add-group: Group<%s>"
 argument_list|,
 name|subgroupUuid3
 argument_list|)
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|AccountGroupByIdAud
@@ -1724,6 +1764,10 @@ name|id3
 argument_list|,
 name|id3
 argument_list|)
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|AccountGroupMemberAudit
@@ -1828,6 +1872,10 @@ literal|"Remove-group: Group<%s>"
 argument_list|,
 name|subgroupUuid3
 argument_list|)
+argument_list|,
+literal|"Account 100001"
+argument_list|,
+literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|expGroupAudit1
@@ -2098,13 +2146,8 @@ name|setGroupUpdate
 argument_list|(
 name|groupUpdate
 argument_list|,
-name|AbstractGroupTest
-operator|::
-name|getAccountNameEmail
-argument_list|,
-name|AbstractGroupTest
-operator|::
-name|getGroupName
+name|getAuditLogFormatter
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|RevCommit
@@ -2184,6 +2227,32 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|String
+name|name
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Account %s"
+argument_list|,
+name|userId
+argument_list|)
+decl_stmt|;
+name|String
+name|email
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s@%s"
+argument_list|,
+name|userId
+argument_list|,
+name|SERVER_ID
+argument_list|)
+decl_stmt|;
 name|assertCommit
 argument_list|(
 name|CommitUtil
@@ -2197,24 +2266,16 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Create group\n\nAdd: Account %s<%s@%s>"
+literal|"Create group\n\nAdd: %s<%s>"
 argument_list|,
-name|userId
+name|name
 argument_list|,
-name|userId
-argument_list|,
-name|SERVER_ID
+name|email
 argument_list|)
 argument_list|,
-name|getAccountName
-argument_list|(
-name|userId
-argument_list|)
+name|name
 argument_list|,
-name|getAccountEmail
-argument_list|(
-name|userId
-argument_list|)
+name|email
 argument_list|)
 expr_stmt|;
 block|}
@@ -2253,13 +2314,8 @@ name|setGroupUpdate
 argument_list|(
 name|groupUpdate
 argument_list|,
-name|AbstractGroupTest
-operator|::
-name|getAccountNameEmail
-argument_list|,
-name|AbstractGroupTest
-operator|::
-name|getGroupName
+name|getAuditLogFormatter
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|groupConfig

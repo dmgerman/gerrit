@@ -150,22 +150,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|AccountGroup
 import|;
 end_import
@@ -338,6 +322,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|GerritServerId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|SitePath
 import|;
 end_import
@@ -421,6 +421,24 @@ operator|.
 name|group
 operator|.
 name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|db
+operator|.
+name|AuditLogFormatter
 import|;
 end_import
 
@@ -700,6 +718,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -834,6 +862,12 @@ specifier|final
 name|GroupsMigration
 name|groupsMigration
 decl_stmt|;
+DECL|field|serverId
+specifier|private
+specifier|final
+name|String
+name|serverId
+decl_stmt|;
 DECL|field|config
 specifier|private
 specifier|final
@@ -860,7 +894,7 @@ name|allProjectsName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaCreator ( SitePaths site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, GroupsMigration gm, @GerritServerConfig Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
+DECL|method|SchemaCreator ( SitePaths site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, GroupsMigration gm, @GerritServerId String serverId, @GerritServerConfig Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
 specifier|public
 name|SchemaCreator
 parameter_list|(
@@ -892,6 +926,11 @@ name|ic
 parameter_list|,
 name|GroupsMigration
 name|gm
+parameter_list|,
+annotation|@
+name|GerritServerId
+name|String
+name|serverId
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -930,6 +969,8 @@ name|ic
 argument_list|,
 name|gm
 argument_list|,
+name|serverId
+argument_list|,
 name|config
 argument_list|,
 name|metricMaker
@@ -940,7 +981,7 @@ name|apName
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SchemaCreator ( @itePath Path site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, GroupsMigration gm, Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
+DECL|method|SchemaCreator ( @itePath Path site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, GroupsMigration gm, String serverId, Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
 specifier|public
 name|SchemaCreator
 parameter_list|(
@@ -974,6 +1015,9 @@ name|ic
 parameter_list|,
 name|GroupsMigration
 name|gm
+parameter_list|,
+name|String
+name|serverId
 parameter_list|,
 name|Config
 name|config
@@ -1027,6 +1071,12 @@ expr_stmt|;
 name|groupsMigration
 operator|=
 name|gm
+expr_stmt|;
+name|this
+operator|.
+name|serverId
+operator|=
+name|serverId
 expr_stmt|;
 name|this
 operator|.
@@ -1565,6 +1615,31 @@ name|IOException
 throws|,
 name|OrmDuplicateKeyException
 block|{
+comment|// We don't add any initial members or subgroups and hence the provided functions should never
+comment|// be called.
+name|AuditLogFormatter
+name|auditLogFormatter
+init|=
+operator|new
+name|AuditLogFormatter
+argument_list|(
+name|id
+lambda|->
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|uuid
+lambda|->
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|serverId
+argument_list|)
+decl_stmt|;
 name|GroupConfig
 name|groupConfig
 init|=
@@ -1577,25 +1652,13 @@ argument_list|,
 name|groupCreation
 argument_list|)
 decl_stmt|;
-comment|// We don't add any initial members or subgroups and hence the provided functions should never
-comment|// be called. To be on the safe side, we specify some valid functions.
 name|groupConfig
 operator|.
 name|setGroupUpdate
 argument_list|(
 name|groupUpdate
 argument_list|,
-name|Account
-operator|.
-name|Id
-operator|::
-name|toString
-argument_list|,
-name|AccountGroup
-operator|.
-name|UUID
-operator|::
-name|get
+name|auditLogFormatter
 argument_list|)
 expr_stmt|;
 name|AccountGroup
