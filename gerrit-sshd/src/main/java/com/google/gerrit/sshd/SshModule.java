@@ -586,6 +586,14 @@ expr_stmt|;
 name|configureAliases
 argument_list|()
 expr_stmt|;
+name|install
+argument_list|(
+name|SshCommandSensitiveFieldsCacheImpl
+operator|.
+name|module
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|bind
 argument_list|(
 name|SshLog
