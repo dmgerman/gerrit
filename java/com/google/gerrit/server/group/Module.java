@@ -294,6 +294,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|GroupsMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Provides
@@ -308,6 +324,27 @@ name|Module
 extends|extends
 name|RestApiModule
 block|{
+DECL|field|groupsMigration
+specifier|private
+specifier|final
+name|GroupsMigration
+name|groupsMigration
+decl_stmt|;
+DECL|method|Module (GroupsMigration groupsMigration)
+specifier|public
+name|Module
+parameter_list|(
+name|GroupsMigration
+name|groupsMigration
+parameter_list|)
+block|{
+name|this
+operator|.
+name|groupsMigration
+operator|=
+name|groupsMigration
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|configure ()
@@ -761,6 +798,18 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|groupsMigration
+operator|.
+name|disableGroupReviewDb
+argument_list|()
+condition|)
+block|{
+comment|// DbGroupMemberAuditListener is used solely for the ReviewDb audit log. It does not respect
+comment|// ReviewDb wrappers that disable reads. Hence, we don't want to bind it if ReviewDb is
+comment|// disabled.
 name|DynamicSet
 operator|.
 name|bind
@@ -780,6 +829,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Provides
