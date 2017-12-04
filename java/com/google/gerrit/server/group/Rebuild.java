@@ -831,7 +831,7 @@ name|diffs
 init|=
 name|GroupBundle
 operator|.
-name|compare
+name|compareWithAudits
 argument_list|(
 name|reviewDbBundle
 argument_list|,

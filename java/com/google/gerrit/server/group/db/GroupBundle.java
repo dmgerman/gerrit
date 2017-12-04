@@ -1796,8 +1796,62 @@ name|byIdAudit
 argument_list|()
 return|;
 block|}
-DECL|method|compare ( GroupBundle reviewDbBundle, GroupBundle noteDbBundle)
+DECL|method|compareWithAudits ( GroupBundle reviewDbBundle, GroupBundle noteDbBundle)
 specifier|public
+specifier|static
+name|ImmutableList
+argument_list|<
+name|String
+argument_list|>
+name|compareWithAudits
+parameter_list|(
+name|GroupBundle
+name|reviewDbBundle
+parameter_list|,
+name|GroupBundle
+name|noteDbBundle
+parameter_list|)
+block|{
+return|return
+name|compare
+argument_list|(
+name|reviewDbBundle
+argument_list|,
+name|noteDbBundle
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
+DECL|method|compareWithoutAudits ( GroupBundle reviewDbBundle, GroupBundle noteDbBundle)
+specifier|public
+specifier|static
+name|ImmutableList
+argument_list|<
+name|String
+argument_list|>
+name|compareWithoutAudits
+parameter_list|(
+name|GroupBundle
+name|reviewDbBundle
+parameter_list|,
+name|GroupBundle
+name|noteDbBundle
+parameter_list|)
+block|{
+return|return
+name|compare
+argument_list|(
+name|reviewDbBundle
+argument_list|,
+name|noteDbBundle
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+DECL|method|compare ( GroupBundle reviewDbBundle, GroupBundle noteDbBundle, boolean compareAudits)
+specifier|private
 specifier|static
 name|ImmutableList
 argument_list|<
@@ -1810,6 +1864,9 @@ name|reviewDbBundle
 parameter_list|,
 name|GroupBundle
 name|noteDbBundle
+parameter_list|,
+name|boolean
+name|compareAudits
 parameter_list|)
 block|{
 comment|// Normalize the ReviewDb bundle to what we expect in NoteDb. This means that values in error
@@ -2009,6 +2066,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|compareAudits
+operator|&&
 operator|!
 name|areMemberAuditsConsideredEqual
 argument_list|(
@@ -2099,6 +2158,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|compareAudits
+operator|&&
 operator|!
 name|areByIdAuditsConsideredEqual
 argument_list|(
