@@ -4332,7 +4332,7 @@ name|assertThat
 argument_list|(
 name|GroupBundle
 operator|.
-name|compare
+name|compareWithAudits
 argument_list|(
 name|expectedReviewDbBundle
 argument_list|,
