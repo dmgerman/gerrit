@@ -2358,6 +2358,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|GroupsMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|NoteDbModule
 import|;
 end_import
@@ -3010,9 +3026,15 @@ specifier|final
 name|AuthModule
 name|authModule
 decl_stmt|;
+DECL|field|groupsMigration
+specifier|private
+specifier|final
+name|GroupsMigration
+name|groupsMigration
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritGlobalModule (@erritServerConfig Config cfg, AuthModule authModule)
+DECL|method|GerritGlobalModule ( @erritServerConfig Config cfg, AuthModule authModule, GroupsMigration groupsMigration)
 name|GerritGlobalModule
 parameter_list|(
 annotation|@
@@ -3022,6 +3044,9 @@ name|cfg
 parameter_list|,
 name|AuthModule
 name|authModule
+parameter_list|,
+name|GroupsMigration
+name|groupsMigration
 parameter_list|)
 block|{
 name|this
@@ -3035,6 +3060,12 @@ operator|.
 name|authModule
 operator|=
 name|authModule
+expr_stmt|;
+name|this
+operator|.
+name|groupsMigration
+operator|=
+name|groupsMigration
 expr_stmt|;
 block|}
 annotation|@
@@ -3825,7 +3856,9 @@ operator|.
 name|group
 operator|.
 name|Module
-argument_list|()
+argument_list|(
+name|groupsMigration
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|install
