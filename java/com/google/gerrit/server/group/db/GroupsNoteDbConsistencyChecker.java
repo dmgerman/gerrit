@@ -1783,6 +1783,29 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|logFailToLoadFromGroupRefAsWarning (AccountGroup.UUID uuid)
+specifier|public
+specifier|static
+name|void
+name|logFailToLoadFromGroupRefAsWarning
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+block|{
+name|logConsistencyProblem
+argument_list|(
+name|warning
+argument_list|(
+literal|"Group with UUID %s from group name notes failed to load from group ref"
+argument_list|,
+name|uuid
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
