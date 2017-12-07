@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -331,6 +347,9 @@ name|String
 name|emailAddress
 parameter_list|)
 block|{
+name|checkEmailRegistrationToken
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|String
@@ -405,6 +424,9 @@ parameter_list|)
 throws|throws
 name|InvalidTokenException
 block|{
+name|checkEmailRegistrationToken
+argument_list|()
+expr_stmt|;
 name|ValidToken
 name|token
 decl_stmt|;
@@ -570,6 +592,22 @@ argument_list|,
 name|newEmail
 argument_list|)
 return|;
+block|}
+DECL|method|checkEmailRegistrationToken ()
+specifier|private
+name|void
+name|checkEmailRegistrationToken
+parameter_list|()
+block|{
+name|checkState
+argument_list|(
+name|emailRegistrationToken
+operator|!=
+literal|null
+argument_list|,
+literal|"'auth.registerEmailPrivateKey' not set in gerrit.config"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
