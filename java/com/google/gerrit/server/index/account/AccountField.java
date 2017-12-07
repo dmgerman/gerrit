@@ -240,6 +240,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|GlobalCapability
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|FieldDef
@@ -436,7 +452,7 @@ name|get
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**    * External IDs.    *    *<p>This field includes secondary emails. Use this field only if the current user is allowed to    * see secondary emails (requires the {@link GlobalCapability.MODIFY_ACCOUNT} capability).    */
+comment|/**    * External IDs.    *    *<p>This field includes secondary emails. Use this field only if the current user is allowed to    * see secondary emails (requires the {@link GlobalCapability#MODIFY_ACCOUNT} capability).    */
 DECL|field|EXTERNAL_ID
 specifier|public
 specifier|static
@@ -482,7 +498,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/**    * Fuzzy prefix match on name and email parts.    *    *<p>This field includes parts from the secondary emails. Use this field only if the current user    * is allowed to see secondary emails (requires the {@link GlobalCapability.MODIFY_ACCOUNT}    * capability).    *    *<p>Use the {@link AccountField#NAME_PART_NO_SECONDARY_EMAIL} if the current user can't see    * secondary emails.    */
+comment|/**    * Fuzzy prefix match on name and email parts.    *    *<p>This field includes parts from the secondary emails. Use this field only if the current user    * is allowed to see secondary emails (requires the {@link GlobalCapability#MODIFY_ACCOUNT}    * capability).    *    *<p>Use the {@link AccountField#NAME_PART_NO_SECONDARY_EMAIL} if the current user can't see    * secondary emails.    */
 DECL|field|NAME_PART
 specifier|public
 specifier|static
