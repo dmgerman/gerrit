@@ -78,6 +78,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkState
 import|;
 end_import
@@ -514,7 +530,10 @@ name|this
 operator|.
 name|accountId
 operator|=
+name|checkNotNull
+argument_list|(
 name|accountId
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -1198,7 +1217,12 @@ name|checkState
 argument_list|(
 name|isLoaded
 argument_list|,
-literal|"account not loaded yet"
+literal|"Account %s not loaded yet"
+argument_list|,
+name|accountId
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
