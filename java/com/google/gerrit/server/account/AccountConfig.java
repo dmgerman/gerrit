@@ -559,7 +559,9 @@ return|return
 name|ref
 return|;
 block|}
-comment|/**    * Get the loaded account.    *    * @return loaded account.    * @throws IllegalStateException if the account was not loaded yet    */
+comment|/**    * Get the loaded account.    *    * @return the loaded account, {@code null} if load didn't find the account because it doesn't    *     exist    * @throws IllegalStateException if the account was not loaded yet    */
+annotation|@
+name|Nullable
 DECL|method|getAccount ()
 specifier|public
 name|Account
