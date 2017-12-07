@@ -2504,6 +2504,18 @@ name|description
 argument_list|)
 expr_stmt|;
 try|try
+init|(
+name|ProjectResetter
+name|resetter
+init|=
+name|resetProjects
+argument_list|(
+name|projectResetter
+operator|.
+name|builder
+argument_list|()
+argument_list|)
+init|)
 block|{
 name|base
 operator|.
@@ -2712,6 +2724,17 @@ name|Inject
 specifier|protected
 name|ProjectCache
 name|projectCache
+decl_stmt|;
+DECL|field|projectResetter
+annotation|@
+name|Inject
+specifier|protected
+name|ProjectResetter
+operator|.
+name|Builder
+operator|.
+name|Factory
+name|projectResetter
 decl_stmt|;
 DECL|field|queryProvider
 annotation|@
@@ -3058,6 +3081,72 @@ operator|.
 name|cleanup
 argument_list|()
 expr_stmt|;
+block|}
+comment|/** Controls which project and branches should be reset after each test case. */
+DECL|method|resetProjects (ProjectResetter.Builder resetter)
+specifier|protected
+name|ProjectResetter
+name|resetProjects
+parameter_list|(
+name|ProjectResetter
+operator|.
+name|Builder
+name|resetter
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|resetter
+comment|// Don't reset all refs so that refs/sequences/changes is not touched and change IDs are
+comment|// not reused.
+operator|.
+name|reset
+argument_list|(
+name|allProjects
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_CONFIG
+argument_list|)
+comment|// Don't reset group branches since this would make the groups inconsistent between
+comment|// ReviewDb and NoteDb.
+comment|// Don't reset refs/sequences/accounts so that account IDs are not reused.
+operator|.
+name|reset
+argument_list|(
+name|allUsers
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_CONFIG
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_USERS
+operator|+
+literal|"*"
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_EXTERNAL_IDS
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_STARRED_CHANGES
+operator|+
+literal|"*"
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_DRAFT_COMMENTS
+operator|+
+literal|"*"
+argument_list|)
+operator|.
+name|build
+argument_list|()
+return|;
 block|}
 DECL|method|submitWholeTopicEnabledConfig ()
 specifier|protected

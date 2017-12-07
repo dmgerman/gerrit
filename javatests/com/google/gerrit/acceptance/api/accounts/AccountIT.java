@@ -592,20 +592,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|Sandboxed
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
 name|TestAccount
 import|;
 end_import
@@ -6653,8 +6639,6 @@ decl_stmt|;
 name|AccountInfo
 name|info
 decl_stmt|;
-try|try
-block|{
 for|for
 control|(
 name|String
@@ -6706,9 +6690,6 @@ name|admin
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
 name|gApi
 operator|.
 name|accounts
@@ -6750,11 +6731,8 @@ name|admin
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|fetchUserBranch ()
 specifier|public
 name|void
@@ -8609,8 +8587,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|pushAccountConfigToUserBranchForReviewDeactivateOtherAccount ()
 specifier|public
 name|void
@@ -10237,8 +10213,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|pushAccountConfigToUserBranchDeactivateOtherAccount ()
 specifier|public
 name|void
@@ -10445,8 +10419,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|cannotCreateUserBranch ()
 specifier|public
 name|void
@@ -10587,8 +10559,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|createUserBranchWithAccessDatabaseCapability ()
 specifier|public
 name|void
@@ -10718,8 +10688,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|cannotCreateNonUserBranchUnderRefsUsersWithAccessDatabaseCapability ()
 specifier|public
 name|void
@@ -10859,8 +10827,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|createDefaultUserBranch ()
 specifier|public
 name|void
@@ -10991,8 +10957,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|cannotDeleteUserBranch ()
 specifier|public
 name|void
@@ -11129,8 +11093,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|deleteUserBranchWithAccessDatabaseCapability ()
 specifier|public
 name|void
@@ -12581,8 +12543,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|checkConsistency ()
 specifier|public
 name|void

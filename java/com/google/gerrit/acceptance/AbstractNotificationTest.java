@@ -218,6 +218,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|ProjectResetter
+operator|.
+name|Builder
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|Nullable
@@ -649,6 +665,28 @@ argument_list|(
 name|conf
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|resetProjects (Builder resetter)
+specifier|protected
+name|ProjectResetter
+name|resetProjects
+parameter_list|(
+name|Builder
+name|resetter
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// Don't reset anything so that stagedUsers can be cached across all tests.
+comment|// Without this caching these tests become much too slow.
+return|return
+name|resetter
+operator|.
+name|build
+argument_list|()
+return|;
 block|}
 DECL|method|assertThat (FakeEmailSender sender)
 specifier|protected
