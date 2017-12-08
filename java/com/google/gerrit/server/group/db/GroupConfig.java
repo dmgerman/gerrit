@@ -1360,9 +1360,15 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+comment|// Commit timestamps are internally truncated to seconds. To return the correct 'createdOn' time
+comment|// for new groups, we explicitly need to truncate the timestamp here.
 name|Timestamp
 name|commitTimestamp
 init|=
+name|TimeUtil
+operator|.
+name|truncateToSecond
+argument_list|(
 name|groupUpdate
 operator|.
 name|flatMap
@@ -1377,6 +1383,7 @@ argument_list|(
 name|TimeUtil
 operator|::
 name|nowTs
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|commit
