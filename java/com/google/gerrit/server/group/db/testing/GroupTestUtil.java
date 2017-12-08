@@ -770,6 +770,9 @@ name|rw
 argument_list|)
 decl_stmt|;
 name|TestRepository
+argument_list|<
+name|Repository
+argument_list|>
 operator|.
 name|CommitBuilder
 name|builder
