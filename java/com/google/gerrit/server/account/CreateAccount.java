@@ -1393,10 +1393,9 @@ name|insert
 argument_list|(
 name|id
 argument_list|,
-name|a
+name|u
 lambda|->
-block|{
-name|a
+name|u
 operator|.
 name|setFullName
 argument_list|(
@@ -1404,8 +1403,6 @@ name|input
 operator|.
 name|name
 argument_list|)
-expr_stmt|;
-name|a
 operator|.
 name|setPreferredEmail
 argument_list|(
@@ -1413,8 +1410,6 @@ name|input
 operator|.
 name|email
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 for|for
