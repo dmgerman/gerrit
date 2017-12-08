@@ -1210,44 +1210,6 @@ return|return
 name|account
 return|;
 block|}
-comment|/**    * Replaces the account.    *    *<p>The existing account with the same account ID is overwritten by the given account. Choosing    * to overwrite an account means that any updates that were done to the account by a racing    * request after the account was read are lost. Updates are also lost if the account was read from    * a stale account index. This is why using {@link    * #update(com.google.gerrit.reviewdb.client.Account.Id, Consumer)} to do an atomic update is    * always preferred.    *    *<p>Changing the registration date of an account is not supported.    *    * @param account the new account    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    * @see #update(com.google.gerrit.reviewdb.client.Account.Id, Consumer)    */
-DECL|method|replace (Account account)
-specifier|public
-name|void
-name|replace
-parameter_list|(
-name|Account
-name|account
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|ConfigInvalidException
-block|{
-name|AccountConfig
-name|accountConfig
-init|=
-name|read
-argument_list|(
-name|account
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|accountConfig
-operator|.
-name|setAccount
-argument_list|(
-name|account
-argument_list|)
-expr_stmt|;
-name|commit
-argument_list|(
-name|accountConfig
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**    * Deletes the account.    *    * @param account the account that should be deleted    * @throws IOException if updating the user branch fails    */
 DECL|method|delete (Account account)
 specifier|public
