@@ -4559,13 +4559,13 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|int
-name|maxLimit
+name|maxTerms
 init|=
 name|args
 operator|.
 name|indexConfig
 operator|.
-name|maxLimit
+name|maxTerms
 argument_list|()
 decl_stmt|;
 if|if
@@ -4575,7 +4575,7 @@ operator|.
 name|size
 argument_list|()
 operator|>
-name|maxLimit
+name|maxTerms
 condition|)
 block|{
 comment|// limit the number of query terms otherwise Gerrit will barf
@@ -4591,7 +4591,7 @@ name|limit
 argument_list|(
 name|allMembers
 argument_list|,
-name|maxLimit
+name|maxTerms
 argument_list|)
 argument_list|)
 expr_stmt|;
