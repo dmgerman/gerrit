@@ -2235,6 +2235,7 @@ comment|// polygerrit-ui/app/elements/change-list/gr-dashboard-view/gr-dashboard
 DECL|field|DASHBOARD_WORK_IN_PROGRESS_QUERY
 specifier|protected
 specifier|static
+specifier|final
 name|String
 name|DASHBOARD_WORK_IN_PROGRESS_QUERY
 init|=
@@ -2243,6 +2244,7 @@ decl_stmt|;
 DECL|field|DASHBOARD_OUTGOING_QUERY
 specifier|protected
 specifier|static
+specifier|final
 name|String
 name|DASHBOARD_OUTGOING_QUERY
 init|=
@@ -2251,6 +2253,7 @@ decl_stmt|;
 DECL|field|DASHBOARD_INCOMING_QUERY
 specifier|protected
 specifier|static
+specifier|final
 name|String
 name|DASHBOARD_INCOMING_QUERY
 init|=
@@ -2259,6 +2262,7 @@ decl_stmt|;
 DECL|field|DASHBOARD_RECENTLY_CLOSED_QUERY
 specifier|protected
 specifier|static
+specifier|final
 name|String
 name|DASHBOARD_RECENTLY_CLOSED_QUERY
 init|=
