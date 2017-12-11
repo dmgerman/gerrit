@@ -1360,6 +1360,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|MetaDataUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|ProjectConfig
 import|;
 end_import
@@ -2278,6 +2294,18 @@ name|RetryHelper
 operator|.
 name|Metrics
 name|retryMetrics
+decl_stmt|;
+DECL|field|metaDataUpdateInternalFactory
+annotation|@
+name|Inject
+specifier|private
+name|Provider
+argument_list|<
+name|MetaDataUpdate
+operator|.
+name|InternalFactory
+argument_list|>
+name|metaDataUpdateInternalFactory
 decl_stmt|;
 annotation|@
 name|Inject
@@ -13690,6 +13718,14 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
+name|PersonIdent
+name|ident
+init|=
+name|serverIdent
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 name|AccountsUpdate
 name|update
 init|=
@@ -13706,19 +13742,7 @@ name|allUsers
 argument_list|,
 name|emailValidator
 argument_list|,
-name|serverIdent
-operator|.
-name|get
-argument_list|()
-argument_list|,
-parameter_list|()
-lambda|->
-name|metaDataUpdateFactory
-operator|.
-name|create
-argument_list|(
-name|allUsers
-argument_list|)
+name|metaDataUpdateInternalFactory
 argument_list|,
 operator|new
 name|RetryHelper
@@ -13743,12 +13767,23 @@ name|noSleepBlockStrategy
 argument_list|)
 argument_list|)
 argument_list|,
+name|ident
+argument_list|,
+name|ident
+argument_list|,
 parameter_list|()
 lambda|->
 block|{
-lambda|if (!doneBgUpdate.getAndSet(true
+if|if
+condition|(
+operator|!
+name|doneBgUpdate
+operator|.
+name|getAndSet
+argument_list|(
+literal|true
 argument_list|)
-init|)
+condition|)
 block|{
 try|try
 block|{
@@ -13788,11 +13823,8 @@ comment|// Ignore, the successful update of the account is asserted later
 block|}
 block|}
 block|}
-block|)
-class|;
-end_class
-
-begin_expr_stmt
+argument_list|)
+decl_stmt|;
 name|assertThat
 argument_list|(
 name|doneBgUpdate
@@ -13804,9 +13836,6 @@ operator|.
 name|isFalse
 argument_list|()
 expr_stmt|;
-end_expr_stmt
-
-begin_decl_stmt
 name|AccountInfo
 name|accountInfo
 init|=
@@ -13828,9 +13857,6 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-end_decl_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|accountInfo
@@ -13841,9 +13867,6 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|accountInfo
@@ -13856,9 +13879,6 @@ argument_list|(
 name|fullName
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_decl_stmt
 name|Account
 name|updatedAccount
 init|=
@@ -13880,9 +13900,6 @@ name|fullName
 argument_list|)
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|doneBgUpdate
@@ -13894,9 +13911,6 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|updatedAccount
@@ -13910,9 +13924,6 @@ argument_list|(
 name|status
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|updatedAccount
@@ -13926,9 +13937,6 @@ argument_list|(
 name|fullName
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|accountInfo
 operator|=
 name|gApi
@@ -13949,9 +13957,6 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|accountInfo
@@ -13964,9 +13969,6 @@ argument_list|(
 name|status
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|accountInfo
@@ -13979,10 +13981,8 @@ argument_list|(
 name|fullName
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_function
-unit|}    @
+block|}
+annotation|@
 name|Test
 DECL|method|failAfterRetryerGivesUp ()
 specifier|public
@@ -14023,6 +14023,14 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|PersonIdent
+name|ident
+init|=
+name|serverIdent
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 name|AccountsUpdate
 name|update
 init|=
@@ -14039,19 +14047,7 @@ name|allUsers
 argument_list|,
 name|emailValidator
 argument_list|,
-name|serverIdent
-operator|.
-name|get
-argument_list|()
-argument_list|,
-parameter_list|()
-lambda|->
-name|metaDataUpdateFactory
-operator|.
-name|create
-argument_list|(
-name|allUsers
-argument_list|)
+name|metaDataUpdateInternalFactory
 argument_list|,
 operator|new
 name|RetryHelper
@@ -14089,10 +14085,14 @@ name|noSleepBlockStrategy
 argument_list|)
 argument_list|)
 argument_list|,
+name|ident
+argument_list|,
+name|ident
+argument_list|,
 parameter_list|()
 lambda|->
 block|{
-lambda|try
+try|try
 block|{
 name|accountsUpdate
 operator|.
@@ -14139,14 +14139,8 @@ block|{
 comment|// Ignore, the expected exception is asserted later
 block|}
 block|}
-end_function
-
-begin_empty_stmt
-unit|)
-empty_stmt|;
-end_empty_stmt
-
-begin_expr_stmt
+argument_list|)
+decl_stmt|;
 name|assertThat
 argument_list|(
 name|bgCounter
@@ -14160,9 +14154,6 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_decl_stmt
 name|AccountInfo
 name|accountInfo
 init|=
@@ -14184,9 +14175,6 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-end_decl_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|accountInfo
@@ -14197,9 +14185,6 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|accountInfo
@@ -14212,9 +14197,6 @@ argument_list|(
 name|fullName
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_try
 try|try
 block|{
 name|update
@@ -14249,9 +14231,6 @@ parameter_list|)
 block|{
 comment|// Ignore, expected
 block|}
-end_try
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|bgCounter
@@ -14268,9 +14247,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_decl_stmt
 name|Account
 name|updatedAccount
 init|=
@@ -14283,9 +14259,6 @@ operator|.
 name|id
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|updatedAccount
@@ -14304,9 +14277,6 @@ name|status
 argument_list|)
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|updatedAccount
@@ -14322,9 +14292,6 @@ operator|.
 name|fullName
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|accountInfo
 operator|=
 name|gApi
@@ -14345,9 +14312,6 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|accountInfo
@@ -14365,9 +14329,6 @@ name|status
 argument_list|)
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|assertThat
 argument_list|(
 name|accountInfo
@@ -14382,10 +14343,8 @@ operator|.
 name|fullName
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_function
-unit|}    @
+block|}
+annotation|@
 name|Test
 DECL|method|stalenessChecker ()
 specifier|public
@@ -14807,9 +14766,6 @@ name|accountId
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|assertStaleAccountAndReindex (Account.Id accountId)
 specifier|private
 name|void
@@ -14868,9 +14824,6 @@ name|isFalse
 argument_list|()
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|assertGroups (String user, List<String> expected)
 specifier|private
 name|void
@@ -14936,9 +14889,6 @@ name|expected
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|assertSequenceNumbers (List<SshKeyInfo> sshKeys)
 specifier|private
 name|void
@@ -14979,9 +14929,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|getOnlyKeyFromStore (TestKey key)
 specifier|private
 name|PGPPublicKey
@@ -15044,9 +14991,6 @@ argument_list|()
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|armor (PGPPublicKey key)
 specifier|private
 specifier|static
@@ -15101,9 +15045,6 @@ name|UTF_8
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|assertIteratorSize (int size, Iterator<?> it)
 specifier|private
 specifier|static
@@ -15144,9 +15085,6 @@ name|size
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|assertKeyMapContains (TestKey expected, Map<String, GpgKeyInfo> actualMap)
 specifier|private
 specifier|static
@@ -15213,9 +15151,6 @@ name|actual
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|assertKeys (TestKey... expectedKeys)
 specifier|private
 name|void
@@ -15239,9 +15174,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|assertKeys (Iterable<TestKey> expectedKeys)
 specifier|private
 name|void
@@ -15500,9 +15432,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|assertKeyEquals (TestKey expected, GpgKeyInfo actual)
 specifier|private
 specifier|static
@@ -15649,9 +15578,6 @@ name|isEmpty
 argument_list|()
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|addExternalIdEmail (TestAccount account, String email)
 specifier|private
 name|void
@@ -15708,9 +15634,6 @@ name|account
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|addGpgKey (String armored)
 specifier|private
 name|Map
@@ -15781,9 +15704,6 @@ return|return
 name|gpgKeys
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|assertUser (AccountInfo info, TestAccount account)
 specifier|private
 name|void
@@ -15808,9 +15728,6 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|assertUser (AccountInfo info, TestAccount account, @Nullable String expectedStatus)
 specifier|private
 name|void
@@ -15885,9 +15802,6 @@ name|expectedStatus
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|getEmails ()
 specifier|private
 name|Set
@@ -15930,9 +15844,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|assertEmail (Set<Account.Id> accounts, TestAccount expectedAccount)
 specifier|private
 name|void
@@ -15979,9 +15890,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|getAccountConfig (TestRepository<?> allUsersRepo)
 specifier|private
 name|Config
@@ -16081,13 +15989,7 @@ return|return
 name|ac
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/** Checks if an account is indexed the correct number of times. */
-end_comment
-
-begin_class
 DECL|class|AccountIndexedCounter
 specifier|private
 specifier|static
@@ -16294,9 +16196,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|RefUpdateCounter
 specifier|private
 specifier|static
@@ -16538,8 +16437,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 end_class
 
-unit|}
 end_unit
 
