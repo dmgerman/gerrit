@@ -422,9 +422,17 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|setPrivateOpFactory
+specifier|private
+specifier|final
+name|SetPrivateOp
+operator|.
+name|Factory
+name|setPrivateOpFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostPrivate ( Provider<ReviewDb> dbProvider, RetryHelper retryHelper, ChangeMessagesUtil cmUtil, PermissionBackend permissionBackend)
+DECL|method|PostPrivate ( Provider<ReviewDb> dbProvider, RetryHelper retryHelper, ChangeMessagesUtil cmUtil, PermissionBackend permissionBackend, SetPrivateOp.Factory setPrivateOpFactory)
 name|PostPrivate
 parameter_list|(
 name|Provider
@@ -441,6 +449,11 @@ name|cmUtil
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|SetPrivateOp
+operator|.
+name|Factory
+name|setPrivateOpFactory
 parameter_list|)
 block|{
 name|super
@@ -465,6 +478,12 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
+name|setPrivateOpFactory
+operator|=
+name|setPrivateOpFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -538,8 +557,9 @@ block|}
 name|SetPrivateOp
 name|op
 init|=
-operator|new
-name|SetPrivateOp
+name|setPrivateOpFactory
+operator|.
+name|create
 argument_list|(
 name|cmUtil
 argument_list|,
