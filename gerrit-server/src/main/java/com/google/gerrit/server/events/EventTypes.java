@@ -283,6 +283,17 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|register
+argument_list|(
+name|WorkInProgressStateChangedEvent
+operator|.
+name|TYPE
+argument_list|,
+name|WorkInProgressStateChangedEvent
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**    * Register an event type and associated class.    *    * @param eventType The event type to register.    * @param eventClass The event class to register.    */
 DECL|method|register (String eventType, Class<? extends Event> eventClass)
