@@ -18020,6 +18020,8 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|OrmException
+decl||
 name|IOException
 decl||
 name|ConfigInvalidException

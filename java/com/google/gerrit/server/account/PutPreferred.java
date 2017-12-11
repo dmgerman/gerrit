@@ -499,6 +499,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|OrmException
 block|{
 name|AtomicBoolean
 name|alreadyPreferred
