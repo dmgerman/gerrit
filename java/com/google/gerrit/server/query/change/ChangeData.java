@@ -5701,6 +5701,8 @@ operator|=
 name|mergeable
 expr_stmt|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|isMergeable ()
 specifier|public
 name|Boolean
