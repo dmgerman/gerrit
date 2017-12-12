@@ -9518,7 +9518,7 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
-comment|//abandon the change
+comment|// abandon the change
 name|String
 name|changeId
 init|=
@@ -14378,47 +14378,6 @@ name|expectedMessage
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-DECL|method|enableCreateNewChangeForAllNotInTarget ()
-specifier|private
-name|void
-name|enableCreateNewChangeForAllNotInTarget
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|ProjectConfig
-name|config
-init|=
-name|projectCache
-operator|.
-name|checkedGet
-argument_list|(
-name|project
-argument_list|)
-operator|.
-name|getConfig
-argument_list|()
-decl_stmt|;
-name|config
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|setCreateNewChangeForAllNotInTarget
-argument_list|(
-name|InheritableBoolean
-operator|.
-name|TRUE
-argument_list|)
-expr_stmt|;
-name|saveProjectConfig
-argument_list|(
-name|project
-argument_list|,
-name|config
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|grantSkipValidation (Project.NameKey project, String ref, AccountGroup.UUID groupUuid)
 specifier|private
