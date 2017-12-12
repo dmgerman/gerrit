@@ -364,6 +364,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|function
 operator|.
 name|Consumer
@@ -1124,6 +1134,8 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param accountId ID of the account    * @param consumers consumers to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+annotation|@
+name|Nullable
 DECL|method|update (Account.Id accountId, List<Consumer<Account>> consumers)
 specifier|public
 name|Account
@@ -1168,19 +1180,23 @@ argument_list|(
 name|accountId
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
 name|Account
+argument_list|>
 name|account
 init|=
 name|accountConfig
 operator|.
-name|getAccount
+name|getLoadedAccount
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
 name|account
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|consumers
@@ -1197,6 +1213,9 @@ operator|.
 name|accept
 argument_list|(
 name|account
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1208,6 +1227,11 @@ expr_stmt|;
 block|}
 return|return
 name|account
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 return|;
 block|}
 comment|/**    * Deletes the account.    *    * @param account the account that should be deleted    * @throws IOException if updating the user branch fails    */

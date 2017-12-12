@@ -3075,7 +3075,10 @@ argument_list|)
 expr_stmt|;
 name|accountConfig
 operator|.
-name|getAccount
+name|getLoadedAccount
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|setFullName
