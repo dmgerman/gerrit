@@ -67,6 +67,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|time
+operator|.
+name|ZoneId
+operator|.
+name|systemDefault
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -370,7 +382,10 @@ argument_list|,
 name|ZonedDateTime
 operator|.
 name|now
+argument_list|(
+name|systemDefault
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -409,7 +424,10 @@ argument_list|,
 name|ZonedDateTime
 operator|.
 name|now
+argument_list|(
+name|systemDefault
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
