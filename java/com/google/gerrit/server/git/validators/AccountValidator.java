@@ -435,6 +435,32 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+if|if
+condition|(
+name|newAccount
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"account '%s' does not exist"
+argument_list|,
+name|accountId
+operator|.
+name|get
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
+block|}
 name|List
 argument_list|<
 name|String
@@ -553,6 +579,8 @@ name|messages
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|loadAccount (Account.Id accountId, RevWalk rw, ObjectId commit)
 specifier|private
 name|Account
