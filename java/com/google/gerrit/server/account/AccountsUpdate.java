@@ -1181,12 +1181,17 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|account
 operator|.
 name|isPresent
 argument_list|()
 condition|)
 block|{
+return|return
+literal|null
+return|;
+block|}
 name|consumers
 operator|.
 name|stream
@@ -1212,14 +1217,11 @@ argument_list|(
 name|accountConfig
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|account
 operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
+name|get
+argument_list|()
 return|;
 block|}
 comment|/**    * Deletes the account.    *    * @param account the account that should be deleted    * @throws IOException if updating the user branch fails    */
