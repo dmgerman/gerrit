@@ -202,22 +202,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|CommitUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|group
 operator|.
 name|InternalGroup
@@ -255,20 +239,6 @@ operator|.
 name|lib
 operator|.
 name|PersonIdent
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevCommit
 import|;
 end_import
 
@@ -555,17 +525,6 @@ name|uuid
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-literal|"Update group\n\nAdd: Account 100002<100002@server-id>"
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
-argument_list|)
-expr_stmt|;
 name|assertThat
 argument_list|(
 name|auditLogReader
@@ -599,17 +558,6 @@ name|of
 argument_list|(
 name|id
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-literal|"Update group\n\nRemove: Account 100002<100002@server-id>"
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|expAudit2
@@ -795,23 +743,6 @@ name|uuid
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-literal|"Update group\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Add: Account 100002<100002@server-id>\n"
-operator|+
-literal|"Add: Account 100003<100003@server-id>"
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
-argument_list|)
-expr_stmt|;
 name|assertThat
 argument_list|(
 name|auditLogReader
@@ -899,24 +830,6 @@ name|subgroupUuid
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Update group\n\nAdd-group: Group<%s>"
-argument_list|,
-name|subgroupUuid
-argument_list|)
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
-argument_list|)
-expr_stmt|;
 name|AccountGroupByIdAud
 name|expAudit
 init|=
@@ -964,24 +877,6 @@ name|of
 argument_list|(
 name|subgroupUuid
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Update group\n\nRemove-group: Group<%s>"
-argument_list|,
-name|subgroupUuid
-argument_list|)
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|expAudit
@@ -1096,37 +991,6 @@ name|subgroupUuid1
 argument_list|,
 name|subgroupUuid2
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-literal|"Update group\n"
-operator|+
-literal|"\n"
-operator|+
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Add-group: Group<%s>\n"
-argument_list|,
-name|subgroupUuid1
-argument_list|)
-operator|+
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Add-group: Group<%s>"
-argument_list|,
-name|subgroupUuid2
-argument_list|)
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|AccountGroupByIdAud
@@ -1380,41 +1244,6 @@ name|id2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-literal|"Update group\n"
-operator|+
-literal|"\n"
-operator|+
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Add: Account %s<%s@server-id>\n"
-argument_list|,
-name|id1
-argument_list|,
-name|id1
-argument_list|)
-operator|+
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Add: Account %s<%s@server-id>"
-argument_list|,
-name|id2
-argument_list|,
-name|id2
-argument_list|)
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
-argument_list|)
-expr_stmt|;
 name|AccountGroupMemberAudit
 name|expMemberAudit1
 init|=
@@ -1486,24 +1315,6 @@ name|subgroupUuid1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Update group\n\nAdd-group: Group<%s>"
-argument_list|,
-name|subgroupUuid1
-argument_list|)
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
-argument_list|)
-expr_stmt|;
 name|AccountGroupByIdAud
 name|expGroupAudit1
 init|=
@@ -1552,26 +1363,6 @@ name|of
 argument_list|(
 name|id2
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Update group\n\nRemove: Account %s<%s@server-id>"
-argument_list|,
-name|id2
-argument_list|,
-name|id2
-argument_list|)
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|expMemberAudit2
@@ -1623,37 +1414,6 @@ name|subgroupUuid2
 argument_list|,
 name|subgroupUuid3
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-literal|"Update group\n"
-operator|+
-literal|"\n"
-operator|+
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Add-group: Group<%s>\n"
-argument_list|,
-name|subgroupUuid2
-argument_list|)
-operator|+
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Add-group: Group<%s>"
-argument_list|,
-name|subgroupUuid3
-argument_list|)
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|AccountGroupByIdAud
@@ -1735,41 +1495,6 @@ name|id3
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-literal|"Update group\n"
-operator|+
-literal|"\n"
-operator|+
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Add: Account %s<%s@server-id>\n"
-argument_list|,
-name|id2
-argument_list|,
-name|id2
-argument_list|)
-operator|+
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Add: Account %s<%s@server-id>"
-argument_list|,
-name|id3
-argument_list|,
-name|id3
-argument_list|)
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
-argument_list|)
-expr_stmt|;
 name|AccountGroupMemberAudit
 name|expMemberAudit4
 init|=
@@ -1845,37 +1570,6 @@ name|subgroupUuid1
 argument_list|,
 name|subgroupUuid3
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTipCommit
-argument_list|(
-name|uuid
-argument_list|,
-literal|"Update group\n"
-operator|+
-literal|"\n"
-operator|+
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Remove-group: Group<%s>\n"
-argument_list|,
-name|subgroupUuid1
-argument_list|)
-operator|+
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Remove-group: Group<%s>"
-argument_list|,
-name|subgroupUuid3
-argument_list|)
-argument_list|,
-literal|"Account 100001"
-argument_list|,
-literal|"100001@server-id"
 argument_list|)
 expr_stmt|;
 name|expGroupAudit1
@@ -2150,9 +1844,6 @@ name|getAuditLogFormatter
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|RevCommit
-name|commit
-init|=
 name|groupConfig
 operator|.
 name|commit
@@ -2161,13 +1852,6 @@ name|createMetaDataUpdate
 argument_list|(
 name|authorIdent
 argument_list|)
-argument_list|)
-decl_stmt|;
-name|assertCreateGroup
-argument_list|(
-name|authorIdent
-argument_list|,
-name|commit
 argument_list|)
 expr_stmt|;
 return|return
@@ -2188,101 +1872,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|assertCreateGroup (PersonIdent authorIdent, RevCommit commit)
-specifier|private
-name|void
-name|assertCreateGroup
-parameter_list|(
-name|PersonIdent
-name|authorIdent
-parameter_list|,
-name|RevCommit
-name|commit
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-if|if
-condition|(
-name|authorIdent
-operator|.
-name|equals
-argument_list|(
-name|serverIdent
-argument_list|)
-condition|)
-block|{
-name|assertServerCommit
-argument_list|(
-name|CommitUtil
-operator|.
-name|toCommitInfo
-argument_list|(
-name|commit
-argument_list|)
-argument_list|,
-literal|"Create group"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|String
-name|name
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Account %s"
-argument_list|,
-name|userId
-argument_list|)
-decl_stmt|;
-name|String
-name|email
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%s@%s"
-argument_list|,
-name|userId
-argument_list|,
-name|SERVER_ID
-argument_list|)
-decl_stmt|;
-name|assertCommit
-argument_list|(
-name|CommitUtil
-operator|.
-name|toCommitInfo
-argument_list|(
-name|commit
-argument_list|)
-argument_list|,
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Create group\n\nAdd: %s<%s>"
-argument_list|,
-name|name
-argument_list|,
-name|email
-argument_list|)
-argument_list|,
-name|name
-argument_list|,
-name|email
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 DECL|method|updateGroup (AccountGroup.UUID uuid, InternalGroupUpdate groupUpdate)
 specifier|private
-name|InternalGroup
+name|void
 name|updateGroup
 parameter_list|(
 name|AccountGroup
@@ -2328,27 +1920,10 @@ name|userIdent
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-name|groupConfig
-operator|.
-name|getLoadedGroup
-argument_list|()
-operator|.
-name|orElseThrow
-argument_list|(
-parameter_list|()
-lambda|->
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"updated group failed"
-argument_list|)
-argument_list|)
-return|;
 block|}
 DECL|method|addMembers (AccountGroup.UUID groupUuid, Set<Account.Id> ids)
 specifier|private
-name|InternalGroup
+name|void
 name|addMembers
 parameter_list|(
 name|AccountGroup
@@ -2392,18 +1967,17 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-return|return
 name|updateGroup
 argument_list|(
 name|groupUuid
 argument_list|,
 name|update
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 DECL|method|removeMembers (AccountGroup.UUID groupUuid, Set<Account.Id> ids)
 specifier|private
-name|InternalGroup
+name|void
 name|removeMembers
 parameter_list|(
 name|AccountGroup
@@ -2447,18 +2021,17 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-return|return
 name|updateGroup
 argument_list|(
 name|groupUuid
 argument_list|,
 name|update
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 DECL|method|addSubgroups (AccountGroup.UUID groupUuid, Set<AccountGroup.UUID> uuids)
 specifier|private
-name|InternalGroup
+name|void
 name|addSubgroups
 parameter_list|(
 name|AccountGroup
@@ -2502,18 +2075,17 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-return|return
 name|updateGroup
 argument_list|(
 name|groupUuid
 argument_list|,
 name|update
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 DECL|method|removeSubgroups (AccountGroup.UUID groupUuid, Set<AccountGroup.UUID> uuids)
 specifier|private
-name|InternalGroup
+name|void
 name|removeSubgroups
 parameter_list|(
 name|AccountGroup
@@ -2557,17 +2129,17 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-return|return
 name|updateGroup
 argument_list|(
 name|groupUuid
 argument_list|,
 name|update
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 DECL|method|createExpMemberAudit ( AccountGroup.Id groupId, Account.Id id, Account.Id addedBy, Timestamp addedOn)
 specifier|private
+specifier|static
 name|AccountGroupMemberAudit
 name|createExpMemberAudit
 parameter_list|(
@@ -2612,6 +2184,7 @@ return|;
 block|}
 DECL|method|createExpGroupAudit ( AccountGroup.Id groupId, AccountGroup.UUID uuid, Account.Id addedBy, Timestamp addedOn)
 specifier|private
+specifier|static
 name|AccountGroupByIdAud
 name|createExpGroupAudit
 parameter_list|(
