@@ -1016,24 +1016,6 @@ name|group
 operator|.
 name|db
 operator|.
-name|GroupConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|group
-operator|.
-name|db
-operator|.
 name|Groups
 import|;
 end_import
@@ -7933,11 +7915,9 @@ argument_list|()
 argument_list|,
 name|repo
 argument_list|,
-literal|"Update group config"
+literal|"Update group"
 argument_list|,
-name|GroupConfig
-operator|.
-name|GROUP_CONFIG_FILE
+literal|"arbitraryFile.txt"
 argument_list|,
 literal|"some content"
 argument_list|)
@@ -8054,11 +8034,9 @@ argument_list|()
 argument_list|,
 name|repo
 argument_list|,
-literal|"Update group config"
+literal|"Update group"
 argument_list|,
-name|GroupConfig
-operator|.
-name|GROUP_CONFIG_FILE
+literal|"arbitraryFile.txt"
 argument_list|,
 literal|"some content"
 argument_list|)
