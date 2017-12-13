@@ -1599,6 +1599,13 @@ operator|.
 name|empty
 argument_list|()
 expr_stmt|;
+name|groupUpdate
+operator|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+expr_stmt|;
 return|return
 literal|true
 return|;
