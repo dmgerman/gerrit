@@ -1798,7 +1798,8 @@ operator|.
 name|REQUEST
 argument_list|)
 expr_stmt|;
-comment|// TODO(dborowitz): Use jimfs.
+comment|// TODO(dborowitz): Use Jimfs. The biggest blocker is that JGit does not support Path-based
+comment|// Configs, only FileBasedConfig.
 name|bind
 argument_list|(
 name|Path
