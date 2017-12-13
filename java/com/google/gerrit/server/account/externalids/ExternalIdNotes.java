@@ -2868,7 +2868,8 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Checks that all specified external IDs belong to specified account. If no account is specified    * it is checked that all specified external IDs belong to the same account.    *    * @return the ID of the account to which all specified external IDs belong.    */
-DECL|method|checkSameAccount (Iterable<ExternalId> extIds, @Nullable Account.Id accountId)
+DECL|method|checkSameAccount ( Iterable<ExternalId> extIds, @Nullable Account.Id accountId)
+specifier|public
 specifier|static
 name|Account
 operator|.

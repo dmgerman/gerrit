@@ -689,6 +689,27 @@ parameter_list|()
 throws|throws
 name|OrmDuplicateKeyException
 block|{
+return|return
+name|getNewAccount
+argument_list|(
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**    * Creates a new account.    *    * @return the new account    * @throws OrmDuplicateKeyException if the user branch already exists    */
+DECL|method|getNewAccount (Timestamp registeredOn)
+name|Account
+name|getNewAccount
+parameter_list|(
+name|Timestamp
+name|registeredOn
+parameter_list|)
+throws|throws
+name|OrmDuplicateKeyException
+block|{
 name|checkLoaded
 argument_list|()
 expr_stmt|;
@@ -718,10 +739,7 @@ name|this
 operator|.
 name|registeredOn
 operator|=
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
+name|registeredOn
 expr_stmt|;
 name|this
 operator|.
