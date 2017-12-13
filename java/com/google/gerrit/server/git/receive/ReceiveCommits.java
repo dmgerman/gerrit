@@ -17960,6 +17960,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set Full Name on Receive Commits"
+argument_list|,
 name|user
 operator|.
 name|getAccountId

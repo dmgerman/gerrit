@@ -83,6 +83,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -93,6 +109,20 @@ operator|.
 name|annotations
 operator|.
 name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
 import|;
 end_import
 
@@ -1413,12 +1443,15 @@ operator|=
 name|afterReadRevision
 expr_stmt|;
 block|}
-comment|/**    * Inserts a new account.    *    * @param accountId ID of the new account    * @param init consumer to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws OrmException if creating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
-DECL|method|insert (Account.Id accountId, Consumer<InternalAccountUpdate.Builder> init)
+comment|/**    * Inserts a new account.    *    * @param message commit message for the account creation, must not be {@code null or empty}    * @param accountId ID of the new account    * @param init consumer to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws OrmException if creating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+DECL|method|insert ( String message, Account.Id accountId, Consumer<InternalAccountUpdate.Builder> init)
 specifier|public
 name|Account
 name|insert
 parameter_list|(
+name|String
+name|message
+parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -1442,6 +1475,8 @@ block|{
 return|return
 name|insert
 argument_list|(
+name|message
+argument_list|,
 name|accountId
 argument_list|,
 name|AccountUpdater
@@ -1453,12 +1488,15 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Inserts a new account.    *    * @param accountId ID of the new account    * @param updater updater to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws OrmException if creating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
-DECL|method|insert (Account.Id accountId, AccountUpdater updater)
+comment|/**    * Inserts a new account.    *    * @param message commit message for the account creation, must not be {@code null or empty}    * @param accountId ID of the new account    * @param updater updater to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws OrmException if creating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+DECL|method|insert (String message, Account.Id accountId, AccountUpdater updater)
 specifier|public
 name|Account
 name|insert
 parameter_list|(
+name|String
+name|message
+parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -1533,6 +1571,8 @@ init|=
 operator|new
 name|UpdatedAccount
 argument_list|(
+name|message
+argument_list|,
 name|accountConfig
 argument_list|)
 decl_stmt|;
@@ -1550,12 +1590,15 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param accountId ID of the account    * @param update consumer to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
-DECL|method|update (Account.Id accountId, Consumer<InternalAccountUpdate.Builder> update)
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param update consumer to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+DECL|method|update ( String message, Account.Id accountId, Consumer<InternalAccountUpdate.Builder> update)
 specifier|public
 name|Account
 name|update
 parameter_list|(
+name|String
+name|message
+parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -1579,6 +1622,8 @@ block|{
 return|return
 name|update
 argument_list|(
+name|message
+argument_list|,
 name|accountId
 argument_list|,
 name|AccountUpdater
@@ -1590,14 +1635,17 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param accountId ID of the account    * @param updater updater to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param updater updater to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 annotation|@
 name|Nullable
-DECL|method|update (Account.Id accountId, AccountUpdater updater)
+DECL|method|update (String message, Account.Id accountId, AccountUpdater updater)
 specifier|public
 name|Account
 name|update
 parameter_list|(
+name|String
+name|message
+parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -1691,6 +1739,8 @@ init|=
 operator|new
 name|UpdatedAccount
 argument_list|(
+name|message
+argument_list|,
 name|accountConfig
 argument_list|)
 decl_stmt|;
@@ -2158,6 +2208,11 @@ condition|)
 block|{
 name|commitNewAccountConfig
 argument_list|(
+name|updatedAccount
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|batchRefUpdate
@@ -2173,6 +2228,11 @@ else|else
 block|{
 name|commitAccountConfig
 argument_list|(
+name|updatedAccount
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|batchRefUpdate
@@ -2214,11 +2274,14 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|commitNewAccountConfig ( Repository allUsersRepo, BatchRefUpdate batchRefUpdate, AccountConfig accountConfig)
+DECL|method|commitNewAccountConfig ( String message, Repository allUsersRepo, BatchRefUpdate batchRefUpdate, AccountConfig accountConfig)
 specifier|private
 name|void
 name|commitNewAccountConfig
 parameter_list|(
+name|String
+name|message
+parameter_list|,
 name|Repository
 name|allUsersRepo
 parameter_list|,
@@ -2236,6 +2299,8 @@ comment|// with an empty commit when no account properties are set and hence no 
 comment|// will be created.
 name|commitAccountConfig
 argument_list|(
+name|message
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|batchRefUpdate
@@ -2246,11 +2311,14 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|commitAccountConfig ( Repository allUsersRepo, BatchRefUpdate batchRefUpdate, AccountConfig accountConfig)
+DECL|method|commitAccountConfig ( String message, Repository allUsersRepo, BatchRefUpdate batchRefUpdate, AccountConfig accountConfig)
 specifier|private
 name|void
 name|commitAccountConfig
 parameter_list|(
+name|String
+name|message
+parameter_list|,
 name|Repository
 name|allUsersRepo
 parameter_list|,
@@ -2265,6 +2333,8 @@ name|IOException
 block|{
 name|commitAccountConfig
 argument_list|(
+name|message
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|batchRefUpdate
@@ -2275,11 +2345,14 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|commitAccountConfig ( Repository allUsersRepo, BatchRefUpdate batchRefUpdate, AccountConfig accountConfig, boolean allowEmptyCommit)
+DECL|method|commitAccountConfig ( String message, Repository allUsersRepo, BatchRefUpdate batchRefUpdate, AccountConfig accountConfig, boolean allowEmptyCommit)
 specifier|private
 name|void
 name|commitAccountConfig
 parameter_list|(
+name|String
+name|message
+parameter_list|,
 name|Repository
 name|allUsersRepo
 parameter_list|,
@@ -2302,6 +2375,8 @@ name|md
 init|=
 name|createMetaDataUpdate
 argument_list|(
+name|message
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|batchRefUpdate
@@ -2324,11 +2399,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|createMetaDataUpdate ( Repository allUsersRepo, BatchRefUpdate batchRefUpdate)
+DECL|method|createMetaDataUpdate ( String message, Repository allUsersRepo, BatchRefUpdate batchRefUpdate)
 specifier|private
 name|MetaDataUpdate
 name|createMetaDataUpdate
 parameter_list|(
+name|String
+name|message
+parameter_list|,
 name|Repository
 name|allUsersRepo
 parameter_list|,
@@ -2353,6 +2431,34 @@ argument_list|,
 name|batchRefUpdate
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|message
+operator|.
+name|endsWith
+argument_list|(
+literal|"\n"
+argument_list|)
+condition|)
+block|{
+name|message
+operator|=
+name|message
+operator|+
+literal|"\n"
+expr_stmt|;
+block|}
+name|metaDataUpdate
+operator|.
+name|getCommitBuilder
+argument_list|()
+operator|.
+name|setMessage
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
 name|metaDataUpdate
 operator|.
 name|getCommitBuilder
@@ -2406,6 +2512,12 @@ specifier|static
 class|class
 name|UpdatedAccount
 block|{
+DECL|field|message
+specifier|private
+specifier|final
+name|String
+name|message
+decl_stmt|;
 DECL|field|accountConfig
 specifier|private
 specifier|final
@@ -2417,14 +2529,39 @@ specifier|private
 name|boolean
 name|created
 decl_stmt|;
-DECL|method|UpdatedAccount (AccountConfig accountConfig)
+DECL|method|UpdatedAccount (String message, AccountConfig accountConfig)
 specifier|private
 name|UpdatedAccount
 parameter_list|(
+name|String
+name|message
+parameter_list|,
 name|AccountConfig
 name|accountConfig
 parameter_list|)
 block|{
+name|checkState
+argument_list|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|message
+argument_list|)
+argument_list|,
+literal|"message for account update must be set"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|message
+operator|=
+name|checkNotNull
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|accountConfig
@@ -2435,30 +2572,14 @@ name|accountConfig
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setCreated (boolean created)
+DECL|method|getMessage ()
 specifier|public
-name|void
-name|setCreated
-parameter_list|(
-name|boolean
-name|created
-parameter_list|)
-block|{
-name|this
-operator|.
-name|created
-operator|=
-name|created
-expr_stmt|;
-block|}
-DECL|method|isCreated ()
-specifier|public
-name|boolean
-name|isCreated
+name|String
+name|getMessage
 parameter_list|()
 block|{
 return|return
-name|created
+name|message
 return|;
 block|}
 DECL|method|getAccountConfig ()
@@ -2485,6 +2606,32 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+return|;
+block|}
+DECL|method|setCreated (boolean created)
+specifier|public
+name|void
+name|setCreated
+parameter_list|(
+name|boolean
+name|created
+parameter_list|)
+block|{
+name|this
+operator|.
+name|created
+operator|=
+name|created
+expr_stmt|;
+block|}
+DECL|method|isCreated ()
+specifier|public
+name|boolean
+name|isCreated
+parameter_list|()
+block|{
+return|return
+name|created
 return|;
 block|}
 block|}

@@ -528,6 +528,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set Status via API"
+argument_list|,
 name|user
 operator|.
 name|getAccountId

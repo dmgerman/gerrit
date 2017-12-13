@@ -3012,6 +3012,162 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|commitMessageOnAccountUpdates ()
+specifier|public
+name|void
+name|commitMessageOnAccountUpdates
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|AccountsUpdate
+name|au
+init|=
+name|accountsUpdate
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|Account
+operator|.
+name|Id
+name|accountId
+init|=
+operator|new
+name|Account
+operator|.
+name|Id
+argument_list|(
+name|seq
+operator|.
+name|nextAccountId
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|au
+operator|.
+name|insert
+argument_list|(
+literal|"Create Test Account"
+argument_list|,
+name|accountId
+argument_list|,
+name|u
+lambda|->
+block|{}
+argument_list|)
+expr_stmt|;
+name|assertLastCommitMessageOfUserBranch
+argument_list|(
+name|accountId
+argument_list|,
+literal|"Create Test Account"
+argument_list|)
+expr_stmt|;
+name|au
+operator|.
+name|update
+argument_list|(
+literal|"Set Status"
+argument_list|,
+name|accountId
+argument_list|,
+name|u
+lambda|->
+name|u
+operator|.
+name|setStatus
+argument_list|(
+literal|"Foo"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertLastCommitMessageOfUserBranch
+argument_list|(
+name|accountId
+argument_list|,
+literal|"Set Status"
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|assertLastCommitMessageOfUserBranch (Account.Id accountId, String expectedMessage)
+specifier|private
+name|void
+name|assertLastCommitMessageOfUserBranch
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|,
+name|String
+name|expectedMessage
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+try|try
+init|(
+name|Repository
+name|repo
+init|=
+name|repoManager
+operator|.
+name|openRepository
+argument_list|(
+name|allUsers
+argument_list|)
+init|;
+name|RevWalk
+name|rw
+operator|=
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
+init|)
+block|{
+name|Ref
+name|exactRef
+init|=
+name|repo
+operator|.
+name|exactRef
+argument_list|(
+name|RefNames
+operator|.
+name|refsUsers
+argument_list|(
+name|accountId
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|rw
+operator|.
+name|parseCommit
+argument_list|(
+name|exactRef
+operator|.
+name|getObjectId
+argument_list|()
+argument_list|)
+operator|.
+name|getShortMessage
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|expectedMessage
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+annotation|@
+name|Test
 DECL|method|updateNonExistingAccount ()
 specifier|public
 name|void
@@ -3050,6 +3206,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Update Non-Existing Account"
+argument_list|,
 name|nonExistingAccountId
 argument_list|,
 name|a
@@ -3123,6 +3281,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set status"
+argument_list|,
 name|anonymousCoward
 operator|.
 name|getId
@@ -6873,6 +7033,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set Preferred Email"
+argument_list|,
 name|foo
 operator|.
 name|id
@@ -10043,6 +10205,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set Preferred Email"
+argument_list|,
 name|foo
 operator|.
 name|id
@@ -13313,6 +13477,8 @@ name|au
 operator|.
 name|insert
 argument_list|(
+literal|"Create Test Account"
+argument_list|,
 name|accountId
 argument_list|,
 name|u
@@ -13344,6 +13510,8 @@ name|au
 operator|.
 name|update
 argument_list|(
+literal|"Set Full Name"
+argument_list|,
 name|accountId
 argument_list|,
 name|u
@@ -13794,6 +13962,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set Status"
+argument_list|,
 name|admin
 operator|.
 name|id
@@ -13886,6 +14056,8 @@ name|update
 operator|.
 name|update
 argument_list|(
+literal|"Set Full Name"
+argument_list|,
 name|admin
 operator|.
 name|id
@@ -14101,6 +14273,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set Status"
+argument_list|,
 name|admin
 operator|.
 name|id
@@ -14203,6 +14377,8 @@ name|update
 operator|.
 name|update
 argument_list|(
+literal|"Set Full Name"
+argument_list|,
 name|admin
 operator|.
 name|id

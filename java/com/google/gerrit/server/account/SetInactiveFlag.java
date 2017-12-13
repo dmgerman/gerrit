@@ -297,6 +297,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Deactivate Account via API"
+argument_list|,
 name|accountId
 argument_list|,
 parameter_list|(
@@ -415,6 +417,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Activate Account via API"
+argument_list|,
 name|accountId
 argument_list|,
 parameter_list|(

@@ -1100,6 +1100,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set Preferred Email"
+argument_list|,
 name|userId
 argument_list|,
 name|u

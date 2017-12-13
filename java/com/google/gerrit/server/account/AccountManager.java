@@ -1692,6 +1692,8 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Update Account on Login"
+argument_list|,
 name|user
 operator|.
 name|getAccountId
@@ -1858,6 +1860,8 @@ name|accountsUpdate
 operator|.
 name|insert
 argument_list|(
+literal|"Create Account on First Login"
+argument_list|,
 name|newId
 argument_list|,
 name|u
@@ -2534,6 +2538,14 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set Preferred Email on Linking External ID\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"An external ID with email was added and the account didn't have a\n"
+operator|+
+literal|"preferred email yet."
+argument_list|,
 name|to
 argument_list|,
 parameter_list|(
@@ -2906,6 +2918,14 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Clear Preferred Email on Unlinking External ID\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"The preferred email is cleared because the corresponding external ID\n"
+operator|+
+literal|"was removed."
+argument_list|,
 name|from
 argument_list|,
 parameter_list|(

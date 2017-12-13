@@ -1391,6 +1391,8 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
+literal|"Create Account via API"
+argument_list|,
 name|id
 argument_list|,
 name|u
