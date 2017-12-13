@@ -378,9 +378,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|permissions
+name|change
 operator|.
-name|PermissionBackendException
+name|QueryChanges
 import|;
 end_import
 
@@ -394,11 +394,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
+name|permissions
 operator|.
-name|change
-operator|.
-name|QueryChanges
+name|PermissionBackendException
 import|;
 end_import
 

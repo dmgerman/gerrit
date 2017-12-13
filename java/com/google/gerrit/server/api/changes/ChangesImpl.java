@@ -352,8 +352,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
-operator|.
 name|change
 operator|.
 name|QueryChanges
