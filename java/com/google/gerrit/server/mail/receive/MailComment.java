@@ -133,12 +133,16 @@ DECL|field|message
 name|String
 name|message
 decl_stmt|;
+DECL|field|isLink
+name|boolean
+name|isLink
+decl_stmt|;
 DECL|method|MailComment ()
 specifier|public
 name|MailComment
 parameter_list|()
 block|{}
-DECL|method|MailComment (String message, String fileName, Comment inReplyTo, CommentType type)
+DECL|method|MailComment ( String message, String fileName, Comment inReplyTo, CommentType type, boolean isLink)
 specifier|public
 name|MailComment
 parameter_list|(
@@ -153,6 +157,9 @@ name|inReplyTo
 parameter_list|,
 name|CommentType
 name|type
+parameter_list|,
+name|boolean
+name|isLink
 parameter_list|)
 block|{
 name|this
@@ -178,6 +185,12 @@ operator|.
 name|type
 operator|=
 name|type
+expr_stmt|;
+name|this
+operator|.
+name|isLink
+operator|=
+name|isLink
 expr_stmt|;
 block|}
 comment|/**    * Checks if the provided comment concerns the same exact spot in the change. This is basically an    * equals method except that the message is not checked.    */

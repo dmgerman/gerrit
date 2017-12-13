@@ -92,7 +92,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableList
+name|ImmutableSet
 import|;
 end_import
 
@@ -218,13 +218,13 @@ DECL|field|MAIL_PROVIDER_EXTRAS
 specifier|private
 specifier|static
 specifier|final
-name|ImmutableList
+name|ImmutableSet
 argument_list|<
 name|String
 argument_list|>
 name|MAIL_PROVIDER_EXTRAS
 init|=
-name|ImmutableList
+name|ImmutableSet
 operator|.
 name|of
 argument_list|(
@@ -233,6 +233,30 @@ argument_list|,
 comment|// "On 01/01/2017 User<user@gmail.com> wrote:"
 literal|"gmail_quote"
 comment|// Used for quoting original content
+argument_list|)
+decl_stmt|;
+DECL|field|WHITELISTED_HTML_TAGS
+specifier|private
+specifier|static
+specifier|final
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|WHITELISTED_HTML_TAGS
+init|=
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+literal|"div"
+argument_list|,
+comment|// Most user-typed comments are contained in a<div> tag
+literal|"a"
+argument_list|,
+comment|// We allow links to be contained in a comment
+literal|"font"
+comment|// Some email clients like nesting input in a new font tag
 argument_list|)
 decl_stmt|;
 DECL|method|HtmlParser ()
@@ -353,7 +377,7 @@ operator|.
 name|stream
 argument_list|()
 operator|.
-name|filter
+name|anyMatch
 argument_list|(
 name|p
 lambda|->
@@ -366,13 +390,17 @@ name|equals
 argument_list|(
 literal|"blockquote"
 argument_list|)
+operator|||
+name|MAIL_PROVIDER_EXTRAS
+operator|.
+name|contains
+argument_list|(
+name|p
+operator|.
+name|className
+argument_list|()
 argument_list|)
-operator|.
-name|findAny
-argument_list|()
-operator|.
-name|isPresent
-argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -490,6 +518,7 @@ name|next
 argument_list|()
 expr_stmt|;
 block|}
+continue|continue;
 block|}
 elseif|else
 if|if
@@ -516,33 +545,57 @@ operator|.
 name|next
 argument_list|()
 expr_stmt|;
+continue|continue;
 block|}
 block|}
-elseif|else
+if|if
+condition|(
+name|isInBlockQuote
+condition|)
+block|{
+comment|// There is no user-input in quoted text
+continue|continue;
+block|}
 if|if
 condition|(
 operator|!
-name|isInBlockQuote
-operator|&&
+name|WHITELISTED_HTML_TAGS
+operator|.
+name|contains
+argument_list|(
+name|elementName
+argument_list|)
+condition|)
+block|{
+comment|// We only accept a set of whitelisted tags that can contain user input
+continue|continue;
+block|}
+if|if
+condition|(
 name|elementName
 operator|.
 name|equals
 argument_list|(
-literal|"div"
+literal|"a"
 argument_list|)
 operator|&&
-operator|!
-name|MAIL_PROVIDER_EXTRAS
-operator|.
-name|contains
-argument_list|(
 name|e
 operator|.
-name|className
-argument_list|()
+name|attr
+argument_list|(
+literal|"href"
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"mailto:"
 argument_list|)
 condition|)
 block|{
+comment|// We don't accept mailto: links in general as they often appear in reply-to lines
+comment|// (User<user@gmail.com> wrote: ...)
+continue|continue;
+block|}
 comment|// This is a comment typed by the user
 comment|// Replace non-breaking spaces and trim string
 name|String
@@ -562,6 +615,16 @@ argument_list|)
 operator|.
 name|trim
 argument_list|()
+decl_stmt|;
+name|boolean
+name|isLink
+init|=
+name|elementName
+operator|.
+name|equals
+argument_list|(
+literal|"a"
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -626,6 +689,8 @@ operator|.
 name|CommentType
 operator|.
 name|CHANGE_MESSAGE
+argument_list|,
+name|isLink
 argument_list|)
 argument_list|,
 name|parsedComments
@@ -659,6 +724,8 @@ operator|.
 name|CommentType
 operator|.
 name|FILE_COMMENT
+argument_list|,
+name|isLink
 argument_list|)
 argument_list|,
 name|parsedComments
@@ -685,12 +752,13 @@ operator|.
 name|CommentType
 operator|.
 name|INLINE_COMMENT
+argument_list|,
+name|isLink
 argument_list|)
 argument_list|,
 name|parsedComments
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

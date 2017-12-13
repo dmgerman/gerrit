@@ -130,7 +130,7 @@ literal|"<span dir=\"ltr\">&lt;<a href=\"mailto:noreply@gerrit.com\" "
 operator|+
 literal|"target=\"_blank\">noreply@gerrit.com</a>&gt;</span> wrote:<br>"
 operator|+
-literal|"<blockquote class=\"gmail_quote\" "
+literal|"</div></div><blockquote class=\"gmail_quote\" "
 operator|+
 literal|"<p>foobar<strong>posted comments</strong> on this change.</p>"
 operator|+
@@ -161,8 +161,6 @@ name|commentBlock
 argument_list|(
 name|f1
 argument_list|)
-operator|+
-literal|"<li><p>"
 operator|+
 literal|"<a href=\""
 operator|+
@@ -301,7 +299,7 @@ literal|"Footer omitted</p>"
 operator|+
 literal|"<div><div></div></div>"
 operator|+
-literal|"<p>Gerrit-HasComments: Yes</p></blockquote></div><br></div></div>"
+literal|"<p>Gerrit-HasComments: Yes</p></blockquote></div>"
 decl_stmt|;
 return|return
 name|email
