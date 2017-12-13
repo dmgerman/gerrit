@@ -11269,8 +11269,6 @@ name|Object
 modifier|...
 name|args
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|assert_
 argument_list|()
@@ -11288,8 +11286,6 @@ specifier|protected
 name|void
 name|fail
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|assert_
 argument_list|()
