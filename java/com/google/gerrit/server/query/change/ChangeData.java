@@ -736,7 +736,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|GetPureRevert
+name|MergeabilityCache
 import|;
 end_import
 
@@ -752,7 +752,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|MergeabilityCache
+name|PureRevert
 import|;
 end_import
 
@@ -2876,7 +2876,7 @@ decl_stmt|;
 DECL|field|pureRevert
 specifier|private
 specifier|final
-name|GetPureRevert
+name|PureRevert
 name|pureRevert
 decl_stmt|;
 DECL|field|submitRuleEvaluatorFactory
@@ -3202,7 +3202,7 @@ name|refStatePatterns
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeData ( @ullable StarredChangesUtil starredChangesUtil, ApprovalsUtil approvalsUtil, AllUsersName allUsersName, ChangeMessagesUtil cmUtil, ChangeNotes.Factory notesFactory, CommentsUtil commentsUtil, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory userFactory, MergeUtil.Factory mergeUtilFactory, MergeabilityCache mergeabilityCache, NotesMigration notesMigration, PatchListCache patchListCache, PatchSetUtil psUtil, ProjectCache projectCache, TrackingFooters trackingFooters, GetPureRevert pureRevert, SubmitRuleEvaluator.Factory submitRuleEvaluatorFactory, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable Change change, @Assisted @Nullable ChangeNotes notes)
+DECL|method|ChangeData ( @ullable StarredChangesUtil starredChangesUtil, ApprovalsUtil approvalsUtil, AllUsersName allUsersName, ChangeMessagesUtil cmUtil, ChangeNotes.Factory notesFactory, CommentsUtil commentsUtil, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory userFactory, MergeUtil.Factory mergeUtilFactory, MergeabilityCache mergeabilityCache, NotesMigration notesMigration, PatchListCache patchListCache, PatchSetUtil psUtil, ProjectCache projectCache, TrackingFooters trackingFooters, PureRevert pureRevert, SubmitRuleEvaluator.Factory submitRuleEvaluatorFactory, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable Change change, @Assisted @Nullable ChangeNotes notes)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3259,7 +3259,7 @@ parameter_list|,
 name|TrackingFooters
 name|trackingFooters
 parameter_list|,
-name|GetPureRevert
+name|PureRevert
 name|pureRevert
 parameter_list|,
 name|SubmitRuleEvaluator
@@ -7006,10 +7006,12 @@ block|{
 return|return
 name|pureRevert
 operator|.
-name|getPureRevert
+name|get
 argument_list|(
 name|notes
 argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 operator|.
 name|isPureRevert
