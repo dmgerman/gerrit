@@ -237,7 +237,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|MailProcessor
+name|MetadataParser
 operator|.
 name|class
 argument_list|)
