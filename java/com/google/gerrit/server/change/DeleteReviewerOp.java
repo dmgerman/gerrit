@@ -729,7 +729,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|DeleteReviewer
+name|DeleteReviewerOp
 operator|.
 name|class
 argument_list|)
