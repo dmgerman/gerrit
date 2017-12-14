@@ -102,6 +102,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+operator|.
+name|toImmutableSet
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -153,6 +169,20 @@ operator|.
 name|base
 operator|.
 name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
 import|;
 end_import
 
@@ -253,6 +283,16 @@ operator|.
 name|io
 operator|.
 name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
 import|;
 end_import
 
@@ -679,6 +719,44 @@ block|{
 return|return
 name|get
 argument_list|()
+return|;
+block|}
+DECL|method|from (Collection<ExternalId> extIds)
+specifier|public
+specifier|static
+name|ImmutableSet
+argument_list|<
+name|ExternalId
+operator|.
+name|Key
+argument_list|>
+name|from
+parameter_list|(
+name|Collection
+argument_list|<
+name|ExternalId
+argument_list|>
+name|extIds
+parameter_list|)
+block|{
+return|return
+name|extIds
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|ExternalId
+operator|::
+name|key
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toImmutableSet
+argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
