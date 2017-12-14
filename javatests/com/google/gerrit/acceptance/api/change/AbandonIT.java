@@ -659,7 +659,7 @@ name|getChange
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|changeAbandoner
+name|batchAbandon
 operator|.
 name|batchAbandon
 argument_list|(
@@ -999,7 +999,7 @@ name|project1Name
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|changeAbandoner
+name|batchAbandon
 operator|.
 name|batchAbandon
 argument_list|(
