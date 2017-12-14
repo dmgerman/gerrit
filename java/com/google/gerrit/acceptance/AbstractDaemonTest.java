@@ -1186,7 +1186,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|Abandon
+name|BatchAbandon
 import|;
 end_import
 
@@ -2792,12 +2792,12 @@ operator|.
 name|Factory
 name|notesFactory
 decl_stmt|;
-DECL|field|changeAbandoner
+DECL|field|batchAbandon
 annotation|@
 name|Inject
 specifier|protected
-name|Abandon
-name|changeAbandoner
+name|BatchAbandon
+name|batchAbandon
 decl_stmt|;
 DECL|field|eventRecorder
 specifier|protected

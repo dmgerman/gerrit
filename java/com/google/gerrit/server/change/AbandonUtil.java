@@ -383,11 +383,11 @@ specifier|final
 name|ChangeQueryBuilder
 name|queryBuilder
 decl_stmt|;
-DECL|field|abandon
+DECL|field|batchAbandon
 specifier|private
 specifier|final
-name|Abandon
-name|abandon
+name|BatchAbandon
+name|batchAbandon
 decl_stmt|;
 DECL|field|internalUser
 specifier|private
@@ -397,7 +397,7 @@ name|internalUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, Provider<ChangeQueryProcessor> queryProvider, ChangeQueryBuilder queryBuilder, Abandon abandon)
+DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, Provider<ChangeQueryProcessor> queryProvider, ChangeQueryBuilder queryBuilder, BatchAbandon batchAbandon)
 name|AbandonUtil
 parameter_list|(
 name|ChangeCleanupConfig
@@ -417,8 +417,8 @@ parameter_list|,
 name|ChangeQueryBuilder
 name|queryBuilder
 parameter_list|,
-name|Abandon
-name|abandon
+name|BatchAbandon
+name|batchAbandon
 parameter_list|)
 block|{
 name|this
@@ -441,9 +441,9 @@ name|queryBuilder
 expr_stmt|;
 name|this
 operator|.
-name|abandon
+name|batchAbandon
 operator|=
-name|abandon
+name|batchAbandon
 expr_stmt|;
 name|internalUser
 operator|=
@@ -639,7 +639,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|abandon
+name|batchAbandon
 operator|.
 name|batchAbandon
 argument_list|(
