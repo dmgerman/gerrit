@@ -174,7 +174,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ListChildProjects
+name|ChildProjects
 import|;
 end_import
 
@@ -191,22 +191,6 @@ operator|.
 name|project
 operator|.
 name|ProjectCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ProjectResource
 import|;
 end_import
 
@@ -321,18 +305,15 @@ specifier|final
 name|String
 name|value
 decl_stmt|;
-DECL|method|ParentProjectPredicate ( ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, Provider<CurrentUser> self, String value)
+DECL|method|ParentProjectPredicate ( ProjectCache projectCache, ChildProjects childProjects, Provider<CurrentUser> self, String value)
 specifier|public
 name|ParentProjectPredicate
 parameter_list|(
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|Provider
-argument_list|<
-name|ListChildProjects
-argument_list|>
-name|listChildProjects
+name|ChildProjects
+name|childProjects
 parameter_list|,
 name|Provider
 argument_list|<
@@ -350,7 +331,7 @@ name|predicates
 argument_list|(
 name|projectCache
 argument_list|,
-name|listChildProjects
+name|childProjects
 argument_list|,
 name|self
 argument_list|,
@@ -365,7 +346,7 @@ operator|=
 name|value
 expr_stmt|;
 block|}
-DECL|method|predicates ( ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, Provider<CurrentUser> self, String value)
+DECL|method|predicates ( ProjectCache projectCache, ChildProjects childProjects, Provider<CurrentUser> self, String value)
 specifier|protected
 specifier|static
 name|List
@@ -380,11 +361,8 @@ parameter_list|(
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|Provider
-argument_list|<
-name|ListChildProjects
-argument_list|>
-name|listChildProjects
+name|ChildProjects
+name|childProjects
 parameter_list|,
 name|Provider
 argument_list|<
@@ -456,45 +434,19 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|ProjectResource
-name|proj
-init|=
-operator|new
-name|ProjectResource
-argument_list|(
-name|projectState
-argument_list|,
-name|self
-operator|.
-name|get
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|ListChildProjects
-name|children
-init|=
-name|listChildProjects
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
-name|children
-operator|.
-name|setRecursive
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|ProjectInfo
 name|p
 range|:
-name|children
+name|childProjects
 operator|.
-name|apply
+name|list
 argument_list|(
-name|proj
+name|projectState
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|)
 control|)
 block|{
