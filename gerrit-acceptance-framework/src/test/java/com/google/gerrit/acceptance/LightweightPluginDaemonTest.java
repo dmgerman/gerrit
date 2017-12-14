@@ -241,6 +241,14 @@ name|testPlugin
 operator|.
 name|sshModule
 argument_list|()
+argument_list|,
+name|tempSiteDir
+operator|.
+name|newFolder
+argument_list|()
+operator|.
+name|toPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|plugin

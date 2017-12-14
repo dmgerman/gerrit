@@ -80,6 +80,18 @@ name|PluginUser
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
 begin_class
 DECL|class|TestServerPlugin
 specifier|public
@@ -109,7 +121,7 @@ specifier|private
 name|String
 name|sshName
 decl_stmt|;
-DECL|method|TestServerPlugin ( String name, String pluginCanonicalWebUrl, PluginUser user, ClassLoader classloader, String sysName, String httpName, String sshName)
+DECL|method|TestServerPlugin ( String name, String pluginCanonicalWebUrl, PluginUser user, ClassLoader classloader, String sysName, String httpName, String sshName, Path dataDir)
 specifier|public
 name|TestServerPlugin
 parameter_list|(
@@ -133,6 +145,9 @@ name|httpName
 parameter_list|,
 name|String
 name|sshName
+parameter_list|,
+name|Path
+name|dataDir
 parameter_list|)
 throws|throws
 name|InvalidPluginException
@@ -151,7 +166,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
-literal|null
+name|dataDir
 argument_list|,
 name|classloader
 argument_list|)
