@@ -302,7 +302,7 @@ name|junit
 operator|.
 name|rules
 operator|.
-name|TestRule
+name|MethodRule
 import|;
 end_import
 
@@ -312,9 +312,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|runner
+name|runners
 operator|.
-name|Description
+name|model
+operator|.
+name|FrameworkMethod
 import|;
 end_import
 
@@ -339,7 +341,7 @@ specifier|final
 class|class
 name|SchemaUpgradeTestEnvironment
 implements|implements
-name|TestRule
+name|MethodRule
 block|{
 DECL|field|accountManager
 annotation|@
@@ -394,11 +396,6 @@ specifier|private
 name|ReviewDb
 name|db
 decl_stmt|;
-DECL|field|injector
-specifier|private
-name|Injector
-name|injector
-decl_stmt|;
 DECL|field|lifecycle
 specifier|private
 name|LifecycleManager
@@ -406,16 +403,19 @@ name|lifecycle
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|apply (Statement statement, Description description)
+DECL|method|apply (Statement base, FrameworkMethod method, Object target)
 specifier|public
 name|Statement
 name|apply
 parameter_list|(
 name|Statement
-name|statement
+name|base
 parameter_list|,
-name|Description
-name|description
+name|FrameworkMethod
+name|method
+parameter_list|,
+name|Object
+name|target
 parameter_list|)
 block|{
 return|return
@@ -435,9 +435,11 @@ block|{
 try|try
 block|{
 name|setUp
-argument_list|()
+argument_list|(
+name|target
+argument_list|)
 expr_stmt|;
-name|statement
+name|base
 operator|.
 name|evaluate
 argument_list|()
@@ -451,26 +453,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-return|;
-block|}
-DECL|method|getDb ()
-specifier|public
-name|ReviewDb
-name|getDb
-parameter_list|()
-block|{
-return|return
-name|db
-return|;
-block|}
-DECL|method|getInjector ()
-specifier|public
-name|Injector
-name|getInjector
-parameter_list|()
-block|{
-return|return
-name|injector
 return|;
 block|}
 DECL|method|setApiUser (Account.Id id)
@@ -536,16 +518,20 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setUp ()
+DECL|method|setUp (Object target)
 specifier|private
 name|void
 name|setUp
-parameter_list|()
+parameter_list|(
+name|Object
+name|target
+parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|Injector
 name|injector
-operator|=
+init|=
 name|Guice
 operator|.
 name|createInjector
@@ -554,7 +540,7 @@ operator|new
 name|InMemoryModule
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|injector
 operator|.
 name|injectMembers
@@ -625,6 +611,14 @@ argument_list|)
 operator|.
 name|getAccountId
 argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Inject target members after setting API user, so it can @Inject a ReviewDb if it wants.
+name|injector
+operator|.
+name|injectMembers
+argument_list|(
+name|target
 argument_list|)
 expr_stmt|;
 block|}
