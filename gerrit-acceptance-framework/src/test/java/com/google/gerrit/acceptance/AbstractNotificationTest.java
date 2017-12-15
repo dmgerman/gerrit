@@ -141,6 +141,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toList
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -557,18 +571,6 @@ operator|.
 name|function
 operator|.
 name|Function
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
 import|;
 end_import
 
@@ -1046,8 +1048,6 @@ argument_list|)
 operator|.
 name|collect
 argument_list|(
-name|Collectors
-operator|.
 name|toList
 argument_list|()
 argument_list|)
@@ -1358,8 +1358,6 @@ argument_list|)
 operator|.
 name|collect
 argument_list|(
-name|Collectors
-operator|.
 name|toList
 argument_list|()
 argument_list|)

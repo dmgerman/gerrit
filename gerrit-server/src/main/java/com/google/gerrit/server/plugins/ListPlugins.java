@@ -79,6 +79,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toMap
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -273,18 +287,6 @@ operator|.
 name|regex
 operator|.
 name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
 import|;
 end_import
 
@@ -915,8 +917,6 @@ name|s
 operator|.
 name|collect
 argument_list|(
-name|Collectors
-operator|.
 name|toMap
 argument_list|(
 name|p

@@ -139,6 +139,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toList
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -255,18 +269,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
 import|;
 end_import
 
@@ -709,7 +711,7 @@ index|[
 name|i
 index|]
 argument_list|,
-name|toList
+name|asList
 argument_list|(
 name|inner
 argument_list|)
@@ -851,8 +853,6 @@ argument_list|)
 operator|.
 name|collect
 argument_list|(
-name|Collectors
-operator|.
 name|toList
 argument_list|()
 argument_list|)
@@ -999,14 +999,14 @@ name|endB
 argument_list|)
 return|;
 block|}
-DECL|method|toList (Edit[] l)
+DECL|method|asList (Edit[] l)
 specifier|private
 specifier|static
 name|List
 argument_list|<
 name|Edit
 argument_list|>
-name|toList
+name|asList
 parameter_list|(
 name|Edit
 index|[]
