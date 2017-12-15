@@ -1156,18 +1156,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -7814,8 +7802,6 @@ argument_list|)
 operator|.
 name|collect
 argument_list|(
-name|Collectors
-operator|.
 name|toList
 argument_list|()
 argument_list|)
