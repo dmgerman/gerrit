@@ -335,7 +335,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|DeleteReviewer
+name|DeleteReviewerByEmailOp
 operator|.
 name|class
 argument_list|)
