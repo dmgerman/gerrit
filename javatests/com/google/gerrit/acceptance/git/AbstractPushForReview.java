@@ -9066,7 +9066,6 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
-empty_stmt|;
 name|saveProjectConfig
 argument_list|(
 name|project
