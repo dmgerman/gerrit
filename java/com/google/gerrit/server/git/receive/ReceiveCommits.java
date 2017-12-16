@@ -1042,6 +1042,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|BooleanProjectConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|Branch
 import|;
 end_import
@@ -4255,8 +4271,12 @@ name|newChangeForAllNotInTarget
 operator|=
 name|projectState
 operator|.
-name|isCreateNewChangeForAllNotInTarget
-argument_list|()
+name|is
+argument_list|(
+name|BooleanProjectConfig
+operator|.
+name|CREATE_NEW_CHANGE_FOR_ALL_NOT_IN_TARGET
+argument_list|)
 expr_stmt|;
 comment|// Handles for outputting back over the wire to the end user.
 name|messageSender
@@ -11034,8 +11054,12 @@ name|getNameKey
 argument_list|()
 argument_list|)
 operator|.
-name|isRejectImplicitMerges
-argument_list|()
+name|is
+argument_list|(
+name|BooleanProjectConfig
+operator|.
+name|REJECT_IMPLICIT_MERGES
+argument_list|)
 comment|// Don't worry about implicit merges when creating changes for
 comment|// already-merged commits; they're already in history, so it's too
 comment|// late.
@@ -13197,8 +13221,12 @@ name|getNameKey
 argument_list|()
 argument_list|)
 operator|.
-name|isPrivateByDefault
-argument_list|()
+name|is
+argument_list|(
+name|BooleanProjectConfig
+operator|.
+name|PRIVATE_BY_DEFAULT
+argument_list|)
 decl_stmt|;
 name|changeId
 operator|=
