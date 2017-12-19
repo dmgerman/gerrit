@@ -202,22 +202,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDbUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|PatchSetUtil
@@ -468,47 +452,6 @@ argument_list|,
 literal|"allowDrafts"
 argument_list|,
 literal|true
-argument_list|)
-return|;
-block|}
-DECL|method|unwrap (ReviewDb db)
-specifier|static
-name|ReviewDb
-name|unwrap
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|)
-block|{
-comment|// This is special. We want to delete exactly the rows that are present in
-comment|// the database, even when reading everything else from NoteDb, so we need
-comment|// to bypass the write-only wrapper.
-if|if
-condition|(
-name|db
-operator|instanceof
-name|BatchUpdateReviewDb
-condition|)
-block|{
-name|db
-operator|=
-operator|(
-operator|(
-name|BatchUpdateReviewDb
-operator|)
-name|db
-operator|)
-operator|.
-name|unsafeGetDelegate
-argument_list|()
-expr_stmt|;
-block|}
-return|return
-name|ReviewDbUtil
-operator|.
-name|unwrapDb
-argument_list|(
-name|db
 argument_list|)
 return|;
 block|}
@@ -906,9 +849,15 @@ name|OrmException
 block|{
 comment|// Only delete from ReviewDb here; deletion from NoteDb is handled in
 comment|// BatchUpdate.
+comment|//
+comment|// This is special. We want to delete exactly the rows that are present in
+comment|// the database, even when reading everything else from NoteDb, so we need
+comment|// to bypass the write-only wrapper.
 name|ReviewDb
 name|db
 init|=
+name|BatchUpdateReviewDb
+operator|.
 name|unwrap
 argument_list|(
 name|ctx
