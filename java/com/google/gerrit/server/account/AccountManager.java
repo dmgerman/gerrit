@@ -1524,12 +1524,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|externalIdsUpdateFactory
+name|accountUpdates
 operator|.
-name|create
-argument_list|()
+name|add
+argument_list|(
+name|u
+lambda|->
+name|u
 operator|.
-name|replace
+name|replaceExternalId
 argument_list|(
 name|extId
 argument_list|,
@@ -1553,6 +1556,7 @@ name|extId
 operator|.
 name|password
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
