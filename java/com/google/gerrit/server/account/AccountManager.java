@@ -2066,6 +2066,8 @@ name|changeUserNameFactory
 operator|.
 name|create
 argument_list|(
+literal|"Set Username on Login"
+argument_list|,
 name|user
 argument_list|,
 name|who
