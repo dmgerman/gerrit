@@ -1355,7 +1355,7 @@ name|externalIdsUpdate
 operator|.
 name|delete
 argument_list|(
-name|extUser
+name|extIds
 argument_list|)
 expr_stmt|;
 block|}
