@@ -138,7 +138,7 @@ name|account
 operator|.
 name|externalids
 operator|.
-name|ExternalId
+name|DuplicateExternalIdKeyException
 import|;
 end_import
 
@@ -148,11 +148,15 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|server
 operator|.
-name|OrmDuplicateKeyException
+name|account
+operator|.
+name|externalids
+operator|.
+name|ExternalId
 import|;
 end_import
 
@@ -355,7 +359,7 @@ argument_list|>
 name|createdExternalIdsBuilder
 parameter_list|()
 function_decl|;
-comment|/**      * Adds a new external ID for the account.      *      *<p>The account ID of the external ID must match the account ID of the account that is      * updated.      *      *<p>If an external ID with the same ID already exists the account update will fail with {@link      * OrmDuplicateKeyException}.      *      * @param extId external ID that should be added      * @return the builder      */
+comment|/**      * Adds a new external ID for the account.      *      *<p>The account ID of the external ID must match the account ID of the account that is      * updated.      *      *<p>If an external ID with the same ID already exists the account update will fail with {@link      * DuplicateExternalIdKeyException}.      *      * @param extId external ID that should be added      * @return the builder      */
 DECL|method|addExternalId (ExternalId extId)
 specifier|public
 name|Builder
@@ -377,7 +381,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds new external IDs for the account.      *      *<p>The account IDs of the external IDs must match the account ID of the account that is      * updated.      *      *<p>If any of the external ID keys already exists, the insert fails with {@link      * OrmDuplicateKeyException}.      *      * @param extIds external IDs that should be added      * @return the builder      */
+comment|/**      * Adds new external IDs for the account.      *      *<p>The account IDs of the external IDs must match the account ID of the account that is      * updated.      *      *<p>If any of the external ID keys already exists, the insert fails with {@link      * DuplicateExternalIdKeyException}.      *      * @param extIds external IDs that should be added      * @return the builder      */
 DECL|method|addExternalIds (Collection<ExternalId> extIds)
 specifier|public
 name|Builder

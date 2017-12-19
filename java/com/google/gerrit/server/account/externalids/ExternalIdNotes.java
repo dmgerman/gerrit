@@ -314,20 +314,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmDuplicateKeyException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1440,7 +1426,7 @@ name|MAX_NOTE_SZ
 argument_list|)
 return|;
 block|}
-comment|/**    * Inserts a new external ID.    *    * @throws IOException on IO error while checking if external ID already exists    * @throws OrmDuplicateKeyException if the external ID already exists    */
+comment|/**    * Inserts a new external ID.    *    * @throws IOException on IO error while checking if external ID already exists    * @throws DuplicateExternalIdKeyException if the external ID already exists    */
 DECL|method|insert (ExternalId extId)
 specifier|public
 name|void
@@ -1452,7 +1438,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 block|{
 name|insert
 argument_list|(
@@ -1465,7 +1451,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Inserts new external IDs.    *    * @throws IOException on IO error while checking if external IDs already exist    * @throws OrmDuplicateKeyException if any of the external ID already exists    */
+comment|/**    * Inserts new external IDs.    *    * @throws IOException on IO error while checking if external IDs already exist    * @throws DuplicateExternalIdKeyException if any of the external ID already exists    */
 DECL|method|insert (Collection<ExternalId> extIds)
 specifier|public
 name|void
@@ -1480,7 +1466,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 block|{
 name|checkLoaded
 argument_list|()
@@ -2043,7 +2029,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 block|{
 name|checkLoaded
 argument_list|()
@@ -2218,7 +2204,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 block|{
 name|checkLoaded
 argument_list|()
@@ -2370,7 +2356,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 block|{
 name|replace
 argument_list|(
@@ -2411,7 +2397,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 block|{
 name|Account
 operator|.
@@ -2772,7 +2758,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 name|e
 parameter_list|)
 block|{
@@ -3395,7 +3381,7 @@ argument_list|>
 name|extIds
 parameter_list|)
 throws|throws
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 throws|,
 name|IOException
 block|{
@@ -3434,7 +3420,7 @@ argument_list|>
 name|extIdKeysToDelete
 parameter_list|)
 throws|throws
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 throws|,
 name|IOException
 block|{
@@ -3482,7 +3468,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 block|{
 for|for
 control|(
@@ -3509,19 +3495,9 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"external id %s already exists"
-argument_list|,
 name|extIdKey
-operator|.
-name|get
-argument_list|()
-argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -3565,7 +3541,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateExternalIdKeyException
 function_decl|;
 block|}
 annotation|@
