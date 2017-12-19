@@ -806,7 +806,7 @@ return|return
 name|parent
 return|;
 block|}
-comment|/**    * Returns the name key of the parent project.    *    * @param allProjectsName name key of the wild project    * @return name key of the parent project, {@code null} if this project is the wild project    */
+comment|/**    * Returns the name key of the parent project.    *    * @param allProjectsName name key of the wild project    * @return name key of the parent project, {@code null} if this project is the All-Projects    *     project    */
 DECL|method|getParent (Project.NameKey allProjectsName)
 specifier|public
 name|Project

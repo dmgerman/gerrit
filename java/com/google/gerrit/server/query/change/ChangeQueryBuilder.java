@@ -946,7 +946,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ListChildProjects
+name|ChildProjects
 import|;
 end_import
 
@@ -1999,13 +1999,10 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 decl_stmt|;
-DECL|field|listChildProjects
+DECL|field|childProjects
 specifier|final
-name|Provider
-argument_list|<
-name|ListChildProjects
-argument_list|>
-name|listChildProjects
+name|ChildProjects
+name|childProjects
 decl_stmt|;
 DECL|field|listMembers
 specifier|final
@@ -2051,7 +2048,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg, NotesMigration notesMigration)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg, NotesMigration notesMigration)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -2130,11 +2127,8 @@ parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|Provider
-argument_list|<
-name|ListChildProjects
-argument_list|>
-name|listChildProjects
+name|ChildProjects
+name|childProjects
 parameter_list|,
 name|ChangeIndexCollection
 name|indexes
@@ -2207,7 +2201,7 @@ name|repoManager
 argument_list|,
 name|projectCache
 argument_list|,
-name|listChildProjects
+name|childProjects
 argument_list|,
 name|submitDryRun
 argument_list|,
@@ -2253,7 +2247,7 @@ name|notesMigration
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts, NotesMigration notesMigration)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts, NotesMigration notesMigration)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2332,11 +2326,8 @@ parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|Provider
-argument_list|<
-name|ListChildProjects
-argument_list|>
-name|listChildProjects
+name|ChildProjects
+name|childProjects
 parameter_list|,
 name|SubmitDryRun
 name|submitDryRun
@@ -2473,9 +2464,9 @@ name|projectCache
 expr_stmt|;
 name|this
 operator|.
-name|listChildProjects
+name|childProjects
 operator|=
-name|listChildProjects
+name|childProjects
 expr_stmt|;
 name|this
 operator|.
@@ -2591,7 +2582,7 @@ name|repoManager
 argument_list|,
 name|projectCache
 argument_list|,
-name|listChildProjects
+name|childProjects
 argument_list|,
 name|submitDryRun
 argument_list|,
@@ -4135,7 +4126,7 @@ name|projectCache
 argument_list|,
 name|args
 operator|.
-name|listChildProjects
+name|childProjects
 argument_list|,
 name|args
 operator|.
