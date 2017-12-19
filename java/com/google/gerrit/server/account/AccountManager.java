@@ -2474,12 +2474,27 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|externalIdsUpdateFactory
+name|accountsUpdateFactory
 operator|.
 name|create
 argument_list|()
 operator|.
-name|insert
+name|update
+argument_list|(
+literal|"Link External ID"
+argument_list|,
+name|to
+argument_list|,
+parameter_list|(
+name|a
+parameter_list|,
+name|u
+parameter_list|)
+lambda|->
+block|{
+name|u
+operator|.
+name|addExternalId
 argument_list|(
 name|ExternalId
 operator|.
@@ -2507,34 +2522,7 @@ name|getEmailAddress
 argument_list|()
 operator|!=
 literal|null
-condition|)
-block|{
-name|accountsUpdateFactory
-operator|.
-name|create
-argument_list|()
-operator|.
-name|update
-argument_list|(
-literal|"Set Preferred Email on Linking External ID\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"An external ID with email was added and the account didn't have a\n"
-operator|+
-literal|"preferred email yet."
-argument_list|,
-name|to
-argument_list|,
-parameter_list|(
-name|a
-parameter_list|,
-name|u
-parameter_list|)
-lambda|->
-block|{
-if|if
-condition|(
+operator|&&
 name|a
 operator|.
 name|getPreferredEmail
@@ -2557,7 +2545,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 operator|new
