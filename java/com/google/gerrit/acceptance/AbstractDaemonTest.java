@@ -306,6 +306,20 @@ begin_import
 import|import
 name|com
 operator|.
+name|github
+operator|.
+name|rholder
+operator|.
+name|retry
+operator|.
+name|BlockStrategy
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|google
 operator|.
 name|common
@@ -2890,6 +2904,16 @@ specifier|protected
 name|boolean
 name|testRequiresSsh
 decl_stmt|;
+DECL|field|noSleepBlockStrategy
+specifier|protected
+name|BlockStrategy
+name|noSleepBlockStrategy
+init|=
+name|t
+lambda|->
+block|{}
+decl_stmt|;
+comment|// Don't sleep in tests.
 DECL|field|changeIndexes
 annotation|@
 name|Inject
