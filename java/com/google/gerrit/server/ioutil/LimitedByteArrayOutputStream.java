@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.change
+DECL|package|com.google.gerrit.server.ioutil
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
+name|ioutil
 package|;
 end_package
 
@@ -112,8 +112,13 @@ name|OutputStream
 import|;
 end_import
 
+begin_comment
+comment|/** A stream that throws an exception if it consumes data beyond a configured byte count. */
+end_comment
+
 begin_class
 DECL|class|LimitedByteArrayOutputStream
+specifier|public
 class|class
 name|LimitedByteArrayOutputStream
 extends|extends
@@ -133,6 +138,7 @@ name|buffer
 decl_stmt|;
 comment|/**    * Constructs a LimitedByteArrayOutputStream, which stores output in memory up to a certain    * specified size. When the output exceeds the specified size a LimitExceededException is thrown.    *    * @param max the maximum size in bytes which may be stored.    * @param initial the initial size. It must be smaller than the max size.    */
 DECL|method|LimitedByteArrayOutputStream (int max, int initial)
+specifier|public
 name|LimitedByteArrayOutputStream
 parameter_list|(
 name|int
@@ -271,6 +277,7 @@ argument_list|()
 return|;
 block|}
 DECL|class|LimitExceededException
+specifier|public
 specifier|static
 class|class
 name|LimitExceededException

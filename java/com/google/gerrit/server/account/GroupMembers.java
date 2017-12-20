@@ -104,6 +104,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -379,6 +393,79 @@ operator|=
 name|projectCache
 expr_stmt|;
 block|}
+comment|/**    * Recursively enumerate the members of the given group. Should not be used with the    * PROJECT_OWNERS magical group.    */
+DECL|method|listAccounts (AccountGroup.UUID groupUUID)
+specifier|public
+name|Set
+argument_list|<
+name|Account
+argument_list|>
+name|listAccounts
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|groupUUID
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+if|if
+condition|(
+name|SystemGroupBackend
+operator|.
+name|PROJECT_OWNERS
+operator|.
+name|equals
+argument_list|(
+name|groupUUID
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"listAccounts called with PROJECT_OWNERS argument"
+argument_list|)
+throw|;
+block|}
+try|try
+block|{
+return|return
+name|listAccounts
+argument_list|(
+name|groupUUID
+argument_list|,
+literal|null
+argument_list|,
+operator|new
+name|HashSet
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+argument_list|()
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchProjectException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**    * Recursively enumerate the members of the given group. The project should be specified so the    * PROJECT_OWNERS magical group can be expanded.    */
 DECL|method|listAccounts (AccountGroup.UUID groupUUID, Project.NameKey project)
 specifier|public
 name|Set
@@ -420,7 +507,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|listAccounts ( final AccountGroup.UUID groupUUID, final Project.NameKey project, final Set<AccountGroup.UUID> seen)
+DECL|method|listAccounts ( final AccountGroup.UUID groupUUID, @Nullable final Project.NameKey project, final Set<AccountGroup.UUID> seen)
 specifier|private
 name|Set
 argument_list|<
@@ -434,6 +521,8 @@ operator|.
 name|UUID
 name|groupUUID
 parameter_list|,
+annotation|@
+name|Nullable
 specifier|final
 name|Project
 operator|.
@@ -648,7 +737,7 @@ return|return
 name|projectOwners
 return|;
 block|}
-DECL|method|getGroupMembers ( InternalGroup group, Project.NameKey project, Set<AccountGroup.UUID> seen)
+DECL|method|getGroupMembers ( InternalGroup group, @Nullable Project.NameKey project, Set<AccountGroup.UUID> seen)
 specifier|private
 name|Set
 argument_list|<
@@ -659,6 +748,8 @@ parameter_list|(
 name|InternalGroup
 name|group
 parameter_list|,
+annotation|@
+name|Nullable
 name|Project
 operator|.
 name|NameKey
