@@ -215,7 +215,7 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|DeletePrivateByPost ( Provider<ReviewDb> dbProvider, RetryHelper retryHelper, ChangeMessagesUtil cmUtil, PermissionBackend permissionBackend)
+DECL|method|DeletePrivateByPost ( Provider<ReviewDb> dbProvider, RetryHelper retryHelper, ChangeMessagesUtil cmUtil, PermissionBackend permissionBackend, SetPrivateOp.Factory setPrivateOpFactory)
 name|DeletePrivateByPost
 parameter_list|(
 name|Provider
@@ -232,6 +232,11 @@ name|cmUtil
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|SetPrivateOp
+operator|.
+name|Factory
+name|setPrivateOpFactory
 parameter_list|)
 block|{
 name|super
@@ -243,6 +248,8 @@ argument_list|,
 name|cmUtil
 argument_list|,
 name|permissionBackend
+argument_list|,
+name|setPrivateOpFactory
 argument_list|)
 expr_stmt|;
 block|}
