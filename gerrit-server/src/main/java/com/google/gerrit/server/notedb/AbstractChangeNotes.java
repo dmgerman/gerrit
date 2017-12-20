@@ -908,11 +908,11 @@ if|if
 condition|(
 operator|!
 name|readOrWrite
-operator|&&
-operator|!
-name|autoRebuild
 condition|)
 block|{
+comment|// Don't even open the repo if we neither write to nor read from NoteDb. It's possible that
+comment|// there is some garbage in the noteDbState field and/or the repo, but at this point NoteDb is
+comment|// completely off so it's none of our business.
 name|loadDefaults
 argument_list|()
 expr_stmt|;
