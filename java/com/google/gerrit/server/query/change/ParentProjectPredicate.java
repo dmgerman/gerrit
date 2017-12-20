@@ -142,20 +142,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|permissions
 operator|.
 name|PermissionBackendException
@@ -207,18 +193,6 @@ operator|.
 name|project
 operator|.
 name|ProjectState
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -305,7 +279,7 @@ specifier|final
 name|String
 name|value
 decl_stmt|;
-DECL|method|ParentProjectPredicate ( ProjectCache projectCache, ChildProjects childProjects, Provider<CurrentUser> self, String value)
+DECL|method|ParentProjectPredicate ( ProjectCache projectCache, ChildProjects childProjects, String value)
 specifier|public
 name|ParentProjectPredicate
 parameter_list|(
@@ -314,12 +288,6 @@ name|projectCache
 parameter_list|,
 name|ChildProjects
 name|childProjects
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|self
 parameter_list|,
 name|String
 name|value
@@ -333,8 +301,6 @@ name|projectCache
 argument_list|,
 name|childProjects
 argument_list|,
-name|self
-argument_list|,
 name|value
 argument_list|)
 argument_list|)
@@ -346,7 +312,7 @@ operator|=
 name|value
 expr_stmt|;
 block|}
-DECL|method|predicates ( ProjectCache projectCache, ChildProjects childProjects, Provider<CurrentUser> self, String value)
+DECL|method|predicates ( ProjectCache projectCache, ChildProjects childProjects, String value)
 specifier|protected
 specifier|static
 name|List
@@ -363,12 +329,6 @@ name|projectCache
 parameter_list|,
 name|ChildProjects
 name|childProjects
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|self
 parameter_list|,
 name|String
 name|value

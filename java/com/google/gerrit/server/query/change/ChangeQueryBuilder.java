@@ -4128,10 +4128,6 @@ name|args
 operator|.
 name|childProjects
 argument_list|,
-name|args
-operator|.
-name|self
-argument_list|,
 name|name
 argument_list|)
 return|;
