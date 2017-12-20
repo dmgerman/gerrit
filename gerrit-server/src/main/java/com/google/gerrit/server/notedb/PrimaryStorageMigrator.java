@@ -1435,7 +1435,7 @@ argument_list|)
 expr_stmt|;
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Migrated change {} to NoteDb primary in {}ms"
 argument_list|,
@@ -2151,7 +2151,7 @@ argument_list|)
 expr_stmt|;
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Migrated change {} to ReviewDb primary in {}ms"
 argument_list|,
