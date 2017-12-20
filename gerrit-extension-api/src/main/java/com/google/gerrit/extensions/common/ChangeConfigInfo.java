@@ -92,11 +92,6 @@ specifier|public
 name|int
 name|largeChange
 decl_stmt|;
-DECL|field|privateByDefault
-specifier|public
-name|Boolean
-name|privateByDefault
-decl_stmt|;
 DECL|field|replyLabel
 specifier|public
 name|String
