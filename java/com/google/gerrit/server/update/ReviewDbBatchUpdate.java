@@ -1036,6 +1036,7 @@ end_comment
 
 begin_class
 DECL|class|ReviewDbBatchUpdate
+specifier|public
 class|class
 name|ReviewDbBatchUpdate
 extends|extends
@@ -1058,6 +1059,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|interface|AssistedFactory
+specifier|public
 interface|interface
 name|AssistedFactory
 block|{

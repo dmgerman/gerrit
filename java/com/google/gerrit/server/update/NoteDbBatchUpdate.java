@@ -598,12 +598,14 @@ end_comment
 
 begin_class
 DECL|class|NoteDbBatchUpdate
+specifier|public
 class|class
 name|NoteDbBatchUpdate
 extends|extends
 name|BatchUpdate
 block|{
 DECL|interface|AssistedFactory
+specifier|public
 interface|interface
 name|AssistedFactory
 block|{
