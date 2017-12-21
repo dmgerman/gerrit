@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.config
+DECL|package|com.google.gerrit.server.restapi.config
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|restapi
 operator|.
 name|config
 package|;
@@ -117,24 +119,6 @@ operator|.
 name|ConfigUtil
 operator|.
 name|storeSection
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|GetDiffPreferences
-operator|.
-name|readFromGit
 import|;
 end_import
 
@@ -231,6 +215,38 @@ operator|.
 name|account
 operator|.
 name|VersionedAccountPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|ConfigResource
 import|;
 end_import
 
@@ -543,6 +559,8 @@ block|}
 return|return
 name|writeToGit
 argument_list|(
+name|GetDiffPreferences
+operator|.
 name|readFromGit
 argument_list|(
 name|gitManager

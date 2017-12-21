@@ -92,9 +92,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
+name|mail
 operator|.
-name|ConfirmEmail
+name|EmailTokenVerifier
 import|;
 end_import
 
@@ -108,9 +108,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
+name|restapi
 operator|.
-name|EmailTokenVerifier
+name|config
+operator|.
+name|ConfirmEmail
 import|;
 end_import
 
