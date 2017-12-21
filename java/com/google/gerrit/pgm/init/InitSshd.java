@@ -266,6 +266,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|InitSshd
+specifier|public
 class|class
 name|InitSshd
 implements|implements
@@ -510,7 +511,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|isOff (String listenHostname)
-specifier|private
+specifier|public
 specifier|static
 name|boolean
 name|isOff
