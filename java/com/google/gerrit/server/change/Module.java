@@ -2014,6 +2014,15 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
+name|SetPrivateOp
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|factory
+argument_list|(
 name|WorkInProgressOp
 operator|.
 name|Factory

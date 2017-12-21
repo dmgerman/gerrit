@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.common
+DECL|package|com.google.gerrit.extensions.events
 package|package
 name|com
 operator|.
@@ -62,58 +62,32 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|events
 package|;
 end_package
 
-begin_class
-DECL|class|ChangeConfigInfo
+begin_interface
+DECL|interface|WorkInProgressStateChangedListener
 specifier|public
-class|class
-name|ChangeConfigInfo
+interface|interface
+name|WorkInProgressStateChangedListener
 block|{
-DECL|field|allowBlame
-specifier|public
-name|Boolean
-name|allowBlame
-decl_stmt|;
-DECL|field|showAssigneeInChangesTable
-specifier|public
-name|Boolean
-name|showAssigneeInChangesTable
-decl_stmt|;
-DECL|field|allowDrafts
-specifier|public
-name|Boolean
-name|allowDrafts
-decl_stmt|;
-DECL|field|largeChange
-specifier|public
-name|int
-name|largeChange
-decl_stmt|;
-DECL|field|replyLabel
-specifier|public
-name|String
-name|replyLabel
-decl_stmt|;
-DECL|field|replyTooltip
-specifier|public
-name|String
-name|replyTooltip
-decl_stmt|;
-DECL|field|updateDelay
-specifier|public
-name|int
-name|updateDelay
-decl_stmt|;
-DECL|field|submitWholeTopic
-specifier|public
-name|Boolean
-name|submitWholeTopic
-decl_stmt|;
+DECL|interface|Event
+interface|interface
+name|Event
+extends|extends
+name|ChangeEvent
+block|{}
+DECL|method|onWorkInProgressStateChanged (Event event)
+name|void
+name|onWorkInProgressStateChanged
+parameter_list|(
+name|Event
+name|event
+parameter_list|)
+function_decl|;
 block|}
-end_class
+end_interface
 
 end_unit
 

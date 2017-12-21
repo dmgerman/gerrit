@@ -4583,6 +4583,9 @@ condition|(
 name|shouldExist
 condition|)
 block|{
+comment|// TODO(dborowitz): This means we have a state recorded in noteDbState but the ref doesn't
+comment|// exist for whatever reason. Doesn't this mean we should trigger an auto-rebuild, rather
+comment|// than throwing?
 throw|throw
 operator|new
 name|NoSuchChangeException
