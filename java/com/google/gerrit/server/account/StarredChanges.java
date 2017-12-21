@@ -681,7 +681,7 @@ name|IdString
 name|id
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
+name|RestApiException
 throws|,
 name|OrmException
 throws|,
@@ -870,7 +870,7 @@ name|IdString
 name|id
 parameter_list|)
 throws|throws
-name|UnprocessableEntityException
+name|RestApiException
 block|{
 try|try
 block|{

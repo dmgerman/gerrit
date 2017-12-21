@@ -622,7 +622,7 @@ name|IdString
 name|id
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
+name|RestApiException
 throws|,
 name|OrmException
 throws|,
@@ -642,6 +642,8 @@ name|id
 operator|.
 name|encoded
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 if|if

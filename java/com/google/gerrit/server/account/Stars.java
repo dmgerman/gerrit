@@ -192,7 +192,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|RestApiException
 import|;
 end_import
 
@@ -604,7 +604,7 @@ name|IdString
 name|id
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
+name|RestApiException
 throws|,
 name|OrmException
 throws|,
