@@ -853,6 +853,7 @@ return|;
 block|}
 comment|/** Error indicating the revision is invalid as supplied. */
 DECL|class|InvalidRevisionException
+specifier|public
 specifier|static
 class|class
 name|InvalidRevisionException

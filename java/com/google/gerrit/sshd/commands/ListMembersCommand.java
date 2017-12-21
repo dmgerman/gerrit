@@ -218,9 +218,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
+name|ioutil
 operator|.
-name|ListMembers
+name|ColumnFormatter
 import|;
 end_import
 
@@ -234,9 +234,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ioutil
+name|restapi
 operator|.
-name|ColumnFormatter
+name|group
+operator|.
+name|ListMembers
 import|;
 end_import
 
@@ -337,7 +339,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Implements a command that allows the user to see the members of a group. */
+comment|/** Implements a command that allows the user to see the members of a account. */
 end_comment
 
 begin_class

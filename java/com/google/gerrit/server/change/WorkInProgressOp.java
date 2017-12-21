@@ -389,12 +389,14 @@ block|{
 DECL|field|message
 annotation|@
 name|Nullable
+specifier|public
 name|String
 name|message
 decl_stmt|;
 DECL|field|notify
 annotation|@
 name|Nullable
+specifier|public
 name|NotifyHandling
 name|notify
 decl_stmt|;

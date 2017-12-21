@@ -720,10 +720,12 @@ end_comment
 
 begin_class
 DECL|class|ProjectControl
+specifier|public
 class|class
 name|ProjectControl
 block|{
 DECL|class|GenericFactory
+specifier|public
 specifier|static
 class|class
 name|GenericFactory
@@ -749,6 +751,7 @@ name|pc
 expr_stmt|;
 block|}
 DECL|method|controlFor (Project.NameKey nameKey, CurrentUser user)
+specifier|public
 name|ProjectControl
 name|controlFor
 parameter_list|(
@@ -1171,6 +1174,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|controlForRef (String refName)
+specifier|public
 name|RefControl
 name|controlForRef
 parameter_list|(

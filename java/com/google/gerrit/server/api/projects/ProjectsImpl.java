@@ -246,6 +246,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|project
 operator|.
 name|ListProjects
@@ -261,6 +263,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|restapi
 operator|.
 name|project
 operator|.
@@ -280,6 +284,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|project
 operator|.
 name|ProjectsCollection
@@ -295,6 +301,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|restapi
 operator|.
 name|project
 operator|.

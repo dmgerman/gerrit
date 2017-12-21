@@ -178,6 +178,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|change
 operator|.
 name|GetContent
@@ -193,6 +195,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|restapi
 operator|.
 name|change
 operator|.

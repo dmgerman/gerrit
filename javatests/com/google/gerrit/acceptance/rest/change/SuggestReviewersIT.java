@@ -344,7 +344,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|CreateGroup
+name|InternalGroup
 import|;
 end_import
 
@@ -358,9 +358,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|group
 operator|.
-name|InternalGroup
+name|CreateGroup
 import|;
 end_import
 

@@ -438,7 +438,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"change.PutTopic"
+literal|"restapi.change.PutTopic"
 argument_list|)
 expr_stmt|;
 block|}

@@ -358,8 +358,6 @@ name|server
 operator|.
 name|change
 operator|.
-name|Submit
-operator|.
 name|TestSubmitInput
 import|;
 end_import

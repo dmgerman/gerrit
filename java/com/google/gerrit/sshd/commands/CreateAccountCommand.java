@@ -202,6 +202,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|account
 operator|.
 name|CreateAccount

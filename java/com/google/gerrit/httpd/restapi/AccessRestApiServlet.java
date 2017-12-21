@@ -76,6 +76,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|access
 operator|.
 name|AccessCollection

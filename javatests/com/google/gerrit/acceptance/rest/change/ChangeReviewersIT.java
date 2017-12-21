@@ -596,9 +596,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
+name|mail
 operator|.
-name|PostReviewers
+name|Address
 import|;
 end_import
 
@@ -612,9 +612,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
+name|restapi
 operator|.
-name|Address
+name|change
+operator|.
+name|PostReviewers
 import|;
 end_import
 

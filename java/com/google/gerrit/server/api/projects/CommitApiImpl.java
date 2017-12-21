@@ -184,9 +184,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
+name|project
 operator|.
-name|CherryPickCommit
+name|CommitResource
 import|;
 end_import
 
@@ -200,9 +200,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|restapi
 operator|.
-name|CommitResource
+name|change
+operator|.
+name|CherryPickCommit
 import|;
 end_import
 

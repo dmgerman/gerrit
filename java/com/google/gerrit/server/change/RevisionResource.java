@@ -541,6 +541,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|prepareETag (Hasher h, CurrentUser user)
+specifier|public
 name|void
 name|prepareETag
 parameter_list|(
@@ -564,6 +565,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getAccountId ()
+specifier|public
 name|Account
 operator|.
 name|Id
@@ -579,6 +581,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getUser ()
+specifier|public
 name|CurrentUser
 name|getUser
 parameter_list|()
@@ -592,10 +595,12 @@ argument_list|()
 return|;
 block|}
 DECL|method|doNotCache ()
+specifier|public
 name|RevisionResource
 name|doNotCache
 parameter_list|()
 block|{
+comment|// TODO(hanwen): return a copy so cacheable can be final.
 name|cacheable
 operator|=
 literal|false

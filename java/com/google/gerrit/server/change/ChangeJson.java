@@ -10086,6 +10086,7 @@ name|out
 return|;
 block|}
 DECL|method|toCommit ( Project.NameKey project, RevWalk rw, RevCommit commit, boolean addLinks, boolean fillCommit)
+specifier|public
 name|CommitInfo
 name|toCommit
 parameter_list|(
