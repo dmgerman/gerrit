@@ -18082,6 +18082,8 @@ name|branch
 argument_list|)
 control|)
 block|{
+try|try
+block|{
 name|r
 operator|.
 name|put
@@ -18100,6 +18102,15 @@ name|notes
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchChangeException
+name|e
+parameter_list|)
+block|{
+comment|//Ignore deleted change
+block|}
 block|}
 return|return
 name|r
