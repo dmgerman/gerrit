@@ -152,6 +152,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -261,6 +275,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|OrmException
 block|{
 name|AtomicBoolean
 name|alreadyInactive
@@ -281,9 +297,15 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Deactivate Account via API"
+argument_list|,
 name|accountId
 argument_list|,
+parameter_list|(
 name|a
+parameter_list|,
+name|u
+parameter_list|)
 lambda|->
 block|{
 if|if
@@ -305,7 +327,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|a
+name|u
 operator|.
 name|setActive
 argument_list|(
@@ -373,6 +395,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|OrmException
 block|{
 name|AtomicBoolean
 name|alreadyActive
@@ -393,9 +417,15 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Activate Account via API"
+argument_list|,
 name|accountId
 argument_list|,
+parameter_list|(
 name|a
+parameter_list|,
+name|u
+parameter_list|)
 lambda|->
 block|{
 if|if
@@ -416,7 +446,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|a
+name|u
 operator|.
 name|setActive
 argument_list|(

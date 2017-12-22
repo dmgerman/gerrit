@@ -4478,6 +4478,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{

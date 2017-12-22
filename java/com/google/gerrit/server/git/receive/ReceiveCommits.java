@@ -17960,12 +17960,18 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set Full Name on Receive Commits"
+argument_list|,
 name|user
 operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
+parameter_list|(
 name|a
+parameter_list|,
+name|u
+parameter_list|)
 lambda|->
 block|{
 if|if
@@ -17981,7 +17987,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|a
+name|u
 operator|.
 name|setFullName
 argument_list|(
@@ -18016,6 +18022,8 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|OrmException
+decl||
 name|IOException
 decl||
 name|ConfigInvalidException

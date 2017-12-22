@@ -769,7 +769,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ExternalIdsUpdate
+name|ExternalIdNotes
 operator|.
 name|checkSameAccount
 argument_list|(

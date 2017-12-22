@@ -259,6 +259,8 @@ name|all
 parameter_list|()
 throws|throws
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 return|return
 name|externalIdReader
@@ -281,6 +283,8 @@ name|rev
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 return|return
 name|externalIdReader

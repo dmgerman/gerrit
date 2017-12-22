@@ -499,6 +499,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|OrmException
 block|{
 name|AtomicBoolean
 name|alreadyPreferred
@@ -519,12 +521,18 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set Preferred Email via API"
+argument_list|,
 name|user
 operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
+parameter_list|(
 name|a
+parameter_list|,
+name|u
+parameter_list|)
 lambda|->
 block|{
 if|if
@@ -550,7 +558,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|a
+name|u
 operator|.
 name|setPreferredEmail
 argument_list|(

@@ -543,6 +543,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|OrmException
 block|{
 if|if
 condition|(
@@ -596,14 +598,16 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
+literal|"Set Full Name via API"
+argument_list|,
 name|user
 operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|a
+name|u
 lambda|->
-name|a
+name|u
 operator|.
 name|setFullName
 argument_list|(

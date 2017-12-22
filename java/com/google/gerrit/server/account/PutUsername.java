@@ -523,6 +523,8 @@ name|changeUserNameFactory
 operator|.
 name|create
 argument_list|(
+literal|"Set Username via API"
+argument_list|,
 name|rsrc
 operator|.
 name|getUser
