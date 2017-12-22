@@ -615,14 +615,16 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * Reads and returns all external IDs from the specified revision of the refs/meta/external-ids    * branch.    */
-DECL|method|all (ObjectId rev)
+comment|/**    * Reads and returns all external IDs from the specified revision of the {@code    * refs/meta/external-ids} branch.    *    * @param rev the revision from which the external IDs should be read, if {@code null} the    *     external IDs are read from the current HEAD revision    * @return all external IDs that were read from the specified revision    */
+DECL|method|all (@ullable ObjectId rev)
 name|Set
 argument_list|<
 name|ExternalId
 argument_list|>
 name|all
 parameter_list|(
+annotation|@
+name|Nullable
 name|ObjectId
 name|rev
 parameter_list|)
