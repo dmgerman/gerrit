@@ -531,7 +531,12 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-return|return
+name|List
+argument_list|<
+name|Comment
+argument_list|>
+name|comments
+init|=
 name|noteUtil
 operator|.
 name|parseNote
@@ -542,6 +547,22 @@ name|p
 argument_list|,
 name|changeId
 argument_list|)
+decl_stmt|;
+name|comments
+operator|.
+name|forEach
+argument_list|(
+name|c
+lambda|->
+name|c
+operator|.
+name|legacyFormat
+operator|=
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+name|comments
 return|;
 block|}
 DECL|method|isJson (byte[] raw, int offset)
