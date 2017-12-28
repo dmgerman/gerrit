@@ -52,6 +52,20 @@ comment|// limitations under the License.
 end_comment
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -82,16 +96,6 @@ operator|.
 name|io
 operator|.
 name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileReader
 import|;
 end_import
 
@@ -959,14 +963,16 @@ init|(
 name|BufferedReader
 name|reader
 init|=
-operator|new
-name|BufferedReader
-argument_list|(
-operator|new
-name|FileReader
+name|Files
+operator|.
+name|newBufferedReader
 argument_list|(
 name|revnumberFile
-argument_list|)
+operator|.
+name|toPath
+argument_list|()
+argument_list|,
+name|UTF_8
 argument_list|)
 init|)
 block|{
