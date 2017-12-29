@@ -4544,6 +4544,28 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|args
+operator|.
+name|migration
+operator|.
+name|disableChangeReviewDb
+argument_list|()
+condition|)
+block|{
+name|checkState
+argument_list|(
+name|state
+operator|!=
+literal|null
+argument_list|,
+literal|"shouldn't have null NoteDbChangeState when ReviewDb disabled: %s"
+argument_list|,
+name|change
+argument_list|)
+expr_stmt|;
+block|}
 name|ObjectId
 name|id
 init|=
@@ -4559,6 +4581,7 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// Meta ref doesn't exist in NoteDb.
 if|if
 condition|(
 name|state
@@ -4566,6 +4589,9 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// Either ReviewDb change is being newly created, or it exists in ReviewDb but has not yet
+comment|// been rebuilt for the first time, e.g. because we just turned on write-only mode. In
+comment|// both cases, we don't want to auto-rebuild, just proceed with an empty ChangeNotes.
 return|return
 name|super
 operator|.
@@ -4581,11 +4607,17 @@ elseif|else
 if|if
 condition|(
 name|shouldExist
+operator|&&
+name|state
+operator|.
+name|getPrimaryStorage
+argument_list|()
+operator|==
+name|PrimaryStorage
+operator|.
+name|NOTE_DB
 condition|)
 block|{
-comment|// TODO(dborowitz): This means we have a state recorded in noteDbState but the ref doesn't
-comment|// exist for whatever reason. Doesn't this mean we should trigger an auto-rebuild, rather
-comment|// than throwing?
 throw|throw
 operator|new
 name|NoSuchChangeException
@@ -4595,6 +4627,8 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+comment|// ReviewDb claims NoteDb state exists, but meta ref isn't present: fall through and
+comment|// auto-rebuild if necessary.
 block|}
 name|RefCache
 name|refs
