@@ -396,24 +396,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|externalids
-operator|.
-name|ExternalIdsUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|auth
 operator|.
 name|NoSuchUserException
@@ -781,14 +763,6 @@ specifier|final
 name|ExternalIds
 name|externalIds
 decl_stmt|;
-DECL|field|externalIdsUpdateFactory
-specifier|private
-specifier|final
-name|ExternalIdsUpdate
-operator|.
-name|Server
-name|externalIdsUpdateFactory
-decl_stmt|;
 DECL|field|groupsUpdateFactory
 specifier|private
 specifier|final
@@ -811,7 +785,7 @@ name|setInactiveFlag
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountManager ( SchemaFactory<ReviewDb> schema, Sequences sequences, @GerritServerConfig Config cfg, Accounts accounts, AccountsUpdate.Server accountsUpdateFactory, AccountCache byIdCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, SshKeyCache sshKeyCache, ProjectCache projectCache, ExternalIds externalIds, ExternalIdsUpdate.Server externalIdsUpdateFactory, GroupsUpdate.Factory groupsUpdateFactory, SetInactiveFlag setInactiveFlag)
+DECL|method|AccountManager ( SchemaFactory<ReviewDb> schema, Sequences sequences, @GerritServerConfig Config cfg, Accounts accounts, AccountsUpdate.Server accountsUpdateFactory, AccountCache byIdCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, SshKeyCache sshKeyCache, ProjectCache projectCache, ExternalIds externalIds, GroupsUpdate.Factory groupsUpdateFactory, SetInactiveFlag setInactiveFlag)
 name|AccountManager
 parameter_list|(
 name|SchemaFactory
@@ -855,11 +829,6 @@ name|projectCache
 parameter_list|,
 name|ExternalIds
 name|externalIds
-parameter_list|,
-name|ExternalIdsUpdate
-operator|.
-name|Server
-name|externalIdsUpdateFactory
 parameter_list|,
 name|GroupsUpdate
 operator|.
@@ -948,12 +917,6 @@ operator|.
 name|externalIds
 operator|=
 name|externalIds
-expr_stmt|;
-name|this
-operator|.
-name|externalIdsUpdateFactory
-operator|=
-name|externalIdsUpdateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2579,14 +2542,25 @@ argument_list|()
 operator|)
 condition|)
 block|{
-name|externalIdsUpdateFactory
+name|accountsUpdateFactory
 operator|.
 name|create
 argument_list|()
 operator|.
-name|delete
+name|update
+argument_list|(
+literal|"Delete External IDs on Update Link"
+argument_list|,
+name|to
+argument_list|,
+name|u
+lambda|->
+name|u
+operator|.
+name|deleteExternalIds
 argument_list|(
 name|filteredExtIdsByScheme
+argument_list|)
 argument_list|)
 block|;     }
 return|return
