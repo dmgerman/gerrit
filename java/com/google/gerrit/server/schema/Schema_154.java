@@ -1217,8 +1217,6 @@ init|=
 operator|new
 name|AccountConfig
 argument_list|(
-literal|null
-argument_list|,
 name|account
 operator|.
 name|getId

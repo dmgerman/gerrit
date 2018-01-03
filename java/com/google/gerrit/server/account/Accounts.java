@@ -190,24 +190,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|mail
-operator|.
-name|send
-operator|.
-name|OutgoingEmailValidator
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -396,15 +378,9 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
-DECL|field|emailValidator
-specifier|private
-specifier|final
-name|OutgoingEmailValidator
-name|emailValidator
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Accounts ( GitRepositoryManager repoManager, AllUsersName allUsersName, OutgoingEmailValidator emailValidator)
+DECL|method|Accounts (GitRepositoryManager repoManager, AllUsersName allUsersName)
 name|Accounts
 parameter_list|(
 name|GitRepositoryManager
@@ -412,9 +388,6 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsersName
-parameter_list|,
-name|OutgoingEmailValidator
-name|emailValidator
 parameter_list|)
 block|{
 name|this
@@ -428,12 +401,6 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
-expr_stmt|;
-name|this
-operator|.
-name|emailValidator
-operator|=
-name|emailValidator
 expr_stmt|;
 block|}
 annotation|@
@@ -859,8 +826,6 @@ init|=
 operator|new
 name|AccountConfig
 argument_list|(
-name|emailValidator
-argument_list|,
 name|accountId
 argument_list|)
 decl_stmt|;

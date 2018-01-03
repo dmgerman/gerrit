@@ -642,8 +642,6 @@ init|=
 operator|new
 name|AccountConfig
 argument_list|(
-literal|null
-argument_list|,
 name|accountId
 argument_list|)
 decl_stmt|;
