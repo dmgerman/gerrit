@@ -10109,7 +10109,7 @@ name|r
 operator|.
 name|assertErrorStatus
 argument_list|(
-literal|"invalid watch configuration"
+literal|"invalid account configuration"
 argument_list|)
 expr_stmt|;
 name|r

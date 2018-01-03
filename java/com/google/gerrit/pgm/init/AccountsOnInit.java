@@ -665,7 +665,7 @@ argument_list|()
 decl_stmt|;
 name|AccountConfig
 operator|.
-name|writeToConfig
+name|writeToAccountConfig
 argument_list|(
 name|InternalAccountUpdate
 operator|.

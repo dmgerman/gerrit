@@ -202,7 +202,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|Accounts
 import|;
 end_import
 
@@ -452,17 +452,15 @@ name|IdentifiedUser
 argument_list|>
 name|self
 decl_stmt|;
-DECL|field|watchConfig
+DECL|field|accounts
 specifier|private
 specifier|final
-name|WatchConfig
-operator|.
-name|Accessor
-name|watchConfig
+name|Accounts
+name|accounts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetWatchedProjects ( PermissionBackend permissionBackend, Provider<IdentifiedUser> self, WatchConfig.Accessor watchConfig)
+DECL|method|GetWatchedProjects ( PermissionBackend permissionBackend, Provider<IdentifiedUser> self, Accounts accounts)
 specifier|public
 name|GetWatchedProjects
 parameter_list|(
@@ -475,10 +473,8 @@ name|IdentifiedUser
 argument_list|>
 name|self
 parameter_list|,
-name|WatchConfig
-operator|.
-name|Accessor
-name|watchConfig
+name|Accounts
+name|accounts
 parameter_list|)
 block|{
 name|this
@@ -495,9 +491,9 @@ name|self
 expr_stmt|;
 name|this
 operator|.
-name|watchConfig
+name|accounts
 operator|=
-name|watchConfig
+name|accounts
 expr_stmt|;
 block|}
 annotation|@
@@ -591,7 +587,7 @@ argument_list|>
 argument_list|>
 name|e
 range|:
-name|watchConfig
+name|accounts
 operator|.
 name|getProjectWatches
 argument_list|(

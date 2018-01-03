@@ -959,17 +959,6 @@ specifier|final
 name|GeneralPreferencesLoader
 name|loader
 decl_stmt|;
-DECL|field|watchConfig
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|WatchConfig
-operator|.
-name|Accessor
-argument_list|>
-name|watchConfig
-decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -978,7 +967,7 @@ name|externalIds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByIdLoader ( AllUsersName allUsersName, Accounts accounts, GeneralPreferencesLoader loader, Provider<WatchConfig.Accessor> watchConfig, ExternalIds externalIds)
+DECL|method|ByIdLoader ( AllUsersName allUsersName, Accounts accounts, GeneralPreferencesLoader loader, ExternalIds externalIds)
 name|ByIdLoader
 parameter_list|(
 name|AllUsersName
@@ -989,14 +978,6 @@ name|accounts
 parameter_list|,
 name|GeneralPreferencesLoader
 name|loader
-parameter_list|,
-name|Provider
-argument_list|<
-name|WatchConfig
-operator|.
-name|Accessor
-argument_list|>
-name|watchConfig
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -1019,12 +1000,6 @@ operator|.
 name|loader
 operator|=
 name|loader
-expr_stmt|;
-name|this
-operator|.
-name|watchConfig
-operator|=
-name|watchConfig
 expr_stmt|;
 name|this
 operator|.
@@ -1141,10 +1116,7 @@ argument_list|(
 name|who
 argument_list|)
 argument_list|,
-name|watchConfig
-operator|.
-name|get
-argument_list|()
+name|accounts
 operator|.
 name|getProjectWatches
 argument_list|(
