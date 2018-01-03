@@ -24277,9 +24277,9 @@ literal|"gerrit:unresolved_comments_count(0), \n"
 operator|+
 literal|"!,"
 operator|+
-literal|"gerrit:commit_author(A), \n"
+literal|"gerrit:uploader(U), \n"
 operator|+
-literal|"R = label('All-Comments-Resolved', ok(A)).\n"
+literal|"R = label('All-Comments-Resolved', ok(U)).\n"
 operator|+
 literal|"submit_rule(submit(R)) :- \n"
 operator|+
@@ -27788,9 +27788,9 @@ literal|"gerrit:pure_revert(1), \n"
 operator|+
 literal|"!,"
 operator|+
-literal|"gerrit:commit_author(A), \n"
+literal|"gerrit:uploader(U), \n"
 operator|+
-literal|"R = label('Is-Pure-Revert', ok(A)).\n"
+literal|"R = label('Is-Pure-Revert', ok(U)).\n"
 operator|+
 literal|"submit_rule(submit(R)) :- \n"
 operator|+
