@@ -653,6 +653,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|BadRequestException
 block|{
 try|try
 init|(
