@@ -639,6 +639,24 @@ literal|1
 operator|<<
 literal|19
 decl_stmt|;
+DECL|interface|ExternalIdNotesLoader
+specifier|public
+interface|interface
+name|ExternalIdNotesLoader
+block|{
+DECL|method|load (Repository allUsersRepo)
+name|ExternalIdNotes
+name|load
+parameter_list|(
+name|Repository
+name|allUsersRepo
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|ConfigInvalidException
+function_decl|;
+block|}
 annotation|@
 name|Singleton
 DECL|class|Factory
@@ -646,6 +664,8 @@ specifier|public
 specifier|static
 class|class
 name|Factory
+implements|implements
+name|ExternalIdNotesLoader
 block|{
 DECL|field|externalIdCache
 specifier|private
@@ -684,6 +704,8 @@ operator|=
 name|accountCache
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|load (Repository allUsersRepo)
 specifier|public
 name|ExternalIdNotes
@@ -720,6 +742,8 @@ specifier|public
 specifier|static
 class|class
 name|FactoryNoReindex
+implements|implements
+name|ExternalIdNotesLoader
 block|{
 DECL|field|externalIdCache
 specifier|private
@@ -743,6 +767,8 @@ operator|=
 name|externalIdCache
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|load (Repository allUsersRepo)
 specifier|public
 name|ExternalIdNotes
