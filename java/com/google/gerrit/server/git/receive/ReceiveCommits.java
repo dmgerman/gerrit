@@ -17921,7 +17921,7 @@ parameter_list|)
 block|{
 name|logError
 argument_list|(
-literal|"Can't scan for changes to close"
+literal|"Failed to auto-close changes"
 argument_list|,
 name|e
 argument_list|)
