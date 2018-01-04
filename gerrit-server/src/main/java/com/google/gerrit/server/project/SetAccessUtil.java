@@ -838,6 +838,15 @@ name|min
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|pri
+operator|.
+name|action
+operator|!=
+literal|null
+condition|)
+block|{
 name|r
 operator|.
 name|setAction
@@ -857,6 +866,7 @@ name|action
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pri
