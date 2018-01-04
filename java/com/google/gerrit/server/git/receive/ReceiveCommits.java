@@ -18117,7 +18117,7 @@ name|NoSuchChangeException
 name|e
 parameter_list|)
 block|{
-comment|//Ignore deleted change
+comment|// Ignore deleted change
 block|}
 block|}
 return|return
