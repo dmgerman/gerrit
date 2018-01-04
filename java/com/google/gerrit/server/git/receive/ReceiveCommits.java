@@ -2204,6 +2204,22 @@ name|server
 operator|.
 name|update
 operator|.
+name|RetryHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
+operator|.
 name|UpdateException
 import|;
 end_import
@@ -3445,6 +3461,12 @@ operator|.
 name|Factory
 name|replaceOpFactory
 decl_stmt|;
+DECL|field|retryHelper
+specifier|private
+specifier|final
+name|RetryHelper
+name|retryHelper
+decl_stmt|;
 DECL|field|requestScopePropagator
 specifier|private
 specifier|final
@@ -3716,7 +3738,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, AccountsUpdate.Server accountsUpdate, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, AccountsUpdate.Server accountsUpdate, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -3835,6 +3857,9 @@ name|ReplaceOp
 operator|.
 name|Factory
 name|replaceOpFactory
+parameter_list|,
+name|RetryHelper
+name|retryHelper
 parameter_list|,
 name|RequestScopePropagator
 name|requestScopePropagator
@@ -4073,6 +4098,12 @@ operator|.
 name|replaceOpFactory
 operator|=
 name|replaceOpFactory
+expr_stmt|;
+name|this
+operator|.
+name|retryHelper
+operator|=
+name|retryHelper
 expr_stmt|;
 name|this
 operator|.
@@ -17353,11 +17384,20 @@ expr_stmt|;
 comment|// TODO(dborowitz): Combine this BatchUpdate with the main one in
 comment|// insertChangesAndPatchSets.
 try|try
+block|{
+name|retryHelper
+operator|.
+name|execute
+argument_list|(
+name|updateFactory
+lambda|->
+block|{
+try|try
 init|(
 name|BatchUpdate
 name|bu
 init|=
-name|batchUpdateFactory
+name|updateFactory
 operator|.
 name|create
 argument_list|(
@@ -17895,6 +17935,31 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|IOException
+decl||
+name|OrmException
+decl||
+name|PermissionBackendException
+name|e
+parameter_list|)
+block|{
+name|logError
+argument_list|(
+literal|"Failed to auto-close changes"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+literal|null
+return|;
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|RestApiException
 name|e
 parameter_list|)
@@ -17909,13 +17974,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|OrmException
-decl||
 name|UpdateException
-decl||
-name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
