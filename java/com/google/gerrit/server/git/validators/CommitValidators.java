@@ -492,6 +492,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|ProjectConfig
 import|;
 end_import
@@ -961,6 +977,12 @@ name|CommitValidationListener
 argument_list|>
 name|pluginValidators
 decl_stmt|;
+DECL|field|repoManager
+specifier|private
+specifier|final
+name|GitRepositoryManager
+name|repoManager
+decl_stmt|;
 DECL|field|allUsers
 specifier|private
 specifier|final
@@ -999,7 +1021,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory ( @erritPersonIdent PersonIdent gerritIdent, @CanonicalWebUrl @Nullable String canonicalWebUrl, @GerritServerConfig Config cfg, DynamicSet<CommitValidationListener> pluginValidators, AllUsersName allUsers, AllProjectsName allProjects, ExternalIdsConsistencyChecker externalIdsConsistencyChecker, AccountValidator accountValidator, ProjectCache projectCache)
+DECL|method|Factory ( @erritPersonIdent PersonIdent gerritIdent, @CanonicalWebUrl @Nullable String canonicalWebUrl, @GerritServerConfig Config cfg, DynamicSet<CommitValidationListener> pluginValidators, GitRepositoryManager repoManager, AllUsersName allUsers, AllProjectsName allProjects, ExternalIdsConsistencyChecker externalIdsConsistencyChecker, AccountValidator accountValidator, ProjectCache projectCache)
 name|Factory
 parameter_list|(
 annotation|@
@@ -1024,6 +1046,9 @@ argument_list|<
 name|CommitValidationListener
 argument_list|>
 name|pluginValidators
+parameter_list|,
+name|GitRepositoryManager
+name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsers
@@ -1058,6 +1083,12 @@ operator|.
 name|pluginValidators
 operator|=
 name|pluginValidators
+expr_stmt|;
+name|this
+operator|.
+name|repoManager
+operator|=
+name|repoManager
 expr_stmt|;
 name|this
 operator|.
@@ -1269,6 +1300,8 @@ argument_list|,
 operator|new
 name|AccountCommitValidator
 argument_list|(
+name|repoManager
+argument_list|,
 name|allUsers
 argument_list|,
 name|accountValidator
@@ -1413,6 +1446,8 @@ argument_list|,
 operator|new
 name|AccountCommitValidator
 argument_list|(
+name|repoManager
+argument_list|,
 name|allUsers
 argument_list|,
 name|accountValidator
@@ -4320,6 +4355,12 @@ name|AccountCommitValidator
 implements|implements
 name|CommitValidationListener
 block|{
+DECL|field|repoManager
+specifier|private
+specifier|final
+name|GitRepositoryManager
+name|repoManager
+decl_stmt|;
 DECL|field|allUsers
 specifier|private
 specifier|final
@@ -4332,10 +4373,13 @@ specifier|final
 name|AccountValidator
 name|accountValidator
 decl_stmt|;
-DECL|method|AccountCommitValidator (AllUsersName allUsers, AccountValidator accountValidator)
+DECL|method|AccountCommitValidator ( GitRepositoryManager repoManager, AllUsersName allUsers, AccountValidator accountValidator)
 specifier|public
 name|AccountCommitValidator
 parameter_list|(
+name|GitRepositoryManager
+name|repoManager
+parameter_list|,
 name|AllUsersName
 name|allUsers
 parameter_list|,
@@ -4343,6 +4387,12 @@ name|AccountValidator
 name|accountValidator
 parameter_list|)
 block|{
+name|this
+operator|.
+name|repoManager
+operator|=
+name|repoManager
+expr_stmt|;
 name|this
 operator|.
 name|allUsers
@@ -4452,6 +4502,17 @@ argument_list|()
 return|;
 block|}
 try|try
+init|(
+name|Repository
+name|repo
+init|=
+name|repoManager
+operator|.
+name|openRepository
+argument_list|(
+name|allUsers
+argument_list|)
+init|)
 block|{
 name|List
 argument_list|<
@@ -4464,6 +4525,8 @@ operator|.
 name|validate
 argument_list|(
 name|accountId
+argument_list|,
+name|repo
 argument_list|,
 name|receiveEvent
 operator|.

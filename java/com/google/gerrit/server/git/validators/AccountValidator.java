@@ -290,6 +290,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|revwalk
 operator|.
 name|RevWalk
@@ -346,7 +360,7 @@ operator|=
 name|emailValidator
 expr_stmt|;
 block|}
-DECL|method|validate ( Account.Id accountId, RevWalk rw, @Nullable ObjectId oldId, ObjectId newId)
+DECL|method|validate ( Account.Id accountId, Repository repo, RevWalk rw, @Nullable ObjectId oldId, ObjectId newId)
 specifier|public
 name|List
 argument_list|<
@@ -358,6 +372,9 @@ name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+name|Repository
+name|repo
 parameter_list|,
 name|RevWalk
 name|rw
@@ -410,6 +427,8 @@ name|loadAccount
 argument_list|(
 name|accountId
 argument_list|,
+name|repo
+argument_list|,
 name|rw
 argument_list|,
 name|oldId
@@ -451,6 +470,8 @@ operator|=
 name|loadAccount
 argument_list|(
 name|accountId
+argument_list|,
+name|repo
 argument_list|,
 name|rw
 argument_list|,
@@ -641,7 +662,7 @@ name|messages
 argument_list|)
 return|;
 block|}
-DECL|method|loadAccount ( Account.Id accountId, RevWalk rw, ObjectId commit, @Nullable List<String> messages)
+DECL|method|loadAccount ( Account.Id accountId, Repository repo, RevWalk rw, ObjectId commit, @Nullable List<String> messages)
 specifier|private
 name|Optional
 argument_list|<
@@ -653,6 +674,9 @@ name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+name|Repository
+name|repo
 parameter_list|,
 name|RevWalk
 name|rw
@@ -685,6 +709,8 @@ operator|new
 name|AccountConfig
 argument_list|(
 name|accountId
+argument_list|,
+name|repo
 argument_list|)
 decl_stmt|;
 name|accountConfig

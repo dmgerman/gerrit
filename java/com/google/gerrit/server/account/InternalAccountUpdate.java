@@ -130,6 +130,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|GeneralPreferencesInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -386,6 +402,17 @@ argument_list|<
 name|ProjectWatchKey
 argument_list|>
 name|getDeletedProjectWatches
+parameter_list|()
+function_decl|;
+comment|/**    * Returns the new value for the general preferences.    *    *<p>Only preferences that are non-null in the returned GeneralPreferencesInfo should be updated.    *    * @return the new value for the general preferences, {@code Optional#empty()} if the general    *     preferences are not being updated, the wrapped value is never {@code null}    */
+DECL|method|getGeneralPreferences ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|GeneralPreferencesInfo
+argument_list|>
+name|getGeneralPreferences
 parameter_list|()
 function_decl|;
 comment|/**    * Class to build an account update.    *    *<p>Account data is only updated if the corresponding setter is invoked. If a setter is not    * invoked the corresponding data stays unchanged. To unset string values the setter can be    * invoked with either {@code null} or an empty string ({@code null} is converted to an empty    * string by using the {@link WrapperThatConvertsNullStringArgsToEmptyStrings} wrapper, see {@link    * InternalAccountUpdate#builder()}).    */
@@ -820,6 +847,17 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Sets the general preferences for the account.      *      *<p>Updates any preference that is non-null in the provided GeneralPreferencesInfo.      *      * @param generalPreferences the general preferences that should be set      * @return the builder      */
+DECL|method|setGeneralPreferences (GeneralPreferencesInfo generalPreferences)
+specifier|public
+specifier|abstract
+name|Builder
+name|setGeneralPreferences
+parameter_list|(
+name|GeneralPreferencesInfo
+name|generalPreferences
+parameter_list|)
+function_decl|;
 comment|/**      * Builds the account update.      *      * @return the account update      */
 DECL|method|build ()
 specifier|public
@@ -1200,6 +1238,28 @@ operator|.
 name|deleteProjectWatches
 argument_list|(
 name|projectWatches
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|setGeneralPreferences (GeneralPreferencesInfo generalPreferences)
+specifier|public
+name|Builder
+name|setGeneralPreferences
+parameter_list|(
+name|GeneralPreferencesInfo
+name|generalPreferences
+parameter_list|)
+block|{
+name|delegate
+operator|.
+name|setGeneralPreferences
+argument_list|(
+name|generalPreferences
 argument_list|)
 expr_stmt|;
 return|return

@@ -953,12 +953,6 @@ specifier|final
 name|Accounts
 name|accounts
 decl_stmt|;
-DECL|field|loader
-specifier|private
-specifier|final
-name|GeneralPreferencesLoader
-name|loader
-decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -967,7 +961,7 @@ name|externalIds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByIdLoader ( AllUsersName allUsersName, Accounts accounts, GeneralPreferencesLoader loader, ExternalIds externalIds)
+DECL|method|ByIdLoader (AllUsersName allUsersName, Accounts accounts, ExternalIds externalIds)
 name|ByIdLoader
 parameter_list|(
 name|AllUsersName
@@ -975,9 +969,6 @@ name|allUsersName
 parameter_list|,
 name|Accounts
 name|accounts
-parameter_list|,
-name|GeneralPreferencesLoader
-name|loader
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -994,12 +985,6 @@ operator|.
 name|accounts
 operator|=
 name|accounts
-expr_stmt|;
-name|this
-operator|.
-name|loader
-operator|=
-name|loader
 expr_stmt|;
 name|this
 operator|.
@@ -1056,9 +1041,9 @@ name|account
 operator|.
 name|setGeneralPreferences
 argument_list|(
-name|loader
+name|accounts
 operator|.
-name|load
+name|getGeneralPreferences
 argument_list|(
 name|who
 argument_list|)

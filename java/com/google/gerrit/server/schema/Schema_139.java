@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|//Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -8,23 +8,15 @@ comment|//
 end_comment
 
 begin_comment
-comment|//Licensed under the Apache License, Version 2.0 (the "License");
+comment|// Licensed under the Apache License, Version 2.0 (the "License");
 end_comment
 
 begin_comment
-comment|//you may not use this file except in compliance with the License.
+comment|// you may not use this file except in compliance with the License.
 end_comment
 
 begin_comment
-comment|//You may obtain a copy of the License at
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//http://www.apache.org/licenses/LICENSE-2.0
+comment|// You may obtain a copy of the License at
 end_comment
 
 begin_comment
@@ -32,23 +24,31 @@ comment|//
 end_comment
 
 begin_comment
-comment|//Unless required by applicable law or agreed to in writing, software
+comment|// http://www.apache.org/licenses/LICENSE-2.0
 end_comment
 
 begin_comment
-comment|//distributed under the License is distributed on an "AS IS" BASIS,
+comment|//
 end_comment
 
 begin_comment
-comment|//WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+comment|// Unless required by applicable law or agreed to in writing, software
 end_comment
 
 begin_comment
-comment|//See the License for the specific language governing permissions and
+comment|// distributed under the License is distributed on an "AS IS" BASIS,
 end_comment
 
 begin_comment
-comment|//limitations under the License.
+comment|// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+end_comment
+
+begin_comment
+comment|// See the License for the specific language governing permissions and
+end_comment
+
+begin_comment
+comment|// limitations under the License.
 end_comment
 
 begin_package
@@ -1220,6 +1220,8 @@ name|e
 operator|.
 name|getKey
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 name|accountConfig

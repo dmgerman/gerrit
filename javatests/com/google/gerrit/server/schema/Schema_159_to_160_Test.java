@@ -943,7 +943,7 @@ name|inOrder
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Raw config values, bypassing the defaults set by GeneralPreferencesLoader.
+comment|// Raw config values, bypassing the defaults set by PreferencesConfig.
 DECL|method|myMenusFromNoteDb (Account.Id id)
 specifier|private
 name|ImmutableMap
