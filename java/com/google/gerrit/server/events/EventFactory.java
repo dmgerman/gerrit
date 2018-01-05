@@ -192,6 +192,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|index
+operator|.
+name|IndexConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -1075,9 +1089,15 @@ name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
+DECL|field|indexConfig
+specifier|private
+specifier|final
+name|IndexConfig
+name|indexConfig
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventFactory ( AccountCache accountCache, Emails emails, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchListCache patchListCache, @GerritPersonIdent PersonIdent myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schema)
+DECL|method|EventFactory ( AccountCache accountCache, Emails emails, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchListCache patchListCache, @GerritPersonIdent PersonIdent myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schema, IndexConfig indexConfig)
 name|EventFactory
 parameter_list|(
 name|AccountCache
@@ -1126,6 +1146,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schema
+parameter_list|,
+name|IndexConfig
+name|indexConfig
 parameter_list|)
 block|{
 name|this
@@ -1187,6 +1210,12 @@ operator|.
 name|schema
 operator|=
 name|schema
+expr_stmt|;
+name|this
+operator|.
+name|indexConfig
+operator|=
+name|indexConfig
 expr_stmt|;
 block|}
 comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to JSON.    *    * @param change    * @return object suitable for serialization to JSON    */
@@ -2300,13 +2329,14 @@ control|(
 name|ChangeData
 name|cd
 range|:
-name|queryProvider
-operator|.
-name|get
-argument_list|()
+name|InternalChangeQuery
 operator|.
 name|byProjectGroups
 argument_list|(
+name|queryProvider
+argument_list|,
+name|indexConfig
+argument_list|,
 name|change
 operator|.
 name|getProject
