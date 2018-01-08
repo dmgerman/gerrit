@@ -184,6 +184,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|GeneralPreferencesInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -451,6 +467,12 @@ argument_list|>
 argument_list|>
 name|projectWatches
 decl_stmt|;
+DECL|field|generalPreferences
+specifier|private
+specifier|final
+name|GeneralPreferencesInfo
+name|generalPreferences
+decl_stmt|;
 DECL|field|properties
 specifier|private
 name|Cache
@@ -466,7 +488,7 @@ name|Object
 argument_list|>
 name|properties
 decl_stmt|;
-DECL|method|AccountState ( AllUsersName allUsersName, Account account, Collection<ExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
+DECL|method|AccountState ( AllUsersName allUsersName, Account account, Collection<ExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches, GeneralPreferencesInfo generalPreferences)
 specifier|public
 name|AccountState
 parameter_list|(
@@ -492,6 +514,9 @@ name|NotifyType
 argument_list|>
 argument_list|>
 name|projectWatches
+parameter_list|,
+name|GeneralPreferencesInfo
+name|generalPreferences
 parameter_list|)
 block|{
 name|this
@@ -517,6 +542,12 @@ operator|.
 name|projectWatches
 operator|=
 name|projectWatches
+expr_stmt|;
+name|this
+operator|.
+name|generalPreferences
+operator|=
+name|generalPreferences
 expr_stmt|;
 name|this
 operator|.
@@ -727,6 +758,17 @@ parameter_list|()
 block|{
 return|return
 name|projectWatches
+return|;
+block|}
+comment|/** The general preferences of the account. */
+DECL|method|getGeneralPreferences ()
+specifier|public
+name|GeneralPreferencesInfo
+name|getGeneralPreferences
+parameter_list|()
+block|{
+return|return
+name|generalPreferences
 return|;
 block|}
 DECL|method|getUserName (Collection<ExternalId> ids)

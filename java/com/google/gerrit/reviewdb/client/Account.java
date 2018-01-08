@@ -142,22 +142,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|client
-operator|.
-name|GeneralPreferencesInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|client
@@ -695,12 +679,6 @@ specifier|protected
 name|String
 name|userName
 decl_stmt|;
-comment|/**<i>stored in git, used for caching</i> the user's preferences. */
-DECL|field|generalPreferences
-specifier|private
-name|GeneralPreferencesInfo
-name|generalPreferences
-decl_stmt|;
 comment|/**    * ID of the user branch from which the account was read, {@code null} if the account was read    * from ReviewDb.    */
 DECL|field|metaId
 specifier|private
@@ -977,30 +955,6 @@ block|{
 return|return
 name|registeredOn
 return|;
-block|}
-DECL|method|getGeneralPreferencesInfo ()
-specifier|public
-name|GeneralPreferencesInfo
-name|getGeneralPreferencesInfo
-parameter_list|()
-block|{
-return|return
-name|generalPreferences
-return|;
-block|}
-DECL|method|setGeneralPreferences (GeneralPreferencesInfo p)
-specifier|public
-name|void
-name|setGeneralPreferences
-parameter_list|(
-name|GeneralPreferencesInfo
-name|p
-parameter_list|)
-block|{
-name|generalPreferences
-operator|=
-name|p
-expr_stmt|;
 block|}
 DECL|method|getMetaId ()
 specifier|public
