@@ -511,7 +511,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|isOff (String listenHostname)
-specifier|public
 specifier|static
 name|boolean
 name|isOff
