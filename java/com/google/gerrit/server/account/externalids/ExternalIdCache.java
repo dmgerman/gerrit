@@ -292,6 +292,24 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+DECL|method|byAccount (Account.Id accountId, ObjectId rev)
+name|ImmutableSet
+argument_list|<
+name|ExternalId
+argument_list|>
+name|byAccount
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|,
+name|ObjectId
+name|rev
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 DECL|method|allByAccount ()
 name|ImmutableSetMultimap
 argument_list|<

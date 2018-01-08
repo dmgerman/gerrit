@@ -234,6 +234,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|externalids
+operator|.
+name|ExternalIds
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|MetaDataUpdate
@@ -758,7 +776,7 @@ return|return
 name|loadedAccount
 return|;
 block|}
-comment|/**    * Returns the revision of the {@code refs/meta/external-ids} branch.    *    * @return revision of the {@code refs/meta/external-ids} branch, {@link Optional#empty()} if no    *     {@code refs/meta/external-ids} branch exists    */
+comment|/**    * Returns the revision of the {@code refs/meta/external-ids} branch.    *    *<p>This revision can be used to load the external IDs of the loaded account lazily via {@link    * ExternalIds#byAccount(com.google.gerrit.reviewdb.client.Account.Id, ObjectId)}.    *    * @return revision of the {@code refs/meta/external-ids} branch, {@link Optional#empty()} if no    *     {@code refs/meta/external-ids} branch exists    */
 DECL|method|getExternalIdsRev ()
 specifier|public
 name|Optional
