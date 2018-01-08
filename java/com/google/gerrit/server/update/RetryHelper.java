@@ -318,7 +318,7 @@ name|gerrit
 operator|.
 name|metrics
 operator|.
-name|Counter0
+name|Counter1
 import|;
 end_import
 
@@ -346,7 +346,21 @@ name|gerrit
 operator|.
 name|metrics
 operator|.
-name|Histogram0
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|Histogram1
 import|;
 end_import
 
@@ -571,6 +585,20 @@ throws|throws
 name|Exception
 function_decl|;
 block|}
+DECL|enum|ActionType
+specifier|public
+enum|enum
+name|ActionType
+block|{
+DECL|enumConstant|ACCOUNT_UPDATE
+name|ACCOUNT_UPDATE
+block|,
+DECL|enumConstant|CHANGE_QUERY
+name|CHANGE_QUERY
+block|,
+DECL|enumConstant|CHANGE_UPDATE
+name|CHANGE_UPDATE
+block|}
 comment|/**    * Options for retrying a single operation.    *    *<p>This class is similar in function to upstream's {@link RetryerBuilder}, but it exists as its    * own class in Gerrit for several reasons:    *    *<ul>    *<li>Gerrit needs to support defaults for some of the options, such as a default timeout.    *       {@code RetryerBuilder} doesn't support calling the same setter multiple times, so doing    *       this with {@code RetryerBuilder} directly would not be easy.    *<li>Gerrit explicitly does not want callers to have full control over all possible options,    *       so this class exposes a curated subset.    *</ul>    */
 annotation|@
 name|AutoValue
@@ -649,12 +677,18 @@ name|Metrics
 block|{
 DECL|field|attemptCounts
 specifier|final
-name|Histogram0
+name|Histogram1
+argument_list|<
+name|ActionType
+argument_list|>
 name|attemptCounts
 decl_stmt|;
 DECL|field|timeoutCount
 specifier|final
-name|Counter0
+name|Counter1
+argument_list|<
+name|ActionType
+argument_list|>
 name|timeoutCount
 decl_stmt|;
 annotation|@
@@ -666,18 +700,35 @@ name|MetricMaker
 name|metricMaker
 parameter_list|)
 block|{
+name|Field
+argument_list|<
+name|ActionType
+argument_list|>
+name|view
+init|=
+name|Field
+operator|.
+name|ofEnum
+argument_list|(
+name|ActionType
+operator|.
+name|class
+argument_list|,
+literal|"action_type"
+argument_list|)
+decl_stmt|;
 name|attemptCounts
 operator|=
 name|metricMaker
 operator|.
 name|newHistogram
 argument_list|(
-literal|"batch_update/retry_attempt_counts"
+literal|"action/retry_attempt_counts"
 argument_list|,
 operator|new
 name|Description
 argument_list|(
-literal|"Distribution of number of attempts made by RetryHelper"
+literal|"Distribution of number of attempts made by RetryHelper to execute an action"
 operator|+
 literal|" (1 == single attempt, no retry)"
 argument_list|)
@@ -689,6 +740,8 @@ name|setUnit
 argument_list|(
 literal|"attempts"
 argument_list|)
+argument_list|,
+name|view
 argument_list|)
 expr_stmt|;
 name|timeoutCount
@@ -697,12 +750,12 @@ name|metricMaker
 operator|.
 name|newCounter
 argument_list|(
-literal|"batch_update/retry_timeout_count"
+literal|"action/retry_timeout_count"
 argument_list|,
 operator|new
 name|Description
 argument_list|(
-literal|"Number of executions of RetryHelper that ultimately timed out"
+literal|"Number of action executions of RetryHelper that ultimately timed out"
 argument_list|)
 operator|.
 name|setCumulative
@@ -712,6 +765,8 @@ name|setUnit
 argument_list|(
 literal|"timeouts"
 argument_list|)
+argument_list|,
+name|view
 argument_list|)
 expr_stmt|;
 block|}
@@ -995,7 +1050,7 @@ return|return
 name|defaultTimeout
 return|;
 block|}
-DECL|method|execute (Action<T> action)
+DECL|method|execute (ActionType actionType, Action<T> action)
 specifier|public
 parameter_list|<
 name|T
@@ -1003,6 +1058,9 @@ parameter_list|>
 name|T
 name|execute
 parameter_list|(
+name|ActionType
+name|actionType
+parameter_list|,
 name|Action
 argument_list|<
 name|T
@@ -1016,21 +1074,64 @@ name|ConfigInvalidException
 throws|,
 name|OrmException
 block|{
-try|try
-block|{
 return|return
 name|execute
 argument_list|(
-name|action
+name|actionType
 argument_list|,
-name|defaults
-argument_list|()
+name|action
 argument_list|,
 name|t
 lambda|->
 name|t
 operator|instanceof
 name|LockFailureException
+argument_list|)
+return|;
+block|}
+DECL|method|execute ( ActionType actionType, Action<T> action, Predicate<Throwable> exceptionPredicate)
+specifier|public
+parameter_list|<
+name|T
+parameter_list|>
+name|T
+name|execute
+parameter_list|(
+name|ActionType
+name|actionType
+parameter_list|,
+name|Action
+argument_list|<
+name|T
+argument_list|>
+name|action
+parameter_list|,
+name|Predicate
+argument_list|<
+name|Throwable
+argument_list|>
+name|exceptionPredicate
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|ConfigInvalidException
+throws|,
+name|OrmException
+block|{
+try|try
+block|{
+return|return
+name|execute
+argument_list|(
+name|actionType
+argument_list|,
+name|action
+argument_list|,
+name|defaults
+argument_list|()
+argument_list|,
+name|exceptionPredicate
 argument_list|)
 return|;
 block|}
@@ -1157,6 +1258,10 @@ comment|// don't do it automatically. Let the end user decide whether they want 
 return|return
 name|execute
 argument_list|(
+name|ActionType
+operator|.
+name|CHANGE_UPDATE
+argument_list|,
 parameter_list|()
 lambda|->
 name|changeAction
@@ -1182,6 +1287,10 @@ block|}
 return|return
 name|execute
 argument_list|(
+name|ActionType
+operator|.
+name|CHANGE_UPDATE
+argument_list|,
 parameter_list|()
 lambda|->
 name|changeAction
@@ -1265,11 +1374,11 @@ end_catch
 
 begin_comment
 unit|}
-comment|/**    * Executes an action with a given retryer.    *    * @param action the action which should be executed and retried on failure    * @param opts options for retrying the action on failure    * @param exceptionPredicate predicate to control on which exception the action should be retried    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
+comment|/**    * Executes an action with a given retryer.    *    * @param actionType the type of the action    * @param action the action which should be executed and retried on failure    * @param opts options for retrying the action on failure    * @param exceptionPredicate predicate to control on which exception the action should be retried    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
 end_comment
 
 begin_function
-DECL|method|execute (Action<T> action, Options opts, Predicate<Throwable> exceptionPredicate)
+DECL|method|execute ( ActionType actionType, Action<T> action, Options opts, Predicate<Throwable> exceptionPredicate)
 unit|private
 parameter_list|<
 name|T
@@ -1277,6 +1386,9 @@ parameter_list|>
 name|T
 name|execute
 parameter_list|(
+name|ActionType
+name|actionType
+parameter_list|,
 name|Action
 argument_list|<
 name|T
@@ -1327,6 +1439,8 @@ expr_stmt|;
 return|return
 name|execute
 argument_list|(
+name|actionType
+argument_list|,
 name|action
 argument_list|,
 name|retryerBuilder
@@ -1344,6 +1458,8 @@ name|attemptCounts
 operator|.
 name|record
 argument_list|(
+name|actionType
+argument_list|,
 name|listener
 operator|.
 name|getAttemptCount
@@ -1355,11 +1471,11 @@ block|}
 end_function
 
 begin_comment
-comment|/**    * Executes an action with a given retryer.    *    * @param action the action which should be executed and retried on failure    * @param retryer the retryer    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
+comment|/**    * Executes an action with a given retryer.    *    * @param actionType the type of the action    * @param action the action which should be executed and retried on failure    * @param retryer the retryer    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
 end_comment
 
 begin_function
-DECL|method|execute (Action<T> action, Retryer<T> retryer)
+DECL|method|execute (ActionType actionType, Action<T> action, Retryer<T> retryer)
 specifier|private
 parameter_list|<
 name|T
@@ -1367,6 +1483,9 @@ parameter_list|>
 name|T
 name|execute
 parameter_list|(
+name|ActionType
+name|actionType
+parameter_list|,
 name|Action
 argument_list|<
 name|T
@@ -1418,7 +1537,9 @@ operator|.
 name|timeoutCount
 operator|.
 name|increment
-argument_list|()
+argument_list|(
+name|actionType
+argument_list|)
 expr_stmt|;
 block|}
 if|if
