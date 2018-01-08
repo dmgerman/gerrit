@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|client
+name|common
 operator|.
 name|testing
 operator|.
