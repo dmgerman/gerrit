@@ -13932,6 +13932,9 @@ name|getId
 argument_list|()
 argument_list|)
 operator|.
+name|getAccount
+argument_list|()
+operator|.
 name|getMetaId
 argument_list|()
 argument_list|)
@@ -14936,6 +14939,9 @@ name|admin
 operator|.
 name|id
 argument_list|)
+operator|.
+name|getAccount
+argument_list|()
 decl_stmt|;
 name|assertThat
 argument_list|(
