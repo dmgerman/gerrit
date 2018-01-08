@@ -163,6 +163,14 @@ literal|"project"
 argument_list|,
 literal|"matchAuthorToCommitterDate"
 argument_list|)
+block|,
+DECL|enumConstant|REJECT_EMPTY_COMMIT
+name|REJECT_EMPTY_COMMIT
+argument_list|(
+literal|"submit"
+argument_list|,
+literal|"rejectEmptyCommit"
+argument_list|)
 block|;
 comment|// Git config
 DECL|field|section

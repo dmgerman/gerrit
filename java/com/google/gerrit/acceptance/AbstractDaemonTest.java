@@ -3851,6 +3851,15 @@ operator|.
 name|useContentMerge
 argument_list|()
 expr_stmt|;
+name|in
+operator|.
+name|rejectEmptyCommit
+operator|=
+name|ann
+operator|.
+name|rejectEmptyCommit
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{

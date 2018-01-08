@@ -218,6 +218,11 @@ specifier|public
 name|InheritedBooleanInfo
 name|matchAuthorToCommitterDate
 decl_stmt|;
+DECL|field|rejectEmptyCommit
+specifier|public
+name|InheritedBooleanInfo
+name|rejectEmptyCommit
+decl_stmt|;
 DECL|field|maxObjectSizeLimit
 specifier|public
 name|MaxObjectSizeLimitInfo
