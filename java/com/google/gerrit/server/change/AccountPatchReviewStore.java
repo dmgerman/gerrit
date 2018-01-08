@@ -179,6 +179,7 @@ class|class
 name|PatchSetWithReviewedFiles
 block|{
 DECL|method|patchSetId ()
+specifier|public
 specifier|abstract
 name|PatchSet
 operator|.
@@ -187,6 +188,7 @@ name|patchSetId
 parameter_list|()
 function_decl|;
 DECL|method|files ()
+specifier|public
 specifier|abstract
 name|ImmutableSet
 argument_list|<

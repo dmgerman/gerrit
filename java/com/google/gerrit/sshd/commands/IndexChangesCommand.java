@@ -124,9 +124,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
+name|permissions
 operator|.
-name|Index
+name|PermissionBackendException
 import|;
 end_import
 
@@ -140,9 +140,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|permissions
+name|restapi
 operator|.
-name|PermissionBackendException
+name|change
+operator|.
+name|Index
 import|;
 end_import
 

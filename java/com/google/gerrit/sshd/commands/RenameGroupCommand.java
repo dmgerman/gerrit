@@ -156,6 +156,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|group
 operator|.
 name|GroupsCollection
@@ -171,6 +173,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|restapi
 operator|.
 name|group
 operator|.

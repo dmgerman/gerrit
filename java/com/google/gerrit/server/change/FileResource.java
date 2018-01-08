@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -252,6 +252,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getAccountId ()
+specifier|public
 name|Account
 operator|.
 name|Id

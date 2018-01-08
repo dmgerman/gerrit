@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -432,6 +432,7 @@ literal|null
 expr_stmt|;
 block|}
 DECL|method|ReviewerResource (ChangeResource change, Address address)
+specifier|public
 name|ReviewerResource
 parameter_list|(
 name|ChangeResource
@@ -467,6 +468,7 @@ literal|null
 expr_stmt|;
 block|}
 DECL|method|ReviewerResource (RevisionResource revision, Address address)
+specifier|public
 name|ReviewerResource
 parameter_list|(
 name|RevisionResource

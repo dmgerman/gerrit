@@ -637,6 +637,7 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|Base
+specifier|public
 specifier|abstract
 specifier|static
 class|class
@@ -677,12 +678,14 @@ argument_list|)
 return|;
 block|}
 DECL|method|notes ()
+specifier|public
 specifier|abstract
 name|ChangeNotes
 name|notes
 parameter_list|()
 function_decl|;
 DECL|method|patchSet ()
+specifier|public
 specifier|abstract
 name|PatchSet
 name|patchSet
@@ -690,6 +693,7 @@ parameter_list|()
 function_decl|;
 block|}
 DECL|method|parseBase (RevisionResource rsrc, String base)
+specifier|public
 name|Base
 name|parseBase
 parameter_list|(
@@ -1009,6 +1013,7 @@ return|;
 block|}
 comment|/**    * Find the commit onto which a patch set should be rebased.    *    *<p>This is defined as the latest patch set of the change corresponding to this commit's parent,    * or the destination branch tip in the case where the parent's change is merged.    *    * @param patchSet patch set for which the new base commit should be found.    * @param destBranch the destination branch.    * @param git the repository.    * @param rw the RevWalk.    * @return the commit onto which the patch set should be rebased.    * @throws RestApiException if rebase is not possible.    * @throws IOException if accessing the repository fails.    * @throws OrmException if accessing the database fails.    */
 DECL|method|findBaseRevision ( PatchSet patchSet, Branch.NameKey destBranch, Repository git, RevWalk rw)
+specifier|public
 name|ObjectId
 name|findBaseRevision
 parameter_list|(

@@ -496,6 +496,7 @@ end_comment
 
 begin_class
 DECL|class|WalkSorter
+specifier|public
 class|class
 name|WalkSorter
 block|{
@@ -1677,6 +1678,7 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|PatchSetData
+specifier|public
 specifier|abstract
 specifier|static
 class|class
@@ -1712,6 +1714,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|data ()
+specifier|public
 specifier|abstract
 name|ChangeData
 name|data

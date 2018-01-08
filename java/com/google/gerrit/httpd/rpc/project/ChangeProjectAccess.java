@@ -346,6 +346,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|project
 operator|.
 name|SetParent

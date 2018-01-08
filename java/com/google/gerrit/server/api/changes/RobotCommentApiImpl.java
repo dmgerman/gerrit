@@ -148,7 +148,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|GetRobotComment
+name|RobotCommentResource
 import|;
 end_import
 
@@ -162,9 +162,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|change
 operator|.
-name|RobotCommentResource
+name|GetRobotComment
 import|;
 end_import
 

@@ -347,6 +347,7 @@ name|patchListCache
 expr_stmt|;
 block|}
 DECL|method|toFileInfoMap (Change change, PatchSet patchSet)
+specifier|public
 name|Map
 argument_list|<
 name|String
@@ -379,6 +380,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|toFileInfoMap (Change change, RevId revision, @Nullable PatchSet base)
+specifier|public
 name|Map
 argument_list|<
 name|String
@@ -425,7 +427,8 @@ name|base
 argument_list|)
 return|;
 block|}
-DECL|method|toFileInfoMap (Change change, ObjectId objectId, @Nullable PatchSet base)
+DECL|method|toFileInfoMap ( Change change, ObjectId objectId, @Nullable PatchSet base)
+specifier|public
 name|Map
 argument_list|<
 name|String
@@ -493,6 +496,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|toFileInfoMap (Change change, RevId revision, int parent)
+specifier|public
 name|Map
 argument_list|<
 name|String

@@ -466,6 +466,7 @@ end_comment
 
 begin_class
 DECL|class|RefControl
+specifier|public
 class|class
 name|RefControl
 block|{
@@ -1839,6 +1840,7 @@ return|;
 block|}
 comment|/** True if the user has this permission. Works only for non labels. */
 DECL|method|canPerform (String permissionName)
+specifier|public
 name|boolean
 name|canPerform
 parameter_list|(

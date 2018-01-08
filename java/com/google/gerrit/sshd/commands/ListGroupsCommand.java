@@ -202,9 +202,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
+name|ioutil
 operator|.
-name|ListGroups
+name|ColumnFormatter
 import|;
 end_import
 
@@ -218,9 +218,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ioutil
+name|restapi
 operator|.
-name|ColumnFormatter
+name|group
+operator|.
+name|ListGroups
 import|;
 end_import
 

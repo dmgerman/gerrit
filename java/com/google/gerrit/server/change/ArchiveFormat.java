@@ -366,6 +366,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getMimeType ()
+specifier|public
 name|String
 name|getMimeType
 parameter_list|()
@@ -375,6 +376,7 @@ name|mimeType
 return|;
 block|}
 DECL|method|getDefaultSuffix ()
+specifier|public
 name|String
 name|getDefaultSuffix
 parameter_list|()
@@ -391,6 +393,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getSuffixes ()
+specifier|public
 name|Iterable
 argument_list|<
 name|String

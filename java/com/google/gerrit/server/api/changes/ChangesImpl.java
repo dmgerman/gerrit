@@ -320,6 +320,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|change
 operator|.
 name|ChangesCollection
@@ -336,6 +338,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|change
 operator|.
 name|CreateChange
@@ -351,6 +355,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|restapi
 operator|.
 name|change
 operator|.
