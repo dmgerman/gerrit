@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.project
+DECL|package|com.google.gerrit.server.restapi.project
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|restapi
 operator|.
 name|project
 package|;
@@ -168,7 +170,6 @@ end_comment
 
 begin_class
 DECL|class|ProjectNode
-specifier|public
 class|class
 name|ProjectNode
 implements|implements
@@ -180,7 +181,6 @@ name|ProjectNode
 argument_list|>
 block|{
 DECL|interface|Factory
-specifier|public
 interface|interface
 name|Factory
 block|{
@@ -272,7 +272,6 @@ expr_stmt|;
 block|}
 comment|/**    * Returns the project parent name.    *    * @return Project parent name, {@code null} for the 'All-Projects' root project    */
 DECL|method|getParentName ()
-specifier|public
 name|Project
 operator|.
 name|NameKey
@@ -289,7 +288,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|isAllProjects ()
-specifier|public
 name|boolean
 name|isAllProjects
 parameter_list|()
@@ -307,7 +305,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|getProject ()
-specifier|public
 name|Project
 name|getProject
 parameter_list|()
@@ -361,7 +358,6 @@ name|children
 return|;
 block|}
 DECL|method|addChild (ProjectNode child)
-specifier|public
 name|void
 name|addChild
 parameter_list|(
