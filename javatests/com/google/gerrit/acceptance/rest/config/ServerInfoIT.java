@@ -504,6 +504,17 @@ name|value
 operator|=
 literal|"50s"
 argument_list|)
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
+literal|"change.disablePrivateChanges"
+argument_list|,
+name|value
+operator|=
+literal|"true"
+argument_list|)
 comment|// download
 annotation|@
 name|GerritConfig
@@ -850,6 +861,18 @@ name|isEqualTo
 argument_list|(
 literal|50
 argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|i
+operator|.
+name|change
+operator|.
+name|disablePrivateChanges
+argument_list|)
+operator|.
+name|isTrue
+argument_list|()
 expr_stmt|;
 comment|// download
 name|assertThat
@@ -1396,6 +1419,18 @@ name|isEqualTo
 argument_list|(
 literal|300
 argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|i
+operator|.
+name|change
+operator|.
+name|disablePrivateChanges
+argument_list|)
+operator|.
+name|isNull
+argument_list|()
 expr_stmt|;
 comment|// download
 name|assertThat
