@@ -2414,6 +2414,9 @@ literal|null
 operator|&&
 name|a
 operator|.
+name|getAccount
+argument_list|()
+operator|.
 name|getPreferredEmail
 argument_list|()
 operator|==
@@ -2788,6 +2791,9 @@ if|if
 condition|(
 name|a
 operator|.
+name|getAccount
+argument_list|()
+operator|.
 name|getPreferredEmail
 argument_list|()
 operator|!=
@@ -2803,6 +2809,9 @@ argument_list|(
 name|e
 lambda|->
 name|a
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getPreferredEmail
 argument_list|()

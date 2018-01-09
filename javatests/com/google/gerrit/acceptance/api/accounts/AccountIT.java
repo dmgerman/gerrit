@@ -14480,6 +14480,8 @@ literal|null
 argument_list|,
 name|allUsers
 argument_list|,
+name|externalIds
+argument_list|,
 name|metaDataUpdateInternalFactory
 argument_list|,
 operator|new
@@ -14788,6 +14790,8 @@ argument_list|,
 literal|null
 argument_list|,
 name|allUsers
+argument_list|,
+name|externalIds
 argument_list|,
 name|metaDataUpdateInternalFactory
 argument_list|,

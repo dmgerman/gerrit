@@ -577,6 +577,9 @@ name|equals
 argument_list|(
 name|a
 operator|.
+name|getAccount
+argument_list|()
+operator|.
 name|getPreferredEmail
 argument_list|()
 argument_list|)

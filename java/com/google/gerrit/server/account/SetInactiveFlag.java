@@ -313,6 +313,9 @@ condition|(
 operator|!
 name|a
 operator|.
+name|getAccount
+argument_list|()
+operator|.
 name|isActive
 argument_list|()
 condition|)
@@ -431,6 +434,9 @@ block|{
 if|if
 condition|(
 name|a
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|isActive
 argument_list|()
