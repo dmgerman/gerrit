@@ -3161,6 +3161,9 @@ operator|.
 name|CLEAN_REBASE
 argument_list|)
 return|;
+case|case
+name|INHERIT
+case|:
 default|default:
 throw|throw
 operator|new

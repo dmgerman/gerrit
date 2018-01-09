@@ -190,6 +190,25 @@ name|String
 name|errorMessage
 parameter_list|)
 block|{
+if|if
+condition|(
+name|type
+operator|==
+name|SubmitType
+operator|.
+name|INHERIT
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Cannot output submit type "
+operator|+
+name|type
+argument_list|)
+throw|;
+block|}
 name|this
 operator|.
 name|status

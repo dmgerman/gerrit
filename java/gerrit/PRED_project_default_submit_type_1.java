@@ -329,9 +329,6 @@ name|submitType
 init|=
 name|projectState
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getSubmitType
 argument_list|()
 decl_stmt|;

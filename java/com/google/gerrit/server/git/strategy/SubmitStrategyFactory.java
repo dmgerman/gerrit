@@ -625,6 +625,9 @@ argument_list|(
 name|args
 argument_list|)
 return|;
+case|case
+name|INHERIT
+case|:
 default|default:
 name|String
 name|errorMsg

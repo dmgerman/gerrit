@@ -1222,6 +1222,13 @@ argument_list|(
 name|maxObjectSizeLimit
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|submitType
+operator|!=
+literal|null
+condition|)
+block|{
 name|in
 operator|.
 name|setSubmitType
@@ -1229,6 +1236,7 @@ argument_list|(
 name|submitType
 argument_list|)
 expr_stmt|;
+block|}
 name|in
 operator|.
 name|setState

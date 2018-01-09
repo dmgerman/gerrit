@@ -2081,6 +2081,9 @@ case|:
 case|case
 name|MERGE_IF_NECESSARY
 case|:
+case|case
+name|INHERIT
+case|:
 name|assertThat
 argument_list|(
 name|e

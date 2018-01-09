@@ -72,6 +72,9 @@ specifier|public
 enum|enum
 name|SubmitType
 block|{
+DECL|enumConstant|INHERIT
+name|INHERIT
+block|,
 DECL|enumConstant|FAST_FORWARD_ONLY
 name|FAST_FORWARD_ONLY
 block|,
@@ -89,7 +92,7 @@ name|MERGE_ALWAYS
 block|,
 DECL|enumConstant|CHERRY_PICK
 name|CHERRY_PICK
-block|}
+block|; }
 end_enum
 
 end_unit

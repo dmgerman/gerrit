@@ -183,6 +183,30 @@ specifier|final
 class|class
 name|Project
 block|{
+comment|/** Default submit type for new projects. */
+DECL|field|DEFAULT_SUBMIT_TYPE
+specifier|public
+specifier|static
+specifier|final
+name|SubmitType
+name|DEFAULT_SUBMIT_TYPE
+init|=
+name|SubmitType
+operator|.
+name|MERGE_IF_NECESSARY
+decl_stmt|;
+comment|/** Default submit type for root project (All-Projects). */
+DECL|field|DEFAULT_ALL_PROJECTS_SUBMIT_TYPE
+specifier|public
+specifier|static
+specifier|final
+name|SubmitType
+name|DEFAULT_ALL_PROJECTS_SUBMIT_TYPE
+init|=
+name|SubmitType
+operator|.
+name|MERGE_IF_NECESSARY
+decl_stmt|;
 comment|/** Project name key */
 DECL|class|NameKey
 specifier|public
@@ -622,10 +646,11 @@ operator|=
 name|limit
 expr_stmt|;
 block|}
-DECL|method|getSubmitType ()
+comment|/**    * Submit type as configured in {@code project.config}.    *    *<p>Does not take inheritance into account, i.e. may return {@link SubmitType#INHERIT}.    *    * @return submit type.    */
+DECL|method|getConfiguredSubmitType ()
 specifier|public
 name|SubmitType
-name|getSubmitType
+name|getConfiguredSubmitType
 parameter_list|()
 block|{
 return|return
