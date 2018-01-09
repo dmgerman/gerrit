@@ -256,7 +256,7 @@ name|strictLabels
 init|=
 literal|true
 decl_stmt|;
-comment|/**    * How to process draft comments already in the database that were not also described in this    * input request.    *    *<p>Defaults to DELETE, unless {@link #onBehalfOf} is set, in which case it defaults to KEEP and    * any other value is disallowed.    */
+comment|/**    * How to process draft comments already in the database that were not also described in this    * input request.    *    *<p>If not set, the default is {@link DraftHandling#KEEP}. If {@link #onBehalfOf} is set, then    * no other value besides {@code KEEP} is allowed.    */
 DECL|field|drafts
 specifier|public
 name|DraftHandling
@@ -316,17 +316,13 @@ specifier|public
 enum|enum
 name|DraftHandling
 block|{
-comment|/** Delete pending drafts on this revision only. */
-DECL|enumConstant|DELETE
-name|DELETE
+comment|/** Leave pending drafts alone. */
+DECL|enumConstant|KEEP
+name|KEEP
 block|,
 comment|/** Publish pending drafts on this revision only. */
 DECL|enumConstant|PUBLISH
 name|PUBLISH
-block|,
-comment|/** Leave pending drafts alone. */
-DECL|enumConstant|KEEP
-name|KEEP
 block|,
 comment|/** Publish pending drafts on all revisions. */
 DECL|enumConstant|PUBLISH_ALL_REVISIONS
