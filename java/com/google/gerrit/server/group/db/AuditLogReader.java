@@ -1171,7 +1171,7 @@ name|line
 operator|.
 name|matches
 argument_list|(
-name|GroupConfig
+name|GroupConfigCommitMessage
 operator|.
 name|FOOTER_ADD_MEMBER
 argument_list|)
@@ -1201,7 +1201,7 @@ name|line
 operator|.
 name|matches
 argument_list|(
-name|GroupConfig
+name|GroupConfigCommitMessage
 operator|.
 name|FOOTER_REMOVE_MEMBER
 argument_list|)
@@ -1231,7 +1231,7 @@ name|line
 operator|.
 name|matches
 argument_list|(
-name|GroupConfig
+name|GroupConfigCommitMessage
 operator|.
 name|FOOTER_ADD_GROUP
 argument_list|)
@@ -1261,7 +1261,7 @@ name|line
 operator|.
 name|matches
 argument_list|(
-name|GroupConfig
+name|GroupConfigCommitMessage
 operator|.
 name|FOOTER_REMOVE_GROUP
 argument_list|)
