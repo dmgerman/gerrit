@@ -133,20 +133,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
-operator|.
-name|toList
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -184,7 +170,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableSet
+name|ImmutableMap
 import|;
 end_import
 
@@ -213,20 +199,6 @@ operator|.
 name|collect
 operator|.
 name|Maps
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
 import|;
 end_import
 
@@ -530,6 +502,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|AccountsUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|externalids
 operator|.
 name|ExternalId
@@ -551,24 +539,6 @@ operator|.
 name|externalids
 operator|.
 name|ExternalIds
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|externalids
-operator|.
-name|ExternalIdsUpdate
 import|;
 end_import
 
@@ -725,16 +695,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -975,17 +935,17 @@ specifier|final
 name|ExternalIds
 name|externalIds
 decl_stmt|;
-DECL|field|externalIdsUpdateFactory
+DECL|field|accountsUpdateFactory
 specifier|private
 specifier|final
-name|ExternalIdsUpdate
+name|AccountsUpdate
 operator|.
 name|User
-name|externalIdsUpdateFactory
+name|accountsUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostGpgKeys ( @erritPersonIdent Provider<PersonIdent> serverIdent, Provider<CurrentUser> self, Provider<PublicKeyStore> storeProvider, GerritPublicKeyChecker.Factory checkerFactory, AddKeySender.Factory addKeyFactory, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory)
+DECL|method|PostGpgKeys ( @erritPersonIdent Provider<PersonIdent> serverIdent, Provider<CurrentUser> self, Provider<PublicKeyStore> storeProvider, GerritPublicKeyChecker.Factory checkerFactory, AddKeySender.Factory addKeyFactory, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, AccountsUpdate.User accountsUpdateFactory)
 name|PostGpgKeys
 parameter_list|(
 annotation|@
@@ -1027,10 +987,10 @@ parameter_list|,
 name|ExternalIds
 name|externalIds
 parameter_list|,
-name|ExternalIdsUpdate
+name|AccountsUpdate
 operator|.
 name|User
-name|externalIdsUpdateFactory
+name|accountsUpdateFactory
 parameter_list|)
 block|{
 name|this
@@ -1077,9 +1037,9 @@ name|externalIds
 expr_stmt|;
 name|this
 operator|.
-name|externalIdsUpdateFactory
+name|accountsUpdateFactory
 operator|=
-name|externalIdsUpdateFactory
+name|accountsUpdateFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -1156,8 +1116,10 @@ name|get
 argument_list|()
 init|)
 block|{
-name|Set
+name|Map
 argument_list|<
+name|ExternalId
+argument_list|,
 name|Fingerprint
 argument_list|>
 name|toRemove
@@ -1169,6 +1131,17 @@ argument_list|,
 name|existingExtIds
 argument_list|)
 decl_stmt|;
+name|Collection
+argument_list|<
+name|Fingerprint
+argument_list|>
+name|fingerprintsToRemove
+init|=
+name|toRemove
+operator|.
+name|values
+argument_list|()
+decl_stmt|;
 name|List
 argument_list|<
 name|PGPPublicKeyRing
@@ -1179,7 +1152,7 @@ name|readKeysToAdd
 argument_list|(
 name|input
 argument_list|,
-name|toRemove
+name|fingerprintsToRemove
 argument_list|)
 decl_stmt|;
 name|List
@@ -1301,48 +1274,18 @@ name|rsrc
 argument_list|,
 name|newKeys
 argument_list|,
-name|toRemove
+name|fingerprintsToRemove
 argument_list|)
 expr_stmt|;
-name|List
-argument_list|<
-name|ExternalId
-operator|.
-name|Key
-argument_list|>
-name|extIdKeysToRemove
-init|=
-name|toRemove
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|map
-argument_list|(
-name|fp
-lambda|->
-name|toExtIdKey
-argument_list|(
-name|fp
-operator|.
-name|get
-argument_list|()
-argument_list|)
-argument_list|)
-operator|.
-name|collect
-argument_list|(
-name|toList
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|externalIdsUpdateFactory
+name|accountsUpdateFactory
 operator|.
 name|create
 argument_list|()
 operator|.
-name|replace
+name|update
 argument_list|(
+literal|"Update GPG Keys via API"
+argument_list|,
 name|rsrc
 operator|.
 name|getUser
@@ -1351,9 +1294,19 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|extIdKeysToRemove
+name|u
+lambda|->
+name|u
+operator|.
+name|replaceExternalIds
+argument_list|(
+name|toRemove
+operator|.
+name|keySet
+argument_list|()
 argument_list|,
 name|newExtIds
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -1361,7 +1314,7 @@ name|toJson
 argument_list|(
 name|newKeys
 argument_list|,
-name|toRemove
+name|fingerprintsToRemove
 argument_list|,
 name|store
 argument_list|,
@@ -1375,8 +1328,10 @@ block|}
 block|}
 DECL|method|readKeysToRemove ( GpgKeysInput input, Collection<ExternalId> existingExtIds)
 specifier|private
-name|Set
+name|Map
 argument_list|<
+name|ExternalId
+argument_list|,
 name|Fingerprint
 argument_list|>
 name|readKeysToRemove
@@ -1408,21 +1363,23 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|ImmutableSet
+name|ImmutableMap
 operator|.
 name|of
 argument_list|()
 return|;
 block|}
-name|Set
+name|Map
 argument_list|<
+name|ExternalId
+argument_list|,
 name|Fingerprint
 argument_list|>
 name|fingerprints
 init|=
-name|Sets
+name|Maps
 operator|.
-name|newHashSetWithExpectedSize
+name|newHashMapWithExpectedSize
 argument_list|(
 name|input
 operator|.
@@ -1444,10 +1401,24 @@ control|)
 block|{
 try|try
 block|{
+name|ExternalId
+name|gpgKeyExtId
+init|=
+name|GpgKeys
+operator|.
+name|findGpgKey
+argument_list|(
+name|id
+argument_list|,
+name|existingExtIds
+argument_list|)
+decl_stmt|;
 name|fingerprints
 operator|.
-name|add
+name|put
 argument_list|(
+name|gpgKeyExtId
+argument_list|,
 operator|new
 name|Fingerprint
 argument_list|(
@@ -1455,9 +1426,7 @@ name|GpgKeys
 operator|.
 name|parseFingerprint
 argument_list|(
-name|id
-argument_list|,
-name|existingExtIds
+name|gpgKeyExtId
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1476,7 +1445,7 @@ return|return
 name|fingerprints
 return|;
 block|}
-DECL|method|readKeysToAdd (GpgKeysInput input, Set<Fingerprint> toRemove)
+DECL|method|readKeysToAdd (GpgKeysInput input, Collection<Fingerprint> toRemove)
 specifier|private
 name|List
 argument_list|<
@@ -1487,7 +1456,7 @@ parameter_list|(
 name|GpgKeysInput
 name|input
 parameter_list|,
-name|Set
+name|Collection
 argument_list|<
 name|Fingerprint
 argument_list|>
@@ -1705,7 +1674,7 @@ return|return
 name|keyRings
 return|;
 block|}
-DECL|method|storeKeys ( AccountResource rsrc, List<PGPPublicKeyRing> keyRings, Set<Fingerprint> toRemove)
+DECL|method|storeKeys ( AccountResource rsrc, List<PGPPublicKeyRing> keyRings, Collection<Fingerprint> toRemove)
 specifier|private
 name|void
 name|storeKeys
@@ -1719,7 +1688,7 @@ name|PGPPublicKeyRing
 argument_list|>
 name|keyRings
 parameter_list|,
-name|Set
+name|Collection
 argument_list|<
 name|Fingerprint
 argument_list|>
@@ -2203,7 +2172,7 @@ name|getAccount
 argument_list|()
 return|;
 block|}
-DECL|method|toJson ( Collection<PGPPublicKeyRing> keys, Set<Fingerprint> deleted, PublicKeyStore store, IdentifiedUser user)
+DECL|method|toJson ( Collection<PGPPublicKeyRing> keys, Collection<Fingerprint> deleted, PublicKeyStore store, IdentifiedUser user)
 specifier|private
 name|Map
 argument_list|<
@@ -2219,7 +2188,7 @@ name|PGPPublicKeyRing
 argument_list|>
 name|keys
 parameter_list|,
-name|Set
+name|Collection
 argument_list|<
 name|Fingerprint
 argument_list|>

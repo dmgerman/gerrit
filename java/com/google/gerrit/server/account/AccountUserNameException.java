@@ -87,6 +87,20 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+DECL|method|AccountUserNameException (String message)
+specifier|public
+name|AccountUserNameException
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|AccountUserNameException (String message, Throwable why)
 specifier|public
 name|AccountUserNameException
