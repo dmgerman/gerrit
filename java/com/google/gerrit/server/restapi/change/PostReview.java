@@ -78,6 +78,22 @@ name|common
 operator|.
 name|base
 operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
@@ -249,20 +265,6 @@ operator|.
 name|value
 operator|.
 name|AutoValue
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|MoreObjects
 import|;
 end_import
 
@@ -7850,8 +7852,6 @@ name|Short
 argument_list|>
 name|inLabels
 init|=
-name|MoreObjects
-operator|.
 name|firstNonNull
 argument_list|(
 name|in
@@ -7860,11 +7860,6 @@ name|labels
 argument_list|,
 name|Collections
 operator|.
-expr|<
-name|String
-argument_list|,
-name|Short
-operator|>
 name|emptyMap
 argument_list|()
 argument_list|)
