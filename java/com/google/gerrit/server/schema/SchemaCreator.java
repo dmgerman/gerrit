@@ -718,16 +718,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -1615,26 +1605,22 @@ name|IOException
 throws|,
 name|OrmDuplicateKeyException
 block|{
-comment|// We don't add any initial members or subgroups and hence the provided functions should never
-comment|// be called.
+comment|// This method is only executed on a new server which doesn't have any accounts or groups.
 name|AuditLogFormatter
 name|auditLogFormatter
 init|=
-operator|new
 name|AuditLogFormatter
-argument_list|(
-name|id
-lambda|->
-name|Optional
 operator|.
-name|empty
+name|createBackedBy
+argument_list|(
+name|ImmutableSet
+operator|.
+name|of
 argument_list|()
 argument_list|,
-name|uuid
-lambda|->
-name|Optional
+name|ImmutableSet
 operator|.
-name|empty
+name|of
 argument_list|()
 argument_list|,
 name|serverId

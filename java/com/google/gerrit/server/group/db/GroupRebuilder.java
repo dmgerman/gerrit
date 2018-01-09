@@ -755,8 +755,9 @@ argument_list|,
 name|metaDataUpdateFactory
 argument_list|,
 comment|// TODO(dborowitz): These probably won't work during init.
-operator|new
 name|AuditLogFormatter
+operator|.
+name|createBackedBy
 argument_list|(
 name|accountCache
 argument_list|,

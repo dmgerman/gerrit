@@ -1062,8 +1062,9 @@ name|getAuditLogFormatter
 parameter_list|()
 block|{
 return|return
-operator|new
 name|AuditLogFormatter
+operator|.
+name|create
 argument_list|(
 name|AbstractGroupTest
 operator|::

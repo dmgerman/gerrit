@@ -1133,8 +1133,9 @@ name|currentUser
 expr_stmt|;
 name|auditLogFormatter
 operator|=
-operator|new
 name|AuditLogFormatter
+operator|.
+name|createBackedBy
 argument_list|(
 name|accountCache
 argument_list|,
