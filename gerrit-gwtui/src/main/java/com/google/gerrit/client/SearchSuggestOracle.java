@@ -502,6 +502,13 @@ name|suggestions
 operator|.
 name|add
 argument_list|(
+literal|"assignee:"
+argument_list|)
+expr_stmt|;
+name|suggestions
+operator|.
+name|add
+argument_list|(
 literal|"reviewer:"
 argument_list|)
 expr_stmt|;
@@ -804,6 +811,13 @@ operator|.
 name|add
 argument_list|(
 literal|"is:wip"
+argument_list|)
+expr_stmt|;
+name|suggestions
+operator|.
+name|add
+argument_list|(
+literal|"is:assigned"
 argument_list|)
 expr_stmt|;
 name|suggestions
