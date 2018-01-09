@@ -197,6 +197,11 @@ specifier|public
 name|InheritableBoolean
 name|createNewChangeForAllNotInTarget
 decl_stmt|;
+DECL|field|rejectEmptyCommit
+specifier|public
+name|InheritableBoolean
+name|rejectEmptyCommit
+decl_stmt|;
 DECL|field|maxObjectSizeLimit
 specifier|public
 name|String

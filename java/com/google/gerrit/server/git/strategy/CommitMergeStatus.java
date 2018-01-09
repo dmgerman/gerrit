@@ -173,6 +173,16 @@ literal|"\n"
 operator|+
 literal|"Please rebase the change locally and upload again for review."
 argument_list|)
+block|,
+DECL|enumConstant|EMPTY_COMMIT
+name|EMPTY_COMMIT
+argument_list|(
+literal|"Change could not be merged because the commit is empty.\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Project policy requires all commits to contain modifications to at least one file."
+argument_list|)
 block|;
 DECL|field|message
 specifier|private

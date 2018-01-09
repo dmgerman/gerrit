@@ -218,6 +218,11 @@ specifier|public
 name|InheritableBoolean
 name|changeIdRequired
 decl_stmt|;
+DECL|field|rejectEmptyCommit
+specifier|public
+name|InheritableBoolean
+name|rejectEmptyCommit
+decl_stmt|;
 DECL|field|createEmptyCommit
 specifier|public
 name|boolean

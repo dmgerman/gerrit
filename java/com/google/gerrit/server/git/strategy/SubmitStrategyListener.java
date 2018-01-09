@@ -789,6 +789,9 @@ case|:
 case|case
 name|NOT_FAST_FORWARD
 case|:
+case|case
+name|EMPTY_COMMIT
+case|:
 comment|// TODO(dborowitz): Reformat these messages to be more appropriate for
 comment|// short problem descriptions.
 name|commitStatus

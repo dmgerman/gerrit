@@ -241,6 +241,16 @@ name|InheritableBoolean
 operator|.
 name|INHERIT
 function_decl|;
+DECL|method|rejectEmptyCommit ()
+DECL|field|InheritableBoolean.INHERIT
+name|InheritableBoolean
+name|rejectEmptyCommit
+parameter_list|()
+default|default
+name|InheritableBoolean
+operator|.
+name|INHERIT
+function_decl|;
 comment|// Fields specific to acceptance test behavior.
 comment|/** Username to use for initial clone, passed to {@link AccountCreator}. */
 DECL|method|cloneAs ()
