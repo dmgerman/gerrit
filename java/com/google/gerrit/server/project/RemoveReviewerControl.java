@@ -325,17 +325,15 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
-DECL|field|projectControlFactory
+DECL|field|projectCache
 specifier|private
 specifier|final
-name|ProjectControl
-operator|.
-name|GenericFactory
-name|projectControlFactory
+name|ProjectCache
+name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RemoveReviewerControl ( PermissionBackend permissionBackend, Provider<ReviewDb> dbProvider, ProjectControl.GenericFactory projectControlFactory)
+DECL|method|RemoveReviewerControl ( PermissionBackend permissionBackend, Provider<ReviewDb> dbProvider, ProjectCache projectCache)
 name|RemoveReviewerControl
 parameter_list|(
 name|PermissionBackend
@@ -347,10 +345,8 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 parameter_list|,
-name|ProjectControl
-operator|.
-name|GenericFactory
-name|projectControlFactory
+name|ProjectCache
+name|projectCache
 parameter_list|)
 block|{
 name|this
@@ -367,9 +363,9 @@ name|dbProvider
 expr_stmt|;
 name|this
 operator|.
-name|projectControlFactory
+name|projectCache
 operator|=
-name|projectControlFactory
+name|projectCache
 expr_stmt|;
 block|}
 comment|/**    * Checks if removing the given reviewer and patch set approval is OK.    *    * @throws AuthException if this user is not allowed to remove this approval.    */
@@ -700,18 +696,44 @@ block|}
 comment|// Users with the remove reviewer permission, the branch owner, project
 comment|// owner and site admin can remove anyone
 comment|// TODO(hiesel): Remove all Control usage
-name|ProjectControl
-name|ctl
+name|ProjectState
+name|projectState
 init|=
-name|projectControlFactory
+name|projectCache
 operator|.
-name|controlFor
+name|checkedGet
 argument_list|(
 name|change
 operator|.
 name|getProject
 argument_list|()
-argument_list|,
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|projectState
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NoSuchProjectException
+argument_list|(
+name|change
+operator|.
+name|getProject
+argument_list|()
+argument_list|)
+throw|;
+block|}
+name|ProjectControl
+name|ctl
+init|=
+name|projectState
+operator|.
+name|controlFor
+argument_list|(
 name|currentUser
 argument_list|)
 decl_stmt|;

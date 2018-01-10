@@ -156,20 +156,11 @@ name|configure
 parameter_list|()
 block|{
 comment|// TODO(sop) Hide ProjectControl, RefControl, ChangeControl related bindings.
-name|bind
-argument_list|(
-name|ProjectControl
-operator|.
-name|GenericFactory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|factory
 argument_list|(
 name|ProjectControl
 operator|.
-name|AssistedFactory
+name|Factory
 operator|.
 name|class
 argument_list|)
