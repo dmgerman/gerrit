@@ -148,6 +148,34 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableMap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -290,36 +318,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -417,7 +415,7 @@ decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
-name|Collection
+name|ImmutableSet
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -426,11 +424,11 @@ decl_stmt|;
 DECL|field|projectWatches
 specifier|private
 specifier|final
-name|Map
+name|ImmutableMap
 argument_list|<
 name|ProjectWatchKey
 argument_list|,
-name|Set
+name|ImmutableSet
 argument_list|<
 name|NotifyType
 argument_list|>
@@ -458,7 +456,7 @@ name|Object
 argument_list|>
 name|properties
 decl_stmt|;
-DECL|method|AccountState ( AllUsersName allUsersName, Account account, Collection<ExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches, GeneralPreferencesInfo generalPreferences)
+DECL|method|AccountState ( AllUsersName allUsersName, Account account, ImmutableSet<ExternalId> externalIds, ImmutableMap<ProjectWatchKey, ImmutableSet<NotifyType>> projectWatches, GeneralPreferencesInfo generalPreferences)
 specifier|public
 name|AccountState
 parameter_list|(
@@ -468,17 +466,17 @@ parameter_list|,
 name|Account
 name|account
 parameter_list|,
-name|Collection
+name|ImmutableSet
 argument_list|<
 name|ExternalId
 argument_list|>
 name|externalIds
 parameter_list|,
-name|Map
+name|ImmutableMap
 argument_list|<
 name|ProjectWatchKey
 argument_list|,
-name|Set
+name|ImmutableSet
 argument_list|<
 name|NotifyType
 argument_list|>
@@ -707,7 +705,7 @@ block|}
 comment|/** The external identities that identify the account holder. */
 DECL|method|getExternalIds ()
 specifier|public
-name|Collection
+name|ImmutableSet
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -721,11 +719,11 @@ block|}
 comment|/** The project watches of the account. */
 DECL|method|getProjectWatches ()
 specifier|public
-name|Map
+name|ImmutableMap
 argument_list|<
 name|ProjectWatchKey
 argument_list|,
-name|Set
+name|ImmutableSet
 argument_list|<
 name|NotifyType
 argument_list|>
