@@ -720,7 +720,6 @@ end_comment
 
 begin_class
 DECL|class|ProjectControl
-specifier|public
 class|class
 name|ProjectControl
 block|{
