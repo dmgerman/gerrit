@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSortedSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -201,7 +215,7 @@ name|IOException
 function_decl|;
 comment|/** @return sorted iteration of projects. */
 DECL|method|all ()
-name|Iterable
+name|ImmutableSortedSet
 argument_list|<
 name|Project
 operator|.
@@ -223,7 +237,7 @@ parameter_list|()
 function_decl|;
 comment|/**    * Filter the set of registered project names by common prefix.    *    * @param prefix common prefix.    * @return sorted iteration of projects sharing the same prefix.    */
 DECL|method|byName (String prefix)
-name|Iterable
+name|ImmutableSortedSet
 argument_list|<
 name|Project
 operator|.
