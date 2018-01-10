@@ -214,10 +214,16 @@ name|getValue
 argument_list|()
 argument_list|)
 operator|.
-name|hasMatch
+name|search
 argument_list|(
 name|files
 argument_list|)
+operator|.
+name|findAny
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
 return|;
 block|}
 annotation|@
