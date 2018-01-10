@@ -159,7 +159,7 @@ block|,
 DECL|enumConstant|MATCH_AUTHOR_TO_COMMITTER_DATE
 name|MATCH_AUTHOR_TO_COMMITTER_DATE
 argument_list|(
-literal|"project"
+literal|"submit"
 argument_list|,
 literal|"matchAuthorToCommitterDate"
 argument_list|)
