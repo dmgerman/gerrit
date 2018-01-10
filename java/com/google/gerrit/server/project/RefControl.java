@@ -564,15 +564,6 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getRefName ()
-name|String
-name|getRefName
-parameter_list|()
-block|{
-return|return
-name|refName
-return|;
-block|}
 DECL|method|getProjectControl ()
 name|ProjectControl
 name|getProjectControl
@@ -625,8 +616,7 @@ name|newCtl
 operator|.
 name|controlForRef
 argument_list|(
-name|getRefName
-argument_list|()
+name|refName
 argument_list|)
 return|;
 block|}
@@ -636,8 +626,7 @@ name|RefControl
 argument_list|(
 name|newCtl
 argument_list|,
-name|getRefName
-argument_list|()
+name|refName
 argument_list|,
 name|relevant
 argument_list|)
@@ -724,34 +713,6 @@ return|return
 name|isVisible
 return|;
 block|}
-DECL|method|canUpload ()
-specifier|private
-name|boolean
-name|canUpload
-parameter_list|()
-block|{
-return|return
-name|projectControl
-operator|.
-name|controlForRef
-argument_list|(
-literal|"refs/for/"
-operator|+
-name|getRefName
-argument_list|()
-argument_list|)
-operator|.
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|PUSH
-argument_list|)
-operator|&&
-name|isProjectStatePermittingWrite
-argument_list|()
-return|;
-block|}
 comment|/** @return true if this user can add a new patch set to this ref */
 DECL|method|canAddPatchSet ()
 name|boolean
@@ -765,8 +726,7 @@ name|controlForRef
 argument_list|(
 literal|"refs/for/"
 operator|+
-name|getRefName
-argument_list|()
+name|refName
 argument_list|)
 operator|.
 name|canPerform
@@ -774,35 +734,6 @@ argument_list|(
 name|Permission
 operator|.
 name|ADD_PATCH_SET
-argument_list|)
-operator|&&
-name|isProjectStatePermittingWrite
-argument_list|()
-return|;
-block|}
-comment|/** @return true if this user can submit merge patch sets to this ref */
-DECL|method|canUploadMerges ()
-specifier|private
-name|boolean
-name|canUploadMerges
-parameter_list|()
-block|{
-return|return
-name|projectControl
-operator|.
-name|controlForRef
-argument_list|(
-literal|"refs/for/"
-operator|+
-name|getRefName
-argument_list|()
-argument_list|)
-operator|.
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|PUSH_MERGE
 argument_list|)
 operator|&&
 name|isProjectStatePermittingWrite
@@ -868,6 +799,295 @@ operator|.
 name|SUBMIT
 argument_list|,
 name|isChangeOwner
+argument_list|)
+operator|&&
+name|isProjectStatePermittingWrite
+argument_list|()
+return|;
+block|}
+comment|/** @return true if this user can abandon a change for this ref */
+DECL|method|canAbandon ()
+name|boolean
+name|canAbandon
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|ABANDON
+argument_list|)
+return|;
+block|}
+comment|/** @return true if this user can view private changes. */
+DECL|method|canViewPrivateChanges ()
+name|boolean
+name|canViewPrivateChanges
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|VIEW_PRIVATE_CHANGES
+argument_list|)
+return|;
+block|}
+comment|/** @return true if this user can delete their own changes. */
+DECL|method|canDeleteOwnChanges ()
+name|boolean
+name|canDeleteOwnChanges
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|DELETE_OWN_CHANGES
+argument_list|)
+return|;
+block|}
+comment|/** @return true if this user can edit topic names. */
+DECL|method|canEditTopicName ()
+name|boolean
+name|canEditTopicName
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|EDIT_TOPIC_NAME
+argument_list|)
+return|;
+block|}
+comment|/** @return true if this user can edit hashtag names. */
+DECL|method|canEditHashtags ()
+name|boolean
+name|canEditHashtags
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|EDIT_HASHTAGS
+argument_list|)
+return|;
+block|}
+DECL|method|canEditAssignee ()
+name|boolean
+name|canEditAssignee
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|EDIT_ASSIGNEE
+argument_list|)
+return|;
+block|}
+comment|/** @return true if this user can force edit topic names. */
+DECL|method|canForceEditTopicName ()
+name|boolean
+name|canForceEditTopicName
+parameter_list|()
+block|{
+return|return
+name|canForcePerform
+argument_list|(
+name|Permission
+operator|.
+name|EDIT_TOPIC_NAME
+argument_list|)
+return|;
+block|}
+comment|/** The range of permitted values associated with a label permission. */
+DECL|method|getRange (String permission)
+name|PermissionRange
+name|getRange
+parameter_list|(
+name|String
+name|permission
+parameter_list|)
+block|{
+return|return
+name|getRange
+argument_list|(
+name|permission
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+comment|/** The range of permitted values associated with a label permission. */
+DECL|method|getRange (String permission, boolean isChangeOwner)
+name|PermissionRange
+name|getRange
+parameter_list|(
+name|String
+name|permission
+parameter_list|,
+name|boolean
+name|isChangeOwner
+parameter_list|)
+block|{
+if|if
+condition|(
+name|Permission
+operator|.
+name|hasRange
+argument_list|(
+name|permission
+argument_list|)
+condition|)
+block|{
+return|return
+name|toRange
+argument_list|(
+name|permission
+argument_list|,
+name|access
+argument_list|(
+name|permission
+argument_list|,
+name|isChangeOwner
+argument_list|)
+argument_list|)
+return|;
+block|}
+return|return
+literal|null
+return|;
+block|}
+comment|/** True if the user is blocked from using this permission. */
+DECL|method|isBlocked (String permissionName)
+name|boolean
+name|isBlocked
+parameter_list|(
+name|String
+name|permissionName
+parameter_list|)
+block|{
+return|return
+operator|!
+name|doCanPerform
+argument_list|(
+name|permissionName
+argument_list|,
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
+comment|/** True if the user has this permission. Works only for non labels. */
+DECL|method|canPerform (String permissionName)
+name|boolean
+name|canPerform
+parameter_list|(
+name|String
+name|permissionName
+parameter_list|)
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|permissionName
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+DECL|method|canPerform (String permissionName, boolean isChangeOwner)
+name|boolean
+name|canPerform
+parameter_list|(
+name|String
+name|permissionName
+parameter_list|,
+name|boolean
+name|isChangeOwner
+parameter_list|)
+block|{
+return|return
+name|doCanPerform
+argument_list|(
+name|permissionName
+argument_list|,
+name|isChangeOwner
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+DECL|method|asForRef ()
+name|ForRef
+name|asForRef
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ForRefImpl
+argument_list|()
+return|;
+block|}
+DECL|method|canUpload ()
+specifier|private
+name|boolean
+name|canUpload
+parameter_list|()
+block|{
+return|return
+name|projectControl
+operator|.
+name|controlForRef
+argument_list|(
+literal|"refs/for/"
+operator|+
+name|refName
+argument_list|)
+operator|.
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|PUSH
+argument_list|)
+operator|&&
+name|isProjectStatePermittingWrite
+argument_list|()
+return|;
+block|}
+comment|/** @return true if this user can submit merge patch sets to this ref */
+DECL|method|canUploadMerges ()
+specifier|private
+name|boolean
+name|canUploadMerges
+parameter_list|()
+block|{
+return|return
+name|projectControl
+operator|.
+name|controlForRef
+argument_list|(
+literal|"refs/for/"
+operator|+
+name|refName
+argument_list|)
+operator|.
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|PUSH_MERGE
 argument_list|)
 operator|&&
 name|isProjectStatePermittingWrite
@@ -1287,168 +1507,6 @@ name|FORGE_SERVER
 argument_list|)
 return|;
 block|}
-comment|/** @return true if this user can abandon a change for this ref */
-DECL|method|canAbandon ()
-name|boolean
-name|canAbandon
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|ABANDON
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can view private changes. */
-DECL|method|canViewPrivateChanges ()
-name|boolean
-name|canViewPrivateChanges
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|VIEW_PRIVATE_CHANGES
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can delete their own changes. */
-DECL|method|canDeleteOwnChanges ()
-name|boolean
-name|canDeleteOwnChanges
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|DELETE_OWN_CHANGES
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can edit topic names. */
-DECL|method|canEditTopicName ()
-name|boolean
-name|canEditTopicName
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|EDIT_TOPIC_NAME
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can edit hashtag names. */
-DECL|method|canEditHashtags ()
-name|boolean
-name|canEditHashtags
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|EDIT_HASHTAGS
-argument_list|)
-return|;
-block|}
-DECL|method|canEditAssignee ()
-name|boolean
-name|canEditAssignee
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|EDIT_ASSIGNEE
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can force edit topic names. */
-DECL|method|canForceEditTopicName ()
-name|boolean
-name|canForceEditTopicName
-parameter_list|()
-block|{
-return|return
-name|canForcePerform
-argument_list|(
-name|Permission
-operator|.
-name|EDIT_TOPIC_NAME
-argument_list|)
-return|;
-block|}
-comment|/** The range of permitted values associated with a label permission. */
-DECL|method|getRange (String permission)
-name|PermissionRange
-name|getRange
-parameter_list|(
-name|String
-name|permission
-parameter_list|)
-block|{
-return|return
-name|getRange
-argument_list|(
-name|permission
-argument_list|,
-literal|false
-argument_list|)
-return|;
-block|}
-comment|/** The range of permitted values associated with a label permission. */
-DECL|method|getRange (String permission, boolean isChangeOwner)
-name|PermissionRange
-name|getRange
-parameter_list|(
-name|String
-name|permission
-parameter_list|,
-name|boolean
-name|isChangeOwner
-parameter_list|)
-block|{
-if|if
-condition|(
-name|Permission
-operator|.
-name|hasRange
-argument_list|(
-name|permission
-argument_list|)
-condition|)
-block|{
-return|return
-name|toRange
-argument_list|(
-name|permission
-argument_list|,
-name|access
-argument_list|(
-name|permission
-argument_list|,
-name|isChangeOwner
-argument_list|)
-argument_list|)
-return|;
-block|}
-return|return
-literal|null
-return|;
-block|}
 DECL|class|AllowedRange
 specifier|private
 specifier|static
@@ -1834,68 +1892,6 @@ argument_list|,
 name|min
 argument_list|,
 name|max
-argument_list|)
-return|;
-block|}
-comment|/** True if the user has this permission. Works only for non labels. */
-DECL|method|canPerform (String permissionName)
-specifier|public
-name|boolean
-name|canPerform
-parameter_list|(
-name|String
-name|permissionName
-parameter_list|)
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|permissionName
-argument_list|,
-literal|false
-argument_list|)
-return|;
-block|}
-DECL|method|canPerform (String permissionName, boolean isChangeOwner)
-name|boolean
-name|canPerform
-parameter_list|(
-name|String
-name|permissionName
-parameter_list|,
-name|boolean
-name|isChangeOwner
-parameter_list|)
-block|{
-return|return
-name|doCanPerform
-argument_list|(
-name|permissionName
-argument_list|,
-name|isChangeOwner
-argument_list|,
-literal|false
-argument_list|)
-return|;
-block|}
-comment|/** True if the user is blocked from using this permission. */
-DECL|method|isBlocked (String permissionName)
-name|boolean
-name|isBlocked
-parameter_list|(
-name|String
-name|permissionName
-parameter_list|)
-block|{
-return|return
-operator|!
-name|doCanPerform
-argument_list|(
-name|permissionName
-argument_list|,
-literal|false
-argument_list|,
-literal|true
 argument_list|)
 return|;
 block|}
@@ -2514,17 +2510,6 @@ return|return
 name|mine
 return|;
 block|}
-DECL|method|asForRef ()
-name|ForRef
-name|asForRef
-parameter_list|()
-block|{
-return|return
-operator|new
-name|ForRefImpl
-argument_list|()
-return|;
-block|}
 DECL|class|ForRefImpl
 specifier|private
 class|class
@@ -2761,8 +2746,7 @@ argument_list|()
 operator|+
 literal|" not permitted for "
 operator|+
-name|getRefName
-argument_list|()
+name|refName
 argument_list|)
 throw|;
 block|}
@@ -2955,8 +2939,7 @@ name|controlForRef
 argument_list|(
 literal|"refs/for/"
 operator|+
-name|getRefName
-argument_list|()
+name|refName
 argument_list|)
 operator|.
 name|canSubmit
