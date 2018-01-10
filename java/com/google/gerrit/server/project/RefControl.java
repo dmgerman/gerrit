@@ -466,7 +466,6 @@ end_comment
 
 begin_class
 DECL|class|RefControl
-specifier|public
 class|class
 name|RefControl
 block|{
@@ -2934,6 +2933,17 @@ case|:
 return|return
 name|canUpload
 argument_list|()
+return|;
+case|case
+name|CREATE_TAG
+case|:
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|CREATE_TAG
+argument_list|)
 return|;
 case|case
 name|UPDATE_BY_SUBMIT
