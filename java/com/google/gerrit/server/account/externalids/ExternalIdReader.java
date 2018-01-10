@@ -88,6 +88,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -233,16 +247,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -565,7 +569,7 @@ block|}
 block|}
 comment|/** Reads and returns all external IDs. */
 DECL|method|all ()
-name|Set
+name|ImmutableSet
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -617,7 +621,7 @@ block|}
 block|}
 comment|/**    * Reads and returns all external IDs from the specified revision of the {@code    * refs/meta/external-ids} branch.    *    * @param rev the revision from which the external IDs should be read, if {@code null} the    *     external IDs are read from the current HEAD revision    * @return all external IDs that were read from the specified revision    */
 DECL|method|all (@ullable ObjectId rev)
-name|Set
+name|ImmutableSet
 argument_list|<
 name|ExternalId
 argument_list|>

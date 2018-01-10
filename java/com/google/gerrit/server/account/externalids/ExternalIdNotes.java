@@ -1313,7 +1313,7 @@ block|}
 comment|/**    * Parses and returns all external IDs.    *    *<p>Invalid external IDs are ignored.    *    * @return all external IDs    */
 DECL|method|all ()
 specifier|public
-name|Set
+name|ImmutableSet
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -1337,15 +1337,17 @@ name|repo
 argument_list|)
 init|)
 block|{
-name|Set
+name|ImmutableSet
+operator|.
+name|Builder
 argument_list|<
 name|ExternalId
 argument_list|>
-name|extIds
+name|b
 init|=
-operator|new
-name|HashSet
-argument_list|<>
+name|ImmutableSet
+operator|.
+name|builder
 argument_list|()
 decl_stmt|;
 for|for
@@ -1372,7 +1374,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|extIds
+name|b
 operator|.
 name|add
 argument_list|(
@@ -1425,7 +1427,10 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|extIds
+name|b
+operator|.
+name|build
+argument_list|()
 return|;
 block|}
 block|}
