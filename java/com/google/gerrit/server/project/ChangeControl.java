@@ -745,6 +745,7 @@ name|PatchSetUtil
 name|patchSetUtil
 decl_stmt|;
 DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, RefControl refControl, ChangeNotes notes, PatchSetUtil patchSetUtil)
+specifier|private
 name|ChangeControl
 parameter_list|(
 name|ChangeData
@@ -796,7 +797,36 @@ operator|=
 name|patchSetUtil
 expr_stmt|;
 block|}
+DECL|method|asForChange (@ullable ChangeData cd, @Nullable Provider<ReviewDb> db)
+name|ForChange
+name|asForChange
+parameter_list|(
+annotation|@
+name|Nullable
+name|ChangeData
+name|cd
+parameter_list|,
+annotation|@
+name|Nullable
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|db
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ForChangeImpl
+argument_list|(
+name|cd
+argument_list|,
+name|db
+argument_list|)
+return|;
+block|}
 DECL|method|forUser (CurrentUser who)
+specifier|private
 name|ChangeControl
 name|forUser
 parameter_list|(
@@ -827,8 +857,7 @@ name|changeDataFactory
 argument_list|,
 name|approvalsUtil
 argument_list|,
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|forUser
 argument_list|(
@@ -841,16 +870,6 @@ name|patchSetUtil
 argument_list|)
 return|;
 block|}
-DECL|method|getRefControl ()
-specifier|private
-name|RefControl
-name|getRefControl
-parameter_list|()
-block|{
-return|return
-name|refControl
-return|;
-block|}
 DECL|method|getUser ()
 specifier|private
 name|CurrentUser
@@ -858,8 +877,7 @@ name|getUser
 parameter_list|()
 block|{
 return|return
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|getUser
 argument_list|()
@@ -872,8 +890,7 @@ name|getProjectControl
 parameter_list|()
 block|{
 return|return
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|getProjectControl
 argument_list|()
@@ -890,16 +907,6 @@ name|notes
 operator|.
 name|getChange
 argument_list|()
-return|;
-block|}
-DECL|method|getNotes ()
-specifier|private
-name|ChangeNotes
-name|getNotes
-parameter_list|()
-block|{
-return|return
-name|notes
 return|;
 block|}
 comment|/** Can this user see this change? */
@@ -941,20 +948,7 @@ literal|false
 return|;
 block|}
 return|return
-name|isRefVisible
-argument_list|()
-return|;
-block|}
-comment|/** Can the user see this change? Does not account for draft status */
-DECL|method|isRefVisible ()
-specifier|private
-name|boolean
-name|isRefVisible
-parameter_list|()
-block|{
-return|return
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|isVisible
 argument_list|()
@@ -978,8 +972,7 @@ name|isOwner
 argument_list|()
 comment|// owner (aka creator) of the change can abandon
 operator|||
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|isOwner
 argument_list|()
@@ -992,8 +985,7 @@ name|isOwner
 argument_list|()
 comment|// project owner can abandon
 operator|||
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canAbandon
 argument_list|()
@@ -1041,8 +1033,7 @@ operator|(
 name|isOwner
 argument_list|()
 operator|&&
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canDeleteOwnChanges
 argument_list|()
@@ -1080,8 +1071,7 @@ operator|(
 name|isOwner
 argument_list|()
 operator|||
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canSubmit
 argument_list|(
@@ -1089,8 +1079,7 @@ name|isOwner
 argument_list|()
 argument_list|)
 operator|||
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canRebase
 argument_list|()
@@ -1158,8 +1147,7 @@ name|permission
 parameter_list|)
 block|{
 return|return
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|getRange
 argument_list|(
@@ -1218,8 +1206,7 @@ literal|true
 return|;
 block|}
 return|return
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canAddPatchSet
 argument_list|()
@@ -1267,8 +1254,7 @@ name|byPatchSet
 argument_list|(
 name|db
 argument_list|,
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
 name|getUser
 argument_list|()
@@ -1296,8 +1282,7 @@ argument_list|()
 operator|.
 name|getLabelTypes
 argument_list|(
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
 name|getUser
 argument_list|()
@@ -1473,6 +1458,23 @@ name|isIdentifiedUser
 argument_list|()
 condition|)
 block|{
+name|cd
+operator|=
+name|cd
+operator|!=
+literal|null
+condition|?
+name|cd
+else|:
+name|changeDataFactory
+operator|.
+name|create
+argument_list|(
+name|db
+argument_list|,
+name|notes
+argument_list|)
+expr_stmt|;
 name|Collection
 argument_list|<
 name|Account
@@ -1481,12 +1483,7 @@ name|Id
 argument_list|>
 name|results
 init|=
-name|changeData
-argument_list|(
-name|db
-argument_list|,
 name|cd
-argument_list|)
 operator|.
 name|reviewers
 argument_list|()
@@ -1535,8 +1532,7 @@ name|isOwner
 argument_list|()
 comment|// owner (aka creator) of the change can edit topic
 operator|||
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|isOwner
 argument_list|()
@@ -1549,8 +1545,7 @@ name|isOwner
 argument_list|()
 comment|// project owner can edit topic
 operator|||
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canEditTopicName
 argument_list|()
@@ -1564,8 +1559,7 @@ argument_list|()
 return|;
 block|}
 return|return
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canForceEditTopicName
 argument_list|()
@@ -1595,8 +1589,7 @@ name|isOwner
 argument_list|()
 comment|// owner (aka creator) of the change can edit desc
 operator|||
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|isOwner
 argument_list|()
@@ -1636,8 +1629,7 @@ operator|.
 name|isOwner
 argument_list|()
 operator|||
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canEditAssignee
 argument_list|()
@@ -1658,8 +1650,7 @@ name|isOwner
 argument_list|()
 comment|// owner (aka creator) of the change can edit hashtags
 operator|||
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|isOwner
 argument_list|()
@@ -1672,8 +1663,7 @@ name|isOwner
 argument_list|()
 comment|// project owner can edit hashtags
 operator|||
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canEditHashtags
 argument_list|()
@@ -1684,38 +1674,6 @@ argument_list|()
 operator|.
 name|isAdmin
 argument_list|()
-return|;
-block|}
-DECL|method|changeData (ReviewDb db, @Nullable ChangeData cd)
-specifier|private
-name|ChangeData
-name|changeData
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
-annotation|@
-name|Nullable
-name|ChangeData
-name|cd
-parameter_list|)
-block|{
-return|return
-name|cd
-operator|!=
-literal|null
-condition|?
-name|cd
-else|:
-name|changeDataFactory
-operator|.
-name|create
-argument_list|(
-name|db
-argument_list|,
-name|getNotes
-argument_list|()
-argument_list|)
 return|;
 block|}
 DECL|method|isPrivateVisible (ReviewDb db, ChangeData cd)
@@ -1743,8 +1701,7 @@ argument_list|,
 name|cd
 argument_list|)
 operator|||
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canViewPrivateChanges
 argument_list|()
@@ -1754,34 +1711,6 @@ argument_list|()
 operator|.
 name|isInternalUser
 argument_list|()
-return|;
-block|}
-DECL|method|asForChange (@ullable ChangeData cd, @Nullable Provider<ReviewDb> db)
-name|ForChange
-name|asForChange
-parameter_list|(
-annotation|@
-name|Nullable
-name|ChangeData
-name|cd
-parameter_list|,
-annotation|@
-name|Nullable
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
-block|{
-return|return
-operator|new
-name|ForChangeImpl
-argument_list|(
-name|cd
-argument_list|,
-name|db
-argument_list|)
 return|;
 block|}
 DECL|class|ForChangeImpl
@@ -1914,8 +1843,7 @@ name|create
 argument_list|(
 name|reviewDb
 argument_list|,
-name|getNotes
-argument_list|()
+name|notes
 argument_list|)
 expr_stmt|;
 block|}
@@ -2267,8 +2195,7 @@ case|case
 name|SUBMIT
 case|:
 return|return
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canSubmit
 argument_list|(
@@ -2283,8 +2210,7 @@ case|case
 name|SUBMIT_AS
 case|:
 return|return
-name|getRefControl
-argument_list|()
+name|refControl
 operator|.
 name|canPerform
 argument_list|(
@@ -2473,6 +2399,7 @@ return|;
 block|}
 block|}
 DECL|method|newSet (Collection<T> permSet)
+specifier|private
 specifier|static
 parameter_list|<
 name|T
