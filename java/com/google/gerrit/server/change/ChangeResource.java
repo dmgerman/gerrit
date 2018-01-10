@@ -806,6 +806,11 @@ argument_list|(
 name|user
 argument_list|)
 operator|.
+name|database
+argument_list|(
+name|db
+argument_list|)
+operator|.
 name|change
 argument_list|(
 name|notes
