@@ -234,6 +234,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|Multimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|MultimapBuilder
 import|;
 end_import
@@ -662,6 +676,7 @@ name|validationErrorSink
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Parses project watches from the given config file and returns them as a map.    *    *<p>A project watch is defined on a project and has a filter to match changes for which the    * project watch should be applied. The project and the filter form the map key. The map value is    * a set of notify types that decide for which events email notifications should be sent.    *    *<p>A project watch on the {@code All-Projects} project applies for all projects unless the    * project has a matching project watch.    *    *<p>A project watch can have an empty set of notify types. An empty set of notify types means    * that no notification for matching changes should be set. This is different from no project    * watch as it overwrites matching project watches from the {@code All-Projects} project.    *    *<p>Since we must be able to differentiate a project watch with an empty set of notify types    * from no project watch we can't use a {@link Multimap} as return type.    *    * @param accountId the ID of the account for which the project watches should be parsed    * @param cfg the config file from which the project watches should be parsed    * @param validationErrorSink validation error sink    * @return the parsed project watches    */
 annotation|@
 name|VisibleForTesting
 DECL|method|parse ( Account.Id accountId, Config cfg, ValidationError.Sink validationErrorSink)
