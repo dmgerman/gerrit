@@ -366,9 +366,15 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|reachable
+specifier|private
+specifier|final
+name|Reachable
+name|reachable
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateRefControl (PermissionBackend permissionBackend, ProjectCache projectCache)
+DECL|method|CreateRefControl ( PermissionBackend permissionBackend, ProjectCache projectCache, Reachable reachable)
 name|CreateRefControl
 parameter_list|(
 name|PermissionBackend
@@ -376,6 +382,9 @@ name|permissionBackend
 parameter_list|,
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|Reachable
+name|reachable
 parameter_list|)
 block|{
 name|this
@@ -389,6 +398,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|reachable
+operator|=
+name|reachable
 expr_stmt|;
 block|}
 comment|/**    * Checks whether the {@link CurrentUser} can create a new Git ref.    *    * @param user the user performing the operation    * @param repo repository on which user want to create    * @param branch the branch the new {@link RevObject} should be created on    * @param object the object the user will start the reference with    * @throws AuthException if creation is denied; the message explains the denial.    * @throws PermissionBackendException on failure of permission checks.    */
@@ -514,8 +529,6 @@ argument_list|)
 expr_stmt|;
 name|checkCreateCommit
 argument_list|(
-name|user
-argument_list|,
 name|repo
 argument_list|,
 operator|(
@@ -670,8 +683,6 @@ condition|)
 block|{
 name|checkCreateCommit
 argument_list|(
-name|user
-argument_list|,
 name|repo
 argument_list|,
 operator|(
@@ -787,19 +798,11 @@ block|}
 block|}
 block|}
 comment|/**    * Check if the user is allowed to create a new commit object if this creation would introduce a    * new commit to the repository.    */
-DECL|method|checkCreateCommit ( Provider<? extends CurrentUser> user, Repository repo, RevCommit commit, ProjectState projectState, PermissionBackend.ForRef forRef)
+DECL|method|checkCreateCommit ( Repository repo, RevCommit commit, ProjectState projectState, PermissionBackend.ForRef forRef)
 specifier|private
 name|void
 name|checkCreateCommit
 parameter_list|(
-name|Provider
-argument_list|<
-name|?
-extends|extends
-name|CurrentUser
-argument_list|>
-name|user
-parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
@@ -844,18 +847,12 @@ comment|// Fall through to check reachability.
 block|}
 if|if
 condition|(
+name|reachable
+operator|.
+name|fromHeadsOrTags
+argument_list|(
 name|projectState
-operator|.
-name|controlFor
-argument_list|(
-name|user
-operator|.
-name|get
-argument_list|()
-argument_list|)
-operator|.
-name|isReachableFromHeadsOrTags
-argument_list|(
+argument_list|,
 name|repo
 argument_list|,
 name|commit

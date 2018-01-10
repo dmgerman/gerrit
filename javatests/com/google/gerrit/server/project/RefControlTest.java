@@ -2180,6 +2180,15 @@ specifier|private
 name|ThreadLocalRequestContext
 name|requestContext
 decl_stmt|;
+DECL|field|projectControlFactory
+annotation|@
+name|Inject
+specifier|private
+name|ProjectControl
+operator|.
+name|Factory
+name|projectControlFactory
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -5757,13 +5766,6 @@ name|envFactory
 init|=
 literal|null
 decl_stmt|;
-name|ProjectControl
-operator|.
-name|AssistedFactory
-name|projectControlFactory
-init|=
-literal|null
-decl_stmt|;
 name|RulesCache
 name|rulesCache
 init|=
@@ -5944,9 +5946,6 @@ argument_list|()
 argument_list|,
 name|sectionSorter
 argument_list|,
-literal|null
-argument_list|,
-comment|// commitsCollection
 name|changeControlFactory
 argument_list|,
 name|permissionBackend
