@@ -6550,11 +6550,6 @@ name|drafts
 condition|)
 block|{
 case|case
-name|KEEP
-case|:
-default|default:
-break|break;
-case|case
 name|PUBLISH
 case|:
 case|case
@@ -6588,6 +6583,11 @@ name|values
 argument_list|()
 argument_list|)
 expr_stmt|;
+break|break;
+case|case
+name|KEEP
+case|:
+default|default:
 break|break;
 block|}
 name|ChangeUpdate
