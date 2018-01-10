@@ -287,8 +287,8 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
-name|Account
-name|account
+name|AccountState
+name|accountState
 init|=
 name|accountsUpdate
 operator|.
@@ -343,7 +343,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|account
+name|accountState
 operator|==
 literal|null
 condition|)
@@ -410,8 +410,8 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
-name|Account
-name|account
+name|AccountState
+name|accountState
 init|=
 name|accountsUpdate
 operator|.
@@ -465,7 +465,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|account
+name|accountState
 operator|==
 literal|null
 condition|)

@@ -1790,7 +1790,7 @@ block|}
 comment|/**    * Inserts a new account.    *    * @param message commit message for the account creation, must not be {@code null or empty}    * @param accountId ID of the new account    * @param init consumer to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws OrmException if creating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|insert ( String message, Account.Id accountId, Consumer<InternalAccountUpdate.Builder> init)
 specifier|public
-name|Account
+name|AccountState
 name|insert
 parameter_list|(
 name|String
@@ -1835,7 +1835,7 @@ block|}
 comment|/**    * Inserts a new account.    *    * @param message commit message for the account creation, must not be {@code null or empty}    * @param accountId ID of the new account    * @param updater updater to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws OrmException if creating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|insert (String message, Account.Id accountId, AccountUpdater updater)
 specifier|public
-name|Account
+name|AccountState
 name|insert
 parameter_list|(
 name|String
@@ -1975,6 +1975,10 @@ init|=
 operator|new
 name|UpdatedAccount
 argument_list|(
+name|allUsersName
+argument_list|,
+name|externalIds
+argument_list|,
 name|message
 argument_list|,
 name|accountConfig
@@ -1999,7 +2003,7 @@ block|}
 comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param update consumer to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|update ( String message, Account.Id accountId, Consumer<InternalAccountUpdate.Builder> update)
 specifier|public
-name|Account
+name|AccountState
 name|update
 parameter_list|(
 name|String
@@ -2046,7 +2050,7 @@ annotation|@
 name|Nullable
 DECL|method|update (String message, Account.Id accountId, AccountUpdater updater)
 specifier|public
-name|Account
+name|AccountState
 name|update
 parameter_list|(
 name|String
@@ -2173,6 +2177,10 @@ init|=
 operator|new
 name|UpdatedAccount
 argument_list|(
+name|allUsersName
+argument_list|,
+name|externalIds
+argument_list|,
 name|message
 argument_list|,
 name|accountConfig
@@ -2230,7 +2238,7 @@ return|;
 block|}
 DECL|method|updateAccount (AccountUpdate accountUpdate)
 specifier|private
-name|Account
+name|AccountState
 name|updateAccount
 parameter_list|(
 name|AccountUpdate
@@ -2825,6 +2833,18 @@ specifier|static
 class|class
 name|UpdatedAccount
 block|{
+DECL|field|allUsersName
+specifier|private
+specifier|final
+name|AllUsersName
+name|allUsersName
+decl_stmt|;
+DECL|field|externalIds
+specifier|private
+specifier|final
+name|ExternalIds
+name|externalIds
+decl_stmt|;
 DECL|field|message
 specifier|private
 specifier|final
@@ -2848,10 +2868,16 @@ specifier|private
 name|boolean
 name|created
 decl_stmt|;
-DECL|method|UpdatedAccount ( String message, AccountConfig accountConfig, ExternalIdNotes extIdNotes)
+DECL|method|UpdatedAccount ( AllUsersName allUsersName, ExternalIds externalIds, String message, AccountConfig accountConfig, ExternalIdNotes extIdNotes)
 specifier|private
 name|UpdatedAccount
 parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|,
+name|ExternalIds
+name|externalIds
+parameter_list|,
 name|String
 name|message
 parameter_list|,
@@ -2873,6 +2899,24 @@ name|message
 argument_list|)
 argument_list|,
 literal|"message for account update must be set"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|allUsersName
+operator|=
+name|checkNotNull
+argument_list|(
+name|allUsersName
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|externalIds
+operator|=
+name|checkNotNull
+argument_list|(
+name|externalIds
 argument_list|)
 expr_stmt|;
 name|this
@@ -2925,11 +2969,15 @@ return|;
 block|}
 DECL|method|getAccount ()
 specifier|public
-name|Account
+name|AccountState
 name|getAccount
 parameter_list|()
+throws|throws
+name|IOException
 block|{
-return|return
+name|Account
+name|account
+init|=
 name|accountConfig
 operator|.
 name|getLoadedAccount
@@ -2937,6 +2985,52 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+decl_stmt|;
+return|return
+operator|new
+name|AccountState
+argument_list|(
+name|allUsersName
+argument_list|,
+name|account
+argument_list|,
+name|extIdNotes
+operator|.
+name|getRevision
+argument_list|()
+operator|!=
+literal|null
+condition|?
+name|externalIds
+operator|.
+name|byAccount
+argument_list|(
+name|account
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|extIdNotes
+operator|.
+name|getRevision
+argument_list|()
+argument_list|)
+else|:
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
+argument_list|,
+name|accountConfig
+operator|.
+name|getProjectWatches
+argument_list|()
+argument_list|,
+name|accountConfig
+operator|.
+name|getGeneralPreferences
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|getExternalIdNotes ()

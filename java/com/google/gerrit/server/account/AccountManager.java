@@ -1699,8 +1699,8 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|Account
-name|account
+name|AccountState
+name|accountState
 init|=
 name|accountsUpdateFactory
 operator|.
@@ -1726,7 +1726,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|account
+name|accountState
 operator|==
 literal|null
 condition|)
@@ -1884,12 +1884,12 @@ operator|.
 name|hasAnyAccount
 argument_list|()
 decl_stmt|;
-name|Account
-name|account
+name|AccountState
+name|accountState
 decl_stmt|;
 try|try
 block|{
-name|account
+name|accountState
 operator|=
 name|accountsUpdateFactory
 operator|.
@@ -2087,7 +2087,10 @@ name|onCreateAccount
 argument_list|(
 name|who
 argument_list|,
-name|account
+name|accountState
+operator|.
+name|getAccount
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
