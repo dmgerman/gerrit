@@ -2261,6 +2261,11 @@ name|ctx
 operator|.
 name|getRevWalk
 argument_list|()
+argument_list|,
+name|origNotes
+operator|.
+name|getChange
+argument_list|()
 argument_list|)
 operator|.
 name|validate
