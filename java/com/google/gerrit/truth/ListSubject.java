@@ -234,8 +234,7 @@ argument_list|>
 name|elementAssertThatFunction
 parameter_list|)
 block|{
-comment|// The ListSubjectFactory always returns ListSubjects.
-comment|// -> Casting is appropriate.
+comment|// The ListSubjectFactory always returns ListSubjects. -> Casting is appropriate.
 return|return
 operator|(
 name|ListSubject
@@ -317,31 +316,18 @@ argument_list|,
 name|index
 argument_list|)
 expr_stmt|;
-comment|// The constructor only accepts lists.
-comment|// -> Casting is appropriate.
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
+name|isNotNull
+argument_list|()
+expr_stmt|;
 name|List
 argument_list|<
 name|E
 argument_list|>
 name|list
 init|=
-operator|(
-name|List
-argument_list|<
-name|E
-argument_list|>
-operator|)
-name|actual
+name|getActualList
 argument_list|()
 decl_stmt|;
-name|isNotNull
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|index
@@ -395,6 +381,65 @@ literal|0
 argument_list|)
 return|;
 block|}
+DECL|method|lastElement ()
+specifier|public
+name|S
+name|lastElement
+parameter_list|()
+block|{
+name|isNotNull
+argument_list|()
+expr_stmt|;
+name|isNotEmpty
+argument_list|()
+expr_stmt|;
+name|List
+argument_list|<
+name|E
+argument_list|>
+name|list
+init|=
+name|getActualList
+argument_list|()
+decl_stmt|;
+return|return
+name|element
+argument_list|(
+name|list
+operator|.
+name|size
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+return|;
+block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+DECL|method|getActualList ()
+specifier|private
+name|List
+argument_list|<
+name|E
+argument_list|>
+name|getActualList
+parameter_list|()
+block|{
+comment|// The constructor only accepts lists. -> Casting is appropriate.
+return|return
+operator|(
+name|List
+argument_list|<
+name|E
+argument_list|>
+operator|)
+name|actual
+argument_list|()
+return|;
+block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -420,8 +465,7 @@ modifier|...
 name|objects
 parameter_list|)
 block|{
-comment|// This object is returned which is of type ListSubject.
-comment|// -> Casting is appropriate.
+comment|// This object is returned which is of type ListSubject. -> Casting is appropriate.
 return|return
 operator|(
 name|ListSubject
@@ -527,8 +571,7 @@ argument_list|>
 name|objects
 parameter_list|)
 block|{
-comment|// The constructor of ListSubject only accepts lists.
-comment|// -> Casting is appropriate.
+comment|// The constructor of ListSubject only accepts lists. -> Casting is appropriate.
 return|return
 operator|new
 name|ListSubject

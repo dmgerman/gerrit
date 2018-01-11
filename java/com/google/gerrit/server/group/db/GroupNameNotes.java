@@ -1449,7 +1449,6 @@ name|groupUuid
 decl_stmt|;
 DECL|field|oldGroupName
 specifier|private
-specifier|final
 name|Optional
 argument_list|<
 name|AccountGroup
@@ -1460,7 +1459,6 @@ name|oldGroupName
 decl_stmt|;
 DECL|field|newGroupName
 specifier|private
-specifier|final
 name|Optional
 argument_list|<
 name|AccountGroup
@@ -1932,6 +1930,20 @@ argument_list|(
 name|getCommitMessage
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|oldGroupName
+operator|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+expr_stmt|;
+name|newGroupName
+operator|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
 expr_stmt|;
 return|return
 literal|true
