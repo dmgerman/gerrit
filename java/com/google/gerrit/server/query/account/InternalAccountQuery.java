@@ -569,6 +569,11 @@ name|AccountPredicates
 operator|.
 name|defaultPredicate
 argument_list|(
+name|schema
+argument_list|()
+argument_list|,
+literal|true
+argument_list|,
 name|query
 argument_list|)
 argument_list|)
@@ -628,7 +633,7 @@ name|query
 argument_list|(
 name|AccountPredicates
 operator|.
-name|externalId
+name|externalIdIncludingSecondaryEmails
 argument_list|(
 name|externalId
 operator|.

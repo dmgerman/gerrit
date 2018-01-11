@@ -1093,6 +1093,16 @@ name|getStart
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|myQueryAccounts
+operator|.
+name|setSuggest
+argument_list|(
+name|r
+operator|.
+name|getSuggest
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|ListAccountsOption
