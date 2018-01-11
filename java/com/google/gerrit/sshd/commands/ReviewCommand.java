@@ -1482,6 +1482,18 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
+DECL|method|getTaskDescription ()
+specifier|protected
+name|String
+name|getTaskDescription
+parameter_list|()
+block|{
+return|return
+literal|"gerrit review"
+return|;
+block|}
 DECL|method|applyReview (PatchSet patchSet, ReviewInput review)
 specifier|private
 name|void
