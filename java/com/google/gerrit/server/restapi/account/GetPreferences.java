@@ -397,10 +397,7 @@ argument_list|(
 name|id
 argument_list|)
 operator|.
-name|getAccount
-argument_list|()
-operator|.
-name|getGeneralPreferencesInfo
+name|getGeneralPreferences
 argument_list|()
 return|;
 block|}

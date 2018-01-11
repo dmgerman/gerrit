@@ -8806,10 +8806,10 @@ name|prefs
 init|=
 name|user
 operator|.
-name|getAccount
+name|state
 argument_list|()
 operator|.
-name|getGeneralPreferencesInfo
+name|getGeneralPreferences
 argument_list|()
 decl_stmt|;
 name|this
@@ -8824,10 +8824,10 @@ name|firstNonNull
 argument_list|(
 name|user
 operator|.
-name|getAccount
+name|state
 argument_list|()
 operator|.
-name|getGeneralPreferencesInfo
+name|getGeneralPreferences
 argument_list|()
 operator|.
 name|publishCommentsOnPush

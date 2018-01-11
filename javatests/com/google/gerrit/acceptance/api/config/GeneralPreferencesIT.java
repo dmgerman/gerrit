@@ -197,6 +197,8 @@ operator|.
 name|defaults
 argument_list|()
 argument_list|,
+literal|"changeTable"
+argument_list|,
 literal|"my"
 argument_list|)
 expr_stmt|;
@@ -300,6 +302,8 @@ argument_list|(
 name|result
 argument_list|,
 name|expected
+argument_list|,
+literal|"changeTable"
 argument_list|,
 literal|"my"
 argument_list|)

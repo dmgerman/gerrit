@@ -356,6 +356,31 @@ throw|;
 block|}
 annotation|@
 name|Override
+DECL|method|byAccount (Account.Id accountId, ObjectId rev)
+specifier|public
+name|ImmutableSet
+argument_list|<
+name|ExternalId
+argument_list|>
+name|byAccount
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|,
+name|ObjectId
+name|rev
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|allByAccount ()
 specifier|public
 name|ImmutableSetMultimap

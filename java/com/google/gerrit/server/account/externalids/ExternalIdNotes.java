@@ -978,6 +978,7 @@ init|=
 literal|false
 decl_stmt|;
 DECL|method|ExternalIdNotes ( ExternalIdCache externalIdCache, @Nullable AccountCache accountCache, Repository allUsersRepo)
+specifier|private
 name|ExternalIdNotes
 parameter_list|(
 name|ExternalIdCache
@@ -1082,6 +1083,7 @@ return|;
 block|}
 comment|/**    * Loads the external ID notes from the current HEAD revision of the {@code    * refs/meta/external-ids} branch.    *    * @return {@link ExternalIdNotes} instance for chaining    */
 DECL|method|load ()
+specifier|private
 name|ExternalIdNotes
 name|load
 parameter_list|()

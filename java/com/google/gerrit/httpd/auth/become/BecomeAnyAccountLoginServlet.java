@@ -1371,12 +1371,12 @@ name|doc
 argument_list|)
 return|;
 block|}
-DECL|method|auth (Account account)
+DECL|method|auth (AccountState account)
 specifier|private
 name|AuthResult
 name|auth
 parameter_list|(
-name|Account
+name|AccountState
 name|account
 parameter_list|)
 block|{
@@ -1392,6 +1392,9 @@ operator|new
 name|AuthResult
 argument_list|(
 name|account
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -1580,7 +1583,7 @@ init|)
 block|{
 name|Optional
 argument_list|<
-name|Account
+name|AccountState
 argument_list|>
 name|match
 init|=
@@ -1596,13 +1599,6 @@ argument_list|)
 operator|.
 name|stream
 argument_list|()
-operator|.
-name|map
-argument_list|(
-name|AccountState
-operator|::
-name|getAccount
-argument_list|)
 operator|.
 name|findFirst
 argument_list|()

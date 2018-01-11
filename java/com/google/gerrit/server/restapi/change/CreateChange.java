@@ -2198,10 +2198,7 @@ name|info
 init|=
 name|account
 operator|.
-name|getAccount
-argument_list|()
-operator|.
-name|getGeneralPreferencesInfo
+name|getGeneralPreferences
 argument_list|()
 decl_stmt|;
 name|ObjectId
