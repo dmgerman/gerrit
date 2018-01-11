@@ -1505,11 +1505,19 @@ specifier|final
 name|PersonIdent
 name|authorIdent
 decl_stmt|;
+comment|// Invoked after reading the account config.
 DECL|field|afterReadRevision
 specifier|private
 specifier|final
 name|Runnable
 name|afterReadRevision
+decl_stmt|;
+comment|// Invoked after updating the account but before committing the changes.
+DECL|field|beforeCommit
+specifier|private
+specifier|final
+name|Runnable
+name|beforeCommit
 decl_stmt|;
 DECL|method|AccountsUpdate ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Nullable IdentifiedUser currentUser, AllUsersName allUsersName, ExternalIds externalIds, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotesLoader extIdNotesLoader, PersonIdent committerIdent, PersonIdent authorIdent)
 specifier|private
@@ -1579,12 +1587,17 @@ name|Runnables
 operator|.
 name|doNothing
 argument_list|()
+argument_list|,
+name|Runnables
+operator|.
+name|doNothing
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|AccountsUpdate ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Nullable IdentifiedUser currentUser, AllUsersName allUsersName, ExternalIds externalIds, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotesLoader extIdNotesLoader, PersonIdent committerIdent, PersonIdent authorIdent, Runnable afterReadRevision)
+DECL|method|AccountsUpdate ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Nullable IdentifiedUser currentUser, AllUsersName allUsersName, ExternalIds externalIds, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotesLoader extIdNotesLoader, PersonIdent committerIdent, PersonIdent authorIdent, Runnable afterReadRevision, Runnable beforeCommit)
 specifier|public
 name|AccountsUpdate
 parameter_list|(
@@ -1627,6 +1640,9 @@ name|authorIdent
 parameter_list|,
 name|Runnable
 name|afterReadRevision
+parameter_list|,
+name|Runnable
+name|beforeCommit
 parameter_list|)
 block|{
 name|this
@@ -1738,7 +1754,23 @@ name|this
 operator|.
 name|afterReadRevision
 operator|=
+name|checkNotNull
+argument_list|(
 name|afterReadRevision
+argument_list|,
+literal|"afterReadRevision"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|beforeCommit
+operator|=
+name|checkNotNull
+argument_list|(
+name|beforeCommit
+argument_list|,
+literal|"beforeCommit"
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Inserts a new account.    *    * @param message commit message for the account creation, must not be {@code null or empty}    * @param accountId ID of the new account    * @param init consumer to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws OrmException if creating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
@@ -2354,6 +2386,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|beforeCommit
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
 name|BatchRefUpdate
 name|batchRefUpdate
 init|=
