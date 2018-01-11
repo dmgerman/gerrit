@@ -8008,10 +8008,8 @@ argument_list|(
 literal|"submit bit on ChangeInfo"
 argument_list|)
 operator|.
-name|isEqualTo
-argument_list|(
-literal|true
-argument_list|)
+name|isTrue
+argument_list|()
 expr_stmt|;
 name|RevisionResource
 name|rsrc
