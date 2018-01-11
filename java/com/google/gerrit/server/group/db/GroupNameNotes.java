@@ -751,19 +751,21 @@ return|return
 name|groupNameNotes
 return|;
 block|}
-DECL|method|loadOneGroupReference ( Repository allUsersRepo, String groupName)
+DECL|method|loadGroup ( Repository allUsersRepo, AccountGroup.NameKey groupName)
 specifier|public
 specifier|static
 name|Optional
 argument_list|<
 name|GroupReference
 argument_list|>
-name|loadOneGroupReference
+name|loadGroup
 parameter_list|(
 name|Repository
 name|allUsersRepo
 parameter_list|,
-name|String
+name|AccountGroup
+operator|.
+name|NameKey
 name|groupName
 parameter_list|)
 throws|throws
@@ -851,13 +853,7 @@ name|get
 argument_list|(
 name|getNoteKey
 argument_list|(
-operator|new
-name|AccountGroup
-operator|.
-name|NameKey
-argument_list|(
 name|groupName
-argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;

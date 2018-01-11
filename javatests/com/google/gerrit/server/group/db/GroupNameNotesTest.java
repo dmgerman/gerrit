@@ -3798,14 +3798,11 @@ block|{
 return|return
 name|GroupNameNotes
 operator|.
-name|loadOneGroupReference
+name|loadGroup
 argument_list|(
 name|repo
 argument_list|,
 name|groupName
-operator|.
-name|get
-argument_list|()
 argument_list|)
 return|;
 block|}

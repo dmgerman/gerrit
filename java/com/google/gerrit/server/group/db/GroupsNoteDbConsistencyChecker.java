@@ -1507,7 +1507,7 @@ name|allUsersRepo
 argument_list|,
 name|group
 operator|.
-name|getName
+name|getNameKey
 argument_list|()
 argument_list|,
 name|group
@@ -1529,7 +1529,7 @@ block|}
 comment|/**    * Check group 'uuid' and 'name' read from 'group.config' with group name notes.    *    * @param allUsersRepo 'All-Users' repository.    * @param groupName the name of the group to be checked.    * @param groupUUID the {@code AccountGroup.UUID} of the group to be checked.    * @return a list of {@code ConsistencyProblemInfo} containing the problem details.    */
 annotation|@
 name|VisibleForTesting
-DECL|method|checkWithGroupNameNotes ( Repository allUsersRepo, String groupName, AccountGroup.UUID groupUUID)
+DECL|method|checkWithGroupNameNotes ( Repository allUsersRepo, AccountGroup.NameKey groupName, AccountGroup.UUID groupUUID)
 specifier|static
 name|List
 argument_list|<
@@ -1540,7 +1540,9 @@ parameter_list|(
 name|Repository
 name|allUsersRepo
 parameter_list|,
-name|String
+name|AccountGroup
+operator|.
+name|NameKey
 name|groupName
 parameter_list|,
 name|AccountGroup
@@ -1561,7 +1563,7 @@ name|groupRef
 init|=
 name|GroupNameNotes
 operator|.
-name|loadOneGroupReference
+name|loadGroup
 argument_list|(
 name|allUsersRepo
 argument_list|,
@@ -1602,17 +1604,6 @@ name|get
 argument_list|()
 operator|.
 name|getUUID
-argument_list|()
-decl_stmt|;
-name|String
-name|name
-init|=
-name|groupRef
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getName
 argument_list|()
 decl_stmt|;
 name|List
@@ -1656,6 +1647,25 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|String
+name|name
+init|=
+name|groupName
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+name|String
+name|actualName
+init|=
+name|groupRef
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1663,9 +1673,9 @@ name|Objects
 operator|.
 name|equals
 argument_list|(
-name|groupName
-argument_list|,
 name|name
+argument_list|,
+name|actualName
 argument_list|)
 condition|)
 block|{
@@ -1677,9 +1687,9 @@ name|warning
 argument_list|(
 literal|"group note of name '%s' claims to represent name of '%s'"
 argument_list|,
-name|groupName
-argument_list|,
 name|name
+argument_list|,
+name|actualName
 argument_list|)
 argument_list|)
 expr_stmt|;
