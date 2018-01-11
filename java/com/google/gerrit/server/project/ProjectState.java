@@ -344,6 +344,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|ResourceConflictException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -1761,6 +1777,58 @@ operator|.
 name|getMaxObjectSizeLimit
 argument_list|()
 return|;
+block|}
+DECL|method|statePermitsWrite ()
+specifier|public
+name|boolean
+name|statePermitsWrite
+parameter_list|()
+block|{
+return|return
+name|getProject
+argument_list|()
+operator|.
+name|getState
+argument_list|()
+operator|.
+name|permitsWrite
+argument_list|()
+return|;
+block|}
+DECL|method|checkStatePermitsWrite ()
+specifier|public
+name|void
+name|checkStatePermitsWrite
+parameter_list|()
+throws|throws
+name|ResourceConflictException
+block|{
+if|if
+condition|(
+operator|!
+name|statePermitsWrite
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+literal|"project state "
+operator|+
+name|getProject
+argument_list|()
+operator|.
+name|getState
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|" does not permit write"
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/** Get the sections that pertain only to this project. */
 DECL|method|getLocalAccessSections ()

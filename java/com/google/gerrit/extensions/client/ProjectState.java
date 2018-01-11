@@ -72,6 +72,7 @@ specifier|public
 enum|enum
 name|ProjectState
 block|{
+comment|/** Permits reading project state and contents as well as mutating data. */
 DECL|enumConstant|ACTIVE
 name|ACTIVE
 argument_list|(
@@ -80,6 +81,7 @@ argument_list|,
 literal|true
 argument_list|)
 block|,
+comment|/** Permits reading project state and contents. Does not permit any modifications. */
 DECL|enumConstant|READ_ONLY
 name|READ_ONLY
 argument_list|(
@@ -88,6 +90,7 @@ argument_list|,
 literal|false
 argument_list|)
 block|,
+comment|/**    * Hides the project as if it was deleted, but makes requests fail with an error message that    * reveals the project's existence.    */
 DECL|enumConstant|HIDDEN
 name|HIDDEN
 argument_list|(

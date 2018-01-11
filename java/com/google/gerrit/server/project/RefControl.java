@@ -348,6 +348,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|MagicBranch
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -724,7 +740,9 @@ name|projectControl
 operator|.
 name|controlForRef
 argument_list|(
-literal|"refs/for/"
+name|MagicBranch
+operator|.
+name|NEW_CHANGE
 operator|+
 name|refName
 argument_list|)
@@ -735,9 +753,6 @@ name|Permission
 operator|.
 name|ADD_PATCH_SET
 argument_list|)
-operator|&&
-name|isProjectStatePermittingWrite
-argument_list|()
 return|;
 block|}
 comment|/** @return true if this user can rebase changes on this ref */
@@ -2937,7 +2952,9 @@ name|projectControl
 operator|.
 name|controlForRef
 argument_list|(
-literal|"refs/for/"
+name|MagicBranch
+operator|.
+name|NEW_CHANGE
 operator|+
 name|refName
 argument_list|)

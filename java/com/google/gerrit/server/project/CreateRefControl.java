@@ -106,6 +106,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|ResourceConflictException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -406,7 +422,7 @@ operator|=
 name|reachable
 expr_stmt|;
 block|}
-comment|/**    * Checks whether the {@link CurrentUser} can create a new Git ref.    *    * @param user the user performing the operation    * @param repo repository on which user want to create    * @param branch the branch the new {@link RevObject} should be created on    * @param object the object the user will start the reference with    * @throws AuthException if creation is denied; the message explains the denial.    * @throws PermissionBackendException on failure of permission checks.    */
+comment|/**    * Checks whether the {@link CurrentUser} can create a new Git ref.    *    * @param user the user performing the operation    * @param repo repository on which user want to create    * @param branch the branch the new {@link RevObject} should be created on    * @param object the object the user will start the reference with    * @throws AuthException if creation is denied; the message explains the denial.    * @throws PermissionBackendException on failure of permission checks.    * @throws ResourceConflictException if the project state does not permit the operation    */
 DECL|method|checkCreateRef ( Provider<? extends CurrentUser> user, Repository repo, Branch.NameKey branch, RevObject object)
 specifier|public
 name|void
@@ -439,6 +455,8 @@ throws|,
 name|NoSuchProjectException
 throws|,
 name|IOException
+throws|,
+name|ResourceConflictException
 block|{
 name|ProjectState
 name|ps
@@ -471,29 +489,11 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-if|if
-condition|(
-operator|!
 name|ps
 operator|.
-name|getProject
+name|checkStatePermitsWrite
 argument_list|()
-operator|.
-name|getState
-argument_list|()
-operator|.
-name|permitsWrite
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|AuthException
-argument_list|(
-literal|"project state does not permit write"
-argument_list|)
-throw|;
-block|}
+expr_stmt|;
 name|PermissionBackend
 operator|.
 name|ForRef
