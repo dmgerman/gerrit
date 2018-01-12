@@ -1093,7 +1093,7 @@ block|{
 return|return
 name|GroupNameNotes
 operator|.
-name|loadAllGroupReferences
+name|loadAllGroups
 argument_list|(
 name|allUsersRepo
 argument_list|)
