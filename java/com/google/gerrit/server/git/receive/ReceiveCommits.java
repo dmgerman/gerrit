@@ -7941,6 +7941,25 @@ condition|)
 block|{
 return|return;
 block|}
+if|if
+condition|(
+operator|!
+name|projectState
+operator|.
+name|statePermitsWrite
+argument_list|()
+condition|)
+block|{
+name|cmd
+operator|.
+name|setResult
+argument_list|(
+name|REJECTED_NONFASTFORWARD
+argument_list|,
+literal|" project state does not permit write."
+argument_list|)
+expr_stmt|;
+block|}
 name|actualCommands
 operator|.
 name|add

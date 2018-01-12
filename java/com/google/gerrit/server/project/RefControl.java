@@ -1178,17 +1178,6 @@ parameter_list|()
 block|{
 if|if
 condition|(
-operator|!
-name|isProjectStatePermittingWrite
-argument_list|()
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-if|if
-condition|(
 name|canPushWithForce
 argument_list|()
 condition|)
