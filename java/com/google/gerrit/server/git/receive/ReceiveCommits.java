@@ -7743,7 +7743,10 @@ name|DELETE
 argument_list|)
 expr_stmt|;
 return|return
-literal|true
+name|projectState
+operator|.
+name|statePermitsWrite
+argument_list|()
 return|;
 block|}
 catch|catch

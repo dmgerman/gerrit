@@ -430,6 +430,14 @@ operator|.
 name|DELETE
 argument_list|)
 expr_stmt|;
+name|resource
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|checkStatePermitsWrite
+argument_list|()
+expr_stmt|;
 name|deleteRefFactory
 operator|.
 name|create

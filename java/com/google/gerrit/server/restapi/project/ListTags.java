@@ -1083,7 +1083,7 @@ name|rw
 argument_list|,
 name|resource
 operator|.
-name|getNameKey
+name|getProjectState
 argument_list|()
 argument_list|,
 name|links
@@ -1322,7 +1322,7 @@ name|rw
 argument_list|,
 name|resource
 operator|.
-name|getNameKey
+name|getProjectState
 argument_list|()
 argument_list|,
 name|links
@@ -1338,7 +1338,7 @@ name|id
 argument_list|)
 throw|;
 block|}
-DECL|method|createTagInfo ( PermissionBackend.ForRef perm, Ref ref, RevWalk rw, Project.NameKey projectName, WebLinks links)
+DECL|method|createTagInfo ( PermissionBackend.ForRef perm, Ref ref, RevWalk rw, ProjectState projectState, WebLinks links)
 specifier|public
 specifier|static
 name|TagInfo
@@ -1355,10 +1355,8 @@ parameter_list|,
 name|RevWalk
 name|rw
 parameter_list|,
-name|Project
-operator|.
-name|NameKey
-name|projectName
+name|ProjectState
+name|projectState
 parameter_list|,
 name|WebLinks
 name|links
@@ -1392,6 +1390,11 @@ name|RefPermission
 operator|.
 name|DELETE
 argument_list|)
+operator|&&
+name|projectState
+operator|.
+name|statePermitsWrite
+argument_list|()
 condition|?
 literal|true
 else|:
@@ -1407,9 +1410,9 @@ name|links
 operator|.
 name|getTagLinks
 argument_list|(
-name|projectName
+name|projectState
 operator|.
-name|get
+name|getName
 argument_list|()
 argument_list|,
 name|ref

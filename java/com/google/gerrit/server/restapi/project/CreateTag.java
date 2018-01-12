@@ -1262,7 +1262,7 @@ name|w
 argument_list|,
 name|resource
 operator|.
-name|getNameKey
+name|getProjectState
 argument_list|()
 argument_list|,
 name|links
