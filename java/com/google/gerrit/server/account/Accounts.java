@@ -114,20 +114,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -436,11 +422,12 @@ operator|=
 name|externalIds
 expr_stmt|;
 block|}
-annotation|@
-name|Nullable
 DECL|method|get (Account.Id accountId)
 specifier|public
+name|Optional
+argument_list|<
 name|AccountState
+argument_list|>
 name|get
 parameter_list|(
 name|Account
@@ -472,11 +459,6 @@ argument_list|(
 name|repo
 argument_list|,
 name|accountId
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|null
 argument_list|)
 return|;
 block|}

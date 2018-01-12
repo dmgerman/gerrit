@@ -941,16 +941,11 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
 name|accounts
 operator|.
 name|get
 argument_list|(
 name|who
-argument_list|)
 argument_list|)
 return|;
 block|}

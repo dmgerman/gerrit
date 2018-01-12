@@ -1680,6 +1680,7 @@ try|try
 block|{
 if|if
 condition|(
+operator|!
 name|accounts
 operator|.
 name|get
@@ -1690,8 +1691,9 @@ operator|.
 name|getOwner
 argument_list|()
 argument_list|)
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|problem
