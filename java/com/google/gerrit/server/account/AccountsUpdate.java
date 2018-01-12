@@ -1940,12 +1940,18 @@ name|updatedAccounts
 return|;
 block|}
 argument_list|)
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param update consumer to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param update consumer to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty()} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|update ( String message, Account.Id accountId, Consumer<InternalAccountUpdate.Builder> update)
 specifier|public
+name|Optional
+argument_list|<
 name|AccountState
+argument_list|>
 name|update
 parameter_list|(
 name|String
@@ -1987,12 +1993,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param updater updater to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
-annotation|@
-name|Nullable
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param updater updater to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|update (String message, Account.Id accountId, AccountUpdater updater)
 specifier|public
+name|Optional
+argument_list|<
 name|AccountState
+argument_list|>
 name|update
 parameter_list|(
 name|String
@@ -2180,7 +2187,10 @@ return|;
 block|}
 DECL|method|updateAccount (AccountUpdate accountUpdate)
 specifier|private
+name|Optional
+argument_list|<
 name|AccountState
+argument_list|>
 name|updateAccount
 parameter_list|(
 name|AccountUpdate
@@ -2236,7 +2246,10 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|commit
@@ -2247,10 +2260,15 @@ name|updatedAccount
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|updatedAccount
 operator|.
 name|getAccount
 argument_list|()
+argument_list|)
 return|;
 block|}
 block|}

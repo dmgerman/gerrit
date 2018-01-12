@@ -1699,9 +1699,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|AccountState
-name|accountState
-init|=
 name|accountsUpdateFactory
 operator|.
 name|create
@@ -1723,15 +1720,11 @@ argument_list|(
 name|accountUpdates
 argument_list|)
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|accountState
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
+operator|.
+name|orElseThrow
+argument_list|(
+parameter_list|()
+lambda|->
 operator|new
 name|OrmException
 argument_list|(
@@ -1744,8 +1737,8 @@ argument_list|()
 operator|+
 literal|" has been deleted"
 argument_list|)
-throw|;
-block|}
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|eq (String a, String b)
