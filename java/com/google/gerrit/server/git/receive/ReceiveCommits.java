@@ -17337,6 +17337,11 @@ name|commitValidatorsFactory
 operator|.
 name|forMergedCommits
 argument_list|(
+name|project
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
 name|perm
 argument_list|,
 name|user

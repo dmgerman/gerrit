@@ -1101,9 +1101,6 @@ name|Permission
 operator|.
 name|PUSH_MERGE
 argument_list|)
-operator|&&
-name|isProjectStatePermittingWrite
-argument_list|()
 return|;
 block|}
 comment|/** @return true if the user can update the reference as a fast-forward. */
