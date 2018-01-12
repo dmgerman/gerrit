@@ -166,6 +166,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|ResourceConflictException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -481,6 +497,22 @@ operator|.
 name|project
 operator|.
 name|InvalidChangeOperationException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectCache
 import|;
 end_import
 
@@ -856,9 +888,15 @@ specifier|final
 name|PatchSetUtil
 name|patchSetUtil
 decl_stmt|;
+DECL|field|projectCache
+specifier|private
+specifier|final
+name|ProjectCache
+name|projectCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditModifier ( @erritPersonIdent PersonIdent gerritIdent, ChangeIndexer indexer, Provider<ReviewDb> reviewDb, Provider<CurrentUser> currentUser, PermissionBackend permissionBackend, ChangeEditUtil changeEditUtil, PatchSetUtil patchSetUtil)
+DECL|method|ChangeEditModifier ( @erritPersonIdent PersonIdent gerritIdent, ChangeIndexer indexer, Provider<ReviewDb> reviewDb, Provider<CurrentUser> currentUser, PermissionBackend permissionBackend, ChangeEditUtil changeEditUtil, PatchSetUtil patchSetUtil, ProjectCache projectCache)
 name|ChangeEditModifier
 parameter_list|(
 annotation|@
@@ -889,6 +927,9 @@ name|changeEditUtil
 parameter_list|,
 name|PatchSetUtil
 name|patchSetUtil
+parameter_list|,
+name|ProjectCache
+name|projectCache
 parameter_list|)
 block|{
 name|this
@@ -936,6 +977,12 @@ name|patchSetUtil
 operator|=
 name|patchSetUtil
 expr_stmt|;
+name|this
+operator|.
+name|projectCache
+operator|=
+name|projectCache
+expr_stmt|;
 block|}
 comment|/**    * Creates a new change edit.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change for which the change edit should be created    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if a change edit already existed for the change    * @throws PermissionBackendException    */
 DECL|method|createEdit (Repository repository, ChangeNotes notes)
@@ -959,6 +1006,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ResourceConflictException
 block|{
 name|assertCanEdit
 argument_list|(
@@ -1059,6 +1108,8 @@ throws|,
 name|MergeConflictException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ResourceConflictException
 block|{
 name|assertCanEdit
 argument_list|(
@@ -1342,6 +1393,8 @@ throws|,
 name|PermissionBackendException
 throws|,
 name|BadRequestException
+throws|,
+name|ResourceConflictException
 block|{
 name|assertCanEdit
 argument_list|(
@@ -1501,7 +1554,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Modifies the contents of a file of a change edit. If the change edit doesn't exist, a new one    * will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit should be modified    * @param filePath the path of the file whose contents should be modified    * @param newContent the new file content    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file already had the specified content    * @throws PermissionBackendException    */
+comment|/**    * Modifies the contents of a file of a change edit. If the change edit doesn't exist, a new one    * will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit should be modified    * @param filePath the path of the file whose contents should be modified    * @param newContent the new file content    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file already had the specified content    * @throws PermissionBackendException    * @throws ResourceConflictException if the project state does not permit the operation    */
 DECL|method|modifyFile ( Repository repository, ChangeNotes notes, String filePath, RawInput newContent)
 specifier|public
 name|void
@@ -1529,6 +1582,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ResourceConflictException
 block|{
 name|modifyTree
 argument_list|(
@@ -1546,7 +1601,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Deletes a file from the Git tree of a change edit. If the change edit doesn't exist, a new one    * will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit should be modified    * @param file path of the file which should be deleted    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file does not exist    * @throws PermissionBackendException    */
+comment|/**    * Deletes a file from the Git tree of a change edit. If the change edit doesn't exist, a new one    * will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit should be modified    * @param file path of the file which should be deleted    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file does not exist    * @throws PermissionBackendException    * @throws ResourceConflictException if the project state does not permit the operation    */
 DECL|method|deleteFile (Repository repository, ChangeNotes notes, String file)
 specifier|public
 name|void
@@ -1571,6 +1626,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ResourceConflictException
 block|{
 name|modifyTree
 argument_list|(
@@ -1586,7 +1643,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Renames a file of a change edit or moves it to another directory. If the change edit doesn't    * exist, a new one will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit should be modified    * @param currentFilePath the current path/name of the file    * @param newFilePath the desired path/name of the file    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file was already renamed to the specified new    *     name    * @throws PermissionBackendException    */
+comment|/**    * Renames a file of a change edit or moves it to another directory. If the change edit doesn't    * exist, a new one will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit should be modified    * @param currentFilePath the current path/name of the file    * @param newFilePath the desired path/name of the file    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file was already renamed to the specified new    *     name    * @throws PermissionBackendException    * @throws ResourceConflictException if the project state does not permit the operation    */
 DECL|method|renameFile ( Repository repository, ChangeNotes notes, String currentFilePath, String newFilePath)
 specifier|public
 name|void
@@ -1614,6 +1671,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ResourceConflictException
 block|{
 name|modifyTree
 argument_list|(
@@ -1656,6 +1715,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ResourceConflictException
 block|{
 name|modifyTree
 argument_list|(
@@ -1695,6 +1756,8 @@ throws|,
 name|InvalidChangeOperationException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ResourceConflictException
 block|{
 name|assertCanEdit
 argument_list|(
@@ -1871,6 +1934,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ResourceConflictException
 block|{
 name|assertCanEdit
 argument_list|(
@@ -2065,6 +2130,10 @@ throws|throws
 name|AuthException
 throws|,
 name|PermissionBackendException
+throws|,
+name|IOException
+throws|,
+name|ResourceConflictException
 block|{
 if|if
 condition|(
@@ -2111,6 +2180,19 @@ name|ChangePermission
 operator|.
 name|ADD_PATCH_SET
 argument_list|)
+expr_stmt|;
+name|projectCache
+operator|.
+name|checkedGet
+argument_list|(
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|)
+operator|.
+name|checkStatePermitsWrite
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
