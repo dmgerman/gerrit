@@ -1297,11 +1297,6 @@ parameter_list|()
 block|{
 if|if
 condition|(
-operator|!
-name|isProjectStatePermittingWrite
-argument_list|()
-operator|||
-operator|(
 name|RefNames
 operator|.
 name|REFS_CONFIG
@@ -1316,7 +1311,6 @@ name|projectControl
 operator|.
 name|isOwner
 argument_list|()
-operator|)
 condition|)
 block|{
 comment|// Pushing requires being at least project owner, in addition to push.
