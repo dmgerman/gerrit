@@ -3930,7 +3930,7 @@ argument_list|)
 decl_stmt|;
 name|GroupNameNotes
 operator|.
-name|updateGroupNames
+name|updateAllGroups
 argument_list|(
 name|repo
 argument_list|,

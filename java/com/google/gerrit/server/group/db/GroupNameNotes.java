@@ -629,11 +629,11 @@ name|UNIQUE_REF_ERROR
 init|=
 literal|"GroupReference collection must contain unique references"
 decl_stmt|;
-DECL|method|loadForRename ( Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey oldName, AccountGroup.NameKey newName)
+DECL|method|forRename ( Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey oldName, AccountGroup.NameKey newName)
 specifier|public
 specifier|static
 name|GroupNameNotes
-name|loadForRename
+name|forRename
 parameter_list|(
 name|Repository
 name|repository
@@ -699,11 +699,11 @@ return|return
 name|groupNameNotes
 return|;
 block|}
-DECL|method|loadForNewGroup ( Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey groupName)
+DECL|method|forNewGroup ( Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey groupName)
 specifier|public
 specifier|static
 name|GroupNameNotes
-name|loadForNewGroup
+name|forNewGroup
 parameter_list|(
 name|Repository
 name|repository
@@ -759,7 +759,7 @@ return|return
 name|groupNameNotes
 return|;
 block|}
-DECL|method|loadGroup ( Repository allUsersRepo, AccountGroup.NameKey groupName)
+DECL|method|loadGroup ( Repository repository, AccountGroup.NameKey groupName)
 specifier|public
 specifier|static
 name|Optional
@@ -769,7 +769,7 @@ argument_list|>
 name|loadGroup
 parameter_list|(
 name|Repository
-name|allUsersRepo
+name|repository
 parameter_list|,
 name|AccountGroup
 operator|.
@@ -784,7 +784,7 @@ block|{
 name|Ref
 name|ref
 init|=
-name|allUsersRepo
+name|repository
 operator|.
 name|exactRef
 argument_list|(
@@ -815,7 +815,7 @@ init|=
 operator|new
 name|RevWalk
 argument_list|(
-name|allUsersRepo
+name|repository
 argument_list|)
 init|;
 name|ObjectReader
@@ -1062,14 +1062,14 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|updateGroupNames ( Repository allUsersRepo, ObjectInserter inserter, BatchRefUpdate bru, Collection<GroupReference> groupReferences, PersonIdent ident)
+DECL|method|updateAllGroups ( Repository repository, ObjectInserter inserter, BatchRefUpdate bru, Collection<GroupReference> groupReferences, PersonIdent ident)
 specifier|public
 specifier|static
 name|void
-name|updateGroupNames
+name|updateAllGroups
 parameter_list|(
 name|Repository
-name|allUsersRepo
+name|repository
 parameter_list|,
 name|ObjectInserter
 name|inserter
@@ -1137,7 +1137,7 @@ decl_stmt|;
 name|Ref
 name|ref
 init|=
-name|allUsersRepo
+name|repository
 operator|.
 name|exactRef
 argument_list|(

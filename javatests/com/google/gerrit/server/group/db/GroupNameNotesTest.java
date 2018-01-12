@@ -1073,7 +1073,7 @@ argument_list|)
 expr_stmt|;
 name|GroupNameNotes
 operator|.
-name|loadForNewGroup
+name|forNewGroup
 argument_list|(
 name|repo
 argument_list|,
@@ -1104,7 +1104,7 @@ argument_list|)
 expr_stmt|;
 name|GroupNameNotes
 operator|.
-name|loadForNewGroup
+name|forNewGroup
 argument_list|(
 name|repo
 argument_list|,
@@ -1223,7 +1223,7 @@ argument_list|)
 expr_stmt|;
 name|GroupNameNotes
 operator|.
-name|loadForNewGroup
+name|forNewGroup
 argument_list|(
 name|repo
 argument_list|,
@@ -1498,7 +1498,7 @@ argument_list|)
 expr_stmt|;
 name|GroupNameNotes
 operator|.
-name|loadForRename
+name|forRename
 argument_list|(
 name|repo
 argument_list|,
@@ -1551,7 +1551,7 @@ argument_list|)
 expr_stmt|;
 name|GroupNameNotes
 operator|.
-name|loadForRename
+name|forRename
 argument_list|(
 name|repo
 argument_list|,
@@ -1627,7 +1627,7 @@ argument_list|)
 expr_stmt|;
 name|GroupNameNotes
 operator|.
-name|loadForRename
+name|forRename
 argument_list|(
 name|repo
 argument_list|,
@@ -1710,7 +1710,7 @@ argument_list|)
 expr_stmt|;
 name|GroupNameNotes
 operator|.
-name|loadForRename
+name|forRename
 argument_list|(
 name|repo
 argument_list|,
@@ -1763,7 +1763,7 @@ argument_list|)
 expr_stmt|;
 name|GroupNameNotes
 operator|.
-name|loadForRename
+name|forRename
 argument_list|(
 name|repo
 argument_list|,
@@ -1839,7 +1839,7 @@ argument_list|)
 expr_stmt|;
 name|GroupNameNotes
 operator|.
-name|loadForRename
+name|forRename
 argument_list|(
 name|repo
 argument_list|,
@@ -2174,7 +2174,7 @@ name|groupNameNotes
 init|=
 name|GroupNameNotes
 operator|.
-name|loadForNewGroup
+name|forNewGroup
 argument_list|(
 name|repo
 argument_list|,
@@ -2257,7 +2257,7 @@ name|groupNameNotes
 init|=
 name|GroupNameNotes
 operator|.
-name|loadForRename
+name|forRename
 argument_list|(
 name|repo
 argument_list|,
@@ -2932,7 +2932,7 @@ init|=
 name|newPersonIdent
 argument_list|()
 decl_stmt|;
-name|updateGroupNames
+name|updateAllGroups
 argument_list|(
 name|ident
 argument_list|,
@@ -3060,7 +3060,7 @@ argument_list|)
 operator|.
 name|commit
 decl_stmt|;
-name|updateGroupNames
+name|updateAllGroups
 argument_list|(
 name|newPersonIdent
 argument_list|()
@@ -3250,7 +3250,7 @@ operator|=
 name|newPersonIdent
 argument_list|()
 expr_stmt|;
-name|updateGroupNames
+name|updateAllGroups
 argument_list|(
 name|ident
 argument_list|,
@@ -3417,7 +3417,7 @@ init|=
 name|newPersonIdent
 argument_list|()
 decl_stmt|;
-name|updateGroupNames
+name|updateAllGroups
 argument_list|(
 name|ident
 argument_list|,
@@ -3443,7 +3443,7 @@ argument_list|,
 name|g2
 argument_list|)
 expr_stmt|;
-name|updateGroupNames
+name|updateAllGroups
 argument_list|(
 name|ident
 argument_list|)
@@ -3621,7 +3621,7 @@ argument_list|(
 literal|""
 argument_list|)
 decl_stmt|;
-name|updateGroupNames
+name|updateAllGroups
 argument_list|(
 name|newPersonIdent
 argument_list|()
@@ -3681,7 +3681,7 @@ name|groupNameNotes
 init|=
 name|GroupNameNotes
 operator|.
-name|loadForNewGroup
+name|forNewGroup
 argument_list|(
 name|repo
 argument_list|,
@@ -3724,7 +3724,7 @@ name|groupNameNotes
 init|=
 name|GroupNameNotes
 operator|.
-name|loadForRename
+name|forRename
 argument_list|(
 name|repo
 argument_list|,
@@ -3943,10 +3943,10 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|updateGroupNames (PersonIdent ident, GroupReference... groupRefs)
+DECL|method|updateAllGroups (PersonIdent ident, GroupReference... groupRefs)
 specifier|private
 name|void
-name|updateGroupNames
+name|updateAllGroups
 parameter_list|(
 name|PersonIdent
 name|ident
@@ -3982,7 +3982,7 @@ argument_list|()
 decl_stmt|;
 name|GroupNameNotes
 operator|.
-name|updateGroupNames
+name|updateAllGroups
 argument_list|(
 name|repo
 argument_list|,
@@ -4060,7 +4060,7 @@ try|try
 block|{
 name|GroupNameNotes
 operator|.
-name|updateGroupNames
+name|updateAllGroups
 argument_list|(
 name|repo
 argument_list|,

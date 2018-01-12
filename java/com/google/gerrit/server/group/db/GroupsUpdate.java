@@ -3074,7 +3074,7 @@ name|groupNameNotes
 init|=
 name|GroupNameNotes
 operator|.
-name|loadForNewGroup
+name|forNewGroup
 argument_list|(
 name|allUsersRepo
 argument_list|,
@@ -3295,7 +3295,7 @@ name|groupNameNotes
 operator|=
 name|GroupNameNotes
 operator|.
-name|loadForRename
+name|forRename
 argument_list|(
 name|allUsersRepo
 argument_list|,
