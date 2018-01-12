@@ -1170,9 +1170,6 @@ name|Permission
 operator|.
 name|PUSH
 argument_list|)
-operator|&&
-name|isProjectStatePermittingWrite
-argument_list|()
 return|;
 block|}
 comment|/** @return true if the user can rewind (force push) the reference. */

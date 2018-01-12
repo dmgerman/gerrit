@@ -7358,6 +7358,23 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
+name|projectState
+operator|.
+name|statePermitsWrite
+argument_list|()
+condition|)
+block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"prohibited by Gerrit: project state does not permit write"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|ok
 condition|)
 block|{
