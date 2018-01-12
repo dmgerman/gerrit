@@ -977,18 +977,6 @@ name|Permission
 operator|.
 name|PUSH
 argument_list|)
-operator|&&
-name|getProjectControl
-argument_list|()
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getState
-argument_list|()
-operator|.
-name|permitsWrite
-argument_list|()
 return|;
 block|}
 comment|/** @return true if this user can submit merge patch sets to this ref */

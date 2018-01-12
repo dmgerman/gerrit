@@ -1610,6 +1610,11 @@ name|testOrFalse
 argument_list|(
 name|CREATE_CHANGE
 argument_list|)
+operator|&&
+name|projectState
+operator|.
+name|statePermitsWrite
+argument_list|()
 operator|)
 argument_list|)
 expr_stmt|;

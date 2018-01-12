@@ -1989,6 +1989,12 @@ name|canUpload
 operator|=
 name|toBoolean
 argument_list|(
+name|projectState
+operator|.
+name|statePermitsWrite
+argument_list|()
+operator|&&
+operator|(
 name|canWriteConfig
 operator|||
 operator|(
@@ -2007,6 +2013,7 @@ name|testOrFalse
 argument_list|(
 name|CREATE_CHANGE
 argument_list|)
+operator|)
 operator|)
 argument_list|)
 expr_stmt|;

@@ -1133,6 +1133,15 @@ operator|.
 name|CREATE_CHANGE
 argument_list|)
 operator|&&
+name|getProjectControl
+argument_list|()
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|statePermitsWrite
+argument_list|()
+operator|&&
 operator|!
 name|isPatchSetLocked
 argument_list|(
@@ -1170,6 +1179,15 @@ name|RefPermission
 operator|.
 name|CREATE_CHANGE
 argument_list|)
+operator|&&
+name|getProjectControl
+argument_list|()
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|statePermitsWrite
+argument_list|()
 return|;
 block|}
 comment|/** The range of permitted values associated with a label permission. */
@@ -1209,6 +1227,7 @@ block|{
 if|if
 condition|(
 operator|!
+operator|(
 name|refControl
 operator|.
 name|asForRef
@@ -1220,6 +1239,16 @@ name|RefPermission
 operator|.
 name|CREATE_CHANGE
 argument_list|)
+operator|&&
+name|getProjectControl
+argument_list|()
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|statePermitsWrite
+argument_list|()
+operator|)
 operator|||
 name|isPatchSetLocked
 argument_list|(

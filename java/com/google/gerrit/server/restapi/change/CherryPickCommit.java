@@ -833,6 +833,14 @@ operator|.
 name|CREATE_CHANGE
 argument_list|)
 expr_stmt|;
+name|rsrc
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|checkStatePermitsWrite
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|Change
