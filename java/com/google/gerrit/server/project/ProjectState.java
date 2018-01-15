@@ -1778,6 +1778,23 @@ name|getMaxObjectSizeLimit
 argument_list|()
 return|;
 block|}
+DECL|method|statePermitsRead ()
+specifier|public
+name|boolean
+name|statePermitsRead
+parameter_list|()
+block|{
+return|return
+name|getProject
+argument_list|()
+operator|.
+name|getState
+argument_list|()
+operator|.
+name|permitsRead
+argument_list|()
+return|;
+block|}
 DECL|method|statePermitsWrite ()
 specifier|public
 name|boolean
