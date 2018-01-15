@@ -812,9 +812,6 @@ name|SUBMIT
 argument_list|,
 name|isChangeOwner
 argument_list|)
-operator|&&
-name|isProjectStatePermittingWrite
-argument_list|()
 return|;
 block|}
 comment|/** @return true if this user can abandon a change for this ref */
