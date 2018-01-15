@@ -213,6 +213,19 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**    * Remove information about the given project from the cache. It will no longer be returned from    * {@link #all()}.    */
+DECL|method|remove (Project.NameKey name)
+name|void
+name|remove
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|name
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 comment|/** @return sorted iteration of projects. */
 DECL|method|all ()
 name|ImmutableSortedSet
