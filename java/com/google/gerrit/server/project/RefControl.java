@@ -768,9 +768,6 @@ name|Permission
 operator|.
 name|REBASE
 argument_list|)
-operator|&&
-name|isProjectStatePermittingWrite
-argument_list|()
 return|;
 block|}
 comment|/** @return true if this user can submit patch sets to this ref */
