@@ -720,6 +720,7 @@ operator|&&
 operator|(
 name|canMaintainServer
 operator|||
+operator|(
 name|permissionBackend
 operator|.
 name|user
@@ -743,6 +744,12 @@ name|ChangePermission
 operator|.
 name|READ
 argument_list|)
+operator|&&
+name|projectState
+operator|.
+name|statePermitsRead
+argument_list|()
+operator|)
 operator|)
 condition|)
 block|{

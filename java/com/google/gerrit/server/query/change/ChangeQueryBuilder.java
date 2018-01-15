@@ -5695,6 +5695,10 @@ argument_list|,
 name|args
 operator|.
 name|permissionBackend
+argument_list|,
+name|args
+operator|.
+name|projectCache
 argument_list|)
 return|;
 block|}

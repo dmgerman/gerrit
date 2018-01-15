@@ -1060,6 +1060,12 @@ condition|(
 name|pe
 operator|==
 literal|null
+operator|||
+operator|!
+name|pe
+operator|.
+name|statePermitsRead
+argument_list|()
 condition|)
 block|{
 return|return

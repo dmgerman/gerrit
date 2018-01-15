@@ -853,11 +853,6 @@ argument_list|(
 name|cds
 argument_list|,
 name|basePs
-argument_list|,
-name|rsrc
-operator|.
-name|getUser
-argument_list|()
 argument_list|)
 control|)
 block|{
