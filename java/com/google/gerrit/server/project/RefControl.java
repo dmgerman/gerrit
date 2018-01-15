@@ -1101,9 +1101,6 @@ name|Permission
 operator|.
 name|PUSH_MERGE
 argument_list|)
-operator|&&
-name|isProjectStatePermittingWrite
-argument_list|()
 return|;
 block|}
 comment|/** @return true if the user can update the reference as a fast-forward. */
@@ -1170,9 +1167,6 @@ name|Permission
 operator|.
 name|PUSH
 argument_list|)
-operator|&&
-name|isProjectStatePermittingWrite
-argument_list|()
 return|;
 block|}
 comment|/** @return true if the user can rewind (force push) the reference. */
@@ -1182,17 +1176,6 @@ name|boolean
 name|canForceUpdate
 parameter_list|()
 block|{
-if|if
-condition|(
-operator|!
-name|isProjectStatePermittingWrite
-argument_list|()
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
 if|if
 condition|(
 name|canPushWithForce
@@ -1303,11 +1286,6 @@ parameter_list|()
 block|{
 if|if
 condition|(
-operator|!
-name|isProjectStatePermittingWrite
-argument_list|()
-operator|||
-operator|(
 name|RefNames
 operator|.
 name|REFS_CONFIG
@@ -1322,7 +1300,6 @@ name|projectControl
 operator|.
 name|isOwner
 argument_list|()
-operator|)
 condition|)
 block|{
 comment|// Pushing requires being at least project owner, in addition to push.
