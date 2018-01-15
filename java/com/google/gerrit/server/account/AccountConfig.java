@@ -180,6 +180,22 @@ name|extensions
 operator|.
 name|client
 operator|.
+name|DiffPreferencesInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
 name|GeneralPreferencesInfo
 import|;
 end_import
@@ -873,6 +889,23 @@ name|getGeneralPreferences
 argument_list|()
 return|;
 block|}
+comment|/**    * Get the diff preferences of the loaded account.    *    * @return the diff preferences of the loaded account    */
+DECL|method|getDiffPreferences ()
+specifier|public
+name|DiffPreferencesInfo
+name|getDiffPreferences
+parameter_list|()
+block|{
+name|checkLoaded
+argument_list|()
+expr_stmt|;
+return|return
+name|prefConfig
+operator|.
+name|getDiffPreferences
+argument_list|()
+return|;
+block|}
 comment|/**    * Sets the account. This means the loaded account will be overwritten with the given account.    *    *<p>Changing the registration date of an account is not supported.    *    * @param account account that should be set    * @throws IllegalStateException if the account was not loaded yet    */
 DECL|method|setAccount (Account account)
 specifier|public
@@ -1539,7 +1572,7 @@ decl_stmt|;
 name|saveProjectWatches
 argument_list|()
 expr_stmt|;
-name|saveGeneralPreferences
+name|savePreferences
 argument_list|()
 expr_stmt|;
 comment|// metaId is set in the commit(MetaDataUpdate) method after the commit is created
@@ -1829,10 +1862,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|saveGeneralPreferences ()
+DECL|method|savePreferences ()
 specifier|private
 name|void
-name|saveGeneralPreferences
+name|savePreferences
 parameter_list|()
 throws|throws
 name|IOException
@@ -1841,11 +1874,14 @@ name|ConfigInvalidException
 block|{
 if|if
 condition|(
+operator|!
 name|accountUpdate
 operator|.
 name|isPresent
 argument_list|()
-operator|&&
+operator|||
+operator|(
+operator|!
 name|accountUpdate
 operator|.
 name|get
@@ -1856,8 +1892,23 @@ argument_list|()
 operator|.
 name|isPresent
 argument_list|()
+operator|&&
+operator|!
+name|accountUpdate
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getDiffPreferences
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+operator|)
 condition|)
 block|{
+return|return;
+block|}
 name|saveConfig
 argument_list|(
 name|PreferencesConfig
@@ -1875,13 +1926,17 @@ argument_list|()
 operator|.
 name|getGeneralPreferences
 argument_list|()
+argument_list|,
+name|accountUpdate
 operator|.
 name|get
+argument_list|()
+operator|.
+name|getDiffPreferences
 argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|/**    * Sets/Unsets {@code account.active} in the given config.    *    *<p>{@code account.active} is set to {@code false} if the account is inactive.    *    *<p>If the account is active {@code account.active} is unset since {@code true} is the default    * if this field is missing.    *    * @param cfg the config    * @param value whether the account is active    */
 DECL|method|setActive (Config cfg, boolean value)

@@ -505,7 +505,7 @@ name|updatedPrefs
 init|=
 name|PreferencesConfig
 operator|.
-name|updateDefaultPreferences
+name|updateDefaultGeneralPreferences
 argument_list|(
 name|md
 argument_list|,
