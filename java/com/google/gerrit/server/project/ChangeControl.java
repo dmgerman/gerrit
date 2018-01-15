@@ -1221,15 +1221,6 @@ name|RefPermission
 operator|.
 name|CREATE_CHANGE
 argument_list|)
-operator|&&
-name|getProjectControl
-argument_list|()
-operator|.
-name|getProjectState
-argument_list|()
-operator|.
-name|statePermitsWrite
-argument_list|()
 operator|)
 operator|||
 name|isPatchSetLocked
