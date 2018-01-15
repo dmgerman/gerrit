@@ -1329,11 +1329,6 @@ parameter_list|()
 block|{
 if|if
 condition|(
-operator|!
-name|isProjectStatePermittingWrite
-argument_list|()
-operator|||
-operator|(
 name|RefNames
 operator|.
 name|REFS_CONFIG
@@ -1342,7 +1337,6 @@ name|equals
 argument_list|(
 name|refName
 argument_list|)
-operator|)
 condition|)
 block|{
 comment|// Never allow removal of the refs/meta/config branch.

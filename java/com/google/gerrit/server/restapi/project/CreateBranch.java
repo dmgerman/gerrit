@@ -1354,6 +1354,14 @@ name|RefPermission
 operator|.
 name|DELETE
 argument_list|)
+operator|&&
+name|rsrc
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|statePermitsWrite
+argument_list|()
 condition|?
 literal|true
 else|:
