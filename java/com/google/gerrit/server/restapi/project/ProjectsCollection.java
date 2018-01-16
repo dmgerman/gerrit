@@ -204,7 +204,39 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|ResourceConflictException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
 import|;
 end_import
 
@@ -727,7 +759,7 @@ name|IdString
 name|id
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
+name|RestApiException
 throws|,
 name|IOException
 throws|,
@@ -765,7 +797,7 @@ return|return
 name|rsrc
 return|;
 block|}
-comment|/**    * Parses a project ID from a request body and returns the project.    *    * @param id ID of the project, can be a project name    * @return the project    * @throws UnprocessableEntityException thrown if the project ID cannot be resolved or if the    *     project is not visible to the calling user    * @throws IOException thrown when there is an error.    * @throws PermissionBackendException    */
+comment|/**    * Parses a project ID from a request body and returns the project.    *    * @param id ID of the project, can be a project name    * @return the project    * @throws RestApiException thrown if the project ID cannot be resolved or if the project is not    *     visible to the calling user    * @throws IOException thrown when there is an error.    * @throws PermissionBackendException    */
 DECL|method|parse (String id)
 specifier|public
 name|ProjectResource
@@ -775,7 +807,7 @@ name|String
 name|id
 parameter_list|)
 throws|throws
-name|UnprocessableEntityException
+name|RestApiException
 throws|,
 name|IOException
 throws|,
@@ -790,7 +822,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**    * Parses a project ID from a request body and returns the project.    *    * @param id ID of the project, can be a project name    * @param checkAccess if true, check the project is accessible by the current user    * @return the project    * @throws UnprocessableEntityException thrown if the project ID cannot be resolved or if the    *     project is not visible to the calling user and checkVisibility is true.    * @throws IOException thrown when there is an error.    * @throws PermissionBackendException    */
+comment|/**    * Parses a project ID from a request body and returns the project.    *    * @param id ID of the project, can be a project name    * @param checkAccess if true, check the project is accessible by the current user    * @return the project    * @throws RestApiException thrown if the project ID cannot be resolved or if the project is not    *     visible to the calling user and checkVisibility is true.    * @throws IOException thrown when there is an error.    * @throws PermissionBackendException    */
 DECL|method|parse (String id, boolean checkAccess)
 specifier|public
 name|ProjectResource
@@ -803,7 +835,7 @@ name|boolean
 name|checkAccess
 parameter_list|)
 throws|throws
-name|UnprocessableEntityException
+name|RestApiException
 throws|,
 name|IOException
 throws|,
@@ -862,6 +894,8 @@ throws|throws
 name|IOException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ResourceConflictException
 block|{
 if|if
 condition|(
@@ -968,6 +1002,45 @@ return|return
 literal|null
 return|;
 comment|// Pretend like not found on access denied.
+block|}
+comment|// If the project's state does not permit reading, we want to hide it from all callers. The
+comment|// only exception to that are users who are allowed to mutate the project's configuration.
+comment|// This enables these users to still mutate the project's state (e.g. set a HIDDEN project to
+comment|// ACTIVE). Individual views should still check for checkStatePermitsRead() and this should
+comment|// just serve as a safety net in case the individual check is forgotten.
+try|try
+block|{
+name|permissionBackend
+operator|.
+name|user
+argument_list|(
+name|user
+argument_list|)
+operator|.
+name|project
+argument_list|(
+name|nameKey
+argument_list|)
+operator|.
+name|check
+argument_list|(
+name|ProjectPermission
+operator|.
+name|WRITE_CONFIG
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AuthException
+name|e
+parameter_list|)
+block|{
+name|state
+operator|.
+name|checkStatePermitsRead
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 return|return
