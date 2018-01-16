@@ -589,7 +589,6 @@ annotation|@
 name|FunctionalInterface
 DECL|interface|AccountUpdater
 specifier|public
-specifier|static
 interface|interface
 name|AccountUpdater
 block|{
@@ -608,7 +607,6 @@ name|update
 parameter_list|)
 function_decl|;
 DECL|method|join (List<AccountUpdater> updaters)
-specifier|public
 specifier|static
 name|AccountUpdater
 name|join
@@ -647,8 +645,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|joinConsumers ( List<Consumer<InternalAccountUpdate.Builder>> consumers)
-specifier|public
+DECL|method|joinConsumers (List<Consumer<InternalAccountUpdate.Builder>> consumers)
 specifier|static
 name|AccountUpdater
 name|joinConsumers
