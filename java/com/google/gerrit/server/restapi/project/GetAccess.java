@@ -1526,6 +1526,21 @@ operator|.
 name|WRITE_CONFIG
 argument_list|)
 decl_stmt|;
+comment|// Check if the project state permits read only when the user is not allowed to write the config
+comment|// (=owner). This is so that the owner can still read (and in the next step write) the project's
+comment|// config to set the project state to any state that is not HIDDEN.
+if|if
+condition|(
+operator|!
+name|canWriteConfig
+condition|)
+block|{
+name|projectState
+operator|.
+name|checkStatePermitsRead
+argument_list|()
+expr_stmt|;
+block|}
 for|for
 control|(
 name|AccessSection

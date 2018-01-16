@@ -1148,6 +1148,11 @@ literal|false
 return|;
 block|}
 return|return
+name|pe
+operator|.
+name|statePermitsRead
+argument_list|()
+operator|&&
 name|permissionBackend
 operator|.
 name|user

@@ -2748,9 +2748,6 @@ operator|.
 name|READ
 argument_list|)
 expr_stmt|;
-return|return
-literal|true
-return|;
 block|}
 catch|catch
 parameter_list|(
@@ -2781,6 +2778,12 @@ return|return
 literal|false
 return|;
 block|}
+return|return
+name|projectState
+operator|.
+name|statePermitsRead
+argument_list|()
+return|;
 block|}
 DECL|method|checkProjectPermission ( PermissionBackend.ForProject forProject, ProjectPermission perm)
 specifier|private
