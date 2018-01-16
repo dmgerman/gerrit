@@ -247,6 +247,13 @@ name|TRACKING_IDS
 argument_list|(
 literal|21
 argument_list|)
+block|,
+comment|/** Skip mergeability data */
+DECL|enumConstant|SKIP_MERGEABLE
+name|SKIP_MERGEABLE
+argument_list|(
+literal|22
+argument_list|)
 block|;
 DECL|field|value
 specifier|private
