@@ -815,7 +815,9 @@ name|Failure
 argument_list|(
 literal|1
 argument_list|,
-literal|"fatal: 'argument' token or flush expected"
+literal|"fatal: 'argument' token or flush expected, got "
+operator|+
+name|s
 argument_list|)
 throw|;
 block|}
@@ -1007,7 +1009,11 @@ name|Failure
 argument_list|(
 literal|3
 argument_list|,
-literal|"fatal: upload-archive not permitted"
+literal|"fatal: upload-archive not permitted for format "
+operator|+
+name|options
+operator|.
+name|format
 argument_list|)
 throw|;
 block|}
@@ -1037,7 +1043,11 @@ name|Failure
 argument_list|(
 literal|4
 argument_list|,
-literal|"fatal: reference not found"
+literal|"fatal: reference not found: "
+operator|+
+name|options
+operator|.
+name|treeIsh
 argument_list|)
 throw|;
 block|}
@@ -1057,7 +1067,11 @@ name|Failure
 argument_list|(
 literal|5
 argument_list|,
-literal|"fatal: cannot perform upload-archive operation"
+literal|"fatal: no permission to read tree"
+operator|+
+name|options
+operator|.
+name|treeIsh
 argument_list|)
 throw|;
 block|}
