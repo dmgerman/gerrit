@@ -458,11 +458,17 @@ specifier|public
 class|class
 name|ActionJson
 block|{
-DECL|field|revisions
+DECL|field|revisionViews
 specifier|private
 specifier|final
-name|Revisions
-name|revisions
+name|DynamicMap
+argument_list|<
+name|RestView
+argument_list|<
+name|RevisionResource
+argument_list|>
+argument_list|>
+name|revisionViews
 decl_stmt|;
 DECL|field|changeJsonFactory
 specifier|private
@@ -518,11 +524,17 @@ name|userProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ActionJson ( Revisions revisions, ChangeJson.Factory changeJsonFactory, ChangeResource.Factory changeResourceFactory, UiActions uiActions, DynamicMap<RestView<ChangeResource>> changeViews, DynamicSet<ActionVisitor> visitorSet, Provider<CurrentUser> userProvider)
+DECL|method|ActionJson ( DynamicMap<RestView<RevisionResource>> views, ChangeJson.Factory changeJsonFactory, ChangeResource.Factory changeResourceFactory, UiActions uiActions, DynamicMap<RestView<ChangeResource>> changeViews, DynamicSet<ActionVisitor> visitorSet, Provider<CurrentUser> userProvider)
 name|ActionJson
 parameter_list|(
-name|Revisions
-name|revisions
+name|DynamicMap
+argument_list|<
+name|RestView
+argument_list|<
+name|RevisionResource
+argument_list|>
+argument_list|>
+name|views
 parameter_list|,
 name|ChangeJson
 operator|.
@@ -561,9 +573,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|revisions
+name|revisionViews
 operator|=
-name|revisions
+name|views
 expr_stmt|;
 name|this
 operator|.
@@ -1491,7 +1503,7 @@ name|uiActions
 operator|.
 name|from
 argument_list|(
-name|revisions
+name|revisionViews
 argument_list|,
 name|rsrc
 argument_list|)
