@@ -11669,6 +11669,8 @@ operator|.
 name|cmd
 argument_list|,
 name|c
+argument_list|,
+literal|null
 argument_list|)
 condition|)
 block|{
@@ -15068,6 +15070,8 @@ argument_list|,
 name|inputCommand
 argument_list|,
 name|newCommit
+argument_list|,
+name|change
 argument_list|)
 condition|)
 block|{
@@ -17200,6 +17204,8 @@ argument_list|,
 name|cmd
 argument_list|,
 name|c
+argument_list|,
+literal|null
 argument_list|)
 condition|)
 block|{
@@ -17274,7 +17280,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|validCommit ( RevWalk rw, PermissionBackend.ForRef perm, Branch.NameKey branch, ReceiveCommand cmd, ObjectId id)
+DECL|method|validCommit ( RevWalk rw, PermissionBackend.ForRef perm, Branch.NameKey branch, ReceiveCommand cmd, ObjectId id, @Nullable Change change)
 specifier|private
 name|boolean
 name|validCommit
@@ -17297,6 +17303,11 @@ name|cmd
 parameter_list|,
 name|ObjectId
 name|id
+parameter_list|,
+annotation|@
+name|Nullable
+name|Change
+name|change
 parameter_list|)
 throws|throws
 name|IOException
@@ -17426,6 +17437,8 @@ argument_list|,
 name|repo
 argument_list|,
 name|rw
+argument_list|,
+name|change
 argument_list|)
 decl_stmt|;
 name|messages
