@@ -828,7 +828,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"fatal: upload-archive not permitted"
+literal|"fatal: upload-archive not permitted for format zip"
 argument_list|)
 expr_stmt|;
 block|}
