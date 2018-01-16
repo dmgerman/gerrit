@@ -938,6 +938,8 @@ throws|,
 name|PermissionDeniedException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ResourceConflictException
 block|{
 try|try
 block|{
@@ -1430,6 +1432,8 @@ throws|,
 name|PermissionDeniedException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ResourceConflictException
 function_decl|;
 DECL|method|replace (ProjectConfig config, Set<String> toDelete, AccessSection section)
 specifier|private

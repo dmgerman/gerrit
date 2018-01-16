@@ -9881,6 +9881,24 @@ return|return;
 block|}
 if|if
 condition|(
+operator|!
+name|projectState
+operator|.
+name|statePermitsWrite
+argument_list|()
+condition|)
+block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"project state does not permit write"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
 name|magicBranch
 operator|.
 name|isPrivate
