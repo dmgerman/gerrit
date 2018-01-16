@@ -1620,7 +1620,7 @@ name|groupNameNotes
 init|=
 name|GroupNameNotes
 operator|.
-name|loadForNewGroup
+name|forNewGroup
 argument_list|(
 name|allUsersRepo
 argument_list|,

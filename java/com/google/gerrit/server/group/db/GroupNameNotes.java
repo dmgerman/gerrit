@@ -168,6 +168,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|HashMultiset
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|ImmutableBiMap
 import|;
 end_import
@@ -182,7 +196,21 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableSet
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Multiset
 import|;
 end_import
 
@@ -318,16 +346,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedHashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -349,16 +367,6 @@ operator|.
 name|util
 operator|.
 name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -621,11 +629,11 @@ name|UNIQUE_REF_ERROR
 init|=
 literal|"GroupReference collection must contain unique references"
 decl_stmt|;
-DECL|method|loadForRename ( Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey oldName, AccountGroup.NameKey newName)
+DECL|method|forRename ( Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey oldName, AccountGroup.NameKey newName)
 specifier|public
 specifier|static
 name|GroupNameNotes
-name|loadForRename
+name|forRename
 parameter_list|(
 name|Repository
 name|repository
@@ -691,11 +699,11 @@ return|return
 name|groupNameNotes
 return|;
 block|}
-DECL|method|loadForNewGroup ( Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey groupName)
+DECL|method|forNewGroup ( Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey groupName)
 specifier|public
 specifier|static
 name|GroupNameNotes
-name|loadForNewGroup
+name|forNewGroup
 parameter_list|(
 name|Repository
 name|repository
@@ -751,19 +759,21 @@ return|return
 name|groupNameNotes
 return|;
 block|}
-DECL|method|loadOneGroupReference ( Repository allUsersRepo, String groupName)
+DECL|method|loadGroup ( Repository repository, AccountGroup.NameKey groupName)
 specifier|public
 specifier|static
 name|Optional
 argument_list|<
 name|GroupReference
 argument_list|>
-name|loadOneGroupReference
+name|loadGroup
 parameter_list|(
 name|Repository
-name|allUsersRepo
+name|repository
 parameter_list|,
-name|String
+name|AccountGroup
+operator|.
+name|NameKey
 name|groupName
 parameter_list|)
 throws|throws
@@ -774,7 +784,7 @@ block|{
 name|Ref
 name|ref
 init|=
-name|allUsersRepo
+name|repository
 operator|.
 name|exactRef
 argument_list|(
@@ -805,7 +815,7 @@ init|=
 operator|new
 name|RevWalk
 argument_list|(
-name|allUsersRepo
+name|repository
 argument_list|)
 init|;
 name|ObjectReader
@@ -851,13 +861,7 @@ name|get
 argument_list|(
 name|getNoteKey
 argument_list|(
-operator|new
-name|AccountGroup
-operator|.
-name|NameKey
-argument_list|(
 name|groupName
-argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -890,14 +894,14 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|loadAllGroupReferences (Repository repository)
+DECL|method|loadAllGroups (Repository repository)
 specifier|public
 specifier|static
-name|ImmutableSet
+name|ImmutableList
 argument_list|<
 name|GroupReference
 argument_list|>
-name|loadAllGroupReferences
+name|loadAllGroups
 parameter_list|(
 name|Repository
 name|repository
@@ -927,7 +931,7 @@ literal|null
 condition|)
 block|{
 return|return
-name|ImmutableSet
+name|ImmutableList
 operator|.
 name|of
 argument_list|()
@@ -978,15 +982,15 @@ argument_list|,
 name|notesCommit
 argument_list|)
 decl_stmt|;
-name|Set
+name|Multiset
 argument_list|<
 name|GroupReference
 argument_list|>
 name|groupReferences
 init|=
-operator|new
-name|LinkedHashSet
-argument_list|<>
+name|HashMultiset
+operator|.
+name|create
 argument_list|()
 decl_stmt|;
 for|for
@@ -1010,20 +1014,23 @@ name|getData
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|boolean
-name|result
+name|int
+name|numOfOccurrences
 init|=
 name|groupReferences
 operator|.
 name|add
 argument_list|(
 name|groupReference
+argument_list|,
+literal|1
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|result
+name|numOfOccurrences
+operator|>
+literal|1
 condition|)
 block|{
 name|GroupsNoteDbConsistencyChecker
@@ -1046,7 +1053,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|ImmutableSet
+name|ImmutableList
 operator|.
 name|copyOf
 argument_list|(
@@ -1055,14 +1062,14 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|updateGroupNames ( Repository allUsersRepo, ObjectInserter inserter, BatchRefUpdate bru, Collection<GroupReference> groupReferences, PersonIdent ident)
+DECL|method|updateAllGroups ( Repository repository, ObjectInserter inserter, BatchRefUpdate bru, Collection<GroupReference> groupReferences, PersonIdent ident)
 specifier|public
 specifier|static
 name|void
-name|updateGroupNames
+name|updateAllGroups
 parameter_list|(
 name|Repository
-name|allUsersRepo
+name|repository
 parameter_list|,
 name|ObjectInserter
 name|inserter
@@ -1130,7 +1137,7 @@ decl_stmt|;
 name|Ref
 name|ref
 init|=
-name|allUsersRepo
+name|repository
 operator|.
 name|exactRef
 argument_list|(
@@ -1449,7 +1456,6 @@ name|groupUuid
 decl_stmt|;
 DECL|field|oldGroupName
 specifier|private
-specifier|final
 name|Optional
 argument_list|<
 name|AccountGroup
@@ -1460,7 +1466,6 @@ name|oldGroupName
 decl_stmt|;
 DECL|field|newGroupName
 specifier|private
-specifier|final
 name|Optional
 argument_list|<
 name|AccountGroup
@@ -1933,6 +1938,20 @@ name|getCommitMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|oldGroupName
+operator|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+expr_stmt|;
+name|newGroupName
+operator|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+expr_stmt|;
 return|return
 literal|true
 return|;
@@ -2135,10 +2154,8 @@ name|toText
 argument_list|()
 return|;
 block|}
-annotation|@
-name|VisibleForTesting
 DECL|method|getGroupReference (ObjectReader reader, ObjectId noteDataBlobId)
-specifier|public
+specifier|private
 specifier|static
 name|GroupReference
 name|getGroupReference

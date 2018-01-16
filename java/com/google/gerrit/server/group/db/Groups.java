@@ -1057,7 +1057,7 @@ block|{
 return|return
 name|GroupNameNotes
 operator|.
-name|loadAllGroupReferences
+name|loadAllGroups
 argument_list|(
 name|allUsersRepo
 argument_list|)
@@ -1414,6 +1414,7 @@ return|;
 block|}
 DECL|method|getExternalGroupsFromNoteDb (Repository allUsersRepo)
 specifier|private
+specifier|static
 name|Stream
 argument_list|<
 name|AccountGroup
@@ -1430,7 +1431,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-name|ImmutableSet
+name|ImmutableList
 argument_list|<
 name|GroupReference
 argument_list|>
@@ -1438,7 +1439,7 @@ name|allInternalGroups
 init|=
 name|GroupNameNotes
 operator|.
-name|loadAllGroupReferences
+name|loadAllGroups
 argument_list|(
 name|allUsersRepo
 argument_list|)
