@@ -706,7 +706,6 @@ condition|)
 block|{
 name|isVisible
 operator|=
-operator|(
 name|getUser
 argument_list|()
 operator|.
@@ -719,10 +718,6 @@ name|Permission
 operator|.
 name|READ
 argument_list|)
-operator|)
-operator|&&
-name|isProjectStatePermittingRead
-argument_list|()
 expr_stmt|;
 block|}
 return|return
@@ -811,95 +806,6 @@ operator|.
 name|SUBMIT
 argument_list|,
 name|isChangeOwner
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can abandon a change for this ref */
-DECL|method|canAbandon ()
-name|boolean
-name|canAbandon
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|ABANDON
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can view private changes. */
-DECL|method|canViewPrivateChanges ()
-name|boolean
-name|canViewPrivateChanges
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|VIEW_PRIVATE_CHANGES
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can delete their own changes. */
-DECL|method|canDeleteOwnChanges ()
-name|boolean
-name|canDeleteOwnChanges
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|DELETE_OWN_CHANGES
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can edit topic names. */
-DECL|method|canEditTopicName ()
-name|boolean
-name|canEditTopicName
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|EDIT_TOPIC_NAME
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can edit hashtag names. */
-DECL|method|canEditHashtags ()
-name|boolean
-name|canEditHashtags
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|EDIT_HASHTAGS
-argument_list|)
-return|;
-block|}
-DECL|method|canEditAssignee ()
-name|boolean
-name|canEditAssignee
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|EDIT_ASSIGNEE
 argument_list|)
 return|;
 block|}
@@ -1015,7 +921,19 @@ literal|false
 argument_list|)
 return|;
 block|}
+DECL|method|asForRef ()
+name|ForRef
+name|asForRef
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ForRefImpl
+argument_list|()
+return|;
+block|}
 DECL|method|canPerform (String permissionName, boolean isChangeOwner)
+specifier|private
 name|boolean
 name|canPerform
 parameter_list|(
@@ -1035,17 +953,6 @@ name|isChangeOwner
 argument_list|,
 literal|false
 argument_list|)
-return|;
-block|}
-DECL|method|asForRef ()
-name|ForRef
-name|asForRef
-parameter_list|()
-block|{
-return|return
-operator|new
-name|ForRefImpl
-argument_list|()
 return|;
 block|}
 DECL|method|canUpload ()
@@ -1071,7 +978,16 @@ operator|.
 name|PUSH
 argument_list|)
 operator|&&
-name|isProjectStatePermittingWrite
+name|getProjectControl
+argument_list|()
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getState
+argument_list|()
+operator|.
+name|permitsWrite
 argument_list|()
 return|;
 block|}
@@ -1234,46 +1150,6 @@ name|isAdmin
 argument_list|()
 return|;
 block|}
-block|}
-DECL|method|isProjectStatePermittingWrite ()
-specifier|private
-name|boolean
-name|isProjectStatePermittingWrite
-parameter_list|()
-block|{
-return|return
-name|getProjectControl
-argument_list|()
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getState
-argument_list|()
-operator|.
-name|permitsWrite
-argument_list|()
-return|;
-block|}
-DECL|method|isProjectStatePermittingRead ()
-specifier|private
-name|boolean
-name|isProjectStatePermittingRead
-parameter_list|()
-block|{
-return|return
-name|getProjectControl
-argument_list|()
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getState
-argument_list|()
-operator|.
-name|permitsRead
-argument_list|()
-return|;
 block|}
 DECL|method|canPushWithForce ()
 specifier|private
@@ -2816,6 +2692,15 @@ case|:
 return|return
 name|isVisible
 argument_list|()
+operator|&&
+name|getProjectControl
+argument_list|()
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|statePermitsRead
+argument_list|()
 return|;
 case|case
 name|CREATE
@@ -2933,8 +2818,12 @@ case|case
 name|READ_PRIVATE_CHANGES
 case|:
 return|return
-name|canViewPrivateChanges
-argument_list|()
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|VIEW_PRIVATE_CHANGES
+argument_list|)
 return|;
 case|case
 name|READ_CONFIG
