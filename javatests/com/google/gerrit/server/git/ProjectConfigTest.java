@@ -99,22 +99,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|Truth8
-operator|.
-name|assertThat
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -3021,19 +3005,12 @@ name|cfg
 operator|.
 name|getValidationErrors
 argument_list|()
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|map
-argument_list|(
-name|ValidationError
-operator|::
-name|getMessage
-argument_list|)
 argument_list|)
 operator|.
 name|containsExactly
+argument_list|(
+operator|new
+name|ValidationError
 argument_list|(
 literal|"project.config: Invalid pattern \"(bugs{+#?)(d+)\" in commentlink.bugzilla.match: "
 operator|+
@@ -3042,6 +3019,7 @@ operator|+
 literal|"(bugs{+#?)(d+)\n"
 operator|+
 literal|"    ^"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3102,23 +3080,17 @@ name|cfg
 operator|.
 name|getValidationErrors
 argument_list|()
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|map
-argument_list|(
-name|ValidationError
-operator|::
-name|getMessage
-argument_list|)
 argument_list|)
 operator|.
 name|containsExactly
 argument_list|(
+operator|new
+name|ValidationError
+argument_list|(
 literal|"project.config: Error in pattern \"(bugs#?)(d+)\" in commentlink.bugzilla.match: "
 operator|+
 literal|"Raw html replacement not allowed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3177,23 +3149,17 @@ name|cfg
 operator|.
 name|getValidationErrors
 argument_list|()
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|map
-argument_list|(
-name|ValidationError
-operator|::
-name|getMessage
-argument_list|)
 argument_list|)
 operator|.
 name|containsExactly
 argument_list|(
+operator|new
+name|ValidationError
+argument_list|(
 literal|"project.config: Error in pattern \"(bugs#?)(d+)\" in commentlink.bugzilla.match: "
 operator|+
 literal|"commentlink.bugzilla must have either link or html"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
