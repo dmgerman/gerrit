@@ -216,7 +216,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|NotifyType
 operator|.
@@ -236,7 +236,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|NotifyType
 operator|.
@@ -256,7 +256,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|NotifyType
 operator|.
@@ -276,7 +276,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|NotifyType
 operator|.
@@ -296,7 +296,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|NotifyType
 operator|.

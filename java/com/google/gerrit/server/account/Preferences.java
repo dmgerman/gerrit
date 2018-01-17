@@ -679,10 +679,10 @@ comment|/**  * Parses/writes preferences from/to a {@link Config} file.  *  *<p>
 end_comment
 
 begin_class
-DECL|class|PreferencesConfig
+DECL|class|Preferences
 specifier|public
 class|class
-name|PreferencesConfig
+name|Preferences
 block|{
 DECL|field|log
 specifier|private
@@ -695,7 +695,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|PreferencesConfig
+name|Preferences
 operator|.
 name|class
 argument_list|)
@@ -752,9 +752,9 @@ specifier|private
 name|EditPreferencesInfo
 name|editPreferences
 decl_stmt|;
-DECL|method|PreferencesConfig ( Account.Id accountId, Config cfg, Config defaultCfg, ValidationError.Sink validationErrorSink)
+DECL|method|Preferences ( Account.Id accountId, Config cfg, Config defaultCfg, ValidationError.Sink validationErrorSink)
 specifier|public
-name|PreferencesConfig
+name|Preferences
 parameter_list|(
 name|Account
 operator|.

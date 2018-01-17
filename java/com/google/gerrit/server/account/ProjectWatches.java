@@ -417,10 +417,10 @@ comment|/**  * Parses/writes project watches from/to a {@link Config} file.  *  
 end_comment
 
 begin_class
-DECL|class|WatchConfig
+DECL|class|ProjectWatches
 specifier|public
 class|class
-name|WatchConfig
+name|ProjectWatches
 block|{
 annotation|@
 name|AutoValue
@@ -450,7 +450,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|AutoValue_WatchConfig_ProjectWatchKey
+name|AutoValue_ProjectWatches_ProjectWatchKey
 argument_list|(
 name|project
 argument_list|,
@@ -577,9 +577,9 @@ argument_list|>
 argument_list|>
 name|projectWatches
 decl_stmt|;
-DECL|method|WatchConfig (Account.Id accountId, Config cfg, ValidationError.Sink validationErrorSink)
+DECL|method|ProjectWatches ( Account.Id accountId, Config cfg, ValidationError.Sink validationErrorSink)
 specifier|public
-name|WatchConfig
+name|ProjectWatches
 parameter_list|(
 name|Account
 operator|.
@@ -1433,7 +1433,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|AutoValue_WatchConfig_NotifyValue
+name|AutoValue_ProjectWatches_NotifyValue
 argument_list|(
 name|Strings
 operator|.

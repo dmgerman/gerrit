@@ -190,7 +190,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 import|;
 end_import
 
@@ -206,7 +206,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|NotifyType
 import|;
@@ -224,7 +224,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|ProjectWatchKey
 import|;
@@ -931,7 +931,7 @@ operator|!=
 literal|null
 operator|&&
 operator|!
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|FILTER_ALL
 operator|.

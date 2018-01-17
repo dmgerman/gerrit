@@ -1334,7 +1334,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 import|;
 end_import
 
@@ -1350,7 +1350,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|NotifyType
 import|;
@@ -10076,7 +10076,7 @@ name|wc
 operator|.
 name|setString
 argument_list|(
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|PROJECT
 argument_list|,
@@ -10085,11 +10085,11 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|KEY_NOTIFY
 argument_list|,
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|NotifyValue
 operator|.
@@ -10129,7 +10129,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Add project watch"
 argument_list|,
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|WATCH_CONFIG
 argument_list|,
@@ -10167,7 +10167,7 @@ name|wc
 operator|.
 name|setString
 argument_list|(
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|PROJECT
 argument_list|,
@@ -10176,7 +10176,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|KEY_NOTIFY
 argument_list|,
@@ -10200,7 +10200,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Add invalid project watch"
 argument_list|,
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|WATCH_CONFIG
 argument_list|,
@@ -10241,7 +10241,7 @@ name|format
 argument_list|(
 literal|"%s: Invalid project watch of account %d for project %s: %s"
 argument_list|,
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|WATCH_CONFIG
 argument_list|,

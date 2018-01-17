@@ -140,7 +140,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|NotifyType
 import|;
@@ -158,7 +158,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|NotifyValue
 import|;
@@ -176,7 +176,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|ProjectWatchKey
 import|;
@@ -378,7 +378,7 @@ argument_list|>
 argument_list|>
 name|projectWatches
 init|=
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|parse
 argument_list|(
@@ -615,7 +615,7 @@ operator|+
 literal|"  notify = [NEW_PATCHSETS]\n"
 argument_list|)
 expr_stmt|;
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|parse
 argument_list|(

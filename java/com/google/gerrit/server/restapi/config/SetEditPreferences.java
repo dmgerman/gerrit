@@ -194,7 +194,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|PreferencesConfig
+name|Preferences
 import|;
 end_import
 
@@ -509,7 +509,7 @@ block|{
 name|EditPreferencesInfo
 name|updatedPrefs
 init|=
-name|PreferencesConfig
+name|Preferences
 operator|.
 name|updateDefaultEditPreferences
 argument_list|(
