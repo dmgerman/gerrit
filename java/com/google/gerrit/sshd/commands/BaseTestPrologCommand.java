@@ -188,9 +188,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|restapi
+operator|.
 name|change
 operator|.
-name|Revisions
+name|ChangesCollection
 import|;
 end_import
 
@@ -208,7 +210,7 @@ name|restapi
 operator|.
 name|change
 operator|.
-name|ChangesCollection
+name|Revisions
 import|;
 end_import
 
