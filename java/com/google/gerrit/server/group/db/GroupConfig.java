@@ -501,7 +501,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holds code for reading and writing internal group data for a single group to/from NoteDB.  *  *<p>The configuration is spread across three files: 'group.config', which holds global properties,  * 'members', which has one numberic account ID per line, and 'subgroups', which has one group UUID  * per line. The code that does the work of parsing 'group.config' is in {@link GroupConfigEntry}.  *  *<p>TODO(aliceks): expand docs.  */
+comment|/**  * A representation of a group in NoteDb.  *  *<p>Groups in NoteDb can be created by following the descriptions of {@link  * #createForNewGroup(Repository, InternalGroupCreation)}. For reading groups from NoteDb or  * updating them, refer to {@link #loadForGroup(Repository, AccountGroup.UUID)} or {@link  * #loadForGroupSnapshot(Repository, AccountGroup.UUID, ObjectId)}.  *  *<p><strong>Note:</strong>Any modification (group creation or update) only becomes permanent (and  * hence written to NoteDb) if {@link #commit(MetaDataUpdate)} is called.  *  *<p><strong>Warning:</strong>This class is a low-level API for groups in NoteDb. Most code which  * deals with internal Gerrit groups should use {@link Groups} or {@link GroupsUpdate} instead.  *  *<p><em>Internal details</em>  *  *<p>Each group is represented by a commit on a branch as defined by {@link  * RefNames#refsGroups(AccountGroup.UUID)}. Previous versions of the group exist as older commits on  * the same branch and can be reached by following along the parent references. New commits for  * updates are only created if a real modification occurs.  *  *<p>The commit messages of all commits on that branch form the audit log for the group. The  * messages mention any important modifications which happened for the group to avoid costly  * computations.  *  *<p>Within each commit, the properties of a group are spread across three files:  *  *<ul>  *<li><em>group.config</em>, which holds all basic properties of a group (further specified by  *       {@link GroupConfigEntry}), formatted as a JGit {@link Config} file  *<li><em>members</em>, which lists all members (accounts) of a group, formatted as one numeric  *       ID per line  *<li><em>subgroups</em>, which lists all subgroups of a group, formatted as one UUID per line  *</ul>  *  *<p>The files<em>members</em> and<em>subgroups</em> need not exist, which means that the group  * doesn't have any members or subgroups.  */
 end_comment
 
 begin_class
@@ -557,6 +557,7 @@ argument_list|(
 literal|"\\R"
 argument_list|)
 decl_stmt|;
+comment|/**    * Creates a {@code GroupConfig} for a new group from the {@code InternalGroupCreation} blueprint.    * Further, optional properties can be specified by setting an {@code InternalGroupUpdate} via    * {@link #setGroupUpdate(InternalGroupUpdate, AuditLogFormatter)} on the returned {@code    * GroupConfig}.    *    *<p><strong>Note:</strong>The returned {@code GroupConfig} has to be committed via {@link    * #commit(MetaDataUpdate)} in order to create the group for real.    *    * @param repository the repository which holds the NoteDb commits for groups    * @param groupCreation an {@code InternalGroupCreation} specifying all properties which are    *     required for a new group    * @return a {@code GroupConfig} for a group creation    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if a group with the same UUID already exists but can't be read    *     due to an invalid format    * @throws OrmDuplicateKeyException if a group with the same UUID already exists    */
 DECL|method|createForNewGroup ( Repository repository, InternalGroupCreation groupCreation)
 specifier|public
 specifier|static
@@ -606,6 +607,7 @@ return|return
 name|groupConfig
 return|;
 block|}
+comment|/**    * Creates a {@code GroupConfig} for an existing group.    *    *<p>The group is automatically loaded within this method and can be accessed via {@link    * #getLoadedGroup()}.    *    *<p>It's safe to call this method for non-existing groups. In that case, {@link    * #getLoadedGroup()} won't return any group. Thus, the existence of a group can be easily tested.    *    *<p>The group represented by the returned {@code GroupConfig} can be updated by setting an    * {@code InternalGroupUpdate} via {@link #setGroupUpdate(InternalGroupUpdate, AuditLogFormatter)}    * and committing the {@code GroupConfig} via {@link #commit(MetaDataUpdate)}.    *    * @param repository the repository which holds the NoteDb commits for groups    * @param groupUuid the UUID of the group    * @return a {@code GroupConfig} for the group with the specified UUID    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if the group exists but can't be read due to an invalid format    */
 DECL|method|loadForGroup (Repository repository, AccountGroup.UUID groupUuid)
 specifier|public
 specifier|static
@@ -645,7 +647,7 @@ return|return
 name|groupConfig
 return|;
 block|}
-comment|/** Loads a group at a specific revision. */
+comment|/**    * Creates a {@code GroupConfig} for an existing group at a specific revision of the repository.    *    *<p>This method behaves nearly the same as {@link #loadForGroup(Repository, AccountGroup.UUID)}.    * The only difference is that {@link #loadForGroup(Repository, AccountGroup.UUID)} loads the    * group from the current state of the repository whereas this method loads the group at a    * specific (maybe past) revision.    *    * @param repository the repository which holds the NoteDb commits for groups    * @param groupUuid the UUID of the group    * @param commitId the revision of the repository at which the group should be loaded    * @return a {@code GroupConfig} for the group with the specified UUID    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if the group exists but can't be read due to an invalid format    */
 DECL|method|loadForGroupSnapshot ( Repository repository, AccountGroup.UUID groupUuid, ObjectId commitId)
 specifier|public
 specifier|static
@@ -794,6 +796,7 @@ name|groupUuid
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Returns the group loaded from NoteDb.    *    *<p>If not any NoteDb commits exist for the group represented by this {@code GroupConfig}, no    * group is returned.    *    *<p>After {@link #commit(MetaDataUpdate)} was called on this {@code GroupConfig}, this method    * returns a group which is in line with the latest NoteDb commit for this group. So, after    * creating a {@code GroupConfig} for a new group and committing it, this method can be used to    * retrieve a representation of the created group. The same holds for the representation of an    * updated group.    *    * @return the loaded group, or an empty {@code Optional} if the group doesn't exist    */
 DECL|method|getLoadedGroup ()
 specifier|public
 name|Optional
@@ -810,6 +813,7 @@ return|return
 name|loadedGroup
 return|;
 block|}
+comment|/**    * Specifies how the current group should be updated.    *    *<p>If the group is newly created, the {@code InternalGroupUpdate} can be used to specify    * optional properties.    *    *<p><strong>Note:</strong>This method doesn't perform the update. It only contains the    * instructions for the update. To apply the update for real and write the result back to NoteDb,    * call {@link #commit(MetaDataUpdate)} on this {@code GroupConfig}.    *    * @param groupUpdate an {@code InternalGroupUpdate} outlining the modifications which should be    *     applied    * @param auditLogFormatter an {@code AuditLogFormatter} for formatting the commit message in a    *     parsable way    */
 DECL|method|setGroupUpdate (InternalGroupUpdate groupUpdate, AuditLogFormatter auditLogFormatter)
 specifier|public
 name|void
@@ -840,6 +844,7 @@ operator|=
 name|auditLogFormatter
 expr_stmt|;
 block|}
+comment|/**    * Allows the new name of a group to be empty during creation or update.    *    *<p><strong>Note:</strong>This method exists only to support the migration of legacy groups    * which don't always necessarily have a name. Nowadays, we enforce that groups always have names.    * When we remove the migration code, we can probably remove this method as well.    */
 DECL|method|setAllowSaveEmptyName ()
 name|void
 name|setAllowSaveEmptyName
