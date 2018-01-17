@@ -372,7 +372,19 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
 begin_class
+annotation|@
+name|Singleton
 DECL|class|Check
 specifier|public
 class|class
