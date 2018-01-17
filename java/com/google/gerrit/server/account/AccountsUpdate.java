@@ -346,6 +346,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|LockFailureException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|MetaDataUpdate
 import|;
 end_import
@@ -605,7 +621,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Updates accounts.  *  *<p>The account updates are written to NoteDb.  *  *<p>In NoteDb accounts are represented as user branches in the All-Users repository. Optionally a  * user branch can contain a 'account.config' file that stores account properties, such as full  * name, preferred email, status and the active flag. The timestamp of the first commit on a user  * branch denotes the registration date. The initial commit on the user branch may be empty (since  * having an 'account.config' is optional). See {@link AccountConfig} for details of the  * 'account.config' file format.  *  *<p>On updating accounts the accounts are evicted from the account cache and thus reindexed. The  * eviction from the account cache is done by the {@link ReindexAfterRefUpdate} class which receives  * the event about updating the user branch that is triggered by this class.  */
+comment|/**  * Creates and updates accounts.  *  *<p>This class should be used for all account updates. It supports updating account properties,  * external IDs, preferences (general, diff and edit preferences) and project watches.  *  *<p>Updates to one account are always atomic. Batch updating several accounts within one  * transaction is not supported.  *  *<p>For any account update the caller must provide a commit message, the account ID and an {@link  * AccountUpdater}. The account updater allows to read the current {@link AccountState} and to  * prepare updates to the account by calling setters on the provided {@link  * InternalAccountUpdate.Builder}. If the current account state is of no interest the caller may  * also provide a {@link Consumer} for {@link InternalAccountUpdate.Builder} instead of the account  * updater.  *  *<p>The provided commit message is used for the update of the user branch. Using a precise and  * unique commit message allows to identify the code from which an update was made when looking at a  * commit in the user branch, and thus help debugging.  *  *<p>For creating a new account a new account ID can be retrieved from {@link  * com.google.gerrit.server.Sequences#nextAccountId()}.  *  *<p>The account updates are written to NoteDb. In NoteDb accounts are represented as user branches  * in the {@code All-Users} repository. Optionally a user branch can contain a 'account.config' file  * that stores account properties, such as full name, preferred email, status and the active flag.  * The timestamp of the first commit on a user branch denotes the registration date. The initial  * commit on the user branch may be empty (since having an 'account.config' is optional). See {@link  * AccountConfig} for details of the 'account.config' file format. In addition the user branch can  * contain a 'preferences.config' config file to store preferences (see {@link PreferencesConfig})  * and a 'watch.config' config file to store project watches (see {@link WatchConfig}). External IDs  * are stored separately in the {@code refs/meta/external-ids} notes branch (see {@link  * ExternalIdNotes}).  *  *<p>On updating an account the account is evicted from the account cache and thus reindexed. The  * eviction from the account cache is done by the {@link ReindexAfterRefUpdate} class which receives  * the event about updating the user branch that is triggered by this class. By using the {@link  * ServerNoReindex} factory reindexing and flushing the account from the account cache can be  * disabled. If external IDs are updated the ExternalIdCache is automatically updated.  *  *<p>If there are concurrent account updates updating the user branch in NoteDb may fail with  * {@link LockFailureException}. In this case the account update is automatically retried and the  * account updater is invoked once more with the updated account state. This means the whole  * read-modify-write sequence is atomic. Retrying is limited by a timeout. If the timeout is  * exceeded the account update can still fail with {@link LockFailureException}.  */
 end_comment
 
 begin_class
@@ -1945,7 +1961,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param update consumer to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty()} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param update consumer to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty()} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws LockFailureException if updating the user branch still fails due to concurrent updates    *     after the retry timeout exceeded    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|update ( String message, Account.Id accountId, Consumer<InternalAccountUpdate.Builder> update)
 specifier|public
 name|Optional
@@ -1973,6 +1989,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 throws|,
+name|LockFailureException
+throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1993,7 +2011,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param updater updater to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param updater updater to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws LockFailureException if updating the user branch still fails due to concurrent updates    *     after the retry timeout exceeded    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|update (String message, Account.Id accountId, AccountUpdater updater)
 specifier|public
 name|Optional
@@ -2015,6 +2033,8 @@ name|updater
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|LockFailureException
 throws|,
 name|IOException
 throws|,
