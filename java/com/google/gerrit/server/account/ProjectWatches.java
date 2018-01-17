@@ -577,8 +577,7 @@ argument_list|>
 argument_list|>
 name|projectWatches
 decl_stmt|;
-DECL|method|ProjectWatches ( Account.Id accountId, Config cfg, ValidationError.Sink validationErrorSink)
-specifier|public
+DECL|method|ProjectWatches (Account.Id accountId, Config cfg, ValidationError.Sink validationErrorSink)
 name|ProjectWatches
 parameter_list|(
 name|Account

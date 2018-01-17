@@ -753,7 +753,6 @@ name|EditPreferencesInfo
 name|editPreferences
 decl_stmt|;
 DECL|method|Preferences ( Account.Id accountId, Config cfg, Config defaultCfg, ValidationError.Sink validationErrorSink)
-specifier|public
 name|Preferences
 parameter_list|(
 name|Account
