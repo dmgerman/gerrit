@@ -302,7 +302,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountConfig
+name|AccountProperties
 import|;
 end_import
 
@@ -1735,7 +1735,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|)

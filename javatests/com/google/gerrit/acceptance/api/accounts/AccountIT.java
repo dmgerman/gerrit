@@ -1270,7 +1270,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountConfig
+name|AccountProperties
 import|;
 end_import
 
@@ -4014,7 +4014,7 @@ name|forPath
 argument_list|(
 name|or
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -4085,13 +4085,13 @@ name|cfg
 operator|.
 name|getString
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_FULL_NAME
 argument_list|)
@@ -4108,13 +4108,13 @@ name|cfg
 operator|.
 name|getString
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_STATUS
 argument_list|)
@@ -8595,13 +8595,13 @@ name|ac
 operator|.
 name|setString
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_STATUS
 argument_list|,
@@ -8628,7 +8628,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -8879,13 +8879,13 @@ name|ac
 operator|.
 name|setString
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_PREFERRED_EMAIL
 argument_list|,
@@ -8912,7 +8912,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -9128,7 +9128,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -9229,7 +9229,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -9237,7 +9237,7 @@ name|admin
 operator|.
 name|id
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -9337,13 +9337,13 @@ name|ac
 operator|.
 name|setString
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_PREFERRED_EMAIL
 argument_list|,
@@ -9370,7 +9370,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -9553,13 +9553,13 @@ name|ac
 operator|.
 name|setBoolean
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_ACTIVE
 argument_list|,
@@ -9586,7 +9586,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -9862,13 +9862,13 @@ name|ac
 operator|.
 name|setBoolean
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_ACTIVE
 argument_list|,
@@ -9895,7 +9895,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -10341,13 +10341,13 @@ name|ac
 operator|.
 name|setString
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_STATUS
 argument_list|,
@@ -10374,7 +10374,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -10525,7 +10525,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -10566,7 +10566,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -10574,7 +10574,7 @@ name|admin
 operator|.
 name|id
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -10655,13 +10655,13 @@ name|ac
 operator|.
 name|setString
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_PREFERRED_EMAIL
 argument_list|,
@@ -10688,7 +10688,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -10874,13 +10874,13 @@ name|ac
 operator|.
 name|setString
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_STATUS
 argument_list|,
@@ -10902,7 +10902,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -11098,13 +11098,13 @@ name|ac
 operator|.
 name|setString
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_PREFERRED_EMAIL
 argument_list|,
@@ -11126,7 +11126,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -11255,13 +11255,13 @@ name|ac
 operator|.
 name|setBoolean
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_ACTIVE
 argument_list|,
@@ -11288,7 +11288,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -11453,13 +11453,13 @@ name|ac
 operator|.
 name|setBoolean
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT
 argument_list|,
 literal|null
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|KEY_ACTIVE
 argument_list|,
@@ -11481,7 +11481,7 @@ name|allUsersRepo
 argument_list|,
 literal|"Update account config"
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
@@ -17856,7 +17856,7 @@ operator|.
 name|getRepository
 argument_list|()
 argument_list|,
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|,
