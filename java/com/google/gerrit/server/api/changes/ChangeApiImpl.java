@@ -3480,6 +3480,10 @@ argument_list|(
 name|ListChangesOption
 operator|.
 name|CHECK
+argument_list|,
+name|ListChangesOption
+operator|.
+name|SKIP_MERGEABLE
 argument_list|)
 argument_list|)
 argument_list|)
