@@ -106,6 +106,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/** Caches important (but small) account state to avoid database hits. */
 end_comment
@@ -140,11 +150,12 @@ name|Id
 name|accountId
 parameter_list|)
 function_decl|;
-comment|/**    * Returns an {@code AccountState} instance for the given username.    *    *<p>This method first loads the external ID for the username and then uses the account ID of the    * external ID to lookup the account from the cache.    *    * @param username username of the account that should be retrieved    * @return {@code AccountState} instance for the given username, if no account with this username    *     exists or if loading the external ID fails {@code null} is returned    */
-annotation|@
-name|Nullable
+comment|/**    * Returns an {@code AccountState} instance for the given username.    *    *<p>This method first loads the external ID for the username and then uses the account ID of the    * external ID to lookup the account from the cache.    *    * @param username username of the account that should be retrieved    * @return {@code AccountState} instance for the given username, if no account with this username    *     exists or if loading the external ID fails {@link Optional#empty()} is returned    */
 DECL|method|getByUsername (String username)
+name|Optional
+argument_list|<
 name|AccountState
+argument_list|>
 name|getByUsername
 parameter_list|(
 name|String
