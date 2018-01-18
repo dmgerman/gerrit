@@ -100,37 +100,14 @@ specifier|public
 name|String
 name|ref
 decl_stmt|;
-DECL|method|AccessCheckInput (String account, @Nullable String ref)
-specifier|public
-name|AccessCheckInput
-parameter_list|(
-name|String
-name|account
-parameter_list|,
+comment|// If permission is given, ref must also be given.
+DECL|field|permission
 annotation|@
 name|Nullable
-name|String
-name|ref
-parameter_list|)
-block|{
-name|this
-operator|.
-name|account
-operator|=
-name|account
-expr_stmt|;
-name|this
-operator|.
-name|ref
-operator|=
-name|ref
-expr_stmt|;
-block|}
-DECL|method|AccessCheckInput ()
 specifier|public
-name|AccessCheckInput
-parameter_list|()
-block|{}
+name|String
+name|permission
+decl_stmt|;
 block|}
 end_class
 
