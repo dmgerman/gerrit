@@ -311,13 +311,14 @@ return|;
 block|}
 annotation|@
 name|Override
-annotation|@
-name|Nullable
-DECL|method|getOrNull (Account.Id accountId)
+DECL|method|maybeGet (Account.Id accountId)
 specifier|public
 specifier|synchronized
+name|Optional
+argument_list|<
 name|AccountState
-name|getOrNull
+argument_list|>
+name|maybeGet
 parameter_list|(
 name|Account
 operator|.
@@ -326,11 +327,16 @@ name|accountId
 parameter_list|)
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|byId
 operator|.
 name|get
 argument_list|(
 name|accountId
+argument_list|)
 argument_list|)
 return|;
 block|}

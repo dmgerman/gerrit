@@ -653,12 +653,13 @@ block|}
 block|}
 annotation|@
 name|Override
-annotation|@
-name|Nullable
-DECL|method|getOrNull (Account.Id accountId)
+DECL|method|maybeGet (Account.Id accountId)
 specifier|public
+name|Optional
+argument_list|<
 name|AccountState
-name|getOrNull
+argument_list|>
+name|maybeGet
 parameter_list|(
 name|Account
 operator|.
@@ -674,11 +675,6 @@ operator|.
 name|get
 argument_list|(
 name|accountId
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|null
 argument_list|)
 return|;
 block|}
@@ -754,17 +750,12 @@ argument_list|()
 return|;
 block|}
 return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
-name|getOrNull
+name|maybeGet
 argument_list|(
 name|extId
 operator|.
 name|accountId
 argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}

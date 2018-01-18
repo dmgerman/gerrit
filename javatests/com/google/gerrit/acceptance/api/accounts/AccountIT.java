@@ -12340,7 +12340,7 @@ name|assertThat
 argument_list|(
 name|accountCache
 operator|.
-name|getOrNull
+name|maybeGet
 argument_list|(
 name|admin
 operator|.
@@ -12348,7 +12348,7 @@ name|id
 argument_list|)
 argument_list|)
 operator|.
-name|isNull
+name|isEmpty
 argument_list|()
 expr_stmt|;
 name|assertThat

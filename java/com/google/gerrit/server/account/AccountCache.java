@@ -137,12 +137,13 @@ name|Id
 name|accountId
 parameter_list|)
 function_decl|;
-comment|/**    * Returns an {@code AccountState} instance for the given account ID. If not cached yet the    * account is loaded. Returns {@code null} if the account is missing.    *    * @param accountId ID of the account that should be retrieved    * @return {@code AccountState} instance for the given account ID, if no account with this ID    *     exists {@code null} is returned    */
-annotation|@
-name|Nullable
-DECL|method|getOrNull (Account.Id accountId)
+comment|/**    * Returns an {@code AccountState} instance for the given account ID. If not cached yet the    * account is loaded. Returns {@link Optional#empty()} if the account is missing.    *    * @param accountId ID of the account that should be retrieved    * @return {@code AccountState} instance for the given account ID, if no account with this ID    *     exists {@link Optional#empty()}is returned    */
+DECL|method|maybeGet (Account.Id accountId)
+name|Optional
+argument_list|<
 name|AccountState
-name|getOrNull
+argument_list|>
+name|maybeGet
 parameter_list|(
 name|Account
 operator|.
