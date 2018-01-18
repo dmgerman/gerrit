@@ -141,6 +141,8 @@ name|accountId
 parameter_list|)
 function_decl|;
 comment|/**    * Returns an {@code AccountState} instance for the given username.    *    *<p>This method first loads the external ID for the username and then uses the account ID of the    * external ID to lookup the account from the cache.    *    * @param username username of the account that should be retrieved    * @return {@code AccountState} instance for the given username, if no account with this username    *     exists or if loading the external ID fails {@code null} is returned    */
+annotation|@
+name|Nullable
 DECL|method|getByUsername (String username)
 name|AccountState
 name|getByUsername
@@ -150,10 +152,12 @@ name|username
 parameter_list|)
 function_decl|;
 comment|/**    * Evicts the account from the cache and triggers a reindex for it.    *    * @param accountId account ID of the account that should be evicted    * @throws IOException thrown if reindexing fails    */
-DECL|method|evict (Account.Id accountId)
+DECL|method|evict (@ullable Account.Id accountId)
 name|void
 name|evict
 parameter_list|(
+annotation|@
+name|Nullable
 name|Account
 operator|.
 name|Id

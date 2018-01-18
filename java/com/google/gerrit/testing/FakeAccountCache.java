@@ -356,6 +356,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nullable
 DECL|method|getByUsername (String username)
 specifier|public
 specifier|synchronized
@@ -377,17 +379,26 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|evict (Account.Id accountId)
+DECL|method|evict (@ullable Account.Id accountId)
 specifier|public
 specifier|synchronized
 name|void
 name|evict
 parameter_list|(
+annotation|@
+name|Nullable
 name|Account
 operator|.
 name|Id
 name|accountId
 parameter_list|)
+block|{
+if|if
+condition|(
+name|byId
+operator|!=
+literal|null
+condition|)
 block|{
 name|byId
 operator|.
@@ -396,6 +407,7 @@ argument_list|(
 name|accountId
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override

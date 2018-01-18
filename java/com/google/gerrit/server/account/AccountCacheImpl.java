@@ -742,6 +742,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nullable
 DECL|method|getByUsername (String username)
 specifier|public
 name|AccountState
@@ -819,11 +821,13 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|evict (Account.Id accountId)
+DECL|method|evict (@ullable Account.Id accountId)
 specifier|public
 name|void
 name|evict
 parameter_list|(
+annotation|@
+name|Nullable
 name|Account
 operator|.
 name|Id
