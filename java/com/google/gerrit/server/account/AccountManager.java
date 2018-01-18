@@ -1674,10 +1674,15 @@ operator|.
 name|getUserName
 argument_list|()
 argument_list|,
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|who
 operator|.
 name|getUserName
 argument_list|()
+argument_list|)
 argument_list|)
 condition|)
 block|{

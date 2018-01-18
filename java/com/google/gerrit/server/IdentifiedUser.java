@@ -1495,7 +1495,7 @@ return|return
 name|accountId
 return|;
 block|}
-comment|/** @return the user's user name; null if one has not been selected/assigned. */
+comment|/**    * @return the user's user name; null if one has not been selected/assigned or if the user name is    *     empty.    */
 annotation|@
 name|Override
 annotation|@
@@ -1944,11 +1944,6 @@ condition|(
 name|user
 operator|==
 literal|null
-operator|||
-name|user
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
 block|{
 name|user

@@ -1438,17 +1438,6 @@ argument_list|()
 operator|.
 name|getUserName
 argument_list|()
-operator|.
-name|filter
-argument_list|(
-name|n
-lambda|->
-operator|!
-name|n
-operator|.
-name|isEmpty
-argument_list|()
-argument_list|)
 decl_stmt|;
 if|if
 condition|(

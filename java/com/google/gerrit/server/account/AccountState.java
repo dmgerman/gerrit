@@ -1085,7 +1085,7 @@ return|return
 name|account
 return|;
 block|}
-comment|/**    * Get the username, if one has been declared for this user.    *    *<p>The username is the {@link ExternalId} using the scheme {@link ExternalId#SCHEME_USERNAME}.    */
+comment|/**    * Get the username, if one has been declared for this user.    *    *<p>The username is the {@link ExternalId} using the scheme {@link ExternalId#SCHEME_USERNAME}.    *    * @return the username, {@link Optional#empty()} if the user has no username, or if the username    *     is empty    */
 DECL|method|getUserName ()
 specifier|public
 name|Optional
