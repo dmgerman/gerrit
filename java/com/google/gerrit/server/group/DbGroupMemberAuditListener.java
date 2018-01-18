@@ -1107,6 +1107,11 @@ argument_list|)
 operator|.
 name|getUserName
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 decl_stmt|;
 name|AccountGroup
 operator|.
@@ -1375,6 +1380,11 @@ argument_list|)
 operator|.
 name|getUserName
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|message

@@ -1253,8 +1253,9 @@ name|accountState
 operator|.
 name|getUserName
 argument_list|()
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|displayName
@@ -1262,6 +1263,9 @@ operator|=
 name|accountState
 operator|.
 name|getUserName
+argument_list|()
+operator|.
+name|get
 argument_list|()
 expr_stmt|;
 block|}

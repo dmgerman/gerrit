@@ -1498,6 +1498,8 @@ block|}
 comment|/** @return the user's user name; null if one has not been selected/assigned. */
 annotation|@
 name|Override
+annotation|@
+name|Nullable
 DECL|method|getUserName ()
 specifier|public
 name|String
@@ -1510,6 +1512,11 @@ argument_list|()
 operator|.
 name|getUserName
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 return|;
 block|}
 DECL|method|getAccount ()

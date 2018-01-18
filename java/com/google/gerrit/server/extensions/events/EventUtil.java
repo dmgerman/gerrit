@@ -810,6 +810,11 @@ name|accountState
 operator|.
 name|getUserName
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 return|return
 name|accountInfo

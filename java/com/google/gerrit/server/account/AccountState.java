@@ -1086,21 +1086,17 @@ name|account
 return|;
 block|}
 comment|/**    * Get the username, if one has been declared for this user.    *    *<p>The username is the {@link ExternalId} using the scheme {@link ExternalId#SCHEME_USERNAME}.    */
-annotation|@
-name|Nullable
 DECL|method|getUserName ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getUserName
 parameter_list|()
 block|{
 return|return
 name|userName
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
 return|;
 block|}
 DECL|method|checkPassword (String password, String username)
