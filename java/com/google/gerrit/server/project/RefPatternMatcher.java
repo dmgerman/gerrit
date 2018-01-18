@@ -508,6 +508,7 @@ return|;
 block|}
 block|}
 DECL|class|ExpandParameters
+specifier|public
 specifier|static
 class|class
 name|ExpandParameters
@@ -900,6 +901,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|matchPrefix (String ref)
+specifier|public
 name|boolean
 name|matchPrefix
 parameter_list|(
