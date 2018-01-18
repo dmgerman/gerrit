@@ -952,14 +952,6 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|projectControlFactory
-specifier|private
-specifier|final
-name|ProjectControl
-operator|.
-name|Factory
-name|projectControlFactory
-decl_stmt|;
 DECL|field|envFactory
 specifier|private
 specifier|final
@@ -1063,7 +1055,7 @@ name|labelTypes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState ( final SitePaths sitePaths, final ProjectCache projectCache, final AllProjectsName allProjectsName, final AllUsersName allUsersName, final ProjectControl.Factory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, final List<CommentLinkInfo> commentLinks, final CapabilityCollection.Factory limitsFactory, @Assisted final ProjectConfig config)
+DECL|method|ProjectState ( final SitePaths sitePaths, final ProjectCache projectCache, final AllProjectsName allProjectsName, final AllUsersName allUsersName, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, final List<CommentLinkInfo> commentLinks, final CapabilityCollection.Factory limitsFactory, @Assisted final ProjectConfig config)
 specifier|public
 name|ProjectState
 parameter_list|(
@@ -1082,12 +1074,6 @@ parameter_list|,
 specifier|final
 name|AllUsersName
 name|allUsersName
-parameter_list|,
-specifier|final
-name|ProjectControl
-operator|.
-name|Factory
-name|projectControlFactory
 parameter_list|,
 specifier|final
 name|PrologEnvironment
@@ -1174,12 +1160,6 @@ operator|.
 name|allProjectsName
 operator|=
 name|allProjectsName
-expr_stmt|;
-name|this
-operator|.
-name|projectControlFactory
-operator|=
-name|projectControlFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2202,26 +2182,6 @@ expr_stmt|;
 block|}
 return|return
 name|result
-return|;
-block|}
-DECL|method|controlFor (CurrentUser user)
-specifier|public
-name|ProjectControl
-name|controlFor
-parameter_list|(
-name|CurrentUser
-name|user
-parameter_list|)
-block|{
-return|return
-name|projectControlFactory
-operator|.
-name|create
-argument_list|(
-name|user
-argument_list|,
-name|this
-argument_list|)
 return|;
 block|}
 comment|/**    * @return an iterable that walks through this project and then the parents of this project.    *     Starts from this project and progresses up the hierarchy to All-Projects.    */
