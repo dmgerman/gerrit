@@ -1795,6 +1795,41 @@ name|permitsRead
 argument_list|()
 return|;
 block|}
+DECL|method|checkStatePermitsRead ()
+specifier|public
+name|void
+name|checkStatePermitsRead
+parameter_list|()
+throws|throws
+name|ResourceConflictException
+block|{
+if|if
+condition|(
+operator|!
+name|statePermitsRead
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+literal|"project state "
+operator|+
+name|getProject
+argument_list|()
+operator|.
+name|getState
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|" does not permit read"
+argument_list|)
+throw|;
+block|}
+block|}
 DECL|method|statePermitsWrite ()
 specifier|public
 name|boolean

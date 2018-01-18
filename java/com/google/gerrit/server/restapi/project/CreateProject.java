@@ -412,7 +412,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|Response
 import|;
 end_import
 
@@ -428,7 +428,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|Response
+name|RestApiException
 import|;
 end_import
 
@@ -461,22 +461,6 @@ operator|.
 name|restapi
 operator|.
 name|TopLevelResource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|UnprocessableEntityException
 import|;
 end_import
 
@@ -1548,13 +1532,7 @@ name|ProjectInput
 name|input
 parameter_list|)
 throws|throws
-name|BadRequestException
-throws|,
-name|UnprocessableEntityException
-throws|,
-name|ResourceConflictException
-throws|,
-name|ResourceNotFoundException
+name|RestApiException
 throws|,
 name|IOException
 throws|,
