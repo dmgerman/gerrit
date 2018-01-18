@@ -6194,7 +6194,7 @@ name|ps
 argument_list|,
 name|user
 operator|.
-name|getAccount
+name|state
 argument_list|()
 argument_list|,
 name|message

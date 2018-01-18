@@ -490,7 +490,7 @@ operator|.
 name|getReviewerUser
 argument_list|()
 operator|.
-name|getAccount
+name|state
 argument_list|()
 argument_list|,
 name|input

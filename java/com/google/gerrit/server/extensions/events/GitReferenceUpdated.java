@@ -146,7 +146,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
+name|Project
 import|;
 end_import
 
@@ -158,11 +158,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|Project
+name|AccountState
 import|;
 end_import
 
@@ -270,7 +270,7 @@ operator|.
 name|Type
 name|type
 parameter_list|,
-name|Account
+name|AccountState
 name|updater
 parameter_list|)
 block|{}
@@ -288,7 +288,7 @@ parameter_list|,
 name|RefUpdate
 name|refUpdate
 parameter_list|,
-name|Account
+name|AccountState
 name|updater
 parameter_list|)
 block|{}
@@ -312,7 +312,7 @@ parameter_list|,
 name|ObjectId
 name|newObjectId
 parameter_list|,
-name|Account
+name|AccountState
 name|updater
 parameter_list|)
 block|{}
@@ -330,7 +330,7 @@ parameter_list|,
 name|ReceiveCommand
 name|cmd
 parameter_list|,
-name|Account
+name|AccountState
 name|updater
 parameter_list|)
 block|{}
@@ -348,7 +348,7 @@ parameter_list|,
 name|BatchRefUpdate
 name|batchRefUpdate
 parameter_list|,
-name|Account
+name|AccountState
 name|updater
 parameter_list|)
 block|{}
@@ -415,7 +415,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-DECL|method|fire ( Project.NameKey project, RefUpdate refUpdate, ReceiveCommand.Type type, Account updater)
+DECL|method|fire ( Project.NameKey project, RefUpdate refUpdate, ReceiveCommand.Type type, AccountState updater)
 specifier|public
 name|void
 name|fire
@@ -433,7 +433,7 @@ operator|.
 name|Type
 name|type
 parameter_list|,
-name|Account
+name|AccountState
 name|updater
 parameter_list|)
 block|{
@@ -467,7 +467,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fire (Project.NameKey project, RefUpdate refUpdate, Account updater)
+DECL|method|fire (Project.NameKey project, RefUpdate refUpdate, AccountState updater)
 specifier|public
 name|void
 name|fire
@@ -480,7 +480,7 @@ parameter_list|,
 name|RefUpdate
 name|refUpdate
 parameter_list|,
-name|Account
+name|AccountState
 name|updater
 parameter_list|)
 block|{
@@ -518,7 +518,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fire ( Project.NameKey project, String ref, ObjectId oldObjectId, ObjectId newObjectId, Account updater)
+DECL|method|fire ( Project.NameKey project, String ref, ObjectId oldObjectId, ObjectId newObjectId, AccountState updater)
 specifier|public
 name|void
 name|fire
@@ -537,7 +537,7 @@ parameter_list|,
 name|ObjectId
 name|newObjectId
 parameter_list|,
-name|Account
+name|AccountState
 name|updater
 parameter_list|)
 block|{
@@ -566,7 +566,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fire (Project.NameKey project, ReceiveCommand cmd, Account updater)
+DECL|method|fire (Project.NameKey project, ReceiveCommand cmd, AccountState updater)
 specifier|public
 name|void
 name|fire
@@ -579,7 +579,7 @@ parameter_list|,
 name|ReceiveCommand
 name|cmd
 parameter_list|,
-name|Account
+name|AccountState
 name|updater
 parameter_list|)
 block|{
@@ -616,7 +616,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fire (Project.NameKey project, BatchRefUpdate batchRefUpdate, Account updater)
+DECL|method|fire (Project.NameKey project, BatchRefUpdate batchRefUpdate, AccountState updater)
 specifier|public
 name|void
 name|fire
@@ -629,7 +629,7 @@ parameter_list|,
 name|BatchRefUpdate
 name|batchRefUpdate
 parameter_list|,
-name|Account
+name|AccountState
 name|updater
 parameter_list|)
 block|{

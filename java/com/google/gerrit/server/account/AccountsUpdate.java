@@ -2524,7 +2524,7 @@ literal|null
 condition|?
 name|currentUser
 operator|.
-name|getAccount
+name|state
 argument_list|()
 else|:
 literal|null

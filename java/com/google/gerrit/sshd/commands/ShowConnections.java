@@ -1420,7 +1420,7 @@ name|name
 init|=
 name|u
 operator|.
-name|getAccount
+name|state
 argument_list|()
 operator|.
 name|getUserName

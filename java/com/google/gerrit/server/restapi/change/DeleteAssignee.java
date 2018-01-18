@@ -264,6 +264,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AccountState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|ChangeResource
@@ -775,7 +791,7 @@ name|change
 decl_stmt|;
 DECL|field|deletedAssignee
 specifier|private
-name|Account
+name|AccountState
 name|deletedAssignee
 decl_stmt|;
 annotation|@
@@ -848,7 +864,7 @@ name|deletedAssignee
 operator|=
 name|deletedAssigneeUser
 operator|.
-name|getAccount
+name|state
 argument_list|()
 expr_stmt|;
 comment|// noteDb
@@ -892,6 +908,9 @@ operator|!=
 literal|null
 condition|?
 name|deletedAssignee
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getId
 argument_list|()

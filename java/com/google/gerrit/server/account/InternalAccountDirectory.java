@@ -517,9 +517,6 @@ argument_list|(
 name|info
 argument_list|,
 name|state
-operator|.
-name|getAccount
-argument_list|()
 argument_list|,
 name|state
 operator|.
@@ -531,7 +528,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|fill ( AccountInfo info, Account account, @Nullable Collection<ExternalId> externalIds, Set<FillOptions> options)
+DECL|method|fill ( AccountInfo info, AccountState accountState, @Nullable Collection<ExternalId> externalIds, Set<FillOptions> options)
 specifier|private
 name|void
 name|fill
@@ -539,8 +536,8 @@ parameter_list|(
 name|AccountInfo
 name|info
 parameter_list|,
-name|Account
-name|account
+name|AccountState
+name|accountState
 parameter_list|,
 annotation|@
 name|Nullable
@@ -557,6 +554,14 @@ argument_list|>
 name|options
 parameter_list|)
 block|{
+name|Account
+name|account
+init|=
+name|accountState
+operator|.
+name|getAccount
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|options
@@ -631,7 +636,7 @@ name|info
 operator|.
 name|name
 operator|=
-name|account
+name|accountState
 operator|.
 name|getUserName
 argument_list|()

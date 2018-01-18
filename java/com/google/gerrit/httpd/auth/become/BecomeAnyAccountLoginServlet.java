@@ -1226,8 +1226,8 @@ literal|100
 argument_list|)
 control|)
 block|{
-name|Account
-name|a
+name|AccountState
+name|accountState
 init|=
 name|accountCache
 operator|.
@@ -1235,6 +1235,11 @@ name|get
 argument_list|(
 name|accountId
 argument_list|)
+decl_stmt|;
+name|Account
+name|account
+init|=
+name|accountState
 operator|.
 name|getAccount
 argument_list|()
@@ -1244,7 +1249,7 @@ name|displayName
 decl_stmt|;
 if|if
 condition|(
-name|a
+name|accountState
 operator|.
 name|getUserName
 argument_list|()
@@ -1254,7 +1259,7 @@ condition|)
 block|{
 name|displayName
 operator|=
-name|a
+name|accountState
 operator|.
 name|getUserName
 argument_list|()
@@ -1263,7 +1268,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|a
+name|account
 operator|.
 name|getFullName
 argument_list|()
@@ -1271,7 +1276,7 @@ operator|!=
 literal|null
 operator|&&
 operator|!
-name|a
+name|account
 operator|.
 name|getFullName
 argument_list|()
@@ -1282,7 +1287,7 @@ condition|)
 block|{
 name|displayName
 operator|=
-name|a
+name|account
 operator|.
 name|getFullName
 argument_list|()
@@ -1291,7 +1296,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|a
+name|account
 operator|.
 name|getPreferredEmail
 argument_list|()
@@ -1301,7 +1306,7 @@ condition|)
 block|{
 name|displayName
 operator|=
-name|a
+name|account
 operator|.
 name|getPreferredEmail
 argument_list|()
@@ -1335,7 +1340,7 @@ literal|"href"
 argument_list|,
 literal|"?account_id="
 operator|+
-name|a
+name|account
 operator|.
 name|getId
 argument_list|()

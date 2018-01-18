@@ -212,7 +212,7 @@ name|USER_NAME_PATTERN_LAST
 init|=
 literal|"[a-zA-Z0-9]"
 decl_stmt|;
-comment|/** Regular expression that {@link #userName} must match. */
+comment|/** Regular expression that a username must match. */
 DECL|field|USER_NAME_PATTERN
 specifier|public
 specifier|static
@@ -673,12 +673,6 @@ specifier|protected
 name|String
 name|status
 decl_stmt|;
-comment|/**<i>computed</i> the username selected from the identities. */
-DECL|field|userName
-specifier|protected
-name|String
-name|userName
-decl_stmt|;
 comment|/**    * ID of the user branch from which the account was read, {@code null} if the account was read    * from ReviewDb.    */
 DECL|field|metaId
 specifier|private
@@ -1032,34 +1026,6 @@ operator|.
 name|status
 operator|=
 name|status
-expr_stmt|;
-block|}
-comment|/** @return the computed user name for this account */
-DECL|method|getUserName ()
-specifier|public
-name|String
-name|getUserName
-parameter_list|()
-block|{
-return|return
-name|userName
-return|;
-block|}
-comment|/** Update the computed user name property. */
-DECL|method|setUserName (String userName)
-specifier|public
-name|void
-name|setUserName
-parameter_list|(
-name|String
-name|userName
-parameter_list|)
-block|{
-name|this
-operator|.
-name|userName
-operator|=
-name|userName
 expr_stmt|;
 block|}
 annotation|@

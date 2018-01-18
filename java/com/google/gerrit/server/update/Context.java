@@ -160,6 +160,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|AccountState
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -287,7 +303,7 @@ block|}
 comment|/**    * Get the account of the user performing the update.    *    *<p>Convenience method for {@code getIdentifiedUser().getAccount()}.    *    * @see CurrentUser#asIdentifiedUser()    * @return account.    */
 DECL|method|getAccount ()
 specifier|default
-name|Account
+name|AccountState
 name|getAccount
 parameter_list|()
 block|{
@@ -295,7 +311,7 @@ return|return
 name|getIdentifiedUser
 argument_list|()
 operator|.
-name|getAccount
+name|state
 argument_list|()
 return|;
 block|}

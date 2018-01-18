@@ -741,7 +741,7 @@ literal|"Stream Events ("
 operator|+
 name|currentUser
 operator|.
-name|getAccount
+name|state
 argument_list|()
 operator|.
 name|getUserName

@@ -276,6 +276,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AccountState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|extensions
 operator|.
 name|events
@@ -519,11 +535,11 @@ name|Id
 argument_list|>
 name|accountsToNotify
 decl_stmt|;
-DECL|field|account
+DECL|field|accountState
 specifier|private
 specifier|final
-name|Account
-name|account
+name|AccountState
+name|accountState
 decl_stmt|;
 DECL|field|change
 specifier|private
@@ -545,7 +561,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( @ssisted @ullable Account account, @Assisted @Nullable String msgTxt, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|create ( @ssisted @ullable AccountState accountState, @Assisted @Nullable String msgTxt, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|AbandonOp
 name|create
 parameter_list|(
@@ -553,8 +569,8 @@ annotation|@
 name|Assisted
 annotation|@
 name|Nullable
-name|Account
-name|account
+name|AccountState
+name|accountState
 parameter_list|,
 annotation|@
 name|Assisted
@@ -584,7 +600,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AbandonOp ( AbandonedSender.Factory abandonedSenderFactory, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, ChangeAbandoned changeAbandoned, @Assisted @Nullable Account account, @Assisted @Nullable String msgTxt, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|AbandonOp ( AbandonedSender.Factory abandonedSenderFactory, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, ChangeAbandoned changeAbandoned, @Assisted @Nullable AccountState accountState, @Assisted @Nullable String msgTxt, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|AbandonOp
 parameter_list|(
 name|AbandonedSender
@@ -605,8 +621,8 @@ annotation|@
 name|Assisted
 annotation|@
 name|Nullable
-name|Account
-name|account
+name|AccountState
+name|accountState
 parameter_list|,
 annotation|@
 name|Assisted
@@ -659,9 +675,9 @@ name|changeAbandoned
 expr_stmt|;
 name|this
 operator|.
-name|account
+name|accountState
 operator|=
-name|account
+name|accountState
 expr_stmt|;
 name|this
 operator|.
@@ -954,7 +970,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|account
+name|accountState
 operator|!=
 literal|null
 condition|)
@@ -963,7 +979,10 @@ name|cm
 operator|.
 name|setFrom
 argument_list|(
-name|account
+name|accountState
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -1034,7 +1053,7 @@ name|change
 argument_list|,
 name|patchSet
 argument_list|,
-name|account
+name|accountState
 argument_list|,
 name|msgTxt
 argument_list|,

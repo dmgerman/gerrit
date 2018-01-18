@@ -192,22 +192,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Change
 import|;
 end_import
@@ -239,6 +223,22 @@ operator|.
 name|server
 operator|.
 name|GpgException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|AccountState
 import|;
 end_import
 
@@ -431,7 +431,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire ( Change change, PatchSet patchSet, List<Account> reviewers, Account adder, Timestamp when)
+DECL|method|fire ( Change change, PatchSet patchSet, List<AccountState> reviewers, AccountState adder, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -444,11 +444,11 @@ name|patchSet
 parameter_list|,
 name|List
 argument_list|<
-name|Account
+name|AccountState
 argument_list|>
 name|reviewers
 parameter_list|,
-name|Account
+name|AccountState
 name|adder
 parameter_list|,
 name|Timestamp

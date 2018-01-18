@@ -199,7 +199,7 @@ operator|.
 name|getUser
 argument_list|()
 operator|.
-name|getAccount
+name|state
 argument_list|()
 operator|.
 name|getUserName
