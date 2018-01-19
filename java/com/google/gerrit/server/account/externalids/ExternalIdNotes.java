@@ -644,12 +644,31 @@ specifier|public
 interface|interface
 name|ExternalIdNotesLoader
 block|{
+comment|/**      * Loads the external ID notes from the current tip of the {@code refs/meta/external-ids}      * branch.      *      * @param allUsersRepo the All-Users repository      */
 DECL|method|load (Repository allUsersRepo)
 name|ExternalIdNotes
 name|load
 parameter_list|(
 name|Repository
 name|allUsersRepo
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|ConfigInvalidException
+function_decl|;
+comment|/**      * Loads the external ID notes from the specified revision of the {@code refs/meta/external-ids}      * branch.      *      * @param allUsersRepo the All-Users repository      * @param rev the revision from which the external ID notes should be loaded, if {@code null}      *     the external ID notes are loaded from the current tip, if {@link ObjectId#zeroId()} it's      *     assumed that the {@code refs/meta/external-ids} branch doesn't exist and the loaded      *     external IDs will be empty      */
+DECL|method|load (Repository allUsersRepo, @Nullable ObjectId rev)
+name|ExternalIdNotes
+name|load
+parameter_list|(
+name|Repository
+name|allUsersRepo
+parameter_list|,
+annotation|@
+name|Nullable
+name|ObjectId
+name|rev
 parameter_list|)
 throws|throws
 name|IOException
@@ -734,6 +753,43 @@ name|load
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|load (Repository allUsersRepo, @Nullable ObjectId rev)
+specifier|public
+name|ExternalIdNotes
+name|load
+parameter_list|(
+name|Repository
+name|allUsersRepo
+parameter_list|,
+annotation|@
+name|Nullable
+name|ObjectId
+name|rev
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|ConfigInvalidException
+block|{
+return|return
+operator|new
+name|ExternalIdNotes
+argument_list|(
+name|externalIdCache
+argument_list|,
+name|accountCache
+argument_list|,
+name|allUsersRepo
+argument_list|)
+operator|.
+name|load
+argument_list|(
+name|rev
+argument_list|)
+return|;
+block|}
 block|}
 annotation|@
 name|Singleton
@@ -797,8 +853,45 @@ name|load
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|load (Repository allUsersRepo, @Nullable ObjectId rev)
+specifier|public
+name|ExternalIdNotes
+name|load
+parameter_list|(
+name|Repository
+name|allUsersRepo
+parameter_list|,
+annotation|@
+name|Nullable
+name|ObjectId
+name|rev
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|ConfigInvalidException
+block|{
+return|return
+operator|new
+name|ExternalIdNotes
+argument_list|(
+name|externalIdCache
+argument_list|,
+literal|null
+argument_list|,
+name|allUsersRepo
+argument_list|)
+operator|.
+name|load
+argument_list|(
+name|rev
+argument_list|)
+return|;
 block|}
-comment|/**    * Loads the external ID notes for reading only. The external ID notes are loaded from the current    * HEAD revision of the {@code refs/meta/external-ids} branch.    *    * @return read-only {@link ExternalIdNotes} instance    */
+block|}
+comment|/**    * Loads the external ID notes for reading only. The external ID notes are loaded from the current    * tip of the {@code refs/meta/external-ids} branch.    *    * @return read-only {@link ExternalIdNotes} instance    */
 DECL|method|loadReadOnly (Repository allUsersRepo)
 specifier|public
 specifier|static
@@ -833,7 +926,7 @@ name|load
 argument_list|()
 return|;
 block|}
-comment|/**    * Loads the external ID notes for reading only. The external ID notes are loaded from the    * specified revision of the {@code refs/meta/external-ids} branch.    *    * @param rev the revision from which the external ID notes should be loaded, if {@code null} the    *     external ID notes are loaded from the current HEAD revision    * @return read-only {@link ExternalIdNotes} instance    */
+comment|/**    * Loads the external ID notes for reading only. The external ID notes are loaded from the    * specified revision of the {@code refs/meta/external-ids} branch.    *    * @param rev the revision from which the external ID notes should be loaded, if {@code null} the    *     external ID notes are loaded from the current tip, if {@link ObjectId#zeroId()} it's    *     assumed that the {@code refs/meta/external-ids} branch doesn't exist and the loaded    *     external IDs will be empty    * @return read-only {@link ExternalIdNotes} instance    */
 DECL|method|loadReadOnly (Repository allUsersRepo, @Nullable ObjectId rev)
 specifier|public
 specifier|static
@@ -875,7 +968,7 @@ name|rev
 argument_list|)
 return|;
 block|}
-comment|/**    * Loads the external ID notes for updates without cache evictions. The external ID notes are    * loaded from the current HEAD revision of the {@code refs/meta/external-ids} branch.    *    * @return {@link ExternalIdNotes} instance that doesn't updates caches on save    */
+comment|/**    * Loads the external ID notes for updates without cache evictions. The external ID notes are    * loaded from the current tip of the {@code refs/meta/external-ids} branch.    *    * @return {@link ExternalIdNotes} instance that doesn't updates caches on save    */
 DECL|method|loadNoCacheUpdate (Repository allUsersRepo)
 specifier|public
 specifier|static
@@ -1081,7 +1174,7 @@ operator|.
 name|REFS_EXTERNAL_IDS
 return|;
 block|}
-comment|/**    * Loads the external ID notes from the current HEAD revision of the {@code    * refs/meta/external-ids} branch.    *    * @return {@link ExternalIdNotes} instance for chaining    */
+comment|/**    * Loads the external ID notes from the current tip of the {@code refs/meta/external-ids} branch.    *    * @return {@link ExternalIdNotes} instance for chaining    */
 DECL|method|load ()
 specifier|private
 name|ExternalIdNotes
@@ -1101,7 +1194,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Loads the external ID notes from the specified revision of the {@code refs/meta/external-ids}    * branch.    *    * @param rev the revision from which the external ID notes should be loaded, if {@code null} the    *     external ID notes are loaded from the current HEAD revision    * @return {@link ExternalIdNotes} instance for chaining    */
+comment|/**    * Loads the external ID notes from the specified revision of the {@code refs/meta/external-ids}    * branch.    *    * @param rev the revision from which the external ID notes should be loaded, if {@code null} the    *     external ID notes are loaded from the current tip, if {@link ObjectId#zeroId()} it's    *     assumed that the {@code refs/meta/external-ids} branch doesn't exist and the loaded    *     external IDs will be empty    * @return {@link ExternalIdNotes} instance for chaining    */
 DECL|method|load (@ullable ObjectId rev)
 name|ExternalIdNotes
 name|load
@@ -1126,6 +1219,30 @@ block|{
 return|return
 name|load
 argument_list|()
+return|;
+block|}
+if|if
+condition|(
+name|ObjectId
+operator|.
+name|zeroId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|rev
+argument_list|)
+condition|)
+block|{
+name|load
+argument_list|(
+name|repo
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
 name|load
@@ -1313,7 +1430,7 @@ block|}
 comment|/**    * Parses and returns all external IDs.    *    *<p>Invalid external IDs are ignored.    *    * @return all external IDs    */
 DECL|method|all ()
 specifier|public
-name|Set
+name|ImmutableSet
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -1337,15 +1454,17 @@ name|repo
 argument_list|)
 init|)
 block|{
-name|Set
+name|ImmutableSet
+operator|.
+name|Builder
 argument_list|<
 name|ExternalId
 argument_list|>
-name|extIds
+name|b
 init|=
-operator|new
-name|HashSet
-argument_list|<>
+name|ImmutableSet
+operator|.
+name|builder
 argument_list|()
 decl_stmt|;
 for|for
@@ -1372,7 +1491,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|extIds
+name|b
 operator|.
 name|add
 argument_list|(
@@ -1425,7 +1544,10 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|extIds
+name|b
+operator|.
+name|build
+argument_list|()
 return|;
 block|}
 block|}

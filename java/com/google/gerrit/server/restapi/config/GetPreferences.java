@@ -308,7 +308,7 @@ block|{
 return|return
 name|PreferencesConfig
 operator|.
-name|readDefaultPreferences
+name|readDefaultGeneralPreferences
 argument_list|(
 name|git
 argument_list|)

@@ -1699,9 +1699,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|Account
-name|account
-init|=
 name|accountsUpdateFactory
 operator|.
 name|create
@@ -1723,15 +1720,11 @@ argument_list|(
 name|accountUpdates
 argument_list|)
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|account
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
+operator|.
+name|orElseThrow
+argument_list|(
+parameter_list|()
+lambda|->
 operator|new
 name|OrmException
 argument_list|(
@@ -1744,8 +1737,8 @@ argument_list|()
 operator|+
 literal|" has been deleted"
 argument_list|)
-throw|;
-block|}
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|eq (String a, String b)
@@ -1884,12 +1877,12 @@ operator|.
 name|hasAnyAccount
 argument_list|()
 decl_stmt|;
-name|Account
-name|account
+name|AccountState
+name|accountState
 decl_stmt|;
 try|try
 block|{
-name|account
+name|accountState
 operator|=
 name|accountsUpdateFactory
 operator|.
@@ -2087,7 +2080,10 @@ name|onCreateAccount
 argument_list|(
 name|who
 argument_list|,
-name|account
+name|accountState
+operator|.
+name|getAccount
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -2414,6 +2410,9 @@ literal|null
 operator|&&
 name|a
 operator|.
+name|getAccount
+argument_list|()
+operator|.
 name|getPreferredEmail
 argument_list|()
 operator|==
@@ -2473,18 +2472,34 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+name|accountsUpdateFactory
+operator|.
+name|create
+argument_list|()
+operator|.
+name|update
+argument_list|(
+literal|"Delete External IDs on Update Link"
+argument_list|,
+name|to
+argument_list|,
+parameter_list|(
+name|a
+parameter_list|,
+name|u
+parameter_list|)
+lambda|->
+block|{
 name|Collection
 argument_list|<
 name|ExternalId
 argument_list|>
 name|filteredExtIdsByScheme
 init|=
-name|externalIds
+name|a
 operator|.
-name|byAccount
+name|getExternalIds
 argument_list|(
-name|to
-argument_list|,
 name|who
 operator|.
 name|getExternalIdKey
@@ -2496,13 +2511,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|filteredExtIdsByScheme
 operator|.
 name|isEmpty
 argument_list|()
-operator|&&
-operator|(
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
 name|filteredExtIdsByScheme
 operator|.
 name|size
@@ -2516,7 +2534,7 @@ operator|.
 name|stream
 argument_list|()
 operator|.
-name|filter
+name|anyMatch
 argument_list|(
 name|e
 lambda|->
@@ -2533,36 +2551,21 @@ name|getExternalIdKey
 argument_list|()
 argument_list|)
 argument_list|)
-operator|.
-name|findAny
-argument_list|()
-operator|.
-name|isPresent
-argument_list|()
-operator|)
-condition|)
+argument_list|)
 block|{
-name|accountsUpdateFactory
-operator|.
-name|create
-argument_list|()
-operator|.
-name|update
-argument_list|(
-literal|"Delete External IDs on Update Link"
-argument_list|,
-name|to
-argument_list|,
-name|u
-lambda|->
 name|u
 operator|.
 name|deleteExternalIds
 argument_list|(
 name|filteredExtIdsByScheme
 argument_list|)
-argument_list|)
-block|;     }
+block|;               }
+block|}
+block|)
+class|;
+end_class
+
+begin_return
 return|return
 name|link
 argument_list|(
@@ -2571,10 +2574,16 @@ argument_list|,
 name|who
 argument_list|)
 return|;
-block|}
+end_return
+
+begin_comment
+unit|}
 comment|/**    * Unlink an external identity from an existing account.    *    * @param from account to unlink the external identity from    * @param extIdKey the key of the external ID that should be deleted    * @throws AccountException the identity belongs to a different account, or the identity was not    *     found    */
+end_comment
+
+begin_function
 DECL|method|unlink (Account.Id from, ExternalId.Key extIdKey)
-specifier|public
+unit|public
 name|void
 name|unlink
 parameter_list|(
@@ -2610,7 +2619,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Unlink an external identities from an existing account.    *    * @param from account to unlink the external identity from    * @param extIdKeys the keys of the external IDs that should be deleted    * @throws AccountException any of the identity belongs to a different account, or any of the    *     identity was not found    */
+end_comment
+
+begin_function
 DECL|method|unlink (Account.Id from, Collection<ExternalId.Key> extIdKeys)
 specifier|public
 name|void
@@ -2788,6 +2803,9 @@ if|if
 condition|(
 name|a
 operator|.
+name|getAccount
+argument_list|()
+operator|.
 name|getPreferredEmail
 argument_list|()
 operator|!=
@@ -2803,6 +2821,9 @@ argument_list|(
 name|e
 lambda|->
 name|a
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getPreferredEmail
 argument_list|()
@@ -2825,9 +2846,12 @@ literal|null
 argument_list|)
 block|;               }
 block|}
-block|)
-class|;
-end_class
+end_function
+
+begin_empty_stmt
+unit|)
+empty_stmt|;
+end_empty_stmt
 
 unit|} }
 end_unit

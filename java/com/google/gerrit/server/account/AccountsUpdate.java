@@ -276,6 +276,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|externalids
+operator|.
+name|ExternalIds
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|AllUsersName
@@ -554,6 +572,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|PersonIdent
 import|;
 end_import
@@ -592,13 +624,13 @@ specifier|public
 interface|interface
 name|AccountUpdater
 block|{
-comment|/**      * Prepare updates to an account.      *      *<p>Use the provided account only to read the current state of the account. Don't do updates      * to the account. For updates use the provided account update builder.      *      * @param account the account that is being updated      * @param update account update builder      */
-DECL|method|update (Account account, InternalAccountUpdate.Builder update)
+comment|/**      * Prepare updates to an account.      *      *<p>Use the provided account only to read the current state of the account. Don't do updates      * to the account. For updates use the provided account update builder.      *      * @param accountState the account that is being updated      * @param update account update builder      */
+DECL|method|update (AccountState accountState, InternalAccountUpdate.Builder update)
 name|void
 name|update
 parameter_list|(
-name|Account
-name|account
+name|AccountState
+name|accountState
 parameter_list|,
 name|InternalAccountUpdate
 operator|.
@@ -735,6 +767,12 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|externalIds
+specifier|private
+specifier|final
+name|ExternalIds
+name|externalIds
+decl_stmt|;
 DECL|field|serverIdentProvider
 specifier|private
 specifier|final
@@ -771,7 +809,7 @@ name|extIdNotesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Server ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllUsersName allUsersName, @GerritPersonIdent Provider<PersonIdent> serverIdentProvider, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotes.Factory extIdNotesFactory)
+DECL|method|Server ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllUsersName allUsersName, ExternalIds externalIds, @GerritPersonIdent Provider<PersonIdent> serverIdentProvider, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotes.Factory extIdNotesFactory)
 specifier|public
 name|Server
 parameter_list|(
@@ -783,6 +821,9 @@ name|gitRefUpdated
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|ExternalIds
+name|externalIds
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -826,6 +867,12 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
+expr_stmt|;
+name|this
+operator|.
+name|externalIds
+operator|=
+name|externalIds
 expr_stmt|;
 name|this
 operator|.
@@ -877,6 +924,8 @@ argument_list|,
 literal|null
 argument_list|,
 name|allUsersName
+argument_list|,
+name|externalIds
 argument_list|,
 name|metaDataUpdateInternalFactory
 argument_list|,
@@ -918,6 +967,12 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|externalIds
+specifier|private
+specifier|final
+name|ExternalIds
+name|externalIds
+decl_stmt|;
 DECL|field|serverIdentProvider
 specifier|private
 specifier|final
@@ -954,7 +1009,7 @@ name|extIdNotesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ServerNoReindex ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllUsersName allUsersName, @GerritPersonIdent Provider<PersonIdent> serverIdentProvider, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotes.FactoryNoReindex extIdNotesFactory)
+DECL|method|ServerNoReindex ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllUsersName allUsersName, ExternalIds externalIds, @GerritPersonIdent Provider<PersonIdent> serverIdentProvider, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotes.FactoryNoReindex extIdNotesFactory)
 specifier|public
 name|ServerNoReindex
 parameter_list|(
@@ -966,6 +1021,9 @@ name|gitRefUpdated
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|ExternalIds
+name|externalIds
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -1009,6 +1067,12 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
+expr_stmt|;
+name|this
+operator|.
+name|externalIds
+operator|=
+name|externalIds
 expr_stmt|;
 name|this
 operator|.
@@ -1061,6 +1125,8 @@ literal|null
 argument_list|,
 name|allUsersName
 argument_list|,
+name|externalIds
+argument_list|,
 name|metaDataUpdateInternalFactory
 argument_list|,
 name|retryHelper
@@ -1100,6 +1166,12 @@ specifier|private
 specifier|final
 name|AllUsersName
 name|allUsersName
+decl_stmt|;
+DECL|field|externalIds
+specifier|private
+specifier|final
+name|ExternalIds
+name|externalIds
 decl_stmt|;
 DECL|field|serverIdentProvider
 specifier|private
@@ -1146,7 +1218,7 @@ name|extIdNotesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|User ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllUsersName allUsersName, @GerritPersonIdent Provider<PersonIdent> serverIdentProvider, Provider<IdentifiedUser> identifiedUser, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotes.Factory extIdNotesFactory)
+DECL|method|User ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllUsersName allUsersName, ExternalIds externalIds, @GerritPersonIdent Provider<PersonIdent> serverIdentProvider, Provider<IdentifiedUser> identifiedUser, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotes.Factory extIdNotesFactory)
 specifier|public
 name|User
 parameter_list|(
@@ -1158,6 +1230,9 @@ name|gitRefUpdated
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|ExternalIds
+name|externalIds
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -1207,6 +1282,12 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
+expr_stmt|;
+name|this
+operator|.
+name|externalIds
+operator|=
+name|externalIds
 expr_stmt|;
 name|this
 operator|.
@@ -1282,6 +1363,8 @@ argument_list|,
 name|user
 argument_list|,
 name|allUsersName
+argument_list|,
+name|externalIds
 argument_list|,
 name|metaDataUpdateInternalFactory
 argument_list|,
@@ -1351,6 +1434,12 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|externalIds
+specifier|private
+specifier|final
+name|ExternalIds
+name|externalIds
+decl_stmt|;
 DECL|field|metaDataUpdateInternalFactory
 specifier|private
 specifier|final
@@ -1386,13 +1475,21 @@ specifier|final
 name|PersonIdent
 name|authorIdent
 decl_stmt|;
+comment|// Invoked after reading the account config.
 DECL|field|afterReadRevision
 specifier|private
 specifier|final
 name|Runnable
 name|afterReadRevision
 decl_stmt|;
-DECL|method|AccountsUpdate ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Nullable IdentifiedUser currentUser, AllUsersName allUsersName, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotesLoader extIdNotesLoader, PersonIdent committerIdent, PersonIdent authorIdent)
+comment|// Invoked after updating the account but before committing the changes.
+DECL|field|beforeCommit
+specifier|private
+specifier|final
+name|Runnable
+name|beforeCommit
+decl_stmt|;
+DECL|method|AccountsUpdate ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Nullable IdentifiedUser currentUser, AllUsersName allUsersName, ExternalIds externalIds, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotesLoader extIdNotesLoader, PersonIdent committerIdent, PersonIdent authorIdent)
 specifier|private
 name|AccountsUpdate
 parameter_list|(
@@ -1409,6 +1506,9 @@ name|currentUser
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|ExternalIds
+name|externalIds
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1441,6 +1541,8 @@ name|currentUser
 argument_list|,
 name|allUsersName
 argument_list|,
+name|externalIds
+argument_list|,
 name|metaDataUpdateInternalFactory
 argument_list|,
 name|retryHelper
@@ -1455,12 +1557,17 @@ name|Runnables
 operator|.
 name|doNothing
 argument_list|()
+argument_list|,
+name|Runnables
+operator|.
+name|doNothing
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|AccountsUpdate ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Nullable IdentifiedUser currentUser, AllUsersName allUsersName, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotesLoader extIdNotesLoader, PersonIdent committerIdent, PersonIdent authorIdent, Runnable afterReadRevision)
+DECL|method|AccountsUpdate ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Nullable IdentifiedUser currentUser, AllUsersName allUsersName, ExternalIds externalIds, Provider<MetaDataUpdate.InternalFactory> metaDataUpdateInternalFactory, RetryHelper retryHelper, ExternalIdNotesLoader extIdNotesLoader, PersonIdent committerIdent, PersonIdent authorIdent, Runnable afterReadRevision, Runnable beforeCommit)
 specifier|public
 name|AccountsUpdate
 parameter_list|(
@@ -1477,6 +1584,9 @@ name|currentUser
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|ExternalIds
+name|externalIds
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1500,6 +1610,9 @@ name|authorIdent
 parameter_list|,
 name|Runnable
 name|afterReadRevision
+parameter_list|,
+name|Runnable
+name|beforeCommit
 parameter_list|)
 block|{
 name|this
@@ -1539,6 +1652,17 @@ argument_list|(
 name|allUsersName
 argument_list|,
 literal|"allUsersName"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|externalIds
+operator|=
+name|checkNotNull
+argument_list|(
+name|externalIds
+argument_list|,
+literal|"externalIds"
 argument_list|)
 expr_stmt|;
 name|this
@@ -1600,13 +1724,29 @@ name|this
 operator|.
 name|afterReadRevision
 operator|=
+name|checkNotNull
+argument_list|(
 name|afterReadRevision
+argument_list|,
+literal|"afterReadRevision"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|beforeCommit
+operator|=
+name|checkNotNull
+argument_list|(
+name|beforeCommit
+argument_list|,
+literal|"beforeCommit"
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Inserts a new account.    *    * @param message commit message for the account creation, must not be {@code null or empty}    * @param accountId ID of the new account    * @param init consumer to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws OrmException if creating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|insert ( String message, Account.Id accountId, Consumer<InternalAccountUpdate.Builder> init)
 specifier|public
-name|Account
+name|AccountState
 name|insert
 parameter_list|(
 name|String
@@ -1651,7 +1791,7 @@ block|}
 comment|/**    * Inserts a new account.    *    * @param message commit message for the account creation, must not be {@code null or empty}    * @param accountId ID of the new account    * @param updater updater to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws OrmException if creating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|insert (String message, Account.Id accountId, AccountUpdater updater)
 specifier|public
-name|Account
+name|AccountState
 name|insert
 parameter_list|(
 name|String
@@ -1708,6 +1848,18 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|AccountState
+name|accountState
+init|=
+name|AccountState
+operator|.
+name|forAccount
+argument_list|(
+name|allUsersName
+argument_list|,
+name|account
+argument_list|)
+decl_stmt|;
 name|InternalAccountUpdate
 operator|.
 name|Builder
@@ -1722,7 +1874,7 @@ name|updater
 operator|.
 name|update
 argument_list|(
-name|account
+name|accountState
 argument_list|,
 name|updateBuilder
 argument_list|)
@@ -1749,6 +1901,11 @@ name|createExternalIdNotes
 argument_list|(
 name|r
 argument_list|,
+name|accountConfig
+operator|.
+name|getExternalIdsRev
+argument_list|()
+argument_list|,
 name|accountId
 argument_list|,
 name|update
@@ -1760,6 +1917,10 @@ init|=
 operator|new
 name|UpdatedAccount
 argument_list|(
+name|allUsersName
+argument_list|,
+name|externalIds
+argument_list|,
 name|message
 argument_list|,
 name|accountConfig
@@ -1779,12 +1940,18 @@ name|updatedAccounts
 return|;
 block|}
 argument_list|)
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param update consumer to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param update consumer to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty()} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|update ( String message, Account.Id accountId, Consumer<InternalAccountUpdate.Builder> update)
 specifier|public
-name|Account
+name|Optional
+argument_list|<
+name|AccountState
+argument_list|>
 name|update
 parameter_list|(
 name|String
@@ -1826,12 +1993,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param updater updater to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
-annotation|@
-name|Nullable
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param updater updater to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|update (String message, Account.Id accountId, AccountUpdater updater)
 specifier|public
-name|Account
+name|Optional
+argument_list|<
+name|AccountState
+argument_list|>
 name|update
 parameter_list|(
 name|String
@@ -1870,14 +2038,20 @@ argument_list|)
 decl_stmt|;
 name|Optional
 argument_list|<
-name|Account
+name|AccountState
 argument_list|>
 name|account
 init|=
-name|accountConfig
+name|AccountState
 operator|.
-name|getLoadedAccount
-argument_list|()
+name|fromAccountConfig
+argument_list|(
+name|allUsersName
+argument_list|,
+name|externalIds
+argument_list|,
+name|accountConfig
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -1936,6 +2110,11 @@ name|createExternalIdNotes
 argument_list|(
 name|r
 argument_list|,
+name|accountConfig
+operator|.
+name|getExternalIdsRev
+argument_list|()
+argument_list|,
 name|accountId
 argument_list|,
 name|update
@@ -1947,6 +2126,10 @@ init|=
 operator|new
 name|UpdatedAccount
 argument_list|(
+name|allUsersName
+argument_list|,
+name|externalIds
+argument_list|,
 name|message
 argument_list|,
 name|accountConfig
@@ -2004,7 +2187,10 @@ return|;
 block|}
 DECL|method|updateAccount (AccountUpdate accountUpdate)
 specifier|private
-name|Account
+name|Optional
+argument_list|<
+name|AccountState
+argument_list|>
 name|updateAccount
 parameter_list|(
 name|AccountUpdate
@@ -2060,7 +2246,10 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|commit
@@ -2071,23 +2260,34 @@ name|updatedAccount
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|updatedAccount
 operator|.
 name|getAccount
 argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
 argument_list|)
 return|;
 block|}
-DECL|method|createExternalIdNotes ( Repository allUsersRepo, Account.Id accountId, InternalAccountUpdate update)
+DECL|method|createExternalIdNotes ( Repository allUsersRepo, Optional<ObjectId> rev, Account.Id accountId, InternalAccountUpdate update)
 specifier|private
 name|ExternalIdNotes
 name|createExternalIdNotes
 parameter_list|(
 name|Repository
 name|allUsersRepo
+parameter_list|,
+name|Optional
+argument_list|<
+name|ObjectId
+argument_list|>
+name|rev
 parameter_list|,
 name|Account
 operator|.
@@ -2139,6 +2339,16 @@ operator|.
 name|load
 argument_list|(
 name|allUsersRepo
+argument_list|,
+name|rev
+operator|.
+name|orElse
+argument_list|(
+name|ObjectId
+operator|.
+name|zeroId
+argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|extIdNotes
@@ -2184,6 +2394,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|beforeCommit
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
 name|BatchRefUpdate
 name|batchRefUpdate
 init|=
@@ -2578,6 +2793,18 @@ specifier|static
 class|class
 name|UpdatedAccount
 block|{
+DECL|field|allUsersName
+specifier|private
+specifier|final
+name|AllUsersName
+name|allUsersName
+decl_stmt|;
+DECL|field|externalIds
+specifier|private
+specifier|final
+name|ExternalIds
+name|externalIds
+decl_stmt|;
 DECL|field|message
 specifier|private
 specifier|final
@@ -2601,10 +2828,16 @@ specifier|private
 name|boolean
 name|created
 decl_stmt|;
-DECL|method|UpdatedAccount ( String message, AccountConfig accountConfig, ExternalIdNotes extIdNotes)
+DECL|method|UpdatedAccount ( AllUsersName allUsersName, ExternalIds externalIds, String message, AccountConfig accountConfig, ExternalIdNotes extIdNotes)
 specifier|private
 name|UpdatedAccount
 parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|,
+name|ExternalIds
+name|externalIds
+parameter_list|,
 name|String
 name|message
 parameter_list|,
@@ -2626,6 +2859,24 @@ name|message
 argument_list|)
 argument_list|,
 literal|"message for account update must be set"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|allUsersName
+operator|=
+name|checkNotNull
+argument_list|(
+name|allUsersName
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|externalIds
+operator|=
+name|checkNotNull
+argument_list|(
+name|externalIds
 argument_list|)
 expr_stmt|;
 name|this
@@ -2678,15 +2929,25 @@ return|;
 block|}
 DECL|method|getAccount ()
 specifier|public
-name|Account
+name|AccountState
 name|getAccount
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 return|return
-name|accountConfig
+name|AccountState
 operator|.
-name|getLoadedAccount
-argument_list|()
+name|fromAccountConfig
+argument_list|(
+name|allUsersName
+argument_list|,
+name|externalIds
+argument_list|,
+name|accountConfig
+argument_list|,
+name|extIdNotes
+argument_list|)
 operator|.
 name|get
 argument_list|()

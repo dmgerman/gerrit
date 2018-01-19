@@ -597,7 +597,7 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-literal|"Set Preferences via API"
+literal|"Set General Preferences via API"
 argument_list|,
 name|id
 argument_list|,
