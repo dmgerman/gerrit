@@ -708,6 +708,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|IOException
 block|{
 name|IdentifiedUser
 name|user
@@ -946,6 +948,8 @@ parameter_list|(
 name|OrmException
 decl||
 name|PermissionBackendException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{

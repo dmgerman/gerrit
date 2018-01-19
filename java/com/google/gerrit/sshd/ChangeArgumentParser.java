@@ -92,7 +92,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|RestApiException
 import|;
 end_import
 
@@ -348,6 +348,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -515,6 +525,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|IOException
 block|{
 name|addChange
 argument_list|(
@@ -553,6 +565,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|IOException
 block|{
 name|addChange
 argument_list|(
@@ -596,6 +610,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|IOException
 block|{
 name|List
 argument_list|<
@@ -818,7 +834,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|ResourceNotFoundException
+name|RestApiException
 name|e
 parameter_list|)
 block|{
