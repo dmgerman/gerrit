@@ -208,7 +208,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|BadRequestException
+name|ResourceNotFoundException
 import|;
 end_import
 
@@ -224,7 +224,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|RestApiException
 import|;
 end_import
 
@@ -1005,14 +1005,20 @@ name|ProjectResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
+name|RestApiException
 throws|,
 name|IOException
 throws|,
-name|BadRequestException
-throws|,
 name|PermissionBackendException
 block|{
+name|rsrc
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|checkStatePermitsRead
+argument_list|()
+expr_stmt|;
 return|return
 operator|new
 name|RefFilter

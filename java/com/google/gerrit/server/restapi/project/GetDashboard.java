@@ -623,7 +623,7 @@ name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
+name|RestApiException
 throws|,
 name|IOException
 throws|,
@@ -793,7 +793,7 @@ name|String
 name|id
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
+name|RestApiException
 throws|,
 name|IOException
 throws|,

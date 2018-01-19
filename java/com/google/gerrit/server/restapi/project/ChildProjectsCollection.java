@@ -430,6 +430,14 @@ name|IOException
 throws|,
 name|PermissionBackendException
 block|{
+name|parent
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|checkStatePermitsRead
+argument_list|()
+expr_stmt|;
 name|ProjectResource
 name|p
 init|=
