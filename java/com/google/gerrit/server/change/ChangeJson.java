@@ -1794,22 +1794,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|NoSuchProjectException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|ProjectCache
 import|;
 end_import
@@ -3183,8 +3167,6 @@ name|IOException
 decl||
 name|PermissionBackendException
 decl||
-name|NoSuchProjectException
-decl||
 name|RuntimeException
 name|e
 parameter_list|)
@@ -3745,8 +3727,6 @@ name|IOException
 decl||
 name|PermissionBackendException
 decl||
-name|NoSuchProjectException
-decl||
 name|RuntimeException
 name|e
 parameter_list|)
@@ -4193,11 +4173,9 @@ name|GpgException
 throws|,
 name|OrmException
 throws|,
-name|IOException
-throws|,
 name|PermissionBackendException
 throws|,
-name|NoSuchProjectException
+name|IOException
 block|{
 name|ChangeInfo
 name|out
@@ -8552,11 +8530,7 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 throws|,
-name|NoSuchProjectException
-throws|,
 name|OrmException
-throws|,
-name|IOException
 block|{
 comment|// Although this is called removableReviewers, this method also determines
 comment|// which CCs are removable.
