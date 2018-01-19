@@ -6098,6 +6098,8 @@ argument_list|()
 operator|.
 name|orElse
 argument_list|(
+name|firstNonNull
+argument_list|(
 name|user
 operator|.
 name|getAccount
@@ -6105,6 +6107,12 @@ argument_list|()
 operator|.
 name|getPreferredEmail
 argument_list|()
+argument_list|,
+name|user
+operator|.
+name|getLoggableName
+argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
