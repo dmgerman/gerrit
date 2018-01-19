@@ -445,13 +445,26 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|projectControlFactory
+specifier|private
+specifier|final
+name|ProjectControl
+operator|.
+name|Factory
+name|projectControlFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DefaultPermissionBackend (ProjectCache projectCache)
+DECL|method|DefaultPermissionBackend ( ProjectCache projectCache, ProjectControl.Factory projectControlFactory)
 name|DefaultPermissionBackend
 parameter_list|(
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|ProjectControl
+operator|.
+name|Factory
+name|projectControlFactory
 parameter_list|)
 block|{
 name|this
@@ -459,6 +472,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|projectControlFactory
+operator|=
+name|projectControlFactory
 expr_stmt|;
 block|}
 DECL|method|capabilities ()
@@ -570,11 +589,13 @@ literal|null
 condition|)
 block|{
 return|return
-name|state
+name|projectControlFactory
 operator|.
-name|controlFor
+name|create
 argument_list|(
 name|user
+argument_list|,
+name|state
 argument_list|)
 operator|.
 name|asForProject

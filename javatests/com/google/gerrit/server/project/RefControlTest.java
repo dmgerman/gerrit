@@ -2194,15 +2194,6 @@ specifier|private
 name|ThreadLocalRequestContext
 name|requestContext
 decl_stmt|;
-DECL|field|projectControlFactory
-annotation|@
-name|Inject
-specifier|private
-name|ProjectControl
-operator|.
-name|Factory
-name|projectControlFactory
-decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -5881,8 +5872,6 @@ argument_list|,
 name|allProjectsName
 argument_list|,
 name|allUsersName
-argument_list|,
-name|projectControlFactory
 argument_list|,
 name|envFactory
 argument_list|,
