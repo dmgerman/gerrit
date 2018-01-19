@@ -1444,9 +1444,6 @@ name|userName
 operator|=
 name|u
 operator|.
-name|state
-argument_list|()
-operator|.
 name|getUserName
 argument_list|()
 operator|.
