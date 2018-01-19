@@ -17637,6 +17637,9 @@ name|user
 operator|.
 name|getUserName
 argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|DASHBOARD_OUTGOING_QUERY
 argument_list|,
@@ -17895,6 +17898,9 @@ argument_list|(
 name|user
 operator|.
 name|getUserName
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|,
 name|DASHBOARD_INCOMING_QUERY
@@ -18510,6 +18516,9 @@ argument_list|(
 name|user
 operator|.
 name|getUserName
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|,
 name|DASHBOARD_RECENTLY_CLOSED_QUERY

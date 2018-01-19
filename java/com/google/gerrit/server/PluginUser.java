@@ -90,6 +90,16 @@ name|Assisted
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/** User identity for plugin code that needs an identity. */
 end_comment
@@ -145,14 +155,22 @@ annotation|@
 name|Override
 DECL|method|getUserName ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getUserName
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"plugin "
 operator|+
 name|pluginName
+argument_list|)
 return|;
 block|}
 annotation|@

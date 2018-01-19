@@ -1772,6 +1772,11 @@ name|user
 operator|.
 name|getUserName
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -1781,8 +1786,9 @@ name|user
 operator|.
 name|getUserName
 argument_list|()
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|log
@@ -1794,6 +1800,9 @@ argument_list|,
 name|user
 operator|.
 name|getUserName
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|,
 name|who

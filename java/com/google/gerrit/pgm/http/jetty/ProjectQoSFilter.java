@@ -288,6 +288,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|Future
@@ -1314,7 +1324,10 @@ name|isIdentifiedUser
 argument_list|()
 condition|)
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|name
 init|=
 name|who
@@ -1328,8 +1341,9 @@ decl_stmt|;
 if|if
 condition|(
 name|name
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|userName
@@ -1337,6 +1351,9 @@ operator|=
 literal|" ("
 operator|+
 name|name
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|")"
 expr_stmt|;

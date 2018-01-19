@@ -1058,6 +1058,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -6099,12 +6109,20 @@ annotation|@
 name|Override
 DECL|method|getUserName ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getUserName
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|username
+argument_list|)
 return|;
 block|}
 block|}
