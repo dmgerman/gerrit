@@ -495,6 +495,13 @@ name|getUsername
 argument_list|()
 operator|==
 literal|null
+operator|||
+name|req
+operator|.
+name|getPassword
+argument_list|()
+operator|==
+literal|null
 condition|)
 block|{
 throw|throw
