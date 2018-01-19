@@ -1181,11 +1181,12 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|Failure
-name|f
+name|Throwable
+name|t
 parameter_list|)
 block|{
-comment|// Report the error in ERROR sideband channel
+comment|// Report the error in ERROR sideband channel. Catch Throwable too so we can also catch
+comment|// NoClassDefFound.
 try|try
 init|(
 name|SideBandOutputStream
@@ -1210,7 +1211,7 @@ name|sidebandError
 operator|.
 name|write
 argument_list|(
-name|f
+name|t
 operator|.
 name|getMessage
 argument_list|()
@@ -1228,7 +1229,7 @@ argument_list|()
 expr_stmt|;
 block|}
 throw|throw
-name|f
+name|t
 throw|;
 block|}
 finally|finally
