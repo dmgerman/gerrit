@@ -282,7 +282,7 @@ name|isEqualTo
 argument_list|(
 name|SubmitType
 operator|.
-name|MERGE_IF_NECESSARY
+name|INHERIT
 argument_list|)
 expr_stmt|;
 block|}

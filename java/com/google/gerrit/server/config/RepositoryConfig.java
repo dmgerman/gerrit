@@ -274,7 +274,7 @@ name|DEFAULT_SUBMIT_TYPE
 init|=
 name|SubmitType
 operator|.
-name|MERGE_IF_NECESSARY
+name|INHERIT
 decl_stmt|;
 DECL|field|cfg
 specifier|private

@@ -1499,7 +1499,7 @@ argument_list|)
 operator|.
 name|hasValue
 argument_list|(
-literal|"[access]\n\tinheritFrom = All-Projects\n"
+literal|"[access]\n\tinheritFrom = All-Projects\n[submit]\n\taction = inherit\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2833,7 +2833,7 @@ name|isEqualTo
 argument_list|(
 name|SubmitType
 operator|.
-name|MERGE_IF_NECESSARY
+name|INHERIT
 argument_list|)
 expr_stmt|;
 name|assertThat
