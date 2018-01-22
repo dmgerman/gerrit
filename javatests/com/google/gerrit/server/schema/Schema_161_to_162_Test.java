@@ -252,7 +252,7 @@ name|gerrit
 operator|.
 name|testing
 operator|.
-name|SchemaUpgradeTestEnvironment
+name|InMemoryTestEnvironment
 import|;
 end_import
 
@@ -392,11 +392,11 @@ DECL|field|testEnv
 annotation|@
 name|Rule
 specifier|public
-name|SchemaUpgradeTestEnvironment
+name|InMemoryTestEnvironment
 name|testEnv
 init|=
 operator|new
-name|SchemaUpgradeTestEnvironment
+name|InMemoryTestEnvironment
 argument_list|()
 decl_stmt|;
 DECL|field|allProjectsName

@@ -350,7 +350,7 @@ name|gerrit
 operator|.
 name|testing
 operator|.
-name|SchemaUpgradeTestEnvironment
+name|InMemoryTestEnvironment
 import|;
 end_import
 
@@ -544,16 +544,15 @@ return|return
 name|config
 return|;
 block|}
-comment|// TODO(aliceks): Use a more general name for SchemaUpgradeTestEnvironment.
 annotation|@
 name|Rule
 DECL|field|testEnvironment
 specifier|public
-name|SchemaUpgradeTestEnvironment
+name|InMemoryTestEnvironment
 name|testEnvironment
 init|=
 operator|new
-name|SchemaUpgradeTestEnvironment
+name|InMemoryTestEnvironment
 argument_list|(
 name|GroupsUpdateIT
 operator|::
