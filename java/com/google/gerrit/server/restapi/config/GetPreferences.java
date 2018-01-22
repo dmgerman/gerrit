@@ -112,7 +112,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|PreferencesConfig
+name|Preferences
 import|;
 end_import
 
@@ -306,7 +306,7 @@ argument_list|)
 init|)
 block|{
 return|return
-name|PreferencesConfig
+name|Preferences
 operator|.
 name|readDefaultGeneralPreferences
 argument_list|(

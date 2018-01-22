@@ -194,7 +194,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|PreferencesConfig
+name|Preferences
 import|;
 end_import
 
@@ -475,7 +475,7 @@ literal|"unsupported option"
 argument_list|)
 throw|;
 block|}
-name|PreferencesConfig
+name|Preferences
 operator|.
 name|validateMy
 argument_list|(
@@ -503,7 +503,7 @@ block|{
 name|GeneralPreferencesInfo
 name|updatedPrefs
 init|=
-name|PreferencesConfig
+name|Preferences
 operator|.
 name|updateDefaultGeneralPreferences
 argument_list|(

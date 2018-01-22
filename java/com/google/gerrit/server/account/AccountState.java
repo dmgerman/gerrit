@@ -320,7 +320,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|NotifyType
 import|;
@@ -338,7 +338,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|WatchConfig
+name|ProjectWatches
 operator|.
 name|ProjectWatchKey
 import|;

@@ -190,7 +190,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountConfig
+name|AccountProperties
 import|;
 end_import
 
@@ -663,7 +663,7 @@ operator|new
 name|Config
 argument_list|()
 decl_stmt|;
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|writeToAccountConfig
 argument_list|(
@@ -756,7 +756,7 @@ argument_list|(
 operator|new
 name|PathEdit
 argument_list|(
-name|AccountConfig
+name|AccountProperties
 operator|.
 name|ACCOUNT_CONFIG
 argument_list|)

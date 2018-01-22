@@ -268,7 +268,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|PreferencesConfig
+name|Preferences
 import|;
 end_import
 
@@ -568,7 +568,7 @@ operator|.
 name|downloadScheme
 argument_list|)
 expr_stmt|;
-name|PreferencesConfig
+name|Preferences
 operator|.
 name|validateMy
 argument_list|(
