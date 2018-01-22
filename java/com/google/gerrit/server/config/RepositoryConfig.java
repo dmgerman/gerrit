@@ -208,16 +208,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Objects
 import|;
 end_import
@@ -337,7 +327,7 @@ return|;
 block|}
 DECL|method|getOwnerGroups (Project.NameKey project)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|String
 argument_list|>
@@ -421,7 +411,7 @@ return|;
 block|}
 DECL|method|getAllBasePaths ()
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|Path
 argument_list|>
