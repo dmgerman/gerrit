@@ -220,6 +220,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|change
+operator|.
+name|ChangeIndexCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|query
 operator|.
 name|change
@@ -501,6 +519,12 @@ operator|.
 name|Factory
 name|refFilter
 decl_stmt|;
+DECL|field|indexes
+specifier|private
+specifier|final
+name|ChangeIndexCollection
+name|indexes
+decl_stmt|;
 DECL|field|queryProvider
 specifier|private
 specifier|final
@@ -512,7 +536,7 @@ name|queryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommitsCollection ( DynamicMap<RestView<CommitResource>> views, GitRepositoryManager repoManager, VisibleRefFilter.Factory refFilter, Provider<InternalChangeQuery> queryProvider)
+DECL|method|CommitsCollection ( DynamicMap<RestView<CommitResource>> views, GitRepositoryManager repoManager, VisibleRefFilter.Factory refFilter, ChangeIndexCollection indexes, Provider<InternalChangeQuery> queryProvider)
 specifier|public
 name|CommitsCollection
 parameter_list|(
@@ -532,6 +556,9 @@ name|VisibleRefFilter
 operator|.
 name|Factory
 name|refFilter
+parameter_list|,
+name|ChangeIndexCollection
+name|indexes
 parameter_list|,
 name|Provider
 argument_list|<
@@ -557,6 +584,12 @@ operator|.
 name|refFilter
 operator|=
 name|refFilter
+expr_stmt|;
+name|this
+operator|.
+name|indexes
+operator|=
+name|indexes
 expr_stmt|;
 name|this
 operator|.
@@ -808,6 +841,16 @@ name|getNameKey
 argument_list|()
 decl_stmt|;
 comment|// Look for changes associated with the commit.
+if|if
+condition|(
+name|indexes
+operator|.
+name|getSearchIndex
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 try|try
 block|{
 name|List
@@ -871,6 +914,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|isReachableFrom
