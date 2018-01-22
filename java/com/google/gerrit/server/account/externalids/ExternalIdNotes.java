@@ -601,7 +601,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link VersionedMetaData} subclass to update external IDs.  *  *<p>On load the note map from {@code refs/meta/external-ids} is read, but the external IDs are not  * parsed yet (see {@link #onLoad()}).  *  *<p>After loading the note map callers can access single or all external IDs. Only now the  * requested external IDs are parsed.  *  *<p>After loading the note map callers can stage various external ID updates (insert, upsert,  * delete, replace).  *  *<p>On save the staged external ID updates are performed (see {@link #onSave(CommitBuilder)}).  *  *<p>After committing the external IDs a cache update can be requested which also reindexes the  * accounts for which external IDs have been updated (see {@link #updateCaches()}).  */
+comment|/**  * {@link VersionedMetaData} subclass to update external IDs.  *  *<p>This is a low-level API. Read/write of external IDs should be done through {@link  * com.google.gerrit.server.account.AccountsUpdate} or {@link  * com.google.gerrit.server.account.AccountConfig}.  *  *<p>On load the note map from {@code refs/meta/external-ids} is read, but the external IDs are not  * parsed yet (see {@link #onLoad()}).  *  *<p>After loading the note map callers can access single or all external IDs. Only now the  * requested external IDs are parsed.  *  *<p>After loading the note map callers can stage various external ID updates (insert, upsert,  * delete, replace).  *  *<p>On save the staged external ID updates are performed (see {@link #onSave(CommitBuilder)}).  *  *<p>After committing the external IDs a cache update can be requested which also reindexes the  * accounts for which external IDs have been updated (see {@link #updateCaches()}).  */
 end_comment
 
 begin_class
