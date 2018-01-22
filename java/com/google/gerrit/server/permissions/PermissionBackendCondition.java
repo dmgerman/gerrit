@@ -159,6 +159,33 @@ name|String
 name|toString
 parameter_list|()
 function_decl|;
+annotation|@
+name|Override
+DECL|method|evaluatesTrivially ()
+specifier|public
+name|boolean
+name|evaluatesTrivially
+parameter_list|()
+block|{
+comment|// PermissionBackendCondition needs to contact PermissionBackend so trivial evaluation is not
+comment|// possible.
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|reduce ()
+specifier|public
+name|BooleanCondition
+name|reduce
+parameter_list|()
+block|{
+comment|// No reductions can be made
+return|return
+name|this
+return|;
+block|}
 DECL|class|WithUser
 specifier|public
 specifier|static
