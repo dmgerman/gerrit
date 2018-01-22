@@ -266,6 +266,16 @@ name|BASE_PATH_NAME
 init|=
 literal|"basePath"
 decl_stmt|;
+DECL|field|DEFAULT_SUBMIT_TYPE
+specifier|static
+specifier|final
+name|SubmitType
+name|DEFAULT_SUBMIT_TYPE
+init|=
+name|SubmitType
+operator|.
+name|MERGE_IF_NECESSARY
+decl_stmt|;
 DECL|field|cfg
 specifier|private
 specifier|final
@@ -319,9 +329,7 @@ argument_list|)
 argument_list|,
 name|DEFAULT_SUBMIT_TYPE_NAME
 argument_list|,
-name|SubmitType
-operator|.
-name|MERGE_IF_NECESSARY
+name|DEFAULT_SUBMIT_TYPE
 argument_list|)
 return|;
 block|}
