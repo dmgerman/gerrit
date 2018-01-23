@@ -238,9 +238,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
-operator|.
-name|GroupResource
+name|UserInitiated
 import|;
 end_import
 
@@ -256,7 +254,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|UserInitiated
+name|GroupResource
 import|;
 end_import
 
