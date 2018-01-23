@@ -72,6 +72,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+operator|.
+name|toImmutableSet
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -122,7 +138,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Iterables
+name|Streams
 import|;
 end_import
 
@@ -217,16 +233,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -784,7 +790,7 @@ return|;
 block|}
 DECL|method|getUsernames (CurrentUser user)
 specifier|private
-name|Iterable
+name|ImmutableSet
 argument_list|<
 name|String
 argument_list|>
@@ -802,7 +808,7 @@ name|isIdentifiedUser
 argument_list|()
 condition|)
 block|{
-name|Set
+name|ImmutableSet
 argument_list|<
 name|String
 argument_list|>
@@ -852,11 +858,14 @@ argument_list|)
 return|;
 block|}
 return|return
-name|Iterables
+name|Streams
 operator|.
 name|concat
 argument_list|(
 name|emails
+operator|.
+name|stream
+argument_list|()
 argument_list|,
 name|ImmutableSet
 operator|.
@@ -867,6 +876,15 @@ operator|.
 name|getUserName
 argument_list|()
 argument_list|)
+operator|.
+name|stream
+argument_list|()
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toImmutableSet
+argument_list|()
 argument_list|)
 return|;
 block|}
