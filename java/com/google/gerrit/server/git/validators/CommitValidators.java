@@ -3097,7 +3097,7 @@ literal|"User "
 operator|+
 name|user
 operator|.
-name|getUserName
+name|getLoggableName
 argument_list|()
 operator|+
 literal|" tried to push an invalid project configuration "
