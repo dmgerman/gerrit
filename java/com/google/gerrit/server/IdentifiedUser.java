@@ -1657,7 +1657,7 @@ return|;
 block|}
 DECL|method|getEmailAddresses ()
 specifier|public
-name|Set
+name|ImmutableSet
 argument_list|<
 name|String
 argument_list|>
@@ -1688,7 +1688,12 @@ literal|true
 expr_stmt|;
 block|}
 return|return
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
 name|validEmails
+argument_list|)
 return|;
 block|}
 DECL|method|getName ()
