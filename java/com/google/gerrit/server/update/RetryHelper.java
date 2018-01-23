@@ -432,20 +432,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -461,16 +447,6 @@ operator|.
 name|inject
 operator|.
 name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -505,20 +481,6 @@ operator|.
 name|function
 operator|.
 name|Consumer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
 import|;
 end_import
 
@@ -593,11 +555,14 @@ block|{
 DECL|enumConstant|ACCOUNT_UPDATE
 name|ACCOUNT_UPDATE
 block|,
-DECL|enumConstant|CHANGE_QUERY
-name|CHANGE_QUERY
-block|,
 DECL|enumConstant|CHANGE_UPDATE
 name|CHANGE_UPDATE
+block|,
+DECL|enumConstant|GROUP_UPDATE
+name|GROUP_UPDATE
+block|,
+DECL|enumConstant|INDEX_QUERY
+name|INDEX_QUERY
 block|}
 comment|/**    * Options for retrying a single operation.    *    *<p>This class is similar in function to upstream's {@link RetryerBuilder}, but it exists as its    * own class in Gerrit for several reasons:    *    *<ul>    *<li>Gerrit needs to support defaults for some of the options, such as a default timeout.    *       {@code RetryerBuilder} doesn't support calling the same setter multiple times, so doing    *       this with {@code RetryerBuilder} directly would not be easy.    *<li>Gerrit explicitly does not want callers to have full control over all possible options,    *       so this class exposes a curated subset.    *</ul>    */
 annotation|@
@@ -1050,45 +1015,6 @@ return|return
 name|defaultTimeout
 return|;
 block|}
-DECL|method|execute (ActionType actionType, Action<T> action)
-specifier|public
-parameter_list|<
-name|T
-parameter_list|>
-name|T
-name|execute
-parameter_list|(
-name|ActionType
-name|actionType
-parameter_list|,
-name|Action
-argument_list|<
-name|T
-argument_list|>
-name|action
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|ConfigInvalidException
-throws|,
-name|OrmException
-block|{
-return|return
-name|execute
-argument_list|(
-name|actionType
-argument_list|,
-name|action
-argument_list|,
-name|t
-lambda|->
-name|t
-operator|instanceof
-name|LockFailureException
-argument_list|)
-return|;
-block|}
 DECL|method|execute ( ActionType actionType, Action<T> action, Predicate<Throwable> exceptionPredicate)
 specifier|public
 parameter_list|<
@@ -1113,13 +1039,7 @@ argument_list|>
 name|exceptionPredicate
 parameter_list|)
 throws|throws
-name|IOException
-throws|,
-name|ConfigInvalidException
-throws|,
-name|OrmException
-block|{
-try|try
+name|Exception
 block|{
 return|return
 name|execute
@@ -1130,6 +1050,50 @@ name|action
 argument_list|,
 name|defaults
 argument_list|()
+argument_list|,
+name|exceptionPredicate
+argument_list|)
+return|;
+block|}
+DECL|method|execute ( ActionType actionType, Action<T> action, Options opts, Predicate<Throwable> exceptionPredicate)
+specifier|public
+parameter_list|<
+name|T
+parameter_list|>
+name|T
+name|execute
+parameter_list|(
+name|ActionType
+name|actionType
+parameter_list|,
+name|Action
+argument_list|<
+name|T
+argument_list|>
+name|action
+parameter_list|,
+name|Options
+name|opts
+parameter_list|,
+name|Predicate
+argument_list|<
+name|Throwable
+argument_list|>
+name|exceptionPredicate
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+try|try
+block|{
+return|return
+name|executeWithAttemptAndTimeoutCount
+argument_list|(
+name|actionType
+argument_list|,
+name|action
+argument_list|,
+name|opts
 argument_list|,
 name|exceptionPredicate
 argument_list|)
@@ -1154,36 +1118,14 @@ name|throwIfInstanceOf
 argument_list|(
 name|t
 argument_list|,
-name|IOException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|Throwables
-operator|.
-name|throwIfInstanceOf
-argument_list|(
-name|t
-argument_list|,
-name|ConfigInvalidException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|Throwables
-operator|.
-name|throwIfInstanceOf
-argument_list|(
-name|t
-argument_list|,
-name|OrmException
+name|Exception
 operator|.
 name|class
 argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmException
+name|IllegalStateException
 argument_list|(
 name|t
 argument_list|)
@@ -1256,7 +1198,7 @@ comment|// Either we aren't full-NoteDb, or the underlying ref storage doesn't s
 comment|// transactions. Either way, retrying a partially-failed operation is not idempotent, so
 comment|// don't do it automatically. Let the end user decide whether they want to retry.
 return|return
-name|execute
+name|executeWithTimeoutCount
 argument_list|(
 name|ActionType
 operator|.
@@ -1374,17 +1316,17 @@ end_catch
 
 begin_comment
 unit|}
-comment|/**    * Executes an action with a given retryer.    *    * @param actionType the type of the action    * @param action the action which should be executed and retried on failure    * @param opts options for retrying the action on failure    * @param exceptionPredicate predicate to control on which exception the action should be retried    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
+comment|/**    * Executes an action and records the number of attempts and the timeout as metrics.    *    * @param actionType the type of the action    * @param action the action which should be executed and retried on failure    * @param opts options for retrying the action on failure    * @param exceptionPredicate predicate to control on which exception the action should be retried    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
 end_comment
 
 begin_function
-DECL|method|execute ( ActionType actionType, Action<T> action, Options opts, Predicate<Throwable> exceptionPredicate)
+DECL|method|executeWithAttemptAndTimeoutCount ( ActionType actionType, Action<T> action, Options opts, Predicate<Throwable> exceptionPredicate)
 unit|private
 parameter_list|<
 name|T
 parameter_list|>
 name|T
-name|execute
+name|executeWithAttemptAndTimeoutCount
 parameter_list|(
 name|ActionType
 name|actionType
@@ -1437,7 +1379,7 @@ name|listener
 argument_list|)
 expr_stmt|;
 return|return
-name|execute
+name|executeWithTimeoutCount
 argument_list|(
 name|actionType
 argument_list|,
@@ -1471,17 +1413,17 @@ block|}
 end_function
 
 begin_comment
-comment|/**    * Executes an action with a given retryer.    *    * @param actionType the type of the action    * @param action the action which should be executed and retried on failure    * @param retryer the retryer    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
+comment|/**    * Executes an action and records the timeout as metric.    *    * @param actionType the type of the action    * @param action the action which should be executed and retried on failure    * @param retryer the retryer    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
 end_comment
 
 begin_function
-DECL|method|execute (ActionType actionType, Action<T> action, Retryer<T> retryer)
+DECL|method|executeWithTimeoutCount (ActionType actionType, Action<T> action, Retryer<T> retryer)
 specifier|private
 parameter_list|<
 name|T
 parameter_list|>
 name|T
-name|execute
+name|executeWithTimeoutCount
 parameter_list|(
 name|ActionType
 name|actionType

@@ -348,12 +348,16 @@ name|Statement
 import|;
 end_import
 
+begin_comment
+comment|/**  * An in-memory test environment for integration tests.  *  *<p>This test environment emulates the internals of a Gerrit server without starting a Gerrit  * site. ReviewDb as well as NoteDb are represented by in-memory representations.  *  *<p>Each test is executed with a fresh and clean test environment. Hence, modifications applied in  * one test don't carry over to subsequent ones.  */
+end_comment
+
 begin_class
-DECL|class|SchemaUpgradeTestEnvironment
+DECL|class|InMemoryTestEnvironment
 specifier|public
 specifier|final
 class|class
-name|SchemaUpgradeTestEnvironment
+name|InMemoryTestEnvironment
 implements|implements
 name|MethodRule
 block|{
@@ -425,9 +429,9 @@ name|LifecycleManager
 name|lifecycle
 decl_stmt|;
 comment|/** Create a test environment using an empty base config. */
-DECL|method|SchemaUpgradeTestEnvironment ()
+DECL|method|InMemoryTestEnvironment ()
 specifier|public
-name|SchemaUpgradeTestEnvironment
+name|InMemoryTestEnvironment
 parameter_list|()
 block|{
 name|this
@@ -439,9 +443,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Create a test environment using the specified base config.    *    *<p>The config is passed as a provider so it can be lazily initialized after this rule is    * instantiated, for example using {@link ConfigSuite}.    *    * @param configProvider possibly-lazy provider for the base config.    */
-DECL|method|SchemaUpgradeTestEnvironment (Provider<Config> configProvider)
+DECL|method|InMemoryTestEnvironment (Provider<Config> configProvider)
 specifier|public
-name|SchemaUpgradeTestEnvironment
+name|InMemoryTestEnvironment
 parameter_list|(
 name|Provider
 argument_list|<
