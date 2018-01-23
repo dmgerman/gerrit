@@ -4787,10 +4787,10 @@ name|format
 argument_list|(
 literal|"User: %s"
 argument_list|,
-name|displayName
-argument_list|(
 name|user
-argument_list|)
+operator|.
+name|getLoggableName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6078,42 +6078,6 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
-return|;
-block|}
-DECL|method|displayName (IdentifiedUser user)
-specifier|private
-specifier|static
-name|String
-name|displayName
-parameter_list|(
-name|IdentifiedUser
-name|user
-parameter_list|)
-block|{
-return|return
-name|user
-operator|.
-name|getUserName
-argument_list|()
-operator|.
-name|orElse
-argument_list|(
-name|firstNonNull
-argument_list|(
-name|user
-operator|.
-name|getAccount
-argument_list|()
-operator|.
-name|getPreferredEmail
-argument_list|()
-argument_list|,
-name|user
-operator|.
-name|getLoggableName
-argument_list|()
-argument_list|)
-argument_list|)
 return|;
 block|}
 DECL|method|parseCommands (Collection<ReceiveCommand> commands)

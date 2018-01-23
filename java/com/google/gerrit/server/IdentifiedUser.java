@@ -65,6 +65,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1540,6 +1556,14 @@ name|orElseGet
 argument_list|(
 parameter_list|()
 lambda|->
+name|firstNonNull
+argument_list|(
+name|getAccount
+argument_list|()
+operator|.
+name|getPreferredEmail
+argument_list|()
+argument_list|,
 literal|"a/"
 operator|+
 name|getAccountId
@@ -1547,6 +1571,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
