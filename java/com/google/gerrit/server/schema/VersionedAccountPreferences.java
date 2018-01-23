@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.account
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
+name|schema
 package|;
 end_package
 
@@ -181,19 +181,18 @@ import|;
 end_import
 
 begin_comment
-comment|/** Preferences for user accounts. */
+comment|/** Preferences for user accounts during schema migrations. */
 end_comment
 
 begin_class
 DECL|class|VersionedAccountPreferences
-specifier|public
 class|class
 name|VersionedAccountPreferences
 extends|extends
 name|VersionedMetaData
 block|{
 DECL|field|PREFERENCES
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -202,7 +201,6 @@ init|=
 literal|"preferences.config"
 decl_stmt|;
 DECL|method|forUser (Account.Id id)
-specifier|public
 specifier|static
 name|VersionedAccountPreferences
 name|forUser
@@ -223,23 +221,6 @@ name|refsUsers
 argument_list|(
 name|id
 argument_list|)
-argument_list|)
-return|;
-block|}
-DECL|method|forDefault ()
-specifier|public
-specifier|static
-name|VersionedAccountPreferences
-name|forDefault
-parameter_list|()
-block|{
-return|return
-operator|new
-name|VersionedAccountPreferences
-argument_list|(
-name|RefNames
-operator|.
-name|REFS_USERS_DEFAULT
 argument_list|)
 return|;
 block|}
@@ -269,24 +250,6 @@ operator|=
 name|ref
 expr_stmt|;
 block|}
-DECL|method|isDefaults ()
-specifier|public
-name|boolean
-name|isDefaults
-parameter_list|()
-block|{
-return|return
-name|RefNames
-operator|.
-name|REFS_USERS_DEFAULT
-operator|.
-name|equals
-argument_list|(
-name|getRefName
-argument_list|()
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|getRefName ()
@@ -300,7 +263,6 @@ name|ref
 return|;
 block|}
 DECL|method|getConfig ()
-specifier|public
 name|Config
 name|getConfig
 parameter_list|()
