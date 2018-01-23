@@ -1014,6 +1014,16 @@ argument_list|(
 literal|"  git clone ssh://"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|user
+operator|.
+name|getUserName
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|msg
 operator|.
 name|append
@@ -1031,6 +1041,7 @@ argument_list|(
 literal|"@"
 argument_list|)
 expr_stmt|;
+block|}
 name|msg
 operator|.
 name|append
