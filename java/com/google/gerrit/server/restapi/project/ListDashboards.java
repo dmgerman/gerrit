@@ -963,6 +963,11 @@ name|RefPermission
 operator|.
 name|READ
 argument_list|)
+operator|&&
+name|state
+operator|.
+name|statePermitsRead
+argument_list|()
 condition|)
 block|{
 name|all

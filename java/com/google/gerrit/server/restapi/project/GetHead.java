@@ -442,6 +442,14 @@ name|IOException
 throws|,
 name|PermissionBackendException
 block|{
+name|rsrc
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|statePermitsRead
+argument_list|()
+expr_stmt|;
 try|try
 init|(
 name|Repository

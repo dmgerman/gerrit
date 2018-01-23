@@ -542,6 +542,14 @@ operator|.
 name|ADMINISTRATE_SERVER
 argument_list|)
 expr_stmt|;
+name|rsrc
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|checkStatePermitsRead
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|input

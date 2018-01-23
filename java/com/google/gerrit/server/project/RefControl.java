@@ -2680,15 +2680,6 @@ case|:
 return|return
 name|isVisible
 argument_list|()
-operator|&&
-name|getProjectControl
-argument_list|()
-operator|.
-name|getProjectState
-argument_list|()
-operator|.
-name|statePermitsRead
-argument_list|()
 return|;
 case|case
 name|CREATE
