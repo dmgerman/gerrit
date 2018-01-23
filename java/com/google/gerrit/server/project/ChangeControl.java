@@ -968,18 +968,6 @@ name|refControl
 operator|.
 name|isVisible
 argument_list|()
-operator|&&
-name|getProjectControl
-argument_list|()
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getState
-argument_list|()
-operator|.
-name|permitsRead
-argument_list|()
 return|;
 block|}
 comment|/** Can this user abandon this change? */

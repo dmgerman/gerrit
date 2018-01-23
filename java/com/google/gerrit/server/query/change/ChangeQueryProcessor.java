@@ -382,6 +382,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -509,6 +525,12 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|projectCache
+specifier|private
+specifier|final
+name|ProjectCache
+name|projectCache
+decl_stmt|;
 static|static
 block|{
 comment|// It is assumed that basic rewrites do not touch visibleto predicates.
@@ -532,7 +554,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend)
+DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend, ProjectCache projectCache)
 name|ChangeQueryProcessor
 parameter_list|(
 name|Provider
@@ -577,6 +599,9 @@ name|attributeFactories
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|ProjectCache
+name|projectCache
 parameter_list|)
 block|{
 name|super
@@ -640,6 +665,12 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
+name|projectCache
+operator|=
+name|projectCache
 expr_stmt|;
 block|}
 annotation|@
@@ -873,6 +904,8 @@ name|get
 argument_list|()
 argument_list|,
 name|permissionBackend
+argument_list|,
+name|projectCache
 argument_list|)
 argument_list|,
 name|start

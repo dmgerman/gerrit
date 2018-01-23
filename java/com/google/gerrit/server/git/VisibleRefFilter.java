@@ -2343,6 +2343,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|projectState
+operator|.
+name|statePermitsRead
+argument_list|()
+operator|&&
 name|perm
 operator|.
 name|indexedChange
@@ -2594,6 +2599,11 @@ try|try
 block|{
 if|if
 condition|(
+name|projectState
+operator|.
+name|statePermitsRead
+argument_list|()
+operator|&&
 name|perm
 operator|.
 name|change

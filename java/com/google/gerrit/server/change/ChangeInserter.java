@@ -2997,6 +2997,11 @@ name|ChangePermission
 operator|.
 name|READ
 argument_list|)
+operator|&&
+name|projectState
+operator|.
+name|statePermitsRead
+argument_list|()
 return|;
 block|}
 catch|catch

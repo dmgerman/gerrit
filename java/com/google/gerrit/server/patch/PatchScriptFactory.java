@@ -500,6 +500,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -867,6 +883,12 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|projectCache
+specifier|private
+specifier|final
+name|ProjectCache
+name|projectCache
+decl_stmt|;
 DECL|field|edit
 specifier|private
 name|Optional
@@ -927,7 +949,7 @@ name|comments
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PatchScriptFactory ( GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, CommentsUtil commentsUtil, ChangeEditUtil editReader, Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, @Assisted ChangeNotes notes, @Assisted String fileName, @Assisted(R) @Nullable PatchSet.Id patchSetA, @Assisted(R) PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
+DECL|method|PatchScriptFactory ( GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, CommentsUtil commentsUtil, ChangeEditUtil editReader, Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted String fileName, @Assisted(R) @Nullable PatchSet.Id patchSetA, @Assisted(R) PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
 name|PatchScriptFactory
 parameter_list|(
 name|GitRepositoryManager
@@ -962,6 +984,9 @@ name|userProvider
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|ProjectCache
+name|projectCache
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1063,6 +1088,12 @@ name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
+name|projectCache
+operator|=
+name|projectCache
+expr_stmt|;
+name|this
+operator|.
 name|fileName
 operator|=
 name|fileName
@@ -1102,7 +1133,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PatchScriptFactory ( GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, CommentsUtil commentsUtil, ChangeEditUtil editReader, Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, @Assisted ChangeNotes notes, @Assisted String fileName, @Assisted int parentNum, @Assisted PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
+DECL|method|PatchScriptFactory ( GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, CommentsUtil commentsUtil, ChangeEditUtil editReader, Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted String fileName, @Assisted int parentNum, @Assisted PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
 name|PatchScriptFactory
 parameter_list|(
 name|GitRepositoryManager
@@ -1137,6 +1168,9 @@ name|userProvider
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|ProjectCache
+name|projectCache
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1225,6 +1259,12 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
+name|projectCache
+operator|=
+name|projectCache
 expr_stmt|;
 name|this
 operator|.
@@ -1438,6 +1478,31 @@ name|changeId
 argument_list|)
 throw|;
 block|}
+block|}
+if|if
+condition|(
+operator|!
+name|projectCache
+operator|.
+name|checkedGet
+argument_list|(
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|)
+operator|.
+name|statePermitsRead
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|NoSuchChangeException
+argument_list|(
+name|changeId
+argument_list|)
+throw|;
 block|}
 try|try
 init|(

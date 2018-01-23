@@ -598,6 +598,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|project
+operator|.
+name|ProjectCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|util
 operator|.
 name|LabelVote
@@ -639,6 +655,16 @@ operator|.
 name|inject
 operator|.
 name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -993,11 +1019,17 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|projectCache
+specifier|private
+specifier|final
+name|ProjectCache
+name|projectCache
+decl_stmt|;
 annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|ApprovalsUtil ( NotesMigration migration, IdentifiedUser.GenericFactory userFactory, ApprovalCopier copier, PermissionBackend permissionBackend)
+DECL|method|ApprovalsUtil ( NotesMigration migration, IdentifiedUser.GenericFactory userFactory, ApprovalCopier copier, PermissionBackend permissionBackend, ProjectCache projectCache)
 specifier|public
 name|ApprovalsUtil
 parameter_list|(
@@ -1014,6 +1046,9 @@ name|copier
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|ProjectCache
+name|projectCache
 parameter_list|)
 block|{
 name|this
@@ -1039,6 +1074,12 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
+name|projectCache
+operator|=
+name|projectCache
 expr_stmt|;
 block|}
 comment|/**    * Get all reviewers for a change.    *    * @param db review database.    * @param notes change notes.    * @return reviewers for the change.    * @throws OrmException if reviewers for the change could not be read.    */
@@ -1747,6 +1788,19 @@ name|accountId
 argument_list|)
 decl_stmt|;
 return|return
+name|projectCache
+operator|.
+name|checkedGet
+argument_list|(
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|)
+operator|.
+name|statePermitsRead
+argument_list|()
+operator|&&
 name|permissionBackend
 operator|.
 name|user
@@ -1774,6 +1828,8 @@ return|;
 block|}
 catch|catch
 parameter_list|(
+name|IOException
+decl||
 name|PermissionBackendException
 name|e
 parameter_list|)

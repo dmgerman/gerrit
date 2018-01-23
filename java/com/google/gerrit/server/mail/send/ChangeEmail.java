@@ -2530,6 +2530,11 @@ throws|,
 name|PermissionBackendException
 block|{
 return|return
+name|projectState
+operator|.
+name|statePermitsRead
+argument_list|()
+operator|&&
 name|args
 operator|.
 name|permissionBackend
