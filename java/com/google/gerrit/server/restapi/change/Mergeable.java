@@ -526,6 +526,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1472,6 +1484,17 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+name|Future
+argument_list|<
+name|?
+argument_list|>
+name|possiblyIgnoredError
+init|=
 name|indexer
 operator|.
 name|indexAsync
@@ -1486,7 +1509,7 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 block|}
 return|return
 name|mergeable
