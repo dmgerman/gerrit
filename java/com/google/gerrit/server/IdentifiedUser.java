@@ -1519,6 +1519,31 @@ literal|null
 argument_list|)
 return|;
 block|}
+comment|/** @return unique name of the user for logging, never {@code null} */
+DECL|method|getLoggableName ()
+specifier|public
+name|String
+name|getLoggableName
+parameter_list|()
+block|{
+return|return
+name|getUserName
+argument_list|()
+operator|!=
+literal|null
+condition|?
+name|getUserName
+argument_list|()
+else|:
+literal|"a/"
+operator|+
+name|getAccountId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 DECL|method|getAccount ()
 specifier|public
 name|Account
