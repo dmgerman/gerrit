@@ -162,7 +162,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
+name|Change
 import|;
 end_import
 
@@ -174,11 +174,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|Change
+name|AccountState
 import|;
 end_import
 
@@ -303,7 +303,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (Change change, Account account, Account oldAssignee, Timestamp when)
+DECL|method|fire ( Change change, AccountState accountState, AccountState oldAssignee, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -311,10 +311,10 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|,
-name|Account
-name|account
+name|AccountState
+name|accountState
 parameter_list|,
-name|Account
+name|AccountState
 name|oldAssignee
 parameter_list|,
 name|Timestamp
@@ -354,7 +354,7 @@ name|util
 operator|.
 name|accountInfo
 argument_list|(
-name|account
+name|accountState
 argument_list|)
 argument_list|,
 name|util

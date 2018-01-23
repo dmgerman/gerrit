@@ -1330,12 +1330,6 @@ condition|(
 name|name
 operator|!=
 literal|null
-operator|&&
-operator|!
-name|name
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
 block|{
 name|userName

@@ -3718,12 +3718,6 @@ condition|(
 name|user
 operator|!=
 literal|null
-operator|&&
-operator|!
-name|user
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
 block|{
 name|remoteUser

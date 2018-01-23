@@ -376,6 +376,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AccountState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|NotifyUtil
@@ -741,11 +757,11 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Account reviewerAccount, DeleteReviewerInput input)
+DECL|method|create (AccountState reviewerAccount, DeleteReviewerInput input)
 name|DeleteReviewerOp
 name|create
 parameter_list|(
-name|Account
+name|AccountState
 name|reviewerAccount
 parameter_list|,
 name|DeleteReviewerInput
@@ -829,7 +845,7 @@ decl_stmt|;
 DECL|field|reviewer
 specifier|private
 specifier|final
-name|Account
+name|AccountState
 name|reviewer
 decl_stmt|;
 DECL|field|input
@@ -880,7 +896,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteReviewerOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, IdentifiedUser.GenericFactory userFactory, ReviewerDeleted reviewerDeleted, Provider<IdentifiedUser> user, DeleteReviewerSender.Factory deleteReviewerSenderFactory, NotesMigration migration, NotifyUtil notifyUtil, RemoveReviewerControl removeReviewerControl, ProjectCache projectCache, @Assisted Account reviewerAccount, @Assisted DeleteReviewerInput input)
+DECL|method|DeleteReviewerOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, IdentifiedUser.GenericFactory userFactory, ReviewerDeleted reviewerDeleted, Provider<IdentifiedUser> user, DeleteReviewerSender.Factory deleteReviewerSenderFactory, NotesMigration migration, NotifyUtil notifyUtil, RemoveReviewerControl removeReviewerControl, ProjectCache projectCache, @Assisted AccountState reviewerAccount, @Assisted DeleteReviewerInput input)
 name|DeleteReviewerOp
 parameter_list|(
 name|ApprovalsUtil
@@ -925,7 +941,7 @@ name|projectCache
 parameter_list|,
 annotation|@
 name|Assisted
-name|Account
+name|AccountState
 name|reviewerAccount
 parameter_list|,
 annotation|@
@@ -1040,6 +1056,9 @@ name|Id
 name|reviewerId
 init|=
 name|reviewer
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -1187,6 +1206,9 @@ argument_list|(
 literal|"Removed reviewer "
 operator|+
 name|reviewer
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getFullName
 argument_list|()
@@ -1800,6 +1822,9 @@ name|equals
 argument_list|(
 name|reviewer
 operator|.
+name|getAccount
+argument_list|()
+operator|.
 name|getId
 argument_list|()
 argument_list|)
@@ -1841,6 +1866,9 @@ operator|.
 name|singleton
 argument_list|(
 name|reviewer
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getId
 argument_list|()

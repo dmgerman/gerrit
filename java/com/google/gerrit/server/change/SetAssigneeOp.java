@@ -952,7 +952,7 @@ literal|null
 condition|?
 name|oldAssignee
 operator|.
-name|getAccount
+name|state
 argument_list|()
 else|:
 literal|null

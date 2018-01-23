@@ -1495,9 +1495,11 @@ return|return
 name|accountId
 return|;
 block|}
-comment|/** @return the user's user name; null if one has not been selected/assigned. */
+comment|/**    * @return the user's user name; null if one has not been selected/assigned or if the user name is    *     empty.    */
 annotation|@
 name|Override
+annotation|@
+name|Nullable
 DECL|method|getUserName ()
 specifier|public
 name|String
@@ -1510,6 +1512,11 @@ argument_list|()
 operator|.
 name|getUserName
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 return|;
 block|}
 DECL|method|getAccount ()
@@ -1937,11 +1944,6 @@ condition|(
 name|user
 operator|==
 literal|null
-operator|||
-name|user
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
 block|{
 name|user

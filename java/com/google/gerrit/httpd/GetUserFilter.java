@@ -417,15 +417,6 @@ name|getUserName
 argument_list|()
 operator|!=
 literal|null
-operator|&&
-operator|!
-name|who
-operator|.
-name|getUserName
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
 block|{
 name|req

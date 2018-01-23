@@ -1444,11 +1444,16 @@ name|userName
 operator|=
 name|u
 operator|.
-name|getAccount
+name|state
 argument_list|()
 operator|.
 name|getUserName
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 name|accountId
 operator|=

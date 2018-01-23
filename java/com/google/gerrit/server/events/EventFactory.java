@@ -414,6 +414,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|AccountState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|Emails
 import|;
 end_import
@@ -1883,8 +1899,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Account
-name|a
+name|AccountState
+name|accountState
 init|=
 name|accountCache
 operator|.
@@ -1894,9 +1910,6 @@ name|lbl
 operator|.
 name|appliedBy
 argument_list|)
-operator|.
-name|getAccount
-argument_list|()
 decl_stmt|;
 name|la
 operator|.
@@ -1904,7 +1917,7 @@ name|by
 operator|=
 name|asAccountAttribute
 argument_list|(
-name|a
+name|accountState
 argument_list|)
 expr_stmt|;
 block|}
@@ -3916,25 +3929,22 @@ name|get
 argument_list|(
 name|id
 argument_list|)
-operator|.
-name|getAccount
-argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Create an AuthorAttribute for the given account suitable for serialization to JSON.    *    * @param account    * @return object suitable for serialization to JSON    */
-DECL|method|asAccountAttribute (Account account)
+comment|/**    * Create an AuthorAttribute for the given account suitable for serialization to JSON.    *    * @param accountState the account state    * @return object suitable for serialization to JSON    */
+DECL|method|asAccountAttribute (AccountState accountState)
 specifier|public
 name|AccountAttribute
 name|asAccountAttribute
 parameter_list|(
-name|Account
-name|account
+name|AccountState
+name|accountState
 parameter_list|)
 block|{
 if|if
 condition|(
-name|account
+name|accountState
 operator|==
 literal|null
 condition|)
@@ -3954,7 +3964,10 @@ name|who
 operator|.
 name|name
 operator|=
-name|account
+name|accountState
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getFullName
 argument_list|()
@@ -3963,7 +3976,10 @@ name|who
 operator|.
 name|email
 operator|=
-name|account
+name|accountState
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getPreferredEmail
 argument_list|()
@@ -3972,10 +3988,15 @@ name|who
 operator|.
 name|username
 operator|=
-name|account
+name|accountState
 operator|.
 name|getUserName
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 return|return
 name|who

@@ -1128,7 +1128,7 @@ literal|null
 else|:
 name|author
 operator|.
-name|getAccount
+name|state
 argument_list|()
 argument_list|)
 expr_stmt|;

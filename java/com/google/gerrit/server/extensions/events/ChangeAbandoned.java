@@ -178,22 +178,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Change
 import|;
 end_import
@@ -225,6 +209,22 @@ operator|.
 name|server
 operator|.
 name|GpgException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|AccountState
 import|;
 end_import
 
@@ -407,7 +407,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire ( Change change, PatchSet ps, Account abandoner, String reason, Timestamp when, NotifyHandling notifyHandling)
+DECL|method|fire ( Change change, PatchSet ps, AccountState abandoner, String reason, Timestamp when, NotifyHandling notifyHandling)
 specifier|public
 name|void
 name|fire
@@ -418,7 +418,7 @@ parameter_list|,
 name|PatchSet
 name|ps
 parameter_list|,
-name|Account
+name|AccountState
 name|abandoner
 parameter_list|,
 name|String

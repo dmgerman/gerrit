@@ -124,11 +124,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|Account
+name|AccountState
 import|;
 end_import
 
@@ -193,13 +193,13 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (Account account, String agreementName)
+DECL|method|fire (AccountState accountState, String agreementName)
 specifier|public
 name|void
 name|fire
 parameter_list|(
-name|Account
-name|account
+name|AccountState
+name|accountState
 parameter_list|,
 name|String
 name|agreementName
@@ -229,7 +229,7 @@ name|util
 operator|.
 name|accountInfo
 argument_list|(
-name|account
+name|accountState
 argument_list|)
 argument_list|,
 name|agreementName
