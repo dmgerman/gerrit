@@ -263,6 +263,7 @@ name|void
 name|defaultSubmitTypeWhenNotConfigured
 parameter_list|()
 block|{
+comment|// Check expected value explicitly rather than depending on constant.
 name|assertThat
 argument_list|(
 name|repoCfg
@@ -281,7 +282,7 @@ name|isEqualTo
 argument_list|(
 name|SubmitType
 operator|.
-name|MERGE_IF_NECESSARY
+name|INHERIT
 argument_list|)
 expr_stmt|;
 block|}
@@ -447,9 +448,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|SubmitType
+name|RepositoryConfig
 operator|.
-name|MERGE_IF_NECESSARY
+name|DEFAULT_SUBMIT_TYPE
 argument_list|)
 expr_stmt|;
 name|assertThat
