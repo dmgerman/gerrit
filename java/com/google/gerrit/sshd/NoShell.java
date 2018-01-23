@@ -122,6 +122,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AnonymousCowardName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|CanonicalWebUrl
 import|;
 end_import
@@ -750,9 +766,15 @@ name|String
 argument_list|>
 name|urlProvider
 decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|private
+specifier|final
+name|String
+name|anonymousCowardName
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MessageFactory ( IdentifiedUser user, SshInfo sshInfo, @CanonicalWebUrl Provider<String> urlProvider)
+DECL|method|MessageFactory ( IdentifiedUser user, SshInfo sshInfo, @CanonicalWebUrl Provider<String> urlProvider, @AnonymousCowardName String anonymousCowardName)
 name|MessageFactory
 parameter_list|(
 name|IdentifiedUser
@@ -768,6 +790,11 @@ argument_list|<
 name|String
 argument_list|>
 name|urlProvider
+parameter_list|,
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|)
 block|{
 name|this
@@ -787,6 +814,12 @@ operator|.
 name|urlProvider
 operator|=
 name|urlProvider
+expr_stmt|;
+name|this
+operator|.
+name|anonymousCowardName
+operator|=
+name|anonymousCowardName
 expr_stmt|;
 block|}
 DECL|method|getMessage ()
@@ -856,6 +889,15 @@ name|user
 operator|.
 name|getUserName
 argument_list|()
+operator|!=
+literal|null
+condition|?
+name|user
+operator|.
+name|getUserName
+argument_list|()
+else|:
+name|anonymousCowardName
 expr_stmt|;
 block|}
 name|msg
