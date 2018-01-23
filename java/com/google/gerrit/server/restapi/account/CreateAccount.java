@@ -822,13 +822,14 @@ specifier|final
 name|SshKeyCache
 name|sshKeyCache
 decl_stmt|;
-DECL|field|accountsUpdate
+DECL|field|accountsUpdateProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|AccountsUpdate
-operator|.
-name|User
-name|accountsUpdate
+argument_list|>
+name|accountsUpdateProvider
 decl_stmt|;
 DECL|field|infoLoader
 specifier|private
@@ -870,7 +871,7 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount ( ReviewDb db, Sequences seq, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountsUpdate.User accountsUpdate, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator, @Assisted String username)
+DECL|method|CreateAccount ( ReviewDb db, Sequences seq, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, @UserInitiated Provider<AccountsUpdate> accountsUpdateProvider, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator, @Assisted String username)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
@@ -890,10 +891,13 @@ parameter_list|,
 name|SshKeyCache
 name|sshKeyCache
 parameter_list|,
+annotation|@
+name|UserInitiated
+name|Provider
+argument_list|<
 name|AccountsUpdate
-operator|.
-name|User
-name|accountsUpdate
+argument_list|>
+name|accountsUpdateProvider
 parameter_list|,
 name|AccountLoader
 operator|.
@@ -955,9 +959,9 @@ name|sshKeyCache
 expr_stmt|;
 name|this
 operator|.
-name|accountsUpdate
+name|accountsUpdateProvider
 operator|=
-name|accountsUpdate
+name|accountsUpdateProvider
 expr_stmt|;
 name|this
 operator|.
@@ -1248,9 +1252,9 @@ expr_stmt|;
 block|}
 try|try
 block|{
-name|accountsUpdate
+name|accountsUpdateProvider
 operator|.
-name|create
+name|get
 argument_list|()
 operator|.
 name|insert

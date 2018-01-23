@@ -919,10 +919,13 @@ decl_stmt|;
 DECL|field|accountsUpdate
 annotation|@
 name|Inject
+annotation|@
+name|ServerInitiated
 specifier|protected
+name|Provider
+argument_list|<
 name|AccountsUpdate
-operator|.
-name|Server
+argument_list|>
 name|accountsUpdate
 decl_stmt|;
 DECL|field|accountCache
@@ -2906,7 +2909,7 @@ expr_stmt|;
 block|}
 name|accountsUpdate
 operator|.
-name|create
+name|get
 argument_list|()
 operator|.
 name|update

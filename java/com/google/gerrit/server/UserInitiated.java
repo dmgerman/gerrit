@@ -157,7 +157,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A marker for database modifications which are directly related to a user request (e.g. happen  * inside of a request context). Those modifications will be attributed to the user by using the  * user's identity as author and committer for all related NoteDb commits.  */
+comment|/**  * A marker for database modifications which are directly related to a user request (e.g. happen  * inside of a request context). Those modifications will be attributed to the user by using the  * user's identity as author for all related NoteDb commits.  */
 end_comment
 
 begin_annotation_defn
