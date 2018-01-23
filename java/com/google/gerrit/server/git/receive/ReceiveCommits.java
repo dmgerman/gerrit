@@ -1396,6 +1396,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|CanonicalWebUrl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|PluginConfig
 import|;
 end_import
@@ -3589,6 +3605,12 @@ specifier|final
 name|TagCache
 name|tagCache
 decl_stmt|;
+DECL|field|canonicalWebUrl
+specifier|private
+specifier|final
+name|String
+name|canonicalWebUrl
+decl_stmt|;
 comment|// Assisted injected fields.
 DECL|field|allRefsWatcher
 specifier|private
@@ -3819,7 +3841,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, AccountsUpdate.Server accountsUpdate, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, AccountsUpdate.Server accountsUpdate, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -3966,6 +3988,13 @@ name|subOpFactory
 parameter_list|,
 name|TagCache
 name|tagCache
+parameter_list|,
+annotation|@
+name|CanonicalWebUrl
+annotation|@
+name|Nullable
+name|String
+name|canonicalWebUrl
 parameter_list|,
 annotation|@
 name|Assisted
@@ -4319,6 +4348,12 @@ operator|.
 name|getRevWalk
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|canonicalWebUrl
+operator|=
+name|canonicalWebUrl
 expr_stmt|;
 comment|// Collections populated during processing.
 name|actualCommands
@@ -17156,22 +17191,25 @@ argument_list|)
 expr_stmt|;
 name|addMessage
 argument_list|(
-literal|"Cannot push more than "
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Cannot push more than %d commits to %s without %s option "
 operator|+
+literal|"(see %sDocumentation/user-upload.html#skip_validation for details)"
+argument_list|,
 name|limit
-operator|+
-literal|" commits to "
-operator|+
+argument_list|,
 name|branch
 operator|.
 name|get
 argument_list|()
-operator|+
-literal|" without "
-operator|+
+argument_list|,
 name|PUSH_OPTION_SKIP_VALIDATION
-operator|+
-literal|" option"
+argument_list|,
+name|canonicalWebUrl
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|reject
