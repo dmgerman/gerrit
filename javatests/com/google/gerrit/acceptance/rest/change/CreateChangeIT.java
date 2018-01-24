@@ -2917,6 +2917,9 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
+name|resetCurrentApiUser
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|newMergeChangeInput (String targetBranch, String sourceRef, String strategy)
 specifier|private
