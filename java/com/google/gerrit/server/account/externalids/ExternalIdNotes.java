@@ -2997,6 +2997,32 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|updateCaches
+argument_list|(
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Updates the caches (external ID cache, account cache) and reindexes the accounts for which    * external IDs were modified.    *    *<p>Must only be called after committing changes.    *    *<p>No-op if this instance was created by {@link #loadNoCacheUpdate(Repository)}.    *    *<p>No eviction from account cache if this instance was created by {@link FactoryNoReindex}.    *    * @param accountsToSkip set of accounts that should not be evicted from the account cache, in    *     this case the caller must take care to evict them otherwise    */
+DECL|method|updateCaches (Collection<Account.Id> accountsToSkip)
+specifier|public
+name|void
+name|updateCaches
+parameter_list|(
+name|Collection
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountsToSkip
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 name|checkState
 argument_list|(
 name|oldRev
@@ -3095,6 +3121,19 @@ operator|::
 name|accountId
 argument_list|)
 operator|.
+name|filter
+argument_list|(
+name|i
+lambda|->
+operator|!
+name|accountsToSkip
+operator|.
+name|contains
+argument_list|(
+name|i
+argument_list|)
+argument_list|)
+operator|.
 name|collect
 argument_list|(
 name|toSet
@@ -3140,13 +3179,16 @@ block|}
 name|cacheUpdates
 operator|.
 name|clear
-argument_list|()
-expr_stmt|;
+parameter_list|()
+constructor_decl|;
 name|oldRev
 operator|=
 literal|null
 expr_stmt|;
 block|}
+end_class
+
+begin_function
 annotation|@
 name|Override
 DECL|method|onSave (CommitBuilder commit)
@@ -3363,7 +3405,13 @@ literal|true
 return|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**    * Checks that all specified external IDs belong to the same account.    *    * @return the ID of the account to which all specified external IDs belong.    */
+end_comment
+
+begin_function
 DECL|method|checkSameAccount (Iterable<ExternalId> extIds)
 specifier|private
 specifier|static
@@ -3388,7 +3436,13 @@ literal|null
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Checks that all specified external IDs belong to specified account. If no account is specified    * it is checked that all specified external IDs belong to the same account.    *    * @return the ID of the account to which all specified external IDs belong.    */
+end_comment
+
+begin_function
 DECL|method|checkSameAccount ( Iterable<ExternalId> extIds, @Nullable Account.Id accountId)
 specifier|public
 specifier|static
@@ -3476,7 +3530,13 @@ return|return
 name|accountId
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Insert or updates an new external ID and sets it in the note map.    *    *<p>If the external ID already exists it is overwritten.    */
+end_comment
+
+begin_function
 DECL|method|upsert ( RevWalk rw, ObjectInserter ins, NoteMap noteMap, Set<String> footers, ExternalId extId)
 specifier|private
 specifier|static
@@ -3690,7 +3750,13 @@ return|return
 name|newExtId
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Removes an external ID from the note map.    *    * @throws IllegalStateException is thrown if there is an existing external ID that has the same    *     key, but otherwise doesn't match the specified external ID.    */
+end_comment
+
+begin_function
 DECL|method|remove ( RevWalk rw, NoteMap noteMap, Set<String> footers, ExternalId extId)
 specifier|private
 specifier|static
@@ -3821,7 +3887,13 @@ return|return
 name|actualExtId
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Removes an external ID from the note map by external ID key.    *    * @throws IllegalStateException is thrown if an expected account ID is provided and an external    *     ID with the specified key exists, but belongs to another account.    * @return the external ID that was removed, {@code null} if no external ID with the specified key    *     exists    */
+end_comment
+
+begin_function
 DECL|method|remove ( RevWalk rw, NoteMap noteMap, Set<String> footers, ExternalId.Key extIdKey, Account.Id expectedAccountId)
 specifier|private
 specifier|static
@@ -3977,6 +4049,9 @@ return|return
 name|extId
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|addFooters (Set<String> footers, ExternalId extId)
 specifier|private
 specifier|static
@@ -4032,6 +4107,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|checkExternalIdsDontExist (Collection<ExternalId> extIds)
 specifier|private
 name|void
@@ -4061,6 +4139,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|checkExternalIdKeysDontExist ( Collection<ExternalId.Key> extIdKeysToAdd, Collection<ExternalId.Key> extIdKeysToDelete)
 specifier|private
 name|void
@@ -4115,6 +4196,9 @@ name|newKeys
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|checkExternalIdKeysDontExist (Collection<ExternalId.Key> extIdKeys)
 specifier|private
 name|void
@@ -4166,6 +4250,9 @@ throw|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|checkLoaded ()
 specifier|private
 name|void
@@ -4182,6 +4269,9 @@ literal|"External IDs not loaded yet"
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_interface
 annotation|@
 name|FunctionalInterface
 DECL|interface|NoteMapUpdate
@@ -4213,6 +4303,9 @@ throws|,
 name|DuplicateExternalIdKeyException
 function_decl|;
 block|}
+end_interface
+
+begin_interface
 annotation|@
 name|FunctionalInterface
 DECL|interface|CacheUpdate
@@ -4231,6 +4324,9 @@ throws|throws
 name|IOException
 function_decl|;
 block|}
+end_interface
+
+begin_class
 DECL|class|ExternalIdCacheUpdates
 specifier|private
 specifier|static
@@ -4350,8 +4446,8 @@ argument_list|)
 return|;
 block|}
 block|}
-block|}
 end_class
 
+unit|}
 end_unit
 
