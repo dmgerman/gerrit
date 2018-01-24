@@ -420,6 +420,22 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|user ()
+specifier|public
+name|CurrentUser
+name|user
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"FailedPermissionBackend is not scoped to user"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|user (CurrentUser user)
 specifier|public
 name|ForProject
@@ -432,6 +448,22 @@ block|{
 return|return
 name|this
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|resourcePath ()
+specifier|public
+name|String
+name|resourcePath
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"FailedPermissionBackend is not scoped to a resource"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -570,6 +602,22 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|user ()
+specifier|public
+name|CurrentUser
+name|user
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"FailedPermissionBackend is not scoped to user"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|user (CurrentUser user)
 specifier|public
 name|ForRef
@@ -582,6 +630,22 @@ block|{
 return|return
 name|this
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|resourcePath ()
+specifier|public
+name|String
+name|resourcePath
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"FailedPermissionBackend is not scoped to a resource"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -777,6 +841,22 @@ block|{
 return|return
 name|this
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|resourcePath ()
+specifier|public
+name|String
+name|resourcePath
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"FailedPermissionBackend is not scoped to a resource"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override

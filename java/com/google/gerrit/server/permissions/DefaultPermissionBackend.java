@@ -542,6 +542,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|user ()
+specifier|public
+name|CurrentUser
+name|user
+parameter_list|()
+block|{
+return|return
+name|user
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|project (Project.NameKey project)
 specifier|public
 name|ForProject

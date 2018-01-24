@@ -596,6 +596,14 @@ argument_list|<
 name|WithUser
 argument_list|>
 block|{
+comment|/** @return user this instance is scoped to. */
+DECL|method|user ()
+specifier|public
+specifier|abstract
+name|CurrentUser
+name|user
+parameter_list|()
+function_decl|;
 comment|/** @return instance scoped for the specified project. */
 DECL|method|project (Project.NameKey project)
 specifier|public
@@ -1068,6 +1076,22 @@ argument_list|<
 name|ForProject
 argument_list|>
 block|{
+comment|/** @return user this instance is scoped to. */
+DECL|method|user ()
+specifier|public
+specifier|abstract
+name|CurrentUser
+name|user
+parameter_list|()
+function_decl|;
+comment|/** @return fully qualified resource path that this instance is scoped to. */
+DECL|method|resourcePath ()
+specifier|public
+specifier|abstract
+name|String
+name|resourcePath
+parameter_list|()
+function_decl|;
 comment|/** @return new instance rescoped to same project, but different {@code user}. */
 DECL|method|user (CurrentUser user)
 specifier|public
@@ -1347,6 +1371,22 @@ argument_list|<
 name|ForRef
 argument_list|>
 block|{
+comment|/** @return user this instance is scoped to. */
+DECL|method|user ()
+specifier|public
+specifier|abstract
+name|CurrentUser
+name|user
+parameter_list|()
+function_decl|;
+comment|/** @return fully qualified resource path that this instance is scoped to. */
+DECL|method|resourcePath ()
+specifier|public
+specifier|abstract
+name|String
+name|resourcePath
+parameter_list|()
+function_decl|;
 comment|/** @return new instance rescoped to same reference, but different {@code user}. */
 DECL|method|user (CurrentUser user)
 specifier|public
@@ -1540,6 +1580,14 @@ specifier|public
 specifier|abstract
 name|CurrentUser
 name|user
+parameter_list|()
+function_decl|;
+comment|/** @return fully qualified resource path that this instance is scoped to. */
+DECL|method|resourcePath ()
+specifier|public
+specifier|abstract
+name|String
+name|resourcePath
 parameter_list|()
 function_decl|;
 comment|/** @return new instance rescoped to same change, but different {@code user}. */
