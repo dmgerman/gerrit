@@ -2457,7 +2457,14 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Account Not Found: doesnotexist"
+literal|"not found"
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"doesnotexist"
 argument_list|)
 expr_stmt|;
 name|revision
@@ -2687,8 +2694,13 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Account Not Found: "
-operator|+
+literal|"not found"
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
 name|in
 operator|.
 name|onBehalfOf
@@ -2957,7 +2969,14 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Account Not Found: doesnotexist"
+literal|"not found"
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"doesnotexist"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -3328,8 +3347,13 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Account Not Found: "
-operator|+
+literal|"not found"
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
 name|in
 operator|.
 name|onBehalfOf

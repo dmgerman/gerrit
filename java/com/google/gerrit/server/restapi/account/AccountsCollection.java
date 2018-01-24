@@ -614,19 +614,7 @@ condition|(
 name|user
 operator|==
 literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|ResourceNotFoundException
-argument_list|(
-name|id
-argument_list|)
-throw|;
-block|}
-elseif|else
-if|if
-condition|(
+operator|||
 operator|!
 name|accountControlFactory
 operator|.
@@ -646,7 +634,14 @@ throw|throw
 operator|new
 name|ResourceNotFoundException
 argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Account '%s' is not found or ambiguous"
+argument_list|,
 name|id
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -754,26 +749,7 @@ condition|(
 name|user
 operator|==
 literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|UnprocessableEntityException
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Account Not Found: %s"
-argument_list|,
-name|id
-argument_list|)
-argument_list|)
-throw|;
-block|}
-elseif|else
-if|if
-condition|(
+operator|||
 operator|!
 name|accountControlFactory
 operator|.
@@ -797,7 +773,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Account Not Found: %s"
+literal|"Account '%s' is not found or ambiguous"
 argument_list|,
 name|id
 argument_list|)
