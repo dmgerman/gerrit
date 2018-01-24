@@ -226,7 +226,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|AuthException
+name|RestApiException
 import|;
 end_import
 
@@ -1664,7 +1664,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|AuthException
+name|RestApiException
 decl||
 name|ConfigInvalidException
 decl||
