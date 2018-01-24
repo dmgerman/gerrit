@@ -410,6 +410,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|AccountState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|AuthRequest
 import|;
 end_import
@@ -655,6 +671,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -1236,7 +1262,10 @@ literal|null
 condition|)
 block|{
 comment|// account does not exist, try to create it
+name|Optional
+argument_list|<
 name|Account
+argument_list|>
 name|a
 init|=
 name|createAccountByLdap
@@ -1247,12 +1276,16 @@ decl_stmt|;
 if|if
 condition|(
 name|a
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return
 name|a
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 block|}
@@ -1357,7 +1390,10 @@ expr_stmt|;
 block|}
 DECL|method|createAccountByLdap (String user)
 specifier|private
+name|Optional
+argument_list|<
 name|Account
+argument_list|>
 name|createAccountByLdap
 parameter_list|(
 name|String
@@ -1380,7 +1416,10 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 try|try
@@ -1405,7 +1444,7 @@ expr_stmt|;
 return|return
 name|accountCache
 operator|.
-name|get
+name|maybeGet
 argument_list|(
 name|accountManager
 operator|.
@@ -1418,8 +1457,12 @@ name|getAccountId
 argument_list|()
 argument_list|)
 operator|.
+name|map
+argument_list|(
+name|AccountState
+operator|::
 name|getAccount
-argument_list|()
+argument_list|)
 return|;
 block|}
 catch|catch
@@ -1429,7 +1472,10 @@ name|e
 parameter_list|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
