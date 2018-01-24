@@ -1020,6 +1020,14 @@ specifier|private
 name|ConsistencyChecker
 name|checker
 decl_stmt|;
+DECL|field|serverSideTestRepo
+specifier|private
+name|TestRepository
+argument_list|<
+name|InMemoryRepository
+argument_list|>
+name|serverSideTestRepo
+decl_stmt|;
 DECL|method|assumeNoteDbDisabled ()
 specifier|private
 name|void
@@ -1069,8 +1077,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Ignore client clone of project; repurpose as server-side TestRepository.
-name|testRepo
+name|serverSideTestRepo
 operator|=
 operator|new
 name|TestRepository
@@ -1089,14 +1096,14 @@ argument_list|)
 expr_stmt|;
 name|tip
 operator|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
 operator|.
 name|parseCommit
 argument_list|(
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRepository
 argument_list|()
@@ -1516,7 +1523,7 @@ init|=
 name|insertChange
 argument_list|()
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|update
 argument_list|(
@@ -1611,7 +1618,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|update
 argument_list|(
@@ -1666,7 +1673,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRepository
 argument_list|()
@@ -2488,7 +2495,7 @@ name|incrementPatchSet
 argument_list|(
 name|notes
 argument_list|,
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -2543,11 +2550,11 @@ init|=
 literal|"refs/heads/master"
 decl_stmt|;
 comment|// Detach head so we're allowed to delete ref.
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|reset
 argument_list|(
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRepository
 argument_list|()
@@ -2564,7 +2571,7 @@ expr_stmt|;
 name|RefUpdate
 name|ru
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRepository
 argument_list|()
@@ -2807,7 +2814,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -2825,7 +2832,7 @@ argument_list|)
 operator|.
 name|update
 argument_list|(
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -2898,7 +2905,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -2916,7 +2923,7 @@ argument_list|)
 operator|.
 name|update
 argument_list|(
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -3029,7 +3036,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -3047,7 +3054,7 @@ argument_list|)
 operator|.
 name|update
 argument_list|(
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -3173,7 +3180,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -3191,7 +3198,7 @@ argument_list|)
 operator|.
 name|update
 argument_list|(
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -3318,7 +3325,7 @@ decl_stmt|;
 name|RevCommit
 name|commit
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -3333,7 +3340,7 @@ name|rev
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -3364,7 +3371,7 @@ decl_stmt|;
 name|RevCommit
 name|other
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|commit
 argument_list|()
@@ -3469,7 +3476,7 @@ decl_stmt|;
 name|RevCommit
 name|commit
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -3487,7 +3494,7 @@ decl_stmt|;
 name|RevCommit
 name|mergedAs
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|commit
 argument_list|()
@@ -3513,7 +3520,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -3538,7 +3545,7 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|update
 argument_list|(
@@ -3735,7 +3742,7 @@ decl_stmt|;
 name|RevCommit
 name|commit
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -3753,7 +3760,7 @@ decl_stmt|;
 name|RevCommit
 name|mergedAs
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|commit
 argument_list|()
@@ -3798,7 +3805,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -3834,7 +3841,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|update
 argument_list|(
@@ -4038,7 +4045,7 @@ argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -4056,7 +4063,7 @@ argument_list|)
 operator|.
 name|update
 argument_list|(
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -4308,7 +4315,7 @@ operator|.
 name|name
 argument_list|()
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -4358,7 +4365,7 @@ argument_list|(
 literal|3
 argument_list|)
 expr_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -4376,7 +4383,7 @@ argument_list|)
 operator|.
 name|update
 argument_list|(
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -4633,7 +4640,7 @@ operator|.
 name|name
 argument_list|()
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -4648,7 +4655,7 @@ argument_list|(
 name|commit2
 argument_list|)
 expr_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -4666,7 +4673,7 @@ argument_list|)
 operator|.
 name|update
 argument_list|(
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -4855,7 +4862,7 @@ decl_stmt|;
 name|RevCommit
 name|parent
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -4894,7 +4901,7 @@ decl_stmt|;
 name|RevCommit
 name|commit
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -4909,7 +4916,7 @@ name|rev
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -4929,7 +4936,7 @@ decl_stmt|;
 name|RevCommit
 name|mergedAs
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|commit
 argument_list|()
@@ -4956,7 +4963,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -4983,7 +4990,7 @@ argument_list|(
 name|badId
 argument_list|)
 expr_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|update
 argument_list|(
@@ -5118,7 +5125,7 @@ decl_stmt|;
 name|RevCommit
 name|commit
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRevWalk
 argument_list|()
@@ -5133,7 +5140,7 @@ name|rev
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -5472,7 +5479,7 @@ name|ChangeUtil
 operator|.
 name|nextPatchSetId
 argument_list|(
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRepository
 argument_list|()
@@ -5652,7 +5659,7 @@ block|{
 name|RevCommit
 name|c
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|commit
 argument_list|()
@@ -5673,7 +5680,7 @@ name|create
 argument_list|()
 decl_stmt|;
 return|return
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|parseBody
 argument_list|(
@@ -5866,7 +5873,7 @@ block|{
 name|RefUpdate
 name|ru
 init|=
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRepository
 argument_list|()
@@ -5966,7 +5973,7 @@ argument_list|,
 name|committer
 argument_list|)
 decl_stmt|;
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|branch
 argument_list|(
@@ -6012,7 +6019,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|testRepo
+name|serverSideTestRepo
 operator|.
 name|getRepository
 argument_list|()
