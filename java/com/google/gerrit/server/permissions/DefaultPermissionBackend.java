@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.project
+DECL|package|com.google.gerrit.server.permissions
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|permissions
 package|;
 end_package
 
@@ -282,9 +282,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|permissions
+name|project
 operator|.
-name|FailedPermissionBackend
+name|NoSuchProjectException
 import|;
 end_import
 
@@ -298,9 +298,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|permissions
+name|project
 operator|.
-name|GlobalPermission
+name|ProjectCache
 import|;
 end_import
 
@@ -314,25 +314,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|permissions
+name|project
 operator|.
-name|PermissionBackend
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|permissions
-operator|.
-name|PermissionBackendException
+name|ProjectState
 import|;
 end_import
 

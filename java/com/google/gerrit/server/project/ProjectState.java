@@ -2038,6 +2038,7 @@ return|;
 block|}
 comment|/**    * Obtain all local and inherited sections. This collection is looked up dynamically and is not    * cached. Callers should try to cache this result per-request as much as possible.    */
 DECL|method|getAllSections ()
+specifier|public
 name|List
 argument_list|<
 name|SectionMatcher
@@ -2997,7 +2998,8 @@ name|section
 init|=
 name|matcher
 operator|.
-name|section
+name|getSection
+argument_list|()
 decl_stmt|;
 for|for
 control|(

@@ -106,6 +106,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+operator|.
+name|NameKey
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -118,6 +136,7 @@ end_comment
 
 begin_class
 DECL|class|SectionMatcher
+specifier|public
 class|class
 name|SectionMatcher
 extends|extends
@@ -175,6 +194,7 @@ literal|null
 return|;
 block|}
 DECL|field|project
+specifier|private
 specifier|final
 name|Project
 operator|.
@@ -182,16 +202,19 @@ name|NameKey
 name|project
 decl_stmt|;
 DECL|field|section
+specifier|private
 specifier|final
 name|AccessSection
 name|section
 decl_stmt|;
 DECL|field|matcher
+specifier|private
 specifier|final
 name|RefPatternMatcher
 name|matcher
 decl_stmt|;
 DECL|method|SectionMatcher (Project.NameKey project, AccessSection section, RefPatternMatcher matcher)
+specifier|public
 name|SectionMatcher
 parameter_list|(
 name|Project
@@ -250,6 +273,36 @@ name|ref
 argument_list|,
 name|user
 argument_list|)
+return|;
+block|}
+DECL|method|getSection ()
+specifier|public
+name|AccessSection
+name|getSection
+parameter_list|()
+block|{
+return|return
+name|section
+return|;
+block|}
+DECL|method|getMatcher ()
+specifier|public
+name|RefPatternMatcher
+name|getMatcher
+parameter_list|()
+block|{
+return|return
+name|matcher
+return|;
+block|}
+DECL|method|getProject ()
+specifier|public
+name|NameKey
+name|getProject
+parameter_list|()
+block|{
+return|return
+name|project
 return|;
 block|}
 block|}
