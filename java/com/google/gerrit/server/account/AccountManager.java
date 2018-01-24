@@ -1180,7 +1180,10 @@ argument_list|)
 throw|;
 block|}
 comment|// Account exists
+name|Optional
+argument_list|<
 name|Account
+argument_list|>
 name|act
 init|=
 name|updateAccountActiveStatus
@@ -1200,6 +1203,28 @@ if|if
 condition|(
 operator|!
 name|act
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// The account was deleted since we checked for it last time. This should never happen
+comment|// since we don't support deletion of accounts.
+throw|throw
+operator|new
+name|AccountException
+argument_list|(
+literal|"Authentication error, account not found"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+operator|!
+name|act
+operator|.
+name|get
+argument_list|()
 operator|.
 name|isActive
 argument_list|()
@@ -1338,7 +1363,10 @@ block|}
 block|}
 DECL|method|updateAccountActiveStatus (AuthRequest authRequest, Account account)
 specifier|private
+name|Optional
+argument_list|<
 name|Account
+argument_list|>
 name|updateAccountActiveStatus
 parameter_list|(
 name|AuthRequest
@@ -1370,7 +1398,12 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|account
+argument_list|)
 return|;
 block|}
 if|if
@@ -1456,7 +1489,7 @@ block|}
 return|return
 name|byIdCache
 operator|.
-name|get
+name|maybeGet
 argument_list|(
 name|account
 operator|.
@@ -1464,8 +1497,12 @@ name|getId
 argument_list|()
 argument_list|)
 operator|.
+name|map
+argument_list|(
+name|AccountState
+operator|::
 name|getAccount
-argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|shouldUpdateActiveStatus (AuthRequest authRequest)
