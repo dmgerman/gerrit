@@ -142,7 +142,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|AuthException
+name|BadRequestException
 import|;
 end_import
 
@@ -158,7 +158,39 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|BadRequestException
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|ResourceNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
 import|;
 end_import
 
@@ -220,7 +252,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
+name|AccountResource
 import|;
 end_import
 
@@ -236,7 +268,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResource
+name|AccountState
 import|;
 end_import
 
@@ -418,12 +450,6 @@ name|CurrentUser
 argument_list|>
 name|self
 decl_stmt|;
-DECL|field|cache
-specifier|private
-specifier|final
-name|AccountCache
-name|cache
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -449,7 +475,7 @@ name|downloadSchemes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetPreferences ( Provider<CurrentUser> self, AccountCache cache, PermissionBackend permissionBackend, AccountsUpdate.User accountsUpdate, DynamicMap<DownloadScheme> downloadSchemes)
+DECL|method|SetPreferences ( Provider<CurrentUser> self, PermissionBackend permissionBackend, AccountsUpdate.User accountsUpdate, DynamicMap<DownloadScheme> downloadSchemes)
 name|SetPreferences
 parameter_list|(
 name|Provider
@@ -457,9 +483,6 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|self
-parameter_list|,
-name|AccountCache
-name|cache
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -481,12 +504,6 @@ operator|.
 name|self
 operator|=
 name|self
-expr_stmt|;
-name|this
-operator|.
-name|cache
-operator|=
-name|cache
 expr_stmt|;
 name|this
 operator|.
@@ -521,9 +538,7 @@ name|GeneralPreferencesInfo
 name|input
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
-name|BadRequestException
+name|RestApiException
 throws|,
 name|IOException
 throws|,
@@ -590,6 +605,7 @@ operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
+return|return
 name|accountsUpdate
 operator|.
 name|create
@@ -610,17 +626,32 @@ argument_list|(
 name|input
 argument_list|)
 argument_list|)
-expr_stmt|;
-return|return
-name|cache
 operator|.
-name|get
+name|map
 argument_list|(
-name|id
+name|AccountState
+operator|::
+name|getGeneralPreferences
 argument_list|)
 operator|.
-name|getGeneralPreferences
+name|orElseThrow
+argument_list|(
+parameter_list|()
+lambda|->
+operator|new
+name|ResourceNotFoundException
+argument_list|(
+name|IdString
+operator|.
+name|fromDecoded
+argument_list|(
+name|id
+operator|.
+name|toString
 argument_list|()
+argument_list|)
+argument_list|)
+argument_list|)
 return|;
 block|}
 DECL|method|checkDownloadScheme (String downloadScheme)

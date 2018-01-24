@@ -96,7 +96,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|AuthException
+name|BadRequestException
 import|;
 end_import
 
@@ -112,7 +112,39 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|BadRequestException
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|ResourceNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
 import|;
 end_import
 
@@ -174,7 +206,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
+name|AccountResource
 import|;
 end_import
 
@@ -190,7 +222,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResource
+name|AccountState
 import|;
 end_import
 
@@ -376,12 +408,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 DECL|field|accountsUpdate
 specifier|private
 specifier|final
@@ -392,7 +418,7 @@ name|accountsUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetDiffPreferences ( Provider<CurrentUser> self, PermissionBackend permissionBackend, AccountCache accountCache, AccountsUpdate.User accountsUpdate)
+DECL|method|SetDiffPreferences ( Provider<CurrentUser> self, PermissionBackend permissionBackend, AccountsUpdate.User accountsUpdate)
 name|SetDiffPreferences
 parameter_list|(
 name|Provider
@@ -403,9 +429,6 @@ name|self
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|AccountsUpdate
 operator|.
@@ -424,12 +447,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -452,9 +469,7 @@ name|DiffPreferencesInfo
 name|input
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
-name|BadRequestException
+name|RestApiException
 throws|,
 name|ConfigInvalidException
 throws|,
@@ -522,6 +537,7 @@ operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
+return|return
 name|accountsUpdate
 operator|.
 name|create
@@ -542,17 +558,32 @@ argument_list|(
 name|input
 argument_list|)
 argument_list|)
-expr_stmt|;
-return|return
-name|accountCache
 operator|.
-name|get
+name|map
 argument_list|(
-name|id
+name|AccountState
+operator|::
+name|getDiffPreferences
 argument_list|)
 operator|.
-name|getDiffPreferences
+name|orElseThrow
+argument_list|(
+parameter_list|()
+lambda|->
+operator|new
+name|ResourceNotFoundException
+argument_list|(
+name|IdString
+operator|.
+name|fromDecoded
+argument_list|(
+name|id
+operator|.
+name|toString
 argument_list|()
+argument_list|)
+argument_list|)
+argument_list|)
 return|;
 block|}
 block|}
