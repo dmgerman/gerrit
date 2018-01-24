@@ -529,7 +529,7 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-literal|"Set Diff Preferences via API"
+literal|"Set Edit Preferences via API"
 argument_list|,
 name|id
 argument_list|,
