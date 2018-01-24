@@ -3973,15 +3973,10 @@ argument_list|()
 operator|*
 literal|1000L
 operator|-
-name|accountCache
-operator|.
-name|get
+name|getAccount
 argument_list|(
 name|accountId
 argument_list|)
-operator|.
-name|getAccount
-argument_list|()
 operator|.
 name|getRegisteredOn
 argument_list|()

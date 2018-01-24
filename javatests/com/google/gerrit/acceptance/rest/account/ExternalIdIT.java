@@ -1076,9 +1076,7 @@ name|ExternalId
 argument_list|>
 name|expectedIds
 init|=
-name|accountCache
-operator|.
-name|get
+name|getAccountState
 argument_list|(
 name|user
 operator|.
@@ -1246,9 +1244,7 @@ name|ExternalId
 argument_list|>
 name|expectedIds
 init|=
-name|accountCache
-operator|.
-name|get
+name|getAccountState
 argument_list|(
 name|admin
 operator|.
