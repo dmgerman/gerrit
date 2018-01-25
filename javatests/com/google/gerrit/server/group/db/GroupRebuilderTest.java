@@ -640,17 +640,8 @@ argument_list|,
 comment|// Note that the expected name/email values in tests are not necessarily realistic,
 comment|// since they use these trivial name/email functions. GroupRebuilderIT checks the actual
 comment|// values.
-name|AbstractGroupTest
-operator|::
-name|newPersonIdent
-argument_list|,
-name|AbstractGroupTest
-operator|::
-name|getAccountNameEmail
-argument_list|,
-name|AbstractGroupTest
-operator|::
-name|getGroupName
+name|getAuditLogFormatter
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|bundleFactory
