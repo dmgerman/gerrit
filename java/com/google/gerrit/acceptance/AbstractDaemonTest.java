@@ -11347,12 +11347,9 @@ name|testSrcRepo
 argument_list|,
 name|revCommit
 argument_list|)
-operator|.
-name|isPresent
-argument_list|()
 argument_list|)
 operator|.
-name|isFalse
+name|isEmpty
 argument_list|()
 expr_stmt|;
 return|return
