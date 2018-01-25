@@ -937,7 +937,7 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Update this metadata branch, recording a new commit on its reference.    *    * @param update helper information to define the update that will occur.    * @return the commit that was created    * @throws IOException if there is a storage problem and the update cannot be executed as    *     requested or if it failed because of a concurrent update to the same reference    */
+comment|/**    * Update this metadata branch, recording a new commit on its reference. This method mutates its    * receiver.    *    * @param update helper information to define the update that will occur.    * @return the commit that was created    * @throws IOException if there is a storage problem and the update cannot be executed as    *     requested or if it failed because of a concurrent update to the same reference    */
 DECL|method|commit (MetaDataUpdate update)
 specifier|public
 name|RevCommit
@@ -978,7 +978,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * Creates a new commit and a new ref based on this commit.    *    * @param update helper information to define the update that will occur.    * @param refName name of the ref that should be created    * @return the commit that was created    * @throws IOException if there is a storage problem and the update cannot be executed as    *     requested or if it failed because of a concurrent update to the same reference    */
+comment|/**    * Creates a new commit and a new ref based on this commit. This method mutates its receiver.    *    * @param update helper information to define the update that will occur.    * @param refName name of the ref that should be created    * @return the commit that was created    * @throws IOException if there is a storage problem and the update cannot be executed as    *     requested or if it failed because of a concurrent update to the same reference    */
 DECL|method|commitToNewRef (MetaDataUpdate update, String refName)
 specifier|public
 name|RevCommit
