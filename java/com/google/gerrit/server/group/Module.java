@@ -58,7 +58,9 @@ name|server
 operator|.
 name|audit
 operator|.
-name|GroupMemberAuditListener
+name|group
+operator|.
+name|GroupAuditListener
 import|;
 end_import
 
@@ -134,7 +136,7 @@ argument_list|(
 name|binder
 argument_list|()
 argument_list|,
-name|GroupMemberAuditListener
+name|GroupAuditListener
 operator|.
 name|class
 argument_list|)

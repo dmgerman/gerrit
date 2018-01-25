@@ -68,7 +68,25 @@ name|group
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|annotations
+operator|.
+name|ExtensionPoint
+import|;
+end_import
+
 begin_interface
+annotation|@
+name|ExtensionPoint
 DECL|interface|GroupAuditListener
 specifier|public
 interface|interface
