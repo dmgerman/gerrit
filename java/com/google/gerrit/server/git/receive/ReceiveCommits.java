@@ -1412,6 +1412,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|PluginConfig
 import|;
 end_import
@@ -2710,6 +2726,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|Constants
 import|;
 end_import
@@ -3650,6 +3680,12 @@ name|ReceivePack
 name|rp
 decl_stmt|;
 comment|// Immutable fields derived from constructor arguments.
+DECL|field|allowPushToRefsChanges
+specifier|private
+specifier|final
+name|boolean
+name|allowPushToRefsChanges
+decl_stmt|;
 DECL|field|labelTypes
 specifier|private
 specifier|final
@@ -3841,7 +3877,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, AccountsUpdate.Server accountsUpdate, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, AccountsUpdate.Server accountsUpdate, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -3859,6 +3895,11 @@ name|BatchUpdate
 operator|.
 name|Factory
 name|batchUpdateFactory
+parameter_list|,
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
 parameter_list|,
 name|ChangeEditUtil
 name|editUtil
@@ -4282,6 +4323,19 @@ operator|=
 name|rp
 expr_stmt|;
 comment|// Immutable fields derived from constructor arguments.
+name|allowPushToRefsChanges
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"receive"
+argument_list|,
+literal|"allowPushToRefsChanges"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 name|repo
 operator|=
 name|rp
@@ -6479,6 +6533,11 @@ name|matches
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|allowPushToRefsChanges
+condition|)
+block|{
 comment|// The referenced change must exist and must still be open.
 comment|//
 name|Change
@@ -6507,6 +6566,17 @@ argument_list|,
 name|changeId
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"upload to refs/changes not allowed"
+argument_list|)
+expr_stmt|;
+block|}
 continue|continue;
 block|}
 switch|switch
