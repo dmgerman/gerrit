@@ -102,6 +102,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Streams
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -393,7 +407,7 @@ operator|=
 name|projectCache
 expr_stmt|;
 block|}
-comment|/**    * Recursively enumerate the members of the given group. Should not be used with the    * PROJECT_OWNERS magical group.    */
+comment|/**    * Recursively enumerate the members of the given group. Should not be used with the    * PROJECT_OWNERS magical group.    *    *<p>Group members for which an account doesn't exist are filtered out.    */
 DECL|method|listAccounts (AccountGroup.UUID groupUUID)
 specifier|public
 name|Set
@@ -465,7 +479,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Recursively enumerate the members of the given group. The project should be specified so the    * PROJECT_OWNERS magical group can be expanded.    */
+comment|/**    * Recursively enumerate the members of the given group. The project should be specified so the    * PROJECT_OWNERS magical group can be expanded.    *    *<p>Group members for which an account doesn't exist are filtered out.    */
 DECL|method|listAccounts (AccountGroup.UUID groupUUID, Project.NameKey project)
 specifier|public
 name|Set
@@ -817,7 +831,14 @@ name|map
 argument_list|(
 name|accountCache
 operator|::
-name|get
+name|maybeGet
+argument_list|)
+operator|.
+name|flatMap
+argument_list|(
+name|Streams
+operator|::
+name|stream
 argument_list|)
 operator|.
 name|map
