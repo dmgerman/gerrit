@@ -782,6 +782,9 @@ operator|.
 name|getVisibleCondition
 argument_list|()
 operator|.
+name|reduce
+argument_list|()
+operator|.
 name|children
 argument_list|(
 name|PermissionBackendCondition
@@ -807,6 +810,9 @@ return|return
 name|u
 operator|.
 name|getEnabledCondition
+argument_list|()
+operator|.
+name|reduce
 argument_list|()
 operator|.
 name|children
