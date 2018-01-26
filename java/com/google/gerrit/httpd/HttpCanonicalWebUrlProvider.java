@@ -146,6 +146,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -167,6 +177,20 @@ operator|.
 name|lib
 operator|.
 name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|SystemReader
 import|;
 end_import
 
@@ -258,13 +282,52 @@ return|return
 name|canonicalUrl
 return|;
 block|}
+return|return
+name|guessUrlFromHttpRequest
+argument_list|()
+operator|.
+name|orElseGet
+argument_list|(
+parameter_list|()
+lambda|->
+literal|"http://"
+operator|+
+name|SystemReader
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getHostname
+argument_list|()
+operator|+
+literal|'/'
+argument_list|)
+return|;
+block|}
+DECL|method|guessUrlFromHttpRequest ()
+specifier|private
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|guessUrlFromHttpRequest
+parameter_list|()
+block|{
 if|if
 condition|(
 name|requestProvider
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+comment|// We have no way of guessing our HTTP url.
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 comment|// No canonical URL configured? Maybe we can get a reasonable
 comment|// guess from the incoming HTTP request, if we are currently
 comment|// inside of an HTTP request scope.
@@ -301,9 +364,11 @@ condition|)
 block|{
 comment|// We can't obtain the request as we are not inside of
 comment|// an HTTP request scope. Callers must handle null.
-comment|//
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 throw|throw
@@ -311,18 +376,17 @@ name|noWeb
 throw|;
 block|}
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|CanonicalWebUrl
 operator|.
 name|computeFromRequest
 argument_list|(
 name|req
 argument_list|)
-return|;
-block|}
-comment|// We have no way of guessing our HTTP url.
-comment|//
-return|return
-literal|null
+argument_list|)
 return|;
 block|}
 block|}
