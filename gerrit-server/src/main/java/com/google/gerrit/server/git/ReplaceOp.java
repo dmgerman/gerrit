@@ -256,22 +256,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Branch
 import|;
 end_import
@@ -459,24 +443,6 @@ operator|.
 name|events
 operator|.
 name|CommentAdded
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|extensions
-operator|.
-name|events
-operator|.
-name|GitReferenceUpdated
 import|;
 end_import
 
@@ -1122,12 +1088,6 @@ specifier|final
 name|ExecutorService
 name|sendEmailExecutor
 decl_stmt|;
-DECL|field|gitRefUpdated
-specifier|private
-specifier|final
-name|GitReferenceUpdated
-name|gitRefUpdated
-decl_stmt|;
 DECL|field|revisionCreated
 specifier|private
 specifier|final
@@ -1309,7 +1269,7 @@ name|updateRef
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalCopier approvalCopier, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, GitReferenceUpdated gitRefUpdated, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, @SendEmailExecutor ExecutorService sendEmailExecutor, @Assisted ProjectControl projectControl, @Assisted Branch.NameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) RevCommit priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) RevCommit commit, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
+DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalCopier approvalCopier, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, @SendEmailExecutor ExecutorService sendEmailExecutor, @Assisted ProjectControl projectControl, @Assisted Branch.NameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) RevCommit priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) RevCommit commit, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
 name|ReplaceOp
 parameter_list|(
 name|AccountResolver
@@ -1336,9 +1296,6 @@ name|changeKindCache
 parameter_list|,
 name|ChangeMessagesUtil
 name|cmUtil
-parameter_list|,
-name|GitReferenceUpdated
-name|gitRefUpdated
 parameter_list|,
 name|RevisionCreated
 name|revisionCreated
@@ -1486,12 +1443,6 @@ operator|.
 name|cmUtil
 operator|=
 name|cmUtil
-expr_stmt|;
-name|this
-operator|.
-name|gitRefUpdated
-operator|=
-name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -2753,50 +2704,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// Normally the ref updated hook is fired by BatchUpdate, but ReplaceOp is
-comment|// special because its ref is actually updated by ReceiveCommits, so from
-comment|// BatchUpdate's perspective there is no ref update. Thus we have to fire it
-comment|// manually.
-specifier|final
-name|Account
-name|account
-init|=
-name|ctx
-operator|.
-name|getAccount
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|updateRef
-condition|)
-block|{
-name|gitRefUpdated
-operator|.
-name|fire
-argument_list|(
-name|ctx
-operator|.
-name|getProject
-argument_list|()
-argument_list|,
-name|newPatchSet
-operator|.
-name|getRefName
-argument_list|()
-argument_list|,
-name|ObjectId
-operator|.
-name|zeroId
-argument_list|()
-argument_list|,
-name|commit
-argument_list|,
-name|account
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|changeKind
@@ -2847,7 +2754,10 @@ name|cm
 operator|.
 name|setFrom
 argument_list|(
-name|account
+name|ctx
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getId
 argument_list|()
