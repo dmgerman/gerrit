@@ -178,8 +178,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
-operator|.
 name|ServerInitiated
 import|;
 end_import
@@ -193,8 +191,6 @@ operator|.
 name|gerrit
 operator|.
 name|server
-operator|.
-name|group
 operator|.
 name|UserInitiated
 import|;

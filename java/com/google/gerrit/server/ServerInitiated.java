@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.group
+DECL|package|com.google.gerrit.server
 package|package
 name|com
 operator|.
@@ -61,8 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|server
-operator|.
-name|group
 package|;
 end_package
 
@@ -159,7 +157,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A marker for database modifications which are directly related to a user request (e.g. happen  * inside of a request context). Those modifications will be attributed to the user by using the  * user's identity as author and committer for all related NoteDb commits.  */
+comment|/**  * A marker for database modifications which aren't directly related to a user request (e.g. happen  * outside of a request context). Those modifications will be attributed to the Gerrit server by  * using the Gerrit server identity as author for all related NoteDb commits.  */
 end_comment
 
 begin_annotation_defn
@@ -181,10 +179,10 @@ name|Retention
 argument_list|(
 name|RUNTIME
 argument_list|)
-DECL|annotation|UserInitiated
+DECL|annotation|ServerInitiated
 specifier|public
 annotation_defn|@interface
-name|UserInitiated
+name|ServerInitiated
 block|{}
 end_annotation_defn
 
