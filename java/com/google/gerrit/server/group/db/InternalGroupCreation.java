@@ -99,7 +99,7 @@ import|;
 end_import
 
 begin_comment
-comment|// TODO(aliceks): Add Javadoc descriptions to this file.
+comment|/**  * Definition of all properties necessary for a group creation.  *  *<p>An instance of {@code InternalGroupCreation} is a blueprint for a group which should be  * created.  */
 end_comment
 
 begin_class
@@ -111,6 +111,7 @@ specifier|abstract
 class|class
 name|InternalGroupCreation
 block|{
+comment|/** Defines the numeric ID the group should have. */
 DECL|method|getId ()
 specifier|public
 specifier|abstract
@@ -120,6 +121,7 @@ name|Id
 name|getId
 parameter_list|()
 function_decl|;
+comment|/** Defines the name the group should have. */
 DECL|method|getNameKey ()
 specifier|public
 specifier|abstract
@@ -129,6 +131,7 @@ name|NameKey
 name|getNameKey
 parameter_list|()
 function_decl|;
+comment|/** Defines the UUID the group should have. */
 DECL|method|getGroupUUID ()
 specifier|public
 specifier|abstract
@@ -164,6 +167,7 @@ specifier|static
 class|class
 name|Builder
 block|{
+comment|/** @see #getId() */
 DECL|method|setId (AccountGroup.Id id)
 specifier|public
 specifier|abstract
@@ -178,6 +182,7 @@ name|Id
 name|id
 parameter_list|)
 function_decl|;
+comment|/** @see #getNameKey() */
 DECL|method|setNameKey (AccountGroup.NameKey name)
 specifier|public
 specifier|abstract
@@ -192,6 +197,7 @@ name|NameKey
 name|name
 parameter_list|)
 function_decl|;
+comment|/** @see #getGroupUUID() */
 DECL|method|setGroupUUID (AccountGroup.UUID groupUuid)
 specifier|public
 specifier|abstract

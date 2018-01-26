@@ -159,7 +159,7 @@ import|;
 end_import
 
 begin_comment
-comment|// TODO(aliceks): Add Javadoc descriptions to this file.
+comment|/**  * Definition of an update to a group.  *  *<p>An {@code InternalGroupUpdate} only specifies the modifications which should be applied to a  * group. Each of the modifications and hence each call on {@link InternalGroupUpdate.Builder} is  * optional.  */
 end_comment
 
 begin_class
@@ -171,6 +171,7 @@ specifier|abstract
 class|class
 name|InternalGroupUpdate
 block|{
+comment|/** Representation of a member modification as defined by {@link #apply(ImmutableSet)}. */
 annotation|@
 name|FunctionalInterface
 DECL|interface|MemberModification
@@ -178,7 +179,8 @@ specifier|public
 interface|interface
 name|MemberModification
 block|{
-DECL|method|apply (ImmutableSet<Account.Id> in)
+comment|/**      * Applies the modification to the given members.      *      * @param originalMembers current members of the group. If used for a group creation, this set      *     is empty.      * @return the desired resulting members (not the diff of the members!)      */
+DECL|method|apply (ImmutableSet<Account.Id> originalMembers)
 name|Set
 argument_list|<
 name|Account
@@ -193,7 +195,7 @@ name|Account
 operator|.
 name|Id
 argument_list|>
-name|in
+name|originalMembers
 parameter_list|)
 function_decl|;
 block|}
@@ -204,7 +206,8 @@ specifier|public
 interface|interface
 name|SubgroupModification
 block|{
-DECL|method|apply (ImmutableSet<AccountGroup.UUID> in)
+comment|/**      * Applies the modification to the given subgroups.      *      * @param originalSubgroups current subgroups of the group. If used for a group creation, this      *     set is empty.      * @return the desired resulting subgroups (not the diff of the subgroups!)      */
+DECL|method|apply (ImmutableSet<AccountGroup.UUID> originalSubgroups)
 name|Set
 argument_list|<
 name|AccountGroup
@@ -219,10 +222,11 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|in
+name|originalSubgroups
 parameter_list|)
 function_decl|;
 block|}
+comment|/** Defines the new name of the group. If not specified, the name remains unchanged. */
 DECL|method|getName ()
 specifier|public
 specifier|abstract
@@ -235,7 +239,7 @@ argument_list|>
 name|getName
 parameter_list|()
 function_decl|;
-comment|// TODO(aliceks): Mention empty string (not null!) -> unset value in Javadoc.
+comment|/**    * Defines the new description of the group. If not specified, the description remains unchanged.    *    *<p><strong>Note:</strong>Passing the empty string unsets the description.    */
 DECL|method|getDescription ()
 specifier|public
 specifier|abstract
@@ -246,6 +250,7 @@ argument_list|>
 name|getDescription
 parameter_list|()
 function_decl|;
+comment|/** Defines the new owner of the group. If not specified, the owner remains unchanged. */
 DECL|method|getOwnerGroupUUID ()
 specifier|public
 specifier|abstract
@@ -258,6 +263,7 @@ argument_list|>
 name|getOwnerGroupUUID
 parameter_list|()
 function_decl|;
+comment|/**    * Defines the new state of the 'visibleToAll' flag of the group. If not specified, the flag    * remains unchanged.    */
 DECL|method|getVisibleToAll ()
 specifier|public
 specifier|abstract
@@ -268,6 +274,7 @@ argument_list|>
 name|getVisibleToAll
 parameter_list|()
 function_decl|;
+comment|/**    * Defines how the members of the group should be modified. By default (that is if nothing is    * specified), the members remain unchanged.    *    * @return a {@link MemberModification} which gets the current members of the group as input and    *     outputs the desired resulting members    */
 DECL|method|getMemberModification ()
 specifier|public
 specifier|abstract
@@ -275,6 +282,7 @@ name|MemberModification
 name|getMemberModification
 parameter_list|()
 function_decl|;
+comment|/**    * Defines how the subgroups of the group should be modified. By default (that is if nothing is    * specified), the subgroups remain unchanged.    *    * @return a {@link SubgroupModification} which gets the current subgroups of the group as input    *     and outputs the desired resulting subgroups    */
 DECL|method|getSubgroupModification ()
 specifier|public
 specifier|abstract
@@ -282,6 +290,7 @@ name|SubgroupModification
 name|getSubgroupModification
 parameter_list|()
 function_decl|;
+comment|/**    * Defines the {@code Timestamp} to be used for the NoteDb commits of the update. If not    * specified, the current {@code Timestamp} when creating the commit will be used.    *    *<p>If this {@code InternalGroupUpdate} is passed next to an {@link InternalGroupCreation}    * during a group creation, this {@code Timestamp} is used for the NoteDb commits of the new    * group. Hence, the {@link com.google.gerrit.server.group.InternalGroup#getCreatedOn()    * InternalGroup#getCreatedOn()} field will match this {@code Timestamp}.    *    *<p><strong>Note:</strong>{@code Timestamp}s of NoteDb commits for groups are used for events    * in the audit log. For this reason, specifying this field will have an effect on the resulting    * audit log.    */
 DECL|method|getUpdatedOn ()
 specifier|public
 specifier|abstract
@@ -328,6 +337,7 @@ name|in
 argument_list|)
 return|;
 block|}
+comment|/** A builder for an {@link InternalGroupUpdate}. */
 annotation|@
 name|AutoValue
 operator|.
@@ -339,6 +349,7 @@ specifier|static
 class|class
 name|Builder
 block|{
+comment|/** @see #getName() */
 DECL|method|setName (AccountGroup.NameKey name)
 specifier|public
 specifier|abstract
@@ -351,6 +362,7 @@ name|NameKey
 name|name
 parameter_list|)
 function_decl|;
+comment|/** @see #getDescription() */
 DECL|method|setDescription (String description)
 specifier|public
 specifier|abstract
@@ -361,6 +373,7 @@ name|String
 name|description
 parameter_list|)
 function_decl|;
+comment|/** @see #getOwnerGroupUUID() */
 DECL|method|setOwnerGroupUUID (AccountGroup.UUID ownerGroupUUID)
 specifier|public
 specifier|abstract
@@ -373,6 +386,7 @@ name|UUID
 name|ownerGroupUUID
 parameter_list|)
 function_decl|;
+comment|/** @see #getVisibleToAll() */
 DECL|method|setVisibleToAll (boolean visibleToAll)
 specifier|public
 specifier|abstract
@@ -383,6 +397,7 @@ name|boolean
 name|visibleToAll
 parameter_list|)
 function_decl|;
+comment|/** @see #getMemberModification() */
 DECL|method|setMemberModification (MemberModification memberModification)
 specifier|public
 specifier|abstract
@@ -393,12 +408,14 @@ name|MemberModification
 name|memberModification
 parameter_list|)
 function_decl|;
+comment|/**      * Returns the currently defined {@link MemberModification} for the prospective {@link      * InternalGroupUpdate}.      *      *<p>This modification can be tweaked further and passed to {@link      * #setMemberModification(MemberModification)} in order to combine multiple member additions,      * deletions, or other modifications into one update.      */
 DECL|method|getMemberModification ()
 specifier|abstract
 name|MemberModification
 name|getMemberModification
 parameter_list|()
 function_decl|;
+comment|/** @see #getSubgroupModification() */
 DECL|method|setSubgroupModification (SubgroupModification subgroupModification)
 specifier|public
 specifier|abstract
@@ -409,12 +426,14 @@ name|SubgroupModification
 name|subgroupModification
 parameter_list|)
 function_decl|;
+comment|/**      * Returns the currently defined {@link SubgroupModification} for the prospective {@link      * InternalGroupUpdate}.      *      *<p>This modification can be tweaked further and passed to {@link      * #setSubgroupModification(SubgroupModification)} in order to combine multiple subgroup      * additions, deletions, or other modifications into one update.      */
 DECL|method|getSubgroupModification ()
 specifier|abstract
 name|SubgroupModification
 name|getSubgroupModification
 parameter_list|()
 function_decl|;
+comment|/** @see #getUpdatedOn() */
 DECL|method|setUpdatedOn (Timestamp timestamp)
 specifier|public
 specifier|abstract
