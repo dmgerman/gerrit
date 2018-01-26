@@ -1822,6 +1822,19 @@ name|ForProject
 block|{
 annotation|@
 name|Override
+DECL|method|user ()
+specifier|public
+name|CurrentUser
+name|user
+parameter_list|()
+block|{
+return|return
+name|getUser
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|user (CurrentUser user)
 specifier|public
 name|ForProject
@@ -1844,6 +1857,24 @@ name|database
 argument_list|(
 name|db
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|resourcePath ()
+specifier|public
+name|String
+name|resourcePath
+parameter_list|()
+block|{
+return|return
+literal|"/projects/"
+operator|+
+name|getProjectState
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 return|;
 block|}
 annotation|@
