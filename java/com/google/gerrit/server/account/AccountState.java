@@ -1099,11 +1099,13 @@ return|return
 name|userName
 return|;
 block|}
-DECL|method|checkPassword (String password, String username)
+DECL|method|checkPassword (@ullable String password, String username)
 specifier|public
 name|boolean
 name|checkPassword
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|password
 parameter_list|,

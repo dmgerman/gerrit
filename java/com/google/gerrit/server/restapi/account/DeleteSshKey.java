@@ -507,10 +507,6 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|sshKeyCache
-operator|.
-name|evict
-argument_list|(
 name|rsrc
 operator|.
 name|getUser
@@ -518,6 +514,12 @@ argument_list|()
 operator|.
 name|getUserName
 argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|sshKeyCache
+operator|::
+name|evict
 argument_list|)
 expr_stmt|;
 return|return

@@ -132,6 +132,34 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -141,6 +169,16 @@ operator|.
 name|externalids
 operator|.
 name|ExternalId
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -298,7 +336,10 @@ name|emailAddress
 decl_stmt|;
 DECL|field|userName
 specifier|private
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|userName
 decl_stmt|;
 DECL|field|skipAuthentication
@@ -516,7 +557,10 @@ expr_stmt|;
 block|}
 DECL|method|getUserName ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getUserName
 parameter_list|()
 block|{
@@ -524,18 +568,30 @@ return|return
 name|userName
 return|;
 block|}
-DECL|method|setUserName (String user)
+DECL|method|setUserName (@ullable String user)
 specifier|public
 name|void
 name|setUserName
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|user
 parameter_list|)
 block|{
 name|userName
 operator|=
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|user
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|isSkipAuthentication ()

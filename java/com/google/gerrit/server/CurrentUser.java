@@ -148,6 +148,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|function
 operator|.
 name|Consumer
@@ -321,12 +331,18 @@ function_decl|;
 comment|/** Unique name of the user on this server, if one has been assigned. */
 DECL|method|getUserName ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getUserName
 parameter_list|()
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 comment|/** Check if user is the IdentifiedUser */

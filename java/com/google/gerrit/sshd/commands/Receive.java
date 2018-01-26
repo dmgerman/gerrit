@@ -869,9 +869,6 @@ name|append
 argument_list|(
 name|currentUser
 operator|.
-name|state
-argument_list|()
-operator|.
 name|getUserName
 argument_list|()
 operator|.

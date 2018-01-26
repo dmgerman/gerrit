@@ -65,6 +65,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -463,6 +479,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -1498,11 +1524,12 @@ block|}
 comment|/**    * @return the user's user name; null if one has not been selected/assigned or if the user name is    *     empty.    */
 annotation|@
 name|Override
-annotation|@
-name|Nullable
 DECL|method|getUserName ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getUserName
 parameter_list|()
 block|{
@@ -1512,11 +1539,6 @@ argument_list|()
 operator|.
 name|getUserName
 argument_list|()
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
 return|;
 block|}
 comment|/** @return unique name of the user for logging, never {@code null} */
@@ -1529,12 +1551,19 @@ block|{
 return|return
 name|getUserName
 argument_list|()
-operator|!=
-literal|null
-condition|?
-name|getUserName
+operator|.
+name|orElseGet
+argument_list|(
+parameter_list|()
+lambda|->
+name|firstNonNull
+argument_list|(
+name|getAccount
 argument_list|()
-else|:
+operator|.
+name|getPreferredEmail
+argument_list|()
+argument_list|,
 literal|"a/"
 operator|+
 name|getAccountId
@@ -1542,6 +1571,8 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+argument_list|)
+argument_list|)
 return|;
 block|}
 DECL|method|getAccount ()
@@ -1866,22 +1897,11 @@ name|user
 init|=
 name|getUserName
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|user
-operator|==
-literal|null
-condition|)
-block|{
-name|user
-operator|=
+operator|.
+name|orElse
+argument_list|(
 literal|""
-expr_stmt|;
-block|}
-name|user
-operator|=
-name|user
+argument_list|)
 operator|+
 literal|"|account-"
 operator|+
@@ -1892,7 +1912,7 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 return|return
 operator|new
 name|PersonIdent
@@ -1968,16 +1988,11 @@ name|user
 init|=
 name|getUserName
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|user
-operator|==
-literal|null
-condition|)
-block|{
-name|user
-operator|=
+operator|.
+name|orElseGet
+argument_list|(
+parameter_list|()
+lambda|->
 literal|"account-"
 operator|+
 name|ua
@@ -1987,8 +2002,8 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-expr_stmt|;
-block|}
+argument_list|)
+decl_stmt|;
 name|String
 name|host
 decl_stmt|;

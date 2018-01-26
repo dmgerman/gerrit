@@ -754,9 +754,6 @@ if|if
 condition|(
 name|currentUser
 operator|.
-name|state
-argument_list|()
-operator|.
 name|getUserName
 argument_list|()
 operator|.
@@ -771,9 +768,6 @@ argument_list|(
 literal|" ("
 operator|+
 name|currentUser
-operator|.
-name|state
-argument_list|()
 operator|.
 name|getUserName
 argument_list|()
