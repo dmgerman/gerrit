@@ -2019,6 +2019,15 @@ name|void
 name|maskSensitiveParameters
 parameter_list|()
 block|{
+if|if
+condition|(
+name|argv
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 name|sensitiveParameters
 operator|=
 name|cache
