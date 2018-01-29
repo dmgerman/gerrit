@@ -1697,6 +1697,11 @@ name|PermissionRange
 argument_list|>
 name|labels
 decl_stmt|;
+DECL|field|resourcePath
+specifier|private
+name|String
+name|resourcePath
+decl_stmt|;
 DECL|method|ForChangeImpl (@ullable ChangeData cd, @Nullable Provider<ReviewDb> db)
 name|ForChangeImpl
 parameter_list|(
@@ -1869,7 +1874,15 @@ name|String
 name|resourcePath
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
+name|resourcePath
+operator|==
+literal|null
+condition|)
+block|{
+name|resourcePath
+operator|=
 name|String
 operator|.
 name|format
@@ -1894,6 +1907,10 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|resourcePath
 return|;
 block|}
 annotation|@

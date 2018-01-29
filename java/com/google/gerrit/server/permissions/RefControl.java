@@ -2313,6 +2313,11 @@ name|ForRefImpl
 extends|extends
 name|ForRef
 block|{
+DECL|field|resourcePath
+specifier|private
+name|String
+name|resourcePath
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|user ()
@@ -2360,7 +2365,15 @@ name|String
 name|resourcePath
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
+name|resourcePath
+operator|==
+literal|null
+condition|)
+block|{
+name|resourcePath
+operator|=
 name|String
 operator|.
 name|format
@@ -2378,6 +2391,10 @@ argument_list|()
 argument_list|,
 name|refName
 argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|resourcePath
 return|;
 block|}
 annotation|@
