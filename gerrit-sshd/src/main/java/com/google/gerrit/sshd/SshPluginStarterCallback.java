@@ -268,9 +268,15 @@ name|DynamicBean
 argument_list|>
 name|dynamicBeans
 decl_stmt|;
+DECL|field|cache
+specifier|private
+specifier|final
+name|SshCommandSensitiveFieldsCache
+name|cache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshPluginStarterCallback ( @ommandNameCommands.ROOT) DispatchCommandProvider root, DynamicMap<DynamicOptions.DynamicBean> dynamicBeans)
+DECL|method|SshPluginStarterCallback ( @ommandNameCommands.ROOT) DispatchCommandProvider root, DynamicMap<DynamicOptions.DynamicBean> dynamicBeans, SshCommandSensitiveFieldsCache cache)
 name|SshPluginStarterCallback
 parameter_list|(
 annotation|@
@@ -290,6 +296,9 @@ operator|.
 name|DynamicBean
 argument_list|>
 name|dynamicBeans
+parameter_list|,
+name|SshCommandSensitiveFieldsCache
+name|cache
 parameter_list|)
 block|{
 name|this
@@ -303,6 +312,12 @@ operator|.
 name|dynamicBeans
 operator|=
 name|dynamicBeans
+expr_stmt|;
+name|this
+operator|.
+name|cache
+operator|=
+name|cache
 expr_stmt|;
 block|}
 annotation|@
@@ -413,6 +428,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|cache
+operator|.
+name|evictAll
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|load (Plugin plugin)
 specifier|private
