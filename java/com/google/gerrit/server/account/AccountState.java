@@ -505,7 +505,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Superset of all information related to an Account. This includes external IDs, project watches,  * and properties from the account config file. AccountState maps one-to-one to Account.  *  *<p>Most callers should not construct AccountStates directly but rather lookup accounts via the  * account cache (see {@link AccountCache#get(Account.Id)}).  */
+comment|/**  * Superset of all information related to an Account. This includes external IDs, project watches,  * and properties from the account config file. AccountState maps one-to-one to Account.  *  *<p>Most callers should not construct AccountStates directly but rather lookup accounts via the  * account cache (see {@link AccountCache#maybeGet(Account.Id)}).  */
 end_comment
 
 begin_class

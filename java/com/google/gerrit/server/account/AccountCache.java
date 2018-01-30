@@ -126,10 +126,13 @@ specifier|public
 interface|interface
 name|AccountCache
 block|{
-comment|/**    * Returns an {@code AccountState} instance for the given account ID. If not cached yet the    * account is loaded. Returns an empty {@code AccountState} instance to represent a missing    * account.    *    * @param accountId ID of the account that should be retrieved    * @return {@code AccountState} instance for the given account ID, if no account with this ID    *     exists an empty {@code AccountState} instance is returned to represent the missing account    */
-DECL|method|get (Account.Id accountId)
+comment|/**    * Returns an {@code AccountState} instance for the given account ID. If not cached yet the    * account is loaded. Returns {@link Optional#empty()} if the account is missing.    *    * @param accountId ID of the account that should be retrieved    * @return {@code AccountState} instance for the given account ID, if no account with this ID    *     exists {@link Optional#empty()} is returned    */
+DECL|method|maybeGet (Account.Id accountId)
+name|Optional
+argument_list|<
 name|AccountState
-name|get
+argument_list|>
+name|maybeGet
 parameter_list|(
 name|Account
 operator|.
@@ -137,13 +140,10 @@ name|Id
 name|accountId
 parameter_list|)
 function_decl|;
-comment|/**    * Returns an {@code AccountState} instance for the given account ID. If not cached yet the    * account is loaded. Returns {@link Optional#empty()} if the account is missing.    *    * @param accountId ID of the account that should be retrieved    * @return {@code AccountState} instance for the given account ID, if no account with this ID    *     exists {@link Optional#empty()}is returned    */
-DECL|method|maybeGet (Account.Id accountId)
-name|Optional
-argument_list|<
+comment|/**    * Returns an {@code AccountState} instance for the given account ID. If not cached yet the    * account is loaded. Returns an empty {@code AccountState} instance to represent a missing    * account.    *    *<p>This method should only be used in exceptional cases where it is required to get an account    * state even if the account is missing. Callers should leave a comment with the method invocation    * explaining why this method is used. Most callers of {@link AccountCache} should use {@link    * #maybeGet(Account.Id)} instead and handle the missing account case explicitly.    *    * @param accountId ID of the account that should be retrieved    * @return {@code AccountState} instance for the given account ID, if no account with this ID    *     exists an empty {@code AccountState} instance is returned to represent the missing account    */
+DECL|method|getEvenIfMissing (Account.Id accountId)
 name|AccountState
-argument_list|>
-name|maybeGet
+name|getEvenIfMissing
 parameter_list|(
 name|Account
 operator|.

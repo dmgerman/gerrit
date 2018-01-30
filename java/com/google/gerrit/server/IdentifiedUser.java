@@ -1467,6 +1467,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**    * Returns the account state of the identified user.    *    * @return the account state of the identified user, an empty account state if the account is    *     missing    */
 DECL|method|state ()
 specifier|public
 name|AccountState
@@ -1480,11 +1481,24 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// TODO(ekempin):
+comment|// Ideally we would only create IdentifiedUser instances for existing accounts. To ensure
+comment|// this we could load the account state eagerly on the creation of IdentifiedUser and fail is
+comment|// the account is missing. In most cases, e.g. when creating an IdentifiedUser for a request
+comment|// context, we really want to fail early if the account is missing. However there are some
+comment|// usages where an IdentifiedUser may be instantiated for a missing account. We may go
+comment|// through all of them and ensure that they never try to create an IdentifiedUser for a
+comment|// missing account or make this explicit by adding a createEvenIfMissing method to
+comment|// IdentifiedUser.GenericFactory. However since this is a lot of effort we stick with calling
+comment|// AccountCache#getEvenIfMissing(Account.Id) for now.
+comment|// Alternatively we could be could also return an Optional<AccountState> from the state()
+comment|// method and let callers handle the missing account case explicitly. But this would be a lot
+comment|// of work too.
 name|state
 operator|=
 name|accountCache
 operator|.
-name|get
+name|getEvenIfMissing
 argument_list|(
 name|getAccountId
 argument_list|()
@@ -1575,6 +1589,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns the account of the identified user.    *    * @return the account of the identified user, an empty account if the account is missing    */
 DECL|method|getAccount ()
 specifier|public
 name|Account
