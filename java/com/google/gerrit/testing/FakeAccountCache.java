@@ -293,14 +293,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|maybeGet (Account.Id accountId)
+DECL|method|get (Account.Id accountId)
 specifier|public
 specifier|synchronized
 name|Optional
 argument_list|<
 name|AccountState
 argument_list|>
-name|maybeGet
+name|get
 parameter_list|(
 name|Account
 operator|.

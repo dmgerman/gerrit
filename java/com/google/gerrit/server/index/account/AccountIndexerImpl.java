@@ -682,7 +682,7 @@ name|accountState
 init|=
 name|byIdCache
 operator|.
-name|maybeGet
+name|get
 argument_list|(
 name|id
 argument_list|)

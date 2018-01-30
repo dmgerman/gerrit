@@ -653,13 +653,13 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|maybeGet (Account.Id accountId)
+DECL|method|get (Account.Id accountId)
 specifier|public
 name|Optional
 argument_list|<
 name|AccountState
 argument_list|>
-name|maybeGet
+name|get
 parameter_list|(
 name|Account
 operator|.
@@ -750,7 +750,7 @@ argument_list|()
 return|;
 block|}
 return|return
-name|maybeGet
+name|get
 argument_list|(
 name|extId
 operator|.

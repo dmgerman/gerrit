@@ -831,7 +831,7 @@ name|map
 argument_list|(
 name|accountCache
 operator|::
-name|maybeGet
+name|get
 argument_list|)
 operator|.
 name|flatMap

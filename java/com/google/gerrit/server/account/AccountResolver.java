@@ -444,7 +444,7 @@ block|{
 return|return
 name|byId
 operator|.
-name|maybeGet
+name|get
 argument_list|(
 name|r
 operator|.
@@ -491,7 +491,7 @@ name|account
 init|=
 name|byId
 operator|.
-name|maybeGet
+name|get
 argument_list|(
 name|id
 argument_list|)
@@ -790,7 +790,7 @@ literal|1
 condition|?
 name|byId
 operator|.
-name|maybeGet
+name|get
 argument_list|(
 name|r
 operator|.
@@ -962,7 +962,7 @@ name|a
 init|=
 name|byId
 operator|.
-name|maybeGet
+name|get
 argument_list|(
 name|id
 argument_list|)
