@@ -267,7 +267,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Caches the order AccessSections should be sorted for evaluation. */
+comment|/**  * Caches the order AccessSections should be sorted for evaluation.  *  *<p>Access specifications for a more specific ref (eg. refs/heads/master rather than refs/heads/*)  * take precedence in ACL evaluations. So for each combination of (ref, list of access specs) we  * have to order the access specs by their distance from the ref to be matched. This is expensive,  * so cache the sorted ordering.  */
 end_comment
 
 begin_class
