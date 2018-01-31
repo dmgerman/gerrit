@@ -472,7 +472,7 @@ operator|=
 name|sorter
 expr_stmt|;
 block|}
-comment|/**      * Get all permissions that apply to a reference.      *      * @param matcherList collection of sections that should be considered, in priority order      *     (project specific definitions must appear before inherited ones).      * @param ref reference being accessed.      * @param user if the reference is a per-user reference, e.g. access sections using the      *     parameter variable "${username}" will have each username inserted into them to see if      *     they apply to the reference named by {@code ref}.      * @return map of permissions that apply to this reference, keyed by permission name.      */
+comment|/**      * Get all permissions that apply to a reference. The user is only used for per-user ref names,      * so the return value may include permissions for groups the user is not part of.      *      * @param matcherList collection of sections that should be considered, in priority order      *     (project specific definitions must appear before inherited ones).      * @param ref reference being accessed.      * @param user if the reference is a per-user reference, e.g. access sections using the      *     parameter variable "${username}" will have each username inserted into them to see if      *     they apply to the reference named by {@code ref}.      * @return map of permissions that apply to this reference, keyed by permission name.      */
 DECL|method|filter ( Iterable<SectionMatcher> matcherList, String ref, CurrentUser user)
 name|PermissionCollection
 name|filter
