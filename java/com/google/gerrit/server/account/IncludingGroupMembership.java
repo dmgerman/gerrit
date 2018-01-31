@@ -253,7 +253,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Group membership checker for the internal group system.  *  *<p>Groups the user is directly a member of are pulled from the in-memory AccountCache by way of  * the IdentifiedUser. Transitive group memberhips are resolved on demand starting from the  * requested group and looking for a path to a group the user is a member of. Other group backends  * are supported by recursively invoking the universal GroupMembership.  */
+comment|/**  * Determines membership in the internal group system for a given user.  *  *<p>Groups the user is directly a member of are pulled from the in-memory AccountCache by way of  * the IdentifiedUser. Transitive group memberhips are resolved on demand starting from the  * requested group and looking for a path to a group the user is a member of. Other group backends  * are supported by recursively invoking the universal GroupMembership.  */
 end_comment
 
 begin_class
