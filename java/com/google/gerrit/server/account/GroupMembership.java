@@ -103,7 +103,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementations of GroupMembership provide methods to test the presence of a user in a particular  * group.  */
+comment|/**  * Represents the set of groups that a single user is part of.  *  *<p>Different accounts systems (eg. LDAP, gerrit groups) provide concrete implementations.  */
 end_comment
 
 begin_interface
