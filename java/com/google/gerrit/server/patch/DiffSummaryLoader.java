@@ -318,7 +318,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|toDiffSummary (PatchList patchList)
-specifier|static
+specifier|private
 name|DiffSummary
 name|toDiffSummary
 parameter_list|(
