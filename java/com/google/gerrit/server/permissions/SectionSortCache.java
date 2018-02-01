@@ -383,6 +383,7 @@ operator|=
 name|cache
 expr_stmt|;
 block|}
+comment|// Sorts the given sections, but does not disturb ordering between equally exact sections.
 DECL|method|sort (String ref, List<AccessSection> sections)
 name|void
 name|sort

@@ -688,6 +688,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+comment|// LinkedHashMap to maintain input ordering.
 name|Map
 argument_list|<
 name|AccessSection
@@ -733,6 +734,8 @@ name|keySet
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// Sort by ref pattern specificity. For equally specific patterns, the sections from the
+comment|// project closer to the current one come first.
 name|sorter
 operator|.
 name|sort
@@ -1352,7 +1355,7 @@ name|entrySet
 argument_list|()
 return|;
 block|}
-comment|/** Tracks whether or not a permission has been overridden. */
+comment|/** (ref, permission, group) tuple. */
 annotation|@
 name|AutoValue
 DECL|class|SeenRule
