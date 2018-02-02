@@ -174,6 +174,16 @@ name|Timestamp
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * Information about a single user.  *  *<p>A user may have multiple identities they can use to login to Gerrit (see ExternalId), but in  * such cases they always map back to a single Account entity.  *  *<p>Entities "owned" by an Account (that is, their primary key contains the {@link Account.Id} key  * as part of their key structure):  *  *<ul>  *<li>ExternalId: OpenID identities and email addresses known to be registered to this user.  *       Multiple records can exist when the user has more than one public identity, such as a work  *       and a personal email address.  *<li>{@link AccountGroupMember}: membership of the user in a specific human managed {@link  *       AccountGroup}. Multiple records can exist when the user is a member of more than one group.  *<li>{@link AccountSshKey}: user's public SSH keys, for authentication through the internal SSH  *       daemon. One record per SSH key uploaded by the user, keys are checked in random order until  *       a match is found.  *<li>{@link DiffPreferencesInfo}: user's preferences for rendering side-to-side and unified diff  *</ul>  */
 end_comment
@@ -341,33 +351,52 @@ name|newValue
 expr_stmt|;
 block|}
 comment|/** Parse an Account.Id out of a string representation. */
-DECL|method|parse (String str)
+DECL|method|tryParse (String str)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|Id
-name|parse
+argument_list|>
+name|tryParse
 parameter_list|(
 name|String
 name|str
 parameter_list|)
 block|{
-name|Id
-name|r
-init|=
+try|try
+block|{
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 operator|new
 name|Id
-argument_list|()
-decl_stmt|;
-name|r
+argument_list|(
+name|Integer
 operator|.
-name|fromString
+name|parseInt
 argument_list|(
 name|str
 argument_list|)
-expr_stmt|;
-return|return
-name|r
+argument_list|)
+argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|NumberFormatException
+name|e
+parameter_list|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 block|}
 DECL|method|fromRef (String name)
 specifier|public
