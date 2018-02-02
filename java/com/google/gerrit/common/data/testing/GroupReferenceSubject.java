@@ -92,6 +92,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|GwtIncompatible
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|truth
 operator|.
 name|ComparableSubject
@@ -187,6 +201,11 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|GwtIncompatible
+argument_list|(
+literal|"Unemulated com.google.gerrit.common.data.testing.GroupReferenceSubject"
+argument_list|)
 DECL|class|GroupReferenceSubject
 specifier|public
 class|class
