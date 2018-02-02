@@ -4473,7 +4473,6 @@ name|CONTENT_TYPE
 argument_list|)
 throw|;
 block|}
-elseif|else
 if|if
 condition|(
 name|Strings
@@ -5852,8 +5851,7 @@ block|}
 block|}
 end_function
 
-begin_elseif
-elseif|else
+begin_if
 if|if
 condition|(
 name|rawInputRequest
@@ -5873,10 +5871,9 @@ name|type
 argument_list|)
 return|;
 block|}
-end_elseif
+end_if
 
-begin_elseif
-elseif|else
+begin_if
 if|if
 condition|(
 name|isDelete
@@ -5894,10 +5891,9 @@ return|return
 literal|null
 return|;
 block|}
-end_elseif
+end_if
 
-begin_elseif
-elseif|else
+begin_if
 if|if
 condition|(
 name|hasNoBody
@@ -5913,10 +5909,9 @@ name|type
 argument_list|)
 return|;
 block|}
-end_elseif
+end_if
 
-begin_elseif
-elseif|else
+begin_if
 if|if
 condition|(
 name|isType
@@ -6002,10 +5997,9 @@ argument_list|)
 return|;
 block|}
 block|}
-end_elseif
+end_if
 
-begin_elseif
-elseif|else
+begin_if
 if|if
 condition|(
 name|isPost
@@ -6045,11 +6039,9 @@ name|type
 argument_list|)
 return|;
 block|}
-end_elseif
+end_if
 
-begin_else
-else|else
-block|{
+begin_throw
 throw|throw
 operator|new
 name|BadRequestException
@@ -6059,8 +6051,7 @@ operator|+
 name|JSON_TYPE
 argument_list|)
 throw|;
-block|}
-end_else
+end_throw
 
 begin_function
 unit|}    private
@@ -7716,7 +7707,6 @@ name|src
 return|;
 comment|// Do not compress very small payloads.
 block|}
-elseif|else
 if|if
 condition|(
 name|len
@@ -8324,7 +8314,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|r
@@ -8341,8 +8330,6 @@ name|projection
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|AmbiguousViewException
@@ -8384,7 +8371,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 throw|;
-block|}
 block|}
 end_function
 
@@ -9319,7 +9305,6 @@ return|return
 literal|false
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|expect
@@ -9334,7 +9319,6 @@ return|return
 literal|true
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|given
