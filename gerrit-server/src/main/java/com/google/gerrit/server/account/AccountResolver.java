@@ -586,9 +586,9 @@ name|nameOrEmail
 operator|.
 name|matches
 argument_list|(
-name|Account
+name|ExternalId
 operator|.
-name|USER_NAME_PATTERN
+name|USER_NAME_PATTERN_REGEX
 argument_list|)
 condition|)
 block|{
