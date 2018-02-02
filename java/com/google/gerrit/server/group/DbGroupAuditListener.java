@@ -489,9 +489,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|DbGroupMemberAuditListener
+DECL|class|DbGroupAuditListener
 class|class
-name|DbGroupMemberAuditListener
+name|DbGroupAuditListener
 implements|implements
 name|GroupAuditListener
 block|{
@@ -510,7 +510,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|DbGroupMemberAuditListener
+name|DbGroupAuditListener
 operator|.
 name|class
 argument_list|)
@@ -544,8 +544,8 @@ name|groupBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DbGroupMemberAuditListener ( SchemaFactory<ReviewDb> schema, AccountCache accountCache, GroupCache groupCache, UniversalGroupBackend groupBackend)
-name|DbGroupMemberAuditListener
+DECL|method|DbGroupAuditListener ( SchemaFactory<ReviewDb> schema, AccountCache accountCache, GroupCache groupCache, UniversalGroupBackend groupBackend)
+name|DbGroupAuditListener
 parameter_list|(
 name|SchemaFactory
 argument_list|<

@@ -748,7 +748,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// Match old behavior of DbGroupMemberAuditListener and add a "legacy" add/remove pair.
+comment|// Match old behavior of DbGroupAuditListener and add a "legacy" add/remove pair.
 name|AccountGroupMemberAudit
 name|audit
 init|=
@@ -1036,7 +1036,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// Unlike members, DbGroupMemberAuditListener didn't insert an add/remove pair here.
+comment|// Unlike members, DbGroupAuditListener didn't insert an add/remove pair here.
 block|}
 block|}
 block|}
