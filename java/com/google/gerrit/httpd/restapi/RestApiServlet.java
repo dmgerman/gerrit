@@ -2273,6 +2273,15 @@ operator|*
 literal|1024
 decl_stmt|;
 comment|// Presize 10 blocks.
+DECL|field|PLAIN_TEXT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PLAIN_TEXT
+init|=
+literal|"text/plain"
+decl_stmt|;
 comment|/**    * Garbage prefix inserted before JSON output to prevent XSSI.    *    *<p>This prefix is ")]}'\n" and is designed to prevent a web browser from executing the response    * body if the resource URI were to be referenced using a&lt;script src="...&gt; HTML tag from    * another web site. Clients using the HTTP interface will need to always strip the first line of    * response data to remove this magic header.    */
 DECL|field|JSON_MAGIC
 specifier|public
@@ -4443,7 +4452,7 @@ block|{
 if|if
 condition|(
 operator|!
-literal|"text/plain"
+name|PLAIN_TEXT
 operator|.
 name|equals
 argument_list|(
@@ -4900,7 +4909,7 @@ name|res
 operator|.
 name|setContentType
 argument_list|(
-literal|"text/plain"
+name|PLAIN_TEXT
 argument_list|)
 expr_stmt|;
 name|res
@@ -5912,7 +5921,7 @@ if|if
 condition|(
 name|isType
 argument_list|(
-literal|"text/plain"
+name|PLAIN_TEXT
 argument_list|,
 name|req
 operator|.
@@ -7658,7 +7667,7 @@ name|b64
 operator|.
 name|setContentType
 argument_list|(
-literal|"text/plain"
+name|PLAIN_TEXT
 argument_list|)
 operator|.
 name|setCharacterEncoding
@@ -9174,7 +9183,7 @@ argument_list|)
 operator|.
 name|setContentType
 argument_list|(
-literal|"text/plain"
+name|PLAIN_TEXT
 argument_list|)
 argument_list|)
 return|;
