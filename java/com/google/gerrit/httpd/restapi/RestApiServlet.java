@@ -8029,10 +8029,7 @@ condition|(
 name|view
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|view
 operator|instanceof
 name|AcceptsPost
@@ -8083,7 +8080,6 @@ name|rsrc
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 throw|throw
 operator|new
