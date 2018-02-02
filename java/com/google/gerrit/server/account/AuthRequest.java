@@ -341,6 +341,11 @@ argument_list|<
 name|String
 argument_list|>
 name|userName
+init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
 decl_stmt|;
 DECL|field|skipAuthentication
 specifier|private
