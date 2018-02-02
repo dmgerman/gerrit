@@ -833,6 +833,25 @@ name|preferredEmail
 return|;
 block|}
 return|return
+name|getName
+argument_list|(
+name|accountId
+argument_list|)
+return|;
+block|}
+DECL|method|getName (Account.Id accountId)
+specifier|public
+specifier|static
+name|String
+name|getName
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|)
+block|{
+return|return
 literal|"GerritAccount #"
 operator|+
 name|accountId
