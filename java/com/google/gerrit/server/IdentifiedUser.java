@@ -2185,15 +2185,16 @@ return|;
 block|}
 annotation|@
 name|Override
-annotation|@
-name|Nullable
 DECL|method|get (PropertyKey<T> key)
 specifier|public
 specifier|synchronized
 parameter_list|<
 name|T
 parameter_list|>
+name|Optional
+argument_list|<
 name|T
+argument_list|>
 name|get
 parameter_list|(
 name|PropertyKey
@@ -2229,11 +2230,19 @@ name|key
 argument_list|)
 decl_stmt|;
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|value
+argument_list|)
 return|;
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 comment|/**    * Store a property for later retrieval.    *    * @param key unique property key.    * @param value value to store; or {@code null} to clear the value.    */
