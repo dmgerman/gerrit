@@ -836,22 +836,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|AccountCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|GerritServerConfig
@@ -1347,12 +1331,6 @@ name|labelNameComparator
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 DECL|field|updateManagerFactory
 specifier|private
 specifier|final
@@ -1599,7 +1577,7 @@ name|deleteCommentRewriter
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted CurrentUser user, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted CurrentUser user, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1615,9 +1593,6 @@ name|serverIdent
 parameter_list|,
 name|NotesMigration
 name|migration
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|NoteDbUpdateManager
 operator|.
@@ -1664,8 +1639,6 @@ name|serverIdent
 argument_list|,
 name|migration
 argument_list|,
-name|accountCache
-argument_list|,
 name|updateManagerFactory
 argument_list|,
 name|draftUpdateFactory
@@ -1691,7 +1664,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted CurrentUser user, @Assisted Date when, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted CurrentUser user, @Assisted Date when, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1707,9 +1680,6 @@ name|serverIdent
 parameter_list|,
 name|NotesMigration
 name|migration
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|NoteDbUpdateManager
 operator|.
@@ -1760,8 +1730,6 @@ argument_list|,
 name|serverIdent
 argument_list|,
 name|migration
-argument_list|,
-name|accountCache
 argument_list|,
 name|updateManagerFactory
 argument_list|,
@@ -1840,7 +1808,7 @@ return|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, @Assisted ChangeNotes notes, @Assisted CurrentUser user, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, @Assisted ChangeNotes notes, @Assisted CurrentUser user, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1856,9 +1824,6 @@ name|serverIdent
 parameter_list|,
 name|NotesMigration
 name|migration
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|NoteDbUpdateManager
 operator|.
@@ -1926,12 +1891,6 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|accountCache
-operator|=
-name|accountCache
-expr_stmt|;
-name|this
-operator|.
 name|updateManagerFactory
 operator|=
 name|updateManagerFactory
@@ -1966,7 +1925,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) @Nullable Account.Id accountId, @Assisted(R) @Nullable Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) @Nullable Account.Id accountId, @Assisted(R) @Nullable Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1982,9 +1941,6 @@ name|serverIdent
 parameter_list|,
 name|NotesMigration
 name|migration
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|NoteDbUpdateManager
 operator|.
@@ -2079,12 +2035,6 @@ name|authorIdent
 argument_list|,
 name|when
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -5154,25 +5104,12 @@ name|Id
 name|accountId
 parameter_list|)
 block|{
-name|Account
-name|account
-init|=
-name|accountCache
-operator|.
-name|get
-argument_list|(
-name|accountId
-argument_list|)
-operator|.
-name|getAccount
-argument_list|()
-decl_stmt|;
 name|PersonIdent
 name|ident
 init|=
 name|newIdent
 argument_list|(
-name|account
+name|accountId
 argument_list|,
 name|when
 argument_list|)

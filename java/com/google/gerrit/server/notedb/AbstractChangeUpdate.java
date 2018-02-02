@@ -1035,13 +1035,15 @@ return|return
 name|accountId
 return|;
 block|}
-DECL|method|newIdent (Account author, Date when)
+DECL|method|newIdent (Account.Id authorId, Date when)
 specifier|protected
 name|PersonIdent
 name|newIdent
 parameter_list|(
 name|Account
-name|author
+operator|.
+name|Id
+name|authorId
 parameter_list|,
 name|Date
 name|when
@@ -1052,7 +1054,7 @@ name|noteUtil
 operator|.
 name|newIdent
 argument_list|(
-name|author
+name|authorId
 argument_list|,
 name|when
 argument_list|,

@@ -276,6 +276,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -2424,7 +2434,7 @@ name|expect
 argument_list|(
 name|accountCache
 operator|.
-name|get
+name|maybeGet
 argument_list|(
 name|eq
 argument_list|(
@@ -2441,7 +2451,12 @@ argument_list|)
 operator|.
 name|andReturn
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|s
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

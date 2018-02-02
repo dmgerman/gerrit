@@ -598,22 +598,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|AccountCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|GerritServerConfig
@@ -1265,12 +1249,6 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 DECL|field|bundleReader
 specifier|private
 specifier|final
@@ -1359,7 +1337,7 @@ name|skewMs
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeRebuilderImpl ( @erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, AccountCache accountCache, ChangeBundleReader bundleReader, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil changeNoteUtil, ChangeNotes.Factory notesFactory, ChangeUpdate.Factory updateFactory, CommentsUtil commentsUtil, NoteDbUpdateManager.Factory updateManagerFactory, NotesMigration migration, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @GerritServerId String serverId)
+DECL|method|ChangeRebuilderImpl ( @erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, ChangeBundleReader bundleReader, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil changeNoteUtil, ChangeNotes.Factory notesFactory, ChangeUpdate.Factory updateFactory, CommentsUtil commentsUtil, NoteDbUpdateManager.Factory updateManagerFactory, NotesMigration migration, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @GerritServerId String serverId)
 name|ChangeRebuilderImpl
 parameter_list|(
 annotation|@
@@ -1372,9 +1350,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schemaFactory
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|ChangeBundleReader
 name|bundleReader
@@ -1431,12 +1406,6 @@ name|super
 argument_list|(
 name|schemaFactory
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -3868,15 +3837,7 @@ name|changeNoteUtil
 operator|.
 name|newIdent
 argument_list|(
-name|accountCache
-operator|.
-name|get
-argument_list|(
 name|id
-argument_list|)
-operator|.
-name|getAccount
-argument_list|()
 argument_list|,
 name|events
 operator|.
