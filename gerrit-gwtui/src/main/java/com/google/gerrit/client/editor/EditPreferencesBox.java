@@ -1977,9 +1977,17 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|view
+operator|!=
+literal|null
+condition|)
+block|{
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|UiHandler
