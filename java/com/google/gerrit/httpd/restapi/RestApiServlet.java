@@ -4452,10 +4452,10 @@ block|{
 if|if
 condition|(
 operator|!
-name|PLAIN_TEXT
-operator|.
-name|equals
+name|isType
 argument_list|(
+name|PLAIN_TEXT
+argument_list|,
 name|req
 operator|.
 name|getContentType
