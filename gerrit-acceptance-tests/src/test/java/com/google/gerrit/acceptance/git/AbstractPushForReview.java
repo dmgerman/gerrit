@@ -5064,6 +5064,45 @@ literal|"invalid Change-Id line format in commit message footer"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|pushWithChangeIdInSubjectLine ()
+specifier|public
+name|void
+name|pushWithChangeIdInSubjectLine
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|createCommit
+argument_list|(
+name|testRepo
+argument_list|,
+literal|"Change-Id: I1234000000000000000000000000000000000000"
+argument_list|)
+expr_stmt|;
+name|pushForReviewRejected
+argument_list|(
+name|testRepo
+argument_list|,
+literal|"missing subject; Change-Id must be in commit message footer"
+argument_list|)
+expr_stmt|;
+name|setRequireChangeId
+argument_list|(
+name|InheritableBoolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
+name|pushForReviewRejected
+argument_list|(
+name|testRepo
+argument_list|,
+literal|"missing subject; Change-Id must be in commit message footer"
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|createCommit (TestRepository<?> testRepo, String message)
 specifier|private
 specifier|static
