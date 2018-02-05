@@ -412,6 +412,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|ResourceConflictException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -805,6 +821,44 @@ operator|.
 name|class
 argument_list|,
 literal|"unsupported change status"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|createEmptyChange_InvalidChangeId ()
+specifier|public
+name|void
+name|createEmptyChange_InvalidChangeId
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|ChangeInput
+name|ci
+init|=
+name|newChangeInput
+argument_list|(
+name|ChangeStatus
+operator|.
+name|NEW
+argument_list|)
+decl_stmt|;
+name|ci
+operator|.
+name|subject
+operator|=
+literal|"Subject\n\nChange-Id: I0000000000000000000000000000000000000000"
+expr_stmt|;
+name|assertCreateFails
+argument_list|(
+name|ci
+argument_list|,
+name|ResourceConflictException
+operator|.
+name|class
+argument_list|,
+literal|"invalid Change-Id line format in commit message footer"
 argument_list|)
 expr_stmt|;
 block|}
