@@ -260,27 +260,22 @@ return|;
 block|}
 block|}
 DECL|field|id
-specifier|protected
+specifier|private
 name|AccountSshKey
 operator|.
 name|Id
 name|id
 decl_stmt|;
 DECL|field|sshPublicKey
-specifier|protected
+specifier|private
 name|String
 name|sshPublicKey
 decl_stmt|;
 DECL|field|valid
-specifier|protected
+specifier|private
 name|boolean
 name|valid
 decl_stmt|;
-DECL|method|AccountSshKey ()
-specifier|protected
-name|AccountSshKey
-parameter_list|()
-block|{}
 DECL|method|AccountSshKey (AccountSshKey.Id i, String pub)
 specifier|public
 name|AccountSshKey
