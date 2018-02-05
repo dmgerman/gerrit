@@ -2306,7 +2306,7 @@ operator|.
 name|assignee
 argument_list|()
 operator|.
-name|getId
+name|_accountId
 argument_list|()
 argument_list|,
 name|Gerrit
@@ -2314,7 +2314,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|getId
+name|_accountId
 argument_list|()
 argument_list|)
 condition|)
