@@ -800,7 +800,7 @@ name|a
 init|=
 name|accountCache
 operator|.
-name|maybeGet
+name|get
 argument_list|(
 name|fromId
 argument_list|)
@@ -1249,7 +1249,7 @@ name|fullName
 init|=
 name|accountCache
 operator|.
-name|maybeGet
+name|get
 argument_list|(
 name|fromId
 argument_list|)

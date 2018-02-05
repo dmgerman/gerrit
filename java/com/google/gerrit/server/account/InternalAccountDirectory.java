@@ -506,7 +506,7 @@ name|state
 init|=
 name|accountCache
 operator|.
-name|maybeGet
+name|get
 argument_list|(
 name|id
 argument_list|)

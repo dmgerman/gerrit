@@ -440,7 +440,7 @@ decl_stmt|;
 return|return
 name|accountCache
 operator|.
-name|maybeGet
+name|get
 argument_list|(
 name|id
 argument_list|)

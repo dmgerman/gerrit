@@ -959,17 +959,18 @@ name|getAsInt
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// Use the AccountCache rather than depending on any stored fields in the
-comment|// document (of which there shouldn't be any). The most expensive part to
-comment|// compute anyway is the effective group IDs, and we don't have a good way
-comment|// to reindex when those change.
+comment|// Use the AccountCache rather than depending on any stored fields in the document (of which
+comment|// there shouldn't be any). The most expensive part to compute anyway is the effective group
+comment|// IDs, and we don't have a good way to reindex when those change.
+comment|// If the account doesn't exist return an empty AccountState to represent the missing account
+comment|// to account the fact that the account exists in the index.
 return|return
 name|accountCache
 operator|.
 name|get
 argument_list|()
 operator|.
-name|get
+name|getEvenIfMissing
 argument_list|(
 name|id
 argument_list|)

@@ -1261,7 +1261,7 @@ name|author
 init|=
 name|accountCache
 operator|.
-name|maybeGet
+name|get
 argument_list|(
 name|authorId
 argument_list|)
