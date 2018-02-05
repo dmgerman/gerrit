@@ -52,8 +52,22 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.reviewdb.client
+DECL|package|com.google.gerrit.server.account
 package|package
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+package|;
+end_package
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -63,8 +77,10 @@ operator|.
 name|reviewdb
 operator|.
 name|client
-package|;
-end_package
+operator|.
+name|Account
+import|;
+end_import
 
 begin_import
 import|import
@@ -260,27 +276,22 @@ return|;
 block|}
 block|}
 DECL|field|id
-specifier|protected
+specifier|private
 name|AccountSshKey
 operator|.
 name|Id
 name|id
 decl_stmt|;
 DECL|field|sshPublicKey
-specifier|protected
+specifier|private
 name|String
 name|sshPublicKey
 decl_stmt|;
 DECL|field|valid
-specifier|protected
+specifier|private
 name|boolean
 name|valid
 decl_stmt|;
-DECL|method|AccountSshKey ()
-specifier|protected
-name|AccountSshKey
-parameter_list|()
-block|{}
 DECL|method|AccountSshKey (AccountSshKey.Id i, String pub)
 specifier|public
 name|AccountSshKey
