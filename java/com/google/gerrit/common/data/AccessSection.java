@@ -74,6 +74,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -274,6 +288,8 @@ operator|=
 name|list
 expr_stmt|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|getPermission (String name)
 specifier|public
 name|Permission
@@ -292,6 +308,8 @@ literal|false
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|getPermission (String name, boolean create)
 specifier|public
 name|Permission

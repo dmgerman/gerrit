@@ -834,27 +834,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** True if the user is blocked from using this permission. */
-DECL|method|isBlocked (String permissionName)
-name|boolean
-name|isBlocked
-parameter_list|(
-name|String
-name|permissionName
-parameter_list|)
-block|{
-return|return
-operator|!
-name|doCanPerform
-argument_list|(
-name|permissionName
-argument_list|,
-literal|false
-argument_list|,
-literal|true
-argument_list|)
-return|;
-block|}
 comment|/** True if the user has this permission. Works only for non labels. */
 DECL|method|canPerform (String permissionName)
 name|boolean
@@ -882,29 +861,6 @@ return|return
 operator|new
 name|ForRefImpl
 argument_list|()
-return|;
-block|}
-DECL|method|canPerform (String permissionName, boolean isChangeOwner)
-specifier|private
-name|boolean
-name|canPerform
-parameter_list|(
-name|String
-name|permissionName
-parameter_list|,
-name|boolean
-name|isChangeOwner
-parameter_list|)
-block|{
-return|return
-name|doCanPerform
-argument_list|(
-name|permissionName
-argument_list|,
-name|isChangeOwner
-argument_list|,
-literal|false
-argument_list|)
 return|;
 block|}
 DECL|method|canUpload ()
@@ -1691,19 +1647,16 @@ name|max
 argument_list|)
 return|;
 block|}
-DECL|method|doCanPerform (String permissionName, boolean isChangeOwner, boolean blockOnly)
+DECL|method|canPerform (String permissionName, boolean isChangeOwner)
 specifier|private
 name|boolean
-name|doCanPerform
+name|canPerform
 parameter_list|(
 name|String
 name|permissionName
 parameter_list|,
 name|boolean
 name|isChangeOwner
-parameter_list|,
-name|boolean
-name|blockOnly
 parameter_list|)
 block|{
 name|List
@@ -1839,15 +1792,11 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|&&
-operator|(
 operator|!
 name|allows
 operator|.
 name|isEmpty
 argument_list|()
-operator|||
-name|blockOnly
-operator|)
 return|;
 block|}
 comment|/** True if the user has force this permission. Works only for non labels. */

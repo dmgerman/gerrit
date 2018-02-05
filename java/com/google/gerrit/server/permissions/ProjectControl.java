@@ -1028,13 +1028,12 @@ operator|(
 name|isDeclaredOwner
 argument_list|()
 operator|&&
-operator|!
 name|controlForRef
 argument_list|(
 literal|"refs/*"
 argument_list|)
 operator|.
-name|isBlocked
+name|canPerform
 argument_list|(
 name|Permission
 operator|.
