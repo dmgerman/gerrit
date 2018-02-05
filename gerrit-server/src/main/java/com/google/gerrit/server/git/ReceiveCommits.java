@@ -2489,7 +2489,7 @@ literal|"^"
 operator|+
 name|REFS_CHANGES
 operator|+
-literal|"(?:[0-9][0-9]/)?([1-9][0-9]*)(?:/new)?$"
+literal|"(?:[0-9][0-9]/)?([1-9][0-9]*)(?:/[1-9][0-9]*)?$"
 argument_list|)
 decl_stmt|;
 DECL|field|COMMAND_REJECTION_MESSAGE_FOOTER
