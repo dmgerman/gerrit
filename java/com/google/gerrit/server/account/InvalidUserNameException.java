@@ -66,24 +66,8 @@ name|account
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-import|;
-end_import
-
 begin_comment
-comment|/** Error indicating the SSH user name does not match {@link Account#USER_NAME_PATTERN} pattern. */
+comment|/**  * Error indicating the SSH user name does not match {@link  * com.google.gerrit.server.account.externalids.ExternalId#USER_NAME_PATTERN_REGEX} pattern.  */
 end_comment
 
 begin_class
