@@ -2162,6 +2162,22 @@ operator|=
 name|enable
 expr_stmt|;
 block|}
+DECL|method|setSlave (boolean slave)
+specifier|public
+name|void
+name|setSlave
+parameter_list|(
+name|boolean
+name|slave
+parameter_list|)
+block|{
+name|this
+operator|.
+name|slave
+operator|=
+name|slave
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|run ()
