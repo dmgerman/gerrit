@@ -2057,6 +2057,18 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+operator|||
+name|ref
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_CACHE_AUTOMERGE
+argument_list|)
 return|;
 block|}
 DECL|method|isTag (Ref ref)
