@@ -140,11 +140,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
-operator|.
-name|AccountSshKey
+name|IdentifiedUser
 import|;
 end_import
 
@@ -158,7 +156,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|account
+operator|.
+name|AccountSshKey
 import|;
 end_import
 

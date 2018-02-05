@@ -120,9 +120,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
 name|AccountSshKey
 import|;

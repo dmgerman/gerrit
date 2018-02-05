@@ -272,9 +272,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|client
+name|server
 operator|.
-name|AccountSshKey
+name|ReviewDb
 import|;
 end_import
 
@@ -286,11 +286,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|server
 operator|.
-name|ReviewDb
+name|account
+operator|.
+name|AccountSshKey
 import|;
 end_import
 

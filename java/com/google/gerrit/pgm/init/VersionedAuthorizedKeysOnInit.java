@@ -178,7 +178,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountSshKey
+name|RefNames
 import|;
 end_import
 
@@ -190,11 +190,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|RefNames
+name|AccountSshKey
 import|;
 end_import
 
