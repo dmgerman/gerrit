@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2015 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -76,39 +76,118 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
-name|SshCommand
+name|AbstractGitCommand
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|transport
+operator|.
+name|PacketLineOut
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|transport
+operator|.
+name|resolver
+operator|.
+name|ServiceNotEnabledException
 import|;
 end_import
 
 begin_comment
-comment|/* Failure command, that produces verbose failure message in slave mode */
+comment|/* Receive command when running in slave mode. */
 end_comment
 
 begin_class
-DECL|class|NotSupportedInSlaveModeFailureCommand
+DECL|class|ReceiveSlaveMode
 specifier|public
 class|class
-name|NotSupportedInSlaveModeFailureCommand
+name|ReceiveSlaveMode
 extends|extends
-name|SshCommand
+name|AbstractGitCommand
 block|{
 annotation|@
 name|Override
-DECL|method|run ()
+DECL|method|runImpl ()
 specifier|protected
 name|void
-name|run
+name|runImpl
 parameter_list|()
 throws|throws
 name|UnloggedFailure
+throws|,
+name|IOException
 block|{
+name|ServiceNotEnabledException
+name|ex
+init|=
+operator|new
+name|ServiceNotEnabledException
+argument_list|()
+decl_stmt|;
+name|PacketLineOut
+name|packetOut
+init|=
+operator|new
+name|PacketLineOut
+argument_list|(
+name|out
+argument_list|)
+decl_stmt|;
+name|packetOut
+operator|.
+name|setFlushOnEnd
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|packetOut
+operator|.
+name|writeString
+argument_list|(
+literal|"ERR "
+operator|+
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|packetOut
+operator|.
+name|end
+argument_list|()
+expr_stmt|;
 throw|throw
 name|die
 argument_list|(
-name|getName
-argument_list|()
-operator|+
-literal|": is not supported in slave mode"
+name|ex
 argument_list|)
 throw|;
 block|}

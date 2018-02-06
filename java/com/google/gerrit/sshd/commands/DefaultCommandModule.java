@@ -736,7 +736,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|NotSupportedInSlaveModeFailureCommand
+name|ReceiveSlaveMode
 operator|.
 name|class
 argument_list|)
@@ -748,7 +748,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|NotSupportedInSlaveModeFailureCommand
+name|ReceiveSlaveMode
 operator|.
 name|class
 argument_list|)
@@ -762,7 +762,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|NotSupportedInSlaveModeFailureCommand
+name|ReceiveSlaveMode
 operator|.
 name|class
 argument_list|)
