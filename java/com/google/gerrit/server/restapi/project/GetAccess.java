@@ -1391,8 +1391,19 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
-comment|// WebLinks operates in terms of the data types used in the GWT UI. Once the GWT UI is gone,
-comment|// WebLinks should be fixed to use the extension data types.
+comment|// config may have a null revision if the repo doesn't have its own refs/meta/config.
+if|if
+condition|(
+name|config
+operator|.
+name|getRevision
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// WebLinks operates in terms of the data types used in the GWT UI. Once the GWT UI is
+comment|// gone, WebLinks should be fixed to use the extension data types.
 for|for
 control|(
 name|WebLinkInfoCommon
@@ -1448,6 +1459,7 @@ name|target
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
