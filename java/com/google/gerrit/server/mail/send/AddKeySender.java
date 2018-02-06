@@ -708,7 +708,7 @@ operator|)
 condition|?
 name|sshKey
 operator|.
-name|getSshPublicKey
+name|sshPublicKey
 argument_list|()
 operator|+
 literal|"\n"

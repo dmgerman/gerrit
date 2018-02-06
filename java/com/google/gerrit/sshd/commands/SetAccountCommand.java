@@ -1736,13 +1736,9 @@ block|{
 name|AccountSshKey
 name|sshKey
 init|=
-operator|new
-name|AccountSshKey
-argument_list|(
-operator|new
 name|AccountSshKey
 operator|.
-name|Id
+name|create
 argument_list|(
 name|user
 operator|.
@@ -1752,7 +1748,6 @@ argument_list|,
 name|i
 operator|.
 name|seq
-argument_list|)
 argument_list|,
 name|i
 operator|.

@@ -498,10 +498,7 @@ operator|.
 name|getSshKey
 argument_list|()
 operator|.
-name|getKey
-argument_list|()
-operator|.
-name|get
+name|seq
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -1120,7 +1120,7 @@ name|addKey
 argument_list|(
 name|sshKey
 operator|.
-name|getSshPublicKey
+name|sshPublicKey
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1229,7 +1229,7 @@ literal|null
 operator|&&
 name|sshKey
 operator|.
-name|getComment
+name|comment
 argument_list|()
 operator|!=
 literal|null
@@ -1240,7 +1240,7 @@ name|c
 init|=
 name|sshKey
 operator|.
-name|getComment
+name|comment
 argument_list|()
 operator|.
 name|trim
@@ -1484,18 +1484,13 @@ name|UTF_8
 argument_list|)
 decl_stmt|;
 return|return
-operator|new
-name|AccountSshKey
-argument_list|(
-operator|new
 name|AccountSshKey
 operator|.
-name|Id
+name|create
 argument_list|(
 name|id
 argument_list|,
 literal|1
-argument_list|)
 argument_list|,
 name|content
 argument_list|)

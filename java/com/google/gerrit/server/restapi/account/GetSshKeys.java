@@ -565,10 +565,7 @@ name|seq
 operator|=
 name|sshKey
 operator|.
-name|getKey
-argument_list|()
-operator|.
-name|get
+name|seq
 argument_list|()
 expr_stmt|;
 name|info
@@ -577,7 +574,7 @@ name|sshPublicKey
 operator|=
 name|sshKey
 operator|.
-name|getSshPublicKey
+name|sshPublicKey
 argument_list|()
 expr_stmt|;
 name|info
@@ -586,7 +583,7 @@ name|encodedKey
 operator|=
 name|sshKey
 operator|.
-name|getEncodedKey
+name|encodedKey
 argument_list|()
 expr_stmt|;
 name|info
@@ -595,7 +592,7 @@ name|algorithm
 operator|=
 name|sshKey
 operator|.
-name|getAlgorithm
+name|algorithm
 argument_list|()
 expr_stmt|;
 name|info
@@ -608,7 +605,7 @@ name|emptyToNull
 argument_list|(
 name|sshKey
 operator|.
-name|getComment
+name|comment
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -618,7 +615,7 @@ name|valid
 operator|=
 name|sshKey
 operator|.
-name|isValid
+name|valid
 argument_list|()
 expr_stmt|;
 return|return

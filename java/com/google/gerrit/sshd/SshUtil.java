@@ -397,7 +397,7 @@ name|s
 init|=
 name|key
 operator|.
-name|getEncodedKey
+name|encodedKey
 argument_list|()
 decl_stmt|;
 if|if

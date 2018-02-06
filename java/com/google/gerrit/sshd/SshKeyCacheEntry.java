@@ -82,22 +82,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|AccountSshKey
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|security
@@ -111,13 +95,13 @@ DECL|class|SshKeyCacheEntry
 class|class
 name|SshKeyCacheEntry
 block|{
-DECL|field|id
+DECL|field|accountId
 specifier|private
 specifier|final
-name|AccountSshKey
+name|Account
 operator|.
 name|Id
-name|id
+name|accountId
 decl_stmt|;
 DECL|field|publicKey
 specifier|private
@@ -125,25 +109,29 @@ specifier|final
 name|PublicKey
 name|publicKey
 decl_stmt|;
-DECL|method|SshKeyCacheEntry (AccountSshKey.Id i, PublicKey k)
+DECL|method|SshKeyCacheEntry (Account.Id accountId, PublicKey publicKey)
 name|SshKeyCacheEntry
 parameter_list|(
-name|AccountSshKey
+name|Account
 operator|.
 name|Id
-name|i
+name|accountId
 parameter_list|,
 name|PublicKey
-name|k
+name|publicKey
 parameter_list|)
 block|{
-name|id
+name|this
+operator|.
+name|accountId
 operator|=
-name|i
+name|accountId
 expr_stmt|;
+name|this
+operator|.
 name|publicKey
 operator|=
-name|k
+name|publicKey
 expr_stmt|;
 block|}
 DECL|method|getAccount ()
@@ -154,10 +142,7 @@ name|getAccount
 parameter_list|()
 block|{
 return|return
-name|id
-operator|.
-name|getParentKey
-argument_list|()
+name|accountId
 return|;
 block|}
 DECL|method|match (PublicKey inkey)
