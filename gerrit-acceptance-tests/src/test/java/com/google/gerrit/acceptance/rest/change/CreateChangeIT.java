@@ -894,8 +894,12 @@ throws|throws
 name|Exception
 block|{
 name|setSignedOffByFooter
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|ChangeInfo
 name|info
 init|=
@@ -952,6 +956,15 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|setSignedOffByFooter
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
@@ -2044,11 +2057,14 @@ name|NEW
 return|;
 block|}
 comment|// TODO(davido): Expose setting of account preferences in the API
-DECL|method|setSignedOffByFooter ()
+DECL|method|setSignedOffByFooter (boolean value)
 specifier|private
 name|void
 name|setSignedOffByFooter
-parameter_list|()
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -2095,7 +2111,7 @@ name|i
 operator|.
 name|signedOffBy
 operator|=
-literal|true
+name|value
 expr_stmt|;
 name|r
 operator|=
@@ -2137,6 +2153,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|value
+condition|)
+block|{
 name|assertThat
 argument_list|(
 name|o
@@ -2147,6 +2168,20 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+name|assertThat
+argument_list|(
+name|o
+operator|.
+name|signedOffBy
+argument_list|)
+operator|.
+name|isNull
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 DECL|method|newMergeChangeInput (String targetBranch, String sourceRef, String strategy)
 specifier|private
