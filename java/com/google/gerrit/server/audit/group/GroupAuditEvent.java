@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,38 +52,8 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.audit
+DECL|package|com.google.gerrit.server.audit.group
 package|package
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|audit
-package|;
-end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
-name|DynamicSet
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -95,8 +65,22 @@ operator|.
 name|audit
 operator|.
 name|group
+package|;
+end_package
+
+begin_import
+import|import
+name|com
 operator|.
-name|GroupAuditListener
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
 import|;
 end_import
 
@@ -106,62 +90,60 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|AbstractModule
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountGroup
 import|;
 end_import
 
-begin_class
-DECL|class|AuditModule
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_comment
+comment|/** An audit event for groups. */
+end_comment
+
+begin_interface
+DECL|interface|GroupAuditEvent
 specifier|public
-class|class
-name|AuditModule
-extends|extends
-name|AbstractModule
+interface|interface
+name|GroupAuditEvent
 block|{
-annotation|@
-name|Override
-DECL|method|configure ()
-specifier|protected
-name|void
-name|configure
+comment|/**    * Gets the acting user who is updating the group.    *    * @return the {@link Account.Id} of the acting user.    */
+DECL|method|getActor ()
+name|Account
+operator|.
+name|Id
+name|getActor
 parameter_list|()
-block|{
-name|DynamicSet
+function_decl|;
+comment|/**    * Gets the {@link AccountGroup.UUID} of the updated group.    *    * @return the {@link AccountGroup.UUID} of the updated group.    */
+DECL|method|getUpdatedGroup ()
+name|AccountGroup
 operator|.
-name|setOf
-argument_list|(
-name|binder
-argument_list|()
-argument_list|,
-name|AuditListener
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|DynamicSet
-operator|.
-name|setOf
-argument_list|(
-name|binder
-argument_list|()
-argument_list|,
-name|GroupAuditListener
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|bind
-argument_list|(
-name|AuditService
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+name|UUID
+name|getUpdatedGroup
+parameter_list|()
+function_decl|;
+comment|/**    * Gets the {@link Timestamp} of the action.    *    * @return the {@link Timestamp} of the action.    */
+DECL|method|getTimestamp ()
+name|Timestamp
+name|getTimestamp
+parameter_list|()
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

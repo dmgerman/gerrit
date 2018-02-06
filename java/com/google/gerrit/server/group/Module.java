@@ -58,7 +58,9 @@ name|server
 operator|.
 name|audit
 operator|.
-name|GroupMemberAuditListener
+name|group
+operator|.
+name|GroupAuditListener
 import|;
 end_import
 
@@ -124,7 +126,7 @@ name|disableGroupReviewDb
 argument_list|()
 condition|)
 block|{
-comment|// DbGroupMemberAuditListener is used solely for the ReviewDb audit log. It does not respect
+comment|// DbGroupAuditListener is used solely for the ReviewDb audit log. It does not respect
 comment|// ReviewDb wrappers that disable reads. Hence, we don't want to bind it if ReviewDb is
 comment|// disabled.
 name|DynamicSet
@@ -134,14 +136,14 @@ argument_list|(
 name|binder
 argument_list|()
 argument_list|,
-name|GroupMemberAuditListener
+name|GroupAuditListener
 operator|.
 name|class
 argument_list|)
 operator|.
 name|to
 argument_list|(
-name|DbGroupMemberAuditListener
+name|DbGroupAuditListener
 operator|.
 name|class
 argument_list|)

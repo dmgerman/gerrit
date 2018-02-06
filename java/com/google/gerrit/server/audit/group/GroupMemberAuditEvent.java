@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.audit
+DECL|package|com.google.gerrit.server.audit.group
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|audit
+operator|.
+name|group
 package|;
 end_package
 
@@ -72,13 +74,25 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|auto
 operator|.
-name|extensions
+name|value
 operator|.
-name|annotations
+name|AutoValue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
 operator|.
-name|ExtensionPoint
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
 import|;
 end_import
 
@@ -110,23 +124,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupById
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountGroupMember
+name|AccountGroup
 import|;
 end_import
 
@@ -140,102 +138,105 @@ name|Timestamp
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_interface
+begin_class
 annotation|@
-name|ExtensionPoint
-DECL|interface|GroupMemberAuditListener
+name|AutoValue
+DECL|class|GroupMemberAuditEvent
 specifier|public
-interface|interface
-name|GroupMemberAuditListener
+specifier|abstract
+class|class
+name|GroupMemberAuditEvent
+implements|implements
+name|GroupAuditEvent
 block|{
-DECL|method|onAddAccountsToGroup ( Account.Id actor, Collection<AccountGroupMember> added, Timestamp addedOn)
-name|void
-name|onAddAccountsToGroup
+DECL|method|create ( Account.Id actor, AccountGroup.UUID updatedGroup, ImmutableSet<Account.Id> modifiedMembers, Timestamp timestamp)
+specifier|public
+specifier|static
+name|GroupMemberAuditEvent
+name|create
 parameter_list|(
 name|Account
 operator|.
 name|Id
 name|actor
 parameter_list|,
-name|Collection
+name|AccountGroup
+operator|.
+name|UUID
+name|updatedGroup
+parameter_list|,
+name|ImmutableSet
 argument_list|<
-name|AccountGroupMember
+name|Account
+operator|.
+name|Id
 argument_list|>
-name|added
+name|modifiedMembers
 parameter_list|,
 name|Timestamp
-name|addedOn
+name|timestamp
 parameter_list|)
+block|{
+return|return
+operator|new
+name|AutoValue_GroupMemberAuditEvent
+argument_list|(
+name|actor
+argument_list|,
+name|updatedGroup
+argument_list|,
+name|modifiedMembers
+argument_list|,
+name|timestamp
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getActor ()
+specifier|public
+specifier|abstract
+name|Account
+operator|.
+name|Id
+name|getActor
+parameter_list|()
 function_decl|;
-DECL|method|onDeleteAccountsFromGroup ( Account.Id actor, Collection<AccountGroupMember> removed, Timestamp removedOn)
-name|void
-name|onDeleteAccountsFromGroup
-parameter_list|(
-name|Account
+annotation|@
+name|Override
+DECL|method|getUpdatedGroup ()
+specifier|public
+specifier|abstract
+name|AccountGroup
 operator|.
-name|Id
-name|actor
-parameter_list|,
-name|Collection
-argument_list|<
-name|AccountGroupMember
-argument_list|>
-name|removed
-parameter_list|,
-name|Timestamp
-name|removedOn
-parameter_list|)
+name|UUID
+name|getUpdatedGroup
+parameter_list|()
 function_decl|;
-DECL|method|onAddGroupsToGroup (Account.Id actor, Collection<AccountGroupById> added, Timestamp addedOn)
-name|void
-name|onAddGroupsToGroup
-parameter_list|(
+comment|/** Gets the added or deleted members of the updated group. */
+DECL|method|getModifiedMembers ()
+specifier|public
+specifier|abstract
+name|ImmutableSet
+argument_list|<
 name|Account
 operator|.
 name|Id
-name|actor
-parameter_list|,
-name|Collection
-argument_list|<
-name|AccountGroupById
 argument_list|>
-name|added
-parameter_list|,
-name|Timestamp
-name|addedOn
-parameter_list|)
+name|getModifiedMembers
+parameter_list|()
 function_decl|;
-DECL|method|onDeleteGroupsFromGroup ( Account.Id actor, Collection<AccountGroupById> deleted, Timestamp removedOn)
-name|void
-name|onDeleteGroupsFromGroup
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|actor
-parameter_list|,
-name|Collection
-argument_list|<
-name|AccountGroupById
-argument_list|>
-name|deleted
-parameter_list|,
+annotation|@
+name|Override
+DECL|method|getTimestamp ()
+specifier|public
+specifier|abstract
 name|Timestamp
-name|removedOn
-parameter_list|)
+name|getTimestamp
+parameter_list|()
 function_decl|;
 block|}
-end_interface
+end_class
 
 end_unit
 

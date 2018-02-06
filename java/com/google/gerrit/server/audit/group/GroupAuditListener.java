@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.audit
+DECL|package|com.google.gerrit.server.audit.group
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|audit
+operator|.
+name|group
 package|;
 end_package
 
@@ -76,92 +78,54 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|registration
+name|annotations
 operator|.
-name|DynamicSet
+name|ExtensionPoint
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|audit
-operator|.
-name|group
-operator|.
-name|GroupAuditListener
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|AbstractModule
-import|;
-end_import
-
-begin_class
-DECL|class|AuditModule
-specifier|public
-class|class
-name|AuditModule
-extends|extends
-name|AbstractModule
-block|{
+begin_interface
 annotation|@
-name|Override
-DECL|method|configure ()
-specifier|protected
-name|void
-name|configure
-parameter_list|()
-block|{
-name|DynamicSet
-operator|.
-name|setOf
-argument_list|(
-name|binder
-argument_list|()
-argument_list|,
-name|AuditListener
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|DynamicSet
-operator|.
-name|setOf
-argument_list|(
-name|binder
-argument_list|()
-argument_list|,
+name|ExtensionPoint
+DECL|interface|GroupAuditListener
+specifier|public
+interface|interface
 name|GroupAuditListener
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|bind
-argument_list|(
-name|AuditService
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+block|{
+DECL|method|onAddMembers (GroupMemberAuditEvent groupMemberAuditEvent)
+name|void
+name|onAddMembers
+parameter_list|(
+name|GroupMemberAuditEvent
+name|groupMemberAuditEvent
+parameter_list|)
+function_decl|;
+DECL|method|onDeleteMembers (GroupMemberAuditEvent groupMemberAuditEvent)
+name|void
+name|onDeleteMembers
+parameter_list|(
+name|GroupMemberAuditEvent
+name|groupMemberAuditEvent
+parameter_list|)
+function_decl|;
+DECL|method|onAddSubgroups (GroupSubgroupAuditEvent groupSubgroupAuditEvent)
+name|void
+name|onAddSubgroups
+parameter_list|(
+name|GroupSubgroupAuditEvent
+name|groupSubgroupAuditEvent
+parameter_list|)
+function_decl|;
+DECL|method|onDeleteSubgroups (GroupSubgroupAuditEvent groupSubgroupAuditEvent)
+name|void
+name|onDeleteSubgroups
+parameter_list|(
+name|GroupSubgroupAuditEvent
+name|groupSubgroupAuditEvent
+parameter_list|)
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 
