@@ -2756,11 +2756,18 @@ block|{
 case|case
 name|MERGE_FIRST_PARENT_UPDATE
 case|:
+return|return
+literal|": New merge patch set was added with a new first parent relative to Patch Set "
+operator|+
+name|priorPatchSetId
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"."
+return|;
 case|case
 name|TRIVIAL_REBASE
-case|:
-case|case
-name|NO_CHANGE
 case|:
 return|return
 literal|": Patch Set "
@@ -2771,6 +2778,34 @@ name|get
 argument_list|()
 operator|+
 literal|" was rebased."
+return|;
+case|case
+name|NO_CHANGE
+case|:
+return|return
+literal|": New patch set was added with same tree, parent"
+operator|+
+operator|(
+name|commit
+operator|.
+name|getParentCount
+argument_list|()
+operator|!=
+literal|1
+condition|?
+literal|"s"
+else|:
+literal|""
+operator|)
+operator|+
+literal|", and commit message as Patch Set "
+operator|+
+name|priorPatchSetId
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"."
 return|;
 case|case
 name|NO_CODE_CHANGE
