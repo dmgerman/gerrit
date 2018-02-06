@@ -568,7 +568,7 @@ parameter_list|)
 throws|throws
 name|AuthException
 throws|,
-name|MethodNotAllowedException
+name|NotInternalGroupException
 throws|,
 name|UnprocessableEntityException
 throws|,
@@ -592,7 +592,7 @@ argument_list|()
 operator|.
 name|orElseThrow
 argument_list|(
-name|MethodNotAllowedException
+name|NotInternalGroupException
 operator|::
 operator|new
 argument_list|)

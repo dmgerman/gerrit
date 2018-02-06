@@ -770,7 +770,7 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|MethodNotAllowedException
+name|NotInternalGroupException
 throws|,
 name|AuthException
 throws|,
@@ -796,7 +796,7 @@ argument_list|()
 operator|.
 name|orElseThrow
 argument_list|(
-name|MethodNotAllowedException
+name|NotInternalGroupException
 operator|::
 operator|new
 argument_list|)
