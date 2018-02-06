@@ -715,6 +715,8 @@ throws|,
 name|ConfigInvalidException
 function_decl|;
 comment|/** @return revision of the metadata that was loaded. */
+annotation|@
+name|Nullable
 DECL|method|getRevision ()
 specifier|public
 name|ObjectId
@@ -2359,6 +2361,8 @@ index|[]
 block|{}
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|getObjectId (String fileName)
 specifier|protected
 name|ObjectId
