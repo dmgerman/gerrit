@@ -284,9 +284,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|permissions
 operator|.
-name|VisibleRefFilter
+name|PermissionBackend
 import|;
 end_import
 
@@ -303,6 +303,24 @@ operator|.
 name|permissions
 operator|.
 name|PermissionBackend
+operator|.
+name|RefFilterOptions
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
 import|;
 end_import
 
@@ -648,14 +666,6 @@ name|CurrentUser
 argument_list|>
 name|user
 decl_stmt|;
-DECL|field|refFilterFactory
-specifier|private
-specifier|final
-name|VisibleRefFilter
-operator|.
-name|Factory
-name|refFilterFactory
-decl_stmt|;
 DECL|field|links
 specifier|private
 specifier|final
@@ -834,7 +844,7 @@ name|matchRegex
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListTags ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, Provider<CurrentUser> user, VisibleRefFilter.Factory refFilterFactory, WebLinks webLinks)
+DECL|method|ListTags ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, Provider<CurrentUser> user, WebLinks webLinks)
 specifier|public
 name|ListTags
 parameter_list|(
@@ -849,11 +859,6 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|user
-parameter_list|,
-name|VisibleRefFilter
-operator|.
-name|Factory
-name|refFilterFactory
 parameter_list|,
 name|WebLinks
 name|webLinks
@@ -876,12 +881,6 @@ operator|.
 name|user
 operator|=
 name|user
-expr_stmt|;
-name|this
-operator|.
-name|refFilterFactory
-operator|=
-name|refFilterFactory
 expr_stmt|;
 name|this
 operator|.
@@ -965,6 +964,8 @@ throws|,
 name|ResourceNotFoundException
 throws|,
 name|RestApiException
+throws|,
+name|PermissionBackendException
 block|{
 name|resource
 operator|.
@@ -1040,7 +1041,7 @@ name|visibleTags
 argument_list|(
 name|resource
 operator|.
-name|getProjectState
+name|getNameKey
 argument_list|()
 argument_list|,
 name|repo
@@ -1195,6 +1196,8 @@ throws|throws
 name|ResourceNotFoundException
 throws|,
 name|IOException
+throws|,
+name|PermissionBackendException
 block|{
 try|try
 init|(
@@ -1273,7 +1276,7 @@ name|visibleTags
 argument_list|(
 name|resource
 operator|.
-name|getProjectState
+name|getNameKey
 argument_list|()
 argument_list|,
 name|repo
@@ -1628,7 +1631,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-DECL|method|visibleTags (ProjectState state, Repository repo, Map<String, Ref> tags)
+DECL|method|visibleTags ( Project.NameKey project, Repository repo, Map<String, Ref> tags)
 specifier|private
 name|Map
 argument_list|<
@@ -1638,8 +1641,10 @@ name|Ref
 argument_list|>
 name|visibleTags
 parameter_list|(
-name|ProjectState
-name|state
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|Repository
 name|repo
@@ -1652,27 +1657,45 @@ name|Ref
 argument_list|>
 name|tags
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 block|{
 return|return
-name|refFilterFactory
+name|permissionBackend
 operator|.
-name|create
+name|user
 argument_list|(
-name|state
-argument_list|,
-name|repo
+name|user
 argument_list|)
 operator|.
-name|setShowMetadata
+name|project
 argument_list|(
-literal|false
+name|project
 argument_list|)
 operator|.
 name|filter
 argument_list|(
 name|tags
 argument_list|,
+name|repo
+argument_list|,
+name|RefFilterOptions
+operator|.
+name|builder
+argument_list|()
+operator|.
+name|setFilterMeta
+argument_list|(
 literal|true
+argument_list|)
+operator|.
+name|setFilterTagsSeparately
+argument_list|(
+literal|true
+argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 return|;
 block|}

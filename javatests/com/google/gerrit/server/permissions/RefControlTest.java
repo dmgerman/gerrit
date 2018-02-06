@@ -2138,6 +2138,15 @@ specifier|private
 name|ThreadLocalRequestContext
 name|requestContext
 decl_stmt|;
+DECL|field|refFilterFactory
+annotation|@
+name|Inject
+specifier|private
+name|DefaultRefFilter
+operator|.
+name|Factory
+name|refFilterFactory
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -6537,6 +6546,8 @@ argument_list|,
 name|changeControlFactory
 argument_list|,
 name|permissionBackend
+argument_list|,
+name|refFilterFactory
 argument_list|,
 operator|new
 name|MockUser

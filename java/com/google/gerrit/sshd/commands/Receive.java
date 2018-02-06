@@ -168,7 +168,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|VisibleRefFilter
+name|DefaultAdvertiseRefsHook
 import|;
 end_import
 
@@ -1016,14 +1016,14 @@ operator|.
 name|getAdvertiseRefsHook
 argument_list|()
 operator|instanceof
-name|VisibleRefFilter
+name|DefaultAdvertiseRefsHook
 condition|)
 block|{
 name|msg
 operator|.
 name|append
 argument_list|(
-literal|"VisibleRefFilter"
+literal|"DefaultAdvertiseRefsHook"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1057,7 +1057,7 @@ operator|.
 name|getAdvertiseRefsHook
 argument_list|()
 operator|instanceof
-name|VisibleRefFilter
+name|DefaultAdvertiseRefsHook
 condition|)
 block|{
 name|Map

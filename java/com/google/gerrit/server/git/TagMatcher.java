@@ -168,6 +168,7 @@ end_import
 
 begin_class
 DECL|class|TagMatcher
+specifier|public
 class|class
 name|TagMatcher
 block|{
@@ -306,6 +307,7 @@ name|updated
 expr_stmt|;
 block|}
 DECL|method|isReachable (Ref tagRef)
+specifier|public
 name|boolean
 name|isReachable
 parameter_list|(
