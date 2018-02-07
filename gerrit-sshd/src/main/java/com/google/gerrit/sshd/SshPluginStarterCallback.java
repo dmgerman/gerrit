@@ -227,15 +227,9 @@ specifier|final
 name|DispatchCommandProvider
 name|root
 decl_stmt|;
-DECL|field|cache
-specifier|private
-specifier|final
-name|SshCommandSensitiveFieldsCache
-name|cache
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshPluginStarterCallback ( @ommandNameCommands.ROOT) DispatchCommandProvider root, SshCommandSensitiveFieldsCache cache)
+DECL|method|SshPluginStarterCallback (@ommandNameCommands.ROOT) DispatchCommandProvider root)
 name|SshPluginStarterCallback
 parameter_list|(
 annotation|@
@@ -247,9 +241,6 @@ name|ROOT
 argument_list|)
 name|DispatchCommandProvider
 name|root
-parameter_list|,
-name|SshCommandSensitiveFieldsCache
-name|cache
 parameter_list|)
 block|{
 name|this
@@ -257,12 +248,6 @@ operator|.
 name|root
 operator|=
 name|root
-expr_stmt|;
-name|this
-operator|.
-name|cache
-operator|=
-name|cache
 expr_stmt|;
 block|}
 annotation|@
@@ -373,11 +358,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|cache
-operator|.
-name|evictAll
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|load (Plugin plugin)
 specifier|private
