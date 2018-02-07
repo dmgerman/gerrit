@@ -411,15 +411,16 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**    * Lookup a previously stored property.    *    * @param key unique property key.    * @return previously stored value, or {@code null}.    */
-annotation|@
-name|Nullable
+comment|/**    * Lookup a previously stored property.    *    * @param key unique property key.    * @return previously stored value, or {@code Optional#empty()}.    */
 DECL|method|get (PropertyKey<T> key)
 specifier|public
 parameter_list|<
 name|T
 parameter_list|>
+name|Optional
+argument_list|<
 name|T
+argument_list|>
 name|get
 parameter_list|(
 name|PropertyKey
@@ -430,7 +431,10 @@ name|key
 parameter_list|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 comment|/**    * Store a property for later retrieval.    *    * @param key unique property key.    * @param value value to store; or {@code null} to clear the value.    */
@@ -475,9 +479,12 @@ expr_stmt|;
 block|}
 DECL|method|getLastLoginExternalIdKey ()
 specifier|public
+name|Optional
+argument_list|<
 name|ExternalId
 operator|.
 name|Key
+argument_list|>
 name|getLastLoginExternalIdKey
 parameter_list|()
 block|{

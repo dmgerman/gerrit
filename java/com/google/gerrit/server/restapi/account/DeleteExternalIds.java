@@ -450,6 +450,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -687,9 +697,12 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+name|Optional
+argument_list|<
 name|ExternalId
 operator|.
 name|Key
+argument_list|>
 name|last
 init|=
 name|resource
@@ -760,11 +773,11 @@ argument_list|)
 operator|)
 operator|&&
 operator|(
-operator|(
+operator|!
 name|last
-operator|==
-literal|null
-operator|)
+operator|.
+name|isPresent
+argument_list|()
 operator|||
 operator|(
 operator|!
@@ -778,9 +791,6 @@ argument_list|(
 name|id
 operator|.
 name|key
-argument_list|()
-operator|.
-name|get
 argument_list|()
 argument_list|)
 operator|)
