@@ -4267,14 +4267,6 @@ name|endsWith
 argument_list|(
 literal|"-src.jar"
 argument_list|)
-operator|&&
-operator|!
-name|path
-operator|.
-name|contains
-argument_list|(
-literal|"/buck-out/gen/lib/gwt/"
-argument_list|)
 return|;
 block|}
 end_function
