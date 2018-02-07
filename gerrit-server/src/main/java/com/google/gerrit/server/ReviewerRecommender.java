@@ -1139,9 +1139,15 @@ name|getNameKey
 argument_list|()
 argument_list|,
 name|changeNotes
+operator|!=
+literal|null
+condition|?
+name|changeNotes
 operator|.
 name|getChangeId
 argument_list|()
+else|:
+literal|null
 argument_list|,
 name|query
 argument_list|,
