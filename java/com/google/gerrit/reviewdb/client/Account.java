@@ -195,7 +195,7 @@ specifier|final
 class|class
 name|Account
 block|{
-comment|/** Key local to Gerrit to identify a user. */
+comment|/**    * Key local to Gerrit to identify a user.    *    *<p>Fields in this type must be annotated with {@link Column} so that account IDs can be    * converted into protos (protobuf requires the {@link Column} annotations for decoding/encoding).    * We need to be able to store account IDs as protos because we store change protos in the change    * index and a change references account IDs for the change owner and the assignee.    */
 DECL|class|Id
 specifier|public
 specifier|static
@@ -548,94 +548,38 @@ literal|null
 return|;
 block|}
 block|}
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
 DECL|field|accountId
-specifier|protected
+specifier|private
 name|Id
 name|accountId
 decl_stmt|;
 comment|/** Date and time the user registered with the review server. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|2
-argument_list|)
 DECL|field|registeredOn
-specifier|protected
+specifier|private
 name|Timestamp
 name|registeredOn
 decl_stmt|;
 comment|/** Full name of the user ("Given-name Surname" style). */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|3
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|fullName
-specifier|protected
+specifier|private
 name|String
 name|fullName
 decl_stmt|;
 comment|/** Email address the user prefers to be contacted through. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|4
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|preferredEmail
-specifier|protected
+specifier|private
 name|String
 name|preferredEmail
 decl_stmt|;
-comment|// DELETED: id = 5 (contactFiledOn)
-comment|// DELETED: id = 6 (generalPreferences)
 comment|/**    * Is this user inactive? This is used to avoid showing some users (eg. former employees) in    * auto-suggest.    */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|7
-argument_list|)
 DECL|field|inactive
-specifier|protected
+specifier|private
 name|boolean
 name|inactive
 decl_stmt|;
 comment|/** The user-settable status of this account (e.g. busy, OOO, available) */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|8
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|status
-specifier|protected
+specifier|private
 name|String
 name|status
 decl_stmt|;
