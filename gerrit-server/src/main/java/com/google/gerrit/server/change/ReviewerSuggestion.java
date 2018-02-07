@@ -155,7 +155,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to provide reviewer suggestions.  *  *<p>Invoked by Gerrit a user who is searching for a reviewer to add to a change.  */
+comment|/**  * Listener to provide reviewer suggestions.  *  *<p>Invoked by Gerrit when a user clicks "Add Reviewer" on a change.  */
 end_comment
 
 begin_interface
