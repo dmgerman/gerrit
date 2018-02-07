@@ -1104,14 +1104,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
-name|pluginWeight
+name|key
 init|=
-name|config
-operator|.
-name|getString
-argument_list|(
-literal|"addReviewer"
-argument_list|,
 name|plugin
 operator|.
 name|getPluginName
@@ -1123,6 +1117,17 @@ name|plugin
 operator|.
 name|getExportName
 argument_list|()
+decl_stmt|;
+name|String
+name|pluginWeight
+init|=
+name|config
+operator|.
+name|getString
+argument_list|(
+literal|"addReviewer"
+argument_list|,
+name|key
 argument_list|,
 literal|"weight"
 argument_list|)
@@ -1142,6 +1147,17 @@ operator|=
 literal|"1"
 expr_stmt|;
 block|}
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"weight for {}: {}"
+argument_list|,
+name|key
+argument_list|,
+name|pluginWeight
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|weights
@@ -1167,19 +1183,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Exception while parsing weight for "
-operator|+
-name|plugin
-operator|.
-name|getPluginName
-argument_list|()
-operator|+
-literal|"-"
-operator|+
-name|plugin
-operator|.
-name|getExportName
-argument_list|()
+literal|"Exception while parsing weight for {}"
+argument_list|,
+name|key
 argument_list|,
 name|e
 argument_list|)
