@@ -2330,7 +2330,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Invalid value for reviewer field: %s"
+literal|"Invalid value for reviewer field: {}"
 argument_list|,
 name|v
 argument_list|)
@@ -2358,7 +2358,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Invalid value for reviewer field: %s"
+literal|"Invalid value for reviewer field: {}"
 argument_list|,
 name|v
 argument_list|)
@@ -2410,7 +2410,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse reviewer state from reviewer field: %s"
+literal|"Failed to parse reviewer state from reviewer field: {}"
 argument_list|,
 name|v
 argument_list|)
@@ -2456,7 +2456,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse account ID from reviewer field: %s"
+literal|"Failed to parse account ID from reviewer field: {}"
 argument_list|,
 name|v
 argument_list|)
@@ -2496,7 +2496,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse timestamp from reviewer field: %s"
+literal|"Failed to parse timestamp from reviewer field: {}"
 argument_list|,
 name|v
 argument_list|)
@@ -2601,7 +2601,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Invalid value for reviewer by email field: %s"
+literal|"Invalid value for reviewer by email field: {}"
 argument_list|,
 name|v
 argument_list|)
@@ -2629,7 +2629,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Invalid value for reviewer by email field: %s"
+literal|"Invalid value for reviewer by email field: {}"
 argument_list|,
 name|v
 argument_list|)
@@ -2681,7 +2681,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse reviewer state from reviewer by email field: %s"
+literal|"Failed to parse reviewer state from reviewer by email field: {}"
 argument_list|,
 name|v
 argument_list|)
@@ -2718,7 +2718,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse address from reviewer by email field: %s"
+literal|"Failed to parse address from reviewer by email field: {}"
 argument_list|,
 name|v
 argument_list|)
@@ -2758,7 +2758,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse timestamp from reviewer by email field: %s"
+literal|"Failed to parse timestamp from reviewer by email field: {}"
 argument_list|,
 name|v
 argument_list|)
