@@ -131,12 +131,12 @@ specifier|public
 name|boolean
 name|visibleToAll
 decl_stmt|;
-DECL|field|ownerGroupId
+DECL|field|ownerGroupUuid
 specifier|public
 name|AccountGroup
 operator|.
-name|Id
-name|ownerGroupId
+name|UUID
+name|ownerGroupUuid
 decl_stmt|;
 DECL|field|initialMembers
 specifier|public
