@@ -87,6 +87,11 @@ specifier|public
 name|Boolean
 name|allowDrafts
 decl_stmt|;
+DECL|field|disablePrivateChanges
+specifier|public
+name|Boolean
+name|disablePrivateChanges
+decl_stmt|;
 DECL|field|largeChange
 specifier|public
 name|int
