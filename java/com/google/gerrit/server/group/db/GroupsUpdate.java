@@ -3080,8 +3080,10 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|VisibleForTesting
 DECL|method|createGroupInNoteDb ( InternalGroupCreation groupCreation, InternalGroupUpdate groupUpdate)
-specifier|private
+specifier|public
 name|InternalGroup
 name|createGroupInNoteDb
 parameter_list|(
