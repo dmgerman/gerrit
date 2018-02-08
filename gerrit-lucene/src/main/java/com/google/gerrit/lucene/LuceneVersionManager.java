@@ -692,7 +692,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Not a directory: %s"
+literal|"Not a directory: {}"
 argument_list|,
 name|p
 operator|.
