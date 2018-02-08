@@ -2273,6 +2273,15 @@ operator|*
 literal|1024
 decl_stmt|;
 comment|// Presize 10 blocks.
+DECL|field|PLAIN_TEXT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PLAIN_TEXT
+init|=
+literal|"text/plain"
+decl_stmt|;
 comment|/**    * Garbage prefix inserted before JSON output to prevent XSSI.    *    *<p>This prefix is ")]}'\n" and is designed to prevent a web browser from executing the response    * body if the resource URI were to be referenced using a&lt;script src="...&gt; HTML tag from    * another web site. Clients using the HTTP interface will need to always strip the first line of    * response data to remove this magic header.    */
 DECL|field|JSON_MAGIC
 specifier|public
@@ -2883,14 +2892,9 @@ name|rc
 operator|instanceof
 name|AcceptsPost
 operator|&&
-literal|"POST"
-operator|.
-name|equals
+name|isPost
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -2996,24 +3000,14 @@ name|isEmpty
 argument_list|()
 operator|&&
 operator|(
-literal|"POST"
-operator|.
-name|equals
+name|isPost
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 operator|||
-literal|"PUT"
-operator|.
-name|equals
+name|isPut
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 operator|)
 condition|)
@@ -3174,14 +3168,9 @@ name|c
 operator|instanceof
 name|AcceptsPost
 operator|&&
-literal|"POST"
-operator|.
-name|equals
+name|isPost
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -3227,14 +3216,9 @@ name|c
 operator|instanceof
 name|AcceptsDelete
 operator|&&
-literal|"DELETE"
-operator|.
-name|equals
+name|isDelete
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -3342,24 +3326,14 @@ name|isEmpty
 argument_list|()
 operator|&&
 operator|(
-literal|"POST"
-operator|.
-name|equals
+name|isPost
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 operator|||
-literal|"PUT"
-operator|.
-name|equals
+name|isPut
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 operator|)
 condition|)
@@ -3419,14 +3393,9 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|&&
-literal|"DELETE"
-operator|.
-name|equals
+name|isDelete
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -3899,33 +3868,7 @@ block|}
 catch|catch
 parameter_list|(
 name|MalformedJsonException
-name|e
-parameter_list|)
-block|{
-name|responseBytes
-operator|=
-name|replyError
-argument_list|(
-name|req
-argument_list|,
-name|res
-argument_list|,
-name|status
-operator|=
-name|SC_BAD_REQUEST
-argument_list|,
-literal|"Invalid "
-operator|+
-name|JSON_TYPE
-operator|+
-literal|" in request"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|JsonParseException
 name|e
 parameter_list|)
@@ -4459,14 +4402,9 @@ block|{
 if|if
 condition|(
 operator|!
-literal|"POST"
-operator|.
-name|equals
+name|isPost
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -4514,10 +4452,10 @@ block|{
 if|if
 condition|(
 operator|!
-literal|"text/plain"
-operator|.
-name|equals
+name|isType
 argument_list|(
+name|PLAIN_TEXT
+argument_list|,
 name|req
 operator|.
 name|getContentType
@@ -4535,7 +4473,6 @@ name|CONTENT_TYPE
 argument_list|)
 throw|;
 block|}
-elseif|else
 if|if
 condition|(
 name|Strings
@@ -4971,7 +4908,7 @@ name|res
 operator|.
 name|setContentType
 argument_list|(
-literal|"text/plain"
+name|PLAIN_TEXT
 argument_list|)
 expr_stmt|;
 name|res
@@ -5914,8 +5851,7 @@ block|}
 block|}
 end_function
 
-begin_elseif
-elseif|else
+begin_if
 if|if
 condition|(
 name|rawInputRequest
@@ -5935,20 +5871,14 @@ name|type
 argument_list|)
 return|;
 block|}
-end_elseif
+end_if
 
-begin_elseif
-elseif|else
+begin_if
 if|if
 condition|(
-literal|"DELETE"
-operator|.
-name|equals
+name|isDelete
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 operator|&&
 name|hasNoBody
@@ -5961,10 +5891,9 @@ return|return
 literal|null
 return|;
 block|}
-end_elseif
+end_if
 
-begin_elseif
-elseif|else
+begin_if
 if|if
 condition|(
 name|hasNoBody
@@ -5980,15 +5909,14 @@ name|type
 argument_list|)
 return|;
 block|}
-end_elseif
+end_if
 
-begin_elseif
-elseif|else
+begin_if
 if|if
 condition|(
 name|isType
 argument_list|(
-literal|"text/plain"
+name|PLAIN_TEXT
 argument_list|,
 name|req
 operator|.
@@ -6069,20 +5997,14 @@ argument_list|)
 return|;
 block|}
 block|}
-end_elseif
+end_if
 
-begin_elseif
-elseif|else
+begin_if
 if|if
 condition|(
-literal|"POST"
-operator|.
-name|equals
+name|isPost
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 operator|&&
 name|isType
@@ -6117,11 +6039,9 @@ name|type
 argument_list|)
 return|;
 block|}
-end_elseif
+end_if
 
-begin_else
-else|else
-block|{
+begin_throw
 throw|throw
 operator|new
 name|BadRequestException
@@ -6131,8 +6051,7 @@ operator|+
 name|JSON_TYPE
 argument_list|)
 throw|;
-block|}
-end_else
+end_throw
 
 begin_function
 unit|}    private
@@ -7144,15 +7063,7 @@ block|}
 catch|catch
 parameter_list|(
 name|SecurityException
-name|e
-parameter_list|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|NoSuchFieldException
 name|e
 parameter_list|)
@@ -7747,7 +7658,7 @@ name|b64
 operator|.
 name|setContentType
 argument_list|(
-literal|"text/plain"
+name|PLAIN_TEXT
 argument_list|)
 operator|.
 name|setCharacterEncoding
@@ -7796,7 +7707,6 @@ name|src
 return|;
 comment|// Do not compress very small payloads.
 block|}
-elseif|else
 if|if
 condition|(
 name|len
@@ -8119,10 +8029,7 @@ condition|(
 name|view
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|view
 operator|instanceof
 name|AcceptsPost
@@ -8173,7 +8080,6 @@ name|rsrc
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 throw|throw
 operator|new
@@ -8404,7 +8310,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|r
@@ -8421,8 +8326,6 @@ name|projection
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|AmbiguousViewException
@@ -8464,7 +8367,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 throw|;
-block|}
 block|}
 end_function
 
@@ -8768,6 +8670,79 @@ block|}
 end_function
 
 begin_function
+DECL|method|isDelete (HttpServletRequest req)
+specifier|private
+name|boolean
+name|isDelete
+parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|)
+block|{
+return|return
+literal|"DELETE"
+operator|.
+name|equals
+argument_list|(
+name|req
+operator|.
+name|getMethod
+argument_list|()
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|isPost (HttpServletRequest req)
+specifier|private
+specifier|static
+name|boolean
+name|isPost
+parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|)
+block|{
+return|return
+literal|"POST"
+operator|.
+name|equals
+argument_list|(
+name|req
+operator|.
+name|getMethod
+argument_list|()
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|isPut (HttpServletRequest req)
+specifier|private
+name|boolean
+name|isPut
+parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|)
+block|{
+return|return
+literal|"PUT"
+operator|.
+name|equals
+argument_list|(
+name|req
+operator|.
+name|getMethod
+argument_list|()
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|isRead (HttpServletRequest req)
 specifier|private
 specifier|static
@@ -8904,11 +8879,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Error in %s %s"
+literal|"Error in {} {}"
 argument_list|,
 name|req
 operator|.
@@ -8916,7 +8887,6 @@ name|getMethod
 argument_list|()
 argument_list|,
 name|uri
-argument_list|)
 argument_list|,
 name|err
 argument_list|)
@@ -9190,7 +9160,7 @@ argument_list|)
 operator|.
 name|setContentType
 argument_list|(
-literal|"text/plain"
+name|PLAIN_TEXT
 argument_list|)
 argument_list|)
 return|;
@@ -9331,7 +9301,6 @@ return|return
 literal|false
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|expect
@@ -9346,7 +9315,6 @@ return|return
 literal|true
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|given
