@@ -1241,6 +1241,8 @@ name|of
 argument_list|()
 argument_list|,
 name|threads
+argument_list|,
+literal|false
 argument_list|)
 return|;
 case|case
@@ -1257,6 +1259,8 @@ name|of
 argument_list|()
 argument_list|,
 name|threads
+argument_list|,
+literal|false
 argument_list|)
 return|;
 default|default:

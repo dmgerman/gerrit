@@ -9503,19 +9503,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// TODO(aliceks): Remove this line when we have a group index in slave mode.
-name|assume
-argument_list|()
-operator|.
-name|that
-argument_list|(
-name|readGroupsFromNoteDb
-argument_list|()
-argument_list|)
-operator|.
-name|isFalse
-argument_list|()
-expr_stmt|;
 name|GroupInput
 name|groupInput
 init|=
