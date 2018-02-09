@@ -3783,6 +3783,21 @@ argument_list|(
 literal|"Rebuilding changes in NoteDb"
 argument_list|)
 expr_stmt|;
+name|ImmutableListMultimap
+argument_list|<
+name|Project
+operator|.
+name|NameKey
+argument_list|,
+name|Change
+operator|.
+name|Id
+argument_list|>
+name|changesByProject
+init|=
+name|getChangesByProject
+argument_list|()
+decl_stmt|;
 name|List
 argument_list|<
 name|ListenableFuture
@@ -3807,26 +3822,6 @@ name|ContextHelper
 argument_list|()
 init|)
 block|{
-name|ImmutableListMultimap
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|,
-name|Change
-operator|.
-name|Id
-argument_list|>
-name|changesByProject
-init|=
-name|getChangesByProject
-argument_list|(
-name|contextHelper
-operator|.
-name|getReviewDb
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|List
 argument_list|<
 name|Project
@@ -3988,7 +3983,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|getChangesByProject (ReviewDb db)
+DECL|method|getChangesByProject ()
 specifier|private
 name|ImmutableListMultimap
 argument_list|<
@@ -4001,10 +3996,7 @@ operator|.
 name|Id
 argument_list|>
 name|getChangesByProject
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -4051,6 +4043,20 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
+try|try
+init|(
+name|ReviewDb
+name|db
+init|=
+name|unwrapDb
+argument_list|(
+name|schemaFactory
+operator|.
+name|open
+argument_list|()
+argument_list|)
+init|)
+block|{
 if|if
 condition|(
 operator|!
@@ -4135,6 +4141,7 @@ argument_list|,
 name|out
 argument_list|)
 return|;
+block|}
 block|}
 end_function
 
