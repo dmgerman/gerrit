@@ -449,7 +449,7 @@ literal|"[a-zA-Z0-9]"
 decl_stmt|;
 comment|/** Regular expression that a username must match. */
 DECL|field|USER_NAME_PATTERN_REGEX
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String

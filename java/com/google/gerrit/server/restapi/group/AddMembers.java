@@ -1421,13 +1421,11 @@ block|{
 if|if
 condition|(
 operator|!
-name|user
-operator|.
-name|matches
-argument_list|(
 name|ExternalId
 operator|.
-name|USER_NAME_PATTERN_REGEX
+name|isValidUsername
+argument_list|(
+name|user
 argument_list|)
 condition|)
 block|{
