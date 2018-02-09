@@ -113,6 +113,19 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**    * Synchronously reindex a group if it is stale.    *    * @param uuid group UUID to index.    * @return whether the group was reindexed    */
+DECL|method|reindexIfStale (AccountGroup.UUID uuid)
+name|boolean
+name|reindexIfStale
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 
