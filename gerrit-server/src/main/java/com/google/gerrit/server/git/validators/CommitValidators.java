@@ -1526,6 +1526,20 @@ name|CommitValidationException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"CommitValidationException occurred: {}"
+argument_list|,
+name|e
+operator|.
+name|getFullMessage
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 comment|// Keep the old messages (and their order) in case of an exception
 name|messages
 operator|.
