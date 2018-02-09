@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Error indicating the SSH user name does not match {@link  * com.google.gerrit.server.account.ExternalId#USER_NAME_PATTERN_REGEX} pattern.  */
+comment|/** Error indicating the SSH user name does not match the expected pattern. */
 end_comment
 
 begin_class

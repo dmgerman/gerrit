@@ -597,13 +597,11 @@ block|{
 if|if
 condition|(
 operator|!
-name|newUsername
-operator|.
-name|matches
-argument_list|(
 name|ExternalId
 operator|.
-name|USER_NAME_PATTERN_REGEX
+name|isValidUsername
+argument_list|(
+name|newUsername
 argument_list|)
 condition|)
 block|{
