@@ -1221,8 +1221,8 @@ throw|;
 block|}
 name|AccountGroup
 operator|.
-name|Id
-name|ownerId
+name|UUID
+name|ownerUuid
 init|=
 name|owner
 argument_list|(
@@ -1273,9 +1273,9 @@ argument_list|)
 expr_stmt|;
 name|args
 operator|.
-name|ownerGroupId
+name|ownerGroupUuid
 operator|=
-name|ownerId
+name|ownerUuid
 expr_stmt|;
 if|if
 condition|(
@@ -1375,7 +1375,7 @@ name|args
 operator|.
 name|initialMembers
 operator|=
-name|ownerId
+name|ownerUuid
 operator|==
 literal|null
 condition|?
@@ -1461,7 +1461,7 @@ DECL|method|owner (GroupInput input)
 specifier|private
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 name|owner
 parameter_list|(
 name|GroupInput
@@ -1501,7 +1501,7 @@ decl_stmt|;
 return|return
 name|d
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 return|;
 block|}
@@ -1722,7 +1722,7 @@ if|if
 condition|(
 name|createGroupArgs
 operator|.
-name|ownerGroupId
+name|ownerGroupUuid
 operator|!=
 literal|null
 condition|)
@@ -1739,7 +1739,7 @@ name|get
 argument_list|(
 name|createGroupArgs
 operator|.
-name|ownerGroupId
+name|ownerGroupUuid
 argument_list|)
 decl_stmt|;
 name|ownerGroup
