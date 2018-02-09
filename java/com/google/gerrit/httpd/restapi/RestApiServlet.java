@@ -2282,6 +2282,20 @@ name|PLAIN_TEXT
 init|=
 literal|"text/plain"
 decl_stmt|;
+DECL|field|TYPE_SPLIT_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|TYPE_SPLIT_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"[ ,;][ ,;]*"
+argument_list|)
+decl_stmt|;
 comment|/**    * Garbage prefix inserted before JSON output to prevent XSSI.    *    *<p>This prefix is ")]}'\n" and is designed to prevent a web browser from executing the response    * body if the resource URI were to be referenced using a&lt;script src="...&gt; HTML tag from    * another web site. Clients using the HTTP interface will need to always strip the first line of    * response data to remove this magic header.    */
 DECL|field|JSON_MAGIC
 specifier|public
@@ -9336,11 +9350,16 @@ control|(
 name|String
 name|p
 range|:
-name|given
+name|Splitter
+operator|.
+name|on
+argument_list|(
+name|TYPE_SPLIT_PATTERN
+argument_list|)
 operator|.
 name|split
 argument_list|(
-literal|"[ ,;][ ,;]*"
+name|given
 argument_list|)
 control|)
 block|{
