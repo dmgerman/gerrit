@@ -1436,6 +1436,20 @@ name|KEY_PANEL
 init|=
 literal|"panel"
 decl_stmt|;
+DECL|field|EXCLUSIVE_PERMISSIONS_SPLIT_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|EXCLUSIVE_PERMISSIONS_SPLIT_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"[, \t]{1,}"
+argument_list|)
+decl_stmt|;
 DECL|field|projectName
 specifier|private
 name|Project
@@ -4181,11 +4195,16 @@ control|(
 name|String
 name|n
 range|:
-name|varName
+name|Splitter
+operator|.
+name|on
+argument_list|(
+name|EXCLUSIVE_PERMISSIONS_SPLIT_PATTERN
+argument_list|)
 operator|.
 name|split
 argument_list|(
-literal|"[, \t]{1,}"
+name|varName
 argument_list|)
 control|)
 block|{
