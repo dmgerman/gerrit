@@ -2269,12 +2269,17 @@ operator|+
 name|adr
 return|;
 block|}
-DECL|method|parseReviewerFieldValues (Iterable<String> values)
+DECL|method|parseReviewerFieldValues (Change.Id changeId, Iterable<String> values)
 specifier|public
 specifier|static
 name|ReviewerSet
 name|parseReviewerFieldValues
 parameter_list|(
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|,
 name|Iterable
 argument_list|<
 name|String
@@ -2330,7 +2335,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Invalid value for reviewer field: {}"
+literal|"Invalid value for reviewer field from change {}: {}"
+argument_list|,
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|v
 argument_list|)
@@ -2358,7 +2368,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Invalid value for reviewer field: {}"
+literal|"Invalid value for reviewer field from change {}: {}"
+argument_list|,
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|v
 argument_list|)
@@ -2410,7 +2425,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse reviewer state from reviewer field: {}"
+literal|"Failed to parse reviewer state of reviewer field from change {}: {}"
+argument_list|,
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|v
 argument_list|)
@@ -2456,7 +2476,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse account ID from reviewer field: {}"
+literal|"Failed to parse account ID of reviewer field from change {}: {}"
+argument_list|,
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|v
 argument_list|)
@@ -2496,7 +2521,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse timestamp from reviewer field: {}"
+literal|"Failed to parse timestamp of reviewer field from change {}: {}"
+argument_list|,
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|v
 argument_list|)
@@ -2542,12 +2572,17 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|parseReviewerByEmailFieldValues (Iterable<String> values)
+DECL|method|parseReviewerByEmailFieldValues ( Change.Id changeId, Iterable<String> values)
 specifier|public
 specifier|static
 name|ReviewerByEmailSet
 name|parseReviewerByEmailFieldValues
 parameter_list|(
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|,
 name|Iterable
 argument_list|<
 name|String
@@ -2601,7 +2636,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Invalid value for reviewer by email field: {}"
+literal|"Invalid value for reviewer by email field from change {}: {}"
+argument_list|,
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|v
 argument_list|)
@@ -2629,7 +2669,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Invalid value for reviewer by email field: {}"
+literal|"Invalid value for reviewer by email field from change {}: {}"
+argument_list|,
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|v
 argument_list|)
@@ -2681,7 +2726,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse reviewer state from reviewer by email field: {}"
+literal|"Failed to parse reviewer state of reviewer by email field from change {}: {}"
+argument_list|,
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|v
 argument_list|)
@@ -2718,7 +2768,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse address from reviewer by email field: {}"
+literal|"Failed to parse address of reviewer by email field from change {}: {}"
+argument_list|,
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|v
 argument_list|)
@@ -2758,7 +2813,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse timestamp from reviewer by email field: {}"
+literal|"Failed to parse timestamp of reviewer by email field from change {}: {}"
+argument_list|,
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|v
 argument_list|)

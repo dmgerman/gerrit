@@ -4371,6 +4371,11 @@ name|ChangeField
 operator|.
 name|parseReviewerFieldValues
 argument_list|(
+name|cd
+operator|.
+name|getId
+argument_list|()
+argument_list|,
 name|FluentIterable
 operator|.
 name|from
@@ -4418,6 +4423,11 @@ name|ChangeField
 operator|.
 name|parseReviewerByEmailFieldValues
 argument_list|(
+name|cd
+operator|.
+name|getId
+argument_list|()
+argument_list|,
 name|FluentIterable
 operator|.
 name|from
@@ -4465,6 +4475,11 @@ name|ChangeField
 operator|.
 name|parseReviewerFieldValues
 argument_list|(
+name|cd
+operator|.
+name|getId
+argument_list|()
+argument_list|,
 name|FluentIterable
 operator|.
 name|from
@@ -4512,6 +4527,11 @@ name|ChangeField
 operator|.
 name|parseReviewerByEmailFieldValues
 argument_list|(
+name|cd
+operator|.
+name|getId
+argument_list|()
+argument_list|,
 name|FluentIterable
 operator|.
 name|from
