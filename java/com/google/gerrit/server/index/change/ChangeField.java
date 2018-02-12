@@ -2333,7 +2333,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Invalid value for reviewer field from change {}: {}"
 argument_list|,
@@ -2366,7 +2366,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Invalid value for reviewer field from change {}: {}"
 argument_list|,
@@ -2423,7 +2423,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Failed to parse reviewer state of reviewer field from change {}: {}"
 argument_list|,
@@ -2474,7 +2474,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Failed to parse account ID of reviewer field from change {}: {}"
 argument_list|,
@@ -2519,7 +2519,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Failed to parse timestamp of reviewer field from change {}: {}"
 argument_list|,
@@ -2634,7 +2634,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Invalid value for reviewer by email field from change {}: {}"
 argument_list|,
@@ -2667,7 +2667,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Invalid value for reviewer by email field from change {}: {}"
 argument_list|,
@@ -2724,7 +2724,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Failed to parse reviewer state of reviewer by email field from change {}: {}"
 argument_list|,
@@ -2766,7 +2766,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Failed to parse address of reviewer by email field from change {}: {}"
 argument_list|,
@@ -2811,7 +2811,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Failed to parse timestamp of reviewer by email field from change {}: {}"
 argument_list|,
