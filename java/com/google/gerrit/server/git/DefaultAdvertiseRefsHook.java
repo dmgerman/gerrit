@@ -179,7 +179,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Wrapper around {@link PermissionBackend.ForProject} that implements {@link  * org.eclipse.jgit.transport.AdvertiseRefsHook}.  */
+comment|/**  * Wrapper around {@link com.google.gerrit.server.permissions.PermissionBackend.ForProject} that  * implements {@link org.eclipse.jgit.transport.AdvertiseRefsHook}.  */
 end_comment
 
 begin_class
