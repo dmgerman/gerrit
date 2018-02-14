@@ -342,7 +342,7 @@ name|interval
 init|=
 name|scheduleConfig
 operator|.
-name|getInterval
+name|interval
 argument_list|()
 decl_stmt|;
 name|long
@@ -350,7 +350,7 @@ name|delay
 init|=
 name|scheduleConfig
 operator|.
-name|getInitialDelay
+name|initialDelay
 argument_list|()
 decl_stmt|;
 if|if

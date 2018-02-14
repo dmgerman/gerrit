@@ -151,8 +151,9 @@ parameter_list|)
 block|{
 name|scheduleConfig
 operator|=
-operator|new
 name|ScheduleConfig
+operator|.
+name|create
 argument_list|(
 name|cfg
 argument_list|,
