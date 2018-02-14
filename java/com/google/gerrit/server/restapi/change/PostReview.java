@@ -1900,16 +1900,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|OptionalInt
 import|;
 end_import
@@ -3135,12 +3125,9 @@ block|{
 comment|// User posting this review isn't currently in the reviewer or CC list,
 comment|// isn't being explicitly added, and isn't voting on any label.
 comment|// Automatically CC them on this change so they receive replies.
-name|Optional
-argument_list|<
 name|PostReviewers
 operator|.
 name|Addition
-argument_list|>
 name|selfAddition
 init|=
 name|postReviewers
@@ -3155,14 +3142,6 @@ argument_list|,
 name|revision
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|selfAddition
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
 name|bu
 operator|.
 name|addOp
@@ -3177,13 +3156,9 @@ argument_list|()
 argument_list|,
 name|selfAddition
 operator|.
-name|get
-argument_list|()
-operator|.
 name|op
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// Add WorkInProgressOp if requested.
 if|if
