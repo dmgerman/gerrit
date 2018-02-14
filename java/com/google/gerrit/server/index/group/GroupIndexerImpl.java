@@ -662,6 +662,14 @@ name|getWriteIndexes
 argument_list|()
 control|)
 block|{
+comment|// Evict the cache to get an up-to-date value for sure.
+name|groupCache
+operator|.
+name|evict
+argument_list|(
+name|uuid
+argument_list|)
+expr_stmt|;
 name|Optional
 argument_list|<
 name|InternalGroup

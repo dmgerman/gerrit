@@ -102,16 +102,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Optional
@@ -170,20 +160,30 @@ name|UUID
 name|groupUuid
 parameter_list|)
 function_decl|;
-comment|/** Notify the cache that a new group was constructed. */
-DECL|method|onCreateGroup (AccountGroup.UUID groupUuid)
+comment|/**    * Removes the association of the given ID with a group.    *    *<p>The next call to {@link #get(AccountGroup.Id)} won't provide a cached value.    *    *<p>It's safe to call this method if no association exists.    *    *<p><strong>Note:</strong>This method doesn't touch any associations between names/UUIDs and    * groups!    *    * @param groupId the ID of a possibly associated group    */
+DECL|method|evict (AccountGroup.Id groupId)
 name|void
-name|onCreateGroup
+name|evict
 parameter_list|(
 name|AccountGroup
 operator|.
-name|UUID
-name|groupUuid
+name|Id
+name|groupId
 parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
-DECL|method|evict (AccountGroup.UUID groupUuid, AccountGroup.Id groupId, AccountGroup.NameKey groupName)
+comment|/**    * Removes the association of the given name with a group.    *    *<p>The next call to {@link #get(AccountGroup.NameKey)} won't provide a cached value.    *    *<p>It's safe to call this method if no association exists.    *    *<p><strong>Note:</strong>This method doesn't touch any associations between IDs/UUIDs and    * groups!    *    * @param groupName the name of a possibly associated group    */
+DECL|method|evict (AccountGroup.NameKey groupName)
+name|void
+name|evict
+parameter_list|(
+name|AccountGroup
+operator|.
+name|NameKey
+name|groupName
+parameter_list|)
+function_decl|;
+comment|/**    * Removes the association of the given UUID with a group.    *    *<p>The next call to {@link #get(AccountGroup.UUID)} won't provide a cached value.    *    *<p>It's safe to call this method if no association exists.    *    *<p><strong>Note:</strong>This method doesn't touch any associations between names/IDs and    * groups!    *    * @param groupUuid the UUID of a possibly associated group    */
+DECL|method|evict (AccountGroup.UUID groupUuid)
 name|void
 name|evict
 parameter_list|(
@@ -191,31 +191,7 @@ name|AccountGroup
 operator|.
 name|UUID
 name|groupUuid
-parameter_list|,
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|,
-name|AccountGroup
-operator|.
-name|NameKey
-name|groupName
 parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-DECL|method|evictAfterRename (AccountGroup.NameKey oldName)
-name|void
-name|evictAfterRename
-parameter_list|(
-name|AccountGroup
-operator|.
-name|NameKey
-name|oldName
-parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
 block|}
 end_interface

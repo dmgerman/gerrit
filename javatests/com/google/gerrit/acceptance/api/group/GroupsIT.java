@@ -378,20 +378,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|cache
-operator|.
-name|LoadingCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|ImmutableList
@@ -1162,20 +1148,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|name
-operator|.
-name|Named
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -1275,16 +1247,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
 import|;
 end_import
 
@@ -1665,26 +1627,6 @@ name|Inject
 specifier|private
 name|GroupsConsistencyChecker
 name|consistencyChecker
-decl_stmt|;
-annotation|@
-name|Inject
-annotation|@
-name|Named
-argument_list|(
-literal|"groups_byuuid"
-argument_list|)
-DECL|field|groupsByUUIDCache
-specifier|private
-name|LoadingCache
-argument_list|<
-name|String
-argument_list|,
-name|Optional
-argument_list|<
-name|InternalGroup
-argument_list|>
-argument_list|>
-name|groupsByUUIDCache
 decl_stmt|;
 annotation|@
 name|Before
@@ -9700,17 +9642,12 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// Evict group from cache to be sure that we use the index state for staleness checks. This has
-comment|// to happen directly on the groupsByUUID cache because GroupsCacheImpl triggers a reindex for
-comment|// the group.
-name|groupsByUUIDCache
+comment|// Evict group from cache to be sure that we use the index state for staleness checks.
+name|groupCache
 operator|.
-name|invalidate
+name|evict
 argument_list|(
 name|groupUuid
-operator|.
-name|get
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
