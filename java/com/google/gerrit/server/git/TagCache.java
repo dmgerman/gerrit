@@ -429,6 +429,7 @@ block|}
 block|}
 block|}
 DECL|method|get (Project.NameKey name)
+specifier|public
 name|TagSetHolder
 name|get
 parameter_list|(

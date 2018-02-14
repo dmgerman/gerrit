@@ -136,6 +136,7 @@ end_import
 
 begin_class
 DECL|class|TagSetHolder
+specifier|public
 class|class
 name|TagSetHolder
 block|{
@@ -215,6 +216,7 @@ name|tags
 expr_stmt|;
 block|}
 DECL|method|matcher (TagCache cache, Repository db, Collection<Ref> include)
+specifier|public
 name|TagMatcher
 name|matcher
 parameter_list|(

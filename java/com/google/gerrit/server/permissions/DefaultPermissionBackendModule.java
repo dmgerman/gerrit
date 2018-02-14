@@ -139,10 +139,19 @@ name|void
 name|configure
 parameter_list|()
 block|{
-comment|// TODO(sop) Hide ProjectControl, RefControl, ChangeControl related bindings.
+comment|// TODO(hiesel) Hide ProjectControl, RefControl, ChangeControl related bindings.
 name|factory
 argument_list|(
 name|ProjectControl
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|factory
+argument_list|(
+name|DefaultRefFilter
 operator|.
 name|Factory
 operator|.
