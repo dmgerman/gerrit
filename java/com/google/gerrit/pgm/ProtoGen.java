@@ -499,20 +499,6 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Created "
-operator|+
-name|file
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
 return|return
 literal|0
 return|;
