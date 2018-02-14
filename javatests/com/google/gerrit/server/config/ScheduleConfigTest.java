@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth8
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -193,6 +209,16 @@ operator|.
 name|time
 operator|.
 name|ZonedDateTime
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -698,7 +724,7 @@ name|schedule
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasValue
 argument_list|(
 name|Schedule
 operator|.
@@ -762,21 +788,8 @@ name|schedule
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
-argument_list|(
-name|Schedule
-operator|.
-name|create
-argument_list|(
-name|ScheduleConfig
-operator|.
-name|MISSING_CONFIG
-argument_list|,
-name|ScheduleConfig
-operator|.
-name|MISSING_CONFIG
-argument_list|)
-argument_list|)
+name|isEmpty
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|initialDelay (String startTime, String interval)
@@ -792,7 +805,12 @@ name|String
 name|interval
 parameter_list|)
 block|{
-return|return
+name|Optional
+argument_list|<
+name|Schedule
+argument_list|>
+name|schedule
+init|=
 name|ScheduleConfig
 operator|.
 name|builder
@@ -821,6 +839,20 @@ name|build
 argument_list|()
 operator|.
 name|schedule
+argument_list|()
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|schedule
+argument_list|)
+operator|.
+name|isPresent
+argument_list|()
+expr_stmt|;
+return|return
+name|schedule
+operator|.
+name|get
 argument_list|()
 operator|.
 name|initialDelay
