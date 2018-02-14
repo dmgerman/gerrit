@@ -460,16 +460,17 @@ name|ZonedDateTime
 name|now
 parameter_list|()
 function_decl|;
-comment|/** Number of milliseconds between events. */
 annotation|@
 name|Memoized
-DECL|method|interval ()
+DECL|method|schedule ()
 specifier|public
-name|long
-name|interval
+name|Schedule
+name|schedule
 parameter_list|()
 block|{
-return|return
+name|long
+name|interval
+init|=
 name|computeInterval
 argument_list|(
 name|config
@@ -484,35 +485,19 @@ argument_list|,
 name|keyInterval
 argument_list|()
 argument_list|)
-return|;
-block|}
-comment|/**    * Milliseconds between constructor invocation and first event time.    *    *<p>If there is any lag between the constructor invocation and queuing the object into an    * executor the event will run later, as there is no method to adjust for the scheduling delay.    */
-annotation|@
-name|Memoized
-DECL|method|initialDelay ()
-specifier|public
+decl_stmt|;
 name|long
 name|initialDelay
-parameter_list|()
-block|{
-name|long
-name|interval
-init|=
-name|interval
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
 name|interval
-operator|<=
+operator|>
 literal|0
 condition|)
 block|{
-return|return
-name|interval
-return|;
-block|}
-return|return
+name|initialDelay
+operator|=
 name|computeInitialDelay
 argument_list|(
 name|config
@@ -531,6 +516,24 @@ name|now
 argument_list|()
 argument_list|,
 name|interval
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|initialDelay
+operator|=
+name|interval
+expr_stmt|;
+block|}
+return|return
+name|Schedule
+operator|.
+name|create
+argument_list|(
+name|interval
+argument_list|,
+name|initialDelay
 argument_list|)
 return|;
 block|}
@@ -1109,6 +1112,54 @@ name|ScheduleConfig
 name|build
 parameter_list|()
 function_decl|;
+block|}
+annotation|@
+name|AutoValue
+DECL|class|Schedule
+specifier|public
+specifier|abstract
+specifier|static
+class|class
+name|Schedule
+block|{
+comment|/** Number of milliseconds between events. */
+DECL|method|interval ()
+specifier|public
+specifier|abstract
+name|long
+name|interval
+parameter_list|()
+function_decl|;
+comment|/**      * Milliseconds between constructor invocation and first event time.      *      *<p>If there is any lag between the constructor invocation and queuing the object into an      * executor the event will run later, as there is no method to adjust for the scheduling delay.      */
+DECL|method|initialDelay ()
+specifier|public
+specifier|abstract
+name|long
+name|initialDelay
+parameter_list|()
+function_decl|;
+DECL|method|create (long interval, long initialDelay)
+specifier|static
+name|Schedule
+name|create
+parameter_list|(
+name|long
+name|interval
+parameter_list|,
+name|long
+name|initialDelay
+parameter_list|)
+block|{
+return|return
+operator|new
+name|AutoValue_ScheduleConfig_Schedule
+argument_list|(
+name|interval
+argument_list|,
+name|initialDelay
+argument_list|)
+return|;
+block|}
 block|}
 block|}
 end_class
