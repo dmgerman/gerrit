@@ -100,6 +100,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|ScheduleConfig
+operator|.
+name|Schedule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -115,6 +133,16 @@ operator|.
 name|inject
 operator|.
 name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -198,11 +226,14 @@ literal|"\n"
 operator|+
 literal|"If this change is still wanted it should be restored."
 decl_stmt|;
-DECL|field|scheduleConfig
+DECL|field|schedule
 specifier|private
 specifier|final
-name|ScheduleConfig
-name|scheduleConfig
+name|Optional
+argument_list|<
+name|Schedule
+argument_list|>
+name|schedule
 decl_stmt|;
 DECL|field|abandonAfter
 specifier|private
@@ -240,11 +271,11 @@ name|String
 name|canonicalWebUrl
 parameter_list|)
 block|{
-name|scheduleConfig
+name|schedule
 operator|=
 name|ScheduleConfig
 operator|.
-name|create
+name|createSchedule
 argument_list|(
 name|cfg
 argument_list|,
@@ -392,14 +423,17 @@ return|return
 name|abandonMessage
 return|;
 block|}
-DECL|method|getScheduleConfig ()
+DECL|method|getSchedule ()
 specifier|public
-name|ScheduleConfig
-name|getScheduleConfig
+name|Optional
+argument_list|<
+name|Schedule
+argument_list|>
+name|getSchedule
 parameter_list|()
 block|{
 return|return
-name|scheduleConfig
+name|schedule
 return|;
 block|}
 DECL|method|getAbandonAfter ()

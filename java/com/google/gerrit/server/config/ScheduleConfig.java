@@ -343,11 +343,14 @@ name|KEY_STARTTIME
 init|=
 literal|"startTime"
 decl_stmt|;
-DECL|method|create (Config config, String section)
+DECL|method|createSchedule (Config config, String section)
 specifier|public
 specifier|static
-name|ScheduleConfig
-name|create
+name|Optional
+argument_list|<
+name|Schedule
+argument_list|>
+name|createSchedule
 parameter_list|(
 name|Config
 name|config
@@ -364,7 +367,7 @@ argument_list|,
 name|section
 argument_list|)
 operator|.
-name|build
+name|buildSchedule
 argument_list|()
 return|;
 block|}
@@ -1179,12 +1182,28 @@ name|now
 parameter_list|)
 function_decl|;
 DECL|method|build ()
-specifier|public
 specifier|abstract
 name|ScheduleConfig
 name|build
 parameter_list|()
 function_decl|;
+DECL|method|buildSchedule ()
+specifier|public
+name|Optional
+argument_list|<
+name|Schedule
+argument_list|>
+name|buildSchedule
+parameter_list|()
+block|{
+return|return
+name|build
+argument_list|()
+operator|.
+name|schedule
+argument_list|()
+return|;
+block|}
 block|}
 annotation|@
 name|AutoValue
