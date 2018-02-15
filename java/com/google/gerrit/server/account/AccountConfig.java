@@ -571,7 +571,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Reads/writes account data from/to a user branch in the {@code All-Users} repository.  *  *<p>This is the low-level API for account creation and account updates. Most callers should use  * {@link AccountsUpdate} for creating and updating accounts.  *  *<p>This class can read/write account properties, preferences (general, diff and edit preferences)  * and project watches.  *  *<p>The following files are read/written:  *  *<ul>  *<li>'account.config': Contains the account properties. Parsing and writing it is delegated to  *       {@link AccountProperties}.  *<li>'preferences.config': Contains the preferences. Parsing and writing it is delegated to  *       {@link Preferences}.  *<li>'account.config': Contains the project watches. Parsing and writing it is delegated to  *       {@link ProjectWatches}.  *</ul>  *  *<p>The commit date of the first commit on the user branch is used as registration date of the  * account. The first commit may be an empty commit (since all config files are optional).  *  *<p>By default preferences and project watches are lazily parsed on need. Eager parsing can be  * requested by {@link #setEagerParsing(boolean)}.  */
+comment|/**  * Reads/writes account data from/to a user branch in the {@code All-Users} repository.  *  *<p>This is the low-level API for account creation and account updates. Most callers should use  * {@link AccountsUpdate} for creating and updating accounts.  *  *<p>This class can read/write account properties, preferences (general, diff and edit preferences)  * and project watches.  *  *<p>The following files are read/written:  *  *<ul>  *<li>'account.config': Contains the account properties. Parsing and writing it is delegated to  *       {@link AccountProperties}.  *<li>'preferences.config': Contains the preferences. Parsing and writing it is delegated to  *       {@link Preferences}.  *<li>'account.config': Contains the project watches. Parsing and writing it is delegated to  *       {@link ProjectWatches}.  *</ul>  *  *<p>The commit date of the first commit on the user branch is used as registration date of the  * account. The first commit may be an empty commit (since all config files are optional).  */
 end_comment
 
 begin_class
@@ -645,11 +645,6 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-DECL|field|eagerParsing
-specifier|private
-name|boolean
-name|eagerParsing
-decl_stmt|;
 DECL|field|validationErrors
 specifier|private
 name|List
@@ -704,40 +699,6 @@ argument_list|(
 name|accountId
 argument_list|)
 expr_stmt|;
-block|}
-comment|/**    * Sets whether all account data should be eagerly parsed.    *    *<p>Eager parsing should only be used if the caller is interested in validation errors for all    * account data (see {@link #getValidationErrors()}.    *    * @param eagerParsing whether all account data should be eagerly parsed    * @return this AccountConfig instance for chaining    */
-DECL|method|setEagerParsing (boolean eagerParsing)
-specifier|public
-name|AccountConfig
-name|setEagerParsing
-parameter_list|(
-name|boolean
-name|eagerParsing
-parameter_list|)
-block|{
-name|checkState
-argument_list|(
-name|loadedAccountProperties
-operator|==
-literal|null
-argument_list|,
-literal|"Account %s already loaded"
-argument_list|,
-name|accountId
-operator|.
-name|get
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|eagerParsing
-operator|=
-name|eagerParsing
-expr_stmt|;
-return|return
-name|this
-return|;
 block|}
 annotation|@
 name|Override
@@ -1225,11 +1186,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|eagerParsing
-condition|)
-block|{
 name|projectWatches
 operator|.
 name|parse
@@ -1240,7 +1196,6 @@ operator|.
 name|parse
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{
@@ -1780,7 +1735,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Get the validation errors, if any were discovered during parsing the account data.    *    *<p>To get validation errors for all account data request eager parsing before loading the    * account (see {@link #setEagerParsing(boolean)}).    *    * @return list of errors; empty list if there are no errors.    */
+comment|/**    * Get the validation errors, if any were discovered during parsing the account data.    *    * @return list of errors; empty list if there are no errors.    */
 DECL|method|getValidationErrors ()
 specifier|public
 name|List

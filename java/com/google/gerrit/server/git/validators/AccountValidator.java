@@ -731,11 +731,6 @@ argument_list|)
 decl_stmt|;
 name|accountConfig
 operator|.
-name|setEagerParsing
-argument_list|(
-literal|true
-argument_list|)
-operator|.
 name|load
 argument_list|(
 name|rw
