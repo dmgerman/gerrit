@@ -72,6 +72,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|ScheduleConfig
+operator|.
+name|Schedule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -87,6 +105,16 @@ operator|.
 name|inject
 operator|.
 name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -126,11 +154,14 @@ specifier|public
 class|class
 name|GcConfig
 block|{
-DECL|field|scheduleConfig
+DECL|field|schedule
 specifier|private
 specifier|final
-name|ScheduleConfig
-name|scheduleConfig
+name|Optional
+argument_list|<
+name|Schedule
+argument_list|>
+name|schedule
 decl_stmt|;
 DECL|field|aggressive
 specifier|private
@@ -149,11 +180,11 @@ name|Config
 name|cfg
 parameter_list|)
 block|{
-name|scheduleConfig
+name|schedule
 operator|=
 name|ScheduleConfig
 operator|.
-name|create
+name|createSchedule
 argument_list|(
 name|cfg
 argument_list|,
@@ -178,14 +209,17 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getScheduleConfig ()
+DECL|method|getSchedule ()
 specifier|public
-name|ScheduleConfig
-name|getScheduleConfig
+name|Optional
+argument_list|<
+name|Schedule
+argument_list|>
+name|getSchedule
 parameter_list|()
 block|{
 return|return
-name|scheduleConfig
+name|schedule
 return|;
 block|}
 DECL|method|isAggressive ()
