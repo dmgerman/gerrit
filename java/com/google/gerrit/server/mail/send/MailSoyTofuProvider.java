@@ -319,6 +319,10 @@ literal|"DeleteVote.soy"
 block|,
 literal|"DeleteVoteHtml.soy"
 block|,
+literal|"InboundEmailRejection.soy"
+block|,
+literal|"InboundEmailRejectionHtml.soy"
+block|,
 literal|"Footer.soy"
 block|,
 literal|"FooterHtml.soy"
@@ -332,6 +336,10 @@ block|,
 literal|"NewChange.soy"
 block|,
 literal|"NewChangeHtml.soy"
+block|,
+literal|"NoReplyFooter.soy"
+block|,
+literal|"NoReplyFooterHtml.soy"
 block|,
 literal|"Private.soy"
 block|,

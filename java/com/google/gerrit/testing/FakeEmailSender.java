@@ -194,6 +194,22 @@ name|server
 operator|.
 name|mail
 operator|.
+name|MailHeader
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
 name|send
 operator|.
 name|EmailHeader
@@ -813,7 +829,14 @@ specifier|final
 name|String
 name|idFooter
 init|=
-literal|"\nGerrit-Change-Id: "
+literal|"\n"
+operator|+
+name|MailHeader
+operator|.
+name|CHANGE_ID
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|changeId
 operator|+
@@ -823,7 +846,14 @@ specifier|final
 name|String
 name|typeFooter
 init|=
-literal|"\nGerrit-MessageType: "
+literal|"\n"
+operator|+
+name|MailHeader
+operator|.
+name|MESSAGE_TYPE
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|type
 operator|+

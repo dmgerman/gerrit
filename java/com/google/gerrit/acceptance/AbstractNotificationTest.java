@@ -970,7 +970,7 @@ name|parseAddresses
 argument_list|(
 name|message
 argument_list|,
-literal|"CC"
+literal|"Cc"
 argument_list|)
 argument_list|)
 expr_stmt|;

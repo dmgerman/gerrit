@@ -332,6 +332,22 @@ name|server
 operator|.
 name|mail
 operator|.
+name|MailHeader
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
 name|MailUtil
 import|;
 end_import
@@ -605,6 +621,24 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|james
+operator|.
+name|mime4j
+operator|.
+name|dom
+operator|.
+name|field
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -1207,7 +1241,12 @@ comment|// Add header that enables identifying comments on parsed email.
 comment|// Grouping is currently done by timestamp.
 name|setHeader
 argument_list|(
-literal|"X-Gerrit-Comment-Date"
+name|MailHeader
+operator|.
+name|COMMENT_DATE
+operator|.
+name|fieldName
+argument_list|()
 argument_list|,
 name|timestamp
 argument_list|)
@@ -1227,7 +1266,9 @@ block|{
 comment|// Remove Reply-To and use outbound SMTP (default) instead.
 name|removeHeader
 argument_list|(
-literal|"Reply-To"
+name|FieldName
+operator|.
+name|REPLY_TO
 argument_list|)
 expr_stmt|;
 block|}
@@ -1235,7 +1276,9 @@ else|else
 block|{
 name|setHeader
 argument_list|(
-literal|"Reply-To"
+name|FieldName
+operator|.
+name|REPLY_TO
 argument_list|,
 name|replyToAddress
 argument_list|)
@@ -3259,7 +3302,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-Comment-Date: "
+name|MailHeader
+operator|.
+name|COMMENT_DATE
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|getCommentTimestamp
 argument_list|()
@@ -3269,7 +3317,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-HasComments: "
+name|MailHeader
+operator|.
+name|HAS_COMMENTS
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 operator|(
 name|hasComments
@@ -3284,7 +3337,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-HasLabels: "
+name|MailHeader
+operator|.
+name|HAS_LABELS
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 operator|(
 name|labels
@@ -3313,7 +3371,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-Comment-In-Reply-To: "
+name|MailHeader
+operator|.
+name|COMMENT_IN_REPLY_TO
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|getNameEmailFor
 argument_list|(

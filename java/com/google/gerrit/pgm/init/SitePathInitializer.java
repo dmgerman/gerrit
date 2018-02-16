@@ -889,6 +889,16 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
+literal|"InboundEmailRejection.soy"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
+literal|"InboundEmailRejectionHtml.soy"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
 literal|"Merged.soy"
 argument_list|)
 expr_stmt|;

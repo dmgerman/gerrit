@@ -506,6 +506,18 @@ argument_list|(
 literal|2
 argument_list|)
 expr_stmt|;
+comment|// Check that no emails were sent because of this error
+name|assertThat
+argument_list|(
+name|sender
+operator|.
+name|getMessages
+argument_list|()
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test

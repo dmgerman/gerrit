@@ -194,6 +194,22 @@ name|server
 operator|.
 name|mail
 operator|.
+name|MailHeader
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
 name|send
 operator|.
 name|ProjectWatch
@@ -723,7 +739,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-Project: "
+name|MailHeader
+operator|.
+name|PROJECT
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|branch
 operator|.

@@ -334,6 +334,22 @@ name|server
 operator|.
 name|mail
 operator|.
+name|MailHeader
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
 name|send
 operator|.
 name|ProjectWatch
@@ -673,6 +689,24 @@ operator|.
 name|util
 operator|.
 name|TreeSet
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|james
+operator|.
+name|mime4j
+operator|.
+name|dom
+operator|.
+name|field
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -1208,7 +1242,12 @@ condition|)
 block|{
 name|setHeader
 argument_list|(
-literal|"X-Gerrit-PatchSet"
+name|MailHeader
+operator|.
+name|PATCH_SET
+operator|.
+name|fieldName
+argument_list|()
 argument_list|,
 name|patchSet
 operator|.
@@ -1319,7 +1358,9 @@ condition|)
 block|{
 name|setHeader
 argument_list|(
-literal|"Date"
+name|FieldName
+operator|.
+name|DATE
 argument_list|,
 operator|new
 name|Date
@@ -1337,7 +1378,12 @@ argument_list|()
 expr_stmt|;
 name|setHeader
 argument_list|(
-literal|"X-Gerrit-Change-Id"
+name|MailHeader
+operator|.
+name|CHANGE_ID
+operator|.
+name|fieldName
+argument_list|()
 argument_list|,
 literal|""
 operator|+
@@ -1352,7 +1398,12 @@ argument_list|)
 expr_stmt|;
 name|setHeader
 argument_list|(
-literal|"X-Gerrit-Change-Number"
+name|MailHeader
+operator|.
+name|CHANGE_NUMBER
+operator|.
+name|fieldName
+argument_list|()
 argument_list|,
 literal|""
 operator|+
@@ -1469,7 +1520,12 @@ condition|)
 block|{
 name|setHeader
 argument_list|(
-literal|"X-Gerrit-ChangeURL"
+name|MailHeader
+operator|.
+name|CHANGE_URL
+operator|.
+name|fieldName
+argument_list|()
 argument_list|,
 literal|"<"
 operator|+
@@ -1525,7 +1581,12 @@ condition|)
 block|{
 name|setHeader
 argument_list|(
-literal|"X-Gerrit-Commit"
+name|MailHeader
+operator|.
+name|COMMIT
+operator|.
+name|fieldName
+argument_list|()
 argument_list|,
 name|patchSet
 operator|.
@@ -1546,7 +1607,9 @@ parameter_list|()
 block|{
 name|setHeader
 argument_list|(
-literal|"Subject"
+name|FieldName
+operator|.
+name|SUBJECT
 argument_list|,
 name|textTemplate
 argument_list|(
@@ -3034,16 +3097,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-MessageType: "
-operator|+
-name|messageClass
-argument_list|)
-expr_stmt|;
-name|footers
+name|MailHeader
 operator|.
-name|add
-argument_list|(
-literal|"Gerrit-Change-Id: "
+name|CHANGE_ID
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|change
 operator|.
@@ -3058,7 +3117,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-Change-Number: "
+name|MailHeader
+operator|.
+name|CHANGE_NUMBER
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|Integer
 operator|.
@@ -3075,7 +3139,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-PatchSet: "
+name|MailHeader
+operator|.
+name|PATCH_SET
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|patchSet
 operator|.
@@ -3087,7 +3156,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-Owner: "
+name|MailHeader
+operator|.
+name|OWNER
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|getNameEmailFor
 argument_list|(
@@ -3112,7 +3186,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-Assignee: "
+name|MailHeader
+operator|.
+name|ASSIGNEE
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|getNameEmailFor
 argument_list|(
@@ -3141,7 +3220,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-Reviewer: "
+name|MailHeader
+operator|.
+name|REVIEWER
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|reviewer
 argument_list|)
@@ -3164,7 +3248,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-CC: "
+name|MailHeader
+operator|.
+name|CC
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|reviewer
 argument_list|)
