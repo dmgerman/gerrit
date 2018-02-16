@@ -178,6 +178,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Statement
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -311,6 +321,41 @@ name|err
 argument_list|)
 return|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|doCreateTable (Statement stmt)
+specifier|protected
+name|void
+name|doCreateTable
+parameter_list|(
+name|Statement
+name|stmt
+parameter_list|)
+throws|throws
+name|SQLException
+block|{
+name|stmt
+operator|.
+name|executeUpdate
+argument_list|(
+literal|"CREATE TABLE IF NOT EXISTS account_patch_reviews ("
+operator|+
+literal|"account_id INTEGER DEFAULT 0 NOT NULL, "
+operator|+
+literal|"change_id INTEGER DEFAULT 0 NOT NULL, "
+operator|+
+literal|"patch_set_id INTEGER DEFAULT 0 NOT NULL, "
+operator|+
+literal|"file_name VARCHAR(255) DEFAULT '' NOT NULL, "
+operator|+
+literal|"CONSTRAINT primary_key_account_patch_reviews "
+operator|+
+literal|"PRIMARY KEY (change_id, patch_set_id, account_id, file_name)"
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
