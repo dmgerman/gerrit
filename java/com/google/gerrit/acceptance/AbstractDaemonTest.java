@@ -3331,11 +3331,6 @@ block|}
 name|initSsh
 argument_list|()
 expr_stmt|;
-comment|// The server restart threw away all indices. Only reindex all groups as we only have the group
-comment|// index in slave mode.
-name|reindexAllGroups
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|reindexAllGroups ()
 specifier|private
