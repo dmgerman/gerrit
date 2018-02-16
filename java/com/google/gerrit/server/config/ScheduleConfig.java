@@ -1100,8 +1100,8 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|IllegalArgumentException
-name|e2
+name|DateTimeParseException
+name|e
 parameter_list|)
 block|{
 name|delay
