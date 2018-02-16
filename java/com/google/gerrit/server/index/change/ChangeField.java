@@ -2364,20 +2364,12 @@ operator|==
 name|i
 condition|)
 block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Invalid value for reviewer field from change {}: {}"
-argument_list|,
-name|changeId
-operator|.
-name|get
-argument_list|()
-argument_list|,
-name|v
-argument_list|)
-expr_stmt|;
+comment|// Don't log a warning here.
+comment|// For each reviewer we store 2 values in the reviewer field, one value with the format
+comment|// "<reviewer-type>,<account-id>" and one value with the format
+comment|// "<reviewer-type>,<account-id>,<timestamp>" (see #getReviewerFieldValues(ReviewerSet)).
+comment|// For parsing we are only interested in the "<reviewer-type>,<account-id>,<timestamp>"
+comment|// value and the "<reviewer-type>,<account-id>" value is ignored here.
 continue|continue;
 block|}
 name|com
@@ -2665,20 +2657,13 @@ operator|==
 name|i
 condition|)
 block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Invalid value for reviewer by email field from change {}: {}"
-argument_list|,
-name|changeId
-operator|.
-name|get
-argument_list|()
-argument_list|,
-name|v
-argument_list|)
-expr_stmt|;
+comment|// Don't log a warning here.
+comment|// For each reviewer we store 2 values in the reviewer field, one value with the format
+comment|// "<reviewer-type>,<email>" and one value with the format
+comment|// "<reviewer-type>,<email>,<timestamp>" (see
+comment|// #getReviewerByEmailFieldValues(ReviewerByEmailSet)).
+comment|// For parsing we are only interested in the "<reviewer-type>,<email>,<timestamp>" value
+comment|// and the "<reviewer-type>,<email>" value is ignored here.
 continue|continue;
 block|}
 name|com
