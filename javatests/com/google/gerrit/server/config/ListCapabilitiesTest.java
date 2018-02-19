@@ -68,37 +68,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
+name|truth
 operator|.
-name|junit
+name|Truth
 operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
+name|assertThat
 import|;
 end_import
 
@@ -412,24 +392,18 @@ name|getAllNames
 argument_list|()
 control|)
 block|{
-name|assertTrue
+name|assertThat
 argument_list|(
-literal|"contains "
-operator|+
-name|id
-argument_list|,
 name|m
+argument_list|)
 operator|.
 name|containsKey
 argument_list|(
 name|id
 argument_list|)
-argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertThat
 argument_list|(
-name|id
-argument_list|,
 name|m
 operator|.
 name|get
@@ -439,13 +413,14 @@ argument_list|)
 operator|.
 name|id
 argument_list|)
-expr_stmt|;
-name|assertNotNull
+operator|.
+name|isEqualTo
 argument_list|(
 name|id
-operator|+
-literal|" has name"
-argument_list|,
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
 name|m
 operator|.
 name|get
@@ -455,6 +430,9 @@ argument_list|)
 operator|.
 name|name
 argument_list|)
+operator|.
+name|isNotNull
+argument_list|()
 expr_stmt|;
 block|}
 name|String
@@ -462,24 +440,18 @@ name|pluginCapability
 init|=
 literal|"gerrit-printHello"
 decl_stmt|;
-name|assertTrue
+name|assertThat
 argument_list|(
-literal|"contains "
-operator|+
-name|pluginCapability
-argument_list|,
 name|m
+argument_list|)
 operator|.
 name|containsKey
 argument_list|(
 name|pluginCapability
 argument_list|)
-argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertThat
 argument_list|(
-name|pluginCapability
-argument_list|,
 name|m
 operator|.
 name|get
@@ -489,11 +461,14 @@ argument_list|)
 operator|.
 name|id
 argument_list|)
-expr_stmt|;
-name|assertEquals
+operator|.
+name|isEqualTo
 argument_list|(
-literal|"Print Hello"
-argument_list|,
+name|pluginCapability
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
 name|m
 operator|.
 name|get
@@ -502,6 +477,11 @@ name|pluginCapability
 argument_list|)
 operator|.
 name|name
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Print Hello"
 argument_list|)
 expr_stmt|;
 block|}

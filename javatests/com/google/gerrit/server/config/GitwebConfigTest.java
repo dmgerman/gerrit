@@ -68,25 +68,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
+name|truth
 operator|.
-name|junit
+name|Truth
 operator|.
-name|Assert
-operator|.
-name|assertTrue
+name|assertWithMessage
 import|;
 end_import
 
@@ -143,12 +135,15 @@ name|toCharArray
 argument_list|()
 control|)
 block|{
-name|assertTrue
+name|assertWithMessage
 argument_list|(
 literal|"valid character rejected: "
 operator|+
 name|c
-argument_list|,
+argument_list|)
+operator|.
+name|that
+argument_list|(
 name|GitwebConfig
 operator|.
 name|isValidPathSeparator
@@ -156,6 +151,9 @@ argument_list|(
 name|c
 argument_list|)
 argument_list|)
+operator|.
+name|isTrue
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -178,12 +176,15 @@ name|toCharArray
 argument_list|()
 control|)
 block|{
-name|assertFalse
+name|assertWithMessage
 argument_list|(
 literal|"invalid character accepted: "
 operator|+
 name|c
-argument_list|,
+argument_list|)
+operator|.
+name|that
+argument_list|(
 name|GitwebConfig
 operator|.
 name|isValidPathSeparator
@@ -191,6 +192,9 @@ argument_list|(
 name|c
 argument_list|)
 argument_list|)
+operator|.
+name|isFalse
+argument_list|()
 expr_stmt|;
 block|}
 block|}
