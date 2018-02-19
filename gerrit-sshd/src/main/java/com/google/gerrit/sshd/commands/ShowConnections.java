@@ -1243,9 +1243,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|time
-operator|-
 name|now
+operator|-
+name|time
 operator|<
 literal|24
 operator|*
