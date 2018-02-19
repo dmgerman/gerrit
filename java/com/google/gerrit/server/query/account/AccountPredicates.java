@@ -399,7 +399,7 @@ name|preds
 operator|.
 name|add
 argument_list|(
-name|equalsNameIcludingSecondaryEmails
+name|equalsNameIncludingSecondaryEmails
 argument_list|(
 name|query
 argument_list|)
@@ -620,14 +620,14 @@ name|email
 argument_list|)
 return|;
 block|}
-DECL|method|equalsNameIcludingSecondaryEmails (String name)
+DECL|method|equalsNameIncludingSecondaryEmails (String name)
 specifier|public
 specifier|static
 name|Predicate
 argument_list|<
 name|AccountState
 argument_list|>
-name|equalsNameIcludingSecondaryEmails
+name|equalsNameIncludingSecondaryEmails
 parameter_list|(
 name|String
 name|name

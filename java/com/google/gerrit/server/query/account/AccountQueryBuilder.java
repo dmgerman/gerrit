@@ -975,7 +975,7 @@ block|{
 return|return
 name|AccountPredicates
 operator|.
-name|equalsNameIcludingSecondaryEmails
+name|equalsNameIncludingSecondaryEmails
 argument_list|(
 name|name
 argument_list|)
