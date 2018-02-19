@@ -1129,10 +1129,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|suggestReviewsPrivateProjectVisibility ()
+DECL|method|suggestReviewersPrivateProjectVisibility ()
 specifier|public
 name|void
-name|suggestReviewsPrivateProjectVisibility
+name|suggestReviewersPrivateProjectVisibility
 parameter_list|()
 throws|throws
 name|Exception
