@@ -158,6 +158,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -252,7 +268,7 @@ name|server
 operator|.
 name|permissions
 operator|.
-name|ChangePermission
+name|PermissionBackend
 import|;
 end_import
 
@@ -269,6 +285,22 @@ operator|.
 name|permissions
 operator|.
 name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|RefPermission
 import|;
 end_import
 
@@ -440,6 +472,12 @@ DECL|field|excludeGroups
 name|boolean
 name|excludeGroups
 decl_stmt|;
+DECL|field|permissionBackend
+specifier|private
+specifier|final
+name|PermissionBackend
+name|permissionBackend
+decl_stmt|;
 DECL|field|self
 specifier|private
 specifier|final
@@ -457,7 +495,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SuggestChangeReviewers ( AccountVisibility av, GenericFactory identifiedUserFactory, Provider<ReviewDb> dbProvider, Provider<CurrentUser> self, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil, ProjectCache projectCache)
+DECL|method|SuggestChangeReviewers ( AccountVisibility av, GenericFactory identifiedUserFactory, Provider<ReviewDb> dbProvider, PermissionBackend permissionBackend, Provider<CurrentUser> self, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil, ProjectCache projectCache)
 name|SuggestChangeReviewers
 parameter_list|(
 name|AccountVisibility
@@ -471,6 +509,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
+parameter_list|,
+name|PermissionBackend
+name|permissionBackend
 parameter_list|,
 name|Provider
 argument_list|<
@@ -502,6 +543,12 @@ name|cfg
 argument_list|,
 name|reviewersUtil
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|permissionBackend
+operator|=
+name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
@@ -602,11 +649,49 @@ name|ChangeResource
 name|rsrc
 parameter_list|)
 block|{
-comment|// Use the destination reference, not the change, as drafts may deny
-comment|// anyone who is not already a reviewer.
+comment|// Use the destination reference, not the change, as private changes deny anyone who is not
+comment|// already a reviewer.
+name|PermissionBackend
+operator|.
+name|ForRef
+name|perm
+init|=
+name|permissionBackend
+operator|.
+name|user
+argument_list|(
+name|self
+argument_list|)
+operator|.
+name|ref
+argument_list|(
+name|rsrc
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getDest
+argument_list|()
+argument_list|)
+decl_stmt|;
 return|return
+operator|new
+name|VisibilityControl
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isVisibleTo
+parameter_list|(
+name|Account
+operator|.
+name|Id
 name|account
-lambda|->
+parameter_list|)
+throws|throws
+name|OrmException
 block|{
 name|IdentifiedUser
 name|who
@@ -619,10 +704,7 @@ name|account
 argument_list|)
 decl_stmt|;
 return|return
-name|rsrc
-operator|.
-name|permissions
-argument_list|()
+name|perm
 operator|.
 name|user
 argument_list|(
@@ -631,11 +713,12 @@ argument_list|)
 operator|.
 name|testOrFalse
 argument_list|(
-name|ChangePermission
+name|RefPermission
 operator|.
 name|READ
 argument_list|)
 return|;
+block|}
 block|}
 return|;
 block|}
