@@ -345,6 +345,29 @@ name|empty
 argument_list|()
 return|;
 block|}
+comment|/** @return unique name of the user for logging, never {@code null} */
+DECL|method|getLoggableName ()
+specifier|public
+name|String
+name|getLoggableName
+parameter_list|()
+block|{
+return|return
+name|getUserName
+argument_list|()
+operator|.
+name|orElseGet
+argument_list|(
+parameter_list|()
+lambda|->
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/** Check if user is the IdentifiedUser */
 DECL|method|isIdentifiedUser ()
 specifier|public
