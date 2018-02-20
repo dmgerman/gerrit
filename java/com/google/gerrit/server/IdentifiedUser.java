@@ -1556,6 +1556,8 @@ argument_list|()
 return|;
 block|}
 comment|/** @return unique name of the user for logging, never {@code null} */
+annotation|@
+name|Override
 DECL|method|getLoggableName ()
 specifier|public
 name|String
