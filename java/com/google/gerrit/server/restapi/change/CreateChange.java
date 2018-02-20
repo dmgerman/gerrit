@@ -1802,10 +1802,8 @@ argument_list|)
 decl_stmt|;
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|project
 argument_list|(
@@ -1939,10 +1937,8 @@ try|try
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|change
 argument_list|(

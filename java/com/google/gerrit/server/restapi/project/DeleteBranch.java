@@ -174,20 +174,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|permissions
 operator|.
 name|PermissionBackend
@@ -352,15 +338,6 @@ operator|.
 name|Factory
 name|deleteRefFactory
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -369,7 +346,7 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteBranch ( Provider<InternalChangeQuery> queryProvider, DeleteRef.Factory deleteRefFactory, Provider<CurrentUser> user, PermissionBackend permissionBackend)
+DECL|method|DeleteBranch ( Provider<InternalChangeQuery> queryProvider, DeleteRef.Factory deleteRefFactory, PermissionBackend permissionBackend)
 name|DeleteBranch
 parameter_list|(
 name|Provider
@@ -382,12 +359,6 @@ name|DeleteRef
 operator|.
 name|Factory
 name|deleteRefFactory
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -404,12 +375,6 @@ operator|.
 name|deleteRefFactory
 operator|=
 name|deleteRefFactory
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 name|this
 operator|.
@@ -445,10 +410,8 @@ name|PermissionBackendException
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|ref
 argument_list|(

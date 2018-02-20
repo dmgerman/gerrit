@@ -1338,10 +1338,8 @@ name|canDelete
 operator|=
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|identifiedUser
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|ref
 argument_list|(

@@ -2617,6 +2617,9 @@ operator|.
 name|user
 argument_list|(
 name|anonymousProvider
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|change

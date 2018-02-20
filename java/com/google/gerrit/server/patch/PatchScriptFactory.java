@@ -1441,10 +1441,8 @@ try|try
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|userProvider
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|change
 argument_list|(

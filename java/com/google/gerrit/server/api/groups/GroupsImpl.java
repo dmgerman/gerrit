@@ -262,20 +262,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|permissions
 operator|.
 name|GlobalPermission
@@ -523,15 +509,6 @@ name|QueryGroups
 argument_list|>
 name|queryGroups
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -556,7 +533,7 @@ name|api
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsImpl ( AccountsCollection accounts, GroupsCollection groups, ProjectsCollection projects, Provider<ListGroups> listGroups, Provider<QueryGroups> queryGroups, Provider<CurrentUser> user, PermissionBackend permissionBackend, CreateGroup.Factory createGroup, GroupApiImpl.Factory api)
+DECL|method|GroupsImpl ( AccountsCollection accounts, GroupsCollection groups, ProjectsCollection projects, Provider<ListGroups> listGroups, Provider<QueryGroups> queryGroups, PermissionBackend permissionBackend, CreateGroup.Factory createGroup, GroupApiImpl.Factory api)
 name|GroupsImpl
 parameter_list|(
 name|AccountsCollection
@@ -579,12 +556,6 @@ argument_list|<
 name|QueryGroups
 argument_list|>
 name|queryGroups
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -629,12 +600,6 @@ operator|.
 name|queryGroups
 operator|=
 name|queryGroups
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 name|this
 operator|.
@@ -775,10 +740,8 @@ argument_list|)
 decl_stmt|;
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|checkAny
 argument_list|(

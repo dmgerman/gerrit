@@ -156,20 +156,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|AllProjectsName
@@ -318,18 +304,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -409,15 +383,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
-decl_stmt|;
 DECL|field|allProjects
 specifier|private
 specifier|final
@@ -438,7 +403,7 @@ name|childProjects
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListChildProjects ( ProjectCache projectCache, PermissionBackend permissionBackend, Provider<CurrentUser> user, AllProjectsName allProjectsName, ProjectJson json, ChildProjects childProjects)
+DECL|method|ListChildProjects ( ProjectCache projectCache, PermissionBackend permissionBackend, AllProjectsName allProjectsName, ProjectJson json, ChildProjects childProjects)
 name|ListChildProjects
 parameter_list|(
 name|ProjectCache
@@ -446,12 +411,6 @@ name|projectCache
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
 parameter_list|,
 name|AllProjectsName
 name|allProjectsName
@@ -474,12 +433,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 name|this
 operator|.
@@ -665,10 +618,8 @@ block|}
 return|return
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|filter
 argument_list|(

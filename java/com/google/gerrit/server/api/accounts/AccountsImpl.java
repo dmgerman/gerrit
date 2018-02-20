@@ -769,10 +769,8 @@ argument_list|)
 decl_stmt|;
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|self
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|checkAny
 argument_list|(

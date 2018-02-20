@@ -162,20 +162,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -287,18 +273,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -545,15 +519,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
-decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -572,7 +537,7 @@ name|inherited
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListDashboards ( GitRepositoryManager gitManager, PermissionBackend permissionBackend, Provider<CurrentUser> user)
+DECL|method|ListDashboards (GitRepositoryManager gitManager, PermissionBackend permissionBackend)
 name|ListDashboards
 parameter_list|(
 name|GitRepositoryManager
@@ -580,12 +545,6 @@ name|gitManager
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
 parameter_list|)
 block|{
 name|this
@@ -599,12 +558,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 block|}
 annotation|@
@@ -821,10 +774,8 @@ name|retainAll
 argument_list|(
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|filter
 argument_list|(
@@ -877,10 +828,8 @@ name|perm
 init|=
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|project
 argument_list|(

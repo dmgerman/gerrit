@@ -499,39 +499,6 @@ name|CurrentUser
 name|user
 parameter_list|)
 function_decl|;
-comment|/**    * @return lightweight factory scoped to answer for the specified user. If an instance scoped to    *     the current user is desired, use {@code currentUser()} instead.    */
-DECL|method|user (Provider<U> user)
-specifier|public
-parameter_list|<
-name|U
-extends|extends
-name|CurrentUser
-parameter_list|>
-name|WithUser
-name|user
-parameter_list|(
-name|Provider
-argument_list|<
-name|U
-argument_list|>
-name|user
-parameter_list|)
-block|{
-return|return
-name|user
-argument_list|(
-name|checkNotNull
-argument_list|(
-name|user
-argument_list|,
-literal|"Provider<CurrentUser>"
-argument_list|)
-operator|.
-name|get
-argument_list|()
-argument_list|)
-return|;
-block|}
 comment|/**    * Bulk evaluate a set of {@link PermissionBackendCondition} for view handling.    *    *<p>Overridden implementations should call {@link PermissionBackendCondition#set(boolean)} to    * cache the result of {@code testOrFalse} in the condition for later evaluation. Caching the    * result will bypass the usual invocation of {@code testOrFalse}.    *    * @param conds conditions to consider.    */
 DECL|method|bulkEvaluateTest (Set<PermissionBackendCondition> conds)
 specifier|public

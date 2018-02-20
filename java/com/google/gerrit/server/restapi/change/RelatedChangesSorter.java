@@ -288,20 +288,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -666,18 +652,9 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|currentUserProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|currentUserProvider
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RelatedChangesSorter ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, Provider<ReviewDb> dbProvider, ProjectCache projectCache, Provider<CurrentUser> currentUserProvider)
+DECL|method|RelatedChangesSorter ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, Provider<ReviewDb> dbProvider, ProjectCache projectCache)
 name|RelatedChangesSorter
 parameter_list|(
 name|GitRepositoryManager
@@ -694,12 +671,6 @@ name|dbProvider
 parameter_list|,
 name|ProjectCache
 name|projectCache
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|currentUserProvider
 parameter_list|)
 block|{
 name|this
@@ -725,12 +696,6 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
-expr_stmt|;
-name|this
-operator|.
-name|currentUserProvider
-operator|=
-name|currentUserProvider
 expr_stmt|;
 block|}
 DECL|method|sort (List<ChangeData> in, PatchSet startPs)
@@ -1875,10 +1840,8 @@ name|perm
 init|=
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|currentUserProvider
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|database
 argument_list|(

@@ -188,20 +188,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|PatchSetUtil
 import|;
 end_import
@@ -482,15 +468,6 @@ name|ReviewDb
 argument_list|>
 name|requestDb
 decl_stmt|;
-DECL|field|userProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|userProvider
-decl_stmt|;
 DECL|field|changeEditUtil
 specifier|private
 specifier|final
@@ -525,7 +502,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CatServlet ( Provider<ReviewDb> sf, Provider<CurrentUser> usrprv, ChangeEditUtil ceu, PatchSetUtil psu, ChangeNotes.Factory cnf, PermissionBackend pb, ProjectCache pc)
+DECL|method|CatServlet ( Provider<ReviewDb> sf, ChangeEditUtil ceu, PatchSetUtil psu, ChangeNotes.Factory cnf, PermissionBackend pb, ProjectCache pc)
 name|CatServlet
 parameter_list|(
 name|Provider
@@ -533,12 +510,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|sf
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|usrprv
 parameter_list|,
 name|ChangeEditUtil
 name|ceu
@@ -561,10 +532,6 @@ block|{
 name|requestDb
 operator|=
 name|sf
-expr_stmt|;
-name|userProvider
-operator|=
-name|usrprv
 expr_stmt|;
 name|changeEditUtil
 operator|=
@@ -823,10 +790,8 @@ argument_list|)
 decl_stmt|;
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|userProvider
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|change
 argument_list|(

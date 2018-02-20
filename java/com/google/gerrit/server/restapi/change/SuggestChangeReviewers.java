@@ -658,10 +658,8 @@ name|perm
 init|=
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|self
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|ref
 argument_list|(

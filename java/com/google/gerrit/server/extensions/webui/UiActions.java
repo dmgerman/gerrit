@@ -332,20 +332,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|permissions
 operator|.
 name|GlobalPermission
@@ -409,18 +395,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -566,28 +540,13 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|userProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|userProvider
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UiActions (PermissionBackend permissionBackend, Provider<CurrentUser> userProvider)
+DECL|method|UiActions (PermissionBackend permissionBackend)
 name|UiActions
 parameter_list|(
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|userProvider
 parameter_list|)
 block|{
 name|this
@@ -595,12 +554,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|userProvider
-operator|=
-name|userProvider
 expr_stmt|;
 block|}
 DECL|method|from ( RestCollection<?, R> collection, R resource)
@@ -1172,10 +1125,8 @@ name|withUser
 init|=
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|userProvider
-argument_list|)
+name|currentUser
+argument_list|()
 decl_stmt|;
 name|Iterator
 argument_list|<

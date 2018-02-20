@@ -488,6 +488,9 @@ operator|.
 name|user
 argument_list|(
 name|user
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|ref
@@ -706,6 +709,9 @@ operator|.
 name|user
 argument_list|(
 name|user
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|ref

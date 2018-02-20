@@ -1567,15 +1567,6 @@ argument_list|<
 name|Context
 argument_list|>
 block|{
-DECL|field|userProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|userProvider
-decl_stmt|;
 DECL|field|transferConfig
 specifier|private
 specifier|final
@@ -1628,15 +1619,9 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Upload ( Provider<CurrentUser> userProvider, TransferConfig transferConfig, DynamicSet<UploadPackInitializer> uploadPackInitializers, DynamicSet<PreUploadHook> preUploadHooks, UploadValidators.Factory uploadValidatorsFactory, ThreadLocalRequestContext threadContext, ProjectCache projectCache, PermissionBackend permissionBackend)
+DECL|method|Upload ( TransferConfig transferConfig, DynamicSet<UploadPackInitializer> uploadPackInitializers, DynamicSet<PreUploadHook> preUploadHooks, UploadValidators.Factory uploadValidatorsFactory, ThreadLocalRequestContext threadContext, ProjectCache projectCache, PermissionBackend permissionBackend)
 name|Upload
 parameter_list|(
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|userProvider
-parameter_list|,
 name|TransferConfig
 name|transferConfig
 parameter_list|,
@@ -1667,12 +1652,6 @@ name|PermissionBackend
 name|permissionBackend
 parameter_list|)
 block|{
-name|this
-operator|.
-name|userProvider
-operator|=
-name|userProvider
-expr_stmt|;
 name|this
 operator|.
 name|transferConfig
@@ -1757,10 +1736,8 @@ name|perm
 init|=
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|userProvider
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|project
 argument_list|(
@@ -2172,10 +2149,8 @@ try|try
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|userProvider
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|project
 argument_list|(
