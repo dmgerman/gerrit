@@ -376,6 +376,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|index
+operator|.
+name|IndexCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|metrics
 operator|.
 name|MetricMaker
@@ -4146,10 +4160,12 @@ argument_list|)
 comment|// This is needed for secondary index to work from plugin listeners
 operator|&&
 operator|!
-name|is
+name|IndexCollection
+operator|.
+name|class
+operator|.
+name|isAssignableFrom
 argument_list|(
-literal|"com.google.gerrit.server.index.IndexCollection"
-argument_list|,
 name|type
 argument_list|)
 condition|)

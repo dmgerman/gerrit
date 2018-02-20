@@ -1257,8 +1257,7 @@ throw|;
 block|}
 block|}
 DECL|method|doCreateTable (Statement stmt)
-specifier|private
-specifier|static
+specifier|protected
 name|void
 name|doCreateTable
 parameter_list|(

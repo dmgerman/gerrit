@@ -3316,13 +3316,6 @@ else|else
 block|{
 comment|// OpenRepo buffers objects separately; caller may assume that objects are available in the
 comment|// inserter it previously passed via setChangeRepo.
-name|checkState
-argument_list|(
-name|saveObjects
-argument_list|,
-literal|"cannot use dryrun with saveObjects = false"
-argument_list|)
-expr_stmt|;
 name|or
 operator|.
 name|flushToFinalInserter
