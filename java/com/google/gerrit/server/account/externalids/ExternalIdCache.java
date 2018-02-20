@@ -78,21 +78,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableSetMultimap
+name|SetMultimap
 import|;
 end_import
 
@@ -134,6 +120,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -147,7 +143,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Caches external IDs of all accounts.  *  *<p>On each cache access the SHA1 of the refs/meta/external-ids branch is read to verify that the  * cache is up to date.  */
+comment|/**  * Caches external IDs of all accounts.  *  *<p>On each cache access the SHA1 of the refs/meta/external-ids branch is read to verify that the  * cache is up to date.  *  *<p>All returned collections are unmodifiable.  */
 end_comment
 
 begin_interface
@@ -181,7 +177,7 @@ throws|throws
 name|IOException
 function_decl|;
 DECL|method|byAccount (Account.Id accountId)
-name|ImmutableSet
+name|Set
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -196,7 +192,7 @@ throws|throws
 name|IOException
 function_decl|;
 DECL|method|byAccount (Account.Id accountId, ObjectId rev)
-name|ImmutableSet
+name|Set
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -214,7 +210,7 @@ throws|throws
 name|IOException
 function_decl|;
 DECL|method|allByAccount ()
-name|ImmutableSetMultimap
+name|SetMultimap
 argument_list|<
 name|Account
 operator|.
@@ -228,7 +224,7 @@ throws|throws
 name|IOException
 function_decl|;
 DECL|method|byEmails (String... emails)
-name|ImmutableSetMultimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -244,7 +240,7 @@ throws|throws
 name|IOException
 function_decl|;
 DECL|method|allByEmail ()
-name|ImmutableSetMultimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -257,7 +253,7 @@ name|IOException
 function_decl|;
 DECL|method|byEmail (String email)
 specifier|default
-name|ImmutableSet
+name|Set
 argument_list|<
 name|ExternalId
 argument_list|>
