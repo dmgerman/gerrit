@@ -448,27 +448,6 @@ literal|false
 return|;
 comment|// No index; caller couldn't do anything if it is stale.
 block|}
-if|if
-condition|(
-operator|!
-name|i
-operator|.
-name|getSchema
-argument_list|()
-operator|.
-name|hasField
-argument_list|(
-name|GroupField
-operator|.
-name|REF_STATE
-argument_list|)
-condition|)
-block|{
-return|return
-literal|false
-return|;
-comment|// Index version not new enough for this check.
-block|}
 name|Optional
 argument_list|<
 name|FieldBundle

@@ -954,12 +954,21 @@ specifier|final
 name|boolean
 name|closeExecutorsOnShutdown
 decl_stmt|;
-DECL|method|IndexModule (int threads)
+DECL|field|slave
+specifier|private
+specifier|final
+name|boolean
+name|slave
+decl_stmt|;
+DECL|method|IndexModule (int threads, boolean slave)
 specifier|public
 name|IndexModule
 parameter_list|(
 name|int
 name|threads
+parameter_list|,
+name|boolean
+name|slave
 parameter_list|)
 block|{
 name|this
@@ -967,6 +976,12 @@ operator|.
 name|threads
 operator|=
 name|threads
+expr_stmt|;
+name|this
+operator|.
+name|slave
+operator|=
+name|slave
 expr_stmt|;
 name|this
 operator|.
@@ -1020,6 +1035,10 @@ expr_stmt|;
 name|this
 operator|.
 name|closeExecutorsOnShutdown
+operator|=
+literal|false
+expr_stmt|;
+name|slave
 operator|=
 literal|false
 expr_stmt|;
@@ -1229,6 +1248,21 @@ name|ProjectIndexDefinition
 name|projects
 parameter_list|)
 block|{
+if|if
+condition|(
+name|slave
+condition|)
+block|{
+comment|// In slave mode, we only have the group index.
+return|return
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+name|groups
+argument_list|)
+return|;
+block|}
 name|Collection
 argument_list|<
 name|IndexDefinition

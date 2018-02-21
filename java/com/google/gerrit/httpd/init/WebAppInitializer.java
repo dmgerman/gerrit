@@ -3251,7 +3251,9 @@ return|return
 name|LuceneIndexModule
 operator|.
 name|latestVersionWithOnlineUpgrade
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 return|;
 case|case
 name|ELASTICSEARCH
@@ -3260,7 +3262,9 @@ return|return
 name|ElasticIndexModule
 operator|.
 name|latestVersionWithOnlineUpgrade
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 return|;
 default|default:
 throw|throw
