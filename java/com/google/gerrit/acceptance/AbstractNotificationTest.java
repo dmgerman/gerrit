@@ -232,22 +232,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
-operator|.
-name|ProjectResetter
-operator|.
-name|Builder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|common
 operator|.
 name|Nullable
@@ -670,23 +654,21 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|resetProjects (Builder resetter)
+DECL|method|resetProjects ()
 specifier|protected
 name|ProjectResetter
+operator|.
+name|Config
 name|resetProjects
-parameter_list|(
-name|Builder
-name|resetter
-parameter_list|)
-throws|throws
-name|IOException
+parameter_list|()
 block|{
 comment|// Don't reset anything so that stagedUsers can be cached across all tests.
 comment|// Without this caching these tests become much too slow.
 return|return
-name|resetter
+operator|new
+name|ProjectResetter
 operator|.
-name|build
+name|Config
 argument_list|()
 return|;
 block|}

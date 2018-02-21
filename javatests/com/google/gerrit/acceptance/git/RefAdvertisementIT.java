@@ -5346,6 +5346,14 @@ operator|.
 name|builder
 argument_list|()
 operator|.
+name|build
+argument_list|(
+operator|new
+name|ProjectResetter
+operator|.
+name|Config
+argument_list|()
+operator|.
 name|reset
 argument_list|(
 name|allUsers
@@ -5360,9 +5368,7 @@ name|RefNames
 operator|.
 name|REFS_GROUPNAMES
 argument_list|)
-operator|.
-name|build
-argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
