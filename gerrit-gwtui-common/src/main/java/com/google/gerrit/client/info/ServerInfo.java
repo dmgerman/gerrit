@@ -361,15 +361,6 @@ name|ChangeConfigInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|allowDrafts ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|allowDrafts
-parameter_list|()
-comment|/*-{ return this.allow_drafts || false; }-*/
-function_decl|;
 DECL|method|allowBlame ()
 specifier|public
 specifier|final

@@ -2056,11 +2056,6 @@ specifier|final
 name|SubmitDryRun
 name|submitDryRun
 decl_stmt|;
-DECL|field|allowsDrafts
-specifier|final
-name|boolean
-name|allowsDrafts
-decl_stmt|;
 DECL|field|self
 specifier|private
 specifier|final
@@ -2262,28 +2257,11 @@ name|starredChangesUtil
 argument_list|,
 name|accountCache
 argument_list|,
-name|cfg
-operator|==
-literal|null
-condition|?
-literal|true
-else|:
-name|cfg
-operator|.
-name|getBoolean
-argument_list|(
-literal|"change"
-argument_list|,
-literal|"allowDrafts"
-argument_list|,
-literal|true
-argument_list|)
-argument_list|,
 name|notesMigration
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts, NotesMigration notesMigration)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, NotesMigration notesMigration)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2396,9 +2374,6 @@ name|starredChangesUtil
 parameter_list|,
 name|AccountCache
 name|accountCache
-parameter_list|,
-name|boolean
-name|allowsDrafts
 parameter_list|,
 name|NotesMigration
 name|notesMigration
@@ -2562,12 +2537,6 @@ name|accountCache
 expr_stmt|;
 name|this
 operator|.
-name|allowsDrafts
-operator|=
-name|allowsDrafts
-expr_stmt|;
-name|this
-operator|.
 name|hasOperands
 operator|=
 name|hasOperands
@@ -2649,8 +2618,6 @@ argument_list|,
 name|starredChangesUtil
 argument_list|,
 name|accountCache
-argument_list|,
-name|allowsDrafts
 argument_list|,
 name|notesMigration
 argument_list|)

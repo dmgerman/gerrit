@@ -82,11 +82,6 @@ specifier|public
 name|Boolean
 name|showAssigneeInChangesTable
 decl_stmt|;
-DECL|field|allowDrafts
-specifier|public
-name|Boolean
-name|allowDrafts
-decl_stmt|;
 DECL|field|disablePrivateChanges
 specifier|public
 name|Boolean
