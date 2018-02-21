@@ -268,20 +268,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|change
 operator|.
 name|MergeabilityCache
@@ -952,11 +938,6 @@ name|submitType
 operator|=
 name|getSubmitType
 argument_list|(
-name|resource
-operator|.
-name|getUser
-argument_list|()
-argument_list|,
 name|cd
 argument_list|,
 name|ps
@@ -1207,14 +1188,11 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getSubmitType (CurrentUser user, ChangeData cd, PatchSet patchSet)
+DECL|method|getSubmitType (ChangeData cd, PatchSet patchSet)
 specifier|private
 name|SubmitType
 name|getSubmitType
 parameter_list|(
-name|CurrentUser
-name|user
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -1231,8 +1209,6 @@ name|submitRuleEvaluatorFactory
 operator|.
 name|create
 argument_list|(
-name|user
-argument_list|,
 name|cd
 argument_list|)
 operator|.
