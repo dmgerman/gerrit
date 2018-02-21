@@ -78,7 +78,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestApiException
+name|ResourceConflictException
 import|;
 end_import
 
@@ -92,7 +92,7 @@ specifier|public
 class|class
 name|MergeIdenticalTreeException
 extends|extends
-name|RestApiException
+name|ResourceConflictException
 block|{
 DECL|field|serialVersionUID
 specifier|private
