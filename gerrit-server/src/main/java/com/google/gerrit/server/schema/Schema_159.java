@@ -197,7 +197,7 @@ name|strategy
 init|=
 name|DraftWorkflowMigrationStrategy
 operator|.
-name|PRIVATE
+name|WORK_IN_PROGRESS
 decl_stmt|;
 if|if
 condition|(
@@ -207,7 +207,7 @@ name|yesno
 argument_list|(
 literal|false
 argument_list|,
-literal|"Migrate draft changes to work-in-progress changes (default is private)?"
+literal|"Migrate draft changes to private changes (default is work-in-progress)"
 argument_list|)
 condition|)
 block|{
@@ -215,7 +215,7 @@ name|strategy
 operator|=
 name|DraftWorkflowMigrationStrategy
 operator|.
-name|WORK_IN_PROGRESS
+name|PRIVATE
 expr_stmt|;
 block|}
 name|ui
@@ -262,8 +262,9 @@ literal|"is_private"
 else|:
 literal|"work_in_progress"
 decl_stmt|;
-comment|// Mark changes private/wip if changes have status draft or
-comment|// if they have any draft patch sets.
+comment|// Mark changes private/WIP and NEW if either:
+comment|// * they have status DRAFT
+comment|// * they have status NEW and have any draft patch sets
 name|e
 operator|.
 name|execute
@@ -272,22 +273,30 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"UPDATE changes SET %s = 'Y', created_on = created_on WHERE status = 'd' OR "
+literal|"UPDATE changes "
 operator|+
-literal|"EXISTS (SELECT * FROM patch_sets WHERE "
+literal|"SET %s = 'Y', "
 operator|+
-literal|"patch_sets.change_id = changes.change_id AND patch_sets.draft = 'Y')"
+literal|"    status = 'n', "
+operator|+
+literal|"    created_on = created_on "
+operator|+
+literal|"WHERE status = 'd' "
+operator|+
+literal|"  OR (status = 'n' "
+operator|+
+literal|"      AND EXISTS "
+operator|+
+literal|"        (SELECT * "
+operator|+
+literal|"         FROM patch_sets "
+operator|+
+literal|"         WHERE patch_sets.change_id = changes.change_id "
+operator|+
+literal|"           AND patch_sets.draft = 'Y')) "
 argument_list|,
 name|column
 argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Change change status from draft to new.
-name|e
-operator|.
-name|execute
-argument_list|(
-literal|"UPDATE changes SET status = 'n', created_on = created_on WHERE status = 'd'"
 argument_list|)
 expr_stmt|;
 block|}
