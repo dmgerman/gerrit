@@ -197,7 +197,7 @@ name|strategy
 init|=
 name|DraftWorkflowMigrationStrategy
 operator|.
-name|PRIVATE
+name|WORK_IN_PROGRESS
 decl_stmt|;
 if|if
 condition|(
@@ -207,7 +207,7 @@ name|yesno
 argument_list|(
 literal|false
 argument_list|,
-literal|"Migrate draft changes to work-in-progress changes (default is private)?"
+literal|"Migrate draft changes to private changes (default is work-in-progress)"
 argument_list|)
 condition|)
 block|{
@@ -215,7 +215,7 @@ name|strategy
 operator|=
 name|DraftWorkflowMigrationStrategy
 operator|.
-name|WORK_IN_PROGRESS
+name|PRIVATE
 expr_stmt|;
 block|}
 name|ui
