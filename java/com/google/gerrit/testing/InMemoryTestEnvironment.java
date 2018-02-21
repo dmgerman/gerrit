@@ -677,6 +677,7 @@ operator|.
 name|open
 argument_list|()
 expr_stmt|;
+comment|// The first user is added to the "Administrators" group. See AccountManager#create().
 name|setApiUser
 argument_list|(
 name|accountManager
@@ -687,7 +688,7 @@ name|AuthRequest
 operator|.
 name|forUser
 argument_list|(
-literal|"user"
+literal|"admin"
 argument_list|)
 argument_list|)
 operator|.
