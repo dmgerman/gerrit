@@ -108,7 +108,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableSetMultimap
+name|SetMultimap
 import|;
 end_import
 
@@ -173,6 +173,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -363,7 +373,7 @@ block|}
 comment|/** Returns the external IDs of the specified account. */
 DECL|method|byAccount (Account.Id accountId)
 specifier|public
-name|ImmutableSet
+name|Set
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -389,7 +399,7 @@ block|}
 comment|/** Returns the external IDs of the specified account that have the given scheme. */
 DECL|method|byAccount (Account.Id accountId, String scheme)
 specifier|public
-name|ImmutableSet
+name|Set
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -440,7 +450,7 @@ block|}
 comment|/** Returns the external IDs of the specified account. */
 DECL|method|byAccount (Account.Id accountId, ObjectId rev)
 specifier|public
-name|ImmutableSet
+name|Set
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -471,7 +481,7 @@ block|}
 comment|/** Returns the external IDs of the specified account that have the given scheme. */
 DECL|method|byAccount (Account.Id accountId, String scheme, ObjectId rev)
 specifier|public
-name|ImmutableSet
+name|Set
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -527,7 +537,7 @@ block|}
 comment|/** Returns all external IDs by account. */
 DECL|method|allByAccount ()
 specifier|public
-name|ImmutableSetMultimap
+name|SetMultimap
 argument_list|<
 name|Account
 operator|.
@@ -550,7 +560,7 @@ block|}
 comment|/**    * Returns the external ID with the given email.    *    *<p>Each email should belong to a single external ID only. This means if more than one external    * ID is returned there is an inconsistency in the external IDs.    *    *<p>The external IDs are retrieved from the external ID cache. Each access to the external ID    * cache requires reading the SHA1 of the refs/meta/external-ids branch. If external IDs for    * multiple emails are needed it is more efficient to use {@link #byEmails(String...)} as this    * method reads the SHA1 of the refs/meta/external-ids branch only once (and not once per email).    *    * @see #byEmails(String...)    */
 DECL|method|byEmail (String email)
 specifier|public
-name|ImmutableSet
+name|Set
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -574,7 +584,7 @@ block|}
 comment|/**    * Returns the external IDs for the given emails.    *    *<p>Each email should belong to a single external ID only. This means if more than one external    * ID for an email is returned there is an inconsistency in the external IDs.    *    *<p>The external IDs are retrieved from the external ID cache. Each access to the external ID    * cache requires reading the SHA1 of the refs/meta/external-ids branch. If external IDs for    * multiple emails are needed it is more efficient to use this method instead of {@link    * #byEmail(String)} as this method reads the SHA1 of the refs/meta/external-ids branch only once    * (and not once per email).    *    * @see #byEmail(String)    */
 DECL|method|byEmails (String... emails)
 specifier|public
-name|ImmutableSetMultimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -601,7 +611,7 @@ block|}
 comment|/** Returns all external IDs by email. */
 DECL|method|allByEmail ()
 specifier|public
-name|ImmutableSetMultimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,

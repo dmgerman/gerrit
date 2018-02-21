@@ -656,6 +656,10 @@ operator|.
 name|isPresent
 argument_list|()
 condition|?
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
 name|externalIds
 operator|.
 name|byAccount
@@ -669,6 +673,7 @@ name|extIdsRev
 operator|.
 name|get
 argument_list|()
+argument_list|)
 argument_list|)
 else|:
 name|ImmutableSet
