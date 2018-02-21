@@ -2600,8 +2600,6 @@ parameter_list|,
 name|boolean
 name|allowClosed
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|cd
@@ -3000,8 +2998,6 @@ parameter_list|,
 name|boolean
 name|allowClosed
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|checkArgument
 argument_list|(
@@ -5249,8 +5245,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|SubmitTypeRecord
 name|str
