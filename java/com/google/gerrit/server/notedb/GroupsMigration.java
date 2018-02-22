@@ -295,27 +295,10 @@ name|Config
 name|cfg
 parameter_list|)
 block|{
-comment|// TODO(aliceks): Remove these flags when all other necessary TODOs for writing groups to
-comment|// NoteDb have been addressed.
-comment|// Don't flip these flags in a production setting! We only added them to spread the
-comment|// implementation of groups in NoteDb among several changes which are gradually merged.
+comment|// TODO(aliceks): Remove these flags and the ReviewDb code for groups.
 name|this
 argument_list|(
-name|cfg
-operator|.
-name|getBoolean
-argument_list|(
-name|SECTION_NOTE_DB
-argument_list|,
-name|GROUPS
-operator|.
-name|key
-argument_list|()
-argument_list|,
-name|WRITE
-argument_list|,
-literal|false
-argument_list|)
+literal|true
 argument_list|,
 name|cfg
 operator|.
@@ -330,7 +313,7 @@ argument_list|()
 argument_list|,
 name|READ
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 argument_list|,
 name|cfg
@@ -346,7 +329,7 @@ argument_list|()
 argument_list|,
 name|DISABLE_REVIEW_DB
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
