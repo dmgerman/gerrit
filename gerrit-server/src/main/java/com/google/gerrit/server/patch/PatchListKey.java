@@ -285,7 +285,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|28L
+literal|29L
 decl_stmt|;
 comment|// TODO(aliceks): Get rid of this enum and the parameter in the PatchListKey as we only use one of
 comment|// its values.
