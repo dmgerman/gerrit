@@ -285,49 +285,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|29L
-decl_stmt|;
-comment|// TODO(aliceks): Get rid of this enum and the parameter in the PatchListKey as we only use one of
-comment|// its values.
-DECL|enum|Algorithm
-specifier|public
-enum|enum
-name|Algorithm
-block|{
-DECL|enumConstant|PURE_TREE_DIFF
-name|PURE_TREE_DIFF
-block|,
-DECL|enumConstant|OPTIMIZED_DIFF
-name|OPTIMIZED_DIFF
-block|}
-DECL|field|ALGORITHM_TYPES
-specifier|private
-specifier|static
-specifier|final
-name|ImmutableBiMap
-argument_list|<
-name|Algorithm
-argument_list|,
-name|Character
-argument_list|>
-name|ALGORITHM_TYPES
-init|=
-name|ImmutableBiMap
-operator|.
-name|of
-argument_list|(
-name|Algorithm
-operator|.
-name|PURE_TREE_DIFF
-argument_list|,
-literal|'T'
-argument_list|,
-name|Algorithm
-operator|.
-name|OPTIMIZED_DIFF
-argument_list|,
-literal|'O'
-argument_list|)
+literal|30L
 decl_stmt|;
 DECL|field|WHITESPACE_TYPES
 specifier|public
@@ -387,21 +345,6 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
-name|checkState
-argument_list|(
-name|ALGORITHM_TYPES
-operator|.
-name|size
-argument_list|()
-operator|==
-name|Algorithm
-operator|.
-name|values
-argument_list|()
-operator|.
-name|length
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|againstDefaultBase (AnyObjectId newId, Whitespace ws)
 specifier|public
@@ -425,10 +368,6 @@ argument_list|,
 name|newId
 argument_list|,
 name|ws
-argument_list|,
-name|Algorithm
-operator|.
-name|OPTIMIZED_DIFF
 argument_list|)
 return|;
 block|}
@@ -457,10 +396,6 @@ argument_list|,
 name|newId
 argument_list|,
 name|ws
-argument_list|,
-name|Algorithm
-operator|.
-name|OPTIMIZED_DIFF
 argument_list|)
 return|;
 block|}
@@ -489,10 +424,6 @@ argument_list|,
 name|newId
 argument_list|,
 name|whitespace
-argument_list|,
-name|Algorithm
-operator|.
-name|OPTIMIZED_DIFF
 argument_list|)
 return|;
 block|}
@@ -522,13 +453,7 @@ specifier|transient
 name|Whitespace
 name|whitespace
 decl_stmt|;
-DECL|field|algorithm
-specifier|private
-specifier|transient
-name|Algorithm
-name|algorithm
-decl_stmt|;
-DECL|method|PatchListKey (AnyObjectId a, AnyObjectId b, Whitespace ws, Algorithm algorithm)
+DECL|method|PatchListKey (AnyObjectId a, AnyObjectId b, Whitespace ws)
 specifier|private
 name|PatchListKey
 parameter_list|(
@@ -540,9 +465,6 @@ name|b
 parameter_list|,
 name|Whitespace
 name|ws
-parameter_list|,
-name|Algorithm
-name|algorithm
 parameter_list|)
 block|{
 name|oldId
@@ -569,14 +491,8 @@ name|whitespace
 operator|=
 name|ws
 expr_stmt|;
-name|this
-operator|.
-name|algorithm
-operator|=
-name|algorithm
-expr_stmt|;
 block|}
-DECL|method|PatchListKey (int parentNum, AnyObjectId b, Whitespace ws, Algorithm algorithm)
+DECL|method|PatchListKey (int parentNum, AnyObjectId b, Whitespace ws)
 specifier|private
 name|PatchListKey
 parameter_list|(
@@ -588,9 +504,6 @@ name|b
 parameter_list|,
 name|Whitespace
 name|ws
-parameter_list|,
-name|Algorithm
-name|algorithm
 parameter_list|)
 block|{
 name|this
@@ -615,15 +528,9 @@ name|whitespace
 operator|=
 name|ws
 expr_stmt|;
-name|this
-operator|.
-name|algorithm
-operator|=
-name|algorithm
-expr_stmt|;
 block|}
 comment|/** For use only by DiffSummaryKey. */
-DECL|method|PatchListKey ( ObjectId oldId, Integer parentNum, ObjectId newId, Whitespace whitespace, Algorithm algorithm)
+DECL|method|PatchListKey (ObjectId oldId, Integer parentNum, ObjectId newId, Whitespace whitespace)
 name|PatchListKey
 parameter_list|(
 name|ObjectId
@@ -637,9 +544,6 @@ name|newId
 parameter_list|,
 name|Whitespace
 name|whitespace
-parameter_list|,
-name|Algorithm
-name|algorithm
 parameter_list|)
 block|{
 name|this
@@ -665,12 +569,6 @@ operator|.
 name|whitespace
 operator|=
 name|whitespace
-expr_stmt|;
-name|this
-operator|.
-name|algorithm
-operator|=
-name|algorithm
 expr_stmt|;
 block|}
 comment|/** Old side commit, or null to assume ancestor or combined merge. */
@@ -720,16 +618,6 @@ return|return
 name|whitespace
 return|;
 block|}
-DECL|method|getAlgorithm ()
-specifier|public
-name|Algorithm
-name|getAlgorithm
-parameter_list|()
-block|{
-return|return
-name|algorithm
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|hashCode ()
@@ -750,8 +638,6 @@ argument_list|,
 name|newId
 argument_list|,
 name|whitespace
-argument_list|,
-name|algorithm
 argument_list|)
 return|;
 block|}
@@ -820,12 +706,6 @@ operator|==
 name|k
 operator|.
 name|whitespace
-operator|&&
-name|algorithm
-operator|==
-name|k
-operator|.
-name|algorithm
 return|;
 block|}
 return|return
@@ -930,23 +810,6 @@ name|n
 operator|.
 name|append
 argument_list|(
-literal|" "
-argument_list|)
-expr_stmt|;
-name|n
-operator|.
-name|append
-argument_list|(
-name|algorithm
-operator|.
-name|name
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|n
-operator|.
-name|append
-argument_list|(
 literal|"]"
 argument_list|)
 expr_stmt|;
@@ -1027,18 +890,6 @@ operator|.
 name|writeChar
 argument_list|(
 name|c
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|writeChar
-argument_list|(
-name|ALGORITHM_TYPES
-operator|.
-name|get
-argument_list|(
-name|algorithm
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1127,26 +978,6 @@ name|t
 argument_list|)
 throw|;
 block|}
-name|char
-name|algorithmCharacter
-init|=
-name|in
-operator|.
-name|readChar
-argument_list|()
-decl_stmt|;
-name|algorithm
-operator|=
-name|ALGORITHM_TYPES
-operator|.
-name|inverse
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|algorithmCharacter
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
