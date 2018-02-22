@@ -454,17 +454,6 @@ name|GerritConfig
 argument_list|(
 name|name
 operator|=
-literal|"change.allowDrafts"
-argument_list|,
-name|value
-operator|=
-literal|"false"
-argument_list|)
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
 literal|"change.largeChange"
 argument_list|,
 name|value
@@ -794,18 +783,6 @@ name|isNull
 argument_list|()
 expr_stmt|;
 comment|// change
-name|assertThat
-argument_list|(
-name|i
-operator|.
-name|change
-operator|.
-name|allowDrafts
-argument_list|)
-operator|.
-name|isNull
-argument_list|()
-expr_stmt|;
 name|assertThat
 argument_list|(
 name|i
@@ -1352,18 +1329,6 @@ name|isNull
 argument_list|()
 expr_stmt|;
 comment|// change
-name|assertThat
-argument_list|(
-name|i
-operator|.
-name|change
-operator|.
-name|allowDrafts
-argument_list|)
-operator|.
-name|isTrue
-argument_list|()
-expr_stmt|;
 name|assertThat
 argument_list|(
 name|i
