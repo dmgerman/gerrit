@@ -104,6 +104,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -548,6 +562,11 @@ name|args
 operator|.
 name|edits
 argument_list|()
+argument_list|,
+name|args
+operator|.
+name|editsDueToRebase
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -685,7 +704,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|compute (Text aText, Text bText, ImmutableList<Edit> immutableEdits)
+DECL|method|compute ( Text aText, Text bText, ImmutableList<Edit> immutableEdits, ImmutableSet<Edit> immutableEditsDueToRebase)
 specifier|static
 name|IntraLineDiff
 name|compute
@@ -701,9 +720,13 @@ argument_list|<
 name|Edit
 argument_list|>
 name|immutableEdits
+parameter_list|,
+name|ImmutableSet
+argument_list|<
+name|Edit
+argument_list|>
+name|immutableEditsDueToRebase
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|List
 argument_list|<
@@ -721,6 +744,8 @@ decl_stmt|;
 name|combineLineEdits
 argument_list|(
 name|edits
+argument_list|,
+name|immutableEditsDueToRebase
 argument_list|,
 name|aText
 argument_list|,
@@ -1653,7 +1678,7 @@ name|edits
 argument_list|)
 return|;
 block|}
-DECL|method|combineLineEdits (List<Edit> edits, Text a, Text b)
+DECL|method|combineLineEdits ( List<Edit> edits, ImmutableSet<Edit> editsDueToRebase, Text a, Text b)
 specifier|private
 specifier|static
 name|void
@@ -1664,6 +1689,12 @@ argument_list|<
 name|Edit
 argument_list|>
 name|edits
+parameter_list|,
+name|ImmutableSet
+argument_list|<
+name|Edit
+argument_list|>
+name|editsDueToRebase
 parameter_list|,
 name|Text
 name|a
@@ -1712,6 +1743,27 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|editsDueToRebase
+operator|.
+name|contains
+argument_list|(
+name|c
+argument_list|)
+operator|||
+name|editsDueToRebase
+operator|.
+name|contains
+argument_list|(
+name|n
+argument_list|)
+condition|)
+block|{
+comment|// Don't combine any edits which were identified as being introduced by a rebase as we would
+comment|// lose that information because of the combination.
+continue|continue;
+block|}
 comment|// Combine edits that are really close together. Right now our rule
 comment|// is, coalesce two line edits which are only one line apart if that
 comment|// common context line is either a "pointless line", or is identical
