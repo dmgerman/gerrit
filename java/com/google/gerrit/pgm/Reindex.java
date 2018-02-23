@@ -761,9 +761,6 @@ argument_list|,
 name|threads
 argument_list|)
 expr_stmt|;
-name|checkNotSlaveMode
-argument_list|()
-expr_stmt|;
 name|overrideConfig
 argument_list|()
 expr_stmt|;
@@ -1072,36 +1069,6 @@ name|valid
 argument_list|)
 throw|;
 block|}
-DECL|method|checkNotSlaveMode ()
-specifier|private
-name|void
-name|checkNotSlaveMode
-parameter_list|()
-throws|throws
-name|Die
-block|{
-if|if
-condition|(
-name|globalConfig
-operator|.
-name|getBoolean
-argument_list|(
-literal|"container"
-argument_list|,
-literal|"slave"
-argument_list|,
-literal|false
-argument_list|)
-condition|)
-block|{
-throw|throw
-name|die
-argument_list|(
-literal|"Cannot run reindex in slave mode"
-argument_list|)
-throw|;
-block|}
-block|}
 DECL|method|createSysInjector ()
 specifier|private
 name|Injector
@@ -1143,6 +1110,20 @@ name|changesVersion
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|slave
+init|=
+name|globalConfig
+operator|.
+name|getBoolean
+argument_list|(
+literal|"container"
+argument_list|,
+literal|"slave"
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
 name|List
 argument_list|<
 name|Module
@@ -1180,7 +1161,7 @@ name|versions
 argument_list|,
 name|threads
 argument_list|,
-literal|false
+name|slave
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1197,7 +1178,7 @@ name|versions
 argument_list|,
 name|threads
 argument_list|,
-literal|false
+name|slave
 argument_list|)
 expr_stmt|;
 break|break;
