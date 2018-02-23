@@ -176,6 +176,24 @@ name|Assisted
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|james
+operator|.
+name|mime4j
+operator|.
+name|dom
+operator|.
+name|field
+operator|.
+name|FieldName
+import|;
+end_import
+
 begin_comment
 comment|/** Send an email to inform users that parsing their inbound email failed. */
 end_comment
@@ -321,6 +339,15 @@ argument_list|()
 expr_stmt|;
 name|setListIdHeader
 argument_list|()
+expr_stmt|;
+name|setHeader
+argument_list|(
+name|FieldName
+operator|.
+name|SUBJECT
+argument_list|,
+literal|"[Gerrit Code Review] Unable to process your email"
+argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
