@@ -1907,6 +1907,19 @@ argument_list|(
 literal|"was unable to parse your email"
 argument_list|)
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|message
+operator|.
+name|headers
+argument_list|()
+argument_list|)
+operator|.
+name|containsKey
+argument_list|(
+literal|"Subject"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
