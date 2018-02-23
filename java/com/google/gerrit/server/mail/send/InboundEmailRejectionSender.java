@@ -349,11 +349,7 @@ operator|.
 name|fieldName
 argument_list|()
 argument_list|,
-literal|"<"
-operator|+
 name|threadId
-operator|+
-literal|">"
 argument_list|)
 expr_stmt|;
 block|}
