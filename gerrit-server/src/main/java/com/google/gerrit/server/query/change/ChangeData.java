@@ -6368,6 +6368,14 @@ name|ps
 operator|==
 literal|null
 operator|||
+operator|(
+operator|!
+name|changeControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+operator|&&
 operator|!
 name|changeControl
 argument_list|()
@@ -6378,6 +6386,7 @@ name|ps
 argument_list|,
 name|db
 argument_list|)
+operator|)
 condition|)
 block|{
 return|return
