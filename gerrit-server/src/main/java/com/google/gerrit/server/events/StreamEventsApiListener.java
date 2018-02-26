@@ -1461,6 +1461,10 @@ name|get
 parameter_list|()
 block|{
 return|return
+name|account
+operator|!=
+literal|null
+condition|?
 name|eventFactory
 operator|.
 name|asAccountAttribute
@@ -1475,6 +1479,8 @@ operator|.
 name|_accountId
 argument_list|)
 argument_list|)
+else|:
+literal|null
 return|;
 block|}
 block|}
