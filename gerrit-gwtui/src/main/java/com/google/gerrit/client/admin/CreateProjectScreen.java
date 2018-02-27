@@ -987,6 +987,13 @@ name|checkBoxEmptyCommit
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|emptyCommit
+operator|.
+name|setValue
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|permissionsOnly
 operator|=
 operator|new
