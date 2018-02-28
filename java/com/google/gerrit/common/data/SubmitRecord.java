@@ -123,7 +123,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Describes the state required to submit a change. */
+comment|/** Describes the state and edits required to submit a change. */
 end_comment
 
 begin_class
@@ -196,7 +196,7 @@ comment|/** The change is ready for submission. */
 DECL|enumConstant|OK
 name|OK
 block|,
-comment|/** The change is missing a required label. */
+comment|/** Something is preventing this change from being submitted. */
 DECL|enumConstant|NOT_READY
 name|NOT_READY
 block|,
@@ -224,6 +224,14 @@ argument_list|<
 name|Label
 argument_list|>
 name|labels
+decl_stmt|;
+DECL|field|requirements
+specifier|public
+name|List
+argument_list|<
+name|SubmitRequirement
+argument_list|>
+name|requirements
 decl_stmt|;
 DECL|field|errorMessage
 specifier|public
@@ -528,6 +536,51 @@ name|sb
 operator|.
 name|append
 argument_list|(
+literal|"],["
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|requirements
+operator|!=
+literal|null
+condition|)
+block|{
+name|String
+name|delimiter
+init|=
+literal|""
+decl_stmt|;
+for|for
+control|(
+name|SubmitRequirement
+name|requirement
+range|:
+name|requirements
+control|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|delimiter
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|requirement
+argument_list|)
+expr_stmt|;
+name|delimiter
+operator|=
+literal|", "
+expr_stmt|;
+block|}
+block|}
+name|sb
+operator|.
+name|append
+argument_list|(
 literal|']'
 argument_list|)
 expr_stmt|;
@@ -597,6 +650,17 @@ name|r
 operator|.
 name|errorMessage
 argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|requirements
+argument_list|,
+name|r
+operator|.
+name|requirements
+argument_list|)
 return|;
 block|}
 return|return
@@ -621,6 +685,8 @@ argument_list|,
 name|labels
 argument_list|,
 name|errorMessage
+argument_list|,
+name|requirements
 argument_list|)
 return|;
 block|}

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -67,29 +67,29 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents a {@link com.google.gerrit.common.data.SubmitRecord.Label} that does not depend on  * Gerrit internal classes, to be serialized.  */
+comment|/**  * Represents a {@link com.google.gerrit.common.data.SubmitRequirement} that does not depend on  * Gerrit internal classes, to be serialized  */
 end_comment
 
 begin_class
-DECL|class|SubmitLabelAttribute
+DECL|class|SubmitRequirementAttribute
 specifier|public
 class|class
-name|SubmitLabelAttribute
+name|SubmitRequirementAttribute
 block|{
+DECL|field|shortReason
+specifier|public
+name|String
+name|shortReason
+decl_stmt|;
+DECL|field|fullReason
+specifier|public
+name|String
+name|fullReason
+decl_stmt|;
 DECL|field|label
 specifier|public
 name|String
 name|label
-decl_stmt|;
-DECL|field|status
-specifier|public
-name|String
-name|status
-decl_stmt|;
-DECL|field|by
-specifier|public
-name|AccountAttribute
-name|by
 decl_stmt|;
 block|}
 end_class
