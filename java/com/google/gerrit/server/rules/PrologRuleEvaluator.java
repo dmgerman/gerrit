@@ -1648,6 +1648,10 @@ argument_list|(
 name|out
 argument_list|)
 expr_stmt|;
+comment|// This transformation is required to adapt Prolog's behavior to the way Gerrit handles
+comment|// SubmitRecords, as defined in the SubmitRecord#allRecordsOK method.
+comment|// When several rules are defined in Prolog, they are all matched to a SubmitRecord. We want
+comment|// the change to be submittable when at least one result is OK.
 if|if
 condition|(
 name|foundOk
