@@ -2406,13 +2406,10 @@ if|if
 condition|(
 name|SubmitRecord
 operator|.
-name|findOkRecord
+name|allRecordsOK
 argument_list|(
 name|results
 argument_list|)
-operator|.
-name|isPresent
-argument_list|()
 condition|)
 block|{
 comment|// Rules supplied a valid solution.
@@ -2477,6 +2474,10 @@ name|status
 condition|)
 block|{
 case|case
+name|OK
+case|:
+break|break;
+case|case
 name|CLOSED
 case|:
 throw|throw
@@ -2519,9 +2520,6 @@ argument_list|)
 throw|;
 case|case
 name|FORCED
-case|:
-case|case
-name|OK
 case|:
 default|default:
 throw|throw

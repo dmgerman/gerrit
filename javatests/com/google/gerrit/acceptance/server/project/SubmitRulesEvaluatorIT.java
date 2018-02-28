@@ -687,7 +687,7 @@ name|SubmitRecord
 operator|.
 name|Status
 operator|.
-name|NOT_READY
+name|OK
 expr_stmt|;
 name|record2Expected
 operator|.

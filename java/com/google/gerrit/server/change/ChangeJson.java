@@ -5445,7 +5445,7 @@ block|{
 return|return
 name|SubmitRecord
 operator|.
-name|findOkRecord
+name|allRecordsOK
 argument_list|(
 name|cd
 operator|.
@@ -5454,9 +5454,6 @@ argument_list|(
 name|SUBMIT_RULE_OPTIONS_STRICT
 argument_list|)
 argument_list|)
-operator|.
-name|isPresent
-argument_list|()
 return|;
 block|}
 DECL|method|submitRecords (ChangeData cd)

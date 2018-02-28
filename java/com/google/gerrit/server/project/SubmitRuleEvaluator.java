@@ -1242,6 +1242,11 @@ argument_list|>
 name|results
 parameter_list|)
 block|{
+name|boolean
+name|foundOk
+init|=
+literal|false
+decl_stmt|;
 name|List
 argument_list|<
 name|SubmitRecord
@@ -1726,6 +1731,10 @@ operator|.
 name|OK
 condition|)
 block|{
+name|foundOk
+operator|=
+literal|true
+expr_stmt|;
 break|break;
 block|}
 block|}
@@ -1736,6 +1745,35 @@ argument_list|(
 name|out
 argument_list|)
 expr_stmt|;
+comment|// This transformation is required to adapt Prolog's behavior to the way Gerrit handles
+comment|// SubmitRecords, as defined in the SubmitRecord#allRecordsOK method.
+comment|// When several rules are defined in Prolog, they are all matched to a SubmitRecord. We want
+comment|// the change to be submittable when at least one result is OK.
+if|if
+condition|(
+name|foundOk
+condition|)
+block|{
+for|for
+control|(
+name|SubmitRecord
+name|record
+range|:
+name|out
+control|)
+block|{
+name|record
+operator|.
+name|status
+operator|=
+name|SubmitRecord
+operator|.
+name|Status
+operator|.
+name|OK
+expr_stmt|;
+block|}
+block|}
 return|return
 name|out
 return|;

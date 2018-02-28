@@ -112,16 +112,6 @@ name|Objects
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
 begin_comment
 comment|/** Describes the state and edits required to submit a change. */
 end_comment
@@ -132,14 +122,11 @@ specifier|public
 class|class
 name|SubmitRecord
 block|{
-DECL|method|findOkRecord (Collection<SubmitRecord> in)
+DECL|method|allRecordsOK (Collection<SubmitRecord> in)
 specifier|public
 specifier|static
-name|Optional
-argument_list|<
-name|SubmitRecord
-argument_list|>
-name|findOkRecord
+name|boolean
+name|allRecordsOK
 parameter_list|(
 name|Collection
 argument_list|<
@@ -153,36 +140,40 @@ condition|(
 name|in
 operator|==
 literal|null
+operator|||
+name|in
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
+comment|// If the list is null or empty, it means that this Gerrit installation does not
+comment|// have any form of validation rules.
+comment|// Hence, the permission system should be used to determine if the change can be merged
+comment|// or not.
 return|return
-name|Optional
-operator|.
-name|empty
-argument_list|()
+literal|true
 return|;
 block|}
+comment|// The change can be submitted, unless at least one plugin prevents it.
 return|return
 name|in
 operator|.
 name|stream
 argument_list|()
 operator|.
-name|filter
+name|noneMatch
 argument_list|(
 name|r
 lambda|->
 name|r
 operator|.
 name|status
-operator|==
+operator|!=
 name|Status
 operator|.
 name|OK
 argument_list|)
-operator|.
-name|findFirst
-argument_list|()
 return|;
 block|}
 DECL|enum|Status
