@@ -639,12 +639,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"rule %s produced invalid result: %s"
-argument_list|,
-name|evaluator
-operator|.
-name|getSubmitRuleName
-argument_list|()
+literal|"rule produced invalid result: %s"
 argument_list|,
 name|rec
 argument_list|)

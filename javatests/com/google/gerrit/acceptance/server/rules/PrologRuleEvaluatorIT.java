@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.server.project
+DECL|package|com.google.gerrit.acceptance.server.rules
 package|package
 name|com
 operator|.
@@ -64,7 +64,7 @@ name|acceptance
 operator|.
 name|server
 operator|.
-name|project
+name|rules
 package|;
 end_package
 
@@ -170,22 +170,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|SubmitRuleEvaluator
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|SubmitRuleOptions
 import|;
 end_import
@@ -205,6 +189,22 @@ operator|.
 name|change
 operator|.
 name|ChangeData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|rules
+operator|.
+name|PrologRuleEvaluator
 import|;
 end_import
 
@@ -317,10 +317,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|SubmitRulesEvaluatorIT
+DECL|class|PrologRuleEvaluatorIT
 specifier|public
 class|class
-name|SubmitRulesEvaluatorIT
+name|PrologRuleEvaluatorIT
 extends|extends
 name|AbstractDaemonTest
 block|{
@@ -328,7 +328,7 @@ DECL|field|evaluatorFactory
 annotation|@
 name|Inject
 specifier|private
-name|SubmitRuleEvaluator
+name|PrologRuleEvaluator
 operator|.
 name|Factory
 name|evaluatorFactory
@@ -341,16 +341,10 @@ name|void
 name|convertsPrologToSubmitRecord
 parameter_list|()
 block|{
-name|SubmitRuleEvaluator
+name|PrologRuleEvaluator
 name|evaluator
 init|=
 name|makeEvaluator
-argument_list|()
-decl_stmt|;
-name|ChangeData
-name|cd
-init|=
-name|makeChangeData
 argument_list|()
 decl_stmt|;
 name|StructureTerm
@@ -405,8 +399,6 @@ argument_list|(
 literal|null
 argument_list|,
 name|terms
-argument_list|,
-name|cd
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -429,16 +421,10 @@ name|void
 name|abortsEarlyWithOkayRecord
 parameter_list|()
 block|{
-name|SubmitRuleEvaluator
+name|PrologRuleEvaluator
 name|evaluator
 init|=
 name|makeEvaluator
-argument_list|()
-decl_stmt|;
-name|ChangeData
-name|cd
-init|=
-name|makeChangeData
 argument_list|()
 decl_stmt|;
 name|SubmitRecord
@@ -664,8 +650,6 @@ argument_list|(
 literal|null
 argument_list|,
 name|terms
-argument_list|,
-name|cd
 argument_list|)
 decl_stmt|;
 comment|// assert that
@@ -963,7 +947,7 @@ return|;
 block|}
 DECL|method|makeEvaluator ()
 specifier|private
-name|SubmitRuleEvaluator
+name|PrologRuleEvaluator
 name|makeEvaluator
 parameter_list|()
 block|{
@@ -972,6 +956,9 @@ name|evaluatorFactory
 operator|.
 name|create
 argument_list|(
+name|makeChangeData
+argument_list|()
+argument_list|,
 name|SubmitRuleOptions
 operator|.
 name|defaults
