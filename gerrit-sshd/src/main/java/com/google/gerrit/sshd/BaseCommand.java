@@ -1892,15 +1892,6 @@ name|String
 name|getTaskDescription
 parameter_list|()
 block|{
-name|StringBuilder
-name|m
-init|=
-operator|new
-name|StringBuilder
-argument_list|(
-name|commandName
-argument_list|)
-decl_stmt|;
 name|String
 index|[]
 name|ta
@@ -1915,10 +1906,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|m
-operator|.
-name|append
-argument_list|(
+return|return
+name|commandName
+operator|+
+literal|" "
+operator|+
 name|Joiner
 operator|.
 name|on
@@ -1930,14 +1922,10 @@ name|join
 argument_list|(
 name|ta
 argument_list|)
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 return|return
-name|m
-operator|.
-name|toString
-argument_list|()
+name|commandName
 return|;
 block|}
 DECL|method|getTaskName ()
