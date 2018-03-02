@@ -609,14 +609,6 @@ name|records
 init|=
 name|evaluator
 operator|.
-name|setPatchSet
-argument_list|(
-name|rsrc
-operator|.
-name|getPatchSet
-argument_list|()
-argument_list|)
-operator|.
 name|setLogErrors
 argument_list|(
 literal|false

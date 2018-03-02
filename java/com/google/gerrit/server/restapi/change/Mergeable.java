@@ -939,8 +939,6 @@ operator|=
 name|getSubmitType
 argument_list|(
 name|cd
-argument_list|,
-name|ps
 argument_list|)
 expr_stmt|;
 try|try
@@ -1188,16 +1186,13 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getSubmitType (ChangeData cd, PatchSet patchSet)
+DECL|method|getSubmitType (ChangeData cd)
 specifier|private
 name|SubmitType
 name|getSubmitType
 parameter_list|(
 name|ChangeData
 name|cd
-parameter_list|,
-name|PatchSet
-name|patchSet
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1210,11 +1205,6 @@ operator|.
 name|create
 argument_list|(
 name|cd
-argument_list|)
-operator|.
-name|setPatchSet
-argument_list|(
-name|patchSet
 argument_list|)
 operator|.
 name|getSubmitType
