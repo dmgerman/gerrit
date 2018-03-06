@@ -92,7 +92,7 @@ block|,
 DECL|enumConstant|CC
 name|CC
 argument_list|(
-literal|"Gerit-CC"
+literal|"Gerrit-CC"
 argument_list|)
 block|,
 DECL|enumConstant|COMMENT_IN_REPLY_TO
