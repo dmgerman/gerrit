@@ -730,11 +730,6 @@ name|logErrors
 init|=
 literal|true
 decl_stmt|;
-DECL|field|reductionsConsumed
-specifier|private
-name|long
-name|reductionsConsumed
-decl_stmt|;
 DECL|field|projectState
 specifier|private
 name|ProjectState
@@ -955,17 +950,6 @@ name|log
 expr_stmt|;
 return|return
 name|this
-return|;
-block|}
-comment|/** @return Prolog reductions consumed during evaluation. */
-DECL|method|getReductionsConsumed ()
-specifier|public
-name|long
-name|getReductionsConsumed
-parameter_list|()
-block|{
-return|return
-name|reductionsConsumed
 return|;
 block|}
 comment|/**    * Evaluate the submit rules.    *    * @return List of {@link SubmitRecord} objects returned from the evaluated rules, including any    *     errors.    */
@@ -2311,16 +2295,6 @@ name|err
 argument_list|)
 throw|;
 block|}
-finally|finally
-block|{
-name|reductionsConsumed
-operator|=
-name|env
-operator|.
-name|getReductions
-argument_list|()
-expr_stmt|;
-block|}
 name|Term
 name|resultsTerm
 init|=
@@ -2824,16 +2798,6 @@ argument_list|,
 name|err
 argument_list|)
 throw|;
-block|}
-finally|finally
-block|{
-name|reductionsConsumed
-operator|+=
-name|env
-operator|.
-name|getReductions
-argument_list|()
-expr_stmt|;
 block|}
 name|childEnv
 operator|=
