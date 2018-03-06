@@ -184,6 +184,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|project
+operator|.
+name|SubmitRuleOptions
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|query
 operator|.
 name|change
@@ -331,6 +347,12 @@ init|=
 name|makeEvaluator
 argument_list|()
 decl_stmt|;
+name|ChangeData
+name|cd
+init|=
+name|makeChangeData
+argument_list|()
+decl_stmt|;
 name|StructureTerm
 name|verifiedLabel
 init|=
@@ -383,6 +405,8 @@ argument_list|(
 literal|null
 argument_list|,
 name|terms
+argument_list|,
+name|cd
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -409,6 +433,12 @@ name|SubmitRuleEvaluator
 name|evaluator
 init|=
 name|makeEvaluator
+argument_list|()
+decl_stmt|;
+name|ChangeData
+name|cd
+init|=
+name|makeChangeData
 argument_list|()
 decl_stmt|;
 name|SubmitRecord
@@ -634,6 +664,8 @@ argument_list|(
 literal|null
 argument_list|,
 name|terms
+argument_list|,
+name|cd
 argument_list|)
 decl_stmt|;
 comment|// assert that
@@ -883,10 +915,10 @@ name|labels
 argument_list|)
 return|;
 block|}
-DECL|method|makeEvaluator ()
+DECL|method|makeChangeData ()
 specifier|private
-name|SubmitRuleEvaluator
-name|makeEvaluator
+name|ChangeData
+name|makeChangeData
 parameter_list|()
 block|{
 name|ChangeData
@@ -926,11 +958,24 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
+name|cd
+return|;
+block|}
+DECL|method|makeEvaluator ()
+specifier|private
+name|SubmitRuleEvaluator
+name|makeEvaluator
+parameter_list|()
+block|{
+return|return
 name|evaluatorFactory
 operator|.
 name|create
 argument_list|(
-name|cd
+name|SubmitRuleOptions
+operator|.
+name|defaults
+argument_list|()
 argument_list|)
 return|;
 block|}
