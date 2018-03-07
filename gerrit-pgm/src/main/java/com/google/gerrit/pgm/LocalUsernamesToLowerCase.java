@@ -467,8 +467,6 @@ operator|.
 name|commit
 argument_list|(
 name|db
-argument_list|,
-literal|"Convert local usernames to lower case"
 argument_list|)
 expr_stmt|;
 block|}

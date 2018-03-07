@@ -1239,8 +1239,6 @@ catch|catch
 parameter_list|(
 name|IOException
 decl||
-name|ConfigInvalidException
-decl||
 name|OrmException
 name|cleanupError
 parameter_list|)

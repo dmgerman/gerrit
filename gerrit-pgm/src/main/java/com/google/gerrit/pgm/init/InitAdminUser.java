@@ -833,8 +833,6 @@ name|insert
 argument_list|(
 name|db
 argument_list|,
-literal|"Add external IDs for initial admin user"
-argument_list|,
 name|extIds
 argument_list|)
 expr_stmt|;

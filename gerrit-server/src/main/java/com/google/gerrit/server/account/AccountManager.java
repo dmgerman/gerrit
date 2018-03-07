@@ -938,8 +938,6 @@ throws|throws
 name|OrmException
 throws|,
 name|IOException
-throws|,
-name|ConfigInvalidException
 block|{
 name|IdentifiedUser
 name|user
@@ -1981,8 +1979,6 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
-throws|,
-name|ConfigInvalidException
 block|{
 if|if
 condition|(
@@ -2088,8 +2084,6 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
-throws|,
-name|ConfigInvalidException
 block|{
 try|try
 init|(
@@ -2297,8 +2291,6 @@ throws|,
 name|AccountException
 throws|,
 name|IOException
-throws|,
-name|ConfigInvalidException
 block|{
 try|try
 init|(
@@ -2459,8 +2451,6 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
-throws|,
-name|ConfigInvalidException
 block|{
 try|try
 init|(
