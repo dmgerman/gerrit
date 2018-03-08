@@ -8879,7 +8879,7 @@ operator|.
 name|getLastUpdatedOn
 argument_list|()
 decl_stmt|;
-comment|//create a group named "us" with one user: testUser
+comment|//create a group named "kobe" with one user: lee
 name|TestAccount
 name|testUser
 init|=
@@ -8887,11 +8887,25 @@ name|accounts
 operator|.
 name|create
 argument_list|(
-literal|"testUser"
+literal|"kobebryant"
 argument_list|,
-literal|"testUser@test.com"
+literal|"kobebryant@test.com"
 argument_list|,
-literal|"testUser"
+literal|"kobebryant"
+argument_list|)
+decl_stmt|;
+name|TestAccount
+name|myGroupUser
+init|=
+name|accounts
+operator|.
+name|create
+argument_list|(
+literal|"lee"
+argument_list|,
+literal|"lee@test.com"
+argument_list|,
+literal|"lee"
 argument_list|)
 decl_stmt|;
 name|String
@@ -8899,23 +8913,7 @@ name|testGroup
 init|=
 name|createGroupWithRealName
 argument_list|(
-name|user
-operator|.
-name|fullName
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|user
-operator|.
-name|fullName
-operator|.
-name|length
-argument_list|()
-operator|/
-literal|2
-argument_list|)
+literal|"kobe"
 argument_list|)
 decl_stmt|;
 name|GroupApi
@@ -8942,7 +8940,7 @@ name|groupApi
 operator|.
 name|addMembers
 argument_list|(
-name|testUser
+name|myGroupUser
 operator|.
 name|fullName
 argument_list|)
@@ -8952,7 +8950,7 @@ name|groupApi
 operator|.
 name|removeMembers
 argument_list|(
-name|user
+name|testUser
 operator|.
 name|fullName
 argument_list|)
@@ -9031,7 +9029,7 @@ argument_list|)
 operator|.
 name|containsExactly
 argument_list|(
-name|testUser
+name|myGroupUser
 operator|.
 name|emailAddress
 argument_list|)
@@ -9048,7 +9046,7 @@ name|contains
 argument_list|(
 literal|"Hello "
 operator|+
-name|testUser
+name|myGroupUser
 operator|.
 name|fullName
 operator|+
@@ -9091,7 +9089,7 @@ name|assertMailReplyTo
 argument_list|(
 name|m
 argument_list|,
-name|testUser
+name|myGroupUser
 operator|.
 name|email
 argument_list|)
@@ -9167,7 +9165,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|testUser
+name|myGroupUser
 operator|.
 name|getId
 argument_list|()
