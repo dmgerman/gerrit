@@ -704,8 +704,6 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
-throws|,
-name|ConfigInvalidException
 block|{
 if|if
 condition|(
