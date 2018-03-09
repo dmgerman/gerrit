@@ -1225,7 +1225,7 @@ return|;
 block|}
 comment|/**    * Convert the results from Prolog Cafe's format to Gerrit's common format.    *    *<p>can_submit/1 terminates when an ok(P) record is found. Therefore walk the results backwards,    * using only that ok(P) record if it exists. This skips partial results that occur early in the    * output. Later after the loop the out collection is reversed to restore it to the original    * ordering.    */
 DECL|method|resultsToSubmitRecord (Term submitRule, List<Term> results)
-specifier|private
+specifier|public
 name|List
 argument_list|<
 name|SubmitRecord
