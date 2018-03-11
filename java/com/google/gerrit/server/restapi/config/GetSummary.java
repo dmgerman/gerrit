@@ -366,13 +366,11 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|internal
-operator|.
 name|storage
 operator|.
 name|file
 operator|.
-name|WindowCacheStatAccessor
+name|WindowCacheStats
 import|;
 end_import
 
@@ -783,7 +781,7 @@ decl_stmt|;
 name|int
 name|jgitOpen
 init|=
-name|WindowCacheStatAccessor
+name|WindowCacheStats
 operator|.
 name|getOpenFiles
 argument_list|()
@@ -791,7 +789,7 @@ decl_stmt|;
 name|long
 name|jgitBytes
 init|=
-name|WindowCacheStatAccessor
+name|WindowCacheStats
 operator|.
 name|getOpenBytes
 argument_list|()
