@@ -392,6 +392,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -461,6 +473,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|EventUtil
 specifier|public
 class|class
@@ -567,11 +581,13 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|changeJson
+DECL|field|changeJsonFactory
 specifier|private
 specifier|final
 name|ChangeJson
-name|changeJson
+operator|.
+name|Factory
+name|changeJsonFactory
 decl_stmt|;
 annotation|@
 name|Inject
@@ -609,14 +625,9 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|changeJson
+name|changeJsonFactory
 operator|=
 name|changeJsonFactory
-operator|.
-name|create
-argument_list|(
-name|CHANGE_OPTIONS
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|changeInfo (Change change)
@@ -631,7 +642,12 @@ throws|throws
 name|OrmException
 block|{
 return|return
-name|changeJson
+name|changeJsonFactory
+operator|.
+name|create
+argument_list|(
+name|CHANGE_OPTIONS
+argument_list|)
 operator|.
 name|format
 argument_list|(
@@ -721,7 +737,12 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
-name|changeJson
+name|changeJsonFactory
+operator|.
+name|create
+argument_list|(
+name|CHANGE_OPTIONS
+argument_list|)
 operator|.
 name|getRevisionInfo
 argument_list|(
