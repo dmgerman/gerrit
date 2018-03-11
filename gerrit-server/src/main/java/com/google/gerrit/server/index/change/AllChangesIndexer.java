@@ -1069,6 +1069,11 @@ operator|.
 name|createStarted
 argument_list|()
 decl_stmt|;
+name|int
+name|projectsFailed
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|Project
@@ -1138,9 +1143,33 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Error collecting projects"
+literal|"Error collecting project {}"
+argument_list|,
+name|name
 argument_list|,
 name|e
+argument_list|)
+expr_stmt|;
+name|projectsFailed
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|projectsFailed
+operator|>
+name|projects
+operator|.
+name|size
+argument_list|()
+operator|/
+literal|2
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Over 50% of the projects could not be collected: aborted"
 argument_list|)
 expr_stmt|;
 return|return
@@ -1156,6 +1185,7 @@ argument_list|,
 literal|0
 argument_list|)
 return|;
+block|}
 block|}
 name|pm
 operator|.
