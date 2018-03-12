@@ -514,7 +514,7 @@ argument_list|)
 decl_stmt|;
 name|accountCache
 operator|.
-name|evictAllNoReindex
+name|evictAll
 argument_list|()
 expr_stmt|;
 return|return

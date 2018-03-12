@@ -377,11 +377,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|evictAllNoReindex ()
+DECL|method|evictAll ()
 specifier|public
 specifier|synchronized
 name|void
-name|evictAllNoReindex
+name|evictAll
 parameter_list|()
 block|{
 name|byId

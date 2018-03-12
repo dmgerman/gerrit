@@ -232,24 +232,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|account
-operator|.
-name|AccountIndexer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -265,18 +247,6 @@ operator|.
 name|inject
 operator|.
 name|Module
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -524,18 +494,9 @@ argument_list|>
 argument_list|>
 name|byId
 decl_stmt|;
-DECL|field|indexer
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|AccountIndexer
-argument_list|>
-name|indexer
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCacheImpl ( AllUsersName allUsersName, ExternalIds externalIds, @Named(BYID_NAME) LoadingCache<Account.Id, Optional<AccountState>> byId, Provider<AccountIndexer> indexer)
+DECL|method|AccountCacheImpl ( AllUsersName allUsersName, ExternalIds externalIds, @Named(BYID_NAME) LoadingCache<Account.Id, Optional<AccountState>> byId)
 name|AccountCacheImpl
 parameter_list|(
 name|AllUsersName
@@ -561,12 +522,6 @@ name|AccountState
 argument_list|>
 argument_list|>
 name|byId
-parameter_list|,
-name|Provider
-argument_list|<
-name|AccountIndexer
-argument_list|>
-name|indexer
 parameter_list|)
 block|{
 name|this
@@ -586,12 +541,6 @@ operator|.
 name|byId
 operator|=
 name|byId
-expr_stmt|;
-name|this
-operator|.
-name|indexer
-operator|=
-name|indexer
 expr_stmt|;
 block|}
 annotation|@
@@ -797,8 +746,6 @@ operator|.
 name|Id
 name|accountId
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 if|if
 condition|(
@@ -814,24 +761,14 @@ argument_list|(
 name|accountId
 argument_list|)
 expr_stmt|;
-name|indexer
-operator|.
-name|get
-argument_list|()
-operator|.
-name|index
-argument_list|(
-name|accountId
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 annotation|@
 name|Override
-DECL|method|evictAllNoReindex ()
+DECL|method|evictAll ()
 specifier|public
 name|void
-name|evictAllNoReindex
+name|evictAll
 parameter_list|()
 block|{
 name|byId

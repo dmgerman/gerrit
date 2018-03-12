@@ -1490,6 +1490,24 @@ name|server
 operator|.
 name|index
 operator|.
+name|account
+operator|.
+name|AccountIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
 name|change
 operator|.
 name|ChangeIndex
@@ -3060,6 +3078,13 @@ name|ReviewDb
 argument_list|>
 name|reviewDbProvider
 decl_stmt|;
+DECL|field|accountIndexer
+annotation|@
+name|Inject
+specifier|private
+name|AccountIndexer
+name|accountIndexer
+decl_stmt|;
 DECL|field|groups
 annotation|@
 name|Inject
@@ -3361,6 +3386,34 @@ expr_stmt|;
 block|}
 name|initSsh
 argument_list|()
+expr_stmt|;
+block|}
+DECL|method|evictAndReindexAccount (Account.Id accountId)
+specifier|protected
+name|void
+name|evictAndReindexAccount
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|accountCache
+operator|.
+name|evict
+argument_list|(
+name|accountId
+argument_list|)
+expr_stmt|;
+name|accountIndexer
+operator|.
+name|index
+argument_list|(
+name|accountId
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|reindexAllGroups ()
@@ -3701,10 +3754,8 @@ operator|.
 name|user
 argument_list|()
 expr_stmt|;
-comment|// Evict cached user state in case tests modify it.
-name|accountCache
-operator|.
-name|evict
+comment|// Evict and reindex accounts in case tests modify them.
+name|evictAndReindexAccount
 argument_list|(
 name|admin
 operator|.
@@ -3712,9 +3763,7 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|accountCache
-operator|.
-name|evict
+name|evictAndReindexAccount
 argument_list|(
 name|user
 operator|.

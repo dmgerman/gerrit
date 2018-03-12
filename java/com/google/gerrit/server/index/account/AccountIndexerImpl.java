@@ -662,6 +662,14 @@ name|getWriteIndexes
 argument_list|()
 control|)
 block|{
+comment|// Evict the cache to get an up-to-date value for sure.
+name|byIdCache
+operator|.
+name|evict
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 name|Optional
 argument_list|<
 name|AccountState
