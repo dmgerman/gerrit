@@ -76,6 +76,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * Represents a {@link com.google.gerrit.common.data.SubmitRecord} that does not depend on Gerrit  * internal classes, to be serialized.  */
+end_comment
+
 begin_class
 DECL|class|SubmitRecordAttribute
 specifier|public
@@ -94,6 +98,14 @@ argument_list|<
 name|SubmitLabelAttribute
 argument_list|>
 name|labels
+decl_stmt|;
+DECL|field|requirements
+specifier|public
+name|List
+argument_list|<
+name|SubmitRequirementAttribute
+argument_list|>
+name|requirements
 decl_stmt|;
 block|}
 end_class

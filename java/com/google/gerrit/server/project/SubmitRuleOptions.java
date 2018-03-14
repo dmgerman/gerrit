@@ -107,14 +107,13 @@ specifier|abstract
 class|class
 name|SubmitRuleOptions
 block|{
-DECL|method|builder ()
-specifier|public
+DECL|field|defaults
+specifier|private
 specifier|static
-name|Builder
-name|builder
-parameter_list|()
-block|{
-return|return
+specifier|final
+name|SubmitRuleOptions
+name|defaults
+init|=
 operator|new
 name|AutoValue_SubmitRuleOptions
 operator|.
@@ -131,10 +130,42 @@ argument_list|(
 literal|false
 argument_list|)
 operator|.
+name|logErrors
+argument_list|(
+literal|true
+argument_list|)
+operator|.
 name|rule
 argument_list|(
 literal|null
 argument_list|)
+operator|.
+name|build
+argument_list|()
+decl_stmt|;
+DECL|method|defaults ()
+specifier|public
+specifier|static
+name|SubmitRuleOptions
+name|defaults
+parameter_list|()
+block|{
+return|return
+name|defaults
+return|;
+block|}
+DECL|method|builder ()
+specifier|public
+specifier|static
+name|Builder
+name|builder
+parameter_list|()
+block|{
+return|return
+name|defaults
+operator|.
+name|toBuilder
+argument_list|()
 return|;
 block|}
 DECL|method|allowClosed ()
@@ -149,6 +180,13 @@ specifier|public
 specifier|abstract
 name|boolean
 name|skipFilters
+parameter_list|()
+function_decl|;
+DECL|method|logErrors ()
+specifier|public
+specifier|abstract
+name|boolean
+name|logErrors
 parameter_list|()
 function_decl|;
 annotation|@
@@ -214,6 +252,18 @@ annotation|@
 name|Nullable
 name|String
 name|rule
+parameter_list|)
+function_decl|;
+DECL|method|logErrors (boolean logErrors)
+specifier|public
+specifier|abstract
+name|SubmitRuleOptions
+operator|.
+name|Builder
+name|logErrors
+parameter_list|(
+name|boolean
+name|logErrors
 parameter_list|)
 function_decl|;
 DECL|method|build ()

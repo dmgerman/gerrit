@@ -112,18 +112,8 @@ name|Objects
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
 begin_comment
-comment|/** Describes the state required to submit a change. */
+comment|/** Describes the state and edits required to submit a change. */
 end_comment
 
 begin_class
@@ -132,14 +122,11 @@ specifier|public
 class|class
 name|SubmitRecord
 block|{
-DECL|method|findOkRecord (Collection<SubmitRecord> in)
+DECL|method|allRecordsOK (Collection<SubmitRecord> in)
 specifier|public
 specifier|static
-name|Optional
-argument_list|<
-name|SubmitRecord
-argument_list|>
-name|findOkRecord
+name|boolean
+name|allRecordsOK
 parameter_list|(
 name|Collection
 argument_list|<
@@ -153,36 +140,40 @@ condition|(
 name|in
 operator|==
 literal|null
+operator|||
+name|in
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
+comment|// If the list is null or empty, it means that this Gerrit installation does not
+comment|// have any form of validation rules.
+comment|// Hence, the permission system should be used to determine if the change can be merged
+comment|// or not.
 return|return
-name|Optional
-operator|.
-name|empty
-argument_list|()
+literal|true
 return|;
 block|}
+comment|// The change can be submitted, unless at least one plugin prevents it.
 return|return
 name|in
 operator|.
 name|stream
 argument_list|()
 operator|.
-name|filter
+name|noneMatch
 argument_list|(
 name|r
 lambda|->
 name|r
 operator|.
 name|status
-operator|==
+operator|!=
 name|Status
 operator|.
 name|OK
 argument_list|)
-operator|.
-name|findFirst
-argument_list|()
 return|;
 block|}
 DECL|enum|Status
@@ -196,7 +187,7 @@ comment|/** The change is ready for submission. */
 DECL|enumConstant|OK
 name|OK
 block|,
-comment|/** The change is missing a required label. */
+comment|/** Something is preventing this change from being submitted. */
 DECL|enumConstant|NOT_READY
 name|NOT_READY
 block|,
@@ -224,6 +215,14 @@ argument_list|<
 name|Label
 argument_list|>
 name|labels
+decl_stmt|;
+DECL|field|requirements
+specifier|public
+name|List
+argument_list|<
+name|SubmitRequirement
+argument_list|>
+name|requirements
 decl_stmt|;
 DECL|field|errorMessage
 specifier|public
@@ -528,6 +527,51 @@ name|sb
 operator|.
 name|append
 argument_list|(
+literal|"],["
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|requirements
+operator|!=
+literal|null
+condition|)
+block|{
+name|String
+name|delimiter
+init|=
+literal|""
+decl_stmt|;
+for|for
+control|(
+name|SubmitRequirement
+name|requirement
+range|:
+name|requirements
+control|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|delimiter
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|requirement
+argument_list|)
+expr_stmt|;
+name|delimiter
+operator|=
+literal|", "
+expr_stmt|;
+block|}
+block|}
+name|sb
+operator|.
+name|append
+argument_list|(
 literal|']'
 argument_list|)
 expr_stmt|;
@@ -597,6 +641,17 @@ name|r
 operator|.
 name|errorMessage
 argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|requirements
+argument_list|,
+name|r
+operator|.
+name|requirements
+argument_list|)
 return|;
 block|}
 return|return
@@ -621,6 +676,8 @@ argument_list|,
 name|labels
 argument_list|,
 name|errorMessage
+argument_list|,
+name|requirements
 argument_list|)
 return|;
 block|}

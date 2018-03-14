@@ -1749,16 +1749,6 @@ end_expr_stmt
 begin_expr_stmt
 name|install
 argument_list|(
-operator|new
-name|PrologModule
-argument_list|()
-argument_list|)
-expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
-name|install
-argument_list|(
 name|AccountCacheImpl
 operator|.
 name|module
@@ -1880,6 +1870,10 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
+begin_comment
+comment|// Submit rule evaluator
+end_comment
+
 begin_expr_stmt
 name|factory
 argument_list|(
@@ -1888,6 +1882,16 @@ operator|.
 name|Factory
 operator|.
 name|class
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|install
+argument_list|(
+operator|new
+name|PrologModule
+argument_list|()
 argument_list|)
 expr_stmt|;
 end_expr_stmt

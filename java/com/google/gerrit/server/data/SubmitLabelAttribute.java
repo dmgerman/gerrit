@@ -66,6 +66,10 @@ name|data
 package|;
 end_package
 
+begin_comment
+comment|/**  * Represents a {@link com.google.gerrit.common.data.SubmitRecord.Label} that does not depend on  * Gerrit internal classes, to be serialized.  */
+end_comment
+
 begin_class
 DECL|class|SubmitLabelAttribute
 specifier|public
