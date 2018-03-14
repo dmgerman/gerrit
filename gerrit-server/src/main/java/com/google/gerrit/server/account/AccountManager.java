@@ -67,6 +67,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|externalids
+operator|.
+name|ExternalId
+operator|.
+name|SCHEME_USERNAME
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1019,8 +1039,89 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|who
+operator|.
+name|getUserName
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|ExternalId
+operator|.
+name|Key
+name|key
+init|=
+name|ExternalId
+operator|.
+name|Key
+operator|.
+name|create
+argument_list|(
+name|SCHEME_USERNAME
+argument_list|,
+name|who
+operator|.
+name|getUserName
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|ExternalId
+name|existingId
+init|=
+name|externalIds
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|existingId
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// An inconsistency is detected in the database, having a record for scheme "username:"
+comment|// but no record for scheme "gerrit:". Try to recover by linking
+comment|// "gerrit:" identity to the existing account.
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"User {} already has an account; link new identity to the existing account."
+argument_list|,
+name|who
+operator|.
+name|getUserName
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+name|link
+argument_list|(
+name|existingId
+operator|.
+name|accountId
+argument_list|()
+argument_list|,
+name|who
+argument_list|)
+return|;
+block|}
+block|}
 comment|// New account, automatically create and return.
 comment|//
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"External ID not found. Attempting to create new account."
+argument_list|)
+expr_stmt|;
 return|return
 name|create
 argument_list|(
@@ -2307,6 +2408,13 @@ name|getExternalIdKey
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Link another authentication identity to an existing account"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|extId
@@ -2356,6 +2464,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Linking new external ID to the existing account"
+argument_list|)
+expr_stmt|;
 name|externalIdsUpdateFactory
 operator|.
 name|create
