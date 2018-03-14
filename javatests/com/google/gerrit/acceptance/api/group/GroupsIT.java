@@ -480,22 +480,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|ProjectResetter
-operator|.
-name|Builder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
 name|PushOneCommit
 import|;
 end_import
@@ -1896,22 +1880,23 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|resetProjects (Builder resetter)
+DECL|method|resetProjects ()
 specifier|protected
 name|ProjectResetter
+operator|.
+name|Config
 name|resetProjects
-parameter_list|(
-name|Builder
-name|resetter
-parameter_list|)
-throws|throws
-name|IOException
+parameter_list|()
 block|{
 comment|// Don't reset All-Users since deleting users makes groups inconsistent (e.g. groups would
 comment|// contain members that no longer exist) and as result of this the group consistency checker
 comment|// that is executed after each test would fail.
 return|return
-name|resetter
+operator|new
+name|ProjectResetter
+operator|.
+name|Config
+argument_list|()
 operator|.
 name|reset
 argument_list|(
@@ -1921,9 +1906,6 @@ name|RefNames
 operator|.
 name|REFS_CONFIG
 argument_list|)
-operator|.
-name|build
-argument_list|()
 return|;
 block|}
 annotation|@
@@ -8549,6 +8531,14 @@ operator|.
 name|builder
 argument_list|()
 operator|.
+name|build
+argument_list|(
+operator|new
+name|ProjectResetter
+operator|.
+name|Config
+argument_list|()
+operator|.
 name|reset
 argument_list|(
 name|allUsers
@@ -8557,9 +8547,7 @@ name|RefNames
 operator|.
 name|REFS_GROUPNAMES
 argument_list|)
-operator|.
-name|build
-argument_list|()
+argument_list|)
 init|)
 block|{
 comment|// Manually delete group names ref

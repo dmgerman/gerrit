@@ -2597,17 +2597,40 @@ argument_list|(
 name|description
 argument_list|)
 expr_stmt|;
+name|ProjectResetter
+operator|.
+name|Config
+name|input
+init|=
+name|resetProjects
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|input
+operator|==
+literal|null
+condition|)
+block|{
+name|input
+operator|=
+name|defaultResetProjects
+argument_list|()
+expr_stmt|;
+block|}
 try|try
 init|(
 name|ProjectResetter
 name|resetter
 init|=
-name|resetProjects
-argument_list|(
 name|projectResetter
 operator|.
 name|builder
 argument_list|()
+operator|.
+name|build
+argument_list|(
+name|input
 argument_list|)
 init|)
 block|{
@@ -3215,21 +3238,32 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/** Controls which project and branches should be reset after each test case. */
-DECL|method|resetProjects (ProjectResetter.Builder resetter)
+DECL|method|resetProjects ()
 specifier|protected
 name|ProjectResetter
-name|resetProjects
-parameter_list|(
-name|ProjectResetter
 operator|.
-name|Builder
-name|resetter
-parameter_list|)
-throws|throws
-name|IOException
+name|Config
+name|resetProjects
+parameter_list|()
 block|{
 return|return
-name|resetter
+literal|null
+return|;
+block|}
+DECL|method|defaultResetProjects ()
+specifier|private
+name|ProjectResetter
+operator|.
+name|Config
+name|defaultResetProjects
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ProjectResetter
+operator|.
+name|Config
+argument_list|()
 comment|// Don't reset all refs so that refs/sequences/changes is not touched and change IDs are
 comment|// not reused.
 operator|.
@@ -3275,9 +3309,6 @@ name|REFS_DRAFT_COMMENTS
 operator|+
 literal|"*"
 argument_list|)
-operator|.
-name|build
-argument_list|()
 return|;
 block|}
 DECL|method|restartAsSlave ()
