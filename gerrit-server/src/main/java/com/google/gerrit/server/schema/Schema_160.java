@@ -423,7 +423,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Remove "My Drafts" menu items for all users.  *  *<p>Since draft changes no longer exist, these menu items are obsolete.  *  *<p>Only matches menu items (with any name) where the URL exactly matches the<a  * href="https://gerrit.googlesource.com/gerrit/+/v2.14.4/gerrit-server/src/main/java/com/google/gerrit/server/account/GeneralPreferencesLoader.java#144">default  * version from 2.14 and earlier</a>. Other menus containing {@code is:draft} in other positions are  * not affected; this is still a valid predicate that matches no changes.  */
+comment|/**  * Remove "My Drafts" menu items for all users and server-wide default preferences.  *  *<p>Since draft changes no longer exist, these menu items are obsolete.  *  *<p>Only matches menu items (with any name) where the URL exactly matches the<a  * href="https://gerrit.googlesource.com/gerrit/+/v2.14.4/gerrit-server/src/main/java/com/google/gerrit/server/account/GeneralPreferencesLoader.java#144">default  * version from 2.14 and earlier</a>. Other menus containing {@code is:draft} in other positions are  * not affected; this is still a valid predicate that matches no changes.  */
 end_comment
 
 begin_class
@@ -589,25 +589,32 @@ operator|::
 name|iterator
 control|)
 block|{
-if|if
-condition|(
 name|removeMyDrafts
 argument_list|(
 name|repo
 argument_list|,
+name|RefNames
+operator|.
+name|refsUsers
+argument_list|(
 name|id
 argument_list|)
-condition|)
-block|{
+argument_list|,
 name|pm
-operator|.
-name|update
-argument_list|(
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
-block|}
+name|removeMyDrafts
+argument_list|(
+name|repo
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_USERS_DEFAULT
+argument_list|,
+name|pm
+argument_list|)
+expr_stmt|;
 name|pm
 operator|.
 name|endTask
@@ -634,18 +641,19 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|removeMyDrafts (Repository repo, Account.Id id)
+DECL|method|removeMyDrafts (Repository repo, String ref, ProgressMonitor pm)
 specifier|private
-name|boolean
+name|void
 name|removeMyDrafts
 parameter_list|(
 name|Repository
 name|repo
 parameter_list|,
-name|Account
-operator|.
-name|Id
-name|id
+name|String
+name|ref
+parameter_list|,
+name|ProgressMonitor
+name|pm
 parameter_list|)
 throws|throws
 name|IOException
@@ -701,7 +709,7 @@ init|=
 operator|new
 name|Prefs
 argument_list|(
-name|id
+name|ref
 argument_list|)
 decl_stmt|;
 name|prefs
@@ -723,12 +731,22 @@ argument_list|(
 name|md
 argument_list|)
 expr_stmt|;
-return|return
+if|if
+condition|(
 name|prefs
 operator|.
 name|dirty
 argument_list|()
-return|;
+condition|)
+block|{
+name|pm
+operator|.
+name|update
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|class|Prefs
 specifier|private
@@ -743,23 +761,16 @@ specifier|private
 name|boolean
 name|dirty
 decl_stmt|;
-DECL|method|Prefs (Account.Id id)
+DECL|method|Prefs (String ref)
 name|Prefs
 parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
+name|String
+name|ref
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|RefNames
-operator|.
-name|refsUsers
-argument_list|(
-name|id
-argument_list|)
+name|ref
 argument_list|)
 expr_stmt|;
 block|}
