@@ -13808,6 +13808,7 @@ operator|.
 name|owner
 argument_list|)
 expr_stmt|;
+comment|// email for the newly created revert change
 name|assertThat
 argument_list|(
 name|sender
@@ -13847,7 +13848,7 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
+comment|// email for the change that is reverted
 name|assertThat
 argument_list|(
 name|sender
@@ -13873,6 +13874,20 @@ argument_list|,
 name|admin
 argument_list|)
 operator|.
+name|cc
+argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|)
+operator|.
+name|bcc
+argument_list|(
+name|sc
+operator|.
+name|starrer
+argument_list|)
+operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
@@ -13881,7 +13896,6 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -13922,6 +13936,7 @@ operator|.
 name|owner
 argument_list|)
 expr_stmt|;
+comment|// email for the newly created revert change
 name|assertThat
 argument_list|(
 name|sender
@@ -13964,7 +13979,7 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
+comment|// email for the change that is reverted
 name|assertThat
 argument_list|(
 name|sender
@@ -13990,6 +14005,24 @@ argument_list|,
 name|admin
 argument_list|)
 operator|.
+name|cc
+argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
+name|sc
+operator|.
+name|ccerByEmail
+argument_list|)
+operator|.
+name|bcc
+argument_list|(
+name|sc
+operator|.
+name|starrer
+argument_list|)
+operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
@@ -13998,7 +14031,6 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -14041,6 +14073,7 @@ argument_list|,
 name|CC_ON_OWN_COMMENTS
 argument_list|)
 expr_stmt|;
+comment|// email for the newly created revert change
 name|assertThat
 argument_list|(
 name|sender
@@ -14087,7 +14120,7 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
+comment|// email for the change that is reverted
 name|assertThat
 argument_list|(
 name|sender
@@ -14120,6 +14153,20 @@ argument_list|,
 name|admin
 argument_list|)
 operator|.
+name|cc
+argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|)
+operator|.
+name|bcc
+argument_list|(
+name|sc
+operator|.
+name|starrer
+argument_list|)
+operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
@@ -14128,7 +14175,6 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -14171,6 +14217,7 @@ argument_list|,
 name|CC_ON_OWN_COMMENTS
 argument_list|)
 expr_stmt|;
+comment|// email for the newly created revert change
 name|assertThat
 argument_list|(
 name|sender
@@ -14217,7 +14264,7 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
+comment|// email for the change that is reverted
 name|assertThat
 argument_list|(
 name|sender
@@ -14250,6 +14297,24 @@ argument_list|,
 name|admin
 argument_list|)
 operator|.
+name|cc
+argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
+name|sc
+operator|.
+name|ccerByEmail
+argument_list|)
+operator|.
+name|bcc
+argument_list|(
+name|sc
+operator|.
+name|starrer
+argument_list|)
+operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
@@ -14258,7 +14323,6 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -14297,6 +14361,7 @@ argument_list|,
 name|other
 argument_list|)
 expr_stmt|;
+comment|// email for the newly created revert change
 name|assertThat
 argument_list|(
 name|sender
@@ -14340,7 +14405,7 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
+comment|// email for the change that is reverted
 name|assertThat
 argument_list|(
 name|sender
@@ -14353,12 +14418,15 @@ argument_list|,
 name|sc
 argument_list|)
 operator|.
-name|cc
+name|to
 argument_list|(
 name|sc
 operator|.
 name|owner
-argument_list|,
+argument_list|)
+operator|.
+name|cc
+argument_list|(
 name|sc
 operator|.
 name|reviewer
@@ -14370,6 +14438,20 @@ argument_list|,
 name|admin
 argument_list|)
 operator|.
+name|cc
+argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|)
+operator|.
+name|bcc
+argument_list|(
+name|sc
+operator|.
+name|starrer
+argument_list|)
+operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
@@ -14378,7 +14460,6 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -14417,6 +14498,7 @@ argument_list|,
 name|other
 argument_list|)
 expr_stmt|;
+comment|// email for the newly created revert change
 name|assertThat
 argument_list|(
 name|sender
@@ -14463,7 +14545,7 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
+comment|// email for the change that is reverted
 name|assertThat
 argument_list|(
 name|sender
@@ -14476,12 +14558,15 @@ argument_list|,
 name|sc
 argument_list|)
 operator|.
-name|cc
+name|to
 argument_list|(
 name|sc
 operator|.
 name|owner
-argument_list|,
+argument_list|)
+operator|.
+name|cc
+argument_list|(
 name|sc
 operator|.
 name|reviewer
@@ -14493,6 +14578,24 @@ argument_list|,
 name|admin
 argument_list|)
 operator|.
+name|cc
+argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
+name|sc
+operator|.
+name|ccerByEmail
+argument_list|)
+operator|.
+name|bcc
+argument_list|(
+name|sc
+operator|.
+name|starrer
+argument_list|)
+operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
@@ -14501,7 +14604,6 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -14542,6 +14644,7 @@ argument_list|,
 name|CC_ON_OWN_COMMENTS
 argument_list|)
 expr_stmt|;
+comment|// email for the newly created revert change
 name|assertThat
 argument_list|(
 name|sender
@@ -14590,7 +14693,7 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
+comment|// email for the change that is reverted
 name|assertThat
 argument_list|(
 name|sender
@@ -14605,14 +14708,14 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|other
+name|sc
+operator|.
+name|owner
 argument_list|)
 operator|.
 name|cc
 argument_list|(
-name|sc
-operator|.
-name|owner
+name|other
 argument_list|,
 name|sc
 operator|.
@@ -14625,6 +14728,20 @@ argument_list|,
 name|admin
 argument_list|)
 operator|.
+name|cc
+argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|)
+operator|.
+name|bcc
+argument_list|(
+name|sc
+operator|.
+name|starrer
+argument_list|)
+operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
@@ -14633,7 +14750,6 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -14674,6 +14790,7 @@ argument_list|,
 name|CC_ON_OWN_COMMENTS
 argument_list|)
 expr_stmt|;
+comment|// email for the newly created revert change
 name|assertThat
 argument_list|(
 name|sender
@@ -14722,7 +14839,7 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
+comment|// email for the change that is reverted
 name|assertThat
 argument_list|(
 name|sender
@@ -14737,14 +14854,14 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|other
+name|sc
+operator|.
+name|owner
 argument_list|)
 operator|.
 name|cc
 argument_list|(
-name|sc
-operator|.
-name|owner
+name|other
 argument_list|,
 name|sc
 operator|.
@@ -14757,6 +14874,24 @@ argument_list|,
 name|admin
 argument_list|)
 operator|.
+name|cc
+argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
+name|sc
+operator|.
+name|ccerByEmail
+argument_list|)
+operator|.
+name|bcc
+argument_list|(
+name|sc
+operator|.
+name|starrer
+argument_list|)
+operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
@@ -14765,7 +14900,6 @@ operator|.
 name|noOneElse
 argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 DECL|method|stageChange ()
 specifier|private
