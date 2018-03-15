@@ -948,6 +948,45 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**    * Exception thrown during migration if the change has no {@code noteDbState} field at the    * beginning of the migration.    */
+DECL|class|NoNoteDbStateException
+specifier|public
+specifier|static
+class|class
+name|NoNoteDbStateException
+extends|extends
+name|RuntimeException
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+DECL|method|NoNoteDbStateException (Change.Id id)
+specifier|private
+name|NoNoteDbStateException
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|super
+argument_list|(
+literal|"change "
+operator|+
+name|id
+operator|+
+literal|" has no note_db_state; rebuild it first"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|field|allUsers
 specifier|private
 specifier|final
@@ -1520,16 +1559,15 @@ literal|null
 condition|)
 block|{
 comment|// Could rebuild the change here, but that's more complexity, and this
-comment|// really shouldn't happen.
+comment|// normally shouldn't happen.
+comment|//
+comment|// Known cases where this happens are described in and handled by
+comment|// NoteDbMigrator#canSkipPrimaryStorageMigration.
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|NoNoteDbStateException
 argument_list|(
-literal|"change "
-operator|+
 name|id
-operator|+
-literal|" has no note_db_state; rebuild it first"
 argument_list|)
 throw|;
 block|}
