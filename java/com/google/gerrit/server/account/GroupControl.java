@@ -908,7 +908,8 @@ argument_list|()
 return|;
 block|}
 return|return
-literal|false
+name|canAdministrateServer
+argument_list|()
 return|;
 block|}
 block|}

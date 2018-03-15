@@ -14380,8 +14380,6 @@ literal|"Administrators"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO: update when test user is fixed to be included in "Anonymous Users" and
-comment|//      "Registered Users" groups
 name|assertGroups
 argument_list|(
 name|user
@@ -14391,7 +14389,11 @@ argument_list|,
 name|ImmutableList
 operator|.
 name|of
-argument_list|()
+argument_list|(
+literal|"Anonymous Users"
+argument_list|,
+literal|"Registered Users"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
@@ -14420,6 +14422,10 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
+literal|"Anonymous Users"
+argument_list|,
+literal|"Registered Users"
+argument_list|,
 name|group
 argument_list|)
 argument_list|)
@@ -16717,6 +16723,37 @@ name|String
 argument_list|>
 name|actual
 init|=
+name|getNamesOfGroupsOfUser
+argument_list|(
+name|user
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|actual
+argument_list|)
+operator|.
+name|containsExactlyElementsIn
+argument_list|(
+name|expected
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getNamesOfGroupsOfUser (String user)
+specifier|private
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getNamesOfGroupsOfUser
+parameter_list|(
+name|String
+name|user
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+return|return
 name|gApi
 operator|.
 name|accounts
@@ -16747,17 +16784,7 @@ argument_list|(
 name|toList
 argument_list|()
 argument_list|)
-decl_stmt|;
-name|assertThat
-argument_list|(
-name|actual
-argument_list|)
-operator|.
-name|containsExactlyElementsIn
-argument_list|(
-name|expected
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 DECL|method|assertSequenceNumbers (List<SshKeyInfo> sshKeys)
 specifier|private
