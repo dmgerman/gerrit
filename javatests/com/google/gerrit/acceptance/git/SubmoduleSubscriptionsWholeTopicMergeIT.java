@@ -2015,12 +2015,12 @@ literal|"* Update "
 operator|+
 name|name
 argument_list|(
-literal|"sub3"
+literal|"sub1"
 argument_list|)
 operator|+
 literal|" from branch 'master'\n  to "
 operator|+
-name|sub3HEAD
+name|sub1HEAD
 operator|+
 literal|"\n\n* Update "
 operator|+
@@ -2037,12 +2037,12 @@ literal|"\n\n* Update "
 operator|+
 name|name
 argument_list|(
-literal|"sub1"
+literal|"sub3"
 argument_list|)
 operator|+
 literal|" from branch 'master'\n  to "
 operator|+
-name|sub1HEAD
+name|sub3HEAD
 argument_list|)
 expr_stmt|;
 block|}
