@@ -816,6 +816,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -1505,6 +1515,59 @@ parameter_list|()
 block|{
 return|return
 name|capabilities
+return|;
+block|}
+comment|/**    * Returns true if the Prolog engine is expected to run for this project, that is if this project    * or a parent possesses a rules.pl file.    */
+DECL|method|hasPrologRules ()
+specifier|public
+name|boolean
+name|hasPrologRules
+parameter_list|()
+block|{
+comment|// We check if this project has a rules.pl file
+if|if
+condition|(
+name|getConfig
+argument_list|()
+operator|.
+name|getRulesId
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+comment|// If not, we check the parents.
+return|return
+name|parents
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|ProjectState
+operator|::
+name|getConfig
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|ProjectConfig
+operator|::
+name|getRulesId
+argument_list|)
+operator|.
+name|anyMatch
+argument_list|(
+name|Objects
+operator|::
+name|nonNull
+argument_list|)
 return|;
 block|}
 comment|/** @return Construct a new PrologEnvironment for the calling thread. */
