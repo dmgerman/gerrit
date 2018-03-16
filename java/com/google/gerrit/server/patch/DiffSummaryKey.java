@@ -76,9 +76,9 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectIdSerialization
+name|ObjectIdSerializer
 operator|.
-name|readCanBeNull
+name|read
 import|;
 end_import
 
@@ -92,9 +92,9 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectIdSerialization
+name|ObjectIdSerializer
 operator|.
-name|readNotNull
+name|readWithoutMarker
 import|;
 end_import
 
@@ -108,9 +108,9 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectIdSerialization
+name|ObjectIdSerializer
 operator|.
-name|writeCanBeNull
+name|write
 import|;
 end_import
 
@@ -124,9 +124,9 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectIdSerialization
+name|ObjectIdSerializer
 operator|.
-name|writeNotNull
+name|writeWithoutMarker
 import|;
 end_import
 
@@ -601,7 +601,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|writeCanBeNull
+name|write
 argument_list|(
 name|out
 argument_list|,
@@ -621,7 +621,7 @@ else|:
 name|parentNum
 argument_list|)
 expr_stmt|;
-name|writeNotNull
+name|writeWithoutMarker
 argument_list|(
 name|out
 argument_list|,
@@ -678,7 +678,7 @@ name|IOException
 block|{
 name|oldId
 operator|=
-name|readCanBeNull
+name|read
 argument_list|(
 name|in
 argument_list|)
@@ -708,7 +708,7 @@ argument_list|)
 expr_stmt|;
 name|newId
 operator|=
-name|readNotNull
+name|readWithoutMarker
 argument_list|(
 name|in
 argument_list|)

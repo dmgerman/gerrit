@@ -76,9 +76,9 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectIdSerialization
+name|ObjectIdSerializer
 operator|.
-name|readNotNull
+name|readWithoutMarker
 import|;
 end_import
 
@@ -92,9 +92,9 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectIdSerialization
+name|ObjectIdSerializer
 operator|.
-name|writeNotNull
+name|writeWithoutMarker
 import|;
 end_import
 
@@ -1219,7 +1219,7 @@ decl_stmt|;
 name|ObjectId
 name|id
 init|=
-name|readNotNull
+name|readWithoutMarker
 argument_list|(
 name|in
 argument_list|)
@@ -1266,7 +1266,7 @@ block|{
 name|ObjectId
 name|id
 init|=
-name|readNotNull
+name|readWithoutMarker
 argument_list|(
 name|in
 argument_list|)
@@ -1357,7 +1357,7 @@ operator|.
 name|flag
 argument_list|)
 expr_stmt|;
-name|writeNotNull
+name|writeWithoutMarker
 argument_list|(
 name|out
 argument_list|,
@@ -1389,7 +1389,7 @@ range|:
 name|tags
 control|)
 block|{
-name|writeNotNull
+name|writeWithoutMarker
 argument_list|(
 name|out
 argument_list|,
