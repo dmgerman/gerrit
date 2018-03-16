@@ -100,16 +100,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Optional
@@ -163,7 +153,7 @@ name|String
 name|username
 parameter_list|)
 function_decl|;
-comment|/**    * Evicts the account from the cache and triggers a reindex for it.    *    * @param accountId account ID of the account that should be evicted    * @throws IOException thrown if reindexing fails    */
+comment|/**    * Evicts the account from the cache.    *    * @param accountId account ID of the account that should be evicted    */
 DECL|method|evict (@ullable Account.Id accountId)
 name|void
 name|evict
@@ -175,13 +165,11 @@ operator|.
 name|Id
 name|accountId
 parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
-comment|/** Evict all accounts from the cache, but doesn't trigger reindex of all accounts. */
-DECL|method|evictAllNoReindex ()
+comment|/** Evict all accounts from the cache. */
+DECL|method|evictAll ()
 name|void
-name|evictAllNoReindex
+name|evictAll
 parameter_list|()
 function_decl|;
 block|}

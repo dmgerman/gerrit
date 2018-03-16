@@ -314,9 +314,39 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|account
+operator|.
+name|AccountIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
 import|;
 end_import
 
@@ -698,9 +728,18 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|accountIndexer
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|AccountIndexer
+argument_list|>
+name|accountIndexer
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory (ExternalIdCache externalIdCache, AccountCache accountCache)
+DECL|method|Factory ( ExternalIdCache externalIdCache, AccountCache accountCache, Provider<AccountIndexer> accountIndexer)
 name|Factory
 parameter_list|(
 name|ExternalIdCache
@@ -708,6 +747,12 @@ name|externalIdCache
 parameter_list|,
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|Provider
+argument_list|<
+name|AccountIndexer
+argument_list|>
+name|accountIndexer
 parameter_list|)
 block|{
 name|this
@@ -721,6 +766,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|accountIndexer
+operator|=
+name|accountIndexer
 expr_stmt|;
 block|}
 annotation|@
@@ -745,6 +796,8 @@ argument_list|(
 name|externalIdCache
 argument_list|,
 name|accountCache
+argument_list|,
+name|accountIndexer
 argument_list|,
 name|allUsersRepo
 argument_list|)
@@ -780,6 +833,8 @@ argument_list|(
 name|externalIdCache
 argument_list|,
 name|accountCache
+argument_list|,
+name|accountIndexer
 argument_list|,
 name|allUsersRepo
 argument_list|)
@@ -846,6 +901,8 @@ name|externalIdCache
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|allUsersRepo
 argument_list|)
 operator|.
@@ -881,6 +938,8 @@ name|externalIdCache
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|allUsersRepo
 argument_list|)
 operator|.
@@ -913,6 +972,8 @@ argument_list|(
 operator|new
 name|DisabledExternalIdCache
 argument_list|()
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -956,6 +1017,8 @@ argument_list|()
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|allUsersRepo
 argument_list|)
 operator|.
@@ -993,6 +1056,8 @@ argument_list|()
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|allUsersRepo
 argument_list|)
 operator|.
@@ -1013,6 +1078,17 @@ specifier|private
 specifier|final
 name|AccountCache
 name|accountCache
+decl_stmt|;
+DECL|field|accountIndexer
+annotation|@
+name|Nullable
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|AccountIndexer
+argument_list|>
+name|accountIndexer
 decl_stmt|;
 DECL|field|repo
 specifier|private
@@ -1070,7 +1146,7 @@ name|readOnly
 init|=
 literal|false
 decl_stmt|;
-DECL|method|ExternalIdNotes ( ExternalIdCache externalIdCache, @Nullable AccountCache accountCache, Repository allUsersRepo)
+DECL|method|ExternalIdNotes ( ExternalIdCache externalIdCache, @Nullable AccountCache accountCache, @Nullable Provider<AccountIndexer> accountIndexer, Repository allUsersRepo)
 specifier|private
 name|ExternalIdNotes
 parameter_list|(
@@ -1081,6 +1157,14 @@ annotation|@
 name|Nullable
 name|AccountCache
 name|accountCache
+parameter_list|,
+annotation|@
+name|Nullable
+name|Provider
+argument_list|<
+name|AccountIndexer
+argument_list|>
+name|accountIndexer
 parameter_list|,
 name|Repository
 name|allUsersRepo
@@ -1102,6 +1186,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|accountIndexer
+operator|=
+name|accountIndexer
 expr_stmt|;
 name|this
 operator|.
@@ -2710,7 +2800,7 @@ name|update
 argument_list|)
 return|;
 block|}
-comment|/**    * Updates the caches (external ID cache, account cache) and reindexes the accounts for which    * external IDs were modified.    *    *<p>Must only be called after committing changes.    *    *<p>No-op if this instance was created by {@link #loadNoCacheUpdate(Repository)}.    *    *<p>No eviction from account cache if this instance was created by {@link FactoryNoReindex}.    */
+comment|/**    * Updates the caches (external ID cache, account cache) and reindexes the accounts for which    * external IDs were modified.    *    *<p>Must only be called after committing changes.    *    *<p>No-op if this instance was created by {@link #loadNoCacheUpdate(Repository)}.    *    *<p>No eviction from account cache and no reindex if this instance was created by {@link    * FactoryNoReindex}.    */
 DECL|method|updateCaches ()
 specifier|public
 name|void
@@ -2776,6 +2866,10 @@ condition|(
 name|accountCache
 operator|!=
 literal|null
+operator|||
+name|accountIndexer
+operator|!=
+literal|null
 condition|)
 block|{
 for|for
@@ -2820,6 +2914,13 @@ argument_list|()
 argument_list|)
 control|)
 block|{
+if|if
+condition|(
+name|accountCache
+operator|!=
+literal|null
+condition|)
+block|{
 name|accountCache
 operator|.
 name|evict
@@ -2827,6 +2928,25 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|accountIndexer
+operator|!=
+literal|null
+condition|)
+block|{
+name|accountIndexer
+operator|.
+name|get
+argument_list|()
+operator|.
+name|index
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 name|cacheUpdates

@@ -2261,9 +2261,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|accountCache
-operator|.
-name|evict
+name|evictAndReindexAccount
 argument_list|(
 name|account
 operator|.

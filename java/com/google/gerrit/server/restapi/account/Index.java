@@ -158,7 +158,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
+name|AccountResource
 import|;
 end_import
 
@@ -172,9 +172,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
 name|account
 operator|.
-name|AccountResource
+name|AccountIndexer
 import|;
 end_import
 
@@ -287,11 +289,14 @@ argument_list|,
 name|Input
 argument_list|>
 block|{
-DECL|field|accountCache
+DECL|field|accountIndexer
 specifier|private
 specifier|final
-name|AccountCache
-name|accountCache
+name|Provider
+argument_list|<
+name|AccountIndexer
+argument_list|>
+name|accountIndexer
 decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
@@ -310,11 +315,14 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Index ( AccountCache accountCache, PermissionBackend permissionBackend, Provider<CurrentUser> self)
+DECL|method|Index ( Provider<AccountIndexer> accountIndexer, PermissionBackend permissionBackend, Provider<CurrentUser> self)
 name|Index
 parameter_list|(
-name|AccountCache
-name|accountCache
+name|Provider
+argument_list|<
+name|AccountIndexer
+argument_list|>
+name|accountIndexer
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -328,9 +336,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|accountCache
+name|accountIndexer
 operator|=
-name|accountCache
+name|accountIndexer
 expr_stmt|;
 name|this
 operator|.
@@ -396,10 +404,12 @@ name|MODIFY_ACCOUNT
 argument_list|)
 expr_stmt|;
 block|}
-comment|// evicting the account from the cache, reindexes the account
-name|accountCache
+name|accountIndexer
 operator|.
-name|evict
+name|get
+argument_list|()
+operator|.
+name|index
 argument_list|(
 name|rsrc
 operator|.
