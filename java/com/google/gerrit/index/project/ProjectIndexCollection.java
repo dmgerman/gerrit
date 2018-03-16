@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.index.project
+DECL|package|com.google.gerrit.index.project
 package|package
 name|com
 operator|.
@@ -60,13 +60,39 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|index
 operator|.
 name|project
 package|;
 end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
+name|IndexCollection
+import|;
+end_import
 
 begin_import
 import|import
@@ -86,35 +112,44 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|io
+name|google
 operator|.
-name|IOException
+name|inject
+operator|.
+name|Singleton
 import|;
 end_import
 
-begin_interface
-DECL|interface|ProjectIndexer
+begin_class
+annotation|@
+name|Singleton
+DECL|class|ProjectIndexCollection
 specifier|public
-interface|interface
-name|ProjectIndexer
-block|{
-comment|/**    * Synchronously index a project.    *    * @param nameKey name key of project to index.    */
-DECL|method|index (Project.NameKey nameKey)
-name|void
-name|index
-parameter_list|(
+class|class
+name|ProjectIndexCollection
+extends|extends
+name|IndexCollection
+argument_list|<
 name|Project
 operator|.
 name|NameKey
-name|nameKey
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
+argument_list|,
+name|ProjectData
+argument_list|,
+name|ProjectIndex
+argument_list|>
+block|{
+annotation|@
+name|VisibleForTesting
+DECL|method|ProjectIndexCollection ()
+specifier|public
+name|ProjectIndexCollection
+parameter_list|()
+block|{}
 block|}
-end_interface
+end_class
 
 end_unit
 
