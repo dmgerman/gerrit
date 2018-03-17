@@ -3639,7 +3639,10 @@ name|Iterables
 operator|.
 name|isEmpty
 argument_list|(
+name|unwrapDb
+argument_list|(
 name|db
+argument_list|)
 operator|.
 name|patchSets
 argument_list|()
@@ -3665,13 +3668,13 @@ literal|"Error checking if change "
 operator|+
 name|id
 operator|+
-literal|" is corrupt, assuming yes"
+literal|" can be skipped, assuming no"
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|true
+literal|false
 return|;
 block|}
 block|}
