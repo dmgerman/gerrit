@@ -192,7 +192,6 @@ extends|extends
 name|VersionedMetaData
 block|{
 DECL|field|PREFERENCES
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -221,6 +220,22 @@ name|refsUsers
 argument_list|(
 name|id
 argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|forDefault ()
+specifier|static
+name|VersionedAccountPreferences
+name|forDefault
+parameter_list|()
+block|{
+return|return
+operator|new
+name|VersionedAccountPreferences
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_USERS_DEFAULT
 argument_list|)
 return|;
 block|}

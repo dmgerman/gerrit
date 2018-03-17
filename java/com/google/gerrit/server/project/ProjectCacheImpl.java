@@ -1111,6 +1111,20 @@ name|e
 argument_list|)
 throw|;
 block|}
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot find project {}"
+argument_list|,
+name|projectName
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
