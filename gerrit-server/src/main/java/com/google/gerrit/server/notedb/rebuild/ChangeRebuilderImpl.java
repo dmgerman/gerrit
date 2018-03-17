@@ -3772,8 +3772,6 @@ parameter_list|,
 name|Change
 name|change
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(

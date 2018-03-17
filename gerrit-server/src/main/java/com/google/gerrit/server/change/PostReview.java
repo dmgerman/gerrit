@@ -5969,6 +5969,8 @@ throws|,
 name|UnprocessableEntityException
 throws|,
 name|IOException
+throws|,
+name|PatchListNotAvailableException
 block|{
 name|user
 operator|=
@@ -6161,6 +6163,8 @@ throws|throws
 name|OrmException
 throws|,
 name|UnprocessableEntityException
+throws|,
+name|PatchListNotAvailableException
 block|{
 name|Map
 argument_list|<
@@ -6624,6 +6628,8 @@ name|ctx
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|PatchListNotAvailableException
 block|{
 if|if
 condition|(
@@ -6691,6 +6697,8 @@ name|ctx
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|PatchListNotAvailableException
 block|{
 name|List
 argument_list|<
@@ -6829,7 +6837,7 @@ name|RobotCommentInput
 name|robotCommentInput
 parameter_list|)
 throws|throws
-name|OrmException
+name|PatchListNotAvailableException
 block|{
 name|RobotComment
 name|robotComment
