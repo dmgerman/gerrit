@@ -22524,12 +22524,9 @@ argument_list|(
 name|changeInfo
 operator|.
 name|revisions
-operator|.
-name|size
-argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasSize
 argument_list|(
 literal|2
 argument_list|)
@@ -22797,12 +22794,9 @@ argument_list|(
 name|changeInfo
 operator|.
 name|revisions
-operator|.
-name|size
-argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasSize
 argument_list|(
 literal|2
 argument_list|)
