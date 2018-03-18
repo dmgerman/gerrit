@@ -6550,12 +6550,9 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|commentsMap
-operator|.
-name|size
-argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasSize
 argument_list|(
 literal|1
 argument_list|)

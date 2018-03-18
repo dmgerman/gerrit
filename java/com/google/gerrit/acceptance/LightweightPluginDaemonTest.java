@@ -200,7 +200,7 @@ name|TemporaryFolder
 argument_list|()
 decl_stmt|;
 DECL|field|plugin
-specifier|private
+specifier|protected
 name|TestServerPlugin
 name|plugin
 decl_stmt|;

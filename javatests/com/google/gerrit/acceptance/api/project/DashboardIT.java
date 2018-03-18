@@ -1344,12 +1344,9 @@ argument_list|(
 name|actual
 operator|.
 name|sections
-operator|.
-name|size
-argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasSize
 argument_list|(
 name|expected
 operator|.

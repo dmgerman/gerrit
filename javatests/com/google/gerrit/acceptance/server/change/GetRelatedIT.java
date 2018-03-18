@@ -4420,12 +4420,9 @@ name|cd
 operator|.
 name|patchSets
 argument_list|()
-operator|.
-name|size
-argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasSize
 argument_list|(
 name|n
 argument_list|)
@@ -4445,12 +4442,9 @@ name|db
 argument_list|,
 name|psUtil
 argument_list|)
-operator|.
-name|size
-argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasSize
 argument_list|(
 name|n
 argument_list|)
