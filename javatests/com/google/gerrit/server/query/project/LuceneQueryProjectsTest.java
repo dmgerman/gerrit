@@ -76,8 +76,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|index
 operator|.
 name|project
@@ -260,8 +258,6 @@ operator|.
 name|google
 operator|.
 name|gerrit
-operator|.
-name|server
 operator|.
 name|index
 operator|.
