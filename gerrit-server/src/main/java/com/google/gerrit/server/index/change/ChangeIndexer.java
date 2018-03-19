@@ -1250,7 +1250,7 @@ literal|null
 argument_list|,
 literal|"autoReindexIfStale"
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 return|;
 block|}
