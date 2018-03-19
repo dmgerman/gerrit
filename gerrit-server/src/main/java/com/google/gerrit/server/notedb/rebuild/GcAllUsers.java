@@ -423,6 +423,26 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+if|if
+condition|(
+name|progressWriter
+operator|==
+literal|null
+condition|)
+block|{
+comment|// Mimic log line from GarbageCollection.
+name|logOneLine
+operator|.
+name|accept
+argument_list|(
+literal|"collecting garbage for \""
+operator|+
+name|allUsers
+operator|+
+literal|"\":\n"
+argument_list|)
+expr_stmt|;
+block|}
 name|GarbageCollectionResult
 name|result
 init|=
