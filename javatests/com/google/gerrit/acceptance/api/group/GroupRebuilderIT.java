@@ -797,7 +797,9 @@ decl_stmt|;
 name|GroupBundle
 name|reviewDbBundle
 init|=
-name|bundleFactory
+name|GroupBundle
+operator|.
+name|Factory
 operator|.
 name|fromReviewDb
 argument_list|(
@@ -973,7 +975,9 @@ block|}
 name|GroupBundle
 name|reviewDbBundle
 init|=
-name|bundleFactory
+name|GroupBundle
+operator|.
+name|Factory
 operator|.
 name|fromReviewDb
 argument_list|(
@@ -1658,7 +1662,9 @@ expr_stmt|;
 name|GroupBundle
 name|reviewDbBundle
 init|=
-name|bundleFactory
+name|GroupBundle
+operator|.
+name|Factory
 operator|.
 name|fromReviewDb
 argument_list|(

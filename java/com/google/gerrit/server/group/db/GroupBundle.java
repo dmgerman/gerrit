@@ -1144,6 +1144,7 @@ return|;
 block|}
 DECL|method|fromReviewDb (ReviewDb db, AccountGroup.Id groupId)
 specifier|public
+specifier|static
 name|GroupBundle
 name|fromReviewDb
 parameter_list|(
