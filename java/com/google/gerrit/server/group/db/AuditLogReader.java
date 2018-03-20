@@ -464,6 +464,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|AuditLogReader
+specifier|public
 class|class
 name|AuditLogReader
 block|{
@@ -492,6 +493,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|AuditLogReader (@erritServerId String serverId)
+specifier|public
 name|AuditLogReader
 parameter_list|(
 annotation|@
@@ -510,7 +512,8 @@ block|}
 comment|// Having separate methods for reading the two types of audit records mirrors the split in
 comment|// ReviewDb. Once ReviewDb is gone, the audit record interface becomes more flexible and we can
 comment|// revisit this, e.g. to do only a single walk, or even change the record types.
-DECL|method|getMembersAudit (Repository repo, AccountGroup.UUID uuid)
+DECL|method|getMembersAudit ( Repository repo, AccountGroup.UUID uuid)
+specifier|public
 name|ImmutableList
 argument_list|<
 name|AccountGroupMemberAudit
@@ -798,7 +801,8 @@ name|build
 argument_list|()
 return|;
 block|}
-DECL|method|getSubgroupsAudit (Repository repo, AccountGroup.UUID uuid)
+DECL|method|getSubgroupsAudit ( Repository repo, AccountGroup.UUID uuid)
+specifier|public
 name|ImmutableList
 argument_list|<
 name|AccountGroupByIdAud

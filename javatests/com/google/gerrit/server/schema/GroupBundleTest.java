@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.group.db
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -62,9 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
-operator|.
-name|db
+name|schema
 package|;
 end_package
 
@@ -204,9 +202,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
-operator|.
-name|db
+name|schema
 operator|.
 name|GroupBundle
 operator|.

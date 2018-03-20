@@ -846,6 +846,7 @@ expr_stmt|;
 block|}
 comment|/**    * Allows the new name of a group to be empty during creation or update.    *    *<p><strong>Note:</strong>This method exists only to support the migration of legacy groups    * which don't always necessarily have a name. Nowadays, we enforce that groups always have names.    * When we remove the migration code, we can probably remove this method as well.    */
 DECL|method|setAllowSaveEmptyName ()
+specifier|public
 name|void
 name|setAllowSaveEmptyName
 parameter_list|()
@@ -912,7 +913,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|getRefName ()
-specifier|protected
+specifier|public
 name|String
 name|getRefName
 parameter_list|()

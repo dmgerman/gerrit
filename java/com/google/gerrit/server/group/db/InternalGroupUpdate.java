@@ -410,6 +410,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the currently defined {@link MemberModification} for the prospective {@link      * InternalGroupUpdate}.      *      *<p>This modification can be tweaked further and passed to {@link      * #setMemberModification(MemberModification)} in order to combine multiple member additions,      * deletions, or other modifications into one update.      */
 DECL|method|getMemberModification ()
+specifier|public
 specifier|abstract
 name|MemberModification
 name|getMemberModification
@@ -428,6 +429,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the currently defined {@link SubgroupModification} for the prospective {@link      * InternalGroupUpdate}.      *      *<p>This modification can be tweaked further and passed to {@link      * #setSubgroupModification(SubgroupModification)} in order to combine multiple subgroup      * additions, deletions, or other modifications into one update.      */
 DECL|method|getSubgroupModification ()
+specifier|public
 specifier|abstract
 name|SubgroupModification
 name|getSubgroupModification

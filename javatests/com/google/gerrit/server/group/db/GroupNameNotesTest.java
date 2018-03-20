@@ -388,13 +388,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
+name|update
 operator|.
-name|db
-operator|.
-name|testing
-operator|.
-name|GroupTestUtil
+name|RefUpdateUtil
 import|;
 end_import
 
@@ -406,11 +402,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|testing
 operator|.
-name|update
-operator|.
-name|RefUpdateUtil
+name|GitTestUtil
 import|;
 end_import
 
@@ -4123,7 +4117,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|GroupTestUtil
+name|GitTestUtil
 operator|.
 name|log
 argument_list|(
