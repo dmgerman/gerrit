@@ -1081,7 +1081,9 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Group"
+literal|"Group "
+operator|+
+name|uuid
 return|;
 block|}
 annotation|@

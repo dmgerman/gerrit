@@ -1224,9 +1224,9 @@ literal|"Add: Account 1<1@server-id>\n"
 operator|+
 literal|"Add: Account 2<2@server-id>\n"
 operator|+
-literal|"Add-group: Group<x>\n"
+literal|"Add-group: Group x<x>\n"
 operator|+
-literal|"Add-group: Group<y>"
+literal|"Add-group: Group y<y>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1918,7 +1918,7 @@ argument_list|(
 literal|1
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group<y>"
+literal|"Update group\n\nAdd-group: Group y<y>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -1934,7 +1934,7 @@ argument_list|(
 literal|2
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group<x>"
+literal|"Update group\n\nAdd-group: Group x<x>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -1950,7 +1950,7 @@ argument_list|(
 literal|3
 argument_list|)
 argument_list|,
-literal|"Update group\n\nRemove-group: Group<y>"
+literal|"Update group\n\nRemove-group: Group y<y>"
 argument_list|,
 literal|"Account 9"
 argument_list|,
@@ -2094,7 +2094,7 @@ argument_list|(
 literal|1
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group<x>"
+literal|"Update group\n\nAdd-group: Group x<x>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -2110,7 +2110,7 @@ argument_list|(
 literal|2
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group<y>\nAdd-group: Group<z>"
+literal|"Update group\n\nAdd-group: Group y<y>\nAdd-group: Group z<z>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2380,11 +2380,11 @@ literal|"Update group\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Add-group: Group<x>\n"
+literal|"Add-group: Group x<x>\n"
 operator|+
-literal|"Add-group: Group<y>\n"
+literal|"Add-group: Group y<y>\n"
 operator|+
-literal|"Add-group: Group<z>"
+literal|"Add-group: Group z<z>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -2400,7 +2400,7 @@ argument_list|(
 literal|4
 argument_list|)
 argument_list|,
-literal|"Update group\n\nRemove-group: Group<z>"
+literal|"Update group\n\nRemove-group: Group z<z>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -2663,7 +2663,7 @@ argument_list|(
 literal|2
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group<x>\nAdd-group: Group<z>"
+literal|"Update group\n\nAdd-group: Group x<x>\nAdd-group: Group z<z>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -2695,7 +2695,7 @@ argument_list|(
 literal|4
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group<y>"
+literal|"Update group\n\nAdd-group: Group y<y>"
 argument_list|,
 literal|"Account 9"
 argument_list|,
@@ -2874,7 +2874,7 @@ argument_list|(
 literal|1
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group<x>"
+literal|"Update group\n\nAdd-group: Group x<x>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -2890,7 +2890,7 @@ argument_list|(
 literal|2
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group<y>\nAdd-group: Group<z>"
+literal|"Update group\n\nAdd-group: Group y<y>\nAdd-group: Group z<z>"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -3717,7 +3717,7 @@ argument_list|(
 literal|1
 argument_list|)
 argument_list|,
-literal|"Update group\n\nAdd-group: Group<x>"
+literal|"Update group\n\nAdd-group: Group x<x>"
 argument_list|,
 literal|"Account 8"
 argument_list|,
@@ -3733,7 +3733,7 @@ argument_list|(
 literal|2
 argument_list|)
 argument_list|,
-literal|"Update group\n\nRemove-group: Group<x>"
+literal|"Update group\n\nRemove-group: Group x<x>"
 argument_list|,
 literal|"Account 9"
 argument_list|,
