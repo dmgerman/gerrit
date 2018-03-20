@@ -4737,6 +4737,9 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+name|parsePushOptions
+argument_list|()
+expr_stmt|;
 name|parseCommands
 argument_list|(
 name|commands
@@ -6187,23 +6190,11 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|parseCommands (Collection<ReceiveCommand> commands)
+DECL|method|parsePushOptions ()
 specifier|private
 name|void
-name|parseCommands
-parameter_list|(
-name|Collection
-argument_list|<
-name|ReceiveCommand
-argument_list|>
-name|commands
-parameter_list|)
-throws|throws
-name|PermissionBackendException
-throws|,
-name|NoSuchProjectException
-throws|,
-name|IOException
+name|parsePushOptions
+parameter_list|()
 block|{
 name|List
 argument_list|<
@@ -6286,6 +6277,25 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
+DECL|method|parseCommands (Collection<ReceiveCommand> commands)
+specifier|private
+name|void
+name|parseCommands
+parameter_list|(
+name|Collection
+argument_list|<
+name|ReceiveCommand
+argument_list|>
+name|commands
+parameter_list|)
+throws|throws
+name|PermissionBackendException
+throws|,
+name|NoSuchProjectException
+throws|,
+name|IOException
+block|{
 name|logDebug
 argument_list|(
 literal|"Parsing {} commands"
