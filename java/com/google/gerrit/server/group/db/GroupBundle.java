@@ -1142,7 +1142,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|fromReviewDb (ReviewDb db, AccountGroup.Id groupId)
+DECL|method|fromReviewDb (ReviewDb db, AccountGroup.UUID groupUuid)
 specifier|public
 specifier|static
 name|GroupBundle
@@ -1153,8 +1153,8 @@ name|db
 parameter_list|,
 name|AccountGroup
 operator|.
-name|Id
-name|groupId
+name|UUID
+name|groupUuid
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1176,8 +1176,18 @@ name|readAccountGroupFromReviewDb
 argument_list|(
 name|jdbcSchema
 argument_list|,
-name|groupId
+name|groupUuid
 argument_list|)
+decl_stmt|;
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+init|=
+name|group
+operator|.
+name|getId
+argument_list|()
 decl_stmt|;
 return|return
 name|create
@@ -1218,7 +1228,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|readAccountGroupFromReviewDb ( JdbcSchema jdbcSchema, AccountGroup.Id groupId)
+DECL|method|readAccountGroupFromReviewDb ( JdbcSchema jdbcSchema, AccountGroup.UUID groupUuid)
 specifier|private
 specifier|static
 name|AccountGroup
@@ -1229,8 +1239,8 @@ name|jdbcSchema
 parameter_list|,
 name|AccountGroup
 operator|.
-name|Id
-name|groupId
+name|UUID
+name|groupUuid
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1255,7 +1265,7 @@ name|stmt
 operator|.
 name|executeQuery
 argument_list|(
-literal|"SELECT group_uuid,"
+literal|"SELECT group_id,"
 operator|+
 literal|" name,"
 operator|+
@@ -1269,9 +1279,9 @@ literal|" visible_to_all"
 operator|+
 literal|" FROM account_groups"
 operator|+
-literal|" WHERE group_id = '"
+literal|" WHERE group_uuid = '"
 operator|+
-name|groupId
+name|groupUuid
 operator|.
 name|get
 argument_list|()
@@ -1299,24 +1309,24 @@ name|format
 argument_list|(
 literal|"Group %s not found"
 argument_list|,
-name|groupId
+name|groupUuid
 argument_list|)
 argument_list|)
 throw|;
 block|}
 name|AccountGroup
 operator|.
-name|UUID
-name|groupUuid
+name|Id
+name|groupId
 init|=
 operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|Id
 argument_list|(
 name|rs
 operator|.
-name|getString
+name|getInt
 argument_list|(
 literal|1
 argument_list|)
@@ -1467,7 +1477,7 @@ name|format
 argument_list|(
 literal|"Failed to read account group %s from ReviewDb"
 argument_list|,
-name|groupId
+name|groupUuid
 operator|.
 name|get
 argument_list|()
