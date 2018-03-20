@@ -238,16 +238,6 @@ name|db
 argument_list|)
 return|;
 block|}
-DECL|method|unsafeGetDelegate ()
-specifier|public
-name|ReviewDb
-name|unsafeGetDelegate
-parameter_list|()
-block|{
-return|return
-name|delegate
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|changes ()
