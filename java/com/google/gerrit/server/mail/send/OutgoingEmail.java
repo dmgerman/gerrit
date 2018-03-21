@@ -643,7 +643,7 @@ decl_stmt|;
 DECL|field|rcptTo
 specifier|private
 specifier|final
-name|HashSet
+name|Set
 argument_list|<
 name|Account
 operator|.
@@ -3344,6 +3344,16 @@ name|soyContextEmailData
 operator|.
 name|put
 argument_list|(
+literal|"instanceName"
+argument_list|,
+name|getInstanceName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|soyContextEmailData
+operator|.
+name|put
+argument_list|(
 literal|"gerritHost"
 argument_list|,
 name|getGerritHost
@@ -3369,6 +3379,21 @@ argument_list|,
 name|soyContextEmailData
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getInstanceName ()
+specifier|private
+name|String
+name|getInstanceName
+parameter_list|()
+block|{
+return|return
+name|args
+operator|.
+name|instanceNameProvider
+operator|.
+name|get
+argument_list|()
+return|;
 block|}
 DECL|method|soyTemplate (String name, SanitizedContent.ContentKind kind)
 specifier|private
