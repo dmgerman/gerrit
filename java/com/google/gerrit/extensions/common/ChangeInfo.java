@@ -433,6 +433,14 @@ name|TrackingIdInfo
 argument_list|>
 name|trackingIds
 decl_stmt|;
+DECL|field|requirements
+specifier|public
+name|Collection
+argument_list|<
+name|SubmitRequirementInfo
+argument_list|>
+name|requirements
+decl_stmt|;
 block|}
 end_class
 
