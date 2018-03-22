@@ -1463,13 +1463,13 @@ literal|"Update group\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Add: Account 1<1@server-id>\n"
-operator|+
-literal|"Add: Account 2<2@server-id>\n"
-operator|+
 literal|"Add-group: Group x<x>\n"
 operator|+
-literal|"Add-group: Group y<y>"
+literal|"Add-group: Group y<y>\n"
+operator|+
+literal|"Add: Account 1<1@server-id>\n"
+operator|+
+literal|"Add: Account 2<2@server-id>"
 argument_list|)
 expr_stmt|;
 block|}
