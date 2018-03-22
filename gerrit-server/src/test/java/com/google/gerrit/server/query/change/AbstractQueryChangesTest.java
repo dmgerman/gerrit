@@ -9981,6 +9981,11 @@ name|repo
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|assertQuery
+argument_list|(
+literal|"has:draft"
+argument_list|)
+expr_stmt|;
 name|DraftInput
 name|in
 init|=
@@ -10103,6 +10108,15 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|assertQuery
+argument_list|(
+literal|"has:draft"
+argument_list|,
+name|change2
+argument_list|,
+name|change1
+argument_list|)
+expr_stmt|;
 name|assertQuery
 argument_list|(
 literal|"draftby:"
