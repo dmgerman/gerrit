@@ -354,22 +354,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -878,15 +862,6 @@ specifier|private
 specifier|final
 name|GroupsCollection
 name|groupsCollection
-decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 decl_stmt|;
 DECL|field|options
 specifier|private
@@ -1425,7 +1400,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ListGroups ( final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final GetGroups accountGetGroups, final GroupsCollection groupsCollection, GroupJson json, GroupBackend groupBackend, Groups groups, Provider<ReviewDb> db)
+DECL|method|ListGroups ( final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final GetGroups accountGetGroups, final GroupsCollection groupsCollection, GroupJson json, GroupBackend groupBackend, Groups groups)
 specifier|protected
 name|ListGroups
 parameter_list|(
@@ -1474,12 +1449,6 @@ name|groupBackend
 parameter_list|,
 name|Groups
 name|groups
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|)
 block|{
 name|this
@@ -1541,12 +1510,6 @@ operator|.
 name|groupsCollection
 operator|=
 name|groupsCollection
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 block|}
 DECL|method|setOptions (EnumSet<ListGroupsOption> options)
@@ -1972,8 +1935,6 @@ argument_list|>
 name|getAllExistingGroups
 parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -2015,12 +1976,7 @@ return|return
 name|groups
 operator|.
 name|getAllGroupReferences
-argument_list|(
-name|db
-operator|.
-name|get
 argument_list|()
-argument_list|)
 return|;
 block|}
 DECL|method|suggestGroups ()
@@ -2344,12 +2300,7 @@ init|=
 name|groups
 operator|.
 name|getAllGroupReferences
-argument_list|(
-name|db
-operator|.
-name|get
 argument_list|()
-argument_list|)
 operator|.
 name|filter
 argument_list|(

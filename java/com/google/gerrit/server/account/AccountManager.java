@@ -278,22 +278,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -520,20 +504,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -726,15 +696,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|schema
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-decl_stmt|;
 DECL|field|sequences
 specifier|private
 specifier|final
@@ -822,15 +783,9 @@ name|setInactiveFlag
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountManager ( SchemaFactory<ReviewDb> schema, Sequences sequences, @GerritServerConfig Config cfg, Accounts accounts, @ServerInitiated Provider<AccountsUpdate> accountsUpdateProvider, AccountCache byIdCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, SshKeyCache sshKeyCache, ProjectCache projectCache, ExternalIds externalIds, GroupsUpdate.Factory groupsUpdateFactory, SetInactiveFlag setInactiveFlag)
+DECL|method|AccountManager ( Sequences sequences, @GerritServerConfig Config cfg, Accounts accounts, @ServerInitiated Provider<AccountsUpdate> accountsUpdateProvider, AccountCache byIdCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, SshKeyCache sshKeyCache, ProjectCache projectCache, ExternalIds externalIds, GroupsUpdate.Factory groupsUpdateFactory, SetInactiveFlag setInactiveFlag)
 name|AccountManager
 parameter_list|(
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-parameter_list|,
 name|Sequences
 name|sequences
 parameter_list|,
@@ -879,12 +834,6 @@ name|SetInactiveFlag
 name|setInactiveFlag
 parameter_list|)
 block|{
-name|this
-operator|.
-name|schema
-operator|=
-name|schema
-expr_stmt|;
 name|this
 operator|.
 name|sequences
@@ -1107,17 +1056,6 @@ throw|;
 block|}
 try|try
 block|{
-try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|schema
-operator|.
-name|open
-argument_list|()
-init|)
-block|{
 name|ExternalId
 name|id
 init|=
@@ -1227,8 +1165,6 @@ expr_stmt|;
 return|return
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|who
 argument_list|)
 return|;
@@ -1378,7 +1314,6 @@ argument_list|,
 literal|false
 argument_list|)
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2005,14 +1940,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|create (ReviewDb db, AuthRequest who)
+DECL|method|create (AuthRequest who)
 specifier|private
 name|AuthResult
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|AuthRequest
 name|who
 parameter_list|)
@@ -2294,8 +2226,6 @@ argument_list|()
 decl_stmt|;
 name|addGroupMember
 argument_list|(
-name|db
-argument_list|,
 name|adminGroupUuid
 argument_list|,
 name|user
@@ -2397,14 +2327,11 @@ name|accountId
 argument_list|)
 return|;
 block|}
-DECL|method|addGroupMember (ReviewDb db, AccountGroup.UUID groupUuid, IdentifiedUser user)
+DECL|method|addGroupMember (AccountGroup.UUID groupUuid, IdentifiedUser user)
 specifier|private
 name|void
 name|addGroupMember
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|AccountGroup
 operator|.
 name|UUID
@@ -2472,8 +2399,6 @@ name|groupsUpdate
 operator|.
 name|updateGroup
 argument_list|(
-name|db
-argument_list|,
 name|groupUuid
 argument_list|,
 name|groupUpdate

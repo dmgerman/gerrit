@@ -392,22 +392,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|GerritPersonIdent
@@ -883,12 +867,6 @@ specifier|final
 name|PersonIdent
 name|serverIdent
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|groupsUpdateProvider
 specifier|private
 specifier|final
@@ -957,7 +935,7 @@ name|sequences
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateGroup ( Provider<IdentifiedUser> self, @GerritPersonIdent PersonIdent serverIdent, ReviewDb db, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, GroupCache groupCache, GroupsCollection groups, GroupJson json, DynamicSet<GroupCreationValidationListener> groupCreationValidationListeners, AddMembers addMembers, SystemGroupBackend systemGroupBackend, @GerritServerConfig Config cfg, @Assisted String name, Sequences sequences)
+DECL|method|CreateGroup ( Provider<IdentifiedUser> self, @GerritPersonIdent PersonIdent serverIdent, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, GroupCache groupCache, GroupsCollection groups, GroupJson json, DynamicSet<GroupCreationValidationListener> groupCreationValidationListeners, AddMembers addMembers, SystemGroupBackend systemGroupBackend, @GerritServerConfig Config cfg, @Assisted String name, Sequences sequences)
 name|CreateGroup
 parameter_list|(
 name|Provider
@@ -970,9 +948,6 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 annotation|@
 name|UserInitiated
@@ -1028,12 +1003,6 @@ operator|.
 name|serverIdent
 operator|=
 name|serverIdent
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -1804,8 +1773,6 @@ argument_list|()
 operator|.
 name|createGroup
 argument_list|(
-name|db
-argument_list|,
 name|groupCreation
 argument_list|,
 name|groupUpdateBuilder

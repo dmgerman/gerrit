@@ -2631,8 +2631,6 @@ argument_list|()
 operator|.
 name|updateGroupInDb
 argument_list|(
-name|db
-argument_list|,
 name|groupUuid
 argument_list|,
 name|groupUpdate

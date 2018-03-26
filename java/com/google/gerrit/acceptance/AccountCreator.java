@@ -192,22 +192,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|Sequences
@@ -373,20 +357,6 @@ operator|.
 name|server
 operator|.
 name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|SchemaFactory
 import|;
 end_import
 
@@ -585,15 +555,6 @@ name|TestAccount
 argument_list|>
 name|accounts
 decl_stmt|;
-DECL|field|reviewDbProvider
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|reviewDbProvider
-decl_stmt|;
 DECL|field|sequences
 specifier|private
 specifier|final
@@ -646,15 +607,9 @@ name|sshEnabled
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, Sequences sequences, @ServerInitiated Provider<AccountsUpdate> accountsUpdateProvider, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, @ServerInitiated Provider<GroupsUpdate> groupsUpdateProvider, SshKeyCache sshKeyCache, @SshEnabled boolean sshEnabled)
+DECL|method|AccountCreator ( Sequences sequences, @ServerInitiated Provider<AccountsUpdate> accountsUpdateProvider, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, @ServerInitiated Provider<GroupsUpdate> groupsUpdateProvider, SshKeyCache sshKeyCache, @SshEnabled boolean sshEnabled)
 name|AccountCreator
 parameter_list|(
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-parameter_list|,
 name|Sequences
 name|sequences
 parameter_list|,
@@ -697,10 +652,6 @@ operator|new
 name|HashMap
 argument_list|<>
 argument_list|()
-expr_stmt|;
-name|reviewDbProvider
-operator|=
-name|schema
 expr_stmt|;
 name|this
 operator|.
@@ -794,17 +745,6 @@ return|return
 name|account
 return|;
 block|}
-try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|reviewDbProvider
-operator|.
-name|open
-argument_list|()
-init|)
-block|{
 name|Account
 operator|.
 name|Id
@@ -980,8 +920,6 @@ throw|;
 block|}
 name|addGroupMember
 argument_list|(
-name|db
-argument_list|,
 name|group
 operator|.
 name|get
@@ -1074,7 +1012,6 @@ block|}
 return|return
 name|account
 return|;
-block|}
 block|}
 DECL|method|create (@ullable String username, String group)
 specifier|public
@@ -1364,14 +1301,11 @@ name|trim
 argument_list|()
 return|;
 block|}
-DECL|method|addGroupMember (ReviewDb db, AccountGroup.UUID groupUuid, Account.Id accountId)
+DECL|method|addGroupMember (AccountGroup.UUID groupUuid, Account.Id accountId)
 specifier|private
 name|void
 name|addGroupMember
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|AccountGroup
 operator|.
 name|UUID
@@ -1428,8 +1362,6 @@ argument_list|()
 operator|.
 name|updateGroup
 argument_list|(
-name|db
-argument_list|,
 name|groupUuid
 argument_list|,
 name|groupUpdate

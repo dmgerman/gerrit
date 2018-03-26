@@ -310,22 +310,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|UserInitiated
@@ -900,15 +884,6 @@ operator|.
 name|Factory
 name|infoFactory
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|groupsUpdateProvider
 specifier|private
 specifier|final
@@ -920,7 +895,7 @@ name|groupsUpdateProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddMembers ( AccountManager accountManager, AuthConfig authConfig, AccountsCollection accounts, AccountResolver accountResolver, AccountCache accountCache, AccountLoader.Factory infoFactory, Provider<ReviewDb> db, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
+DECL|method|AddMembers ( AccountManager accountManager, AuthConfig authConfig, AccountsCollection accounts, AccountResolver accountResolver, AccountCache accountCache, AccountLoader.Factory infoFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
 name|AddMembers
 parameter_list|(
 name|AccountManager
@@ -942,12 +917,6 @@ name|AccountLoader
 operator|.
 name|Factory
 name|infoFactory
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 annotation|@
 name|UserInitiated
@@ -996,12 +965,6 @@ operator|.
 name|infoFactory
 operator|=
 name|infoFactory
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -1393,11 +1356,6 @@ argument_list|()
 operator|.
 name|updateGroup
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|groupUuid
 argument_list|,
 name|groupUpdate

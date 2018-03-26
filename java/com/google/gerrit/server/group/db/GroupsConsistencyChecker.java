@@ -262,22 +262,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|GroupsMigration
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -456,15 +440,9 @@ specifier|final
 name|GroupsNoteDbConsistencyChecker
 name|globalChecker
 decl_stmt|;
-DECL|field|groupsMigration
-specifier|private
-specifier|final
-name|GroupsMigration
-name|groupsMigration
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsConsistencyChecker ( AllUsersName allUsersName, GroupBackend groupBackend, Accounts accounts, GitRepositoryManager repositoryManager, GroupsNoteDbConsistencyChecker globalChecker, GroupsMigration groupsMigration)
+DECL|method|GroupsConsistencyChecker ( AllUsersName allUsersName, GroupBackend groupBackend, Accounts accounts, GitRepositoryManager repositoryManager, GroupsNoteDbConsistencyChecker globalChecker)
 name|GroupsConsistencyChecker
 parameter_list|(
 name|AllUsersName
@@ -481,9 +459,6 @@ name|repositoryManager
 parameter_list|,
 name|GroupsNoteDbConsistencyChecker
 name|globalChecker
-parameter_list|,
-name|GroupsMigration
-name|groupsMigration
 parameter_list|)
 block|{
 name|this
@@ -516,12 +491,6 @@ name|globalChecker
 operator|=
 name|globalChecker
 expr_stmt|;
-name|this
-operator|.
-name|groupsMigration
-operator|=
-name|groupsMigration
-expr_stmt|;
 block|}
 comment|/** Checks that all internal group references exist, and that no groups have cycles. */
 DECL|method|check ()
@@ -535,22 +504,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-operator|!
-name|groupsMigration
-operator|.
-name|writeToNoteDb
-argument_list|()
-condition|)
-block|{
-return|return
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-return|;
-block|}
 try|try
 init|(
 name|Repository

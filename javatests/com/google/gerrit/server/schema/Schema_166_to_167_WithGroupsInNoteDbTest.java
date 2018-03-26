@@ -757,8 +757,6 @@ name|groupsUpdate
 operator|.
 name|createGroup
 argument_list|(
-name|db
-argument_list|,
 name|InternalGroupCreation
 operator|.
 name|builder

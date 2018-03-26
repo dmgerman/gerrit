@@ -252,22 +252,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|UserInitiated
@@ -430,15 +414,6 @@ name|GroupsUpdate
 argument_list|>
 name|groupsUpdateProvider
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|json
 specifier|private
 specifier|final
@@ -447,7 +422,7 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutOwner ( GroupsCollection groupsCollection, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, Provider<ReviewDb> db, GroupJson json)
+DECL|method|PutOwner ( GroupsCollection groupsCollection, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, GroupJson json)
 name|PutOwner
 parameter_list|(
 name|GroupsCollection
@@ -460,12 +435,6 @@ argument_list|<
 name|GroupsUpdate
 argument_list|>
 name|groupsUpdateProvider
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|GroupJson
 name|json
@@ -482,12 +451,6 @@ operator|.
 name|groupsUpdateProvider
 operator|=
 name|groupsUpdateProvider
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -656,11 +619,6 @@ argument_list|()
 operator|.
 name|updateGroup
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|groupUuid
 argument_list|,
 name|groupUpdate
