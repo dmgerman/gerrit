@@ -69,6 +69,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -2055,6 +2071,21 @@ argument_list|(
 name|args
 argument_list|)
 decl_stmt|;
+name|checkNotNull
+argument_list|(
+name|projectState
+argument_list|,
+literal|"failed to create project "
+operator|+
+name|args
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|input
