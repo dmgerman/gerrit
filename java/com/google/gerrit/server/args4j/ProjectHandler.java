@@ -574,6 +574,26 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+comment|// Hidden projects(permitsRead = false) should only be accessible by the project owners.
+comment|// READ_CONFIG is checked here because it's only allowed to project owners(ACCESS may also
+comment|// be allowed for other users). Allowing project owners to access here will help them to view
+comment|// and update the config of hidden projects easily.
+name|ProjectPermission
+name|permissionToCheck
+init|=
+name|state
+operator|.
+name|statePermitsRead
+argument_list|()
+condition|?
+name|ProjectPermission
+operator|.
+name|ACCESS
+else|:
+name|ProjectPermission
+operator|.
+name|READ_CONFIG
+decl_stmt|;
 name|permissionBackend
 operator|.
 name|currentUser
@@ -586,9 +606,7 @@ argument_list|)
 operator|.
 name|check
 argument_list|(
-name|ProjectPermission
-operator|.
-name|ACCESS
+name|permissionToCheck
 argument_list|)
 expr_stmt|;
 block|}

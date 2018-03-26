@@ -1479,6 +1479,12 @@ condition|(
 name|state
 operator|==
 literal|null
+operator|||
+operator|!
+name|state
+operator|.
+name|statePermitsRead
+argument_list|()
 condition|)
 block|{
 throw|throw

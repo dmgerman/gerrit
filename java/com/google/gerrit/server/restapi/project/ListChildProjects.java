@@ -596,6 +596,11 @@ argument_list|(
 name|allProjects
 argument_list|)
 argument_list|)
+operator|&&
+name|c
+operator|.
+name|statePermitsRead
+argument_list|()
 condition|)
 block|{
 name|children

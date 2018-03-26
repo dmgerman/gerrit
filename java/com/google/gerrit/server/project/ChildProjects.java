@@ -374,7 +374,7 @@ name|Project
 argument_list|>
 name|projects
 init|=
-name|readAllProjects
+name|readAllReadableProjects
 argument_list|()
 decl_stmt|;
 name|Multimap
@@ -432,7 +432,7 @@ return|return
 name|results
 return|;
 block|}
-DECL|method|readAllProjects ()
+DECL|method|readAllReadableProjects ()
 specifier|private
 name|Map
 argument_list|<
@@ -442,7 +442,7 @@ name|NameKey
 argument_list|,
 name|Project
 argument_list|>
-name|readAllProjects
+name|readAllReadableProjects
 parameter_list|()
 block|{
 name|Map
@@ -488,6 +488,11 @@ condition|(
 name|c
 operator|!=
 literal|null
+operator|&&
+name|c
+operator|.
+name|statePermitsRead
+argument_list|()
 condition|)
 block|{
 name|projects

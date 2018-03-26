@@ -752,6 +752,14 @@ name|tree
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|ps
+operator|.
+name|statePermitsRead
+argument_list|()
+condition|)
+block|{
 name|tree
 operator|.
 name|put
@@ -764,6 +772,7 @@ argument_list|,
 name|ps
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|tree
 operator|.
