@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.access
+DECL|package|com.google.gerrit.server.restapi.access
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|restapi
 operator|.
 name|access
 package|;
