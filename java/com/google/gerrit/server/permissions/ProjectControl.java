@@ -2304,10 +2304,6 @@ case|case
 name|READ
 case|:
 return|return
-operator|!
-name|isHidden
-argument_list|()
-operator|&&
 name|allRefsAreVisible
 argument_list|(
 name|Collections

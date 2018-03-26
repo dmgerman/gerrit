@@ -1048,6 +1048,11 @@ condition|)
 block|{
 if|if
 condition|(
+name|projectState
+operator|.
+name|statePermitsRead
+argument_list|()
+operator|&&
 name|checkProjectPermission
 argument_list|(
 name|forProject
