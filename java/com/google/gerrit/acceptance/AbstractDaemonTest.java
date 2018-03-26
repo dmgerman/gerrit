@@ -1900,6 +1900,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Module
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Provider
 import|;
 end_import
@@ -3630,6 +3642,12 @@ argument_list|,
 literal|4
 argument_list|)
 expr_stmt|;
+name|Module
+name|module
+init|=
+name|createModule
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|classDesc
@@ -3668,6 +3686,8 @@ argument_list|(
 name|classDesc
 argument_list|,
 name|baseConfig
+argument_list|,
+name|module
 argument_list|)
 expr_stmt|;
 block|}
@@ -3687,6 +3707,8 @@ argument_list|(
 name|methodDesc
 argument_list|,
 name|baseConfig
+argument_list|,
+name|module
 argument_list|)
 expr_stmt|;
 block|}
@@ -3857,6 +3879,17 @@ name|description
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+comment|/** Override to bind an additional Guice module */
+DECL|method|createModule ()
+specifier|public
+name|Module
+name|createModule
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
 block|}
 DECL|method|initSsh ()
 specifier|protected
