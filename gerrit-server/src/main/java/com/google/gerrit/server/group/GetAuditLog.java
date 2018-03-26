@@ -867,6 +867,13 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|groupDescription
+operator|!=
+literal|null
+condition|)
+block|{
 name|member
 operator|.
 name|name
@@ -876,6 +883,7 @@ operator|.
 name|getName
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 name|auditEvents
 operator|.
