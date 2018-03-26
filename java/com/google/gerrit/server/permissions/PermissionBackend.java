@@ -480,7 +480,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/** @return lightweight factory scoped to answer for the specified user. */
+comment|/** @return lightweight factory scoped to answer for the current user. */
+DECL|method|currentUser ()
+specifier|public
+specifier|abstract
+name|WithUser
+name|currentUser
+parameter_list|()
+function_decl|;
+comment|/**    * @return lightweight factory scoped to answer for the specified user. If an instance scoped to    *     the current user is desired, use {@code currentUser()} instead.    */
 DECL|method|user (CurrentUser user)
 specifier|public
 specifier|abstract
@@ -491,7 +499,7 @@ name|CurrentUser
 name|user
 parameter_list|)
 function_decl|;
-comment|/** @return lightweight factory scoped to answer for the specified user. */
+comment|/**    * @return lightweight factory scoped to answer for the specified user. If an instance scoped to    *     the current user is desired, use {@code currentUser()} instead.    */
 DECL|method|user (Provider<U> user)
 specifier|public
 parameter_list|<
