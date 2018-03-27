@@ -202,6 +202,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|Branch
 import|;
 end_import
@@ -488,7 +504,7 @@ name|WithUser
 name|currentUser
 parameter_list|()
 function_decl|;
-comment|/**    * Returns an instance scoped to the specified user. If an instance scoped to the current user is    * desired, use {@code currentUser()} instead.    */
+comment|/**    * Returns an instance scoped to the specified user. Should be used in cases where the user could    * either be the issuer of the current request or an impersonated user. PermissionBackends that do    * not support impersonation can fail with an {@code IllegalStateException}.    *    *<p>If an instance scoped to the current user is desired, use {@code currentUser()} instead.    */
 DECL|method|user (CurrentUser user)
 specifier|public
 specifier|abstract
@@ -496,6 +512,19 @@ name|WithUser
 name|user
 parameter_list|(
 name|CurrentUser
+name|user
+parameter_list|)
+function_decl|;
+comment|/**    * Returns an instance scoped to the provided user. Should be used in cases where the caller wants    * to check the permissions of a user who is not the issuer of the current request and not the    * target of impersonation.    *    *<p>Usage should be very limited as this can expose a group-oracle.    */
+DECL|method|absentUser (Account.Id user)
+specifier|public
+specifier|abstract
+name|WithUser
+name|absentUser
+parameter_list|(
+name|Account
+operator|.
+name|Id
 name|user
 parameter_list|)
 function_decl|;

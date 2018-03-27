@@ -600,14 +600,9 @@ block|{
 return|return
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|identifiedUserFactory
-operator|.
-name|create
+name|absentUser
 argument_list|(
 name|userId
-argument_list|)
 argument_list|)
 operator|.
 name|ref
