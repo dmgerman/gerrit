@@ -298,20 +298,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|account
 operator|.
 name|AccountDirectory
@@ -514,18 +500,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -629,15 +603,6 @@ name|int
 name|MAX_SUGGEST_RESULTS
 init|=
 literal|100
-decl_stmt|;
-DECL|field|self
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|self
 decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
@@ -963,15 +928,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|QueryAccounts ( Provider<CurrentUser> self, PermissionBackend permissionBackend, AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder queryBuilder, AccountQueryProcessor queryProcessor, @GerritServerConfig Config cfg)
+DECL|method|QueryAccounts ( PermissionBackend permissionBackend, AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder queryBuilder, AccountQueryProcessor queryProcessor, @GerritServerConfig Config cfg)
 name|QueryAccounts
 parameter_list|(
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|self
-parameter_list|,
 name|PermissionBackend
 name|permissionBackend
 parameter_list|,
@@ -992,12 +951,6 @@ name|Config
 name|cfg
 parameter_list|)
 block|{
-name|this
-operator|.
-name|self
-operator|=
-name|self
-expr_stmt|;
 name|this
 operator|.
 name|permissionBackend
