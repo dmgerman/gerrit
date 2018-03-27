@@ -272,20 +272,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|change
 operator|.
 name|ChangeResource
@@ -516,15 +502,6 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|self
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|self
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -533,7 +510,7 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetReadyForReview ( RetryHelper retryHelper, WorkInProgressOp.Factory opFactory, Provider<ReviewDb> db, Provider<CurrentUser> self, PermissionBackend permissionBackend)
+DECL|method|SetReadyForReview ( RetryHelper retryHelper, WorkInProgressOp.Factory opFactory, Provider<ReviewDb> db, PermissionBackend permissionBackend)
 name|SetReadyForReview
 parameter_list|(
 name|RetryHelper
@@ -549,12 +526,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|self
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -576,12 +547,6 @@ operator|.
 name|db
 operator|=
 name|db
-expr_stmt|;
-name|this
-operator|.
-name|self
-operator|=
-name|self
 expr_stmt|;
 name|this
 operator|.

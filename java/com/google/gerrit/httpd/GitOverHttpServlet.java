@@ -1816,18 +1816,9 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|userProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|userProvider
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UploadFilter ( UploadValidators.Factory uploadValidatorsFactory, PermissionBackend permissionBackend, Provider<CurrentUser> userProvider)
+DECL|method|UploadFilter ( UploadValidators.Factory uploadValidatorsFactory, PermissionBackend permissionBackend)
 name|UploadFilter
 parameter_list|(
 name|UploadValidators
@@ -1837,12 +1828,6 @@ name|uploadValidatorsFactory
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|userProvider
 parameter_list|)
 block|{
 name|this
@@ -1856,12 +1841,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|userProvider
-operator|=
-name|userProvider
 expr_stmt|;
 block|}
 annotation|@
