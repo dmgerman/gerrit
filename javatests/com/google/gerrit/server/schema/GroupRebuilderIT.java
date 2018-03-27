@@ -1795,6 +1795,10 @@ operator|+
 literal|"\n"
 operator|+
 operator|(
+literal|"Add-group: Registered Users<global:Registered-Users>\n"
+operator|)
+operator|+
+operator|(
 literal|"Add-group: "
 operator|+
 name|group2
@@ -1807,11 +1811,7 @@ name|group2
 operator|.
 name|id
 operator|+
-literal|">\n"
-operator|)
-operator|+
-operator|(
-literal|"Add-group: Registered Users<global:Registered-Users>"
+literal|">"
 operator|)
 argument_list|)
 expr_stmt|;

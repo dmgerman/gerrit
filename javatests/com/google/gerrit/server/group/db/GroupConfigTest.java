@@ -8502,7 +8502,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Create group\n\nAdd: John<13@server-id>\nAdd: Jane<7@server-id>"
+literal|"Create group\n\nAdd: Jane<7@server-id>\nAdd: John<13@server-id>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -8816,7 +8816,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Update group\n\nAdd: John<13@GerritServer1>\nAdd: Jane<7@GerritServer1>"
+literal|"Update group\n\nAdd: Jane<7@GerritServer1>\nAdd: John<13@GerritServer1>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -9693,15 +9693,15 @@ literal|"Update group\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Rename from Old name to New name\n"
-operator|+
-literal|"Remove: Jane<7@serverId>\n"
+literal|"Add-group: Bots<129403>\n"
 operator|+
 literal|"Add: John<13@serverId>\n"
 operator|+
 literal|"Remove-group: Verifiers<8903493>\n"
 operator|+
-literal|"Add-group: Bots<129403>"
+literal|"Remove: Jane<7@serverId>\n"
+operator|+
+literal|"Rename from Old name to New name"
 argument_list|)
 expr_stmt|;
 block|}
