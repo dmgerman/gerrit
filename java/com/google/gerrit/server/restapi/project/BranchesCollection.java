@@ -238,20 +238,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -473,15 +459,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
-decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -498,7 +475,7 @@ name|createBranchFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BranchesCollection ( DynamicMap<RestView<BranchResource>> views, Provider<ListBranches> list, PermissionBackend permissionBackend, Provider<CurrentUser> user, GitRepositoryManager repoManager, CreateBranch.Factory createBranchFactory)
+DECL|method|BranchesCollection ( DynamicMap<RestView<BranchResource>> views, Provider<ListBranches> list, PermissionBackend permissionBackend, GitRepositoryManager repoManager, CreateBranch.Factory createBranchFactory)
 name|BranchesCollection
 parameter_list|(
 name|DynamicMap
@@ -518,12 +495,6 @@ name|list
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -551,12 +522,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 name|this
 operator|.
@@ -686,10 +651,8 @@ comment|// rights on the symbolic reference itself. This check prevents seeing a
 comment|// branch simply because the symbolic reference name was visible.
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|project
 argument_list|(

@@ -184,20 +184,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|ConfigResource
@@ -329,15 +315,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
-decl_stmt|;
 DECL|field|metrics
 specifier|private
 specifier|final
@@ -346,7 +323,7 @@ name|metrics
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MetricsCollection ( DynamicMap<RestView<MetricResource>> views, Provider<ListMetrics> list, PermissionBackend permissionBackend, Provider<CurrentUser> user, DropWizardMetricMaker metrics)
+DECL|method|MetricsCollection ( DynamicMap<RestView<MetricResource>> views, Provider<ListMetrics> list, PermissionBackend permissionBackend, DropWizardMetricMaker metrics)
 name|MetricsCollection
 parameter_list|(
 name|DynamicMap
@@ -366,12 +343,6 @@ name|list
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
 parameter_list|,
 name|DropWizardMetricMaker
 name|metrics
@@ -394,12 +365,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 name|this
 operator|.
@@ -466,10 +431,8 @@ name|PermissionBackendException
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|check
 argument_list|(

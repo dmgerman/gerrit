@@ -811,10 +811,8 @@ argument_list|)
 expr_stmt|;
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|project
 argument_list|(

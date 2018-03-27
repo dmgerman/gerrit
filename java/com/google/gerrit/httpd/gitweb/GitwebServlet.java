@@ -970,7 +970,7 @@ name|_env
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitwebServlet ( GitRepositoryManager repoManager, ProjectCache projectCache, PermissionBackend permissionBackend, Provider<AnonymousUser> anonymousUserProvider, Provider<CurrentUser> userProvider, SitePaths site, @GerritServerConfig Config cfg, SshInfo sshInfo, GitwebConfig gitwebConfig, GitwebCgiConfig gitwebCgiConfig)
+DECL|method|GitwebServlet ( GitRepositoryManager repoManager, ProjectCache projectCache, PermissionBackend permissionBackend, Provider<CurrentUser> userProvider, SitePaths site, @GerritServerConfig Config cfg, SshInfo sshInfo, Provider<AnonymousUser> anonymousUserProvider, GitwebConfig gitwebConfig, GitwebCgiConfig gitwebCgiConfig)
 name|GitwebServlet
 parameter_list|(
 name|GitRepositoryManager
@@ -981,12 +981,6 @@ name|projectCache
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|Provider
-argument_list|<
-name|AnonymousUser
-argument_list|>
-name|anonymousUserProvider
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1004,6 +998,12 @@ name|cfg
 parameter_list|,
 name|SshInfo
 name|sshInfo
+parameter_list|,
+name|Provider
+argument_list|<
+name|AnonymousUser
+argument_list|>
+name|anonymousUserProvider
 parameter_list|,
 name|GitwebConfig
 name|gitwebConfig
@@ -2703,7 +2703,10 @@ name|permissionBackend
 operator|.
 name|user
 argument_list|(
-name|userProvider
+name|anonymousUserProvider
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|project
@@ -3786,6 +3789,9 @@ operator|.
 name|user
 argument_list|(
 name|anonymousUserProvider
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|project

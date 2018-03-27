@@ -545,10 +545,8 @@ try|try
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|self
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|check
 argument_list|(

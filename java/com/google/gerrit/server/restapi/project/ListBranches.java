@@ -480,18 +480,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -660,15 +648,6 @@ specifier|private
 specifier|final
 name|PermissionBackend
 name|permissionBackend
-decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
 decl_stmt|;
 DECL|field|branchViews
 specifier|private
@@ -866,7 +845,7 @@ name|matchRegex
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListBranches ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, Provider<CurrentUser> user, DynamicMap<RestView<BranchResource>> branchViews, UiActions uiActions, WebLinks webLinks)
+DECL|method|ListBranches ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, DynamicMap<RestView<BranchResource>> branchViews, UiActions uiActions, WebLinks webLinks)
 specifier|public
 name|ListBranches
 parameter_list|(
@@ -875,12 +854,6 @@ name|repoManager
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -909,12 +882,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 name|this
 operator|.
@@ -1351,10 +1318,8 @@ name|perm
 init|=
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|project
 argument_list|(

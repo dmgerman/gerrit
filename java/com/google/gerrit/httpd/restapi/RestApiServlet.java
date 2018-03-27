@@ -2867,6 +2867,9 @@ argument_list|(
 name|globals
 operator|.
 name|currentUser
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|checkAny
@@ -8923,6 +8926,9 @@ argument_list|(
 name|globals
 operator|.
 name|currentUser
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|checkAny

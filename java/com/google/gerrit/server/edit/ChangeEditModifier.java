@@ -2159,10 +2159,8 @@ try|try
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
 name|currentUser
-argument_list|)
+argument_list|()
 operator|.
 name|database
 argument_list|(

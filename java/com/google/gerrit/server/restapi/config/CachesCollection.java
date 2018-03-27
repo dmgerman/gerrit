@@ -272,20 +272,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|CacheResource
@@ -448,15 +434,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|self
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|self
-decl_stmt|;
 DECL|field|cacheMap
 specifier|private
 specifier|final
@@ -479,7 +456,7 @@ name|postCaches
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CachesCollection ( DynamicMap<RestView<CacheResource>> views, Provider<ListCaches> list, PermissionBackend permissionBackend, Provider<CurrentUser> self, DynamicMap<Cache<?, ?>> cacheMap, PostCaches postCaches)
+DECL|method|CachesCollection ( DynamicMap<RestView<CacheResource>> views, Provider<ListCaches> list, PermissionBackend permissionBackend, DynamicMap<Cache<?, ?>> cacheMap, PostCaches postCaches)
 name|CachesCollection
 parameter_list|(
 name|DynamicMap
@@ -499,12 +476,6 @@ name|list
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|self
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -538,12 +509,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|self
-operator|=
-name|self
 expr_stmt|;
 name|this
 operator|.
@@ -598,10 +563,8 @@ name|PermissionBackendException
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|self
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|check
 argument_list|(
