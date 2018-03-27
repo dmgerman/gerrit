@@ -1139,7 +1139,7 @@ name|schema
 argument_list|,
 name|clientBuilder
 argument_list|,
-name|CHANGES_PREFIX
+name|CHANGES
 argument_list|)
 expr_stmt|;
 name|this

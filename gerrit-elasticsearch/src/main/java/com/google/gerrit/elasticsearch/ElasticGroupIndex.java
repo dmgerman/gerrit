@@ -760,7 +760,7 @@ name|schema
 argument_list|,
 name|clientBuilder
 argument_list|,
-name|GROUPS_PREFIX
+name|GROUPS
 argument_list|)
 expr_stmt|;
 name|this
