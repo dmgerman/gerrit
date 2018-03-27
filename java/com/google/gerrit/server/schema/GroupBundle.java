@@ -1424,11 +1424,16 @@ decl_stmt|;
 name|boolean
 name|visibleToAll
 init|=
+literal|"Y"
+operator|.
+name|equals
+argument_list|(
 name|rs
 operator|.
-name|getBoolean
+name|getString
 argument_list|(
 literal|6
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|AccountGroup
