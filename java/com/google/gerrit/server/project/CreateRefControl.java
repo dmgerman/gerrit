@@ -122,6 +122,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -524,6 +540,9 @@ operator|)
 name|object
 argument_list|,
 name|ps
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|,
 name|perm
 argument_list|)
@@ -678,6 +697,9 @@ operator|)
 name|target
 argument_list|,
 name|ps
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|,
 name|perm
 argument_list|)
@@ -757,7 +779,7 @@ block|}
 block|}
 block|}
 comment|/**    * Check if the user is allowed to create a new commit object if this creation would introduce a    * new commit to the repository.    */
-DECL|method|checkCreateCommit ( Repository repo, RevCommit commit, ProjectState projectState, PermissionBackend.ForRef forRef)
+DECL|method|checkCreateCommit ( Repository repo, RevCommit commit, Project.NameKey project, PermissionBackend.ForRef forRef)
 specifier|private
 name|void
 name|checkCreateCommit
@@ -768,8 +790,10 @@ parameter_list|,
 name|RevCommit
 name|commit
 parameter_list|,
-name|ProjectState
-name|projectState
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|PermissionBackend
 operator|.
@@ -810,7 +834,7 @@ name|reachable
 operator|.
 name|fromHeadsOrTags
 argument_list|(
-name|projectState
+name|project
 argument_list|,
 name|repo
 argument_list|,

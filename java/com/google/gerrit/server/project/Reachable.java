@@ -102,6 +102,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|change
@@ -369,13 +385,15 @@ name|permissionBackend
 expr_stmt|;
 block|}
 comment|/** @return true if a commit is reachable from a given set of refs. */
-DECL|method|fromRefs ( ProjectState state, Repository repo, RevCommit commit, Map<String, Ref> refs)
+DECL|method|fromRefs ( Project.NameKey project, Repository repo, RevCommit commit, Map<String, Ref> refs)
 specifier|public
 name|boolean
 name|fromRefs
 parameter_list|(
-name|ProjectState
-name|state
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|Repository
 name|repo
@@ -404,7 +422,6 @@ name|repo
 argument_list|)
 init|)
 block|{
-comment|// TODO(hiesel) Convert interface to Project.NameKey
 name|Map
 argument_list|<
 name|String
@@ -420,10 +437,7 @@ argument_list|()
 operator|.
 name|project
 argument_list|(
-name|state
-operator|.
-name|getNameKey
-argument_list|()
+name|project
 argument_list|)
 operator|.
 name|filter
@@ -487,10 +501,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|state
-operator|.
-name|getNameKey
-argument_list|()
+name|project
 argument_list|)
 argument_list|,
 name|e
@@ -502,12 +513,14 @@ return|;
 block|}
 block|}
 comment|/** @return true if a commit is reachable from a repo's branches and tags. */
-DECL|method|fromHeadsOrTags (ProjectState state, Repository repo, RevCommit commit)
+DECL|method|fromHeadsOrTags (Project.NameKey project, Repository repo, RevCommit commit)
 name|boolean
 name|fromHeadsOrTags
 parameter_list|(
-name|ProjectState
-name|state
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|Repository
 name|repo
@@ -616,7 +629,7 @@ block|}
 return|return
 name|fromRefs
 argument_list|(
-name|state
+name|project
 argument_list|,
 name|repo
 argument_list|,
@@ -647,13 +660,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|state
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
-argument_list|()
+name|project
 argument_list|)
 argument_list|,
 name|e

@@ -951,7 +951,7 @@ name|reachable
 operator|.
 name|fromRefs
 argument_list|(
-name|state
+name|project
 argument_list|,
 name|repo
 argument_list|,
