@@ -991,8 +991,6 @@ parameter_list|,
 name|RefFilterOptions
 name|opts
 parameter_list|)
-throws|throws
-name|PermissionBackendException
 block|{
 if|if
 condition|(
@@ -2072,12 +2070,38 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|PermissionBackendException
-decl||
 name|AuthException
 name|e
 parameter_list|)
 block|{
+return|return
+literal|false
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|PermissionBackendException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Failed to check permission for "
+operator|+
+name|id
+operator|+
+literal|" in "
+operator|+
+name|projectState
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2458,7 +2482,7 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|warn
+name|error
 argument_list|(
 literal|"Failed to check permission for "
 operator|+
