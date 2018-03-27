@@ -480,7 +480,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/** @return lightweight factory scoped to answer for the current user. */
+comment|/** Returns an instance scoped to the current user. */
 DECL|method|currentUser ()
 specifier|public
 specifier|abstract
@@ -488,7 +488,7 @@ name|WithUser
 name|currentUser
 parameter_list|()
 function_decl|;
-comment|/**    * @return lightweight factory scoped to answer for the specified user. If an instance scoped to    *     the current user is desired, use {@code currentUser()} instead.    */
+comment|/**    * Returns an instance scoped to the specified user. If an instance scoped to the current user is    * desired, use {@code currentUser()} instead.    */
 DECL|method|user (CurrentUser user)
 specifier|public
 specifier|abstract
@@ -623,7 +623,7 @@ argument_list|<
 name|WithUser
 argument_list|>
 block|{
-comment|/** @return user this instance is scoped to. */
+comment|/** Returns the user this instance is scoped to. */
 DECL|method|user ()
 specifier|public
 specifier|abstract
@@ -631,7 +631,7 @@ name|CurrentUser
 name|user
 parameter_list|()
 function_decl|;
-comment|/** @return instance scoped for the specified project. */
+comment|/** Returns an instance scoped for the specified project. */
 DECL|method|project (Project.NameKey project)
 specifier|public
 specifier|abstract
@@ -644,7 +644,7 @@ name|NameKey
 name|project
 parameter_list|)
 function_decl|;
-comment|/** @return instance scoped for the {@code ref}, and its parent project. */
+comment|/** Returns an instance scoped for the {@code ref}, and its parent project. */
 DECL|method|ref (Branch.NameKey ref)
 specifier|public
 name|ForRef
@@ -679,7 +679,7 @@ name|db
 argument_list|)
 return|;
 block|}
-comment|/** @return instance scoped for the change, and its destination ref and project. */
+comment|/** Returns an instance scoped for the change, and its destination ref and project. */
 DECL|method|change (ChangeData cd)
 specifier|public
 name|ForChange
@@ -727,7 +727,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/** @return instance scoped for the change, and its destination ref and project. */
+comment|/** Returns an instance scoped for the change, and its destination ref and project. */
 DECL|method|change (ChangeNotes notes)
 specifier|public
 name|ForChange
@@ -755,7 +755,7 @@ name|notes
 argument_list|)
 return|;
 block|}
-comment|/**      * @return instance scoped for the change loaded from index, and its destination ref and      *     project. This method should only be used when database access is harmful and potentially      *     stale data from the index is acceptable.      */
+comment|/**      * Returns an instance scoped for the change loaded from index, and its destination ref and      * project. This method should only be used when database access is harmful and potentially      * stale data from the index is acceptable.      */
 DECL|method|indexedChange (ChangeData cd, ChangeNotes notes)
 specifier|public
 name|ForChange
@@ -1103,7 +1103,7 @@ argument_list|<
 name|ForProject
 argument_list|>
 block|{
-comment|/** @return user this instance is scoped to. */
+comment|/** Returns the user this instance is scoped to. */
 DECL|method|user ()
 specifier|public
 specifier|abstract
@@ -1111,7 +1111,7 @@ name|CurrentUser
 name|user
 parameter_list|()
 function_decl|;
-comment|/** @return fully qualified resource path that this instance is scoped to. */
+comment|/** Returns the fully qualified resource path that this instance is scoped to. */
 DECL|method|resourcePath ()
 specifier|public
 specifier|abstract
@@ -1119,7 +1119,7 @@ name|String
 name|resourcePath
 parameter_list|()
 function_decl|;
-comment|/** @return new instance rescoped to same project, but different {@code user}. */
+comment|/** Returns a new instance rescoped to same project, but different {@code user}. */
 DECL|method|user (CurrentUser user)
 specifier|public
 specifier|abstract
@@ -1130,7 +1130,7 @@ name|CurrentUser
 name|user
 parameter_list|)
 function_decl|;
-comment|/** @return instance scoped for {@code ref} in this project. */
+comment|/** Returns an instance scoped for {@code ref} in this project. */
 DECL|method|ref (String ref)
 specifier|public
 specifier|abstract
@@ -1141,7 +1141,7 @@ name|String
 name|ref
 parameter_list|)
 function_decl|;
-comment|/** @return instance scoped for the change, and its destination ref and project. */
+comment|/** Returns an instance scoped for the change, and its destination ref and project. */
 DECL|method|change (ChangeData cd)
 specifier|public
 name|ForChange
@@ -1192,7 +1192,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/** @return instance scoped for the change, and its destination ref and project. */
+comment|/** Returns an instance scoped for the change, and its destination ref and project. */
 DECL|method|change (ChangeNotes notes)
 specifier|public
 name|ForChange
@@ -1223,7 +1223,7 @@ name|notes
 argument_list|)
 return|;
 block|}
-comment|/**      * @return instance scoped for the change loaded from index, and its destination ref and      *     project. This method should only be used when database access is harmful and potentially      *     stale data from the index is acceptable.      */
+comment|/**      * Returns an instance scoped for the change loaded from index, and its destination ref and      * project. This method should only be used when database access is harmful and potentially      * stale data from the index is acceptable.      */
 DECL|method|indexedChange (ChangeData cd, ChangeNotes notes)
 specifier|public
 name|ForChange
@@ -1384,7 +1384,7 @@ name|perm
 argument_list|)
 return|;
 block|}
-comment|/**      * @return a partition of the provided refs that are visible to the user that this instance is      *     scoped to.      */
+comment|/**      * Returns a partition of the provided refs that are visible to the user that this instance is      * scoped to.      */
 DECL|method|filter ( Map<String, Ref> refs, Repository repo, RefFilterOptions opts)
 specifier|public
 specifier|abstract
@@ -1540,7 +1540,7 @@ argument_list|<
 name|ForRef
 argument_list|>
 block|{
-comment|/** @return user this instance is scoped to. */
+comment|/** Returns the user this instance is scoped to. */
 DECL|method|user ()
 specifier|public
 specifier|abstract
@@ -1548,7 +1548,7 @@ name|CurrentUser
 name|user
 parameter_list|()
 function_decl|;
-comment|/** @return fully qualified resource path that this instance is scoped to. */
+comment|/** Returns a fully qualified resource path that this instance is scoped to. */
 DECL|method|resourcePath ()
 specifier|public
 specifier|abstract
@@ -1556,7 +1556,7 @@ name|String
 name|resourcePath
 parameter_list|()
 function_decl|;
-comment|/** @return new instance rescoped to same reference, but different {@code user}. */
+comment|/** Returns a new instance rescoped to same reference, but different {@code user}. */
 DECL|method|user (CurrentUser user)
 specifier|public
 specifier|abstract
@@ -1567,7 +1567,7 @@ name|CurrentUser
 name|user
 parameter_list|)
 function_decl|;
-comment|/** @return instance scoped to change. */
+comment|/** Returns an instance scoped to change. */
 DECL|method|change (ChangeData cd)
 specifier|public
 specifier|abstract
@@ -1578,7 +1578,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 function_decl|;
-comment|/** @return instance scoped to change. */
+comment|/** Returns an instance scoped to change. */
 DECL|method|change (ChangeNotes notes)
 specifier|public
 specifier|abstract
@@ -1743,7 +1743,7 @@ argument_list|<
 name|ForChange
 argument_list|>
 block|{
-comment|/** @return user this instance is scoped to. */
+comment|/** Returns the user this instance is scoped to. */
 DECL|method|user ()
 specifier|public
 specifier|abstract
@@ -1751,7 +1751,7 @@ name|CurrentUser
 name|user
 parameter_list|()
 function_decl|;
-comment|/** @return fully qualified resource path that this instance is scoped to. */
+comment|/** Returns the fully qualified resource path that this instance is scoped to. */
 DECL|method|resourcePath ()
 specifier|public
 specifier|abstract
@@ -1759,7 +1759,7 @@ name|String
 name|resourcePath
 parameter_list|()
 function_decl|;
-comment|/** @return new instance rescoped to same change, but different {@code user}. */
+comment|/** Returns a new instance rescoped to same change, but different {@code user}. */
 DECL|method|user (CurrentUser user)
 specifier|public
 specifier|abstract
