@@ -641,13 +641,6 @@ specifier|final
 name|ChangeFinder
 name|changeFinder
 decl_stmt|;
-DECL|field|userFactory
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|userFactory
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|final
 name|PermissionBackend
@@ -670,7 +663,7 @@ name|indexes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments ( Provider<CurrentUser> self, AccountIndexCollection indexes, Provider<ReviewDb> db, ChangeFinder changeFinder, IdentifiedUser.GenericFactory userFactory, PermissionBackend permissionBackend)
+DECL|method|Arguments ( Provider<CurrentUser> self, AccountIndexCollection indexes, Provider<ReviewDb> db, ChangeFinder changeFinder, PermissionBackend permissionBackend)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -691,11 +684,6 @@ name|db
 parameter_list|,
 name|ChangeFinder
 name|changeFinder
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|userFactory
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -724,12 +712,6 @@ operator|.
 name|changeFinder
 operator|=
 name|changeFinder
-expr_stmt|;
-name|this
-operator|.
-name|userFactory
-operator|=
-name|userFactory
 expr_stmt|;
 name|this
 operator|.
