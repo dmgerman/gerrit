@@ -228,54 +228,10 @@ comment|// Deleted @Relation(id = 4)
 comment|// Deleted @Relation(id = 6)
 comment|// Deleted @Relation(id = 7)
 comment|// Deleted @Relation(id = 8)
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|10
-argument_list|)
-DECL|method|accountGroups ()
-name|AccountGroupAccess
-name|accountGroups
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|11
-argument_list|)
-DECL|method|accountGroupNames ()
-name|AccountGroupNameAccess
-name|accountGroupNames
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|12
-argument_list|)
-DECL|method|accountGroupMembers ()
-name|AccountGroupMemberAccess
-name|accountGroupMembers
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|13
-argument_list|)
-DECL|method|accountGroupMembersAudit ()
-name|AccountGroupMemberAuditAccess
-name|accountGroupMembersAudit
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 10)
+comment|// Deleted @Relation(id = 11)
+comment|// Deleted @Relation(id = 12)
+comment|// Deleted @Relation(id = 13)
 comment|// Deleted @Relation(id = 17)
 comment|// Deleted @Relation(id = 18)
 comment|// Deleted @Relation(id = 19)
@@ -342,30 +298,8 @@ name|patchComments
 parameter_list|()
 function_decl|;
 comment|// Deleted @Relation(id = 28)
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|29
-argument_list|)
-DECL|method|accountGroupById ()
-name|AccountGroupByIdAccess
-name|accountGroupById
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|30
-argument_list|)
-DECL|method|accountGroupByIdAud ()
-name|AccountGroupByIdAudAccess
-name|accountGroupByIdAud
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 29)
+comment|// Deleted @Relation(id = 30)
 DECL|field|FIRST_ACCOUNT_ID
 name|int
 name|FIRST_ACCOUNT_ID

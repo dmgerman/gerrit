@@ -354,6 +354,16 @@ name|java
 operator|.
 name|sql
 operator|.
+name|Statement
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
 name|Timestamp
 import|;
 end_import
@@ -587,6 +597,75 @@ operator|.
 name|getConnection
 argument_list|()
 expr_stmt|;
+try|try
+init|(
+name|Statement
+name|stmt
+init|=
+name|connection
+operator|.
+name|createStatement
+argument_list|()
+init|)
+block|{
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"CREATE TABLE account_groups ("
+operator|+
+literal|" group_uuid varchar(255) DEFAULT '' NOT NULL,"
+operator|+
+literal|" group_id INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" name varchar(255) DEFAULT '' NOT NULL,"
+operator|+
+literal|" created_on TIMESTAMP,"
+operator|+
+literal|" description CLOB,"
+operator|+
+literal|" owner_group_uuid varchar(255) DEFAULT '' NOT NULL,"
+operator|+
+literal|" visible_to_all CHAR(1) DEFAULT 'N' NOT NULL"
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"CREATE TABLE account_group_members ("
+operator|+
+literal|" group_id INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" account_id INTEGER DEFAULT 0 NOT NULL"
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"CREATE TABLE account_group_members_audit ("
+operator|+
+literal|" group_id INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" account_id INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" added_by INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" added_on TIMESTAMP,"
+operator|+
+literal|" removed_by INTEGER,"
+operator|+
+literal|" removed_on TIMESTAMP"
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+block|}
 name|createdOnRetrieval
 operator|=
 name|connection

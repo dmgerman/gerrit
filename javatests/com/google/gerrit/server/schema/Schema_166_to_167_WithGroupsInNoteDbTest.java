@@ -500,6 +500,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Statement
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -722,11 +732,13 @@ name|jdbcSchema
 decl_stmt|;
 annotation|@
 name|Before
-DECL|method|unwrapDb ()
+DECL|method|initDb ()
 specifier|public
 name|void
-name|unwrapDb
+name|initDb
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|jdbcSchema
 operator|=
@@ -737,6 +749,44 @@ argument_list|(
 name|db
 argument_list|)
 expr_stmt|;
+try|try
+init|(
+name|Statement
+name|stmt
+init|=
+name|jdbcSchema
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|createStatement
+argument_list|()
+init|)
+block|{
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"CREATE TABLE account_groups ("
+operator|+
+literal|" group_uuid varchar(255) DEFAULT '' NOT NULL,"
+operator|+
+literal|" group_id INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" name varchar(255) DEFAULT '' NOT NULL,"
+operator|+
+literal|" created_on TIMESTAMP,"
+operator|+
+literal|" description CLOB,"
+operator|+
+literal|" owner_group_uuid varchar(255) DEFAULT '' NOT NULL,"
+operator|+
+literal|" visible_to_all CHAR(1) DEFAULT 'N' NOT NULL"
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test

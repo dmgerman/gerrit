@@ -1508,11 +1508,13 @@ name|jdbcSchema
 decl_stmt|;
 annotation|@
 name|Before
-DECL|method|unwrapDb ()
+DECL|method|initDb ()
 specifier|public
 name|void
-name|unwrapDb
+name|initDb
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|jdbcSchema
 operator|=
@@ -1523,6 +1525,112 @@ argument_list|(
 name|db
 argument_list|)
 expr_stmt|;
+try|try
+init|(
+name|Statement
+name|stmt
+init|=
+name|jdbcSchema
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|createStatement
+argument_list|()
+init|)
+block|{
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"CREATE TABLE account_groups ("
+operator|+
+literal|" group_uuid varchar(255) DEFAULT '' NOT NULL,"
+operator|+
+literal|" group_id INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" name varchar(255) DEFAULT '' NOT NULL,"
+operator|+
+literal|" created_on TIMESTAMP,"
+operator|+
+literal|" description CLOB,"
+operator|+
+literal|" owner_group_uuid varchar(255) DEFAULT '' NOT NULL,"
+operator|+
+literal|" visible_to_all CHAR(1) DEFAULT 'N' NOT NULL"
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"CREATE TABLE account_group_members ("
+operator|+
+literal|" group_id INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" account_id INTEGER DEFAULT 0 NOT NULL"
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"CREATE TABLE account_group_members_audit ("
+operator|+
+literal|" group_id INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" account_id INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" added_by INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" added_on TIMESTAMP,"
+operator|+
+literal|" removed_by INTEGER,"
+operator|+
+literal|" removed_on TIMESTAMP"
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"CREATE TABLE account_group_by_id ("
+operator|+
+literal|" group_id INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" include_uuid VARCHAR(255) DEFAULT '' NOT NULL"
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"CREATE TABLE account_group_by_id_aud ("
+operator|+
+literal|" group_id INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" include_uuid VARCHAR(255) DEFAULT '' NOT NULL,"
+operator|+
+literal|" added_by INTEGER DEFAULT 0 NOT NULL,"
+operator|+
+literal|" added_on TIMESTAMP,"
+operator|+
+literal|" removed_by INTEGER,"
+operator|+
+literal|" removed_on TIMESTAMP"
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Before
