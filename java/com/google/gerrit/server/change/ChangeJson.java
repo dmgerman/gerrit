@@ -4735,8 +4735,6 @@ name|labels
 operator|=
 name|labelsFor
 argument_list|(
-name|perm
-argument_list|,
 name|cd
 argument_list|,
 name|has
@@ -5477,7 +5475,7 @@ name|SUBMIT_RULE_OPTIONS_LENIENT
 argument_list|)
 return|;
 block|}
-DECL|method|labelsFor ( PermissionBackend.ForChange perm, ChangeData cd, boolean standard, boolean detailed)
+DECL|method|labelsFor (ChangeData cd, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -5487,11 +5485,6 @@ name|LabelInfo
 argument_list|>
 name|labelsFor
 parameter_list|(
-name|PermissionBackend
-operator|.
-name|ForChange
-name|perm
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -5551,8 +5544,6 @@ name|MERGED
 condition|?
 name|labelsForSubmittedChange
 argument_list|(
-name|perm
-argument_list|,
 name|cd
 argument_list|,
 name|labelTypes
@@ -5564,8 +5555,6 @@ argument_list|)
 else|:
 name|labelsForUnsubmittedChange
 argument_list|(
-name|perm
-argument_list|,
 name|cd
 argument_list|,
 name|labelTypes
@@ -5593,7 +5582,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|labelsForUnsubmittedChange ( PermissionBackend.ForChange perm, ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
+DECL|method|labelsForUnsubmittedChange ( ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -5603,11 +5592,6 @@ name|LabelWithStatus
 argument_list|>
 name|labelsForUnsubmittedChange
 parameter_list|(
-name|PermissionBackend
-operator|.
-name|ForChange
-name|perm
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -5649,8 +5633,6 @@ condition|)
 block|{
 name|setAllApprovals
 argument_list|(
-name|perm
-argument_list|,
 name|cd
 argument_list|,
 name|labels
@@ -6205,16 +6187,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setAllApprovals ( PermissionBackend.ForChange basePerm, ChangeData cd, Map<String, LabelWithStatus> labels)
+DECL|method|setAllApprovals (ChangeData cd, Map<String, LabelWithStatus> labels)
 specifier|private
 name|void
 name|setAllApprovals
 parameter_list|(
-name|PermissionBackend
-operator|.
-name|ForChange
-name|basePerm
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -6402,16 +6379,11 @@ operator|.
 name|ForChange
 name|perm
 init|=
-name|basePerm
-operator|.
-name|user
-argument_list|(
-name|userFactory
-operator|.
-name|create
+name|permissionBackendForChange
 argument_list|(
 name|accountId
-argument_list|)
+argument_list|,
+name|cd
 argument_list|)
 decl_stmt|;
 name|Map
@@ -6925,7 +6897,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|labelsForSubmittedChange ( PermissionBackend.ForChange basePerm, ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
+DECL|method|labelsForSubmittedChange ( ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -6935,11 +6907,6 @@ name|LabelWithStatus
 argument_list|>
 name|labelsForSubmittedChange
 parameter_list|(
-name|PermissionBackend
-operator|.
-name|ForChange
-name|basePerm
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -7278,16 +7245,11 @@ operator|.
 name|ForChange
 name|perm
 init|=
-name|basePerm
-operator|.
-name|user
-argument_list|(
-name|userFactory
-operator|.
-name|create
+name|permissionBackendForChange
 argument_list|(
 name|accountId
-argument_list|)
+argument_list|,
+name|cd
 argument_list|)
 decl_stmt|;
 name|pvr
@@ -10740,7 +10702,6 @@ name|approval
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * @return {@link com.google.gerrit.server.permissions.PermissionBackend.ForChange} constructed    *     from either an index-backed or a database-backed {@link ChangeData} depending on {@code    *     lazyload}.    */
 DECL|method|permissionBackendForChange (CurrentUser user, ChangeData cd)
 specifier|private
 name|PermissionBackend
@@ -10757,11 +10718,9 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|PermissionBackend
-operator|.
-name|WithUser
-name|withUser
-init|=
+return|return
+name|permissionBackendForChange
+argument_list|(
 name|permissionBackend
 operator|.
 name|user
@@ -10773,7 +10732,67 @@ name|database
 argument_list|(
 name|db
 argument_list|)
-decl_stmt|;
+argument_list|,
+name|cd
+argument_list|)
+return|;
+block|}
+DECL|method|permissionBackendForChange (Account.Id user, ChangeData cd)
+specifier|private
+name|PermissionBackend
+operator|.
+name|ForChange
+name|permissionBackendForChange
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|user
+parameter_list|,
+name|ChangeData
+name|cd
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+return|return
+name|permissionBackendForChange
+argument_list|(
+name|permissionBackend
+operator|.
+name|absentUser
+argument_list|(
+name|user
+argument_list|)
+operator|.
+name|database
+argument_list|(
+name|db
+argument_list|)
+argument_list|,
+name|cd
+argument_list|)
+return|;
+block|}
+comment|/**    * @return {@link com.google.gerrit.server.permissions.PermissionBackend.ForChange} constructed    *     from either an index-backed or a database-backed {@link ChangeData} depending on {@code    *     lazyload}.    */
+DECL|method|permissionBackendForChange ( PermissionBackend.WithUser withUser, ChangeData cd)
+specifier|private
+name|PermissionBackend
+operator|.
+name|ForChange
+name|permissionBackendForChange
+parameter_list|(
+name|PermissionBackend
+operator|.
+name|WithUser
+name|withUser
+parameter_list|,
+name|ChangeData
+name|cd
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
 return|return
 name|lazyLoad
 condition|?
