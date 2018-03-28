@@ -519,7 +519,7 @@ literal|"Index Prefix"
 argument_list|,
 literal|"prefix"
 argument_list|,
-literal|"gerrit"
+literal|"gerrit_"
 argument_list|)
 expr_stmt|;
 name|String
