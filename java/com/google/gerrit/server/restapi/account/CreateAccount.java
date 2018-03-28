@@ -416,22 +416,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|Sequences
@@ -790,12 +774,6 @@ name|username
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|seq
 specifier|private
 specifier|final
@@ -871,12 +849,9 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount ( ReviewDb db, Sequences seq, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, @UserInitiated Provider<AccountsUpdate> accountsUpdateProvider, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator, @Assisted String username)
+DECL|method|CreateAccount ( Sequences seq, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, @UserInitiated Provider<AccountsUpdate> accountsUpdateProvider, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator, @Assisted String username)
 name|CreateAccount
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Sequences
 name|seq
 parameter_list|,
@@ -927,12 +902,6 @@ name|String
 name|username
 parameter_list|)
 block|{
-name|this
-operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
 name|this
 operator|.
 name|seq
@@ -1623,8 +1592,6 @@ argument_list|()
 operator|.
 name|updateGroup
 argument_list|(
-name|db
-argument_list|,
 name|groupUuid
 argument_list|,
 name|groupUpdate

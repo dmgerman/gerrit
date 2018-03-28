@@ -3422,8 +3422,6 @@ name|void
 name|reindexAllGroups
 parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -3437,9 +3435,7 @@ init|=
 name|groups
 operator|.
 name|getAllGroupReferences
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 operator|::
 name|iterator
 decl_stmt|;

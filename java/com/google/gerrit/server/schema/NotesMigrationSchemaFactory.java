@@ -94,39 +94,7 @@ name|reviewdb
 operator|.
 name|server
 operator|.
-name|DisallowReadFromGroupsReviewDbWrapper
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
 name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|GroupsMigration
 import|;
 end_import
 
@@ -226,15 +194,9 @@ specifier|final
 name|NotesMigration
 name|migration
 decl_stmt|;
-DECL|field|groupsMigration
-specifier|private
-specifier|final
-name|GroupsMigration
-name|groupsMigration
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NotesMigrationSchemaFactory ( @eviewDbFactory SchemaFactory<ReviewDb> delegate, NotesMigration migration, GroupsMigration groupsMigration)
+DECL|method|NotesMigrationSchemaFactory ( @eviewDbFactory SchemaFactory<ReviewDb> delegate, NotesMigration migration)
 name|NotesMigrationSchemaFactory
 parameter_list|(
 annotation|@
@@ -247,9 +209,6 @@ name|delegate
 parameter_list|,
 name|NotesMigration
 name|migration
-parameter_list|,
-name|GroupsMigration
-name|groupsMigration
 parameter_list|)
 block|{
 name|this
@@ -263,12 +222,6 @@ operator|.
 name|migration
 operator|=
 name|migration
-expr_stmt|;
-name|this
-operator|.
-name|groupsMigration
-operator|=
-name|groupsMigration
 expr_stmt|;
 block|}
 annotation|@
@@ -336,29 +289,6 @@ name|db
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|groupsMigration
-operator|.
-name|readFromNoteDb
-argument_list|()
-operator|&&
-name|groupsMigration
-operator|.
-name|disableGroupReviewDb
-argument_list|()
-condition|)
-block|{
-comment|// Disable writes to group tables in ReviewDb (ReviewDb access for groups are No-Ops).
-name|db
-operator|=
-operator|new
-name|NoGroupsReviewDbWrapper
-argument_list|(
-name|db
-argument_list|)
-expr_stmt|;
-block|}
 comment|// Second create the wrappers which can be removed by ReviewDbUtil#unwrapDb(ReviewDb).
 if|if
 condition|(
@@ -374,25 +304,6 @@ name|db
 operator|=
 operator|new
 name|DisallowReadFromChangesReviewDbWrapper
-argument_list|(
-name|db
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|groupsMigration
-operator|.
-name|readFromNoteDb
-argument_list|()
-condition|)
-block|{
-comment|// If reading groups from NoteDb is configured, groups should not be read from ReviewDb.
-comment|// Make sure that any attempt to read a group from ReviewDb anyway fails with an exception.
-name|db
-operator|=
-operator|new
-name|DisallowReadFromGroupsReviewDbWrapper
 argument_list|(
 name|db
 argument_list|)

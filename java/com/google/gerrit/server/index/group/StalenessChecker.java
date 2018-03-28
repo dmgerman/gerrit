@@ -182,22 +182,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|GroupsMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -343,15 +327,9 @@ specifier|final
 name|AllUsersName
 name|allUsers
 decl_stmt|;
-DECL|field|groupsMigration
-specifier|private
-specifier|final
-name|GroupsMigration
-name|groupsMigration
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|StalenessChecker ( GroupIndexCollection indexes, GitRepositoryManager repoManager, IndexConfig indexConfig, AllUsersName allUsers, GroupsMigration groupsMigration)
+DECL|method|StalenessChecker ( GroupIndexCollection indexes, GitRepositoryManager repoManager, IndexConfig indexConfig, AllUsersName allUsers)
 name|StalenessChecker
 parameter_list|(
 name|GroupIndexCollection
@@ -365,9 +343,6 @@ name|indexConfig
 parameter_list|,
 name|AllUsersName
 name|allUsers
-parameter_list|,
-name|GroupsMigration
-name|groupsMigration
 parameter_list|)
 block|{
 name|this
@@ -393,12 +368,6 @@ operator|.
 name|allUsers
 operator|=
 name|allUsers
-expr_stmt|;
-name|this
-operator|.
-name|groupsMigration
-operator|=
-name|groupsMigration
 expr_stmt|;
 block|}
 DECL|method|isStale (AccountGroup.UUID uuid)
@@ -414,20 +383,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-operator|!
-name|groupsMigration
-operator|.
-name|readFromNoteDb
-argument_list|()
-condition|)
-block|{
-return|return
-literal|false
-return|;
-comment|// This class only treats staleness for groups in NoteDb.
-block|}
 name|GroupIndex
 name|i
 init|=
