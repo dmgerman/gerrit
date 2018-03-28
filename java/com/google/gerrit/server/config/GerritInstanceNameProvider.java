@@ -118,6 +118,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -127,6 +147,20 @@ operator|.
 name|lib
 operator|.
 name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|SystemReader
 import|;
 end_import
 
@@ -187,8 +221,21 @@ name|canonicalUrlProvider
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getInstanceName (Config config, @Nullable Provider<String> canonicalUrlProvider)
+annotation|@
+name|Override
+DECL|method|get ()
+specifier|public
+name|String
+name|get
+parameter_list|()
+block|{
+return|return
+name|instanceName
+return|;
+block|}
+DECL|method|getInstanceName ( Config config, @Nullable Provider<String> canonicalUrlProvider)
 specifier|private
+specifier|static
 name|String
 name|getInstanceName
 parameter_list|(
@@ -234,22 +281,66 @@ name|instanceName
 return|;
 block|}
 return|return
+name|extractInstanceName
+argument_list|(
 name|canonicalUrlProvider
 operator|.
 name|get
 argument_list|()
+argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|get ()
-specifier|public
+DECL|method|extractInstanceName (String canonicalUrl)
+specifier|private
+specifier|static
 name|String
-name|get
-parameter_list|()
+name|extractInstanceName
+parameter_list|(
+name|String
+name|canonicalUrl
+parameter_list|)
+block|{
+if|if
+condition|(
+name|canonicalUrl
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
 block|{
 return|return
-name|instanceName
+operator|new
+name|URL
+argument_list|(
+name|canonicalUrl
+argument_list|)
+operator|.
+name|getHost
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|MalformedURLException
+name|e
+parameter_list|)
+block|{
+comment|// Try something else.
+block|}
+block|}
+comment|// Fall back onto whatever the local operating system thinks
+comment|// this server is called. We hopefully didn't get here as a
+comment|// good admin would have configured the canonical url.
+comment|//
+return|return
+name|SystemReader
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getHostname
+argument_list|()
 return|;
 block|}
 block|}
