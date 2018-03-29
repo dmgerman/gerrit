@@ -158,6 +158,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+operator|.
+name|isConfigRef
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|change
@@ -8090,6 +8108,22 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 block|{
+if|if
+condition|(
+name|isConfigRef
+argument_list|(
+name|cmd
+operator|.
+name|getRefName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// Never allow to delete the meta config branch.
+return|return
+literal|false
+return|;
+block|}
 try|try
 block|{
 name|permissions

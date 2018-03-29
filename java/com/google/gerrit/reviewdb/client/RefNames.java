@@ -1191,6 +1191,26 @@ name|ref
 argument_list|)
 return|;
 block|}
+comment|/** Whether the ref is the configuration branch, i.e. {@code refs/meta/config}, for a project. */
+DECL|method|isConfigRef (String ref)
+specifier|public
+specifier|static
+name|boolean
+name|isConfigRef
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+block|{
+return|return
+name|REFS_CONFIG
+operator|.
+name|equals
+argument_list|(
+name|ref
+argument_list|)
+return|;
+block|}
 DECL|method|parseShardedRefPart (String name)
 specifier|static
 name|Integer

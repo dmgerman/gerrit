@@ -69,6 +69,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+operator|.
+name|isConfigRef
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -453,20 +471,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|MissingObjectException
 import|;
 end_import
 
@@ -1324,8 +1328,6 @@ name|WebLinks
 name|links
 parameter_list|)
 throws|throws
-name|MissingObjectException
-throws|,
 name|IOException
 block|{
 name|RevObject
@@ -1344,6 +1346,23 @@ decl_stmt|;
 name|Boolean
 name|canDelete
 init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|isConfigRef
+argument_list|(
+name|ref
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// Never allow to delete the meta config branch.
+name|canDelete
+operator|=
 name|perm
 operator|.
 name|testOrFalse
@@ -1361,7 +1380,8 @@ condition|?
 literal|true
 else|:
 literal|null
-decl_stmt|;
+expr_stmt|;
+block|}
 name|List
 argument_list|<
 name|WebLinkInfo
