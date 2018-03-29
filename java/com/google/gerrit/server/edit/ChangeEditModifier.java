@@ -2134,6 +2134,8 @@ throws|,
 name|IOException
 throws|,
 name|ResourceConflictException
+throws|,
+name|OrmException
 block|{
 if|if
 condition|(
@@ -2204,6 +2206,19 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+comment|// Not allowed to edit if the current patch set is locked.
+name|patchSetUtil
+operator|.
+name|checkPatchSetNotLocked
+argument_list|(
+name|notes
+argument_list|,
+name|currentUser
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|permissionBackend

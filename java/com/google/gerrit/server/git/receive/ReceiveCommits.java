@@ -15157,6 +15157,34 @@ argument_list|(
 name|priorPatchSet
 argument_list|)
 decl_stmt|;
+comment|// Not allowed to create a new patch set if the current patch set is locked.
+if|if
+condition|(
+name|psUtil
+operator|.
+name|isPatchSetLocked
+argument_list|(
+name|notes
+argument_list|,
+name|user
+argument_list|)
+condition|)
+block|{
+name|reject
+argument_list|(
+name|inputCommand
+argument_list|,
+literal|"cannot add patch set to "
+operator|+
+name|ontoChange
+operator|+
+literal|"."
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 try|try
 block|{
 name|permissions
