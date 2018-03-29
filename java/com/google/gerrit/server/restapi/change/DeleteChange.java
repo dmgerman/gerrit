@@ -505,6 +505,9 @@ name|PermissionBackendException
 block|{
 if|if
 condition|(
+operator|!
+name|isChangeDeletable
+argument_list|(
 name|rsrc
 operator|.
 name|getChange
@@ -512,12 +515,7 @@ argument_list|()
 operator|.
 name|getStatus
 argument_list|()
-operator|==
-name|Change
-operator|.
-name|Status
-operator|.
-name|MERGED
+argument_list|)
 condition|)
 block|{
 throw|throw
@@ -690,7 +688,7 @@ name|setVisible
 argument_list|(
 name|and
 argument_list|(
-name|couldDeleteWhenIn
+name|isChangeDeletable
 argument_list|(
 name|status
 argument_list|)
@@ -707,10 +705,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|couldDeleteWhenIn (Change.Status status)
+DECL|method|isChangeDeletable (Change.Status status)
 specifier|private
+specifier|static
 name|boolean
-name|couldDeleteWhenIn
+name|isChangeDeletable
 parameter_list|(
 name|Change
 operator|.
@@ -718,31 +717,25 @@ name|Status
 name|status
 parameter_list|)
 block|{
-switch|switch
+if|if
 condition|(
 name|status
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|MERGED
 condition|)
 block|{
-case|case
-name|NEW
-case|:
-case|case
-name|ABANDONED
-case|:
-comment|// New or abandoned changes can be deleted with the right permissions.
-return|return
-literal|true
-return|;
-case|case
-name|MERGED
-case|:
 comment|// Merged changes should never be deleted.
 return|return
 literal|false
 return|;
 block|}
+comment|// New or abandoned changes can be deleted with the right permissions.
 return|return
-literal|false
+literal|true
 return|;
 block|}
 block|}
