@@ -362,6 +362,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|RefUtil ()
+specifier|private
+name|RefUtil
+parameter_list|()
+block|{}
 DECL|method|parseBaseRevision ( Repository repo, Project.NameKey projectName, String baseRevision)
 specifier|public
 specifier|static
