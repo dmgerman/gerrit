@@ -74,6 +74,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -3111,27 +3127,28 @@ name|matches
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO(dborowitz): Streamified PermissionBackend#filter.
-return|return
-name|perm
+name|List
+argument_list|<
+name|Project
 operator|.
-name|filter
-argument_list|(
-name|ProjectPermission
+name|NameKey
+argument_list|>
+name|results
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+name|List
+argument_list|<
+name|Project
 operator|.
-name|ACCESS
-argument_list|,
+name|NameKey
+argument_list|>
+name|projectNameKeys
+init|=
 name|matches
-operator|.
-name|collect
-argument_list|(
-name|toList
-argument_list|()
-argument_list|)
-argument_list|)
-operator|.
-name|stream
-argument_list|()
 operator|.
 name|sorted
 argument_list|()
@@ -3141,6 +3158,89 @@ argument_list|(
 name|toList
 argument_list|()
 argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|Project
+operator|.
+name|NameKey
+name|nameKey
+range|:
+name|projectNameKeys
+control|)
+block|{
+name|ProjectState
+name|state
+init|=
+name|projectCache
+operator|.
+name|get
+argument_list|(
+name|nameKey
+argument_list|)
+decl_stmt|;
+name|checkNotNull
+argument_list|(
+name|state
+argument_list|,
+literal|"Failed to load project %s"
+argument_list|,
+name|nameKey
+argument_list|)
+expr_stmt|;
+comment|// Hidden projects(permitsRead = false) should only be accessible by the project owners.
+comment|// READ_CONFIG is checked here because it's only allowed to project owners(ACCESS may also
+comment|// be allowed for other users). Allowing project owners to access here will help them to view
+comment|// and update the config of hidden projects easily.
+name|ProjectPermission
+name|permissionToCheck
+init|=
+name|state
+operator|.
+name|statePermitsRead
+argument_list|()
+condition|?
+name|ProjectPermission
+operator|.
+name|ACCESS
+else|:
+name|ProjectPermission
+operator|.
+name|READ_CONFIG
+decl_stmt|;
+try|try
+block|{
+name|perm
+operator|.
+name|project
+argument_list|(
+name|nameKey
+argument_list|)
+operator|.
+name|check
+argument_list|(
+name|permissionToCheck
+argument_list|)
+expr_stmt|;
+name|results
+operator|.
+name|add
+argument_list|(
+name|nameKey
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AuthException
+name|e
+parameter_list|)
+block|{
+comment|// Not added to results.
+block|}
+block|}
+return|return
+name|results
 return|;
 block|}
 DECL|method|parentsOf (Stream<Project.NameKey> matches)
@@ -3264,7 +3364,7 @@ name|distinct
 argument_list|()
 return|;
 block|}
-DECL|method|isParentAccessible ( Map<Project.NameKey, Boolean> checked, PermissionBackend.WithUser perm, ProjectState p)
+DECL|method|isParentAccessible ( Map<Project.NameKey, Boolean> checked, PermissionBackend.WithUser perm, ProjectState state)
 specifier|private
 name|boolean
 name|isParentAccessible
@@ -3285,7 +3385,7 @@ name|WithUser
 name|perm
 parameter_list|,
 name|ProjectState
-name|p
+name|state
 parameter_list|)
 throws|throws
 name|PermissionBackendException
@@ -3295,7 +3395,7 @@ operator|.
 name|NameKey
 name|name
 init|=
-name|p
+name|state
 operator|.
 name|getNameKey
 argument_list|()
@@ -3319,6 +3419,26 @@ condition|)
 block|{
 try|try
 block|{
+comment|// Hidden projects(permitsRead = false) should only be accessible by the project owners.
+comment|// READ_CONFIG is checked here because it's only allowed to project owners(ACCESS may also
+comment|// be allowed for other users). Allowing project owners to access here will help them to view
+comment|// and update the config of hidden projects easily.
+name|ProjectPermission
+name|permissionToCheck
+init|=
+name|state
+operator|.
+name|statePermitsRead
+argument_list|()
+condition|?
+name|ProjectPermission
+operator|.
+name|ACCESS
+else|:
+name|ProjectPermission
+operator|.
+name|READ_CONFIG
+decl_stmt|;
 name|perm
 operator|.
 name|project
@@ -3328,9 +3448,7 @@ argument_list|)
 operator|.
 name|check
 argument_list|(
-name|ProjectPermission
-operator|.
-name|ACCESS
+name|permissionToCheck
 argument_list|)
 expr_stmt|;
 name|b

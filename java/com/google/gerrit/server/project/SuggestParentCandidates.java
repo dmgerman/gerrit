@@ -299,7 +299,7 @@ name|ProjectPermission
 operator|.
 name|ACCESS
 argument_list|,
-name|parents
+name|readableParents
 argument_list|()
 argument_list|)
 operator|.
@@ -316,7 +316,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|parents ()
+DECL|method|readableParents ()
 specifier|private
 name|Set
 argument_list|<
@@ -324,7 +324,7 @@ name|Project
 operator|.
 name|NameKey
 argument_list|>
-name|parents
+name|readableParents
 parameter_list|()
 block|{
 name|Set
@@ -368,6 +368,11 @@ condition|(
 name|ps
 operator|!=
 literal|null
+operator|&&
+name|ps
+operator|.
+name|statePermitsRead
+argument_list|()
 condition|)
 block|{
 name|Project
