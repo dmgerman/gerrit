@@ -675,16 +675,6 @@ name|GROUPS
 init|=
 literal|"groups"
 decl_stmt|;
-DECL|field|GROUPS_PREFIX
-specifier|static
-specifier|final
-name|String
-name|GROUPS_PREFIX
-init|=
-name|GROUPS
-operator|+
-literal|"_"
-decl_stmt|;
 DECL|field|log
 specifier|private
 specifier|static

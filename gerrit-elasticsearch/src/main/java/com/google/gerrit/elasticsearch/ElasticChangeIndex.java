@@ -1035,16 +1035,6 @@ name|CHANGES
 init|=
 literal|"changes"
 decl_stmt|;
-DECL|field|CHANGES_PREFIX
-specifier|static
-specifier|final
-name|String
-name|CHANGES_PREFIX
-init|=
-name|CHANGES
-operator|+
-literal|"_"
-decl_stmt|;
 DECL|field|OPEN_CHANGES
 specifier|static
 specifier|final
