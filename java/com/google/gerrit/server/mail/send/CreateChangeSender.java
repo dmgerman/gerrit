@@ -160,20 +160,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|account
 operator|.
 name|ProjectWatches
@@ -355,14 +341,6 @@ name|id
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|identifiedUserFactory
-specifier|private
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -371,17 +349,12 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateChangeSender ( EmailArguments ea, IdentifiedUser.GenericFactory identifiedUserFactory, PermissionBackend permissionBackend, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|CreateChangeSender ( EmailArguments ea, PermissionBackend permissionBackend, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|CreateChangeSender
 parameter_list|(
 name|EmailArguments
 name|ea
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -416,12 +389,6 @@ argument_list|,
 name|id
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|identifiedUserFactory
-operator|=
-name|identifiedUserFactory
 expr_stmt|;
 name|this
 operator|.
