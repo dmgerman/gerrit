@@ -3925,9 +3925,6 @@ operator|.
 name|FIELD_UNRESOLVED_COMMENT_COUNT
 argument_list|)
 operator|.
-name|stored
-argument_list|()
-operator|.
 name|build
 argument_list|(
 name|ChangeData
@@ -4012,9 +4009,6 @@ operator|.
 name|FIELD_ADDED
 argument_list|)
 operator|.
-name|stored
-argument_list|()
-operator|.
 name|build
 argument_list|(
 name|cd
@@ -4059,9 +4053,6 @@ name|ChangeQueryBuilder
 operator|.
 name|FIELD_DELETED
 argument_list|)
-operator|.
-name|stored
-argument_list|()
 operator|.
 name|build
 argument_list|(
