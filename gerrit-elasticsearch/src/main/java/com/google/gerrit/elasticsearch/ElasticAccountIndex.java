@@ -796,7 +796,7 @@ name|schema
 argument_list|,
 name|clientBuilder
 argument_list|,
-name|ACCOUNTS_PREFIX
+name|ACCOUNTS
 argument_list|)
 expr_stmt|;
 name|this
