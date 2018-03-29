@@ -916,10 +916,6 @@ name|args
 operator|.
 name|permissionBackend
 argument_list|,
-name|args
-operator|.
-name|userFactory
-argument_list|,
 name|changeNotes
 argument_list|)
 return|;
