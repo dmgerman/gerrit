@@ -179,6 +179,7 @@ operator|,
 DECL|enumConstant|MERGE
 name|MERGE
 operator|,
+comment|/**    * Before checking this permission, the caller should verify {@code USE_SIGNED_OFF_BY} is false.    * If it's true, the request should be rejected directly without further check this permission.    */
 DECL|enumConstant|SKIP_VALIDATION
 name|SKIP_VALIDATION
 operator|,
