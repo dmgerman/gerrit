@@ -162,6 +162,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|GroupReference
@@ -1220,7 +1234,7 @@ throws|throws
 name|OrmException
 function_decl|;
 block|}
-DECL|method|suggestReviewers ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, VisibilityControl visibilityControl, boolean excludeGroups)
+DECL|method|suggestReviewers ( @ullable ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, VisibilityControl visibilityControl, boolean excludeGroups)
 specifier|public
 name|List
 argument_list|<
@@ -1228,6 +1242,8 @@ name|SuggestedReviewerInfo
 argument_list|>
 name|suggestReviewers
 parameter_list|(
+annotation|@
+name|Nullable
 name|ChangeNotes
 name|changeNotes
 parameter_list|,
@@ -1260,6 +1276,13 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|changeNotes
+operator|!=
+literal|null
+condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -1280,6 +1303,27 @@ name|getLoggableName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Suggesting default reviewers for project {} to user {}."
+argument_list|,
+name|projectState
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|currentUser
+operator|.
+name|getLoggableName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|String
 name|query
 init|=
@@ -1805,7 +1849,7 @@ return|;
 block|}
 block|}
 block|}
-DECL|method|recommendAccounts ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, List<Account.Id> candidateList)
+DECL|method|recommendAccounts ( @ullable ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, List<Account.Id> candidateList)
 specifier|private
 name|List
 argument_list|<
@@ -1815,6 +1859,8 @@ name|Id
 argument_list|>
 name|recommendAccounts
 parameter_list|(
+annotation|@
+name|Nullable
 name|ChangeNotes
 name|changeNotes
 parameter_list|,

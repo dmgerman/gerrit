@@ -152,6 +152,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|LabelType
@@ -910,7 +924,7 @@ operator|=
 name|approvalsUtil
 expr_stmt|;
 block|}
-DECL|method|suggestReviewers ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, List<Account.Id> candidateList)
+DECL|method|suggestReviewers ( @ullable ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, List<Account.Id> candidateList)
 specifier|public
 name|List
 argument_list|<
@@ -920,6 +934,8 @@ name|Id
 argument_list|>
 name|suggestReviewers
 parameter_list|(
+annotation|@
+name|Nullable
 name|ChangeNotes
 name|changeNotes
 parameter_list|,
