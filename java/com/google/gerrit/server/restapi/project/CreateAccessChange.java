@@ -136,22 +136,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
-operator|.
-name|PermissionDeniedException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -916,7 +900,7 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 throws|,
-name|PermissionDeniedException
+name|AuthException
 throws|,
 name|IOException
 throws|,
@@ -968,7 +952,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|PermissionDeniedException
+name|AuthException
 argument_list|(
 name|RefNames
 operator|.
@@ -1018,7 +1002,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|PermissionDeniedException
+name|AuthException
 argument_list|(
 literal|"cannot create change for "
 operator|+
