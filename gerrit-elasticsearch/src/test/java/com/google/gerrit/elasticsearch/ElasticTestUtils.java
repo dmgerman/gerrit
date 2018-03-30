@@ -92,7 +92,7 @@ name|elasticsearch
 operator|.
 name|ElasticAccountIndex
 operator|.
-name|ACCOUNTS_PREFIX
+name|ACCOUNTS
 import|;
 end_import
 
@@ -108,7 +108,7 @@ name|elasticsearch
 operator|.
 name|ElasticChangeIndex
 operator|.
-name|CHANGES_PREFIX
+name|CHANGES
 import|;
 end_import
 
@@ -156,7 +156,7 @@ name|elasticsearch
 operator|.
 name|ElasticGroupIndex
 operator|.
-name|GROUPS_PREFIX
+name|GROUPS
 import|;
 end_import
 
@@ -1046,9 +1046,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s%04d"
+literal|"%s_%04d"
 argument_list|,
-name|CHANGES_PREFIX
+name|CHANGES
 argument_list|,
 name|changeSchema
 operator|.
@@ -1128,9 +1128,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s%04d"
+literal|"%s_%04d"
 argument_list|,
-name|ACCOUNTS_PREFIX
+name|ACCOUNTS
 argument_list|,
 name|accountSchema
 operator|.
@@ -1200,9 +1200,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s%04d"
+literal|"%s_%04d"
 argument_list|,
-name|GROUPS_PREFIX
+name|GROUPS
 argument_list|,
 name|groupSchema
 operator|.

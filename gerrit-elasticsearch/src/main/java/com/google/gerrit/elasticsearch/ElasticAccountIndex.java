@@ -705,16 +705,6 @@ name|ACCOUNTS
 init|=
 literal|"accounts"
 decl_stmt|;
-DECL|field|ACCOUNTS_PREFIX
-specifier|static
-specifier|final
-name|String
-name|ACCOUNTS_PREFIX
-init|=
-name|ACCOUNTS
-operator|+
-literal|"_"
-decl_stmt|;
 DECL|field|log
 specifier|private
 specifier|static
@@ -787,7 +777,7 @@ name|schema
 argument_list|,
 name|clientBuilder
 argument_list|,
-name|ACCOUNTS_PREFIX
+name|ACCOUNTS
 argument_list|)
 expr_stmt|;
 name|this

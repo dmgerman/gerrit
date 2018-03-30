@@ -579,6 +579,12 @@ specifier|final
 name|SitePaths
 name|sitePaths
 decl_stmt|;
+DECL|field|indexNameRaw
+specifier|private
+specifier|final
+name|String
+name|indexNameRaw
+decl_stmt|;
 DECL|field|indexName
 specifier|protected
 specifier|final
@@ -671,7 +677,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s%s%04d"
+literal|"%s%s_%04d"
 argument_list|,
 name|Strings
 operator|.
@@ -696,6 +702,12 @@ operator|.
 name|getVersion
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|indexNameRaw
+operator|=
+name|indexName
 expr_stmt|;
 name|this
 operator|.
@@ -755,7 +767,7 @@ name|setReady
 argument_list|(
 name|sitePaths
 argument_list|,
-name|indexName
+name|indexNameRaw
 argument_list|,
 name|schema
 operator|.
