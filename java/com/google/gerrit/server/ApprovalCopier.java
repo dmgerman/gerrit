@@ -274,7 +274,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|change
 operator|.
 name|LabelNormalizer
 import|;
