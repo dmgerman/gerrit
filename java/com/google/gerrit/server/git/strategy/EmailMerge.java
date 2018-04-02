@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.git.strategy
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|git
+operator|.
+name|strategy
 package|;
 end_package
 
@@ -424,7 +426,6 @@ end_import
 
 begin_class
 DECL|class|EmailMerge
-specifier|public
 class|class
 name|EmailMerge
 implements|implements
@@ -449,7 +450,6 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|interface|Factory
-specifier|public
 interface|interface
 name|Factory
 block|{
@@ -704,7 +704,6 @@ name|accountsToNotify
 expr_stmt|;
 block|}
 DECL|method|sendAsync ()
-specifier|public
 name|void
 name|sendAsync
 parameter_list|()
