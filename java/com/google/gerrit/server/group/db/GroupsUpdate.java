@@ -446,7 +446,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MetaDataUpdate
+name|RenameGroupOp
 import|;
 end_import
 
@@ -462,7 +462,9 @@ name|server
 operator|.
 name|git
 operator|.
-name|RenameGroupOp
+name|meta
+operator|.
+name|MetaDataUpdate
 import|;
 end_import
 

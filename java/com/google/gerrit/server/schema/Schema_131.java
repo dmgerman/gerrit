@@ -172,7 +172,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MetaDataUpdate
+name|ProjectConfig
 import|;
 end_import
 
@@ -188,7 +188,9 @@ name|server
 operator|.
 name|git
 operator|.
-name|ProjectConfig
+name|meta
+operator|.
+name|MetaDataUpdate
 import|;
 end_import
 

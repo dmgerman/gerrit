@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.git.meta
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|git
+operator|.
+name|meta
 package|;
 end_package
 
@@ -139,6 +141,22 @@ operator|.
 name|events
 operator|.
 name|GitReferenceUpdated
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -1055,6 +1073,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getProjectName ()
+specifier|public
 name|Project
 operator|.
 name|NameKey

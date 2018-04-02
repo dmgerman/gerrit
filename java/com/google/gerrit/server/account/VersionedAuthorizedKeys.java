@@ -260,6 +260,8 @@ name|server
 operator|.
 name|git
 operator|.
+name|meta
+operator|.
 name|MetaDataUpdate
 import|;
 end_import
@@ -275,6 +277,8 @@ operator|.
 name|server
 operator|.
 name|git
+operator|.
+name|meta
 operator|.
 name|VersionedMetaData
 import|;

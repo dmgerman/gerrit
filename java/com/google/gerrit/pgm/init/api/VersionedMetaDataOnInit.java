@@ -110,6 +110,8 @@ name|server
 operator|.
 name|git
 operator|.
+name|meta
+operator|.
 name|VersionedMetaData
 import|;
 end_import

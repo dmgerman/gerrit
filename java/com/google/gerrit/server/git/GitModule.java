@@ -116,6 +116,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|meta
+operator|.
+name|MetaDataUpdate
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse

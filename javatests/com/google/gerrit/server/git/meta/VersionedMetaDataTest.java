@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.git.meta
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|git
+operator|.
+name|meta
 package|;
 end_package
 
@@ -231,6 +233,8 @@ operator|.
 name|server
 operator|.
 name|git
+operator|.
+name|meta
 operator|.
 name|VersionedMetaData
 operator|.
