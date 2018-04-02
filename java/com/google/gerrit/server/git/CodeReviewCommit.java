@@ -138,11 +138,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|notedb
 operator|.
-name|strategy
-operator|.
-name|CommitMergeStatus
+name|ChangeNotes
 import|;
 end_import
 
@@ -156,9 +154,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
+name|submit
 operator|.
-name|ChangeNotes
+name|CommitMergeStatus
 import|;
 end_import
 

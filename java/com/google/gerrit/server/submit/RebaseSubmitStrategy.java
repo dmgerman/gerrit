@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.strategy
+DECL|package|com.google.gerrit.server.submit
 package|package
 name|com
 operator|.
@@ -62,9 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|strategy
+name|submit
 package|;
 end_package
 
@@ -94,9 +92,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|strategy
+name|submit
 operator|.
 name|CommitMergeStatus
 operator|.
@@ -114,9 +110,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|strategy
+name|submit
 operator|.
 name|CommitMergeStatus
 operator|.

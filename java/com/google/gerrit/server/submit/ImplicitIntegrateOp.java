@@ -52,8 +52,22 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.strategy
+DECL|package|com.google.gerrit.server.submit
 package|package
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|submit
+package|;
+end_package
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -64,32 +78,38 @@ name|server
 operator|.
 name|git
 operator|.
-name|strategy
-package|;
-end_package
+name|CodeReviewCommit
+import|;
+end_import
+
+begin_comment
+comment|/**  * Operation for a change that is implicitly integrated by integrating another commit.  *  *<p>Updates the change status and message based on {@link CodeReviewCommit#getStatusCode()}, but  * does not touch the repository.  */
+end_comment
 
 begin_class
-DECL|class|RebaseAlways
-specifier|public
+DECL|class|ImplicitIntegrateOp
 class|class
-name|RebaseAlways
+name|ImplicitIntegrateOp
 extends|extends
-name|RebaseSubmitStrategy
+name|SubmitStrategyOp
 block|{
-DECL|method|RebaseAlways (SubmitStrategy.Arguments args)
-name|RebaseAlways
+DECL|method|ImplicitIntegrateOp (SubmitStrategy.Arguments args, CodeReviewCommit toMerge)
+name|ImplicitIntegrateOp
 parameter_list|(
 name|SubmitStrategy
 operator|.
 name|Arguments
 name|args
+parameter_list|,
+name|CodeReviewCommit
+name|toMerge
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|args
 argument_list|,
-literal|true
+name|toMerge
 argument_list|)
 expr_stmt|;
 block|}

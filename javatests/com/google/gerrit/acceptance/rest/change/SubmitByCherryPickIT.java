@@ -428,9 +428,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|strategy
+name|submit
 operator|.
 name|CommitMergeStatus
 import|;
