@@ -156,7 +156,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|project
 operator|.
 name|ProjectConfig
 import|;

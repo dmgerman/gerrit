@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.project
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|project
 package|;
 end_package
 
@@ -302,9 +302,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|meta
-operator|.
-name|MetaDataUpdate
+name|ValidationError
 import|;
 end_import
 
@@ -318,9 +316,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|git
 operator|.
-name|CommentLinkInfoImpl
+name|meta
+operator|.
+name|MetaDataUpdate
 import|;
 end_import
 

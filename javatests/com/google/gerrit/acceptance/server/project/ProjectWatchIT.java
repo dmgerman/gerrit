@@ -314,9 +314,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|mail
 operator|.
-name|ProjectConfig
+name|Address
 import|;
 end_import
 
@@ -330,9 +330,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
+name|project
 operator|.
-name|Address
+name|ProjectConfig
 import|;
 end_import
 
