@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.account
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|account
 package|;
 end_package
 
@@ -151,6 +151,22 @@ operator|.
 name|client
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|ValidationError
 import|;
 end_import
 
@@ -266,7 +282,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|parseLabel (String label, String text, ValidationError.Sink errors)
-specifier|public
 name|void
 name|parseLabel
 parameter_list|(
@@ -311,7 +326,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|asText (String label)
-specifier|public
 name|String
 name|asText
 parameter_list|(
@@ -409,7 +423,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|toSet (List<Row> destRows)
-specifier|protected
+specifier|private
 specifier|static
 name|Set
 argument_list|<
