@@ -264,7 +264,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|mail
 operator|.
 name|SendEmailExecutor
 import|;
