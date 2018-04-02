@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.group.db
 package|package
 name|com
 operator|.
@@ -62,7 +62,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|group
+operator|.
+name|db
 package|;
 end_package
 
@@ -111,6 +113,38 @@ operator|.
 name|client
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|DefaultQueueOp
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|WorkQueue
 import|;
 end_import
 
@@ -308,14 +342,12 @@ end_import
 
 begin_class
 DECL|class|RenameGroupOp
-specifier|public
 class|class
 name|RenameGroupOp
 extends|extends
 name|DefaultQueueOp
 block|{
 DECL|interface|Factory
-specifier|public
 interface|interface
 name|Factory
 block|{
