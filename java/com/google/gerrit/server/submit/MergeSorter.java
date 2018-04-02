@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.submit
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|submit
 package|;
 end_package
 
@@ -79,8 +79,6 @@ operator|.
 name|git
 operator|.
 name|CodeReviewCommit
-operator|.
-name|CodeReviewRevWalk
 import|;
 end_import
 
@@ -94,9 +92,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|submit
+name|git
 operator|.
-name|CommitMergeStatus
+name|CodeReviewCommit
+operator|.
+name|CodeReviewRevWalk
 import|;
 end_import
 
@@ -277,6 +277,7 @@ name|incoming
 expr_stmt|;
 block|}
 DECL|method|sort (Collection<CodeReviewCommit> toMerge)
+specifier|public
 name|Collection
 argument_list|<
 name|CodeReviewCommit

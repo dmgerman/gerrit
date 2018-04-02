@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2011 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.submit
 package|package
 name|com
 operator|.
@@ -62,21 +62,21 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|submit
 package|;
 end_package
 
 begin_comment
-comment|/** Indicates that the change or commit is already in the source tree. */
+comment|/**  * Indicates the gitlink's update cannot be processed at this time.  *  *<p>Message should be considered user-visible.  */
 end_comment
 
 begin_class
-DECL|class|ChangeAlreadyMergedException
+DECL|class|SubmoduleException
 specifier|public
 class|class
-name|ChangeAlreadyMergedException
+name|SubmoduleException
 extends|extends
-name|MergeIdenticalTreeException
+name|Exception
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -87,10 +87,8 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-comment|/** @param msg message to return to the client describing the error. */
-DECL|method|ChangeAlreadyMergedException (String msg)
-specifier|public
-name|ChangeAlreadyMergedException
+DECL|method|SubmoduleException (String msg)
+name|SubmoduleException
 parameter_list|(
 name|String
 name|msg
@@ -99,6 +97,26 @@ block|{
 name|super
 argument_list|(
 name|msg
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|SubmoduleException (String msg, Throwable why)
+name|SubmoduleException
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Throwable
+name|why
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|msg
+argument_list|,
+name|why
 argument_list|)
 expr_stmt|;
 block|}

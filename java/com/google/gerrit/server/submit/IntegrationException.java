@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2011 The Android Open Source Project
+comment|// Copyright (C) 2008 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.submit
 package|package
 name|com
 operator|.
@@ -62,19 +62,19 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|submit
 package|;
 end_package
 
 begin_comment
-comment|/**  * Indicates the gitlink's update cannot be processed at this time.  *  *<p>Message should be considered user-visible.  */
+comment|/** Indicates an integration operation (see {@link MergeOp}) failed. */
 end_comment
 
 begin_class
-DECL|class|SubmoduleException
+DECL|class|IntegrationException
 specifier|public
 class|class
-name|SubmoduleException
+name|IntegrationException
 extends|extends
 name|Exception
 block|{
@@ -87,8 +87,9 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|SubmoduleException (String msg)
-name|SubmoduleException
+DECL|method|IntegrationException (String msg)
+specifier|public
+name|IntegrationException
 parameter_list|(
 name|String
 name|msg
@@ -97,13 +98,26 @@ block|{
 name|super
 argument_list|(
 name|msg
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SubmoduleException (String msg, Throwable why)
-name|SubmoduleException
+DECL|method|IntegrationException (Throwable why)
+specifier|public
+name|IntegrationException
+parameter_list|(
+name|Throwable
+name|why
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|why
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|IntegrationException (String msg, Throwable why)
+specifier|public
+name|IntegrationException
 parameter_list|(
 name|String
 name|msg

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.submit
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|submit
 package|;
 end_package
 
@@ -694,9 +694,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MergeOpRepoManager
-operator|.
-name|OpenBranch
+name|CodeReviewCommit
 import|;
 end_import
 
@@ -712,9 +710,23 @@ name|server
 operator|.
 name|git
 operator|.
-name|MergeOpRepoManager
+name|LockFailureException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
 operator|.
-name|OpenRepo
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|MergeTip
 import|;
 end_import
 
@@ -866,7 +878,9 @@ name|server
 operator|.
 name|submit
 operator|.
-name|SubmitStrategy
+name|MergeOpRepoManager
+operator|.
+name|OpenBranch
 import|;
 end_import
 
@@ -882,23 +896,9 @@ name|server
 operator|.
 name|submit
 operator|.
-name|SubmitStrategyFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
+name|MergeOpRepoManager
 operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|submit
-operator|.
-name|SubmitStrategyListener
+name|OpenRepo
 import|;
 end_import
 

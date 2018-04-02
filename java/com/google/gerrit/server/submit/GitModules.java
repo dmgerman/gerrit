@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.submit
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|submit
 package|;
 end_package
 
@@ -154,11 +154,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|project
 operator|.
-name|MergeOpRepoManager
-operator|.
-name|OpenRepo
+name|NoSuchProjectException
 import|;
 end_import
 
@@ -172,9 +170,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|submit
 operator|.
-name|NoSuchProjectException
+name|MergeOpRepoManager
+operator|.
+name|OpenRepo
 import|;
 end_import
 
