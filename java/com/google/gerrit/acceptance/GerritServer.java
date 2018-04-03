@@ -1701,8 +1701,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Initializes new Gerrit site and returns started server.    *    *<p>A new temporary directory for the site will be created with {@link TempFileUtil}, even in    * the server is otherwise configured in-memory. Closing the server stops the daemon but does not    * delete the temporary directory. Callers may either get the directory with {@link    * #getSitePath()} and delete it manually, or call {@link TempFileUtil#cleanup()}.    *    * @param desc server description.    * @param baseConfig default config values; merged with config from {@code desc}.    * @return started server.    * @throws Exception    */
-DECL|method|initAndStart (Description desc, Config baseConfig)
+comment|/**    * Initializes new Gerrit site and returns started server.    *    *<p>A new temporary directory for the site will be created with {@link TempFileUtil}, even in    * the server is otherwise configured in-memory. Closing the server stops the daemon but does not    * delete the temporary directory. Callers may either get the directory with {@link    * #getSitePath()} and delete it manually, or call {@link TempFileUtil#cleanup()}.    *    * @param desc server description.    * @param baseConfig default config values; merged with config from {@code desc}.    * @param testSysModule additional Guice module to use.    * @return started server.    * @throws Exception    */
+DECL|method|initAndStart ( Description desc, Config baseConfig, @Nullable Module testSysModule)
 specifier|public
 specifier|static
 name|GerritServer
@@ -1713,6 +1713,11 @@ name|desc
 parameter_list|,
 name|Config
 name|baseConfig
+parameter_list|,
+annotation|@
+name|Nullable
+name|Module
+name|testSysModule
 parameter_list|)
 throws|throws
 name|Exception
@@ -1803,7 +1808,7 @@ name|baseConfig
 argument_list|,
 name|site
 argument_list|,
-literal|null
+name|testSysModule
 argument_list|,
 literal|null
 argument_list|,
