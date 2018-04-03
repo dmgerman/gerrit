@@ -1977,7 +1977,7 @@ if|if
 condition|(
 name|GlobalCapability
 operator|.
-name|isCapability
+name|isGlobalCapability
 argument_list|(
 name|value
 operator|.

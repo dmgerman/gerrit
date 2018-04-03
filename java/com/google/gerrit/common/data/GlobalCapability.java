@@ -599,11 +599,11 @@ argument_list|)
 return|;
 block|}
 comment|/** @return true if the name is recognized as a capability name. */
-DECL|method|isCapability (String varName)
+DECL|method|isGlobalCapability (String varName)
 specifier|public
 specifier|static
 name|boolean
-name|isCapability
+name|isGlobalCapability
 parameter_list|(
 name|String
 name|varName
