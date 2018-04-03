@@ -509,16 +509,6 @@ name|GROUPS
 init|=
 literal|"groups"
 decl_stmt|;
-DECL|field|GROUPS_PREFIX
-specifier|static
-specifier|final
-name|String
-name|GROUPS_PREFIX
-init|=
-name|GROUPS
-operator|+
-literal|"_"
-decl_stmt|;
 DECL|field|mapping
 specifier|private
 specifier|final
@@ -575,7 +565,7 @@ name|schema
 argument_list|,
 name|clientBuilder
 argument_list|,
-name|GROUPS_PREFIX
+name|GROUPS
 argument_list|)
 expr_stmt|;
 name|this

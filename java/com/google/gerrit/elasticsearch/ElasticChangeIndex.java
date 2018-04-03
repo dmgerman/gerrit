@@ -987,13 +987,13 @@ name|mapping
 expr_stmt|;
 block|}
 block|}
-DECL|field|CHANGES_PREFIX
+DECL|field|CHANGES
 specifier|static
 specifier|final
 name|String
-name|CHANGES_PREFIX
+name|CHANGES
 init|=
-literal|"changes_"
+literal|"changes"
 decl_stmt|;
 DECL|field|OPEN_CHANGES
 specifier|static
@@ -1001,7 +1001,9 @@ specifier|final
 name|String
 name|OPEN_CHANGES
 init|=
-literal|"open_changes"
+literal|"open_"
+operator|+
+name|CHANGES
 decl_stmt|;
 DECL|field|CLOSED_CHANGES
 specifier|static
@@ -1009,7 +1011,9 @@ specifier|final
 name|String
 name|CLOSED_CHANGES
 init|=
-literal|"closed_changes"
+literal|"closed_"
+operator|+
+name|CHANGES
 decl_stmt|;
 DECL|field|mapping
 specifier|private
@@ -1080,7 +1084,7 @@ name|schema
 argument_list|,
 name|clientBuilder
 argument_list|,
-name|CHANGES_PREFIX
+name|CHANGES
 argument_list|)
 expr_stmt|;
 name|this
