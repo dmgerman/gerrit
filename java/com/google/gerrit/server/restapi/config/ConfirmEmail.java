@@ -445,8 +445,6 @@ name|AuthException
 throws|,
 name|UnprocessableEntityException
 throws|,
-name|AccountException
-throws|,
 name|OrmException
 throws|,
 name|IOException
