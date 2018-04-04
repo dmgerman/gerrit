@@ -2629,7 +2629,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|updateGroupInDb
+name|updateGroupInNoteDb
 argument_list|(
 name|groupUuid
 argument_list|,

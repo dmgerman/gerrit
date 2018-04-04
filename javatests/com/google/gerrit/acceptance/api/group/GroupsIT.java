@@ -9716,7 +9716,7 @@ comment|// Update a group without updating the cache or index,
 comment|// then run the reindexer -> only the updated group is reindexed.
 name|groupsUpdate
 operator|.
-name|updateGroupInDb
+name|updateGroupInNoteDb
 argument_list|(
 name|groupUuid
 argument_list|,
