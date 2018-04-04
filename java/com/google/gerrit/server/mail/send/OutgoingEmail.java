@@ -392,20 +392,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|template
 operator|.
 name|soy
@@ -2896,8 +2882,6 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
 name|PermissionBackendException
 name|e
 parameter_list|)
@@ -2915,7 +2899,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * @param to account.    * @throws OrmException    * @throws PermissionBackendException    * @return whether this email is visible to the given account.    */
+comment|/**    * @param to account.    * @throws PermissionBackendException    * @return whether this email is visible to the given account.    */
 DECL|method|isVisibleTo (Account.Id to)
 specifier|protected
 name|boolean
@@ -2927,8 +2911,6 @@ name|Id
 name|to
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 return|return
