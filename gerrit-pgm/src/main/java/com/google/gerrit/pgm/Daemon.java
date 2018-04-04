@@ -3408,12 +3408,6 @@ if|if
 condition|(
 operator|!
 name|slave
-operator|&&
-name|indexType
-operator|==
-name|IndexType
-operator|.
-name|LUCENE
 condition|)
 block|{
 name|modules
