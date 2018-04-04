@@ -144,7 +144,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|SendEmailExecutor
+name|WorkQueue
 import|;
 end_import
 
@@ -158,9 +158,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|mail
 operator|.
-name|WorkQueue
+name|SendEmailExecutor
 import|;
 end_import
 

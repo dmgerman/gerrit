@@ -368,9 +368,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|permissions
 operator|.
-name|ProjectConfig
+name|PermissionBackendException
 import|;
 end_import
 
@@ -384,9 +384,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|permissions
+name|project
 operator|.
-name|PermissionBackendException
+name|ProjectConfig
 import|;
 end_import
 

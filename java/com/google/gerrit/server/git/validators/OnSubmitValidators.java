@@ -112,7 +112,11 @@ name|server
 operator|.
 name|git
 operator|.
-name|IntegrationException
+name|validators
+operator|.
+name|OnSubmitValidationListener
+operator|.
+name|Arguments
 import|;
 end_import
 
@@ -126,13 +130,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|submit
 operator|.
-name|validators
-operator|.
-name|OnSubmitValidationListener
-operator|.
-name|Arguments
+name|IntegrationException
 import|;
 end_import
 

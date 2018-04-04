@@ -174,6 +174,8 @@ name|server
 operator|.
 name|git
 operator|.
+name|meta
+operator|.
 name|MetaDataUpdate
 import|;
 end_import
@@ -188,7 +190,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|project
 operator|.
 name|ProjectConfig
 import|;

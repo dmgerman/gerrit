@@ -610,7 +610,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|submit
 operator|.
 name|ChangeAlreadyMergedException
 import|;

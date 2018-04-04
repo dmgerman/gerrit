@@ -366,9 +366,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|group
 operator|.
-name|ProjectConfig
+name|SystemGroupBackend
 import|;
 end_import
 
@@ -382,9 +382,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
+name|project
 operator|.
-name|SystemGroupBackend
+name|ProjectConfig
 import|;
 end_import
 
