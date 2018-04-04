@@ -112,6 +112,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -973,6 +987,11 @@ name|of
 argument_list|(
 name|lines
 argument_list|)
+argument_list|,
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertThat
