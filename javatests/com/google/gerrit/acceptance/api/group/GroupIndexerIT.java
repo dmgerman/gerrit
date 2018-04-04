@@ -1174,7 +1174,7 @@ name|ConfigInvalidException
 block|{
 name|groupsUpdate
 operator|.
-name|updateGroupInDb
+name|updateGroupInNoteDb
 argument_list|(
 name|groupUuid
 argument_list|,
