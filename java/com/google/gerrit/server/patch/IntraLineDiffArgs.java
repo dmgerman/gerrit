@@ -100,6 +100,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -117,6 +131,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -157,7 +181,7 @@ specifier|abstract
 class|class
 name|IntraLineDiffArgs
 block|{
-DECL|method|create ( Text aText, Text bText, List<Edit> edits, Project.NameKey project, ObjectId commit, String path)
+DECL|method|create ( Text aText, Text bText, List<Edit> edits, Set<Edit> editsDueToRebase, Project.NameKey project, ObjectId commit, String path)
 specifier|public
 specifier|static
 name|IntraLineDiffArgs
@@ -174,6 +198,12 @@ argument_list|<
 name|Edit
 argument_list|>
 name|edits
+parameter_list|,
+name|Set
+argument_list|<
+name|Edit
+argument_list|>
+name|editsDueToRebase
 parameter_list|,
 name|Project
 operator|.
@@ -198,6 +228,11 @@ argument_list|,
 name|deepCopyEdits
 argument_list|(
 name|edits
+argument_list|)
+argument_list|,
+name|deepCopyEdits
+argument_list|(
+name|editsDueToRebase
 argument_list|)
 argument_list|,
 name|project
@@ -242,6 +277,44 @@ argument_list|(
 name|ImmutableList
 operator|.
 name|toImmutableList
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|deepCopyEdits (Set<Edit> edits)
+specifier|private
+specifier|static
+name|ImmutableSet
+argument_list|<
+name|Edit
+argument_list|>
+name|deepCopyEdits
+parameter_list|(
+name|Set
+argument_list|<
+name|Edit
+argument_list|>
+name|edits
+parameter_list|)
+block|{
+return|return
+name|edits
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|IntraLineDiffArgs
+operator|::
+name|copy
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|ImmutableSet
+operator|.
+name|toImmutableSet
 argument_list|()
 argument_list|)
 return|;
@@ -304,6 +377,16 @@ argument_list|<
 name|Edit
 argument_list|>
 name|edits
+parameter_list|()
+function_decl|;
+DECL|method|editsDueToRebase ()
+specifier|public
+specifier|abstract
+name|ImmutableSet
+argument_list|<
+name|Edit
+argument_list|>
+name|editsDueToRebase
 parameter_list|()
 function_decl|;
 DECL|method|project ()

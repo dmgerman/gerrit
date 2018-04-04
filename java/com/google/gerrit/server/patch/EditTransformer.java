@@ -889,7 +889,7 @@ name|transformingEdit
 operator|.
 name|getEndA
 argument_list|()
-operator|<
+operator|<=
 name|sideStrategy
 operator|.
 name|getBegin
@@ -923,7 +923,7 @@ name|getEnd
 argument_list|(
 name|originalEdit
 argument_list|)
-operator|<
+operator|<=
 name|transformingEdit
 operator|.
 name|getBeginA
