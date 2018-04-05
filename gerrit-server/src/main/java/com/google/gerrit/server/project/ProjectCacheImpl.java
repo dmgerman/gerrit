@@ -1063,7 +1063,7 @@ throw|;
 block|}
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Cannot find project {}"
 argument_list|,
