@@ -1938,7 +1938,7 @@ name|db
 argument_list|,
 name|project
 argument_list|,
-name|c1
+name|c3
 operator|.
 name|getId
 argument_list|()
@@ -2026,9 +2026,11 @@ literal|"refs/heads/master"
 argument_list|,
 literal|"refs/tags/master-tag"
 argument_list|,
+literal|"refs/tags/branch-tag"
+argument_list|,
 literal|"refs/users/01/1000001/edit-"
 operator|+
-name|c1
+name|c3
 operator|.
 name|getId
 argument_list|()
@@ -2070,7 +2072,7 @@ name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
 name|Change
-name|change1
+name|change3
 init|=
 name|notesFactory
 operator|.
@@ -2080,7 +2082,7 @@ name|db
 argument_list|,
 name|project
 argument_list|,
-name|c1
+name|c3
 operator|.
 name|getId
 argument_list|()
@@ -2090,9 +2092,9 @@ name|getChange
 argument_list|()
 decl_stmt|;
 name|String
-name|changeId1
+name|changeId3
 init|=
-name|change1
+name|change3
 operator|.
 name|getKey
 argument_list|()
@@ -2101,7 +2103,7 @@ name|get
 argument_list|()
 decl_stmt|;
 name|Change
-name|change2
+name|change4
 init|=
 name|notesFactory
 operator|.
@@ -2111,7 +2113,7 @@ name|db
 argument_list|,
 name|project
 argument_list|,
-name|c2
+name|c4
 operator|.
 name|getId
 argument_list|()
@@ -2121,9 +2123,9 @@ name|getChange
 argument_list|()
 decl_stmt|;
 name|String
-name|changeId2
+name|changeId4
 init|=
-name|change2
+name|change4
 operator|.
 name|getKey
 argument_list|()
@@ -2131,7 +2133,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-comment|// Admin's edit on change1 is visible.
+comment|// Admin's edit on change3 is visible.
 name|setApiUser
 argument_list|(
 name|admin
@@ -2144,7 +2146,7 @@ argument_list|()
 operator|.
 name|id
 argument_list|(
-name|changeId1
+name|changeId3
 argument_list|)
 operator|.
 name|edit
@@ -2153,7 +2155,7 @@ operator|.
 name|create
 argument_list|()
 expr_stmt|;
-comment|// Admin's edit on change2 is not visible since user cannot see the change.
+comment|// Admin's edit on change4 is not visible since user cannot see the change.
 name|gApi
 operator|.
 name|changes
@@ -2161,7 +2163,7 @@ argument_list|()
 operator|.
 name|id
 argument_list|(
-name|changeId2
+name|changeId4
 argument_list|)
 operator|.
 name|edit
@@ -2183,7 +2185,7 @@ argument_list|()
 operator|.
 name|id
 argument_list|(
-name|changeId1
+name|changeId3
 argument_list|)
 operator|.
 name|edit
@@ -2216,9 +2218,11 @@ literal|"refs/heads/master"
 argument_list|,
 literal|"refs/tags/master-tag"
 argument_list|,
+literal|"refs/tags/branch-tag"
+argument_list|,
 literal|"refs/users/00/1000000/edit-"
 operator|+
-name|c1
+name|c3
 operator|.
 name|getId
 argument_list|()
@@ -2227,7 +2231,7 @@ literal|"/1"
 argument_list|,
 literal|"refs/users/01/1000001/edit-"
 operator|+
-name|c1
+name|c3
 operator|.
 name|getId
 argument_list|()
@@ -2280,7 +2284,7 @@ expr_stmt|;
 name|String
 name|changeId
 init|=
-name|c1
+name|c3
 operator|.
 name|change
 argument_list|()
@@ -2363,7 +2367,7 @@ argument_list|,
 comment|// All edits are visible due to accessDatabase capability.
 literal|"refs/users/00/1000000/edit-"
 operator|+
-name|c1
+name|c3
 operator|.
 name|getId
 argument_list|()
