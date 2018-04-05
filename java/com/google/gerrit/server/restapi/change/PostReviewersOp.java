@@ -1518,6 +1518,15 @@ argument_list|,
 name|notify
 argument_list|,
 name|accountsToNotify
+argument_list|,
+operator|!
+name|rsrc
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|isWorkInProgress
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -1594,7 +1603,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|emailReviewers ( Change change, Collection<Account.Id> added, Collection<Account.Id> copied, Collection<Address> addedByEmail, Collection<Address> copiedByEmail, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|emailReviewers ( Change change, Collection<Account.Id> added, Collection<Account.Id> copied, Collection<Address> addedByEmail, Collection<Address> copiedByEmail, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean readyForReview)
 specifier|public
 name|void
 name|emailReviewers
@@ -1642,6 +1651,9 @@ operator|.
 name|Id
 argument_list|>
 name|accountsToNotify
+parameter_list|,
+name|boolean
+name|readyForReview
 parameter_list|)
 block|{
 if|if
@@ -1830,18 +1842,15 @@ comment|// Default to silent operation on WIP changes.
 name|NotifyHandling
 name|defaultNotifyHandling
 init|=
-name|change
-operator|.
-name|isWorkInProgress
-argument_list|()
+name|readyForReview
 condition|?
 name|NotifyHandling
 operator|.
-name|NONE
+name|ALL
 else|:
 name|NotifyHandling
 operator|.
-name|ALL
+name|NONE
 decl_stmt|;
 name|cm
 operator|.

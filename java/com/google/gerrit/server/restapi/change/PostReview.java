@@ -3353,6 +3353,30 @@ name|gatherResults
 argument_list|()
 expr_stmt|;
 block|}
+name|boolean
+name|readyForReview
+init|=
+operator|(
+name|output
+operator|.
+name|ready
+operator|!=
+literal|null
+operator|&&
+name|output
+operator|.
+name|ready
+operator|)
+operator|||
+operator|!
+name|revision
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|isWorkInProgress
+argument_list|()
+decl_stmt|;
 name|emailReviewers
 argument_list|(
 name|revision
@@ -3365,6 +3389,8 @@ argument_list|,
 name|reviewerNotify
 argument_list|,
 name|accountsToNotify
+argument_list|,
+name|readyForReview
 argument_list|)
 expr_stmt|;
 block|}
@@ -3471,7 +3497,7 @@ operator|.
 name|ALL
 return|;
 block|}
-DECL|method|emailReviewers ( Change change, List<PostReviewers.Addition> reviewerAdditions, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|emailReviewers ( Change change, List<PostReviewers.Addition> reviewerAdditions, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean readyForReview)
 specifier|private
 name|void
 name|emailReviewers
@@ -3501,6 +3527,9 @@ operator|.
 name|Id
 argument_list|>
 name|accountsToNotify
+parameter_list|,
+name|boolean
+name|readyForReview
 parameter_list|)
 block|{
 name|List
@@ -3657,6 +3686,8 @@ argument_list|,
 name|notify
 argument_list|,
 name|accountsToNotify
+argument_list|,
+name|readyForReview
 argument_list|)
 expr_stmt|;
 block|}
