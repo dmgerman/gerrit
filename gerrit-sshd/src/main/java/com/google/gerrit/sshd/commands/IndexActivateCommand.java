@@ -106,9 +106,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lucene
+name|server
 operator|.
-name|LuceneVersionManager
+name|index
+operator|.
+name|AbstractVersionManager
 import|;
 end_import
 
@@ -230,12 +232,12 @@ specifier|private
 name|String
 name|name
 decl_stmt|;
-DECL|field|luceneVersionManager
+DECL|field|versionManager
 annotation|@
 name|Inject
 specifier|private
-name|LuceneVersionManager
-name|luceneVersionManager
+name|AbstractVersionManager
+name|versionManager
 decl_stmt|;
 annotation|@
 name|Override
@@ -251,7 +253,7 @@ try|try
 block|{
 if|if
 condition|(
-name|luceneVersionManager
+name|versionManager
 operator|.
 name|activateLatestIndex
 argument_list|(
