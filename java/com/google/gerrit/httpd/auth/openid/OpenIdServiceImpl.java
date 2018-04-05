@@ -2329,7 +2329,7 @@ name|email
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|"@"
+literal|'@'
 argument_list|)
 decl_stmt|;
 if|if
