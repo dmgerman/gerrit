@@ -346,6 +346,21 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|configKey ()
+specifier|public
+name|String
+name|configKey
+parameter_list|()
+block|{
+return|return
+name|source
+operator|.
+name|configKey
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|keyType ()
 specifier|public
 name|TypeLiteral
@@ -429,6 +444,30 @@ operator|.
 name|loader
 argument_list|()
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|configKey (String configKey)
+specifier|public
+name|CacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|configKey
+parameter_list|(
+name|String
+name|configKey
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|MSG_NOT_SUPPORTED
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
