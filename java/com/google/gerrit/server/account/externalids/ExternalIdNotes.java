@@ -3073,7 +3073,7 @@ init|=
 operator|new
 name|RevWalk
 argument_list|(
-name|repo
+name|reader
 argument_list|)
 init|)
 block|{
