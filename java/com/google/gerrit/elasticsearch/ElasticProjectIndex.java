@@ -523,16 +523,6 @@ name|PROJECTS
 init|=
 literal|"projects"
 decl_stmt|;
-DECL|field|PROJECTS_PREFIX
-specifier|static
-specifier|final
-name|String
-name|PROJECTS_PREFIX
-init|=
-name|PROJECTS
-operator|+
-literal|"_"
-decl_stmt|;
 DECL|field|mapping
 specifier|private
 specifier|final
@@ -589,7 +579,7 @@ name|schema
 argument_list|,
 name|clientBuilder
 argument_list|,
-name|PROJECTS_PREFIX
+name|PROJECTS
 argument_list|)
 expr_stmt|;
 name|this

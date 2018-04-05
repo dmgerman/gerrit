@@ -172,7 +172,7 @@ name|elasticsearch
 operator|.
 name|ElasticProjectIndex
 operator|.
-name|PROJECTS_PREFIX
+name|PROJECTS
 import|;
 end_import
 
@@ -1339,9 +1339,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s%04d"
+literal|"%s_%04d"
 argument_list|,
-name|PROJECTS_PREFIX
+name|PROJECTS
 argument_list|,
 name|projectSchema
 operator|.
