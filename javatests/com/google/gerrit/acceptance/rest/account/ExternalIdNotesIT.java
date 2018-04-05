@@ -86,6 +86,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth8
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|hamcrest
@@ -215,6 +231,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -1992,7 +2018,10 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|Optional
+argument_list|<
 name|ExternalId
+argument_list|>
 name|extId
 init|=
 name|externalIds
@@ -2015,12 +2044,15 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|isNotNull
+name|isPresent
 argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
 name|extId
+operator|.
+name|get
+argument_list|()
 operator|.
 name|email
 argument_list|()

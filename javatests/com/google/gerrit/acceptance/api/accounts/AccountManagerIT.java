@@ -1415,7 +1415,10 @@ argument_list|,
 name|gerritExtIdKey
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
 name|ExternalId
+argument_list|>
 name|gerritExtId
 init|=
 name|externalIds
@@ -1430,12 +1433,15 @@ argument_list|(
 name|gerritExtId
 argument_list|)
 operator|.
-name|isNotNull
+name|isPresent
 argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
 name|gerritExtId
+operator|.
+name|get
+argument_list|()
 operator|.
 name|email
 argument_list|()
@@ -2982,7 +2988,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Verify that the email in the external ID was not updated.
+name|Optional
+argument_list|<
 name|ExternalId
+argument_list|>
 name|gerritExtId
 init|=
 name|externalIds
@@ -2997,12 +3006,15 @@ argument_list|(
 name|gerritExtId
 argument_list|)
 operator|.
-name|isNotNull
+name|isPresent
 argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
 name|gerritExtId
+operator|.
+name|get
+argument_list|()
 operator|.
 name|email
 argument_list|()
@@ -3739,7 +3751,7 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|isNull
+name|isEmpty
 argument_list|()
 expr_stmt|;
 block|}
@@ -3830,7 +3842,10 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|Optional
+argument_list|<
 name|ExternalId
+argument_list|>
 name|extId
 init|=
 name|externalIds
@@ -3853,7 +3868,7 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|isNotNull
+name|isPresent
 argument_list|()
 expr_stmt|;
 if|if
@@ -3866,6 +3881,9 @@ block|{
 name|assertThat
 argument_list|(
 name|extId
+operator|.
+name|get
+argument_list|()
 operator|.
 name|accountId
 argument_list|()
@@ -3890,6 +3908,9 @@ block|}
 name|assertThat
 argument_list|(
 name|extId
+operator|.
+name|get
+argument_list|()
 operator|.
 name|email
 argument_list|()

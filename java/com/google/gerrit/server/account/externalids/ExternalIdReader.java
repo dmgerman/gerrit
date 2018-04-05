@@ -252,6 +252,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -679,10 +689,11 @@ return|;
 block|}
 block|}
 comment|/** Reads and returns the specified external ID. */
-annotation|@
-name|Nullable
 DECL|method|get (ExternalId.Key key)
+name|Optional
+argument_list|<
 name|ExternalId
+argument_list|>
 name|get
 parameter_list|(
 name|ExternalId
@@ -723,19 +734,15 @@ name|get
 argument_list|(
 name|key
 argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
 return|;
 block|}
 block|}
 comment|/** Reads and returns the specified external ID from the given revision. */
-annotation|@
-name|Nullable
 DECL|method|get (ExternalId.Key key, ObjectId rev)
+name|Optional
+argument_list|<
 name|ExternalId
+argument_list|>
 name|get
 parameter_list|(
 name|ExternalId
@@ -780,11 +787,6 @@ operator|.
 name|get
 argument_list|(
 name|key
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|null
 argument_list|)
 return|;
 block|}

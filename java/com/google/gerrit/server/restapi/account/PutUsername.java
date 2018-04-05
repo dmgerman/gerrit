@@ -484,6 +484,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -849,7 +859,10 @@ name|dupeErr
 parameter_list|)
 block|{
 comment|// If we are using this identity, don't report the exception.
+name|Optional
+argument_list|<
 name|ExternalId
+argument_list|>
 name|other
 init|=
 name|externalIds
@@ -862,10 +875,14 @@ decl_stmt|;
 if|if
 condition|(
 name|other
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|&&
 name|other
+operator|.
+name|get
+argument_list|()
 operator|.
 name|accountId
 argument_list|()

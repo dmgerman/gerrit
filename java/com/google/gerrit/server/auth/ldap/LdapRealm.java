@@ -2407,10 +2407,6 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
 name|externalIds
 operator|.
 name|get
@@ -2424,7 +2420,6 @@ argument_list|(
 name|SCHEME_GERRIT
 argument_list|,
 name|username
-argument_list|)
 argument_list|)
 argument_list|)
 operator|.
