@@ -248,14 +248,6 @@ argument_list|>
 argument_list|>
 name|robotComments
 decl_stmt|;
-comment|/**    * If true require all labels to be within the user's permitted ranges based on access controls,    * attempting to use a label not granted to the user will fail the entire modify operation early.    * If false the operation will execute anyway, but the proposed labels given by the user will be    * modified to be the "best" value allowed by the access controls, or ignored if the label does    * not exist.    */
-DECL|field|strictLabels
-specifier|public
-name|boolean
-name|strictLabels
-init|=
-literal|true
-decl_stmt|;
 comment|/**    * How to process draft comments already in the database that were not also described in this    * input request.    *    *<p>If not set, the default is {@link DraftHandling#KEEP}. If {@link #onBehalfOf} is set, then    * no other value besides {@code KEEP} is allowed.    */
 DECL|field|drafts
 specifier|public
@@ -284,7 +276,7 @@ specifier|public
 name|boolean
 name|omitDuplicateComments
 decl_stmt|;
-comment|/**    * Account ID, name, email address or username of another user. The review will be posted/updated    * on behalf of this named user instead of the caller. Caller must have the labelAs-$NAME    * permission granted for each label that appears in {@link #labels}. This is in addition to the    * named user also needing to have permission to use the labels.    *    *<p>{@link #strictLabels} impacts how labels is processed for the named user, not the caller.    */
+comment|/**    * Account ID, name, email address or username of another user. The review will be posted/updated    * on behalf of this named user instead of the caller. Caller must have the labelAs-$NAME    * permission granted for each label that appears in {@link #labels}. This is in addition to the    * named user also needing to have permission to use the labels.    */
 DECL|field|onBehalfOf
 specifier|public
 name|String
