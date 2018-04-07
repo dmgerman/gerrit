@@ -268,22 +268,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|plugins
-operator|.
-name|Plugin
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1458,12 +1442,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onStop (Plugin plugin)
+DECL|method|onStop (String plugin)
 specifier|public
 name|void
 name|onStop
 parameter_list|(
-name|Plugin
+name|String
 name|plugin
 parameter_list|)
 block|{
@@ -1497,9 +1481,6 @@ operator|.
 name|byPlugin
 argument_list|(
 name|plugin
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 operator|.
 name|entrySet
