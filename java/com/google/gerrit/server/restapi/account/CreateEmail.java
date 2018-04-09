@@ -164,22 +164,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|AuthException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|BadRequestException
 import|;
 end_import
@@ -228,7 +212,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|Response
 import|;
 end_import
 
@@ -244,7 +228,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|Response
+name|RestApiException
 import|;
 end_import
 
@@ -796,13 +780,7 @@ name|EmailInput
 name|input
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
-name|BadRequestException
-throws|,
-name|ResourceConflictException
-throws|,
-name|ResourceNotFoundException
+name|RestApiException
 throws|,
 name|OrmException
 throws|,
@@ -909,13 +887,7 @@ name|EmailInput
 name|input
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
-name|BadRequestException
-throws|,
-name|ResourceConflictException
-throws|,
-name|ResourceNotFoundException
+name|RestApiException
 throws|,
 name|OrmException
 throws|,
