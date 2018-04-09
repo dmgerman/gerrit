@@ -3364,15 +3364,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|indexType
-operator|==
-name|IndexType
-operator|.
-name|LUCENE
-condition|)
-block|{
 name|modules
 operator|.
 name|add
@@ -3382,7 +3373,6 @@ name|IndexCommandsModule
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|sysInjector
 operator|.
