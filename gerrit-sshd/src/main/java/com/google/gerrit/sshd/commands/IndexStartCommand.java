@@ -283,6 +283,16 @@ if|if
 condition|(
 name|versionManager
 operator|.
+name|isKnownIndex
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|versionManager
+operator|.
 name|startReindexer
 argument_list|(
 name|name
@@ -306,6 +316,17 @@ operator|.
 name|println
 argument_list|(
 literal|"Nothing to reindex, index is already the latest version"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|stderr
+operator|.
+name|println
+argument_list|(
+literal|"Cannot reindex, index is unknown based on this name"
 argument_list|)
 expr_stmt|;
 block|}

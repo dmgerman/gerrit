@@ -716,6 +716,27 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**    * Tells if an index with this name is currently known or not.    *    * @param name index name    * @return true if index is known and can be used, otherwise false.    */
+DECL|method|isKnownIndex (String name)
+specifier|public
+name|boolean
+name|isKnownIndex
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|defs
+operator|.
+name|get
+argument_list|(
+name|name
+argument_list|)
+operator|!=
+literal|null
+return|;
+block|}
 DECL|method|initIndex ( IndexDefinition<K, V, I> def, GerritIndexStatus cfg)
 specifier|protected
 parameter_list|<

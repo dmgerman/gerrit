@@ -255,6 +255,16 @@ if|if
 condition|(
 name|versionManager
 operator|.
+name|isKnownIndex
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|versionManager
+operator|.
 name|activateLatestIndex
 argument_list|(
 name|name
@@ -276,6 +286,17 @@ operator|.
 name|println
 argument_list|(
 literal|"Not activating index, already using latest version"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|stderr
+operator|.
+name|println
+argument_list|(
+literal|"Cannot activate index, unknown based on this name"
 argument_list|)
 expr_stmt|;
 block|}
