@@ -1585,15 +1585,10 @@ name|ChangeData
 argument_list|>
 name|destChanges
 init|=
-name|MergeSuperSet
-operator|.
-name|query
-argument_list|(
 name|queryProvider
 operator|.
 name|get
 argument_list|()
-argument_list|)
 operator|.
 name|byCommitsOnBranchNotMerged
 argument_list|(
