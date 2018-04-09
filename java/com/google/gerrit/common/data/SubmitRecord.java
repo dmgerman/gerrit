@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|GwtIncompatible
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -217,6 +231,8 @@ argument_list|>
 name|labels
 decl_stmt|;
 DECL|field|requirements
+annotation|@
+name|GwtIncompatible
 specifier|public
 name|List
 argument_list|<
@@ -426,6 +442,8 @@ return|;
 block|}
 block|}
 annotation|@
+name|GwtIncompatible
+annotation|@
 name|Override
 DECL|method|toString ()
 specifier|public
@@ -583,6 +601,8 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|GwtIncompatible
+annotation|@
 name|Override
 DECL|method|equals (Object o)
 specifier|public
@@ -658,6 +678,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|GwtIncompatible
 annotation|@
 name|Override
 DECL|method|hashCode ()
