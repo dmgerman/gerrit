@@ -1036,27 +1036,6 @@ name|boolean
 name|canDelete
 parameter_list|()
 block|{
-if|if
-condition|(
-name|RefNames
-operator|.
-name|REFS_CONFIG
-operator|.
-name|equals
-argument_list|(
-name|refName
-argument_list|)
-condition|)
-block|{
-comment|// Never allow removal of the refs/meta/config branch.
-comment|// Deleting the branch would destroy all Gerrit specific
-comment|// metadata about the project, including its access rules.
-comment|// If a project is to be removed from Gerrit, its repository
-comment|// should be removed first.
-return|return
-literal|false
-return|;
-block|}
 switch|switch
 condition|(
 name|getUser

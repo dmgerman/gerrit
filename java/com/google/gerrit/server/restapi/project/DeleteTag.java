@@ -69,6 +69,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+operator|.
+name|isConfigRef
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -81,6 +99,22 @@ operator|.
 name|common
 operator|.
 name|Input
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|MethodNotAllowedException
 import|;
 end_import
 
@@ -356,6 +390,25 @@ operator|.
 name|ref
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|isConfigRef
+argument_list|(
+name|tag
+argument_list|)
+condition|)
+block|{
+comment|// Never allow to delete the meta config branch.
+throw|throw
+operator|new
+name|MethodNotAllowedException
+argument_list|(
+literal|"not allowed to delete "
+operator|+
+name|tag
+argument_list|)
+throw|;
+block|}
 name|permissionBackend
 operator|.
 name|currentUser

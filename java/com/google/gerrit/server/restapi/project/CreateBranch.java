@@ -69,6 +69,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+operator|.
+name|isConfigRef
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1332,6 +1350,27 @@ operator|.
 name|getName
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|isConfigRef
+argument_list|(
+name|name
+operator|.
+name|get
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// Never allow to delete the meta config branch.
+name|info
+operator|.
+name|canDelete
+operator|=
+literal|null
+expr_stmt|;
+block|}
+else|else
+block|{
 name|info
 operator|.
 name|canDelete
@@ -1365,6 +1404,7 @@ literal|true
 else|:
 literal|null
 expr_stmt|;
+block|}
 return|return
 name|info
 return|;
