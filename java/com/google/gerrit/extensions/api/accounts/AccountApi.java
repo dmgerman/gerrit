@@ -566,6 +566,26 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|createEmail (EmailInput emailInput)
+name|EmailApi
+name|createEmail
+parameter_list|(
+name|EmailInput
+name|emailInput
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|email (String email)
+name|EmailApi
+name|email
+parameter_list|(
+name|String
+name|email
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|setStatus (String status)
 name|void
 name|setStatus
@@ -1114,6 +1134,44 @@ DECL|method|deleteEmail (String email)
 specifier|public
 name|void
 name|deleteEmail
+parameter_list|(
+name|String
+name|email
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|createEmail (EmailInput input)
+specifier|public
+name|EmailApi
+name|createEmail
+parameter_list|(
+name|EmailInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|email (String email)
+specifier|public
+name|EmailApi
+name|email
 parameter_list|(
 name|String
 name|email
