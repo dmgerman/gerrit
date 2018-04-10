@@ -120,20 +120,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -173,6 +159,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -312,11 +308,12 @@ argument_list|)
 return|;
 block|}
 comment|/** Returns the specified external ID. */
-annotation|@
-name|Nullable
 DECL|method|get (ExternalId.Key key)
 specifier|public
+name|Optional
+argument_list|<
 name|ExternalId
+argument_list|>
 name|get
 parameter_list|(
 name|ExternalId
@@ -339,11 +336,12 @@ argument_list|)
 return|;
 block|}
 comment|/** Returns the specified external ID from the given revision. */
-annotation|@
-name|Nullable
 DECL|method|get (ExternalId.Key key, ObjectId rev)
 specifier|public
+name|Optional
+argument_list|<
 name|ExternalId
+argument_list|>
 name|get
 parameter_list|(
 name|ExternalId
