@@ -326,7 +326,14 @@ name|stderr
 operator|.
 name|println
 argument_list|(
-literal|"Cannot reindex, index is unknown based on this name"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Cannot reindex %s: unknown"
+argument_list|,
+name|name
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
