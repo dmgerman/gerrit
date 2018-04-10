@@ -106,9 +106,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lucene
+name|server
 operator|.
-name|LuceneVersionManager
+name|index
+operator|.
+name|ReindexerAlreadyRunningException
 import|;
 end_import
 
@@ -124,7 +126,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|ReindexerAlreadyRunningException
+name|VersionManager
 import|;
 end_import
 
@@ -258,12 +260,12 @@ specifier|private
 name|String
 name|name
 decl_stmt|;
-DECL|field|luceneVersionManager
+DECL|field|versionManager
 annotation|@
 name|Inject
 specifier|private
-name|LuceneVersionManager
-name|luceneVersionManager
+name|VersionManager
+name|versionManager
 decl_stmt|;
 annotation|@
 name|Override
@@ -279,7 +281,17 @@ try|try
 block|{
 if|if
 condition|(
-name|luceneVersionManager
+name|versionManager
+operator|.
+name|isKnownIndex
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|versionManager
 operator|.
 name|startReindexer
 argument_list|(
@@ -304,6 +316,24 @@ operator|.
 name|println
 argument_list|(
 literal|"Nothing to reindex, index is already the latest version"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|stderr
+operator|.
+name|println
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Cannot reindex %s: unknown"
+argument_list|,
+name|name
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
