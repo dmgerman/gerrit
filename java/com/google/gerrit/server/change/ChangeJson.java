@@ -3701,6 +3701,13 @@ argument_list|(
 name|format
 argument_list|(
 name|cd
+argument_list|,
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
