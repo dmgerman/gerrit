@@ -77,22 +77,9 @@ DECL|interface|GlobalOrPluginPermission
 specifier|public
 interface|interface
 name|GlobalOrPluginPermission
-block|{
-comment|/** @return name used in {@code project.config} permissions. */
-DECL|method|permissionName ()
-specifier|public
-name|String
-name|permissionName
-parameter_list|()
-function_decl|;
-comment|/** @return readable identifier of this permission for exception message. */
-DECL|method|describeForException ()
-specifier|public
-name|String
-name|describeForException
-parameter_list|()
-function_decl|;
-block|}
+extends|extends
+name|GerritPermission
+block|{}
 end_interface
 
 end_unit

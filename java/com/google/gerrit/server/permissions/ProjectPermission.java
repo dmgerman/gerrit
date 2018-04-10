@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|CaseFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -84,21 +98,19 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|Locale
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|gerrit
 operator|.
-name|util
+name|extensions
 operator|.
-name|Optional
+name|api
+operator|.
+name|access
+operator|.
+name|GerritPermission
 import|;
 end_import
 
@@ -107,6 +119,8 @@ DECL|enum|ProjectPermission
 specifier|public
 enum|enum
 name|ProjectPermission
+implements|implements
+name|GerritPermission
 block|{
 comment|/**    * Can access at least one reference or change within the repository.    *    *<p>Checking this permission instead of {@link #READ} may require filtering to hide specific    * references or changes, which can be expensive.    */
 DECL|enumConstant|ACCESS
@@ -169,7 +183,19 @@ parameter_list|()
 block|{
 name|name
 operator|=
-literal|null
+name|CaseFormat
+operator|.
+name|UPPER_UNDERSCORE
+operator|.
+name|to
+argument_list|(
+name|CaseFormat
+operator|.
+name|LOWER_CAMEL
+argument_list|,
+name|name
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|ProjectPermission (String name)
@@ -186,48 +212,16 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-comment|/** @return name used in {@code project.config} permissions. */
+annotation|@
+name|Override
 DECL|method|permissionName ()
 specifier|public
-name|Optional
-argument_list|<
 name|String
-argument_list|>
 name|permissionName
 parameter_list|()
 block|{
 return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
 name|name
-argument_list|)
-return|;
-block|}
-DECL|method|describeForException ()
-specifier|public
-name|String
-name|describeForException
-parameter_list|()
-block|{
-return|return
-name|toString
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|(
-name|Locale
-operator|.
-name|US
-argument_list|)
-operator|.
-name|replace
-argument_list|(
-literal|'_'
-argument_list|,
-literal|' '
-argument_list|)
 return|;
 block|}
 block|}

@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|CaseFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -79,26 +93,6 @@ operator|.
 name|data
 operator|.
 name|Permission
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Locale
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
 import|;
 end_import
 
@@ -213,7 +207,19 @@ argument_list|()
 block|{
 name|name
 operator|=
-literal|null
+name|CaseFormat
+operator|.
+name|UPPER_UNDERSCORE
+operator|.
+name|to
+argument_list|(
+name|CaseFormat
+operator|.
+name|LOWER_CAMEL
+argument_list|,
+name|name
+argument_list|()
+argument_list|)
 block|;   }
 DECL|method|ChangePermission (String name)
 name|ChangePermission
@@ -228,58 +234,19 @@ name|name
 operator|=
 name|name
 block|;   }
-comment|/** @return name used in {@code project.config} permissions. */
 expr|@
 name|Override
 DECL|method|permissionName ()
 specifier|public
-name|Optional
-argument_list|<
 name|String
-argument_list|>
 name|permissionName
 argument_list|()
 block|{
 return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
 name|name
-argument_list|)
 return|;
 block|}
 end_expr_stmt
-
-begin_function
-annotation|@
-name|Override
-DECL|method|describeForException ()
-specifier|public
-name|String
-name|describeForException
-parameter_list|()
-block|{
-return|return
-name|toString
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|(
-name|Locale
-operator|.
-name|US
-argument_list|)
-operator|.
-name|replace
-argument_list|(
-literal|'_'
-argument_list|,
-literal|' '
-argument_list|)
-return|;
-block|}
-end_function
 
 unit|}
 end_unit

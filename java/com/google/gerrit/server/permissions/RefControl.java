@@ -2308,9 +2308,6 @@ name|perm
 operator|.
 name|permissionName
 argument_list|()
-operator|.
-name|get
-argument_list|()
 argument_list|)
 return|;
 case|case
@@ -2390,9 +2387,6 @@ argument_list|(
 name|perm
 operator|.
 name|permissionName
-argument_list|()
-operator|.
-name|get
 argument_list|()
 argument_list|)
 return|;
