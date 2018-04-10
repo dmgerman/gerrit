@@ -9344,11 +9344,6 @@ name|LinkedHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|Boolean
-name|isWorldReadable
-init|=
-literal|null
-decl_stmt|;
 try|try
 init|(
 name|Repository
@@ -9455,21 +9450,6 @@ condition|(
 name|want
 condition|)
 block|{
-if|if
-condition|(
-name|isWorldReadable
-operator|==
-literal|null
-condition|)
-block|{
-name|isWorldReadable
-operator|=
-name|isWorldReadable
-argument_list|(
-name|cd
-argument_list|)
-expr_stmt|;
-block|}
 name|res
 operator|.
 name|put
@@ -9495,8 +9475,6 @@ argument_list|,
 literal|false
 argument_list|,
 name|changeInfo
-argument_list|,
-name|isWorldReadable
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9763,11 +9741,6 @@ argument_list|,
 literal|true
 argument_list|,
 literal|null
-argument_list|,
-name|isWorldReadable
-argument_list|(
-name|cd
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|accountLoader
@@ -9780,7 +9753,7 @@ name|rev
 return|;
 block|}
 block|}
-DECL|method|toRevisionInfo ( ChangeData cd, PatchSet in, @Nullable Repository repo, @Nullable RevWalk rw, boolean fillCommit, @Nullable ChangeInfo changeInfo, boolean isWorldReadable)
+DECL|method|toRevisionInfo ( ChangeData cd, PatchSet in, @Nullable Repository repo, @Nullable RevWalk rw, boolean fillCommit, @Nullable ChangeInfo changeInfo)
 specifier|private
 name|RevisionInfo
 name|toRevisionInfo
@@ -9808,9 +9781,6 @@ annotation|@
 name|Nullable
 name|ChangeInfo
 name|changeInfo
-parameter_list|,
-name|boolean
-name|isWorldReadable
 parameter_list|)
 throws|throws
 name|PatchListNotAvailableException
@@ -9820,6 +9790,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|PermissionBackendException
 block|{
 name|Change
 name|c
@@ -9906,8 +9878,6 @@ argument_list|(
 name|cd
 argument_list|,
 name|in
-argument_list|,
-name|isWorldReadable
 argument_list|)
 expr_stmt|;
 name|out
@@ -10566,7 +10536,7 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|makeFetchMap (ChangeData cd, PatchSet in, boolean isWorldReadable)
+DECL|method|makeFetchMap (ChangeData cd, PatchSet in)
 specifier|private
 name|Map
 argument_list|<
@@ -10581,10 +10551,13 @@ name|cd
 parameter_list|,
 name|PatchSet
 name|in
-parameter_list|,
-name|boolean
-name|isWorldReadable
 parameter_list|)
+throws|throws
+name|PermissionBackendException
+throws|,
+name|OrmException
+throws|,
+name|IOException
 block|{
 name|Map
 argument_list|<
@@ -10668,6 +10641,9 @@ argument_list|()
 operator|&&
 operator|!
 name|isWorldReadable
+argument_list|(
+name|cd
+argument_list|)
 condition|)
 block|{
 continue|continue;
