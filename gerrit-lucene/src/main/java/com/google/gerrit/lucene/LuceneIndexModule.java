@@ -675,6 +675,7 @@ name|singleVersions
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|bind
 argument_list|(
 name|VersionManager
@@ -689,7 +690,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Provides
@@ -756,20 +756,6 @@ name|void
 name|configure
 parameter_list|()
 block|{
-name|bind
-argument_list|(
-name|VersionManager
-operator|.
-name|class
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|LuceneVersionManager
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|listener
 argument_list|()
 operator|.
