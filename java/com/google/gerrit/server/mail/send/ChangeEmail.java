@@ -2566,8 +2566,6 @@ name|Id
 name|to
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 return|return
@@ -2580,16 +2578,9 @@ name|args
 operator|.
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|args
-operator|.
-name|identifiedUserFactory
-operator|.
-name|create
+name|absentUser
 argument_list|(
 name|to
-argument_list|)
 argument_list|)
 operator|.
 name|change
@@ -2602,9 +2593,6 @@ argument_list|(
 name|args
 operator|.
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|)
 operator|.
 name|test
