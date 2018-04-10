@@ -588,6 +588,17 @@ argument_list|,
 literal|"9200"
 argument_list|)
 expr_stmt|;
+name|index
+operator|.
+name|string
+argument_list|(
+literal|"Result window size"
+argument_list|,
+literal|"maxLimit"
+argument_list|,
+literal|"10000"
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
