@@ -2288,17 +2288,6 @@ operator|.
 name|getAsInt
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|added
-operator|!=
-literal|0
-operator|&&
-name|deleted
-operator|!=
-literal|0
-condition|)
-block|{
 name|cd
 operator|.
 name|setChangedLines
@@ -2308,7 +2297,6 @@ argument_list|,
 name|deleted
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// Mergeable.
 name|JsonElement
