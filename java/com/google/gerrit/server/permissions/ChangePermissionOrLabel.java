@@ -95,24 +95,7 @@ interface|interface
 name|ChangePermissionOrLabel
 extends|extends
 name|GerritPermission
-block|{
-annotation|@
-name|Deprecated
-annotation|@
-name|Override
-DECL|method|permissionName ()
-specifier|default
-name|String
-name|permissionName
-parameter_list|()
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
-block|}
-block|}
+block|{}
 end_interface
 
 end_unit

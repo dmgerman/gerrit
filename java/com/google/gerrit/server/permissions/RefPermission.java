@@ -154,24 +154,7 @@ block|,
 comment|/** Write access to ref's config section in {@code project.config}. */
 DECL|enumConstant|WRITE_CONFIG
 name|WRITE_CONFIG
-block|;
-annotation|@
-name|Override
-annotation|@
-name|Deprecated
-DECL|method|permissionName ()
-specifier|public
-name|String
-name|permissionName
-parameter_list|()
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
-block|}
-block|}
+block|; }
 end_enum
 
 end_unit

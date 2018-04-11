@@ -88,12 +88,6 @@ specifier|public
 interface|interface
 name|GerritPermission
 block|{
-comment|/**    * @return the permission name used in {@code project.config} permissions if this permission is    *     exposed. Or else, return a lower camel case string of the permission enum.    */
-DECL|method|permissionName ()
-name|String
-name|permissionName
-parameter_list|()
-function_decl|;
 comment|/** @return readable identifier of this permission for exception message. */
 DECL|method|describeForException ()
 specifier|default

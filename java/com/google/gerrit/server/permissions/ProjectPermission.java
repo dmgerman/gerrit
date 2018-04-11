@@ -135,24 +135,7 @@ block|,
 comment|/** Can push to at least one reference within the repository. */
 DECL|enumConstant|PUSH_AT_LEAST_ONE_REF
 name|PUSH_AT_LEAST_ONE_REF
-block|;
-annotation|@
-name|Deprecated
-annotation|@
-name|Override
-DECL|method|permissionName ()
-specifier|public
-name|String
-name|permissionName
-parameter_list|()
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
-block|}
-block|}
+block|; }
 end_enum
 
 end_unit
