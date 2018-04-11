@@ -84,6 +84,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|DefaultPermissionMappings
+operator|.
+name|globalPermissionName
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -944,10 +962,12 @@ decl_stmt|;
 return|return
 name|has
 argument_list|(
-name|pluginPermission
+name|DefaultPermissionMappings
 operator|.
-name|permissionName
-argument_list|()
+name|pluginPermissionName
+argument_list|(
+name|pluginPermission
+argument_list|)
 argument_list|)
 operator|||
 operator|(
@@ -1019,10 +1039,10 @@ case|:
 return|return
 name|has
 argument_list|(
+name|globalPermissionName
+argument_list|(
 name|perm
-operator|.
-name|permissionName
-argument_list|()
+argument_list|)
 argument_list|)
 operator|||
 name|can
@@ -1062,10 +1082,10 @@ case|:
 return|return
 name|has
 argument_list|(
+name|globalPermissionName
+argument_list|(
 name|perm
-operator|.
-name|permissionName
-argument_list|()
+argument_list|)
 argument_list|)
 operator|||
 name|isAdmin
@@ -1080,10 +1100,10 @@ case|:
 return|return
 name|has
 argument_list|(
+name|globalPermissionName
+argument_list|(
 name|perm
-operator|.
-name|permissionName
-argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1255,7 +1275,10 @@ argument_list|()
 operator|.
 name|getPermission
 argument_list|(
+name|checkNotNull
+argument_list|(
 name|permissionName
+argument_list|)
 argument_list|)
 argument_list|)
 return|;
