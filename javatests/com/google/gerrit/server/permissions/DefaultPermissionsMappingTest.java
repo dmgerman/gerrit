@@ -83,6 +83,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|DefaultPermissionMappings
+operator|.
+name|refPermission
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -109,24 +127,22 @@ import|;
 end_import
 
 begin_class
-DECL|class|RefPermissionTest
+DECL|class|DefaultPermissionsMappingTest
 specifier|public
 class|class
-name|RefPermissionTest
+name|DefaultPermissionsMappingTest
 block|{
 annotation|@
 name|Test
-DECL|method|fromName ()
+DECL|method|stringToRefPermission ()
 specifier|public
 name|void
-name|fromName
+name|stringToRefPermission
 parameter_list|()
 block|{
 name|assertThat
 argument_list|(
-name|RefPermission
-operator|.
-name|fromName
+name|refPermission
 argument_list|(
 literal|"doesnotexist"
 argument_list|)
@@ -137,9 +153,7 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|RefPermission
-operator|.
-name|fromName
+name|refPermission
 argument_list|(
 literal|""
 argument_list|)
@@ -150,9 +164,7 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|RefPermission
-operator|.
-name|fromName
+name|refPermission
 argument_list|(
 name|Permission
 operator|.

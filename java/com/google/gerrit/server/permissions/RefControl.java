@@ -2304,10 +2304,10 @@ comment|// TODO This isn't an accurate test.
 return|return
 name|canPerform
 argument_list|(
+name|refPermissionName
+argument_list|(
 name|perm
-operator|.
-name|permissionName
-argument_list|()
+argument_list|)
 argument_list|)
 return|;
 case|case
@@ -2384,10 +2384,10 @@ case|:
 return|return
 name|canPerform
 argument_list|(
+name|refPermissionName
+argument_list|(
 name|perm
-operator|.
-name|permissionName
-argument_list|()
+argument_list|)
 argument_list|)
 return|;
 case|case
@@ -2478,6 +2478,40 @@ literal|" unsupported"
 argument_list|)
 throw|;
 block|}
+block|}
+DECL|method|refPermissionName (RefPermission refPermission)
+specifier|private
+specifier|static
+name|String
+name|refPermissionName
+parameter_list|(
+name|RefPermission
+name|refPermission
+parameter_list|)
+block|{
+comment|// Within this class, it's programmer error to call this method on a
+comment|// RefPermission that isn't associated with a permission name.
+return|return
+name|DefaultPermissionMappings
+operator|.
+name|refPermissionName
+argument_list|(
+name|refPermission
+argument_list|)
+operator|.
+name|orElseThrow
+argument_list|(
+parameter_list|()
+lambda|->
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"no name for "
+operator|+
+name|refPermission
+argument_list|)
+argument_list|)
+return|;
 block|}
 block|}
 end_class
