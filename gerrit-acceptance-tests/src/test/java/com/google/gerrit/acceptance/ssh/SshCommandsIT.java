@@ -401,6 +401,17 @@ literal|"project"
 argument_list|)
 argument_list|,
 comment|// "activate" and "start" are not included
+literal|"logging"
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+literal|"ls"
+argument_list|,
+literal|"set"
+argument_list|)
+argument_list|,
 literal|"plugin"
 argument_list|,
 name|ImmutableList
