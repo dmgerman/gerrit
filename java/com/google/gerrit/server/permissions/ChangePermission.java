@@ -112,24 +112,7 @@ name|SUBMIT
 block|,
 DECL|enumConstant|SUBMIT_AS
 name|SUBMIT_AS
-block|;
-annotation|@
-name|Deprecated
-annotation|@
-name|Override
-DECL|method|permissionName ()
-specifier|public
-name|String
-name|permissionName
-parameter_list|()
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
-block|}
-block|}
+block|; }
 end_enum
 
 end_unit
