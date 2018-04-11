@@ -335,7 +335,7 @@ name|ON_BEHALF_OF
 condition|)
 block|{
 return|return
-literal|"labelAs "
+literal|"label on behalf of "
 operator|+
 name|name
 return|;
@@ -725,7 +725,7 @@ name|ON_BEHALF_OF
 condition|)
 block|{
 return|return
-literal|"labelAs "
+literal|"label on behalf of "
 operator|+
 name|label
 operator|.

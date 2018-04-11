@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -84,6 +100,22 @@ name|GerritPermission
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+import|;
+end_import
+
 begin_enum
 DECL|enum|ProjectPermission
 specifier|public
@@ -95,6 +127,9 @@ block|{
 comment|/**    * Can access at least one reference or change within the repository.    *    *<p>Checking this permission instead of {@link #READ} may require filtering to hide specific    * references or changes, which can be expensive.    */
 DECL|enumConstant|ACCESS
 name|ACCESS
+argument_list|(
+literal|"access at least one ref"
+argument_list|)
 block|,
 comment|/**    * Can read all references in the repository.    *    *<p>This is a stronger form of {@link #ACCESS} where no filtering is required.    */
 DECL|enumConstant|READ
@@ -111,18 +146,38 @@ block|,
 comment|/** Can run receive pack. */
 DECL|enumConstant|RUN_RECEIVE_PACK
 name|RUN_RECEIVE_PACK
+argument_list|(
+literal|"run receive-pack"
+argument_list|)
 block|,
 comment|/** Can run upload pack. */
 DECL|enumConstant|RUN_UPLOAD_PACK
 name|RUN_UPLOAD_PACK
+argument_list|(
+literal|"run upload-pack"
+argument_list|)
 block|,
 comment|/** Allow read access to refs/meta/config. */
 DECL|enumConstant|READ_CONFIG
 name|READ_CONFIG
+argument_list|(
+literal|"read "
+operator|+
+name|RefNames
+operator|.
+name|REFS_CONFIG
+argument_list|)
 block|,
 comment|/** Allow write access to refs/meta/config. */
 DECL|enumConstant|WRITE_CONFIG
 name|WRITE_CONFIG
+argument_list|(
+literal|"write "
+operator|+
+name|RefNames
+operator|.
+name|REFS_CONFIG
+argument_list|)
 block|,
 comment|/** Allow banning commits from Gerrit preventing pushes of these commits. */
 DECL|enumConstant|BAN_COMMIT
@@ -135,7 +190,70 @@ block|,
 comment|/** Can push to at least one reference within the repository. */
 DECL|enumConstant|PUSH_AT_LEAST_ONE_REF
 name|PUSH_AT_LEAST_ONE_REF
-block|; }
+argument_list|(
+literal|"push to at least one ref"
+argument_list|)
+block|;
+DECL|field|description
+specifier|private
+specifier|final
+name|String
+name|description
+decl_stmt|;
+DECL|method|ProjectPermission ()
+specifier|private
+name|ProjectPermission
+parameter_list|()
+block|{
+name|this
+operator|.
+name|description
+operator|=
+literal|null
+expr_stmt|;
+block|}
+DECL|method|ProjectPermission (String description)
+specifier|private
+name|ProjectPermission
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+block|{
+name|this
+operator|.
+name|description
+operator|=
+name|checkNotNull
+argument_list|(
+name|description
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|describeForException ()
+specifier|public
+name|String
+name|describeForException
+parameter_list|()
+block|{
+return|return
+name|description
+operator|!=
+literal|null
+condition|?
+name|description
+else|:
+name|GerritPermission
+operator|.
+name|describeEnumValue
+argument_list|(
+name|this
+argument_list|)
+return|;
+block|}
+block|}
 end_enum
 
 end_unit

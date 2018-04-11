@@ -2802,7 +2802,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"write config not permitted"
+literal|"write refs/meta/config not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -3162,7 +3162,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"set head not permitted"
+literal|"set HEAD not permitted for refs/heads/test"
 argument_list|)
 expr_stmt|;
 name|gApi

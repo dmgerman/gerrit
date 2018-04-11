@@ -90,13 +90,26 @@ name|GerritPermission
 block|{
 comment|/** @return readable identifier of this permission for exception message. */
 DECL|method|describeForException ()
-specifier|default
 name|String
 name|describeForException
 parameter_list|()
+function_decl|;
+DECL|method|describeEnumValue (Enum<?> value)
+specifier|static
+name|String
+name|describeEnumValue
+parameter_list|(
+name|Enum
+argument_list|<
+name|?
+argument_list|>
+name|value
+parameter_list|)
 block|{
 return|return
-name|toString
+name|value
+operator|.
+name|name
 argument_list|()
 operator|.
 name|toLowerCase

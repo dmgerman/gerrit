@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -110,6 +126,9 @@ name|FORCE_UPDATE
 block|,
 DECL|enumConstant|SET_HEAD
 name|SET_HEAD
+argument_list|(
+literal|"set HEAD"
+argument_list|)
 block|,
 DECL|enumConstant|FORGE_AUTHOR
 name|FORGE_AUTHOR
@@ -150,11 +169,77 @@ block|,
 comment|/** Read access to ref's config section in {@code project.config}. */
 DECL|enumConstant|READ_CONFIG
 name|READ_CONFIG
+argument_list|(
+literal|"read ref config"
+argument_list|)
 block|,
 comment|/** Write access to ref's config section in {@code project.config}. */
 DECL|enumConstant|WRITE_CONFIG
 name|WRITE_CONFIG
-block|; }
+argument_list|(
+literal|"write ref config"
+argument_list|)
+block|;
+DECL|field|description
+specifier|private
+specifier|final
+name|String
+name|description
+decl_stmt|;
+DECL|method|RefPermission ()
+specifier|private
+name|RefPermission
+parameter_list|()
+block|{
+name|this
+operator|.
+name|description
+operator|=
+literal|null
+expr_stmt|;
+block|}
+DECL|method|RefPermission (String description)
+specifier|private
+name|RefPermission
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+block|{
+name|this
+operator|.
+name|description
+operator|=
+name|checkNotNull
+argument_list|(
+name|description
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|describeForException ()
+specifier|public
+name|String
+name|describeForException
+parameter_list|()
+block|{
+return|return
+name|description
+operator|!=
+literal|null
+condition|?
+name|description
+else|:
+name|GerritPermission
+operator|.
+name|describeEnumValue
+argument_list|(
+name|this
+argument_list|)
+return|;
+block|}
+block|}
 end_enum
 
 end_unit
