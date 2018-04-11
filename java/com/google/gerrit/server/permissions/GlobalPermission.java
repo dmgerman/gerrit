@@ -232,16 +232,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Locale
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Set
 import|;
 end_import
@@ -818,36 +808,6 @@ name|name
 return|;
 block|}
 end_expr_stmt
-
-begin_function
-annotation|@
-name|Override
-DECL|method|describeForException ()
-specifier|public
-name|String
-name|describeForException
-parameter_list|()
-block|{
-return|return
-name|toString
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|(
-name|Locale
-operator|.
-name|US
-argument_list|)
-operator|.
-name|replace
-argument_list|(
-literal|'_'
-argument_list|,
-literal|' '
-argument_list|)
-return|;
-block|}
-end_function
 
 begin_function
 DECL|method|resolve ( @ullable String pluginName, String capability, CapabilityScope scope, boolean fallBackToAdmin, Class<?> clazz, Class<?> annotationClass)

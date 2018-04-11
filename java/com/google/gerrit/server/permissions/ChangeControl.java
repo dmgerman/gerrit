@@ -2190,9 +2190,6 @@ name|perm
 operator|.
 name|permissionName
 argument_list|()
-operator|.
-name|get
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -2240,9 +2237,6 @@ name|perm
 operator|.
 name|permissionName
 argument_list|()
-operator|.
-name|get
-argument_list|()
 argument_list|)
 operator|.
 name|isEmpty
@@ -2268,9 +2262,6 @@ argument_list|(
 name|perm
 operator|.
 name|permissionName
-argument_list|()
-operator|.
-name|get
 argument_list|()
 argument_list|)
 decl_stmt|;
