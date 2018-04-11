@@ -494,6 +494,11 @@ name|AuthException
 throws|,
 name|PermissionBackendException
 block|{
+name|permissionBackend
+operator|.
+name|checkUsesDefaultCapabilities
+argument_list|()
+expr_stmt|;
 name|IdentifiedUser
 name|target
 init|=

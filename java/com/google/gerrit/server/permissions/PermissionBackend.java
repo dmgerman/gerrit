@@ -198,6 +198,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|ResourceNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -528,6 +544,42 @@ name|Id
 name|user
 parameter_list|)
 function_decl|;
+comment|/**    * Check whether this {@code PermissionBackend} respects the same global capabilities as the    * {@link DefaultPermissionBackend}.    *    *<p>If true, then it makes sense for downstream callers to refer to built-in Gerrit capability    * names in user-facing error messages, for example.    *    * @return whether this is the default permission backend.    */
+DECL|method|usesDefaultCapabilities ()
+specifier|public
+name|boolean
+name|usesDefaultCapabilities
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+comment|/**    * Throw {@link ResourceNotFoundException} if this backend does not use the default global    * capabilities.    */
+DECL|method|checkUsesDefaultCapabilities ()
+specifier|public
+name|void
+name|checkUsesDefaultCapabilities
+parameter_list|()
+throws|throws
+name|ResourceNotFoundException
+block|{
+if|if
+condition|(
+operator|!
+name|usesDefaultCapabilities
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceNotFoundException
+argument_list|(
+literal|"Gerrit capabilities not used on this server"
+argument_list|)
+throw|;
+block|}
+block|}
 comment|/**    * Bulk evaluate a set of {@link PermissionBackendCondition} for view handling.    *    *<p>Overridden implementations should call {@link PermissionBackendCondition#set(boolean)} to    * cache the result of {@code testOrFalse} in the condition for later evaluation. Caching the    * result will bypass the usual invocation of {@code testOrFalse}.    *    * @param conds conditions to consider.    */
 DECL|method|bulkEvaluateTest (Set<PermissionBackendCondition> conds)
 specifier|public

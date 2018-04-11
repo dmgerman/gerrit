@@ -651,6 +651,18 @@ name|identifiedUser
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|usesDefaultCapabilities ()
+specifier|public
+name|boolean
+name|usesDefaultCapabilities
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 DECL|class|WithUserImpl
 class|class
 name|WithUserImpl

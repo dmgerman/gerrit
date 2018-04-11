@@ -212,7 +212,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|AuthException
+name|BinaryResult
 import|;
 end_import
 
@@ -228,7 +228,23 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|BinaryResult
+name|ResourceNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
 import|;
 end_import
 
@@ -671,10 +687,15 @@ name|AccountResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|AuthException
+name|RestApiException
 throws|,
 name|PermissionBackendException
 block|{
+name|permissionBackend
+operator|.
+name|checkUsesDefaultCapabilities
+argument_list|()
+expr_stmt|;
 name|PermissionBackend
 operator|.
 name|WithUser
@@ -1170,6 +1191,28 @@ operator|.
 name|Capability
 argument_list|>
 block|{
+DECL|field|permissionBackend
+specifier|private
+specifier|final
+name|PermissionBackend
+name|permissionBackend
+decl_stmt|;
+annotation|@
+name|Inject
+DECL|method|CheckOne (PermissionBackend permissionBackend)
+name|CheckOne
+parameter_list|(
+name|PermissionBackend
+name|permissionBackend
+parameter_list|)
+block|{
+name|this
+operator|.
+name|permissionBackend
+operator|=
+name|permissionBackend
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|apply (Capability resource)
@@ -1180,7 +1223,14 @@ parameter_list|(
 name|Capability
 name|resource
 parameter_list|)
+throws|throws
+name|ResourceNotFoundException
 block|{
+name|permissionBackend
+operator|.
+name|checkUsesDefaultCapabilities
+argument_list|()
+expr_stmt|;
 return|return
 name|BinaryResult
 operator|.
