@@ -2186,10 +2186,10 @@ name|refControl
 operator|.
 name|canPerform
 argument_list|(
+name|changePermissionName
+argument_list|(
 name|perm
-operator|.
-name|permissionName
-argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -2432,6 +2432,40 @@ name|permSet
 operator|.
 name|size
 argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|changePermissionName (ChangePermission changePermission)
+specifier|private
+specifier|static
+name|String
+name|changePermissionName
+parameter_list|(
+name|ChangePermission
+name|changePermission
+parameter_list|)
+block|{
+comment|// Within this class, it's programmer error to call this method on a
+comment|// ChangePermission that isn't associated with a permission name.
+return|return
+name|DefaultPermissionMappings
+operator|.
+name|changePermissionName
+argument_list|(
+name|changePermission
+argument_list|)
+operator|.
+name|orElseThrow
+argument_list|(
+parameter_list|()
+lambda|->
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"no name for "
+operator|+
+name|changePermission
+argument_list|)
 argument_list|)
 return|;
 block|}
