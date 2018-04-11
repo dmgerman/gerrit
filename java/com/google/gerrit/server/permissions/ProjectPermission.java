@@ -72,36 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|CaseFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|Permission
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -129,89 +99,45 @@ block|,
 comment|/**    * Can read all references in the repository.    *    *<p>This is a stronger form of {@link #ACCESS} where no filtering is required.    */
 DECL|enumConstant|READ
 name|READ
-parameter_list|(
-name|Permission
-operator|.
-name|READ
-parameter_list|)
-operator|,
+block|,
 comment|/**    * Can create at least one reference in the project.    *    *<p>This project level permission only validates the user may create some type of reference    * within the project. The exact reference name must be checked at creation:    *    *<pre>permissionBackend    *    .user(user)    *    .project(proj)    *    .ref(ref)    *    .check(RefPermission.CREATE);    *</pre>    */
 DECL|enumConstant|CREATE_REF
-constructor|CREATE_REF
-operator|,
+name|CREATE_REF
+block|,
 comment|/**    * Can create at least one change in the project.    *    *<p>This project level permission only validates the user may create a change for some branch    * within the project. The exact reference name must be checked at creation:    *    *<pre>permissionBackend    *    .user(user)    *    .project(proj)    *    .ref(ref)    *    .check(RefPermission.CREATE_CHANGE);    *</pre>    */
 DECL|enumConstant|CREATE_CHANGE
-constructor|CREATE_CHANGE
-operator|,
+name|CREATE_CHANGE
+block|,
 comment|/** Can run receive pack. */
 DECL|enumConstant|RUN_RECEIVE_PACK
-constructor|RUN_RECEIVE_PACK
-operator|,
+name|RUN_RECEIVE_PACK
+block|,
 comment|/** Can run upload pack. */
 DECL|enumConstant|RUN_UPLOAD_PACK
-constructor|RUN_UPLOAD_PACK
-operator|,
+name|RUN_UPLOAD_PACK
+block|,
 comment|/** Allow read access to refs/meta/config. */
 DECL|enumConstant|READ_CONFIG
-constructor|READ_CONFIG
-operator|,
+name|READ_CONFIG
+block|,
 comment|/** Allow write access to refs/meta/config. */
 DECL|enumConstant|WRITE_CONFIG
-constructor|WRITE_CONFIG
-operator|,
+name|WRITE_CONFIG
+block|,
 comment|/** Allow banning commits from Gerrit preventing pushes of these commits. */
 DECL|enumConstant|BAN_COMMIT
-constructor|BAN_COMMIT
-operator|,
+name|BAN_COMMIT
+block|,
 comment|/** Allow accessing the project's reflog. */
 DECL|enumConstant|READ_REFLOG
-constructor|READ_REFLOG
-operator|,
+name|READ_REFLOG
+block|,
 comment|/** Can push to at least one reference within the repository. */
 DECL|enumConstant|PUSH_AT_LEAST_ONE_REF
-constructor|PUSH_AT_LEAST_ONE_REF
-empty_stmt|;
-DECL|field|name
-specifier|private
-specifier|final
-name|String
-name|name
-decl_stmt|;
-DECL|method|ProjectPermission ()
-name|ProjectPermission
-parameter_list|()
-block|{
-name|name
-operator|=
-name|CaseFormat
-operator|.
-name|UPPER_UNDERSCORE
-operator|.
-name|to
-argument_list|(
-name|CaseFormat
-operator|.
-name|LOWER_CAMEL
-argument_list|,
-name|name
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|ProjectPermission (String name)
-name|ProjectPermission
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-name|this
-operator|.
-name|name
-operator|=
-name|name
-expr_stmt|;
-block|}
+name|PUSH_AT_LEAST_ONE_REF
+block|;
+annotation|@
+name|Deprecated
 annotation|@
 name|Override
 DECL|method|permissionName ()
@@ -220,9 +146,11 @@ name|String
 name|permissionName
 parameter_list|()
 block|{
-return|return
-name|name
-return|;
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
 block|}
 block|}
 end_enum
