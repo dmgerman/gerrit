@@ -466,6 +466,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|LabelType
@@ -6675,7 +6689,7 @@ name|memberOf
 argument_list|)
 return|;
 block|}
-DECL|method|user (ProjectConfig local, String name, AccountGroup.UUID... memberOf)
+DECL|method|user ( ProjectConfig local, @Nullable String name, AccountGroup.UUID... memberOf)
 specifier|private
 name|ProjectControl
 name|user
@@ -6683,6 +6697,8 @@ parameter_list|(
 name|ProjectConfig
 name|local
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|name
 parameter_list|,
@@ -6777,6 +6793,8 @@ extends|extends
 name|CurrentUser
 block|{
 DECL|field|username
+annotation|@
+name|Nullable
 specifier|private
 specifier|final
 name|String
@@ -6788,9 +6806,11 @@ specifier|final
 name|GroupMembership
 name|groups
 decl_stmt|;
-DECL|method|MockUser (String name, AccountGroup.UUID[] groupId)
+DECL|method|MockUser (@ullable String name, AccountGroup.UUID[] groupId)
 name|MockUser
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|name
 parameter_list|,
@@ -6869,7 +6889,7 @@ block|{
 return|return
 name|Optional
 operator|.
-name|of
+name|ofNullable
 argument_list|(
 name|username
 argument_list|)
