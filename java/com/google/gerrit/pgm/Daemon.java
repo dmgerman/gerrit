@@ -3870,7 +3870,9 @@ name|add
 argument_list|(
 operator|new
 name|IndexCommandsModule
-argument_list|()
+argument_list|(
+name|sysInjector
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
