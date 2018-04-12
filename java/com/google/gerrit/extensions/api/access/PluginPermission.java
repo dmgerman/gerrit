@@ -220,22 +220,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|permissionName ()
-specifier|public
-name|String
-name|permissionName
-parameter_list|()
-block|{
-return|return
-name|pluginName
-operator|+
-literal|'-'
-operator|+
-name|capability
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|describeForException ()
 specifier|public
 name|String

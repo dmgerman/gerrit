@@ -162,22 +162,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|Permission
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|util
@@ -335,40 +319,6 @@ return|return
 name|name
 return|;
 block|}
-comment|/** @return name used in {@code project.config} permissions. */
-annotation|@
-name|Override
-DECL|method|permissionName ()
-specifier|public
-name|String
-name|permissionName
-parameter_list|()
-block|{
-if|if
-condition|(
-name|forUser
-operator|==
-name|ON_BEHALF_OF
-condition|)
-block|{
-return|return
-name|Permission
-operator|.
-name|forLabelAs
-argument_list|(
-name|name
-argument_list|)
-return|;
-block|}
-return|return
-name|Permission
-operator|.
-name|forLabel
-argument_list|(
-name|name
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|describeForException ()
@@ -385,7 +335,7 @@ name|ON_BEHALF_OF
 condition|)
 block|{
 return|return
-literal|"labelAs "
+literal|"label on behalf of "
 operator|+
 name|name
 return|;
@@ -759,42 +709,6 @@ name|value
 argument_list|()
 return|;
 block|}
-comment|/** @return name used in {@code project.config} permissions. */
-annotation|@
-name|Override
-DECL|method|permissionName ()
-specifier|public
-name|String
-name|permissionName
-parameter_list|()
-block|{
-if|if
-condition|(
-name|forUser
-operator|==
-name|ON_BEHALF_OF
-condition|)
-block|{
-return|return
-name|Permission
-operator|.
-name|forLabelAs
-argument_list|(
-name|label
-argument_list|()
-argument_list|)
-return|;
-block|}
-return|return
-name|Permission
-operator|.
-name|forLabel
-argument_list|(
-name|label
-argument_list|()
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|describeForException ()
@@ -811,7 +725,7 @@ name|ON_BEHALF_OF
 condition|)
 block|{
 return|return
-literal|"labelAs "
+literal|"label on behalf of "
 operator|+
 name|label
 operator|.

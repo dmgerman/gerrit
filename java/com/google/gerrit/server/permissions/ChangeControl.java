@@ -94,6 +94,24 @@ name|server
 operator|.
 name|permissions
 operator|.
+name|DefaultPermissionMappings
+operator|.
+name|labelPermissionName
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
 name|LabelPermission
 operator|.
 name|ForUser
@@ -2186,10 +2204,10 @@ name|refControl
 operator|.
 name|canPerform
 argument_list|(
+name|changePermissionName
+argument_list|(
 name|perm
-operator|.
-name|permissionName
-argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -2233,10 +2251,10 @@ return|return
 operator|!
 name|label
 argument_list|(
+name|labelPermissionName
+argument_list|(
 name|perm
-operator|.
-name|permissionName
-argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|isEmpty
@@ -2259,10 +2277,10 @@ name|r
 init|=
 name|label
 argument_list|(
+name|labelPermissionName
+argument_list|(
 name|perm
-operator|.
-name|permissionName
-argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -2432,6 +2450,40 @@ name|permSet
 operator|.
 name|size
 argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|changePermissionName (ChangePermission changePermission)
+specifier|private
+specifier|static
+name|String
+name|changePermissionName
+parameter_list|(
+name|ChangePermission
+name|changePermission
+parameter_list|)
+block|{
+comment|// Within this class, it's programmer error to call this method on a
+comment|// ChangePermission that isn't associated with a permission name.
+return|return
+name|DefaultPermissionMappings
+operator|.
+name|changePermissionName
+argument_list|(
+name|changePermission
+argument_list|)
+operator|.
+name|orElseThrow
+argument_list|(
+parameter_list|()
+lambda|->
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"no name for "
+operator|+
+name|changePermission
+argument_list|)
 argument_list|)
 return|;
 block|}

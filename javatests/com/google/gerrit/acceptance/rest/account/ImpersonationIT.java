@@ -3173,7 +3173,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"submit as not permitted"
+literal|"submit on behalf of other users not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
