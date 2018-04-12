@@ -74,6 +74,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|base
 operator|.
 name|Strings
@@ -247,7 +261,10 @@ name|authConfig
 decl_stmt|;
 annotation|@
 name|Inject
+annotation|@
+name|VisibleForTesting
 DECL|method|DefaultRealm (EmailExpander emailExpander, Provider<Emails> emails, AuthConfig authConfig)
+specifier|public
 name|DefaultRealm
 parameter_list|(
 name|EmailExpander
