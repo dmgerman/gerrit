@@ -4463,9 +4463,15 @@ argument_list|()
 expr_stmt|;
 name|errors
 operator|=
-name|LinkedListMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|linkedHashKeys
+argument_list|()
+operator|.
+name|arrayListValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 expr_stmt|;
 name|messages
