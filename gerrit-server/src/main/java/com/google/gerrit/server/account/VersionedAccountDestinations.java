@@ -235,7 +235,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Preferences for user accounts. */
+comment|/** User configured named destinations. */
 end_comment
 
 begin_class
