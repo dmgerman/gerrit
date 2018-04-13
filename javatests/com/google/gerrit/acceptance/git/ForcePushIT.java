@@ -451,7 +451,7 @@ name|r2
 operator|.
 name|assertErrorStatus
 argument_list|(
-literal|"non-fast forward"
+literal|"need 'Force Push' privilege."
 argument_list|)
 expr_stmt|;
 block|}

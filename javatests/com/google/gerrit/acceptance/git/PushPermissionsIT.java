@@ -833,12 +833,10 @@ name|onlyRef
 argument_list|(
 literal|"refs/heads/master"
 argument_list|)
-comment|// TODO(dborowitz): ReceivePack#sendStatusReport ignores the message unless the result is
-comment|// REJECTED_OTHER_REASON, which this is not.
 operator|.
 name|isRejected
 argument_list|(
-literal|"non-fast forward"
+literal|"need 'Force Push' privilege."
 argument_list|)
 expr_stmt|;
 name|assertThat

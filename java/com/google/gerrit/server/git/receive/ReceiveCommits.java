@@ -460,24 +460,6 @@ name|ReceiveCommand
 operator|.
 name|Result
 operator|.
-name|REJECTED_NONFASTFORWARD
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|ReceiveCommand
-operator|.
-name|Result
-operator|.
 name|REJECTED_OTHER_REASON
 import|;
 end_import
@@ -8365,9 +8347,9 @@ name|cmd
 operator|.
 name|setResult
 argument_list|(
-name|REJECTED_NONFASTFORWARD
+name|REJECTED_OTHER_REASON
 argument_list|,
-literal|" need '"
+literal|"need '"
 operator|+
 name|PermissionRule
 operator|.
