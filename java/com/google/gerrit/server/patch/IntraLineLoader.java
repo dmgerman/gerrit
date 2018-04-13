@@ -1762,6 +1762,9 @@ condition|)
 block|{
 comment|// Don't combine any edits which were identified as being introduced by a rebase as we would
 comment|// lose that information because of the combination.
+name|j
+operator|++
+expr_stmt|;
 continue|continue;
 block|}
 comment|// Combine edits that are really close together. Right now our rule
