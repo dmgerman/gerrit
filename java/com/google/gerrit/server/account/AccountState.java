@@ -683,7 +683,6 @@ argument_list|()
 decl_stmt|;
 comment|// Don't leak references to AccountConfig into the AccountState, since it holds a reference to
 comment|// an open Repository instance.
-comment|// TODO(ekempin): Find a way to lazily compute these that doesn't hold the repo open.
 name|ImmutableMap
 argument_list|<
 name|ProjectWatchKey
