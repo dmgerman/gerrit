@@ -326,6 +326,36 @@ argument_list|>
 argument_list|()
 block|{}
 decl_stmt|;
+DECL|method|createNonCachable (ChangeResource change, PatchSet ps)
+specifier|public
+specifier|static
+name|RevisionResource
+name|createNonCachable
+parameter_list|(
+name|ChangeResource
+name|change
+parameter_list|,
+name|PatchSet
+name|ps
+parameter_list|)
+block|{
+return|return
+operator|new
+name|RevisionResource
+argument_list|(
+name|change
+argument_list|,
+name|ps
+argument_list|,
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
 DECL|field|change
 specifier|private
 specifier|final
@@ -349,10 +379,9 @@ name|edit
 decl_stmt|;
 DECL|field|cacheable
 specifier|private
+specifier|final
 name|boolean
 name|cacheable
-init|=
-literal|true
 decl_stmt|;
 DECL|method|RevisionResource (ChangeResource change, PatchSet ps)
 specifier|public
@@ -396,6 +425,38 @@ name|edit
 parameter_list|)
 block|{
 name|this
+argument_list|(
+name|change
+argument_list|,
+name|ps
+argument_list|,
+name|edit
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|RevisionResource ( ChangeResource change, PatchSet ps, Optional<ChangeEdit> edit, boolean cachable)
+specifier|private
+name|RevisionResource
+parameter_list|(
+name|ChangeResource
+name|change
+parameter_list|,
+name|PatchSet
+name|ps
+parameter_list|,
+name|Optional
+argument_list|<
+name|ChangeEdit
+argument_list|>
+name|edit
+parameter_list|,
+name|boolean
+name|cachable
+parameter_list|)
+block|{
+name|this
 operator|.
 name|change
 operator|=
@@ -412,6 +473,12 @@ operator|.
 name|edit
 operator|=
 name|edit
+expr_stmt|;
+name|this
+operator|.
+name|cacheable
+operator|=
+name|cachable
 expr_stmt|;
 block|}
 DECL|method|isCacheable ()
@@ -592,21 +659,6 @@ argument_list|()
 operator|.
 name|getUser
 argument_list|()
-return|;
-block|}
-DECL|method|doNotCache ()
-specifier|public
-name|RevisionResource
-name|doNotCache
-parameter_list|()
-block|{
-comment|// TODO(hanwen): return a copy so cacheable can be final.
-name|cacheable
-operator|=
-literal|false
-expr_stmt|;
-return|return
-name|this
 return|;
 block|}
 DECL|method|getEdit ()
