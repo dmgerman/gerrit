@@ -3937,6 +3937,17 @@ argument_list|(
 name|newState
 argument_list|)
 expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Migration state: {} => {}"
+argument_list|,
+name|expectedOldState
+argument_list|,
+name|newState
+argument_list|)
+expr_stmt|;
 return|return
 name|newState
 return|;
