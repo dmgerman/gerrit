@@ -342,9 +342,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|security
 operator|.
-name|Random
+name|SecureRandom
 import|;
 end_import
 
@@ -594,11 +594,11 @@ DECL|field|rng
 specifier|private
 specifier|static
 specifier|final
-name|Random
+name|SecureRandom
 name|rng
 init|=
 operator|new
-name|Random
+name|SecureRandom
 argument_list|()
 decl_stmt|;
 DECL|field|repoManager
