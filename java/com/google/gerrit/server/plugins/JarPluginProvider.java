@@ -988,8 +988,9 @@ expr_stmt|;
 name|ClassLoader
 name|pluginLoader
 init|=
-operator|new
 name|URLClassLoader
+operator|.
+name|newInstance
 argument_list|(
 name|urls
 operator|.

@@ -1297,8 +1297,9 @@ name|save
 argument_list|(
 name|newEmptyMachine
 argument_list|(
-operator|new
 name|URLClassLoader
+operator|.
+name|newInstance
 argument_list|(
 name|cp
 argument_list|,
