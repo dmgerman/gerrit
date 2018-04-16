@@ -2244,6 +2244,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * Produces {@link ChangeInfo} (which is serialized to JSON afterwards) from {@link ChangeData}.  *  *<p>This is intended to be used on request scope, but may be used for converting multiple {@link  * ChangeData} objects from different sources.  */
+end_comment
+
 begin_class
 DECL|class|ChangeJson
 specifier|public
