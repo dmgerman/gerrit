@@ -86,50 +86,6 @@ specifier|public
 class|class
 name|IndexConfig
 block|{
-DECL|method|createForLucene ()
-specifier|public
-specifier|static
-name|Config
-name|createForLucene
-parameter_list|()
-block|{
-return|return
-name|create
-argument_list|()
-return|;
-block|}
-DECL|method|createForElasticsearch ()
-specifier|public
-specifier|static
-name|Config
-name|createForElasticsearch
-parameter_list|()
-block|{
-name|Config
-name|cfg
-init|=
-name|create
-argument_list|()
-decl_stmt|;
-comment|// For some reason enabling the staleness checker increases the flakiness of the Elasticsearch
-comment|// tests. Hence disable the staleness checker.
-name|cfg
-operator|.
-name|setBoolean
-argument_list|(
-literal|"index"
-argument_list|,
-literal|null
-argument_list|,
-literal|"autoReindexIfStale"
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-return|return
-name|cfg
-return|;
-block|}
 DECL|method|create ()
 specifier|public
 specifier|static
@@ -137,13 +93,25 @@ name|Config
 name|create
 parameter_list|()
 block|{
-name|Config
-name|cfg
-init|=
+return|return
+name|createFromExistingConfig
+argument_list|(
 operator|new
 name|Config
 argument_list|()
-decl_stmt|;
+argument_list|)
+return|;
+block|}
+DECL|method|createFromExistingConfig (Config cfg)
+specifier|public
+specifier|static
+name|Config
+name|createFromExistingConfig
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|)
+block|{
 name|cfg
 operator|.
 name|setInt
@@ -233,6 +201,50 @@ argument_list|,
 literal|"system"
 argument_list|,
 literal|"querytests"
+argument_list|)
+expr_stmt|;
+return|return
+name|cfg
+return|;
+block|}
+DECL|method|createForLucene ()
+specifier|public
+specifier|static
+name|Config
+name|createForLucene
+parameter_list|()
+block|{
+return|return
+name|create
+argument_list|()
+return|;
+block|}
+DECL|method|createForElasticsearch ()
+specifier|public
+specifier|static
+name|Config
+name|createForElasticsearch
+parameter_list|()
+block|{
+name|Config
+name|cfg
+init|=
+name|create
+argument_list|()
+decl_stmt|;
+comment|// For some reason enabling the staleness checker increases the flakiness of the Elasticsearch
+comment|// tests. Hence disable the staleness checker.
+name|cfg
+operator|.
+name|setBoolean
+argument_list|(
+literal|"index"
+argument_list|,
+literal|null
+argument_list|,
+literal|"autoReindexIfStale"
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 return|return
