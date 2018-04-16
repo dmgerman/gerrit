@@ -3844,6 +3844,13 @@ argument_list|)
 decl_stmt|;
 name|assertQuery
 argument_list|(
+literal|"is:owner"
+argument_list|,
+name|change1
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
 literal|"owner:"
 operator|+
 name|userId
