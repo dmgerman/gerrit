@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.receive
+DECL|package|com.google.gerrit.server.config
 package|package
 name|com
 operator|.
@@ -62,9 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|receive
+name|config
 package|;
 end_package
 
@@ -126,57 +124,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|GerritServerConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|WorkQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|mail
-operator|.
-name|SendEmailExecutor
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
-name|ChangeUpdateExecutor
 import|;
 end_import
 
@@ -279,14 +229,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Module providing the {@link ReceiveCommitsExecutor}.  *  *<p>Unlike {@link ReceiveCommitsModule}, this module is intended to be installed only in top-level  * injectors like in {@code Daemon}, not in the {@code sysInjector}.  */
+comment|/**  * Module providing the {@link ReceiveCommitsExecutor}.  *  *<p>This module is intended to be installed at the top level when creating a {@code sysInjector}  * in {@code Daemon} or similar, not nested in another module. This ensures the module can be  * swapped out for the googlesource.com implementation.  */
 end_comment
 
 begin_class
-DECL|class|ReceiveCommitsExecutorModule
+DECL|class|SysExecutorModule
 specifier|public
 class|class
-name|ReceiveCommitsExecutorModule
+name|SysExecutorModule
 extends|extends
 name|AbstractModule
 block|{
