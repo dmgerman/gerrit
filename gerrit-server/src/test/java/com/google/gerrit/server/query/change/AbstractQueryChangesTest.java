@@ -3120,6 +3120,13 @@ argument_list|,
 name|expected
 argument_list|)
 expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"is:pending"
+argument_list|,
+name|expected
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
