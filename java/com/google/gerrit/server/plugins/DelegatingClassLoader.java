@@ -187,6 +187,8 @@ argument_list|)
 operator|+
 literal|".class"
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|resource
 init|=
@@ -196,7 +198,8 @@ name|getResourceAsStream
 argument_list|(
 name|path
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|resource
@@ -237,7 +240,18 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{       }
+block|{
+comment|// throws ClassNotFoundException later
+block|}
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|// throws ClassNotFoundException later
 block|}
 throw|throw
 operator|new
