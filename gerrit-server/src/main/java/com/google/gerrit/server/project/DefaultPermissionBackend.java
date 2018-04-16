@@ -591,7 +591,14 @@ name|FailedPermissionBackend
 operator|.
 name|project
 argument_list|(
-literal|"not found"
+literal|"project '"
+operator|+
+name|project
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"' not found"
 argument_list|)
 return|;
 block|}
