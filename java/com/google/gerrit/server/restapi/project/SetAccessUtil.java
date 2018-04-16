@@ -1420,7 +1420,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**    * Updates the parent project in the given config.    *    * @param identifiedUser the user    * @param config the config to modify    * @param projectName the project for which to change access.    * @param newParentProjectName the new parent to set.    * @param checkAdmin if set, verify that user has administrateServer permission    */
+comment|/**    * Updates the parent project in the given config.    *    * @param identifiedUser the user    * @param config the config to modify    * @param projectName the project for which to change access.    * @param newParentProjectName the new parent to set; passing null will make this a nop    * @param checkAdmin if set, verify that user has administrateServer permission    */
 DECL|method|setParentName ( IdentifiedUser identifiedUser, ProjectConfig config, Project.NameKey projectName, Project.NameKey newParentProjectName, boolean checkAdmin)
 specifier|public
 name|void
