@@ -90,6 +90,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|account
@@ -104,14 +120,17 @@ specifier|public
 interface|interface
 name|SshKeyCreator
 block|{
-DECL|method|create (AccountSshKey.Id id, String encoded)
+DECL|method|create (Account.Id accountId, int seq, String encoded)
 name|AccountSshKey
 name|create
 parameter_list|(
-name|AccountSshKey
+name|Account
 operator|.
 name|Id
-name|id
+name|accountId
+parameter_list|,
+name|int
+name|seq
 parameter_list|,
 name|String
 name|encoded

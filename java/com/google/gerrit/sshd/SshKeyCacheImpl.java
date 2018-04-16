@@ -832,7 +832,7 @@ if|if
 condition|(
 name|k
 operator|.
-name|isValid
+name|valid
 argument_list|()
 condition|)
 block|{
@@ -892,7 +892,7 @@ name|SshKeyCacheEntry
 argument_list|(
 name|k
 operator|.
-name|getKey
+name|accountId
 argument_list|()
 argument_list|,
 name|SshUtil
@@ -950,7 +950,14 @@ literal|"Flagging SSH key "
 operator|+
 name|k
 operator|.
-name|getKey
+name|seq
+argument_list|()
+operator|+
+literal|" of account "
+operator|+
+name|k
+operator|.
+name|accountId
 argument_list|()
 operator|+
 literal|" invalid"
@@ -962,22 +969,14 @@ name|markKeyInvalid
 argument_list|(
 name|k
 operator|.
-name|getAccount
+name|accountId
 argument_list|()
 argument_list|,
 name|k
 operator|.
-name|getKey
-argument_list|()
-operator|.
-name|get
+name|seq
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|k
-operator|.
-name|setInvalid
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -992,11 +991,18 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to mark SSH key"
+literal|"Failed to mark SSH key "
 operator|+
 name|k
 operator|.
-name|getKey
+name|seq
+argument_list|()
+operator|+
+literal|" of account "
+operator|+
+name|k
+operator|.
+name|accountId
 argument_list|()
 operator|+
 literal|" invalid"
