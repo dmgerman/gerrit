@@ -8949,10 +8949,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|byBefore ()
+DECL|method|byBeforeUntil ()
 specifier|public
 name|void
-name|byBefore
+name|byBeforeUntil
 parameter_list|()
 throws|throws
 name|Exception
@@ -9050,62 +9050,97 @@ argument_list|,
 name|MILLISECONDS
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|String
+name|predicate
+range|:
+operator|new
+name|String
+index|[]
+block|{
+literal|"before:"
+block|,
+literal|"until:"
+block|}
+control|)
+block|{
 name|assertQuery
 argument_list|(
-literal|"before:2009-09-29"
+name|predicate
+operator|+
+literal|"2009-09-29"
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"before:2009-09-30"
+name|predicate
+operator|+
+literal|"2009-09-30"
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"before:\"2009-09-30 16:59:00 -0400\""
+name|predicate
+operator|+
+literal|"\"2009-09-30 16:59:00 -0400\""
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"before:\"2009-09-30 20:59:00 -0000\""
+name|predicate
+operator|+
+literal|"\"2009-09-30 20:59:00 -0000\""
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"before:\"2009-09-30 20:59:00\""
+name|predicate
+operator|+
+literal|"\"2009-09-30 20:59:00\""
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"before:\"2009-09-30 17:02:00 -0400\""
+name|predicate
+operator|+
+literal|"\"2009-09-30 17:02:00 -0400\""
 argument_list|,
 name|change1
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"before:\"2009-10-01 21:02:00 -0000\""
+name|predicate
+operator|+
+literal|"\"2009-10-01 21:02:00 -0000\""
 argument_list|,
 name|change1
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"before:\"2009-10-01 21:02:00\""
+name|predicate
+operator|+
+literal|"\"2009-10-01 21:02:00\""
 argument_list|,
 name|change1
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"before:2009-10-01"
+name|predicate
+operator|+
+literal|"2009-10-01"
 argument_list|,
 name|change1
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"before:2009-10-03"
+name|predicate
+operator|+
+literal|"2009-10-03"
 argument_list|,
 name|change2
 argument_list|,
@@ -9113,12 +9148,13 @@ name|change1
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 annotation|@
 name|Test
-DECL|method|byAfter ()
+DECL|method|byAfterSince ()
 specifier|public
 name|void
-name|byAfter
+name|byAfterSince
 parameter_list|()
 throws|throws
 name|Exception
@@ -9216,41 +9252,67 @@ argument_list|,
 name|MILLISECONDS
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|String
+name|predicate
+range|:
+operator|new
+name|String
+index|[]
+block|{
+literal|"after:"
+block|,
+literal|"since:"
+block|}
+control|)
+block|{
 name|assertQuery
 argument_list|(
-literal|"after:2009-10-03"
+name|predicate
+operator|+
+literal|"2009-10-03"
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"after:\"2009-10-01 20:59:59 -0400\""
+name|predicate
+operator|+
+literal|"\"2009-10-01 20:59:59 -0400\""
 argument_list|,
 name|change2
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"after:\"2009-10-01 20:59:59 -0000\""
+name|predicate
+operator|+
+literal|"\"2009-10-01 20:59:59 -0000\""
 argument_list|,
 name|change2
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"after:2009-10-01"
+name|predicate
+operator|+
+literal|"2009-10-01"
 argument_list|,
 name|change2
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"after:2009-09-30"
+name|predicate
+operator|+
+literal|"2009-09-30"
 argument_list|,
 name|change2
 argument_list|,
 name|change1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
