@@ -402,6 +402,15 @@ name|command
 argument_list|(
 name|gerrit
 argument_list|,
+name|ReloadConfig
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|command
+argument_list|(
+name|gerrit
+argument_list|,
 name|ShowCaches
 operator|.
 name|class

@@ -164,6 +164,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -283,10 +295,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides {@link Config} annotated with {@link GerritServerConfig}.  *  *<p>Note that this class is not a singleton, so the few callers that need a reloaded-on-demand  * config can inject a {@code GerritServerConfigProvider}. However, most callers won't need this,  * and will just inject {@code @GerritServerConfig Config} directly, which is bound as a singleton  * in {@link GerritServerConfigModule}.  */
+comment|/**  * Provides {@link Config} annotated with {@link GerritServerConfig}.  *  *<p>To react on config updates, the caller should implement @see GerritConfigListener.  *  *<p>The few callers that need a reloaded-on-demand config can inject a {@code  * GerritServerConfigProvider} and request the lastest config with fetchLatestConfig().  */
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|GerritServerConfigProvider
 specifier|public
 class|class
@@ -325,6 +339,21 @@ specifier|final
 name|SecureStore
 name|secureStore
 decl_stmt|;
+DECL|field|lock
+specifier|private
+specifier|final
+name|Object
+name|lock
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
+DECL|field|gerritConfig
+specifier|private
+name|GerritConfig
+name|gerritConfig
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|GerritServerConfigProvider (SitePaths site, SecureStore secureStore)
@@ -349,6 +378,13 @@ name|secureStore
 operator|=
 name|secureStore
 expr_stmt|;
+name|this
+operator|.
+name|gerritConfig
+operator|=
+name|loadConfig
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -356,6 +392,54 @@ DECL|method|get ()
 specifier|public
 name|Config
 name|get
+parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|lock
+init|)
+block|{
+return|return
+name|gerritConfig
+return|;
+block|}
+block|}
+DECL|method|updateConfig ()
+specifier|protected
+name|ConfigUpdatedEvent
+name|updateConfig
+parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|lock
+init|)
+block|{
+name|Config
+name|oldConfig
+init|=
+name|gerritConfig
+decl_stmt|;
+name|gerritConfig
+operator|=
+name|loadConfig
+argument_list|()
+expr_stmt|;
+return|return
+operator|new
+name|ConfigUpdatedEvent
+argument_list|(
+name|oldConfig
+argument_list|,
+name|gerritConfig
+argument_list|)
+return|;
+block|}
+block|}
+DECL|method|loadConfig ()
+specifier|public
+name|GerritConfig
+name|loadConfig
 parameter_list|()
 block|{
 name|FileBasedConfig
