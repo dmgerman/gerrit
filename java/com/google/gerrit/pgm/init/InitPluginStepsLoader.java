@@ -485,8 +485,9 @@ block|{
 name|URLClassLoader
 name|pluginLoader
 init|=
-operator|new
 name|URLClassLoader
+operator|.
+name|newInstance
 argument_list|(
 operator|new
 name|URL

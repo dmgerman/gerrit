@@ -2039,8 +2039,9 @@ condition|)
 block|{
 name|parent
 operator|=
-operator|new
 name|URLClassLoader
+operator|.
+name|newInstance
 argument_list|(
 name|extapi
 operator|.
@@ -2061,8 +2062,9 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|new
 name|URLClassLoader
+operator|.
+name|newInstance
 argument_list|(
 name|jars
 operator|.
@@ -4206,8 +4208,9 @@ expr_stmt|;
 block|}
 block|}
 return|return
-operator|new
 name|URLClassLoader
+operator|.
+name|newInstance
 argument_list|(
 name|dirs
 operator|.
