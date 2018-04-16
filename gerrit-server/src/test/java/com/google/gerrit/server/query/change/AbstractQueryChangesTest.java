@@ -9696,9 +9696,9 @@ name|Lists
 operator|.
 name|newArrayList
 argument_list|(
-literal|"delta"
+literal|"delta:"
 argument_list|,
-literal|"size"
+literal|"size:"
 argument_list|)
 control|)
 block|{
@@ -9706,14 +9706,14 @@ name|assertQuery
 argument_list|(
 name|str
 operator|+
-literal|":<2"
+literal|"<2"
 argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
 name|str
 operator|+
-literal|":3"
+literal|"3"
 argument_list|,
 name|change1
 argument_list|)
@@ -9722,7 +9722,7 @@ name|assertQuery
 argument_list|(
 name|str
 operator|+
-literal|":>2"
+literal|">2"
 argument_list|,
 name|change1
 argument_list|)
@@ -9731,7 +9731,7 @@ name|assertQuery
 argument_list|(
 name|str
 operator|+
-literal|":>=3"
+literal|">=3"
 argument_list|,
 name|change1
 argument_list|)
@@ -9740,7 +9740,7 @@ name|assertQuery
 argument_list|(
 name|str
 operator|+
-literal|":<3"
+literal|"<3"
 argument_list|,
 name|change2
 argument_list|)
@@ -9749,7 +9749,7 @@ name|assertQuery
 argument_list|(
 name|str
 operator|+
-literal|":<=2"
+literal|"<=2"
 argument_list|,
 name|change2
 argument_list|)
