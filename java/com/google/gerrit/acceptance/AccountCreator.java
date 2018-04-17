@@ -1251,7 +1251,9 @@ name|jsch
 argument_list|,
 name|KeyPair
 operator|.
-name|RSA
+name|ECDSA
+argument_list|,
+literal|256
 argument_list|)
 return|;
 block|}
