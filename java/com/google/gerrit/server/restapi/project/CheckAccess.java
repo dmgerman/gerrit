@@ -628,7 +628,7 @@ name|check
 argument_list|(
 name|GlobalPermission
 operator|.
-name|ADMINISTRATE_SERVER
+name|VIEW_ACCESS
 argument_list|)
 expr_stmt|;
 name|rsrc

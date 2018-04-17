@@ -225,6 +225,11 @@ specifier|public
 name|String
 name|viewQueue
 decl_stmt|;
+DECL|field|viewAccess
+specifier|public
+name|String
+name|viewAccess
+decl_stmt|;
 block|}
 end_class
 

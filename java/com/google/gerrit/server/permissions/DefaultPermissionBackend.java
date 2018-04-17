@@ -1079,6 +1079,9 @@ case|:
 case|case
 name|VIEW_PLUGINS
 case|:
+case|case
+name|VIEW_ACCESS
+case|:
 return|return
 name|has
 argument_list|(

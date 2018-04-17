@@ -337,6 +337,9 @@ name|VIEW_PLUGINS
 block|,
 DECL|enumConstant|VIEW_QUEUE
 name|VIEW_QUEUE
+block|,
+DECL|enumConstant|VIEW_ACCESS
+name|VIEW_ACCESS
 block|;
 DECL|field|log
 specifier|private

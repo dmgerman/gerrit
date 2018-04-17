@@ -356,6 +356,16 @@ name|VIEW_QUEUE
 init|=
 literal|"viewQueue"
 decl_stmt|;
+comment|/** Can query permissions for any (project, user) pair */
+DECL|field|VIEW_ACCESS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|VIEW_ACCESS
+init|=
+literal|"viewAccess"
+decl_stmt|;
 DECL|field|NAMES_ALL
 specifier|private
 specifier|static
@@ -544,6 +554,13 @@ operator|.
 name|add
 argument_list|(
 name|VIEW_QUEUE
+argument_list|)
+expr_stmt|;
+name|NAMES_ALL
+operator|.
+name|add
+argument_list|(
+name|VIEW_ACCESS
 argument_list|)
 expr_stmt|;
 name|NAMES_LC
