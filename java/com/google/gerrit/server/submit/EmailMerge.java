@@ -232,7 +232,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
+name|config
 operator|.
 name|SendEmailExecutor
 import|;

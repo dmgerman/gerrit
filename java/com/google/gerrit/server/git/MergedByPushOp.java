@@ -230,11 +230,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|extensions
+name|config
 operator|.
-name|events
-operator|.
-name|ChangeMerged
+name|SendEmailExecutor
 import|;
 end_import
 
@@ -248,9 +246,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
+name|extensions
 operator|.
-name|SendEmailExecutor
+name|events
+operator|.
+name|ChangeMerged
 import|;
 end_import
 

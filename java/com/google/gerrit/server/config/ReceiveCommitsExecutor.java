@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.update
+DECL|package|com.google.gerrit.server.config
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|update
+name|config
 package|;
 end_package
 
@@ -77,22 +77,6 @@ operator|.
 name|RetentionPolicy
 operator|.
 name|RUNTIME
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ListeningExecutorService
 import|;
 end_import
 
@@ -120,8 +104,20 @@ name|Retention
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ExecutorService
+import|;
+end_import
+
 begin_comment
-comment|/**  * Marker on the global {@link ListeningExecutorService} used by asynchronous {@link BatchUpdate}s.  */
+comment|/** Marker on the global {@link ExecutorService} used by {@code ReceiveCommits}. */
 end_comment
 
 begin_annotation_defn
@@ -132,10 +128,10 @@ name|RUNTIME
 argument_list|)
 annotation|@
 name|BindingAnnotation
-DECL|annotation|ChangeUpdateExecutor
+DECL|annotation|ReceiveCommitsExecutor
 specifier|public
 annotation_defn|@interface
-name|ChangeUpdateExecutor
+name|ReceiveCommitsExecutor
 block|{}
 end_annotation_defn
 

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.receive
+DECL|package|com.google.gerrit.server.config
 package|package
 name|com
 operator|.
@@ -62,9 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|receive
+name|config
 package|;
 end_package
 
@@ -114,12 +112,12 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ExecutorService
+name|ScheduledThreadPoolExecutor
 import|;
 end_import
 
 begin_comment
-comment|/** Marker on the global {@link ExecutorService} used by {@link ReceiveCommits}. */
+comment|/** Marker on the global {@link ScheduledThreadPoolExecutor} used to send email. */
 end_comment
 
 begin_annotation_defn
@@ -130,10 +128,10 @@ name|RUNTIME
 argument_list|)
 annotation|@
 name|BindingAnnotation
-DECL|annotation|ReceiveCommitsExecutor
+DECL|annotation|SendEmailExecutor
 specifier|public
 annotation_defn|@interface
-name|ReceiveCommitsExecutor
+name|SendEmailExecutor
 block|{}
 end_annotation_defn
 

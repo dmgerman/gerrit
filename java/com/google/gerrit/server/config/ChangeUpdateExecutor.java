@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.config
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
+name|config
 package|;
 end_package
 
@@ -77,6 +77,38 @@ operator|.
 name|RetentionPolicy
 operator|.
 name|RUNTIME
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ListeningExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
+operator|.
+name|BatchUpdate
 import|;
 end_import
 
@@ -104,20 +136,8 @@ name|Retention
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ScheduledThreadPoolExecutor
-import|;
-end_import
-
 begin_comment
-comment|/** Marker on the global {@link ScheduledThreadPoolExecutor} used to send email. */
+comment|/**  * Marker on the global {@link ListeningExecutorService} used by asynchronous {@link BatchUpdate}s.  */
 end_comment
 
 begin_annotation_defn
@@ -128,10 +148,10 @@ name|RUNTIME
 argument_list|)
 annotation|@
 name|BindingAnnotation
-DECL|annotation|SendEmailExecutor
+DECL|annotation|ChangeUpdateExecutor
 specifier|public
 annotation_defn|@interface
-name|SendEmailExecutor
+name|ChangeUpdateExecutor
 block|{}
 end_annotation_defn
 
