@@ -9032,7 +9032,7 @@ name|hashtag
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TODO(dpursehouse): validate hashtags
+comment|// TODO(dpursehouse): validate hashtags
 block|}
 DECL|method|MagicBranchInput (ReceiveCommand cmd, LabelTypes labelTypes, NotesMigration notesMigration)
 name|MagicBranchInput
@@ -17901,7 +17901,7 @@ name|NoSuchChangeException
 name|e
 parameter_list|)
 block|{
-comment|//Ignore deleted change
+comment|// Ignore deleted change
 block|}
 block|}
 return|return

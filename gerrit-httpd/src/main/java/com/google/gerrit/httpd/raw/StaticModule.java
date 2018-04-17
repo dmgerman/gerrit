@@ -704,8 +704,8 @@ argument_list|)
 decl_stmt|;
 comment|// TODO(dborowitz): These fragments conflict with the REST API
 comment|// namespace, so they will need to use a different path.
-comment|//"/groups/*",
-comment|//"/projects/*");
+comment|// "/groups/*",
+comment|// "/projects/*");
 comment|//
 comment|/**    * Paths that should be treated as static assets when serving PolyGerrit.    *    *<p>Supports {@code "/*"} as a trailing wildcard.    */
 DECL|field|POLYGERRIT_ASSET_PATHS

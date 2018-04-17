@@ -2501,7 +2501,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//$FALL-THROUGH$
+comment|// $FALL-THROUGH$
 case|case
 name|OWNER_REVIEWERS
 case|:

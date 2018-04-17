@@ -912,7 +912,7 @@ specifier|protected
 name|String
 name|groups
 decl_stmt|;
-comment|//DELETED id = 7 (pushCertficate)
+comment|// DELETED id = 7 (pushCertficate)
 comment|/** Certificate sent with a push that created this patch set. */
 annotation|@
 name|Column

@@ -809,7 +809,7 @@ name|PLUGIN_QUERY_TIMEOUT
 init|=
 literal|500
 decl_stmt|;
-comment|//ms
+comment|// ms
 DECL|field|changeQueryBuilder
 specifier|private
 specifier|final

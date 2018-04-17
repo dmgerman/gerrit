@@ -2023,7 +2023,7 @@ name|void
 name|onOk
 parameter_list|()
 block|{
-comment|//do nothing
+comment|// do nothing
 block|}
 block|}
 argument_list|)

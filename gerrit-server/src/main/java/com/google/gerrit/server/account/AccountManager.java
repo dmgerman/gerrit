@@ -855,7 +855,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// An inconsistency is detected in the database, having a record for scheme "username:"
+comment|// An inconsistency is detected in the database, having a record for scheme
+comment|// "username:"
 comment|// but no record for scheme "gerrit:". Try to recover by linking
 comment|// "gerrit:" identity to the existing account.
 name|log

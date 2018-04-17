@@ -3037,7 +3037,7 @@ operator|.
 name|FALSE
 condition|)
 block|{
-comment|//TODO:czhen handle cherrypick footer
+comment|// TODO:czhen handle cherrypick footer
 name|commit
 operator|.
 name|setMessage

@@ -3913,18 +3913,18 @@ comment|//// As an implementation detail, change wasn't actually rebuilt inside 
 comment|//// BatchUpdate transaction, but it was rebuilt during read for the
 comment|//// subsequent reindex. Thus it's impossible to actually observe an
 comment|//// out-of-date state in the caller.
-comment|//assertChangeUpToDate(true, id);
+comment|// assertChangeUpToDate(true, id);
 comment|//// Check that the bundles are equal.
-comment|//ChangeNotes notes = notesFactory.create(dbProvider.get(), project, id);
-comment|//ChangeBundle actual = ChangeBundle.fromNotes(commentsUtil, notes);
-comment|//ChangeBundle expected = bundleReader.fromReviewDb(getUnwrappedDb(), id);
-comment|//assertThat(actual.differencesFrom(expected)).isEmpty();
-comment|//assertThat(
+comment|// ChangeNotes notes = notesFactory.create(dbProvider.get(), project, id);
+comment|// ChangeBundle actual = ChangeBundle.fromNotes(commentsUtil, notes);
+comment|// ChangeBundle expected = bundleReader.fromReviewDb(getUnwrappedDb(), id);
+comment|// assertThat(actual.differencesFrom(expected)).isEmpty();
+comment|// assertThat(
 comment|//        Iterables.transform(
 comment|//            notes.getChangeMessages(),
 comment|//            ChangeMessage::getMessage))
 comment|//    .contains(msg);
-comment|//assertThat(actual.getChange().getTopic()).isEqualTo(topic);
+comment|// assertThat(actual.getChange().getTopic()).isEqualTo(topic);
 block|}
 annotation|@
 name|Test

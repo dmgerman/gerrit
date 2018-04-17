@@ -4458,7 +4458,7 @@ name|subjectEnd
 operator|+
 literal|2
 expr_stmt|;
-comment|//\n\n ends paragraph
+comment|// \n\n ends paragraph
 block|}
 elseif|else
 if|if
@@ -4477,7 +4477,7 @@ name|subjectEnd
 operator|+
 literal|4
 expr_stmt|;
-comment|//\r\n\r\n ends paragraph
+comment|// \r\n\r\n ends paragraph
 block|}
 else|else
 block|{

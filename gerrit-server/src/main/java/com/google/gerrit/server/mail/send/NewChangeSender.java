@@ -362,7 +362,7 @@ argument_list|,
 name|extraCC
 argument_list|)
 expr_stmt|;
-comment|//$FALL-THROUGH$
+comment|// $FALL-THROUGH$
 case|case
 name|OWNER_REVIEWERS
 case|:

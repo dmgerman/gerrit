@@ -2083,8 +2083,8 @@ name|String
 name|toString
 parameter_list|()
 block|{
-comment|//This is a workaround to be able to print a proper name when the task
-comment|//is wrapped into a TrustedListenableFutureTask.
+comment|// This is a workaround to be able to print a proper name when the task
+comment|// is wrapped into a TrustedListenableFutureTask.
 try|try
 block|{
 if|if

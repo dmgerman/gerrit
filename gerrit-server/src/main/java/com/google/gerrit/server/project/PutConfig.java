@@ -1796,7 +1796,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-comment|//$FALL-THROUGH$
+comment|// $FALL-THROUGH$
 case|case
 name|STRING
 case|:

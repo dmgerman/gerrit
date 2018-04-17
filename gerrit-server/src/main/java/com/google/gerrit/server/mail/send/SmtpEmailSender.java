@@ -2180,7 +2180,7 @@ name|IOException
 name|e2
 parameter_list|)
 block|{
-comment|//Ignored
+comment|// Ignored
 block|}
 block|}
 if|if

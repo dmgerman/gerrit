@@ -432,7 +432,7 @@ name|void
 name|start
 parameter_list|()
 block|{
-comment|//compress log once and then schedule compression every day at 11:00pm
+comment|// compress log once and then schedule compression every day at 11:00pm
 name|queue
 operator|.
 name|getDefaultQueue

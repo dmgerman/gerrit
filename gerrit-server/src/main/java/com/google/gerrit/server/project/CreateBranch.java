@@ -1174,7 +1174,7 @@ name|refPrefix
 argument_list|)
 expr_stmt|;
 block|}
-comment|//$FALL-THROUGH$
+comment|// $FALL-THROUGH$
 case|case
 name|FORCED
 case|:
