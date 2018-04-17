@@ -6884,6 +6884,12 @@ condition|(
 name|destinations
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|destinations
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return
