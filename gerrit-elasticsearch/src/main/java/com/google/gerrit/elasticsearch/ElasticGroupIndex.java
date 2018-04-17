@@ -636,6 +636,7 @@ implements|implements
 name|GroupIndex
 block|{
 DECL|class|GroupMapping
+specifier|public
 specifier|static
 class|class
 name|GroupMapping
@@ -645,6 +646,7 @@ name|MappingProperties
 name|groups
 decl_stmt|;
 DECL|method|GroupMapping (Schema<AccountGroup> schema)
+specifier|public
 name|GroupMapping
 parameter_list|(
 name|Schema
@@ -668,6 +670,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|GROUPS
+specifier|public
 specifier|static
 specifier|final
 name|String

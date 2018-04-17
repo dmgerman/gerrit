@@ -672,6 +672,7 @@ implements|implements
 name|AccountIndex
 block|{
 DECL|class|AccountMapping
+specifier|public
 specifier|static
 class|class
 name|AccountMapping
@@ -681,6 +682,7 @@ name|MappingProperties
 name|accounts
 decl_stmt|;
 DECL|method|AccountMapping (Schema<AccountState> schema)
+specifier|public
 name|AccountMapping
 parameter_list|(
 name|Schema
@@ -704,6 +706,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|ACCOUNTS
+specifier|public
 specifier|static
 specifier|final
 name|String

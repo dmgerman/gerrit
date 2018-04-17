@@ -978,6 +978,7 @@ end_comment
 
 begin_class
 DECL|class|ElasticChangeIndex
+specifier|public
 class|class
 name|ElasticChangeIndex
 extends|extends
@@ -1009,19 +1010,23 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|class|ChangeMapping
+specifier|public
 specifier|static
 class|class
 name|ChangeMapping
 block|{
 DECL|field|openChanges
+specifier|public
 name|MappingProperties
 name|openChanges
 decl_stmt|;
 DECL|field|closedChanges
+specifier|public
 name|MappingProperties
 name|closedChanges
 decl_stmt|;
 DECL|method|ChangeMapping (Schema<ChangeData> schema)
+specifier|public
 name|ChangeMapping
 parameter_list|(
 name|Schema
@@ -1056,6 +1061,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|CHANGES
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -1064,6 +1070,7 @@ init|=
 literal|"changes"
 decl_stmt|;
 DECL|field|OPEN_CHANGES
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -1074,6 +1081,7 @@ operator|+
 name|CHANGES
 decl_stmt|;
 DECL|field|CLOSED_CHANGES
+specifier|public
 specifier|static
 specifier|final
 name|String

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.elasticsearch
+DECL|package|com.google.gerrit.elasticsearch.testing
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|elasticsearch
+operator|.
+name|testing
 package|;
 end_package
 
@@ -199,6 +201,20 @@ operator|.
 name|elasticsearch
 operator|.
 name|ElasticAccountIndex
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|elasticsearch
+operator|.
+name|ElasticAccountIndex
 operator|.
 name|AccountMapping
 import|;
@@ -217,6 +233,20 @@ operator|.
 name|ElasticChangeIndex
 operator|.
 name|ChangeMapping
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|elasticsearch
+operator|.
+name|ElasticGroupIndex
 import|;
 end_import
 
@@ -538,6 +568,7 @@ end_import
 
 begin_class
 DECL|class|ElasticTestUtils
+specifier|public
 specifier|final
 class|class
 name|ElasticTestUtils
@@ -563,21 +594,25 @@ name|create
 argument_list|()
 decl_stmt|;
 DECL|class|ElasticNodeInfo
+specifier|public
 specifier|static
 class|class
 name|ElasticNodeInfo
 block|{
 DECL|field|node
+specifier|public
 specifier|final
 name|Node
 name|node
 decl_stmt|;
 DECL|field|port
+specifier|public
 specifier|final
 name|String
 name|port
 decl_stmt|;
 DECL|field|elasticDir
+specifier|public
 specifier|final
 name|File
 name|elasticDir
@@ -617,6 +652,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|configure (Config config, String port, String prefix)
+specifier|public
 specifier|static
 name|void
 name|configure
@@ -700,6 +736,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|startElasticsearchNode ()
+specifier|public
 specifier|static
 name|ElasticNodeInfo
 name|startElasticsearchNode
@@ -938,6 +975,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|deleteAllIndexes (ElasticNodeInfo nodeInfo)
+specifier|public
 specifier|static
 name|void
 name|deleteAllIndexes
@@ -969,6 +1007,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|class|NodeInfo
+specifier|public
 specifier|static
 class|class
 name|NodeInfo
@@ -979,6 +1018,7 @@ name|httpAddress
 decl_stmt|;
 block|}
 DECL|class|Info
+specifier|public
 specifier|static
 class|class
 name|Info
@@ -994,6 +1034,7 @@ name|nodes
 decl_stmt|;
 block|}
 DECL|method|createAllIndexes (ElasticNodeInfo nodeInfo, String prefix)
+specifier|public
 specifier|static
 name|void
 name|createAllIndexes
