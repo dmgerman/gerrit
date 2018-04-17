@@ -4268,6 +4268,17 @@ argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
+literal|"ownerin:\"Registered Users\" project:repo"
+argument_list|,
+name|change3
+argument_list|,
+name|change2
+argument_list|,
+name|change1
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
 literal|"ownerin:\"Registered Users\" status:merged"
 argument_list|,
 name|change3
@@ -13811,6 +13822,15 @@ argument_list|(
 literal|"reviewerin:"
 operator|+
 name|group
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"project:repo reviewerin:"
+operator|+
+name|group
+argument_list|,
+name|change2
 argument_list|)
 expr_stmt|;
 name|assertQuery
