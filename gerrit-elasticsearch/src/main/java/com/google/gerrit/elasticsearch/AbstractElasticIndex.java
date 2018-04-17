@@ -1228,6 +1228,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|XContentBuilder
 name|builder
 init|=
@@ -1236,7 +1238,8 @@ argument_list|()
 operator|.
 name|startObject
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 for|for
 control|(
 name|Values
@@ -1357,6 +1360,7 @@ operator|.
 name|string
 argument_list|()
 return|;
+block|}
 block|}
 block|}
 end_class
