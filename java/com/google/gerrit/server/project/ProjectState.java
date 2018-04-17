@@ -1751,6 +1751,11 @@ operator|.
 name|load
 argument_list|(
 name|git
+argument_list|,
+name|config
+operator|.
+name|getRevision
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
