@@ -2252,7 +2252,16 @@ argument_list|(
 operator|new
 name|DefaultCacheFactory
 operator|.
-name|Module
+name|MemoryCacheModule
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|install
+argument_list|(
+operator|new
+name|DefaultCacheFactory
+operator|.
+name|PersistentCacheModule
 argument_list|()
 argument_list|)
 expr_stmt|;
