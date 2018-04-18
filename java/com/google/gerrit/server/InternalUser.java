@@ -119,6 +119,18 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getCacheKey ()
+specifier|public
+name|String
+name|getCacheKey
+parameter_list|()
+block|{
+return|return
+literal|"internal"
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|isInternalUser ()
 specifier|public
 name|boolean

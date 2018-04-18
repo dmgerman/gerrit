@@ -6877,6 +6877,20 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getCacheKey ()
+specifier|public
+name|Object
+name|getCacheKey
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Object
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getUserName ()
 specifier|public
 name|Optional

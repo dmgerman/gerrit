@@ -159,6 +159,19 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getCacheKey ()
+specifier|public
+name|Object
+name|getCacheKey
+parameter_list|()
+block|{
+comment|// Treat all anonymous users as a single user
+return|return
+literal|"anonymous"
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

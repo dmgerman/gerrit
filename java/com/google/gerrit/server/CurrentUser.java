@@ -328,6 +328,14 @@ name|GroupMembership
 name|getEffectiveGroups
 parameter_list|()
 function_decl|;
+comment|/**    * Returns a unique identifier for this user that is intended to be used as a cache key. Returned    * object should to implement {@code equals()} and {@code hashCode()} for effective caching.    */
+DECL|method|getCacheKey ()
+specifier|public
+specifier|abstract
+name|Object
+name|getCacheKey
+parameter_list|()
+function_decl|;
 comment|/** Unique name of the user on this server, if one has been assigned. */
 DECL|method|getUserName ()
 specifier|public

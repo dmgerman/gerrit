@@ -1825,6 +1825,19 @@ return|return
 name|effectiveGroups
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getCacheKey ()
+specifier|public
+name|Object
+name|getCacheKey
+parameter_list|()
+block|{
+return|return
+name|getAccountId
+argument_list|()
+return|;
+block|}
 DECL|method|newRefLogIdent ()
 specifier|public
 name|PersonIdent
