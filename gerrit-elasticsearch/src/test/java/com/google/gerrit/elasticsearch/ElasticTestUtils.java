@@ -614,7 +614,7 @@ name|rootDir
 expr_stmt|;
 block|}
 block|}
-DECL|method|configure (Config config, String port)
+DECL|method|configure (Config config, String port, String prefix)
 specifier|static
 name|void
 name|configure
@@ -624,6 +624,9 @@ name|config
 parameter_list|,
 name|String
 name|port
+parameter_list|,
+name|String
+name|prefix
 parameter_list|)
 block|{
 name|config
@@ -678,6 +681,19 @@ argument_list|,
 literal|"port"
 argument_list|,
 name|port
+argument_list|)
+expr_stmt|;
+name|config
+operator|.
+name|setString
+argument_list|(
+literal|"elasticsearch"
+argument_list|,
+literal|null
+argument_list|,
+literal|"prefix"
+argument_list|,
+name|prefix
 argument_list|)
 expr_stmt|;
 block|}
@@ -975,13 +991,16 @@ argument_list|>
 name|nodes
 decl_stmt|;
 block|}
-DECL|method|createAllIndexes (ElasticNodeInfo nodeInfo)
+DECL|method|createAllIndexes (ElasticNodeInfo nodeInfo, String prefix)
 specifier|static
 name|void
 name|createAllIndexes
 parameter_list|(
 name|ElasticNodeInfo
 name|nodeInfo
+parameter_list|,
+name|String
+name|prefix
 parameter_list|)
 block|{
 name|Schema
@@ -1046,7 +1065,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s_%04d"
+literal|"%s%s_%04d"
+argument_list|,
+name|prefix
 argument_list|,
 name|CHANGES
 argument_list|,
@@ -1128,7 +1149,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s_%04d"
+literal|"%s%s_%04d"
+argument_list|,
+name|prefix
 argument_list|,
 name|ACCOUNTS
 argument_list|,
@@ -1200,7 +1223,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s_%04d"
+literal|"%s%s_%04d"
+argument_list|,
+name|prefix
 argument_list|,
 name|GROUPS
 argument_list|,
