@@ -80,7 +80,7 @@ parameter_list|<
 name|T
 parameter_list|>
 extends|extends
-name|Predicate
+name|OperatorPredicate
 argument_list|<
 name|T
 argument_list|>
@@ -89,7 +89,27 @@ name|Matchable
 argument_list|<
 name|T
 argument_list|>
-block|{}
+block|{
+DECL|method|PostFilterPredicate (String operator, String value)
+specifier|public
+name|PostFilterPredicate
+parameter_list|(
+name|String
+name|operator
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|operator
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 end_class
 
 end_unit

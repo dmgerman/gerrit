@@ -534,6 +534,15 @@ name|FIELD_ACCOUNT
 init|=
 literal|"account"
 decl_stmt|;
+DECL|field|FIELD_CAN_SEE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FIELD_CAN_SEE
+init|=
+literal|"cansee"
+decl_stmt|;
 DECL|field|FIELD_EMAIL
 specifier|public
 specifier|static

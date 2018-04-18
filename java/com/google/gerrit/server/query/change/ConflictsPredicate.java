@@ -96,6 +96,22 @@ name|index
 operator|.
 name|query
 operator|.
+name|PostFilterPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
+name|query
+operator|.
 name|Predicate
 import|;
 end_import
@@ -687,10 +703,6 @@ argument_list|(
 operator|new
 name|CheckConflict
 argument_list|(
-name|ChangeQueryBuilder
-operator|.
-name|FIELD_CONFLICTS
-argument_list|,
 name|value
 argument_list|,
 name|args
@@ -717,7 +729,10 @@ specifier|final
 class|class
 name|CheckConflict
 extends|extends
-name|ChangeOperatorPredicate
+name|PostFilterPredicate
+argument_list|<
+name|ChangeData
+argument_list|>
 block|{
 DECL|field|args
 specifier|private
@@ -739,12 +754,9 @@ specifier|final
 name|ChangeDataCache
 name|changeDataCache
 decl_stmt|;
-DECL|method|CheckConflict ( String field, String value, Arguments args, Change c, ChangeDataCache changeDataCache)
+DECL|method|CheckConflict (String value, Arguments args, Change c, ChangeDataCache changeDataCache)
 name|CheckConflict
 parameter_list|(
-name|String
-name|field
-parameter_list|,
 name|String
 name|value
 parameter_list|,
@@ -760,7 +772,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|field
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_CONFLICTS
 argument_list|,
 name|value
 argument_list|)
