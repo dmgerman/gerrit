@@ -466,11 +466,6 @@ return|return
 name|pluginsInitSteps
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"resource"
-argument_list|)
 DECL|method|loadInitStep (Path jar)
 specifier|private
 name|InitStep
