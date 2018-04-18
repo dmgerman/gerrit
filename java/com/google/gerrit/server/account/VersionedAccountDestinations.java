@@ -340,6 +340,15 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+if|if
+condition|(
+name|revision
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 name|String
 name|prefix
 init|=

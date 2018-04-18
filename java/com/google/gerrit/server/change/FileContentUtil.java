@@ -342,9 +342,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|security
 operator|.
-name|Random
+name|SecureRandom
 import|;
 end_import
 
@@ -439,20 +439,6 @@ operator|.
 name|lib
 operator|.
 name|ObjectLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectReader
 import|;
 end_import
 
@@ -594,11 +580,11 @@ DECL|field|rng
 specifier|private
 specifier|static
 specifier|final
-name|Random
+name|SecureRandom
 name|rng
 init|=
 operator|new
-name|Random
+name|SecureRandom
 argument_list|()
 decl_stmt|;
 DECL|field|repoManager
@@ -820,14 +806,8 @@ argument_list|(
 name|revstr
 argument_list|)
 decl_stmt|;
-name|ObjectReader
-name|reader
-init|=
-name|rw
-operator|.
-name|getObjectReader
-argument_list|()
-decl_stmt|;
+try|try
+init|(
 name|TreeWalk
 name|tw
 init|=
@@ -835,7 +815,10 @@ name|TreeWalk
 operator|.
 name|forPath
 argument_list|(
-name|reader
+name|rw
+operator|.
+name|getObjectReader
+argument_list|()
 argument_list|,
 name|path
 argument_list|,
@@ -844,7 +827,8 @@ operator|.
 name|getTree
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|tw
@@ -1037,6 +1021,7 @@ argument_list|()
 return|;
 block|}
 block|}
+block|}
 DECL|method|asBinaryResult (byte[] raw, ObjectLoader obj)
 specifier|private
 specifier|static
@@ -1221,14 +1206,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|ObjectReader
-name|reader
-init|=
-name|rw
-operator|.
-name|getObjectReader
-argument_list|()
-decl_stmt|;
+try|try
+init|(
 name|TreeWalk
 name|tw
 init|=
@@ -1236,7 +1215,10 @@ name|TreeWalk
 operator|.
 name|forPath
 argument_list|(
-name|reader
+name|rw
+operator|.
+name|getObjectReader
+argument_list|()
 argument_list|,
 name|path
 argument_list|,
@@ -1245,7 +1227,8 @@ operator|.
 name|getTree
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|tw
@@ -1380,6 +1363,7 @@ argument_list|,
 name|suffix
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 DECL|method|wrapBlob ( String path, final ObjectLoader obj, byte[] raw, MimeType contentType, @Nullable String suffix)

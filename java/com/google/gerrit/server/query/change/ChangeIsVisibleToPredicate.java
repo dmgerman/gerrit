@@ -640,7 +640,12 @@ throw|throw
 operator|new
 name|OrmException
 argument_list|(
-literal|"unable to check permissions"
+literal|"unable to check permissions on change "
+operator|+
+name|cd
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|e
 argument_list|)

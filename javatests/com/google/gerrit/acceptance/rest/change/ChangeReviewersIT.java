@@ -7077,6 +7077,8 @@ argument_list|(
 name|expectedStatus
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|JsonReader
 name|jsonReader
 init|=
@@ -7088,7 +7090,8 @@ operator|.
 name|getReader
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|jsonReader
 operator|.
 name|setLenient
@@ -7107,6 +7110,7 @@ argument_list|,
 name|clazz
 argument_list|)
 return|;
+block|}
 block|}
 DECL|method|assertReviewers ( ChangeInfo c, ReviewerState reviewerState, TestAccount... accounts)
 specifier|private
