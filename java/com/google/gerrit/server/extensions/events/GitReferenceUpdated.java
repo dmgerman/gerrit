@@ -855,7 +855,7 @@ block|}
 block|}
 block|}
 DECL|class|Event
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|Event
