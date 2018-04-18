@@ -3478,6 +3478,8 @@ literal|"Change {} previously failed to rebuild;"
 operator|+
 literal|" skipping primary storage migration"
 argument_list|,
+name|id
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
@@ -3934,6 +3936,17 @@ name|globalNotesMigration
 operator|.
 name|setFrom
 argument_list|(
+name|newState
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Migration state: {} => {}"
+argument_list|,
+name|expectedOldState
+argument_list|,
 name|newState
 argument_list|)
 expr_stmt|;

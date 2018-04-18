@@ -1176,6 +1176,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+try|try
+init|(
 name|Writer
 name|messageDataWriter
 init|=
@@ -1183,7 +1185,8 @@ name|client
 operator|.
 name|sendMessageData
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|messageDataWriter
@@ -1191,7 +1194,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|/* Include rejected recipient error messages here to not lose that            * information. That piece of the puzzle is vital if zero recipients            * are accepted and the server consequently rejects the DATA command.            */
+comment|/* Include rejected recipient error messages here to not lose that              * information. That piece of the puzzle is vital if zero recipients              * are accepted and the server consequently rejects the DATA command.              */
 throw|throw
 operator|new
 name|EmailException
@@ -1273,6 +1276,7 @@ name|toString
 argument_list|()
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 finally|finally

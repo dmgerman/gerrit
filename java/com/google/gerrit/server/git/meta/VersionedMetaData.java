@@ -2318,6 +2318,8 @@ index|[]
 block|{}
 return|;
 block|}
+try|try
+init|(
 name|TreeWalk
 name|tw
 init|=
@@ -2334,7 +2336,8 @@ operator|.
 name|getTree
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|tw
@@ -2372,6 +2375,7 @@ name|MAX_VALUE
 argument_list|)
 return|;
 block|}
+block|}
 return|return
 operator|new
 name|byte
@@ -2403,6 +2407,8 @@ return|return
 literal|null
 return|;
 block|}
+try|try
+init|(
 name|TreeWalk
 name|tw
 init|=
@@ -2419,7 +2425,8 @@ operator|.
 name|getTree
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|tw
@@ -2435,6 +2442,7 @@ argument_list|(
 literal|0
 argument_list|)
 return|;
+block|}
 block|}
 return|return
 literal|null
