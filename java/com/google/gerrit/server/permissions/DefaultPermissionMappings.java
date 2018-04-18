@@ -472,6 +472,17 @@ operator|.
 name|VIEW_QUEUE
 argument_list|)
 decl|.
+name|put
+argument_list|(
+name|GlobalPermission
+operator|.
+name|VIEW_ACCESS
+argument_list|,
+name|GlobalCapability
+operator|.
+name|VIEW_ACCESS
+argument_list|)
+decl|.
 name|build
 argument_list|()
 decl_stmt|;

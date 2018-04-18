@@ -178,6 +178,11 @@ specifier|public
 name|boolean
 name|viewQueue
 decl_stmt|;
+DECL|field|viewAccess
+specifier|public
+name|boolean
+name|viewAccess
+decl_stmt|;
 DECL|class|QueryLimit
 specifier|static
 class|class
