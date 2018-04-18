@@ -4694,7 +4694,9 @@ name|in
 argument_list|)
 expr_stmt|;
 name|fail
-argument_list|()
+argument_list|(
+literal|"expected ResourceConflictException"
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
