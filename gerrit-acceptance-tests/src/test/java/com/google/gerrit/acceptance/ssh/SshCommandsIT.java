@@ -294,7 +294,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|//TODO: It would be better to dynamically generate this list
+comment|// TODO: It would be better to dynamically generate this list
 DECL|field|COMMANDS
 specifier|private
 specifier|static

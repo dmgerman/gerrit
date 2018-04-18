@@ -625,7 +625,8 @@ parameter_list|)
 block|{
 comment|// Use the destination reference, not the change, as drafts may deny
 comment|// anyone who is not already a reviewer.
-comment|// TODO(hiesel) Replace this with a check on the change resource once support for drafts was removed
+comment|// TODO(hiesel) Replace this with a check on the change resource once support for drafts was
+comment|// removed
 name|PermissionBackend
 operator|.
 name|ForRef

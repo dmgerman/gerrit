@@ -89,7 +89,7 @@ throws|throws
 name|Exception
 block|{}
 comment|/**    * Override this method to do something after the update e.g. send email or run hooks    *    * @param ctx context    */
-comment|//TODO(dborowitz): Support async operations?
+comment|// TODO(dborowitz): Support async operations?
 DECL|method|postUpdate (Context ctx)
 specifier|default
 name|void

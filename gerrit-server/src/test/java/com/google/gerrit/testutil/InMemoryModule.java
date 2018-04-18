@@ -2083,7 +2083,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|//Replacement of DiffExecutorModule to not use thread pool in the tests
+comment|// Replacement of DiffExecutorModule to not use thread pool in the tests
 name|install
 argument_list|(
 operator|new

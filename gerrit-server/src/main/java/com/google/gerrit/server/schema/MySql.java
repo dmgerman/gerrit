@@ -279,7 +279,8 @@ literal|"database"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// See https://stackoverflow.com/questions/42084633/table-name-pattern-can-not-be-null-or-empty-in-java
+comment|// See
+comment|// https://stackoverflow.com/questions/42084633/table-name-pattern-can-not-be-null-or-empty-in-java
 name|b
 operator|.
 name|append

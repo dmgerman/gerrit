@@ -451,7 +451,8 @@ name|SQLException
 block|{
 comment|// List of all changes indexes ever created or dropped, found with the
 comment|// following command:
-comment|//   find g* -name \*.sql | xargs git log -i -p -S' index changes_' | grep -io ' index changes_\w*' | cut -d' ' -f3 | tr A-Z a-z | sort -u
+comment|//   find g* -name \*.sql | xargs git log -i -p -S' index changes_' | grep -io ' index
+comment|// changes_\w*' | cut -d' ' -f3 | tr A-Z a-z | sort -u
 comment|// Used rather than listIndexes as we're not sure whether it might include
 comment|// primary key indexes.
 name|Set

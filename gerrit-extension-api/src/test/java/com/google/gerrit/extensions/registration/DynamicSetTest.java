@@ -167,7 +167,7 @@ operator|.
 name|isFalse
 argument_list|()
 expr_stmt|;
-comment|//See above comment about ds.contains
+comment|// See above comment about ds.contains
 block|}
 annotation|@
 name|Test
@@ -210,7 +210,7 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-comment|//See above comment about ds.contains
+comment|// See above comment about ds.contains
 block|}
 annotation|@
 name|Test
@@ -253,7 +253,7 @@ operator|.
 name|isFalse
 argument_list|()
 expr_stmt|;
-comment|//See above comment about ds.contains
+comment|// See above comment about ds.contains
 block|}
 annotation|@
 name|Test
@@ -303,7 +303,7 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-comment|//See above comment about ds.contains
+comment|// See above comment about ds.contains
 block|}
 annotation|@
 name|Test
@@ -353,7 +353,7 @@ operator|.
 name|isFalse
 argument_list|()
 expr_stmt|;
-comment|//See above comment about ds.contains
+comment|// See above comment about ds.contains
 block|}
 annotation|@
 name|Test
@@ -439,7 +439,7 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-comment|//See above comment about ds.contains
+comment|// See above comment about ds.contains
 comment|// Then we remove 4.
 name|handle
 operator|.
@@ -460,7 +460,7 @@ operator|.
 name|isFalse
 argument_list|()
 expr_stmt|;
-comment|//See above comment about ds.contains
+comment|// See above comment about ds.contains
 block|}
 block|}
 end_class

@@ -13127,7 +13127,7 @@ operator|.
 name|getLastUpdatedOn
 argument_list|()
 decl_stmt|;
-comment|//create a group named "ab" with one user: testUser
+comment|// create a group named "ab" with one user: testUser
 name|TestAccount
 name|testUser
 init|=
@@ -13490,7 +13490,7 @@ operator|.
 name|getLastUpdatedOn
 argument_list|()
 decl_stmt|;
-comment|//create a group named "kobe" with one user: lee
+comment|// create a group named "kobe" with one user: lee
 name|TestAccount
 name|testUser
 init|=
@@ -13556,7 +13556,7 @@ operator|.
 name|fullName
 argument_list|)
 expr_stmt|;
-comment|//ensure that user "user" is not in the group
+comment|// ensure that user "user" is not in the group
 name|groupApi
 operator|.
 name|removeMembers
