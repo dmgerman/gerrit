@@ -193,6 +193,19 @@ operator|.
 name|EMPTY
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getCacheKey ()
+specifier|public
+name|Object
+name|getCacheKey
+parameter_list|()
+block|{
+return|return
+name|getRemoteAddress
+argument_list|()
+return|;
+block|}
 DECL|method|getRemoteAddress ()
 specifier|public
 name|SocketAddress

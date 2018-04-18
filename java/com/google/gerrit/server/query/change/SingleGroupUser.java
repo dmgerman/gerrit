@@ -226,6 +226,21 @@ return|return
 name|groups
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getCacheKey ()
+specifier|public
+name|Object
+name|getCacheKey
+parameter_list|()
+block|{
+return|return
+name|groups
+operator|.
+name|getKnownGroups
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
