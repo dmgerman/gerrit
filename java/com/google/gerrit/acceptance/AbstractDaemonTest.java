@@ -11445,19 +11445,6 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fail ()
-specifier|protected
-name|void
-name|fail
-parameter_list|()
-block|{
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|enableCreateNewChangeForAllNotInTarget ()
 specifier|protected
 name|void

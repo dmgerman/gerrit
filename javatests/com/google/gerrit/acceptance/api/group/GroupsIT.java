@@ -7420,7 +7420,9 @@ name|get
 argument_list|()
 expr_stmt|;
 name|fail
-argument_list|()
+argument_list|(
+literal|"expected ResourceNotFoundException"
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
