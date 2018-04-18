@@ -85,6 +85,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
+operator|.
+name|R_TAGS
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -125,6 +141,22 @@ operator|.
 name|PushOneCommit
 operator|.
 name|Result
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|Permission
 import|;
 end_import
 
@@ -390,8 +422,18 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
-name|grantTagPermissions
-argument_list|()
+name|grant
+argument_list|(
+name|project
+argument_list|,
+name|R_TAGS
+operator|+
+literal|"*"
+argument_list|,
+name|Permission
+operator|.
+name|CREATE_TAG
+argument_list|)
 expr_stmt|;
 name|gApi
 operator|.
