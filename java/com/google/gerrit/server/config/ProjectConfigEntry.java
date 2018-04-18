@@ -717,7 +717,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|//For inheritable boolean use 'LIST' type with InheritableBoolean
+comment|// For inheritable boolean use 'LIST' type with InheritableBoolean
 DECL|method|ProjectConfigEntry (String displayName, boolean defaultValue, String description)
 specifier|public
 name|ProjectConfigEntry

@@ -3421,7 +3421,8 @@ try|try
 block|{
 comment|// Hidden projects(permitsRead = false) should only be accessible by the project owners.
 comment|// READ_CONFIG is checked here because it's only allowed to project owners(ACCESS may also
-comment|// be allowed for other users). Allowing project owners to access here will help them to view
+comment|// be allowed for other users). Allowing project owners to access here will help them to
+comment|// view
 comment|// and update the config of hidden projects easily.
 name|ProjectPermission
 name|permissionToCheck

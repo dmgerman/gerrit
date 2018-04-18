@@ -554,13 +554,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// better would be:
-comment|//assertThat(intraline(a, b)).isEqualTo(wordEdit(6, 6, 6, 16));
+comment|// assertThat(intraline(a, b)).isEqualTo(wordEdit(6, 6, 6, 16));
 comment|// or the equivalent:
-comment|//assertThat(intraline(a, b)).isEqualTo(ref()
+comment|// assertThat(intraline(a, b)).isEqualTo(ref()
 comment|//    .common("multi\n").insert("linemulti\n").common("line\n").edits
-comment|//);
+comment|// );
 block|}
-comment|//TODO: expected failure
+comment|// TODO: expected failure
 comment|// the current code does not work on the first line
 comment|// and the insert marker is in the wrong location
 annotation|@
@@ -629,7 +629,7 @@ name|edits
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TODO: expected failure
+comment|// TODO: expected failure
 comment|// the current code does not work on the first line
 annotation|@
 name|Test

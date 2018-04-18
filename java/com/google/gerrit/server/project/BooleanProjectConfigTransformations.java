@@ -586,7 +586,8 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
-comment|// Verify that each BooleanProjectConfig has to/from API mappers in BooleanProjectConfigTransformations
+comment|// Verify that each BooleanProjectConfig has to/from API mappers in
+comment|// BooleanProjectConfigTransformations
 if|if
 condition|(
 operator|!

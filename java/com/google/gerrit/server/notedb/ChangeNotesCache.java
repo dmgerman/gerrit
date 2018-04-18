@@ -1558,7 +1558,7 @@ operator|+
 name|P
 operator|+
 name|ident
-comment|//realAuthor
+comment|// realAuthor
 operator|+
 name|P
 operator|+

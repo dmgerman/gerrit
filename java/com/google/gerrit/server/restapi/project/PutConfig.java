@@ -1597,7 +1597,7 @@ name|matches
 argument_list|()
 condition|)
 block|{
-comment|//TODO check why we have this restriction
+comment|// TODO check why we have this restriction
 name|log
 operator|.
 name|warn

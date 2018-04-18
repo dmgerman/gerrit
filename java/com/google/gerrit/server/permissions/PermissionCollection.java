@@ -755,7 +755,8 @@ argument_list|,
 name|sections
 argument_list|)
 expr_stmt|;
-comment|// For block permissions, we want a different order: first, we want to go from parent to child.
+comment|// For block permissions, we want a different order: first, we want to go from parent to
+comment|// child.
 name|List
 argument_list|<
 name|Map

@@ -237,7 +237,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|//unless createValue() is overridden, will return null
+comment|// unless createValue() is overridden, will return null
 name|obj
 operator|=
 name|createValue

@@ -787,7 +787,8 @@ operator|.
 name|readString
 argument_list|()
 expr_stmt|;
-comment|// 1 = DATA. It would be nicer to parse the OutputStream with SideBandInputStream from JGit, but
+comment|// 1 = DATA. It would be nicer to parse the OutputStream with SideBandInputStream from JGit,
+comment|// but
 comment|// that is currently not public.
 name|char
 name|channel
