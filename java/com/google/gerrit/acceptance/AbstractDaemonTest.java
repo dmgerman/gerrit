@@ -4007,6 +4007,7 @@ literal|"admin"
 argument_list|)
 return|;
 block|}
+comment|/** Generate default project properties based on test description */
 DECL|method|projectInput (Description description)
 specifier|private
 name|ProjectInput
@@ -4152,6 +4153,18 @@ expr_stmt|;
 return|return
 name|in
 return|;
+block|}
+comment|/**    * Modify a project input before creating the initial test project.    *    * @param in input; may be modified in place.    */
+DECL|method|updateProjectInput (ProjectInput in)
+specifier|protected
+name|void
+name|updateProjectInput
+parameter_list|(
+name|ProjectInput
+name|in
+parameter_list|)
+block|{
+comment|// Default implementation does nothing.
 block|}
 DECL|field|UNSAFE_PROJECT_NAME
 specifier|private
@@ -4386,18 +4399,6 @@ operator|.
 name|name
 argument_list|)
 return|;
-block|}
-comment|/**    * Modify a project input before creating the initial test project.    *    * @param in input; may be modified in place.    */
-DECL|method|updateProjectInput (ProjectInput in)
-specifier|protected
-name|void
-name|updateProjectInput
-parameter_list|(
-name|ProjectInput
-name|in
-parameter_list|)
-block|{
-comment|// Default implementation does nothing.
 block|}
 DECL|method|cloneProject (Project.NameKey p)
 specifier|protected
