@@ -1406,18 +1406,6 @@ literal|true
 argument_list|)
 decl_stmt|;
 name|AccessSection
-name|refsFor
-init|=
-name|config
-operator|.
-name|getAccessSection
-argument_list|(
-literal|"refs/for/*"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|AccessSection
 name|magic
 init|=
 name|config
@@ -1478,7 +1466,7 @@ name|grant
 argument_list|(
 name|config
 argument_list|,
-name|refsFor
+name|all
 argument_list|,
 name|Permission
 operator|.

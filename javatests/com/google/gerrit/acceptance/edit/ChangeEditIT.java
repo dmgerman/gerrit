@@ -5718,7 +5718,7 @@ name|block
 argument_list|(
 name|p
 argument_list|,
-literal|"refs/for/*"
+literal|"refs/*"
 argument_list|,
 name|Permission
 operator|.
