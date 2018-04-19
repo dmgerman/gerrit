@@ -385,6 +385,8 @@ literal|"ls-user-refs"
 argument_list|,
 literal|"plugin"
 argument_list|,
+literal|"reload-config"
+argument_list|,
 literal|"show-caches"
 argument_list|,
 literal|"show-connections"
