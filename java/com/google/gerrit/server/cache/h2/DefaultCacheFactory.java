@@ -355,13 +355,6 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
-name|DefaultCacheFactory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|bind
-argument_list|(
 name|MemoryCacheFactory
 operator|.
 name|class
