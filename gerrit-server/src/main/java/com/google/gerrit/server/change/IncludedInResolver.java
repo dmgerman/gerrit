@@ -969,7 +969,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * Partition the reference tips into two sets:    *    *<ul>    *<li>before = commits with time< target.getCommitTime()    *<li>after = commits with time>= target.getCommitTime()    *</ul>    *    * Each of the before/after lists is sorted by the the commit time.    *    * @param before    * @param after    */
+comment|/**    * Partition the reference tips into two sets:    *    *<ul>    *<li>before = commits with time< target.getCommitTime()    *<li>after = commits with time>= target.getCommitTime()    *</ul>    *    * Each of the before/after lists is sorted by the commit time.    *    * @param before    * @param after    */
 DECL|method|partition (List<RevCommit> before, List<RevCommit> after)
 specifier|private
 name|void
