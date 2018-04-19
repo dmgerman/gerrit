@@ -161,7 +161,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Caches object instances for a request as {@link ThreadLocal} in the serving thread.  *  *<p>This class is intended to cache objects that have a high instantiation cost, are specific to  * the current request and potentially need to be instantiated multiple times while serving a  * request.  *  *<p>This is different from the key-value storage in {@code CurrentUser}: {@code CurrentUser}  * offers a key-value storage by providing thread-safe {@code get} and {@code put} methods. Once the  * value is retrieved through {@code get} there is not thread-safety anymore - apart from the the  * retrieved object guarantees. Depending on the implementation of {@code CurrentUser}, it might be  * shared between the request serving thread as well as sub- or background treads.  *  *<p>In comparison to that, this class guarantees thread safety even on non-thread-safe objects as  * it's cache is tied to the serving thread only. While allowing to cache non-thread-safe objects,  * it has the downside of not sharing any objects with background threads or executors.  *  *<p>Lastly, this class offers a cache, that requires callers to also provide a {@code Supplier} in  * case the object is not present in the cache, while {@code CurrentUser} provides a storage where  * just retrieving stored values is a valid operation.  */
+comment|/**  * Caches object instances for a request as {@link ThreadLocal} in the serving thread.  *  *<p>This class is intended to cache objects that have a high instantiation cost, are specific to  * the current request and potentially need to be instantiated multiple times while serving a  * request.  *  *<p>This is different from the key-value storage in {@code CurrentUser}: {@code CurrentUser}  * offers a key-value storage by providing thread-safe {@code get} and {@code put} methods. Once the  * value is retrieved through {@code get} there is not thread-safety anymore - apart from the  * retrieved object guarantees. Depending on the implementation of {@code CurrentUser}, it might be  * shared between the request serving thread as well as sub- or background treads.  *  *<p>In comparison to that, this class guarantees thread safety even on non-thread-safe objects as  * its cache is tied to the serving thread only. While allowing to cache non-thread-safe objects, it  * has the downside of not sharing any objects with background threads or executors.  *  *<p>Lastly, this class offers a cache, that requires callers to also provide a {@code Supplier} in  * case the object is not present in the cache, while {@code CurrentUser} provides a storage where  * just retrieving stored values is a valid operation.  */
 end_comment
 
 begin_class
@@ -296,7 +296,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|Key (Class<T> clazz, ImmutableList<Object> identifiers)
-specifier|public
+specifier|private
 name|Key
 parameter_list|(
 name|Class
