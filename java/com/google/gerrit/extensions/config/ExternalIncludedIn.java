@@ -114,7 +114,7 @@ specifier|public
 interface|interface
 name|ExternalIncludedIn
 block|{
-comment|/**    * Returns additional entries for IncludedInInfo as multimap where the key is the row title and    * the the values are a list of systems that include the given commit (e.g. names of servers on    * which this commit is deployed).    *    *<p>The tags and branches in which the commit is included are provided so that a RevWalk can be    * avoided when a system runs a certain tag or branch.    *    * @param project the name of the project    * @param commit the ID of the commit for which it should be checked if it is included    * @param tags the tags that include the commit    * @param branches the branches that include the commit    * @return additional entries for IncludedInInfo    */
+comment|/**    * Returns additional entries for IncludedInInfo as multimap where the key is the row title and    * the values are a list of systems that include the given commit (e.g. names of servers on which    * this commit is deployed).    *    *<p>The tags and branches in which the commit is included are provided so that a RevWalk can be    * avoided when a system runs a certain tag or branch.    *    * @param project the name of the project    * @param commit the ID of the commit for which it should be checked if it is included    * @param tags the tags that include the commit    * @param branches the branches that include the commit    * @return additional entries for IncludedInInfo    */
 DECL|method|getIncludedIn ( String project, String commit, Collection<String> tags, Collection<String> branches)
 name|ListMultimap
 argument_list|<
