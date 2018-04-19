@@ -591,7 +591,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|// To avoid {@code synchronized} on the the whole filtering (and
+comment|// To avoid {@code synchronized} on the whole filtering (and
 comment|// thereby killing concurrency), we start the below disjunction
 comment|// with an unsynchronized check for containment. This
 comment|// unsynchronized check is always correct if no filters got
