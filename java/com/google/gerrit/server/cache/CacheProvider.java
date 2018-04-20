@@ -254,6 +254,13 @@ name|K
 argument_list|,
 name|V
 argument_list|>
+implements|,
+name|CacheDef
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
 block|{
 DECL|field|module
 specifier|private

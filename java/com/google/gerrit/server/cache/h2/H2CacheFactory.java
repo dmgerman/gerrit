@@ -170,7 +170,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|CacheBinding
+name|CacheDef
 import|;
 end_import
 
@@ -1094,7 +1094,7 @@ block|}
 argument_list|)
 annotation|@
 name|Override
-DECL|method|build (CacheBinding<K, V> in)
+DECL|method|build (CacheDef<K, V> in)
 specifier|public
 parameter_list|<
 name|K
@@ -1109,7 +1109,7 @@ name|V
 argument_list|>
 name|build
 parameter_list|(
-name|CacheBinding
+name|CacheDef
 argument_list|<
 name|K
 argument_list|,
@@ -1160,7 +1160,7 @@ name|in
 argument_list|)
 return|;
 block|}
-name|H2CacheBindingProxy
+name|H2CacheDefProxy
 argument_list|<
 name|K
 argument_list|,
@@ -1169,7 +1169,7 @@ argument_list|>
 name|def
 init|=
 operator|new
-name|H2CacheBindingProxy
+name|H2CacheDefProxy
 argument_list|<>
 argument_list|(
 name|in
@@ -1271,7 +1271,7 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|build (CacheBinding<K, V> in, CacheLoader<K, V> loader)
+DECL|method|build (CacheDef<K, V> in, CacheLoader<K, V> loader)
 specifier|public
 parameter_list|<
 name|K
@@ -1286,7 +1286,7 @@ name|V
 argument_list|>
 name|build
 parameter_list|(
-name|CacheBinding
+name|CacheDef
 argument_list|<
 name|K
 argument_list|,
@@ -1347,7 +1347,7 @@ name|loader
 argument_list|)
 return|;
 block|}
-name|H2CacheBindingProxy
+name|H2CacheDefProxy
 argument_list|<
 name|K
 argument_list|,
@@ -1356,7 +1356,7 @@ argument_list|>
 name|def
 init|=
 operator|new
-name|H2CacheBindingProxy
+name|H2CacheDefProxy
 argument_list|<>
 argument_list|(
 name|in

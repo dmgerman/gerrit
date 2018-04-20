@@ -114,7 +114,7 @@ specifier|public
 interface|interface
 name|PersistentCacheFactory
 block|{
-DECL|method|build (CacheBinding<K, V> def)
+DECL|method|build (CacheDef<K, V> def)
 parameter_list|<
 name|K
 parameter_list|,
@@ -128,7 +128,7 @@ name|V
 argument_list|>
 name|build
 parameter_list|(
-name|CacheBinding
+name|CacheDef
 argument_list|<
 name|K
 argument_list|,
@@ -137,7 +137,7 @@ argument_list|>
 name|def
 parameter_list|)
 function_decl|;
-DECL|method|build (CacheBinding<K, V> def, CacheLoader<K, V> loader)
+DECL|method|build (CacheDef<K, V> def, CacheLoader<K, V> loader)
 parameter_list|<
 name|K
 parameter_list|,
@@ -151,7 +151,7 @@ name|V
 argument_list|>
 name|build
 parameter_list|(
-name|CacheBinding
+name|CacheDef
 argument_list|<
 name|K
 argument_list|,

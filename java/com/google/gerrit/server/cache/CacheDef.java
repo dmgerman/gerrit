@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -76,20 +76,6 @@ name|common
 operator|.
 name|cache
 operator|.
-name|Cache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|cache
-operator|.
 name|CacheLoader
 import|;
 end_import
@@ -104,61 +90,122 @@ name|common
 operator|.
 name|cache
 operator|.
-name|LoadingCache
+name|Weigher
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|TypeLiteral
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
 import|;
 end_import
 
 begin_interface
-DECL|interface|MemoryCacheFactory
+DECL|interface|CacheDef
 specifier|public
 interface|interface
-name|MemoryCacheFactory
-block|{
-DECL|method|build (CacheDef<K, V> def)
+name|CacheDef
 parameter_list|<
 name|K
 parameter_list|,
 name|V
 parameter_list|>
-name|Cache
+block|{
+comment|/**    * Unique name for this cache.    *    *<p>The name can be used in a binding annotation {@code @Named(name)} to inject the cache    * configured with this binding.    */
+DECL|method|name ()
+name|String
+name|name
+parameter_list|()
+function_decl|;
+comment|/**    * Key to use when looking up configuration for this cache.    *    *<p>Typically, this will match the result of {@link #name()}, so that configuration is keyed by    * the actual cache name. However, it may be changed, for example to reuse the size limits of some    * other cache.    */
+DECL|method|configKey ()
+name|String
+name|configKey
+parameter_list|()
+function_decl|;
+DECL|method|keyType ()
+name|TypeLiteral
 argument_list|<
 name|K
-argument_list|,
+argument_list|>
+name|keyType
+parameter_list|()
+function_decl|;
+DECL|method|valueType ()
+name|TypeLiteral
+argument_list|<
 name|V
 argument_list|>
-name|build
+name|valueType
+parameter_list|()
+function_decl|;
+DECL|method|maximumWeight ()
+name|long
+name|maximumWeight
+parameter_list|()
+function_decl|;
+DECL|method|diskLimit ()
+name|long
+name|diskLimit
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nullable
+DECL|method|expireAfterWrite (TimeUnit unit)
+name|Long
+name|expireAfterWrite
 parameter_list|(
-name|CacheDef
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|def
+name|TimeUnit
+name|unit
 parameter_list|)
 function_decl|;
-DECL|method|build (CacheDef<K, V> def, CacheLoader<K, V> loader)
-parameter_list|<
-name|K
-parameter_list|,
-name|V
-parameter_list|>
-name|LoadingCache
+annotation|@
+name|Nullable
+DECL|method|weigher ()
+name|Weigher
 argument_list|<
 name|K
 argument_list|,
 name|V
 argument_list|>
-name|build
-parameter_list|(
-name|CacheDef
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|def
-parameter_list|,
+name|weigher
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nullable
+DECL|method|loader ()
 name|CacheLoader
 argument_list|<
 name|K
@@ -166,7 +213,7 @@ argument_list|,
 name|V
 argument_list|>
 name|loader
-parameter_list|)
+parameter_list|()
 function_decl|;
 block|}
 end_interface

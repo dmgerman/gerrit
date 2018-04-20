@@ -96,32 +96,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|TypeLiteral
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -240,7 +214,7 @@ argument_list|>
 name|clazz
 parameter_list|)
 function_decl|;
-comment|/**    * Set the config name to something other than the cache name.    *    * @see #configKey()    */
+comment|/**    * Set the config name to something other than the cache name.    *    * @see CacheDef#configKey()    */
 DECL|method|configKey (String configKey)
 name|CacheBinding
 argument_list|<
@@ -253,78 +227,6 @@ parameter_list|(
 name|String
 name|configKey
 parameter_list|)
-function_decl|;
-comment|/**    * Unique name for this cache.    *    *<p>The name can be used in a binding annotation {@code @Named(name)} to inject the cache    * configured with this binding.    */
-DECL|method|name ()
-name|String
-name|name
-parameter_list|()
-function_decl|;
-comment|/**    * Key to use when looking up configuration for this cache.    *    *<p>Typically, this will match the result of {@link #name()}, so that configuration is keyed by    * the actual cache name. However, it may be changed, for example to reuse the size limits of some    * other cache.    */
-DECL|method|configKey ()
-name|String
-name|configKey
-parameter_list|()
-function_decl|;
-DECL|method|keyType ()
-name|TypeLiteral
-argument_list|<
-name|K
-argument_list|>
-name|keyType
-parameter_list|()
-function_decl|;
-DECL|method|valueType ()
-name|TypeLiteral
-argument_list|<
-name|V
-argument_list|>
-name|valueType
-parameter_list|()
-function_decl|;
-DECL|method|maximumWeight ()
-name|long
-name|maximumWeight
-parameter_list|()
-function_decl|;
-DECL|method|diskLimit ()
-name|long
-name|diskLimit
-parameter_list|()
-function_decl|;
-annotation|@
-name|Nullable
-DECL|method|expireAfterWrite (TimeUnit unit)
-name|Long
-name|expireAfterWrite
-parameter_list|(
-name|TimeUnit
-name|unit
-parameter_list|)
-function_decl|;
-annotation|@
-name|Nullable
-DECL|method|weigher ()
-name|Weigher
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|weigher
-parameter_list|()
-function_decl|;
-annotation|@
-name|Nullable
-DECL|method|loader ()
-name|CacheLoader
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|loader
-parameter_list|()
 function_decl|;
 block|}
 end_interface
