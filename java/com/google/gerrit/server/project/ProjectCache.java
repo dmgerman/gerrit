@@ -88,6 +88,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -154,22 +168,26 @@ name|ProjectState
 name|getAllUsers
 parameter_list|()
 function_decl|;
-comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @return the cached data; null if no such project exists or a error occurred.    * @see #checkedGet(com.google.gerrit.reviewdb.client.Project.NameKey)    */
-DECL|method|get (Project.NameKey projectName)
+comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @return the cached data; null if no such project exists, projectName is null or an error    *     occurred.    * @see #checkedGet(com.google.gerrit.reviewdb.client.Project.NameKey)    */
+DECL|method|get (@ullable Project.NameKey projectName)
 name|ProjectState
 name|get
 parameter_list|(
+annotation|@
+name|Nullable
 name|Project
 operator|.
 name|NameKey
 name|projectName
 parameter_list|)
 function_decl|;
-comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @throws IOException when there was an error.    * @return the cached data; null if no such project exists.    */
-DECL|method|checkedGet (Project.NameKey projectName)
+comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @throws IOException when there was an error.    * @return the cached data; null if no such project exists or projectName is null.    */
+DECL|method|checkedGet (@ullable Project.NameKey projectName)
 name|ProjectState
 name|checkedGet
 parameter_list|(
+annotation|@
+name|Nullable
 name|Project
 operator|.
 name|NameKey
