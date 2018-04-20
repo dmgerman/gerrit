@@ -794,15 +794,6 @@ name|canUploadMerges
 parameter_list|()
 block|{
 return|return
-name|projectControl
-operator|.
-name|controlForRef
-argument_list|(
-literal|"refs/for/"
-operator|+
-name|refName
-argument_list|)
-operator|.
 name|canPerform
 argument_list|(
 name|Permission
