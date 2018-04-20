@@ -176,11 +176,6 @@ name|long
 name|maximumWeight
 parameter_list|()
 function_decl|;
-DECL|method|diskLimit ()
-name|long
-name|diskLimit
-parameter_list|()
-function_decl|;
 annotation|@
 name|Nullable
 DECL|method|expireAfterWrite (TimeUnit unit)

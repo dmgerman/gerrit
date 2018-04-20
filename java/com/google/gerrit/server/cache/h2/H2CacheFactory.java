@@ -170,7 +170,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|CacheDef
+name|MemoryCacheFactory
 import|;
 end_import
 
@@ -186,7 +186,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|MemoryCacheFactory
+name|PersistentCacheDef
 import|;
 end_import
 
@@ -1094,7 +1094,7 @@ block|}
 argument_list|)
 annotation|@
 name|Override
-DECL|method|build (CacheDef<K, V> in)
+DECL|method|build (PersistentCacheDef<K, V> in)
 specifier|public
 parameter_list|<
 name|K
@@ -1109,7 +1109,7 @@ name|V
 argument_list|>
 name|build
 parameter_list|(
-name|CacheDef
+name|PersistentCacheDef
 argument_list|<
 name|K
 argument_list|,
@@ -1271,7 +1271,7 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|build (CacheDef<K, V> in, CacheLoader<K, V> loader)
+DECL|method|build (PersistentCacheDef<K, V> in, CacheLoader<K, V> loader)
 specifier|public
 parameter_list|<
 name|K
@@ -1286,7 +1286,7 @@ name|V
 argument_list|>
 name|build
 parameter_list|(
-name|CacheDef
+name|PersistentCacheDef
 argument_list|<
 name|K
 argument_list|,

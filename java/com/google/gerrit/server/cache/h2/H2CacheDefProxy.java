@@ -108,7 +108,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|CacheDef
+name|PersistentCacheDef
 import|;
 end_import
 
@@ -166,7 +166,7 @@ parameter_list|,
 name|V
 parameter_list|>
 implements|implements
-name|CacheDef
+name|PersistentCacheDef
 argument_list|<
 name|K
 argument_list|,
@@ -176,7 +176,7 @@ block|{
 DECL|field|source
 specifier|private
 specifier|final
-name|CacheDef
+name|PersistentCacheDef
 argument_list|<
 name|K
 argument_list|,
@@ -184,10 +184,10 @@ name|V
 argument_list|>
 name|source
 decl_stmt|;
-DECL|method|H2CacheDefProxy (CacheDef<K, V> source)
+DECL|method|H2CacheDefProxy (PersistentCacheDef<K, V> source)
 name|H2CacheDefProxy
 parameter_list|(
-name|CacheDef
+name|PersistentCacheDef
 argument_list|<
 name|K
 argument_list|,
