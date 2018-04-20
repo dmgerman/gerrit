@@ -1907,7 +1907,7 @@ name|cfg
 operator|=
 name|configProvider
 operator|.
-name|get
+name|loadConfig
 argument_list|()
 expr_stmt|;
 name|this
