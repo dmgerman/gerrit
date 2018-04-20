@@ -167,6 +167,16 @@ argument_list|>
 name|status
 parameter_list|()
 function_decl|;
+DECL|method|active ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|Boolean
+argument_list|>
+name|active
+parameter_list|()
+function_decl|;
 DECL|method|accountCreator ()
 specifier|abstract
 name|ThrowingFunction
@@ -334,6 +344,41 @@ return|return
 name|status
 argument_list|(
 literal|""
+argument_list|)
+return|;
+block|}
+DECL|method|active (boolean active)
+specifier|abstract
+name|Builder
+name|active
+parameter_list|(
+name|boolean
+name|active
+parameter_list|)
+function_decl|;
+DECL|method|active ()
+specifier|public
+name|Builder
+name|active
+parameter_list|()
+block|{
+return|return
+name|active
+argument_list|(
+literal|true
+argument_list|)
+return|;
+block|}
+DECL|method|inactive ()
+specifier|public
+name|Builder
+name|inactive
+parameter_list|()
+block|{
+return|return
+name|active
+argument_list|(
+literal|false
 argument_list|)
 return|;
 block|}
