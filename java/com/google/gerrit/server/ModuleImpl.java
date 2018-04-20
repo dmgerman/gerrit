@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.cache
+DECL|package|com.google.gerrit.server
 package|package
 name|com
 operator|.
@@ -61,8 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|server
-operator|.
-name|cache
 package|;
 end_package
 
@@ -143,24 +141,15 @@ name|TYPE
 argument_list|)
 annotation|@
 name|Inherited
-DECL|annotation|CacheImpl
+comment|/**  * Use this annotation to mark module as being swappable with implementation from {@code  * gerrit.installModule}. Note that module with this annotation shouldn't be part of circular  * dependency with any existing module.  */
+DECL|annotation|ModuleImpl
 specifier|public
 annotation_defn|@interface
-name|CacheImpl
+name|ModuleImpl
 block|{
-DECL|enum|Type
-enum|enum
-name|Type
-block|{
-DECL|enumConstant|MEMORY
-name|MEMORY
-block|,
-DECL|enumConstant|PERSISTENT
-name|PERSISTENT
-block|}
-DECL|method|type ()
-name|Type
-name|type
+DECL|method|name ()
+name|String
+name|name
 parameter_list|()
 function_decl|;
 block|}
