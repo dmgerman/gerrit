@@ -1081,6 +1081,11 @@ comment|// TODO(dborowitz): Once default Java serialization is removed, leave no
 return|return
 name|m
 operator|.
+name|version
+argument_list|(
+literal|0
+argument_list|)
+operator|.
 name|keySerializer
 argument_list|(
 operator|new

@@ -1663,6 +1663,11 @@ operator|.
 name|valueSerializer
 argument_list|()
 argument_list|,
+name|def
+operator|.
+name|version
+argument_list|()
+argument_list|,
 name|maxSize
 argument_list|,
 name|expireAfterWrite

@@ -227,6 +227,11 @@ argument_list|,
 name|V
 argument_list|>
 block|{
+DECL|field|version
+specifier|private
+name|int
+name|version
+decl_stmt|;
 DECL|field|diskLimit
 specifier|private
 name|long
@@ -285,6 +290,11 @@ name|keyType
 argument_list|,
 name|valType
 argument_list|)
+expr_stmt|;
+name|version
+operator|=
+operator|-
+literal|1
 expr_stmt|;
 block|}
 annotation|@
@@ -470,6 +480,32 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|version (int version)
+specifier|public
+name|PersistentCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|version
+parameter_list|(
+name|int
+name|version
+parameter_list|)
+block|{
+name|this
+operator|.
+name|version
+operator|=
+name|version
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|keySerializer (CacheSerializer<K> keySerializer)
 specifier|public
 name|PersistentCacheBinding
@@ -580,6 +616,18 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|version ()
+specifier|public
+name|int
+name|version
+parameter_list|()
+block|{
+return|return
+name|version
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|keySerializer ()
 specifier|public
 name|CacheSerializer
@@ -635,6 +683,15 @@ name|get
 argument_list|()
 return|;
 block|}
+name|checkState
+argument_list|(
+name|version
+operator|>=
+literal|0
+argument_list|,
+literal|"version is required"
+argument_list|)
+expr_stmt|;
 name|checkState
 argument_list|(
 name|keySerializer

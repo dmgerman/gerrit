@@ -211,6 +211,19 @@ argument_list|>
 name|clazz
 parameter_list|)
 function_decl|;
+DECL|method|version (int version)
+name|PersistentCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|version
+parameter_list|(
+name|int
+name|version
+parameter_list|)
+function_decl|;
 comment|/** Set the total on-disk limit of the cache */
 DECL|method|diskLimit (long limit)
 name|PersistentCacheBinding

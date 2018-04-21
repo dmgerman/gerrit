@@ -1567,6 +1567,12 @@ name|V
 argument_list|>
 name|valueSerializer
 decl_stmt|;
+DECL|field|version
+specifier|private
+specifier|final
+name|int
+name|version
+decl_stmt|;
 DECL|field|maxSize
 specifier|private
 specifier|final
@@ -1622,7 +1628,7 @@ specifier|private
 name|int
 name|estimatedSize
 decl_stmt|;
-DECL|method|SqlStore ( String jdbcUrl, TypeLiteral<K> keyType, CacheSerializer<K> keySerializer, CacheSerializer<V> valueSerializer, long maxSize, long expireAfterWrite)
+DECL|method|SqlStore ( String jdbcUrl, TypeLiteral<K> keyType, CacheSerializer<K> keySerializer, CacheSerializer<V> valueSerializer, int version, long maxSize, long expireAfterWrite)
 name|SqlStore
 parameter_list|(
 name|String
@@ -1645,6 +1651,9 @@ argument_list|<
 name|V
 argument_list|>
 name|valueSerializer
+parameter_list|,
+name|int
+name|version
 parameter_list|,
 name|long
 name|maxSize
@@ -1675,6 +1684,12 @@ operator|.
 name|valueSerializer
 operator|=
 name|valueSerializer
+expr_stmt|;
+name|this
+operator|.
+name|version
+operator|=
+name|version
 expr_stmt|;
 name|this
 operator|.
@@ -1920,19 +1935,6 @@ operator|=
 name|acquire
 argument_list|()
 expr_stmt|;
-try|try
-init|(
-name|Statement
-name|s
-init|=
-name|c
-operator|.
-name|conn
-operator|.
-name|createStatement
-argument_list|()
-init|)
-block|{
 if|if
 condition|(
 name|estimatedSize
@@ -1942,15 +1944,37 @@ condition|)
 block|{
 try|try
 init|(
+name|PreparedStatement
+name|ps
+init|=
+name|c
+operator|.
+name|conn
+operator|.
+name|prepareStatement
+argument_list|(
+literal|"SELECT COUNT(*) FROM data WHERE version=?"
+argument_list|)
+init|)
+block|{
+name|ps
+operator|.
+name|setInt
+argument_list|(
+literal|1
+argument_list|,
+name|version
+argument_list|)
+expr_stmt|;
+try|try
+init|(
 name|ResultSet
 name|r
 init|=
-name|s
+name|ps
 operator|.
 name|executeQuery
-argument_list|(
-literal|"SELECT COUNT(*) FROM data"
-argument_list|)
+argument_list|()
 init|)
 block|{
 name|estimatedSize
@@ -1971,6 +1995,7 @@ literal|0
 expr_stmt|;
 block|}
 block|}
+block|}
 name|BloomFilter
 argument_list|<
 name|K
@@ -1982,15 +2007,37 @@ argument_list|()
 decl_stmt|;
 try|try
 init|(
+name|PreparedStatement
+name|ps
+init|=
+name|c
+operator|.
+name|conn
+operator|.
+name|prepareStatement
+argument_list|(
+literal|"SELECT k FROM data WHERE version=?"
+argument_list|)
+init|)
+block|{
+name|ps
+operator|.
+name|setInt
+argument_list|(
+literal|1
+argument_list|,
+name|version
+argument_list|)
+expr_stmt|;
+try|try
+init|(
 name|ResultSet
 name|r
 init|=
-name|s
+name|ps
 operator|.
 name|executeQuery
-argument_list|(
-literal|"SELECT k FROM data"
-argument_list|)
+argument_list|()
 init|)
 block|{
 while|while
@@ -2017,6 +2064,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|JdbcSQLException
@@ -2033,6 +2081,11 @@ operator|instanceof
 name|InvalidClassException
 condition|)
 block|{
+comment|// If deserialization failed using default Java serialization, this means we are using
+comment|// the old serialVersionUID-based invalidation strategy. In that case, authors are
+comment|// most likely bumping serialVersionUID rather than using the new versioning in the
+comment|// CacheBinding.  That's ok; we'll continue to support both for now.
+comment|// TODO(dborowitz): Remove this case when Java serialization is no longer used.
 name|log
 operator|.
 name|warn
@@ -2060,7 +2113,6 @@ block|}
 return|return
 name|b
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2148,7 +2200,7 @@ name|conn
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"SELECT v, created FROM data WHERE k=?"
+literal|"SELECT v, created FROM data WHERE k=? AND version=?"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2163,6 +2215,19 @@ argument_list|,
 literal|1
 argument_list|,
 name|key
+argument_list|)
+expr_stmt|;
+comment|// Silently no results when the only value in the database is an older version. This will
+comment|// result in put overwriting the stored value with the new version, which is intended.
+name|c
+operator|.
+name|get
+operator|.
+name|setInt
+argument_list|(
+literal|2
+argument_list|,
+name|version
 argument_list|)
 expr_stmt|;
 try|try
@@ -2467,7 +2532,7 @@ name|conn
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"UPDATE data SET accessed=? WHERE k=?"
+literal|"UPDATE data SET accessed=? WHERE k=? AND version=?"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2498,6 +2563,17 @@ argument_list|,
 literal|2
 argument_list|,
 name|key
+argument_list|)
+expr_stmt|;
+name|c
+operator|.
+name|touch
+operator|.
+name|setInt
+argument_list|(
+literal|3
+argument_list|,
+name|version
 argument_list|)
 expr_stmt|;
 name|c
@@ -2600,7 +2676,7 @@ name|conn
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"MERGE INTO data (k, v, created, accessed) VALUES(?,?,?,?)"
+literal|"MERGE INTO data (k, v, version, created, accessed) VALUES(?,?,?,?,?)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2641,9 +2717,20 @@ name|c
 operator|.
 name|put
 operator|.
-name|setTimestamp
+name|setInt
 argument_list|(
 literal|3
+argument_list|,
+name|version
+argument_list|)
+expr_stmt|;
+name|c
+operator|.
+name|put
+operator|.
+name|setTimestamp
+argument_list|(
+literal|4
 argument_list|,
 operator|new
 name|Timestamp
@@ -2660,7 +2747,7 @@ name|put
 operator|.
 name|setTimestamp
 argument_list|(
-literal|4
+literal|5
 argument_list|,
 name|TimeUtil
 operator|.
@@ -2828,7 +2915,7 @@ name|conn
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"DELETE FROM data WHERE k=?"
+literal|"DELETE FROM data WHERE k=? and version=?"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2845,6 +2932,17 @@ argument_list|,
 literal|1
 argument_list|,
 name|key
+argument_list|)
+expr_stmt|;
+name|c
+operator|.
+name|invalidate
+operator|.
+name|setInt
+argument_list|(
+literal|2
+argument_list|,
+name|version
 argument_list|)
 expr_stmt|;
 name|c
@@ -2971,6 +3069,52 @@ argument_list|()
 expr_stmt|;
 try|try
 init|(
+name|PreparedStatement
+name|ps
+init|=
+name|c
+operator|.
+name|conn
+operator|.
+name|prepareStatement
+argument_list|(
+literal|"DELETE FROM data WHERE version!=?"
+argument_list|)
+init|)
+block|{
+name|ps
+operator|.
+name|setInt
+argument_list|(
+literal|1
+argument_list|,
+name|version
+argument_list|)
+expr_stmt|;
+name|int
+name|oldEntries
+init|=
+name|ps
+operator|.
+name|executeUpdate
+argument_list|()
+decl_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Pruned {} entries not matching version {} from cache {}"
+argument_list|,
+name|oldEntries
+argument_list|,
+name|version
+argument_list|,
+name|url
+argument_list|)
+expr_stmt|;
+block|}
+try|try
+init|(
 name|Statement
 name|s
 init|=
@@ -2982,6 +3126,8 @@ name|createStatement
 argument_list|()
 init|)
 block|{
+comment|// Compute size without restricting to version (although obsolete data was just pruned
+comment|// anyway).
 name|long
 name|used
 init|=
@@ -3035,17 +3181,7 @@ name|s
 operator|.
 name|executeQuery
 argument_list|(
-literal|"SELECT"
-operator|+
-literal|" k"
-operator|+
-literal|",space"
-operator|+
-literal|",created"
-operator|+
-literal|" FROM data"
-operator|+
-literal|" ORDER BY accessed"
+literal|"SELECT k, space, created FROM data ORDER BY accessed"
 argument_list|)
 init|)
 block|{
@@ -3207,6 +3343,7 @@ operator|.
 name|createStatement
 argument_list|()
 init|;
+comment|// Stats include total size regardless of version.
 name|ResultSet
 name|r
 operator|=
@@ -3214,13 +3351,7 @@ name|s
 operator|.
 name|executeQuery
 argument_list|(
-literal|"SELECT"
-operator|+
-literal|" COUNT(*)"
-operator|+
-literal|",SUM(space)"
-operator|+
-literal|" FROM data"
+literal|"SELECT COUNT(*), SUM(space) FROM data"
 argument_list|)
 init|)
 block|{
@@ -3549,6 +3680,13 @@ argument_list|(
 literal|"ALTER TABLE data ADD COLUMN IF NOT EXISTS "
 operator|+
 literal|"space BIGINT AS OCTET_LENGTH(k) + OCTET_LENGTH(v)"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|addBatch
+argument_list|(
+literal|"ALTER TABLE data ADD COLUMN IF NOT EXISTS version INT DEFAULT 0 NOT NULL"
 argument_list|)
 expr_stmt|;
 name|stmt

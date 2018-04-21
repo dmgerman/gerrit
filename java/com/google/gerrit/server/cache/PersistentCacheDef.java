@@ -89,6 +89,11 @@ name|long
 name|diskLimit
 parameter_list|()
 function_decl|;
+DECL|method|version ()
+name|int
+name|version
+parameter_list|()
+function_decl|;
 DECL|method|keySerializer ()
 name|CacheSerializer
 argument_list|<

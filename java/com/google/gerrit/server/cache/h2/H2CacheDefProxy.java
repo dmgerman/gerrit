@@ -454,6 +454,21 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|version ()
+specifier|public
+name|int
+name|version
+parameter_list|()
+block|{
+return|return
+name|source
+operator|.
+name|version
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|keySerializer ()
 specifier|public
 name|CacheSerializer
