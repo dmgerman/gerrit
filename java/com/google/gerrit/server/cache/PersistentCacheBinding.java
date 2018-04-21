@@ -225,6 +225,38 @@ name|long
 name|limit
 parameter_list|)
 function_decl|;
+DECL|method|keySerializer (CacheSerializer<K> keySerializer)
+name|PersistentCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|keySerializer
+parameter_list|(
+name|CacheSerializer
+argument_list|<
+name|K
+argument_list|>
+name|keySerializer
+parameter_list|)
+function_decl|;
+DECL|method|valueSerializer (CacheSerializer<V> valueSerializer)
+name|PersistentCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|valueSerializer
+parameter_list|(
+name|CacheSerializer
+argument_list|<
+name|V
+argument_list|>
+name|valueSerializer
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

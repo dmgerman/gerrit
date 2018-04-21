@@ -1077,8 +1077,25 @@ argument_list|,
 name|valType
 argument_list|)
 expr_stmt|;
+comment|// TODO(dborowitz): Once default Java serialization is removed, leave no default.
 return|return
 name|m
+operator|.
+name|keySerializer
+argument_list|(
+operator|new
+name|JavaCacheSerializer
+argument_list|<>
+argument_list|()
+argument_list|)
+operator|.
+name|valueSerializer
+argument_list|(
+operator|new
+name|JavaCacheSerializer
+argument_list|<>
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|bindCache ( CacheProvider<K, V> m, String name, TypeLiteral<K> keyType, TypeLiteral<V> valType)

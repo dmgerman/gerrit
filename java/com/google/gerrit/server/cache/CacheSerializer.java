@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.cache.h2
+DECL|package|com.google.gerrit.server.cache
 package|package
 name|com
 operator|.
@@ -63,24 +63,8 @@ operator|.
 name|server
 operator|.
 name|cache
-operator|.
-name|h2
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|hash
-operator|.
-name|Funnel
-import|;
-end_import
 
 begin_import
 import|import
@@ -92,89 +76,42 @@ name|IOException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|PreparedStatement
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|ResultSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|SQLException
-import|;
-end_import
+begin_comment
+comment|/** Interface for serializing/deserializing a type to/from a persistent cache. */
+end_comment
 
 begin_interface
-DECL|interface|KeyType
+DECL|interface|CacheSerializer
+specifier|public
 interface|interface
-name|KeyType
+name|CacheSerializer
 parameter_list|<
-name|K
+name|T
 parameter_list|>
 block|{
-DECL|method|columnType ()
-name|String
-name|columnType
-parameter_list|()
-function_decl|;
-DECL|method|get (ResultSet rs, int col)
-name|K
-name|get
+comment|/** Serializes the object to a new byte array. */
+DECL|method|serialize (T object)
+name|byte
+index|[]
+name|serialize
 parameter_list|(
-name|ResultSet
-name|rs
-parameter_list|,
-name|int
-name|col
+name|T
+name|object
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|SQLException
 function_decl|;
-DECL|method|set (PreparedStatement ps, int col, K key)
-name|void
-name|set
+comment|/** Deserializes a single object from the given byte array. */
+DECL|method|deserialize (byte[] in)
+name|T
+name|deserialize
 parameter_list|(
-name|PreparedStatement
-name|ps
-parameter_list|,
-name|int
-name|col
-parameter_list|,
-name|K
-name|key
+name|byte
+index|[]
+name|in
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|SQLException
-function_decl|;
-DECL|method|funnel ()
-name|Funnel
-argument_list|<
-name|K
-argument_list|>
-name|funnel
-parameter_list|()
 function_decl|;
 block|}
 end_interface

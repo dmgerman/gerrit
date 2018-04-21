@@ -89,6 +89,22 @@ name|long
 name|diskLimit
 parameter_list|()
 function_decl|;
+DECL|method|keySerializer ()
+name|CacheSerializer
+argument_list|<
+name|K
+argument_list|>
+name|keySerializer
+parameter_list|()
+function_decl|;
+DECL|method|valueSerializer ()
+name|CacheSerializer
+argument_list|<
+name|V
+argument_list|>
+name|valueSerializer
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
