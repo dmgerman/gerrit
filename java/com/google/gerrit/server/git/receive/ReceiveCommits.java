@@ -460,24 +460,6 @@ name|ReceiveCommand
 operator|.
 name|Result
 operator|.
-name|REJECTED_NONFASTFORWARD
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|ReceiveCommand
-operator|.
-name|Result
-operator|.
 name|REJECTED_OTHER_REASON
 import|;
 end_import
@@ -4463,9 +4445,15 @@ argument_list|()
 expr_stmt|;
 name|errors
 operator|=
-name|LinkedListMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|linkedHashKeys
+argument_list|()
+operator|.
+name|arrayListValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 expr_stmt|;
 name|messages
@@ -8359,9 +8347,9 @@ name|cmd
 operator|.
 name|setResult
 argument_list|(
-name|REJECTED_NONFASTFORWARD
+name|REJECTED_OTHER_REASON
 argument_list|,
-literal|" need '"
+literal|"need '"
 operator|+
 name|PermissionRule
 operator|.
