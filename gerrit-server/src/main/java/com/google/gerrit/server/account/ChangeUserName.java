@@ -316,6 +316,26 @@ name|ConfigInvalidException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/** Operation to change the username of an account. */
 end_comment
@@ -331,14 +351,21 @@ argument_list|<
 name|VoidResult
 argument_list|>
 block|{
-DECL|field|USERNAME_CANNOT_BE_CHANGED
-specifier|public
+DECL|field|log
+specifier|private
 specifier|static
 specifier|final
-name|String
-name|USERNAME_CANNOT_BE_CHANGED
+name|Logger
+name|log
 init|=
-literal|"Username cannot be changed."
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|ChangeUserName
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|field|USER_NAME_PATTERN
 specifier|private
@@ -355,6 +382,15 @@ name|Account
 operator|.
 name|USER_NAME_PATTERN
 argument_list|)
+decl_stmt|;
+DECL|field|USERNAME_CANNOT_BE_CHANGED
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|USERNAME_CANNOT_BE_CHANGED
+init|=
+literal|"Username cannot be changed."
 decl_stmt|;
 comment|/** Generic factory to change any user's username. */
 DECL|interface|Factory
@@ -561,6 +597,18 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"External id with scheme \"username:\" already exists for the user {}"
+argument_list|,
+name|user
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|new
 name|IllegalStateException
@@ -681,6 +729,15 @@ literal|null
 argument_list|,
 name|password
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Created the new external Id with key: {}"
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 block|}
