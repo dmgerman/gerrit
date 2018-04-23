@@ -711,7 +711,7 @@ literal|"refs/*"
 argument_list|,
 name|Permission
 operator|.
-name|PUSH
+name|DELETE
 argument_list|,
 literal|true
 argument_list|)
