@@ -1051,6 +1051,8 @@ argument_list|)
 decl_stmt|;
 name|cds
 operator|=
+name|ensureRequiredDataIsLoaded
+argument_list|(
 name|cs
 operator|.
 name|changes
@@ -1058,6 +1060,7 @@ argument_list|()
 operator|.
 name|asList
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|hidden
 operator|=
@@ -1374,6 +1377,64 @@ expr_stmt|;
 block|}
 return|return
 name|sorted
+return|;
+block|}
+DECL|method|ensureRequiredDataIsLoaded (List<ChangeData> cds)
+specifier|private
+specifier|static
+name|List
+argument_list|<
+name|ChangeData
+argument_list|>
+name|ensureRequiredDataIsLoaded
+parameter_list|(
+name|List
+argument_list|<
+name|ChangeData
+argument_list|>
+name|cds
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+comment|// TODO(hiesel): Instead of calling these manually, either implement a helper that brings a
+comment|// database-backed change on-par with an index-backed change in terms of the populated fields in
+comment|// ChangeData or check if any of the ChangeDatas was loaded from the database and allow
+comment|// lazyloading if so.
+for|for
+control|(
+name|ChangeData
+name|cd
+range|:
+name|cds
+control|)
+block|{
+name|cd
+operator|.
+name|submitRecords
+argument_list|(
+name|ChangeJson
+operator|.
+name|SUBMIT_RULE_OPTIONS_LENIENT
+argument_list|)
+expr_stmt|;
+name|cd
+operator|.
+name|submitRecords
+argument_list|(
+name|ChangeJson
+operator|.
+name|SUBMIT_RULE_OPTIONS_STRICT
+argument_list|)
+expr_stmt|;
+name|cd
+operator|.
+name|currentPatchSet
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|cds
 return|;
 block|}
 block|}
