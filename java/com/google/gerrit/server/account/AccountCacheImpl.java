@@ -858,10 +858,7 @@ name|state
 init|=
 name|byId
 operator|.
-name|asMap
-argument_list|()
-operator|.
-name|get
+name|getIfPresent
 argument_list|(
 name|accountId
 argument_list|)
