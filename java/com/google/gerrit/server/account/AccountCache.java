@@ -102,7 +102,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -128,6 +148,27 @@ name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|)
+function_decl|;
+comment|/**    * Returns a {@code Map} of {@code Account.Id} to {@code AccountState} for the given account IDs.    * If not cached yet the accounts are loaded. If an account can't be loaded (e.g. because it is    * missing), the entry will be missing from the result.    *    *<p>Loads accounts in parallel if applicable.    *    * @param accountIds IDs of the account that should be retrieved    * @return {@code Map} of {@code Account.Id} to {@code AccountState} instances for the given    *     account IDs, if an account can't be loaded (e.g. because it is missing), the entry will be    *     missing from the result    */
+DECL|method|get (Set<Account.Id> accountIds)
+name|Map
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|,
+name|AccountState
+argument_list|>
+name|get
+parameter_list|(
+name|Set
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountIds
 parameter_list|)
 function_decl|;
 comment|/**    * Returns an {@code AccountState} instance for the given account ID. If not cached yet the    * account is loaded. Returns an empty {@code AccountState} instance to represent a missing    * account.    *    *<p>This method should only be used in exceptional cases where it is required to get an account    * state even if the account is missing. Callers should leave a comment with the method invocation    * explaining why this method is used. Most callers of {@link AccountCache} should use {@link    * #get(Account.Id)} instead and handle the missing account case explicitly.    *    * @param accountId ID of the account that should be retrieved    * @return {@code AccountState} instance for the given account ID, if no account with this ID    *     exists an empty {@code AccountState} instance is returned to represent the missing account    */
