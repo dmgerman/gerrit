@@ -15776,6 +15776,35 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+DECL|method|amendChange (String changeId, String ref)
+specifier|private
+name|PushOneCommit
+operator|.
+name|Result
+name|amendChange
+parameter_list|(
+name|String
+name|changeId
+parameter_list|,
+name|String
+name|ref
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|amendChange
+argument_list|(
+name|changeId
+argument_list|,
+name|ref
+argument_list|,
+name|admin
+argument_list|,
+name|testRepo
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
