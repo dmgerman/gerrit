@@ -1272,11 +1272,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Not changing already set username %s to %s"
+literal|"Not changing already set username {} to {}"
 argument_list|,
 name|user
 operator|.
@@ -1287,7 +1283,6 @@ name|who
 operator|.
 name|getUserName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
