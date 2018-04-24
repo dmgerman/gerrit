@@ -1118,7 +1118,7 @@ comment|// New account, automatically create and return.
 comment|//
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"External ID not found. Attempting to create new account."
 argument_list|)
@@ -1688,11 +1688,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Not changing already set username %s to %s"
+literal|"Not changing already set username {} to {}"
 argument_list|,
 name|user
 operator|.
@@ -1703,7 +1699,6 @@ name|who
 operator|.
 name|getUserName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2411,7 +2406,7 @@ argument_list|)
 decl_stmt|;
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Link another authentication identity to an existing account"
 argument_list|)
@@ -2455,6 +2450,13 @@ literal|"' in use by another account"
 argument_list|)
 throw|;
 block|}
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Updating existing external ID data"
+argument_list|)
+expr_stmt|;
 name|update
 argument_list|(
 name|who
@@ -2467,7 +2469,7 @@ else|else
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Linking new external ID to the existing account"
 argument_list|)
