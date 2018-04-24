@@ -196,6 +196,23 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @param strict true when any error generates an exception    * @throws Exception in case of any error (strict = true) or only for I/O or other internal    *     errors.    * @return the cached data or null when strict = false    */
+DECL|method|checkedGet (Project.NameKey projectName, boolean strict)
+specifier|public
+name|ProjectState
+name|checkedGet
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
+name|boolean
+name|strict
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
 comment|/**    * Invalidate the cached information about the given project, and triggers reindexing for it    *    * @param p project that is being evicted    * @throws IOException thrown if the reindexing fails    */
 DECL|method|evict (Project p)
 name|void
