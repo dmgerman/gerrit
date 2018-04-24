@@ -1827,6 +1827,15 @@ name|nextAccountId
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Assigning new Id {} to account"
+argument_list|,
+name|newId
+argument_list|)
+expr_stmt|;
 name|ExternalId
 name|extId
 init|=
@@ -1847,6 +1856,15 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Created external Id: {}"
+argument_list|,
+name|extId
+argument_list|)
+expr_stmt|;
 name|boolean
 name|isFirstAccount
 init|=
@@ -2110,6 +2128,18 @@ argument_list|)
 throw|;
 block|}
 block|}
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Username from AuthRequest: {}"
+argument_list|,
+name|who
+operator|.
+name|getUserName
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|who
@@ -2120,6 +2150,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Setting username for: {}"
+argument_list|,
+name|who
+operator|.
+name|getUserName
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Only set if the name hasn't been used yet, but was given to us.
 comment|//
 try|try
@@ -2138,6 +2180,20 @@ argument_list|)
 operator|.
 name|call
 argument_list|()
+expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Identified user {} was created from {}"
+argument_list|,
+name|user
+argument_list|,
+name|who
+operator|.
+name|getUserName
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
