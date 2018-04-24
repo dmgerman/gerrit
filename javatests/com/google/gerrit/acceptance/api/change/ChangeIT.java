@@ -8790,10 +8790,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|rebaseNotAllowedWithoutCreateReviewPermission ()
+DECL|method|rebaseNotAllowedWithoutPushPermission ()
 specifier|public
 name|void
-name|rebaseNotAllowedWithoutCreateReviewPermission
+name|rebaseNotAllowedWithoutPushPermission
 parameter_list|()
 throws|throws
 name|Exception
@@ -8874,11 +8874,11 @@ argument_list|)
 expr_stmt|;
 name|block
 argument_list|(
-literal|"refs/*"
+literal|"refs/for/*"
 argument_list|,
 name|Permission
 operator|.
-name|CREATE_REVIEW
+name|PUSH
 argument_list|,
 name|REGISTERED_USERS
 argument_list|)
@@ -8929,10 +8929,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|rebaseNotAllowedForOwnerWithoutCreateReviewPermission ()
+DECL|method|rebaseNotAllowedForOwnerWithoutPushPermission ()
 specifier|public
 name|void
-name|rebaseNotAllowedForOwnerWithoutCreateReviewPermission
+name|rebaseNotAllowedForOwnerWithoutPushPermission
 parameter_list|()
 throws|throws
 name|Exception
@@ -8998,11 +8998,11 @@ argument_list|()
 expr_stmt|;
 name|block
 argument_list|(
-literal|"refs/*"
+literal|"refs/for/*"
 argument_list|,
 name|Permission
 operator|.
-name|CREATE_REVIEW
+name|PUSH
 argument_list|,
 name|REGISTERED_USERS
 argument_list|)

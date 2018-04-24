@@ -1277,10 +1277,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|moveChangeToBranchWithoutCreateReviewPerms ()
+DECL|method|moveChangeToBranchWithoutUploadPerms ()
 specifier|public
 name|void
-name|moveChangeToBranchWithoutCreateReviewPerms
+name|moveChangeToBranchWithoutUploadPerms
 parameter_list|()
 throws|throws
 name|Exception
