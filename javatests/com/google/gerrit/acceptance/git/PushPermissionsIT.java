@@ -634,10 +634,6 @@ name|ADD_PATCH_SET
 argument_list|,
 name|Permission
 operator|.
-name|CREATE_REVIEW
-argument_list|,
-name|Permission
-operator|.
 name|CREATE
 argument_list|,
 name|Permission
@@ -1500,7 +1496,7 @@ name|hasMessages
 argument_list|(
 literal|"Branch refs/heads/master:"
 argument_list|,
-literal|"You need 'Create Review' rights to upload code review requests."
+literal|"You need 'Push' rights to upload code review requests."
 argument_list|,
 literal|"Verify that you are pushing to the right branch."
 argument_list|,
