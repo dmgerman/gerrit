@@ -1652,10 +1652,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Before
-DECL|method|setUp ()
+DECL|method|setUpPatchSetLock ()
 specifier|public
 name|void
-name|setUp
+name|setUpPatchSetLock
 parameter_list|()
 throws|throws
 name|Exception
@@ -1761,10 +1761,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|After
-DECL|method|tearDown ()
+DECL|method|resetPublishCommentOnPushOption ()
 specifier|public
 name|void
-name|tearDown
+name|resetPublishCommentOnPushOption
 parameter_list|()
 throws|throws
 name|Exception
