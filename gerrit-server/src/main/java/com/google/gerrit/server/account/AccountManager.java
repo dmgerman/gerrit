@@ -888,7 +888,7 @@ comment|// New account, automatically create and return.
 comment|//
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"External ID not found. Attempting to create new account."
 argument_list|)
@@ -2193,7 +2193,7 @@ init|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Link another authentication identity to an existing account"
 argument_list|)
@@ -2242,7 +2242,7 @@ throw|;
 block|}
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Updating existing external ID data"
 argument_list|)
@@ -2261,7 +2261,7 @@ else|else
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Linking new external ID to the existing account"
 argument_list|)
