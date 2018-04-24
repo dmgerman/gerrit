@@ -22819,7 +22819,7 @@ name|block
 argument_list|(
 name|p
 argument_list|,
-literal|"refs/*"
+literal|"refs/for/*"
 argument_list|,
 name|Permission
 operator|.
@@ -23091,7 +23091,7 @@ name|block
 argument_list|(
 name|p
 argument_list|,
-literal|"refs/*"
+literal|"refs/for/*"
 argument_list|,
 name|Permission
 operator|.
@@ -27723,7 +27723,7 @@ name|block
 argument_list|(
 name|p
 argument_list|,
-literal|"refs/*"
+literal|"refs/for/*"
 argument_list|,
 name|Permission
 operator|.

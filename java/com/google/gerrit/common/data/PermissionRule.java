@@ -77,15 +77,6 @@ argument_list|<
 name|PermissionRule
 argument_list|>
 block|{
-DECL|field|FORCE_SUBMIT
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FORCE_SUBMIT
-init|=
-literal|"Submit on Push"
-decl_stmt|;
 DECL|field|FORCE_PUSH
 specifier|public
 specifier|static

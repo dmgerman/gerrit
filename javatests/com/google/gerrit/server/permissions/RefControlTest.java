@@ -1537,8 +1537,6 @@ operator|.
 name|canSubmit
 argument_list|(
 literal|false
-argument_list|,
-literal|false
 argument_list|)
 argument_list|)
 operator|.
@@ -1576,8 +1574,6 @@ argument_list|)
 operator|.
 name|canSubmit
 argument_list|(
-literal|false
-argument_list|,
 literal|false
 argument_list|)
 argument_list|)
