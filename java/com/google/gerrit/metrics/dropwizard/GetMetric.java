@@ -108,20 +108,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|permissions
 operator|.
 name|GlobalPermission
@@ -200,12 +186,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|CurrentUser
-name|user
-decl_stmt|;
 DECL|field|metrics
 specifier|private
 specifier|final
@@ -229,14 +209,11 @@ name|dataOnly
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetMetric (PermissionBackend permissionBackend, CurrentUser user, DropWizardMetricMaker metrics)
+DECL|method|GetMetric (PermissionBackend permissionBackend, DropWizardMetricMaker metrics)
 name|GetMetric
 parameter_list|(
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|DropWizardMetricMaker
 name|metrics
@@ -247,12 +224,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 name|this
 operator|.
@@ -278,10 +249,8 @@ name|PermissionBackendException
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
-name|user
-argument_list|)
+name|currentUser
+argument_list|()
 operator|.
 name|check
 argument_list|(

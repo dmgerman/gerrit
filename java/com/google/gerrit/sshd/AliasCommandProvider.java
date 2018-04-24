@@ -74,20 +74,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|permissions
 operator|.
 name|PermissionBackend
@@ -174,13 +160,6 @@ specifier|private
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|currentUser
-annotation|@
-name|Inject
-specifier|private
-name|CurrentUser
-name|currentUser
-decl_stmt|;
 DECL|method|AliasCommandProvider (CommandName command)
 specifier|public
 name|AliasCommandProvider
@@ -211,8 +190,6 @@ argument_list|(
 name|root
 argument_list|,
 name|permissionBackend
-argument_list|,
-name|currentUser
 argument_list|,
 name|command
 argument_list|)

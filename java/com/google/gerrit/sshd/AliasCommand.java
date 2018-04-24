@@ -138,20 +138,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|permissions
 operator|.
 name|GlobalPermission
@@ -290,12 +276,6 @@ specifier|final
 name|DispatchCommandProvider
 name|root
 decl_stmt|;
-DECL|field|currentUser
-specifier|private
-specifier|final
-name|CurrentUser
-name|currentUser
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -317,7 +297,7 @@ name|Command
 argument_list|>
 name|atomicCmd
 decl_stmt|;
-DECL|method|AliasCommand ( @ommandNameCommands.ROOT) DispatchCommandProvider root, PermissionBackend permissionBackend, CurrentUser currentUser, CommandName command)
+DECL|method|AliasCommand ( @ommandNameCommands.ROOT) DispatchCommandProvider root, PermissionBackend permissionBackend, CommandName command)
 name|AliasCommand
 parameter_list|(
 annotation|@
@@ -332,9 +312,6 @@ name|root
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|CurrentUser
-name|currentUser
 parameter_list|,
 name|CommandName
 name|command
@@ -351,12 +328,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|currentUser
-operator|=
-name|currentUser
 expr_stmt|;
 name|this
 operator|.
@@ -746,10 +717,8 @@ try|try
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
 name|currentUser
-argument_list|)
+argument_list|()
 operator|.
 name|checkAny
 argument_list|(

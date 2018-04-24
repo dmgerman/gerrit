@@ -717,11 +717,14 @@ argument_list|)
 argument_list|,
 name|permissionBackend
 operator|.
-name|user
+name|absentUser
 argument_list|(
 name|rsrc
 operator|.
 name|getReviewerUser
+argument_list|()
+operator|.
+name|getAccountId
 argument_list|()
 argument_list|)
 operator|.

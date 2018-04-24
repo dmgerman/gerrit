@@ -252,6 +252,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|AnonymousUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|CurrentUser
 import|;
 end_import
@@ -531,6 +545,15 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|anonymousUserProvider
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|AnonymousUser
+argument_list|>
+name|anonymousUserProvider
+decl_stmt|;
 static|static
 block|{
 comment|// It is assumed that basic rewrites do not touch visibleto predicates.
@@ -554,7 +577,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend, ProjectCache projectCache)
+DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<AnonymousUser> anonymousUserProvider)
 name|ChangeQueryProcessor
 parameter_list|(
 name|Provider
@@ -602,6 +625,12 @@ name|permissionBackend
 parameter_list|,
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|Provider
+argument_list|<
+name|AnonymousUser
+argument_list|>
+name|anonymousUserProvider
 parameter_list|)
 block|{
 name|super
@@ -671,6 +700,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|anonymousUserProvider
+operator|=
+name|anonymousUserProvider
 expr_stmt|;
 block|}
 annotation|@
@@ -906,6 +941,8 @@ argument_list|,
 name|permissionBackend
 argument_list|,
 name|projectCache
+argument_list|,
+name|anonymousUserProvider
 argument_list|)
 argument_list|,
 name|start

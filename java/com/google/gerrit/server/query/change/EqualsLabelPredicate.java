@@ -807,9 +807,9 @@ name|perm
 init|=
 name|permissionBackend
 operator|.
-name|user
+name|absentUser
 argument_list|(
-name|reviewer
+name|approver
 argument_list|)
 operator|.
 name|database
