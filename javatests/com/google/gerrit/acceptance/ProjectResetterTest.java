@@ -2756,9 +2756,6 @@ argument_list|,
 name|indexer
 argument_list|)
 expr_stmt|;
-name|Ref
-name|ref1
-init|=
 name|createRef
 argument_list|(
 name|allUsersRepo
@@ -2770,7 +2767,7 @@ argument_list|(
 name|uuid1
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Ref
 name|ref2
 init|=
