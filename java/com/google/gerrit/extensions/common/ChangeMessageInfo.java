@@ -265,6 +265,48 @@ name|_revisionNumber
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ChangeMessageInfo{"
+operator|+
+literal|"id="
+operator|+
+name|id
+operator|+
+literal|", tag="
+operator|+
+name|tag
+operator|+
+literal|", author="
+operator|+
+name|author
+operator|+
+literal|", realAuthor="
+operator|+
+name|realAuthor
+operator|+
+literal|", date="
+operator|+
+name|date
+operator|+
+literal|", _revisionNumber"
+operator|+
+name|_revisionNumber
+operator|+
+literal|", message=["
+operator|+
+name|message
+operator|+
+literal|"]}"
+return|;
+block|}
 block|}
 end_class
 

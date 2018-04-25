@@ -1573,6 +1573,11 @@ specifier|private
 name|DeleteCommentRewriter
 name|deleteCommentRewriter
 decl_stmt|;
+DECL|field|deleteChangeMessageRewriter
+specifier|private
+name|DeleteChangeMessageRewriter
+name|deleteChangeMessageRewriter
+decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted CurrentUser user, ChangeNoteUtil noteUtil)
@@ -2641,6 +2646,35 @@ name|getId
 argument_list|()
 argument_list|,
 name|uuid
+argument_list|,
+name|newMessage
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|deleteChangeMessageByRewritingHistory (int targetMessageIdx, String newMessage)
+specifier|public
+name|void
+name|deleteChangeMessageByRewritingHistory
+parameter_list|(
+name|int
+name|targetMessageIdx
+parameter_list|,
+name|String
+name|newMessage
+parameter_list|)
+block|{
+name|deleteChangeMessageRewriter
+operator|=
+operator|new
+name|DeleteChangeMessageRewriter
+argument_list|(
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|targetMessageIdx
 argument_list|,
 name|newMessage
 argument_list|)
@@ -3793,6 +3827,10 @@ argument_list|(
 name|deleteCommentRewriter
 operator|==
 literal|null
+operator|&&
+name|deleteChangeMessageRewriter
+operator|==
+literal|null
 argument_list|,
 literal|"cannot update and rewrite ref in one BatchUpdate"
 argument_list|)
@@ -4935,6 +4973,16 @@ parameter_list|()
 block|{
 return|return
 name|deleteCommentRewriter
+return|;
+block|}
+DECL|method|getDeleteChangeMessageRewriter ()
+specifier|public
+name|DeleteChangeMessageRewriter
+name|getDeleteChangeMessageRewriter
+parameter_list|()
+block|{
+return|return
+name|deleteChangeMessageRewriter
 return|;
 block|}
 DECL|method|setAllowWriteToNewRef (boolean allow)
