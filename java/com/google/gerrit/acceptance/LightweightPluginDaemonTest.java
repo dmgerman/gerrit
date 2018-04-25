@@ -206,10 +206,10 @@ name|plugin
 decl_stmt|;
 annotation|@
 name|Before
-DECL|method|setUp ()
+DECL|method|setUpTestPlugin ()
 specifier|public
 name|void
-name|setUp
+name|setUpTestPlugin
 parameter_list|()
 throws|throws
 name|Exception
@@ -301,10 +301,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|After
-DECL|method|tearDown ()
+DECL|method|tearDownTestPlugin ()
 specifier|public
 name|void
-name|tearDown
+name|tearDownTestPlugin
 parameter_list|()
 block|{
 if|if

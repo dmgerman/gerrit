@@ -458,10 +458,10 @@ end_decl_stmt
 begin_function
 annotation|@
 name|Before
-DECL|method|setup ()
+DECL|method|setUpTestEnvironment ()
 specifier|public
 name|void
-name|setup
+name|setUpTestEnvironment
 parameter_list|()
 throws|throws
 name|Exception

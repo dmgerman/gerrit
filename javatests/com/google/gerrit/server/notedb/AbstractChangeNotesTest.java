@@ -1162,10 +1162,10 @@ name|systemTimeZone
 decl_stmt|;
 annotation|@
 name|Before
-DECL|method|setUp ()
+DECL|method|setUpTestEnvironment ()
 specifier|public
 name|void
-name|setUp
+name|setUpTestEnvironment
 parameter_list|()
 throws|throws
 name|Exception
