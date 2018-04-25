@@ -1164,7 +1164,7 @@ block|}
 comment|// New account, automatically create and return.
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"External ID not found. Attempting to create new account."
 argument_list|)
@@ -1213,11 +1213,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Authentication with external ID %s failed. Account %s doesn't exist."
+literal|"Authentication with external ID {} failed. Account {} doesn't exist."
 argument_list|,
 name|extId
 operator|.
@@ -1234,7 +1230,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -2008,6 +2003,15 @@ name|nextAccountId
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Assigning new Id {} to account"
+argument_list|,
+name|newId
+argument_list|)
+expr_stmt|;
 name|ExternalId
 name|extId
 init|=
@@ -2028,6 +2032,15 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Created external Id: {}"
+argument_list|,
+name|extId
+argument_list|)
+expr_stmt|;
 name|checkEmailNotUsed
 argument_list|(
 name|extId
@@ -2614,7 +2627,7 @@ argument_list|)
 decl_stmt|;
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Link another authentication identity to an existing account"
 argument_list|)
@@ -2679,7 +2692,7 @@ else|else
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Linking new external ID to the existing account"
 argument_list|)
