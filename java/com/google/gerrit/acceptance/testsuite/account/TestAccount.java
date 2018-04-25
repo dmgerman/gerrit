@@ -156,6 +156,13 @@ argument_list|>
 name|username
 parameter_list|()
 function_decl|;
+DECL|method|active ()
+specifier|public
+specifier|abstract
+name|boolean
+name|active
+parameter_list|()
+function_decl|;
 DECL|method|builder ()
 specifier|static
 name|Builder
@@ -225,6 +232,15 @@ argument_list|<
 name|String
 argument_list|>
 name|username
+parameter_list|)
+function_decl|;
+DECL|method|active (boolean active)
+specifier|abstract
+name|Builder
+name|active
+parameter_list|(
+name|boolean
+name|active
 parameter_list|)
 function_decl|;
 DECL|method|build ()
