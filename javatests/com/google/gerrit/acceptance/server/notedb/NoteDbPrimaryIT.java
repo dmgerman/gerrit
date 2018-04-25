@@ -3262,7 +3262,9 @@ name|exception
 operator|.
 name|expect
 argument_list|(
-name|OrmRuntimeException
+name|PrimaryStorageMigrator
+operator|.
+name|NoNoteDbStateException
 operator|.
 name|class
 argument_list|)
