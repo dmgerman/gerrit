@@ -3307,8 +3307,6 @@ name|RefNames
 operator|.
 name|REFS_CONFIG
 argument_list|)
-comment|// Don't reset group branches since this would make the groups inconsistent between
-comment|// ReviewDb and NoteDb.
 comment|// Don't reset refs/sequences/accounts so that account IDs are not reused.
 operator|.
 name|reset
@@ -3328,6 +3326,16 @@ argument_list|,
 name|RefNames
 operator|.
 name|REFS_EXTERNAL_IDS
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_GROUPNAMES
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_GROUPS
+operator|+
+literal|"*"
 argument_list|,
 name|RefNames
 operator|.
