@@ -943,7 +943,7 @@ return|;
 block|}
 DECL|method|getExclusiveGroup ()
 specifier|public
-name|Boolean
+name|boolean
 name|getExclusiveGroup
 parameter_list|()
 block|{
@@ -963,12 +963,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|setExclusiveGroup (Boolean newExclusiveGroup)
+DECL|method|setExclusiveGroup (boolean newExclusiveGroup)
 specifier|public
 name|void
 name|setExclusiveGroup
 parameter_list|(
-name|Boolean
+name|boolean
 name|newExclusiveGroup
 parameter_list|)
 block|{
