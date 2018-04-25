@@ -201,7 +201,6 @@ name|String
 name|description
 decl_stmt|;
 DECL|method|ProjectPermission ()
-specifier|private
 name|ProjectPermission
 parameter_list|()
 block|{
@@ -213,7 +212,6 @@ literal|null
 expr_stmt|;
 block|}
 DECL|method|ProjectPermission (String description)
-specifier|private
 name|ProjectPermission
 parameter_list|(
 name|String
