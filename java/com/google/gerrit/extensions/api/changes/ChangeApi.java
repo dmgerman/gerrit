@@ -156,6 +156,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|ChangeMessageInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|CommentInfo
 import|;
 end_import
@@ -978,6 +994,17 @@ parameter_list|(
 name|String
 name|claimedOriginal
 parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Get all messages of a change with detailed account info.    *    * @return a list of messages sorted by their creation time.    * @throws RestApiException    */
+DECL|method|messages ()
+name|List
+argument_list|<
+name|ChangeMessageInfo
+argument_list|>
+name|messages
+parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
@@ -2082,6 +2109,25 @@ parameter_list|(
 name|String
 name|claimedOriginal
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|messages ()
+specifier|public
+name|List
+argument_list|<
+name|ChangeMessageInfo
+argument_list|>
+name|messages
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
