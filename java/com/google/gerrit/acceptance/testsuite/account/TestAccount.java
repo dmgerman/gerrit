@@ -100,18 +100,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|jcraft
-operator|.
-name|jsch
-operator|.
-name|KeyPair
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -166,17 +154,6 @@ argument_list|<
 name|String
 argument_list|>
 name|username
-parameter_list|()
-function_decl|;
-comment|// TODO(ekempin,aliceks): Factor out SSH key handling from the class.
-DECL|method|sshKeyPair ()
-specifier|public
-specifier|abstract
-name|Optional
-argument_list|<
-name|KeyPair
-argument_list|>
-name|sshKeyPair
 parameter_list|()
 function_decl|;
 DECL|method|builder ()
@@ -248,15 +225,6 @@ argument_list|<
 name|String
 argument_list|>
 name|username
-parameter_list|)
-function_decl|;
-DECL|method|sshKeyPair (KeyPair keyPair)
-specifier|abstract
-name|Builder
-name|sshKeyPair
-parameter_list|(
-name|KeyPair
-name|keyPair
 parameter_list|)
 function_decl|;
 DECL|method|build ()
