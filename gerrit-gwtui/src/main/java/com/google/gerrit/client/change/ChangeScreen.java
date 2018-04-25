@@ -8058,6 +8058,12 @@ operator|.
 name|Status
 operator|.
 name|NEW
+operator|&&
+operator|!
+name|changeInfo
+operator|.
+name|isWorkInProgress
+argument_list|()
 condition|)
 block|{
 name|statusText
