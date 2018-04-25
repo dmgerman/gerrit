@@ -157,7 +157,6 @@ name|String
 name|description
 decl_stmt|;
 DECL|method|ChangePermission ()
-specifier|private
 name|ChangePermission
 parameter_list|()
 block|{
@@ -169,7 +168,6 @@ literal|null
 expr_stmt|;
 block|}
 DECL|method|ChangePermission (String description)
-specifier|private
 name|ChangePermission
 parameter_list|(
 name|String
