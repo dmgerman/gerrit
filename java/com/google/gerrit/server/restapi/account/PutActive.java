@@ -128,7 +128,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|Response
 import|;
 end_import
 
@@ -144,7 +144,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|Response
+name|RestApiException
 import|;
 end_import
 
@@ -319,7 +319,7 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
+name|RestApiException
 throws|,
 name|OrmException
 throws|,
