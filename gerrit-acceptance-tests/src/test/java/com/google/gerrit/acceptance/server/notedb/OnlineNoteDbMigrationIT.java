@@ -2918,9 +2918,9 @@ name|testEnableSequences
 argument_list|(
 literal|0
 argument_list|,
-literal|2
+literal|3
 argument_list|,
-literal|"12"
+literal|"13"
 argument_list|)
 expr_stmt|;
 block|}
