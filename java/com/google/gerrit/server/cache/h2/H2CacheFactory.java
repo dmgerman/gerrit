@@ -1129,7 +1129,7 @@ literal|"cache"
 argument_list|,
 name|in
 operator|.
-name|name
+name|configKey
 argument_list|()
 argument_list|,
 literal|"diskLimit"
@@ -1314,7 +1314,7 @@ literal|"cache"
 argument_list|,
 name|in
 operator|.
-name|name
+name|configKey
 argument_list|()
 argument_list|,
 literal|"diskLimit"

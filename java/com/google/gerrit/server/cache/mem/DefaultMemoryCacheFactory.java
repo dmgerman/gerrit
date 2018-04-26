@@ -459,7 +459,7 @@ literal|"cache"
 argument_list|,
 name|def
 operator|.
-name|name
+name|configKey
 argument_list|()
 argument_list|,
 literal|"memoryLimit"
@@ -539,7 +539,7 @@ name|has
 argument_list|(
 name|def
 operator|.
-name|name
+name|configKey
 argument_list|()
 argument_list|,
 literal|"maxAge"
@@ -560,7 +560,7 @@ literal|"cache"
 argument_list|,
 name|def
 operator|.
-name|name
+name|configKey
 argument_list|()
 argument_list|,
 literal|"maxAge"
