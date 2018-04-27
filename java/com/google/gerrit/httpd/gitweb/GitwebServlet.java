@@ -2977,13 +2977,10 @@ block|{
 name|token
 operator|=
 name|token
-operator|.
-name|concat
-argument_list|(
+operator|+
 literal|"?"
 operator|+
 name|queryString
-argument_list|)
 expr_stmt|;
 block|}
 return|return

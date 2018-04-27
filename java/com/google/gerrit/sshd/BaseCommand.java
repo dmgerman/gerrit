@@ -1160,11 +1160,8 @@ literal|0
 argument_list|,
 name|indexOfMultiLine
 argument_list|)
-operator|.
-name|concat
-argument_list|(
+operator|+
 literal|" [trimmed]"
-argument_list|)
 expr_stmt|;
 block|}
 name|trimmedArgv
