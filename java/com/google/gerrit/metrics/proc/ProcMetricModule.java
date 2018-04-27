@@ -1100,12 +1100,9 @@ argument_list|(
 literal|"threads"
 argument_list|)
 argument_list|,
-parameter_list|()
-lambda|->
 name|thread
-operator|.
+operator|::
 name|getThreadCount
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -1233,12 +1233,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|p
-lambda|->
+name|this
+operator|::
 name|pluginName
-argument_list|(
-name|p
-argument_list|)
 argument_list|)
 operator|.
 name|collect

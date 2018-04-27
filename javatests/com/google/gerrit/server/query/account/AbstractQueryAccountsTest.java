@@ -4519,13 +4519,9 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|b
-lambda|->
-operator|new
 name|ByteArrayWrapper
-argument_list|(
-name|b
-argument_list|)
+operator|::
+operator|new
 argument_list|)
 operator|.
 name|collect

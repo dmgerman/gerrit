@@ -1392,12 +1392,9 @@ name|from
 argument_list|(
 name|comparing
 argument_list|(
-name|k
-lambda|->
-name|k
-operator|.
+name|AccountSshKey
+operator|::
 name|seq
-argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;

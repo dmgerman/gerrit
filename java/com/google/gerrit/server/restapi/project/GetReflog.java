@@ -878,12 +878,9 @@ name|transform
 argument_list|(
 name|entries
 argument_list|,
-name|e
-lambda|->
+name|this
+operator|::
 name|newReflogEntryInfo
-argument_list|(
-name|e
-argument_list|)
 argument_list|)
 return|;
 block|}

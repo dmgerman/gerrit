@@ -1497,12 +1497,9 @@ argument_list|()
 operator|.
 name|transform
 argument_list|(
-name|s
-lambda|->
-name|s
-operator|.
+name|ProjectState
+operator|::
 name|getNameKey
-argument_list|()
 argument_list|)
 operator|.
 name|toSet

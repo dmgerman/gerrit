@@ -156,6 +156,22 @@ name|SchemaUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
 begin_comment
 comment|/** Index schema for projects. */
 end_comment
@@ -330,12 +346,11 @@ operator|.
 name|getAncestors
 argument_list|()
 argument_list|,
-name|n
-lambda|->
-name|n
+name|Project
 operator|.
+name|NameKey
+operator|::
 name|get
-argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;

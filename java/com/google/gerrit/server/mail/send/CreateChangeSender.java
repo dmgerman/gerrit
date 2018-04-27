@@ -457,12 +457,9 @@ argument_list|)
 operator|.
 name|filter
 argument_list|(
-name|acc
-lambda|->
+name|this
+operator|::
 name|isOwnerOfProjectOrBranch
-argument_list|(
-name|acc
-argument_list|)
 argument_list|)
 operator|.
 name|forEach

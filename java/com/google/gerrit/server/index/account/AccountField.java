@@ -1058,12 +1058,9 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|e
-lambda|->
-name|e
-operator|.
+name|ExternalId
+operator|::
 name|toByteArray
-argument_list|()
 argument_list|)
 operator|.
 name|collect

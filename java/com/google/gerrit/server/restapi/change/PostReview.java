@@ -8961,12 +8961,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|p
-lambda|->
-name|p
-operator|.
+name|PatchSetApproval
+operator|::
 name|getLabel
-argument_list|()
 argument_list|)
 operator|.
 name|distinct

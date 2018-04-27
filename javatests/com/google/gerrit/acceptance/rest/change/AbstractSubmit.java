@@ -3763,12 +3763,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|c
-lambda|->
-name|c
-operator|.
+name|RevCommit
+operator|::
 name|getShortMessage
-argument_list|()
 argument_list|)
 operator|.
 name|collect

@@ -770,14 +770,9 @@ name|createGroupsGlobal
 operator|.
 name|forEach
 argument_list|(
-name|pr
-lambda|->
 name|createGroupPermission
-operator|.
+operator|::
 name|add
-argument_list|(
-name|pr
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// The create permission is managed by Gerrit at this point only so there is no concern of

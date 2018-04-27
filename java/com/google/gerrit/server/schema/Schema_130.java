@@ -546,12 +546,11 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|n
-lambda|->
-name|n
+name|Project
 operator|.
+name|NameKey
+operator|::
 name|get
-argument_list|()
 argument_list|)
 operator|.
 name|collect

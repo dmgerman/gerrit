@@ -4513,24 +4513,22 @@ argument_list|()
 operator|.
 name|anyMatch
 argument_list|(
-name|m
-lambda|->
-name|m
-operator|.
+name|ValidationMessage
+operator|::
 name|isError
-argument_list|()
 argument_list|)
 condition|)
 block|{
 throw|throw
-argument_list|new
+operator|new
 name|CommitValidationException
 argument_list|(
 literal|"invalid external IDs"
 argument_list|,
 name|msgs
 argument_list|)
-block|;           }
+throw|;
+block|}
 return|return
 name|msgs
 return|;

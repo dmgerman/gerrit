@@ -2824,15 +2824,9 @@ name|subscriptions
 argument_list|,
 name|comparing
 argument_list|(
-parameter_list|(
 name|SubmoduleSubscription
-name|s
-parameter_list|)
-lambda|->
-name|s
-operator|.
+operator|::
 name|getPath
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

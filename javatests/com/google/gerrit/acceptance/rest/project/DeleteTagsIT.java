@@ -1015,12 +1015,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|t
-lambda|->
+name|this
+operator|::
 name|prefixRef
-argument_list|(
-name|t
-argument_list|)
 argument_list|)
 operator|.
 name|collect

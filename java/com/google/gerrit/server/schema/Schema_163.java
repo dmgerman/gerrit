@@ -298,12 +298,9 @@ operator|.
 name|Seed
 name|groupSeed
 init|=
-parameter_list|()
-lambda|->
 name|db
-operator|.
+operator|::
 name|nextAccountGroupId
-argument_list|()
 decl_stmt|;
 name|RepoSequence
 name|groupSeq

@@ -704,12 +704,11 @@ name|sorted
 argument_list|(
 name|comparing
 argument_list|(
-name|id
-lambda|->
-name|id
+name|Account
 operator|.
+name|Id
+operator|::
 name|get
-argument_list|()
 argument_list|)
 argument_list|)
 operator|.

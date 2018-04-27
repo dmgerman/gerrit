@@ -29898,12 +29898,11 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|e
-lambda|->
-name|e
+name|Map
 operator|.
+name|Entry
+operator|::
 name|getKey
-argument_list|()
 argument_list|)
 operator|.
 name|collect
