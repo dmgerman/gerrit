@@ -486,6 +486,7 @@ expr_stmt|;
 block|}
 DECL|method|get (Account.Id id)
 specifier|public
+specifier|synchronized
 name|AccountInfo
 name|get
 parameter_list|(
@@ -550,6 +551,7 @@ return|;
 block|}
 DECL|method|put (AccountInfo info)
 specifier|public
+specifier|synchronized
 name|void
 name|put
 parameter_list|(
