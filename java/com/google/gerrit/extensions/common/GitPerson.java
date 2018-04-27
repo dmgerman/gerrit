@@ -241,9 +241,6 @@ operator|+
 name|tz
 operator|+
 literal|"}"
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 block|}

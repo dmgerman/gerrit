@@ -324,9 +324,6 @@ operator|+
 name|target
 operator|+
 literal|"}"
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 block|}
