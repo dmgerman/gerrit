@@ -1008,6 +1008,17 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Look up a change message of a change by its id.    *    * @param id the id of the change message. Note that in NoteDb, this id is the {@code ObjectId} of    *     a commit on the change meta branch. In ReviewDb, it's a UUID generated randomly. That means    *     a change message id could be different between NoteDb and ReviewDb.    * @return API for accessing a change message.    * @throws RestApiException if the id is invalid.    */
+DECL|method|message (String id)
+name|ChangeMessageApi
+name|message
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|class|SuggestedReviewersRequest
 specifier|abstract
 class|class
@@ -2128,6 +2139,25 @@ name|ChangeMessageInfo
 argument_list|>
 name|messages
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|message (String id)
+specifier|public
+name|ChangeMessageApi
+name|message
+parameter_list|(
+name|String
+name|id
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
