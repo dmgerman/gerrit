@@ -100,6 +100,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -398,26 +412,6 @@ name|HttpServletResponse
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Base JSON servlet to ensure the current user is not forged. */
 end_comment
@@ -440,21 +434,17 @@ operator|.
 name|GerritCall
 argument_list|>
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|GerritJsonServlet
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|currentCall
 specifier|private
@@ -949,13 +939,19 @@ name|Throwable
 name|all
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|all
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Unable to log the call"
-argument_list|,
-name|all
 argument_list|)
 expr_stmt|;
 block|}
@@ -1268,9 +1264,12 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Unable to expose RPS/JSON result field"
 argument_list|)
@@ -1332,9 +1331,12 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Cannot access result field"
 argument_list|)
@@ -1346,9 +1348,12 @@ name|IllegalAccessException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"No permissions to access result field"
 argument_list|)
@@ -1393,9 +1398,12 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Cannot access result field"
 argument_list|)
@@ -1407,9 +1415,12 @@ name|IllegalAccessException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"No permissions to access result field"
 argument_list|)

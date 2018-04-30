@@ -332,6 +332,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|io
 operator|.
 name|ByteStreams
@@ -1098,26 +1112,6 @@ name|RawParseUtils
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -1131,6 +1125,18 @@ name|StartPluginListener
 implements|,
 name|ReloadPluginListener
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|field|SMALL_RESOURCE
 specifier|private
 specifier|static
@@ -1150,22 +1156,6 @@ name|long
 name|serialVersionUID
 init|=
 literal|1L
-decl_stmt|;
-DECL|field|log
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|HttpPluginServlet
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 DECL|field|mimeUtil
 specifier|private
@@ -1687,15 +1677,21 @@ name|RuntimeException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Plugin {} cannot load GuiceFilter"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Plugin %s cannot load GuiceFilter"
 argument_list|,
 name|name
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -1739,15 +1735,21 @@ name|ServletException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Plugin {} failed to initialize HTTP"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Plugin %s failed to initialize HTTP"
 argument_list|,
 name|name
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -3368,11 +3370,16 @@ operator|>
 name|SMALL_RESOURCE
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Plugin {}: {} omitted from document index. Size {} out of range (0,{})."
+literal|"Plugin %s: %s omitted from document index. "
+operator|+
+literal|"Size %d out of range (0,%d)."
 argument_list|,
 name|pluginName
 argument_list|,
@@ -3542,11 +3549,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Plugin {}: Multiple 'about' documents found; using {}"
+literal|"Plugin %s: Multiple 'about' documents found; using %s"
 argument_list|,
 name|pluginName
 argument_list|,
@@ -5454,11 +5464,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error getting {} for plugin {}, using default"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error getting %s for plugin %s, using default"
 argument_list|,
 name|attr
 argument_list|,
@@ -5466,8 +5484,6 @@ name|plugin
 operator|.
 name|getName
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return

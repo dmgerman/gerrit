@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -744,26 +758,6 @@ name|HttpClientFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -771,21 +765,17 @@ DECL|class|OpenIdServiceImpl
 class|class
 name|OpenIdServiceImpl
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|OpenIdServiceImpl
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|RETURN_URL
 specifier|static
@@ -1224,11 +1214,14 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"OpenID: openid-realm={}"
+literal|"OpenID: openid-realm=%s"
 argument_list|,
 name|state
 operator|.
@@ -1376,15 +1369,21 @@ name|ConsumerException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot create OpenID redirect for "
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot create OpenID redirect for %s"
 operator|+
 name|openidIdentifier
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -1474,13 +1473,19 @@ name|AccountException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Cannot determine if user account exists"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -1790,20 +1795,21 @@ condition|)
 block|{
 comment|// We might be suffering from clock skew on this system.
 comment|//
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"OpenID failure: "
+literal|"OpenID failure: %s  Likely caused by clock skew on this server,"
 operator|+
+literal|" install/configure NTP."
+argument_list|,
 name|result
 operator|.
 name|getStatusMsg
 argument_list|()
-operator|+
-literal|"  Likely caused by clock skew on this server,"
-operator|+
-literal|" install/configure NTP."
 argument_list|)
 expr_stmt|;
 name|cancelWithError
@@ -1832,12 +1838,15 @@ condition|)
 block|{
 comment|// Authentication failed.
 comment|//
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"OpenID failure: "
-operator|+
+literal|"OpenID failure: %s"
+argument_list|,
 name|result
 operator|.
 name|getStatusMsg
@@ -1932,16 +1941,17 @@ comment|// Far too many providers are unable to provide PAPE extensions
 comment|// right now. Instead of blocking all of them log the error and
 comment|// let the authentication complete anyway.
 comment|//
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Invalid PAPE response "
-operator|+
+literal|"Invalid PAPE response %s: %s"
+argument_list|,
 name|openidIdentifier
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|err
 argument_list|)
 expr_stmt|;
@@ -1964,12 +1974,15 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"No PAPE extension response from "
-operator|+
+literal|"No PAPE extension response from %s"
+argument_list|,
 name|openidIdentifier
 argument_list|)
 expr_stmt|;
@@ -2368,12 +2381,15 @@ operator|!
 name|match
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Domain disallowed: "
-operator|+
+literal|"Domain disallowed: %s"
+argument_list|,
 name|emailDomain
 argument_list|)
 expr_stmt|;
@@ -2473,34 +2489,31 @@ block|{
 comment|// This is (for now) a fatal error. There are two records
 comment|// for what might be the same user.
 comment|//
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"OpenID accounts disagree over user identity:\n"
 operator|+
-literal|"  Claimed ID: "
+literal|"  Claimed ID: %s is %s\n"
 operator|+
+literal|"  Delgate ID: %s is %s"
+argument_list|,
 name|claimedId
 operator|.
 name|get
 argument_list|()
-operator|+
-literal|" is "
-operator|+
+argument_list|,
 name|claimedIdentifier
-operator|+
-literal|"\n"
-operator|+
-literal|"  Delgate ID: "
-operator|+
+argument_list|,
 name|actualId
 operator|.
 name|get
 argument_list|()
-operator|+
-literal|" is "
-operator|+
+argument_list|,
 name|areq
 operator|.
 name|getExternalIdKey
@@ -2902,13 +2915,19 @@ name|AccountException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"OpenID authentication failure"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|cancelWithError
@@ -3370,15 +3389,21 @@ name|DiscoveryException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot discover OpenID "
-operator|+
-name|openidIdentifier
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot discover OpenID %s"
+argument_list|,
+name|openidIdentifier
 argument_list|)
 expr_stmt|;
 return|return

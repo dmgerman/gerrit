@@ -108,6 +108,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -422,26 +436,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|w3c
 operator|.
 name|dom
@@ -508,21 +502,17 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|HttpLoginServlet
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|webSession
 specifier|private
@@ -678,18 +668,21 @@ name|user
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Unable to authenticate user by "
+literal|"Unable to authenticate user by %s request header."
 operator|+
+literal|" Check container or server configuration."
+argument_list|,
 name|authFilter
 operator|.
 name|getLoginHeader
 argument_list|()
-operator|+
-literal|" request header.  Check container or server configuration."
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -883,17 +876,21 @@ name|AccountException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Unable to authenticate user \""
-operator|+
-name|user
-operator|+
-literal|"\""
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Unable to authenticate user \"%s\""
+argument_list|,
+name|user
 argument_list|)
 expr_stmt|;
 name|rsp
@@ -926,11 +923,14 @@ condition|)
 block|{
 try|try
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Associating external identity \"{}\" to user \"{}\""
+literal|"Associating external identity \"%s\" to user \"%s\""
 argument_list|,
 name|remoteExternalId
 argument_list|,
@@ -955,21 +955,23 @@ name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Unable to associate external identity \""
-operator|+
-name|remoteExternalId
-operator|+
-literal|"\" to user \""
-operator|+
-name|user
-operator|+
-literal|"\""
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Unable to associate external identity \"%s\" to user \"%s\""
+argument_list|,
+name|remoteExternalId
+argument_list|,
+name|user
 argument_list|)
 expr_stmt|;
 name|rsp

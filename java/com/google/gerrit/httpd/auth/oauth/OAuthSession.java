@@ -116,6 +116,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -528,26 +542,6 @@ name|ConfigInvalidException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 annotation|@
 name|SessionScoped
@@ -556,21 +550,17 @@ DECL|class|OAuthSession
 class|class
 name|OAuthSession
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|OAuthSession
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|randomState
 specifier|private
@@ -767,12 +757,15 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Login "
-operator|+
+literal|"Login %s"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
@@ -806,12 +799,15 @@ return|return
 literal|false
 return|;
 block|}
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Login-Retrieve-User "
-operator|+
+literal|"Login-Retrieve-User %s"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
@@ -849,12 +845,15 @@ name|isLoggedIn
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Login-SUCCESS "
-operator|+
+literal|"Login-SUCCESS %s"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
@@ -882,12 +881,15 @@ return|return
 literal|false
 return|;
 block|}
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Login-PHASE1 "
-operator|+
+literal|"Login-PHASE1 %s"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
@@ -1094,17 +1096,21 @@ name|AccountException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Unable to authenticate user \""
-operator|+
-name|user
-operator|+
-literal|"\""
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Unable to authenticate user \"%s\""
+argument_list|,
+name|user
 argument_list|)
 expr_stmt|;
 name|rsp
@@ -1280,9 +1286,12 @@ argument_list|)
 condition|)
 block|{
 comment|// Both link to the same account, that's what we expected.
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"OAuth2: claimed identity equals current id"
 argument_list|)
@@ -1293,34 +1302,31 @@ block|{
 comment|// This is (for now) a fatal error. There are two records
 comment|// for what might be the same user.
 comment|//
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"OAuth accounts disagree over user identity:\n"
 operator|+
-literal|"  Claimed ID: "
+literal|"  Claimed ID: %s is %s\n"
 operator|+
+literal|"  Delgate ID: %s is %s"
+argument_list|,
 name|claimedId
 operator|.
 name|get
 argument_list|()
-operator|+
-literal|" is "
-operator|+
+argument_list|,
 name|claimedIdentifier
-operator|+
-literal|"\n"
-operator|+
-literal|"  Delgate ID: "
-operator|+
+argument_list|,
 name|actualId
 operator|.
 name|get
 argument_list|()
-operator|+
-literal|" is "
-operator|+
+argument_list|,
 name|user
 operator|.
 name|getExternalId
@@ -1358,11 +1364,14 @@ condition|)
 block|{
 comment|// Claimed account already exists: link to it.
 comment|//
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"OAuth2: linking claimed identity to {}"
+literal|"OAuth2: linking claimed identity to %s"
 argument_list|,
 name|claimedId
 operator|.
@@ -1396,28 +1405,25 @@ name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Cannot link: "
-operator|+
+literal|"Cannot link: %s to user identity:\n  Claimed ID: %s is %s"
+argument_list|,
 name|user
 operator|.
 name|getExternalId
 argument_list|()
-operator|+
-literal|" to user identity:\n"
-operator|+
-literal|"  Claimed ID: "
-operator|+
+argument_list|,
 name|claimedId
 operator|.
 name|get
 argument_list|()
-operator|+
-literal|" is "
-operator|+
+argument_list|,
 name|claimedIdentifier
 argument_list|)
 expr_stmt|;
@@ -1481,19 +1487,20 @@ name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Cannot link: "
-operator|+
+literal|"Cannot link: %s to user identity: %s"
+argument_list|,
 name|user
 operator|.
 name|getExternalId
 argument_list|()
-operator|+
-literal|" to user identity: "
-operator|+
+argument_list|,
 name|identifiedUser
 operator|.
 name|get
@@ -1599,16 +1606,17 @@ name|state
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Illegal request state '"
-operator|+
+literal|"Illegal request state '%s' on OAuthProtocol %s"
+argument_list|,
 name|s
-operator|+
-literal|"' on OAuthProtocol "
-operator|+
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
