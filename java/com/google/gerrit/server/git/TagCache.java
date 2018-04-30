@@ -560,6 +560,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|EntryVal
+specifier|public
 specifier|static
 class|class
 name|EntryVal
