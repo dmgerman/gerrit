@@ -4765,6 +4765,7 @@ argument_list|()
 decl_stmt|;
 comment|/**    * JSON type for storing SubmitRecords.    *    *<p>Stored fields need to use a stable format over a long period; this type insulates the index    * from implementation changes in SubmitRecord itself.    */
 DECL|class|StoredSubmitRecord
+specifier|public
 specifier|static
 class|class
 name|StoredSubmitRecord
@@ -4839,6 +4840,7 @@ name|String
 name|errorMessage
 decl_stmt|;
 DECL|method|StoredSubmitRecord (SubmitRecord rec)
+specifier|public
 name|StoredSubmitRecord
 parameter_list|(
 name|SubmitRecord
@@ -5033,7 +5035,7 @@ block|}
 block|}
 block|}
 DECL|method|toSubmitRecord ()
-specifier|private
+specifier|public
 name|SubmitRecord
 name|toSubmitRecord
 parameter_list|()
