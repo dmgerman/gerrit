@@ -1428,12 +1428,10 @@ operator|.
 name|getRequestURI
 argument_list|()
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|GERRIT_LOGIN
 argument_list|)
-operator|>=
-literal|0
 return|;
 block|}
 block|}
