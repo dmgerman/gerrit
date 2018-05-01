@@ -88,20 +88,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Scopes
-operator|.
-name|SINGLETON
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -591,11 +577,6 @@ argument_list|(
 name|CommandExecutorQueueProvider
 operator|.
 name|class
-argument_list|)
-operator|.
-name|in
-argument_list|(
-name|SINGLETON
 argument_list|)
 expr_stmt|;
 name|filterRegex
