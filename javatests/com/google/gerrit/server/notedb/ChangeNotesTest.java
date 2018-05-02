@@ -20163,6 +20163,9 @@ name|assertThat
 argument_list|(
 name|notes
 operator|.
+name|getChange
+argument_list|()
+operator|.
 name|isPrivate
 argument_list|()
 argument_list|)
@@ -20220,6 +20223,9 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|isPrivate
 argument_list|()
@@ -20299,6 +20305,9 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|isPrivate
 argument_list|()
@@ -20966,6 +20975,9 @@ name|assertThat
 argument_list|(
 name|notes
 operator|.
+name|getChange
+argument_list|()
+operator|.
 name|hasReviewStarted
 argument_list|()
 argument_list|)
@@ -20984,6 +20996,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|hasReviewStarted
 argument_list|()
@@ -21024,6 +21039,9 @@ name|assertThat
 argument_list|(
 name|notes
 operator|.
+name|getChange
+argument_list|()
+operator|.
 name|hasReviewStarted
 argument_list|()
 argument_list|)
@@ -21062,6 +21080,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|hasReviewStarted
 argument_list|()
@@ -21102,6 +21123,9 @@ name|assertThat
 argument_list|(
 name|notes
 operator|.
+name|getChange
+argument_list|()
+operator|.
 name|hasReviewStarted
 argument_list|()
 argument_list|)
@@ -21125,6 +21149,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|hasReviewStarted
 argument_list|()
@@ -21164,6 +21191,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|hasReviewStarted
 argument_list|()
@@ -21762,6 +21792,9 @@ name|assertThat
 argument_list|(
 name|notes
 operator|.
+name|getChange
+argument_list|()
+operator|.
 name|getRevertOf
 argument_list|()
 argument_list|)
@@ -21848,6 +21881,9 @@ name|newNotes
 argument_list|(
 name|c
 argument_list|)
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|getRevertOf
 argument_list|()
