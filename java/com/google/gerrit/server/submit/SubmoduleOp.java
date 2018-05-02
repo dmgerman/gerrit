@@ -428,6 +428,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -931,11 +943,14 @@ operator|.
 name|Factory
 name|gitmodulesFactory
 decl_stmt|;
-DECL|field|myIdent
+DECL|field|serverIdent
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
-name|myIdent
+argument_list|>
+name|serverIdent
 decl_stmt|;
 DECL|field|cfg
 specifier|private
@@ -959,7 +974,7 @@ name|batchUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory ( GitModules.Factory gitmodulesFactory, @GerritPersonIdent PersonIdent myIdent, @GerritServerConfig Config cfg, ProjectCache projectCache, BatchUpdate.Factory batchUpdateFactory)
+DECL|method|Factory ( GitModules.Factory gitmodulesFactory, @GerritPersonIdent Provider<PersonIdent> serverIdent, @GerritServerConfig Config cfg, ProjectCache projectCache, BatchUpdate.Factory batchUpdateFactory)
 name|Factory
 parameter_list|(
 name|GitModules
@@ -969,8 +984,11 @@ name|gitmodulesFactory
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
+name|Provider
+argument_list|<
 name|PersonIdent
-name|myIdent
+argument_list|>
+name|serverIdent
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -994,9 +1012,9 @@ name|gitmodulesFactory
 expr_stmt|;
 name|this
 operator|.
-name|myIdent
+name|serverIdent
 operator|=
-name|myIdent
+name|serverIdent
 expr_stmt|;
 name|this
 operator|.
@@ -1042,7 +1060,10 @@ name|SubmoduleOp
 argument_list|(
 name|gitmodulesFactory
 argument_list|,
-name|myIdent
+name|serverIdent
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|cfg
 argument_list|,
