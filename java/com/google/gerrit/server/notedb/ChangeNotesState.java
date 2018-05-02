@@ -586,8 +586,6 @@ name|of
 argument_list|()
 argument_list|,
 literal|null
-argument_list|,
-literal|null
 argument_list|)
 return|;
 block|}
@@ -905,8 +903,6 @@ name|publishedComments
 argument_list|)
 argument_list|,
 name|readOnlyUntil
-argument_list|,
-name|revertOf
 argument_list|)
 return|;
 block|}
@@ -1219,16 +1215,6 @@ DECL|method|readOnlyUntil ()
 specifier|abstract
 name|Timestamp
 name|readOnlyUntil
-parameter_list|()
-function_decl|;
-annotation|@
-name|Nullable
-DECL|method|revertOf ()
-specifier|abstract
-name|Change
-operator|.
-name|Id
-name|revertOf
 parameter_list|()
 function_decl|;
 DECL|method|newChange (Project.NameKey project)

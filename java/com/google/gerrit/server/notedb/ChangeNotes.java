@@ -4282,6 +4282,9 @@ block|{
 return|return
 name|state
 operator|.
+name|columns
+argument_list|()
+operator|.
 name|revertOf
 argument_list|()
 return|;
