@@ -580,16 +580,11 @@ operator|.
 name|of
 argument_list|()
 argument_list|,
-name|ImmutableListMultimap
-operator|.
-name|of
-argument_list|()
-argument_list|,
 literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, boolean isPrivate, boolean workInProgress, boolean hasReviewStarted, @Nullable Change.Id revertOf)
+DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> changeMessages, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, boolean isPrivate, boolean workInProgress, boolean hasReviewStarted, @Nullable Change.Id revertOf)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -732,17 +727,7 @@ name|List
 argument_list|<
 name|ChangeMessage
 argument_list|>
-name|allChangeMessages
-parameter_list|,
-name|ListMultimap
-argument_list|<
-name|PatchSet
-operator|.
-name|Id
-argument_list|,
-name|ChangeMessage
-argument_list|>
-name|changeMessagesByPatchSet
+name|changeMessages
 parameter_list|,
 name|ListMultimap
 argument_list|<
@@ -885,14 +870,7 @@ name|ImmutableList
 operator|.
 name|copyOf
 argument_list|(
-name|allChangeMessages
-argument_list|)
-argument_list|,
-name|ImmutableListMultimap
-operator|.
-name|copyOf
-argument_list|(
-name|changeMessagesByPatchSet
+name|changeMessages
 argument_list|)
 argument_list|,
 name|ImmutableListMultimap
@@ -1176,26 +1154,13 @@ argument_list|>
 name|submitRecords
 parameter_list|()
 function_decl|;
-DECL|method|allChangeMessages ()
+DECL|method|changeMessages ()
 specifier|abstract
 name|ImmutableList
 argument_list|<
 name|ChangeMessage
 argument_list|>
-name|allChangeMessages
-parameter_list|()
-function_decl|;
-DECL|method|changeMessagesByPatchSet ()
-specifier|abstract
-name|ImmutableListMultimap
-argument_list|<
-name|PatchSet
-operator|.
-name|Id
-argument_list|,
-name|ChangeMessage
-argument_list|>
-name|changeMessagesByPatchSet
+name|changeMessages
 parameter_list|()
 function_decl|;
 DECL|method|publishedComments ()

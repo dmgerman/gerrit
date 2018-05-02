@@ -3732,28 +3732,7 @@ block|{
 return|return
 name|state
 operator|.
-name|allChangeMessages
-argument_list|()
-return|;
-block|}
-comment|/** @return change messages by patch set, in chronological order, oldest first. */
-DECL|method|getChangeMessagesByPatchSet ()
-specifier|public
-name|ImmutableListMultimap
-argument_list|<
-name|PatchSet
-operator|.
-name|Id
-argument_list|,
-name|ChangeMessage
-argument_list|>
-name|getChangeMessagesByPatchSet
-parameter_list|()
-block|{
-return|return
-name|state
-operator|.
-name|changeMessagesByPatchSet
+name|changeMessages
 argument_list|()
 return|;
 block|}
