@@ -111,12 +111,14 @@ block|{
 DECL|enumConstant|READ
 name|READ
 block|,
+comment|/**    * The change can't be restored if its current patch set is locked.    *    *<p>Before checking this permission, the caller should first verify the current patch set of the    * change is not locked by calling {@code PatchSetUtil.isPatchSetLocked}.    */
 DECL|enumConstant|RESTORE
 name|RESTORE
 block|,
 DECL|enumConstant|DELETE
 name|DELETE
 block|,
+comment|/**    * The change can't be abandoned if its current patch set is locked.    *    *<p>Before checking this permission, the caller should first verify the current patch set of the    * change is not locked by calling {@code PatchSetUtil.isPatchSetLocked}.    */
 DECL|enumConstant|ABANDON
 name|ABANDON
 block|,
@@ -135,9 +137,11 @@ block|,
 DECL|enumConstant|REMOVE_REVIEWER
 name|REMOVE_REVIEWER
 block|,
+comment|/**    * A new patch set can't be added if the patch set is locked for the change.    *    *<p>Before checking this permission, the caller should first verify the current patch set of the    * change is not locked by calling {@code PatchSetUtil.isPatchSetLocked}.    */
 DECL|enumConstant|ADD_PATCH_SET
 name|ADD_PATCH_SET
 block|,
+comment|/**    * The change can't be rebased if its current patch set is locked.    *    *<p>Before checking this permission, the caller should first verify the current patch set of the    * change is not locked by calling {@code PatchSetUtil.isPatchSetLocked}.    */
 DECL|enumConstant|REBASE
 name|REBASE
 block|,

@@ -2063,7 +2063,22 @@ throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
+throws|,
+name|OrmException
 block|{
+comment|// Not allowed to create a new patch set if the current patch set is locked.
+name|psUtil
+operator|.
+name|checkPatchSetNotLocked
+argument_list|(
+name|origNotes
+argument_list|,
+name|ctx
+operator|.
+name|getUser
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|checkAddPatchSetPermission

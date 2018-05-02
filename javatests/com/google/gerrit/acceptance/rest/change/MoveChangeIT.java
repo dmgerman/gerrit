@@ -1802,7 +1802,7 @@ name|exception
 operator|.
 name|expect
 argument_list|(
-name|AuthException
+name|ResourceConflictException
 operator|.
 name|class
 argument_list|)
@@ -1811,7 +1811,20 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"move not permitted"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"The current patch set of change %s is locked"
+argument_list|,
+name|r
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|move
