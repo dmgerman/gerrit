@@ -597,7 +597,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, @Nullable Boolean isPrivate, @Nullable Boolean workInProgress, boolean hasReviewStarted, @Nullable Change.Id revertOf)
+DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, @Nullable Boolean isPrivate, @Nullable Boolean workInProgress, boolean hasReviewStarted, @Nullable Change.Id revertOf)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -670,8 +670,6 @@ operator|.
 name|Status
 name|status
 parameter_list|,
-annotation|@
-name|Nullable
 name|Set
 argument_list|<
 name|Account
@@ -680,8 +678,6 @@ name|Id
 argument_list|>
 name|pastAssignees
 parameter_list|,
-annotation|@
-name|Nullable
 name|Set
 argument_list|<
 name|String
@@ -790,21 +786,6 @@ name|Id
 name|revertOf
 parameter_list|)
 block|{
-if|if
-condition|(
-name|hashtags
-operator|==
-literal|null
-condition|)
-block|{
-name|hashtags
-operator|=
-name|ImmutableSet
-operator|.
-name|of
-argument_list|()
-expr_stmt|;
-block|}
 return|return
 operator|new
 name|AutoValue_ChangeNotesState
