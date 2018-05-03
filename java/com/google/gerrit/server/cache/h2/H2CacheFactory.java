@@ -170,7 +170,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|CacheBinding
+name|MemoryCacheFactory
 import|;
 end_import
 
@@ -186,7 +186,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|MemoryCacheFactory
+name|PersistentCacheDef
 import|;
 end_import
 
@@ -311,18 +311,6 @@ operator|.
 name|inject
 operator|.
 name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|TypeLiteral
 import|;
 end_import
 
@@ -1094,7 +1082,7 @@ block|}
 argument_list|)
 annotation|@
 name|Override
-DECL|method|build (CacheBinding<K, V> in)
+DECL|method|build (PersistentCacheDef<K, V> in)
 specifier|public
 parameter_list|<
 name|K
@@ -1109,7 +1097,7 @@ name|V
 argument_list|>
 name|build
 parameter_list|(
-name|CacheBinding
+name|PersistentCacheDef
 argument_list|<
 name|K
 argument_list|,
@@ -1160,7 +1148,7 @@ name|in
 argument_list|)
 return|;
 block|}
-name|H2CacheBindingProxy
+name|H2CacheDefProxy
 argument_list|<
 name|K
 argument_list|,
@@ -1169,7 +1157,7 @@ argument_list|>
 name|def
 init|=
 operator|new
-name|H2CacheBindingProxy
+name|H2CacheDefProxy
 argument_list|<>
 argument_list|(
 name|in
@@ -1186,25 +1174,8 @@ init|=
 name|newSqlStore
 argument_list|(
 name|def
-operator|.
-name|name
-argument_list|()
-argument_list|,
-name|def
-operator|.
-name|keyType
-argument_list|()
 argument_list|,
 name|limit
-argument_list|,
-name|def
-operator|.
-name|expireAfterWrite
-argument_list|(
-name|TimeUnit
-operator|.
-name|SECONDS
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|H2CacheImpl
@@ -1271,7 +1242,7 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|build (CacheBinding<K, V> in, CacheLoader<K, V> loader)
+DECL|method|build (PersistentCacheDef<K, V> in, CacheLoader<K, V> loader)
 specifier|public
 parameter_list|<
 name|K
@@ -1286,7 +1257,7 @@ name|V
 argument_list|>
 name|build
 parameter_list|(
-name|CacheBinding
+name|PersistentCacheDef
 argument_list|<
 name|K
 argument_list|,
@@ -1347,7 +1318,7 @@ name|loader
 argument_list|)
 return|;
 block|}
-name|H2CacheBindingProxy
+name|H2CacheDefProxy
 argument_list|<
 name|K
 argument_list|,
@@ -1356,7 +1327,7 @@ argument_list|>
 name|def
 init|=
 operator|new
-name|H2CacheBindingProxy
+name|H2CacheDefProxy
 argument_list|<>
 argument_list|(
 name|in
@@ -1373,25 +1344,8 @@ init|=
 name|newSqlStore
 argument_list|(
 name|def
-operator|.
-name|name
-argument_list|()
-argument_list|,
-name|def
-operator|.
-name|keyType
-argument_list|()
 argument_list|,
 name|limit
-argument_list|,
-name|def
-operator|.
-name|expireAfterWrite
-argument_list|(
-name|TimeUnit
-operator|.
-name|SECONDS
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|Cache
@@ -1577,7 +1531,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|newSqlStore ( String name, TypeLiteral<K> keyType, long maxSize, Long expireAfterWrite)
+DECL|method|newSqlStore (PersistentCacheDef<K, V> def, long maxSize)
 specifier|private
 parameter_list|<
 name|V
@@ -1592,20 +1546,16 @@ name|V
 argument_list|>
 name|newSqlStore
 parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|TypeLiteral
+name|PersistentCacheDef
 argument_list|<
 name|K
+argument_list|,
+name|V
 argument_list|>
-name|keyType
+name|def
 parameter_list|,
 name|long
 name|maxSize
-parameter_list|,
-name|Long
-name|expireAfterWrite
 parameter_list|)
 block|{
 name|StringBuilder
@@ -1628,7 +1578,10 @@ name|cacheDir
 operator|.
 name|resolve
 argument_list|(
+name|def
+operator|.
 name|name
+argument_list|()
 argument_list|)
 operator|.
 name|toUri
@@ -1673,6 +1626,18 @@ literal|";AUTO_SERVER=TRUE"
 argument_list|)
 expr_stmt|;
 block|}
+name|Long
+name|expireAfterWrite
+init|=
+name|def
+operator|.
+name|expireAfterWrite
+argument_list|(
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+decl_stmt|;
 return|return
 operator|new
 name|SqlStore
@@ -1683,7 +1648,25 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
+name|def
+operator|.
 name|keyType
+argument_list|()
+argument_list|,
+name|def
+operator|.
+name|keySerializer
+argument_list|()
+argument_list|,
+name|def
+operator|.
+name|valueSerializer
+argument_list|()
+argument_list|,
+name|def
+operator|.
+name|version
+argument_list|()
 argument_list|,
 name|maxSize
 argument_list|,

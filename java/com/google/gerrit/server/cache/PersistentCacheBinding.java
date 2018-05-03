@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -107,23 +107,31 @@ import|;
 end_import
 
 begin_comment
-comment|/** Configure a cache declared within a {@link CacheModule} instance. */
+comment|/** Configure a persistent cache declared within a {@link CacheModule} instance. */
 end_comment
 
 begin_interface
-DECL|interface|CacheBinding
+DECL|interface|PersistentCacheBinding
 specifier|public
 interface|interface
-name|CacheBinding
+name|PersistentCacheBinding
 parameter_list|<
 name|K
 parameter_list|,
 name|V
 parameter_list|>
-block|{
-comment|/** Set the total size of the cache. */
-DECL|method|maximumWeight (long weight)
+extends|extends
 name|CacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+block|{
+annotation|@
+name|Override
+DECL|method|maximumWeight (long weight)
+name|PersistentCacheBinding
 argument_list|<
 name|K
 argument_list|,
@@ -135,9 +143,10 @@ name|long
 name|weight
 parameter_list|)
 function_decl|;
-comment|/** Set the time an element lives before being expired. */
+annotation|@
+name|Override
 DECL|method|expireAfterWrite (long duration, TimeUnit durationUnits)
-name|CacheBinding
+name|PersistentCacheBinding
 argument_list|<
 name|K
 argument_list|,
@@ -152,9 +161,10 @@ name|TimeUnit
 name|durationUnits
 parameter_list|)
 function_decl|;
-comment|/** Populate the cache with items from the CacheLoader. */
+annotation|@
+name|Override
 DECL|method|loader (Class<? extends CacheLoader<K, V>> clazz)
-name|CacheBinding
+name|PersistentCacheBinding
 argument_list|<
 name|K
 argument_list|,
@@ -176,9 +186,10 @@ argument_list|>
 name|clazz
 parameter_list|)
 function_decl|;
-comment|/** Algorithm to weigh an object with a method other than the unit weight 1. */
+annotation|@
+name|Override
 DECL|method|weigher (Class<? extends Weigher<K, V>> clazz)
-name|CacheBinding
+name|PersistentCacheBinding
 argument_list|<
 name|K
 argument_list|,
@@ -200,18 +211,63 @@ argument_list|>
 name|clazz
 parameter_list|)
 function_decl|;
-comment|/**    * Set the config name to something other than the cache name.    *    * @see CacheDef#configKey()    */
-DECL|method|configKey (String configKey)
-name|CacheBinding
+DECL|method|version (int version)
+name|PersistentCacheBinding
 argument_list|<
 name|K
 argument_list|,
 name|V
 argument_list|>
-name|configKey
+name|version
 parameter_list|(
-name|String
-name|configKey
+name|int
+name|version
+parameter_list|)
+function_decl|;
+comment|/** Set the total on-disk limit of the cache */
+DECL|method|diskLimit (long limit)
+name|PersistentCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|diskLimit
+parameter_list|(
+name|long
+name|limit
+parameter_list|)
+function_decl|;
+DECL|method|keySerializer (CacheSerializer<K> keySerializer)
+name|PersistentCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|keySerializer
+parameter_list|(
+name|CacheSerializer
+argument_list|<
+name|K
+argument_list|>
+name|keySerializer
+parameter_list|)
+function_decl|;
+DECL|method|valueSerializer (CacheSerializer<V> valueSerializer)
+name|PersistentCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|valueSerializer
+parameter_list|(
+name|CacheSerializer
+argument_list|<
+name|V
+argument_list|>
+name|valueSerializer
 parameter_list|)
 function_decl|;
 block|}

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -68,105 +68,50 @@ end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|io
 operator|.
-name|common
-operator|.
-name|cache
-operator|.
-name|Cache
+name|IOException
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|cache
-operator|.
-name|CacheLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|cache
-operator|.
-name|LoadingCache
-import|;
-end_import
+begin_comment
+comment|/** Interface for serializing/deserializing a type to/from a persistent cache. */
+end_comment
 
 begin_interface
-DECL|interface|MemoryCacheFactory
+DECL|interface|CacheSerializer
 specifier|public
 interface|interface
-name|MemoryCacheFactory
+name|CacheSerializer
+parameter_list|<
+name|T
+parameter_list|>
 block|{
-DECL|method|build (CacheDef<K, V> def)
-parameter_list|<
-name|K
-parameter_list|,
-name|V
-parameter_list|>
-name|Cache
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|build
+comment|/** Serializes the object to a new byte array. */
+DECL|method|serialize (T object)
+name|byte
+index|[]
+name|serialize
 parameter_list|(
-name|CacheDef
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|def
+name|T
+name|object
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
-DECL|method|build (CacheDef<K, V> def, CacheLoader<K, V> loader)
-parameter_list|<
-name|K
-parameter_list|,
-name|V
-parameter_list|>
-name|LoadingCache
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|build
+comment|/** Deserializes a single object from the given byte array. */
+DECL|method|deserialize (byte[] in)
+name|T
+name|deserialize
 parameter_list|(
-name|CacheDef
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|def
-parameter_list|,
-name|CacheLoader
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|loader
+name|byte
+index|[]
+name|in
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface

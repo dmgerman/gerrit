@@ -164,7 +164,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|CacheBinding
+name|CacheDef
 import|;
 end_import
 
@@ -322,7 +322,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|build (CacheBinding<K, V> def)
+DECL|method|build (CacheDef<K, V> def)
 specifier|public
 parameter_list|<
 name|K
@@ -337,7 +337,7 @@ name|V
 argument_list|>
 name|build
 parameter_list|(
-name|CacheBinding
+name|CacheDef
 argument_list|<
 name|K
 argument_list|,
@@ -358,7 +358,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|build (CacheBinding<K, V> def, CacheLoader<K, V> loader)
+DECL|method|build (CacheDef<K, V> def, CacheLoader<K, V> loader)
 specifier|public
 parameter_list|<
 name|K
@@ -373,7 +373,7 @@ name|V
 argument_list|>
 name|build
 parameter_list|(
-name|CacheBinding
+name|CacheDef
 argument_list|<
 name|K
 argument_list|,
@@ -407,7 +407,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|create (CacheBinding<K, V> def)
+DECL|method|create (CacheDef<K, V> def)
 specifier|private
 parameter_list|<
 name|K
@@ -422,7 +422,7 @@ name|V
 argument_list|>
 name|create
 parameter_list|(
-name|CacheBinding
+name|CacheDef
 argument_list|<
 name|K
 argument_list|,
