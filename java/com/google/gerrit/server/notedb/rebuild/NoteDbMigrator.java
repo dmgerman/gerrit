@@ -3223,6 +3223,15 @@ name|SuppressWarnings
 argument_list|(
 literal|"deprecation"
 argument_list|)
+specifier|final
+name|int
+name|nextChangeId
+init|=
+name|db
+operator|.
+name|nextChangeId
+argument_list|()
+decl_stmt|;
 name|RepoSequence
 name|seq
 init|=
@@ -3246,16 +3255,15 @@ comment|// by the call to seq.next() below. If we actually used this as a change
 comment|// would be a problem, but we just discard it, so this is safe.
 parameter_list|()
 lambda|->
-name|db
-operator|.
 name|nextChangeId
-argument_list|()
 operator|+
 name|sequenceGap
 operator|-
 literal|1
 argument_list|,
 literal|1
+argument_list|,
+name|nextChangeId
 argument_list|)
 decl_stmt|;
 name|seq
