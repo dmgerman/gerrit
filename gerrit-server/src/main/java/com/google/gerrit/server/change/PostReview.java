@@ -4503,10 +4503,10 @@ name|patchSetId
 init|=
 name|revision
 operator|.
-name|getChange
+name|getPatchSet
 argument_list|()
 operator|.
-name|currentPatchSetId
+name|getId
 argument_list|()
 decl_stmt|;
 name|ensurePathRefersToAvailableOrMagicFile
