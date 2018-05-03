@@ -168,20 +168,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|change
 operator|.
 name|ChangeResource
@@ -400,12 +386,6 @@ specifier|public
 class|class
 name|ChangeArgumentParser
 block|{
-DECL|field|currentUser
-specifier|private
-specifier|final
-name|CurrentUser
-name|currentUser
-decl_stmt|;
 DECL|field|changesCollection
 specifier|private
 specifier|final
@@ -440,12 +420,9 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeArgumentParser ( CurrentUser currentUser, ChangesCollection changesCollection, ChangeFinder changeFinder, ReviewDb db, ChangeNotes.Factory changeNotesFactory, PermissionBackend permissionBackend)
+DECL|method|ChangeArgumentParser ( ChangesCollection changesCollection, ChangeFinder changeFinder, ReviewDb db, ChangeNotes.Factory changeNotesFactory, PermissionBackend permissionBackend)
 name|ChangeArgumentParser
 parameter_list|(
-name|CurrentUser
-name|currentUser
-parameter_list|,
 name|ChangesCollection
 name|changesCollection
 parameter_list|,
@@ -464,12 +441,6 @@ name|PermissionBackend
 name|permissionBackend
 parameter_list|)
 block|{
-name|this
-operator|.
-name|currentUser
-operator|=
-name|currentUser
-expr_stmt|;
 name|this
 operator|.
 name|changesCollection
@@ -656,10 +627,8 @@ try|try
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
 name|currentUser
-argument_list|)
+argument_list|()
 operator|.
 name|check
 argument_list|(
@@ -723,10 +692,8 @@ operator|||
 operator|(
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
 name|currentUser
-argument_list|)
+argument_list|()
 operator|.
 name|change
 argument_list|(

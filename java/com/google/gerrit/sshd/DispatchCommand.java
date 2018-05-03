@@ -148,20 +148,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|args4j
 operator|.
 name|SubcommandHandler
@@ -376,12 +362,6 @@ name|map
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|currentUser
-specifier|private
-specifier|final
-name|CurrentUser
-name|currentUser
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -464,12 +444,9 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DispatchCommand ( CurrentUser user, PermissionBackend permissionBackend, @Assisted Map<String, CommandProvider> all)
+DECL|method|DispatchCommand (PermissionBackend permissionBackend, @Assisted Map<String, CommandProvider> all)
 name|DispatchCommand
 parameter_list|(
-name|CurrentUser
-name|user
-parameter_list|,
 name|PermissionBackend
 name|permissionBackend
 parameter_list|,
@@ -484,12 +461,6 @@ argument_list|>
 name|all
 parameter_list|)
 block|{
-name|this
-operator|.
-name|currentUser
-operator|=
-name|user
-expr_stmt|;
 name|this
 operator|.
 name|permissionBackend
@@ -842,10 +813,8 @@ try|try
 block|{
 name|permissionBackend
 operator|.
-name|user
-argument_list|(
 name|currentUser
-argument_list|)
+argument_list|()
 operator|.
 name|checkAny
 argument_list|(
