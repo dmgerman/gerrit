@@ -999,14 +999,6 @@ specifier|final
 name|NotesMigration
 name|migration
 decl_stmt|;
-DECL|field|userFactory
-specifier|private
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|userFactory
-decl_stmt|;
 DECL|field|copier
 specifier|private
 specifier|final
@@ -1029,17 +1021,12 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|ApprovalsUtil ( NotesMigration migration, IdentifiedUser.GenericFactory userFactory, ApprovalCopier copier, PermissionBackend permissionBackend, ProjectCache projectCache)
+DECL|method|ApprovalsUtil ( NotesMigration migration, ApprovalCopier copier, PermissionBackend permissionBackend, ProjectCache projectCache)
 specifier|public
 name|ApprovalsUtil
 parameter_list|(
 name|NotesMigration
 name|migration
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|userFactory
 parameter_list|,
 name|ApprovalCopier
 name|copier
@@ -1056,12 +1043,6 @@ operator|.
 name|migration
 operator|=
 name|migration
-expr_stmt|;
-name|this
-operator|.
-name|userFactory
-operator|=
-name|userFactory
 expr_stmt|;
 name|this
 operator|.
