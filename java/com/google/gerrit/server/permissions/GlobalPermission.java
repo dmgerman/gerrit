@@ -90,6 +90,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -252,26 +266,6 @@ name|Set
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Global server permissions built into Gerrit. */
 end_comment
@@ -341,21 +335,17 @@ block|,
 DECL|enumConstant|VIEW_ACCESS
 name|VIEW_ACCESS
 block|;
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|GlobalPermission
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 comment|/**    * Extracts the {@code @RequiresCapability} or {@code @RequiresAnyCapability} annotation.    *    * @param pluginName name of the declaring plugin. May be {@code null} or {@code "gerrit"} for    *     classes originating from the core server.    * @param clazz target class to extract annotation from.    * @return empty set if no annotations were found, or a collection of permissions, any of which    *     are suitable to enable access.    * @throws PermissionBackendException the annotation could not be parsed.    */
 DECL|method|fromAnnotation ( @ullable String pluginName, Class<?> clazz)
@@ -416,13 +406,12 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
 name|log
-operator|.
-name|error
-argument_list|(
-name|String
-operator|.
-name|format
 argument_list|(
 literal|"Class %s uses both @%s and @%s"
 argument_list|,
@@ -444,7 +433,6 @@ name|class
 operator|.
 name|getSimpleName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -686,13 +674,12 @@ operator|.
 name|PLUGIN
 condition|)
 block|{
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
 name|log
-operator|.
-name|error
-argument_list|(
-name|String
-operator|.
-name|format
 argument_list|(
 literal|"Class %s uses @%s(scope=%s), but is not within a plugin"
 argument_list|,
@@ -710,7 +697,6 @@ name|scope
 operator|.
 name|name
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -741,13 +727,12 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
 name|log
-operator|.
-name|error
-argument_list|(
-name|String
-operator|.
-name|format
 argument_list|(
 literal|"Class %s requires unknown capability %s"
 argument_list|,
@@ -757,7 +742,6 @@ name|getName
 argument_list|()
 argument_list|,
 name|capability
-argument_list|)
 argument_list|)
 expr_stmt|;
 throw|throw

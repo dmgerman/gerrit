@@ -188,6 +188,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -1026,26 +1040,6 @@ name|ReceiveCommand
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * {@link BatchUpdate} implementation that supports mixed ReviewDb/NoteDb operations, depending on  * the migration state specified in {@link NotesMigration}.  *  *<p>When performing change updates in a mixed ReviewDb/NoteDb environment with ReviewDb primary,  * the order of operations is very subtle:  *  *<ol>  *<li>Stage NoteDb updates to get the new NoteDb state, but do not write to the repo.  *<li>Write the new state in the Change entity, and commit this to ReviewDb.  *<li>Update NoteDb, ignoring any write failures.  *</ol>  *  * The implementation in this class is well-tested, and it is strongly recommended that you not  * attempt to reimplement this logic. Use {@code BatchUpdate} if at all possible.  */
 end_comment
@@ -1058,21 +1052,17 @@ name|ReviewDbBatchUpdate
 extends|extends
 name|BatchUpdate
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|ReviewDbBatchUpdate
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|interface|AssistedFactory
 specifier|public
@@ -3469,13 +3459,19 @@ comment|// NoteDbChangeStates to ReviewDb, which means if any state is out of da
 comment|// rebuilt the next time it is needed.
 comment|//
 comment|// Always log even without RequestId.
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Ignoring NoteDb update error after ReviewDb write"
-argument_list|,
-name|e
 argument_list|)
 block|;
 comment|// Otherwise, we can't prove it's safe to ignore the error, either because some change had
@@ -4210,13 +4206,19 @@ comment|// Ignore all errors trying to update NoteDb at this point. We've
 comment|// already written the NoteDbChangeState to ReviewDb, which means
 comment|// if the state is out of date it will be rebuilt the next time it
 comment|// is needed.
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|ex
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Ignoring NoteDb update error after ReviewDb write"
-argument_list|,
-name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -4644,9 +4646,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|log
+name|logger
 operator|.
-name|isDebugEnabled
+name|atFine
+argument_list|()
+operator|.
+name|isEnabled
 argument_list|()
 condition|)
 block|{
@@ -4660,7 +4665,7 @@ literal|"["
 operator|+
 name|taskId
 operator|+
-literal|"]"
+literal|"] "
 operator|+
 name|msg
 argument_list|,
@@ -4684,9 +4689,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|log
+name|logger
 operator|.
-name|isDebugEnabled
+name|atFine
+argument_list|()
+operator|.
+name|isEnabled
 argument_list|()
 condition|)
 block|{
@@ -4700,7 +4708,7 @@ literal|"["
 operator|+
 name|taskId
 operator|+
-literal|"]"
+literal|"] "
 operator|+
 name|msg
 argument_list|,

@@ -236,6 +236,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -878,26 +892,6 @@ name|DisabledOutputStream
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 DECL|class|PatchListLoader
 specifier|public
@@ -909,20 +903,16 @@ argument_list|<
 name|PatchList
 argument_list|>
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|PatchListLoader
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|interface|Factory
 specifier|public
@@ -2911,34 +2901,31 @@ name|TimeoutException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
+literal|"%s ms timeout reached for Diff loader in project %s"
+operator|+
+literal|" on commit %s on path %s comparing %s..%s"
+argument_list|,
 name|timeoutMillis
-operator|+
-literal|" ms timeout reached for Diff loader"
-operator|+
-literal|" in project "
-operator|+
+argument_list|,
 name|project
-operator|+
-literal|" on commit "
-operator|+
+argument_list|,
 name|commitB
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|" on path "
-operator|+
+argument_list|,
 name|diffEntry
 operator|.
 name|getNewPath
 argument_list|()
-operator|+
-literal|" comparing "
-operator|+
+argument_list|,
 name|diffEntry
 operator|.
 name|getOldId
@@ -2946,9 +2933,7 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|".."
-operator|+
+argument_list|,
 name|diffEntry
 operator|.
 name|getNewId

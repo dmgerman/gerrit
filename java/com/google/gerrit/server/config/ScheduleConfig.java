@@ -146,6 +146,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -276,26 +290,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * This class reads a schedule for running a periodic background job from a Git config.  *  *<p>A schedule configuration consists of two parameters:  *  *<ul>  *<li>{@code interval}: Interval for running the periodic background job. The interval must be  *       larger than zero. The following suffixes are supported to define the time unit for the  *       interval:  *<ul>  *<li>{@code s}, {@code sec}, {@code second}, {@code seconds}  *<li>{@code m}, {@code min}, {@code minute}, {@code minutes}  *<li>{@code h}, {@code hr}, {@code hour}, {@code hours}  *<li>{@code d}, {@code day}, {@code days}  *<li>{@code w}, {@code week}, {@code weeks} ({@code 1 week} is treated as {@code 7 days})  *<li>{@code mon}, {@code month}, {@code months} ({@code 1 month} is treated as {@code 30  *             days})  *<li>{@code y}, {@code year}, {@code years} ({@code 1 year} is treated as {@code 365  *             days})  *</ul>  *<li>{@code startTime}: The start time defines the first execution of the periodic background  *       job. If the configured {@code interval} is shorter than {@code startTime - now} the start  *       time will be preponed by the maximum integral multiple of {@code interval} so that the  *       start time is still in the future. {@code startTime} must have one of the following  *       formats:  *<ul>  *<li>{@code<day of week><hours>:<minutes>}  *<li>{@code<hours>:<minutes>}  *</ul>  *       The placeholders can have the following values:  *<ul>  *<li>{@code<day of week>}: {@code Mon}, {@code Tue}, {@code Wed}, {@code Thu}, {@code  *             Fri}, {@code Sat}, {@code Sun}  *<li>{@code<hours>}: {@code 00}-{@code 23}  *<li>{@code<minutes>}: {@code 00}-{@code 59}  *</ul>  *       The timezone cannot be specified but is always the system default time-zone.  *</ul>  *  *<p>The section and the subsection from which the {@code interval} and {@code startTime}  * parameters are read can be configured.  *  *<p>Examples for a schedule configuration:  *  *<ul>  *<li>  *<pre>  * foo.startTime = Fri 10:30  * foo.interval  = 2 day  *</pre>  *       Assuming that the server is started on {@code Mon 7:00} then {@code startTime - now} is  *       {@code 4 days 3:30 hours}. This is larger than the interval hence the start time is  *       preponed by the maximum integral multiple of the interval so that start time is still in  *       the future, i.e. preponed by 4 days. This yields a start time of {@code Mon 10:30}, next  *       executions are {@code Wed 10:30}, {@code Fri 10:30}. etc.  *<li>  *<pre>  * foo.startTime = 6:00  * foo.interval = 1 day  *</pre>  *       Assuming that the server is started on {@code Mon 7:00} then this yields the first run on  *       next Tuesday at 6:00 and a repetition interval of 1 day.  *</ul>  */
 end_comment
@@ -309,21 +303,17 @@ specifier|abstract
 class|class
 name|ScheduleConfig
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|ScheduleConfig
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|KEY_INTERVAL
 annotation|@
@@ -625,11 +615,14 @@ operator|==
 name|MISSING_CONFIG
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"No schedule configuration for \"{}\"."
+literal|"No schedule configuration for \"%s\"."
 argument_list|,
 name|key
 argument_list|)
@@ -645,11 +638,14 @@ operator|==
 name|MISSING_CONFIG
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Incomplete schedule configuration for \"{}\" is ignored. Missing value for \"{}\"."
+literal|"Incomplete schedule configuration for \"%s\" is ignored. Missing value for \"%s\"."
 argument_list|,
 name|key
 argument_list|,
@@ -672,11 +668,14 @@ operator|==
 name|MISSING_CONFIG
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Incomplete schedule configuration for \"{}\" is ignored. Missing value for \"{}\"."
+literal|"Incomplete schedule configuration for \"%s\" is ignored. Missing value for \"%s\"."
 argument_list|,
 name|key
 argument_list|,
@@ -703,11 +702,14 @@ operator|<
 literal|0
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Invalid schedule configuration for \"{}\" is ignored. "
+literal|"Invalid schedule configuration for \"%s\" is ignored. "
 argument_list|,
 name|key
 argument_list|)

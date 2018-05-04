@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -320,26 +334,6 @@ name|PersonIdent
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 DECL|class|RenameGroupOp
 class|class
@@ -347,6 +341,18 @@ name|RenameGroupOp
 extends|extends
 name|DefaultQueueOp
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|interface|Factory
 interface|interface
 name|Factory
@@ -396,22 +402,6 @@ name|int
 name|MAX_TRIES
 init|=
 literal|10
-decl_stmt|;
-DECL|field|log
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|RenameGroupOp
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 DECL|field|projectCache
 specifier|private
@@ -681,19 +671,23 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot rename group "
-operator|+
-name|oldName
-operator|+
-literal|" in "
-operator|+
-name|projectName
-argument_list|,
 name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot rename group %s in %s"
+argument_list|,
+name|oldName
+argument_list|,
+name|projectName
 argument_list|)
 expr_stmt|;
 block|}
@@ -887,20 +881,24 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Could not commit rename of group "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Could not commit rename of group %s to %s in %s"
+argument_list|,
 name|oldName
-operator|+
-literal|" to "
-operator|+
+argument_list|,
 name|newName
-operator|+
-literal|" in "
-operator|+
+argument_list|,
 name|md
 operator|.
 name|getProjectName
@@ -908,8 +906,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 try|try
@@ -944,20 +940,19 @@ condition|(
 name|tryingAgain
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Could not rename group "
-operator|+
+literal|"Could not rename group %s to %s in %s"
+argument_list|,
 name|oldName
-operator|+
-literal|" to "
-operator|+
+argument_list|,
 name|newName
-operator|+
-literal|" in "
-operator|+
+argument_list|,
 name|md
 operator|.
 name|getProjectName

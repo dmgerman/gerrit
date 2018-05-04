@@ -380,6 +380,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -1036,26 +1050,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** View of a single {@link Change} based on the log of its notes branch. */
 end_comment
@@ -1071,21 +1065,17 @@ argument_list|<
 name|ChangeNotes
 argument_list|>
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|ChangeNotes
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|PSA_BY_TIME
 specifier|static
@@ -1474,11 +1464,14 @@ operator|!=
 literal|1
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Multiple changes found for {}"
+literal|"Multiple changes found for %d"
 argument_list|,
 name|changeId
 operator|.
@@ -2734,11 +2727,14 @@ condition|)
 block|{
 comment|// If changes should exist in ReviewDb, it's worth warning about a meta ref with
 comment|// no corresponding ReviewDb data.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"skipping change {} found in project {} but not in ReviewDb"
+literal|"skipping change %s found in project %s but not in ReviewDb"
 argument_list|,
 name|id
 argument_list|,
@@ -2779,13 +2775,14 @@ name|project
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"skipping change {} found in project {} because ReviewDb change has"
-operator|+
-literal|" project {}"
+literal|"skipping change %s found in project %s because ReviewDb change has project %s"
 argument_list|,
 name|id
 argument_list|,
@@ -2801,11 +2798,14 @@ return|return
 literal|null
 return|;
 block|}
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"adding change {} found in project {}"
+literal|"adding change %s found in project %s"
 argument_list|,
 name|id
 argument_list|,
@@ -4727,11 +4727,14 @@ comment|// ChangeBundle.
 comment|//
 comment|// Parse notes from the staged result so we can return something useful
 comment|// to the caller instead of throwing.
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Rebuilding change {} failed: {}"
+literal|"Rebuilding change %s failed: %s"
 argument_list|,
 name|getChangeId
 argument_list|()
@@ -4873,11 +4876,14 @@ throw|;
 block|}
 finally|finally
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Rebuilt change {} in project {} in {} ms"
+literal|"Rebuilt change %s in project %s in %s ms"
 argument_list|,
 name|getChangeId
 argument_list|()

@@ -174,6 +174,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|hash
 operator|.
 name|BloomFilter
@@ -460,26 +474,6 @@ name|JdbcSQLException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Hybrid in-memory and database backed cache built on H2.  *  *<p>This cache can be used as either a recall cache, or a loading cache if a CacheLoader was  * supplied to its constructor at build time. Before creating an entry the in-memory cache is  * checked for the item, then the database is checked, and finally the CacheLoader is used to  * construct the item. This is mostly useful for CacheLoaders that are computationally intensive,  * such as the PatchListCache.  *  *<p>Cache stores and invalidations are performed on a background thread, hiding the latency  * associated with serializing the key and value pairs and writing them to the database log.  *  *<p>A BloomFilter is used around the database to reduce the number of SELECTs issued against the  * database for new cache items that have not been seen before, a common operation for the  * PatchListCache. The BloomFilter is sized when the cache starts to be 64,000 entries or double the  * number of items currently in the database table.  *  *<p>This cache does not export its items as a ConcurrentMap.  *  * @see H2CacheFactory  */
 end_comment
@@ -504,21 +498,17 @@ argument_list|>
 implements|implements
 name|PersistentCache
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|H2CacheImpl
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|OLD_CLASS_NAMES
 specifier|private
@@ -2086,17 +2076,18 @@ comment|// the old serialVersionUID-based invalidation strategy. In that case, a
 comment|// most likely bumping serialVersionUID rather than using the new versioning in the
 comment|// CacheBinding.  That's ok; we'll continue to support both for now.
 comment|// TODO(dborowitz): Remove this case when Java serialization is no longer used.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Entries cached for "
-operator|+
-name|url
-operator|+
-literal|" have an incompatible class and can't be deserialized. "
+literal|"Entries cached for %s have an incompatible class and can't be deserialized. "
 operator|+
 literal|"Cache is flushed."
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 name|invalidateAll
@@ -2122,16 +2113,17 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Cannot build BloomFilter for "
-operator|+
+literal|"Cannot build BloomFilter for %s: %s"
+argument_list|,
 name|url
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -2371,19 +2363,23 @@ name|e
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot read cache "
-operator|+
-name|url
-operator|+
-literal|" for "
-operator|+
-name|key
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot read cache %s for %s"
+argument_list|,
+name|url
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 block|}
@@ -2788,15 +2784,21 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot put into cache "
-operator|+
-name|url
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot put into cache %s"
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 name|c
@@ -2852,15 +2854,21 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot invalidate cache "
-operator|+
-name|url
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot invalidate cache %s"
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 name|c
@@ -3014,15 +3022,21 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot invalidate cache "
-operator|+
-name|url
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot invalidate cache %s"
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 name|c
@@ -3099,11 +3113,14 @@ operator|.
 name|executeUpdate
 argument_list|()
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Pruned {} entries not matching version {} from cache {}"
+literal|"Pruned %d entries not matching version %d from cache %s"
 argument_list|,
 name|oldEntries
 argument_list|,
@@ -3276,15 +3293,21 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot prune cache "
-operator|+
-name|url
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot prune cache %s"
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 name|c
@@ -3390,15 +3413,21 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot get DiskStats for "
-operator|+
-name|url
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot get DiskStats for %s"
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 name|c
@@ -3750,15 +3779,21 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot close connection to "
-operator|+
-name|url
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot close connection to %s"
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 block|}
@@ -3801,15 +3836,21 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot close statement for "
-operator|+
-name|url
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot close statement for %s"
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 block|}

@@ -430,6 +430,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -1452,26 +1466,6 @@ name|NullOutputStream
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** One stop shop for migrating a site's change storage from ReviewDb to NoteDb. */
 end_comment
@@ -1484,21 +1478,17 @@ name|NoteDbMigrator
 implements|implements
 name|AutoCloseable
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|NoteDbMigrator
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|AUTO_MIGRATE
 specifier|private
@@ -3345,9 +3335,12 @@ operator|.
 name|createStarted
 argument_list|()
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Setting primary storage to NoteDb"
 argument_list|)
@@ -3478,17 +3471,23 @@ name|id
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Change {} previously failed to rebuild;"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Change %s previously failed to rebuild;"
 operator|+
 literal|" skipping primary storage migration"
 argument_list|,
 name|id
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3509,15 +3508,21 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error migrating primary storage for "
-operator|+
-name|id
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error migrating primary storage for %s"
+argument_list|,
+name|id
 argument_list|)
 expr_stmt|;
 return|return
@@ -3567,13 +3572,12 @@ decl_stmt|;
 end_decl_stmt
 
 begin_expr_stmt
+name|logger
+operator|.
+name|atInfo
+argument_list|()
+operator|.
 name|log
-operator|.
-name|info
-argument_list|(
-name|String
-operator|.
-name|format
 argument_list|(
 literal|"Migrated primary storage of %d changes in %.01fs (%.01f/s)\n"
 argument_list|,
@@ -3590,7 +3594,6 @@ name|size
 argument_list|()
 operator|/
 name|t
-argument_list|)
 argument_list|)
 expr_stmt|;
 end_expr_stmt
@@ -3670,17 +3673,21 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error checking if change "
-operator|+
-name|id
-operator|+
-literal|" can be skipped, assuming no"
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error checking if change %s can be skipped, assuming no"
+argument_list|,
+name|id
 argument_list|)
 expr_stmt|;
 return|return
@@ -3763,18 +3770,24 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"error reading NoteDb migration options from "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"error reading NoteDb migration options from %s"
+argument_list|,
 name|noteDbConfig
 operator|.
 name|getFile
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -3947,11 +3960,14 @@ argument_list|(
 name|newState
 argument_list|)
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Migration state: {} => {}"
+literal|"Migration state: %s => %s"
 argument_list|,
 name|expectedOldState
 argument_list|,
@@ -4100,9 +4116,12 @@ operator|.
 name|createStarted
 argument_list|()
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Rebuilding changes in NoteDb"
 argument_list|)
@@ -4212,15 +4231,21 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error rebuilding project "
-operator|+
-name|project
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error rebuilding project %s"
+argument_list|,
+name|project
 argument_list|)
 expr_stmt|;
 return|return
@@ -4262,13 +4287,12 @@ argument_list|)
 operator|/
 literal|1000d
 decl_stmt|;
+name|logger
+operator|.
+name|atInfo
+argument_list|()
+operator|.
 name|log
-operator|.
-name|info
-argument_list|(
-name|String
-operator|.
-name|format
 argument_list|(
 literal|"Rebuilt %d changes in %.01fs (%.01f/s)\n"
 argument_list|,
@@ -4285,7 +4309,6 @@ name|size
 argument_list|()
 operator|/
 name|t
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4976,9 +4999,12 @@ name|NoPatchSetsException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
 name|e
 operator|.
@@ -4993,11 +5019,14 @@ name|ConflictingUpdateException
 name|ex
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Rebuilding detected a conflicting ReviewDb update for change {};"
+literal|"Rebuilding detected a conflicting ReviewDb update for change %s;"
 operator|+
 literal|" will be auto-rebuilt at runtime"
 argument_list|,
@@ -5011,15 +5040,21 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to rebuild change "
-operator|+
-name|changeId
-argument_list|,
 name|t
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to rebuild change %s"
+argument_list|,
+name|changeId
 argument_list|)
 expr_stmt|;
 name|ok
@@ -5108,13 +5143,16 @@ name|LockFailureException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Rebuilding detected a conflicting NoteDb update for the following refs, which will"
 operator|+
-literal|" be auto-rebuilt at runtime: {}"
+literal|" be auto-rebuilt at runtime: %s"
 argument_list|,
 name|e
 operator|.
@@ -5146,15 +5184,21 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to save NoteDb state for "
-operator|+
-name|project
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to save NoteDb state for %s"
+argument_list|,
+name|project
 argument_list|)
 expr_stmt|;
 block|}
@@ -5173,11 +5217,14 @@ name|RepositoryNotFoundException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Repository {} not found"
+literal|"Repository %s not found"
 argument_list|,
 name|project
 argument_list|)
@@ -5189,15 +5236,21 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to rebuild project "
-operator|+
-name|project
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to rebuild project %s"
+argument_list|,
+name|project
 argument_list|)
 expr_stmt|;
 block|}
@@ -5493,13 +5546,19 @@ name|ExecutionException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 name|errMsg
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return

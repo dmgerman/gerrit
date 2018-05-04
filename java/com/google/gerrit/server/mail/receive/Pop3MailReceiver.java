@@ -76,6 +76,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|primitives
 operator|.
 name|Ints
@@ -242,26 +256,6 @@ name|POP3SClient
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** An implementation of {@link MailReceiver} for POP3. */
 end_comment
@@ -276,21 +270,17 @@ name|Pop3MailReceiver
 extends|extends
 name|MailReceiver
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|Pop3MailReceiver
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
@@ -454,17 +444,18 @@ literal|"Could not retrieve message list via POP3"
 argument_list|)
 throw|;
 block|}
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Received "
-operator|+
+literal|"Received %d messages via POP3"
+argument_list|,
 name|messages
 operator|.
 name|length
-operator|+
-literal|" messages via POP3"
 argument_list|)
 expr_stmt|;
 comment|// Fetch messages
@@ -595,12 +586,15 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Could not delete message "
-operator|+
+literal|"Could not delete message %d"
+argument_list|,
 name|msginfo
 operator|.
 name|number
@@ -626,12 +620,15 @@ name|MailParsingException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Could not parse message "
-operator|+
+literal|"Could not parse message %d"
+argument_list|,
 name|msginfo
 operator|.
 name|number

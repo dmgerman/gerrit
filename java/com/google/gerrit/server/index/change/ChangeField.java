@@ -426,6 +426,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|primitives
 operator|.
 name|Longs
@@ -1074,26 +1088,6 @@ name|PersonIdent
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Fields indexed on change documents.  *  *<p>Each field corresponds to both a field name supported by {@link ChangeQueryBuilder} for  * querying that field, and a method on {@link ChangeData} used for populating the corresponding  * document fields in the secondary index.  *  *<p>Field names are all lowercase alphanumeric plus underscore; index implementations may create  * unambiguous derived field names containing other characters.  */
 end_comment
@@ -1104,21 +1098,17 @@ specifier|public
 class|class
 name|ChangeField
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|ChangeField
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|NO_ASSIGNEE
 specifier|public
@@ -2397,11 +2387,14 @@ operator|<
 literal|0
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Invalid value for reviewer field from change {}: {}"
+literal|"Invalid value for reviewer field from change %s: %s"
 argument_list|,
 name|changeId
 operator|.
@@ -2479,11 +2472,14 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Failed to parse reviewer state of reviewer field from change {}: {}"
+literal|"Failed to parse reviewer state of reviewer field from change %s: %s"
 argument_list|,
 name|changeId
 operator|.
@@ -2530,11 +2526,14 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Failed to parse account ID of reviewer field from change {}: {}"
+literal|"Failed to parse account ID of reviewer field from change %s: %s"
 argument_list|,
 name|changeId
 operator|.
@@ -2575,11 +2574,14 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Failed to parse timestamp of reviewer field from change {}: {}"
+literal|"Failed to parse timestamp of reviewer field from change %s: %s"
 argument_list|,
 name|changeId
 operator|.
@@ -2690,11 +2692,14 @@ operator|<
 literal|0
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Invalid value for reviewer by email field from change {}: {}"
+literal|"Invalid value for reviewer by email field from change %s: %s"
 argument_list|,
 name|changeId
 operator|.
@@ -2773,11 +2778,14 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Failed to parse reviewer state of reviewer by email field from change {}: {}"
+literal|"Failed to parse reviewer state of reviewer by email field from change %s: %s"
 argument_list|,
 name|changeId
 operator|.
@@ -2815,11 +2823,14 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Failed to parse address of reviewer by email field from change {}: {}"
+literal|"Failed to parse address of reviewer by email field from change %s: %s"
 argument_list|,
 name|changeId
 operator|.
@@ -2860,11 +2871,14 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Failed to parse timestamp of reviewer by email field from change {}: {}"
+literal|"Failed to parse timestamp of reviewer by email field from change %s: %s"
 argument_list|,
 name|changeId
 operator|.

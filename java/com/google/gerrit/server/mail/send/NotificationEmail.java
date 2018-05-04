@@ -102,6 +102,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -266,26 +280,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Common class for notifications that are related to a project and branch */
 end_comment
@@ -299,21 +293,17 @@ name|NotificationEmail
 extends|extends
 name|OutgoingEmail
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|NotificationEmail
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|branch
 specifier|protected
@@ -515,15 +505,21 @@ block|{
 comment|// Just don't CC everyone. Better to send a partial message to those
 comment|// we already have queued up then to fail deliver entirely to people
 comment|// who have a lower interest in the change.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot BCC watchers for "
-operator|+
-name|type
-argument_list|,
 name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot BCC watchers for %s"
+argument_list|,
+name|type
 argument_list|)
 expr_stmt|;
 block|}

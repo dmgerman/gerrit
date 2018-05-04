@@ -102,6 +102,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -202,26 +216,6 @@ name|AtomicBoolean
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 DECL|class|OnlineReindexer
 specifier|public
@@ -242,21 +236,17 @@ name|V
 parameter_list|>
 parameter_list|>
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|OnlineReindexer
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|name
 specifier|private
@@ -452,11 +442,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Online reindex of {} schema version {} failed"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Online reindex of %s schema version %s failed"
 argument_list|,
 name|name
 argument_list|,
@@ -464,8 +462,6 @@ name|version
 argument_list|(
 name|index
 argument_list|)
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -634,11 +630,14 @@ argument_list|,
 name|newVersion
 argument_list|)
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Starting online reindex of {} from schema version {} to {}"
+literal|"Starting online reindex of %s from schema version %s to %s"
 argument_list|,
 name|name
 argument_list|,
@@ -690,13 +689,16 @@ name|success
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Online reindex of {} schema version {} failed. Successfully"
+literal|"Online reindex of %s schema version %s failed. Successfully"
 operator|+
-literal|" indexed {}, failed to index {}"
+literal|" indexed %s, failed to index %s"
 argument_list|,
 name|name
 argument_list|,
@@ -718,11 +720,14 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Reindex {} to version {} complete"
+literal|"Reindex %s to version %s complete"
 argument_list|,
 name|name
 argument_list|,
@@ -769,11 +774,14 @@ argument_list|(
 name|index
 argument_list|)
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Using {} schema version {}"
+literal|"Using %s schema version %s"
 argument_list|,
 name|name
 argument_list|,
@@ -799,11 +807,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Error activating new {} schema version {}"
+literal|"Error activating new %s schema version %s"
 argument_list|,
 name|name
 argument_list|,
@@ -894,11 +905,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Error deactivating old {} schema version {}"
+literal|"Error deactivating old %s schema version %s"
 argument_list|,
 name|name
 argument_list|,

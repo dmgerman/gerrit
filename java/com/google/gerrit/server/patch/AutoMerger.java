@@ -102,6 +102,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -532,47 +546,23 @@ name|TemporaryBuffer
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 DECL|class|AutoMerger
 specifier|public
 class|class
 name|AutoMerger
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|AutoMerger
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|method|cacheAutomerge (Config cfg)
 specifier|public
@@ -893,15 +883,21 @@ comment|// It is not safe to continue further down in this method as throwing
 comment|// an exception most likely means that the merge tree was not created
 comment|// and m.getMergeResults() is empty. This would mean that all paths are
 comment|// unmerged and Gerrit UI would show all paths in the patch list.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error attempting automerge "
-operator|+
-name|refName
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error attempting automerge %s"
+argument_list|,
+name|refName
 argument_list|)
 expr_stmt|;
 return|return

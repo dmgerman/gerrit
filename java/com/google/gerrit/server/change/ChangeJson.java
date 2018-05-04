@@ -756,6 +756,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|primitives
 operator|.
 name|Ints
@@ -2334,26 +2348,6 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Produces {@link ChangeInfo} (which is serialized to JSON afterwards) from {@link ChangeData}.  *  *<p>This is intended to be used on request scope, but may be used for converting multiple {@link  * ChangeData} objects from different sources.  */
 end_comment
@@ -2364,21 +2358,17 @@ specifier|public
 class|class
 name|ChangeJson
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|ChangeJson
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|SUBMIT_RULE_OPTIONS_LENIENT
 specifier|public
@@ -4273,20 +4263,24 @@ name|RuntimeException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Omitting corrupt change "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Omitting corrupt change %s from results"
+argument_list|,
 name|cd
 operator|.
 name|getId
 argument_list|()
-operator|+
-literal|" from results"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -4394,13 +4388,19 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Omitting change due to exception"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -4515,20 +4515,26 @@ name|msg
 init|=
 literal|"Error loading change"
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 name|msg
 operator|+
-literal|" "
-operator|+
+literal|" %s"
+argument_list|,
 name|cd
 operator|.
 name|getId
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|ChangeInfo
@@ -7247,11 +7253,14 @@ name|isPostSubmit
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"unexpected post-submit approval on open change: {}"
+literal|"unexpected post-submit approval on open change: %s"
 argument_list|,
 name|psa
 argument_list|)
@@ -11439,18 +11448,19 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"project state for project "
-operator|+
+literal|"project state for project %s is null"
+argument_list|,
 name|cd
 operator|.
 name|project
 argument_list|()
-operator|+
-literal|" is null"
 argument_list|)
 expr_stmt|;
 return|return

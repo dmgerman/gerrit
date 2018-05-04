@@ -244,6 +244,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -458,26 +472,6 @@ name|RevCommit
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Helper for assigning groups to commits during {@code ReceiveCommits}.  *  *<p>For each commit encountered along a walk between the branch tip and the tip of the push, the  * group of a commit is defined as follows:  *  *<ul>  *<li>If the commit is an existing patch set of a change, the group is read from the group field  *       in the corresponding {@link PatchSet} record.  *<li>If all of a commit's parents are merged into the branch, then its group is its own SHA-1.  *<li>If the commit has a single parent that is not yet merged into the branch, then its group is  *       the same as the parent's group.  *<li>  *<li>For a merge commit, choose a parent and use that parent's group. If one of the parents has  *       a group from a patch set, use that group, otherwise, use the group from the first parent.  *       In addition to setting this merge commit's group, use the chosen group for all commits that  *       would otherwise use a group from the parents that were not chosen.  *<li>If a merge commit has multiple parents whose group comes from separate patch sets,  *       concatenate the groups from those parents together. This indicates two side branches were  *       pushed separately, followed by the merge.  *<li>  *</ul>  *  *<p>Callers must call {@link #visit(RevCommit)} on all commits between the current branch tip and  * the tip of a push, in reverse topo order (parents before children). Once all commits have been  * visited, call {@link #getGroups()} for the result.  */
 end_comment
@@ -488,21 +482,17 @@ specifier|public
 class|class
 name|GroupCollector
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|GroupCollector
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|method|getDefaultGroups (PatchSet ps)
 specifier|public
@@ -1749,11 +1739,14 @@ name|e
 parameter_list|)
 block|{
 comment|// Shouldn't happen; some sort of corruption or manual tinkering?
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"group for commit {} is not a SHA-1: {}"
+literal|"group for commit %s is not a SHA-1: %s"
 argument_list|,
 name|forCommit
 operator|.

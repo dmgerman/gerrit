@@ -242,6 +242,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -886,26 +900,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Helper to migrate the {@link PrimaryStorage} of individual changes. */
 end_comment
@@ -918,21 +912,17 @@ specifier|public
 class|class
 name|PrimaryStorageMigrator
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|PrimaryStorageMigrator
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 comment|/**    * Exception thrown during migration if the change has no {@code noteDbState} field at the    * beginning of the migration.    */
 DECL|class|NoNoteDbStateException
@@ -1458,11 +1448,14 @@ argument_list|,
 name|rebuiltState
 argument_list|)
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Migrated change {} to NoteDb primary in {}ms"
+literal|"Migrated change %s to NoteDb primary in %sms"
 argument_list|,
 name|id
 argument_list|,
@@ -2173,11 +2166,14 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Migrated change {} to ReviewDb primary in {}ms"
+literal|"Migrated change %s to ReviewDb primary in %sms"
 argument_list|,
 name|id
 argument_list|,

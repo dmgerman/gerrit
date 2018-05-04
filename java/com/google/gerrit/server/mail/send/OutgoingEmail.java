@@ -158,6 +158,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -574,26 +588,6 @@ name|SystemReader
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Sends an email to one or more interested parties. */
 end_comment
@@ -605,21 +599,17 @@ specifier|abstract
 class|class
 name|OutgoingEmail
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|OutgoingEmail
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|messageClass
 specifier|protected
@@ -2886,15 +2876,21 @@ name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error reading database for account: "
-operator|+
-name|to
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error reading database for account: %s"
+argument_list|,
+name|to
 argument_list|)
 expr_stmt|;
 block|}
@@ -2995,18 +2991,19 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Not emailing "
-operator|+
+literal|"Not emailing %s (invalid email address)"
+argument_list|,
 name|addr
 operator|.
 name|getEmail
 argument_list|()
-operator|+
-literal|" (invalid email address)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3027,18 +3024,19 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Not emailing "
-operator|+
+literal|"Not emailing %s (prohibited by allowrcpt)"
+argument_list|,
 name|addr
 operator|.
 name|getEmail
 argument_list|()
-operator|+
-literal|" (prohibited by allowrcpt)"
 argument_list|)
 expr_stmt|;
 block|}
