@@ -158,6 +158,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -808,32 +822,24 @@ name|ConfigInvalidException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 DECL|class|ReviewersUtil
 specifier|public
 class|class
 name|ReviewersUtil
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Singleton
 DECL|class|Metrics
@@ -1003,22 +1009,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|field|log
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|ReviewersUtil
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|// Generate a candidate list at 2x the size of what the user wants to see to
 comment|// give the ranking algorithm a good set of candidates it can work with
 DECL|field|CANDIDATE_LIST_MULTIPLIER
@@ -1283,11 +1273,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Suggesting reviewers for change {} to user {}."
+literal|"Suggesting reviewers for change %s to user %s."
 argument_list|,
 name|changeNotes
 operator|.
@@ -1306,11 +1299,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Suggesting default reviewers for project {} to user {}."
+literal|"Suggesting default reviewers for project %s to user %s."
 argument_list|,
 name|projectState
 operator|.
@@ -1332,11 +1328,14 @@ operator|.
 name|getQuery
 argument_list|()
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Query: {}"
+literal|"Query: %s"
 argument_list|,
 name|query
 argument_list|)
@@ -1358,9 +1357,12 @@ name|getSuggestAccounts
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Reviewer suggestion is disabled."
 argument_list|)
@@ -1403,11 +1405,14 @@ argument_list|(
 name|suggestReviewers
 argument_list|)
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Candidate list: {}"
+literal|"Candidate list: %s"
 argument_list|,
 name|candidateList
 argument_list|)
@@ -1432,11 +1437,14 @@ argument_list|,
 name|candidateList
 argument_list|)
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Sorted recommendations: {}"
+literal|"Sorted recommendations: %s"
 argument_list|,
 name|sortedRecommendations
 argument_list|)
@@ -1523,11 +1531,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Filtered recommendations: {}"
+literal|"Filtered recommendations: %s"
 argument_list|,
 name|filteredRecommendations
 argument_list|)
@@ -1609,21 +1620,27 @@ argument_list|,
 name|limit
 argument_list|)
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Limited suggested reviewers to {} accounts."
+literal|"Limited suggested reviewers to %d accounts."
 argument_list|,
 name|limit
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Suggested reviewers: {}"
+literal|"Suggested reviewers: %s"
 argument_list|,
 name|suggestedReviewers
 operator|.

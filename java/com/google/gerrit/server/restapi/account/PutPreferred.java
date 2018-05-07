@@ -102,6 +102,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -482,26 +496,6 @@ name|ConfigInvalidException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -519,21 +513,17 @@ argument_list|,
 name|Input
 argument_list|>
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|PutPreferred
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|self
 specifier|private
@@ -905,13 +895,16 @@ argument_list|()
 condition|)
 block|{
 comment|// but the email is already assigned to another account
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Cannot set preferred email {} for account {} because it is owned"
+literal|"Cannot set preferred email %s for account %s because it is owned"
 operator|+
-literal|" by the following account(s): {}"
+literal|" by the following account(s): %s"
 argument_list|,
 name|preferredEmail
 argument_list|,
