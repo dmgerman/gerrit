@@ -1015,7 +1015,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Error in listener {} for event {}: {}"
+literal|"Error in event listener {} for event {}: {}"
 argument_list|,
 name|listener
 operator|.
@@ -1091,7 +1091,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Error in listener {}: {}"
+literal|"Error in event listener {}: {}"
 argument_list|,
 name|listener
 operator|.
