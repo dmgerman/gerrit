@@ -192,6 +192,11 @@ specifier|public
 name|String
 name|baseChange
 decl_stmt|;
+DECL|field|baseCommit
+specifier|public
+name|String
+name|baseCommit
+decl_stmt|;
 DECL|field|newBranch
 specifier|public
 name|Boolean
