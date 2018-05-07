@@ -475,7 +475,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"String to long \""
+literal|"String too long \""
 operator|+
 name|system
 operator|+
