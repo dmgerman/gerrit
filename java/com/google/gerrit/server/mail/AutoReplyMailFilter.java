@@ -232,7 +232,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Message %s has a Precedence header. Will ignore and delete message."
+literal|"Message {} has a Precedence header. Will ignore and delete message."
 argument_list|,
 name|message
 operator|.
@@ -297,7 +297,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Message %s has an Auto-Submitted header. Will ignore and delete message."
+literal|"Message {} has an Auto-Submitted header. Will ignore and delete message."
 argument_list|,
 name|message
 operator|.
