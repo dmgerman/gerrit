@@ -250,6 +250,62 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|metrics
+operator|.
+name|Counter0
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|Description
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|DisabledMetricMaker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|MetricMaker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -755,9 +811,15 @@ name|AccountIndexer
 argument_list|>
 name|accountIndexer
 decl_stmt|;
+DECL|field|metricMaker
+specifier|private
+specifier|final
+name|MetricMaker
+name|metricMaker
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory ( ExternalIdCache externalIdCache, AccountCache accountCache, Provider<AccountIndexer> accountIndexer)
+DECL|method|Factory ( ExternalIdCache externalIdCache, AccountCache accountCache, Provider<AccountIndexer> accountIndexer, MetricMaker metricMaker)
 name|Factory
 parameter_list|(
 name|ExternalIdCache
@@ -771,6 +833,9 @@ argument_list|<
 name|AccountIndexer
 argument_list|>
 name|accountIndexer
+parameter_list|,
+name|MetricMaker
+name|metricMaker
 parameter_list|)
 block|{
 name|this
@@ -790,6 +855,12 @@ operator|.
 name|accountIndexer
 operator|=
 name|accountIndexer
+expr_stmt|;
+name|this
+operator|.
+name|metricMaker
+operator|=
+name|metricMaker
 expr_stmt|;
 block|}
 annotation|@
@@ -816,6 +887,8 @@ argument_list|,
 name|accountCache
 argument_list|,
 name|accountIndexer
+argument_list|,
+name|metricMaker
 argument_list|,
 name|allUsersRepo
 argument_list|)
@@ -853,6 +926,8 @@ argument_list|,
 name|accountCache
 argument_list|,
 name|accountIndexer
+argument_list|,
+name|metricMaker
 argument_list|,
 name|allUsersRepo
 argument_list|)
@@ -880,13 +955,22 @@ specifier|final
 name|ExternalIdCache
 name|externalIdCache
 decl_stmt|;
+DECL|field|metricMaker
+specifier|private
+specifier|final
+name|MetricMaker
+name|metricMaker
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FactoryNoReindex (ExternalIdCache externalIdCache)
+DECL|method|FactoryNoReindex (ExternalIdCache externalIdCache, MetricMaker metricMaker)
 name|FactoryNoReindex
 parameter_list|(
 name|ExternalIdCache
 name|externalIdCache
+parameter_list|,
+name|MetricMaker
+name|metricMaker
 parameter_list|)
 block|{
 name|this
@@ -894,6 +978,12 @@ operator|.
 name|externalIdCache
 operator|=
 name|externalIdCache
+expr_stmt|;
+name|this
+operator|.
+name|metricMaker
+operator|=
+name|metricMaker
 expr_stmt|;
 block|}
 annotation|@
@@ -920,6 +1010,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+name|metricMaker
 argument_list|,
 name|allUsersRepo
 argument_list|)
@@ -957,6 +1049,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+name|metricMaker
 argument_list|,
 name|allUsersRepo
 argument_list|)
@@ -994,6 +1088,10 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+operator|new
+name|DisabledMetricMaker
+argument_list|()
 argument_list|,
 name|allUsersRepo
 argument_list|)
@@ -1037,6 +1135,10 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
+operator|new
+name|DisabledMetricMaker
+argument_list|()
+argument_list|,
 name|allUsersRepo
 argument_list|)
 operator|.
@@ -1049,7 +1151,7 @@ name|rev
 argument_list|)
 return|;
 block|}
-comment|/**    * Loads the external ID notes for updates without cache evictions. The external ID notes are    * loaded from the current tip of the {@code refs/meta/external-ids} branch.    *    * @return {@link ExternalIdNotes} instance that doesn't updates caches on save    */
+comment|/**    * Loads the external ID notes for updates without cache evictions. The external ID notes are    * loaded from the current tip of the {@code refs/meta/external-ids} branch.    *    *<p>Use this only from init, schema upgrades and tests.    *    *<p>Metrics are disabled.    *    * @return {@link ExternalIdNotes} instance that doesn't updates caches on save    */
 DECL|method|loadNoCacheUpdate (Repository allUsersRepo)
 specifier|public
 specifier|static
@@ -1075,6 +1177,10 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+operator|new
+name|DisabledMetricMaker
+argument_list|()
 argument_list|,
 name|allUsersRepo
 argument_list|)
@@ -1107,6 +1213,12 @@ argument_list|<
 name|AccountIndexer
 argument_list|>
 name|accountIndexer
+decl_stmt|;
+DECL|field|updateCount
+specifier|private
+specifier|final
+name|Counter0
+name|updateCount
 decl_stmt|;
 DECL|field|repo
 specifier|private
@@ -1164,7 +1276,7 @@ name|readOnly
 init|=
 literal|false
 decl_stmt|;
-DECL|method|ExternalIdNotes ( ExternalIdCache externalIdCache, @Nullable AccountCache accountCache, @Nullable Provider<AccountIndexer> accountIndexer, Repository allUsersRepo)
+DECL|method|ExternalIdNotes ( ExternalIdCache externalIdCache, @Nullable AccountCache accountCache, @Nullable Provider<AccountIndexer> accountIndexer, MetricMaker metricMaker, Repository allUsersRepo)
 specifier|private
 name|ExternalIdNotes
 parameter_list|(
@@ -1183,6 +1295,9 @@ argument_list|<
 name|AccountIndexer
 argument_list|>
 name|accountIndexer
+parameter_list|,
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|Repository
 name|allUsersRepo
@@ -1210,6 +1325,31 @@ operator|.
 name|accountIndexer
 operator|=
 name|accountIndexer
+expr_stmt|;
+name|this
+operator|.
+name|updateCount
+operator|=
+name|metricMaker
+operator|.
+name|newCounter
+argument_list|(
+literal|"notedb/external_id_update_count"
+argument_list|,
+operator|new
+name|Description
+argument_list|(
+literal|"Total number of external ID updates."
+argument_list|)
+operator|.
+name|setRate
+argument_list|()
+operator|.
+name|setUnit
+argument_list|(
+literal|"updates"
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -2841,13 +2981,23 @@ operator|.
 name|zeroId
 argument_list|()
 expr_stmt|;
-return|return
+name|RevCommit
+name|commit
+init|=
 name|super
 operator|.
 name|commit
 argument_list|(
 name|update
 argument_list|)
+decl_stmt|;
+name|updateCount
+operator|.
+name|increment
+argument_list|()
+expr_stmt|;
+return|return
+name|commit
 return|;
 block|}
 comment|/**    * Updates the caches (external ID cache, account cache) and reindexes the accounts for which    * external IDs were modified.    *    *<p>Must only be called after committing changes.    *    *<p>No-op if this instance was created by {@link #loadNoCacheUpdate(Repository)}.    *    *<p>No eviction from account cache and no reindex if this instance was created by {@link    * FactoryNoReindex}.    */
