@@ -4532,6 +4532,7 @@ argument_list|)
 block|;
 DECL|field|order
 specifier|private
+specifier|final
 name|int
 name|order
 decl_stmt|;
