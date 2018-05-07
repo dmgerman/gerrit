@@ -1518,7 +1518,7 @@ name|perm
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a partition of the provided refs that are visible to the user that this instance is      * scoped to.      */
+comment|/**      * Filter a map of references by visibility.      *      * @param refs a map of references to filter.      * @param repo an open {@link Repository} handle for this instance's project      * @param opts further options for filtering.      * @return a partition of the provided refs that are visible to the user that this instance is      *     scoped to.      * @throws PermissionBackendException if failure consulting backend configuration.      */
 DECL|method|filter ( Map<String, Ref> refs, Repository repo, RefFilterOptions opts)
 specifier|public
 specifier|abstract
