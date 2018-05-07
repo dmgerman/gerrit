@@ -161,7 +161,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Caches object instances for a request as {@link ThreadLocal} in the serving thread.  *  *<p>This class is intended to cache objects that have a high instantiation cost, are specific to  * the current request and potentially need to be instantiated multiple times while serving a  * request.  *  *<p>This is different from the key-value storage in {@code CurrentUser}: {@code CurrentUser}  * offers a key-value storage by providing thread-safe {@code get} and {@code put} methods. Once the  * value is retrieved through {@code get} there is not thread-safety anymore - apart from the  * retrieved object guarantees. Depending on the implementation of {@code CurrentUser}, it might be  * shared between the request serving thread as well as sub- or background treads.  *  *<p>In comparison to that, this class guarantees thread safety even on non-thread-safe objects as  * its cache is tied to the serving thread only. While allowing to cache non-thread-safe objects, it  * has the downside of not sharing any objects with background threads or executors.  *  *<p>Lastly, this class offers a cache, that requires callers to also provide a {@code Supplier} in  * case the object is not present in the cache, while {@code CurrentUser} provides a storage where  * just retrieving stored values is a valid operation.  */
+comment|/**  * Caches object instances for a request as {@link ThreadLocal} in the serving thread.  *  *<p>This class is intended to cache objects that have a high instantiation cost, are specific to  * the current request and potentially need to be instantiated multiple times while serving a  * request.  *  *<p>This is different from the key-value storage in {@code CurrentUser}: {@code CurrentUser}  * offers a key-value storage by providing thread-safe {@code get} and {@code put} methods. Once the  * value is retrieved through {@code get} there is not thread-safety anymore - apart from the  * retrieved object guarantees. Depending on the implementation of {@code CurrentUser}, it might be  * shared between the request serving thread as well as sub- or background treads.  *  *<p>In comparison to that, this class guarantees thread safety even on non-thread-safe objects as  * its cache is tied to the serving thread only. While allowing to cache non-thread-safe objects, it  * has the downside of not sharing any objects with background threads or executors.  *  *<p>Lastly, this class offers a cache, that requires callers to also provide a {@code Supplier} in  * case the object is not present in the cache, while {@code CurrentUser} provides a storage where  * just retrieving stored values is a valid operation.  *  *<p>To prevent OOM errors on requests that would cache a lot of objects, this class enforces an  * internal limit after which no new elements are cached. All {@code get} calls are served by  * invoking the {@code Supplier} after that.  */
 end_comment
 
 begin_class
@@ -186,6 +186,16 @@ operator|new
 name|ThreadLocal
 argument_list|<>
 argument_list|()
+decl_stmt|;
+comment|/**    * Cache at maximum 50 values per thread. This value was chosen arbitrarily. Some endpoints (like    * ListProjects) break the assumption that the data cached in a request is limited. To prevent    * this class from accumulating an unbound number of objects, we enforce this limit.    */
+DECL|field|PER_THREAD_CACHE_SIZE
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|PER_THREAD_CACHE_SIZE
+init|=
+literal|50
 decl_stmt|;
 comment|/**    * Unique key for key-value mappings stored in PerThreadCache. The key is based on the value's    * class and a list of identifiers that in combination uniquely set the object apart form others    * of the same class.    */
 DECL|class|Key
@@ -524,7 +534,7 @@ name|Maps
 operator|.
 name|newHashMapWithExpectedSize
 argument_list|(
-literal|10
+name|PER_THREAD_CACHE_SIZE
 argument_list|)
 decl_stmt|;
 DECL|method|PerThreadCache ()
@@ -586,6 +596,16 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|cache
+operator|.
+name|size
+argument_list|()
+operator|<
+name|PER_THREAD_CACHE_SIZE
+condition|)
+block|{
 name|cache
 operator|.
 name|put
@@ -595,6 +615,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|value
