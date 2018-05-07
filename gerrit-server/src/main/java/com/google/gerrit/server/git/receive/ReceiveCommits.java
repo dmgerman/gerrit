@@ -9741,6 +9741,40 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+comment|// TODO(davido): Remove legacy support for drafts magic branch option
+comment|// after repo-tool supports private and work-in-progress changes.
+if|if
+condition|(
+name|magicBranch
+operator|.
+name|draft
+operator|&&
+operator|!
+name|receiveConfig
+operator|.
+name|allowDrafts
+condition|)
+block|{
+name|errors
+operator|.
+name|put
+argument_list|(
+name|ReceiveError
+operator|.
+name|CODE_REVIEW
+argument_list|,
+name|ref
+argument_list|)
+expr_stmt|;
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"draft workflow is disabled"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 if|if
 condition|(
 name|magicBranch
