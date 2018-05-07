@@ -1438,6 +1438,8 @@ operator|+
 name|a
 operator|.
 name|number
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3247,7 +3249,7 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|warn
+name|error
 argument_list|(
 literal|"Cannot get patch list"
 argument_list|,

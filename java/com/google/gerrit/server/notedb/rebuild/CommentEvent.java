@@ -448,7 +448,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to determine parent commit of patch set {} ({}); omitting inline comment"
+literal|"Unable to determine parent commit of patch set {} ({}); omitting inline comment {}"
 argument_list|,
 name|ps
 operator|.
