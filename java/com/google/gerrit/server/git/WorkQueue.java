@@ -634,6 +634,7 @@ name|defaultQueue
 decl_stmt|;
 DECL|field|defaultQueueSize
 specifier|private
+specifier|final
 name|int
 name|defaultQueueSize
 decl_stmt|;
