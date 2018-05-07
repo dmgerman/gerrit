@@ -1089,15 +1089,6 @@ literal|"(${submitSize} changes including ancestors and other "
 operator|+
 literal|"changes related by topic)"
 decl_stmt|;
-DECL|field|BLOCKED_SUBMIT_TOOLTIP
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|BLOCKED_SUBMIT_TOOLTIP
-init|=
-literal|"This change depends on other changes which are not ready"
-decl_stmt|;
 DECL|field|BLOCKED_HIDDEN_SUBMIT_TOOLTIP
 specifier|private
 specifier|static
@@ -1106,15 +1097,6 @@ name|String
 name|BLOCKED_HIDDEN_SUBMIT_TOOLTIP
 init|=
 literal|"This change depends on other hidden changes which are not ready"
-decl_stmt|;
-DECL|field|BLOCKED_WORK_IN_PROGRESS
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|BLOCKED_WORK_IN_PROGRESS
-init|=
-literal|"This change is marked work in progress"
 decl_stmt|;
 DECL|field|CLICK_FAILURE_TOOLTIP
 specifier|private
@@ -1133,15 +1115,6 @@ name|String
 name|CHANGE_UNMERGEABLE
 init|=
 literal|"Problems with integrating this change"
-decl_stmt|;
-DECL|field|CHANGES_NOT_MERGEABLE
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CHANGES_NOT_MERGEABLE
-init|=
-literal|"Problems with change(s): "
 decl_stmt|;
 DECL|class|Output
 specifier|public
@@ -2087,7 +2060,12 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|BLOCKED_SUBMIT_TOOLTIP
+literal|"You don't have permission to submit change "
+operator|+
+name|c
+operator|.
+name|getId
+argument_list|()
 return|;
 block|}
 if|if
@@ -2102,9 +2080,18 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|BLOCKED_WORK_IN_PROGRESS
+literal|"Change "
+operator|+
+name|c
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" is marked work in progress"
 return|;
 block|}
+try|try
+block|{
 name|MergeOp
 operator|.
 name|checkSubmitRule
@@ -2114,6 +2101,29 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|ResourceConflictException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|"Change "
+operator|+
+name|c
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" is not ready: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+return|;
+block|}
 block|}
 name|Collection
 argument_list|<
@@ -2183,7 +2193,7 @@ return|;
 block|}
 block|}
 return|return
-name|CHANGES_NOT_MERGEABLE
+literal|"Problems with change(s): "
 operator|+
 name|unmergeable
 operator|.
@@ -2212,16 +2222,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-block|}
-catch|catch
-parameter_list|(
-name|ResourceConflictException
-name|e
-parameter_list|)
-block|{
-return|return
-name|BLOCKED_SUBMIT_TOOLTIP
-return|;
 block|}
 catch|catch
 parameter_list|(

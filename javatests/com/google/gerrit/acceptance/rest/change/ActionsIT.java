@@ -829,11 +829,32 @@ argument_list|(
 name|changeId
 argument_list|)
 expr_stmt|;
-name|String
-name|changeId2
+name|PushOneCommit
+operator|.
+name|Result
+name|change2
 init|=
 name|createChangeWithTopic
 argument_list|()
+decl_stmt|;
+name|int
+name|legacyId2
+init|=
+name|change2
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+name|String
+name|changeId2
+init|=
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -913,9 +934,13 @@ operator|.
 name|title
 argument_list|)
 operator|.
-name|isEqualTo
+name|matches
 argument_list|(
-literal|"This change depends on other changes which are not ready"
+literal|"Change "
+operator|+
+name|legacyId2
+operator|+
+literal|" is not ready: needs Code-Review"
 argument_list|)
 expr_stmt|;
 block|}
