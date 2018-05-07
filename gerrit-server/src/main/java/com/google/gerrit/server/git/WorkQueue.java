@@ -600,14 +600,9 @@ block|}
 decl_stmt|;
 DECL|field|defaultQueue
 specifier|private
+specifier|final
 name|Executor
 name|defaultQueue
-decl_stmt|;
-DECL|field|defaultQueueSize
-specifier|private
-specifier|final
-name|int
-name|defaultQueueSize
 decl_stmt|;
 DECL|field|idGenerator
 specifier|private
@@ -684,36 +679,23 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|defaultQueueSize
-operator|=
-name|defaultThreadPoolSize
-expr_stmt|;
-block|}
-comment|/** Get the default work queue, for miscellaneous tasks. */
-DECL|method|getDefaultQueue ()
-specifier|public
-specifier|synchronized
-name|Executor
-name|getDefaultQueue
-parameter_list|()
-block|{
-if|if
-condition|(
-name|defaultQueue
-operator|==
-literal|null
-condition|)
-block|{
 name|defaultQueue
 operator|=
 name|createQueue
 argument_list|(
-name|defaultQueueSize
+name|defaultThreadPoolSize
 argument_list|,
 literal|"WorkQueue"
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Get the default work queue, for miscellaneous tasks. */
+DECL|method|getDefaultQueue ()
+specifier|public
+name|Executor
+name|getDefaultQueue
+parameter_list|()
+block|{
 return|return
 name|defaultQueue
 return|;
