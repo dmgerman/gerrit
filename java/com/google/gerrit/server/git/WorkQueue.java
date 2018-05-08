@@ -684,6 +684,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Constructor to allow binding the WorkQueue more explicitly in a vhost setup. */
 DECL|method|WorkQueue (IdGenerator idGenerator, int defaultThreadPoolSize)
 specifier|public
 name|WorkQueue
