@@ -431,6 +431,17 @@ name|GerritConfig
 argument_list|(
 name|name
 operator|=
+literal|"change.allowDrafts"
+argument_list|,
+name|value
+operator|=
+literal|"true"
+argument_list|)
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
 literal|"change.disablePrivateChanges"
 argument_list|,
 name|value
@@ -584,6 +595,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
+literal|"change.allowDrafts"
+argument_list|,
+name|value
+operator|=
+literal|"true"
+argument_list|)
 DECL|method|pushPrivatesWithDisablePrivateChangesFalse ()
 specifier|public
 name|void
@@ -636,6 +658,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
+literal|"change.allowDrafts"
+argument_list|,
+name|value
+operator|=
+literal|"true"
+argument_list|)
 DECL|method|pushDraftsWithDisablePrivateChangesFalse ()
 specifier|public
 name|void
