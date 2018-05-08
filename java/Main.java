@@ -58,6 +58,15 @@ specifier|final
 class|class
 name|Main
 block|{
+DECL|field|FLOGGER_BACKEND_PROPERTY
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|FLOGGER_BACKEND_PROPERTY
+init|=
+literal|"flogger.backend_factory"
+decl_stmt|;
 comment|// We don't do any real work here because we need to import
 comment|// the archive lookup code and we cannot import a class in
 comment|// the default package. So this is just a tiny springboard
@@ -82,6 +91,9 @@ name|onSupportedJavaVersion
 argument_list|()
 condition|)
 block|{
+name|configureFloggerBackend
+argument_list|()
+expr_stmt|;
 name|com
 operator|.
 name|google
@@ -166,6 +178,39 @@ expr_stmt|;
 return|return
 literal|false
 return|;
+block|}
+DECL|method|configureFloggerBackend ()
+specifier|private
+specifier|static
+name|void
+name|configureFloggerBackend
+parameter_list|()
+block|{
+if|if
+condition|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+name|FLOGGER_BACKEND_PROPERTY
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// Flogger backend is already configured
+return|return;
+block|}
+comment|// Configure log4j backend
+name|System
+operator|.
+name|setProperty
+argument_list|(
+name|FLOGGER_BACKEND_PROPERTY
+argument_list|,
+literal|"com.google.common.flogger.backend.log4j.Log4jBackendFactory#getInstance"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|parse (String version)
 specifier|private
