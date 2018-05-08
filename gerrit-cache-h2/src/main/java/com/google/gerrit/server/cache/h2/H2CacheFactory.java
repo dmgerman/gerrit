@@ -1446,6 +1446,11 @@ argument_list|,
 name|mem
 argument_list|)
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|caches
+init|)
+block|{
 name|caches
 operator|.
 name|add
@@ -1453,6 +1458,7 @@ argument_list|(
 name|cache
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|cache
 return|;
