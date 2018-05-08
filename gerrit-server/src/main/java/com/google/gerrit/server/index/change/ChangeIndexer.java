@@ -1429,6 +1429,14 @@ name|fireChangeIndexedEvent
 argument_list|(
 name|cd
 operator|.
+name|project
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|cd
+operator|.
 name|getId
 argument_list|()
 operator|.
@@ -1460,11 +1468,14 @@ name|cd
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fireChangeIndexedEvent (int id)
+DECL|method|fireChangeIndexedEvent (String projectName, int id)
 specifier|private
 name|void
 name|fireChangeIndexedEvent
 parameter_list|(
+name|String
+name|projectName
+parameter_list|,
 name|int
 name|id
 parameter_list|)
@@ -1483,6 +1494,8 @@ name|listener
 operator|.
 name|onChangeIndexed
 argument_list|(
+name|projectName
+argument_list|,
 name|id
 argument_list|)
 expr_stmt|;

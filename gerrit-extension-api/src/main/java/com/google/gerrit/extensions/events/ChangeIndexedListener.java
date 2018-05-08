@@ -94,11 +94,14 @@ specifier|public
 interface|interface
 name|ChangeIndexedListener
 block|{
-comment|/** Invoked when a change is indexed. */
-DECL|method|onChangeIndexed (int id)
+comment|/**    * Invoked when a change is indexed.    *    * @param projectName project containing the change    * @param id indexed change id    */
+DECL|method|onChangeIndexed (String projectName, int id)
 name|void
 name|onChangeIndexed
 parameter_list|(
+name|String
+name|projectName
+parameter_list|,
 name|int
 name|id
 parameter_list|)
