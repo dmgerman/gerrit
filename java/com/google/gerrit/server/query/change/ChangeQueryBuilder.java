@@ -4799,12 +4799,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|a
-lambda|->
-name|a
-operator|.
+name|Account
+operator|::
 name|getId
-argument_list|()
 argument_list|)
 operator|.
 name|collect

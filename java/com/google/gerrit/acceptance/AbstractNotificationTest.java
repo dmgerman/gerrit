@@ -1092,14 +1092,9 @@ name|recipientMapToString
 argument_list|(
 name|recipients
 argument_list|,
-name|e
-lambda|->
 name|users
-operator|.
+operator|::
 name|emailToName
-argument_list|(
-name|e
-argument_list|)
 argument_list|)
 argument_list|)
 return|;

@@ -384,15 +384,9 @@ name|executor
 operator|.
 name|scheduleAtFixedRate
 argument_list|(
-parameter_list|()
-lambda|->
-block|{
 name|generation
-operator|.
+operator|::
 name|incrementAndGet
-argument_list|()
-expr_stmt|;
-block|}
 argument_list|,
 name|checkFrequencyMillis
 argument_list|,

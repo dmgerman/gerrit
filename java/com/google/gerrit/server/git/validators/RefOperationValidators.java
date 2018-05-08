@@ -650,14 +650,9 @@ name|refOperationValidationListeners
 operator|.
 name|forEach
 argument_list|(
-name|l
-lambda|->
 name|listeners
-operator|.
+operator|::
 name|add
-argument_list|(
-name|l
-argument_list|)
 argument_list|)
 expr_stmt|;
 try|try

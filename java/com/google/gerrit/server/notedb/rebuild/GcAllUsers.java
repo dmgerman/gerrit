@@ -417,14 +417,9 @@ block|{
 comment|// Print log messages using logger, and skip progress.
 name|run
 argument_list|(
-name|s
-lambda|->
 name|log
-operator|.
+operator|::
 name|info
-argument_list|(
-name|s
-argument_list|)
 argument_list|,
 literal|null
 argument_list|)

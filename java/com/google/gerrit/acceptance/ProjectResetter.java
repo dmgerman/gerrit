@@ -2151,12 +2151,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|r
-lambda|->
-name|r
-operator|.
+name|Ref
+operator|::
 name|getName
-argument_list|()
 argument_list|)
 operator|.
 name|collect
@@ -2171,7 +2168,8 @@ name|evictAndReindexAccount
 argument_list|(
 name|id
 argument_list|)
-block|;           }
+expr_stmt|;
+block|}
 block|}
 comment|// Remove deleted accounts from the cache and index.
 for|for
@@ -2467,16 +2465,11 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|r
-lambda|->
 name|Account
 operator|.
 name|Id
-operator|.
+operator|::
 name|fromRef
-argument_list|(
-name|r
-argument_list|)
 argument_list|)
 operator|.
 name|filter
@@ -2525,16 +2518,11 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|r
-lambda|->
 name|AccountGroup
 operator|.
 name|UUID
-operator|.
+operator|::
 name|fromRef
-argument_list|(
-name|r
-argument_list|)
 argument_list|)
 operator|.
 name|filter

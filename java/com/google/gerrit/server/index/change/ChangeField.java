@@ -5262,12 +5262,9 @@ argument_list|)
 operator|.
 name|buildRepeatable
 argument_list|(
-name|cd
-lambda|->
+name|ChangeField
+operator|::
 name|formatSubmitRecordValues
-argument_list|(
-name|cd
-argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|STORED_SUBMIT_RECORD_STRICT

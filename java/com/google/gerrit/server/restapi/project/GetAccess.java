@@ -2125,12 +2125,11 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|e
-lambda|->
-name|e
+name|Map
 operator|.
+name|Entry
+operator|::
 name|getValue
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

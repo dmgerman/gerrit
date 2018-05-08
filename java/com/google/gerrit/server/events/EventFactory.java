@@ -4055,12 +4055,9 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|a
-lambda|->
+name|this
+operator|::
 name|asAccountAttribute
-argument_list|(
-name|a
-argument_list|)
 argument_list|)
 operator|.
 name|orElse

@@ -1667,12 +1667,9 @@ argument_list|)
 operator|.
 name|filter
 argument_list|(
-name|e
-lambda|->
+name|AbstractElasticIndex
+operator|::
 name|shouldAddElement
-argument_list|(
-name|e
-argument_list|)
 argument_list|)
 operator|.
 name|collect

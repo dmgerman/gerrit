@@ -2420,12 +2420,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|ps
-lambda|->
-name|ps
-operator|.
+name|PatchSet
+operator|::
 name|getId
-argument_list|()
 argument_list|)
 operator|.
 name|collect

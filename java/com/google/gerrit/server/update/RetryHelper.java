@@ -1564,12 +1564,9 @@ name|retryer
 operator|.
 name|call
 argument_list|(
-parameter_list|()
-lambda|->
 name|action
-operator|.
+operator|::
 name|call
-argument_list|()
 argument_list|)
 return|;
 block|}

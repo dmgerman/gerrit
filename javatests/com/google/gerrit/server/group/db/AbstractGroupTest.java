@@ -1018,12 +1018,9 @@ name|AbstractGroupTest
 operator|::
 name|getAccount
 argument_list|,
-name|uuid
-lambda|->
+name|this
+operator|::
 name|getGroup
-argument_list|(
-name|uuid
-argument_list|)
 argument_list|,
 name|SERVER_ID
 argument_list|)

@@ -23302,12 +23302,9 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|c
-lambda|->
-name|c
-operator|.
+name|Change
+operator|::
 name|getId
-argument_list|()
 argument_list|)
 operator|.
 name|collect

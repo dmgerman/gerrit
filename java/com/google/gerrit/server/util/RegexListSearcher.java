@@ -224,9 +224,10 @@ argument_list|<>
 argument_list|(
 name|re
 argument_list|,
-name|in
-lambda|->
-name|in
+name|Function
+operator|.
+name|identity
+argument_list|()
 argument_list|)
 return|;
 block|}

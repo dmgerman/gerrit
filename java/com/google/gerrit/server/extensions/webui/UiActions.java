@@ -847,12 +847,9 @@ argument_list|()
 operator|.
 name|filter
 argument_list|(
-name|u
-lambda|->
-name|u
-operator|.
+name|Description
+operator|::
 name|isVisible
-argument_list|()
 argument_list|)
 operator|.
 name|collect

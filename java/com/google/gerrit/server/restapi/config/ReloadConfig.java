@@ -555,12 +555,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|e
-lambda|->
+name|ReloadConfig
+operator|::
 name|toConfigUpdateEntryInfo
-argument_list|(
-name|e
-argument_list|)
 argument_list|)
 operator|.
 name|collect

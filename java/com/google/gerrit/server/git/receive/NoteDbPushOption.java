@@ -128,6 +128,18 @@ name|Optional
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Function
+import|;
+end_import
+
 begin_comment
 comment|/** Possible values for {@code -o notedb=X} push option. */
 end_comment
@@ -181,9 +193,10 @@ name|NoteDbPushOption
 operator|::
 name|value
 argument_list|,
-name|o
-lambda|->
-name|o
+name|Function
+operator|.
+name|identity
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;

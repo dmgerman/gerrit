@@ -1462,12 +1462,9 @@ argument_list|()
 operator|.
 name|onResultOf
 argument_list|(
-name|c
-lambda|->
-name|c
-operator|.
+name|CodeReviewCommit
+operator|::
 name|getPatchsetId
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

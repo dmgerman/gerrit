@@ -1386,14 +1386,9 @@ argument_list|)
 operator|.
 name|flatMap
 argument_list|(
-name|args
-lambda|->
 name|Streams
-operator|.
+operator|::
 name|stream
-argument_list|(
-name|args
-argument_list|)
 argument_list|)
 operator|.
 name|toArray

@@ -827,11 +827,9 @@ name|optionalExtId
 operator|.
 name|orElseThrow
 argument_list|(
-parameter_list|()
-lambda|->
-operator|new
 name|ResourceNotFoundException
-argument_list|()
+operator|::
+operator|new
 argument_list|)
 decl_stmt|;
 name|accountsUpdateProvider

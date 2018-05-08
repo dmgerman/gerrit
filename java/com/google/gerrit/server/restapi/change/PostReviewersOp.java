@@ -1492,12 +1492,9 @@ name|transform
 argument_list|(
 name|addedReviewers
 argument_list|,
-name|r
-lambda|->
-name|r
-operator|.
+name|PatchSetApproval
+operator|::
 name|getAccountId
-argument_list|()
 argument_list|)
 argument_list|,
 name|addedCCs

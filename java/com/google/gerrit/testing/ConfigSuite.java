@@ -1597,12 +1597,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|cm
-lambda|->
-name|cm
-operator|.
+name|Method
+operator|::
 name|getName
-argument_list|()
 argument_list|)
 operator|.
 name|collect
@@ -1628,7 +1625,8 @@ name|m
 argument_list|,
 name|name
 argument_list|)
-block|;       }
+expr_stmt|;
+block|}
 return|return
 name|configMap
 return|;
