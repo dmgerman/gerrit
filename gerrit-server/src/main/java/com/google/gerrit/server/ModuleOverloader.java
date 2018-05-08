@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.cache
+DECL|package|com.google.gerrit.server
 package|package
 name|com
 operator|.
@@ -61,8 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|server
-operator|.
-name|cache
 package|;
 end_package
 
@@ -111,10 +109,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|CacheOverrides
+DECL|class|ModuleOverloader
 specifier|public
 class|class
-name|CacheOverrides
+name|ModuleOverloader
 block|{
 DECL|method|override (List<Module> modules, List<Module> overrideCandidates)
 specifier|public
@@ -186,7 +184,7 @@ argument_list|()
 operator|.
 name|getAnnotation
 argument_list|(
-name|CacheImpl
+name|ModuleImpl
 operator|.
 name|class
 argument_list|)
@@ -264,7 +262,7 @@ argument_list|(
 name|m
 lambda|->
 block|{
-name|CacheImpl
+name|ModuleImpl
 name|a
 init|=
 name|m
@@ -274,7 +272,7 @@ argument_list|()
 operator|.
 name|getAnnotation
 argument_list|(
-name|CacheImpl
+name|ModuleImpl
 operator|.
 name|class
 argument_list|)
@@ -307,18 +305,21 @@ argument_list|()
 operator|.
 name|getAnnotation
 argument_list|(
-name|CacheImpl
+name|ModuleImpl
 operator|.
 name|class
 argument_list|)
 operator|.
-name|type
+name|name
 argument_list|()
-operator|==
+operator|.
+name|equalsIgnoreCase
+argument_list|(
 name|a
 operator|.
-name|type
+name|name
 argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|findFirst
@@ -341,9 +342,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|CacheOverrides ()
+DECL|method|ModuleOverloader ()
 specifier|private
-name|CacheOverrides
+name|ModuleOverloader
 parameter_list|()
 block|{}
 block|}

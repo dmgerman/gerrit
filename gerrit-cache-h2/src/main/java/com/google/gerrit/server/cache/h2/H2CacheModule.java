@@ -92,9 +92,23 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ModuleImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|cache
 operator|.
-name|CacheImpl
+name|CacheModule
 import|;
 end_import
 
@@ -116,15 +130,13 @@ end_import
 
 begin_class
 annotation|@
-name|CacheImpl
+name|ModuleImpl
 argument_list|(
-name|type
+name|name
 operator|=
-name|CacheImpl
+name|CacheModule
 operator|.
-name|Type
-operator|.
-name|PERSISTENT
+name|PERSISTENT_MODULE
 argument_list|)
 DECL|class|H2CacheModule
 specifier|public
