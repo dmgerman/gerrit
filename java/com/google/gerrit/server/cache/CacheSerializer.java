@@ -66,18 +66,8 @@ name|cache
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
-comment|/** Interface for serializing/deserializing a type to/from a persistent cache. */
+comment|/**  * Interface for serializing/deserializing a type to/from a persistent cache.  *  *<p>Implementations are null-hostile and will throw exceptions from {@link #serialize} when passed  * null values, unless otherwise specified.  */
 end_comment
 
 begin_interface
@@ -89,7 +79,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-comment|/** Serializes the object to a new byte array. */
+comment|/**    * Serializes the object to a new byte array.    *    * @param object object to serialize.    * @return serialized byte array representation.    * @throws RuntimeException for malformed input, for example null or an otherwise unsupported    *     value.    */
 DECL|method|serialize (T object)
 name|byte
 index|[]
@@ -98,10 +88,8 @@ parameter_list|(
 name|T
 name|object
 parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
-comment|/** Deserializes a single object from the given byte array. */
+comment|/**    * Deserializes a single object from the given byte array.    *    * @param in serialized byte array representation.    * @throws RuntimeException for malformed input, for example null or an otherwise corrupt    *     serialized representation.    */
 DECL|method|deserialize (byte[] in)
 name|T
 name|deserialize
@@ -110,8 +98,6 @@ name|byte
 index|[]
 name|in
 parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
 block|}
 end_interface

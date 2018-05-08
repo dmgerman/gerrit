@@ -68,6 +68,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -117,7 +131,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Serializer that uses default Java serialization.  *  * @param<T> type to serialize. Must implement {@code Serializable}, but due to implementation  *     details this is only checked at runtime.  */
+comment|/**  * Serializer that uses default Java serialization.  *  *<p>Unlike most {@link CacheSerializer} implementations, serializing null is supported.  *  * @param<T> type to serialize. Must implement {@code Serializable}, but due to implementation  *     details this is only checked at runtime.  */
 end_comment
 
 begin_class
@@ -136,17 +150,17 @@ argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|serialize (T object)
+DECL|method|serialize (@ullable T object)
 specifier|public
 name|byte
 index|[]
 name|serialize
 parameter_list|(
+annotation|@
+name|Nullable
 name|T
 name|object
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 try|try
 init|(
@@ -186,6 +200,22 @@ name|toByteArray
 argument_list|()
 return|;
 block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Failed to serialize object"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|SuppressWarnings
@@ -203,8 +233,6 @@ name|byte
 index|[]
 name|in
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Object
 name|object
@@ -241,14 +269,16 @@ block|}
 catch|catch
 parameter_list|(
 name|ClassNotFoundException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|IllegalArgumentException
 argument_list|(
-literal|"Failed to deserialize object of type"
+literal|"Failed to deserialize object"
 argument_list|,
 name|e
 argument_list|)

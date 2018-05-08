@@ -325,8 +325,6 @@ name|PrimitiveSink
 name|into
 parameter_list|)
 block|{
-try|try
-block|{
 name|Funnels
 operator|.
 name|byteArrayFunnel
@@ -344,23 +342,6 @@ argument_list|,
 name|into
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Cannot hash"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 block|}
 return|;
