@@ -156,6 +156,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|ChangeMessageInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|CommentInfo
 import|;
 end_import
@@ -977,6 +993,28 @@ name|pureRevert
 parameter_list|(
 name|String
 name|claimedOriginal
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Get all messages of a change with detailed account info.    *    * @return a list of messages sorted by their creation time.    * @throws RestApiException    */
+DECL|method|messages ()
+name|List
+argument_list|<
+name|ChangeMessageInfo
+argument_list|>
+name|messages
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Look up a change message of a change by its id.    *    * @param id the id of the change message. Note that in NoteDb, this id is the {@code ObjectId} of    *     a commit on the change meta branch. In ReviewDb, it's a UUID generated randomly. That means    *     a change message id could be different between NoteDb and ReviewDb.    * @return API for accessing a change message.    * @throws RestApiException if the id is invalid.    */
+DECL|method|message (String id)
+name|ChangeMessageApi
+name|message
+parameter_list|(
+name|String
+name|id
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -2081,6 +2119,44 @@ name|pureRevert
 parameter_list|(
 name|String
 name|claimedOriginal
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|messages ()
+specifier|public
+name|List
+argument_list|<
+name|ChangeMessageInfo
+argument_list|>
+name|messages
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|message (String id)
+specifier|public
+name|ChangeMessageApi
+name|message
+parameter_list|(
+name|String
+name|id
 parameter_list|)
 throws|throws
 name|RestApiException
