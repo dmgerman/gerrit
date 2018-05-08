@@ -176,6 +176,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -956,26 +970,6 @@ name|Directory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Basic Lucene index implementation. */
 end_comment
@@ -999,21 +993,17 @@ argument_list|,
 name|V
 argument_list|>
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|AbstractLuceneIndex
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|method|sortFieldName (FieldDef<?, ?> f)
 specifier|static
@@ -1334,17 +1324,21 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error committing "
-operator|+
-name|index
-operator|+
-literal|" Lucene index"
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error committing %s Lucene index"
+argument_list|,
+name|index
 argument_list|)
 expr_stmt|;
 block|}
@@ -1354,17 +1348,21 @@ name|OutOfMemoryError
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error committing "
-operator|+
-name|index
-operator|+
-literal|" Lucene index"
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error committing %s Lucene index"
+argument_list|,
+name|index
 argument_list|)
 expr_stmt|;
 try|try
@@ -1381,19 +1379,23 @@ name|IOException
 name|e2
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"SEVERE: Error closing "
-operator|+
-name|index
-operator|+
-literal|" Lucene index after OOM;"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"SEVERE: Error closing %s Lucene index after OOM;"
 operator|+
 literal|" index may be corrupted."
 argument_list|,
-name|e
+name|index
 argument_list|)
 expr_stmt|;
 block|}
@@ -1662,15 +1664,16 @@ name|SECONDS
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"shutting down "
-operator|+
+literal|"shutting down %s index with pending Lucene writes"
+argument_list|,
 name|name
-operator|+
-literal|" index with pending Lucene writes"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1681,17 +1684,21 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"interrupted waiting for pending Lucene writes of "
-operator|+
-name|name
-operator|+
-literal|" index"
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"interrupted waiting for pending Lucene writes of %s index"
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 block|}
@@ -1721,13 +1728,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"error finishing pending Lucene writes"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -1756,13 +1769,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"error closing Lucene writer"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -1780,13 +1799,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"error closing Lucene directory"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3061,13 +3086,19 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Interrupted waiting for searcher generation"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -3466,13 +3497,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"cannot release Lucene searcher"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
