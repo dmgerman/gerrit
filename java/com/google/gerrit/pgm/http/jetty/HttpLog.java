@@ -628,7 +628,7 @@ name|getAttribute
 argument_list|(
 name|GetUserFilter
 operator|.
-name|REQ_ATTR_KEY
+name|USER_ATTR_KEY
 argument_list|)
 decl_stmt|;
 if|if
