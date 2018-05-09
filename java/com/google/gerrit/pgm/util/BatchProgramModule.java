@@ -1048,6 +1048,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|rules
+operator|.
+name|SubmitRule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|update
 operator|.
 name|BatchUpdate
@@ -1911,8 +1927,23 @@ expr_stmt|;
 end_expr_stmt
 
 begin_comment
-comment|// Submit rule evaluator
+comment|// Submit rules
 end_comment
+
+begin_expr_stmt
+name|DynamicSet
+operator|.
+name|setOf
+argument_list|(
+name|binder
+argument_list|()
+argument_list|,
+name|SubmitRule
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+end_expr_stmt
 
 begin_expr_stmt
 name|factory
