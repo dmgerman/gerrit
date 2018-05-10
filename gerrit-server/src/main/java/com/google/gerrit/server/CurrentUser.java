@@ -534,6 +534,20 @@ name|lastLoginExternalIdPropertyKey
 argument_list|)
 return|;
 block|}
+comment|/**    * Checks if the current user has the same account id of another.    *    *<p>Provide a generic interface for allowing subclasses to define whether two accounts represent    * the same account id.    *    * @param other user to compare    * @return true if the two users have the same account id    */
+DECL|method|hasSameAccountId (CurrentUser other)
+specifier|public
+name|boolean
+name|hasSameAccountId
+parameter_list|(
+name|CurrentUser
+name|other
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 

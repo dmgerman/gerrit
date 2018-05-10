@@ -2424,6 +2424,33 @@ name|realUser
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|hasSameAccountId (CurrentUser other)
+specifier|public
+name|boolean
+name|hasSameAccountId
+parameter_list|(
+name|CurrentUser
+name|other
+parameter_list|)
+block|{
+return|return
+name|getAccountId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|==
+name|other
+operator|.
+name|getAccountId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 DECL|method|guessHost ()
 specifier|private
 name|String
