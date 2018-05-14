@@ -224,7 +224,7 @@ name|int
 name|version
 parameter_list|)
 function_decl|;
-comment|/** Set the total on-disk limit of the cache */
+comment|/**    * Set the total on-disk limit of the cache.    *    *<p>If 0 or negative, persistence for the cache is disabled by default, but may still be    * overridden in the config.    */
 DECL|method|diskLimit (long limit)
 name|PersistentCacheBinding
 argument_list|<
