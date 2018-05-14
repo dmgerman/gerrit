@@ -132,9 +132,7 @@ name|lucene
 operator|.
 name|analysis
 operator|.
-name|standard
-operator|.
-name|StandardAnalyzer
+name|CharArraySet
 import|;
 end_import
 
@@ -148,9 +146,9 @@ name|lucene
 operator|.
 name|analysis
 operator|.
-name|util
+name|standard
 operator|.
-name|CharArraySet
+name|StandardAnalyzer
 import|;
 end_import
 

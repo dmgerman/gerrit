@@ -742,7 +742,7 @@ name|lucene
 operator|.
 name|document
 operator|.
-name|IntField
+name|LegacyIntField
 import|;
 end_import
 
@@ -756,7 +756,7 @@ name|lucene
 operator|.
 name|document
 operator|.
-name|LongField
+name|LegacyLongField
 import|;
 end_import
 
@@ -841,20 +841,6 @@ operator|.
 name|index
 operator|.
 name|Term
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|lucene
-operator|.
-name|index
-operator|.
-name|TrackingIndexWriter
 import|;
 end_import
 
@@ -1019,6 +1005,11 @@ comment|/** Basic Lucene index implementation. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|class|AbstractLuceneIndex
 specifier|public
 specifier|abstract
@@ -1108,7 +1099,7 @@ decl_stmt|;
 DECL|field|writer
 specifier|private
 specifier|final
-name|TrackingIndexWriter
+name|IndexWriter
 name|writer
 decl_stmt|;
 DECL|field|searcherManager
@@ -1217,9 +1208,6 @@ argument_list|,
 name|subIndex
 argument_list|)
 decl_stmt|;
-name|IndexWriter
-name|delegateWriter
-decl_stmt|;
 name|long
 name|commitPeriod
 init|=
@@ -1235,7 +1223,7 @@ operator|<
 literal|0
 condition|)
 block|{
-name|delegateWriter
+name|writer
 operator|=
 operator|new
 name|AutoCommitWriter
@@ -1257,7 +1245,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|delegateWriter
+name|writer
 operator|=
 operator|new
 name|AutoCommitWriter
@@ -1290,7 +1278,7 @@ name|getLuceneConfig
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|delegateWriter
+name|writer
 operator|=
 name|autoCommitWriter
 expr_stmt|;
@@ -1458,23 +1446,12 @@ name|MILLISECONDS
 argument_list|)
 decl_stmt|;
 block|}
-name|writer
-operator|=
-operator|new
-name|TrackingIndexWriter
-argument_list|(
-name|delegateWriter
-argument_list|)
-expr_stmt|;
 name|searcherManager
 operator|=
 operator|new
 name|WrappableSearcherManager
 argument_list|(
 name|writer
-operator|.
-name|getIndexWriter
-argument_list|()
 argument_list|,
 literal|true
 argument_list|,
@@ -1800,9 +1777,6 @@ try|try
 block|{
 name|writer
 operator|.
-name|getIndexWriter
-argument_list|()
-operator|.
 name|close
 argument_list|()
 expr_stmt|;
@@ -2034,7 +2008,7 @@ expr_stmt|;
 block|}
 DECL|method|getWriter ()
 specifier|public
-name|TrackingIndexWriter
+name|IndexWriter
 name|getWriter
 parameter_list|()
 block|{
@@ -2219,7 +2193,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|IntField
+name|LegacyIntField
 argument_list|(
 name|name
 argument_list|,
@@ -2260,7 +2234,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|LongField
+name|LegacyLongField
 argument_list|(
 name|name
 argument_list|,
@@ -2301,7 +2275,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|LongField
+name|LegacyLongField
 argument_list|(
 name|name
 argument_list|,

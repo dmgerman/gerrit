@@ -253,6 +253,8 @@ operator|.
 name|PREFERRED_EMAIL_EXACT
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Deprecated
 DECL|field|V8
 specifier|static
 specifier|final
@@ -269,6 +271,21 @@ argument_list|,
 name|AccountField
 operator|.
 name|NAME_PART_NO_SECONDARY_EMAIL
+argument_list|)
+decl_stmt|;
+comment|// Bump Lucene version requires reindexing
+DECL|field|V9
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|AccountState
+argument_list|>
+name|V9
+init|=
+name|schema
+argument_list|(
+name|V8
 argument_list|)
 decl_stmt|;
 DECL|field|NAME

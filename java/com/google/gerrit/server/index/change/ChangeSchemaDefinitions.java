@@ -518,6 +518,8 @@ name|V47
 argument_list|)
 decl_stmt|;
 DECL|field|V49
+annotation|@
+name|Deprecated
 specifier|static
 specifier|final
 name|Schema
@@ -529,6 +531,21 @@ init|=
 name|schema
 argument_list|(
 name|V48
+argument_list|)
+decl_stmt|;
+comment|// Bump Lucene version requires reindexing
+DECL|field|V50
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|V50
+init|=
+name|schema
+argument_list|(
+name|V49
 argument_list|)
 decl_stmt|;
 DECL|field|NAME

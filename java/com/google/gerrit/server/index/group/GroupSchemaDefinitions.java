@@ -226,6 +226,8 @@ name|SUBGROUP
 argument_list|)
 decl_stmt|;
 DECL|field|V5
+annotation|@
+name|Deprecated
 specifier|static
 specifier|final
 name|Schema
@@ -241,6 +243,21 @@ argument_list|,
 name|GroupField
 operator|.
 name|REF_STATE
+argument_list|)
+decl_stmt|;
+comment|// Bump Lucene version requires reindexing
+DECL|field|V6
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|InternalGroup
+argument_list|>
+name|V6
+init|=
+name|schema
+argument_list|(
+name|V5
 argument_list|)
 decl_stmt|;
 DECL|field|INSTANCE
