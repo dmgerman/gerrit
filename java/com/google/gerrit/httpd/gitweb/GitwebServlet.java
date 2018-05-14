@@ -2703,7 +2703,7 @@ name|permissionBackend
 operator|.
 name|user
 argument_list|(
-name|anonymousUserProvider
+name|userProvider
 operator|.
 name|get
 argument_list|()
