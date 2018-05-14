@@ -4560,7 +4560,7 @@ operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
-name|log
+name|sshDaemonLog
 operator|.
 name|info
 argument_list|(
