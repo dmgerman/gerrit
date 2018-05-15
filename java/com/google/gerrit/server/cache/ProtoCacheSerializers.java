@@ -110,7 +110,7 @@ specifier|public
 class|class
 name|ProtoCacheSerializers
 block|{
-comment|/**    * Serializes a proto to a byte array.    *    *<p>Guarantees deterministic serialization and thus is suitable for use as a persistent cache    * key. Should be used in preference to {@link MessageLite#toByteArray()}, which is not guaranteed    * deterministic.    *    * @param message the proto message to serialize.    * @return a byte array with the message contents.    */
+comment|/**    * Serializes a proto to a byte array.    *    *<p>Guarantees deterministic serialization and thus is suitable for use in persistent caches.    * Should be used in preference to {@link MessageLite#toByteArray()}, which is not guaranteed    * deterministic.    *    * @param message the proto message to serialize.    * @return a byte array with the message contents.    */
 DECL|method|toByteArray (MessageLite message)
 specifier|public
 specifier|static
@@ -179,6 +179,8 @@ operator|new
 name|IllegalStateException
 argument_list|(
 literal|"exception writing to byte array"
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
