@@ -112,6 +112,22 @@ name|LifecycleModule
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|GerritRuntime
+import|;
+end_import
+
 begin_class
 DECL|class|PluginModule
 specifier|public
@@ -128,6 +144,13 @@ name|void
 name|configure
 parameter_list|()
 block|{
+name|requireBinding
+argument_list|(
+name|GerritRuntime
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|bind
 argument_list|(
 name|ServerInformationImpl

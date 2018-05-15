@@ -868,6 +868,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|GerritRuntime
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -2901,6 +2917,20 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|getGerritRuntime ()
+specifier|protected
+name|GerritRuntime
+name|getGerritRuntime
+parameter_list|()
+block|{
+return|return
+name|GerritRuntime
+operator|.
+name|DAEMON
+return|;
 block|}
 DECL|method|sshdOff ()
 specifier|private
