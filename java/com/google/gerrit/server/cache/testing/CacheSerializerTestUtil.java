@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.cache
+DECL|package|com.google.gerrit.server.cache.testing
 package|package
 name|com
 operator|.
@@ -63,44 +63,103 @@ operator|.
 name|server
 operator|.
 name|cache
+operator|.
+name|testing
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|protobuf
+operator|.
+name|ByteString
+import|;
+end_import
+
 begin_comment
-comment|/**  * Interface for serializing/deserializing a type to/from a persistent cache.  *  *<p>Implementations are null-hostile and will throw exceptions from {@link #serialize} when passed  * null values, unless otherwise specified.  */
+comment|/** Static utilities for testing cache serializers. */
 end_comment
 
-begin_interface
-DECL|interface|CacheSerializer
+begin_class
+DECL|class|CacheSerializerTestUtil
 specifier|public
-interface|interface
-name|CacheSerializer
-parameter_list|<
-name|T
-parameter_list|>
+class|class
+name|CacheSerializerTestUtil
 block|{
-comment|/**    * Serializes the object to a new byte array.    *    * @param object object to serialize.    * @return serialized byte array representation.    * @throws RuntimeException for malformed input, for example null or an otherwise unsupported    *     value.    */
-DECL|method|serialize (T object)
+DECL|method|bytes (int... ints)
+specifier|public
+specifier|static
+name|ByteString
+name|bytes
+parameter_list|(
+name|int
+modifier|...
+name|ints
+parameter_list|)
+block|{
 name|byte
 index|[]
-name|serialize
-parameter_list|(
-name|T
-name|object
-parameter_list|)
-function_decl|;
-comment|/**    * Deserializes a single object from the given byte array.    *    * @param in serialized byte array representation.    * @throws RuntimeException for malformed input, for example null or an otherwise corrupt    *     serialized representation.    */
-DECL|method|deserialize (byte[] in)
-name|T
-name|deserialize
-parameter_list|(
+name|bytes
+init|=
+operator|new
 name|byte
-index|[]
-name|in
-parameter_list|)
-function_decl|;
+index|[
+name|ints
+operator|.
+name|length
+index|]
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|ints
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|bytes
+index|[
+name|i
+index|]
+operator|=
+operator|(
+name|byte
+operator|)
+name|ints
+index|[
+name|i
+index|]
+expr_stmt|;
 block|}
-end_interface
+return|return
+name|ByteString
+operator|.
+name|copyFrom
+argument_list|(
+name|bytes
+argument_list|)
+return|;
+block|}
+DECL|method|CacheSerializerTestUtil ()
+specifier|private
+name|CacheSerializerTestUtil
+parameter_list|()
+block|{}
+block|}
+end_class
 
 end_unit
 

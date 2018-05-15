@@ -1367,6 +1367,9 @@ name|assertThat
 argument_list|(
 name|state
 operator|.
+name|columns
+argument_list|()
+operator|.
 name|hasReviewStarted
 argument_list|()
 argument_list|)
@@ -1402,6 +1405,9 @@ name|assertThat
 argument_list|(
 name|state
 operator|.
+name|columns
+argument_list|()
+operator|.
 name|hasReviewStarted
 argument_list|()
 argument_list|)
@@ -1424,6 +1430,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|state
+operator|.
+name|columns
+argument_list|()
 operator|.
 name|hasReviewStarted
 argument_list|()

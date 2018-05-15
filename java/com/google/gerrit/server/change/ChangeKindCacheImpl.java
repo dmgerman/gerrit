@@ -480,6 +480,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|protobuf
+operator|.
+name|InvalidProtocolBufferException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -1316,8 +1328,6 @@ parameter_list|(
 name|Key
 name|object
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|byte
 index|[]
@@ -1422,8 +1432,8 @@ name|byte
 index|[]
 name|in
 parameter_list|)
-throws|throws
-name|IOException
+block|{
+try|try
 block|{
 name|ChangeKindKeyProto
 name|proto
@@ -1471,6 +1481,23 @@ name|getStrategyName
 argument_list|()
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|InvalidProtocolBufferException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Failed to deserialize object"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 block|}
