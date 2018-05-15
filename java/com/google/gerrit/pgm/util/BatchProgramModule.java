@@ -882,6 +882,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|plugins
+operator|.
+name|PluginModule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|CommentLinkProvider
@@ -1263,7 +1279,21 @@ name|module
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Plugins are not loaded and we're just running through each change
+comment|// There is the concept of LifecycleModule, in Gerrit's own extension to Guice, which has these:
+comment|//  listener().to(SomeClassImplementingLifecycleListener.class);
+comment|// and the start() methods of each such listener are executed in the order they are declared.
+comment|// Makes sure that PluginLoader.start() is executed before the LuceneIndexModule.start() so that
+comment|// plugins get loaded and the respective Guice modules installed so that the on-line reindexing
+comment|// will happen with the proper classes (e.g. group backends, custom Prolog predicates) and the
+comment|// associated rules ready to be evaluated.
+name|install
+argument_list|(
+operator|new
+name|PluginModule
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// We're just running through each change
 comment|// once, so don't worry about cache removal.
 name|bind
 argument_list|(
