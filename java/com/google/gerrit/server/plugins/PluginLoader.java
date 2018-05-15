@@ -356,6 +356,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|GerritRuntime
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -908,9 +924,15 @@ specifier|final
 name|UniversalServerPluginProvider
 name|serverPluginFactory
 decl_stmt|;
+DECL|field|gerritRuntime
+specifier|private
+specifier|final
+name|GerritRuntime
+name|gerritRuntime
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginLoader ( SitePaths sitePaths, PluginGuiceEnvironment pe, ServerInformationImpl sii, PluginUser.Factory puf, Provider<PluginCleanerTask> pct, @GerritServerConfig Config cfg, @CanonicalWebUrl Provider<String> provider, PersistentCacheFactory cacheFactory, UniversalServerPluginProvider pluginFactory)
+DECL|method|PluginLoader ( SitePaths sitePaths, PluginGuiceEnvironment pe, ServerInformationImpl sii, PluginUser.Factory puf, Provider<PluginCleanerTask> pct, @GerritServerConfig Config cfg, @CanonicalWebUrl Provider<String> provider, PersistentCacheFactory cacheFactory, UniversalServerPluginProvider pluginFactory, GerritRuntime gerritRuntime)
 specifier|public
 name|PluginLoader
 parameter_list|(
@@ -952,6 +974,9 @@ name|cacheFactory
 parameter_list|,
 name|UniversalServerPluginProvider
 name|pluginFactory
+parameter_list|,
+name|GerritRuntime
+name|gerritRuntime
 parameter_list|)
 block|{
 name|pluginsDir
@@ -1014,6 +1039,12 @@ literal|"allowRemoteAdmin"
 argument_list|,
 literal|false
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|gerritRuntime
+operator|=
+name|gerritRuntime
 expr_stmt|;
 name|long
 name|checkFrequency
@@ -3994,6 +4025,8 @@ name|getPluginDataDir
 argument_list|(
 name|name
 argument_list|)
+argument_list|,
+name|gerritRuntime
 argument_list|)
 argument_list|)
 return|;
