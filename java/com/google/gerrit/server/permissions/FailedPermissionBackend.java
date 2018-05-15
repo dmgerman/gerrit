@@ -96,6 +96,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|Project
 import|;
 end_import
@@ -742,6 +758,23 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|absentUser (Account.Id id)
+specifier|public
+name|ForProject
+name|absentUser
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+return|return
+name|this
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|resourcePath ()
 specifier|public
 name|String
@@ -963,6 +996,23 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|absentUser (Account.Id id)
+specifier|public
+name|ForRef
+name|absentUser
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+return|return
+name|this
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|resourcePath ()
 specifier|public
 name|String
@@ -1166,6 +1216,23 @@ name|user
 parameter_list|(
 name|CurrentUser
 name|user
+parameter_list|)
+block|{
+return|return
+name|this
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|absentUser (Account.Id id)
+specifier|public
+name|ForChange
+name|absentUser
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
 parameter_list|)
 block|{
 return|return

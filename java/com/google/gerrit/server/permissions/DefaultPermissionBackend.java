@@ -625,7 +625,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|absentUser (Account.Id user)
+DECL|method|absentUser (Account.Id id)
 specifier|public
 name|WithUser
 name|absentUser
@@ -633,7 +633,7 @@ parameter_list|(
 name|Account
 operator|.
 name|Id
-name|user
+name|id
 parameter_list|)
 block|{
 name|IdentifiedUser
@@ -645,7 +645,7 @@ name|create
 argument_list|(
 name|checkNotNull
 argument_list|(
-name|user
+name|id
 argument_list|,
 literal|"user"
 argument_list|)

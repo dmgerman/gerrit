@@ -546,7 +546,7 @@ name|user
 parameter_list|)
 function_decl|;
 comment|/**    * Returns an instance scoped to the provided user. Should be used in cases where the caller wants    * to check the permissions of a user who is not the issuer of the current request and not the    * target of impersonation.    *    *<p>Usage should be very limited as this can expose a group-oracle.    */
-DECL|method|absentUser (Account.Id user)
+DECL|method|absentUser (Account.Id id)
 specifier|public
 specifier|abstract
 name|WithUser
@@ -555,7 +555,7 @@ parameter_list|(
 name|Account
 operator|.
 name|Id
-name|user
+name|id
 parameter_list|)
 function_decl|;
 comment|/**    * Check whether this {@code PermissionBackend} respects the same global capabilities as the    * {@link DefaultPermissionBackend}.    *    *<p>If true, then it makes sense for downstream callers to refer to built-in Gerrit capability    * names in user-facing error messages, for example.    *    * @return whether this is the default permission backend.    */
@@ -1264,6 +1264,19 @@ name|CurrentUser
 name|user
 parameter_list|)
 function_decl|;
+comment|/** @see PermissionBackend#absentUser(Account.Id) */
+DECL|method|absentUser (Account.Id id)
+specifier|public
+specifier|abstract
+name|ForProject
+name|absentUser
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+function_decl|;
 comment|/** Returns an instance scoped for {@code ref} in this project. */
 DECL|method|ref (String ref)
 specifier|public
@@ -1701,6 +1714,19 @@ name|CurrentUser
 name|user
 parameter_list|)
 function_decl|;
+comment|/** @see PermissionBackend#absentUser(Account.Id) */
+DECL|method|absentUser (Account.Id id)
+specifier|public
+specifier|abstract
+name|ForRef
+name|absentUser
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+function_decl|;
 comment|/** Returns an instance scoped to change. */
 DECL|method|change (ChangeData cd)
 specifier|public
@@ -1902,6 +1928,19 @@ name|user
 parameter_list|(
 name|CurrentUser
 name|user
+parameter_list|)
+function_decl|;
+comment|/** @see PermissionBackend#absentUser(Account.Id) */
+DECL|method|absentUser (Account.Id id)
+specifier|public
+specifier|abstract
+name|ForChange
+name|absentUser
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
 parameter_list|)
 function_decl|;
 comment|/** Verify scoped user can {@code perm}, throwing if denied. */

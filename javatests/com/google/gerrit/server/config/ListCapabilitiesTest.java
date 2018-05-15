@@ -602,13 +602,13 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|absentUser (Id user)
+DECL|method|absentUser (Id id)
 specifier|public
 name|WithUser
 name|absentUser
 parameter_list|(
 name|Id
-name|user
+name|id
 parameter_list|)
 block|{
 throw|throw
