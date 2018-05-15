@@ -255,12 +255,42 @@ argument_list|>
 name|actual
 parameter_list|)
 block|{
+comment|// This formulation fails in Eclipse 4.7.3a with "The type
+comment|// SerializedClassSubject does not define SerializedClassSubject() that is
+comment|// applicable here", due to
+comment|// https://bugs.eclipse.org/bugs/show_bug.cgi?id=534694 or a similar bug:
+comment|// return assertAbout(SerializedClassSubject::new).that(actual);
+name|Subject
+operator|.
+name|Factory
+argument_list|<
+name|SerializedClassSubject
+argument_list|,
+name|Class
+argument_list|<
+name|?
+argument_list|>
+argument_list|>
+name|factory
+init|=
+parameter_list|(
+name|m
+parameter_list|,
+name|a
+parameter_list|)
+lambda|->
+operator|new
+name|SerializedClassSubject
+argument_list|(
+name|m
+argument_list|,
+name|a
+argument_list|)
+decl_stmt|;
 return|return
 name|assertAbout
 argument_list|(
-name|SerializedClassSubject
-operator|::
-operator|new
+name|factory
 argument_list|)
 operator|.
 name|that
