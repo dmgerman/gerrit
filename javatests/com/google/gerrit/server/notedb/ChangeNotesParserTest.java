@@ -1370,7 +1370,7 @@ operator|.
 name|columns
 argument_list|()
 operator|.
-name|hasReviewStarted
+name|reviewStarted
 argument_list|()
 argument_list|)
 operator|.
@@ -1408,7 +1408,7 @@ operator|.
 name|columns
 argument_list|()
 operator|.
-name|hasReviewStarted
+name|reviewStarted
 argument_list|()
 argument_list|)
 operator|.
@@ -1434,7 +1434,7 @@ operator|.
 name|columns
 argument_list|()
 operator|.
-name|hasReviewStarted
+name|reviewStarted
 argument_list|()
 argument_list|)
 operator|.

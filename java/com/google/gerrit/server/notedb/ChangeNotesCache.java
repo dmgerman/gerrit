@@ -905,7 +905,7 @@ comment|// workInProgress
 operator|+
 literal|1
 return|;
-comment|// hasReviewStarted
+comment|// reviewStarted
 block|}
 DECL|method|ptr (Object o, int size)
 specifier|private
