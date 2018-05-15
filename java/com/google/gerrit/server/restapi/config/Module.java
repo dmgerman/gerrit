@@ -169,10 +169,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|ConfigRestModule
+DECL|class|Module
 specifier|public
 class|class
-name|ConfigRestModule
+name|Module
 extends|extends
 name|RestApiModule
 block|{
