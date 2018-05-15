@@ -218,7 +218,6 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|GerritApiImpl
-specifier|public
 class|class
 name|GerritApiImpl
 implements|implements
