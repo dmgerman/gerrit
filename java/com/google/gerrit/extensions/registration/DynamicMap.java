@@ -406,12 +406,9 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|DynamicMap
-argument_list|<
-name|T
-argument_list|>
+name|PrivateInternals_DynamicMapImpl
+argument_list|<>
 argument_list|()
-block|{}
 return|;
 block|}
 DECL|field|items
