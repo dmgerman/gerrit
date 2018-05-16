@@ -442,28 +442,6 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|createSink (String file)
-specifier|public
-name|ValidationError
-operator|.
-name|Sink
-name|createSink
-parameter_list|(
-name|String
-name|file
-parameter_list|)
-block|{
-return|return
-name|ValidationError
-operator|.
-name|createLoggerSink
-argument_list|(
-name|file
-argument_list|,
-name|log
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|onSave (CommitBuilder commit)
