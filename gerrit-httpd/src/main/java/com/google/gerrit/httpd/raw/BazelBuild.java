@@ -104,6 +104,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Joiner
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|escape
 operator|.
 name|Escaper
@@ -465,12 +479,22 @@ throw|throw
 operator|new
 name|InterruptedIOException
 argument_list|(
-literal|"interrupted waiting for "
+literal|"interrupted waiting for: "
 operator|+
+name|Joiner
+operator|.
+name|on
+argument_list|(
+literal|' '
+argument_list|)
+operator|.
+name|join
+argument_list|(
 name|proc
 operator|.
-name|toString
+name|command
 argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
