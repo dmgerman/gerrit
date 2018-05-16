@@ -1061,14 +1061,6 @@ name|changeCount
 init|=
 literal|0
 decl_stmt|;
-name|Stopwatch
-name|sw
-init|=
-name|Stopwatch
-operator|.
-name|createStarted
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|Project
@@ -1138,24 +1130,13 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Error collecting projects"
+literal|"Error collecting changes for project {}"
+argument_list|,
+name|name
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-return|return
-operator|new
-name|Result
-argument_list|(
-name|sw
-argument_list|,
-literal|false
-argument_list|,
-literal|0
-argument_list|,
-literal|0
-argument_list|)
-return|;
 block|}
 name|pm
 operator|.
