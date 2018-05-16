@@ -2133,18 +2133,9 @@ name|append
 argument_list|(
 literal|" associated with multiple accounts: "
 argument_list|)
-expr_stmt|;
-name|Joiner
 operator|.
-name|on
+name|append
 argument_list|(
-literal|", "
-argument_list|)
-operator|.
-name|appendTo
-argument_list|(
-name|msg
-argument_list|,
 name|Lists
 operator|.
 name|transform
