@@ -1177,7 +1177,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|createWithPassword ( Key key, Account.Id accountId, @Nullable String email, String plainPassword)
+DECL|method|createWithPassword ( Key key, Account.Id accountId, @Nullable String email, @Nullable String plainPassword)
 specifier|public
 specifier|static
 name|ExternalId
@@ -1196,6 +1196,8 @@ name|Nullable
 name|String
 name|email
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|plainPassword
 parameter_list|)
@@ -1241,7 +1243,7 @@ name|hashedPassword
 argument_list|)
 return|;
 block|}
-DECL|method|createUsername (String id, Account.Id accountId, String plainPassword)
+DECL|method|createUsername ( String id, Account.Id accountId, @Nullable String plainPassword)
 specifier|public
 specifier|static
 name|ExternalId
@@ -1255,6 +1257,8 @@ operator|.
 name|Id
 name|accountId
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|plainPassword
 parameter_list|)
