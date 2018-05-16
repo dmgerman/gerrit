@@ -4004,7 +4004,7 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|debug
+name|error
 argument_list|(
 literal|"Unexpected error copying input to CGI"
 argument_list|,
@@ -4094,7 +4094,7 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|debug
+name|error
 argument_list|(
 literal|"Unexpected error copying stderr from CGI"
 argument_list|,
