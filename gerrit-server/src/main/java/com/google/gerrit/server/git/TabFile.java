@@ -156,16 +156,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
 begin_class
 DECL|class|TabFile
 specifier|public
@@ -912,36 +902,6 @@ name|r
 operator|.
 name|toString
 argument_list|()
-return|;
-block|}
-DECL|method|createLoggerSink (String file, Logger log)
-specifier|public
-specifier|static
-name|ValidationError
-operator|.
-name|Sink
-name|createLoggerSink
-parameter_list|(
-name|String
-name|file
-parameter_list|,
-name|Logger
-name|log
-parameter_list|)
-block|{
-return|return
-name|ValidationError
-operator|.
-name|createLoggerSink
-argument_list|(
-literal|"Error parsing file "
-operator|+
-name|file
-operator|+
-literal|": "
-argument_list|,
-name|log
-argument_list|)
 return|;
 block|}
 block|}
