@@ -2573,7 +2573,9 @@ operator|.
 name|matches
 argument_list|()
 argument_list|,
-literal|"metric name must match %s"
+literal|"invalid metric name '%s': must match pattern '%s'"
+argument_list|,
+name|name
 argument_list|,
 name|METRIC_NAME_PATTERN
 operator|.
