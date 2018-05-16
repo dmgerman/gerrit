@@ -249,19 +249,11 @@ name|log
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"No implementation for %s: %s"
+literal|"No implementation for {}"
 argument_list|,
 name|name
 argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
