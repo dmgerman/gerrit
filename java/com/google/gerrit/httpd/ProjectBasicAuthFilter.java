@@ -1120,6 +1120,8 @@ name|AuthenticationFailedException
 name|e
 parameter_list|)
 block|{
+comment|// This exception is thrown if the user provided wrong credentials, we don't need to log a
+comment|// stacktrace for it.
 name|log
 operator|.
 name|warn
