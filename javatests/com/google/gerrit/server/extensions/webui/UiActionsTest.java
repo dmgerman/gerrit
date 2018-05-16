@@ -498,6 +498,27 @@ throw|;
 block|}
 annotation|@
 name|Override
+DECL|method|absentUser (Account.Id id)
+specifier|public
+name|ForProject
+name|absentUser
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not implemented"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|ref (String ref)
 specifier|public
 name|ForRef
