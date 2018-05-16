@@ -76,16 +76,6 @@ name|Objects
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
 begin_comment
 comment|/** Indicates a problem with Git based data. */
 end_comment
@@ -205,35 +195,6 @@ name|ValidationError
 name|error
 parameter_list|)
 function_decl|;
-block|}
-DECL|method|createLoggerSink (String message, Logger log)
-specifier|public
-specifier|static
-name|Sink
-name|createLoggerSink
-parameter_list|(
-name|String
-name|message
-parameter_list|,
-name|Logger
-name|log
-parameter_list|)
-block|{
-return|return
-name|error
-lambda|->
-name|log
-operator|.
-name|error
-argument_list|(
-name|message
-operator|+
-name|error
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-return|;
 block|}
 annotation|@
 name|Override

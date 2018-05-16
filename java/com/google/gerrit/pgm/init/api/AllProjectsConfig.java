@@ -422,15 +422,22 @@ operator|.
 name|FILE_NAME
 argument_list|)
 argument_list|,
-name|GroupList
+name|error
+lambda|->
+name|log
 operator|.
-name|createLoggerSink
+name|error
 argument_list|(
+literal|"Error parsing file {}: {}"
+argument_list|,
 name|GroupList
 operator|.
 name|FILE_NAME
 argument_list|,
-name|log
+name|error
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 argument_list|)
 return|;
