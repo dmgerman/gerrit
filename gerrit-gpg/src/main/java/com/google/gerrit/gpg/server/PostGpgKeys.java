@@ -2196,16 +2196,6 @@ name|ACCOUNT_ID_FUNCTION
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|error
-argument_list|(
-name|msg
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
 throw|throw
 operator|new
 name|IllegalStateException
