@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -147,6 +163,11 @@ argument_list|>
 name|item
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|item
+argument_list|)
+expr_stmt|;
 specifier|final
 name|NamePair
 name|key
@@ -218,6 +239,11 @@ argument_list|>
 name|item
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|item
+argument_list|)
+expr_stmt|;
 name|String
 name|exportName
 init|=
