@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|dropwizard
+operator|.
+name|DropWizardMetricMaker
+operator|.
+name|sanitizeMetricName
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1653,6 +1671,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
+name|sanitizeMetricName
+argument_list|(
 name|String
 operator|.
 name|format
@@ -1662,6 +1682,7 @@ argument_list|,
 name|name
 argument_list|,
 name|metricName
+argument_list|)
 argument_list|)
 return|;
 block|}
