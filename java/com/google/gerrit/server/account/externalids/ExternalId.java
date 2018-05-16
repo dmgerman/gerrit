@@ -681,7 +681,7 @@ name|PASSWORD_KEY
 init|=
 literal|"password"
 decl_stmt|;
-comment|/**    * Scheme used for {@link AuthType#LDAP}, {@link AuthType#CLIENT_SSL_CERT_LDAP}, {@link    * AuthType#HTTP_LDAP}, and {@link AuthType#LDAP_BIND} usernames.    *    *<p>The name {@code gerrit:} was a very poor choice.    */
+comment|/**    * Scheme used for {@link AuthType#LDAP}, {@link AuthType#CLIENT_SSL_CERT_LDAP}, {@link    * AuthType#HTTP_LDAP}, and {@link AuthType#LDAP_BIND} usernames.    *    *<p>The name {@code gerrit:} was a very poor choice.    *    *<p>Scheme names must not contain colons (':').    */
 DECL|field|SCHEME_GERRIT
 specifier|public
 specifier|static
@@ -761,6 +761,7 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+comment|/**      * Creates an external ID key.      *      * @param scheme the scheme name, must not contain colons (':'), can be {@code null}      * @param id the external ID, must not contain colons (':')      * @return the created external ID key      */
 DECL|method|create (@ullable String scheme, String id)
 specifier|public
 specifier|static
@@ -1013,6 +1014,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**    * Creates an external ID.    *    * @param scheme the scheme name, must not contain colons (':')    * @param id the external ID, must not contain colons (':')    * @param accountId the ID of the account to which the external ID belongs    * @return the created external ID    */
 DECL|method|create (String scheme, String id, Account.Id accountId)
 specifier|public
 specifier|static
@@ -1051,6 +1053,7 @@ literal|null
 argument_list|)
 return|;
 block|}
+comment|/**    * Creates an external ID.    *    * @param scheme the scheme name, must not contain colons (':')    * @param id the external ID, must not contain colons (':')    * @param accountId the ID of the account to which the external ID belongs    * @param email the email of the external ID, may be {@code null}    * @param hashedPassword the hashed password of the external ID, may be {@code null}    * @return the created external ID    */
 DECL|method|create ( String scheme, String id, Account.Id accountId, @Nullable String email, @Nullable String hashedPassword)
 specifier|public
 specifier|static
@@ -1243,6 +1246,7 @@ name|hashedPassword
 argument_list|)
 return|;
 block|}
+comment|/**    * Create a external ID for a username (scheme "username").    *    * @param id the external ID, must not contain colons (':')    * @param accountId the ID of the account to which the external ID belongs    * @param plainPassword the plain HTTP password, may be {@code null}    * @return the created external ID    */
 DECL|method|createUsername ( String id, Account.Id accountId, @Nullable String plainPassword)
 specifier|public
 specifier|static
@@ -1283,6 +1287,7 @@ name|plainPassword
 argument_list|)
 return|;
 block|}
+comment|/**    * Creates an external ID with an email.    *    * @param scheme the scheme name, must not contain colons (':')    * @param id the external ID, must not contain colons (':')    * @param accountId the ID of the account to which the external ID belongs    * @param email the email of the external ID, may be {@code null}    * @return the created external ID    */
 DECL|method|createWithEmail ( String scheme, String id, Account.Id accountId, @Nullable String email)
 specifier|public
 specifier|static
