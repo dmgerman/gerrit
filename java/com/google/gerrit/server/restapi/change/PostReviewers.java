@@ -1178,14 +1178,6 @@ operator|.
 name|Factory
 name|changeDataFactory
 decl_stmt|;
-DECL|field|identifiedUserFactory
-specifier|private
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
-decl_stmt|;
 DECL|field|cfg
 specifier|private
 specifier|final
@@ -1241,7 +1233,7 @@ name|validator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewers ( AccountsCollection accounts, PermissionBackend permissionBackend, GroupsCollection groupsCollection, GroupMembers groupMembers, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RetryHelper retryHelper, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ReviewerJson json, NotesMigration migration, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, PostReviewersOp.Factory postReviewersOpFactory, OutgoingEmailValidator validator)
+DECL|method|PostReviewers ( AccountsCollection accounts, PermissionBackend permissionBackend, GroupsCollection groupsCollection, GroupMembers groupMembers, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RetryHelper retryHelper, @GerritServerConfig Config cfg, ReviewerJson json, NotesMigration migration, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, PostReviewersOp.Factory postReviewersOpFactory, OutgoingEmailValidator validator)
 name|PostReviewers
 parameter_list|(
 name|AccountsCollection
@@ -1274,11 +1266,6 @@ name|changeDataFactory
 parameter_list|,
 name|RetryHelper
 name|retryHelper
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -1358,12 +1345,6 @@ operator|.
 name|changeDataFactory
 operator|=
 name|changeDataFactory
-expr_stmt|;
-name|this
-operator|.
-name|identifiedUserFactory
-operator|=
-name|identifiedUserFactory
 expr_stmt|;
 name|this
 operator|.
