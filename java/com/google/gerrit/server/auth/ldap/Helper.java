@@ -1536,8 +1536,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|LdapRealm
-operator|.
 name|log
 operator|.
 name|warn
@@ -2436,14 +2434,12 @@ name|NamingException
 name|e
 parameter_list|)
 block|{
-name|LdapRealm
-operator|.
 name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Could not find group "
-operator|+
+literal|"Could not find group {}"
+argument_list|,
 name|groupDN
 argument_list|,
 name|e
@@ -3137,17 +3133,15 @@ name|NamingException
 name|e
 parameter_list|)
 block|{
-name|LdapRealm
-operator|.
 name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Cannot discover type of LDAP server at "
+literal|"Cannot discover type of LDAP server at {},"
 operator|+
+literal|" assuming the server is RFC 2307 compliant."
+argument_list|,
 name|server
-operator|+
-literal|", assuming the server is RFC 2307 compliant."
 argument_list|,
 name|e
 argument_list|)
