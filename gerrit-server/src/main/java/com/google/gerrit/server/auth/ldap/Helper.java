@@ -540,6 +540,26 @@ name|Config
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -547,6 +567,22 @@ DECL|class|Helper
 class|class
 name|Helper
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|Helper
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|LDAP_UUID
 specifier|static
 specifier|final
@@ -1223,8 +1259,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|LdapRealm
-operator|.
 name|log
 operator|.
 name|warn
@@ -2111,14 +2145,12 @@ name|NamingException
 name|e
 parameter_list|)
 block|{
-name|LdapRealm
-operator|.
 name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Could not find group "
-operator|+
+literal|"Could not find group {}"
+argument_list|,
 name|groupDN
 argument_list|,
 name|e
@@ -2823,17 +2855,15 @@ name|NamingException
 name|e
 parameter_list|)
 block|{
-name|LdapRealm
-operator|.
 name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Cannot discover type of LDAP server at "
+literal|"Cannot discover type of LDAP server at {},"
 operator|+
+literal|" assuming the server is RFC 2307 compliant."
+argument_list|,
 name|server
-operator|+
-literal|", assuming the server is RFC 2307 compliant."
 argument_list|,
 name|e
 argument_list|)
