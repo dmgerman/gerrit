@@ -1256,7 +1256,7 @@ operator|.
 name|isConstant
 argument_list|()
 argument_list|,
-literal|"counters must not be constant"
+literal|"counter must not be constant"
 argument_list|)
 expr_stmt|;
 name|checkArgument
@@ -1267,7 +1267,7 @@ operator|.
 name|isGauge
 argument_list|()
 argument_list|,
-literal|"counters must not be gauge"
+literal|"counter must not be gauge"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2513,7 +2513,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"metric %s already defined"
+literal|"metric '%s' already defined"
 argument_list|,
 name|name
 argument_list|)
@@ -2573,7 +2573,9 @@ operator|.
 name|matches
 argument_list|()
 argument_list|,
-literal|"metric name must match %s"
+literal|"invalid metric name '%s': must match pattern '%s'"
+argument_list|,
+name|name
 argument_list|,
 name|METRIC_NAME_PATTERN
 operator|.
