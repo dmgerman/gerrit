@@ -150,6 +150,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|protobuf
+operator|.
+name|Parser
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -337,6 +349,57 @@ operator|new
 name|IllegalStateException
 argument_list|(
 literal|"exception writing to ByteString"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**    * Parses a byte array to a protobuf message.    *    * @param parser parser for the proto type.    * @param in byte array with the message contents.    * @return parsed proto.    */
+DECL|method|parseUnchecked (Parser<M> parser, byte[] in)
+specifier|public
+specifier|static
+parameter_list|<
+name|M
+extends|extends
+name|MessageLite
+parameter_list|>
+name|M
+name|parseUnchecked
+parameter_list|(
+name|Parser
+argument_list|<
+name|M
+argument_list|>
+name|parser
+parameter_list|,
+name|byte
+index|[]
+name|in
+parameter_list|)
+block|{
+try|try
+block|{
+return|return
+name|parser
+operator|.
+name|parseFrom
+argument_list|(
+name|in
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"exception parsing byte array to proto"
 argument_list|,
 name|e
 argument_list|)
