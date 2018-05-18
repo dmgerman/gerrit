@@ -531,7 +531,7 @@ name|Builder
 argument_list|()
 return|;
 block|}
-DECL|method|create ( ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> changeMessages, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, boolean isPrivate, boolean workInProgress, boolean hasReviewStarted, @Nullable Change.Id revertOf)
+DECL|method|create ( ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> changeMessages, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, boolean isPrivate, boolean workInProgress, boolean reviewStarted, @Nullable Change.Id revertOf)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -694,7 +694,7 @@ name|boolean
 name|workInProgress
 parameter_list|,
 name|boolean
-name|hasReviewStarted
+name|reviewStarted
 parameter_list|,
 annotation|@
 name|Nullable
@@ -767,6 +767,11 @@ argument_list|(
 name|branch
 argument_list|)
 operator|.
+name|status
+argument_list|(
+name|status
+argument_list|)
+operator|.
 name|currentPatchSetId
 argument_list|(
 name|currentPatchSetId
@@ -797,24 +802,19 @@ argument_list|(
 name|assignee
 argument_list|)
 operator|.
-name|status
-argument_list|(
-name|status
-argument_list|)
-operator|.
 name|isPrivate
 argument_list|(
 name|isPrivate
 argument_list|)
 operator|.
-name|isWorkInProgress
+name|workInProgress
 argument_list|(
 name|workInProgress
 argument_list|)
 operator|.
-name|hasReviewStarted
+name|reviewStarted
 argument_list|(
-name|hasReviewStarted
+name|reviewStarted
 argument_list|)
 operator|.
 name|revertOf
@@ -906,7 +906,7 @@ name|build
 argument_list|()
 return|;
 block|}
-comment|/**    * Subset of Change columns that can be represented in NoteDb.    *    *<p>Notable exceptions include rowVersion and noteDbState, which are only make sense when read    * from NoteDb, so they cannot be cached.    *    *<p>Fields are in listed column order.    */
+comment|/**    * Subset of Change columns that can be represented in NoteDb.    *    *<p>Notable exceptions include rowVersion and noteDbState, which are only make sense when read    * from NoteDb, so they cannot be cached.    *    *<p>Fields should match the column names in {@link Change}, and are in listed column order.    */
 annotation|@
 name|AutoValue
 DECL|class|ChangeColumns
@@ -948,6 +948,17 @@ DECL|method|branch ()
 specifier|abstract
 name|String
 name|branch
+parameter_list|()
+function_decl|;
+comment|// TODO(dborowitz): Use a sensible default other than null
+annotation|@
+name|Nullable
+DECL|method|status ()
+specifier|abstract
+name|Change
+operator|.
+name|Status
+name|status
 parameter_list|()
 function_decl|;
 annotation|@
@@ -1000,33 +1011,22 @@ name|Id
 name|assignee
 parameter_list|()
 function_decl|;
-comment|// TODO(dborowitz): Use a sensible default other than null
-annotation|@
-name|Nullable
-DECL|method|status ()
-specifier|abstract
-name|Change
-operator|.
-name|Status
-name|status
-parameter_list|()
-function_decl|;
 DECL|method|isPrivate ()
 specifier|abstract
 name|boolean
 name|isPrivate
 parameter_list|()
 function_decl|;
-DECL|method|isWorkInProgress ()
+DECL|method|workInProgress ()
 specifier|abstract
 name|boolean
-name|isWorkInProgress
+name|workInProgress
 parameter_list|()
 function_decl|;
-DECL|method|hasReviewStarted ()
+DECL|method|reviewStarted ()
 specifier|abstract
 name|boolean
-name|hasReviewStarted
+name|reviewStarted
 parameter_list|()
 function_decl|;
 annotation|@
@@ -1188,22 +1188,22 @@ name|boolean
 name|isPrivate
 parameter_list|)
 function_decl|;
-DECL|method|isWorkInProgress (boolean isWorkInProgress)
+DECL|method|workInProgress (boolean workInProgress)
 specifier|abstract
 name|Builder
-name|isWorkInProgress
+name|workInProgress
 parameter_list|(
 name|boolean
-name|isWorkInProgress
+name|workInProgress
 parameter_list|)
 function_decl|;
-DECL|method|hasReviewStarted (boolean hasReviewStarted)
+DECL|method|reviewStarted (boolean reviewStarted)
 specifier|abstract
 name|Builder
-name|hasReviewStarted
+name|reviewStarted
 parameter_list|(
 name|boolean
-name|hasReviewStarted
+name|reviewStarted
 parameter_list|)
 function_decl|;
 DECL|method|revertOf (@ullable Change.Id revertOf)
@@ -1772,7 +1772,7 @@ name|setWorkInProgress
 argument_list|(
 name|c
 operator|.
-name|isWorkInProgress
+name|workInProgress
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1782,7 +1782,7 @@ name|setReviewStarted
 argument_list|(
 name|c
 operator|.
-name|hasReviewStarted
+name|reviewStarted
 argument_list|()
 argument_list|)
 expr_stmt|;
