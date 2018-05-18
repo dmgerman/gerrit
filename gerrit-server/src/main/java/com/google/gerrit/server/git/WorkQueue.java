@@ -1288,8 +1288,6 @@ block|{
 name|buildMetrics
 argument_list|(
 name|queueName
-argument_list|,
-name|metrics
 argument_list|)
 expr_stmt|;
 block|}
@@ -1330,19 +1328,16 @@ throw|;
 block|}
 block|}
 block|}
-DECL|method|buildMetrics (String queueName, MetricMaker metric)
+DECL|method|buildMetrics (String queueName)
 specifier|private
 name|void
 name|buildMetrics
 parameter_list|(
 name|String
 name|queueName
-parameter_list|,
-name|MetricMaker
-name|metric
 parameter_list|)
 block|{
-name|metric
+name|metrics
 operator|.
 name|newCallbackMetric
 argument_list|(
@@ -1396,7 +1391,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|metric
+name|metrics
 operator|.
 name|newCallbackMetric
 argument_list|(
@@ -1450,7 +1445,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|metric
+name|metrics
 operator|.
 name|newCallbackMetric
 argument_list|(
@@ -1504,7 +1499,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|metric
+name|metrics
 operator|.
 name|newCallbackMetric
 argument_list|(
@@ -1558,7 +1553,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|metric
+name|metrics
 operator|.
 name|newCallbackMetric
 argument_list|(
@@ -1612,7 +1607,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|metric
+name|metrics
 operator|.
 name|newCallbackMetric
 argument_list|(
