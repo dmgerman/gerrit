@@ -302,6 +302,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AuthenticationFailedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|auth
 operator|.
 name|AuthenticationUnavailableException
@@ -985,19 +1001,17 @@ return|return;
 block|}
 catch|catch
 parameter_list|(
-name|AccountException
+name|AuthenticationFailedException
 name|e
 parameter_list|)
 block|{
+comment|// This exception is thrown if the user provided wrong credentials, we don't need to log a
+comment|// stacktrace for it.
 name|log
 operator|.
-name|info
+name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"'%s' failed to sign in: %s"
+literal|"'{}' failed to sign in: {}"
 argument_list|,
 name|username
 argument_list|,
@@ -1005,7 +1019,6 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|sendForm
@@ -1015,6 +1028,34 @@ argument_list|,
 name|res
 argument_list|,
 literal|"Invalid username or password."
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+catch|catch
+parameter_list|(
+name|AccountException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"'{}' failed to sign in"
+argument_list|,
+name|username
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|sendForm
+argument_list|(
+name|req
+argument_list|,
+name|res
+argument_list|,
+literal|"Authentication failed."
 argument_list|)
 expr_stmt|;
 return|return;

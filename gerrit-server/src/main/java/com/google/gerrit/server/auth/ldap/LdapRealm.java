@@ -646,6 +646,7 @@ extends|extends
 name|AbstractRealm
 block|{
 DECL|field|log
+specifier|private
 specifier|static
 specifier|final
 name|Logger

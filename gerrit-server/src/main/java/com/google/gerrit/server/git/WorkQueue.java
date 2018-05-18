@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|dropwizard
+operator|.
+name|DropWizardMetricMaker
+operator|.
+name|sanitizeMetricName
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1345,6 +1363,8 @@ name|queueName
 operator|=
 name|prefix
 expr_stmt|;
+try|try
+block|{
 name|buildMetrics
 argument_list|(
 name|queueName
@@ -1352,6 +1372,43 @@ argument_list|,
 name|metrics
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"already"
+argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Not creating metrics for queue '{}': already exists"
+argument_list|,
+name|queueName
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+name|e
+throw|;
+block|}
+block|}
 block|}
 DECL|method|buildMetrics (String queueName, MetricMaker metric)
 specifier|private
@@ -1733,6 +1790,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
+name|sanitizeMetricName
+argument_list|(
 name|String
 operator|.
 name|format
@@ -1742,6 +1801,7 @@ argument_list|,
 name|name
 argument_list|,
 name|metricName
+argument_list|)
 argument_list|)
 return|;
 block|}
