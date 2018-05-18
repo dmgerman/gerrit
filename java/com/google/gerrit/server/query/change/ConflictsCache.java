@@ -88,14 +88,14 @@ specifier|public
 interface|interface
 name|ConflictsCache
 block|{
-DECL|method|put (ConflictKey key, Boolean value)
+DECL|method|put (ConflictKey key, boolean value)
 name|void
 name|put
 parameter_list|(
 name|ConflictKey
 name|key
 parameter_list|,
-name|Boolean
+name|boolean
 name|value
 parameter_list|)
 function_decl|;
