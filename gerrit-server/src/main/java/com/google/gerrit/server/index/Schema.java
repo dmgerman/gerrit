@@ -1132,11 +1132,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"error getting field %s of %s"
+literal|"error getting field {} of {}"
 argument_list|,
 name|f
 operator|.
@@ -1144,7 +1140,6 @@ name|getName
 argument_list|()
 argument_list|,
 name|obj
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

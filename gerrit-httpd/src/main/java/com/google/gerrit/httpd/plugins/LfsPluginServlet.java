@@ -964,14 +964,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin %s cannot load GuiceFilter"
+literal|"Plugin {} cannot load GuiceFilter"
 argument_list|,
 name|name
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -1016,14 +1011,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin %s failed to initialize HTTP"
+literal|"Plugin {} failed to initialize HTTP"
 argument_list|,
 name|name
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

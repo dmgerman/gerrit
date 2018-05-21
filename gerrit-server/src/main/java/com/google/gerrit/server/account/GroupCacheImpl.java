@@ -769,8 +769,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Cannot load group "
-operator|+
+literal|"Cannot load group {}"
+argument_list|,
 name|groupId
 argument_list|,
 name|e
@@ -1009,17 +1009,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot lookup group %s by name"
+literal|"Cannot lookup group {} by name"
 argument_list|,
 name|name
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -1082,17 +1077,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot lookup group %s by uuid"
+literal|"Cannot lookup group {} by uuid"
 argument_list|,
 name|uuid
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

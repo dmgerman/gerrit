@@ -1148,8 +1148,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Cannot load static resource "
-operator|+
+literal|"Cannot load static resource {}"
+argument_list|,
 name|req
 operator|.
 name|getPathInfo
@@ -1490,14 +1490,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Path doesn't exist %s"
+literal|"Path doesn't exist {}"
 argument_list|,
 name|name
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -1530,14 +1525,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot load static resource %s"
+literal|"Cannot load static resource {}"
 argument_list|,
 name|name
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

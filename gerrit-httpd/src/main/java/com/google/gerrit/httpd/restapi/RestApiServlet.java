@@ -8354,11 +8354,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Error in %s %s"
+literal|"Error in {} {}"
 argument_list|,
 name|req
 operator|.
@@ -8366,7 +8362,6 @@ name|getMethod
 argument_list|()
 argument_list|,
 name|uri
-argument_list|)
 argument_list|,
 name|err
 argument_list|)
