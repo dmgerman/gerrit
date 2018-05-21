@@ -861,6 +861,11 @@ specifier|protected
 name|GroupCache
 name|groupCache
 decl_stmt|;
+DECL|field|injector
+specifier|protected
+name|Injector
+name|injector
+decl_stmt|;
 DECL|field|lifecycle
 specifier|protected
 name|LifecycleManager
@@ -904,12 +909,11 @@ operator|new
 name|LifecycleManager
 argument_list|()
 expr_stmt|;
-name|Injector
 name|injector
-init|=
+operator|=
 name|createInjector
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|lifecycle
 operator|.
 name|add
@@ -927,6 +931,9 @@ expr_stmt|;
 name|lifecycle
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|initAfterLifecycleStart
 argument_list|()
 expr_stmt|;
 name|db
@@ -1016,6 +1023,14 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|initAfterLifecycleStart ()
+specifier|protected
+name|void
+name|initAfterLifecycleStart
+parameter_list|()
+throws|throws
+name|Exception
+block|{}
 DECL|method|newRequestContext (Account.Id requestUserId)
 specifier|protected
 name|RequestContext
