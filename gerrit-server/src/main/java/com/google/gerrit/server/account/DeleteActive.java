@@ -451,11 +451,14 @@ name|self
 operator|.
 name|get
 argument_list|()
-operator|==
+operator|.
+name|hasSameAccountId
+argument_list|(
 name|rsrc
 operator|.
 name|getUser
 argument_list|()
+argument_list|)
 condition|)
 block|{
 throw|throw
