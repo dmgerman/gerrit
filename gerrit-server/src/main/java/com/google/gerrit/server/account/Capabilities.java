@@ -486,12 +486,16 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|self
 operator|.
 name|get
 argument_list|()
-operator|!=
+operator|.
+name|hasSameAccountId
+argument_list|(
 name|target
+argument_list|)
 condition|)
 block|{
 name|permissionBackend

@@ -628,13 +628,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (AccountResource rsrc)
+DECL|method|apply (AccountResource resource)
 specifier|public
 name|Object
 name|apply
 parameter_list|(
 name|AccountResource
-name|rsrc
+name|resource
 parameter_list|)
 throws|throws
 name|AuthException
@@ -655,15 +655,19 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|self
 operator|.
 name|get
 argument_list|()
-operator|!=
-name|rsrc
+operator|.
+name|hasSameAccountId
+argument_list|(
+name|resource
 operator|.
 name|getUser
 argument_list|()
+argument_list|)
 condition|)
 block|{
 name|perm
@@ -681,7 +685,7 @@ name|permissionBackend
 operator|.
 name|user
 argument_list|(
-name|rsrc
+name|resource
 operator|.
 name|getUser
 argument_list|()
@@ -735,7 +739,7 @@ name|limitsFactory
 operator|.
 name|create
 argument_list|(
-name|rsrc
+name|resource
 operator|.
 name|getUser
 argument_list|()
