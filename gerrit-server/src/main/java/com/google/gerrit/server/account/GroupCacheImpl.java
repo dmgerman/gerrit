@@ -1086,7 +1086,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Cannot lookup group %s by name"
+literal|"Cannot lookup group %s by uuid"
 argument_list|,
 name|uuid
 operator|.
