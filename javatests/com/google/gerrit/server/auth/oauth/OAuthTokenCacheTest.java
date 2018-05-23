@@ -38,6 +38,26 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|extensions
+operator|.
+name|proto
+operator|.
+name|ProtoTruth
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server

@@ -910,8 +910,9 @@ decl_stmt|;
 name|ConflictKey
 name|conflictsKey
 init|=
-operator|new
 name|ConflictKey
+operator|.
+name|create
 argument_list|(
 name|changeDataCache
 operator|.
@@ -935,7 +936,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|Boolean
-name|conflicts
+name|maybeConflicts
 init|=
 name|args
 operator|.
@@ -948,13 +949,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|conflicts
+name|maybeConflicts
 operator|!=
 literal|null
 condition|)
 block|{
 return|return
-name|conflicts
+name|maybeConflicts
 return|;
 block|}
 try|try
@@ -985,8 +986,9 @@ name|repo
 argument_list|)
 init|)
 block|{
+name|boolean
 name|conflicts
-operator|=
+init|=
 operator|!
 name|args
 operator|.
@@ -1021,7 +1023,7 @@ argument_list|,
 name|rw
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|args
 operator|.
 name|conflictsCache
