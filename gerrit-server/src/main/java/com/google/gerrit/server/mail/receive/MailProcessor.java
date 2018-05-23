@@ -1211,11 +1211,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Message %s filtered by plugin %s %s. Will delete message."
+literal|"Message {} filtered by plugin {} {}. Will delete message."
 argument_list|,
 name|message
 operator|.
@@ -1231,7 +1227,6 @@ name|filter
 operator|.
 name|getExportName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1260,11 +1255,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Message %s is missing required metadata, have %s. Will delete message."
+literal|"Message {} is missing required metadata, have {}. Will delete message."
 argument_list|,
 name|message
 operator|.
@@ -1272,7 +1263,6 @@ name|id
 argument_list|()
 argument_list|,
 name|metadata
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1308,18 +1298,15 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Address %s could not be matched to a unique account. It was matched to %s. Will delete message."
+literal|"Address {} could not be matched to a unique account. It was matched to {}."
+operator|+
+literal|" Will delete message."
 argument_list|,
 name|metadata
 operator|.
 name|author
 argument_list|,
 name|accountIds
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1358,14 +1345,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Mail: Account %s is inactive. Will delete message."
+literal|"Mail: Account {} is inactive. Will delete message."
 argument_list|,
 name|account
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1461,11 +1443,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Message %s references unique change %s, but there are %d matching changes in the index. Will delete message."
+literal|"Message {} references unique change {}, but there are {} matching changes in "
+operator|+
+literal|"the index. Will delete message."
 argument_list|,
 name|message
 operator|.
@@ -1480,7 +1460,6 @@ name|changeDataList
 operator|.
 name|size
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1515,17 +1494,12 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Message %s was already processed. Will delete message."
+literal|"Message {} was already processed. Will delete message."
 argument_list|,
 name|message
 operator|.
 name|id
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1671,17 +1645,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Could not parse any comments from %s. Will delete message."
+literal|"Could not parse any comments from {}. Will delete message."
 argument_list|,
 name|message
 operator|.
 name|id
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;

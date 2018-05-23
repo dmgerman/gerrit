@@ -1356,8 +1356,8 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Error while getting full commit message for change "
-operator|+
+literal|"Error while getting full commit message for change {}"
+argument_list|,
 name|a
 operator|.
 name|number
@@ -3519,8 +3519,8 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Cannot load patch set data for "
-operator|+
+literal|"Cannot load patch set data for {}"
+argument_list|,
 name|patchSet
 operator|.
 name|getId
@@ -3566,14 +3566,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot get size information for %s."
+literal|"Cannot get size information for {}."
 argument_list|,
 name|pId
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

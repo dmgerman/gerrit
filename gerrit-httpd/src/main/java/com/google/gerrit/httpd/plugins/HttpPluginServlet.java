@@ -1691,14 +1691,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin %s cannot load GuiceFilter"
+literal|"Plugin {} cannot load GuiceFilter"
 argument_list|,
 name|name
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -1748,14 +1743,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin %s failed to initialize HTTP"
+literal|"Plugin {} failed to initialize HTTP"
 argument_list|,
 name|name
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -3397,13 +3387,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin %s: %s omitted from document index. "
-operator|+
-literal|"Size %d out of range (0,%d)."
+literal|"Plugin {}: {} omitted from document index. Size {} out of range (0,{})."
 argument_list|,
 name|pluginName
 argument_list|,
@@ -3423,7 +3407,6 @@ name|get
 argument_list|()
 argument_list|,
 name|SMALL_RESOURCE
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -3578,11 +3561,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin %s: Multiple 'about' documents found; using %s"
+literal|"Plugin {}: Multiple 'about' documents found; using {}"
 argument_list|,
 name|pluginName
 argument_list|,
@@ -3597,7 +3576,6 @@ name|prefix
 operator|.
 name|length
 argument_list|()
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5495,11 +5473,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Error getting %s for plugin %s, using default"
+literal|"Error getting {} for plugin {}, using default"
 argument_list|,
 name|attr
 argument_list|,
@@ -5507,7 +5481,6 @@ name|plugin
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

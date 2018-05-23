@@ -2212,14 +2212,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot lookup account %s in LDAP"
+literal|"Cannot lookup account {} in LDAP"
 argument_list|,
 name|accountName
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

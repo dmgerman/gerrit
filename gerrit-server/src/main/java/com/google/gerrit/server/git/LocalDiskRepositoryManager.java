@@ -832,14 +832,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Defaulting core.streamFileThreshold to %s"
+literal|"Defaulting core.streamFileThreshold to {}"
 argument_list|,
 name|desc
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|cfg
@@ -1522,18 +1517,13 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Failed to create ref log for %s in repository %s"
+literal|"Failed to create ref log for {} in repository {}"
 argument_list|,
 name|RefNames
 operator|.
 name|REFS_CONFIG
 argument_list|,
 name|name
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1949,8 +1939,8 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Error walking repository tree "
-operator|+
+literal|"Error walking repository tree {}"
+argument_list|,
 name|visitor
 operator|.
 name|startFolder
@@ -2306,8 +2296,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Ignoring unreasonably named repository "
-operator|+
+literal|"Ignoring unreasonably named repository {}"
+argument_list|,
 name|p
 operator|.
 name|toAbsolutePath

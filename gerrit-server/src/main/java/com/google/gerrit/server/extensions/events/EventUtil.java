@@ -947,11 +947,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Error in event listener %s for event %s"
+literal|"Error in event listener {} for event {}"
 argument_list|,
 name|listener
 operator|.
@@ -968,7 +964,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|,
 name|error
 argument_list|)
@@ -1031,11 +1026,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Error in event listener %s"
+literal|"Error in event listener {}"
 argument_list|,
 name|listener
 operator|.
@@ -1044,7 +1035,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|,
 name|error
 argument_list|)
