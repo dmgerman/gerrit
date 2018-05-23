@@ -1612,11 +1612,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot load %s from %s in %s"
+literal|"Cannot load {} from {} in {}"
 argument_list|,
 name|c
 operator|.
@@ -1639,7 +1635,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -2268,11 +2263,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Failed to read file %s on side %d"
+literal|"Failed to read file {} on side {}"
 argument_list|,
 name|comment
 operator|.
@@ -2281,7 +2272,6 @@ operator|.
 name|filename
 argument_list|,
 name|side
-argument_list|)
 argument_list|,
 name|err
 argument_list|)
@@ -2298,11 +2288,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Side %d of file %s didn't exist"
+literal|"Side {} of file {} didn't exist"
 argument_list|,
 name|side
 argument_list|,
@@ -2311,7 +2297,6 @@ operator|.
 name|key
 operator|.
 name|filename
-argument_list|)
 argument_list|,
 name|err
 argument_list|)
@@ -2637,8 +2622,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Could not find the parent of this comment: "
-operator|+
+literal|"Could not find the parent of this comment: {}"
+argument_list|,
 name|child
 operator|.
 name|toString
@@ -3766,14 +3751,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Failed to read file on side %d"
+literal|"Failed to read file on side {}"
 argument_list|,
 name|side
-argument_list|)
 argument_list|,
 name|err
 argument_list|)
@@ -3794,14 +3774,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Failed to get line number of file on side %d"
+literal|"Failed to get line number of file on side {}"
 argument_list|,
 name|side
-argument_list|)
 argument_list|,
 name|err
 argument_list|)
@@ -3821,14 +3796,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Side %d of file didn't exist"
+literal|"Side {} of file didn't exist"
 argument_list|,
 name|side
-argument_list|)
 argument_list|,
 name|err
 argument_list|)

@@ -1382,17 +1382,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Multiple changes found for %d"
+literal|"Multiple changes found for {}"
 argument_list|,
 name|changeId
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 throw|throw

@@ -1056,14 +1056,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot lookup group %s in LDAP"
+literal|"Cannot lookup group {} in LDAP"
 argument_list|,
 name|groupDn
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

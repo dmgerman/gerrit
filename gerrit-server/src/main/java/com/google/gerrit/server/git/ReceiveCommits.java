@@ -5101,8 +5101,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"cannot update description of "
-operator|+
+literal|"cannot update description of {}"
+argument_list|,
 name|project
 operator|.
 name|getName

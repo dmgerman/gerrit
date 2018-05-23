@@ -498,11 +498,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%s is missing name and/or url"
+literal|"{} is missing name and/or url"
 argument_list|,
 name|link
 operator|.
@@ -511,7 +507,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -573,11 +568,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%s is missing name and/or url"
+literal|"{} is missing name and/or url"
 argument_list|,
 name|link
 operator|.
@@ -586,7 +577,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

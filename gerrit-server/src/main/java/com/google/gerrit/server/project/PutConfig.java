@@ -1264,14 +1264,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Failed to update config of project %s."
+literal|"Failed to update config of project {}."
 argument_list|,
 name|projectName
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -1501,17 +1496,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Parameter name '%s' must match '^[a-zA-Z0-9]+[a-zA-Z0-9-]*$'"
+literal|"Parameter name '{}' must match '^[a-zA-Z0-9]+[a-zA-Z0-9-]*$'"
 argument_list|,
 name|v
 operator|.
 name|getKey
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -1839,11 +1829,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"The type '%s' of parameter '%s' is not supported."
+literal|"The type '{}' of parameter '{}' is not supported."
 argument_list|,
 name|projectConfigEntry
 operator|.
@@ -1857,7 +1843,6 @@ name|v
 operator|.
 name|getKey
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

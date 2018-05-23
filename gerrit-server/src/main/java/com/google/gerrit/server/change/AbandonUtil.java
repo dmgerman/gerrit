@@ -714,11 +714,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Auto-Abandoned %d of %d changes."
+literal|"Auto-Abandoned {} of {} changes."
 argument_list|,
 name|count
 argument_list|,
@@ -726,7 +722,6 @@ name|changesToAbandon
 operator|.
 name|size
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
