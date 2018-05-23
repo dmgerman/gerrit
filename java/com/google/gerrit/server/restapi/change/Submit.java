@@ -1949,7 +1949,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * @param cd the change the user is currently looking at    * @param cs set of changes to be submitted at once    * @param user the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
+comment|/**    * Returns a message describing what prevents the current change from being submitted - or null.    * This method only considers parent changes, and changes in the same topic. The caller is    * responsible for making sure the current change to be submitted can indeed be submitted    * (permissions, submit rules, is not a WIP...)    *    * @param cd the change the user is currently looking at    * @param cs set of changes to be submitted at once    * @param user the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
 DECL|method|problemsForSubmittingChangeset (ChangeData cd, ChangeSet cs, CurrentUser user)
 specifier|private
 name|String
@@ -1990,6 +1990,26 @@ name|changes
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|cd
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// We ignore the change about to be submitted, as these checks are already done in the
+comment|// #apply and #getDescription methods.
+continue|continue;
+block|}
 name|Set
 argument_list|<
 name|ChangePermission
@@ -2286,6 +2306,11 @@ name|getStatus
 argument_list|()
 operator|.
 name|isOpen
+argument_list|()
+operator|||
+name|change
+operator|.
+name|isWorkInProgress
 argument_list|()
 operator|||
 operator|!
