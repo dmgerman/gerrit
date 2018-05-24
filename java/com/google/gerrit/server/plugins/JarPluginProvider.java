@@ -945,16 +945,11 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"plugin %s: including %s"
+literal|"plugin {}: including {}"
 argument_list|,
 name|name
 argument_list|,
 name|classes
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|urls

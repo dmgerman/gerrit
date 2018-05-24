@@ -1480,16 +1480,11 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"error checking staleness of %s in %s"
+literal|"error checking staleness of {} in {}"
 argument_list|,
 name|id
 argument_list|,
 name|project
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
