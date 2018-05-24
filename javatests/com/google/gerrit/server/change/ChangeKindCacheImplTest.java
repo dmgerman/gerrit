@@ -194,6 +194,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|ChangeKindCacheImpl
+operator|.
+name|Key
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -237,10 +255,9 @@ operator|.
 name|Key
 name|key
 init|=
-operator|new
-name|ChangeKindCacheImpl
-operator|.
 name|Key
+operator|.
+name|create
 argument_list|(
 name|ObjectId
 operator|.
@@ -438,7 +455,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|hasFields
+name|hasAutoValueMethods
 argument_list|(
 name|ImmutableMap
 operator|.
