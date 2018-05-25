@@ -51,6 +51,19 @@ begin_comment
 comment|// limitations under the License.
 end_comment
 
+begin_package
+DECL|package|com.google.gerrit.asciidoctor
+package|package
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|asciidoctor
+package|;
+end_package
+
 begin_import
 import|import static
 name|java
