@@ -106,6 +106,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|internal
+operator|.
+name|AssumptionViolatedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|testcontainers
 operator|.
 name|containers
@@ -164,8 +176,57 @@ name|ELASTICSEARCH_DEFAULT_PORT
 init|=
 literal|9200
 decl_stmt|;
-DECL|method|ElasticContainer ()
+DECL|method|createAndStart ()
 specifier|public
+specifier|static
+name|ElasticContainer
+argument_list|<
+name|?
+argument_list|>
+name|createAndStart
+parameter_list|()
+block|{
+comment|// Assumption violation is not natively supported by Testcontainers.
+comment|// See https://github.com/testcontainers/testcontainers-java/issues/343
+try|try
+block|{
+name|ElasticContainer
+argument_list|<
+name|?
+argument_list|>
+name|container
+init|=
+operator|new
+name|ElasticContainer
+argument_list|<>
+argument_list|()
+decl_stmt|;
+name|container
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+return|return
+name|container
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|t
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssumptionViolatedException
+argument_list|(
+literal|"Unable to start container[might be docker related]"
+argument_list|)
+throw|;
+block|}
+block|}
+DECL|method|ElasticContainer ()
+specifier|private
 name|ElasticContainer
 parameter_list|()
 block|{
@@ -180,7 +241,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|ElasticContainer (String dockerImageName)
-specifier|public
+specifier|private
 name|ElasticContainer
 parameter_list|(
 name|String

@@ -204,18 +204,6 @@ name|BeforeClass
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|internal
-operator|.
-name|AssumptionViolatedException
-import|;
-end_import
-
 begin_class
 DECL|class|ElasticQueryGroupsTest
 specifier|public
@@ -258,35 +246,13 @@ block|{
 comment|// do not start Elasticsearch twice
 return|return;
 block|}
-try|try
-block|{
 name|container
 operator|=
-operator|new
 name|ElasticContainer
-argument_list|<>
-argument_list|()
-expr_stmt|;
-name|container
 operator|.
-name|start
+name|createAndStart
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|t
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|AssumptionViolatedException
-argument_list|(
-literal|"Unable to start container[might be docker related]"
-argument_list|)
-throw|;
-block|}
 name|nodeInfo
 operator|=
 operator|new
