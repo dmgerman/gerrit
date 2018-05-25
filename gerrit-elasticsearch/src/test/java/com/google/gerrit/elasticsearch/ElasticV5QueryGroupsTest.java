@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -126,9 +126,9 @@ name|server
 operator|.
 name|query
 operator|.
-name|change
+name|group
 operator|.
-name|AbstractQueryChangesTest
+name|AbstractQueryGroupsTest
 import|;
 end_import
 
@@ -204,48 +204,14 @@ name|BeforeClass
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|rules
-operator|.
-name|TestName
-import|;
-end_import
-
 begin_class
-DECL|class|ElasticQueryChangesTest
+DECL|class|ElasticV5QueryGroupsTest
 specifier|public
 class|class
-name|ElasticQueryChangesTest
+name|ElasticV5QueryGroupsTest
 extends|extends
-name|AbstractQueryChangesTest
+name|AbstractQueryGroupsTest
 block|{
-DECL|field|testName
-annotation|@
-name|Rule
-specifier|public
-specifier|final
-name|TestName
-name|testName
-init|=
-operator|new
-name|TestName
-argument_list|()
-decl_stmt|;
 DECL|field|nodeInfo
 specifier|private
 specifier|static
@@ -285,7 +251,11 @@ operator|=
 name|ElasticContainer
 operator|.
 name|createAndStart
-argument_list|()
+argument_list|(
+name|ElasticVersion
+operator|.
+name|V5_6
+argument_list|)
 expr_stmt|;
 name|nodeInfo
 operator|=

@@ -396,6 +396,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Override
 DECL|method|byOwnerInvalidQuery ()
 specifier|public
 name|void
