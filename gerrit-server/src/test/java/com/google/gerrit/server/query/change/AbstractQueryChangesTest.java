@@ -2168,8 +2168,6 @@ specifier|abstract
 name|Injector
 name|createInjector
 parameter_list|()
-throws|throws
-name|Exception
 function_decl|;
 annotation|@
 name|Before
