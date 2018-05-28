@@ -1025,17 +1025,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot read project %s"
+literal|"Cannot read project {}"
 argument_list|,
 name|projectName
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

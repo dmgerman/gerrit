@@ -482,11 +482,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"error creating view %s.%s"
+literal|"error creating view {}.{}"
 argument_list|,
 name|e
 operator|.
@@ -497,7 +493,6 @@ name|e
 operator|.
 name|getExportName
 argument_list|()
-argument_list|)
 argument_list|,
 name|err
 argument_list|)

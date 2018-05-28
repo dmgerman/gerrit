@@ -1621,11 +1621,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Error checking mergeability of %s into %s (%s)"
+literal|"Error checking mergeability of {} into {} ({})"
 argument_list|,
 name|key
 operator|.
@@ -1647,7 +1643,6 @@ name|submitType
 operator|.
 name|name
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 operator|.

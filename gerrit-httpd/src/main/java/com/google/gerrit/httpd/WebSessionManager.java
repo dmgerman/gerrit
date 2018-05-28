@@ -621,16 +621,11 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"cache.%s.maxAge is set to %d milliseconds; it should be at least 5 minutes."
+literal|"cache.{}.maxAge is set to {} milliseconds; it should be at least 5 minutes."
 argument_list|,
 name|CACHE_NAME
 argument_list|,
 name|sessionMaxAgeMillis
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -528,11 +528,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Group %s no longer available, included into %s"
+literal|"Group {} no longer available, included into {}"
 argument_list|,
 name|u
 operator|.
@@ -546,7 +542,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 continue|continue;

@@ -802,11 +802,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin %s has invalid class file %s inside of %s"
+literal|"Plugin {} has invalid class file {} inside of {}"
 argument_list|,
 name|pluginName
 argument_list|,
@@ -819,7 +815,6 @@ name|jarFile
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|,
 name|err
 argument_list|)
@@ -865,11 +860,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin %s tries to @%s(\"%s\") abstract class %s"
+literal|"Plugin {} tries to @{}(\"{}\") abstract class {}"
 argument_list|,
 name|pluginName
 argument_list|,
@@ -884,7 +875,6 @@ argument_list|,
 name|def
 operator|.
 name|className
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1165,11 +1155,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Jar %s has invalid class file %s"
+literal|"Jar {} has invalid class file {}"
 argument_list|,
 name|jarFile
 operator|.
@@ -1180,7 +1166,6 @@ name|entry
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|,
 name|err
 argument_list|)

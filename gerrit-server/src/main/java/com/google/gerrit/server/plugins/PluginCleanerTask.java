@@ -345,11 +345,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%d plugins still waiting to be reclaimed after %d minutes"
+literal|"{} plugins still waiting to be reclaimed after {} minutes"
 argument_list|,
 name|pending
 argument_list|,
@@ -360,7 +356,6 @@ operator|.
 name|toMinutes
 argument_list|(
 name|waiting
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

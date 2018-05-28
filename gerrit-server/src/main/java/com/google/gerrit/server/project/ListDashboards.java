@@ -904,11 +904,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot parse dashboard %s:%s:%s: %s"
+literal|"Cannot parse dashboard {}:{}:{}: {}"
 argument_list|,
 name|definingProject
 operator|.
@@ -929,7 +925,6 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

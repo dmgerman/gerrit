@@ -2345,11 +2345,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot query stars by account %d on change %d"
+literal|"Cannot query stars by account {} on change {}"
 argument_list|,
 name|accountId
 operator|.
@@ -2360,7 +2356,6 @@ name|changeId
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -2576,11 +2571,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Getting star object ID for account %d on change %d failed"
+literal|"Getting star object ID for account {} on change {} failed"
 argument_list|,
 name|accountId
 operator|.
@@ -2591,7 +2582,6 @@ name|changeId
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

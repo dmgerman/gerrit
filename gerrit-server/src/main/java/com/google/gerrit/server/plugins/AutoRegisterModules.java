@@ -974,18 +974,13 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot access %s from plugin %s: "
+literal|"Cannot access {} from plugin {}: "
 operator|+
 literal|"JavaScript auto-discovered plugin will not be registered"
 argument_list|,
 name|STATIC_INIT_JS
 argument_list|,
 name|pluginName
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -1079,11 +1074,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"In plugin %s asm incorrectly parsed %s with @Export(\"%s\")"
+literal|"In plugin {} asm incorrectly parsed {} with @Export(\"{}\")"
 argument_list|,
 name|pluginName
 argument_list|,
@@ -1095,7 +1086,6 @@ argument_list|,
 name|def
 operator|.
 name|annotationValue
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1294,11 +1284,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"In plugin %s asm incorrectly parsed %s with @Listen"
+literal|"In plugin {} asm incorrectly parsed {} with @Listen"
 argument_list|,
 name|pluginName
 argument_list|,
@@ -1306,7 +1292,6 @@ name|clazz
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

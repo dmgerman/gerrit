@@ -628,11 +628,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Error checking if patch set %s on %s can be rebased"
+literal|"Error checking if patch set {} on {} can be rebased"
 argument_list|,
 name|patchSet
 operator|.
@@ -640,7 +636,6 @@ name|getId
 argument_list|()
 argument_list|,
 name|dest
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
