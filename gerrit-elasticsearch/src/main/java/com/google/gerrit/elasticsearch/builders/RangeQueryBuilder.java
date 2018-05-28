@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Query that matches documents within an range of terms. A trimmed down version of {@link  * org.elasticsearch.index.query.RangeQueryBuilder} for this very package.  */
+comment|/**  * A Query that matches documents within an range of terms. A trimmed down version of  * org.elasticsearch.index.query.RangeQueryBuilder for this very package.  */
 end_comment
 
 begin_class

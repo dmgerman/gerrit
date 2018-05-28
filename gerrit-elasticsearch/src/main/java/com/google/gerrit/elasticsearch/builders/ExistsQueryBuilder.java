@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Constructs a query that only match on documents that the field has a value in them. A trimmed  * down version of {@link org.elasticsearch.index.query.ExistsQueryBuilder} for this very package.  */
+comment|/**  * Constructs a query that only match on documents that the field has a value in them. A trimmed  * down version of org.elasticsearch.index.query.ExistsQueryBuilder for this very package.  */
 end_comment
 
 begin_class
