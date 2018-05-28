@@ -82,6 +82,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|GerritRuntime
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|nio
@@ -169,6 +185,12 @@ argument_list|,
 name|dataDir
 argument_list|,
 name|classloader
+argument_list|,
+literal|null
+argument_list|,
+name|GerritRuntime
+operator|.
+name|DAEMON
 argument_list|)
 expr_stmt|;
 name|this

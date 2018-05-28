@@ -98,6 +98,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|GerritRuntime
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|nio
@@ -161,8 +177,13 @@ specifier|final
 name|Path
 name|dataDir
 decl_stmt|;
-comment|/**      * Creates a new PluginDescription for ServerPluginProvider.      *      * @param user Gerrit user for interacting with plugins      * @param canonicalUrl plugin root Web URL      * @param dataDir directory for plugin data      */
-DECL|method|PluginDescription (PluginUser user, String canonicalUrl, Path dataDir)
+DECL|field|gerritRuntime
+specifier|final
+name|GerritRuntime
+name|gerritRuntime
+decl_stmt|;
+comment|/**      * Creates a new PluginDescription for ServerPluginProvider.      *      * @param user Gerrit user for interacting with plugins      * @param canonicalUrl plugin root Web URL      * @param dataDir directory for plugin data      * @param gerritRuntime current Gerrit runtime (daemon, batch, ...)      */
+DECL|method|PluginDescription ( PluginUser user, String canonicalUrl, Path dataDir, GerritRuntime gerritRuntime)
 specifier|public
 name|PluginDescription
 parameter_list|(
@@ -174,6 +195,9 @@ name|canonicalUrl
 parameter_list|,
 name|Path
 name|dataDir
+parameter_list|,
+name|GerritRuntime
+name|gerritRuntime
 parameter_list|)
 block|{
 name|this
@@ -193,6 +217,12 @@ operator|.
 name|dataDir
 operator|=
 name|dataDir
+expr_stmt|;
+name|this
+operator|.
+name|gerritRuntime
+operator|=
+name|gerritRuntime
 expr_stmt|;
 block|}
 block|}
