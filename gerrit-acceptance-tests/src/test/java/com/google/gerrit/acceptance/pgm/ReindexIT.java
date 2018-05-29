@@ -100,7 +100,7 @@ specifier|public
 class|class
 name|ReindexIT
 extends|extends
-name|AbstractReindexIT
+name|AbstractReindexTests
 block|{
 annotation|@
 name|Override
