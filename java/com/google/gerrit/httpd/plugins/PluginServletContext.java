@@ -793,11 +793,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"[plugin %s] %s"
+literal|"[plugin {}] {}"
 argument_list|,
 name|plugin
 operator|.
@@ -805,7 +801,6 @@ name|getName
 argument_list|()
 argument_list|,
 name|msg
-argument_list|)
 argument_list|,
 name|reason
 argument_list|)

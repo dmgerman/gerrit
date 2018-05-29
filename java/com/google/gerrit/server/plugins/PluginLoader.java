@@ -1307,16 +1307,11 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin provides its own name:<%s>, use it instead of the input name:<%s>"
+literal|"Plugin provides its own name:<{}>, use it instead of the input name:<{}>"
 argument_list|,
 name|name
 argument_list|,
 name|originalName
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1379,17 +1374,12 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Replacing plugin %s"
+literal|"Replacing plugin {}"
 argument_list|,
 name|active
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|Path
@@ -1472,17 +1462,12 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Installed plugin %s"
+literal|"Installed plugin {}"
 argument_list|,
 name|plugin
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1544,11 +1529,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Unloading plugin %s, version %s"
+literal|"Unloading plugin {}, version {}"
 argument_list|,
 name|name
 argument_list|,
@@ -1556,7 +1537,6 @@ name|plugin
 operator|.
 name|getVersion
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|plugin
@@ -1618,11 +1598,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Remote plugin administration is disabled, ignoring disablePlugins("
-operator|+
+literal|"Remote plugin administration is disabled, ignoring disablePlugins({})"
+argument_list|,
 name|names
-operator|+
-literal|")"
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1663,17 +1641,12 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Disabling plugin %s"
+literal|"Disabling plugin {}"
 argument_list|,
 name|active
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|Path
@@ -1785,17 +1758,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot load disabled plugin %s"
+literal|"Cannot load disabled plugin {}"
 argument_list|,
 name|active
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 operator|.
@@ -1835,11 +1803,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Remote plugin administration is disabled, ignoring enablePlugins("
-operator|+
+literal|"Remote plugin administration is disabled, ignoring enablePlugins({})"
+argument_list|,
 name|names
-operator|+
-literal|")"
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1880,14 +1846,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Enabling plugin %s"
+literal|"Enabling plugin {}"
 argument_list|,
 name|name
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
@@ -1966,11 +1927,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Failed to move plugin "
-operator|+
+literal|"Failed to move plugin {} into place"
+argument_list|,
 name|name
-operator|+
-literal|" into place"
 argument_list|,
 name|e
 argument_list|)
@@ -2081,8 +2040,8 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Removing stale plugin file: "
-operator|+
+literal|"Removing stale plugin file: {}"
+argument_list|,
 name|file
 operator|.
 name|toFile
@@ -2112,11 +2071,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Failed to remove stale plugin file %s: %s"
+literal|"Failed to remove stale plugin file {}: {}"
 argument_list|,
 name|file
 operator|.
@@ -2130,7 +2085,6 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2146,8 +2100,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to discover stale plugin files: "
-operator|+
+literal|"Unable to discover stale plugin files: {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -2191,9 +2145,9 @@ name|log
 operator|.
 name|info
 argument_list|(
+literal|"{} does not exist; creating"
+argument_list|,
 name|absolutePath
-operator|+
-literal|" does not exist; creating"
 argument_list|)
 expr_stmt|;
 try|try
@@ -2216,11 +2170,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Failed to create %s: %s"
+literal|"Failed to create {}: {}"
 argument_list|,
 name|absolutePath
 argument_list|,
@@ -2229,7 +2179,6 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2237,8 +2186,8 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Loading plugins from "
-operator|+
+literal|"Loading plugins from {}"
+argument_list|,
 name|absolutePath
 argument_list|)
 expr_stmt|;
@@ -2517,14 +2466,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Reloading plugin %s"
+literal|"Reloading plugin {}"
 argument_list|,
 name|name
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|Plugin
@@ -2546,11 +2490,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Reloaded plugin %s, version %s"
+literal|"Reloaded plugin {}, version {}"
 argument_list|,
 name|newPlugin
 operator|.
@@ -2561,7 +2501,6 @@ name|newPlugin
 operator|.
 name|getVersion
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2575,14 +2514,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot reload plugin %s"
+literal|"Cannot reload plugin {}"
 argument_list|,
 name|name
-argument_list|)
 argument_list|,
 name|e
 operator|.
@@ -2789,17 +2723,12 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Reloading plugin %s"
+literal|"Reloading plugin {}"
 argument_list|,
 name|active
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2830,11 +2759,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%s plugin %s, version %s"
+literal|"{} plugin {}, version {}"
 argument_list|,
 name|active
 operator|==
@@ -2854,7 +2779,6 @@ operator|.
 name|getVersion
 argument_list|()
 argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2868,14 +2792,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot load plugin %s"
+literal|"Cannot load plugin {}"
 argument_list|,
 name|name
-argument_list|)
 argument_list|,
 name|e
 operator|.
@@ -4324,22 +4243,17 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin<%s> was disabled, because"
+literal|"Plugin<{}> was disabled, because"
 operator|+
-literal|" another plugin<%s>"
+literal|" another plugin<{}>"
 operator|+
-literal|" with the same name<%s> already exists"
+literal|" with the same name<{}> already exists"
 argument_list|,
 name|loser
 argument_list|,
 name|winner
 argument_list|,
 name|plugin
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|Path
@@ -4390,8 +4304,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to fully disable plugin "
-operator|+
+literal|"Failed to fully disable plugin {}"
+argument_list|,
 name|loser
 argument_list|,
 name|e
@@ -4455,8 +4369,8 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Cannot list "
-operator|+
+literal|"Cannot list {}"
+argument_list|,
 name|pluginsDir
 operator|.
 name|toAbsolutePath

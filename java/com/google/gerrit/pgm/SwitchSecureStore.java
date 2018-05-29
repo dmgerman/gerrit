@@ -586,17 +586,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"File %s doesn't exist"
+literal|"File {} doesn't exist"
 argument_list|,
 name|newSecureStorePath
 operator|.
 name|toAbsolutePath
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -634,9 +629,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Old and new SecureStore implementation names "
-operator|+
-literal|"are the same. Migration will not work"
+literal|"Old and new SecureStore implementation names are the same. Migration will not work"
 argument_list|)
 expr_stmt|;
 return|return
