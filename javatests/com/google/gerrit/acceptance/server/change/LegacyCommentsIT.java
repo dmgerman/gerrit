@@ -420,6 +420,9 @@ name|assertThat
 argument_list|(
 name|noteUtil
 operator|.
+name|getChangeNoteJson
+argument_list|()
+operator|.
 name|getWriteJson
 argument_list|()
 argument_list|)

@@ -128,9 +128,11 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ChangeNoteUtil
+name|NoteDbChangeState
 operator|.
-name|formatTime
+name|PrimaryStorage
+operator|.
+name|REVIEW_DB
 import|;
 end_import
 
@@ -146,11 +148,9 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NoteDbChangeState
+name|NoteDbUtil
 operator|.
-name|PrimaryStorage
-operator|.
-name|REVIEW_DB
+name|formatTime
 import|;
 end_import
 

@@ -461,10 +461,15 @@ specifier|final
 name|AllUsersName
 name|allUsers
 decl_stmt|;
-DECL|field|noteUtil
+DECL|field|changeNoteJson
 specifier|final
-name|ChangeNoteUtil
-name|noteUtil
+name|ChangeNoteJson
+name|changeNoteJson
+decl_stmt|;
+DECL|field|legacyChangeNoteRead
+specifier|final
+name|LegacyChangeNoteRead
+name|legacyChangeNoteRead
 decl_stmt|;
 DECL|field|metrics
 specifier|final
@@ -500,7 +505,7 @@ name|cache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Args ( GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, NoteDbMetrics metrics, Provider<ReviewDb> db, Provider<ChangeRebuilder> rebuilder, Provider<ChangeNotesCache> cache)
+DECL|method|Args ( GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, ChangeNoteJson changeNoteJson, LegacyChangeNoteRead legacyChangeNoteRead, NoteDbMetrics metrics, Provider<ReviewDb> db, Provider<ChangeRebuilder> rebuilder, Provider<ChangeNotesCache> cache)
 name|Args
 parameter_list|(
 name|GitRepositoryManager
@@ -512,8 +517,11 @@ parameter_list|,
 name|AllUsersName
 name|allUsers
 parameter_list|,
-name|ChangeNoteUtil
-name|noteUtil
+name|ChangeNoteJson
+name|changeNoteJson
+parameter_list|,
+name|LegacyChangeNoteRead
+name|legacyChangeNoteRead
 parameter_list|,
 name|NoteDbMetrics
 name|metrics
@@ -557,9 +565,15 @@ name|allUsers
 expr_stmt|;
 name|this
 operator|.
-name|noteUtil
+name|legacyChangeNoteRead
 operator|=
-name|noteUtil
+name|legacyChangeNoteRead
+expr_stmt|;
+name|this
+operator|.
+name|changeNoteJson
+operator|=
+name|changeNoteJson
 expr_stmt|;
 name|this
 operator|.

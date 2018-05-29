@@ -591,6 +591,41 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+return|return
+name|build
+argument_list|(
+name|noteUtil
+operator|.
+name|getChangeNoteJson
+argument_list|()
+argument_list|,
+name|noteUtil
+operator|.
+name|getLegacyChangeNoteWrite
+argument_list|()
+argument_list|,
+name|writeJson
+argument_list|)
+return|;
+block|}
+DECL|method|build ( ChangeNoteJson changeNoteJson, LegacyChangeNoteWrite legacyChangeNoteWrite, boolean writeJson)
+specifier|public
+name|byte
+index|[]
+name|build
+parameter_list|(
+name|ChangeNoteJson
+name|changeNoteJson
+parameter_list|,
+name|LegacyChangeNoteWrite
+name|legacyChangeNoteWrite
+parameter_list|,
+name|boolean
+name|writeJson
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 name|ByteArrayOutputStream
 name|out
 init|=
@@ -605,7 +640,7 @@ condition|)
 block|{
 name|buildNoteJson
 argument_list|(
-name|noteUtil
+name|changeNoteJson
 argument_list|,
 name|out
 argument_list|)
@@ -615,7 +650,7 @@ else|else
 block|{
 name|buildNoteLegacy
 argument_list|(
-name|noteUtil
+name|legacyChangeNoteWrite
 argument_list|,
 name|out
 argument_list|)
@@ -834,12 +869,12 @@ return|return
 name|all
 return|;
 block|}
-DECL|method|buildNoteJson (ChangeNoteUtil noteUtil, OutputStream out)
+DECL|method|buildNoteJson (ChangeNoteJson noteUtil, OutputStream out)
 specifier|private
 name|void
 name|buildNoteJson
 parameter_list|(
-name|ChangeNoteUtil
+name|ChangeNoteJson
 name|noteUtil
 parameter_list|,
 name|OutputStream
@@ -928,12 +963,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|buildNoteLegacy (ChangeNoteUtil noteUtil, OutputStream out)
+DECL|method|buildNoteLegacy (LegacyChangeNoteWrite noteUtil, OutputStream out)
 specifier|private
 name|void
 name|buildNoteLegacy
 parameter_list|(
-name|ChangeNoteUtil
+name|LegacyChangeNoteWrite
 name|noteUtil
 parameter_list|,
 name|OutputStream

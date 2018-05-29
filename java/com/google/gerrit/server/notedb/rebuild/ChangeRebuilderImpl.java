@@ -3833,6 +3833,9 @@ block|}
 return|return
 name|changeNoteUtil
 operator|.
+name|getLegacyChangeNoteWrite
+argument_list|()
+operator|.
 name|newIdent
 argument_list|(
 name|id
@@ -3965,6 +3968,9 @@ block|{
 name|authorId
 operator|=
 name|changeNoteUtil
+operator|.
+name|getLegacyChangeNoteRead
+argument_list|()
 operator|.
 name|parseIdent
 argument_list|(

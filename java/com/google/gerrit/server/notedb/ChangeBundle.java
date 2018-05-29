@@ -3588,7 +3588,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|sanitizeFooter
 argument_list|(
@@ -3607,7 +3607,7 @@ name|s
 parameter_list|)
 block|{
 return|return
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|sanitizeFooter
 argument_list|(

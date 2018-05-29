@@ -1132,7 +1132,11 @@ name|parse
 argument_list|(
 name|args
 operator|.
-name|noteUtil
+name|changeNoteJson
+argument_list|,
+name|args
+operator|.
+name|legacyChangeNoteRead
 argument_list|,
 name|getChangeId
 argument_list|()

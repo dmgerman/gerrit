@@ -1428,11 +1428,17 @@ return|;
 block|}
 block|}
 comment|// Private final members initialized in the constructor.
-DECL|field|noteUtil
+DECL|field|changeNoteJson
 specifier|private
 specifier|final
-name|ChangeNoteUtil
-name|noteUtil
+name|ChangeNoteJson
+name|changeNoteJson
+decl_stmt|;
+DECL|field|legacyChangeNoteRead
+specifier|private
+specifier|final
+name|LegacyChangeNoteRead
+name|legacyChangeNoteRead
 decl_stmt|;
 DECL|field|metrics
 specifier|private
@@ -1745,7 +1751,7 @@ operator|.
 name|Id
 name|revertOf
 decl_stmt|;
-DECL|method|ChangeNotesParser ( Change.Id changeId, ObjectId tip, ChangeNotesRevWalk walk, ChangeNoteUtil noteUtil, NoteDbMetrics metrics)
+DECL|method|ChangeNotesParser ( Change.Id changeId, ObjectId tip, ChangeNotesRevWalk walk, ChangeNoteJson changeNoteJson, LegacyChangeNoteRead legacyChangeNoteRead, NoteDbMetrics metrics)
 name|ChangeNotesParser
 parameter_list|(
 name|Change
@@ -1759,8 +1765,11 @@ parameter_list|,
 name|ChangeNotesRevWalk
 name|walk
 parameter_list|,
-name|ChangeNoteUtil
-name|noteUtil
+name|ChangeNoteJson
+name|changeNoteJson
+parameter_list|,
+name|LegacyChangeNoteRead
+name|legacyChangeNoteRead
 parameter_list|,
 name|NoteDbMetrics
 name|metrics
@@ -1786,9 +1795,15 @@ name|walk
 expr_stmt|;
 name|this
 operator|.
-name|noteUtil
+name|changeNoteJson
 operator|=
-name|noteUtil
+name|changeNoteJson
+expr_stmt|;
+name|this
+operator|.
+name|legacyChangeNoteRead
+operator|=
+name|legacyChangeNoteRead
 expr_stmt|;
 name|this
 operator|.
@@ -3156,7 +3171,7 @@ name|realUser
 argument_list|)
 decl_stmt|;
 return|return
-name|noteUtil
+name|legacyChangeNoteRead
 operator|.
 name|parseIdent
 argument_list|(
@@ -3958,7 +3973,7 @@ name|Optional
 operator|.
 name|ofNullable
 argument_list|(
-name|noteUtil
+name|legacyChangeNoteRead
 operator|.
 name|parseIdent
 argument_list|(
@@ -4924,7 +4939,9 @@ name|RevisionNoteMap
 operator|.
 name|parse
 argument_list|(
-name|noteUtil
+name|changeNoteJson
+argument_list|,
+name|legacyChangeNoteRead
 argument_list|,
 name|id
 argument_list|,
@@ -5265,7 +5282,7 @@ argument_list|)
 expr_stmt|;
 name|effectiveAccountId
 operator|=
-name|noteUtil
+name|legacyChangeNoteRead
 operator|.
 name|parseIdent
 argument_list|(
@@ -5529,7 +5546,7 @@ argument_list|)
 expr_stmt|;
 name|effectiveAccountId
 operator|=
-name|noteUtil
+name|legacyChangeNoteRead
 operator|.
 name|parseIdent
 argument_list|(
@@ -5990,7 +6007,7 @@ name|label
 operator|.
 name|appliedBy
 operator|=
-name|noteUtil
+name|legacyChangeNoteRead
 operator|.
 name|parseIdent
 argument_list|(
@@ -6084,7 +6101,7 @@ literal|null
 return|;
 block|}
 return|return
-name|noteUtil
+name|legacyChangeNoteRead
 operator|.
 name|parseIdent
 argument_list|(
@@ -6148,7 +6165,7 @@ operator|.
 name|Id
 name|accountId
 init|=
-name|noteUtil
+name|legacyChangeNoteRead
 operator|.
 name|parseIdent
 argument_list|(

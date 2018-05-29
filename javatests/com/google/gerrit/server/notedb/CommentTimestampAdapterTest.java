@@ -369,7 +369,7 @@ argument_list|()
 expr_stmt|;
 name|gson
 operator|=
-name|ChangeNoteUtil
+name|ChangeNoteJson
 operator|.
 name|newGson
 argument_list|()

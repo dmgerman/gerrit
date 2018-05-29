@@ -593,7 +593,7 @@ name|parseRobotComments
 argument_list|(
 name|args
 operator|.
-name|noteUtil
+name|changeNoteJson
 argument_list|,
 name|reader
 argument_list|,

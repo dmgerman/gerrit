@@ -1246,6 +1246,9 @@ operator|.
 name|parseRobotComments
 argument_list|(
 name|noteUtil
+operator|.
+name|getChangeNoteJson
+argument_list|()
 argument_list|,
 name|rw
 operator|.

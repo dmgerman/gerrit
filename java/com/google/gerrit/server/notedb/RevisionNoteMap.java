@@ -260,7 +260,7 @@ name|T
 argument_list|>
 name|revisionNotes
 decl_stmt|;
-DECL|method|parse ( ChangeNoteUtil noteUtil, Change.Id changeId, ObjectReader reader, NoteMap noteMap, PatchLineComment.Status status)
+DECL|method|parse ( ChangeNoteJson noteJson, LegacyChangeNoteRead legacyChangeNoteRead, Change.Id changeId, ObjectReader reader, NoteMap noteMap, PatchLineComment.Status status)
 specifier|static
 name|RevisionNoteMap
 argument_list|<
@@ -268,8 +268,11 @@ name|ChangeRevisionNote
 argument_list|>
 name|parse
 parameter_list|(
-name|ChangeNoteUtil
-name|noteUtil
+name|ChangeNoteJson
+name|noteJson
+parameter_list|,
+name|LegacyChangeNoteRead
+name|legacyChangeNoteRead
 parameter_list|,
 name|Change
 operator|.
@@ -319,7 +322,9 @@ init|=
 operator|new
 name|ChangeRevisionNote
 argument_list|(
-name|noteUtil
+name|noteJson
+argument_list|,
+name|legacyChangeNoteRead
 argument_list|,
 name|changeId
 argument_list|,
@@ -371,7 +376,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|parseRobotComments ( ChangeNoteUtil noteUtil, ObjectReader reader, NoteMap noteMap)
+DECL|method|parseRobotComments ( ChangeNoteJson changeNoteJson, ObjectReader reader, NoteMap noteMap)
 specifier|static
 name|RevisionNoteMap
 argument_list|<
@@ -379,8 +384,8 @@ name|RobotCommentsRevisionNote
 argument_list|>
 name|parseRobotComments
 parameter_list|(
-name|ChangeNoteUtil
-name|noteUtil
+name|ChangeNoteJson
+name|changeNoteJson
 parameter_list|,
 name|ObjectReader
 name|reader
@@ -420,7 +425,7 @@ init|=
 operator|new
 name|RobotCommentsRevisionNote
 argument_list|(
-name|noteUtil
+name|changeNoteJson
 argument_list|,
 name|reader
 argument_list|,

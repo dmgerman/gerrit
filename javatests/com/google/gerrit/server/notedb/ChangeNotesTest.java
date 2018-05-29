@@ -927,6 +927,20 @@ operator|.
 name|Factory
 name|draftNotesFactory
 decl_stmt|;
+DECL|field|changeNoteJson
+annotation|@
+name|Inject
+specifier|private
+name|ChangeNoteJson
+name|changeNoteJson
+decl_stmt|;
+DECL|field|legacyChangeNoteRead
+annotation|@
+name|Inject
+specifier|private
+name|LegacyChangeNoteRead
+name|legacyChangeNoteRead
+decl_stmt|;
 DECL|field|noteUtil
 annotation|@
 name|Inject
@@ -9179,7 +9193,7 @@ literal|"\n"
 operator|+
 literal|"1:2-3:4\n"
 operator|+
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -9770,7 +9784,9 @@ argument_list|()
 argument_list|,
 name|rw
 argument_list|,
-name|noteUtil
+name|changeNoteJson
+argument_list|,
+name|legacyChangeNoteRead
 argument_list|,
 name|args
 operator|.
@@ -9841,7 +9857,9 @@ argument_list|()
 argument_list|,
 name|rw
 argument_list|,
-name|noteUtil
+name|changeNoteJson
+argument_list|,
+name|legacyChangeNoteRead
 argument_list|,
 name|args
 operator|.
@@ -12109,7 +12127,7 @@ literal|"\n"
 operator|+
 literal|"1:1-2:1\n"
 operator|+
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -12134,7 +12152,7 @@ literal|"\n"
 operator|+
 literal|"2:1-3:1\n"
 operator|+
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -12163,7 +12181,7 @@ literal|"\n"
 operator|+
 literal|"3:0-4:1\n"
 operator|+
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -12528,7 +12546,7 @@ literal|"\n"
 operator|+
 literal|"1:1-2:1\n"
 operator|+
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -12553,7 +12571,7 @@ literal|"\n"
 operator|+
 literal|"2:1-3:1\n"
 operator|+
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -12903,7 +12921,7 @@ literal|"\n"
 operator|+
 literal|"1:1-2:1\n"
 operator|+
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -12928,7 +12946,7 @@ literal|"\n"
 operator|+
 literal|"1:1-2:1\n"
 operator|+
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -13335,7 +13353,7 @@ decl_stmt|;
 name|String
 name|timeStr
 init|=
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -13731,7 +13749,7 @@ literal|"\n"
 operator|+
 literal|"1:1-2:1\n"
 operator|+
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -14045,7 +14063,7 @@ decl_stmt|;
 name|String
 name|timeStr
 init|=
-name|ChangeNoteUtil
+name|NoteDbUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -21858,6 +21876,9 @@ parameter_list|()
 block|{
 return|return
 name|noteUtil
+operator|.
+name|getChangeNoteJson
+argument_list|()
 operator|.
 name|getWriteJson
 argument_list|()

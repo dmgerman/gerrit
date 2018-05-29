@@ -313,11 +313,17 @@ argument_list|(
 name|UTF_8
 argument_list|)
 decl_stmt|;
-DECL|field|noteUtil
+DECL|field|noteJson
 specifier|private
 specifier|final
-name|ChangeNoteUtil
-name|noteUtil
+name|ChangeNoteJson
+name|noteJson
+decl_stmt|;
+DECL|field|legacyChangeNoteRead
+specifier|private
+specifier|final
+name|LegacyChangeNoteRead
+name|legacyChangeNoteRead
 decl_stmt|;
 DECL|field|changeId
 specifier|private
@@ -340,11 +346,14 @@ specifier|private
 name|String
 name|pushCert
 decl_stmt|;
-DECL|method|ChangeRevisionNote ( ChangeNoteUtil noteUtil, Change.Id changeId, ObjectReader reader, ObjectId noteId, PatchLineComment.Status status)
+DECL|method|ChangeRevisionNote ( ChangeNoteJson noteJson, LegacyChangeNoteRead legacyChangeNoteRead, Change.Id changeId, ObjectReader reader, ObjectId noteId, PatchLineComment.Status status)
 name|ChangeRevisionNote
 parameter_list|(
-name|ChangeNoteUtil
-name|noteUtil
+name|ChangeNoteJson
+name|noteJson
+parameter_list|,
+name|LegacyChangeNoteRead
+name|legacyChangeNoteRead
 parameter_list|,
 name|Change
 operator|.
@@ -372,9 +381,15 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|noteUtil
+name|legacyChangeNoteRead
 operator|=
-name|noteUtil
+name|legacyChangeNoteRead
+expr_stmt|;
+name|this
+operator|.
+name|noteJson
+operator|=
+name|noteJson
 expr_stmt|;
 name|this
 operator|.
@@ -454,7 +469,7 @@ name|data
 init|=
 name|parseJson
 argument_list|(
-name|noteUtil
+name|noteJson
 argument_list|,
 name|raw
 argument_list|,
@@ -537,7 +552,7 @@ name|Comment
 argument_list|>
 name|comments
 init|=
-name|noteUtil
+name|legacyChangeNoteRead
 operator|.
 name|parseNote
 argument_list|(
@@ -595,12 +610,12 @@ operator|==
 literal|'['
 return|;
 block|}
-DECL|method|parseJson (ChangeNoteUtil noteUtil, byte[] raw, int offset)
+DECL|method|parseJson (ChangeNoteJson noteUtil, byte[] raw, int offset)
 specifier|private
 name|RevisionNoteData
 name|parseJson
 parameter_list|(
-name|ChangeNoteUtil
+name|ChangeNoteJson
 name|noteUtil
 parameter_list|,
 name|byte
