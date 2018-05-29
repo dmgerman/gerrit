@@ -87,7 +87,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Match query is a query that analyzes the text and constructs a query as the result of the  * analysis. It can construct different queries based on the type provided. A trimmed down version  * of {@link org.elasticsearch.index.query.MatchQueryBuilder} for this very package.  */
+comment|/**  * Match query is a query that analyzes the text and constructs a query as the result of the  * analysis. It can construct different queries based on the type provided. A trimmed down version  * of org.elasticsearch.index.query.MatchQueryBuilder for this very package.  */
 end_comment
 
 begin_class

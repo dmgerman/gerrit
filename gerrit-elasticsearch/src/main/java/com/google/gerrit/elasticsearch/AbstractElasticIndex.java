@@ -1158,7 +1158,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Failed to delete change %s in index %s: %s"
+literal|"Failed to delete %s from index %s: %s"
 argument_list|,
 name|c
 argument_list|,
