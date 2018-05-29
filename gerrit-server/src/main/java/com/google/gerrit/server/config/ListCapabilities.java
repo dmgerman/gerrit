@@ -455,16 +455,11 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin name %s must match [A-Za-z0-9-]+ to use capabilities;"
+literal|"Plugin name {} must match [A-Za-z0-9-]+ to use capabilities;"
 operator|+
 literal|" rename the plugin"
 argument_list|,
 name|pluginName
-argument_list|)
 argument_list|)
 expr_stmt|;
 continue|continue;

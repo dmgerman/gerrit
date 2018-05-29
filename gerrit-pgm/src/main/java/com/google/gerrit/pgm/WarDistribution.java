@@ -443,11 +443,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Error opening plugin %s: %s"
+literal|"Error opening plugin {}: {}"
 argument_list|,
 name|ze
 operator|.
@@ -458,7 +454,6 @@ name|ioe
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

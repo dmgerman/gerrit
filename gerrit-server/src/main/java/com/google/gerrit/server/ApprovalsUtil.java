@@ -1782,11 +1782,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Failed to check if account %d can see change %d"
+literal|"Failed to check if account {} can see change {}"
 argument_list|,
 name|accountId
 operator|.
@@ -1800,7 +1796,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

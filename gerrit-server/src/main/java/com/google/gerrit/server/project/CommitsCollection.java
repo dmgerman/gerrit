@@ -900,15 +900,13 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Cannot look up change for commit "
-operator|+
+literal|"Cannot look up change for commit {} in {}"
+argument_list|,
 name|commit
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|" in "
-operator|+
+argument_list|,
 name|project
 argument_list|,
 name|e
@@ -1013,11 +1011,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot verify permissions to commit object %s in repository %s"
+literal|"Cannot verify permissions to commit object {} in repository {}"
 argument_list|,
 name|commit
 operator|.
@@ -1028,7 +1022,6 @@ name|state
 operator|.
 name|getNameKey
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

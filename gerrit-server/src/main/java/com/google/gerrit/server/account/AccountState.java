@@ -667,11 +667,7 @@ name|logger
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"DecoderException for user %s: %s "
+literal|"DecoderException for user {}: {}"
 argument_list|,
 name|username
 argument_list|,
@@ -679,7 +675,6 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

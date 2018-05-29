@@ -3009,11 +3009,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Failed to check if account %d can see change %d"
+literal|"Failed to check if account {} can see change {}"
 argument_list|,
 name|accountId
 operator|.
@@ -3027,7 +3023,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -3177,8 +3172,8 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Cannot send email for new change "
-operator|+
+literal|"Cannot send email for new change {}"
+argument_list|,
 name|change
 operator|.
 name|getId

@@ -1234,15 +1234,10 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"could not load project %s while computing etag"
+literal|"could not load project {} while computing etag"
 argument_list|,
 name|getProject
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|projectStateTree

@@ -829,8 +829,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Can't create disk cache: "
-operator|+
+literal|"Can't create disk cache: {}"
+argument_list|,
 name|loc
 operator|.
 name|toAbsolutePath
@@ -857,8 +857,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Can't write to disk cache: "
-operator|+
+literal|"Can't write to disk cache: {}"
+argument_list|,
 name|loc
 operator|.
 name|toAbsolutePath
@@ -873,8 +873,8 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Enabling disk cache "
-operator|+
+literal|"Enabling disk cache {}"
+argument_list|,
 name|loc
 operator|.
 name|toAbsolutePath
@@ -1020,17 +1020,12 @@ name|log
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Finishing %d disk cache updates"
+literal|"Finishing {} disk cache updates"
 argument_list|,
 name|pending
 operator|.
 name|size
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 for|for

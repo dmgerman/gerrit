@@ -846,14 +846,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Reindex account %s failed."
+literal|"Reindex account {} failed."
 argument_list|,
 name|accountId
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

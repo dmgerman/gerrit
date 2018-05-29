@@ -537,11 +537,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Group %s no longer available, subgroup of %s"
+literal|"Group {} no longer available, subgroup of {}"
 argument_list|,
 name|subgroupUuid
 argument_list|,
@@ -549,7 +545,6 @@ name|group
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 continue|continue;

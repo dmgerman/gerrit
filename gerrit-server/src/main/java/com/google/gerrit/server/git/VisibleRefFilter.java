@@ -2633,11 +2633,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Can't check permission for user %s on project %s"
+literal|"Can't check permission for user {} on project {}"
 argument_list|,
 name|user
 operator|.
@@ -2648,7 +2644,6 @@ name|projectState
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

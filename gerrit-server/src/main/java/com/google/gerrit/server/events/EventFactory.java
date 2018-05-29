@@ -3540,11 +3540,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot get size information for %s: %s"
+literal|"Cannot get size information for {}: {}"
 argument_list|,
 name|pId
 argument_list|,
@@ -3552,7 +3548,6 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

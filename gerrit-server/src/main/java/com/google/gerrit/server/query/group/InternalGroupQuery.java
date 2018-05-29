@@ -573,16 +573,11 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Ambiguous %s for groups %s."
+literal|"Ambiguous {} for groups {}."
 argument_list|,
 name|groupDescription
 argument_list|,
 name|groupUuids
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

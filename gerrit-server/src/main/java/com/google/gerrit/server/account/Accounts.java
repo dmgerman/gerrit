@@ -615,17 +615,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Ignoring invalid account %s"
+literal|"Ignoring invalid account {}"
 argument_list|,
 name|accountId
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

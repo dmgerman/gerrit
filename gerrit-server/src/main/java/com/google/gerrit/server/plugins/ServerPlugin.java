@@ -1033,17 +1033,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin %s has invalid Gerrit-ReloadMode %s; assuming restart"
+literal|"Plugin {} has invalid Gerrit-ReloadMode {}; assuming restart"
 argument_list|,
 name|getName
 argument_list|()
 argument_list|,
 name|v
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

@@ -892,17 +892,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Ignoring invalid external ID note %s"
+literal|"Ignoring invalid external ID note {}"
 argument_list|,
 name|note
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

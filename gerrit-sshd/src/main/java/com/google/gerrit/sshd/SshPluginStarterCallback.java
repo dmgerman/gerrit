@@ -485,17 +485,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Plugin %s did not define its top-level command nor any DynamicOptions"
+literal|"Plugin {} did not define its top-level command nor any DynamicOptions"
 argument_list|,
 name|plugin
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|,
 name|err
 argument_list|)

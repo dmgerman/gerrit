@@ -1874,11 +1874,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Error in ReceiveCommits while processing changes for project %s"
+literal|"Error in ReceiveCommits while processing changes for project {}"
 argument_list|,
 name|projectControl
 operator|.
@@ -1887,7 +1883,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

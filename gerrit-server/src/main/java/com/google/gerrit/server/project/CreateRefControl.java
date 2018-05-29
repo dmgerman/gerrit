@@ -575,11 +575,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"RevWalk(%s) parsing %s:"
+literal|"RevWalk({}) parsing {}:"
 argument_list|,
 name|branch
 operator|.
@@ -590,7 +586,6 @@ name|tag
 operator|.
 name|name
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

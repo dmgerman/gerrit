@@ -3085,11 +3085,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"parent project %s of project %s not found"
+literal|"parent project {} of project {} not found"
 argument_list|,
 name|parent
 operator|.
@@ -3100,7 +3096,6 @@ name|ps
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

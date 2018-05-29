@@ -2430,11 +2430,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot verify permissions to commit object %s in repository %s"
+literal|"Cannot verify permissions to commit object {} in repository {}"
 argument_list|,
 name|commit
 operator|.
@@ -2446,7 +2442,6 @@ argument_list|()
 operator|.
 name|getNameKey
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

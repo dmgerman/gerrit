@@ -1639,17 +1639,12 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Failed to check if plugin config of project %s was updated."
+literal|"Failed to check if plugin config of project {} was updated."
 argument_list|,
 name|p
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

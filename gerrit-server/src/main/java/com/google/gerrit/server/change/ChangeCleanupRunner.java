@@ -494,14 +494,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Ignoring invalid changeCleanup schedule configuration: %s"
+literal|"Ignoring invalid changeCleanup schedule configuration: {}"
 argument_list|,
 name|scheduleConfig
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

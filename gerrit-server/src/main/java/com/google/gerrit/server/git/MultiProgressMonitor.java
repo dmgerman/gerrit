@@ -849,15 +849,8 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"MultiProgressMonitor worker killed after %sms"
-operator|+
-name|detailMessage
+literal|"MultiProgressMonitor worker killed after {}ms {}"
 argument_list|,
-comment|//
 name|TimeUnit
 operator|.
 name|MILLISECONDS
@@ -870,7 +863,8 @@ name|overallStart
 argument_list|,
 name|NANOSECONDS
 argument_list|)
-argument_list|)
+argument_list|,
+name|detailMessage
 argument_list|)
 expr_stmt|;
 block|}

@@ -595,11 +595,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Class %s uses both @%s and @%s"
+literal|"Class {} uses both @{} and @{}"
 argument_list|,
 name|clazz
 operator|.
@@ -619,7 +615,6 @@ name|class
 operator|.
 name|getSimpleName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -939,11 +934,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Class %s uses @%s(scope=%s), but is not within a plugin"
+literal|"Class {} uses @{}(scope={}), but is not within a plugin"
 argument_list|,
 name|clazz
 operator|.
@@ -959,7 +950,6 @@ name|scope
 operator|.
 name|name
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -989,11 +979,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Class %s requires unknown capability %s"
+literal|"Class {} requires unknown capability {}"
 argument_list|,
 name|clazz
 operator|.
@@ -1001,7 +987,6 @@ name|getName
 argument_list|()
 argument_list|,
 name|capability
-argument_list|)
 argument_list|)
 expr_stmt|;
 throw|throw

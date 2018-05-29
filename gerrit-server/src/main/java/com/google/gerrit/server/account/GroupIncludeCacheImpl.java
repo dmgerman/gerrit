@@ -956,17 +956,12 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot load groups containing %d as member"
+literal|"Cannot load groups containing {} as member"
 argument_list|,
 name|memberId
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
