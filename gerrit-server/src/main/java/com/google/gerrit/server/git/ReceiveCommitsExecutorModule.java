@@ -316,6 +316,8 @@ argument_list|(
 name|poolSize
 argument_list|,
 literal|"ReceiveCommits"
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
@@ -377,6 +379,8 @@ argument_list|(
 name|poolSize
 argument_list|,
 literal|"SendEmail"
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
