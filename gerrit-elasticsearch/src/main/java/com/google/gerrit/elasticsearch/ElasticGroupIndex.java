@@ -692,7 +692,7 @@ name|schema
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ElasticGroupIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, ElasticRestClientBuilder clientBuilder, @Assisted Schema<AccountGroup> schema)
+DECL|method|ElasticGroupIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, ElasticRestClientProvider client, @Assisted Schema<AccountGroup> schema)
 name|ElasticGroupIndex
 parameter_list|(
 name|ElasticConfiguration
@@ -707,8 +707,8 @@ name|GroupCache
 argument_list|>
 name|groupCache
 parameter_list|,
-name|ElasticRestClientBuilder
-name|clientBuilder
+name|ElasticRestClientProvider
+name|client
 parameter_list|,
 annotation|@
 name|Assisted
@@ -727,7 +727,7 @@ name|sitePaths
 argument_list|,
 name|schema
 argument_list|,
-name|clientBuilder
+name|client
 argument_list|,
 name|GROUPS
 argument_list|)

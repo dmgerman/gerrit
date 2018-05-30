@@ -474,18 +474,6 @@ name|Response
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|elasticsearch
-operator|.
-name|client
-operator|.
-name|RestClient
-import|;
-end_import
-
 begin_class
 DECL|class|AbstractElasticIndex
 specifier|abstract
@@ -706,7 +694,7 @@ decl_stmt|;
 DECL|field|client
 specifier|private
 specifier|final
-name|RestClient
+name|ElasticRestClientProvider
 name|client
 decl_stmt|;
 DECL|field|indexName
@@ -727,7 +715,7 @@ specifier|final
 name|ElasticQueryBuilder
 name|queryBuilder
 decl_stmt|;
-DECL|method|AbstractElasticIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Schema<V> schema, ElasticRestClientBuilder clientBuilder, String indexName)
+DECL|method|AbstractElasticIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Schema<V> schema, ElasticRestClientProvider client, String indexName)
 name|AbstractElasticIndex
 parameter_list|(
 name|ElasticConfiguration
@@ -742,8 +730,8 @@ name|V
 argument_list|>
 name|schema
 parameter_list|,
-name|ElasticRestClientBuilder
-name|clientBuilder
+name|ElasticRestClientProvider
+name|client
 parameter_list|,
 name|String
 name|indexName
@@ -811,10 +799,7 @@ name|this
 operator|.
 name|client
 operator|=
-name|clientBuilder
-operator|.
-name|build
-argument_list|()
+name|client
 expr_stmt|;
 block|}
 annotation|@
@@ -840,22 +825,7 @@ name|void
 name|close
 parameter_list|()
 block|{
-try|try
-block|{
-name|client
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|// Ignored.
-block|}
+comment|// Do nothing. Client is closed by the provider.
 block|}
 annotation|@
 name|Override
@@ -982,6 +952,9 @@ name|response
 init|=
 name|client
 operator|.
+name|get
+argument_list|()
+operator|.
 name|performRequest
 argument_list|(
 literal|"HEAD"
@@ -1012,6 +985,9 @@ block|{
 name|response
 operator|=
 name|client
+operator|.
+name|get
+argument_list|()
 operator|.
 name|performRequest
 argument_list|(
@@ -1505,6 +1481,9 @@ argument_list|)
 decl_stmt|;
 return|return
 name|client
+operator|.
+name|get
+argument_list|()
 operator|.
 name|performRequest
 argument_list|(

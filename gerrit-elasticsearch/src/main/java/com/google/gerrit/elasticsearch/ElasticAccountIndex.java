@@ -728,7 +728,7 @@ name|schema
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ElasticAccountIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Provider<AccountCache> accountCache, ElasticRestClientBuilder clientBuilder, @Assisted Schema<AccountState> schema)
+DECL|method|ElasticAccountIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Provider<AccountCache> accountCache, ElasticRestClientProvider client, @Assisted Schema<AccountState> schema)
 name|ElasticAccountIndex
 parameter_list|(
 name|ElasticConfiguration
@@ -743,8 +743,8 @@ name|AccountCache
 argument_list|>
 name|accountCache
 parameter_list|,
-name|ElasticRestClientBuilder
-name|clientBuilder
+name|ElasticRestClientProvider
+name|client
 parameter_list|,
 annotation|@
 name|Assisted
@@ -763,7 +763,7 @@ name|sitePaths
 argument_list|,
 name|schema
 argument_list|,
-name|clientBuilder
+name|client
 argument_list|,
 name|ACCOUNTS
 argument_list|)

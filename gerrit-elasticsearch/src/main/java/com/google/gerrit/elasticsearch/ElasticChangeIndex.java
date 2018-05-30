@@ -1129,7 +1129,7 @@ name|schema
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ElasticChangeIndex ( ElasticConfiguration cfg, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, FillArgs fillArgs, SitePaths sitePaths, ElasticRestClientBuilder clientBuilder, @Assisted Schema<ChangeData> schema)
+DECL|method|ElasticChangeIndex ( ElasticConfiguration cfg, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, FillArgs fillArgs, SitePaths sitePaths, ElasticRestClientProvider client, @Assisted Schema<ChangeData> schema)
 name|ElasticChangeIndex
 parameter_list|(
 name|ElasticConfiguration
@@ -1152,8 +1152,8 @@ parameter_list|,
 name|SitePaths
 name|sitePaths
 parameter_list|,
-name|ElasticRestClientBuilder
-name|clientBuilder
+name|ElasticRestClientProvider
+name|client
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1172,7 +1172,7 @@ name|sitePaths
 argument_list|,
 name|schema
 argument_list|,
-name|clientBuilder
+name|client
 argument_list|,
 name|CHANGES
 argument_list|)
