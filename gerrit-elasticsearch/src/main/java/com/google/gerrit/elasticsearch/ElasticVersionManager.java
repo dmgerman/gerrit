@@ -74,7 +74,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|MoreObjects
+name|Strings
 import|;
 end_import
 
@@ -416,22 +416,20 @@ name|versionDiscovery
 expr_stmt|;
 name|prefix
 operator|=
-name|MoreObjects
+name|Strings
 operator|.
-name|firstNonNull
+name|nullToEmpty
 argument_list|(
 name|cfg
 operator|.
 name|getString
 argument_list|(
-literal|"index"
+literal|"elasticsearch"
 argument_list|,
 literal|null
 argument_list|,
 literal|"prefix"
 argument_list|)
-argument_list|,
-literal|"gerrit"
 argument_list|)
 expr_stmt|;
 block|}

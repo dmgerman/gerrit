@@ -204,7 +204,7 @@ specifier|public
 class|class
 name|ElasticReindexIT
 extends|extends
-name|AbstractReindexIT
+name|AbstractReindexTests
 block|{
 DECL|field|container
 specifier|private

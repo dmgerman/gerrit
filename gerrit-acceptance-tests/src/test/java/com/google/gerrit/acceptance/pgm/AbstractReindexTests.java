@@ -455,11 +455,11 @@ annotation|@
 name|NoHttpd
 annotation|@
 name|Ignore
-DECL|class|AbstractReindexIT
+DECL|class|AbstractReindexTests
 specifier|public
 specifier|abstract
 class|class
-name|AbstractReindexIT
+name|AbstractReindexTests
 extends|extends
 name|StandaloneSiteTest
 block|{
