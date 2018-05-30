@@ -212,7 +212,7 @@ decl_stmt|;
 annotation|@
 name|ConfigSuite
 operator|.
-name|Config
+name|Default
 DECL|method|elasticsearch ()
 specifier|public
 specifier|static
