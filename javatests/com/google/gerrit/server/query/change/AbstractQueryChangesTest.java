@@ -2498,6 +2498,9 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|initAfterLifecycleStart
+argument_list|()
+expr_stmt|;
 name|setUpDatabase
 argument_list|()
 expr_stmt|;
@@ -2521,6 +2524,14 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|initAfterLifecycleStart ()
+specifier|protected
+name|void
+name|initAfterLifecycleStart
+parameter_list|()
+throws|throws
+name|Exception
+block|{}
 DECL|method|setUpDatabase ()
 specifier|protected
 name|void
