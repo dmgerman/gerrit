@@ -224,16 +224,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|AssumptionViolatedException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|BeforeClass
 import|;
 end_import
@@ -308,37 +298,13 @@ block|{
 comment|// do not start Elasticsearch twice
 return|return;
 block|}
-comment|// Assumption violation is not natively supported by Testcontainers.
-comment|// See https://github.com/testcontainers/testcontainers-java/issues/343
-try|try
-block|{
 name|container
 operator|=
-operator|new
 name|ElasticContainer
-argument_list|<>
-argument_list|()
-expr_stmt|;
-name|container
 operator|.
-name|start
+name|createAndStart
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|t
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|AssumptionViolatedException
-argument_list|(
-literal|"Unable to start container[might be docker related]"
-argument_list|)
-throw|;
-block|}
 name|nodeInfo
 operator|=
 operator|new
