@@ -83,20 +83,18 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
 name|common
 operator|.
-name|testing
+name|truth
 operator|.
-name|PathSubject
+name|Truth8
+operator|.
+name|assertThat
 import|;
 end_import
 
@@ -243,8 +241,6 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-name|PathSubject
-operator|.
 name|assertThat
 argument_list|(
 name|site
@@ -257,8 +253,6 @@ argument_list|(
 name|root
 argument_list|)
 expr_stmt|;
-name|PathSubject
-operator|.
 name|assertThat
 argument_list|(
 name|site
@@ -323,8 +317,6 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-name|PathSubject
-operator|.
 name|assertThat
 argument_list|(
 name|site
@@ -413,8 +405,6 @@ operator|.
 name|isFalse
 argument_list|()
 expr_stmt|;
-name|PathSubject
-operator|.
 name|assertThat
 argument_list|(
 name|site
@@ -526,8 +516,6 @@ argument_list|(
 name|root
 argument_list|)
 decl_stmt|;
-name|PathSubject
-operator|.
 name|assertThat
 argument_list|(
 name|site
@@ -541,8 +529,6 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
-name|PathSubject
-operator|.
 name|assertThat
 argument_list|(
 name|site
@@ -556,8 +542,6 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
-name|PathSubject
-operator|.
 name|assertThat
 argument_list|(
 name|site
@@ -571,8 +555,6 @@ operator|.
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|PathSubject
-operator|.
 name|assertThat
 argument_list|(
 name|site
@@ -612,8 +594,6 @@ literal|"C:/"
 else|:
 literal|"/"
 decl_stmt|;
-name|PathSubject
-operator|.
 name|assertThat
 argument_list|(
 name|site
@@ -629,8 +609,6 @@ operator|.
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|PathSubject
-operator|.
 name|assertThat
 argument_list|(
 name|site
