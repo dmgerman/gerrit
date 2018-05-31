@@ -97,7 +97,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Query that matches documents matching boolean combinations of other queries. A trimmed down  * version of {@link org.elasticsearch.index.query.BoolQueryBuilder} for this very package.  */
+comment|/**  * A Query that matches documents matching boolean combinations of other queries. A trimmed down  * version of org.elasticsearch.index.query.BoolQueryBuilder for this very package.  */
 end_comment
 
 begin_class

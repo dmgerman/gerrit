@@ -191,7 +191,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A trimmed down and further altered version of {@link  * org.elasticsearch.common.xcontent.XContentBuilder} for this very package.  */
+comment|/**  * A trimmed down and further altered version of org.elasticsearch.common.xcontent.XContentBuilder  * for this very package.  */
 end_comment
 
 begin_class
@@ -219,7 +219,7 @@ operator|new
 name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
-comment|/**    * Constructs a new builder. Make sure to call {@link #close()} when the builder is done with.    * Inspired from {@link org.elasticsearch.common.xcontent.json.JsonXContent} static block.    */
+comment|/**    * Constructs a new builder. Make sure to call {@link #close()} when the builder is done with.    * Inspired from org.elasticsearch.common.xcontent.json.JsonXContent static block.    */
 DECL|method|XContentBuilder ()
 specifier|public
 name|XContentBuilder

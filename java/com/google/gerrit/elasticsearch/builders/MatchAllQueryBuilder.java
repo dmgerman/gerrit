@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A query that matches on all documents. A trimmed down version of {@link  * org.elasticsearch.index.query.MatchAllQueryBuilder} for this very package.  */
+comment|/**  * A query that matches on all documents. A trimmed down version of  * org.elasticsearch.index.query.MatchAllQueryBuilder for this very package.  */
 end_comment
 
 begin_class

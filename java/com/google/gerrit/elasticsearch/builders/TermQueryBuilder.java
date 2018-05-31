@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Query that matches documents containing a term. A trimmed down version of {@link  * org.elasticsearch.index.query.TermQueryBuilder} for this very package.  */
+comment|/**  * A Query that matches documents containing a term. A trimmed down version of  * org.elasticsearch.index.query.TermQueryBuilder for this very package.  */
 end_comment
 
 begin_class
