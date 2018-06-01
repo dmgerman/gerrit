@@ -884,13 +884,10 @@ operator|.
 name|getRefDatabase
 argument_list|()
 operator|.
-name|getRefs
+name|getRefsByPrefix
 argument_list|(
 name|REFS_DASHBOARDS
 argument_list|)
-operator|.
-name|values
-argument_list|()
 control|)
 block|{
 if|if

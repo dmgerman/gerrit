@@ -867,15 +867,12 @@ operator|.
 name|getRefDatabase
 argument_list|()
 operator|.
-name|getRefs
+name|getRefsByPrefix
 argument_list|(
 name|RefNames
 operator|.
 name|REFS_USERS
 argument_list|)
-operator|.
-name|values
-argument_list|()
 operator|.
 name|stream
 argument_list|()
