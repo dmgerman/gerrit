@@ -330,7 +330,7 @@ name|getVersionManager
 parameter_list|()
 block|{
 return|return
-name|ElasticVersionManager
+name|ElasticIndexVersionManager
 operator|.
 name|class
 return|;
