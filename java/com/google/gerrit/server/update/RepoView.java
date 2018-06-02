@@ -99,16 +99,16 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|stream
 operator|.
-name|collect
+name|Collectors
 operator|.
-name|Maps
+name|toMap
 import|;
 end_import
 
@@ -151,16 +151,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
 import|;
 end_import
 
@@ -510,7 +500,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**    * Look up refs by prefix.    *    *<p>Takes into account any ref update commands added during the course of the update using    * {@link RepoContext#addRefUpdate}, even if they have not yet been executed on the underlying    * repo.    *    *<p>For any ref that has previously been accessed with {@link #getRef(String)}, the value in the    * result map will be that same cached value. Any refs that have<em>not</em> been previously    * accessed are re-scanned from the repo on each call.    *    * @param prefix ref prefix; must end in '/' or else be empty.    * @return a map of ref suffixes to SHA-1s. The refs are all under {@code prefix} and have the    *     prefix stripped; this matches the behavior of {@link    *     org.eclipse.jgit.lib.RefDatabase#getRefs(String)}.    * @throws IOException if an error occurred.    */
+comment|/**    * Look up refs by prefix.    *    *<p>Takes into account any ref update commands added during the course of the update using    * {@link RepoContext#addRefUpdate}, even if they have not yet been executed on the underlying    * repo.    *    *<p>For any ref that has previously been accessed with {@link #getRef(String)}, the value in the    * result map will be that same cached value. Any refs that have<em>not</em> been previously    * accessed are re-scanned from the repo on each call.    *    * @param prefix ref prefix; must end in '/' or else be empty.    * @return a map of ref suffixes to SHA-1s. The refs are all under {@code prefix} and have the    *     prefix stripped.    * @throws IOException if an error occurred.    */
 DECL|method|getRefs (String prefix)
 specifier|public
 name|Map
@@ -535,22 +525,36 @@ name|ObjectId
 argument_list|>
 name|result
 init|=
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|(
-name|Maps
-operator|.
-name|transformValues
-argument_list|(
 name|repo
 operator|.
 name|getRefDatabase
 argument_list|()
 operator|.
-name|getRefs
+name|getRefsByPrefix
 argument_list|(
 name|prefix
+argument_list|)
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|collect
+argument_list|(
+name|toMap
+argument_list|(
+name|r
+lambda|->
+name|r
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|substring
+argument_list|(
+name|prefix
+operator|.
+name|length
+argument_list|()
 argument_list|)
 argument_list|,
 name|Ref
