@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A static factory for simple "import static" usage. A trimmed down version of  * org.elasticsearch.index.query.QueryBuilders for this very package.  */
+comment|/**  * A static factory for simple "import static" usage.  *  *<p>A trimmed down version of org.elasticsearch.index.query.QueryBuilders.  */
 end_comment
 
 begin_class

@@ -267,6 +267,28 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|configure ()
+specifier|public
+name|void
+name|configure
+parameter_list|()
+block|{
+name|super
+operator|.
+name|configure
+argument_list|()
+expr_stmt|;
+name|install
+argument_list|(
+name|ElasticRestClientProvider
+operator|.
+name|module
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
 DECL|method|getAccountIndex ()
 specifier|protected
 name|Class
