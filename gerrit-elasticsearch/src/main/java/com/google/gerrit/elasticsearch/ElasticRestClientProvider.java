@@ -481,7 +481,7 @@ operator|=
 name|build
 argument_list|()
 expr_stmt|;
-name|String
+name|ElasticVersion
 name|version
 init|=
 name|getVersion
@@ -491,7 +491,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Connected to Elasticsearch version {}"
+literal|"Elasticsearch integration version {}"
 argument_list|,
 name|version
 argument_list|)
@@ -618,7 +618,7 @@ block|}
 block|}
 DECL|method|getVersion ()
 specifier|private
-name|String
+name|ElasticVersion
 name|getVersion
 parameter_list|()
 throws|throws
@@ -666,7 +666,9 @@ name|statusLine
 argument_list|)
 throw|;
 block|}
-return|return
+name|String
+name|version
+init|=
 operator|new
 name|JsonParser
 argument_list|()
@@ -699,6 +701,23 @@ argument_list|)
 operator|.
 name|getAsString
 argument_list|()
+decl_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Connected to Elasticsearch version {}"
+argument_list|,
+name|version
+argument_list|)
+expr_stmt|;
+return|return
+name|ElasticVersion
+operator|.
+name|forVersion
+argument_list|(
+name|version
+argument_list|)
 return|;
 block|}
 catch|catch
