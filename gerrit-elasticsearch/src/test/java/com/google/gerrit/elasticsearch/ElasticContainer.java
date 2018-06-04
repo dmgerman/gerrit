@@ -80,6 +80,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|elasticsearch
+operator|.
+name|ElasticVersion
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -156,21 +170,7 @@ name|ELASTICSEARCH_DEFAULT_PORT
 init|=
 literal|9200
 decl_stmt|;
-DECL|enum|Version
-specifier|public
-enum|enum
-name|Version
-block|{
-DECL|enumConstant|V2
-name|V2
-block|,
-DECL|enumConstant|V5
-name|V5
-block|,
-DECL|enumConstant|V6
-name|V6
-block|}
-DECL|method|createAndStart (Version version)
+DECL|method|createAndStart (ElasticVersion version)
 specifier|public
 specifier|static
 name|ElasticContainer
@@ -179,7 +179,7 @@ name|?
 argument_list|>
 name|createAndStart
 parameter_list|(
-name|Version
+name|ElasticVersion
 name|version
 parameter_list|)
 block|{
@@ -239,19 +239,19 @@ block|{
 return|return
 name|createAndStart
 argument_list|(
-name|Version
+name|ElasticVersion
 operator|.
-name|V2
+name|V2_4
 argument_list|)
 return|;
 block|}
-DECL|method|getImageName (Version version)
+DECL|method|getImageName (ElasticVersion version)
 specifier|private
 specifier|static
 name|String
 name|getImageName
 parameter_list|(
-name|Version
+name|ElasticVersion
 name|version
 parameter_list|)
 block|{
@@ -261,19 +261,19 @@ name|version
 condition|)
 block|{
 case|case
-name|V2
+name|V2_4
 case|:
 return|return
 literal|"elasticsearch:2.4.6-alpine"
 return|;
 case|case
-name|V5
+name|V5_6
 case|:
 return|return
 literal|"elasticsearch:5.6.9-alpine"
 return|;
 case|case
-name|V6
+name|V6_2
 case|:
 return|return
 literal|"docker.elastic.co/elasticsearch/elasticsearch:6.2.4"
@@ -283,7 +283,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Unsupported version: "
+literal|"No tests for version: "
 operator|+
 name|version
 operator|.
@@ -292,11 +292,11 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-DECL|method|ElasticContainer (Version version)
+DECL|method|ElasticContainer (ElasticVersion version)
 specifier|private
 name|ElasticContainer
 parameter_list|(
-name|Version
+name|ElasticVersion
 name|version
 parameter_list|)
 block|{
