@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project, 2009-2015 Elasticsearch
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.pgm
+DECL|package|com.google.gerrit.elasticsearch.builders
 package|package
 name|com
 operator|.
@@ -60,36 +60,78 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
+name|elasticsearch
 operator|.
-name|pgm
+name|builders
 package|;
 end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|io
 operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|NoHttpd
+name|IOException
 import|;
 end_import
 
+begin_comment
+comment|/** A trimmed down version of org.elasticsearch.index.query.QueryBuilder for this very package. */
+end_comment
+
 begin_class
-annotation|@
-name|NoHttpd
-DECL|class|ReindexIT
+DECL|class|QueryBuilder
 specifier|public
+specifier|abstract
 class|class
-name|ReindexIT
-extends|extends
-name|AbstractReindexTests
+name|QueryBuilder
+block|{
+DECL|method|QueryBuilder ()
+specifier|protected
+name|QueryBuilder
+parameter_list|()
 block|{}
+DECL|method|toXContent (XContentBuilder builder)
+specifier|protected
+name|void
+name|toXContent
+parameter_list|(
+name|XContentBuilder
+name|builder
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|builder
+operator|.
+name|startObject
+argument_list|()
+expr_stmt|;
+name|doXContent
+argument_list|(
+name|builder
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|endObject
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|doXContent (XContentBuilder builder)
+specifier|protected
+specifier|abstract
+name|void
+name|doXContent
+parameter_list|(
+name|XContentBuilder
+name|builder
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+block|}
 end_class
 
 end_unit

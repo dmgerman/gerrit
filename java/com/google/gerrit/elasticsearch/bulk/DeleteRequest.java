@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.pgm
+DECL|package|com.google.gerrit.elasticsearch.bulk
 package|package
 name|com
 operator|.
@@ -60,36 +60,47 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
+name|elasticsearch
 operator|.
-name|pgm
+name|bulk
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|NoHttpd
-import|;
-end_import
-
 begin_class
-annotation|@
-name|NoHttpd
-DECL|class|ReindexIT
+DECL|class|DeleteRequest
 specifier|public
 class|class
-name|ReindexIT
+name|DeleteRequest
 extends|extends
-name|AbstractReindexTests
-block|{}
+name|ActionRequest
+block|{
+DECL|method|DeleteRequest (String id, String index, String type)
+specifier|public
+name|DeleteRequest
+parameter_list|(
+name|String
+name|id
+parameter_list|,
+name|String
+name|index
+parameter_list|,
+name|String
+name|type
+parameter_list|)
+block|{
+name|super
+argument_list|(
+literal|"delete"
+argument_list|,
+name|id
+argument_list|,
+name|index
+argument_list|,
+name|type
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 end_class
 
 end_unit

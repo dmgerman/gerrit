@@ -80,13 +80,25 @@ name|NoHttpd
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_class
 annotation|@
 name|NoHttpd
-DECL|class|ReindexIT
+annotation|@
+name|Ignore
+DECL|class|ElasticReindexIT
 specifier|public
 class|class
-name|ReindexIT
+name|ElasticReindexIT
 extends|extends
 name|AbstractReindexTests
 block|{}

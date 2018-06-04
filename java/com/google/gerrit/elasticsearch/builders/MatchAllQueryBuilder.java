@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project, 2009-2015 Elasticsearch
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.pgm
+DECL|package|com.google.gerrit.elasticsearch.builders
 package|package
 name|com
 operator|.
@@ -60,36 +60,60 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
+name|elasticsearch
 operator|.
-name|pgm
+name|builders
 package|;
 end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|io
 operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|NoHttpd
+name|IOException
 import|;
 end_import
 
+begin_comment
+comment|/**  * A query that matches on all documents. A trimmed down version of  * org.elasticsearch.index.query.MatchAllQueryBuilder for this very package.  */
+end_comment
+
 begin_class
-annotation|@
-name|NoHttpd
-DECL|class|ReindexIT
-specifier|public
+DECL|class|MatchAllQueryBuilder
 class|class
-name|ReindexIT
+name|MatchAllQueryBuilder
 extends|extends
-name|AbstractReindexTests
-block|{}
+name|QueryBuilder
+block|{
+annotation|@
+name|Override
+DECL|method|doXContent (XContentBuilder builder)
+specifier|protected
+name|void
+name|doXContent
+parameter_list|(
+name|XContentBuilder
+name|builder
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|builder
+operator|.
+name|startObject
+argument_list|(
+literal|"match_all"
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|endObject
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 end_class
 
 end_unit
