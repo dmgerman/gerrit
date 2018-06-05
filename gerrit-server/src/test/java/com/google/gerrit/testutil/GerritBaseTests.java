@@ -124,6 +124,18 @@ name|ExpectedException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TestName
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Ignore
@@ -155,6 +167,18 @@ init|=
 name|ExpectedException
 operator|.
 name|none
+argument_list|()
+decl_stmt|;
+DECL|field|testName
+annotation|@
+name|Rule
+specifier|public
+specifier|final
+name|TestName
+name|testName
+init|=
+operator|new
+name|TestName
 argument_list|()
 decl_stmt|;
 block|}
