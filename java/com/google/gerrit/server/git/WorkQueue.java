@@ -730,7 +730,7 @@ name|defaultQueue
 return|;
 block|}
 comment|/** Create a new executor queue. */
-DECL|method|createQueue (int poolsize, String prefix)
+DECL|method|createQueue (int poolsize, String queueName)
 specifier|public
 name|ScheduledExecutorService
 name|createQueue
@@ -739,7 +739,7 @@ name|int
 name|poolsize
 parameter_list|,
 name|String
-name|prefix
+name|queueName
 parameter_list|)
 block|{
 return|return
@@ -747,7 +747,7 @@ name|createQueue
 argument_list|(
 name|poolsize
 argument_list|,
-name|prefix
+name|queueName
 argument_list|,
 name|Thread
 operator|.
@@ -755,7 +755,7 @@ name|NORM_PRIORITY
 argument_list|)
 return|;
 block|}
-DECL|method|createQueue (int poolsize, String prefix, int threadPriority)
+DECL|method|createQueue ( int poolsize, String queueName, int threadPriority)
 specifier|public
 name|ScheduledThreadPoolExecutor
 name|createQueue
@@ -764,7 +764,7 @@ name|int
 name|poolsize
 parameter_list|,
 name|String
-name|prefix
+name|queueName
 parameter_list|,
 name|int
 name|threadPriority
@@ -778,7 +778,7 @@ name|Executor
 argument_list|(
 name|poolsize
 argument_list|,
-name|prefix
+name|queueName
 argument_list|)
 decl_stmt|;
 name|executor
@@ -1221,14 +1221,15 @@ specifier|final
 name|String
 name|queueName
 decl_stmt|;
-DECL|method|Executor (int corePoolSize, String prefix)
+DECL|method|Executor (int corePoolSize, final String queueName)
 name|Executor
 parameter_list|(
 name|int
 name|corePoolSize
 parameter_list|,
+specifier|final
 name|String
-name|prefix
+name|queueName
 parameter_list|)
 block|{
 name|super
@@ -1285,7 +1286,7 @@ name|t
 operator|.
 name|setName
 argument_list|(
-name|prefix
+name|queueName
 operator|+
 literal|"-"
 operator|+
@@ -1330,9 +1331,11 @@ literal|4
 comment|// concurrency level
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|queueName
 operator|=
-name|prefix
+name|queueName
 expr_stmt|;
 block|}
 annotation|@

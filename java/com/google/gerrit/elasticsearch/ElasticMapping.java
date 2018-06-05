@@ -203,6 +203,12 @@ operator|==
 name|FieldType
 operator|.
 name|EXACT
+operator|||
+name|fieldType
+operator|==
+name|FieldType
+operator|.
+name|KEYWORD
 condition|)
 block|{
 name|mapping

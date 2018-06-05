@@ -321,10 +321,10 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|ElasticVersionManager
+DECL|class|ElasticIndexVersionManager
 specifier|public
 class|class
-name|ElasticVersionManager
+name|ElasticIndexVersionManager
 extends|extends
 name|VersionManager
 block|{
@@ -339,7 +339,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|ElasticVersionManager
+name|ElasticIndexVersionManager
 operator|.
 name|class
 argument_list|)
@@ -358,8 +358,8 @@ name|versionDiscovery
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ElasticVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, DynamicSet<OnlineUpgradeListener> listeners, Collection<IndexDefinition<?, ?, ?>> defs, ElasticIndexVersionDiscovery versionDiscovery)
-name|ElasticVersionManager
+DECL|method|ElasticIndexVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, DynamicSet<OnlineUpgradeListener> listeners, Collection<IndexDefinition<?, ?, ?>> defs, ElasticIndexVersionDiscovery versionDiscovery)
+name|ElasticIndexVersionManager
 parameter_list|(
 annotation|@
 name|GerritServerConfig
