@@ -1513,20 +1513,6 @@ name|change
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// See comment in #index(ChangeData).
-name|autoReindexIfStale
-argument_list|(
-name|change
-operator|.
-name|getProject
-argument_list|()
-argument_list|,
-name|change
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param project the project to which the change belongs.    * @param changeId ID of the change to index.    */
 DECL|method|index (ReviewDb db, Project.NameKey project, Change.Id changeId)
@@ -1552,9 +1538,8 @@ name|IOException
 throws|,
 name|OrmException
 block|{
-name|ChangeData
-name|cd
-init|=
+name|index
+argument_list|(
 name|newChangeData
 argument_list|(
 name|db
@@ -1563,16 +1548,6 @@ name|project
 argument_list|,
 name|changeId
 argument_list|)
-decl_stmt|;
-name|index
-argument_list|(
-name|cd
-argument_list|)
-expr_stmt|;
-comment|// See comment in #index(ChangeData).
-name|autoReindexIfStale
-argument_list|(
-name|cd
 argument_list|)
 expr_stmt|;
 block|}
