@@ -100,11 +100,11 @@ specifier|final
 name|String
 name|indicesExistParam
 decl_stmt|;
-DECL|field|keywordFieldType
+DECL|field|exactFieldType
 specifier|private
 specifier|final
 name|String
-name|keywordFieldType
+name|exactFieldType
 decl_stmt|;
 DECL|field|stringFieldType
 specifier|private
@@ -160,7 +160,7 @@ literal|"?allow_no_indices=false"
 expr_stmt|;
 name|this
 operator|.
-name|keywordFieldType
+name|exactFieldType
 operator|=
 literal|"keyword"
 expr_stmt|;
@@ -195,7 +195,7 @@ literal|""
 expr_stmt|;
 name|this
 operator|.
-name|keywordFieldType
+name|exactFieldType
 operator|=
 literal|"string"
 expr_stmt|;
@@ -257,13 +257,13 @@ return|return
 name|indicesExistParam
 return|;
 block|}
-DECL|method|keywordFieldType ()
+DECL|method|exactFieldType ()
 name|String
-name|keywordFieldType
+name|exactFieldType
 parameter_list|()
 block|{
 return|return
-name|keywordFieldType
+name|exactFieldType
 return|;
 block|}
 DECL|method|stringFieldType ()
