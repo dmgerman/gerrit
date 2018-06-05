@@ -709,11 +709,11 @@ name|cfg
 operator|.
 name|setString
 argument_list|(
-literal|"noteDb"
+literal|"retry"
 argument_list|,
 literal|null
 argument_list|,
-literal|"retryTimeout"
+literal|"timeout"
 argument_list|,
 name|Integer
 operator|.
