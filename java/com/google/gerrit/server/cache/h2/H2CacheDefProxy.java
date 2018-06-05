@@ -104,6 +104,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|cache
@@ -164,11 +178,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|time
 operator|.
-name|concurrent
-operator|.
-name|TimeUnit
+name|Duration
 import|;
 end_import
 
@@ -221,22 +233,19 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|expireAfterWrite (TimeUnit unit)
+annotation|@
+name|Nullable
+DECL|method|expireAfterWrite ()
 specifier|public
-name|Long
+name|Duration
 name|expireAfterWrite
-parameter_list|(
-name|TimeUnit
-name|unit
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 name|source
 operator|.
 name|expireAfterWrite
-argument_list|(
-name|unit
-argument_list|)
+argument_list|()
 return|;
 block|}
 annotation|@

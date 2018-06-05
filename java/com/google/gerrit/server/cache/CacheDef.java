@@ -124,11 +124,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|time
 operator|.
-name|concurrent
-operator|.
-name|TimeUnit
+name|Duration
 import|;
 end_import
 
@@ -178,13 +176,10 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Nullable
-DECL|method|expireAfterWrite (TimeUnit unit)
-name|Long
+DECL|method|expireAfterWrite ()
+name|Duration
 name|expireAfterWrite
-parameter_list|(
-name|TimeUnit
-name|unit
-parameter_list|)
+parameter_list|()
 function_decl|;
 annotation|@
 name|Nullable

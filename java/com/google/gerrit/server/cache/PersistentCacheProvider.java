@@ -188,11 +188,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|time
 operator|.
-name|concurrent
-operator|.
-name|TimeUnit
+name|Duration
 import|;
 end_import
 
@@ -372,7 +370,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|expireAfterWrite (long duration, TimeUnit durationUnits)
+DECL|method|expireAfterWrite (Duration duration)
 specifier|public
 name|PersistentCacheBinding
 argument_list|<
@@ -382,11 +380,8 @@ name|V
 argument_list|>
 name|expireAfterWrite
 parameter_list|(
-name|long
+name|Duration
 name|duration
-parameter_list|,
-name|TimeUnit
-name|durationUnits
 parameter_list|)
 block|{
 return|return
@@ -403,8 +398,6 @@ operator|.
 name|expireAfterWrite
 argument_list|(
 name|duration
-argument_list|,
-name|durationUnits
 argument_list|)
 return|;
 block|}

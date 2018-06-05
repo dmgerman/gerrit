@@ -106,6 +106,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|time
+operator|.
+name|Instant
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|function
@@ -221,6 +231,23 @@ name|currentMillisSupplier
 operator|.
 name|getAsLong
 argument_list|()
+return|;
+block|}
+DECL|method|now ()
+specifier|public
+specifier|static
+name|Instant
+name|now
+parameter_list|()
+block|{
+return|return
+name|Instant
+operator|.
+name|ofEpochMilli
+argument_list|(
+name|nowMs
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|nowTs ()

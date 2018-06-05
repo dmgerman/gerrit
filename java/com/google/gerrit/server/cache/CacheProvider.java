@@ -99,20 +99,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|SECONDS
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -238,11 +224,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|time
 operator|.
-name|concurrent
-operator|.
-name|TimeUnit
+name|Duration
 import|;
 end_import
 
@@ -321,7 +305,7 @@ name|maximumWeight
 decl_stmt|;
 DECL|field|expireAfterWrite
 specifier|private
-name|Long
+name|Duration
 name|expireAfterWrite
 decl_stmt|;
 DECL|field|loader
@@ -482,7 +466,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|expireAfterWrite (long duration, TimeUnit unit)
+DECL|method|expireAfterWrite (Duration duration)
 specifier|public
 name|CacheBinding
 argument_list|<
@@ -492,11 +476,8 @@ name|V
 argument_list|>
 name|expireAfterWrite
 parameter_list|(
-name|long
+name|Duration
 name|duration
-parameter_list|,
-name|TimeUnit
-name|unit
 parameter_list|)
 block|{
 name|checkNotFrozen
@@ -504,14 +485,7 @@ argument_list|()
 expr_stmt|;
 name|expireAfterWrite
 operator|=
-name|SECONDS
-operator|.
-name|convert
-argument_list|(
 name|duration
-argument_list|,
-name|unit
-argument_list|)
 expr_stmt|;
 return|return
 name|this
@@ -731,30 +705,14 @@ annotation|@
 name|Override
 annotation|@
 name|Nullable
-DECL|method|expireAfterWrite (TimeUnit unit)
+DECL|method|expireAfterWrite ()
 specifier|public
-name|Long
+name|Duration
 name|expireAfterWrite
-parameter_list|(
-name|TimeUnit
-name|unit
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 name|expireAfterWrite
-operator|!=
-literal|null
-condition|?
-name|unit
-operator|.
-name|convert
-argument_list|(
-name|expireAfterWrite
-argument_list|,
-name|SECONDS
-argument_list|)
-else|:
-literal|null
 return|;
 block|}
 annotation|@

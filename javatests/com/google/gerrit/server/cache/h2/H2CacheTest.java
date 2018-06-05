@@ -358,7 +358,7 @@ literal|1
 operator|<<
 literal|20
 argument_list|,
-literal|0
+literal|null
 argument_list|)
 decl_stmt|;
 return|return
