@@ -941,15 +941,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addActions (Account.Id c)
+DECL|method|getDeleteActions (Account.Id a)
 specifier|protected
 name|String
-name|addActions
+name|getDeleteActions
 parameter_list|(
 name|Account
 operator|.
 name|Id
-name|c
+name|a
 parameter_list|)
 block|{
 return|return
@@ -957,7 +957,7 @@ name|delete
 argument_list|(
 name|ACCOUNTS
 argument_list|,
-name|c
+name|a
 argument_list|)
 return|;
 block|}

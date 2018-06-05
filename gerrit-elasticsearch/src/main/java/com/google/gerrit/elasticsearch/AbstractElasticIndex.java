@@ -846,13 +846,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|delete (K c)
+DECL|method|delete (K id)
 specifier|public
 name|void
 name|delete
 parameter_list|(
 name|K
-name|c
+name|id
 parameter_list|)
 throws|throws
 name|IOException
@@ -872,9 +872,9 @@ name|response
 init|=
 name|postRequest
 argument_list|(
-name|addActions
+name|getDeleteActions
 argument_list|(
-name|c
+name|id
 argument_list|)
 argument_list|,
 name|uri
@@ -913,7 +913,7 @@ name|format
 argument_list|(
 literal|"Failed to delete %s from index %s: %s"
 argument_list|,
-name|c
+name|id
 argument_list|,
 name|indexName
 argument_list|,
@@ -1093,14 +1093,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|addActions (K c)
+DECL|method|getDeleteActions (K id)
 specifier|protected
 specifier|abstract
 name|String
-name|addActions
+name|getDeleteActions
 parameter_list|(
 name|K
-name|c
+name|id
 parameter_list|)
 function_decl|;
 DECL|method|getMappings ()
@@ -1120,7 +1120,7 @@ name|V
 name|v
 parameter_list|)
 function_decl|;
-DECL|method|delete (String type, K c)
+DECL|method|delete (String type, K id)
 specifier|protected
 name|String
 name|delete
@@ -1129,22 +1129,17 @@ name|String
 name|type
 parameter_list|,
 name|K
-name|c
+name|id
 parameter_list|)
 block|{
-name|String
-name|id
-init|=
-name|c
-operator|.
-name|toString
-argument_list|()
-decl_stmt|;
 return|return
 operator|new
 name|DeleteRequest
 argument_list|(
 name|id
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|indexNameRaw
 argument_list|,

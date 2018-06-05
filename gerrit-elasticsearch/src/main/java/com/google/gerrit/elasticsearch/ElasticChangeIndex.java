@@ -1497,10 +1497,10 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addActions (Id c)
+DECL|method|getDeleteActions (Id c)
 specifier|protected
 name|String
-name|addActions
+name|getDeleteActions
 parameter_list|(
 name|Id
 name|c

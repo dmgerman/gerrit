@@ -929,15 +929,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addActions (AccountGroup.UUID c)
+DECL|method|getDeleteActions (AccountGroup.UUID g)
 specifier|protected
 name|String
-name|addActions
+name|getDeleteActions
 parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|c
+name|g
 parameter_list|)
 block|{
 return|return
@@ -945,7 +945,7 @@ name|delete
 argument_list|(
 name|GROUPS
 argument_list|,
-name|c
+name|g
 argument_list|)
 return|;
 block|}
