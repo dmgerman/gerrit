@@ -133,7 +133,7 @@ name|long
 name|weight
 parameter_list|)
 function_decl|;
-comment|/** Set the time an element lives before being expired. */
+comment|/** Set the time an element lives after last write before being expired. */
 DECL|method|expireAfterWrite (Duration duration)
 name|CacheBinding
 argument_list|<
@@ -142,6 +142,20 @@ argument_list|,
 name|V
 argument_list|>
 name|expireAfterWrite
+parameter_list|(
+name|Duration
+name|duration
+parameter_list|)
+function_decl|;
+comment|/** Set the time an element lives after last access before being expired. */
+DECL|method|expireFromMemoryAfterAccess (Duration duration)
+name|CacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|expireFromMemoryAfterAccess
 parameter_list|(
 name|Duration
 name|duration

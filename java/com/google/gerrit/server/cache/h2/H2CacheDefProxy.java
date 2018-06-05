@@ -249,6 +249,23 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|Override
+annotation|@
+name|Nullable
+DECL|method|expireFromMemoryAfterAccess ()
+specifier|public
+name|Duration
+name|expireFromMemoryAfterAccess
+parameter_list|()
+block|{
+return|return
+name|source
+operator|.
+name|expireFromMemoryAfterAccess
+argument_list|()
+return|;
+block|}
+annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"

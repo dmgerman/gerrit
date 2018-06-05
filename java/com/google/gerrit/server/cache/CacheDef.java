@@ -183,6 +183,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Nullable
+DECL|method|expireFromMemoryAfterAccess ()
+name|Duration
+name|expireFromMemoryAfterAccess
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nullable
 DECL|method|weigher ()
 name|Weigher
 argument_list|<
