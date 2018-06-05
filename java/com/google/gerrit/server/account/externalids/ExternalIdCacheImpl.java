@@ -106,20 +106,6 @@ name|common
 operator|.
 name|cache
 operator|.
-name|CacheBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|cache
-operator|.
 name|CacheLoader
 import|;
 end_import
@@ -278,6 +264,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|name
+operator|.
+name|Named
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -397,6 +397,15 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
+DECL|field|CACHE_NAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CACHE_NAME
+init|=
+literal|"external_ids_map"
+decl_stmt|;
 DECL|field|extIdsByAccount
 specifier|private
 specifier|final
@@ -422,9 +431,22 @@ name|lock
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExternalIdCacheImpl (ExternalIdReader externalIdReader)
+DECL|method|ExternalIdCacheImpl ( @amedCACHE_NAME) LoadingCache<ObjectId, AllExternalIds> extIdsByAccount, ExternalIdReader externalIdReader)
 name|ExternalIdCacheImpl
 parameter_list|(
+annotation|@
+name|Named
+argument_list|(
+name|CACHE_NAME
+argument_list|)
+name|LoadingCache
+argument_list|<
+name|ObjectId
+argument_list|,
+name|AllExternalIds
+argument_list|>
+name|extIdsByAccount
+parameter_list|,
 name|ExternalIdReader
 name|externalIdReader
 parameter_list|)
@@ -433,39 +455,7 @@ name|this
 operator|.
 name|extIdsByAccount
 operator|=
-name|CacheBuilder
-operator|.
-name|newBuilder
-argument_list|()
-comment|// The cached data is potentially pretty large and we are always only interested
-comment|// in the latest value, hence the maximum cache size is set to 1.
-comment|// This can lead to extra cache loads in case of the following race:
-comment|// 1. thread 1 reads the notes ref at revision A
-comment|// 2. thread 2 updates the notes ref to revision B and stores the derived value
-comment|//    for B in the cache
-comment|// 3. thread 1 attempts to read the data for revision A from the cache, and misses
-comment|// 4. later threads attempt to read at B
-comment|// In this race unneeded reloads are done in step 3 (reload from revision A) and
-comment|// step 4 (reload from revision B, because the value for revision B was lost when the
-comment|// reload from revision A was done, since the cache can hold only one entry).
-comment|// These reloads could be avoided by increasing the cache size to 2. However the race
-comment|// window between reading the ref and looking it up in the cache is small so that
-comment|// it's rare that this race happens. Therefore it's not worth to double the memory
-comment|// usage of this cache, just to avoid this.
-operator|.
-name|maximumSize
-argument_list|(
-literal|1
-argument_list|)
-operator|.
-name|build
-argument_list|(
-operator|new
-name|Loader
-argument_list|(
-name|externalIdReader
-argument_list|)
-argument_list|)
+name|extIdsByAccount
 expr_stmt|;
 name|this
 operator|.
@@ -968,7 +958,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|Loader
-specifier|private
 specifier|static
 class|class
 name|Loader
@@ -986,6 +975,8 @@ specifier|final
 name|ExternalIdReader
 name|externalIdReader
 decl_stmt|;
+annotation|@
+name|Inject
 DECL|method|Loader (ExternalIdReader externalIdReader)
 name|Loader
 parameter_list|(
