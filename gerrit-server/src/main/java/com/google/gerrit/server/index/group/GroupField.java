@@ -144,22 +144,6 @@ name|index
 operator|.
 name|FieldDef
 operator|.
-name|keyword
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|index
-operator|.
-name|FieldDef
-operator|.
 name|prefix
 import|;
 end_import
@@ -320,7 +304,7 @@ name|String
 argument_list|>
 name|UUID
 init|=
-name|keyword
+name|exact
 argument_list|(
 literal|"uuid"
 argument_list|)
@@ -354,7 +338,7 @@ name|String
 argument_list|>
 name|OWNER_UUID
 init|=
-name|keyword
+name|exact
 argument_list|(
 literal|"owner_uuid"
 argument_list|)
