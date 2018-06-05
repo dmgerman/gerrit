@@ -638,7 +638,7 @@ DECL|field|groups
 name|MappingProperties
 name|groups
 decl_stmt|;
-DECL|method|GroupMapping (Schema<InternalGroup> schema)
+DECL|method|GroupMapping (Schema<InternalGroup> schema, ElasticQueryAdapter adapter)
 name|GroupMapping
 parameter_list|(
 name|Schema
@@ -646,6 +646,9 @@ argument_list|<
 name|InternalGroup
 argument_list|>
 name|schema
+parameter_list|,
+name|ElasticQueryAdapter
+name|adapter
 parameter_list|)
 block|{
 name|this
@@ -657,6 +660,8 @@ operator|.
 name|createMapping
 argument_list|(
 name|schema
+argument_list|,
+name|adapter
 argument_list|)
 expr_stmt|;
 block|}
@@ -766,6 +771,11 @@ operator|new
 name|GroupMapping
 argument_list|(
 name|schema
+argument_list|,
+name|client
+operator|.
+name|adapter
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -1058,7 +1068,12 @@ name|searchSource
 init|=
 operator|new
 name|SearchSourceBuilder
+argument_list|(
+name|client
+operator|.
+name|adapter
 argument_list|()
+argument_list|)
 operator|.
 name|query
 argument_list|(

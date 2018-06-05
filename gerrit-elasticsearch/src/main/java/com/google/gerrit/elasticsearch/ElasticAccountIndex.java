@@ -649,7 +649,7 @@ DECL|field|accounts
 name|MappingProperties
 name|accounts
 decl_stmt|;
-DECL|method|AccountMapping (Schema<AccountState> schema)
+DECL|method|AccountMapping (Schema<AccountState> schema, ElasticQueryAdapter adapter)
 specifier|public
 name|AccountMapping
 parameter_list|(
@@ -658,6 +658,9 @@ argument_list|<
 name|AccountState
 argument_list|>
 name|schema
+parameter_list|,
+name|ElasticQueryAdapter
+name|adapter
 parameter_list|)
 block|{
 name|this
@@ -669,6 +672,8 @@ operator|.
 name|createMapping
 argument_list|(
 name|schema
+argument_list|,
+name|adapter
 argument_list|)
 expr_stmt|;
 block|}
@@ -778,6 +783,11 @@ operator|new
 name|AccountMapping
 argument_list|(
 name|schema
+argument_list|,
+name|client
+operator|.
+name|adapter
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -1073,7 +1083,12 @@ name|searchSource
 init|=
 operator|new
 name|SearchSourceBuilder
+argument_list|(
+name|client
+operator|.
+name|adapter
 argument_list|()
+argument_list|)
 operator|.
 name|query
 argument_list|(

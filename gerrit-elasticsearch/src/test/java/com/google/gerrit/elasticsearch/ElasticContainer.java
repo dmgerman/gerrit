@@ -80,20 +80,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|elasticsearch
-operator|.
-name|ElasticVersion
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util

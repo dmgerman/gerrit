@@ -68,6 +68,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|elasticsearch
+operator|.
+name|ElasticQueryAdapter
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -96,6 +110,12 @@ specifier|public
 class|class
 name|SearchSourceBuilder
 block|{
+DECL|field|adapter
+specifier|private
+specifier|final
+name|ElasticQueryAdapter
+name|adapter
+decl_stmt|;
 DECL|field|querySourceBuilder
 specifier|private
 name|QuerySourceBuilder
@@ -126,11 +146,21 @@ argument_list|>
 name|fieldNames
 decl_stmt|;
 comment|/** Constructs a new search source builder. */
-DECL|method|SearchSourceBuilder ()
+DECL|method|SearchSourceBuilder (ElasticQueryAdapter adapter)
 specifier|public
 name|SearchSourceBuilder
-parameter_list|()
-block|{}
+parameter_list|(
+name|ElasticQueryAdapter
+name|adapter
+parameter_list|)
+block|{
+name|this
+operator|.
+name|adapter
+operator|=
+name|adapter
+expr_stmt|;
+block|}
 comment|/** Constructs a new search source builder with a search query. */
 DECL|method|query (QueryBuilder query)
 specifier|public
@@ -379,7 +409,10 @@ name|builder
 operator|.
 name|field
 argument_list|(
-literal|"fields"
+name|adapter
+operator|.
+name|searchFilteringName
+argument_list|()
 argument_list|,
 name|fieldNames
 operator|.
@@ -396,7 +429,10 @@ name|builder
 operator|.
 name|startArray
 argument_list|(
-literal|"fields"
+name|adapter
+operator|.
+name|searchFilteringName
+argument_list|()
 argument_list|)
 expr_stmt|;
 for|for
