@@ -184,18 +184,6 @@ name|Response
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|elasticsearch
-operator|.
-name|client
-operator|.
-name|RestClient
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -206,26 +194,23 @@ block|{
 DECL|field|client
 specifier|private
 specifier|final
-name|RestClient
+name|ElasticRestClientProvider
 name|client
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ElasticIndexVersionDiscovery (ElasticRestClientBuilder clientBuilder)
+DECL|method|ElasticIndexVersionDiscovery (ElasticRestClientProvider client)
 name|ElasticIndexVersionDiscovery
 parameter_list|(
-name|ElasticRestClientBuilder
-name|clientBuilder
+name|ElasticRestClientProvider
+name|client
 parameter_list|)
 block|{
 name|this
 operator|.
 name|client
 operator|=
-name|clientBuilder
-operator|.
-name|build
-argument_list|()
+name|client
 expr_stmt|;
 block|}
 DECL|method|discover (String prefix, String indexName)
@@ -257,6 +242,9 @@ name|Response
 name|response
 init|=
 name|client
+operator|.
+name|get
+argument_list|()
 operator|.
 name|performRequest
 argument_list|(

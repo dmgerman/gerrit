@@ -191,7 +191,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A trimmed down and further altered version of org.elasticsearch.common.xcontent.XContentBuilder  * for this very package.  */
+comment|/** A trimmed down and modified version of org.elasticsearch.common.xcontent.XContentBuilder. */
 end_comment
 
 begin_class

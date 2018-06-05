@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A trimmed down and further altered version of org.elasticsearch.action.support.QuerySourceBuilder  * for this very package.  */
+comment|/** A trimmed down and modified version of org.elasticsearch.action.support.QuerySourceBuilder. */
 end_comment
 
 begin_class

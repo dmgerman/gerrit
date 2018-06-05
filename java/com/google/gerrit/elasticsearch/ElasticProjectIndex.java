@@ -294,22 +294,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|GerritServerConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|SitePaths
 import|;
 end_import
@@ -456,20 +440,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|elasticsearch
 operator|.
 name|client
@@ -561,12 +531,10 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ElasticProjectIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<ProjectCache> projectCache, ElasticRestClientBuilder clientBuilder, @Assisted Schema<ProjectData> schema)
+DECL|method|ElasticProjectIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Provider<ProjectCache> projectCache, ElasticRestClientProvider clientBuilder, @Assisted Schema<ProjectData> schema)
 name|ElasticProjectIndex
 parameter_list|(
-annotation|@
-name|GerritServerConfig
-name|Config
+name|ElasticConfiguration
 name|cfg
 parameter_list|,
 name|SitePaths
@@ -578,7 +546,7 @@ name|ProjectCache
 argument_list|>
 name|projectCache
 parameter_list|,
-name|ElasticRestClientBuilder
+name|ElasticRestClientProvider
 name|clientBuilder
 parameter_list|,
 annotation|@

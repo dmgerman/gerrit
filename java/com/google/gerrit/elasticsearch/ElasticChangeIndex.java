@@ -610,22 +610,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|GerritServerConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|SitePaths
 import|;
 end_import
@@ -904,20 +888,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|elasticsearch
 operator|.
 name|client
@@ -1055,12 +1025,10 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ElasticChangeIndex ( @erritServerConfig Config cfg, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, SitePaths sitePaths, ElasticRestClientBuilder clientBuilder, @Assisted Schema<ChangeData> schema)
+DECL|method|ElasticChangeIndex ( ElasticConfiguration cfg, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, SitePaths sitePaths, ElasticRestClientProvider clientBuilder, @Assisted Schema<ChangeData> schema)
 name|ElasticChangeIndex
 parameter_list|(
-annotation|@
-name|GerritServerConfig
-name|Config
+name|ElasticConfiguration
 name|cfg
 parameter_list|,
 name|Provider
@@ -1077,7 +1045,7 @@ parameter_list|,
 name|SitePaths
 name|sitePaths
 parameter_list|,
-name|ElasticRestClientBuilder
+name|ElasticRestClientProvider
 name|clientBuilder
 parameter_list|,
 annotation|@
