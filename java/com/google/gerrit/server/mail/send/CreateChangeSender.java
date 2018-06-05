@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -272,26 +286,6 @@ name|StreamSupport
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Notify interested parties of a brand new change. */
 end_comment
@@ -304,21 +298,17 @@ name|CreateChangeSender
 extends|extends
 name|NewChangeSender
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|CreateChangeSender
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|interface|Factory
 specifier|public
@@ -520,13 +510,19 @@ block|{
 comment|// Just don't CC everyone. Better to send a partial message to those
 comment|// we already have queued up then to fail deliver entirely to people
 comment|// who have a lower interest in the change.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|err
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Cannot notify watchers for new change"
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 block|}

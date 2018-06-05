@@ -240,6 +240,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -1008,26 +1022,6 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Checks changes for various kinds of inconsistency and corruption.  *  *<p>A single instance may be reused for checking multiple changes, but not concurrently.  */
 end_comment
@@ -1038,21 +1032,17 @@ specifier|public
 class|class
 name|ConsistencyChecker
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|ConsistencyChecker
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 annotation|@
 name|AutoValue
@@ -1602,18 +1592,24 @@ name|String
 name|problem
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error checking change "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error checking change %s"
+argument_list|,
 name|notes
 operator|.
 name|getChangeId
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -3826,20 +3822,24 @@ name|RestApiException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error marking "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error marking %s as merged"
+argument_list|,
 name|notes
 operator|.
 name|getChangeId
 argument_list|()
-operator|+
-literal|"as merged"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|p
@@ -4061,14 +4061,22 @@ name|msg
 init|=
 literal|"Error fixing patch set ref"
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"%s %s"
+argument_list|,
 name|msg
-operator|+
-literal|' '
-operator|+
+argument_list|,
 name|ps
 operator|.
 name|getId
@@ -4076,8 +4084,6 @@ argument_list|()
 operator|.
 name|toRefName
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|p
@@ -4239,14 +4245,22 @@ name|msg
 init|=
 literal|"Error deleting patch set"
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"%s of change %s"
+argument_list|,
 name|msg
-operator|+
-literal|" of change "
-operator|+
+argument_list|,
 name|ops
 operator|.
 name|get
@@ -4258,8 +4272,6 @@ name|psId
 operator|.
 name|getParentKey
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 for|for
@@ -5008,18 +5020,24 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error in consistency check of change "
-operator|+
+name|t
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error in consistency check of change %s"
+argument_list|,
 name|notes
 operator|.
 name|getChangeId
 argument_list|()
-argument_list|,
-name|t
 argument_list|)
 expr_stmt|;
 block|}

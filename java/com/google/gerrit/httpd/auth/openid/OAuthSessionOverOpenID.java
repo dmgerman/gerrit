@@ -102,6 +102,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -494,26 +508,6 @@ name|ConfigInvalidException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** OAuth protocol implementation */
 end_comment
@@ -525,6 +519,18 @@ DECL|class|OAuthSessionOverOpenID
 class|class
 name|OAuthSessionOverOpenID
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|field|GERRIT_LOGIN
 specifier|static
 specifier|final
@@ -532,22 +538,6 @@ name|String
 name|GERRIT_LOGIN
 init|=
 literal|"/login"
-decl_stmt|;
-DECL|field|log
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|OAuthSessionOverOpenID
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 DECL|field|randomState
 specifier|private
@@ -731,12 +721,15 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Login "
-operator|+
+literal|"Login %s"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
@@ -770,12 +763,15 @@ return|return
 literal|false
 return|;
 block|}
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Login-Retrieve-User "
-operator|+
+literal|"Login-Retrieve-User %s"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
@@ -812,12 +808,15 @@ name|isLoggedIn
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Login-SUCCESS "
-operator|+
+literal|"Login-SUCCESS %s"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
@@ -843,12 +842,15 @@ return|return
 literal|false
 return|;
 block|}
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Login-PHASE1 "
-operator|+
+literal|"Login-PHASE1 %s"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
@@ -1013,9 +1015,12 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Claimed identity is unknown"
 argument_list|)
@@ -1032,9 +1037,12 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Claimed identity is set and is known"
 argument_list|)
@@ -1064,9 +1072,12 @@ argument_list|)
 condition|)
 block|{
 comment|// Both link to the same account, that's what we expected.
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Both link to the same account. All is fine."
 argument_list|)
@@ -1077,34 +1088,31 @@ block|{
 comment|// This is (for now) a fatal error. There are two records
 comment|// for what might be the same user. The admin would have to
 comment|// link the accounts manually.
-name|log
+name|logger
 operator|.
-name|error
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"OAuth accounts disagree over user identity:\n"
 operator|+
-literal|"  Claimed ID: "
+literal|"  Claimed ID: %s is %s\n"
 operator|+
+literal|"  Delgate ID: %s is %s"
+argument_list|,
 name|claimedId
 operator|.
 name|get
 argument_list|()
-operator|+
-literal|" is "
-operator|+
+argument_list|,
 name|claimedIdentifier
-operator|+
-literal|"\n"
-operator|+
-literal|"  Delgate ID: "
-operator|+
+argument_list|,
 name|actualId
 operator|.
 name|get
 argument_list|()
-operator|+
-literal|" is "
-operator|+
+argument_list|,
 name|user
 operator|.
 name|getExternalId
@@ -1126,9 +1134,12 @@ block|}
 else|else
 block|{
 comment|// Claimed account already exists: link to it.
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Claimed account already exists: link to it."
 argument_list|)
@@ -1156,28 +1167,25 @@ name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Cannot link: "
-operator|+
+literal|"Cannot link: %s to user identity:\n  Claimed ID: %s is %s"
+argument_list|,
 name|user
 operator|.
 name|getExternalId
 argument_list|()
-operator|+
-literal|" to user identity:\n"
-operator|+
-literal|"  Claimed ID: "
-operator|+
+argument_list|,
 name|claimedId
 operator|.
 name|get
 argument_list|()
-operator|+
-literal|" is "
-operator|+
+argument_list|,
 name|claimedIdentifier
 argument_list|)
 expr_stmt|;
@@ -1216,11 +1224,14 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Linking \"{}\" to \"{}\""
+literal|"Linking \"%s\" to \"%s\""
 argument_list|,
 name|user
 operator|.
@@ -1248,19 +1259,20 @@ name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Cannot link: "
-operator|+
+literal|"Cannot link: %s to user identity: %s"
+argument_list|,
 name|user
 operator|.
 name|getExternalId
 argument_list|()
-operator|+
-literal|" to user identity: "
-operator|+
+argument_list|,
 name|accountId
 argument_list|)
 expr_stmt|;
@@ -1329,17 +1341,21 @@ name|AccountException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Unable to authenticate user \""
-operator|+
-name|user
-operator|+
-literal|"\""
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Unable to authenticate user \"%s\""
+argument_list|,
+name|user
 argument_list|)
 expr_stmt|;
 name|rsp
@@ -1459,16 +1475,17 @@ name|state
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Illegal request state '"
-operator|+
+literal|"Illegal request state '%s' on OAuthProtocol %s"
+argument_list|,
 name|s
-operator|+
-literal|"' on OAuthProtocol "
-operator|+
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;

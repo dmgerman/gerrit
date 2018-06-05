@@ -130,6 +130,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -472,26 +486,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Checks authorization to perform an action on a project, reference, or change.  *  *<p>{@code check} methods should be used during action handlers to verify the user is allowed to  * exercise the specified permission. For convenience in implementation {@code check} methods throw  * {@link AuthException} if the permission is denied.  *  *<p>{@code test} methods should be used when constructing replies to the client and the result  * object needs to include a true/false hint indicating the user's ability to exercise the  * permission. This is suitable for configuring UI button state, but should not be relied upon to  * guard handlers before making state changes.  *  *<p>{@code PermissionBackend} is a singleton for the server, acting as a factory for lightweight  * request instances. Implementation classes may cache supporting data inside of {@link WithUser},  * {@link ForProject}, {@link ForRef}, and {@link ForChange} instances, in addition to storing  * within {@link CurrentUser} using a {@link com.google.gerrit.server.CurrentUser.PropertyKey}.  * {@link GlobalPermission} caching for {@link WithUser} may best cached inside {@link CurrentUser}  * as {@link WithUser} instances are frequently created.  *  *<p>Example use:  *  *<pre>  *   private final PermissionBackend permissions;  *   private final Provider<CurrentUser> user;  *  *   @Inject  *   Foo(PermissionBackend permissions, Provider<CurrentUser> user) {  *     this.permissions = permissions;  *     this.user = user;  *   }  *  *   public void apply(...) {  *     permissions.user(user).change(cd).check(ChangePermission.SUBMIT);  *   }  *  *   public UiAction.Description getDescription(ChangeResource rsrc) {  *     return new UiAction.Description()  *       .setLabel("Submit")  *       .setVisible(rsrc.permissions().testCond(ChangePermission.SUBMIT));  * }  *</pre>  */
 end_comment
@@ -514,17 +508,13 @@ DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
+name|FluentLogger
 name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|PermissionBackend
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 comment|/** Returns an instance scoped to the current user. */
 DECL|method|currentUser ()
@@ -1047,15 +1037,19 @@ parameter_list|)
 block|{
 name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot test "
-operator|+
-name|perm
-operator|+
-literal|"; assuming false"
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot test %s; assuming false"
+argument_list|,
+name|perm
 argument_list|)
 expr_stmt|;
 return|return
@@ -1197,16 +1191,22 @@ condition|)
 block|{
 name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Could not find repository of the project {} : "
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Could not find repository of the project %s"
 argument_list|,
 name|project
 operator|.
 name|get
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 comment|// Do not include this project because doesn't exist
@@ -1494,15 +1494,19 @@ parameter_list|)
 block|{
 name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot test "
-operator|+
-name|perm
-operator|+
-literal|"; assuming false"
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot test %s; assuming false"
+argument_list|,
+name|perm
 argument_list|)
 expr_stmt|;
 return|return
@@ -1852,15 +1856,19 @@ parameter_list|)
 block|{
 name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot test "
-operator|+
-name|perm
-operator|+
-literal|"; assuming false"
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot test %s; assuming false"
+argument_list|,
+name|perm
 argument_list|)
 expr_stmt|;
 return|return
@@ -2037,15 +2045,19 @@ parameter_list|)
 block|{
 name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot test "
-operator|+
-name|perm
-operator|+
-literal|"; assuming false"
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot test %s; assuming false"
+argument_list|,
+name|perm
 argument_list|)
 expr_stmt|;
 return|return

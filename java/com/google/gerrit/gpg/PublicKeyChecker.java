@@ -70,6 +70,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|LazyArgs
+operator|.
+name|lazy
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -273,6 +289,20 @@ operator|.
 name|PGPSignature
 operator|.
 name|KEY_REVOCATION
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
 import|;
 end_import
 
@@ -522,26 +552,6 @@ name|BcPGPContentVerifierBuilderProvider
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Checker for GPG public keys for use in a push certificate. */
 end_comment
@@ -552,21 +562,17 @@ specifier|public
 class|class
 name|PublicKeyChecker
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|PublicKeyChecker
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 comment|// https://tools.ietf.org/html/rfc4880#section-5.2.3.13
 DECL|field|COMPLETE_TRUST
@@ -1697,12 +1703,19 @@ block|{
 comment|// Revoker is authorized and there is a revocation signature by this
 comment|// revoker, but the key is not in the store so we can't verify the
 comment|// signature.
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Key "
-operator|+
+literal|"Key %s is revoked by %s, which is not in the store. Assuming revocation is valid."
+argument_list|,
+name|lazy
+argument_list|(
+parameter_list|()
+lambda|->
 name|Fingerprint
 operator|.
 name|toString
@@ -1712,17 +1725,19 @@ operator|.
 name|getFingerprint
 argument_list|()
 argument_list|)
-operator|+
-literal|" is revoked by "
-operator|+
+argument_list|)
+argument_list|,
+name|lazy
+argument_list|(
+parameter_list|()
+lambda|->
 name|Fingerprint
 operator|.
 name|toString
 argument_list|(
 name|rfp
 argument_list|)
-operator|+
-literal|", which is not in the store. Assuming revocation is valid."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|problems

@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -202,26 +216,6 @@ name|IMAPSClient
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -232,21 +226,17 @@ name|ImapMailReceiver
 extends|extends
 name|MailReceiver
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|ImapMailReceiver
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|INBOX_FOLDER
 specifier|private
@@ -442,9 +432,12 @@ argument_list|)
 condition|)
 block|{
 comment|// false indicates that there are no messages to fetch
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Fetched 0 messages via IMAP"
 argument_list|)
@@ -469,15 +462,16 @@ name|length
 operator|-
 literal|1
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Fetched "
-operator|+
+literal|"Fetched %d messages via IMAP"
+argument_list|,
 name|numMessages
-operator|+
-literal|" messages via IMAP"
 argument_list|)
 expr_stmt|;
 comment|// Fetch the full version of all emails
@@ -671,12 +665,15 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Could not mark mail message as deleted: "
-operator|+
+literal|"Could not mark mail message as deleted: %s"
+argument_list|,
 name|mailMessage
 operator|.
 name|id
@@ -702,22 +699,31 @@ name|MailParsingException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Exception while parsing email after IMAP fetch"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 else|else
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"IMAP fetch failed. Will retry in next fetch cycle."
 argument_list|)
@@ -734,9 +740,12 @@ name|expunge
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Could not expunge IMAP emails"
 argument_list|)

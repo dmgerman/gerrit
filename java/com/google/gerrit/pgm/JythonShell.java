@@ -70,6 +70,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|launcher
@@ -172,47 +186,23 @@ name|Properties
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 DECL|class|JythonShell
 specifier|public
 class|class
 name|JythonShell
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|JythonShell
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|STARTUP_RESOURCE
 specifier|private
@@ -516,9 +506,12 @@ operator|.
 name|newInstance
 argument_list|()
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Jython shell instance created."
 argument_list|)
@@ -1073,12 +1066,15 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Cannot load resource "
-operator|+
+literal|"Cannot load resource %s"
+argument_list|,
 name|p
 argument_list|)
 expr_stmt|;
@@ -1090,16 +1086,22 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -1174,18 +1176,19 @@ empty_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"User initialization file "
-operator|+
+literal|"User initialization file %s is not found or not executable"
+argument_list|,
 name|script
 operator|.
 name|getAbsolutePath
 argument_list|()
-operator|+
-literal|" is not found or not executable"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1199,17 +1202,21 @@ name|InvocationTargetException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Exception occurred while loading file "
-operator|+
-name|p
-operator|+
-literal|" : "
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Exception occurred while loading file %s"
+argument_list|,
+name|p
 argument_list|)
 expr_stmt|;
 block|}
@@ -1222,17 +1229,21 @@ name|SecurityException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"SecurityException occurred while loading file "
-operator|+
-name|p
-operator|+
-literal|" : "
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"SecurityException occurred while loading file %s"
+argument_list|,
+name|p
 argument_list|)
 expr_stmt|;
 block|}
@@ -1297,17 +1308,21 @@ name|InvocationTargetException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Exception occurred while loading "
-operator|+
-name|p
-operator|+
-literal|" : "
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Exception occurred while loading %s"
+argument_list|,
+name|p
 argument_list|)
 expr_stmt|;
 block|}

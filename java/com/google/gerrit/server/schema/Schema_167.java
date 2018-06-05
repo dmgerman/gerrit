@@ -154,6 +154,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -664,26 +678,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Migrate groups from ReviewDb to NoteDb. */
 end_comment
@@ -696,21 +690,17 @@ name|Schema_167
 extends|extends
 name|SchemaVersion
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|Schema_167
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|repoManager
 specifier|private
@@ -1489,11 +1479,19 @@ name|ConfigInvalidException
 name|ignored
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to load account {}."
+name|ignored
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to load account %s."
 operator|+
 literal|" Cannot get account name for group audit log commit messages."
 argument_list|,
@@ -1501,8 +1499,6 @@ name|accountId
 operator|.
 name|get
 argument_list|()
-argument_list|,
-name|ignored
 argument_list|)
 expr_stmt|;
 return|return
@@ -1785,11 +1781,19 @@ name|SQLException
 name|ignored
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to load group {}."
+name|ignored
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to load group %s."
 operator|+
 literal|" Cannot get group name for group audit log commit messages."
 argument_list|,
@@ -1797,8 +1801,6 @@ name|groupUuid
 operator|.
 name|get
 argument_list|()
-argument_list|,
-name|ignored
 argument_list|)
 expr_stmt|;
 return|return

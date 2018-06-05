@@ -116,6 +116,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -670,26 +684,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Send comments, after the author of them hit used Publish Comments in the UI. */
 end_comment
@@ -702,21 +696,17 @@ name|CommentSender
 extends|extends
 name|ReplyToChangeSender
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|CommentSender
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|interface|Factory
 specifier|public
@@ -1409,12 +1399,15 @@ name|PatchListObjectTooLargeException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Failed to get patch list: "
-operator|+
+literal|"Failed to get patch list: %s"
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -1428,13 +1421,19 @@ name|PatchListNotAvailableException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Failed to get patch list"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -1553,11 +1552,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot load {} from {} in {}"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot load %s from %s in %s"
 argument_list|,
 name|c
 operator|.
@@ -1577,8 +1584,6 @@ name|projectState
 operator|.
 name|getName
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|currentGroup
@@ -2149,16 +2154,16 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Could not find the parent of this comment: {}"
+literal|"Could not find the parent of this comment: %s"
 argument_list|,
 name|child
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -3416,15 +3421,21 @@ name|err
 parameter_list|)
 block|{
 comment|// Default to the empty string if the file cannot be safely read.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to read file on side {}"
+name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to read file on side %d"
 argument_list|,
 name|side
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 return|return
@@ -3439,15 +3450,21 @@ parameter_list|)
 block|{
 comment|// Default to the empty string if the given line number does not appear
 comment|// in the file.
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to get line number of file on side {}"
+name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to get line number of file on side %d"
 argument_list|,
 name|side
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 return|return
@@ -3461,15 +3478,21 @@ name|err
 parameter_list|)
 block|{
 comment|// Default to the empty string if the side cannot be found.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Side {} of file didn't exist"
+name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Side %d of file didn't exist"
 argument_list|,
 name|side
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 return|return

@@ -96,6 +96,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -318,26 +332,6 @@ name|UniversalDetector
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 DECL|class|Text
 specifier|public
@@ -346,21 +340,17 @@ name|Text
 extends|extends
 name|RawText
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|Text
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|bigFileThreshold
 specifier|private
@@ -1135,16 +1125,17 @@ name|IllegalCharsetNameException
 name|err
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Invalid detected charset name '"
-operator|+
+literal|"Invalid detected charset name '%s': %s"
+argument_list|,
 name|encoding
-operator|+
-literal|"': "
-operator|+
+argument_list|,
 name|err
 argument_list|)
 expr_stmt|;
@@ -1158,16 +1149,17 @@ name|UnsupportedCharsetException
 name|err
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Detected charset '"
-operator|+
+literal|"Detected charset '%s' not supported: %s"
+argument_list|,
 name|encoding
-operator|+
-literal|"' not supported: "
-operator|+
+argument_list|,
 name|err
 argument_list|)
 expr_stmt|;

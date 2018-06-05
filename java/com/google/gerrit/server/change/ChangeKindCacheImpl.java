@@ -158,6 +158,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -682,26 +696,6 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 DECL|class|ChangeKindCacheImpl
 specifier|public
@@ -710,21 +704,17 @@ name|ChangeKindCacheImpl
 implements|implements
 name|ChangeKindCache
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|ChangeKindCacheImpl
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|ID_CACHE
 specifier|private
@@ -968,22 +958,26 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot check trivial rebase of new patch set "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot check trivial rebase of new patch set %s in %s"
+argument_list|,
 name|next
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|" in "
-operator|+
-name|project
 argument_list|,
-name|e
+name|project
 argument_list|)
 expr_stmt|;
 return|return
@@ -2342,22 +2336,26 @@ name|ExecutionException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot check trivial rebase of new patch set "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot check trivial rebase of new patch set %s in %s"
+argument_list|,
 name|next
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|" in "
-operator|+
-name|project
 argument_list|,
-name|e
+name|project
 argument_list|)
 expr_stmt|;
 return|return
@@ -2624,25 +2622,29 @@ name|e
 parameter_list|)
 block|{
 comment|// Do nothing; assume we have a complex change
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Unable to get change kind for patchSet "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Unable to get change kind for patchSet %s of change %s"
+argument_list|,
 name|patch
 operator|.
 name|getPatchSetId
 argument_list|()
-operator|+
-literal|"of change "
-operator|+
+argument_list|,
 name|change
 operator|.
 name|getId
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2751,25 +2753,29 @@ name|e
 parameter_list|)
 block|{
 comment|// Do nothing; assume we have a complex change
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Unable to get change kind for patchSet "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Unable to get change kind for patchSet %s of change %s"
+argument_list|,
 name|patch
 operator|.
 name|getPatchSetId
 argument_list|()
-operator|+
-literal|"of change "
-operator|+
+argument_list|,
 name|change
 operator|.
 name|getChangeId
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}

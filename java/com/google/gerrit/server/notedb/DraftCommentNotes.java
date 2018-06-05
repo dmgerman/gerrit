@@ -196,6 +196,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -592,26 +606,6 @@ name|ReceiveCommand
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** View of the draft comments for a single {@link Change} based on the log of its drafts branch. */
 end_comment
@@ -627,21 +621,17 @@ argument_list|<
 name|DraftCommentNotes
 argument_list|>
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|DraftCommentNotes
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|interface|Factory
 specifier|public
@@ -1567,11 +1557,14 @@ name|e
 parameter_list|)
 block|{
 comment|// See ChangeNotes#rebuildAndOpen.
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Rebuilding change {} via drafts failed: {}"
+literal|"Rebuilding change %s via drafts failed: %s"
 argument_list|,
 name|getChangeId
 argument_list|()
@@ -1679,11 +1672,14 @@ throw|;
 block|}
 finally|finally
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Rebuilt change {} in {} in {} ms via drafts"
+literal|"Rebuilt change %s in %s in %s ms via drafts"
 argument_list|,
 name|getChangeId
 argument_list|()

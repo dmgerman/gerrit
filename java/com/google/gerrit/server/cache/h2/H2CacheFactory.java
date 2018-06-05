@@ -118,6 +118,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -452,26 +466,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -483,21 +477,17 @@ name|PersistentCacheFactory
 implements|,
 name|LifecycleListener
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|H2CacheFactory
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|memCacheFactory
 specifier|private
@@ -797,12 +787,15 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Can't create disk cache: "
-operator|+
+literal|"Can't create disk cache: %s"
+argument_list|,
 name|loc
 operator|.
 name|toAbsolutePath
@@ -825,12 +818,15 @@ name|loc
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Can't write to disk cache: "
-operator|+
+literal|"Can't write to disk cache: %s"
+argument_list|,
 name|loc
 operator|.
 name|toAbsolutePath
@@ -841,12 +837,15 @@ return|return
 literal|null
 return|;
 block|}
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Enabling disk cache "
-operator|+
+literal|"Enabling disk cache %s"
+argument_list|,
 name|loc
 operator|.
 name|toAbsolutePath
@@ -988,13 +987,12 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|logger
+operator|.
+name|atInfo
+argument_list|()
+operator|.
 name|log
-operator|.
-name|info
-argument_list|(
-name|String
-operator|.
-name|format
 argument_list|(
 literal|"Finishing %d disk cache updates"
 argument_list|,
@@ -1002,7 +1000,6 @@ name|pending
 operator|.
 name|size
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -1023,9 +1020,12 @@ block|}
 block|}
 else|else
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Timeout waiting for disk cache to close"
 argument_list|)
@@ -1038,9 +1038,12 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Interrupted waiting for disk cache to shutdown"
 argument_list|)

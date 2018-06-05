@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -358,26 +372,6 @@ name|FS
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -388,21 +382,17 @@ name|PluginConfigFactory
 implements|implements
 name|ReloadPluginListener
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|PluginConfigFactory
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|EXTENSION
 specifier|private
@@ -889,18 +879,19 @@ name|exists
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"No "
-operator|+
+literal|"No %s; assuming defaults"
+argument_list|,
 name|pluginConfigFile
 operator|.
 name|toAbsolutePath
 argument_list|()
-operator|+
-literal|"; assuming defaults"
 argument_list|)
 expr_stmt|;
 return|return
@@ -922,19 +913,20 @@ name|e
 parameter_list|)
 block|{
 comment|// This is an error in user input, don't spam logs with a stack trace.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Failed to load "
-operator|+
+literal|"Failed to load %s: %s"
+argument_list|,
 name|pluginConfigFile
 operator|.
 name|toAbsolutePath
 argument_list|()
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
@@ -945,18 +937,24 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to load "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to load %s"
+argument_list|,
 name|pluginConfigFile
 operator|.
 name|toAbsolutePath
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}

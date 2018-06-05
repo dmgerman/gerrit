@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -96,26 +110,6 @@ name|Singleton
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Filters out auto-reply messages according to RFC 3834. */
 end_comment
@@ -130,21 +124,17 @@ name|AutoReplyMailFilter
 implements|implements
 name|MailFilter
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|AutoReplyMailFilter
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
@@ -228,11 +218,14 @@ literal|"bulk"
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Message {} has a Precedence header. Will ignore and delete message."
+literal|"Message %s has a Precedence header. Will ignore and delete message."
 argument_list|,
 name|message
 operator|.
@@ -293,11 +286,14 @@ literal|"no"
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Message {} has an Auto-Submitted header. Will ignore and delete message."
+literal|"Message %s has an Auto-Submitted header. Will ignore and delete message."
 argument_list|,
 name|message
 operator|.

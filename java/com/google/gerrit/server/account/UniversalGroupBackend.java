@@ -174,6 +174,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -398,26 +412,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Universal implementation of the GroupBackend that works with the injected set of GroupBackends.  */
 end_comment
@@ -432,21 +426,17 @@ name|UniversalGroupBackend
 implements|implements
 name|GroupBackend
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|UniversalGroupBackend
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|backends
 specifier|private
@@ -587,12 +577,15 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Unknown GroupBackend for UUID: "
-operator|+
+literal|"Unknown GroupBackend for UUID: %s"
+argument_list|,
 name|uuid
 argument_list|)
 expr_stmt|;
@@ -862,12 +855,15 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Unknown GroupMembership for UUID: "
-operator|+
+literal|"Unknown GroupMembership for UUID: %s"
+argument_list|,
 name|uuid
 argument_list|)
 expr_stmt|;
@@ -955,12 +951,15 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Unknown GroupMembership for UUID: "
-operator|+
+literal|"Unknown GroupMembership for UUID: %s"
+argument_list|,
 name|uuid
 argument_list|)
 expr_stmt|;
@@ -1149,12 +1148,15 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Unknown GroupMembership for UUID: "
-operator|+
+literal|"Unknown GroupMembership for UUID: %s"
+argument_list|,
 name|uuid
 argument_list|)
 expr_stmt|;

@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -204,26 +218,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Provides a list of all configured {@link TrackingFooter}s. */
 end_comment
@@ -241,6 +235,18 @@ argument_list|<
 name|TrackingFooters
 argument_list|>
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|field|TRACKING_ID_TAG
 specifier|private
 specifier|static
@@ -286,22 +292,6 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
-decl_stmt|;
-DECL|field|log
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|TrackingFootersProvider
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 annotation|@
 name|Inject
@@ -383,23 +373,20 @@ name|configValid
 operator|=
 literal|false
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Missing "
-operator|+
+literal|"Missing %s.%s.%s in gerrit.config"
+argument_list|,
 name|TRACKING_ID_TAG
-operator|+
-literal|"."
-operator|+
+argument_list|,
 name|name
-operator|+
-literal|"."
-operator|+
+argument_list|,
 name|FOOTER_TAG
-operator|+
-literal|" in gerrit.config"
 argument_list|)
 expr_stmt|;
 block|}
@@ -433,23 +420,20 @@ name|configValid
 operator|=
 literal|false
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Missing "
-operator|+
+literal|"Missing %s.%s.%s in gerrit.config"
+argument_list|,
 name|TRACKING_ID_TAG
-operator|+
-literal|"."
-operator|+
+argument_list|,
 name|name
-operator|+
-literal|"."
-operator|+
+argument_list|,
 name|SYSTEM_TAG
-operator|+
-literal|" in gerrit.config"
 argument_list|)
 expr_stmt|;
 block|}
@@ -470,33 +454,26 @@ name|configValid
 operator|=
 literal|false
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"String too long \""
-operator|+
+literal|"String too long \"%s\" in gerrit.config %s.%s.%s (max %d char)"
+argument_list|,
 name|system
-operator|+
-literal|"\" in gerrit.config "
-operator|+
+argument_list|,
 name|TRACKING_ID_TAG
-operator|+
-literal|"."
-operator|+
+argument_list|,
 name|name
-operator|+
-literal|"."
-operator|+
+argument_list|,
 name|SYSTEM_TAG
-operator|+
-literal|" (max "
-operator|+
+argument_list|,
 name|TrackingId
 operator|.
 name|TRACKING_SYSTEM_MAX_CHAR
-operator|+
-literal|" char)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -530,23 +507,20 @@ name|configValid
 operator|=
 literal|false
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Missing "
-operator|+
+literal|"Missing %s.%s.%s in gerrit.config"
+argument_list|,
 name|TRACKING_ID_TAG
-operator|+
-literal|"."
-operator|+
+argument_list|,
 name|name
-operator|+
-literal|"."
-operator|+
+argument_list|,
 name|REGEX_TAG
-operator|+
-literal|" in gerrit.config"
 argument_list|)
 expr_stmt|;
 block|}
@@ -588,28 +562,23 @@ name|PatternSyntaxException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Invalid pattern \""
-operator|+
+literal|"Invalid pattern \"%s\" in gerrit.config %s.%s.%s: %s"
+argument_list|,
 name|match
-operator|+
-literal|"\" in gerrit.config "
-operator|+
+argument_list|,
 name|TRACKING_ID_TAG
-operator|+
-literal|"."
-operator|+
+argument_list|,
 name|name
-operator|+
-literal|"."
-operator|+
+argument_list|,
 name|REGEX_TAG
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|e
 operator|.
 name|getMessage

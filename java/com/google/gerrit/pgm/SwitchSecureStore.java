@@ -132,6 +132,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -410,26 +424,6 @@ name|Option
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 DECL|class|SwitchSecureStore
 specifier|public
@@ -438,6 +432,18 @@ name|SwitchSecureStore
 extends|extends
 name|SiteProgram
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|method|getSecureStoreClassFromGerritConfig (SitePaths sitePaths)
 specifier|private
 specifier|static
@@ -505,22 +511,6 @@ literal|"secureStoreClass"
 argument_list|)
 return|;
 block|}
-DECL|field|log
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|SwitchSecureStore
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -582,11 +572,14 @@ name|newSecureStorePath
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"File {} doesn't exist"
+literal|"File %s doesn't exist"
 argument_list|,
 name|newSecureStorePath
 operator|.
@@ -625,11 +618,16 @@ name|newSecureStore
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Old and new SecureStore implementation names are the same. Migration will not work"
+literal|"Old and new SecureStore implementation names "
+operator|+
+literal|"are the same. Migration will not work"
 argument_list|)
 expr_stmt|;
 return|return
@@ -653,11 +651,14 @@ operator|.
 name|lib_dir
 argument_list|)
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Current secureStoreClass property ({}) will be replaced with {}"
+literal|"Current secureStoreClass property (%s) will be replaced with %s"
 argument_list|,
 name|currentSecureStoreName
 argument_list|,
@@ -736,9 +737,12 @@ name|SecureStore
 name|newStore
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Migrate entries"
 argument_list|)
@@ -904,11 +908,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Removing old SecureStore ({}) from lib/ directory"
+literal|"Removing old SecureStore (%s) from lib/ directory"
 argument_list|,
 name|oldSecureStore
 operator|.
@@ -932,29 +939,38 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot remove {}"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot remove %s"
 argument_list|,
 name|oldSecureStore
 operator|.
 name|toAbsolutePath
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 else|else
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Cannot find jar with old SecureStore ({}) in lib/ directory"
+literal|"Cannot find jar with old SecureStore (%s) in lib/ directory"
 argument_list|,
 name|currentSecureStoreName
 argument_list|)
@@ -975,11 +991,14 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Copy new SecureStore ({}) into lib/ directory"
+literal|"Copy new SecureStore (%s) into lib/ directory"
 argument_list|,
 name|newSecureStorePath
 operator|.
@@ -1023,11 +1042,14 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Set gerrit.secureStoreClass property of gerrit.config to {}"
+literal|"Set gerrit.secureStoreClass property of gerrit.config to %s"
 argument_list|,
 name|newSecureStore
 argument_list|)
@@ -1398,16 +1420,22 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}

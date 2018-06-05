@@ -240,6 +240,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -692,26 +706,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -722,21 +716,17 @@ name|PluginLoader
 implements|implements
 name|LifecycleListener
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|PluginLoader
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|method|getPluginName (Path srcPath)
 specifier|public
@@ -1303,11 +1293,14 @@ name|name
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Plugin provides its own name:<{}>, use it instead of the input name:<{}>"
+literal|"Plugin provides its own name:<%s>, use it instead of the input name:<%s>"
 argument_list|,
 name|name
 argument_list|,
@@ -1370,11 +1363,14 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Replacing plugin {}"
+literal|"Replacing plugin %s"
 argument_list|,
 name|active
 operator|.
@@ -1458,11 +1454,14 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Installed plugin {}"
+literal|"Installed plugin %s"
 argument_list|,
 name|plugin
 operator|.
@@ -1525,11 +1524,14 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Unloading plugin {}, version {}"
+literal|"Unloading plugin %s, version %s"
 argument_list|,
 name|name
 argument_list|,
@@ -1594,11 +1596,14 @@ name|isRemoteAdminEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Remote plugin administration is disabled, ignoring disablePlugins({})"
+literal|"Remote plugin administration is disabled, ignoring disablePlugins(%s)"
 argument_list|,
 name|names
 argument_list|)
@@ -1637,11 +1642,14 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Disabling plugin {}"
+literal|"Disabling plugin %s"
 argument_list|,
 name|active
 operator|.
@@ -1691,13 +1699,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Failed to disable plugin"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 comment|// In theory we could still unload the plugin even if the rename
@@ -1754,20 +1768,26 @@ name|e
 parameter_list|)
 block|{
 comment|// This shouldn't happen, as the plugin was loaded earlier.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot load disabled plugin {}"
+name|e
+operator|.
+name|getCause
+argument_list|()
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot load disabled plugin %s"
 argument_list|,
 name|active
 operator|.
 name|getName
-argument_list|()
-argument_list|,
-name|e
-operator|.
-name|getCause
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1799,11 +1819,14 @@ name|isRemoteAdminEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Remote plugin administration is disabled, ignoring enablePlugins({})"
+literal|"Remote plugin administration is disabled, ignoring enablePlugins(%s)"
 argument_list|,
 name|names
 argument_list|)
@@ -1842,11 +1865,14 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Enabling plugin {}"
+literal|"Enabling plugin %s"
 argument_list|,
 name|name
 argument_list|)
@@ -1923,15 +1949,21 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to move plugin {} into place"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to move plugin %s into place"
 argument_list|,
 name|name
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -2036,11 +2068,14 @@ range|:
 name|files
 control|)
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Removing stale plugin file: {}"
+literal|"Removing stale plugin file: %s"
 argument_list|,
 name|file
 operator|.
@@ -2067,11 +2102,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Failed to remove stale plugin file {}: {}"
+literal|"Failed to remove stale plugin file %s: %s"
 argument_list|,
 name|file
 operator|.
@@ -2096,11 +2134,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Unable to discover stale plugin files: {}"
+literal|"Unable to discover stale plugin files: %s"
 argument_list|,
 name|e
 operator|.
@@ -2141,11 +2182,14 @@ name|absolutePath
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"{} does not exist; creating"
+literal|"%s does not exist; creating"
 argument_list|,
 name|absolutePath
 argument_list|)
@@ -2166,11 +2210,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Failed to create {}: {}"
+literal|"Failed to create %s: %s"
 argument_list|,
 name|absolutePath
 argument_list|,
@@ -2182,11 +2229,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Loading plugins from {}"
+literal|"Loading plugins from %s"
 argument_list|,
 name|absolutePath
 argument_list|)
@@ -2462,11 +2512,14 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Reloading plugin {}"
+literal|"Reloading plugin %s"
 argument_list|,
 name|name
 argument_list|)
@@ -2486,11 +2539,14 @@ argument_list|,
 name|active
 argument_list|)
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Reloaded plugin {}, version {}"
+literal|"Reloaded plugin %s, version %s"
 argument_list|,
 name|newPlugin
 operator|.
@@ -2510,18 +2566,24 @@ name|PluginInstallException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot reload plugin {}"
-argument_list|,
-name|name
-argument_list|,
 name|e
 operator|.
 name|getCause
 argument_list|()
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot reload plugin %s"
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -2644,11 +2706,14 @@ name|path
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"No Plugin provider was found that handles this file format: {}"
+literal|"No Plugin provider was found that handles this file format: %s"
 argument_list|,
 name|fileName
 argument_list|)
@@ -2719,11 +2784,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Reloading plugin {}"
+literal|"Reloading plugin %s"
 argument_list|,
 name|active
 operator|.
@@ -2755,11 +2823,14 @@ name|isDisabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"{} plugin {}, version {}"
+literal|"%s plugin %s, version %s"
 argument_list|,
 name|active
 operator|==
@@ -2788,18 +2859,24 @@ name|PluginInstallException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot load plugin {}"
-argument_list|,
-name|name
-argument_list|,
 name|e
 operator|.
 name|getCause
 argument_list|()
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot load plugin %s"
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 block|}
@@ -4239,15 +4316,18 @@ literal|1
 argument_list|)
 control|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Plugin<{}> was disabled, because"
+literal|"Plugin<%s> was disabled, because"
 operator|+
-literal|" another plugin<{}>"
+literal|" another plugin<%s>"
 operator|+
-literal|" with the same name<{}> already exists"
+literal|" with the same name<%s> already exists"
 argument_list|,
 name|loser
 argument_list|,
@@ -4300,15 +4380,21 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to fully disable plugin {}"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to fully disable plugin %s"
 argument_list|,
 name|loser
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -4365,18 +4451,24 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot list {}"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot list %s"
 argument_list|,
 name|pluginsDir
 operator|.
 name|toAbsolutePath
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return

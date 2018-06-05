@@ -776,15 +776,21 @@ parameter_list|)
 block|{
 name|PatchListLoader
 operator|.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error computing "
-operator|+
-name|key
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error computing %s"
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -826,15 +832,21 @@ argument_list|)
 expr_stmt|;
 name|PatchListLoader
 operator|.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error computing "
-operator|+
-name|key
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error computing %s"
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -1073,15 +1085,21 @@ parameter_list|)
 block|{
 name|IntraLineLoader
 operator|.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error computing "
-operator|+
-name|key
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error computing %s"
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 return|return
@@ -1155,15 +1173,21 @@ parameter_list|)
 block|{
 name|PatchListLoader
 operator|.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error computing "
-operator|+
-name|key
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error computing %s"
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -1192,15 +1216,21 @@ condition|)
 block|{
 name|PatchListLoader
 operator|.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error computing "
-operator|+
-name|key
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error computing %s"
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 throw|throw

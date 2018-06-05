@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -476,26 +490,6 @@ name|FS
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Manages Git repositories stored on the local filesystem. */
 end_comment
@@ -510,21 +504,17 @@ name|LocalDiskRepositoryManager
 implements|implements
 name|GitRepositoryManager
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|LocalDiskRepositoryManager
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|class|Module
 specifier|public
@@ -800,11 +790,14 @@ name|limit
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Defaulting core.streamFileThreshold to {}"
+literal|"Defaulting core.streamFileThreshold to %s"
 argument_list|,
 name|desc
 argument_list|)
@@ -1285,11 +1278,14 @@ name|createNewFile
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Failed to create ref log for {} in repository {}"
+literal|"Failed to create ref log for %s in repository %s"
 argument_list|,
 name|RefNames
 operator|.
@@ -1618,11 +1614,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error walking repository tree {}"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error walking repository tree %s"
 argument_list|,
 name|visitor
 operator|.
@@ -1630,8 +1634,6 @@ name|startFolder
 operator|.
 name|toAbsolutePath
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -1860,9 +1862,12 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
 name|e
 operator|.
@@ -1975,11 +1980,14 @@ name|nameKey
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Ignoring unreasonably named repository {}"
+literal|"Ignoring unreasonably named repository %s"
 argument_list|,
 name|p
 operator|.

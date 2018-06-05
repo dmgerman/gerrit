@@ -102,6 +102,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -728,26 +742,6 @@ name|RepositoryNotFoundException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -763,21 +757,17 @@ argument_list|,
 name|ConfigInput
 argument_list|>
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|PutConfig
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|PARAMETER_NAME_PATTERN
 specifier|private
@@ -1356,15 +1346,21 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to update config of project {}."
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to update config of project %s."
 argument_list|,
 name|projectName
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -1593,11 +1589,14 @@ argument_list|()
 condition|)
 block|{
 comment|// TODO check why we have this restriction
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Parameter name '{}' must match '{}'"
+literal|"Parameter name '%s' must match '%s'"
 argument_list|,
 name|v
 operator|.
@@ -1931,11 +1930,14 @@ argument_list|)
 expr_stmt|;
 break|break;
 default|default:
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"The type '{}' of parameter '{}' is not supported."
+literal|"The type '%s' of parameter '%s' is not supported."
 argument_list|,
 name|projectConfigEntry
 operator|.

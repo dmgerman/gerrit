@@ -130,6 +130,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -874,26 +888,6 @@ name|Set
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** A service that can attach the comments from a {@link MailMessage} to a change. */
 end_comment
@@ -906,21 +900,17 @@ specifier|public
 class|class
 name|MailProcessor
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|MailProcessor
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|emails
 specifier|private
@@ -1270,11 +1260,14 @@ name|message
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Message {} filtered by plugin {} {}. Will delete message."
+literal|"Message %s filtered by plugin %s %s. Will delete message."
 argument_list|,
 name|message
 operator|.
@@ -1314,11 +1307,14 @@ name|hasRequiredFields
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Message {} is missing required metadata, have {}. Will delete message."
+literal|"Message %s is missing required metadata, have %s. Will delete message."
 argument_list|,
 name|message
 operator|.
@@ -1368,11 +1364,14 @@ operator|!=
 literal|1
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Address {} could not be matched to a unique account. It was matched to {}."
+literal|"Address %s could not be matched to a unique account. It was matched to %s."
 operator|+
 literal|" Will delete message."
 argument_list|,
@@ -1443,11 +1442,14 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Mail: Account {} doesn't exist. Will delete message."
+literal|"Mail: Account %s doesn't exist. Will delete message."
 argument_list|,
 name|accountId
 argument_list|)
@@ -1469,18 +1471,16 @@ name|isActive
 argument_list|()
 condition|)
 block|{
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
 name|log
-operator|.
-name|warn
-argument_list|(
-name|String
-operator|.
-name|format
 argument_list|(
 literal|"Mail: Account %s is inactive. Will delete message."
 argument_list|,
 name|accountId
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|sendRejectionEmail
@@ -1556,13 +1556,19 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Cannot send email to warn for an error"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -1642,13 +1648,18 @@ operator|!=
 literal|1
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Message {} references unique change {}, but there are {} matching changes in "
+literal|"Message %s references unique change %s,"
 operator|+
-literal|"the index. Will delete message."
+literal|" but there are %d matching changes in the index."
+operator|+
+literal|" Will delete message."
 argument_list|,
 name|message
 operator|.
@@ -1704,11 +1715,14 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Message {} was already processed. Will delete message."
+literal|"Message %s was already processed. Will delete message."
 argument_list|,
 name|message
 operator|.
@@ -1855,11 +1869,14 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Could not parse any comments from {}. Will delete message."
+literal|"Could not parse any comments from %s. Will delete message."
 argument_list|,
 name|message
 operator|.

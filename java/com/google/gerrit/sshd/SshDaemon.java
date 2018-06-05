@@ -162,6 +162,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -1450,26 +1464,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * SSH daemon to communicate with Gerrit.  *  *<p>Use a Git URL such as<code>ssh://${email}@${host}:${port}/${path}</code>, e.g. {@code  * ssh://sop@google.com@gerrit.com:8010/tools/gerrit.git} to access the SSH daemon itself.  *  *<p>Versions of Git before 1.5.3 may require setting the username and port properties in the  * user's {@code ~/.ssh/config} file, and using a host alias through a URL such as {@code  * gerrit-alias:/tools/gerrit.git}:  *  *<pre>{@code  * Host gerrit-alias  *  User sop@google.com  *  Hostname gerrit.com  *  Port 8010  * }</pre>  */
 end_comment
@@ -1488,21 +1482,17 @@ name|SshInfo
 implements|,
 name|LifecycleListener
 block|{
-DECL|field|sshDaemonLog
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|sshDaemonLog
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|SshDaemon
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|enum|SshSessionBackend
 specifier|public
@@ -2612,13 +2602,12 @@ name|e
 argument_list|)
 throw|;
 block|}
-name|sshDaemonLog
+name|logger
 operator|.
-name|info
-argument_list|(
-name|String
+name|atInfo
+argument_list|()
 operator|.
-name|format
+name|log
 argument_list|(
 literal|"Started Gerrit %s on %s"
 argument_list|,
@@ -2627,7 +2616,6 @@ argument_list|()
 argument_list|,
 name|addressList
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2695,9 +2683,12 @@ expr_stmt|;
 name|shutdownExecutors
 argument_list|()
 expr_stmt|;
-name|sshDaemonLog
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Stopped Gerrit SSHD"
 argument_list|)
@@ -2709,13 +2700,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|sshDaemonLog
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Exception caught while closing"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2952,13 +2949,12 @@ name|JSchException
 name|e
 parameter_list|)
 block|{
-name|sshDaemonLog
+name|logger
 operator|.
-name|warn
-argument_list|(
-name|String
+name|atWarning
+argument_list|()
 operator|.
-name|format
+name|log
 argument_list|(
 literal|"Cannot format SSHD host key [%s]: %s"
 argument_list|,
@@ -2971,7 +2967,6 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3790,25 +3785,24 @@ name|InvalidKeyException
 name|e
 parameter_list|)
 block|{
-name|sshDaemonLog
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Disabling cipher "
-operator|+
+literal|"Disabling cipher %s: %s; try installing unlimited cryptography extension"
+argument_list|,
 name|f
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
-operator|+
-literal|"; try installing unlimited cryptography extension"
 argument_list|)
 expr_stmt|;
 name|i
@@ -3823,19 +3817,20 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|sshDaemonLog
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Disabling cipher "
-operator|+
+literal|"Disabling cipher %s: %s"
+argument_list|,
 name|f
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -4279,9 +4274,12 @@ argument_list|(
 literal|" is supported"
 argument_list|)
 expr_stmt|;
-name|sshDaemonLog
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
 name|msg
 operator|.
@@ -4560,12 +4558,15 @@ operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
-name|sshDaemonLog
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Enabling kerberos with keytab "
-operator|+
+literal|"Enabling kerberos with keytab %s"
+argument_list|,
 name|kerberosKeytab
 argument_list|)
 expr_stmt|;
@@ -4582,15 +4583,16 @@ name|canRead
 argument_list|()
 condition|)
 block|{
-name|sshDaemonLog
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Keytab "
-operator|+
+literal|"Keytab %s does not exist or is not readable; further errors are possible"
+argument_list|,
 name|kerberosKeytab
-operator|+
-literal|" does not exist or is not readable; further errors are possible"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4635,12 +4637,15 @@ literal|"host/localhost"
 expr_stmt|;
 block|}
 block|}
-name|sshDaemonLog
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Using kerberos principal "
-operator|+
+literal|"Using kerberos principal %s"
+argument_list|,
 name|kerberosPrincipal
 argument_list|)
 expr_stmt|;
@@ -4655,9 +4660,12 @@ literal|"host/"
 argument_list|)
 condition|)
 block|{
-name|sshDaemonLog
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Host principal does not start with host/ "
 operator|+

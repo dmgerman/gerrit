@@ -148,6 +148,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -1768,26 +1782,6 @@ name|ExplicitBooleanOptionHandler
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Run SSH daemon portions of Gerrit. */
 end_comment
@@ -1800,21 +1794,17 @@ name|Daemon
 extends|extends
 name|SiteProgram
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|Daemon
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 annotation|@
 name|Option
@@ -2338,20 +2328,24 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Thread "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Thread %s threw exception"
+argument_list|,
 name|t
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" threw exception"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2422,9 +2416,12 @@ argument_list|(
 parameter_list|()
 lambda|->
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"caught shutdown, cleaning up"
 argument_list|)
@@ -2435,16 +2432,17 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Gerrit Code Review "
-operator|+
+literal|"Gerrit Code Review %s ready"
+argument_list|,
 name|myVersion
 argument_list|()
-operator|+
-literal|" ready"
 argument_list|)
 expr_stmt|;
 if|if
@@ -2493,15 +2491,21 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot write --run-id to "
-operator|+
-name|runFile
-argument_list|,
 name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot write --run-id to %s"
+argument_list|,
+name|runFile
 argument_list|)
 expr_stmt|;
 block|}
@@ -2605,13 +2609,19 @@ name|Throwable
 name|err
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|err
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Unable to start daemon"
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 return|return
@@ -2899,15 +2909,21 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"failed to delete "
-operator|+
-name|runFile
-argument_list|,
 name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"failed to delete %s"
+argument_list|,
+name|runFile
 argument_list|)
 expr_stmt|;
 block|}

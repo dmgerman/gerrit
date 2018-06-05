@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -262,26 +276,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Runnable to enable scheduling account deactivations to run periodically */
 end_comment
@@ -294,21 +288,17 @@ name|AccountDeactivator
 implements|implements
 name|Runnable
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|AccountDeactivator
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|class|Module
 specifier|public
@@ -536,9 +526,12 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Running account deactivations"
 argument_list|)
@@ -582,11 +575,14 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Deactivations complete, {} account(s) were deactivated"
+literal|"Deactivations complete, %d account(s) were deactivated"
 argument_list|,
 name|numberOfAccountsDeactivated
 argument_list|)
@@ -598,18 +594,24 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to complete deactivation of accounts: "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to complete deactivation of accounts: %s"
+argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -650,12 +652,15 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"processing account "
-operator|+
+literal|"processing account %s"
+argument_list|,
 name|userName
 argument_list|)
 expr_stmt|;
@@ -695,12 +700,15 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"deactivated account "
-operator|+
+literal|"deactivated account %s"
+argument_list|,
 name|userName
 argument_list|)
 expr_stmt|;
@@ -715,11 +723,14 @@ name|ResourceConflictException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Account {} already deactivated, continuing..."
+literal|"Account %s already deactivated, continuing..."
 argument_list|,
 name|userName
 argument_list|)
@@ -731,11 +742,19 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error deactivating account: {} ({}) {}"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error deactivating account: %s (%s) %s"
 argument_list|,
 name|userName
 argument_list|,
@@ -751,8 +770,6 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}

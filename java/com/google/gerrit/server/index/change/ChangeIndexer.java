@@ -116,6 +116,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -662,26 +676,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Helper for (re)indexing a change document.  *  *<p>Indexing is run in the background, as it may require substantial work to compute some of the  * fields and/or update the index.  */
 end_comment
@@ -692,21 +686,17 @@ specifier|public
 class|class
 name|ChangeIndexer
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|ChangeIndexer
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|interface|Factory
 specifier|public
@@ -2149,15 +2139,21 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Failed to execute "
-operator|+
-name|this
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to execute %s"
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -2320,11 +2316,14 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|logger
 operator|.
-name|info
+name|atInfo
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Deleted change {} from index."
+literal|"Deleted change %s from index."
 argument_list|,
 name|id
 operator|.
@@ -2432,11 +2431,14 @@ name|NoSuchChangeException
 name|nsce
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Change {} was deleted, aborting reindexing the change."
+literal|"Change %s was deleted, aborting reindexing the change."
 argument_list|,
 name|id
 operator|.
@@ -2464,11 +2466,14 @@ throw|throw
 name|e
 throw|;
 block|}
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Change {} belongs to deleted project {}, aborting reindexing the change."
+literal|"Change %s belongs to deleted project %s, aborting reindexing the change."
 argument_list|,
 name|id
 operator|.

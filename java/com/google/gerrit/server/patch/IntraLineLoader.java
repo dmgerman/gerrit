@@ -118,6 +118,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -330,26 +344,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_class
 DECL|class|IntraLineLoader
 class|class
@@ -360,20 +354,16 @@ argument_list|<
 name|IntraLineDiff
 argument_list|>
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|IntraLineLoader
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|interface|Factory
 interface|interface
@@ -593,23 +583,24 @@ name|TimeoutException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
+literal|"%s ms timeout reached for IntraLineDiff"
+operator|+
+literal|" in project %s on commit %s for path %s comparing %s..%s"
+argument_list|,
 name|timeoutMillis
-operator|+
-literal|" ms timeout reached for IntraLineDiff"
-operator|+
-literal|" in project "
-operator|+
+argument_list|,
 name|args
 operator|.
 name|project
 argument_list|()
-operator|+
-literal|" on commit "
-operator|+
+argument_list|,
 name|args
 operator|.
 name|commit
@@ -617,16 +608,12 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|" for path "
-operator|+
+argument_list|,
 name|args
 operator|.
 name|path
 argument_list|()
-operator|+
-literal|" comparing "
-operator|+
+argument_list|,
 name|key
 operator|.
 name|getBlobA
@@ -634,9 +621,7 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|".."
-operator|+
+argument_list|,
 name|key
 operator|.
 name|getBlobB

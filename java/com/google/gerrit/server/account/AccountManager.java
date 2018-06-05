@@ -164,6 +164,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -658,26 +672,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Tracks authentication related details for user accounts. */
 end_comment
@@ -690,21 +684,17 @@ specifier|public
 class|class
 name|AccountManager
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|AccountManager
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|sequences
 specifier|private
@@ -1133,11 +1123,14 @@ block|{
 comment|// An inconsistency is detected in the database, having a record for scheme "username:"
 comment|// but no record for scheme "gerrit:". Try to recover by linking
 comment|// "gerrit:" identity to the existing account.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"User {} already has an account; link new identity to the existing account."
+literal|"User %s already has an account; link new identity to the existing account."
 argument_list|,
 name|who
 operator|.
@@ -1162,9 +1155,12 @@ return|;
 block|}
 block|}
 comment|// New account, automatically create and return.
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"External ID not found. Attempting to create new account."
 argument_list|)
@@ -1209,11 +1205,14 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Authentication with external ID {} failed. Account {} doesn't exist."
+literal|"Authentication with external ID %s failed. Account %s doesn't exist."
 argument_list|,
 name|extId
 operator|.
@@ -1413,12 +1412,20 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Unable to deactivate account "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Unable to deactivate account %s"
+argument_list|,
 name|authRequest
 operator|.
 name|getUserName
@@ -1436,8 +1443,6 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -1876,11 +1881,14 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Not changing already set username {} to {}"
+literal|"Not changing already set username %s to %s"
 argument_list|,
 name|user
 operator|.
@@ -1902,11 +1910,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Not setting username to {}"
+literal|"Not setting username to %s"
 argument_list|,
 name|who
 operator|.
@@ -2003,11 +2014,14 @@ name|nextAccountId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Assigning new Id {} to account"
+literal|"Assigning new Id %s to account"
 argument_list|,
 name|newId
 argument_list|)
@@ -2032,11 +2046,14 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Created external Id: {}"
+literal|"Created external Id: %s"
 argument_list|,
 name|extId
 argument_list|)
@@ -2433,13 +2450,16 @@ condition|)
 block|{
 return|return;
 block|}
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Email {} is already assigned to account {};"
+literal|"Email %s is already assigned to account %s;"
 operator|+
-literal|" cannot create external ID {} with the same email for account {}."
+literal|" cannot create external ID %s with the same email for account %s."
 argument_list|,
 name|email
 argument_list|,
@@ -2625,9 +2645,12 @@ name|getExternalIdKey
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Link another authentication identity to an existing account"
 argument_list|)
@@ -2690,9 +2713,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Linking new external ID to the existing account"
 argument_list|)

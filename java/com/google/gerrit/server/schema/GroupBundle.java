@@ -288,6 +288,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -680,26 +694,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * A bundle of all entities rooted at a single {@link AccountGroup} entity.  *  *<p>Used primarily during the migration process. Most callers should prefer {@link InternalGroup}  * instead.  */
 end_comment
@@ -712,21 +706,17 @@ specifier|abstract
 class|class
 name|GroupBundle
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|GroupBundle
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 static|static
 block|{
@@ -2818,11 +2808,14 @@ comment|// *is* included in equality. As a result, if this happens, it means the
 comment|// corrupt, and it's not clear if we can programmatically repair it. For migrating to NoteDb,
 comment|// we'll try our best to recreate it, but no guarantees it will match the real sequence of
 comment|// attempted operations, which is in any case lost in the mists of time.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"group {} in {} has duplicate {} entities: {}"
+literal|"group %s in %s has duplicate %s entities: %s"
 argument_list|,
 name|uuid
 argument_list|,

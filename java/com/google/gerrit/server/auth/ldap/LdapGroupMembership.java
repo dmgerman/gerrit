@@ -424,15 +424,21 @@ parameter_list|)
 block|{
 name|LdapGroupBackend
 operator|.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot lookup membershipsOf {} in LDAP"
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot lookup membershipsOf %s in LDAP"
 argument_list|,
 name|id
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|membership

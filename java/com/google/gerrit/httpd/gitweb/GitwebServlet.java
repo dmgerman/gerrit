@@ -184,6 +184,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -834,26 +848,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Invokes {@code gitweb.cgi} for the project given in {@code p}. */
 end_comment
@@ -872,21 +866,17 @@ name|GitwebServlet
 extends|extends
 name|HttpServlet
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|GitwebServlet
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|PROJECT_LIST_ACTION
 specifier|private
@@ -1133,12 +1123,15 @@ name|URISyntaxException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Invalid gitweb.url: "
-operator|+
+literal|"Invalid gitweb.url: %s"
+argument_list|,
 name|url
 argument_list|)
 expr_stmt|;
@@ -2749,15 +2742,21 @@ name|PermissionBackendException
 name|err
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"cannot load "
-operator|+
-name|name
-argument_list|,
 name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"cannot load %s"
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 name|rsp
@@ -3344,16 +3343,17 @@ operator|!=
 name|status
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Non-zero exit status ("
-operator|+
+literal|"Non-zero exit status (%d) from %s"
+argument_list|,
 name|status
-operator|+
-literal|") from "
-operator|+
+argument_list|,
 name|gitwebCgi
 argument_list|)
 expr_stmt|;
@@ -3382,9 +3382,12 @@ name|InterruptedException
 name|ie
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|debug
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"CGI: interrupted waiting for CGI to terminate"
 argument_list|)
@@ -4240,13 +4243,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Unexpected error copying input to CGI"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -4350,9 +4359,12 @@ name|line
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
 name|b
 operator|.
@@ -4367,13 +4379,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|error
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Unexpected error copying stderr from CGI"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}

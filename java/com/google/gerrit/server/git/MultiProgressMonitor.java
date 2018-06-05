@@ -96,6 +96,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -224,26 +238,6 @@ name|ProgressMonitor
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Progress reporting interface that multiplexes multiple sub-tasks.  *  *<p>Output is of the format:  *  *<pre>  *   Task: subA: 1, subB: 75% (3/4) (-)\r  *   Task: subA: 2, subB: 75% (3/4), subC: 1 (\)\r  *   Task: subA: 2, subB: 100% (4/4), subC: 1 (|)\r  *   Task: subA: 4, subB: 100% (4/4), subC: 4, done    \n  *</pre>  *  *<p>Callers should try to keep task and sub-task descriptions short, since the output should fit  * on one terminal line. (Note that git clients do not accept terminal control characters, so true  * multi-line progress messages would be impossible.)  */
 end_comment
@@ -254,21 +248,17 @@ specifier|public
 class|class
 name|MultiProgressMonitor
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|MultiProgressMonitor
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 comment|/** Constant indicating the total work units cannot be predicted. */
 DECL|field|UNKNOWN
@@ -845,19 +835,15 @@ name|NANOSECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
 name|log
-operator|.
-name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"MultiProgressMonitor worker killed after %sms"
-operator|+
-name|detailMessage
+literal|"MultiProgressMonitor worker killed after %sms: %s"
 argument_list|,
-comment|//
 name|TimeUnit
 operator|.
 name|MILLISECONDS
@@ -870,7 +856,8 @@ name|overallStart
 argument_list|,
 name|NANOSECONDS
 argument_list|)
-argument_list|)
+argument_list|,
+name|detailMessage
 argument_list|)
 expr_stmt|;
 block|}
@@ -913,9 +900,12 @@ condition|)
 block|{
 comment|// The worker may not have called end() explicitly, which is likely a
 comment|// programming error.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"MultiProgressMonitor worker did not call end() before returning"
 argument_list|)

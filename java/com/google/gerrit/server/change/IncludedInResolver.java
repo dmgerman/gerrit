@@ -110,6 +110,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -314,26 +328,6 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Resolve in which tags and branches a commit is included. */
 end_comment
@@ -344,21 +338,17 @@ specifier|public
 class|class
 name|IncludedInResolver
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|IncludedInResolver
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|method|resolve (Repository repo, RevWalk rw, RevCommit commit)
 specifier|public
@@ -1260,26 +1250,25 @@ parameter_list|)
 block|{
 comment|// Log the problem with this branch, but keep processing.
 comment|//
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Reference "
-operator|+
+literal|"Reference %s in %s points to dangling object %s"
+argument_list|,
 name|ref
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" in "
-operator|+
+argument_list|,
 name|repo
 operator|.
 name|getDirectory
 argument_list|()
-operator|+
-literal|" points to dangling object "
-operator|+
+argument_list|,
 name|ref
 operator|.
 name|getObjectId

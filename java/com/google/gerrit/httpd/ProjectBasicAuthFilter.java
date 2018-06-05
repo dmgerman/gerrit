@@ -126,6 +126,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -492,26 +506,6 @@ name|Base64
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Authenticates the current user by HTTP basic authentication.  *  *<p>The current HTTP request is authenticated by looking up the username and password from the  * Base64 encoded Authorization header and validating them against any username/password configured  * authentication system in Gerrit. This filter is intended only to protect the {@link  * GitOverHttpServlet} and its handled URLs, which provide remote repository access over HTTP.  *  * @see<a href="http://www.ietf.org/rfc/rfc2617.txt">RFC 2617</a>  */
 end_comment
@@ -525,21 +519,17 @@ name|ProjectBasicAuthFilter
 implements|implements
 name|Filter
 block|{
-DECL|field|log
+DECL|field|logger
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|log
+name|FluentLogger
+name|logger
 init|=
-name|LoggerFactory
+name|FluentLogger
 operator|.
-name|getLogger
-argument_list|(
-name|ProjectBasicAuthFilter
-operator|.
-name|class
-argument_list|)
+name|forEnclosingClass
+argument_list|()
 decl_stmt|;
 DECL|field|REALM_NAME
 specifier|public
@@ -930,15 +920,16 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Authentication failed for "
-operator|+
+literal|"Authentication failed for %s: account inactive or not provisioned in Gerrit"
+argument_list|,
 name|username
-operator|+
-literal|": account inactive or not provisioned in Gerrit"
 argument_list|)
 expr_stmt|;
 name|rsp
@@ -1089,9 +1080,17 @@ name|who
 argument_list|)
 return|;
 block|}
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 name|authenticationFailedMsg
 argument_list|(
@@ -1099,8 +1098,6 @@ name|username
 argument_list|,
 name|req
 argument_list|)
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|rsp
@@ -1122,9 +1119,12 @@ parameter_list|)
 block|{
 comment|// This exception is thrown if the user provided wrong credentials, we don't need to log a
 comment|// stacktrace for it.
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
 name|authenticationFailedMsg
 argument_list|(
@@ -1133,8 +1133,8 @@ argument_list|,
 name|req
 argument_list|)
 operator|+
-literal|": "
-operator|+
+literal|": %s"
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -1158,9 +1158,17 @@ name|AccountException
 name|e
 parameter_list|)
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 name|authenticationFailedMsg
 argument_list|(
@@ -1168,8 +1176,6 @@ name|username
 argument_list|,
 name|req
 argument_list|)
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|rsp
@@ -1225,9 +1231,12 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|log
+name|logger
 operator|.
-name|warn
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
 name|authenticationFailedMsg
 argument_list|(
@@ -1237,8 +1246,6 @@ name|req
 argument_list|)
 operator|+
 literal|": password does not match the one stored in Gerrit"
-argument_list|,
-name|username
 argument_list|)
 expr_stmt|;
 name|rsp
