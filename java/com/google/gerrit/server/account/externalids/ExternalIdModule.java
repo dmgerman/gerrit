@@ -138,6 +138,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|time
+operator|.
+name|Duration
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -185,24 +195,25 @@ argument_list|()
 block|{}
 argument_list|)
 comment|// The cached data is potentially pretty large and we are always only interested
-comment|// in the latest value, hence the maximum cache weight is set to 1.
-comment|// This can lead to extra cache loads in case of the following race:
-comment|// 1. thread 1 reads the notes ref at revision A
-comment|// 2. thread 2 updates the notes ref to revision B and stores the derived value
-comment|//    for B in the cache
-comment|// 3. thread 1 attempts to read the data for revision A from the cache, and misses
-comment|// 4. later threads attempt to read at B
-comment|// In this race unneeded reloads are done in step 3 (reload from revision A) and
-comment|// step 4 (reload from revision B, because the value for revision B was lost when the
-comment|// reload from revision A was done, since the cache can hold only one entry).
-comment|// These reloads could be avoided by increasing the cache size to 2. However the race
-comment|// window between reading the ref and looking it up in the cache is small so that
-comment|// it's rare that this race happens. Therefore it's not worth to double the memory
-comment|// usage of this cache, just to avoid this.
+comment|// in the latest value. However, due to a race condition, it is possible for different
+comment|// threads to observe different values of the meta ref, and hence request different keys
+comment|// from the cache. Extend the cache size by 1 to cover this case, but expire the extra
+comment|// object after a short period of time, since it may be a potentially large amount of
+comment|// memory.
 operator|.
 name|maximumWeight
 argument_list|(
+literal|2
+argument_list|)
+operator|.
+name|expireFromMemoryAfterAccess
+argument_list|(
+name|Duration
+operator|.
+name|ofMinutes
+argument_list|(
 literal|1
+argument_list|)
 argument_list|)
 operator|.
 name|loader
