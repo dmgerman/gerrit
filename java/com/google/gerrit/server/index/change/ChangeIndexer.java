@@ -1318,11 +1318,51 @@ name|futures
 argument_list|)
 return|;
 block|}
-comment|/**    * Synchronously index a change.    *    * @param cd change to index.    */
+comment|/**    * Synchronously index a change, then check if the index is stale due to a race condition.    *    * @param cd change to index.    */
 DECL|method|index (ChangeData cd)
 specifier|public
 name|void
 name|index
+parameter_list|(
+name|ChangeData
+name|cd
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|indexImpl
+argument_list|(
+name|cd
+argument_list|)
+expr_stmt|;
+comment|// Always double-check whether the change might be stale immediately after
+comment|// interactively indexing it. This fixes up the case where two writers write
+comment|// to the primary storage in one order, and the corresponding index writes
+comment|// happen in the opposite order:
+comment|//  1. Writer A writes to primary storage.
+comment|//  2. Writer B writes to primary storage.
+comment|//  3. Writer B updates index.
+comment|//  4. Writer A updates index.
+comment|//
+comment|// Without the extra reindexIfStale step, A has no way of knowing that it's
+comment|// about to overwrite the index document with stale data. It doesn't work to
+comment|// have A check for staleness before attempting its index update, because
+comment|// B's index update might not have happened when it does the check.
+comment|//
+comment|// With the extra reindexIfStale step after (3)/(4), we are able to detect
+comment|// and fix the staleness. It doesn't matter which order the two
+comment|// reindexIfStale calls actually execute in; we are guaranteed that at least
+comment|// one of them will execute after the second index write, (4).
+name|autoReindexIfStale
+argument_list|(
+name|cd
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|indexImpl (ChangeData cd)
+specifier|private
+name|void
+name|indexImpl
 parameter_list|(
 name|ChangeData
 name|cd
@@ -1369,29 +1409,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// Always double-check whether the change might be stale immediately after
-comment|// interactively indexing it. This fixes up the case where two writers write
-comment|// to the primary storage in one order, and the corresponding index writes
-comment|// happen in the opposite order:
-comment|//  1. Writer A writes to primary storage.
-comment|//  2. Writer B writes to primary storage.
-comment|//  3. Writer B updates index.
-comment|//  4. Writer A updates index.
-comment|//
-comment|// Without the extra reindexIfStale step, A has no way of knowing that it's
-comment|// about to overwrite the index document with stale data. It doesn't work to
-comment|// have A check for staleness before attempting its index update, because
-comment|// B's index update might not have happened when it does the check.
-comment|//
-comment|// With the extra reindexIfStale step after (3)/(4), we are able to detect
-comment|// and fix the staleness. It doesn't matter which order the two
-comment|// reindexIfStale calls actually execute in; we are guaranteed that at least
-comment|// one of them will execute after the second index write, (4).
-name|autoReindexIfStale
-argument_list|(
-name|cd
 argument_list|)
 expr_stmt|;
 block|}
@@ -2431,7 +2448,7 @@ name|id
 argument_list|)
 condition|)
 block|{
-name|index
+name|indexImpl
 argument_list|(
 name|newChangeData
 argument_list|(
