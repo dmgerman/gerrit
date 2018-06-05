@@ -74,20 +74,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
-operator|.
-name|NoHttpd
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|elasticsearch
 operator|.
 name|ElasticVersion
@@ -205,8 +191,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|NoHttpd
 DECL|class|ElasticReindexIT
 specifier|public
 class|class

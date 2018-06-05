@@ -72,20 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|NoHttpd
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Injector
@@ -93,8 +79,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|NoHttpd
 DECL|class|ReindexIT
 specifier|public
 class|class
