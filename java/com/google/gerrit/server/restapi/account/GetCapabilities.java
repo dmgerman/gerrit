@@ -578,6 +578,7 @@ end_import
 
 begin_class
 DECL|class|GetCapabilities
+specifier|public
 class|class
 name|GetCapabilities
 implements|implements
@@ -1238,6 +1239,7 @@ block|}
 annotation|@
 name|Singleton
 DECL|class|CheckOne
+specifier|public
 specifier|static
 class|class
 name|CheckOne

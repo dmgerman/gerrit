@@ -1187,6 +1187,7 @@ block|}
 annotation|@
 name|Singleton
 DECL|class|Put
+specifier|public
 specifier|static
 class|class
 name|Put
