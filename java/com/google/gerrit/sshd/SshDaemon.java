@@ -812,7 +812,7 @@ name|common
 operator|.
 name|forward
 operator|.
-name|DefaultTcpipForwarderFactory
+name|DefaultForwarderFactory
 import|;
 end_import
 
@@ -4712,7 +4712,7 @@ name|void
 name|initForwarding
 parameter_list|()
 block|{
-name|setTcpipForwardingFilter
+name|setForwardingFilter
 argument_list|(
 operator|new
 name|ForwardingFilter
@@ -4792,10 +4792,10 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|setTcpipForwarderFactory
+name|setForwarderFactory
 argument_list|(
 operator|new
-name|DefaultTcpipForwarderFactory
+name|DefaultForwarderFactory
 argument_list|()
 argument_list|)
 expr_stmt|;
