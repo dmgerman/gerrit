@@ -160,6 +160,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|GetProject
+specifier|public
 class|class
 name|GetProject
 implements|implements

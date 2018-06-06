@@ -170,6 +170,7 @@ end_comment
 
 begin_class
 DECL|class|ProjectNode
+specifier|public
 class|class
 name|ProjectNode
 implements|implements
@@ -181,6 +182,7 @@ name|ProjectNode
 argument_list|>
 block|{
 DECL|interface|Factory
+specifier|public
 interface|interface
 name|Factory
 block|{

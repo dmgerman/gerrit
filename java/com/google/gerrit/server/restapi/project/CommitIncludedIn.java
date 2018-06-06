@@ -232,6 +232,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|CommitIncludedIn
+specifier|public
 class|class
 name|CommitIncludedIn
 implements|implements

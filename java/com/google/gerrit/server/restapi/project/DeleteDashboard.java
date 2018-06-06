@@ -248,6 +248,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|DeleteDashboard
+specifier|public
 class|class
 name|DeleteDashboard
 implements|implements
