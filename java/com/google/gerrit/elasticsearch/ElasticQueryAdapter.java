@@ -118,6 +118,12 @@ specifier|final
 name|String
 name|indexProperty
 decl_stmt|;
+DECL|field|rawFieldsKey
+specifier|private
+specifier|final
+name|String
+name|rawFieldsKey
+decl_stmt|;
 DECL|method|ElasticQueryAdapter (ElasticVersion version)
 name|ElasticQueryAdapter
 parameter_list|(
@@ -176,6 +182,12 @@ name|indexProperty
 operator|=
 literal|"true"
 expr_stmt|;
+name|this
+operator|.
+name|rawFieldsKey
+operator|=
+literal|"_source"
+expr_stmt|;
 break|break;
 case|case
 name|V2_4
@@ -210,6 +222,12 @@ operator|.
 name|indexProperty
 operator|=
 literal|"not_analyzed"
+expr_stmt|;
+name|this
+operator|.
+name|rawFieldsKey
+operator|=
+literal|"fields"
 expr_stmt|;
 break|break;
 block|}
@@ -282,6 +300,15 @@ parameter_list|()
 block|{
 return|return
 name|indexProperty
+return|;
+block|}
+DECL|method|rawFieldsKey ()
+name|String
+name|rawFieldsKey
+parameter_list|()
+block|{
+return|return
+name|rawFieldsKey
 return|;
 block|}
 block|}

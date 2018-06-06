@@ -1555,7 +1555,13 @@ name|doc
 operator|.
 name|get
 argument_list|(
-literal|"fields"
+name|client
+operator|.
+name|adapter
+argument_list|()
+operator|.
+name|rawFieldsKey
+argument_list|()
 argument_list|)
 operator|.
 name|getAsJsonObject
