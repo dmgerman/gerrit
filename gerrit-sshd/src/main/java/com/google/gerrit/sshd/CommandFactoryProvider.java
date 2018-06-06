@@ -655,6 +655,8 @@ argument_list|(
 name|threads
 argument_list|,
 literal|"SshCommandStart"
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|destroyExecutor
