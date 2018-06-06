@@ -66,6 +66,20 @@ name|bulk
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|elasticsearch
+operator|.
+name|ElasticQueryAdapter
+import|;
+end_import
+
 begin_class
 DECL|class|IndexRequest
 specifier|public
@@ -74,7 +88,7 @@ name|IndexRequest
 extends|extends
 name|ActionRequest
 block|{
-DECL|method|IndexRequest (String id, String index, String type)
+DECL|method|IndexRequest (String id, String index, String type, ElasticQueryAdapter adapter)
 specifier|public
 name|IndexRequest
 parameter_list|(
@@ -86,6 +100,9 @@ name|index
 parameter_list|,
 name|String
 name|type
+parameter_list|,
+name|ElasticQueryAdapter
+name|adapter
 parameter_list|)
 block|{
 name|super
@@ -97,6 +114,8 @@ argument_list|,
 name|index
 argument_list|,
 name|type
+argument_list|,
+name|adapter
 argument_list|)
 expr_stmt|;
 block|}
