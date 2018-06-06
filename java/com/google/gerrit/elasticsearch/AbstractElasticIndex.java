@@ -829,15 +829,6 @@ name|BULK
 init|=
 literal|"_bulk"
 decl_stmt|;
-DECL|field|IGNORE_UNMAPPED
-specifier|protected
-specifier|static
-specifier|final
-name|String
-name|IGNORE_UNMAPPED
-init|=
-literal|"ignore_unmapped"
-decl_stmt|;
 DECL|field|ORDER
 specifier|protected
 specifier|static
@@ -1020,7 +1011,7 @@ name|String
 name|indexNameRaw
 decl_stmt|;
 DECL|field|client
-specifier|private
+specifier|protected
 specifier|final
 name|ElasticRestClientProvider
 name|client
@@ -1187,13 +1178,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|delete (K c)
+DECL|method|delete (K id)
 specifier|public
 name|void
 name|delete
 parameter_list|(
 name|K
-name|c
+name|id
 parameter_list|)
 throws|throws
 name|IOException
@@ -1213,9 +1204,9 @@ name|response
 init|=
 name|postRequest
 argument_list|(
-name|addActions
+name|getDeleteActions
 argument_list|(
-name|c
+name|id
 argument_list|)
 argument_list|,
 name|uri
@@ -1254,7 +1245,7 @@ name|format
 argument_list|(
 literal|"Failed to delete %s from index %s: %s"
 argument_list|,
-name|c
+name|id
 argument_list|,
 name|indexName
 argument_list|,
@@ -1275,6 +1266,19 @@ throws|throws
 name|IOException
 block|{
 comment|// Delete the index, if it exists.
+name|String
+name|endpoint
+init|=
+name|indexName
+operator|+
+name|client
+operator|.
+name|adapter
+argument_list|()
+operator|.
+name|indicesExistParam
+argument_list|()
+decl_stmt|;
 name|Response
 name|response
 init|=
@@ -1287,7 +1291,7 @@ name|performRequest
 argument_list|(
 literal|"HEAD"
 argument_list|,
-name|indexName
+name|endpoint
 argument_list|)
 decl_stmt|;
 name|int
@@ -1421,14 +1425,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|addActions (K c)
+DECL|method|getDeleteActions (K id)
 specifier|protected
 specifier|abstract
 name|String
-name|addActions
+name|getDeleteActions
 parameter_list|(
 name|K
-name|c
+name|id
 parameter_list|)
 function_decl|;
 DECL|method|getMappings ()
@@ -1448,7 +1452,7 @@ name|V
 name|v
 parameter_list|)
 function_decl|;
-DECL|method|delete (String type, K c)
+DECL|method|delete (String type, K id)
 specifier|protected
 name|String
 name|delete
@@ -1457,22 +1461,17 @@ name|String
 name|type
 parameter_list|,
 name|K
-name|c
+name|id
 parameter_list|)
 block|{
-name|String
-name|id
-init|=
-name|c
-operator|.
-name|toString
-argument_list|()
-decl_stmt|;
 return|return
 operator|new
 name|DeleteRequest
 argument_list|(
 name|id
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|indexNameRaw
 argument_list|,
@@ -1556,7 +1555,13 @@ name|doc
 operator|.
 name|get
 argument_list|(
-literal|"fields"
+name|client
+operator|.
+name|adapter
+argument_list|()
+operator|.
+name|rawFieldsKey
+argument_list|()
 argument_list|)
 operator|.
 name|getAsJsonObject
@@ -2048,13 +2053,14 @@ argument_list|,
 literal|"asc"
 argument_list|)
 expr_stmt|;
-name|properties
+name|client
 operator|.
-name|addProperty
+name|adapter
+argument_list|()
+operator|.
+name|setIgnoreUnmapped
 argument_list|(
-name|IGNORE_UNMAPPED
-argument_list|,
-literal|true
+name|properties
 argument_list|)
 expr_stmt|;
 name|JsonArray
@@ -2317,7 +2323,12 @@ name|searchSource
 init|=
 operator|new
 name|SearchSourceBuilder
+argument_list|(
+name|client
+operator|.
+name|adapter
 argument_list|()
+argument_list|)
 operator|.
 name|query
 argument_list|(

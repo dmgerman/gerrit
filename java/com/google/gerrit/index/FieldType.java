@@ -177,24 +177,6 @@ argument_list|(
 literal|"EXACT"
 argument_list|)
 decl_stmt|;
-comment|/** A Keyword field searched using non-analyzed-match semantics. */
-DECL|field|KEYWORD
-specifier|public
-specifier|static
-specifier|final
-name|FieldType
-argument_list|<
-name|String
-argument_list|>
-name|KEYWORD
-init|=
-operator|new
-name|FieldType
-argument_list|<>
-argument_list|(
-literal|"KEYWORD"
-argument_list|)
-decl_stmt|;
 comment|/** A string field searched using prefix. */
 DECL|field|PREFIX
 specifier|public

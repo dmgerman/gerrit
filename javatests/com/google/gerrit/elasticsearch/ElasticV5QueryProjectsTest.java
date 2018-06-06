@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -92,9 +92,9 @@ name|server
 operator|.
 name|query
 operator|.
-name|change
+name|project
 operator|.
-name|AbstractQueryChangesTest
+name|AbstractQueryProjectsTest
 import|;
 end_import
 
@@ -199,12 +199,12 @@ import|;
 end_import
 
 begin_class
-DECL|class|ElasticQueryChangesTest
+DECL|class|ElasticV5QueryProjectsTest
 specifier|public
 class|class
-name|ElasticQueryChangesTest
+name|ElasticV5QueryProjectsTest
 extends|extends
-name|AbstractQueryChangesTest
+name|AbstractQueryProjectsTest
 block|{
 annotation|@
 name|ConfigSuite
@@ -263,7 +263,11 @@ operator|=
 name|ElasticContainer
 operator|.
 name|createAndStart
-argument_list|()
+argument_list|(
+name|ElasticVersion
+operator|.
+name|V5_6
+argument_list|)
 expr_stmt|;
 name|nodeInfo
 operator|=

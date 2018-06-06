@@ -929,7 +929,7 @@ DECL|field|closedChanges
 name|MappingProperties
 name|closedChanges
 decl_stmt|;
-DECL|method|ChangeMapping (Schema<ChangeData> schema)
+DECL|method|ChangeMapping (Schema<ChangeData> schema, ElasticQueryAdapter adapter)
 name|ChangeMapping
 parameter_list|(
 name|Schema
@@ -937,6 +937,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|schema
+parameter_list|,
+name|ElasticQueryAdapter
+name|adapter
 parameter_list|)
 block|{
 name|MappingProperties
@@ -947,6 +950,8 @@ operator|.
 name|createMapping
 argument_list|(
 name|schema
+argument_list|,
+name|adapter
 argument_list|)
 decl_stmt|;
 name|this
@@ -1094,6 +1099,11 @@ operator|new
 name|ChangeMapping
 argument_list|(
 name|schema
+argument_list|,
+name|client
+operator|.
+name|adapter
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1430,13 +1440,14 @@ argument_list|,
 literal|"desc"
 argument_list|)
 expr_stmt|;
-name|properties
+name|client
 operator|.
-name|addProperty
+name|adapter
+argument_list|()
+operator|.
+name|setIgnoreUnmapped
 argument_list|(
-name|IGNORE_UNMAPPED
-argument_list|,
-literal|true
+name|properties
 argument_list|)
 expr_stmt|;
 name|JsonArray
@@ -1503,10 +1514,10 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addActions (Id c)
+DECL|method|getDeleteActions (Id c)
 specifier|protected
 name|String
-name|addActions
+name|getDeleteActions
 parameter_list|(
 name|Id
 name|c

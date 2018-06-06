@@ -190,36 +190,6 @@ name|name
 argument_list|)
 return|;
 block|}
-DECL|method|keyword (String name)
-specifier|public
-specifier|static
-name|FieldDef
-operator|.
-name|Builder
-argument_list|<
-name|String
-argument_list|>
-name|keyword
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-return|return
-operator|new
-name|FieldDef
-operator|.
-name|Builder
-argument_list|<>
-argument_list|(
-name|FieldType
-operator|.
-name|KEYWORD
-argument_list|,
-name|name
-argument_list|)
-return|;
-block|}
 DECL|method|fullText (String name)
 specifier|public
 specifier|static

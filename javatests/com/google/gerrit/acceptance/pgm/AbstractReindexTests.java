@@ -480,16 +480,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -497,8 +487,6 @@ end_import
 begin_class
 annotation|@
 name|NoHttpd
-annotation|@
-name|Ignore
 DECL|class|AbstractReindexTests
 specifier|public
 specifier|abstract
