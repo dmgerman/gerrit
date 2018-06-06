@@ -1188,6 +1188,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PublishCommentUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|ReviewerSet
 import|;
 end_import
@@ -2080,6 +2094,12 @@ specifier|final
 name|CommentsUtil
 name|commentsUtil
 decl_stmt|;
+DECL|field|publishCommentUtil
+specifier|private
+specifier|final
+name|PublishCommentUtil
+name|publishCommentUtil
+decl_stmt|;
 DECL|field|psUtil
 specifier|private
 specifier|final
@@ -2158,7 +2178,7 @@ name|strictLabels
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, PostReviewers postReviewers, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache)
+DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, PostReviewers postReviewers, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache)
 name|PostReview
 parameter_list|(
 name|Provider
@@ -2188,6 +2208,9 @@ name|cmUtil
 parameter_list|,
 name|CommentsUtil
 name|commentsUtil
+parameter_list|,
+name|PublishCommentUtil
+name|publishCommentUtil
 parameter_list|,
 name|PatchSetUtil
 name|psUtil
@@ -2257,6 +2280,12 @@ operator|.
 name|commentsUtil
 operator|=
 name|commentsUtil
+expr_stmt|;
+name|this
+operator|.
+name|publishCommentUtil
+operator|=
+name|publishCommentUtil
 expr_stmt|;
 name|this
 operator|.
@@ -6647,7 +6676,7 @@ case|:
 case|case
 name|PUBLISH_ALL_REVISIONS
 case|:
-name|commentsUtil
+name|publishCommentUtil
 operator|.
 name|publish
 argument_list|(

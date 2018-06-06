@@ -482,6 +482,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PublishCommentUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|AccountResolver
@@ -1180,6 +1194,12 @@ specifier|final
 name|CommentsUtil
 name|commentsUtil
 decl_stmt|;
+DECL|field|publishCommentUtil
+specifier|private
+specifier|final
+name|PublishCommentUtil
+name|publishCommentUtil
+decl_stmt|;
 DECL|field|emailCommentsFactory
 specifier|private
 specifier|final
@@ -1399,7 +1419,7 @@ name|requestScopePropagator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalCopier approvalCopier, ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, EmailReviewComments.Factory emailCommentsFactory, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, ProjectCache projectCache, @SendEmailExecutor ExecutorService sendEmailExecutor, @Assisted ProjectState projectState, @Assisted Branch.NameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommitId, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
+DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalCopier approvalCopier, ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, EmailReviewComments.Factory emailCommentsFactory, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, ProjectCache projectCache, @SendEmailExecutor ExecutorService sendEmailExecutor, @Assisted ProjectState projectState, @Assisted Branch.NameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommitId, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
 name|ReplaceOp
 parameter_list|(
 name|AccountResolver
@@ -1424,6 +1444,9 @@ name|cmUtil
 parameter_list|,
 name|CommentsUtil
 name|commentsUtil
+parameter_list|,
+name|PublishCommentUtil
+name|publishCommentUtil
 parameter_list|,
 name|EmailReviewComments
 operator|.
@@ -1579,6 +1602,12 @@ operator|.
 name|commentsUtil
 operator|=
 name|commentsUtil
+expr_stmt|;
+name|this
+operator|.
+name|publishCommentUtil
+operator|=
+name|publishCommentUtil
 expr_stmt|;
 name|this
 operator|.
@@ -3149,7 +3178,7 @@ name|getAccountId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|commentsUtil
+name|publishCommentUtil
 operator|.
 name|publish
 argument_list|(
