@@ -243,6 +243,8 @@ argument_list|(
 name|poolSize
 argument_list|,
 literal|"SSH-Stream-Worker"
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 specifier|final

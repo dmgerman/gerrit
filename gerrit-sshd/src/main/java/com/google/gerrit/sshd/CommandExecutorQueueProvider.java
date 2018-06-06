@@ -291,6 +291,8 @@ argument_list|(
 name|interactiveThreads
 argument_list|,
 literal|"SSH-Interactive-Worker"
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 if|if
@@ -309,6 +311,8 @@ argument_list|(
 name|batchThreads
 argument_list|,
 literal|"SSH-Batch-Worker"
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|setThreadFactory
