@@ -1269,12 +1269,6 @@ operator|==
 name|FieldType
 operator|.
 name|EXACT
-operator|||
-name|type
-operator|==
-name|FieldType
-operator|.
-name|KEYWORD
 condition|)
 block|{
 return|return

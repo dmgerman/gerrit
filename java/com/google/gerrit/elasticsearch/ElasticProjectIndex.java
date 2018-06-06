@@ -474,7 +474,7 @@ DECL|field|projects
 name|MappingProperties
 name|projects
 decl_stmt|;
-DECL|method|ProjectMapping (Schema<ProjectData> schema)
+DECL|method|ProjectMapping (Schema<ProjectData> schema, ElasticQueryAdapter adapter)
 name|ProjectMapping
 parameter_list|(
 name|Schema
@@ -482,6 +482,9 @@ argument_list|<
 name|ProjectData
 argument_list|>
 name|schema
+parameter_list|,
+name|ElasticQueryAdapter
+name|adapter
 parameter_list|)
 block|{
 name|this
@@ -493,6 +496,8 @@ operator|.
 name|createMapping
 argument_list|(
 name|schema
+argument_list|,
+name|adapter
 argument_list|)
 expr_stmt|;
 block|}
@@ -531,7 +536,7 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ElasticProjectIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Provider<ProjectCache> projectCache, ElasticRestClientProvider clientBuilder, @Assisted Schema<ProjectData> schema)
+DECL|method|ElasticProjectIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Provider<ProjectCache> projectCache, ElasticRestClientProvider client, @Assisted Schema<ProjectData> schema)
 name|ElasticProjectIndex
 parameter_list|(
 name|ElasticConfiguration
@@ -547,7 +552,7 @@ argument_list|>
 name|projectCache
 parameter_list|,
 name|ElasticRestClientProvider
-name|clientBuilder
+name|client
 parameter_list|,
 annotation|@
 name|Assisted
@@ -566,7 +571,7 @@ name|sitePaths
 argument_list|,
 name|schema
 argument_list|,
-name|clientBuilder
+name|client
 argument_list|,
 name|PROJECTS
 argument_list|)
@@ -591,6 +596,11 @@ operator|new
 name|ProjectMapping
 argument_list|(
 name|schema
+argument_list|,
+name|client
+operator|.
+name|adapter
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -765,10 +775,10 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addActions (Project.NameKey nameKey)
+DECL|method|getDeleteActions (Project.NameKey nameKey)
 specifier|protected
 name|String
-name|addActions
+name|getDeleteActions
 parameter_list|(
 name|Project
 operator|.

@@ -120,7 +120,7 @@ name|MatchQueryBuilder
 operator|.
 name|Type
 operator|.
-name|PHRASE
+name|MATCH_PHRASE
 argument_list|)
 return|;
 block|}
@@ -153,7 +153,7 @@ name|MatchQueryBuilder
 operator|.
 name|Type
 operator|.
-name|PHRASE_PREFIX
+name|MATCH_PHRASE_PREFIX
 argument_list|)
 return|;
 block|}

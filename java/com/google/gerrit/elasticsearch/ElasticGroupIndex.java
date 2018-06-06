@@ -478,7 +478,7 @@ DECL|field|groups
 name|MappingProperties
 name|groups
 decl_stmt|;
-DECL|method|GroupMapping (Schema<InternalGroup> schema)
+DECL|method|GroupMapping (Schema<InternalGroup> schema, ElasticQueryAdapter adapter)
 name|GroupMapping
 parameter_list|(
 name|Schema
@@ -486,6 +486,9 @@ argument_list|<
 name|InternalGroup
 argument_list|>
 name|schema
+parameter_list|,
+name|ElasticQueryAdapter
+name|adapter
 parameter_list|)
 block|{
 name|this
@@ -497,6 +500,8 @@ operator|.
 name|createMapping
 argument_list|(
 name|schema
+argument_list|,
+name|adapter
 argument_list|)
 expr_stmt|;
 block|}
@@ -589,6 +594,11 @@ operator|new
 name|GroupMapping
 argument_list|(
 name|schema
+argument_list|,
+name|client
+operator|.
+name|adapter
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -766,15 +776,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addActions (AccountGroup.UUID c)
+DECL|method|getDeleteActions (AccountGroup.UUID g)
 specifier|protected
 name|String
-name|addActions
+name|getDeleteActions
 parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|c
+name|g
 parameter_list|)
 block|{
 return|return
@@ -782,7 +792,7 @@ name|delete
 argument_list|(
 name|GROUPS
 argument_list|,
-name|c
+name|g
 argument_list|)
 return|;
 block|}

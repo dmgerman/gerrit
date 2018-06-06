@@ -364,6 +364,11 @@ specifier|private
 name|RestClient
 name|client
 decl_stmt|;
+DECL|field|adapter
+specifier|private
+name|ElasticQueryAdapter
+name|adapter
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ElasticRestClientProvider (ElasticConfiguration cfg)
@@ -489,6 +494,14 @@ argument_list|,
 name|version
 argument_list|)
 expr_stmt|;
+name|adapter
+operator|=
+operator|new
+name|ElasticQueryAdapter
+argument_list|(
+name|version
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -536,6 +549,19 @@ block|{
 comment|// Ignore. We can't do anything about it.
 block|}
 block|}
+block|}
+DECL|method|adapter ()
+name|ElasticQueryAdapter
+name|adapter
+parameter_list|()
+block|{
+name|get
+argument_list|()
+expr_stmt|;
+comment|// Make sure we're connected
+return|return
+name|adapter
+return|;
 block|}
 DECL|class|FailedToGetVersion
 specifier|public

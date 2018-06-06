@@ -2276,12 +2276,6 @@ name|type
 operator|==
 name|FieldType
 operator|.
-name|KEYWORD
-operator|||
-name|type
-operator|==
-name|FieldType
-operator|.
 name|EXACT
 operator|||
 name|type
@@ -2525,12 +2519,6 @@ operator|==
 name|FieldType
 operator|.
 name|PREFIX
-operator|||
-name|type
-operator|==
-name|FieldType
-operator|.
-name|KEYWORD
 condition|)
 block|{
 name|rawFields
