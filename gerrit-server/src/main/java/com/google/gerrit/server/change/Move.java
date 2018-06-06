@@ -2010,6 +2010,11 @@ comment|// 2- the vote holds the minimum value.
 if|if
 condition|(
 name|type
+operator|==
+literal|null
+operator|||
+operator|(
+name|type
 operator|.
 name|isMaxNegative
 argument_list|(
@@ -2023,6 +2028,7 @@ argument_list|()
 operator|.
 name|isBlock
 argument_list|()
+operator|)
 condition|)
 block|{
 continue|continue;
