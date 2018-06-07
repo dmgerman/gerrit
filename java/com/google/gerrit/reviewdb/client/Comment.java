@@ -931,6 +931,7 @@ specifier|public
 name|String
 name|tag
 decl_stmt|;
+comment|// Hex commit SHA1 of the commit of the patchset to which this comment applies.
 DECL|field|revId
 specifier|public
 name|String
