@@ -98,11 +98,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|time
 operator|.
-name|concurrent
-operator|.
-name|TimeUnit
+name|Duration
 import|;
 end_import
 
@@ -135,8 +133,8 @@ name|long
 name|weight
 parameter_list|)
 function_decl|;
-comment|/** Set the time an element lives before being expired. */
-DECL|method|expireAfterWrite (long duration, TimeUnit durationUnits)
+comment|/** Set the time an element lives after last write before being expired. */
+DECL|method|expireAfterWrite (Duration duration)
 name|CacheBinding
 argument_list|<
 name|K
@@ -145,11 +143,22 @@ name|V
 argument_list|>
 name|expireAfterWrite
 parameter_list|(
-name|long
+name|Duration
 name|duration
-parameter_list|,
-name|TimeUnit
-name|durationUnits
+parameter_list|)
+function_decl|;
+comment|/** Set the time an element lives after last access before being expired. */
+DECL|method|expireFromMemoryAfterAccess (Duration duration)
+name|CacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|expireFromMemoryAfterAccess
+parameter_list|(
+name|Duration
+name|duration
 parameter_list|)
 function_decl|;
 comment|/** Populate the cache with items from the CacheLoader. */

@@ -65,20 +65,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|MINUTES
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -280,6 +266,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|time
+operator|.
+name|Duration
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -351,16 +347,19 @@ argument_list|(
 literal|1024
 argument_list|)
 comment|// reasonable default for many sites
+comment|// expire sessions if they are inactive
 operator|.
 name|expireAfterWrite
+argument_list|(
+name|Duration
+operator|.
+name|ofMinutes
 argument_list|(
 name|CacheBasedWebSession
 operator|.
 name|MAX_AGE_MINUTES
-argument_list|,
-name|MINUTES
 argument_list|)
-comment|// expire sessions if they are inactive
+argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
