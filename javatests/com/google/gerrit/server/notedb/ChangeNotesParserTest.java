@@ -1640,9 +1640,6 @@ name|body
 argument_list|,
 name|noteUtil
 operator|.
-name|getLegacyChangeNoteWrite
-argument_list|()
-operator|.
 name|newIdent
 argument_list|(
 name|changeOwner
@@ -1719,9 +1716,6 @@ argument_list|(
 name|body
 argument_list|,
 name|noteUtil
-operator|.
-name|getLegacyChangeNoteWrite
-argument_list|()
 operator|.
 name|newIdent
 argument_list|(

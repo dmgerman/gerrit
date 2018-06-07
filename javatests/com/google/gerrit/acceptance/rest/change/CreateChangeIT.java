@@ -2128,9 +2128,6 @@ name|expectedAuthor
 init|=
 name|changeNoteUtil
 operator|.
-name|getLegacyChangeNoteWrite
-argument_list|()
-operator|.
 name|newIdent
 argument_list|(
 name|getAccount

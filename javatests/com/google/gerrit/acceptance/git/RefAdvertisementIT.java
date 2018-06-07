@@ -2933,9 +2933,6 @@ name|author
 init|=
 name|noteUtil
 operator|.
-name|getLegacyChangeNoteWrite
-argument_list|()
-operator|.
 name|newIdent
 argument_list|(
 name|getAccount

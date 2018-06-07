@@ -581,7 +581,6 @@ name|comments
 return|;
 block|}
 DECL|method|isJson (byte[] raw, int offset)
-specifier|private
 specifier|static
 name|boolean
 name|isJson

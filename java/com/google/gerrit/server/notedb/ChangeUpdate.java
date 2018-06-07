@@ -2695,6 +2695,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// tests will always take the notes != null path above.
 name|draftUpdate
 operator|=
 name|draftUpdateFactory
@@ -3395,19 +3396,6 @@ argument_list|(
 name|noteUtil
 operator|.
 name|getChangeNoteJson
-argument_list|()
-argument_list|,
-name|noteUtil
-operator|.
-name|getLegacyChangeNoteWrite
-argument_list|()
-argument_list|,
-name|noteUtil
-operator|.
-name|getChangeNoteJson
-argument_list|()
-operator|.
-name|getWriteJson
 argument_list|()
 argument_list|)
 argument_list|)

@@ -1710,17 +1710,6 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"notedb.writeJson"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
-annotation|@
 name|Test
 DECL|method|voteOnBehalfOfWithCommentWritingJson ()
 specifier|public
@@ -2039,17 +2028,6 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"notedb.writeJson"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 annotation|@
 name|Test
 DECL|method|voteOnBehalfOfWithRobotComment ()

@@ -861,9 +861,6 @@ block|{
 return|return
 name|noteUtil
 operator|.
-name|getLegacyChangeNoteWrite
-argument_list|()
-operator|.
 name|newIdent
 argument_list|(
 name|u
@@ -1054,9 +1051,6 @@ parameter_list|)
 block|{
 return|return
 name|noteUtil
-operator|.
-name|getLegacyChangeNoteWrite
-argument_list|()
 operator|.
 name|newIdent
 argument_list|(
