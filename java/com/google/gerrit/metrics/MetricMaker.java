@@ -821,6 +821,20 @@ name|Runnable
 name|trigger
 parameter_list|)
 function_decl|;
+comment|/**    * Sanitize the given metric name.    *    * @param name the name to sanitize.    * @return sanitized version of the name.    */
+DECL|method|sanitizeMetricName (String name)
+specifier|public
+name|String
+name|sanitizeMetricName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|name
+return|;
+block|}
 block|}
 end_class
 

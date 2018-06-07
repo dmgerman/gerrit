@@ -83,24 +83,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|metrics
-operator|.
-name|dropwizard
-operator|.
-name|DropWizardMetricMaker
-operator|.
-name|sanitizeMetricName
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -116,6 +98,17 @@ specifier|public
 class|class
 name|DropWizardMetricMakerTest
 block|{
+DECL|field|metrics
+name|DropWizardMetricMaker
+name|metrics
+init|=
+operator|new
+name|DropWizardMetricMaker
+argument_list|(
+literal|null
+comment|/* MetricRegistry unused in tests */
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|shouldSanitizeUnwantedChars ()
@@ -128,6 +121,8 @@ name|Exception
 block|{
 name|assertThat
 argument_list|(
+name|metrics
+operator|.
 name|sanitizeMetricName
 argument_list|(
 literal|"very+confusing$long#metric@net/name^1"
@@ -141,6 +136,8 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|metrics
+operator|.
 name|sanitizeMetricName
 argument_list|(
 literal|"/metric/submetric"
@@ -165,6 +162,8 @@ name|Exception
 block|{
 name|assertThat
 argument_list|(
+name|metrics
+operator|.
 name|sanitizeMetricName
 argument_list|(
 literal|"/metric//submetric1///submetric2/submetric3"
@@ -189,6 +188,8 @@ name|Exception
 block|{
 name|assertThat
 argument_list|(
+name|metrics
+operator|.
 name|sanitizeMetricName
 argument_list|(
 literal|"metric/"
@@ -202,6 +203,8 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|metrics
+operator|.
 name|sanitizeMetricName
 argument_list|(
 literal|"metric//"
@@ -215,6 +218,8 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|metrics
+operator|.
 name|sanitizeMetricName
 argument_list|(
 literal|"metric/submetric/"

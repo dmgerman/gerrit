@@ -2584,14 +2584,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|sanitizeMetricName (String input)
+annotation|@
+name|Override
+DECL|method|sanitizeMetricName (String name)
 specifier|public
-specifier|static
 name|String
 name|sanitizeMetricName
 parameter_list|(
 name|String
-name|input
+name|name
 parameter_list|)
 block|{
 if|if
@@ -2600,7 +2601,7 @@ name|METRIC_NAME_PATTERN
 operator|.
 name|matcher
 argument_list|(
-name|input
+name|name
 argument_list|)
 operator|.
 name|matches
@@ -2608,13 +2609,13 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|input
+name|name
 return|;
 block|}
 name|String
 name|first
 init|=
-name|input
+name|name
 operator|.
 name|substring
 argument_list|(
@@ -2632,7 +2633,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|input
+name|name
 operator|.
 name|length
 argument_list|()
@@ -2649,7 +2650,7 @@ name|result
 init|=
 name|first
 operator|+
-name|input
+name|name
 operator|.
 name|substring
 argument_list|(
