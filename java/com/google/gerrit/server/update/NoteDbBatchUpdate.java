@@ -1602,7 +1602,7 @@ try|try
 block|{
 name|logDebug
 argument_list|(
-literal|"Executing updateRepo on {} ops"
+literal|"Executing updateRepo on %d ops"
 argument_list|,
 name|ops
 operator|.
@@ -1638,7 +1638,7 @@ expr_stmt|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Executing updateRepo on {} RepoOnlyOps"
+literal|"Executing updateRepo on %d RepoOnlyOps"
 argument_list|,
 name|repoOnlyOps
 operator|.
@@ -1908,7 +1908,7 @@ return|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Reindexing {} changes"
+literal|"Reindexing %d changes"
 argument_list|,
 name|results
 operator|.
@@ -2218,7 +2218,7 @@ literal|false
 decl_stmt|;
 name|logDebug
 argument_list|(
-literal|"Applying {} ops for change {}"
+literal|"Applying %d ops for change %s"
 argument_list|,
 name|e
 operator|.
@@ -2308,7 +2308,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Change {} was deleted"
+literal|"Change %s was deleted"
 argument_list|,
 name|id
 argument_list|)
@@ -2368,7 +2368,7 @@ name|OrmException
 block|{
 name|logDebug
 argument_list|(
-literal|"Opening change {} for update"
+literal|"Opening change %s for update"
 argument_list|,
 name|id
 argument_list|)
@@ -2417,7 +2417,7 @@ else|else
 block|{
 name|logDebug
 argument_list|(
-literal|"Change {} is new"
+literal|"Change %s is new"
 argument_list|,
 name|id
 argument_list|)

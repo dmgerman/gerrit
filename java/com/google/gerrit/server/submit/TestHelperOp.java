@@ -316,7 +316,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Adding bogus ref update to trigger lock failure, via change {}"
+literal|"Adding bogus ref update to trigger lock failure, via change %s"
 argument_list|,
 name|changeId
 argument_list|)

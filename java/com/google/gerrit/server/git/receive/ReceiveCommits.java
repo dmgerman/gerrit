@@ -4854,7 +4854,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Handling error conditions: {}"
+literal|"Handling error conditions: %s"
 argument_list|,
 name|errors
 operator|.
@@ -5708,7 +5708,7 @@ argument_list|)
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"Adding {} replace requests"
+literal|"Adding %d replace requests"
 argument_list|,
 name|newChanges
 operator|.
@@ -5739,7 +5739,7 @@ expr_stmt|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Adding {} create requests"
+literal|"Adding %d create requests"
 argument_list|,
 name|newChanges
 operator|.
@@ -5765,7 +5765,7 @@ expr_stmt|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Adding {} group update requests"
+literal|"Adding %d group update requests"
 argument_list|,
 name|newChanges
 operator|.
@@ -5789,7 +5789,7 @@ argument_list|)
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"Adding {} additional ref updates"
+literal|"Adding %d additional ref updates"
 argument_list|,
 name|actualCommands
 operator|.
@@ -6388,7 +6388,7 @@ name|IOException
 block|{
 name|logDebug
 argument_list|(
-literal|"Parsing {} commands"
+literal|"Parsing %d commands"
 argument_list|,
 name|commands
 operator|.
@@ -6417,7 +6417,7 @@ block|{
 comment|// Already rejected by the core receive process.
 name|logDebug
 argument_list|(
-literal|"Already processed by core: {} {}"
+literal|"Already processed by core: %s %s"
 argument_list|,
 name|cmd
 operator|.
@@ -6541,7 +6541,7 @@ argument_list|)
 decl_stmt|;
 name|logDebug
 argument_list|(
-literal|"Swapping out command for {} to {}"
+literal|"Swapping out command for %s to %s"
 argument_list|,
 name|RefNames
 operator|.
@@ -6700,7 +6700,7 @@ comment|// migrate to NoteDb eventually, and we don't want garbage data waiting 
 comment|// migration finishes.
 name|logDebug
 argument_list|(
-literal|"{} NoteDb ref {} with {}={}"
+literal|"%s NoteDb ref %s with %s=%s"
 argument_list|,
 name|cmd
 operator|.
@@ -6877,7 +6877,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Processing {} command"
+literal|"Processing %s command"
 argument_list|,
 name|cmd
 operator|.
@@ -7549,7 +7549,7 @@ return|return;
 block|}
 name|logDebug
 argument_list|(
-literal|"Creating {}"
+literal|"Creating %s"
 argument_list|,
 name|cmd
 argument_list|)
@@ -7693,7 +7693,7 @@ name|PermissionBackendException
 block|{
 name|logDebug
 argument_list|(
-literal|"Updating {}"
+literal|"Updating %s"
 argument_list|,
 name|cmd
 argument_list|)
@@ -7958,7 +7958,7 @@ name|PermissionBackendException
 block|{
 name|logDebug
 argument_list|(
-literal|"Deleting {}"
+literal|"Deleting %s"
 argument_list|,
 name|cmd
 argument_list|)
@@ -8223,7 +8223,7 @@ return|return;
 block|}
 name|logDebug
 argument_list|(
-literal|"Rewinding {}"
+literal|"Rewinding %s"
 argument_list|,
 name|cmd
 argument_list|)
@@ -9790,7 +9790,7 @@ return|return;
 block|}
 name|logDebug
 argument_list|(
-literal|"Found magic branch {}"
+literal|"Found magic branch %s"
 argument_list|,
 name|cmd
 operator|.
@@ -10029,7 +10029,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Handling {}"
+literal|"Handling %s"
 argument_list|,
 name|RefNames
 operator|.
@@ -10086,7 +10086,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Ref {} not found"
+literal|"Ref %s not found"
 argument_list|,
 name|ref
 argument_list|)
@@ -10456,7 +10456,7 @@ argument_list|)
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"Tip of push: {}"
+literal|"Tip of push: %s"
 argument_list|,
 name|tip
 operator|.
@@ -10621,7 +10621,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Handling %base: {}"
+literal|"Handling %base: %s"
 argument_list|,
 name|magicBranch
 operator|.
@@ -10781,7 +10781,7 @@ argument_list|)
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"Set baseCommit = {}"
+literal|"Set baseCommit = %s"
 argument_list|,
 name|magicBranch
 operator|.
@@ -10896,7 +10896,7 @@ argument_list|)
 decl_stmt|;
 name|logDebug
 argument_list|(
-literal|"Current branch tip: {}"
+literal|"Current branch tip: %s"
 argument_list|,
 name|h
 operator|.
@@ -11180,7 +11180,7 @@ argument_list|)
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"Replacing with {}"
+literal|"Replacing with %s"
 argument_list|,
 name|newCommit
 argument_list|)
@@ -11332,7 +11332,7 @@ return|return;
 block|}
 name|logDebug
 argument_list|(
-literal|"Replacing change {}"
+literal|"Replacing change %s"
 argument_list|,
 name|changeEnt
 operator|.
@@ -11912,7 +11912,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"{} changes exceeds limit of {}"
+literal|"%d changes exceeds limit of %d"
 argument_list|,
 name|n
 argument_list|,
@@ -11998,7 +11998,7 @@ continue|continue;
 block|}
 name|logDebug
 argument_list|(
-literal|"Creating new change for {} even though it is already tracked"
+literal|"Creating new change for %s even though it is already tracked"
 argument_list|,
 name|name
 argument_list|)
@@ -12073,7 +12073,7 @@ argument_list|)
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"Rejecting merge commit {} with newChangeForAllNotInTarget"
+literal|"Rejecting merge commit %s with newChangeForAllNotInTarget"
 argument_list|,
 name|name
 argument_list|)
@@ -12111,9 +12111,9 @@ block|}
 block|}
 name|logDebug
 argument_list|(
-literal|"Finished initial RevWalk with {} commits total: {} already"
+literal|"Finished initial RevWalk with %d commits total: %d already"
 operator|+
-literal|" tracked, {} new changes with no Change-Id, and {} deferred"
+literal|" tracked, %d new changes with no Change-Id, and %d deferred"
 operator|+
 literal|" lookups"
 argument_list|,
@@ -12199,7 +12199,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Multiple commits with Change-Id {}"
+literal|"Multiple commits with Change-Id %s"
 argument_list|,
 name|p
 operator|.
@@ -12246,7 +12246,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Multiple changes in branch {} with Change-Id {}: {}"
+literal|"Multiple changes in branch %s with Change-Id %s: %s"
 argument_list|,
 name|magicBranch
 operator|.
@@ -12556,7 +12556,7 @@ expr_stmt|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Finished deferred lookups with {} updates and {} new changes"
+literal|"Finished deferred lookups with %d updates and %d new changes"
 argument_list|,
 name|replaceByChange
 operator|.
@@ -12937,7 +12937,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Found change {} from existing refs."
+literal|"Found change %s from existing refs."
 argument_list|,
 name|change
 operator|.
@@ -13070,7 +13070,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Marking parents of merged commit {} uninteresting"
+literal|"Marking parents of merged commit %s uninteresting"
 argument_list|,
 name|start
 operator|.
@@ -13135,7 +13135,7 @@ name|IOException
 block|{
 name|logDebug
 argument_list|(
-literal|"Marking {} base commits uninteresting"
+literal|"Marking %d base commits uninteresting"
 argument_list|,
 name|magicBranch
 operator|.
@@ -13191,7 +13191,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Marking target ref {} ({}) uninteresting"
+literal|"Marking target ref %s (%s) uninteresting"
 argument_list|,
 name|magicBranch
 operator|.
@@ -13543,7 +13543,7 @@ block|}
 block|}
 name|logDebug
 argument_list|(
-literal|"Marked {} heads as uninteresting"
+literal|"Marked %d heads as uninteresting"
 argument_list|,
 name|i
 argument_list|)
@@ -14433,7 +14433,7 @@ argument_list|)
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"Processing submit with tip change {} ({})"
+literal|"Processing submit with tip change %s (%s)"
 argument_list|,
 name|tipChange
 operator|.
@@ -14687,7 +14687,7 @@ block|}
 block|}
 name|logDebug
 argument_list|(
-literal|"Read {} changes to replace"
+literal|"Read %d changes to replace"
 argument_list|,
 name|replaceByChange
 operator|.
@@ -16569,7 +16569,7 @@ block|{
 comment|// aka fast-forward
 name|logDebug
 argument_list|(
-literal|"Updating tag cache on fast-forward of {}"
+literal|"Updating tag cache on fast-forward of %s"
 argument_list|,
 name|cmd
 operator|.
@@ -17517,7 +17517,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Number of new commits exceeds limit of {}"
+literal|"Number of new commits exceeds limit of %d"
 argument_list|,
 name|limit
 argument_list|)
@@ -17632,7 +17632,7 @@ block|}
 block|}
 name|logDebug
 argument_list|(
-literal|"Validated {} new commits"
+literal|"Validated %d new commits"
 argument_list|,
 name|n
 argument_list|)
@@ -17842,7 +17842,7 @@ parameter_list|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Commit validation failed on {}"
+literal|"Commit validation failed on %s"
 argument_list|,
 name|c
 operator|.
@@ -18399,7 +18399,7 @@ argument_list|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Not closing {} because validation failed"
+literal|"Not closing %s because validation failed"
 argument_list|,
 name|id
 argument_list|)
@@ -18460,7 +18460,7 @@ expr_stmt|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Auto-closing {} changes with existing patch sets and {} with new patch sets"
+literal|"Auto-closing %s changes with existing patch sets and %s with new patch sets"
 argument_list|,
 name|existingPatchSets
 argument_list|,

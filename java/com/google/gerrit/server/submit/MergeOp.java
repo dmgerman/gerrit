@@ -3190,7 +3190,7 @@ argument_list|()
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"Beginning integration of {}"
+literal|"Beginning integration of %s"
 argument_list|,
 name|change
 argument_list|)
@@ -3266,7 +3266,7 @@ throw|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Calculated to merge {}"
+literal|"Calculated to merge %s"
 argument_list|,
 name|indexBackedChangeSet
 argument_list|)
@@ -3346,7 +3346,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Retrying, attempt #{}; skipping merged changes"
+literal|"Retrying, attempt #%d; skipping merged changes"
 argument_list|,
 name|attempt
 argument_list|)
@@ -3810,7 +3810,7 @@ argument_list|)
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"Beginning merge attempt on {}"
+literal|"Beginning merge attempt on %s"
 argument_list|,
 name|cs
 argument_list|)
@@ -4582,7 +4582,7 @@ throw|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Found {} existing heads"
+literal|"Found %d existing heads"
 argument_list|,
 name|alreadyAccepted
 operator|.
@@ -4639,7 +4639,7 @@ name|IntegrationException
 block|{
 name|logDebug
 argument_list|(
-literal|"Validating {} changes"
+literal|"Validating %d changes"
 argument_list|,
 name|submitted
 operator|.
@@ -5164,7 +5164,7 @@ expr_stmt|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Submitting on this run: {}"
+literal|"Submitting on this run: %s"
 argument_list|,
 name|toSubmit
 argument_list|)

@@ -1580,8 +1580,8 @@ name|SubmoduleException
 block|{
 name|logDebug
 argument_list|(
-literal|"Now processing "
-operator|+
+literal|"Now processing %s"
+argument_list|,
 name|current
 argument_list|)
 expr_stmt|;
@@ -1936,8 +1936,8 @@ argument_list|()
 decl_stmt|;
 name|logDebug
 argument_list|(
-literal|"Inspecting SubscribeSection "
-operator|+
+literal|"Inspecting SubscribeSection %s"
+argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
@@ -1954,8 +1954,8 @@ control|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Inspecting [matching] ref "
-operator|+
+literal|"Inspecting [matching] ref %s"
+argument_list|,
 name|r
 argument_list|)
 expr_stmt|;
@@ -2073,8 +2073,8 @@ control|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Inspecting [all] ref "
-operator|+
+literal|"Inspecting [all] ref %s"
+argument_list|,
 name|r
 argument_list|)
 expr_stmt|;
@@ -2213,12 +2213,10 @@ block|}
 block|}
 name|logDebug
 argument_list|(
-literal|"Returning possible branches: "
-operator|+
+literal|"Returning possible branches: %s for project %s"
+argument_list|,
 name|ret
-operator|+
-literal|"for project "
-operator|+
+argument_list|,
 name|s
 operator|.
 name|getProject
@@ -2247,8 +2245,8 @@ name|IOException
 block|{
 name|logDebug
 argument_list|(
-literal|"Calculating possible superprojects for "
-operator|+
+literal|"Calculating possible superprojects for %s"
+argument_list|,
 name|srcBranch
 argument_list|)
 expr_stmt|;
@@ -2293,8 +2291,8 @@ control|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Checking subscribe section "
-operator|+
+literal|"Checking subscribe section %s"
+argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
@@ -2369,11 +2367,9 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"The branch "
-operator|+
+literal|"The branch %s doesn't exist."
+argument_list|,
 name|targetBranch
-operator|+
-literal|" doesn't exist."
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -2387,11 +2383,9 @@ parameter_list|)
 block|{
 name|logDebug
 argument_list|(
-literal|"The project "
-operator|+
+literal|"The project %s doesn't exist"
+argument_list|,
 name|targetProject
-operator|+
-literal|" doesn't exist"
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -2450,12 +2444,10 @@ block|}
 block|}
 name|logDebug
 argument_list|(
-literal|"Calculated superprojects for "
-operator|+
+literal|"Calculated superprojects for %s are %s"
+argument_list|,
 name|srcBranch
-operator|+
-literal|" are "
-operator|+
+argument_list|,
 name|ret
 argument_list|)
 expr_stmt|;

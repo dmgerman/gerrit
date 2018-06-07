@@ -2263,7 +2263,7 @@ try|try
 block|{
 name|logDebug
 argument_list|(
-literal|"Executing updateRepo on {} ops"
+literal|"Executing updateRepo on %d ops"
 argument_list|,
 name|ops
 operator|.
@@ -2299,7 +2299,7 @@ expr_stmt|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Executing updateRepo on {} RepoOnlyOps"
+literal|"Executing updateRepo on %d RepoOnlyOps"
 argument_list|,
 name|repoOnlyOps
 operator|.
@@ -2526,7 +2526,7 @@ expr_stmt|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Executing batch of {} ref updates"
+literal|"Executing batch of %d ref updates"
 argument_list|,
 name|batchRefUpdate
 operator|.
@@ -2669,7 +2669,7 @@ try|try
 block|{
 name|logDebug
 argument_list|(
-literal|"Executing change ops (parallel? {})"
+literal|"Executing change ops (parallel? %s)"
 argument_list|,
 name|parallel
 argument_list|)
@@ -2849,7 +2849,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Direct execution of task for ops: {}"
+literal|"Direct execution of task for ops: %s"
 argument_list|,
 name|ops
 argument_list|)
@@ -2875,7 +2875,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Waiting on futures for {} ops spanning {} changes"
+literal|"Waiting on futures for %d ops spanning %d changes"
 argument_list|,
 name|ops
 operator|.
@@ -3112,7 +3112,7 @@ comment|// See the comments in NoteDbUpdateManager#execute() for why we execute 
 comment|// updates on the change repo first.
 name|logDebug
 argument_list|(
-literal|"Executing NoteDb updates for {} changes"
+literal|"Executing NoteDb updates for %d changes"
 argument_list|,
 name|tasks
 operator|.
@@ -3182,7 +3182,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"No-op update to {}"
+literal|"No-op update to %s"
 argument_list|,
 name|task
 operator|.
@@ -3263,7 +3263,7 @@ expr_stmt|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Collected {} objects and {} ref updates to change repo"
+literal|"Collected %d objects and %d ref updates to change repo"
 argument_list|,
 name|objs
 argument_list|,
@@ -3394,7 +3394,7 @@ block|}
 block|}
 name|logDebug
 argument_list|(
-literal|"Collected {} objects and {} ref updates to All-Users"
+literal|"Collected %d objects and %d ref updates to All-Users"
 argument_list|,
 name|objs
 argument_list|,
@@ -3940,7 +3940,7 @@ block|}
 comment|// Call updateChange on each op.
 name|logDebug
 argument_list|(
-literal|"Calling updateChange on {} ops"
+literal|"Calling updateChange on %s ops"
 argument_list|,
 name|changeOps
 operator|.
@@ -4120,7 +4120,7 @@ else|else
 block|{
 name|logDebug
 argument_list|(
-literal|"Skipping ReviewDb write since primary storage is {}"
+literal|"Skipping ReviewDb write since primary storage is %s"
 argument_list|,
 name|storage
 argument_list|)

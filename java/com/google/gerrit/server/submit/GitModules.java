@@ -495,7 +495,7 @@ argument_list|()
 decl_stmt|;
 name|logDebug
 argument_list|(
-literal|"Loading .gitmodules of {} for project {}"
+literal|"Loading .gitmodules of %s for project %s"
 argument_list|,
 name|branch
 argument_list|,
@@ -616,8 +616,8 @@ argument_list|()
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"The .gitmodules file doesn't exist in "
-operator|+
+literal|"The .gitmodules file doesn't exist in %s"
+argument_list|,
 name|branch
 argument_list|)
 expr_stmt|;
@@ -714,8 +714,8 @@ parameter_list|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Checking for a subscription of "
-operator|+
+literal|"Checking for a subscription of %s"
+argument_list|,
 name|src
 argument_list|)
 expr_stmt|;
@@ -753,8 +753,8 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Found "
-operator|+
+literal|"Found %s"
+argument_list|,
 name|s
 argument_list|)
 expr_stmt|;

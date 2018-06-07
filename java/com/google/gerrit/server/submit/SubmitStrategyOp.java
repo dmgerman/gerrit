@@ -957,7 +957,7 @@ name|Exception
 block|{
 name|logDebug
 argument_list|(
-literal|"{}#updateRepo for change {}"
+literal|"%s#updateRepo for change %s"
 argument_list|,
 name|getClass
 argument_list|()
@@ -1035,7 +1035,7 @@ else|else
 block|{
 name|logDebug
 argument_list|(
-literal|"Already merged as {}"
+literal|"Already merged as %s"
 argument_list|,
 name|alreadyMergedCommit
 operator|.
@@ -1096,7 +1096,7 @@ return|return;
 block|}
 name|logDebug
 argument_list|(
-literal|"Moved tip from {} to {}"
+literal|"Moved tip from %s to %s"
 argument_list|,
 name|tipBefore
 argument_list|,
@@ -1193,7 +1193,7 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Loading new configuration from {}"
+literal|"Loading new configuration from %s"
 argument_list|,
 name|RefNames
 operator|.
@@ -1574,7 +1574,7 @@ name|Exception
 block|{
 name|logDebug
 argument_list|(
-literal|"{}#updateChange for change {}"
+literal|"%s#updateChange for change %s"
 argument_list|,
 name|getClass
 argument_list|()
@@ -1650,7 +1650,7 @@ name|logDebug
 argument_list|(
 literal|"Change is already merged according to its status, but we were unable to find it"
 operator|+
-literal|" merged into the current tip ({})"
+literal|" merged into the current tip (%s)"
 argument_list|,
 name|args
 operator|.
@@ -1897,7 +1897,7 @@ argument_list|)
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"Status of change {} ({}) on {}: {}"
+literal|"Status of change %s (%s) on %s: %s"
 argument_list|,
 name|id
 argument_list|,
@@ -2038,7 +2038,7 @@ argument_list|()
 decl_stmt|;
 name|logDebug
 argument_list|(
-literal|"Fixing up already-merged patch set {}"
+literal|"Fixing up already-merged patch set %s"
 argument_list|,
 name|psId
 argument_list|)
@@ -2264,8 +2264,8 @@ argument_list|()
 decl_stmt|;
 name|logDebug
 argument_list|(
-literal|"Add approval for "
-operator|+
+literal|"Add approval for %s"
+argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
@@ -2722,8 +2722,8 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Adding submit label "
-operator|+
+literal|"Adding submit label %s"
+argument_list|,
 name|psa
 argument_list|)
 expr_stmt|;
@@ -3289,7 +3289,7 @@ argument_list|()
 decl_stmt|;
 name|logDebug
 argument_list|(
-literal|"Setting change {} merged"
+literal|"Setting change %s merged"
 argument_list|,
 name|c
 operator|.
@@ -3382,7 +3382,7 @@ comment|// being, then we are subject to a race where postUpdate steps are run t
 comment|// processes run at the same time.
 name|logDebug
 argument_list|(
-literal|"Skipping post-update steps for change {}"
+literal|"Skipping post-update steps for change %s"
 argument_list|,
 name|getId
 argument_list|()
