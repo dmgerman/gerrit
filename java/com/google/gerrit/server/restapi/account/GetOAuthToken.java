@@ -272,6 +272,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|GetOAuthToken
+specifier|public
 class|class
 name|GetOAuthToken
 implements|implements

@@ -396,6 +396,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|Capabilities
+specifier|public
 class|class
 name|Capabilities
 implements|implements
