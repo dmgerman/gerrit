@@ -5780,17 +5780,6 @@ modifier|...
 name|args
 parameter_list|)
 block|{
-if|if
-condition|(
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|isEnabled
-argument_list|()
-condition|)
-block|{
 name|logger
 operator|.
 name|atFine
@@ -5805,7 +5794,6 @@ argument_list|,
 name|args
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|logWarn (String msg, Throwable t)
 specifier|private

@@ -4644,17 +4644,6 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
-if|if
-condition|(
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|isEnabled
-argument_list|()
-condition|)
-block|{
 name|ReviewDbBatchUpdate
 operator|.
 name|this
@@ -4673,7 +4662,6 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 DECL|method|logDebug (String msg, Object... args)
 specifier|private
 name|void
@@ -4686,17 +4674,6 @@ name|Object
 modifier|...
 name|args
 parameter_list|)
-block|{
-if|if
-condition|(
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|isEnabled
-argument_list|()
-condition|)
 block|{
 name|ReviewDbBatchUpdate
 operator|.
@@ -4715,7 +4692,6 @@ argument_list|,
 name|args
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|changesToUpdate (ChangeContextImpl ctx)
