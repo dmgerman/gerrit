@@ -1350,6 +1350,33 @@ name|projectsToWatch
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|postWithoutBody ()
+specifier|public
+name|void
+name|postWithoutBody
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|adminRestSession
+operator|.
+name|post
+argument_list|(
+literal|"/accounts/"
+operator|+
+name|admin
+operator|.
+name|username
+operator|+
+literal|"/watched.projects"
+argument_list|)
+operator|.
+name|assertOK
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
