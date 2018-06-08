@@ -291,6 +291,8 @@ argument_list|,
 name|Thread
 operator|.
 name|MIN_PRIORITY
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 if|if
@@ -313,6 +315,8 @@ argument_list|,
 name|Thread
 operator|.
 name|MIN_PRIORITY
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
