@@ -458,7 +458,7 @@ name|RequiresCapability
 argument_list|(
 name|GlobalCapability
 operator|.
-name|ADMINISTRATE_SERVER
+name|READ_AS
 argument_list|)
 annotation|@
 name|CommandMetaData

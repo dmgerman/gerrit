@@ -308,6 +308,9 @@ block|,
 DECL|enumConstant|MODIFY_ACCOUNT
 name|MODIFY_ACCOUNT
 block|,
+DECL|enumConstant|READ_AS
+name|READ_AS
+block|,
 DECL|enumConstant|RUN_AS
 name|RUN_AS
 block|,

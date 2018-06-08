@@ -276,6 +276,16 @@ name|DEFAULT_MAX_QUERY_LIMIT
 init|=
 literal|500
 decl_stmt|;
+comment|/** Can impersonate any user to see which refs they can read. */
+DECL|field|READ_AS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|READ_AS
+init|=
+literal|"readAs"
+decl_stmt|;
 comment|/** Ability to impersonate another user. */
 DECL|field|RUN_AS
 specifier|public
@@ -498,6 +508,13 @@ operator|.
 name|add
 argument_list|(
 name|QUERY_LIMIT
+argument_list|)
+expr_stmt|;
+name|NAMES_ALL
+operator|.
+name|add
+argument_list|(
+name|READ_AS
 argument_list|)
 expr_stmt|;
 name|NAMES_ALL
