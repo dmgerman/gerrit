@@ -88,6 +88,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -348,7 +362,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|logDebug (String msg, Object... args)
+DECL|method|logDebug (String msg, @Nullable Object arg)
 specifier|private
 name|void
 name|logDebug
@@ -356,9 +370,10 @@ parameter_list|(
 name|String
 name|msg
 parameter_list|,
+annotation|@
+name|Nullable
 name|Object
-modifier|...
-name|args
+name|arg
 parameter_list|)
 block|{
 name|logger
@@ -366,13 +381,13 @@ operator|.
 name|atFine
 argument_list|()
 operator|.
-name|logVarargs
+name|log
 argument_list|(
 name|submissionId
 operator|+
 name|msg
 argument_list|,
-name|args
+name|arg
 argument_list|)
 expr_stmt|;
 block|}

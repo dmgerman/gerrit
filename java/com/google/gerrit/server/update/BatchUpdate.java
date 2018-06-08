@@ -2178,6 +2178,9 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
+comment|// Only log if there is a requestId assigned, since those are the
+comment|// expensive/complicated requests like MergeOp. Doing it every time would be
+comment|// noisy.
 if|if
 condition|(
 name|requestId
@@ -2206,17 +2209,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|logDebug (String msg, Object... args)
+DECL|method|logDebug (String msg)
 specifier|protected
 name|void
 name|logDebug
 parameter_list|(
 name|String
 name|msg
-parameter_list|,
-name|Object
-modifier|...
-name|args
 parameter_list|)
 block|{
 comment|// Only log if there is a requestId assigned, since those are the
@@ -2234,13 +2233,98 @@ operator|.
 name|atFine
 argument_list|()
 operator|.
-name|logVarargs
+name|log
+argument_list|(
+name|requestId
+operator|+
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|logDebug (String msg, @Nullable Object arg)
+specifier|protected
+name|void
+name|logDebug
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+annotation|@
+name|Nullable
+name|Object
+name|arg
+parameter_list|)
+block|{
+comment|// Only log if there is a requestId assigned, since those are the
+comment|// expensive/complicated requests like MergeOp. Doing it every time would be
+comment|// noisy.
+if|if
+condition|(
+name|requestId
+operator|!=
+literal|null
+condition|)
+block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 name|requestId
 operator|+
 name|msg
 argument_list|,
-name|args
+name|arg
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|logDebug (String msg, @Nullable Object arg1, @Nullable Object arg2)
+specifier|protected
+name|void
+name|logDebug
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+annotation|@
+name|Nullable
+name|Object
+name|arg1
+parameter_list|,
+annotation|@
+name|Nullable
+name|Object
+name|arg2
+parameter_list|)
+block|{
+comment|// Only log if there is a requestId assigned, since those are the
+comment|// expensive/complicated requests like MergeOp. Doing it every time would be
+comment|// noisy.
+if|if
+condition|(
+name|requestId
+operator|!=
+literal|null
+condition|)
+block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+name|requestId
+operator|+
+name|msg
+argument_list|,
+name|arg1
+argument_list|,
+name|arg2
 argument_list|)
 expr_stmt|;
 block|}
