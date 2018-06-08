@@ -1579,6 +1579,8 @@ argument_list|(
 name|threads
 argument_list|,
 literal|"Index-Interactive"
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 return|;
@@ -1662,6 +1664,8 @@ argument_list|(
 name|threads
 argument_list|,
 literal|"Index-Batch"
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 return|;

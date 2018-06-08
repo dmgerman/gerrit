@@ -234,6 +234,8 @@ argument_list|,
 name|Thread
 operator|.
 name|MIN_PRIORITY
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
