@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|elasticsearch
+operator|.
+name|ElasticQueryAdapter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gson
 operator|.
 name|JsonObject
@@ -110,7 +124,13 @@ specifier|final
 name|String
 name|type
 decl_stmt|;
-DECL|method|ActionRequest (String action, String id, String index, String type)
+DECL|field|adapter
+specifier|private
+specifier|final
+name|ElasticQueryAdapter
+name|adapter
+decl_stmt|;
+DECL|method|ActionRequest ( String action, String id, String index, String type, ElasticQueryAdapter adapter)
 specifier|protected
 name|ActionRequest
 parameter_list|(
@@ -125,6 +145,9 @@ name|index
 parameter_list|,
 name|String
 name|type
+parameter_list|,
+name|ElasticQueryAdapter
+name|adapter
 parameter_list|)
 block|{
 name|this
@@ -150,6 +173,12 @@ operator|.
 name|type
 operator|=
 name|type
+expr_stmt|;
+name|this
+operator|.
+name|adapter
+operator|=
+name|adapter
 expr_stmt|;
 block|}
 annotation|@
@@ -185,11 +214,11 @@ argument_list|,
 name|index
 argument_list|)
 expr_stmt|;
-name|properties
+name|adapter
 operator|.
-name|addProperty
+name|setType
 argument_list|(
-literal|"_type"
+name|properties
 argument_list|,
 name|type
 argument_list|)
