@@ -13400,6 +13400,21 @@ argument_list|)
 operator|.
 name|isWorkInProgressByDefault
 argument_list|()
+operator|||
+name|firstNonNull
+argument_list|(
+name|user
+operator|.
+name|getAccount
+argument_list|()
+operator|.
+name|getGeneralPreferencesInfo
+argument_list|()
+operator|.
+name|workInProgressByDefault
+argument_list|,
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|addOps (BatchUpdate bu)

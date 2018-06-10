@@ -220,6 +220,11 @@ name|String
 name|publishCommentsOnPush
 parameter_list|()
 function_decl|;
+DECL|method|workInProgressByDefault ()
+name|String
+name|workInProgressByDefault
+parameter_list|()
+function_decl|;
 DECL|method|myMenu ()
 name|String
 name|myMenu

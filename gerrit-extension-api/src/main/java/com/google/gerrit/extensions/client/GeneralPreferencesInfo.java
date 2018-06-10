@@ -556,6 +556,11 @@ specifier|public
 name|Boolean
 name|publishCommentsOnPush
 decl_stmt|;
+DECL|field|workInProgressByDefault
+specifier|public
+name|Boolean
+name|workInProgressByDefault
+decl_stmt|;
 DECL|method|isShowInfoInReviewCategory ()
 specifier|public
 name|boolean
@@ -856,6 +861,12 @@ expr_stmt|;
 name|p
 operator|.
 name|publishCommentsOnPush
+operator|=
+literal|false
+expr_stmt|;
+name|p
+operator|.
+name|workInProgressByDefault
 operator|=
 literal|false
 expr_stmt|;
