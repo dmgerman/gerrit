@@ -1137,12 +1137,6 @@ name|ChangeData
 argument_list|>
 name|schema
 decl_stmt|;
-DECL|field|type
-specifier|private
-specifier|final
-name|String
-name|type
-decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ElasticChangeIndex ( ElasticConfiguration cfg, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, SitePaths sitePaths, ElasticRestClientProvider client, @Assisted Schema<ChangeData> schema)
@@ -1221,20 +1215,6 @@ name|client
 operator|.
 name|adapter
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|type
-operator|=
-name|client
-operator|.
-name|adapter
-argument_list|()
-operator|.
-name|getType
-argument_list|(
-name|CHANGES
 argument_list|)
 expr_stmt|;
 block|}

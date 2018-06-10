@@ -704,7 +704,7 @@ name|String
 name|indexNameRaw
 decl_stmt|;
 DECL|field|type
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|type

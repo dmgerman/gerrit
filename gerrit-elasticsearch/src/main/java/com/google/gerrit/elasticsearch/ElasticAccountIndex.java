@@ -713,12 +713,6 @@ name|AccountState
 argument_list|>
 name|schema
 decl_stmt|;
-DECL|field|type
-specifier|private
-specifier|final
-name|String
-name|type
-decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|ElasticAccountIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Provider<AccountCache> accountCache, ElasticRestClientProvider client, @Assisted Schema<AccountState> schema)
@@ -787,20 +781,6 @@ operator|.
 name|schema
 operator|=
 name|schema
-expr_stmt|;
-name|this
-operator|.
-name|type
-operator|=
-name|client
-operator|.
-name|adapter
-argument_list|()
-operator|.
-name|getType
-argument_list|(
-name|ACCOUNTS
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@

@@ -701,12 +701,6 @@ name|InternalGroup
 argument_list|>
 name|schema
 decl_stmt|;
-DECL|field|type
-specifier|private
-specifier|final
-name|String
-name|type
-decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|ElasticGroupIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, ElasticRestClientProvider client, @Assisted Schema<InternalGroup> schema)
@@ -775,20 +769,6 @@ operator|.
 name|schema
 operator|=
 name|schema
-expr_stmt|;
-name|this
-operator|.
-name|type
-operator|=
-name|client
-operator|.
-name|adapter
-argument_list|()
-operator|.
-name|getType
-argument_list|(
-name|GROUPS
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
