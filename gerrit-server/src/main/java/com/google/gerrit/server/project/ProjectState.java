@@ -2356,6 +2356,21 @@ name|getPrivateByDefault
 argument_list|)
 return|;
 block|}
+DECL|method|isWorkInProgressByDefault ()
+specifier|public
+name|boolean
+name|isWorkInProgressByDefault
+parameter_list|()
+block|{
+return|return
+name|getInheritableBoolean
+argument_list|(
+name|Project
+operator|::
+name|getWorkInProgressByDefault
+argument_list|)
+return|;
+block|}
 DECL|method|isEnableReviewerByEmail ()
 specifier|public
 name|boolean

@@ -208,6 +208,11 @@ specifier|public
 name|InheritedBooleanInfo
 name|privateByDefault
 decl_stmt|;
+DECL|field|workInProgressByDefault
+specifier|public
+name|InheritedBooleanInfo
+name|workInProgressByDefault
+decl_stmt|;
 DECL|field|enableReviewerByEmail
 specifier|public
 name|InheritedBooleanInfo

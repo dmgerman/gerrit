@@ -443,6 +443,11 @@ specifier|protected
 name|InheritableBoolean
 name|privateByDefault
 decl_stmt|;
+DECL|field|workInProgressByDefault
+specifier|protected
+name|InheritableBoolean
+name|workInProgressByDefault
+decl_stmt|;
 DECL|field|enableReviewerByEmail
 specifier|protected
 name|InheritableBoolean
@@ -527,6 +532,12 @@ operator|.
 name|INHERIT
 expr_stmt|;
 name|privateByDefault
+operator|=
+name|InheritableBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|workInProgressByDefault
 operator|=
 name|InheritableBoolean
 operator|.
@@ -684,6 +695,32 @@ operator|.
 name|privateByDefault
 operator|=
 name|privateByDefault
+expr_stmt|;
+block|}
+DECL|method|getWorkInProgressByDefault ()
+specifier|public
+name|InheritableBoolean
+name|getWorkInProgressByDefault
+parameter_list|()
+block|{
+return|return
+name|workInProgressByDefault
+return|;
+block|}
+DECL|method|setWorkInProgressByDefault (InheritableBoolean workInProgressByDefault)
+specifier|public
+name|void
+name|setWorkInProgressByDefault
+parameter_list|(
+name|InheritableBoolean
+name|workInProgressByDefault
+parameter_list|)
+block|{
+name|this
+operator|.
+name|workInProgressByDefault
+operator|=
+name|workInProgressByDefault
 expr_stmt|;
 block|}
 DECL|method|getEnableReviewerByEmail ()
