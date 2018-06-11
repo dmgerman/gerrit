@@ -3467,6 +3467,22 @@ name|IOException
 throws|,
 name|OrmException
 block|{
+if|if
+condition|(
+name|ObjectId
+operator|.
+name|zeroId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|oldObjectId
+argument_list|)
+condition|)
+block|{
+comment|// ref doesn't exist
+return|return;
+block|}
 name|RefUpdate
 name|u
 init|=
