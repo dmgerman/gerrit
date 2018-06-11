@@ -632,7 +632,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|GROUPS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String

@@ -1073,7 +1073,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|CHANGES
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -1082,7 +1082,7 @@ init|=
 literal|"changes"
 decl_stmt|;
 DECL|field|OPEN_CHANGES
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -1093,7 +1093,7 @@ operator|+
 name|CHANGES
 decl_stmt|;
 DECL|field|CLOSED_CHANGES
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String

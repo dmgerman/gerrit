@@ -668,7 +668,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|ACCOUNTS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
