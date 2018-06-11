@@ -2595,7 +2595,7 @@ operator|.
 name|get
 argument_list|()
 operator|+
-literal|"#/c/"
+literal|"c/"
 operator|+
 name|project
 operator|.
@@ -2882,7 +2882,7 @@ operator|.
 name|get
 argument_list|()
 operator|+
-literal|"#/c/"
+literal|"c/"
 operator|+
 name|project
 operator|.
@@ -3060,7 +3060,7 @@ operator|.
 name|get
 argument_list|()
 operator|+
-literal|"#/c/"
+literal|"c/"
 operator|+
 name|project
 operator|.
@@ -5272,7 +5272,7 @@ operator|.
 name|get
 argument_list|()
 operator|+
-literal|"#/c/"
+literal|"c/"
 operator|+
 name|project
 operator|.

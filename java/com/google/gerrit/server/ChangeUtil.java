@@ -352,7 +352,7 @@ block|{
 return|return
 name|canonicalWebUrl
 operator|+
-literal|"#/c/"
+literal|"c/"
 operator|+
 name|change
 operator|.
