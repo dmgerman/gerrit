@@ -630,17 +630,16 @@ implements|implements
 name|AccountIndex
 block|{
 DECL|class|AccountMapping
-specifier|public
 specifier|static
 class|class
 name|AccountMapping
 block|{
 DECL|field|accounts
+specifier|final
 name|MappingProperties
 name|accounts
 decl_stmt|;
 DECL|method|AccountMapping (Schema<AccountState> schema, ElasticQueryAdapter adapter)
-specifier|public
 name|AccountMapping
 parameter_list|(
 name|Schema
