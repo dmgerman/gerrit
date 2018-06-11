@@ -187,7 +187,7 @@ name|ThreadLocal
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|/**    * Cache at maximum 50 values per thread. This value was chosen arbitrarily. Some endpoints (like    * ListProjects) break the assumption that the data cached in a request is limited. To prevent    * this class from accumulating an unbound number of objects, we enforce this limit.    */
+comment|/**    * Cache at maximum 25 values per thread. This value was chosen arbitrarily. Some endpoints (like    * ListProjects) break the assumption that the data cached in a request is limited. To prevent    * this class from accumulating an unbound number of objects, we enforce this limit.    */
 DECL|field|PER_THREAD_CACHE_SIZE
 specifier|private
 specifier|static
@@ -195,7 +195,7 @@ specifier|final
 name|int
 name|PER_THREAD_CACHE_SIZE
 init|=
-literal|50
+literal|25
 decl_stmt|;
 comment|/**    * Unique key for key-value mappings stored in PerThreadCache. The key is based on the value's    * class and a list of identifiers that in combination uniquely set the object apart form others    * of the same class.    */
 DECL|class|Key
