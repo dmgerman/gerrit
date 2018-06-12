@@ -80,6 +80,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -189,6 +201,8 @@ comment|/**  * Forces GWT resources to cache for a very long time.  *  *<p>GWT c
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|GwtCacheControlFilter
 class|class
 name|GwtCacheControlFilter
