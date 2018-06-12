@@ -365,6 +365,11 @@ name|String
 name|buttonGeneratePassword
 parameter_list|()
 function_decl|;
+DECL|method|revokePassword ()
+name|String
+name|revokePassword
+parameter_list|()
+function_decl|;
 DECL|method|linkObtainPassword ()
 name|String
 name|linkObtainPassword
