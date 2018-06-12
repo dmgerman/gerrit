@@ -68,22 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtexpui
-operator|.
-name|linker
-operator|.
-name|server
-operator|.
-name|UserAgentRule
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io

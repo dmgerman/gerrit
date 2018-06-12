@@ -52,17 +52,17 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtexpui.linker.server
+DECL|package|com.google.gerrit.httpd.raw
 package|package
 name|com
 operator|.
 name|google
 operator|.
-name|gwtexpui
+name|gerrit
 operator|.
-name|linker
+name|httpd
 operator|.
-name|server
+name|raw
 package|;
 end_package
 
@@ -122,7 +122,6 @@ end_comment
 
 begin_class
 DECL|class|UserAgentRule
-specifier|public
 class|class
 name|UserAgentRule
 block|{
@@ -151,7 +150,6 @@ literal|".*rv:([0-9]+)\\.([0-9]+).*"
 argument_list|)
 decl_stmt|;
 DECL|method|getName ()
-specifier|public
 name|String
 name|getName
 parameter_list|()
@@ -161,7 +159,6 @@ literal|"user.agent"
 return|;
 block|}
 DECL|method|select (HttpServletRequest req)
-specifier|public
 name|String
 name|select
 parameter_list|(
