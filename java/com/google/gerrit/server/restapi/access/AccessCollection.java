@@ -239,6 +239,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|AccessCollection (Provider<ListAccess> list, DynamicMap<RestView<AccessResource>> views)
+specifier|public
 name|AccessCollection
 parameter_list|(
 name|Provider
