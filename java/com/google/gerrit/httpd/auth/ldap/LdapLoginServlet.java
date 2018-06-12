@@ -344,9 +344,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtexpui
+name|gerrit
 operator|.
-name|server
+name|util
+operator|.
+name|http
 operator|.
 name|CacheHeaders
 import|;

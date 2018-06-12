@@ -652,7 +652,7 @@ name|util
 operator|.
 name|http
 operator|.
-name|RequestUtil
+name|CacheHeaders
 import|;
 end_import
 
@@ -662,11 +662,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtexpui
+name|gerrit
 operator|.
-name|server
+name|util
 operator|.
-name|CacheHeaders
+name|http
+operator|.
+name|RequestUtil
 import|;
 end_import
 
