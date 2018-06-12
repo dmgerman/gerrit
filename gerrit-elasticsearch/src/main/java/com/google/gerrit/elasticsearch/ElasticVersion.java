@@ -127,7 +127,6 @@ name|Pattern
 name|pattern
 decl_stmt|;
 DECL|method|ElasticVersion (String version)
-specifier|private
 name|ElasticVersion
 parameter_list|(
 name|String
