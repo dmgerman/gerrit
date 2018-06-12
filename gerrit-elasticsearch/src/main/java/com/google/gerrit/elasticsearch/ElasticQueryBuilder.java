@@ -339,7 +339,6 @@ class|class
 name|ElasticQueryBuilder
 block|{
 DECL|method|toQueryBuilder (Predicate<T> p)
-specifier|protected
 parameter_list|<
 name|T
 parameter_list|>
