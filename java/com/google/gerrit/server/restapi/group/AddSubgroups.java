@@ -988,6 +988,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|PutSubgroup
+specifier|public
 specifier|static
 class|class
 name|PutSubgroup
@@ -1012,6 +1013,7 @@ name|String
 name|id
 decl_stmt|;
 DECL|method|PutSubgroup (AddSubgroups addSubgroups, String id)
+specifier|public
 name|PutSubgroup
 parameter_list|(
 name|AddSubgroups
@@ -1143,6 +1145,7 @@ block|}
 annotation|@
 name|Singleton
 DECL|class|UpdateSubgroup
+specifier|public
 specifier|static
 class|class
 name|UpdateSubgroup
@@ -1166,6 +1169,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|UpdateSubgroup (Provider<GetSubgroup> get)
+specifier|public
 name|UpdateSubgroup
 parameter_list|(
 name|Provider

@@ -1524,6 +1524,7 @@ name|result
 return|;
 block|}
 DECL|class|PutMember
+specifier|public
 specifier|static
 class|class
 name|PutMember
@@ -1548,6 +1549,7 @@ name|String
 name|id
 decl_stmt|;
 DECL|method|PutMember (AddMembers put, String id)
+specifier|public
 name|PutMember
 parameter_list|(
 name|AddMembers
@@ -1674,6 +1676,7 @@ block|}
 annotation|@
 name|Singleton
 DECL|class|UpdateMember
+specifier|public
 specifier|static
 class|class
 name|UpdateMember
@@ -1694,6 +1697,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|UpdateMember (GetMember get)
+specifier|public
 name|UpdateMember
 parameter_list|(
 name|GetMember

@@ -783,6 +783,7 @@ block|}
 annotation|@
 name|Singleton
 DECL|class|DeleteMember
+specifier|public
 specifier|static
 class|class
 name|DeleteMember
@@ -806,6 +807,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|DeleteMember (Provider<DeleteMembers> delete)
+specifier|public
 name|DeleteMember
 parameter_list|(
 name|Provider
