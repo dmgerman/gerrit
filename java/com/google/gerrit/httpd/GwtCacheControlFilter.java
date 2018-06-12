@@ -52,8 +52,20 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtexpui.server
+DECL|package|com.google.gerrit.httpd
 package|package
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+package|;
+end_package
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -61,8 +73,10 @@ operator|.
 name|gwtexpui
 operator|.
 name|server
-package|;
-end_package
+operator|.
+name|CacheHeaders
+import|;
+end_import
 
 begin_import
 import|import
@@ -175,10 +189,9 @@ comment|/**  * Forces GWT resources to cache for a very long time.  *  *<p>GWT c
 end_comment
 
 begin_class
-DECL|class|CacheControlFilter
-specifier|public
+DECL|class|GwtCacheControlFilter
 class|class
-name|CacheControlFilter
+name|GwtCacheControlFilter
 implements|implements
 name|Filter
 block|{
