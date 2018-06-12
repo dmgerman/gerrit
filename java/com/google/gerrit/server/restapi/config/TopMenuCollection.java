@@ -208,6 +208,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|TopMenuCollection
+specifier|public
 class|class
 name|TopMenuCollection
 implements|implements
