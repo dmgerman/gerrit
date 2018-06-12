@@ -767,6 +767,7 @@ block|}
 annotation|@
 name|Singleton
 DECL|class|DeleteSubgroup
+specifier|public
 specifier|static
 class|class
 name|DeleteSubgroup
@@ -790,6 +791,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|DeleteSubgroup (Provider<DeleteSubgroups> delete)
+specifier|public
 name|DeleteSubgroup
 parameter_list|(
 name|Provider

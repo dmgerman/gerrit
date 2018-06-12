@@ -575,6 +575,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|GroupsCollection ( DynamicMap<RestView<GroupResource>> views, Provider<ListGroups> list, Provider<QueryGroups> queryGroups, CreateGroup.Factory createGroup, GroupControl.Factory groupControlFactory, GroupBackend groupBackend, GroupCache groupCache, Provider<CurrentUser> self)
+specifier|public
 name|GroupsCollection
 parameter_list|(
 name|DynamicMap
