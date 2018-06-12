@@ -335,13 +335,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getLivenessCheckPorts ()
-specifier|protected
+DECL|method|getLivenessCheckPortNumbers ()
+specifier|public
 name|Set
 argument_list|<
 name|Integer
 argument_list|>
-name|getLivenessCheckPorts
+name|getLivenessCheckPortNumbers
 parameter_list|()
 block|{
 return|return
