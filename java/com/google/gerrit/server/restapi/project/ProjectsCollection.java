@@ -1102,6 +1102,8 @@ parameter_list|,
 name|IdString
 name|name
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 return|return
 name|createProjectFactory
