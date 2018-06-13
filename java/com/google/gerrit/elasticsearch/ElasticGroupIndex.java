@@ -461,6 +461,7 @@ class|class
 name|GroupMapping
 block|{
 DECL|field|groups
+specifier|final
 name|MappingProperties
 name|groups
 decl_stmt|;
@@ -493,6 +494,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|GROUPS
+specifier|private
 specifier|static
 specifier|final
 name|String

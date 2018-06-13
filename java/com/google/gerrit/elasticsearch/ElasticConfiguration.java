@@ -622,7 +622,6 @@ block|}
 block|}
 block|}
 DECL|method|getConfig ()
-specifier|public
 name|Config
 name|getConfig
 parameter_list|()
@@ -632,7 +631,6 @@ name|cfg
 return|;
 block|}
 DECL|method|getIndexName (String name, int schemaVersion)
-specifier|public
 name|String
 name|getIndexName
 parameter_list|(

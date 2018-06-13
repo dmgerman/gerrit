@@ -100,14 +100,14 @@ literal|"skip-validation"
 decl_stmt|;
 annotation|@
 name|VisibleForTesting
-DECL|field|ONLY_OWNER_CAN_MODIFY_WIP
+DECL|field|ONLY_CHANGE_OWNER_OR_PROJECT_OWNER_CAN_MODIFY_WIP
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|ONLY_OWNER_CAN_MODIFY_WIP
+name|ONLY_CHANGE_OWNER_OR_PROJECT_OWNER_CAN_MODIFY_WIP
 init|=
-literal|"only change owner can modify Work-in-Progress"
+literal|"only change owner or project owner can modify Work-in-Progress"
 decl_stmt|;
 DECL|field|COMMAND_REJECTION_MESSAGE_FOOTER
 specifier|static

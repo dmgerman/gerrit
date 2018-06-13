@@ -1077,6 +1077,14 @@ name|submitter
 expr_stmt|;
 name|copy
 operator|.
+name|workInProgress
+operator|=
+name|changeInfo
+operator|.
+name|workInProgress
+expr_stmt|;
+name|copy
+operator|.
 name|id
 operator|=
 name|changeInfo

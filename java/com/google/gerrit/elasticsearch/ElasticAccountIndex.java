@@ -481,6 +481,7 @@ class|class
 name|AccountMapping
 block|{
 DECL|field|accounts
+specifier|final
 name|MappingProperties
 name|accounts
 decl_stmt|;
@@ -513,6 +514,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|ACCOUNTS
+specifier|private
 specifier|static
 specifier|final
 name|String

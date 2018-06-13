@@ -922,14 +922,17 @@ class|class
 name|ChangeMapping
 block|{
 DECL|field|changes
+specifier|final
 name|MappingProperties
 name|changes
 decl_stmt|;
 DECL|field|openChanges
+specifier|final
 name|MappingProperties
 name|openChanges
 decl_stmt|;
 DECL|field|closedChanges
+specifier|final
 name|MappingProperties
 name|closedChanges
 decl_stmt|;
@@ -979,6 +982,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|CHANGES
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -987,6 +991,7 @@ init|=
 literal|"changes"
 decl_stmt|;
 DECL|field|OPEN_CHANGES
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -997,6 +1002,7 @@ operator|+
 name|CHANGES
 decl_stmt|;
 DECL|field|CLOSED_CHANGES
+specifier|private
 specifier|static
 specifier|final
 name|String
