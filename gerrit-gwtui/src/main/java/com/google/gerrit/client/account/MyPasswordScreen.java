@@ -433,7 +433,12 @@ operator|=
 operator|new
 name|CopyableLabel
 argument_list|(
-literal|"(click 'generate' to revoke an old password)"
+name|Util
+operator|.
+name|C
+operator|.
+name|revokePassword
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|password
