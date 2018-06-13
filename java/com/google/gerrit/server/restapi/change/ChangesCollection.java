@@ -564,6 +564,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ChangesCollection ( Provider<ReviewDb> db, Provider<CurrentUser> user, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeFinder changeFinder, CreateChange createChange, ChangeResource.Factory changeResourceFactory, PermissionBackend permissionBackend, ProjectCache projectCache)
+specifier|public
 name|ChangesCollection
 parameter_list|(
 name|Provider

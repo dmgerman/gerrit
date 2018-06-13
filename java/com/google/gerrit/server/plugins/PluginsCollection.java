@@ -289,6 +289,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|PluginsCollection ( DynamicMap<RestView<PluginResource>> views, PluginLoader loader, Provider<ListPlugins> list, Provider<InstallPlugin> install)
+specifier|public
 name|PluginsCollection
 parameter_list|(
 name|DynamicMap
