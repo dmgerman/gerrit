@@ -18406,18 +18406,13 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|executeRequestValidation
-argument_list|(
-parameter_list|()
-lambda|->
 name|req
 operator|.
 name|validate
 argument_list|(
 literal|true
 argument_list|)
-argument_list|)
-argument_list|)
+condition|)
 block|{
 name|logDebug
 argument_list|(
@@ -18425,7 +18420,7 @@ literal|"Not closing %s because validation failed"
 argument_list|,
 name|id
 argument_list|)
-block|;
+expr_stmt|;
 continue|continue;
 block|}
 name|req
@@ -18517,21 +18512,9 @@ return|return
 literal|null
 return|;
 block|}
-end_class
-
-begin_operator
-operator|,
-end_operator
-
-begin_comment
+argument_list|,
 comment|// Use a multiple of the default timeout to account for inner retries that may otherwise
-end_comment
-
-begin_comment
 comment|// eat up the whole timeout so that no time is left to retry this outer action.
-end_comment
-
-begin_expr_stmt
 name|RetryHelper
 operator|.
 name|options
@@ -18556,19 +18539,14 @@ argument_list|)
 operator|.
 name|build
 argument_list|()
-end_expr_stmt
-
-begin_empty_stmt
-unit|)
-empty_stmt|;
-end_empty_stmt
-
-begin_expr_stmt
-unit|} catch
-operator|(
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|RestApiException
 name|e
-operator|)
+parameter_list|)
 block|{
 name|logError
 argument_list|(
@@ -18576,10 +18554,8 @@ literal|"Can't insert patchset"
 argument_list|,
 name|e
 argument_list|)
-block|;     }
-end_expr_stmt
-
-begin_catch
+expr_stmt|;
+block|}
 catch|catch
 parameter_list|(
 name|UpdateException
@@ -18594,11 +18570,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-end_catch
-
-begin_function
-unit|}    private
+block|}
 DECL|method|getChangeNotes (Change.Id changeId)
+specifier|private
 name|Optional
 argument_list|<
 name|ChangeNotes
@@ -18650,9 +18624,6 @@ argument_list|()
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|executeIndexQuery (Action<T> action)
 specifier|private
 parameter_list|<
@@ -18724,104 +18695,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-end_function
-
-begin_function
-DECL|method|executeRequestValidation (Action<T> action)
-specifier|private
-parameter_list|<
-name|T
-parameter_list|>
-name|T
-name|executeRequestValidation
-parameter_list|(
-name|Action
-argument_list|<
-name|T
-argument_list|>
-name|action
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|PermissionBackendException
-throws|,
-name|OrmException
-block|{
-try|try
-block|{
-comment|// The request validation needs to do an account query to lookup accounts by preferred email,
-comment|// if that index query fails the request validation should be retried.
-return|return
-name|retryHelper
-operator|.
-name|execute
-argument_list|(
-name|ActionType
-operator|.
-name|INDEX_QUERY
-argument_list|,
-name|action
-argument_list|,
-name|OrmException
-operator|.
-name|class
-operator|::
-name|isInstance
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|t
-parameter_list|)
-block|{
-name|Throwables
-operator|.
-name|throwIfInstanceOf
-argument_list|(
-name|t
-argument_list|,
-name|IOException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|Throwables
-operator|.
-name|throwIfInstanceOf
-argument_list|(
-name|t
-argument_list|,
-name|PermissionBackendException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|Throwables
-operator|.
-name|throwIfInstanceOf
-argument_list|(
-name|t
-argument_list|,
-name|OrmException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-name|t
-argument_list|)
-throw|;
-block|}
-block|}
-end_function
-
-begin_function
 DECL|method|updateAccountInfo ()
 specifier|private
 name|void
@@ -18945,9 +18818,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|openChangesByKeyByBranch (Branch.NameKey branch)
 specifier|private
 name|Map
@@ -19033,9 +18903,6 @@ return|return
 name|r
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|allRefs ()
 specifier|private
 name|Map
@@ -19054,9 +18921,6 @@ name|getAllRefs
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|reject (@ullable ReceiveCommand cmd, String why)
 specifier|private
 name|void
@@ -19096,9 +18960,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|isHead (ReceiveCommand cmd)
 specifier|private
 specifier|static
@@ -19123,9 +18984,6 @@ name|R_HEADS
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|isConfig (ReceiveCommand cmd)
 specifier|private
 specifier|static
@@ -19150,9 +19008,6 @@ name|REFS_CONFIG
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|logDebug (String msg)
 specifier|private
 name|void
@@ -19175,9 +19030,6 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|logDebug (String msg, @Nullable Object arg)
 specifier|private
 name|void
@@ -19207,9 +19059,6 @@ name|arg
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|logDebug (String msg, @Nullable Object arg1, @Nullable Object arg2)
 specifier|private
 name|void
@@ -19246,9 +19095,6 @@ name|arg2
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|logDebug ( String msg, @Nullable Object arg1, @Nullable Object arg2, @Nullable Object arg3)
 specifier|private
 name|void
@@ -19292,9 +19138,6 @@ name|arg3
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|logDebug ( String msg, @Nullable Object arg1, @Nullable Object arg2, @Nullable Object arg3, @Nullable Object arg4)
 specifier|private
 name|void
@@ -19345,9 +19188,6 @@ name|arg4
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|logWarn (String msg, Throwable t)
 specifier|private
 name|void
@@ -19380,9 +19220,6 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|logWarn (String msg)
 specifier|private
 name|void
@@ -19400,9 +19237,6 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|logError (String msg, Throwable t)
 specifier|private
 name|void
@@ -19435,9 +19269,6 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|logError (String msg)
 specifier|private
 name|void
@@ -19455,8 +19286,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 
