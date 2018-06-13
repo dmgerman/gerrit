@@ -482,11 +482,6 @@ end_comment
 
 begin_class
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-annotation|@
 name|Singleton
 DECL|class|ProjectQoSFilter
 specifier|public
