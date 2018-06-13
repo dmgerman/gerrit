@@ -234,6 +234,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ConfigCollection (DynamicMap<RestView<ConfigResource>> views)
+specifier|public
 name|ConfigCollection
 parameter_list|(
 name|DynamicMap

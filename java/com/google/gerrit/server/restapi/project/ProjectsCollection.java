@@ -593,6 +593,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ProjectsCollection ( DynamicMap<RestView<ProjectResource>> views, Provider<ListProjects> list, Provider<QueryProjects> queryProjects, ProjectCache projectCache, PermissionBackend permissionBackend, CreateProject.Factory factory, Provider<CurrentUser> user)
+specifier|public
 name|ProjectsCollection
 parameter_list|(
 name|DynamicMap

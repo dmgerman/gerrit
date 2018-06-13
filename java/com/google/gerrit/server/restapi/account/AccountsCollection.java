@@ -489,6 +489,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|AccountsCollection ( Provider<CurrentUser> self, AccountResolver resolver, AccountControl.Factory accountControlFactory, IdentifiedUser.GenericFactory userFactory, Provider<QueryAccounts> list, DynamicMap<RestView<AccountResource>> views, CreateAccount.Factory createAccountFactory)
+specifier|public
 name|AccountsCollection
 parameter_list|(
 name|Provider
