@@ -201,8 +201,6 @@ block|{
 name|ElasticNodeInfo
 name|elasticNodeInfo
 decl_stmt|;
-try|try
-block|{
 name|container
 operator|=
 name|ElasticContainer
@@ -224,17 +222,6 @@ name|getPort
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|t
-parameter_list|)
-block|{
-return|return
-literal|null
-return|;
-block|}
 name|String
 name|indicesPrefix
 init|=
