@@ -941,19 +941,6 @@ argument_list|(
 literal|"REPORT BUG"
 argument_list|)
 expr_stmt|;
-comment|// Acceptance tests force --headless even when UIs are specified in config.
-name|assertThat
-argument_list|(
-name|i
-operator|.
-name|gerrit
-operator|.
-name|webUis
-argument_list|)
-operator|.
-name|isEmpty
-argument_list|()
-expr_stmt|;
 comment|// plugin
 name|assertThat
 argument_list|(

@@ -84,22 +84,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|nio
@@ -941,14 +925,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|options
-operator|.
-name|enablePolyGerrit
-argument_list|()
-condition|)
-block|{
 name|install
 argument_list|(
 operator|new
@@ -956,7 +932,6 @@ name|PolyGerritModule
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|options
@@ -2515,16 +2490,6 @@ name|fontServlet
 operator|=
 name|fontServlet
 expr_stmt|;
-name|checkState
-argument_list|(
-name|options
-operator|.
-name|enablePolyGerrit
-argument_list|()
-argument_list|,
-literal|"can't install PolyGerritFilter when PolyGerrit is disabled"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -2954,10 +2919,9 @@ block|{
 name|UiType
 name|type
 init|=
-name|options
+name|UiType
 operator|.
-name|defaultUi
-argument_list|()
+name|POLYGERRIT
 decl_stmt|;
 name|Cookie
 index|[]
@@ -3048,7 +3012,7 @@ name|UiType
 name|pref
 parameter_list|)
 block|{
-comment|// Only actually set a cookie if both UIs are enabled in the server;
+comment|// Only actually set a cookie if GWT UI is enabled in addition to default PG UI;
 comment|// otherwise clear it.
 name|Cookie
 name|cookie
@@ -3066,11 +3030,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|options
-operator|.
-name|enablePolyGerrit
-argument_list|()
-operator|&&
 name|options
 operator|.
 name|enableGwtUi
