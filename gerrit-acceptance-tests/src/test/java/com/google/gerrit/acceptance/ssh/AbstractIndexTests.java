@@ -326,7 +326,7 @@ argument_list|,
 literal|"test2"
 argument_list|)
 expr_stmt|;
-name|assertQuery
+name|assertChangeQuery
 argument_list|(
 literal|"message:second"
 argument_list|,
@@ -369,7 +369,7 @@ argument_list|(
 name|cmd
 argument_list|)
 expr_stmt|;
-name|assertQuery
+name|assertChangeQuery
 argument_list|(
 literal|"message:second"
 argument_list|,
@@ -382,10 +382,10 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertQuery (String q, ChangeData change, Boolean assertTrue)
+DECL|method|assertChangeQuery (String q, ChangeData change, Boolean assertTrue)
 specifier|protected
 name|void
-name|assertQuery
+name|assertChangeQuery
 parameter_list|(
 name|String
 name|q
@@ -425,6 +425,7 @@ if|if
 condition|(
 name|assertTrue
 condition|)
+block|{
 name|assertThat
 argument_list|(
 name|ids
@@ -441,7 +442,9 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|assertThat
 argument_list|(
 name|ids
@@ -458,6 +461,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|ids (Iterable<ChangeInfo> changes)
 specifier|protected
