@@ -426,6 +426,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceConflictException
 import|;
 end_import
@@ -474,7 +490,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestModifyView
+name|RestCreateView
 import|;
 end_import
 
@@ -860,6 +876,22 @@ name|server
 operator|.
 name|project
 operator|.
+name|ProjectResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
 name|ProjectState
 import|;
 end_import
@@ -935,20 +967,6 @@ operator|.
 name|inject
 operator|.
 name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|Assisted
 import|;
 end_import
 
@@ -1175,9 +1193,11 @@ specifier|public
 class|class
 name|CreateProject
 implements|implements
-name|RestModifyView
+name|RestCreateView
 argument_list|<
 name|TopLevelResource
+argument_list|,
+name|ProjectResource
 argument_list|,
 name|ProjectInput
 argument_list|>
@@ -1194,20 +1214,6 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create (String name)
-name|CreateProject
-name|create
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-function_decl|;
-block|}
 DECL|field|projectsCollection
 specifier|private
 specifier|final
@@ -1341,15 +1347,9 @@ name|ProjectNameLockManager
 argument_list|>
 name|lockManager
 decl_stmt|;
-DECL|field|name
-specifier|private
-specifier|final
-name|String
-name|name
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateProject ( Provider<ProjectsCollection> projectsCollection, Provider<GroupsCollection> groupsCollection, ProjectJson json, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, GitRepositoryManager repoManager, DynamicSet<NewProjectCreatedListener> createdListeners, ProjectCache projectCache, GroupBackend groupBackend, ProjectOwnerGroupsProvider.Factory projectOwnerGroups, MetaDataUpdate.User metaDataUpdateFactory, GitReferenceUpdated referenceUpdated, RepositoryConfig repositoryCfg, @GerritPersonIdent PersonIdent serverIdent, Provider<IdentifiedUser> identifiedUser, Provider<PutConfig> putConfig, AllProjectsName allProjects, AllUsersName allUsers, DynamicItem<ProjectNameLockManager> lockManager, @Assisted String name)
+DECL|method|CreateProject ( Provider<ProjectsCollection> projectsCollection, Provider<GroupsCollection> groupsCollection, ProjectJson json, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, GitRepositoryManager repoManager, DynamicSet<NewProjectCreatedListener> createdListeners, ProjectCache projectCache, GroupBackend groupBackend, ProjectOwnerGroupsProvider.Factory projectOwnerGroups, MetaDataUpdate.User metaDataUpdateFactory, GitReferenceUpdated referenceUpdated, RepositoryConfig repositoryCfg, @GerritPersonIdent PersonIdent serverIdent, Provider<IdentifiedUser> identifiedUser, Provider<PutConfig> putConfig, AllProjectsName allProjects, AllUsersName allUsers, DynamicItem<ProjectNameLockManager> lockManager)
 name|CreateProject
 parameter_list|(
 name|Provider
@@ -1432,11 +1432,6 @@ argument_list|<
 name|ProjectNameLockManager
 argument_list|>
 name|lockManager
-parameter_list|,
-annotation|@
-name|Assisted
-name|String
-name|name
 parameter_list|)
 block|{
 name|this
@@ -1547,16 +1542,10 @@ name|lockManager
 operator|=
 name|lockManager
 expr_stmt|;
-name|this
-operator|.
-name|name
-operator|=
-name|name
-expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (TopLevelResource resource, ProjectInput input)
+DECL|method|apply (TopLevelResource resource, IdString id, ProjectInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -1566,6 +1555,9 @@ name|apply
 parameter_list|(
 name|TopLevelResource
 name|resource
+parameter_list|,
+name|IdString
+name|id
 parameter_list|,
 name|ProjectInput
 name|input
@@ -1579,6 +1571,14 @@ name|ConfigInvalidException
 throws|,
 name|PermissionBackendException
 block|{
+name|String
+name|name
+init|=
+name|id
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|input

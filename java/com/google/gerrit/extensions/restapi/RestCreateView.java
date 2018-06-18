@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -67,38 +67,47 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Optional interface for {@link RestCollection}.  *  *<p>Collections that implement this interface can accept a {@code PUT} or {@code POST} when the  * parse method throws {@link ResourceNotFoundException}.  */
+comment|/**  * RestView that supports accepting input and creating a resource.  *  *<p>The input must be supplied as JSON as the body of the HTTP request. Create views can be  * invoked by the HTTP methods {@code PUT} and {@code POST}.  *  *<p>The RestCreateView is only invoked when the parse method of the {@code RestCollection} throws  * {@link ResourceNotFoundException}, and hence the resource doesn't exist yet.  *  * @param<P> type of the parent resource  * @param<C> type of the child resource that is created  * @param<I> type of input the JSON parser will parse the input into.  */
 end_comment
 
 begin_interface
-DECL|interface|AcceptsCreate
+DECL|interface|RestCreateView
 specifier|public
 interface|interface
-name|AcceptsCreate
+name|RestCreateView
 parameter_list|<
 name|P
 extends|extends
 name|RestResource
+parameter_list|,
+name|C
+extends|extends
+name|RestResource
+parameter_list|,
+name|I
 parameter_list|>
-block|{
-comment|/**    * Handle creation of a child resource.    *    * @param parent parent collection handle.    * @param id id of the resource being created.    * @return a view to perform the creation. The create method must embed the id into the newly    *     returned view object, as it will not be passed.    * @throws RestApiException the view cannot be constructed.    */
-DECL|method|create (P parent, IdString id)
-name|RestModifyView
+extends|extends
+name|RestView
 argument_list|<
-name|P
-argument_list|,
-name|?
+name|C
 argument_list|>
-name|create
+block|{
+comment|/**    * Process the view operation by creating the resource.    *    * @param parentResource parent resource of the resource that should be created    * @param input input after parsing from request.    * @return result to return to the client. Use {@link BinaryResult} to avoid automatic conversion    *     to JSON.    * @throws RestApiException if the resource creation is rejected    * @throws Exception the implementation of the view failed. The exception will be logged and HTTP    *     500 Internal Server Error will be returned to the client.    */
+DECL|method|apply (P parentResource, IdString id, I input)
+name|Object
+name|apply
 parameter_list|(
 name|P
-name|parent
+name|parentResource
 parameter_list|,
 name|IdString
 name|id
+parameter_list|,
+name|I
+name|input
 parameter_list|)
 throws|throws
-name|RestApiException
+name|Exception
 function_decl|;
 block|}
 end_interface

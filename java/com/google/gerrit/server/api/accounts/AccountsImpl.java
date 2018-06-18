@@ -473,8 +473,6 @@ DECL|field|createAccount
 specifier|private
 specifier|final
 name|CreateAccount
-operator|.
-name|Factory
 name|createAccount
 decl_stmt|;
 DECL|field|queryAccountsProvider
@@ -488,7 +486,7 @@ name|queryAccountsProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountsImpl ( AccountsCollection accounts, AccountApiImpl.Factory api, PermissionBackend permissionBackend, Provider<CurrentUser> self, CreateAccount.Factory createAccount, Provider<QueryAccounts> queryAccountsProvider)
+DECL|method|AccountsImpl ( AccountsCollection accounts, AccountApiImpl.Factory api, PermissionBackend permissionBackend, Provider<CurrentUser> self, CreateAccount createAccount, Provider<QueryAccounts> queryAccountsProvider)
 name|AccountsImpl
 parameter_list|(
 name|AccountsCollection
@@ -509,8 +507,6 @@ argument_list|>
 name|self
 parameter_list|,
 name|CreateAccount
-operator|.
-name|Factory
 name|createAccount
 parameter_list|,
 name|Provider
@@ -755,18 +751,6 @@ throw|;
 block|}
 try|try
 block|{
-name|CreateAccount
-name|impl
-init|=
-name|createAccount
-operator|.
-name|create
-argument_list|(
-name|in
-operator|.
-name|username
-argument_list|)
-decl_stmt|;
 name|permissionBackend
 operator|.
 name|currentUser
@@ -778,7 +762,7 @@ name|GlobalPermission
 operator|.
 name|fromAnnotation
 argument_list|(
-name|impl
+name|createAccount
 operator|.
 name|getClass
 argument_list|()
@@ -788,13 +772,22 @@ expr_stmt|;
 name|AccountInfo
 name|info
 init|=
-name|impl
+name|createAccount
 operator|.
 name|apply
 argument_list|(
 name|TopLevelResource
 operator|.
 name|INSTANCE
+argument_list|,
+name|IdString
+operator|.
+name|fromDecoded
+argument_list|(
+name|in
+operator|.
+name|username
+argument_list|)
 argument_list|,
 name|in
 argument_list|)

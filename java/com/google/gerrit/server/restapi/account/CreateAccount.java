@@ -308,6 +308,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceConflictException
 import|;
 end_import
@@ -340,7 +356,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestModifyView
+name|RestCreateView
 import|;
 end_import
 
@@ -465,6 +481,22 @@ operator|.
 name|account
 operator|.
 name|AccountLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|AccountResource
 import|;
 end_import
 
@@ -664,20 +696,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -753,27 +771,15 @@ specifier|public
 class|class
 name|CreateAccount
 implements|implements
-name|RestModifyView
+name|RestCreateView
 argument_list|<
 name|TopLevelResource
+argument_list|,
+name|AccountResource
 argument_list|,
 name|AccountInput
 argument_list|>
 block|{
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create (String username)
-name|CreateAccount
-name|create
-parameter_list|(
-name|String
-name|username
-parameter_list|)
-function_decl|;
-block|}
 DECL|field|seq
 specifier|private
 specifier|final
@@ -841,15 +847,9 @@ specifier|final
 name|OutgoingEmailValidator
 name|validator
 decl_stmt|;
-DECL|field|username
-specifier|private
-specifier|final
-name|String
-name|username
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount ( Sequences seq, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, @UserInitiated Provider<AccountsUpdate> accountsUpdateProvider, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator, @Assisted String username)
+DECL|method|CreateAccount ( Sequences seq, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, @UserInitiated Provider<AccountsUpdate> accountsUpdateProvider, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator)
 name|CreateAccount
 parameter_list|(
 name|Sequences
@@ -895,11 +895,6 @@ name|groupsUpdate
 parameter_list|,
 name|OutgoingEmailValidator
 name|validator
-parameter_list|,
-annotation|@
-name|Assisted
-name|String
-name|username
 parameter_list|)
 block|{
 name|this
@@ -956,16 +951,10 @@ name|validator
 operator|=
 name|validator
 expr_stmt|;
-name|this
-operator|.
-name|username
-operator|=
-name|username
-expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (TopLevelResource rsrc, @Nullable AccountInput input)
+DECL|method|apply ( TopLevelResource rsrc, IdString id, @Nullable AccountInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -975,6 +964,9 @@ name|apply
 parameter_list|(
 name|TopLevelResource
 name|rsrc
+parameter_list|,
+name|IdString
+name|id
 parameter_list|,
 annotation|@
 name|Nullable
@@ -997,6 +989,8 @@ block|{
 return|return
 name|apply
 argument_list|(
+name|id
+argument_list|,
 name|input
 operator|!=
 literal|null
@@ -1009,7 +1003,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|apply (AccountInput input)
+DECL|method|apply (IdString id, AccountInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -1017,6 +1011,9 @@ name|AccountInfo
 argument_list|>
 name|apply
 parameter_list|(
+name|IdString
+name|id
+parameter_list|,
 name|AccountInput
 name|input
 parameter_list|)
@@ -1033,6 +1030,14 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+name|String
+name|username
+init|=
+name|id
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|input
@@ -1101,7 +1106,7 @@ decl_stmt|;
 name|Account
 operator|.
 name|Id
-name|id
+name|accountId
 init|=
 operator|new
 name|Account
@@ -1163,7 +1168,7 @@ name|ExternalId
 operator|.
 name|createEmail
 argument_list|(
-name|id
+name|accountId
 argument_list|,
 name|input
 operator|.
@@ -1182,7 +1187,7 @@ name|createUsername
 argument_list|(
 name|username
 argument_list|,
-name|id
+name|accountId
 argument_list|,
 name|input
 operator|.
@@ -1206,7 +1211,7 @@ name|c
 operator|.
 name|create
 argument_list|(
-name|id
+name|accountId
 argument_list|,
 name|username
 argument_list|,
@@ -1228,7 +1233,7 @@ name|insert
 argument_list|(
 literal|"Create Account via API"
 argument_list|,
-name|id
+name|accountId
 argument_list|,
 name|u
 lambda|->
@@ -1348,7 +1353,7 @@ name|addGroupMember
 argument_list|(
 name|groupUuid
 argument_list|,
-name|id
+name|accountId
 argument_list|)
 expr_stmt|;
 block|}
@@ -1389,7 +1394,7 @@ name|authorizedKeys
 operator|.
 name|addKey
 argument_list|(
-name|id
+name|accountId
 argument_list|,
 name|input
 operator|.
@@ -1439,7 +1444,7 @@ name|loader
 operator|.
 name|get
 argument_list|(
-name|id
+name|accountId
 argument_list|)
 decl_stmt|;
 name|loader
