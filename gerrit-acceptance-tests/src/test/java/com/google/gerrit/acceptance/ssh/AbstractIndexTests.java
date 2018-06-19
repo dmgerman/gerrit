@@ -353,6 +353,11 @@ argument_list|(
 name|cmd
 argument_list|)
 expr_stmt|;
+name|adminSshSession
+operator|.
+name|assertSuccess
+argument_list|()
+expr_stmt|;
 name|assertChangeQuery
 argument_list|(
 literal|"message:second"
@@ -451,7 +456,7 @@ literal|"gerrit"
 argument_list|,
 literal|"index"
 argument_list|,
-literal|"projects"
+literal|"project"
 argument_list|,
 name|project
 operator|.
@@ -465,6 +470,11 @@ name|exec
 argument_list|(
 name|cmd
 argument_list|)
+expr_stmt|;
+name|adminSshSession
+operator|.
+name|assertSuccess
+argument_list|()
 expr_stmt|;
 name|assertChangeQuery
 argument_list|(
