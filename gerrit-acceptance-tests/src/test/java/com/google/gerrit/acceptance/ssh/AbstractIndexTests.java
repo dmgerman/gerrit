@@ -756,7 +756,7 @@ name|adminSshSession
 operator|.
 name|exec
 argument_list|(
-literal|"gerrit show-queue"
+literal|"gerrit show-queue --wide"
 argument_list|)
 decl_stmt|;
 name|adminSshSession
