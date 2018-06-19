@@ -83,22 +83,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|Truth
-operator|.
-name|assertWithMessage
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -458,23 +442,9 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|assertWithMessage
-argument_list|(
 name|adminSshSession
 operator|.
-name|getError
-argument_list|()
-argument_list|)
-operator|.
-name|that
-argument_list|(
-name|adminSshSession
-operator|.
-name|hasError
-argument_list|()
-argument_list|)
-operator|.
-name|isFalse
+name|assertSuccess
 argument_list|()
 expr_stmt|;
 name|assertThat
