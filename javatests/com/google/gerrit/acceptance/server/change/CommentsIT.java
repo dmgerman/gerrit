@@ -5743,7 +5743,7 @@ literal|"#/c/"
 operator|+
 name|c
 operator|+
-literal|"/1/a.txt\n"
+literal|"/1/a.txt \n"
 operator|+
 literal|"File a.txt:\n"
 operator|+
@@ -5755,7 +5755,7 @@ literal|"#/c/"
 operator|+
 name|c
 operator|+
-literal|"/1/a.txt@a2\n"
+literal|"/1/a.txt@a2 \n"
 operator|+
 literal|"PS1, Line 2: \n"
 operator|+
@@ -5771,7 +5771,7 @@ literal|"#/c/"
 operator|+
 name|c
 operator|+
-literal|"/1/a.txt@1\n"
+literal|"/1/a.txt@1 \n"
 operator|+
 literal|"PS1, Line 1: ew\n"
 operator|+
@@ -5787,7 +5787,7 @@ literal|"#/c/"
 operator|+
 name|c
 operator|+
-literal|"/2/a.txt\n"
+literal|"/2/a.txt \n"
 operator|+
 literal|"File a.txt:\n"
 operator|+
@@ -5799,7 +5799,7 @@ literal|"#/c/"
 operator|+
 name|c
 operator|+
-literal|"/2/a.txt@a1\n"
+literal|"/2/a.txt@a1 \n"
 operator|+
 literal|"PS2, Line 1: \n"
 operator|+
@@ -5815,7 +5815,7 @@ literal|"#/c/"
 operator|+
 name|c
 operator|+
-literal|"/2/a.txt@a2\n"
+literal|"/2/a.txt@a2 \n"
 operator|+
 literal|"PS2, Line 2: \n"
 operator|+
@@ -5831,7 +5831,7 @@ literal|"#/c/"
 operator|+
 name|c
 operator|+
-literal|"/2/a.txt@1\n"
+literal|"/2/a.txt@1 \n"
 operator|+
 literal|"PS2, Line 1: ew\n"
 operator|+
@@ -5847,7 +5847,7 @@ literal|"#/c/"
 operator|+
 name|c
 operator|+
-literal|"/2/a.txt@2\n"
+literal|"/2/a.txt@2 \n"
 operator|+
 literal|"PS2, Line 2: nten\n"
 operator|+
