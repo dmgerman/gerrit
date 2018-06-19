@@ -280,6 +280,12 @@ case|:
 return|return
 literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4"
 return|;
+case|case
+name|V6_3
+case|:
+return|return
+literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0"
+return|;
 block|}
 throw|throw
 operator|new
