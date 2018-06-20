@@ -316,6 +316,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|AccountDetailInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|AccountExternalIdInfo
 import|;
 end_import
@@ -769,6 +785,24 @@ operator|.
 name|account
 operator|.
 name|GetAvatar
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|restapi
+operator|.
+name|account
+operator|.
+name|GetDetail
 import|;
 end_import
 
@@ -1243,6 +1277,12 @@ operator|.
 name|Factory
 name|accountLoaderFactory
 decl_stmt|;
+DECL|field|getDetail
+specifier|private
+specifier|final
+name|GetDetail
+name|getDetail
+decl_stmt|;
 DECL|field|getAvatar
 specifier|private
 specifier|final
@@ -1461,7 +1501,7 @@ name|emailApi
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountApiImpl ( AccountLoader.Factory ailf, ChangesCollection changes, GetAvatar getAvatar, GetPreferences getPreferences, SetPreferences setPreferences, GetDiffPreferences getDiffPreferences, SetDiffPreferences setDiffPreferences, GetEditPreferences getEditPreferences, SetEditPreferences setEditPreferences, GetWatchedProjects getWatchedProjects, PostWatchedProjects postWatchedProjects, DeleteWatchedProjects deleteWatchedProjects, StarredChanges.Create starredChangesCreate, StarredChanges.Delete starredChangesDelete, Stars stars, Stars.Get starsGet, Stars.Post starsPost, GetEmails getEmails, CreateEmail.Factory createEmailFactory, DeleteEmail deleteEmail, GpgApiAdapter gpgApiAdapter, GetSshKeys getSshKeys, AddSshKey addSshKey, DeleteSshKey deleteSshKey, SshKeys sshKeys, GetAgreements getAgreements, PutAgreement putAgreement, GetActive getActive, PutActive putActive, DeleteActive deleteActive, Index index, GetExternalIds getExternalIds, DeleteExternalIds deleteExternalIds, PutStatus putStatus, GetGroups getGroups, EmailApiImpl.Factory emailApi, @Assisted AccountResource account)
+DECL|method|AccountApiImpl ( AccountLoader.Factory ailf, ChangesCollection changes, GetDetail getDetail, GetAvatar getAvatar, GetPreferences getPreferences, SetPreferences setPreferences, GetDiffPreferences getDiffPreferences, SetDiffPreferences setDiffPreferences, GetEditPreferences getEditPreferences, SetEditPreferences setEditPreferences, GetWatchedProjects getWatchedProjects, PostWatchedProjects postWatchedProjects, DeleteWatchedProjects deleteWatchedProjects, StarredChanges.Create starredChangesCreate, StarredChanges.Delete starredChangesDelete, Stars stars, Stars.Get starsGet, Stars.Post starsPost, GetEmails getEmails, CreateEmail.Factory createEmailFactory, DeleteEmail deleteEmail, GpgApiAdapter gpgApiAdapter, GetSshKeys getSshKeys, AddSshKey addSshKey, DeleteSshKey deleteSshKey, SshKeys sshKeys, GetAgreements getAgreements, PutAgreement putAgreement, GetActive getActive, PutActive putActive, DeleteActive deleteActive, Index index, GetExternalIds getExternalIds, DeleteExternalIds deleteExternalIds, PutStatus putStatus, GetGroups getGroups, EmailApiImpl.Factory emailApi, @Assisted AccountResource account)
 name|AccountApiImpl
 parameter_list|(
 name|AccountLoader
@@ -1471,6 +1511,9 @@ name|ailf
 parameter_list|,
 name|ChangesCollection
 name|changes
+parameter_list|,
+name|GetDetail
+name|getDetail
 parameter_list|,
 name|GetAvatar
 name|getAvatar
@@ -1609,6 +1652,12 @@ operator|.
 name|changes
 operator|=
 name|changes
+expr_stmt|;
+name|this
+operator|.
+name|getDetail
+operator|=
+name|getDetail
 expr_stmt|;
 name|this
 operator|.
@@ -1882,6 +1931,43 @@ throw|throw
 name|asRestApiException
 argument_list|(
 literal|"Cannot parse change"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|detail ()
+specifier|public
+name|AccountDetailInfo
+name|detail
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+try|try
+block|{
+return|return
+name|getDetail
+operator|.
+name|apply
+argument_list|(
+name|account
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|asRestApiException
+argument_list|(
+literal|"Cannot get detail"
 argument_list|,
 name|e
 argument_list|)
