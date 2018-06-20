@@ -340,20 +340,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -536,8 +522,6 @@ parameter_list|(
 name|F
 name|comment
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|AccountLoader
 name|loader
@@ -599,8 +583,6 @@ name|F
 argument_list|>
 name|comments
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|AccountLoader
 name|loader
@@ -760,8 +742,6 @@ name|F
 argument_list|>
 name|comments
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|AccountLoader
 name|loader

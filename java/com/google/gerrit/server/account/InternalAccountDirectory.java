@@ -488,8 +488,6 @@ name|FillOptions
 argument_list|>
 name|options
 parameter_list|)
-throws|throws
-name|DirectoryException
 block|{
 if|if
 condition|(

@@ -1981,8 +1981,6 @@ argument_list|>
 name|accountIds
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 name|Set

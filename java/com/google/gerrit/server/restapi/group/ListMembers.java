@@ -609,8 +609,6 @@ operator|.
 name|UUID
 name|groupUuid
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Optional
 argument_list|<
@@ -687,8 +685,6 @@ parameter_list|,
 name|GroupControl
 name|groupControl
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|checkSameGroup
 argument_list|(
@@ -745,8 +741,6 @@ parameter_list|(
 name|InternalGroup
 name|group
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|InternalGroupDescription
 name|internalGroup
@@ -787,8 +781,6 @@ parameter_list|,
 name|GroupControl
 name|groupControl
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|checkSameGroup
 argument_list|(
@@ -835,8 +827,6 @@ name|Id
 argument_list|>
 name|members
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<

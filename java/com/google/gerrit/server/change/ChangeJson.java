@@ -3612,8 +3612,6 @@ argument_list|>
 argument_list|>
 name|in
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 try|try
 init|(

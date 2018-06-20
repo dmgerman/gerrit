@@ -1467,8 +1467,6 @@ name|Id
 argument_list|>
 name|accountIds
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<

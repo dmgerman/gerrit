@@ -137,7 +137,7 @@ comment|/** The user-settable status of this account (e.g. busy, OOO, available)
 DECL|enumConstant|STATUS
 name|STATUS
 block|}
-DECL|method|fillAccountInfo (Iterable<? extends AccountInfo> in, Set<FillOptions> options)
+DECL|method|fillAccountInfo ( Iterable<? extends AccountInfo> in, Set<FillOptions> options)
 specifier|public
 specifier|abstract
 name|void
@@ -157,56 +157,7 @@ name|FillOptions
 argument_list|>
 name|options
 parameter_list|)
-throws|throws
-name|DirectoryException
 function_decl|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
-DECL|class|DirectoryException
-specifier|public
-specifier|static
-class|class
-name|DirectoryException
-extends|extends
-name|Exception
-block|{
-DECL|method|DirectoryException (String message, Throwable why)
-specifier|public
-name|DirectoryException
-parameter_list|(
-name|String
-name|message
-parameter_list|,
-name|Throwable
-name|why
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|message
-argument_list|,
-name|why
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|DirectoryException (Throwable why)
-specifier|public
-name|DirectoryException
-parameter_list|(
-name|Throwable
-name|why
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|why
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 end_class
 
