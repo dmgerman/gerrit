@@ -80,7 +80,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|AccountInfo
+name|AccountDetailInfo
 import|;
 end_import
 
@@ -201,16 +201,6 @@ operator|.
 name|inject
 operator|.
 name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
 import|;
 end_import
 
@@ -356,39 +346,6 @@ expr_stmt|;
 return|return
 name|info
 return|;
-block|}
-DECL|class|AccountDetailInfo
-specifier|public
-specifier|static
-class|class
-name|AccountDetailInfo
-extends|extends
-name|AccountInfo
-block|{
-DECL|field|registeredOn
-specifier|public
-name|Timestamp
-name|registeredOn
-decl_stmt|;
-DECL|field|inactive
-specifier|public
-name|Boolean
-name|inactive
-decl_stmt|;
-DECL|method|AccountDetailInfo (Integer id)
-specifier|public
-name|AccountDetailInfo
-parameter_list|(
-name|Integer
-name|id
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|id
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 end_class

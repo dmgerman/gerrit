@@ -162,6 +162,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|AccountDetailInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|AccountExternalIdInfo
 import|;
 end_import
@@ -349,6 +365,13 @@ block|{
 DECL|method|get ()
 name|AccountInfo
 name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|detail ()
+name|AccountDetailInfo
+name|detail
 parameter_list|()
 throws|throws
 name|RestApiException
@@ -735,6 +758,22 @@ DECL|method|get ()
 specifier|public
 name|AccountInfo
 name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|detail ()
+specifier|public
+name|AccountDetailInfo
+name|detail
 parameter_list|()
 throws|throws
 name|RestApiException

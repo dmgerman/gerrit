@@ -140,11 +140,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|common
 operator|.
-name|Account
+name|AccountDetailInfo
 import|;
 end_import
 
@@ -156,15 +156,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|restapi
+name|client
 operator|.
-name|account
-operator|.
-name|GetDetail
-operator|.
-name|AccountDetailInfo
+name|Account
 import|;
 end_import
 
