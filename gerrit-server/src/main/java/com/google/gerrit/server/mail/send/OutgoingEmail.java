@@ -2328,6 +2328,17 @@ name|Id
 name|accountId
 parameter_list|)
 block|{
+if|if
+condition|(
+name|accountId
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|AccountState
 name|who
 init|=
