@@ -2270,7 +2270,7 @@ return|;
 block|}
 comment|/**    * Gets the human readable name and email for an account.    *    * @param accountId user to fetch.    * @return name/email of account; Anonymous Coward if unset or the server identity if null.    */
 DECL|method|getNameEmailFor (@ullable Account.Id accountId)
-specifier|public
+specifier|protected
 name|String
 name|getNameEmailFor
 parameter_list|(
@@ -2337,7 +2337,7 @@ comment|/**    * Gets the human readable name and email for an account; if both 
 annotation|@
 name|Nullable
 DECL|method|getUserNameEmailFor (@ullable Account.Id accountId)
-specifier|public
+specifier|protected
 name|String
 name|getUserNameEmailFor
 parameter_list|(
