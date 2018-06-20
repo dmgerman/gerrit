@@ -2203,7 +2203,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Lookup a human readable name for an account, usually the "full name". */
+comment|/**    * Gets the human readable name for an account, usually the "full name".    *    * @param accountId user to fetch.    * @return name of the account, or the server identity name if null.    */
 DECL|method|getNameFor (final Account.Id accountId)
 specifier|protected
 name|String
@@ -2253,7 +2253,7 @@ name|anonymousCowardName
 argument_list|)
 return|;
 block|}
-comment|/**    * Gets the human readable name and email for an account; if neither are available, returns the    * Anonymous Coward name.    *    * @param accountId user to fetch.    * @return name/email of account, or Anonymous Coward if unset.    */
+comment|/**    * Gets the human readable name and email for an account.    *    * @param accountId user to fetch.    * @return name/email of account; Anonymous Coward if unset or the server identity if null.    */
 DECL|method|getNameEmailFor (Account.Id accountId)
 specifier|public
 name|String
@@ -2265,6 +2265,36 @@ name|Id
 name|accountId
 parameter_list|)
 block|{
+if|if
+condition|(
+name|accountId
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s<%s>"
+argument_list|,
+name|args
+operator|.
+name|gerritPersonIdent
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|args
+operator|.
+name|gerritPersonIdent
+operator|.
+name|getEmailAddress
+argument_list|()
+argument_list|)
+return|;
+block|}
 return|return
 name|args
 operator|.
