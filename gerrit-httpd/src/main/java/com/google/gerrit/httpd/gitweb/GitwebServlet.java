@@ -1010,8 +1010,8 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Invalid gitweb.url: "
-operator|+
+literal|"Invalid gitweb.url: {}"
+argument_list|,
 name|url
 argument_list|)
 expr_stmt|;
@@ -3125,12 +3125,10 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Non-zero exit status ("
-operator|+
+literal|"Non-zero exit status ({}) from {}"
+argument_list|,
 name|status
-operator|+
-literal|") from "
-operator|+
+argument_list|,
 name|gitwebCgi
 argument_list|)
 expr_stmt|;
