@@ -176,6 +176,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|errors
 operator|.
 name|EmailException
@@ -2204,12 +2218,13 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Gets the human readable name for an account, usually the "full name".    *    * @param accountId user to fetch.    * @return name of the account, or the server identity name if null.    */
-DECL|method|getNameFor (final Account.Id accountId)
+DECL|method|getNameFor (@ullable Account.Id accountId)
 specifier|protected
 name|String
 name|getNameFor
 parameter_list|(
-specifier|final
+annotation|@
+name|Nullable
 name|Account
 operator|.
 name|Id
@@ -2254,11 +2269,13 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Gets the human readable name and email for an account.    *    * @param accountId user to fetch.    * @return name/email of account; Anonymous Coward if unset or the server identity if null.    */
-DECL|method|getNameEmailFor (Account.Id accountId)
+DECL|method|getNameEmailFor (@ullable Account.Id accountId)
 specifier|public
 name|String
 name|getNameEmailFor
 parameter_list|(
+annotation|@
+name|Nullable
 name|Account
 operator|.
 name|Id
@@ -2317,11 +2334,15 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Gets the human readable name and email for an account; if both are unavailable, returns the    * username. If no username is set, this function returns null.    *    * @param accountId user to fetch.    * @return name/email of account, username, or null if unset.    */
-DECL|method|getUserNameEmailFor (Account.Id accountId)
+annotation|@
+name|Nullable
+DECL|method|getUserNameEmailFor (@ullable Account.Id accountId)
 specifier|public
 name|String
 name|getUserNameEmailFor
 parameter_list|(
+annotation|@
+name|Nullable
 name|Account
 operator|.
 name|Id
