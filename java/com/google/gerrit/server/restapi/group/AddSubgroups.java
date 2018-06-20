@@ -424,6 +424,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|restapi
 operator|.
 name|group
@@ -778,6 +794,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|GroupDescription
 operator|.
@@ -1085,6 +1103,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|AddSubgroups
 operator|.
@@ -1228,6 +1248,8 @@ name|input
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 comment|// Do nothing, the group is already included.
 return|return

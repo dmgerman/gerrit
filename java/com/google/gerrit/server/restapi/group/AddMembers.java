@@ -588,6 +588,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|restapi
 operator|.
 name|account
@@ -1035,6 +1051,8 @@ throws|,
 name|ConfigInvalidException
 throws|,
 name|ResourceNotFoundException
+throws|,
+name|PermissionBackendException
 block|{
 name|GroupDescription
 operator|.
@@ -1499,6 +1517,8 @@ name|Id
 argument_list|>
 name|accountIds
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 block|{
 name|List
 argument_list|<
@@ -1619,6 +1639,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|AddMembers
 operator|.
@@ -1751,6 +1773,8 @@ name|input
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 comment|// Do nothing, the user is already a member.
 return|return

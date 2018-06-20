@@ -4025,6 +4025,20 @@ literal|"myuser"
 argument_list|,
 literal|"My User"
 argument_list|,
+literal|"other@example.com"
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|AccountInfo
+name|otherUser
+init|=
+name|newAccount
+argument_list|(
+literal|"otheruser"
+argument_list|,
+literal|"Other User"
+argument_list|,
 literal|"abc@example.com"
 argument_list|,
 literal|true
@@ -4045,7 +4059,7 @@ block|}
 decl_stmt|;
 name|addEmails
 argument_list|(
-name|user
+name|otherUser
 argument_list|,
 name|secondaryEmails
 argument_list|)
@@ -4076,7 +4090,7 @@ name|result
 init|=
 name|newQuery
 argument_list|(
-name|user
+name|otherUser
 operator|.
 name|username
 argument_list|)
@@ -4115,7 +4129,7 @@ argument_list|)
 expr_stmt|;
 name|newQuery
 argument_list|(
-name|user
+name|otherUser
 operator|.
 name|username
 argument_list|)

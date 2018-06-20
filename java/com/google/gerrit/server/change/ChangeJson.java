@@ -3612,6 +3612,8 @@ argument_list|>
 argument_list|>
 name|in
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 block|{
 try|try
 init|(
@@ -3795,6 +3797,8 @@ name|in
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 name|accountLoader
 operator|=

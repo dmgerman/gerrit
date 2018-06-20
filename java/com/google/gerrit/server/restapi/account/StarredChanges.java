@@ -798,6 +798,8 @@ throws|,
 name|AuthException
 throws|,
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 name|QueryChanges
 name|query

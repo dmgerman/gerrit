@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -137,7 +153,7 @@ comment|/** The user-settable status of this account (e.g. busy, OOO, available)
 DECL|enumConstant|STATUS
 name|STATUS
 block|}
-DECL|method|fillAccountInfo ( Iterable<? extends AccountInfo> in, Set<FillOptions> options)
+DECL|method|fillAccountInfo (Iterable<? extends AccountInfo> in, Set<FillOptions> options)
 specifier|public
 specifier|abstract
 name|void
@@ -157,6 +173,8 @@ name|FillOptions
 argument_list|>
 name|options
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 function_decl|;
 block|}
 end_class

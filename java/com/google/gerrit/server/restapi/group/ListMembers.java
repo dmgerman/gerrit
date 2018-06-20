@@ -340,6 +340,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -549,6 +565,8 @@ throws|throws
 name|NotInternalGroupException
 throws|,
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 name|GroupDescription
 operator|.
@@ -609,6 +627,8 @@ operator|.
 name|UUID
 name|groupUuid
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 block|{
 name|Optional
 argument_list|<
@@ -685,6 +705,8 @@ parameter_list|,
 name|GroupControl
 name|groupControl
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 block|{
 name|checkSameGroup
 argument_list|(
@@ -741,6 +763,8 @@ parameter_list|(
 name|InternalGroup
 name|group
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 block|{
 name|InternalGroupDescription
 name|internalGroup
@@ -781,6 +805,8 @@ parameter_list|,
 name|GroupControl
 name|groupControl
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 block|{
 name|checkSameGroup
 argument_list|(
@@ -827,6 +853,8 @@ name|Id
 argument_list|>
 name|members
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 block|{
 name|List
 argument_list|<

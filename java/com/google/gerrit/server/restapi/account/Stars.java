@@ -811,6 +811,8 @@ throws|,
 name|AuthException
 throws|,
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 if|if
 condition|(
