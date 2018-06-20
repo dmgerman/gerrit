@@ -206,7 +206,6 @@ end_import
 
 begin_class
 DECL|class|ReadOnlyChangeIndex
-specifier|public
 class|class
 name|ReadOnlyChangeIndex
 implements|implements
@@ -219,7 +218,6 @@ name|ChangeIndex
 name|index
 decl_stmt|;
 DECL|method|ReadOnlyChangeIndex (ChangeIndex index)
-specifier|public
 name|ReadOnlyChangeIndex
 parameter_list|(
 name|ChangeIndex
@@ -234,7 +232,6 @@ name|index
 expr_stmt|;
 block|}
 DECL|method|unwrap ()
-specifier|public
 name|ChangeIndex
 name|unwrap
 parameter_list|()
