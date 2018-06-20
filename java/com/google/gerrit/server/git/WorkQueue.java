@@ -804,7 +804,7 @@ block|}
 comment|/**    * Create a new executor queue.    *    *<p>Creates a new executor queue without associated metrics. This method is suitable for use by    * plugins.    *    *<p>If metrics are needed, use {@link #createQueue(int, String, int, boolean)} instead.    *    * @param poolsize the size of the pool.    * @param queueName the name of the queue.    */
 DECL|method|createQueue (int poolsize, String queueName)
 specifier|public
-name|ScheduledThreadPoolExecutor
+name|ScheduledExecutorService
 name|createQueue
 parameter_list|(
 name|int
