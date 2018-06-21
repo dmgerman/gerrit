@@ -220,6 +220,13 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
+name|put
+argument_list|(
+literal|"/plugins/new-plugin"
+argument_list|)
+argument_list|,
+name|RestCall
+operator|.
 name|get
 argument_list|(
 literal|"/projects/"
