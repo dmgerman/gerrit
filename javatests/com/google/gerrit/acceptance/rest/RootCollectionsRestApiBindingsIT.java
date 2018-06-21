@@ -206,6 +206,13 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
+name|put
+argument_list|(
+literal|"/groups/new-group"
+argument_list|)
+argument_list|,
+name|RestCall
+operator|.
 name|get
 argument_list|(
 literal|"/plugins/"
