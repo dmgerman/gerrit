@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2017 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.common
+DECL|package|com.google.gerrit.extensions.api.plugins
 package|package
 name|com
 operator|.
@@ -62,7 +62,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|api
+operator|.
+name|plugins
 package|;
 end_package
 
@@ -98,13 +100,7 @@ name|RawInput
 import|;
 end_import
 
-begin_comment
-comment|/** @deprecated use {@link com.google.gerrit.extensions.api.plugins.InstallPluginInput}. */
-end_comment
-
 begin_class
-annotation|@
-name|Deprecated
 DECL|class|InstallPluginInput
 specifier|public
 class|class
