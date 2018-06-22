@@ -206,6 +206,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|MethodNotAllowedException
 import|;
 end_import
@@ -254,7 +270,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestModifyView
+name|RestCreateView
 import|;
 end_import
 
@@ -442,9 +458,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|Inject
+name|server
+operator|.
+name|project
+operator|.
+name|TagResource
 import|;
 end_import
 
@@ -456,9 +476,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -616,9 +634,11 @@ specifier|public
 class|class
 name|CreateTag
 implements|implements
-name|RestModifyView
+name|RestCreateView
 argument_list|<
 name|ProjectResource
+argument_list|,
+name|TagResource
 argument_list|,
 name|TagInput
 argument_list|>
@@ -635,20 +655,6 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create (String ref)
-name|CreateTag
-name|create
-parameter_list|(
-name|String
-name|ref
-parameter_list|)
-function_decl|;
-block|}
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -679,14 +685,9 @@ specifier|final
 name|WebLinks
 name|links
 decl_stmt|;
-DECL|field|ref
-specifier|private
-name|String
-name|ref
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateTag ( PermissionBackend permissionBackend, GitRepositoryManager repoManager, TagCache tagCache, GitReferenceUpdated referenceUpdated, WebLinks webLinks, @Assisted String ref)
+DECL|method|CreateTag ( PermissionBackend permissionBackend, GitRepositoryManager repoManager, TagCache tagCache, GitReferenceUpdated referenceUpdated, WebLinks webLinks)
 name|CreateTag
 parameter_list|(
 name|PermissionBackend
@@ -703,11 +704,6 @@ name|referenceUpdated
 parameter_list|,
 name|WebLinks
 name|webLinks
-parameter_list|,
-annotation|@
-name|Assisted
-name|String
-name|ref
 parameter_list|)
 block|{
 name|this
@@ -740,22 +736,19 @@ name|links
 operator|=
 name|webLinks
 expr_stmt|;
-name|this
-operator|.
-name|ref
-operator|=
-name|ref
-expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ProjectResource resource, TagInput input)
+DECL|method|apply (ProjectResource resource, IdString id, TagInput input)
 specifier|public
 name|TagInfo
 name|apply
 parameter_list|(
 name|ProjectResource
 name|resource
+parameter_list|,
+name|IdString
+name|id
 parameter_list|,
 name|TagInput
 name|input
@@ -769,6 +762,14 @@ name|PermissionBackendException
 throws|,
 name|NoSuchProjectException
 block|{
+name|String
+name|ref
+init|=
+name|id
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|input

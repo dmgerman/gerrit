@@ -1197,13 +1197,11 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|createProjectFactory
+DECL|field|createProject
 specifier|private
 specifier|final
 name|CreateProject
-operator|.
-name|Factory
-name|createProjectFactory
+name|createProject
 decl_stmt|;
 DECL|field|projectApi
 specifier|private
@@ -1402,16 +1400,14 @@ name|setParent
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
 name|PermissionBackend
 name|permissionBackend
 parameter_list|,
 name|CreateProject
-operator|.
-name|Factory
-name|createProjectFactory
+name|createProject
 parameter_list|,
 name|ProjectApiImpl
 operator|.
@@ -1525,7 +1521,7 @@ name|this
 argument_list|(
 name|permissionBackend
 argument_list|,
-name|createProjectFactory
+name|createProject
 argument_list|,
 name|projectApi
 argument_list|,
@@ -1589,16 +1585,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, @Assisted String name)
+DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, @Assisted String name)
 name|ProjectApiImpl
 parameter_list|(
 name|PermissionBackend
 name|permissionBackend
 parameter_list|,
 name|CreateProject
-operator|.
-name|Factory
-name|createProjectFactory
+name|createProject
 parameter_list|,
 name|ProjectApiImpl
 operator|.
@@ -1712,7 +1706,7 @@ name|this
 argument_list|(
 name|permissionBackend
 argument_list|,
-name|createProjectFactory
+name|createProject
 argument_list|,
 name|projectApi
 argument_list|,
@@ -1774,7 +1768,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, ProjectResource project, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, String name)
+DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, ProjectResource project, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, String name)
 specifier|private
 name|ProjectApiImpl
 parameter_list|(
@@ -1782,9 +1776,7 @@ name|PermissionBackend
 name|permissionBackend
 parameter_list|,
 name|CreateProject
-operator|.
-name|Factory
-name|createProjectFactory
+name|createProject
 parameter_list|,
 name|ProjectApiImpl
 operator|.
@@ -1903,9 +1895,9 @@ name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
-name|createProjectFactory
+name|createProject
 operator|=
-name|createProjectFactory
+name|createProject
 expr_stmt|;
 name|this
 operator|.
@@ -2158,16 +2150,6 @@ literal|"name must match input.name"
 argument_list|)
 throw|;
 block|}
-name|CreateProject
-name|impl
-init|=
-name|createProjectFactory
-operator|.
-name|create
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
 name|permissionBackend
 operator|.
 name|currentUser
@@ -2179,20 +2161,27 @@ name|GlobalPermission
 operator|.
 name|fromAnnotation
 argument_list|(
-name|impl
+name|createProject
 operator|.
 name|getClass
 argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|impl
+name|createProject
 operator|.
 name|apply
 argument_list|(
 name|TopLevelResource
 operator|.
 name|INSTANCE
+argument_list|,
+name|IdString
+operator|.
+name|fromDecoded
+argument_list|(
+name|name
+argument_list|)
 argument_list|,
 name|in
 argument_list|)

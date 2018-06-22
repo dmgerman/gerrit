@@ -194,6 +194,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|MethodNotAllowedException
 import|;
 end_import
@@ -258,7 +274,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestModifyView
+name|RestCreateView
 import|;
 end_import
 
@@ -510,20 +526,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -552,9 +554,13 @@ specifier|public
 class|class
 name|CreateEmail
 implements|implements
-name|RestModifyView
+name|RestCreateView
 argument_list|<
 name|AccountResource
+argument_list|,
+name|AccountResource
+operator|.
+name|Email
 argument_list|,
 name|EmailInput
 argument_list|>
@@ -571,20 +577,6 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create (String email)
-name|CreateEmail
-name|create
-parameter_list|(
-name|String
-name|email
-parameter_list|)
-function_decl|;
-block|}
 DECL|field|self
 specifier|private
 specifier|final
@@ -632,12 +624,6 @@ specifier|final
 name|OutgoingEmailValidator
 name|validator
 decl_stmt|;
-DECL|field|email
-specifier|private
-specifier|final
-name|String
-name|email
-decl_stmt|;
 DECL|field|isDevMode
 specifier|private
 specifier|final
@@ -646,7 +632,7 @@ name|isDevMode
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateEmail ( Provider<CurrentUser> self, Realm realm, PermissionBackend permissionBackend, AuthConfig authConfig, AccountManager accountManager, RegisterNewEmailSender.Factory registerNewEmailFactory, PutPreferred putPreferred, OutgoingEmailValidator validator, @Assisted String email)
+DECL|method|CreateEmail ( Provider<CurrentUser> self, Realm realm, PermissionBackend permissionBackend, AuthConfig authConfig, AccountManager accountManager, RegisterNewEmailSender.Factory registerNewEmailFactory, PutPreferred putPreferred, OutgoingEmailValidator validator)
 name|CreateEmail
 parameter_list|(
 name|Provider
@@ -677,11 +663,6 @@ name|putPreferred
 parameter_list|,
 name|OutgoingEmailValidator
 name|validator
-parameter_list|,
-annotation|@
-name|Assisted
-name|String
-name|email
 parameter_list|)
 block|{
 name|this
@@ -728,21 +709,6 @@ name|validator
 expr_stmt|;
 name|this
 operator|.
-name|email
-operator|=
-name|email
-operator|!=
-literal|null
-condition|?
-name|email
-operator|.
-name|trim
-argument_list|()
-else|:
-literal|null
-expr_stmt|;
-name|this
-operator|.
 name|isDevMode
 operator|=
 name|authConfig
@@ -755,7 +721,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (AccountResource rsrc, EmailInput input)
+DECL|method|apply (AccountResource rsrc, IdString id, EmailInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -765,6 +731,9 @@ name|apply
 parameter_list|(
 name|AccountResource
 name|rsrc
+parameter_list|,
+name|IdString
+name|id
 parameter_list|,
 name|EmailInput
 name|input
@@ -861,12 +830,14 @@ operator|.
 name|getUser
 argument_list|()
 argument_list|,
+name|id
+argument_list|,
 name|input
 argument_list|)
 return|;
 block|}
 comment|/** To be used from plugins that want to create emails without permission checks. */
-DECL|method|apply (IdentifiedUser user, EmailInput input)
+DECL|method|apply (IdentifiedUser user, IdString id, EmailInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -876,6 +847,9 @@ name|apply
 parameter_list|(
 name|IdentifiedUser
 name|user
+parameter_list|,
+name|IdString
+name|id
 parameter_list|,
 name|EmailInput
 name|input
@@ -895,6 +869,17 @@ name|ConfigInvalidException
 throws|,
 name|PermissionBackendException
 block|{
+name|String
+name|email
+init|=
+name|id
+operator|.
+name|get
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|input

@@ -519,8 +519,6 @@ DECL|field|createGroup
 specifier|private
 specifier|final
 name|CreateGroup
-operator|.
-name|Factory
 name|createGroup
 decl_stmt|;
 DECL|field|api
@@ -533,7 +531,7 @@ name|api
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsImpl ( AccountsCollection accounts, GroupsCollection groups, ProjectsCollection projects, Provider<ListGroups> listGroups, Provider<QueryGroups> queryGroups, PermissionBackend permissionBackend, CreateGroup.Factory createGroup, GroupApiImpl.Factory api)
+DECL|method|GroupsImpl ( AccountsCollection accounts, GroupsCollection groups, ProjectsCollection projects, Provider<ListGroups> listGroups, Provider<QueryGroups> queryGroups, PermissionBackend permissionBackend, CreateGroup createGroup, GroupApiImpl.Factory api)
 name|GroupsImpl
 parameter_list|(
 name|AccountsCollection
@@ -561,8 +559,6 @@ name|PermissionBackend
 name|permissionBackend
 parameter_list|,
 name|CreateGroup
-operator|.
-name|Factory
 name|createGroup
 parameter_list|,
 name|GroupApiImpl
@@ -726,18 +722,6 @@ throw|;
 block|}
 try|try
 block|{
-name|CreateGroup
-name|impl
-init|=
-name|createGroup
-operator|.
-name|create
-argument_list|(
-name|in
-operator|.
-name|name
-argument_list|)
-decl_stmt|;
 name|permissionBackend
 operator|.
 name|currentUser
@@ -749,7 +733,7 @@ name|GlobalPermission
 operator|.
 name|fromAnnotation
 argument_list|(
-name|impl
+name|createGroup
 operator|.
 name|getClass
 argument_list|()
@@ -759,13 +743,22 @@ expr_stmt|;
 name|GroupInfo
 name|info
 init|=
-name|impl
+name|createGroup
 operator|.
 name|apply
 argument_list|(
 name|TopLevelResource
 operator|.
 name|INSTANCE
+argument_list|,
+name|IdString
+operator|.
+name|fromDecoded
+argument_list|(
+name|in
+operator|.
+name|name
+argument_list|)
 argument_list|,
 name|in
 argument_list|)
