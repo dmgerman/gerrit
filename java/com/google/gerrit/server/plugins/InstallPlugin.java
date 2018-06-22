@@ -108,7 +108,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|api
+operator|.
+name|plugins
 operator|.
 name|InstallPluginInput
 import|;
