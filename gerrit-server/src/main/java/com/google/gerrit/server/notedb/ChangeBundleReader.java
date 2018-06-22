@@ -74,6 +74,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -118,6 +132,8 @@ specifier|public
 interface|interface
 name|ChangeBundleReader
 block|{
+annotation|@
+name|Nullable
 DECL|method|fromReviewDb (ReviewDb db, Change.Id id)
 name|ChangeBundle
 name|fromReviewDb
