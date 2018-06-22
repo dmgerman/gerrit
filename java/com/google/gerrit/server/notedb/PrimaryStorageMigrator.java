@@ -2327,7 +2327,7 @@ operator|.
 name|getRefDatabase
 argument_list|()
 operator|.
-name|getRefs
+name|getRefsByPrefix
 argument_list|(
 name|RefNames
 operator|.
@@ -2336,9 +2336,6 @@ argument_list|(
 name|id
 argument_list|)
 argument_list|)
-operator|.
-name|values
-argument_list|()
 control|)
 block|{
 name|Account

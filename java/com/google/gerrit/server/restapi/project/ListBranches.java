@@ -1184,15 +1184,12 @@ operator|.
 name|getRefDatabase
 argument_list|()
 operator|.
-name|getRefs
+name|getRefsByPrefix
 argument_list|(
 name|Constants
 operator|.
 name|R_HEADS
 argument_list|)
-operator|.
-name|values
-argument_list|()
 decl_stmt|;
 name|refs
 operator|=

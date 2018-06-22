@@ -128,7 +128,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|List
 import|;
 end_import
 
@@ -467,10 +467,8 @@ name|Project
 name|project
 parameter_list|)
 block|{
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|blockingFors
@@ -484,7 +482,7 @@ operator|.
 name|getRefDatabase
 argument_list|()
 operator|.
-name|getRefs
+name|getRefsByPrefix
 argument_list|(
 name|branchName
 argument_list|)
@@ -562,9 +560,6 @@ argument_list|,
 name|projName
 argument_list|,
 name|blockingFors
-operator|.
-name|keySet
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

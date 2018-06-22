@@ -1027,7 +1027,7 @@ operator|.
 name|getRefDatabase
 argument_list|()
 operator|.
-name|getRefs
+name|getRefsByPrefix
 argument_list|(
 name|REFS_HEADS
 argument_list|)
