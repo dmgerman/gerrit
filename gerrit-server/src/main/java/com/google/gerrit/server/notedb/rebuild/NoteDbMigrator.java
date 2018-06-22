@@ -2301,6 +2301,8 @@ argument_list|(
 name|threads
 argument_list|,
 literal|"RebuildChange"
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 else|:
