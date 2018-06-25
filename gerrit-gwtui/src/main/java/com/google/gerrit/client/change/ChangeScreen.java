@@ -8198,8 +8198,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|canSubmit
-operator|&&
 name|status
 operator|==
 name|Change
@@ -8213,6 +8211,11 @@ name|changeInfo
 operator|.
 name|isWorkInProgress
 argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|canSubmit
 condition|)
 block|{
 name|statusText
@@ -8251,6 +8254,7 @@ name|mergeable
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|submitActionText
 operator|.
 name|setInnerText
