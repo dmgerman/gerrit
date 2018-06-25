@@ -857,6 +857,9 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|boolean
+name|success
+init|=
 name|merger
 operator|.
 name|merge
@@ -865,9 +868,12 @@ name|claimedRevertCommit
 argument_list|,
 name|claimedOriginalCommit
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
+operator|!
+name|success
+operator|||
 name|merger
 operator|.
 name|getResultTreeId
