@@ -1283,6 +1283,7 @@ name|Input
 argument_list|>
 block|{
 DECL|interface|Factory
+specifier|public
 interface|interface
 name|Factory
 block|{
