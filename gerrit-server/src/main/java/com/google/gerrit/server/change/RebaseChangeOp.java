@@ -1550,6 +1550,9 @@ argument_list|(
 name|parentCommit
 argument_list|)
 expr_stmt|;
+name|boolean
+name|success
+init|=
 name|merger
 operator|.
 name|merge
@@ -1558,9 +1561,12 @@ name|original
 argument_list|,
 name|base
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
+operator|!
+name|success
+operator|||
 name|merger
 operator|.
 name|getResultTreeId
