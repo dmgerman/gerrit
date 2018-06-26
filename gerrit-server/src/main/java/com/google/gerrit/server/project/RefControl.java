@@ -2016,11 +2016,14 @@ argument_list|)
 return|;
 block|}
 comment|/** @return true if this user can delete their own changes. */
-DECL|method|canDeleteOwnChanges ()
+DECL|method|canDeleteOwnChanges (boolean isChangeOwner)
 specifier|public
 name|boolean
 name|canDeleteOwnChanges
-parameter_list|()
+parameter_list|(
+name|boolean
+name|isChangeOwner
+parameter_list|)
 block|{
 return|return
 name|canPerform
@@ -2028,6 +2031,8 @@ argument_list|(
 name|Permission
 operator|.
 name|DELETE_OWN_CHANGES
+argument_list|,
+name|isChangeOwner
 argument_list|)
 return|;
 block|}
