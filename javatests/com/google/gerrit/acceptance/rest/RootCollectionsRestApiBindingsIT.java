@@ -199,6 +199,13 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
+name|post
+argument_list|(
+literal|"/changes/"
+argument_list|)
+argument_list|,
+name|RestCall
+operator|.
 name|get
 argument_list|(
 literal|"/groups/"

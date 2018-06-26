@@ -767,6 +767,13 @@ name|RestCall
 operator|.
 name|post
 argument_list|(
+literal|"/changes/%s/edit"
+argument_list|)
+argument_list|,
+name|RestCall
+operator|.
+name|post
+argument_list|(
 literal|"/changes/%s/edit:rebase"
 argument_list|)
 argument_list|,
