@@ -647,15 +647,11 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"No appender with the name: "
-operator|+
+literal|"No appender with the name: {} was found. {} logging is disabled"
+argument_list|,
 name|name
-operator|+
-literal|" was found. "
-operator|+
+argument_list|,
 name|name
-operator|+
-literal|" logging is disabled"
 argument_list|)
 expr_stmt|;
 block|}
