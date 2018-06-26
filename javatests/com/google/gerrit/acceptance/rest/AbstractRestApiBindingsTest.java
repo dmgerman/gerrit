@@ -136,6 +136,20 @@ name|http
 operator|.
 name|HttpStatus
 operator|.
+name|SC_METHOD_NOT_ALLOWED
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|http
+operator|.
+name|HttpStatus
+operator|.
 name|SC_NOT_FOUND
 import|;
 end_import
@@ -520,6 +534,39 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|restCall
+operator|.
+name|expectedMessage
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|assertWithMessage
+argument_list|(
+name|msg
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|body
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+name|restCall
+operator|.
+name|expectedMessage
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -542,6 +589,8 @@ argument_list|(
 name|SC_FORBIDDEN
 argument_list|,
 name|SC_NOT_FOUND
+argument_list|,
+name|SC_METHOD_NOT_ALLOWED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -729,6 +778,15 @@ argument_list|>
 name|expectedResponseCode
 parameter_list|()
 function_decl|;
+DECL|method|expectedMessage ()
+specifier|abstract
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|expectedMessage
+parameter_list|()
+function_decl|;
 DECL|method|uri (String... args)
 name|String
 name|uri
@@ -827,6 +885,15 @@ name|expectedResponseCode
 parameter_list|(
 name|int
 name|expectedResponseCode
+parameter_list|)
+function_decl|;
+DECL|method|expectedMessage (String expectedMessage)
+specifier|abstract
+name|Builder
+name|expectedMessage
+parameter_list|(
+name|String
+name|expectedMessage
 parameter_list|)
 function_decl|;
 DECL|method|build ()

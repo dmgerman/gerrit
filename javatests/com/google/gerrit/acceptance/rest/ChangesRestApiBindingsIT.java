@@ -502,13 +502,6 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
-name|post
-argument_list|(
-literal|"/changes/%s/hashtags"
-argument_list|)
-argument_list|,
-name|RestCall
-operator|.
 name|get
 argument_list|(
 literal|"/changes/%s/comments"
@@ -837,6 +830,13 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
+name|RestCall
+operator|.
+name|post
+argument_list|(
+literal|"/changes/%s/hashtags"
+argument_list|)
+argument_list|,
 name|RestCall
 operator|.
 name|post

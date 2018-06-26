@@ -213,21 +213,21 @@ name|RestCall
 operator|.
 name|post
 argument_list|(
-literal|"/plugins/%s/enable"
+literal|"/plugins/%s/gerrit~enable"
 argument_list|)
 argument_list|,
 name|RestCall
 operator|.
 name|post
 argument_list|(
-literal|"/plugins/%s/disable"
+literal|"/plugins/%s/gerrit~disable"
 argument_list|)
 argument_list|,
 name|RestCall
 operator|.
 name|post
 argument_list|(
-literal|"/plugins/%s/reload"
+literal|"/plugins/%s/gerrit~reload"
 argument_list|)
 argument_list|,
 comment|// Plugin deletion must be tested last

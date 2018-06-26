@@ -166,6 +166,20 @@ name|http
 operator|.
 name|HttpStatus
 operator|.
+name|SC_METHOD_NOT_ALLOWED
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|http
+operator|.
+name|HttpStatus
+operator|.
 name|SC_NOT_FOUND
 import|;
 end_import
@@ -652,10 +666,26 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
-name|get
+name|builder
 argument_list|(
+name|GET
+argument_list|,
 literal|"/projects/%s/branches/%s/reflog"
 argument_list|)
+comment|// The tests use DfsRepository which does not support getting the reflog.
+operator|.
+name|expectedResponseCode
+argument_list|(
+name|SC_METHOD_NOT_ALLOWED
+argument_list|)
+operator|.
+name|expectedMessage
+argument_list|(
+literal|"reflog not supported on"
+argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|RestCall
 operator|.
