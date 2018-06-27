@@ -127,7 +127,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents change edit resource, that is actualy two kinds of resources:  *  *<ul>  *<li>the change edit itself  *<li>a path within the edit  *</ul>  *  * distinguished by whether path is null or not.  */
+comment|/**  * Represents change edit resource, that is actually two kinds of resources:  *  *<ul>  *<li>the change edit itself  *<li>a path within the edit  *</ul>  *  * distinguished by whether path is null or not.  */
 end_comment
 
 begin_class
