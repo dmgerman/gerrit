@@ -476,7 +476,28 @@ comment|// This test results in a RULE_ERROR as Prolog tries to find accounts by
 comment|// TODO(maximeg) get OK results
 name|modifySubmitRules
 argument_list|(
-literal|"commit_author(user(1000000), 'John Doe', 'john.doe@example.com')"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"gerrit:commit_author(user(%d), '%s', '%s')"
+argument_list|,
+name|user
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|user
+operator|.
+name|fullName
+argument_list|,
+name|user
+operator|.
+name|email
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertThat
