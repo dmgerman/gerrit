@@ -491,6 +491,8 @@ argument_list|<
 name|ChangeResource
 argument_list|,
 name|ChangeEditResource
+operator|.
+name|Publish
 argument_list|>
 implements|,
 name|AcceptsPost
@@ -529,6 +531,8 @@ argument_list|<
 name|RestView
 argument_list|<
 name|ChangeEditResource
+operator|.
+name|Publish
 argument_list|>
 argument_list|>
 name|views
@@ -562,6 +566,8 @@ name|Override
 DECL|method|parse (ChangeResource parent, IdString id)
 specifier|public
 name|ChangeEditResource
+operator|.
+name|Publish
 name|parse
 parameter_list|(
 name|ChangeResource
