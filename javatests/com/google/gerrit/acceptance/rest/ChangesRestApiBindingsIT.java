@@ -1411,6 +1411,15 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
+comment|// Create change edit by deleting an existing file.
+name|RestCall
+operator|.
+name|delete
+argument_list|(
+literal|"/changes/%s/edit/%s"
+argument_list|)
+argument_list|,
+comment|// Calls on existing change edit.
 name|RestCall
 operator|.
 name|get
@@ -1432,6 +1441,7 @@ argument_list|(
 literal|"/changes/%s/edit/%s/meta"
 argument_list|)
 argument_list|,
+comment|// Delete content of a file in an existing change edit.
 name|RestCall
 operator|.
 name|delete
@@ -2580,22 +2590,7 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-name|gApi
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|id
-argument_list|(
-name|changeId
-argument_list|)
-operator|.
-name|edit
-argument_list|()
-operator|.
-name|create
-argument_list|()
-expr_stmt|;
+comment|// The change edit is created by the first REST call.
 name|execute
 argument_list|(
 name|CHANGE_EDIT_ENDPOINTS
