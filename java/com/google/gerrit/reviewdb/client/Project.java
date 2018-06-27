@@ -462,6 +462,11 @@ specifier|protected
 name|String
 name|themeName
 decl_stmt|;
+DECL|field|configRefState
+specifier|protected
+name|String
+name|configRefState
+decl_stmt|;
 DECL|method|Project ()
 specifier|protected
 name|Project
@@ -929,6 +934,32 @@ block|{
 name|parent
 operator|=
 name|n
+expr_stmt|;
+block|}
+comment|/** Returns the {@code ObjectId} as 40 digit hex of {@code refs/meta/config}'s HEAD. */
+DECL|method|getConfigRefState ()
+specifier|public
+name|String
+name|getConfigRefState
+parameter_list|()
+block|{
+return|return
+name|configRefState
+return|;
+block|}
+comment|/** Sets the {@code ObjectId} as 40 digit hex of {@code refs/meta/config}'s HEAD. */
+DECL|method|setConfigRefState (String state)
+specifier|public
+name|void
+name|setConfigRefState
+parameter_list|(
+name|String
+name|state
+parameter_list|)
+block|{
+name|configRefState
+operator|=
+name|state
 expr_stmt|;
 block|}
 block|}
