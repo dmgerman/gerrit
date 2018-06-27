@@ -174,22 +174,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|AcceptsPost
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|AuthException
 import|;
 end_import
@@ -351,6 +335,22 @@ operator|.
 name|restapi
 operator|.
 name|RestApiException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestCollectionView
 import|;
 end_import
 
@@ -897,11 +897,6 @@ argument_list|,
 name|ChangeEditResource
 argument_list|>
 implements|,
-name|AcceptsPost
-argument_list|<
-name|ChangeResource
-argument_list|>
-implements|,
 name|AcceptsDelete
 argument_list|<
 name|ChangeResource
@@ -942,15 +937,9 @@ specifier|final
 name|ChangeEditUtil
 name|editUtil
 decl_stmt|;
-DECL|field|post
-specifier|private
-specifier|final
-name|Post
-name|post
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEdits ( DynamicMap<RestView<ChangeEditResource>> views, Provider<Detail> detail, ChangeEditUtil editUtil, Post post, DeleteFile.Factory deleteFileFactory)
+DECL|method|ChangeEdits ( DynamicMap<RestView<ChangeEditResource>> views, Provider<Detail> detail, ChangeEditUtil editUtil, DeleteFile.Factory deleteFileFactory)
 name|ChangeEdits
 parameter_list|(
 name|DynamicMap
@@ -970,9 +959,6 @@ name|detail
 parameter_list|,
 name|ChangeEditUtil
 name|editUtil
-parameter_list|,
-name|Post
-name|post
 parameter_list|,
 name|DeleteFile
 operator|.
@@ -997,12 +983,6 @@ operator|.
 name|editUtil
 operator|=
 name|editUtil
-expr_stmt|;
-name|this
-operator|.
-name|post
-operator|=
-name|post
 expr_stmt|;
 name|this
 operator|.
@@ -1123,23 +1103,6 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|post (ChangeResource parent)
-specifier|public
-name|Post
-name|post
-parameter_list|(
-name|ChangeResource
-name|parent
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-return|return
-name|post
 return|;
 block|}
 comment|/**    * Create handler that is activated when collection element is accessed but doesn't exist, e. g.    * PUT request with a path was called but change edit wasn't created yet. Change edit is created    * and PUT handler is called.    */
@@ -1673,9 +1636,11 @@ specifier|static
 class|class
 name|Post
 implements|implements
-name|RestModifyView
+name|RestCollectionView
 argument_list|<
 name|ChangeResource
+argument_list|,
+name|ChangeEditResource
 argument_list|,
 name|Post
 operator|.

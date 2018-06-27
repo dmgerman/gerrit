@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -67,35 +67,43 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Optional interface for {@link RestCollection}.  *  *<p>Collections that implement this interface can accept a {@code POST} directly on the collection  * itself when no id was given in the path. This interface is intended to be used with  * TopLevelResource collections. Nested collections often bind POST on the parent collection to the  * view implementation handling the insertion of a new member.  */
+comment|/**  * RestView on a RestCollection that supports accepting input.  *  *<p>The input must be supplied as JSON as the body of the HTTP request. RestCollectionViews can  * only be invoked by the HTTP method {@code POST}.  *  * @param<P> type of the parent resource  * @param<C> type of the child resource  * @param<I> type of input the JSON parser will parse the input into.  */
 end_comment
 
 begin_interface
-DECL|interface|AcceptsPost
+DECL|interface|RestCollectionView
 specifier|public
 interface|interface
-name|AcceptsPost
+name|RestCollectionView
 parameter_list|<
 name|P
 extends|extends
 name|RestResource
+parameter_list|,
+name|C
+extends|extends
+name|RestResource
+parameter_list|,
+name|I
 parameter_list|>
-block|{
-comment|/**    * Handle creation of a child resource by POST on the collection.    *    * @param parent parent collection handle.    * @return a view to perform the creation. The id of the newly created resource should be    *     determined from the input body.    * @throws RestApiException the view cannot be constructed.    */
-DECL|method|post (P parent)
-name|RestModifyView
+extends|extends
+name|RestView
 argument_list|<
-name|P
-argument_list|,
-name|?
+name|C
 argument_list|>
-name|post
+block|{
+DECL|method|apply (P parentResource, I input)
+name|Object
+name|apply
 parameter_list|(
 name|P
-name|parent
+name|parentResource
+parameter_list|,
+name|I
+name|input
 parameter_list|)
 throws|throws
-name|RestApiException
+name|Exception
 function_decl|;
 block|}
 end_interface

@@ -112,22 +112,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|AcceptsPost
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|AuthException
 import|;
 end_import
@@ -209,22 +193,6 @@ operator|.
 name|restapi
 operator|.
 name|Response
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|RestApiException
 import|;
 end_import
 
@@ -400,7 +368,7 @@ name|server
 operator|.
 name|update
 operator|.
-name|RetryingRestModifyView
+name|RetryingRestCollectionView
 import|;
 end_import
 
@@ -482,11 +450,6 @@ name|ChangeEditResource
 operator|.
 name|Rebase
 argument_list|>
-implements|,
-name|AcceptsPost
-argument_list|<
-name|ChangeResource
-argument_list|>
 block|{
 DECL|field|views
 specifier|private
@@ -502,15 +465,9 @@ argument_list|>
 argument_list|>
 name|views
 decl_stmt|;
-DECL|field|rebase
-specifier|private
-specifier|final
-name|Rebase
-name|rebase
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RebaseChangeEdit (DynamicMap<RestView<ChangeEditResource.Rebase>> views, Rebase rebase)
+DECL|method|RebaseChangeEdit (DynamicMap<RestView<ChangeEditResource.Rebase>> views)
 name|RebaseChangeEdit
 parameter_list|(
 name|DynamicMap
@@ -523,9 +480,6 @@ name|Rebase
 argument_list|>
 argument_list|>
 name|views
-parameter_list|,
-name|Rebase
-name|rebase
 parameter_list|)
 block|{
 name|this
@@ -533,12 +487,6 @@ operator|.
 name|views
 operator|=
 name|views
-expr_stmt|;
-name|this
-operator|.
-name|rebase
-operator|=
-name|rebase
 expr_stmt|;
 block|}
 annotation|@
@@ -605,23 +553,6 @@ argument_list|()
 throw|;
 block|}
 annotation|@
-name|Override
-DECL|method|post (ChangeResource parent)
-specifier|public
-name|Rebase
-name|post
-parameter_list|(
-name|ChangeResource
-name|parent
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-return|return
-name|rebase
-return|;
-block|}
-annotation|@
 name|Singleton
 DECL|class|Rebase
 specifier|public
@@ -629,9 +560,13 @@ specifier|static
 class|class
 name|Rebase
 extends|extends
-name|RetryingRestModifyView
+name|RetryingRestCollectionView
 argument_list|<
 name|ChangeResource
+argument_list|,
+name|ChangeEditResource
+operator|.
+name|Rebase
 argument_list|,
 name|Input
 argument_list|,

@@ -96,22 +96,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|AcceptsPost
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|AuthException
 import|;
 end_import
@@ -484,11 +468,6 @@ name|TopLevelResource
 argument_list|,
 name|ChangeResource
 argument_list|>
-implements|,
-name|AcceptsPost
-argument_list|<
-name|TopLevelResource
-argument_list|>
 block|{
 DECL|field|db
 specifier|private
@@ -535,12 +514,6 @@ specifier|final
 name|ChangeFinder
 name|changeFinder
 decl_stmt|;
-DECL|field|createChange
-specifier|private
-specifier|final
-name|CreateChange
-name|createChange
-decl_stmt|;
 DECL|field|changeResourceFactory
 specifier|private
 specifier|final
@@ -563,7 +536,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangesCollection ( Provider<ReviewDb> db, Provider<CurrentUser> user, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeFinder changeFinder, CreateChange createChange, ChangeResource.Factory changeResourceFactory, PermissionBackend permissionBackend, ProjectCache projectCache)
+DECL|method|ChangesCollection ( Provider<ReviewDb> db, Provider<CurrentUser> user, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeFinder changeFinder, ChangeResource.Factory changeResourceFactory, PermissionBackend permissionBackend, ProjectCache projectCache)
 specifier|public
 name|ChangesCollection
 parameter_list|(
@@ -596,9 +569,6 @@ name|views
 parameter_list|,
 name|ChangeFinder
 name|changeFinder
-parameter_list|,
-name|CreateChange
-name|createChange
 parameter_list|,
 name|ChangeResource
 operator|.
@@ -641,12 +611,6 @@ operator|.
 name|changeFinder
 operator|=
 name|changeFinder
-expr_stmt|;
-name|this
-operator|.
-name|createChange
-operator|=
-name|createChange
 expr_stmt|;
 name|this
 operator|.
@@ -995,23 +959,6 @@ name|notes
 argument_list|,
 name|user
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|post (TopLevelResource parent)
-specifier|public
-name|CreateChange
-name|post
-parameter_list|(
-name|TopLevelResource
-name|parent
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-return|return
-name|createChange
 return|;
 block|}
 DECL|method|canRead (ChangeNotes notes)
