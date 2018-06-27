@@ -8916,10 +8916,10 @@ name|cloneAs
 operator|=
 literal|"user"
 argument_list|)
-DECL|method|deleteChangeAsUserWithDeleteOwnChangesPermission ()
+DECL|method|deleteChangeAsUserWithDeleteOwnChangesPermissionForGroup ()
 specifier|public
 name|void
-name|deleteChangeAsUserWithDeleteOwnChangesPermission
+name|deleteChangeAsUserWithDeleteOwnChangesPermissionForGroup
 parameter_list|()
 throws|throws
 name|Exception
@@ -8935,6 +8935,50 @@ argument_list|,
 name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
+name|deleteChangeAsUser
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|TestProjectInput
+argument_list|(
+name|cloneAs
+operator|=
+literal|"user"
+argument_list|)
+DECL|method|deleteChangeAsUserWithDeleteOwnChangesPermissionForOwners ()
+specifier|public
+name|void
+name|deleteChangeAsUserWithDeleteOwnChangesPermissionForOwners
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|allow
+argument_list|(
+literal|"refs/*"
+argument_list|,
+name|Permission
+operator|.
+name|DELETE_OWN_CHANGES
+argument_list|,
+name|CHANGE_OWNER
+argument_list|)
+expr_stmt|;
+name|deleteChangeAsUser
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|deleteChangeAsUser ()
+specifier|private
+name|void
+name|deleteChangeAsUser
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 try|try
 block|{
 name|PushOneCommit

@@ -1045,7 +1045,10 @@ name|getRefControl
 argument_list|()
 operator|.
 name|canDeleteOwnChanges
+argument_list|(
+name|isOwner
 argument_list|()
+argument_list|)
 operator|)
 operator|||
 name|getProjectControl
