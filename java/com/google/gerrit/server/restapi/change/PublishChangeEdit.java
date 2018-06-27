@@ -162,7 +162,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|NotImplementedException
+name|ResourceConflictException
 import|;
 end_import
 
@@ -178,7 +178,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceConflictException
+name|ResourceNotFoundException
 import|;
 end_import
 
@@ -583,10 +583,12 @@ name|ChangeResource
 argument_list|>
 name|list
 parameter_list|()
+throws|throws
+name|ResourceNotFoundException
 block|{
 throw|throw
 operator|new
-name|NotImplementedException
+name|ResourceNotFoundException
 argument_list|()
 throw|;
 block|}
@@ -605,10 +607,12 @@ parameter_list|,
 name|IdString
 name|id
 parameter_list|)
+throws|throws
+name|ResourceNotFoundException
 block|{
 throw|throw
 operator|new
-name|NotImplementedException
+name|ResourceNotFoundException
 argument_list|()
 throw|;
 block|}
