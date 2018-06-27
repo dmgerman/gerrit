@@ -132,6 +132,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|Emails
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|GerritServerConfig
@@ -935,9 +951,14 @@ specifier|final
 name|PatchSetUtil
 name|patchsetUtil
 decl_stmt|;
+DECL|field|emails
+specifier|private
+name|Emails
+name|emails
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Args ( ProjectCache projectCache, PermissionBackend permissionBackend, GitRepositoryManager repositoryManager, PatchListCache patchListCache, PatchSetInfoFactory patchSetInfoFactory, IdentifiedUser.GenericFactory userFactory, Provider<AnonymousUser> anonymousUser, @GerritServerConfig Config config, PatchSetUtil patchsetUtil)
+DECL|method|Args ( ProjectCache projectCache, PermissionBackend permissionBackend, GitRepositoryManager repositoryManager, PatchListCache patchListCache, PatchSetInfoFactory patchSetInfoFactory, IdentifiedUser.GenericFactory userFactory, Provider<AnonymousUser> anonymousUser, @GerritServerConfig Config config, PatchSetUtil patchsetUtil, Emails emails)
 name|Args
 parameter_list|(
 name|ProjectCache
@@ -973,6 +994,9 @@ name|config
 parameter_list|,
 name|PatchSetUtil
 name|patchsetUtil
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|)
 block|{
 name|this
@@ -1022,6 +1046,12 @@ operator|.
 name|patchsetUtil
 operator|=
 name|patchsetUtil
+expr_stmt|;
+name|this
+operator|.
+name|emails
+operator|=
+name|emails
 expr_stmt|;
 name|int
 name|limit
@@ -1203,6 +1233,16 @@ parameter_list|()
 block|{
 return|return
 name|patchsetUtil
+return|;
+block|}
+DECL|method|getEmails ()
+specifier|public
+name|Emails
+name|getEmails
+parameter_list|()
+block|{
+return|return
+name|emails
 return|;
 block|}
 block|}
