@@ -762,6 +762,28 @@ literal|true
 argument_list|)
 return|;
 block|}
+comment|/** @return true if this user can delete their own changes. */
+DECL|method|canDeleteOwnChanges (boolean isChangeOwner)
+name|boolean
+name|canDeleteOwnChanges
+parameter_list|(
+name|boolean
+name|isChangeOwner
+parameter_list|)
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|DELETE_OWN_CHANGES
+argument_list|,
+name|isChangeOwner
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
 comment|/** The range of permitted values associated with a label permission. */
 DECL|method|getRange (String permission)
 name|PermissionRange
