@@ -608,7 +608,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|view ( TypeLiteral<RestView<R>> viewType, String method, String name)
-specifier|protected
+specifier|private
 parameter_list|<
 name|R
 extends|extends
