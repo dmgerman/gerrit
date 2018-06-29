@@ -1121,6 +1121,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+comment|// The gpgkeys REST endpoints are bound via GpgApiModule.
 name|factory
 argument_list|(
 name|AccountsUpdate
