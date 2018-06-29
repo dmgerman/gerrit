@@ -472,8 +472,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// This test results in a RULE_ERROR as Prolog tries to find accounts by email, using the index.
-comment|// TODO(maximeg) get OK results
 name|modifySubmitRules
 argument_list|(
 name|String
@@ -512,7 +510,7 @@ name|SubmitRecord
 operator|.
 name|Status
 operator|.
-name|RULE_ERROR
+name|OK
 argument_list|)
 expr_stmt|;
 block|}
@@ -526,8 +524,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// This test results in a RULE_ERROR as Prolog tries to find accounts by email, using the index.
-comment|// TODO(maximeg) get OK results
 name|modifySubmitRules
 argument_list|(
 literal|"gerrit:commit_author(Id)"
@@ -545,7 +541,7 @@ name|SubmitRecord
 operator|.
 name|Status
 operator|.
-name|RULE_ERROR
+name|OK
 argument_list|)
 expr_stmt|;
 block|}

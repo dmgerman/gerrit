@@ -404,6 +404,8 @@ argument_list|,
 name|cfg
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;

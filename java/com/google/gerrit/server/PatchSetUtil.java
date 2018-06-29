@@ -1665,11 +1665,11 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** Returns the full commit message for the given project at the given patchset revision */
-DECL|method|getFullCommitMessage (Project.NameKey project, PatchSet patchSet)
+comment|/** Returns the commit for the given project at the given patchset revision */
+DECL|method|getRevCommit (Project.NameKey project, PatchSet patchSet)
 specifier|public
-name|String
-name|getFullCommitMessage
+name|RevCommit
+name|getRevCommit
 parameter_list|(
 name|Project
 operator|.
@@ -1734,9 +1734,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|src
-operator|.
-name|getFullMessage
-argument_list|()
 return|;
 block|}
 block|}
