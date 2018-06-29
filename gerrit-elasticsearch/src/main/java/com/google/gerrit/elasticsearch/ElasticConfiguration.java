@@ -250,13 +250,13 @@ specifier|final
 name|Config
 name|cfg
 decl_stmt|;
-DECL|field|urls
+DECL|field|hosts
 specifier|final
 name|List
 argument_list|<
 name|HttpHost
 argument_list|>
-name|urls
+name|hosts
 decl_stmt|;
 DECL|field|username
 specifier|final
@@ -506,7 +506,7 @@ argument_list|)
 decl_stmt|;
 name|this
 operator|.
-name|urls
+name|hosts
 operator|=
 name|Collections
 operator|.
@@ -520,7 +520,7 @@ else|else
 block|{
 name|this
 operator|.
-name|urls
+name|hosts
 operator|=
 operator|new
 name|ArrayList
@@ -602,7 +602,7 @@ argument_list|)
 decl_stmt|;
 name|this
 operator|.
-name|urls
+name|hosts
 operator|.
 name|add
 argument_list|(
