@@ -283,15 +283,6 @@ specifier|final
 name|long
 name|maxConnectionIdleTime
 decl_stmt|;
-DECL|field|maxConnectionIdleUnit
-specifier|final
-name|TimeUnit
-name|maxConnectionIdleUnit
-init|=
-name|TimeUnit
-operator|.
-name|MILLISECONDS
-decl_stmt|;
 DECL|field|maxTotalConnection
 specifier|final
 name|int
