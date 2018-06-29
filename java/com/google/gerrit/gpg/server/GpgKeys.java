@@ -633,15 +633,6 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-DECL|field|MIME_TYPE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|MIME_TYPE
-init|=
-literal|"application/pgp-keys"
-decl_stmt|;
 DECL|field|views
 specifier|private
 specifier|final
