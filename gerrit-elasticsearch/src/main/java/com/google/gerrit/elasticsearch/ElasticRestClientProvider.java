@@ -729,6 +729,15 @@ name|getHosts
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|builder
+operator|.
+name|setMaxRetryTimeoutMillis
+argument_list|(
+name|cfg
+operator|.
+name|maxRetryTimeout
+argument_list|)
+expr_stmt|;
 name|setConfiguredCredentialsIfAny
 argument_list|(
 name|builder
