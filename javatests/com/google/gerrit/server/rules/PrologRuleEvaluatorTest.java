@@ -158,7 +158,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Invalid-Prolog-Rules-Label-Name--Labelwithspaces"
+literal|"Invalid-Prolog-Rules-Label-Name-Labelwithspaces"
 argument_list|)
 expr_stmt|;
 block|}
@@ -182,7 +182,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Invalid-Prolog-Rules-Label-Name---dashed-label"
+literal|"Invalid-Prolog-Rules-Label-Name-dashed-label"
 argument_list|)
 expr_stmt|;
 block|}
@@ -206,7 +206,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Invalid-Prolog-Rules-Label-Name--urgent"
+literal|"Invalid-Prolog-Rules-Label-Name-urgent"
 argument_list|)
 expr_stmt|;
 block|}
