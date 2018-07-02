@@ -162,7 +162,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|NotImplementedException
+name|ResourceConflictException
 import|;
 end_import
 
@@ -178,7 +178,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceConflictException
+name|ResourceNotFoundException
 import|;
 end_import
 
@@ -491,6 +491,8 @@ argument_list|<
 name|ChangeResource
 argument_list|,
 name|ChangeEditResource
+operator|.
+name|Publish
 argument_list|>
 implements|,
 name|AcceptsPost
@@ -498,6 +500,20 @@ argument_list|<
 name|ChangeResource
 argument_list|>
 block|{
+DECL|field|views
+specifier|private
+specifier|final
+name|DynamicMap
+argument_list|<
+name|RestView
+argument_list|<
+name|ChangeEditResource
+operator|.
+name|Publish
+argument_list|>
+argument_list|>
+name|views
+decl_stmt|;
 DECL|field|publish
 specifier|private
 specifier|final
@@ -506,13 +522,30 @@ name|publish
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PublishChangeEdit (Publish publish)
+DECL|method|PublishChangeEdit (DynamicMap<RestView<ChangeEditResource.Publish>> views, Publish publish)
 name|PublishChangeEdit
 parameter_list|(
+name|DynamicMap
+argument_list|<
+name|RestView
+argument_list|<
+name|ChangeEditResource
+operator|.
+name|Publish
+argument_list|>
+argument_list|>
+name|views
+parameter_list|,
 name|Publish
 name|publish
 parameter_list|)
 block|{
+name|this
+operator|.
+name|views
+operator|=
+name|views
+expr_stmt|;
 name|this
 operator|.
 name|publish
@@ -529,16 +562,16 @@ argument_list|<
 name|RestView
 argument_list|<
 name|ChangeEditResource
+operator|.
+name|Publish
 argument_list|>
 argument_list|>
 name|views
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
+return|return
+name|views
+return|;
 block|}
 annotation|@
 name|Override
@@ -550,10 +583,12 @@ name|ChangeResource
 argument_list|>
 name|list
 parameter_list|()
+throws|throws
+name|ResourceNotFoundException
 block|{
 throw|throw
 operator|new
-name|NotImplementedException
+name|ResourceNotFoundException
 argument_list|()
 throw|;
 block|}
@@ -562,6 +597,8 @@ name|Override
 DECL|method|parse (ChangeResource parent, IdString id)
 specifier|public
 name|ChangeEditResource
+operator|.
+name|Publish
 name|parse
 parameter_list|(
 name|ChangeResource
@@ -570,10 +607,12 @@ parameter_list|,
 name|IdString
 name|id
 parameter_list|)
+throws|throws
+name|ResourceNotFoundException
 block|{
 throw|throw
 operator|new
-name|NotImplementedException
+name|ResourceNotFoundException
 argument_list|()
 throw|;
 block|}

@@ -67,6 +67,40 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|AbstractRestApiBindingsTest
+operator|.
+name|Method
+operator|.
+name|PUT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|http
+operator|.
+name|HttpStatus
+operator|.
+name|SC_METHOD_NOT_ALLOWED
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -198,10 +232,26 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
-name|put
+name|builder
 argument_list|(
+name|PUT
+argument_list|,
 literal|"/accounts/%s/username"
 argument_list|)
+comment|// Changing the username is not allowed.
+operator|.
+name|expectedResponseCode
+argument_list|(
+name|SC_METHOD_NOT_ALLOWED
+argument_list|)
+operator|.
+name|expectedMessage
+argument_list|(
+literal|"Username cannot be changed."
+argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|RestCall
 operator|.

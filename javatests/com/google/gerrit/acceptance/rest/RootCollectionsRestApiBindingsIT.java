@@ -116,6 +116,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|GerritConfig
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -199,6 +213,13 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
+name|post
+argument_list|(
+literal|"/changes/"
+argument_list|)
+argument_list|,
+name|RestCall
+operator|.
 name|get
 argument_list|(
 literal|"/groups/"
@@ -242,6 +263,17 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Test
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
+literal|"plugins.allowRemoteAdmin"
+argument_list|,
+name|value
+operator|=
+literal|"true"
+argument_list|)
 DECL|method|rootEndpoints ()
 specifier|public
 name|void
