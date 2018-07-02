@@ -384,26 +384,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|xml
-operator|.
-name|internal
-operator|.
-name|messaging
-operator|.
-name|saaj
-operator|.
-name|util
-operator|.
-name|ByteOutputStream
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -1634,11 +1614,11 @@ argument_list|,
 name|otherUser
 argument_list|)
 decl_stmt|;
-name|ByteOutputStream
+name|ByteArrayOutputStream
 name|out1
 init|=
 operator|new
-name|ByteOutputStream
+name|ByteArrayOutputStream
 argument_list|(
 literal|0
 argument_list|)
@@ -1670,11 +1650,11 @@ argument_list|,
 name|out1
 argument_list|)
 expr_stmt|;
-name|ByteOutputStream
+name|ByteArrayOutputStream
 name|out2
 init|=
 operator|new
-name|ByteOutputStream
+name|ByteArrayOutputStream
 argument_list|(
 literal|0
 argument_list|)
@@ -1706,11 +1686,11 @@ argument_list|,
 name|out2
 argument_list|)
 expr_stmt|;
-name|ByteOutputStream
+name|ByteArrayOutputStream
 name|out3
 init|=
 operator|new
-name|ByteOutputStream
+name|ByteArrayOutputStream
 argument_list|(
 literal|0
 argument_list|)
@@ -2497,11 +2477,11 @@ argument_list|,
 literal|"comment on ps1 (legacy)"
 argument_list|)
 decl_stmt|;
-name|ByteOutputStream
+name|ByteArrayOutputStream
 name|out1
 init|=
 operator|new
-name|ByteOutputStream
+name|ByteArrayOutputStream
 argument_list|(
 literal|0
 argument_list|)
@@ -2658,11 +2638,11 @@ argument_list|,
 literal|"comment on ps3 (legacy)"
 argument_list|)
 decl_stmt|;
-name|ByteOutputStream
+name|ByteArrayOutputStream
 name|out3
 init|=
 operator|new
-name|ByteOutputStream
+name|ByteArrayOutputStream
 argument_list|(
 literal|0
 argument_list|)
