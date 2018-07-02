@@ -252,7 +252,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestModifyView
+name|RestCollectionView
 import|;
 end_import
 
@@ -506,9 +506,13 @@ specifier|public
 class|class
 name|AddSshKey
 implements|implements
-name|RestModifyView
+name|RestCollectionView
 argument_list|<
 name|AccountResource
+argument_list|,
+name|AccountResource
+operator|.
+name|SshKey
 argument_list|,
 name|SshKeyInput
 argument_list|>
