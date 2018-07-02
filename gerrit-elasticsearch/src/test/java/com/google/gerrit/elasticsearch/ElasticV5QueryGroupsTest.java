@@ -377,6 +377,8 @@ operator|.
 name|port
 argument_list|,
 name|indicesPrefix
+argument_list|,
+literal|"changeme"
 argument_list|)
 expr_stmt|;
 return|return
