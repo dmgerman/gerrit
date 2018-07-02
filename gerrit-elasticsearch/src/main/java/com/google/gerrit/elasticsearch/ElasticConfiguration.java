@@ -287,6 +287,7 @@ name|Config
 name|cfg
 decl_stmt|;
 DECL|field|hosts
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -664,6 +665,28 @@ parameter_list|()
 block|{
 return|return
 name|cfg
+return|;
+block|}
+DECL|method|getHosts ()
+name|HttpHost
+index|[]
+name|getHosts
+parameter_list|()
+block|{
+return|return
+name|hosts
+operator|.
+name|toArray
+argument_list|(
+operator|new
+name|HttpHost
+index|[
+name|hosts
+operator|.
+name|size
+argument_list|()
+index|]
+argument_list|)
 return|;
 block|}
 DECL|method|getIndexName (String name, int schemaVersion)
