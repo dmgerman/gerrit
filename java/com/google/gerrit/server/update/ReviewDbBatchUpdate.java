@@ -4662,7 +4662,32 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|logDebug (String msg, Object... args)
+DECL|method|logDebug (String msg)
+specifier|private
+name|void
+name|logDebug
+parameter_list|(
+name|String
+name|msg
+parameter_list|)
+block|{
+name|ReviewDbBatchUpdate
+operator|.
+name|this
+operator|.
+name|logDebug
+argument_list|(
+literal|"["
+operator|+
+name|taskId
+operator|+
+literal|"] "
+operator|+
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|logDebug (String msg, @Nullable Object arg)
 specifier|private
 name|void
 name|logDebug
@@ -4670,9 +4695,10 @@ parameter_list|(
 name|String
 name|msg
 parameter_list|,
+annotation|@
+name|Nullable
 name|Object
-modifier|...
-name|args
+name|arg
 parameter_list|)
 block|{
 name|ReviewDbBatchUpdate
@@ -4689,7 +4715,7 @@ literal|"] "
 operator|+
 name|msg
 argument_list|,
-name|args
+name|arg
 argument_list|)
 expr_stmt|;
 block|}
