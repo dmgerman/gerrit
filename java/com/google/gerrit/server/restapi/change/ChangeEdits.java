@@ -1142,7 +1142,6 @@ return|return
 name|post
 return|;
 block|}
-comment|/**    * Create handler that is activated when collection element is accessed but doesn't exist, e. g.    * PUT request with a path was called but change edit wasn't created yet. Change edit is created    * and PUT handler is called.    */
 annotation|@
 name|Override
 DECL|method|delete (ChangeResource parent, IdString id)
@@ -1174,6 +1173,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**    * Create handler that is activated when collection element is accessed but doesn't exist, e. g.    * PUT request with a path was called but change edit wasn't created yet. Change edit is created    * and PUT handler is called.    */
 DECL|class|Create
 specifier|public
 specifier|static
