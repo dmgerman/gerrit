@@ -204,6 +204,15 @@ argument_list|)
 decl_stmt|;
 name|container
 operator|.
+name|addEnv
+argument_list|(
+literal|"ES_JAVA_OPTS"
+argument_list|,
+literal|"-Xms128m -Xmx128m"
+argument_list|)
+expr_stmt|;
+name|container
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
