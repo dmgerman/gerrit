@@ -196,6 +196,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|GerritServerId
@@ -516,7 +530,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Build a note that contains the metadata for and the contents of all of the comments in the    * given comments.    *    * @param comments Comments to be written to the output stream, keyed by patch set ID; multiple    *     patch sets are allowed since base revisions may be shared across patch sets. All of the    *     comments must share the same RevId, and all the comments for a given patch set must have    *     the same side.    * @param out output stream to write to.    */
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|GOOGLE
+argument_list|)
 DECL|method|buildNote (ListMultimap<Integer, Comment> comments, OutputStream out)
+specifier|public
 name|void
 name|buildNote
 parameter_list|(
