@@ -74,6 +74,22 @@ name|common
 operator|.
 name|truth
 operator|.
+name|Fact
+operator|.
+name|fact
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
 name|Truth
 operator|.
 name|assertAbout
@@ -868,9 +884,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|fail
+name|failWithoutActual
 argument_list|(
-literal|"a message wasn't sent"
+name|fact
+argument_list|(
+literal|"expected message"
+argument_list|,
+literal|"sent"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -905,9 +926,14 @@ operator|==
 literal|null
 condition|)
 block|{
-name|fail
+name|failWithoutActual
 argument_list|(
-literal|"a message was sent"
+name|fact
+argument_list|(
+literal|"expected message"
+argument_list|,
+literal|"not sent"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1025,9 +1051,14 @@ literal|"X-Gerrit-MessageType"
 argument_list|)
 condition|)
 block|{
-name|fail
+name|failWithoutActual
 argument_list|(
-literal|"a message was sent with X-Gerrit-MessageType header"
+name|fact
+argument_list|(
+literal|"expected to have message sent with"
+argument_list|,
+literal|"X-Gerrit-MessageType header"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1061,15 +1092,14 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|fail
+name|failWithoutActual
 argument_list|(
-literal|"message of type "
-operator|+
+name|fact
+argument_list|(
+literal|"expected message of type"
+argument_list|,
 name|messageType
-operator|+
-literal|" was sent; X-Gerrit-MessageType is "
-operator|+
-name|header
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1511,7 +1541,9 @@ operator|!=
 name|expected
 condition|)
 block|{
-name|fail
+name|failWithoutActual
+argument_list|(
+name|fact
 argument_list|(
 name|expected
 condition|?
@@ -1519,7 +1551,7 @@ literal|"notifies"
 else|:
 literal|"doesn't notify"
 argument_list|,
-literal|"]\n"
+literal|"[\n"
 operator|+
 name|type
 operator|+
@@ -1533,6 +1565,7 @@ name|email
 argument_list|)
 operator|+
 literal|"\n]"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1709,10 +1742,12 @@ operator|!
 name|ok
 condition|)
 block|{
-name|fail
+name|failWithoutActual
 argument_list|(
-literal|"was fully tested, missing assertions for: "
-operator|+
+name|fact
+argument_list|(
+literal|"expected assertions for"
+argument_list|,
 name|recipientMapToString
 argument_list|(
 name|unaccountedFor
@@ -1724,6 +1759,7 @@ operator|.
 name|emailToName
 argument_list|(
 name|e
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)
@@ -2025,11 +2061,14 @@ name|watch
 argument_list|)
 condition|)
 block|{
-name|fail
+name|failWithoutActual
 argument_list|(
-literal|"configured to watch"
+name|fact
+argument_list|(
+literal|"expected to be configured to watch"
 argument_list|,
 name|watch
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -74,6 +74,22 @@ name|common
 operator|.
 name|truth
 operator|.
+name|Fact
+operator|.
+name|fact
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
 name|Truth
 operator|.
 name|assertAbout
@@ -397,9 +413,14 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|fail
+name|failWithoutActual
 argument_list|(
-literal|"has a value"
+name|fact
+argument_list|(
+literal|"expected to have"
+argument_list|,
+literal|"value"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -430,9 +451,14 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|fail
+name|failWithoutActual
 argument_list|(
-literal|"does not have a value"
+name|fact
+argument_list|(
+literal|"expected not to have"
+argument_list|,
+literal|"value"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

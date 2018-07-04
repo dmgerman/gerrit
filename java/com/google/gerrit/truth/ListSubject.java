@@ -90,6 +90,22 @@ name|common
 operator|.
 name|truth
 operator|.
+name|Fact
+operator|.
+name|fact
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
 name|Truth
 operator|.
 name|assertAbout
@@ -338,11 +354,14 @@ name|size
 argument_list|()
 condition|)
 block|{
-name|fail
+name|failWithoutActual
 argument_list|(
-literal|"has an element at index "
-operator|+
+name|fact
+argument_list|(
+literal|"expected to have element at index"
+argument_list|,
 name|index
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
