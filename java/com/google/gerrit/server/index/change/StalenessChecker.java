@@ -354,6 +354,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -840,6 +854,15 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|GOOGLE
+argument_list|)
 DECL|method|isStale ( GitRepositoryManager repoManager, Change.Id id, Change indexChange, @Nullable Change reviewDbChange, SetMultimap<Project.NameKey, RefState> states, ListMultimap<Project.NameKey, RefStatePattern> patterns)
 specifier|public
 specifier|static
