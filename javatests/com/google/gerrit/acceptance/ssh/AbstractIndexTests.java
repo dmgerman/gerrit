@@ -719,7 +719,7 @@ literal|"gerrit"
 argument_list|,
 literal|"index"
 argument_list|,
-literal|"project"
+literal|"changes-in-project"
 argument_list|,
 name|project
 operator|.

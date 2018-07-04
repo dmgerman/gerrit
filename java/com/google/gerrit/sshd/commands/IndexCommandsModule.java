@@ -286,7 +286,7 @@ name|command
 argument_list|(
 name|index
 argument_list|,
-name|IndexProjectCommand
+name|IndexChangesInProjectCommand
 operator|.
 name|class
 argument_list|)

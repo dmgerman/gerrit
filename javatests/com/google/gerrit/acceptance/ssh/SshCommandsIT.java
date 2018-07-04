@@ -489,7 +489,7 @@ name|of
 argument_list|(
 literal|"changes"
 argument_list|,
-literal|"project"
+literal|"changes-in-project"
 argument_list|)
 argument_list|,
 comment|// "activate" and "start" are not included

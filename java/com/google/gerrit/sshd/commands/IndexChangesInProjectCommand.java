@@ -146,7 +146,7 @@ name|restapi
 operator|.
 name|project
 operator|.
-name|Index
+name|IndexChanges
 import|;
 end_import
 
@@ -235,16 +235,16 @@ name|CommandMetaData
 argument_list|(
 name|name
 operator|=
-literal|"project"
+literal|"changes-in-project"
 argument_list|,
 name|description
 operator|=
 literal|"Index changes of a project"
 argument_list|)
-DECL|class|IndexProjectCommand
+DECL|class|IndexChangesInProjectCommand
 specifier|final
 class|class
-name|IndexProjectCommand
+name|IndexChangesInProjectCommand
 extends|extends
 name|SshCommand
 block|{
@@ -252,7 +252,7 @@ DECL|field|index
 annotation|@
 name|Inject
 specifier|private
-name|Index
+name|IndexChanges
 name|index
 decl_stmt|;
 annotation|@
