@@ -589,8 +589,8 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+try|try
+block|{
 name|permissionBackend
 operator|.
 name|user
@@ -598,12 +598,11 @@ argument_list|(
 name|target
 argument_list|)
 operator|.
-name|test
+name|check
 argument_list|(
 name|perm
 argument_list|)
-condition|)
-block|{
+expr_stmt|;
 return|return
 operator|new
 name|AccountResource
@@ -619,6 +618,12 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+catch|catch
+parameter_list|(
+name|AuthException
+name|e
+parameter_list|)
+block|{
 throw|throw
 operator|new
 name|ResourceNotFoundException
@@ -626,6 +631,7 @@ argument_list|(
 name|id
 argument_list|)
 throw|;
+block|}
 block|}
 DECL|method|parse (IdString id)
 specifier|private
