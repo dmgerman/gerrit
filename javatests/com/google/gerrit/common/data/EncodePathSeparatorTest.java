@@ -68,13 +68,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
 import|;
 end_import
 
@@ -102,10 +106,8 @@ name|void
 name|defaultBehaviour
 parameter_list|()
 block|{
-name|assertEquals
+name|assertThat
 argument_list|(
-literal|"a/b"
-argument_list|,
 operator|new
 name|GitwebType
 argument_list|()
@@ -114,6 +116,11 @@ name|replacePathSeparator
 argument_list|(
 literal|"a/b"
 argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"a/b"
 argument_list|)
 expr_stmt|;
 block|}
@@ -139,16 +146,19 @@ argument_list|(
 literal|'!'
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertThat
 argument_list|(
-literal|"a!b"
-argument_list|,
 name|gitwebType
 operator|.
 name|replacePathSeparator
 argument_list|(
 literal|"a/b"
 argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"a!b"
 argument_list|)
 expr_stmt|;
 block|}
