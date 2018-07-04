@@ -269,7 +269,7 @@ argument_list|)
 expr_stmt|;
 name|config
 operator|.
-name|setString
+name|setInt
 argument_list|(
 literal|"index"
 argument_list|,
@@ -277,7 +277,7 @@ literal|null
 argument_list|,
 literal|"maxLimit"
 argument_list|,
-literal|"10000"
+literal|10000
 argument_list|)
 expr_stmt|;
 if|if
