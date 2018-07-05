@@ -196,6 +196,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|AccountCache
@@ -591,6 +605,15 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|PLUGINS_ALL
+argument_list|)
 DECL|class|EmailArguments
 specifier|public
 class|class

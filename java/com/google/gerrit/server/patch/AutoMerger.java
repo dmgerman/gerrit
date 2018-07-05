@@ -164,6 +164,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|GerritServerConfig
@@ -564,6 +578,15 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|GOOGLE
+argument_list|)
 DECL|method|cacheAutomerge (Config cfg)
 specifier|public
 specifier|static
