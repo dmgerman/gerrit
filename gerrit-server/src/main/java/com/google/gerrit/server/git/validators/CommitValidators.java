@@ -2220,47 +2220,22 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|'\n'
+literal|"\n\n"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
-literal|'\n'
+literal|"Hint: run\n"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
-literal|"Hint: A potential "
+literal|"  git commit --amend\n"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|" was found, but it was not in the "
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"footer (last paragraph) of the commit message."
+literal|"and move 'Change-Id: Ixxx..' to the bottom on a separate line\n"
 argument_list|)
 expr_stmt|;
 block|}
