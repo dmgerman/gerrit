@@ -259,6 +259,13 @@ specifier|final
 name|PureRevert
 name|pureRevert
 decl_stmt|;
+DECL|field|claimedOriginal
+annotation|@
+name|Nullable
+specifier|private
+name|String
+name|claimedOriginal
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -276,13 +283,22 @@ name|usage
 operator|=
 literal|"SHA1 (40 digit hex) of the original commit"
 argument_list|)
-annotation|@
-name|Nullable
-DECL|field|claimedOriginal
-specifier|private
+DECL|method|setClaimedOriginal (String claimedOriginal)
+specifier|public
+name|void
+name|setClaimedOriginal
+parameter_list|(
 name|String
 name|claimedOriginal
-decl_stmt|;
+parameter_list|)
+block|{
+name|this
+operator|.
+name|claimedOriginal
+operator|=
+name|claimedOriginal
+expr_stmt|;
+block|}
 annotation|@
 name|Inject
 DECL|method|GetPureRevert (PureRevert pureRevert)
