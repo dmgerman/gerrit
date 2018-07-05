@@ -7625,10 +7625,7 @@ argument_list|)
 decl_stmt|;
 name|p
 operator|.
-name|getRules
-argument_list|()
-operator|.
-name|clear
+name|clearRules
 argument_list|()
 expr_stmt|;
 name|config

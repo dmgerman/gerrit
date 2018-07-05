@@ -977,6 +977,7 @@ operator|=
 name|newExclusiveGroup
 expr_stmt|;
 block|}
+comment|// TODO(ekempin): Make this method return an ImmutableList once the GWT UI is gone.
 DECL|method|getRules ()
 specifier|public
 name|List
@@ -986,11 +987,27 @@ argument_list|>
 name|getRules
 parameter_list|()
 block|{
-name|initRules
-argument_list|()
-expr_stmt|;
-return|return
+if|if
+condition|(
 name|rules
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+return|;
+block|}
+return|return
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
+name|rules
+argument_list|)
 return|;
 block|}
 DECL|method|setRules (List<PermissionRule> list)
@@ -1007,7 +1024,12 @@ parameter_list|)
 block|{
 name|rules
 operator|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|list
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|add (PermissionRule rule)
@@ -1085,6 +1107,26 @@ argument_list|,
 name|group
 argument_list|)
 argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|clearRules ()
+specifier|public
+name|void
+name|clearRules
+parameter_list|()
+block|{
+if|if
+condition|(
+name|rules
+operator|!=
+literal|null
+condition|)
+block|{
+name|rules
+operator|.
+name|clear
+argument_list|()
 expr_stmt|;
 block|}
 block|}

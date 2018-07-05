@@ -4545,7 +4545,7 @@ block|}
 block|}
 DECL|method|loadPermissionRules ( Config rc, String section, String subsection, String varName, Map<String, GroupReference> groupsByName, boolean useRange)
 specifier|private
-name|List
+name|ImmutableList
 argument_list|<
 name|PermissionRule
 argument_list|>
@@ -4602,10 +4602,15 @@ name|useRange
 argument_list|)
 expr_stmt|;
 return|return
+name|ImmutableList
+operator|.
+name|copyOf
+argument_list|(
 name|perm
 operator|.
 name|getRules
 argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|loadPermissionRules ( Config rc, String section, String subsection, String varName, Map<String, GroupReference> groupsByName, Permission perm, boolean useRange)

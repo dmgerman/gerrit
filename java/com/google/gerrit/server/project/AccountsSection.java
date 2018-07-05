@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -118,7 +132,7 @@ name|sameGroupVisibility
 decl_stmt|;
 DECL|method|getSameGroupVisibility ()
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|PermissionRule
 argument_list|>
@@ -134,14 +148,19 @@ condition|)
 block|{
 name|sameGroupVisibility
 operator|=
-operator|new
-name|ArrayList
-argument_list|<>
+name|ImmutableList
+operator|.
+name|of
 argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|ImmutableList
+operator|.
+name|copyOf
+argument_list|(
 name|sameGroupVisibility
+argument_list|)
 return|;
 block|}
 DECL|method|setSameGroupVisibility (List<PermissionRule> sameGroupVisibility)
@@ -160,7 +179,12 @@ name|this
 operator|.
 name|sameGroupVisibility
 operator|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|sameGroupVisibility
+argument_list|)
 expr_stmt|;
 block|}
 block|}
