@@ -799,9 +799,12 @@ argument_list|(
 name|db
 argument_list|)
 operator|.
-name|user
+name|absentUser
 argument_list|(
 name|assignee
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|)
 operator|.
 name|check
