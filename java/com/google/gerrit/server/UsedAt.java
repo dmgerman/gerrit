@@ -86,6 +86,20 @@ name|lang
 operator|.
 name|annotation
 operator|.
+name|ElementType
+operator|.
+name|TYPE
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
 name|RetentionPolicy
 operator|.
 name|RUNTIME
@@ -154,6 +168,8 @@ name|Target
 argument_list|(
 block|{
 name|METHOD
+block|,
+name|TYPE
 block|}
 argument_list|)
 annotation|@
@@ -175,6 +191,17 @@ name|Project
 block|{
 DECL|enumConstant|GOOGLE
 name|GOOGLE
+block|,
+DECL|enumConstant|PLUGIN_DELETE_PROJECT
+name|PLUGIN_DELETE_PROJECT
+block|,
+DECL|enumConstant|PLUGIN_SERVICEUSER
+name|PLUGIN_SERVICEUSER
+block|,
+DECL|enumConstant|PLUGINS_ALL
+name|PLUGINS_ALL
+block|,
+comment|// Use this project if a method/type is generally made available to all plugins.
 block|}
 comment|/** Reference to the project that uses the method annotated with this annotation. */
 DECL|method|value ()
