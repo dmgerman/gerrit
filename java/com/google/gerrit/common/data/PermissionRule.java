@@ -261,7 +261,7 @@ expr_stmt|;
 block|}
 DECL|method|getForce ()
 specifier|public
-name|Boolean
+name|boolean
 name|getForce
 parameter_list|()
 block|{
@@ -269,12 +269,12 @@ return|return
 name|force
 return|;
 block|}
-DECL|method|setForce (Boolean newForce)
+DECL|method|setForce (boolean newForce)
 specifier|public
 name|void
 name|setForce
 parameter_list|(
-name|Boolean
+name|boolean
 name|newForce
 parameter_list|)
 block|{
