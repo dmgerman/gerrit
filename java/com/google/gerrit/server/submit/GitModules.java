@@ -220,6 +220,8 @@ name|server
 operator|.
 name|util
 operator|.
+name|git
+operator|.
 name|SubmoduleSectionParser
 import|;
 end_import
