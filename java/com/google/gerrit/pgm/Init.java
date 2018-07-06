@@ -258,9 +258,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|securestore
+name|ioutil
 operator|.
-name|SecureStoreClassName
+name|HostPlatform
 import|;
 end_import
 
@@ -274,9 +274,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|securestore
 operator|.
-name|HostPlatform
+name|SecureStoreClassName
 import|;
 end_import
 
