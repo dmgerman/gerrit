@@ -285,7 +285,7 @@ expr_stmt|;
 block|}
 DECL|method|getMin ()
 specifier|public
-name|Integer
+name|int
 name|getMin
 parameter_list|()
 block|{
@@ -293,12 +293,12 @@ return|return
 name|min
 return|;
 block|}
-DECL|method|setMin (Integer min)
+DECL|method|setMin (int min)
 specifier|public
 name|void
 name|setMin
 parameter_list|(
-name|Integer
+name|int
 name|min
 parameter_list|)
 block|{
@@ -309,12 +309,12 @@ operator|=
 name|min
 expr_stmt|;
 block|}
-DECL|method|setMax (Integer max)
+DECL|method|setMax (int max)
 specifier|public
 name|void
 name|setMax
 parameter_list|(
-name|Integer
+name|int
 name|max
 parameter_list|)
 block|{
@@ -327,7 +327,7 @@ expr_stmt|;
 block|}
 DECL|method|getMax ()
 specifier|public
-name|Integer
+name|int
 name|getMax
 parameter_list|()
 block|{
@@ -1320,35 +1320,15 @@ name|hasRange
 parameter_list|()
 block|{
 return|return
-operator|(
-operator|!
-operator|(
 name|getMin
 argument_list|()
-operator|==
-literal|null
-operator|||
-name|getMin
-argument_list|()
-operator|==
+operator|!=
 literal|0
-operator|)
-operator|)
-operator|||
-operator|(
-operator|!
-operator|(
-name|getMax
-argument_list|()
-operator|==
-literal|null
 operator|||
 name|getMax
 argument_list|()
-operator|==
+operator|!=
 literal|0
-operator|)
-operator|)
 return|;
 block|}
 DECL|method|parseInt (String value)
