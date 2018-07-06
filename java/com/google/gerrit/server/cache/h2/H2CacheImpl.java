@@ -486,18 +486,6 @@ name|AtomicLong
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|h2
-operator|.
-name|jdbc
-operator|.
-name|JdbcSQLException
-import|;
-end_import
-
 begin_comment
 comment|/**  * Hybrid in-memory and database backed cache built on H2.  *  *<p>This cache can be used as either a recall cache, or a loading cache if a CacheLoader was  * supplied to its constructor at build time. Before creating an entry the in-memory cache is  * checked for the item, then the database is checked, and finally the CacheLoader is used to  * construct the item. This is mostly useful for CacheLoaders that are computationally intensive,  * such as the PatchListCache.  *  *<p>Cache stores and invalidations are performed on a background thread, hiding the latency  * associated with serializing the key and value pairs and writing them to the database log.  *  *<p>A BloomFilter is used around the database to reduce the number of SELECTs issued against the  * database for new cache items that have not been seen before, a common operation for the  * PatchListCache. The BloomFilter is sized when the cache starts to be 64,000 entries or double the  * number of items currently in the database table.  *  *<p>This cache does not export its items as a ConcurrentMap.  *  * @see H2CacheFactory  */
 end_comment
@@ -2085,18 +2073,30 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|JdbcSQLException
+name|Exception
 name|e
 parameter_list|)
 block|{
 if|if
 condition|(
-name|e
+name|Throwables
 operator|.
-name|getCause
+name|getCausalChain
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|stream
 argument_list|()
-operator|instanceof
+operator|.
+name|anyMatch
+argument_list|(
 name|InvalidClassException
+operator|.
+name|class
+operator|::
+name|isInstance
+argument_list|)
 condition|)
 block|{
 comment|// If deserialization failed using default Java serialization, this means we are using
