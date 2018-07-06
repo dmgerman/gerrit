@@ -1396,6 +1396,38 @@ literal|"/changes/%s/messages/%s"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|/**    * Change edit REST endpoints that create an edit to be tested, each URL contains placeholders for    * the change identifier and the change edit identifier.    */
+DECL|field|CHANGE_EDIT_CREATE_ENDPOINTS
+specifier|private
+specifier|static
+specifier|final
+name|ImmutableList
+argument_list|<
+name|RestCall
+argument_list|>
+name|CHANGE_EDIT_CREATE_ENDPOINTS
+init|=
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+comment|// Create change edit by editing an existing file.
+name|RestCall
+operator|.
+name|put
+argument_list|(
+literal|"/changes/%s/edit/%s"
+argument_list|)
+argument_list|,
+comment|// Create change edit by deleting an existing file.
+name|RestCall
+operator|.
+name|delete
+argument_list|(
+literal|"/changes/%s/edit/%s"
+argument_list|)
+argument_list|)
+decl_stmt|;
 comment|/**    * Change edit REST endpoints to be tested, each URL contains placeholders for the change    * identifier and the change edit identifier.    */
 DECL|field|CHANGE_EDIT_ENDPOINTS
 specifier|private
@@ -1411,14 +1443,6 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
-comment|// Create change edit by deleting an existing file.
-name|RestCall
-operator|.
-name|delete
-argument_list|(
-literal|"/changes/%s/edit/%s"
-argument_list|)
-argument_list|,
 comment|// Calls on existing change edit.
 name|RestCall
 operator|.
@@ -2567,6 +2591,55 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|changeEditCreateEndpoints ()
+specifier|public
+name|void
+name|changeEditCreateEndpoints
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|changeId
+init|=
+name|createChange
+argument_list|(
+literal|"Subject"
+argument_list|,
+name|FILENAME
+argument_list|,
+literal|"content"
+argument_list|)
+operator|.
+name|getChangeId
+argument_list|()
+decl_stmt|;
+comment|// Each of the REST calls creates the change edit newly.
+name|execute
+argument_list|(
+name|CHANGE_EDIT_CREATE_ENDPOINTS
+argument_list|,
+parameter_list|()
+lambda|->
+name|adminRestSession
+operator|.
+name|delete
+argument_list|(
+literal|"/changes/"
+operator|+
+name|changeId
+operator|+
+literal|"/edit"
+argument_list|)
+argument_list|,
+name|changeId
+argument_list|,
+name|FILENAME
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|changeEditEndpoints ()
 specifier|public
 name|void
@@ -2590,7 +2663,22 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-comment|// The change edit is created by the first REST call.
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|changeId
+argument_list|)
+operator|.
+name|edit
+argument_list|()
+operator|.
+name|create
+argument_list|()
+expr_stmt|;
 name|execute
 argument_list|(
 name|CHANGE_EDIT_ENDPOINTS
