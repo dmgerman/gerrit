@@ -170,6 +170,10 @@ name|V1
 argument_list|,
 name|ProjectField
 operator|.
+name|STATE
+argument_list|,
+name|ProjectField
+operator|.
 name|REF_STATE
 argument_list|)
 decl_stmt|;
