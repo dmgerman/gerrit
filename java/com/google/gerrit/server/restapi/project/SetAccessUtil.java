@@ -960,10 +960,7 @@ expr_stmt|;
 block|}
 name|accessSection
 operator|.
-name|getPermissions
-argument_list|()
-operator|.
-name|add
+name|addPermission
 argument_list|(
 name|p
 argument_list|)
