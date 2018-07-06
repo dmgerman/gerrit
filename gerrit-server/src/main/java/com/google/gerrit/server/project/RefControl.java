@@ -1334,10 +1334,10 @@ name|VIEW_PRIVATE_CHANGES
 argument_list|)
 return|;
 block|}
-comment|/** @return true if this user can delete their own changes. */
-DECL|method|canDeleteOwnChanges (boolean isChangeOwner)
+comment|/** @return true if this user can delete changes. */
+DECL|method|canDeleteChanges (boolean isChangeOwner)
 name|boolean
-name|canDeleteOwnChanges
+name|canDeleteChanges
 parameter_list|(
 name|boolean
 name|isChangeOwner
@@ -1348,10 +1348,21 @@ name|canPerform
 argument_list|(
 name|Permission
 operator|.
+name|DELETE_CHANGES
+argument_list|)
+operator|||
+operator|(
+name|isChangeOwner
+operator|&&
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
 name|DELETE_OWN_CHANGES
 argument_list|,
 name|isChangeOwner
 argument_list|)
+operator|)
 return|;
 block|}
 comment|/** @return true if this user can edit topic names. */
