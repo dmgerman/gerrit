@@ -2344,10 +2344,7 @@ argument_list|,
 literal|true
 argument_list|)
 operator|.
-name|getRules
-argument_list|()
-operator|.
-name|clear
+name|clearRules
 argument_list|()
 argument_list|)
 expr_stmt|;
