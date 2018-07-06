@@ -184,9 +184,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|ioutil
 operator|.
-name|IdGenerator
+name|HexFormat
 import|;
 end_import
 
@@ -1219,9 +1219,9 @@ name|sd
 operator|!=
 literal|null
 condition|?
-name|IdGenerator
+name|HexFormat
 operator|.
-name|format
+name|fromInt
 argument_list|(
 name|sd
 operator|.

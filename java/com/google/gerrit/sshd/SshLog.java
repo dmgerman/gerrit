@@ -270,9 +270,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|ioutil
 operator|.
-name|IdGenerator
+name|HexFormat
 import|;
 end_import
 
@@ -1657,9 +1657,9 @@ name|id
 parameter_list|)
 block|{
 return|return
-name|IdGenerator
+name|HexFormat
 operator|.
-name|format
+name|fromInt
 argument_list|(
 name|id
 argument_list|)
@@ -1790,9 +1790,9 @@ argument_list|()
 decl_stmt|;
 name|sessionId
 operator|=
-name|IdGenerator
+name|HexFormat
 operator|.
-name|format
+name|fromInt
 argument_list|(
 name|session
 operator|.
