@@ -158,6 +158,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|conditions
+operator|.
+name|BooleanCondition
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -2010,19 +2026,6 @@ name|resourcePath
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|user ()
-specifier|public
-name|CurrentUser
-name|user
-parameter_list|()
-block|{
-return|return
-name|getUser
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|user (CurrentUser user)
 specifier|public
 name|ForRef
@@ -2381,6 +2384,32 @@ block|}
 block|}
 return|return
 name|ok
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|testCond (RefPermission perm)
+specifier|public
+name|BooleanCondition
+name|testCond
+parameter_list|(
+name|RefPermission
+name|perm
+parameter_list|)
+block|{
+return|return
+operator|new
+name|PermissionBackendCondition
+operator|.
+name|ForRef
+argument_list|(
+name|this
+argument_list|,
+name|perm
+argument_list|,
+name|getUser
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|can (RefPermission perm)

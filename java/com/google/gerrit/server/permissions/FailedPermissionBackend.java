@@ -92,6 +92,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|conditions
+operator|.
+name|BooleanCondition
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -569,22 +585,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|user ()
-specifier|public
-name|CurrentUser
-name|user
-parameter_list|()
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|(
-literal|"FailedPermissionBackend is not scoped to user"
-argument_list|)
-throw|;
-block|}
-annotation|@
-name|Override
 DECL|method|project (Project.NameKey project)
 specifier|public
 name|ForProject
@@ -663,6 +663,25 @@ name|cause
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
+DECL|method|testCond (GlobalOrPluginPermission perm)
+specifier|public
+name|BooleanCondition
+name|testCond
+parameter_list|(
+name|GlobalOrPluginPermission
+name|perm
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"FailedPermissionBackend does not support conditions"
+argument_list|)
+throw|;
+block|}
 block|}
 DECL|class|FailedProject
 specifier|private
@@ -724,22 +743,6 @@ block|{
 return|return
 name|this
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|user ()
-specifier|public
-name|CurrentUser
-name|user
-parameter_list|()
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|(
-literal|"FailedPermissionBackend is not scoped to user"
-argument_list|)
-throw|;
 block|}
 annotation|@
 name|Override
@@ -864,6 +867,25 @@ throw|;
 block|}
 annotation|@
 name|Override
+DECL|method|testCond (ProjectPermission perm)
+specifier|public
+name|BooleanCondition
+name|testCond
+parameter_list|(
+name|ProjectPermission
+name|perm
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"FailedPermissionBackend does not support conditions"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|filter (Map<String, Ref> refs, Repository repo, RefFilterOptions opts)
 specifier|public
 name|Map
@@ -962,22 +984,6 @@ block|{
 return|return
 name|this
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|user ()
-specifier|public
-name|CurrentUser
-name|user
-parameter_list|()
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|(
-literal|"FailedPermissionBackend is not scoped to user"
-argument_list|)
-throw|;
 block|}
 annotation|@
 name|Override
@@ -1142,6 +1148,25 @@ argument_list|(
 name|message
 argument_list|,
 name|cause
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|testCond (RefPermission perm)
+specifier|public
+name|BooleanCondition
+name|testCond
+parameter_list|(
+name|RefPermission
+name|perm
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"FailedPermissionBackend does not support conditions"
 argument_list|)
 throw|;
 block|}
@@ -1314,17 +1339,20 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|user ()
+DECL|method|testCond (ChangePermissionOrLabel perm)
 specifier|public
-name|CurrentUser
-name|user
-parameter_list|()
+name|BooleanCondition
+name|testCond
+parameter_list|(
+name|ChangePermissionOrLabel
+name|perm
+parameter_list|)
 block|{
 throw|throw
 operator|new
 name|UnsupportedOperationException
 argument_list|(
-literal|"FailedPermissionBackend is not scoped to user"
+literal|"FailedPermissionBackend does not support conditions"
 argument_list|)
 throw|;
 block|}

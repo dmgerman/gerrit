@@ -708,14 +708,6 @@ argument_list|<
 name|WithUser
 argument_list|>
 block|{
-comment|/** Returns the user this instance is scoped to. */
-DECL|method|user ()
-specifier|public
-specifier|abstract
-name|CurrentUser
-name|user
-parameter_list|()
-function_decl|;
 comment|/** Returns an instance scoped for the specified project. */
 DECL|method|project (Project.NameKey project)
 specifier|public
@@ -1059,25 +1051,14 @@ block|}
 block|}
 DECL|method|testCond (GlobalOrPluginPermission perm)
 specifier|public
+specifier|abstract
 name|BooleanCondition
 name|testCond
 parameter_list|(
 name|GlobalOrPluginPermission
 name|perm
 parameter_list|)
-block|{
-return|return
-operator|new
-name|PermissionBackendCondition
-operator|.
-name|WithUser
-argument_list|(
-name|this
-argument_list|,
-name|perm
-argument_list|)
-return|;
-block|}
+function_decl|;
 comment|/**      * Filter a set of projects using {@code check(perm)}.      *      * @param perm required permission in a project to be included in result.      * @param projects candidate set of projects; may be empty.      * @return filtered set of {@code projects} where {@code check(perm)} was successful.      * @throws PermissionBackendException backend cannot access its internal state.      */
 DECL|method|filter (ProjectPermission perm, Collection<Project.NameKey> projects)
 specifier|public
@@ -1237,14 +1218,6 @@ argument_list|<
 name|ForProject
 argument_list|>
 block|{
-comment|/** Returns the user this instance is scoped to. */
-DECL|method|user ()
-specifier|public
-specifier|abstract
-name|CurrentUser
-name|user
-parameter_list|()
-function_decl|;
 comment|/** Returns the fully qualified resource path that this instance is scoped to. */
 DECL|method|resourcePath ()
 specifier|public
@@ -1516,25 +1489,14 @@ block|}
 block|}
 DECL|method|testCond (ProjectPermission perm)
 specifier|public
+specifier|abstract
 name|BooleanCondition
 name|testCond
 parameter_list|(
 name|ProjectPermission
 name|perm
 parameter_list|)
-block|{
-return|return
-operator|new
-name|PermissionBackendCondition
-operator|.
-name|ForProject
-argument_list|(
-name|this
-argument_list|,
-name|perm
-argument_list|)
-return|;
-block|}
+function_decl|;
 comment|/**      * Filter a map of references by visibility.      *      * @param refs a map of references to filter.      * @param repo an open {@link Repository} handle for this instance's project      * @param opts further options for filtering.      * @return a partition of the provided refs that are visible to the user that this instance is      *     scoped to.      * @throws PermissionBackendException if failure consulting backend configuration.      */
 DECL|method|filter ( Map<String, Ref> refs, Repository repo, RefFilterOptions opts)
 specifier|public
@@ -1691,14 +1653,6 @@ argument_list|<
 name|ForRef
 argument_list|>
 block|{
-comment|/** Returns the user this instance is scoped to. */
-DECL|method|user ()
-specifier|public
-specifier|abstract
-name|CurrentUser
-name|user
-parameter_list|()
-function_decl|;
 comment|/** Returns a fully qualified resource path that this instance is scoped to. */
 DECL|method|resourcePath ()
 specifier|public
@@ -1878,25 +1832,14 @@ block|}
 block|}
 DECL|method|testCond (RefPermission perm)
 specifier|public
+specifier|abstract
 name|BooleanCondition
 name|testCond
 parameter_list|(
 name|RefPermission
 name|perm
 parameter_list|)
-block|{
-return|return
-operator|new
-name|PermissionBackendCondition
-operator|.
-name|ForRef
-argument_list|(
-name|this
-argument_list|,
-name|perm
-argument_list|)
-return|;
-block|}
+function_decl|;
 block|}
 comment|/** PermissionBackend scoped to a user, project, reference and change. */
 DECL|class|ForChange
@@ -1911,14 +1854,6 @@ argument_list|<
 name|ForChange
 argument_list|>
 block|{
-comment|/** Returns the user this instance is scoped to. */
-DECL|method|user ()
-specifier|public
-specifier|abstract
-name|CurrentUser
-name|user
-parameter_list|()
-function_decl|;
 comment|/** Returns the fully qualified resource path that this instance is scoped to. */
 DECL|method|resourcePath ()
 specifier|public
@@ -2067,25 +2002,14 @@ block|}
 block|}
 DECL|method|testCond (ChangePermissionOrLabel perm)
 specifier|public
+specifier|abstract
 name|BooleanCondition
 name|testCond
 parameter_list|(
 name|ChangePermissionOrLabel
 name|perm
 parameter_list|)
-block|{
-return|return
-operator|new
-name|PermissionBackendCondition
-operator|.
-name|ForChange
-argument_list|(
-name|this
-argument_list|,
-name|perm
-argument_list|)
-return|;
-block|}
+function_decl|;
 comment|/**      * Test which values of a label the user may be able to set.      *      * @param label definition of the label to test values of.      * @return set containing values the user may be able to use; may be empty if none.      * @throws PermissionBackendException if failure consulting backend configuration.      */
 DECL|method|test (LabelType label)
 specifier|public
