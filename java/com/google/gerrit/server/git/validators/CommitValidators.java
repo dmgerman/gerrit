@@ -2533,7 +2533,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"Change-Id was found, but it was not in the "
+literal|" was found, but it was not in the "
 argument_list|)
 expr_stmt|;
 name|sb
