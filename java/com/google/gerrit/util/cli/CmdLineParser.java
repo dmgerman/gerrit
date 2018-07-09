@@ -2127,6 +2127,29 @@ name|depends
 argument_list|()
 return|;
 block|}
+comment|// TODO(hanwen): add @Override after args4j upgrade.
+DECL|method|forbids ()
+specifier|public
+name|String
+index|[]
+name|forbids
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+comment|// TODO(hanwen): add @Override after args4j upgrade.
+DECL|method|help ()
+specifier|public
+name|boolean
+name|help
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|annotationType ()
@@ -3050,6 +3073,29 @@ DECL|method|isMultiValued ()
 specifier|public
 name|boolean
 name|isMultiValued
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+comment|// TODO(hanwen): add @Override after args4j upgrade.
+DECL|method|forbids ()
+specifier|public
+name|String
+index|[]
+name|forbids
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+comment|// TODO(hanwen): add @Override after args4j upgrade.
+DECL|method|help ()
+specifier|public
+name|boolean
+name|help
 parameter_list|()
 block|{
 return|return
