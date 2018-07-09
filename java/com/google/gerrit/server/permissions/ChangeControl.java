@@ -1886,12 +1886,9 @@ name|isAdmin
 argument_list|()
 operator|||
 operator|(
-name|isOwner
-argument_list|()
-operator|&&
 name|refControl
 operator|.
-name|canDeleteOwnChanges
+name|canDeleteChanges
 argument_list|(
 name|isOwner
 argument_list|()

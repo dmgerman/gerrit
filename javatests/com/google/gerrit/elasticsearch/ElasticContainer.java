@@ -254,7 +254,7 @@ case|case
 name|V5_6
 case|:
 return|return
-literal|"elasticsearch:5.6.10-alpine"
+literal|"docker.elastic.co/elasticsearch/elasticsearch:5.6.10"
 return|;
 case|case
 name|V6_2
@@ -266,7 +266,7 @@ case|case
 name|V6_3
 case|:
 return|return
-literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0"
+literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.1"
 return|;
 block|}
 throw|throw
