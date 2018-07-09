@@ -1600,8 +1600,6 @@ argument_list|()
 argument_list|,
 name|notes
 argument_list|,
-name|user
-argument_list|,
 name|change
 operator|.
 name|currentPatchSetId
@@ -1621,8 +1619,6 @@ operator|.
 name|getLabelTypes
 argument_list|(
 name|notes
-argument_list|,
-name|user
 argument_list|)
 operator|.
 name|byLabel

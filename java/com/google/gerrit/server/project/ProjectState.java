@@ -472,20 +472,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|account
 operator|.
 name|CapabilityCollection
@@ -2235,17 +2221,14 @@ return|return
 name|labelTypes
 return|;
 block|}
-comment|/** All available label types for this change and user. */
-DECL|method|getLabelTypes (ChangeNotes notes, CurrentUser user)
+comment|/** All available label types for this change. */
+DECL|method|getLabelTypes (ChangeNotes notes)
 specifier|public
 name|LabelTypes
 name|getLabelTypes
 parameter_list|(
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|)
 block|{
 return|return
@@ -2258,13 +2241,11 @@ argument_list|()
 operator|.
 name|getDest
 argument_list|()
-argument_list|,
-name|user
 argument_list|)
 return|;
 block|}
-comment|/** All available label types for this branch and user. */
-DECL|method|getLabelTypes (Branch.NameKey destination, CurrentUser user)
+comment|/** All available label types for this branch. */
+DECL|method|getLabelTypes (Branch.NameKey destination)
 specifier|public
 name|LabelTypes
 name|getLabelTypes
@@ -2273,9 +2254,6 @@ name|Branch
 operator|.
 name|NameKey
 name|destination
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|)
 block|{
 name|List
@@ -2352,6 +2330,37 @@ control|)
 block|{
 if|if
 condition|(
+name|refPattern
+operator|.
+name|contains
+argument_list|(
+literal|"${"
+argument_list|)
+condition|)
+block|{
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Ref pattern for label %s in project %s contains illegal expanded parameters: %s."
+operator|+
+literal|" Ref pattern will be ignored."
+argument_list|,
+name|l
+argument_list|,
+name|getName
+argument_list|()
+argument_list|,
+name|refPattern
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
 name|RefConfigSection
 operator|.
 name|isValid
@@ -2364,8 +2373,6 @@ argument_list|(
 name|destination
 argument_list|,
 name|refPattern
-argument_list|,
-name|user
 argument_list|)
 condition|)
 block|{
@@ -3255,7 +3262,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|match (Branch.NameKey destination, String refPattern, CurrentUser user)
+DECL|method|match (Branch.NameKey destination, String refPattern)
 specifier|private
 name|boolean
 name|match
@@ -3267,9 +3274,6 @@ name|destination
 parameter_list|,
 name|String
 name|refPattern
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|)
 block|{
 return|return
@@ -3287,7 +3291,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|user
+literal|null
 argument_list|)
 return|;
 block|}

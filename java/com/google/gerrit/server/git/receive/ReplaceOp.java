@@ -2391,11 +2391,6 @@ operator|.
 name|getNotes
 argument_list|()
 argument_list|,
-name|ctx
-operator|.
-name|getUser
-argument_list|()
-argument_list|,
 name|newPatchSet
 argument_list|,
 name|ctx
@@ -2907,11 +2902,6 @@ argument_list|,
 name|ctx
 operator|.
 name|getNotes
-argument_list|()
-argument_list|,
-name|ctx
-operator|.
-name|getUser
 argument_list|()
 argument_list|,
 name|priorPatchSetId
@@ -3652,11 +3642,6 @@ operator|.
 name|getLabelTypes
 argument_list|(
 name|notes
-argument_list|,
-name|ctx
-operator|.
-name|getUser
-argument_list|()
 argument_list|)
 operator|.
 name|getLabelTypes

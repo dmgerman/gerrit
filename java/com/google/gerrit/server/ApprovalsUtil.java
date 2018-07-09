@@ -2469,7 +2469,7 @@ name|getApprovals
 argument_list|()
 return|;
 block|}
-DECL|method|byPatchSet ( ReviewDb db, ChangeNotes notes, CurrentUser user, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
+DECL|method|byPatchSet ( ReviewDb db, ChangeNotes notes, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 specifier|public
 name|Iterable
 argument_list|<
@@ -2482,9 +2482,6 @@ name|db
 parameter_list|,
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|PatchSet
 operator|.
@@ -2537,8 +2534,6 @@ name|db
 argument_list|,
 name|notes
 argument_list|,
-name|user
-argument_list|,
 name|psId
 argument_list|,
 name|rw
@@ -2547,7 +2542,7 @@ name|repoConfig
 argument_list|)
 return|;
 block|}
-DECL|method|byPatchSetUser ( ReviewDb db, ChangeNotes notes, CurrentUser user, PatchSet.Id psId, Account.Id accountId, @Nullable RevWalk rw, @Nullable Config repoConfig)
+DECL|method|byPatchSetUser ( ReviewDb db, ChangeNotes notes, PatchSet.Id psId, Account.Id accountId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 specifier|public
 name|Iterable
 argument_list|<
@@ -2560,9 +2555,6 @@ name|db
 parameter_list|,
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|PatchSet
 operator|.
@@ -2621,8 +2613,6 @@ argument_list|(
 name|db
 argument_list|,
 name|notes
-argument_list|,
-name|user
 argument_list|,
 name|psId
 argument_list|,

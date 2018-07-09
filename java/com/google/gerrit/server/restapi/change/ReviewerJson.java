@@ -853,11 +853,6 @@ operator|.
 name|notes
 argument_list|()
 argument_list|,
-name|perm
-operator|.
-name|user
-argument_list|()
-argument_list|,
 name|psId
 argument_list|,
 operator|new
