@@ -592,8 +592,8 @@ operator|=
 name|psUtil
 expr_stmt|;
 block|}
-comment|/**    * Apply approval copy settings from prior PatchSets to a new PatchSet.    *    * @param db review database.    * @param notes change notes for user uploading PatchSet    * @param user user uploading PatchSet    * @param ps new PatchSet    * @param rw open walk that can read the patch set commit; null to open the repo on demand.    * @param repoConfig repo config used for change kind detection; null to read from repo on demand.    * @throws OrmException    */
-DECL|method|copyInReviewDb ( ReviewDb db, ChangeNotes notes, CurrentUser user, PatchSet ps, @Nullable RevWalk rw, @Nullable Config repoConfig)
+comment|/**    * Apply approval copy settings from prior PatchSets to a new PatchSet.    *    * @param db review database.    * @param notes change notes for user uploading PatchSet    * @param ps new PatchSet    * @param rw open walk that can read the patch set commit; null to open the repo on demand.    * @param repoConfig repo config used for change kind detection; null to read from repo on demand.    * @throws OrmException    */
+DECL|method|copyInReviewDb ( ReviewDb db, ChangeNotes notes, PatchSet ps, @Nullable RevWalk rw, @Nullable Config repoConfig)
 specifier|public
 name|void
 name|copyInReviewDb
@@ -603,9 +603,6 @@ name|db
 parameter_list|,
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|PatchSet
 name|ps
@@ -629,8 +626,6 @@ name|db
 argument_list|,
 name|notes
 argument_list|,
-name|user
-argument_list|,
 name|ps
 argument_list|,
 name|rw
@@ -644,8 +639,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Apply approval copy settings from prior PatchSets to a new PatchSet.    *    * @param db review database.    * @param notes change notes for user uploading PatchSet    * @param user user uploading PatchSet    * @param ps new PatchSet    * @param rw open walk that can read the patch set commit; null to open the repo on demand.    * @param repoConfig repo config used for change kind detection; null to read from repo on demand.    * @param dontCopy PatchSetApprovals indicating which (account, label) pairs should not be copied    * @throws OrmException    */
-DECL|method|copyInReviewDb ( ReviewDb db, ChangeNotes notes, CurrentUser user, PatchSet ps, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
+comment|/**    * Apply approval copy settings from prior PatchSets to a new PatchSet.    *    * @param db review database.    * @param notes change notes for user uploading PatchSet    * @param ps new PatchSet    * @param rw open walk that can read the patch set commit; null to open the repo on demand.    * @param repoConfig repo config used for change kind detection; null to read from repo on demand.    * @param dontCopy PatchSetApprovals indicating which (account, label) pairs should not be copied    * @throws OrmException    */
+DECL|method|copyInReviewDb ( ReviewDb db, ChangeNotes notes, PatchSet ps, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
 specifier|public
 name|void
 name|copyInReviewDb
@@ -655,9 +650,6 @@ name|db
 parameter_list|,
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|PatchSet
 name|ps
@@ -711,8 +703,6 @@ name|db
 argument_list|,
 name|notes
 argument_list|,
-name|user
-argument_list|,
 name|ps
 argument_list|,
 name|rw
@@ -725,7 +715,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getForPatchSet ( ReviewDb db, ChangeNotes notes, CurrentUser user, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
+DECL|method|getForPatchSet ( ReviewDb db, ChangeNotes notes, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 name|Iterable
 argument_list|<
 name|PatchSetApproval
@@ -737,9 +727,6 @@ name|db
 parameter_list|,
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|PatchSet
 operator|.
@@ -766,8 +753,6 @@ name|db
 argument_list|,
 name|notes
 argument_list|,
-name|user
-argument_list|,
 name|psId
 argument_list|,
 name|rw
@@ -784,7 +769,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getForPatchSet ( ReviewDb db, ChangeNotes notes, CurrentUser user, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
+DECL|method|getForPatchSet ( ReviewDb db, ChangeNotes notes, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
 name|Iterable
 argument_list|<
 name|PatchSetApproval
@@ -796,9 +781,6 @@ name|db
 parameter_list|,
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|PatchSet
 operator|.
@@ -859,8 +841,6 @@ name|db
 argument_list|,
 name|notes
 argument_list|,
-name|user
-argument_list|,
 name|ps
 argument_list|,
 name|rw
@@ -871,7 +851,7 @@ name|dontCopy
 argument_list|)
 return|;
 block|}
-DECL|method|getForPatchSet ( ReviewDb db, ChangeNotes notes, CurrentUser user, PatchSet ps, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
+DECL|method|getForPatchSet ( ReviewDb db, ChangeNotes notes, PatchSet ps, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
 specifier|private
 name|Iterable
 argument_list|<
@@ -884,9 +864,6 @@ name|db
 parameter_list|,
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|PatchSet
 name|ps
@@ -1322,8 +1299,6 @@ operator|.
 name|normalize
 argument_list|(
 name|notes
-argument_list|,
-name|user
 argument_list|,
 name|byUser
 operator|.

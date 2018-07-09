@@ -1342,11 +1342,6 @@ argument_list|()
 operator|.
 name|getDest
 argument_list|()
-argument_list|,
-name|ctx
-operator|.
-name|getUser
-argument_list|()
 argument_list|)
 argument_list|,
 name|rsrc

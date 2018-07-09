@@ -1450,11 +1450,6 @@ name|ctx
 operator|.
 name|getNotes
 argument_list|()
-argument_list|,
-name|ctx
-operator|.
-name|getUser
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|Account
@@ -1487,11 +1482,6 @@ argument_list|,
 name|ctx
 operator|.
 name|getNotes
-argument_list|()
-argument_list|,
-name|ctx
-operator|.
-name|getUser
 argument_list|()
 argument_list|,
 name|psId

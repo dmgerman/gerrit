@@ -8937,8 +8937,6 @@ name|change
 argument_list|()
 argument_list|)
 argument_list|,
-name|user
-argument_list|,
 name|cd
 operator|.
 name|change

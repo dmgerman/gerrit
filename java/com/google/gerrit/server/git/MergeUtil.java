@@ -2533,8 +2533,6 @@ name|safeGetApprovals
 argument_list|(
 name|notes
 argument_list|,
-name|user
-argument_list|,
 name|psId
 argument_list|)
 control|)
@@ -3029,7 +3027,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|safeGetApprovals ( ChangeNotes notes, CurrentUser user, PatchSet.Id psId)
+DECL|method|safeGetApprovals (ChangeNotes notes, PatchSet.Id psId)
 specifier|private
 name|Iterable
 argument_list|<
@@ -3039,9 +3037,6 @@ name|safeGetApprovals
 parameter_list|(
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|PatchSet
 operator|.
@@ -3062,8 +3057,6 @@ name|get
 argument_list|()
 argument_list|,
 name|notes
-argument_list|,
-name|user
 argument_list|,
 name|psId
 argument_list|,
