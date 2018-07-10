@@ -650,6 +650,22 @@ name|server
 operator|.
 name|change
 operator|.
+name|ReviewerResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
 name|RevisionResource
 import|;
 end_import
@@ -946,7 +962,7 @@ name|server
 operator|.
 name|update
 operator|.
-name|RetryingRestModifyView
+name|RetryingRestCollectionView
 import|;
 end_import
 
@@ -1102,9 +1118,11 @@ specifier|public
 class|class
 name|PostReviewers
 extends|extends
-name|RetryingRestModifyView
+name|RetryingRestCollectionView
 argument_list|<
 name|ChangeResource
+argument_list|,
+name|ReviewerResource
 argument_list|,
 name|AddReviewerInput
 argument_list|,

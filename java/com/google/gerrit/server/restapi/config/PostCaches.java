@@ -210,7 +210,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestModifyView
+name|RestCollectionView
 import|;
 end_import
 
@@ -359,9 +359,11 @@ specifier|public
 class|class
 name|PostCaches
 implements|implements
-name|RestModifyView
+name|RestCollectionView
 argument_list|<
 name|ConfigResource
+argument_list|,
+name|CacheResource
 argument_list|,
 name|Input
 argument_list|>

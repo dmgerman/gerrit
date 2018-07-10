@@ -618,6 +618,22 @@ name|server
 operator|.
 name|change
 operator|.
+name|ChangeResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
 name|NotifyUtil
 import|;
 end_import
@@ -910,7 +926,7 @@ name|server
 operator|.
 name|update
 operator|.
-name|RetryingRestModifyView
+name|RetryingRestCollectionView
 import|;
 end_import
 
@@ -1244,9 +1260,11 @@ specifier|public
 class|class
 name|CreateChange
 extends|extends
-name|RetryingRestModifyView
+name|RetryingRestCollectionView
 argument_list|<
 name|TopLevelResource
+argument_list|,
+name|ChangeResource
 argument_list|,
 name|ChangeInput
 argument_list|,
