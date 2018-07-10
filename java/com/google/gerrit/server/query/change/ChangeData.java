@@ -620,20 +620,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|PatchSetUtil
 import|;
 end_import
@@ -2740,8 +2726,6 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
-literal|null
-argument_list|,
 name|project
 argument_list|,
 name|id
@@ -2819,14 +2803,6 @@ specifier|private
 specifier|final
 name|GitRepositoryManager
 name|repoManager
-decl_stmt|;
-DECL|field|userFactory
-specifier|private
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|userFactory
 decl_stmt|;
 DECL|field|mergeUtilFactory
 specifier|private
@@ -3201,7 +3177,7 @@ name|refStatePatterns
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeData ( @ullable StarredChangesUtil starredChangesUtil, ApprovalsUtil approvalsUtil, AllUsersName allUsersName, ChangeMessagesUtil cmUtil, ChangeNotes.Factory notesFactory, CommentsUtil commentsUtil, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory userFactory, MergeUtil.Factory mergeUtilFactory, MergeabilityCache mergeabilityCache, NotesMigration notesMigration, PatchListCache patchListCache, PatchSetUtil psUtil, ProjectCache projectCache, TrackingFooters trackingFooters, PureRevert pureRevert, SubmitRuleEvaluator.Factory submitRuleEvaluatorFactory, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable Change change, @Assisted @Nullable ChangeNotes notes)
+DECL|method|ChangeData ( @ullable StarredChangesUtil starredChangesUtil, ApprovalsUtil approvalsUtil, AllUsersName allUsersName, ChangeMessagesUtil cmUtil, ChangeNotes.Factory notesFactory, CommentsUtil commentsUtil, GitRepositoryManager repoManager, MergeUtil.Factory mergeUtilFactory, MergeabilityCache mergeabilityCache, NotesMigration notesMigration, PatchListCache patchListCache, PatchSetUtil psUtil, ProjectCache projectCache, TrackingFooters trackingFooters, PureRevert pureRevert, SubmitRuleEvaluator.Factory submitRuleEvaluatorFactory, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable Change change, @Assisted @Nullable ChangeNotes notes)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3229,11 +3205,6 @@ name|commentsUtil
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|userFactory
 parameter_list|,
 name|MergeUtil
 operator|.
@@ -3335,12 +3306,6 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
-expr_stmt|;
-name|this
-operator|.
-name|userFactory
-operator|=
-name|userFactory
 expr_stmt|;
 name|this
 operator|.

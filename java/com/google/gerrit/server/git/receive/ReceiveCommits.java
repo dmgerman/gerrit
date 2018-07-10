@@ -15195,8 +15195,6 @@ operator|.
 name|isPatchSetLocked
 argument_list|(
 name|notes
-argument_list|,
-name|user
 argument_list|)
 condition|)
 block|{
