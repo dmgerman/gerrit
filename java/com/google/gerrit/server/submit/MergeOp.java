@@ -4993,10 +4993,22 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// TODO this is actually an error, the branch is gone but we
-comment|// want to merge the issue. We can't safely do that if the
-comment|// tip is not reachable.
-comment|//
+if|if
+condition|(
+name|revisions
+operator|.
+name|containsValue
+argument_list|(
+name|ps
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// TODO This is actually an error, the patch set ref exists but points to a revision that
+comment|// is different from the revision that we have stored for the patch set in the change
+comment|// meta data.
 name|commitStatus
 operator|.
 name|logProblem
@@ -5014,7 +5026,30 @@ operator|.
 name|getPatchSetId
 argument_list|()
 operator|+
-literal|" does not match "
+literal|" does not match the revision of the patch set ref "
+operator|+
+name|ps
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|toRefName
+argument_list|()
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
+comment|// The patch set ref is not found but we want to merge the change. We can't safely do that
+comment|// if the patch set ref is missing. In a multi-master setup this can indicate a replication
+comment|// lag (e.g. the change meta data was already replicated, but the replication of the patch
+comment|// set ref is still pending).
+name|commitStatus
+operator|.
+name|logProblem
+argument_list|(
+name|changeId
+argument_list|,
+literal|"Patch set ref "
 operator|+
 name|ps
 operator|.
@@ -5024,7 +5059,16 @@ operator|.
 name|toRefName
 argument_list|()
 operator|+
-literal|" for change"
+literal|" not found. Expected patch set ref of "
+operator|+
+name|ps
+operator|.
+name|getPatchSetId
+argument_list|()
+operator|+
+literal|" to point to revision "
+operator|+
+name|idstr
 argument_list|)
 expr_stmt|;
 continue|continue;
