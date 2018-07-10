@@ -2212,11 +2212,6 @@ operator|.
 name|checkPatchSetNotLocked
 argument_list|(
 name|notes
-argument_list|,
-name|currentUser
-operator|.
-name|get
-argument_list|()
 argument_list|)
 expr_stmt|;
 try|try

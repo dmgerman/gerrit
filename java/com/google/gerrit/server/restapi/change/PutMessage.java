@@ -1525,11 +1525,6 @@ operator|.
 name|checkPatchSetNotLocked
 argument_list|(
 name|changeNotes
-argument_list|,
-name|userProvider
-operator|.
-name|get
-argument_list|()
 argument_list|)
 expr_stmt|;
 try|try

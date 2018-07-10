@@ -1032,11 +1032,6 @@ name|rsrc
 operator|.
 name|getNotes
 argument_list|()
-argument_list|,
-name|rsrc
-operator|.
-name|getUser
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|rsrc
@@ -1922,11 +1917,6 @@ argument_list|(
 name|rsrc
 operator|.
 name|getNotes
-argument_list|()
-argument_list|,
-name|rsrc
-operator|.
-name|getUser
 argument_list|()
 argument_list|)
 condition|)

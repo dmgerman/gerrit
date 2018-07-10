@@ -2063,11 +2063,6 @@ operator|.
 name|checkPatchSetNotLocked
 argument_list|(
 name|origNotes
-argument_list|,
-name|ctx
-operator|.
-name|getUser
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if

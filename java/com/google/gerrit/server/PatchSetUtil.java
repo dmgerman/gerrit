@@ -1461,16 +1461,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Check if the current patch set of the change is locked. */
-DECL|method|checkPatchSetNotLocked (ChangeNotes notes, CurrentUser user)
+DECL|method|checkPatchSetNotLocked (ChangeNotes notes)
 specifier|public
 name|void
 name|checkPatchSetNotLocked
 parameter_list|(
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1484,8 +1481,6 @@ condition|(
 name|isPatchSetLocked
 argument_list|(
 name|notes
-argument_list|,
-name|user
 argument_list|)
 condition|)
 block|{
@@ -1509,16 +1504,13 @@ throw|;
 block|}
 block|}
 comment|/** Is the current patch set locked against state changes? */
-DECL|method|isPatchSetLocked (ChangeNotes notes, CurrentUser user)
+DECL|method|isPatchSetLocked (ChangeNotes notes)
 specifier|public
 name|boolean
 name|isPatchSetLocked
 parameter_list|(
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|)
 throws|throws
 name|OrmException
