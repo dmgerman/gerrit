@@ -5474,18 +5474,6 @@ argument_list|)
 operator|)
 condition|)
 block|{
-name|PermissionBackend
-operator|.
-name|ForChange
-name|perm
-init|=
-name|permissionBackendForChange
-argument_list|(
-name|user
-argument_list|,
-name|cd
-argument_list|)
-decl_stmt|;
 name|out
 operator|.
 name|permittedLabels
@@ -5506,7 +5494,10 @@ name|ABANDONED
 condition|?
 name|permittedLabels
 argument_list|(
-name|perm
+name|user
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|,
 name|cd
 argument_list|)
@@ -7091,7 +7082,7 @@ name|getPermittedVotingRanges
 argument_list|(
 name|permittedLabels
 argument_list|(
-name|perm
+name|accountId
 argument_list|,
 name|cd
 argument_list|)
@@ -7936,25 +7927,13 @@ condition|(
 name|detailed
 condition|)
 block|{
-name|PermissionBackend
-operator|.
-name|ForChange
-name|perm
-init|=
-name|permissionBackendForChange
-argument_list|(
-name|accountId
-argument_list|,
-name|cd
-argument_list|)
-decl_stmt|;
 name|pvr
 operator|=
 name|getPermittedVotingRanges
 argument_list|(
 name|permittedLabels
 argument_list|(
-name|perm
+name|accountId
 argument_list|,
 name|cd
 argument_list|)
@@ -8423,7 +8402,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-DECL|method|permittedLabels ( PermissionBackend.ForChange perm, ChangeData cd)
+DECL|method|permittedLabels ( Account.Id filterApprovalsBy, ChangeData cd)
 specifier|private
 name|Map
 argument_list|<
@@ -8436,10 +8415,10 @@ argument_list|>
 argument_list|>
 name|permittedLabels
 parameter_list|(
-name|PermissionBackend
+name|Account
 operator|.
-name|ForChange
-name|perm
+name|Id
+name|filterApprovalsBy
 parameter_list|,
 name|ChangeData
 name|cd
@@ -8582,7 +8561,12 @@ name|WithValue
 argument_list|>
 name|can
 init|=
-name|perm
+name|permissionBackendForChange
+argument_list|(
+name|filterApprovalsBy
+argument_list|,
+name|cd
+argument_list|)
 operator|.
 name|testLabels
 argument_list|(
@@ -8715,7 +8699,7 @@ name|labels
 operator|=
 name|currentLabels
 argument_list|(
-name|perm
+name|filterApprovalsBy
 argument_list|,
 name|cd
 argument_list|)
@@ -8861,7 +8845,7 @@ name|asMap
 argument_list|()
 return|;
 block|}
-DECL|method|currentLabels (PermissionBackend.ForChange perm, ChangeData cd)
+DECL|method|currentLabels (Account.Id accountId, ChangeData cd)
 specifier|private
 name|Map
 argument_list|<
@@ -8871,10 +8855,10 @@ name|Short
 argument_list|>
 name|currentLabels
 parameter_list|(
-name|PermissionBackend
+name|Account
 operator|.
-name|ForChange
-name|perm
+name|Id
+name|accountId
 parameter_list|,
 name|ChangeData
 name|cd
@@ -8882,17 +8866,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|IdentifiedUser
-name|user
-init|=
-name|perm
-operator|.
-name|user
-argument_list|()
-operator|.
-name|asIdentifiedUser
-argument_list|()
-decl_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -8945,10 +8918,7 @@ operator|.
 name|currentPatchSetId
 argument_list|()
 argument_list|,
-name|user
-operator|.
-name|getAccountId
-argument_list|()
+name|accountId
 argument_list|,
 literal|null
 argument_list|,

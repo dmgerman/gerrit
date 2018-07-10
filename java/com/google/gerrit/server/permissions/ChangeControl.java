@@ -204,6 +204,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|conditions
+operator|.
+name|BooleanCondition
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -1538,19 +1554,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|user ()
-specifier|public
-name|CurrentUser
-name|user
-parameter_list|()
-block|{
-return|return
-name|getUser
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|user (CurrentUser user)
 specifier|public
 name|ForChange
@@ -1561,7 +1564,7 @@ name|user
 parameter_list|)
 block|{
 return|return
-name|user
+name|getUser
 argument_list|()
 operator|.
 name|equals
@@ -1756,6 +1759,32 @@ block|}
 block|}
 return|return
 name|ok
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|testCond (ChangePermissionOrLabel perm)
+specifier|public
+name|BooleanCondition
+name|testCond
+parameter_list|(
+name|ChangePermissionOrLabel
+name|perm
+parameter_list|)
+block|{
+return|return
+operator|new
+name|PermissionBackendCondition
+operator|.
+name|ForChange
+argument_list|(
+name|this
+argument_list|,
+name|perm
+argument_list|,
+name|getUser
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|can (ChangePermissionOrLabel perm)

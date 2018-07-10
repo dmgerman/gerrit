@@ -715,10 +715,6 @@ name|get
 argument_list|()
 argument_list|)
 argument_list|,
-name|permissionBackend
-operator|.
-name|absentUser
-argument_list|(
 name|rsrc
 operator|.
 name|getReviewerUser
@@ -726,17 +722,6 @@ argument_list|()
 operator|.
 name|getAccountId
 argument_list|()
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
-argument_list|)
-operator|.
-name|change
-argument_list|(
-name|cd
-argument_list|)
 argument_list|,
 name|cd
 argument_list|)
@@ -796,7 +781,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|format (ReviewerInfo out, PermissionBackend.ForChange perm, ChangeData cd)
+DECL|method|format (ReviewerInfo out, Account.Id reviewer, ChangeData cd)
 specifier|public
 name|ReviewerInfo
 name|format
@@ -804,10 +789,10 @@ parameter_list|(
 name|ReviewerInfo
 name|out
 parameter_list|,
-name|PermissionBackend
+name|Account
 operator|.
-name|ForChange
-name|perm
+name|Id
+name|reviewer
 parameter_list|,
 name|ChangeData
 name|cd
@@ -835,7 +820,7 @@ name|format
 argument_list|(
 name|out
 argument_list|,
-name|perm
+name|reviewer
 argument_list|,
 name|cd
 argument_list|,
@@ -872,7 +857,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|format ( ReviewerInfo out, PermissionBackend.ForChange perm, ChangeData cd, Iterable<PatchSetApproval> approvals)
+DECL|method|format ( ReviewerInfo out, Account.Id reviewer, ChangeData cd, Iterable<PatchSetApproval> approvals)
 specifier|public
 name|ReviewerInfo
 name|format
@@ -880,10 +865,10 @@ parameter_list|(
 name|ReviewerInfo
 name|out
 parameter_list|,
-name|PermissionBackend
+name|Account
 operator|.
-name|ForChange
-name|perm
+name|Id
+name|reviewer
 parameter_list|,
 name|ChangeData
 name|cd
@@ -988,6 +973,28 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|PermissionBackend
+operator|.
+name|ForChange
+name|perm
+init|=
+name|permissionBackend
+operator|.
+name|absentUser
+argument_list|(
+name|reviewer
+argument_list|)
+operator|.
+name|database
+argument_list|(
+name|db
+argument_list|)
+operator|.
+name|change
+argument_list|(
+name|cd
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|SubmitRecord

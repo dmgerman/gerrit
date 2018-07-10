@@ -232,7 +232,14 @@ specifier|final
 name|GlobalOrPluginPermission
 name|perm
 decl_stmt|;
-DECL|method|WithUser (PermissionBackend.WithUser impl, GlobalOrPluginPermission perm)
+DECL|field|user
+specifier|private
+specifier|final
+name|CurrentUser
+name|user
+decl_stmt|;
+DECL|method|WithUser ( PermissionBackend.WithUser impl, GlobalOrPluginPermission perm, CurrentUser user)
+specifier|public
 name|WithUser
 parameter_list|(
 name|PermissionBackend
@@ -242,6 +249,9 @@ name|impl
 parameter_list|,
 name|GlobalOrPluginPermission
 name|perm
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 block|{
 name|this
@@ -255,6 +265,12 @@ operator|.
 name|perm
 operator|=
 name|perm
+expr_stmt|;
+name|this
+operator|.
+name|user
+operator|=
+name|user
 expr_stmt|;
 block|}
 DECL|method|withUser ()
@@ -335,10 +351,7 @@ name|perm
 argument_list|,
 name|hashForUser
 argument_list|(
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|)
 argument_list|)
 return|;
@@ -390,17 +403,11 @@ argument_list|)
 operator|&&
 name|usersAreEqual
 argument_list|(
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|,
 name|other
 operator|.
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -427,7 +434,14 @@ specifier|final
 name|ProjectPermission
 name|perm
 decl_stmt|;
-DECL|method|ForProject (PermissionBackend.ForProject impl, ProjectPermission perm)
+DECL|field|user
+specifier|private
+specifier|final
+name|CurrentUser
+name|user
+decl_stmt|;
+DECL|method|ForProject (PermissionBackend.ForProject impl, ProjectPermission perm, CurrentUser user)
+specifier|public
 name|ForProject
 parameter_list|(
 name|PermissionBackend
@@ -437,6 +451,9 @@ name|impl
 parameter_list|,
 name|ProjectPermission
 name|perm
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 block|{
 name|this
@@ -450,6 +467,12 @@ operator|.
 name|perm
 operator|=
 name|perm
+expr_stmt|;
+name|this
+operator|.
+name|user
+operator|=
+name|user
 expr_stmt|;
 block|}
 DECL|method|project ()
@@ -535,10 +558,7 @@ argument_list|()
 argument_list|,
 name|hashForUser
 argument_list|(
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|)
 argument_list|)
 return|;
@@ -607,17 +627,11 @@ argument_list|)
 operator|&&
 name|usersAreEqual
 argument_list|(
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|,
 name|other
 operator|.
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -644,7 +658,14 @@ specifier|final
 name|RefPermission
 name|perm
 decl_stmt|;
-DECL|method|ForRef (PermissionBackend.ForRef impl, RefPermission perm)
+DECL|field|user
+specifier|private
+specifier|final
+name|CurrentUser
+name|user
+decl_stmt|;
+DECL|method|ForRef (PermissionBackend.ForRef impl, RefPermission perm, CurrentUser user)
+specifier|public
 name|ForRef
 parameter_list|(
 name|PermissionBackend
@@ -654,6 +675,9 @@ name|impl
 parameter_list|,
 name|RefPermission
 name|perm
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 block|{
 name|this
@@ -667,6 +691,12 @@ operator|.
 name|perm
 operator|=
 name|perm
+expr_stmt|;
+name|this
+operator|.
+name|user
+operator|=
+name|user
 expr_stmt|;
 block|}
 DECL|method|ref ()
@@ -752,10 +782,7 @@ argument_list|()
 argument_list|,
 name|hashForUser
 argument_list|(
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|)
 argument_list|)
 return|;
@@ -824,17 +851,11 @@ argument_list|)
 operator|&&
 name|usersAreEqual
 argument_list|(
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|,
 name|other
 operator|.
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -861,7 +882,14 @@ specifier|final
 name|ChangePermissionOrLabel
 name|perm
 decl_stmt|;
-DECL|method|ForChange (PermissionBackend.ForChange impl, ChangePermissionOrLabel perm)
+DECL|field|user
+specifier|private
+specifier|final
+name|CurrentUser
+name|user
+decl_stmt|;
+DECL|method|ForChange ( PermissionBackend.ForChange impl, ChangePermissionOrLabel perm, CurrentUser user)
+specifier|public
 name|ForChange
 parameter_list|(
 name|PermissionBackend
@@ -871,6 +899,9 @@ name|impl
 parameter_list|,
 name|ChangePermissionOrLabel
 name|perm
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 block|{
 name|this
@@ -884,6 +915,12 @@ operator|.
 name|perm
 operator|=
 name|perm
+expr_stmt|;
+name|this
+operator|.
+name|user
+operator|=
+name|user
 expr_stmt|;
 block|}
 DECL|method|change ()
@@ -969,10 +1006,7 @@ argument_list|()
 argument_list|,
 name|hashForUser
 argument_list|(
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|)
 argument_list|)
 return|;
@@ -1041,17 +1075,11 @@ argument_list|)
 operator|&&
 name|usersAreEqual
 argument_list|(
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|,
 name|other
 operator|.
-name|impl
-operator|.
 name|user
-argument_list|()
 argument_list|)
 return|;
 block|}

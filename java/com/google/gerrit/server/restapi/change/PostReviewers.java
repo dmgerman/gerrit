@@ -3147,28 +3147,6 @@ argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
-name|PermissionBackend
-operator|.
-name|ForChange
-name|perm
-init|=
-name|permissionBackend
-operator|.
-name|user
-argument_list|(
-name|caller
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|dbProvider
-argument_list|)
-operator|.
-name|change
-argument_list|(
-name|cd
-argument_list|)
-decl_stmt|;
 comment|// Generate result details and fill AccountLoader. This occurs outside
 comment|// the Op because the accounts are in a different table.
 name|PostReviewersOp
@@ -3242,12 +3220,7 @@ name|get
 argument_list|()
 argument_list|)
 argument_list|,
-name|perm
-operator|.
-name|absentUser
-argument_list|(
 name|accountId
-argument_list|)
 argument_list|,
 name|cd
 argument_list|)
@@ -3352,15 +3325,10 @@ name|get
 argument_list|()
 argument_list|)
 argument_list|,
-name|perm
-operator|.
-name|absentUser
-argument_list|(
 name|psa
 operator|.
 name|getAccountId
 argument_list|()
-argument_list|)
 argument_list|,
 name|cd
 argument_list|,
