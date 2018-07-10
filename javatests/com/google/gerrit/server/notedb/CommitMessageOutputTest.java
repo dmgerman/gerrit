@@ -522,9 +522,9 @@ argument_list|()
 operator|+
 literal|"\n"
 operator|+
-literal|"Reviewer: Change Owner<1@gerrit>\n"
+literal|"Reviewer: Gerrit User 1<1@gerrit>\n"
 operator|+
-literal|"CC: Other Account<2@gerrit>\n"
+literal|"CC: Gerrit User 2<2@gerrit>\n"
 operator|+
 literal|"Label: Code-Review=-1\n"
 operator|+
@@ -551,7 +551,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Change Owner"
+literal|"Gerrit User 1"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1116,13 +1116,13 @@ literal|"\n"
 operator|+
 literal|"Submitted-with: NOT_READY\n"
 operator|+
-literal|"Submitted-with: OK: Verified: Change Owner<1@gerrit>\n"
+literal|"Submitted-with: OK: Verified: Gerrit User 1<1@gerrit>\n"
 operator|+
 literal|"Submitted-with: NEED: Code-Review\n"
 operator|+
 literal|"Submitted-with: NOT_READY\n"
 operator|+
-literal|"Submitted-with: OK: Verified: Change Owner<1@gerrit>\n"
+literal|"Submitted-with: OK: Verified: Gerrit User 1<1@gerrit>\n"
 operator|+
 literal|"Submitted-with: NEED: Alternative-Code-Review\n"
 argument_list|,
@@ -1147,7 +1147,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Change Owner"
+literal|"Gerrit User 1"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1382,7 +1382,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"GerritAccount #3"
+literal|"Gerrit User 3"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1542,7 +1542,7 @@ argument_list|()
 expr_stmt|;
 name|assertBodyEquals
 argument_list|(
-literal|"Update patch set 1\n\nPatch-set: 1\nReviewer: Change Owner<1@gerrit>\n"
+literal|"Update patch set 1\n\nPatch-set: 1\nReviewer: Gerrit User 1<1@gerrit>\n"
 argument_list|,
 name|update
 operator|.
@@ -2073,7 +2073,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Other Account"
+literal|"Gerrit User 2"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -2101,7 +2101,7 @@ literal|"\n"
 operator|+
 literal|"Patch-set: 1\n"
 operator|+
-literal|"Real-user: Change Owner<1@gerrit>\n"
+literal|"Real-user: Gerrit User 1<1@gerrit>\n"
 argument_list|,
 name|commit
 argument_list|)

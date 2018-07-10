@@ -5839,10 +5839,9 @@ expr_stmt|;
 name|String
 name|strIdent
 init|=
-name|otherUser
-operator|.
-name|getName
-argument_list|()
+literal|"Gerrit User "
+operator|+
+name|otherUserId
 operator|+
 literal|"<"
 operator|+
