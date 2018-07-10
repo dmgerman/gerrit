@@ -1317,7 +1317,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"A Contributor Agreement must be completed"
+literal|"Contributor Agreement"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -1515,7 +1515,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"A Contributor Agreement must be completed"
+literal|"Contributor Agreement"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -1623,7 +1623,7 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-literal|"A Contributor Agreement must be completed"
+literal|"Contributor Agreement"
 argument_list|)
 expr_stmt|;
 block|}

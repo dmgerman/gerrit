@@ -723,7 +723,33 @@ name|msg
 operator|.
 name|append
 argument_list|(
-literal|"A Contributor Agreement must be completed before uploading"
+literal|"No Contributor Agreement on file for user "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|iUser
+operator|.
+name|getNameEmail
+argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|" (id="
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|iUser
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|")"
 argument_list|)
 expr_stmt|;
 if|if
