@@ -79,6 +79,11 @@ specifier|public
 name|Boolean
 name|indexChildren
 decl_stmt|;
+DECL|field|async
+specifier|public
+name|Boolean
+name|async
+decl_stmt|;
 block|}
 end_class
 
