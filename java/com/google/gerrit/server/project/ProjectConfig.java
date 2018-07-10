@@ -2818,27 +2818,6 @@ return|return
 name|mimeTypes
 return|;
 block|}
-DECL|method|resolve (AccountGroup group)
-specifier|public
-name|GroupReference
-name|resolve
-parameter_list|(
-name|AccountGroup
-name|group
-parameter_list|)
-block|{
-return|return
-name|resolve
-argument_list|(
-name|GroupReference
-operator|.
-name|forGroup
-argument_list|(
-name|group
-argument_list|)
-argument_list|)
-return|;
-block|}
 DECL|method|resolve (GroupReference group)
 specifier|public
 name|GroupReference
