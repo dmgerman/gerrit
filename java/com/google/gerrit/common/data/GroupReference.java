@@ -120,33 +120,6 @@ name|PREFIX
 init|=
 literal|"group "
 decl_stmt|;
-comment|/** @return a new reference to the given group description. */
-DECL|method|forGroup (AccountGroup group)
-specifier|public
-specifier|static
-name|GroupReference
-name|forGroup
-parameter_list|(
-name|AccountGroup
-name|group
-parameter_list|)
-block|{
-return|return
-operator|new
-name|GroupReference
-argument_list|(
-name|group
-operator|.
-name|getGroupUUID
-argument_list|()
-argument_list|,
-name|group
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-return|;
-block|}
 DECL|method|forGroup (GroupDescription.Basic group)
 specifier|public
 specifier|static
