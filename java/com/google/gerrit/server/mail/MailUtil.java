@@ -206,18 +206,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|time
-operator|.
-name|format
-operator|.
-name|DateTimeFormatter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Collections
@@ -300,19 +288,6 @@ specifier|public
 class|class
 name|MailUtil
 block|{
-DECL|field|rfcDateformatter
-specifier|public
-specifier|static
-name|DateTimeFormatter
-name|rfcDateformatter
-init|=
-name|DateTimeFormatter
-operator|.
-name|ofPattern
-argument_list|(
-literal|"EEE, dd MMM yyyy HH:mm:ss ZZZ"
-argument_list|)
-decl_stmt|;
 DECL|method|getRecipientsFromFooters ( AccountResolver accountResolver, List<FooterLine> footerLines)
 specifier|public
 specifier|static

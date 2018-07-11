@@ -182,11 +182,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|mail
 operator|.
-name|MailUtil
+name|EmailHeader
 import|;
 end_import
 
@@ -198,13 +196,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|mail
 operator|.
-name|send
-operator|.
-name|EmailHeader
+name|MailProcessingUtil
 import|;
 end_import
 
@@ -1179,7 +1173,7 @@ argument_list|()
 operator|+
 literal|": "
 operator|+
-name|MailUtil
+name|MailProcessingUtil
 operator|.
 name|rfcDateformatter
 operator|.

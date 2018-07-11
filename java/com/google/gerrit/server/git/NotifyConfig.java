@@ -104,13 +104,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|mail
 operator|.
-name|account
-operator|.
-name|ProjectWatches
-operator|.
-name|NotifyType
+name|Address
 import|;
 end_import
 
@@ -124,9 +120,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
+name|account
 operator|.
-name|Address
+name|ProjectWatches
+operator|.
+name|NotifyType
 import|;
 end_import
 

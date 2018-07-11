@@ -110,11 +110,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|mail
 operator|.
-name|client
-operator|.
-name|Account
+name|Address
 import|;
 end_import
 
@@ -126,11 +124,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|mail
+name|client
 operator|.
-name|Address
+name|Account
 import|;
 end_import
 
