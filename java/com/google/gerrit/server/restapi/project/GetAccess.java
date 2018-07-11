@@ -1892,20 +1892,22 @@ name|ownerOf
 operator|.
 name|isEmpty
 argument_list|()
-operator|&&
+condition|)
+block|{
+try|try
+block|{
 name|permissionBackend
 operator|.
 name|currentUser
 argument_list|()
 operator|.
-name|test
+name|check
 argument_list|(
 name|GlobalPermission
 operator|.
 name|ADMINISTRATE_SERVER
 argument_list|)
-condition|)
-block|{
+expr_stmt|;
 comment|// Special case: If the section list is empty, this project has no current
 comment|// access control information. Fall back to site administrators.
 name|info
@@ -1919,6 +1921,15 @@ operator|.
 name|ALL
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AuthException
+name|e
+parameter_list|)
+block|{
+comment|// Do nothing.
+block|}
 block|}
 if|if
 condition|(
