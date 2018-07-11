@@ -1226,30 +1226,6 @@ name|String
 name|resourcePath
 parameter_list|()
 function_decl|;
-comment|/** Returns a new instance rescoped to same project, but different {@code user}. */
-DECL|method|user (CurrentUser user)
-specifier|public
-specifier|abstract
-name|ForProject
-name|user
-parameter_list|(
-name|CurrentUser
-name|user
-parameter_list|)
-function_decl|;
-comment|/** @see PermissionBackend#absentUser(Account.Id) */
-DECL|method|absentUser (Account.Id id)
-specifier|public
-specifier|abstract
-name|ForProject
-name|absentUser
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
-parameter_list|)
-function_decl|;
 comment|/** Returns an instance scoped for {@code ref} in this project. */
 DECL|method|ref (String ref)
 specifier|public
@@ -1661,30 +1637,6 @@ name|String
 name|resourcePath
 parameter_list|()
 function_decl|;
-comment|/** Returns a new instance rescoped to same reference, but different {@code user}. */
-DECL|method|user (CurrentUser user)
-specifier|public
-specifier|abstract
-name|ForRef
-name|user
-parameter_list|(
-name|CurrentUser
-name|user
-parameter_list|)
-function_decl|;
-comment|/** @see PermissionBackend#absentUser(Account.Id) */
-DECL|method|absentUser (Account.Id id)
-specifier|public
-specifier|abstract
-name|ForRef
-name|absentUser
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
-parameter_list|)
-function_decl|;
 comment|/** Returns an instance scoped to change. */
 DECL|method|change (ChangeData cd)
 specifier|public
@@ -1861,30 +1813,6 @@ specifier|abstract
 name|String
 name|resourcePath
 parameter_list|()
-function_decl|;
-comment|/** Returns a new instance rescoped to same change, but different {@code user}. */
-DECL|method|user (CurrentUser user)
-specifier|public
-specifier|abstract
-name|ForChange
-name|user
-parameter_list|(
-name|CurrentUser
-name|user
-parameter_list|)
-function_decl|;
-comment|/** @see PermissionBackend#absentUser(Account.Id) */
-DECL|method|absentUser (Account.Id id)
-specifier|public
-specifier|abstract
-name|ForChange
-name|absentUser
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
-parameter_list|)
 function_decl|;
 comment|/** Verify scoped user can {@code perm}, throwing if denied. */
 DECL|method|check (ChangePermissionOrLabel perm)
