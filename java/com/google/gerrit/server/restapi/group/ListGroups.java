@@ -482,6 +482,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectState
@@ -1579,6 +1595,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|SortedMap
 argument_list|<
@@ -1656,6 +1674,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 if|if
 condition|(
@@ -1784,6 +1804,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|Pattern
 name|pattern
@@ -1991,6 +2013,8 @@ throws|throws
 name|OrmException
 throws|,
 name|BadRequestException
+throws|,
+name|PermissionBackendException
 block|{
 if|if
 condition|(
@@ -2280,6 +2304,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|Pattern
 name|pattern
@@ -2483,6 +2509,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|String
 name|uuid
@@ -2537,6 +2565,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 return|return
 name|filterGroupsOwnedBy
