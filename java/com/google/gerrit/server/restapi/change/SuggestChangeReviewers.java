@@ -649,29 +649,6 @@ name|ChangeResource
 name|rsrc
 parameter_list|)
 block|{
-comment|// Use the destination reference, not the change, as private changes deny anyone who is not
-comment|// already a reviewer.
-name|PermissionBackend
-operator|.
-name|ForRef
-name|perm
-init|=
-name|permissionBackend
-operator|.
-name|currentUser
-argument_list|()
-operator|.
-name|ref
-argument_list|(
-name|rsrc
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getDest
-argument_list|()
-argument_list|)
-decl_stmt|;
 return|return
 operator|new
 name|VisibilityControl
@@ -691,6 +668,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+comment|// Use the destination reference, not the change, as private changes deny anyone who is not
+comment|// already a reviewer.
 name|IdentifiedUser
 name|who
 init|=
@@ -702,11 +681,27 @@ name|account
 argument_list|)
 decl_stmt|;
 return|return
-name|perm
+name|permissionBackend
 operator|.
 name|user
 argument_list|(
 name|who
+argument_list|)
+operator|.
+name|database
+argument_list|(
+name|dbProvider
+argument_list|)
+operator|.
+name|ref
+argument_list|(
+name|rsrc
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getDest
+argument_list|()
 argument_list|)
 operator|.
 name|testOrFalse
