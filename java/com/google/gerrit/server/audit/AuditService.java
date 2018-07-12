@@ -202,6 +202,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|GroupAuditService
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -237,6 +253,8 @@ DECL|class|AuditService
 specifier|public
 class|class
 name|AuditService
+implements|implements
+name|GroupAuditService
 block|{
 DECL|field|logger
 specifier|private
@@ -326,6 +344,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|dispatchAddMembers ( Account.Id actor, AccountGroup.UUID updatedGroup, ImmutableSet<Account.Id> addedMembers, Timestamp addedOn)
 specifier|public
 name|void
@@ -411,6 +431,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|dispatchDeleteMembers ( Account.Id actor, AccountGroup.UUID updatedGroup, ImmutableSet<Account.Id> deletedMembers, Timestamp deletedOn)
 specifier|public
 name|void
@@ -496,6 +518,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|dispatchAddSubgroups ( Account.Id actor, AccountGroup.UUID updatedGroup, ImmutableSet<AccountGroup.UUID> addedSubgroups, Timestamp addedOn)
 specifier|public
 name|void
@@ -581,6 +605,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|dispatchDeleteSubgroups ( Account.Id actor, AccountGroup.UUID updatedGroup, ImmutableSet<AccountGroup.UUID> deletedSubgroups, Timestamp deletedOn)
 specifier|public
 name|void

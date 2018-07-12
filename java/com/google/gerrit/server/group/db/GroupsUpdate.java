@@ -332,22 +332,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|audit
-operator|.
-name|AuditService
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|AllUsersName
@@ -435,6 +419,22 @@ operator|.
 name|meta
 operator|.
 name|MetaDataUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|GroupAuditService
 import|;
 end_import
 
@@ -746,11 +746,11 @@ name|GroupIndexer
 argument_list|>
 name|indexer
 decl_stmt|;
-DECL|field|auditService
+DECL|field|groupAuditService
 specifier|private
 specifier|final
-name|AuditService
-name|auditService
+name|GroupAuditService
+name|groupAuditService
 decl_stmt|;
 DECL|field|renameGroupOpFactory
 specifier|private
@@ -800,7 +800,7 @@ name|retryHelper
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, GroupBackend groupBackend, GroupCache groupCache, GroupIncludeCache groupIncludeCache, Provider<GroupIndexer> indexer, AuditService auditService, AccountCache accountCache, RenameGroupOp.Factory renameGroupOpFactory, @GerritServerId String serverId, @GerritPersonIdent PersonIdent serverIdent, MetaDataUpdate.InternalFactory metaDataUpdateInternalFactory, GitReferenceUpdated gitRefUpdated, RetryHelper retryHelper, @Assisted @Nullable IdentifiedUser currentUser)
+DECL|method|GroupsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, GroupBackend groupBackend, GroupCache groupCache, GroupIncludeCache groupIncludeCache, Provider<GroupIndexer> indexer, GroupAuditService auditService, AccountCache accountCache, RenameGroupOp.Factory renameGroupOpFactory, @GerritServerId String serverId, @GerritPersonIdent PersonIdent serverIdent, MetaDataUpdate.InternalFactory metaDataUpdateInternalFactory, GitReferenceUpdated gitRefUpdated, RetryHelper retryHelper, @Assisted @Nullable IdentifiedUser currentUser)
 name|GroupsUpdate
 parameter_list|(
 name|GitRepositoryManager
@@ -824,7 +824,7 @@ name|GroupIndexer
 argument_list|>
 name|indexer
 parameter_list|,
-name|AuditService
+name|GroupAuditService
 name|auditService
 parameter_list|,
 name|AccountCache
@@ -896,7 +896,7 @@ name|indexer
 expr_stmt|;
 name|this
 operator|.
-name|auditService
+name|groupAuditService
 operator|=
 name|auditService
 expr_stmt|;
@@ -2387,7 +2387,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|auditService
+name|groupAuditService
 operator|.
 name|dispatchAddMembers
 argument_list|(
@@ -2425,7 +2425,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|auditService
+name|groupAuditService
 operator|.
 name|dispatchAddSubgroups
 argument_list|(
@@ -2485,7 +2485,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|auditService
+name|groupAuditService
 operator|.
 name|dispatchAddMembers
 argument_list|(
@@ -2520,7 +2520,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|auditService
+name|groupAuditService
 operator|.
 name|dispatchDeleteMembers
 argument_list|(
@@ -2555,7 +2555,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|auditService
+name|groupAuditService
 operator|.
 name|dispatchAddSubgroups
 argument_list|(
@@ -2590,7 +2590,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|auditService
+name|groupAuditService
 operator|.
 name|dispatchDeleteSubgroups
 argument_list|(
