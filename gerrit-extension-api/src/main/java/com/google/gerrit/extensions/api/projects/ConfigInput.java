@@ -182,6 +182,11 @@ specifier|public
 name|InheritableBoolean
 name|privateByDefault
 decl_stmt|;
+DECL|field|workInProgressByDefault
+specifier|public
+name|InheritableBoolean
+name|workInProgressByDefault
+decl_stmt|;
 DECL|field|enableReviewerByEmail
 specifier|public
 name|InheritableBoolean

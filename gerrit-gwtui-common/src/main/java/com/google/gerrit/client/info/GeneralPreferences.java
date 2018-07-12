@@ -978,6 +978,15 @@ name|publishCommentsOnPush
 parameter_list|()
 comment|/*-{ return this.publish_comments_on_push || false }-*/
 function_decl|;
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+DECL|method|workInProgressByDefault ()
+name|workInProgressByDefault
+parameter_list|()
+comment|/*-{ return this.work_in_progress_by_default || false }-*/
+function_decl|;
 DECL|method|my ()
 specifier|public
 specifier|final
@@ -1410,6 +1419,18 @@ name|boolean
 name|p
 parameter_list|)
 comment|/*-{ this.publish_comments_on_push = p }-*/
+function_decl|;
+DECL|method|workInProgressByDefault ( boolean p)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|workInProgressByDefault
+parameter_list|(
+name|boolean
+name|p
+parameter_list|)
+comment|/*-{ this.work_in_progress_by_default = p }-*/
 function_decl|;
 DECL|method|setMyMenus (List<TopMenuItem> myMenus)
 specifier|public
