@@ -1421,6 +1421,11 @@ name|d
 operator|.
 name|change
 argument_list|()
+argument_list|,
+name|d
+operator|.
+name|notes
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|eventFactory

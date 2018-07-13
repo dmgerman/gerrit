@@ -178,6 +178,14 @@ specifier|public
 name|String
 name|commitMessage
 decl_stmt|;
+DECL|field|hashtags
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|hashtags
+decl_stmt|;
 DECL|field|createdOn
 specifier|public
 name|Long
