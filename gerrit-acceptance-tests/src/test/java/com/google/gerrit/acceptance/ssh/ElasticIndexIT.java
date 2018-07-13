@@ -188,15 +188,6 @@ name|ElasticIndexIT
 extends|extends
 name|AbstractIndexTests
 block|{
-DECL|field|container
-specifier|private
-specifier|static
-name|ElasticContainer
-argument_list|<
-name|?
-argument_list|>
-name|container
-decl_stmt|;
 DECL|method|getConfig (ElasticVersion version)
 specifier|private
 specifier|static
@@ -210,15 +201,19 @@ block|{
 name|ElasticNodeInfo
 name|elasticNodeInfo
 decl_stmt|;
+name|ElasticContainer
+argument_list|<
+name|?
+argument_list|>
 name|container
-operator|=
+init|=
 name|ElasticContainer
 operator|.
 name|createAndStart
 argument_list|(
 name|version
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|elasticNodeInfo
 operator|=
 operator|new
