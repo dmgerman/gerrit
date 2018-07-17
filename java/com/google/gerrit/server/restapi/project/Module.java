@@ -1037,15 +1037,6 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|DeleteRef
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
 name|ProjectNode
 operator|.
 name|Factory

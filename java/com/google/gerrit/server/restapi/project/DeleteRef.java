@@ -276,6 +276,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -376,7 +392,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectResource
+name|ProjectState
 import|;
 end_import
 
@@ -460,9 +476,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Singleton
 import|;
 end_import
 
@@ -619,6 +633,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|DeleteRef
 specifier|public
 class|class
@@ -696,29 +712,9 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 decl_stmt|;
-DECL|field|resource
-specifier|private
-specifier|final
-name|ProjectResource
-name|resource
-decl_stmt|;
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create (ProjectResource r)
-name|DeleteRef
-name|create
-parameter_list|(
-name|ProjectResource
-name|r
-parameter_list|)
-function_decl|;
-block|}
 annotation|@
 name|Inject
-DECL|method|DeleteRef ( Provider<IdentifiedUser> identifiedUser, PermissionBackend permissionBackend, GitRepositoryManager repoManager, GitReferenceUpdated referenceUpdated, RefValidationHelper.Factory refDeletionValidatorFactory, Provider<InternalChangeQuery> queryProvider, @Assisted ProjectResource resource)
+DECL|method|DeleteRef ( Provider<IdentifiedUser> identifiedUser, PermissionBackend permissionBackend, GitRepositoryManager repoManager, GitReferenceUpdated referenceUpdated, RefValidationHelper.Factory refDeletionValidatorFactory, Provider<InternalChangeQuery> queryProvider)
 name|DeleteRef
 parameter_list|(
 name|Provider
@@ -746,11 +742,6 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
-parameter_list|,
-annotation|@
-name|Assisted
-name|ProjectResource
-name|resource
 parameter_list|)
 block|{
 name|this
@@ -794,18 +785,15 @@ name|queryProvider
 operator|=
 name|queryProvider
 expr_stmt|;
-name|this
-operator|.
-name|resource
-operator|=
-name|resource
-expr_stmt|;
 block|}
-DECL|method|delete (ImmutableSet<String> refsToDelete)
+DECL|method|delete (ProjectState projectState, ImmutableSet<String> refsToDelete)
 specifier|public
 name|void
 name|delete
 parameter_list|(
+name|ProjectState
+name|projectState
+parameter_list|,
 name|ImmutableSet
 argument_list|<
 name|String
@@ -823,17 +811,22 @@ name|PermissionBackendException
 block|{
 name|delete
 argument_list|(
+name|projectState
+argument_list|,
 name|refsToDelete
 argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|delete (ImmutableSet<String> refsToDelete, @Nullable String prefix)
+DECL|method|delete ( ProjectState projectState, ImmutableSet<String> refsToDelete, @Nullable String prefix)
 specifier|public
 name|void
 name|delete
 parameter_list|(
+name|ProjectState
+name|projectState
+parameter_list|,
 name|ImmutableSet
 argument_list|<
 name|String
@@ -872,7 +865,7 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|resource
+name|projectState
 operator|.
 name|getNameKey
 argument_list|()
@@ -893,6 +886,11 @@ name|deleteSingleRef
 argument_list|(
 name|r
 argument_list|,
+name|projectState
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
 name|Iterables
 operator|.
 name|getOnlyElement
@@ -910,6 +908,8 @@ name|deleteMultipleRefs
 argument_list|(
 name|r
 argument_list|,
+name|projectState
+argument_list|,
 name|refsToDelete
 argument_list|,
 name|prefix
@@ -919,13 +919,18 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|deleteSingleRef (Repository r, String ref, String prefix)
+DECL|method|deleteSingleRef (Repository r, Project.NameKey project, String ref, String prefix)
 specifier|private
 name|void
 name|deleteSingleRef
 parameter_list|(
 name|Repository
 name|r
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|String
 name|ref
@@ -1011,9 +1016,9 @@ name|refDeletionValidator
 operator|.
 name|validateRefOperation
 argument_list|(
-name|resource
+name|project
 operator|.
-name|getName
+name|get
 argument_list|()
 argument_list|,
 name|identifiedUser
@@ -1148,10 +1153,7 @@ name|referenceUpdated
 operator|.
 name|fire
 argument_list|(
-name|resource
-operator|.
-name|getNameKey
-argument_list|()
+name|project
 argument_list|,
 name|u
 argument_list|,
@@ -1251,13 +1253,16 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|deleteMultipleRefs (Repository r, ImmutableSet<String> refsToDelete, String prefix)
+DECL|method|deleteMultipleRefs ( Repository r, ProjectState projectState, ImmutableSet<String> refsToDelete, String prefix)
 specifier|private
 name|void
 name|deleteMultipleRefs
 parameter_list|(
 name|Repository
 name|r
+parameter_list|,
+name|ProjectState
+name|projectState
 parameter_list|,
 name|ImmutableSet
 argument_list|<
@@ -1350,7 +1355,7 @@ name|addCommand
 argument_list|(
 name|createDeleteCommand
 argument_list|(
-name|resource
+name|projectState
 argument_list|,
 name|r
 argument_list|,
@@ -1415,7 +1420,10 @@ condition|)
 block|{
 name|postDeletion
 argument_list|(
-name|resource
+name|projectState
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|,
 name|command
 argument_list|)
@@ -1454,13 +1462,13 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|createDeleteCommand (ProjectResource project, Repository r, String refName)
+DECL|method|createDeleteCommand ( ProjectState projectState, Repository r, String refName)
 specifier|private
 name|ReceiveCommand
 name|createDeleteCommand
 parameter_list|(
-name|ProjectResource
-name|project
+name|ProjectState
+name|projectState
 parameter_list|,
 name|Repository
 name|r
@@ -1588,7 +1596,7 @@ argument_list|()
 operator|.
 name|project
 argument_list|(
-name|project
+name|projectState
 operator|.
 name|getNameKey
 argument_list|()
@@ -1629,10 +1637,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|project
-operator|.
-name|getProjectState
-argument_list|()
+name|projectState
 operator|.
 name|statePermitsWrite
 argument_list|()
@@ -1671,7 +1676,7 @@ name|Branch
 operator|.
 name|NameKey
 argument_list|(
-name|project
+name|projectState
 operator|.
 name|getNameKey
 argument_list|()
@@ -1763,7 +1768,7 @@ name|refDeletionValidator
 operator|.
 name|validateRefOperation
 argument_list|(
-name|project
+name|projectState
 operator|.
 name|getName
 argument_list|()
@@ -1908,12 +1913,14 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|postDeletion (ProjectResource project, ReceiveCommand cmd)
+DECL|method|postDeletion (Project.NameKey project, ReceiveCommand cmd)
 specifier|private
 name|void
 name|postDeletion
 parameter_list|(
-name|ProjectResource
+name|Project
+operator|.
+name|NameKey
 name|project
 parameter_list|,
 name|ReceiveCommand
@@ -1925,9 +1932,6 @@ operator|.
 name|fire
 argument_list|(
 name|project
-operator|.
-name|getNameKey
-argument_list|()
 argument_list|,
 name|cmd
 argument_list|,

@@ -378,13 +378,11 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 decl_stmt|;
-DECL|field|deleteRefFactory
+DECL|field|deleteRef
 specifier|private
 specifier|final
 name|DeleteRef
-operator|.
-name|Factory
-name|deleteRefFactory
+name|deleteRef
 decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
@@ -394,7 +392,7 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteBranch ( Provider<InternalChangeQuery> queryProvider, DeleteRef.Factory deleteRefFactory, PermissionBackend permissionBackend)
+DECL|method|DeleteBranch ( Provider<InternalChangeQuery> queryProvider, DeleteRef deleteRef, PermissionBackend permissionBackend)
 name|DeleteBranch
 parameter_list|(
 name|Provider
@@ -404,9 +402,7 @@ argument_list|>
 name|queryProvider
 parameter_list|,
 name|DeleteRef
-operator|.
-name|Factory
-name|deleteRefFactory
+name|deleteRef
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -420,9 +416,9 @@ name|queryProvider
 expr_stmt|;
 name|this
 operator|.
-name|deleteRefFactory
+name|deleteRef
 operator|=
-name|deleteRefFactory
+name|deleteRef
 expr_stmt|;
 name|this
 operator|.
@@ -555,15 +551,15 @@ literal|" has open changes"
 argument_list|)
 throw|;
 block|}
-name|deleteRefFactory
-operator|.
-name|create
-argument_list|(
-name|rsrc
-argument_list|)
+name|deleteRef
 operator|.
 name|delete
 argument_list|(
+name|rsrc
+operator|.
+name|getProjectState
+argument_list|()
+argument_list|,
 name|ImmutableSet
 operator|.
 name|of
