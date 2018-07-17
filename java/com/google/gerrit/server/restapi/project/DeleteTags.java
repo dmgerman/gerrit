@@ -352,7 +352,7 @@ throw|;
 block|}
 name|deleteRef
 operator|.
-name|delete
+name|deleteMultipleRefs
 argument_list|(
 name|project
 operator|.
