@@ -390,7 +390,9 @@ name|port
 argument_list|,
 name|indicesPrefix
 argument_list|,
-literal|"changeme"
+name|ElasticVersion
+operator|.
+name|V5_6
 argument_list|)
 expr_stmt|;
 return|return

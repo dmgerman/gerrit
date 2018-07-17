@@ -374,6 +374,15 @@ name|privateByDefault
 parameter_list|()
 comment|/*-{ return this.private_by_default; }-*/
 function_decl|;
+DECL|method|workInProgressByDefault ()
+specifier|public
+specifier|final
+specifier|native
+name|InheritedBooleanInfo
+name|workInProgressByDefault
+parameter_list|()
+comment|/*-{ return this.work_in_progress_by_default; }-*/
+function_decl|;
 DECL|method|enableReviewerByEmail ()
 specifier|public
 specifier|final

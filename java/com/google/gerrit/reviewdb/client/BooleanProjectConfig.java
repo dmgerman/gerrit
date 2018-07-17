@@ -171,6 +171,14 @@ literal|"submit"
 argument_list|,
 literal|"rejectEmptyCommit"
 argument_list|)
+block|,
+DECL|enumConstant|WORK_IN_PROGRESS_BY_DEFAULT
+name|WORK_IN_PROGRESS_BY_DEFAULT
+argument_list|(
+literal|"change"
+argument_list|,
+literal|"workInProgressByDefault"
+argument_list|)
 block|;
 comment|// Git config
 DECL|field|section

@@ -201,7 +201,7 @@ name|port
 expr_stmt|;
 block|}
 block|}
-DECL|method|configure (Config config, int port, String prefix, String password)
+DECL|method|configure (Config config, int port, String prefix, ElasticVersion version)
 specifier|public
 specifier|static
 name|void
@@ -216,8 +216,8 @@ parameter_list|,
 name|String
 name|prefix
 parameter_list|,
-name|String
-name|password
+name|ElasticVersion
+name|version
 parameter_list|)
 block|{
 name|config
@@ -276,6 +276,19 @@ argument_list|,
 literal|10000
 argument_list|)
 expr_stmt|;
+name|String
+name|password
+init|=
+name|version
+operator|==
+name|ElasticVersion
+operator|.
+name|V5_6
+condition|?
+literal|"changeme"
+else|:
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|password
