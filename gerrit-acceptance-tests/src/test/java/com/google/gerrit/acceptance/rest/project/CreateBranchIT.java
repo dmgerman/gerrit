@@ -629,13 +629,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|errType
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|errMsg
@@ -651,6 +644,13 @@ name|errMsg
 argument_list|)
 expr_stmt|;
 block|}
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|errType
+argument_list|)
+expr_stmt|;
 name|branch
 argument_list|()
 operator|.
