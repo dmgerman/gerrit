@@ -126,7 +126,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestCollectionView
+name|RestCollectionModifyView
 import|;
 end_import
 
@@ -166,7 +166,7 @@ parameter_list|,
 name|O
 parameter_list|>
 implements|implements
-name|RestCollectionView
+name|RestCollectionModifyView
 argument_list|<
 name|P
 argument_list|,
