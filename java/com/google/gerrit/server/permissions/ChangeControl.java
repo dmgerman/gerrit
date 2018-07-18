@@ -709,34 +709,6 @@ name|db
 argument_list|)
 return|;
 block|}
-DECL|method|forUser (CurrentUser who)
-specifier|private
-name|ChangeControl
-name|forUser
-parameter_list|(
-name|CurrentUser
-name|who
-parameter_list|)
-block|{
-return|return
-operator|new
-name|ChangeControl
-argument_list|(
-name|changeDataFactory
-argument_list|,
-name|identifiedUserFactory
-argument_list|,
-name|refControl
-operator|.
-name|forUser
-argument_list|(
-name|who
-argument_list|)
-argument_list|,
-name|notes
-argument_list|)
-return|;
-block|}
 DECL|method|getUser ()
 specifier|private
 name|CurrentUser
