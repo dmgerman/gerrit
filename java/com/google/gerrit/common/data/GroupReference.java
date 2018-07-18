@@ -226,10 +226,13 @@ specifier|protected
 name|GroupReference
 parameter_list|()
 block|{}
-DECL|method|GroupReference (AccountGroup.UUID uuid, String name)
+comment|/**    * Create a group reference.    *    * @param uuid UUID of the group, may be {@code null} if the group name couldn't be resolved    * @param name the group name, must not be {@code null}    */
+DECL|method|GroupReference (@ullable AccountGroup.UUID uuid, String name)
 specifier|public
 name|GroupReference
 parameter_list|(
+annotation|@
+name|Nullable
 name|AccountGroup
 operator|.
 name|UUID
@@ -250,6 +253,8 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|getUUID ()
 specifier|public
 name|AccountGroup
@@ -274,11 +279,13 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|setUUID (AccountGroup.UUID newUUID)
+DECL|method|setUUID (@ullable AccountGroup.UUID newUUID)
 specifier|public
 name|void
 name|setUUID
 parameter_list|(
+annotation|@
+name|Nullable
 name|AccountGroup
 operator|.
 name|UUID
