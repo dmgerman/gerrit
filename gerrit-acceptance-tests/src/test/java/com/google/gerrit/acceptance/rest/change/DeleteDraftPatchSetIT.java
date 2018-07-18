@@ -616,6 +616,11 @@ operator|.
 name|NEW
 argument_list|)
 expr_stmt|;
+name|setApiUser
+argument_list|(
+name|admin
+argument_list|)
+expr_stmt|;
 name|exception
 operator|.
 name|expect
@@ -630,11 +635,6 @@ operator|.
 name|expectMessage
 argument_list|(
 literal|"Patch set is not a draft"
-argument_list|)
-expr_stmt|;
-name|setApiUser
-argument_list|(
-name|admin
 argument_list|)
 expr_stmt|;
 name|deletePatchSet
@@ -715,6 +715,11 @@ operator|.
 name|DRAFT
 argument_list|)
 expr_stmt|;
+name|setApiUser
+argument_list|(
+name|user
+argument_list|)
+expr_stmt|;
 name|exception
 operator|.
 name|expect
@@ -731,11 +736,6 @@ argument_list|(
 literal|"Not found: "
 operator|+
 name|changeId
-argument_list|)
-expr_stmt|;
-name|setApiUser
-argument_list|(
-name|user
 argument_list|)
 expr_stmt|;
 name|deletePatchSet
