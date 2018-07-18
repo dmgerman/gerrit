@@ -2050,11 +2050,9 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|delete
+name|deleteOnCollection
 argument_list|(
-name|CHANGE_KIND
-argument_list|,
-literal|"edit"
+name|CHANGE_EDIT_KIND
 argument_list|)
 operator|.
 name|to
