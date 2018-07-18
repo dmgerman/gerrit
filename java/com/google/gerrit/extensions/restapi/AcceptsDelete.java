@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Optional interface for {@link RestCollection}.  *  *<p>This interface is used for 2 purposes:  *  *<ul>  *<li>to support {@code DELETE} directly on the collection itself  *<li>to support {@code DELETE} on a non-existing member of the collection (in order to create  *       that member)  *</ul>  *  *<p>This interface is not supported for root collections.  */
+comment|/**  * Optional interface for {@link RestCollection}.  *  *<p>This interface is used to support {@code DELETE} directly on the collection itself.  *  *<p>This interface is not supported for root collections.  */
 end_comment
 
 begin_interface
@@ -81,8 +81,8 @@ extends|extends
 name|RestResource
 parameter_list|>
 block|{
-comment|/**    * Handle    *    *<ul>    *<li>{@code DELETE} directly on the collection itself (in this case id is {@code null})    *<li>{@code DELETE} on a non-existing member of the collection (in this case id is not {@code    *       null})    *</ul>    *    * @param parent the collection    * @param id id of the non-existing collection member for which the {@code DELETE} request is    *     done, {@code null} if the {@code DELETE} request is done on the collection itself    * @return a view to handle the {@code DELETE} request    * @throws RestApiException the view cannot be constructed    */
-DECL|method|delete (P parent, IdString id)
+comment|/**    * Handle {@code DELETE} directly on the collection itself.    *    * @param parent the collection    * @return a view to handle the {@code DELETE} request    * @throws RestApiException the view cannot be constructed    */
+DECL|method|delete (P parent)
 name|RestModifyView
 argument_list|<
 name|P
@@ -93,9 +93,6 @@ name|delete
 parameter_list|(
 name|P
 name|parent
-parameter_list|,
-name|IdString
-name|id
 parameter_list|)
 throws|throws
 name|RestApiException

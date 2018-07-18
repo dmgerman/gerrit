@@ -158,22 +158,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|AcceptsDelete
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|AuthException
 import|;
 end_import
@@ -334,22 +318,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestApiException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|RestCollectionView
 import|;
 end_import
@@ -367,6 +335,22 @@ operator|.
 name|restapi
 operator|.
 name|RestCreateView
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestDeleteMissingView
 import|;
 end_import
 
@@ -772,20 +756,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -896,11 +866,6 @@ name|ChangeResource
 argument_list|,
 name|ChangeEditResource
 argument_list|>
-implements|,
-name|AcceptsDelete
-argument_list|<
-name|ChangeResource
-argument_list|>
 block|{
 DECL|field|views
 specifier|private
@@ -913,14 +878,6 @@ name|ChangeEditResource
 argument_list|>
 argument_list|>
 name|views
-decl_stmt|;
-DECL|field|deleteFileFactory
-specifier|private
-specifier|final
-name|DeleteFile
-operator|.
-name|Factory
-name|deleteFileFactory
 decl_stmt|;
 DECL|field|detail
 specifier|private
@@ -939,7 +896,7 @@ name|editUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEdits ( DynamicMap<RestView<ChangeEditResource>> views, Provider<Detail> detail, ChangeEditUtil editUtil, DeleteFile.Factory deleteFileFactory)
+DECL|method|ChangeEdits ( DynamicMap<RestView<ChangeEditResource>> views, Provider<Detail> detail, ChangeEditUtil editUtil)
 name|ChangeEdits
 parameter_list|(
 name|DynamicMap
@@ -959,11 +916,6 @@ name|detail
 parameter_list|,
 name|ChangeEditUtil
 name|editUtil
-parameter_list|,
-name|DeleteFile
-operator|.
-name|Factory
-name|deleteFileFactory
 parameter_list|)
 block|{
 name|this
@@ -983,12 +935,6 @@ operator|.
 name|editUtil
 operator|=
 name|editUtil
-expr_stmt|;
-name|this
-operator|.
-name|deleteFileFactory
-operator|=
-name|deleteFileFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -1105,38 +1051,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * This method is invoked if a DELETE request on a non-existing member is done. For change edits    * this is the case if a DELETE request for a file in a change edit is done and the change edit    * doesn't exist yet (and hence the parse method returned ResourceNotFoundException). In this case    * we want to create the change edit on the fly and delete the file with the given id in it.    */
-annotation|@
-name|Override
-DECL|method|delete (ChangeResource parent, IdString id)
-specifier|public
-name|DeleteFile
-name|delete
-parameter_list|(
-name|ChangeResource
-name|parent
-parameter_list|,
-name|IdString
-name|id
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-comment|// It's safe to assume that id can never be null, because
-comment|// otherwise we would end up in dedicated endpoint for
-comment|// deleting of change edits and not a file in change edit
-return|return
-name|deleteFileFactory
-operator|.
-name|create
-argument_list|(
-name|id
-operator|.
-name|get
-argument_list|()
-argument_list|)
-return|;
-block|}
 comment|/**    * Create handler that is activated when collection element is accessed but doesn't exist, e. g.    * PUT request with a path was called but change edit wasn't created yet. Change edit is created    * and PUT handler is called.    */
 DECL|class|Create
 specifier|public
@@ -1239,51 +1153,28 @@ specifier|static
 class|class
 name|DeleteFile
 implements|implements
-name|RestModifyView
+name|RestDeleteMissingView
 argument_list|<
 name|ChangeResource
+argument_list|,
+name|ChangeEditResource
 argument_list|,
 name|Input
 argument_list|>
 block|{
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create (String path)
-name|DeleteFile
-name|create
-parameter_list|(
-name|String
-name|path
-parameter_list|)
-function_decl|;
-block|}
 DECL|field|deleteContent
 specifier|private
 specifier|final
 name|DeleteContent
 name|deleteContent
 decl_stmt|;
-DECL|field|path
-specifier|private
-specifier|final
-name|String
-name|path
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteFile (DeleteContent deleteContent, @Assisted String path)
+DECL|method|DeleteFile (DeleteContent deleteContent)
 name|DeleteFile
 parameter_list|(
 name|DeleteContent
 name|deleteContent
-parameter_list|,
-annotation|@
-name|Assisted
-name|String
-name|path
 parameter_list|)
 block|{
 name|this
@@ -1292,16 +1183,10 @@ name|deleteContent
 operator|=
 name|deleteContent
 expr_stmt|;
-name|this
-operator|.
-name|path
-operator|=
-name|path
-expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource rsrc, Input in)
+DECL|method|apply (ChangeResource rsrc, IdString id, Input in)
 specifier|public
 name|Response
 argument_list|<
@@ -1311,6 +1196,9 @@ name|apply
 parameter_list|(
 name|ChangeResource
 name|rsrc
+parameter_list|,
+name|IdString
+name|id
 parameter_list|,
 name|Input
 name|in
@@ -1333,7 +1221,10 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|,
-name|path
+name|id
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}
