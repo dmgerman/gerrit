@@ -314,20 +314,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -492,17 +478,9 @@ operator|.
 name|Factory
 name|notesFactory
 decl_stmt|;
-DECL|field|identifiedUserFactory
-specifier|private
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory ( ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, IdentifiedUser.GenericFactory identifiedUserFactory)
+DECL|method|Factory (ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory)
 name|Factory
 parameter_list|(
 name|ChangeData
@@ -514,11 +492,6 @@ name|ChangeNotes
 operator|.
 name|Factory
 name|notesFactory
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
 parameter_list|)
 block|{
 name|this
@@ -532,12 +505,6 @@ operator|.
 name|notesFactory
 operator|=
 name|notesFactory
-expr_stmt|;
-name|this
-operator|.
-name|identifiedUserFactory
-operator|=
-name|identifiedUserFactory
 expr_stmt|;
 block|}
 DECL|method|create ( RefControl refControl, ReviewDb db, Project.NameKey project, Change.Id changeId)
@@ -598,8 +565,6 @@ name|ChangeControl
 argument_list|(
 name|changeDataFactory
 argument_list|,
-name|identifiedUserFactory
-argument_list|,
 name|refControl
 argument_list|,
 name|notes
@@ -615,14 +580,6 @@ operator|.
 name|Factory
 name|changeDataFactory
 decl_stmt|;
-DECL|field|identifiedUserFactory
-specifier|private
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
-decl_stmt|;
 DECL|field|refControl
 specifier|private
 specifier|final
@@ -635,7 +592,7 @@ specifier|final
 name|ChangeNotes
 name|notes
 decl_stmt|;
-DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, IdentifiedUser.GenericFactory identifiedUserFactory, RefControl refControl, ChangeNotes notes)
+DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, RefControl refControl, ChangeNotes notes)
 specifier|private
 name|ChangeControl
 parameter_list|(
@@ -643,11 +600,6 @@ name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
 parameter_list|,
 name|RefControl
 name|refControl
@@ -661,12 +613,6 @@ operator|.
 name|changeDataFactory
 operator|=
 name|changeDataFactory
-expr_stmt|;
-name|this
-operator|.
-name|identifiedUserFactory
-operator|=
-name|identifiedUserFactory
 expr_stmt|;
 name|this
 operator|.
