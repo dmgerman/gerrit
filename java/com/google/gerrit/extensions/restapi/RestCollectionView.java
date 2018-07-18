@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * RestView on a RestCollection that supports accepting input.  *  *<p>The input must be supplied as JSON as the body of the HTTP request. RestCollectionViews can  * only be invoked by the HTTP method {@code POST}.  *  * @param<P> type of the parent resource  * @param<C> type of the child resource  * @param<I> type of input the JSON parser will parse the input into.  */
+comment|/**  * RestView on a RestCollection that supports accepting input.  *  *<p>The input must be supplied as JSON as the body of the HTTP request. RestCollectionViews can be  * invoked by the HTTP methods {@code POST} and {@code DELETE} ({@code DELETE} is only supported on  * child collections).  *  * @param<P> type of the parent resource  * @param<C> type of the child resource  * @param<I> type of input the JSON parser will parse the input into.  */
 end_comment
 
 begin_interface
