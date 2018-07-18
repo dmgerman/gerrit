@@ -2601,7 +2601,7 @@ decl_stmt|;
 comment|// Special case assets during development that are built by Bazel and not
 comment|// served out of the source tree.
 comment|//
-comment|// In the war case, these are either inlined by vulcanize, or live under
+comment|// In the war case, these are either inlined, or live under
 comment|// /polygerrit_ui in the war file, so we can just treat them as normal
 comment|// assets.
 if|if
