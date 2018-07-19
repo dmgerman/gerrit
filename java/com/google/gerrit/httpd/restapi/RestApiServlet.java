@@ -3028,6 +3028,7 @@ argument_list|()
 throw|;
 block|}
 block|}
+comment|// else if (isDelete(req)): DELETE on root collections is not supported
 block|}
 else|else
 block|{

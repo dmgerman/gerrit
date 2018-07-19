@@ -424,6 +424,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Creates a binder that allows to bind a REST view to handle {@code DELETE} on the REST    * collection of the provided view type.    *    *<p>This binding is ignored if the provided view type belongs to a root collection.    *    * @param viewType the type of the resources in the REST collection on which {@code DELETE} should    *     be handled    * @return binder that allows to bind an implementation for the REST view that should handle    *     {@code DELETE} on the REST collection of the provided view type    */
 DECL|method|deleteOnCollection ( TypeLiteral<RestView<R>> viewType)
 specifier|protected
 parameter_list|<
