@@ -477,16 +477,12 @@ DECL|field|rebaseChangeEdit
 specifier|private
 specifier|final
 name|RebaseChangeEdit
-operator|.
-name|Rebase
 name|rebaseChangeEdit
 decl_stmt|;
 DECL|field|publishChangeEdit
 specifier|private
 specifier|final
 name|PublishChangeEdit
-operator|.
-name|Publish
 name|publishChangeEdit
 decl_stmt|;
 DECL|field|changeEditsGet
@@ -543,7 +539,7 @@ name|changeResource
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditApiImpl ( ChangeEdits.Detail editDetail, ChangeEdits.Post changeEditsPost, DeleteChangeEdit deleteChangeEdit, RebaseChangeEdit.Rebase rebaseChangeEdit, PublishChangeEdit.Publish publishChangeEdit, ChangeEdits.Get changeEditsGet, ChangeEdits.Put changeEditsPut, ChangeEdits.DeleteContent changeEditDeleteContent, ChangeEdits.GetMessage getChangeEditCommitMessage, ChangeEdits.EditMessage modifyChangeEditCommitMessage, ChangeEdits changeEdits, @Assisted ChangeResource changeResource)
+DECL|method|ChangeEditApiImpl ( ChangeEdits.Detail editDetail, ChangeEdits.Post changeEditsPost, DeleteChangeEdit deleteChangeEdit, RebaseChangeEdit rebaseChangeEdit, PublishChangeEdit publishChangeEdit, ChangeEdits.Get changeEditsGet, ChangeEdits.Put changeEditsPut, ChangeEdits.DeleteContent changeEditDeleteContent, ChangeEdits.GetMessage getChangeEditCommitMessage, ChangeEdits.EditMessage modifyChangeEditCommitMessage, ChangeEdits changeEdits, @Assisted ChangeResource changeResource)
 specifier|public
 name|ChangeEditApiImpl
 parameter_list|(
@@ -561,13 +557,9 @@ name|DeleteChangeEdit
 name|deleteChangeEdit
 parameter_list|,
 name|RebaseChangeEdit
-operator|.
-name|Rebase
 name|rebaseChangeEdit
 parameter_list|,
 name|PublishChangeEdit
-operator|.
-name|Publish
 name|publishChangeEdit
 parameter_list|,
 name|ChangeEdits
