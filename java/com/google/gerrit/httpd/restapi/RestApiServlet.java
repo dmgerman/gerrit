@@ -3028,7 +3028,15 @@ argument_list|()
 throw|;
 block|}
 block|}
-comment|// else if (isDelete(req)): DELETE on root collections is not supported
+else|else
+block|{
+comment|// DELETE on root collections is not supported
+throw|throw
+operator|new
+name|MethodNotAllowedException
+argument_list|()
+throw|;
+block|}
 block|}
 else|else
 block|{
