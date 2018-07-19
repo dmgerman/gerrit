@@ -235,6 +235,11 @@ argument_list|>
 name|list
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|list
+argument_list|)
+expr_stmt|;
 name|Set
 argument_list|<
 name|String
@@ -322,6 +327,11 @@ name|boolean
 name|create
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|permissions
@@ -409,6 +419,11 @@ name|Permission
 name|permission
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|permission
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|permissions
@@ -472,13 +487,11 @@ name|Permission
 name|permission
 parameter_list|)
 block|{
-if|if
-condition|(
+name|checkNotNull
+argument_list|(
 name|permission
-operator|!=
-literal|null
-condition|)
-block|{
+argument_list|)
+expr_stmt|;
 name|removePermission
 argument_list|(
 name|permission
@@ -487,7 +500,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|removePermission (String name)
 specifier|public
@@ -498,6 +510,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|permissions
@@ -533,6 +550,11 @@ name|AccessSection
 name|section
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|section
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Permission
@@ -580,6 +602,31 @@ name|src
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+comment|// TODO(ekempin): Once the GWT UI is gone use com.google.common.base.Preconditions.checkNotNull
+DECL|method|checkNotNull (Object reference)
+specifier|private
+specifier|static
+name|void
+name|checkNotNull
+parameter_list|(
+name|Object
+name|reference
+parameter_list|)
+block|{
+if|if
+condition|(
+name|reference
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NullPointerException
+argument_list|()
+throw|;
 block|}
 block|}
 annotation|@
