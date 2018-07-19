@@ -475,13 +475,6 @@ name|ChangeSchemaDefinitions
 operator|.
 name|NAME
 decl_stmt|;
-DECL|field|project
-specifier|private
-name|Project
-operator|.
-name|NameKey
-name|project
-decl_stmt|;
 DECL|field|changeId
 specifier|private
 name|String
@@ -1115,8 +1108,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Project
+operator|.
+name|NameKey
 name|project
-operator|=
+init|=
 operator|new
 name|Project
 operator|.
@@ -1124,7 +1120,7 @@ name|NameKey
 argument_list|(
 literal|"project"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 try|try
 init|(
 name|ServerContext
