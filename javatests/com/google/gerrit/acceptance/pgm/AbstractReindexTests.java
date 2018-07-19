@@ -392,6 +392,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Injector
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Provider
 import|;
 end_import
@@ -495,6 +507,19 @@ name|AbstractReindexTests
 extends|extends
 name|StandaloneSiteTest
 block|{
+comment|/** @param injector injector */
+DECL|method|configureIndex (Injector injector)
+specifier|public
+specifier|abstract
+name|void
+name|configureIndex
+parameter_list|(
+name|Injector
+name|injector
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
 DECL|field|CHANGES
 specifier|private
 specifier|static
@@ -1461,6 +1486,14 @@ name|startServer
 argument_list|()
 init|)
 block|{
+name|configureIndex
+argument_list|(
+name|ctx
+operator|.
+name|getInjector
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|GerritApi
 name|gApi
 init|=
