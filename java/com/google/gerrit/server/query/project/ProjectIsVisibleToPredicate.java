@@ -310,7 +310,7 @@ name|testOrFalse
 argument_list|(
 name|ProjectPermission
 operator|.
-name|READ
+name|ACCESS
 argument_list|)
 return|;
 block|}
