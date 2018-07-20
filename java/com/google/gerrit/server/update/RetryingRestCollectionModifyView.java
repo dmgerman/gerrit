@@ -147,11 +147,11 @@ import|;
 end_import
 
 begin_class
-DECL|class|RetryingRestCollectionView
+DECL|class|RetryingRestCollectionModifyView
 specifier|public
 specifier|abstract
 class|class
-name|RetryingRestCollectionView
+name|RetryingRestCollectionModifyView
 parameter_list|<
 name|P
 extends|extends
@@ -181,9 +181,9 @@ specifier|final
 name|RetryHelper
 name|retryHelper
 decl_stmt|;
-DECL|method|RetryingRestCollectionView (RetryHelper retryHelper)
+DECL|method|RetryingRestCollectionModifyView (RetryHelper retryHelper)
 specifier|protected
-name|RetryingRestCollectionView
+name|RetryingRestCollectionModifyView
 parameter_list|(
 name|RetryHelper
 name|retryHelper

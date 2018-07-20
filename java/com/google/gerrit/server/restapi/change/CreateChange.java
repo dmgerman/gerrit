@@ -926,7 +926,7 @@ name|server
 operator|.
 name|update
 operator|.
-name|RetryingRestCollectionView
+name|RetryingRestCollectionModifyView
 import|;
 end_import
 
@@ -1260,7 +1260,7 @@ specifier|public
 class|class
 name|CreateChange
 extends|extends
-name|RetryingRestCollectionView
+name|RetryingRestCollectionModifyView
 argument_list|<
 name|TopLevelResource
 argument_list|,
