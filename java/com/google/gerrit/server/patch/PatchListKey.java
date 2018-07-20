@@ -285,7 +285,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|31L
+literal|32L
 decl_stmt|;
 DECL|field|WHITESPACE_TYPES
 specifier|public
