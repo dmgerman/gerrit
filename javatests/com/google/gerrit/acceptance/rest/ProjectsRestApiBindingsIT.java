@@ -843,21 +843,10 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
-name|builder
+name|get
 argument_list|(
-name|GET
-argument_list|,
 literal|"/projects/%s/commits/%s/files"
 argument_list|)
-comment|// GET /projects/<project>/branches/<branch>/files is not implemented
-operator|.
-name|expectedResponseCode
-argument_list|(
-name|SC_NOT_FOUND
-argument_list|)
-operator|.
-name|build
-argument_list|()
 argument_list|,
 name|RestCall
 operator|.
