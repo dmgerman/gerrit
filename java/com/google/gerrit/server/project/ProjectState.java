@@ -922,6 +922,8 @@ name|SectionMatcher
 argument_list|>
 name|localAccessSections
 decl_stmt|;
+comment|// TODO(dborowitz): Delete when the GWT UI gets deleted; in the meantime, don't bother with any
+comment|// refactoring.
 comment|/** Theme information loaded from site_path/themes. */
 DECL|field|theme
 specifier|private
