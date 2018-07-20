@@ -368,7 +368,7 @@ name|server
 operator|.
 name|update
 operator|.
-name|RetryingRestCollectionView
+name|RetryingRestCollectionModifyView
 import|;
 end_import
 
@@ -560,7 +560,7 @@ specifier|static
 class|class
 name|Rebase
 extends|extends
-name|RetryingRestCollectionView
+name|RetryingRestCollectionModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
