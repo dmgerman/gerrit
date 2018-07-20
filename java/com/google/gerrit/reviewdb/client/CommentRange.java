@@ -156,22 +156,27 @@ name|int
 name|ec
 parameter_list|)
 block|{
+comment|// Start position is inclusive; end position is exclusive.
 name|startLine
 operator|=
 name|sl
 expr_stmt|;
+comment|// 1-based
 name|startCharacter
 operator|=
 name|sc
 expr_stmt|;
+comment|// 0-based
 name|endLine
 operator|=
 name|el
 expr_stmt|;
+comment|// 1-based
 name|endCharacter
 operator|=
 name|ec
 expr_stmt|;
+comment|// 0-based
 block|}
 DECL|method|getStartLine ()
 specifier|public

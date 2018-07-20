@@ -222,30 +222,31 @@ operator|.
 name|endCharacter
 argument_list|)
 decl_stmt|;
+comment|// Start position is inclusive; end position is exclusive.
 DECL|field|startLine
 specifier|public
 name|int
 name|startLine
 decl_stmt|;
-comment|// 1-based, inclusive
+comment|// 1-based
 DECL|field|startCharacter
 specifier|public
 name|int
 name|startCharacter
 decl_stmt|;
-comment|// 0-based, inclusive
+comment|// 0-based
 DECL|field|endLine
 specifier|public
 name|int
 name|endLine
 decl_stmt|;
-comment|// 1-based, exclusive
+comment|// 1-based
 DECL|field|endCharacter
 specifier|public
 name|int
 name|endCharacter
 decl_stmt|;
-comment|// 0-based, exclusive
+comment|// 0-based
 DECL|method|isValid ()
 specifier|public
 name|boolean
