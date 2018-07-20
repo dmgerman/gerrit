@@ -144,7 +144,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestCollectionView
+name|RestCollectionModifyView
 import|;
 end_import
 
@@ -278,7 +278,7 @@ specifier|public
 class|class
 name|DeleteChangeEdit
 implements|implements
-name|RestCollectionView
+name|RestCollectionModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,

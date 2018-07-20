@@ -71,10 +71,10 @@ comment|/**  * RestView that supports accepting input and deleting a resource th
 end_comment
 
 begin_interface
-DECL|interface|RestDeleteMissingView
+DECL|interface|RestCollectionDeleteMissingView
 specifier|public
 interface|interface
-name|RestDeleteMissingView
+name|RestCollectionDeleteMissingView
 parameter_list|<
 name|P
 extends|extends
@@ -87,9 +87,13 @@ parameter_list|,
 name|I
 parameter_list|>
 extends|extends
-name|RestView
+name|RestCollectionView
 argument_list|<
+name|P
+argument_list|,
 name|C
+argument_list|,
+name|I
 argument_list|>
 block|{
 comment|/**    * Process the view operation by deleting the resource.    *    * @param parentResource parent resource of the resource that should be deleted    * @param input input after parsing from request.    * @return result to return to the client. Use {@link BinaryResult} to avoid automatic conversion    *     to JSON.    * @throws RestApiException if the resource creation is rejected    * @throws Exception the implementation of the view failed. The exception will be logged and HTTP    *     500 Internal Server Error will be returned to the client.    */

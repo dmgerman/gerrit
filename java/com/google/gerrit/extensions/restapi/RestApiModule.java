@@ -424,6 +424,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Creates a binder that allows to bind a REST view to handle {@code DELETE} on the REST    * collection of the provided view type.    *    *<p>This binding is ignored if the provided view type belongs to a root collection.    *    * @param viewType the type of the resources in the REST collection on which {@code DELETE} should    *     be handled    * @return binder that allows to bind an implementation for the REST view that should handle    *     {@code DELETE} on the REST collection of the provided view type    */
 DECL|method|deleteOnCollection ( TypeLiteral<RestView<R>> viewType)
 specifier|protected
 parameter_list|<
@@ -1258,7 +1259,6 @@ operator|=
 name|binder
 expr_stmt|;
 block|}
-DECL|method|to ( Class<T> impl)
 specifier|public
 parameter_list|<
 name|P
@@ -1267,7 +1267,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestCollectionView
+name|RestCollectionModifyView
 argument_list|<
 name|P
 argument_list|,
@@ -1276,6 +1276,7 @@ argument_list|,
 name|?
 argument_list|>
 parameter_list|>
+DECL|method|to (Class<T> impl)
 name|ScopedBindingBuilder
 name|to
 parameter_list|(
@@ -1295,7 +1296,7 @@ name|impl
 argument_list|)
 return|;
 block|}
-DECL|method|toInstance (T impl)
+DECL|method|toInstance ( T impl)
 specifier|public
 parameter_list|<
 name|P
@@ -1304,7 +1305,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestCollectionView
+name|RestCollectionModifyView
 argument_list|<
 name|P
 argument_list|,
@@ -1336,7 +1337,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestCollectionView
+name|RestCollectionModifyView
 argument_list|<
 name|P
 argument_list|,
@@ -1380,7 +1381,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestCollectionView
+name|RestCollectionModifyView
 argument_list|<
 name|P
 argument_list|,
@@ -1456,7 +1457,6 @@ operator|=
 name|binder
 expr_stmt|;
 block|}
-DECL|method|to ( Class<T> impl)
 specifier|public
 parameter_list|<
 name|P
@@ -1465,7 +1465,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestCreateView
+name|RestCollectionCreateView
 argument_list|<
 name|P
 argument_list|,
@@ -1474,6 +1474,7 @@ argument_list|,
 name|?
 argument_list|>
 parameter_list|>
+DECL|method|to (Class<T> impl)
 name|ScopedBindingBuilder
 name|to
 parameter_list|(
@@ -1493,7 +1494,7 @@ name|impl
 argument_list|)
 return|;
 block|}
-DECL|method|toInstance (T impl)
+DECL|method|toInstance ( T impl)
 specifier|public
 parameter_list|<
 name|P
@@ -1502,7 +1503,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestCreateView
+name|RestCollectionCreateView
 argument_list|<
 name|P
 argument_list|,
@@ -1534,7 +1535,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestCreateView
+name|RestCollectionCreateView
 argument_list|<
 name|P
 argument_list|,
@@ -1578,7 +1579,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestCreateView
+name|RestCollectionCreateView
 argument_list|<
 name|P
 argument_list|,
@@ -1662,7 +1663,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestDeleteMissingView
+name|RestCollectionDeleteMissingView
 argument_list|<
 name|P
 argument_list|,
@@ -1691,7 +1692,6 @@ name|impl
 argument_list|)
 return|;
 block|}
-DECL|method|toInstance ( T impl)
 specifier|public
 parameter_list|<
 name|P
@@ -1700,7 +1700,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestDeleteMissingView
+name|RestCollectionDeleteMissingView
 argument_list|<
 name|P
 argument_list|,
@@ -1709,6 +1709,7 @@ argument_list|,
 name|?
 argument_list|>
 parameter_list|>
+DECL|method|toInstance (T impl)
 name|void
 name|toInstance
 parameter_list|(
@@ -1732,7 +1733,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestDeleteMissingView
+name|RestCollectionDeleteMissingView
 argument_list|<
 name|P
 argument_list|,
@@ -1776,7 +1777,7 @@ name|RestResource
 parameter_list|,
 name|T
 extends|extends
-name|RestDeleteMissingView
+name|RestCollectionDeleteMissingView
 argument_list|<
 name|P
 argument_list|,

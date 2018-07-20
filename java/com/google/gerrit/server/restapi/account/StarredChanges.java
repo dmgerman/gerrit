@@ -238,7 +238,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestCreateView
+name|RestCollectionCreateView
 import|;
 end_import
 
@@ -849,7 +849,7 @@ specifier|static
 class|class
 name|Create
 implements|implements
-name|RestCreateView
+name|RestCollectionCreateView
 argument_list|<
 name|AccountResource
 argument_list|,

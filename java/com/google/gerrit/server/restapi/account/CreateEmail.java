@@ -274,7 +274,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestCreateView
+name|RestCollectionCreateView
 import|;
 end_import
 
@@ -554,7 +554,7 @@ specifier|public
 class|class
 name|CreateEmail
 implements|implements
-name|RestCreateView
+name|RestCollectionCreateView
 argument_list|<
 name|AccountResource
 argument_list|,

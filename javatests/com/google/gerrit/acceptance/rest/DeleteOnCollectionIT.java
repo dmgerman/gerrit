@@ -186,7 +186,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestCollectionView
+name|RestCollectionModifyView
 import|;
 end_import
 
@@ -280,7 +280,7 @@ operator|.
 name|toInstance
 argument_list|(
 operator|new
-name|RestCollectionView
+name|RestCollectionModifyView
 argument_list|<
 name|ProjectResource
 argument_list|,

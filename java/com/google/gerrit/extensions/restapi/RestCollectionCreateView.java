@@ -67,14 +67,14 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Any type of view on {@link RestCollection}, see {@link RestCollectionModifyView} for updates and  * deletes and {@link RestCollectionCreateView} for member creation.  */
+comment|/**  * RestView that supports accepting input and creating a resource.  *  *<p>The input must be supplied as JSON as the body of the HTTP request. Create views can be  * invoked by the HTTP methods {@code PUT} and {@code POST}.  *  *<p>The RestCreateView is only invoked when the parse method of the {@code RestCollection} throws  * {@link ResourceNotFoundException}, and hence the resource doesn't exist yet.  *  * @param<P> type of the parent resource  * @param<C> type of the child resource that is created  * @param<I> type of input the JSON parser will parse the input into.  */
 end_comment
 
 begin_interface
-DECL|interface|RestCollectionView
+DECL|interface|RestCollectionCreateView
 specifier|public
 interface|interface
-name|RestCollectionView
+name|RestCollectionCreateView
 parameter_list|<
 name|P
 extends|extends
@@ -87,11 +87,33 @@ parameter_list|,
 name|I
 parameter_list|>
 extends|extends
-name|RestView
+name|RestCollectionView
 argument_list|<
+name|P
+argument_list|,
 name|C
+argument_list|,
+name|I
 argument_list|>
-block|{}
+block|{
+comment|/**    * Process the view operation by creating the resource.    *    * @param parentResource parent resource of the resource that should be created    * @param input input after parsing from request.    * @return result to return to the client. Use {@link BinaryResult} to avoid automatic conversion    *     to JSON.    * @throws RestApiException if the resource creation is rejected    * @throws Exception the implementation of the view failed. The exception will be logged and HTTP    *     500 Internal Server Error will be returned to the client.    */
+DECL|method|apply (P parentResource, IdString id, I input)
+name|Object
+name|apply
+parameter_list|(
+name|P
+name|parentResource
+parameter_list|,
+name|IdString
+name|id
+parameter_list|,
+name|I
+name|input
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+block|}
 end_interface
 
 end_unit

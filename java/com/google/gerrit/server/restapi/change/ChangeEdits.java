@@ -318,7 +318,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestCollectionView
+name|RestCollectionCreateView
 import|;
 end_import
 
@@ -334,7 +334,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestCreateView
+name|RestCollectionDeleteMissingView
 import|;
 end_import
 
@@ -350,7 +350,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestDeleteMissingView
+name|RestCollectionModifyView
 import|;
 end_import
 
@@ -1058,7 +1058,7 @@ specifier|static
 class|class
 name|Create
 implements|implements
-name|RestCreateView
+name|RestCollectionCreateView
 argument_list|<
 name|ChangeResource
 argument_list|,
@@ -1153,7 +1153,7 @@ specifier|static
 class|class
 name|DeleteFile
 implements|implements
-name|RestDeleteMissingView
+name|RestCollectionDeleteMissingView
 argument_list|<
 name|ChangeResource
 argument_list|,
@@ -1528,7 +1528,7 @@ specifier|static
 class|class
 name|Post
 implements|implements
-name|RestCollectionView
+name|RestCollectionModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
