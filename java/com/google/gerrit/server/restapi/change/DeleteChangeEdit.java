@@ -144,7 +144,23 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestModifyView
+name|RestCollectionView
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|ChangeEditResource
 import|;
 end_import
 
@@ -262,9 +278,11 @@ specifier|public
 class|class
 name|DeleteChangeEdit
 implements|implements
-name|RestModifyView
+name|RestCollectionView
 argument_list|<
 name|ChangeResource
+argument_list|,
+name|ChangeEditResource
 argument_list|,
 name|Input
 argument_list|>
