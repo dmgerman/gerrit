@@ -813,13 +813,13 @@ name|postWithHeader
 argument_list|(
 name|endPoint
 argument_list|,
-name|content
-argument_list|,
 literal|null
+argument_list|,
+name|content
 argument_list|)
 return|;
 block|}
-DECL|method|postWithHeader (String endPoint, Object content, Header header)
+DECL|method|postWithHeader (String endPoint, Header header, Object content)
 specifier|public
 name|RestResponse
 name|postWithHeader
@@ -827,11 +827,11 @@ parameter_list|(
 name|String
 name|endPoint
 parameter_list|,
-name|Object
-name|content
-parameter_list|,
 name|Header
 name|header
+parameter_list|,
+name|Object
+name|content
 parameter_list|)
 throws|throws
 name|IOException
