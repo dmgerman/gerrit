@@ -427,7 +427,6 @@ parameter_list|()
 function_decl|;
 DECL|enum|Serializer
 specifier|public
-specifier|static
 enum|enum
 name|Serializer
 implements|implements

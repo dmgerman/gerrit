@@ -966,7 +966,6 @@ argument_list|()
 return|;
 block|}
 DECL|enum|Serializer
-specifier|static
 enum|enum
 name|Serializer
 implements|implements

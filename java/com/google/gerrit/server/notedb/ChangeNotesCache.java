@@ -648,7 +648,6 @@ function_decl|;
 annotation|@
 name|VisibleForTesting
 DECL|enum|Serializer
-specifier|static
 enum|enum
 name|Serializer
 implements|implements

@@ -148,7 +148,6 @@ name|SchemaVersion
 block|{
 DECL|enum|DraftWorkflowMigrationStrategy
 specifier|private
-specifier|static
 enum|enum
 name|DraftWorkflowMigrationStrategy
 block|{
