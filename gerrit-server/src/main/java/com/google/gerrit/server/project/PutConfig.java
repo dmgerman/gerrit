@@ -1406,6 +1406,8 @@ argument_list|(
 literal|"Cannot update "
 operator|+
 name|projectName
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
