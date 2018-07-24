@@ -1426,27 +1426,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getChange (ChangeInfo info)
-specifier|private
-name|Change
-name|getChange
-parameter_list|(
-name|ChangeInfo
-name|info
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-return|return
-name|getNotes
-argument_list|(
-name|info
-argument_list|)
-operator|.
-name|getChange
-argument_list|()
-return|;
-block|}
 DECL|method|getPatchSet (ChangeNotes notes, RevisionInfo info)
 specifier|private
 name|PatchSet
