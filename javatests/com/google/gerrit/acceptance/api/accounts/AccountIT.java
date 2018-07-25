@@ -3016,10 +3016,9 @@ name|accountId
 init|=
 name|createByAccountCreator
 argument_list|(
-literal|2
+literal|1
 argument_list|)
 decl_stmt|;
-comment|// account creation + external ID creation
 name|refUpdateCounter
 operator|.
 name|assertRefUpdateFor
@@ -3335,10 +3334,9 @@ name|assertReindexOf
 argument_list|(
 name|accountId
 argument_list|,
-literal|2
+literal|1
 argument_list|)
 expr_stmt|;
-comment|// account creation + external ID creation
 name|assertThat
 argument_list|(
 name|externalIds
