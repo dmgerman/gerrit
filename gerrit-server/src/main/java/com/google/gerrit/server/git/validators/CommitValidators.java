@@ -2166,6 +2166,11 @@ name|append
 argument_list|(
 name|errMsg
 argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"\n"
+argument_list|)
 expr_stmt|;
 name|boolean
 name|hinted
@@ -2229,7 +2234,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n\n"
+literal|"\n"
 argument_list|)
 operator|.
 name|append
@@ -2260,7 +2265,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"Hint: to automatically insert a Change-Id, install the hook:\n"
+literal|"\nHint: to automatically insert a Change-Id, install the hook:\n"
 argument_list|)
 operator|.
 name|append
