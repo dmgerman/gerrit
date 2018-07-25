@@ -2568,23 +2568,14 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|String
-name|p
-init|=
-literal|"${gitdir}/hooks/commit-msg"
-decl_stmt|;
 return|return
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"  gitdir=$(git rev-parse --git-dir); curl -o %s %stools/hooks/commit-msg ; chmod +x %s"
-argument_list|,
-name|p
+literal|"  f=\"$(git rev-parse --git-dir)/hooks/commit-msg\"; curl -o \"$f\" %stools/hooks/commit-msg ; chmod +x \"$f\""
 argument_list|,
 name|canonicalWebUrl
-argument_list|,
-name|p
 argument_list|)
 return|;
 block|}
