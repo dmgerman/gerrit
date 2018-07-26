@@ -128,20 +128,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|ConfigKey
@@ -253,14 +239,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
-decl_stmt|;
-DECL|field|identifiedUserFactory
-specifier|protected
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
 decl_stmt|;
 DECL|field|reviewersUtil
 specifier|protected
@@ -441,17 +419,12 @@ return|;
 block|}
 annotation|@
 name|Inject
-DECL|method|SuggestReviewers ( AccountVisibility av, IdentifiedUser.GenericFactory identifiedUserFactory, Provider<ReviewDb> dbProvider, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil)
+DECL|method|SuggestReviewers ( AccountVisibility av, Provider<ReviewDb> dbProvider, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil)
 specifier|public
 name|SuggestReviewers
 parameter_list|(
 name|AccountVisibility
 name|av
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -473,12 +446,6 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
-expr_stmt|;
-name|this
-operator|.
-name|identifiedUserFactory
-operator|=
-name|identifiedUserFactory
 expr_stmt|;
 name|this
 operator|.
