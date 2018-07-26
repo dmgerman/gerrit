@@ -572,20 +572,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableListMultimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|ImmutableSetMultimap
 import|;
 end_import
@@ -9737,28 +9723,6 @@ operator|.
 name|ALL
 return|;
 block|}
-block|}
-comment|/**    * Gets an unmodifiable view of the pushOptions.    *    *<p>The collection is empty if the client does not support push options, or if the client did    * not send any options.    *    * @return an unmodifiable view of pushOptions.    */
-annotation|@
-name|Nullable
-DECL|method|getPushOptions ()
-name|ListMultimap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|getPushOptions
-parameter_list|()
-block|{
-return|return
-name|ImmutableListMultimap
-operator|.
-name|copyOf
-argument_list|(
-name|pushOptions
-argument_list|)
-return|;
 block|}
 DECL|method|parseMagicBranch (ReceiveCommand cmd)
 specifier|private
