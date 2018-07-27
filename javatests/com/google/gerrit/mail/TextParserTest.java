@@ -133,7 +133,7 @@ name|quotedFooter
 init|=
 literal|""
 operator|+
-literal|"> To view, visit https://gerrit-review.googlesource.com/123\n"
+literal|"> To view, visit https://gerrit-review.googlesource.com/c/project/+/123\n"
 operator|+
 literal|"> To unsubscribe, visit https://gerrit-review.googlesource.com\n"
 operator|+

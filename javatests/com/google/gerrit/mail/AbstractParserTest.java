@@ -177,7 +177,7 @@ specifier|final
 name|String
 name|CHANGE_URL
 init|=
-literal|"https://gerrit-review.googlesource.com/#/changes/123"
+literal|"https://gerrit-review.googlesource.com/c/project/+/123"
 decl_stmt|;
 DECL|method|assertChangeMessage (String message, MailComment comment)
 specifier|protected
