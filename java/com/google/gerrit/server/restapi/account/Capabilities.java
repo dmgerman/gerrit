@@ -593,9 +593,12 @@ try|try
 block|{
 name|permissionBackend
 operator|.
-name|user
+name|absentUser
 argument_list|(
 name|target
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|)
 operator|.
 name|check
