@@ -791,11 +791,14 @@ name|perm
 operator|=
 name|permissionBackend
 operator|.
-name|user
+name|absentUser
 argument_list|(
 name|resource
 operator|.
 name|getUser
+argument_list|()
+operator|.
+name|getAccountId
 argument_list|()
 argument_list|)
 expr_stmt|;
