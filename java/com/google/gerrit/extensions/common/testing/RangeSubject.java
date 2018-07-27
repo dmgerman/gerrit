@@ -78,6 +78,22 @@ name|common
 operator|.
 name|truth
 operator|.
+name|Fact
+operator|.
+name|fact
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
 name|Truth
 operator|.
 name|assertAbout
@@ -329,9 +345,14 @@ name|isValid
 argument_list|()
 condition|)
 block|{
-name|fail
+name|failWithoutActual
 argument_list|(
-literal|"is valid"
+name|fact
+argument_list|(
+literal|"expected"
+argument_list|,
+literal|"valid"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -354,9 +375,14 @@ name|isValid
 argument_list|()
 condition|)
 block|{
-name|fail
+name|failWithoutActual
 argument_list|(
-literal|"is invalid"
+name|fact
+argument_list|(
+literal|"expected"
+argument_list|,
+literal|"not valid"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
