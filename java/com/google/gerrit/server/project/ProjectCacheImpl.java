@@ -1018,6 +1018,16 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|Throwables
 operator|.
 name|throwIfInstanceOf
@@ -1032,6 +1042,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+block|}
 throw|throw
 operator|new
 name|IOException
