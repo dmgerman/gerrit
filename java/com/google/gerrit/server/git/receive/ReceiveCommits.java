@@ -3011,7 +3011,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Receives change upload using the Git receive-pack protocol. */
+comment|/**  * Receives change upload using the Git receive-pack protocol.  *  *<p>Conceptually, most use of Gerrit is a push of some commits to refs/for/BRANCH. However, the  * receive-pack protocol that this is based on allows multiple ref updates to be processed at once.  */
 end_comment
 
 begin_class
@@ -3164,7 +3164,7 @@ name|String
 name|what
 parameter_list|)
 block|{
-name|rp
+name|receivePack
 operator|.
 name|sendMessage
 argument_list|(
@@ -3183,7 +3183,7 @@ name|String
 name|what
 parameter_list|)
 block|{
-name|rp
+name|receivePack
 operator|.
 name|sendError
 argument_list|(
@@ -3235,7 +3235,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|rp
+name|receivePack
 operator|.
 name|getMessageOutputStream
 argument_list|()
@@ -3269,7 +3269,7 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|rp
+name|receivePack
 operator|.
 name|getMessageOutputStream
 argument_list|()
@@ -3664,11 +3664,11 @@ specifier|final
 name|IdentifiedUser
 name|user
 decl_stmt|;
-DECL|field|rp
+DECL|field|receivePack
 specifier|private
 specifier|final
 name|ReceivePack
-name|rp
+name|receivePack
 decl_stmt|;
 comment|// Immutable fields derived from constructor arguments.
 DECL|field|allowPushToRefsChanges
@@ -4320,7 +4320,7 @@ name|user
 expr_stmt|;
 name|this
 operator|.
-name|rp
+name|receivePack
 operator|=
 name|rp
 expr_stmt|;
@@ -4517,7 +4517,7 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|,
-name|rp
+name|receivePack
 argument_list|)
 expr_stmt|;
 block|}
@@ -4859,7 +4859,7 @@ name|keySet
 argument_list|()
 control|)
 block|{
-name|rp
+name|receivePack
 operator|.
 name|sendMessage
 argument_list|(
@@ -4877,7 +4877,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|rp
+name|receivePack
 operator|.
 name|sendMessage
 argument_list|(
@@ -4894,7 +4894,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|sendMessage
 argument_list|(
@@ -5369,7 +5369,7 @@ try|try
 block|{
 name|subject
 operator|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -6180,6 +6180,7 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/** Parses push options specified as "git push -o OPTION" */
 DECL|method|parsePushOptions ()
 specifier|private
 name|void
@@ -6192,7 +6193,7 @@ name|String
 argument_list|>
 name|optionList
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getPushOptions
 argument_list|()
@@ -6945,7 +6946,7 @@ name|cfg
 operator|.
 name|load
 argument_list|(
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -7480,7 +7481,7 @@ try|try
 block|{
 name|obj
 operator|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -7592,7 +7593,7 @@ argument_list|(
 name|user
 argument_list|)
 argument_list|,
-name|rp
+name|receivePack
 operator|.
 name|getRepository
 argument_list|()
@@ -7856,7 +7857,7 @@ try|try
 block|{
 name|obj
 operator|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -8143,7 +8144,7 @@ try|try
 block|{
 name|newObject
 operator|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -8444,9 +8445,9 @@ name|RevCommit
 argument_list|>
 name|baseCommit
 decl_stmt|;
-DECL|field|clp
+DECL|field|cmdLineParser
 name|CmdLineParser
-name|clp
+name|cmdLineParser
 decl_stmt|;
 DECL|field|hashtags
 name|Set
@@ -8934,7 +8935,7 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-name|clp
+name|cmdLineParser
 operator|.
 name|reject
 argument_list|(
@@ -9087,7 +9088,7 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-name|clp
+name|cmdLineParser
 operator|.
 name|reject
 argument_list|(
@@ -9338,13 +9339,11 @@ return|return
 name|defaultPublishComments
 return|;
 block|}
-DECL|method|parse ( CmdLineParser clp, Repository repo, Set<String> refs, ListMultimap<String, String> pushOptions)
+comment|/**      * returns the destination ref of the magic branch, and populates options in the cmdLineParser.      */
+DECL|method|parse (Repository repo, Set<String> refs, ListMultimap<String, String> pushOptions)
 name|String
 name|parse
 parameter_list|(
-name|CmdLineParser
-name|clp
-parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
@@ -9398,6 +9397,7 @@ argument_list|(
 name|pushOptions
 argument_list|)
 decl_stmt|;
+comment|// Process and lop off the "%OPTION" suffix.
 name|int
 name|optionStart
 init|=
@@ -9510,7 +9510,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|clp
+name|cmdLineParser
 operator|.
 name|parseOptionMap
 argument_list|(
@@ -9518,8 +9518,10 @@ name|options
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Split the destination branch by branch and topic. The topic
-comment|// suffix is entirely optional, so it might not even exist.
+comment|// We accept refs/for/BRANCHNAME/TOPIC. Since we don't know
+comment|// for sure where the branch ends and the topic starts, look
+comment|// backward for a split that works. This behavior has not been
+comment|// documented and should probably be deprecated.
 name|String
 name|head
 init|=
@@ -9724,6 +9726,7 @@ name|ALL
 return|;
 block|}
 block|}
+comment|/**    * Parse the magic branch data (refs/for/BRANCH/OPTIONALTOPIC%OPTIONS) into the magicBranch    * member.    *    *<p>Assumes we are handling a magic branch here.    */
 DECL|method|parseMagicBranch (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -9811,21 +9814,16 @@ expr_stmt|;
 name|String
 name|ref
 decl_stmt|;
-name|CmdLineParser
-name|clp
-init|=
+name|magicBranch
+operator|.
+name|cmdLineParser
+operator|=
 name|optionParserFactory
 operator|.
 name|create
 argument_list|(
 name|magicBranch
 argument_list|)
-decl_stmt|;
-name|magicBranch
-operator|.
-name|clp
-operator|=
-name|clp
 expr_stmt|;
 try|try
 block|{
@@ -9835,11 +9833,9 @@ name|magicBranch
 operator|.
 name|parse
 argument_list|(
-name|clp
-argument_list|,
 name|repo
 argument_list|,
-name|rp
+name|receivePack
 operator|.
 name|getAdvertisedRefs
 argument_list|()
@@ -9860,7 +9856,9 @@ block|{
 if|if
 condition|(
 operator|!
-name|clp
+name|magicBranch
+operator|.
+name|cmdLineParser
 operator|.
 name|wasHelpRequestedByOption
 argument_list|()
@@ -9887,7 +9885,7 @@ name|ref
 operator|=
 literal|null
 expr_stmt|;
-comment|// never happen
+comment|// never happens
 block|}
 if|if
 condition|(
@@ -9917,7 +9915,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"topic length exceeds the limit (%s)"
+literal|"topic length exceeds the limit (%d)"
 argument_list|,
 name|ChangeUtil
 operator|.
@@ -9928,7 +9926,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|clp
+name|magicBranch
+operator|.
+name|cmdLineParser
 operator|.
 name|wasHelpRequestedByOption
 argument_list|()
@@ -9948,7 +9948,9 @@ argument_list|(
 literal|"\nHelp for refs/for/branch:\n\n"
 argument_list|)
 expr_stmt|;
-name|clp
+name|magicBranch
+operator|.
+name|cmdLineParser
 operator|.
 name|printUsage
 argument_list|(
@@ -10016,7 +10018,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|rp
+name|receivePack
 operator|.
 name|getAdvertisedRefs
 argument_list|()
@@ -10394,7 +10396,7 @@ block|}
 name|RevWalk
 name|walk
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -10806,7 +10808,7 @@ block|{
 name|Ref
 name|targetRef
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getAdvertisedRefs
 argument_list|()
@@ -11066,7 +11068,7 @@ literal|null
 return|;
 block|}
 return|return
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -11129,7 +11131,7 @@ try|try
 block|{
 name|newCommit
 operator|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -11614,7 +11616,7 @@ block|{
 name|RevCommit
 name|c
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -11634,7 +11636,7 @@ block|}
 name|total
 operator|++
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -11779,37 +11781,13 @@ argument_list|(
 name|CHANGE_ID
 argument_list|)
 decl_stmt|;
-name|String
-name|idStr
-init|=
+if|if
+condition|(
 operator|!
 name|idList
 operator|.
 name|isEmpty
 argument_list|()
-condition|?
-name|idList
-operator|.
-name|get
-argument_list|(
-name|idList
-operator|.
-name|size
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-operator|.
-name|trim
-argument_list|()
-else|:
-literal|null
-decl_stmt|;
-if|if
-condition|(
-name|idStr
-operator|!=
-literal|null
 condition|)
 block|{
 name|pending
@@ -11828,7 +11806,20 @@ name|Change
 operator|.
 name|Key
 argument_list|(
-name|idStr
+name|idList
+operator|.
+name|get
+argument_list|(
+name|idList
+operator|.
+name|size
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+operator|.
+name|trim
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
@@ -11973,7 +11964,7 @@ condition|(
 operator|!
 name|validCommit
 argument_list|(
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -12956,7 +12947,7 @@ block|{
 name|RevWalk
 name|rw
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -13001,7 +12992,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -13119,7 +13110,7 @@ operator|.
 name|baseCommit
 control|)
 block|{
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -13173,14 +13164,14 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
 operator|.
 name|markUninteresting
 argument_list|(
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -13245,7 +13236,7 @@ block|{
 name|RevWalk
 name|rw
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -13813,7 +13804,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|rp
+name|receivePack
 operator|.
 name|getPushCertificate
 argument_list|()
@@ -13825,7 +13816,7 @@ name|ins
 operator|.
 name|setPushCertificate
 argument_list|(
-name|rp
+name|receivePack
 operator|.
 name|getPushCertificate
 argument_list|()
@@ -13910,7 +13901,7 @@ block|{
 name|RevWalk
 name|rw
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -15023,7 +15014,7 @@ name|revisions
 operator|.
 name|forcePut
 argument_list|(
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -15081,7 +15072,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Validate the new patch set commit for this change.      *      *<p><strong>Side effects:</strong>      *      *<ul>      *<li>May add error or warning messages to the progress monitor      *<li>Will reject {@code cmd} prior to returning false      *<li>May reset {@code rp.getRevWalk()}; do not call in the middle of a walk.      *</ul>      *      * @param autoClose whether the caller intends to auto-close the change after adding a new patch      *     set.      * @return whether the new commit is valid      * @throws IOException      * @throws OrmException      * @throws PermissionBackendException      */
+comment|/**      * Validate the new patch set commit for this change.      *      *<p><strong>Side effects:</strong>      *      *<ul>      *<li>May add error or warning messages to the progress monitor      *<li>Will reject {@code cmd} prior to returning false      *<li>May reset {@code receivePack.getRevWalk()}; do not call in the middle of a walk.      *</ul>      *      * @param autoClose whether the caller intends to auto-close the change after adding a new patch      *     set.      * @return whether the new commit is valid      * @throws IOException      * @throws OrmException      * @throws PermissionBackendException      */
 DECL|method|validate (boolean autoClose)
 name|boolean
 name|validate
@@ -15180,7 +15171,7 @@ block|}
 name|RevCommit
 name|newCommit
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -15349,7 +15340,7 @@ control|(
 name|Ref
 name|r
 range|:
-name|rp
+name|receivePack
 operator|.
 name|getRepository
 argument_list|()
@@ -15404,7 +15395,7 @@ comment|// very common error due to users making a new commit rather than
 comment|// amending when trying to address review comments.
 if|if
 condition|(
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -15452,7 +15443,7 @@ condition|(
 operator|!
 name|validCommit
 argument_list|(
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -15476,7 +15467,7 @@ return|return
 literal|false
 return|;
 block|}
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -15546,7 +15537,7 @@ decl_stmt|;
 name|ObjectReader
 name|reader
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -16040,7 +16031,7 @@ block|{
 name|RevCommit
 name|newCommit
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -16074,7 +16065,7 @@ name|patchSetInfoFactory
 operator|.
 name|get
 argument_list|(
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -16184,7 +16175,7 @@ block|}
 name|RevWalk
 name|rw
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
@@ -16252,7 +16243,7 @@ name|groups
 argument_list|,
 name|magicBranch
 argument_list|,
-name|rp
+name|receivePack
 operator|.
 name|getPushCertificate
 argument_list|()
@@ -17471,7 +17462,7 @@ decl_stmt|;
 name|RevWalk
 name|walk
 init|=
-name|rp
+name|receivePack
 operator|.
 name|getRevWalk
 argument_list|()
