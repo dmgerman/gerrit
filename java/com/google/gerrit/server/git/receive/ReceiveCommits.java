@@ -4730,11 +4730,54 @@ block|{
 name|parsePushOptions
 argument_list|()
 expr_stmt|;
-name|parseCommands
+name|logDebug
 argument_list|(
+literal|"Parsing %d commands"
+argument_list|,
 name|commands
+operator|.
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|ReceiveCommand
+name|cmd
+range|:
+name|commands
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|projectState
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getState
+argument_list|()
+operator|.
+name|permitsWrite
+argument_list|()
+condition|)
+block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"prohibited by Gerrit: project state does not permit write"
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
+name|parseCommand
+argument_list|(
+name|cmd
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -6355,16 +6398,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseCommands (Collection<ReceiveCommand> commands)
+DECL|method|parseCommand (ReceiveCommand cmd)
 specifier|private
 name|void
-name|parseCommands
+name|parseCommand
 parameter_list|(
-name|Collection
-argument_list|<
 name|ReceiveCommand
-argument_list|>
-name|commands
+name|cmd
 parameter_list|)
 throws|throws
 name|PermissionBackendException
@@ -6372,24 +6412,6 @@ throws|,
 name|NoSuchProjectException
 throws|,
 name|IOException
-block|{
-name|logDebug
-argument_list|(
-literal|"Parsing %d commands"
-argument_list|,
-name|commands
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|ReceiveCommand
-name|cmd
-range|:
-name|commands
-control|)
 block|{
 if|if
 condition|(
@@ -6414,7 +6436,7 @@ argument_list|,
 name|cmd
 argument_list|)
 expr_stmt|;
-continue|continue;
+return|return;
 block|}
 if|if
 condition|(
@@ -6447,30 +6469,6 @@ argument_list|,
 literal|"not valid ref"
 argument_list|)
 expr_stmt|;
-continue|continue;
-block|}
-if|if
-condition|(
-operator|!
-name|projectState
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getState
-argument_list|()
-operator|.
-name|permitsWrite
-argument_list|()
-condition|)
-block|{
-name|reject
-argument_list|(
-name|cmd
-argument_list|,
-literal|"prohibited by Gerrit: project state does not permit write"
-argument_list|)
-expr_stmt|;
 return|return;
 block|}
 if|if
@@ -6491,7 +6489,7 @@ argument_list|(
 name|cmd
 argument_list|)
 expr_stmt|;
-continue|continue;
+return|return;
 block|}
 if|if
 condition|(
@@ -6666,7 +6664,7 @@ literal|"upload to refs/changes not allowed"
 argument_list|)
 expr_stmt|;
 block|}
-continue|continue;
+return|return;
 block|}
 if|if
 condition|(
@@ -6748,7 +6746,7 @@ name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
-continue|continue;
+return|return;
 block|}
 try|try
 block|{
@@ -6780,7 +6778,7 @@ argument_list|,
 literal|"NoteDb update requires access database permission"
 argument_list|)
 expr_stmt|;
-continue|continue;
+return|return;
 block|}
 block|}
 switch|switch
@@ -6840,7 +6838,7 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-continue|continue;
+return|return;
 block|}
 if|if
 condition|(
@@ -6852,7 +6850,7 @@ operator|!=
 name|NOT_ATTEMPTED
 condition|)
 block|{
-continue|continue;
+return|return;
 block|}
 if|if
 condition|(
@@ -6909,7 +6907,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-continue|continue;
+return|return;
 block|}
 switch|switch
 condition|(
@@ -7030,7 +7028,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-continue|continue;
+return|return;
 block|}
 name|Project
 operator|.
@@ -7081,7 +7079,7 @@ argument_list|,
 literal|"invalid project configuration: root project cannot have parent"
 argument_list|)
 expr_stmt|;
-continue|continue;
+return|return;
 block|}
 block|}
 else|else
@@ -7127,7 +7125,7 @@ argument_list|,
 literal|"invalid project configuration: only Gerrit admin can set parent"
 argument_list|)
 expr_stmt|;
-continue|continue;
+return|return;
 block|}
 block|}
 if|if
@@ -7149,7 +7147,7 @@ argument_list|,
 literal|"invalid project configuration: parent does not exist"
 argument_list|)
 expr_stmt|;
-continue|continue;
+return|return;
 block|}
 block|}
 for|for
@@ -7434,7 +7432,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-continue|continue;
+return|return;
 block|}
 break|break;
 case|case
@@ -7454,8 +7452,7 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-continue|continue;
-block|}
+return|return;
 block|}
 block|}
 block|}
