@@ -1818,16 +1818,7 @@ specifier|final
 name|String
 name|MISSING_CHANGE_ID_MSG
 init|=
-literal|"[%s] missing "
-operator|+
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" in commit message footer"
+literal|"[%s] missing Change-Id in commit message footer"
 decl_stmt|;
 DECL|field|MISSING_SUBJECT_MSG
 specifier|private
@@ -1836,16 +1827,7 @@ specifier|final
 name|String
 name|MISSING_SUBJECT_MSG
 init|=
-literal|"[%s] missing subject; "
-operator|+
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" must be in commit message footer"
+literal|"[%s] missing subject; Change-Id must be in commit message footer"
 decl_stmt|;
 DECL|field|MULTIPLE_CHANGE_ID_MSG
 specifier|private
@@ -1854,16 +1836,7 @@ specifier|final
 name|String
 name|MULTIPLE_CHANGE_ID_MSG
 init|=
-literal|"[%s] multiple "
-operator|+
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" lines in commit message footer"
+literal|"[%s] multiple Change-Id lines in commit message footer"
 decl_stmt|;
 DECL|field|INVALID_CHANGE_ID_MSG
 specifier|private
@@ -1872,16 +1845,7 @@ specifier|final
 name|String
 name|INVALID_CHANGE_ID_MSG
 init|=
-literal|"[%s] invalid "
-operator|+
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" line format in commit message footer"
+literal|"[%s] invalid Change-Id line format in commit message footer"
 decl_stmt|;
 annotation|@
 name|VisibleForTesting
@@ -1892,25 +1856,7 @@ specifier|final
 name|String
 name|CHANGE_ID_MISMATCH_MSG
 init|=
-literal|"[%s] "
-operator|+
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" in commit message footer does not match"
-operator|+
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" of target change"
+literal|"[%s] Change-Id in commit message footer does not match Change-Id of target change"
 decl_stmt|;
 DECL|field|CHANGE_ID
 specifier|private
@@ -2622,23 +2568,14 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|String
-name|p
-init|=
-literal|"${gitdir}/hooks/commit-msg"
-decl_stmt|;
 return|return
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"  gitdir=$(git rev-parse --git-dir); curl -o %s %stools/hooks/commit-msg ; chmod +x %s"
-argument_list|,
-name|p
+literal|"  f=\"$(git rev-parse --git-dir)/hooks/commit-msg\"; curl -o \"$f\" %stools/hooks/commit-msg ; chmod +x \"$f\""
 argument_list|,
 name|canonicalWebUrl
-argument_list|,
-name|p
 argument_list|)
 return|;
 block|}
