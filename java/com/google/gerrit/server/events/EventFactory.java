@@ -1086,7 +1086,10 @@ decl_stmt|;
 DECL|field|myIdent
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
+argument_list|>
 name|myIdent
 decl_stmt|;
 DECL|field|changeDataFactory
@@ -1135,7 +1138,7 @@ name|indexConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventFactory ( AccountCache accountCache, Emails emails, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchListCache patchListCache, @GerritPersonIdent PersonIdent myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schema, IndexConfig indexConfig)
+DECL|method|EventFactory ( AccountCache accountCache, Emails emails, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchListCache patchListCache, @GerritPersonIdent Provider<PersonIdent> myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schema, IndexConfig indexConfig)
 name|EventFactory
 parameter_list|(
 name|AccountCache
@@ -1159,7 +1162,10 @@ name|patchListCache
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
+name|Provider
+argument_list|<
 name|PersonIdent
+argument_list|>
 name|myIdent
 parameter_list|,
 name|ChangeData
@@ -4434,6 +4440,9 @@ else|:
 name|asAccountAttribute
 argument_list|(
 name|myIdent
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|a
