@@ -85,20 +85,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -154,7 +140,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|CacheSerializer
+name|StringSerializer
 import|;
 end_import
 
@@ -952,66 +938,6 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
-block|}
-comment|// TODO(dborowitz): Won't be necessary when we use a real StringSerializer in the server code.
-DECL|enum|StringSerializer
-specifier|private
-enum|enum
-name|StringSerializer
-implements|implements
-name|CacheSerializer
-argument_list|<
-name|String
-argument_list|>
-block|{
-DECL|enumConstant|INSTANCE
-name|INSTANCE
-block|;
-annotation|@
-name|Override
-DECL|method|serialize (String object)
-specifier|public
-name|byte
-index|[]
-name|serialize
-parameter_list|(
-name|String
-name|object
-parameter_list|)
-block|{
-return|return
-name|object
-operator|.
-name|getBytes
-argument_list|(
-name|UTF_8
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|deserialize (byte[] in)
-specifier|public
-name|String
-name|deserialize
-parameter_list|(
-name|byte
-index|[]
-name|in
-parameter_list|)
-block|{
-comment|// TODO(dborowitz): Consider using CharsetDecoder directly in the real implementation, to get
-comment|// checked exceptions.
-return|return
-operator|new
-name|String
-argument_list|(
-name|in
-argument_list|,
-name|UTF_8
-argument_list|)
-return|;
-block|}
 block|}
 DECL|method|disableMemCache ()
 specifier|private
