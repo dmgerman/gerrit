@@ -1319,6 +1319,7 @@ expr_stmt|;
 block|}
 DECL|method|ensurePatchSetMatches (PatchSet.Id psId, ChangeUpdate update)
 specifier|private
+specifier|static
 name|void
 name|ensurePatchSetMatches
 parameter_list|(
@@ -1409,6 +1410,7 @@ block|}
 block|}
 DECL|method|setGroups (ReviewDb db, ChangeUpdate update, PatchSet ps, List<String> groups)
 specifier|public
+specifier|static
 name|void
 name|setGroups
 parameter_list|(
