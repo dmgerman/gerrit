@@ -3149,6 +3149,13 @@ operator|.
 name|executeUpdate
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|oldEntries
+operator|>
+literal|0
+condition|)
+block|{
 name|logger
 operator|.
 name|atInfo
@@ -3165,6 +3172,7 @@ argument_list|,
 name|url
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 try|try
 init|(
