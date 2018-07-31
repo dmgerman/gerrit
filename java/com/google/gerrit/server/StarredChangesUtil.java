@@ -1354,7 +1354,10 @@ decl_stmt|;
 DECL|field|serverIdent
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
+argument_list|>
 name|serverIdent
 decl_stmt|;
 DECL|field|indexer
@@ -1374,7 +1377,7 @@ name|queryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|StarredChangesUtil ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllUsersName allUsers, Provider<ReviewDb> dbProvider, @GerritPersonIdent PersonIdent serverIdent, ChangeIndexer indexer, Provider<InternalChangeQuery> queryProvider)
+DECL|method|StarredChangesUtil ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllUsersName allUsers, Provider<ReviewDb> dbProvider, @GerritPersonIdent Provider<PersonIdent> serverIdent, ChangeIndexer indexer, Provider<InternalChangeQuery> queryProvider)
 name|StarredChangesUtil
 parameter_list|(
 name|GitRepositoryManager
@@ -1394,7 +1397,10 @@ name|dbProvider
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
+name|Provider
+argument_list|<
 name|PersonIdent
+argument_list|>
 name|serverIdent
 parameter_list|,
 name|ChangeIndexer
@@ -1817,6 +1823,9 @@ operator|.
 name|setRefLogIdent
 argument_list|(
 name|serverIdent
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|batchUpdate
@@ -3352,6 +3361,9 @@ operator|.
 name|setRefLogIdent
 argument_list|(
 name|serverIdent
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|u
@@ -3515,6 +3527,9 @@ operator|.
 name|setRefLogIdent
 argument_list|(
 name|serverIdent
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|u

@@ -1228,7 +1228,10 @@ decl_stmt|;
 DECL|field|serverIdent
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
+argument_list|>
 name|serverIdent
 decl_stmt|;
 DECL|field|approvalsUtil
@@ -1263,7 +1266,7 @@ name|notifyUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Revert ( Provider<ReviewDb> db, PermissionBackend permissionBackend, GitRepositoryManager repoManager, ChangeInserter.Factory changeInserterFactory, ChangeMessagesUtil cmUtil, RetryHelper retryHelper, Sequences seq, PatchSetUtil psUtil, RevertedSender.Factory revertedSenderFactory, ChangeJson.Factory json, @GerritPersonIdent PersonIdent serverIdent, ApprovalsUtil approvalsUtil, ChangeReverted changeReverted, ContributorAgreementsChecker contributorAgreements, ProjectCache projectCache, NotifyUtil notifyUtil)
+DECL|method|Revert ( Provider<ReviewDb> db, PermissionBackend permissionBackend, GitRepositoryManager repoManager, ChangeInserter.Factory changeInserterFactory, ChangeMessagesUtil cmUtil, RetryHelper retryHelper, Sequences seq, PatchSetUtil psUtil, RevertedSender.Factory revertedSenderFactory, ChangeJson.Factory json, @GerritPersonIdent Provider<PersonIdent> serverIdent, ApprovalsUtil approvalsUtil, ChangeReverted changeReverted, ContributorAgreementsChecker contributorAgreements, ProjectCache projectCache, NotifyUtil notifyUtil)
 name|Revert
 parameter_list|(
 name|Provider
@@ -1307,7 +1310,10 @@ name|json
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
+name|Provider
+argument_list|<
 name|PersonIdent
+argument_list|>
 name|serverIdent
 parameter_list|,
 name|ApprovalsUtil
@@ -1784,13 +1790,10 @@ decl_stmt|;
 name|PersonIdent
 name|committerIdent
 init|=
-operator|new
-name|PersonIdent
-argument_list|(
 name|serverIdent
-argument_list|,
-name|now
-argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|PersonIdent
 name|authorIdent
