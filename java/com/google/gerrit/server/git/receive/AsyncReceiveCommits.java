@@ -106,20 +106,6 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
 name|data
 operator|.
 name|Capable
@@ -820,7 +806,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ProjectState projectState, IdentifiedUser user, Repository repository, @Nullable MessageSender messageSender, SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
+DECL|method|create ( ProjectState projectState, IdentifiedUser user, Repository repository, SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
 name|AsyncReceiveCommits
 name|create
 parameter_list|(
@@ -832,11 +818,6 @@ name|user
 parameter_list|,
 name|Repository
 name|repository
-parameter_list|,
-annotation|@
-name|Nullable
-name|MessageSender
-name|messageSender
 parameter_list|,
 name|SetMultimap
 argument_list|<
@@ -979,11 +960,11 @@ name|ReceiveCommand
 argument_list|>
 name|commands
 decl_stmt|;
-DECL|field|rc
+DECL|field|receiveCommits
 specifier|private
 specifier|final
 name|ReceiveCommits
-name|rc
+name|receiveCommits
 decl_stmt|;
 DECL|method|Worker (Collection<ReceiveCommand> commands)
 specifier|private
@@ -1002,7 +983,7 @@ name|commands
 operator|=
 name|commands
 expr_stmt|;
-name|rc
+name|receiveCommits
 operator|=
 name|factory
 operator|.
@@ -1019,17 +1000,10 @@ argument_list|,
 name|extraReviewers
 argument_list|)
 expr_stmt|;
-name|rc
+name|receiveCommits
 operator|.
 name|init
 argument_list|()
-expr_stmt|;
-name|rc
-operator|.
-name|setMessageSender
-argument_list|(
-name|messageSender
-argument_list|)
 expr_stmt|;
 name|progress
 operator|=
@@ -1052,7 +1026,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|rc
+name|receiveCommits
 operator|.
 name|processCommands
 argument_list|(
@@ -1073,7 +1047,7 @@ name|getProjectNameKey
 parameter_list|()
 block|{
 return|return
-name|rc
+name|receiveCommits
 operator|.
 name|getProject
 argument_list|()
@@ -1123,7 +1097,7 @@ name|void
 name|sendMessages
 parameter_list|()
 block|{
-name|rc
+name|receiveCommits
 operator|.
 name|sendMessages
 argument_list|()
@@ -1147,7 +1121,7 @@ name|int
 name|b
 parameter_list|)
 block|{
-name|rc
+name|receiveCommits
 operator|.
 name|getMessageSender
 argument_list|()
@@ -1184,7 +1158,7 @@ name|int
 name|len
 parameter_list|)
 block|{
-name|rc
+name|receiveCommits
 operator|.
 name|getMessageSender
 argument_list|()
@@ -1211,7 +1185,7 @@ index|[]
 name|what
 parameter_list|)
 block|{
-name|rc
+name|receiveCommits
 operator|.
 name|getMessageSender
 argument_list|()
@@ -1230,7 +1204,7 @@ name|void
 name|flush
 parameter_list|()
 block|{
-name|rc
+name|receiveCommits
 operator|.
 name|getMessageSender
 argument_list|()
@@ -1311,12 +1285,6 @@ specifier|final
 name|Repository
 name|repo
 decl_stmt|;
-DECL|field|messageSender
-specifier|private
-specifier|final
-name|MessageSender
-name|messageSender
-decl_stmt|;
 DECL|field|extraReviewers
 specifier|private
 specifier|final
@@ -1338,7 +1306,7 @@ name|allRefsWatcher
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AsyncReceiveCommits ( ReceiveCommits.Factory factory, PermissionBackend permissionBackend, Provider<InternalChangeQuery> queryProvider, @ReceiveCommitsExecutor ExecutorService executor, RequestScopePropagator scopePropagator, ReceiveConfig receiveConfig, TransferConfig transferConfig, Provider<LazyPostReceiveHookChain> lazyPostReceive, ContributorAgreementsChecker contributorAgreements, @Named(TIMEOUT_NAME) long timeoutMillis, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted Repository repo, @Assisted @Nullable MessageSender messageSender, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
+DECL|method|AsyncReceiveCommits ( ReceiveCommits.Factory factory, PermissionBackend permissionBackend, Provider<InternalChangeQuery> queryProvider, @ReceiveCommitsExecutor ExecutorService executor, RequestScopePropagator scopePropagator, ReceiveConfig receiveConfig, TransferConfig transferConfig, Provider<LazyPostReceiveHookChain> lazyPostReceive, ContributorAgreementsChecker contributorAgreements, @Named(TIMEOUT_NAME) long timeoutMillis, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted Repository repo, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
 name|AsyncReceiveCommits
 parameter_list|(
 name|ReceiveCommits
@@ -1400,13 +1368,6 @@ annotation|@
 name|Assisted
 name|Repository
 name|repo
-parameter_list|,
-annotation|@
-name|Assisted
-annotation|@
-name|Nullable
-name|MessageSender
-name|messageSender
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1476,12 +1437,6 @@ operator|.
 name|repo
 operator|=
 name|repo
-expr_stmt|;
-name|this
-operator|.
-name|messageSender
-operator|=
-name|messageSender
 expr_stmt|;
 name|this
 operator|.
