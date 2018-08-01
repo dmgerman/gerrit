@@ -769,7 +769,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Hook that delegates to {@link ReceiveCommits} in a worker thread. */
+comment|/**  * Hook that delegates to {@link ReceiveCommits} in a worker thread.  *  *<p>Since the work that {@link ReceiveCommits} does may take a long, potentially unbounded amount  * of time, it runs in the background so it can be monitored for timeouts and cancelled, and have  * stalls reported to the user from the main thread.  */
 end_comment
 
 begin_class
@@ -993,7 +993,7 @@ name|projectState
 argument_list|,
 name|user
 argument_list|,
-name|rp
+name|receivePack
 argument_list|,
 name|allRefsWatcher
 argument_list|,
@@ -1231,11 +1231,11 @@ operator|.
 name|ForProject
 name|perm
 decl_stmt|;
-DECL|field|rp
+DECL|field|receivePack
 specifier|private
 specifier|final
 name|ReceivePack
-name|rp
+name|receivePack
 decl_stmt|;
 DECL|field|executor
 specifier|private
@@ -1454,7 +1454,7 @@ operator|.
 name|getNameKey
 argument_list|()
 decl_stmt|;
-name|rp
+name|receivePack
 operator|=
 operator|new
 name|ReceivePack
@@ -1462,28 +1462,28 @@ argument_list|(
 name|repo
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setAllowCreates
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setAllowDeletes
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setAllowNonFastForwards
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setRefLogIdent
 argument_list|(
@@ -1493,7 +1493,7 @@ name|newRefLogIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setTimeout
 argument_list|(
@@ -1503,7 +1503,7 @@ name|getTimeout
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setMaxObjectSizeLimit
 argument_list|(
@@ -1515,7 +1515,7 @@ name|projectState
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setCheckReceivedObjects
 argument_list|(
@@ -1528,7 +1528,7 @@ name|getCheckReceivedObjects
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setRefFilter
 argument_list|(
@@ -1537,21 +1537,21 @@ name|ReceiveRefFilter
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setAllowPushOptions
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setPreReceiveHook
 argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setPostReceiveHook
 argument_list|(
@@ -1606,7 +1606,7 @@ name|ResourceConflictException
 name|e
 parameter_list|)
 block|{
-name|rp
+name|receivePack
 operator|.
 name|setCheckReferencedObjectsAreReachable
 argument_list|(
@@ -1688,7 +1688,7 @@ name|HackPushNegotiateHook
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|rp
+name|receivePack
 operator|.
 name|setAdvertiseRefsHook
 argument_list|(
@@ -1943,7 +1943,7 @@ name|getReceivePack
 parameter_list|()
 block|{
 return|return
-name|rp
+name|receivePack
 return|;
 block|}
 block|}
