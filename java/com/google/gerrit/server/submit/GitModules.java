@@ -442,6 +442,14 @@ specifier|final
 name|RequestId
 name|submissionId
 decl_stmt|;
+DECL|field|branch
+specifier|private
+specifier|final
+name|Branch
+operator|.
+name|NameKey
+name|branch
+decl_stmt|;
 DECL|field|subscriptions
 name|Set
 argument_list|<
@@ -476,6 +484,12 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|this
+operator|.
+name|branch
+operator|=
+name|branch
+expr_stmt|;
 name|this
 operator|.
 name|submissionId
@@ -716,9 +730,11 @@ parameter_list|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Checking for a subscription of %s"
+literal|"Checking for a subscription of %s for %s"
 argument_list|,
 name|src
+argument_list|,
+name|branch
 argument_list|)
 expr_stmt|;
 name|Collection
