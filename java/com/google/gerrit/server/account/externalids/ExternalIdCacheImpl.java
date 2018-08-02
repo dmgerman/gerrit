@@ -444,8 +444,6 @@ name|ExternalId
 argument_list|>
 name|toAdd
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|updateCache
 argument_list|(
