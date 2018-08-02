@@ -2397,6 +2397,7 @@ argument_list|(
 name|ATT_ARC
 argument_list|)
 decl_stmt|;
+comment|// Send refs down the wire.
 name|ReceivePack
 name|rp
 init|=
@@ -2429,7 +2430,7 @@ name|ATT_STATE
 argument_list|)
 decl_stmt|;
 name|Capable
-name|s
+name|canUpload
 decl_stmt|;
 try|try
 block|{
@@ -2453,7 +2454,7 @@ operator|.
 name|RUN_RECEIVE_PACK
 argument_list|)
 expr_stmt|;
-name|s
+name|canUpload
 operator|=
 name|arc
 operator|.
@@ -2506,7 +2507,7 @@ throw|;
 block|}
 if|if
 condition|(
-name|s
+name|canUpload
 operator|!=
 name|Capable
 operator|.
@@ -2533,7 +2534,7 @@ name|SC_FORBIDDEN
 argument_list|,
 literal|"\n"
 operator|+
-name|s
+name|canUpload
 operator|.
 name|getMessage
 argument_list|()
