@@ -2255,6 +2255,8 @@ name|identifiedUser
 argument_list|,
 name|db
 argument_list|,
+literal|null
+argument_list|,
 name|ImmutableSetMultimap
 operator|.
 name|of
