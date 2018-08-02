@@ -118,7 +118,7 @@ name|testing
 operator|.
 name|CacheSerializerTestUtil
 operator|.
-name|bytes
+name|byteString
 import|;
 end_import
 
@@ -322,7 +322,7 @@ argument_list|()
 operator|.
 name|setPrior
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0
 argument_list|,
@@ -368,7 +368,7 @@ argument_list|)
 operator|.
 name|setNext
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xde
 argument_list|,

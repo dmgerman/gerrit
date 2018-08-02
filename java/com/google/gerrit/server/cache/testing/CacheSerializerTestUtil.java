@@ -90,11 +90,35 @@ specifier|public
 class|class
 name|CacheSerializerTestUtil
 block|{
-DECL|method|bytes (int... ints)
+DECL|method|byteString (int... ints)
 specifier|public
 specifier|static
 name|ByteString
-name|bytes
+name|byteString
+parameter_list|(
+name|int
+modifier|...
+name|ints
+parameter_list|)
+block|{
+return|return
+name|ByteString
+operator|.
+name|copyFrom
+argument_list|(
+name|byteArray
+argument_list|(
+name|ints
+argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|byteArray (int... ints)
+specifier|public
+specifier|static
+name|byte
+index|[]
+name|byteArray
 parameter_list|(
 name|int
 modifier|...
@@ -145,12 +169,7 @@ index|]
 expr_stmt|;
 block|}
 return|return
-name|ByteString
-operator|.
-name|copyFrom
-argument_list|(
 name|bytes
-argument_list|)
 return|;
 block|}
 DECL|method|CacheSerializerTestUtil ()

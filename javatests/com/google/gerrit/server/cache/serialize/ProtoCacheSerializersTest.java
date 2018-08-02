@@ -136,7 +136,7 @@ name|testing
 operator|.
 name|CacheSerializerTestUtil
 operator|.
-name|bytes
+name|byteString
 import|;
 end_import
 
@@ -264,7 +264,7 @@ name|idConverter
 operator|.
 name|fromByteString
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xaa
 argument_list|,
@@ -325,7 +325,7 @@ name|idConverter
 operator|.
 name|fromByteString
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xbb
 argument_list|,
@@ -457,7 +457,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xaa
 argument_list|,
@@ -518,7 +518,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xbb
 argument_list|,
