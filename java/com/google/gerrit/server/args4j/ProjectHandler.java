@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|util
+operator|.
+name|cli
+operator|.
+name|Localizable
+operator|.
+name|localizable
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -553,14 +571,12 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
-name|String
-operator|.
-name|format
+name|localizable
 argument_list|(
 literal|"project %s not found"
+argument_list|)
 argument_list|,
 name|nameWithoutSuffix
-argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -612,6 +628,8 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
+name|localizable
+argument_list|(
 operator|new
 name|NoSuchProjectException
 argument_list|(
@@ -620,6 +638,7 @@ argument_list|)
 operator|.
 name|getMessage
 argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -654,6 +673,8 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
+name|localizable
+argument_list|(
 operator|new
 name|NoSuchProjectException
 argument_list|(
@@ -662,6 +683,7 @@ argument_list|)
 operator|.
 name|getMessage
 argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
