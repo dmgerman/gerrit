@@ -183,6 +183,21 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|Override
+DECL|method|expireFromMemoryAfterAccess (Duration duration)
+name|PersistentCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|expireFromMemoryAfterAccess
+parameter_list|(
+name|Duration
+name|duration
+parameter_list|)
+function_decl|;
+annotation|@
+name|Override
 DECL|method|weigher (Class<? extends Weigher<K, V>> clazz)
 name|PersistentCacheBinding
 argument_list|<
