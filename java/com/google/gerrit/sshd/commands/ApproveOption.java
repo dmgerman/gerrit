@@ -511,7 +511,8 @@ return|return
 literal|false
 return|;
 block|}
-comment|// TODO(hanwen): add @Override after args4j upgrade.
+annotation|@
+name|Override
 DECL|method|forbids ()
 specifier|public
 name|String
@@ -523,7 +524,8 @@ return|return
 literal|null
 return|;
 block|}
-comment|// TODO(hanwen): add @Override after args4j upgrade.
+annotation|@
+name|Override
 DECL|method|help ()
 specifier|public
 name|boolean
