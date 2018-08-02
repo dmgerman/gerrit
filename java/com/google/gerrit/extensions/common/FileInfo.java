@@ -117,6 +117,8 @@ specifier|public
 name|long
 name|size
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|equals (Object o)
 specifier|public
 name|boolean
@@ -222,6 +224,35 @@ return|;
 block|}
 return|return
 literal|false
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|Objects
+operator|.
+name|hash
+argument_list|(
+name|status
+argument_list|,
+name|binary
+argument_list|,
+name|oldPath
+argument_list|,
+name|linesInserted
+argument_list|,
+name|linesDeleted
+argument_list|,
+name|sizeDelta
+argument_list|,
+name|size
+argument_list|)
 return|;
 block|}
 block|}
