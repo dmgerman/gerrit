@@ -266,7 +266,7 @@ case|case
 name|V6_3
 case|:
 return|return
-literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.1"
+literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.2"
 return|;
 block|}
 throw|throw
