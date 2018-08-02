@@ -3146,15 +3146,11 @@ name|extraReviewers
 parameter_list|)
 function_decl|;
 block|}
-DECL|class|ReceivePackMessageSender
-specifier|private
+DECL|class|MessageSender
+specifier|public
 class|class
-name|ReceivePackMessageSender
-implements|implements
 name|MessageSender
 block|{
-annotation|@
-name|Override
 DECL|method|sendMessage (String what)
 specifier|public
 name|void
@@ -3172,8 +3168,6 @@ name|what
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|sendError (String what)
 specifier|public
 name|void
@@ -3191,8 +3185,6 @@ name|what
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|sendBytes (byte[] what)
 specifier|public
 name|void
@@ -3215,8 +3207,6 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|sendBytes (byte[] what, int off, int len)
 specifier|public
 name|void
@@ -3259,8 +3249,6 @@ block|{
 comment|// Ignore write failures (matching JGit behavior).
 block|}
 block|}
-annotation|@
-name|Override
 DECL|method|flush ()
 specifier|public
 name|void
@@ -4491,7 +4479,7 @@ comment|// Handles for outputting back over the wire to the end user.
 name|messageSender
 operator|=
 operator|new
-name|ReceivePackMessageSender
+name|MessageSender
 argument_list|()
 expr_stmt|;
 block|}
@@ -4522,46 +4510,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Set a message sender for this operation. */
-DECL|method|setMessageSender (MessageSender ms)
-name|void
-name|setMessageSender
-parameter_list|(
-name|MessageSender
-name|ms
-parameter_list|)
-block|{
-name|messageSender
-operator|=
-name|ms
-operator|!=
-literal|null
-condition|?
-name|ms
-else|:
-operator|new
-name|ReceivePackMessageSender
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|getMessageSender ()
 name|MessageSender
 name|getMessageSender
 parameter_list|()
 block|{
-if|if
-condition|(
-name|messageSender
-operator|==
-literal|null
-condition|)
-block|{
-name|setMessageSender
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|messageSender
 return|;
