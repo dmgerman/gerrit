@@ -124,7 +124,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|StringSerializer
+name|StringCacheSerializer
 import|;
 end_import
 
@@ -260,7 +260,7 @@ argument_list|)
 operator|.
 name|keySerializer
 argument_list|(
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 argument_list|)

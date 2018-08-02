@@ -140,7 +140,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|StringSerializer
+name|StringCacheSerializer
 import|;
 end_import
 
@@ -330,11 +330,11 @@ name|id
 argument_list|,
 name|KEY_TYPE
 argument_list|,
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 argument_list|,
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 argument_list|,
@@ -601,7 +601,7 @@ name|byte
 index|[]
 name|serialized
 init|=
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 operator|.
@@ -631,7 +631,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 operator|.

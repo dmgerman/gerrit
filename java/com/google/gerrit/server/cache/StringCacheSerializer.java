@@ -151,10 +151,10 @@ import|;
 end_import
 
 begin_enum
-DECL|enum|StringSerializer
+DECL|enum|StringCacheSerializer
 specifier|public
 enum|enum
-name|StringSerializer
+name|StringCacheSerializer
 implements|implements
 name|CacheSerializer
 argument_list|<
