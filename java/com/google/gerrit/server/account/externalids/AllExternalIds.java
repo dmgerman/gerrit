@@ -106,6 +106,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableSetMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Multimap
 import|;
 end_import
@@ -121,20 +135,6 @@ operator|.
 name|collect
 operator|.
 name|MultimapBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Multimaps
 import|;
 end_import
 
@@ -165,13 +165,29 @@ operator|.
 name|client
 operator|.
 name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
 operator|.
 name|Id
 import|;
 end_import
 
 begin_comment
-comment|/**  * Cache value containing all external IDs.  *  *<p>All returned fields are unmodifiable.  */
+comment|/** Cache value containing all external IDs. */
 end_comment
 
 begin_class
@@ -268,9 +284,9 @@ return|return
 operator|new
 name|AutoValue_AllExternalIds
 argument_list|(
-name|Multimaps
+name|ImmutableSetMultimap
 operator|.
-name|unmodifiableSetMultimap
+name|copyOf
 argument_list|(
 name|MultimapBuilder
 operator|.
@@ -293,15 +309,22 @@ name|byAccount
 argument_list|)
 argument_list|)
 argument_list|,
+name|ImmutableSetMultimap
+operator|.
+name|copyOf
+argument_list|(
 name|byEmailCopy
+argument_list|)
 argument_list|)
 return|;
 block|}
 DECL|method|byAccount ()
 specifier|public
 specifier|abstract
-name|SetMultimap
+name|ImmutableSetMultimap
 argument_list|<
+name|Account
+operator|.
 name|Id
 argument_list|,
 name|ExternalId
@@ -312,7 +335,7 @@ function_decl|;
 DECL|method|byEmail ()
 specifier|public
 specifier|abstract
-name|SetMultimap
+name|ImmutableSetMultimap
 argument_list|<
 name|String
 argument_list|,
