@@ -234,7 +234,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|CacheSerializer
+name|PersistentCache
 import|;
 end_import
 
@@ -250,7 +250,9 @@ name|server
 operator|.
 name|cache
 operator|.
-name|PersistentCache
+name|serialize
+operator|.
+name|CacheSerializer
 import|;
 end_import
 

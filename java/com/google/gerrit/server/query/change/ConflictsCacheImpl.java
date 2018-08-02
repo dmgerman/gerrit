@@ -94,7 +94,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|BooleanCacheSerializer
+name|CacheModule
 import|;
 end_import
 
@@ -110,7 +110,9 @@ name|server
 operator|.
 name|cache
 operator|.
-name|CacheModule
+name|serialize
+operator|.
+name|BooleanCacheSerializer
 import|;
 end_import
 
