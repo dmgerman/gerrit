@@ -76,7 +76,7 @@ DECL|interface|Event
 interface|interface
 name|Event
 extends|extends
-name|ChangeEvent
+name|RevisionEvent
 block|{}
 DECL|method|onWorkInProgressStateChanged (Event event)
 name|void

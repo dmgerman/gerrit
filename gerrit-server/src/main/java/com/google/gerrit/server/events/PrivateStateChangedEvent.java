@@ -118,7 +118,7 @@ specifier|public
 class|class
 name|PrivateStateChangedEvent
 extends|extends
-name|ChangeEvent
+name|PatchSetEvent
 block|{
 DECL|field|TYPE
 specifier|static
