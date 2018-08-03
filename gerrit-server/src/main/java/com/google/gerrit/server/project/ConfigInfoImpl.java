@@ -406,7 +406,7 @@ name|ConfigInfoImpl
 extends|extends
 name|ConfigInfo
 block|{
-DECL|method|ConfigInfoImpl ( boolean serverEnableSignedPush, ProjectControl control, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
+DECL|method|ConfigInfoImpl ( boolean serverEnableSignedPush, ProjectControl control, TransferConfig transferConfig, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
 specifier|public
 name|ConfigInfoImpl
 parameter_list|(
@@ -417,7 +417,7 @@ name|ProjectControl
 name|control
 parameter_list|,
 name|TransferConfig
-name|config
+name|transferConfig
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -804,19 +804,19 @@ name|maxObjectSizeLimit
 operator|.
 name|value
 operator|=
-name|config
+name|transferConfig
 operator|.
 name|getEffectiveMaxObjectSizeLimit
 argument_list|(
 name|projectState
 argument_list|)
 operator|==
-name|config
+name|transferConfig
 operator|.
 name|getMaxObjectSizeLimit
 argument_list|()
 condition|?
-name|config
+name|transferConfig
 operator|.
 name|getFormattedMaxObjectSizeLimit
 argument_list|()
@@ -839,7 +839,7 @@ name|maxObjectSizeLimit
 operator|.
 name|inheritedValue
 operator|=
-name|config
+name|transferConfig
 operator|.
 name|getFormattedMaxObjectSizeLimit
 argument_list|()

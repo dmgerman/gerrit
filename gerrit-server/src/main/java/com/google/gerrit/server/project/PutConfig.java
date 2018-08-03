@@ -630,11 +630,11 @@ operator|.
 name|Factory
 name|projectStateFactory
 decl_stmt|;
-DECL|field|config
+DECL|field|transferConfig
 specifier|private
 specifier|final
 name|TransferConfig
-name|config
+name|transferConfig
 decl_stmt|;
 DECL|field|pluginConfigEntries
 specifier|private
@@ -680,7 +680,7 @@ name|user
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutConfig ( @nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views, Provider<CurrentUser> user)
+DECL|method|PutConfig ( @nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, ProjectState.Factory projectStateFactory, TransferConfig transferConfig, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views, Provider<CurrentUser> user)
 name|PutConfig
 parameter_list|(
 annotation|@
@@ -705,7 +705,7 @@ name|Factory
 name|projectStateFactory
 parameter_list|,
 name|TransferConfig
-name|config
+name|transferConfig
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -761,9 +761,9 @@ name|projectStateFactory
 expr_stmt|;
 name|this
 operator|.
-name|config
+name|transferConfig
 operator|=
-name|config
+name|transferConfig
 expr_stmt|;
 name|this
 operator|.
@@ -1314,7 +1314,7 @@ name|get
 argument_list|()
 argument_list|)
 argument_list|,
-name|config
+name|transferConfig
 argument_list|,
 name|pluginConfigEntries
 argument_list|,

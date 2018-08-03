@@ -253,11 +253,11 @@ specifier|final
 name|boolean
 name|serverEnableSignedPush
 decl_stmt|;
-DECL|field|config
+DECL|field|transferConfig
 specifier|private
 specifier|final
 name|TransferConfig
-name|config
+name|transferConfig
 decl_stmt|;
 DECL|field|pluginConfigEntries
 specifier|private
@@ -294,7 +294,7 @@ name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetConfig ( @nableSignedPush boolean serverEnableSignedPush, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
+DECL|method|GetConfig ( @nableSignedPush boolean serverEnableSignedPush, TransferConfig transferConfig, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
 specifier|public
 name|GetConfig
 parameter_list|(
@@ -304,7 +304,7 @@ name|boolean
 name|serverEnableSignedPush
 parameter_list|,
 name|TransferConfig
-name|config
+name|transferConfig
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -336,9 +336,9 @@ name|serverEnableSignedPush
 expr_stmt|;
 name|this
 operator|.
-name|config
+name|transferConfig
 operator|=
-name|config
+name|transferConfig
 expr_stmt|;
 name|this
 operator|.
@@ -387,7 +387,7 @@ operator|.
 name|getControl
 argument_list|()
 argument_list|,
-name|config
+name|transferConfig
 argument_list|,
 name|pluginConfigEntries
 argument_list|,
