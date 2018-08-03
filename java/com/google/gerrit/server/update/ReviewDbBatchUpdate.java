@@ -266,20 +266,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|restapi
@@ -626,6 +612,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|logging
+operator|.
+name|TraceContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -729,22 +731,6 @@ operator|.
 name|notedb
 operator|.
 name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|RequestId
 import|;
 end_import
 
@@ -1593,7 +1579,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|execute ( ImmutableList<ReviewDbBatchUpdate> updates, BatchUpdateListener listener, @Nullable RequestId requestId, boolean dryrun)
+DECL|method|execute ( ImmutableList<ReviewDbBatchUpdate> updates, BatchUpdateListener listener, boolean dryrun)
 specifier|static
 name|void
 name|execute
@@ -1606,11 +1592,6 @@ name|updates
 parameter_list|,
 name|BatchUpdateListener
 name|listener
-parameter_list|,
-annotation|@
-name|Nullable
-name|RequestId
-name|requestId
 parameter_list|,
 name|boolean
 name|dryrun
@@ -1630,13 +1611,6 @@ condition|)
 block|{
 return|return;
 block|}
-name|setRequestIds
-argument_list|(
-name|updates
-argument_list|,
-name|requestId
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|Order
@@ -2228,8 +2202,6 @@ name|this
 argument_list|)
 argument_list|,
 name|listener
-argument_list|,
-name|requestId
 argument_list|,
 literal|false
 argument_list|)
@@ -3654,11 +3626,6 @@ DECL|field|deleted
 name|boolean
 name|deleted
 decl_stmt|;
-DECL|field|taskId
-specifier|private
-name|String
-name|taskId
-decl_stmt|;
 DECL|method|ChangeTask ( Change.Id id, Collection<BatchUpdateOp> changeOps, Thread mainThread, boolean dryrun)
 specifier|private
 name|ChangeTask
@@ -3716,8 +3683,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|taskId
-operator|=
+try|try
+init|(
+name|TraceContext
+name|traceContext
+init|=
+operator|new
+name|TraceContext
+argument_list|(
+literal|"TASK_ID"
+argument_list|,
 name|id
 operator|.
 name|toString
@@ -3732,7 +3707,9 @@ argument_list|()
 operator|.
 name|getId
 argument_list|()
-expr_stmt|;
+argument_list|)
+init|)
+block|{
 if|if
 condition|(
 name|Thread
@@ -3798,7 +3775,7 @@ name|schemaFactory
 operator|.
 name|open
 argument_list|()
-init|;             Repository repo = repoManager.openRepository(project)
+init|;               Repository repo = repoManager.openRepository(project)
 empty_stmt|;
 name|RevWalk
 name|rw
@@ -3824,6 +3801,7 @@ block|}
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|call (ReviewDb db, Repository repo, RevWalk rw)
 specifier|private
@@ -4631,93 +4609,6 @@ argument_list|(
 name|id
 argument_list|)
 return|;
-block|}
-DECL|method|logDebug (String msg, Throwable t)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-name|Throwable
-name|t
-parameter_list|)
-block|{
-name|ReviewDbBatchUpdate
-operator|.
-name|this
-operator|.
-name|logDebug
-argument_list|(
-literal|"["
-operator|+
-name|taskId
-operator|+
-literal|"] "
-operator|+
-name|msg
-argument_list|,
-name|t
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logDebug (String msg)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-name|ReviewDbBatchUpdate
-operator|.
-name|this
-operator|.
-name|logDebug
-argument_list|(
-literal|"["
-operator|+
-name|taskId
-operator|+
-literal|"] "
-operator|+
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logDebug (String msg, @Nullable Object arg)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg
-parameter_list|)
-block|{
-name|ReviewDbBatchUpdate
-operator|.
-name|this
-operator|.
-name|logDebug
-argument_list|(
-literal|"["
-operator|+
-name|taskId
-operator|+
-literal|"] "
-operator|+
-name|msg
-argument_list|,
-name|arg
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 DECL|method|changesToUpdate (ChangeContextImpl ctx)

@@ -144,20 +144,6 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
 name|data
 operator|.
 name|SubscribeSection
@@ -1472,7 +1458,12 @@ operator|!
 name|enableSuperProjectSubscriptions
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Updating superprojects disabled"
 argument_list|)
@@ -1481,7 +1472,12 @@ return|return
 literal|null
 return|;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Calculating superprojects - submodules map"
 argument_list|)
@@ -1592,7 +1588,12 @@ parameter_list|)
 throws|throws
 name|SubmoduleException
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Now processing %s"
 argument_list|,
@@ -1948,7 +1949,12 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Inspecting SubscribeSection %s"
 argument_list|,
@@ -1966,7 +1972,12 @@ name|getMatchingRefSpecs
 argument_list|()
 control|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Inspecting [matching] ref %s"
 argument_list|,
@@ -2085,7 +2096,12 @@ name|getMultiMatchRefSpecs
 argument_list|()
 control|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Inspecting [all] ref %s"
 argument_list|,
@@ -2222,7 +2238,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Returning possible branches: %s for project %s"
 argument_list|,
@@ -2254,7 +2275,12 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Calculating possible superprojects for %s"
 argument_list|,
@@ -2300,7 +2326,12 @@ name|srcBranch
 argument_list|)
 control|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Checking subscribe section %s"
 argument_list|,
@@ -2376,7 +2407,12 @@ operator|==
 literal|null
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"The branch %s doesn't exist."
 argument_list|,
@@ -2392,7 +2428,12 @@ name|NoSuchProjectException
 name|e
 parameter_list|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"The project %s doesn't exist"
 argument_list|,
@@ -2453,7 +2494,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Calculated superprojects for %s are %s"
 argument_list|,
@@ -2590,11 +2636,6 @@ argument_list|,
 name|BatchUpdateListener
 operator|.
 name|NONE
-argument_list|,
-name|orm
-operator|.
-name|getSubmissionId
-argument_list|()
 argument_list|,
 literal|false
 argument_list|)
@@ -4441,108 +4482,6 @@ name|GitlinkOp
 argument_list|(
 name|branch
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logDebug (String msg)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-name|orm
-operator|.
-name|getSubmissionId
-argument_list|()
-operator|+
-literal|" "
-operator|+
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logDebug (String msg, @Nullable Object arg)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-name|orm
-operator|.
-name|getSubmissionId
-argument_list|()
-operator|+
-literal|" "
-operator|+
-name|msg
-argument_list|,
-name|arg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logDebug (String msg, @Nullable Object arg1, @Nullable Object arg2)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg1
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg2
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-name|orm
-operator|.
-name|getSubmissionId
-argument_list|()
-operator|+
-literal|" "
-operator|+
-name|msg
-argument_list|,
-name|arg1
-argument_list|,
-name|arg2
 argument_list|)
 expr_stmt|;
 block|}

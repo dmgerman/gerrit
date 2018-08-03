@@ -82,6 +82,22 @@ name|checkNotNull
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|RequestId
+import|;
+end_import
+
 begin_class
 DECL|class|TraceContext
 specifier|public
@@ -108,6 +124,35 @@ specifier|final
 name|boolean
 name|removeOnClose
 decl_stmt|;
+DECL|method|TraceContext (RequestId.Type requestType, Object tagValue)
+specifier|public
+name|TraceContext
+parameter_list|(
+name|RequestId
+operator|.
+name|Type
+name|requestType
+parameter_list|,
+name|Object
+name|tagValue
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|checkNotNull
+argument_list|(
+name|requestType
+argument_list|,
+literal|"request type is required"
+argument_list|)
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|tagValue
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|TraceContext (String tagName, Object tagValue)
 specifier|public
 name|TraceContext

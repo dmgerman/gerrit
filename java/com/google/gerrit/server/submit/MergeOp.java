@@ -806,6 +806,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|logging
+operator|.
+name|TraceContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -3279,6 +3295,14 @@ operator|.
 name|nowTs
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|db
+operator|=
+name|db
+expr_stmt|;
+name|this
+operator|.
 name|submissionId
 operator|=
 name|RequestId
@@ -3288,16 +3312,33 @@ argument_list|(
 name|change
 argument_list|)
 expr_stmt|;
-name|this
+try|try
+init|(
+name|TraceContext
+name|traceContext
+init|=
+operator|new
+name|TraceContext
+argument_list|(
+name|RequestId
 operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
+name|Type
+operator|.
+name|SUBMISSION_ID
+argument_list|,
+name|submissionId
+argument_list|)
+init|)
+block|{
 name|openRepoManager
 argument_list|()
 expr_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Beginning integration of %s"
 argument_list|,
@@ -3373,7 +3414,12 @@ literal|" is not visible"
 argument_list|)
 throw|;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Calculated to merge %s"
 argument_list|,
@@ -3453,7 +3499,12 @@ condition|(
 name|isRetry
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Retrying, attempt #%d; skipping merged changes"
 argument_list|,
@@ -3490,7 +3541,12 @@ condition|(
 name|checkSubmitRules
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Checking submit rules and state"
 argument_list|)
@@ -3505,7 +3561,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Bypassing submit rules"
 argument_list|)
@@ -3532,11 +3593,19 @@ name|IntegrationException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Error from integrateIntoHistory"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -3567,7 +3636,8 @@ argument_list|(
 name|retryTracker
 argument_list|)
 comment|// Up to the entire submit operation is retried, including possibly many projects.
-comment|// Multiply the timeout by the number of projects we're actually attempting to submit.
+comment|// Multiply the timeout by the number of projects we're actually attempting to
+comment|// submit.
 operator|.
 name|timeout
 argument_list|(
@@ -3628,6 +3698,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
 DECL|method|openRepoManager ()
 specifier|private
 name|void
@@ -3663,8 +3734,6 @@ argument_list|,
 name|ts
 argument_list|,
 name|caller
-argument_list|,
-name|submissionId
 argument_list|)
 expr_stmt|;
 block|}
@@ -3917,7 +3986,12 @@ argument_list|,
 literal|"cannot integrate hidden changes into history"
 argument_list|)
 expr_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Beginning merge attempt on %s"
 argument_list|,
@@ -4101,8 +4175,6 @@ name|strategies
 argument_list|,
 name|commitStatus
 argument_list|)
-argument_list|,
-name|submissionId
 argument_list|,
 name|dryrun
 argument_list|)
@@ -4686,7 +4758,12 @@ name|e
 argument_list|)
 throw|;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Found %d existing heads"
 argument_list|,
@@ -4743,7 +4820,12 @@ parameter_list|)
 throws|throws
 name|IntegrationException
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Validating %d changes"
 argument_list|,
@@ -4948,12 +5030,17 @@ name|msg
 init|=
 literal|"Missing current patch set on change"
 decl_stmt|;
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
+literal|"%s %s"
+argument_list|,
 name|msg
-operator|+
-literal|" "
-operator|+
+argument_list|,
 name|changeId
 argument_list|)
 expr_stmt|;
@@ -5312,7 +5399,12 @@ name|commit
 argument_list|)
 expr_stmt|;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Submitting on this run: %s"
 argument_list|,
@@ -5586,13 +5678,16 @@ name|NoSuchProjectException
 name|e
 parameter_list|)
 block|{
-name|logWarn
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Project "
-operator|+
+literal|"Project %s no longer exists, abandoning open changes."
+argument_list|,
 name|project
-operator|+
-literal|" no longer exists, abandoning open changes."
 argument_list|)
 expr_stmt|;
 name|abandonAllOpenChangeForDeletedProject
@@ -5674,13 +5769,6 @@ name|ts
 argument_list|)
 init|)
 block|{
-name|bu
-operator|.
-name|setRequestId
-argument_list|(
-name|submissionId
-argument_list|)
-expr_stmt|;
 name|bu
 operator|.
 name|addOp
@@ -5815,13 +5903,21 @@ name|RestApiException
 name|e
 parameter_list|)
 block|{
-name|logWarn
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot abandon changes for deleted project "
-operator|+
-name|destProject
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot abandon changes for deleted project %s"
+argument_list|,
+name|destProject
 argument_list|)
 expr_stmt|;
 block|}
@@ -5834,13 +5930,21 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|logWarn
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot abandon changes for deleted project "
-operator|+
-name|destProject
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot abandon changes for deleted project %s"
+argument_list|,
+name|destProject
 argument_list|)
 expr_stmt|;
 block|}
@@ -5916,162 +6020,6 @@ literal|" projects involved; some projects may have submitted successfully, but 
 operator|+
 literal|" failed"
 return|;
-block|}
-DECL|method|logDebug (String msg)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-name|submissionId
-operator|+
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logDebug (String msg, @Nullable Object arg)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-name|submissionId
-operator|+
-name|msg
-argument_list|,
-name|arg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logWarn (String msg, Throwable t)
-specifier|private
-name|void
-name|logWarn
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-name|Throwable
-name|t
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atWarning
-argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|t
-argument_list|)
-operator|.
-name|log
-argument_list|(
-literal|"%s%s"
-argument_list|,
-name|submissionId
-argument_list|,
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logWarn (String msg)
-specifier|private
-name|void
-name|logWarn
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atWarning
-argument_list|()
-operator|.
-name|log
-argument_list|(
-literal|"%s%s"
-argument_list|,
-name|submissionId
-argument_list|,
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logError (String msg, Throwable t)
-specifier|private
-name|void
-name|logError
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-name|Throwable
-name|t
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atSevere
-argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|t
-argument_list|)
-operator|.
-name|log
-argument_list|(
-literal|"%s%s"
-argument_list|,
-name|submissionId
-argument_list|,
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logError (String msg)
-specifier|private
-name|void
-name|logError
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-name|logError
-argument_list|(
-name|msg
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
