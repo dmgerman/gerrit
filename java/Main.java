@@ -67,6 +67,15 @@ name|FLOGGER_BACKEND_PROPERTY
 init|=
 literal|"flogger.backend_factory"
 decl_stmt|;
+DECL|field|FLOGGER_LOGGING_CONTEXT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|FLOGGER_LOGGING_CONTEXT
+init|=
+literal|"flogger.logging_context"
+decl_stmt|;
 comment|// We don't do any real work here because we need to import
 comment|// the archive lookup code and we cannot import a class in
 comment|// the default package. So this is just a tiny springboard
@@ -186,6 +195,15 @@ name|void
 name|configureFloggerBackend
 parameter_list|()
 block|{
+name|System
+operator|.
+name|setProperty
+argument_list|(
+name|FLOGGER_LOGGING_CONTEXT
+argument_list|,
+literal|"com.google.gerrit.server.logging.LoggingContext#getInstance"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|System
