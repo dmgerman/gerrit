@@ -958,10 +958,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|config ()
+DECL|method|submitType ()
 specifier|public
 name|void
-name|config
+name|submitType
 parameter_list|()
 throws|throws
 name|Exception
