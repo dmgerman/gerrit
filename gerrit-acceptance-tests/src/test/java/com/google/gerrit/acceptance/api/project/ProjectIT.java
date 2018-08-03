@@ -1198,10 +1198,11 @@ operator|.
 name|value
 argument_list|)
 operator|.
-name|isNull
-argument_list|()
+name|isEqualTo
+argument_list|(
+literal|"100k"
+argument_list|)
 expr_stmt|;
-comment|// TODO: Should be "100k"
 name|assertThat
 argument_list|(
 name|info
@@ -1251,12 +1252,9 @@ operator|.
 name|value
 argument_list|)
 operator|.
-name|isEqualTo
-argument_list|(
-literal|"0"
-argument_list|)
+name|isNull
+argument_list|()
 expr_stmt|;
-comment|// TODO: Should be null
 name|assertThat
 argument_list|(
 name|info
@@ -1266,12 +1264,9 @@ operator|.
 name|configuredValue
 argument_list|)
 operator|.
-name|isEqualTo
-argument_list|(
-literal|"0"
-argument_list|)
+name|isNull
+argument_list|()
 expr_stmt|;
-comment|// TODO: Should be null
 name|assertThat
 argument_list|(
 name|info
@@ -1522,10 +1517,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"200k"
+literal|"100k"
 argument_list|)
 expr_stmt|;
-comment|// TODO: Should be "100k"
 name|assertThat
 argument_list|(
 name|info

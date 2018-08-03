@@ -1290,7 +1290,12 @@ name|projectStateFactory
 operator|.
 name|create
 argument_list|(
-name|projectConfig
+name|ProjectConfig
+operator|.
+name|read
+argument_list|(
+name|md
+argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
