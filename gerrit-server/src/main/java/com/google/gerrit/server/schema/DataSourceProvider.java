@@ -423,6 +423,15 @@ argument_list|>
 implements|,
 name|LifecycleListener
 block|{
+DECL|field|DATABASE_KEY
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|DATABASE_KEY
+init|=
+literal|"database"
+decl_stmt|;
 DECL|field|cfg
 specifier|private
 specifier|final
@@ -629,7 +638,7 @@ name|ConfigSection
 argument_list|(
 name|cfg
 argument_list|,
-literal|"database"
+name|DATABASE_KEY
 argument_list|)
 decl_stmt|;
 name|String
@@ -743,7 +752,7 @@ name|cfg
 operator|.
 name|getBoolean
 argument_list|(
-literal|"database"
+name|DATABASE_KEY
 argument_list|,
 literal|"connectionpool"
 argument_list|,
@@ -846,7 +855,7 @@ name|cfg
 operator|.
 name|getInt
 argument_list|(
-literal|"database"
+name|DATABASE_KEY
 argument_list|,
 literal|"poolminidle"
 argument_list|,
@@ -862,7 +871,7 @@ name|cfg
 operator|.
 name|getInt
 argument_list|(
-literal|"database"
+name|DATABASE_KEY
 argument_list|,
 literal|"poolmaxidle"
 argument_list|,
@@ -887,7 +896,7 @@ name|getTimeUnit
 argument_list|(
 name|cfg
 argument_list|,
-literal|"database"
+name|DATABASE_KEY
 argument_list|,
 literal|null
 argument_list|,
