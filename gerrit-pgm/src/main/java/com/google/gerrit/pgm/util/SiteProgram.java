@@ -699,6 +699,15 @@ name|SiteProgram
 extends|extends
 name|AbstractProgram
 block|{
+DECL|field|CONNECTION_ERROR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|CONNECTION_ERROR
+init|=
+literal|"Cannot connect to SQL database"
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -1431,7 +1440,7 @@ block|{
 throw|throw
 name|die
 argument_list|(
-literal|"Cannot connect to SQL database"
+name|CONNECTION_ERROR
 argument_list|,
 name|why
 argument_list|)
@@ -1479,7 +1488,7 @@ block|{
 throw|throw
 name|die
 argument_list|(
-literal|"Cannot connect to SQL database"
+name|CONNECTION_ERROR
 argument_list|,
 name|why
 operator|.
@@ -1491,7 +1500,7 @@ block|}
 throw|throw
 name|die
 argument_list|(
-literal|"Cannot connect to SQL database"
+name|CONNECTION_ERROR
 argument_list|,
 name|why
 argument_list|)
