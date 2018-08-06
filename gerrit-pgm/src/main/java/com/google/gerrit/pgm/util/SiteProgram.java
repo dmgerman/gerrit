@@ -896,13 +896,6 @@ name|context
 parameter_list|)
 block|{
 specifier|final
-name|Path
-name|sitePath
-init|=
-name|getSitePath
-argument_list|()
-decl_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|Module
@@ -944,7 +937,8 @@ argument_list|)
 operator|.
 name|toInstance
 argument_list|(
-name|sitePath
+name|getSitePath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|bind
