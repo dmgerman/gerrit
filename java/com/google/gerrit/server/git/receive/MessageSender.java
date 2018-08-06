@@ -68,11 +68,34 @@ name|receive
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|UsedAt
+import|;
+end_import
+
 begin_comment
 comment|/**  * Interface used by {@link ReceiveCommits} for send messages over the wire during {@code  * receive-pack}.  */
 end_comment
 
 begin_interface
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|GOOGLE
+argument_list|)
 DECL|interface|MessageSender
 specifier|public
 interface|interface
