@@ -103,7 +103,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on a {@link org.eclipse.jgit.lib.PersonIdent} pointing to the identity representing Gerrit  * server itself.  */
+comment|/**  * Marker on a {@link org.eclipse.jgit.lib.PersonIdent} pointing to the identity + timestamp  * representing the Gerrit server itself.  *  *<p>When injecting this into a singleton class, use {@code Provider<PersonIdent>} so you get a  * fresh timestamp for each call to {@code get()}.  */
 end_comment
 
 begin_annotation_defn
