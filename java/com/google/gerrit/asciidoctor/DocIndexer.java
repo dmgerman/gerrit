@@ -628,10 +628,8 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|CmdLineException
+name|IllegalArgumentException
 argument_list|(
-name|parser
-argument_list|,
 literal|"FAILED: input file missing"
 argument_list|)
 throw|;
@@ -640,6 +638,8 @@ block|}
 catch|catch
 parameter_list|(
 name|CmdLineException
+decl||
+name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
