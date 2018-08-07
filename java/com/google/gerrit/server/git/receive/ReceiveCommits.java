@@ -3118,7 +3118,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ProjectState projectState, IdentifiedUser user, ReceivePack receivePack, AllRefsWatcher allRefsWatcher, SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
+DECL|method|create ( ProjectState projectState, IdentifiedUser user, ReceivePack receivePack, AllRefsWatcher allRefsWatcher, SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers, MessageSender messageSender)
 name|ReceiveCommits
 name|create
 parameter_list|(
@@ -3143,6 +3143,9 @@ operator|.
 name|Id
 argument_list|>
 name|extraReviewers
+parameter_list|,
+name|MessageSender
+name|messageSender
 parameter_list|)
 function_decl|;
 block|}
@@ -3876,7 +3879,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, @ServerInitiated Provider<AccountsUpdate> accountsUpdateProvider, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, @ServerInitiated Provider<AccountsUpdate> accountsUpdateProvider, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers, @Nullable @Assisted MessageSender messageSender)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -4070,6 +4073,13 @@ operator|.
 name|Id
 argument_list|>
 name|extraReviewers
+parameter_list|,
+annotation|@
+name|Nullable
+annotation|@
+name|Assisted
+name|MessageSender
+name|messageSender
 parameter_list|)
 throws|throws
 name|IOException
@@ -4488,8 +4498,16 @@ name|CREATE_NEW_CHANGE_FOR_ALL_NOT_IN_TARGET
 argument_list|)
 expr_stmt|;
 comment|// Handles for outputting back over the wire to the end user.
+name|this
+operator|.
 name|messageSender
 operator|=
+name|messageSender
+operator|!=
+literal|null
+condition|?
+name|messageSender
+else|:
 operator|new
 name|ReceivePackMessageSender
 argument_list|()
@@ -4522,46 +4540,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Set a message sender for this operation. */
-DECL|method|setMessageSender (MessageSender ms)
-name|void
-name|setMessageSender
-parameter_list|(
-name|MessageSender
-name|ms
-parameter_list|)
-block|{
-name|messageSender
-operator|=
-name|ms
-operator|!=
-literal|null
-condition|?
-name|ms
-else|:
-operator|new
-name|ReceivePackMessageSender
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|getMessageSender ()
 name|MessageSender
 name|getMessageSender
 parameter_list|()
 block|{
-if|if
-condition|(
-name|messageSender
-operator|==
-literal|null
-condition|)
-block|{
-name|setMessageSender
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|messageSender
 return|;
