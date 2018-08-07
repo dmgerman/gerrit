@@ -940,6 +940,30 @@ return|return
 name|events
 return|;
 block|}
+DECL|method|assertNoRefUpdatedEvents (String project, String branch)
+specifier|public
+name|void
+name|assertNoRefUpdatedEvents
+parameter_list|(
+name|String
+name|project
+parameter_list|,
+name|String
+name|branch
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|getRefUpdatedEvents
+argument_list|(
+name|project
+argument_list|,
+name|branch
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|assertRefUpdatedEvents (String project, String branch, String... expected)
 specifier|public
 name|void
