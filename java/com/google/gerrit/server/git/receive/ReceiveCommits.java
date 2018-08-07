@@ -11062,6 +11062,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|// Handle an upload to refs/changes/XX/CHANGED-NUMBER.
 DECL|method|parseReplaceCommand (ReceiveCommand cmd, Change.Id changeId)
 specifier|private
 name|void
@@ -13361,6 +13362,8 @@ block|}
 block|}
 block|}
 block|}
+comment|// Mark all branch tips as uninteresting in the given revwalk,
+comment|// so we get only the new commits when walking rw.
 DECL|method|markHeadsAsUninteresting (RevWalk rw, @Nullable String forRef)
 specifier|private
 name|void
@@ -18918,6 +18921,9 @@ return|return
 name|r
 return|;
 block|}
+comment|// allRefsWatcher hooks into the protocol negotation to get a list of all known refs.
+comment|// This is used as a cache of ref -> sha1 values, and to build an inverse index
+comment|// of (change => list of refs) and a (SHA1 => refs).
 DECL|method|allRefs ()
 specifier|private
 name|Map
