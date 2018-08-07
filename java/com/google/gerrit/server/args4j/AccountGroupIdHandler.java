@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|util
+operator|.
+name|cli
+operator|.
+name|Localizable
+operator|.
+name|localizable
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -356,11 +374,12 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
-literal|"Group \""
-operator|+
+name|localizable
+argument_list|(
+literal|"Group \"%s\" does not exist"
+argument_list|)
+argument_list|,
 name|n
-operator|+
-literal|"\" does not exist"
 argument_list|)
 throw|;
 block|}

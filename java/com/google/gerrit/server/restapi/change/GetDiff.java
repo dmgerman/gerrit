@@ -85,6 +85,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|util
+operator|.
+name|cli
+operator|.
+name|Localizable
+operator|.
+name|localizable
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -3341,11 +3359,10 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
-name|String
-operator|.
-name|format
+name|localizable
 argument_list|(
 literal|"\"%s\" is not a valid value for \"%s\""
+argument_list|)
 argument_list|,
 name|value
 argument_list|,
@@ -3358,7 +3375,6 @@ operator|)
 operator|.
 name|name
 argument_list|()
-argument_list|)
 argument_list|)
 throw|;
 block|}

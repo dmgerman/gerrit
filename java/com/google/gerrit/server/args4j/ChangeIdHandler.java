@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|util
+operator|.
+name|cli
+operator|.
+name|Localizable
+operator|.
+name|localizable
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -439,7 +457,10 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
+name|localizable
+argument_list|(
 literal|"change should be specified as<project>,<branch>,<change-id>"
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -550,7 +571,10 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
+name|localizable
+argument_list|(
 literal|"Change-Id is not valid"
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -566,8 +590,11 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
-literal|"Database error: "
-operator|+
+name|localizable
+argument_list|(
+literal|"Database error: %s"
+argument_list|)
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -581,11 +608,12 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
-literal|"\""
-operator|+
+name|localizable
+argument_list|(
+literal|"\"%s\": change not found"
+argument_list|)
+argument_list|,
 name|token
-operator|+
-literal|"\": change not found"
 argument_list|)
 throw|;
 block|}
