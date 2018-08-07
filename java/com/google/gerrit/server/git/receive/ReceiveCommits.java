@@ -3792,14 +3792,6 @@ argument_list|>
 name|actualCommands
 decl_stmt|;
 comment|// Collections lazily populated during processing.
-DECL|field|newChanges
-specifier|private
-name|List
-argument_list|<
-name|CreateRequest
-argument_list|>
-name|newChanges
-decl_stmt|;
 DECL|field|refsByChange
 specifier|private
 name|ListMultimap
@@ -4477,14 +4469,6 @@ name|HashSet
 argument_list|<>
 argument_list|()
 expr_stmt|;
-comment|// Collections lazily populated during processing.
-name|newChanges
-operator|=
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-expr_stmt|;
 comment|// Other settings populated during processing.
 name|newChangeForAllNotInTarget
 operator|=
@@ -4819,6 +4803,17 @@ name|err
 argument_list|)
 expr_stmt|;
 block|}
+name|List
+argument_list|<
+name|CreateRequest
+argument_list|>
+name|newChanges
+init|=
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|magicBranch
@@ -4835,15 +4830,21 @@ operator|==
 name|NOT_ATTEMPTED
 condition|)
 block|{
+name|newChanges
+operator|=
 name|selectNewAndReplacedChangesFromMagicBranch
 argument_list|()
 expr_stmt|;
 block|}
 name|preparePatchSetsForReplace
-argument_list|()
+argument_list|(
+name|newChanges
+argument_list|)
 expr_stmt|;
 name|insertChangesAndPatchSets
-argument_list|()
+argument_list|(
+name|newChanges
+argument_list|)
 expr_stmt|;
 name|newProgress
 operator|.
@@ -5118,14 +5119,22 @@ name|end
 argument_list|()
 expr_stmt|;
 name|reportMessages
-argument_list|()
+argument_list|(
+name|newChanges
+argument_list|)
 expr_stmt|;
 block|}
-DECL|method|reportMessages ()
+DECL|method|reportMessages (List<CreateRequest> newChanges)
 specifier|private
 name|void
 name|reportMessages
-parameter_list|()
+parameter_list|(
+name|List
+argument_list|<
+name|CreateRequest
+argument_list|>
+name|newChanges
+parameter_list|)
 block|{
 name|List
 argument_list|<
@@ -5572,11 +5581,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|insertChangesAndPatchSets ()
+DECL|method|insertChangesAndPatchSets (List<CreateRequest> newChanges)
 specifier|private
 name|void
 name|insertChangesAndPatchSets
-parameter_list|()
+parameter_list|(
+name|List
+argument_list|<
+name|CreateRequest
+argument_list|>
+name|newChanges
+parameter_list|)
 block|{
 name|ReceiveCommand
 name|magicBranchCmd
@@ -11415,7 +11430,10 @@ return|;
 block|}
 DECL|method|selectNewAndReplacedChangesFromMagicBranch ()
 specifier|private
-name|void
+name|List
+argument_list|<
+name|CreateRequest
+argument_list|>
 name|selectNewAndReplacedChangesFromMagicBranch
 parameter_list|()
 block|{
@@ -11424,13 +11442,17 @@ argument_list|(
 literal|"Finding new and replaced changes"
 argument_list|)
 expr_stmt|;
+name|List
+argument_list|<
+name|CreateRequest
+argument_list|>
 name|newChanges
-operator|=
+init|=
 operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|ListMultimap
 argument_list|<
 name|ObjectId
@@ -11479,7 +11501,12 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return;
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
 block|}
 name|LinkedHashMap
 argument_list|<
@@ -11866,14 +11893,12 @@ operator|+
 name|maxBatchChanges
 argument_list|)
 expr_stmt|;
-name|newChanges
-operator|=
+return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-expr_stmt|;
-return|return;
+return|;
 block|}
 if|if
 condition|(
@@ -11969,19 +11994,17 @@ argument_list|)
 condition|)
 block|{
 comment|// Not a change the user can propose? Abort as early as possible.
-name|newChanges
-operator|=
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-expr_stmt|;
 name|logDebug
 argument_list|(
 literal|"Aborting early due to invalid commit"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
 block|}
 comment|// Don't allow merges to be uploaded in commit chain via all-not-in-target
 if|if
@@ -12151,14 +12174,12 @@ argument_list|,
 name|SAME_CHANGE_ID_IN_MULTIPLE_CHANGES
 argument_list|)
 expr_stmt|;
-name|newChanges
-operator|=
+return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-expr_stmt|;
-return|return;
+return|;
 block|}
 name|List
 argument_list|<
@@ -12238,14 +12259,12 @@ operator|+
 literal|" has duplicates"
 argument_list|)
 expr_stmt|;
-name|newChanges
-operator|=
+return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-expr_stmt|;
-return|return;
+return|;
 block|}
 if|if
 condition|(
@@ -12356,14 +12375,12 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|newChanges
-operator|=
+return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-expr_stmt|;
-return|return;
+return|;
 block|}
 if|if
 condition|(
@@ -12398,14 +12415,12 @@ argument_list|,
 literal|"invalid Change-Id"
 argument_list|)
 expr_stmt|;
-name|newChanges
-operator|=
+return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-expr_stmt|;
-return|return;
+return|;
 block|}
 comment|// In case the change look up from the index failed,
 comment|// double check against the existing refs
@@ -12443,14 +12458,12 @@ argument_list|,
 literal|"commit(s) already exists (as current patchset)"
 argument_list|)
 expr_stmt|;
-name|newChanges
-operator|=
+return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-expr_stmt|;
-return|return;
+return|;
 block|}
 name|itr
 operator|.
@@ -12531,14 +12544,12 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|newChanges
-operator|=
+return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-expr_stmt|;
-return|return;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -12562,14 +12573,12 @@ argument_list|,
 literal|"database error"
 argument_list|)
 expr_stmt|;
-name|newChanges
-operator|=
+return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-expr_stmt|;
-return|return;
+return|;
 block|}
 if|if
 condition|(
@@ -12593,7 +12602,12 @@ argument_list|,
 literal|"no new changes"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
 block|}
 if|if
 condition|(
@@ -12617,7 +12631,9 @@ argument_list|,
 literal|"edit is not supported for new changes"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|newChanges
+return|;
 block|}
 try|try
 block|{
@@ -12796,8 +12812,10 @@ argument_list|,
 literal|"internal server error"
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
+return|return
+name|newChanges
+return|;
 block|}
 DECL|method|foundInExistingRef (Collection<Ref> existingRefs)
 specifier|private
@@ -14470,11 +14488,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|preparePatchSetsForReplace ()
+DECL|method|preparePatchSetsForReplace (List<CreateRequest> newChanges)
 specifier|private
 name|void
 name|preparePatchSetsForReplace
-parameter_list|()
+parameter_list|(
+name|List
+argument_list|<
+name|CreateRequest
+argument_list|>
+name|newChanges
+parameter_list|)
 block|{
 try|try
 block|{
