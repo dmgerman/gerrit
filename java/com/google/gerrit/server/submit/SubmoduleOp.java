@@ -3474,6 +3474,13 @@ name|errMsg
 argument_list|)
 throw|;
 block|}
+comment|// Parse the current gitlink entry commit in the subproject repo. This is used to add a
+comment|// shortlog for this submodule to the commit message in the superproject.
+comment|//
+comment|// Even if we don't strictly speaking need that commit message, parsing the commit is a sanity
+comment|// check that the old gitlink is a commit that actually exists. If not, then there is an
+comment|// inconsistency between the superproject and subproject state, and we don't want to risk
+comment|// making things worse by updating the gitlink to something else.
 name|oldCommit
 operator|=
 name|subOr
@@ -3506,6 +3513,8 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+comment|// This submodule's branch was updated as part of this specific submit batch: update the
+comment|// gitlink to point to the new commit from the batch.
 name|newCommit
 operator|=
 name|branchTips
@@ -3521,6 +3530,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// For whatever reason, this submodule was not updated as part of this submit batch, but the
+comment|// superproject is still subscribed to this branch. Re-read the ref to see if anything has
+comment|// changed since the last time the gitlink was updated, and roll that update into the same
+comment|// commit as all other submodule updates.
 name|Ref
 name|ref
 init|=
