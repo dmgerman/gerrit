@@ -552,6 +552,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|base
 operator|.
 name|CharMatcher
@@ -1452,6 +1466,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|logging
+operator|.
+name|TraceContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|permissions
 operator|.
 name|GlobalPermission
@@ -1503,6 +1533,22 @@ operator|.
 name|update
 operator|.
 name|UpdateException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|RequestId
 import|;
 end_import
 
@@ -2204,6 +2250,17 @@ name|FORM_TYPE
 init|=
 literal|"application/x-www-form-urlencoded"
 decl_stmt|;
+DECL|field|X_GERRIT_TRACE
+annotation|@
+name|VisibleForTesting
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|X_GERRIT_TRACE
+init|=
+literal|"X-Gerrit-Trace"
+decl_stmt|;
 comment|// HTTP 422 Unprocessable Entity.
 comment|// TODO: Remove when HttpServletResponse.SC_UNPROCESSABLE_ENTITY is available
 DECL|field|SC_UNPROCESSABLE_ENTITY
@@ -2795,6 +2852,19 @@ name|viewData
 init|=
 literal|null
 decl_stmt|;
+try|try
+init|(
+name|TraceContext
+name|traceContext
+init|=
+name|enableTracing
+argument_list|(
+name|req
+argument_list|,
+name|res
+argument_list|)
+init|)
+block|{
 try|try
 init|(
 name|PerThreadCache
@@ -3979,9 +4049,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_class
-
-begin_elseif
 elseif|else
 if|if
 condition|(
@@ -4090,10 +4157,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_elseif
+block|}
+end_class
 
-begin_if
-unit|} else
+begin_elseif
+elseif|else
 if|if
 condition|(
 name|viewData
@@ -4194,7 +4262,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_if
+end_elseif
 
 begin_block
 unit|} else
@@ -4455,7 +4523,7 @@ literal|" in request"
 argument_list|,
 name|e
 argument_list|)
-block|;     }
+block|;       }
 end_expr_stmt
 
 begin_catch
@@ -5043,8 +5111,9 @@ block|}
 end_finally
 
 begin_function
-unit|}    private
+unit|}   }
 DECL|method|applyXdOverrides (HttpServletRequest req, QueryParams qp)
+specifier|private
 specifier|static
 name|HttpServletRequest
 name|applyXdOverrides
@@ -9350,6 +9419,93 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+end_function
+
+begin_function
+DECL|method|enableTracing (HttpServletRequest req, HttpServletResponse res)
+specifier|private
+name|TraceContext
+name|enableTracing
+parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|,
+name|HttpServletResponse
+name|res
+parameter_list|)
+block|{
+name|String
+name|v
+init|=
+name|req
+operator|.
+name|getParameter
+argument_list|(
+name|ParameterParser
+operator|.
+name|TRACE_PARAMETER
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|v
+operator|!=
+literal|null
+operator|&&
+operator|(
+name|v
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
+name|Boolean
+operator|.
+name|parseBoolean
+argument_list|(
+name|v
+argument_list|)
+operator|)
+condition|)
+block|{
+name|RequestId
+name|traceId
+init|=
+operator|new
+name|RequestId
+argument_list|()
+decl_stmt|;
+name|res
+operator|.
+name|setHeader
+argument_list|(
+name|X_GERRIT_TRACE
+argument_list|,
+name|traceId
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+operator|new
+name|TraceContext
+argument_list|(
+name|RequestId
+operator|.
+name|Type
+operator|.
+name|TRACE_ID
+argument_list|,
+name|traceId
+argument_list|)
+return|;
+block|}
+return|return
+name|TraceContext
+operator|.
+name|DISABLED
+return|;
 block|}
 end_function
 

@@ -118,6 +118,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|TimeUtil
 import|;
 end_import
@@ -251,6 +265,9 @@ name|RECEIVE_ID
 block|,
 DECL|enumConstant|SUBMISSION_ID
 name|SUBMISSION_ID
+block|,
+DECL|enumConstant|TRACE_ID
+name|TRACE_ID
 block|;
 DECL|method|isId (String id)
 specifier|static
@@ -365,10 +382,23 @@ specifier|final
 name|String
 name|str
 decl_stmt|;
-DECL|method|RequestId (String resourceId)
+DECL|method|RequestId ()
+specifier|public
+name|RequestId
+parameter_list|()
+block|{
+name|this
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|RequestId (@ullable String resourceId)
 specifier|private
 name|RequestId
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|resourceId
 parameter_list|)
@@ -404,9 +434,17 @@ argument_list|)
 expr_stmt|;
 name|str
 operator|=
+operator|(
+name|resourceId
+operator|!=
+literal|null
+condition|?
 name|resourceId
 operator|+
 literal|"-"
+else|:
+literal|""
+operator|)
 operator|+
 name|TimeUtil
 operator|.
