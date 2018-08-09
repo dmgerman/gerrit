@@ -4835,6 +4835,9 @@ argument_list|()
 decl_stmt|;
 name|traceContext
 operator|.
+name|forceLogging
+argument_list|()
+operator|.
 name|addTag
 argument_list|(
 name|RequestId
