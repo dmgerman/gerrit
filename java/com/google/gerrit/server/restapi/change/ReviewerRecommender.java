@@ -962,6 +962,18 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Candidates %s"
+argument_list|,
+name|candidateList
+argument_list|)
+expr_stmt|;
 name|String
 name|query
 init|=
@@ -970,6 +982,18 @@ operator|.
 name|getQuery
 argument_list|()
 decl_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"query: %s"
+argument_list|,
+name|query
+argument_list|)
+expr_stmt|;
 name|double
 name|baseWeight
 init|=
@@ -984,6 +1008,18 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"base weight: %s"
+argument_list|,
+name|baseWeight
+argument_list|)
+expr_stmt|;
 name|Map
 argument_list|<
 name|Account
@@ -1026,6 +1062,18 @@ name|baseWeight
 argument_list|)
 expr_stmt|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Base reviewer scores: %s"
+argument_list|,
+name|reviewerScores
+argument_list|)
+expr_stmt|;
 comment|// Send the query along with a candidate list to all plugins and merge the
 comment|// results. Plugins don't necessarily need to use the candidates list, they
 comment|// can also return non-candidate account ids.
@@ -1358,6 +1406,18 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Reviewer scores: %s"
+argument_list|,
+name|reviewerScores
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1397,6 +1457,8 @@ literal|null
 condition|)
 block|{
 comment|// Remove change owner
+if|if
+condition|(
 name|reviewerScores
 operator|.
 name|remove
@@ -1409,15 +1471,30 @@ operator|.
 name|getOwner
 argument_list|()
 argument_list|)
-expr_stmt|;
-comment|// Remove existing reviewers
-name|reviewerScores
+operator|!=
+literal|null
+condition|)
+block|{
+name|logger
 operator|.
-name|keySet
+name|atFine
 argument_list|()
 operator|.
-name|removeAll
+name|log
 argument_list|(
+literal|"Remove change owner %s"
+argument_list|,
+name|changeNotes
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getOwner
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Remove existing reviewers
 name|approvalsUtil
 operator|.
 name|getReviewers
@@ -1434,6 +1511,38 @@ name|byState
 argument_list|(
 name|REVIEWER
 argument_list|)
+operator|.
+name|forEach
+argument_list|(
+name|r
+lambda|->
+block|{
+if|if
+condition|(
+name|reviewerScores
+operator|.
+name|remove
+argument_list|(
+name|r
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Remove existing reviewer %s"
+argument_list|,
+name|r
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1499,6 +1608,18 @@ name|toList
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Sorted suggestions: %s"
+argument_list|,
+name|sortedSuggestions
+argument_list|)
+expr_stmt|;
 return|return
 name|sortedSuggestions
 return|;
