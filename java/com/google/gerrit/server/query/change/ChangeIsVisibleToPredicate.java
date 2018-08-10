@@ -565,12 +565,14 @@ condition|)
 block|{
 name|logger
 operator|.
-name|atInfo
+name|atFine
 argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"No such project: %s"
+literal|"Filter out change %s of non-existing project %s"
+argument_list|,
+name|cd
 argument_list|,
 name|cd
 operator|.
@@ -591,6 +593,23 @@ name|statePermitsRead
 argument_list|()
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Filter out change %s of non-reabable project %s"
+argument_list|,
+name|cd
+argument_list|,
+name|cd
+operator|.
+name|project
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -699,11 +718,13 @@ argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"Skipping change %s because the corresponding repository was not found"
+literal|"Filter out change %s because the corresponding repository %s was not found"
+argument_list|,
+name|cd
 argument_list|,
 name|cd
 operator|.
-name|getId
+name|project
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -732,6 +753,18 @@ name|AuthException
 name|e
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Filter out non-visisble change: %s"
+argument_list|,
+name|cd
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
