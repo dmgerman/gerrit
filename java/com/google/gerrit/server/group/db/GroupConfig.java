@@ -258,6 +258,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|RefNames
 import|;
 end_import
@@ -505,7 +521,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A representation of a group in NoteDb.  *  *<p>Groups in NoteDb can be created by following the descriptions of {@link  * #createForNewGroup(Repository, InternalGroupCreation)}. For reading groups from NoteDb or  * updating them, refer to {@link #loadForGroup(Repository, AccountGroup.UUID)} or {@link  * #loadForGroupSnapshot(Repository, AccountGroup.UUID, ObjectId)}.  *  *<p><strong>Note:</strong>Any modification (group creation or update) only becomes permanent (and  * hence written to NoteDb) if {@link #commit(MetaDataUpdate)} is called.  *  *<p><strong>Warning:</strong>This class is a low-level API for groups in NoteDb. Most code which  * deals with internal Gerrit groups should use {@link Groups} or {@link GroupsUpdate} instead.  *  *<p><em>Internal details</em>  *  *<p>Each group is represented by a commit on a branch as defined by {@link  * RefNames#refsGroups(AccountGroup.UUID)}. Previous versions of the group exist as older commits on  * the same branch and can be reached by following along the parent references. New commits for  * updates are only created if a real modification occurs.  *  *<p>The commit messages of all commits on that branch form the audit log for the group. The  * messages mention any important modifications which happened for the group to avoid costly  * computations.  *  *<p>Within each commit, the properties of a group are spread across three files:  *  *<ul>  *<li><em>group.config</em>, which holds all basic properties of a group (further specified by  *       {@link GroupConfigEntry}), formatted as a JGit {@link Config} file  *<li><em>members</em>, which lists all members (accounts) of a group, formatted as one numeric  *       ID per line  *<li><em>subgroups</em>, which lists all subgroups of a group, formatted as one UUID per line  *</ul>  *  *<p>The files<em>members</em> and<em>subgroups</em> need not exist, which means that the group  * doesn't have any members or subgroups.  */
+comment|/**  * A representation of a group in NoteDb.  *  *<p>Groups in NoteDb can be created by following the descriptions of {@link  * #createForNewGroup(Project.NameKey, Repository, InternalGroupCreation)}. For reading groups from  * NoteDb or updating them, refer to {@link #loadForGroup(Project.NameKey, Repository,  * AccountGroup.UUID)} or {@link #loadForGroupSnapshot(Project.NameKey, Repository,  * AccountGroup.UUID, ObjectId)}.  *  *<p><strong>Note:</strong>Any modification (group creation or update) only becomes permanent (and  * hence written to NoteDb) if {@link #commit(MetaDataUpdate)} is called.  *  *<p><strong>Warning:</strong>This class is a low-level API for groups in NoteDb. Most code which  * deals with internal Gerrit groups should use {@link Groups} or {@link GroupsUpdate} instead.  *  *<p><em>Internal details</em>  *  *<p>Each group is represented by a commit on a branch as defined by {@link  * RefNames#refsGroups(AccountGroup.UUID)}. Previous versions of the group exist as older commits on  * the same branch and can be reached by following along the parent references. New commits for  * updates are only created if a real modification occurs.  *  *<p>The commit messages of all commits on that branch form the audit log for the group. The  * messages mention any important modifications which happened for the group to avoid costly  * computations.  *  *<p>Within each commit, the properties of a group are spread across three files:  *  *<ul>  *<li><em>group.config</em>, which holds all basic properties of a group (further specified by  *       {@link GroupConfigEntry}), formatted as a JGit {@link Config} file  *<li><em>members</em>, which lists all members (accounts) of a group, formatted as one numeric  *       ID per line  *<li><em>subgroups</em>, which lists all subgroups of a group, formatted as one UUID per line  *</ul>  *  *<p>The files<em>members</em> and<em>subgroups</em> need not exist, which means that the group  * doesn't have any members or subgroups.  */
 end_comment
 
 begin_class
@@ -561,13 +577,18 @@ argument_list|(
 literal|"\\R"
 argument_list|)
 decl_stmt|;
-comment|/**    * Creates a {@code GroupConfig} for a new group from the {@code InternalGroupCreation} blueprint.    * Further, optional properties can be specified by setting an {@code InternalGroupUpdate} via    * {@link #setGroupUpdate(InternalGroupUpdate, AuditLogFormatter)} on the returned {@code    * GroupConfig}.    *    *<p><strong>Note:</strong>The returned {@code GroupConfig} has to be committed via {@link    * #commit(MetaDataUpdate)} in order to create the group for real.    *    * @param repository the repository which holds the NoteDb commits for groups    * @param groupCreation an {@code InternalGroupCreation} specifying all properties which are    *     required for a new group    * @return a {@code GroupConfig} for a group creation    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if a group with the same UUID already exists but can't be read    *     due to an invalid format    * @throws OrmDuplicateKeyException if a group with the same UUID already exists    */
-DECL|method|createForNewGroup ( Repository repository, InternalGroupCreation groupCreation)
+comment|/**    * Creates a {@code GroupConfig} for a new group from the {@code InternalGroupCreation} blueprint.    * Further, optional properties can be specified by setting an {@code InternalGroupUpdate} via    * {@link #setGroupUpdate(InternalGroupUpdate, AuditLogFormatter)} on the returned {@code    * GroupConfig}.    *    *<p><strong>Note:</strong>The returned {@code GroupConfig} has to be committed via {@link    * #commit(MetaDataUpdate)} in order to create the group for real.    *    * @param projectName the name of the project which holds the NoteDb commits for groups    * @param repository the repository which holds the NoteDb commits for groups    * @param groupCreation an {@code InternalGroupCreation} specifying all properties which are    *     required for a new group    * @return a {@code GroupConfig} for a group creation    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if a group with the same UUID already exists but can't be read    *     due to an invalid format    * @throws OrmDuplicateKeyException if a group with the same UUID already exists    */
+DECL|method|createForNewGroup ( Project.NameKey projectName, Repository repository, InternalGroupCreation groupCreation)
 specifier|public
 specifier|static
 name|GroupConfig
 name|createForNewGroup
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|repository
 parameter_list|,
@@ -597,6 +618,8 @@ name|groupConfig
 operator|.
 name|load
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|)
 expr_stmt|;
@@ -611,13 +634,18 @@ return|return
 name|groupConfig
 return|;
 block|}
-comment|/**    * Creates a {@code GroupConfig} for an existing group.    *    *<p>The group is automatically loaded within this method and can be accessed via {@link    * #getLoadedGroup()}.    *    *<p>It's safe to call this method for non-existing groups. In that case, {@link    * #getLoadedGroup()} won't return any group. Thus, the existence of a group can be easily tested.    *    *<p>The group represented by the returned {@code GroupConfig} can be updated by setting an    * {@code InternalGroupUpdate} via {@link #setGroupUpdate(InternalGroupUpdate, AuditLogFormatter)}    * and committing the {@code GroupConfig} via {@link #commit(MetaDataUpdate)}.    *    * @param repository the repository which holds the NoteDb commits for groups    * @param groupUuid the UUID of the group    * @return a {@code GroupConfig} for the group with the specified UUID    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if the group exists but can't be read due to an invalid format    */
-DECL|method|loadForGroup (Repository repository, AccountGroup.UUID groupUuid)
+comment|/**    * Creates a {@code GroupConfig} for an existing group.    *    *<p>The group is automatically loaded within this method and can be accessed via {@link    * #getLoadedGroup()}.    *    *<p>It's safe to call this method for non-existing groups. In that case, {@link    * #getLoadedGroup()} won't return any group. Thus, the existence of a group can be easily tested.    *    *<p>The group represented by the returned {@code GroupConfig} can be updated by setting an    * {@code InternalGroupUpdate} via {@link #setGroupUpdate(InternalGroupUpdate, AuditLogFormatter)}    * and committing the {@code GroupConfig} via {@link #commit(MetaDataUpdate)}.    *    * @param projectName the name of the project which holds the NoteDb commits for groups    * @param repository the repository which holds the NoteDb commits for groups    * @param groupUuid the UUID of the group    * @return a {@code GroupConfig} for the group with the specified UUID    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if the group exists but can't be read due to an invalid format    */
+DECL|method|loadForGroup ( Project.NameKey projectName, Repository repository, AccountGroup.UUID groupUuid)
 specifier|public
 specifier|static
 name|GroupConfig
 name|loadForGroup
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|repository
 parameter_list|,
@@ -644,6 +672,8 @@ name|groupConfig
 operator|.
 name|load
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|)
 expr_stmt|;
@@ -651,13 +681,18 @@ return|return
 name|groupConfig
 return|;
 block|}
-comment|/**    * Creates a {@code GroupConfig} for an existing group at a specific revision of the repository.    *    *<p>This method behaves nearly the same as {@link #loadForGroup(Repository, AccountGroup.UUID)}.    * The only difference is that {@link #loadForGroup(Repository, AccountGroup.UUID)} loads the    * group from the current state of the repository whereas this method loads the group at a    * specific (maybe past) revision.    *    * @param repository the repository which holds the NoteDb commits for groups    * @param groupUuid the UUID of the group    * @param commitId the revision of the repository at which the group should be loaded    * @return a {@code GroupConfig} for the group with the specified UUID    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if the group exists but can't be read due to an invalid format    */
-DECL|method|loadForGroupSnapshot ( Repository repository, AccountGroup.UUID groupUuid, ObjectId commitId)
+comment|/**    * Creates a {@code GroupConfig} for an existing group at a specific revision of the repository.    *    *<p>This method behaves nearly the same as {@link #loadForGroup(Project.NameKey, Repository,    * AccountGroup.UUID)}. The only difference is that {@link #loadForGroup(Project.NameKey,    * Repository, AccountGroup.UUID)} loads the group from the current state of the repository    * whereas this method loads the group at a specific (maybe past) revision.    *    * @param projectName the name of the project which holds the NoteDb commits for groups    * @param repository the repository which holds the NoteDb commits for groups    * @param groupUuid the UUID of the group    * @param commitId the revision of the repository at which the group should be loaded    * @return a {@code GroupConfig} for the group with the specified UUID    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if the group exists but can't be read due to an invalid format    */
+DECL|method|loadForGroupSnapshot ( Project.NameKey projectName, Repository repository, AccountGroup.UUID groupUuid, ObjectId commitId)
 specifier|public
 specifier|static
 name|GroupConfig
 name|loadForGroupSnapshot
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|repository
 parameter_list|,
@@ -687,6 +722,8 @@ name|groupConfig
 operator|.
 name|load
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|commitId

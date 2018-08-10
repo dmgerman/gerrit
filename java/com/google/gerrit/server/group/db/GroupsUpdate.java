@@ -1435,6 +1435,8 @@ name|GroupNameNotes
 operator|.
 name|forNewGroup
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|groupCreation
@@ -1452,6 +1454,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|groupCreation
@@ -1656,6 +1660,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|groupUuid
@@ -1746,6 +1752,8 @@ name|GroupNameNotes
 operator|.
 name|forRename
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|groupUuid

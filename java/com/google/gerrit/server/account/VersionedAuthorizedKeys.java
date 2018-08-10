@@ -790,6 +790,8 @@ name|authorizedKeys
 operator|.
 name|load
 argument_list|(
+name|allUsersName
+argument_list|,
 name|git
 argument_list|)
 expr_stmt|;

@@ -474,6 +474,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|UserConfigSections
@@ -2261,12 +2277,15 @@ return|return
 name|urlAliases
 return|;
 block|}
-DECL|method|readDefaultGeneralPreferences (Repository allUsersRepo)
+DECL|method|readDefaultGeneralPreferences ( AllUsersName allUsersName, Repository allUsersRepo)
 specifier|public
 specifier|static
 name|GeneralPreferencesInfo
 name|readDefaultGeneralPreferences
 parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|,
 name|Repository
 name|allUsersRepo
 parameter_list|)
@@ -2280,6 +2299,8 @@ name|parseGeneralPreferences
 argument_list|(
 name|readDefaultConfig
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|)
 argument_list|,
@@ -2289,12 +2310,15 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|readDefaultDiffPreferences (Repository allUsersRepo)
+DECL|method|readDefaultDiffPreferences ( AllUsersName allUsersName, Repository allUsersRepo)
 specifier|public
 specifier|static
 name|DiffPreferencesInfo
 name|readDefaultDiffPreferences
 parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|,
 name|Repository
 name|allUsersRepo
 parameter_list|)
@@ -2308,6 +2332,8 @@ name|parseDiffPreferences
 argument_list|(
 name|readDefaultConfig
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|)
 argument_list|,
@@ -2317,12 +2343,15 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|readDefaultEditPreferences (Repository allUsersRepo)
+DECL|method|readDefaultEditPreferences ( AllUsersName allUsersName, Repository allUsersRepo)
 specifier|public
 specifier|static
 name|EditPreferencesInfo
 name|readDefaultEditPreferences
 parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|,
 name|Repository
 name|allUsersRepo
 parameter_list|)
@@ -2336,6 +2365,8 @@ name|parseEditPreferences
 argument_list|(
 name|readDefaultConfig
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|)
 argument_list|,
@@ -2345,11 +2376,14 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|readDefaultConfig (Repository allUsersRepo)
+DECL|method|readDefaultConfig (AllUsersName allUsersName, Repository allUsersRepo)
 specifier|static
 name|Config
 name|readDefaultConfig
 parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|,
 name|Repository
 name|allUsersRepo
 parameter_list|)
@@ -2369,6 +2403,8 @@ name|defaultPrefs
 operator|.
 name|load
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|)
 expr_stmt|;

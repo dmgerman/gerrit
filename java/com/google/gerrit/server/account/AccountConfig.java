@@ -312,6 +312,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|ValidationError
@@ -598,6 +614,12 @@ operator|.
 name|Id
 name|accountId
 decl_stmt|;
+DECL|field|allUsersName
+specifier|private
+specifier|final
+name|AllUsersName
+name|allUsersName
+decl_stmt|;
 DECL|field|repo
 specifier|private
 specifier|final
@@ -657,7 +679,7 @@ name|ValidationError
 argument_list|>
 name|validationErrors
 decl_stmt|;
-DECL|method|AccountConfig (Account.Id accountId, Repository allUsersRepo)
+DECL|method|AccountConfig (Account.Id accountId, AllUsersName allUsersName, Repository allUsersRepo)
 specifier|public
 name|AccountConfig
 parameter_list|(
@@ -665,6 +687,9 @@ name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+name|AllUsersName
+name|allUsersName
 parameter_list|,
 name|Repository
 name|allUsersRepo
@@ -679,6 +704,17 @@ argument_list|(
 name|accountId
 argument_list|,
 literal|"accountId"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|allUsersName
+operator|=
+name|checkNotNull
+argument_list|(
+name|allUsersName
+argument_list|,
+literal|"allUsersName"
 argument_list|)
 expr_stmt|;
 name|this
@@ -728,6 +764,8 @@ name|ConfigInvalidException
 block|{
 name|load
 argument_list|(
+name|allUsersName
+argument_list|,
 name|repo
 argument_list|)
 expr_stmt|;
@@ -1184,6 +1222,8 @@ name|Preferences
 operator|.
 name|readDefaultConfig
 argument_list|(
+name|allUsersName
+argument_list|,
 name|repo
 argument_list|)
 argument_list|,
@@ -1239,6 +1279,8 @@ name|Preferences
 operator|.
 name|readDefaultConfig
 argument_list|(
+name|allUsersName
+argument_list|,
 name|repo
 argument_list|)
 argument_list|,

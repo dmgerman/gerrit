@@ -416,6 +416,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -962,11 +978,16 @@ operator|=
 name|auditLogReader
 expr_stmt|;
 block|}
-DECL|method|fromNoteDb (Repository repo, AccountGroup.UUID uuid)
+DECL|method|fromNoteDb ( Project.NameKey projectName, Repository repo, AccountGroup.UUID uuid)
 specifier|public
 name|GroupBundle
 name|fromNoteDb
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
@@ -987,6 +1008,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repo
 argument_list|,
 name|uuid

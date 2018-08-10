@@ -230,6 +230,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|GerritServerId
 import|;
 end_import
@@ -480,9 +496,15 @@ specifier|final
 name|String
 name|serverId
 decl_stmt|;
+DECL|field|allUsersName
+specifier|private
+specifier|final
+name|AllUsersName
+name|allUsersName
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AuditLogReader (@erritServerId String serverId)
+DECL|method|AuditLogReader (@erritServerId String serverId, AllUsersName allUsersName)
 specifier|public
 name|AuditLogReader
 parameter_list|(
@@ -490,6 +512,9 @@ annotation|@
 name|GerritServerId
 name|String
 name|serverId
+parameter_list|,
+name|AllUsersName
+name|allUsersName
 parameter_list|)
 block|{
 name|this
@@ -498,11 +523,17 @@ name|serverId
 operator|=
 name|serverId
 expr_stmt|;
+name|this
+operator|.
+name|allUsersName
+operator|=
+name|allUsersName
+expr_stmt|;
 block|}
 comment|// Having separate methods for reading the two types of audit records mirrors the split in
 comment|// ReviewDb. Once ReviewDb is gone, the audit record interface becomes more flexible and we can
 comment|// revisit this, e.g. to do only a single walk, or even change the record types.
-DECL|method|getMembersAudit ( Repository repo, AccountGroup.UUID uuid)
+DECL|method|getMembersAudit ( Repository allUsersRepo, AccountGroup.UUID uuid)
 specifier|public
 name|ImmutableList
 argument_list|<
@@ -511,7 +542,7 @@ argument_list|>
 name|getMembersAudit
 parameter_list|(
 name|Repository
-name|repo
+name|allUsersRepo
 parameter_list|,
 name|AccountGroup
 operator|.
@@ -528,14 +559,14 @@ name|getMembersAudit
 argument_list|(
 name|getGroupId
 argument_list|(
-name|repo
+name|allUsersRepo
 argument_list|,
 name|uuid
 argument_list|)
 argument_list|,
 name|parseCommits
 argument_list|(
-name|repo
+name|allUsersRepo
 argument_list|,
 name|uuid
 argument_list|)
@@ -1697,7 +1728,7 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|getGroupId (Repository repo, AccountGroup.UUID uuid)
+DECL|method|getGroupId (Repository allUsersRepo, AccountGroup.UUID uuid)
 specifier|private
 name|AccountGroup
 operator|.
@@ -1705,7 +1736,7 @@ name|Id
 name|getGroupId
 parameter_list|(
 name|Repository
-name|repo
+name|allUsersRepo
 parameter_list|,
 name|AccountGroup
 operator|.
@@ -1723,7 +1754,9 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
-name|repo
+name|allUsersName
+argument_list|,
+name|allUsersRepo
 argument_list|,
 name|uuid
 argument_list|)

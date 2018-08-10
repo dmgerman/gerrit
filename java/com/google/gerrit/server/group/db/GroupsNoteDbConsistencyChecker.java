@@ -292,9 +292,37 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|group
 operator|.
 name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 
@@ -540,6 +568,28 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
+DECL|field|allUsersName
+specifier|private
+specifier|final
+name|AllUsersName
+name|allUsersName
+decl_stmt|;
+annotation|@
+name|Inject
+DECL|method|GroupsNoteDbConsistencyChecker (AllUsersName allUsersName)
+name|GroupsNoteDbConsistencyChecker
+parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|allUsersName
+operator|=
+name|allUsersName
+expr_stmt|;
+block|}
 comment|/**    * The result of a consistency check. The UUID map is only non-null if no problems were detected.    */
 DECL|class|Result
 specifier|public
@@ -571,13 +621,13 @@ name|uuidToGroupMap
 decl_stmt|;
 block|}
 comment|/** Checks for problems with the given All-Users repo. */
-DECL|method|check (Repository repo)
+DECL|method|check (Repository allUsersRepo)
 specifier|public
 name|Result
 name|check
 parameter_list|(
 name|Repository
-name|repo
+name|allUsersRepo
 parameter_list|)
 throws|throws
 name|IOException
@@ -587,7 +637,7 @@ name|r
 init|=
 name|doCheck
 argument_list|(
-name|repo
+name|allUsersRepo
 argument_list|)
 decl_stmt|;
 if|if
@@ -612,13 +662,13 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|doCheck (Repository repo)
+DECL|method|doCheck (Repository allUsersRepo)
 specifier|private
 name|Result
 name|doCheck
 parameter_list|(
 name|Repository
-name|repo
+name|allUsersRepo
 parameter_list|)
 throws|throws
 name|IOException
@@ -672,14 +722,14 @@ name|Ref
 argument_list|>
 name|refs
 init|=
-name|repo
+name|allUsersRepo
 operator|.
 name|getAllRefs
 argument_list|()
 decl_stmt|;
 name|readGroups
 argument_list|(
-name|repo
+name|allUsersRepo
 argument_list|,
 name|refs
 argument_list|,
@@ -688,7 +738,7 @@ argument_list|)
 expr_stmt|;
 name|readGroupNames
 argument_list|(
-name|repo
+name|allUsersRepo
 argument_list|,
 name|refs
 argument_list|,
@@ -734,13 +784,13 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|readGroups (Repository repo, Map<String, Ref> refs, Result result)
+DECL|method|readGroups (Repository allUsersRepo, Map<String, Ref> refs, Result result)
 specifier|private
 name|void
 name|readGroups
 parameter_list|(
 name|Repository
-name|repo
+name|allUsersRepo
 parameter_list|,
 name|Map
 argument_list|<
@@ -844,7 +894,9 @@ name|GroupConfig
 operator|.
 name|loadForGroupSnapshot
 argument_list|(
-name|repo
+name|allUsersName
+argument_list|,
+name|allUsersRepo
 argument_list|,
 name|uuid
 argument_list|,

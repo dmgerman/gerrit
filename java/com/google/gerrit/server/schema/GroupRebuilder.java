@@ -833,6 +833,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|allUsers
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|groupCreation

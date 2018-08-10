@@ -492,6 +492,8 @@ name|ExternalIdNotes
 operator|.
 name|loadReadOnly
 argument_list|(
+name|allUsers
+argument_list|,
 name|repo
 argument_list|)
 argument_list|)
@@ -534,6 +536,8 @@ name|ExternalIdNotes
 operator|.
 name|loadReadOnly
 argument_list|(
+name|allUsers
+argument_list|,
 name|repo
 argument_list|,
 name|rev

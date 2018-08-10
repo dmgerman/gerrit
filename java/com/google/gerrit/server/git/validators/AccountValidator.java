@@ -182,6 +182,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|ValidationError
@@ -341,6 +357,12 @@ name|IdentifiedUser
 argument_list|>
 name|self
 decl_stmt|;
+DECL|field|allUsersName
+specifier|private
+specifier|final
+name|AllUsersName
+name|allUsersName
+decl_stmt|;
 DECL|field|emailValidator
 specifier|private
 specifier|final
@@ -349,7 +371,7 @@ name|emailValidator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountValidator (Provider<IdentifiedUser> self, OutgoingEmailValidator emailValidator)
+DECL|method|AccountValidator ( Provider<IdentifiedUser> self, AllUsersName allUsersName, OutgoingEmailValidator emailValidator)
 specifier|public
 name|AccountValidator
 parameter_list|(
@@ -358,6 +380,9 @@ argument_list|<
 name|IdentifiedUser
 argument_list|>
 name|self
+parameter_list|,
+name|AllUsersName
+name|allUsersName
 parameter_list|,
 name|OutgoingEmailValidator
 name|emailValidator
@@ -371,12 +396,18 @@ name|self
 expr_stmt|;
 name|this
 operator|.
+name|allUsersName
+operator|=
+name|allUsersName
+expr_stmt|;
+name|this
+operator|.
 name|emailValidator
 operator|=
 name|emailValidator
 expr_stmt|;
 block|}
-DECL|method|validate ( Account.Id accountId, Repository repo, RevWalk rw, @Nullable ObjectId oldId, ObjectId newId)
+DECL|method|validate ( Account.Id accountId, Repository allUsersRepo, RevWalk rw, @Nullable ObjectId oldId, ObjectId newId)
 specifier|public
 name|List
 argument_list|<
@@ -390,7 +421,7 @@ name|Id
 name|accountId
 parameter_list|,
 name|Repository
-name|repo
+name|allUsersRepo
 parameter_list|,
 name|RevWalk
 name|rw
@@ -443,7 +474,7 @@ name|loadAccount
 argument_list|(
 name|accountId
 argument_list|,
-name|repo
+name|allUsersRepo
 argument_list|,
 name|rw
 argument_list|,
@@ -487,7 +518,7 @@ name|loadAccount
 argument_list|(
 name|accountId
 argument_list|,
-name|repo
+name|allUsersRepo
 argument_list|,
 name|rw
 argument_list|,
@@ -678,7 +709,7 @@ name|messages
 argument_list|)
 return|;
 block|}
-DECL|method|loadAccount ( Account.Id accountId, Repository repo, RevWalk rw, ObjectId commit, @Nullable List<String> messages)
+DECL|method|loadAccount ( Account.Id accountId, Repository allUsersRepo, RevWalk rw, ObjectId commit, @Nullable List<String> messages)
 specifier|private
 name|Optional
 argument_list|<
@@ -692,7 +723,7 @@ name|Id
 name|accountId
 parameter_list|,
 name|Repository
-name|repo
+name|allUsersRepo
 parameter_list|,
 name|RevWalk
 name|rw
@@ -726,13 +757,17 @@ name|AccountConfig
 argument_list|(
 name|accountId
 argument_list|,
-name|repo
+name|allUsersName
+argument_list|,
+name|allUsersRepo
 argument_list|)
 decl_stmt|;
 name|accountConfig
 operator|.
 name|load
 argument_list|(
+name|allUsersName
+argument_list|,
 name|rw
 argument_list|,
 name|commit

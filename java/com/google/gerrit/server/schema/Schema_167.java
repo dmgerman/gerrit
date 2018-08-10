@@ -1219,6 +1219,8 @@ init|=
 operator|new
 name|SimpleInMemoryAccountCache
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|)
 decl_stmt|;
@@ -1359,6 +1361,12 @@ specifier|static
 class|class
 name|SimpleInMemoryAccountCache
 block|{
+DECL|field|allUsersName
+specifier|private
+specifier|final
+name|AllUsersName
+name|allUsersName
+decl_stmt|;
 DECL|field|allUsersRepo
 specifier|private
 specifier|final
@@ -1385,14 +1393,23 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|SimpleInMemoryAccountCache (Repository allUsersRepo)
+DECL|method|SimpleInMemoryAccountCache (AllUsersName allUsersName, Repository allUsersRepo)
 specifier|public
 name|SimpleInMemoryAccountCache
 parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|,
 name|Repository
 name|allUsersRepo
 parameter_list|)
 block|{
+name|this
+operator|.
+name|allUsersName
+operator|=
+name|allUsersName
+expr_stmt|;
 name|this
 operator|.
 name|allUsersRepo
@@ -1457,6 +1474,8 @@ operator|new
 name|AccountConfig
 argument_list|(
 name|accountId
+argument_list|,
+name|allUsersName
 argument_list|,
 name|allUsersRepo
 argument_list|)

@@ -6383,6 +6383,8 @@ name|ExternalIdNotes
 operator|.
 name|loadNoCacheUpdate
 argument_list|(
+name|allUsers
+argument_list|,
 name|repo
 argument_list|)
 decl_stmt|;

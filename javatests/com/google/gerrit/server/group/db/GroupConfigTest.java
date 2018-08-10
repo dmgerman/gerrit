@@ -663,6 +663,13 @@ operator|.
 name|none
 argument_list|()
 decl_stmt|;
+DECL|field|projectName
+specifier|private
+name|Project
+operator|.
+name|NameKey
+name|projectName
+decl_stmt|;
 DECL|field|repository
 specifier|private
 name|Repository
@@ -770,6 +777,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|projectName
+operator|=
+operator|new
+name|Project
+operator|.
+name|NameKey
+argument_list|(
+literal|"Test Repository"
+argument_list|)
+expr_stmt|;
 name|repository
 operator|=
 operator|new
@@ -1037,6 +1054,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -1118,6 +1137,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -1260,6 +1281,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -1729,6 +1752,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -1830,6 +1855,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -2556,6 +2583,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -2601,6 +2630,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -2732,6 +2763,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -3537,6 +3570,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -3634,6 +3669,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -3744,6 +3781,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -4043,6 +4082,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -4140,6 +4181,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -5656,6 +5699,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -6656,6 +6701,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -6745,6 +6792,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -7095,6 +7144,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -7324,6 +7375,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -7698,6 +7751,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -7906,6 +7961,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -8158,6 +8215,8 @@ name|GroupConfig
 operator|.
 name|loadForGroupSnapshot
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupUuid
@@ -8467,6 +8526,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -8640,6 +8701,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -9968,6 +10031,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -10009,6 +10074,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|groupCreation
@@ -10094,6 +10161,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|uuid
@@ -10143,6 +10212,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|uuid

@@ -296,6 +296,8 @@ operator|new
 name|AuditLogReader
 argument_list|(
 name|SERVER_ID
+argument_list|,
+name|allUsersName
 argument_list|)
 expr_stmt|;
 block|}
@@ -1829,6 +1831,8 @@ name|GroupConfig
 operator|.
 name|createForNewGroup
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|groupCreation
@@ -1895,6 +1899,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|uuid

@@ -1831,6 +1831,8 @@ name|cfg
 operator|.
 name|load
 argument_list|(
+name|key
+argument_list|,
 name|git
 argument_list|)
 expr_stmt|;
