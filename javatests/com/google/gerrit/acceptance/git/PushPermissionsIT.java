@@ -761,9 +761,7 @@ literal|"To push into this reference you need 'Push' rights."
 argument_list|,
 literal|"User: admin"
 argument_list|,
-literal|"Please read the documentation and contact an administrator"
-argument_list|,
-literal|"if you feel the configuration is incorrect"
+literal|"Contact an administrator to fix the permissions"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -906,9 +904,7 @@ literal|"'Force Push' flag set to delete references."
 argument_list|,
 literal|"User: admin"
 argument_list|,
-literal|"Please read the documentation and contact an administrator"
-argument_list|,
-literal|"if you feel the configuration is incorrect"
+literal|"Contact an administrator to fix the permissions"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1155,9 +1151,7 @@ literal|"To push into this reference you need 'Push' rights."
 argument_list|,
 literal|"User: admin"
 argument_list|,
-literal|"Please read the documentation and contact an administrator"
-argument_list|,
-literal|"if you feel the configuration is incorrect"
+literal|"Contact an administrator to fix the permissions"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1360,9 +1354,7 @@ literal|"who also have 'Push' rights on refs/meta/config"
 argument_list|,
 literal|"User: admin"
 argument_list|,
-literal|"Please read the documentation and contact an administrator"
-argument_list|,
-literal|"if you feel the configuration is incorrect"
+literal|"Contact an administrator to fix the permissions"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1502,9 +1494,7 @@ literal|"Verify that you are pushing to the right branch."
 argument_list|,
 literal|"User: admin"
 argument_list|,
-literal|"Please read the documentation and contact an administrator"
-argument_list|,
-literal|"if you feel the configuration is incorrect"
+literal|"Contact an administrator to fix the permissions"
 argument_list|)
 expr_stmt|;
 name|assertThat

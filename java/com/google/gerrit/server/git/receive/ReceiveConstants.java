@@ -115,9 +115,7 @@ specifier|final
 name|String
 name|COMMAND_REJECTION_MESSAGE_FOOTER
 init|=
-literal|"Please read the documentation and contact an administrator\n"
-operator|+
-literal|"if you feel the configuration is incorrect"
+literal|"Contact an administrator to fix the permissions"
 decl_stmt|;
 DECL|field|SAME_CHANGE_ID_IN_MULTIPLE_CHANGES
 specifier|static
