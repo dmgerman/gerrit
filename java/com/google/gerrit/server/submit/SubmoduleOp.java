@@ -79,6 +79,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toList
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1527,11 +1541,7 @@ name|updatedBranch
 argument_list|,
 operator|new
 name|LinkedHashSet
-argument_list|<
-name|Branch
-operator|.
-name|NameKey
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|,
 name|allVisited
@@ -2239,7 +2249,7 @@ name|ret
 return|;
 block|}
 DECL|method|superProjectSubscriptionsForSubmoduleBranch ( Branch.NameKey srcBranch)
-specifier|public
+specifier|private
 name|Collection
 argument_list|<
 name|SubmoduleSubscription
@@ -2625,7 +2635,7 @@ block|}
 block|}
 comment|/** Create a separate gitlink commit */
 DECL|method|composeGitlinksCommit (Branch.NameKey subscriber)
-specifier|public
+specifier|private
 name|CodeReviewCommit
 name|composeGitlinksCommit
 parameter_list|(
@@ -2757,9 +2767,7 @@ name|msgbuf
 init|=
 operator|new
 name|StringBuilder
-argument_list|(
-literal|""
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|PersonIdent
 name|author
@@ -2797,24 +2805,18 @@ name|SubmoduleSubscription
 argument_list|>
 name|subscriptions
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
 name|targets
 operator|.
 name|get
 argument_list|(
 name|subscriber
 argument_list|)
-argument_list|)
-decl_stmt|;
-name|Collections
 operator|.
-name|sort
+name|stream
+argument_list|()
+operator|.
+name|sorted
 argument_list|(
-name|subscriptions
-argument_list|,
 name|comparing
 argument_list|(
 name|SubmoduleSubscription
@@ -2822,7 +2824,13 @@ operator|::
 name|getPath
 argument_list|)
 argument_list|)
-expr_stmt|;
+operator|.
+name|collect
+argument_list|(
+name|toList
+argument_list|()
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|SubmoduleSubscription
@@ -3068,8 +3076,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Amend an existing commit with gitlink updates */
-DECL|method|composeGitlinksCommit ( Branch.NameKey subscriber, CodeReviewCommit currentCommit)
-specifier|public
+DECL|method|composeGitlinksCommit (Branch.NameKey subscriber, CodeReviewCommit currentCommit)
 name|CodeReviewCommit
 name|composeGitlinksCommit
 parameter_list|(
@@ -3127,9 +3134,7 @@ name|msgbuf
 init|=
 operator|new
 name|StringBuilder
-argument_list|(
-literal|""
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|DirCache
 name|dc
@@ -3776,7 +3781,12 @@ operator|.
 name|append
 argument_list|(
 literal|"\n  to "
-operator|+
+argument_list|)
+expr_stmt|;
+name|msgbuf
+operator|.
+name|append
+argument_list|(
 name|newCommit
 operator|.
 name|getName
@@ -4066,7 +4076,6 @@ name|dc
 return|;
 block|}
 DECL|method|getProjectsInOrder ()
-specifier|public
 name|ImmutableSet
 argument_list|<
 name|Project
@@ -4320,7 +4329,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getBranchesInOrder ()
-specifier|public
 name|ImmutableSet
 argument_list|<
 name|Branch
@@ -4375,7 +4383,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|hasSubscription (Branch.NameKey branch)
-specifier|public
 name|boolean
 name|hasSubscription
 parameter_list|(
@@ -4395,7 +4402,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|addBranchTip (Branch.NameKey branch, CodeReviewCommit tip)
-specifier|public
 name|void
 name|addBranchTip
 parameter_list|(
@@ -4419,7 +4425,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|addOp (BatchUpdate bu, Branch.NameKey branch)
-specifier|public
 name|void
 name|addOp
 parameter_list|(
