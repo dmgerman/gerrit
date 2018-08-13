@@ -3317,8 +3317,12 @@ init|(
 name|TraceContext
 name|traceContext
 init|=
-operator|new
 name|TraceContext
+operator|.
+name|open
+argument_list|()
+operator|.
+name|addTag
 argument_list|(
 name|RequestId
 operator|.

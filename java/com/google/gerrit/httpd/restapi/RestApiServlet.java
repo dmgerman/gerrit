@@ -9488,8 +9488,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
 name|TraceContext
+operator|.
+name|open
+argument_list|()
+operator|.
+name|addTag
 argument_list|(
 name|RequestId
 operator|.

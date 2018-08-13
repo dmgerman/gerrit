@@ -187,8 +187,12 @@ init|(
 name|TraceContext
 name|traceContext
 init|=
-operator|new
 name|TraceContext
+operator|.
+name|open
+argument_list|()
+operator|.
+name|addTag
 argument_list|(
 literal|"foo"
 argument_list|,
@@ -435,8 +439,12 @@ init|(
 name|TraceContext
 name|traceContext
 init|=
-operator|new
 name|TraceContext
+operator|.
+name|open
+argument_list|()
+operator|.
+name|addTag
 argument_list|(
 literal|"foo"
 argument_list|,
