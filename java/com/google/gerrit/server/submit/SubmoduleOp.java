@@ -1183,7 +1183,19 @@ name|GitModules
 argument_list|>
 name|branchGitModules
 decl_stmt|;
-comment|// always update-to-current branch tips during submit process
+comment|/** Branches updated as part of the enclosing submit or push batch. */
+DECL|field|updatedBranches
+specifier|private
+specifier|final
+name|ImmutableSet
+argument_list|<
+name|Branch
+operator|.
+name|NameKey
+argument_list|>
+name|updatedBranches
+decl_stmt|;
+comment|/**    * Current branch tips, taking into account commits created during the submit process as well as    * submodule updates produced by this class.    */
 DECL|field|branchTips
 specifier|private
 specifier|final
@@ -1197,19 +1209,7 @@ name|CodeReviewCommit
 argument_list|>
 name|branchTips
 decl_stmt|;
-comment|// branches for all the submitting changes
-DECL|field|updatedBranches
-specifier|private
-specifier|final
-name|Set
-argument_list|<
-name|Branch
-operator|.
-name|NameKey
-argument_list|>
-name|updatedBranches
-decl_stmt|;
-comment|// branches which in either a submodule or a superproject
+comment|/**    * Branches in a superproject that contain submodule subscriptions, plus branches in submodules    * which are subscribed to by some superproject.    */
 DECL|field|affectedBranches
 specifier|private
 specifier|final
@@ -1221,7 +1221,7 @@ name|NameKey
 argument_list|>
 name|affectedBranches
 decl_stmt|;
-comment|// sorted version of affectedBranches
+comment|/** Copy of {@link #affectedBranches}, sorted by submodule traversal order. */
 DECL|field|sortedBranches
 specifier|private
 specifier|final
@@ -1233,7 +1233,7 @@ name|NameKey
 argument_list|>
 name|sortedBranches
 decl_stmt|;
-comment|// map of superproject branch and its submodule subscriptions
+comment|/** Multimap of superproject branch to submodule subscriptions contained in that branch. */
 DECL|field|targets
 specifier|private
 specifier|final
@@ -1247,7 +1247,7 @@ name|SubmoduleSubscription
 argument_list|>
 name|targets
 decl_stmt|;
-comment|// map of superproject and its branches which has submodule subscriptions
+comment|/**    * Multimap of superproject name to all branch names within that superproject which have submodule    * subscriptions.    */
 DECL|field|branchesByProject
 specifier|private
 specifier|final
@@ -1400,7 +1400,12 @@ name|this
 operator|.
 name|updatedBranches
 operator|=
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
 name|updatedBranches
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -1463,11 +1468,26 @@ name|this
 operator|.
 name|sortedBranches
 operator|=
-name|calculateSubscriptionMap
+name|calculateSubscriptionMaps
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|calculateSubscriptionMap ()
+comment|/**    * Calculate the internal maps used by the operation.    *    *<p>In addition to the return value, the following fields are populated as a side effect:    *    *<ul>    *<li>{@link #affectedBranches}    *<li>{@link #targets}    *<li>{@link #branchesByProject}    *</ul>    *    * @return the ordered set to be stored in {@link #sortedBranches}.    * @throws SubmoduleException if an error occurred walking projects.    */
+comment|// TODO(dborowitz): This setup process is hard to follow, in large part due to the accumulation of
+comment|// mutable maps, which makes this whole class difficult to understand.
+comment|//
+comment|// A cleaner architecture for this process might be:
+comment|//   1. Separate out the code to parse submodule subscriptions and build up an in-memory data
+comment|//      structure representing the subscription graph, using a separate class with a properly-
+comment|//      documented interface.
+comment|//   2. Walk the graph to produce a work plan. This would be a list of items indicating: create a
+comment|//      commit in project X reading branch tips for submodules S1..Sn and updating gitlinks in X.
+comment|//   3. Execute the work plan, i.e. convert the items into BatchUpdate.Ops and add them to the
+comment|//      relevant updates.
+comment|//
+comment|// In addition to improving readability, this approach has the advantage of making (1) and (2)
+comment|// testable using small tests.
+DECL|method|calculateSubscriptionMaps ()
 specifier|private
 name|ImmutableSet
 argument_list|<
@@ -1475,7 +1495,7 @@ name|Branch
 operator|.
 name|NameKey
 argument_list|>
-name|calculateSubscriptionMap
+name|calculateSubscriptionMaps
 parameter_list|()
 throws|throws
 name|SubmoduleException
