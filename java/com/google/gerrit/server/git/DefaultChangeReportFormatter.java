@@ -108,6 +108,10 @@ name|Inject
 import|;
 end_import
 
+begin_comment
+comment|/** Print a change description for use in git command-line progress. */
+end_comment
+
 begin_class
 DECL|class|DefaultChangeReportFormatter
 specifier|public
