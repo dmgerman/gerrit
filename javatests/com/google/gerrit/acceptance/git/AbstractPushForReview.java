@@ -15927,51 +15927,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|pushToPublishMagicBranchIsAllowed ()
-specifier|public
-name|void
-name|pushToPublishMagicBranchIsAllowed
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// Push to "refs/publish/*" will be a synonym of "refs/for/*".
-name|createChange
-argument_list|(
-literal|"refs/publish/master"
-argument_list|)
-expr_stmt|;
-name|PushOneCommit
-operator|.
-name|Result
-name|result
-init|=
-name|pushTo
-argument_list|(
-literal|"refs/publish/master"
-argument_list|)
-decl_stmt|;
-name|result
-operator|.
-name|assertOkStatus
-argument_list|()
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|result
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-operator|.
-name|endsWith
-argument_list|(
-literal|"Pushing to refs/publish/* is deprecated, use refs/for/* instead.\n"
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|pushNoteDbRef ()
 specifier|public
 name|void
