@@ -986,12 +986,10 @@ name|info
 operator|.
 name|value
 operator|=
-name|transferConfig
+name|projectState
 operator|.
 name|getEffectiveMaxObjectSizeLimit
-argument_list|(
-name|projectState
-argument_list|)
+argument_list|()
 operator|==
 name|transferConfig
 operator|.

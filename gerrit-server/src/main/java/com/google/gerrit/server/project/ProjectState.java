@@ -560,6 +560,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|TransferConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -961,6 +977,12 @@ name|UUID
 argument_list|>
 name|localOwners
 decl_stmt|;
+DECL|field|globalMaxObjectSizeLimit
+specifier|private
+specifier|final
+name|long
+name|globalMaxObjectSizeLimit
+decl_stmt|;
 comment|/** Prolog rule state. */
 DECL|field|rulesMachine
 specifier|private
@@ -1001,7 +1023,7 @@ name|capabilities
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState ( SitePaths sitePaths, ProjectCache projectCache, AllProjectsName allProjectsName, AllUsersName allUsersName, ProjectControl.AssistedFactory projectControlFactory, PrologEnvironment.Factory envFactory, GitRepositoryManager gitMgr, RulesCache rulesCache, List<CommentLinkInfo> commentLinks, CapabilityCollection.Factory capabilityFactory, @Assisted ProjectConfig config)
+DECL|method|ProjectState ( SitePaths sitePaths, ProjectCache projectCache, AllProjectsName allProjectsName, AllUsersName allUsersName, ProjectControl.AssistedFactory projectControlFactory, PrologEnvironment.Factory envFactory, GitRepositoryManager gitMgr, RulesCache rulesCache, List<CommentLinkInfo> commentLinks, CapabilityCollection.Factory capabilityFactory, TransferConfig transferConfig, @Assisted ProjectConfig config)
 specifier|public
 name|ProjectState
 parameter_list|(
@@ -1043,6 +1065,9 @@ name|CapabilityCollection
 operator|.
 name|Factory
 name|capabilityFactory
+parameter_list|,
+name|TransferConfig
+name|transferConfig
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1168,6 +1193,15 @@ argument_list|)
 argument_list|)
 else|:
 literal|null
+expr_stmt|;
+name|this
+operator|.
+name|globalMaxObjectSizeLimit
+operator|=
+name|transferConfig
+operator|.
+name|getMaxObjectSizeLimit
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -1685,6 +1719,52 @@ name|config
 operator|.
 name|getMaxObjectSizeLimit
 argument_list|()
+return|;
+block|}
+DECL|method|getEffectiveMaxObjectSizeLimit ()
+specifier|public
+name|long
+name|getEffectiveMaxObjectSizeLimit
+parameter_list|()
+block|{
+name|long
+name|local
+init|=
+name|getMaxObjectSizeLimit
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|globalMaxObjectSizeLimit
+operator|>
+literal|0
+operator|&&
+name|local
+operator|>
+literal|0
+condition|)
+block|{
+return|return
+name|Math
+operator|.
+name|min
+argument_list|(
+name|globalMaxObjectSizeLimit
+argument_list|,
+name|local
+argument_list|)
+return|;
+block|}
+comment|// zero means "no limit", in this case the max is more limiting
+return|return
+name|Math
+operator|.
+name|max
+argument_list|(
+name|globalMaxObjectSizeLimit
+argument_list|,
+name|local
+argument_list|)
 return|;
 block|}
 comment|/** Get the sections that pertain only to this project. */
