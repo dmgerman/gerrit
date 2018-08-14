@@ -2812,6 +2812,18 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Read star labels from %s"
+argument_list|,
+name|refName
+argument_list|)
+expr_stmt|;
 name|Ref
 name|ref
 init|=
@@ -3308,6 +3320,20 @@ name|OrmException
 throws|,
 name|InvalidLabelsException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Update star labels in %s (labels=%s)"
+argument_list|,
+name|refName
+argument_list|,
+name|labels
+argument_list|)
+expr_stmt|;
 try|try
 init|(
 name|RevWalk
@@ -3498,6 +3524,18 @@ block|{
 comment|// ref doesn't exist
 return|return;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Delete star labels in %s"
+argument_list|,
+name|refName
+argument_list|)
+expr_stmt|;
 name|RefUpdate
 name|u
 init|=
