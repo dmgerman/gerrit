@@ -1026,6 +1026,18 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading groups with member %s"
+argument_list|,
+name|memberId
+argument_list|)
+expr_stmt|;
 return|return
 name|groupQueryProvider
 operator|.
@@ -1122,6 +1134,18 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading parent groups of %s"
+argument_list|,
+name|key
+argument_list|)
+expr_stmt|;
 return|return
 name|groupQueryProvider
 operator|.
@@ -1208,6 +1232,16 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading all external groups"
+argument_list|)
+expr_stmt|;
 return|return
 name|groups
 operator|.

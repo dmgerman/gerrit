@@ -2413,6 +2413,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading account for username %s"
+argument_list|,
+name|username
+argument_list|)
+expr_stmt|;
 return|return
 name|externalIds
 operator|.
@@ -2496,6 +2508,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading group for member with username %s"
+argument_list|,
+name|username
+argument_list|)
+expr_stmt|;
 specifier|final
 name|DirContext
 name|ctx
@@ -2579,6 +2603,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading groupDn %s"
+argument_list|,
+name|groupDn
+argument_list|)
+expr_stmt|;
 specifier|final
 name|DirContext
 name|ctx

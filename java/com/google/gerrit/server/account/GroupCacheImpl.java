@@ -978,6 +978,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading group %s by ID"
+argument_list|,
+name|key
+argument_list|)
+expr_stmt|;
 return|return
 name|groupQueryProvider
 operator|.
@@ -1050,6 +1062,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading group '%s' by name"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 return|return
 name|groupQueryProvider
 operator|.
@@ -1122,6 +1146,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading group %s by UUID"
+argument_list|,
+name|uuid
+argument_list|)
+expr_stmt|;
 return|return
 name|groups
 operator|.

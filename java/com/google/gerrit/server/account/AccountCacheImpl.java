@@ -1271,6 +1271,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading account %s"
+argument_list|,
+name|who
+argument_list|)
+expr_stmt|;
 return|return
 name|accounts
 operator|.

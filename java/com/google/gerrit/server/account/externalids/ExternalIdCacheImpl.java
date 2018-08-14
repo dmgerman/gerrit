@@ -962,6 +962,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading external IDs (revision=%s)"
+argument_list|,
+name|notesRev
+argument_list|)
+expr_stmt|;
 name|Multimap
 argument_list|<
 name|Account

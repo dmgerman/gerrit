@@ -1451,6 +1451,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading value for %s from cache"
+argument_list|,
+name|key
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|store

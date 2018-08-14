@@ -757,6 +757,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading SSH keys for account with username %s"
+argument_list|,
+name|username
+argument_list|)
+expr_stmt|;
 name|Optional
 argument_list|<
 name|ExternalId

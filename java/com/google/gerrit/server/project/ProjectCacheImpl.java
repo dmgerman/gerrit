@@ -1772,6 +1772,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading project %s"
+argument_list|,
+name|projectName
+argument_list|)
+expr_stmt|;
 name|long
 name|now
 init|=
@@ -1923,6 +1935,16 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading project list"
+argument_list|)
+expr_stmt|;
 return|return
 name|ImmutableSortedSet
 operator|.

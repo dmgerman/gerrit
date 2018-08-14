@@ -981,6 +981,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Loading changes of project %s"
+argument_list|,
+name|key
+argument_list|)
+expr_stmt|;
 try|try
 init|(
 name|ManualRequestContext
