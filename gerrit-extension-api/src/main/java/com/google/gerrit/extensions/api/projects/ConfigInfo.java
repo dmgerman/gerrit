@@ -286,16 +286,19 @@ specifier|static
 class|class
 name|MaxObjectSizeLimitInfo
 block|{
+comment|/* The effective value. */
 DECL|field|value
 specifier|public
 name|String
 name|value
 decl_stmt|;
+comment|/* The value configured on the project. */
 DECL|field|configuredValue
 specifier|public
 name|String
 name|configuredValue
 decl_stmt|;
+comment|/* The value configured globally. */
 DECL|field|inheritedValue
 specifier|public
 name|String
