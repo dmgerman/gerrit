@@ -3425,6 +3425,18 @@ name|SubmoduleException
 throws|,
 name|IOException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Updating gitlink for %s"
+argument_list|,
+name|s
+argument_list|)
+expr_stmt|;
 name|OpenRepo
 name|subOr
 decl_stmt|;
@@ -3547,6 +3559,8 @@ comment|// Even if we don't strictly speaking need that commit message, parsing 
 comment|// check that the old gitlink is a commit that actually exists. If not, then there is an
 comment|// inconsistency between the superproject and subproject state, and we don't want to risk
 comment|// making things worse by updating the gitlink to something else.
+try|try
+block|{
 name|oldCommit
 operator|=
 name|subOr
@@ -3561,6 +3575,42 @@ name|getObjectId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|// Broken gitlink; sanity check failed. Warn and continue so the submit operation can
+comment|// proceed, it will just skip this gitlink update.
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Failed to read commit %s"
+argument_list|,
+name|dce
+operator|.
+name|getObjectId
+argument_list|()
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
 block|}
 specifier|final
 name|CodeReviewCommit
