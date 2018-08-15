@@ -715,6 +715,15 @@ name|SiteProgram
 extends|extends
 name|AbstractProgram
 block|{
+DECL|field|CONNECTION_ERROR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|CONNECTION_ERROR
+init|=
+literal|"Cannot connect to SQL database"
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -908,12 +917,6 @@ name|Context
 name|context
 parameter_list|)
 block|{
-name|Path
-name|sitePath
-init|=
-name|getSitePath
-argument_list|()
-decl_stmt|;
 name|List
 argument_list|<
 name|Module
@@ -955,7 +958,8 @@ argument_list|)
 operator|.
 name|toInstance
 argument_list|(
-name|sitePath
+name|getSitePath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|bind
@@ -1478,7 +1482,7 @@ block|{
 throw|throw
 name|die
 argument_list|(
-literal|"Cannot connect to SQL database"
+name|CONNECTION_ERROR
 argument_list|,
 name|why
 argument_list|)
@@ -1526,7 +1530,7 @@ block|{
 throw|throw
 name|die
 argument_list|(
-literal|"Cannot connect to SQL database"
+name|CONNECTION_ERROR
 argument_list|,
 name|why
 operator|.
@@ -1538,7 +1542,7 @@ block|}
 throw|throw
 name|die
 argument_list|(
-literal|"Cannot connect to SQL database"
+name|CONNECTION_ERROR
 argument_list|,
 name|why
 argument_list|)
@@ -1853,14 +1857,17 @@ operator|instanceof
 name|Named
 condition|)
 block|{
-if|if
-condition|(
-operator|(
+name|Named
+name|named
+init|=
 operator|(
 name|Named
 operator|)
 name|annotation
-operator|)
+decl_stmt|;
+if|if
+condition|(
+name|named
 operator|.
 name|value
 argument_list|()
@@ -1875,12 +1882,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-operator|(
-operator|(
-name|Named
-operator|)
-name|annotation
-operator|)
+name|named
 operator|.
 name|value
 argument_list|()

@@ -118,7 +118,7 @@ specifier|public
 class|class
 name|WorkInProgressStateChangedEvent
 extends|extends
-name|ChangeEvent
+name|PatchSetEvent
 block|{
 DECL|field|TYPE
 specifier|static

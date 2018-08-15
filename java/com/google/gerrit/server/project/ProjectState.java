@@ -946,38 +946,31 @@ name|labelTypes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState ( final SitePaths sitePaths, final ProjectCache projectCache, final AllProjectsName allProjectsName, final AllUsersName allUsersName, final GitRepositoryManager gitMgr, final List<CommentLinkInfo> commentLinks, final CapabilityCollection.Factory limitsFactory, @Assisted final ProjectConfig config)
+DECL|method|ProjectState ( SitePaths sitePaths, ProjectCache projectCache, AllProjectsName allProjectsName, AllUsersName allUsersName, GitRepositoryManager gitMgr, List<CommentLinkInfo> commentLinks, CapabilityCollection.Factory limitsFactory, @Assisted ProjectConfig config)
 specifier|public
 name|ProjectState
 parameter_list|(
-specifier|final
 name|SitePaths
 name|sitePaths
 parameter_list|,
-specifier|final
 name|ProjectCache
 name|projectCache
 parameter_list|,
-specifier|final
 name|AllProjectsName
 name|allProjectsName
 parameter_list|,
-specifier|final
 name|AllUsersName
 name|allUsersName
 parameter_list|,
-specifier|final
 name|GitRepositoryManager
 name|gitMgr
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|CommentLinkInfo
 argument_list|>
 name|commentLinks
 parameter_list|,
-specifier|final
 name|CapabilityCollection
 operator|.
 name|Factory
@@ -985,7 +978,6 @@ name|limitsFactory
 parameter_list|,
 annotation|@
 name|Assisted
-specifier|final
 name|ProjectConfig
 name|config
 parameter_list|)
