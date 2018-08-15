@@ -76,6 +76,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -319,17 +333,26 @@ specifier|static
 class|class
 name|MaxObjectSizeLimitInfo
 block|{
+comment|/* The effective value. Null if not set. */
 DECL|field|value
+annotation|@
+name|Nullable
 specifier|public
 name|String
 name|value
 decl_stmt|;
+comment|/* The value configured on the project. Null if not set. */
 DECL|field|configuredValue
+annotation|@
+name|Nullable
 specifier|public
 name|String
 name|configuredValue
 decl_stmt|;
+comment|/* The value configured globally. Null if not set. */
 DECL|field|inheritedValue
+annotation|@
+name|Nullable
 specifier|public
 name|String
 name|inheritedValue
