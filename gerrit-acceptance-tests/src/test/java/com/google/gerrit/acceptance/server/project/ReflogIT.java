@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.server.notedb
+DECL|package|com.google.gerrit.acceptance.server.project
 package|package
 name|com
 operator|.
@@ -64,7 +64,7 @@ name|acceptance
 operator|.
 name|server
 operator|.
-name|notedb
+name|project
 package|;
 end_package
 
