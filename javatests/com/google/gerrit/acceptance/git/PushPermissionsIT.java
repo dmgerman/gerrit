@@ -951,7 +951,7 @@ argument_list|)
 operator|.
 name|hasMessages
 argument_list|(
-literal|"Branch refs/heads/master:"
+literal|"error: branch refs/heads/master:"
 argument_list|,
 literal|"To push into this reference you need 'Push' rights."
 argument_list|,
@@ -1087,7 +1087,7 @@ argument_list|)
 operator|.
 name|hasMessages
 argument_list|(
-literal|"Branch refs/heads/master:"
+literal|"error: branch refs/heads/master:"
 argument_list|,
 literal|"You need 'Delete Reference' rights or 'Push' rights with the "
 argument_list|,
@@ -1330,13 +1330,13 @@ argument_list|)
 operator|.
 name|hasMessages
 argument_list|(
-literal|"Branches refs/heads/foo, refs/heads/bar:"
+literal|"error: branches refs/heads/foo, refs/heads/bar:"
 argument_list|,
 literal|"You need 'Delete Reference' rights or 'Push' rights with the "
 argument_list|,
 literal|"'Force Push' flag set to delete references."
 argument_list|,
-literal|"Branch refs/heads/master:"
+literal|"error: branch refs/heads/master:"
 argument_list|,
 literal|"To push into this reference you need 'Push' rights."
 argument_list|,
@@ -1535,7 +1535,7 @@ argument_list|)
 operator|.
 name|hasMessages
 argument_list|(
-literal|"Branch refs/meta/config:"
+literal|"error: branch refs/meta/config:"
 argument_list|,
 literal|"Configuration changes can only be pushed by project owners"
 argument_list|,
@@ -1675,7 +1675,7 @@ argument_list|)
 operator|.
 name|containsMessages
 argument_list|(
-literal|"Branch refs/for/master:"
+literal|"error: branch refs/for/master:"
 argument_list|,
 literal|"You need 'Create Change' rights to upload code review requests."
 argument_list|,

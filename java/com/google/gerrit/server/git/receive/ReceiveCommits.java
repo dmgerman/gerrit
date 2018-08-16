@@ -502,6 +502,20 @@ name|common
 operator|.
 name|base
 operator|.
+name|Joiner
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Splitter
 import|;
 end_import
@@ -5248,6 +5262,8 @@ name|receivePack
 operator|.
 name|sendMessage
 argument_list|(
+literal|"error: "
+operator|+
 name|buildError
 argument_list|(
 name|error
@@ -6351,7 +6367,7 @@ name|ResourceConflictException
 name|e
 parameter_list|)
 block|{
-name|addMessage
+name|addError
 argument_list|(
 name|e
 operator|.
@@ -6438,7 +6454,7 @@ name|ResourceConflictException
 name|e
 parameter_list|)
 block|{
-name|addMessage
+name|addError
 argument_list|(
 name|e
 operator|.
@@ -6536,7 +6552,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"Branch "
+literal|"branch "
 argument_list|)
 operator|.
 name|append
@@ -6572,39 +6588,24 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"Branches"
-argument_list|)
-expr_stmt|;
-name|String
-name|delim
-init|=
-literal|" "
-decl_stmt|;
-for|for
-control|(
-name|String
-name|branch
-range|:
-name|branches
-control|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-name|delim
+literal|"branches "
 argument_list|)
 operator|.
 name|append
 argument_list|(
-name|branch
-argument_list|)
-expr_stmt|;
-name|delim
-operator|=
+name|Joiner
+operator|.
+name|on
+argument_list|(
 literal|", "
+argument_list|)
+operator|.
+name|join
+argument_list|(
+name|branches
+argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|sb
 operator|.
@@ -16384,7 +16385,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"(W) No changes between prior commit %s and new commit %s"
+literal|"warning: no changes between prior commit %s and new commit %s"
 argument_list|,
 name|reader
 operator|.
@@ -16422,10 +16423,8 @@ name|msg
 operator|.
 name|append
 argument_list|(
-literal|"(I) "
+literal|"warning: "
 argument_list|)
-expr_stmt|;
-name|msg
 operator|.
 name|append
 argument_list|(
