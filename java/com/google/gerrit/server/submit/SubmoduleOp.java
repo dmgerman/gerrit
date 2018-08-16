@@ -79,6 +79,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toList
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1169,7 +1183,19 @@ name|GitModules
 argument_list|>
 name|branchGitModules
 decl_stmt|;
-comment|// always update-to-current branch tips during submit process
+comment|/** Branches updated as part of the enclosing submit or push batch. */
+DECL|field|updatedBranches
+specifier|private
+specifier|final
+name|ImmutableSet
+argument_list|<
+name|Branch
+operator|.
+name|NameKey
+argument_list|>
+name|updatedBranches
+decl_stmt|;
+comment|/**    * Current branch tips, taking into account commits created during the submit process as well as    * submodule updates produced by this class.    */
 DECL|field|branchTips
 specifier|private
 specifier|final
@@ -1183,19 +1209,7 @@ name|CodeReviewCommit
 argument_list|>
 name|branchTips
 decl_stmt|;
-comment|// branches for all the submitting changes
-DECL|field|updatedBranches
-specifier|private
-specifier|final
-name|Set
-argument_list|<
-name|Branch
-operator|.
-name|NameKey
-argument_list|>
-name|updatedBranches
-decl_stmt|;
-comment|// branches which in either a submodule or a superproject
+comment|/**    * Branches in a superproject that contain submodule subscriptions, plus branches in submodules    * which are subscribed to by some superproject.    */
 DECL|field|affectedBranches
 specifier|private
 specifier|final
@@ -1207,7 +1221,7 @@ name|NameKey
 argument_list|>
 name|affectedBranches
 decl_stmt|;
-comment|// sorted version of affectedBranches
+comment|/** Copy of {@link #affectedBranches}, sorted by submodule traversal order. */
 DECL|field|sortedBranches
 specifier|private
 specifier|final
@@ -1219,7 +1233,7 @@ name|NameKey
 argument_list|>
 name|sortedBranches
 decl_stmt|;
-comment|// map of superproject branch and its submodule subscriptions
+comment|/** Multimap of superproject branch to submodule subscriptions contained in that branch. */
 DECL|field|targets
 specifier|private
 specifier|final
@@ -1233,7 +1247,7 @@ name|SubmoduleSubscription
 argument_list|>
 name|targets
 decl_stmt|;
-comment|// map of superproject and its branches which has submodule subscriptions
+comment|/**    * Multimap of superproject name to all branch names within that superproject which have submodule    * subscriptions.    */
 DECL|field|branchesByProject
 specifier|private
 specifier|final
@@ -1386,7 +1400,12 @@ name|this
 operator|.
 name|updatedBranches
 operator|=
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
 name|updatedBranches
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -1449,11 +1468,26 @@ name|this
 operator|.
 name|sortedBranches
 operator|=
-name|calculateSubscriptionMap
+name|calculateSubscriptionMaps
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|calculateSubscriptionMap ()
+comment|/**    * Calculate the internal maps used by the operation.    *    *<p>In addition to the return value, the following fields are populated as a side effect:    *    *<ul>    *<li>{@link #affectedBranches}    *<li>{@link #targets}    *<li>{@link #branchesByProject}    *</ul>    *    * @return the ordered set to be stored in {@link #sortedBranches}.    * @throws SubmoduleException if an error occurred walking projects.    */
+comment|// TODO(dborowitz): This setup process is hard to follow, in large part due to the accumulation of
+comment|// mutable maps, which makes this whole class difficult to understand.
+comment|//
+comment|// A cleaner architecture for this process might be:
+comment|//   1. Separate out the code to parse submodule subscriptions and build up an in-memory data
+comment|//      structure representing the subscription graph, using a separate class with a properly-
+comment|//      documented interface.
+comment|//   2. Walk the graph to produce a work plan. This would be a list of items indicating: create a
+comment|//      commit in project X reading branch tips for submodules S1..Sn and updating gitlinks in X.
+comment|//   3. Execute the work plan, i.e. convert the items into BatchUpdate.Ops and add them to the
+comment|//      relevant updates.
+comment|//
+comment|// In addition to improving readability, this approach has the advantage of making (1) and (2)
+comment|// testable using small tests.
+DECL|method|calculateSubscriptionMaps ()
 specifier|private
 name|ImmutableSet
 argument_list|<
@@ -1461,7 +1495,7 @@ name|Branch
 operator|.
 name|NameKey
 argument_list|>
-name|calculateSubscriptionMap
+name|calculateSubscriptionMaps
 parameter_list|()
 throws|throws
 name|SubmoduleException
@@ -1527,11 +1561,7 @@ name|updatedBranch
 argument_list|,
 operator|new
 name|LinkedHashSet
-argument_list|<
-name|Branch
-operator|.
-name|NameKey
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|,
 name|allVisited
@@ -2239,7 +2269,7 @@ name|ret
 return|;
 block|}
 DECL|method|superProjectSubscriptionsForSubmoduleBranch ( Branch.NameKey srcBranch)
-specifier|public
+specifier|private
 name|Collection
 argument_list|<
 name|SubmoduleSubscription
@@ -2625,7 +2655,7 @@ block|}
 block|}
 comment|/** Create a separate gitlink commit */
 DECL|method|composeGitlinksCommit (Branch.NameKey subscriber)
-specifier|public
+specifier|private
 name|CodeReviewCommit
 name|composeGitlinksCommit
 parameter_list|(
@@ -2757,9 +2787,7 @@ name|msgbuf
 init|=
 operator|new
 name|StringBuilder
-argument_list|(
-literal|""
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|PersonIdent
 name|author
@@ -2797,24 +2825,18 @@ name|SubmoduleSubscription
 argument_list|>
 name|subscriptions
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
 name|targets
 operator|.
 name|get
 argument_list|(
 name|subscriber
 argument_list|)
-argument_list|)
-decl_stmt|;
-name|Collections
 operator|.
-name|sort
+name|stream
+argument_list|()
+operator|.
+name|sorted
 argument_list|(
-name|subscriptions
-argument_list|,
 name|comparing
 argument_list|(
 name|SubmoduleSubscription
@@ -2822,7 +2844,13 @@ operator|::
 name|getPath
 argument_list|)
 argument_list|)
-expr_stmt|;
+operator|.
+name|collect
+argument_list|(
+name|toList
+argument_list|()
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|SubmoduleSubscription
@@ -3068,8 +3096,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Amend an existing commit with gitlink updates */
-DECL|method|composeGitlinksCommit ( Branch.NameKey subscriber, CodeReviewCommit currentCommit)
-specifier|public
+DECL|method|composeGitlinksCommit (Branch.NameKey subscriber, CodeReviewCommit currentCommit)
 name|CodeReviewCommit
 name|composeGitlinksCommit
 parameter_list|(
@@ -3127,9 +3154,7 @@ name|msgbuf
 init|=
 operator|new
 name|StringBuilder
-argument_list|(
-literal|""
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|DirCache
 name|dc
@@ -3776,7 +3801,12 @@ operator|.
 name|append
 argument_list|(
 literal|"\n  to "
-operator|+
+argument_list|)
+expr_stmt|;
+name|msgbuf
+operator|.
+name|append
+argument_list|(
 name|newCommit
 operator|.
 name|getName
@@ -4066,7 +4096,6 @@ name|dc
 return|;
 block|}
 DECL|method|getProjectsInOrder ()
-specifier|public
 name|ImmutableSet
 argument_list|<
 name|Project
@@ -4320,7 +4349,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getBranchesInOrder ()
-specifier|public
 name|ImmutableSet
 argument_list|<
 name|Branch
@@ -4375,7 +4403,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|hasSubscription (Branch.NameKey branch)
-specifier|public
 name|boolean
 name|hasSubscription
 parameter_list|(
@@ -4395,7 +4422,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|addBranchTip (Branch.NameKey branch, CodeReviewCommit tip)
-specifier|public
 name|void
 name|addBranchTip
 parameter_list|(
@@ -4419,7 +4445,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|addOp (BatchUpdate bu, Branch.NameKey branch)
-specifier|public
 name|void
 name|addOp
 parameter_list|(
