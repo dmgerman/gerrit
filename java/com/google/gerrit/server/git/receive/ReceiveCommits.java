@@ -1806,6 +1806,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|logging
+operator|.
+name|TraceContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|MailUtil
@@ -3726,12 +3742,6 @@ specifier|final
 name|Repository
 name|repo
 decl_stmt|;
-DECL|field|receiveId
-specifier|private
-specifier|final
-name|RequestId
-name|receiveId
-decl_stmt|;
 comment|// Collections populated during processing.
 DECL|field|updateGroups
 specifier|private
@@ -4416,18 +4426,6 @@ name|getNameKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|receiveId
-operator|=
-name|RequestId
-operator|.
-name|forProject
-argument_list|(
-name|project
-operator|.
-name|getNameKey
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|rejectCommits
 operator|=
 name|BanCommit
@@ -4731,11 +4729,42 @@ name|UNKNOWN
 argument_list|)
 expr_stmt|;
 try|try
+init|(
+name|TraceContext
+name|traceContext
+init|=
+operator|new
+name|TraceContext
+argument_list|(
+name|RequestId
+operator|.
+name|Type
+operator|.
+name|RECEIVE_ID
+argument_list|,
+name|RequestId
+operator|.
+name|forProject
+argument_list|(
+name|project
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+argument_list|)
+init|)
+block|{
+try|try
 block|{
 name|parsePushOptions
 argument_list|()
 expr_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Parsing %d commands"
 argument_list|,
@@ -4823,11 +4852,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|logError
-argument_list|(
-name|String
+name|logger
 operator|.
-name|format
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|err
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Failed to process refs in %s"
 argument_list|,
@@ -4835,9 +4870,6 @@ name|project
 operator|.
 name|getName
 argument_list|()
-argument_list|)
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 block|}
@@ -4903,7 +4935,12 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Handling error conditions: %s"
 argument_list|,
@@ -4989,8 +5026,8 @@ name|actualCommands
 control|)
 block|{
 comment|// Most post-update steps should happen in UpdateOneRefOp#postUpdate. The only steps that
-comment|// should happen in this loop are things that can't happen within one BatchUpdate because they
-comment|// involve kicking off an additional BatchUpdate.
+comment|// should happen in this loop are things that can't happen within one BatchUpdate because
+comment|// they involve kicking off an additional BatchUpdate.
 if|if
 condition|(
 name|c
@@ -5100,8 +5137,6 @@ name|nowTs
 argument_list|()
 argument_list|,
 name|user
-argument_list|,
-name|receiveId
 argument_list|)
 expr_stmt|;
 name|SubmoduleOp
@@ -5128,11 +5163,19 @@ name|SubmoduleException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Can't update the superprojects"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -5161,6 +5204,7 @@ argument_list|(
 name|newChanges
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|reportMessages (List<CreateRequest> newChanges)
 specifier|private
@@ -5460,11 +5504,19 @@ name|e
 parameter_list|)
 block|{
 comment|// Log and fall back to original change subject
-name|logWarn
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"failed to get subject for edit patch set"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|subject
@@ -5653,11 +5705,12 @@ operator|!=
 name|NOT_ATTEMPTED
 condition|)
 block|{
-name|logWarn
-argument_list|(
-name|String
+name|logger
 operator|.
-name|format
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Skipping change updates on %s because ref update failed: %s %s"
 argument_list|,
@@ -5679,7 +5732,6 @@ name|magicBranchCmd
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5754,19 +5806,17 @@ argument_list|()
 expr_stmt|;
 name|bu
 operator|.
-name|setRequestId
-argument_list|(
-name|receiveId
-argument_list|)
-expr_stmt|;
-name|bu
-operator|.
 name|setRefLogMessage
 argument_list|(
 literal|"push"
 argument_list|)
 expr_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Adding %d replace requests"
 argument_list|,
@@ -5797,7 +5847,12 @@ name|replaceProgress
 argument_list|)
 expr_stmt|;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Adding %d create requests"
 argument_list|,
@@ -5823,7 +5878,12 @@ name|bu
 argument_list|)
 expr_stmt|;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Adding %d group update requests"
 argument_list|,
@@ -5847,7 +5907,12 @@ name|bu
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Adding %d additional ref updates"
 argument_list|,
@@ -5875,7 +5940,12 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Executing batch"
 argument_list|)
@@ -5970,7 +6040,12 @@ block|}
 block|}
 else|else
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Rejecting due to message from ReplaceOp"
 argument_list|)
@@ -6017,16 +6092,24 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Can't insert change/patch set for "
-operator|+
+name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Can't insert change/patch set for %s"
+argument_list|,
 name|project
 operator|.
 name|getName
 argument_list|()
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 name|reject
@@ -6104,16 +6187,24 @@ name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Error submitting changes to "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error submitting changes to %s"
+argument_list|,
 name|project
 operator|.
 name|getName
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|reject
@@ -6455,7 +6546,12 @@ name|NOT_ATTEMPTED
 condition|)
 block|{
 comment|// Already rejected by the core receive process.
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Already processed by core: %s %s"
 argument_list|,
@@ -6555,7 +6651,12 @@ name|getAccountId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Swapping out command for %s to %s"
 argument_list|,
@@ -6714,7 +6815,12 @@ comment|// Reject pushes to NoteDb refs without a special option and permission.
 comment|// prohibition doesn't depend on NoteDb being enabled in any way, since all sites will
 comment|// migrate to NoteDb eventually, and we don't want garbage data waiting there when the
 comment|// migration finishes.
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"%s NoteDb ref %s with %s=%s"
 argument_list|,
@@ -6891,7 +6997,12 @@ name|cmd
 argument_list|)
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Processing %s command"
 argument_list|,
@@ -7032,17 +7143,20 @@ argument_list|,
 literal|"invalid project configuration"
 argument_list|)
 expr_stmt|;
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"User "
-operator|+
+literal|"User %s tried to push invalid project configuration %s for %s"
+argument_list|,
 name|user
 operator|.
 name|getLoggableName
 argument_list|()
-operator|+
-literal|" tried to push invalid project configuration "
-operator|+
+argument_list|,
 name|cmd
 operator|.
 name|getNewId
@@ -7050,9 +7164,7 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|" for "
-operator|+
+argument_list|,
 name|project
 operator|.
 name|getName
@@ -7434,17 +7546,25 @@ argument_list|,
 literal|"invalid project configuration"
 argument_list|)
 expr_stmt|;
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"User "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"User %s tried to push invalid project configuration %s for %s"
+argument_list|,
 name|user
 operator|.
 name|getLoggableName
 argument_list|()
-operator|+
-literal|" tried to push invalid project configuration "
-operator|+
+argument_list|,
 name|cmd
 operator|.
 name|getNewId
@@ -7452,15 +7572,11 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|" for "
-operator|+
+argument_list|,
 name|project
 operator|.
 name|getName
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return;
@@ -7529,10 +7645,20 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Invalid object "
-operator|+
+name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Invalid object %s for %s creation"
+argument_list|,
 name|cmd
 operator|.
 name|getNewId
@@ -7540,17 +7666,11 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|" for "
-operator|+
+argument_list|,
 name|cmd
 operator|.
 name|getRefName
 argument_list|()
-operator|+
-literal|" creation"
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 name|reject
@@ -7562,7 +7682,12 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Creating %s"
 argument_list|,
@@ -7706,7 +7831,12 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Updating %s"
 argument_list|,
@@ -7905,10 +8035,20 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Invalid object "
-operator|+
+name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Invalid object %s for %s"
+argument_list|,
 name|cmd
 operator|.
 name|getNewId
@@ -7916,15 +8056,11 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|" for "
-operator|+
+argument_list|,
 name|cmd
 operator|.
 name|getRefName
 argument_list|()
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 name|reject
@@ -7971,7 +8107,12 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Deleting %s"
 argument_list|,
@@ -8203,10 +8344,20 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Invalid object "
-operator|+
+name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Invalid object %s for %s forced update"
+argument_list|,
 name|cmd
 operator|.
 name|getNewId
@@ -8214,17 +8365,11 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|" for "
-operator|+
+argument_list|,
 name|cmd
 operator|.
 name|getRefName
 argument_list|()
-operator|+
-literal|" forced update"
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 name|reject
@@ -8236,7 +8381,12 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Rewinding %s"
 argument_list|,
@@ -9783,7 +9933,12 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Found magic branch %s"
 argument_list|,
@@ -9892,7 +10047,12 @@ name|wasHelpRequestedByOption
 argument_list|()
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Invalid branch syntax"
 argument_list|)
@@ -10021,7 +10181,12 @@ name|ref
 argument_list|)
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Handling %s"
 argument_list|,
@@ -10078,7 +10243,12 @@ name|REFS_CONFIG
 argument_list|)
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Ref %s not found"
 argument_list|,
@@ -10448,7 +10618,12 @@ name|getNewId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Tip of push: %s"
 argument_list|,
@@ -10474,11 +10649,19 @@ argument_list|(
 name|REJECTED_MISSING_OBJECT
 argument_list|)
 expr_stmt|;
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|ex
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Invalid pack upload; one or more objects weren't sent"
-argument_list|,
-name|ex
 argument_list|)
 expr_stmt|;
 return|return;
@@ -10594,7 +10777,12 @@ operator|==
 literal|0
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Forcing newChangeForAllNotInTarget = false"
 argument_list|)
@@ -10613,9 +10801,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"Handling %base: %s"
+literal|"Handling %%base: %s"
 argument_list|,
 name|magicBranch
 operator|.
@@ -10701,11 +10894,17 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logWarn
-argument_list|(
-name|String
+name|logger
 operator|.
-name|format
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Project %s cannot read %s"
 argument_list|,
@@ -10718,9 +10917,6 @@ name|id
 operator|.
 name|name
 argument_list|()
-argument_list|)
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|reject
@@ -10773,7 +10969,12 @@ argument_list|(
 name|branchTip
 argument_list|)
 expr_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Set baseCommit = %s"
 argument_list|,
@@ -10798,11 +10999,17 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|logWarn
-argument_list|(
-name|String
+name|logger
 operator|.
-name|format
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|ex
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Error walking to %s in project %s"
 argument_list|,
@@ -10812,9 +11019,6 @@ name|project
 operator|.
 name|getName
 argument_list|()
-argument_list|)
-argument_list|,
-name|ex
 argument_list|)
 expr_stmt|;
 name|reject
@@ -10868,7 +11072,12 @@ block|{
 comment|// The destination branch does not yet exist. Assume the
 comment|// history being sent for review will start it and thus
 comment|// is "connected" to the branch.
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Branch is unborn"
 argument_list|)
@@ -10888,7 +11097,12 @@ name|getObjectId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Current branch tip: %s"
 argument_list|,
@@ -10988,11 +11202,19 @@ argument_list|(
 name|REJECTED_MISSING_OBJECT
 argument_list|)
 expr_stmt|;
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Invalid pack upload; one or more objects weren't sent"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -11125,7 +11347,12 @@ name|Id
 name|changeId
 parameter_list|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Parsing replace command"
 argument_list|)
@@ -11173,7 +11400,12 @@ name|getNewId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Replacing with %s"
 argument_list|,
@@ -11187,10 +11419,20 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot parse "
-operator|+
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot parse %s as commit"
+argument_list|,
 name|cmd
 operator|.
 name|getNewId
@@ -11198,10 +11440,6 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
-operator|+
-literal|" as commit"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|reject
@@ -11244,13 +11482,21 @@ name|NoSuchChangeException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Change not found "
-operator|+
-name|changeId
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Change not found %s"
+argument_list|,
+name|changeId
 argument_list|)
 expr_stmt|;
 name|reject
@@ -11272,13 +11518,21 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
 argument_list|(
-literal|"Cannot lookup existing change "
-operator|+
-name|changeId
-argument_list|,
 name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Cannot lookup existing change %s"
+argument_list|,
+name|changeId
 argument_list|)
 expr_stmt|;
 name|reject
@@ -11325,7 +11579,12 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Replacing change %s"
 argument_list|,
@@ -11470,7 +11729,12 @@ argument_list|>
 name|selectNewAndReplacedChangesFromMagicBranch
 parameter_list|()
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Finding new and replaced changes"
 argument_list|)
@@ -11906,7 +12170,12 @@ operator|>
 name|maxBatchChanges
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"%d changes exceeds limit of %d"
 argument_list|,
@@ -11990,7 +12259,12 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Creating new change for %s even though it is already tracked"
 argument_list|,
@@ -12023,7 +12297,12 @@ argument_list|)
 condition|)
 block|{
 comment|// Not a change the user can propose? Abort as early as possible.
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Aborting early due to invalid commit"
 argument_list|)
@@ -12059,7 +12338,12 @@ operator|+
 literal|"to override please set the base manually"
 argument_list|)
 expr_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Rejecting merge commit %s with newChangeForAllNotInTarget"
 argument_list|,
@@ -12097,7 +12381,12 @@ expr_stmt|;
 continue|continue;
 block|}
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Finished initial RevWalk with %d commits total: %d already"
 operator|+
@@ -12185,7 +12474,12 @@ name|changeKey
 argument_list|)
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Multiple commits with Change-Id %s"
 argument_list|,
@@ -12230,7 +12524,12 @@ operator|>
 literal|1
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Multiple changes in branch %s with Change-Id %s: %s"
 argument_list|,
@@ -12532,7 +12831,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Finished deferred lookups with %d updates and %d new changes"
 argument_list|,
@@ -12566,11 +12870,19 @@ argument_list|(
 name|REJECTED_MISSING_OBJECT
 argument_list|)
 expr_stmt|;
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Invalid pack upload; one or more objects weren't sent"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -12586,11 +12898,19 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Cannot query database to locate prior changes"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|reject
@@ -12813,7 +13133,12 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Finished updating groups from GroupCollector"
 argument_list|)
@@ -12825,11 +13150,19 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Error collecting groups for changes"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 name|reject
@@ -12918,7 +13251,12 @@ name|dest
 argument_list|)
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Found change %s from existing refs."
 argument_list|,
@@ -13051,7 +13389,12 @@ operator|.
 name|merged
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Marking parents of merged commit %s uninteresting"
 argument_list|,
@@ -13116,7 +13459,12 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Marking %d base commits uninteresting"
 argument_list|,
@@ -13172,7 +13520,12 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Marking target ref %s (%s) uninteresting"
 argument_list|,
@@ -13501,11 +13854,17 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logWarn
-argument_list|(
-name|String
+name|logger
 operator|.
-name|format
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Invalid ref %s in %s"
 argument_list|,
@@ -13519,14 +13878,16 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
-argument_list|,
-name|e
-argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Marked %d heads as uninteresting"
 argument_list|,
@@ -14468,7 +14829,12 @@ argument_list|,
 name|bySha
 argument_list|)
 expr_stmt|;
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Processing submit with tip change %s (%s)"
 argument_list|,
@@ -14593,11 +14959,17 @@ name|OrmException
 name|err
 parameter_list|)
 block|{
-name|logError
-argument_list|(
-name|String
+name|logger
 operator|.
-name|format
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|err
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Cannot read database before replacement for project %s"
 argument_list|,
@@ -14605,9 +14977,6 @@ name|project
 operator|.
 name|getName
 argument_list|()
-argument_list|)
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 for|for
@@ -14655,11 +15024,17 @@ name|PermissionBackendException
 name|err
 parameter_list|)
 block|{
-name|logError
-argument_list|(
-name|String
+name|logger
 operator|.
-name|format
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|err
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Cannot read repository before replacement for project %s"
 argument_list|,
@@ -14667,9 +15042,6 @@ name|project
 operator|.
 name|getName
 argument_list|()
-argument_list|)
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 for|for
@@ -14709,7 +15081,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Read %d changes to replace"
 argument_list|,
@@ -15060,11 +15437,17 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|logWarn
-argument_list|(
-name|String
+name|logger
 operator|.
-name|format
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|err
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Project %s contains invalid change ref %s"
 argument_list|,
@@ -15077,9 +15460,6 @@ name|ref
 operator|.
 name|getName
 argument_list|()
-argument_list|)
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 block|}
@@ -15864,11 +16244,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Cannot retrieve edit"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 return|return
@@ -16622,7 +17010,12 @@ name|UPDATE
 condition|)
 block|{
 comment|// aka fast-forward
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Updating tag cache on fast-forward of %s"
 argument_list|,
@@ -16663,7 +17056,12 @@ name|cmd
 argument_list|)
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Reloading project in cache"
 argument_list|)
@@ -16720,7 +17118,12 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Updating project description"
 argument_list|)
@@ -17411,7 +17814,12 @@ name|PUSH_OPTION_SKIP_VALIDATION
 argument_list|)
 throw|;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Short-circuiting new commit validation"
 argument_list|)
@@ -17570,7 +17978,12 @@ operator|>
 name|limit
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Number of new commits exceeds limit of %d"
 argument_list|,
@@ -17662,7 +18075,12 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Will update full name of caller"
 argument_list|)
@@ -17683,7 +18101,12 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Validated %d new commits"
 argument_list|,
@@ -17704,11 +18127,19 @@ argument_list|(
 name|REJECTED_MISSING_OBJECT
 argument_list|)
 expr_stmt|;
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|err
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Invalid pack upload; one or more objects weren't sent"
-argument_list|,
-name|err
 argument_list|)
 expr_stmt|;
 block|}
@@ -17917,7 +18348,12 @@ name|CommitValidationException
 name|e
 parameter_list|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Commit validation failed on %s"
 argument_list|,
@@ -17971,7 +18407,12 @@ name|ReceiveCommand
 name|cmd
 parameter_list|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Starting auto-closing of changes"
 argument_list|)
@@ -18073,13 +18514,6 @@ argument_list|)
 operator|.
 name|updateChangesInParallel
 argument_list|()
-expr_stmt|;
-name|bu
-operator|.
-name|setRequestId
-argument_list|(
-name|receiveId
-argument_list|)
 expr_stmt|;
 comment|// TODO(dborowitz): Teach BatchUpdate to ignore missing changes.
 name|RevCommit
@@ -18461,7 +18895,12 @@ literal|true
 argument_list|)
 condition|)
 block|{
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Not closing %s because validation failed"
 argument_list|,
@@ -18522,7 +18961,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Auto-closing %s changes with existing patch sets and %s with new patch sets"
 argument_list|,
@@ -18547,11 +18991,19 @@ name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Failed to auto-close changes"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -18595,11 +19047,19 @@ name|RestApiException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Can't insert patchset"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -18609,11 +19069,19 @@ name|UpdateException
 name|e
 parameter_list|)
 block|{
-name|logError
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Failed to auto-close changes"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -18757,7 +19225,12 @@ condition|)
 block|{
 return|return;
 block|}
-name|logDebug
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
 argument_list|(
 literal|"Updating full name of caller"
 argument_list|)
@@ -18856,11 +19329,19 @@ name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{
-name|logWarn
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
 argument_list|(
 literal|"Failed to update full name of caller"
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -19057,284 +19538,6 @@ operator|.
 name|REFS_CONFIG
 argument_list|)
 return|;
-block|}
-DECL|method|logDebug (String msg)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-name|receiveId
-operator|+
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logDebug (String msg, @Nullable Object arg)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-name|receiveId
-operator|+
-name|msg
-argument_list|,
-name|arg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logDebug (String msg, @Nullable Object arg1, @Nullable Object arg2)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg1
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg2
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-name|receiveId
-operator|+
-name|msg
-argument_list|,
-name|arg1
-argument_list|,
-name|arg2
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logDebug ( String msg, @Nullable Object arg1, @Nullable Object arg2, @Nullable Object arg3)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg1
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg2
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg3
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-name|receiveId
-operator|+
-name|msg
-argument_list|,
-name|arg1
-argument_list|,
-name|arg2
-argument_list|,
-name|arg3
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logDebug ( String msg, @Nullable Object arg1, @Nullable Object arg2, @Nullable Object arg3, @Nullable Object arg4)
-specifier|private
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg1
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg2
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg3
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg4
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-name|receiveId
-operator|+
-name|msg
-argument_list|,
-name|arg1
-argument_list|,
-name|arg2
-argument_list|,
-name|arg3
-argument_list|,
-name|arg4
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logWarn (String msg, Throwable t)
-specifier|private
-name|void
-name|logWarn
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-name|Throwable
-name|t
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atWarning
-argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|t
-argument_list|)
-operator|.
-name|log
-argument_list|(
-literal|"%s%s"
-argument_list|,
-name|receiveId
-argument_list|,
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logWarn (String msg)
-specifier|private
-name|void
-name|logWarn
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-name|logWarn
-argument_list|(
-name|msg
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logError (String msg, Throwable t)
-specifier|private
-name|void
-name|logError
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-name|Throwable
-name|t
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atSevere
-argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|t
-argument_list|)
-operator|.
-name|log
-argument_list|(
-literal|"%s%s"
-argument_list|,
-name|receiveId
-argument_list|,
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|logError (String msg)
-specifier|private
-name|void
-name|logError
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-name|logError
-argument_list|(
-name|msg
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class

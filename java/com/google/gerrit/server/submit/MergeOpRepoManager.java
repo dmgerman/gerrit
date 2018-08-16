@@ -328,22 +328,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|RequestId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -840,11 +824,6 @@ argument_list|,
 name|ins
 argument_list|)
 operator|.
-name|setRequestId
-argument_list|(
-name|submissionId
-argument_list|)
-operator|.
 name|setOnSubmitValidators
 argument_list|(
 name|onSubmitValidatorsFactory
@@ -1115,11 +1094,6 @@ specifier|private
 name|IdentifiedUser
 name|caller
 decl_stmt|;
-DECL|field|submissionId
-specifier|private
-name|RequestId
-name|submissionId
-decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|MergeOpRepoManager ( GitRepositoryManager repoManager, ProjectCache projectCache, BatchUpdate.Factory batchUpdateFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory)
@@ -1174,7 +1148,7 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setContext (ReviewDb db, Timestamp ts, IdentifiedUser caller, RequestId submissionId)
+DECL|method|setContext (ReviewDb db, Timestamp ts, IdentifiedUser caller)
 specifier|public
 name|void
 name|setContext
@@ -1187,9 +1161,6 @@ name|ts
 parameter_list|,
 name|IdentifiedUser
 name|caller
-parameter_list|,
-name|RequestId
-name|submissionId
 parameter_list|)
 block|{
 name|this
@@ -1210,22 +1181,6 @@ name|caller
 operator|=
 name|caller
 expr_stmt|;
-name|this
-operator|.
-name|submissionId
-operator|=
-name|submissionId
-expr_stmt|;
-block|}
-DECL|method|getSubmissionId ()
-specifier|public
-name|RequestId
-name|getSubmissionId
-parameter_list|()
-block|{
-return|return
-name|submissionId
-return|;
 block|}
 DECL|method|getRepo (Project.NameKey project)
 specifier|public

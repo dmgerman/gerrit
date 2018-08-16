@@ -612,6 +612,15 @@ specifier|public
 class|class
 name|ParameterParser
 block|{
+DECL|field|TRACE_PARAMETER
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TRACE_PARAMETER
+init|=
+literal|"trace"
+decl_stmt|;
 DECL|field|RESERVED_KEYS
 specifier|private
 specifier|static
@@ -637,6 +646,8 @@ argument_list|,
 literal|"alt"
 argument_list|,
 literal|"fields"
+argument_list|,
+name|TRACE_PARAMETER
 argument_list|)
 decl_stmt|;
 annotation|@

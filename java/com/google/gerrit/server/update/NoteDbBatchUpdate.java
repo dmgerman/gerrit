@@ -162,20 +162,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|restapi
@@ -373,22 +359,6 @@ operator|.
 name|notedb
 operator|.
 name|NoteDbUpdateManager
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|RequestId
 import|;
 end_import
 
@@ -629,7 +599,7 @@ name|when
 parameter_list|)
 function_decl|;
 block|}
-DECL|method|execute ( ImmutableList<NoteDbBatchUpdate> updates, BatchUpdateListener listener, @Nullable RequestId requestId, boolean dryrun)
+DECL|method|execute ( ImmutableList<NoteDbBatchUpdate> updates, BatchUpdateListener listener, boolean dryrun)
 specifier|static
 name|void
 name|execute
@@ -642,11 +612,6 @@ name|updates
 parameter_list|,
 name|BatchUpdateListener
 name|listener
-parameter_list|,
-annotation|@
-name|Nullable
-name|RequestId
-name|requestId
 parameter_list|,
 name|boolean
 name|dryrun
@@ -666,13 +631,6 @@ condition|)
 block|{
 return|return;
 block|}
-name|setRequestIds
-argument_list|(
-name|updates
-argument_list|,
-name|requestId
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 annotation|@
@@ -1567,8 +1525,6 @@ name|this
 argument_list|)
 argument_list|,
 name|listener
-argument_list|,
-name|requestId
 argument_list|,
 literal|false
 argument_list|)

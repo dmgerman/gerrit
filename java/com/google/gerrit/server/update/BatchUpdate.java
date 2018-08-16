@@ -940,7 +940,7 @@ block|,
 literal|"unchecked"
 block|}
 argument_list|)
-DECL|method|execute ( Collection<BatchUpdate> updates, BatchUpdateListener listener, @Nullable RequestId requestId, boolean dryRun)
+DECL|method|execute ( Collection<BatchUpdate> updates, BatchUpdateListener listener, boolean dryRun)
 specifier|public
 name|void
 name|execute
@@ -953,11 +953,6 @@ name|updates
 parameter_list|,
 name|BatchUpdateListener
 name|listener
-parameter_list|,
-annotation|@
-name|Nullable
-name|RequestId
-name|requestId
 parameter_list|,
 name|boolean
 name|dryRun
@@ -1014,8 +1009,6 @@ name|noteDbUpdates
 argument_list|,
 name|listener
 argument_list|,
-name|requestId
-argument_list|,
 name|dryRun
 argument_list|)
 expr_stmt|;
@@ -1045,8 +1038,6 @@ argument_list|(
 name|reviewDbUpdates
 argument_list|,
 name|listener
-argument_list|,
-name|requestId
 argument_list|,
 name|dryRun
 argument_list|)
@@ -1114,73 +1105,6 @@ argument_list|,
 name|projectCounts
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-DECL|method|setRequestIds ( Collection<? extends BatchUpdate> updates, @Nullable RequestId requestId)
-specifier|static
-name|void
-name|setRequestIds
-parameter_list|(
-name|Collection
-argument_list|<
-name|?
-extends|extends
-name|BatchUpdate
-argument_list|>
-name|updates
-parameter_list|,
-annotation|@
-name|Nullable
-name|RequestId
-name|requestId
-parameter_list|)
-block|{
-if|if
-condition|(
-name|requestId
-operator|!=
-literal|null
-condition|)
-block|{
-for|for
-control|(
-name|BatchUpdate
-name|u
-range|:
-name|updates
-control|)
-block|{
-name|checkArgument
-argument_list|(
-name|u
-operator|.
-name|requestId
-operator|==
-literal|null
-operator|||
-name|u
-operator|.
-name|requestId
-operator|==
-name|requestId
-argument_list|,
-literal|"refusing to overwrite RequestId %s in update with %s"
-argument_list|,
-name|u
-operator|.
-name|requestId
-argument_list|,
-name|requestId
-argument_list|)
-expr_stmt|;
-name|u
-operator|.
-name|setRequestId
-argument_list|(
-name|requestId
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|getOrder (Collection<? extends BatchUpdate> updates, BatchUpdateListener listener)
@@ -1575,11 +1499,6 @@ specifier|protected
 name|OnSubmitValidators
 name|onSubmitValidators
 decl_stmt|;
-DECL|field|requestId
-specifier|protected
-name|RequestId
-name|requestId
-decl_stmt|;
 DECL|field|pushCert
 specifier|protected
 name|PushCertificate
@@ -1716,25 +1635,6 @@ name|Context
 name|newContext
 parameter_list|()
 function_decl|;
-DECL|method|setRequestId (RequestId requestId)
-specifier|public
-name|BatchUpdate
-name|setRequestId
-parameter_list|(
-name|RequestId
-name|requestId
-parameter_list|)
-block|{
-name|this
-operator|.
-name|requestId
-operator|=
-name|requestId
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
 DECL|method|setRepository (Repository repo, RevWalk revWalk, ObjectInserter inserter)
 specifier|public
 name|BatchUpdate
@@ -2168,6 +2068,7 @@ return|;
 block|}
 DECL|method|logDebug (String msg, Throwable t)
 specifier|protected
+specifier|static
 name|void
 name|logDebug
 parameter_list|(
@@ -2183,9 +2084,10 @@ comment|// expensive/complicated requests like MergeOp. Doing it every time woul
 comment|// noisy.
 if|if
 condition|(
-name|requestId
-operator|!=
-literal|null
+name|RequestId
+operator|.
+name|isSet
+argument_list|()
 condition|)
 block|{
 name|logger
@@ -2200,8 +2102,6 @@ argument_list|)
 operator|.
 name|log
 argument_list|(
-name|requestId
-operator|+
 literal|"%s"
 argument_list|,
 name|msg
@@ -2211,6 +2111,7 @@ block|}
 block|}
 DECL|method|logDebug (String msg)
 specifier|protected
+specifier|static
 name|void
 name|logDebug
 parameter_list|(
@@ -2223,9 +2124,10 @@ comment|// expensive/complicated requests like MergeOp. Doing it every time woul
 comment|// noisy.
 if|if
 condition|(
-name|requestId
-operator|!=
-literal|null
+name|RequestId
+operator|.
+name|isSet
+argument_list|()
 condition|)
 block|{
 name|logger
@@ -2235,8 +2137,6 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-name|requestId
-operator|+
 name|msg
 argument_list|)
 expr_stmt|;
@@ -2244,6 +2144,7 @@ block|}
 block|}
 DECL|method|logDebug (String msg, @Nullable Object arg)
 specifier|protected
+specifier|static
 name|void
 name|logDebug
 parameter_list|(
@@ -2261,9 +2162,10 @@ comment|// expensive/complicated requests like MergeOp. Doing it every time woul
 comment|// noisy.
 if|if
 condition|(
-name|requestId
-operator|!=
-literal|null
+name|RequestId
+operator|.
+name|isSet
+argument_list|()
 condition|)
 block|{
 name|logger
@@ -2273,8 +2175,6 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-name|requestId
-operator|+
 name|msg
 argument_list|,
 name|arg
@@ -2284,6 +2184,7 @@ block|}
 block|}
 DECL|method|logDebug (String msg, @Nullable Object arg1, @Nullable Object arg2)
 specifier|protected
+specifier|static
 name|void
 name|logDebug
 parameter_list|(
@@ -2306,9 +2207,10 @@ comment|// expensive/complicated requests like MergeOp. Doing it every time woul
 comment|// noisy.
 if|if
 condition|(
-name|requestId
-operator|!=
-literal|null
+name|RequestId
+operator|.
+name|isSet
+argument_list|()
 condition|)
 block|{
 name|logger
@@ -2318,8 +2220,6 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-name|requestId
-operator|+
 name|msg
 argument_list|,
 name|arg1
