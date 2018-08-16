@@ -187,6 +187,13 @@ argument_list|)
 operator|&&
 name|toMerge
 operator|.
+name|getParentCount
+argument_list|()
+operator|>
+literal|0
+operator|&&
+name|toMerge
+operator|.
 name|getTree
 argument_list|()
 operator|.
