@@ -10603,8 +10603,9 @@ name|getRefName
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|MagicBranchInput
 name|magicBranch
-operator|=
+init|=
 operator|new
 name|MagicBranchInput
 argument_list|(
@@ -10616,7 +10617,7 @@ name|labelTypes
 argument_list|,
 name|notesMigration
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|magicBranch
 operator|.
 name|reviewer
@@ -11680,11 +11681,59 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+if|if
+condition|(
+name|validateConnected
+argument_list|(
+name|magicBranch
+operator|.
+name|cmd
+argument_list|,
+name|magicBranch
+operator|.
+name|dest
+argument_list|,
+name|tip
+argument_list|)
+condition|)
+block|{
+name|this
+operator|.
+name|magicBranch
+operator|=
+name|magicBranch
+expr_stmt|;
+block|}
+block|}
 comment|// Validate that the new commits are connected with the target
 comment|// branch.  If they aren't, we want to abort. We do this check by
 comment|// looking to see if we can compute a merge base between the new
 comment|// commits and the target branch head.
-comment|//
+DECL|method|validateConnected (ReceiveCommand cmd, Branch.NameKey dest, RevCommit tip)
+specifier|private
+name|boolean
+name|validateConnected
+parameter_list|(
+name|ReceiveCommand
+name|cmd
+parameter_list|,
+name|Branch
+operator|.
+name|NameKey
+name|dest
+parameter_list|,
+name|RevCommit
+name|tip
+parameter_list|)
+block|{
+name|RevWalk
+name|walk
+init|=
+name|receivePack
+operator|.
+name|getRevWalk
+argument_list|()
+decl_stmt|;
 try|try
 block|{
 name|Ref
@@ -11697,8 +11746,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|magicBranch
-operator|.
 name|dest
 operator|.
 name|get
@@ -11732,7 +11779,10 @@ argument_list|(
 literal|"Branch is unborn"
 argument_list|)
 expr_stmt|;
-return|return;
+comment|// This is not an error condition.
+return|return
+literal|true
+return|;
 block|}
 name|RevCommit
 name|h
@@ -11819,6 +11869,9 @@ argument_list|,
 literal|"no common ancestry"
 argument_list|)
 expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
 block|}
 finally|finally
@@ -11867,7 +11920,13 @@ argument_list|(
 literal|"Invalid pack upload; one or more objects weren't sent"
 argument_list|)
 expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 DECL|method|readHEAD (Repository repo)
 specifier|private
