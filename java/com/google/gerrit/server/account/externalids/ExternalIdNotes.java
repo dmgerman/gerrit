@@ -2906,6 +2906,16 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Reading external IDs"
+argument_list|)
+expr_stmt|;
 name|noteMap
 operator|=
 name|revision
@@ -3224,6 +3234,16 @@ return|return
 literal|false
 return|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Updating external IDs"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|Strings
