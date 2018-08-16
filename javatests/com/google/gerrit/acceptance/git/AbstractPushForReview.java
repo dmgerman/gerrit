@@ -13895,7 +13895,7 @@ argument_list|)
 argument_list|,
 name|master
 argument_list|,
-literal|"too many commits"
+literal|"more than 2 commits, and skip-validation not set"
 argument_list|)
 expr_stmt|;
 name|grantSkipValidation
