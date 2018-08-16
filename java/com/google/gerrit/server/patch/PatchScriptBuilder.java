@@ -1586,6 +1586,29 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|edits
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+operator|(
+name|aSize
+operator|==
+literal|0
+operator|||
+name|bSize
+operator|==
+literal|0
+operator|)
+condition|)
+block|{
+comment|// The diff was requested for a file which was either added or deleted but which JGit doesn't
+comment|// consider a file addition/deletion (e.g. requesting a diff for the old file name of a
+comment|// renamed file looks like a deletion).
+return|return;
+block|}
 name|Optional
 argument_list|<
 name|Edit
