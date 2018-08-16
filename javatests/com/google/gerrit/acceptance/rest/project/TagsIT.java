@@ -2101,7 +2101,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"create not permitted"
+literal|"not permitted: create"
 argument_list|)
 expr_stmt|;
 name|tag

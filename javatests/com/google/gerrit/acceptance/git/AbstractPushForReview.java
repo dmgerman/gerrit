@@ -14269,9 +14269,7 @@ name|pr
 argument_list|,
 name|ref
 argument_list|,
-literal|"prohibited by Gerrit: create not permitted for "
-operator|+
-name|ref
+literal|"prohibited by Gerrit: not permitted: create"
 argument_list|)
 expr_stmt|;
 name|grant

@@ -88,7 +88,7 @@ specifier|public
 interface|interface
 name|GerritPermission
 block|{
-comment|/** @return readable identifier of this permission for exception message. */
+comment|/**    * A description in the context of an exception message.    *    *<p>Should be grammatical when used in the construction "not permitted: [description] on    * [resource]", although individual {@code PermissionBackend} implementations may vary the    * wording.    */
 DECL|method|describeForException ()
 name|String
 name|describeForException
