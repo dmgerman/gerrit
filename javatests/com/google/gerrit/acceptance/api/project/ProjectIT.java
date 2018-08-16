@@ -3256,7 +3256,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"set HEAD not permitted for refs/heads/test"
+literal|"not permitted: set HEAD on refs/heads/test"
 argument_list|)
 expr_stmt|;
 name|gApi

@@ -597,7 +597,7 @@ name|AuthException
 operator|.
 name|class
 argument_list|,
-literal|"create not permitted for refs/heads/test"
+literal|"not permitted: create on refs/heads/test"
 argument_list|)
 expr_stmt|;
 block|}
@@ -687,7 +687,7 @@ name|AuthException
 operator|.
 name|class
 argument_list|,
-literal|"create not permitted for refs/heads/test"
+literal|"not permitted: create on refs/heads/test"
 argument_list|)
 expr_stmt|;
 block|}
@@ -720,7 +720,7 @@ name|AuthException
 operator|.
 name|class
 argument_list|,
-literal|"create not permitted for refs/heads/test"
+literal|"not permitted: create on refs/heads/test"
 argument_list|)
 expr_stmt|;
 block|}

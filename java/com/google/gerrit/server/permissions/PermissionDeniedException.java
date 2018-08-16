@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.restapi
+DECL|package|com.google.gerrit.server.permissions
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|restapi
+name|permissions
 package|;
 end_package
 
@@ -78,7 +78,7 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkArgument
+name|checkNotNull
 import|;
 end_import
 
@@ -88,11 +88,31 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gerrit
 operator|.
-name|base
+name|extensions
 operator|.
-name|Strings
+name|api
+operator|.
+name|access
+operator|.
+name|GerritPermission
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|AuthException
 import|;
 end_import
 
@@ -107,16 +127,16 @@ import|;
 end_import
 
 begin_comment
-comment|/** Caller cannot perform the request operation (HTTP 403 Forbidden). */
+comment|/**  * This signals that some permission check failed. The message is short so it can print on a  * single-line in the Git output.  */
 end_comment
 
 begin_class
-DECL|class|AuthException
+DECL|class|PermissionDeniedException
 specifier|public
 class|class
-name|AuthException
+name|PermissionDeniedException
 extends|extends
-name|RestApiException
+name|AuthException
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -127,98 +147,140 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|field|advice
+DECL|field|MESSAGE_PREFIX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MESSAGE_PREFIX
+init|=
+literal|"not permitted: "
+decl_stmt|;
+DECL|field|permission
 specifier|private
+specifier|final
+name|GerritPermission
+name|permission
+decl_stmt|;
+DECL|field|resource
+specifier|private
+specifier|final
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|advice
-init|=
+name|resource
+decl_stmt|;
+DECL|method|PermissionDeniedException (GerritPermission permission)
+specifier|public
+name|PermissionDeniedException
+parameter_list|(
+name|GerritPermission
+name|permission
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|MESSAGE_PREFIX
+operator|+
+name|checkNotNull
+argument_list|(
+name|permission
+argument_list|)
+operator|.
+name|describeForException
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|permission
+operator|=
+name|permission
+expr_stmt|;
+name|this
+operator|.
+name|resource
+operator|=
 name|Optional
 operator|.
 name|empty
 argument_list|()
-decl_stmt|;
-comment|/** @param msg message to return to the client. */
-DECL|method|AuthException (String msg)
-specifier|public
-name|AuthException
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|msg
-argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * @param msg message to return to the client.    * @param cause cause of this exception.    */
-DECL|method|AuthException (String msg, Throwable cause)
+DECL|method|PermissionDeniedException (GerritPermission permission, String resource)
 specifier|public
-name|AuthException
+name|PermissionDeniedException
 parameter_list|(
-name|String
-name|msg
+name|GerritPermission
+name|permission
 parameter_list|,
-name|Throwable
-name|cause
+name|String
+name|resource
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|msg
-argument_list|,
-name|cause
+name|MESSAGE_PREFIX
+operator|+
+name|checkNotNull
+argument_list|(
+name|permission
 argument_list|)
-expr_stmt|;
-block|}
-DECL|method|setAdvice (String advice)
-specifier|public
-name|void
-name|setAdvice
-parameter_list|(
-name|String
-name|advice
-parameter_list|)
-block|{
-name|checkArgument
-argument_list|(
-operator|!
-name|Strings
 operator|.
-name|isNullOrEmpty
+name|describeForException
+argument_list|()
+operator|+
+literal|" on "
+operator|+
+name|checkNotNull
 argument_list|(
-name|advice
+name|resource
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|advice
+name|permission
+operator|=
+name|permission
+expr_stmt|;
+name|this
+operator|.
+name|resource
 operator|=
 name|Optional
 operator|.
 name|of
 argument_list|(
-name|advice
+name|resource
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Advice that the user can follow to acquire authorization to perform the action.    *    *<p>This may be long-form text with newlines, and may be printed to a terminal, for example in    * the message stream in response to a push.    */
-DECL|method|getAdvice ()
+DECL|method|describePermission ()
+specifier|public
+name|String
+name|describePermission
+parameter_list|()
+block|{
+return|return
+name|permission
+operator|.
+name|describeForException
+argument_list|()
+return|;
+block|}
+DECL|method|getResource ()
 specifier|public
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|getAdvice
+name|getResource
 parameter_list|()
 block|{
 return|return
-name|advice
+name|resource
 return|;
 block|}
 block|}

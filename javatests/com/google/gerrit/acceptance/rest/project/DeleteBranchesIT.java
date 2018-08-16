@@ -629,7 +629,7 @@ argument_list|()
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"delete not permitted for refs/heads/test-1"
+literal|"not permitted: delete on refs/heads/test-1"
 argument_list|)
 expr_stmt|;
 block|}

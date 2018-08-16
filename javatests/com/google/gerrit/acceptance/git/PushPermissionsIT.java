@@ -743,7 +743,7 @@ argument_list|)
 operator|.
 name|isRejected
 argument_list|(
-literal|"prohibited by Gerrit: ref update access denied"
+literal|"prohibited by Gerrit: not permitted: update"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -754,8 +754,6 @@ operator|.
 name|hasMessages
 argument_list|(
 literal|"Branch refs/heads/master:"
-argument_list|,
-literal|"You are not allowed to perform this operation."
 argument_list|,
 literal|"To push into this reference you need 'Push' rights."
 argument_list|,
@@ -830,18 +828,9 @@ argument_list|)
 operator|.
 name|isRejected
 argument_list|(
-literal|"need 'Force Push' privilege."
+literal|"prohibited by Gerrit: not permitted: force update"
 argument_list|)
 expr_stmt|;
-name|assertThat
-argument_list|(
-name|r
-argument_list|)
-operator|.
-name|hasNoMessages
-argument_list|()
-expr_stmt|;
-comment|// TODO(dborowitz): Why does this not mention refs?
 name|assertThat
 argument_list|(
 name|r
@@ -852,7 +841,11 @@ argument_list|(
 name|ImmutableMap
 operator|.
 name|of
-argument_list|()
+argument_list|(
+literal|"refs"
+argument_list|,
+literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -886,7 +879,7 @@ argument_list|)
 operator|.
 name|isRejected
 argument_list|(
-literal|"cannot delete references"
+literal|"prohibited by Gerrit: not permitted: delete"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -968,7 +961,7 @@ argument_list|)
 operator|.
 name|isRejected
 argument_list|(
-literal|"prohibited by Gerrit: create not permitted for refs/heads/newbranch"
+literal|"prohibited by Gerrit: not permitted: create"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -976,8 +969,10 @@ argument_list|(
 name|r
 argument_list|)
 operator|.
-name|hasNoMessages
-argument_list|()
+name|containsMessages
+argument_list|(
+literal|"You need 'Create' rights to create new references."
+argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -1097,7 +1092,7 @@ argument_list|)
 operator|.
 name|isRejected
 argument_list|(
-literal|"cannot delete references"
+literal|"prohibited by Gerrit: not permitted: delete"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1112,7 +1107,7 @@ argument_list|)
 operator|.
 name|isRejected
 argument_list|(
-literal|"cannot delete references"
+literal|"prohibited by Gerrit: not permitted: delete"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1127,7 +1122,7 @@ argument_list|)
 operator|.
 name|isRejected
 argument_list|(
-literal|"prohibited by Gerrit: ref update access denied"
+literal|"prohibited by Gerrit: not permitted: update"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1144,8 +1139,6 @@ argument_list|,
 literal|"'Force Push' flag set to delete references."
 argument_list|,
 literal|"Branch refs/heads/master:"
-argument_list|,
-literal|"You are not allowed to perform this operation."
 argument_list|,
 literal|"To push into this reference you need 'Push' rights."
 argument_list|,
@@ -1334,7 +1327,7 @@ comment|// denies UPDATE if the user is not a project owner.
 operator|.
 name|isRejected
 argument_list|(
-literal|"prohibited by Gerrit: ref update access denied"
+literal|"prohibited by Gerrit: not permitted: update"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1345,8 +1338,6 @@ operator|.
 name|hasMessages
 argument_list|(
 literal|"Branch refs/meta/config:"
-argument_list|,
-literal|"You are not allowed to perform this operation."
 argument_list|,
 literal|"Configuration changes can only be pushed by project owners"
 argument_list|,
@@ -1476,7 +1467,7 @@ argument_list|)
 operator|.
 name|isRejected
 argument_list|(
-literal|"create change not permitted for refs/heads/master"
+literal|"prohibited by Gerrit: not permitted: create change on refs/heads/master"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1484,17 +1475,13 @@ argument_list|(
 name|r
 argument_list|)
 operator|.
-name|hasMessages
+name|containsMessages
 argument_list|(
-literal|"Branch refs/heads/master:"
+literal|"Branch refs/for/master:"
 argument_list|,
-literal|"You need 'Push' rights to upload code review requests."
+literal|"You need 'Create Change' rights to upload code review requests."
 argument_list|,
 literal|"Verify that you are pushing to the right branch."
-argument_list|,
-literal|"User: admin"
-argument_list|,
-literal|"Contact an administrator to fix the permissions"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1616,7 +1603,7 @@ argument_list|)
 operator|.
 name|isRejected
 argument_list|(
-literal|"update by submit not permitted for refs/heads/master"
+literal|"prohibited by Gerrit: not permitted: update by submit on refs/heads/master"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1624,8 +1611,10 @@ argument_list|(
 name|r
 argument_list|)
 operator|.
-name|hasNoMessages
-argument_list|()
+name|containsMessages
+argument_list|(
+literal|"You need 'Submit' rights on refs/for/ to submit changes during change upload."
+argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -1906,7 +1895,7 @@ argument_list|)
 operator|.
 name|isRejected
 argument_list|(
-literal|"skip validation not permitted for refs/heads/master"
+literal|"prohibited by Gerrit: not permitted: skip validation"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1914,8 +1903,12 @@ argument_list|(
 name|r
 argument_list|)
 operator|.
-name|hasNoMessages
-argument_list|()
+name|containsMessages
+argument_list|(
+literal|"You need 'Forge Author', 'Forge Server', 'Forge Committer'"
+argument_list|,
+literal|"and 'Push Merge' rights to skip validation."
+argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(

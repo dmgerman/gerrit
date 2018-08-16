@@ -744,7 +744,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"delete not permitted"
+literal|"not permitted: delete"
 argument_list|)
 expr_stmt|;
 name|tag

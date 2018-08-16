@@ -1334,7 +1334,7 @@ name|r
 operator|.
 name|assertErrorStatus
 argument_list|(
-literal|"update by submit not permitted"
+literal|"not permitted: update by submit"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1390,7 +1390,7 @@ name|r
 operator|.
 name|assertErrorStatus
 argument_list|(
-literal|"update by submit not permitted"
+literal|"not permitted: update by submit "
 argument_list|)
 expr_stmt|;
 block|}

@@ -2358,19 +2358,260 @@ name|perm
 argument_list|)
 condition|)
 block|{
-throw|throw
+name|PermissionDeniedException
+name|pde
+init|=
 operator|new
-name|AuthException
+name|PermissionDeniedException
 argument_list|(
 name|perm
-operator|.
-name|describeForException
-argument_list|()
-operator|+
-literal|" not permitted for "
-operator|+
+argument_list|,
 name|refName
 argument_list|)
+decl_stmt|;
+switch|switch
+condition|(
+name|perm
+condition|)
+block|{
+case|case
+name|UPDATE
+case|:
+if|if
+condition|(
+name|refName
+operator|.
+name|equals
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_CONFIG
+argument_list|)
+condition|)
+block|{
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"Configuration changes can only be pushed by project owners\n"
+operator|+
+literal|"who also have 'Push' rights on "
+operator|+
+name|RefNames
+operator|.
+name|REFS_CONFIG
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"To push into this reference you need 'Push' rights."
+argument_list|)
+expr_stmt|;
+block|}
+break|break;
+case|case
+name|DELETE
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Delete Reference' rights or 'Push' rights with the \n"
+operator|+
+literal|"'Force Push' flag set to delete references."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|CREATE_CHANGE
+case|:
+comment|// This is misleading in the default permission backend, since "create change" on a
+comment|// branch is encoded as "push" on refs/for/DESTINATION.
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Create Change' rights to upload code review requests.\n"
+operator|+
+literal|"Verify that you are pushing to the right branch."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|CREATE
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Create' rights to create new references."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|CREATE_SIGNED_TAG
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Create Signed Tag' rights to push a signed tag."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|CREATE_TAG
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Create Tag' rights to push a normal tag."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|FORCE_UPDATE
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Push' rights with 'Force' flag set to do a non-fastforward push."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|FORGE_AUTHOR
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Forge Author' rights to push commits with another user as author."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|FORGE_COMMITTER
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Forge Committer' rights to push commits with another user as committer."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|FORGE_SERVER
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Forge Server' rights to push merge commits authored by the server."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|MERGE
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Push Merge' in addition to 'Push' rights to push merge commits."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|READ
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Read' rights to fetch or clone this ref."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|READ_CONFIG
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Read' rights on refs/meta/config to see the configuration."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|READ_PRIVATE_CHANGES
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Read Private Changes' to see private changes."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|SET_HEAD
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Set HEAD' rights to set the default branch."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|SKIP_VALIDATION
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Forge Author', 'Forge Server', 'Forge Committer'\n"
+operator|+
+literal|"and 'Push Merge' rights to skip validation."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|UPDATE_BY_SUBMIT
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Submit' rights on refs/for/ to submit changes during change upload."
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|WRITE_CONFIG
+case|:
+name|pde
+operator|.
+name|setAdvice
+argument_list|(
+literal|"You need 'Write' rights on refs/meta/config."
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
+throw|throw
+name|pde
 throw|;
 block|}
 block|}

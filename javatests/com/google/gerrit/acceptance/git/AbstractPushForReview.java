@@ -13895,7 +13895,7 @@ argument_list|)
 argument_list|,
 name|master
 argument_list|,
-literal|"too many commits"
+literal|"more than 2 commits, and skip-validation not set"
 argument_list|)
 expr_stmt|;
 name|grantSkipValidation
@@ -14269,9 +14269,7 @@ name|pr
 argument_list|,
 name|ref
 argument_list|,
-literal|"prohibited by Gerrit: create not permitted for "
-operator|+
-name|ref
+literal|"prohibited by Gerrit: not permitted: create"
 argument_list|)
 expr_stmt|;
 name|grant
