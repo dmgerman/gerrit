@@ -932,7 +932,7 @@ name|command
 argument_list|(
 name|gerrit
 argument_list|,
-name|AdminSetParent
+name|SetParentCommand
 operator|.
 name|class
 argument_list|)
