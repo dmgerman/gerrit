@@ -478,6 +478,53 @@ name|i
 argument_list|)
 return|;
 block|}
+comment|/** Get the number of leaf terms in this predicate. */
+DECL|method|getLeafCount ()
+specifier|public
+name|int
+name|getLeafCount
+parameter_list|()
+block|{
+name|int
+name|leafCount
+init|=
+literal|0
+decl_stmt|;
+for|for
+control|(
+name|Predicate
+argument_list|<
+name|?
+argument_list|>
+name|childPredicate
+range|:
+name|getChildren
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|childPredicate
+operator|instanceof
+name|IndexPredicate
+condition|)
+block|{
+name|leafCount
+operator|++
+expr_stmt|;
+block|}
+name|leafCount
+operator|+=
+name|childPredicate
+operator|.
+name|getLeafCount
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|leafCount
+return|;
+block|}
 comment|/** Create a copy of this predicate, with new children. */
 DECL|method|copy (Collection<? extends Predicate<T>> children)
 specifier|public

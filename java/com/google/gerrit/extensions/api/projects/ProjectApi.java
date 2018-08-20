@@ -298,6 +298,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|check (CheckProjectInput in)
+name|CheckProjectResultInfo
+name|check
+parameter_list|(
+name|CheckProjectInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|config ()
 name|ConfigInfo
 name|config
@@ -836,6 +846,25 @@ name|AccessCheckInfo
 name|checkAccess
 parameter_list|(
 name|AccessCheckInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|check (CheckProjectInput in)
+specifier|public
+name|CheckProjectResultInfo
+name|check
+parameter_list|(
+name|CheckProjectInput
 name|in
 parameter_list|)
 throws|throws
