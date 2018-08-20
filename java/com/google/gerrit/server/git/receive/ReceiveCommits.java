@@ -15694,7 +15694,7 @@ condition|)
 block|{
 name|req
 operator|.
-name|validate
+name|validateNewPatchSetCommit
 argument_list|(
 literal|false
 argument_list|)
@@ -16215,9 +16215,9 @@ block|}
 block|}
 block|}
 comment|/**      * Validate the new patch set commit for this change.      *      *<p><strong>Side effects:</strong>      *      *<ul>      *<li>May add error or warning messages to the progress monitor      *<li>Will reject {@code cmd} prior to returning false      *<li>May reset {@code receivePack.getRevWalk()}; do not call in the middle of a walk.      *</ul>      *      * @param autoClose whether the caller intends to auto-close the change after adding a new patch      *     set.      * @return whether the new commit is valid      * @throws IOException      * @throws OrmException      * @throws PermissionBackendException      */
-DECL|method|validate (boolean autoClose)
+DECL|method|validateNewPatchSetCommit (boolean autoClose)
 name|boolean
-name|validate
+name|validateNewPatchSetCommit
 parameter_list|(
 name|boolean
 name|autoClose
@@ -16229,24 +16229,6 @@ name|OrmException
 throws|,
 name|PermissionBackendException
 block|{
-if|if
-condition|(
-operator|!
-name|autoClose
-operator|&&
-name|inputCommand
-operator|.
-name|getResult
-argument_list|()
-operator|!=
-name|NOT_ATTEMPTED
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-elseif|else
 if|if
 condition|(
 name|notes
@@ -16599,9 +16581,7 @@ argument_list|(
 name|priorCommit
 argument_list|)
 expr_stmt|;
-comment|// Don't allow the same tree if the commit message is unmodified
-comment|// or no parents were updated (rebase), else warn that only part
-comment|// of the commit was modified.
+comment|// Warning if the tree was the same.
 if|if
 condition|(
 name|newCommit
@@ -19627,7 +19607,7 @@ condition|(
 operator|!
 name|req
 operator|.
-name|validate
+name|validateNewPatchSetCommit
 argument_list|(
 literal|true
 argument_list|)
