@@ -3926,22 +3926,6 @@ name|Boolean
 argument_list|>
 name|tracePushOption
 decl_stmt|;
-comment|// Handles for outputting back over the wire to the end user.
-DECL|field|newProgress
-specifier|private
-name|Task
-name|newProgress
-decl_stmt|;
-DECL|field|replaceProgress
-specifier|private
-name|Task
-name|replaceProgress
-decl_stmt|;
-DECL|field|closeProgress
-specifier|private
-name|Task
-name|closeProgress
-decl_stmt|;
 DECL|field|messageSender
 specifier|private
 name|MessageSender
@@ -4694,39 +4678,6 @@ name|MultiProgressMonitor
 name|progress
 parameter_list|)
 block|{
-name|newProgress
-operator|=
-name|progress
-operator|.
-name|beginSubTask
-argument_list|(
-literal|"new"
-argument_list|,
-name|UNKNOWN
-argument_list|)
-expr_stmt|;
-name|replaceProgress
-operator|=
-name|progress
-operator|.
-name|beginSubTask
-argument_list|(
-literal|"updated"
-argument_list|,
-name|UNKNOWN
-argument_list|)
-expr_stmt|;
-name|closeProgress
-operator|=
-name|progress
-operator|.
-name|beginSubTask
-argument_list|(
-literal|"closed"
-argument_list|,
-name|UNKNOWN
-argument_list|)
-expr_stmt|;
 name|Task
 name|commandProgress
 init|=
@@ -4767,6 +4718,8 @@ expr_stmt|;
 name|processCommandsUnsafe
 argument_list|(
 name|commands
+argument_list|,
+name|progress
 argument_list|)
 expr_stmt|;
 for|for
@@ -4808,9 +4761,14 @@ operator|.
 name|end
 argument_list|()
 expr_stmt|;
+comment|// Update account info with details discovered during commit walking. The account update happens
+comment|// in a separate batch update, and failure doesn't cause the push itself to fail.
+name|updateAccountInfo
+argument_list|()
+expr_stmt|;
 block|}
 comment|// Process as many commands as possible, but may leave some commands in state NOT_ATTEMPTED.
-DECL|method|processCommandsUnsafe (Collection<ReceiveCommand> commands)
+DECL|method|processCommandsUnsafe ( Collection<ReceiveCommand> commands, MultiProgressMonitor progress)
 specifier|private
 name|void
 name|processCommandsUnsafe
@@ -4820,6 +4778,9 @@ argument_list|<
 name|ReceiveCommand
 argument_list|>
 name|commands
+parameter_list|,
+name|MultiProgressMonitor
+name|progress
 parameter_list|)
 block|{
 name|parsePushOptions
@@ -5131,6 +5092,8 @@ block|{
 name|handleRegularCommands
 argument_list|(
 name|regularCommands
+argument_list|,
+name|progress
 argument_list|)
 expr_stmt|;
 block|}
@@ -5220,6 +5183,30 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|Task
+name|newProgress
+init|=
+name|progress
+operator|.
+name|beginSubTask
+argument_list|(
+literal|"new"
+argument_list|,
+name|UNKNOWN
+argument_list|)
+decl_stmt|;
+name|Task
+name|replaceProgress
+init|=
+name|progress
+operator|.
+name|beginSubTask
+argument_list|(
+literal|"updated"
+argument_list|,
+name|UNKNOWN
+argument_list|)
+decl_stmt|;
 name|List
 argument_list|<
 name|CreateRequest
@@ -5250,7 +5237,9 @@ block|{
 name|newChanges
 operator|=
 name|selectNewAndReplacedChangesFromMagicBranch
-argument_list|()
+argument_list|(
+name|newProgress
+argument_list|)
 expr_stmt|;
 block|}
 name|preparePatchSetsForReplace
@@ -5261,6 +5250,8 @@ expr_stmt|;
 name|insertChangesAndPatchSets
 argument_list|(
 name|newChanges
+argument_list|,
+name|replaceProgress
 argument_list|)
 expr_stmt|;
 name|newProgress
@@ -5353,15 +5344,6 @@ name|COMMAND_REJECTION_MESSAGE_FOOTER
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Update account info with details discovered during commit walking.
-name|updateAccountInfo
-argument_list|()
-expr_stmt|;
-name|closeProgress
-operator|.
-name|end
-argument_list|()
-expr_stmt|;
 name|reportMessages
 argument_list|(
 name|newChanges
@@ -5369,7 +5351,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|handleRegularCommands (List<ReceiveCommand> cmds)
+DECL|method|handleRegularCommands (List<ReceiveCommand> cmds, MultiProgressMonitor progress)
 specifier|private
 name|void
 name|handleRegularCommands
@@ -5379,6 +5361,9 @@ argument_list|<
 name|ReceiveCommand
 argument_list|>
 name|cmds
+parameter_list|,
+name|MultiProgressMonitor
+name|progress
 parameter_list|)
 throws|throws
 name|PermissionBackendException
@@ -5651,10 +5636,29 @@ case|:
 case|case
 name|UPDATE_NONFASTFORWARD
 case|:
+name|Task
+name|closeProgress
+init|=
+name|progress
+operator|.
+name|beginSubTask
+argument_list|(
+literal|"closed"
+argument_list|,
+name|UNKNOWN
+argument_list|)
+decl_stmt|;
 name|autoCloseChanges
 argument_list|(
 name|c
+argument_list|,
+name|closeProgress
 argument_list|)
+expr_stmt|;
+name|closeProgress
+operator|.
+name|end
+argument_list|()
 expr_stmt|;
 name|branches
 operator|.
@@ -6222,7 +6226,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|insertChangesAndPatchSets (List<CreateRequest> newChanges)
+DECL|method|insertChangesAndPatchSets (List<CreateRequest> newChanges, Task replaceProgress)
 specifier|private
 name|void
 name|insertChangesAndPatchSets
@@ -6232,6 +6236,9 @@ argument_list|<
 name|CreateRequest
 argument_list|>
 name|newChanges
+parameter_list|,
+name|Task
+name|replaceProgress
 parameter_list|)
 block|{
 name|ReceiveCommand
@@ -12441,14 +12448,17 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|selectNewAndReplacedChangesFromMagicBranch ()
+DECL|method|selectNewAndReplacedChangesFromMagicBranch (Task newProgress)
 specifier|private
 name|List
 argument_list|<
 name|CreateRequest
 argument_list|>
 name|selectNewAndReplacedChangesFromMagicBranch
-parameter_list|()
+parameter_list|(
+name|Task
+name|newProgress
+parameter_list|)
 block|{
 name|logger
 operator|.
@@ -13096,6 +13106,8 @@ name|dest
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|newProgress
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -13548,6 +13560,8 @@ name|dest
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|newProgress
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -14755,6 +14769,11 @@ specifier|final
 name|RevCommit
 name|commit
 decl_stmt|;
+DECL|field|progress
+specifier|final
+name|Task
+name|progress
+decl_stmt|;
 DECL|field|refName
 specifier|private
 specifier|final
@@ -14791,7 +14810,7 @@ DECL|field|change
 name|Change
 name|change
 decl_stmt|;
-DECL|method|CreateRequest (RevCommit commit, String refName)
+DECL|method|CreateRequest (RevCommit commit, String refName, Task progress)
 name|CreateRequest
 parameter_list|(
 name|RevCommit
@@ -14799,6 +14818,9 @@ name|commit
 parameter_list|,
 name|String
 name|refName
+parameter_list|,
+name|Task
+name|progress
 parameter_list|)
 block|{
 name|this
@@ -14812,6 +14834,12 @@ operator|.
 name|refName
 operator|=
 name|refName
+expr_stmt|;
+name|this
+operator|.
+name|progress
+operator|=
+name|progress
 expr_stmt|;
 block|}
 DECL|method|setChangeId (int id)
@@ -15391,7 +15419,7 @@ argument_list|,
 operator|new
 name|ChangeProgressOp
 argument_list|(
-name|newProgress
+name|progress
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -19105,13 +19133,16 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|autoCloseChanges (ReceiveCommand cmd)
+DECL|method|autoCloseChanges (ReceiveCommand cmd, Task progress)
 specifier|private
 name|void
 name|autoCloseChanges
 parameter_list|(
 name|ReceiveCommand
 name|cmd
+parameter_list|,
+name|Task
+name|progress
 parameter_list|)
 block|{
 name|logger
@@ -19148,7 +19179,7 @@ name|refName
 argument_list|)
 expr_stmt|;
 comment|// TODO(dborowitz): Combine this BatchUpdate with the main one in
-comment|// insertChangesAndPatchSets.
+comment|// handleRegularCommands
 try|try
 block|{
 name|retryHelper
@@ -19663,7 +19694,7 @@ argument_list|,
 operator|new
 name|ChangeProgressOp
 argument_list|(
-name|closeProgress
+name|progress
 argument_list|)
 argument_list|)
 expr_stmt|;
