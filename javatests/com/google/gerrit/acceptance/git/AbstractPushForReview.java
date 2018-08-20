@@ -14424,7 +14424,7 @@ operator|.
 name|name
 argument_list|()
 operator|+
-literal|":refs/for/master"
+literal|":refs/heads/permitted"
 argument_list|)
 argument_list|)
 operator|.
@@ -14445,7 +14445,7 @@ name|assertPushOk
 argument_list|(
 name|pr
 argument_list|,
-literal|"refs/for/master"
+literal|"refs/heads/permitted"
 argument_list|)
 expr_stmt|;
 block|}

@@ -546,6 +546,22 @@ name|jgit
 operator|.
 name|transport
 operator|.
+name|RemoteRefUpdate
+operator|.
+name|Status
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|transport
+operator|.
 name|TrackingRefUpdate
 import|;
 end_import
@@ -702,6 +718,188 @@ block|}
 block|}
 annotation|@
 name|Test
+DECL|method|mixingMagicAndRegularPush ()
+specifier|public
+name|void
+name|mixingMagicAndRegularPush
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|testRepo
+operator|.
+name|branch
+argument_list|(
+literal|"HEAD"
+argument_list|)
+operator|.
+name|commit
+argument_list|()
+operator|.
+name|create
+argument_list|()
+expr_stmt|;
+name|PushResult
+name|r
+init|=
+name|push
+argument_list|(
+literal|"HEAD:refs/heads/master"
+argument_list|,
+literal|"HEAD:refs/for/master"
+argument_list|)
+decl_stmt|;
+name|String
+name|msg
+init|=
+literal|"cannot combine normal pushes and magic pushes"
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|r
+operator|.
+name|getRemoteUpdate
+argument_list|(
+literal|"refs/heads/master"
+argument_list|)
+argument_list|)
+operator|.
+name|isNotEqualTo
+argument_list|(
+name|Status
+operator|.
+name|OK
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|r
+operator|.
+name|getRemoteUpdate
+argument_list|(
+literal|"refs/for/master"
+argument_list|)
+argument_list|)
+operator|.
+name|isNotEqualTo
+argument_list|(
+name|Status
+operator|.
+name|OK
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|r
+operator|.
+name|getRemoteUpdate
+argument_list|(
+literal|"refs/for/master"
+argument_list|)
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|mixingDirectChangesAndRegularPush ()
+specifier|public
+name|void
+name|mixingDirectChangesAndRegularPush
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|testRepo
+operator|.
+name|branch
+argument_list|(
+literal|"HEAD"
+argument_list|)
+operator|.
+name|commit
+argument_list|()
+operator|.
+name|create
+argument_list|()
+expr_stmt|;
+name|PushResult
+name|r
+init|=
+name|push
+argument_list|(
+literal|"HEAD:refs/heads/master"
+argument_list|,
+literal|"HEAD:refs/changes/01/101"
+argument_list|)
+decl_stmt|;
+name|String
+name|msg
+init|=
+literal|"cannot combine normal pushes and magic pushes"
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|r
+operator|.
+name|getRemoteUpdate
+argument_list|(
+literal|"refs/heads/master"
+argument_list|)
+argument_list|)
+operator|.
+name|isNotEqualTo
+argument_list|(
+name|Status
+operator|.
+name|OK
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|r
+operator|.
+name|getRemoteUpdate
+argument_list|(
+literal|"refs/changes/01/101"
+argument_list|)
+argument_list|)
+operator|.
+name|isNotEqualTo
+argument_list|(
+name|Status
+operator|.
+name|OK
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|r
+operator|.
+name|getRemoteUpdate
+argument_list|(
+literal|"refs/heads/master"
+argument_list|)
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|fastForwardUpdateDenied ()
 specifier|public
 name|void
@@ -753,7 +951,7 @@ argument_list|)
 operator|.
 name|hasMessages
 argument_list|(
-literal|"Branch refs/heads/master:"
+literal|"error: branch refs/heads/master:"
 argument_list|,
 literal|"To push into this reference you need 'Push' rights."
 argument_list|,
@@ -889,7 +1087,7 @@ argument_list|)
 operator|.
 name|hasMessages
 argument_list|(
-literal|"Branch refs/heads/master:"
+literal|"error: branch refs/heads/master:"
 argument_list|,
 literal|"You need 'Delete Reference' rights or 'Push' rights with the "
 argument_list|,
@@ -1132,13 +1330,13 @@ argument_list|)
 operator|.
 name|hasMessages
 argument_list|(
-literal|"Branches refs/heads/foo, refs/heads/bar:"
+literal|"error: branches refs/heads/foo, refs/heads/bar:"
 argument_list|,
 literal|"You need 'Delete Reference' rights or 'Push' rights with the "
 argument_list|,
 literal|"'Force Push' flag set to delete references."
 argument_list|,
-literal|"Branch refs/heads/master:"
+literal|"error: branch refs/heads/master:"
 argument_list|,
 literal|"To push into this reference you need 'Push' rights."
 argument_list|,
@@ -1337,7 +1535,7 @@ argument_list|)
 operator|.
 name|hasMessages
 argument_list|(
-literal|"Branch refs/meta/config:"
+literal|"error: branch refs/meta/config:"
 argument_list|,
 literal|"Configuration changes can only be pushed by project owners"
 argument_list|,
@@ -1477,7 +1675,7 @@ argument_list|)
 operator|.
 name|containsMessages
 argument_list|(
-literal|"Branch refs/for/master:"
+literal|"error: branch refs/for/master:"
 argument_list|,
 literal|"You need 'Create Change' rights to upload code review requests."
 argument_list|,
