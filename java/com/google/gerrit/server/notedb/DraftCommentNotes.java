@@ -1090,6 +1090,22 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Load draft comment notes for change %s of project %s"
+argument_list|,
+name|getChangeId
+argument_list|()
+argument_list|,
+name|getProjectName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|RevCommit
 name|tipCommit
 init|=
