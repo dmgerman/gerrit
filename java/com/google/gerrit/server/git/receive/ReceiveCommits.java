@@ -16218,9 +16218,7 @@ literal|false
 return|;
 block|}
 name|sameTreeWarning
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -16292,11 +16290,6 @@ return|return
 literal|false
 return|;
 block|}
-name|sameTreeWarning
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|newPatchSet
 argument_list|()
 expr_stmt|;
@@ -16749,14 +16742,11 @@ block|}
 block|}
 block|}
 comment|/** prints a warning if the new PS has the same tree as the previous commit. */
-DECL|method|sameTreeWarning (boolean autoClose)
+DECL|method|sameTreeWarning ()
 specifier|private
 name|void
 name|sameTreeWarning
-parameter_list|(
-name|boolean
-name|autoClose
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 block|{
@@ -16858,9 +16848,6 @@ operator|&&
 name|parentsEq
 operator|&&
 name|authorEq
-operator|&&
-operator|!
-name|autoClose
 condition|)
 block|{
 name|addMessage
