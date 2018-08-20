@@ -11055,24 +11055,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-if|if
-condition|(
-operator|!
-name|projectState
-operator|.
-name|statePermitsWrite
-argument_list|()
-condition|)
-block|{
-name|reject
-argument_list|(
-name|cmd
-argument_list|,
-literal|"project state does not permit write"
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
 comment|// TODO(davido): Remove legacy support for drafts magic branch option
 comment|// after repo-tool supports private and work-in-progress changes.
 if|if
@@ -16371,30 +16353,6 @@ parameter_list|(
 name|AuthException
 name|no
 parameter_list|)
-block|{
-name|reject
-argument_list|(
-name|inputCommand
-argument_list|,
-literal|"cannot add patch set to "
-operator|+
-name|ontoChange
-operator|+
-literal|"."
-argument_list|)
-expr_stmt|;
-return|return
-literal|false
-return|;
-block|}
-if|if
-condition|(
-operator|!
-name|projectState
-operator|.
-name|statePermitsWrite
-argument_list|()
-condition|)
 block|{
 name|reject
 argument_list|(
