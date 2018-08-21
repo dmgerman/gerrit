@@ -8502,7 +8502,7 @@ argument_list|)
 operator|.
 name|containsMatch
 argument_list|(
-literal|"changes: new: 1,( refs: 1)?,? done"
+literal|"changes: .*new: 1.*done"
 argument_list|)
 expr_stmt|;
 name|assertTwoChangesWithSameRevision
