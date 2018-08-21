@@ -4735,6 +4735,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// This sends error messages before the 'done' string of the progress monitor is sent.
+comment|// Currently, the test framework relies on this ordering to understand if pushes completed
+comment|// successfully.
+name|sendErrorMessages
+argument_list|()
+expr_stmt|;
 name|commandProgress
 operator|.
 name|end
@@ -5083,6 +5089,7 @@ argument_list|,
 name|progress
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
 for|for
 control|(
@@ -5251,6 +5258,19 @@ operator|.
 name|end
 argument_list|()
 expr_stmt|;
+name|reportMessages
+argument_list|(
+name|newChanges
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|sendErrorMessages ()
+specifier|private
+name|void
+name|sendErrorMessages
+parameter_list|()
+block|{
 if|if
 condition|(
 operator|!
@@ -5328,12 +5348,6 @@ operator|.
 name|sendMessage
 argument_list|(
 name|COMMAND_REJECTION_MESSAGE_FOOTER
-argument_list|)
-expr_stmt|;
-block|}
-name|reportMessages
-argument_list|(
-name|newChanges
 argument_list|)
 expr_stmt|;
 block|}
