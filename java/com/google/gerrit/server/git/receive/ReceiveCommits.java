@@ -14782,6 +14782,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/** Represents a commit for which a Change should be created. */
 DECL|class|CreateRequest
 specifier|private
 class|class
@@ -16018,6 +16019,7 @@ name|notes
 expr_stmt|;
 block|}
 block|}
+comment|/** Represents a commit that should be stored in a new patchset of an existing change. */
 DECL|class|ReplaceRequest
 specifier|private
 class|class
