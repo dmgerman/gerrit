@@ -2795,6 +2795,10 @@ name|r2
 operator|.
 name|assertMessage
 argument_list|(
+literal|"success\n"
+operator|+
+literal|"\n"
+operator|+
 literal|"New changes:\n"
 operator|+
 literal|"  "
@@ -2804,8 +2808,6 @@ operator|+
 name|id2
 operator|+
 literal|" another commit\n"
-operator|+
-literal|"\n"
 operator|+
 literal|"\n"
 operator|+
