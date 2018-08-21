@@ -1170,7 +1170,7 @@ name|i
 return|;
 block|}
 block|}
-comment|/** Globally unique identification of this change. */
+comment|/**    * Globally unique identification of this change. This generally takes the form of a string    * "Ixxxxxx...", and is stored in the Change-Id footer of a commit.    */
 DECL|class|Key
 specifier|public
 specifier|static
