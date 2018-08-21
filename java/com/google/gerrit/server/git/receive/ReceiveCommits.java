@@ -1148,22 +1148,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSetApproval
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|PatchSetInfo
 import|;
 end_import
@@ -8227,7 +8211,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 block|}
 block|}
@@ -8428,7 +8411,7 @@ name|cmd
 argument_list|)
 condition|)
 block|{
-name|validateNewCommits
+name|validateRegularPushCommits
 argument_list|(
 operator|new
 name|Branch
@@ -8529,7 +8512,7 @@ name|cmd
 argument_list|)
 condition|)
 block|{
-name|validateNewCommits
+name|validateRegularPushCommits
 argument_list|(
 operator|new
 name|Branch
@@ -8900,7 +8883,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|validateNewCommits
+name|validateRegularPushCommits
 argument_list|(
 operator|new
 name|Branch
@@ -15121,19 +15104,6 @@ operator|new
 name|MailRecipients
 argument_list|()
 decl_stmt|;
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Short
-argument_list|>
-name|approvals
-init|=
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|()
-decl_stmt|;
 name|checkNotNull
 argument_list|(
 name|magicBranch
@@ -15149,12 +15119,18 @@ name|getMailRecipients
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Short
+argument_list|>
 name|approvals
-operator|=
+init|=
 name|magicBranch
 operator|.
 name|labels
-expr_stmt|;
+decl_stmt|;
 name|recipients
 operator|.
 name|add
@@ -15193,11 +15169,6 @@ name|approvals
 argument_list|,
 name|Collections
 operator|.
-expr|<
-name|String
-argument_list|,
-name|PatchSetApproval
-operator|>
 name|emptyMap
 argument_list|()
 argument_list|)
@@ -17042,8 +17013,6 @@ argument_list|<
 name|ChangeEdit
 argument_list|>
 name|edit
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -18506,10 +18475,11 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|validateNewCommits (Branch.NameKey branch, ReceiveCommand cmd)
+comment|/**    * Validates the commits that a regular push brings in.    *    *<p>On validation failure, the command is rejected.    */
+DECL|method|validateRegularPushCommits (Branch.NameKey branch, ReceiveCommand cmd)
 specifier|private
 name|void
-name|validateNewCommits
+name|validateRegularPushCommits
 parameter_list|(
 name|Branch
 operator|.
@@ -18956,6 +18926,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** Validates a single commit. If the commit does not validate, the command is rejected. */
 DECL|method|validCommit ( RevWalk rw, Branch.NameKey branch, ReceiveCommand cmd, ObjectId id, @Nullable Change change)
 specifier|private
 name|boolean
@@ -20267,6 +20238,7 @@ return|;
 block|}
 DECL|method|reject (ReceiveCommand cmd, String why)
 specifier|private
+specifier|static
 name|void
 name|reject
 parameter_list|(
