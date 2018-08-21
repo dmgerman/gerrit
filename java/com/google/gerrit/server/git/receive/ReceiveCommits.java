@@ -11706,10 +11706,6 @@ name|validateConnected
 argument_list|(
 name|magicBranch
 operator|.
-name|cmd
-argument_list|,
-name|magicBranch
-operator|.
 name|dest
 argument_list|,
 name|tip
@@ -11728,14 +11724,11 @@ comment|// Validate that the new commits are connected with the target
 comment|// branch.  If they aren't, we want to abort. We do this check by
 comment|// looking to see if we can compute a merge base between the new
 comment|// commits and the target branch head.
-DECL|method|validateConnected (ReceiveCommand cmd, Branch.NameKey dest, RevCommit tip)
+DECL|method|validateConnected (Branch.NameKey dest, RevCommit tip)
 specifier|private
 name|boolean
 name|validateConnected
 parameter_list|(
-name|ReceiveCommand
-name|cmd
-parameter_list|,
 name|Branch
 operator|.
 name|NameKey
