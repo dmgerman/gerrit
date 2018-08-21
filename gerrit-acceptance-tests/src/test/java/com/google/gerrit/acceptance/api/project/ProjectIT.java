@@ -1906,7 +1906,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"100k"
+literal|"102400"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -2019,6 +2019,20 @@ name|info
 operator|.
 name|maxObjectSizeLimit
 operator|.
+name|value
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"102400"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|info
+operator|.
+name|maxObjectSizeLimit
+operator|.
 name|configuredValue
 argument_list|)
 operator|.
@@ -2121,7 +2135,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"200k"
+literal|"204800"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -2191,7 +2205,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"100k"
+literal|"102400"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -2263,7 +2277,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"200k"
+literal|"204800"
 argument_list|)
 expr_stmt|;
 name|assertThat

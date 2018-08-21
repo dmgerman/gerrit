@@ -1541,12 +1541,10 @@ name|rp
 operator|.
 name|setMaxObjectSizeLimit
 argument_list|(
-name|transferConfig
+name|state
 operator|.
 name|getEffectiveMaxObjectSizeLimit
-argument_list|(
-name|state
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|rp
