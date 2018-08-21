@@ -14888,7 +14888,6 @@ name|Task
 name|progress
 decl_stmt|;
 DECL|field|refName
-specifier|private
 specifier|final
 name|String
 name|refName
@@ -16158,7 +16157,6 @@ name|PatchSetInfo
 name|info
 decl_stmt|;
 DECL|field|priorPatchSet
-specifier|private
 name|PatchSet
 operator|.
 name|Id
@@ -16177,7 +16175,6 @@ name|of
 argument_list|()
 decl_stmt|;
 DECL|field|replaceOp
-specifier|private
 name|ReplaceOp
 name|replaceOp
 decl_stmt|;
@@ -17569,7 +17566,6 @@ class|class
 name|UpdateGroupsRequest
 block|{
 DECL|field|psId
-specifier|private
 specifier|final
 name|PatchSet
 operator|.
@@ -17577,7 +17573,6 @@ name|Id
 name|psId
 decl_stmt|;
 DECL|field|commit
-specifier|private
 specifier|final
 name|RevCommit
 name|commit
@@ -17804,7 +17799,6 @@ implements|implements
 name|RepoOnlyOp
 block|{
 DECL|field|cmd
-specifier|private
 specifier|final
 name|ReceiveCommand
 name|cmd
