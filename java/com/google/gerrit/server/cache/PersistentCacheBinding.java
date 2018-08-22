@@ -96,6 +96,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|cache
+operator|.
+name|serialize
+operator|.
+name|CacheSerializer
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|time
@@ -179,6 +197,21 @@ name|V
 argument_list|>
 argument_list|>
 name|clazz
+parameter_list|)
+function_decl|;
+annotation|@
+name|Override
+DECL|method|expireFromMemoryAfterAccess (Duration duration)
+name|PersistentCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|expireFromMemoryAfterAccess
+parameter_list|(
+name|Duration
+name|duration
 parameter_list|)
 function_decl|;
 annotation|@

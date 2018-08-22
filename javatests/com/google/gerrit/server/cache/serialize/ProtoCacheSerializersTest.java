@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.cache
+DECL|package|com.google.gerrit.server.cache.serialize
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|cache
+operator|.
+name|serialize
 package|;
 end_package
 
@@ -134,25 +136,7 @@ name|testing
 operator|.
 name|CacheSerializerTestUtil
 operator|.
-name|bytes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|cache
-operator|.
-name|ProtoCacheSerializers
-operator|.
-name|ObjectIdConverter
+name|byteString
 import|;
 end_import
 
@@ -193,6 +177,26 @@ operator|.
 name|Cache
 operator|.
 name|ChangeNotesStateProto
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|cache
+operator|.
+name|serialize
+operator|.
+name|ProtoCacheSerializers
+operator|.
+name|ObjectIdConverter
 import|;
 end_import
 
@@ -260,7 +264,7 @@ name|idConverter
 operator|.
 name|fromByteString
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xaa
 argument_list|,
@@ -321,7 +325,7 @@ name|idConverter
 operator|.
 name|fromByteString
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xbb
 argument_list|,
@@ -453,7 +457,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xaa
 argument_list|,
@@ -514,7 +518,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xbb
 argument_list|,

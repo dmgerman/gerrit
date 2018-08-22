@@ -122,6 +122,8 @@ name|server
 operator|.
 name|cache
 operator|.
+name|serialize
+operator|.
 name|CacheSerializer
 import|;
 end_import

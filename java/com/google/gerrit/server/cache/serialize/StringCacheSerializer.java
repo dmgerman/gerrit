@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.cache
+DECL|package|com.google.gerrit.server.cache.serialize
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|cache
+operator|.
+name|serialize
 package|;
 end_package
 
@@ -151,10 +153,10 @@ import|;
 end_import
 
 begin_enum
-DECL|enum|StringSerializer
+DECL|enum|StringCacheSerializer
 specifier|public
 enum|enum
-name|StringSerializer
+name|StringCacheSerializer
 implements|implements
 name|CacheSerializer
 argument_list|<

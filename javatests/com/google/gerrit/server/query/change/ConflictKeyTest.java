@@ -156,7 +156,7 @@ name|testing
 operator|.
 name|CacheSerializerTestUtil
 operator|.
-name|bytes
+name|byteString
 import|;
 end_import
 
@@ -542,7 +542,7 @@ argument_list|()
 operator|.
 name|setCommit
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xba
 argument_list|,
@@ -588,7 +588,7 @@ argument_list|)
 operator|.
 name|setOtherCommit
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xde
 argument_list|,

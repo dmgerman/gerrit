@@ -134,7 +134,7 @@ name|testing
 operator|.
 name|CacheSerializerTestUtil
 operator|.
-name|bytes
+name|byteString
 import|;
 end_import
 
@@ -576,7 +576,7 @@ argument_list|()
 operator|.
 name|setId
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xaa
 argument_list|,
@@ -640,7 +640,7 @@ argument_list|()
 operator|.
 name|setId
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xbb
 argument_list|,
@@ -702,7 +702,7 @@ argument_list|()
 operator|.
 name|setId
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xcc
 argument_list|,
@@ -748,7 +748,7 @@ argument_list|)
 operator|.
 name|setFlags
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0x2a
 argument_list|)
@@ -767,7 +767,7 @@ argument_list|()
 operator|.
 name|setId
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0xdd
 argument_list|,
@@ -813,7 +813,7 @@ argument_list|)
 operator|.
 name|setFlags
 argument_list|(
-name|bytes
+name|byteString
 argument_list|(
 literal|0x54
 argument_list|)

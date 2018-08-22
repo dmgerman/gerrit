@@ -116,7 +116,11 @@ name|server
 operator|.
 name|cache
 operator|.
-name|CacheSerializer
+name|proto
+operator|.
+name|Cache
+operator|.
+name|OAuthTokenProto
 import|;
 end_import
 
@@ -132,11 +136,9 @@ name|server
 operator|.
 name|cache
 operator|.
-name|proto
+name|serialize
 operator|.
-name|Cache
-operator|.
-name|OAuthTokenProto
+name|CacheSerializer
 import|;
 end_import
 

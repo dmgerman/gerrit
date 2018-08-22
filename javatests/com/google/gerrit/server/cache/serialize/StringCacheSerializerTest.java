@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.cache
+DECL|package|com.google.gerrit.server.cache.serialize
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|cache
+operator|.
+name|serialize
 package|;
 end_package
 
@@ -133,10 +135,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|StringSerializerTest
+DECL|class|StringCacheSerializerTest
 specifier|public
 class|class
-name|StringSerializerTest
+name|StringCacheSerializerTest
 block|{
 annotation|@
 name|Test
@@ -148,7 +150,7 @@ parameter_list|()
 block|{
 name|assertThat
 argument_list|(
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 operator|.
@@ -163,7 +165,7 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 operator|.
@@ -189,7 +191,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 operator|.
@@ -238,7 +240,7 @@ block|{
 comment|// Can't use UTF-8 for the test, since it can encode all Unicode code points.
 try|try
 block|{
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|serialize
 argument_list|(
@@ -291,7 +293,7 @@ parameter_list|()
 block|{
 name|assertThat
 argument_list|(
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 operator|.
@@ -310,7 +312,7 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 operator|.
@@ -336,7 +338,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 operator|.
@@ -384,7 +386,7 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|StringSerializer
+name|StringCacheSerializer
 operator|.
 name|INSTANCE
 operator|.

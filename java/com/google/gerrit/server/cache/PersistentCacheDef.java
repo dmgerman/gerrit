@@ -66,6 +66,24 @@ name|cache
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|cache
+operator|.
+name|serialize
+operator|.
+name|CacheSerializer
+import|;
+end_import
+
 begin_interface
 DECL|interface|PersistentCacheDef
 specifier|public
