@@ -568,6 +568,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|TransferConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -905,6 +921,12 @@ name|UUID
 argument_list|>
 name|localOwners
 decl_stmt|;
+DECL|field|globalMaxObjectSizeLimit
+specifier|private
+specifier|final
+name|long
+name|globalMaxObjectSizeLimit
+decl_stmt|;
 comment|/** Last system time the configuration's revision was examined. */
 DECL|field|lastCheckGeneration
 specifier|private
@@ -946,7 +968,7 @@ name|labelTypes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState ( SitePaths sitePaths, ProjectCache projectCache, AllProjectsName allProjectsName, AllUsersName allUsersName, GitRepositoryManager gitMgr, List<CommentLinkInfo> commentLinks, CapabilityCollection.Factory limitsFactory, @Assisted ProjectConfig config)
+DECL|method|ProjectState ( SitePaths sitePaths, ProjectCache projectCache, AllProjectsName allProjectsName, AllUsersName allUsersName, GitRepositoryManager gitMgr, List<CommentLinkInfo> commentLinks, CapabilityCollection.Factory limitsFactory, TransferConfig transferConfig, @Assisted ProjectConfig config)
 specifier|public
 name|ProjectState
 parameter_list|(
@@ -975,6 +997,9 @@ name|CapabilityCollection
 operator|.
 name|Factory
 name|limitsFactory
+parameter_list|,
+name|TransferConfig
+name|transferConfig
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1082,6 +1107,15 @@ argument_list|)
 argument_list|)
 else|:
 literal|null
+expr_stmt|;
+name|this
+operator|.
+name|globalMaxObjectSizeLimit
+operator|=
+name|transferConfig
+operator|.
+name|getMaxObjectSizeLimit
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -1698,6 +1732,52 @@ literal|" does not permit write"
 argument_list|)
 throw|;
 block|}
+block|}
+DECL|method|getEffectiveMaxObjectSizeLimit ()
+specifier|public
+name|long
+name|getEffectiveMaxObjectSizeLimit
+parameter_list|()
+block|{
+name|long
+name|local
+init|=
+name|getMaxObjectSizeLimit
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|globalMaxObjectSizeLimit
+operator|>
+literal|0
+operator|&&
+name|local
+operator|>
+literal|0
+condition|)
+block|{
+return|return
+name|Math
+operator|.
+name|min
+argument_list|(
+name|globalMaxObjectSizeLimit
+argument_list|,
+name|local
+argument_list|)
+return|;
+block|}
+comment|// zero means "no limit", in this case the max is more limiting
+return|return
+name|Math
+operator|.
+name|max
+argument_list|(
+name|globalMaxObjectSizeLimit
+argument_list|,
+name|local
+argument_list|)
+return|;
 block|}
 comment|/** Get the sections that pertain only to this project. */
 DECL|method|getLocalAccessSections ()

@@ -1547,12 +1547,10 @@ name|receivePack
 operator|.
 name|setMaxObjectSizeLimit
 argument_list|(
-name|transferConfig
+name|projectState
 operator|.
 name|getEffectiveMaxObjectSizeLimit
-argument_list|(
-name|projectState
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|receivePack
