@@ -740,6 +740,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -858,6 +870,8 @@ name|GlobalCapability
 operator|.
 name|CREATE_GROUP
 argument_list|)
+annotation|@
+name|Singleton
 DECL|class|CreateGroup
 specifier|public
 class|class

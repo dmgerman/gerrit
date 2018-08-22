@@ -1573,6 +1573,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Singleton
 DECL|class|CreateMember
 specifier|public
 specifier|static

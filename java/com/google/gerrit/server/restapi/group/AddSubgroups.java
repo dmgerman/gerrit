@@ -1037,6 +1037,8 @@ name|groupUpdate
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Singleton
 DECL|class|CreateSubgroup
 specifier|public
 specifier|static
