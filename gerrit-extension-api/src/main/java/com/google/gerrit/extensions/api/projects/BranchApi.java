@@ -264,6 +264,8 @@ name|ReflogEntryInfo
 argument_list|>
 name|reflog
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
