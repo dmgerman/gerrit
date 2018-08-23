@@ -1708,19 +1708,6 @@ return|return
 name|cfg
 return|;
 block|}
-DECL|method|getMaxObjectSizeLimit ()
-specifier|public
-name|long
-name|getMaxObjectSizeLimit
-parameter_list|()
-block|{
-return|return
-name|config
-operator|.
-name|getMaxObjectSizeLimit
-argument_list|()
-return|;
-block|}
 DECL|method|getEffectiveMaxObjectSizeLimit ()
 specifier|public
 name|long
@@ -1730,6 +1717,8 @@ block|{
 name|long
 name|local
 init|=
+name|config
+operator|.
 name|getMaxObjectSizeLimit
 argument_list|()
 decl_stmt|;
