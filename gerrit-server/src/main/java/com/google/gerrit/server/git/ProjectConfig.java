@@ -2960,7 +2960,7 @@ return|return
 name|rulesId
 return|;
 block|}
-comment|/**    * @return the maxObjectSizeLimit for this project, if set. Zero if this project doesn't define    *     own maxObjectSizeLimit.    */
+comment|/** @return the maxObjectSizeLimit configured on this project, or zero if not configured. */
 DECL|method|getMaxObjectSizeLimit ()
 specifier|public
 name|long
