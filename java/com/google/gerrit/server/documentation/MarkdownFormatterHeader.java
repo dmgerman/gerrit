@@ -437,13 +437,10 @@ name|HeadingNodeRenderer
 implements|implements
 name|NodeRenderer
 block|{
-DECL|method|HeadingNodeRenderer (DataHolder options)
+DECL|method|HeadingNodeRenderer ()
 specifier|public
 name|HeadingNodeRenderer
-parameter_list|(
-name|DataHolder
-name|options
-parameter_list|)
+parameter_list|()
 block|{}
 annotation|@
 name|Override
@@ -515,8 +512,6 @@ argument_list|(
 name|node
 argument_list|,
 name|context
-argument_list|,
-name|html
 argument_list|)
 expr_stmt|;
 block|}
@@ -574,7 +569,7 @@ end_empty_stmt
 
 begin_expr_stmt
 unit|}      void
-DECL|method|render (final AnchorLink node, final NodeRendererContext context, final HtmlWriter html)
+DECL|method|render (final AnchorLink node, final NodeRendererContext context)
 name|render
 argument_list|(
 name|final
@@ -584,10 +579,6 @@ argument_list|,
 name|final
 name|NodeRendererContext
 name|context
-argument_list|,
-name|final
-name|HtmlWriter
-name|html
 argument_list|)
 block|{
 name|Node
@@ -957,9 +948,7 @@ block|{
 return|return
 operator|new
 name|HeadingNodeRenderer
-argument_list|(
-name|options
-argument_list|)
+argument_list|()
 return|;
 block|}
 annotation|@
