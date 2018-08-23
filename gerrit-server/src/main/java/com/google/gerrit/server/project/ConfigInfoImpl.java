@@ -338,9 +338,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|project
 operator|.
-name|TransferConfig
+name|ProjectState
+operator|.
+name|EffectiveMaxObjectSizeLimit
 import|;
 end_import
 
@@ -406,7 +408,7 @@ name|ConfigInfoImpl
 extends|extends
 name|ConfigInfo
 block|{
-DECL|method|ConfigInfoImpl ( boolean serverEnableSignedPush, ProjectControl control, TransferConfig transferConfig, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
+DECL|method|ConfigInfoImpl ( boolean serverEnableSignedPush, ProjectControl control, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
 specifier|public
 name|ConfigInfoImpl
 parameter_list|(
@@ -415,9 +417,6 @@ name|serverEnableSignedPush
 parameter_list|,
 name|ProjectControl
 name|control
-parameter_list|,
-name|TransferConfig
-name|transferConfig
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -801,8 +800,6 @@ name|getMaxObjectSizeLimit
 argument_list|(
 name|projectState
 argument_list|,
-name|transferConfig
-argument_list|,
 name|p
 argument_list|)
 expr_stmt|;
@@ -960,16 +957,13 @@ name|getTheme
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getMaxObjectSizeLimit ( ProjectState projectState, TransferConfig transferConfig, Project p)
+DECL|method|getMaxObjectSizeLimit (ProjectState projectState, Project p)
 specifier|private
 name|MaxObjectSizeLimitInfo
 name|getMaxObjectSizeLimit
 parameter_list|(
 name|ProjectState
 name|projectState
-parameter_list|,
-name|TransferConfig
-name|transferConfig
 parameter_list|,
 name|Project
 name|p
@@ -982,13 +976,20 @@ operator|new
 name|MaxObjectSizeLimitInfo
 argument_list|()
 decl_stmt|;
-name|long
-name|value
+name|EffectiveMaxObjectSizeLimit
+name|limit
 init|=
 name|projectState
 operator|.
 name|getEffectiveMaxObjectSizeLimit
 argument_list|()
+decl_stmt|;
+name|long
+name|value
+init|=
+name|limit
+operator|.
+name|value
 decl_stmt|;
 name|info
 operator|.
@@ -1018,12 +1019,11 @@ argument_list|()
 expr_stmt|;
 name|info
 operator|.
-name|inheritedValue
+name|summary
 operator|=
-name|transferConfig
+name|limit
 operator|.
-name|getFormattedMaxObjectSizeLimit
-argument_list|()
+name|summary
 expr_stmt|;
 return|return
 name|info

@@ -3896,6 +3896,8 @@ argument_list|()
 operator|.
 name|getEffectiveMaxObjectSizeLimit
 argument_list|()
+operator|.
+name|value
 argument_list|)
 expr_stmt|;
 name|rp

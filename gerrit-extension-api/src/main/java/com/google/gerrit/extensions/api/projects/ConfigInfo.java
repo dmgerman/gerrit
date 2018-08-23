@@ -300,7 +300,7 @@ specifier|static
 class|class
 name|MaxObjectSizeLimitInfo
 block|{
-comment|/* The effective value. Null if not set. */
+comment|/** The effective value in bytes. Null if not set. */
 DECL|field|value
 annotation|@
 name|Nullable
@@ -308,7 +308,7 @@ specifier|public
 name|String
 name|value
 decl_stmt|;
-comment|/* The value configured on the project. Null if not set. */
+comment|/** The value configured explicitly on the project as a formatted string. Null if not set. */
 DECL|field|configuredValue
 annotation|@
 name|Nullable
@@ -316,13 +316,13 @@ specifier|public
 name|String
 name|configuredValue
 decl_stmt|;
-comment|/* The value configured globally. Null if not set. */
-DECL|field|inheritedValue
+comment|/**      * Whether the value was inherited or overridden from the project's parent hierarchy or global      * config. Null if not inherited or overridden.      */
+DECL|field|summary
 annotation|@
 name|Nullable
 specifier|public
 name|String
-name|inheritedValue
+name|summary
 decl_stmt|;
 block|}
 DECL|class|ConfigParameterInfo
