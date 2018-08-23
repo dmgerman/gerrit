@@ -503,9 +503,7 @@ name|asList
 argument_list|(
 operator|new
 name|NodeRenderingHandler
-argument_list|<
-name|AnchorLink
-argument_list|>
+argument_list|<>
 argument_list|(
 name|AnchorLink
 operator|.
@@ -551,7 +549,7 @@ block|}
 block|}
 block|)
 operator|,
-function|new NodeRenderingHandler<Heading>
+function|new NodeRenderingHandler<>
 parameter_list|(
 name|Heading
 operator|.
@@ -1019,14 +1017,7 @@ name|delegates
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Class
-argument_list|<
-name|?
-extends|extends
-name|NodeRendererFactory
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|delegates
