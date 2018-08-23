@@ -12321,6 +12321,7 @@ name|newCommit
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Add an update for an existing change. Returns true if it succeeded; rejects the command if it    * failed.    */
 DECL|method|requestReplace ( ReceiveCommand cmd, boolean checkMergedInto, Change change, RevCommit newCommit)
 specifier|private
 name|boolean
