@@ -595,6 +595,44 @@ name|expectedMethods
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|extendsClass (Type superclassType)
+specifier|public
+name|void
+name|extendsClass
+parameter_list|(
+name|Type
+name|superclassType
+parameter_list|)
+block|{
+name|isNotNull
+argument_list|()
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|actual
+argument_list|()
+operator|.
+name|getGenericSuperclass
+argument_list|()
+argument_list|)
+operator|.
+name|named
+argument_list|(
+literal|"superclass of %s"
+argument_list|,
+name|actual
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|superclassType
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
