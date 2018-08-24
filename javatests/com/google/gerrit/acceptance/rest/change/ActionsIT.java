@@ -2174,6 +2174,8 @@ name|actionVisitors
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|v
 argument_list|)
 expr_stmt|;
@@ -2525,6 +2527,8 @@ name|actionVisitors
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|v
 argument_list|)
 expr_stmt|;
@@ -2971,6 +2975,8 @@ name|actionVisitors
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|v
 argument_list|)
 expr_stmt|;

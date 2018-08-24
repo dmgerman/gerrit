@@ -292,6 +292,8 @@ name|groupBackends
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|testGroupBackend
 argument_list|)
 decl_stmt|;

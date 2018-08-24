@@ -488,6 +488,8 @@ name|backends
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 operator|new
 name|SystemGroupBackend
 argument_list|(
@@ -991,6 +993,8 @@ name|backends
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|backend
 argument_list|)
 expr_stmt|;

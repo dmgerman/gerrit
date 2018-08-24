@@ -907,7 +907,7 @@ return|return
 name|handles
 return|;
 block|}
-DECL|method|attachSets ( Injector src, Map<TypeLiteral<?>, DynamicSet<?>> sets)
+DECL|method|attachSets ( Injector src, String pluginName, Map<TypeLiteral<?>, DynamicSet<?>> sets)
 specifier|public
 specifier|static
 name|List
@@ -918,6 +918,9 @@ name|attachSets
 parameter_list|(
 name|Injector
 name|src
+parameter_list|,
+name|String
+name|pluginName
 parameter_list|,
 name|Map
 argument_list|<
@@ -1077,6 +1080,8 @@ name|set
 operator|.
 name|add
 argument_list|(
+name|pluginName
+argument_list|,
 name|b
 operator|.
 name|getKey
@@ -1389,6 +1394,10 @@ argument_list|(
 name|attachSets
 argument_list|(
 name|self
+argument_list|,
+name|PluginName
+operator|.
+name|GERRIT
 argument_list|,
 name|dynamicSetsOf
 argument_list|(

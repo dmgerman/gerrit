@@ -918,6 +918,8 @@ name|fileHistoryWebLinkDynamicSet
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 operator|new
 name|FileHistoryWebLink
 argument_list|()
@@ -1032,6 +1034,8 @@ name|fileHistoryWebLinkDynamicSet
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 operator|new
 name|FileHistoryWebLink
 argument_list|()

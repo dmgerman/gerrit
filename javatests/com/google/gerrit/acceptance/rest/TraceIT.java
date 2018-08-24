@@ -470,6 +470,8 @@ name|projectCreationValidationListeners
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|projectCreationListener
 argument_list|)
 expr_stmt|;
@@ -485,6 +487,8 @@ name|commitValidationListeners
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|commitValidationListener
 argument_list|)
 expr_stmt|;

@@ -9409,6 +9409,8 @@ name|onSubmitValidationListeners
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|listener
 argument_list|)
 expr_stmt|;

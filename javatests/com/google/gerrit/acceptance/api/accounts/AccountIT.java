@@ -2648,6 +2648,8 @@ name|accountIndexedListeners
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|accountIndexedCounter
 argument_list|)
 expr_stmt|;
@@ -2694,6 +2696,8 @@ name|refUpdateListeners
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|refUpdateCounter
 argument_list|)
 expr_stmt|;
@@ -4751,6 +4755,8 @@ name|accountActivationValidationListeners
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 operator|new
 name|AccountActivationValidationListener
 argument_list|()

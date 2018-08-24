@@ -821,6 +821,8 @@ name|source
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 operator|new
 name|CommentAddedListener
 argument_list|()
