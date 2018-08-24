@@ -94,7 +94,7 @@ name|acceptance
 operator|.
 name|testsuite
 operator|.
-name|ThrowingFunction
+name|ThrowingConsumer
 import|;
 end_import
 
@@ -179,26 +179,22 @@ parameter_list|()
 function_decl|;
 DECL|method|accountUpdater ()
 specifier|abstract
-name|ThrowingFunction
+name|ThrowingConsumer
 argument_list|<
 name|TestAccountUpdate
-argument_list|,
-name|TestAccount
 argument_list|>
 name|accountUpdater
 parameter_list|()
 function_decl|;
-DECL|method|builder (ThrowingFunction<TestAccountUpdate, TestAccount> accountUpdater)
+DECL|method|builder (ThrowingConsumer<TestAccountUpdate> accountUpdater)
 specifier|public
 specifier|static
 name|Builder
 name|builder
 parameter_list|(
-name|ThrowingFunction
+name|ThrowingConsumer
 argument_list|<
 name|TestAccountUpdate
-argument_list|,
-name|TestAccount
 argument_list|>
 name|accountUpdater
 parameter_list|)
@@ -382,16 +378,14 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|accountUpdater ( ThrowingFunction<TestAccountUpdate, TestAccount> accountUpdater)
+DECL|method|accountUpdater (ThrowingConsumer<TestAccountUpdate> accountUpdater)
 specifier|abstract
 name|Builder
 name|accountUpdater
 parameter_list|(
-name|ThrowingFunction
+name|ThrowingConsumer
 argument_list|<
 name|TestAccountUpdate
-argument_list|,
-name|TestAccount
 argument_list|>
 name|accountUpdater
 parameter_list|)
@@ -404,7 +398,7 @@ parameter_list|()
 function_decl|;
 DECL|method|update ()
 specifier|public
-name|TestAccount
+name|void
 name|update
 parameter_list|()
 throws|throws
@@ -416,17 +410,16 @@ init|=
 name|autoBuild
 argument_list|()
 decl_stmt|;
-return|return
 name|accountUpdate
 operator|.
 name|accountUpdater
 argument_list|()
 operator|.
-name|apply
+name|accept
 argument_list|(
 name|accountUpdate
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 block|}
 block|}
