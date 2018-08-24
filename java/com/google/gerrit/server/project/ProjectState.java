@@ -1742,6 +1742,8 @@ block|{
 name|long
 name|local
 init|=
+name|config
+operator|.
 name|getMaxObjectSizeLimit
 argument_list|()
 decl_stmt|;
