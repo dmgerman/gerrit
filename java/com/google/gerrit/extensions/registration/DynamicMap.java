@@ -270,6 +270,33 @@ name|T
 argument_list|>
 argument_list|>
 block|{
+DECL|interface|Entry
+specifier|public
+interface|interface
+name|Entry
+parameter_list|<
+name|T
+parameter_list|>
+block|{
+DECL|method|getPluginName ()
+name|String
+name|getPluginName
+parameter_list|()
+function_decl|;
+DECL|method|getExportName ()
+name|String
+name|getExportName
+parameter_list|()
+function_decl|;
+DECL|method|getProvider ()
+name|Provider
+argument_list|<
+name|T
+argument_list|>
+name|getProvider
+parameter_list|()
+function_decl|;
+block|}
 comment|/**    * Declare a singleton {@code DynamicMap<T>} with a binder.    *    *<p>Maps must be defined in a Guice module before they can be bound:    *    *<pre>    * DynamicMap.mapOf(binder(), Interface.class);    * bind(Interface.class)    *   .annotatedWith(Exports.named(&quot;foo&quot;))    *   .to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of value in the map.    */
 DECL|method|mapOf (Binder binder, Class<T> member)
 specifier|public
@@ -810,33 +837,6 @@ throw|;
 block|}
 block|}
 return|;
-block|}
-DECL|interface|Entry
-specifier|public
-interface|interface
-name|Entry
-parameter_list|<
-name|T
-parameter_list|>
-block|{
-DECL|method|getPluginName ()
-name|String
-name|getPluginName
-parameter_list|()
-function_decl|;
-DECL|method|getExportName ()
-name|String
-name|getExportName
-parameter_list|()
-function_decl|;
-DECL|method|getProvider ()
-name|Provider
-argument_list|<
-name|T
-argument_list|>
-name|getProvider
-parameter_list|()
-function_decl|;
 block|}
 DECL|class|NamePair
 specifier|static
