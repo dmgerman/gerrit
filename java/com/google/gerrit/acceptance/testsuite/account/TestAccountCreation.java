@@ -100,6 +100,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -183,12 +199,14 @@ name|ThrowingFunction
 argument_list|<
 name|TestAccountCreation
 argument_list|,
-name|TestAccount
+name|Account
+operator|.
+name|Id
 argument_list|>
 name|accountCreator
 parameter_list|()
 function_decl|;
-DECL|method|builder (ThrowingFunction<TestAccountCreation, TestAccount> accountCreator)
+DECL|method|builder (ThrowingFunction<TestAccountCreation, Account.Id> accountCreator)
 specifier|public
 specifier|static
 name|Builder
@@ -198,7 +216,9 @@ name|ThrowingFunction
 argument_list|<
 name|TestAccountCreation
 argument_list|,
-name|TestAccount
+name|Account
+operator|.
+name|Id
 argument_list|>
 name|accountCreator
 parameter_list|)
@@ -382,7 +402,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|accountCreator ( ThrowingFunction<TestAccountCreation, TestAccount> accountCreator)
+DECL|method|accountCreator ( ThrowingFunction<TestAccountCreation, Account.Id> accountCreator)
 specifier|abstract
 name|Builder
 name|accountCreator
@@ -391,7 +411,9 @@ name|ThrowingFunction
 argument_list|<
 name|TestAccountCreation
 argument_list|,
-name|TestAccount
+name|Account
+operator|.
+name|Id
 argument_list|>
 name|accountCreator
 parameter_list|)
@@ -404,7 +426,9 @@ parameter_list|()
 function_decl|;
 DECL|method|create ()
 specifier|public
-name|TestAccount
+name|Account
+operator|.
+name|Id
 name|create
 parameter_list|()
 throws|throws

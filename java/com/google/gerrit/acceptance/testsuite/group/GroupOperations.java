@@ -105,7 +105,7 @@ name|UUID
 name|groupUuid
 parameter_list|)
 function_decl|;
-comment|/**    * Starts the fluent chain to create a group. The returned builder can be used to specify the    * attributes of the new group. To create the group for real, {@link    * TestGroupCreation.Builder#create()} must be called.    *    *<p>Example:    *    *<pre>    * TestGroup createdGroup = groupOperations    *     .newGroup()    *     .name("verifiers")    *     .description("All verifiers of this server")    *     .create();    *</pre>    *    *<p><strong>Note:</strong> If another group with the provided name already exists, the creation    * of the group will fail.    *    * @return a builder to create the new group    */
+comment|/**    * Starts the fluent chain to create a group. The returned builder can be used to specify the    * attributes of the new group. To create the group for real, {@link    * TestGroupCreation.Builder#create()} must be called.    *    *<p>Example:    *    *<pre>    * AccountGroup.UUID createdGroupUuid = groupOperations    *     .newGroup()    *     .name("verifiers")    *     .description("All verifiers of this server")    *     .create();    *</pre>    *    *<p><strong>Note:</strong> If another group with the provided name already exists, the creation    * of the group will fail.    *    * @return a builder to create the new group    */
 DECL|method|newGroup ()
 name|TestGroupCreation
 operator|.

@@ -259,12 +259,14 @@ name|ThrowingFunction
 argument_list|<
 name|TestGroupCreation
 argument_list|,
-name|TestGroup
+name|AccountGroup
+operator|.
+name|UUID
 argument_list|>
 name|groupCreator
 parameter_list|()
 function_decl|;
-DECL|method|builder (ThrowingFunction<TestGroupCreation, TestGroup> groupCreator)
+DECL|method|builder ( ThrowingFunction<TestGroupCreation, AccountGroup.UUID> groupCreator)
 specifier|public
 specifier|static
 name|Builder
@@ -274,7 +276,9 @@ name|ThrowingFunction
 argument_list|<
 name|TestGroupCreation
 argument_list|,
-name|TestGroup
+name|AccountGroup
+operator|.
+name|UUID
 argument_list|>
 name|groupCreator
 parameter_list|)
@@ -574,7 +578,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|groupCreator (ThrowingFunction<TestGroupCreation, TestGroup> groupCreator)
+DECL|method|groupCreator ( ThrowingFunction<TestGroupCreation, AccountGroup.UUID> groupCreator)
 specifier|abstract
 name|Builder
 name|groupCreator
@@ -583,7 +587,9 @@ name|ThrowingFunction
 argument_list|<
 name|TestGroupCreation
 argument_list|,
-name|TestGroup
+name|AccountGroup
+operator|.
+name|UUID
 argument_list|>
 name|groupCreator
 parameter_list|)
@@ -594,10 +600,12 @@ name|TestGroupCreation
 name|autoBuild
 parameter_list|()
 function_decl|;
-comment|/**      * Executes the group creation as specified.      *      * @return the created {@code TestGroup}      */
+comment|/**      * Executes the group creation as specified.      *      * @return the UUID of the created group      */
 DECL|method|create ()
 specifier|public
-name|TestGroup
+name|AccountGroup
+operator|.
+name|UUID
 name|create
 parameter_list|()
 throws|throws

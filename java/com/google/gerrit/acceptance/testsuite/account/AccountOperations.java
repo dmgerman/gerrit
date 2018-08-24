@@ -105,7 +105,7 @@ name|Id
 name|accountId
 parameter_list|)
 function_decl|;
-comment|/**    * Starts the fluent chain to create an account. The returned builder can be used to specify the    * attributes of the new account. To create the account for real, {@link    * TestAccountCreation.Builder#create()} must be called.    *    *<p>Example:    *    *<pre>    * TestAccount createdAccount = accountOperations    *     .newAccount()    *     .username("janedoe")    *     .preferredEmail("janedoe@example.com")    *     .fullname("Jane Doe")    *     .create();    *</pre>    *    *<p><strong>Note:</strong> If another account with the provided user name or preferred email    * address already exists, the creation of the account will fail.    *    * @return a builder to create the new account    */
+comment|/**    * Starts the fluent chain to create an account. The returned builder can be used to specify the    * attributes of the new account. To create the account for real, {@link    * TestAccountCreation.Builder#create()} must be called.    *    *<p>Example:    *    *<pre>    * Account.Id createdAccountId = accountOperations    *     .newAccount()    *     .username("janedoe")    *     .preferredEmail("janedoe@example.com")    *     .fullname("Jane Doe")    *     .create();    *</pre>    *    *<p><strong>Note:</strong> If another account with the provided user name or preferred email    * address already exists, the creation of the account will fail.    *    * @return a builder to create the new account    */
 DECL|method|newAccount ()
 name|TestAccountCreation
 operator|.
