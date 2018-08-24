@@ -1114,7 +1114,7 @@ return|return
 name|handles
 return|;
 block|}
-DECL|method|attachMaps ( Injector src, String groupName, Map<TypeLiteral<?>, DynamicMap<?>> maps)
+DECL|method|attachMaps ( Injector src, String pluginName, Map<TypeLiteral<?>, DynamicMap<?>> maps)
 specifier|public
 specifier|static
 name|List
@@ -1127,7 +1127,7 @@ name|Injector
 name|src
 parameter_list|,
 name|String
-name|groupName
+name|pluginName
 parameter_list|,
 name|Map
 argument_list|<
@@ -1237,7 +1237,7 @@ name|PrivateInternals_DynamicMapImpl
 argument_list|<
 name|Object
 argument_list|>
-name|set
+name|map
 init|=
 operator|(
 name|PrivateInternals_DynamicMapImpl
@@ -1283,11 +1283,11 @@ name|handles
 operator|.
 name|add
 argument_list|(
-name|set
+name|map
 operator|.
 name|put
 argument_list|(
-name|groupName
+name|pluginName
 argument_list|,
 name|b
 operator|.
