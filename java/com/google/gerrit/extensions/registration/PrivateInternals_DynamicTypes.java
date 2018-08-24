@@ -709,7 +709,7 @@ name|m
 argument_list|)
 return|;
 block|}
-DECL|method|attachItems ( Injector src, Map<TypeLiteral<?>, DynamicItem<?>> items, String pluginName)
+DECL|method|attachItems ( Injector src, String pluginName, Map<TypeLiteral<?>, DynamicItem<?>> items)
 specifier|public
 specifier|static
 name|List
@@ -720,6 +720,9 @@ name|attachItems
 parameter_list|(
 name|Injector
 name|src
+parameter_list|,
+name|String
+name|pluginName
 parameter_list|,
 name|Map
 argument_list|<
@@ -734,9 +737,6 @@ name|?
 argument_list|>
 argument_list|>
 name|items
-parameter_list|,
-name|String
-name|pluginName
 parameter_list|)
 block|{
 if|if
