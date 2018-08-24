@@ -184,22 +184,6 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|registration
-operator|.
-name|DynamicSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -365,6 +349,22 @@ operator|.
 name|notedb
 operator|.
 name|NotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
 import|;
 end_import
 
@@ -565,7 +565,7 @@ decl_stmt|;
 DECL|field|validationListeners
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|HashtagValidationListener
 argument_list|>
@@ -621,7 +621,7 @@ name|updatedHashtags
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetHashtagsOp ( NotesMigration notesMigration, ChangeMessagesUtil cmUtil, DynamicSet<HashtagValidationListener> validationListeners, HashtagsEdited hashtagsEdited, @Assisted @Nullable HashtagsInput input)
+DECL|method|SetHashtagsOp ( NotesMigration notesMigration, ChangeMessagesUtil cmUtil, PluginSetContext<HashtagValidationListener> validationListeners, HashtagsEdited hashtagsEdited, @Assisted @Nullable HashtagsInput input)
 name|SetHashtagsOp
 parameter_list|(
 name|NotesMigration
@@ -630,7 +630,7 @@ parameter_list|,
 name|ChangeMessagesUtil
 name|cmUtil
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|HashtagValidationListener
 argument_list|>
@@ -850,15 +850,13 @@ name|remove
 argument_list|)
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|HashtagValidationListener
-name|validator
-range|:
 name|validationListeners
-control|)
-block|{
-name|validator
+operator|.
+name|runEach
+argument_list|(
+name|l
+lambda|->
+name|l
 operator|.
 name|validateHashtags
 argument_list|(
@@ -871,8 +869,12 @@ name|toAdd
 argument_list|,
 name|toRemove
 argument_list|)
+argument_list|,
+name|ValidationException
+operator|.
+name|class
+argument_list|)
 expr_stmt|;
-block|}
 name|updated
 operator|.
 name|addAll
@@ -958,6 +960,8 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}

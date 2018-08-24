@@ -212,6 +212,15 @@ name|TraceContext
 implements|implements
 name|AutoCloseable
 block|{
+DECL|field|PLUGIN_TAG
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PLUGIN_TAG
+init|=
+literal|"PLUGIN"
+decl_stmt|;
 DECL|method|open ()
 specifier|public
 specifier|static
@@ -900,6 +909,24 @@ argument_list|)
 expr_stmt|;
 return|return
 name|this
+return|;
+block|}
+DECL|method|addPluginTag (String pluginName)
+specifier|public
+name|TraceContext
+name|addPluginTag
+parameter_list|(
+name|String
+name|pluginName
+parameter_list|)
+block|{
+return|return
+name|addTag
+argument_list|(
+name|PLUGIN_TAG
+argument_list|,
+name|pluginName
+argument_list|)
 return|;
 block|}
 DECL|method|forceLogging ()

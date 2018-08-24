@@ -78,26 +78,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|extensions
-operator|.
-name|events
-operator|.
-name|EventUtil
-operator|.
-name|logEventListenerError
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|QueueProvider
@@ -213,22 +193,6 @@ operator|.
 name|events
 operator|.
 name|ChangeIndexedListener
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
-name|DynamicSet
 import|;
 end_import
 
@@ -419,6 +383,22 @@ operator|.
 name|notedb
 operator|.
 name|NotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
 import|;
 end_import
 
@@ -888,7 +868,7 @@ decl_stmt|;
 DECL|field|indexedListeners
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ChangeIndexedListener
 argument_list|>
@@ -908,7 +888,7 @@ name|autoReindexIfStale
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer ( @erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndex index)
+DECL|method|ChangeIndexer ( @erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, PluginSetContext<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndex index)
 name|ChangeIndexer
 parameter_list|(
 annotation|@
@@ -938,7 +918,7 @@ parameter_list|,
 name|ThreadLocalRequestContext
 name|context
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ChangeIndexedListener
 argument_list|>
@@ -1044,7 +1024,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer ( SchemaFactory<ReviewDb> schemaFactory, @GerritServerConfig Config cfg, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
+DECL|method|ChangeIndexer ( SchemaFactory<ReviewDb> schemaFactory, @GerritServerConfig Config cfg, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, PluginSetContext<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
 name|ChangeIndexer
 parameter_list|(
 name|SchemaFactory
@@ -1074,7 +1054,7 @@ parameter_list|,
 name|ThreadLocalRequestContext
 name|context
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ChangeIndexedListener
 argument_list|>
@@ -1496,17 +1476,13 @@ name|int
 name|id
 parameter_list|)
 block|{
-for|for
-control|(
-name|ChangeIndexedListener
-name|listener
-range|:
 name|indexedListeners
-control|)
-block|{
-try|try
-block|{
-name|listener
+operator|.
+name|runEach
+argument_list|(
+name|l
+lambda|->
+name|l
 operator|.
 name|onChangeIndexed
 argument_list|(
@@ -1514,23 +1490,8 @@ name|projectName
 argument_list|,
 name|id
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|logEventListenerError
-argument_list|(
-name|listener
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 DECL|method|fireChangeDeletedFromIndexEvent (int id)
 specifier|private
@@ -1541,39 +1502,20 @@ name|int
 name|id
 parameter_list|)
 block|{
-for|for
-control|(
-name|ChangeIndexedListener
-name|listener
-range|:
 name|indexedListeners
-control|)
-block|{
-try|try
-block|{
-name|listener
+operator|.
+name|runEach
+argument_list|(
+name|l
+lambda|->
+name|l
 operator|.
 name|onChangeDeleted
 argument_list|(
 name|id
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|logEventListenerError
-argument_list|(
-name|listener
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param change change to index.    */
 DECL|method|index (ReviewDb db, Change change)

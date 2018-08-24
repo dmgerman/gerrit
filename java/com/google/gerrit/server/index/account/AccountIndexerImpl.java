@@ -134,22 +134,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
-name|DynamicSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|index
 operator|.
 name|Index
@@ -235,6 +219,22 @@ operator|.
 name|TraceContext
 operator|.
 name|TraceTimer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
 import|;
 end_import
 
@@ -359,7 +359,7 @@ decl_stmt|;
 DECL|field|indexedListener
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|AccountIndexedListener
 argument_list|>
@@ -389,13 +389,13 @@ name|index
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|AccountIndexerImpl ( AccountCache byIdCache, DynamicSet<AccountIndexedListener> indexedListener, StalenessChecker stalenessChecker, @Assisted AccountIndexCollection indexes)
+DECL|method|AccountIndexerImpl ( AccountCache byIdCache, PluginSetContext<AccountIndexedListener> indexedListener, StalenessChecker stalenessChecker, @Assisted AccountIndexCollection indexes)
 name|AccountIndexerImpl
 parameter_list|(
 name|AccountCache
 name|byIdCache
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|AccountIndexedListener
 argument_list|>
@@ -443,13 +443,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|AccountIndexerImpl ( AccountCache byIdCache, DynamicSet<AccountIndexedListener> indexedListener, StalenessChecker stalenessChecker, @Assisted @Nullable AccountIndex index)
+DECL|method|AccountIndexerImpl ( AccountCache byIdCache, PluginSetContext<AccountIndexedListener> indexedListener, StalenessChecker stalenessChecker, @Assisted @Nullable AccountIndex index)
 name|AccountIndexerImpl
 parameter_list|(
 name|AccountCache
 name|byIdCache
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|AccountIndexedListener
 argument_list|>
@@ -731,22 +731,20 @@ name|int
 name|id
 parameter_list|)
 block|{
-for|for
-control|(
-name|AccountIndexedListener
-name|listener
-range|:
 name|indexedListener
-control|)
-block|{
-name|listener
+operator|.
+name|runEach
+argument_list|(
+name|l
+lambda|->
+name|l
 operator|.
 name|onAccountIndexed
 argument_list|(
 name|id
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|getWriteIndexes ()
 specifier|private

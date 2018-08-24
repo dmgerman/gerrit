@@ -94,22 +94,6 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|registration
-operator|.
-name|DynamicItem
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
 name|restapi
 operator|.
 name|MethodNotAllowedException
@@ -255,6 +239,22 @@ operator|.
 name|events
 operator|.
 name|ChangeDeleted
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginItemContext
 import|;
 end_import
 
@@ -470,7 +470,7 @@ decl_stmt|;
 DECL|field|accountPatchReviewStore
 specifier|private
 specifier|final
-name|DynamicItem
+name|PluginItemContext
 argument_list|<
 name|AccountPatchReviewStore
 argument_list|>
@@ -491,7 +491,7 @@ name|id
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteChangeOp ( PatchSetUtil psUtil, StarredChangesUtil starredChangesUtil, DynamicItem<AccountPatchReviewStore> accountPatchReviewStore, ChangeDeleted changeDeleted)
+DECL|method|DeleteChangeOp ( PatchSetUtil psUtil, StarredChangesUtil starredChangesUtil, PluginItemContext<AccountPatchReviewStore> accountPatchReviewStore, ChangeDeleted changeDeleted)
 name|DeleteChangeOp
 parameter_list|(
 name|PatchSetUtil
@@ -500,7 +500,7 @@ parameter_list|,
 name|StarredChangesUtil
 name|starredChangesUtil
 parameter_list|,
-name|DynamicItem
+name|PluginItemContext
 argument_list|<
 name|AccountPatchReviewStore
 argument_list|>
@@ -1008,8 +1008,11 @@ control|)
 block|{
 name|accountPatchReviewStore
 operator|.
-name|get
-argument_list|()
+name|run
+argument_list|(
+name|s
+lambda|->
+name|s
 operator|.
 name|clearReviewed
 argument_list|(
@@ -1017,6 +1020,11 @@ name|ps
 operator|.
 name|getId
 argument_list|()
+argument_list|)
+argument_list|,
+name|OrmException
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 block|}

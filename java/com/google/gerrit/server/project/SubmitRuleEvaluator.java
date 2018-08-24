@@ -74,6 +74,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|collect
+operator|.
+name|Streams
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|flogger
 operator|.
 name|FluentLogger
@@ -120,11 +134,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|reviewdb
 operator|.
-name|registration
+name|client
 operator|.
-name|DynamicSet
+name|Change
 import|;
 end_import
 
@@ -136,11 +150,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|plugincontext
 operator|.
-name|Change
+name|PluginSetContext
 import|;
 end_import
 
@@ -276,18 +290,6 @@ name|Collectors
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|StreamSupport
-import|;
-end_import
-
 begin_comment
 comment|/**  * Evaluates a submit-like Prolog rule found in the rules.pl file of the current project and filters  * the results through rules found in the parent projects, all the way up to All-Projects.  */
 end_comment
@@ -334,7 +336,7 @@ decl_stmt|;
 DECL|field|submitRules
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|SubmitRule
 argument_list|>
@@ -363,7 +365,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|SubmitRuleEvaluator ( ProjectCache projectCache, PrologRule prologRule, DynamicSet<SubmitRule> submitRules, @Assisted SubmitRuleOptions options)
+DECL|method|SubmitRuleEvaluator ( ProjectCache projectCache, PrologRule prologRule, PluginSetContext<SubmitRule> submitRules, @Assisted SubmitRuleOptions options)
 specifier|private
 name|SubmitRuleEvaluator
 parameter_list|(
@@ -373,7 +375,7 @@ parameter_list|,
 name|PrologRule
 name|prologRule
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|SubmitRule
 argument_list|>
@@ -630,19 +632,20 @@ block|}
 comment|// We evaluate all the plugin-defined evaluators,
 comment|// and then we collect the results in one list.
 return|return
-name|StreamSupport
+name|Streams
 operator|.
 name|stream
 argument_list|(
 name|submitRules
-operator|.
-name|spliterator
-argument_list|()
-argument_list|,
-literal|false
 argument_list|)
 operator|.
 name|map
+argument_list|(
+name|c
+lambda|->
+name|c
+operator|.
+name|call
 argument_list|(
 name|s
 lambda|->
@@ -653,6 +656,7 @@ argument_list|(
 name|cd
 argument_list|,
 name|opts
+argument_list|)
 argument_list|)
 argument_list|)
 operator|.

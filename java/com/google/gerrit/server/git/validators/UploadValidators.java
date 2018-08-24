@@ -76,11 +76,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|reviewdb
 operator|.
-name|registration
+name|client
 operator|.
-name|DynamicSet
+name|Project
 import|;
 end_import
 
@@ -92,11 +92,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|plugincontext
 operator|.
-name|Project
+name|PluginSetContext
 import|;
 end_import
 
@@ -233,7 +233,7 @@ block|{
 DECL|field|uploadValidationListeners
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|UploadValidationListener
 argument_list|>
@@ -279,10 +279,10 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|UploadValidators ( DynamicSet<UploadValidationListener> uploadValidationListeners, @Assisted Project project, @Assisted Repository repository, @Assisted String remoteHost)
+DECL|method|UploadValidators ( PluginSetContext<UploadValidationListener> uploadValidationListeners, @Assisted Project project, @Assisted Repository repository, @Assisted String remoteHost)
 name|UploadValidators
 parameter_list|(
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|UploadValidationListener
 argument_list|>
@@ -358,17 +358,15 @@ parameter_list|)
 throws|throws
 name|ServiceMayNotContinueException
 block|{
-for|for
-control|(
-name|UploadValidationListener
-name|validator
-range|:
-name|uploadValidationListeners
-control|)
-block|{
 try|try
 block|{
-name|validator
+name|uploadValidationListeners
+operator|.
+name|runEach
+argument_list|(
+name|l
+lambda|->
+name|l
 operator|.
 name|onPreUpload
 argument_list|(
@@ -383,6 +381,11 @@ argument_list|,
 name|wants
 argument_list|,
 name|haves
+argument_list|)
+argument_list|,
+name|ValidationException
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 block|}
@@ -402,7 +405,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 annotation|@
@@ -429,17 +431,15 @@ parameter_list|)
 throws|throws
 name|ServiceMayNotContinueException
 block|{
-for|for
-control|(
-name|UploadValidationListener
-name|validator
-range|:
-name|uploadValidationListeners
-control|)
-block|{
 try|try
 block|{
-name|validator
+name|uploadValidationListeners
+operator|.
+name|runEach
+argument_list|(
+name|l
+lambda|->
+name|l
 operator|.
 name|onBeginNegotiate
 argument_list|(
@@ -454,6 +454,11 @@ argument_list|,
 name|wants
 argument_list|,
 name|cntOffered
+argument_list|)
+argument_list|,
+name|ValidationException
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 block|}
@@ -473,7 +478,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 annotation|@
