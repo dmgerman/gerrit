@@ -616,6 +616,38 @@ else|:
 literal|null
 return|;
 block|}
+comment|/**    * Get the name of the plugin that has bound the configured item, or null.    *    * @return the name of the plugin that has bound the configured item; null if no implementation    *     has been bound to the item. This is common if no plugin registered an implementation for    *     the type.    */
+annotation|@
+name|Nullable
+DECL|method|getPluginName ()
+specifier|public
+name|String
+name|getPluginName
+parameter_list|()
+block|{
+name|NamedProvider
+argument_list|<
+name|T
+argument_list|>
+name|item
+init|=
+name|ref
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+return|return
+name|item
+operator|!=
+literal|null
+condition|?
+name|item
+operator|.
+name|pluginName
+else|:
+literal|null
+return|;
+block|}
 comment|/**    * Set the element to provide.    *    * @param item the item to use. Must not be null.    * @param pluginName the name of the plugin providing the item.    * @return handle to remove the item at a later point in time.    */
 DECL|method|set (T item, String pluginName)
 specifier|public
