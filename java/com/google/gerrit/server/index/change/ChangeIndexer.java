@@ -1360,6 +1360,24 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|logger
+operator|.
+name|atInfo
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Replace change %d in index."
+argument_list|,
+name|cd
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Index
@@ -2313,6 +2331,21 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|logger
+operator|.
+name|atInfo
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Delete change %d from index."
+argument_list|,
+name|id
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Don't bother setting a RequestContext to provide the DB.
 comment|// Implementations should not need to access the DB in order to delete a
 comment|// change ID.
@@ -2333,21 +2366,6 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-name|logger
-operator|.
-name|atInfo
-argument_list|()
-operator|.
-name|log
-argument_list|(
-literal|"Deleted change %s from index."
-argument_list|,
-name|id
-operator|.
-name|get
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|fireChangeDeletedFromIndexEvent
 argument_list|(
 name|id
