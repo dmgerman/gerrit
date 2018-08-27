@@ -452,23 +452,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-for|for
-control|(
-name|Index
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|,
-name|AccountState
-argument_list|>
-name|i
-range|:
-name|getWriteIndexes
-argument_list|()
-control|)
-block|{
-comment|// Evict the cache to get an up-to-date value for sure.
 name|byIdCache
 operator|.
 name|evict
@@ -489,6 +472,23 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+for|for
+control|(
+name|Index
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|,
+name|AccountState
+argument_list|>
+name|i
+range|:
+name|getWriteIndexes
+argument_list|()
+control|)
+block|{
+comment|// Evict the cache to get an up-to-date value for sure.
 if|if
 condition|(
 name|accountState
