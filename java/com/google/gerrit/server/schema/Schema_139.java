@@ -1223,6 +1223,8 @@ operator|.
 name|getKey
 argument_list|()
 argument_list|,
+name|allUsersName
+argument_list|,
 name|git
 argument_list|)
 decl_stmt|;

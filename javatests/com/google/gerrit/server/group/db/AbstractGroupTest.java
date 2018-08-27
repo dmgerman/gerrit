@@ -1127,6 +1127,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|uuid

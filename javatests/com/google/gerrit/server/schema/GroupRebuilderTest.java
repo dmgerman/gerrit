@@ -748,6 +748,11 @@ specifier|private
 name|AtomicInteger
 name|idCounter
 decl_stmt|;
+DECL|field|allUsersName
+specifier|private
+name|AllUsersName
+name|allUsersName
+decl_stmt|;
 DECL|field|repo
 specifier|private
 name|Repository
@@ -792,9 +797,8 @@ operator|new
 name|AtomicInteger
 argument_list|()
 expr_stmt|;
-name|AllUsersName
 name|allUsersName
-init|=
+operator|=
 operator|new
 name|AllUsersName
 argument_list|(
@@ -802,7 +806,7 @@ name|AllUsersNameProvider
 operator|.
 name|DEFAULT
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|repo
 operator|=
 operator|new
@@ -843,6 +847,8 @@ operator|new
 name|AuditLogReader
 argument_list|(
 name|SERVER_ID
+argument_list|,
+name|allUsersName
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4506,6 +4512,8 @@ name|bundleFactory
 operator|.
 name|fromNoteDb
 argument_list|(
+name|allUsersName
+argument_list|,
 name|repo
 argument_list|,
 name|g

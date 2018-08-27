@@ -104,11 +104,41 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
 operator|.
 name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
 import|;
 end_import
 
@@ -609,6 +639,18 @@ specifier|abstract
 class|class
 name|VersionedMetaData
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 comment|/**    * Path information that does not hold references to any repository data structures, allowing the    * application to retain this object for long periods of time.    */
 DECL|class|PathInfo
 specifier|public
@@ -676,6 +718,13 @@ name|Nullable
 specifier|protected
 name|RevCommit
 name|revision
+decl_stmt|;
+DECL|field|projectName
+specifier|protected
+name|Project
+operator|.
+name|NameKey
+name|projectName
 decl_stmt|;
 DECL|field|rw
 specifier|protected
@@ -754,12 +803,17 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**    * Load the current version from the branch.    *    *<p>The repository is not held after the call completes, allowing the application to retain this    * object for long periods of time.    *    * @param db repository to access.    * @throws IOException    * @throws ConfigInvalidException    */
-DECL|method|load (Repository db)
+comment|/**    * Load the current version from the branch.    *    *<p>The repository is not held after the call completes, allowing the application to retain this    * object for long periods of time.    *    * @param projectName the name of the project    * @param db repository to access.    * @throws IOException    * @throws ConfigInvalidException    */
+DECL|method|load (Project.NameKey projectName, Repository db)
 specifier|public
 name|void
 name|load
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|db
 parameter_list|)
@@ -784,6 +838,8 @@ argument_list|)
 decl_stmt|;
 name|load
 argument_list|(
+name|projectName
+argument_list|,
 name|db
 argument_list|,
 name|ref
@@ -799,12 +855,17 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Load a specific version from the repository.    *    *<p>This method is primarily useful for applying updates to a specific revision that was shown    * to an end-user in the user interface. If there are conflicts with another user's concurrent    * changes, these will be automatically detected at commit time.    *    *<p>The repository is not held after the call completes, allowing the application to retain this    * object for long periods of time.    *    * @param db repository to access.    * @param id revision to load.    * @throws IOException    * @throws ConfigInvalidException    */
-DECL|method|load (Repository db, @Nullable ObjectId id)
+comment|/**    * Load a specific version from the repository.    *    *<p>This method is primarily useful for applying updates to a specific revision that was shown    * to an end-user in the user interface. If there are conflicts with another user's concurrent    * changes, these will be automatically detected at commit time.    *    *<p>The repository is not held after the call completes, allowing the application to retain this    * object for long periods of time.    *    * @param projectName the name of the project    * @param db repository to access.    * @param id revision to load.    * @throws IOException    * @throws ConfigInvalidException    */
+DECL|method|load (Project.NameKey projectName, Repository db, @Nullable ObjectId id)
 specifier|public
 name|void
 name|load
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|db
 parameter_list|,
@@ -832,6 +893,8 @@ init|)
 block|{
 name|load
 argument_list|(
+name|projectName
+argument_list|,
 name|walk
 argument_list|,
 name|id
@@ -839,12 +902,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Load a specific version from an open walk.    *    *<p>This method is primarily useful for applying updates to a specific revision that was shown    * to an end-user in the user interface. If there are conflicts with another user's concurrent    * changes, these will be automatically detected at commit time.    *    *<p>The caller retains ownership of the walk and is responsible for closing it. However, this    * instance does not hold a reference to the walk or the repository after the call completes,    * allowing the application to retain this object for long periods of time.    *    * @param walk open walk to access to access.    * @param id revision to load.    * @throws IOException    * @throws ConfigInvalidException    */
-DECL|method|load (RevWalk walk, ObjectId id)
+comment|/**    * Load a specific version from an open walk.    *    *<p>This method is primarily useful for applying updates to a specific revision that was shown    * to an end-user in the user interface. If there are conflicts with another user's concurrent    * changes, these will be automatically detected at commit time.    *    *<p>The caller retains ownership of the walk and is responsible for closing it. However, this    * instance does not hold a reference to the walk or the repository after the call completes,    * allowing the application to retain this object for long periods of time.    *    * @param projectName the name of the project    * @param walk open walk to access to access.    * @param id revision to load.    * @throws IOException    * @throws ConfigInvalidException    */
+DECL|method|load (Project.NameKey projectName, RevWalk walk, ObjectId id)
 specifier|public
 name|void
 name|load
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|RevWalk
 name|walk
 parameter_list|,
@@ -856,6 +924,12 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+name|this
+operator|.
+name|projectName
+operator|=
+name|projectName
+expr_stmt|;
 name|this
 operator|.
 name|rw
@@ -925,6 +999,11 @@ name|load
 argument_list|(
 name|update
 operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
+name|update
+operator|.
 name|getRepository
 argument_list|()
 argument_list|)
@@ -948,6 +1027,11 @@ name|ConfigInvalidException
 block|{
 name|load
 argument_list|(
+name|update
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
 name|update
 operator|.
 name|getRepository
@@ -2318,6 +2402,28 @@ index|[]
 block|{}
 return|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Read file '%s' from ref '%s' of project '%s' from revision '%s'"
+argument_list|,
+name|fileName
+argument_list|,
+name|getRefName
+argument_list|()
+argument_list|,
+name|projectName
+argument_list|,
+name|revision
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 init|(
 name|TreeWalk
@@ -2783,6 +2889,23 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Save file '%s' in ref '%s' of project '%s'"
+argument_list|,
+name|fileName
+argument_list|,
+name|getRefName
+argument_list|()
+argument_list|,
+name|projectName
+argument_list|)
+expr_stmt|;
 name|DirCacheEditor
 name|editor
 init|=

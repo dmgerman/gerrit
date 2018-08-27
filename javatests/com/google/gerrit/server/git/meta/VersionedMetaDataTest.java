@@ -1406,6 +1406,8 @@ name|d
 operator|.
 name|load
 argument_list|(
+name|project
+argument_list|,
 name|repo
 argument_list|)
 expr_stmt|;

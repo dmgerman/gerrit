@@ -345,6 +345,8 @@ name|Preferences
 operator|.
 name|readDefaultDiffPreferences
 argument_list|(
+name|allUsersName
+argument_list|,
 name|git
 argument_list|)
 return|;

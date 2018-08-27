@@ -1565,6 +1565,9 @@ name|cfg
 operator|.
 name|load
 argument_list|(
+name|getNameKey
+argument_list|()
+argument_list|,
 name|git
 argument_list|,
 name|config

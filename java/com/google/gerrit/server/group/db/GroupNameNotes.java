@@ -300,6 +300,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|RefNames
 import|;
 end_import
@@ -597,7 +613,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An enforcer of unique names for groups in NoteDb.  *  *<p>The way groups are stored in NoteDb (see {@link GroupConfig}) doesn't enforce unique names,  * even though groups in Gerrit must not have duplicate names. The storage format doesn't allow to  * quickly look up whether a name has already been used either. That's why we additionally keep a  * map of name/UUID pairs and manage it with this class.  *  *<p>To claim the name for a new group, create an instance of {@code GroupNameNotes} via {@link  * #forNewGroup(Repository, AccountGroup.UUID, AccountGroup.NameKey)} and call {@link  * #commit(com.google.gerrit.server.git.meta.MetaDataUpdate) commit(MetaDataUpdate)} on it. For  * renaming, call {@link #forRename(Repository, AccountGroup.UUID, AccountGroup.NameKey,  * AccountGroup.NameKey)} and also commit the returned {@code GroupNameNotes}. Both times, the  * creation of the {@code GroupNameNotes} will fail if the (new) name is already used. Committing  * the {@code GroupNameNotes} is necessary to make the adjustments for real.  *  *<p>The map has an additional benefit: We can quickly iterate over all group name/UUID pairs  * without having to load all groups completely (which is costly).  *  *<p><em>Internal details</em>  *  *<p>The map of names is represented by Git {@link Note notes}. They are stored on the branch  * {@link RefNames#REFS_GROUPNAMES}. Each commit on the branch reflects one moment in time of the  * complete map.  *  *<p>As key for the notes, we use the SHA-1 of the name. As data, they contain a text version of a  * JGit {@link Config} file. That config file has two entries:  *  *<ul>  *<li>the name of the group (as clear text)  *<li>the UUID of the group which currently has this name  *</ul>  */
+comment|/**  * An enforcer of unique names for groups in NoteDb.  *  *<p>The way groups are stored in NoteDb (see {@link GroupConfig}) doesn't enforce unique names,  * even though groups in Gerrit must not have duplicate names. The storage format doesn't allow to  * quickly look up whether a name has already been used either. That's why we additionally keep a  * map of name/UUID pairs and manage it with this class.  *  *<p>To claim the name for a new group, create an instance of {@code GroupNameNotes} via {@link  * #forNewGroup(Project.NameKey, Repository, AccountGroup.UUID, AccountGroup.NameKey)} and call  * {@link #commit(com.google.gerrit.server.git.meta.MetaDataUpdate) commit(MetaDataUpdate)} on it.  * For renaming, call {@link #forRename(Project.NameKey, Repository, AccountGroup.UUID,  * AccountGroup.NameKey, AccountGroup.NameKey)} and also commit the returned {@code GroupNameNotes}.  * Both times, the creation of the {@code GroupNameNotes} will fail if the (new) name is already  * used. Committing the {@code GroupNameNotes} is necessary to make the adjustments for real.  *  *<p>The map has an additional benefit: We can quickly iterate over all group name/UUID pairs  * without having to load all groups completely (which is costly).  *  *<p><em>Internal details</em>  *  *<p>The map of names is represented by Git {@link Note notes}. They are stored on the branch  * {@link RefNames#REFS_GROUPNAMES}. Each commit on the branch reflects one moment in time of the  * complete map.  *  *<p>As key for the notes, we use the SHA-1 of the name. As data, they contain a text version of a  * JGit {@link Config} file. That config file has two entries:  *  *<ul>  *<li>the name of the group (as clear text)  *<li>the UUID of the group which currently has this name  *</ul>  */
 end_comment
 
 begin_class
@@ -657,13 +673,18 @@ name|UNIQUE_REF_ERROR
 init|=
 literal|"GroupReference collection must contain unique references"
 decl_stmt|;
-comment|/**    * Creates an instance of {@code GroupNameNotes} for use when renaming a group.    *    *<p><strong>Note:</strong>The returned instance of {@code GroupNameNotes} has to be committed    * via {@link #commit(com.google.gerrit.server.git.meta.MetaDataUpdate) commit(MetaDataUpdate)} in    * order to claim the new name and free up the old one.    *    * @param repository the repository which holds the commits of the notes    * @param groupUuid the UUID of the group which is renamed    * @param oldName the current name of the group    * @param newName the new name of the group    * @return an instance of {@code GroupNameNotes} configured for a specific renaming of a group    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if the note for the specified group doesn't exist or is in an    *     invalid state    * @throws OrmDuplicateKeyException if a group with the new name already exists    */
-DECL|method|forRename ( Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey oldName, AccountGroup.NameKey newName)
+comment|/**    * Creates an instance of {@code GroupNameNotes} for use when renaming a group.    *    *<p><strong>Note:</strong>The returned instance of {@code GroupNameNotes} has to be committed    * via {@link #commit(com.google.gerrit.server.git.meta.MetaDataUpdate) commit(MetaDataUpdate)} in    * order to claim the new name and free up the old one.    *    * @param projectName the name of the project which holds the commits of the notes    * @param repository the repository which holds the commits of the notes    * @param groupUuid the UUID of the group which is renamed    * @param oldName the current name of the group    * @param newName the new name of the group    * @return an instance of {@code GroupNameNotes} configured for a specific renaming of a group    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if the note for the specified group doesn't exist or is in an    *     invalid state    * @throws OrmDuplicateKeyException if a group with the new name already exists    */
+DECL|method|forRename ( Project.NameKey projectName, Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey oldName, AccountGroup.NameKey newName)
 specifier|public
 specifier|static
 name|GroupNameNotes
 name|forRename
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|repository
 parameter_list|,
@@ -716,6 +737,8 @@ name|groupNameNotes
 operator|.
 name|load
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|)
 expr_stmt|;
@@ -728,13 +751,18 @@ return|return
 name|groupNameNotes
 return|;
 block|}
-comment|/**    * Creates an instance of {@code GroupNameNotes} for use when creating a new group.    *    *<p><strong>Note:</strong>The returned instance of {@code GroupNameNotes} has to be committed    * via {@link #commit(com.google.gerrit.server.git.meta.MetaDataUpdate) commit(MetaDataUpdate)} in    * order to claim the new name.    *    * @param repository the repository which holds the commits of the notes    * @param groupUuid the UUID of the new group    * @param groupName the name of the new group    * @return an instance of {@code GroupNameNotes} configured for a specific group creation    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException in no case so far    * @throws OrmDuplicateKeyException if a group with the new name already exists    */
-DECL|method|forNewGroup ( Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey groupName)
+comment|/**    * Creates an instance of {@code GroupNameNotes} for use when creating a new group.    *    *<p><strong>Note:</strong>The returned instance of {@code GroupNameNotes} has to be committed    * via {@link #commit(com.google.gerrit.server.git.meta.MetaDataUpdate) commit(MetaDataUpdate)} in    * order to claim the new name.    *    * @param projectName the name of the project which holds the commits of the notes    * @param repository the repository which holds the commits of the notes    * @param groupUuid the UUID of the new group    * @param groupName the name of the new group    * @return an instance of {@code GroupNameNotes} configured for a specific group creation    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException in no case so far    * @throws OrmDuplicateKeyException if a group with the new name already exists    */
+DECL|method|forNewGroup ( Project.NameKey projectName, Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey groupName)
 specifier|public
 specifier|static
 name|GroupNameNotes
 name|forNewGroup
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|repository
 parameter_list|,
@@ -777,6 +805,8 @@ name|groupNameNotes
 operator|.
 name|load
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|)
 expr_stmt|;

@@ -1067,6 +1067,11 @@ name|cfg
 operator|.
 name|load
 argument_list|(
+name|destProject
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
 name|repo
 argument_list|,
 name|commit

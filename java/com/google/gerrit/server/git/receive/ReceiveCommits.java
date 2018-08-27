@@ -7717,6 +7717,11 @@ name|cfg
 operator|.
 name|load
 argument_list|(
+name|project
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
 name|receivePack
 operator|.
 name|getRevWalk

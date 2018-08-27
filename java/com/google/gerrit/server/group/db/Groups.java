@@ -402,6 +402,8 @@ block|{
 return|return
 name|getGroupFromNoteDb
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|groupUuid
@@ -409,7 +411,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|getGroupFromNoteDb ( Repository allUsersRepository, AccountGroup.UUID groupUuid)
+DECL|method|getGroupFromNoteDb ( AllUsersName allUsersName, Repository allUsersRepository, AccountGroup.UUID groupUuid)
 specifier|private
 specifier|static
 name|Optional
@@ -418,6 +420,9 @@ name|InternalGroup
 argument_list|>
 name|getGroupFromNoteDb
 parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|,
 name|Repository
 name|allUsersRepository
 parameter_list|,
@@ -438,6 +443,8 @@ name|GroupConfig
 operator|.
 name|loadForGroup
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepository
 argument_list|,
 name|groupUuid
@@ -552,12 +559,14 @@ block|{
 return|return
 name|getExternalGroupsFromNoteDb
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|)
 return|;
 block|}
 block|}
-DECL|method|getExternalGroupsFromNoteDb (Repository allUsersRepo)
+DECL|method|getExternalGroupsFromNoteDb ( AllUsersName allUsersName, Repository allUsersRepo)
 specifier|private
 specifier|static
 name|Stream
@@ -568,6 +577,9 @@ name|UUID
 argument_list|>
 name|getExternalGroupsFromNoteDb
 parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|,
 name|Repository
 name|allUsersRepo
 parameter_list|)
@@ -620,6 +632,8 @@ name|group
 init|=
 name|getGroupFromNoteDb
 argument_list|(
+name|allUsersName
+argument_list|,
 name|allUsersRepo
 argument_list|,
 name|internalGroup
@@ -668,8 +682,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the membership audit records for a given group.    *    * @param repo All-Users repository.    * @param groupUuid the UUID of the group    * @return the audit records, in arbitrary order; empty if the group does not exist    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the group couldn't be retrieved from NoteDb    */
-DECL|method|getMembersAudit (Repository repo, AccountGroup.UUID groupUuid)
+comment|/**    * Returns the membership audit records for a given group.    *    * @param allUsersRepo All-Users repository.    * @param groupUuid the UUID of the group    * @return the audit records, in arbitrary order; empty if the group does not exist    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the group couldn't be retrieved from NoteDb    */
+DECL|method|getMembersAudit ( Repository allUsersRepo, AccountGroup.UUID groupUuid)
 specifier|public
 name|List
 argument_list|<
@@ -678,7 +692,7 @@ argument_list|>
 name|getMembersAudit
 parameter_list|(
 name|Repository
-name|repo
+name|allUsersRepo
 parameter_list|,
 name|AccountGroup
 operator|.
@@ -695,7 +709,7 @@ name|auditLogReader
 operator|.
 name|getMembersAudit
 argument_list|(
-name|repo
+name|allUsersRepo
 argument_list|,
 name|groupUuid
 argument_list|)

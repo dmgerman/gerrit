@@ -1586,6 +1586,8 @@ name|prefs
 operator|.
 name|load
 argument_list|(
+name|allUsersName
+argument_list|,
 name|repo
 argument_list|)
 expr_stmt|;

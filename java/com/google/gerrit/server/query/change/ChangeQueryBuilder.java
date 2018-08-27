@@ -6870,6 +6870,10 @@ name|q
 operator|.
 name|load
 argument_list|(
+name|args
+operator|.
+name|allUsersName
+argument_list|,
 name|git
 argument_list|)
 expr_stmt|;
@@ -7037,6 +7041,10 @@ name|d
 operator|.
 name|load
 argument_list|(
+name|args
+operator|.
+name|allUsersName
+argument_list|,
 name|git
 argument_list|)
 expr_stmt|;
