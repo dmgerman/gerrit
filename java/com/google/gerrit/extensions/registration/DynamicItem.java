@@ -207,55 +207,6 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-comment|/** Pair of provider implementation and plugin providing it. */
-DECL|class|NamedProvider
-specifier|static
-class|class
-name|NamedProvider
-parameter_list|<
-name|T
-parameter_list|>
-block|{
-DECL|field|impl
-specifier|final
-name|Provider
-argument_list|<
-name|T
-argument_list|>
-name|impl
-decl_stmt|;
-DECL|field|pluginName
-specifier|final
-name|String
-name|pluginName
-decl_stmt|;
-DECL|method|NamedProvider (Provider<T> provider, String pluginName)
-name|NamedProvider
-parameter_list|(
-name|Provider
-argument_list|<
-name|T
-argument_list|>
-name|provider
-parameter_list|,
-name|String
-name|pluginName
-parameter_list|)
-block|{
-name|this
-operator|.
-name|impl
-operator|=
-name|provider
-expr_stmt|;
-name|this
-operator|.
-name|pluginName
-operator|=
-name|pluginName
-expr_stmt|;
-block|}
-block|}
 comment|/**    * Declare a singleton {@code DynamicItem<T>} with a binder.    *    *<p>Items must be defined in a Guice module before they can be bound:    *    *<pre>    *   DynamicItem.itemOf(binder(), Interface.class);    *   DynamicItem.bind(binder(), Interface.class).to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry to store.    */
 DECL|method|itemOf (Binder binder, Class<T> member)
 specifier|public

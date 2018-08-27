@@ -1974,12 +1974,12 @@ name|attachItems
 argument_list|(
 name|src
 argument_list|,
-name|items
-argument_list|,
 name|plugin
 operator|.
 name|getName
 argument_list|()
+argument_list|,
+name|items
 argument_list|)
 control|)
 block|{
