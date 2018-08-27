@@ -334,7 +334,7 @@ name|getMessage
 argument_list|()
 argument_list|)
 operator|.
-name|startsWith
+name|contains
 argument_list|(
 literal|"contains banned commit"
 argument_list|)

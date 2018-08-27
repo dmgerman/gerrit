@@ -980,7 +980,7 @@ name|ResourceConflictException
 operator|.
 name|class
 argument_list|,
-literal|"invalid Change-Id line format in commit message footer"
+literal|"invalid Change-Id line format in message footer"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1018,7 +1018,7 @@ name|ResourceConflictException
 operator|.
 name|class
 argument_list|,
-literal|"missing subject; Change-Id must be in commit message footer"
+literal|"missing subject; Change-Id must be in message footer"
 argument_list|)
 expr_stmt|;
 block|}
