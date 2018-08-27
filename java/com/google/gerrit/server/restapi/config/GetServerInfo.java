@@ -848,16 +848,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|MalformedURLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|file
@@ -1360,8 +1350,6 @@ name|ConfigResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|MalformedURLException
-throws|,
 name|PermissionBackendException
 block|{
 name|ServerInfo
