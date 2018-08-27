@@ -848,16 +848,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|MalformedURLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|file
@@ -1360,8 +1350,6 @@ name|ConfigResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|MalformedURLException
-throws|,
 name|PermissionBackendException
 block|{
 name|ServerInfo
@@ -1376,57 +1364,35 @@ operator|.
 name|accounts
 operator|=
 name|getAccountsInfo
-argument_list|(
-name|accountVisibilityProvider
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|info
 operator|.
 name|auth
 operator|=
 name|getAuthInfo
-argument_list|(
-name|authConfig
-argument_list|,
-name|realm
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|info
 operator|.
 name|change
 operator|=
 name|getChangeInfo
-argument_list|(
-name|config
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|info
 operator|.
 name|download
 operator|=
 name|getDownloadInfo
-argument_list|(
-name|downloadSchemes
-argument_list|,
-name|downloadCommands
-argument_list|,
-name|cloneCommands
-argument_list|,
-name|archiveFormats
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|info
 operator|.
 name|gerrit
 operator|=
 name|getGerritInfo
-argument_list|(
-name|config
-argument_list|,
-name|allProjectsName
-argument_list|,
-name|allUsersName
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|info
 operator|.
@@ -1473,18 +1439,14 @@ operator|.
 name|sshd
 operator|=
 name|getSshdInfo
-argument_list|(
-name|config
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|info
 operator|.
 name|suggest
 operator|=
 name|getSuggestInfo
-argument_list|(
-name|config
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|Map
 argument_list|<
@@ -1495,9 +1457,7 @@ argument_list|>
 name|urlAliases
 init|=
 name|getUrlAliasesInfo
-argument_list|(
-name|config
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|info
 operator|.
@@ -1518,9 +1478,7 @@ operator|.
 name|user
 operator|=
 name|getUserInfo
-argument_list|(
-name|anonymousCowardName
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|info
 operator|.
@@ -1533,14 +1491,11 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getAccountsInfo (AccountVisibilityProvider accountVisibilityProvider)
+DECL|method|getAccountsInfo ()
 specifier|private
 name|AccountsInfo
 name|getAccountsInfo
-parameter_list|(
-name|AccountVisibilityProvider
-name|accountVisibilityProvider
-parameter_list|)
+parameter_list|()
 block|{
 name|AccountsInfo
 name|info
@@ -1562,17 +1517,11 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getAuthInfo (AuthConfig cfg, Realm realm)
+DECL|method|getAuthInfo ()
 specifier|private
 name|AuthInfo
 name|getAuthInfo
-parameter_list|(
-name|AuthConfig
-name|cfg
-parameter_list|,
-name|Realm
-name|realm
-parameter_list|)
+parameter_list|()
 throws|throws
 name|PermissionBackendException
 block|{
@@ -1587,7 +1536,7 @@ name|info
 operator|.
 name|authType
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getAuthType
 argument_list|()
@@ -1598,7 +1547,7 @@ name|useContributorAgreements
 operator|=
 name|toBoolean
 argument_list|(
-name|cfg
+name|authConfig
 operator|.
 name|isUseContributorAgreements
 argument_list|()
@@ -1622,7 +1571,7 @@ name|info
 operator|.
 name|switchAccountUrl
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getSwitchAccountUrl
 argument_list|()
@@ -1631,7 +1580,7 @@ name|info
 operator|.
 name|gitBasicAuthPolicy
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getGitBasicAuthPolicy
 argument_list|()
@@ -1727,7 +1676,7 @@ name|info
 operator|.
 name|registerUrl
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getRegisterUrl
 argument_list|()
@@ -1736,7 +1685,7 @@ name|info
 operator|.
 name|registerText
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getRegisterText
 argument_list|()
@@ -1745,7 +1694,7 @@ name|info
 operator|.
 name|editFullNameUrl
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getEditFullNameUrl
 argument_list|()
@@ -1758,7 +1707,7 @@ name|info
 operator|.
 name|registerUrl
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getRegisterUrl
 argument_list|()
@@ -1767,7 +1716,7 @@ name|info
 operator|.
 name|registerText
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getRegisterText
 argument_list|()
@@ -1776,7 +1725,7 @@ name|info
 operator|.
 name|editFullNameUrl
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getEditFullNameUrl
 argument_list|()
@@ -1785,7 +1734,7 @@ name|info
 operator|.
 name|httpPasswordUrl
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getHttpPasswordUrl
 argument_list|()
@@ -1801,7 +1750,7 @@ name|info
 operator|.
 name|loginUrl
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getLoginUrl
 argument_list|()
@@ -1810,7 +1759,7 @@ name|info
 operator|.
 name|loginText
 operator|=
-name|cfg
+name|authConfig
 operator|.
 name|getLoginText
 argument_list|()
@@ -1837,14 +1786,11 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getChangeInfo (Config cfg)
+DECL|method|getChangeInfo ()
 specifier|private
 name|ChangeConfigInfo
 name|getChangeInfo
-parameter_list|(
-name|Config
-name|cfg
-parameter_list|)
+parameter_list|()
 block|{
 name|ChangeConfigInfo
 name|info
@@ -1859,7 +1805,7 @@ name|allowBlame
 operator|=
 name|toBoolean
 argument_list|(
-name|cfg
+name|config
 operator|.
 name|getBoolean
 argument_list|(
@@ -1895,7 +1841,7 @@ name|showAssigneeInChangesTable
 operator|=
 name|toBoolean
 argument_list|(
-name|cfg
+name|config
 operator|.
 name|getBoolean
 argument_list|(
@@ -1913,7 +1859,7 @@ name|info
 operator|.
 name|largeChange
 operator|=
-name|cfg
+name|config
 operator|.
 name|getInt
 argument_list|(
@@ -1932,7 +1878,7 @@ name|Optional
 operator|.
 name|ofNullable
 argument_list|(
-name|cfg
+name|config
 operator|.
 name|getString
 argument_list|(
@@ -1959,7 +1905,7 @@ name|Optional
 operator|.
 name|ofNullable
 argument_list|(
-name|cfg
+name|config
 operator|.
 name|getString
 argument_list|(
@@ -1989,7 +1935,7 @@ name|ConfigUtil
 operator|.
 name|getTimeUnit
 argument_list|(
-name|cfg
+name|config
 argument_list|,
 literal|"change"
 argument_list|,
@@ -2012,7 +1958,7 @@ name|MergeSuperSet
 operator|.
 name|wholeTopicEnabled
 argument_list|(
-name|cfg
+name|config
 argument_list|)
 expr_stmt|;
 name|info
@@ -2021,6 +1967,8 @@ name|disablePrivateChanges
 operator|=
 name|toBoolean
 argument_list|(
+name|this
+operator|.
 name|config
 operator|.
 name|getBoolean
@@ -2039,32 +1987,11 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getDownloadInfo ( DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands, AllowedFormats archiveFormats)
+DECL|method|getDownloadInfo ()
 specifier|private
 name|DownloadInfo
 name|getDownloadInfo
-parameter_list|(
-name|DynamicMap
-argument_list|<
-name|DownloadScheme
-argument_list|>
-name|downloadSchemes
-parameter_list|,
-name|DynamicMap
-argument_list|<
-name|DownloadCommand
-argument_list|>
-name|downloadCommands
-parameter_list|,
-name|DynamicMap
-argument_list|<
-name|CloneCommand
-argument_list|>
-name|cloneCommands
-parameter_list|,
-name|AllowedFormats
-name|archiveFormats
-parameter_list|)
+parameter_list|()
 block|{
 name|DownloadInfo
 name|info
@@ -2137,10 +2064,6 @@ argument_list|,
 name|getDownloadSchemeInfo
 argument_list|(
 name|scheme
-argument_list|,
-name|downloadCommands
-argument_list|,
-name|cloneCommands
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2175,25 +2098,13 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getDownloadSchemeInfo ( DownloadScheme scheme, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands)
+DECL|method|getDownloadSchemeInfo (DownloadScheme scheme)
 specifier|private
 name|DownloadSchemeInfo
 name|getDownloadSchemeInfo
 parameter_list|(
 name|DownloadScheme
 name|scheme
-parameter_list|,
-name|DynamicMap
-argument_list|<
-name|DownloadCommand
-argument_list|>
-name|downloadCommands
-parameter_list|,
-name|DynamicMap
-argument_list|<
-name|CloneCommand
-argument_list|>
-name|cloneCommands
 parameter_list|)
 block|{
 name|DownloadSchemeInfo
@@ -2401,20 +2312,11 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getGerritInfo ( Config cfg, AllProjectsName allProjectsName, AllUsersName allUsersName)
+DECL|method|getGerritInfo ()
 specifier|private
 name|GerritInfo
 name|getGerritInfo
-parameter_list|(
-name|Config
-name|cfg
-parameter_list|,
-name|AllProjectsName
-name|allProjectsName
-parameter_list|,
-name|AllUsersName
-name|allUsersName
-parameter_list|)
+parameter_list|()
 block|{
 name|GerritInfo
 name|info
@@ -2445,7 +2347,7 @@ name|info
 operator|.
 name|reportBugUrl
 operator|=
-name|cfg
+name|config
 operator|.
 name|getString
 argument_list|(
@@ -2460,7 +2362,7 @@ name|info
 operator|.
 name|reportBugText
 operator|=
-name|cfg
+name|config
 operator|.
 name|getString
 argument_list|(
@@ -2476,9 +2378,7 @@ operator|.
 name|docUrl
 operator|=
 name|getDocUrl
-argument_list|(
-name|cfg
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|info
 operator|.
@@ -2497,7 +2397,7 @@ name|toBoolean
 argument_list|(
 name|enableSignedPush
 operator|&&
-name|cfg
+name|config
 operator|.
 name|getBoolean
 argument_list|(
@@ -2559,19 +2459,16 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getDocUrl (Config cfg)
+DECL|method|getDocUrl ()
 specifier|private
 name|String
 name|getDocUrl
-parameter_list|(
-name|Config
-name|cfg
-parameter_list|)
+parameter_list|()
 block|{
 name|String
 name|docUrl
 init|=
-name|cfg
+name|config
 operator|.
 name|getString
 argument_list|(
@@ -2735,7 +2632,7 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getUrlAliasesInfo (Config cfg)
+DECL|method|getUrlAliasesInfo ()
 specifier|private
 name|Map
 argument_list|<
@@ -2744,10 +2641,7 @@ argument_list|,
 name|String
 argument_list|>
 name|getUrlAliasesInfo
-parameter_list|(
-name|Config
-name|cfg
-parameter_list|)
+parameter_list|()
 block|{
 name|Map
 argument_list|<
@@ -2767,7 +2661,7 @@ control|(
 name|String
 name|subsection
 range|:
-name|cfg
+name|config
 operator|.
 name|getSubsections
 argument_list|(
@@ -2779,7 +2673,7 @@ name|urlAliases
 operator|.
 name|put
 argument_list|(
-name|cfg
+name|config
 operator|.
 name|getString
 argument_list|(
@@ -2790,7 +2684,7 @@ argument_list|,
 name|KEY_MATCH
 argument_list|)
 argument_list|,
-name|cfg
+name|config
 operator|.
 name|getString
 argument_list|(
@@ -2807,20 +2701,17 @@ return|return
 name|urlAliases
 return|;
 block|}
-DECL|method|getSshdInfo (Config cfg)
+DECL|method|getSshdInfo ()
 specifier|private
 name|SshdInfo
 name|getSshdInfo
-parameter_list|(
-name|Config
-name|cfg
-parameter_list|)
+parameter_list|()
 block|{
 name|String
 index|[]
 name|addr
 init|=
-name|cfg
+name|config
 operator|.
 name|getStringList
 argument_list|(
@@ -2891,14 +2782,11 @@ name|listenHostname
 argument_list|)
 return|;
 block|}
-DECL|method|getSuggestInfo (Config cfg)
+DECL|method|getSuggestInfo ()
 specifier|private
 name|SuggestInfo
 name|getSuggestInfo
-parameter_list|(
-name|Config
-name|cfg
-parameter_list|)
+parameter_list|()
 block|{
 name|SuggestInfo
 name|info
@@ -2911,7 +2799,7 @@ name|info
 operator|.
 name|from
 operator|=
-name|cfg
+name|config
 operator|.
 name|getInt
 argument_list|(
@@ -2926,14 +2814,11 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getUserInfo (String anonymousCowardName)
+DECL|method|getUserInfo ()
 specifier|private
 name|UserConfigInfo
 name|getUserInfo
-parameter_list|(
-name|String
-name|anonymousCowardName
-parameter_list|)
+parameter_list|()
 block|{
 name|UserConfigInfo
 name|info
