@@ -7568,7 +7568,7 @@ name|r
 operator|.
 name|assertErrorStatus
 argument_list|(
-literal|"not Signed-off-by author/committer/uploader in commit message footer"
+literal|"not Signed-off-by author/committer/uploader in message footer"
 argument_list|)
 expr_stmt|;
 block|}
@@ -8782,7 +8782,7 @@ name|pushForReviewRejected
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"missing Change-Id in commit message footer"
+literal|"missing Change-Id in message footer"
 argument_list|)
 expr_stmt|;
 name|setRequireChangeId
@@ -8854,7 +8854,7 @@ name|pushForReviewRejected
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"multiple Change-Id lines in commit message footer"
+literal|"multiple Change-Id lines in message footer"
 argument_list|)
 expr_stmt|;
 name|setRequireChangeId
@@ -8868,7 +8868,7 @@ name|pushForReviewRejected
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"multiple Change-Id lines in commit message footer"
+literal|"multiple Change-Id lines in message footer"
 argument_list|)
 expr_stmt|;
 block|}
@@ -8922,7 +8922,7 @@ name|pushForReviewRejected
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"invalid Change-Id line format in commit message footer"
+literal|"invalid Change-Id line format in message footer"
 argument_list|)
 expr_stmt|;
 name|setRequireChangeId
@@ -8936,7 +8936,7 @@ name|pushForReviewRejected
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"invalid Change-Id line format in commit message footer"
+literal|"invalid Change-Id line format in message footer"
 argument_list|)
 expr_stmt|;
 block|}
@@ -8994,7 +8994,7 @@ name|pushForReviewRejected
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"invalid Change-Id line format in commit message footer"
+literal|"invalid Change-Id line format in message footer"
 argument_list|)
 expr_stmt|;
 name|setRequireChangeId
@@ -9008,7 +9008,7 @@ name|pushForReviewRejected
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"invalid Change-Id line format in commit message footer"
+literal|"invalid Change-Id line format in message footer"
 argument_list|)
 expr_stmt|;
 block|}
@@ -9033,7 +9033,7 @@ name|pushForReviewRejected
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"missing subject; Change-Id must be in commit message footer"
+literal|"missing subject; Change-Id must be in message footer"
 argument_list|)
 expr_stmt|;
 name|setRequireChangeId
@@ -9047,7 +9047,7 @@ name|pushForReviewRejected
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"missing subject; Change-Id must be in commit message footer"
+literal|"missing subject; Change-Id must be in message footer"
 argument_list|)
 expr_stmt|;
 block|}

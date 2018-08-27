@@ -6338,7 +6338,7 @@ name|getMessage
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|contains
 argument_list|(
 name|msg
 argument_list|)

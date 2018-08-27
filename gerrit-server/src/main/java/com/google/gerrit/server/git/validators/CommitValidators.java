@@ -342,22 +342,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|GerritPersonIdent
@@ -1627,7 +1611,7 @@ specifier|final
 name|String
 name|MISSING_CHANGE_ID_MSG
 init|=
-literal|"[%s] missing Change-Id in commit message footer"
+literal|"missing Change-Id in message footer"
 decl_stmt|;
 DECL|field|MISSING_SUBJECT_MSG
 specifier|private
@@ -1636,7 +1620,7 @@ specifier|final
 name|String
 name|MISSING_SUBJECT_MSG
 init|=
-literal|"[%s] missing subject; Change-Id must be in commit message footer"
+literal|"missing subject; Change-Id must be in message footer"
 decl_stmt|;
 DECL|field|MULTIPLE_CHANGE_ID_MSG
 specifier|private
@@ -1645,7 +1629,7 @@ specifier|final
 name|String
 name|MULTIPLE_CHANGE_ID_MSG
 init|=
-literal|"[%s] multiple Change-Id lines in commit message footer"
+literal|"multiple Change-Id lines in message footer"
 decl_stmt|;
 DECL|field|INVALID_CHANGE_ID_MSG
 specifier|private
@@ -1654,7 +1638,7 @@ specifier|final
 name|String
 name|INVALID_CHANGE_ID_MSG
 init|=
-literal|"[%s] invalid Change-Id line format in commit message footer"
+literal|"invalid Change-Id line format in message footer"
 decl_stmt|;
 DECL|field|CHANGE_ID
 specifier|private
@@ -1816,21 +1800,6 @@ operator|.
 name|CHANGE_ID
 argument_list|)
 decl_stmt|;
-name|String
-name|sha1
-init|=
-name|commit
-operator|.
-name|abbreviate
-argument_list|(
-name|RevId
-operator|.
-name|ABBREV_LEN
-argument_list|)
-operator|.
-name|name
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|idList
@@ -1878,23 +1847,11 @@ name|matches
 argument_list|()
 condition|)
 block|{
-name|String
-name|errMsg
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-name|MISSING_SUBJECT_MSG
-argument_list|,
-name|sha1
-argument_list|)
-decl_stmt|;
 throw|throw
 operator|new
 name|CommitValidationException
 argument_list|(
-name|errMsg
+name|MISSING_SUBJECT_MSG
 argument_list|)
 throw|;
 block|}
@@ -1906,25 +1863,13 @@ name|isRequireChangeID
 argument_list|()
 condition|)
 block|{
-name|String
-name|errMsg
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-name|MISSING_CHANGE_ID_MSG
-argument_list|,
-name|sha1
-argument_list|)
-decl_stmt|;
 name|messages
 operator|.
 name|add
 argument_list|(
 name|getMissingChangeIdErrorMsg
 argument_list|(
-name|errMsg
+name|MISSING_CHANGE_ID_MSG
 argument_list|,
 name|commit
 argument_list|)
@@ -1934,7 +1879,7 @@ throw|throw
 operator|new
 name|CommitValidationException
 argument_list|(
-name|errMsg
+name|MISSING_CHANGE_ID_MSG
 argument_list|,
 name|messages
 argument_list|)
@@ -1952,23 +1897,11 @@ operator|>
 literal|1
 condition|)
 block|{
-name|String
-name|errMsg
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-name|MULTIPLE_CHANGE_ID_MSG
-argument_list|,
-name|sha1
-argument_list|)
-decl_stmt|;
 throw|throw
 operator|new
 name|CommitValidationException
 argument_list|(
-name|errMsg
+name|MULTIPLE_CHANGE_ID_MSG
 argument_list|,
 name|messages
 argument_list|)
@@ -2017,25 +1950,13 @@ literal|"^I00*$"
 argument_list|)
 condition|)
 block|{
-name|String
-name|errMsg
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-name|INVALID_CHANGE_ID_MSG
-argument_list|,
-name|sha1
-argument_list|)
-decl_stmt|;
 name|messages
 operator|.
 name|add
 argument_list|(
 name|getMissingChangeIdErrorMsg
 argument_list|(
-name|errMsg
+name|INVALID_CHANGE_ID_MSG
 argument_list|,
 name|receiveEvent
 operator|.
@@ -2047,7 +1968,7 @@ throw|throw
 operator|new
 name|CommitValidationException
 argument_list|(
-name|errMsg
+name|INVALID_CHANGE_ID_MSG
 argument_list|,
 name|messages
 argument_list|)
@@ -3382,7 +3303,7 @@ throw|throw
 operator|new
 name|CommitValidationException
 argument_list|(
-literal|"not Signed-off-by author/committer/uploader in commit message footer"
+literal|"not Signed-off-by author/committer/uploader in message footer"
 argument_list|)
 throw|;
 block|}
