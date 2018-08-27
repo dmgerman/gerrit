@@ -314,6 +314,9 @@ operator|.
 name|open
 argument_list|()
 operator|.
+name|forceLogging
+argument_list|()
+operator|.
 name|addTag
 argument_list|(
 name|RequestId

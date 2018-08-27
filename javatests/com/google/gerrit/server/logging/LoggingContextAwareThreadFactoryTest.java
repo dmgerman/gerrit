@@ -182,6 +182,11 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
+name|assertForceLogging
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 try|try
 init|(
 name|TraceContext
@@ -190,6 +195,9 @@ init|=
 name|TraceContext
 operator|.
 name|open
+argument_list|()
+operator|.
+name|forceLogging
 argument_list|()
 operator|.
 name|addTag
@@ -250,6 +258,11 @@ argument_list|(
 literal|"bar"
 argument_list|)
 expr_stmt|;
+name|assertForceLogging
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|Thread
 name|thread
 init|=
@@ -272,7 +285,8 @@ argument_list|(
 parameter_list|()
 lambda|->
 block|{
-comment|// Verify that the tags have been propagated to the new thread.
+comment|// Verify that the tags and force logging flag have been propagated to the new
+comment|// thread.
 name|SortedMap
 argument_list|<
 name|String
@@ -327,6 +341,28 @@ argument_list|(
 literal|"bar"
 argument_list|)
 argument_list|;
+name|expect
+operator|.
+name|that
+argument_list|(
+name|LoggingContext
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|shouldForceLogging
+argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+operator|.
+name|isTrue
+argument_list|()
+argument_list|;
 block|}
 block|)
 function|;
@@ -341,7 +377,7 @@ operator|.
 name|join
 parameter_list|()
 constructor_decl|;
-comment|// Verify that tags in the outer thread are still set.
+comment|// Verify that tags and force logging flag in the outer thread are still set.
 name|tagMap
 operator|=
 name|LoggingContext
@@ -383,6 +419,11 @@ argument_list|(
 literal|"bar"
 argument_list|)
 expr_stmt|;
+name|assertForceLogging
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 end_class
 
@@ -403,6 +444,14 @@ argument_list|)
 operator|.
 name|isTrue
 argument_list|()
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|assertForceLogging
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 end_expr_stmt
 
@@ -434,6 +483,11 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
+name|assertForceLogging
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 try|try
 init|(
 name|TraceContext
@@ -442,6 +496,9 @@ init|=
 name|TraceContext
 operator|.
 name|open
+argument_list|()
+operator|.
+name|forceLogging
 argument_list|()
 operator|.
 name|addTag
@@ -502,6 +559,11 @@ argument_list|(
 literal|"bar"
 argument_list|)
 expr_stmt|;
+name|assertForceLogging
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|Thread
 name|thread
 init|=
@@ -514,7 +576,8 @@ argument_list|(
 parameter_list|()
 lambda|->
 block|{
-comment|// Verify that the tags have been propagated to the new thread.
+comment|// Verify that the tags and force logging flag have been propagated to the new
+comment|// thread.
 name|SortedMap
 argument_list|<
 name|String
@@ -569,6 +632,28 @@ argument_list|(
 literal|"bar"
 argument_list|)
 expr_stmt|;
+name|expect
+operator|.
+name|that
+argument_list|(
+name|LoggingContext
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|shouldForceLogging
+argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+operator|.
+name|isTrue
+argument_list|()
+expr_stmt|;
 block|}
 argument_list|)
 decl_stmt|;
@@ -578,7 +663,7 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
-comment|// Verify that tags in the outer thread are still set.
+comment|// Verify that tags and force logging flag in the outer thread are still set.
 name|tagMap
 operator|=
 name|LoggingContext
@@ -620,6 +705,11 @@ argument_list|(
 literal|"bar"
 argument_list|)
 expr_stmt|;
+name|assertForceLogging
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 name|assertThat
 argument_list|(
@@ -637,6 +727,46 @@ argument_list|)
 operator|.
 name|isTrue
 argument_list|()
+expr_stmt|;
+name|assertForceLogging
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|assertForceLogging (boolean expected)
+specifier|private
+name|void
+name|assertForceLogging
+parameter_list|(
+name|boolean
+name|expected
+parameter_list|)
+block|{
+name|assertThat
+argument_list|(
+name|LoggingContext
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|shouldForceLogging
+argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|expected
+argument_list|)
 expr_stmt|;
 block|}
 end_function
