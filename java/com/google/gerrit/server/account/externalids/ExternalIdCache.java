@@ -173,8 +173,6 @@ name|ExternalId
 argument_list|>
 name|toAdd
 parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
 DECL|method|byAccount (Account.Id accountId)
 name|Set
