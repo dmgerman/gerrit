@@ -1928,10 +1928,14 @@ implements|implements
 name|Option
 block|{
 DECL|field|prefix
+specifier|private
+specifier|final
 name|String
 name|prefix
 decl_stmt|;
 DECL|field|o
+specifier|private
+specifier|final
 name|Option
 name|o
 decl_stmt|;
