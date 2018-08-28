@@ -4870,6 +4870,23 @@ argument_list|()
 argument_list|)
 argument_list|)
 block|;
+comment|// Log the push options here, rather than in parsePushOptions(), so that they are included
+comment|// into the trace if tracing is enabled.
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"push options: %s"
+argument_list|,
+name|receivePack
+operator|.
+name|getPushOptions
+argument_list|()
+argument_list|)
+block|;
 try|try
 block|{
 if|if
