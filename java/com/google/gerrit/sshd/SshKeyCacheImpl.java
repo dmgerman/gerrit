@@ -676,6 +676,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Evict SSH key for username %s"
+argument_list|,
+name|username
+argument_list|)
+expr_stmt|;
 name|cache
 operator|.
 name|invalidate

@@ -1148,6 +1148,21 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Evict account %d"
+argument_list|,
+name|accountId
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|byId
 operator|.
 name|invalidate
@@ -1165,6 +1180,16 @@ name|void
 name|evictAll
 parameter_list|()
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Evict all accounts"
+argument_list|)
+expr_stmt|;
 name|byId
 operator|.
 name|invalidateAll

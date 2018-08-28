@@ -849,6 +849,21 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Evict groups with member %d"
+argument_list|,
+name|memberId
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|groupsWithMember
 operator|.
 name|invalidate
@@ -878,6 +893,21 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Evict parent groups of %s"
+argument_list|,
+name|groupId
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|parentGroups
 operator|.
 name|invalidate
@@ -896,6 +926,21 @@ name|groupId
 argument_list|)
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Evict external group %s"
+argument_list|,
+name|groupId
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|external
 operator|.
 name|invalidate
