@@ -632,11 +632,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
+name|logging
 operator|.
-name|ChangeNotesCommit
-operator|.
-name|ChangeNotesRevWalk
+name|RequestId
 import|;
 end_import
 
@@ -650,9 +648,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|notedb
 operator|.
-name|RequestId
+name|ChangeNotesCommit
+operator|.
+name|ChangeNotesRevWalk
 import|;
 end_import
 

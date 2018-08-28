@@ -216,7 +216,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|logging
 operator|.
 name|RequestId
 import|;
