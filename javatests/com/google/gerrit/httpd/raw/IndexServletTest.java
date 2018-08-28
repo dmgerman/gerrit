@@ -125,6 +125,7 @@ class|class
 name|IndexServletTest
 block|{
 DECL|class|TestIndexServlet
+specifier|static
 class|class
 name|TestIndexServlet
 extends|extends

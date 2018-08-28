@@ -6815,6 +6815,7 @@ return|;
 block|}
 DECL|class|MockUser
 specifier|private
+specifier|static
 class|class
 name|MockUser
 extends|extends
