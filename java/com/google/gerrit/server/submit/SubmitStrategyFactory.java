@@ -268,11 +268,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|submit
+name|logging
 operator|.
-name|MergeOp
-operator|.
-name|CommitStatus
+name|RequestId
 import|;
 end_import
 
@@ -286,9 +284,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|submit
 operator|.
-name|RequestId
+name|MergeOp
+operator|.
+name|CommitStatus
 import|;
 end_import
 

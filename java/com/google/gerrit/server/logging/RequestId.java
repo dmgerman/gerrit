@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.util
+DECL|package|com.google.gerrit.server.logging
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|logging
 package|;
 end_package
 
@@ -165,22 +165,6 @@ operator|.
 name|client
 operator|.
 name|Project
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|logging
-operator|.
-name|LoggingContext
 import|;
 end_import
 

@@ -76,7 +76,7 @@ name|server
 operator|.
 name|logging
 operator|.
-name|TraceContext
+name|RequestId
 import|;
 end_import
 
@@ -90,9 +90,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|logging
 operator|.
-name|RequestId
+name|TraceContext
 import|;
 end_import
 

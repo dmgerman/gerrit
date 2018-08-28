@@ -116,9 +116,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|logging
 operator|.
-name|CreateProjectArgs
+name|RequestId
 import|;
 end_import
 
@@ -132,9 +132,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|project
 operator|.
-name|RequestId
+name|CreateProjectArgs
 import|;
 end_import
 

@@ -110,22 +110,6 @@ name|Table
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|RequestId
-import|;
-end_import
-
 begin_class
 DECL|class|TraceContext
 specifier|public
