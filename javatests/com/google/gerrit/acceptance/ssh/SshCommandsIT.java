@@ -323,7 +323,7 @@ DECL|field|COMMON_ROOT_COMMANDS
 specifier|private
 specifier|static
 specifier|final
-name|List
+name|ImmutableList
 argument_list|<
 name|String
 argument_list|>
@@ -368,7 +368,7 @@ DECL|field|MASTER_ONLY_ROOT_COMMANDS
 specifier|private
 specifier|static
 specifier|final
-name|List
+name|ImmutableList
 argument_list|<
 name|String
 argument_list|>
@@ -421,7 +421,7 @@ DECL|field|MASTER_COMMANDS
 specifier|private
 specifier|static
 specifier|final
-name|Map
+name|ImmutableMap
 argument_list|<
 name|String
 argument_list|,
@@ -541,7 +541,7 @@ DECL|field|SLAVE_COMMANDS
 specifier|private
 specifier|static
 specifier|final
-name|Map
+name|ImmutableMap
 argument_list|<
 name|String
 argument_list|,
