@@ -3640,10 +3640,6 @@ literal|"invalid author"
 argument_list|,
 name|invalidEmail
 argument_list|(
-name|receiveEvent
-operator|.
-name|commit
-argument_list|,
 literal|"author"
 argument_list|,
 name|author
@@ -3828,10 +3824,6 @@ literal|"invalid committer"
 argument_list|,
 name|invalidEmail
 argument_list|(
-name|receiveEvent
-operator|.
-name|commit
-argument_list|,
 literal|"committer"
 argument_list|,
 name|committer
@@ -4906,15 +4898,12 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|invalidEmail ( RevCommit c, String type, PersonIdent who, IdentifiedUser currentUser, String canonicalWebUrl)
+DECL|method|invalidEmail ( String type, PersonIdent who, IdentifiedUser currentUser, String canonicalWebUrl)
 specifier|private
 specifier|static
 name|CommitValidationMessage
 name|invalidEmail
 parameter_list|(
-name|RevCommit
-name|c
-parameter_list|,
 name|String
 name|type
 parameter_list|,
@@ -4939,44 +4928,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:  In commit "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|c
-operator|.
-name|name
-argument_list|()
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:  "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|type
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|" email address "
+literal|"email address "
 argument_list|)
 operator|.
 name|append
@@ -4989,14 +4941,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:  does not match your user account and you have no 'forge "
+literal|" is not registered in your account, and you lack 'forge "
 argument_list|)
 operator|.
 name|append
@@ -5007,13 +4952,6 @@ operator|.
 name|append
 argument_list|(
 literal|"' permission.\n"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:\n"
 argument_list|)
 expr_stmt|;
 if|if
@@ -5031,7 +4969,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"ERROR:  You have not registered any email addresses.\n"
+literal|"You have not registered any email addresses.\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -5041,7 +4979,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"ERROR:  The following addresses are currently registered:\n"
+literal|"The following addresses are currently registered:\n"
 argument_list|)
 expr_stmt|;
 for|for
@@ -5059,7 +4997,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"ERROR:    "
+literal|"   "
 argument_list|)
 operator|.
 name|append
@@ -5074,13 +5012,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:\n"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|canonicalWebUrl
@@ -5092,15 +5023,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"ERROR:  To register an email address, please visit:\n"
+literal|"To register an email address, visit:\n"
 argument_list|)
 expr_stmt|;
 name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:  "
-argument_list|)
 operator|.
 name|append
 argument_list|(
@@ -5141,7 +5067,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 return|;
 block|}
