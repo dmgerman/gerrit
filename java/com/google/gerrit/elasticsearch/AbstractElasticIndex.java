@@ -1019,6 +1019,8 @@ operator|new
 name|InputStreamReader
 argument_list|(
 name|contentStream
+argument_list|,
+name|UTF_8
 argument_list|)
 init|)
 block|{
