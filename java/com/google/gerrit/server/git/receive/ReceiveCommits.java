@@ -6997,7 +6997,7 @@ argument_list|()
 condition|)
 block|{
 comment|// These semantics for duplicates/errors are somewhat arbitrary and may not match e.g. the
-comment|// CommandLineParser behavior used by MagicBranchInput.
+comment|// CmdLineParser behavior used by MagicBranchInput.
 name|String
 name|value
 init|=
