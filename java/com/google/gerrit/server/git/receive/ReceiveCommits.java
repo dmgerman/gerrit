@@ -3912,7 +3912,7 @@ DECL|field|tracePushOption
 specifier|private
 name|Optional
 argument_list|<
-name|Boolean
+name|String
 argument_list|>
 name|tracePushOption
 decl_stmt|;
@@ -4808,9 +4808,14 @@ name|newTrace
 argument_list|(
 name|tracePushOption
 operator|.
+name|isPresent
+argument_list|()
+argument_list|,
+name|tracePushOption
+operator|.
 name|orElse
 argument_list|(
-literal|false
+literal|null
 argument_list|)
 argument_list|,
 parameter_list|(
@@ -7158,16 +7163,6 @@ operator|.
 name|of
 argument_list|(
 name|value
-operator|.
-name|isEmpty
-argument_list|()
-operator|||
-name|Boolean
-operator|.
-name|parseBoolean
-argument_list|(
-name|value
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -9521,7 +9516,7 @@ operator|=
 literal|"enable tracing"
 argument_list|)
 DECL|field|trace
-name|boolean
+name|String
 name|trace
 decl_stmt|;
 annotation|@
