@@ -346,6 +346,7 @@ name|cfg
 decl_stmt|;
 DECL|field|client
 specifier|private
+specifier|volatile
 name|RestClient
 name|client
 decl_stmt|;
