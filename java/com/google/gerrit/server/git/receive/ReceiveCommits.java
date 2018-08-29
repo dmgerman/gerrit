@@ -7238,6 +7238,19 @@ argument_list|,
 name|changeId
 argument_list|)
 expr_stmt|;
+name|messages
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ValidationMessage
+argument_list|(
+literal|"warning: pushes to refs/changes are deprecated"
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
