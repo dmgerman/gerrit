@@ -193,7 +193,7 @@ name|DropWizardMetricMaker
 name|metrics
 decl_stmt|;
 DECL|field|name
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|name

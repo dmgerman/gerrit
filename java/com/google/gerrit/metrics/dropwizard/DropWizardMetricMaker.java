@@ -2861,12 +2861,6 @@ name|TimerImpl
 extends|extends
 name|Timer0
 block|{
-DECL|field|name
-specifier|private
-specifier|final
-name|String
-name|name
-decl_stmt|;
 DECL|field|metric
 specifier|final
 name|com
@@ -2895,11 +2889,10 @@ name|Timer
 name|metric
 parameter_list|)
 block|{
-name|this
-operator|.
+name|super
+argument_list|(
 name|name
-operator|=
-name|name
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
