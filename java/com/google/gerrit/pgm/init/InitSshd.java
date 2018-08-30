@@ -684,7 +684,7 @@ literal|"-t"
 argument_list|,
 literal|"rsa"
 argument_list|,
-literal|"-P"
+literal|"-N"
 argument_list|,
 name|emptyPassphraseArg
 argument_list|,
