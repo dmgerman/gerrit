@@ -842,6 +842,21 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Evict group %s by ID"
+argument_list|,
+name|groupId
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|byId
 operator|.
 name|invalidate
@@ -871,6 +886,21 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Evict group '%s' by name"
+argument_list|,
+name|groupName
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|byName
 operator|.
 name|invalidate
@@ -903,6 +933,21 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Evict group %s by UUID"
+argument_list|,
+name|groupUuid
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|byUUID
 operator|.
 name|invalidate

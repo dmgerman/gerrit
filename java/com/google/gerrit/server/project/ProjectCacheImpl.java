@@ -1222,6 +1222,21 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Evict project '%s'"
+argument_list|,
+name|p
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|byName
 operator|.
 name|invalidate
