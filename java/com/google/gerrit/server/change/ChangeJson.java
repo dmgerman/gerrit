@@ -9117,6 +9117,29 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// Check if the user has the permission to remove a reviewer. This means we can bypass the
+comment|// testRemoveReviewer check for a specific reviewer in the loop saving potentially many
+comment|// permission checks.
+name|boolean
+name|canRemoveAnyReviewer
+init|=
+name|permissionBackendForChange
+argument_list|(
+name|userProvider
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|cd
+argument_list|)
+operator|.
+name|test
+argument_list|(
+name|ChangePermission
+operator|.
+name|REMOVE_REVIEWER
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|LabelInfo
@@ -9163,6 +9186,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|canRemoveAnyReviewer
+operator|||
 name|removeReviewerControl
 operator|.
 name|testRemoveReviewer
@@ -9271,6 +9296,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|canRemoveAnyReviewer
+operator|||
 name|removeReviewerControl
 operator|.
 name|testRemoveReviewer
