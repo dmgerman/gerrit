@@ -3926,7 +3926,7 @@ DECL|field|tracePushOption
 specifier|private
 name|Optional
 argument_list|<
-name|Boolean
+name|String
 argument_list|>
 name|tracePushOption
 decl_stmt|;
@@ -4818,8 +4818,38 @@ name|traceContext
 init|=
 name|TraceContext
 operator|.
-name|open
+name|newTrace
+argument_list|(
+name|tracePushOption
+operator|.
+name|isPresent
 argument_list|()
+argument_list|,
+name|tracePushOption
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
+argument_list|,
+parameter_list|(
+name|tagName
+parameter_list|,
+name|traceId
+parameter_list|)
+lambda|->
+name|addMessage
+argument_list|(
+name|tagName
+operator|+
+literal|": "
+operator|+
+name|traceId
+argument_list|)
+argument_list|)
+init|)
+block|{
+name|traceContext
 operator|.
 name|addTag
 argument_list|(
@@ -4839,58 +4869,7 @@ name|getNameKey
 argument_list|()
 argument_list|)
 argument_list|)
-init|)
-block|{
-if|if
-condition|(
-name|tracePushOption
-operator|.
-name|orElse
-argument_list|(
-literal|false
-argument_list|)
-condition|)
-block|{
-name|RequestId
-name|traceId
-init|=
-operator|new
-name|RequestId
-argument_list|()
-decl_stmt|;
-name|traceContext
-operator|.
-name|forceLogging
-argument_list|()
-operator|.
-name|addTag
-argument_list|(
-name|RequestId
-operator|.
-name|Type
-operator|.
-name|TRACE_ID
-argument_list|,
-name|traceId
-argument_list|)
-expr_stmt|;
-name|addMessage
-argument_list|(
-name|RequestId
-operator|.
-name|Type
-operator|.
-name|TRACE_ID
-operator|.
-name|name
-argument_list|()
-operator|+
-literal|": "
-operator|+
-name|traceId
-argument_list|)
-expr_stmt|;
-block|}
+block|;
 try|try
 block|{
 if|if
@@ -5180,6 +5159,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_class
+
+begin_catch
 catch|catch
 parameter_list|(
 name|PermissionBackendException
@@ -5212,6 +5194,9 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+end_catch
+
+begin_decl_stmt
 name|Task
 name|newProgress
 init|=
@@ -5224,6 +5209,9 @@ argument_list|,
 name|UNKNOWN
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 name|Task
 name|replaceProgress
 init|=
@@ -5236,6 +5224,9 @@ argument_list|,
 name|UNKNOWN
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 name|List
 argument_list|<
 name|CreateRequest
@@ -5247,6 +5238,9 @@ operator|.
 name|emptyList
 argument_list|()
 decl_stmt|;
+end_decl_stmt
+
+begin_if
 if|if
 condition|(
 name|magicBranch
@@ -5271,18 +5265,33 @@ name|newProgress
 argument_list|)
 expr_stmt|;
 block|}
+end_if
+
+begin_comment
 comment|// Commit validation has already happened, so any changes without Change-Id are for the
+end_comment
+
+begin_comment
 comment|// deprecated feature.
+end_comment
+
+begin_expr_stmt
 name|warnAboutMissingChangeId
 argument_list|(
 name|newChanges
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|preparePatchSetsForReplace
 argument_list|(
 name|newChanges
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|insertChangesAndPatchSets
 argument_list|(
 name|newChanges
@@ -5290,26 +5299,40 @@ argument_list|,
 name|replaceProgress
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|newProgress
 operator|.
 name|end
 argument_list|()
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|replaceProgress
 operator|.
 name|end
 argument_list|()
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|queueSuccessMessages
 argument_list|(
 name|newChanges
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|refsPublishDeprecationWarning
 argument_list|()
 expr_stmt|;
-block|}
-block|}
+end_expr_stmt
+
+begin_function
+unit|}   }
 DECL|method|refsPublishDeprecationWarning ()
 specifier|private
 name|void
@@ -5335,6 +5358,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|sendErrorMessages ()
 specifier|private
 name|void
@@ -5422,6 +5448,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|handleRegularCommands (List<ReceiveCommand> cmds, MultiProgressMonitor progress)
 specifier|private
 name|void
@@ -5837,7 +5866,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/** Appends messages for successful change creation/updates. */
+end_comment
+
+begin_function
 DECL|method|queueSuccessMessages (List<CreateRequest> newChanges)
 specifier|private
 name|void
@@ -6300,6 +6335,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|insertChangesAndPatchSets (List<CreateRequest> newChanges, Task replaceProgress)
 specifier|private
 name|void
@@ -6821,6 +6859,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|buildError (String error, List<String> branches)
 specifier|private
 name|String
@@ -6928,7 +6969,13 @@ name|toString
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/** Parses push options specified as "git push -o OPTION" */
+end_comment
+
+begin_function
 DECL|method|parsePushOptions ()
 specifier|private
 name|void
@@ -7146,16 +7193,6 @@ operator|.
 name|of
 argument_list|(
 name|value
-operator|.
-name|isEmpty
-argument_list|()
-operator|||
-name|Boolean
-operator|.
-name|parseBoolean
-argument_list|(
-name|value
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -7170,6 +7207,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|isDirectChangesPush (String refname)
 specifier|private
 specifier|static
@@ -7197,6 +7237,9 @@ name|matches
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|parseDirectChangesPush (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -7284,7 +7327,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|// Wrap ReceiveCommand so the progress counter works automatically.
+end_comment
+
+begin_function
 DECL|method|wrapReceiveCommand (ReceiveCommand cmd, Task progress)
 specifier|private
 name|ReceiveCommand
@@ -7434,7 +7483,13 @@ block|}
 block|}
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/*    * Interpret a normal push.    */
+end_comment
+
+begin_function
 DECL|method|parseRegularCommand (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -8371,6 +8426,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|parseCreate (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -8591,6 +8649,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|parseUpdate (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -8706,6 +8767,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|isCommit (ReceiveCommand cmd)
 specifier|private
 name|boolean
@@ -8803,6 +8867,9 @@ return|return
 literal|false
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|parseDelete (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -8935,6 +9002,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|parseRewind (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -9118,6 +9188,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|checkRefPermission (ReceiveCommand cmd, RefPermission perm)
 specifier|private
 name|Optional
@@ -9152,6 +9225,9 @@ name|perm
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|checkRefPermission ( PermissionBackend.ForRef forRef, RefPermission perm)
 specifier|private
 name|Optional
@@ -9203,6 +9279,9 @@ argument_list|)
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|rejectProhibited (ReceiveCommand cmd, AuthException err)
 specifier|private
 name|void
@@ -9253,6 +9332,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|prohibited (AuthException e, String alreadyDisplayedResource)
 specifier|private
 specifier|static
@@ -9334,6 +9416,9 @@ operator|+
 name|msg
 return|;
 block|}
+end_function
+
+begin_class
 DECL|class|MagicBranchInput
 specifier|static
 class|class
@@ -9474,7 +9559,7 @@ operator|=
 literal|"enable tracing"
 argument_list|)
 DECL|field|trace
-name|boolean
+name|String
 name|trace
 decl_stmt|;
 annotation|@
@@ -10742,7 +10827,13 @@ name|ALL
 return|;
 block|}
 block|}
+end_class
+
+begin_comment
 comment|/**    * Parse the magic branch data (refs/for/BRANCH/OPTIONALTOPIC%OPTIONS) into the magicBranch    * member.    *    *<p>Assumes we are handling a magic branch here.    */
+end_comment
+
+begin_function
 DECL|method|parseMagicBranch (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -11849,10 +11940,25 @@ name|magicBranch
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|// Validate that the new commits are connected with the target
+end_comment
+
+begin_comment
 comment|// branch.  If they aren't, we want to abort. We do this check by
+end_comment
+
+begin_comment
 comment|// looking to see if we can compute a merge base between the new
+end_comment
+
+begin_comment
 comment|// commits and the target branch head.
+end_comment
+
+begin_function
 DECL|method|validateConnected (Branch.NameKey dest, RevCommit tip)
 specifier|private
 name|boolean
@@ -12069,6 +12175,9 @@ return|return
 literal|true
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|readHEAD (Repository repo)
 specifier|private
 specifier|static
@@ -12114,6 +12223,9 @@ literal|null
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|readBranchTip (ReceiveCommand cmd, Branch.NameKey branch)
 specifier|private
 name|RevCommit
@@ -12182,7 +12294,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|// Handle an upload to refs/changes/XX/CHANGED-NUMBER.
+end_comment
+
+begin_function
 DECL|method|parseReplaceCommand (ReceiveCommand cmd, Change.Id changeId)
 specifier|private
 name|void
@@ -12501,7 +12619,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**    * Add an update for an existing change. Returns true if it succeeded; rejects the command if it    * failed.    */
+end_comment
+
+begin_function
 DECL|method|requestReplace ( ReceiveCommand cmd, boolean checkMergedInto, Change change, RevCommit newCommit)
 specifier|private
 name|boolean
@@ -12616,6 +12740,9 @@ return|return
 literal|true
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|warnAboutMissingChangeId (List<CreateRequest> newChanges)
 specifier|private
 name|void
@@ -12701,6 +12828,9 @@ break|break;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|selectNewAndReplacedChangesFromMagicBranch (Task newProgress)
 specifier|private
 name|List
@@ -14172,6 +14302,9 @@ return|return
 name|newChanges
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|foundInExistingRef (Collection<Ref> existingRefs)
 specifier|private
 name|boolean
@@ -14295,6 +14428,9 @@ return|return
 literal|false
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setUpWalkForSelectingChanges ()
 specifier|private
 name|RevCommit
@@ -14444,6 +14580,9 @@ return|return
 name|start
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|markExplicitBasesUninteresting ()
 specifier|private
 name|void
@@ -14561,6 +14700,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|rejectImplicitMerges (Set<RevCommit> mergedParents)
 specifier|private
 name|void
@@ -14755,8 +14897,17 @@ block|}
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|// Mark all branch tips as uninteresting in the given revwalk,
+end_comment
+
+begin_comment
 comment|// so we get only the new commits when walking rw.
+end_comment
+
+begin_function
 DECL|method|markHeadsAsUninteresting (RevWalk rw, @Nullable String forRef)
 specifier|private
 name|void
@@ -14888,6 +15039,9 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|isValidChangeId (String idStr)
 specifier|private
 specifier|static
@@ -14915,6 +15069,9 @@ literal|"^I00*$"
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_class
 DECL|class|ChangeLookup
 specifier|private
 specifier|static
@@ -14984,6 +15141,9 @@ name|destChanges
 expr_stmt|;
 block|}
 block|}
+end_class
+
+begin_function
 DECL|method|lookupByChangeKey (RevCommit c, Change.Key key)
 name|ChangeLookup
 name|lookupByChangeKey
@@ -15023,6 +15183,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|lookupByCommit (RevCommit c)
 name|ChangeLookup
 name|lookupByCommit
@@ -15060,7 +15223,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/** Represents a commit for which a Change should be created. */
+end_comment
+
+begin_class
 DECL|class|CreateRequest
 specifier|private
 class|class
@@ -15730,6 +15899,9 @@ throw|;
 block|}
 block|}
 block|}
+end_class
+
+begin_function
 DECL|method|submit (Collection<CreateRequest> create, Collection<ReplaceRequest> replace)
 specifier|private
 name|void
@@ -15921,6 +16093,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|preparePatchSetsForReplace (List<CreateRequest> newChanges)
 specifier|private
 name|void
@@ -16216,6 +16391,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|readChangesForReplace ()
 specifier|private
 name|void
@@ -16284,7 +16462,13 @@ name|notes
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/** Represents a commit that should be stored in a new patchset of an existing change. */
+end_comment
+
+begin_class
 DECL|class|ReplaceRequest
 specifier|private
 class|class
@@ -17749,6 +17933,9 @@ literal|null
 return|;
 block|}
 block|}
+end_class
+
+begin_class
 DECL|class|UpdateGroupsRequest
 specifier|private
 class|class
@@ -17980,6 +18167,9 @@ argument_list|)
 return|;
 block|}
 block|}
+end_class
+
+begin_class
 DECL|class|UpdateOneRefOp
 specifier|private
 class|class
@@ -18273,6 +18463,9 @@ block|}
 block|}
 block|}
 block|}
+end_class
+
+begin_class
 DECL|class|ReindexOnlyOp
 specifier|private
 specifier|static
@@ -18298,6 +18491,9 @@ literal|true
 return|;
 block|}
 block|}
+end_class
+
+begin_function
 DECL|method|refs (Change.Id changeId)
 specifier|private
 name|List
@@ -18322,6 +18518,9 @@ name|changeId
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|initChangeRefMaps ()
 specifier|private
 name|void
@@ -18453,6 +18652,9 @@ block|}
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|refsByChange ()
 specifier|private
 name|ListMultimap
@@ -18473,6 +18675,9 @@ return|return
 name|refsByChange
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|changeRefsById ()
 specifier|private
 name|ListMultimap
@@ -18491,6 +18696,9 @@ return|return
 name|refsById
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|parentsEqual (RevCommit a, RevCommit b)
 specifier|static
 name|boolean
@@ -18568,6 +18776,9 @@ return|return
 literal|true
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|authorEqual (RevCommit a, RevCommit b)
 specifier|static
 name|boolean
@@ -18659,8 +18870,17 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|// Run RefValidators on the command. If any validator fails, the command status is set to
+end_comment
+
+begin_comment
 comment|// REJECTED, and the return value is 'false'
+end_comment
+
+begin_function
 DECL|method|validRefOperation (ReceiveCommand cmd)
 specifier|private
 name|boolean
@@ -18737,7 +18957,13 @@ return|return
 literal|true
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Validates the commits that a regular push brings in.    *    *<p>On validation failure, the command is rejected.    */
+end_comment
+
+begin_function
 DECL|method|validateRegularPushCommits (Branch.NameKey branch, ReceiveCommand cmd)
 specifier|private
 name|void
@@ -19192,6 +19418,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|messageForCommit (RevCommit c, String msg)
 specifier|private
 name|String
@@ -19227,7 +19456,13 @@ name|msg
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Validates a single commit. If the commit does not validate, the command is rejected.    *    * @param objectReader the object reader to use.    * @param branch the branch to which this commit is pushed    * @param cmd the ReceiveCommand executing the push.    * @param commit the commit being validated.    * @param isMerged whether this is a merge commit created by magicBranch --merge option    * @param change the change for which this is a new patchset.    */
+end_comment
+
+begin_function
 DECL|method|validCommit ( ObjectReader objectReader, Branch.NameKey branch, ReceiveCommand cmd, RevCommit commit, boolean isMerged, @Nullable Change change)
 specifier|private
 name|boolean
@@ -19499,6 +19734,9 @@ return|return
 literal|true
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|autoCloseChanges (ReceiveCommand cmd, Task progress)
 specifier|private
 name|void
@@ -20188,6 +20426,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|getChangeNotes (Change.Id changeId)
 specifier|private
 name|Optional
@@ -20241,6 +20482,9 @@ argument_list|()
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|executeIndexQuery (Action<T> action)
 specifier|private
 parameter_list|<
@@ -20312,6 +20556,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|updateAccountInfo ()
 specifier|private
 name|void
@@ -20448,6 +20695,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|openChangesByKeyByBranch (Branch.NameKey branch)
 specifier|private
 name|Map
@@ -20533,9 +20783,21 @@ return|return
 name|r
 return|;
 block|}
+end_function
+
+begin_comment
 comment|// allRefsWatcher hooks into the protocol negotation to get a list of all known refs.
+end_comment
+
+begin_comment
 comment|// This is used as a cache of ref -> sha1 values, and to build an inverse index
+end_comment
+
+begin_comment
 comment|// of (change => list of refs) and a (SHA1 => refs).
+end_comment
+
+begin_function
 DECL|method|allRefs ()
 specifier|private
 name|Map
@@ -20554,6 +20816,9 @@ name|getAllRefs
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|reject (ReceiveCommand cmd, String why)
 specifier|private
 specifier|static
@@ -20577,6 +20842,9 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|isHead (ReceiveCommand cmd)
 specifier|private
 specifier|static
@@ -20601,6 +20869,9 @@ name|R_HEADS
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|isConfig (ReceiveCommand cmd)
 specifier|private
 specifier|static
@@ -20625,8 +20896,8 @@ name|REFS_CONFIG
 argument_list|)
 return|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
