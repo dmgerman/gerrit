@@ -72,6 +72,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -99,6 +115,24 @@ operator|.
 name|AclUtil
 operator|.
 name|grant
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|schema
+operator|.
+name|AllProjectsCreator
+operator|.
+name|getDefaultCodeReviewLabel
 import|;
 end_import
 
@@ -237,6 +271,20 @@ operator|.
 name|server
 operator|.
 name|GerritPersonIdent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|UsedAt
 import|;
 end_import
 
@@ -503,6 +551,11 @@ specifier|private
 name|GroupReference
 name|admin
 decl_stmt|;
+DECL|field|codeReviewLabel
+specifier|private
+name|LabelType
+name|codeReviewLabel
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|AllUsersCreator ( GitRepositoryManager mgr, AllUsersName allUsersName, SystemGroupBackend systemGroupBackend, @GerritPersonIdent PersonIdent serverUser)
@@ -552,6 +605,13 @@ argument_list|(
 name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|codeReviewLabel
+operator|=
+name|getDefaultCodeReviewLabel
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**    * If setAdministrators() is called, grant the given administrator group permissions on the    * default user.    */
 DECL|method|setAdministrators (GroupReference admin)
@@ -568,6 +628,50 @@ operator|.
 name|admin
 operator|=
 name|admin
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/** If called, the provided "Code-Review" label will be used rather than the default. */
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|GOOGLE
+argument_list|)
+DECL|method|setCodeReviewLabel (LabelType labelType)
+specifier|public
+name|AllUsersCreator
+name|setCodeReviewLabel
+parameter_list|(
+name|LabelType
+name|labelType
+parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+name|labelType
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"Code-Review"
+argument_list|)
+argument_list|,
+literal|"label should have 'Code-Review' as its name"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|codeReviewLabel
+operator|=
+name|labelType
 expr_stmt|;
 return|return
 name|this
@@ -786,16 +890,22 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|LabelType
-name|cr
-init|=
-name|AllProjectsCreator
-operator|.
-name|initCodeReviewLabel
-argument_list|(
+comment|// Initialize "Code-Review" label.
 name|config
+operator|.
+name|getLabelSections
+argument_list|()
+operator|.
+name|put
+argument_list|(
+name|codeReviewLabel
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|codeReviewLabel
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|grant
 argument_list|(
 name|config
@@ -853,7 +963,7 @@ name|config
 argument_list|,
 name|users
 argument_list|,
-name|cr
+name|codeReviewLabel
 argument_list|,
 operator|-
 literal|2
