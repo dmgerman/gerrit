@@ -386,7 +386,9 @@ block|{
 return|return
 operator|new
 name|Timer0
-argument_list|()
+argument_list|(
+name|name
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -443,7 +445,9 @@ name|Timer1
 argument_list|<
 name|F1
 argument_list|>
-argument_list|()
+argument_list|(
+name|name
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -515,7 +519,9 @@ name|F1
 argument_list|,
 name|F2
 argument_list|>
-argument_list|()
+argument_list|(
+name|name
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -602,7 +608,9 @@ name|F2
 argument_list|,
 name|F3
 argument_list|>
-argument_list|()
+argument_list|(
+name|name
+argument_list|)
 block|{
 annotation|@
 name|Override

@@ -244,7 +244,9 @@ name|F1
 argument_list|,
 name|F2
 argument_list|>
-argument_list|()
+argument_list|(
+name|name
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -332,7 +334,9 @@ name|F2
 argument_list|,
 name|F3
 argument_list|>
-argument_list|()
+argument_list|(
+name|name
+argument_list|)
 block|{
 annotation|@
 name|Override
