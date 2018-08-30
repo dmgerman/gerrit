@@ -360,7 +360,9 @@ argument_list|(
 name|item
 argument_list|)
 argument_list|,
-literal|"gerrit"
+name|PluginName
+operator|.
+name|GERRIT
 argument_list|)
 return|;
 block|}
@@ -742,7 +744,9 @@ operator|!=
 literal|null
 operator|&&
 operator|!
-literal|"gerrit"
+name|PluginName
+operator|.
+name|GERRIT
 operator|.
 name|equals
 argument_list|(
@@ -887,7 +891,9 @@ operator|!=
 literal|null
 operator|&&
 operator|!
-literal|"gerrit"
+name|PluginName
+operator|.
+name|GERRIT
 operator|.
 name|equals
 argument_list|(

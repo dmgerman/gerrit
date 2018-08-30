@@ -258,7 +258,9 @@ name|m
 operator|.
 name|put
 argument_list|(
-literal|"gerrit"
+name|PluginName
+operator|.
+name|GERRIT
 argument_list|,
 name|b
 operator|.

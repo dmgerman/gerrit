@@ -1405,7 +1405,9 @@ name|attachMaps
 argument_list|(
 name|self
 argument_list|,
-literal|"gerrit"
+name|PluginName
+operator|.
+name|GERRIT
 argument_list|,
 name|dynamicMapsOf
 argument_list|(
