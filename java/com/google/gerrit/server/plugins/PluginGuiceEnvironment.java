@@ -2031,6 +2031,11 @@ name|attachSets
 argument_list|(
 name|src
 argument_list|,
+name|plugin
+operator|.
+name|getName
+argument_list|()
+argument_list|,
 name|sets
 argument_list|)
 control|)
@@ -3100,6 +3105,11 @@ name|set
 operator|.
 name|add
 argument_list|(
+name|newPlugin
+operator|.
+name|getName
+argument_list|()
+argument_list|,
 name|b
 operator|.
 name|getKey

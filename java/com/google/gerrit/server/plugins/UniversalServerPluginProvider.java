@@ -102,6 +102,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|PluginName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -340,7 +356,9 @@ name|getProviderPluginName
 parameter_list|()
 block|{
 return|return
-literal|"gerrit"
+name|PluginName
+operator|.
+name|GERRIT
 return|;
 block|}
 DECL|method|providerOf (Path srcPath)

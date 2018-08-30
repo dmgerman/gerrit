@@ -397,6 +397,8 @@ name|filters
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|key
 argument_list|,
 name|Providers

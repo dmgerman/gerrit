@@ -216,6 +216,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|PluginName
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|lang
@@ -631,7 +647,9 @@ operator|!=
 literal|null
 operator|&&
 operator|!
-literal|"gerrit"
+name|PluginName
+operator|.
+name|GERRIT
 operator|.
 name|equals
 argument_list|(

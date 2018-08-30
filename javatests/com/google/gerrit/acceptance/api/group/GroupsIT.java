@@ -10102,6 +10102,8 @@ name|groupIndexedListeners
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|groupIndexedCounter
 argument_list|)
 decl_stmt|;
@@ -10418,6 +10420,8 @@ name|groupIndexedListeners
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 name|groupIndexedCounter
 argument_list|)
 decl_stmt|;

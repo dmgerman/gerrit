@@ -261,7 +261,9 @@ argument_list|,
 name|type
 argument_list|)
 argument_list|,
-literal|"gerrit"
+name|PluginName
+operator|.
+name|GERRIT
 argument_list|)
 return|;
 block|}

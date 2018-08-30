@@ -908,6 +908,8 @@ name|eventListeners
 operator|.
 name|add
 argument_list|(
+literal|"gerrit"
+argument_list|,
 operator|new
 name|UserScopedEventListener
 argument_list|()

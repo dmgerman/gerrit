@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Binder
@@ -346,7 +360,9 @@ argument_list|(
 name|item
 argument_list|)
 argument_list|,
-literal|"gerrit"
+name|PluginName
+operator|.
+name|GERRIT
 argument_list|)
 return|;
 block|}
@@ -568,6 +584,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Get the configured item, or null.    *    * @return the configured item instance; null if no implementation has been bound to the item.    *     This is common if no plugin registered an implementation for the type.    */
+annotation|@
+name|Nullable
 DECL|method|get ()
 specifier|public
 name|T
@@ -596,6 +614,38 @@ name|impl
 operator|.
 name|get
 argument_list|()
+else|:
+literal|null
+return|;
+block|}
+comment|/**    * Get the name of the plugin that has bound the configured item, or null.    *    * @return the name of the plugin that has bound the configured item; null if no implementation    *     has been bound to the item. This is common if no plugin registered an implementation for    *     the type.    */
+annotation|@
+name|Nullable
+DECL|method|getPluginName ()
+specifier|public
+name|String
+name|getPluginName
+parameter_list|()
+block|{
+name|NamedProvider
+argument_list|<
+name|T
+argument_list|>
+name|item
+init|=
+name|ref
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+return|return
+name|item
+operator|!=
+literal|null
+condition|?
+name|item
+operator|.
+name|pluginName
 else|:
 literal|null
 return|;
@@ -694,7 +744,9 @@ operator|!=
 literal|null
 operator|&&
 operator|!
-literal|"gerrit"
+name|PluginName
+operator|.
+name|GERRIT
 operator|.
 name|equals
 argument_list|(
@@ -839,7 +891,9 @@ operator|!=
 literal|null
 operator|&&
 operator|!
-literal|"gerrit"
+name|PluginName
+operator|.
+name|GERRIT
 operator|.
 name|equals
 argument_list|(
@@ -1015,6 +1069,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nullable
 DECL|method|replace (Key<T> newKey, Provider<T> newItem)
 specifier|public
 name|ReloadableHandle
