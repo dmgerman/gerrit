@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Binder
@@ -568,6 +582,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Get the configured item, or null.    *    * @return the configured item instance; null if no implementation has been bound to the item.    *     This is common if no plugin registered an implementation for the type.    */
+annotation|@
+name|Nullable
 DECL|method|get ()
 specifier|public
 name|T
@@ -1015,6 +1031,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nullable
 DECL|method|replace (Key<T> newKey, Provider<T> newItem)
 specifier|public
 name|ReloadableHandle
