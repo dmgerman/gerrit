@@ -868,7 +868,7 @@ return|;
 block|}
 DECL|method|updateAccount (TestAccountUpdate accountUpdate)
 specifier|private
-name|TestAccount
+name|void
 name|updateAccount
 parameter_list|(
 name|TestAccountUpdate
@@ -922,15 +922,6 @@ argument_list|,
 literal|"Tried to update non-existing test account"
 argument_list|)
 expr_stmt|;
-return|return
-name|toTestAccount
-argument_list|(
-name|updatedAccount
-operator|.
-name|get
-argument_list|()
-argument_list|)
-return|;
 block|}
 DECL|method|updateAccount (AccountsUpdate.AccountUpdater accountUpdater)
 specifier|private
