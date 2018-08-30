@@ -902,9 +902,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyElementsIn
 argument_list|(
-name|range
+name|rangeList
 argument_list|)
 operator|.
 name|inOrder
