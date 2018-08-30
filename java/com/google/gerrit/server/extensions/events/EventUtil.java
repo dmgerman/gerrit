@@ -967,7 +967,7 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"Error in event listener %s for event %s: %s"
+literal|"Error in event listener %s for event %s: %s - %s"
 argument_list|,
 name|listener
 operator|.
@@ -978,6 +978,14 @@ name|getName
 argument_list|()
 argument_list|,
 name|event
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|error
 operator|.
 name|getClass
 argument_list|()
