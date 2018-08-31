@@ -438,7 +438,7 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN_REST_REGEX
 init|=
-literal|"[a-zA-Z0-9._@-]"
+literal|"[a-zA-Z0-9.!#$%&â*+=?^_`\\{|\\}~@-]"
 decl_stmt|;
 DECL|field|userNameLbl
 specifier|private
