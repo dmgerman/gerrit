@@ -440,7 +440,23 @@ name|server
 operator|.
 name|logging
 operator|.
-name|LoggingContextAwareThreadFactory
+name|LoggingContextAwareExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|logging
+operator|.
+name|LoggingContextAwareScheduledExecutorService
 import|;
 end_import
 
@@ -609,6 +625,18 @@ operator|.
 name|concurrent
 operator|.
 name|Future
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledExecutorService
 import|;
 end_import
 
@@ -1112,7 +1140,7 @@ name|notDoneNrtFutures
 decl_stmt|;
 DECL|field|autoCommitExecutor
 specifier|private
-name|ScheduledThreadPoolExecutor
+name|ScheduledExecutorService
 name|autoCommitExecutor
 decl_stmt|;
 DECL|method|AbstractLuceneIndex ( Schema<V> schema, SitePaths sitePaths, Directory dir, String name, String subIndex, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
@@ -1269,6 +1297,9 @@ expr_stmt|;
 name|autoCommitExecutor
 operator|=
 operator|new
+name|LoggingContextAwareScheduledExecutorService
+argument_list|(
+operator|new
 name|ScheduledThreadPoolExecutor
 argument_list|(
 literal|1
@@ -1276,13 +1307,6 @@ argument_list|,
 operator|new
 name|ThreadFactoryBuilder
 argument_list|()
-operator|.
-name|setThreadFactory
-argument_list|(
-operator|new
-name|LoggingContextAwareThreadFactory
-argument_list|()
-argument_list|)
 operator|.
 name|setNameFormat
 argument_list|(
@@ -1298,6 +1322,7 @@ argument_list|)
 operator|.
 name|build
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 annotation|@
@@ -1469,6 +1494,9 @@ name|MoreExecutors
 operator|.
 name|listeningDecorator
 argument_list|(
+operator|new
+name|LoggingContextAwareExecutorService
+argument_list|(
 name|Executors
 operator|.
 name|newFixedThreadPool
@@ -1478,13 +1506,6 @@ argument_list|,
 operator|new
 name|ThreadFactoryBuilder
 argument_list|()
-operator|.
-name|setThreadFactory
-argument_list|(
-operator|new
-name|LoggingContextAwareThreadFactory
-argument_list|()
-argument_list|)
 operator|.
 name|setNameFormat
 argument_list|(
@@ -1500,6 +1521,7 @@ argument_list|)
 operator|.
 name|build
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -156,7 +156,7 @@ name|server
 operator|.
 name|logging
 operator|.
-name|LoggingContextAwareThreadFactory
+name|LoggingContextAwareExecutorService
 import|;
 end_import
 
@@ -192,7 +192,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ScheduledThreadPoolExecutor
+name|ExecutorService
 import|;
 end_import
 
@@ -204,7 +204,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ThreadPoolExecutor
+name|ScheduledThreadPoolExecutor
 import|;
 end_import
 
@@ -330,9 +330,12 @@ literal|false
 argument_list|)
 condition|)
 block|{
-name|ThreadPoolExecutor
+name|ExecutorService
 name|pool
 init|=
+operator|new
+name|LoggingContextAwareExecutorService
+argument_list|(
 operator|new
 name|ScheduledThreadPoolExecutor
 argument_list|(
@@ -353,13 +356,6 @@ operator|new
 name|ThreadFactoryBuilder
 argument_list|()
 operator|.
-name|setThreadFactory
-argument_list|(
-operator|new
-name|LoggingContextAwareThreadFactory
-argument_list|()
-argument_list|)
-operator|.
 name|setNameFormat
 argument_list|(
 literal|"ProjectCacheLoader-%d"
@@ -367,6 +363,7 @@ argument_list|)
 operator|.
 name|build
 argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Thread
