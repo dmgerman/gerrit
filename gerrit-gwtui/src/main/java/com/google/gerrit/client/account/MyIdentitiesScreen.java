@@ -67,6 +67,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+operator|.
+name|naturalOrder
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -317,16 +329,6 @@ operator|.
 name|FlexTable
 operator|.
 name|FlexCellFormatter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
 import|;
 end_import
 
@@ -1134,11 +1136,12 @@ argument_list|(
 name|results
 argument_list|)
 decl_stmt|;
-name|Collections
+name|idList
 operator|.
 name|sort
 argument_list|(
-name|idList
+name|naturalOrder
+argument_list|()
 argument_list|)
 expr_stmt|;
 while|while

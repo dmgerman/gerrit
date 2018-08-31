@@ -1795,12 +1795,10 @@ name|e
 argument_list|)
 throw|;
 block|}
-name|Collections
+name|result
 operator|.
 name|sort
 argument_list|(
-name|result
-argument_list|,
 name|CodeReviewCommit
 operator|.
 name|ORDER

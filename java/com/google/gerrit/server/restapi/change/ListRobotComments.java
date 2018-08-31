@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -373,7 +387,7 @@ return|;
 block|}
 DECL|method|getComments (RevisionResource rsrc)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|RobotCommentInfo
 argument_list|>

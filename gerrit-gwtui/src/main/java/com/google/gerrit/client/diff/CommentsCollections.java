@@ -282,16 +282,6 @@ name|AsyncCallback
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
 begin_comment
 comment|/** Collection of published and draft comments loaded from the server. */
 end_comment
@@ -1159,17 +1149,15 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
-name|Collections
-operator|.
-name|sort
-argument_list|(
 name|Natives
 operator|.
 name|asList
 argument_list|(
 name|in
 argument_list|)
-argument_list|,
+operator|.
+name|sort
+argument_list|(
 name|comparing
 argument_list|(
 name|CommentInfo

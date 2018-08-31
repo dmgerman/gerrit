@@ -3766,12 +3766,10 @@ argument_list|>
 name|comments
 parameter_list|)
 block|{
-name|Collections
+name|comments
 operator|.
 name|sort
 argument_list|(
-name|comments
-argument_list|,
 name|COMMENT_ORDER
 argument_list|)
 expr_stmt|;

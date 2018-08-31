@@ -518,16 +518,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -883,12 +873,10 @@ argument_list|)
 decl_stmt|;
 comment|// TODO(dborowitz): Sort on something more meaningful, like
 comment|// created date?
-name|Collections
+name|list
 operator|.
 name|sort
 argument_list|(
-name|list
-argument_list|,
 name|comparing
 argument_list|(
 name|GpgKeyInfo

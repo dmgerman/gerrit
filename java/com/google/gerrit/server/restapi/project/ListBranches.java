@@ -548,16 +548,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Comparator
 import|;
 end_import
@@ -1622,12 +1612,10 @@ block|{
 comment|// Do nothing.
 block|}
 block|}
-name|Collections
+name|branches
 operator|.
 name|sort
 argument_list|(
-name|branches
-argument_list|,
 operator|new
 name|BranchComparator
 argument_list|()

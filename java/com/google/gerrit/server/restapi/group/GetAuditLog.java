@@ -466,16 +466,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -1039,12 +1029,10 @@ name|fill
 argument_list|()
 expr_stmt|;
 comment|// sort by date and then reverse so that the newest audit event comes first
-name|Collections
+name|auditEvents
 operator|.
 name|sort
 argument_list|(
-name|auditEvents
-argument_list|,
 name|comparing
 argument_list|(
 parameter_list|(

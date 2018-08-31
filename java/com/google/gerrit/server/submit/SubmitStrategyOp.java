@@ -658,16 +658,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashMap
 import|;
 end_import
@@ -1460,12 +1450,10 @@ continue|continue;
 comment|// Bogus ref, can't be merged into tip so we don't care.
 block|}
 block|}
-name|Collections
+name|commits
 operator|.
 name|sort
 argument_list|(
-name|commits
-argument_list|,
 name|ReviewDbUtil
 operator|.
 name|intKeyOrdering
