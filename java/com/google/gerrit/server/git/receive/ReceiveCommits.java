@@ -11943,6 +11943,10 @@ name|validateConnected
 argument_list|(
 name|magicBranch
 operator|.
+name|cmd
+argument_list|,
+name|magicBranch
+operator|.
 name|dest
 argument_list|,
 name|tip
@@ -11976,11 +11980,14 @@ comment|// commits and the target branch head.
 end_comment
 
 begin_function
-DECL|method|validateConnected (Branch.NameKey dest, RevCommit tip)
+DECL|method|validateConnected (ReceiveCommand cmd, Branch.NameKey dest, RevCommit tip)
 specifier|private
 name|boolean
 name|validateConnected
 parameter_list|(
+name|ReceiveCommand
+name|cmd
+parameter_list|,
 name|Branch
 operator|.
 name|NameKey
@@ -12126,8 +12133,6 @@ condition|)
 block|{
 name|reject
 argument_list|(
-name|magicBranch
-operator|.
 name|cmd
 argument_list|,
 literal|"no common ancestry"
@@ -12160,8 +12165,6 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|magicBranch
-operator|.
 name|cmd
 operator|.
 name|setResult
