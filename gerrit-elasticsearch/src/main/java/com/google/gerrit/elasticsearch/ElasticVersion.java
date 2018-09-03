@@ -273,6 +273,21 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|isV6 ()
+specifier|public
+name|boolean
+name|isV6
+parameter_list|()
+block|{
+return|return
+name|version
+operator|.
+name|startsWith
+argument_list|(
+literal|"6."
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|toString ()
