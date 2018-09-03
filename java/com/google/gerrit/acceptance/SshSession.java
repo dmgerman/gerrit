@@ -113,6 +113,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -367,6 +381,11 @@ operator|new
 name|Scanner
 argument_list|(
 name|err
+argument_list|,
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 operator|.
 name|useDelimiter
@@ -394,6 +413,11 @@ operator|new
 name|Scanner
 argument_list|(
 name|in
+argument_list|,
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 operator|.
 name|useDelimiter
