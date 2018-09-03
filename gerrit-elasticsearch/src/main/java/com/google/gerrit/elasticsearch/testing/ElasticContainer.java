@@ -272,7 +272,7 @@ case|case
 name|V5_6
 case|:
 return|return
-literal|"docker.elastic.co/elasticsearch/elasticsearch:5.6.10"
+literal|"docker.elastic.co/elasticsearch/elasticsearch:5.6.11"
 return|;
 case|case
 name|V6_2
