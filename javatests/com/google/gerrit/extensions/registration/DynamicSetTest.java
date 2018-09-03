@@ -751,7 +751,10 @@ name|entryIterator
 init|=
 name|ds
 operator|.
-name|entryIterator
+name|entries
+argument_list|()
+operator|.
+name|iterator
 argument_list|()
 decl_stmt|;
 name|DynamicSet
