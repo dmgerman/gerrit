@@ -90,6 +90,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|GwtIncompatible
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -151,6 +165,18 @@ operator|.
 name|sql
 operator|.
 name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
 import|;
 end_import
 
@@ -238,6 +264,25 @@ name|USER_NAME_PATTERN_FIRST
 operator|+
 comment|//
 literal|")$"
+decl_stmt|;
+annotation|@
+name|GwtIncompatible
+argument_list|(
+literal|"Unemulated class java.util.regex.Pattern"
+argument_list|)
+DECL|field|USER_NAME_PATTERN_COMPILED
+specifier|public
+specifier|static
+specifier|final
+name|Pattern
+name|USER_NAME_PATTERN_COMPILED
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+name|USER_NAME_PATTERN
+argument_list|)
 decl_stmt|;
 comment|/** Key local to Gerrit to identify a user. */
 DECL|class|Id
