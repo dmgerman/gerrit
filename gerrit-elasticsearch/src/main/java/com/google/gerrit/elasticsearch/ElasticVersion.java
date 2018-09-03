@@ -119,6 +119,12 @@ name|V6_3
 argument_list|(
 literal|"6.3.*"
 argument_list|)
+block|,
+DECL|enumConstant|V6_4
+name|V6_4
+argument_list|(
+literal|"6.4.*"
+argument_list|)
 block|;
 DECL|field|version
 specifier|private

@@ -254,7 +254,7 @@ name|createAndStart
 argument_list|(
 name|ElasticVersion
 operator|.
-name|V6_3
+name|V6_4
 argument_list|)
 expr_stmt|;
 name|nodeInfo
