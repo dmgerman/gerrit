@@ -165,6 +165,15 @@ specifier|final
 class|class
 name|Account
 block|{
+DECL|field|USER_NAME_COMMON_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|USER_NAME_COMMON_PATTERN
+init|=
+literal|"a-zA-Z0-9"
+decl_stmt|;
 DECL|field|USER_NAME_PATTERN_FIRST
 specifier|public
 specifier|static
@@ -172,7 +181,11 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN_FIRST
 init|=
-literal|"[a-zA-Z0-9]"
+literal|"["
+operator|+
+name|USER_NAME_COMMON_PATTERN
+operator|+
+literal|"]"
 decl_stmt|;
 DECL|field|USER_NAME_PATTERN_REST
 specifier|public
@@ -181,7 +194,11 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN_REST
 init|=
-literal|"[a-zA-Z0-9._@-]"
+literal|"["
+operator|+
+name|USER_NAME_COMMON_PATTERN
+operator|+
+literal|"._@-]"
 decl_stmt|;
 DECL|field|USER_NAME_PATTERN_LAST
 specifier|public
@@ -190,7 +207,7 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN_LAST
 init|=
-literal|"[a-zA-Z0-9]"
+name|USER_NAME_PATTERN_FIRST
 decl_stmt|;
 comment|/** Regular expression that {@link #userName} must match. */
 DECL|field|USER_NAME_PATTERN
@@ -200,10 +217,7 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN
 init|=
-literal|"^"
-operator|+
-comment|//
-literal|"("
+literal|"^("
 operator|+
 comment|//
 name|USER_NAME_PATTERN_FIRST
@@ -223,10 +237,7 @@ comment|//
 name|USER_NAME_PATTERN_FIRST
 operator|+
 comment|//
-literal|")"
-operator|+
-comment|//
-literal|"$"
+literal|")$"
 decl_stmt|;
 comment|/** Key local to Gerrit to identify a user. */
 DECL|class|Id
