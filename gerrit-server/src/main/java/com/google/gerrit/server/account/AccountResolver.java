@@ -68,6 +68,24 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
+operator|.
+name|USER_NAME_PATTERN_COMPILED
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -609,14 +627,15 @@ return|;
 block|}
 if|if
 condition|(
+name|USER_NAME_PATTERN_COMPILED
+operator|.
+name|matcher
+argument_list|(
 name|nameOrEmail
+argument_list|)
 operator|.
 name|matches
-argument_list|(
-name|Account
-operator|.
-name|USER_NAME_PATTERN
-argument_list|)
+argument_list|()
 condition|)
 block|{
 name|AccountState
