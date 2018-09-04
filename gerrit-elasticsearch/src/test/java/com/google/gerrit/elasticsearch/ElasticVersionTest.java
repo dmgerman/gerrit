@@ -310,7 +310,7 @@ name|expect
 argument_list|(
 name|ElasticVersion
 operator|.
-name|InvalidVersion
+name|UnsupportedVersion
 operator|.
 name|class
 argument_list|)
@@ -319,7 +319,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Invalid version: [4.0.0]. Supported versions: "
+literal|"Unsupported version: [4.0.0]. Supported versions: "
 operator|+
 name|ElasticVersion
 operator|.

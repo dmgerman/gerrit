@@ -157,11 +157,11 @@ name|version
 argument_list|)
 expr_stmt|;
 block|}
-DECL|class|InvalidVersion
+DECL|class|UnsupportedVersion
 specifier|public
 specifier|static
 class|class
-name|InvalidVersion
+name|UnsupportedVersion
 extends|extends
 name|ElasticException
 block|{
@@ -174,8 +174,8 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|InvalidVersion (String version)
-name|InvalidVersion
+DECL|method|UnsupportedVersion (String version)
+name|UnsupportedVersion
 parameter_list|(
 name|String
 name|version
@@ -187,7 +187,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Invalid version: [%s]. Supported versions: %s"
+literal|"Unsupported version: [%s]. Supported versions: %s"
 argument_list|,
 name|version
 argument_list|,
@@ -208,7 +208,7 @@ name|String
 name|version
 parameter_list|)
 throws|throws
-name|InvalidVersion
+name|UnsupportedVersion
 block|{
 for|for
 control|(
@@ -243,7 +243,7 @@ block|}
 block|}
 throw|throw
 operator|new
-name|InvalidVersion
+name|UnsupportedVersion
 argument_list|(
 name|version
 argument_list|)
