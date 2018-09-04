@@ -12569,6 +12569,21 @@ return|return;
 block|}
 try|try
 block|{
+name|NoteMap
+name|rejectCommits
+init|=
+name|BanCommit
+operator|.
+name|loadRejectCommitsMap
+argument_list|(
+name|repo
+argument_list|,
+name|receivePack
+operator|.
+name|getRevWalk
+argument_list|()
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|validCommit
@@ -12593,6 +12608,8 @@ argument_list|,
 literal|false
 argument_list|,
 name|changeEnt
+argument_list|,
+name|rejectCommits
 argument_list|)
 condition|)
 block|{
@@ -12851,6 +12868,31 @@ block|}
 end_function
 
 begin_function
+DECL|method|loadRejectCommits ()
+specifier|private
+name|NoteMap
+name|loadRejectCommits
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+name|BanCommit
+operator|.
+name|loadRejectCommitsMap
+argument_list|(
+name|repo
+argument_list|,
+name|receivePack
+operator|.
+name|getRevWalk
+argument_list|()
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|selectNewAndReplacedChangesFromMagicBranch (Task newProgress)
 specifier|private
 name|List
@@ -12919,6 +12961,12 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+name|NoteMap
+name|rejectCommits
+init|=
+name|loadRejectCommits
+argument_list|()
+decl_stmt|;
 name|RevCommit
 name|start
 init|=
@@ -13432,6 +13480,9 @@ operator|.
 name|merged
 argument_list|,
 literal|null
+argument_list|,
+name|loadRejectCommits
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -19188,6 +19239,12 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+name|NoteMap
+name|rejectCommits
+init|=
+name|loadRejectCommits
+argument_list|()
+decl_stmt|;
 name|RevObject
 name|parsedObject
 init|=
@@ -19346,6 +19403,8 @@ argument_list|,
 literal|false
 argument_list|,
 literal|null
+argument_list|,
+name|rejectCommits
 argument_list|)
 condition|)
 block|{
@@ -19483,7 +19542,7 @@ comment|/**    * Validates a single commit. If the commit does not validate, the
 end_comment
 
 begin_function
-DECL|method|validCommit ( ObjectReader objectReader, Branch.NameKey branch, ReceiveCommand cmd, RevCommit commit, boolean isMerged, @Nullable Change change)
+DECL|method|validCommit ( ObjectReader objectReader, Branch.NameKey branch, ReceiveCommand cmd, RevCommit commit, boolean isMerged, @Nullable Change change, NoteMap rejectCommits)
 specifier|private
 name|boolean
 name|validCommit
@@ -19509,6 +19568,9 @@ annotation|@
 name|Nullable
 name|Change
 name|change
+parameter_list|,
+name|NoteMap
+name|rejectCommits
 parameter_list|)
 throws|throws
 name|IOException
@@ -19583,9 +19645,14 @@ init|)
 block|{
 name|CommitValidators
 name|validators
-init|=
+decl_stmt|;
+if|if
+condition|(
 name|isMerged
-condition|?
+condition|)
+block|{
+name|validators
+operator|=
 name|commitValidatorsFactory
 operator|.
 name|forMergedCommits
@@ -19602,7 +19669,12 @@ operator|.
 name|asIdentifiedUser
 argument_list|()
 argument_list|)
-else|:
+expr_stmt|;
+block|}
+else|else
+block|{
+name|validators
+operator|=
 name|commitValidatorsFactory
 operator|.
 name|forReceiveCommits
@@ -19618,7 +19690,7 @@ argument_list|()
 argument_list|,
 name|sshInfo
 argument_list|,
-name|repo
+name|rejectCommits
 argument_list|,
 name|receiveEvent
 operator|.
@@ -19626,7 +19698,8 @@ name|revWalk
 argument_list|,
 name|change
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 for|for
 control|(
 name|CommitValidationMessage

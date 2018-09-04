@@ -552,22 +552,6 @@ name|server
 operator|.
 name|git
 operator|.
-name|BanCommit
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
 name|GitRepositoryManager
 import|;
 end_import
@@ -1212,7 +1196,7 @@ operator|=
 name|projectCache
 expr_stmt|;
 block|}
-DECL|method|forReceiveCommits ( PermissionBackend.ForRef perm, Branch.NameKey branch, IdentifiedUser user, SshInfo sshInfo, Repository repo, RevWalk rw, @Nullable Change change)
+DECL|method|forReceiveCommits ( PermissionBackend.ForRef perm, Branch.NameKey branch, IdentifiedUser user, SshInfo sshInfo, NoteMap rejectCommits, RevWalk rw, @Nullable Change change)
 specifier|public
 name|CommitValidators
 name|forReceiveCommits
@@ -1233,8 +1217,8 @@ parameter_list|,
 name|SshInfo
 name|sshInfo
 parameter_list|,
-name|Repository
-name|repo
+name|NoteMap
+name|rejectCommits
 parameter_list|,
 name|RevWalk
 name|rw
@@ -1247,18 +1231,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|NoteMap
-name|rejectCommits
-init|=
-name|BanCommit
-operator|.
-name|loadRejectCommitsMap
-argument_list|(
-name|repo
-argument_list|,
-name|rw
-argument_list|)
-decl_stmt|;
 name|ProjectState
 name|projectState
 init|=
