@@ -340,6 +340,26 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|ConfigSuite
+operator|.
+name|Config
+DECL|method|elasticsearchV6_4 ()
+specifier|public
+specifier|static
+name|Config
+name|elasticsearchV6_4
+parameter_list|()
+block|{
+return|return
+name|getConfig
+argument_list|(
+name|ElasticVersion
+operator|.
+name|V6_4
+argument_list|)
+return|;
+block|}
+annotation|@
 name|Override
 DECL|method|configureIndex (Injector injector)
 specifier|public

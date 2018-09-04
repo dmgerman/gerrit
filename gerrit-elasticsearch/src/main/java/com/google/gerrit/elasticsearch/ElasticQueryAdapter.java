@@ -191,6 +191,9 @@ case|:
 case|case
 name|V6_3
 case|:
+case|case
+name|V6_4
+case|:
 name|this
 operator|.
 name|searchFilteringName
