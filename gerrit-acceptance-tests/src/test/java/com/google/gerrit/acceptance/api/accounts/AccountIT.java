@@ -6598,9 +6598,16 @@ operator|.
 name|hasMessageThat
 argument_list|()
 operator|.
-name|contains
+name|isEqualTo
 argument_list|(
-literal|"must contain only"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Invalid username '%s'"
+argument_list|,
+name|name
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
