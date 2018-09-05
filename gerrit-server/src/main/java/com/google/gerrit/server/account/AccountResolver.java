@@ -582,13 +582,11 @@ return|;
 block|}
 if|if
 condition|(
-name|nameOrEmail
+name|ExternalId
 operator|.
-name|matches
+name|isValidUsername
 argument_list|(
-name|Account
-operator|.
-name|USER_NAME_PATTERN
+name|nameOrEmail
 argument_list|)
 condition|)
 block|{

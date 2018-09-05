@@ -928,13 +928,11 @@ block|}
 if|if
 condition|(
 operator|!
-name|username
+name|ExternalId
 operator|.
-name|matches
+name|isValidUsername
 argument_list|(
-name|Account
-operator|.
-name|USER_NAME_PATTERN
+name|username
 argument_list|)
 condition|)
 block|{
