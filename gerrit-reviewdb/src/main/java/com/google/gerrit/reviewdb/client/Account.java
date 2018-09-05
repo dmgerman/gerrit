@@ -90,20 +90,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|annotations
-operator|.
-name|GwtIncompatible
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -168,18 +154,6 @@ name|Timestamp
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
 begin_comment
 comment|/**  * Information about a single user.  *  *<p>A user may have multiple identities they can use to login to Gerrit (see ExternalId), but in  * such cases they always map back to a single Account entity.  *  *<p>Entities "owned" by an Account (that is, their primary key contains the {@link Account.Id} key  * as part of their key structure):  *  *<ul>  *<li>ExternalId: OpenID identities and email addresses known to be registered to this user.  *       Multiple records can exist when the user has more than one public identity, such as a work  *       and a personal email address.  *<li>{@link AccountGroupMember}: membership of the user in a specific human managed {@link  *       AccountGroup}. Multiple records can exist when the user is a member of more than one group.  *<li>{@link AccountSshKey}: user's public SSH keys, for authentication through the internal SSH  *       daemon. One record per SSH key uploaded by the user, keys are checked in random order until  *       a match is found.  *<li>{@link DiffPreferencesInfo}: user's preferences for rendering side-to-side and unified diff  *</ul>  */
 end_comment
@@ -191,15 +165,6 @@ specifier|final
 class|class
 name|Account
 block|{
-DECL|field|USER_NAME_COMMON_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|USER_NAME_COMMON_PATTERN
-init|=
-literal|"a-zA-Z0-9"
-decl_stmt|;
 DECL|field|USER_NAME_PATTERN_FIRST
 specifier|public
 specifier|static
@@ -207,11 +172,7 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN_FIRST
 init|=
-literal|"["
-operator|+
-name|USER_NAME_COMMON_PATTERN
-operator|+
-literal|"]"
+literal|"[a-zA-Z0-9]"
 decl_stmt|;
 DECL|field|USER_NAME_PATTERN_REST
 specifier|public
@@ -220,11 +181,7 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN_REST
 init|=
-literal|"["
-operator|+
-name|USER_NAME_COMMON_PATTERN
-operator|+
-literal|"._@-]"
+literal|"[a-zA-Z0-9._@-]"
 decl_stmt|;
 DECL|field|USER_NAME_PATTERN_LAST
 specifier|public
@@ -233,7 +190,7 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN_LAST
 init|=
-name|USER_NAME_PATTERN_FIRST
+literal|"[a-zA-Z0-9]"
 decl_stmt|;
 comment|/** Regular expression that {@link #userName} must match. */
 DECL|field|USER_NAME_PATTERN
@@ -243,7 +200,10 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN
 init|=
-literal|"^("
+literal|"^"
+operator|+
+comment|//
+literal|"("
 operator|+
 comment|//
 name|USER_NAME_PATTERN_FIRST
@@ -263,26 +223,10 @@ comment|//
 name|USER_NAME_PATTERN_FIRST
 operator|+
 comment|//
-literal|")$"
-decl_stmt|;
-annotation|@
-name|GwtIncompatible
-argument_list|(
-literal|"Unemulated class java.util.regex.Pattern"
-argument_list|)
-DECL|field|USER_NAME_PATTERN_COMPILED
-specifier|public
-specifier|static
-specifier|final
-name|Pattern
-name|USER_NAME_PATTERN_COMPILED
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-name|USER_NAME_PATTERN
-argument_list|)
+literal|")"
+operator|+
+comment|//
+literal|"$"
 decl_stmt|;
 comment|/** Key local to Gerrit to identify a user. */
 DECL|class|Id

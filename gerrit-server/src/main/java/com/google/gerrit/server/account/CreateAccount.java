@@ -74,42 +74,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-operator|.
-name|USER_NAME_PATTERN
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-operator|.
-name|USER_NAME_PATTERN_COMPILED
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|account
@@ -964,15 +928,14 @@ block|}
 if|if
 condition|(
 operator|!
-name|USER_NAME_PATTERN_COMPILED
-operator|.
-name|matcher
-argument_list|(
 name|username
-argument_list|)
 operator|.
 name|matches
-argument_list|()
+argument_list|(
+name|Account
+operator|.
+name|USER_NAME_PATTERN
+argument_list|)
 condition|)
 block|{
 throw|throw
@@ -983,11 +946,7 @@ literal|"Username '"
 operator|+
 name|username
 operator|+
-literal|"' must comply with ["
-operator|+
-name|USER_NAME_PATTERN
-operator|+
-literal|"] pattern."
+literal|"' must contain only letters, numbers, _, - or ."
 argument_list|)
 throw|;
 block|}

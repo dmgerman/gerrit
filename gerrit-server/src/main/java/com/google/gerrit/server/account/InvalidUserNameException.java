@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Error indicating the SSH user name does not match {@link Account#USER_NAME_PATTERN_COMPILED}  * pattern.  */
+comment|/** Error indicating the SSH user name does not match {@link Account#USER_NAME_PATTERN} pattern. */
 end_comment
 
 begin_class
