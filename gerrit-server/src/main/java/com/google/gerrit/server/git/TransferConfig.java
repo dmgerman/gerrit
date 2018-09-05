@@ -196,6 +196,12 @@ specifier|final
 name|String
 name|maxObjectSizeLimitFormatted
 decl_stmt|;
+DECL|field|inheritProjectMaxObjectSizeLimit
+specifier|private
+specifier|final
+name|boolean
+name|inheritProjectMaxObjectSizeLimit
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|TransferConfig (@erritServerConfig final Config cfg)
@@ -257,6 +263,19 @@ argument_list|,
 literal|null
 argument_list|,
 literal|"maxObjectSizeLimit"
+argument_list|)
+expr_stmt|;
+name|inheritProjectMaxObjectSizeLimit
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"receive"
+argument_list|,
+literal|"inheritProjectMaxObjectSizeLimit"
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|packConfig
@@ -326,6 +345,16 @@ parameter_list|()
 block|{
 return|return
 name|maxObjectSizeLimitFormatted
+return|;
+block|}
+DECL|method|getInheritProjectMaxObjectSizeLimit ()
+specifier|public
+name|boolean
+name|getInheritProjectMaxObjectSizeLimit
+parameter_list|()
+block|{
+return|return
+name|inheritProjectMaxObjectSizeLimit
 return|;
 block|}
 block|}

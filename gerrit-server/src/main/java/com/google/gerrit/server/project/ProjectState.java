@@ -997,6 +997,12 @@ specifier|final
 name|long
 name|globalMaxObjectSizeLimit
 decl_stmt|;
+DECL|field|inheritProjectMaxObjectSizeLimit
+specifier|private
+specifier|final
+name|boolean
+name|inheritProjectMaxObjectSizeLimit
+decl_stmt|;
 comment|/** Prolog rule state. */
 DECL|field|rulesMachine
 specifier|private
@@ -1215,6 +1221,15 @@ operator|=
 name|transferConfig
 operator|.
 name|getMaxObjectSizeLimit
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|inheritProjectMaxObjectSizeLimit
+operator|=
+name|transferConfig
+operator|.
+name|getInheritProjectMaxObjectSizeLimit
 argument_list|()
 expr_stmt|;
 if|if
@@ -1818,6 +1833,11 @@ operator|.
 name|getMaxObjectSizeLimit
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|inheritProjectMaxObjectSizeLimit
+condition|)
+block|{
 for|for
 control|(
 name|ProjectState
@@ -1917,6 +1937,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
