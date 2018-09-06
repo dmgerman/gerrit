@@ -543,7 +543,7 @@ condition|)
 block|{
 name|logger
 operator|.
-name|atInfo
+name|atFine
 argument_list|()
 operator|.
 name|log
@@ -561,7 +561,7 @@ else|else
 block|{
 name|logger
 operator|.
-name|atInfo
+name|atFine
 argument_list|()
 operator|.
 name|log

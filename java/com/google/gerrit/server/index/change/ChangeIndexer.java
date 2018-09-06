@@ -1396,7 +1396,7 @@ name|IOException
 block|{
 name|logger
 operator|.
-name|atInfo
+name|atFine
 argument_list|()
 operator|.
 name|log
@@ -2397,7 +2397,7 @@ name|IOException
 block|{
 name|logger
 operator|.
-name|atInfo
+name|atFine
 argument_list|()
 operator|.
 name|log
