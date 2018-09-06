@@ -394,22 +394,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Project
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|RefNames
 import|;
 end_import
@@ -585,24 +569,6 @@ operator|.
 name|permissions
 operator|.
 name|PermissionBackend
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|permissions
-operator|.
-name|PermissionBackend
-operator|.
-name|ForRef
 import|;
 end_import
 
@@ -1196,15 +1162,15 @@ operator|=
 name|projectCache
 expr_stmt|;
 block|}
-DECL|method|forReceiveCommits ( PermissionBackend.ForRef perm, Branch.NameKey branch, IdentifiedUser user, SshInfo sshInfo, NoteMap rejectCommits, RevWalk rw, @Nullable Change change)
+DECL|method|forReceiveCommits ( PermissionBackend.ForProject forProject, Branch.NameKey branch, IdentifiedUser user, SshInfo sshInfo, NoteMap rejectCommits, RevWalk rw, @Nullable Change change)
 specifier|public
 name|CommitValidators
 name|forReceiveCommits
 parameter_list|(
 name|PermissionBackend
 operator|.
-name|ForRef
-name|perm
+name|ForProject
+name|forProject
 parameter_list|,
 name|Branch
 operator|.
@@ -1231,6 +1197,21 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|PermissionBackend
+operator|.
+name|ForRef
+name|perm
+init|=
+name|forProject
+operator|.
+name|ref
+argument_list|(
+name|branch
+operator|.
+name|get
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|ProjectState
 name|projectState
 init|=
@@ -1371,13 +1352,15 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|forGerritCommits ( ForRef perm, NameKey branch, IdentifiedUser user, SshInfo sshInfo, RevWalk rw, @Nullable Change change)
+DECL|method|forGerritCommits ( PermissionBackend.ForProject forProject, NameKey branch, IdentifiedUser user, SshInfo sshInfo, RevWalk rw, @Nullable Change change)
 specifier|public
 name|CommitValidators
 name|forGerritCommits
 parameter_list|(
-name|ForRef
-name|perm
+name|PermissionBackend
+operator|.
+name|ForProject
+name|forProject
 parameter_list|,
 name|NameKey
 name|branch
@@ -1399,6 +1382,21 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|PermissionBackend
+operator|.
+name|ForRef
+name|perm
+init|=
+name|forProject
+operator|.
+name|ref
+argument_list|(
+name|branch
+operator|.
+name|get
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|ProjectState
 name|projectState
 init|=
@@ -1531,20 +1529,20 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|forMergedCommits ( Project.NameKey project, PermissionBackend.ForRef perm, IdentifiedUser user)
+DECL|method|forMergedCommits ( PermissionBackend.ForProject forProject, Branch.NameKey branch, IdentifiedUser user)
 specifier|public
 name|CommitValidators
 name|forMergedCommits
 parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
 name|PermissionBackend
 operator|.
-name|ForRef
-name|perm
+name|ForProject
+name|forProject
+parameter_list|,
+name|Branch
+operator|.
+name|NameKey
+name|branch
 parameter_list|,
 name|IdentifiedUser
 name|user
@@ -1565,6 +1563,21 @@ comment|//    case for post-commit code review: so reviewers have a place to
 comment|//    discuss what to do about it.
 comment|//  - Plugin validators may do things like require certain commit message
 comment|//    formats, so we play it safe and exclude them.
+name|PermissionBackend
+operator|.
+name|ForRef
+name|perm
+init|=
+name|forProject
+operator|.
+name|ref
+argument_list|(
+name|branch
+operator|.
+name|get
+argument_list|()
+argument_list|)
+decl_stmt|;
 return|return
 operator|new
 name|CommitValidators
@@ -1586,7 +1599,10 @@ name|projectCache
 operator|.
 name|checkedGet
 argument_list|(
-name|project
+name|branch
+operator|.
+name|getParentKey
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
