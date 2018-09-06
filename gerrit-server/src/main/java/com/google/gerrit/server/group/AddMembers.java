@@ -67,24 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-operator|.
-name|USER_NAME_PATTERN_COMPILED
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -459,6 +441,24 @@ operator|.
 name|account
 operator|.
 name|GroupControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|externalids
+operator|.
+name|ExternalId
 import|;
 end_import
 
@@ -1287,15 +1287,12 @@ block|{
 if|if
 condition|(
 operator|!
-name|USER_NAME_PATTERN_COMPILED
+name|ExternalId
 operator|.
-name|matcher
+name|isValidUsername
 argument_list|(
 name|user
 argument_list|)
-operator|.
-name|matches
-argument_list|()
 condition|)
 block|{
 return|return
