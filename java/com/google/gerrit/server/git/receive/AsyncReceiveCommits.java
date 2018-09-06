@@ -917,7 +917,7 @@ argument_list|()
 operator|.
 name|build
 argument_list|(
-name|CommitValidatorCache
+name|BranchCommitValidator
 operator|.
 name|Factory
 operator|.

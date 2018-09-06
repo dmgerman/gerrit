@@ -3371,7 +3371,7 @@ decl_stmt|;
 DECL|field|commitValidatorFactory
 specifier|private
 specifier|final
-name|CommitValidatorCache
+name|BranchCommitValidator
 operator|.
 name|Factory
 name|commitValidatorFactory
@@ -3744,7 +3744,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, @ServerInitiated Provider<AccountsUpdate> accountsUpdateProvider, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommitValidatorCache.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers, @Nullable @Assisted MessageSender messageSender)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, @ServerInitiated Provider<AccountsUpdate> accountsUpdateProvider, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers, @Nullable @Assisted MessageSender messageSender)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -3798,7 +3798,7 @@ operator|.
 name|Factory
 name|optionParserFactory
 parameter_list|,
-name|CommitValidatorCache
+name|BranchCommitValidator
 operator|.
 name|Factory
 name|commitValidatorFactory
@@ -12364,7 +12364,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|CommitValidatorCache
+name|BranchCommitValidator
 name|validator
 init|=
 name|commitValidatorFactory
@@ -12372,6 +12372,11 @@ operator|.
 name|create
 argument_list|(
 name|projectState
+argument_list|,
+name|changeEnt
+operator|.
+name|getDest
+argument_list|()
 argument_list|,
 name|user
 argument_list|)
@@ -12390,11 +12395,6 @@ name|getRevWalk
 argument_list|()
 operator|.
 name|getObjectReader
-argument_list|()
-argument_list|,
-name|changeEnt
-operator|.
-name|getDest
 argument_list|()
 argument_list|,
 name|cmd
@@ -12732,7 +12732,7 @@ name|getNameKey
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|CommitValidatorCache
+name|BranchCommitValidator
 name|validator
 init|=
 name|commitValidatorFactory
@@ -12740,6 +12740,10 @@ operator|.
 name|create
 argument_list|(
 name|projectState
+argument_list|,
+name|magicBranch
+operator|.
+name|dest
 argument_list|,
 name|user
 argument_list|)
@@ -13245,10 +13249,6 @@ argument_list|()
 operator|.
 name|getObjectReader
 argument_list|()
-argument_list|,
-name|magicBranch
-operator|.
-name|dest
 argument_list|,
 name|magicBranch
 operator|.
@@ -18981,7 +18981,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|CommitValidatorCache
+name|BranchCommitValidator
 name|validator
 init|=
 name|commitValidatorFactory
@@ -18989,6 +18989,8 @@ operator|.
 name|create
 argument_list|(
 name|projectState
+argument_list|,
+name|branch
 argument_list|,
 name|user
 argument_list|)
@@ -19183,8 +19185,6 @@ name|walk
 operator|.
 name|getObjectReader
 argument_list|()
-argument_list|,
-name|branch
 argument_list|,
 name|cmd
 argument_list|,
