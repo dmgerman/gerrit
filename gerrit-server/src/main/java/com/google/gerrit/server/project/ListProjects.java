@@ -3247,6 +3247,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|ref
 operator|!=
 literal|null
@@ -3274,6 +3275,7 @@ argument_list|)
 operator|.
 name|isVisible
 argument_list|()
+operator|)
 operator|)
 operator|||
 operator|(
