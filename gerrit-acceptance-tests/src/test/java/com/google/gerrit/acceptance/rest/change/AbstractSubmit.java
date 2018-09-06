@@ -5230,14 +5230,15 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|assertThat
+throw|throw
+operator|new
+name|ValidationException
 argument_list|(
+literal|"Unexpected exception"
+argument_list|,
 name|e
 argument_list|)
-operator|.
-name|isNull
-argument_list|()
-expr_stmt|;
+throw|;
 block|}
 name|projectsCalled
 operator|.
