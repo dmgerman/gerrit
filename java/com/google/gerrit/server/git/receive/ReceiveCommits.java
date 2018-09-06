@@ -19348,21 +19348,6 @@ operator|.
 name|getRefName
 argument_list|()
 decl_stmt|;
-name|checkState
-argument_list|(
-operator|!
-name|MagicBranch
-operator|.
-name|isMagicBranch
-argument_list|(
-name|refName
-argument_list|)
-argument_list|,
-literal|"shouldn't be auto-closing changes on magic branch %s"
-argument_list|,
-name|refName
-argument_list|)
-expr_stmt|;
 comment|// TODO(dborowitz): Combine this BatchUpdate with the main one in
 comment|// handleRegularCommands
 try|try
