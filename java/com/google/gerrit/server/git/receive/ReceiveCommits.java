@@ -2991,89 +2991,17 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-DECL|enum|ReceiveError
+DECL|field|CODE_REVIEW_ERROR
 specifier|private
-enum|enum
-name|ReceiveError
-block|{
-DECL|enumConstant|CONFIG_UPDATE
-name|CONFIG_UPDATE
-argument_list|(
-literal|"You are not allowed to perform this operation.\n"
-operator|+
-literal|"Configuration changes can only be pushed by project owners\n"
-operator|+
-literal|"who also have 'Push' rights on "
-operator|+
-name|RefNames
-operator|.
-name|REFS_CONFIG
-argument_list|)
-block|,
-DECL|enumConstant|UPDATE
-name|UPDATE
-argument_list|(
-literal|"You are not allowed to perform this operation.\n"
-operator|+
-literal|"To push into this reference you need 'Push' rights."
-argument_list|)
-block|,
-DECL|enumConstant|DELETE
-name|DELETE
-argument_list|(
-literal|"You need 'Delete Reference' rights or 'Push' rights with the \n"
-operator|+
-literal|"'Force Push' flag set to delete references."
-argument_list|)
-block|,
-DECL|enumConstant|DELETE_CHANGES
-name|DELETE_CHANGES
-argument_list|(
-literal|"Cannot delete from '"
-operator|+
-name|REFS_CHANGES
-operator|+
-literal|"'"
-argument_list|)
-block|,
-DECL|enumConstant|CODE_REVIEW
-name|CODE_REVIEW
-argument_list|(
+specifier|static
+specifier|final
+name|String
+name|CODE_REVIEW_ERROR
+init|=
 literal|"You need 'Push' rights to upload code review requests.\n"
 operator|+
 literal|"Verify that you are pushing to the right branch."
-argument_list|)
-block|;
-DECL|field|value
-specifier|private
-specifier|final
-name|String
-name|value
 decl_stmt|;
-DECL|method|ReceiveError (String value)
-name|ReceiveError
-parameter_list|(
-name|String
-name|value
-parameter_list|)
-block|{
-name|this
-operator|.
-name|value
-operator|=
-name|value
-expr_stmt|;
-block|}
-DECL|method|get ()
-name|String
-name|get
-parameter_list|()
-block|{
-return|return
-name|value
-return|;
-block|}
-block|}
 DECL|field|CANNOT_DELETE_CHANGES
 specifier|private
 specifier|static
@@ -11195,12 +11123,7 @@ name|errors
 operator|.
 name|put
 argument_list|(
-name|ReceiveError
-operator|.
-name|CODE_REVIEW
-operator|.
-name|get
-argument_list|()
+name|CODE_REVIEW_ERROR
 argument_list|,
 name|ref
 argument_list|)
