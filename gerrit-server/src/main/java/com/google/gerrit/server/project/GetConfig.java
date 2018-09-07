@@ -218,22 +218,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|TransferConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -270,12 +254,6 @@ specifier|private
 specifier|final
 name|boolean
 name|serverEnableSignedPush
-decl_stmt|;
-DECL|field|transferConfig
-specifier|private
-specifier|final
-name|TransferConfig
-name|transferConfig
 decl_stmt|;
 DECL|field|pluginConfigEntries
 specifier|private
@@ -318,7 +296,7 @@ name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetConfig ( @nableSignedPush boolean serverEnableSignedPush, TransferConfig transferConfig, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, UiActions uiActions, DynamicMap<RestView<ProjectResource>> views)
+DECL|method|GetConfig ( @nableSignedPush boolean serverEnableSignedPush, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, UiActions uiActions, DynamicMap<RestView<ProjectResource>> views)
 specifier|public
 name|GetConfig
 parameter_list|(
@@ -326,9 +304,6 @@ annotation|@
 name|EnableSignedPush
 name|boolean
 name|serverEnableSignedPush
-parameter_list|,
-name|TransferConfig
-name|transferConfig
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -360,12 +335,6 @@ operator|.
 name|serverEnableSignedPush
 operator|=
 name|serverEnableSignedPush
-expr_stmt|;
-name|this
-operator|.
-name|transferConfig
-operator|=
-name|transferConfig
 expr_stmt|;
 name|this
 operator|.
@@ -419,8 +388,6 @@ name|resource
 operator|.
 name|getControl
 argument_list|()
-argument_list|,
-name|transferConfig
 argument_list|,
 name|pluginConfigEntries
 argument_list|,
