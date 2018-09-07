@@ -745,6 +745,19 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|deleteDraftComments (DeleteDraftCommentsInput input)
+name|List
+argument_list|<
+name|DeletedDraftCommentInfo
+argument_list|>
+name|deleteDraftComments
+parameter_list|(
+name|DeleteDraftCommentsInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -1458,6 +1471,28 @@ argument_list|<
 name|String
 argument_list|>
 name|externalIds
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|deleteDraftComments (DeleteDraftCommentsInput input)
+specifier|public
+name|List
+argument_list|<
+name|DeletedDraftCommentInfo
+argument_list|>
+name|deleteDraftComments
+parameter_list|(
+name|DeleteDraftCommentsInput
+name|input
 parameter_list|)
 throws|throws
 name|RestApiException

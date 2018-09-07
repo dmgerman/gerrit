@@ -1119,6 +1119,20 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|post
+argument_list|(
+name|ACCOUNT_KIND
+argument_list|,
+literal|"drafts:delete"
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|DeleteDraftComments
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 comment|// The gpgkeys REST endpoints are bound via GpgApiModule.
 name|factory
 argument_list|(
