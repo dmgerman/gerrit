@@ -12961,12 +12961,6 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|NoteMap
-name|rejectCommits
-init|=
-name|loadRejectCommits
-argument_list|()
-decl_stmt|;
 name|RevCommit
 name|start
 init|=
