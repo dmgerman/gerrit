@@ -474,20 +474,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -2253,8 +2239,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**    * Adds footers to existing commit message based on the state of the change.    *    *<p>This adds the following footers if they are missing:    *    *<ul>    *<li>Reviewed-on:<i>url</i>    *<li>Reviewed-by | Tested-by |<i>Other-Label-Name</i>:<i>reviewer</i>    *<li>Change-Id    *</ul>    *    * @param n    * @param notes    * @param user    * @param psId    * @return new message    */
-DECL|method|createDetailedCommitMessage ( RevCommit n, ChangeNotes notes, CurrentUser user, PatchSet.Id psId)
+comment|/**    * Adds footers to existing commit message based on the state of the change.    *    *<p>This adds the following footers if they are missing:    *    *<ul>    *<li>Reviewed-on:<i>url</i>    *<li>Reviewed-by | Tested-by |<i>Other-Label-Name</i>:<i>reviewer</i>    *<li>Change-Id    *</ul>    *    * @param n    * @param notes    * @param psId    * @return new message    */
+DECL|method|createDetailedCommitMessage (RevCommit n, ChangeNotes notes, PatchSet.Id psId)
 specifier|private
 name|String
 name|createDetailedCommitMessage
@@ -2264,9 +2250,6 @@ name|n
 parameter_list|,
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|PatchSet
 operator|.
@@ -2906,22 +2889,6 @@ operator|.
 name|notes
 argument_list|()
 argument_list|,
-name|identifiedUserFactory
-operator|.
-name|create
-argument_list|(
-name|n
-operator|.
-name|notes
-argument_list|()
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getOwner
-argument_list|()
-argument_list|)
-argument_list|,
 name|n
 operator|.
 name|getPatchsetId
@@ -2929,8 +2896,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Creates a commit message for a change, which can be customized by plugins.    *    *<p>By default, adds footers to existing commit message based on the state of the change.    * Plugins implementing {@link ChangeMessageModifier} can modify the resulting commit message    * arbitrarily.    *    * @param n    * @param mergeTip    * @param notes    * @param user    * @param id    * @return new message    */
-DECL|method|createCommitMessageOnSubmit ( RevCommit n, RevCommit mergeTip, ChangeNotes notes, CurrentUser user, Id id)
+comment|/**    * Creates a commit message for a change, which can be customized by plugins.    *    *<p>By default, adds footers to existing commit message based on the state of the change.    * Plugins implementing {@link ChangeMessageModifier} can modify the resulting commit message    * arbitrarily.    *    * @param n    * @param mergeTip    * @param notes    * @param id    * @return new message    */
+DECL|method|createCommitMessageOnSubmit ( RevCommit n, RevCommit mergeTip, ChangeNotes notes, Id id)
 specifier|public
 name|String
 name|createCommitMessageOnSubmit
@@ -2943,9 +2910,6 @@ name|mergeTip
 parameter_list|,
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|CurrentUser
-name|user
 parameter_list|,
 name|Id
 name|id
@@ -2973,8 +2937,6 @@ argument_list|(
 name|n
 argument_list|,
 name|notes
-argument_list|,
-name|user
 argument_list|,
 name|id
 argument_list|)

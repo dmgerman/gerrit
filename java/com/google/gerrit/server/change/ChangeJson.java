@@ -10427,11 +10427,6 @@ operator|.
 name|notes
 argument_list|()
 argument_list|,
-name|userProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|in
 operator|.
 name|getId

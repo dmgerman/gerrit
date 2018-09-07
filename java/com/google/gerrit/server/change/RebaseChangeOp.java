@@ -1113,8 +1113,6 @@ name|baseCommit
 argument_list|,
 name|notes
 argument_list|,
-name|changeOwner
-argument_list|,
 name|originalPatchSet
 operator|.
 name|getId
