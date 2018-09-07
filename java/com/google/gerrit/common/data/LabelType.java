@@ -280,6 +280,15 @@ name|DEF_COPY_MIN_SCORE
 init|=
 literal|false
 decl_stmt|;
+DECL|field|DEF_IGNORE_SELF_APPROVAL
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|DEF_IGNORE_SELF_APPROVAL
+init|=
+literal|false
+decl_stmt|;
 DECL|method|withDefaultValues (String name)
 specifier|public
 specifier|static
@@ -726,6 +735,11 @@ specifier|protected
 name|boolean
 name|allowPostSubmit
 decl_stmt|;
+DECL|field|ignoreSelfApproval
+specifier|protected
+name|boolean
+name|ignoreSelfApproval
+decl_stmt|;
 DECL|field|defaultValue
 specifier|protected
 name|short
@@ -956,6 +970,11 @@ argument_list|(
 name|DEF_ALLOW_POST_SUBMIT
 argument_list|)
 expr_stmt|;
+name|setIgnoreSelfApproval
+argument_list|(
+name|DEF_IGNORE_SELF_APPROVAL
+argument_list|)
+expr_stmt|;
 name|byValue
 operator|=
 operator|new
@@ -1148,6 +1167,32 @@ operator|.
 name|allowPostSubmit
 operator|=
 name|allowPostSubmit
+expr_stmt|;
+block|}
+DECL|method|ignoreSelfApproval ()
+specifier|public
+name|boolean
+name|ignoreSelfApproval
+parameter_list|()
+block|{
+return|return
+name|ignoreSelfApproval
+return|;
+block|}
+DECL|method|setIgnoreSelfApproval (boolean ignoreSelfApproval)
+specifier|public
+name|void
+name|setIgnoreSelfApproval
+parameter_list|(
+name|boolean
+name|ignoreSelfApproval
+parameter_list|)
+block|{
+name|this
+operator|.
+name|ignoreSelfApproval
+operator|=
+name|ignoreSelfApproval
 expr_stmt|;
 block|}
 DECL|method|setRefPatterns (List<String> refPatterns)
