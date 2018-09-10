@@ -18474,11 +18474,6 @@ name|email
 init|=
 literal|"user2@example.com"
 decl_stmt|;
-name|Account
-operator|.
-name|Id
-name|user2Id
-init|=
 name|accountOperations
 operator|.
 name|newAccount
@@ -18501,7 +18496,7 @@ argument_list|)
 operator|.
 name|create
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|setApiUser
 argument_list|(
 name|user
