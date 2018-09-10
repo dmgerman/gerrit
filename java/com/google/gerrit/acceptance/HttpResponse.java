@@ -66,6 +66,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+operator|.
+name|toImmutableList
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -89,6 +105,20 @@ operator|.
 name|base
 operator|.
 name|Preconditions
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
 import|;
 end_import
 
@@ -129,6 +159,16 @@ operator|.
 name|nio
 operator|.
 name|ByteBuffer
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
 import|;
 end_import
 
@@ -354,6 +394,48 @@ name|getValue
 argument_list|()
 else|:
 literal|null
+return|;
+block|}
+DECL|method|getHeaders (String name)
+specifier|public
+name|ImmutableList
+argument_list|<
+name|String
+argument_list|>
+name|getHeaders
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|response
+operator|.
+name|getHeaders
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|Header
+operator|::
+name|getValue
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toImmutableList
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|hasContent ()
