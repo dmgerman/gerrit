@@ -129,6 +129,10 @@ comment|/**    * Can create at least one reference in the project.    *    *<p>T
 DECL|enumConstant|CREATE_REF
 constructor|CREATE_REF
 operator|,
+comment|/**    * Can create at least one tag reference in the project.    *    *<p>This project level permission only validates the user may create some tag reference within    * the project. The exact reference name must be checked at creation:    *    *<pre>permissionBackend    *    .user(user)    *    .project(proj)    *    .ref(ref)    *    .check(RefPermission.CREATE);    *</pre>    */
+DECL|enumConstant|CREATE_TAG_REF
+constructor|CREATE_TAG_REF
+operator|,
 comment|/**    * Can create at least one change in the project.    *    *<p>This project level permission only validates the user may create a change for some branch    * within the project. The exact reference name must be checked at creation:    *    *<pre>permissionBackend    *    .user(user)    *    .project(proj)    *    .ref(ref)    *    .check(RefPermission.CREATE_CHANGE);    *</pre>    */
 DECL|enumConstant|CREATE_CHANGE
 constructor|CREATE_CHANGE

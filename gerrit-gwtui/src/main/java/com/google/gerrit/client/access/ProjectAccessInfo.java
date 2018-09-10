@@ -99,6 +99,15 @@ name|canAddRefs
 parameter_list|()
 comment|/*-{ return this.can_add ? true : false; }-*/
 function_decl|;
+DECL|method|canAddTagRefs ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|canAddTagRefs
+parameter_list|()
+comment|/*-{ return this.can_add_tags ? true : false; }-*/
+function_decl|;
 DECL|method|isOwner ()
 specifier|public
 specifier|final
