@@ -739,8 +739,10 @@ name|X_GERRIT_TRACE
 argument_list|)
 argument_list|)
 operator|.
-name|isNotNull
-argument_list|()
+name|isEqualTo
+argument_list|(
+literal|"issue/123"
+argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
