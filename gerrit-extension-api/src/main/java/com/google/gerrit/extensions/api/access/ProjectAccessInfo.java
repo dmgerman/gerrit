@@ -153,6 +153,11 @@ specifier|public
 name|Boolean
 name|canAdd
 decl_stmt|;
+DECL|field|canAddTags
+specifier|public
+name|Boolean
+name|canAddTags
+decl_stmt|;
 DECL|field|configVisible
 specifier|public
 name|Boolean

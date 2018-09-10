@@ -979,7 +979,7 @@ name|setVisible
 argument_list|(
 name|result
 operator|.
-name|canAddRefs
+name|canAddTagRefs
 argument_list|()
 argument_list|)
 expr_stmt|;
