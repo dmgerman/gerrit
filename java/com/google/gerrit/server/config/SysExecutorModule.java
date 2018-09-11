@@ -156,7 +156,7 @@ name|server
 operator|.
 name|logging
 operator|.
-name|LoggingContextAwareThreadFactory
+name|LoggingContextAwareExecutorService
 import|;
 end_import
 
@@ -509,6 +509,9 @@ name|MoreExecutors
 operator|.
 name|listeningDecorator
 argument_list|(
+operator|new
+name|LoggingContextAwareExecutorService
+argument_list|(
 name|MoreExecutors
 operator|.
 name|getExitingExecutorService
@@ -539,13 +542,6 @@ operator|new
 name|ThreadFactoryBuilder
 argument_list|()
 operator|.
-name|setThreadFactory
-argument_list|(
-operator|new
-name|LoggingContextAwareThreadFactory
-argument_list|()
-argument_list|)
-operator|.
 name|setNameFormat
 argument_list|(
 literal|"ChangeUpdate-%d"
@@ -564,6 +560,7 @@ name|ThreadPoolExecutor
 operator|.
 name|CallerRunsPolicy
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)

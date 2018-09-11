@@ -142,7 +142,7 @@ name|server
 operator|.
 name|logging
 operator|.
-name|LoggingContextAwareThreadFactory
+name|LoggingContextAwareScheduledExecutorService
 import|;
 end_import
 
@@ -353,6 +353,9 @@ argument_list|)
 expr_stmt|;
 name|executor
 operator|=
+operator|new
+name|LoggingContextAwareScheduledExecutorService
+argument_list|(
 name|Executors
 operator|.
 name|newScheduledThreadPool
@@ -362,13 +365,6 @@ argument_list|,
 operator|new
 name|ThreadFactoryBuilder
 argument_list|()
-operator|.
-name|setThreadFactory
-argument_list|(
-operator|new
-name|LoggingContextAwareThreadFactory
-argument_list|()
-argument_list|)
 operator|.
 name|setNameFormat
 argument_list|(
@@ -389,6 +385,7 @@ argument_list|)
 operator|.
 name|build
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 annotation|@

@@ -94,7 +94,7 @@ name|server
 operator|.
 name|logging
 operator|.
-name|LoggingContextAwareThreadFactory
+name|LoggingContextAwareExecutorService
 import|;
 end_import
 
@@ -191,6 +191,9 @@ name|createDiffExecutor
 parameter_list|()
 block|{
 return|return
+operator|new
+name|LoggingContextAwareExecutorService
+argument_list|(
 name|Executors
 operator|.
 name|newCachedThreadPool
@@ -198,13 +201,6 @@ argument_list|(
 operator|new
 name|ThreadFactoryBuilder
 argument_list|()
-operator|.
-name|setThreadFactory
-argument_list|(
-operator|new
-name|LoggingContextAwareThreadFactory
-argument_list|()
-argument_list|)
 operator|.
 name|setNameFormat
 argument_list|(
@@ -218,6 +214,7 @@ argument_list|)
 operator|.
 name|build
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
