@@ -183,14 +183,6 @@ name|String
 name|effectiveMaxObjectSizeLimit
 parameter_list|)
 function_decl|;
-DECL|method|globalMaxObjectSizeLimit (String globalMaxObjectSizeLimit)
-name|String
-name|globalMaxObjectSizeLimit
-parameter_list|(
-name|String
-name|globalMaxObjectSizeLimit
-parameter_list|)
-function_decl|;
 DECL|method|noMaxObjectSizeLimit ()
 name|String
 name|noMaxObjectSizeLimit

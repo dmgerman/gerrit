@@ -1114,11 +1114,11 @@ throw|throw
 operator|new
 name|BadRequestException
 argument_list|(
-literal|"Username '"
+literal|"Invalid username '"
 operator|+
 name|username
 operator|+
-literal|"' must contain only letters, numbers, _, - or ."
+literal|"'"
 argument_list|)
 throw|;
 block|}

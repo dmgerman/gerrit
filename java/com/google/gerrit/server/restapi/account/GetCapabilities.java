@@ -266,7 +266,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|BinaryResult
+name|ResourceNotFoundException
 import|;
 end_import
 
@@ -282,7 +282,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|Response
 import|;
 end_import
 
@@ -1280,7 +1280,10 @@ annotation|@
 name|Override
 DECL|method|apply (Capability resource)
 specifier|public
-name|BinaryResult
+name|Response
+argument_list|<
+name|String
+argument_list|>
 name|apply
 parameter_list|(
 name|Capability
@@ -1295,11 +1298,11 @@ name|checkUsesDefaultCapabilities
 argument_list|()
 expr_stmt|;
 return|return
-name|BinaryResult
+name|Response
 operator|.
-name|create
+name|ok
 argument_list|(
-literal|"ok\n"
+literal|"ok"
 argument_list|)
 return|;
 block|}

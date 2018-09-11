@@ -355,6 +355,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|mode
 operator|==
 name|ListFilterMode
@@ -363,7 +364,9 @@ name|WHITELIST
 operator|&&
 operator|!
 name|match
+operator|)
 operator|||
+operator|(
 name|mode
 operator|==
 name|ListFilterMode
@@ -371,6 +374,7 @@ operator|.
 name|BLACKLIST
 operator|&&
 name|match
+operator|)
 condition|)
 block|{
 name|logger

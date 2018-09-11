@@ -10079,6 +10079,30 @@ name|AuthException
 throws|,
 name|PermissionBackendException
 block|{
+try|try
+block|{
+name|globals
+operator|.
+name|permissionBackend
+operator|.
+name|currentUser
+argument_list|()
+operator|.
+name|check
+argument_list|(
+name|GlobalPermission
+operator|.
+name|ADMINISTRATE_SERVER
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AuthException
+name|e
+parameter_list|)
+block|{
+comment|// Skiping
 name|globals
 operator|.
 name|permissionBackend
@@ -10105,6 +10129,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 

@@ -313,11 +313,11 @@ annotation|@
 name|ConfigSuite
 operator|.
 name|Config
-DECL|method|elasticsearchV6_2 ()
+DECL|method|elasticsearchV6 ()
 specifier|public
 specifier|static
 name|Config
-name|elasticsearchV6_2
+name|elasticsearchV6
 parameter_list|()
 block|{
 return|return
@@ -325,27 +325,7 @@ name|getConfig
 argument_list|(
 name|ElasticVersion
 operator|.
-name|V6_2
-argument_list|)
-return|;
-block|}
-annotation|@
-name|ConfigSuite
-operator|.
-name|Config
-DECL|method|elasticsearchV6_3 ()
-specifier|public
-specifier|static
-name|Config
-name|elasticsearchV6_3
-parameter_list|()
-block|{
-return|return
-name|getConfig
-argument_list|(
-name|ElasticVersion
-operator|.
-name|V6_3
+name|V6_4
 argument_list|)
 return|;
 block|}
