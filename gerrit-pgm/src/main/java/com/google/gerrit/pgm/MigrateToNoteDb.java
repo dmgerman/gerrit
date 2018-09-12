@@ -104,6 +104,20 @@ begin_import
 import|import static
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
 name|util
 operator|.
 name|stream
@@ -419,6 +433,16 @@ operator|.
 name|inject
 operator|.
 name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStreamWriter
 import|;
 end_import
 
@@ -897,9 +921,15 @@ init|=
 operator|new
 name|PrintWriter
 argument_list|(
+operator|new
+name|OutputStreamWriter
+argument_list|(
 name|System
 operator|.
 name|out
+argument_list|,
+name|UTF_8
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)
