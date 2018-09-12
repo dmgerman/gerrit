@@ -119,6 +119,12 @@ name|V6_3
 argument_list|(
 literal|"6.3.*"
 argument_list|)
+block|,
+DECL|enumConstant|V6_4
+name|V6_4
+argument_list|(
+literal|"6.4.*"
+argument_list|)
 block|;
 DECL|field|version
 specifier|private
@@ -157,11 +163,11 @@ name|version
 argument_list|)
 expr_stmt|;
 block|}
-DECL|class|InvalidVersion
+DECL|class|UnsupportedVersion
 specifier|public
 specifier|static
 class|class
-name|InvalidVersion
+name|UnsupportedVersion
 extends|extends
 name|ElasticException
 block|{
@@ -174,8 +180,8 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|InvalidVersion (String version)
-name|InvalidVersion
+DECL|method|UnsupportedVersion (String version)
+name|UnsupportedVersion
 parameter_list|(
 name|String
 name|version
@@ -187,7 +193,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Invalid version: [%s]. Supported versions: %s"
+literal|"Unsupported version: [%s]. Supported versions: %s"
 argument_list|,
 name|version
 argument_list|,
@@ -208,7 +214,7 @@ name|String
 name|version
 parameter_list|)
 throws|throws
-name|InvalidVersion
+name|UnsupportedVersion
 block|{
 for|for
 control|(
@@ -243,7 +249,7 @@ block|}
 block|}
 throw|throw
 operator|new
-name|InvalidVersion
+name|UnsupportedVersion
 argument_list|(
 name|version
 argument_list|)
@@ -270,6 +276,21 @@ name|ElasticVersion
 operator|.
 name|values
 argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|isV6 ()
+specifier|public
+name|boolean
+name|isV6
+parameter_list|()
+block|{
+return|return
+name|version
+operator|.
+name|startsWith
+argument_list|(
+literal|"6."
 argument_list|)
 return|;
 block|}

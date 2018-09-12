@@ -436,7 +436,7 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN_REST_REGEX
 init|=
-literal|"[a-zA-Z0-9._@-]"
+literal|"[a-zA-Z0-9.!#$%&â*+=?^_`\\{|\\}~@-]"
 decl_stmt|;
 DECL|field|USER_NAME_PATTERN_LAST_REGEX
 specifier|private
@@ -455,10 +455,7 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN_REGEX
 init|=
-literal|"^"
-operator|+
-comment|//
-literal|"("
+literal|"^("
 operator|+
 comment|//
 name|USER_NAME_PATTERN_FIRST_REGEX
@@ -478,10 +475,7 @@ comment|//
 name|USER_NAME_PATTERN_FIRST_REGEX
 operator|+
 comment|//
-literal|")"
-operator|+
-comment|//
-literal|"$"
+literal|")$"
 decl_stmt|;
 DECL|field|USER_NAME_PATTERN
 specifier|private

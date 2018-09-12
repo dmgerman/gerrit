@@ -919,15 +919,6 @@ name|value
 parameter_list|()
 comment|/*-{ return this.value; }-*/
 function_decl|;
-DECL|method|inheritedValue ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|inheritedValue
-parameter_list|()
-comment|/*-{ return this.inherited_value; }-*/
-function_decl|;
 DECL|method|configuredValue ()
 specifier|public
 specifier|final
@@ -936,6 +927,15 @@ name|String
 name|configuredValue
 parameter_list|()
 comment|/*-{ return this.configured_value }-*/
+function_decl|;
+DECL|method|summary ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|summary
+parameter_list|()
+comment|/*-{ return this.summary; }-*/
 function_decl|;
 DECL|method|MaxObjectSizeLimitInfo ()
 specifier|protected

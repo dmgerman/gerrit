@@ -2875,6 +2875,7 @@ name|getTopic
 argument_list|()
 argument_list|)
 operator|||
+operator|(
 literal|""
 operator|.
 name|equals
@@ -2888,6 +2889,7 @@ name|getTopic
 argument_list|()
 operator|==
 literal|null
+operator|)
 expr_stmt|;
 name|aUpdated
 operator|=
@@ -3038,6 +3040,7 @@ name|getTopic
 argument_list|()
 argument_list|)
 operator|||
+operator|(
 name|a
 operator|.
 name|getTopic
@@ -3051,6 +3054,7 @@ name|equals
 argument_list|(
 name|bTopic
 argument_list|)
+operator|)
 expr_stmt|;
 name|bUpdated
 operator|=
@@ -4992,6 +4996,7 @@ condition|)
 block|{
 name|excludeGranted
 operator|=
+operator|(
 name|tb
 operator|.
 name|before
@@ -5011,7 +5016,9 @@ operator|.
 name|getCreatedOn
 argument_list|()
 argument_list|)
+operator|)
 operator|||
+operator|(
 name|tb
 operator|.
 name|compareTo
@@ -5020,6 +5027,7 @@ name|ta
 argument_list|)
 operator|<
 literal|0
+operator|)
 expr_stmt|;
 name|excludePostSubmit
 operator|=
