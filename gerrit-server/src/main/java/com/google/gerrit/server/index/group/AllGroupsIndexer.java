@@ -332,16 +332,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|PrintWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -588,8 +578,7 @@ init|=
 operator|new
 name|TextProgressMonitor
 argument_list|(
-operator|new
-name|PrintWriter
+name|newPrintWriter
 argument_list|(
 name|progressOut
 argument_list|)

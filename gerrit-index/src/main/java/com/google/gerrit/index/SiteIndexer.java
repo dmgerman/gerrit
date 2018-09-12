@@ -81,6 +81,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -133,6 +147,16 @@ operator|.
 name|io
 operator|.
 name|OutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStreamWriter
 import|;
 end_import
 
@@ -437,8 +461,7 @@ specifier|protected
 name|PrintWriter
 name|verboseWriter
 init|=
-operator|new
-name|PrintWriter
+name|newPrintWriter
 argument_list|(
 name|NullOutputStream
 operator|.
@@ -487,8 +510,7 @@ parameter_list|)
 block|{
 name|verboseWriter
 operator|=
-operator|new
-name|PrintWriter
+name|newPrintWriter
 argument_list|(
 name|checkNotNull
 argument_list|(
@@ -551,6 +573,29 @@ name|directExecutor
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|newPrintWriter (OutputStream out)
+specifier|protected
+name|PrintWriter
+name|newPrintWriter
+parameter_list|(
+name|OutputStream
+name|out
+parameter_list|)
+block|{
+return|return
+operator|new
+name|PrintWriter
+argument_list|(
+operator|new
+name|OutputStreamWriter
+argument_list|(
+name|out
+argument_list|,
+name|UTF_8
+argument_list|)
+argument_list|)
+return|;
 block|}
 DECL|class|ErrorListener
 specifier|private
