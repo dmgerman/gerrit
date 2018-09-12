@@ -996,6 +996,7 @@ parameter_list|()
 block|{}
 DECL|class|Listener
 specifier|private
+specifier|static
 specifier|final
 class|class
 name|Listener
