@@ -136,6 +136,22 @@ name|extensions
 operator|.
 name|registration
 operator|.
+name|Extension
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
 name|PluginName
 import|;
 end_import
@@ -502,9 +518,7 @@ lambda|->
 block|{
 for|for
 control|(
-name|DynamicMap
-operator|.
-name|Entry
+name|Extension
 argument_list|<
 name|Cache
 argument_list|<
@@ -694,15 +708,13 @@ literal|100
 operator|)
 return|;
 block|}
-DECL|method|metricNameOf (DynamicMap.Entry<Cache<?, ?>> e)
+DECL|method|metricNameOf (Extension<Cache<?, ?>> e)
 specifier|private
 specifier|static
 name|String
 name|metricNameOf
 parameter_list|(
-name|DynamicMap
-operator|.
-name|Entry
+name|Extension
 argument_list|<
 name|Cache
 argument_list|<

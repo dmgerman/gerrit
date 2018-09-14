@@ -208,9 +208,7 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicMap
-operator|.
-name|Entry
+name|Extension
 import|;
 end_import
 
@@ -1013,7 +1011,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Entry
+name|Extension
 argument_list|<
 name|ProjectConfigEntry
 argument_list|>
@@ -1353,7 +1351,7 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|getInheritedValue ( ProjectState project, PluginConfigFactory cfgFactory, Entry<ProjectConfigEntry> e)
+DECL|method|getInheritedValue ( ProjectState project, PluginConfigFactory cfgFactory, Extension<ProjectConfigEntry> e)
 specifier|private
 name|String
 name|getInheritedValue
@@ -1364,7 +1362,7 @@ parameter_list|,
 name|PluginConfigFactory
 name|cfgFactory
 parameter_list|,
-name|Entry
+name|Extension
 argument_list|<
 name|ProjectConfigEntry
 argument_list|>

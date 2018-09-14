@@ -244,7 +244,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|find ( Injector src, TypeLiteral<T> type)
+DECL|method|find (Injector src, TypeLiteral<T> type)
 specifier|private
 specifier|static
 parameter_list|<
@@ -254,7 +254,7 @@ name|List
 argument_list|<
 name|AtomicReference
 argument_list|<
-name|NamedProvider
+name|Extension
 argument_list|<
 name|T
 argument_list|>
@@ -320,7 +320,7 @@ name|List
 argument_list|<
 name|AtomicReference
 argument_list|<
-name|NamedProvider
+name|Extension
 argument_list|<
 name|T
 argument_list|>
@@ -368,17 +368,17 @@ name|AtomicReference
 argument_list|<>
 argument_list|(
 operator|new
-name|NamedProvider
+name|Extension
 argument_list|<>
 argument_list|(
+name|PluginName
+operator|.
+name|GERRIT
+argument_list|,
 name|b
 operator|.
 name|getProvider
 argument_list|()
-argument_list|,
-name|PluginName
-operator|.
-name|GERRIT
 argument_list|)
 argument_list|)
 argument_list|)
