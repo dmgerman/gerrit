@@ -66,15 +66,17 @@ end_package
 
 begin_import
 import|import static
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|stream
+name|common
 operator|.
-name|Collectors
+name|collect
 operator|.
-name|toList
+name|ImmutableList
+operator|.
+name|toImmutableList
 import|;
 end_import
 
@@ -89,6 +91,34 @@ operator|.
 name|value
 operator|.
 name|AutoValue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Streams
 import|;
 end_import
 
@@ -172,16 +202,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -219,10 +239,10 @@ specifier|abstract
 class|class
 name|TestAccount
 block|{
-DECL|method|ids (List<TestAccount> accounts)
+DECL|method|ids (Iterable<TestAccount> accounts)
 specifier|public
 specifier|static
-name|List
+name|ImmutableList
 argument_list|<
 name|Account
 operator|.
@@ -230,7 +250,7 @@ name|Id
 argument_list|>
 name|ids
 parameter_list|(
-name|List
+name|Iterable
 argument_list|<
 name|TestAccount
 argument_list|>
@@ -238,10 +258,12 @@ name|accounts
 parameter_list|)
 block|{
 return|return
-name|accounts
+name|Streams
 operator|.
 name|stream
-argument_list|()
+argument_list|(
+name|accounts
+argument_list|)
 operator|.
 name|map
 argument_list|(
@@ -252,21 +274,21 @@ argument_list|)
 operator|.
 name|collect
 argument_list|(
-name|toList
+name|toImmutableList
 argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|names (List<TestAccount> accounts)
+DECL|method|names (Iterable<TestAccount> accounts)
 specifier|public
 specifier|static
-name|List
+name|ImmutableList
 argument_list|<
 name|String
 argument_list|>
 name|names
 parameter_list|(
-name|List
+name|Iterable
 argument_list|<
 name|TestAccount
 argument_list|>
@@ -274,10 +296,12 @@ name|accounts
 parameter_list|)
 block|{
 return|return
-name|accounts
+name|Streams
 operator|.
 name|stream
-argument_list|()
+argument_list|(
+name|accounts
+argument_list|)
 operator|.
 name|map
 argument_list|(
@@ -288,7 +312,7 @@ argument_list|)
 operator|.
 name|collect
 argument_list|(
-name|toList
+name|toImmutableList
 argument_list|()
 argument_list|)
 return|;
@@ -296,7 +320,7 @@ block|}
 DECL|method|names (TestAccount... accounts)
 specifier|public
 specifier|static
-name|List
+name|ImmutableList
 argument_list|<
 name|String
 argument_list|>
