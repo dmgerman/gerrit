@@ -150,6 +150,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginContext
+operator|.
+name|PluginMetrics
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -206,11 +224,17 @@ name|T
 argument_list|>
 name|dynamicMap
 decl_stmt|;
+DECL|field|pluginMetrics
+specifier|private
+specifier|final
+name|PluginMetrics
+name|pluginMetrics
+decl_stmt|;
 annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|PluginMapContext (DynamicMap<T> dynamicMap)
+DECL|method|PluginMapContext (DynamicMap<T> dynamicMap, PluginMetrics pluginMetrics)
 specifier|public
 name|PluginMapContext
 parameter_list|(
@@ -219,6 +243,9 @@ argument_list|<
 name|T
 argument_list|>
 name|dynamicMap
+parameter_list|,
+name|PluginMetrics
+name|pluginMetrics
 parameter_list|)
 block|{
 name|this
@@ -226,6 +253,12 @@ operator|.
 name|dynamicMap
 operator|=
 name|dynamicMap
+expr_stmt|;
+name|this
+operator|.
+name|pluginMetrics
+operator|=
+name|pluginMetrics
 expr_stmt|;
 block|}
 comment|/**    * Iterator that provides contexts for invoking the extensions in this map.    *    *<p>This is useful if:    *    *<ul>    *<li>invoking of each extension returns a result that should be handled    *<li>a sequence of invocations should be done on each extension    *</ul>    */
@@ -253,12 +286,16 @@ operator|.
 name|iterator
 argument_list|()
 argument_list|,
-name|PluginMapEntryContext
-argument_list|<
-name|T
-argument_list|>
-operator|::
+name|e
+lambda|->
 operator|new
+name|PluginMapEntryContext
+argument_list|<>
+argument_list|(
+name|e
+argument_list|,
+name|pluginMetrics
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -323,6 +360,8 @@ name|PluginContext
 operator|.
 name|runLogExceptions
 argument_list|(
+name|pluginMetrics
+argument_list|,
 name|p
 argument_list|,
 name|extensionConsumer
@@ -374,6 +413,8 @@ name|PluginContext
 operator|.
 name|runLogExceptions
 argument_list|(
+name|pluginMetrics
+argument_list|,
 name|extension
 argument_list|,
 name|extensionConsumer

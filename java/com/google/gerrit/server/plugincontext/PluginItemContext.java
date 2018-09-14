@@ -202,6 +202,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginContext
+operator|.
+name|PluginMetrics
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -232,11 +250,17 @@ name|T
 argument_list|>
 name|dynamicItem
 decl_stmt|;
+DECL|field|pluginMetrics
+specifier|private
+specifier|final
+name|PluginMetrics
+name|pluginMetrics
+decl_stmt|;
 annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|PluginItemContext (DynamicItem<T> dynamicItem)
+DECL|method|PluginItemContext (DynamicItem<T> dynamicItem, PluginMetrics pluginMetrics)
 specifier|public
 name|PluginItemContext
 parameter_list|(
@@ -245,6 +269,9 @@ argument_list|<
 name|T
 argument_list|>
 name|dynamicItem
+parameter_list|,
+name|PluginMetrics
+name|pluginMetrics
 parameter_list|)
 block|{
 name|this
@@ -252,6 +279,12 @@ operator|.
 name|dynamicItem
 operator|=
 name|dynamicItem
+expr_stmt|;
+name|this
+operator|.
+name|pluginMetrics
+operator|=
+name|pluginMetrics
 expr_stmt|;
 block|}
 comment|/**    * Returns the name of the plugin that registered the extension.    *    * @return the plugin name, {@code null} if no implementation is registered for this extension    *     point    */
@@ -307,6 +340,8 @@ name|PluginContext
 operator|.
 name|runLogExceptions
 argument_list|(
+name|pluginMetrics
+argument_list|,
 name|extension
 argument_list|,
 name|extensionImplConsumer
@@ -363,6 +398,8 @@ name|PluginContext
 operator|.
 name|runLogExceptions
 argument_list|(
+name|pluginMetrics
+argument_list|,
 name|extension
 argument_list|,
 name|extensionImplConsumer

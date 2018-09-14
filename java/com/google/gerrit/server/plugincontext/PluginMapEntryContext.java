@@ -168,6 +168,24 @@ name|ExtensionFunction
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginContext
+operator|.
+name|PluginMetrics
+import|;
+end_import
+
 begin_comment
 comment|/**  * Context to invoke an extension from {@link DynamicMap}.  *  *<p>When the plugin extension is invoked a logging tag with the plugin name is set. This way any  * errors that are triggered by the plugin extension (even if they happen in Gerrit code which is  * called by the plugin extension) can be easily attributed to the plugin.  *  *<p>The run* methods execute the extension but don't deliver a result back to the caller.  * Exceptions can be caught and logged.  *  *<p>The call* methods execute the extension and deliver a result back to the caller.  *  *<pre>  * Map<String, Object> results = new HashMap<>();  * fooPluginMapEntryContext.run(  *     extension -> results.put(extension.getExportName(), extension.get().getFoo());  *</pre>  *  *<p>Example if all exceptions, but one, should be caught and logged:  *  *<pre>  * Map<String, Object> results = new HashMap<>();  * try {  *   fooPluginMapEntryContext.run(  *     extension -> results.put(extension.getExportName(), extension.get().getFoo(),  *     MyException.class);  * } catch (MyException e) {  *   // handle the exception  * }  *</pre>  *  *<p>Example if return values should be handled:  *  *<pre>  * Object result = fooPluginMapEntryContext.call(extension -> extension.get().getFoo());  *</pre>  *  *<p>Example if return values and a single exception should be handled:  *  *<pre>  * Object result;  * try {  *   result = fooPluginMapEntryContext.call(extension -> extension.get().getFoo(), MyException.class);  * } catch (MyException e) {  *   // handle the exception  * }  *</pre>  *  *<p>Example if several exceptions should be handled:  *  *<pre>  * for (Extension<Foo> fooExtension : fooDynamicMap) {  *   try (TraceContext traceContext = PluginContext.newTrace(fooExtension)) {  *     fooExtension.get().doFoo();  *   } catch (MyException1 | MyException2 | MyException3 e) {  *     // handle the exception  *   }  * }  *</pre>  */
 end_comment
@@ -190,7 +208,13 @@ name|T
 argument_list|>
 name|extension
 decl_stmt|;
-DECL|method|PluginMapEntryContext (Extension<T> extension)
+DECL|field|pluginMetrics
+specifier|private
+specifier|final
+name|PluginMetrics
+name|pluginMetrics
+decl_stmt|;
+DECL|method|PluginMapEntryContext (Extension<T> extension, PluginMetrics pluginMetrics)
 name|PluginMapEntryContext
 parameter_list|(
 name|Extension
@@ -198,6 +222,9 @@ argument_list|<
 name|T
 argument_list|>
 name|extension
+parameter_list|,
+name|PluginMetrics
+name|pluginMetrics
 parameter_list|)
 block|{
 name|checkNotNull
@@ -220,6 +247,12 @@ operator|.
 name|extension
 operator|=
 name|extension
+expr_stmt|;
+name|this
+operator|.
+name|pluginMetrics
+operator|=
+name|pluginMetrics
 expr_stmt|;
 block|}
 comment|/**    * Returns the name of the plugin that registered this map entry.    *    * @return the plugin name    */
@@ -270,6 +303,8 @@ name|PluginContext
 operator|.
 name|runLogExceptions
 argument_list|(
+name|pluginMetrics
+argument_list|,
 name|extension
 argument_list|,
 name|extensionConsumer
@@ -309,6 +344,8 @@ name|PluginContext
 operator|.
 name|runLogExceptions
 argument_list|(
+name|pluginMetrics
+argument_list|,
 name|extension
 argument_list|,
 name|extensionConsumer
