@@ -554,6 +554,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 operator|.
 name|_accountId
@@ -563,7 +564,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -584,7 +585,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -629,7 +630,8 @@ name|containsExactly
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -658,6 +660,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -669,6 +672,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 operator|.
 name|_accountId
@@ -678,7 +682,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -711,6 +715,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|setAssignee
@@ -720,6 +725,7 @@ argument_list|,
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
@@ -768,7 +774,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -789,7 +795,7 @@ name|isEqualTo
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -852,6 +858,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 operator|.
 name|_accountId
@@ -861,7 +868,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -910,7 +917,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -943,6 +950,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -954,6 +962,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 operator|.
 name|_accountId
@@ -963,7 +972,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -998,6 +1007,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 operator|.
 name|_accountId
@@ -1007,7 +1017,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1028,7 +1038,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1104,7 +1114,7 @@ name|id
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1125,6 +1135,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assert_
@@ -1157,6 +1168,7 @@ operator|+
 name|user
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|"' only matches inactive accounts. To use an inactive account, retry with one"
 operator|+
@@ -1165,6 +1177,7 @@ operator|+
 name|user
 operator|.
 name|id
+argument_list|()
 operator|+
 literal|": User<user@example.com>"
 argument_list|)
@@ -1198,7 +1211,7 @@ name|id
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1216,7 +1229,7 @@ name|r
 argument_list|,
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -1237,7 +1250,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1315,6 +1328,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1342,7 +1356,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1369,6 +1383,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1411,7 +1426,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1424,6 +1439,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 operator|.
 name|_accountId
@@ -1433,7 +1449,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get

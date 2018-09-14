@@ -469,7 +469,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -518,7 +518,7 @@ literal|"/reviewers/"
 operator|+
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -588,7 +588,8 @@ name|containsExactly
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -604,6 +605,7 @@ argument_list|(
 name|admin
 operator|.
 name|fullName
+argument_list|()
 operator|+
 literal|" has removed a vote on this change.\n"
 argument_list|)
@@ -623,12 +625,14 @@ operator|+
 name|user
 operator|.
 name|fullName
+argument_list|()
 operator|+
 literal|"<"
 operator|+
 name|user
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|">\n"
 argument_list|)
@@ -664,7 +668,7 @@ literal|"/reviewers/"
 operator|+
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -785,7 +789,7 @@ name|isEqualTo
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -827,12 +831,12 @@ name|of
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)

@@ -186,6 +186,7 @@ name|create
 argument_list|()
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -250,6 +251,7 @@ operator|=
 name|admin
 operator|.
 name|username
+argument_list|()
 expr_stmt|;
 name|adminRestSession
 operator|.
@@ -263,6 +265,7 @@ name|create
 argument_list|()
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -308,6 +311,7 @@ operator|+
 name|admin
 operator|.
 name|username
+argument_list|()
 operator|+
 literal|"/username"
 argument_list|,
@@ -337,6 +341,7 @@ operator|+
 name|admin
 operator|.
 name|username
+argument_list|()
 operator|+
 literal|"/username"
 argument_list|)

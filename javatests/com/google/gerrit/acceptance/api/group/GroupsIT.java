@@ -3054,6 +3054,7 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 literal|"Registered Users"
 argument_list|)
@@ -3775,7 +3776,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6289,6 +6290,7 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|requestScopeOperations
@@ -6297,7 +6299,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6324,6 +6326,7 @@ argument_list|,
 name|user
 operator|.
 name|fullName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -6414,6 +6417,7 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|requestScopeOperations
@@ -6422,7 +6426,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6554,6 +6558,7 @@ argument_list|(
 name|admin
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
@@ -6587,6 +6592,7 @@ argument_list|,
 name|admin
 operator|.
 name|fullName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -6688,6 +6694,7 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -6708,6 +6715,7 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|requestScopeOperations
@@ -6716,7 +6724,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6751,6 +6759,7 @@ argument_list|,
 name|user
 operator|.
 name|fullName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -7210,7 +7219,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -7239,7 +7248,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -7258,6 +7267,7 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|requestScopeOperations
@@ -7266,7 +7276,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -7964,10 +7974,12 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|g
@@ -7977,6 +7989,7 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|auditEvents
@@ -8012,10 +8025,12 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|g
@@ -8025,6 +8040,7 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|auditEvents
@@ -8060,10 +8076,12 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|String
@@ -8124,6 +8142,7 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|otherGroup
 argument_list|)
@@ -8168,6 +8187,7 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|otherGroup
 argument_list|)
@@ -8180,6 +8200,7 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|auditEvents
@@ -8215,10 +8236,12 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Add a removed group back again.
@@ -8262,6 +8285,7 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|otherGroup
 argument_list|)
@@ -8438,6 +8462,7 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 literal|null
 argument_list|)
@@ -8632,6 +8657,7 @@ lambda|->
 name|u
 operator|.
 name|id
+argument_list|()
 operator|.
 name|toString
 argument_list|()
@@ -8672,7 +8698,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8698,7 +8724,7 @@ name|setApiUser
 argument_list|(
 name|groupOwner
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8724,7 +8750,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -10631,6 +10657,7 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -10655,7 +10682,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -10678,6 +10705,7 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|)
 operator|.
 name|get

@@ -463,6 +463,7 @@ operator|=
 name|admin
 operator|.
 name|id
+argument_list|()
 expr_stmt|;
 name|SubmitRecord
 operator|.
@@ -500,6 +501,7 @@ operator|=
 name|admin
 operator|.
 name|id
+argument_list|()
 expr_stmt|;
 name|SubmitRecord
 operator|.
@@ -537,6 +539,7 @@ operator|=
 name|user
 operator|.
 name|id
+argument_list|()
 expr_stmt|;
 name|List
 argument_list|<
@@ -850,6 +853,7 @@ argument_list|(
 name|account
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -938,6 +942,7 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

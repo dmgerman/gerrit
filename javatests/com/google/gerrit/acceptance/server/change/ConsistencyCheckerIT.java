@@ -967,7 +967,7 @@ name|adminId
 operator|=
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 expr_stmt|;
 name|checker
@@ -1059,7 +1059,7 @@ name|deleteUserBranch
 argument_list|(
 name|owner
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1075,7 +1075,7 @@ literal|"Missing change owner: "
 operator|+
 name|owner
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1831,7 +1831,7 @@ name|project
 argument_list|,
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|sequences
@@ -4875,7 +4875,7 @@ name|newUpdate
 argument_list|(
 name|owner
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 init|)
@@ -5408,7 +5408,7 @@ name|getAccount
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|,

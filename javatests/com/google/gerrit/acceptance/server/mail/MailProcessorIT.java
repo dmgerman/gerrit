@@ -1488,6 +1488,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 operator|.
 name|forUpdate
@@ -1671,7 +1672,8 @@ name|from
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 operator|.
 name|textContent
@@ -1813,7 +1815,8 @@ name|from
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 operator|.
 name|textContent

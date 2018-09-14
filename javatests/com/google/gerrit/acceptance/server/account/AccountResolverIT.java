@@ -626,6 +626,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -675,6 +676,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -903,6 +905,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -920,6 +923,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -962,6 +966,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat

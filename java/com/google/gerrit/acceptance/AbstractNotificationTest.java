@@ -662,7 +662,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -804,7 +804,7 @@ name|setApiUser
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1695,6 +1695,7 @@ name|getValue
 argument_list|()
 operator|.
 name|email
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1993,6 +1994,7 @@ argument_list|,
 name|account
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2364,6 +2366,7 @@ argument_list|(
 name|account
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -2551,7 +2554,7 @@ name|setApiUser
 argument_list|(
 name|watchingProjectOwner
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2610,7 +2613,7 @@ name|setApiUser
 argument_list|(
 name|watcher
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2818,6 +2821,7 @@ argument_list|(
 name|account
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|account
 argument_list|)
@@ -2874,6 +2878,7 @@ argument_list|(
 name|account
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|account
 argument_list|)
@@ -2909,6 +2914,7 @@ name|email
 argument_list|)
 operator|.
 name|fullName
+argument_list|()
 return|;
 block|}
 return|return
@@ -2941,6 +2947,7 @@ argument_list|(
 name|reviewer
 operator|.
 name|email
+argument_list|()
 argument_list|)
 operator|.
 name|reviewer
@@ -2953,6 +2960,7 @@ argument_list|(
 name|ccer
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|ReviewerState
 operator|.
@@ -3042,6 +3050,7 @@ argument_list|(
 name|reviewer
 operator|.
 name|email
+argument_list|()
 argument_list|)
 operator|.
 name|reviewer
@@ -3049,6 +3058,7 @@ argument_list|(
 name|ccer
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|ReviewerState
 operator|.
@@ -3258,7 +3268,7 @@ name|setApiUser
 argument_list|(
 name|owner
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3390,7 +3400,7 @@ name|setApiUser
 argument_list|(
 name|starrer
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3416,7 +3426,7 @@ name|setApiUser
 argument_list|(
 name|owner
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3515,7 +3525,7 @@ name|sc
 operator|.
 name|owner
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3568,7 +3578,7 @@ name|sc
 operator|.
 name|owner
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3621,7 +3631,7 @@ name|sc
 operator|.
 name|owner
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3674,7 +3684,7 @@ name|sc
 operator|.
 name|owner
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

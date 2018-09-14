@@ -2889,6 +2889,7 @@ argument_list|(
 name|admin
 operator|.
 name|fullName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -2904,6 +2905,7 @@ argument_list|(
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -3161,6 +3163,7 @@ argument_list|(
 name|admin
 operator|.
 name|fullName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -3176,6 +3179,7 @@ argument_list|(
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat

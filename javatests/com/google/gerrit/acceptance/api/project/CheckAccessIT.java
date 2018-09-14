@@ -597,6 +597,7 @@ argument_list|(
 name|privilegedUser
 operator|.
 name|id
+argument_list|()
 argument_list|)
 operator|.
 name|update
@@ -878,6 +879,7 @@ operator|=
 name|user
 operator|.
 name|email
+argument_list|()
 expr_stmt|;
 name|in
 operator|.
@@ -950,6 +952,7 @@ operator|=
 name|user
 operator|.
 name|email
+argument_list|()
 expr_stmt|;
 name|in
 operator|.
@@ -1016,6 +1019,7 @@ operator|=
 name|user
 operator|.
 name|email
+argument_list|()
 expr_stmt|;
 name|in
 operator|.
@@ -1383,6 +1387,7 @@ operator|+
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|rep
@@ -1431,6 +1436,7 @@ argument_list|(
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|normalProject
 operator|.
@@ -1453,6 +1459,7 @@ argument_list|(
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|normalProject
 operator|.
@@ -1469,6 +1476,7 @@ argument_list|(
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|secretProject
 operator|.
@@ -1485,6 +1493,7 @@ argument_list|(
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|secretRefProject
 operator|.
@@ -1503,6 +1512,7 @@ argument_list|(
 name|privilegedUser
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|secretRefProject
 operator|.
@@ -1521,6 +1531,7 @@ argument_list|(
 name|privilegedUser
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|normalProject
 operator|.
@@ -1539,6 +1550,7 @@ argument_list|(
 name|privilegedUser
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|secretProject
 operator|.
@@ -1557,6 +1569,7 @@ argument_list|(
 name|privilegedUser
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|secretProject
 operator|.
@@ -1575,6 +1588,7 @@ argument_list|(
 name|privilegedUser
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|normalProject
 operator|.
@@ -1597,6 +1611,7 @@ argument_list|(
 name|privilegedUser
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|normalProject
 operator|.
@@ -1882,6 +1897,7 @@ operator|=
 name|privilegedUser
 operator|.
 name|email
+argument_list|()
 expr_stmt|;
 name|AccessCheckInfo
 name|info

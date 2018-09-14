@@ -2816,6 +2816,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -2845,7 +2846,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3040,6 +3041,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -3051,7 +3053,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3079,7 +3081,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -7825,6 +7827,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 argument_list|,
 name|TimeUtil
@@ -8783,7 +8786,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -9069,7 +9072,7 @@ name|isEqualTo
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

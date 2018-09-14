@@ -1337,7 +1337,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1412,7 +1412,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1722,7 +1722,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1750,7 +1750,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1774,7 +1774,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1804,7 +1804,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2149,6 +2149,7 @@ argument_list|(
 name|deletedBy
 operator|.
 name|fullName
+argument_list|()
 argument_list|,
 name|reason
 argument_list|)
@@ -2443,6 +2444,7 @@ argument_list|(
 name|deletedBy
 operator|.
 name|fullName
+argument_list|()
 argument_list|,
 name|deleteReason
 argument_list|)
@@ -2824,6 +2826,7 @@ argument_list|(
 name|deletedBy
 operator|.
 name|fullName
+argument_list|()
 argument_list|,
 name|deleteReason
 argument_list|)

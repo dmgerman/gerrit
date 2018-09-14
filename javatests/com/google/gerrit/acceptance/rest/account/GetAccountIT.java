@@ -213,12 +213,14 @@ argument_list|(
 name|admin
 operator|.
 name|fullName
+argument_list|()
 operator|+
 literal|"<"
 operator|+
 name|admin
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|">"
 argument_list|,
@@ -231,6 +233,7 @@ argument_list|(
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|admin
 argument_list|)
@@ -241,6 +244,7 @@ argument_list|(
 name|admin
 operator|.
 name|fullName
+argument_list|()
 argument_list|,
 name|admin
 argument_list|)
@@ -255,6 +259,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -269,6 +274,7 @@ argument_list|(
 name|admin
 operator|.
 name|username
+argument_list|()
 argument_list|,
 name|admin
 argument_list|)

@@ -4063,6 +4063,7 @@ operator|+
 name|admin
 operator|.
 name|username
+argument_list|()
 operator|+
 literal|"' or was it deleted?"
 argument_list|)
@@ -4282,7 +4283,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4385,6 +4386,7 @@ operator|+
 name|user
 operator|.
 name|username
+argument_list|()
 operator|+
 literal|"' or was it deleted?"
 argument_list|)
@@ -4552,7 +4554,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4942,7 +4944,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

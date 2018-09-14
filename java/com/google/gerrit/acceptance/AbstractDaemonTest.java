@@ -3883,7 +3883,7 @@ name|evictAndReindexAccount
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3891,7 +3891,7 @@ name|evictAndReindexAccount
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4586,7 +4586,7 @@ name|identifiedUserFactory
 argument_list|,
 name|testAccount
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|p
@@ -5854,7 +5854,7 @@ name|setApiUser
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -7981,7 +7981,7 @@ name|create
 argument_list|(
 name|testAccount
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 return|;
@@ -9923,10 +9923,12 @@ argument_list|(
 name|expected
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|expected
 operator|.
 name|fullName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -10053,7 +10055,8 @@ name|assertNotifyCc
 argument_list|(
 name|expected
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -10229,7 +10232,8 @@ name|containsExactly
 argument_list|(
 name|expected
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -11223,7 +11227,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
