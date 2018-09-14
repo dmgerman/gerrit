@@ -411,10 +411,10 @@ name|String
 name|httpPassword
 parameter_list|()
 function_decl|;
-DECL|method|getIdent ()
+DECL|method|newIdent ()
 specifier|public
 name|PersonIdent
-name|getIdent
+name|newIdent
 parameter_list|()
 block|{
 return|return

@@ -600,7 +600,7 @@ name|assertPersonEquals
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|head
@@ -613,7 +613,7 @@ name|assertPersonEquals
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|head

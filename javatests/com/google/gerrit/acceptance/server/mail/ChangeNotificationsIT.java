@@ -11830,7 +11830,7 @@ name|create
 argument_list|(
 name|by
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|sc

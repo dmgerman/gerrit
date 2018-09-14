@@ -3290,7 +3290,7 @@ name|create
 argument_list|(
 name|owner
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|repo

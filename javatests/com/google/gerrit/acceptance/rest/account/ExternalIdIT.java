@@ -4445,7 +4445,7 @@ name|setAuthor
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4455,7 +4455,7 @@ name|setCommitter
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6478,7 +6478,7 @@ name|setAuthor
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6491,7 +6491,7 @@ name|setCommitter
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6582,7 +6582,7 @@ name|setAuthor
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6595,7 +6595,7 @@ name|setCommitter
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
