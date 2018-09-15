@@ -226,7 +226,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|Response
+name|BinaryResult
 import|;
 end_import
 
@@ -1146,10 +1146,7 @@ annotation|@
 name|Override
 DECL|method|apply (Capability resource)
 specifier|public
-name|Response
-argument_list|<
-name|String
-argument_list|>
+name|BinaryResult
 name|apply
 parameter_list|(
 name|Capability
@@ -1157,11 +1154,11 @@ name|resource
 parameter_list|)
 block|{
 return|return
-name|Response
+name|BinaryResult
 operator|.
-name|ok
+name|create
 argument_list|(
-literal|"ok"
+literal|"ok\n"
 argument_list|)
 return|;
 block|}
