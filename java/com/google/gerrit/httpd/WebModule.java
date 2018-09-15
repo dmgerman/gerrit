@@ -487,6 +487,14 @@ name|authConfig
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|options
+operator|.
+name|enableGwtUi
+argument_list|()
+condition|)
+block|{
 name|install
 argument_list|(
 operator|new
@@ -494,6 +502,7 @@ name|UiRpcModule
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|install
 argument_list|(
