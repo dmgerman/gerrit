@@ -6513,6 +6513,19 @@ argument_list|(
 name|accountId
 argument_list|)
 decl_stmt|;
+name|PatchSet
+name|ps
+init|=
+name|currentPatchSet
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|ps
+operator|!=
+literal|null
+condition|)
+block|{
 if|if
 condition|(
 name|stars
@@ -6525,8 +6538,7 @@ name|REVIEWED_LABEL
 operator|+
 literal|"/"
 operator|+
-name|currentPatchSet
-argument_list|()
+name|ps
 operator|.
 name|getPatchSetId
 argument_list|()
@@ -6549,8 +6561,7 @@ name|UNREVIEWED_LABEL
 operator|+
 literal|"/"
 operator|+
-name|currentPatchSet
-argument_list|()
+name|ps
 operator|.
 name|getPatchSetId
 argument_list|()
@@ -6560,6 +6571,7 @@ block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 return|return
 name|reviewedBy
