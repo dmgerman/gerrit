@@ -9422,6 +9422,17 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|eventRecorder
+operator|.
+name|assertChangeDeletedEvents
+argument_list|(
+name|changeId
+argument_list|,
+name|deleteAs
+operator|.
+name|email
+argument_list|)
+expr_stmt|;
 block|}
 finally|finally
 block|{
