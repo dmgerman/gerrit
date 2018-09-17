@@ -597,6 +597,13 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
+name|post
+argument_list|(
+literal|"/accounts/%s/drafts:delete"
+argument_list|)
+argument_list|,
+name|RestCall
+operator|.
 name|get
 argument_list|(
 literal|"/accounts/%s/oauthtoken"

@@ -434,6 +434,7 @@ end_import
 
 begin_class
 DECL|class|CommentJson
+specifier|public
 class|class
 name|CommentJson
 block|{
@@ -1123,6 +1124,7 @@ return|;
 block|}
 block|}
 DECL|class|CommentFormatter
+specifier|public
 class|class
 name|CommentFormatter
 extends|extends
