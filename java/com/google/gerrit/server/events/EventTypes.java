@@ -142,6 +142,17 @@ argument_list|)
 expr_stmt|;
 name|register
 argument_list|(
+name|ChangeDeletedEvent
+operator|.
+name|TYPE
+argument_list|,
+name|ChangeDeletedEvent
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|register
+argument_list|(
 name|ChangeMergedEvent
 operator|.
 name|TYPE
