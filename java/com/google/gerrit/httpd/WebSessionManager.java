@@ -72,22 +72,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|TimeUtil
-operator|.
-name|nowMs
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|httpd
 operator|.
 name|CacheBasedWebSession
@@ -219,6 +203,26 @@ operator|.
 name|BasicSerialization
 operator|.
 name|writeVarInt32
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|time
+operator|.
+name|TimeUtil
+operator|.
+name|nowMs
 import|;
 end_import
 

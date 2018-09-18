@@ -154,22 +154,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|TimeUtil
-operator|.
-name|truncateToSecond
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|server
@@ -235,6 +219,26 @@ operator|.
 name|Source
 operator|.
 name|REVIEW_DB
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|time
+operator|.
+name|TimeUtil
+operator|.
+name|truncateToSecond
 import|;
 end_import
 

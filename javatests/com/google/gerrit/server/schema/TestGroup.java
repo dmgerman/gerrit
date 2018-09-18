@@ -88,9 +88,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|reviewdb
 operator|.
-name|TimeUtil
+name|client
+operator|.
+name|AccountGroup
 import|;
 end_import
 
@@ -102,11 +104,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|util
 operator|.
-name|AccountGroup
+name|time
+operator|.
+name|TimeUtil
 import|;
 end_import
 
