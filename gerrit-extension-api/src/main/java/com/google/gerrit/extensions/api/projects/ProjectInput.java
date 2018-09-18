@@ -197,6 +197,16 @@ specifier|public
 name|InheritableBoolean
 name|createNewChangeForAllNotInTarget
 decl_stmt|;
+DECL|field|enableSignedPush
+specifier|public
+name|InheritableBoolean
+name|enableSignedPush
+decl_stmt|;
+DECL|field|requireSignedPush
+specifier|public
+name|InheritableBoolean
+name|requireSignedPush
+decl_stmt|;
 DECL|field|maxObjectSizeLimit
 specifier|public
 name|String
