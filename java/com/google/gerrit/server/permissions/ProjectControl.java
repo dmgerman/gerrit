@@ -300,20 +300,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|account
 operator|.
 name|GroupMembership
@@ -743,14 +729,6 @@ operator|.
 name|Factory
 name|refFilterFactory
 decl_stmt|;
-DECL|field|identifiedUserFactory
-specifier|private
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
-decl_stmt|;
 DECL|field|allSections
 specifier|private
 name|List
@@ -776,7 +754,7 @@ name|declaredOwner
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl ( @itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, PermissionCollection.Factory permissionFilter, ChangeControl.Factory changeControlFactory, PermissionBackend permissionBackend, DefaultRefFilter.Factory refFilterFactory, IdentifiedUser.GenericFactory identifiedUserFactory, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl ( @itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, PermissionCollection.Factory permissionFilter, ChangeControl.Factory changeControlFactory, PermissionBackend permissionBackend, DefaultRefFilter.Factory refFilterFactory, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -816,11 +794,6 @@ name|DefaultRefFilter
 operator|.
 name|Factory
 name|refFilterFactory
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -868,12 +841,6 @@ operator|.
 name|refFilterFactory
 operator|=
 name|refFilterFactory
-expr_stmt|;
-name|this
-operator|.
-name|identifiedUserFactory
-operator|=
-name|identifiedUserFactory
 expr_stmt|;
 name|user
 operator|=
@@ -1044,8 +1011,6 @@ operator|=
 operator|new
 name|RefControl
 argument_list|(
-name|identifiedUserFactory
-argument_list|,
 name|this
 argument_list|,
 name|refName

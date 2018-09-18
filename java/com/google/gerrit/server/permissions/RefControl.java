@@ -266,20 +266,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -445,14 +431,6 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-DECL|field|identifiedUserFactory
-specifier|private
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
-decl_stmt|;
 DECL|field|projectControl
 specifier|private
 specifier|final
@@ -493,14 +471,9 @@ specifier|private
 name|Boolean
 name|isVisible
 decl_stmt|;
-DECL|method|RefControl ( IdentifiedUser.GenericFactory identifiedUserFactory, ProjectControl projectControl, String ref, PermissionCollection relevant)
+DECL|method|RefControl (ProjectControl projectControl, String ref, PermissionCollection relevant)
 name|RefControl
 parameter_list|(
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
-parameter_list|,
 name|ProjectControl
 name|projectControl
 parameter_list|,
@@ -511,12 +484,6 @@ name|PermissionCollection
 name|relevant
 parameter_list|)
 block|{
-name|this
-operator|.
-name|identifiedUserFactory
-operator|=
-name|identifiedUserFactory
-expr_stmt|;
 name|this
 operator|.
 name|projectControl
