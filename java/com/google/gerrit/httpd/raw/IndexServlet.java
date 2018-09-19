@@ -314,9 +314,11 @@ name|byte
 index|[]
 name|indexSource
 decl_stmt|;
-DECL|method|IndexServlet (String canonicalURL, @Nullable String cdnPath, @Nullable String faviconPath)
+DECL|method|IndexServlet ( @ullable String canonicalURL, @Nullable String cdnPath, @Nullable String faviconPath)
 name|IndexServlet
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|canonicalURL
 parameter_list|,
@@ -472,11 +474,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|computeCanonicalPath (String canonicalURL)
+DECL|method|computeCanonicalPath (@ullable String canonicalURL)
 specifier|static
 name|String
 name|computeCanonicalPath
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|canonicalURL
 parameter_list|)
