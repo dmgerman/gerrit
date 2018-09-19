@@ -279,6 +279,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -455,20 +469,6 @@ operator|.
 name|diff
 operator|.
 name|Edit
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
 import|;
 end_import
 
@@ -1369,9 +1369,7 @@ name|RawParseUtils
 operator|.
 name|decode
 argument_list|(
-name|Constants
-operator|.
-name|CHARSET
+name|UTF_8
 argument_list|,
 name|header
 argument_list|,
