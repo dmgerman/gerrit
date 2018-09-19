@@ -194,11 +194,11 @@ specifier|public
 class|class
 name|SubmoduleSectionParser
 block|{
-DECL|field|bbc
+DECL|field|config
 specifier|private
 specifier|final
 name|Config
-name|bbc
+name|config
 decl_stmt|;
 DECL|field|canonicalWebUrl
 specifier|private
@@ -214,12 +214,12 @@ operator|.
 name|NameKey
 name|superProjectBranch
 decl_stmt|;
-DECL|method|SubmoduleSectionParser ( Config bbc, String canonicalWebUrl, Branch.NameKey superProjectBranch)
+DECL|method|SubmoduleSectionParser ( Config config, String canonicalWebUrl, Branch.NameKey superProjectBranch)
 specifier|public
 name|SubmoduleSectionParser
 parameter_list|(
 name|Config
-name|bbc
+name|config
 parameter_list|,
 name|String
 name|canonicalWebUrl
@@ -232,9 +232,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|bbc
+name|config
 operator|=
-name|bbc
+name|config
 expr_stmt|;
 name|this
 operator|.
@@ -274,7 +274,7 @@ control|(
 name|String
 name|id
 range|:
-name|bbc
+name|config
 operator|.
 name|getSubsections
 argument_list|(
@@ -324,7 +324,7 @@ specifier|final
 name|String
 name|url
 init|=
-name|bbc
+name|config
 operator|.
 name|getString
 argument_list|(
@@ -339,7 +339,7 @@ specifier|final
 name|String
 name|path
 init|=
-name|bbc
+name|config
 operator|.
 name|getString
 argument_list|(
@@ -353,7 +353,7 @@ decl_stmt|;
 name|String
 name|branch
 init|=
-name|bbc
+name|config
 operator|.
 name|getString
 argument_list|(

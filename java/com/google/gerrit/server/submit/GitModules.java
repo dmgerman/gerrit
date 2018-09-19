@@ -620,11 +620,11 @@ return|return;
 block|}
 block|}
 name|BlobBasedConfig
-name|bbc
+name|config
 decl_stmt|;
 try|try
 block|{
-name|bbc
+name|config
 operator|=
 operator|new
 name|BlobBasedConfig
@@ -667,7 +667,7 @@ operator|=
 operator|new
 name|SubmoduleSectionParser
 argument_list|(
-name|bbc
+name|config
 argument_list|,
 name|canonicalWebUrl
 argument_list|,
