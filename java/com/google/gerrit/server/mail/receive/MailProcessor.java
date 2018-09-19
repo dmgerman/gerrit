@@ -550,7 +550,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|CanonicalWebUrl
+name|UrlFormatter
 import|;
 end_import
 
@@ -1094,18 +1094,15 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
-DECL|field|canonicalUrl
+DECL|field|urlFormatter
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
-name|String
-argument_list|>
-name|canonicalUrl
+name|UrlFormatter
+name|urlFormatter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MailProcessor ( Emails emails, InboundEmailRejectionSender.Factory emailRejectionSender, RetryHelper retryHelper, ChangeMessagesUtil changeMessagesUtil, CommentsUtil commentsUtil, OneOffRequestContext oneOffRequestContext, PatchListCache patchListCache, PatchSetUtil psUtil, Provider<InternalChangeQuery> queryProvider, DynamicMap<MailFilter> mailFilters, EmailReviewComments.Factory outgoingMailFactory, ApprovalsUtil approvalsUtil, CommentAdded commentAdded, AccountCache accountCache, @CanonicalWebUrl Provider<String> canonicalUrl)
+DECL|method|MailProcessor ( Emails emails, InboundEmailRejectionSender.Factory emailRejectionSender, RetryHelper retryHelper, ChangeMessagesUtil changeMessagesUtil, CommentsUtil commentsUtil, OneOffRequestContext oneOffRequestContext, PatchListCache patchListCache, PatchSetUtil psUtil, Provider<InternalChangeQuery> queryProvider, DynamicMap<MailFilter> mailFilters, EmailReviewComments.Factory outgoingMailFactory, ApprovalsUtil approvalsUtil, CommentAdded commentAdded, AccountCache accountCache, UrlFormatter urlFormatter)
 specifier|public
 name|MailProcessor
 parameter_list|(
@@ -1161,13 +1158,8 @@ parameter_list|,
 name|AccountCache
 name|accountCache
 parameter_list|,
-annotation|@
-name|CanonicalWebUrl
-name|Provider
-argument_list|<
-name|String
-argument_list|>
-name|canonicalUrl
+name|UrlFormatter
+name|urlFormatter
 parameter_list|)
 block|{
 name|this
@@ -1256,9 +1248,9 @@ name|accountCache
 expr_stmt|;
 name|this
 operator|.
-name|canonicalUrl
+name|urlFormatter
 operator|=
-name|canonicalUrl
+name|urlFormatter
 expr_stmt|;
 block|}
 comment|/**    * Parses comments from a {@link MailMessage} and persists them on the change.    *    * @param message {@link MailMessage} to process    */
@@ -1887,33 +1879,30 @@ operator|.
 name|project
 argument_list|()
 decl_stmt|;
+comment|// If URL is not defined, we won't be able to parse line comments. We still attempt to get the
+comment|// other ones.
 name|String
 name|changeUrl
 init|=
-name|canonicalUrl
+name|urlFormatter
 operator|.
-name|get
-argument_list|()
-operator|+
-literal|"c/"
-operator|+
+name|getChangeViewUrl
+argument_list|(
 name|cd
 operator|.
 name|project
 argument_list|()
-operator|.
-name|get
-argument_list|()
-operator|+
-literal|"/+/"
-operator|+
+argument_list|,
 name|cd
 operator|.
 name|getId
 argument_list|()
+argument_list|)
 operator|.
-name|get
-argument_list|()
+name|orElse
+argument_list|(
+literal|"http://gerrit.invalid/"
+argument_list|)
 decl_stmt|;
 name|List
 argument_list|<

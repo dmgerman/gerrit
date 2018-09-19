@@ -2019,10 +2019,15 @@ block|{
 return|return
 name|args
 operator|.
-name|urlProvider
+name|urlFormatter
 operator|.
-name|get
+name|getWebUrl
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 return|;
 block|}
 comment|/** Set a header in the outgoing message. */

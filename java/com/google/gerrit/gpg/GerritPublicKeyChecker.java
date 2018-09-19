@@ -178,20 +178,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|PageLinks
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -244,7 +230,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|CanonicalWebUrl
+name|GerritServerConfig
 import|;
 end_import
 
@@ -260,7 +246,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GerritServerConfig
+name|UrlFormatter
 import|;
 end_import
 
@@ -379,6 +365,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -513,11 +509,11 @@ name|InternalAccountQuery
 argument_list|>
 name|accountQueryProvider
 decl_stmt|;
-DECL|field|webUrl
+DECL|field|urlFormatter
 specifier|private
 specifier|final
-name|String
-name|webUrl
+name|UrlFormatter
+name|urlFormatter
 decl_stmt|;
 DECL|field|userFactory
 specifier|private
@@ -546,7 +542,7 @@ name|trusted
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory ( @erritServerConfig Config cfg, Provider<InternalAccountQuery> accountQueryProvider, IdentifiedUser.GenericFactory userFactory, @CanonicalWebUrl String webUrl)
+DECL|method|Factory ( @erritServerConfig Config cfg, Provider<InternalAccountQuery> accountQueryProvider, IdentifiedUser.GenericFactory userFactory, UrlFormatter urlFormatter)
 name|Factory
 parameter_list|(
 annotation|@
@@ -565,10 +561,8 @@ operator|.
 name|GenericFactory
 name|userFactory
 parameter_list|,
-annotation|@
-name|CanonicalWebUrl
-name|String
-name|webUrl
+name|UrlFormatter
+name|urlFormatter
 parameter_list|)
 block|{
 name|this
@@ -579,9 +573,9 @@ name|accountQueryProvider
 expr_stmt|;
 name|this
 operator|.
-name|webUrl
+name|urlFormatter
 operator|=
-name|webUrl
+name|urlFormatter
 expr_stmt|;
 name|this
 operator|.
@@ -781,11 +775,11 @@ name|InternalAccountQuery
 argument_list|>
 name|accountQueryProvider
 decl_stmt|;
-DECL|field|webUrl
+DECL|field|urlFormatter
 specifier|private
 specifier|final
-name|String
-name|webUrl
+name|UrlFormatter
+name|urlFormatter
 decl_stmt|;
 DECL|field|userFactory
 specifier|private
@@ -818,11 +812,11 @@ name|accountQueryProvider
 expr_stmt|;
 name|this
 operator|.
-name|webUrl
+name|urlFormatter
 operator|=
 name|factory
 operator|.
-name|webUrl
+name|urlFormatter
 expr_stmt|;
 name|this
 operator|.
@@ -993,20 +987,41 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|settings
+init|=
+name|urlFormatter
+operator|.
+name|getSettingsUrl
+argument_list|(
+literal|"Identities"
+argument_list|)
+decl_stmt|;
 return|return
 name|CheckResult
 operator|.
 name|bad
 argument_list|(
-literal|"No identities found for user; check "
+literal|"No identities found for user"
 operator|+
-name|webUrl
-operator|+
-literal|"#"
-operator|+
-name|PageLinks
+operator|(
+name|settings
 operator|.
-name|SETTINGS_WEBIDENT
+name|isPresent
+argument_list|()
+condition|?
+literal|"; check "
+operator|+
+name|settings
+operator|.
+name|get
+argument_list|()
+else|:
+literal|""
+operator|)
 argument_list|)
 return|;
 block|}

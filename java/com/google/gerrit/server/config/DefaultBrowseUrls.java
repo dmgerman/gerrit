@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -68,21 +68,27 @@ end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|inject
-operator|.
-name|AbstractModule
+name|Optional
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|javax
 operator|.
-name|google
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
 operator|.
 name|inject
 operator|.
@@ -90,98 +96,79 @@ name|Provider
 import|;
 end_import
 
-begin_comment
-comment|/** Supports binding the {@link CanonicalWebUrl} annotation. */
-end_comment
+begin_import
+import|import
+name|javax
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
 
 begin_class
-DECL|class|CanonicalWebUrlModule
-specifier|public
-specifier|abstract
-class|class
-name|CanonicalWebUrlModule
-extends|extends
-name|AbstractModule
-block|{
 annotation|@
-name|Override
-DECL|method|configure ()
-specifier|protected
-name|void
-name|configure
-parameter_list|()
+name|Singleton
+DECL|class|DefaultBrowseUrls
+specifier|public
+class|class
+name|DefaultBrowseUrls
+implements|implements
+name|UrlFormatter
 block|{
-comment|// Note that the CanonicalWebUrl itself must not be a singleton, but its
-comment|// provider must be.
-comment|//
-comment|// If the value was not configured in the system configuration data the
-comment|// provider may try to guess it from the current HTTP request, if we are
-comment|// running in an HTTP environment.
-comment|//
+DECL|field|canonicalWebUrlProvider
+specifier|private
 specifier|final
-name|Class
-argument_list|<
-name|?
-extends|extends
 name|Provider
 argument_list|<
 name|String
 argument_list|>
-argument_list|>
-name|provider
-init|=
-name|provider
-argument_list|()
+name|canonicalWebUrlProvider
 decl_stmt|;
-name|bind
-argument_list|(
-name|String
-operator|.
-name|class
-argument_list|)
-operator|.
-name|annotatedWith
-argument_list|(
-name|CanonicalWebUrl
-operator|.
-name|class
-argument_list|)
-operator|.
-name|toProvider
-argument_list|(
-name|provider
-argument_list|)
-expr_stmt|;
-name|bind
-argument_list|(
-name|UrlFormatter
-operator|.
-name|class
-argument_list|)
-operator|.
-name|to
-argument_list|(
+annotation|@
+name|Inject
+DECL|method|DefaultBrowseUrls (@anonicalWebUrl Provider<String> canonicalWebUrlProvider)
 name|DefaultBrowseUrls
+parameter_list|(
+annotation|@
+name|CanonicalWebUrl
+name|Provider
+argument_list|<
+name|String
+argument_list|>
+name|canonicalWebUrlProvider
+parameter_list|)
+block|{
+name|this
 operator|.
-name|class
-argument_list|)
+name|canonicalWebUrlProvider
+operator|=
+name|canonicalWebUrlProvider
 expr_stmt|;
 block|}
-DECL|method|provider ()
-specifier|protected
-specifier|abstract
-name|Class
-argument_list|<
-name|?
-extends|extends
-name|Provider
+annotation|@
+name|Override
+DECL|method|getWebUrl ()
+specifier|public
+name|Optional
 argument_list|<
 name|String
 argument_list|>
-argument_list|>
-name|provider
+name|getWebUrl
 parameter_list|()
-function_decl|;
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|canonicalWebUrlProvider
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

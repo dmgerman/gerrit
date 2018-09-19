@@ -88,20 +88,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|config
@@ -220,7 +206,7 @@ name|DEFAULT_ABANDON_MESSAGE
 init|=
 literal|"Auto-Abandoned due to inactivity, see "
 operator|+
-literal|"${URL}Documentation/user-change-cleanup.html#auto-abandon\n"
+literal|"${URL}\n"
 operator|+
 literal|"\n"
 operator|+
@@ -255,7 +241,7 @@ name|abandonMessage
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeCleanupConfig ( @erritServerConfig Config cfg, @CanonicalWebUrl @Nullable String canonicalWebUrl)
+DECL|method|ChangeCleanupConfig (@erritServerConfig Config cfg, UrlFormatter urlFormatter)
 name|ChangeCleanupConfig
 parameter_list|(
 annotation|@
@@ -263,12 +249,8 @@ name|GerritServerConfig
 name|Config
 name|cfg
 parameter_list|,
-annotation|@
-name|CanonicalWebUrl
-annotation|@
-name|Nullable
-name|String
-name|canonicalWebUrl
+name|UrlFormatter
+name|urlFormatter
 parameter_list|)
 block|{
 name|schedule
@@ -310,7 +292,7 @@ name|readAbandonMessage
 argument_list|(
 name|cfg
 argument_list|,
-name|canonicalWebUrl
+name|urlFormatter
 argument_list|)
 expr_stmt|;
 block|}
@@ -355,7 +337,7 @@ else|:
 literal|0
 return|;
 block|}
-DECL|method|readAbandonMessage (Config cfg, String webUrl)
+DECL|method|readAbandonMessage (Config cfg, UrlFormatter urlFormatter)
 specifier|private
 name|String
 name|readAbandonMessage
@@ -363,8 +345,8 @@ parameter_list|(
 name|Config
 name|cfg
 parameter_list|,
-name|String
-name|webUrl
+name|UrlFormatter
+name|urlFormatter
 parameter_list|)
 block|{
 name|String
@@ -396,15 +378,30 @@ operator|=
 name|DEFAULT_ABANDON_MESSAGE
 expr_stmt|;
 block|}
+name|String
+name|docUrl
+init|=
+name|urlFormatter
+operator|.
+name|getDocUrl
+argument_list|(
+literal|"user-change-cleanup.html"
+argument_list|,
+literal|"auto-abandon"
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 operator|!
-name|Strings
+name|docUrl
 operator|.
-name|isNullOrEmpty
-argument_list|(
-name|webUrl
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|abandonMessage
@@ -415,7 +412,7 @@ name|replaceAll
 argument_list|(
 literal|"\\$\\{URL\\}"
 argument_list|,
-name|webUrl
+name|docUrl
 argument_list|)
 expr_stmt|;
 block|}
