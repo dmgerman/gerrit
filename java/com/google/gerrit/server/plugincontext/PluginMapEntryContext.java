@@ -380,6 +380,8 @@ name|PluginContext
 operator|.
 name|call
 argument_list|(
+name|pluginMetrics
+argument_list|,
 name|extension
 argument_list|,
 name|extensionFunction
@@ -426,6 +428,8 @@ name|PluginContext
 operator|.
 name|call
 argument_list|(
+name|pluginMetrics
+argument_list|,
 name|extension
 argument_list|,
 name|checkedExtensionFunction

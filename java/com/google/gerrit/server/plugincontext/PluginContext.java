@@ -226,6 +226,22 @@ name|gerrit
 operator|.
 name|metrics
 operator|.
+name|Description
+operator|.
+name|Units
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
 name|DisabledMetricMaker
 import|;
 end_import
@@ -255,6 +271,20 @@ operator|.
 name|metrics
 operator|.
 name|MetricMaker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|Timer3
 import|;
 end_import
 
@@ -499,6 +529,18 @@ name|DisabledMetricMaker
 argument_list|()
 argument_list|)
 decl_stmt|;
+DECL|field|latency
+specifier|final
+name|Timer3
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|latency
+decl_stmt|;
 DECL|field|errorCount
 specifier|final
 name|Counter3
@@ -520,6 +562,54 @@ name|MetricMaker
 name|metricMaker
 parameter_list|)
 block|{
+name|this
+operator|.
+name|latency
+operator|=
+name|metricMaker
+operator|.
+name|newTimer
+argument_list|(
+literal|"plugin/latency"
+argument_list|,
+operator|new
+name|Description
+argument_list|(
+literal|"Latency for plugin invocation"
+argument_list|)
+operator|.
+name|setCumulative
+argument_list|()
+operator|.
+name|setUnit
+argument_list|(
+name|Units
+operator|.
+name|MILLISECONDS
+argument_list|)
+argument_list|,
+name|Field
+operator|.
+name|ofString
+argument_list|(
+literal|"plugin_name"
+argument_list|)
+argument_list|,
+name|Field
+operator|.
+name|ofString
+argument_list|(
+literal|"class_name"
+argument_list|)
+argument_list|,
+name|Field
+operator|.
+name|ofString
+argument_list|(
+literal|"export_name"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|errorCount
@@ -566,6 +656,52 @@ literal|"export_name"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|startLatency (Extension<?> extension)
+name|Timer3
+operator|.
+name|Context
+name|startLatency
+parameter_list|(
+name|Extension
+argument_list|<
+name|?
+argument_list|>
+name|extension
+parameter_list|)
+block|{
+return|return
+name|latency
+operator|.
+name|start
+argument_list|(
+name|extension
+operator|.
+name|getPluginName
+argument_list|()
+argument_list|,
+name|extension
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|Strings
+operator|.
+name|nullToEmpty
+argument_list|(
+name|extension
+operator|.
+name|getExportName
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
 block|}
 DECL|method|incrementErrorCount (Extension<?> extension)
 name|void
@@ -746,6 +882,18 @@ name|newTrace
 argument_list|(
 name|extension
 argument_list|)
+init|;
+name|Timer3
+operator|.
+name|Context
+name|ctx
+operator|=
+name|pluginMetrics
+operator|.
+name|startLatency
+argument_list|(
+name|extension
+argument_list|)
 init|)
 block|{
 name|extensionImplConsumer
@@ -847,6 +995,18 @@ name|TraceContext
 name|traceContext
 init|=
 name|newTrace
+argument_list|(
+name|extension
+argument_list|)
+init|;
+name|Timer3
+operator|.
+name|Context
+name|ctx
+operator|=
+name|pluginMetrics
+operator|.
+name|startLatency
 argument_list|(
 name|extension
 argument_list|)
@@ -960,6 +1120,18 @@ name|TraceContext
 name|traceContext
 init|=
 name|newTrace
+argument_list|(
+name|extension
+argument_list|)
+init|;
+name|Timer3
+operator|.
+name|Context
+name|ctx
+operator|=
+name|pluginMetrics
+operator|.
+name|startLatency
 argument_list|(
 name|extension
 argument_list|)
@@ -1095,6 +1267,18 @@ name|newTrace
 argument_list|(
 name|extension
 argument_list|)
+init|;
+name|Timer3
+operator|.
+name|Context
+name|ctx
+operator|=
+name|pluginMetrics
+operator|.
+name|startLatency
+argument_list|(
+name|extension
+argument_list|)
 init|)
 block|{
 name|extensionConsumer
@@ -1161,8 +1345,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Calls a plugin extension and returns the result from the plugin extension call.    *    *<p>The function gets the extension implementation provided that should be invoked.    *    * @param extension extension that is being invoked    * @param extensionImplFunction function that invokes the extension    * @return the result from the plugin extension    */
-DECL|method|call (Extension<T> extension, ExtensionImplFunction<T, R> extensionImplFunction)
+comment|/**    * Calls a plugin extension and returns the result from the plugin extension call.    *    *<p>The function gets the extension implementation provided that should be invoked.    *    * @param pluginMetrics the plugin metrics    * @param extension extension that is being invoked    * @param extensionImplFunction function that invokes the extension    * @return the result from the plugin extension    */
+DECL|method|call ( PluginMetrics pluginMetrics, Extension<T> extension, ExtensionImplFunction<T, R> extensionImplFunction)
 specifier|static
 parameter_list|<
 name|T
@@ -1172,6 +1356,9 @@ parameter_list|>
 name|R
 name|call
 parameter_list|(
+name|PluginMetrics
+name|pluginMetrics
+parameter_list|,
 name|Extension
 argument_list|<
 name|T
@@ -1196,6 +1383,18 @@ name|newTrace
 argument_list|(
 name|extension
 argument_list|)
+init|;
+name|Timer3
+operator|.
+name|Context
+name|ctx
+operator|=
+name|pluginMetrics
+operator|.
+name|startLatency
+argument_list|(
+name|extension
+argument_list|)
 init|)
 block|{
 return|return
@@ -1211,8 +1410,8 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Calls a plugin extension and returns the result from the plugin extension call. Exceptions of    * the specified type are thrown and must be handled by the caller.    *    *<p>The function gets the extension implementation provided that should be invoked.    *    * @param extension extension that is being invoked    * @param checkedExtensionImplFunction function that invokes the extension    * @param exceptionClass type of the exceptions that should be thrown    * @return the result from the plugin extension    * @throws X expected exception from the plugin extension    */
-DECL|method|call ( Extension<T> extension, CheckedExtensionImplFunction<T, R, X> checkedExtensionImplFunction, Class<X> exceptionClass)
+comment|/**    * Calls a plugin extension and returns the result from the plugin extension call. Exceptions of    * the specified type are thrown and must be handled by the caller.    *    *<p>The function gets the extension implementation provided that should be invoked.    *    * @param pluginMetrics the plugin metrics    * @param extension extension that is being invoked    * @param checkedExtensionImplFunction function that invokes the extension    * @param exceptionClass type of the exceptions that should be thrown    * @return the result from the plugin extension    * @throws X expected exception from the plugin extension    */
+DECL|method|call ( PluginMetrics pluginMetrics, Extension<T> extension, CheckedExtensionImplFunction<T, R, X> checkedExtensionImplFunction, Class<X> exceptionClass)
 specifier|static
 parameter_list|<
 name|T
@@ -1226,6 +1425,9 @@ parameter_list|>
 name|R
 name|call
 parameter_list|(
+name|PluginMetrics
+name|pluginMetrics
+parameter_list|,
 name|Extension
 argument_list|<
 name|T
@@ -1257,6 +1459,18 @@ name|TraceContext
 name|traceContext
 init|=
 name|newTrace
+argument_list|(
+name|extension
+argument_list|)
+init|;
+name|Timer3
+operator|.
+name|Context
+name|ctx
+operator|=
+name|pluginMetrics
+operator|.
+name|startLatency
 argument_list|(
 name|extension
 argument_list|)
@@ -1317,8 +1531,8 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**    * Calls a plugin extension and returns the result from the plugin extension call.    *    *<p>The function get the {@link Extension} provided that should be invoked. The extension    * provides access to the plugin name and the export name.    *    * @param extension extension that is being invoked    * @param extensionFunction function that invokes the extension    * @return the result from the plugin extension    */
-DECL|method|call ( Extension<T> extension, ExtensionFunction<Extension<T>, R> extensionFunction)
+comment|/**    * Calls a plugin extension and returns the result from the plugin extension call.    *    *<p>The function get the {@link Extension} provided that should be invoked. The extension    * provides access to the plugin name and the export name.    *    * @param pluginMetrics the plugin metrics    * @param extension extension that is being invoked    * @param extensionFunction function that invokes the extension    * @return the result from the plugin extension    */
+DECL|method|call ( PluginMetrics pluginMetrics, Extension<T> extension, ExtensionFunction<Extension<T>, R> extensionFunction)
 specifier|static
 parameter_list|<
 name|T
@@ -1328,6 +1542,9 @@ parameter_list|>
 name|R
 name|call
 parameter_list|(
+name|PluginMetrics
+name|pluginMetrics
+parameter_list|,
 name|Extension
 argument_list|<
 name|T
@@ -1355,6 +1572,18 @@ name|newTrace
 argument_list|(
 name|extension
 argument_list|)
+init|;
+name|Timer3
+operator|.
+name|Context
+name|ctx
+operator|=
+name|pluginMetrics
+operator|.
+name|startLatency
+argument_list|(
+name|extension
+argument_list|)
 init|)
 block|{
 return|return
@@ -1367,8 +1596,8 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Calls a plugin extension and returns the result from the plugin extension call. Exceptions of    * the specified type are thrown and must be handled by the caller.    *    *<p>The function get the {@link Extension} provided that should be invoked. The extension    * provides access to the plugin name and the export name.    *    * @param extension extension that is being invoked    * @param checkedExtensionFunction function that invokes the extension    * @param exceptionClass type of the exceptions that should be thrown    * @return the result from the plugin extension    * @throws X expected exception from the plugin extension    */
-DECL|method|call ( Extension<T> extension, CheckedExtensionFunction<Extension<T>, R, X> checkedExtensionFunction, Class<X> exceptionClass)
+comment|/**    * Calls a plugin extension and returns the result from the plugin extension call. Exceptions of    * the specified type are thrown and must be handled by the caller.    *    *<p>The function get the {@link Extension} provided that should be invoked. The extension    * provides access to the plugin name and the export name.    *    * @param pluginMetrics the plugin metrics    * @param extension extension that is being invoked    * @param checkedExtensionFunction function that invokes the extension    * @param exceptionClass type of the exceptions that should be thrown    * @return the result from the plugin extension    * @throws X expected exception from the plugin extension    */
+DECL|method|call ( PluginMetrics pluginMetrics, Extension<T> extension, CheckedExtensionFunction<Extension<T>, R, X> checkedExtensionFunction, Class<X> exceptionClass)
 specifier|static
 parameter_list|<
 name|T
@@ -1382,6 +1611,9 @@ parameter_list|>
 name|R
 name|call
 parameter_list|(
+name|PluginMetrics
+name|pluginMetrics
+parameter_list|,
 name|Extension
 argument_list|<
 name|T
@@ -1416,6 +1648,18 @@ name|TraceContext
 name|traceContext
 init|=
 name|newTrace
+argument_list|(
+name|extension
+argument_list|)
+init|;
+name|Timer3
+operator|.
+name|Context
+name|ctx
+operator|=
+name|pluginMetrics
+operator|.
+name|startLatency
 argument_list|(
 name|extension
 argument_list|)
