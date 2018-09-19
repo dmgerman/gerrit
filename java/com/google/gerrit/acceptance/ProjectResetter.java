@@ -1315,10 +1315,10 @@ name|refs
 init|=
 name|repo
 operator|.
-name|getAllRefs
+name|getRefDatabase
 argument_list|()
 operator|.
-name|values
+name|getRefs
 argument_list|()
 decl_stmt|;
 for|for
