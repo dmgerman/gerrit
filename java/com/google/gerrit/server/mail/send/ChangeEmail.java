@@ -220,22 +220,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Change
 import|;
 end_import
@@ -617,16 +601,6 @@ operator|.
 name|util
 operator|.
 name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
 import|;
 end_import
 
@@ -1658,43 +1632,6 @@ operator|+
 literal|">"
 return|;
 block|}
-comment|/** Format the sender's "cover letter", {@link #getCoverLetter()}. */
-DECL|method|formatCoverLetter ()
-specifier|protected
-name|void
-name|formatCoverLetter
-parameter_list|()
-block|{
-specifier|final
-name|String
-name|cover
-init|=
-name|getCoverLetter
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-operator|!
-literal|""
-operator|.
-name|equals
-argument_list|(
-name|cover
-argument_list|)
-condition|)
-block|{
-name|appendText
-argument_list|(
-name|cover
-argument_list|)
-expr_stmt|;
-name|appendText
-argument_list|(
-literal|"\n\n"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 comment|/** Get the text of the "cover letter". */
 DECL|method|getCoverLetter ()
 specifier|public
@@ -1719,20 +1656,6 @@ block|}
 return|return
 literal|""
 return|;
-block|}
-comment|/** Format the change message and the affected file list. */
-DECL|method|formatChangeDetail ()
-specifier|protected
-name|void
-name|formatChangeDetail
-parameter_list|()
-block|{
-name|appendText
-argument_list|(
-name|getChangeDetail
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 comment|/** Create the change message and the affected file list. */
 DECL|method|getChangeDetail ()
@@ -2008,57 +1931,6 @@ parameter_list|()
 block|{
 return|return
 name|projectState
-return|;
-block|}
-comment|/** Get the groups which own the project. */
-DECL|method|getProjectOwners ()
-specifier|protected
-name|Set
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
-name|getProjectOwners
-parameter_list|()
-block|{
-specifier|final
-name|ProjectState
-name|r
-decl_stmt|;
-name|r
-operator|=
-name|args
-operator|.
-name|projectCache
-operator|.
-name|get
-argument_list|(
-name|change
-operator|.
-name|getProject
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-name|r
-operator|!=
-literal|null
-condition|?
-name|r
-operator|.
-name|getOwners
-argument_list|()
-else|:
-name|Collections
-operator|.
-expr|<
-name|AccountGroup
-operator|.
-name|UUID
-operator|>
-name|emptySet
-argument_list|()
 return|;
 block|}
 comment|/** TO or CC all vested parties (change owner, patch set uploader, author). */
