@@ -1147,15 +1147,9 @@ name|path
 decl_stmt|;
 name|Side
 name|side
-init|=
-name|Side
-operator|.
-name|PARENT
 decl_stmt|;
 name|int
 name|line
-init|=
-literal|0
 decl_stmt|;
 name|CommentRange
 name|range

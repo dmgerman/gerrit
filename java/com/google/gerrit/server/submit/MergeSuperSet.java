@@ -1164,8 +1164,6 @@ name|oldSeen
 decl_stmt|;
 name|int
 name|seen
-init|=
-literal|0
 decl_stmt|;
 name|changeSet
 operator|=

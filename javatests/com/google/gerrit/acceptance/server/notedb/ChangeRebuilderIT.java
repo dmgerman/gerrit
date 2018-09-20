@@ -1905,8 +1905,6 @@ operator|.
 name|getParentKey
 argument_list|()
 decl_stmt|;
-name|r
-operator|=
 name|amendChange
 argument_list|(
 name|r

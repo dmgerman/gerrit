@@ -537,8 +537,6 @@ argument_list|(
 literal|"ACK"
 argument_list|)
 expr_stmt|;
-name|tmp
-operator|=
 name|in
 operator|.
 name|readString
@@ -961,8 +959,6 @@ argument_list|(
 literal|"ACK"
 argument_list|)
 expr_stmt|;
-name|tmp
-operator|=
 name|in
 operator|.
 name|readString

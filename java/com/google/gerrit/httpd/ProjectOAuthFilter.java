@@ -915,8 +915,6 @@ name|IOException
 block|{
 name|AuthInfo
 name|authInfo
-init|=
-literal|null
 decl_stmt|;
 comment|// first check if there is a BASIC authentication header
 name|String

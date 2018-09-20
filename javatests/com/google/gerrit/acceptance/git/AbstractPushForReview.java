@@ -4076,8 +4076,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|r
-operator|=
 name|pushTo
 argument_list|(
 name|pushSpec
@@ -13297,8 +13295,6 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
-name|r2
-operator|=
 name|amendChange
 argument_list|(
 name|id2

@@ -1890,8 +1890,6 @@ argument_list|,
 name|project3
 argument_list|)
 decl_stmt|;
-name|result
-operator|=
 name|assertQuery
 argument_list|(
 name|newQuery

@@ -2621,8 +2621,6 @@ condition|)
 block|{
 name|Object
 name|additionalBean
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
