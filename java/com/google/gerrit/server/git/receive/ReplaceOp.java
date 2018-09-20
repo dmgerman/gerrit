@@ -1327,11 +1327,6 @@ argument_list|<
 name|String
 argument_list|>
 name|groups
-init|=
-name|ImmutableList
-operator|.
-name|of
-argument_list|()
 decl_stmt|;
 DECL|field|approvals
 specifier|private

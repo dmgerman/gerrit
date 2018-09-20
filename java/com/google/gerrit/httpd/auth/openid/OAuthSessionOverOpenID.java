@@ -936,8 +936,6 @@ argument_list|)
 decl_stmt|;
 name|AuthResult
 name|arsp
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

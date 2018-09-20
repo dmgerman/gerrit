@@ -1628,8 +1628,6 @@ operator|.
 name|Id
 argument_list|>
 name|accountsToNotify
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -1905,8 +1903,6 @@ name|ConfigInvalidException
 block|{
 name|IdentifiedUser
 name|reviewerUser
-init|=
-literal|null
 decl_stmt|;
 name|boolean
 name|exactMatchFound
@@ -2175,8 +2171,6 @@ name|GroupDescription
 operator|.
 name|Basic
 name|group
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

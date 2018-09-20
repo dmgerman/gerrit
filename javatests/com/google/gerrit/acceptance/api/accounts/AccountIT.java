@@ -14635,8 +14635,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|infos
-operator|=
 name|gApi
 operator|.
 name|accounts

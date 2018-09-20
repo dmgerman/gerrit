@@ -778,8 +778,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Change 1,2 (+FILE_A, +FILE_B, -FILE_D)
-name|c
-operator|=
 name|amendBuilder
 argument_list|()
 operator|.

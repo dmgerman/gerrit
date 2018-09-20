@@ -1775,8 +1775,6 @@ parameter_list|)
 block|{
 name|String
 name|msg
-init|=
-literal|null
 decl_stmt|;
 switch|switch
 condition|(

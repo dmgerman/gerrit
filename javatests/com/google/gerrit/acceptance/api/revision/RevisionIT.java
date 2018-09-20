@@ -10614,8 +10614,6 @@ operator|.
 name|submit
 argument_list|()
 expr_stmt|;
-name|oldETag
-operator|=
 name|checkETag
 argument_list|(
 name|getRevisionActions

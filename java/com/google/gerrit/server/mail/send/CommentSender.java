@@ -3177,8 +3177,6 @@ argument_list|()
 expr_stmt|;
 name|boolean
 name|hasComments
-init|=
-literal|false
 decl_stmt|;
 try|try
 init|(

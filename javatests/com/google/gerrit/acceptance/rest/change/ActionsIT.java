@@ -2628,8 +2628,6 @@ argument_list|,
 name|changeId
 argument_list|)
 decl_stmt|;
-name|revisionInfo
-operator|=
 name|changeJsonFactory
 operator|.
 name|create

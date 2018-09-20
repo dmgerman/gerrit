@@ -3205,8 +3205,6 @@ comment|// Compute size without restricting to version (although obsolete data w
 comment|// anyway).
 name|long
 name|used
-init|=
-literal|0
 decl_stmt|;
 try|try
 init|(

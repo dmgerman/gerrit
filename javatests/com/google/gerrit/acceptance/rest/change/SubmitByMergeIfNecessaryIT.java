@@ -3635,8 +3635,6 @@ init|)
 block|{
 name|TarArchiveEntry
 name|entry
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(

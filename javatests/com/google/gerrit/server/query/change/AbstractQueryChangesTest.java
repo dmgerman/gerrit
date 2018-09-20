@@ -15304,8 +15304,6 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
-name|actual
-operator|=
 name|assertQuery
 argument_list|(
 literal|"reviewedby:"

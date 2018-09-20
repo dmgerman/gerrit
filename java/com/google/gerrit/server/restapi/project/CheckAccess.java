@@ -753,8 +753,6 @@ return|;
 block|}
 name|RefPermission
 name|refPerm
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

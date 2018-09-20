@@ -9697,8 +9697,6 @@ argument_list|()
 decl_stmt|;
 name|boolean
 name|want
-init|=
-literal|false
 decl_stmt|;
 if|if
 condition|(
