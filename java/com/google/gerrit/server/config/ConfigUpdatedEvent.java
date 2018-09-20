@@ -317,6 +317,27 @@ name|APPLIED
 argument_list|)
 return|;
 block|}
+DECL|method|reject (ConfigKey entry)
+specifier|public
+name|Update
+name|reject
+parameter_list|(
+name|ConfigKey
+name|entry
+parameter_list|)
+block|{
+return|return
+name|reject
+argument_list|(
+name|Collections
+operator|.
+name|singleton
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|reject (Set<ConfigKey> entries)
 specifier|public
 name|Update
