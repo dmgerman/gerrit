@@ -388,6 +388,17 @@ name|put
 argument_list|(
 name|GlobalPermission
 operator|.
+name|READ_AS
+argument_list|,
+name|GlobalCapability
+operator|.
+name|READ_AS
+argument_list|)
+decl|.
+name|put
+argument_list|(
+name|GlobalPermission
+operator|.
 name|RUN_AS
 argument_list|,
 name|GlobalCapability

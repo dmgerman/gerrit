@@ -180,6 +180,11 @@ specifier|public
 name|String
 name|priority
 decl_stmt|;
+DECL|field|readAs
+specifier|public
+name|String
+name|readAs
+decl_stmt|;
 DECL|field|queryLimit
 specifier|public
 name|String

@@ -1145,6 +1145,9 @@ case|case
 name|MODIFY_ACCOUNT
 case|:
 case|case
+name|READ_AS
+case|:
+case|case
 name|STREAM_EVENTS
 case|:
 case|case

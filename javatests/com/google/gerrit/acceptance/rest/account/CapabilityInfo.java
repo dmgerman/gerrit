@@ -138,6 +138,11 @@ specifier|public
 name|QueryLimit
 name|queryLimit
 decl_stmt|;
+DECL|field|readAs
+specifier|public
+name|boolean
+name|readAs
+decl_stmt|;
 DECL|field|runAs
 specifier|public
 name|boolean
