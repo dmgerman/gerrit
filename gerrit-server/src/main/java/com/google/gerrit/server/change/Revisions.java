@@ -522,11 +522,6 @@ argument_list|()
 throw|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unlikely-arg-type"
-argument_list|)
-annotation|@
 name|Override
 DECL|method|parse (ChangeResource change, IdString id)
 specifier|public
