@@ -3866,6 +3866,18 @@ name|view
 argument_list|)
 condition|)
 block|{
+name|logger
+operator|.
+name|atFinest
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"REST call succeeded: %d"
+argument_list|,
+name|SC_NOT_MODIFIED
+argument_list|)
+expr_stmt|;
 name|res
 operator|.
 name|sendError
