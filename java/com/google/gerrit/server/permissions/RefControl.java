@@ -266,6 +266,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|logging
+operator|.
+name|CallerFinder
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -450,6 +466,12 @@ specifier|final
 name|PermissionCollection
 name|relevant
 decl_stmt|;
+DECL|field|callerFinder
+specifier|private
+specifier|final
+name|CallerFinder
+name|callerFinder
+decl_stmt|;
 comment|// The next 4 members are cached canPerform() permissions.
 DECL|field|owner
 specifier|private
@@ -501,6 +523,40 @@ operator|.
 name|relevant
 operator|=
 name|relevant
+expr_stmt|;
+name|this
+operator|.
+name|callerFinder
+operator|=
+name|CallerFinder
+operator|.
+name|builder
+argument_list|()
+operator|.
+name|addTarget
+argument_list|(
+name|PermissionBackend
+operator|.
+name|class
+argument_list|)
+operator|.
+name|matchSubClasses
+argument_list|(
+literal|true
+argument_list|)
+operator|.
+name|matchInnerClasses
+argument_list|(
+literal|true
+argument_list|)
+operator|.
+name|skip
+argument_list|(
+literal|1
+argument_list|)
+operator|.
+name|build
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getProjectControl ()
@@ -1902,7 +1958,7 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"'%s' cannot perform '%s' with force=%s on project '%s' for ref '%s'"
+literal|"'%s' cannot perform '%s' with force=%s on project '%s' for ref '%s' (caller: %s)"
 operator|+
 literal|" because this permission is blocked"
 argument_list|,
@@ -1925,6 +1981,11 @@ name|getName
 argument_list|()
 argument_list|,
 name|refName
+argument_list|,
+name|callerFinder
+operator|.
+name|findCaller
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -1970,7 +2031,7 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"'%s' can perform '%s' with force=%s on project '%s' for ref '%s'"
+literal|"'%s' can perform '%s' with force=%s on project '%s' for ref '%s' (caller: %s)"
 argument_list|,
 name|getUser
 argument_list|()
@@ -1991,6 +2052,11 @@ name|getName
 argument_list|()
 argument_list|,
 name|refName
+argument_list|,
+name|callerFinder
+operator|.
+name|findCaller
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -2005,7 +2071,7 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"'%s' cannot perform '%s' with force=%s on project '%s' for ref '%s'"
+literal|"'%s' cannot perform '%s' with force=%s on project '%s' for ref '%s' (caller: %s)"
 argument_list|,
 name|getUser
 argument_list|()
@@ -2026,6 +2092,11 @@ name|getName
 argument_list|()
 argument_list|,
 name|refName
+argument_list|,
+name|callerFinder
+operator|.
+name|findCaller
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
