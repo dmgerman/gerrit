@@ -980,11 +980,20 @@ literal|null
 return|;
 comment|// Pretend like not found on access denied.
 block|}
+if|if
+condition|(
+operator|!
+name|state
+operator|.
+name|statePermitsRead
+argument_list|()
+condition|)
+block|{
 comment|// If the project's state does not permit reading, we want to hide it from all callers. The
 comment|// only exception to that are users who are allowed to mutate the project's configuration.
-comment|// This enables these users to still mutate the project's state (e.g. set a HIDDEN project to
-comment|// ACTIVE). Individual views should still check for checkStatePermitsRead() and this should
-comment|// just serve as a safety net in case the individual check is forgotten.
+comment|// This enables these users to still mutate the project's state (e.g. set a HIDDEN project
+comment|// to ACTIVE). Individual views should still check for checkStatePermitsRead() and this
+comment|// should just serve as a safety net in case the individual check is forgotten.
 try|try
 block|{
 name|permissionBackend
@@ -1016,6 +1025,7 @@ operator|.
 name|checkStatePermitsRead
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
