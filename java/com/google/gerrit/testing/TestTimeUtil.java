@@ -102,7 +102,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|server
+operator|.
+name|util
+operator|.
+name|time
 operator|.
 name|TimeUtil
 import|;
@@ -281,7 +285,7 @@ name|clockStepUnit
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Set the clock step used by {@link com.google.gerrit.common.TimeUtil}.    *    * @param clockStep amount to increment clock by on each lookup.    * @param clockStepUnit time unit for {@code clockStep}.    */
+comment|/**    * Set the clock step used by {@link com.google.gerrit.server.util.time.TimeUtil}.    *    * @param clockStep amount to increment clock by on each lookup.    * @param clockStepUnit time unit for {@code clockStep}.    */
 DECL|method|setClockStep (long clockStep, TimeUnit clockStepUnit)
 specifier|public
 specifier|static

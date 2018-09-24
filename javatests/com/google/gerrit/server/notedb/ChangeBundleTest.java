@@ -106,22 +106,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|TimeUtil
-operator|.
-name|truncateToSecond
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|notedb
@@ -192,6 +176,26 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|time
+operator|.
+name|TimeUtil
+operator|.
+name|truncateToSecond
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -257,20 +261,6 @@ operator|.
 name|collect
 operator|.
 name|Table
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|TimeUtil
 import|;
 end_import
 
@@ -463,6 +453,24 @@ operator|.
 name|rebuild
 operator|.
 name|ChangeRebuilderImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|time
+operator|.
+name|TimeUtil
 import|;
 end_import
 

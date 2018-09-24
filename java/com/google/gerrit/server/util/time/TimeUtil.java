@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common
+DECL|package|com.google.gerrit.server.util.time
 package|package
 name|com
 operator|.
@@ -60,23 +60,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|server
+operator|.
+name|util
+operator|.
+name|time
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|annotations
-operator|.
-name|GwtIncompatible
-import|;
-end_import
 
 begin_import
 import|import
@@ -187,11 +177,6 @@ comment|/** Static utility methods for dealing with dates and times. */
 end_comment
 
 begin_class
-annotation|@
-name|GwtIncompatible
-argument_list|(
-literal|"Unemulated Java 8 functionalities"
-argument_list|)
 DECL|class|TimeUtil
 specifier|public
 class|class

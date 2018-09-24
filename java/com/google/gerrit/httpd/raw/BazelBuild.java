@@ -174,9 +174,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|launcher
 operator|.
-name|TimeUtil
+name|GerritLauncher
 import|;
 end_import
 
@@ -188,9 +188,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|launcher
+name|server
 operator|.
-name|GerritLauncher
+name|util
+operator|.
+name|time
+operator|.
+name|TimeUtil
 import|;
 end_import
 

@@ -88,9 +88,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|server
 operator|.
-name|TimeUtil
+name|git
+operator|.
+name|WorkQueue
 import|;
 end_import
 
@@ -104,9 +106,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|util
 operator|.
-name|WorkQueue
+name|time
+operator|.
+name|TimeUtil
 import|;
 end_import
 
