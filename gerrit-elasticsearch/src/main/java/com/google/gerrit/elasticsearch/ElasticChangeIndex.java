@@ -1409,9 +1409,9 @@ name|response
 init|=
 name|postRequest
 argument_list|(
-name|bulk
-argument_list|,
 name|uri
+argument_list|,
+name|bulk
 argument_list|,
 name|getRefreshParam
 argument_list|()
@@ -1921,14 +1921,9 @@ name|response
 init|=
 name|postRequest
 argument_list|(
-name|search
-argument_list|,
 name|uri
 argument_list|,
-name|Collections
-operator|.
-name|emptyMap
-argument_list|()
+name|search
 argument_list|)
 decl_stmt|;
 name|StatusLine
