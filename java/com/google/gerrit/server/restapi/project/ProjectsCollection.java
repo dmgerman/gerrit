@@ -932,25 +932,17 @@ name|checkAccess
 condition|)
 block|{
 comment|// Hidden projects(permitsRead = false) should only be accessible by the project owners.
-comment|// READ_CONFIG is checked here because it's only allowed to project owners(ACCESS may also
+comment|// WRITE_CONFIG is checked here because it's only allowed to project owners (ACCESS may also
 comment|// be allowed for other users). Allowing project owners to access here will help them to view
 comment|// and update the config of hidden projects easily.
-name|ProjectPermission
-name|permissionToCheck
-init|=
+if|if
+condition|(
 name|state
 operator|.
 name|statePermitsRead
 argument_list|()
-condition|?
-name|ProjectPermission
-operator|.
-name|ACCESS
-else|:
-name|ProjectPermission
-operator|.
-name|READ_CONFIG
-decl_stmt|;
+condition|)
+block|{
 try|try
 block|{
 name|permissionBackend
@@ -965,7 +957,9 @@ argument_list|)
 operator|.
 name|check
 argument_list|(
-name|permissionToCheck
+name|ProjectPermission
+operator|.
+name|ACCESS
 argument_list|)
 expr_stmt|;
 block|}
@@ -978,22 +972,10 @@ block|{
 return|return
 literal|null
 return|;
-comment|// Pretend like not found on access denied.
 block|}
-if|if
-condition|(
-operator|!
-name|state
-operator|.
-name|statePermitsRead
-argument_list|()
-condition|)
+block|}
+else|else
 block|{
-comment|// If the project's state does not permit reading, we want to hide it from all callers. The
-comment|// only exception to that are users who are allowed to mutate the project's configuration.
-comment|// This enables these users to still mutate the project's state (e.g. set a HIDDEN project
-comment|// to ACTIVE). Individual views should still check for checkStatePermitsRead() and this
-comment|// should just serve as a safety net in case the individual check is forgotten.
 try|try
 block|{
 name|permissionBackend
