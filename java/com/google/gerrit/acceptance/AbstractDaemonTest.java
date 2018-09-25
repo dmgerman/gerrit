@@ -5349,7 +5349,7 @@ name|createCommitAndPush
 argument_list|(
 name|repo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -5478,7 +5478,7 @@ literal|"refs/for/"
 operator|+
 name|branch
 operator|+
-literal|"/"
+literal|"%topic="
 operator|+
 name|name
 argument_list|(

@@ -9185,6 +9185,10 @@ operator|.
 name|omitEmptyStrings
 argument_list|()
 decl_stmt|;
+DECL|field|deprecatedTopicSeen
+name|boolean
+name|deprecatedTopicSeen
+decl_stmt|;
 DECL|field|cmd
 specifier|final
 name|ReceiveCommand
@@ -9986,6 +9990,12 @@ parameter_list|)
 block|{
 name|this
 operator|.
+name|deprecatedTopicSeen
+operator|=
+literal|false
+expr_stmt|;
+name|this
+operator|.
 name|cmd
 operator|=
 name|cmd
@@ -10365,8 +10375,7 @@ expr_stmt|;
 block|}
 comment|// We accept refs/for/BRANCHNAME/TOPIC. Since we don't know
 comment|// for sure where the branch ends and the topic starts, look
-comment|// backward for a split that works. This behavior has not been
-comment|// documented and should probably be deprecated.
+comment|// backward for a split that works. This behavior is deprecated.
 name|String
 name|head
 init|=
@@ -10475,6 +10484,10 @@ operator|+
 literal|1
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|deprecatedTopicSeen
+operator|=
+literal|true
 expr_stmt|;
 block|}
 return|return
@@ -11658,6 +11671,42 @@ literal|"internal server error"
 argument_list|)
 expr_stmt|;
 return|return;
+block|}
+if|if
+condition|(
+name|magicBranch
+operator|.
+name|deprecatedTopicSeen
+condition|)
+block|{
+name|messages
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ValidationMessage
+argument_list|(
+literal|"WARNING: deprecated topic syntax. Use %topic=TOPIC instead"
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|logger
+operator|.
+name|atInfo
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"deprecated topic push seen for project %s"
+argument_list|,
+name|project
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(

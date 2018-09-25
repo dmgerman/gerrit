@@ -3418,6 +3418,13 @@ argument_list|,
 name|topic
 argument_list|)
 expr_stmt|;
+name|r
+operator|.
+name|assertMessage
+argument_list|(
+literal|"deprecated topic syntax"
+argument_list|)
+expr_stmt|;
 comment|// specify topic as option
 name|r
 operator|=
