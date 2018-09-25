@@ -1837,6 +1837,17 @@ argument_list|(
 name|method
 argument_list|,
 name|uri
+operator|.
+name|startsWith
+argument_list|(
+literal|"/"
+argument_list|)
+condition|?
+name|uri
+else|:
+literal|"/"
+operator|+
+name|uri
 argument_list|)
 decl_stmt|;
 if|if

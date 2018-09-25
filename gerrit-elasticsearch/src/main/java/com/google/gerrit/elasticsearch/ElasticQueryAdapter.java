@@ -173,9 +173,9 @@ operator|.
 name|isV6
 argument_list|()
 condition|?
-literal|"%s*"
+literal|"/%s*"
 else|:
-literal|"%s*/_aliases"
+literal|"/%s*/_aliases"
 expr_stmt|;
 switch|switch
 condition|(
