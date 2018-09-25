@@ -412,7 +412,6 @@ literal|"List of SSH session IDs to be closed"
 argument_list|)
 DECL|field|sessionIds
 specifier|private
-specifier|final
 name|List
 argument_list|<
 name|String
