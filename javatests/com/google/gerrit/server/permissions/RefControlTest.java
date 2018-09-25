@@ -560,6 +560,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|metrics
+operator|.
+name|MetricMaker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -2152,6 +2166,13 @@ specifier|private
 name|TransferConfig
 name|transferConfig
 decl_stmt|;
+DECL|field|metricMaker
+annotation|@
+name|Inject
+specifier|private
+name|MetricMaker
+name|metricMaker
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -2550,6 +2571,8 @@ name|SectionSortCache
 argument_list|(
 name|c
 argument_list|)
+argument_list|,
+name|metricMaker
 argument_list|)
 expr_stmt|;
 name|parent
@@ -6657,6 +6680,8 @@ argument_list|,
 name|capabilityCollectionFactory
 argument_list|,
 name|transferConfig
+argument_list|,
+name|metricMaker
 argument_list|,
 name|pc
 argument_list|)
