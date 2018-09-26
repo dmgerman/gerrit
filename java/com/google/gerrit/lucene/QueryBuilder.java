@@ -422,7 +422,7 @@ name|lucene
 operator|.
 name|search
 operator|.
-name|MatchAllDocsQuery
+name|LegacyNumericRangeQuery
 import|;
 end_import
 
@@ -436,7 +436,7 @@ name|lucene
 operator|.
 name|search
 operator|.
-name|NumericRangeQuery
+name|MatchAllDocsQuery
 import|;
 end_import
 
@@ -520,11 +520,16 @@ name|lucene
 operator|.
 name|util
 operator|.
-name|NumericUtils
+name|LegacyNumericUtils
 import|;
 end_import
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|class|QueryBuilder
 specifier|public
 class|class
@@ -552,7 +557,7 @@ operator|new
 name|BytesRefBuilder
 argument_list|()
 decl_stmt|;
-name|NumericUtils
+name|LegacyNumericUtils
 operator|.
 name|intToPrefixCoded
 argument_list|(
@@ -1475,7 +1480,7 @@ argument_list|)
 return|;
 block|}
 return|return
-name|NumericRangeQuery
+name|LegacyNumericRangeQuery
 operator|.
 name|newIntRange
 argument_list|(
@@ -1543,7 +1548,7 @@ operator|)
 name|p
 decl_stmt|;
 return|return
-name|NumericRangeQuery
+name|LegacyNumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(
@@ -1615,7 +1620,7 @@ literal|0
 condition|)
 block|{
 return|return
-name|NumericRangeQuery
+name|LegacyNumericRangeQuery
 operator|.
 name|newLongRange
 argument_list|(

@@ -209,6 +209,14 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// TODO(davido): Make it configurable
+comment|// If true, new deletes will be written down to index files instead of carried over from writer
+comment|// to reader directly in heap
+name|boolean
+name|writeAllDeletes
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 name|searcherFactory
@@ -242,6 +250,8 @@ argument_list|(
 name|writer
 argument_list|,
 name|applyAllDeletes
+argument_list|,
+name|writeAllDeletes
 argument_list|)
 argument_list|)
 expr_stmt|;
