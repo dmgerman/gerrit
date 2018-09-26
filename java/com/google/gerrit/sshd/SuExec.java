@@ -338,7 +338,7 @@ name|sshd
 operator|.
 name|server
 operator|.
-name|Command
+name|Environment
 import|;
 end_import
 
@@ -352,7 +352,9 @@ name|sshd
 operator|.
 name|server
 operator|.
-name|Environment
+name|command
+operator|.
+name|Command
 import|;
 end_import
 

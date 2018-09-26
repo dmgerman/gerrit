@@ -198,6 +198,8 @@ name|sshd
 operator|.
 name|server
 operator|.
+name|command
+operator|.
 name|Command
 import|;
 end_import
