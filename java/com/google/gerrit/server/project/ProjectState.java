@@ -1228,7 +1228,7 @@ name|inheritProjectMaxObjectSizeLimit
 operator|=
 name|transferConfig
 operator|.
-name|getInheritProjectMaxObjectSizeLimit
+name|inheritProjectMaxObjectSizeLimit
 argument_list|()
 expr_stmt|;
 name|this

@@ -346,10 +346,10 @@ return|return
 name|maxObjectSizeLimitFormatted
 return|;
 block|}
-DECL|method|getInheritProjectMaxObjectSizeLimit ()
+DECL|method|inheritProjectMaxObjectSizeLimit ()
 specifier|public
 name|boolean
-name|getInheritProjectMaxObjectSizeLimit
+name|inheritProjectMaxObjectSizeLimit
 parameter_list|()
 block|{
 return|return
