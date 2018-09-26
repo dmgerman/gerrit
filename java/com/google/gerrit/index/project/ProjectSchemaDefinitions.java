@@ -155,6 +155,8 @@ operator|.
 name|ANCESTOR_NAME
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Deprecated
 DECL|field|V2
 specifier|static
 specifier|final
@@ -175,6 +177,21 @@ argument_list|,
 name|ProjectField
 operator|.
 name|REF_STATE
+argument_list|)
+decl_stmt|;
+comment|// Bump Lucene version requires reindexing
+DECL|field|V3
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ProjectData
+argument_list|>
+name|V3
+init|=
+name|schema
+argument_list|(
+name|V2
 argument_list|)
 decl_stmt|;
 DECL|field|INSTANCE
