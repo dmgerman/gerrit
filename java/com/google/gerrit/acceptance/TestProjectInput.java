@@ -251,6 +251,26 @@ name|InheritableBoolean
 operator|.
 name|INHERIT
 function_decl|;
+DECL|method|enableSignedPush ()
+DECL|field|InheritableBoolean.INHERIT
+name|InheritableBoolean
+name|enableSignedPush
+parameter_list|()
+default|default
+name|InheritableBoolean
+operator|.
+name|INHERIT
+function_decl|;
+DECL|method|requireSignedPush ()
+DECL|field|InheritableBoolean.INHERIT
+name|InheritableBoolean
+name|requireSignedPush
+parameter_list|()
+default|default
+name|InheritableBoolean
+operator|.
+name|INHERIT
+function_decl|;
 comment|// Fields specific to acceptance test behavior.
 comment|/** Username to use for initial clone, passed to {@link AccountCreator}. */
 DECL|method|cloneAs ()
