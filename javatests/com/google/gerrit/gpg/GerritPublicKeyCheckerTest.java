@@ -1649,7 +1649,7 @@ name|Status
 operator|.
 name|BAD
 argument_list|,
-literal|"No identities found for user; check http://test/#/settings/web-identities"
+literal|"No identities found for user; check http://test/settings#Identities"
 argument_list|)
 expr_stmt|;
 name|checker

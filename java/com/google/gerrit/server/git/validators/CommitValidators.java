@@ -160,6 +160,20 @@ name|common
 operator|.
 name|base
 operator|.
+name|Preconditions
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Splitter
 import|;
 end_import
@@ -231,20 +245,6 @@ operator|.
 name|common
 operator|.
 name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|PageLinks
 import|;
 end_import
 
@@ -488,7 +488,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|CanonicalWebUrl
+name|GerritServerConfig
 import|;
 end_import
 
@@ -504,7 +504,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GerritServerConfig
+name|UrlFormatter
 import|;
 end_import
 
@@ -786,6 +786,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -986,11 +996,11 @@ specifier|final
 name|PersonIdent
 name|gerritIdent
 decl_stmt|;
-DECL|field|canonicalWebUrl
+DECL|field|urlFormatter
 specifier|private
 specifier|final
-name|String
-name|canonicalWebUrl
+name|UrlFormatter
+name|urlFormatter
 decl_stmt|;
 DECL|field|pluginValidators
 specifier|private
@@ -1045,7 +1055,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory ( @erritPersonIdent PersonIdent gerritIdent, @CanonicalWebUrl @Nullable String canonicalWebUrl, @GerritServerConfig Config cfg, DynamicSet<CommitValidationListener> pluginValidators, GitRepositoryManager repoManager, AllUsersName allUsers, AllProjectsName allProjects, ExternalIdsConsistencyChecker externalIdsConsistencyChecker, AccountValidator accountValidator, ProjectCache projectCache)
+DECL|method|Factory ( @erritPersonIdent PersonIdent gerritIdent, UrlFormatter urlFormatter, @GerritServerConfig Config cfg, DynamicSet<CommitValidationListener> pluginValidators, GitRepositoryManager repoManager, AllUsersName allUsers, AllProjectsName allProjects, ExternalIdsConsistencyChecker externalIdsConsistencyChecker, AccountValidator accountValidator, ProjectCache projectCache)
 name|Factory
 parameter_list|(
 annotation|@
@@ -1053,12 +1063,8 @@ name|GerritPersonIdent
 name|PersonIdent
 name|gerritIdent
 parameter_list|,
-annotation|@
-name|CanonicalWebUrl
-annotation|@
-name|Nullable
-name|String
-name|canonicalWebUrl
+name|UrlFormatter
+name|urlFormatter
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -1098,9 +1104,9 @@ name|gerritIdent
 expr_stmt|;
 name|this
 operator|.
-name|canonicalWebUrl
+name|urlFormatter
 operator|=
-name|canonicalWebUrl
+name|urlFormatter
 expr_stmt|;
 name|this
 operator|.
@@ -1264,7 +1270,7 @@ name|user
 argument_list|,
 name|perm
 argument_list|,
-name|canonicalWebUrl
+name|urlFormatter
 argument_list|)
 argument_list|,
 operator|new
@@ -1274,7 +1280,7 @@ name|user
 argument_list|,
 name|perm
 argument_list|,
-name|canonicalWebUrl
+name|urlFormatter
 argument_list|)
 argument_list|,
 operator|new
@@ -1294,7 +1300,7 @@ name|projectState
 argument_list|,
 name|user
 argument_list|,
-name|canonicalWebUrl
+name|urlFormatter
 argument_list|,
 name|installCommitMsgHookCommand
 argument_list|,
@@ -1449,7 +1455,7 @@ name|user
 argument_list|,
 name|perm
 argument_list|,
-name|canonicalWebUrl
+name|urlFormatter
 argument_list|)
 argument_list|,
 operator|new
@@ -1477,7 +1483,7 @@ name|projectState
 argument_list|,
 name|user
 argument_list|,
-name|canonicalWebUrl
+name|urlFormatter
 argument_list|,
 name|installCommitMsgHookCommand
 argument_list|,
@@ -1617,7 +1623,7 @@ name|user
 argument_list|,
 name|perm
 argument_list|,
-name|canonicalWebUrl
+name|urlFormatter
 argument_list|)
 argument_list|,
 operator|new
@@ -1627,7 +1633,7 @@ name|user
 argument_list|,
 name|perm
 argument_list|,
-name|canonicalWebUrl
+name|urlFormatter
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1854,11 +1860,11 @@ specifier|final
 name|ProjectState
 name|projectState
 decl_stmt|;
-DECL|field|canonicalWebUrl
+DECL|field|urlFormatter
 specifier|private
 specifier|final
-name|String
-name|canonicalWebUrl
+name|UrlFormatter
+name|urlFormatter
 decl_stmt|;
 DECL|field|installCommitMsgHookCommand
 specifier|private
@@ -1884,7 +1890,7 @@ specifier|final
 name|Change
 name|change
 decl_stmt|;
-DECL|method|ChangeIdValidator ( ProjectState projectState, IdentifiedUser user, String canonicalWebUrl, String installCommitMsgHookCommand, SshInfo sshInfo, Change change)
+DECL|method|ChangeIdValidator ( ProjectState projectState, IdentifiedUser user, UrlFormatter urlFormatter, String installCommitMsgHookCommand, SshInfo sshInfo, Change change)
 specifier|public
 name|ChangeIdValidator
 parameter_list|(
@@ -1894,8 +1900,8 @@ parameter_list|,
 name|IdentifiedUser
 name|user
 parameter_list|,
-name|String
-name|canonicalWebUrl
+name|UrlFormatter
+name|urlFormatter
 parameter_list|,
 name|String
 name|installCommitMsgHookCommand
@@ -1915,9 +1921,9 @@ name|projectState
 expr_stmt|;
 name|this
 operator|.
-name|canonicalWebUrl
+name|urlFormatter
 operator|=
-name|canonicalWebUrl
+name|urlFormatter
 expr_stmt|;
 name|this
 operator|.
@@ -2461,6 +2467,17 @@ argument_list|()
 decl_stmt|;
 comment|// If there are no SSH keys, the commit-msg hook must be installed via
 comment|// HTTP(S)
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|webUrl
+init|=
+name|urlFormatter
+operator|.
+name|getWebUrl
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|hostKeys
@@ -2469,6 +2486,16 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|Preconditions
+operator|.
+name|checkState
+argument_list|(
+name|webUrl
+operator|.
+name|isPresent
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|String
 operator|.
@@ -2476,7 +2503,10 @@ name|format
 argument_list|(
 literal|"  f=\"$(git rev-parse --git-dir)/hooks/commit-msg\"; curl -o \"$f\" %stools/hooks/commit-msg ; chmod +x \"$f\""
 argument_list|,
-name|canonicalWebUrl
+name|webUrl
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -2527,11 +2557,24 @@ literal|"*:"
 argument_list|)
 condition|)
 block|{
+name|Preconditions
+operator|.
+name|checkState
+argument_list|(
+name|webUrl
+operator|.
+name|isPresent
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|sshHost
 operator|=
 name|getGerritHost
 argument_list|(
-name|canonicalWebUrl
+name|webUrl
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3513,13 +3556,13 @@ operator|.
 name|ForRef
 name|perm
 decl_stmt|;
-DECL|field|canonicalWebUrl
+DECL|field|urlFormatter
 specifier|private
 specifier|final
-name|String
-name|canonicalWebUrl
+name|UrlFormatter
+name|urlFormatter
 decl_stmt|;
-DECL|method|AuthorUploaderValidator ( IdentifiedUser user, PermissionBackend.ForRef perm, String canonicalWebUrl)
+DECL|method|AuthorUploaderValidator ( IdentifiedUser user, PermissionBackend.ForRef perm, UrlFormatter urlFormatter)
 specifier|public
 name|AuthorUploaderValidator
 parameter_list|(
@@ -3531,8 +3574,8 @@ operator|.
 name|ForRef
 name|perm
 parameter_list|,
-name|String
-name|canonicalWebUrl
+name|UrlFormatter
+name|urlFormatter
 parameter_list|)
 block|{
 name|this
@@ -3549,9 +3592,9 @@ name|perm
 expr_stmt|;
 name|this
 operator|.
-name|canonicalWebUrl
+name|urlFormatter
 operator|=
-name|canonicalWebUrl
+name|urlFormatter
 expr_stmt|;
 block|}
 annotation|@
@@ -3638,7 +3681,7 @@ name|author
 argument_list|,
 name|user
 argument_list|,
-name|canonicalWebUrl
+name|urlFormatter
 argument_list|)
 argument_list|)
 throw|;
@@ -3697,13 +3740,13 @@ operator|.
 name|ForRef
 name|perm
 decl_stmt|;
-DECL|field|canonicalWebUrl
+DECL|field|urlFormatter
 specifier|private
 specifier|final
-name|String
-name|canonicalWebUrl
+name|UrlFormatter
+name|urlFormatter
 decl_stmt|;
-DECL|method|CommitterUploaderValidator ( IdentifiedUser user, PermissionBackend.ForRef perm, String canonicalWebUrl)
+DECL|method|CommitterUploaderValidator ( IdentifiedUser user, PermissionBackend.ForRef perm, UrlFormatter urlFormatter)
 specifier|public
 name|CommitterUploaderValidator
 parameter_list|(
@@ -3715,8 +3758,8 @@ operator|.
 name|ForRef
 name|perm
 parameter_list|,
-name|String
-name|canonicalWebUrl
+name|UrlFormatter
+name|urlFormatter
 parameter_list|)
 block|{
 name|this
@@ -3733,9 +3776,9 @@ name|perm
 expr_stmt|;
 name|this
 operator|.
-name|canonicalWebUrl
+name|urlFormatter
 operator|=
-name|canonicalWebUrl
+name|urlFormatter
 expr_stmt|;
 block|}
 annotation|@
@@ -3822,7 +3865,7 @@ name|committer
 argument_list|,
 name|user
 argument_list|,
-name|canonicalWebUrl
+name|urlFormatter
 argument_list|)
 argument_list|)
 throw|;
@@ -4890,7 +4933,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|invalidEmail ( String type, PersonIdent who, IdentifiedUser currentUser, String canonicalWebUrl)
+DECL|method|invalidEmail ( String type, PersonIdent who, IdentifiedUser currentUser, UrlFormatter urlFormatter)
 specifier|private
 specifier|static
 name|CommitValidationMessage
@@ -4905,8 +4948,8 @@ parameter_list|,
 name|IdentifiedUser
 name|currentUser
 parameter_list|,
-name|String
-name|canonicalWebUrl
+name|UrlFormatter
+name|urlFormatter
 parameter_list|)
 block|{
 name|StringBuilder
@@ -5006,9 +5049,15 @@ block|}
 block|}
 if|if
 condition|(
-name|canonicalWebUrl
-operator|!=
-literal|null
+name|urlFormatter
+operator|.
+name|getSettingsUrl
+argument_list|(
+literal|""
+argument_list|)
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|sb
@@ -5017,39 +5066,26 @@ name|append
 argument_list|(
 literal|"To register an email address, visit:\n"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
-name|canonicalWebUrl
+name|urlFormatter
+operator|.
+name|getSettingsUrl
+argument_list|(
+literal|"EmailAddresses"
+argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"#"
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|PageLinks
-operator|.
-name|SETTINGS_CONTACT
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"\n"
+literal|"\n\n"
 argument_list|)
 expr_stmt|;
 block|}
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
 return|return
 operator|new
 name|CommitValidationMessage
