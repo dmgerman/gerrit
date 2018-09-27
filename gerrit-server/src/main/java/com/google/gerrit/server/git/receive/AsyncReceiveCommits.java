@@ -1782,6 +1782,32 @@ argument_list|>
 name|commands
 parameter_list|)
 block|{
+if|if
+condition|(
+name|commands
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|anyMatch
+argument_list|(
+name|c
+lambda|->
+name|c
+operator|.
+name|getResult
+argument_list|()
+operator|!=
+name|Result
+operator|.
+name|NOT_ATTEMPTED
+argument_list|)
+condition|)
+block|{
+comment|// Stop processing when command was already processed by previously invoked
+comment|// pre-receive hooks
+return|return;
+block|}
 name|Worker
 name|w
 init|=
