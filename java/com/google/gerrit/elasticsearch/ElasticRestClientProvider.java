@@ -619,7 +619,7 @@ name|Request
 argument_list|(
 literal|"GET"
 argument_list|,
-literal|""
+literal|"/"
 argument_list|)
 argument_list|)
 decl_stmt|;

@@ -654,9 +654,9 @@ name|response
 init|=
 name|postRequest
 argument_list|(
-name|bulk
-argument_list|,
 name|uri
+argument_list|,
+name|bulk
 argument_list|,
 name|getRefreshParam
 argument_list|()
