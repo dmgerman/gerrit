@@ -190,9 +190,7 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicMap
-operator|.
-name|Entry
+name|Extension
 import|;
 end_import
 
@@ -1453,7 +1451,7 @@ condition|)
 block|{
 for|for
 control|(
-name|Entry
+name|Extension
 argument_list|<
 name|ProjectConfigEntry
 argument_list|>
@@ -1730,7 +1728,7 @@ name|pc
 return|;
 block|}
 block|}
-DECL|method|getValue (ProjectConfig cfg, Entry<ProjectConfigEntry> e)
+DECL|method|getValue (ProjectConfig cfg, Extension<ProjectConfigEntry> e)
 specifier|private
 specifier|static
 name|String
@@ -1739,7 +1737,7 @@ parameter_list|(
 name|ProjectConfig
 name|cfg
 parameter_list|,
-name|Entry
+name|Extension
 argument_list|<
 name|ProjectConfigEntry
 argument_list|>

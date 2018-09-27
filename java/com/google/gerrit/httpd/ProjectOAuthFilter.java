@@ -226,9 +226,7 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicMap
-operator|.
-name|Entry
+name|Extension
 import|;
 end_import
 
@@ -1294,7 +1292,7 @@ name|ServletException
 block|{
 try|try
 block|{
-name|Entry
+name|Extension
 argument_list|<
 name|OAuthLoginProvider
 argument_list|>

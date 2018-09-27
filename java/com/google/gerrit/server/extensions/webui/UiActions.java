@@ -250,6 +250,22 @@ name|extensions
 operator|.
 name|registration
 operator|.
+name|Extension
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
 name|PluginName
 import|;
 end_import
@@ -1015,7 +1031,7 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|describe ( DynamicMap.Entry<RestView<R>> e, R resource)
+DECL|method|describe ( Extension<RestView<R>> e, R resource)
 specifier|private
 parameter_list|<
 name|R
@@ -1027,9 +1043,7 @@ operator|.
 name|Description
 name|describe
 parameter_list|(
-name|DynamicMap
-operator|.
-name|Entry
+name|Extension
 argument_list|<
 name|RestView
 argument_list|<

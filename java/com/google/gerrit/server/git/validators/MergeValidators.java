@@ -156,9 +156,7 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicMap
-operator|.
-name|Entry
+name|DynamicSet
 import|;
 end_import
 
@@ -174,7 +172,7 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicSet
+name|Extension
 import|;
 end_import
 
@@ -1433,7 +1431,7 @@ block|}
 block|}
 for|for
 control|(
-name|Entry
+name|Extension
 argument_list|<
 name|ProjectConfigEntry
 argument_list|>

@@ -740,9 +740,7 @@ argument_list|)
 expr_stmt|;
 name|Iterator
 argument_list|<
-name|DynamicSet
-operator|.
-name|Entry
+name|Extension
 argument_list|<
 name|Integer
 argument_list|>
@@ -757,9 +755,7 @@ operator|.
 name|iterator
 argument_list|()
 decl_stmt|;
-name|DynamicSet
-operator|.
-name|Entry
+name|Extension
 argument_list|<
 name|Integer
 argument_list|>
