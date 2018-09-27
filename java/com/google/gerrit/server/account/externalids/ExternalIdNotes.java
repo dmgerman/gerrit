@@ -3008,7 +3008,7 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"Reading external IDs"
+literal|"Reading external ID note map"
 argument_list|)
 expr_stmt|;
 name|noteMap
