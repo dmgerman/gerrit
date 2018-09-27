@@ -116,6 +116,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|LazyArgs
+operator|.
+name|lazy
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -123,6 +139,20 @@ operator|.
 name|Comparator
 operator|.
 name|comparing
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toSet
 import|;
 end_import
 
@@ -2174,7 +2204,7 @@ literal|false
 decl_stmt|;
 name|logDebug
 argument_list|(
-literal|"Applying %d ops for change %s"
+literal|"Applying %d ops for change %s: %s"
 argument_list|,
 name|e
 operator|.
@@ -2185,6 +2215,38 @@ name|size
 argument_list|()
 argument_list|,
 name|id
+argument_list|,
+name|lazy
+argument_list|(
+parameter_list|()
+lambda|->
+name|e
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|op
+lambda|->
+name|op
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toSet
+argument_list|()
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for

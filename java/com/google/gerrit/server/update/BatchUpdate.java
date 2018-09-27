@@ -2229,6 +2229,60 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|logDebug ( String msg, @Nullable Object arg1, @Nullable Object arg2, @Nullable Object arg3)
+specifier|protected
+specifier|static
+name|void
+name|logDebug
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+annotation|@
+name|Nullable
+name|Object
+name|arg1
+parameter_list|,
+annotation|@
+name|Nullable
+name|Object
+name|arg2
+parameter_list|,
+annotation|@
+name|Nullable
+name|Object
+name|arg3
+parameter_list|)
+block|{
+comment|// Only log if there is a requestId assigned, since those are the
+comment|// expensive/complicated requests like MergeOp. Doing it every time would be
+comment|// noisy.
+if|if
+condition|(
+name|RequestId
+operator|.
+name|isSet
+argument_list|()
+condition|)
+block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+name|msg
+argument_list|,
+name|arg1
+argument_list|,
+name|arg2
+argument_list|,
+name|arg3
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 end_class
 
