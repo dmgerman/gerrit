@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -198,6 +212,18 @@ specifier|public
 class|class
 name|MergeSorter
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|field|rw
 specifier|private
 specifier|final
@@ -417,6 +443,26 @@ block|{
 comment|// We cannot merge n as it would bring something we
 comment|// aren't permitted to merge at this time. Drop n.
 comment|//
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"commit %s depends on commit %s which cannot be merged"
+argument_list|,
+name|n
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|c
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|n
 operator|.
 name|setStatusCode
