@@ -4460,6 +4460,18 @@ argument_list|(
 name|branch
 argument_list|)
 decl_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"adding ops for branch batch %s"
+argument_list|,
+name|submitting
+argument_list|)
+expr_stmt|;
 name|OpenBranch
 name|ob
 init|=
