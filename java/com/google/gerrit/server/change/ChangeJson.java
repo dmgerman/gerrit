@@ -3201,6 +3201,18 @@ argument_list|(
 name|options
 argument_list|)
 expr_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"options = %s"
+argument_list|,
+name|options
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**    * See {@link ChangeData#setLazyLoad(boolean)}. If lazyLoad is set, converting data from    * index-backed {@link ChangeData} will fail with an exception.    */
 DECL|method|lazyLoad (boolean load)
