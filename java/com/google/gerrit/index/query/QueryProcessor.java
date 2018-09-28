@@ -115,6 +115,36 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|LazyArgs
+operator|.
+name|lazy
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toSet
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1546,7 +1576,28 @@ literal|"Matches[%d]:\n%s"
 argument_list|,
 name|i
 argument_list|,
+name|lazy
+argument_list|(
+parameter_list|()
+lambda|->
 name|matchesList
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|this
+operator|::
+name|formatForLogging
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toSet
+argument_list|()
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|out
@@ -2076,6 +2127,16 @@ name|findFirst
 argument_list|()
 return|;
 block|}
+DECL|method|formatForLogging (T t)
+specifier|protected
+specifier|abstract
+name|String
+name|formatForLogging
+parameter_list|(
+name|T
+name|t
+parameter_list|)
+function_decl|;
 block|}
 end_class
 

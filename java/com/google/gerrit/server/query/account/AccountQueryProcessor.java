@@ -491,6 +491,30 @@ name|start
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|formatForLogging (AccountState accountState)
+specifier|protected
+name|String
+name|formatForLogging
+parameter_list|(
+name|AccountState
+name|accountState
+parameter_list|)
+block|{
+return|return
+name|accountState
+operator|.
+name|getAccount
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
