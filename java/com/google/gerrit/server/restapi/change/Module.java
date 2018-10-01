@@ -267,24 +267,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|CommitResource
-operator|.
-name|COMMIT_KIND
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -2124,20 +2106,6 @@ argument_list|(
 name|ChangeEdits
 operator|.
 name|GetMeta
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|post
-argument_list|(
-name|COMMIT_KIND
-argument_list|,
-literal|"cherrypick"
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|CherryPickCommit
 operator|.
 name|class
 argument_list|)
