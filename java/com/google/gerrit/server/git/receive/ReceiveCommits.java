@@ -3175,24 +3175,8 @@ name|RestApiException
 argument_list|>
 name|INSERT_EXCEPTION
 init|=
-operator|new
-name|Function
-argument_list|<
-name|Exception
-argument_list|,
-name|RestApiException
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|RestApiException
-name|apply
-parameter_list|(
-name|Exception
 name|input
-parameter_list|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -3246,7 +3230,6 @@ argument_list|,
 name|input
 argument_list|)
 return|;
-block|}
 block|}
 decl_stmt|;
 comment|// ReceiveCommits has a lot of fields, sorry. Here and in the constructor they are split up
