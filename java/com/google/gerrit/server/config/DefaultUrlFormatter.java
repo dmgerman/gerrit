@@ -109,10 +109,10 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|DefaultBrowseUrls
+DECL|class|DefaultUrlFormatter
 specifier|public
 class|class
-name|DefaultBrowseUrls
+name|DefaultUrlFormatter
 implements|implements
 name|UrlFormatter
 block|{
@@ -127,8 +127,8 @@ name|canonicalWebUrlProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DefaultBrowseUrls (@anonicalWebUrl Provider<String> canonicalWebUrlProvider)
-name|DefaultBrowseUrls
+DECL|method|DefaultUrlFormatter (@anonicalWebUrl Provider<String> canonicalWebUrlProvider)
+name|DefaultUrlFormatter
 parameter_list|(
 annotation|@
 name|CanonicalWebUrl
