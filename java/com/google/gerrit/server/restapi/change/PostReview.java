@@ -2818,7 +2818,12 @@ name|prepareApplication
 argument_list|(
 name|revision
 operator|.
-name|getChangeResource
+name|getNotes
+argument_list|()
+argument_list|,
+name|revision
+operator|.
+name|getUser
 argument_list|()
 argument_list|,
 name|reviewerInput
@@ -3403,10 +3408,16 @@ range|:
 name|reviewerResults
 control|)
 block|{
+comment|// TODO(dborowitz): Should this be re-read to take updates into account?
 name|reviewerResult
 operator|.
 name|gatherResults
+argument_list|(
+name|revision
+operator|.
+name|getNotes
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 name|boolean

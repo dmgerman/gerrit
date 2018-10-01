@@ -1041,6 +1041,14 @@ operator|.
 name|prepareApplication
 argument_list|(
 name|rsrc
+operator|.
+name|getNotes
+argument_list|()
+argument_list|,
+name|rsrc
+operator|.
+name|getUser
+argument_list|()
 argument_list|,
 name|reviewerInput
 argument_list|,

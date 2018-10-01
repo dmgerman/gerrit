@@ -90,6 +90,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -1485,6 +1501,14 @@ init|=
 name|prepareApplication
 argument_list|(
 name|rsrc
+operator|.
+name|getNotes
+argument_list|()
+argument_list|,
+name|rsrc
+operator|.
+name|getUser
+argument_list|()
 argument_list|,
 name|input
 argument_list|,
@@ -1566,10 +1590,16 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+comment|// TODO(dborowitz): Should this be re-read to take updates into account?
 name|addition
 operator|.
 name|gatherResults
+argument_list|(
+name|rsrc
+operator|.
+name|getNotes
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -1578,13 +1608,17 @@ operator|.
 name|result
 return|;
 block|}
-DECL|method|prepareApplication ( ChangeResource rsrc, AddReviewerInput input, boolean allowGroup)
+comment|/**    * Prepare application of a single {@link AddReviewerInput}.    *    * @param notes change notes.    * @param user user performing the reviewer addition.    * @param input input describing user or group to add as a reviewer.    * @param allowGroup whether to allow    * @return handle describing the addition operation. If the {@code op} field is present, this    *     operation may be added to a {@code BatchUpdate}. Otherwise, the {@code error} field    *     contains information about an error that occurred    * @throws OrmException    * @throws IOException    * @throws PermissionBackendException    * @throws ConfigInvalidException    */
+DECL|method|prepareApplication ( ChangeNotes notes, CurrentUser user, AddReviewerInput input, boolean allowGroup)
 specifier|public
 name|Addition
 name|prepareApplication
 parameter_list|(
-name|ChangeResource
-name|rsrc
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|AddReviewerInput
 name|input
@@ -1601,6 +1635,19 @@ name|PermissionBackendException
 throws|,
 name|ConfigInvalidException
 block|{
+name|Branch
+operator|.
+name|NameKey
+name|dest
+init|=
+name|notes
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getDest
+argument_list|()
+decl_stmt|;
 name|String
 name|reviewer
 init|=
@@ -1680,9 +1727,9 @@ name|projectCache
 operator|.
 name|checkedGet
 argument_list|(
-name|rsrc
+name|dest
 operator|.
-name|getProject
+name|getParentKey
 argument_list|()
 argument_list|)
 operator|.
@@ -1700,7 +1747,9 @@ name|addByAccountId
 argument_list|(
 name|reviewer
 argument_list|,
-name|rsrc
+name|dest
+argument_list|,
+name|user
 argument_list|,
 name|state
 argument_list|,
@@ -1736,7 +1785,9 @@ name|addWholeGroup
 argument_list|(
 name|reviewer
 argument_list|,
-name|rsrc
+name|dest
+argument_list|,
+name|user
 argument_list|,
 name|state
 argument_list|,
@@ -1794,7 +1845,9 @@ name|addByEmail
 argument_list|(
 name|reviewer
 argument_list|,
-name|rsrc
+name|notes
+argument_list|,
+name|user
 argument_list|,
 name|state
 argument_list|,
@@ -1831,7 +1884,7 @@ argument_list|)
 argument_list|,
 name|revision
 operator|.
-name|getChangeResource
+name|getUser
 argument_list|()
 argument_list|,
 name|ImmutableSet
@@ -1863,7 +1916,7 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|addByAccountId ( String reviewer, ChangeResource rsrc, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean allowGroup, boolean allowByEmail)
+DECL|method|addByAccountId ( String reviewer, Branch.NameKey dest, CurrentUser user, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean allowGroup, boolean allowByEmail)
 specifier|private
 name|Addition
 name|addByAccountId
@@ -1871,8 +1924,13 @@ parameter_list|(
 name|String
 name|reviewer
 parameter_list|,
-name|ChangeResource
-name|rsrc
+name|Branch
+operator|.
+name|NameKey
+name|dest
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|ReviewerState
 name|state
@@ -2006,13 +2064,7 @@ if|if
 condition|(
 name|isValidReviewer
 argument_list|(
-name|rsrc
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getDest
-argument_list|()
+name|dest
 argument_list|,
 name|reviewerUser
 operator|.
@@ -2027,7 +2079,7 @@ name|Addition
 argument_list|(
 name|reviewer
 argument_list|,
-name|rsrc
+name|user
 argument_list|,
 name|ImmutableSet
 operator|.
@@ -2120,7 +2172,7 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|addWholeGroup ( String reviewer, ChangeResource rsrc, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean confirmed, boolean allowGroup, boolean allowByEmail)
+DECL|method|addWholeGroup ( String reviewer, Branch.NameKey dest, CurrentUser user, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean confirmed, boolean allowGroup, boolean allowByEmail)
 specifier|private
 name|Addition
 name|addWholeGroup
@@ -2128,8 +2180,13 @@ parameter_list|(
 name|String
 name|reviewer
 parameter_list|,
-name|ChangeResource
-name|rsrc
+name|Branch
+operator|.
+name|NameKey
+name|dest
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|ReviewerState
 name|state
@@ -2293,9 +2350,9 @@ operator|.
 name|getGroupUUID
 argument_list|()
 argument_list|,
-name|rsrc
+name|dest
 operator|.
-name|getProject
+name|getParentKey
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2447,13 +2504,7 @@ if|if
 condition|(
 name|isValidReviewer
 argument_list|(
-name|rsrc
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getDest
-argument_list|()
+name|dest
 argument_list|,
 name|member
 argument_list|)
@@ -2477,7 +2528,7 @@ name|Addition
 argument_list|(
 name|reviewer
 argument_list|,
-name|rsrc
+name|user
 argument_list|,
 name|reviewers
 argument_list|,
@@ -2495,7 +2546,7 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|addByEmail ( String reviewer, ChangeResource rsrc, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|addByEmail ( String reviewer, ChangeNotes notes, CurrentUser user, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|private
 name|Addition
 name|addByEmail
@@ -2503,8 +2554,11 @@ parameter_list|(
 name|String
 name|reviewer
 parameter_list|,
-name|ChangeResource
-name|rsrc
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|ReviewerState
 name|state
@@ -2537,17 +2591,14 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|change
-argument_list|(
-name|rsrc
-operator|.
-name|getNotes
-argument_list|()
-argument_list|)
-operator|.
 name|database
 argument_list|(
 name|dbProvider
+argument_list|)
+operator|.
+name|change
+argument_list|(
+name|notes
 argument_list|)
 operator|.
 name|check
@@ -2671,7 +2722,7 @@ name|Addition
 argument_list|(
 name|reviewer
 argument_list|,
-name|rsrc
+name|user
 argument_list|,
 literal|null
 argument_list|,
@@ -2721,10 +2772,11 @@ return|return
 literal|false
 return|;
 block|}
-comment|// Does not account for draft status as a user might want to let a
-comment|// reviewer see a draft.
 try|try
 block|{
+comment|// Check ref permission instead of change permission, since change permissions take into
+comment|// account the private bit, whereas adding a user as a reviewer is explicitly allowing them to
+comment|// see private changes.
 name|permissionBackend
 operator|.
 name|absentUser
@@ -2844,11 +2896,15 @@ class|class
 name|Addition
 block|{
 DECL|field|result
+specifier|public
 specifier|final
 name|AddReviewerResult
 name|result
 decl_stmt|;
 DECL|field|op
+annotation|@
+name|Nullable
+specifier|public
 specifier|final
 name|PostReviewersOp
 name|op
@@ -2876,12 +2932,9 @@ specifier|final
 name|ReviewerState
 name|state
 decl_stmt|;
-DECL|field|notes
-specifier|final
-name|ChangeNotes
-name|notes
-decl_stmt|;
 DECL|field|caller
+annotation|@
+name|Nullable
 specifier|final
 name|IdentifiedUser
 name|caller
@@ -2928,10 +2981,6 @@ name|state
 operator|=
 name|REVIEWER
 expr_stmt|;
-name|notes
-operator|=
-literal|null
-expr_stmt|;
 name|caller
 operator|=
 literal|null
@@ -2941,15 +2990,14 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-DECL|method|Addition ( String reviewer, ChangeResource rsrc, @Nullable Set<Account.Id> reviewers, @Nullable Collection<Address> reviewersByEmail, ReviewerState state, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean exactMatchFound)
-specifier|protected
+DECL|method|Addition ( String reviewer, CurrentUser caller, @Nullable Set<Account.Id> reviewers, @Nullable Collection<Address> reviewersByEmail, ReviewerState state, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean exactMatchFound)
 name|Addition
 parameter_list|(
 name|String
 name|reviewer
 parameter_list|,
-name|ChangeResource
-name|rsrc
+name|CurrentUser
+name|caller
 parameter_list|,
 annotation|@
 name|Nullable
@@ -3048,19 +3096,11 @@ name|state
 operator|=
 name|state
 expr_stmt|;
-name|notes
-operator|=
-name|rsrc
+name|this
 operator|.
-name|getNotes
-argument_list|()
-expr_stmt|;
 name|caller
 operator|=
-name|rsrc
-operator|.
-name|getUser
-argument_list|()
+name|caller
 operator|.
 name|asIdentifiedUser
 argument_list|()
@@ -3093,30 +3133,39 @@ operator|=
 name|exactMatchFound
 expr_stmt|;
 block|}
-DECL|method|gatherResults ()
+DECL|method|gatherResults (ChangeNotes notes)
 name|void
 name|gatherResults
-parameter_list|()
+parameter_list|(
+name|ChangeNotes
+name|notes
+parameter_list|)
 throws|throws
 name|OrmException
 throws|,
 name|PermissionBackendException
 block|{
-if|if
-condition|(
-name|notes
-operator|==
+name|checkState
+argument_list|(
+name|op
+operator|!=
 literal|null
-operator|||
-name|caller
-operator|==
+argument_list|,
+literal|"addition did not result in an update op"
+argument_list|)
+expr_stmt|;
+name|checkState
+argument_list|(
+name|op
+operator|.
+name|getResult
+argument_list|()
+operator|!=
 literal|null
-condition|)
-block|{
-comment|// When notes or caller is missing this is likely just carrying an error message
-comment|// in the contained AddReviewerResult.
-return|return;
-block|}
+argument_list|,
+literal|"op did not return a result"
+argument_list|)
+expr_stmt|;
 name|ChangeData
 name|cd
 init|=
