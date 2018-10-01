@@ -152,20 +152,6 @@ argument_list|(
 name|provider
 argument_list|)
 expr_stmt|;
-name|bind
-argument_list|(
-name|UrlFormatter
-operator|.
-name|class
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|DefaultUrlFormatter
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|provider ()
 specifier|protected
