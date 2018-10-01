@@ -76,6 +76,27 @@ name|CommitValidationMessage
 extends|extends
 name|ValidationMessage
 block|{
+DECL|method|CommitValidationMessage (String message, ValidationMessage.Type type)
+specifier|public
+name|CommitValidationMessage
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|ValidationMessage
+operator|.
+name|Type
+name|type
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|,
+name|type
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|CommitValidationMessage (String message, boolean isError)
 specifier|public
 name|CommitValidationMessage
