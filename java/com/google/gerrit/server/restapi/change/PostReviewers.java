@@ -1590,18 +1590,33 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
-comment|// TODO(dborowitz): Should this be re-read to take updates into account?
+block|}
+comment|// Re-read change to take into account results of the update.
 name|addition
 operator|.
 name|gatherResults
 argument_list|(
+name|changeDataFactory
+operator|.
+name|create
+argument_list|(
+name|dbProvider
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|rsrc
 operator|.
-name|getNotes
+name|getProject
+argument_list|()
+argument_list|,
+name|rsrc
+operator|.
+name|getId
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|addition
 operator|.
@@ -3133,12 +3148,12 @@ operator|=
 name|exactMatchFound
 expr_stmt|;
 block|}
-DECL|method|gatherResults (ChangeNotes notes)
+DECL|method|gatherResults (ChangeData cd)
 name|void
 name|gatherResults
 parameter_list|(
-name|ChangeNotes
-name|notes
+name|ChangeData
+name|cd
 parameter_list|)
 throws|throws
 name|OrmException
@@ -3166,21 +3181,6 @@ argument_list|,
 literal|"op did not return a result"
 argument_list|)
 expr_stmt|;
-name|ChangeData
-name|cd
-init|=
-name|changeDataFactory
-operator|.
-name|create
-argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
-name|notes
-argument_list|)
-decl_stmt|;
 comment|// Generate result details and fill AccountLoader. This occurs outside
 comment|// the Op because the accounts are in a different table.
 name|PostReviewersOp
