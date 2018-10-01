@@ -94,6 +94,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkState
 import|;
 end_import
@@ -1166,6 +1182,24 @@ operator|=
 name|accountsToNotify
 expr_stmt|;
 block|}
+DECL|method|setPatchSet (PatchSet patchSet)
+name|void
+name|setPatchSet
+parameter_list|(
+name|PatchSet
+name|patchSet
+parameter_list|)
+block|{
+name|this
+operator|.
+name|patchSet
+operator|=
+name|checkNotNull
+argument_list|(
+name|patchSet
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
@@ -1435,8 +1469,17 @@ block|}
 name|checkAdded
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|patchSet
+operator|==
+literal|null
+condition|)
+block|{
 name|patchSet
 operator|=
+name|checkNotNull
+argument_list|(
 name|psUtil
 operator|.
 name|current
@@ -1451,7 +1494,9 @@ operator|.
 name|getNotes
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|true
 return|;

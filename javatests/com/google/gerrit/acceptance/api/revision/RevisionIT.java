@@ -6117,7 +6117,7 @@ argument_list|(
 name|input
 argument_list|)
 expr_stmt|;
-name|assertNotifyCc
+name|assertNotifyTo
 argument_list|(
 name|admin
 argument_list|)
