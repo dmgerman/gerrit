@@ -1248,6 +1248,24 @@ name|server
 operator|.
 name|change
 operator|.
+name|ChangeResource
+operator|.
+name|Factory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
 name|EmailReviewComments
 import|;
 end_import
@@ -2157,6 +2175,12 @@ specifier|final
 name|PostReviewers
 name|postReviewers
 decl_stmt|;
+DECL|field|postReviewersEmail
+specifier|private
+specifier|final
+name|PostReviewersEmail
+name|postReviewersEmail
+decl_stmt|;
 DECL|field|migration
 specifier|private
 specifier|final
@@ -2203,7 +2227,7 @@ name|strictLabels
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, PostReviewers postReviewers, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
+DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, PostReviewers postReviewers, PostReviewersEmail postReviewersEmail, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
 name|PostReview
 parameter_list|(
 name|Provider
@@ -2215,8 +2239,6 @@ parameter_list|,
 name|RetryHelper
 name|retryHelper
 parameter_list|,
-name|ChangeResource
-operator|.
 name|Factory
 name|changeResourceFactory
 parameter_list|,
@@ -2256,6 +2278,9 @@ name|commentAdded
 parameter_list|,
 name|PostReviewers
 name|postReviewers
+parameter_list|,
+name|PostReviewersEmail
+name|postReviewersEmail
 parameter_list|,
 name|NotesMigration
 name|migration
@@ -2362,6 +2387,12 @@ operator|.
 name|postReviewers
 operator|=
 name|postReviewers
+expr_stmt|;
+name|this
+operator|.
+name|postReviewersEmail
+operator|=
+name|postReviewersEmail
 expr_stmt|;
 name|this
 operator|.
@@ -2798,7 +2829,10 @@ operator|.
 name|reviewers
 control|)
 block|{
-comment|// Prevent notifications because setting reviewers is batched.
+comment|// Prevent individual PostReviewersOps from sending one email each. Instead, we call
+comment|// batchEmailReviewers at the very end to send out a single email.
+comment|// TODO(dborowitz): I think this still sends out separate emails if any of input.reviewers
+comment|// specifies explicit accountsToNotify. Unclear whether that's a good thing.
 name|reviewerInput
 operator|.
 name|notify
@@ -3467,8 +3501,14 @@ operator|.
 name|isWorkInProgress
 argument_list|()
 decl_stmt|;
-name|emailReviewers
+comment|// Sending from PostReviewersOp was suppressed so we can send a single batch email here.
+name|batchEmailReviewers
 argument_list|(
+name|revision
+operator|.
+name|getUser
+argument_list|()
+argument_list|,
 name|revision
 operator|.
 name|getChange
@@ -3587,11 +3627,14 @@ operator|.
 name|ALL
 return|;
 block|}
-DECL|method|emailReviewers ( Change change, List<PostReviewers.Addition> reviewerAdditions, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean readyForReview)
+DECL|method|batchEmailReviewers ( CurrentUser user, Change change, List<PostReviewers.Addition> reviewerAdditions, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean readyForReview)
 specifier|private
 name|void
-name|emailReviewers
+name|batchEmailReviewers
 parameter_list|(
+name|CurrentUser
+name|user
+parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -3742,27 +3785,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|reviewerAdditions
-operator|.
-name|size
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
-name|reviewerAdditions
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-operator|.
-name|op
+name|postReviewersEmail
 operator|.
 name|emailReviewers
 argument_list|(
+name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
+argument_list|,
 name|change
 argument_list|,
 name|to
@@ -3780,7 +3811,6 @@ argument_list|,
 name|readyForReview
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|onBehalfOf (RevisionResource rev, LabelTypes labelTypes, ReviewInput in)
 specifier|private
