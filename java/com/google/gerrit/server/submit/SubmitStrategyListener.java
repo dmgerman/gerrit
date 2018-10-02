@@ -100,6 +100,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -272,6 +286,18 @@ name|SubmitStrategyListener
 implements|implements
 name|BatchUpdateListener
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|field|strategies
 specifier|private
 specifier|final
@@ -705,6 +731,21 @@ operator|==
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"change %d: change not processed by merge strategy"
+argument_list|,
+name|id
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|commitStatus
 operator|.
 name|problem
@@ -716,6 +757,28 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"change %d: status for commit %s is %s"
+argument_list|,
+name|id
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|commit
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|s
+argument_list|)
+expr_stmt|;
 switch|switch
 condition|(
 name|s
@@ -774,6 +837,9 @@ case|:
 case|case
 name|EMPTY_COMMIT
 case|:
+case|case
+name|MISSING_DEPENDENCY
+case|:
 comment|// TODO(dborowitz): Reformat these messages to be more appropriate for
 comment|// short problem descriptions.
 name|commitStatus
@@ -798,19 +864,6 @@ argument_list|()
 argument_list|,
 literal|' '
 argument_list|)
-argument_list|)
-expr_stmt|;
-break|break;
-case|case
-name|MISSING_DEPENDENCY
-case|:
-name|commitStatus
-operator|.
-name|problem
-argument_list|(
-name|id
-argument_list|,
-literal|"depends on change that was not submitted"
 argument_list|)
 expr_stmt|;
 break|break;

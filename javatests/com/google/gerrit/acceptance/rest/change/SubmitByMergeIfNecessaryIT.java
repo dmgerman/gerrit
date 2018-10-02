@@ -2710,9 +2710,9 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|": depends on change that"
+literal|": Depends on change that"
 operator|+
-literal|" was not submitted"
+literal|" was not submitted."
 argument_list|)
 expr_stmt|;
 name|RevCommit
@@ -3445,7 +3445,7 @@ operator|.
 name|get
 argument_list|()
 operator|+
-literal|": depends on change that was not submitted"
+literal|": Depends on change that was not submitted."
 argument_list|)
 expr_stmt|;
 name|assertRefUpdatedEvents

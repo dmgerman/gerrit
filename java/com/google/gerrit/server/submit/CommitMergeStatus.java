@@ -129,7 +129,7 @@ block|,
 DECL|enumConstant|MISSING_DEPENDENCY
 name|MISSING_DEPENDENCY
 argument_list|(
-literal|""
+literal|"Depends on change that was not submitted."
 argument_list|)
 block|,
 DECL|enumConstant|MANUAL_RECURSIVE_MERGE
