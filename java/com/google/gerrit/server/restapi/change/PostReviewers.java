@@ -3071,8 +3071,6 @@ name|postReviewersOpFactory
 operator|.
 name|create
 argument_list|(
-name|rsrc
-argument_list|,
 name|this
 operator|.
 name|reviewers
