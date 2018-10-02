@@ -134,22 +134,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
-name|DynamicSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|index
 operator|.
 name|project
@@ -253,6 +237,22 @@ operator|.
 name|TraceContext
 operator|.
 name|TraceTimer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
 import|;
 end_import
 
@@ -399,7 +399,7 @@ decl_stmt|;
 DECL|field|indexedListener
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ProjectIndexedListener
 argument_list|>
@@ -423,13 +423,13 @@ name|index
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectIndexerImpl ( ProjectCache projectCache, DynamicSet<ProjectIndexedListener> indexedListener, @Assisted ProjectIndexCollection indexes)
+DECL|method|ProjectIndexerImpl ( ProjectCache projectCache, PluginSetContext<ProjectIndexedListener> indexedListener, @Assisted ProjectIndexCollection indexes)
 name|ProjectIndexerImpl
 parameter_list|(
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ProjectIndexedListener
 argument_list|>
@@ -468,13 +468,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectIndexerImpl ( ProjectCache projectCache, DynamicSet<ProjectIndexedListener> indexedListener, @Assisted @Nullable ProjectIndex index)
+DECL|method|ProjectIndexerImpl ( ProjectCache projectCache, PluginSetContext<ProjectIndexedListener> indexedListener, @Assisted @Nullable ProjectIndex index)
 name|ProjectIndexerImpl
 parameter_list|(
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ProjectIndexedListener
 argument_list|>
@@ -693,22 +693,20 @@ name|String
 name|name
 parameter_list|)
 block|{
-for|for
-control|(
-name|ProjectIndexedListener
-name|listener
-range|:
 name|indexedListener
-control|)
-block|{
-name|listener
+operator|.
+name|runEach
+argument_list|(
+name|l
+lambda|->
+name|l
 operator|.
 name|onProjectIndexed
 argument_list|(
 name|name
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|getWriteIndexes ()
 specifier|private

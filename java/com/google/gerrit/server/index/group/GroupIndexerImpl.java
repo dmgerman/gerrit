@@ -134,22 +134,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
-name|DynamicSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|index
 operator|.
 name|Index
@@ -235,6 +219,22 @@ operator|.
 name|TraceContext
 operator|.
 name|TraceTimer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
 import|;
 end_import
 
@@ -359,7 +359,7 @@ decl_stmt|;
 DECL|field|indexedListener
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|GroupIndexedListener
 argument_list|>
@@ -389,13 +389,13 @@ name|index
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|GroupIndexerImpl ( GroupCache groupCache, DynamicSet<GroupIndexedListener> indexedListener, StalenessChecker stalenessChecker, @Assisted GroupIndexCollection indexes)
+DECL|method|GroupIndexerImpl ( GroupCache groupCache, PluginSetContext<GroupIndexedListener> indexedListener, StalenessChecker stalenessChecker, @Assisted GroupIndexCollection indexes)
 name|GroupIndexerImpl
 parameter_list|(
 name|GroupCache
 name|groupCache
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|GroupIndexedListener
 argument_list|>
@@ -443,13 +443,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|GroupIndexerImpl ( GroupCache groupCache, DynamicSet<GroupIndexedListener> indexedListener, StalenessChecker stalenessChecker, @Assisted @Nullable GroupIndex index)
+DECL|method|GroupIndexerImpl ( GroupCache groupCache, PluginSetContext<GroupIndexedListener> indexedListener, StalenessChecker stalenessChecker, @Assisted @Nullable GroupIndex index)
 name|GroupIndexerImpl
 parameter_list|(
 name|GroupCache
 name|groupCache
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|GroupIndexedListener
 argument_list|>
@@ -731,22 +731,20 @@ name|String
 name|uuid
 parameter_list|)
 block|{
-for|for
-control|(
-name|GroupIndexedListener
-name|listener
-range|:
 name|indexedListener
-control|)
-block|{
-name|listener
+operator|.
+name|runEach
+argument_list|(
+name|l
+lambda|->
+name|l
 operator|.
 name|onGroupIndexed
 argument_list|(
 name|uuid
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|getWriteIndexes ()
 specifier|private

@@ -356,22 +356,6 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|registration
-operator|.
-name|DynamicItem
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
 name|restapi
 operator|.
 name|RestApiException
@@ -607,6 +591,22 @@ operator|.
 name|patch
 operator|.
 name|PatchSetInfoNotAvailableException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginItemContext
 import|;
 end_import
 
@@ -1137,7 +1137,7 @@ decl_stmt|;
 DECL|field|accountPatchReviewStore
 specifier|private
 specifier|final
-name|DynamicItem
+name|PluginItemContext
 argument_list|<
 name|AccountPatchReviewStore
 argument_list|>
@@ -1269,7 +1269,7 @@ name|problems
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ConsistencyChecker ( @erritPersonIdent Provider<PersonIdent> serverIdent, ChangeNotes.Factory notesFactory, Accounts accounts, DynamicItem<AccountPatchReviewStore> accountPatchReviewStore, GitRepositoryManager repoManager, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, PatchSetUtil psUtil, Provider<CurrentUser> user, Provider<ReviewDb> db, RetryHelper retryHelper)
+DECL|method|ConsistencyChecker ( @erritPersonIdent Provider<PersonIdent> serverIdent, ChangeNotes.Factory notesFactory, Accounts accounts, PluginItemContext<AccountPatchReviewStore> accountPatchReviewStore, GitRepositoryManager repoManager, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, PatchSetUtil psUtil, Provider<CurrentUser> user, Provider<ReviewDb> db, RetryHelper retryHelper)
 name|ConsistencyChecker
 parameter_list|(
 annotation|@
@@ -1288,7 +1288,7 @@ parameter_list|,
 name|Accounts
 name|accounts
 parameter_list|,
-name|DynamicItem
+name|PluginItemContext
 argument_list|<
 name|AccountPatchReviewStore
 argument_list|>
@@ -4384,12 +4384,20 @@ argument_list|)
 decl_stmt|;
 name|accountPatchReviewStore
 operator|.
-name|get
-argument_list|()
+name|run
+argument_list|(
+name|s
+lambda|->
+name|s
 operator|.
 name|clearReviewed
 argument_list|(
 name|psId
+argument_list|)
+argument_list|,
+name|OrmException
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|db

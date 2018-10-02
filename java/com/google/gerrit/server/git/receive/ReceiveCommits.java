@@ -956,22 +956,6 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
 name|Extension
 import|;
 end_import
@@ -1887,6 +1871,22 @@ operator|.
 name|permissions
 operator|.
 name|RefPermission
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
 import|;
 end_import
 
@@ -3342,7 +3342,7 @@ decl_stmt|;
 DECL|field|initializers
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ReceivePackInitializer
 argument_list|>
@@ -3681,7 +3681,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers, @Nullable @Assisted MessageSender messageSender)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers, @Nullable @Assisted MessageSender messageSender)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -3744,7 +3744,7 @@ name|ProjectConfigEntry
 argument_list|>
 name|pluginConfigEntries
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ReceivePackInitializer
 argument_list|>
@@ -4265,14 +4265,12 @@ name|void
 name|init
 parameter_list|()
 block|{
-for|for
-control|(
-name|ReceivePackInitializer
-name|i
-range|:
 name|initializers
-control|)
-block|{
+operator|.
+name|runEach
+argument_list|(
+name|i
+lambda|->
 name|i
 operator|.
 name|init
@@ -4284,8 +4282,8 @@ argument_list|()
 argument_list|,
 name|receivePack
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|getMessageSender ()
 name|MessageSender
