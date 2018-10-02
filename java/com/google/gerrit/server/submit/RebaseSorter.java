@@ -617,14 +617,24 @@ block|{
 comment|// We cannot merge n as it would bring something we
 comment|// aren't permitted to merge at this time. Drop n.
 comment|//
-name|logger
+name|n
 operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
+name|setStatusCode
 argument_list|(
-literal|"commit %s depends on commit %s which cannot be merged"
+name|CommitMergeStatus
+operator|.
+name|MISSING_DEPENDENCY
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|setStatusMessage
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Commit %s depends on commit %s which cannot be merged."
 argument_list|,
 name|n
 operator|.
@@ -636,14 +646,6 @@ operator|.
 name|name
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|n
-operator|.
-name|setStatusCode
-argument_list|(
-name|CommitMergeStatus
-operator|.
-name|MISSING_DEPENDENCY
 argument_list|)
 expr_stmt|;
 block|}

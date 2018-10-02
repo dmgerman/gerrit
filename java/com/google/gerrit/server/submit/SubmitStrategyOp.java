@@ -3027,7 +3027,7 @@ name|txt
 init|=
 name|s
 operator|.
-name|getMessage
+name|getDescription
 argument_list|()
 decl_stmt|;
 if|if

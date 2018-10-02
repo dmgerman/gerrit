@@ -104,6 +104,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -167,6 +181,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -578,6 +602,20 @@ specifier|private
 name|CommitMergeStatus
 name|statusCode
 decl_stmt|;
+comment|/**    * Message for the status that is returned to the calling user if the status indicates a problem    * that prevents submit.    */
+DECL|field|statusMessage
+specifier|private
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|statusMessage
+init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+decl_stmt|;
 DECL|method|CodeReviewCommit (AnyObjectId id)
 specifier|public
 name|CodeReviewCommit
@@ -626,6 +664,42 @@ operator|.
 name|statusCode
 operator|=
 name|statusCode
+expr_stmt|;
+block|}
+DECL|method|getStatusMessage ()
+specifier|public
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getStatusMessage
+parameter_list|()
+block|{
+return|return
+name|statusMessage
+return|;
+block|}
+DECL|method|setStatusMessage (@ullable String statusMessage)
+specifier|public
+name|void
+name|setStatusMessage
+parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|statusMessage
+parameter_list|)
+block|{
+name|this
+operator|.
+name|statusMessage
+operator|=
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|statusMessage
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getPatchsetId ()

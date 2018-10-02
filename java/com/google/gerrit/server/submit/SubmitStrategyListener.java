@@ -757,6 +757,17 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+name|commit
+operator|.
+name|getStatusMessage
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
 name|logger
 operator|.
 name|atFine
@@ -764,7 +775,40 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"change %d: status for commit %s is %s"
+literal|"change %d: Status for commit %s is %s. %s"
+argument_list|,
+name|id
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|commit
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|s
+argument_list|,
+name|commit
+operator|.
+name|getStatusMessage
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"change %d: Status for commit %s is %s."
 argument_list|,
 name|id
 operator|.
@@ -779,6 +823,7 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 switch|switch
 condition|(
 name|s
@@ -842,6 +887,38 @@ name|MISSING_DEPENDENCY
 case|:
 comment|// TODO(dborowitz): Reformat these messages to be more appropriate for
 comment|// short problem descriptions.
+name|String
+name|message
+init|=
+name|s
+operator|.
+name|getDescription
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|commit
+operator|.
+name|getStatusMessage
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|message
+operator|+=
+literal|" "
+operator|+
+name|commit
+operator|.
+name|getStatusMessage
+argument_list|()
+operator|.
+name|get
+argument_list|()
+expr_stmt|;
+block|}
 name|commitStatus
 operator|.
 name|problem
@@ -857,10 +934,7 @@ argument_list|)
 operator|.
 name|collapseFrom
 argument_list|(
-name|s
-operator|.
-name|getMessage
-argument_list|()
+name|message
 argument_list|,
 literal|' '
 argument_list|)
