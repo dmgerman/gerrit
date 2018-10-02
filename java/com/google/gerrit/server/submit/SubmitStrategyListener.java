@@ -774,6 +774,9 @@ case|:
 case|case
 name|EMPTY_COMMIT
 case|:
+case|case
+name|MISSING_DEPENDENCY
+case|:
 comment|// TODO(dborowitz): Reformat these messages to be more appropriate for
 comment|// short problem descriptions.
 name|commitStatus
@@ -798,19 +801,6 @@ argument_list|()
 argument_list|,
 literal|' '
 argument_list|)
-argument_list|)
-expr_stmt|;
-break|break;
-case|case
-name|MISSING_DEPENDENCY
-case|:
-name|commitStatus
-operator|.
-name|problem
-argument_list|(
-name|id
-argument_list|,
-literal|"depends on change that was not submitted"
 argument_list|)
 expr_stmt|;
 break|break;
