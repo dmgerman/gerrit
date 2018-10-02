@@ -698,22 +698,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|UrlFormatter
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|extensions
 operator|.
 name|events
@@ -1327,6 +1311,15 @@ name|module
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|install
+argument_list|(
+operator|new
+name|DefaultUrlFormatter
+operator|.
+name|Module
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// There is the concept of LifecycleModule, in Gerrit's own extension to Guice, which has these:
 comment|//  listener().to(SomeClassImplementingLifecycleListener.class);
 comment|// and the start() methods of each such listener are executed in the order they are declared.
@@ -1509,23 +1502,6 @@ operator|.
 name|toProvider
 argument_list|(
 name|CanonicalWebUrlProvider
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
-name|bind
-argument_list|(
-name|UrlFormatter
-operator|.
-name|class
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|DefaultUrlFormatter
 operator|.
 name|class
 argument_list|)

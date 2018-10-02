@@ -68,6 +68,18 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|AbstractModule
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -125,6 +137,38 @@ name|String
 argument_list|>
 name|canonicalWebUrlProvider
 decl_stmt|;
+DECL|class|Module
+specifier|public
+specifier|static
+class|class
+name|Module
+extends|extends
+name|AbstractModule
+block|{
+annotation|@
+name|Override
+DECL|method|configure ()
+specifier|protected
+name|void
+name|configure
+parameter_list|()
+block|{
+name|bind
+argument_list|(
+name|UrlFormatter
+operator|.
+name|class
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|DefaultUrlFormatter
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Inject
 DECL|method|DefaultUrlFormatter (@anonicalWebUrl Provider<String> canonicalWebUrlProvider)
