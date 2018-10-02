@@ -6381,11 +6381,6 @@ init|=
 name|createChange
 argument_list|()
 decl_stmt|;
-name|r
-operator|.
-name|assertOkStatus
-argument_list|()
-expr_stmt|;
 name|assertThat
 argument_list|(
 name|r
@@ -6500,11 +6495,6 @@ init|=
 name|createChange
 argument_list|()
 decl_stmt|;
-name|r
-operator|.
-name|assertOkStatus
-argument_list|()
-expr_stmt|;
 name|assertThat
 argument_list|(
 name|r
@@ -6693,11 +6683,6 @@ init|=
 name|createChange
 argument_list|()
 decl_stmt|;
-name|r
-operator|.
-name|assertOkStatus
-argument_list|()
-expr_stmt|;
 name|ReviewInput
 name|in
 init|=
@@ -6777,11 +6762,6 @@ init|=
 name|createChange
 argument_list|()
 decl_stmt|;
-name|r
-operator|.
-name|assertOkStatus
-argument_list|()
-expr_stmt|;
 name|ReviewInput
 name|in
 init|=
