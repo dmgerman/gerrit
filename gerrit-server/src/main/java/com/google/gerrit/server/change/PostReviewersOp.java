@@ -703,13 +703,10 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ChangeResource rsrc, Set<Account.Id> reviewers, Collection<Address> reviewersByEmail, ReviewerState state, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|create ( Set<Account.Id> reviewers, Collection<Address> reviewersByEmail, ReviewerState state, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|PostReviewersOp
 name|create
 parameter_list|(
-name|ChangeResource
-name|rsrc
-parameter_list|,
 name|Set
 argument_list|<
 name|Account
@@ -895,12 +892,6 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
-DECL|field|rsrc
-specifier|private
-specifier|final
-name|ChangeResource
-name|rsrc
-decl_stmt|;
 DECL|field|reviewers
 specifier|private
 specifier|final
@@ -987,6 +978,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|change
+specifier|private
+name|Change
+name|change
+decl_stmt|;
 DECL|field|patchSet
 specifier|private
 name|PatchSet
@@ -999,7 +995,7 @@ name|opResult
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, ProjectCache projectCache, AddReviewerSender.Factory addReviewerSenderFactory, NotesMigration migration, Provider<IdentifiedUser> user, Provider<ReviewDb> dbProvider, @Assisted ChangeResource rsrc, @Assisted Set<Account.Id> reviewers, @Assisted Collection<Address> reviewersByEmail, @Assisted ReviewerState state, @Assisted @Nullable NotifyHandling notify, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|PostReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, ProjectCache projectCache, AddReviewerSender.Factory addReviewerSenderFactory, NotesMigration migration, Provider<IdentifiedUser> user, Provider<ReviewDb> dbProvider, @Assisted Set<Account.Id> reviewers, @Assisted Collection<Address> reviewersByEmail, @Assisted ReviewerState state, @Assisted @Nullable NotifyHandling notify, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|PostReviewersOp
 parameter_list|(
 name|ApprovalsUtil
@@ -1036,11 +1032,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
-parameter_list|,
-annotation|@
-name|Assisted
-name|ChangeResource
-name|rsrc
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1141,12 +1132,6 @@ name|dbProvider
 expr_stmt|;
 name|this
 operator|.
-name|rsrc
-operator|=
-name|rsrc
-expr_stmt|;
-name|this
-operator|.
 name|reviewers
 operator|=
 name|reviewers
@@ -1193,6 +1178,13 @@ name|OrmException
 throws|,
 name|IOException
 block|{
+name|change
+operator|=
+name|ctx
+operator|.
+name|getChange
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1229,10 +1221,7 @@ name|ctx
 operator|.
 name|getUpdate
 argument_list|(
-name|ctx
-operator|.
-name|getChange
-argument_list|()
+name|change
 operator|.
 name|currentPatchSetId
 argument_list|()
@@ -1289,7 +1278,7 @@ name|projectCache
 operator|.
 name|checkedGet
 argument_list|(
-name|rsrc
+name|change
 operator|.
 name|getProject
 argument_list|()
@@ -1297,10 +1286,7 @@ argument_list|)
 operator|.
 name|getLabelTypes
 argument_list|(
-name|rsrc
-operator|.
-name|getChange
-argument_list|()
+name|change
 operator|.
 name|getDest
 argument_list|()
@@ -1311,10 +1297,7 @@ name|getUser
 argument_list|()
 argument_list|)
 argument_list|,
-name|rsrc
-operator|.
-name|getChange
-argument_list|()
+name|change
 argument_list|,
 name|reviewers
 argument_list|)
@@ -1378,7 +1361,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|rsrc
+name|ctx
 operator|.
 name|getNotes
 argument_list|()
@@ -1433,10 +1416,7 @@ argument_list|()
 expr_stmt|;
 name|emailReviewers
 argument_list|(
-name|rsrc
-operator|.
-name|getChange
-argument_list|()
+name|change
 argument_list|,
 name|Lists
 operator|.
@@ -1520,10 +1500,7 @@ name|reviewerAdded
 operator|.
 name|fire
 argument_list|(
-name|rsrc
-operator|.
-name|getChange
-argument_list|()
+name|change
 argument_list|,
 name|patchSet
 argument_list|,
