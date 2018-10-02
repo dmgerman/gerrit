@@ -552,14 +552,6 @@ operator|.
 name|getNameKey
 argument_list|()
 decl_stmt|;
-name|parent
-operator|.
-name|getProjectState
-argument_list|()
-operator|.
-name|checkStatePermitsRead
-argument_list|()
-expr_stmt|;
 try|try
 init|(
 name|Repository
