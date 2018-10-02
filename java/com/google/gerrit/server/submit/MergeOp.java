@@ -4790,12 +4790,14 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"Found %d existing heads"
+literal|"Found %d existing heads: %s"
 argument_list|,
 name|alreadyAccepted
 operator|.
 name|size
 argument_list|()
+argument_list|,
+name|alreadyAccepted
 argument_list|)
 expr_stmt|;
 return|return
