@@ -2437,7 +2437,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|PostReviewers
+name|ReviewerAdder
 operator|.
 name|isLegalReviewerGroup
 argument_list|(

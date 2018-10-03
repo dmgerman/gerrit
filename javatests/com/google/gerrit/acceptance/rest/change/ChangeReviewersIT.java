@@ -632,7 +632,7 @@ name|restapi
 operator|.
 name|change
 operator|.
-name|PostReviewers
+name|ReviewerAdder
 import|;
 end_import
 
@@ -785,7 +785,7 @@ decl_stmt|;
 name|int
 name|largeGroupSize
 init|=
-name|PostReviewers
+name|ReviewerAdder
 operator|.
 name|DEFAULT_MAX_REVIEWERS
 operator|+
@@ -794,7 +794,7 @@ decl_stmt|;
 name|int
 name|mediumGroupSize
 init|=
-name|PostReviewers
+name|ReviewerAdder
 operator|.
 name|DEFAULT_MAX_REVIEWERS_WITHOUT_CHECK
 operator|+
@@ -3974,7 +3974,7 @@ block|{
 name|int
 name|largeGroupSize
 init|=
-name|PostReviewers
+name|ReviewerAdder
 operator|.
 name|DEFAULT_MAX_REVIEWERS
 operator|+
@@ -3983,7 +3983,7 @@ decl_stmt|;
 name|int
 name|mediumGroupSize
 init|=
-name|PostReviewers
+name|ReviewerAdder
 operator|.
 name|DEFAULT_MAX_REVIEWERS_WITHOUT_CHECK
 operator|+

@@ -406,9 +406,9 @@ name|restapi
 operator|.
 name|change
 operator|.
-name|PostReviewers
+name|ReviewerAdder
 operator|.
-name|Addition
+name|ReviewerAddition
 import|;
 end_import
 
@@ -613,11 +613,11 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|postReviewers
+DECL|field|reviewerAdder
 specifier|private
 specifier|final
-name|PostReviewers
-name|postReviewers
+name|ReviewerAdder
+name|reviewerAdder
 decl_stmt|;
 DECL|field|accountLoaderFactory
 specifier|private
@@ -635,7 +635,7 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutAssignee ( AccountsCollection accounts, SetAssigneeOp.Factory assigneeFactory, RetryHelper retryHelper, Provider<ReviewDb> db, PostReviewers postReviewers, AccountLoader.Factory accountLoaderFactory, PermissionBackend permissionBackend)
+DECL|method|PutAssignee ( AccountsCollection accounts, SetAssigneeOp.Factory assigneeFactory, RetryHelper retryHelper, Provider<ReviewDb> db, ReviewerAdder reviewerAdder, AccountLoader.Factory accountLoaderFactory, PermissionBackend permissionBackend)
 name|PutAssignee
 parameter_list|(
 name|AccountsCollection
@@ -655,8 +655,8 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|PostReviewers
-name|postReviewers
+name|ReviewerAdder
+name|reviewerAdder
 parameter_list|,
 name|AccountLoader
 operator|.
@@ -692,9 +692,9 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|postReviewers
+name|reviewerAdder
 operator|=
-name|postReviewers
+name|reviewerAdder
 expr_stmt|;
 name|this
 operator|.
@@ -929,9 +929,7 @@ argument_list|,
 name|op
 argument_list|)
 expr_stmt|;
-name|PostReviewers
-operator|.
-name|Addition
+name|ReviewerAddition
 name|reviewersAddition
 init|=
 name|addAssigneeAsCC
@@ -982,7 +980,7 @@ block|}
 block|}
 DECL|method|addAssigneeAsCC (ChangeResource rsrc, String assignee)
 specifier|private
-name|Addition
+name|ReviewerAddition
 name|addAssigneeAsCC
 parameter_list|(
 name|ChangeResource
@@ -1036,9 +1034,9 @@ operator|.
 name|NONE
 expr_stmt|;
 return|return
-name|postReviewers
+name|reviewerAdder
 operator|.
-name|prepareApplication
+name|prepare
 argument_list|(
 name|rsrc
 operator|.

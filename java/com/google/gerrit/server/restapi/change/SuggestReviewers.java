@@ -567,7 +567,7 @@ literal|"addreviewer"
 argument_list|,
 literal|"maxAllowed"
 argument_list|,
-name|PostReviewers
+name|ReviewerAdder
 operator|.
 name|DEFAULT_MAX_REVIEWERS
 argument_list|)
@@ -584,7 +584,7 @@ literal|"addreviewer"
 argument_list|,
 literal|"maxWithoutConfirmation"
 argument_list|,
-name|PostReviewers
+name|ReviewerAdder
 operator|.
 name|DEFAULT_MAX_REVIEWERS_WITHOUT_CHECK
 argument_list|)

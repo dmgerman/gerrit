@@ -1248,24 +1248,6 @@ name|server
 operator|.
 name|change
 operator|.
-name|ChangeResource
-operator|.
-name|Factory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
 name|EmailReviewComments
 import|;
 end_import
@@ -1609,6 +1591,26 @@ operator|.
 name|account
 operator|.
 name|AccountsCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|restapi
+operator|.
+name|change
+operator|.
+name|ReviewerAdder
+operator|.
+name|ReviewerAddition
 import|;
 end_import
 
@@ -2169,11 +2171,11 @@ specifier|final
 name|CommentAdded
 name|commentAdded
 decl_stmt|;
-DECL|field|postReviewers
+DECL|field|reviewerAdder
 specifier|private
 specifier|final
-name|PostReviewers
-name|postReviewers
+name|ReviewerAdder
+name|reviewerAdder
 decl_stmt|;
 DECL|field|postReviewersEmail
 specifier|private
@@ -2227,7 +2229,7 @@ name|strictLabels
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, PostReviewers postReviewers, PostReviewersEmail postReviewersEmail, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
+DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, ReviewerAdder reviewerAdder, PostReviewersEmail postReviewersEmail, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
 name|PostReview
 parameter_list|(
 name|Provider
@@ -2239,6 +2241,8 @@ parameter_list|,
 name|RetryHelper
 name|retryHelper
 parameter_list|,
+name|ChangeResource
+operator|.
 name|Factory
 name|changeResourceFactory
 parameter_list|,
@@ -2276,8 +2280,8 @@ parameter_list|,
 name|CommentAdded
 name|commentAdded
 parameter_list|,
-name|PostReviewers
-name|postReviewers
+name|ReviewerAdder
+name|reviewerAdder
 parameter_list|,
 name|PostReviewersEmail
 name|postReviewersEmail
@@ -2384,9 +2388,9 @@ name|commentAdded
 expr_stmt|;
 name|this
 operator|.
-name|postReviewers
+name|reviewerAdder
 operator|=
-name|postReviewers
+name|reviewerAdder
 expr_stmt|;
 name|this
 operator|.
@@ -2782,9 +2786,7 @@ literal|null
 decl_stmt|;
 name|List
 argument_list|<
-name|PostReviewers
-operator|.
-name|Addition
+name|ReviewerAddition
 argument_list|>
 name|reviewerResults
 init|=
@@ -2841,14 +2843,12 @@ name|NotifyHandling
 operator|.
 name|NONE
 expr_stmt|;
-name|PostReviewers
-operator|.
-name|Addition
+name|ReviewerAddition
 name|result
 init|=
-name|postReviewers
+name|reviewerAdder
 operator|.
-name|prepareApplication
+name|prepare
 argument_list|(
 name|revision
 operator|.
@@ -3106,9 +3106,7 @@ comment|// updated set of reviewers. Also keep track of whether the user added
 comment|// themselves as a reviewer or to the CC list.
 for|for
 control|(
-name|PostReviewers
-operator|.
-name|Addition
+name|ReviewerAddition
 name|reviewerResult
 range|:
 name|reviewerResults
@@ -3243,12 +3241,10 @@ block|{
 comment|// User posting this review isn't currently in the reviewer or CC list,
 comment|// isn't being explicitly added, and isn't voting on any label.
 comment|// Automatically CC them on this change so they receive replies.
-name|PostReviewers
-operator|.
-name|Addition
+name|ReviewerAddition
 name|selfAddition
 init|=
-name|postReviewers
+name|reviewerAdder
 operator|.
 name|ccCurrentUser
 argument_list|(
@@ -3461,9 +3457,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|PostReviewers
-operator|.
-name|Addition
+name|ReviewerAddition
 name|reviewerResult
 range|:
 name|reviewerResults
@@ -3627,7 +3621,7 @@ operator|.
 name|ALL
 return|;
 block|}
-DECL|method|batchEmailReviewers ( CurrentUser user, Change change, List<PostReviewers.Addition> reviewerAdditions, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean readyForReview)
+DECL|method|batchEmailReviewers ( CurrentUser user, Change change, List<ReviewerAddition> reviewerAdditions, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean readyForReview)
 specifier|private
 name|void
 name|batchEmailReviewers
@@ -3640,9 +3634,7 @@ name|change
 parameter_list|,
 name|List
 argument_list|<
-name|PostReviewers
-operator|.
-name|Addition
+name|ReviewerAddition
 argument_list|>
 name|reviewerAdditions
 parameter_list|,
@@ -3715,9 +3707,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|PostReviewers
-operator|.
-name|Addition
+name|ReviewerAddition
 name|addition
 range|:
 name|reviewerAdditions
