@@ -116,6 +116,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Sets
 import|;
 end_import
@@ -417,6 +431,16 @@ operator|.
 name|util
 operator|.
 name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -1525,6 +1549,17 @@ name|boolean
 name|filterTagsSeparately
 parameter_list|()
 function_decl|;
+comment|/**      * Select only refs with names matching prefixes per {@link      * org.eclipse.jgit.lib.RefDatabase#getRefsByPrefix}.      */
+DECL|method|prefixes ()
+specifier|public
+specifier|abstract
+name|ImmutableList
+argument_list|<
+name|String
+argument_list|>
+name|prefixes
+parameter_list|()
+function_decl|;
 DECL|method|toBuilder ()
 specifier|public
 specifier|abstract
@@ -1554,6 +1589,16 @@ operator|.
 name|setFilterTagsSeparately
 argument_list|(
 literal|false
+argument_list|)
+operator|.
+name|setPrefixes
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+literal|""
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1586,6 +1631,19 @@ name|setFilterTagsSeparately
 parameter_list|(
 name|boolean
 name|val
+parameter_list|)
+function_decl|;
+DECL|method|setPrefixes (List<String> prefixes)
+specifier|public
+specifier|abstract
+name|Builder
+name|setPrefixes
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|prefixes
 parameter_list|)
 function_decl|;
 DECL|method|build ()
