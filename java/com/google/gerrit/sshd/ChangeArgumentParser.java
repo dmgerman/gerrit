@@ -154,6 +154,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|change
+operator|.
 name|ChangeFinder
 import|;
 end_import

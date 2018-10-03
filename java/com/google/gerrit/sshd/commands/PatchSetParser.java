@@ -170,7 +170,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ChangeFinder
+name|PatchSetUtil
 import|;
 end_import
 
@@ -184,7 +184,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchSetUtil
+name|change
+operator|.
+name|ChangeFinder
 import|;
 end_import
 
