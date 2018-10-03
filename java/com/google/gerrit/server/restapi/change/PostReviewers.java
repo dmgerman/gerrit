@@ -3280,7 +3280,10 @@ control|(
 name|Address
 name|a
 range|:
-name|reviewersByEmail
+name|opResult
+operator|.
+name|addedCCsByEmail
+argument_list|()
 control|)
 block|{
 name|result
@@ -3395,7 +3398,10 @@ control|(
 name|Address
 name|a
 range|:
-name|reviewersByEmail
+name|opResult
+operator|.
+name|addedReviewersByEmail
+argument_list|()
 control|)
 block|{
 name|result
