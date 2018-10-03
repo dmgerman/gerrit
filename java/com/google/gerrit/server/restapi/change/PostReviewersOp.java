@@ -80,6 +80,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkState
 import|;
 end_import
@@ -99,6 +115,24 @@ operator|.
 name|ReviewerState
 operator|.
 name|CC
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ReviewerState
+operator|.
+name|REVIEWER
 import|;
 end_import
 
@@ -1034,6 +1068,25 @@ argument_list|>
 name|accountsToNotify
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|state
+operator|==
+name|REVIEWER
+operator|||
+name|state
+operator|==
+name|CC
+argument_list|,
+literal|"must be %s or %s: %s"
+argument_list|,
+name|REVIEWER
+argument_list|,
+name|CC
+argument_list|,
+name|state
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|approvalsUtil
