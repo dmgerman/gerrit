@@ -354,6 +354,8 @@ operator|.
 name|format
 argument_list|(
 literal|"Commit %s depends on commit %s which cannot be merged."
+operator|+
+literal|" Is the change of this commit not visible or was it deleted?"
 argument_list|,
 name|commit
 argument_list|,
