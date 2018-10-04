@@ -254,7 +254,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ChangeFinder
+name|CurrentUser
 import|;
 end_import
 
@@ -268,7 +268,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
+name|change
+operator|.
+name|ChangeFinder
 import|;
 end_import
 
