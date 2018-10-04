@@ -1230,6 +1230,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AccountResolver
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|ChangeResource
@@ -1573,24 +1589,6 @@ operator|.
 name|change
 operator|.
 name|ChangeData
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|restapi
-operator|.
-name|account
-operator|.
-name|AccountsCollection
 import|;
 end_import
 
@@ -2151,11 +2149,11 @@ specifier|final
 name|PatchListCache
 name|patchListCache
 decl_stmt|;
-DECL|field|accounts
+DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountsCollection
-name|accounts
+name|AccountResolver
+name|accountResolver
 decl_stmt|;
 DECL|field|email
 specifier|private
@@ -2229,7 +2227,7 @@ name|strictLabels
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, ReviewerAdder reviewerAdder, PostReviewersEmail postReviewersEmail, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
+DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountResolver accountResolver, EmailReviewComments.Factory email, CommentAdded commentAdded, ReviewerAdder reviewerAdder, PostReviewersEmail postReviewersEmail, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
 name|PostReview
 parameter_list|(
 name|Provider
@@ -2269,8 +2267,8 @@ parameter_list|,
 name|PatchListCache
 name|patchListCache
 parameter_list|,
-name|AccountsCollection
-name|accounts
+name|AccountResolver
+name|accountResolver
 parameter_list|,
 name|EmailReviewComments
 operator|.
@@ -2370,9 +2368,9 @@ name|cmUtil
 expr_stmt|;
 name|this
 operator|.
-name|accounts
+name|accountResolver
 operator|=
-name|accounts
+name|accountResolver
 expr_stmt|;
 name|this
 operator|.
@@ -4094,7 +4092,7 @@ block|}
 name|IdentifiedUser
 name|reviewer
 init|=
-name|accounts
+name|accountResolver
 operator|.
 name|parseOnBehalfOf
 argument_list|(
