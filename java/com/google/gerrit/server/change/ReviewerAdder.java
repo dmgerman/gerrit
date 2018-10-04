@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.restapi.change
+DECL|package|com.google.gerrit.server.change
 package|package
 name|com
 operator|.
@@ -61,8 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|server
-operator|.
-name|restapi
 operator|.
 name|change
 package|;
@@ -632,54 +630,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
-operator|.
-name|ChangeMessages
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|NotifyUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|RevisionResource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|GerritServerConfig
@@ -937,16 +887,6 @@ operator|.
 name|text
 operator|.
 name|MessageFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
 import|;
 end_import
 
@@ -1514,6 +1454,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|ccCurrentUser (CurrentUser user, RevisionResource revision)
+specifier|public
 name|ReviewerAddition
 name|ccCurrentUser
 parameter_list|(
@@ -2566,8 +2507,9 @@ name|AddReviewersOp
 name|op
 decl_stmt|;
 DECL|field|reviewers
+specifier|public
 specifier|final
-name|Set
+name|ImmutableSet
 argument_list|<
 name|Account
 operator|.
@@ -2576,14 +2518,16 @@ argument_list|>
 name|reviewers
 decl_stmt|;
 DECL|field|reviewersByEmail
+specifier|public
 specifier|final
-name|Collection
+name|ImmutableSet
 argument_list|<
 name|Address
 argument_list|>
 name|reviewersByEmail
 decl_stmt|;
 DECL|field|state
+specifier|public
 specifier|final
 name|ReviewerState
 name|state
@@ -2601,6 +2545,7 @@ name|boolean
 name|exactMatchFound
 decl_stmt|;
 DECL|method|ReviewerAddition (String reviewer)
+specifier|private
 name|ReviewerAddition
 parameter_list|(
 name|String
@@ -2646,7 +2591,8 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-DECL|method|ReviewerAddition ( String reviewer, CurrentUser caller, @Nullable Set<Account.Id> reviewers, @Nullable Collection<Address> reviewersByEmail, ReviewerState state, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean exactMatchFound)
+DECL|method|ReviewerAddition ( String reviewer, CurrentUser caller, @Nullable Iterable<Account.Id> reviewers, @Nullable Iterable<Address> reviewersByEmail, ReviewerState state, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean exactMatchFound)
+specifier|private
 name|ReviewerAddition
 parameter_list|(
 name|String
@@ -2657,7 +2603,7 @@ name|caller
 parameter_list|,
 annotation|@
 name|Nullable
-name|Set
+name|Iterable
 argument_list|<
 name|Account
 operator|.
@@ -2667,7 +2613,7 @@ name|reviewers
 parameter_list|,
 annotation|@
 name|Nullable
-name|Collection
+name|Iterable
 argument_list|<
 name|Address
 argument_list|>
@@ -2729,7 +2675,12 @@ operator|.
 name|of
 argument_list|()
 else|:
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
 name|reviewers
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -2739,12 +2690,17 @@ name|reviewersByEmail
 operator|==
 literal|null
 condition|?
-name|ImmutableList
+name|ImmutableSet
 operator|.
 name|of
 argument_list|()
 else|:
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
 name|reviewersByEmail
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -2790,6 +2746,7 @@ name|exactMatchFound
 expr_stmt|;
 block|}
 DECL|method|gatherResults (ChangeData cd)
+specifier|public
 name|void
 name|gatherResults
 parameter_list|(

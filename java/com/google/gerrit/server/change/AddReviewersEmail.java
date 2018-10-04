@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.restapi.change
+DECL|package|com.google.gerrit.server.change
 package|package
 name|com
 operator|.
@@ -61,8 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|server
-operator|.
-name|restapi
 operator|.
 name|change
 package|;
@@ -292,6 +290,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|AddReviewersEmail
+specifier|public
 class|class
 name|AddReviewersEmail
 block|{
@@ -334,6 +333,7 @@ name|addReviewerSenderFactory
 expr_stmt|;
 block|}
 DECL|method|emailReviewers ( IdentifiedUser user, Change change, Collection<Account.Id> added, Collection<Account.Id> copied, Collection<Address> addedByEmail, Collection<Address> copiedByEmail, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean readyForReview)
+specifier|public
 name|void
 name|emailReviewers
 parameter_list|(
