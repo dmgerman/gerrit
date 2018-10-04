@@ -466,6 +466,8 @@ name|toSort
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|OrmException
 block|{
 specifier|final
 name|List
@@ -630,11 +632,11 @@ name|n
 operator|.
 name|setStatusMessage
 argument_list|(
-name|String
+name|CommitMergeStatus
 operator|.
-name|format
+name|createMissingDependencyMessage
 argument_list|(
-literal|"Commit %s depends on commit %s which cannot be merged."
+name|queryProvider
 argument_list|,
 name|n
 operator|.

@@ -2734,6 +2734,16 @@ operator|.
 name|name
 argument_list|()
 operator|+
+literal|" of change "
+operator|+
+name|change2
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+operator|+
 literal|" which cannot be merged."
 argument_list|)
 expr_stmt|;
@@ -3487,6 +3497,16 @@ name|getCommit
 argument_list|()
 operator|.
 name|name
+argument_list|()
+operator|+
+literal|" of change "
+operator|+
+name|change2result
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getId
 argument_list|()
 operator|+
 literal|" which cannot be merged."
