@@ -282,6 +282,22 @@ name|server
 operator|.
 name|group
 operator|.
+name|GroupResolver
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
 name|GroupResource
 import|;
 end_import
@@ -467,11 +483,11 @@ argument_list|,
 name|Input
 argument_list|>
 block|{
-DECL|field|groupsCollection
+DECL|field|groupResolver
 specifier|private
 specifier|final
-name|GroupsCollection
-name|groupsCollection
+name|GroupResolver
+name|groupResolver
 decl_stmt|;
 DECL|field|groupsUpdateProvider
 specifier|private
@@ -484,11 +500,11 @@ name|groupsUpdateProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteSubgroups ( GroupsCollection groupsCollection, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
+DECL|method|DeleteSubgroups ( GroupResolver groupResolver, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
 name|DeleteSubgroups
 parameter_list|(
-name|GroupsCollection
-name|groupsCollection
+name|GroupResolver
+name|groupResolver
 parameter_list|,
 annotation|@
 name|UserInitiated
@@ -501,9 +517,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|groupsCollection
+name|groupResolver
 operator|=
-name|groupsCollection
+name|groupResolver
 expr_stmt|;
 name|this
 operator|.
@@ -633,7 +649,7 @@ operator|.
 name|Basic
 name|subgroup
 init|=
-name|groupsCollection
+name|groupResolver
 operator|.
 name|parse
 argument_list|(

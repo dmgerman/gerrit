@@ -746,6 +746,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|group
+operator|.
+name|GroupResolver
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|permissions
 operator|.
 name|PermissionBackendException
@@ -893,24 +909,6 @@ operator|.
 name|project
 operator|.
 name|ProjectState
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|restapi
-operator|.
-name|group
-operator|.
-name|GroupsCollection
 import|;
 end_import
 
@@ -1237,14 +1235,14 @@ name|ProjectsCollection
 argument_list|>
 name|projectsCollection
 decl_stmt|;
-DECL|field|groupsCollection
+DECL|field|groupResolver
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|GroupsCollection
+name|GroupResolver
 argument_list|>
-name|groupsCollection
+name|groupResolver
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1363,7 +1361,7 @@ name|lockManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateProject ( Provider<ProjectsCollection> projectsCollection, Provider<GroupsCollection> groupsCollection, ProjectJson json, PluginSetContext<ProjectCreationValidationListener> projectCreationValidationListeners, GitRepositoryManager repoManager, PluginSetContext<NewProjectCreatedListener> createdListeners, ProjectCache projectCache, GroupBackend groupBackend, ProjectOwnerGroupsProvider.Factory projectOwnerGroups, MetaDataUpdate.User metaDataUpdateFactory, GitReferenceUpdated referenceUpdated, RepositoryConfig repositoryCfg, @GerritPersonIdent PersonIdent serverIdent, Provider<IdentifiedUser> identifiedUser, Provider<PutConfig> putConfig, AllProjectsName allProjects, AllUsersName allUsers, PluginItemContext<ProjectNameLockManager> lockManager)
+DECL|method|CreateProject ( Provider<ProjectsCollection> projectsCollection, Provider<GroupResolver> groupResolver, ProjectJson json, PluginSetContext<ProjectCreationValidationListener> projectCreationValidationListeners, GitRepositoryManager repoManager, PluginSetContext<NewProjectCreatedListener> createdListeners, ProjectCache projectCache, GroupBackend groupBackend, ProjectOwnerGroupsProvider.Factory projectOwnerGroups, MetaDataUpdate.User metaDataUpdateFactory, GitReferenceUpdated referenceUpdated, RepositoryConfig repositoryCfg, @GerritPersonIdent PersonIdent serverIdent, Provider<IdentifiedUser> identifiedUser, Provider<PutConfig> putConfig, AllProjectsName allProjects, AllUsersName allUsers, PluginItemContext<ProjectNameLockManager> lockManager)
 name|CreateProject
 parameter_list|(
 name|Provider
@@ -1374,9 +1372,9 @@ name|projectsCollection
 parameter_list|,
 name|Provider
 argument_list|<
-name|GroupsCollection
+name|GroupResolver
 argument_list|>
-name|groupsCollection
+name|groupResolver
 parameter_list|,
 name|ProjectJson
 name|json
@@ -1456,9 +1454,9 @@ name|projectsCollection
 expr_stmt|;
 name|this
 operator|.
-name|groupsCollection
+name|groupResolver
 operator|=
-name|groupsCollection
+name|groupResolver
 expr_stmt|;
 name|this
 operator|.
@@ -1845,7 +1843,7 @@ name|ownerIds
 operator|.
 name|add
 argument_list|(
-name|groupsCollection
+name|groupResolver
 operator|.
 name|get
 argument_list|()

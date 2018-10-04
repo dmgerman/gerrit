@@ -262,6 +262,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|group
+operator|.
+name|GroupResolver
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|permissions
 operator|.
 name|GlobalPermission
@@ -485,6 +501,12 @@ specifier|final
 name|GroupsCollection
 name|groups
 decl_stmt|;
+DECL|field|groupResolver
+specifier|private
+specifier|final
+name|GroupResolver
+name|groupResolver
+decl_stmt|;
 DECL|field|projects
 specifier|private
 specifier|final
@@ -531,7 +553,7 @@ name|api
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsImpl ( AccountsCollection accounts, GroupsCollection groups, ProjectsCollection projects, Provider<ListGroups> listGroups, Provider<QueryGroups> queryGroups, PermissionBackend permissionBackend, CreateGroup createGroup, GroupApiImpl.Factory api)
+DECL|method|GroupsImpl ( AccountsCollection accounts, GroupsCollection groups, GroupResolver groupResolver, ProjectsCollection projects, Provider<ListGroups> listGroups, Provider<QueryGroups> queryGroups, PermissionBackend permissionBackend, CreateGroup createGroup, GroupApiImpl.Factory api)
 name|GroupsImpl
 parameter_list|(
 name|AccountsCollection
@@ -539,6 +561,9 @@ name|accounts
 parameter_list|,
 name|GroupsCollection
 name|groups
+parameter_list|,
+name|GroupResolver
+name|groupResolver
 parameter_list|,
 name|ProjectsCollection
 name|projects
@@ -578,6 +603,12 @@ operator|.
 name|groups
 operator|=
 name|groups
+expr_stmt|;
+name|this
+operator|.
+name|groupResolver
+operator|=
+name|groupResolver
 expr_stmt|;
 name|this
 operator|.
@@ -944,7 +975,7 @@ name|list
 operator|.
 name|addGroup
 argument_list|(
-name|groups
+name|groupResolver
 operator|.
 name|parse
 argument_list|(
