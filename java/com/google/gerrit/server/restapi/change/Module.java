@@ -2229,7 +2229,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|PostReviewersOp
+name|AddReviewersOp
 operator|.
 name|Factory
 operator|.

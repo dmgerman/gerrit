@@ -1102,13 +1102,13 @@ name|AnonymousUser
 argument_list|>
 name|anonymousProvider
 decl_stmt|;
-DECL|field|postReviewersOpFactory
+DECL|field|addReviewersOpFactory
 specifier|private
 specifier|final
-name|PostReviewersOp
+name|AddReviewersOp
 operator|.
 name|Factory
-name|postReviewersOpFactory
+name|addReviewersOpFactory
 decl_stmt|;
 DECL|field|validator
 specifier|private
@@ -1118,7 +1118,7 @@ name|validator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerAdder ( AccountResolver accountResolver, PermissionBackend permissionBackend, GroupResolver groupResolver, GroupMembers groupMembers, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, @GerritServerConfig Config cfg, ReviewerJson json, NotesMigration migration, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, PostReviewersOp.Factory postReviewersOpFactory, OutgoingEmailValidator validator)
+DECL|method|ReviewerAdder ( AccountResolver accountResolver, PermissionBackend permissionBackend, GroupResolver groupResolver, GroupMembers groupMembers, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, @GerritServerConfig Config cfg, ReviewerJson json, NotesMigration migration, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, AddReviewersOp.Factory addReviewersOpFactory, OutgoingEmailValidator validator)
 name|ReviewerAdder
 parameter_list|(
 name|AccountResolver
@@ -1167,10 +1167,10 @@ name|AnonymousUser
 argument_list|>
 name|anonymousProvider
 parameter_list|,
-name|PostReviewersOp
+name|AddReviewersOp
 operator|.
 name|Factory
-name|postReviewersOpFactory
+name|addReviewersOpFactory
 parameter_list|,
 name|OutgoingEmailValidator
 name|validator
@@ -1250,9 +1250,9 @@ name|anonymousProvider
 expr_stmt|;
 name|this
 operator|.
-name|postReviewersOpFactory
+name|addReviewersOpFactory
 operator|=
-name|postReviewersOpFactory
+name|addReviewersOpFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2562,7 +2562,7 @@ annotation|@
 name|Nullable
 specifier|public
 specifier|final
-name|PostReviewersOp
+name|AddReviewersOp
 name|op
 decl_stmt|;
 DECL|field|reviewers
@@ -2763,7 +2763,7 @@ argument_list|()
 expr_stmt|;
 name|op
 operator|=
-name|postReviewersOpFactory
+name|addReviewersOpFactory
 operator|.
 name|create
 argument_list|(
@@ -2824,7 +2824,7 @@ argument_list|)
 expr_stmt|;
 comment|// Generate result details and fill AccountLoader. This occurs outside
 comment|// the Op because the accounts are in a different table.
-name|PostReviewersOp
+name|AddReviewersOp
 operator|.
 name|Result
 name|opResult

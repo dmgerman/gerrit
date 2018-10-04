@@ -291,9 +291,9 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|PostReviewersEmail
+DECL|class|AddReviewersEmail
 class|class
-name|PostReviewersEmail
+name|AddReviewersEmail
 block|{
 DECL|field|logger
 specifier|private
@@ -317,8 +317,8 @@ name|addReviewerSenderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewersEmail (AddReviewerSender.Factory addReviewerSenderFactory)
-name|PostReviewersEmail
+DECL|method|AddReviewersEmail (AddReviewerSender.Factory addReviewerSenderFactory)
+name|AddReviewersEmail
 parameter_list|(
 name|AddReviewerSender
 operator|.

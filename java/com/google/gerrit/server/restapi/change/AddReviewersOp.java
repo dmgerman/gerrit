@@ -707,10 +707,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|PostReviewersOp
+DECL|class|AddReviewersOp
 specifier|public
 class|class
-name|PostReviewersOp
+name|AddReviewersOp
 implements|implements
 name|BatchUpdateOp
 block|{
@@ -721,7 +721,7 @@ name|Factory
 block|{
 comment|/**      * Create a new op.      *      *<p>Users may be added by account or by email addresses, as determined by {@code accountIds}      * and {@code addresses}. The reviewer state for both accounts and email addresses is determined      * by {@code state}.      *      * @param accountIds account IDs to add.      * @param addresses email addresses to add.      * @param state resulting reviewer state.      * @param notify notification handling.      * @param accountsToNotify additional accounts to notify.      * @return batch update operation.      */
 DECL|method|create ( Set<Account.Id> accountIds, Collection<Address> addresses, ReviewerState state, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
-name|PostReviewersOp
+name|AddReviewersOp
 name|create
 parameter_list|(
 name|Set
@@ -817,7 +817,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|AutoValue_PostReviewersOp_Result
+name|AutoValue_AddReviewersOp_Result
 operator|.
 name|Builder
 argument_list|()
@@ -921,11 +921,11 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|postReviewersEmail
+DECL|field|addReviewersEmail
 specifier|private
 specifier|final
-name|PostReviewersEmail
-name|postReviewersEmail
+name|AddReviewersEmail
+name|addReviewersEmail
 decl_stmt|;
 DECL|field|migration
 specifier|private
@@ -1069,8 +1069,8 @@ name|opResult
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, ProjectCache projectCache, PostReviewersEmail postReviewersEmail, NotesMigration migration, Provider<IdentifiedUser> user, Provider<ReviewDb> dbProvider, @Assisted Set<Account.Id> accountIds, @Assisted Collection<Address> addresses, @Assisted ReviewerState state, @Assisted @Nullable NotifyHandling notify, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
-name|PostReviewersOp
+DECL|method|AddReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, ProjectCache projectCache, AddReviewersEmail addReviewersEmail, NotesMigration migration, Provider<IdentifiedUser> user, Provider<ReviewDb> dbProvider, @Assisted Set<Account.Id> accountIds, @Assisted Collection<Address> addresses, @Assisted ReviewerState state, @Assisted @Nullable NotifyHandling notify, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
+name|AddReviewersOp
 parameter_list|(
 name|ApprovalsUtil
 name|approvalsUtil
@@ -1087,8 +1087,8 @@ parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|PostReviewersEmail
-name|postReviewersEmail
+name|AddReviewersEmail
+name|addReviewersEmail
 parameter_list|,
 name|NotesMigration
 name|migration
@@ -1199,9 +1199,9 @@ name|projectCache
 expr_stmt|;
 name|this
 operator|.
-name|postReviewersEmail
+name|addReviewersEmail
 operator|=
-name|postReviewersEmail
+name|addReviewersEmail
 expr_stmt|;
 name|this
 operator|.
@@ -1664,7 +1664,7 @@ operator|.
 name|build
 argument_list|()
 expr_stmt|;
-name|postReviewersEmail
+name|addReviewersEmail
 operator|.
 name|emailReviewers
 argument_list|(

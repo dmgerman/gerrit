@@ -2175,11 +2175,11 @@ specifier|final
 name|ReviewerAdder
 name|reviewerAdder
 decl_stmt|;
-DECL|field|postReviewersEmail
+DECL|field|addReviewersEmail
 specifier|private
 specifier|final
-name|PostReviewersEmail
-name|postReviewersEmail
+name|AddReviewersEmail
+name|addReviewersEmail
 decl_stmt|;
 DECL|field|migration
 specifier|private
@@ -2227,7 +2227,7 @@ name|strictLabels
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountResolver accountResolver, EmailReviewComments.Factory email, CommentAdded commentAdded, ReviewerAdder reviewerAdder, PostReviewersEmail postReviewersEmail, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
+DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountResolver accountResolver, EmailReviewComments.Factory email, CommentAdded commentAdded, ReviewerAdder reviewerAdder, AddReviewersEmail addReviewersEmail, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
 name|PostReview
 parameter_list|(
 name|Provider
@@ -2281,8 +2281,8 @@ parameter_list|,
 name|ReviewerAdder
 name|reviewerAdder
 parameter_list|,
-name|PostReviewersEmail
-name|postReviewersEmail
+name|AddReviewersEmail
+name|addReviewersEmail
 parameter_list|,
 name|NotesMigration
 name|migration
@@ -2392,9 +2392,9 @@ name|reviewerAdder
 expr_stmt|;
 name|this
 operator|.
-name|postReviewersEmail
+name|addReviewersEmail
 operator|=
-name|postReviewersEmail
+name|addReviewersEmail
 expr_stmt|;
 name|this
 operator|.
@@ -2829,7 +2829,7 @@ operator|.
 name|reviewers
 control|)
 block|{
-comment|// Prevent individual PostReviewersOps from sending one email each. Instead, we call
+comment|// Prevent individual AddReviewersOps from sending one email each. Instead, we call
 comment|// batchEmailReviewers at the very end to send out a single email.
 comment|// TODO(dborowitz): I think this still sends out separate emails if any of input.reviewers
 comment|// specifies explicit accountsToNotify. Unclear whether that's a good thing.
@@ -3493,7 +3493,7 @@ operator|.
 name|isWorkInProgress
 argument_list|()
 decl_stmt|;
-comment|// Sending from PostReviewersOp was suppressed so we can send a single batch email here.
+comment|// Sending from AddReviewersOp was suppressed so we can send a single batch email here.
 name|batchEmailReviewers
 argument_list|(
 name|revision
@@ -3773,7 +3773,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|postReviewersEmail
+name|addReviewersEmail
 operator|.
 name|emailReviewers
 argument_list|(
