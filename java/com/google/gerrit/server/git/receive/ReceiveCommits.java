@@ -9525,7 +9525,7 @@ block|}
 argument_list|,
 name|metaVar
 operator|=
-literal|"EMAIL"
+literal|"USER"
 argument_list|,
 name|usage
 operator|=
@@ -9558,11 +9558,11 @@ literal|"--cc"
 argument_list|,
 name|metaVar
 operator|=
-literal|"EMAIL"
+literal|"USER"
 argument_list|,
 name|usage
 operator|=
-literal|"notify user by CC"
+literal|"add user as CC to changes"
 argument_list|)
 DECL|method|cc (Account.Id id)
 name|void
