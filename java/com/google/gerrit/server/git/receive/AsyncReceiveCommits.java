@@ -76,20 +76,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|collect
-operator|.
-name|SetMultimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|flogger
 operator|.
 name|FluentLogger
@@ -155,22 +141,6 @@ operator|.
 name|restapi
 operator|.
 name|ResourceConflictException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
 import|;
 end_import
 
@@ -313,22 +283,6 @@ operator|.
 name|git
 operator|.
 name|TransferConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|ReviewerStateInternal
 import|;
 end_import
 
@@ -820,7 +774,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ProjectState projectState, IdentifiedUser user, Repository repository, @Nullable MessageSender messageSender, SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
+DECL|method|create ( ProjectState projectState, IdentifiedUser user, Repository repository, @Nullable MessageSender messageSender)
 name|AsyncReceiveCommits
 name|create
 parameter_list|(
@@ -837,16 +791,6 @@ annotation|@
 name|Nullable
 name|MessageSender
 name|messageSender
-parameter_list|,
-name|SetMultimap
-argument_list|<
-name|ReviewerStateInternal
-argument_list|,
-name|Account
-operator|.
-name|Id
-argument_list|>
-name|extraReviewers
 parameter_list|)
 function_decl|;
 block|}
@@ -1298,7 +1242,7 @@ name|allRefsWatcher
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AsyncReceiveCommits ( ReceiveCommits.Factory factory, PermissionBackend permissionBackend, Provider<InternalChangeQuery> queryProvider, @ReceiveCommitsExecutor ExecutorService executor, RequestScopePropagator scopePropagator, ReceiveConfig receiveConfig, TransferConfig transferConfig, Provider<LazyPostReceiveHookChain> lazyPostReceive, ContributorAgreementsChecker contributorAgreements, @Named(TIMEOUT_NAME) long timeoutMillis, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted Repository repo, @Assisted @Nullable MessageSender messageSender, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
+DECL|method|AsyncReceiveCommits ( ReceiveCommits.Factory factory, PermissionBackend permissionBackend, Provider<InternalChangeQuery> queryProvider, @ReceiveCommitsExecutor ExecutorService executor, RequestScopePropagator scopePropagator, ReceiveConfig receiveConfig, TransferConfig transferConfig, Provider<LazyPostReceiveHookChain> lazyPostReceive, ContributorAgreementsChecker contributorAgreements, @Named(TIMEOUT_NAME) long timeoutMillis, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted Repository repo, @Assisted @Nullable MessageSender messageSender)
 name|AsyncReceiveCommits
 parameter_list|(
 name|ReceiveCommits
@@ -1367,18 +1311,6 @@ annotation|@
 name|Nullable
 name|MessageSender
 name|messageSender
-parameter_list|,
-annotation|@
-name|Assisted
-name|SetMultimap
-argument_list|<
-name|ReviewerStateInternal
-argument_list|,
-name|Account
-operator|.
-name|Id
-argument_list|>
-name|extraReviewers
 parameter_list|)
 throws|throws
 name|PermissionBackendException
@@ -1700,8 +1632,6 @@ argument_list|,
 name|receivePack
 argument_list|,
 name|allRefsWatcher
-argument_list|,
-name|extraReviewers
 argument_list|,
 name|messageSender
 argument_list|)
