@@ -112,6 +112,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|CherryPickChangeInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|CommentInfo
 import|;
 end_import
@@ -378,6 +394,16 @@ function_decl|;
 DECL|method|cherryPick (CherryPickInput in)
 name|ChangeApi
 name|cherryPick
+parameter_list|(
+name|CherryPickInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|cherryPickAsInfo (CherryPickInput in)
+name|CherryPickChangeInfo
+name|cherryPickAsInfo
 parameter_list|(
 name|CherryPickInput
 name|in
@@ -904,6 +930,25 @@ DECL|method|cherryPick (CherryPickInput in)
 specifier|public
 name|ChangeApi
 name|cherryPick
+parameter_list|(
+name|CherryPickInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|cherryPickAsInfo (CherryPickInput in)
+specifier|public
+name|CherryPickChangeInfo
+name|cherryPickAsInfo
 parameter_list|(
 name|CherryPickInput
 name|in

@@ -616,6 +616,12 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
+comment|/** Whether any of the files in this commit contains Git conflict markers. */
+DECL|field|containsGitConflicts
+specifier|private
+name|boolean
+name|containsGitConflicts
+decl_stmt|;
 DECL|method|CodeReviewCommit (AnyObjectId id)
 specifier|public
 name|CodeReviewCommit
@@ -700,6 +706,32 @@ name|ofNullable
 argument_list|(
 name|statusMessage
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|containsGitConflicts ()
+specifier|public
+name|boolean
+name|containsGitConflicts
+parameter_list|()
+block|{
+return|return
+name|containsGitConflicts
+return|;
+block|}
+DECL|method|setContainsGitConflicts (boolean hasConflicts)
+specifier|public
+name|void
+name|setContainsGitConflicts
+parameter_list|(
+name|boolean
+name|hasConflicts
+parameter_list|)
+block|{
+name|this
+operator|.
+name|containsGitConflicts
+operator|=
+name|hasConflicts
 expr_stmt|;
 block|}
 DECL|method|getPatchsetId ()

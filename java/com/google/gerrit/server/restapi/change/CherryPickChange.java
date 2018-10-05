@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|auto
+operator|.
+name|value
+operator|.
+name|AutoValue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|common
 operator|.
 name|base
@@ -1068,6 +1082,53 @@ specifier|public
 class|class
 name|CherryPickChange
 block|{
+annotation|@
+name|AutoValue
+DECL|class|Result
+specifier|abstract
+specifier|static
+class|class
+name|Result
+block|{
+DECL|method|create (Change.Id changeId, boolean containsGitConflicts)
+specifier|static
+name|Result
+name|create
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|,
+name|boolean
+name|containsGitConflicts
+parameter_list|)
+block|{
+return|return
+operator|new
+name|AutoValue_CherryPickChange_Result
+argument_list|(
+name|changeId
+argument_list|,
+name|containsGitConflicts
+argument_list|)
+return|;
+block|}
+DECL|method|changeId ()
+specifier|abstract
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|()
+function_decl|;
+DECL|method|containsGitConflicts ()
+specifier|abstract
+name|boolean
+name|containsGitConflicts
+parameter_list|()
+function_decl|;
+block|}
 DECL|field|dbProvider
 specifier|private
 specifier|final
@@ -1326,9 +1387,7 @@ expr_stmt|;
 block|}
 DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, Change change, PatchSet patch, CherryPickInput input, Branch.NameKey dest)
 specifier|public
-name|Change
-operator|.
-name|Id
+name|Result
 name|cherryPick
 parameter_list|(
 name|BatchUpdate
@@ -1405,9 +1464,7 @@ return|;
 block|}
 DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, @Nullable Change sourceChange, @Nullable PatchSet.Id sourcePatchId, Project.NameKey project, ObjectId sourceCommit, CherryPickInput input, Branch.NameKey dest)
 specifier|public
-name|Change
-operator|.
-name|Id
+name|Result
 name|cherryPick
 parameter_list|(
 name|BatchUpdate
@@ -1724,7 +1781,33 @@ throw|;
 block|}
 try|try
 block|{
-name|cherryPickCommit
+name|MergeUtil
+name|mergeUtil
+decl_stmt|;
+if|if
+condition|(
+name|input
+operator|.
+name|allowConflicts
+condition|)
+block|{
+comment|// allowConflicts requires to use content merge
+name|mergeUtil
+operator|=
+name|mergeUtilFactory
+operator|.
+name|create
+argument_list|(
+name|projectState
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// use content merge only if it's configured on the project
+name|mergeUtil
 operator|=
 name|mergeUtilFactory
 operator|.
@@ -1732,6 +1815,11 @@ name|create
 argument_list|(
 name|projectState
 argument_list|)
+expr_stmt|;
+block|}
+name|cherryPickCommit
+operator|=
+name|mergeUtil
 operator|.
 name|createCherryPickFromCommit
 argument_list|(
@@ -1759,6 +1847,10 @@ operator|-
 literal|1
 argument_list|,
 literal|false
+argument_list|,
+name|input
+operator|.
+name|allowConflicts
 argument_list|)
 expr_stmt|;
 name|Change
@@ -1940,7 +2032,7 @@ expr_stmt|;
 name|Change
 operator|.
 name|Id
-name|result
+name|changeId
 decl_stmt|;
 if|if
 condition|(
@@ -1954,7 +2046,7 @@ condition|)
 block|{
 comment|// The change key exists on the destination branch. The cherry pick
 comment|// will be added as a new patch set.
-name|result
+name|changeId
 operator|=
 name|insertPatchSet
 argument_list|(
@@ -2020,7 +2112,7 @@ name|getShortName
 argument_list|()
 expr_stmt|;
 block|}
-name|result
+name|changeId
 operator|=
 name|createNewChange
 argument_list|(
@@ -2086,7 +2178,17 @@ name|execute
 argument_list|()
 expr_stmt|;
 return|return
-name|result
+name|Result
+operator|.
+name|create
+argument_list|(
+name|changeId
+argument_list|,
+name|cherryPickCommit
+operator|.
+name|containsGitConflicts
+argument_list|()
+argument_list|)
 return|;
 block|}
 block|}

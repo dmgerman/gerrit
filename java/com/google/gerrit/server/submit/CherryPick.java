@@ -156,6 +156,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|MethodNotAllowedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -691,6 +707,8 @@ throws|,
 name|IOException
 throws|,
 name|OrmException
+throws|,
+name|MethodNotAllowedException
 block|{
 comment|// If there is only one parent, a cherry-pick can be done by taking the
 comment|// delta relative to that one parent and redoing that on the current merge
@@ -829,6 +847,8 @@ operator|.
 name|rw
 argument_list|,
 literal|0
+argument_list|,
+literal|false
 argument_list|,
 literal|false
 argument_list|)

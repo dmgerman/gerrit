@@ -112,7 +112,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|ChangeInfo
+name|CherryPickChangeInfo
 import|;
 end_import
 
@@ -177,22 +177,6 @@ operator|.
 name|client
 operator|.
 name|Branch
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
 import|;
 end_import
 
@@ -552,7 +536,7 @@ name|CommitResource
 argument_list|,
 name|CherryPickInput
 argument_list|,
-name|ChangeInfo
+name|CherryPickChangeInfo
 argument_list|>
 block|{
 DECL|field|permissionBackend
@@ -659,7 +643,7 @@ annotation|@
 name|Override
 DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, CommitResource rsrc, CherryPickInput input)
 specifier|public
-name|ChangeInfo
+name|CherryPickChangeInfo
 name|applyImpl
 parameter_list|(
 name|BatchUpdate
@@ -841,10 +825,10 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|Change
+name|CherryPickChange
 operator|.
-name|Id
-name|cherryPickedChangeId
+name|Result
+name|cherryPickResult
 init|=
 name|cherryPickChange
 operator|.
@@ -879,7 +863,9 @@ name|refName
 argument_list|)
 argument_list|)
 decl_stmt|;
-return|return
+name|CherryPickChangeInfo
+name|changeInfo
+init|=
 name|json
 operator|.
 name|noOptions
@@ -889,8 +875,31 @@ name|format
 argument_list|(
 name|projectName
 argument_list|,
-name|cherryPickedChangeId
+name|cherryPickResult
+operator|.
+name|changeId
+argument_list|()
+argument_list|,
+name|CherryPickChangeInfo
+operator|::
+operator|new
 argument_list|)
+decl_stmt|;
+name|changeInfo
+operator|.
+name|containsGitConflicts
+operator|=
+name|cherryPickResult
+operator|.
+name|containsGitConflicts
+argument_list|()
+condition|?
+literal|true
+else|:
+literal|null
+expr_stmt|;
+return|return
+name|changeInfo
 return|;
 block|}
 catch|catch
