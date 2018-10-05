@@ -520,6 +520,18 @@ name|Option
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|ParserProperties
+import|;
+end_import
+
 begin_comment
 comment|/** Allows getting archives for Git repositories over SSH using the Git upload-archive protocol. */
 end_comment
@@ -940,6 +952,16 @@ operator|new
 name|CmdLineParser
 argument_list|(
 name|options
+argument_list|,
+name|ParserProperties
+operator|.
+name|defaults
+argument_list|()
+operator|.
+name|withAtSyntax
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|parser

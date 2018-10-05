@@ -264,6 +264,18 @@ name|Option
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|ParserProperties
+import|;
+end_import
+
 begin_class
 DECL|class|ProtoGen
 specifier|public
@@ -347,6 +359,16 @@ operator|new
 name|CmdLineParser
 argument_list|(
 name|this
+argument_list|,
+name|ParserProperties
+operator|.
+name|defaults
+argument_list|()
+operator|.
+name|withAtSyntax
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 decl_stmt|;
 try|try
