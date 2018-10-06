@@ -2903,10 +2903,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|record (long value, TimeUnit unit)
-specifier|public
+DECL|method|doRecord (long value, TimeUnit unit)
+specifier|protected
 name|void
-name|record
+name|doRecord
 parameter_list|(
 name|long
 name|value

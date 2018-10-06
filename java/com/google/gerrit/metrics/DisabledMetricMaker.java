@@ -392,9 +392,9 @@ argument_list|)
 block|{
 annotation|@
 name|Override
-specifier|public
+specifier|protected
 name|void
-name|record
+name|doRecord
 parameter_list|(
 name|long
 name|value
@@ -451,9 +451,9 @@ argument_list|)
 block|{
 annotation|@
 name|Override
-specifier|public
+specifier|protected
 name|void
-name|record
+name|doRecord
 parameter_list|(
 name|F1
 name|field1
@@ -525,9 +525,9 @@ argument_list|)
 block|{
 annotation|@
 name|Override
-specifier|public
+specifier|protected
 name|void
-name|record
+name|doRecord
 parameter_list|(
 name|F1
 name|field1
@@ -614,9 +614,9 @@ argument_list|)
 block|{
 annotation|@
 name|Override
-specifier|public
+specifier|protected
 name|void
-name|record
+name|doRecord
 parameter_list|(
 name|F1
 name|field1
