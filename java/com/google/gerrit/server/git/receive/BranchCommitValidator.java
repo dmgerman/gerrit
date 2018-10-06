@@ -744,7 +744,7 @@ argument_list|)
 argument_list|,
 name|m
 operator|.
-name|isError
+name|getType
 argument_list|()
 argument_list|)
 argument_list|)
@@ -804,7 +804,7 @@ argument_list|)
 argument_list|,
 name|m
 operator|.
-name|isError
+name|getType
 argument_list|()
 argument_list|)
 argument_list|)
