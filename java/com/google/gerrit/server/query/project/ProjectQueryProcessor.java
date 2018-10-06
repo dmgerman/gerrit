@@ -498,6 +498,27 @@ name|start
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|formatForLogging (ProjectData projectData)
+specifier|protected
+name|String
+name|formatForLogging
+parameter_list|(
+name|ProjectData
+name|projectData
+parameter_list|)
+block|{
+return|return
+name|projectData
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

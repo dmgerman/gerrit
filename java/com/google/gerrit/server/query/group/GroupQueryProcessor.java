@@ -508,6 +508,27 @@ name|start
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|formatForLogging (InternalGroup internalGroup)
+specifier|protected
+name|String
+name|formatForLogging
+parameter_list|(
+name|InternalGroup
+name|internalGroup
+parameter_list|)
+block|{
+return|return
+name|internalGroup
+operator|.
+name|getGroupUUID
+argument_list|()
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

@@ -949,6 +949,27 @@ name|start
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|formatForLogging (ChangeData changeData)
+specifier|protected
+name|String
+name|formatForLogging
+parameter_list|(
+name|ChangeData
+name|changeData
+parameter_list|)
+block|{
+return|return
+name|changeData
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
