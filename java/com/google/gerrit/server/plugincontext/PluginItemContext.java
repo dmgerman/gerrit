@@ -287,6 +287,22 @@ operator|=
 name|pluginMetrics
 expr_stmt|;
 block|}
+comment|/**    * Checks if an implementation for this extension point has been registered.    *    * @return {@code true} if an implementation for this extension point has been registered,    *     otherwise {@code false}    */
+DECL|method|hasImplementation ()
+specifier|public
+name|boolean
+name|hasImplementation
+parameter_list|()
+block|{
+return|return
+name|dynamicItem
+operator|.
+name|getEntry
+argument_list|()
+operator|!=
+literal|null
+return|;
+block|}
 comment|/**    * Returns the name of the plugin that registered the extension.    *    * @return the plugin name, {@code null} if no implementation is registered for this extension    *     point    */
 annotation|@
 name|Nullable

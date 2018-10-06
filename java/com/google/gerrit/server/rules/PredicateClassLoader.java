@@ -102,11 +102,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|registration
+name|plugincontext
 operator|.
-name|DynamicSet
+name|PluginSetContext
 import|;
 end_import
 
@@ -148,12 +148,11 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-DECL|method|PredicateClassLoader ( final DynamicSet<PredicateProvider> predicateProviders, ClassLoader parent)
+DECL|method|PredicateClassLoader ( PluginSetContext<PredicateProvider> predicateProviders, ClassLoader parent)
 specifier|public
 name|PredicateClassLoader
 parameter_list|(
-specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|PredicateProvider
 argument_list|>
@@ -168,13 +167,12 @@ argument_list|(
 name|parent
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|PredicateProvider
-name|predicateProvider
-range|:
 name|predicateProviders
-control|)
+operator|.
+name|runEach
+argument_list|(
+name|predicateProvider
+lambda|->
 block|{
 for|for
 control|(
@@ -204,6 +202,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override

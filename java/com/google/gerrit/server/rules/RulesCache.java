@@ -132,22 +132,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
-name|DynamicSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -233,6 +217,22 @@ operator|.
 name|git
 operator|.
 name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
 import|;
 end_import
 
@@ -813,7 +813,7 @@ decl_stmt|;
 DECL|field|predicateProviders
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|PredicateProvider
 argument_list|>
@@ -844,7 +844,7 @@ name|machineCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RulesCache ( @erritServerConfig Config config, SitePaths site, GitRepositoryManager gm, DynamicSet<PredicateProvider> predicateProviders, @Named(CACHE_NAME) Cache<ObjectId, PrologMachineCopy> machineCache)
+DECL|method|RulesCache ( @erritServerConfig Config config, SitePaths site, GitRepositoryManager gm, PluginSetContext<PredicateProvider> predicateProviders, @Named(CACHE_NAME) Cache<ObjectId, PrologMachineCopy> machineCache)
 specifier|protected
 name|RulesCache
 parameter_list|(
@@ -859,7 +859,7 @@ parameter_list|,
 name|GitRepositoryManager
 name|gm
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|PredicateProvider
 argument_list|>
@@ -1962,14 +1962,12 @@ argument_list|(
 name|PACKAGE_LIST
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|PredicateProvider
-name|predicateProvider
-range|:
 name|predicateProviders
-control|)
-block|{
+operator|.
+name|runEach
+argument_list|(
+name|predicateProvider
+lambda|->
 name|packages
 operator|.
 name|addAll
@@ -1979,8 +1977,8 @@ operator|.
 name|getPackages
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 comment|// Bootstrap the interpreter and ensure there is clean state.
 name|ctl
 operator|.
