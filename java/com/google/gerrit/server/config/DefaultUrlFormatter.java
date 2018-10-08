@@ -172,6 +172,7 @@ block|}
 annotation|@
 name|Inject
 DECL|method|DefaultUrlFormatter (@anonicalWebUrl Provider<String> canonicalWebUrlProvider)
+specifier|public
 name|DefaultUrlFormatter
 parameter_list|(
 annotation|@
