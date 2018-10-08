@@ -195,6 +195,12 @@ parameter_list|()
 block|{
 return|return
 name|username
+operator|!=
+literal|null
+condition|?
+name|username
+else|:
+name|email
 return|;
 block|}
 DECL|method|ReviewerInfo ()
