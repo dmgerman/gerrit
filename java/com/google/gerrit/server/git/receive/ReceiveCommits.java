@@ -1542,6 +1542,26 @@ name|server
 operator|.
 name|git
 operator|.
+name|receive
+operator|.
+name|ResultChangeIds
+operator|.
+name|Key
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|validators
 operator|.
 name|CommitValidationMessage
@@ -2958,7 +2978,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ProjectState projectState, IdentifiedUser user, ReceivePack receivePack, AllRefsWatcher allRefsWatcher, MessageSender messageSender)
+DECL|method|create ( ProjectState projectState, IdentifiedUser user, ReceivePack receivePack, AllRefsWatcher allRefsWatcher, MessageSender messageSender, ResultChangeIds resultChangeIds)
 name|ReceiveCommits
 name|create
 parameter_list|(
@@ -2976,6 +2996,9 @@ name|allRefsWatcher
 parameter_list|,
 name|MessageSender
 name|messageSender
+parameter_list|,
+name|ResultChangeIds
+name|resultChangeIds
 parameter_list|)
 function_decl|;
 block|}
@@ -3612,9 +3635,14 @@ specifier|private
 name|MessageSender
 name|messageSender
 decl_stmt|;
+DECL|field|resultChangeIds
+specifier|private
+name|ResultChangeIds
+name|resultChangeIds
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender, @Assisted ResultChangeIds resultChangeIds)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -3785,6 +3813,11 @@ annotation|@
 name|Assisted
 name|MessageSender
 name|messageSender
+parameter_list|,
+annotation|@
+name|Assisted
+name|ResultChangeIds
+name|resultChangeIds
 parameter_list|)
 throws|throws
 name|IOException
@@ -4168,6 +4201,12 @@ else|:
 operator|new
 name|ReceivePackMessageSender
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|resultChangeIds
+operator|=
+name|resultChangeIds
 expr_stmt|;
 block|}
 DECL|method|init ()
@@ -6184,6 +6223,55 @@ name|e
 argument_list|)
 throw|;
 block|}
+name|replaceByChange
+operator|.
+name|values
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|forEach
+argument_list|(
+name|req
+lambda|->
+name|resultChangeIds
+operator|.
+name|add
+argument_list|(
+name|Key
+operator|.
+name|REPLACED
+argument_list|,
+name|req
+operator|.
+name|ontoChange
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|newChanges
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|forEach
+argument_list|(
+name|req
+lambda|->
+name|resultChangeIds
+operator|.
+name|add
+argument_list|(
+name|Key
+operator|.
+name|CREATED
+argument_list|,
+name|req
+operator|.
+name|changeId
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|magicBranchCmd
@@ -19021,6 +19109,19 @@ operator|.
 name|getRefName
 argument_list|()
 decl_stmt|;
+name|Set
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|>
+name|ids
+init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|()
+decl_stmt|;
 comment|// TODO(dborowitz): Combine this BatchUpdate with the main one in
 comment|// handleRegularCommands
 try|try
@@ -19539,6 +19640,13 @@ name|progress
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ids
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 block|}
 name|logger
 operator|.
@@ -19585,7 +19693,34 @@ argument_list|(
 literal|"Failed to auto-close changes"
 argument_list|)
 expr_stmt|;
+return|return
+literal|null
+return|;
 block|}
+comment|// If we are here, we didn't throw UpdateException. Record the result.
+comment|// The ordering is indeterminate due to the HashSet; unfortunately, Change.Id doesn't
+comment|// fit into TreeSet.
+name|ids
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|forEach
+argument_list|(
+name|id
+lambda|->
+name|resultChangeIds
+operator|.
+name|add
+argument_list|(
+name|Key
+operator|.
+name|AUTOCLOSED
+argument_list|,
+name|id
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
