@@ -230,43 +230,9 @@ name|extensions
 operator|.
 name|api
 operator|.
-name|changes
-operator|.
-name|SubmitInput
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|api
-operator|.
 name|projects
 operator|.
 name|BranchInput
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|client
-operator|.
-name|ChangeStatus
 import|;
 end_import
 
@@ -4091,10 +4057,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|dependencyOnHiddenChangeShouldPreventMergeButDoesnt ()
+DECL|method|dependencyOnHiddenChangePreventsMerge ()
 specifier|public
 name|void
-name|dependencyOnHiddenChangeShouldPreventMergeButDoesnt
+name|dependencyOnHiddenChangePreventsMerge
 parameter_list|()
 throws|throws
 name|Exception
@@ -4298,94 +4264,58 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Submit the second change which has a dependency on the first change which is not visible to
-comment|// the user. We would expect the submit to fail, but instead the submit succeeds and the hidden
-comment|// change gets submitted too.
-comment|// TODO(ekempin): Make this submit fail.
-name|gApi
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|id
+comment|// Submit is expected to fail.
+name|submitWithConflict
 argument_list|(
 name|change2Result
 operator|.
 name|getChangeId
 argument_list|()
-argument_list|)
+argument_list|,
+literal|"Failed to submit 1 change due to the following problems:\n"
+operator|+
+literal|"Change "
+operator|+
+name|change2Result
 operator|.
-name|current
+name|getChange
 argument_list|()
 operator|.
-name|submit
-argument_list|(
-operator|new
-name|SubmitInput
+name|getId
 argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// Verify that both changes have been submitted.
-name|setApiUser
-argument_list|(
-name|admin
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|gApi
+operator|+
+literal|": Depends on change that was not submitted."
+operator|+
+literal|" Commit "
+operator|+
+name|change2Result
 operator|.
-name|changes
+name|getCommit
 argument_list|()
 operator|.
-name|id
-argument_list|(
+name|name
+argument_list|()
+operator|+
+literal|" depends on commit "
+operator|+
 name|changeResult
 operator|.
-name|getChangeId
-argument_list|()
-argument_list|)
-operator|.
-name|get
+name|getCommit
 argument_list|()
 operator|.
-name|status
-argument_list|)
-operator|.
-name|isEqualTo
-argument_list|(
-name|ChangeStatus
-operator|.
-name|MERGED
+name|name
+argument_list|()
+operator|+
+literal|" which cannot be merged."
+operator|+
+literal|" Is the change of this commit not visible or was it deleted?"
 argument_list|)
 expr_stmt|;
-name|assertThat
-argument_list|(
-name|gApi
-operator|.
-name|changes
+name|assertRefUpdatedEvents
 argument_list|()
-operator|.
-name|id
-argument_list|(
-name|change2Result
-operator|.
-name|getChangeId
+expr_stmt|;
+name|assertChangeMergedEvents
 argument_list|()
-argument_list|)
-operator|.
-name|get
-argument_list|()
-operator|.
-name|status
-argument_list|)
-operator|.
-name|isEqualTo
-argument_list|(
-name|ChangeStatus
-operator|.
-name|MERGED
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
