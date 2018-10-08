@@ -420,14 +420,14 @@ operator|=
 name|emails
 expr_stmt|;
 block|}
-comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format "Full Name&lt;email@example&gt;", just the email    *     address ("email@example"), a full name ("Full Name"), an account id ("18419") or an user    *     name ("username").    * @return the single account that matches; null if no account matches or there are multiple    *     candidates.    */
-DECL|method|find (String nameOrEmail)
+comment|/**    * Locate exactly one account matching the input string.    *    * @param input a string of the format "Full Name&lt;email@example&gt;", just the email address    *     ("email@example"), a full name ("Full Name"), an account id ("18419") or an user name    *     ("username").    * @return the single account that matches; null if no account matches or there are multiple    *     candidates. If {@code input} is a numeric string, returns an account if and only if that    *     number corresponds to an actual account.    */
+DECL|method|find (String input)
 specifier|public
 name|Account
 name|find
 parameter_list|(
 name|String
-name|nameOrEmail
+name|input
 parameter_list|)
 throws|throws
 name|OrmException
@@ -446,7 +446,7 @@ name|r
 init|=
 name|findAll
 argument_list|(
-name|nameOrEmail
+name|input
 argument_list|)
 decl_stmt|;
 if|if
@@ -564,8 +564,8 @@ return|return
 name|match
 return|;
 block|}
-comment|/**    * Find all accounts matching the name or name/email string.    *    * @param nameOrEmail a string of the format "Full Name&lt;email@example&gt;", just the email    *     address ("email@example"), a full name ("Full Name"), an account id ("18419") or an user    *     name ("username").    * @return the accounts that match, empty collection if none. Never null.    */
-DECL|method|findAll (String nameOrEmail)
+comment|/**    * Find all accounts matching the input string.    *    * @param input a string of the format "Full Name&lt;email@example&gt;", just the email address    *     ("email@example"), a full name ("Full Name"), an account id ("18419") or an user name    *     ("username").    * @return the accounts that match, empty set if none. Never null. If {@code input} is a numeric    *     string, returns a singleton set if that number corresponds to a real account, and an empty    *     set otherwise if it does not.    */
+DECL|method|findAll (String input)
 specifier|public
 name|Set
 argument_list|<
@@ -576,7 +576,7 @@ argument_list|>
 name|findAll
 parameter_list|(
 name|String
-name|nameOrEmail
+name|input
 parameter_list|)
 throws|throws
 name|OrmException
@@ -597,7 +597,7 @@ argument_list|)
 operator|.
 name|matcher
 argument_list|(
-name|nameOrEmail
+name|input
 argument_list|)
 decl_stmt|;
 if|if
@@ -677,7 +677,7 @@ block|}
 block|}
 if|if
 condition|(
-name|nameOrEmail
+name|input
 operator|.
 name|matches
 argument_list|(
@@ -699,7 +699,7 @@ name|Id
 operator|.
 name|tryParse
 argument_list|(
-name|nameOrEmail
+name|input
 argument_list|)
 decl_stmt|;
 if|if
@@ -753,7 +753,7 @@ name|ExternalId
 operator|.
 name|isValidUsername
 argument_list|(
-name|nameOrEmail
+name|input
 argument_list|)
 condition|)
 block|{
@@ -767,7 +767,7 @@ name|byId
 operator|.
 name|getByUsername
 argument_list|(
-name|nameOrEmail
+name|input
 argument_list|)
 decl_stmt|;
 if|if
@@ -807,7 +807,7 @@ block|}
 return|return
 name|findAllByNameOrEmail
 argument_list|(
-name|nameOrEmail
+name|input
 argument_list|)
 return|;
 block|}
@@ -1168,6 +1168,8 @@ return|;
 block|}
 comment|// At this point we have no clue. Just perform a whole bunch of suggestions
 comment|// and pray we come up with a reasonable result list.
+comment|// TODO(dborowitz): This doesn't match the documentation; consider whether it's possible to be
+comment|// more strict here.
 return|return
 name|accountQueryProvider
 operator|.

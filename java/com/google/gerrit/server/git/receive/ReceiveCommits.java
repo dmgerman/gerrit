@@ -9436,16 +9436,16 @@ literal|"USER"
 argument_list|,
 name|usage
 operator|=
-literal|"user that should be notified"
+literal|"user that should be notified one time by email"
 argument_list|)
-DECL|field|tos
+DECL|field|notifyTo
 name|List
 argument_list|<
 name|Account
 operator|.
 name|Id
 argument_list|>
-name|tos
+name|notifyTo
 init|=
 operator|new
 name|ArrayList
@@ -9465,16 +9465,16 @@ literal|"USER"
 argument_list|,
 name|usage
 operator|=
-literal|"user that should be CC'd"
+literal|"user that should be CC'd one time by email"
 argument_list|)
-DECL|field|ccs
+DECL|field|notifyCc
 name|List
 argument_list|<
 name|Account
 operator|.
 name|Id
 argument_list|>
-name|ccs
+name|notifyCc
 init|=
 operator|new
 name|ArrayList
@@ -9494,16 +9494,16 @@ literal|"USER"
 argument_list|,
 name|usage
 operator|=
-literal|"user that should be BCC'd"
+literal|"user that should be BCC'd one time by email"
 argument_list|)
-DECL|field|bccs
+DECL|field|notifyBcc
 name|List
 argument_list|<
 name|Account
 operator|.
 name|Id
 argument_list|>
-name|bccs
+name|notifyBcc
 init|=
 operator|new
 name|ArrayList
@@ -9525,7 +9525,7 @@ block|}
 argument_list|,
 name|metaVar
 operator|=
-literal|"EMAIL"
+literal|"USER"
 argument_list|,
 name|usage
 operator|=
@@ -9558,11 +9558,11 @@ literal|"--cc"
 argument_list|,
 name|metaVar
 operator|=
-literal|"EMAIL"
+literal|"USER"
 argument_list|,
 name|usage
 operator|=
-literal|"notify user by CC"
+literal|"add user as CC to changes"
 argument_list|)
 DECL|method|cc (Account.Id id)
 name|void
@@ -10013,7 +10013,7 @@ name|RecipientType
 operator|.
 name|TO
 argument_list|,
-name|tos
+name|notifyTo
 argument_list|)
 expr_stmt|;
 name|accountsToNotify
@@ -10024,7 +10024,7 @@ name|RecipientType
 operator|.
 name|CC
 argument_list|,
-name|ccs
+name|notifyCc
 argument_list|)
 expr_stmt|;
 name|accountsToNotify
@@ -10035,7 +10035,7 @@ name|RecipientType
 operator|.
 name|BCC
 argument_list|,
-name|bccs
+name|notifyBcc
 argument_list|)
 expr_stmt|;
 return|return
