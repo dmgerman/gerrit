@@ -1445,6 +1445,8 @@ name|alreadyAccepted
 argument_list|,
 name|canMergeFlag
 argument_list|,
+name|queryProvider
+argument_list|,
 name|incoming
 argument_list|)
 expr_stmt|;

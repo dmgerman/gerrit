@@ -258,9 +258,39 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|InternalChangeQuery
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
 import|;
 end_import
 
@@ -739,9 +769,18 @@ operator|.
 name|Factory
 name|mergeUtilFactory
 decl_stmt|;
+DECL|field|queryProvider
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|InternalChangeQuery
+argument_list|>
+name|queryProvider
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitDryRun (ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory)
+DECL|method|SubmitDryRun ( ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, Provider<InternalChangeQuery> queryProvider)
 name|SubmitDryRun
 parameter_list|(
 name|ProjectCache
@@ -751,6 +790,12 @@ name|MergeUtil
 operator|.
 name|Factory
 name|mergeUtilFactory
+parameter_list|,
+name|Provider
+argument_list|<
+name|InternalChangeQuery
+argument_list|>
+name|queryProvider
 parameter_list|)
 block|{
 name|this
@@ -764,6 +809,12 @@ operator|.
 name|mergeUtilFactory
 operator|=
 name|mergeUtilFactory
+expr_stmt|;
+name|this
+operator|.
+name|queryProvider
+operator|=
+name|queryProvider
 expr_stmt|;
 block|}
 DECL|method|run ( SubmitType submitType, Repository repo, CodeReviewRevWalk rw, Branch.NameKey destBranch, ObjectId tip, ObjectId toMerge, Set<RevCommit> alreadyAccepted)
@@ -869,6 +920,8 @@ argument_list|,
 name|alreadyAccepted
 argument_list|,
 name|canMerge
+argument_list|,
+name|queryProvider
 argument_list|,
 name|ImmutableSet
 operator|.
