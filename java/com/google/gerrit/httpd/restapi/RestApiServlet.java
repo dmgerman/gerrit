@@ -10194,10 +10194,15 @@ name|uri
 operator|+=
 literal|"?"
 operator|+
+name|LogRedactUtil
+operator|.
+name|redactQueryString
+argument_list|(
 name|req
 operator|.
 name|getQueryString
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 name|logger
