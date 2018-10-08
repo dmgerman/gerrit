@@ -2713,6 +2713,28 @@ operator|+
 literal|": Depends on change that"
 operator|+
 literal|" was not submitted."
+operator|+
+literal|" Commit "
+operator|+
+name|change3a
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|" depends on commit "
+operator|+
+name|change2
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|" which cannot be merged."
 argument_list|)
 expr_stmt|;
 name|RevCommit
@@ -3446,6 +3468,28 @@ name|get
 argument_list|()
 operator|+
 literal|": Depends on change that was not submitted."
+operator|+
+literal|" Commit "
+operator|+
+name|change3
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|" depends on commit "
+operator|+
+name|change2result
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|" which cannot be merged."
 argument_list|)
 expr_stmt|;
 name|assertRefUpdatedEvents

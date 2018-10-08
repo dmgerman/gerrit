@@ -182,34 +182,34 @@ operator|+
 literal|"Project policy requires all commits to contain modifications to at least one file."
 argument_list|)
 block|;
-DECL|field|message
+DECL|field|description
 specifier|private
 specifier|final
 name|String
-name|message
+name|description
 decl_stmt|;
-DECL|method|CommitMergeStatus (String message)
+DECL|method|CommitMergeStatus (String description)
 name|CommitMergeStatus
 parameter_list|(
 name|String
-name|message
+name|description
 parameter_list|)
 block|{
 name|this
 operator|.
-name|message
+name|description
 operator|=
-name|message
+name|description
 expr_stmt|;
 block|}
-DECL|method|getMessage ()
+DECL|method|getDescription ()
 specifier|public
 name|String
-name|getMessage
+name|getDescription
 parameter_list|()
 block|{
 return|return
-name|message
+name|description
 return|;
 block|}
 block|}

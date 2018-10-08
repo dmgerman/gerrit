@@ -2688,7 +2688,7 @@ name|CommitMergeStatus
 operator|.
 name|SKIPPED_IDENTICAL_TREE
 operator|.
-name|getMessage
+name|getDescription
 argument_list|()
 argument_list|)
 expr_stmt|;
