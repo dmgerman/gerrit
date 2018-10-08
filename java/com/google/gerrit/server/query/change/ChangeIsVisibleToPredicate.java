@@ -308,6 +308,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Provider
 import|;
 end_import
@@ -403,6 +415,8 @@ name|AnonymousUser
 argument_list|>
 name|anonymousUserProvider
 decl_stmt|;
+annotation|@
+name|Inject
 DECL|method|ChangeIsVisibleToPredicate ( Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, CurrentUser user, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<AnonymousUser> anonymousUserProvider)
 specifier|public
 name|ChangeIsVisibleToPredicate
