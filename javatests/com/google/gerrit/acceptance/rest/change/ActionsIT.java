@@ -400,7 +400,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ChangeJson
+name|RevisionJson
 import|;
 end_import
 
@@ -556,14 +556,14 @@ name|submitWholeTopicEnabledConfig
 argument_list|()
 return|;
 block|}
-DECL|field|changeJsonFactory
+DECL|field|revisionJsonFactory
 annotation|@
 name|Inject
 specifier|private
-name|ChangeJson
+name|RevisionJson
 operator|.
 name|Factory
-name|changeJsonFactory
+name|revisionJsonFactory
 decl_stmt|;
 DECL|field|actionVisitors
 annotation|@
@@ -2628,7 +2628,7 @@ argument_list|,
 name|changeId
 argument_list|)
 decl_stmt|;
-name|changeJsonFactory
+name|revisionJsonFactory
 operator|.
 name|create
 argument_list|(

@@ -312,6 +312,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|change
+operator|.
+name|RevisionJson
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchListNotAvailableException
@@ -553,15 +569,28 @@ operator|.
 name|Factory
 name|changeJsonFactory
 decl_stmt|;
+DECL|field|revisionJsonFactory
+specifier|private
+specifier|final
+name|RevisionJson
+operator|.
+name|Factory
+name|revisionJsonFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventUtil ( ChangeJson.Factory changeJsonFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db)
+DECL|method|EventUtil ( ChangeJson.Factory changeJsonFactory, RevisionJson.Factory revisionJsonFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db)
 name|EventUtil
 parameter_list|(
 name|ChangeJson
 operator|.
 name|Factory
 name|changeJsonFactory
+parameter_list|,
+name|RevisionJson
+operator|.
+name|Factory
+name|revisionJsonFactory
 parameter_list|,
 name|ChangeData
 operator|.
@@ -592,6 +621,12 @@ operator|.
 name|changeJsonFactory
 operator|=
 name|changeJsonFactory
+expr_stmt|;
+name|this
+operator|.
+name|revisionJsonFactory
+operator|=
+name|revisionJsonFactory
 expr_stmt|;
 block|}
 DECL|method|changeInfo (Change change)
@@ -701,7 +736,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
-name|changeJsonFactory
+name|revisionJsonFactory
 operator|.
 name|create
 argument_list|(

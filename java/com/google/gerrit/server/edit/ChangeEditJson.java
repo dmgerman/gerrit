@@ -218,7 +218,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ChangeJson
+name|RevisionJson
 import|;
 end_import
 
@@ -730,7 +730,7 @@ argument_list|,
 name|fetchInfo
 argument_list|)
 expr_stmt|;
-name|ChangeJson
+name|RevisionJson
 operator|.
 name|populateFetchMap
 argument_list|(

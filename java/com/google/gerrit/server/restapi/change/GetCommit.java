@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -160,7 +174,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ChangeJson
+name|RevisionJson
 import|;
 end_import
 
@@ -318,7 +332,7 @@ decl_stmt|;
 DECL|field|json
 specifier|private
 specifier|final
-name|ChangeJson
+name|RevisionJson
 operator|.
 name|Factory
 name|json
@@ -330,13 +344,13 @@ name|addLinks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetCommit (GitRepositoryManager repoManager, ChangeJson.Factory json)
+DECL|method|GetCommit (GitRepositoryManager repoManager, RevisionJson.Factory json)
 name|GetCommit
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
-name|ChangeJson
+name|RevisionJson
 operator|.
 name|Factory
 name|json
@@ -477,8 +491,13 @@ name|info
 init|=
 name|json
 operator|.
-name|noOptions
+name|create
+argument_list|(
+name|ImmutableSet
+operator|.
+name|of
 argument_list|()
+argument_list|)
 operator|.
 name|toCommit
 argument_list|(
