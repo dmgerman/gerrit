@@ -499,7 +499,7 @@ name|of
 argument_list|()
 argument_list|)
 operator|.
-name|toCommit
+name|getCommitInfo
 argument_list|(
 name|rsrc
 operator|.

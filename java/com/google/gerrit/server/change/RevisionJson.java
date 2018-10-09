@@ -1543,10 +1543,10 @@ name|rev
 return|;
 block|}
 block|}
-DECL|method|toCommit ( Project.NameKey project, RevWalk rw, RevCommit commit, boolean addLinks, boolean fillCommit)
+DECL|method|getCommitInfo ( Project.NameKey project, RevWalk rw, RevCommit commit, boolean addLinks, boolean fillCommit)
 specifier|public
 name|CommitInfo
-name|toCommit
+name|getCommitInfo
 parameter_list|(
 name|Project
 operator|.
@@ -2433,7 +2433,7 @@ name|out
 operator|.
 name|commit
 operator|=
-name|toCommit
+name|getCommitInfo
 argument_list|(
 name|project
 argument_list|,

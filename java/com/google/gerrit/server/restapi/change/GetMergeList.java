@@ -697,7 +697,7 @@ name|add
 argument_list|(
 name|changeJson
 operator|.
-name|toCommit
+name|getCommitInfo
 argument_list|(
 name|rsrc
 operator|.
