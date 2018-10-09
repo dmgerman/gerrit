@@ -134,7 +134,6 @@ name|prefix
 return|;
 block|}
 block|}
-empty_stmt|;
 DECL|field|message
 specifier|private
 specifier|final
