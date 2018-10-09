@@ -1413,15 +1413,6 @@ operator|.
 name|Factory
 name|accountLoaderFactory
 decl_stmt|;
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|cfg
 specifier|private
 specifier|final
@@ -1477,7 +1468,7 @@ name|validator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerAdder ( AccountResolver accountResolver, PermissionBackend permissionBackend, GroupResolver groupResolver, GroupMembers groupMembers, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, @GerritServerConfig Config cfg, ReviewerJson json, NotesMigration migration, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, AddReviewersOp.Factory addReviewersOpFactory, OutgoingEmailValidator validator)
+DECL|method|ReviewerAdder ( AccountResolver accountResolver, PermissionBackend permissionBackend, GroupResolver groupResolver, GroupMembers groupMembers, AccountLoader.Factory accountLoaderFactory, @GerritServerConfig Config cfg, ReviewerJson json, NotesMigration migration, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, AddReviewersOp.Factory addReviewersOpFactory, OutgoingEmailValidator validator)
 name|ReviewerAdder
 parameter_list|(
 name|AccountResolver
@@ -1496,12 +1487,6 @@ name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -1567,12 +1552,6 @@ name|accountLoaderFactory
 expr_stmt|;
 name|this
 operator|.
-name|dbProvider
-operator|=
-name|db
-expr_stmt|;
-name|this
-operator|.
 name|cfg
 operator|=
 name|cfg
@@ -1620,12 +1599,15 @@ operator|=
 name|validator
 expr_stmt|;
 block|}
-comment|/**    * Prepare application of a single {@link AddReviewerInput}.    *    * @param notes change notes.    * @param user user performing the reviewer addition.    * @param input input describing user or group to add as a reviewer.    * @param allowGroup whether to allow    * @return handle describing the addition operation. If the {@code op} field is present, this    *     operation may be added to a {@code BatchUpdate}. Otherwise, the {@code error} field    *     contains information about an error that occurred    * @throws OrmException    * @throws IOException    * @throws PermissionBackendException    * @throws ConfigInvalidException    */
-DECL|method|prepare ( ChangeNotes notes, CurrentUser user, AddReviewerInput input, boolean allowGroup)
+comment|/**    * Prepare application of a single {@link AddReviewerInput}.    *    * @param db database.    * @param notes change notes.    * @param user user performing the reviewer addition.    * @param input input describing user or group to add as a reviewer.    * @param allowGroup whether to allow    * @return handle describing the addition operation. If the {@code op} field is present, this    *     operation may be added to a {@code BatchUpdate}. Otherwise, the {@code error} field    *     contains information about an error that occurred    * @throws OrmException    * @throws IOException    * @throws PermissionBackendException    * @throws ConfigInvalidException    */
+DECL|method|prepare ( ReviewDb db, ChangeNotes notes, CurrentUser user, AddReviewerInput input, boolean allowGroup)
 specifier|public
 name|ReviewerAddition
 name|prepare
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -1647,19 +1629,6 @@ name|PermissionBackendException
 throws|,
 name|ConfigInvalidException
 block|{
-name|Branch
-operator|.
-name|NameKey
-name|dest
-init|=
-name|notes
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getDest
-argument_list|()
-decl_stmt|;
 name|checkNotNull
 argument_list|(
 name|input
@@ -1728,9 +1697,9 @@ name|projectCache
 operator|.
 name|checkedGet
 argument_list|(
-name|dest
+name|notes
 operator|.
-name|getParentKey
+name|getProjectName
 argument_list|()
 argument_list|)
 operator|.
@@ -1746,9 +1715,11 @@ name|byAccountId
 init|=
 name|addByAccountId
 argument_list|(
+name|db
+argument_list|,
 name|input
 argument_list|,
-name|dest
+name|notes
 argument_list|,
 name|user
 argument_list|,
@@ -1780,9 +1751,11 @@ name|wholeGroup
 operator|=
 name|addWholeGroup
 argument_list|(
+name|db
+argument_list|,
 name|input
 argument_list|,
-name|dest
+name|notes
 argument_list|,
 name|user
 argument_list|,
@@ -1836,6 +1809,8 @@ block|}
 return|return
 name|addByEmail
 argument_list|(
+name|db
+argument_list|,
 name|input
 argument_list|,
 name|notes
@@ -1883,6 +1858,11 @@ argument_list|)
 argument_list|,
 name|revision
 operator|.
+name|getNotes
+argument_list|()
+argument_list|,
+name|revision
+operator|.
 name|getUser
 argument_list|()
 argument_list|,
@@ -1909,18 +1889,19 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|addByAccountId ( AddReviewerInput input, Branch.NameKey dest, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean allowGroup, boolean allowByEmail)
+DECL|method|addByAccountId ( ReviewDb db, AddReviewerInput input, ChangeNotes notes, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean allowGroup, boolean allowByEmail)
 specifier|private
 name|ReviewerAddition
 name|addByAccountId
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|AddReviewerInput
 name|input
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
-name|dest
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|CurrentUser
 name|user
@@ -2063,7 +2044,15 @@ if|if
 condition|(
 name|isValidReviewer
 argument_list|(
-name|dest
+name|db
+argument_list|,
+name|notes
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getDest
+argument_list|()
 argument_list|,
 name|reviewerUser
 operator|.
@@ -2077,6 +2066,8 @@ operator|new
 name|ReviewerAddition
 argument_list|(
 name|input
+argument_list|,
+name|notes
 argument_list|,
 name|user
 argument_list|,
@@ -2182,18 +2173,19 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|addWholeGroup ( AddReviewerInput input, Branch.NameKey dest, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean confirmed, boolean allowGroup, boolean allowByEmail)
+DECL|method|addWholeGroup ( ReviewDb db, AddReviewerInput input, ChangeNotes notes, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean confirmed, boolean allowGroup, boolean allowByEmail)
 specifier|private
 name|ReviewerAddition
 name|addWholeGroup
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|AddReviewerInput
 name|input
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
-name|dest
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|CurrentUser
 name|user
@@ -2239,6 +2231,8 @@ name|group
 decl_stmt|;
 try|try
 block|{
+comment|// TODO(dborowitz): This currently doesn't work in the push path because InternalGroupBackend
+comment|// depends on the Provider<CurrentUser> which returns anonymous in that path.
 name|group
 operator|=
 name|groupResolver
@@ -2366,9 +2360,9 @@ operator|.
 name|getGroupUUID
 argument_list|()
 argument_list|,
-name|dest
+name|notes
 operator|.
-name|getParentKey
+name|getProjectName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2532,7 +2526,15 @@ if|if
 condition|(
 name|isValidReviewer
 argument_list|(
-name|dest
+name|db
+argument_list|,
+name|notes
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getDest
+argument_list|()
 argument_list|,
 name|member
 argument_list|)
@@ -2556,6 +2558,8 @@ name|ReviewerAddition
 argument_list|(
 name|input
 argument_list|,
+name|notes
+argument_list|,
 name|user
 argument_list|,
 name|reviewers
@@ -2570,11 +2574,14 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|addByEmail ( AddReviewerInput input, ChangeNotes notes, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|addByEmail ( ReviewDb db, AddReviewerInput input, ChangeNotes notes, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|private
 name|ReviewerAddition
 name|addByEmail
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|AddReviewerInput
 name|input
 parameter_list|,
@@ -2611,7 +2618,7 @@ argument_list|)
 operator|.
 name|database
 argument_list|(
-name|dbProvider
+name|db
 argument_list|)
 operator|.
 name|change
@@ -2760,6 +2767,8 @@ name|ReviewerAddition
 argument_list|(
 name|input
 argument_list|,
+name|notes
+argument_list|,
 name|user
 argument_list|,
 literal|null
@@ -2777,11 +2786,14 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|isValidReviewer (Branch.NameKey branch, Account member)
+DECL|method|isValidReviewer (ReviewDb db, Branch.NameKey branch, Account member)
 specifier|private
 name|boolean
 name|isValidReviewer
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|Branch
 operator|.
 name|NameKey
@@ -2823,7 +2835,7 @@ argument_list|)
 operator|.
 name|database
 argument_list|(
-name|dbProvider
+name|db
 argument_list|)
 operator|.
 name|ref
@@ -3062,12 +3074,15 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-DECL|method|ReviewerAddition ( AddReviewerInput input, CurrentUser caller, @Nullable Iterable<Account.Id> reviewers, @Nullable Iterable<Address> reviewersByEmail, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean exactMatchFound)
+DECL|method|ReviewerAddition ( AddReviewerInput input, ChangeNotes notes, CurrentUser caller, @Nullable Iterable<Account.Id> reviewers, @Nullable Iterable<Address> reviewersByEmail, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean exactMatchFound)
 specifier|private
 name|ReviewerAddition
 parameter_list|(
 name|AddReviewerInput
 name|input
+parameter_list|,
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|CurrentUser
 name|caller
@@ -3139,23 +3154,16 @@ operator|.
 name|reviewer
 argument_list|)
 expr_stmt|;
+comment|// Always silently ignore adding the owner as any type of reviewer on their own change. They
+comment|// may still be implicitly added as a reviewer if they vote, but not via the reviewer API.
 name|this
 operator|.
 name|reviewers
 operator|=
-name|reviewers
-operator|==
-literal|null
-condition|?
-name|ImmutableSet
-operator|.
-name|of
-argument_list|()
-else|:
-name|ImmutableSet
-operator|.
-name|copyOf
+name|omitOwner
 argument_list|(
+name|notes
+argument_list|,
 name|reviewers
 argument_list|)
 expr_stmt|;
@@ -3218,6 +3226,71 @@ name|exactMatchFound
 operator|=
 name|exactMatchFound
 expr_stmt|;
+block|}
+DECL|method|omitOwner (ChangeNotes notes, Iterable<Account.Id> reviewers)
+specifier|private
+name|ImmutableSet
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|omitOwner
+parameter_list|(
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|Iterable
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|reviewers
+parameter_list|)
+block|{
+return|return
+name|reviewers
+operator|!=
+literal|null
+condition|?
+name|Streams
+operator|.
+name|stream
+argument_list|(
+name|reviewers
+argument_list|)
+operator|.
+name|filter
+argument_list|(
+name|id
+lambda|->
+operator|!
+name|id
+operator|.
+name|equals
+argument_list|(
+name|notes
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getOwner
+argument_list|()
+argument_list|)
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toImmutableSet
+argument_list|()
+argument_list|)
+else|:
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
+return|;
 block|}
 DECL|method|gatherResults (ChangeData cd)
 specifier|public
@@ -3599,11 +3672,14 @@ name|groupUUID
 argument_list|)
 return|;
 block|}
-DECL|method|prepare ( ChangeNotes notes, CurrentUser user, Iterable<? extends AddReviewerInput> inputs, boolean allowGroup)
+DECL|method|prepare ( ReviewDb db, ChangeNotes notes, CurrentUser user, Iterable<? extends AddReviewerInput> inputs, boolean allowGroup)
 specifier|public
 name|ReviewerAdditionList
 name|prepare
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -3707,6 +3783,8 @@ name|add
 argument_list|(
 name|prepare
 argument_list|(
+name|db
+argument_list|,
 name|notes
 argument_list|,
 name|user
