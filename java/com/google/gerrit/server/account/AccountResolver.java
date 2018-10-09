@@ -420,7 +420,7 @@ operator|=
 name|emails
 expr_stmt|;
 block|}
-comment|/**    * Locate exactly one account matching the input string.    *    * @param input a string of the format "Full Name&lt;email@example&gt;", just the email address    *     ("email@example"), a full name ("Full Name"), an account id ("18419") or an user name    *     ("username").    * @return the single account that matches; null if no account matches or there are multiple    *     candidates. If {@code input} is a numeric string, returns an account if and only if that    *     number corresponds to an actual account.    */
+comment|/**    * Locate exactly one account matching the input string.    *    * @param input a string of the format "Full Name&lt;email@example&gt;", just the email address    *     ("email@example"), a full name ("Full Name"), an account ID ("18419") or a user name    *     ("username").    * @return the single account that matches; null if no account matches or there are multiple    *     candidates. If {@code input} is a numeric string, returns an account if and only if that    *     number corresponds to an actual account ID.    */
 DECL|method|find (String input)
 specifier|public
 name|Account
@@ -564,7 +564,7 @@ return|return
 name|match
 return|;
 block|}
-comment|/**    * Find all accounts matching the input string.    *    * @param input a string of the format "Full Name&lt;email@example&gt;", just the email address    *     ("email@example"), a full name ("Full Name"), an account id ("18419") or an user name    *     ("username").    * @return the accounts that match, empty set if none. Never null. If {@code input} is a numeric    *     string, returns a singleton set if that number corresponds to a real account, and an empty    *     set otherwise if it does not.    */
+comment|/**    * Find all accounts matching the input string.    *    * @param input a string of the format "Full Name&lt;email@example&gt;", just the email address    *     ("email@example"), a full name ("Full Name"), an account ID ("18419") or a user name    *     ("username").    * @return the accounts that match, empty set if none. Never null. If {@code input} is a numeric    *     string, returns a singleton set if that number corresponds to a real account ID, and an    *     empty set otherwise if it does not.    */
 DECL|method|findAll (String input)
 specifier|public
 name|Set
