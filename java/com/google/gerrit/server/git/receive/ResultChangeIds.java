@@ -163,6 +163,7 @@ name|AUTOCLOSED
 block|,   }
 DECL|field|ids
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|Key
