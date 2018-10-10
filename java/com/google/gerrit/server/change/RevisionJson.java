@@ -1072,6 +1072,10 @@ name|RevWalk
 import|;
 end_import
 
+begin_comment
+comment|/** Produces {@link RevisionInfo} and {@link CommitInfo} which are serialized to JSON afterwards. */
+end_comment
+
 begin_class
 DECL|class|RevisionJson
 specifier|public
@@ -1456,6 +1460,7 @@ name|REQUIRE_LAZY_LOAD
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Returns a {@link RevisionInfo} based on a change and patch set. Reads from the repository    * depending on the options provided when constructing this instance.    */
 DECL|method|getRevisionInfo (ChangeData cd, PatchSet in)
 specifier|public
 name|RevisionInfo
@@ -1543,6 +1548,7 @@ name|rev
 return|;
 block|}
 block|}
+comment|/**    * Returns a {@link CommitInfo} based on a commit and formatting options. Uses the provided    * RevWalk and assumes it is backed by an open repository.    */
 DECL|method|getCommitInfo ( Project.NameKey project, RevWalk rw, RevCommit commit, boolean addLinks, boolean fillCommit)
 specifier|public
 name|CommitInfo
@@ -1777,6 +1783,7 @@ return|return
 name|info
 return|;
 block|}
+comment|/**    * Returns multiple {@link RevisionInfo}s for a single change. Uses the provided {@link    * AccountLoader} to lazily populate accounts. Callers have to call {@link AccountLoader#fill()}    * afterwards to populate all accounts in the returned {@link RevisionInfo}s.    */
 DECL|method|getRevisions ( AccountLoader accountLoader, ChangeData cd, Map<PatchSet.Id, PatchSet> map, Optional<Id> limitToPsId, ChangeInfo changeInfo)
 name|Map
 argument_list|<
