@@ -558,6 +558,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|Future
@@ -1444,12 +1454,17 @@ name|options
 argument_list|)
 return|;
 block|}
-comment|/**    * Spawn a function into its own thread.    *    *<p>Typically this should be invoked within {@link Command#start(Environment)}, such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *    *<p>If the function throws an exception, it is translated to a simple message for the client, a    * non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    */
-DECL|method|startThread (CommandRunnable thunk)
+comment|/**    * Spawn a function into its own thread with the provided context.    *    *<p>Typically this should be invoked within {@link Command#start(Environment)}, such as:    *    *<pre>    * startThreadWithContext(SshScope.Context context, new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *    *<p>If the function throws an exception, it is translated to a simple message for the client, a    * non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    */
+DECL|method|startThreadWithContext (SshScope.Context context, CommandRunnable thunk)
 specifier|protected
 name|void
-name|startThread
+name|startThreadWithContext
 parameter_list|(
+name|SshScope
+operator|.
+name|Context
+name|context
+parameter_list|,
 name|CommandRunnable
 name|thunk
 parameter_list|)
@@ -1462,6 +1477,13 @@ operator|new
 name|TaskThunk
 argument_list|(
 name|thunk
+argument_list|,
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|context
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -1504,6 +1526,25 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**    * Spawn a function into its own thread.    *    *<p>Typically this should be invoked within {@link Command#start(Environment)}, such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *    *<p>If the function throws an exception, it is translated to a simple message for the client, a    * non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    */
+DECL|method|startThread (final CommandRunnable thunk)
+specifier|protected
+name|void
+name|startThread
+parameter_list|(
+specifier|final
+name|CommandRunnable
+name|thunk
+parameter_list|)
+block|{
+name|startThreadWithContext
+argument_list|(
+literal|null
+argument_list|,
+name|thunk
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|isAdminHighPriorityCommand ()
 specifier|private
@@ -2183,6 +2224,12 @@ specifier|final
 name|CommandRunnable
 name|thunk
 decl_stmt|;
+DECL|field|taskContext
+specifier|private
+specifier|final
+name|Context
+name|taskContext
+decl_stmt|;
 DECL|field|taskName
 specifier|private
 specifier|final
@@ -2196,12 +2243,18 @@ operator|.
 name|NameKey
 name|projectName
 decl_stmt|;
-DECL|method|TaskThunk (CommandRunnable thunk)
+DECL|method|TaskThunk (CommandRunnable thunk, Optional<Context> oneOffContext)
 specifier|private
 name|TaskThunk
 parameter_list|(
 name|CommandRunnable
 name|thunk
+parameter_list|,
+name|Optional
+argument_list|<
+name|Context
+argument_list|>
+name|oneOffContext
 parameter_list|)
 block|{
 name|this
@@ -2216,6 +2269,17 @@ name|taskName
 operator|=
 name|getTaskName
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|taskContext
+operator|=
+name|oneOffContext
+operator|.
+name|orElse
+argument_list|(
+name|context
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -2239,7 +2303,7 @@ name|sshScope
 operator|.
 name|set
 argument_list|(
-name|context
+name|taskContext
 argument_list|)
 decl_stmt|;
 try|try
@@ -2306,7 +2370,7 @@ name|sshScope
 operator|.
 name|set
 argument_list|(
-name|context
+name|taskContext
 argument_list|)
 decl_stmt|;
 try|try
