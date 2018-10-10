@@ -4607,11 +4607,20 @@ name|PushOneCommit
 operator|.
 name|SUBJECT
 argument_list|,
+name|ImmutableMap
+operator|.
+name|of
+argument_list|(
 name|PushOneCommit
 operator|.
 name|FILE_NAME
 argument_list|,
 name|destContent
+argument_list|,
+literal|"foo.txt"
+argument_list|,
+literal|"foo"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|push
@@ -4655,11 +4664,20 @@ name|PushOneCommit
 operator|.
 name|SUBJECT
 argument_list|,
+name|ImmutableMap
+operator|.
+name|of
+argument_list|(
 name|PushOneCommit
 operator|.
 name|FILE_NAME
 argument_list|,
 name|changeContent
+argument_list|,
+literal|"bar.txt"
+argument_list|,
+literal|"bar"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|PushOneCommit
@@ -5120,7 +5138,17 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Patch Set 1: Cherry Picked from branch master."
+literal|"Patch Set 1: Cherry Picked from branch master.\n\n"
+operator|+
+literal|"The following files contain Git conflicts:\n"
+operator|+
+literal|"* "
+operator|+
+name|PushOneCommit
+operator|.
+name|FILE_NAME
+operator|+
+literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}

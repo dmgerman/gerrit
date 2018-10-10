@@ -102,6 +102,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -1090,7 +1104,7 @@ specifier|static
 class|class
 name|Result
 block|{
-DECL|method|create (Change.Id changeId, boolean containsGitConflicts)
+DECL|method|create (Change.Id changeId, ImmutableSet<String> filesWithGitConflicts)
 specifier|static
 name|Result
 name|create
@@ -1100,8 +1114,11 @@ operator|.
 name|Id
 name|changeId
 parameter_list|,
-name|boolean
-name|containsGitConflicts
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|filesWithGitConflicts
 parameter_list|)
 block|{
 return|return
@@ -1110,7 +1127,7 @@ name|AutoValue_CherryPickChange_Result
 argument_list|(
 name|changeId
 argument_list|,
-name|containsGitConflicts
+name|filesWithGitConflicts
 argument_list|)
 return|;
 block|}
@@ -1122,10 +1139,13 @@ name|Id
 name|changeId
 parameter_list|()
 function_decl|;
-DECL|method|containsGitConflicts ()
+DECL|method|filesWithGitConflicts ()
 specifier|abstract
-name|boolean
-name|containsGitConflicts
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|filesWithGitConflicts
 parameter_list|()
 function_decl|;
 block|}
@@ -2186,7 +2206,7 @@ name|changeId
 argument_list|,
 name|cherryPickCommit
 operator|.
-name|containsGitConflicts
+name|getFilesWithGitConflicts
 argument_list|()
 argument_list|)
 return|;
@@ -2706,6 +2726,8 @@ argument_list|,
 name|sourceBranch
 argument_list|,
 name|sourceCommit
+argument_list|,
+name|cherryPickCommit
 argument_list|)
 argument_list|)
 operator|.
@@ -3067,7 +3089,7 @@ literal|true
 return|;
 block|}
 block|}
-DECL|method|messageForDestinationChange ( PatchSet.Id patchSetId, Branch.NameKey sourceBranch, ObjectId sourceCommit)
+DECL|method|messageForDestinationChange ( PatchSet.Id patchSetId, Branch.NameKey sourceBranch, ObjectId sourceCommit, CodeReviewCommit cherryPickCommit)
 specifier|private
 name|String
 name|messageForDestinationChange
@@ -3084,6 +3106,9 @@ name|sourceBranch
 parameter_list|,
 name|ObjectId
 name|sourceCommit
+parameter_list|,
+name|CodeReviewCommit
+name|cherryPickCommit
 parameter_list|)
 block|{
 name|StringBuilder
@@ -3144,13 +3169,68 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-return|return
 name|stringBuilder
 operator|.
 name|append
 argument_list|(
 literal|"."
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|cherryPickCommit
+operator|.
+name|getFilesWithGitConflicts
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|stringBuilder
+operator|.
+name|append
+argument_list|(
+literal|"\n\nThe following files contain Git conflicts:\n"
+argument_list|)
+expr_stmt|;
+name|cherryPickCommit
+operator|.
+name|getFilesWithGitConflicts
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|sorted
+argument_list|()
+operator|.
+name|forEach
+argument_list|(
+name|filePath
+lambda|->
+name|stringBuilder
+operator|.
+name|append
+argument_list|(
+literal|"* "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|filePath
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()

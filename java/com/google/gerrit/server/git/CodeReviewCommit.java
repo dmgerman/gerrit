@@ -92,6 +92,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Ordering
 import|;
 end_import
@@ -191,6 +205,16 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -616,11 +640,14 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
-comment|/** Whether any of the files in this commit contains Git conflict markers. */
-DECL|field|containsGitConflicts
+comment|/** List of files in this commit that contain Git conflict markers. */
+DECL|field|filesWithGitConflicts
 specifier|private
-name|boolean
-name|containsGitConflicts
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|filesWithGitConflicts
 decl_stmt|;
 DECL|method|CodeReviewCommit (AnyObjectId id)
 specifier|public
@@ -708,30 +735,64 @@ name|statusMessage
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|containsGitConflicts ()
+DECL|method|getFilesWithGitConflicts ()
 specifier|public
-name|boolean
-name|containsGitConflicts
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|getFilesWithGitConflicts
 parameter_list|()
 block|{
 return|return
-name|containsGitConflicts
+name|filesWithGitConflicts
+operator|!=
+literal|null
+condition|?
+name|filesWithGitConflicts
+else|:
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
 return|;
 block|}
-DECL|method|setContainsGitConflicts (boolean hasConflicts)
+DECL|method|setFilesWithGitConflicts (@ullable Set<String> filesWithGitConflicts)
 specifier|public
 name|void
-name|setContainsGitConflicts
+name|setFilesWithGitConflicts
 parameter_list|(
-name|boolean
-name|hasConflicts
+annotation|@
+name|Nullable
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|filesWithGitConflicts
 parameter_list|)
 block|{
 name|this
 operator|.
-name|containsGitConflicts
+name|filesWithGitConflicts
 operator|=
-name|hasConflicts
+name|filesWithGitConflicts
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|filesWithGitConflicts
+operator|.
+name|isEmpty
+argument_list|()
+condition|?
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
+name|filesWithGitConflicts
+argument_list|)
+else|:
+literal|null
 expr_stmt|;
 block|}
 DECL|method|getPatchsetId ()

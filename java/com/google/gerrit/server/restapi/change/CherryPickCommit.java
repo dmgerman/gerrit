@@ -889,9 +889,13 @@ name|changeInfo
 operator|.
 name|containsGitConflicts
 operator|=
+operator|!
 name|cherryPickResult
 operator|.
-name|containsGitConflicts
+name|filesWithGitConflicts
+argument_list|()
+operator|.
+name|isEmpty
 argument_list|()
 condition|?
 literal|true
