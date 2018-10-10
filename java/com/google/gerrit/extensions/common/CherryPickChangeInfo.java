@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.api.changes
+DECL|package|com.google.gerrit.extensions.common
 package|package
 name|com
 operator|.
@@ -62,78 +62,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|api
-operator|.
-name|changes
+name|common
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_class
-DECL|class|CherryPickInput
+DECL|class|CherryPickChangeInfo
 specifier|public
 class|class
-name|CherryPickInput
+name|CherryPickChangeInfo
+extends|extends
+name|ChangeInfo
 block|{
-DECL|field|message
+DECL|field|containsGitConflicts
 specifier|public
-name|String
-name|message
-decl_stmt|;
-comment|// Cherry-pick destination branch, which will be the destination of the newly created change.
-DECL|field|destination
-specifier|public
-name|String
-name|destination
-decl_stmt|;
-comment|// 40-hex digit SHA-1 of the commit which will be the parent commit of the newly created change.
-DECL|field|base
-specifier|public
-name|String
-name|base
-decl_stmt|;
-DECL|field|parent
-specifier|public
-name|Integer
-name|parent
-decl_stmt|;
-DECL|field|notify
-specifier|public
-name|NotifyHandling
-name|notify
-init|=
-name|NotifyHandling
-operator|.
-name|NONE
-decl_stmt|;
-DECL|field|notifyDetails
-specifier|public
-name|Map
-argument_list|<
-name|RecipientType
-argument_list|,
-name|NotifyInfo
-argument_list|>
-name|notifyDetails
-decl_stmt|;
-DECL|field|keepReviewers
-specifier|public
-name|boolean
-name|keepReviewers
-decl_stmt|;
-DECL|field|allowConflicts
-specifier|public
-name|boolean
-name|allowConflicts
+name|Boolean
+name|containsGitConflicts
 decl_stmt|;
 block|}
 end_class
