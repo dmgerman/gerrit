@@ -2007,8 +2007,14 @@ throw|throw
 operator|new
 name|OrmException
 argument_list|(
-literal|"Rebuilding change %s produced no writes to NoteDb: "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Rebuilding change %s produced no writes to NoteDb: %s"
+argument_list|,
+name|changeId
+argument_list|,
 name|bundleReader
 operator|.
 name|fromReviewDb
@@ -2016,6 +2022,7 @@ argument_list|(
 name|db
 argument_list|,
 name|changeId
+argument_list|)
 argument_list|)
 argument_list|)
 throw|;
