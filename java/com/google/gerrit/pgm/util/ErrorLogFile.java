@@ -258,12 +258,45 @@ name|JSON_SUFFIX
 init|=
 literal|".json"
 decl_stmt|;
+DECL|method|debugConsole ()
+specifier|public
+specifier|static
+name|void
+name|debugConsole
+parameter_list|()
+block|{
+name|configureConsoleAppender
+argument_list|(
+name|Level
+operator|.
+name|DEBUG
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|errorOnlyConsole ()
 specifier|public
 specifier|static
 name|void
 name|errorOnlyConsole
 parameter_list|()
+block|{
+name|configureConsoleAppender
+argument_list|(
+name|Level
+operator|.
+name|ERROR
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|configureConsoleAppender (Level threshold)
+specifier|private
+specifier|static
+name|void
+name|configureConsoleAppender
+parameter_list|(
+name|Level
+name|threshold
+parameter_list|)
 block|{
 name|LogManager
 operator|.
@@ -311,9 +344,7 @@ name|dst
 operator|.
 name|setThreshold
 argument_list|(
-name|Level
-operator|.
-name|ERROR
+name|threshold
 argument_list|)
 expr_stmt|;
 name|dst
