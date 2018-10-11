@@ -66,6 +66,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|AccessPath
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -187,6 +201,10 @@ expr_stmt|;
 block|}
 block|}
 block|}
+argument_list|,
+name|AccessPath
+operator|.
+name|SSH_COMMAND
 argument_list|)
 expr_stmt|;
 block|}

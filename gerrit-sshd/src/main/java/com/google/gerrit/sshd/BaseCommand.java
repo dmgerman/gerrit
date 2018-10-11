@@ -178,6 +178,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|AccessPath
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|CurrentUser
 import|;
 end_import
@@ -1295,8 +1309,8 @@ name|options
 argument_list|)
 return|;
 block|}
-comment|/**    * Spawn a function into its own thread.    *    *<p>Typically this should be invoked within {@link Command#start(Environment)}, such as:    *    *<pre>    * startThread(new Runnable() {    *   public void run() {    *     runImp();    *   }    * });    *</pre>    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    */
-DECL|method|startThread (final Runnable thunk)
+comment|/**    * Spawn a function into its own thread.    *    *<p>Typically this should be invoked within {@link Command#start(Environment)}, such as:    *    *<pre>    * startThread(new Runnable() {    *   public void run() {    *     runImp();    *   }    * });    *</pre>    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    * @param accessPath the path used by the end user for running the SSH command    */
+DECL|method|startThread (final Runnable thunk, AccessPath accessPath)
 specifier|protected
 name|void
 name|startThread
@@ -1304,6 +1318,9 @@ parameter_list|(
 specifier|final
 name|Runnable
 name|thunk
+parameter_list|,
+name|AccessPath
+name|accessPath
 parameter_list|)
 block|{
 name|startThread
@@ -1328,11 +1345,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+argument_list|,
+name|accessPath
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Spawn a function into its own thread.    *    *<p>Typically this should be invoked within {@link Command#start(Environment)}, such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *    *<p>If the function throws an exception, it is translated to a simple message for the client, a    * non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    */
-DECL|method|startThread (final CommandRunnable thunk)
+comment|/**    * Spawn a function into its own thread.    *    *<p>Typically this should be invoked within {@link Command#start(Environment)}, such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *    *<p>If the function throws an exception, it is translated to a simple message for the client, a    * non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    * @param accessPath the path used by the end user for running the SSH command    */
+DECL|method|startThread (final CommandRunnable thunk, AccessPath accessPath)
 specifier|protected
 name|void
 name|startThread
@@ -1340,6 +1359,9 @@ parameter_list|(
 specifier|final
 name|CommandRunnable
 name|thunk
+parameter_list|,
+name|AccessPath
+name|accessPath
 parameter_list|)
 block|{
 specifier|final
@@ -1350,6 +1372,8 @@ operator|new
 name|TaskThunk
 argument_list|(
 name|thunk
+argument_list|,
+name|accessPath
 argument_list|)
 decl_stmt|;
 if|if
@@ -2018,6 +2042,12 @@ specifier|final
 name|String
 name|taskName
 decl_stmt|;
+DECL|field|accessPath
+specifier|private
+specifier|final
+name|AccessPath
+name|accessPath
+decl_stmt|;
 DECL|field|projectName
 specifier|private
 name|Project
@@ -2025,13 +2055,16 @@ operator|.
 name|NameKey
 name|projectName
 decl_stmt|;
-DECL|method|TaskThunk (final CommandRunnable thunk)
+DECL|method|TaskThunk (final CommandRunnable thunk, AccessPath accessPath)
 specifier|private
 name|TaskThunk
 parameter_list|(
 specifier|final
 name|CommandRunnable
 name|thunk
+parameter_list|,
+name|AccessPath
+name|accessPath
 parameter_list|)
 block|{
 name|this
@@ -2046,6 +2079,12 @@ name|taskName
 operator|=
 name|getTaskName
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|accessPath
+operator|=
+name|accessPath
 expr_stmt|;
 block|}
 annotation|@
@@ -2128,6 +2167,16 @@ name|rc
 init|=
 literal|0
 decl_stmt|;
+name|context
+operator|.
+name|getSession
+argument_list|()
+operator|.
+name|setAccessPath
+argument_list|(
+name|accessPath
+argument_list|)
+expr_stmt|;
 specifier|final
 name|Context
 name|old

@@ -426,6 +426,10 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+name|AccessPath
+operator|.
+name|GIT
 argument_list|)
 expr_stmt|;
 block|}
@@ -475,15 +479,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|n
-operator|.
-name|setAccessPath
-argument_list|(
-name|AccessPath
-operator|.
-name|GIT
-argument_list|)
-expr_stmt|;
 return|return
 name|n
 return|;
