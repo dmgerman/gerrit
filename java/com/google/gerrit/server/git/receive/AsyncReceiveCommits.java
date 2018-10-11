@@ -314,6 +314,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|ConfigUtil
@@ -2319,6 +2333,26 @@ name|NANOSECONDS
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/** Returns the Change.Ids that were processed in onPreReceive */
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|GOOGLE
+argument_list|)
+DECL|method|getResultChangeIds ()
+specifier|public
+name|ResultChangeIds
+name|getResultChangeIds
+parameter_list|()
+block|{
+return|return
+name|resultChangeIds
+return|;
 block|}
 DECL|method|getReceivePack ()
 specifier|public
