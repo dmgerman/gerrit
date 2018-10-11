@@ -149,6 +149,7 @@ class|class
 name|ResultChangeIds
 block|{
 DECL|enum|Key
+specifier|public
 enum|enum
 name|Key
 block|{
