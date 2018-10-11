@@ -1547,12 +1547,10 @@ name|fact
 argument_list|(
 name|expected
 condition|?
-literal|"notifies"
+literal|"should notify"
 else|:
-literal|"doesn't notify"
+literal|"shouldn't notify"
 argument_list|,
-literal|"[\n"
-operator|+
 name|type
 operator|+
 literal|": "
@@ -1563,8 +1561,6 @@ name|emailToName
 argument_list|(
 name|email
 argument_list|)
-operator|+
-literal|"\n]"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -488,6 +488,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AccountResolver
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|ChangeJson
@@ -687,24 +703,6 @@ operator|.
 name|change
 operator|.
 name|InternalChangeQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|restapi
-operator|.
-name|account
-operator|.
-name|AccountsCollection
 import|;
 end_import
 
@@ -1186,11 +1184,11 @@ name|MergeSuperSet
 argument_list|>
 name|mergeSuperSet
 decl_stmt|;
-DECL|field|accounts
+DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountsCollection
-name|accounts
+name|AccountResolver
+name|accountResolver
 decl_stmt|;
 DECL|field|label
 specifier|private
@@ -1257,7 +1255,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Submit ( Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, PermissionBackend permissionBackend, ChangeData.Factory changeDataFactory, ChangeNotes.Factory changeNotesFactory, Provider<MergeOp> mergeOpProvider, Provider<MergeSuperSet> mergeSuperSet, AccountsCollection accounts, @GerritServerConfig Config cfg, Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil, ProjectCache projectCache)
+DECL|method|Submit ( Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, PermissionBackend permissionBackend, ChangeData.Factory changeDataFactory, ChangeNotes.Factory changeNotesFactory, Provider<MergeOp> mergeOpProvider, Provider<MergeSuperSet> mergeSuperSet, AccountResolver accountResolver, @GerritServerConfig Config cfg, Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil, ProjectCache projectCache)
 name|Submit
 parameter_list|(
 name|Provider
@@ -1294,8 +1292,8 @@ name|MergeSuperSet
 argument_list|>
 name|mergeSuperSet
 parameter_list|,
-name|AccountsCollection
-name|accounts
+name|AccountResolver
+name|accountResolver
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -1359,9 +1357,9 @@ name|mergeSuperSet
 expr_stmt|;
 name|this
 operator|.
-name|accounts
+name|accountResolver
 operator|=
-name|accounts
+name|accountResolver
 expr_stmt|;
 name|this
 operator|.
@@ -3433,7 +3431,7 @@ decl_stmt|;
 name|IdentifiedUser
 name|submitter
 init|=
-name|accounts
+name|accountResolver
 operator|.
 name|parseOnBehalfOf
 argument_list|(

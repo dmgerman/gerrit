@@ -606,24 +606,6 @@ name|server
 operator|.
 name|restapi
 operator|.
-name|account
-operator|.
-name|AccountsCollection
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|restapi
-operator|.
 name|group
 operator|.
 name|AddMembers
@@ -906,12 +888,6 @@ specifier|final
 name|AuthType
 name|authType
 decl_stmt|;
-DECL|field|accounts
-specifier|private
-specifier|final
-name|AccountsCollection
-name|accounts
-decl_stmt|;
 DECL|field|accountResolver
 specifier|private
 specifier|final
@@ -943,7 +919,7 @@ name|groupsUpdateProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddMembers ( AccountManager accountManager, AuthConfig authConfig, AccountsCollection accounts, AccountResolver accountResolver, AccountCache accountCache, AccountLoader.Factory infoFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
+DECL|method|AddMembers ( AccountManager accountManager, AuthConfig authConfig, AccountResolver accountResolver, AccountCache accountCache, AccountLoader.Factory infoFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
 name|AddMembers
 parameter_list|(
 name|AccountManager
@@ -951,9 +927,6 @@ name|accountManager
 parameter_list|,
 name|AuthConfig
 name|authConfig
-parameter_list|,
-name|AccountsCollection
-name|accounts
 parameter_list|,
 name|AccountResolver
 name|accountResolver
@@ -989,12 +962,6 @@ name|authConfig
 operator|.
 name|getAuthType
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|accounts
-operator|=
-name|accounts
 expr_stmt|;
 name|this
 operator|.
@@ -1245,7 +1212,7 @@ block|{
 try|try
 block|{
 return|return
-name|accounts
+name|accountResolver
 operator|.
 name|parse
 argument_list|(

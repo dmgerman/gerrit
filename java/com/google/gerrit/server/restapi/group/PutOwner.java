@@ -270,6 +270,22 @@ name|server
 operator|.
 name|group
 operator|.
+name|GroupResolver
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
 name|GroupResource
 import|;
 end_import
@@ -415,11 +431,11 @@ argument_list|,
 name|OwnerInput
 argument_list|>
 block|{
-DECL|field|groupsCollection
+DECL|field|groupResolver
 specifier|private
 specifier|final
-name|GroupsCollection
-name|groupsCollection
+name|GroupResolver
+name|groupResolver
 decl_stmt|;
 DECL|field|groupsUpdateProvider
 specifier|private
@@ -438,11 +454,11 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutOwner ( GroupsCollection groupsCollection, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, GroupJson json)
+DECL|method|PutOwner ( GroupResolver groupResolver, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, GroupJson json)
 name|PutOwner
 parameter_list|(
-name|GroupsCollection
-name|groupsCollection
+name|GroupResolver
+name|groupResolver
 parameter_list|,
 annotation|@
 name|UserInitiated
@@ -458,9 +474,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|groupsCollection
+name|groupResolver
 operator|=
-name|groupsCollection
+name|groupResolver
 expr_stmt|;
 name|this
 operator|.
@@ -573,7 +589,7 @@ operator|.
 name|Basic
 name|owner
 init|=
-name|groupsCollection
+name|groupResolver
 operator|.
 name|parse
 argument_list|(

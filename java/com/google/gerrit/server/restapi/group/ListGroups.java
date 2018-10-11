@@ -450,6 +450,22 @@ name|server
 operator|.
 name|group
 operator|.
+name|GroupResolver
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
 name|InternalGroupDescription
 import|;
 end_import
@@ -873,11 +889,11 @@ specifier|final
 name|Groups
 name|groups
 decl_stmt|;
-DECL|field|groupsCollection
+DECL|field|groupResolver
 specifier|private
 specifier|final
-name|GroupsCollection
-name|groupsCollection
+name|GroupResolver
+name|groupResolver
 decl_stmt|;
 DECL|field|options
 specifier|private
@@ -1416,7 +1432,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ListGroups ( final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final GetGroups accountGetGroups, final GroupsCollection groupsCollection, GroupJson json, GroupBackend groupBackend, Groups groups)
+DECL|method|ListGroups ( final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final GetGroups accountGetGroups, final GroupResolver groupResolver, GroupJson json, GroupBackend groupBackend, Groups groups)
 specifier|protected
 name|ListGroups
 parameter_list|(
@@ -1454,8 +1470,8 @@ name|GetGroups
 name|accountGetGroups
 parameter_list|,
 specifier|final
-name|GroupsCollection
-name|groupsCollection
+name|GroupResolver
+name|groupResolver
 parameter_list|,
 name|GroupJson
 name|json
@@ -1523,9 +1539,9 @@ name|groups
 expr_stmt|;
 name|this
 operator|.
-name|groupsCollection
+name|groupResolver
 operator|=
-name|groupsCollection
+name|groupResolver
 expr_stmt|;
 block|}
 DECL|method|setOptions (EnumSet<ListGroupsOption> options)
@@ -2515,7 +2531,7 @@ block|{
 name|String
 name|uuid
 init|=
-name|groupsCollection
+name|groupResolver
 operator|.
 name|parse
 argument_list|(

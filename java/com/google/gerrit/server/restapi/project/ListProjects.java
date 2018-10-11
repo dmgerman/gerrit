@@ -492,6 +492,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|group
+operator|.
+name|GroupResolver
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|ioutil
 operator|.
 name|RegexListSearcher
@@ -607,24 +623,6 @@ operator|.
 name|project
 operator|.
 name|ProjectState
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|restapi
-operator|.
-name|group
-operator|.
-name|GroupsCollection
 import|;
 end_import
 
@@ -1171,11 +1169,11 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|groupsCollection
+DECL|field|groupResolver
 specifier|private
 specifier|final
-name|GroupsCollection
-name|groupsCollection
+name|GroupResolver
+name|groupResolver
 decl_stmt|;
 DECL|field|groupControlFactory
 specifier|private
@@ -1731,7 +1729,7 @@ name|groupUuid
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListProjects ( CurrentUser currentUser, ProjectCache projectCache, GroupsCollection groupsCollection, GroupControl.Factory groupControlFactory, GitRepositoryManager repoManager, PermissionBackend permissionBackend, ProjectNode.Factory projectNodeFactory, WebLinks webLinks)
+DECL|method|ListProjects ( CurrentUser currentUser, ProjectCache projectCache, GroupResolver groupResolver, GroupControl.Factory groupControlFactory, GitRepositoryManager repoManager, PermissionBackend permissionBackend, ProjectNode.Factory projectNodeFactory, WebLinks webLinks)
 specifier|protected
 name|ListProjects
 parameter_list|(
@@ -1741,8 +1739,8 @@ parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|GroupsCollection
-name|groupsCollection
+name|GroupResolver
+name|groupResolver
 parameter_list|,
 name|GroupControl
 operator|.
@@ -1778,9 +1776,9 @@ name|projectCache
 expr_stmt|;
 name|this
 operator|.
-name|groupsCollection
+name|groupResolver
 operator|=
-name|groupsCollection
+name|groupResolver
 expr_stmt|;
 name|this
 operator|.
@@ -2265,7 +2263,7 @@ name|GroupReference
 operator|.
 name|forGroup
 argument_list|(
-name|groupsCollection
+name|groupResolver
 operator|.
 name|parseId
 argument_list|(

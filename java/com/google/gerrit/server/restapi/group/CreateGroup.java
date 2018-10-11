@@ -516,6 +516,22 @@ name|server
 operator|.
 name|group
 operator|.
+name|GroupResolver
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
 name|GroupResource
 import|;
 end_import
@@ -919,7 +935,7 @@ decl_stmt|;
 DECL|field|groups
 specifier|private
 specifier|final
-name|GroupsCollection
+name|GroupResolver
 name|groups
 decl_stmt|;
 DECL|field|json
@@ -963,7 +979,7 @@ name|sequences
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateGroup ( Provider<IdentifiedUser> self, @GerritPersonIdent PersonIdent serverIdent, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, GroupCache groupCache, GroupsCollection groups, GroupJson json, PluginSetContext<GroupCreationValidationListener> groupCreationValidationListeners, AddMembers addMembers, SystemGroupBackend systemGroupBackend, @GerritServerConfig Config cfg, Sequences sequences)
+DECL|method|CreateGroup ( Provider<IdentifiedUser> self, @GerritPersonIdent PersonIdent serverIdent, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, GroupCache groupCache, GroupResolver groups, GroupJson json, PluginSetContext<GroupCreationValidationListener> groupCreationValidationListeners, AddMembers addMembers, SystemGroupBackend systemGroupBackend, @GerritServerConfig Config cfg, Sequences sequences)
 name|CreateGroup
 parameter_list|(
 name|Provider
@@ -988,7 +1004,7 @@ parameter_list|,
 name|GroupCache
 name|groupCache
 parameter_list|,
-name|GroupsCollection
+name|GroupResolver
 name|groups
 parameter_list|,
 name|GroupJson
