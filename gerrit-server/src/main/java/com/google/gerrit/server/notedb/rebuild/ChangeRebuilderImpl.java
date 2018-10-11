@@ -2288,15 +2288,13 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"cannot rebuild change "
-operator|+
+literal|"cannot rebuild change %s with state %s"
+argument_list|,
 name|c
 operator|.
 name|getId
 argument_list|()
-operator|+
-literal|" with state "
-operator|+
+argument_list|,
 name|s
 argument_list|)
 argument_list|)
