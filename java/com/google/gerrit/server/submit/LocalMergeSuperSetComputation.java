@@ -1158,8 +1158,6 @@ argument_list|,
 name|b
 argument_list|,
 name|visibleHashes
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1195,8 +1193,6 @@ argument_list|,
 name|b
 argument_list|,
 name|nonVisibleHashes
-argument_list|,
-literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1509,7 +1505,7 @@ operator|.
 name|type
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, ReviewDb db, Branch.NameKey branch, Set<String> hashes, boolean checkVisibility)
+DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, ReviewDb db, Branch.NameKey branch, Set<String> hashes)
 specifier|private
 name|List
 argument_list|<
@@ -1533,9 +1529,6 @@ argument_list|<
 name|String
 argument_list|>
 name|hashes
-parameter_list|,
-name|boolean
-name|checkVisibility
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1614,11 +1607,6 @@ name|queryProvider
 operator|.
 name|get
 argument_list|()
-operator|.
-name|enforceVisibility
-argument_list|(
-name|checkVisibility
-argument_list|)
 operator|.
 name|byCommitsOnBranchNotMerged
 argument_list|(
