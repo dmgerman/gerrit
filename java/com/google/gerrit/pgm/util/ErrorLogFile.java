@@ -258,21 +258,6 @@ name|JSON_SUFFIX
 init|=
 literal|".json"
 decl_stmt|;
-DECL|method|debugConsole ()
-specifier|public
-specifier|static
-name|void
-name|debugConsole
-parameter_list|()
-block|{
-name|configureConsoleAppender
-argument_list|(
-name|Level
-operator|.
-name|DEBUG
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|errorOnlyConsole ()
 specifier|public
 specifier|static
@@ -280,30 +265,11 @@ name|void
 name|errorOnlyConsole
 parameter_list|()
 block|{
-name|configureConsoleAppender
-argument_list|(
-name|Level
-operator|.
-name|ERROR
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|configureConsoleAppender (Level threshold)
-specifier|private
-specifier|static
-name|void
-name|configureConsoleAppender
-parameter_list|(
-name|Level
-name|threshold
-parameter_list|)
-block|{
 name|LogManager
 operator|.
 name|resetConfiguration
 argument_list|()
 expr_stmt|;
-specifier|final
 name|PatternLayout
 name|layout
 init|=
@@ -318,7 +284,6 @@ argument_list|(
 literal|"%-5p %c %x: %m%n"
 argument_list|)
 expr_stmt|;
-specifier|final
 name|ConsoleAppender
 name|dst
 init|=
@@ -344,7 +309,9 @@ name|dst
 operator|.
 name|setThreshold
 argument_list|(
-name|threshold
+name|Level
+operator|.
+name|ERROR
 argument_list|)
 expr_stmt|;
 name|dst
@@ -352,7 +319,6 @@ operator|.
 name|activateOptions
 argument_list|()
 expr_stmt|;
-specifier|final
 name|Logger
 name|root
 init|=
@@ -464,7 +430,6 @@ name|Config
 name|config
 parameter_list|)
 block|{
-specifier|final
 name|Logger
 name|root
 init|=
