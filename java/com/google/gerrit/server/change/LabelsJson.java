@@ -1895,11 +1895,13 @@ block|{
 name|ApprovalInfo
 name|ai
 init|=
-name|ChangeJson
-operator|.
-name|getApprovalInfo
+operator|new
+name|ApprovalInfo
 argument_list|(
 name|id
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|value
 argument_list|,
