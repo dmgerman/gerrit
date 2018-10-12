@@ -270,7 +270,6 @@ operator|.
 name|resetConfiguration
 argument_list|()
 expr_stmt|;
-specifier|final
 name|PatternLayout
 name|layout
 init|=
@@ -285,7 +284,6 @@ argument_list|(
 literal|"%-5p %c %x: %m%n"
 argument_list|)
 expr_stmt|;
-specifier|final
 name|ConsoleAppender
 name|dst
 init|=
@@ -321,7 +319,6 @@ operator|.
 name|activateOptions
 argument_list|()
 expr_stmt|;
-specifier|final
 name|Logger
 name|root
 init|=
@@ -433,7 +430,6 @@ name|Config
 name|config
 parameter_list|)
 block|{
-specifier|final
 name|Logger
 name|root
 init|=
