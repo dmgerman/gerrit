@@ -927,9 +927,8 @@ operator|.
 name|getKey
 argument_list|()
 argument_list|,
-name|ChangeJson
-operator|.
-name|getApprovalInfo
+operator|new
+name|ApprovalInfo
 argument_list|(
 name|accountState
 operator|.
@@ -937,6 +936,9 @@ name|getAccount
 argument_list|()
 operator|.
 name|getId
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|,
 name|value

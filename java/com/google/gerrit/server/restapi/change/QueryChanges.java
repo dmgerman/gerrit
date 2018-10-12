@@ -957,7 +957,7 @@ operator|.
 name|imp
 argument_list|)
 operator|.
-name|formatQueryResults
+name|format
 argument_list|(
 name|results
 argument_list|)
