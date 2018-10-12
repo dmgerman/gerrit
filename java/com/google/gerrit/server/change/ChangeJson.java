@@ -6064,6 +6064,7 @@ return|return
 name|map
 return|;
 block|}
+comment|/**    * @return {@link com.google.gerrit.server.permissions.PermissionBackend.ForChange} constructed    *     from either an index-backed or a database-backed {@link ChangeData} depending on {@code    *     lazyload}.    */
 DECL|method|permissionBackendForChange (CurrentUser user, ChangeData cd)
 specifier|private
 name|PermissionBackend
@@ -6080,9 +6081,11 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-return|return
-name|permissionBackendForChange
-argument_list|(
+name|PermissionBackend
+operator|.
+name|WithUser
+name|withUser
+init|=
 name|permissionBackend
 operator|.
 name|user
@@ -6094,30 +6097,7 @@ name|database
 argument_list|(
 name|db
 argument_list|)
-argument_list|,
-name|cd
-argument_list|)
-return|;
-block|}
-comment|/**    * @return {@link com.google.gerrit.server.permissions.PermissionBackend.ForChange} constructed    *     from either an index-backed or a database-backed {@link ChangeData} depending on {@code    *     lazyload}.    */
-DECL|method|permissionBackendForChange ( PermissionBackend.WithUser withUser, ChangeData cd)
-specifier|private
-name|PermissionBackend
-operator|.
-name|ForChange
-name|permissionBackendForChange
-parameter_list|(
-name|PermissionBackend
-operator|.
-name|WithUser
-name|withUser
-parameter_list|,
-name|ChangeData
-name|cd
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
+decl_stmt|;
 return|return
 name|lazyLoad
 condition|?
