@@ -1974,6 +1974,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|configureContributorAgreement
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|createArbitraryEditFor
 argument_list|(
 name|changeId

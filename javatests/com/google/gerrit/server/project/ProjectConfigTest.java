@@ -814,6 +814,20 @@ literal|"[contributor-agreement \"Individual\"]\n"
 operator|+
 literal|"  description = A simple description\n"
 operator|+
+literal|"  matchProjects = ^/ourproject\n"
+operator|+
+literal|"  matchProjects = ^/ourotherproject\n"
+operator|+
+literal|"  matchProjects = ^/someotherroot/ourproject\n"
+operator|+
+literal|"  excludeProjects = ^/theirproject\n"
+operator|+
+literal|"  excludeProjects = ^/theirotherproject\n"
+operator|+
+literal|"  excludeProjects = ^/someotherroot/theirproject\n"
+operator|+
+literal|"  excludeProjects = ^/someotherroot/theirotherproject\n"
+operator|+
 literal|"  accepted = group Developers\n"
 operator|+
 literal|"  accepted = group Staff\n"
@@ -884,6 +898,42 @@ operator|.
 name|isEqualTo
 argument_list|(
 literal|"A simple description"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|ca
+operator|.
+name|getMatchProjectsRegexes
+argument_list|()
+argument_list|)
+operator|.
+name|containsExactly
+argument_list|(
+literal|"^/ourproject"
+argument_list|,
+literal|"^/ourotherproject"
+argument_list|,
+literal|"^/someotherroot/ourproject"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|ca
+operator|.
+name|getExcludeProjectsRegexes
+argument_list|()
+argument_list|)
+operator|.
+name|containsExactly
+argument_list|(
+literal|"^/theirproject"
+argument_list|,
+literal|"^/theirotherproject"
+argument_list|,
+literal|"^/someotherroot/theirproject"
+argument_list|,
+literal|"^/someotherroot/theirotherproject"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1709,6 +1759,8 @@ literal|"[contributor-agreement \"Individual\"]\n"
 operator|+
 literal|"  description = A simple description\n"
 operator|+
+literal|"  matchProjects = ^/ourproject\n"
+operator|+
 literal|"  accepted = group Developers\n"
 operator|+
 literal|"  autoVerify = group Developers\n"
@@ -1838,6 +1890,25 @@ argument_list|)
 expr_stmt|;
 name|ca
 operator|.
+name|setMatchProjectsRegexes
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|ca
+operator|.
+name|setExcludeProjectsRegexes
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+literal|"^/theirproject"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|ca
+operator|.
 name|setDescription
 argument_list|(
 literal|"A new description"
@@ -1885,6 +1956,8 @@ operator|+
 literal|"  accepted = group Staff\n"
 operator|+
 literal|"  agreementUrl = http://www.example.com/agree\n"
+operator|+
+literal|"\texcludeProjects = ^/theirproject\n"
 operator|+
 literal|"[label \"CustomLabel\"]\n"
 operator|+
