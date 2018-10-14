@@ -156,6 +156,18 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+operator|.
+name|requireNonNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
 name|stream
 operator|.
 name|Collectors
@@ -1307,7 +1319,7 @@ init|=
 literal|"branch"
 decl_stmt|;
 DECL|field|KEY_MATCH
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -1325,7 +1337,7 @@ init|=
 literal|"html"
 decl_stmt|;
 DECL|field|KEY_LINK
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -1334,7 +1346,7 @@ init|=
 literal|"link"
 decl_stmt|;
 DECL|field|KEY_ENABLED
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -2369,6 +2381,31 @@ operator|.
 name|name
 argument_list|,
 name|commentLink
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|removeCommentLinkSection (String name)
+specifier|public
+name|void
+name|removeCommentLinkSection
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|requireNonNull
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+name|requireNonNull
+argument_list|(
+name|commentLinkSections
+operator|.
+name|remove
+argument_list|(
+name|name
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

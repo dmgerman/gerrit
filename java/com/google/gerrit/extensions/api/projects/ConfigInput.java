@@ -232,6 +232,16 @@ argument_list|>
 argument_list|>
 name|pluginConfigValues
 decl_stmt|;
+DECL|field|commentLinks
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|CommentLinkInput
+argument_list|>
+name|commentLinks
+decl_stmt|;
 block|}
 end_class
 
