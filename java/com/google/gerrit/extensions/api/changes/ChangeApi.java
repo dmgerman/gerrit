@@ -790,7 +790,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/** {@code get} with {@link ListChangesOption} set to all except CHECK. */
+comment|/**    * {@link #get(ListChangesOption...)} with all options included, except for the following.    *    *<ul>    *<li>{@code CHECK} is omitted, to skip consistency checks.    *<li>{@code SKIP_MERGEABLE} is omitted, so the {@code mergeable} bit<em>is</em> set.    *</ul>    */
 DECL|method|get ()
 name|ChangeInfo
 name|get
@@ -798,7 +798,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/** {@code get} with {@link ListChangesOption} set to none. */
+comment|/** {@link #get(ListChangesOption...)} with no options included. */
 DECL|method|info ()
 name|ChangeInfo
 name|info
