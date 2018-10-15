@@ -290,9 +290,10 @@ name|project
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// We only want to run the prolog engine if we have at least one rules.pl file to use.
+comment|// We only want to run the Prolog engine if we have at least one rules.pl file to use.
 if|if
 condition|(
+operator|(
 name|projectState
 operator|==
 literal|null
@@ -302,6 +303,14 @@ name|projectState
 operator|.
 name|hasPrologRules
 argument_list|()
+operator|)
+operator|&&
+name|opts
+operator|.
+name|rule
+argument_list|()
+operator|==
+literal|null
 condition|)
 block|{
 return|return
