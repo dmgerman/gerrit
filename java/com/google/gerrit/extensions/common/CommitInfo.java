@@ -325,6 +325,13 @@ argument_list|(
 name|commit
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|parents
+operator|!=
+literal|null
+condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -357,6 +364,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
