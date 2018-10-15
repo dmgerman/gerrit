@@ -367,14 +367,23 @@ parameter_list|()
 function_decl|;
 comment|/**    * Look up the current revision for the change.    *    *<p><strong>Note:</strong> This method eagerly reads the revision. Methods that mutate the    * revision do not necessarily re-read the revision. Therefore, calling a getter method on an    * instance after calling a mutation method on that same instance is not guaranteed to reflect the    * mutation. It is not recommended to store references to {@code RevisionApi} instances.    *    * @return API for accessing the revision.    * @throws RestApiException if an error occurred.    */
 DECL|method|current ()
+specifier|default
 name|RevisionApi
 name|current
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+return|return
+name|revision
+argument_list|(
+literal|"current"
+argument_list|)
+return|;
+block|}
 comment|/**    * Look up a revision of a change by number.    *    * @see #current()    */
 DECL|method|revision (int id)
+specifier|default
 name|RevisionApi
 name|revision
 parameter_list|(
@@ -383,8 +392,20 @@ name|id
 parameter_list|)
 throws|throws
 name|RestApiException
-function_decl|;
-comment|/**    * Look up a revision of a change by commit SHA-1.    *    * @see #current()    */
+block|{
+return|return
+name|revision
+argument_list|(
+name|Integer
+operator|.
+name|toString
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**    * Look up a revision of a change by commit SHA-1 or other supported revision string.    *    * @see #current()    */
 DECL|method|revision (String id)
 name|RevisionApi
 name|revision
@@ -407,12 +428,21 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|abandon ()
+specifier|default
 name|void
 name|abandon
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+name|abandon
+argument_list|(
+operator|new
+name|AbandonInput
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|abandon (AbandonInput in)
 name|void
 name|abandon
@@ -424,12 +454,21 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|restore ()
+specifier|default
 name|void
 name|restore
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+name|restore
+argument_list|(
+operator|new
+name|RestoreInput
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|restore (RestoreInput in)
 name|void
 name|restore
@@ -441,6 +480,7 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|move (String destination)
+specifier|default
 name|void
 name|move
 parameter_list|(
@@ -449,7 +489,26 @@ name|destination
 parameter_list|)
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+name|MoveInput
+name|in
+init|=
+operator|new
+name|MoveInput
+argument_list|()
+decl_stmt|;
+name|in
+operator|.
+name|destinationBranch
+operator|=
+name|destination
+expr_stmt|;
+name|move
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|move (MoveInput in)
 name|void
 name|move
@@ -555,12 +614,22 @@ name|RestApiException
 function_decl|;
 comment|/**    * Create a new change that reverts this change.    *    * @see Changes#id(int)    */
 DECL|method|revert ()
+specifier|default
 name|ChangeApi
 name|revert
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+return|return
+name|revert
+argument_list|(
+operator|new
+name|RevertInput
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**    * Create a new change that reverts this change.    *    * @see Changes#id(int)    */
 DECL|method|revert (RevertInput in)
 name|ChangeApi
@@ -584,6 +653,7 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|submittedTogether ()
+specifier|default
 name|List
 argument_list|<
 name|ChangeInfo
@@ -592,8 +662,39 @@ name|submittedTogether
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+name|SubmittedTogetherInfo
+name|info
+init|=
+name|submittedTogether
+argument_list|(
+name|EnumSet
+operator|.
+name|noneOf
+argument_list|(
+name|ListChangesOption
+operator|.
+name|class
+argument_list|)
+argument_list|,
+name|EnumSet
+operator|.
+name|noneOf
+argument_list|(
+name|SubmittedTogetherOption
+operator|.
+name|class
+argument_list|)
+argument_list|)
+decl_stmt|;
+return|return
+name|info
+operator|.
+name|changes
+return|;
+block|}
 DECL|method|submittedTogether (EnumSet<SubmittedTogetherOption> options)
+specifier|default
 name|SubmittedTogetherInfo
 name|submittedTogether
 parameter_list|(
@@ -605,7 +706,23 @@ name|options
 parameter_list|)
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+return|return
+name|submittedTogether
+argument_list|(
+name|EnumSet
+operator|.
+name|noneOf
+argument_list|(
+name|ListChangesOption
+operator|.
+name|class
+argument_list|)
+argument_list|,
+name|options
+argument_list|)
+return|;
+block|}
 DECL|method|submittedTogether ( EnumSet<ListChangesOption> listOptions, EnumSet<SubmittedTogetherOption> submitOptions)
 name|SubmittedTogetherInfo
 name|submittedTogether
@@ -629,20 +746,38 @@ comment|/** Publishes a draft change. */
 annotation|@
 name|Deprecated
 DECL|method|publish ()
+specifier|default
 name|void
 name|publish
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"draft workflow is discontinued"
+argument_list|)
+throw|;
+block|}
 comment|/** Rebase the current revision of a change using default options. */
 DECL|method|rebase ()
+specifier|default
 name|void
 name|rebase
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+name|rebase
+argument_list|(
+operator|new
+name|RebaseInput
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Rebase the current revision of a change. */
 DECL|method|rebase (RebaseInput in)
 name|void
@@ -686,21 +821,42 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|addReviewer (String reviewer)
+specifier|default
+name|AddReviewerResult
+name|addReviewer
+parameter_list|(
+name|String
+name|reviewer
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+name|AddReviewerInput
+name|in
+init|=
+operator|new
+name|AddReviewerInput
+argument_list|()
+decl_stmt|;
+name|in
+operator|.
+name|reviewer
+operator|=
+name|reviewer
+expr_stmt|;
+return|return
+name|addReviewer
+argument_list|(
+name|in
+argument_list|)
+return|;
+block|}
 DECL|method|addReviewer (AddReviewerInput in)
 name|AddReviewerResult
 name|addReviewer
 parameter_list|(
 name|AddReviewerInput
-name|in
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
-DECL|method|addReviewer (String in)
-name|AddReviewerResult
-name|addReviewer
-parameter_list|(
-name|String
 name|in
 parameter_list|)
 throws|throws
@@ -714,6 +870,7 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|suggestReviewers (String query)
+specifier|default
 name|SuggestedReviewersRequest
 name|suggestReviewers
 parameter_list|(
@@ -722,7 +879,17 @@ name|query
 parameter_list|)
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+return|return
+name|suggestReviewers
+argument_list|()
+operator|.
+name|withQuery
+argument_list|(
+name|query
+argument_list|)
+return|;
+block|}
 DECL|method|get (EnumSet<ListChangesOption> options)
 name|ChangeInfo
 name|get
@@ -792,30 +959,83 @@ return|;
 block|}
 comment|/**    * {@link #get(ListChangesOption...)} with all options included, except for the following.    *    *<ul>    *<li>{@code CHECK} is omitted, to skip consistency checks.    *<li>{@code SKIP_MERGEABLE} is omitted, so the {@code mergeable} bit<em>is</em> set.    *</ul>    */
 DECL|method|get ()
+specifier|default
 name|ChangeInfo
 name|get
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+return|return
+name|get
+argument_list|(
+name|EnumSet
+operator|.
+name|complementOf
+argument_list|(
+name|EnumSet
+operator|.
+name|of
+argument_list|(
+name|ListChangesOption
+operator|.
+name|CHECK
+argument_list|,
+name|ListChangesOption
+operator|.
+name|SKIP_MERGEABLE
+argument_list|)
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/** {@link #get(ListChangesOption...)} with no options included. */
 DECL|method|info ()
+specifier|default
 name|ChangeInfo
 name|info
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+return|return
+name|get
+argument_list|(
+name|EnumSet
+operator|.
+name|noneOf
+argument_list|(
+name|ListChangesOption
+operator|.
+name|class
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/**    * Retrieve change edit when exists.    *    * @deprecated Replaced by {@link ChangeApi#edit()} in combination with {@link    *     ChangeEditApi#get()}.    */
 annotation|@
 name|Deprecated
 DECL|method|getEdit ()
+specifier|default
 name|EditInfo
 name|getEdit
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+return|return
+name|edit
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
+return|;
+block|}
 comment|/**    * Provides access to an API regarding the change edit of this change.    *    * @return a {@code ChangeEditApi} for the change edit of this change    * @throws RestApiException if the API isn't accessible    */
 DECL|method|edit ()
 name|ChangeEditApi
@@ -826,6 +1046,7 @@ name|RestApiException
 function_decl|;
 comment|/** Create a new patch set with a new commit message. */
 DECL|method|setMessage (String message)
+specifier|default
 name|void
 name|setMessage
 parameter_list|(
@@ -834,7 +1055,26 @@ name|message
 parameter_list|)
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+name|CommitMessageInput
+name|in
+init|=
+operator|new
+name|CommitMessageInput
+argument_list|()
+decl_stmt|;
+name|in
+operator|.
+name|message
+operator|=
+name|message
+expr_stmt|;
+name|setMessage
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Create a new patch set with a new commit message. */
 DECL|method|setMessage (CommitMessageInput in)
 name|void
@@ -1128,41 +1368,6 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|current ()
-specifier|public
-name|RevisionApi
-name|current
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|revision (int id)
-specifier|public
-name|RevisionApi
-name|revision
-parameter_list|(
-name|int
-name|id
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
 DECL|method|reviewer (String id)
 specifier|public
 name|ReviewerApi
@@ -1201,22 +1406,6 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|abandon ()
-specifier|public
-name|void
-name|abandon
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
 DECL|method|abandon (AbandonInput in)
 specifier|public
 name|void
@@ -1236,22 +1425,6 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|restore ()
-specifier|public
-name|void
-name|restore
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
 DECL|method|restore (RestoreInput in)
 specifier|public
 name|void
@@ -1259,25 +1432,6 @@ name|restore
 parameter_list|(
 name|RestoreInput
 name|in
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|move (String destination)
-specifier|public
-name|void
-name|move
-parameter_list|(
-name|String
-name|destination
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -1371,22 +1525,6 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|revert ()
-specifier|public
-name|ChangeApi
-name|revert
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
 DECL|method|revert (RevertInput in)
 specifier|public
 name|ChangeApi
@@ -1395,40 +1533,6 @@ parameter_list|(
 name|RevertInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|publish ()
-specifier|public
-name|void
-name|publish
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Deprecated
-annotation|@
-name|Override
-DECL|method|rebase ()
-specifier|public
-name|void
-name|rebase
-parameter_list|()
 throws|throws
 name|RestApiException
 block|{
@@ -1545,49 +1649,11 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|addReviewer (String in)
-specifier|public
-name|AddReviewerResult
-name|addReviewer
-parameter_list|(
-name|String
-name|in
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
 DECL|method|suggestReviewers ()
 specifier|public
 name|SuggestedReviewersRequest
 name|suggestReviewers
 parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|suggestReviewers (String query)
-specifier|public
-name|SuggestedReviewersRequest
-name|suggestReviewers
-parameter_list|(
-name|String
-name|query
-parameter_list|)
 throws|throws
 name|RestApiException
 block|{
@@ -1621,57 +1687,6 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|get ()
-specifier|public
-name|ChangeInfo
-name|get
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|info ()
-specifier|public
-name|ChangeInfo
-name|info
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|setMessage (String message)
-specifier|public
-name|void
-name|setMessage
-parameter_list|(
-name|String
-name|message
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
 DECL|method|setMessage (CommitMessageInput in)
 specifier|public
 name|void
@@ -1680,22 +1695,6 @@ parameter_list|(
 name|CommitMessageInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|getEdit ()
-specifier|public
-name|EditInfo
-name|getEdit
-parameter_list|()
 throws|throws
 name|RestApiException
 block|{
