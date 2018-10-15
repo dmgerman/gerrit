@@ -2873,13 +2873,10 @@ argument_list|)
 expr_stmt|;
 name|ins
 operator|.
-name|setReviewers
+name|setReviewersAndCcs
 argument_list|(
 name|reviewers
-argument_list|)
-operator|.
-name|setExtraCC
-argument_list|(
+argument_list|,
 name|ccs
 argument_list|)
 expr_stmt|;

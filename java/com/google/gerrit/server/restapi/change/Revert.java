@@ -2123,13 +2123,6 @@ name|getAccountId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ins
-operator|.
-name|setReviewers
-argument_list|(
-name|reviewers
-argument_list|)
-expr_stmt|;
 name|Set
 argument_list|<
 name|Account
@@ -2164,8 +2157,10 @@ argument_list|)
 expr_stmt|;
 name|ins
 operator|.
-name|setExtraCC
+name|setReviewersAndCcs
 argument_list|(
+name|reviewers
+argument_list|,
 name|ccs
 argument_list|)
 expr_stmt|;

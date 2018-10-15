@@ -2878,6 +2878,11 @@ name|reviewerAdder
 operator|.
 name|prepare
 argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|revision
 operator|.
 name|getNotes
@@ -3746,6 +3751,7 @@ condition|(
 name|addition
 operator|.
 name|state
+argument_list|()
 operator|==
 name|ReviewerState
 operator|.
@@ -3777,6 +3783,7 @@ condition|(
 name|addition
 operator|.
 name|state
+argument_list|()
 operator|==
 name|ReviewerState
 operator|.

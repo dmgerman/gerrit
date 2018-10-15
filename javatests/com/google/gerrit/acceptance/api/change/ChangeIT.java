@@ -12496,6 +12496,22 @@ name|assertThat
 argument_list|(
 name|m
 operator|.
+name|from
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Administrator (Code Review)"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|m
+operator|.
 name|rcpt
 argument_list|()
 argument_list|)
@@ -12517,11 +12533,7 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|admin
-operator|.
-name|fullName
-operator|+
-literal|" has uploaded this change for review"
+literal|"I'd like you to do a code review"
 argument_list|)
 expr_stmt|;
 name|assertThat
