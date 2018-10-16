@@ -2438,6 +2438,11 @@ name|append
 argument_list|(
 literal|"  git commit --amend\n"
 argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"Finally, push your changes again\n"
+argument_list|)
 expr_stmt|;
 block|}
 return|return
