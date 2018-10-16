@@ -1734,24 +1734,14 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
-name|ProvisionException
-name|e
-init|=
+return|return
 operator|new
 name|ProvisionException
 argument_list|(
 literal|"Error scanning indexes"
-argument_list|)
-decl_stmt|;
-name|e
-operator|.
-name|initCause
-argument_list|(
+argument_list|,
 name|t
 argument_list|)
-expr_stmt|;
-return|return
-name|e
 return|;
 block|}
 block|}

@@ -650,24 +650,14 @@ name|TransformerException
 name|e
 parameter_list|)
 block|{
-name|IOException
-name|r
-init|=
+throw|throw
 operator|new
 name|IOException
 argument_list|(
 literal|"Error transforming page"
-argument_list|)
-decl_stmt|;
-name|r
-operator|.
-name|initCause
-argument_list|(
+argument_list|,
 name|e
 argument_list|)
-expr_stmt|;
-throw|throw
-name|r
 throw|;
 block|}
 block|}

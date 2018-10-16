@@ -2065,24 +2065,14 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|ProvisionException
-name|pe
-init|=
+throw|throw
 operator|new
 name|ProvisionException
 argument_list|(
 literal|"error opening ReviewDb"
-argument_list|)
-decl_stmt|;
-name|pe
-operator|.
-name|initCause
-argument_list|(
+argument_list|,
 name|e
 argument_list|)
-expr_stmt|;
-throw|throw
-name|pe
 throw|;
 block|}
 name|dbRef
