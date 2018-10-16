@@ -68,17 +68,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -802,7 +798,7 @@ name|this
 operator|.
 name|patchSetProvider
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|patchSetProvider
 argument_list|)
@@ -879,7 +875,7 @@ else|else
 block|{
 name|patchSet
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|psUtil
 operator|.
@@ -898,9 +894,16 @@ argument_list|,
 name|psId
 argument_list|)
 argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"patch set %s not found"
 argument_list|,
 name|psId
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1375,7 +1378,7 @@ name|ObjectId
 operator|.
 name|fromString
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|patchSet
 argument_list|)

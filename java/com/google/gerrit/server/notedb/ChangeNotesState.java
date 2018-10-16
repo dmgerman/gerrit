@@ -94,22 +94,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -233,6 +217,18 @@ operator|.
 name|ProtoCacheSerializers
 operator|.
 name|toByteString
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1150,11 +1146,19 @@ name|Id
 name|revertOf
 parameter_list|)
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|metaId
 argument_list|,
-literal|"metaId is required when passing arguments to create(...). To create an empty %s without"
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"metaId is required when passing arguments to create(...)."
+operator|+
+literal|" To create an empty %s without"
 operator|+
 literal|" NoteDb data, use empty(...) instead"
 argument_list|,
@@ -1164,6 +1168,7 @@ name|class
 operator|.
 name|getSimpleName
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -1869,7 +1874,7 @@ block|{
 name|ChangeColumns
 name|c
 init|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|columns
 argument_list|()
@@ -2147,7 +2152,7 @@ block|{
 name|ChangeColumns
 name|c
 init|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|columns
 argument_list|()

@@ -70,17 +70,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -294,7 +290,7 @@ name|this
 operator|.
 name|to
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|to
 argument_list|)
@@ -303,7 +299,7 @@ name|this
 operator|.
 name|threadId
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|threadId
 argument_list|)
@@ -312,7 +308,7 @@ name|this
 operator|.
 name|reason
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|reason
 argument_list|)

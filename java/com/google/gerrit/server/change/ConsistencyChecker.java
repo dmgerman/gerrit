@@ -88,22 +88,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -147,6 +131,18 @@ operator|.
 name|ChangeUtil
 operator|.
 name|PS_ID_ORDER
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1451,7 +1447,7 @@ name|FixInput
 name|f
 parameter_list|)
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|notes
 argument_list|)
@@ -3515,7 +3511,7 @@ argument_list|,
 operator|new
 name|DeletePatchSetFromDbOp
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|deleteOldPatchSetProblem
 argument_list|)
@@ -4957,7 +4953,7 @@ name|p
 operator|.
 name|message
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|msg
 argument_list|)

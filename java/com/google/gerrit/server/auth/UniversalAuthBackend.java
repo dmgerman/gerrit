@@ -68,17 +68,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -234,7 +230,7 @@ name|authUsers
 operator|.
 name|add
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|backend
 operator|.

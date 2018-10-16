@@ -94,22 +94,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -187,6 +171,18 @@ operator|.
 name|PrimaryStorage
 operator|.
 name|REVIEW_DB
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -2152,7 +2148,7 @@ name|this
 operator|.
 name|changeId
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|changeId
 argument_list|)
@@ -2161,7 +2157,7 @@ name|this
 operator|.
 name|primaryStorage
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|primaryStorage
 argument_list|)
@@ -2170,7 +2166,7 @@ name|this
 operator|.
 name|refState
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|refState
 argument_list|)
@@ -2179,7 +2175,7 @@ name|this
 operator|.
 name|readOnlyUntil
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|readOnlyUntil
 argument_list|)

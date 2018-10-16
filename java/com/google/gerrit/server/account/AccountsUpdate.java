@@ -78,23 +78,19 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
+name|checkState
 import|;
 end_import
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
+name|requireNonNull
 import|;
 end_import
 
@@ -1099,7 +1095,7 @@ name|this
 operator|.
 name|repoManager
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|repoManager
 argument_list|,
@@ -1110,7 +1106,7 @@ name|this
 operator|.
 name|gitRefUpdated
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|gitRefUpdated
 argument_list|,
@@ -1127,7 +1123,7 @@ name|this
 operator|.
 name|allUsersName
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|allUsersName
 argument_list|,
@@ -1138,7 +1134,7 @@ name|this
 operator|.
 name|externalIds
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|externalIds
 argument_list|,
@@ -1149,7 +1145,7 @@ name|this
 operator|.
 name|metaDataUpdateInternalFactory
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|metaDataUpdateInternalFactory
 argument_list|,
@@ -1160,7 +1156,7 @@ name|this
 operator|.
 name|retryHelper
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|retryHelper
 argument_list|,
@@ -1171,7 +1167,7 @@ name|this
 operator|.
 name|extIdNotesLoader
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|extIdNotesLoader
 argument_list|,
@@ -1182,7 +1178,7 @@ name|this
 operator|.
 name|committerIdent
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|committerIdent
 argument_list|,
@@ -1193,7 +1189,7 @@ name|this
 operator|.
 name|authorIdent
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|authorIdent
 argument_list|,
@@ -1204,7 +1200,7 @@ name|this
 operator|.
 name|afterReadRevision
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|afterReadRevision
 argument_list|,
@@ -1215,7 +1211,7 @@ name|this
 operator|.
 name|beforeCommit
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|beforeCommit
 argument_list|,
@@ -2560,7 +2556,7 @@ name|this
 operator|.
 name|allUsersName
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|allUsersName
 argument_list|)
@@ -2569,7 +2565,7 @@ name|this
 operator|.
 name|externalIds
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|externalIds
 argument_list|)
@@ -2578,7 +2574,7 @@ name|this
 operator|.
 name|message
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|message
 argument_list|)
@@ -2587,7 +2583,7 @@ name|this
 operator|.
 name|accountConfig
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|accountConfig
 argument_list|)
@@ -2596,7 +2592,7 @@ name|this
 operator|.
 name|extIdNotes
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|extIdNotes
 argument_list|)

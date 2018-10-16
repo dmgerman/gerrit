@@ -72,22 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|server
@@ -97,6 +81,18 @@ operator|.
 name|NoteDbTable
 operator|.
 name|CHANGES
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -663,7 +659,7 @@ return|return
 operator|new
 name|AutoValue_AbstractChangeNotes_LoadHandle
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|walk
 argument_list|)
@@ -792,7 +788,7 @@ name|this
 operator|.
 name|args
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|args
 argument_list|)
@@ -801,7 +797,7 @@ name|this
 operator|.
 name|changeId
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|changeId
 argument_list|)

@@ -68,17 +68,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Comparator
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|comparing
 import|;
 end_import
 
@@ -88,9 +84,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Comparator
+name|Objects
 operator|.
-name|comparing
+name|requireNonNull
 import|;
 end_import
 
@@ -2387,7 +2383,7 @@ name|add
 argument_list|(
 name|newDependsOn
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|cd
 operator|.
@@ -2609,7 +2605,7 @@ name|add
 argument_list|(
 name|newNeededBy
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|cd
 operator|.

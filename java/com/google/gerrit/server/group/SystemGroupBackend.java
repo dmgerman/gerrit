@@ -68,17 +68,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -985,7 +981,7 @@ name|uuid
 parameter_list|)
 block|{
 return|return
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|uuids
 operator|.
@@ -994,12 +990,19 @@ argument_list|(
 name|uuid
 argument_list|)
 argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"group %s not found"
 argument_list|,
 name|uuid
 operator|.
 name|get
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}

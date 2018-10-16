@@ -94,22 +94,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -127,6 +111,18 @@ operator|.
 name|ImmutableMultiset
 operator|.
 name|toImmutableMultiset
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -962,7 +958,7 @@ name|UpdateException
 throws|,
 name|RestApiException
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|listener
 argument_list|)
@@ -1935,7 +1931,7 @@ argument_list|,
 literal|"use insertChange"
 argument_list|)
 expr_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|op
 argument_list|)

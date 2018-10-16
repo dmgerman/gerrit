@@ -74,22 +74,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|net
 operator|.
 name|HttpHeaders
@@ -159,6 +143,18 @@ operator|.
 name|HttpHeaders
 operator|.
 name|LAST_MODIFIED
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -908,7 +904,7 @@ name|this
 operator|.
 name|cache
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|cache
 argument_list|,
@@ -1995,7 +1991,7 @@ name|this
 operator|.
 name|lastModified
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|lastModified
 argument_list|,
@@ -2006,7 +2002,7 @@ name|this
 operator|.
 name|contentType
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|contentType
 argument_list|,
@@ -2017,7 +2013,7 @@ name|this
 operator|.
 name|raw
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|raw
 argument_list|,

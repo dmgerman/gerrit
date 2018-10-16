@@ -80,22 +80,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -115,6 +99,18 @@ operator|.
 name|ApiUtil
 operator|.
 name|asRestApiException
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -939,7 +935,7 @@ comment|// REST API in this case, since it's intended to be used in Java.
 name|Object
 name|first
 init|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|result
 operator|.

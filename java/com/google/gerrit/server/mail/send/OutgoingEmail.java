@@ -74,22 +74,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -121,6 +105,18 @@ operator|.
 name|EmailStrategy
 operator|.
 name|DISABLED
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -801,7 +797,7 @@ name|this
 operator|.
 name|notify
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|notify
 argument_list|)
@@ -827,7 +823,7 @@ name|this
 operator|.
 name|accountsToNotify
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|accountsToNotify
 argument_list|)

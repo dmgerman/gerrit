@@ -74,22 +74,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -113,6 +97,18 @@ operator|.
 name|StandardCharsets
 operator|.
 name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -3173,13 +3169,20 @@ argument_list|(
 name|nameKey
 argument_list|)
 decl_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|state
 argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"Failed to load project %s"
 argument_list|,
 name|nameKey
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Hidden projects(permitsRead = false) should only be accessible by the project owners.

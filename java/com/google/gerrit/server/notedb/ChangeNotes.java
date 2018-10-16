@@ -94,22 +94,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -159,6 +143,18 @@ operator|.
 name|Comparator
 operator|.
 name|comparing
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -4176,7 +4172,7 @@ name|currentPatchSetId
 argument_list|()
 decl_stmt|;
 return|return
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|getPatchSets
 argument_list|()
@@ -4186,12 +4182,19 @@ argument_list|(
 name|psId
 argument_list|)
 argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"missing current patch set %s"
 argument_list|,
 name|psId
 operator|.
 name|get
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -4755,12 +4758,12 @@ argument_list|)
 expr_stmt|;
 name|rebuildResult
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|r
 argument_list|)
 expr_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|r
 operator|.
@@ -4768,7 +4771,7 @@ name|newState
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|r
 operator|.
@@ -4776,7 +4779,7 @@ name|staged
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|r
 operator|.

@@ -72,22 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -133,6 +117,18 @@ operator|.
 name|PrivateInternals_DynamicTypes
 operator|.
 name|dynamicSetsOf
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1633,7 +1629,7 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|web
 argument_list|,

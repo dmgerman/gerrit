@@ -86,17 +86,13 @@ end_import
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -864,7 +860,7 @@ block|{
 name|PatchSetData
 name|thisPsd
 init|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|byId
 operator|.
@@ -1785,7 +1781,7 @@ control|)
 block|{
 if|if
 condition|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|maxPatchSetIds
 operator|.

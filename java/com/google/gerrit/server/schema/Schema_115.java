@@ -85,6 +85,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1525,9 +1537,7 @@ name|String
 name|v
 parameter_list|)
 block|{
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|v
 argument_list|)

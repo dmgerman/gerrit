@@ -68,17 +68,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -837,7 +833,7 @@ block|{
 return|return
 name|addTag
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|requestId
 argument_list|,
@@ -866,7 +862,7 @@ block|{
 name|String
 name|name
 init|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|tagName
 argument_list|,
@@ -876,7 +872,7 @@ decl_stmt|;
 name|String
 name|value
 init|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|tagValue
 argument_list|,

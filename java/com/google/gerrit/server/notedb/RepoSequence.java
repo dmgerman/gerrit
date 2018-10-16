@@ -88,22 +88,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -145,6 +129,18 @@ operator|.
 name|StandardCharsets
 operator|.
 name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1078,7 +1074,7 @@ name|this
 operator|.
 name|repoManager
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|repoManager
 argument_list|,
@@ -1089,7 +1085,7 @@ name|this
 operator|.
 name|gitRefUpdated
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|gitRefUpdated
 argument_list|,
@@ -1100,7 +1096,7 @@ name|this
 operator|.
 name|projectName
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|projectName
 argument_list|,
@@ -1156,7 +1152,7 @@ name|this
 operator|.
 name|seed
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|seed
 argument_list|,
@@ -1190,7 +1186,7 @@ name|this
 operator|.
 name|afterReadRef
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|afterReadRef
 argument_list|,
@@ -1201,7 +1197,7 @@ name|this
 operator|.
 name|retryer
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|retryer
 argument_list|,

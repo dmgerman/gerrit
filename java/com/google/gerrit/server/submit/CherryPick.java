@@ -72,22 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|server
@@ -115,6 +99,18 @@ operator|.
 name|CommitMergeStatus
 operator|.
 name|SKIPPED_IDENTICAL_TREE
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1034,10 +1030,16 @@ return|return
 literal|null
 return|;
 block|}
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|newCommit
 argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"no new commit produced by CherryPick of %s, expected to fail fast"
 argument_list|,
 name|toMerge
@@ -1047,6 +1049,7 @@ argument_list|()
 operator|.
 name|getId
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|PatchSet

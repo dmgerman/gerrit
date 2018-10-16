@@ -68,17 +68,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -614,7 +610,7 @@ expr_stmt|;
 block|}
 name|index
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|indexes
 operator|.
@@ -623,11 +619,18 @@ argument_list|(
 name|newVersion
 argument_list|)
 argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"not an active write schema version: %s %s"
 argument_list|,
 name|name
 argument_list|,
 name|newVersion
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|logger

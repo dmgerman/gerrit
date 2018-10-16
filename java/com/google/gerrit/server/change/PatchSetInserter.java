@@ -78,22 +78,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -135,16 +119,14 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
+name|requireNonNull
 import|;
 end_import
 
@@ -1296,7 +1278,7 @@ argument_list|>
 name|groups
 parameter_list|)
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|groups
 argument_list|,
@@ -1345,9 +1327,7 @@ name|this
 operator|.
 name|notify
 operator|=
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|notify
 argument_list|)
@@ -1376,7 +1356,7 @@ name|this
 operator|.
 name|accountsToNotify
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|accountsToNotify
 argument_list|)

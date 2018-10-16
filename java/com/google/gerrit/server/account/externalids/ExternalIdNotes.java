@@ -80,22 +80,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -111,6 +95,18 @@ operator|.
 name|StandardCharsets
 operator|.
 name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1375,7 +1371,7 @@ name|this
 operator|.
 name|externalIdCache
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|externalIdCache
 argument_list|,
@@ -1423,7 +1419,7 @@ name|this
 operator|.
 name|allUsersName
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|allUsersName
 argument_list|,
@@ -1434,7 +1430,7 @@ name|this
 operator|.
 name|repo
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|allUsersRepo
 argument_list|,

@@ -76,22 +76,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|truth
 operator|.
 name|Truth
@@ -181,6 +165,18 @@ operator|.
 name|Collections
 operator|.
 name|singleton
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -6273,7 +6269,7 @@ name|p
 operator|.
 name|status
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|status
 argument_list|)
@@ -6282,7 +6278,7 @@ name|p
 operator|.
 name|outcome
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|outcome
 argument_list|)

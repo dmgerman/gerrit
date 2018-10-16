@@ -74,22 +74,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|ImmutableList
@@ -167,6 +151,18 @@ operator|.
 name|RefNames
 operator|.
 name|REFS_USERS_SELF
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -2862,7 +2858,7 @@ name|boolean
 name|isAdmin
 parameter_list|)
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|group
 argument_list|)

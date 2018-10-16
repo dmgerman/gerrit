@@ -112,22 +112,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -377,6 +361,18 @@ operator|.
 name|Comparator
 operator|.
 name|comparingInt
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -15500,7 +15496,7 @@ operator|.
 name|getFooterLines
 argument_list|()
 decl_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|magicBranch
 argument_list|)
@@ -15893,17 +15889,24 @@ range|:
 name|create
 control|)
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|r
 operator|.
 name|change
 argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"cannot submit new change %s; op may not have run"
 argument_list|,
 name|r
 operator|.
 name|changeId
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|bySha
@@ -15960,13 +15963,20 @@ name|getNewId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|tipChange
 argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"tip of push does not correspond to a change; found these changes: %s"
 argument_list|,
 name|bySha
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|logger
@@ -16446,7 +16456,7 @@ name|this
 operator|.
 name|inputCommand
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|cmd
 argument_list|)
@@ -17837,7 +17847,7 @@ name|this
 operator|.
 name|psId
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|PatchSet
 operator|.
@@ -18052,7 +18062,7 @@ name|this
 operator|.
 name|cmd
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|cmd
 argument_list|)

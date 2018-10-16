@@ -68,17 +68,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -183,7 +179,7 @@ name|this
 operator|.
 name|change
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|change
 argument_list|)
@@ -192,7 +188,7 @@ name|this
 operator|.
 name|editRefName
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|editRefName
 argument_list|)
@@ -201,7 +197,7 @@ name|this
 operator|.
 name|editCommit
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|editCommit
 argument_list|)
@@ -210,7 +206,7 @@ name|this
 operator|.
 name|basePatchSet
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|basePatchSet
 argument_list|)

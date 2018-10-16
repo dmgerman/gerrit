@@ -68,17 +68,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -1412,7 +1408,7 @@ name|this
 operator|.
 name|project
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|projectCache
 operator|.
@@ -1424,12 +1420,19 @@ name|getParentKey
 argument_list|()
 argument_list|)
 argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"project not found: %s"
 argument_list|,
 name|destBranch
 operator|.
 name|getParentKey
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -1508,7 +1511,7 @@ name|this
 operator|.
 name|args
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|args
 argument_list|)

@@ -76,22 +76,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -113,6 +97,18 @@ operator|.
 name|Context
 operator|.
 name|SINGLE_USER
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -810,7 +806,7 @@ decl_stmt|;
 name|Relation
 name|rel
 init|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|relations
 operator|.
@@ -822,6 +818,10 @@ name|getKey
 argument_list|()
 argument_list|)
 argument_list|,
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"unknown relation ID %s in message: %s"
 argument_list|,
 name|e
@@ -830,6 +830,7 @@ name|getKey
 argument_list|()
 argument_list|,
 name|msg
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|List

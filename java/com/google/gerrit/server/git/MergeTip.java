@@ -84,17 +84,13 @@ end_import
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -203,7 +199,7 @@ argument_list|>
 name|toMerge
 parameter_list|)
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|toMerge
 argument_list|,

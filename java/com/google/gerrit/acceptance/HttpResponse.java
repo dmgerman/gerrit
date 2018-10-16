@@ -95,16 +95,14 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
+name|requireNonNull
 import|;
 end_import
 
@@ -444,9 +442,7 @@ name|boolean
 name|hasContent
 parameter_list|()
 block|{
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|response
 argument_list|,
@@ -470,18 +466,14 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|response
 argument_list|,
 literal|"Response is not initialized."
 argument_list|)
 expr_stmt|;
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|response
 operator|.

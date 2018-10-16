@@ -66,22 +66,6 @@ end_package
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|nio
@@ -91,6 +75,18 @@ operator|.
 name|StandardCharsets
 operator|.
 name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1122,7 +1118,7 @@ return|return
 operator|new
 name|AutoValue_StarredChangesUtil_StarRef
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|ref
 argument_list|)

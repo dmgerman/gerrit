@@ -66,17 +66,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -504,13 +500,20 @@ argument_list|(
 name|allProjects
 argument_list|)
 decl_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|allProjectsState
 argument_list|,
-literal|"Can't obtain project state for "
-operator|+
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Can't obtain project state for %s"
+argument_list|,
 name|allProjects
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ProjectState
@@ -523,13 +526,20 @@ argument_list|(
 name|allUsers
 argument_list|)
 decl_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|allUsersState
 argument_list|,
-literal|"Can't obtain project state for "
-operator|+
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Can't obtain project state for %s"
+argument_list|,
 name|allUsers
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|Set

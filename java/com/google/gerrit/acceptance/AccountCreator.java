@@ -66,17 +66,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -995,7 +991,7 @@ name|username
 parameter_list|)
 block|{
 return|return
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|accounts
 operator|.
@@ -1004,9 +1000,16 @@ argument_list|(
 name|username
 argument_list|)
 argument_list|,
-literal|"No TestAccount created for %s"
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"No TestAccount created for %s "
 argument_list|,
 name|username
+argument_list|)
 argument_list|)
 return|;
 block|}

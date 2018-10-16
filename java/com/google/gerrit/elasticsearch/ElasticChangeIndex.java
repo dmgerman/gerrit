@@ -70,22 +70,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -185,6 +169,18 @@ operator|.
 name|StandardCharsets
 operator|.
 name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1828,7 +1824,7 @@ comment|// IndexUtils#changeFields ensures either CHANGE or PROJECT is always pr
 name|String
 name|projectName
 init|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|source
 operator|.

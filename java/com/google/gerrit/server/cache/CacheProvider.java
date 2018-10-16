@@ -78,23 +78,19 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
+name|checkState
 import|;
 end_import
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
+name|requireNonNull
 import|;
 end_import
 
@@ -632,7 +628,7 @@ argument_list|()
 expr_stmt|;
 name|configKey
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|name
 argument_list|)

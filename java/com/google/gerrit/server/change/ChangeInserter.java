@@ -78,22 +78,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -181,6 +165,18 @@ operator|.
 name|ReviewerStateInternal
 operator|.
 name|REVIEWER
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -2135,7 +2131,7 @@ name|this
 operator|.
 name|accountsToNotify
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|accountsToNotify
 argument_list|)
@@ -2369,7 +2365,7 @@ argument_list|>
 name|groups
 parameter_list|)
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|groups
 argument_list|,

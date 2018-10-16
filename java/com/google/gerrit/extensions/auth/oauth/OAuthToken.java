@@ -70,17 +70,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -255,7 +251,7 @@ name|this
 operator|.
 name|token
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|token
 argument_list|,
@@ -266,7 +262,7 @@ name|this
 operator|.
 name|secret
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|secret
 argument_list|,
@@ -277,7 +273,7 @@ name|this
 operator|.
 name|raw
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|raw
 argument_list|,

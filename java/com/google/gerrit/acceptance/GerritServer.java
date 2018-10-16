@@ -92,23 +92,19 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
+name|checkState
 import|;
 end_import
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
+name|requireNonNull
 import|;
 end_import
 
@@ -2597,7 +2593,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|site
 argument_list|)
@@ -3422,7 +3418,7 @@ name|this
 operator|.
 name|desc
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|desc
 argument_list|)
@@ -3437,7 +3433,7 @@ name|this
 operator|.
 name|testInjector
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|testInjector
 argument_list|)
@@ -3446,7 +3442,7 @@ name|this
 operator|.
 name|daemon
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|daemon
 argument_list|)

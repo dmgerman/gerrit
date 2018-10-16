@@ -68,17 +68,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -183,7 +179,7 @@ name|super
 argument_list|(
 name|MESSAGE_PREFIX
 operator|+
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|permission
 argument_list|)
@@ -223,7 +219,7 @@ name|super
 argument_list|(
 name|MESSAGE_PREFIX
 operator|+
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|permission
 argument_list|)
@@ -233,7 +229,7 @@ argument_list|()
 operator|+
 literal|" on "
 operator|+
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|resource
 argument_list|)

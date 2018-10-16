@@ -84,17 +84,13 @@ end_import
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -402,7 +398,7 @@ name|this
 operator|.
 name|repo
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|repo
 argument_list|)
@@ -411,7 +407,7 @@ name|this
 operator|.
 name|rw
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|rw
 argument_list|)
@@ -420,7 +416,7 @@ name|this
 operator|.
 name|inserter
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|inserter
 argument_list|)

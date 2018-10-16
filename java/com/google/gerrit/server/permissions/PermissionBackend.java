@@ -68,17 +68,13 @@ end_package
 
 begin_import
 import|import static
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 import|;
 end_import
 
@@ -666,7 +662,7 @@ name|Providers
 operator|.
 name|of
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|db
 argument_list|,
@@ -1084,14 +1080,14 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|perm
 argument_list|,
 literal|"ProjectPermission"
 argument_list|)
 expr_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|projects
 argument_list|,
@@ -1960,7 +1956,7 @@ name|test
 argument_list|(
 name|valuesOf
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|label
 argument_list|,
@@ -1990,7 +1986,7 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|types
 argument_list|,

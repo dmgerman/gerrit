@@ -94,22 +94,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -129,6 +113,18 @@ operator|.
 name|ReviewerStateInternal
 operator|.
 name|REVIEWER
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1729,7 +1725,7 @@ operator|.
 name|Id
 name|oldPsId
 init|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|toMerge
 operator|.
@@ -1742,7 +1738,7 @@ operator|.
 name|Id
 name|newPsId
 init|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|ctx
 operator|.
@@ -1782,7 +1778,7 @@ comment|// Ok to use stale notes to get the old patch set, which didn't change
 comment|// during the submit strategy.
 name|mergedPatchSet
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|args
 operator|.
@@ -1803,9 +1799,16 @@ argument_list|,
 name|oldPsId
 argument_list|)
 argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"missing old patch set %s"
 argument_list|,
 name|oldPsId
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1885,13 +1888,20 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|commit
 argument_list|,
-literal|"missing commit for change "
-operator|+
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"missing commit for change %s"
+argument_list|,
 name|id
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|CommitMergeStatus
@@ -1902,15 +1912,20 @@ operator|.
 name|getStatusCode
 argument_list|()
 decl_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|s
 argument_list|,
-literal|"status not set for change "
-operator|+
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"status not set for change %s; expected to previously fail fast"
+argument_list|,
 name|id
-operator|+
-literal|" expected to previously fail fast"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|logger
@@ -2932,7 +2947,7 @@ name|String
 name|getByAccountName
 parameter_list|()
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|submitter
 argument_list|,
@@ -3015,7 +3030,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|s
 argument_list|,

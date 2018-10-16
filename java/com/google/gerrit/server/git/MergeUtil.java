@@ -94,22 +94,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -141,6 +125,18 @@ operator|.
 name|StandardCharsets
 operator|.
 name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1437,7 +1433,7 @@ name|String
 name|current
 parameter_list|)
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|original
 operator|.
@@ -1452,7 +1448,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|mergeTip
 operator|.
@@ -1484,9 +1480,17 @@ argument_list|,
 name|dest
 argument_list|)
 expr_stmt|;
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|current
+argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s.OnSubmit returned null instead of new commit message"
 argument_list|,
 name|changeMessageModifier
 operator|.
@@ -1495,8 +1499,7 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|".OnSubmit returned null instead of new commit message"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

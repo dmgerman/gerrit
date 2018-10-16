@@ -78,22 +78,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkState
 import|;
 end_import
@@ -107,6 +91,18 @@ operator|.
 name|Comparator
 operator|.
 name|comparing
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1327,7 +1323,7 @@ name|this
 operator|.
 name|notes
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|notes
 argument_list|)
@@ -1375,7 +1371,7 @@ name|ReviewDb
 name|getDb
 parameter_list|()
 block|{
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|dbWrapper
 argument_list|)

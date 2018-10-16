@@ -72,22 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|server
@@ -97,6 +81,18 @@ operator|.
 name|DefaultPermissionMappings
 operator|.
 name|globalPermissionName
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -656,7 +652,7 @@ return|return
 operator|new
 name|WithUserImpl
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|user
 argument_list|,
@@ -685,7 +681,7 @@ name|identifiedUserFactory
 operator|.
 name|create
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|id
 argument_list|,
@@ -741,7 +737,7 @@ name|this
 operator|.
 name|user
 operator|=
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|user
 argument_list|,
@@ -1464,7 +1460,7 @@ argument_list|()
 operator|.
 name|getPermission
 argument_list|(
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|permissionName
 argument_list|)
