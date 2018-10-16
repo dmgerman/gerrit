@@ -4413,24 +4413,7 @@ operator|.
 name|getMessage
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|m
-operator|.
-name|isError
-argument_list|()
-condition|)
-block|{
-name|messageSender
-operator|.
-name|sendError
-argument_list|(
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
+comment|// Avoid calling sendError which will add its own error: prefix.
 name|messageSender
 operator|.
 name|sendMessage
@@ -4438,7 +4421,6 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|processCommands (Collection<ReceiveCommand> commands, MultiProgressMonitor progress)
