@@ -418,6 +418,24 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+name|opt
+argument_list|(
+name|buf
+argument_list|,
+name|event
+argument_list|,
+name|HttpLog
+operator|.
+name|P_LATENCY
+argument_list|)
+expr_stmt|;
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|' '
+argument_list|)
+expr_stmt|;
 name|dq_opt
 argument_list|(
 name|buf
