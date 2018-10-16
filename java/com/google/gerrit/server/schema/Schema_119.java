@@ -72,6 +72,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -171,20 +187,6 @@ operator|.
 name|ConfigUtil
 operator|.
 name|storeSection
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
 import|;
 end_import
 
@@ -1692,8 +1694,6 @@ name|String
 name|v
 parameter_list|)
 block|{
-name|Preconditions
-operator|.
 name|checkState
 argument_list|(
 operator|!

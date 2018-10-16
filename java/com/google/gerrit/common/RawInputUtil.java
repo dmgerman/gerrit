@@ -66,6 +66,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -101,20 +117,6 @@ operator|.
 name|annotations
 operator|.
 name|GwtIncompatible
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
 import|;
 end_import
 
@@ -228,8 +230,6 @@ argument_list|(
 name|bytes
 argument_list|)
 expr_stmt|;
-name|Preconditions
-operator|.
 name|checkArgument
 argument_list|(
 name|bytes

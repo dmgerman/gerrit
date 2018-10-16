@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -77,6 +77,8 @@ operator|.
 name|base
 operator|.
 name|Preconditions
+operator|.
+name|checkState
 import|;
 end_import
 
@@ -423,8 +425,6 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Preconditions
-operator|.
 name|checkState
 argument_list|(
 name|changeUrl

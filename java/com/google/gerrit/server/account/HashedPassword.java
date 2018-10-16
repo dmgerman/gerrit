@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -77,6 +77,8 @@ operator|.
 name|base
 operator|.
 name|Preconditions
+operator|.
+name|checkState
 import|;
 end_import
 
@@ -588,8 +590,6 @@ name|cost
 operator|=
 name|cost
 expr_stmt|;
-name|Preconditions
-operator|.
 name|checkState
 argument_list|(
 name|cost
@@ -602,8 +602,6 @@ literal|32
 argument_list|)
 expr_stmt|;
 comment|// salt must be 128 bit.
-name|Preconditions
-operator|.
 name|checkState
 argument_list|(
 name|salt

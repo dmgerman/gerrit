@@ -65,7 +65,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -75,6 +75,8 @@ operator|.
 name|base
 operator|.
 name|Preconditions
+operator|.
+name|checkState
 import|;
 end_import
 
@@ -183,8 +185,6 @@ name|void
 name|configure
 parameter_list|()
 block|{
-name|Preconditions
-operator|.
 name|checkState
 argument_list|(
 name|command

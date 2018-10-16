@@ -74,6 +74,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -147,20 +163,6 @@ operator|.
 name|annotations
 operator|.
 name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
 import|;
 end_import
 
@@ -2503,8 +2505,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|Preconditions
-operator|.
 name|checkState
 argument_list|(
 name|webUrl
@@ -2574,8 +2574,6 @@ literal|"*:"
 argument_list|)
 condition|)
 block|{
-name|Preconditions
-operator|.
 name|checkState
 argument_list|(
 name|webUrl
