@@ -2738,6 +2738,17 @@ argument_list|)
 operator|.
 name|setWorkInProgress
 argument_list|(
+operator|(
+name|sourceChange
+operator|!=
+literal|null
+operator|&&
+name|sourceChange
+operator|.
+name|isWorkInProgress
+argument_list|()
+operator|)
+operator|||
 operator|!
 name|cherryPickCommit
 operator|.
