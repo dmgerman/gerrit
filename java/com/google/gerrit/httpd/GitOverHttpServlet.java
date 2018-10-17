@@ -450,6 +450,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectCache
@@ -2056,7 +2072,7 @@ decl_stmt|;
 DECL|field|uploadPackInitializers
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|UploadPackInitializer
 argument_list|>
@@ -2064,7 +2080,7 @@ name|uploadPackInitializers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UploadFactory ( TransferConfig tc, DynamicSet<PreUploadHook> preUploadHooks, DynamicSet<PostUploadHook> postUploadHooks, DynamicSet<UploadPackInitializer> uploadPackInitializers)
+DECL|method|UploadFactory ( TransferConfig tc, DynamicSet<PreUploadHook> preUploadHooks, DynamicSet<PostUploadHook> postUploadHooks, PluginSetContext<UploadPackInitializer> uploadPackInitializers)
 name|UploadFactory
 parameter_list|(
 name|TransferConfig
@@ -2082,7 +2098,7 @@ name|PostUploadHook
 argument_list|>
 name|postUploadHooks
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|UploadPackInitializer
 argument_list|>
@@ -2254,14 +2270,12 @@ argument_list|(
 name|ATT_STATE
 argument_list|)
 decl_stmt|;
-for|for
-control|(
-name|UploadPackInitializer
-name|initializer
-range|:
 name|uploadPackInitializers
-control|)
-block|{
+operator|.
+name|runEach
+argument_list|(
+name|initializer
+lambda|->
 name|initializer
 operator|.
 name|init
@@ -2273,8 +2287,8 @@ argument_list|()
 argument_list|,
 name|up
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|up
 return|;

@@ -114,22 +114,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
-name|DynamicSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|index
 operator|.
 name|Index
@@ -250,6 +234,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -358,7 +358,7 @@ name|versionDiscovery
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ElasticIndexVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, DynamicSet<OnlineUpgradeListener> listeners, Collection<IndexDefinition<?, ?, ?>> defs, ElasticIndexVersionDiscovery versionDiscovery)
+DECL|method|ElasticIndexVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, PluginSetContext<OnlineUpgradeListener> listeners, Collection<IndexDefinition<?, ?, ?>> defs, ElasticIndexVersionDiscovery versionDiscovery)
 name|ElasticIndexVersionManager
 parameter_list|(
 annotation|@
@@ -369,7 +369,7 @@ parameter_list|,
 name|SitePaths
 name|sitePaths
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|OnlineUpgradeListener
 argument_list|>

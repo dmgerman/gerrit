@@ -100,22 +100,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
-name|DynamicSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|index
 operator|.
 name|Index
@@ -227,6 +211,22 @@ operator|.
 name|index
 operator|.
 name|VersionManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
 import|;
 end_import
 
@@ -399,7 +399,7 @@ return|;
 block|}
 annotation|@
 name|Inject
-DECL|method|LuceneVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, DynamicSet<OnlineUpgradeListener> listeners, Collection<IndexDefinition<?, ?, ?>> defs)
+DECL|method|LuceneVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, PluginSetContext<OnlineUpgradeListener> listeners, Collection<IndexDefinition<?, ?, ?>> defs)
 name|LuceneVersionManager
 parameter_list|(
 annotation|@
@@ -410,7 +410,7 @@ parameter_list|,
 name|SitePaths
 name|sitePaths
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|OnlineUpgradeListener
 argument_list|>
