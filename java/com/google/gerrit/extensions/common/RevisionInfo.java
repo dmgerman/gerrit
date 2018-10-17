@@ -108,6 +108,8 @@ specifier|public
 class|class
 name|RevisionInfo
 block|{
+comment|// ActionJson#copy(List, RevisionInfo) must be adapted if new fields are added that are not
+comment|// protected by any ListChangesOption.
 DECL|field|isCurrent
 specifier|public
 specifier|transient
