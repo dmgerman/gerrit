@@ -886,8 +886,8 @@ return|return
 literal|null
 return|;
 block|}
-comment|// Include all fields from ChangeJson#toChangeInfo that are not protected by
-comment|// any ListChangesOptions.
+comment|// Include all fields from ChangeJson#toChangeInfo that are not protected by any
+comment|// ListChangesOptions.
 name|ChangeInfo
 name|copy
 init|=
@@ -977,6 +977,14 @@ name|deletions
 expr_stmt|;
 name|copy
 operator|.
+name|hasReviewStarted
+operator|=
+name|changeInfo
+operator|.
+name|hasReviewStarted
+expr_stmt|;
+name|copy
+operator|.
 name|isPrivate
 operator|=
 name|changeInfo
@@ -1033,6 +1041,14 @@ name|_number
 expr_stmt|;
 name|copy
 operator|.
+name|revertOf
+operator|=
+name|changeInfo
+operator|.
+name|revertOf
+expr_stmt|;
+name|copy
+operator|.
 name|starred
 operator|=
 name|changeInfo
@@ -1062,6 +1078,14 @@ operator|=
 name|changeInfo
 operator|.
 name|submitter
+expr_stmt|;
+name|copy
+operator|.
+name|unresolvedCommentCount
+operator|=
+name|changeInfo
+operator|.
+name|unresolvedCommentCount
 expr_stmt|;
 name|copy
 operator|.
@@ -1110,8 +1134,8 @@ return|return
 literal|null
 return|;
 block|}
-comment|// Include all fields from ChangeJson#toRevisionInfo that are not protected
-comment|// by any ListChangesOptions.
+comment|// Include all fields from ChangeJson#toRevisionInfo that are not protected by any
+comment|// ListChangesOptions.
 name|RevisionInfo
 name|copy
 init|=

@@ -160,6 +160,8 @@ specifier|public
 class|class
 name|ChangeInfo
 block|{
+comment|// ActionJson#copy(List, ChangeInfo) must be adapted if new fields are added that are not
+comment|// protected by any ListChangesOption.
 DECL|field|id
 specifier|public
 name|String
