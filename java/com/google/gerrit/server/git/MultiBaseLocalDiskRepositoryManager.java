@@ -109,8 +109,6 @@ operator|.
 name|client
 operator|.
 name|Project
-operator|.
-name|NameKey
 import|;
 end_import
 
@@ -329,11 +327,13 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getBasePath (NameKey name)
+DECL|method|getBasePath (Project.NameKey name)
 specifier|public
 name|Path
 name|getBasePath
 parameter_list|(
+name|Project
+operator|.
 name|NameKey
 name|name
 parameter_list|)
