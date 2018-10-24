@@ -106,24 +106,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
-operator|.
-name|NameKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -297,6 +279,8 @@ return|;
 block|}
 DECL|method|getProject ()
 specifier|public
+name|Project
+operator|.
 name|NameKey
 name|getProject
 parameter_list|()
