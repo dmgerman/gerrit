@@ -6619,10 +6619,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|queryChangesWithUnresolvedCommentCount ()
+DECL|method|queryChangesWithCommentCounts ()
 specifier|public
 name|void
-name|queryChangesWithUnresolvedCommentCount
+name|queryChangesWithCommentCounts
 parameter_list|()
 throws|throws
 name|Exception
@@ -6734,6 +6734,18 @@ operator|.
 name|isEqualTo
 argument_list|(
 literal|0
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|result
+operator|.
+name|totalCommentCount
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|1
 argument_list|)
 expr_stmt|;
 block|}

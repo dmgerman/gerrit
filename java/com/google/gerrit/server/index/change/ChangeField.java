@@ -3913,7 +3913,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/** Number of unresolved comments of the change. */
+comment|/** Number of unresolved comment threads of the change, including robot comments. */
 DECL|field|UNRESOLVED_COMMENT_COUNT
 specifier|public
 specifier|static
@@ -3938,6 +3938,31 @@ argument_list|(
 name|ChangeData
 operator|::
 name|unresolvedCommentCount
+argument_list|)
+decl_stmt|;
+comment|/** Total number of published inline comments of the change, including robot comments. */
+DECL|field|TOTAL_COMMENT_COUNT
+specifier|public
+specifier|static
+specifier|final
+name|FieldDef
+argument_list|<
+name|ChangeData
+argument_list|,
+name|Integer
+argument_list|>
+name|TOTAL_COMMENT_COUNT
+init|=
+name|intRange
+argument_list|(
+literal|"total_comments"
+argument_list|)
+operator|.
+name|build
+argument_list|(
+name|ChangeData
+operator|::
+name|totalCommentCount
 argument_list|)
 decl_stmt|;
 comment|/** Whether the change is mergeable. */

@@ -18452,6 +18452,30 @@ operator|.
 name|unresolvedCommentCount
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|getSchemaVersion
+argument_list|()
+operator|<
+literal|51
+condition|)
+block|{
+name|assertMissingField
+argument_list|(
+name|ChangeField
+operator|.
+name|TOTAL_COMMENT_COUNT
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|cd
+operator|.
+name|totalCommentCount
+argument_list|()
+expr_stmt|;
+block|}
 comment|// TODO(dborowitz): Swap out GitRepositoryManager somehow? Will probably be
 comment|// necessary for NoteDb anyway.
 name|cd
