@@ -323,9 +323,17 @@ specifier|final
 name|PersonIdent
 name|serverUser
 decl_stmt|;
+DECL|field|projectConfigSchemaUpdateFactory
+specifier|private
+specifier|final
+name|ProjectConfigSchemaUpdate
+operator|.
+name|Factory
+name|projectConfigSchemaUpdateFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Schema_130 ( Provider<Schema_129> prior, GitRepositoryManager repoManager, @GerritPersonIdent PersonIdent serverUser)
+DECL|method|Schema_130 ( Provider<Schema_129> prior, GitRepositoryManager repoManager, @GerritPersonIdent PersonIdent serverUser, ProjectConfigSchemaUpdate.Factory projectConfigSchemaUpdateFactory)
 name|Schema_130
 parameter_list|(
 name|Provider
@@ -341,6 +349,11 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverUser
+parameter_list|,
+name|ProjectConfigSchemaUpdate
+operator|.
+name|Factory
+name|projectConfigSchemaUpdateFactory
 parameter_list|)
 block|{
 name|super
@@ -359,6 +372,12 @@ operator|.
 name|serverUser
 operator|=
 name|serverUser
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigSchemaUpdateFactory
+operator|=
+name|projectConfigSchemaUpdateFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -458,7 +477,7 @@ block|{
 name|ProjectConfigSchemaUpdate
 name|cfg
 init|=
-name|ProjectConfigSchemaUpdate
+name|projectConfigSchemaUpdateFactory
 operator|.
 name|read
 argument_list|(
