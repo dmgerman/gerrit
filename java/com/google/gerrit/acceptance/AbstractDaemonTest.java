@@ -3028,6 +3028,15 @@ specifier|protected
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|projectConfigFactory
+annotation|@
+name|Inject
+specifier|protected
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|projectResetter
 annotation|@
 name|Inject
@@ -7047,7 +7056,7 @@ block|{
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(
@@ -7114,7 +7123,7 @@ block|{
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(
@@ -7181,7 +7190,7 @@ block|{
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(
@@ -7617,7 +7626,7 @@ expr_stmt|;
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(
@@ -7774,7 +7783,7 @@ expr_stmt|;
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(
@@ -7924,7 +7933,7 @@ expr_stmt|;
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(
@@ -11917,7 +11926,7 @@ argument_list|)
 expr_stmt|;
 name|projectConfig
 operator|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

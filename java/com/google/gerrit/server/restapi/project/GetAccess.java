@@ -1055,9 +1055,17 @@ specifier|final
 name|WebLinks
 name|webLinks
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetAccess ( Provider<CurrentUser> self, PermissionBackend permissionBackend, AllProjectsName allProjectsName, ProjectCache projectCache, MetaDataUpdate.Server metaDataUpdateFactory, ProjectJson projectJson, GroupBackend groupBackend, WebLinks webLinks)
+DECL|method|GetAccess ( Provider<CurrentUser> self, PermissionBackend permissionBackend, AllProjectsName allProjectsName, ProjectCache projectCache, MetaDataUpdate.Server metaDataUpdateFactory, ProjectJson projectJson, GroupBackend groupBackend, WebLinks webLinks, ProjectConfig.Factory projectConfigFactory)
 specifier|public
 name|GetAccess
 parameter_list|(
@@ -1089,6 +1097,11 @@ name|groupBackend
 parameter_list|,
 name|WebLinks
 name|webLinks
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|this
@@ -1138,6 +1151,12 @@ operator|.
 name|webLinks
 operator|=
 name|webLinks
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 block|}
 DECL|method|apply (Project.NameKey nameKey)
@@ -1285,7 +1304,7 @@ init|)
 block|{
 name|config
 operator|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

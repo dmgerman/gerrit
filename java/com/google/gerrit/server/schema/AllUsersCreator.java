@@ -400,6 +400,24 @@ name|server
 operator|.
 name|project
 operator|.
+name|ProjectConfig
+operator|.
+name|Factory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
 name|RefPattern
 import|;
 end_import
@@ -538,6 +556,14 @@ specifier|final
 name|PersonIdent
 name|serverUser
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|registered
 specifier|private
 specifier|final
@@ -558,7 +584,7 @@ name|codeReviewLabel
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AllUsersCreator ( GitRepositoryManager mgr, AllUsersName allUsersName, SystemGroupBackend systemGroupBackend, @GerritPersonIdent PersonIdent serverUser)
+DECL|method|AllUsersCreator ( GitRepositoryManager mgr, AllUsersName allUsersName, SystemGroupBackend systemGroupBackend, @GerritPersonIdent PersonIdent serverUser, Factory projectConfigFactory)
 name|AllUsersCreator
 parameter_list|(
 name|GitRepositoryManager
@@ -574,6 +600,9 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverUser
+parameter_list|,
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|this
@@ -604,6 +633,12 @@ name|getGroup
 argument_list|(
 name|REGISTERED_USERS
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 name|this
 operator|.
@@ -846,7 +881,7 @@ expr_stmt|;
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

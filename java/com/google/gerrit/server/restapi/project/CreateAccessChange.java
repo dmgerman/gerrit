@@ -785,9 +785,17 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccessChange ( PermissionBackend permissionBackend, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Sequences seq, Provider<MetaDataUpdate.User> metaDataUpdateFactory, Provider<ReviewDb> db, SetAccessUtil accessUtil, ChangeJson.Factory jsonFactory, ProjectCache projectCache)
+DECL|method|CreateAccessChange ( PermissionBackend permissionBackend, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Sequences seq, Provider<MetaDataUpdate.User> metaDataUpdateFactory, Provider<ReviewDb> db, SetAccessUtil accessUtil, ChangeJson.Factory jsonFactory, ProjectCache projectCache, ProjectConfig.Factory projectConfigFactory)
 name|CreateAccessChange
 parameter_list|(
 name|PermissionBackend
@@ -830,6 +838,11 @@ name|jsonFactory
 parameter_list|,
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|this
@@ -885,6 +898,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -1114,7 +1133,7 @@ block|{
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

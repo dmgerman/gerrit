@@ -443,6 +443,15 @@ specifier|private
 name|InMemoryDatabase
 name|db
 decl_stmt|;
+DECL|field|projectConfigFactory
+annotation|@
+name|Inject
+specifier|private
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -636,8 +645,9 @@ expr_stmt|;
 name|ProjectConfig
 name|c
 init|=
-operator|new
-name|ProjectConfig
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 name|allProjects
 argument_list|)

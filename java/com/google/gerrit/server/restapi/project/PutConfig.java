@@ -604,6 +604,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectState
+operator|.
+name|Factory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -852,9 +870,17 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutConfig ( @nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, ProjectState.Factory projectStateFactory, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, UiActions uiActions, DynamicMap<RestView<ProjectResource>> views, Provider<CurrentUser> user, PermissionBackend permissionBackend)
+DECL|method|PutConfig ( @nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, Factory projectStateFactory, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, UiActions uiActions, DynamicMap<RestView<ProjectResource>> views, Provider<CurrentUser> user, PermissionBackend permissionBackend, ProjectConfig.Factory projectConfigFactory)
 name|PutConfig
 parameter_list|(
 annotation|@
@@ -873,8 +899,6 @@ parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|ProjectState
-operator|.
 name|Factory
 name|projectStateFactory
 parameter_list|,
@@ -910,6 +934,11 @@ name|user
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|this
@@ -977,6 +1006,12 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -1091,7 +1126,7 @@ block|{
 name|ProjectConfig
 name|projectConfig
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(
@@ -1349,7 +1384,7 @@ name|projectStateFactory
 operator|.
 name|create
 argument_list|(
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

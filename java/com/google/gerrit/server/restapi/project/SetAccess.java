@@ -605,9 +605,17 @@ specifier|final
 name|CreateGroupPermissionSyncer
 name|createGroupPermissionSyncer
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetAccess ( GroupBackend groupBackend, PermissionBackend permissionBackend, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GetAccess getAccess, Provider<IdentifiedUser> identifiedUser, SetAccessUtil accessUtil, CreateGroupPermissionSyncer createGroupPermissionSyncer)
+DECL|method|SetAccess ( GroupBackend groupBackend, PermissionBackend permissionBackend, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GetAccess getAccess, Provider<IdentifiedUser> identifiedUser, SetAccessUtil accessUtil, CreateGroupPermissionSyncer createGroupPermissionSyncer, ProjectConfig.Factory projectConfigFactory)
 specifier|private
 name|SetAccess
 parameter_list|(
@@ -642,6 +650,11 @@ name|accessUtil
 parameter_list|,
 name|CreateGroupPermissionSyncer
 name|createGroupPermissionSyncer
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|this
@@ -691,6 +704,12 @@ operator|.
 name|createGroupPermissionSyncer
 operator|=
 name|createGroupPermissionSyncer
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -784,7 +803,7 @@ init|)
 block|{
 name|config
 operator|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

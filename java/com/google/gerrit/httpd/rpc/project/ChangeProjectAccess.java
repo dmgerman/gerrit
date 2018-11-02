@@ -564,7 +564,7 @@ name|createGroupPermissionSyncer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeProjectAccess ( ProjectAccessFactory.Factory projectAccessFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, ContributorAgreementsChecker contributorAgreements, Provider<CurrentUser> user, PermissionBackend permissionBackend, CreateGroupPermissionSyncer createGroupPermissionSyncer, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ChangeProjectAccess ( ProjectAccessFactory.Factory projectAccessFactory, ProjectCache projectCache, GroupBackend groupBackend, ProjectConfig.Factory projectConfigFactory, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, ContributorAgreementsChecker contributorAgreements, Provider<CurrentUser> user, PermissionBackend permissionBackend, CreateGroupPermissionSyncer createGroupPermissionSyncer, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ChangeProjectAccess
 parameter_list|(
 name|ProjectAccessFactory
@@ -577,6 +577,11 @@ name|projectCache
 parameter_list|,
 name|GroupBackend
 name|groupBackend
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|,
 name|MetaDataUpdate
 operator|.
@@ -658,6 +663,8 @@ block|{
 name|super
 argument_list|(
 name|groupBackend
+argument_list|,
+name|projectConfigFactory
 argument_list|,
 name|metaDataUpdateFactory
 argument_list|,

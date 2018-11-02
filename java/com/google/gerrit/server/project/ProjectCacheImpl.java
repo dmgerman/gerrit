@@ -1884,9 +1884,17 @@ specifier|final
 name|ProjectCacheClock
 name|clock
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Loader (ProjectState.Factory psf, GitRepositoryManager g, ProjectCacheClock clock)
+DECL|method|Loader ( ProjectState.Factory psf, GitRepositoryManager g, ProjectCacheClock clock, ProjectConfig.Factory projectConfigFactory)
 name|Loader
 parameter_list|(
 name|ProjectState
@@ -1899,6 +1907,11 @@ name|g
 parameter_list|,
 name|ProjectCacheClock
 name|clock
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|projectStateFactory
@@ -1914,6 +1927,12 @@ operator|.
 name|clock
 operator|=
 name|clock
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -1981,8 +2000,9 @@ block|{
 name|ProjectConfig
 name|cfg
 init|=
-operator|new
-name|ProjectConfig
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 name|key
 argument_list|)

@@ -653,6 +653,14 @@ specifier|final
 name|AllUsersName
 name|allUsers
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|allowProjectOwnersToChangeParent
 specifier|private
 specifier|volatile
@@ -661,7 +669,7 @@ name|allowProjectOwnersToChangeParent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetParent ( ProjectCache cache, PermissionBackend permissionBackend, MetaDataUpdate.Server updateFactory, AllProjectsName allProjects, AllUsersName allUsers, @GerritServerConfig Config config)
+DECL|method|SetParent ( ProjectCache cache, PermissionBackend permissionBackend, MetaDataUpdate.Server updateFactory, AllProjectsName allProjects, AllUsersName allUsers, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config config)
 name|SetParent
 parameter_list|(
 name|ProjectCache
@@ -680,6 +688,11 @@ name|allProjects
 parameter_list|,
 name|AllUsersName
 name|allUsers
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -716,6 +729,12 @@ operator|.
 name|allUsers
 operator|=
 name|allUsers
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 name|this
 operator|.
@@ -870,7 +889,7 @@ block|{
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

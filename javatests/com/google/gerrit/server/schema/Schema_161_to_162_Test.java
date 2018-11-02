@@ -443,6 +443,15 @@ specifier|private
 name|ReviewDb
 name|db
 decl_stmt|;
+DECL|field|projectConfigFactory
+annotation|@
+name|Inject
+specifier|private
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|serverUser
 annotation|@
 name|Inject
@@ -623,7 +632,7 @@ block|{
 name|ProjectConfig
 name|cfg
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

@@ -1337,9 +1337,17 @@ name|ProjectConfigEntry
 argument_list|>
 name|pluginConfigEntries
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UpdateChecker ( GitRepositoryManager repoManager, DynamicMap<ProjectConfigEntry> pluginConfigEntries)
+DECL|method|UpdateChecker ( GitRepositoryManager repoManager, DynamicMap<ProjectConfigEntry> pluginConfigEntries, ProjectConfig.Factory projectConfigFactory)
 name|UpdateChecker
 parameter_list|(
 name|GitRepositoryManager
@@ -1350,6 +1358,11 @@ argument_list|<
 name|ProjectConfigEntry
 argument_list|>
 name|pluginConfigEntries
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|this
@@ -1363,6 +1376,12 @@ operator|.
 name|pluginConfigEntries
 operator|=
 name|pluginConfigEntries
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -1708,8 +1727,9 @@ block|{
 name|ProjectConfig
 name|pc
 init|=
-operator|new
-name|ProjectConfig
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 name|p
 argument_list|)

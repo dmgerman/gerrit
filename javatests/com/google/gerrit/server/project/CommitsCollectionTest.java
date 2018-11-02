@@ -593,6 +593,15 @@ specifier|private
 name|CommitsCollection
 name|commits
 decl_stmt|;
+DECL|field|projectConfigFactory
+annotation|@
+name|Inject
+specifier|private
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|repo
 specifier|private
 name|TestRepository
@@ -671,8 +680,9 @@ argument_list|)
 decl_stmt|;
 name|project
 operator|=
-operator|new
-name|ProjectConfig
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 name|name
 argument_list|)

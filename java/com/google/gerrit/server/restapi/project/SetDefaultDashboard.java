@@ -511,6 +511,14 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -528,7 +536,7 @@ name|inherited
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetDefaultDashboard ( ProjectCache cache, MetaDataUpdate.Server updateFactory, DashboardsCollection dashboards, Provider<GetDashboard> get, PermissionBackend permissionBackend)
+DECL|method|SetDefaultDashboard ( ProjectCache cache, MetaDataUpdate.Server updateFactory, DashboardsCollection dashboards, Provider<GetDashboard> get, PermissionBackend permissionBackend, ProjectConfig.Factory projectConfigFactory)
 name|SetDefaultDashboard
 parameter_list|(
 name|ProjectCache
@@ -550,6 +558,11 @@ name|get
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|this
@@ -581,6 +594,12 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -769,7 +788,7 @@ block|{
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

@@ -2173,6 +2173,15 @@ specifier|private
 name|MetricMaker
 name|metricMaker
 decl_stmt|;
+DECL|field|projectConfigFactory
+annotation|@
+name|Inject
+specifier|private
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -2442,8 +2451,9 @@ decl_stmt|;
 name|ProjectConfig
 name|allProjects
 init|=
-operator|new
-name|ProjectConfig
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 operator|new
 name|Project
@@ -2577,8 +2587,9 @@ argument_list|)
 expr_stmt|;
 name|parent
 operator|=
-operator|new
-name|ProjectConfig
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 name|parentKey
 argument_list|)
@@ -2600,8 +2611,9 @@ argument_list|)
 expr_stmt|;
 name|local
 operator|=
-operator|new
-name|ProjectConfig
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 name|localKey
 argument_list|)
@@ -3437,8 +3449,9 @@ argument_list|)
 expr_stmt|;
 name|local
 operator|=
-operator|new
-name|ProjectConfig
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 name|localKey
 argument_list|)

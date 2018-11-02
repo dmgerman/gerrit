@@ -1075,9 +1075,17 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory ( @erritPersonIdent PersonIdent gerritIdent, UrlFormatter urlFormatter, @GerritServerConfig Config cfg, PluginSetContext<CommitValidationListener> pluginValidators, GitRepositoryManager repoManager, AllUsersName allUsers, AllProjectsName allProjects, ExternalIdsConsistencyChecker externalIdsConsistencyChecker, AccountValidator accountValidator, ProjectCache projectCache)
+DECL|method|Factory ( @erritPersonIdent PersonIdent gerritIdent, UrlFormatter urlFormatter, @GerritServerConfig Config cfg, PluginSetContext<CommitValidationListener> pluginValidators, GitRepositoryManager repoManager, AllUsersName allUsers, AllProjectsName allProjects, ExternalIdsConsistencyChecker externalIdsConsistencyChecker, AccountValidator accountValidator, ProjectCache projectCache, ProjectConfig.Factory projectConfigFactory)
 name|Factory
 parameter_list|(
 annotation|@
@@ -1116,6 +1124,11 @@ name|accountValidator
 parameter_list|,
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|this
@@ -1192,6 +1205,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 block|}
 DECL|method|forReceiveCommits ( PermissionBackend.ForProject forProject, Branch.NameKey branch, IdentifiedUser user, SshInfo sshInfo, NoteMap rejectCommits, RevWalk rw, @Nullable Change change)
@@ -1334,6 +1353,8 @@ argument_list|,
 operator|new
 name|ConfigValidator
 argument_list|(
+name|projectConfigFactory
+argument_list|,
 name|branch
 argument_list|,
 name|user
@@ -1517,6 +1538,8 @@ argument_list|,
 operator|new
 name|ConfigValidator
 argument_list|(
+name|projectConfigFactory
+argument_list|,
 name|branch
 argument_list|,
 name|user
@@ -2673,6 +2696,14 @@ name|ConfigValidator
 implements|implements
 name|CommitValidationListener
 block|{
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|branch
 specifier|private
 specifier|final
@@ -2705,10 +2736,15 @@ specifier|final
 name|AllProjectsName
 name|allProjects
 decl_stmt|;
-DECL|method|ConfigValidator ( Branch.NameKey branch, IdentifiedUser user, RevWalk rw, AllUsersName allUsers, AllProjectsName allProjects)
+DECL|method|ConfigValidator ( ProjectConfig.Factory projectConfigFactory, Branch.NameKey branch, IdentifiedUser user, RevWalk rw, AllUsersName allUsers, AllProjectsName allProjects)
 specifier|public
 name|ConfigValidator
 parameter_list|(
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+parameter_list|,
 name|Branch
 operator|.
 name|NameKey
@@ -2727,6 +2763,12 @@ name|AllProjectsName
 name|allProjects
 parameter_list|)
 block|{
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
+expr_stmt|;
 name|this
 operator|.
 name|branch
@@ -2803,8 +2845,9 @@ block|{
 name|ProjectConfig
 name|cfg
 init|=
-operator|new
-name|ProjectConfig
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 name|receiveEvent
 operator|.

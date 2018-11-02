@@ -1215,8 +1215,11 @@ block|{
 name|ProjectConfig
 name|cfg
 init|=
-operator|new
-name|ProjectConfig
+name|args
+operator|.
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 name|getProject
 argument_list|()

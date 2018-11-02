@@ -874,6 +874,14 @@ specifier|final
 name|NotesMigration
 name|notesMigration
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|anonymous
 specifier|private
 specifier|final
@@ -935,7 +943,7 @@ name|additionalLabelType
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AllProjectsCreator ( GitRepositoryManager repositoryManager, AllProjectsName allProjectsName, @GerritPersonIdent PersonIdent serverUser, NotesMigration notesMigration, SystemGroupBackend systemGroupBackend)
+DECL|method|AllProjectsCreator ( GitRepositoryManager repositoryManager, AllProjectsName allProjectsName, @GerritPersonIdent PersonIdent serverUser, NotesMigration notesMigration, SystemGroupBackend systemGroupBackend, ProjectConfig.Factory projectConfigFactory)
 name|AllProjectsCreator
 parameter_list|(
 name|GitRepositoryManager
@@ -954,6 +962,11 @@ name|notesMigration
 parameter_list|,
 name|SystemGroupBackend
 name|systemGroupBackend
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|this
@@ -979,6 +992,12 @@ operator|.
 name|notesMigration
 operator|=
 name|notesMigration
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1395,7 +1414,7 @@ expr_stmt|;
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

@@ -1566,7 +1566,7 @@ decl_stmt|;
 name|ProjectConfig
 name|pc
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

@@ -417,6 +417,14 @@ operator|.
 name|Server
 name|metaDataUpdateFactory
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|author
 specifier|private
 specifier|final
@@ -461,7 +469,7 @@ name|tryingAgain
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RenameGroupOp ( WorkQueue workQueue, ProjectCache projectCache, MetaDataUpdate.Server metaDataUpdateFactory, @Assisted(R) PersonIdent author, @Assisted AccountGroup.UUID uuid, @Assisted(R) String oldName, @Assisted(R) String newName)
+DECL|method|RenameGroupOp ( WorkQueue workQueue, ProjectCache projectCache, MetaDataUpdate.Server metaDataUpdateFactory, ProjectConfig.Factory projectConfigFactory, @Assisted(R) PersonIdent author, @Assisted AccountGroup.UUID uuid, @Assisted(R) String oldName, @Assisted(R) String newName)
 specifier|public
 name|RenameGroupOp
 parameter_list|(
@@ -475,6 +483,11 @@ name|MetaDataUpdate
 operator|.
 name|Server
 name|metaDataUpdateFactory
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -524,6 +537,12 @@ operator|.
 name|metaDataUpdateFactory
 operator|=
 name|metaDataUpdateFactory
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 name|this
 operator|.
@@ -771,7 +790,7 @@ block|{
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

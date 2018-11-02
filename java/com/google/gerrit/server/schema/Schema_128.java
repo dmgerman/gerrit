@@ -405,6 +405,14 @@ specifier|final
 name|SystemGroupBackend
 name|systemGroupBackend
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|serverUser
 specifier|private
 specifier|final
@@ -413,7 +421,7 @@ name|serverUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Schema_128 ( Provider<Schema_127> prior, GitRepositoryManager repoManager, AllProjectsName allProjectsName, SystemGroupBackend systemGroupBackend, @GerritPersonIdent PersonIdent serverUser)
+DECL|method|Schema_128 ( Provider<Schema_127> prior, GitRepositoryManager repoManager, AllProjectsName allProjectsName, SystemGroupBackend systemGroupBackend, ProjectConfig.Factory projectConfigFactory, @GerritPersonIdent PersonIdent serverUser)
 name|Schema_128
 parameter_list|(
 name|Provider
@@ -430,6 +438,11 @@ name|allProjectsName
 parameter_list|,
 name|SystemGroupBackend
 name|systemGroupBackend
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -459,6 +472,12 @@ operator|.
 name|systemGroupBackend
 operator|=
 name|systemGroupBackend
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 name|this
 operator|.
@@ -514,7 +533,7 @@ block|{
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

@@ -981,6 +981,14 @@ name|ProjectConfigEntry
 argument_list|>
 name|pluginConfigEntries
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|allowProjectOwnersToChangeParent
 specifier|private
 specifier|final
@@ -1000,7 +1008,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ProjectConfigValidator ( AllProjectsName allProjectsName, AllUsersName allUsersName, ProjectCache projectCache, PermissionBackend permissionBackend, DynamicMap<ProjectConfigEntry> pluginConfigEntries, @GerritServerConfig Config config)
+DECL|method|ProjectConfigValidator ( AllProjectsName allProjectsName, AllUsersName allUsersName, ProjectCache projectCache, PermissionBackend permissionBackend, DynamicMap<ProjectConfigEntry> pluginConfigEntries, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config config)
 specifier|public
 name|ProjectConfigValidator
 parameter_list|(
@@ -1021,6 +1029,11 @@ argument_list|<
 name|ProjectConfigEntry
 argument_list|>
 name|pluginConfigEntries
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -1057,6 +1070,12 @@ operator|.
 name|pluginConfigEntries
 operator|=
 name|pluginConfigEntries
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1137,8 +1156,9 @@ block|{
 name|ProjectConfig
 name|cfg
 init|=
-operator|new
-name|ProjectConfig
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 name|destProject
 operator|.

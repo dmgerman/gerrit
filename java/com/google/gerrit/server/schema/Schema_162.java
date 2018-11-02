@@ -312,6 +312,14 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|serverUser
 specifier|private
 specifier|final
@@ -320,7 +328,7 @@ name|serverUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Schema_162 ( Provider<Schema_161> prior, GitRepositoryManager repoManager, AllProjectsName allProjectsName, AllUsersName allUsersName, @GerritPersonIdent PersonIdent serverUser)
+DECL|method|Schema_162 ( Provider<Schema_161> prior, GitRepositoryManager repoManager, AllProjectsName allProjectsName, AllUsersName allUsersName, ProjectConfig.Factory projectConfigFactory, @GerritPersonIdent PersonIdent serverUser)
 name|Schema_162
 parameter_list|(
 name|Provider
@@ -337,6 +345,11 @@ name|allProjectsName
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -366,6 +379,12 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 name|this
 operator|.
@@ -421,7 +440,7 @@ block|{
 name|ProjectConfig
 name|cfg
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

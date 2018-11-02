@@ -841,6 +841,15 @@ operator|.
 name|Factory
 name|changeNotesFactory
 decl_stmt|;
+DECL|field|projectConfigFactory
+annotation|@
+name|Inject
+specifier|private
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|lifecycle
 specifier|private
 name|LifecycleManager
@@ -1709,8 +1718,9 @@ block|{
 name|ProjectConfig
 name|pc
 init|=
-operator|new
-name|ProjectConfig
+name|projectConfigFactory
+operator|.
+name|create
 argument_list|(
 name|allProjects
 argument_list|)

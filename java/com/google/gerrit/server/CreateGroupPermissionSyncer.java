@@ -431,9 +431,17 @@ name|Server
 argument_list|>
 name|metaDataUpdateFactory
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateGroupPermissionSyncer ( AllProjectsName allProjects, AllUsersName allUsers, ProjectCache projectCache, Provider<MetaDataUpdate.Server> metaDataUpdateFactory)
+DECL|method|CreateGroupPermissionSyncer ( AllProjectsName allProjects, AllUsersName allUsers, ProjectCache projectCache, Provider<MetaDataUpdate.Server> metaDataUpdateFactory, ProjectConfig.Factory projectConfigFactory)
 name|CreateGroupPermissionSyncer
 parameter_list|(
 name|AllProjectsName
@@ -452,6 +460,11 @@ operator|.
 name|Server
 argument_list|>
 name|metaDataUpdateFactory
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|this
@@ -477,6 +490,12 @@ operator|.
 name|metaDataUpdateFactory
 operator|=
 name|metaDataUpdateFactory
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 block|}
 comment|/**    * Checks if {@code GlobalCapability.CREATE_GROUP} and {@code CREATE} permission on {@code    * refs/groups/*} have diverged and syncs them by applying the {@code CREATE} permission to {@code    * refs/groups/*}.    */
@@ -670,7 +689,7 @@ block|{
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

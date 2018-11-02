@@ -1355,9 +1355,17 @@ name|ProjectNameLockManager
 argument_list|>
 name|lockManager
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateProject ( Provider<ProjectsCollection> projectsCollection, Provider<GroupResolver> groupResolver, ProjectJson json, PluginSetContext<ProjectCreationValidationListener> projectCreationValidationListeners, GitRepositoryManager repoManager, PluginSetContext<NewProjectCreatedListener> createdListeners, ProjectCache projectCache, GroupBackend groupBackend, ProjectOwnerGroupsProvider.Factory projectOwnerGroups, MetaDataUpdate.User metaDataUpdateFactory, GitReferenceUpdated referenceUpdated, RepositoryConfig repositoryCfg, @GerritPersonIdent PersonIdent serverIdent, Provider<IdentifiedUser> identifiedUser, Provider<PutConfig> putConfig, AllProjectsName allProjects, AllUsersName allUsers, PluginItemContext<ProjectNameLockManager> lockManager)
+DECL|method|CreateProject ( Provider<ProjectsCollection> projectsCollection, Provider<GroupResolver> groupResolver, ProjectJson json, PluginSetContext<ProjectCreationValidationListener> projectCreationValidationListeners, GitRepositoryManager repoManager, PluginSetContext<NewProjectCreatedListener> createdListeners, ProjectCache projectCache, GroupBackend groupBackend, ProjectOwnerGroupsProvider.Factory projectOwnerGroups, MetaDataUpdate.User metaDataUpdateFactory, GitReferenceUpdated referenceUpdated, RepositoryConfig repositoryCfg, @GerritPersonIdent PersonIdent serverIdent, Provider<IdentifiedUser> identifiedUser, Provider<PutConfig> putConfig, AllProjectsName allProjects, AllUsersName allUsers, PluginItemContext<ProjectNameLockManager> lockManager, ProjectConfig.Factory projectConfigFactory)
 name|CreateProject
 parameter_list|(
 name|Provider
@@ -1440,6 +1448,11 @@ argument_list|<
 name|ProjectNameLockManager
 argument_list|>
 name|lockManager
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|)
 block|{
 name|this
@@ -1549,6 +1562,12 @@ operator|.
 name|lockManager
 operator|=
 name|lockManager
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -2478,7 +2497,7 @@ block|{
 name|ProjectConfig
 name|config
 init|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(

@@ -795,6 +795,14 @@ specifier|final
 name|AllProjectsName
 name|allProjectsName
 decl_stmt|;
+DECL|field|projectConfigFactory
+specifier|private
+specifier|final
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
+decl_stmt|;
 DECL|field|projectName
 specifier|private
 specifier|final
@@ -810,7 +818,7 @@ name|webLinks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAccessFactory ( GroupBackend groupBackend, ProjectCache projectCache, PermissionBackend permissionBackend, GroupControl.Factory groupControlFactory, MetaDataUpdate.Server metaDataUpdateFactory, AllProjectsName allProjectsName, WebLinks webLinks, @Assisted final Project.NameKey name)
+DECL|method|ProjectAccessFactory ( GroupBackend groupBackend, ProjectCache projectCache, PermissionBackend permissionBackend, GroupControl.Factory groupControlFactory, MetaDataUpdate.Server metaDataUpdateFactory, AllProjectsName allProjectsName, ProjectConfig.Factory projectConfigFactory, WebLinks webLinks, @Assisted final Project.NameKey name)
 name|ProjectAccessFactory
 parameter_list|(
 name|GroupBackend
@@ -834,6 +842,11 @@ name|metaDataUpdateFactory
 parameter_list|,
 name|AllProjectsName
 name|allProjectsName
+parameter_list|,
+name|ProjectConfig
+operator|.
+name|Factory
+name|projectConfigFactory
 parameter_list|,
 name|WebLinks
 name|webLinks
@@ -882,6 +895,12 @@ operator|.
 name|allProjectsName
 operator|=
 name|allProjectsName
+expr_stmt|;
+name|this
+operator|.
+name|projectConfigFactory
+operator|=
+name|projectConfigFactory
 expr_stmt|;
 name|this
 operator|.
@@ -942,7 +961,7 @@ init|)
 block|{
 name|config
 operator|=
-name|ProjectConfig
+name|projectConfigFactory
 operator|.
 name|read
 argument_list|(
