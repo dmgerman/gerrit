@@ -4319,6 +4319,15 @@ argument_list|()
 expr_stmt|;
 name|out
 operator|.
+name|totalCommentCount
+operator|=
+name|cd
+operator|.
+name|totalCommentCount
+argument_list|()
+expr_stmt|;
+name|out
+operator|.
 name|unresolvedCommentCount
 operator|=
 name|cd

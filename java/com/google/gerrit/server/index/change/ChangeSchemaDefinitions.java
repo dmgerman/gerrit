@@ -535,6 +535,8 @@ argument_list|)
 decl_stmt|;
 comment|// Bump Lucene version requires reindexing
 DECL|field|V50
+annotation|@
+name|Deprecated
 specifier|static
 specifier|final
 name|Schema
@@ -546,6 +548,24 @@ init|=
 name|schema
 argument_list|(
 name|V49
+argument_list|)
+decl_stmt|;
+DECL|field|V51
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|V51
+init|=
+name|schema
+argument_list|(
+name|V50
+argument_list|,
+name|ChangeField
+operator|.
+name|TOTAL_COMMENT_COUNT
 argument_list|)
 decl_stmt|;
 DECL|field|NAME
