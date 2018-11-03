@@ -676,6 +676,8 @@ argument_list|,
 literal|"/dashboard/*"
 argument_list|,
 literal|"/settings/*"
+argument_list|,
+literal|"/Documentation/q/*"
 argument_list|)
 decl_stmt|;
 comment|// TODO(dborowitz): These fragments conflict with the REST API
