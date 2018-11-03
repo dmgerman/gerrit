@@ -2357,7 +2357,7 @@ if|if
 condition|(
 name|matchPrefix
 argument_list|(
-literal|"/Documentation/"
+literal|"/Documentation/q/"
 argument_list|,
 name|token
 argument_list|)
