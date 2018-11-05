@@ -497,13 +497,6 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
-name|post
-argument_list|(
-literal|"/projects/%s/check.access"
-argument_list|)
-argument_list|,
-name|RestCall
-operator|.
 name|put
 argument_list|(
 literal|"/projects/%s/ban"
