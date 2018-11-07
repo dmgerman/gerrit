@@ -345,12 +345,21 @@ block|{
 annotation|@
 name|Deprecated
 DECL|method|delete ()
+specifier|default
 name|void
 name|delete
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"draft workflow is discontinued"
+argument_list|)
+throw|;
+block|}
 DECL|method|description ()
 name|String
 name|description
@@ -379,12 +388,26 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|submit ()
+specifier|default
 name|void
 name|submit
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+name|SubmitInput
+name|in
+init|=
+operator|new
+name|SubmitInput
+argument_list|()
+decl_stmt|;
+name|submit
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|submit (SubmitInput in)
 name|void
 name|submit
@@ -396,12 +419,20 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|submitPreview ()
+specifier|default
 name|BinaryResult
 name|submitPreview
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+return|return
+name|submitPreview
+argument_list|(
+literal|"zip"
+argument_list|)
+return|;
+block|}
 DECL|method|submitPreview (String format)
 name|BinaryResult
 name|submitPreview
@@ -415,12 +446,21 @@ function_decl|;
 annotation|@
 name|Deprecated
 DECL|method|publish ()
+specifier|default
 name|void
 name|publish
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"draft workflow is discontinued"
+argument_list|)
+throw|;
+block|}
 DECL|method|cherryPick (CherryPickInput in)
 name|ChangeApi
 name|cherryPick
@@ -442,12 +482,27 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|rebase ()
+specifier|default
 name|ChangeApi
 name|rebase
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+name|RebaseInput
+name|in
+init|=
+operator|new
+name|RebaseInput
+argument_list|()
+decl_stmt|;
+return|return
+name|rebase
+argument_list|(
+name|in
+argument_list|)
+return|;
+block|}
 DECL|method|rebase (RebaseInput in)
 name|ChangeApi
 name|rebase
@@ -499,6 +554,7 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|files ()
+specifier|default
 name|Map
 argument_list|<
 name|String
@@ -509,7 +565,14 @@ name|files
 parameter_list|()
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+return|return
+name|files
+argument_list|(
+literal|null
+argument_list|)
+return|;
+block|}
 DECL|method|files (@ullable String base)
 name|Map
 argument_list|<
@@ -887,24 +950,6 @@ implements|implements
 name|RevisionApi
 block|{
 annotation|@
-name|Deprecated
-annotation|@
-name|Override
-DECL|method|delete ()
-specifier|public
-name|void
-name|delete
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
 name|Override
 DECL|method|review (ReviewInput in)
 specifier|public
@@ -925,22 +970,6 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|submit ()
-specifier|public
-name|void
-name|submit
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
 DECL|method|submit (SubmitInput in)
 specifier|public
 name|void
@@ -949,24 +978,6 @@ parameter_list|(
 name|SubmitInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Deprecated
-annotation|@
-name|Override
-DECL|method|publish ()
-specifier|public
-name|void
-name|publish
-parameter_list|()
 throws|throws
 name|RestApiException
 block|{
@@ -1005,22 +1016,6 @@ parameter_list|(
 name|CherryPickInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|rebase ()
-specifier|public
-name|ChangeApi
-name|rebase
-parameter_list|()
 throws|throws
 name|RestApiException
 block|{
@@ -1196,27 +1191,6 @@ parameter_list|(
 name|int
 name|parentNum
 parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|files ()
-specifier|public
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|FileInfo
-argument_list|>
-name|files
-parameter_list|()
 throws|throws
 name|RestApiException
 block|{
@@ -1570,22 +1544,6 @@ DECL|method|submitType ()
 specifier|public
 name|SubmitType
 name|submitType
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|submitPreview ()
-specifier|public
-name|BinaryResult
-name|submitPreview
 parameter_list|()
 throws|throws
 name|RestApiException
