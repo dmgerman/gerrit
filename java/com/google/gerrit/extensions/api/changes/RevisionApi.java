@@ -76,6 +76,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -496,7 +510,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|files (String base)
+DECL|method|files (@ullable String base)
 name|Map
 argument_list|<
 name|String
@@ -505,6 +519,8 @@ name|FileInfo
 argument_list|>
 name|files
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|base
 parameter_list|)

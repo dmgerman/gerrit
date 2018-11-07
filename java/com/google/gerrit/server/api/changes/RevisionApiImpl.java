@@ -124,6 +124,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -2695,11 +2709,6 @@ throw|;
 block|}
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Override
 DECL|method|files ()
 specifier|public
@@ -2714,43 +2723,12 @@ parameter_list|()
 throws|throws
 name|RestApiException
 block|{
-try|try
-block|{
 return|return
-operator|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|FileInfo
-argument_list|>
-operator|)
-name|listFiles
-operator|.
-name|apply
+name|files
 argument_list|(
-name|revision
+literal|null
 argument_list|)
-operator|.
-name|value
-argument_list|()
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-throw|throw
-name|asRestApiException
-argument_list|(
-literal|"Cannot retrieve files"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 annotation|@
 name|SuppressWarnings
@@ -2759,7 +2737,7 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|files (String base)
+DECL|method|files (@ullable String base)
 specifier|public
 name|Map
 argument_list|<
@@ -2769,6 +2747,8 @@ name|FileInfo
 argument_list|>
 name|files
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|base
 parameter_list|)
