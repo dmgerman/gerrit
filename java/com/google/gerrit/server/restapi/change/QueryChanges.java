@@ -645,6 +645,8 @@ name|start
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setDynamicBean (String plugin, DynamicOptions.DynamicBean dynamicBean)
 specifier|public
 name|void
