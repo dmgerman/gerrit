@@ -132,6 +132,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|common
@@ -2451,11 +2465,13 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setBase (String base)
+DECL|method|setBase (@ullable String base)
 specifier|public
 name|ListFiles
 name|setBase
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|base
 parameter_list|)
