@@ -750,8 +750,6 @@ specifier|default
 name|void
 name|publish
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
