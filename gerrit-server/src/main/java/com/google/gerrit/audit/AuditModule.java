@@ -138,6 +138,13 @@ name|AuditService
 operator|.
 name|class
 argument_list|)
+operator|.
+name|to
+argument_list|(
+name|AuditServiceImpl
+operator|.
+name|class
+argument_list|)
 expr_stmt|;
 block|}
 block|}
