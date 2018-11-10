@@ -8499,6 +8499,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|getHead (Repository repo, String name)
 specifier|protected
 name|RevCommit
@@ -8574,6 +8576,8 @@ literal|"HEAD"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|getRemoteHead (Project.NameKey project, String branch)
 specifier|protected
 name|RevCommit
@@ -8626,6 +8630,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Nullable
 DECL|method|getRemoteHead (String project, String branch)
 specifier|protected
 name|RevCommit
@@ -8655,6 +8661,8 @@ name|branch
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|getRemoteHead ()
 specifier|protected
 name|RevCommit
