@@ -1691,8 +1691,6 @@ expr_stmt|;
 block|}
 block|}
 comment|// Creates a group, but with uniquified name.
-annotation|@
-name|Override
 DECL|method|createGroup (String name)
 specifier|protected
 name|String
@@ -1704,44 +1702,35 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|name
-operator|=
-name|name
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-name|GroupInput
-name|in
+comment|// TODO(hanwen): rewrite this test in terms of UUID. This requires redoing the assertion helpers
+comment|// too.
+name|AccountGroup
+operator|.
+name|UUID
+name|g
 init|=
-operator|new
-name|GroupInput
+name|groupOperations
+operator|.
+name|newGroup
 argument_list|()
-decl_stmt|;
-name|in
 operator|.
-name|name
-operator|=
-name|name
-expr_stmt|;
-name|in
-operator|.
-name|ownerId
-operator|=
-literal|"Administrators"
-expr_stmt|;
-name|gApi
-operator|.
-name|groups
+name|ownerGroupUuid
+argument_list|(
+name|adminGroupUuid
 argument_list|()
+argument_list|)
 operator|.
 name|create
-argument_list|(
-name|in
-argument_list|)
-expr_stmt|;
+argument_list|()
+decl_stmt|;
 return|return
-name|name
+name|groupRef
+argument_list|(
+name|g
+argument_list|)
+operator|.
+name|getName
+argument_list|()
 return|;
 block|}
 DECL|method|createGroup (String name, String owner)
