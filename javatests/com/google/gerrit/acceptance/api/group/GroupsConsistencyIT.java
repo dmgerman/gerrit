@@ -1504,7 +1504,7 @@ argument_list|)
 expr_stmt|;
 name|assertWarning
 argument_list|(
-literal|"cyclic"
+literal|"cycle"
 argument_list|)
 expr_stmt|;
 block|}

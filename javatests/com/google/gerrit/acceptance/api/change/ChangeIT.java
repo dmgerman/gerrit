@@ -15447,7 +15447,7 @@ decl_stmt|;
 name|String
 name|testGroup
 init|=
-name|createGroupWithRealName
+name|createGroup
 argument_list|(
 literal|"ab"
 argument_list|)
@@ -15859,7 +15859,7 @@ decl_stmt|;
 name|String
 name|testGroup
 init|=
-name|createGroupWithRealName
+name|createGroup
 argument_list|(
 literal|"kobe"
 argument_list|)
