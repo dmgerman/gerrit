@@ -2002,8 +2002,10 @@ name|subscribeSections
 decl_stmt|;
 DECL|field|commentLinkSections
 specifier|private
-name|List
+name|Map
 argument_list|<
+name|String
+argument_list|,
 name|CommentLinkInfoImpl
 argument_list|>
 name|commentLinkSections
@@ -2301,8 +2303,12 @@ parameter_list|)
 block|{
 name|commentLinkSections
 operator|.
-name|add
+name|put
 argument_list|(
+name|commentLink
+operator|.
+name|name
+argument_list|,
 name|commentLink
 argument_list|)
 expr_stmt|;
@@ -3239,6 +3245,9 @@ parameter_list|()
 block|{
 return|return
 name|commentLinkSections
+operator|.
+name|values
+argument_list|()
 return|;
 block|}
 DECL|method|getMimeTypes ()
@@ -6208,7 +6217,7 @@ decl_stmt|;
 name|commentLinkSections
 operator|=
 operator|new
-name|ArrayList
+name|LinkedHashMap
 argument_list|<>
 argument_list|(
 name|subsections
@@ -6229,8 +6238,10 @@ try|try
 block|{
 name|commentLinkSections
 operator|.
-name|add
+name|put
 argument_list|(
+name|name
+argument_list|,
 name|buildCommentLink
 argument_list|(
 name|rc
@@ -7367,6 +7378,9 @@ name|CommentLinkInfoImpl
 name|cm
 range|:
 name|commentLinkSections
+operator|.
+name|values
+argument_list|()
 control|)
 block|{
 name|rc
