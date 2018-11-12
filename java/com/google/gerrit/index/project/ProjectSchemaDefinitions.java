@@ -205,6 +205,15 @@ operator|new
 name|ProjectSchemaDefinitions
 argument_list|()
 decl_stmt|;
+DECL|field|NAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NAME
+init|=
+literal|"projects"
+decl_stmt|;
 DECL|method|ProjectSchemaDefinitions ()
 specifier|private
 name|ProjectSchemaDefinitions
@@ -212,7 +221,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"projects"
+name|NAME
 argument_list|,
 name|ProjectData
 operator|.
