@@ -80,16 +80,6 @@ name|ImmutableSet
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
 begin_class
 DECL|class|GerritConfigListenerHelper
 specifier|public
@@ -122,10 +112,6 @@ name|keys
 argument_list|)
 argument_list|)
 condition|?
-name|Collections
-operator|.
-name|singletonList
-argument_list|(
 name|e
 operator|.
 name|accept
@@ -137,12 +123,10 @@ argument_list|(
 name|keys
 argument_list|)
 argument_list|)
-argument_list|)
 else|:
-name|Collections
+name|ConfigUpdatedEvent
 operator|.
-name|emptyList
-argument_list|()
+name|NO_UPDATES
 return|;
 block|}
 block|}
