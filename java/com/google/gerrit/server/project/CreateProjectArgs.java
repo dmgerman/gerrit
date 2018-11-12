@@ -296,6 +296,12 @@ name|SubmitType
 operator|.
 name|MERGE_IF_NECESSARY
 expr_stmt|;
+name|rejectEmptyCommit
+operator|=
+name|InheritableBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
 block|}
 DECL|method|getProject ()
 specifier|public
