@@ -320,7 +320,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaVersionCheck
+name|ReviewDbSchemaVersionCheck
 import|;
 end_import
 
@@ -548,7 +548,7 @@ name|dbInjector
 operator|.
 name|createChildInjector
 argument_list|(
-name|SchemaVersionCheck
+name|ReviewDbSchemaVersionCheck
 operator|.
 name|module
 argument_list|()

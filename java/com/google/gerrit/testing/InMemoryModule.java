@@ -1194,7 +1194,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 import|;
 end_import
 
@@ -2717,11 +2717,11 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getInMemoryDatabase (SchemaCreator schemaCreator)
+DECL|method|getInMemoryDatabase (ReviewDbSchemaCreator schemaCreator)
 name|InMemoryDatabase
 name|getInMemoryDatabase
 parameter_list|(
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 name|schemaCreator
 parameter_list|)
 throws|throws

@@ -688,7 +688,7 @@ specifier|public
 class|class
 name|Schema_167
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|logger
 specifier|private

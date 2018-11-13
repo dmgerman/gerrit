@@ -417,10 +417,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|SchemaCreatorTest
+DECL|class|ReviewDbSchemaCreatorTest
 specifier|public
 class|class
-name|SchemaCreatorTest
+name|ReviewDbSchemaCreatorTest
 block|{
 DECL|field|allProjects
 annotation|@

@@ -386,7 +386,7 @@ specifier|public
 class|class
 name|Schema_161
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|MUTE_LABEL
 specifier|private

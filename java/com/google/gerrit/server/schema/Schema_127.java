@@ -238,7 +238,7 @@ specifier|public
 class|class
 name|Schema_127
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|MAX_BATCH_SIZE
 specifier|private

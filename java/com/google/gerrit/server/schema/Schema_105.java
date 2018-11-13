@@ -238,7 +238,7 @@ specifier|public
 class|class
 name|Schema_105
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|TABLE
 specifier|private

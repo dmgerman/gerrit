@@ -299,11 +299,11 @@ comment|/** A version of the database schema. */
 end_comment
 
 begin_class
-DECL|class|SchemaVersion
+DECL|class|ReviewDbSchemaVersion
 specifier|public
 specifier|abstract
 class|class
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 comment|/** The current schema version. */
 DECL|field|C
@@ -341,7 +341,7 @@ name|Provider
 argument_list|<
 name|?
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 argument_list|>
 name|prior
 decl_stmt|;
@@ -351,15 +351,15 @@ specifier|final
 name|int
 name|versionNbr
 decl_stmt|;
-DECL|method|SchemaVersion (Provider<? extends SchemaVersion> prior)
+DECL|method|ReviewDbSchemaVersion (Provider<? extends ReviewDbSchemaVersion> prior)
 specifier|protected
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 parameter_list|(
 name|Provider
 argument_list|<
 name|?
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 argument_list|>
 name|prior
 parameter_list|)
@@ -473,7 +473,7 @@ name|VisibleForTesting
 DECL|method|getPrior ()
 specifier|public
 specifier|final
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|getPrior
 parameter_list|()
 block|{
@@ -578,7 +578,7 @@ name|SQLException
 block|{
 name|List
 argument_list|<
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 argument_list|>
 name|pending
 init|=
@@ -704,7 +704,7 @@ DECL|method|pending (int curr)
 specifier|private
 name|List
 argument_list|<
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 argument_list|>
 name|pending
 parameter_list|(
@@ -714,7 +714,7 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 argument_list|>
 name|r
 init|=
@@ -729,7 +729,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|v
 init|=
 name|this
@@ -770,14 +770,14 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|updateSchema (List<SchemaVersion> pending, UpdateUI ui, ReviewDb db)
+DECL|method|updateSchema (List<ReviewDbSchemaVersion> pending, UpdateUI ui, ReviewDb db)
 specifier|private
 name|void
 name|updateSchema
 parameter_list|(
 name|List
 argument_list|<
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 argument_list|>
 name|pending
 parameter_list|,
@@ -794,7 +794,7 @@ name|SQLException
 block|{
 for|for
 control|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|v
 range|:
 name|pending
@@ -868,14 +868,14 @@ name|OrmException
 throws|,
 name|SQLException
 block|{}
-DECL|method|migrateData ( List<SchemaVersion> pending, UpdateUI ui, CurrentSchemaVersion curr, ReviewDb db)
+DECL|method|migrateData ( List<ReviewDbSchemaVersion> pending, UpdateUI ui, CurrentSchemaVersion curr, ReviewDb db)
 specifier|private
 name|void
 name|migrateData
 parameter_list|(
 name|List
 argument_list|<
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 argument_list|>
 name|pending
 parameter_list|,
@@ -895,7 +895,7 @@ name|SQLException
 block|{
 for|for
 control|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|v
 range|:
 name|pending

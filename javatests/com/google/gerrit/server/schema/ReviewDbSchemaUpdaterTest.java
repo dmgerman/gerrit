@@ -621,10 +621,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|SchemaUpdaterTest
+DECL|class|ReviewDbSchemaUpdaterTest
 specifier|public
 class|class
-name|SchemaUpdaterTest
+name|ReviewDbSchemaUpdaterTest
 block|{
 DECL|field|lifecycle
 specifier|private
@@ -744,7 +744,7 @@ argument_list|(
 name|site
 argument_list|)
 decl_stmt|;
-name|SchemaUpdater
+name|ReviewDbSchemaUpdater
 name|u
 init|=
 name|Guice
@@ -1057,14 +1057,14 @@ argument_list|)
 operator|.
 name|getInstance
 argument_list|(
-name|SchemaUpdater
+name|ReviewDbSchemaUpdater
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|s
 init|=
 name|u

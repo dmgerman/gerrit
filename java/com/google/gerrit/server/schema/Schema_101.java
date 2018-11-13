@@ -358,7 +358,7 @@ specifier|public
 class|class
 name|Schema_101
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|class|PrimaryKey
 specifier|private

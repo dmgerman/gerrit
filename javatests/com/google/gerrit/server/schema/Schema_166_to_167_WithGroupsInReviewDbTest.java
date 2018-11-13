@@ -6683,12 +6683,12 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|executeSchemaMigration (SchemaVersion schema, AccountGroup... groupsToVerify)
+DECL|method|executeSchemaMigration (ReviewDbSchemaVersion schema, AccountGroup... groupsToVerify)
 specifier|private
 name|void
 name|executeSchemaMigration
 parameter_list|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|schema
 parameter_list|,
 name|AccountGroup
@@ -6728,12 +6728,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|executeSchemaMigration (SchemaVersion schema, GroupInfo... groupsToVerify)
+DECL|method|executeSchemaMigration (ReviewDbSchemaVersion schema, GroupInfo... groupsToVerify)
 specifier|private
 name|void
 name|executeSchemaMigration
 parameter_list|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|schema
 parameter_list|,
 name|GroupInfo
@@ -6781,12 +6781,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|executeSchemaMigration (SchemaVersion schema, AccountGroup.UUID... groupsToVerify)
+DECL|method|executeSchemaMigration ( ReviewDbSchemaVersion schema, AccountGroup.UUID... groupsToVerify)
 specifier|private
 name|void
 name|executeSchemaMigration
 parameter_list|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|schema
 parameter_list|,
 name|AccountGroup

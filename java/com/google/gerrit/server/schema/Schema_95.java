@@ -160,7 +160,7 @@ specifier|public
 class|class
 name|Schema_95
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|allUsersCreator
 specifier|private

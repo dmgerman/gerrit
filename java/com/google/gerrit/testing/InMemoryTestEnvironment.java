@@ -182,7 +182,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 import|;
 end_import
 
@@ -400,7 +400,7 @@ DECL|field|schemaCreator
 annotation|@
 name|Inject
 specifier|private
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 name|schemaCreator
 decl_stmt|;
 DECL|field|requestContext

@@ -534,7 +534,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaUpdater
+name|ReviewDbSchemaUpdater
 import|;
 end_import
 
@@ -2400,7 +2400,7 @@ name|flags
 decl_stmt|;
 DECL|field|schemaUpdater
 specifier|final
-name|SchemaUpdater
+name|ReviewDbSchemaUpdater
 name|schemaUpdater
 decl_stmt|;
 DECL|field|schema
@@ -2418,7 +2418,7 @@ name|repositoryManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SiteRun ( ConsoleUI ui, SitePaths site, InitFlags flags, SchemaUpdater schemaUpdater, @ReviewDbFactory SchemaFactory<ReviewDb> schema, GitRepositoryManager repositoryManager)
+DECL|method|SiteRun ( ConsoleUI ui, SitePaths site, InitFlags flags, ReviewDbSchemaUpdater schemaUpdater, @ReviewDbFactory SchemaFactory<ReviewDb> schema, GitRepositoryManager repositoryManager)
 name|SiteRun
 parameter_list|(
 name|ConsoleUI
@@ -2430,7 +2430,7 @@ parameter_list|,
 name|InitFlags
 name|flags
 parameter_list|,
-name|SchemaUpdater
+name|ReviewDbSchemaUpdater
 name|schemaUpdater
 parameter_list|,
 annotation|@

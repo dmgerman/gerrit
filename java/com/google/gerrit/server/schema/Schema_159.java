@@ -144,7 +144,7 @@ specifier|public
 class|class
 name|Schema_159
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|enum|DraftWorkflowMigrationStrategy
 specifier|private

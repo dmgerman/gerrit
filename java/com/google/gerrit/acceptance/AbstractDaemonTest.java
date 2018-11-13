@@ -3950,11 +3950,12 @@ operator|.
 name|open
 argument_list|()
 expr_stmt|;
-comment|// All groups which were added during the server start (e.g. in SchemaCreator) aren't contained
-comment|// in the instance of the group index which is available here and in tests. There are two
-comment|// reasons:
-comment|// 1) No group index is available in SchemaCreator when using an in-memory database. (This could
-comment|// be fixed by using the IndexManagerOnInit in InMemoryDatabase similar as BaseInit uses it.)
+comment|// All groups which were added during the server start (e.g. in ReviewDbSchemaCreator) aren't
+comment|// contained in the instance of the group index which is available here and in tests. There are
+comment|// two reasons:
+comment|// 1) No group index is available in ReviewDbSchemaCreator when using an in-memory database.
+comment|// (This could be fixed by using the IndexManagerOnInit in InMemoryDatabase similar as BaseInit
+comment|// uses it.)
 comment|// 2) During the on-init part of the server start, we use another instance of the index than
 comment|// later on. As test indexes are non-permanent, closing an instance and opening another one
 comment|// removes all indexed data.

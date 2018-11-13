@@ -370,7 +370,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaModule
+name|ReviewDbSchemaModule
 import|;
 end_import
 
@@ -386,7 +386,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 import|;
 end_import
 
@@ -943,20 +943,20 @@ expr_stmt|;
 name|install
 argument_list|(
 operator|new
-name|SchemaModule
+name|ReviewDbSchemaModule
 argument_list|()
 argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 operator|.
 name|class
 argument_list|)
 operator|.
 name|to
 argument_list|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 operator|.
 name|C
 argument_list|)

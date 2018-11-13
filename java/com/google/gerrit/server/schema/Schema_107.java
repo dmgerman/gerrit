@@ -146,7 +146,7 @@ specifier|public
 class|class
 name|Schema_107
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 annotation|@
 name|Inject
