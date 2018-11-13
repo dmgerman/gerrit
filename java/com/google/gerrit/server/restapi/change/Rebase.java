@@ -1448,7 +1448,7 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"base revision is missing: "
+literal|"base revision is missing from the destination branch: "
 operator|+
 name|str
 argument_list|)
