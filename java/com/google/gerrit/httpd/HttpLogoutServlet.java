@@ -118,7 +118,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
+name|AuditEvent
 import|;
 end_import
 
@@ -132,9 +132,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|audit
-operator|.
-name|AuditEvent
+name|CurrentUser
 import|;
 end_import
 
