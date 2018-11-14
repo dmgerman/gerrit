@@ -832,6 +832,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|NoteDbSchemaVersionManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|NoteDbTable
 import|;
 end_import
@@ -1739,6 +1755,12 @@ name|NotesMigrationStateListener
 argument_list|>
 name|listeners
 decl_stmt|;
+DECL|field|versionManager
+specifier|private
+specifier|final
+name|NoteDbSchemaVersionManager
+name|versionManager
+decl_stmt|;
 DECL|field|threads
 specifier|private
 name|int
@@ -1813,7 +1835,7 @@ name|autoMigrate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Builder ( GerritServerConfigProvider configProvider, SitePaths sitePaths, @GerritPersonIdent Provider<PersonIdent> serverIdent, AllUsersName allUsers, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, NoteDbUpdateManager.Factory updateManagerFactory, ChangeBundleReader bundleReader, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilderImpl rebuilder, WorkQueue workQueue, MutableNotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator, PluginSetContext<NotesMigrationStateListener> listeners)
+DECL|method|Builder ( GerritServerConfigProvider configProvider, SitePaths sitePaths, @GerritPersonIdent Provider<PersonIdent> serverIdent, AllUsersName allUsers, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, NoteDbUpdateManager.Factory updateManagerFactory, ChangeBundleReader bundleReader, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilderImpl rebuilder, WorkQueue workQueue, MutableNotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator, PluginSetContext<NotesMigrationStateListener> listeners, NoteDbSchemaVersionManager versionManager)
 name|Builder
 parameter_list|(
 name|GerritServerConfigProvider
@@ -1878,6 +1900,9 @@ argument_list|<
 name|NotesMigrationStateListener
 argument_list|>
 name|listeners
+parameter_list|,
+name|NoteDbSchemaVersionManager
+name|versionManager
 parameter_list|)
 block|{
 comment|// Reload gerrit.config/notedb.config on each migrator invocation, in case a previous
@@ -1981,6 +2006,12 @@ operator|.
 name|listeners
 operator|=
 name|listeners
+expr_stmt|;
+name|this
+operator|.
+name|versionManager
+operator|=
+name|versionManager
 expr_stmt|;
 name|this
 operator|.
@@ -2268,6 +2299,8 @@ name|primaryStorageMigrator
 argument_list|,
 name|listeners
 argument_list|,
+name|versionManager
+argument_list|,
 name|threads
 operator|>
 literal|1
@@ -2426,6 +2459,12 @@ name|NotesMigrationStateListener
 argument_list|>
 name|listeners
 decl_stmt|;
+DECL|field|versionManager
+specifier|private
+specifier|final
+name|NoteDbSchemaVersionManager
+name|versionManager
+decl_stmt|;
 DECL|field|executor
 specifier|private
 specifier|final
@@ -2490,7 +2529,7 @@ specifier|final
 name|boolean
 name|autoMigrate
 decl_stmt|;
-DECL|method|NoteDbMigrator ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, Provider<PersonIdent> serverIdent, AllUsersName allUsers, GitRepositoryManager repoManager, NoteDbUpdateManager.Factory updateManagerFactory, ChangeBundleReader bundleReader, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilderImpl rebuilder, MutableNotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator, PluginSetContext<NotesMigrationStateListener> listeners, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, NotesMigrationState stopAtState, boolean trial, boolean forceRebuild, int sequenceGap, boolean autoMigrate)
+DECL|method|NoteDbMigrator ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, Provider<PersonIdent> serverIdent, AllUsersName allUsers, GitRepositoryManager repoManager, NoteDbUpdateManager.Factory updateManagerFactory, ChangeBundleReader bundleReader, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilderImpl rebuilder, MutableNotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator, PluginSetContext<NotesMigrationStateListener> listeners, NoteDbSchemaVersionManager versionManager, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, NotesMigrationState stopAtState, boolean trial, boolean forceRebuild, int sequenceGap, boolean autoMigrate)
 specifier|private
 name|NoteDbMigrator
 parameter_list|(
@@ -2548,6 +2587,9 @@ argument_list|<
 name|NotesMigrationStateListener
 argument_list|>
 name|listeners
+parameter_list|,
+name|NoteDbSchemaVersionManager
+name|versionManager
 parameter_list|,
 name|ListeningExecutorService
 name|executor
@@ -2706,6 +2748,12 @@ operator|.
 name|listeners
 operator|=
 name|listeners
+expr_stmt|;
+name|this
+operator|.
+name|versionManager
+operator|=
+name|versionManager
 expr_stmt|;
 name|this
 operator|.
@@ -3142,8 +3190,15 @@ name|NotesMigrationState
 name|prev
 parameter_list|)
 throws|throws
+name|OrmException
+throws|,
 name|IOException
 block|{
+name|versionManager
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
 return|return
 name|saveState
 argument_list|(

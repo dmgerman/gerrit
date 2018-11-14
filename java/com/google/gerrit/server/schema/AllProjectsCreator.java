@@ -608,6 +608,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|NoteDbSchemaVersionManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|NotesMigration
 import|;
 end_import
@@ -641,6 +657,20 @@ operator|.
 name|project
 operator|.
 name|ProjectConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
 import|;
 end_import
 
@@ -874,6 +904,12 @@ specifier|final
 name|NotesMigration
 name|notesMigration
 decl_stmt|;
+DECL|field|versionManager
+specifier|private
+specifier|final
+name|NoteDbSchemaVersionManager
+name|versionManager
+decl_stmt|;
 DECL|field|projectConfigFactory
 specifier|private
 specifier|final
@@ -943,7 +979,7 @@ name|additionalLabelType
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AllProjectsCreator ( GitRepositoryManager repositoryManager, AllProjectsName allProjectsName, @GerritPersonIdent PersonIdent serverUser, NotesMigration notesMigration, SystemGroupBackend systemGroupBackend, ProjectConfig.Factory projectConfigFactory)
+DECL|method|AllProjectsCreator ( GitRepositoryManager repositoryManager, AllProjectsName allProjectsName, @GerritPersonIdent PersonIdent serverUser, NotesMigration notesMigration, NoteDbSchemaVersionManager versionManager, SystemGroupBackend systemGroupBackend, ProjectConfig.Factory projectConfigFactory)
 name|AllProjectsCreator
 parameter_list|(
 name|GitRepositoryManager
@@ -959,6 +995,9 @@ name|serverUser
 parameter_list|,
 name|NotesMigration
 name|notesMigration
+parameter_list|,
+name|NoteDbSchemaVersionManager
+name|versionManager
 parameter_list|,
 name|SystemGroupBackend
 name|systemGroupBackend
@@ -992,6 +1031,12 @@ operator|.
 name|notesMigration
 operator|=
 name|notesMigration
+expr_stmt|;
+name|this
+operator|.
+name|versionManager
+operator|=
+name|versionManager
 expr_stmt|;
 name|this
 operator|.
@@ -1227,6 +1272,8 @@ throws|throws
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|OrmException
 block|{
 try|try
 init|(
@@ -1335,6 +1382,8 @@ throws|throws
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|OrmException
 block|{
 name|BatchRefUpdate
 name|bru
@@ -2024,6 +2073,9 @@ argument_list|,
 name|bru
 argument_list|)
 expr_stmt|;
+name|initSchemaVersion
+argument_list|()
+expr_stmt|;
 name|execute
 argument_list|(
 name|git
@@ -2257,6 +2309,31 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+block|}
+DECL|method|initSchemaVersion ()
+specifier|private
+name|void
+name|initSchemaVersion
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|OrmException
+block|{
+if|if
+condition|(
+name|notesMigration
+operator|.
+name|commitChangeWrites
+argument_list|()
+condition|)
+block|{
+name|versionManager
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 DECL|method|execute (Repository git, BatchRefUpdate bru)

@@ -204,6 +204,16 @@ name|REFS_SEQUENCES
 init|=
 literal|"refs/sequences/"
 decl_stmt|;
+comment|/** NoteDb schema version number. */
+DECL|field|REFS_VERSION
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_VERSION
+init|=
+literal|"refs/meta/version"
+decl_stmt|;
 comment|/**    * Prefix applied to merge commit base nodes.    *    *<p>References in this directory should take the form {@code refs/cache-automerge/xx/yyyy...}    * where xx is the first two digits of the merge commit's object name, and yyyyy... is the    * remaining 38. The reference should point to a treeish that is the automatic merge result of the    * merge commit's parents.    */
 DECL|field|REFS_CACHE_AUTOMERGE
 specifier|public

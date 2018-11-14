@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -306,6 +322,10 @@ class|class
 name|ReviewDbSchemaVersion
 block|{
 comment|/** The current schema version. */
+comment|// DO NOT upgrade this version in the master branch. Future versions must all be implemented as
+comment|// NoteDbSchemaVersions. It may be upgraded on the stable-2.16 branch, in which case this will
+comment|// need to be updated upon merging. In any case, this number must not exceed the first NoteDb
+comment|// schema version (180).
 DECL|field|C
 specifier|public
 specifier|static
@@ -320,6 +340,31 @@ name|Schema_170
 operator|.
 name|class
 decl_stmt|;
+static|static
+block|{
+name|checkState
+argument_list|(
+name|C
+operator|.
+name|equals
+argument_list|(
+name|Schema_170
+operator|.
+name|class
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|checkState
+argument_list|(
+name|guessVersion
+argument_list|(
+name|C
+argument_list|)
+operator|<
+literal|180
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|getBinaryVersion ()
 specifier|public
 specifier|static
