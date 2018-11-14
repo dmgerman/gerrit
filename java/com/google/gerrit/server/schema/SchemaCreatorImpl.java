@@ -766,20 +766,33 @@ argument_list|(
 literal|"Non-Interactive Users"
 argument_list|)
 decl_stmt|;
-name|allProjectsCreator
+name|AllProjectsInput
+name|allProjectsInput
+init|=
+name|AllProjectsInput
 operator|.
-name|setAdministrators
+name|builder
+argument_list|()
+operator|.
+name|administratorsGroup
 argument_list|(
 name|admins
 argument_list|)
 operator|.
-name|setBatchUsers
+name|batchUsersGroup
 argument_list|(
 name|batchUsers
 argument_list|)
 operator|.
-name|create
+name|build
 argument_list|()
+decl_stmt|;
+name|allProjectsCreator
+operator|.
+name|create
+argument_list|(
+name|allProjectsInput
+argument_list|)
 expr_stmt|;
 comment|// We have to create the All-Users repository before we can use it to store the groups in it.
 name|allUsersCreator

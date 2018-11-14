@@ -130,7 +130,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|AllProjectsCreator
+name|AllProjectsInput
 operator|.
 name|getDefaultCodeReviewLabel
 import|;
