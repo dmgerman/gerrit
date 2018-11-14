@@ -230,22 +230,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
-operator|.
-name|raw
-operator|.
-name|HostPageServlet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|account
@@ -451,7 +435,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Watches request for the host page and requires login if not yet signed in.  *  *<p>If HTTP authentication has been enabled on this server this filter is bound in front of the  * {@link HostPageServlet} and redirects users who are not yet signed in to visit {@code /login/},  * so the web container can force login. This redirect is performed with JavaScript, such that any  * existing anchor token in the URL can be rewritten and preserved through the authentication  * process of any enterprise single sign-on solutions.  */
+comment|/**  * Watches request for the host page and requires login if not yet signed in.  *  *<p>If HTTP authentication has been enabled on this server this filter is bound in front of the  * Gerrit and redirects users who are not yet signed in to visit {@code /login/}, so the web  * container can force login. This redirect is performed with JavaScript, such that any existing  * anchor token in the URL can be rewritten and preserved through the authentication process of any  * enterprise single sign-on solutions.  */
 end_comment
 
 begin_class

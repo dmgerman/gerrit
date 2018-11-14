@@ -111,7 +111,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Specifies JavaScript to dynamically load into the web UI.  *  *<p>To automatically register (instead of writing a Guice module), declare the intention with  * {@code @Listen}, extend the correct class and define a constructor to configure the correct  * resource:  *  *<pre>  *&#064;Listen  * class MyJs extends JavaScriptPlugin {  *   MyJs() {  *     super(&quot;hello.js&quot;);  *   }  * }  *</pre>  *  * @see GwtPlugin  * @see JavaScriptPlugin  */
+comment|/**  * Specifies JavaScript to dynamically load into the web UI.  *  *<p>To automatically register (instead of writing a Guice module), declare the intention with  * {@code @Listen}, extend the correct class and define a constructor to configure the correct  * resource:  *  *<pre>  *&#064;Listen  * class MyJs extends JavaScriptPlugin {  *   MyJs() {  *     super(&quot;hello.js&quot;);  *   }  * }  *</pre>  *  * @see JavaScriptPlugin  */
 end_comment
 
 begin_class
@@ -123,25 +123,6 @@ specifier|abstract
 class|class
 name|WebUiPlugin
 block|{
-DECL|method|gwt (String moduleName)
-specifier|public
-specifier|static
-specifier|final
-name|GwtPlugin
-name|gwt
-parameter_list|(
-name|String
-name|moduleName
-parameter_list|)
-block|{
-return|return
-operator|new
-name|GwtPlugin
-argument_list|(
-name|moduleName
-argument_list|)
-return|;
-block|}
 DECL|method|js (String scriptName)
 specifier|public
 specifier|static
