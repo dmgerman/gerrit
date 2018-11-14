@@ -1366,7 +1366,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaVersionCheck
+name|ReviewDbSchemaVersionCheck
 import|;
 end_import
 
@@ -2578,7 +2578,7 @@ name|dbInjector
 operator|.
 name|getInstance
 argument_list|(
-name|SchemaVersionCheck
+name|ReviewDbSchemaVersionCheck
 operator|.
 name|class
 argument_list|)
@@ -3055,7 +3055,7 @@ name|modules
 operator|.
 name|add
 argument_list|(
-name|SchemaVersionCheck
+name|ReviewDbSchemaVersionCheck
 operator|.
 name|module
 argument_list|()

@@ -376,7 +376,7 @@ specifier|public
 class|class
 name|Schema_144
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|COMMIT_MSG
 specifier|private

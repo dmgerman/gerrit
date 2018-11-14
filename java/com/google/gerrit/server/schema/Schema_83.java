@@ -108,7 +108,7 @@ specifier|public
 class|class
 name|Schema_83
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 annotation|@
 name|Inject
@@ -121,14 +121,14 @@ argument_list|(
 operator|new
 name|Provider
 argument_list|<
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|get
 parameter_list|()
 block|{

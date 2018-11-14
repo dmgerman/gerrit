@@ -432,7 +432,7 @@ specifier|public
 class|class
 name|Schema_160
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|DEFAULT_DRAFT_ITEMS
 annotation|@

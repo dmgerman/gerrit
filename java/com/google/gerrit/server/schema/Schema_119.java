@@ -694,7 +694,7 @@ specifier|public
 class|class
 name|Schema_119
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|LEGACY_DISPLAYNAME_MAP
 specifier|private

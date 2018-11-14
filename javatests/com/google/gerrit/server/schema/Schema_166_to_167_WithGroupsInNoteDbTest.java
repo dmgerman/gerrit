@@ -1410,12 +1410,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|executeSchemaMigration (SchemaVersion schema)
+DECL|method|executeSchemaMigration (ReviewDbSchemaVersion schema)
 specifier|private
 name|void
 name|executeSchemaMigration
 parameter_list|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|schema
 parameter_list|)
 throws|throws

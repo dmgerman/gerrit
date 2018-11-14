@@ -350,7 +350,7 @@ specifier|public
 class|class
 name|Schema_147
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|repoManager
 specifier|private

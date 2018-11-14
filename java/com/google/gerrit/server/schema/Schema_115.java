@@ -554,7 +554,7 @@ specifier|public
 class|class
 name|Schema_115
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|mgr
 specifier|private

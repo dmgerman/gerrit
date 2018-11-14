@@ -412,7 +412,7 @@ specifier|public
 class|class
 name|Schema_123
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|repoManager
 specifier|private

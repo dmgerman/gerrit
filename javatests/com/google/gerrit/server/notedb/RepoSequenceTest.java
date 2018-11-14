@@ -464,8 +464,6 @@ specifier|final
 name|Retryer
 argument_list|<
 name|RefUpdate
-operator|.
-name|Result
 argument_list|>
 name|RETRYER
 init|=
@@ -1604,8 +1602,6 @@ name|RetryerBuilder
 operator|.
 expr|<
 name|RefUpdate
-operator|.
-name|Result
 operator|>
 name|newBuilder
 argument_list|()
@@ -1637,7 +1633,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"failed to update refs/sequences/id: LOCK_FAILURE"
+literal|"Failed to update refs/sequences/id: LOCK_FAILURE"
 argument_list|)
 expr_stmt|;
 name|s
@@ -2542,8 +2538,6 @@ name|RetryerBuilder
 operator|.
 expr|<
 name|RefUpdate
-operator|.
-name|Result
 operator|>
 name|newBuilder
 argument_list|()
@@ -2575,7 +2569,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"failed to update refs/sequences/id: LOCK_FAILURE"
+literal|"Failed to update refs/sequences/id: LOCK_FAILURE"
 argument_list|)
 expr_stmt|;
 name|s
@@ -2619,7 +2613,7 @@ name|RETRYER
 argument_list|)
 return|;
 block|}
-DECL|method|newSequence ( String name, final int start, int batchSize, Runnable afterReadRef, Retryer<RefUpdate.Result> retryer)
+DECL|method|newSequence ( String name, final int start, int batchSize, Runnable afterReadRef, Retryer<RefUpdate> retryer)
 specifier|private
 name|RepoSequence
 name|newSequence
@@ -2640,8 +2634,6 @@ parameter_list|,
 name|Retryer
 argument_list|<
 name|RefUpdate
-operator|.
-name|Result
 argument_list|>
 name|retryer
 parameter_list|)

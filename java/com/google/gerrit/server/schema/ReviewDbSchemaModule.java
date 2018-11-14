@@ -271,10 +271,10 @@ comment|/** Validate the schema and connect to Git. */
 end_comment
 
 begin_class
-DECL|class|SchemaModule
+DECL|class|ReviewDbSchemaModule
 specifier|public
 class|class
-name|SchemaModule
+name|ReviewDbSchemaModule
 extends|extends
 name|FactoryModule
 block|{

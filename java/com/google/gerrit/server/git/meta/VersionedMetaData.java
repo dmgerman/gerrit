@@ -134,11 +134,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|git
 operator|.
-name|client
-operator|.
-name|Project
+name|LockFailureException
 import|;
 end_import
 
@@ -150,11 +148,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|git
+name|client
 operator|.
-name|LockFailureException
+name|Project
 import|;
 end_import
 

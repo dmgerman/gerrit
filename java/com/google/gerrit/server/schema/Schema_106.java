@@ -380,7 +380,7 @@ specifier|public
 class|class
 name|Schema_106
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 comment|// we can use multiple threads per CPU as we can expect that threads will be
 comment|// waiting for IO

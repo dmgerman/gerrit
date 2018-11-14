@@ -408,7 +408,7 @@ specifier|public
 class|class
 name|Schema_120
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|mgr
 specifier|private

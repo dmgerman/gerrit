@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.update
+DECL|package|com.google.gerrit.git
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|update
+name|git
 package|;
 end_package
 
@@ -77,22 +75,6 @@ operator|.
 name|annotations
 operator|.
 name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|LockFailureException
 import|;
 end_import
 
@@ -450,6 +432,108 @@ argument_list|(
 literal|"Update failed: "
 operator|+
 name|bru
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**    * Check results of a single ref update, throwing an exception if there was a failure.    *    * @param ru ref update; must already have been executed.    * @throws IllegalArgumentException if the result was {@code NOT_ATTEMPTED}.    * @throws LockFailureException if the result was {@code LOCK_FAILURE}.    * @throws IOException if the result failed for another reason.    */
+DECL|method|checkResult (RefUpdate ru)
+specifier|public
+specifier|static
+name|void
+name|checkResult
+parameter_list|(
+name|RefUpdate
+name|ru
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|RefUpdate
+operator|.
+name|Result
+name|result
+init|=
+name|ru
+operator|.
+name|getResult
+argument_list|()
+decl_stmt|;
+switch|switch
+condition|(
+name|result
+condition|)
+block|{
+case|case
+name|NOT_ATTEMPTED
+case|:
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Not attempted: "
+operator|+
+name|ru
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+throw|;
+case|case
+name|NEW
+case|:
+case|case
+name|FORCED
+case|:
+case|case
+name|NO_CHANGE
+case|:
+case|case
+name|FAST_FORWARD
+case|:
+case|case
+name|RENAMED
+case|:
+return|return;
+case|case
+name|LOCK_FAILURE
+case|:
+throw|throw
+operator|new
+name|LockFailureException
+argument_list|(
+literal|"Failed to update "
+operator|+
+name|ru
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|result
+argument_list|,
+name|ru
+argument_list|)
+throw|;
+default|default:
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Failed to update "
+operator|+
+name|ru
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|ru
+operator|.
+name|getResult
+argument_list|()
 argument_list|)
 throw|;
 block|}

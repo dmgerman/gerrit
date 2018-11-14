@@ -210,7 +210,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 import|;
 end_import
 
@@ -226,7 +226,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 import|;
 end_import
 
@@ -483,7 +483,7 @@ block|}
 DECL|field|schemaCreator
 specifier|private
 specifier|final
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 name|schemaCreator
 decl_stmt|;
 DECL|field|dbInstance
@@ -579,7 +579,7 @@ name|childInjector
 operator|.
 name|getInstance
 argument_list|(
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 operator|.
 name|class
 argument_list|)
@@ -628,10 +628,10 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|InMemoryDatabase (SchemaCreator schemaCreator)
+DECL|method|InMemoryDatabase (ReviewDbSchemaCreator schemaCreator)
 name|InMemoryDatabase
 parameter_list|(
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 name|schemaCreator
 parameter_list|)
 throws|throws
@@ -840,7 +840,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 operator|.
 name|getBinaryVersion
 argument_list|()

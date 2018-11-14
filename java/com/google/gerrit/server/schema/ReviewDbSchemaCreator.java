@@ -118,6 +118,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|git
+operator|.
+name|RefUpdateUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|metrics
 operator|.
 name|MetricMaker
@@ -544,22 +558,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
-name|RefUpdateUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|jdbc
@@ -729,10 +727,10 @@ comment|/** Creates the current database schema and populates initial code rows.
 end_comment
 
 begin_class
-DECL|class|SchemaCreator
+DECL|class|ReviewDbSchemaCreator
 specifier|public
 class|class
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 block|{
 DECL|field|site_path
 annotation|@
@@ -816,9 +814,9 @@ name|allProjectsName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaCreator ( SitePaths site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, @GerritServerId String serverId, @GerritServerConfig Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
+DECL|method|ReviewDbSchemaCreator ( SitePaths site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, @GerritServerId String serverId, @GerritServerConfig Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
 specifier|public
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 parameter_list|(
 name|SitePaths
 name|site
@@ -898,9 +896,9 @@ name|apName
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SchemaCreator ( @itePath Path site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, String serverId, Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
+DECL|method|ReviewDbSchemaCreator ( @itePath Path site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, String serverId, Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
 specifier|public
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 parameter_list|(
 annotation|@
 name|SitePath
@@ -1070,7 +1068,7 @@ name|sVer
 operator|.
 name|versionNbr
 operator|=
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 operator|.
 name|getBinaryVersion
 argument_list|()

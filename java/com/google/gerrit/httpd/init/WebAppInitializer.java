@@ -1214,7 +1214,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaModule
+name|ReviewDbSchemaModule
 import|;
 end_import
 
@@ -1230,7 +1230,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaVersionCheck
+name|ReviewDbSchemaVersionCheck
 import|;
 end_import
 
@@ -2787,7 +2787,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|SchemaModule
+name|ReviewDbSchemaModule
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2795,7 +2795,7 @@ name|modules
 operator|.
 name|add
 argument_list|(
-name|SchemaVersionCheck
+name|ReviewDbSchemaVersionCheck
 operator|.
 name|module
 argument_list|()

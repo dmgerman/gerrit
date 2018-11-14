@@ -448,7 +448,7 @@ specifier|public
 class|class
 name|Schema_146
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|CREATE_ACCOUNT_MSG
 specifier|private

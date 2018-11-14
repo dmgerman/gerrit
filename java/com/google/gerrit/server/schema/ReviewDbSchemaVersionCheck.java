@@ -213,10 +213,10 @@ comment|/** Validates the current schema version. */
 end_comment
 
 begin_class
-DECL|class|SchemaVersionCheck
+DECL|class|ReviewDbSchemaVersionCheck
 specifier|public
 class|class
-name|SchemaVersionCheck
+name|ReviewDbSchemaVersionCheck
 implements|implements
 name|LifecycleListener
 block|{
@@ -244,7 +244,7 @@ argument_list|()
 operator|.
 name|to
 argument_list|(
-name|SchemaVersionCheck
+name|ReviewDbSchemaVersionCheck
 operator|.
 name|class
 argument_list|)
@@ -270,9 +270,9 @@ name|site
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaVersionCheck (SchemaFactory<ReviewDb> schemaFactory, SitePaths site)
+DECL|method|ReviewDbSchemaVersionCheck (SchemaFactory<ReviewDb> schemaFactory, SitePaths site)
 specifier|public
-name|SchemaVersionCheck
+name|ReviewDbSchemaVersionCheck
 parameter_list|(
 name|SchemaFactory
 argument_list|<
@@ -329,7 +329,7 @@ specifier|final
 name|int
 name|expectedVer
 init|=
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 operator|.
 name|getBinaryVersion
 argument_list|()

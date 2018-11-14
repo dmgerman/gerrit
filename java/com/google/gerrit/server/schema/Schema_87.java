@@ -228,7 +228,7 @@ specifier|public
 class|class
 name|Schema_87
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 annotation|@
 name|Inject

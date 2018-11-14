@@ -596,7 +596,7 @@ specifier|public
 class|class
 name|Schema_139
 extends|extends
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 block|{
 DECL|field|MSG
 specifier|private

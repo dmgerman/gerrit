@@ -459,10 +459,10 @@ comment|/** Creates or updates the current database schema. */
 end_comment
 
 begin_class
-DECL|class|SchemaUpdater
+DECL|class|ReviewDbSchemaUpdater
 specifier|public
 class|class
-name|SchemaUpdater
+name|ReviewDbSchemaUpdater
 block|{
 DECL|field|schema
 specifier|private
@@ -482,7 +482,7 @@ decl_stmt|;
 DECL|field|creator
 specifier|private
 specifier|final
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 name|creator
 decl_stmt|;
 DECL|field|updater
@@ -490,14 +490,14 @@ specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 argument_list|>
 name|updater
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaUpdater ( @eviewDbFactory SchemaFactory<ReviewDb> schema, SitePaths site, SchemaCreator creator, Injector parent)
-name|SchemaUpdater
+DECL|method|ReviewDbSchemaUpdater ( @eviewDbFactory SchemaFactory<ReviewDb> schema, SitePaths site, ReviewDbSchemaCreator creator, Injector parent)
+name|ReviewDbSchemaUpdater
 parameter_list|(
 annotation|@
 name|ReviewDbFactory
@@ -510,7 +510,7 @@ parameter_list|,
 name|SitePaths
 name|site
 parameter_list|,
-name|SchemaCreator
+name|ReviewDbSchemaCreator
 name|creator
 parameter_list|,
 name|Injector
@@ -546,7 +546,7 @@ argument_list|)
 operator|.
 name|getProvider
 argument_list|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 operator|.
 name|class
 argument_list|)
@@ -587,14 +587,14 @@ parameter_list|()
 block|{
 name|bind
 argument_list|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 operator|.
 name|class
 argument_list|)
 operator|.
 name|to
 argument_list|(
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 operator|.
 name|C
 argument_list|)
@@ -785,7 +785,7 @@ argument_list|)
 init|)
 block|{
 specifier|final
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|u
 init|=
 name|updater
@@ -882,7 +882,7 @@ annotation|@
 name|VisibleForTesting
 DECL|method|getLatestSchemaVersion ()
 specifier|public
-name|SchemaVersion
+name|ReviewDbSchemaVersion
 name|getLatestSchemaVersion
 parameter_list|()
 block|{

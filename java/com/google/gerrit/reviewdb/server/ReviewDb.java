@@ -198,7 +198,7 @@ name|ReviewDb
 extends|extends
 name|Schema
 block|{
-comment|/* If you change anything, update SchemaVersion.C to use a new version. */
+comment|/* If you change anything, update ReviewDbSchemaVersion.C to use a new version. */
 annotation|@
 name|Relation
 argument_list|(
