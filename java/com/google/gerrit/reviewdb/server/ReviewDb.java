@@ -120,22 +120,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|SystemConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -187,7 +171,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The review service database schema.  *  *<p>Root entities that are at the top level of some important data graph:  *  *<ul>  *<li>{@link Account}: Per-user account registration, preferences, identity.  *<li>{@link Change}: All review information about a single proposed change.  *<li>{@link SystemConfig}: Server-wide settings, managed by administrator.  *</ul>  */
+comment|/**  * The review service database schema.  *  *<p>Root entities that are at the top level of some important data graph:  *  *<ul>  *<li>{@link Account}: Per-user account registration, preferences, identity.  *<li>{@link Change}: All review information about a single proposed change.  *</ul>  */
 end_comment
 
 begin_interface
@@ -211,18 +195,7 @@ name|SchemaVersionAccess
 name|schemaVersion
 parameter_list|()
 function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|2
-argument_list|)
-DECL|method|systemConfig ()
-name|SystemConfigAccess
-name|systemConfig
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 2)
 comment|// Deleted @Relation(id = 3)
 comment|// Deleted @Relation(id = 4)
 comment|// Deleted @Relation(id = 6)
