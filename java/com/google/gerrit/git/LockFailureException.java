@@ -52,15 +52,13 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.git
 package|package
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
-operator|.
-name|server
 operator|.
 name|git
 package|;
