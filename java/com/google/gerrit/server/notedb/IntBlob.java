@@ -118,6 +118,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|base
 operator|.
 name|CharMatcher
@@ -245,6 +259,20 @@ operator|.
 name|errors
 operator|.
 name|IncorrectObjectTypeException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|AnyObjectId
 import|;
 end_import
 
@@ -853,13 +881,14 @@ operator|.
 name|FORCED
 return|;
 block|}
-DECL|method|create (ObjectId id, int value)
-specifier|private
+annotation|@
+name|VisibleForTesting
+DECL|method|create (AnyObjectId id, int value)
 specifier|static
 name|IntBlob
 name|create
 parameter_list|(
-name|ObjectId
+name|AnyObjectId
 name|id
 parameter_list|,
 name|int
@@ -871,6 +900,9 @@ operator|new
 name|AutoValue_IntBlob
 argument_list|(
 name|id
+operator|.
+name|copy
+argument_list|()
 argument_list|,
 name|value
 argument_list|)
