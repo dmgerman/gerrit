@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Audit annotation for JSON/RPC interfaces.  *  *<p>Flag with @Audit all the JSON/RPC methods to be traced in audit-trail and submitted to the  * AuditService.  */
+comment|/**  * Audit annotation for JSON/RPC interfaces.  *  *<p>Flag with @Audit all the JSON/RPC methods to be traced in audit-trail and submitted to the  * GroupAuditService.  */
 end_comment
 
 begin_annotation_defn

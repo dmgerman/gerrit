@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.audit
+DECL|package|com.google.gerrit.server
 package|package
 name|com
 operator|.
@@ -61,8 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|server
-operator|.
-name|audit
 package|;
 end_package
 
@@ -131,20 +129,6 @@ operator|.
 name|collect
 operator|.
 name|ListMultimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|CurrentUser
 import|;
 end_import
 
