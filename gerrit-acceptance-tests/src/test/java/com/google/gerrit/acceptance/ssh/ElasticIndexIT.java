@@ -315,7 +315,7 @@ name|getConfig
 argument_list|(
 name|ElasticVersion
 operator|.
-name|V6_4
+name|V6_5
 argument_list|)
 return|;
 block|}
