@@ -414,7 +414,7 @@ if|if
 condition|(
 name|resultSet
 operator|.
-name|first
+name|next
 argument_list|()
 condition|)
 block|{
