@@ -626,7 +626,7 @@ operator|.
 name|enableProtocolV2
 argument_list|()
 operator|&&
-name|gitProtocol
+name|extraParameters
 operator|!=
 literal|null
 condition|)
@@ -637,9 +637,9 @@ name|setExtraParameters
 argument_list|(
 name|ImmutableList
 operator|.
-name|of
+name|copyOf
 argument_list|(
-name|gitProtocol
+name|extraParameters
 argument_list|)
 argument_list|)
 expr_stmt|;
