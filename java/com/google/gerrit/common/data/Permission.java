@@ -68,6 +68,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -996,7 +1010,6 @@ operator|=
 name|newExclusiveGroup
 expr_stmt|;
 block|}
-comment|// TODO(ekempin): Make this method return an ImmutableList once the GWT UI is gone.
 DECL|method|getRules ()
 specifier|public
 name|List
@@ -1006,24 +1019,19 @@ argument_list|>
 name|getRules
 parameter_list|()
 block|{
-if|if
-condition|(
+return|return
 name|rules
 operator|==
 literal|null
-condition|)
-block|{
-return|return
-operator|new
-name|ArrayList
-argument_list|<>
+condition|?
+name|ImmutableList
+operator|.
+name|of
 argument_list|()
-return|;
-block|}
-return|return
-operator|new
-name|ArrayList
-argument_list|<>
+else|:
+name|ImmutableList
+operator|.
+name|copyOf
 argument_list|(
 name|rules
 argument_list|)
