@@ -154,6 +154,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|UUID
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -424,15 +434,93 @@ expr_stmt|;
 block|}
 end_for
 
-begin_expr_stmt
-unit|}    private
-DECL|method|ElasticTestUtils ()
-name|ElasticTestUtils
+begin_function
+unit|}    public
+DECL|method|getConfig (ElasticVersion version)
+specifier|static
+name|Config
+name|getConfig
+parameter_list|(
+name|ElasticVersion
+name|version
+parameter_list|)
+block|{
+name|ElasticNodeInfo
+name|elasticNodeInfo
+decl_stmt|;
+name|ElasticContainer
+argument_list|<
+name|?
+argument_list|>
+name|container
+init|=
+name|ElasticContainer
+operator|.
+name|createAndStart
+argument_list|(
+name|version
+argument_list|)
+decl_stmt|;
+name|elasticNodeInfo
+operator|=
+operator|new
+name|ElasticNodeInfo
+argument_list|(
+name|container
+operator|.
+name|getHttpHost
 argument_list|()
+operator|.
+name|getPort
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|String
+name|indicesPrefix
+init|=
+name|UUID
+operator|.
+name|randomUUID
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|Config
+name|cfg
+init|=
+operator|new
+name|Config
+argument_list|()
+decl_stmt|;
+name|configure
+argument_list|(
+name|cfg
+argument_list|,
+name|elasticNodeInfo
+operator|.
+name|port
+argument_list|,
+name|indicesPrefix
+argument_list|,
+name|version
+argument_list|)
+expr_stmt|;
+return|return
+name|cfg
+return|;
+block|}
+end_function
+
+begin_constructor
+DECL|method|ElasticTestUtils ()
+specifier|private
+name|ElasticTestUtils
+parameter_list|()
 block|{
 comment|// hide default constructor
 block|}
-end_expr_stmt
+end_constructor
 
 unit|}
 end_unit
