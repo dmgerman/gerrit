@@ -200,6 +200,9 @@ case|:
 case|case
 name|V6_4
 case|:
+case|case
+name|V6_5
+case|:
 name|this
 operator|.
 name|searchFilteringName
