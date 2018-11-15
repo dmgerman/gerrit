@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.rest
+DECL|package|com.google.gerrit.acceptance.rest.binding
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|acceptance
 operator|.
 name|rest
+operator|.
+name|binding
 package|;
 end_package
 
@@ -124,7 +126,57 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
+name|AbstractDaemonTest
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
 name|RestResponse
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|util
+operator|.
+name|RestApiCallHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|util
+operator|.
+name|RestCall
 import|;
 end_import
 
@@ -225,7 +277,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for checking the bindings of the config REST API.  *  *<p>These tests only verify that the config REST endpoints are correctly bound, they do no test  * the functionality of the config REST endpoints (for details see JavaDoc on {@link  * AbstractRestApiBindingsTest}).  */
+comment|/**  * Tests for checking the bindings of the config REST API.  *  *<p>These tests only verify that the config REST endpoints are correctly bound, they do no test  * the functionality of the config REST endpoints.  */
 end_comment
 
 begin_class
@@ -234,7 +286,7 @@ specifier|public
 class|class
 name|ConfigRestApiBindingsIT
 extends|extends
-name|AbstractRestApiBindingsTest
+name|AbstractDaemonTest
 block|{
 comment|/**    * Config REST endpoints to be tested, the URLs contain no placeholders since the only supported    * config identifier ('server') can be hard-coded.    */
 DECL|field|CONFIG_ENDPOINTS
@@ -445,8 +497,12 @@ operator|.
 name|ACCESS_DATABASE
 argument_list|)
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|CONFIG_ENDPOINTS
 argument_list|)
 expr_stmt|;
@@ -461,8 +517,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|CACHE_ENDPOINTS
 argument_list|,
 name|ProjectCacheImpl
@@ -572,8 +632,12 @@ operator|.
 name|isPresent
 argument_list|()
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|TASK_ENDPOINTS
 argument_list|,
 name|id

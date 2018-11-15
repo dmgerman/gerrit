@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.rest
+DECL|package|com.google.gerrit.acceptance.rest.binding
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|acceptance
 operator|.
 name|rest
+operator|.
+name|binding
 package|;
 end_package
 
@@ -110,7 +112,9 @@ name|acceptance
 operator|.
 name|rest
 operator|.
-name|AbstractRestApiBindingsTest
+name|util
+operator|.
+name|RestCall
 operator|.
 name|Method
 operator|.
@@ -208,7 +212,57 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
+name|AbstractDaemonTest
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
 name|GitUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|util
+operator|.
+name|RestApiCallHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|util
+operator|.
+name|RestCall
 import|;
 end_import
 
@@ -365,7 +419,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for checking the bindings of the projects REST API.  *  *<p>These tests only verify that the project REST endpoints are correctly bound, they do no test  * the functionality of the project REST endpoints (for details see JavaDoc on {@link  * AbstractRestApiBindingsTest}).  */
+comment|/**  * Tests for checking the bindings of the projects REST API.  *  *<p>These tests only verify that the project REST endpoints are correctly bound, they do no test  * the functionality of the project REST endpoints.  */
 end_comment
 
 begin_class
@@ -374,7 +428,7 @@ specifier|public
 class|class
 name|ProjectsRestApiBindingsIT
 extends|extends
-name|AbstractRestApiBindingsTest
+name|AbstractDaemonTest
 block|{
 DECL|field|PROJECT_ENDPOINTS
 specifier|private
@@ -891,8 +945,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|PROJECT_ENDPOINTS
 argument_list|,
 name|project
@@ -924,8 +982,12 @@ argument_list|,
 name|project
 argument_list|)
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|CHILD_PROJECT_ENDPOINTS
 argument_list|,
 name|project
@@ -950,8 +1012,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|BRANCH_ENDPOINTS
 argument_list|,
 name|project
@@ -978,8 +1044,12 @@ argument_list|(
 name|FILENAME
 argument_list|)
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|BRANCH_FILE_ENDPOINTS
 argument_list|,
 name|project
@@ -1006,8 +1076,12 @@ block|{
 name|createDefaultDashboard
 argument_list|()
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|DASHBOARD_ENDPOINTS
 argument_list|,
 name|project
@@ -1059,8 +1133,12 @@ name|TagInput
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|TAG_ENDPOINTS
 argument_list|,
 name|project
@@ -1090,8 +1168,12 @@ argument_list|(
 name|FILENAME
 argument_list|)
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|COMMIT_ENDPOINTS
 argument_list|,
 name|project
@@ -1121,8 +1203,12 @@ argument_list|(
 name|FILENAME
 argument_list|)
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|COMMIT_FILE_ENDPOINTS
 argument_list|,
 name|project

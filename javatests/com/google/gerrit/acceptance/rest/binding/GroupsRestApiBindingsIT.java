@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.rest
+DECL|package|com.google.gerrit.acceptance.rest.binding
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|acceptance
 operator|.
 name|rest
+operator|.
+name|binding
 package|;
 end_package
 
@@ -82,6 +84,56 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|AbstractDaemonTest
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|util
+operator|.
+name|RestApiCallHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|util
+operator|.
+name|RestCall
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -91,7 +143,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for checking the bindings of the groups REST API.  *  *<p>These tests only verify that the group REST endpoints are correctly bound, they do no test the  * functionality of the group REST endpoints (for details see JavaDoc on {@link  * AbstractRestApiBindingsTest}).  */
+comment|/**  * Tests for checking the bindings of the groups REST API.  *  *<p>These tests only verify that the group REST endpoints are correctly bound, they do no test the  * functionality of the group REST endpoints.  */
 end_comment
 
 begin_class
@@ -100,7 +152,7 @@ specifier|public
 class|class
 name|GroupsRestApiBindingsIT
 extends|extends
-name|AbstractRestApiBindingsTest
+name|AbstractDaemonTest
 block|{
 comment|/**    * Group REST endpoints to be tested, each URL contains a placeholder for the group identifier.    */
 DECL|field|GROUP_ENDPOINTS
@@ -376,8 +428,12 @@ argument_list|()
 operator|.
 name|name
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|GROUP_ENDPOINTS
 argument_list|,
 name|group
@@ -429,8 +485,12 @@ operator|.
 name|email
 argument_list|)
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|MEMBER_ENDPOINTS
 argument_list|,
 name|group
@@ -502,8 +562,12 @@ argument_list|(
 name|subgroup
 argument_list|)
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|SUBGROUP_ENDPOINTS
 argument_list|,
 name|group
