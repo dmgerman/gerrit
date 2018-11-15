@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.audit
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|audit
+name|schema
 package|;
 end_package
 
@@ -72,13 +72,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|inject
 operator|.
-name|extensions
-operator|.
-name|annotations
-operator|.
-name|ExtensionPoint
+name|Inject
 import|;
 end_import
 
@@ -88,32 +84,40 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|inject
 operator|.
-name|server
-operator|.
-name|AuditEvent
+name|Provider
 import|;
 end_import
 
-begin_interface
-annotation|@
-name|ExtensionPoint
-DECL|interface|AuditListener
+begin_class
+DECL|class|Schema_170
 specifier|public
-interface|interface
-name|AuditListener
+class|class
+name|Schema_170
+extends|extends
+name|ReviewDbSchemaVersion
 block|{
-DECL|method|onAuditableAction (AuditEvent action)
-name|void
-name|onAuditableAction
+annotation|@
+name|Inject
+DECL|method|Schema_170 (Provider<Schema_169> prior)
+name|Schema_170
 parameter_list|(
-name|AuditEvent
-name|action
+name|Provider
+argument_list|<
+name|Schema_169
+argument_list|>
+name|prior
 parameter_list|)
-function_decl|;
+block|{
+name|super
+argument_list|(
+name|prior
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

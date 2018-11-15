@@ -306,16 +306,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|sql
 operator|.
 name|ResultSet
@@ -501,8 +491,6 @@ throws|throws
 name|OrmException
 throws|,
 name|SQLException
-throws|,
-name|IOException
 block|{
 comment|// Initially the schema should be empty.
 name|String
@@ -610,24 +598,6 @@ name|getParentFile
 argument_list|()
 expr_stmt|;
 block|}
-name|assertThat
-argument_list|(
-name|db
-operator|.
-name|getSystemConfig
-argument_list|()
-operator|.
-name|sitePath
-argument_list|)
-operator|.
-name|isEqualTo
-argument_list|(
-name|sitePath
-operator|.
-name|getCanonicalPath
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|getLabelTypes ()
 specifier|private

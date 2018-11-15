@@ -742,11 +742,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|newName
+name|Patch
 operator|.
-name|equals
+name|isMagic
 argument_list|(
-literal|"/COMMIT_MSG"
+name|newName
 argument_list|)
 condition|)
 block|{

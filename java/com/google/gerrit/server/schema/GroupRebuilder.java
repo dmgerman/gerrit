@@ -2171,7 +2171,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Distinct event types.    *    *<p>Events at the same time by the same user are batched together by type. The types should    * correspond to the possible batch operations supported by {@link    * com.google.gerrit.server.audit.AuditService}.    */
+comment|/**    * Distinct event types.    *    *<p>Events at the same time by the same user are batched together by type. The types should    * correspond to the possible batch operations supported by AuditService.    */
 DECL|enum|Type
 enum|enum
 name|Type

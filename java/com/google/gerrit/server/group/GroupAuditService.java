@@ -132,6 +132,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|AuditEvent
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -146,6 +160,14 @@ specifier|public
 interface|interface
 name|GroupAuditService
 block|{
+DECL|method|dispatch (AuditEvent action)
+name|void
+name|dispatch
+parameter_list|(
+name|AuditEvent
+name|action
+parameter_list|)
+function_decl|;
 DECL|method|dispatchAddMembers ( Account.Id actor, AccountGroup.UUID updatedGroup, ImmutableSet<Id> addedMembers, Timestamp addedOn)
 name|void
 name|dispatchAddMembers

@@ -202,6 +202,12 @@ specifier|final
 name|boolean
 name|inheritProjectMaxObjectSizeLimit
 decl_stmt|;
+DECL|field|enableProtocolV2
+specifier|private
+specifier|final
+name|boolean
+name|enableProtocolV2
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|TransferConfig (@erritServerConfig Config cfg)
@@ -273,6 +279,19 @@ argument_list|(
 literal|"receive"
 argument_list|,
 literal|"inheritProjectMaxObjectSizeLimit"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|enableProtocolV2
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"receive"
+argument_list|,
+literal|"enableProtocolV2"
 argument_list|,
 literal|false
 argument_list|)
@@ -354,6 +373,16 @@ parameter_list|()
 block|{
 return|return
 name|inheritProjectMaxObjectSizeLimit
+return|;
+block|}
+DECL|method|enableProtocolV2 ()
+specifier|public
+name|boolean
+name|enableProtocolV2
+parameter_list|()
+block|{
+return|return
+name|enableProtocolV2
 return|;
 block|}
 block|}

@@ -621,21 +621,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|systemConfig ()
-specifier|public
-name|SystemConfigAccess
-name|systemConfig
-parameter_list|()
-block|{
-return|return
-name|delegate
-operator|.
-name|systemConfig
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|changes ()
 specifier|public
 name|ChangeAccess

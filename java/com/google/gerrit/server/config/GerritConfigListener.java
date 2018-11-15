@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Multimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -84,11 +98,37 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|EventListener
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|ConfigUpdatedEvent
+operator|.
+name|ConfigUpdateEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|ConfigUpdatedEvent
+operator|.
+name|UpdateResult
 import|;
 end_import
 
@@ -98,7 +138,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|EventListener
 import|;
 end_import
 
@@ -117,11 +157,11 @@ extends|extends
 name|EventListener
 block|{
 DECL|method|configUpdated (ConfigUpdatedEvent event)
-name|List
+name|Multimap
 argument_list|<
-name|ConfigUpdatedEvent
-operator|.
-name|Update
+name|UpdateResult
+argument_list|,
+name|ConfigUpdateEntry
 argument_list|>
 name|configUpdated
 parameter_list|(
