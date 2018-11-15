@@ -257,6 +257,15 @@ name|AbstractGitCommand
 extends|extends
 name|BaseCommand
 block|{
+DECL|field|GIT_PROTOCOL
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|GIT_PROTOCOL
+init|=
+literal|"GIT_PROTOCOL"
+decl_stmt|;
 annotation|@
 name|Argument
 argument_list|(
@@ -337,6 +346,11 @@ specifier|protected
 name|Project
 name|project
 decl_stmt|;
+DECL|field|gitProtocol
+specifier|protected
+name|String
+name|gitProtocol
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|start (Environment env)
@@ -348,6 +362,18 @@ name|Environment
 name|env
 parameter_list|)
 block|{
+name|gitProtocol
+operator|=
+name|env
+operator|.
+name|getEnv
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|GIT_PROTOCOL
+argument_list|)
+expr_stmt|;
 name|Context
 name|ctx
 init|=
