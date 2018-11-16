@@ -526,22 +526,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|jdbc
@@ -784,12 +768,6 @@ specifier|final
 name|MetricMaker
 name|metricMaker
 decl_stmt|;
-DECL|field|migration
-specifier|private
-specifier|final
-name|NotesMigration
-name|migration
-decl_stmt|;
 DECL|field|allProjectsName
 specifier|private
 specifier|final
@@ -798,7 +776,7 @@ name|allProjectsName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewDbSchemaCreator ( SitePaths site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, @GerritServerId String serverId, @GerritServerConfig Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
+DECL|method|ReviewDbSchemaCreator ( SitePaths site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, @GerritServerId String serverId, @GerritServerConfig Config config, MetricMaker metricMaker, AllProjectsName apName)
 specifier|public
 name|ReviewDbSchemaCreator
 parameter_list|(
@@ -841,9 +819,6 @@ parameter_list|,
 name|MetricMaker
 name|metricMaker
 parameter_list|,
-name|NotesMigration
-name|migration
-parameter_list|,
 name|AllProjectsName
 name|apName
 parameter_list|)
@@ -874,13 +849,11 @@ name|config
 argument_list|,
 name|metricMaker
 argument_list|,
-name|migration
-argument_list|,
 name|apName
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ReviewDbSchemaCreator ( @itePath Path site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, String serverId, Config config, MetricMaker metricMaker, NotesMigration migration, AllProjectsName apName)
+DECL|method|ReviewDbSchemaCreator ( @itePath Path site, GitRepositoryManager repoManager, AllProjectsCreator ap, AllUsersCreator auc, AllUsersName allUsersName, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic, String serverId, Config config, MetricMaker metricMaker, AllProjectsName apName)
 specifier|public
 name|ReviewDbSchemaCreator
 parameter_list|(
@@ -920,9 +893,6 @@ name|config
 parameter_list|,
 name|MetricMaker
 name|metricMaker
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|AllProjectsName
 name|apName
@@ -981,12 +951,6 @@ operator|.
 name|allProjectsName
 operator|=
 name|apName
-expr_stmt|;
-name|this
-operator|.
-name|migration
-operator|=
-name|migration
 expr_stmt|;
 name|this
 operator|.
@@ -1122,12 +1086,6 @@ operator|new
 name|Sequences
 argument_list|(
 name|config
-argument_list|,
-parameter_list|()
-lambda|->
-name|db
-argument_list|,
-name|migration
 argument_list|,
 name|repoManager
 argument_list|,
