@@ -82,26 +82,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
-name|DataSourceProvider
-operator|.
-name|Context
-operator|.
-name|MULTI_USER
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|nio
@@ -406,22 +386,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
-name|DataSourceType
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -518,6 +482,10 @@ name|ExplicitBooleanOptionHandler
 import|;
 end_import
 
+begin_comment
+comment|// TODO(dborowitz): Delete this program.
+end_comment
+
 begin_class
 DECL|class|MigrateToNoteDb
 specifier|public
@@ -535,15 +503,6 @@ init|=
 literal|"Trial mode: migrate changes and turn on reading from NoteDb, but leave ReviewDb as the"
 operator|+
 literal|" source of truth"
-decl_stmt|;
-DECL|field|ISSUE_8022_THREAD_LIMIT
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|ISSUE_8022_THREAD_LIMIT
-init|=
-literal|4
 decl_stmt|;
 annotation|@
 name|Option
@@ -755,9 +714,7 @@ expr_stmt|;
 name|dbInjector
 operator|=
 name|createDbInjector
-argument_list|(
-name|MULTI_USER
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|dbManager
 operator|=
@@ -1130,69 +1087,6 @@ operator|.
 name|availableProcessors
 argument_list|()
 decl_stmt|;
-name|DataSourceType
-name|dsType
-init|=
-name|dbInjector
-operator|.
-name|getInstance
-argument_list|(
-name|DataSourceType
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|dsType
-operator|.
-name|getDriver
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"org.h2.Driver"
-argument_list|)
-operator|&&
-name|procs
-operator|>
-name|ISSUE_8022_THREAD_LIMIT
-condition|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Not using more than "
-operator|+
-name|ISSUE_8022_THREAD_LIMIT
-operator|+
-literal|" threads due to http://crbug.com/gerrit/8022"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Can be increased by passing --threads, but may cause errors"
-argument_list|)
-expr_stmt|;
-name|actualThreads
-operator|=
-name|ISSUE_8022_THREAD_LIMIT
-expr_stmt|;
-block|}
-else|else
-block|{
-name|actualThreads
-operator|=
-name|procs
-expr_stmt|;
-block|}
 name|actualThreads
 operator|=
 name|ThreadLimiter
@@ -1201,7 +1095,7 @@ name|limitThreads
 argument_list|(
 name|dbInjector
 argument_list|,
-name|actualThreads
+name|procs
 argument_list|)
 expr_stmt|;
 return|return

@@ -150,19 +150,7 @@ name|ReviewDb
 extends|extends
 name|Schema
 block|{
-comment|/* If you change anything, update ReviewDbSchemaVersion.C to use a new version. */
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
-DECL|method|schemaVersion ()
-name|SchemaVersionAccess
-name|schemaVersion
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 1)
 comment|// Deleted @Relation(id = 2)
 comment|// Deleted @Relation(id = 3)
 comment|// Deleted @Relation(id = 4)

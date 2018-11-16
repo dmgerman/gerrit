@@ -1024,7 +1024,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|ReviewDbSchemaCreator
+name|SchemaCreator
 import|;
 end_import
 
@@ -1397,7 +1397,7 @@ DECL|field|schemaCreator
 annotation|@
 name|Inject
 specifier|protected
-name|ReviewDbSchemaCreator
+name|SchemaCreator
 name|schemaCreator
 decl_stmt|;
 DECL|field|requestContext
@@ -1575,9 +1575,7 @@ expr_stmt|;
 name|schemaCreator
 operator|.
 name|create
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|Account
 operator|.

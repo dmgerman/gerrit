@@ -66,26 +66,6 @@ end_package
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
-name|DataSourceProvider
-operator|.
-name|Context
-operator|.
-name|MULTI_USER
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|nio
@@ -1303,22 +1283,6 @@ operator|.
 name|restapi
 operator|.
 name|RestApiModule
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
-name|DataSourceProvider
 import|;
 end_import
 
@@ -2561,22 +2525,6 @@ name|shell
 operator|.
 name|set
 argument_list|(
-literal|"ds"
-argument_list|,
-name|dbInjector
-operator|.
-name|getInstance
-argument_list|(
-name|DataSourceProvider
-operator|.
-name|class
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|shell
-operator|.
-name|set
-argument_list|(
 literal|"d"
 argument_list|,
 name|this
@@ -2767,8 +2715,6 @@ name|createDbInjector
 argument_list|(
 literal|true
 comment|/* enableMetrics */
-argument_list|,
-name|MULTI_USER
 argument_list|)
 expr_stmt|;
 block|}

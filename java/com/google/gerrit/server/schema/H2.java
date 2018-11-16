@@ -140,8 +140,6 @@ begin_class
 DECL|class|H2
 class|class
 name|H2
-extends|extends
-name|BaseDataSourceType
 block|{
 DECL|field|cfg
 specifier|protected
@@ -169,11 +167,6 @@ name|Config
 name|cfg
 parameter_list|)
 block|{
-name|super
-argument_list|(
-literal|"org.h2.Driver"
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|cfg
@@ -187,8 +180,6 @@ operator|=
 name|site
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|getUrl ()
 specifier|public
 name|String
