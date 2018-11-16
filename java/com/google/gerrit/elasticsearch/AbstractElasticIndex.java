@@ -2939,9 +2939,9 @@ name|HttpPost
 operator|.
 name|METHOD_NAME
 argument_list|,
-name|search
-argument_list|,
 name|uri
+argument_list|,
+name|search
 argument_list|,
 name|Collections
 operator|.
