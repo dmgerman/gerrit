@@ -242,7 +242,7 @@ specifier|public
 class|class
 name|DynamicOptions
 block|{
-comment|/**    * To provide additional options, bind a DynamicBean. For example:    *    *<pre>    *   bind(com.google.gerrit.server.DynamicOptions.DynamicBean.class)    *       .annotatedWith(Exports.named(com.google.gerrit.sshd.commands.Query.class))    *       .to(MyOptions.class);    *</pre>    *    * To define the additional options, implement this interface. For example:    *    *<pre>    *   public class MyOptions implements DynamicOptions.DynamicBean {    *     {@literal @}Option(name = "--verbose", aliases = {"-v"}    *             usage = "Make the operation more talkative")    *     public boolean verbose;    *   }    *</pre>    *    * The option will be prefixed by the plugin name. In the example above, if the plugin name was    * my-plugin, then the --verbose option as used by the caller would be --my-plugin--verbose.    */
+comment|/**    * To provide additional options, bind a DynamicBean. For example:    *    *<pre>    *   bind(com.google.gerrit.server.DynamicOptions.DynamicBean.class)    *       .annotatedWith(Exports.named(com.google.gerrit.sshd.commands.Query.class))    *       .to(MyOptions.class);    *</pre>    *    * To define the additional options, implement this interface. For example:    *    *<pre>    *   public class MyOptions implements DynamicOptions.DynamicBean {    *     {@literal @}Option(name = "--verbose", aliases = {"-v"}    *             usage = "Make the operation more talkative")    *     public boolean verbose;    *   }    *</pre>    *    *<p>The option will be prefixed by the plugin name. In the example above, if the plugin name was    * my-plugin, then the --verbose option as used by the caller would be --my-plugin--verbose.    *    *<p>Additional options can be annotated with @RequiresOption which will cause them to be ignored    * unless the required option is present. For example:    *    *<pre>    *   {@literal @}RequiresOptions("--help")    *   {@literal @}Option(name = "--help-as-json",    *           usage = "display help text in json format")    *   public boolean displayHelpAsJson;    *</pre>    */
 DECL|interface|DynamicBean
 specifier|public
 interface|interface
@@ -919,6 +919,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|clp
+operator|.
+name|drainOptionQueue
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|setDynamicBeans ()
 specifier|public
