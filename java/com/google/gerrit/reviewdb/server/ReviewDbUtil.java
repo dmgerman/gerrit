@@ -277,7 +277,7 @@ if|if
 condition|(
 name|db
 operator|instanceof
-name|DisallowReadFromChangesReviewDbWrapper
+name|DisallowedReviewDb
 condition|)
 block|{
 return|return
@@ -285,7 +285,7 @@ name|unwrapDb
 argument_list|(
 operator|(
 operator|(
-name|DisallowReadFromChangesReviewDbWrapper
+name|DisallowedReviewDb
 operator|)
 name|db
 operator|)

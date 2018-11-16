@@ -191,10 +191,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|DisallowReadFromChangesReviewDbWrapper
+DECL|class|DisallowedReviewDb
 specifier|public
 class|class
-name|DisallowReadFromChangesReviewDbWrapper
+name|DisallowedReviewDb
 extends|extends
 name|ReviewDbWrapper
 block|{
@@ -237,9 +237,9 @@ specifier|final
 name|PatchLineComments
 name|patchComments
 decl_stmt|;
-DECL|method|DisallowReadFromChangesReviewDbWrapper (ReviewDb db)
+DECL|method|DisallowedReviewDb (ReviewDb db)
 specifier|public
-name|DisallowReadFromChangesReviewDbWrapper
+name|DisallowedReviewDb
 parameter_list|(
 name|ReviewDb
 name|db
