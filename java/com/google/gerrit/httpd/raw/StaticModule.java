@@ -900,7 +900,6 @@ name|CoreStaticModule
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|install
 argument_list|(
 operator|new
@@ -908,6 +907,7 @@ name|PolyGerritModule
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Provides

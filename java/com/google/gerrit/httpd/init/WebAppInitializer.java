@@ -3725,6 +3725,26 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// StaticModule contains a "/*" wildcard, place it last.
+name|GerritOptions
+name|opts
+init|=
+name|sysInjector
+operator|.
+name|getInstance
+argument_list|(
+name|GerritOptions
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|opts
+operator|.
+name|enableMasterFeatures
+argument_list|()
+condition|)
+block|{
 name|modules
 operator|.
 name|add
@@ -3739,6 +3759,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|sysInjector
 operator|.
