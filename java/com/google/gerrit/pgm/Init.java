@@ -1416,11 +1416,6 @@ name|nullOrEmpty
 argument_list|(
 name|installPlugins
 argument_list|)
-operator|||
-name|nullOrEmpty
-argument_list|(
-name|plugins
-argument_list|)
 condition|)
 block|{
 return|return;
