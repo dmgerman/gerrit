@@ -673,7 +673,7 @@ name|idx
 index|]
 return|;
 block|}
-comment|/**      * get and consume (consider parsed) a parameter      *      * @param name name      * @return the consumed parameter      */
+comment|/**      * get and consume (consider parsed) a parameter      *      * @return the consumed parameter      */
 DECL|method|consumeParameter ()
 specifier|public
 name|String
@@ -730,7 +730,7 @@ return|return
 name|consumed
 return|;
 block|}
-comment|/**      * Use during parsing to call additional parameters simulating as if they had been passed from      * the command line originally.      *      * @param String... args A variable amount of parameters to call immediately      *<p>The parameters will be parsed immediately, before the remaining parameter will be      *     parsed.      *<p>Note: Since this is done outside of the arg4j parsing loop, it will not match exactly      *     what would happen if they were actually passed from the command line, but it will be      *     pretty close. If this were moved to args4j, the interface could be the same and it could      *     match exactly the behavior as if passed from the command line originally.      */
+comment|/**      * Use during parsing to call additional parameters simulating as if they had been passed from      * the command line originally.      *      * @param args A variable amount of parameters to call immediately      *<p>The parameters will be parsed immediately, before the remaining parameter will be      *     parsed.      *<p>Note: Since this is done outside of the arg4j parsing loop, it will not match exactly      *     what would happen if they were actually passed from the command line, but it will be      *     pretty close. If this were moved to args4j, the interface could be the same and it could      *     match exactly the behavior as if passed from the command line originally.      */
 DECL|method|callParameters (String... args)
 specifier|public
 name|void
