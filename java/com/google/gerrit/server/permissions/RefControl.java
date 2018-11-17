@@ -1027,9 +1027,6 @@ return|return
 literal|false
 return|;
 case|case
-name|JSON_RPC
-case|:
-case|case
 name|REST_API
 case|:
 case|case
@@ -1143,9 +1140,6 @@ operator|.
 name|DELETE
 argument_list|)
 return|;
-case|case
-name|JSON_RPC
-case|:
 case|case
 name|REST_API
 case|:

@@ -82,10 +82,6 @@ comment|/** Access through the REST API. */
 DECL|enumConstant|REST_API
 name|REST_API
 block|,
-comment|/** Access through the old JSON-RPC interface. */
-DECL|enumConstant|JSON_RPC
-name|JSON_RPC
-block|,
 comment|/** Access by a web cookie. This path is not protected like REST_API. */
 DECL|enumConstant|WEB_BROWSER
 name|WEB_BROWSER
