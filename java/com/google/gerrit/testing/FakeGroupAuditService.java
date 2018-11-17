@@ -319,7 +319,7 @@ implements|implements
 name|GroupAuditService
 block|{
 DECL|field|groupAuditListeners
-specifier|private
+specifier|protected
 specifier|final
 name|PluginSetContext
 argument_list|<
@@ -328,7 +328,7 @@ argument_list|>
 name|groupAuditListeners
 decl_stmt|;
 DECL|field|auditListeners
-specifier|private
+specifier|protected
 specifier|final
 name|PluginSetContext
 argument_list|<
