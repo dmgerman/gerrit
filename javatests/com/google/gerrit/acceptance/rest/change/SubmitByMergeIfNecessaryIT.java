@@ -5186,10 +5186,10 @@ argument_list|)
 operator|.
 name|containsExactly
 argument_list|(
-name|name
-argument_list|(
-literal|"project-name"
-argument_list|)
+name|p1
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|".git"
 argument_list|)
