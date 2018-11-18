@@ -673,7 +673,7 @@ name|idx
 index|]
 return|;
 block|}
-comment|/**      * get and consume (consider parsed) a parameter      *      * @param name name      * @return the consumed parameter      */
+comment|/**      * get and consume (consider parsed) a parameter      *      * @return the consumed parameter      */
 DECL|method|consumeParameter ()
 specifier|public
 name|String
@@ -730,7 +730,7 @@ return|return
 name|consumed
 return|;
 block|}
-comment|/**      * Use during parsing to call additional parameters simulating as if they had been passed from      * the command line originally.      *      * @param String... args A variable amount of parameters to call immediately      *<p>The parameters will be parsed immediately, before the remaining parameter will be      *     parsed.      *<p>Note: Since this is done outside of the arg4j parsing loop, it will not match exactly      *     what would happen if they were actually passed from the command line, but it will be      *     pretty close. If this were moved to args4j, the interface could be the same and it could      *     match exactly the behavior as if passed from the command line originally.      */
+comment|/**      * Use during parsing to call additional parameters simulating as if they had been passed from      * the command line originally.      *      * @param args A variable amount of parameters to call immediately      *<p>The parameters will be parsed immediately, before the remaining parameter will be      *     parsed.      *<p>Note: Since this is done outside of the arg4j parsing loop, it will not match exactly      *     what would happen if they were actually passed from the command line, but it will be      *     pretty close. If this were moved to args4j, the interface could be the same and it could      *     match exactly the behavior as if passed from the command line originally.      */
 DECL|method|callParameters (String... args)
 specifier|public
 name|void
@@ -2628,6 +2628,11 @@ specifier|final
 name|Option
 name|option
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 DECL|field|setter
 specifier|public
 specifier|final
@@ -2641,13 +2646,18 @@ name|String
 index|[]
 name|requiredOptions
 decl_stmt|;
-DECL|method|QueuedOption (Option option, Setter setter, RequiresOptions requiresOptions)
+DECL|method|QueuedOption ( Option option, @SuppressWarnings(R) Setter setter, RequiresOptions requiresOptions)
 specifier|private
 name|QueuedOption
 parameter_list|(
 name|Option
 name|option
 parameter_list|,
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 name|Setter
 name|setter
 parameter_list|,
@@ -3348,6 +3358,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Finds a registered {@code OptionHandler} by its name or its alias.      *      * @param name name      * @return the {@code OptionHandler} or {@code null}      *<p>Note: this is cut& pasted from the parent class in arg4j, it was private and it      *     needed to be exposed.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 DECL|method|findOptionByName (String name)
 specifier|public
 name|OptionHandler
@@ -3423,7 +3438,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|queueOption (Option option, Setter setter, RequiresOptions requiresOptions)
+DECL|method|queueOption ( Option option, @SuppressWarnings(R) Setter setter, RequiresOptions requiresOptions)
 specifier|private
 name|void
 name|queueOption
@@ -3431,6 +3446,11 @@ parameter_list|(
 name|Option
 name|option
 parameter_list|,
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 name|Setter
 name|setter
 parameter_list|,
