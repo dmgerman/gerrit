@@ -537,10 +537,7 @@ name|QuotaResponse
 operator|.
 name|error
 argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
+literal|"failed to request quota tokens"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -657,8 +654,11 @@ name|responses
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|AutoValue_QuotaResponse_Aggregated
+name|QuotaResponse
+operator|.
+name|Aggregated
+operator|.
+name|create
 argument_list|(
 name|ImmutableList
 operator|.
