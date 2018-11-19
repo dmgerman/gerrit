@@ -84,6 +84,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -97,6 +111,8 @@ DECL|class|GitwebConfigTest
 specifier|public
 class|class
 name|GitwebConfigTest
+extends|extends
+name|GerritBaseTests
 block|{
 DECL|field|VALID_CHARACTERS
 specifier|private

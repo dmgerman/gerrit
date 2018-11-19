@@ -262,6 +262,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|util
 operator|.
 name|http
@@ -441,6 +455,8 @@ DECL|class|ResourceServletTest
 specifier|public
 class|class
 name|ResourceServletTest
+extends|extends
+name|GerritBaseTests
 block|{
 DECL|method|newCache (int size)
 specifier|private

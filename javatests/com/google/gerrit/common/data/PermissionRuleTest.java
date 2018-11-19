@@ -118,6 +118,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -163,6 +177,8 @@ DECL|class|PermissionRuleTest
 specifier|public
 class|class
 name|PermissionRuleTest
+extends|extends
+name|GerritBaseTests
 block|{
 DECL|field|exception
 annotation|@

@@ -170,6 +170,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -229,6 +243,8 @@ DECL|class|ConfigUtilTest
 specifier|public
 class|class
 name|ConfigUtilTest
+extends|extends
+name|GerritBaseTests
 block|{
 DECL|field|SECT
 specifier|private

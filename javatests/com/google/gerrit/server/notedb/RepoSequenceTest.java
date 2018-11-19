@@ -242,6 +242,20 @@ name|gerrit
 operator|.
 name|testing
 operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
 name|InMemoryRepositoryManager
 import|;
 end_import
@@ -455,6 +469,8 @@ DECL|class|RepoSequenceTest
 specifier|public
 class|class
 name|RepoSequenceTest
+extends|extends
+name|GerritBaseTests
 block|{
 comment|// Don't sleep in tests.
 DECL|field|RETRYER

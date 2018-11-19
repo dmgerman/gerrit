@@ -120,6 +120,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gson
 operator|.
 name|Gson
@@ -215,6 +229,8 @@ DECL|class|CommentTimestampAdapterTest
 specifier|public
 class|class
 name|CommentTimestampAdapterTest
+extends|extends
+name|GerritBaseTests
 block|{
 comment|/** Arbitrary time outside of a DST transition, as an ISO instant. */
 DECL|field|NON_DST_STR

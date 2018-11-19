@@ -174,6 +174,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -197,6 +211,8 @@ DECL|class|CommentFormatterTest
 specifier|public
 class|class
 name|CommentFormatterTest
+extends|extends
+name|GerritBaseTests
 block|{
 DECL|method|assertBlock ( List<CommentFormatter.Block> list, int index, CommentFormatter.BlockType type, String text)
 specifier|private

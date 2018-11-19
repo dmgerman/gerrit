@@ -84,6 +84,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -97,6 +111,8 @@ DECL|class|EventTypesTest
 specifier|public
 class|class
 name|EventTypesTest
+extends|extends
+name|GerritBaseTests
 block|{
 DECL|class|TestEvent
 specifier|public

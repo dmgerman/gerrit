@@ -114,6 +114,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -169,6 +183,8 @@ DECL|class|AbstractParserTest
 specifier|public
 class|class
 name|AbstractParserTest
+extends|extends
+name|GerritBaseTests
 block|{
 DECL|field|CHANGE_URL
 specifier|protected

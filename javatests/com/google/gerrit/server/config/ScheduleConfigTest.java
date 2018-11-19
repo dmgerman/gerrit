@@ -174,6 +174,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|time
@@ -263,6 +277,8 @@ DECL|class|ScheduleConfigTest
 specifier|public
 class|class
 name|ScheduleConfigTest
+extends|extends
+name|GerritBaseTests
 block|{
 comment|// Friday June 13, 2014 10:00 UTC
 DECL|field|NOW

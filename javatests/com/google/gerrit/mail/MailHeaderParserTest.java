@@ -82,6 +82,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|time
@@ -135,6 +149,8 @@ DECL|class|MailHeaderParserTest
 specifier|public
 class|class
 name|MailHeaderParserTest
+extends|extends
+name|GerritBaseTests
 block|{
 annotation|@
 name|Test

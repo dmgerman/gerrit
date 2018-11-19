@@ -136,6 +136,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -149,6 +163,8 @@ DECL|class|LabelVoteTest
 specifier|public
 class|class
 name|LabelVoteTest
+extends|extends
+name|GerritBaseTests
 block|{
 annotation|@
 name|Test

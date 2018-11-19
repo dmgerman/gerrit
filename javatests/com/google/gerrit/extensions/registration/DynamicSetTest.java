@@ -102,6 +102,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Key
@@ -159,6 +173,8 @@ DECL|class|DynamicSetTest
 specifier|public
 class|class
 name|DynamicSetTest
+extends|extends
+name|GerritBaseTests
 block|{
 comment|// In tests for {@link DynamicSet#contains(Object)}, be sure to avoid
 comment|// {@code assertThat(ds).contains(...) @} and

@@ -102,6 +102,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|nio
@@ -139,6 +153,8 @@ DECL|class|StringCacheSerializerTest
 specifier|public
 class|class
 name|StringCacheSerializerTest
+extends|extends
+name|GerritBaseTests
 block|{
 annotation|@
 name|Test
