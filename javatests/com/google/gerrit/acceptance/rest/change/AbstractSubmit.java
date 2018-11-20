@@ -9723,9 +9723,6 @@ operator|.
 name|newProject
 argument_list|()
 operator|.
-name|withEmptyCommit
-argument_list|()
-operator|.
 name|submitType
 argument_list|(
 name|submitType

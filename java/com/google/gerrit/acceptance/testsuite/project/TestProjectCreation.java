@@ -295,22 +295,7 @@ name|boolean
 name|value
 parameter_list|)
 function_decl|;
-comment|/**      * Creates empty commit on creation. This is necessary for the project's branches to be born.      */
-DECL|method|withEmptyCommit ()
-specifier|public
-name|TestProjectCreation
-operator|.
-name|Builder
-name|withEmptyCommit
-parameter_list|()
-block|{
-return|return
-name|createEmptyCommit
-argument_list|(
-literal|true
-argument_list|)
-return|;
-block|}
+comment|/** Skips the empty commit on creation. This means that project's branches will not exist. */
 DECL|method|noEmptyCommit ()
 specifier|public
 name|TestProjectCreation

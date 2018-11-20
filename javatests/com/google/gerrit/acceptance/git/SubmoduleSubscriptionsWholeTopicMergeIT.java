@@ -1708,9 +1708,6 @@ operator|+
 name|i
 argument_list|)
 operator|.
-name|withEmptyCommit
-argument_list|()
-operator|.
 name|submitType
 argument_list|(
 name|getSubmitType
