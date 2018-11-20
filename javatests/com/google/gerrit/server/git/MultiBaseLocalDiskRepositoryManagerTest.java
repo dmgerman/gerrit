@@ -208,20 +208,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|TempFileUtil
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -370,7 +356,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|After
+name|Before
 import|;
 end_import
 
@@ -380,7 +366,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|Rule
 import|;
 end_import
 
@@ -394,6 +380,18 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TemporaryFolder
+import|;
+end_import
+
 begin_class
 DECL|class|MultiBaseLocalDiskRepositoryManagerTest
 specifier|public
@@ -402,6 +400,17 @@ name|MultiBaseLocalDiskRepositoryManagerTest
 extends|extends
 name|GerritBaseTests
 block|{
+DECL|field|temporaryFolder
+annotation|@
+name|Rule
+specifier|public
+name|TemporaryFolder
+name|temporaryFolder
+init|=
+operator|new
+name|TemporaryFolder
+argument_list|()
+decl_stmt|;
 DECL|field|cfg
 specifier|private
 name|Config
@@ -437,9 +446,9 @@ operator|=
 operator|new
 name|SitePaths
 argument_list|(
-name|TempFileUtil
+name|temporaryFolder
 operator|.
-name|createTempDirectory
+name|newFolder
 argument_list|()
 operator|.
 name|toPath
@@ -522,22 +531,6 @@ name|cfg
 argument_list|,
 name|configMock
 argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|After
-DECL|method|tearDown ()
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|TempFileUtil
-operator|.
-name|cleanup
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -790,9 +783,9 @@ block|{
 name|Path
 name|alternateBasePath
 init|=
-name|TempFileUtil
+name|temporaryFolder
 operator|.
-name|createTempDirectory
+name|newFolder
 argument_list|()
 operator|.
 name|toPath
@@ -1111,9 +1104,9 @@ decl_stmt|;
 name|Path
 name|alternateBasePath
 init|=
-name|TempFileUtil
+name|temporaryFolder
 operator|.
-name|createTempDirectory
+name|newFolder
 argument_list|()
 operator|.
 name|toPath
