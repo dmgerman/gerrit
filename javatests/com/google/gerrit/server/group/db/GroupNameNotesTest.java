@@ -832,29 +832,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|rules
-operator|.
-name|ExpectedException
 import|;
 end_import
 
@@ -909,18 +887,6 @@ name|getTimeZone
 argument_list|(
 literal|"America/Los_Angeles"
 argument_list|)
-decl_stmt|;
-DECL|field|expectedException
-annotation|@
-name|Rule
-specifier|public
-name|ExpectedException
-name|expectedException
-init|=
-name|ExpectedException
-operator|.
-name|none
-argument_list|()
 decl_stmt|;
 DECL|field|groupUuid
 specifier|private
@@ -1107,7 +1073,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -1140,7 +1106,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -1251,7 +1217,7 @@ argument_list|(
 literal|"AnotherGroup"
 argument_list|)
 decl_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -1260,7 +1226,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -1538,7 +1504,7 @@ argument_list|,
 name|groupName
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -1593,7 +1559,7 @@ argument_list|(
 literal|"admins"
 argument_list|)
 decl_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -1661,7 +1627,7 @@ argument_list|(
 literal|"admins"
 argument_list|)
 decl_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -1670,7 +1636,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -1746,7 +1712,7 @@ argument_list|,
 name|anotherGroupName
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -1755,7 +1721,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -1811,7 +1777,7 @@ argument_list|(
 literal|"admins"
 argument_list|)
 decl_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -1879,7 +1845,7 @@ argument_list|(
 literal|"admins"
 argument_list|)
 decl_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -1888,7 +1854,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(

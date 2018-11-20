@@ -102,29 +102,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|rules
-operator|.
-name|ExpectedException
 import|;
 end_import
 
@@ -136,18 +114,6 @@ name|LineIdentifierTest
 extends|extends
 name|GerritBaseTests
 block|{
-DECL|field|expectedException
-annotation|@
-name|Rule
-specifier|public
-name|ExpectedException
-name|expectedException
-init|=
-name|ExpectedException
-operator|.
-name|none
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Test
 DECL|method|lineNumberMustBePositive ()
@@ -165,7 +131,7 @@ argument_list|(
 literal|"First line\nSecond line"
 argument_list|)
 decl_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -174,7 +140,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -206,7 +172,7 @@ argument_list|(
 literal|"First line\nSecond line"
 argument_list|)
 decl_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -215,7 +181,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(

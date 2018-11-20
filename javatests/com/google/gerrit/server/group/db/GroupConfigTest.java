@@ -624,29 +624,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|rules
-operator|.
-name|ExpectedException
 import|;
 end_import
 
@@ -671,18 +649,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|field|expectedException
-annotation|@
-name|Rule
-specifier|public
-name|ExpectedException
-name|expectedException
-init|=
-name|ExpectedException
-operator|.
-name|none
-argument_list|()
-decl_stmt|;
 DECL|field|projectName
 specifier|private
 name|Project
@@ -1090,7 +1056,7 @@ name|createMetaDataUpdate
 argument_list|()
 init|)
 block|{
-name|expectedException
+name|exception
 operator|.
 name|expectCause
 argument_list|(
@@ -1102,7 +1068,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -1173,7 +1139,7 @@ name|createMetaDataUpdate
 argument_list|()
 init|)
 block|{
-name|expectedException
+name|exception
 operator|.
 name|expectCause
 argument_list|(
@@ -1185,7 +1151,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -1317,7 +1283,7 @@ name|createMetaDataUpdate
 argument_list|()
 init|)
 block|{
-name|expectedException
+name|exception
 operator|.
 name|expectCause
 argument_list|(
@@ -1329,7 +1295,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -1797,7 +1763,7 @@ name|createMetaDataUpdate
 argument_list|()
 init|)
 block|{
-name|expectedException
+name|exception
 operator|.
 name|expectCause
 argument_list|(
@@ -1809,7 +1775,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -1900,7 +1866,7 @@ name|createMetaDataUpdate
 argument_list|()
 init|)
 block|{
-name|expectedException
+name|exception
 operator|.
 name|expectCause
 argument_list|(
@@ -1912,7 +1878,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -2581,7 +2547,7 @@ argument_list|,
 literal|"[group]\n\tname = users\n\townerGroupUuid = owners\n"
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -2590,7 +2556,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -2628,7 +2594,7 @@ argument_list|,
 literal|"[group]\n\tname = users\n\tid = -5\n\townerGroupUuid = owners\n"
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -2637,7 +2603,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -2761,7 +2727,7 @@ argument_list|,
 literal|"[group]\n\tname = users\n\tid = 42\n"
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -2770,7 +2736,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -3056,7 +3022,7 @@ argument_list|,
 literal|"One"
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -3065,7 +3031,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -3102,7 +3068,7 @@ argument_list|,
 literal|"1\t2"
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expect
 argument_list|(
@@ -3111,7 +3077,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -3637,7 +3603,7 @@ name|createMetaDataUpdate
 argument_list|()
 init|)
 block|{
-name|expectedException
+name|exception
 operator|.
 name|expectCause
 argument_list|(
@@ -3649,7 +3615,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -3736,7 +3702,7 @@ name|createMetaDataUpdate
 argument_list|()
 init|)
 block|{
-name|expectedException
+name|exception
 operator|.
 name|expectCause
 argument_list|(
@@ -3748,7 +3714,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -4149,7 +4115,7 @@ name|createMetaDataUpdate
 argument_list|()
 init|)
 block|{
-name|expectedException
+name|exception
 operator|.
 name|expectCause
 argument_list|(
@@ -4161,7 +4127,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
@@ -4248,7 +4214,7 @@ name|createMetaDataUpdate
 argument_list|()
 init|)
 block|{
-name|expectedException
+name|exception
 operator|.
 name|expectCause
 argument_list|(
@@ -4260,7 +4226,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|expectedException
+name|exception
 operator|.
 name|expectMessage
 argument_list|(
