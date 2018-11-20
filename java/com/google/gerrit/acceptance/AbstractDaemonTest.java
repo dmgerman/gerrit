@@ -4501,29 +4501,6 @@ operator|+
 name|name
 return|;
 block|}
-DECL|method|createProject (String nameSuffix)
-specifier|protected
-name|Project
-operator|.
-name|NameKey
-name|createProject
-parameter_list|(
-name|String
-name|nameSuffix
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-return|return
-name|projectOperations
-operator|.
-name|newProject
-argument_list|()
-operator|.
-name|create
-argument_list|()
-return|;
-block|}
 DECL|method|createProject (String nameSuffix, Project.NameKey parent)
 specifier|protected
 name|Project
