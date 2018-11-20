@@ -100,6 +100,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritBaseTests
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -120,16 +134,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -144,7 +148,7 @@ specifier|public
 class|class
 name|QueryListTest
 extends|extends
-name|TestCase
+name|GerritBaseTests
 block|{
 DECL|field|Q_P
 specifier|public
