@@ -1928,20 +1928,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|TempFileUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gson
 operator|.
 name|Gson
@@ -2570,6 +2556,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|ClassRule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Rule
 import|;
 end_import
@@ -2583,6 +2579,18 @@ operator|.
 name|rules
 operator|.
 name|ExpectedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TemporaryFolder
 import|;
 end_import
 
@@ -2661,6 +2669,18 @@ specifier|private
 specifier|static
 name|Description
 name|firstTest
+decl_stmt|;
+DECL|field|temporaryFolder
+annotation|@
+name|ClassRule
+specifier|public
+specifier|static
+name|TemporaryFolder
+name|temporaryFolder
+init|=
+operator|new
+name|TemporaryFolder
+argument_list|()
 decl_stmt|;
 DECL|field|baseConfig
 annotation|@
@@ -3437,11 +3457,6 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-name|TempFileUtil
-operator|.
-name|cleanup
-argument_list|()
-expr_stmt|;
 block|}
 comment|/** Controls which project and branches should be reset after each test case. */
 DECL|method|resetProjects ()
@@ -3870,6 +3885,8 @@ name|GerritServer
 operator|.
 name|initAndStart
 argument_list|(
+name|temporaryFolder
+argument_list|,
 name|classDesc
 argument_list|,
 name|baseConfig
@@ -3891,6 +3908,8 @@ name|GerritServer
 operator|.
 name|initAndStart
 argument_list|(
+name|temporaryFolder
+argument_list|,
 name|methodDesc
 argument_list|,
 name|baseConfig

@@ -622,20 +622,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|TempFileUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|AbstractModule
@@ -967,6 +953,18 @@ operator|.
 name|util
 operator|.
 name|FS
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TemporaryFolder
 import|;
 end_import
 
@@ -2094,13 +2092,16 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Initializes new Gerrit site and returns started server.    *    *<p>A new temporary directory for the site will be created with {@link TempFileUtil}, even in    * the server is otherwise configured in-memory. Closing the server stops the daemon but does not    * delete the temporary directory. Callers may either get the directory with {@link    * #getSitePath()} and delete it manually, or call {@link TempFileUtil#cleanup()}.    *    * @param desc server description.    * @param baseConfig default config values; merged with config from {@code desc}.    * @param testSysModule additional Guice module to use.    * @return started server.    * @throws Exception    */
-DECL|method|initAndStart ( Description desc, Config baseConfig, @Nullable Module testSysModule)
+comment|/**    * Initializes new Gerrit site and returns started server.    *    *<p>A new temporary directory for the site will be created with {@code temporaryFolder}, even in    * the server is otherwise configured in-memory. Closing the server stops the daemon but does not    * delete the temporary directory..    *    * @param temporaryFolder helper rule for creating site directories.    * @param desc server description.    * @param baseConfig default config values; merged with config from {@code desc}.    * @param testSysModule additional Guice module to use.    * @return started server.    * @throws Exception    */
+DECL|method|initAndStart ( TemporaryFolder temporaryFolder, Description desc, Config baseConfig, @Nullable Module testSysModule)
 specifier|public
 specifier|static
 name|GerritServer
 name|initAndStart
 parameter_list|(
+name|TemporaryFolder
+name|temporaryFolder
+parameter_list|,
 name|Description
 name|desc
 parameter_list|,
@@ -2118,9 +2119,9 @@ block|{
 name|Path
 name|site
 init|=
-name|TempFileUtil
+name|temporaryFolder
 operator|.
-name|createTempDirectory
+name|newFolder
 argument_list|()
 operator|.
 name|toPath
@@ -2170,16 +2171,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|TempFileUtil
-operator|.
-name|recursivelyDelete
-argument_list|(
-name|site
-operator|.
-name|toFile
-argument_list|()
-argument_list|)
-expr_stmt|;
 throw|throw
 name|e
 throw|;
