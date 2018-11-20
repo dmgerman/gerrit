@@ -2635,7 +2635,7 @@ literal|"master"
 argument_list|,
 literal|"../"
 argument_list|,
-literal|"nested/subscribed-to-project"
+name|nest
 argument_list|,
 literal|"master"
 argument_list|)
@@ -2656,7 +2656,7 @@ name|superRepo
 argument_list|,
 literal|"master"
 argument_list|,
-literal|"nested/subscribed-to-project"
+name|nest
 argument_list|,
 name|subHEAD
 argument_list|)
@@ -3644,7 +3644,7 @@ name|prepareSubmoduleConfigEntry
 argument_list|(
 name|config
 argument_list|,
-literal|"subscribed-to-project-1"
+name|subkey1
 argument_list|,
 literal|"master"
 argument_list|)
@@ -3653,7 +3653,7 @@ name|prepareSubmoduleConfigEntry
 argument_list|(
 name|config
 argument_list|,
-literal|"subscribed-to-project-2"
+name|subkey2
 argument_list|,
 literal|"master"
 argument_list|)
@@ -3694,7 +3694,7 @@ name|superRepo
 argument_list|,
 literal|"master"
 argument_list|,
-literal|"subscribed-to-project-1"
+name|subkey1
 argument_list|,
 name|subTip1
 argument_list|)
@@ -3705,14 +3705,14 @@ name|superRepo
 argument_list|,
 literal|"master"
 argument_list|,
-literal|"subscribed-to-project-2"
+name|subkey2
 argument_list|,
 name|subTip2
 argument_list|)
 expr_stmt|;
 name|directUpdateRef
 argument_list|(
-literal|"subscribed-to-project-2"
+name|subkey2
 argument_list|,
 literal|"refs/heads/master"
 argument_list|)
@@ -3732,7 +3732,7 @@ name|superRepo
 argument_list|,
 literal|"master"
 argument_list|,
-literal|"subscribed-to-project-1"
+name|subkey1
 argument_list|,
 name|subTip1
 argument_list|)
@@ -3743,7 +3743,7 @@ name|superRepo
 argument_list|,
 literal|"master"
 argument_list|,
-literal|"subscribed-to-project-2"
+name|subkey2
 argument_list|,
 name|subTip2
 argument_list|)
@@ -3856,12 +3856,14 @@ name|badId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|directUpdateRef (String project, String ref)
+DECL|method|directUpdateRef (Project.NameKey project, String ref)
 specifier|private
 name|ObjectId
 name|directUpdateRef
 parameter_list|(
-name|String
+name|Project
+operator|.
+name|NameKey
 name|project
 parameter_list|,
 name|String
@@ -3879,10 +3881,7 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|nameKey
-argument_list|(
 name|project
-argument_list|)
 argument_list|)
 init|)
 block|{
