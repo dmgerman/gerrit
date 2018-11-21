@@ -335,9 +335,6 @@ operator|.
 name|newProject
 argument_list|()
 operator|.
-name|withEmptyCommit
-argument_list|()
-operator|.
 name|create
 argument_list|()
 decl_stmt|;

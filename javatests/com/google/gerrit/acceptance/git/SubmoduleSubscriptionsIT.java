@@ -2711,7 +2711,7 @@ name|value
 operator|=
 literal|"SUBJECT_ONLY"
 argument_list|)
-comment|// The value 195 must tuned to the test environment, and is sensitive to the
+comment|// The value 110 must tuned to the test environment, and is sensitive to the
 comment|// length of the uniquified repository name.
 annotation|@
 name|GerritConfig
@@ -2722,7 +2722,7 @@ literal|"submodule.maxCombinedCommitMessageSize"
 argument_list|,
 name|value
 operator|=
-literal|"200"
+literal|"110"
 argument_list|)
 DECL|method|submoduleSubjectCommitMessageSizeLimit ()
 specifier|public
