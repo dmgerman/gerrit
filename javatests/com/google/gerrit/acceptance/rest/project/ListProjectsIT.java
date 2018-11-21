@@ -938,7 +938,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Default for createEmptyCommit should match TestProjectConfig.
 name|Project
 operator|.
 name|NameKey
@@ -1608,7 +1607,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Default for createEmptyCommit should match TestProjectConfig.
 name|Project
 operator|.
 name|NameKey
@@ -1627,7 +1625,6 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-comment|// Default for createEmptyCommit should match TestProjectConfig.
 name|Project
 operator|.
 name|NameKey
