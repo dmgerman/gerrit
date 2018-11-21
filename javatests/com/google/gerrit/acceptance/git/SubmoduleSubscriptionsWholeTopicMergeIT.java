@@ -1637,6 +1637,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+specifier|final
+name|int
+name|NUM
+init|=
+literal|3
+decl_stmt|;
 name|Project
 operator|.
 name|NameKey
@@ -1646,7 +1652,7 @@ init|=
 operator|new
 name|NameKey
 index|[
-literal|3
+name|NUM
 index|]
 decl_stmt|;
 name|TestRepository
@@ -1659,7 +1665,7 @@ init|=
 operator|new
 name|TestRepository
 index|[
-literal|3
+name|NUM
 index|]
 decl_stmt|;
 name|String
@@ -1854,7 +1860,7 @@ init|=
 operator|new
 name|ObjectId
 index|[
-literal|3
+name|NUM
 index|]
 decl_stmt|;
 for|for
@@ -1987,7 +1993,7 @@ init|=
 operator|new
 name|String
 index|[
-literal|3
+name|NUM
 index|]
 decl_stmt|;
 for|for
