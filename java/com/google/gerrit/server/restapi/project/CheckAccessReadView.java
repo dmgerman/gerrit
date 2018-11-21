@@ -184,21 +184,23 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|io
+name|google
 operator|.
-name|IOException
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|inject
+name|io
 operator|.
-name|Inject
+name|IOException
 import|;
 end_import
 
