@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.rest
+DECL|package|com.google.gerrit.acceptance.rest.binding
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|acceptance
 operator|.
 name|rest
+operator|.
+name|binding
 package|;
 end_package
 
@@ -78,7 +80,29 @@ name|acceptance
 operator|.
 name|rest
 operator|.
-name|AbstractRestApiBindingsTest
+name|util
+operator|.
+name|RestApiCallHelper
+operator|.
+name|execute
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|util
+operator|.
+name|RestCall
 operator|.
 name|Method
 operator|.
@@ -142,6 +166,20 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
+name|AbstractDaemonTest
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
 name|GerritConfig
 import|;
 end_import
@@ -157,6 +195,24 @@ operator|.
 name|acceptance
 operator|.
 name|UseSsh
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|util
+operator|.
+name|RestCall
 import|;
 end_import
 
@@ -275,7 +331,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for checking the bindings of the accounts REST API.  *  *<p>These tests only verify that the account REST endpoints are correctly bound, they do no test  * the functionality of the account REST endpoints (for details see JavaDoc on {@link  * AbstractRestApiBindingsTest}).  */
+comment|/**  * Tests for checking the bindings of the accounts REST API.  *  *<p>These tests only verify that the account REST endpoints are correctly bound, they do no test  * the functionality of the account REST endpoints.  */
 end_comment
 
 begin_class
@@ -284,7 +340,7 @@ specifier|public
 class|class
 name|AccountsRestApiBindingsIT
 extends|extends
-name|AbstractRestApiBindingsTest
+name|AbstractDaemonTest
 block|{
 DECL|field|accountsUpdateProvider
 annotation|@
@@ -801,6 +857,8 @@ name|Exception
 block|{
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|ACCOUNT_ENDPOINTS
 argument_list|,
 literal|"self"
@@ -819,6 +877,8 @@ name|Exception
 block|{
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|EMAIL_ENDPOINTS
 argument_list|,
 literal|"self"
@@ -944,6 +1004,8 @@ argument_list|)
 expr_stmt|;
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|GPG_KEY_ENDPOINTS
 argument_list|,
 literal|"self"
@@ -988,6 +1050,8 @@ argument_list|)
 decl_stmt|;
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|SSH_KEY_ENDPOINTS
 argument_list|,
 literal|"self"
@@ -1042,6 +1106,8 @@ name|id
 decl_stmt|;
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|STAR_ENDPOINTS
 argument_list|,
 literal|"self"

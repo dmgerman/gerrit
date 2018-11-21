@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.rest
+DECL|package|com.google.gerrit.acceptance.rest.binding
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|acceptance
 operator|.
 name|rest
+operator|.
+name|binding
 package|;
 end_package
 
@@ -94,7 +96,9 @@ name|acceptance
 operator|.
 name|rest
 operator|.
-name|AbstractRestApiBindingsTest
+name|util
+operator|.
+name|RestCall
 operator|.
 name|Method
 operator|.
@@ -175,6 +179,56 @@ operator|.
 name|collect
 operator|.
 name|Iterables
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|AbstractDaemonTest
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|util
+operator|.
+name|RestApiCallHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|util
+operator|.
+name|RestCall
 import|;
 end_import
 
@@ -425,7 +479,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for checking the bindings of the changes REST API.  *  *<p>These tests only verify that the change REST endpoints are correctly bound, they do no test  * the functionality of the change REST endpoints (for details see JavaDoc on {@link  * AbstractRestApiBindingsTest}).  */
+comment|/**  * Tests for checking the bindings of the changes REST API.  *  *<p>These tests only verify that the change REST endpoints are correctly bound, they do no test  * the functionality of the change REST endpoints.  */
 end_comment
 
 begin_class
@@ -434,7 +488,7 @@ specifier|public
 class|class
 name|ChangesRestApiBindingsIT
 extends|extends
-name|AbstractRestApiBindingsTest
+name|AbstractDaemonTest
 block|{
 comment|/**    * Change REST endpoints to be tested, each URL contains a placeholder for the change identifier.    */
 DECL|field|CHANGE_ENDPOINTS
@@ -1518,8 +1572,12 @@ operator|.
 name|create
 argument_list|()
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|CHANGE_ENDPOINTS
 argument_list|,
 name|changeId
@@ -1559,8 +1617,12 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|CHANGE_ENDPOINTS_NOTEDB
 argument_list|,
 name|changeId
@@ -1601,8 +1663,12 @@ name|user
 operator|.
 name|email
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|REVIEWER_ENDPOINTS
 argument_list|,
 parameter_list|()
@@ -1649,8 +1715,12 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|VOTE_ENDPOINTS
 argument_list|,
 parameter_list|()
@@ -1705,8 +1775,12 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|REVISION_ENDPOINTS
 argument_list|,
 name|changeId
@@ -1749,8 +1823,12 @@ name|user
 operator|.
 name|email
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|REVISION_REVIEWER_ENDPOINTS
 argument_list|,
 parameter_list|()
@@ -1799,8 +1877,12 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|REVISION_VOTE_ENDPOINTS
 argument_list|,
 parameter_list|()
@@ -1924,8 +2006,12 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|restCall
 argument_list|,
 name|changeId
@@ -2058,8 +2144,12 @@ argument_list|(
 name|reviewInput
 argument_list|)
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|restCall
 argument_list|,
 name|changeId
@@ -2228,8 +2318,12 @@ argument_list|(
 name|robotCommentInfos
 argument_list|)
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|ROBOT_COMMENT_ENDPOINTS
 argument_list|,
 name|changeId
@@ -2487,8 +2581,12 @@ argument_list|(
 name|fixIds
 argument_list|)
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|FIX_ENDPOINTS
 argument_list|,
 name|changeId
@@ -2524,8 +2622,12 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|REVISION_FILE_ENDPOINTS
 argument_list|,
 name|changeId
@@ -2579,8 +2681,12 @@ argument_list|)
 operator|.
 name|id
 decl_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|CHANGE_MESSAGE_ENDPOINTS
 argument_list|,
 name|changeId
@@ -2615,8 +2721,12 @@ name|getChangeId
 argument_list|()
 decl_stmt|;
 comment|// Each of the REST calls creates the change edit newly.
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|CHANGE_EDIT_CREATE_ENDPOINTS
 argument_list|,
 parameter_list|()
@@ -2679,8 +2789,12 @@ operator|.
 name|create
 argument_list|()
 expr_stmt|;
+name|RestApiCallHelper
+operator|.
 name|execute
 argument_list|(
+name|adminRestSession
+argument_list|,
 name|CHANGE_EDIT_ENDPOINTS
 argument_list|,
 name|changeId
