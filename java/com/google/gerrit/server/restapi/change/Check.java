@@ -338,21 +338,23 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|io
+name|google
 operator|.
-name|IOException
+name|inject
+operator|.
+name|Singleton
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|inject
+name|io
 operator|.
-name|Singleton
+name|IOException
 import|;
 end_import
 
