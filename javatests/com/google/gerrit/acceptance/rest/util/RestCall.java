@@ -110,22 +110,6 @@ end_import
 
 begin_import
 import|import
-name|jdk
-operator|.
-name|nashorn
-operator|.
-name|internal
-operator|.
-name|ir
-operator|.
-name|annotations
-operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -135,6 +119,16 @@ operator|.
 name|lang
 operator|.
 name|StringUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
 import|;
 end_import
 
