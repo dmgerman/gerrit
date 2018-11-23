@@ -460,6 +460,11 @@ name|AuditEvent
 name|action
 parameter_list|)
 block|{
+synchronized|synchronized
+init|(
+name|auditEvents
+init|)
+block|{
 name|auditEvents
 operator|.
 name|add
@@ -467,6 +472,12 @@ argument_list|(
 name|action
 argument_list|)
 expr_stmt|;
+name|auditEvents
+operator|.
+name|notifyAll
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
