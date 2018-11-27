@@ -232,22 +232,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|GerritPersonIdentProvider
@@ -432,20 +416,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -595,7 +565,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A database accessor for calls related to groups.  *  *<p>All calls which read or write group related details to the database<strong>during  * init</strong> (either ReviewDb or NoteDb) are gathered here. For non-init cases, use {@code  * Groups} or {@code GroupsUpdate} instead.  *  *<p>All methods of this class refer to<em>internal</em> groups.  */
+comment|/**  * A database accessor for calls related to groups.  *  *<p>All calls which read or write group related details to the NoteDb<strong>during init</strong>  * are gathered here. For non-init cases, use {@code Groups} or {@code GroupsUpdate} instead.  *  *<p>All methods of this class refer to<em>internal</em> groups.  */
 end_comment
 
 begin_class
@@ -664,21 +634,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Returns the {@code AccountGroup} for the specified {@code GroupReference}.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupReference the {@code GroupReference} of the group    * @return the {@code InternalGroup} represented by the {@code GroupReference}    * @throws OrmException if the group couldn't be retrieved from ReviewDb    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the data in NoteDb is in an incorrect format    * @throws NoSuchGroupException if a group with such a name doesn't exist    */
-DECL|method|getExistingGroup (ReviewDb db, GroupReference groupReference)
+comment|/**    * Returns the {@code AccountGroup} for the specified {@code GroupReference}.    *    * @param groupReference the {@code GroupReference} of the group    * @return the {@code InternalGroup} represented by the {@code GroupReference}    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the data in NoteDb is in an incorrect format    * @throws NoSuchGroupException if a group with such a name doesn't exist    */
+DECL|method|getExistingGroup (GroupReference groupReference)
 specifier|public
 name|InternalGroup
 name|getExistingGroup
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|GroupReference
 name|groupReference
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|NoSuchGroupException
 throws|,
 name|IOException
@@ -767,21 +732,16 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-comment|/**    * Returns {@code GroupReference}s for all internal groups.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @return a stream of the {@code GroupReference}s of all internal groups    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the data in NoteDb is in an incorrect format    */
-DECL|method|getAllGroupReferences (ReviewDb db)
+comment|/**    * Returns {@code GroupReference}s for all internal groups.    *    * @return a stream of the {@code GroupReference}s of all internal groups    * @throws IOException if an error occurs while reading from NoteDb    * @throws ConfigInvalidException if the data in NoteDb is in an incorrect format    */
+DECL|method|getAllGroupReferences ()
 specifier|public
 name|Stream
 argument_list|<
 name|GroupReference
 argument_list|>
 name|getAllGroupReferences
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -831,15 +791,12 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/**    * Adds an account as member to a group. The account is only added as a new member if it isn't    * already a member of the group.    *    *<p><strong>Note</strong>: This method doesn't check whether the account exists! It also doesn't    * update the account index!    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group    * @param account the account to add    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws NoSuchGroupException if the specified group doesn't exist    */
-DECL|method|addGroupMember (ReviewDb db, AccountGroup.UUID groupUuid, Account account)
+comment|/**    * Adds an account as member to a group. The account is only added as a new member if it isn't    * already a member of the group.    *    *<p><strong>Note</strong>: This method doesn't check whether the account exists! It also doesn't    * update the account index!    *    * @param groupUuid the UUID of the group    * @param account the account to add    * @throws NoSuchGroupException if the specified group doesn't exist    */
+DECL|method|addGroupMember (AccountGroup.UUID groupUuid, Account account)
 specifier|public
 name|void
 name|addGroupMember
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|AccountGroup
 operator|.
 name|UUID
@@ -849,8 +806,6 @@ name|Account
 name|account
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|NoSuchGroupException
 throws|,
 name|IOException
