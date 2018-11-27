@@ -247,31 +247,14 @@ operator|=
 name|allUsersName
 expr_stmt|;
 block|}
-DECL|method|nextAccountId (ReviewDb db)
+DECL|method|nextAccountId ()
 specifier|public
 name|int
 name|nextAccountId
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-name|RepoSequence
-operator|.
-name|Seed
-name|accountSeed
-init|=
-name|db
-operator|::
-name|nextAccountId
-decl_stmt|;
 name|RepoSequence
 name|accountSeq
 init|=
@@ -299,7 +282,11 @@ name|Sequences
 operator|.
 name|NAME_ACCOUNTS
 argument_list|,
-name|accountSeed
+parameter_list|()
+lambda|->
+name|ReviewDb
+operator|.
+name|FIRST_ACCOUNT_ID
 argument_list|,
 literal|1
 argument_list|)
