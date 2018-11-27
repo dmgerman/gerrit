@@ -212,25 +212,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|createAndStart ()
-specifier|public
-specifier|static
-name|ElasticContainer
-argument_list|<
-name|?
-argument_list|>
-name|createAndStart
-parameter_list|()
-block|{
-return|return
-name|createAndStart
-argument_list|(
-name|ElasticVersion
-operator|.
-name|V2_4
-argument_list|)
-return|;
-block|}
 DECL|method|getImageName (ElasticVersion version)
 specifier|private
 specifier|static
@@ -246,12 +227,6 @@ condition|(
 name|version
 condition|)
 block|{
-case|case
-name|V2_4
-case|:
-return|return
-literal|"elasticsearch:2.4.6-alpine"
-return|;
 case|case
 name|V5_6
 case|:

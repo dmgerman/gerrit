@@ -164,26 +164,6 @@ annotation|@
 name|ConfigSuite
 operator|.
 name|Default
-DECL|method|elasticsearchV2 ()
-specifier|public
-specifier|static
-name|Config
-name|elasticsearchV2
-parameter_list|()
-block|{
-return|return
-name|getConfig
-argument_list|(
-name|ElasticVersion
-operator|.
-name|V2_4
-argument_list|)
-return|;
-block|}
-annotation|@
-name|ConfigSuite
-operator|.
-name|Config
 DECL|method|elasticsearchV5 ()
 specifier|public
 specifier|static

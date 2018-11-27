@@ -96,12 +96,6 @@ specifier|public
 enum|enum
 name|ElasticVersion
 block|{
-DECL|enumConstant|V2_4
-name|V2_4
-argument_list|(
-literal|"2.4.*"
-argument_list|)
-block|,
 DECL|enumConstant|V5_6
 name|V5_6
 argument_list|(
