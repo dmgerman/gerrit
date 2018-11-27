@@ -78,22 +78,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Change
 import|;
 end_import
@@ -269,23 +253,6 @@ name|FIRST_GROUP_ID
 init|=
 literal|1
 decl_stmt|;
-comment|/** Next unique id for a {@link AccountGroup}. */
-annotation|@
-name|Sequence
-argument_list|(
-name|startWith
-operator|=
-name|FIRST_GROUP_ID
-argument_list|)
-annotation|@
-name|Deprecated
-DECL|method|nextAccountGroupId ()
-name|int
-name|nextAccountGroupId
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
 DECL|field|FIRST_CHANGE_ID
 name|int
 name|FIRST_CHANGE_ID
