@@ -4671,11 +4671,6 @@ argument_list|(
 name|createEmptyCommit
 argument_list|)
 operator|.
-name|parent
-argument_list|(
-name|parent
-argument_list|)
-operator|.
 name|create
 argument_list|()
 return|;
