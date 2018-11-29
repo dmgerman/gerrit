@@ -2971,26 +2971,6 @@ name|Module
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Plugin module needs to be inserted *before* the index module.
-comment|// There is the concept of LifecycleModule, in Gerrit's own extension
-comment|// to Guice, which has these:
-comment|//  listener().to(SomeClassImplementingLifecycleListener.class);
-comment|// and the start() methods of each such listener are executed in the
-comment|// order they are declared.
-comment|// Makes sure that PluginLoader.start() is executed before the
-comment|// LuceneIndexModule.start() so that plugins get loaded and the respective
-comment|// Guice modules installed so that the on-line reindexing will happen
-comment|// with the proper classes (e.g. group backends, custom Prolog
-comment|// predicates) and the associated rules ready to be evaluated.
-name|modules
-operator|.
-name|add
-argument_list|(
-operator|new
-name|PluginModule
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// Index module shutdown must happen before work queue shutdown, otherwise
 comment|// work queue can get stuck waiting on index futures that will never return.
 name|modules
@@ -3227,6 +3207,15 @@ operator|new
 name|SignedTokenEmailTokenVerifier
 operator|.
 name|Module
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|modules
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PluginModule
 argument_list|()
 argument_list|)
 expr_stmt|;
