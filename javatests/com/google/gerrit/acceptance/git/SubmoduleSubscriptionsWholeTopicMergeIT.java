@@ -166,24 +166,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
-operator|.
-name|testsuite
-operator|.
-name|project
-operator|.
-name|ProjectOperations
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|common
 operator|.
 name|data
@@ -319,18 +301,6 @@ operator|.
 name|testing
 operator|.
 name|ConfigSuite
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
 import|;
 end_import
 
@@ -552,12 +522,6 @@ name|submitByRebaseIfNecessaryConfig
 argument_list|()
 return|;
 block|}
-DECL|field|projectOperations
-annotation|@
-name|Inject
-name|ProjectOperations
-name|projectOperations
-decl_stmt|;
 annotation|@
 name|Test
 DECL|method|subscriptionUpdateOfManyChanges ()
