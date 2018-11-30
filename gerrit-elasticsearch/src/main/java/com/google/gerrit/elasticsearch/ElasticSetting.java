@@ -125,29 +125,18 @@ name|SettingProperties
 name|createSetting
 parameter_list|()
 block|{
-name|ElasticSetting
-operator|.
-name|Builder
-name|settings
-init|=
+return|return
 operator|new
 name|ElasticSetting
 operator|.
 name|Builder
 argument_list|()
-decl_stmt|;
-name|settings
 operator|.
 name|addCharFilter
 argument_list|()
-expr_stmt|;
-name|settings
 operator|.
 name|addAnalyzer
 argument_list|()
-expr_stmt|;
-return|return
-name|settings
 operator|.
 name|build
 argument_list|()
@@ -204,7 +193,7 @@ name|properties
 return|;
 block|}
 DECL|method|addCharFilter ()
-name|void
+name|Builder
 name|addCharFilter
 parameter_list|()
 block|{
@@ -248,9 +237,12 @@ argument_list|,
 name|charFilter
 argument_list|)
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 DECL|method|addAnalyzer ()
-name|void
+name|Builder
 name|addAnalyzer
 parameter_list|()
 block|{
@@ -313,6 +305,9 @@ argument_list|,
 name|analyzer
 argument_list|)
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 DECL|method|getCustomCharMappings (ImmutableMap<String, String> map)
 specifier|private
