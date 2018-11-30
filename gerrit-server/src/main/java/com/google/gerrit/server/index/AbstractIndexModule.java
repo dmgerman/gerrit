@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -280,13 +264,7 @@ name|Integer
 argument_list|>
 name|singleVersions
 decl_stmt|;
-DECL|field|onlineUpgrade
-specifier|private
-specifier|final
-name|boolean
-name|onlineUpgrade
-decl_stmt|;
-DECL|method|AbstractIndexModule ( Map<String, Integer> singleVersions, int threads, boolean onlineUpgrade)
+DECL|method|AbstractIndexModule (Map<String, Integer> singleVersions, int threads)
 specifier|protected
 name|AbstractIndexModule
 parameter_list|(
@@ -300,27 +278,8 @@ name|singleVersions
 parameter_list|,
 name|int
 name|threads
-parameter_list|,
-name|boolean
-name|onlineUpgrade
 parameter_list|)
 block|{
-if|if
-condition|(
-name|singleVersions
-operator|!=
-literal|null
-condition|)
-block|{
-name|checkArgument
-argument_list|(
-operator|!
-name|onlineUpgrade
-argument_list|,
-literal|"online upgrade is incompatible with single version map"
-argument_list|)
-expr_stmt|;
-block|}
 name|this
 operator|.
 name|singleVersions
@@ -332,12 +291,6 @@ operator|.
 name|threads
 operator|=
 name|threads
-expr_stmt|;
-name|this
-operator|.
-name|onlineUpgrade
-operator|=
-name|onlineUpgrade
 expr_stmt|;
 block|}
 annotation|@
@@ -606,22 +559,6 @@ argument_list|(
 name|versionManagerClass
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|onlineUpgrade
-condition|)
-block|{
-name|listener
-argument_list|()
-operator|.
-name|to
-argument_list|(
-name|OnlineUpgrader
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 block|}
