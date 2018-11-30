@@ -102,6 +102,12 @@ specifier|final
 name|boolean
 name|usePostV5Type
 decl_stmt|;
+DECL|field|omitTypeFromSearch
+specifier|private
+specifier|final
+name|boolean
+name|omitTypeFromSearch
+decl_stmt|;
 DECL|field|searchFilteringName
 specifier|private
 specifier|final
@@ -157,7 +163,16 @@ name|usePostV5Type
 operator|=
 name|version
 operator|.
-name|isV6
+name|isV6OrLater
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|omitTypeFromSearch
+operator|=
+name|version
+operator|.
+name|isV7OrLater
 argument_list|()
 expr_stmt|;
 name|this
@@ -166,7 +181,7 @@ name|versionDiscoveryUrl
 operator|=
 name|version
 operator|.
-name|isV6
+name|isV6OrLater
 argument_list|()
 condition|?
 literal|"/%s*"
@@ -312,12 +327,21 @@ return|return
 name|usePostV5Type
 return|;
 block|}
-DECL|method|getType (String preV6Type)
+DECL|method|omitTypeFromSearch ()
+name|boolean
+name|omitTypeFromSearch
+parameter_list|()
+block|{
+return|return
+name|omitTypeFromSearch
+return|;
+block|}
+DECL|method|getType (String type)
 name|String
 name|getType
 parameter_list|(
 name|String
-name|preV6Type
+name|type
 parameter_list|)
 block|{
 return|return
@@ -326,7 +350,7 @@ argument_list|()
 condition|?
 name|POST_V5_TYPE
 else|:
-name|preV6Type
+name|type
 return|;
 block|}
 DECL|method|getVersionDiscoveryUrl (String name)
