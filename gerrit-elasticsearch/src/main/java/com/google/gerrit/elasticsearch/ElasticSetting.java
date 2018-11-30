@@ -119,11 +119,14 @@ argument_list|,
 literal|"\\u0020"
 argument_list|)
 decl_stmt|;
-DECL|method|createSetting ()
+DECL|method|createSetting (ElasticConfiguration config)
 specifier|static
 name|SettingProperties
 name|createSetting
-parameter_list|()
+parameter_list|(
+name|ElasticConfiguration
+name|config
+parameter_list|)
 block|{
 return|return
 operator|new
@@ -139,7 +142,9 @@ name|addAnalyzer
 argument_list|()
 operator|.
 name|build
-argument_list|()
+argument_list|(
+name|config
+argument_list|)
 return|;
 block|}
 DECL|class|Builder
@@ -167,10 +172,13 @@ name|Builder
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|build ()
+DECL|method|build (ElasticConfiguration config)
 name|SettingProperties
 name|build
-parameter_list|()
+parameter_list|(
+name|ElasticConfiguration
+name|config
+parameter_list|)
 block|{
 name|SettingProperties
 name|properties
@@ -187,6 +195,22 @@ name|fields
 operator|.
 name|build
 argument_list|()
+expr_stmt|;
+name|properties
+operator|.
+name|numberOfShards
+operator|=
+name|config
+operator|.
+name|numberOfShards
+expr_stmt|;
+name|properties
+operator|.
+name|numberOfReplicas
+operator|=
+name|config
+operator|.
+name|numberOfReplicas
 expr_stmt|;
 return|return
 name|properties
@@ -403,6 +427,14 @@ argument_list|,
 name|FieldProperties
 argument_list|>
 name|analysis
+decl_stmt|;
+DECL|field|numberOfShards
+name|Integer
+name|numberOfShards
+decl_stmt|;
+DECL|field|numberOfReplicas
+name|Integer
+name|numberOfReplicas
 decl_stmt|;
 block|}
 DECL|class|FieldProperties

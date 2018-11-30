@@ -733,6 +733,12 @@ return|return
 name|content
 return|;
 block|}
+DECL|field|config
+specifier|private
+specifier|final
+name|ElasticConfiguration
+name|config
+decl_stmt|;
 DECL|field|schema
 specifier|private
 specifier|final
@@ -784,11 +790,11 @@ specifier|final
 name|ElasticQueryBuilder
 name|queryBuilder
 decl_stmt|;
-DECL|method|AbstractElasticIndex ( ElasticConfiguration cfg, SitePaths sitePaths, Schema<V> schema, ElasticRestClientProvider client, String indexName, String indexType)
+DECL|method|AbstractElasticIndex ( ElasticConfiguration config, SitePaths sitePaths, Schema<V> schema, ElasticRestClientProvider client, String indexName, String indexType)
 name|AbstractElasticIndex
 parameter_list|(
 name|ElasticConfiguration
-name|cfg
+name|config
 parameter_list|,
 name|SitePaths
 name|sitePaths
@@ -809,6 +815,12 @@ name|String
 name|indexType
 parameter_list|)
 block|{
+name|this
+operator|.
+name|config
+operator|=
+name|config
+expr_stmt|;
 name|this
 operator|.
 name|sitePaths
@@ -849,7 +861,7 @@ name|this
 operator|.
 name|indexName
 operator|=
-name|cfg
+name|config
 operator|.
 name|getIndexName
 argument_list|(
@@ -1263,7 +1275,9 @@ argument_list|,
 name|ElasticSetting
 operator|.
 name|createSetting
-argument_list|()
+argument_list|(
+name|config
+argument_list|)
 argument_list|)
 argument_list|)
 return|;
