@@ -2145,8 +2145,6 @@ block|{
 comment|// like setup, but without empty commit
 name|superKey
 operator|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -2173,8 +2171,6 @@ argument_list|)
 expr_stmt|;
 name|subKey
 operator|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -2373,8 +2369,6 @@ block|{
 comment|// like setup, but without empty commit
 name|superKey
 operator|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -2401,8 +2395,6 @@ argument_list|)
 expr_stmt|;
 name|subKey
 operator|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject

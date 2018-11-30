@@ -2319,8 +2319,6 @@ operator|.
 name|NameKey
 name|configKey
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject

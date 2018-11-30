@@ -1364,8 +1364,6 @@ name|Branch
 operator|.
 name|NameKey
 argument_list|(
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject

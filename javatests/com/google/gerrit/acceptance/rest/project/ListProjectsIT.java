@@ -462,8 +462,6 @@ operator|.
 name|NameKey
 name|someProject
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -1812,8 +1810,6 @@ operator|.
 name|NameKey
 name|hidden
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -1827,8 +1823,6 @@ operator|.
 name|NameKey
 name|readonly
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject

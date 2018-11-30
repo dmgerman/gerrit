@@ -989,8 +989,6 @@ operator|.
 name|NameKey
 name|project
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject

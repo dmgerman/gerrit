@@ -324,8 +324,6 @@ block|{
 name|String
 name|parent
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -394,8 +392,6 @@ block|{
 name|String
 name|parent
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -464,8 +460,6 @@ block|{
 name|String
 name|parent
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -590,8 +584,6 @@ block|{
 name|String
 name|parent
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -681,8 +673,6 @@ block|{
 name|String
 name|parent
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -962,8 +952,6 @@ operator|.
 name|NameKey
 name|child
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -980,8 +968,6 @@ decl_stmt|;
 name|String
 name|grandchild
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -1170,8 +1156,6 @@ expr_stmt|;
 name|String
 name|parent
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject

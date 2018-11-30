@@ -325,8 +325,6 @@ operator|.
 name|NameKey
 name|child1_1
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -345,8 +343,6 @@ operator|.
 name|NameKey
 name|child1_2
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject

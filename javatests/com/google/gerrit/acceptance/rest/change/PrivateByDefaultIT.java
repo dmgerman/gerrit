@@ -371,8 +371,6 @@ argument_list|()
 expr_stmt|;
 name|project2
 operator|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject

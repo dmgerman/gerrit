@@ -428,8 +428,6 @@ block|{
 name|String
 name|projectName1
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -444,8 +442,6 @@ decl_stmt|;
 name|String
 name|projectName2
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -641,8 +637,6 @@ block|{
 name|String
 name|projectName
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
@@ -779,8 +773,6 @@ block|{
 name|String
 name|projectName
 init|=
-name|this
-operator|.
 name|projectOperations
 operator|.
 name|newProject
