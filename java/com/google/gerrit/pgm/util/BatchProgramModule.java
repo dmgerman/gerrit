@@ -604,7 +604,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|DisableReverseDnsLookup
+name|EnableReverseDnsLookup
 import|;
 end_import
 
@@ -620,7 +620,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|DisableReverseDnsLookupProvider
+name|EnableReverseDnsLookupProvider
 import|;
 end_import
 
@@ -1404,14 +1404,14 @@ argument_list|)
 operator|.
 name|annotatedWith
 argument_list|(
-name|DisableReverseDnsLookup
+name|EnableReverseDnsLookup
 operator|.
 name|class
 argument_list|)
 operator|.
 name|toProvider
 argument_list|(
-name|DisableReverseDnsLookupProvider
+name|EnableReverseDnsLookupProvider
 operator|.
 name|class
 argument_list|)

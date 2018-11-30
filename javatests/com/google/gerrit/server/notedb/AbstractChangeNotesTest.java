@@ -492,7 +492,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|DisableReverseDnsLookup
+name|EnableReverseDnsLookup
 import|;
 end_import
 
@@ -1398,7 +1398,7 @@ argument_list|)
 operator|.
 name|annotatedWith
 argument_list|(
-name|DisableReverseDnsLookup
+name|EnableReverseDnsLookup
 operator|.
 name|class
 argument_list|)
@@ -1407,7 +1407,7 @@ name|toInstance
 argument_list|(
 name|Boolean
 operator|.
-name|FALSE
+name|TRUE
 argument_list|)
 expr_stmt|;
 name|bind

@@ -524,7 +524,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|DisableReverseDnsLookup
+name|EnableReverseDnsLookup
 import|;
 end_import
 
@@ -635,14 +635,14 @@ name|String
 argument_list|>
 name|canonicalUrl
 decl_stmt|;
-DECL|field|disableReverseDnsLookup
+DECL|field|enableReverseDnsLookup
 annotation|@
 name|Inject
 specifier|private
 annotation|@
-name|DisableReverseDnsLookup
-name|Boolean
-name|disableReverseDnsLookup
+name|EnableReverseDnsLookup
+name|boolean
+name|enableReverseDnsLookup
 decl_stmt|;
 DECL|field|accountsUpdateProvider
 annotation|@
@@ -2107,7 +2107,7 @@ name|anonymousCowardName
 argument_list|,
 name|canonicalUrl
 argument_list|,
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 argument_list|,
 name|accountCache
 argument_list|,
