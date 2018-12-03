@@ -449,9 +449,6 @@ name|ElasticNodeInfo
 name|elasticNodeInfo
 decl_stmt|;
 name|ElasticContainer
-argument_list|<
-name|?
-argument_list|>
 name|container
 init|=
 name|ElasticContainer
