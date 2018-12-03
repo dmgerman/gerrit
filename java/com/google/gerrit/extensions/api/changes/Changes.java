@@ -280,6 +280,11 @@ specifier|private
 name|int
 name|start
 decl_stmt|;
+DECL|field|isNoLimit
+specifier|private
+name|boolean
+name|isNoLimit
+decl_stmt|;
 DECL|field|options
 specifier|private
 name|EnumSet
@@ -342,6 +347,22 @@ operator|.
 name|limit
 operator|=
 name|limit
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|withNoLimit ()
+specifier|public
+name|QueryRequest
+name|withNoLimit
+parameter_list|()
+block|{
+name|this
+operator|.
+name|isNoLimit
+operator|=
+literal|true
 expr_stmt|;
 return|return
 name|this
@@ -456,6 +477,16 @@ parameter_list|()
 block|{
 return|return
 name|limit
+return|;
+block|}
+DECL|method|getNoLimit ()
+specifier|public
+name|boolean
+name|getNoLimit
+parameter_list|()
+block|{
+return|return
+name|isNoLimit
 return|;
 block|}
 DECL|method|getStart ()
@@ -574,13 +605,30 @@ name|options
 argument_list|)
 expr_stmt|;
 block|}
-return|return
 name|sb
 operator|.
 name|append
 argument_list|(
 literal|'}'
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|isNoLimit
+operator|==
+literal|true
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|" --no-limit"
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|sb
 operator|.
 name|toString
 argument_list|()
