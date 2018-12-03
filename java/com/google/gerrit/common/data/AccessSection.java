@@ -218,7 +218,7 @@ expr_stmt|;
 block|}
 DECL|method|getPermissions ()
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|Permission
 argument_list|>

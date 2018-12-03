@@ -1012,7 +1012,7 @@ expr_stmt|;
 block|}
 DECL|method|getRules ()
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|PermissionRule
 argument_list|>
