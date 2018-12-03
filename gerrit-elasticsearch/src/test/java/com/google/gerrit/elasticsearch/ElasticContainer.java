@@ -307,14 +307,6 @@ argument_list|(
 name|ELASTICSEARCH_DEFAULT_PORT
 argument_list|)
 expr_stmt|;
-comment|// https://github.com/docker-library/elasticsearch/issues/58
-name|addEnv
-argument_list|(
-literal|"-Ees.network.host"
-argument_list|,
-literal|"0.0.0.0"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
