@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|WebLinkInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -210,7 +226,7 @@ DECL|field|fileHistoryLinks
 specifier|protected
 name|List
 argument_list|<
-name|WebLinkInfoCommon
+name|WebLinkInfo
 argument_list|>
 name|fileHistoryLinks
 decl_stmt|;
@@ -589,14 +605,14 @@ operator|=
 name|m
 expr_stmt|;
 block|}
-DECL|method|setFileHistoryLinks (List<WebLinkInfoCommon> links)
+DECL|method|setFileHistoryLinks (List<WebLinkInfo> links)
 specifier|public
 name|void
 name|setFileHistoryLinks
 parameter_list|(
 name|List
 argument_list|<
-name|WebLinkInfoCommon
+name|WebLinkInfo
 argument_list|>
 name|links
 parameter_list|)
@@ -610,7 +626,7 @@ DECL|method|getFileHistoryLinks ()
 specifier|public
 name|List
 argument_list|<
-name|WebLinkInfoCommon
+name|WebLinkInfo
 argument_list|>
 name|getFileHistoryLinks
 parameter_list|()
