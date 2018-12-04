@@ -122,6 +122,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|time
+operator|.
+name|Instant
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Objects
@@ -140,16 +150,19 @@ class|class
 name|AccountGroup
 block|{
 comment|/**    * Time when the audit subsystem was implemented, used as the default value for {@link #createdOn}    * when one couldn't be determined from the audit log.    */
-comment|// Can't use Instant here because GWT. This is verified against a readable time in the tests,
-comment|// which don't need to compile under GWT.
 DECL|field|AUDIT_CREATION_INSTANT_MS
 specifier|private
 specifier|static
 specifier|final
-name|long
+name|Instant
 name|AUDIT_CREATION_INSTANT_MS
 init|=
+name|Instant
+operator|.
+name|ofEpochMilli
+argument_list|(
 literal|1244489460000L
+argument_list|)
 decl_stmt|;
 DECL|method|auditCreationInstantTs ()
 specifier|public
@@ -159,8 +172,9 @@ name|auditCreationInstantTs
 parameter_list|()
 block|{
 return|return
-operator|new
 name|Timestamp
+operator|.
+name|from
 argument_list|(
 name|AUDIT_CREATION_INSTANT_MS
 argument_list|)
