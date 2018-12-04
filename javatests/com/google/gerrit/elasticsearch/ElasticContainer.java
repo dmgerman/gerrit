@@ -210,25 +210,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|createAndStart ()
-specifier|public
-specifier|static
-name|ElasticContainer
-argument_list|<
-name|?
-argument_list|>
-name|createAndStart
-parameter_list|()
-block|{
-return|return
-name|createAndStart
-argument_list|(
-name|ElasticVersion
-operator|.
-name|V2_4
-argument_list|)
-return|;
-block|}
 DECL|method|getImageName (ElasticVersion version)
 specifier|private
 specifier|static
@@ -244,12 +225,6 @@ condition|(
 name|version
 condition|)
 block|{
-case|case
-name|V2_4
-case|:
-return|return
-literal|"elasticsearch:2.4.6-alpine"
-return|;
 case|case
 name|V5_6
 case|:
@@ -279,6 +254,12 @@ name|V6_5
 case|:
 return|return
 literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.1"
+return|;
+case|case
+name|V7_0
+case|:
+return|return
+literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0-alpha1"
 return|;
 block|}
 throw|throw
@@ -322,14 +303,6 @@ block|{
 name|addExposedPort
 argument_list|(
 name|ELASTICSEARCH_DEFAULT_PORT
-argument_list|)
-expr_stmt|;
-comment|// https://github.com/docker-library/elasticsearch/issues/58
-name|addEnv
-argument_list|(
-literal|"-Ees.network.host"
-argument_list|,
-literal|"0.0.0.0"
 argument_list|)
 expr_stmt|;
 block|}
