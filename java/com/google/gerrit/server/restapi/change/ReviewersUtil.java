@@ -2562,6 +2562,10 @@ block|}
 name|boolean
 name|needsConfirmation
 init|=
+name|maxAllowedWithoutConfirmation
+operator|>
+literal|0
+operator|&&
 name|result
 operator|.
 name|size
