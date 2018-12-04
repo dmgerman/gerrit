@@ -431,12 +431,6 @@ specifier|public
 name|Integer
 name|changesPerPage
 decl_stmt|;
-comment|/** Should the site header be displayed when logged in ? */
-DECL|field|showSiteHeader
-specifier|public
-name|Boolean
-name|showSiteHeader
-decl_stmt|;
 comment|/** Type of download URL the user prefers to use. */
 DECL|field|downloadScheme
 specifier|public
@@ -727,12 +721,6 @@ operator|.
 name|changesPerPage
 operator|=
 name|DEFAULT_PAGESIZE
-expr_stmt|;
-name|p
-operator|.
-name|showSiteHeader
-operator|=
-literal|true
 expr_stmt|;
 name|p
 operator|.

@@ -683,12 +683,6 @@ literal|1
 expr_stmt|;
 name|i
 operator|.
-name|showSiteHeader
-operator|^=
-literal|true
-expr_stmt|;
-name|i
-operator|.
 name|downloadCommand
 operator|=
 name|DownloadCommand
