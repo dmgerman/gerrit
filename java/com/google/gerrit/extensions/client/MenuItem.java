@@ -106,24 +106,6 @@ specifier|final
 name|String
 name|id
 decl_stmt|;
-comment|// Needed for GWT
-DECL|method|MenuItem ()
-specifier|public
-name|MenuItem
-parameter_list|()
-block|{
-name|this
-argument_list|(
-literal|null
-argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|MenuItem (String name, String url)
 specifier|public
 name|MenuItem
