@@ -78,22 +78,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|AccountGroup
 import|;
 end_import
@@ -171,7 +155,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The review service database schema.  *  *<p>Root entities that are at the top level of some important data graph:  *  *<ul>  *<li>{@link Account}: Per-user account registration, preferences, identity.  *<li>{@link Change}: All review information about a single proposed change.  *</ul>  */
+comment|/**  * The review service database schema.  *  *<p>Root entities that are at the top level of some important data graph:  *  *<ul>  *<li>{@link Change}: All review information about a single proposed change.  *</ul>  */
 end_comment
 
 begin_interface
@@ -279,23 +263,6 @@ name|FIRST_ACCOUNT_ID
 init|=
 literal|1000000
 decl_stmt|;
-comment|/**    * Next unique id for a {@link Account}.    *    * @deprecated use {@link com.google.gerrit.server.Sequences#nextAccountId()}.    */
-annotation|@
-name|Sequence
-argument_list|(
-name|startWith
-operator|=
-name|FIRST_ACCOUNT_ID
-argument_list|)
-annotation|@
-name|Deprecated
-DECL|method|nextAccountId ()
-name|int
-name|nextAccountId
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
 DECL|field|FIRST_GROUP_ID
 name|int
 name|FIRST_GROUP_ID

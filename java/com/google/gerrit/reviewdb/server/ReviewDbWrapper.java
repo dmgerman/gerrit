@@ -701,28 +701,6 @@ name|SuppressWarnings
 argument_list|(
 literal|"deprecation"
 argument_list|)
-DECL|method|nextAccountId ()
-specifier|public
-name|int
-name|nextAccountId
-parameter_list|()
-throws|throws
-name|OrmException
-block|{
-return|return
-name|delegate
-operator|.
-name|nextAccountId
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|nextAccountGroupId ()
 specifier|public
 name|int

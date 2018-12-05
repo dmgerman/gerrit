@@ -874,9 +874,7 @@ argument_list|(
 name|sequencesOnInit
 operator|.
 name|nextAccountId
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|String

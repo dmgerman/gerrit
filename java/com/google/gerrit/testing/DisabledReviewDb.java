@@ -423,20 +423,6 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|nextAccountId ()
-specifier|public
-name|int
-name|nextAccountId
-parameter_list|()
-block|{
-throw|throw
-operator|new
-name|Disabled
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
 DECL|method|nextAccountGroupId ()
 specifier|public
 name|int
