@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -199,10 +199,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|ElasticQueryChangesTest
+DECL|class|ElasticV7QueryChangesTest
 specifier|public
 class|class
-name|ElasticQueryChangesTest
+name|ElasticV7QueryChangesTest
 extends|extends
 name|AbstractQueryChangesTest
 block|{
@@ -263,7 +263,11 @@ operator|=
 name|ElasticContainer
 operator|.
 name|createAndStart
-argument_list|()
+argument_list|(
+name|ElasticVersion
+operator|.
+name|V7_0
+argument_list|)
 expr_stmt|;
 name|nodeInfo
 operator|=
@@ -302,24 +306,6 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-DECL|method|testName ()
-specifier|private
-name|String
-name|testName
-parameter_list|()
-block|{
-return|return
-name|testName
-operator|.
-name|getMethodName
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
-operator|+
-literal|"_"
-return|;
 block|}
 annotation|@
 name|Override
@@ -371,7 +357,7 @@ expr_stmt|;
 name|String
 name|indicesPrefix
 init|=
-name|testName
+name|getSanitizedMethodName
 argument_list|()
 decl_stmt|;
 name|ElasticTestUtils

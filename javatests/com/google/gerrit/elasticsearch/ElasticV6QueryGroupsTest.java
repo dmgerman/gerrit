@@ -307,24 +307,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|testName ()
-specifier|private
-name|String
-name|testName
-parameter_list|()
-block|{
-return|return
-name|testName
-operator|.
-name|getMethodName
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
-operator|+
-literal|"_"
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|initAfterLifecycleStart ()
@@ -375,7 +357,7 @@ expr_stmt|;
 name|String
 name|indicesPrefix
 init|=
-name|testName
+name|getSanitizedMethodName
 argument_list|()
 decl_stmt|;
 name|ElasticTestUtils
