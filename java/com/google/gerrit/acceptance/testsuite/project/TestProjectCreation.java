@@ -343,8 +343,6 @@ operator|.
 name|NameKey
 name|create
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|TestProjectCreation
 name|creation
@@ -358,7 +356,7 @@ operator|.
 name|projectCreator
 argument_list|()
 operator|.
-name|apply
+name|applyAndThrowSilently
 argument_list|(
 name|creation
 argument_list|)

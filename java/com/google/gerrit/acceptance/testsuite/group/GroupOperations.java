@@ -123,16 +123,12 @@ DECL|method|exists ()
 name|boolean
 name|exists
 parameter_list|()
-throws|throws
-name|Exception
 function_decl|;
 comment|/**      * Retrieves the group.      *      *<p><strong>Note:</strong> This call will fail with an exception if the requested group      * doesn't exist. If you want to check for the existence of a group, use {@link #exists()}      * instead.      *      * @return the corresponding {@code TestGroup}      */
 DECL|method|get ()
 name|TestGroup
 name|get
 parameter_list|()
-throws|throws
-name|Exception
 function_decl|;
 comment|/**      * Starts the fluent chain to update a group. The returned builder can be used to specify how      * the attributes of the group should be modified. To update the group for real, {@link      * TestGroupUpdate.Builder#update()} must be called.      *      *<p>Example:      *      *<pre>      * groupOperations.forUpdate().description("Another description for this group").update();      *</pre>      *      *<p><strong>Note:</strong> The update will fail with an exception if the group to update      * doesn't exist. If you want to check for the existence of a group, use {@link #exists()}.      *      * @return a builder to update the group      */
 DECL|method|forUpdate ()

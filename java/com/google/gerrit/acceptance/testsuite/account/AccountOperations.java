@@ -123,16 +123,12 @@ DECL|method|exists ()
 name|boolean
 name|exists
 parameter_list|()
-throws|throws
-name|Exception
 function_decl|;
 comment|/**      * Retrieves the account.      *      *<p><strong>Note:</strong> This call will fail with an exception if the requested account      * doesn't exist. If you want to check for the existence of an account, use {@link #exists()}      * instead.      *      * @return the corresponding {@code TestAccount}      */
 DECL|method|get ()
 name|TestAccount
 name|get
 parameter_list|()
-throws|throws
-name|Exception
 function_decl|;
 comment|/**      * Starts the fluent chain to update an account. The returned builder can be used to specify how      * the attributes of the account should be modified. To update the account for real, {@link      * TestAccountUpdate.Builder#update()} must be called.      *      *<p>Example:      *      *<pre>      * TestAccount updatedAccount = accountOperations.forUpdate().status("on vacation").update();      *</pre>      *      *<p><strong>Note:</strong> The update will fail with an exception if the account to update      * doesn't exist. If you want to check for the existence of an account, use {@link #exists()}.      *      * @return a builder to update the account      */
 DECL|method|forUpdate ()

@@ -401,8 +401,6 @@ specifier|public
 name|void
 name|update
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|TestAccountUpdate
 name|accountUpdate
@@ -415,7 +413,7 @@ operator|.
 name|accountUpdater
 argument_list|()
 operator|.
-name|accept
+name|acceptAndThrowSilently
 argument_list|(
 name|accountUpdate
 argument_list|)

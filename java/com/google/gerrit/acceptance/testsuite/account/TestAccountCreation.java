@@ -431,8 +431,6 @@ operator|.
 name|Id
 name|create
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|TestAccountCreation
 name|accountUpdate
@@ -446,7 +444,7 @@ operator|.
 name|accountCreator
 argument_list|()
 operator|.
-name|apply
+name|applyAndThrowSilently
 argument_list|(
 name|accountUpdate
 argument_list|)
