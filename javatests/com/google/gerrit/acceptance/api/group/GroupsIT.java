@@ -7622,7 +7622,7 @@ name|date
 expr_stmt|;
 block|}
 block|}
-comment|/**    * @Sandboxed is used by this test because it deletes a group reference which introduces an    * inconsistency for the group storage. Once group deletion is supported, this test should be    * updated to use the API instead.    */
+comment|/**    * {@code @Sandboxed} is used by this test because it deletes a group reference which introduces    * an inconsistency for the group storage. Once group deletion is supported, this test should be    * updated to use the API instead.    */
 annotation|@
 name|Test
 annotation|@
