@@ -8190,8 +8190,6 @@ block|{
 name|assertCreateGroupBranch
 argument_list|(
 name|project
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 name|String
@@ -8256,8 +8254,6 @@ block|{
 name|assertCreateGroupBranch
 argument_list|(
 name|project
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 name|String
@@ -8534,7 +8530,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|assertCreateGroupBranch (Project.NameKey project, String expectedErrorOnCreate)
+DECL|method|assertCreateGroupBranch (Project.NameKey project)
 specifier|private
 name|void
 name|assertCreateGroupBranch
@@ -8543,9 +8539,6 @@ name|Project
 operator|.
 name|NameKey
 name|project
-parameter_list|,
-name|String
-name|expectedErrorOnCreate
 parameter_list|)
 throws|throws
 name|Exception
@@ -8644,29 +8637,11 @@ literal|"bar"
 argument_list|)
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|expectedErrorOnCreate
-operator|!=
-literal|null
-condition|)
-block|{
-name|r
-operator|.
-name|assertErrorStatus
-argument_list|(
-name|expectedErrorOnCreate
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|r
 operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
