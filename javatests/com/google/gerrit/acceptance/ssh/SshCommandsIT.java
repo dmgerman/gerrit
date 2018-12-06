@@ -262,20 +262,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|sshd
-operator|.
-name|Commands
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -437,6 +423,21 @@ argument_list|,
 literal|"test-submit"
 argument_list|)
 decl_stmt|;
+DECL|field|EMPTY
+specifier|private
+specifier|static
+specifier|final
+name|ImmutableList
+argument_list|<
+name|String
+argument_list|>
+name|EMPTY
+init|=
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+decl_stmt|;
 DECL|field|MASTER_COMMANDS
 specifier|private
 specifier|static
@@ -454,11 +455,35 @@ name|MASTER_COMMANDS
 init|=
 name|ImmutableMap
 operator|.
-name|of
+expr|<
+name|String
+decl_stmt|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+decl|>
+name|builder
+argument_list|()
+decl|.
+name|put
 argument_list|(
-name|Commands
-operator|.
-name|ROOT
+literal|"kill"
+argument_list|,
+name|EMPTY
+argument_list|)
+decl|.
+name|put
+argument_list|(
+literal|"ps"
+argument_list|,
+name|EMPTY
+argument_list|)
+comment|// TODO(dpursehouse): Add "scp" and "suexec"
+decl|.
+name|put
+argument_list|(
+literal|"gerrit"
 argument_list|,
 name|Streams
 operator|.
@@ -483,8 +508,11 @@ argument_list|(
 name|toImmutableList
 argument_list|()
 argument_list|)
-argument_list|,
-literal|"index"
+argument_list|)
+decl|.
+name|put
+argument_list|(
+literal|"gerrit index"
 argument_list|,
 name|ImmutableList
 operator|.
@@ -494,9 +522,12 @@ literal|"changes"
 argument_list|,
 literal|"changes-in-project"
 argument_list|)
-argument_list|,
+argument_list|)
 comment|// "activate" and "start" are not included
-literal|"logging"
+decl|.
+name|put
+argument_list|(
+literal|"gerrit logging"
 argument_list|,
 name|ImmutableList
 operator|.
@@ -506,8 +537,11 @@ literal|"ls"
 argument_list|,
 literal|"set"
 argument_list|)
-argument_list|,
-literal|"plugin"
+argument_list|)
+decl|.
+name|put
+argument_list|(
+literal|"gerrit plugin"
 argument_list|,
 name|ImmutableList
 operator|.
@@ -527,8 +561,11 @@ literal|"remove"
 argument_list|,
 literal|"rm"
 argument_list|)
-argument_list|,
-literal|"test-submit"
+argument_list|)
+decl|.
+name|put
+argument_list|(
+literal|"gerrit test-submit"
 argument_list|,
 name|ImmutableList
 operator|.
@@ -539,6 +576,9 @@ argument_list|,
 literal|"type"
 argument_list|)
 argument_list|)
+decl|.
+name|build
+argument_list|()
 decl_stmt|;
 DECL|field|SLAVE_COMMANDS
 specifier|private
@@ -559,13 +599,15 @@ name|ImmutableMap
 operator|.
 name|of
 argument_list|(
-name|Commands
-operator|.
-name|ROOT
+literal|"kill"
+argument_list|,
+name|EMPTY
+argument_list|,
+literal|"gerrit"
 argument_list|,
 name|COMMON_ROOT_COMMANDS
 argument_list|,
-literal|"plugin"
+literal|"gerrit plugin"
 argument_list|,
 name|ImmutableList
 operator|.
@@ -653,46 +695,76 @@ name|keySet
 argument_list|()
 control|)
 block|{
-for|for
-control|(
+name|List
+argument_list|<
 name|String
-name|command
-range|:
+argument_list|>
+name|cmds
+init|=
 name|commands
 operator|.
 name|get
 argument_list|(
 name|root
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|cmds
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|testCommandExecution
+argument_list|(
+name|root
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+for|for
+control|(
+name|String
+name|cmd
+range|:
+name|cmds
 control|)
+block|{
+name|testCommandExecution
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s %s"
+argument_list|,
+name|root
+argument_list|,
+name|cmd
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+block|}
+DECL|method|testCommandExecution (String cmd)
+specifier|private
+name|void
+name|testCommandExecution
+parameter_list|(
+name|String
+name|cmd
+parameter_list|)
+throws|throws
+name|Exception
 block|{
 comment|// We can't assert that adminSshSession.hasError() is false, because using the --help
 comment|// option causes the usage info to be written to stderr. Instead, we assert on the
 comment|// content of the stderr, which will always start with "gerrit command" when the --help
 comment|// option is used.
-name|String
-name|cmd
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"gerrit%s%s %s"
-argument_list|,
-name|root
-operator|.
-name|isEmpty
-argument_list|()
-condition|?
-literal|""
-else|:
-literal|" "
-argument_list|,
-name|root
-argument_list|,
-name|command
-argument_list|)
-decl_stmt|;
 name|logger
 operator|.
 name|atFine
@@ -733,7 +805,7 @@ name|format
 argument_list|(
 literal|"command %s failed: %s"
 argument_list|,
-name|command
+name|cmd
 argument_list|,
 name|response
 argument_list|)
@@ -749,8 +821,6 @@ argument_list|(
 name|cmd
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 annotation|@
 name|Test
@@ -827,9 +897,7 @@ name|MASTER_COMMANDS
 operator|.
 name|get
 argument_list|(
-name|Commands
-operator|.
-name|ROOT
+literal|"gerrit"
 argument_list|)
 argument_list|)
 operator|.
@@ -867,9 +935,7 @@ name|SLAVE_COMMANDS
 operator|.
 name|get
 argument_list|(
-name|Commands
-operator|.
-name|ROOT
+literal|"gerrit"
 argument_list|)
 argument_list|)
 operator|.
