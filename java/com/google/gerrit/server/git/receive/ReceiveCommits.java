@@ -10983,6 +10983,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Pushing changes for review usually requires that the target branch exists, but there is an
+comment|// exception for the branch to which HEAD points to and for refs/meta/config. Pushing for
+comment|// review to these branches is allowed even if the branch does not exist yet. This allows to
+comment|// push initial code for review to an empty repository and to review an initial project
+comment|// configuration.
 if|if
 condition|(
 operator|!
