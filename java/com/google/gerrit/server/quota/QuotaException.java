@@ -94,6 +94,15 @@ name|QuotaException
 extends|extends
 name|RestApiException
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|QuotaException (String reason)
 specifier|public
 name|QuotaException
