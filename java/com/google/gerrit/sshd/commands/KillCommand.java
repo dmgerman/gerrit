@@ -396,7 +396,6 @@ literal|"ID"
 argument_list|)
 DECL|field|taskIds
 specifier|private
-specifier|final
 name|List
 argument_list|<
 name|String

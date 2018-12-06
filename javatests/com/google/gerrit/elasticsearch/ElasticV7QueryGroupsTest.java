@@ -234,9 +234,6 @@ DECL|field|container
 specifier|private
 specifier|static
 name|ElasticContainer
-argument_list|<
-name|?
-argument_list|>
 name|container
 decl_stmt|;
 annotation|@
