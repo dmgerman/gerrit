@@ -192,6 +192,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -304,6 +316,8 @@ name|MetaDataUpdate
 implements|implements
 name|AutoCloseable
 block|{
+annotation|@
+name|Singleton
 DECL|class|User
 specifier|public
 specifier|static
@@ -322,11 +336,14 @@ specifier|final
 name|GitRepositoryManager
 name|mgr
 decl_stmt|;
-DECL|field|serverIdent
+DECL|field|serverIdentProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
-name|serverIdent
+argument_list|>
+name|serverIdentProvider
 decl_stmt|;
 DECL|field|identifiedUser
 specifier|private
@@ -339,7 +356,7 @@ name|identifiedUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|User ( InternalFactory factory, GitRepositoryManager mgr, @GerritPersonIdent PersonIdent serverIdent, Provider<IdentifiedUser> identifiedUser)
+DECL|method|User ( InternalFactory factory, GitRepositoryManager mgr, @GerritPersonIdent Provider<PersonIdent> serverIdentProvider, Provider<IdentifiedUser> identifiedUser)
 name|User
 parameter_list|(
 name|InternalFactory
@@ -350,8 +367,11 @@ name|mgr
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
+name|Provider
+argument_list|<
 name|PersonIdent
-name|serverIdent
+argument_list|>
+name|serverIdentProvider
 parameter_list|,
 name|Provider
 argument_list|<
@@ -374,9 +394,9 @@ name|mgr
 expr_stmt|;
 name|this
 operator|.
-name|serverIdent
+name|serverIdentProvider
 operator|=
-name|serverIdent
+name|serverIdentProvider
 expr_stmt|;
 name|this
 operator|.
@@ -556,7 +576,10 @@ argument_list|()
 operator|.
 name|setCommitter
 argument_list|(
-name|serverIdent
+name|serverIdentProvider
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|md
@@ -579,6 +602,14 @@ name|IdentifiedUser
 name|user
 parameter_list|)
 block|{
+name|PersonIdent
+name|serverIdent
+init|=
+name|serverIdentProvider
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 return|return
 name|user
 operator|.
@@ -597,6 +628,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Singleton
 DECL|class|Server
 specifier|public
 specifier|static
@@ -615,15 +648,18 @@ specifier|final
 name|GitRepositoryManager
 name|mgr
 decl_stmt|;
-DECL|field|serverIdent
+DECL|field|serverIdentProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
-name|serverIdent
+argument_list|>
+name|serverIdentProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Server ( InternalFactory factory, GitRepositoryManager mgr, @GerritPersonIdent PersonIdent serverIdent)
+DECL|method|Server ( InternalFactory factory, GitRepositoryManager mgr, @GerritPersonIdent Provider<PersonIdent> serverIdentProvider)
 name|Server
 parameter_list|(
 name|InternalFactory
@@ -634,8 +670,11 @@ name|mgr
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
+name|Provider
+argument_list|<
 name|PersonIdent
-name|serverIdent
+argument_list|>
+name|serverIdentProvider
 parameter_list|)
 block|{
 name|this
@@ -652,9 +691,9 @@ name|mgr
 expr_stmt|;
 name|this
 operator|.
-name|serverIdent
+name|serverIdentProvider
 operator|=
-name|serverIdent
+name|serverIdentProvider
 expr_stmt|;
 block|}
 DECL|method|create (Project.NameKey name)
@@ -731,6 +770,14 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|PersonIdent
+name|serverIdent
+init|=
+name|serverIdentProvider
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 name|md
 operator|.
 name|getCommitBuilder
