@@ -11455,8 +11455,6 @@ name|branchTip
 init|=
 name|readBranchTip
 argument_list|(
-name|cmd
-argument_list|,
 name|magicBranch
 operator|.
 name|dest
@@ -11469,8 +11467,21 @@ operator|==
 literal|null
 condition|)
 block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+name|magicBranch
+operator|.
+name|dest
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|" not found"
+argument_list|)
+expr_stmt|;
 return|return;
-comment|// readBranchTip already rejected cmd.
 block|}
 if|if
 condition|(
@@ -11688,8 +11699,6 @@ name|branchTip
 init|=
 name|readBranchTip
 argument_list|(
-name|cmd
-argument_list|,
 name|magicBranch
 operator|.
 name|dest
@@ -11698,13 +11707,10 @@ decl_stmt|;
 if|if
 condition|(
 name|branchTip
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
-return|return;
-comment|// readBranchTip already rejected cmd.
-block|}
 name|magicBranch
 operator|.
 name|baseCommit
@@ -11738,6 +11744,55 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// The target branch does not exist. Usually pushing changes for review requires that the
+comment|// target branch exists, but there is an exception for the branch to which HEAD points to
+comment|// and for refs/meta/config. Pushing for review to these branches is allowed even if the
+comment|// branch does not exist yet. This allows to push initial code for review to an empty
+comment|// repository and to review an initial project configuration.
+if|if
+condition|(
+operator|!
+name|ref
+operator|.
+name|equals
+argument_list|(
+name|readHEAD
+argument_list|(
+name|repo
+argument_list|)
+argument_list|)
+operator|&&
+operator|!
+name|ref
+operator|.
+name|equals
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_CONFIG
+argument_list|)
+condition|)
+block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+name|magicBranch
+operator|.
+name|dest
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|" not found"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+block|}
 block|}
 block|}
 catch|catch
@@ -12139,14 +12194,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|readBranchTip (ReceiveCommand cmd, Branch.NameKey branch)
+DECL|method|readBranchTip (Branch.NameKey branch)
 specifier|private
 name|RevCommit
 name|readBranchTip
 parameter_list|(
-name|ReceiveCommand
-name|cmd
-parameter_list|,
 name|Branch
 operator|.
 name|NameKey
@@ -12176,18 +12228,6 @@ operator|==
 literal|null
 condition|)
 block|{
-name|reject
-argument_list|(
-name|cmd
-argument_list|,
-name|branch
-operator|.
-name|get
-argument_list|()
-operator|+
-literal|" not found"
-argument_list|)
-expr_stmt|;
 return|return
 literal|null
 return|;
