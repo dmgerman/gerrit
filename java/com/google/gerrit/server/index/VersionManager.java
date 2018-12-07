@@ -164,22 +164,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
-name|DynamicSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|index
 operator|.
 name|Index
@@ -257,6 +241,22 @@ operator|.
 name|config
 operator|.
 name|SitePaths
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
 import|;
 end_import
 
@@ -501,7 +501,7 @@ decl_stmt|;
 DECL|field|listeners
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|OnlineUpgradeListener
 argument_list|>
@@ -544,14 +544,14 @@ argument_list|>
 argument_list|>
 name|reindexers
 decl_stmt|;
-DECL|method|VersionManager ( SitePaths sitePaths, DynamicSet<OnlineUpgradeListener> listeners, Collection<IndexDefinition<?, ?, ?>> defs, boolean onlineUpgrade)
+DECL|method|VersionManager ( SitePaths sitePaths, PluginSetContext<OnlineUpgradeListener> listeners, Collection<IndexDefinition<?, ?, ?>> defs, boolean onlineUpgrade)
 specifier|protected
 name|VersionManager
 parameter_list|(
 name|SitePaths
 name|sitePaths
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|OnlineUpgradeListener
 argument_list|>

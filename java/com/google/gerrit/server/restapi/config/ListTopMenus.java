@@ -78,22 +78,6 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|registration
-operator|.
-name|DynamicSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
 name|restapi
 operator|.
 name|RestReadView
@@ -129,6 +113,22 @@ operator|.
 name|config
 operator|.
 name|ConfigResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
 import|;
 end_import
 
@@ -191,7 +191,7 @@ block|{
 DECL|field|extensions
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|TopMenu
 argument_list|>
@@ -199,10 +199,10 @@ name|extensions
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListTopMenus (DynamicSet<TopMenu> extensions)
+DECL|method|ListTopMenus (PluginSetContext<TopMenu> extensions)
 name|ListTopMenus
 parameter_list|(
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|TopMenu
 argument_list|>
@@ -245,14 +245,12 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-for|for
-control|(
-name|TopMenu
-name|extension
-range|:
 name|extensions
-control|)
-block|{
+operator|.
+name|runEach
+argument_list|(
+name|extension
+lambda|->
 name|entries
 operator|.
 name|addAll
@@ -262,8 +260,8 @@ operator|.
 name|getEntries
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|entries
 return|;

@@ -120,7 +120,7 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicSet
+name|PluginName
 import|;
 end_import
 
@@ -132,11 +132,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|registration
+name|plugincontext
 operator|.
-name|PluginName
+name|PluginSetContext
 import|;
 end_import
 
@@ -210,7 +210,7 @@ block|}
 DECL|field|listeners
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|CacheRemovalListener
 argument_list|>
@@ -233,10 +233,10 @@ name|GERRIT
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ForwardingRemovalListener ( DynamicSet<CacheRemovalListener> listeners, @Assisted String cacheName)
+DECL|method|ForwardingRemovalListener ( PluginSetContext<CacheRemovalListener> listeners, @Assisted String cacheName)
 name|ForwardingRemovalListener
 parameter_list|(
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|CacheRemovalListener
 argument_list|>
@@ -316,19 +316,12 @@ argument_list|>
 name|notification
 parameter_list|)
 block|{
-for|for
-control|(
-name|CacheRemovalListener
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|l
-range|:
 name|listeners
-control|)
-block|{
+operator|.
+name|runEach
+argument_list|(
+name|l
+lambda|->
 name|l
 operator|.
 name|onRemoval
@@ -339,8 +332,8 @@ name|cacheName
 argument_list|,
 name|notification
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class

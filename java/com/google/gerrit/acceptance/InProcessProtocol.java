@@ -468,6 +468,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectCache
@@ -1562,7 +1578,7 @@ decl_stmt|;
 DECL|field|uploadPackInitializers
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|UploadPackInitializer
 argument_list|>
@@ -1605,13 +1621,13 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Upload ( TransferConfig transferConfig, DynamicSet<UploadPackInitializer> uploadPackInitializers, DynamicSet<PreUploadHook> preUploadHooks, UploadValidators.Factory uploadValidatorsFactory, ThreadLocalRequestContext threadContext, ProjectCache projectCache, PermissionBackend permissionBackend)
+DECL|method|Upload ( TransferConfig transferConfig, PluginSetContext<UploadPackInitializer> uploadPackInitializers, DynamicSet<PreUploadHook> preUploadHooks, UploadValidators.Factory uploadValidatorsFactory, ThreadLocalRequestContext threadContext, ProjectCache projectCache, PermissionBackend permissionBackend)
 name|Upload
 parameter_list|(
 name|TransferConfig
 name|transferConfig
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|UploadPackInitializer
 argument_list|>
@@ -1912,14 +1928,12 @@ name|hooks
 argument_list|)
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|UploadPackInitializer
-name|initializer
-range|:
 name|uploadPackInitializers
-control|)
-block|{
+operator|.
+name|runEach
+argument_list|(
+name|initializer
+lambda|->
 name|initializer
 operator|.
 name|init
@@ -1930,8 +1944,8 @@ name|project
 argument_list|,
 name|up
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|up
 return|;
@@ -1980,7 +1994,7 @@ decl_stmt|;
 DECL|field|receivePackInitializers
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ReceivePackInitializer
 argument_list|>
@@ -2009,7 +2023,7 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Receive ( Provider<CurrentUser> userProvider, ProjectCache projectCache, AsyncReceiveCommits.Factory factory, TransferConfig config, DynamicSet<ReceivePackInitializer> receivePackInitializers, DynamicSet<PostReceiveHook> postReceiveHooks, ThreadLocalRequestContext threadContext, PermissionBackend permissionBackend)
+DECL|method|Receive ( Provider<CurrentUser> userProvider, ProjectCache projectCache, AsyncReceiveCommits.Factory factory, TransferConfig config, PluginSetContext<ReceivePackInitializer> receivePackInitializers, DynamicSet<PostReceiveHook> postReceiveHooks, ThreadLocalRequestContext threadContext, PermissionBackend permissionBackend)
 name|Receive
 parameter_list|(
 name|Provider
@@ -2029,7 +2043,7 @@ parameter_list|,
 name|TransferConfig
 name|config
 parameter_list|,
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ReceivePackInitializer
 argument_list|>
@@ -2300,14 +2314,12 @@ name|getMaxObjectSizeLimit
 argument_list|()
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|ReceivePackInitializer
-name|initializer
-range|:
 name|receivePackInitializers
-control|)
-block|{
+operator|.
+name|runEach
+argument_list|(
+name|initializer
+lambda|->
 name|initializer
 operator|.
 name|init
@@ -2319,8 +2331,8 @@ argument_list|()
 argument_list|,
 name|rp
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 name|rp
 operator|.
 name|setPostReceiveHook

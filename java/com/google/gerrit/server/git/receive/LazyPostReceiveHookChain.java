@@ -76,11 +76,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|registration
+name|plugincontext
 operator|.
-name|DynamicSet
+name|PluginSetContext
 import|;
 end_import
 
@@ -158,7 +158,7 @@ block|{
 DECL|field|hooks
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|PostReceiveHook
 argument_list|>
@@ -166,10 +166,10 @@ name|hooks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LazyPostReceiveHookChain (DynamicSet<PostReceiveHook> hooks)
+DECL|method|LazyPostReceiveHookChain (PluginSetContext<PostReceiveHook> hooks)
 name|LazyPostReceiveHookChain
 parameter_list|(
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|PostReceiveHook
 argument_list|>
@@ -200,14 +200,12 @@ argument_list|>
 name|commands
 parameter_list|)
 block|{
-for|for
-control|(
-name|PostReceiveHook
-name|h
-range|:
 name|hooks
-control|)
-block|{
+operator|.
+name|runEach
+argument_list|(
+name|h
+lambda|->
 name|h
 operator|.
 name|onPostReceive
@@ -216,8 +214,8 @@ name|rp
 argument_list|,
 name|commands
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class

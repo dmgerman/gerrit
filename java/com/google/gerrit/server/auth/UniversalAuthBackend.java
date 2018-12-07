@@ -86,11 +86,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|registration
+name|plugincontext
 operator|.
-name|DynamicSet
+name|PluginSetContext
 import|;
 end_import
 
@@ -156,7 +156,7 @@ block|{
 DECL|field|authBackends
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|AuthBackend
 argument_list|>
@@ -164,10 +164,10 @@ name|authBackends
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UniversalAuthBackend (DynamicSet<AuthBackend> authBackends)
+DECL|method|UniversalAuthBackend (PluginSetContext<AuthBackend> authBackends)
 name|UniversalAuthBackend
 parameter_list|(
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|AuthBackend
 argument_list|>
@@ -216,13 +216,12 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-for|for
-control|(
-name|AuthBackend
-name|backend
-range|:
 name|authBackends
-control|)
+operator|.
+name|runEach
+argument_list|(
+name|backend
+lambda|->
 block|{
 try|try
 block|{
@@ -265,6 +264,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
 comment|// Handle the valid responses
 if|if
 condition|(

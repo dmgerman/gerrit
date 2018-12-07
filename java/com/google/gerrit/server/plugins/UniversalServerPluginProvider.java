@@ -92,7 +92,7 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicSet
+name|PluginName
 import|;
 end_import
 
@@ -104,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|registration
+name|plugincontext
 operator|.
-name|PluginName
+name|PluginSetContext
 import|;
 end_import
 
@@ -210,7 +210,7 @@ decl_stmt|;
 DECL|field|serverPluginProviders
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ServerPluginProvider
 argument_list|>
@@ -218,10 +218,10 @@ name|serverPluginProviders
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UniversalServerPluginProvider (DynamicSet<ServerPluginProvider> sf)
+DECL|method|UniversalServerPluginProvider (PluginSetContext<ServerPluginProvider> sf)
 name|UniversalServerPluginProvider
 parameter_list|(
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|ServerPluginProvider
 argument_list|>
@@ -450,13 +450,12 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-for|for
-control|(
-name|ServerPluginProvider
-name|serverPluginProvider
-range|:
 name|serverPluginProviders
-control|)
+operator|.
+name|runEach
+argument_list|(
+name|serverPluginProvider
+lambda|->
 block|{
 name|boolean
 name|handles
@@ -501,6 +500,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
 return|return
 name|providers
 return|;

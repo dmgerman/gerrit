@@ -92,11 +92,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|registration
+name|plugincontext
 operator|.
-name|DynamicSet
+name|PluginSetContext
 import|;
 end_import
 
@@ -135,7 +135,7 @@ block|{
 DECL|field|listeners
 specifier|private
 specifier|final
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|PluginEventListener
 argument_list|>
@@ -143,10 +143,10 @@ name|listeners
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginEvent (DynamicSet<PluginEventListener> listeners)
+DECL|method|PluginEvent (PluginSetContext<PluginEventListener> listeners)
 name|PluginEvent
 parameter_list|(
-name|DynamicSet
+name|PluginSetContext
 argument_list|<
 name|PluginEventListener
 argument_list|>
@@ -202,22 +202,20 @@ argument_list|,
 name|data
 argument_list|)
 decl_stmt|;
-for|for
-control|(
-name|PluginEventListener
-name|l
-range|:
 name|listeners
-control|)
-block|{
+operator|.
+name|runEach
+argument_list|(
+name|l
+lambda|->
 name|l
 operator|.
 name|onPluginEvent
 argument_list|(
 name|e
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|class|Event
 specifier|private
