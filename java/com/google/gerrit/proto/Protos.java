@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.cache.serialize
+DECL|package|com.google.gerrit.proto
 package|package
 name|com
 operator|.
@@ -60,11 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|cache
-operator|.
-name|serialize
+name|proto
 package|;
 end_package
 
@@ -141,16 +137,16 @@ import|;
 end_import
 
 begin_comment
-comment|/** Static utilities for writing protobuf-based {@link CacheSerializer} implementations. */
+comment|/** Static utilities for dealing with protobuf-based objects. */
 end_comment
 
 begin_class
-DECL|class|ProtoCacheSerializers
+DECL|class|Protos
 specifier|public
 class|class
-name|ProtoCacheSerializers
+name|Protos
 block|{
-comment|/**    * Serializes a proto to a byte array.    *    *<p>Guarantees deterministic serialization and thus is suitable for use in persistent caches.    * Should be used in preference to {@link MessageLite#toByteArray()}, which is not guaranteed    * deterministic.    *    * @param message the proto message to serialize.    * @return a byte array with the message contents.    */
+comment|/**    * Serializes a proto to a byte array.    *    *<p>Guarantees deterministic serialization. No matter whether the use case cares about    * determinism or not, always use this method in preference to {@link MessageLite#toByteArray()},    * which is not guaranteed deterministic.    *    * @param message the proto message to serialize.    * @return a byte array with the message contents.    */
 DECL|method|toByteArray (MessageLite message)
 specifier|public
 specifier|static
@@ -225,7 +221,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Serializes an object to a {@link ByteString} using a protobuf codec.    *    *<p>Guarantees deterministic serialization and thus is suitable for use in persistent caches.    * Should be used in preference to {@link ProtobufCodec#encodeToByteString(Object)}, which is not    * guaranteed deterministic.    *    * @param object the object to serialize.    * @param codec codec for serializing.    * @return a {@code ByteString} with the message contents.    */
+comment|/**    * Serializes an object to a {@link ByteString} using a protobuf codec.    *    *<p>Guarantees deterministic serialization. No matter whether the use case cares about    * determinism or not, always use this method in preference to {@link    * ProtobufCodec#encodeToByteString(Object)}, which is not guaranteed deterministic.    *    * @param object the object to serialize.    * @param codec codec for serializing.    * @return a {@code ByteString} with the message contents.    */
 DECL|method|toByteString (T object, ProtobufCodec<T> codec)
 specifier|public
 specifier|static
@@ -362,9 +358,9 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ProtoCacheSerializers ()
+DECL|method|Protos ()
 specifier|private
-name|ProtoCacheSerializers
+name|Protos
 parameter_list|()
 block|{}
 block|}

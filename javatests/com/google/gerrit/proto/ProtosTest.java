@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.cache.serialize
+DECL|package|com.google.gerrit.proto
 package|package
 name|com
 operator|.
@@ -60,11 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|cache
-operator|.
-name|serialize
+name|proto
 package|;
 end_package
 
@@ -181,10 +177,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|ProtoCacheSerializersTest
+DECL|class|ProtosTest
 specifier|public
 class|class
-name|ProtoCacheSerializersTest
+name|ProtosTest
 extends|extends
 name|GerritBaseTests
 block|{
@@ -231,7 +227,7 @@ name|byte
 index|[]
 name|bytes
 init|=
-name|ProtoCacheSerializers
+name|Protos
 operator|.
 name|toByteArray
 argument_list|(
@@ -240,7 +236,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|ProtoCacheSerializers
+name|Protos
 operator|.
 name|parseUnchecked
 argument_list|(
@@ -291,7 +287,7 @@ block|}
 decl_stmt|;
 try|try
 block|{
-name|ProtoCacheSerializers
+name|Protos
 operator|.
 name|parseUnchecked
 argument_list|(
@@ -364,7 +360,7 @@ name|byte
 index|[]
 name|bytes
 init|=
-name|ProtoCacheSerializers
+name|Protos
 operator|.
 name|toByteArray
 argument_list|(
@@ -373,7 +369,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|ProtoCacheSerializers
+name|Protos
 operator|.
 name|parseUnchecked
 argument_list|(

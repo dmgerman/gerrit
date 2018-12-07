@@ -154,6 +154,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|proto
+operator|.
+name|Protos
+operator|.
+name|toByteString
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|server
@@ -197,26 +213,6 @@ operator|.
 name|ReviewDbCodecs
 operator|.
 name|PATCH_SET_CODEC
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|cache
-operator|.
-name|serialize
-operator|.
-name|ProtoCacheSerializers
-operator|.
-name|toByteString
 import|;
 end_import
 
@@ -441,6 +437,20 @@ operator|.
 name|mail
 operator|.
 name|Address
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|proto
+operator|.
+name|Protos
 import|;
 end_import
 
@@ -785,24 +795,6 @@ operator|.
 name|serialize
 operator|.
 name|ObjectIdConverter
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|cache
-operator|.
-name|serialize
-operator|.
-name|ProtoCacheSerializers
 import|;
 end_import
 
@@ -3151,7 +3143,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|ProtoCacheSerializers
+name|Protos
 operator|.
 name|toByteArray
 argument_list|(
@@ -3696,7 +3688,7 @@ block|{
 name|ChangeNotesStateProto
 name|proto
 init|=
-name|ProtoCacheSerializers
+name|Protos
 operator|.
 name|parseUnchecked
 argument_list|(
