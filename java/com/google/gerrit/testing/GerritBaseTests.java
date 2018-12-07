@@ -100,7 +100,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|server
+name|client
 operator|.
 name|StandardKeyEncoder
 import|;
