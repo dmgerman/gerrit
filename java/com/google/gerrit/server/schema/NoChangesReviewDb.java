@@ -326,20 +326,6 @@ name|gwtorm
 operator|.
 name|server
 operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
 name|ResultSet
 import|;
 end_import
@@ -441,41 +427,31 @@ name|changes
 operator|=
 operator|new
 name|Changes
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|patchSetApprovals
 operator|=
 operator|new
 name|PatchSetApprovals
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|changeMessages
 operator|=
 operator|new
 name|ChangeMessages
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|patchSets
 operator|=
 operator|new
 name|PatchSets
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|patchComments
 operator|=
 operator|new
 name|PatchLineComments
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -671,20 +647,6 @@ argument_list|>
 implements|implements
 name|ChangeAccess
 block|{
-DECL|method|Changes (NoChangesReviewDb wrapper)
-specifier|private
-name|Changes
-parameter_list|(
-name|NoChangesReviewDb
-name|wrapper
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|wrapper
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|all ()
@@ -719,20 +681,6 @@ argument_list|>
 implements|implements
 name|ChangeMessageAccess
 block|{
-DECL|method|ChangeMessages (NoChangesReviewDb wrapper)
-specifier|private
-name|ChangeMessages
-parameter_list|(
-name|NoChangesReviewDb
-name|wrapper
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|wrapper
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|byChange (Change.Id id)
@@ -748,8 +696,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|empty
@@ -771,8 +717,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|empty
@@ -789,8 +733,6 @@ name|ChangeMessage
 argument_list|>
 name|all
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 return|return
 name|empty
@@ -815,20 +757,6 @@ argument_list|>
 implements|implements
 name|PatchSetAccess
 block|{
-DECL|method|PatchSets (NoChangesReviewDb wrapper)
-specifier|private
-name|PatchSets
-parameter_list|(
-name|NoChangesReviewDb
-name|wrapper
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|wrapper
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|byChange (Change.Id id)
@@ -884,20 +812,6 @@ argument_list|>
 implements|implements
 name|PatchSetApprovalAccess
 block|{
-DECL|method|PatchSetApprovals (NoChangesReviewDb wrapper)
-specifier|private
-name|PatchSetApprovals
-parameter_list|(
-name|NoChangesReviewDb
-name|wrapper
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|wrapper
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|byChange (Change.Id id)
@@ -1000,20 +914,6 @@ argument_list|>
 implements|implements
 name|PatchLineCommentAccess
 block|{
-DECL|method|PatchLineComments (NoChangesReviewDb wrapper)
-specifier|private
-name|PatchLineComments
-parameter_list|(
-name|NoChangesReviewDb
-name|wrapper
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|wrapper
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|byChange (Change.Id id)

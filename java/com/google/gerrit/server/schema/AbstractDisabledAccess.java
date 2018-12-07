@@ -286,26 +286,6 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|field|wrapper
-specifier|private
-specifier|final
-name|NoChangesReviewDb
-name|wrapper
-decl_stmt|;
-DECL|method|AbstractDisabledAccess (NoChangesReviewDb wrapper)
-name|AbstractDisabledAccess
-parameter_list|(
-name|NoChangesReviewDb
-name|wrapper
-parameter_list|)
-block|{
-name|this
-operator|.
-name|wrapper
-operator|=
-name|wrapper
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|getRelationID ()
