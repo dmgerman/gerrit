@@ -220,7 +220,7 @@ init|=
 literal|"disableReviewDb"
 decl_stmt|;
 DECL|field|PRIMARY_STORAGE
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -229,7 +229,7 @@ init|=
 literal|"primaryStorage"
 decl_stmt|;
 DECL|field|SEQUENCE
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String

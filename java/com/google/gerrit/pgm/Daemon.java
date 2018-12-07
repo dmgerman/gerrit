@@ -1366,7 +1366,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|ReviewDbSchemaVersionCheck
+name|NoteDbSchemaVersionCheck
 import|;
 end_import
 
@@ -2577,22 +2577,6 @@ name|shell
 operator|.
 name|set
 argument_list|(
-literal|"schk"
-argument_list|,
-name|dbInjector
-operator|.
-name|getInstance
-argument_list|(
-name|ReviewDbSchemaVersionCheck
-operator|.
-name|class
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|shell
-operator|.
-name|set
-argument_list|(
 literal|"d"
 argument_list|,
 name|this
@@ -3076,7 +3060,7 @@ name|modules
 operator|.
 name|add
 argument_list|(
-name|ReviewDbSchemaVersionCheck
+name|NoteDbSchemaVersionCheck
 operator|.
 name|module
 argument_list|()

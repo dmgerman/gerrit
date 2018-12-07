@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -109,22 +93,6 @@ operator|.
 name|concurrent
 operator|.
 name|Futures
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDbWrapper
 import|;
 end_import
 
@@ -222,18 +190,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|function
-operator|.
-name|Function
-import|;
-end_import
-
 begin_class
 DECL|class|AbstractDisabledAccess
 specifier|abstract
@@ -257,6 +213,15 @@ argument_list|,
 name|K
 argument_list|>
 block|{
+DECL|field|GONE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|GONE
+init|=
+literal|"ReviewDb is gone"
+decl_stmt|;
 DECL|method|empty ()
 specifier|private
 specifier|static
@@ -321,69 +286,17 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|// Don't even hold a reference to delegate, so it's not possible to use it
-comment|// accidentally.
 DECL|field|wrapper
 specifier|private
 specifier|final
-name|ReviewDbWrapper
+name|NoChangesReviewDb
 name|wrapper
 decl_stmt|;
-DECL|field|relationName
-specifier|private
-specifier|final
-name|String
-name|relationName
-decl_stmt|;
-DECL|field|relationId
-specifier|private
-specifier|final
-name|int
-name|relationId
-decl_stmt|;
-DECL|field|primaryKey
-specifier|private
-specifier|final
-name|Function
-argument_list|<
-name|T
-argument_list|,
-name|K
-argument_list|>
-name|primaryKey
-decl_stmt|;
-DECL|field|toMap
-specifier|private
-specifier|final
-name|Function
-argument_list|<
-name|Iterable
-argument_list|<
-name|T
-argument_list|>
-argument_list|,
-name|Map
-argument_list|<
-name|K
-argument_list|,
-name|T
-argument_list|>
-argument_list|>
-name|toMap
-decl_stmt|;
-DECL|method|AbstractDisabledAccess (ReviewDbWrapper wrapper, Access<T, K> delegate)
+DECL|method|AbstractDisabledAccess (NoChangesReviewDb wrapper)
 name|AbstractDisabledAccess
 parameter_list|(
-name|ReviewDbWrapper
+name|NoChangesReviewDb
 name|wrapper
-parameter_list|,
-name|Access
-argument_list|<
-name|T
-argument_list|,
-name|K
-argument_list|>
-name|delegate
 parameter_list|)
 block|{
 name|this
@@ -391,40 +304,6 @@ operator|.
 name|wrapper
 operator|=
 name|wrapper
-expr_stmt|;
-name|this
-operator|.
-name|relationName
-operator|=
-name|delegate
-operator|.
-name|getRelationName
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|relationId
-operator|=
-name|delegate
-operator|.
-name|getRelationID
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|primaryKey
-operator|=
-name|delegate
-operator|::
-name|primaryKey
-expr_stmt|;
-name|this
-operator|.
-name|toMap
-operator|=
-name|delegate
-operator|::
-name|toMap
 expr_stmt|;
 block|}
 annotation|@
@@ -436,9 +315,13 @@ name|int
 name|getRelationID
 parameter_list|()
 block|{
-return|return
-name|relationId
-return|;
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+name|GONE
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -449,9 +332,13 @@ name|String
 name|getRelationName
 parameter_list|()
 block|{
-return|return
-name|relationName
-return|;
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+name|GONE
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
@@ -465,14 +352,13 @@ name|T
 name|entity
 parameter_list|)
 block|{
-return|return
-name|primaryKey
-operator|.
-name|apply
+throw|throw
+operator|new
+name|UnsupportedOperationException
 argument_list|(
-name|entity
+name|GONE
 argument_list|)
-return|;
+throw|;
 block|}
 annotation|@
 name|Override
@@ -494,14 +380,13 @@ argument_list|>
 name|iterable
 parameter_list|)
 block|{
-return|return
-name|toMap
-operator|.
-name|apply
+throw|throw
+operator|new
+name|UnsupportedOperationException
 argument_list|(
-name|iterable
+name|GONE
 argument_list|)
-return|;
+throw|;
 block|}
 annotation|@
 name|Override
@@ -677,29 +562,7 @@ name|K
 name|key
 parameter_list|)
 block|{
-comment|// Keep track of when we've started a transaction so that we can avoid calling commit/rollback
-comment|// on the underlying ReviewDb. This is just a simple arm's-length approach, and may produce
-comment|// slightly different results from a native ReviewDb in corner cases like:
-comment|// * beginning transactions on different tables simultaneously
-comment|// * doing work between commit and rollback
-comment|// These kinds of things are already misuses of ReviewDb, and shouldn't be happening in current
-comment|// code anyway.
-name|checkState
-argument_list|(
-operator|!
-name|wrapper
-operator|.
-name|inTransaction
-argument_list|()
-argument_list|,
-literal|"already in transaction"
-argument_list|)
-expr_stmt|;
-name|wrapper
-operator|.
-name|beginTransaction
-argument_list|()
-expr_stmt|;
+comment|// Do nothing.
 block|}
 annotation|@
 name|Override
