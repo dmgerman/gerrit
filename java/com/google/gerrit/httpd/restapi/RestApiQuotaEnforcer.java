@@ -390,7 +390,7 @@ name|ProjectResource
 condition|)
 block|{
 name|ProjectResource
-name|accountResource
+name|projectResource
 init|=
 operator|(
 name|ProjectResource
@@ -404,14 +404,11 @@ operator|.
 name|currentUser
 argument_list|()
 operator|.
-name|account
+name|project
 argument_list|(
-name|accountResource
+name|projectResource
 operator|.
-name|getUser
-argument_list|()
-operator|.
-name|getAccountId
+name|getNameKey
 argument_list|()
 argument_list|)
 expr_stmt|;
