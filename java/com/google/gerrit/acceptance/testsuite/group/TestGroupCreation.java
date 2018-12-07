@@ -608,8 +608,6 @@ operator|.
 name|UUID
 name|create
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|TestGroupCreation
 name|groupCreation
@@ -623,7 +621,7 @@ operator|.
 name|groupCreator
 argument_list|()
 operator|.
-name|apply
+name|applyAndThrowSilently
 argument_list|(
 name|groupCreation
 argument_list|)

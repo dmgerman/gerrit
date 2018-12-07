@@ -790,8 +790,6 @@ specifier|public
 name|void
 name|update
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|TestGroupUpdate
 name|groupUpdater
@@ -804,7 +802,7 @@ operator|.
 name|groupUpdater
 argument_list|()
 operator|.
-name|accept
+name|acceptAndThrowSilently
 argument_list|(
 name|groupUpdater
 argument_list|)
