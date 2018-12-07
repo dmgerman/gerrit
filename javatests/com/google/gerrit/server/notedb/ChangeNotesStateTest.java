@@ -618,8 +618,6 @@ name|cache
 operator|.
 name|serialize
 operator|.
-name|ProtoCacheSerializers
-operator|.
 name|ObjectIdConverter
 import|;
 end_import
