@@ -1213,7 +1213,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Module for programs that perform batch operations on a site.  *  *<p>Any program that requires this module likely also requires using {@link ThreadLimiter} to  * limit the number of threads accessing the database concurrently.  */
+comment|/** Module for programs that perform batch operations on a site. */
 end_comment
 
 begin_class
