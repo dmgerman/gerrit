@@ -1791,13 +1791,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|InMemoryDatabase
-operator|.
-name|drop
-argument_list|(
-name|schemaFactory
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test

@@ -329,22 +329,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 block|{
-comment|/** Drop the database from memory; does nothing if the instance was null. */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-DECL|method|drop (InMemoryDatabase db)
-specifier|public
-specifier|static
-name|void
-name|drop
-parameter_list|(
-name|InMemoryDatabase
-name|db
-parameter_list|)
-block|{}
 DECL|field|repoManager
 specifier|private
 specifier|final

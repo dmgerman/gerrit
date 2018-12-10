@@ -2393,7 +2393,6 @@ operator|.
 name|GenericFactory
 name|identifiedUserFactory
 decl_stmt|;
-comment|// Only for use in setting up/tearing down injector; other users should use schemaFactory.
 DECL|field|inMemoryDatabase
 annotation|@
 name|Inject
@@ -2782,13 +2781,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|InMemoryDatabase
-operator|.
-name|drop
-argument_list|(
-name|inMemoryDatabase
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Before
