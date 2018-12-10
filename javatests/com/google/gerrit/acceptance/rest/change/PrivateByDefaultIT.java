@@ -950,7 +950,11 @@ name|RevCommit
 name|initialHead
 init|=
 name|getRemoteHead
-argument_list|()
+argument_list|(
+name|project2
+argument_list|,
+literal|"master"
+argument_list|)
 decl_stmt|;
 name|TestRepository
 argument_list|<
