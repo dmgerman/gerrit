@@ -83,22 +83,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|TruthJUnit
-operator|.
-name|assume
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -179,20 +163,6 @@ operator|.
 name|acceptance
 operator|.
 name|UseSsh
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|NoteDbMode
 import|;
 end_import
 
@@ -330,16 +300,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -356,35 +316,6 @@ name|UploadArchiveIT
 extends|extends
 name|AbstractDaemonTest
 block|{
-annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-block|{
-comment|// There is some Guice request scoping problem preventing this test from
-comment|// passing in CHECK mode.
-name|assume
-argument_list|()
-operator|.
-name|that
-argument_list|(
-name|NoteDbMode
-operator|.
-name|get
-argument_list|()
-argument_list|)
-operator|.
-name|isNotEqualTo
-argument_list|(
-name|NoteDbMode
-operator|.
-name|CHECK
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Test
 annotation|@

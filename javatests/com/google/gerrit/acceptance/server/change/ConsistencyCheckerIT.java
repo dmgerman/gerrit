@@ -1917,14 +1917,6 @@ name|nextChangeId
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// Set review started, mimicking Schema_153, so tests pass with NoteDbMode.CHECK.
-name|c
-operator|.
-name|setReviewStarted
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|PatchSet
 operator|.
 name|Id
