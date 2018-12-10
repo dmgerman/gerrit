@@ -9264,6 +9264,8 @@ init|=
 name|getHead
 argument_list|(
 name|repo
+argument_list|,
+literal|"HEAD"
 argument_list|)
 decl_stmt|;
 name|RevCommit

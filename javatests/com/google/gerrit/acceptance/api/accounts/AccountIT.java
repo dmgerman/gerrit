@@ -21221,6 +21221,8 @@ name|allUsersRepo
 operator|.
 name|getRepository
 argument_list|()
+argument_list|,
+literal|"HEAD"
 argument_list|)
 operator|.
 name|getTree

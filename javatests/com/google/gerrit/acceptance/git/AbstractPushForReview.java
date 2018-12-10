@@ -16381,6 +16381,8 @@ name|testRepo
 operator|.
 name|getRepository
 argument_list|()
+argument_list|,
+literal|"HEAD"
 argument_list|)
 argument_list|)
 operator|.
@@ -16526,6 +16528,8 @@ name|testRepo
 operator|.
 name|getRepository
 argument_list|()
+argument_list|,
+literal|"HEAD"
 argument_list|)
 argument_list|)
 operator|.
@@ -16691,6 +16695,8 @@ name|testRepo
 operator|.
 name|getRepository
 argument_list|()
+argument_list|,
+literal|"HEAD"
 argument_list|)
 argument_list|)
 operator|.
@@ -16822,6 +16828,8 @@ name|testRepo
 operator|.
 name|getRepository
 argument_list|()
+argument_list|,
+literal|"HEAD"
 argument_list|)
 decl_stmt|;
 name|RevCommit
