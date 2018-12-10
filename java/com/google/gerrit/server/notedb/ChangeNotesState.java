@@ -148,24 +148,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDbCodecs
-operator|.
-name|APPROVAL_CODEC
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -559,6 +541,22 @@ operator|.
 name|converter
 operator|.
 name|ChangeMessageProtoConverter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|converter
+operator|.
+name|PatchSetApprovalProtoConverter
 import|;
 end_import
 
@@ -2906,8 +2904,6 @@ name|b
 operator|.
 name|addApproval
 argument_list|(
-name|Protos
-operator|.
 name|toByteString
 argument_list|(
 name|e
@@ -2915,7 +2911,9 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|,
-name|APPROVAL_CODEC
+name|PatchSetApprovalProtoConverter
+operator|.
+name|INSTANCE
 argument_list|)
 argument_list|)
 argument_list|)
@@ -3919,9 +3917,16 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|APPROVAL_CODEC
-operator|::
-name|decode
+name|bytes
+lambda|->
+name|parseProtoFrom
+argument_list|(
+name|PatchSetApprovalProtoConverter
+operator|.
+name|INSTANCE
+argument_list|,
+name|bytes
+argument_list|)
 argument_list|)
 operator|.
 name|map
