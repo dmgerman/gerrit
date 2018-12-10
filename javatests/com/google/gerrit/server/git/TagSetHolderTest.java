@@ -110,9 +110,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|cache
+name|proto
 operator|.
 name|testing
 operator|.

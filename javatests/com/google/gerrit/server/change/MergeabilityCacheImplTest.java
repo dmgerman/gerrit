@@ -110,15 +110,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|cache
+name|proto
 operator|.
 name|testing
 operator|.
-name|CacheSerializerTestUtil
+name|SerializedClassSubject
 operator|.
-name|byteString
+name|assertThatSerializedClass
 import|;
 end_import
 
@@ -136,9 +134,9 @@ name|cache
 operator|.
 name|testing
 operator|.
-name|SerializedClassSubject
+name|CacheSerializerTestUtil
 operator|.
-name|assertThatSerializedClass
+name|byteString
 import|;
 end_import
 
@@ -169,6 +167,22 @@ operator|.
 name|client
 operator|.
 name|SubmitType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|proto
+operator|.
+name|testing
+operator|.
+name|SerializedClassSubject
 import|;
 end_import
 
@@ -441,7 +455,7 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * See {@link com.google.gerrit.server.cache.testing.SerializedClassSubject} for background and    * what to do if this test fails.    */
+comment|/** See {@link SerializedClassSubject} for background and what to do if this test fails. */
 annotation|@
 name|Test
 DECL|method|keyFields ()

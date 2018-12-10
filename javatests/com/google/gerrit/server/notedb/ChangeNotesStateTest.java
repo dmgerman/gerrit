@@ -126,6 +126,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|proto
+operator|.
+name|testing
+operator|.
+name|SerializedClassSubject
+operator|.
+name|assertThatSerializedClass
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|server
@@ -151,26 +169,6 @@ operator|.
 name|ReviewDbCodecs
 operator|.
 name|MESSAGE_CODEC
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|cache
-operator|.
-name|testing
-operator|.
-name|SerializedClassSubject
-operator|.
-name|assertThatSerializedClass
 import|;
 end_import
 

@@ -110,9 +110,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|cache
+name|proto
 operator|.
 name|testing
 operator|.
@@ -149,6 +147,22 @@ operator|.
 name|reviewdb
 operator|.
 name|Reviewdb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|proto
+operator|.
+name|testing
+operator|.
+name|SerializedClassSubject
 import|;
 end_import
 
@@ -394,7 +408,7 @@ name|proto
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * See {@link com.google.gerrit.server.cache.testing.SerializedClassSubject} for background and    * what to do if this test fails.    */
+comment|/** See {@link SerializedClassSubject} for background and what to do if this test fails. */
 annotation|@
 name|Test
 DECL|method|fieldsExistAsExpected ()

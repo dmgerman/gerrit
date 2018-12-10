@@ -112,15 +112,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|cache
+name|proto
 operator|.
 name|testing
 operator|.
-name|CacheSerializerTestUtil
+name|SerializedClassSubject
 operator|.
-name|byteString
+name|assertThatSerializedClass
 import|;
 end_import
 
@@ -138,9 +136,9 @@ name|cache
 operator|.
 name|testing
 operator|.
-name|SerializedClassSubject
+name|CacheSerializerTestUtil
 operator|.
-name|assertThatSerializedClass
+name|byteString
 import|;
 end_import
 
