@@ -261,16 +261,6 @@ argument_list|()
 operator|.
 name|to
 argument_list|(
-name|UpgradeFrom2_0_x
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|step
-argument_list|()
-operator|.
-name|to
-argument_list|(
 name|InitGitManager
 operator|.
 name|class
