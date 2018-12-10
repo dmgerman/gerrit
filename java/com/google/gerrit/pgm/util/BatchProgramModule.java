@@ -636,22 +636,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|GerritServerConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|GitReceivePackGroups
 import|;
 end_import
@@ -1198,20 +1182,6 @@ name|Set
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
 begin_comment
 comment|/** Module for programs that perform batch operations on a site. */
 end_comment
@@ -1224,12 +1194,6 @@ name|BatchProgramModule
 extends|extends
 name|FactoryModule
 block|{
-DECL|field|cfg
-specifier|private
-specifier|final
-name|Config
-name|cfg
-decl_stmt|;
 DECL|field|reviewDbModule
 specifier|private
 specifier|final
@@ -1238,24 +1202,13 @@ name|reviewDbModule
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BatchProgramModule (@erritServerConfig Config cfg, PerThreadReviewDbModule reviewDbModule)
+DECL|method|BatchProgramModule (PerThreadReviewDbModule reviewDbModule)
 name|BatchProgramModule
 parameter_list|(
-annotation|@
-name|GerritServerConfig
-name|Config
-name|cfg
-parameter_list|,
 name|PerThreadReviewDbModule
 name|reviewDbModule
 parameter_list|)
 block|{
-name|this
-operator|.
-name|cfg
-operator|=
-name|cfg
-expr_stmt|;
 name|this
 operator|.
 name|reviewDbModule
@@ -1866,9 +1819,7 @@ name|install
 argument_list|(
 operator|new
 name|NoteDbModule
-argument_list|(
-name|cfg
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 end_expr_stmt
