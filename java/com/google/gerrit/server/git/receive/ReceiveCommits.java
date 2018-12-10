@@ -5287,9 +5287,6 @@ name|rw
 argument_list|,
 name|ins
 argument_list|)
-operator|.
-name|updateChangesInParallel
-argument_list|()
 expr_stmt|;
 name|bu
 operator|.
@@ -6191,9 +6188,6 @@ name|rw
 argument_list|,
 name|ins
 argument_list|)
-operator|.
-name|updateChangesInParallel
-argument_list|()
 expr_stmt|;
 name|bu
 operator|.
@@ -19498,9 +19492,6 @@ name|rw
 argument_list|,
 name|ins
 argument_list|)
-operator|.
-name|updateChangesInParallel
-argument_list|()
 expr_stmt|;
 comment|// TODO(dborowitz): Teach BatchUpdate to ignore missing changes.
 name|RevCommit

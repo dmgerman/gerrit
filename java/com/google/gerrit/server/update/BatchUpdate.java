@@ -1072,97 +1072,6 @@ return|return
 name|o
 return|;
 block|}
-DECL|method|getUpdateChangesInParallel (Collection<? extends BatchUpdate> updates)
-specifier|static
-name|boolean
-name|getUpdateChangesInParallel
-parameter_list|(
-name|Collection
-argument_list|<
-name|?
-extends|extends
-name|BatchUpdate
-argument_list|>
-name|updates
-parameter_list|)
-block|{
-name|checkArgument
-argument_list|(
-operator|!
-name|updates
-operator|.
-name|isEmpty
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|Boolean
-name|p
-init|=
-literal|null
-decl_stmt|;
-for|for
-control|(
-name|BatchUpdate
-name|u
-range|:
-name|updates
-control|)
-block|{
-if|if
-condition|(
-name|p
-operator|==
-literal|null
-condition|)
-block|{
-name|p
-operator|=
-name|u
-operator|.
-name|updateChangesInParallel
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|u
-operator|.
-name|updateChangesInParallel
-operator|!=
-name|p
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"cannot mix parallel and non-parallel operations"
-argument_list|)
-throw|;
-block|}
-block|}
-comment|// Properly implementing this would involve hoisting the parallel loop up
-comment|// even further. As of this writing, the only user is ReceiveCommits,
-comment|// which only executes a single BatchUpdate at a time. So bail for now.
-name|checkArgument
-argument_list|(
-operator|!
-name|p
-operator|||
-name|updates
-operator|.
-name|size
-argument_list|()
-operator|<=
-literal|1
-argument_list|,
-literal|"cannot execute ChangeOps in parallel with more than 1 BatchUpdate"
-argument_list|)
-expr_stmt|;
-return|return
-name|p
-return|;
-block|}
 DECL|method|wrapAndThrowException (Exception e)
 specifier|static
 name|void
@@ -1383,11 +1292,6 @@ DECL|field|refLogMessage
 specifier|protected
 name|String
 name|refLogMessage
-decl_stmt|;
-DECL|field|updateChangesInParallel
-specifier|private
-name|boolean
-name|updateChangesInParallel
 decl_stmt|;
 DECL|method|BatchUpdate ( GitRepositoryManager repoManager, PersonIdent serverIdent, Project.NameKey project, CurrentUser user, Timestamp when)
 specifier|protected
@@ -1628,23 +1532,6 @@ operator|.
 name|onSubmitValidators
 operator|=
 name|onSubmitValidators
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
-comment|/**    * Execute {@link BatchUpdateOp#updateChange(ChangeContext)} in parallel for each change.    *    *<p>This improves performance of writing to multiple changes in separate ReviewDb transactions.    * When only NoteDb is used, updates to all changes are written in a single batch ref update, so    * parallelization is not used and this option is ignored.    */
-DECL|method|updateChangesInParallel ()
-specifier|public
-name|BatchUpdate
-name|updateChangesInParallel
-parameter_list|()
-block|{
-name|this
-operator|.
-name|updateChangesInParallel
-operator|=
-literal|true
 expr_stmt|;
 return|return
 name|this
