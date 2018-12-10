@@ -166,24 +166,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDbCodecs
-operator|.
-name|MESSAGE_CODEC
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -561,6 +543,22 @@ operator|.
 name|client
 operator|.
 name|RevId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|converter
+operator|.
+name|ChangeMessageProtoConverter
 import|;
 end_import
 
@@ -3105,13 +3103,13 @@ name|b
 operator|.
 name|addChangeMessage
 argument_list|(
-name|Protos
-operator|.
 name|toByteString
 argument_list|(
 name|m
 argument_list|,
-name|MESSAGE_CODEC
+name|ChangeMessageProtoConverter
+operator|.
+name|INSTANCE
 argument_list|)
 argument_list|)
 argument_list|)
@@ -4079,9 +4077,16 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|MESSAGE_CODEC
-operator|::
-name|decode
+name|bytes
+lambda|->
+name|parseProtoFrom
+argument_list|(
+name|ChangeMessageProtoConverter
+operator|.
+name|INSTANCE
+argument_list|,
+name|bytes
+argument_list|)
 argument_list|)
 operator|.
 name|collect
