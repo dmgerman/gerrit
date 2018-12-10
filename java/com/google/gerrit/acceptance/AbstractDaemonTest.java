@@ -8420,37 +8420,6 @@ block|}
 block|}
 annotation|@
 name|Nullable
-DECL|method|getRemoteHead (String project, String branch)
-specifier|protected
-name|RevCommit
-name|getRemoteHead
-parameter_list|(
-name|String
-name|project
-parameter_list|,
-name|String
-name|branch
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-return|return
-name|getRemoteHead
-argument_list|(
-operator|new
-name|Project
-operator|.
-name|NameKey
-argument_list|(
-name|project
-argument_list|)
-argument_list|,
-name|branch
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Nullable
 DECL|method|getRemoteHead ()
 specifier|protected
 name|RevCommit

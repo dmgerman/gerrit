@@ -5123,9 +5123,6 @@ argument_list|(
 name|getRemoteHead
 argument_list|(
 name|subKey1
-operator|.
-name|get
-argument_list|()
 argument_list|,
 literal|"master"
 argument_list|)
@@ -5185,9 +5182,6 @@ argument_list|(
 name|getRemoteHead
 argument_list|(
 name|subKey2
-operator|.
-name|get
-argument_list|()
 argument_list|,
 literal|"master"
 argument_list|)
