@@ -879,7 +879,7 @@ name|overwriteDefaultRetryerStrategySetup
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, NotesMigration migration, ReviewDbBatchUpdate.AssistedFactory reviewDbBatchUpdateFactory, NoteDbBatchUpdate.AssistedFactory noteDbBatchUpdateFactory)
+DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, NotesMigration migration, NoteDbBatchUpdate.AssistedFactory noteDbBatchUpdateFactory)
 name|RetryHelper
 parameter_list|(
 annotation|@
@@ -892,11 +892,6 @@ name|metrics
 parameter_list|,
 name|NotesMigration
 name|migration
-parameter_list|,
-name|ReviewDbBatchUpdate
-operator|.
-name|AssistedFactory
-name|reviewDbBatchUpdateFactory
 parameter_list|,
 name|NoteDbBatchUpdate
 operator|.
@@ -912,8 +907,6 @@ name|metrics
 argument_list|,
 name|migration
 argument_list|,
-name|reviewDbBatchUpdateFactory
-argument_list|,
 name|noteDbBatchUpdateFactory
 argument_list|,
 literal|null
@@ -922,7 +915,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, NotesMigration migration, ReviewDbBatchUpdate.AssistedFactory reviewDbBatchUpdateFactory, NoteDbBatchUpdate.AssistedFactory noteDbBatchUpdateFactory, @Nullable Consumer<RetryerBuilder<?>> overwriteDefaultRetryerStrategySetup)
+DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, NotesMigration migration, NoteDbBatchUpdate.AssistedFactory noteDbBatchUpdateFactory, @Nullable Consumer<RetryerBuilder<?>> overwriteDefaultRetryerStrategySetup)
 specifier|public
 name|RetryHelper
 parameter_list|(
@@ -936,11 +929,6 @@ name|metrics
 parameter_list|,
 name|NotesMigration
 name|migration
-parameter_list|,
-name|ReviewDbBatchUpdate
-operator|.
-name|AssistedFactory
-name|reviewDbBatchUpdateFactory
 parameter_list|,
 name|NoteDbBatchUpdate
 operator|.
@@ -980,10 +968,6 @@ name|BatchUpdate
 operator|.
 name|Factory
 argument_list|(
-name|migration
-argument_list|,
-name|reviewDbBatchUpdateFactory
-argument_list|,
 name|noteDbBatchUpdateFactory
 argument_list|)
 expr_stmt|;
