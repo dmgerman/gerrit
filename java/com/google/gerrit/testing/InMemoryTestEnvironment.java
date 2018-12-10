@@ -410,14 +410,6 @@ specifier|private
 name|ThreadLocalRequestContext
 name|requestContext
 decl_stmt|;
-comment|// Only for use in setting up/tearing down injector.
-DECL|field|inMemoryDatabase
-annotation|@
-name|Inject
-specifier|private
-name|InMemoryDatabase
-name|inMemoryDatabase
-decl_stmt|;
 DECL|field|db
 specifier|private
 name|ReviewDb
