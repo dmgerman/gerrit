@@ -784,33 +784,11 @@ name|Exception
 block|{
 name|ReviewerState
 name|state
-decl_stmt|;
-comment|// Assignee is added as CC, if back-end is reviewDb (that does not support
-comment|// CC) CC is stored as REVIEWER
-if|if
-condition|(
-name|notesMigration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
-name|state
-operator|=
+init|=
 name|ReviewerState
 operator|.
 name|CC
-expr_stmt|;
-block|}
-else|else
-block|{
-name|state
-operator|=
-name|ReviewerState
-operator|.
-name|REVIEWER
-expr_stmt|;
-block|}
+decl_stmt|;
 name|PushOneCommit
 operator|.
 name|Result

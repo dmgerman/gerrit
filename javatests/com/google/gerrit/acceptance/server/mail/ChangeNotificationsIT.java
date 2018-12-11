@@ -6481,14 +6481,6 @@ operator|.
 name|watchingProjectOwner
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|notesMigration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
 name|subject
 operator|.
 name|cc
@@ -6498,20 +6490,6 @@ operator|.
 name|ccer
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-comment|// CCs are considered reviewers in the storage layer.
-name|subject
-operator|.
-name|to
-argument_list|(
-name|spc
-operator|.
-name|ccer
-argument_list|)
-expr_stmt|;
-block|}
 name|subject
 operator|.
 name|bcc
