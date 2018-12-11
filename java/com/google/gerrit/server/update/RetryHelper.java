@@ -442,22 +442,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -826,12 +810,6 @@ name|build
 argument_list|()
 return|;
 block|}
-DECL|field|migration
-specifier|private
-specifier|final
-name|NotesMigration
-name|migration
-decl_stmt|;
 DECL|field|metrics
 specifier|private
 specifier|final
@@ -879,7 +857,7 @@ name|overwriteDefaultRetryerStrategySetup
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, NotesMigration migration, NoteDbBatchUpdate.AssistedFactory noteDbBatchUpdateFactory)
+DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, NoteDbBatchUpdate.AssistedFactory noteDbBatchUpdateFactory)
 name|RetryHelper
 parameter_list|(
 annotation|@
@@ -889,9 +867,6 @@ name|cfg
 parameter_list|,
 name|Metrics
 name|metrics
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|NoteDbBatchUpdate
 operator|.
@@ -905,8 +880,6 @@ name|cfg
 argument_list|,
 name|metrics
 argument_list|,
-name|migration
-argument_list|,
 name|noteDbBatchUpdateFactory
 argument_list|,
 literal|null
@@ -915,7 +888,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, NotesMigration migration, NoteDbBatchUpdate.AssistedFactory noteDbBatchUpdateFactory, @Nullable Consumer<RetryerBuilder<?>> overwriteDefaultRetryerStrategySetup)
+DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, NoteDbBatchUpdate.AssistedFactory noteDbBatchUpdateFactory, @Nullable Consumer<RetryerBuilder<?>> overwriteDefaultRetryerStrategySetup)
 specifier|public
 name|RetryHelper
 parameter_list|(
@@ -926,9 +899,6 @@ name|cfg
 parameter_list|,
 name|Metrics
 name|metrics
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|NoteDbBatchUpdate
 operator|.
@@ -952,12 +922,6 @@ operator|.
 name|metrics
 operator|=
 name|metrics
-expr_stmt|;
-name|this
-operator|.
-name|migration
-operator|=
-name|migration
 expr_stmt|;
 name|this
 operator|.
@@ -1305,47 +1269,6 @@ name|UpdateException
 block|{
 try|try
 block|{
-if|if
-condition|(
-operator|!
-name|migration
-operator|.
-name|disableChangeReviewDb
-argument_list|()
-condition|)
-block|{
-comment|// Either we aren't full-NoteDb, or the underlying ref storage doesn't support atomic
-comment|// transactions. Either way, retrying a partially-failed operation is not idempotent, so
-comment|// don't do it automatically. Let the end user decide whether they want to retry.
-return|return
-name|executeWithTimeoutCount
-argument_list|(
-name|ActionType
-operator|.
-name|CHANGE_UPDATE
-argument_list|,
-parameter_list|()
-lambda|->
-name|changeAction
-operator|.
-name|call
-argument_list|(
-name|updateFactory
-argument_list|)
-argument_list|,
-name|RetryerBuilder
-operator|.
-expr|<
-name|T
-operator|>
-name|newBuilder
-argument_list|()
-operator|.
-name|build
-argument_list|()
-argument_list|)
-return|;
-block|}
 return|return
 name|execute
 argument_list|(
