@@ -9015,8 +9015,6 @@ name|approvalsUtil
 operator|.
 name|getSubmitter
 argument_list|(
-name|db
-argument_list|,
 name|cn
 argument_list|,
 operator|new
@@ -9121,8 +9119,6 @@ name|approvalsUtil
 operator|.
 name|getSubmitter
 argument_list|(
-name|db
-argument_list|,
 name|cn
 argument_list|,
 operator|new

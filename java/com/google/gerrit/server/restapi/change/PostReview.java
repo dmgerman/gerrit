@@ -3103,11 +3103,6 @@ name|approvalsUtil
 operator|.
 name|getReviewers
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|revision
 operator|.
 name|getChangeResource

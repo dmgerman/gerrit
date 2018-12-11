@@ -2575,8 +2575,6 @@ name|approvalsUtil
 operator|.
 name|getSubmitter
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|patchSetId

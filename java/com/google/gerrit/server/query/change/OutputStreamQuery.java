@@ -1513,8 +1513,6 @@ name|eventFactory
 operator|.
 name|addAllReviewers
 argument_list|(
-name|db
-argument_list|,
 name|c
 argument_list|,
 name|d

@@ -2855,8 +2855,6 @@ name|approvalsUtil
 operator|.
 name|getSubmitter
 argument_list|(
-name|db
-argument_list|,
 name|cd
 operator|.
 name|notes

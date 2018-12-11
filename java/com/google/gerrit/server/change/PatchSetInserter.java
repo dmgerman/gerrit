@@ -1673,8 +1673,6 @@ name|approvalsUtil
 operator|.
 name|getReviewers
 argument_list|(
-name|db
-argument_list|,
 name|ctx
 operator|.
 name|getNotes

@@ -1716,14 +1716,11 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**    * Add allReviewers to an existing ChangeAttribute.    *    * @param a    * @param notes    */
-DECL|method|addAllReviewers (ReviewDb db, ChangeAttribute a, ChangeNotes notes)
+DECL|method|addAllReviewers (ChangeAttribute a, ChangeNotes notes)
 specifier|public
 name|void
 name|addAllReviewers
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeAttribute
 name|a
 parameter_list|,
@@ -1745,8 +1742,6 @@ name|approvalsUtil
 operator|.
 name|getReviewers
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
