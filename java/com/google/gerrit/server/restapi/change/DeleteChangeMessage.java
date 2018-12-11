@@ -928,11 +928,6 @@ name|changeMessagesUtil
 operator|.
 name|byChange
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|notesFactory
 operator|.
 name|createChecked
@@ -1111,8 +1106,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|PatchSet
 operator|.
@@ -1131,11 +1124,6 @@ name|changeMessagesUtil
 operator|.
 name|replaceChangeMessage
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|ctx
 operator|.
 name|getUpdate

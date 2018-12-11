@@ -1822,8 +1822,6 @@ name|cmUtil
 operator|.
 name|addChangeMessage
 argument_list|(
-name|db
-argument_list|,
 name|update
 argument_list|,
 name|changeMessage

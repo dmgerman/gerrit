@@ -1204,8 +1204,6 @@ name|cmUtil
 operator|.
 name|byChange
 argument_list|(
-name|db
-argument_list|,
 name|cd
 operator|.
 name|notes
@@ -4210,8 +4208,6 @@ name|cmUtil
 operator|.
 name|byChange
 argument_list|(
-name|db
-argument_list|,
 name|cd
 operator|.
 name|notes

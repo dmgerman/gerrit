@@ -9515,8 +9515,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|String
 name|msg
@@ -9700,11 +9698,6 @@ name|cmUtil
 operator|.
 name|addChangeMessage
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|ctx
 operator|.
 name|getUpdate
