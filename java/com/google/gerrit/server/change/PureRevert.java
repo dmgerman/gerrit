@@ -606,11 +606,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -664,11 +659,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|notesFactory
 operator|.
 name|createChecked

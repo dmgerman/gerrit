@@ -2195,13 +2195,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|rebase
-operator|.
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rsrc
 operator|.
 name|getNotes

@@ -1099,11 +1099,6 @@ name|patchSetUtil
 operator|.
 name|byChange
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|notes
 argument_list|)
 operator|.

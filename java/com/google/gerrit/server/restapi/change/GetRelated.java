@@ -262,22 +262,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CommonConverters
@@ -539,15 +523,6 @@ argument_list|<
 name|RevisionResource
 argument_list|>
 block|{
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|queryProvider
 specifier|private
 specifier|final
@@ -577,15 +552,9 @@ name|indexConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetRelated ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil, RelatedChangesSorter sorter, IndexConfig indexConfig)
+DECL|method|GetRelated ( Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil, RelatedChangesSorter sorter, IndexConfig indexConfig)
 name|GetRelated
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|,
 name|Provider
 argument_list|<
 name|InternalChangeQuery
@@ -602,12 +571,6 @@ name|IndexConfig
 name|indexConfig
 parameter_list|)
 block|{
-name|this
-operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
 name|this
 operator|.
 name|queryProvider
@@ -703,11 +666,6 @@ argument_list|(
 name|rsrc
 operator|.
 name|getNotes
-argument_list|()
-argument_list|,
-name|db
-operator|.
-name|get
 argument_list|()
 argument_list|,
 name|psUtil
@@ -1028,7 +986,7 @@ return|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|getAllGroups (ChangeNotes notes, ReviewDb db, PatchSetUtil psUtil)
+DECL|method|getAllGroups (ChangeNotes notes, PatchSetUtil psUtil)
 specifier|public
 specifier|static
 name|Set
@@ -1039,9 +997,6 @@ name|getAllGroups
 parameter_list|(
 name|ChangeNotes
 name|notes
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|PatchSetUtil
 name|psUtil
@@ -1054,8 +1009,6 @@ name|psUtil
 operator|.
 name|byChange
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.

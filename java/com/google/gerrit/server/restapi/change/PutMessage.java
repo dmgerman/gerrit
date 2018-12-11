@@ -990,11 +990,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|resource
 operator|.
 name|getNotes

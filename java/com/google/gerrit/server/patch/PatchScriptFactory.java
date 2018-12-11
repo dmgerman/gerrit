@@ -1380,8 +1380,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|psa
@@ -1409,8 +1407,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|psb
@@ -2160,8 +2156,6 @@ name|psUtil
 operator|.
 name|byChange
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 control|)

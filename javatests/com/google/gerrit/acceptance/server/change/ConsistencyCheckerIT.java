@@ -1305,8 +1305,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -1375,8 +1373,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -1487,8 +1483,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -1590,8 +1584,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|ps1
@@ -1610,8 +1602,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|ps2
@@ -1648,8 +1638,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -1685,8 +1673,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -1812,8 +1798,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|ps1
@@ -1832,8 +1816,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|ps2
@@ -1852,8 +1834,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|ps3
@@ -1872,8 +1852,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|ps4
@@ -2109,8 +2087,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 argument_list|)
@@ -2142,8 +2118,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -2404,8 +2378,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -2472,8 +2444,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -2563,8 +2533,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -2694,8 +2662,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -2838,8 +2804,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -2980,8 +2944,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -3131,8 +3093,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -3330,8 +3290,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|psId2
@@ -3397,8 +3355,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -3626,8 +3582,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|psId2
@@ -3679,8 +3633,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -3709,8 +3661,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -3876,8 +3826,6 @@ name|psUtil
 operator|.
 name|byChangeAsMap
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -3901,8 +3849,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|psId3
@@ -3944,8 +3890,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -4013,8 +3957,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -4196,8 +4138,6 @@ name|psUtil
 operator|.
 name|byChangeAsMap
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -4226,8 +4166,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|psId4
@@ -4269,8 +4207,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -4453,8 +4389,6 @@ name|psUtil
 operator|.
 name|byChangeAsMap
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -4478,8 +4412,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|psId2
@@ -4556,8 +4488,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.
@@ -4751,8 +4681,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes1
 argument_list|)
 operator|.
@@ -4780,8 +4708,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes1
 argument_list|)
 operator|.
@@ -4845,8 +4771,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes2
 argument_list|)
 operator|.
@@ -4877,8 +4801,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes3
 argument_list|)
 operator|.
@@ -5738,8 +5660,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 operator|.

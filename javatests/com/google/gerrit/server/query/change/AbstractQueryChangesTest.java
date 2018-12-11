@@ -17824,8 +17824,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|change

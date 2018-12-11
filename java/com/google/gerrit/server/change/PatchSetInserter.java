@@ -1603,8 +1603,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|ctx
 operator|.
 name|getNotes
@@ -1633,8 +1631,6 @@ name|psUtil
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ctx
 operator|.
 name|getRevWalk

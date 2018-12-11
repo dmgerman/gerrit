@@ -697,14 +697,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|ReviewDb
-name|db
-init|=
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 comment|// Try parsing the base as a ref string.
 name|PatchSet
 operator|.
@@ -773,8 +765,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|baseNotes
 argument_list|,
 name|basePatchSetId
@@ -835,8 +825,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-argument_list|,
 name|baseNotes
 argument_list|)
 argument_list|)

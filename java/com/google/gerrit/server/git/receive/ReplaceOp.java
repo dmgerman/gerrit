@@ -2172,11 +2172,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -2508,11 +2503,6 @@ name|psUtil
 operator|.
 name|insert
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|ctx
 operator|.
 name|getRevWalk

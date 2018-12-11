@@ -4639,8 +4639,6 @@ name|psUtil
 operator|.
 name|byChange
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|()
 argument_list|)

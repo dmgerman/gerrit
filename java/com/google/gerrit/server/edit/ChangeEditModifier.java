@@ -2495,11 +2495,6 @@ name|patchSetUtil
 operator|.
 name|current
 argument_list|(
-name|reviewDb
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|notes
 argument_list|)
 return|;

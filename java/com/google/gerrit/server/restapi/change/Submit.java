@@ -3326,11 +3326,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|change
 operator|.
 name|notes
@@ -3554,15 +3549,6 @@ argument_list|,
 name|SubmitInput
 argument_list|>
 block|{
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|submit
 specifier|private
 specifier|final
@@ -3585,15 +3571,9 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CurrentRevision ( Provider<ReviewDb> dbProvider, Submit submit, ChangeJson.Factory json, PatchSetUtil psUtil)
+DECL|method|CurrentRevision (Submit submit, ChangeJson.Factory json, PatchSetUtil psUtil)
 name|CurrentRevision
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-parameter_list|,
 name|Submit
 name|submit
 parameter_list|,
@@ -3606,12 +3586,6 @@ name|PatchSetUtil
 name|psUtil
 parameter_list|)
 block|{
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
-expr_stmt|;
 name|this
 operator|.
 name|submit
@@ -3666,11 +3640,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rsrc
 operator|.
 name|getNotes

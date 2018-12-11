@@ -1720,11 +1720,6 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|notes
 argument_list|)
 expr_stmt|;
@@ -1884,11 +1879,6 @@ name|psUtil
 operator|.
 name|byChange
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|notes
 argument_list|)
 argument_list|)
@@ -4550,11 +4540,6 @@ name|byChange
 argument_list|(
 name|ctx
 operator|.
-name|getDb
-argument_list|()
-argument_list|,
-name|ctx
-operator|.
 name|getNotes
 argument_list|()
 argument_list|)
@@ -4626,11 +4611,6 @@ name|patchSetInfoFactory
 operator|.
 name|get
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|ctx
 operator|.
 name|getNotes

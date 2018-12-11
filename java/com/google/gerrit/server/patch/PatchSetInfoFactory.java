@@ -170,22 +170,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|PatchSetUtil
@@ -574,14 +558,11 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|get (ReviewDb db, ChangeNotes notes, PatchSet.Id psId)
+DECL|method|get (ChangeNotes notes, PatchSet.Id psId)
 specifier|public
 name|PatchSetInfo
 name|get
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -602,8 +583,6 @@ name|psUtil
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|psId
