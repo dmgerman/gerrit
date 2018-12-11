@@ -9695,49 +9695,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|pushForMasterWithHashtagsNoteDbDisabled ()
-specifier|public
-name|void
-name|pushForMasterWithHashtagsNoteDbDisabled
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// Push with hashtags should fail when reading from NoteDb is disabled.
-name|assume
-argument_list|()
-operator|.
-name|that
-argument_list|(
-name|notesMigration
-operator|.
-name|readChanges
-argument_list|()
-argument_list|)
-operator|.
-name|isFalse
-argument_list|()
-expr_stmt|;
-name|PushOneCommit
-operator|.
-name|Result
-name|r
-init|=
-name|pushTo
-argument_list|(
-literal|"refs/for/master%hashtag=tag1"
-argument_list|)
-decl_stmt|;
-name|r
-operator|.
-name|assertErrorStatus
-argument_list|(
-literal|"cannot add hashtags; noteDb is disabled"
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|pushCommitUsingSignedOffBy ()
 specifier|public
 name|void
