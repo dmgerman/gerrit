@@ -136,22 +136,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|TruthJUnit
-operator|.
-name|assume
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|acceptance
@@ -9213,21 +9197,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Hashtags only work when reading from NoteDB is enabled
-name|assume
-argument_list|()
-operator|.
-name|that
-argument_list|(
-name|notesMigration
-operator|.
-name|readChanges
-argument_list|()
-argument_list|)
-operator|.
-name|isTrue
-argument_list|()
-expr_stmt|;
 comment|// specify a single hashtag as option
 name|String
 name|hashtag1
@@ -9411,21 +9380,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Hashtags only work when reading from NoteDB is enabled
-name|assume
-argument_list|()
-operator|.
-name|that
-argument_list|(
-name|notesMigration
-operator|.
-name|readChanges
-argument_list|()
-argument_list|)
-operator|.
-name|isTrue
-argument_list|()
-expr_stmt|;
 comment|// specify multiple hashtags as options
 name|String
 name|hashtag1
