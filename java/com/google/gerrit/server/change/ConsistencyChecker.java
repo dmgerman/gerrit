@@ -3363,7 +3363,7 @@ name|currProblems
 operator|.
 name|add
 argument_list|(
-name|insertPatchSetProblem
+name|deleteOldPatchSetProblem
 argument_list|)
 expr_stmt|;
 block|}
