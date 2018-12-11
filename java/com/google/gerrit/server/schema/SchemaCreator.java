@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2018 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -72,52 +72,61 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gwtorm
 operator|.
-name|Inject
+name|server
+operator|.
+name|OrmException
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|io
 operator|.
-name|inject
-operator|.
-name|Provider
+name|IOException
 import|;
 end_import
 
-begin_class
-DECL|class|Schema_99
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_comment
+comment|/** Populates initial repository data. */
+end_comment
+
+begin_interface
+DECL|interface|SchemaCreator
 specifier|public
-class|class
-name|Schema_99
-extends|extends
-name|ReviewDbSchemaVersion
+interface|interface
+name|SchemaCreator
 block|{
-annotation|@
-name|Inject
-DECL|method|Schema_99 (Provider<Schema_98> prior)
-name|Schema_99
-parameter_list|(
-name|Provider
-argument_list|<
-name|Schema_98
-argument_list|>
-name|prior
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|prior
-argument_list|)
-expr_stmt|;
+DECL|method|create ()
+name|void
+name|create
+parameter_list|()
+throws|throws
+name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

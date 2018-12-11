@@ -115,24 +115,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|group
-operator|.
-name|SystemGroupBackend
-operator|.
-name|REGISTERED_USERS
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -241,22 +223,6 @@ operator|.
 name|acceptance
 operator|.
 name|UseSsh
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|GlobalCapability
 import|;
 end_import
 
@@ -393,8 +359,6 @@ argument_list|,
 literal|"create-group"
 argument_list|,
 literal|"create-project"
-argument_list|,
-literal|"gsql"
 argument_list|,
 literal|"index"
 argument_list|,
@@ -641,16 +605,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Access Database capability is required to run the "gerrit gsql" command
-name|allowGlobalCapabilities
-argument_list|(
-name|REGISTERED_USERS
-argument_list|,
-name|GlobalCapability
-operator|.
-name|ACCESS_DATABASE
-argument_list|)
-expr_stmt|;
 name|testCommandExecution
 argument_list|(
 name|MASTER_COMMANDS

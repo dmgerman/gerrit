@@ -145,6 +145,7 @@ return|return
 name|hostname
 return|;
 block|}
+comment|// TODO(dborowitz): Still used by plugins post-ReviewDb?
 annotation|@
 name|UsedAt
 argument_list|(

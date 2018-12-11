@@ -366,18 +366,10 @@ operator|.
 name|firstKey
 argument_list|()
 argument_list|)
-comment|// TODO(dborowitz): Replace with hard-coded max number once ReviewDb code is deleted.
 operator|.
 name|isGreaterThan
 argument_list|(
-name|ReviewDbSchemaVersion
-operator|.
-name|guessVersion
-argument_list|(
-name|ReviewDbSchemaVersion
-operator|.
-name|C
-argument_list|)
+literal|170
 argument_list|)
 expr_stmt|;
 block|}

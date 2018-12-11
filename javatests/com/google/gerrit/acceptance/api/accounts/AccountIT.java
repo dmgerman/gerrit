@@ -1824,24 +1824,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
-operator|.
-name|rebuild
-operator|.
-name|ChangeRebuilderImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|ProjectConfig
@@ -4453,9 +4435,12 @@ argument_list|)
 operator|.
 name|isAtMost
 argument_list|(
-name|ChangeRebuilderImpl
+name|SECONDS
 operator|.
-name|MAX_WINDOW_MS
+name|toMillis
+argument_list|(
+literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Check the 'account.config' file.
@@ -16544,8 +16529,6 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
-literal|null
-argument_list|,
 name|r
 lambda|->
 name|r
@@ -16877,8 +16860,6 @@ argument_list|(
 name|cfg
 argument_list|,
 name|retryMetrics
-argument_list|,
-literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -17263,8 +17244,6 @@ argument_list|(
 name|cfg
 argument_list|,
 name|retryMetrics
-argument_list|,
-literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -17715,8 +17694,6 @@ argument_list|(
 name|cfg
 argument_list|,
 name|retryMetrics
-argument_list|,
-literal|null
 argument_list|,
 literal|null
 argument_list|,

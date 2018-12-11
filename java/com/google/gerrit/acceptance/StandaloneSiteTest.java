@@ -1292,8 +1292,6 @@ name|testSysModule
 argument_list|,
 literal|null
 argument_list|,
-literal|null
-argument_list|,
 name|additionalArgs
 argument_list|)
 return|;

@@ -82,26 +82,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
-name|DataSourceProvider
-operator|.
-name|Context
-operator|.
-name|SINGLE_USER
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -536,6 +516,10 @@ begin_comment
 comment|/**  * Import data from a protocol buffer dump into the database.  *  *<p>Takes as input a file containing protocol buffers concatenated together with varint length  * encoding, as in {@link Parser#parseDelimitedFrom(InputStream)}. Each message contains a single  * field with a tag corresponding to the relation ID in the {@link  * com.google.gwtorm.server.Relation} annotation.  *  *<p><strong>Warning</strong>: This method blindly upserts data into the database. It should only  * be used to restore a protobuf-formatted backup into a new, empty site.  */
 end_comment
 
+begin_comment
+comment|// TODO(dborowitz): Delete this program.
+end_comment
+
 begin_class
 DECL|class|ProtobufImport
 specifier|public
@@ -627,9 +611,7 @@ name|Injector
 name|dbInjector
 init|=
 name|createDbInjector
-argument_list|(
-name|SINGLE_USER
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|manager
 operator|.

@@ -3407,9 +3407,7 @@ name|install
 argument_list|(
 operator|new
 name|NoteDbModule
-argument_list|(
-name|cfg
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|install

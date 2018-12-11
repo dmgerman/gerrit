@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -359,7 +373,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Set the in-memory values returned by this instance to match the given state.    *    *<p>This method is only intended for use by {@link    * com.google.gerrit.server.notedb.rebuild.NoteDbMigrator}.    *    *<p>This<em>only</em> modifies the in-memory state; if this instance was initialized from a    * file-based config, the underlying storage is not updated. Callers are responsible for managing    * the underlying storage on their own.    */
+comment|/**    * Set the in-memory values returned by this instance to match the given state.    *    *<p>This method is only intended for use by tests.    *    *<p>This<em>only</em> modifies the in-memory state; if this instance was initialized from a    * file-based config, the underlying storage is not updated. Callers are responsible for managing    * the underlying storage on their own.    */
+annotation|@
+name|VisibleForTesting
 DECL|method|setFrom (NotesMigrationState state)
 specifier|public
 name|MutableNotesMigration
@@ -376,32 +392,6 @@ argument_list|(
 name|state
 operator|.
 name|snapshot
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
-comment|/** @see #setFrom(NotesMigrationState) */
-DECL|method|setFrom (NotesMigration other)
-specifier|public
-name|MutableNotesMigration
-name|setFrom
-parameter_list|(
-name|NotesMigration
-name|other
-parameter_list|)
-block|{
-name|snapshot
-operator|.
-name|set
-argument_list|(
-name|other
-operator|.
-name|snapshot
-operator|.
-name|get
 argument_list|()
 argument_list|)
 expr_stmt|;

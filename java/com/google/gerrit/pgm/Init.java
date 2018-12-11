@@ -711,8 +711,6 @@ name|sitePath
 argument_list|,
 literal|true
 argument_list|,
-literal|true
-argument_list|,
 operator|new
 name|WarDistribution
 argument_list|()

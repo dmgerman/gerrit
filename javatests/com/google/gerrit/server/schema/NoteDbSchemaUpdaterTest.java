@@ -864,8 +864,6 @@ name|Integer
 argument_list|>
 name|initialVersion
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|cfg
 operator|=
@@ -895,6 +893,12 @@ operator|new
 name|InMemoryRepositoryManager
 argument_list|()
 expr_stmt|;
+name|SchemaCreator
+name|schemaCreator
+init|=
+parameter_list|()
+lambda|->
+block|{
 try|try
 init|(
 name|Repository
@@ -953,6 +957,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 name|repoManager
 operator|.
 name|createRepository
@@ -966,6 +984,8 @@ expr_stmt|;
 name|setUp
 argument_list|()
 expr_stmt|;
+block|}
+decl_stmt|;
 name|args
 operator|=
 operator|new
@@ -1013,9 +1033,13 @@ name|NoteDbSchemaUpdater
 argument_list|(
 name|cfg
 argument_list|,
+name|allProjectsName
+argument_list|,
 name|allUsersName
 argument_list|,
 name|repoManager
+argument_list|,
+name|schemaCreator
 argument_list|,
 name|notesMigration
 argument_list|,
@@ -1114,7 +1138,7 @@ name|void
 name|seedGroupSequenceRef
 parameter_list|()
 throws|throws
-name|Exception
+name|OrmException
 block|{
 operator|new
 name|RepoSequence
@@ -1142,13 +1166,14 @@ name|next
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Test-specific setup.      *      * @throws OrmException if an error occurs.      */
 DECL|method|setUp ()
 specifier|protected
 name|void
 name|setUp
 parameter_list|()
 throws|throws
-name|Exception
+name|OrmException
 block|{}
 DECL|method|update ()
 name|ImmutableList
@@ -1369,7 +1394,7 @@ name|void
 name|setUp
 parameter_list|()
 throws|throws
-name|Exception
+name|OrmException
 block|{
 name|setNotesMigrationConfig
 argument_list|()
@@ -1445,7 +1470,7 @@ name|void
 name|setUp
 parameter_list|()
 throws|throws
-name|Exception
+name|OrmException
 block|{
 name|seedGroupSequenceRef
 argument_list|()
@@ -1540,8 +1565,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|setNotesMigrationConfig
 argument_list|()

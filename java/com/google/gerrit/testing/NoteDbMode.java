@@ -186,15 +186,6 @@ name|NotesMigrationState
 operator|.
 name|NOTE_DB
 argument_list|)
-operator|,
-comment|/**    * Run tests with NoteDb disabled, then convert ReviewDb to NoteDb and check that the results    * match.    */
-DECL|enumConstant|CHECK
-name|CHECK
-argument_list|(
-name|NotesMigrationState
-operator|.
-name|REVIEW_DB
-argument_list|)
 enum|;
 end_enum
 

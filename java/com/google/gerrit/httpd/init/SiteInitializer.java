@@ -309,8 +309,6 @@ name|site
 argument_list|,
 literal|false
 argument_list|,
-literal|true
-argument_list|,
 name|pluginsDistribution
 argument_list|,
 name|pluginsToInstall
@@ -407,12 +405,6 @@ operator|new
 name|BaseInit
 argument_list|(
 name|site
-argument_list|,
-operator|new
-name|ReviewDbDataSourceProvider
-argument_list|()
-argument_list|,
-literal|false
 argument_list|,
 literal|false
 argument_list|,

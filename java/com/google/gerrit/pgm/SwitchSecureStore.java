@@ -65,26 +65,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
-name|DataSourceProvider
-operator|.
-name|Context
-operator|.
-name|SINGLE_USER
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -669,9 +649,7 @@ name|Injector
 name|dbInjector
 init|=
 name|createDbInjector
-argument_list|(
-name|SINGLE_USER
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|SecureStore
 name|currentStore

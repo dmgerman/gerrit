@@ -708,15 +708,6 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  gsql            Run the interactive query console"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
 literal|"  version         Display the build version number"
 argument_list|)
 expr_stmt|;

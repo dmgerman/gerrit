@@ -254,6 +254,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|group
+operator|.
+name|GroupIndexCollection
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -265,6 +283,10 @@ operator|.
 name|PersonIdent
 import|;
 end_import
+
+begin_comment
+comment|// TODO(dborowitz): Rename, since this no longer has anything to do with ReviewDb.
+end_comment
 
 begin_comment
 comment|/** Validate the schema and connect to Git. */
@@ -390,6 +412,30 @@ operator|.
 name|in
 argument_list|(
 name|SINGLETON
+argument_list|)
+expr_stmt|;
+comment|// It feels wrong to have this binding in a seemingly unrelated module, but it's a dependency of
+comment|// SchemaCreatorImpl, so it's needed.
+comment|// TODO(dborowitz): Is there any way to untangle this?
+name|bind
+argument_list|(
+name|GroupIndexCollection
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|SchemaCreator
+operator|.
+name|class
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|SchemaCreatorImpl
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 block|}

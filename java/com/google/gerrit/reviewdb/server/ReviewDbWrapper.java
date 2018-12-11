@@ -606,21 +606,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|schemaVersion ()
-specifier|public
-name|SchemaVersionAccess
-name|schemaVersion
-parameter_list|()
-block|{
-return|return
-name|delegate
-operator|.
-name|schemaVersion
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|changes ()
 specifier|public
 name|ChangeAccess

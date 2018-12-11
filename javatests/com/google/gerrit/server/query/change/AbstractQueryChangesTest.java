@@ -1602,7 +1602,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|ReviewDbSchemaCreator
+name|SchemaCreator
 import|;
 end_import
 
@@ -2341,7 +2341,7 @@ DECL|field|schemaCreator
 annotation|@
 name|Inject
 specifier|protected
-name|ReviewDbSchemaCreator
+name|SchemaCreator
 name|schemaCreator
 decl_stmt|;
 DECL|field|schemaFactory
@@ -2393,7 +2393,6 @@ operator|.
 name|GenericFactory
 name|identifiedUserFactory
 decl_stmt|;
-comment|// Only for use in setting up/tearing down injector; other users should use schemaFactory.
 DECL|field|inMemoryDatabase
 annotation|@
 name|Inject
@@ -2584,28 +2583,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-try|try
-init|(
-name|ReviewDb
-name|underlyingDb
-init|=
-name|inMemoryDatabase
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|open
-argument_list|()
-init|)
-block|{
 name|schemaCreator
 operator|.
 name|create
-argument_list|(
-name|underlyingDb
-argument_list|)
+argument_list|()
 expr_stmt|;
-block|}
 name|db
 operator|=
 name|schemaFactory
@@ -2799,13 +2781,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|InMemoryDatabase
-operator|.
-name|drop
-argument_list|(
-name|inMemoryDatabase
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Before

@@ -884,7 +884,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|ReviewDbSchemaCreator
+name|SchemaCreator
 import|;
 end_import
 
@@ -2142,7 +2142,7 @@ DECL|field|schemaCreator
 annotation|@
 name|Inject
 specifier|private
-name|ReviewDbSchemaCreator
+name|SchemaCreator
 name|schemaCreator
 decl_stmt|;
 DECL|field|singleVersionListener
@@ -2552,9 +2552,7 @@ block|{
 name|schemaCreator
 operator|.
 name|create
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 finally|finally
@@ -2742,13 +2740,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|InMemoryDatabase
-operator|.
-name|drop
-argument_list|(
-name|schemaFactory
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test

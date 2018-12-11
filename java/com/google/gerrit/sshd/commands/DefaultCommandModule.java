@@ -724,15 +724,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|command
-argument_list|(
-name|gerrit
-argument_list|,
-name|AdminQueryShell
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|slaveMode

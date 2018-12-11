@@ -1115,13 +1115,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|bind
-argument_list|(
-name|GroupIndexCollection
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+comment|// GroupIndexCollection is already bound very high up in ReviewDbSchemaModule.
 name|listener
 argument_list|()
 operator|.

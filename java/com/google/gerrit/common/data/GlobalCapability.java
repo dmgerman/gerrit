@@ -126,7 +126,7 @@ specifier|public
 class|class
 name|GlobalCapability
 block|{
-comment|/** Ability to access the database (with gsql). */
+comment|/** Ability to view code review metadata refs in repositories. */
 DECL|field|ACCESS_DATABASE
 specifier|public
 specifier|static

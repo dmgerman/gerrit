@@ -66,26 +66,6 @@ end_package
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
-name|DataSourceProvider
-operator|.
-name|Context
-operator|.
-name|MULTI_USER
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -267,22 +247,6 @@ operator|.
 name|util
 operator|.
 name|SiteProgram
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|pgm
-operator|.
-name|util
-operator|.
-name|ThreadLimiter
 import|;
 end_import
 
@@ -725,9 +689,7 @@ expr_stmt|;
 name|dbInjector
 operator|=
 name|createDbInjector
-argument_list|(
-name|MULTI_USER
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|cfgInjector
 operator|=
@@ -754,17 +716,6 @@ name|GerritServerConfig
 operator|.
 name|class
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|threads
-operator|=
-name|ThreadLimiter
-operator|.
-name|limitThreads
-argument_list|(
-name|dbInjector
-argument_list|,
-name|threads
 argument_list|)
 expr_stmt|;
 name|overrideConfig
