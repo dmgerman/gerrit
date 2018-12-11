@@ -4333,8 +4333,6 @@ name|commentsUtil
 operator|.
 name|draftByChange
 argument_list|(
-literal|null
-argument_list|,
 name|actual
 argument_list|)
 argument_list|,
@@ -4342,8 +4340,6 @@ name|commentsUtil
 operator|.
 name|draftByChange
 argument_list|(
-literal|null
-argument_list|,
 name|expected
 argument_list|)
 argument_list|)
@@ -4354,8 +4350,6 @@ name|commentsUtil
 operator|.
 name|publishedByChange
 argument_list|(
-literal|null
-argument_list|,
 name|actual
 argument_list|)
 argument_list|,
@@ -4363,8 +4357,6 @@ name|commentsUtil
 operator|.
 name|publishedByChange
 argument_list|(
-literal|null
-argument_list|,
 name|expected
 argument_list|)
 argument_list|)

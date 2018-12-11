@@ -188,22 +188,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CommentsUtil
@@ -348,15 +332,6 @@ specifier|final
 name|ListRevisionDrafts
 name|list
 decl_stmt|;
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|commentsUtil
 specifier|private
 specifier|final
@@ -365,7 +340,7 @@ name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DraftComments ( DynamicMap<RestView<DraftCommentResource>> views, Provider<CurrentUser> user, ListRevisionDrafts list, Provider<ReviewDb> dbProvider, CommentsUtil commentsUtil)
+DECL|method|DraftComments ( DynamicMap<RestView<DraftCommentResource>> views, Provider<CurrentUser> user, ListRevisionDrafts list, CommentsUtil commentsUtil)
 name|DraftComments
 parameter_list|(
 name|DynamicMap
@@ -385,12 +360,6 @@ name|user
 parameter_list|,
 name|ListRevisionDrafts
 name|list
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 name|CommentsUtil
 name|commentsUtil
@@ -413,12 +382,6 @@ operator|.
 name|list
 operator|=
 name|list
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -502,11 +465,6 @@ name|commentsUtil
 operator|.
 name|draftByPatchSetAuthor
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rev
 operator|.
 name|getPatchSet

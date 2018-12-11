@@ -430,11 +430,6 @@ name|commentsUtil
 operator|.
 name|publishedByChange
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|cd
 operator|.
 name|notes

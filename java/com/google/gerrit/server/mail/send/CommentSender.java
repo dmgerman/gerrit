@@ -2126,13 +2126,6 @@ name|commentsUtil
 operator|.
 name|getPublished
 argument_list|(
-name|args
-operator|.
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|changeData
 operator|.
 name|notes

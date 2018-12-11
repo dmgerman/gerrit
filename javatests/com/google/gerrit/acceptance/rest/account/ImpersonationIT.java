@@ -1939,8 +1939,6 @@ name|commentsUtil
 operator|.
 name|publishedByChange
 argument_list|(
-name|db
-argument_list|,
 name|cd
 operator|.
 name|notes

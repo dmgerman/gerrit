@@ -6824,11 +6824,6 @@ name|commentsUtil
 operator|.
 name|putComments
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|u
 argument_list|,
 name|Status
@@ -7392,11 +7387,6 @@ name|publishedByChange
 argument_list|(
 name|ctx
 operator|.
-name|getDb
-argument_list|()
-argument_list|,
-name|ctx
-operator|.
 name|getNotes
 argument_list|()
 argument_list|)
@@ -7500,11 +7490,6 @@ name|draftByChangeAuthor
 argument_list|(
 name|ctx
 operator|.
-name|getDb
-argument_list|()
-argument_list|,
-name|ctx
-operator|.
 name|getNotes
 argument_list|()
 argument_list|,
@@ -7579,11 +7564,6 @@ name|commentsUtil
 operator|.
 name|draftByPatchSetAuthor
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|psId
 argument_list|,
 name|user
