@@ -258,22 +258,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ApprovalsUtil
@@ -828,15 +812,6 @@ specifier|final
 name|ExecutorService
 name|executor
 decl_stmt|;
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|approvalsUtil
 specifier|private
 specifier|final
@@ -845,7 +820,7 @@ name|approvalsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerRecommender ( ChangeQueryBuilder changeQueryBuilder, PluginMapContext<ReviewerSuggestion> reviewerSuggestionPluginMap, Provider<InternalChangeQuery> queryProvider, @FanOutExecutor ExecutorService executor, Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, @GerritServerConfig Config config)
+DECL|method|ReviewerRecommender ( ChangeQueryBuilder changeQueryBuilder, PluginMapContext<ReviewerSuggestion> reviewerSuggestionPluginMap, Provider<InternalChangeQuery> queryProvider, @FanOutExecutor ExecutorService executor, ApprovalsUtil approvalsUtil, @GerritServerConfig Config config)
 name|ReviewerRecommender
 parameter_list|(
 name|ChangeQueryBuilder
@@ -867,12 +842,6 @@ annotation|@
 name|FanOutExecutor
 name|ExecutorService
 name|executor
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
@@ -912,12 +881,6 @@ operator|.
 name|executor
 operator|=
 name|executor
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -1492,11 +1455,6 @@ name|approvalsUtil
 operator|.
 name|getReviewers
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|changeNotes
 argument_list|)
 operator|.

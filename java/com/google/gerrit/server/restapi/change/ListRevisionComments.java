@@ -92,22 +92,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CommentsUtil
@@ -208,15 +192,9 @@ name|ListRevisionDrafts
 block|{
 annotation|@
 name|Inject
-DECL|method|ListRevisionComments ( Provider<ReviewDb> db, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
+DECL|method|ListRevisionComments (Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
 name|ListRevisionComments
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|,
 name|Provider
 argument_list|<
 name|CommentJson
@@ -229,8 +207,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|db
-argument_list|,
 name|commentJson
 argument_list|,
 name|commentsUtil
@@ -278,11 +254,6 @@ name|commentsUtil
 operator|.
 name|publishedByPatchSet
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|notes
 argument_list|,
 name|rsrc

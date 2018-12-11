@@ -2068,11 +2068,6 @@ name|approvalsUtil
 operator|.
 name|getReviewers
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;
@@ -2641,8 +2636,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|Change
 name|change
@@ -2687,11 +2680,6 @@ name|cmUtil
 operator|.
 name|addChangeMessage
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|ctx
 operator|.
 name|getUpdate

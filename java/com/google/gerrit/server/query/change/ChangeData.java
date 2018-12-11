@@ -4783,8 +4783,6 @@ name|approvalsUtil
 operator|.
 name|byChange
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|()
 argument_list|)
@@ -5217,8 +5215,6 @@ name|commentsUtil
 operator|.
 name|publishedByChange
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|()
 argument_list|)
@@ -5679,8 +5675,6 @@ name|cmUtil
 operator|.
 name|byChange
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|()
 argument_list|)
@@ -6495,8 +6489,6 @@ name|commentsUtil
 operator|.
 name|draftByChange
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|()
 argument_list|)

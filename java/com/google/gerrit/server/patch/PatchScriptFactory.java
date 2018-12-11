@@ -2538,11 +2538,7 @@ name|commentsUtil
 operator|.
 name|publishedByChangeFile
 argument_list|(
-name|db
-argument_list|,
 name|notes
-argument_list|,
-name|changeId
 argument_list|,
 name|file
 argument_list|)
@@ -2668,8 +2664,6 @@ name|commentsUtil
 operator|.
 name|draftByChangeFileAuthor
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|file

@@ -2237,11 +2237,6 @@ name|addChangeMessage
 argument_list|(
 name|ctx
 operator|.
-name|getDb
-argument_list|()
-argument_list|,
-name|ctx
-operator|.
 name|getUpdate
 argument_list|(
 name|psId
@@ -2307,11 +2302,6 @@ name|commentsUtil
 operator|.
 name|putComments
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|ctx
 operator|.
 name|getUpdate

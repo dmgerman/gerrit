@@ -1873,21 +1873,6 @@ name|RevCommit
 argument_list|>
 name|commitsBefore
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|notesMigration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
-name|commitsBefore
-operator|=
 name|getChangeMetaCommitsInReverseOrder
 argument_list|(
 operator|new
@@ -1898,8 +1883,7 @@ argument_list|(
 name|changeNum
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 name|String
 name|id
 init|=
@@ -2051,15 +2035,7 @@ argument_list|(
 name|changeNum
 argument_list|)
 expr_stmt|;
-comment|// Verifies states of commits if NoteDb is on.
-if|if
-condition|(
-name|notesMigration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
+comment|// Verifies states of commits.
 name|assertMetaCommitsAfterDeletion
 argument_list|(
 name|commitsBefore
@@ -2073,7 +2049,6 @@ argument_list|,
 name|reason
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|assertMessagesAfterDeletion ( List<ChangeMessageInfo> messagesBeforeDeletion, List<ChangeMessageInfo> messagesAfterDeletion, int deletedMessageIndex, TestAccount deletedBy, String deleteReason)
 specifier|private

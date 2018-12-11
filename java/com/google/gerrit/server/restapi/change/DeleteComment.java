@@ -851,11 +851,6 @@ name|commentsUtil
 operator|.
 name|publishedByChange
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|updatedNotes
 argument_list|)
 decl_stmt|;
@@ -1048,8 +1043,6 @@ parameter_list|)
 throws|throws
 name|ResourceConflictException
 throws|,
-name|OrmException
-throws|,
 name|ResourceNotFoundException
 block|{
 name|PatchSet
@@ -1071,11 +1064,6 @@ name|deleteCommentByRewritingHistory
 argument_list|(
 name|ctx
 operator|.
-name|getDb
-argument_list|()
-argument_list|,
-name|ctx
-operator|.
 name|getUpdate
 argument_list|(
 name|psId
@@ -1087,14 +1075,6 @@ name|getComment
 argument_list|()
 operator|.
 name|key
-argument_list|,
-name|rsrc
-operator|.
-name|getPatchSet
-argument_list|()
-operator|.
-name|getId
-argument_list|()
 argument_list|,
 name|newMessage
 argument_list|)

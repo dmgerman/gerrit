@@ -1080,11 +1080,6 @@ name|getReviewers
 argument_list|(
 name|ctx
 operator|.
-name|getDb
-argument_list|()
-argument_list|,
-name|ctx
-operator|.
 name|getNotes
 argument_list|()
 argument_list|)
@@ -1441,11 +1436,6 @@ name|cmUtil
 operator|.
 name|addChangeMessage
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|update
 argument_list|,
 name|changeMessage
@@ -1702,11 +1692,6 @@ name|approvalsUtil
 operator|.
 name|byChange
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|ctx
 operator|.
 name|getNotes

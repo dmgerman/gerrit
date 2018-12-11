@@ -451,11 +451,6 @@ name|commentsUtil
 operator|.
 name|draftByChangeAuthor
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|cd
 operator|.
 name|notes
