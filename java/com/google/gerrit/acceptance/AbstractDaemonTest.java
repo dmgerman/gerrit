@@ -8364,26 +8364,6 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|getHead (Repository repo)
-specifier|protected
-name|RevCommit
-name|getHead
-parameter_list|(
-name|Repository
-name|repo
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-return|return
-name|getHead
-argument_list|(
-name|repo
-argument_list|,
-literal|"HEAD"
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Nullable
 DECL|method|getRemoteHead (Project.NameKey project, String branch)
