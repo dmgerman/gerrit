@@ -1641,8 +1641,6 @@ name|scan
 argument_list|(
 name|repo
 argument_list|,
-name|db
-argument_list|,
 name|project
 argument_list|)
 operator|.
