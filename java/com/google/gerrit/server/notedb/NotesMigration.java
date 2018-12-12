@@ -416,12 +416,6 @@ literal|false
 argument_list|)
 argument_list|)
 operator|.
-name|setFailOnLoadForTest
-argument_list|(
-literal|false
-argument_list|)
-comment|// Only set in tests, can't be set via config.
-operator|.
 name|build
 argument_list|()
 return|;
@@ -454,12 +448,6 @@ DECL|method|disableChangeReviewDb ()
 specifier|abstract
 name|boolean
 name|disableChangeReviewDb
-parameter_list|()
-function_decl|;
-DECL|method|failOnLoadForTest ()
-specifier|abstract
-name|boolean
-name|failOnLoadForTest
 parameter_list|()
 function_decl|;
 DECL|method|toBuilder ()
@@ -617,15 +605,6 @@ name|boolean
 name|disableChangeReviewDb
 parameter_list|)
 function_decl|;
-DECL|method|setFailOnLoadForTest (boolean failOnLoadForTest)
-specifier|abstract
-name|Builder
-name|setFailOnLoadForTest
-parameter_list|(
-name|boolean
-name|failOnLoadForTest
-parameter_list|)
-function_decl|;
 DECL|method|autoBuild ()
 specifier|abstract
 name|Snapshot
@@ -767,23 +746,6 @@ name|get
 argument_list|()
 operator|.
 name|disableChangeReviewDb
-argument_list|()
-return|;
-block|}
-comment|/**    * Whether to fail when reading any data from NoteDb.    *    *<p>Used in conjunction with {@link #readChanges()} for tests.    */
-DECL|method|failOnLoadForTest ()
-specifier|public
-name|boolean
-name|failOnLoadForTest
-parameter_list|()
-block|{
-return|return
-name|snapshot
-operator|.
-name|get
-argument_list|()
-operator|.
-name|failOnLoadForTest
 argument_list|()
 return|;
 block|}

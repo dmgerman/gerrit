@@ -350,29 +350,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|setFailOnLoadForTest (boolean failOnLoadForTest)
-specifier|public
-name|MutableNotesMigration
-name|setFailOnLoadForTest
-parameter_list|(
-name|boolean
-name|failOnLoadForTest
-parameter_list|)
-block|{
-return|return
-name|set
-argument_list|(
-name|b
-lambda|->
-name|b
-operator|.
-name|setFailOnLoadForTest
-argument_list|(
-name|failOnLoadForTest
-argument_list|)
-argument_list|)
-return|;
-block|}
 comment|/**    * Set the in-memory values returned by this instance to match the given state.    *    *<p>This method is only intended for use by tests.    *    *<p>This<em>only</em> modifies the in-memory state; if this instance was initialized from a    * file-based config, the underlying storage is not updated. Callers are responsible for managing    * the underlying storage on their own.    */
 annotation|@
 name|VisibleForTesting
