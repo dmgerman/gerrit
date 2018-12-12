@@ -110,7 +110,7 @@ init|=
 literal|"noteDb"
 decl_stmt|;
 DECL|field|READ
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -119,7 +119,7 @@ init|=
 literal|"read"
 decl_stmt|;
 DECL|field|WRITE
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -128,7 +128,7 @@ init|=
 literal|"write"
 decl_stmt|;
 DECL|field|DISABLE_REVIEW_DB
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -137,7 +137,7 @@ init|=
 literal|"disableReviewDb"
 decl_stmt|;
 DECL|field|PRIMARY_STORAGE
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -146,7 +146,7 @@ init|=
 literal|"primaryStorage"
 decl_stmt|;
 DECL|field|SEQUENCE
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
