@@ -268,22 +268,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -862,13 +846,10 @@ name|ForProjectImpl
 argument_list|()
 return|;
 block|}
-DECL|method|controlFor (ReviewDb db, Change change)
+DECL|method|controlFor (Change change)
 name|ChangeControl
 name|controlFor
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|)
@@ -887,8 +868,6 @@ operator|.
 name|getDest
 argument_list|()
 argument_list|)
-argument_list|,
-name|db
 argument_list|,
 name|change
 operator|.

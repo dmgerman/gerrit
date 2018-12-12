@@ -2171,11 +2171,6 @@ name|controlFor
 argument_list|(
 name|cd
 operator|.
-name|db
-argument_list|()
-argument_list|,
-name|cd
-operator|.
 name|change
 argument_list|()
 argument_list|)

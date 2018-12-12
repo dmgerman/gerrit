@@ -926,12 +926,6 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|testRepo
 specifier|private
 specifier|final
@@ -1393,7 +1387,7 @@ name|changeId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, ReviewDb db, PersonIdent i, TestRepository<?> testRepo, String subject, Map<String, String> files, String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @SuppressWarnings(R) ReviewDb db, PersonIdent i, TestRepository<?> testRepo, String subject, Map<String, String> files, String changeId)
 specifier|private
 name|PushOneCommit
 parameter_list|(
@@ -1411,6 +1405,12 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
+comment|// TODO(ekempin): Remove unused ReviewDb
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ReviewDb
 name|db
 parameter_list|,
@@ -1440,12 +1440,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|this
-operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
 name|this
 operator|.
 name|testRepo
@@ -2294,8 +2288,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|c
 argument_list|)
 argument_list|)

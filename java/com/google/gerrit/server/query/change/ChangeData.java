@@ -1566,10 +1566,6 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
-name|first
-operator|.
-name|db
-argument_list|,
 name|missing
 operator|.
 name|keySet
@@ -3969,8 +3965,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|legacyId
@@ -4111,8 +4105,6 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|()
 argument_list|,

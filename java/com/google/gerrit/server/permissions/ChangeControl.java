@@ -507,15 +507,12 @@ operator|=
 name|notesFactory
 expr_stmt|;
 block|}
-DECL|method|create ( RefControl refControl, ReviewDb db, Project.NameKey project, Change.Id changeId)
+DECL|method|create (RefControl refControl, Project.NameKey project, Change.Id changeId)
 name|ChangeControl
 name|create
 parameter_list|(
 name|RefControl
 name|refControl
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|Project
 operator|.
@@ -539,8 +536,6 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|changeId

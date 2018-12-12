@@ -2766,11 +2766,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|project
 argument_list|,
 name|id

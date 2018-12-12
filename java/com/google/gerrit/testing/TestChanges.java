@@ -511,6 +511,7 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+comment|// TODO(ekempin): Create NoteDb change.
 name|Change
 name|c
 init|=

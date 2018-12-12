@@ -246,22 +246,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|PatchSetUtil
@@ -477,15 +461,6 @@ operator|.
 name|Factory
 name|notesFactory
 decl_stmt|;
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|psUtil
 specifier|private
 specifier|final
@@ -494,7 +469,7 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RebaseUtil ( Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, Provider<ReviewDb> dbProvider, PatchSetUtil psUtil)
+DECL|method|RebaseUtil ( Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, PatchSetUtil psUtil)
 name|RebaseUtil
 parameter_list|(
 name|Provider
@@ -507,12 +482,6 @@ name|ChangeNotes
 operator|.
 name|Factory
 name|notesFactory
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 name|PatchSetUtil
 name|psUtil
@@ -529,12 +498,6 @@ operator|.
 name|notesFactory
 operator|=
 name|notesFactory
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -976,11 +939,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rsrc
 operator|.
 name|getProject

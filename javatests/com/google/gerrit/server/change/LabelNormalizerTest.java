@@ -1204,8 +1204,6 @@ name|changeNotesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|allProjects
 argument_list|,
 operator|new

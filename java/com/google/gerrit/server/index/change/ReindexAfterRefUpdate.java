@@ -1364,8 +1364,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 operator|new
 name|Project
 operator|.
