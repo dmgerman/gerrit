@@ -94,9 +94,9 @@ specifier|public
 interface|interface
 name|GroupOperations
 block|{
-comment|/**    * Starts the fluent chain for querying or modifying a group. Please see the methods of {@link    * MoreGroupOperations} for details on possible operations.    *    * @return an aggregation of operations on a specific group    */
+comment|/**    * Starts the fluent chain for querying or modifying a group. Please see the methods of {@link    * PerGroupOperations} for details on possible operations.    *    * @return an aggregation of operations on a specific group    */
 DECL|method|group (AccountGroup.UUID groupUuid)
-name|MoreGroupOperations
+name|PerGroupOperations
 name|group
 parameter_list|(
 name|AccountGroup
@@ -114,9 +114,9 @@ name|newGroup
 parameter_list|()
 function_decl|;
 comment|/** An aggregation of methods on a specific group. */
-DECL|interface|MoreGroupOperations
+DECL|interface|PerGroupOperations
 interface|interface
-name|MoreGroupOperations
+name|PerGroupOperations
 block|{
 comment|/**      * Checks whether the group exists.      *      * @return {@code true} if the group exists      */
 DECL|method|exists ()

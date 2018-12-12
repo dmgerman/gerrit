@@ -438,7 +438,7 @@ annotation|@
 name|Override
 DECL|method|group (AccountGroup.UUID groupUuid)
 specifier|public
-name|MoreGroupOperations
+name|PerGroupOperations
 name|group
 parameter_list|(
 name|AccountGroup
@@ -449,7 +449,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|MoreGroupOperationsImpl
+name|PerGroupOperationsImpl
 argument_list|(
 name|groupUuid
 argument_list|)
@@ -712,12 +712,12 @@ name|build
 argument_list|()
 return|;
 block|}
-DECL|class|MoreGroupOperationsImpl
+DECL|class|PerGroupOperationsImpl
 specifier|private
 class|class
-name|MoreGroupOperationsImpl
+name|PerGroupOperationsImpl
 implements|implements
-name|MoreGroupOperations
+name|PerGroupOperations
 block|{
 DECL|field|groupUuid
 specifier|private
@@ -727,8 +727,8 @@ operator|.
 name|UUID
 name|groupUuid
 decl_stmt|;
-DECL|method|MoreGroupOperationsImpl (AccountGroup.UUID groupUuid)
-name|MoreGroupOperationsImpl
+DECL|method|PerGroupOperationsImpl (AccountGroup.UUID groupUuid)
+name|PerGroupOperationsImpl
 parameter_list|(
 name|AccountGroup
 operator|.
