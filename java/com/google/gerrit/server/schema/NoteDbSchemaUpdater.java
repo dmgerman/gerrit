@@ -272,22 +272,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -422,12 +406,6 @@ specifier|final
 name|SchemaCreator
 name|schemaCreator
 decl_stmt|;
-DECL|field|notesMigration
-specifier|private
-specifier|final
-name|NotesMigration
-name|notesMigration
-decl_stmt|;
 DECL|field|versionManager
 specifier|private
 specifier|final
@@ -460,7 +438,7 @@ name|schemaVersions
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NoteDbSchemaUpdater ( @erritServerConfig Config cfg, AllUsersName allUsersName, AllProjectsName allProjectsName, GitRepositoryManager repoManager, SchemaCreator schemaCreator, NotesMigration notesMigration, NoteDbSchemaVersionManager versionManager, NoteDbSchemaVersion.Arguments args)
+DECL|method|NoteDbSchemaUpdater ( @erritServerConfig Config cfg, AllUsersName allUsersName, AllProjectsName allProjectsName, GitRepositoryManager repoManager, SchemaCreator schemaCreator, NoteDbSchemaVersionManager versionManager, NoteDbSchemaVersion.Arguments args)
 name|NoteDbSchemaUpdater
 parameter_list|(
 annotation|@
@@ -479,9 +457,6 @@ name|repoManager
 parameter_list|,
 name|SchemaCreator
 name|schemaCreator
-parameter_list|,
-name|NotesMigration
-name|notesMigration
 parameter_list|,
 name|NoteDbSchemaVersionManager
 name|versionManager
@@ -504,8 +479,6 @@ name|repoManager
 argument_list|,
 name|schemaCreator
 argument_list|,
-name|notesMigration
-argument_list|,
 name|versionManager
 argument_list|,
 name|args
@@ -516,7 +489,7 @@ name|ALL
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoteDbSchemaUpdater ( Config cfg, AllProjectsName allProjectsName, AllUsersName allUsersName, GitRepositoryManager repoManager, SchemaCreator schemaCreator, NotesMigration notesMigration, NoteDbSchemaVersionManager versionManager, NoteDbSchemaVersion.Arguments args, ImmutableSortedMap<Integer, Class<? extends NoteDbSchemaVersion>> schemaVersions)
+DECL|method|NoteDbSchemaUpdater ( Config cfg, AllProjectsName allProjectsName, AllUsersName allUsersName, GitRepositoryManager repoManager, SchemaCreator schemaCreator, NoteDbSchemaVersionManager versionManager, NoteDbSchemaVersion.Arguments args, ImmutableSortedMap<Integer, Class<? extends NoteDbSchemaVersion>> schemaVersions)
 name|NoteDbSchemaUpdater
 parameter_list|(
 name|Config
@@ -533,9 +506,6 @@ name|repoManager
 parameter_list|,
 name|SchemaCreator
 name|schemaCreator
-parameter_list|,
-name|NotesMigration
-name|notesMigration
 parameter_list|,
 name|NoteDbSchemaVersionManager
 name|versionManager
@@ -591,12 +561,6 @@ name|schemaCreator
 expr_stmt|;
 name|this
 operator|.
-name|notesMigration
-operator|=
-name|notesMigration
-expr_stmt|;
-name|this
-operator|.
 name|versionManager
 operator|=
 name|versionManager
@@ -625,19 +589,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-if|if
-condition|(
-operator|!
-name|notesMigration
-operator|.
-name|commitChangeWrites
-argument_list|()
-condition|)
-block|{
-comment|// TODO(dborowitz): Only necessary to make migration tests pass; remove when NoteDb is the
-comment|// only option.
-return|return;
-block|}
 name|ensureSchemaCreated
 argument_list|()
 expr_stmt|;
