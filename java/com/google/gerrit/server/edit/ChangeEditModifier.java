@@ -1237,8 +1237,6 @@ throws|,
 name|MergeConflictException
 throws|,
 name|InvalidChangeOperationException
-throws|,
-name|OrmException
 block|{
 name|RevCommit
 name|currentEditCommit
@@ -2961,8 +2959,6 @@ name|timestamp
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|Change
 name|change
@@ -3091,8 +3087,6 @@ name|timestamp
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|String
 name|editRefName
@@ -3500,8 +3494,6 @@ name|change
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|indexer
 operator|.

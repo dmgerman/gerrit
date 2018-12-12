@@ -1432,7 +1432,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param change change to index.    */
-comment|// TODO(dborowitz): Remove OrmException
 DECL|method|index (ReviewDb db, Change change)
 specifier|public
 name|void
@@ -1446,8 +1445,6 @@ name|change
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|index
 argument_list|(
@@ -1463,7 +1460,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param project the project to which the change belongs.    * @param changeId ID of the change to index.    */
-comment|// TODO(dborowitz): Remove OrmException
 DECL|method|index (ReviewDb db, Project.NameKey project, Change.Id changeId)
 specifier|public
 name|void
@@ -1484,8 +1480,6 @@ name|changeId
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|index
 argument_list|(
