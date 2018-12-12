@@ -5486,17 +5486,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-operator|!
-name|notesMigration
-operator|.
-name|commitChangeWrites
-argument_list|()
-condition|)
-block|{
-return|return;
-block|}
 name|PersonIdent
 name|committer
 init|=
