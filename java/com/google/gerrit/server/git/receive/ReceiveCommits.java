@@ -9989,27 +9989,7 @@ parameter_list|(
 name|String
 name|token
 parameter_list|)
-throws|throws
-name|CmdLineException
 block|{
-if|if
-condition|(
-operator|!
-name|notesMigration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
-throw|throw
-name|cmdLineParser
-operator|.
-name|reject
-argument_list|(
-literal|"cannot add hashtags; noteDb is disabled"
-argument_list|)
-throw|;
-block|}
 name|String
 name|hashtag
 init|=

@@ -1552,12 +1552,6 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
-DECL|field|migration
-specifier|private
-specifier|final
-name|NotesMigration
-name|migration
-decl_stmt|;
 DECL|field|allUsersName
 specifier|private
 specifier|final
@@ -1693,7 +1687,7 @@ name|pushCert
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NoteDbUpdateManager ( @erritPersonIdent Provider<PersonIdent> serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsersName, NoteDbMetrics metrics, @Assisted Project.NameKey projectName)
+DECL|method|NoteDbUpdateManager ( @erritPersonIdent Provider<PersonIdent> serverIdent, GitRepositoryManager repoManager, AllUsersName allUsersName, NoteDbMetrics metrics, @Assisted Project.NameKey projectName)
 name|NoteDbUpdateManager
 parameter_list|(
 annotation|@
@@ -1706,9 +1700,6 @@ name|serverIdent
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|AllUsersName
 name|allUsersName
@@ -1735,12 +1726,6 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
-expr_stmt|;
-name|this
-operator|.
-name|migration
-operator|=
-name|migration
 expr_stmt|;
 name|this
 operator|.
@@ -2280,19 +2265,6 @@ name|boolean
 name|isEmpty
 parameter_list|()
 block|{
-if|if
-condition|(
-operator|!
-name|migration
-operator|.
-name|commitChangeWrites
-argument_list|()
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
 return|return
 name|changeUpdates
 operator|.

@@ -768,22 +768,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|MethodNotAllowedException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|ResourceConflictException
 import|;
 end_import
@@ -1425,22 +1409,6 @@ operator|.
 name|notedb
 operator|.
 name|ChangeUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
 import|;
 end_import
 
@@ -2207,12 +2175,6 @@ specifier|final
 name|AddReviewersEmail
 name|addReviewersEmail
 decl_stmt|;
-DECL|field|migration
-specifier|private
-specifier|final
-name|NotesMigration
-name|migration
-decl_stmt|;
 DECL|field|notifyUtil
 specifier|private
 specifier|final
@@ -2253,7 +2215,7 @@ name|strictLabels
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountResolver accountResolver, EmailReviewComments.Factory email, CommentAdded commentAdded, ReviewerAdder reviewerAdder, AddReviewersEmail addReviewersEmail, NotesMigration migration, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
+DECL|method|PostReview ( Provider<ReviewDb> db, RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountResolver accountResolver, EmailReviewComments.Factory email, CommentAdded commentAdded, ReviewerAdder reviewerAdder, AddReviewersEmail addReviewersEmail, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
 name|PostReview
 parameter_list|(
 name|Provider
@@ -2309,9 +2271,6 @@ name|reviewerAdder
 parameter_list|,
 name|AddReviewersEmail
 name|addReviewersEmail
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|NotifyUtil
 name|notifyUtil
@@ -2421,12 +2380,6 @@ operator|.
 name|addReviewersEmail
 operator|=
 name|addReviewersEmail
-expr_stmt|;
-name|this
-operator|.
-name|migration
-operator|=
-name|migration
 expr_stmt|;
 name|this
 operator|.
@@ -2721,23 +2674,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|migration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|MethodNotAllowedException
-argument_list|(
-literal|"robot comments not supported"
-argument_list|)
-throw|;
-block|}
 name|checkRobotComments
 argument_list|(
 name|revision

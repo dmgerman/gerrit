@@ -3503,17 +3503,8 @@ name|emptyMap
 argument_list|()
 return|;
 block|}
-if|if
-condition|(
-name|migration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
-comment|// If reading from changes is enabled, then the old ChangeNotes may have
-comment|// already parsed the revision notes. We can reuse them as long as the ref
-comment|// hasn't advanced.
+comment|// The old ChangeNotes may have already parsed the revision notes. We can reuse them as long as
+comment|// the ref hasn't advanced.
 name|ChangeNotes
 name|notes
 init|=
@@ -3567,7 +3558,6 @@ name|notes
 operator|.
 name|revisionNoteMap
 return|;
-block|}
 block|}
 block|}
 name|NoteMap

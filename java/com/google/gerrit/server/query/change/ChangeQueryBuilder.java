@@ -3647,8 +3647,6 @@ name|ReviewerPredicate
 operator|.
 name|reviewer
 argument_list|(
-name|args
-argument_list|,
 name|self
 argument_list|()
 argument_list|)
@@ -3660,8 +3658,6 @@ name|ReviewerPredicate
 operator|.
 name|reviewer
 argument_list|(
-name|args
-argument_list|,
 name|self
 argument_list|()
 argument_list|)
