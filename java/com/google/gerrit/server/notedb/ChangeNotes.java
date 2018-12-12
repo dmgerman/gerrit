@@ -2303,7 +2303,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|// TODO(dborowitz): See discussion in NoteDbBatchUpdate#newChangeContext.
+comment|// TODO(dborowitz): See discussion in BatchUpdate#newChangeContext.
 name|Change
 name|change
 init|=
