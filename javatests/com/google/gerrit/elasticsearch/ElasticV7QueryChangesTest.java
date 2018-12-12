@@ -514,8 +514,6 @@ operator|new
 name|InMemoryModule
 argument_list|(
 name|elasticsearchConfig
-argument_list|,
-name|notesMigration
 argument_list|)
 argument_list|)
 return|;

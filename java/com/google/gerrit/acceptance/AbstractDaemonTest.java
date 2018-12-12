@@ -1692,7 +1692,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|MutableNotesMigration
+name|NotesMigration
 import|;
 end_import
 
@@ -1871,20 +1871,6 @@ operator|.
 name|testing
 operator|.
 name|FakeGroupAuditService
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|NoteDbMode
 import|;
 end_import
 
@@ -3079,7 +3065,7 @@ DECL|field|notesMigration
 annotation|@
 name|Inject
 specifier|protected
-name|MutableNotesMigration
+name|NotesMigration
 name|notesMigration
 decl_stmt|;
 DECL|field|notesFactory
@@ -4756,13 +4742,6 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-name|NoteDbMode
-operator|.
-name|resetFromEnv
-argument_list|(
-name|notesMigration
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|closeSsh ()
 specifier|protected

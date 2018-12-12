@@ -607,11 +607,6 @@ operator|new
 name|InMemoryModule
 argument_list|(
 name|cfg
-argument_list|,
-name|NoteDbMode
-operator|.
-name|newNotesMigrationFromEnv
-argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
