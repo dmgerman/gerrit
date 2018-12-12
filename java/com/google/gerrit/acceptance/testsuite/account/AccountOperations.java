@@ -94,9 +94,9 @@ specifier|public
 interface|interface
 name|AccountOperations
 block|{
-comment|/**    * Starts the fluent chain for a querying or modifying an account. Please see the methods of    * {@link MoreAccountOperations} for details on possible operations.    *    * @return an aggregation of operations on a specific account    */
+comment|/**    * Starts the fluent chain for a querying or modifying an account. Please see the methods of    * {@link PerAccountOperations} for details on possible operations.    *    * @return an aggregation of operations on a specific account    */
 DECL|method|account (Account.Id accountId)
-name|MoreAccountOperations
+name|PerAccountOperations
 name|account
 parameter_list|(
 name|Account
@@ -114,9 +114,9 @@ name|newAccount
 parameter_list|()
 function_decl|;
 comment|/** An aggregation of methods on a specific account. */
-DECL|interface|MoreAccountOperations
+DECL|interface|PerAccountOperations
 interface|interface
-name|MoreAccountOperations
+name|PerAccountOperations
 block|{
 comment|/**      * Checks whether the account exists.      *      * @return {@code true} if the account exists      */
 DECL|method|exists ()

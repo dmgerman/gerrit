@@ -341,7 +341,7 @@ annotation|@
 name|Override
 DECL|method|account (Account.Id accountId)
 specifier|public
-name|MoreAccountOperations
+name|PerAccountOperations
 name|account
 parameter_list|(
 name|Account
@@ -352,7 +352,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|MoreAccountOperationsImpl
+name|PerAccountOperationsImpl
 argument_list|(
 name|accountId
 argument_list|)
@@ -678,12 +678,12 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|class|MoreAccountOperationsImpl
+DECL|class|PerAccountOperationsImpl
 specifier|private
 class|class
-name|MoreAccountOperationsImpl
+name|PerAccountOperationsImpl
 implements|implements
-name|MoreAccountOperations
+name|PerAccountOperations
 block|{
 DECL|field|accountId
 specifier|private
@@ -693,8 +693,8 @@ operator|.
 name|Id
 name|accountId
 decl_stmt|;
-DECL|method|MoreAccountOperationsImpl (Account.Id accountId)
-name|MoreAccountOperationsImpl
+DECL|method|PerAccountOperationsImpl (Account.Id accountId)
+name|PerAccountOperationsImpl
 parameter_list|(
 name|Account
 operator|.
