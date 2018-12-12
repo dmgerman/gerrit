@@ -2485,18 +2485,6 @@ name|NONE
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|newContext ()
-specifier|private
-name|Context
-name|newContext
-parameter_list|()
-block|{
-return|return
-operator|new
-name|ContextImpl
-argument_list|()
-return|;
-block|}
 DECL|method|setRepository (Repository repo, RevWalk revWalk, ObjectInserter inserter)
 specifier|public
 name|BatchUpdate
@@ -2816,7 +2804,8 @@ block|{
 name|Context
 name|ctx
 init|=
-name|newContext
+operator|new
+name|ContextImpl
 argument_list|()
 decl_stmt|;
 name|Change
