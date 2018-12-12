@@ -998,17 +998,9 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|batchUpdateFactory
-specifier|private
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory ( GitModules.Factory gitmodulesFactory, @GerritPersonIdent Provider<PersonIdent> serverIdent, @GerritServerConfig Config cfg, ProjectCache projectCache, BatchUpdate.Factory batchUpdateFactory)
+DECL|method|Factory ( GitModules.Factory gitmodulesFactory, @GerritPersonIdent Provider<PersonIdent> serverIdent, @GerritServerConfig Config cfg, ProjectCache projectCache)
 name|Factory
 parameter_list|(
 name|GitModules
@@ -1031,11 +1023,6 @@ name|cfg
 parameter_list|,
 name|ProjectCache
 name|projectCache
-parameter_list|,
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
 parameter_list|)
 block|{
 name|this
@@ -1061,12 +1048,6 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
-expr_stmt|;
-name|this
-operator|.
-name|batchUpdateFactory
-operator|=
-name|batchUpdateFactory
 expr_stmt|;
 block|}
 DECL|method|create (Set<Branch.NameKey> updatedBranches, MergeOpRepoManager orm)
@@ -1103,8 +1084,6 @@ name|cfg
 argument_list|,
 name|projectCache
 argument_list|,
-name|batchUpdateFactory
-argument_list|,
 name|updatedBranches
 argument_list|,
 name|orm
@@ -1131,14 +1110,6 @@ specifier|private
 specifier|final
 name|ProjectCache
 name|projectCache
-decl_stmt|;
-DECL|field|batchUpdateFactory
-specifier|private
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
 decl_stmt|;
 DECL|field|verboseSuperProject
 specifier|private
@@ -1263,7 +1234,7 @@ name|NameKey
 argument_list|>
 name|branchesByProject
 decl_stmt|;
-DECL|method|SubmoduleOp ( GitModules.Factory gitmodulesFactory, PersonIdent myIdent, Config cfg, ProjectCache projectCache, BatchUpdate.Factory batchUpdateFactory, Set<Branch.NameKey> updatedBranches, MergeOpRepoManager orm)
+DECL|method|SubmoduleOp ( GitModules.Factory gitmodulesFactory, PersonIdent myIdent, Config cfg, ProjectCache projectCache, Set<Branch.NameKey> updatedBranches, MergeOpRepoManager orm)
 specifier|private
 name|SubmoduleOp
 parameter_list|(
@@ -1280,11 +1251,6 @@ name|cfg
 parameter_list|,
 name|ProjectCache
 name|projectCache
-parameter_list|,
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
 parameter_list|,
 name|Set
 argument_list|<
@@ -1317,12 +1283,6 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
-expr_stmt|;
-name|this
-operator|.
-name|batchUpdateFactory
-operator|=
-name|batchUpdateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2675,7 +2635,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|batchUpdateFactory
+name|BatchUpdate
 operator|.
 name|execute
 argument_list|(

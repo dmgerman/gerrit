@@ -857,7 +857,7 @@ name|overwriteDefaultRetryerStrategySetup
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, BatchUpdate.AssistedFactory batchUpdateFactory)
+DECL|method|RetryHelper (@erritServerConfig Config cfg, Metrics metrics, BatchUpdate.Factory updateFactory)
 name|RetryHelper
 parameter_list|(
 annotation|@
@@ -870,8 +870,8 @@ name|metrics
 parameter_list|,
 name|BatchUpdate
 operator|.
-name|AssistedFactory
-name|batchUpdateFactory
+name|Factory
+name|updateFactory
 parameter_list|)
 block|{
 name|this
@@ -880,7 +880,7 @@ name|cfg
 argument_list|,
 name|metrics
 argument_list|,
-name|batchUpdateFactory
+name|updateFactory
 argument_list|,
 literal|null
 argument_list|)
@@ -888,7 +888,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, BatchUpdate.AssistedFactory batchUpdateFactory, @Nullable Consumer<RetryerBuilder<?>> overwriteDefaultRetryerStrategySetup)
+DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, BatchUpdate.Factory updateFactory, @Nullable Consumer<RetryerBuilder<?>> overwriteDefaultRetryerStrategySetup)
 specifier|public
 name|RetryHelper
 parameter_list|(
@@ -902,8 +902,8 @@ name|metrics
 parameter_list|,
 name|BatchUpdate
 operator|.
-name|AssistedFactory
-name|batchUpdateFactory
+name|Factory
+name|updateFactory
 parameter_list|,
 annotation|@
 name|Nullable
@@ -927,13 +927,7 @@ name|this
 operator|.
 name|updateFactory
 operator|=
-operator|new
-name|BatchUpdate
-operator|.
-name|Factory
-argument_list|(
-name|batchUpdateFactory
-argument_list|)
+name|updateFactory
 expr_stmt|;
 name|Duration
 name|defaultTimeout
