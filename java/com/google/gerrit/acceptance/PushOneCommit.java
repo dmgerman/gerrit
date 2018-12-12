@@ -248,22 +248,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ApprovalsUtil
@@ -622,13 +606,10 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ReviewDb db, PersonIdent i, TestRepository<?> testRepo)
+DECL|method|create (PersonIdent i, TestRepository<?> testRepo)
 name|PushOneCommit
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|PersonIdent
 name|i
 parameter_list|,
@@ -639,13 +620,10 @@ argument_list|>
 name|testRepo
 parameter_list|)
 function_decl|;
-DECL|method|create ( ReviewDb db, PersonIdent i, TestRepository<?> testRepo, @Assisted(R) String changeId)
+DECL|method|create ( PersonIdent i, TestRepository<?> testRepo, @Assisted(R) String changeId)
 name|PushOneCommit
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|PersonIdent
 name|i
 parameter_list|,
@@ -664,13 +642,10 @@ name|String
 name|changeId
 parameter_list|)
 function_decl|;
-DECL|method|create ( ReviewDb db, PersonIdent i, TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
+DECL|method|create ( PersonIdent i, TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
 name|PushOneCommit
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|PersonIdent
 name|i
 parameter_list|,
@@ -705,13 +680,10 @@ name|String
 name|content
 parameter_list|)
 function_decl|;
-DECL|method|create ( ReviewDb db, PersonIdent i, TestRepository<?> testRepo, @Assisted String subject, @Assisted Map<String, String> files)
+DECL|method|create ( PersonIdent i, TestRepository<?> testRepo, @Assisted String subject, @Assisted Map<String, String> files)
 name|PushOneCommit
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|PersonIdent
 name|i
 parameter_list|,
@@ -737,13 +709,10 @@ argument_list|>
 name|files
 parameter_list|)
 function_decl|;
-DECL|method|create ( ReviewDb db, PersonIdent i, TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Assisted(R) String changeId)
+DECL|method|create ( PersonIdent i, TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Assisted(R) String changeId)
 name|PushOneCommit
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|PersonIdent
 name|i
 parameter_list|,
@@ -987,7 +956,7 @@ name|commitBuilder
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1003,11 +972,6 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
-parameter_list|,
-annotation|@
-name|Assisted
-name|ReviewDb
-name|db
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1033,8 +997,6 @@ name|approvalsUtil
 argument_list|,
 name|queryProvider
 argument_list|,
-name|db
-argument_list|,
 name|i
 argument_list|,
 name|testRepo
@@ -1049,7 +1011,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String changeId)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1065,11 +1027,6 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
-parameter_list|,
-annotation|@
-name|Assisted
-name|ReviewDb
-name|db
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1103,8 +1060,6 @@ name|approvalsUtil
 argument_list|,
 name|queryProvider
 argument_list|,
-name|db
-argument_list|,
 name|i
 argument_list|,
 name|testRepo
@@ -1121,7 +1076,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1137,11 +1092,6 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
-parameter_list|,
-annotation|@
-name|Assisted
-name|ReviewDb
-name|db
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1191,8 +1141,6 @@ name|approvalsUtil
 argument_list|,
 name|queryProvider
 argument_list|,
-name|db
-argument_list|,
 name|i
 argument_list|,
 name|testRepo
@@ -1209,7 +1157,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted String subject, @Assisted Map<String, String> files)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted String subject, @Assisted Map<String, String> files)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1225,11 +1173,6 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
-parameter_list|,
-annotation|@
-name|Assisted
-name|ReviewDb
-name|db
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1270,8 +1213,6 @@ name|approvalsUtil
 argument_list|,
 name|queryProvider
 argument_list|,
-name|db
-argument_list|,
 name|i
 argument_list|,
 name|testRepo
@@ -1286,7 +1227,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Nullable @Assisted(R) String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Nullable @Assisted(R) String changeId)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1302,11 +1243,6 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
-parameter_list|,
-annotation|@
-name|Assisted
-name|ReviewDb
-name|db
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1366,8 +1302,6 @@ name|approvalsUtil
 argument_list|,
 name|queryProvider
 argument_list|,
-name|db
-argument_list|,
 name|i
 argument_list|,
 name|testRepo
@@ -1387,7 +1321,7 @@ name|changeId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @SuppressWarnings(R) ReviewDb db, PersonIdent i, TestRepository<?> testRepo, String subject, Map<String, String> files, String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, PersonIdent i, TestRepository<?> testRepo, String subject, Map<String, String> files, String changeId)
 specifier|private
 name|PushOneCommit
 parameter_list|(
@@ -1404,15 +1338,6 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
-parameter_list|,
-comment|// TODO(ekempin): Remove unused ReviewDb
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-name|ReviewDb
-name|db
 parameter_list|,
 name|PersonIdent
 name|i

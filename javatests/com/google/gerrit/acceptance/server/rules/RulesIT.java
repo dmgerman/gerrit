@@ -573,8 +573,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|user
 operator|.
 name|getIdent

@@ -10822,8 +10822,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|by
 operator|.
 name|getIdent
