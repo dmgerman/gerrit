@@ -2648,7 +2648,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getRepoView ()
-specifier|protected
+specifier|private
 name|RepoView
 name|getRepoView
 parameter_list|()
@@ -2662,18 +2662,8 @@ return|return
 name|repoView
 return|;
 block|}
-DECL|method|getUser ()
-specifier|protected
-name|CurrentUser
-name|getUser
-parameter_list|()
-block|{
-return|return
-name|user
-return|;
-block|}
 DECL|method|getAccount ()
-specifier|protected
+specifier|private
 name|Optional
 argument_list|<
 name|AccountState
@@ -2703,24 +2693,6 @@ else|:
 name|Optional
 operator|.
 name|empty
-argument_list|()
-return|;
-block|}
-DECL|method|getRevWalk ()
-specifier|protected
-name|RevWalk
-name|getRevWalk
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|initRepository
-argument_list|()
-expr_stmt|;
-return|return
-name|repoView
-operator|.
-name|getRevWalk
 argument_list|()
 return|;
 block|}
@@ -3850,51 +3822,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|logDebug (String msg, Throwable t)
-specifier|protected
-specifier|static
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-name|Throwable
-name|t
-parameter_list|)
-block|{
-comment|// Only log if there is a requestId assigned, since those are the
-comment|// expensive/complicated requests like MergeOp. Doing it every time would be
-comment|// noisy.
-if|if
-condition|(
-name|RequestId
-operator|.
-name|isSet
-argument_list|()
-condition|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|t
-argument_list|)
-operator|.
-name|log
-argument_list|(
-literal|"%s"
-argument_list|,
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 DECL|method|logDebug (String msg)
-specifier|protected
+specifier|private
 specifier|static
 name|void
 name|logDebug
@@ -3927,7 +3856,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|logDebug (String msg, @Nullable Object arg)
-specifier|protected
+specifier|private
 specifier|static
 name|void
 name|logDebug
@@ -3962,59 +3891,12 @@ argument_list|(
 name|msg
 argument_list|,
 name|arg
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-DECL|method|logDebug (String msg, @Nullable Object arg1, @Nullable Object arg2)
-specifier|protected
-specifier|static
-name|void
-name|logDebug
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg1
-parameter_list|,
-annotation|@
-name|Nullable
-name|Object
-name|arg2
-parameter_list|)
-block|{
-comment|// Only log if there is a requestId assigned, since those are the
-comment|// expensive/complicated requests like MergeOp. Doing it every time would be
-comment|// noisy.
-if|if
-condition|(
-name|RequestId
-operator|.
-name|isSet
-argument_list|()
-condition|)
-block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-name|msg
-argument_list|,
-name|arg1
-argument_list|,
-name|arg2
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 DECL|method|logDebug ( String msg, @Nullable Object arg1, @Nullable Object arg2, @Nullable Object arg3)
-specifier|protected
+specifier|private
 specifier|static
 name|void
 name|logDebug
