@@ -300,11 +300,15 @@ argument_list|(
 name|comment
 operator|.
 name|inReplyTo
+operator|.
+name|key
 argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
 name|inReplyTo
+operator|.
+name|key
 argument_list|)
 expr_stmt|;
 name|assertThat
