@@ -104,22 +104,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -179,28 +163,12 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 block|{
-DECL|field|migration
-specifier|private
-specifier|final
-name|NotesMigration
-name|migration
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NotesMigrationSchemaFactory (NotesMigration migration)
+DECL|method|NotesMigrationSchemaFactory ()
 name|NotesMigrationSchemaFactory
-parameter_list|(
-name|NotesMigration
-name|migration
-parameter_list|)
-block|{
-name|this
-operator|.
-name|migration
-operator|=
-name|migration
-expr_stmt|;
-block|}
+parameter_list|()
+block|{}
 annotation|@
 name|Override
 DECL|method|open ()
@@ -245,16 +213,8 @@ name|NoChangesReviewDb
 argument_list|()
 decl_stmt|;
 comment|// Second create the wrappers which can be removed by ReviewDbUtil#unwrapDb(ReviewDb).
-if|if
-condition|(
-name|migration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
-comment|// If reading changes from NoteDb is configured, changes should not be read from ReviewDb.
-comment|// Make sure that any attempt to read a change from ReviewDb anyway fails with an exception.
+comment|// ReviewDb is no longer supported, make sure that any attempt to read a change from ReviewDb
+comment|// anyway fails with an exception.
 name|db
 operator|=
 operator|new
@@ -263,7 +223,6 @@ argument_list|(
 name|db
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|db
 return|;

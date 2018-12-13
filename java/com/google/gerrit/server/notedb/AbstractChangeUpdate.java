@@ -427,12 +427,6 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-DECL|field|migration
-specifier|protected
-specifier|final
-name|NotesMigration
-name|migration
-decl_stmt|;
 DECL|field|noteUtil
 specifier|protected
 specifier|final
@@ -510,15 +504,12 @@ specifier|protected
 name|boolean
 name|rootOnly
 decl_stmt|;
-DECL|method|AbstractChangeUpdate ( Config cfg, NotesMigration migration, ChangeNotes notes, CurrentUser user, PersonIdent serverIdent, ChangeNoteUtil noteUtil, Date when)
+DECL|method|AbstractChangeUpdate ( Config cfg, ChangeNotes notes, CurrentUser user, PersonIdent serverIdent, ChangeNoteUtil noteUtil, Date when)
 specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
 name|Config
 name|cfg
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|ChangeNotes
 name|notes
@@ -536,12 +527,6 @@ name|Date
 name|when
 parameter_list|)
 block|{
-name|this
-operator|.
-name|migration
-operator|=
-name|migration
-expr_stmt|;
 name|this
 operator|.
 name|noteUtil
@@ -642,15 +627,12 @@ name|cfg
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AbstractChangeUpdate ( Config cfg, NotesMigration migration, ChangeNoteUtil noteUtil, PersonIdent serverIdent, @Nullable ChangeNotes notes, @Nullable Change change, Account.Id accountId, Account.Id realAccountId, PersonIdent authorIdent, Date when)
+DECL|method|AbstractChangeUpdate ( Config cfg, ChangeNoteUtil noteUtil, PersonIdent serverIdent, @Nullable ChangeNotes notes, @Nullable Change change, Account.Id accountId, Account.Id realAccountId, PersonIdent authorIdent, Date when)
 specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
 name|Config
 name|cfg
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
@@ -709,12 +691,6 @@ operator|)
 argument_list|,
 literal|"exactly one of notes or change required"
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|migration
-operator|=
-name|migration
 expr_stmt|;
 name|this
 operator|.
