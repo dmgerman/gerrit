@@ -170,6 +170,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -298,7 +308,22 @@ throws|throws
 name|RestApiException
 function_decl|;
 comment|/**    * Add members to a group.    *    * @param members list of member identifiers, in any format accepted by {@link    *     com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
+DECL|method|addMembers (List<String> members)
+name|void
+name|addMembers
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|members
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Add members to a group.    *    * @param members list of member identifiers, in any format accepted by {@link    *     com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
 DECL|method|addMembers (String... members)
+specifier|default
 name|void
 name|addMembers
 parameter_list|(
@@ -308,9 +333,35 @@ name|members
 parameter_list|)
 throws|throws
 name|RestApiException
+block|{
+name|addMembers
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|members
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Remove members from a group.    *    * @param members list of member identifiers, in any format accepted by {@link    *     com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
+DECL|method|removeMembers (List<String> members)
+name|void
+name|removeMembers
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|members
+parameter_list|)
+throws|throws
+name|RestApiException
 function_decl|;
 comment|/**    * Remove members from a group.    *    * @param members list of member identifiers, in any format accepted by {@link    *     com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
 DECL|method|removeMembers (String... members)
+specifier|default
 name|void
 name|removeMembers
 parameter_list|(
@@ -320,7 +371,18 @@ name|members
 parameter_list|)
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+name|removeMembers
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|members
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**    * Lists the subgroups of this group.    *    * @return the found subgroups    * @throws RestApiException    */
 DECL|method|includedGroups ()
 name|List
@@ -333,7 +395,22 @@ throws|throws
 name|RestApiException
 function_decl|;
 comment|/**    * Adds subgroups to this group.    *    * @param groups list of group identifiers, in any format accepted by {@link Groups#id(String)}    * @throws RestApiException    */
+DECL|method|addGroups (List<String> groups)
+name|void
+name|addGroups
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|groups
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Adds subgroups to this group.    *    * @param groups list of group identifiers, in any format accepted by {@link Groups#id(String)}    * @throws RestApiException    */
 DECL|method|addGroups (String... groups)
+specifier|default
 name|void
 name|addGroups
 parameter_list|(
@@ -343,9 +420,35 @@ name|groups
 parameter_list|)
 throws|throws
 name|RestApiException
+block|{
+name|addGroups
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|groups
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Removes subgroups from this group.    *    * @param groups list of group identifiers, in any format accepted by {@link Groups#id(String)}    * @throws RestApiException    */
+DECL|method|removeGroups (List<String> groups)
+name|void
+name|removeGroups
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|groups
+parameter_list|)
+throws|throws
+name|RestApiException
 function_decl|;
 comment|/**    * Removes subgroups from this group.    *    * @param groups list of group identifiers, in any format accepted by {@link Groups#id(String)}    * @throws RestApiException    */
 DECL|method|removeGroups (String... groups)
+specifier|default
 name|void
 name|removeGroups
 parameter_list|(
@@ -355,7 +458,18 @@ name|groups
 parameter_list|)
 throws|throws
 name|RestApiException
-function_decl|;
+block|{
+name|removeGroups
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|groups
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**    * Returns the audit log of the group.    *    * @return list of audit events of the group.    * @throws RestApiException    */
 DECL|method|auditLog ()
 name|List
@@ -599,13 +713,15 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|addMembers (String... members)
+DECL|method|addMembers (List<String> members)
 specifier|public
 name|void
 name|addMembers
 parameter_list|(
+name|List
+argument_list|<
 name|String
-modifier|...
+argument_list|>
 name|members
 parameter_list|)
 throws|throws
@@ -619,13 +735,15 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|removeMembers (String... members)
+DECL|method|removeMembers (List<String> members)
 specifier|public
 name|void
 name|removeMembers
 parameter_list|(
+name|List
+argument_list|<
 name|String
-modifier|...
+argument_list|>
 name|members
 parameter_list|)
 throws|throws
@@ -658,13 +776,15 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|addGroups (String... groups)
+DECL|method|addGroups (List<String> groups)
 specifier|public
 name|void
 name|addGroups
 parameter_list|(
+name|List
+argument_list|<
 name|String
-modifier|...
+argument_list|>
 name|groups
 parameter_list|)
 throws|throws
@@ -678,13 +798,15 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|removeGroups (String... groups)
+DECL|method|removeGroups (List<String> groups)
 specifier|public
 name|void
 name|removeGroups
 parameter_list|(
+name|List
+argument_list|<
 name|String
-modifier|...
+argument_list|>
 name|groups
 parameter_list|)
 throws|throws
