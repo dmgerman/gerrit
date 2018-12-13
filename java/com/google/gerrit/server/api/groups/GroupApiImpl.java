@@ -622,16 +622,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -1393,13 +1383,15 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|addMembers (String... members)
+DECL|method|addMembers (List<String> members)
 specifier|public
 name|void
 name|addMembers
 parameter_list|(
+name|List
+argument_list|<
 name|String
-modifier|...
+argument_list|>
 name|members
 parameter_list|)
 throws|throws
@@ -1419,12 +1411,7 @@ name|Input
 operator|.
 name|fromMembers
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|members
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1447,13 +1434,15 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|removeMembers (String... members)
+DECL|method|removeMembers (List<String> members)
 specifier|public
 name|void
 name|removeMembers
 parameter_list|(
+name|List
+argument_list|<
 name|String
-modifier|...
+argument_list|>
 name|members
 parameter_list|)
 throws|throws
@@ -1473,12 +1462,7 @@ name|Input
 operator|.
 name|fromMembers
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|members
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1541,13 +1525,15 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|addGroups (String... groups)
+DECL|method|addGroups (List<String> groups)
 specifier|public
 name|void
 name|addGroups
 parameter_list|(
+name|List
+argument_list|<
 name|String
-modifier|...
+argument_list|>
 name|groups
 parameter_list|)
 throws|throws
@@ -1567,12 +1553,7 @@ name|Input
 operator|.
 name|fromGroups
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|groups
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1595,13 +1576,15 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|removeGroups (String... groups)
+DECL|method|removeGroups (List<String> groups)
 specifier|public
 name|void
 name|removeGroups
 parameter_list|(
+name|List
+argument_list|<
 name|String
-modifier|...
+argument_list|>
 name|groups
 parameter_list|)
 throws|throws
@@ -1621,12 +1604,7 @@ name|Input
 operator|.
 name|fromGroups
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|groups
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
