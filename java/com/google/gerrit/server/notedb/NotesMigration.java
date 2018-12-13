@@ -72,24 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NoteDbChangeState
-operator|.
-name|PrimaryStorage
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Singleton
@@ -184,18 +166,6 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * Write changes to NoteDb.    *    *<p>This method is awkwardly named because you should be using either {@link    * #commitChangeWrites()} or {@link #failChangeWrites()} instead.    *    *<p>Updates to change data are written to NoteDb refs, but ReviewDb is still the source of    * truth. Change data will not be written unless the NoteDb refs are already up to date, and the    * write path will attempt to rebuild the change if not.    *    *<p>If false, the behavior when attempting to write depends on {@code readChanges()}. If {@code    * readChanges() = false}, writes to NoteDb are simply ignored; if {@code true}, any attempts to    * write will generate an error.    */
-DECL|method|rawWriteChangesSetting ()
-specifier|public
-specifier|final
-name|boolean
-name|rawWriteChangesSetting
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
 comment|/**    * Read sequential change ID numbers from NoteDb.    *    *<p>If true, change IDs are read from {@code refs/sequences/changes} in All-Projects. If false,    * change IDs are read from ReviewDb's native sequences.    */
 DECL|method|readChangeSequence ()
 specifier|public
@@ -206,20 +176,6 @@ parameter_list|()
 block|{
 return|return
 literal|true
-return|;
-block|}
-comment|/** @return default primary storage for new changes. */
-DECL|method|changePrimaryStorage ()
-specifier|public
-specifier|final
-name|PrimaryStorage
-name|changePrimaryStorage
-parameter_list|()
-block|{
-return|return
-name|PrimaryStorage
-operator|.
-name|NOTE_DB
 return|;
 block|}
 comment|/**    * Disable ReviewDb access for changes.    *    *<p>When set, ReviewDb operations involving the Changes table become no-ops. Lookups return no    * results; updates do nothing, as does opening, committing, or rolling back a transaction on the    * Changes table.    */
