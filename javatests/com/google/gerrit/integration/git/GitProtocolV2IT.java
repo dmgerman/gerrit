@@ -504,6 +504,10 @@ block|,
 literal|"protocol.version=2"
 block|,
 literal|"ls-remote"
+block|,
+literal|"-o"
+block|,
+literal|"trace=12345"
 block|}
 decl_stmt|;
 DECL|field|GIT_SSH_COMMAND
