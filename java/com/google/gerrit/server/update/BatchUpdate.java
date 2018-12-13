@@ -2004,6 +2004,7 @@ name|DELETED
 block|;   }
 DECL|field|repoManager
 specifier|private
+specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
