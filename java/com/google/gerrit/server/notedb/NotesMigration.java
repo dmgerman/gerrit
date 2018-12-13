@@ -166,18 +166,6 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * Read sequential change ID numbers from NoteDb.    *    *<p>If true, change IDs are read from {@code refs/sequences/changes} in All-Projects. If false,    * change IDs are read from ReviewDb's native sequences.    */
-DECL|method|readChangeSequence ()
-specifier|public
-specifier|final
-name|boolean
-name|readChangeSequence
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
 comment|/**    * Disable ReviewDb access for changes.    *    *<p>When set, ReviewDb operations involving the Changes table become no-ops. Lookups return no    * results; updates do nothing, as does opening, committing, or rolling back a transaction on the    * Changes table.    */
 DECL|method|disableChangeReviewDb ()
 specifier|public
