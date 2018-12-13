@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -251,20 +235,6 @@ comment|//    DisallowReadFromChanges to be a complete no-op, with NoChangesRevi
 comment|//    stub implementation, all read operations return no results, and write operations silently
 comment|//    do nothing. This implementation is not a public class and callers couldn't do anything
 comment|//    useful with it even if it were.
-comment|// First create the underlying stub.
-name|checkState
-argument_list|(
-name|migration
-operator|.
-name|readChanges
-argument_list|()
-operator|&&
-name|migration
-operator|.
-name|disableChangeReviewDb
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// Disable writes to change tables in ReviewDb (ReviewDb access for changes are No-Ops); all
 comment|// other table accesses throw runtime exceptions.
 name|ReviewDb
