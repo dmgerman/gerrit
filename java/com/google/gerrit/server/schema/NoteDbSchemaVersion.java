@@ -92,6 +92,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -147,9 +163,14 @@ specifier|final
 name|AllProjectsName
 name|allProjects
 decl_stmt|;
+DECL|field|allUsers
+specifier|final
+name|AllUsersName
+name|allUsers
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments (GitRepositoryManager repoManager, AllProjectsName allProjects)
+DECL|method|Arguments ( GitRepositoryManager repoManager, AllProjectsName allProjects, AllUsersName allUsers)
 name|Arguments
 parameter_list|(
 name|GitRepositoryManager
@@ -157,6 +178,9 @@ name|repoManager
 parameter_list|,
 name|AllProjectsName
 name|allProjects
+parameter_list|,
+name|AllUsersName
+name|allUsers
 parameter_list|)
 block|{
 name|this
@@ -170,6 +194,12 @@ operator|.
 name|allProjects
 operator|=
 name|allProjects
+expr_stmt|;
+name|this
+operator|.
+name|allUsers
+operator|=
+name|allUsers
 expr_stmt|;
 block|}
 block|}
