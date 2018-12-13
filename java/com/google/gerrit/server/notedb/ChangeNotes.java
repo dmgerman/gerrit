@@ -612,24 +612,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
-operator|.
-name|NoteDbChangeState
-operator|.
-name|PrimaryStorage
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|NoSuchChangeException
@@ -1139,6 +1121,10 @@ argument_list|(
 name|args
 argument_list|,
 name|change
+argument_list|,
+literal|true
+argument_list|,
+literal|null
 argument_list|)
 operator|.
 name|load
@@ -1337,6 +1323,10 @@ name|project
 argument_list|,
 name|changeId
 argument_list|)
+argument_list|,
+literal|true
+argument_list|,
+literal|null
 argument_list|)
 operator|.
 name|load
@@ -1360,6 +1350,10 @@ argument_list|(
 name|args
 argument_list|,
 name|change
+argument_list|,
+literal|true
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
@@ -1879,6 +1873,10 @@ argument_list|(
 name|args
 argument_list|,
 name|rawChangeFromNoteDb
+argument_list|,
+literal|true
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 try|try
@@ -2297,31 +2295,8 @@ name|commentKeys
 decl_stmt|;
 annotation|@
 name|VisibleForTesting
-DECL|method|ChangeNotes (Args args, Change change)
-specifier|public
-name|ChangeNotes
-parameter_list|(
-name|Args
-name|args
-parameter_list|,
-name|Change
-name|change
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|args
-argument_list|,
-name|change
-argument_list|,
-literal|true
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|ChangeNotes (Args args, Change change, boolean shouldExist, @Nullable RefCache refs)
-specifier|private
+specifier|public
 name|ChangeNotes
 parameter_list|(
 name|Args
@@ -3263,22 +3238,8 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO(ekempin): Remove the primary storage check. At the moment it is still needed for the
-comment|// ChangeNotesParserTest which still runs with ReviewDb changes (see TODO in
-comment|// TestUpdate#newChange).
 if|if
 condition|(
-name|PrimaryStorage
-operator|.
-name|of
-argument_list|(
-name|change
-argument_list|)
-operator|==
-name|PrimaryStorage
-operator|.
-name|NOTE_DB
-operator|&&
 name|shouldExist
 condition|)
 block|{

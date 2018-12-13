@@ -397,7 +397,7 @@ decl_stmt|;
 name|ChangeUpdate
 name|update
 init|=
-name|newUpdate
+name|newUpdateForNewChange
 argument_list|(
 name|c
 argument_list|,
@@ -709,7 +709,7 @@ decl_stmt|;
 name|ChangeUpdate
 name|update
 init|=
-name|newUpdate
+name|newUpdateForNewChange
 argument_list|(
 name|c
 argument_list|,
@@ -820,7 +820,7 @@ decl_stmt|;
 name|ChangeUpdate
 name|update
 init|=
-name|newUpdate
+name|newUpdateForNewChange
 argument_list|(
 name|c
 argument_list|,
@@ -1791,7 +1791,7 @@ expr_stmt|;
 name|ChangeUpdate
 name|update
 init|=
-name|newUpdate
+name|newUpdateForNewChange
 argument_list|(
 name|c
 argument_list|,
@@ -1909,7 +1909,7 @@ argument_list|)
 expr_stmt|;
 name|update
 operator|=
-name|newUpdate
+name|newUpdateForNewChange
 argument_list|(
 name|c
 argument_list|,

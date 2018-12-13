@@ -511,7 +511,6 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
-comment|// TODO(ekempin): Create NoteDb change.
 name|Change
 name|c
 init|=
@@ -650,7 +649,7 @@ return|return
 name|ps
 return|;
 block|}
-DECL|method|newUpdate (Injector injector, Change c, CurrentUser user)
+DECL|method|newUpdate ( Injector injector, Change c, CurrentUser user, boolean shouldExist)
 specifier|public
 specifier|static
 name|ChangeUpdate
@@ -664,6 +663,9 @@ name|c
 parameter_list|,
 name|CurrentUser
 name|user
+parameter_list|,
+name|boolean
+name|shouldExist
 parameter_list|)
 throws|throws
 name|Exception
@@ -732,6 +734,10 @@ name|class
 argument_list|)
 argument_list|,
 name|c
+argument_list|,
+name|shouldExist
+argument_list|,
+literal|null
 argument_list|)
 operator|.
 name|load
