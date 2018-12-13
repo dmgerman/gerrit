@@ -981,7 +981,7 @@ name|Builder
 argument_list|()
 return|;
 block|}
-DECL|method|create ( ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> changeMessages, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, boolean isPrivate, boolean workInProgress, boolean reviewStarted, @Nullable Change.Id revertOf)
+DECL|method|create ( ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> changeMessages, ListMultimap<RevId, Comment> publishedComments, boolean isPrivate, boolean workInProgress, boolean reviewStarted, @Nullable Change.Id revertOf)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -1131,11 +1131,6 @@ argument_list|,
 name|Comment
 argument_list|>
 name|publishedComments
-parameter_list|,
-annotation|@
-name|Nullable
-name|Timestamp
-name|readOnlyUntil
 parameter_list|,
 name|boolean
 name|isPrivate
@@ -1353,11 +1348,6 @@ operator|.
 name|publishedComments
 argument_list|(
 name|publishedComments
-argument_list|)
-operator|.
-name|readOnlyUntil
-argument_list|(
-name|readOnlyUntil
 argument_list|)
 operator|.
 name|build
@@ -1859,14 +1849,6 @@ argument_list|,
 name|Comment
 argument_list|>
 name|publishedComments
-parameter_list|()
-function_decl|;
-annotation|@
-name|Nullable
-DECL|method|readOnlyUntil ()
-specifier|abstract
-name|Timestamp
-name|readOnlyUntil
 parameter_list|()
 function_decl|;
 DECL|method|newChange (Project.NameKey project)
@@ -2651,17 +2633,6 @@ argument_list|>
 name|publishedComments
 parameter_list|)
 function_decl|;
-DECL|method|readOnlyUntil (@ullable Timestamp readOnlyUntil)
-specifier|abstract
-name|Builder
-name|readOnlyUntil
-parameter_list|(
-annotation|@
-name|Nullable
-name|Timestamp
-name|readOnlyUntil
-parameter_list|)
-function_decl|;
 DECL|method|build ()
 specifier|abstract
 name|ChangeNotesState
@@ -3137,35 +3108,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|object
-operator|.
-name|readOnlyUntil
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
-name|b
-operator|.
-name|setReadOnlyUntil
-argument_list|(
-name|object
-operator|.
-name|readOnlyUntil
-argument_list|()
-operator|.
-name|getTime
-argument_list|()
-argument_list|)
-operator|.
-name|setHasReadOnlyUntil
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|Protos
 operator|.
@@ -4148,29 +4090,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|proto
-operator|.
-name|getHasReadOnlyUntil
-argument_list|()
-condition|)
-block|{
-name|b
-operator|.
-name|readOnlyUntil
-argument_list|(
-operator|new
-name|Timestamp
-argument_list|(
-name|proto
-operator|.
-name|getReadOnlyUntil
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|b
 operator|.

@@ -1202,9 +1202,6 @@ name|comment
 argument_list|()
 argument_list|)
 operator|+
-name|T
-comment|// readOnlyUntil
-operator|+
 literal|1
 comment|// isPrivate
 operator|+
