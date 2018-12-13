@@ -177,17 +177,6 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|failChangeWrites ()
-specifier|public
-specifier|final
-name|boolean
-name|failChangeWrites
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|equals (Object o)

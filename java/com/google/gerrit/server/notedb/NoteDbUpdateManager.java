@@ -3305,23 +3305,6 @@ name|OrmException
 throws|,
 name|IOException
 block|{
-comment|// Check before even inspecting the list, as this is a programmer error.
-if|if
-condition|(
-name|migration
-operator|.
-name|failChangeWrites
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-name|CHANGES_READ_ONLY
-argument_list|)
-throw|;
-block|}
 if|if
 condition|(
 name|isEmpty
