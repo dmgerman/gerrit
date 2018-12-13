@@ -166,18 +166,6 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * Disable ReviewDb access for changes.    *    *<p>When set, ReviewDb operations involving the Changes table become no-ops. Lookups return no    * results; updates do nothing, as does opening, committing, or rolling back a transaction on the    * Changes table.    */
-DECL|method|disableChangeReviewDb ()
-specifier|public
-specifier|final
-name|boolean
-name|disableChangeReviewDb
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
 DECL|method|commitChangeWrites ()
 specifier|public
 specifier|final
