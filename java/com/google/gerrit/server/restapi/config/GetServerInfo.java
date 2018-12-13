@@ -680,22 +680,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|permissions
 operator|.
 name|PermissionBackendException
@@ -1043,12 +1027,6 @@ specifier|final
 name|QueryDocumentationExecutor
 name|docSearcher
 decl_stmt|;
-DECL|field|migration
-specifier|private
-specifier|final
-name|NotesMigration
-name|migration
-decl_stmt|;
 DECL|field|projectCache
 specifier|private
 specifier|final
@@ -1075,7 +1053,7 @@ name|sitePaths
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetServerInfo ( @erritServerConfig Config config, AccountVisibilityProvider accountVisibilityProvider, AuthConfig authConfig, Realm realm, PluginMapContext<DownloadScheme> downloadSchemes, PluginMapContext<DownloadCommand> downloadCommands, PluginMapContext<CloneCommand> cloneCommands, PluginSetContext<WebUiPlugin> webUiPlugins, AllowedFormats archiveFormats, AllProjectsName allProjectsName, AllUsersName allUsersName, @AnonymousCowardName String anonymousCowardName, PluginItemContext<AvatarProvider> avatar, @EnableSignedPush boolean enableSignedPush, QueryDocumentationExecutor docSearcher, NotesMigration migration, ProjectCache projectCache, AgreementJson agreementJson, ChangeIndexCollection indexes, SitePaths sitePaths)
+DECL|method|GetServerInfo ( @erritServerConfig Config config, AccountVisibilityProvider accountVisibilityProvider, AuthConfig authConfig, Realm realm, PluginMapContext<DownloadScheme> downloadSchemes, PluginMapContext<DownloadCommand> downloadCommands, PluginMapContext<CloneCommand> cloneCommands, PluginSetContext<WebUiPlugin> webUiPlugins, AllowedFormats archiveFormats, AllProjectsName allProjectsName, AllUsersName allUsersName, @AnonymousCowardName String anonymousCowardName, PluginItemContext<AvatarProvider> avatar, @EnableSignedPush boolean enableSignedPush, QueryDocumentationExecutor docSearcher, ProjectCache projectCache, AgreementJson agreementJson, ChangeIndexCollection indexes, SitePaths sitePaths)
 specifier|public
 name|GetServerInfo
 parameter_list|(
@@ -1144,9 +1122,6 @@ name|enableSignedPush
 parameter_list|,
 name|QueryDocumentationExecutor
 name|docSearcher
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -1253,12 +1228,6 @@ name|docSearcher
 expr_stmt|;
 name|this
 operator|.
-name|migration
-operator|=
-name|migration
-expr_stmt|;
-name|this
-operator|.
 name|projectCache
 operator|=
 name|projectCache
@@ -1341,11 +1310,7 @@ name|info
 operator|.
 name|noteDbEnabled
 operator|=
-name|toBoolean
-argument_list|(
-name|isNoteDbEnabled
-argument_list|()
-argument_list|)
+literal|true
 expr_stmt|;
 name|info
 operator|.
@@ -2372,19 +2337,6 @@ name|docUrl
 argument_list|)
 operator|+
 literal|'/'
-return|;
-block|}
-DECL|method|isNoteDbEnabled ()
-specifier|private
-name|boolean
-name|isNoteDbEnabled
-parameter_list|()
-block|{
-return|return
-name|migration
-operator|.
-name|readChanges
-argument_list|()
 return|;
 block|}
 DECL|method|getPluginInfo ()
