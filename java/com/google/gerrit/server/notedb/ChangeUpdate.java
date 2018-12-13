@@ -2082,14 +2082,6 @@ argument_list|)
 expr_stmt|;
 name|updateManager
 operator|.
-name|stageAndApplyDelta
-argument_list|(
-name|getChange
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|updateManager
-operator|.
 name|execute
 argument_list|()
 expr_stmt|;
