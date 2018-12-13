@@ -2253,11 +2253,6 @@ name|IOException
 block|{
 if|if
 condition|(
-name|notesMigration
-operator|.
-name|readChangeSequence
-argument_list|()
-operator|&&
 name|git
 operator|.
 name|exactRef

@@ -4133,7 +4133,7 @@ operator|.
 name|getProjectsInOrder
 argument_list|()
 expr_stmt|;
-name|batchUpdateFactory
+name|BatchUpdate
 operator|.
 name|execute
 argument_list|(

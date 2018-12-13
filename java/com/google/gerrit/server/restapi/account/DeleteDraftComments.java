@@ -1341,7 +1341,7 @@ block|}
 comment|// Currently there's no way to let some updates succeed even if others fail. Even if there were,
 comment|// all updates from this operation only happen in All-Users and thus are fully atomic, so
 comment|// allowing partial failure would have little value.
-name|batchUpdateFactory
+name|BatchUpdate
 operator|.
 name|execute
 argument_list|(
