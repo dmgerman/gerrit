@@ -364,22 +364,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|plugincontext
 operator|.
 name|PluginSetContext
@@ -858,7 +842,7 @@ name|autoReindexIfStale
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer ( @erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, NotesMigration notesMigration, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, PluginSetContext<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndex index)
+DECL|method|ChangeIndexer ( @erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, PluginSetContext<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndex index)
 name|ChangeIndexer
 parameter_list|(
 annotation|@
@@ -871,9 +855,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schemaFactory
-parameter_list|,
-name|NotesMigration
-name|notesMigration
 parameter_list|,
 name|ChangeData
 operator|.
@@ -977,7 +958,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer ( SchemaFactory<ReviewDb> schemaFactory, @GerritServerConfig Config cfg, NotesMigration notesMigration, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, PluginSetContext<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
+DECL|method|ChangeIndexer ( SchemaFactory<ReviewDb> schemaFactory, @GerritServerConfig Config cfg, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, PluginSetContext<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
 name|ChangeIndexer
 parameter_list|(
 name|SchemaFactory
@@ -990,9 +971,6 @@ annotation|@
 name|GerritServerConfig
 name|Config
 name|cfg
-parameter_list|,
-name|NotesMigration
-name|notesMigration
 parameter_list|,
 name|ChangeData
 operator|.
@@ -1454,7 +1432,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param change change to index.    */
-comment|// TODO(dborowitz): Remove OrmException
 DECL|method|index (ReviewDb db, Change change)
 specifier|public
 name|void
@@ -1468,8 +1445,6 @@ name|change
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|index
 argument_list|(
@@ -1485,7 +1460,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param project the project to which the change belongs.    * @param changeId ID of the change to index.    */
-comment|// TODO(dborowitz): Remove OrmException
 DECL|method|index (ReviewDb db, Project.NameKey project, Change.Id changeId)
 specifier|public
 name|void
@@ -1506,8 +1480,6 @@ name|changeId
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|index
 argument_list|(
