@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.cache.testing
+DECL|package|com.google.gerrit.proto.testing
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|cache
+name|proto
 operator|.
 name|testing
 package|;
@@ -245,7 +243,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Subject about classes that are serialized into persistent caches.  *  *<p>Hand-written {@link com.google.gerrit.server.cache.serialize.CacheSerializer CacheSerializer}  * implementations depend on the exact representation of the data stored in a class, so it is  * important to verify any assumptions about the structure of the serialized classes. This class  * contains assertions about serialized classes, and should be used for every class that has a  * custom serializer implementation.  *  *<p>Changing fields of a serialized class (or abstract methods, in the case of {@code @AutoValue}  * classes) will likely require changes to the serializer implementation, and may require bumping  * the {@link com.google.gerrit.server.cache.PersistentCacheBinding#version(int) version} in the  * cache binding, in case the representation has changed in such a way that old serialized data  * becomes unreadable.  *  *<p>Changes to a serialized class such as adding or removing fields generally requires a change to  * the hand-written serializer. Usually, serializer implementations should be written in such a way  * that new fields are considered optional, and won't require bumping the version.  */
+comment|/**  * Subject about classes that are serialized into persistent caches or indices.  *  *<p>Hand-written {@link com.google.gerrit.server.cache.serialize.CacheSerializer CacheSerializer}  * and {@link com.google.gerrit.reviewdb.converter.ProtoConverter ProtoConverter} implementations  * depend on the exact representation of the data stored in a class, so it is important to verify  * any assumptions about the structure of the serialized classes. This class contains assertions  * about serialized classes, and should be used for every class that has a custom serializer  * implementation.  *  *<p>Changing fields of a serialized class (or abstract methods, in the case of {@code @AutoValue}  * classes) will likely require changes to the serializer implementation, and may require bumping  * the {@link com.google.gerrit.server.cache.PersistentCacheBinding#version(int) version} in the  * cache binding, in case the representation has changed in such a way that old serialized data  * becomes unreadable.  *  *<p>Changes to a serialized class such as adding or removing fields generally requires a change to  * the hand-written serializer. Usually, serializer implementations should be written in such a way  * that new fields are considered optional, and won't require bumping the version.  */
 end_comment
 
 begin_class

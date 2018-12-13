@@ -198,6 +198,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|joinGroups (List<String> groups)
+specifier|public
 specifier|static
 name|String
 name|joinGroups
