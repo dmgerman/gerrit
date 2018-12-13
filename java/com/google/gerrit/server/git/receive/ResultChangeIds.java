@@ -162,6 +162,11 @@ block|,
 DECL|enumConstant|AUTOCLOSED
 name|AUTOCLOSED
 block|,   }
+DECL|field|isMagicPush
+specifier|private
+name|boolean
+name|isMagicPush
+decl_stmt|;
 DECL|field|ids
 specifier|private
 specifier|final
@@ -221,6 +226,7 @@ block|}
 comment|/** Record a change ID update as having completed. Thread-safe. */
 DECL|method|add (Key key, Change.Id id)
 specifier|public
+specifier|synchronized
 name|void
 name|add
 parameter_list|(
@@ -232,11 +238,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-block|{
-synchronized|synchronized
-init|(
-name|this
-init|)
 block|{
 name|ids
 operator|.
@@ -251,10 +252,37 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Indicate that the ReceiveCommits call involved a magic branch. */
+DECL|method|setMagicPush (boolean magic)
+specifier|public
+specifier|synchronized
+name|void
+name|setMagicPush
+parameter_list|(
+name|boolean
+name|magic
+parameter_list|)
+block|{
+name|isMagicPush
+operator|=
+name|magic
+expr_stmt|;
 block|}
-comment|/** Returns change IDs of the given type for which the BatchUpdate succeeded. Thread-safe. */
+DECL|method|isMagicPush ()
+specifier|public
+specifier|synchronized
+name|boolean
+name|isMagicPush
+parameter_list|()
+block|{
+return|return
+name|isMagicPush
+return|;
+block|}
+comment|/**    * Returns change IDs of the given type for which the BatchUpdate succeeded, or empty list if    * there are none. Thread-safe.    */
 DECL|method|get (Key key)
 specifier|public
+specifier|synchronized
 name|List
 argument_list|<
 name|Change
@@ -266,11 +294,6 @@ parameter_list|(
 name|Key
 name|key
 parameter_list|)
-block|{
-synchronized|synchronized
-init|(
-name|this
-init|)
 block|{
 return|return
 name|ImmutableList
@@ -285,7 +308,6 @@ name|key
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 end_class
