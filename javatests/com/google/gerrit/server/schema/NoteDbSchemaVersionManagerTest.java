@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|com.google.gerrit.server.notedb
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -10,7 +10,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
+name|schema
 package|;
 end_package
 
