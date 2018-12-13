@@ -1093,7 +1093,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-comment|// Prepopulate the change exists with proper noteDbState field.
 name|Change
 name|change
 init|=
@@ -1236,9 +1235,7 @@ name|Id
 name|changeId
 parameter_list|)
 block|{
-name|Change
-name|change
-init|=
+return|return
 operator|new
 name|Change
 argument_list|(
@@ -1260,18 +1257,6 @@ argument_list|)
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
-name|change
-operator|.
-name|setNoteDbState
-argument_list|(
-name|NoteDbChangeState
-operator|.
-name|NOTE_DB_PRIMARY_STATE
-argument_list|)
-expr_stmt|;
-return|return
-name|change
 return|;
 block|}
 DECL|method|create (Project.NameKey project, Change.Id changeId)
