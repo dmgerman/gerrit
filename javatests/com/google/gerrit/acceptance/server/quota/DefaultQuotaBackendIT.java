@@ -1092,13 +1092,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|requestTokenPluginThrowsResultsInError ()
+DECL|method|requestTokenPluginThrowsAndRethrows ()
 specifier|public
 name|void
-name|requestTokenPluginThrowsResultsInError
+name|requestTokenPluginThrowsAndRethrows
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|QuotaRequestContext
 name|ctx
@@ -1142,11 +1140,15 @@ argument_list|(
 name|quotaEnforcer
 argument_list|)
 expr_stmt|;
-name|QuotaResponse
+name|exception
 operator|.
-name|Aggregated
-name|result
-init|=
+name|expect
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|quotaBackend
 operator|.
 name|user
@@ -1158,45 +1160,6 @@ name|requestToken
 argument_list|(
 literal|"testGroup"
 argument_list|)
-decl_stmt|;
-name|assertThat
-argument_list|(
-name|result
-argument_list|)
-operator|.
-name|isEqualTo
-argument_list|(
-name|singletonAggregation
-argument_list|(
-name|QuotaResponse
-operator|.
-name|error
-argument_list|(
-literal|"failed to request quota tokens"
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|QuotaException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"failed to request quota tokens"
-argument_list|)
-expr_stmt|;
-name|result
-operator|.
-name|throwOnError
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|singletonAggregation (QuotaResponse response)
