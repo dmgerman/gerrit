@@ -884,8 +884,6 @@ name|changeNotesFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|parseId
 argument_list|(
 name|id

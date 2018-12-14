@@ -552,38 +552,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDbUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ReviewerByEmailSet
@@ -1041,42 +1009,6 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Nullable
-DECL|method|readOneReviewDbChange (ReviewDb db, Change.Id id)
-specifier|public
-specifier|static
-name|Change
-name|readOneReviewDbChange
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
-name|Change
-operator|.
-name|Id
-name|id
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-return|return
-name|ReviewDbUtil
-operator|.
-name|unwrapDb
-argument_list|(
-name|db
-argument_list|)
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|id
-argument_list|)
-return|;
-block|}
-annotation|@
 name|Singleton
 DECL|class|Factory
 specifier|public
@@ -1145,14 +1077,11 @@ operator|=
 name|projectCache
 expr_stmt|;
 block|}
-DECL|method|createChecked (ReviewDb db, Change c)
+DECL|method|createChecked (Change c)
 specifier|public
 name|ChangeNotes
 name|createChecked
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|c
 parameter_list|)
@@ -1162,8 +1091,6 @@ block|{
 return|return
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|c
 operator|.
 name|getProject
@@ -1176,14 +1103,11 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|createChecked (ReviewDb db, Project.NameKey project, Change.Id changeId)
+DECL|method|createChecked (Project.NameKey project, Change.Id changeId)
 specifier|public
 name|ChangeNotes
 name|createChecked
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -1197,58 +1121,17 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+comment|// Prepopulate the change exists with proper noteDbState field.
 name|Change
 name|change
 init|=
-name|readOneReviewDbChange
+name|newChange
 argument_list|(
-name|db
+name|project
 argument_list|,
 name|changeId
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|change
-operator|==
-literal|null
-condition|)
-block|{
-comment|// Change isn't in ReviewDb, but its primary storage might be in NoteDb.
-comment|// Prepopulate the change exists with proper noteDbState field.
-name|change
-operator|=
-name|newNoteDbOnlyChange
-argument_list|(
-name|project
-argument_list|,
-name|changeId
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-operator|!
-name|change
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|project
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|NoSuchChangeException
-argument_list|(
-name|changeId
-argument_list|)
-throw|;
-block|}
 return|return
 operator|new
 name|ChangeNotes
@@ -1360,11 +1243,11 @@ name|notes
 argument_list|()
 return|;
 block|}
-DECL|method|newNoteDbOnlyChange (Project.NameKey project, Change.Id changeId)
+DECL|method|newChange (Project.NameKey project, Change.Id changeId)
 specifier|public
 specifier|static
 name|Change
-name|newNoteDbOnlyChange
+name|newChange
 parameter_list|(
 name|Project
 operator|.
@@ -1415,14 +1298,11 @@ return|return
 name|change
 return|;
 block|}
-DECL|method|loadChangeFromDb (ReviewDb db, Project.NameKey project, Change.Id changeId)
-specifier|private
-name|Change
-name|loadChangeFromDb
+DECL|method|create (Project.NameKey project, Change.Id changeId)
+specifier|public
+name|ChangeNotes
+name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -1445,91 +1325,14 @@ argument_list|,
 literal|"project is required"
 argument_list|)
 expr_stmt|;
-name|Change
-name|change
-init|=
-name|readOneReviewDbChange
-argument_list|(
-name|db
-argument_list|,
-name|changeId
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|change
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-name|newNoteDbOnlyChange
-argument_list|(
-name|project
-argument_list|,
-name|changeId
-argument_list|)
-return|;
-block|}
-name|checkArgument
-argument_list|(
-name|change
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|project
-argument_list|)
-argument_list|,
-literal|"passed project %s when creating ChangeNotes for %s, but actual project is %s"
-argument_list|,
-name|project
-argument_list|,
-name|changeId
-argument_list|,
-name|change
-operator|.
-name|getProject
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-name|change
-return|;
-block|}
-DECL|method|create (ReviewDb db, Project.NameKey project, Change.Id changeId)
-specifier|public
-name|ChangeNotes
-name|create
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
-name|Change
-operator|.
-name|Id
-name|changeId
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
 return|return
 operator|new
 name|ChangeNotes
 argument_list|(
 name|args
 argument_list|,
-name|loadChangeFromDb
+name|newChange
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|changeId
@@ -1622,7 +1425,7 @@ name|load
 argument_list|()
 return|;
 block|}
-DECL|method|create (ReviewDb db, Collection<Change.Id> changeIds)
+DECL|method|create (Collection<Change.Id> changeIds)
 specifier|public
 name|List
 argument_list|<
@@ -1630,9 +1433,6 @@ name|ChangeNotes
 argument_list|>
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Collection
 argument_list|<
 name|Change
@@ -1691,7 +1491,7 @@ return|return
 name|notes
 return|;
 block|}
-DECL|method|create ( ReviewDb db, Project.NameKey project, Collection<Change.Id> changeIds, Predicate<ChangeNotes> predicate)
+DECL|method|create ( Project.NameKey project, Collection<Change.Id> changeIds, Predicate<ChangeNotes> predicate)
 specifier|public
 name|List
 argument_list|<
@@ -1699,9 +1499,6 @@ name|ChangeNotes
 argument_list|>
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -1752,8 +1549,6 @@ name|cn
 init|=
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|cid
@@ -1800,7 +1595,7 @@ return|return
 name|notes
 return|;
 block|}
-DECL|method|create ( ReviewDb db, Predicate<ChangeNotes> predicate)
+DECL|method|create (Predicate<ChangeNotes> predicate)
 specifier|public
 name|ListMultimap
 argument_list|<
@@ -1812,9 +1607,6 @@ name|ChangeNotes
 argument_list|>
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Predicate
 argument_list|<
 name|ChangeNotes
@@ -1823,8 +1615,6 @@ name|predicate
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|ListMultimap
 argument_list|<
@@ -2041,7 +1831,7 @@ name|ChangeNotes
 operator|.
 name|Factory
 operator|.
-name|newNoteDbOnlyChange
+name|newChange
 argument_list|(
 name|project
 argument_list|,
@@ -2071,13 +1861,13 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|toResult (Change rawChangeFromReviewDbOrNoteDb)
+DECL|method|toResult (Change rawChangeFromNoteDb)
 specifier|private
 name|ChangeNotesResult
 name|toResult
 parameter_list|(
 name|Change
-name|rawChangeFromReviewDbOrNoteDb
+name|rawChangeFromNoteDb
 parameter_list|)
 block|{
 name|ChangeNotes
@@ -2088,7 +1878,7 @@ name|ChangeNotes
 argument_list|(
 name|args
 argument_list|,
-name|rawChangeFromReviewDbOrNoteDb
+name|rawChangeFromNoteDb
 argument_list|)
 decl_stmt|;
 try|try
@@ -3473,6 +3263,9 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// TODO(ekempin): Remove the primary storage check. At the moment it is still needed for the
+comment|// ChangeNotesParserTest which still runs with ReviewDb changes (see TODO in
+comment|// TestUpdate#newChange).
 if|if
 condition|(
 name|PrimaryStorage

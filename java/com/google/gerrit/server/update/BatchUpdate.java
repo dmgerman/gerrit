@@ -3596,7 +3596,7 @@ name|ChangeNotes
 operator|.
 name|Factory
 operator|.
-name|newNoteDbOnlyChange
+name|newChange
 argument_list|(
 name|project
 argument_list|,

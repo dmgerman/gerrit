@@ -308,22 +308,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|cache
@@ -697,15 +681,6 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 decl_stmt|;
-DECL|field|reviewDb
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|reviewDb
-decl_stmt|;
 DECL|field|changeNotesFactory
 specifier|private
 specifier|final
@@ -734,7 +709,7 @@ name|allowedIdTypes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeFinder ( IndexConfig indexConfig, @Named(CACHE_NAME) Cache<Change.Id, String> changeIdProjectCache, Provider<InternalChangeQuery> queryProvider, Provider<ReviewDb> reviewDb, ChangeNotes.Factory changeNotesFactory, MetricMaker metricMaker, @GerritServerConfig Config config)
+DECL|method|ChangeFinder ( IndexConfig indexConfig, @Named(CACHE_NAME) Cache<Change.Id, String> changeIdProjectCache, Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory changeNotesFactory, MetricMaker metricMaker, @GerritServerConfig Config config)
 name|ChangeFinder
 parameter_list|(
 name|IndexConfig
@@ -760,12 +735,6 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|reviewDb
 parameter_list|,
 name|ChangeNotes
 operator|.
@@ -798,12 +767,6 @@ operator|.
 name|queryProvider
 operator|=
 name|queryProvider
-expr_stmt|;
-name|this
-operator|.
-name|reviewDb
-operator|=
-name|reviewDb
 expr_stmt|;
 name|this
 operator|.
@@ -1390,11 +1353,6 @@ name|changeNotesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|reviewDb
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|Project
 operator|.
 name|NameKey

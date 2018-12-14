@@ -1872,8 +1872,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|c3
@@ -2016,8 +2014,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|c3
@@ -2047,8 +2043,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|c4

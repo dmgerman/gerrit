@@ -9003,8 +9003,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|c
 argument_list|)
 decl_stmt|;
@@ -9107,8 +9105,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|c
 argument_list|)
 decl_stmt|;

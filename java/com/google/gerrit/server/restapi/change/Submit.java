@@ -1854,8 +1854,6 @@ name|changeNotesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|change
 operator|.
 name|getProject

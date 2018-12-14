@@ -1154,9 +1154,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|// Allow this method to proceed even if migration.failChangeWrites() = true.
-comment|// This may be used by an auto-rebuilding step that the caller does not plan
-comment|// to actually store.
 name|checkArgument
 argument_list|(
 name|rw

@@ -666,7 +666,7 @@ specifier|private
 name|boolean
 name|done
 decl_stmt|;
-DECL|method|create ( ListMultimap<ObjectId, Ref> changeRefsById, ReviewDb db, PatchSetUtil psUtil, ChangeNotes.Factory notesFactory, Project.NameKey project)
+DECL|method|create ( ListMultimap<ObjectId, Ref> changeRefsById, PatchSetUtil psUtil, ChangeNotes.Factory notesFactory, Project.NameKey project)
 specifier|public
 specifier|static
 name|GroupCollector
@@ -679,9 +679,6 @@ argument_list|,
 name|Ref
 argument_list|>
 name|changeRefsById
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|PatchSetUtil
 name|psUtil
@@ -735,8 +732,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|psId

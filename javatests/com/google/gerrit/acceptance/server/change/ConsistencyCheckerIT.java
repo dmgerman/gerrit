@@ -1973,8 +1973,6 @@ name|changeNotesFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|c
 operator|.
 name|getProject
@@ -5013,8 +5011,6 @@ name|changeNotesFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|ins
@@ -5192,8 +5188,6 @@ name|changeNotesFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|notes
 operator|.
 name|getChange

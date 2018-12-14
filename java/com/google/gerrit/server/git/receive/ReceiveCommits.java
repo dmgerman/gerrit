@@ -12398,8 +12398,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|project
 operator|.
 name|getNameKey
@@ -12870,8 +12868,6 @@ name|create
 argument_list|(
 name|changeRefsById
 argument_list|()
-argument_list|,
-name|db
 argument_list|,
 name|psUtil
 argument_list|,
@@ -14338,8 +14334,6 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 operator|.
 name|getNameKey
@@ -16354,8 +16348,6 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|replaceByChange
 operator|.
 name|values
@@ -20081,8 +20073,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|project
 operator|.
 name|getNameKey

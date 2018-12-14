@@ -1214,8 +1214,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|)
 argument_list|)
@@ -1404,11 +1402,6 @@ name|notesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|refEvent
 operator|.
 name|getProjectNameKey
