@@ -2430,13 +2430,6 @@ argument_list|(
 name|changeData
 argument_list|)
 operator|.
-name|database
-argument_list|(
-name|args
-operator|.
-name|db
-argument_list|)
-operator|.
 name|check
 argument_list|(
 name|ChangePermission

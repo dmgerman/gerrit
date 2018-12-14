@@ -1940,14 +1940,6 @@ name|getUser
 argument_list|()
 argument_list|)
 operator|.
-name|database
-argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|)
-operator|.
 name|change
 argument_list|(
 name|origNotes

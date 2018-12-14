@@ -5747,10 +5747,6 @@ name|ChangeIsVisibleToPredicate
 argument_list|(
 name|args
 operator|.
-name|db
-argument_list|,
-name|args
-operator|.
 name|notesFactory
 argument_list|,
 name|user

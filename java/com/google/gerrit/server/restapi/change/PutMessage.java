@@ -1538,14 +1538,6 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|database
-argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|)
-operator|.
 name|change
 argument_list|(
 name|changeNotes

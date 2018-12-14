@@ -216,22 +216,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -856,15 +840,6 @@ specifier|final
 name|ChangeIndexer
 name|indexer
 decl_stmt|;
-DECL|field|reviewDb
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|reviewDb
-decl_stmt|;
 DECL|field|currentUser
 specifier|private
 specifier|final
@@ -900,7 +875,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditModifier ( @erritPersonIdent PersonIdent gerritIdent, ChangeIndexer indexer, Provider<ReviewDb> reviewDb, Provider<CurrentUser> currentUser, PermissionBackend permissionBackend, ChangeEditUtil changeEditUtil, PatchSetUtil patchSetUtil, ProjectCache projectCache)
+DECL|method|ChangeEditModifier ( @erritPersonIdent PersonIdent gerritIdent, ChangeIndexer indexer, Provider<CurrentUser> currentUser, PermissionBackend permissionBackend, ChangeEditUtil changeEditUtil, PatchSetUtil patchSetUtil, ProjectCache projectCache)
 name|ChangeEditModifier
 parameter_list|(
 annotation|@
@@ -910,12 +885,6 @@ name|gerritIdent
 parameter_list|,
 name|ChangeIndexer
 name|indexer
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|reviewDb
 parameter_list|,
 name|Provider
 argument_list|<
@@ -941,12 +910,6 @@ operator|.
 name|indexer
 operator|=
 name|indexer
-expr_stmt|;
-name|this
-operator|.
-name|reviewDb
-operator|=
-name|reviewDb
 expr_stmt|;
 name|this
 operator|.
@@ -2222,11 +2185,6 @@ name|permissionBackend
 operator|.
 name|currentUser
 argument_list|()
-operator|.
-name|database
-argument_list|(
-name|reviewDb
-argument_list|)
 operator|.
 name|change
 argument_list|(

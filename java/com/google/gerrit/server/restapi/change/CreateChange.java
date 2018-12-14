@@ -2032,11 +2032,6 @@ argument_list|(
 name|change
 argument_list|)
 operator|.
-name|database
-argument_list|(
-name|db
-argument_list|)
-operator|.
 name|check
 argument_list|(
 name|ChangePermission

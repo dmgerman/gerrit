@@ -1051,8 +1051,6 @@ name|visible
 init|=
 name|isVisible
 argument_list|(
-name|db
-argument_list|,
 name|changeSet
 argument_list|,
 name|cd
@@ -1373,14 +1371,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|isVisible (ReviewDb db, ChangeSet changeSet, ChangeData cd, CurrentUser user)
+DECL|method|isVisible (ChangeSet changeSet, ChangeData cd, CurrentUser user)
 specifier|private
 name|boolean
 name|isVisible
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeSet
 name|changeSet
 parameter_list|,
@@ -1457,11 +1452,6 @@ operator|.
 name|change
 argument_list|(
 name|cd
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|check

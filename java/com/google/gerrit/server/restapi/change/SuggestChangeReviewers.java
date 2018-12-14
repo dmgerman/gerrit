@@ -641,11 +641,6 @@ argument_list|(
 name|account
 argument_list|)
 operator|.
-name|database
-argument_list|(
-name|dbProvider
-argument_list|)
-operator|.
 name|ref
 argument_list|(
 name|rsrc

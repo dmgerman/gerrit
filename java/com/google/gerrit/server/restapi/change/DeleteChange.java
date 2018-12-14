@@ -535,11 +535,6 @@ operator|.
 name|permissions
 argument_list|()
 operator|.
-name|database
-argument_list|(
-name|db
-argument_list|)
-operator|.
 name|check
 argument_list|(
 name|ChangePermission
@@ -660,11 +655,6 @@ name|rsrc
 operator|.
 name|permissions
 argument_list|()
-operator|.
-name|database
-argument_list|(
-name|db
-argument_list|)
 decl_stmt|;
 return|return
 operator|new

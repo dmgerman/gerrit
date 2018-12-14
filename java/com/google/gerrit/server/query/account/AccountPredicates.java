@@ -910,10 +910,6 @@ name|CanSeeChangePredicate
 argument_list|(
 name|args
 operator|.
-name|db
-argument_list|,
-name|args
-operator|.
 name|permissionBackend
 argument_list|,
 name|changeNotes

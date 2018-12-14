@@ -800,11 +800,6 @@ argument_list|(
 name|cd
 argument_list|)
 operator|.
-name|database
-argument_list|(
-name|db
-argument_list|)
-operator|.
 name|check
 argument_list|(
 name|ChangePermission
@@ -913,14 +908,11 @@ block|}
 block|}
 block|}
 comment|/**    * Completes {@code changeSet} with any additional changes from its topics    *    *<p>{@link #completeChangeSetIncludingTopics} calls this repeatedly, alternating with {@link    * MergeSuperSetComputation#completeWithoutTopic(ReviewDb, MergeOpRepoManager, ChangeSet,    * CurrentUser)}, to discover what additional changes should be submitted with a change until the    * set stops growing.    *    *<p>{@code topicsSeen} and {@code visibleTopicsSeen} keep track of topics already explored to    * avoid wasted work.    *    * @return the resulting larger {@link ChangeSet}    */
-DECL|method|topicClosure ( ReviewDb db, ChangeSet changeSet, CurrentUser user, Set<String> topicsSeen, Set<String> visibleTopicsSeen)
+DECL|method|topicClosure ( ChangeSet changeSet, CurrentUser user, Set<String> topicsSeen, Set<String> visibleTopicsSeen)
 specifier|private
 name|ChangeSet
 name|topicClosure
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeSet
 name|changeSet
 parameter_list|,
@@ -1031,8 +1023,6 @@ if|if
 condition|(
 name|canRead
 argument_list|(
-name|db
-argument_list|,
 name|user
 argument_list|,
 name|topicCd
@@ -1211,8 +1201,6 @@ name|changeSet
 operator|=
 name|topicClosure
 argument_list|(
-name|db
-argument_list|,
 name|changeSet
 argument_list|,
 name|user
@@ -1276,8 +1264,6 @@ name|changeSet
 operator|=
 name|topicClosure
 argument_list|(
-name|db
-argument_list|,
 name|changeSet
 argument_list|,
 name|user
@@ -1337,14 +1323,11 @@ name|topic
 argument_list|)
 return|;
 block|}
-DECL|method|canRead (ReviewDb db, CurrentUser user, ChangeData cd)
+DECL|method|canRead (CurrentUser user, ChangeData cd)
 specifier|private
 name|boolean
 name|canRead
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|CurrentUser
 name|user
 parameter_list|,
@@ -1398,11 +1381,6 @@ operator|.
 name|change
 argument_list|(
 name|cd
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|check

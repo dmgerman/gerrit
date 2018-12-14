@@ -966,13 +966,6 @@ name|getUser
 argument_list|()
 argument_list|)
 operator|.
-name|database
-argument_list|(
-name|args
-operator|.
-name|db
-argument_list|)
-operator|.
 name|change
 argument_list|(
 name|changeNotes

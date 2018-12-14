@@ -846,11 +846,6 @@ name|getAccountId
 argument_list|()
 argument_list|)
 operator|.
-name|database
-argument_list|(
-name|db
-argument_list|)
-operator|.
 name|change
 argument_list|(
 name|rsrc
@@ -1050,11 +1045,6 @@ name|reviewerAdder
 operator|.
 name|prepare
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rsrc
 operator|.
 name|getNotes

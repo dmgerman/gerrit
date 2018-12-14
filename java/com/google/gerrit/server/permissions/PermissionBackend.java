@@ -286,22 +286,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -365,32 +349,6 @@ operator|.
 name|inject
 operator|.
 name|ImplementedBy
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|util
-operator|.
-name|Providers
 import|;
 end_import
 
@@ -620,101 +578,6 @@ block|{
 comment|// Do nothing by default. The default implementation of PermissionBackendCondition
 comment|// delegates to the appropriate testOrFalse method in PermissionBackend.
 block|}
-comment|/** PermissionBackend with an optional per-request ReviewDb handle. */
-DECL|class|AcceptsReviewDb
-specifier|public
-specifier|abstract
-specifier|static
-class|class
-name|AcceptsReviewDb
-parameter_list|<
-name|T
-parameter_list|>
-block|{
-DECL|field|db
-specifier|protected
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
-DECL|method|database (Provider<ReviewDb> db)
-specifier|public
-name|T
-name|database
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
-block|{
-if|if
-condition|(
-name|db
-operator|!=
-literal|null
-condition|)
-block|{
-name|this
-operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
-block|}
-return|return
-name|self
-argument_list|()
-return|;
-block|}
-DECL|method|database (ReviewDb db)
-specifier|public
-name|T
-name|database
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|)
-block|{
-return|return
-name|database
-argument_list|(
-name|Providers
-operator|.
-name|of
-argument_list|(
-name|requireNonNull
-argument_list|(
-name|db
-argument_list|,
-literal|"ReviewDb"
-argument_list|)
-argument_list|)
-argument_list|)
-return|;
-block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-DECL|method|self ()
-specifier|private
-name|T
-name|self
-parameter_list|()
-block|{
-return|return
-operator|(
-name|T
-operator|)
-name|this
-return|;
-block|}
-block|}
 comment|/** PermissionBackend scoped to a specific user. */
 DECL|class|WithUser
 specifier|public
@@ -722,11 +585,6 @@ specifier|abstract
 specifier|static
 class|class
 name|WithUser
-extends|extends
-name|AcceptsReviewDb
-argument_list|<
-name|WithUser
-argument_list|>
 block|{
 comment|/** Returns an instance scoped for the specified project. */
 DECL|method|project (Project.NameKey project)
@@ -768,11 +626,6 @@ name|ref
 operator|.
 name|get
 argument_list|()
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 return|;
 block|}
@@ -1232,11 +1085,6 @@ specifier|abstract
 specifier|static
 class|class
 name|ForProject
-extends|extends
-name|AcceptsReviewDb
-argument_list|<
-name|ForProject
-argument_list|>
 block|{
 comment|/** Returns the fully qualified resource path that this instance is scoped to. */
 DECL|method|resourcePath ()
@@ -1677,11 +1525,6 @@ specifier|abstract
 specifier|static
 class|class
 name|ForRef
-extends|extends
-name|AcceptsReviewDb
-argument_list|<
-name|ForRef
-argument_list|>
 block|{
 comment|/** Returns a fully qualified resource path that this instance is scoped to. */
 DECL|method|resourcePath ()
@@ -1854,11 +1697,6 @@ specifier|abstract
 specifier|static
 class|class
 name|ForChange
-extends|extends
-name|AcceptsReviewDb
-argument_list|<
-name|ForChange
-argument_list|>
 block|{
 comment|/** Returns the fully qualified resource path that this instance is scoped to. */
 DECL|method|resourcePath ()

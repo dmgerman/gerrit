@@ -266,22 +266,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|git
@@ -411,18 +395,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -633,15 +605,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|projectCache
 specifier|private
 specifier|final
@@ -650,7 +613,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RelatedChangesSorter ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, Provider<ReviewDb> dbProvider, ProjectCache projectCache)
+DECL|method|RelatedChangesSorter ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, ProjectCache projectCache)
 name|RelatedChangesSorter
 parameter_list|(
 name|GitRepositoryManager
@@ -658,12 +621,6 @@ name|repoManager
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -680,12 +637,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -1838,11 +1789,6 @@ name|permissionBackend
 operator|.
 name|currentUser
 argument_list|()
-operator|.
-name|database
-argument_list|(
-name|dbProvider
-argument_list|)
 decl_stmt|;
 try|try
 block|{

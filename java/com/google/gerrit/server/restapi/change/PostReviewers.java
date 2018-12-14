@@ -568,11 +568,6 @@ name|reviewerAdder
 operator|.
 name|prepare
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rsrc
 operator|.
 name|getNotes

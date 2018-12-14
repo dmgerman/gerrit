@@ -855,11 +855,6 @@ operator|.
 name|permissions
 argument_list|()
 operator|.
-name|database
-argument_list|(
-name|dbProvider
-argument_list|)
-operator|.
 name|check
 argument_list|(
 name|ChangePermission
@@ -1509,11 +1504,6 @@ name|rsrc
 operator|.
 name|permissions
 argument_list|()
-operator|.
-name|database
-argument_list|(
-name|dbProvider
-argument_list|)
 operator|.
 name|testOrFalse
 argument_list|(

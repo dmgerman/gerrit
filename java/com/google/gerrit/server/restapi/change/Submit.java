@@ -2037,11 +2037,6 @@ argument_list|(
 name|user
 argument_list|)
 operator|.
-name|database
-argument_list|(
-name|dbProvider
-argument_list|)
-operator|.
 name|change
 argument_list|(
 name|c
@@ -3387,11 +3382,6 @@ name|rsrc
 operator|.
 name|permissions
 argument_list|()
-operator|.
-name|database
-argument_list|(
-name|dbProvider
-argument_list|)
 decl_stmt|;
 name|perm
 operator|.
@@ -3440,11 +3430,6 @@ operator|.
 name|user
 argument_list|(
 name|submitter
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|dbProvider
 argument_list|)
 operator|.
 name|change

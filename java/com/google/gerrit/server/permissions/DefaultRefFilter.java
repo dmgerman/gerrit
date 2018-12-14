@@ -384,22 +384,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -627,18 +611,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -922,7 +894,7 @@ name|visibleChanges
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DefaultRefFilter ( TagCache tagCache, ChangeNotes.Factory changeNotesFactory, @Nullable SearchingChangeCacheImpl changeCache, Provider<ReviewDb> db, GroupCache groupCache, PermissionBackend permissionBackend, @GerritServerConfig Config config, MetricMaker metricMaker, @Assisted ProjectControl projectControl)
+DECL|method|DefaultRefFilter ( TagCache tagCache, ChangeNotes.Factory changeNotesFactory, @Nullable SearchingChangeCacheImpl changeCache, GroupCache groupCache, PermissionBackend permissionBackend, @GerritServerConfig Config config, MetricMaker metricMaker, @Assisted ProjectControl projectControl)
 name|DefaultRefFilter
 parameter_list|(
 name|TagCache
@@ -937,12 +909,6 @@ annotation|@
 name|Nullable
 name|SearchingChangeCacheImpl
 name|changeCache
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|GroupCache
 name|groupCache
@@ -1042,11 +1008,6 @@ operator|.
 name|user
 argument_list|(
 name|user
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|project

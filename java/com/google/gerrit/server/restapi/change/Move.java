@@ -1403,11 +1403,6 @@ operator|.
 name|permissions
 argument_list|()
 operator|.
-name|database
-argument_list|(
-name|dbProvider
-argument_list|)
-operator|.
 name|check
 argument_list|(
 name|ABANDON
@@ -1418,11 +1413,6 @@ operator|.
 name|user
 argument_list|(
 name|caller
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|dbProvider
 argument_list|)
 operator|.
 name|ref
@@ -2460,11 +2450,6 @@ name|rsrc
 operator|.
 name|permissions
 argument_list|()
-operator|.
-name|database
-argument_list|(
-name|dbProvider
-argument_list|)
 operator|.
 name|testCond
 argument_list|(

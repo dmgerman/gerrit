@@ -1342,8 +1342,6 @@ literal|null
 operator|&&
 name|canSee
 argument_list|(
-name|db
-argument_list|,
 name|update
 operator|.
 name|getNotes
@@ -1369,8 +1367,6 @@ literal|null
 operator|&&
 name|canSee
 argument_list|(
-name|db
-argument_list|,
 name|update
 operator|.
 name|getNotes
@@ -1519,14 +1515,11 @@ name|cells
 argument_list|)
 return|;
 block|}
-DECL|method|canSee (ReviewDb db, ChangeNotes notes, Account.Id accountId)
+DECL|method|canSee (ChangeNotes notes, Account.Id accountId)
 specifier|private
 name|boolean
 name|canSee
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -1569,11 +1562,6 @@ operator|.
 name|change
 argument_list|(
 name|notes
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|check
@@ -1865,11 +1853,6 @@ operator|.
 name|user
 argument_list|(
 name|user
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|change

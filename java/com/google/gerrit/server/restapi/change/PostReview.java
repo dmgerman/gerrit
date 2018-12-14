@@ -2810,11 +2810,6 @@ name|reviewerAdder
 operator|.
 name|prepare
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|revision
 operator|.
 name|getNotes
@@ -3857,11 +3852,6 @@ name|rev
 operator|.
 name|permissions
 argument_list|()
-operator|.
-name|database
-argument_list|(
-name|db
-argument_list|)
 decl_stmt|;
 name|Iterator
 argument_list|<
@@ -4069,11 +4059,6 @@ operator|.
 name|user
 argument_list|(
 name|reviewer
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|change

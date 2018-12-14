@@ -136,22 +136,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|change
@@ -400,12 +384,6 @@ specifier|final
 name|ChangeFinder
 name|changeFinder
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|changeNotesFactory
 specifier|private
 specifier|final
@@ -422,7 +400,7 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeArgumentParser ( ChangesCollection changesCollection, ChangeFinder changeFinder, ReviewDb db, ChangeNotes.Factory changeNotesFactory, PermissionBackend permissionBackend)
+DECL|method|ChangeArgumentParser ( ChangesCollection changesCollection, ChangeFinder changeFinder, ChangeNotes.Factory changeNotesFactory, PermissionBackend permissionBackend)
 name|ChangeArgumentParser
 parameter_list|(
 name|ChangesCollection
@@ -430,9 +408,6 @@ name|changesCollection
 parameter_list|,
 name|ChangeFinder
 name|changeFinder
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|ChangeNotes
 operator|.
@@ -454,12 +429,6 @@ operator|.
 name|changeFinder
 operator|=
 name|changeFinder
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -724,11 +693,6 @@ operator|.
 name|change
 argument_list|(
 name|notes
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|check
