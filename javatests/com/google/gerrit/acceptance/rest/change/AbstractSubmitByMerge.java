@@ -676,8 +676,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -709,8 +707,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|getIdent

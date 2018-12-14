@@ -906,22 +906,6 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
 name|ReviewerStateInternal
 import|;
 end_import
@@ -2002,11 +1986,6 @@ specifier|final
 name|IndexConfig
 name|indexConfig
 decl_stmt|;
-DECL|field|notesMigration
-specifier|final
-name|NotesMigration
-name|notesMigration
-decl_stmt|;
 DECL|field|patchListCache
 specifier|final
 name|PatchListCache
@@ -2074,7 +2053,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, NotesMigration notesMigration, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -2174,9 +2153,6 @@ parameter_list|,
 name|AccountCache
 name|accountCache
 parameter_list|,
-name|NotesMigration
-name|notesMigration
-parameter_list|,
 name|GroupMembers
 name|groupMembers
 parameter_list|,
@@ -2248,15 +2224,13 @@ name|starredChangesUtil
 argument_list|,
 name|accountCache
 argument_list|,
-name|notesMigration
-argument_list|,
 name|groupMembers
 argument_list|,
 name|anonymousUserProvider
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, NotesMigration notesMigration, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2356,9 +2330,6 @@ parameter_list|,
 name|AccountCache
 name|accountCache
 parameter_list|,
-name|NotesMigration
-name|notesMigration
-parameter_list|,
 name|GroupMembers
 name|groupMembers
 parameter_list|,
@@ -2521,12 +2492,6 @@ name|hasOperands
 expr_stmt|;
 name|this
 operator|.
-name|notesMigration
-operator|=
-name|notesMigration
-expr_stmt|;
-name|this
-operator|.
 name|groupMembers
 operator|=
 name|groupMembers
@@ -2604,8 +2569,6 @@ argument_list|,
 name|starredChangesUtil
 argument_list|,
 name|accountCache
-argument_list|,
-name|notesMigration
 argument_list|,
 name|groupMembers
 argument_list|,
@@ -3647,8 +3610,6 @@ name|ReviewerPredicate
 operator|.
 name|reviewer
 argument_list|(
-name|args
-argument_list|,
 name|self
 argument_list|()
 argument_list|)
@@ -3660,8 +3621,6 @@ name|ReviewerPredicate
 operator|.
 name|reviewer
 argument_list|(
-name|args
-argument_list|,
 name|self
 argument_list|()
 argument_list|)

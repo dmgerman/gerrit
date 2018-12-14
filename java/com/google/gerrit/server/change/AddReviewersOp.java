@@ -510,22 +510,6 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
 name|ReviewerStateInternal
 import|;
 end_import
@@ -895,12 +879,6 @@ specifier|final
 name|AddReviewersEmail
 name|addReviewersEmail
 decl_stmt|;
-DECL|field|migration
-specifier|private
-specifier|final
-name|NotesMigration
-name|migration
-decl_stmt|;
 DECL|field|accountIds
 specifier|private
 specifier|final
@@ -1019,7 +997,7 @@ name|opResult
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, ProjectCache projectCache, AddReviewersEmail addReviewersEmail, NotesMigration migration, @Assisted Set<Account.Id> accountIds, @Assisted Collection<Address> addresses, @Assisted ReviewerState state, @Assisted @Nullable NotifyHandling notify, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|AddReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, ProjectCache projectCache, AddReviewersEmail addReviewersEmail, @Assisted Set<Account.Id> accountIds, @Assisted Collection<Address> addresses, @Assisted ReviewerState state, @Assisted @Nullable NotifyHandling notify, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|AddReviewersOp
 parameter_list|(
 name|ApprovalsUtil
@@ -1039,9 +1017,6 @@ name|projectCache
 parameter_list|,
 name|AddReviewersEmail
 name|addReviewersEmail
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1143,12 +1118,6 @@ name|addReviewersEmail
 expr_stmt|;
 name|this
 operator|.
-name|migration
-operator|=
-name|migration
-expr_stmt|;
-name|this
-operator|.
 name|accountIds
 operator|=
 name|accountIds
@@ -1231,11 +1200,6 @@ condition|)
 block|{
 if|if
 condition|(
-name|migration
-operator|.
-name|readChanges
-argument_list|()
-operator|&&
 name|state
 operator|==
 name|CC
@@ -1340,14 +1304,6 @@ argument_list|(
 name|state
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|migration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
 comment|// TODO(dborowitz): This behavior should live in ApprovalsUtil or something, like addCcs does.
 name|ImmutableSet
 argument_list|<
@@ -1438,7 +1394,6 @@ argument_list|,
 name|internalState
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(

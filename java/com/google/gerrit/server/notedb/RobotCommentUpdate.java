@@ -565,7 +565,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|RobotCommentUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|RobotCommentUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
 name|RobotCommentUpdate
 parameter_list|(
@@ -578,9 +578,6 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
@@ -625,8 +622,6 @@ name|super
 argument_list|(
 name|cfg
 argument_list|,
-name|migration
-argument_list|,
 name|noteUtil
 argument_list|,
 name|serverIdent
@@ -647,7 +642,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|RobotCommentUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|RobotCommentUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
 name|RobotCommentUpdate
 parameter_list|(
@@ -660,9 +655,6 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
@@ -706,8 +698,6 @@ block|{
 name|super
 argument_list|(
 name|cfg
-argument_list|,
-name|migration
 argument_list|,
 name|noteUtil
 argument_list|,
@@ -1099,17 +1089,8 @@ name|emptyMap
 argument_list|()
 return|;
 block|}
-if|if
-condition|(
-name|migration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
-comment|// If reading from changes is enabled, then the old RobotCommentNotes
-comment|// already parsed the revision notes. We can reuse them as long as the ref
-comment|// hasn't advanced.
+comment|// The old RobotCommentNotes already parsed the revision notes. We can reuse them as long as
+comment|// the ref hasn't advanced.
 name|ChangeNotes
 name|changeNotes
 init|=
@@ -1185,7 +1166,6 @@ block|{
 return|return
 name|rnm
 return|;
-block|}
 block|}
 block|}
 block|}

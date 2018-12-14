@@ -1788,22 +1788,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|patch
 operator|.
 name|PatchSetInfoFactory
@@ -3397,12 +3381,6 @@ operator|.
 name|Factory
 name|mergedByPushOpFactory
 decl_stmt|;
-DECL|field|notesMigration
-specifier|private
-specifier|final
-name|NotesMigration
-name|notesMigration
-decl_stmt|;
 DECL|field|patchSetInfoFactory
 specifier|private
 specifier|final
@@ -3722,7 +3700,7 @@ name|resultChangeIds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender, @Assisted ResultChangeIds resultChangeIds)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender, @Assisted ResultChangeIds resultChangeIds)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -3800,9 +3778,6 @@ name|MergedByPushOp
 operator|.
 name|Factory
 name|mergedByPushOpFactory
-parameter_list|,
-name|NotesMigration
-name|notesMigration
 parameter_list|,
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
@@ -4006,12 +3981,6 @@ operator|.
 name|notesFactory
 operator|=
 name|notesFactory
-expr_stmt|;
-name|this
-operator|.
-name|notesMigration
-operator|=
-name|notesMigration
 expr_stmt|;
 name|this
 operator|.
@@ -9276,11 +9245,6 @@ specifier|final
 name|LabelTypes
 name|labelTypes
 decl_stmt|;
-DECL|field|notesMigration
-specifier|final
-name|NotesMigration
-name|notesMigration
-decl_stmt|;
 DECL|field|defaultPublishComments
 specifier|private
 specifier|final
@@ -9989,27 +9953,7 @@ parameter_list|(
 name|String
 name|token
 parameter_list|)
-throws|throws
-name|CmdLineException
 block|{
-if|if
-condition|(
-operator|!
-name|notesMigration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
-throw|throw
-name|cmdLineParser
-operator|.
-name|reject
-argument_list|(
-literal|"cannot add hashtags; noteDb is disabled"
-argument_list|)
-throw|;
-block|}
 name|String
 name|hashtag
 init|=
@@ -10037,7 +9981,7 @@ expr_stmt|;
 block|}
 comment|// TODO(dpursehouse): validate hashtags
 block|}
-DECL|method|MagicBranchInput ( IdentifiedUser user, ReceiveCommand cmd, LabelTypes labelTypes, NotesMigration notesMigration)
+DECL|method|MagicBranchInput (IdentifiedUser user, ReceiveCommand cmd, LabelTypes labelTypes)
 name|MagicBranchInput
 parameter_list|(
 name|IdentifiedUser
@@ -10048,9 +9992,6 @@ name|cmd
 parameter_list|,
 name|LabelTypes
 name|labelTypes
-parameter_list|,
-name|NotesMigration
-name|notesMigration
 parameter_list|)
 block|{
 name|this
@@ -10086,12 +10027,6 @@ operator|.
 name|labelTypes
 operator|=
 name|labelTypes
-expr_stmt|;
-name|this
-operator|.
-name|notesMigration
-operator|=
-name|notesMigration
 expr_stmt|;
 name|GeneralPreferencesInfo
 name|prefs
@@ -10766,8 +10701,6 @@ argument_list|,
 name|cmd
 argument_list|,
 name|labelTypes
-argument_list|,
-name|notesMigration
 argument_list|)
 decl_stmt|;
 name|String

@@ -134,22 +134,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -235,12 +219,6 @@ block|}
 block|}
 return|;
 block|}
-DECL|field|notesMigration
-specifier|private
-specifier|final
-name|NotesMigration
-name|notesMigration
-decl_stmt|;
 DECL|field|versionManager
 specifier|private
 specifier|final
@@ -255,12 +233,9 @@ name|sitePaths
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NoteDbSchemaVersionCheck ( NotesMigration notesMigration, NoteDbSchemaVersionManager versionManager, SitePaths sitePaths)
+DECL|method|NoteDbSchemaVersionCheck (NoteDbSchemaVersionManager versionManager, SitePaths sitePaths)
 name|NoteDbSchemaVersionCheck
 parameter_list|(
-name|NotesMigration
-name|notesMigration
-parameter_list|,
 name|NoteDbSchemaVersionManager
 name|versionManager
 parameter_list|,
@@ -268,12 +243,6 @@ name|SitePaths
 name|sitePaths
 parameter_list|)
 block|{
-name|this
-operator|.
-name|notesMigration
-operator|=
-name|notesMigration
-expr_stmt|;
 name|this
 operator|.
 name|versionManager
@@ -295,19 +264,6 @@ name|void
 name|start
 parameter_list|()
 block|{
-if|if
-condition|(
-operator|!
-name|notesMigration
-operator|.
-name|commitChangeWrites
-argument_list|()
-condition|)
-block|{
-comment|// TODO(dborowitz): Only necessary to make migration tests pass; remove when NoteDb is the
-comment|// only option.
-return|return;
-block|}
 try|try
 block|{
 name|int

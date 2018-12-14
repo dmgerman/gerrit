@@ -344,24 +344,6 @@ name|notedb
 operator|.
 name|ChangeNoteUtil
 operator|.
-name|FOOTER_READ_ONLY_UNTIL
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|ChangeNoteUtil
-operator|.
 name|FOOTER_REAL_USER
 import|;
 end_import
@@ -970,16 +952,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -1534,11 +1506,6 @@ specifier|private
 name|boolean
 name|currentPatchSet
 decl_stmt|;
-DECL|field|readOnlyUntil
-specifier|private
-name|Timestamp
-name|readOnlyUntil
-decl_stmt|;
 DECL|field|isPrivate
 specifier|private
 name|Boolean
@@ -1576,7 +1543,7 @@ name|deleteChangeMessageRewriter
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted CurrentUser user, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted CurrentUser user, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1589,9 +1556,6 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|NoteDbUpdateManager
 operator|.
@@ -1636,8 +1600,6 @@ name|cfg
 argument_list|,
 name|serverIdent
 argument_list|,
-name|migration
-argument_list|,
 name|updateManagerFactory
 argument_list|,
 name|draftUpdateFactory
@@ -1663,7 +1625,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted CurrentUser user, @Assisted Date when, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted CurrentUser user, @Assisted Date when, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1676,9 +1638,6 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|NoteDbUpdateManager
 operator|.
@@ -1727,8 +1686,6 @@ argument_list|(
 name|cfg
 argument_list|,
 name|serverIdent
-argument_list|,
-name|migration
 argument_list|,
 name|updateManagerFactory
 argument_list|,
@@ -1807,7 +1764,7 @@ return|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, @Assisted ChangeNotes notes, @Assisted CurrentUser user, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, @Assisted ChangeNotes notes, @Assisted CurrentUser user, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1820,9 +1777,6 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|NoteDbUpdateManager
 operator|.
@@ -1875,8 +1829,6 @@ name|super
 argument_list|(
 name|cfg
 argument_list|,
-name|migration
-argument_list|,
 name|notes
 argument_list|,
 name|user
@@ -1924,7 +1876,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NotesMigration migration, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) @Nullable Account.Id accountId, @Assisted(R) @Nullable Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) @Nullable Account.Id accountId, @Assisted(R) @Nullable Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1937,9 +1889,6 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
-parameter_list|,
-name|NotesMigration
-name|migration
 parameter_list|,
 name|NoteDbUpdateManager
 operator|.
@@ -2015,8 +1964,6 @@ block|{
 name|super
 argument_list|(
 name|cfg
-argument_list|,
-name|migration
 argument_list|,
 name|noteUtil
 argument_list|,
@@ -2098,14 +2045,6 @@ operator|.
 name|add
 argument_list|(
 name|this
-argument_list|)
-expr_stmt|;
-name|updateManager
-operator|.
-name|stageAndApplyDelta
-argument_list|(
-name|getChange
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|updateManager
@@ -3503,17 +3442,8 @@ name|emptyMap
 argument_list|()
 return|;
 block|}
-if|if
-condition|(
-name|migration
-operator|.
-name|readChanges
-argument_list|()
-condition|)
-block|{
-comment|// If reading from changes is enabled, then the old ChangeNotes may have
-comment|// already parsed the revision notes. We can reuse them as long as the ref
-comment|// hasn't advanced.
+comment|// The old ChangeNotes may have already parsed the revision notes. We can reuse them as long as
+comment|// the ref hasn't advanced.
 name|ChangeNotes
 name|notes
 init|=
@@ -3567,7 +3497,6 @@ name|notes
 operator|.
 name|revisionNoteMap
 return|;
-block|}
 block|}
 block|}
 name|NoteMap
@@ -4622,30 +4551,6 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|readOnlyUntil
-operator|!=
-literal|null
-condition|)
-block|{
-name|addFooter
-argument_list|(
-name|msg
-argument_list|,
-name|FOOTER_READ_ONLY_UNTIL
-argument_list|,
-name|NoteDbUtil
-operator|.
-name|formatTime
-argument_list|(
-name|serverIdent
-argument_list|,
-name|readOnlyUntil
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
 name|isPrivate
 operator|!=
 literal|null
@@ -4926,10 +4831,6 @@ operator|&&
 operator|!
 name|currentPatchSet
 operator|&&
-name|readOnlyUntil
-operator|==
-literal|null
-operator|&&
 name|isPrivate
 operator|==
 literal|null
@@ -5037,21 +4938,6 @@ operator|.
 name|workInProgress
 operator|=
 name|workInProgress
-expr_stmt|;
-block|}
-DECL|method|setReadOnlyUntil (Timestamp readOnlyUntil)
-name|void
-name|setReadOnlyUntil
-parameter_list|(
-name|Timestamp
-name|readOnlyUntil
-parameter_list|)
-block|{
-name|this
-operator|.
-name|readOnlyUntil
-operator|=
-name|readOnlyUntil
 expr_stmt|;
 block|}
 DECL|method|addFooter (StringBuilder sb, FooterKey footer)
@@ -5205,39 +5091,6 @@ expr_stmt|;
 return|return
 name|sb
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|checkNotReadOnly ()
-specifier|protected
-name|void
-name|checkNotReadOnly
-parameter_list|()
-throws|throws
-name|OrmException
-block|{
-comment|// Allow setting Read-only-until to 0 to release an existing lease.
-if|if
-condition|(
-name|readOnlyUntil
-operator|!=
-literal|null
-operator|&&
-name|readOnlyUntil
-operator|.
-name|getTime
-argument_list|()
-operator|==
-literal|0
-condition|)
-block|{
-return|return;
-block|}
-name|super
-operator|.
-name|checkNotReadOnly
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 end_class

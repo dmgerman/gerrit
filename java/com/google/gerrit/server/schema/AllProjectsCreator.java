@@ -624,22 +624,6 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
 name|RepoSequence
 import|;
 end_import
@@ -898,12 +882,6 @@ specifier|final
 name|PersonIdent
 name|serverUser
 decl_stmt|;
-DECL|field|notesMigration
-specifier|private
-specifier|final
-name|NotesMigration
-name|notesMigration
-decl_stmt|;
 DECL|field|versionManager
 specifier|private
 specifier|final
@@ -979,7 +957,7 @@ name|additionalLabelType
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AllProjectsCreator ( GitRepositoryManager repositoryManager, AllProjectsName allProjectsName, @GerritPersonIdent PersonIdent serverUser, NotesMigration notesMigration, NoteDbSchemaVersionManager versionManager, SystemGroupBackend systemGroupBackend, ProjectConfig.Factory projectConfigFactory)
+DECL|method|AllProjectsCreator ( GitRepositoryManager repositoryManager, AllProjectsName allProjectsName, @GerritPersonIdent PersonIdent serverUser, NoteDbSchemaVersionManager versionManager, SystemGroupBackend systemGroupBackend, ProjectConfig.Factory projectConfigFactory)
 name|AllProjectsCreator
 parameter_list|(
 name|GitRepositoryManager
@@ -992,9 +970,6 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverUser
-parameter_list|,
-name|NotesMigration
-name|notesMigration
 parameter_list|,
 name|NoteDbSchemaVersionManager
 name|versionManager
@@ -1025,12 +1000,6 @@ operator|.
 name|serverUser
 operator|=
 name|serverUser
-expr_stmt|;
-name|this
-operator|.
-name|notesMigration
-operator|=
-name|notesMigration
 expr_stmt|;
 name|this
 operator|.
@@ -2073,7 +2042,10 @@ argument_list|,
 name|bru
 argument_list|)
 expr_stmt|;
-name|initSchemaVersion
+comment|// init schema
+name|versionManager
+operator|.
+name|init
 argument_list|()
 expr_stmt|;
 name|execute
@@ -2304,31 +2276,6 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-block|}
-DECL|method|initSchemaVersion ()
-specifier|private
-name|void
-name|initSchemaVersion
-parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|OrmException
-block|{
-if|if
-condition|(
-name|notesMigration
-operator|.
-name|commitChangeWrites
-argument_list|()
-condition|)
-block|{
-name|versionManager
-operator|.
-name|init
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|execute (Repository git, BatchRefUpdate bru)

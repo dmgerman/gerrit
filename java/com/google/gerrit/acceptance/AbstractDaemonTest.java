@@ -1690,22 +1690,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|ProjectCache
@@ -3060,13 +3044,6 @@ name|Inject
 specifier|protected
 name|SystemGroupBackend
 name|systemGroupBackend
-decl_stmt|;
-DECL|field|notesMigration
-annotation|@
-name|Inject
-specifier|protected
-name|NotesMigration
-name|notesMigration
 decl_stmt|;
 DECL|field|notesFactory
 annotation|@
@@ -4944,8 +4921,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -5039,8 +5014,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -5086,8 +5059,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -5123,8 +5094,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -5226,8 +5195,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -5338,8 +5305,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -5401,8 +5366,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -5749,8 +5712,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|testAccount
 operator|.
 name|getIdent
@@ -7854,8 +7815,6 @@ name|pushFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|getIdent

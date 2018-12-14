@@ -1235,11 +1235,6 @@ argument_list|)
 comment|// Bypass approval copier since SubmitStrategyOp copy all approvals
 comment|// later anyway.
 operator|.
-name|setCopyApprovals
-argument_list|(
-literal|false
-argument_list|)
-operator|.
 name|setValidate
 argument_list|(
 literal|false

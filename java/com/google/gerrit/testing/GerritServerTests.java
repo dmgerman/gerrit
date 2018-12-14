@@ -66,22 +66,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -187,11 +171,6 @@ specifier|private
 name|String
 name|configName
 decl_stmt|;
-DECL|field|notesMigration
-specifier|protected
-name|NotesMigration
-name|notesMigration
-decl_stmt|;
 annotation|@
 name|Rule
 DECL|field|testRunner
@@ -230,9 +209,6 @@ parameter_list|()
 throws|throws
 name|Throwable
 block|{
-name|beforeTest
-argument_list|()
-expr_stmt|;
 name|base
 operator|.
 name|evaluate
@@ -244,19 +220,6 @@ return|;
 block|}
 block|}
 decl_stmt|;
-DECL|method|beforeTest ()
-specifier|public
-name|void
-name|beforeTest
-parameter_list|()
-block|{
-name|notesMigration
-operator|=
-operator|new
-name|NotesMigration
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 end_class
 
