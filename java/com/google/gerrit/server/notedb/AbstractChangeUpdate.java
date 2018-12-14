@@ -306,20 +306,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|Constants
 import|;
 end_import
@@ -488,13 +474,10 @@ specifier|protected
 name|boolean
 name|rootOnly
 decl_stmt|;
-DECL|method|AbstractChangeUpdate ( Config cfg, ChangeNotes notes, CurrentUser user, PersonIdent serverIdent, ChangeNoteUtil noteUtil, Date when)
+DECL|method|AbstractChangeUpdate ( ChangeNotes notes, CurrentUser user, PersonIdent serverIdent, ChangeNoteUtil noteUtil, Date when)
 specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
-name|Config
-name|cfg
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -600,13 +583,10 @@ operator|=
 name|when
 expr_stmt|;
 block|}
-DECL|method|AbstractChangeUpdate ( Config cfg, ChangeNoteUtil noteUtil, PersonIdent serverIdent, @Nullable ChangeNotes notes, @Nullable Change change, Account.Id accountId, Account.Id realAccountId, PersonIdent authorIdent, Date when)
+DECL|method|AbstractChangeUpdate ( ChangeNoteUtil noteUtil, PersonIdent serverIdent, @Nullable ChangeNotes notes, @Nullable Change change, Account.Id accountId, Account.Id realAccountId, PersonIdent authorIdent, Date when)
 specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
-name|Config
-name|cfg
-parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
 parameter_list|,
