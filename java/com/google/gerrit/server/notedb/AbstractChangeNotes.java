@@ -192,22 +192,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|config
@@ -452,14 +436,6 @@ specifier|final
 name|NoteDbMetrics
 name|metrics
 decl_stmt|;
-DECL|field|db
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 comment|// Providers required to avoid dependency cycles.
 comment|// ChangeNoteCache -> Args
 DECL|field|cache
@@ -472,7 +448,7 @@ name|cache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Args ( GitRepositoryManager repoManager, AllUsersName allUsers, ChangeNoteJson changeNoteJson, LegacyChangeNoteRead legacyChangeNoteRead, NoteDbMetrics metrics, Provider<ReviewDb> db, Provider<ChangeNotesCache> cache)
+DECL|method|Args ( GitRepositoryManager repoManager, AllUsersName allUsers, ChangeNoteJson changeNoteJson, LegacyChangeNoteRead legacyChangeNoteRead, NoteDbMetrics metrics, Provider<ChangeNotesCache> cache)
 name|Args
 parameter_list|(
 name|GitRepositoryManager
@@ -489,12 +465,6 @@ name|legacyChangeNoteRead
 parameter_list|,
 name|NoteDbMetrics
 name|metrics
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|Provider
 argument_list|<
@@ -540,12 +510,6 @@ operator|.
 name|metrics
 operator|=
 name|metrics
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
