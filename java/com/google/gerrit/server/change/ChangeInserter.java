@@ -544,22 +544,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ApprovalsUtil
@@ -2683,14 +2667,6 @@ name|getChange
 argument_list|()
 expr_stmt|;
 comment|// Use defensive copy created by ChangeControl.
-name|ReviewDb
-name|db
-init|=
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-decl_stmt|;
 name|patchSetInfo
 operator|=
 name|patchSetInfoFactory
@@ -2961,8 +2937,6 @@ name|approvalsUtil
 operator|.
 name|addApprovalsForNewPatchSet
 argument_list|(
-name|db
-argument_list|,
 name|update
 argument_list|,
 name|labelTypes

@@ -426,22 +426,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|notedb
@@ -1010,7 +994,7 @@ name|getReviewerUpdates
 argument_list|()
 return|;
 block|}
-DECL|method|addReviewers ( ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, Change change, PatchSet ps, PatchSetInfo info, Iterable<Account.Id> wantReviewers, Collection<Account.Id> existingReviewers)
+DECL|method|addReviewers ( ChangeUpdate update, LabelTypes labelTypes, Change change, PatchSet ps, PatchSetInfo info, Iterable<Account.Id> wantReviewers, Collection<Account.Id> existingReviewers)
 specifier|public
 name|List
 argument_list|<
@@ -1018,9 +1002,6 @@ name|PatchSetApproval
 argument_list|>
 name|addReviewers
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeUpdate
 name|update
 parameter_list|,
@@ -1058,8 +1039,6 @@ block|{
 return|return
 name|addReviewers
 argument_list|(
-name|db
-argument_list|,
 name|update
 argument_list|,
 name|labelTypes
@@ -1093,7 +1072,7 @@ name|existingReviewers
 argument_list|)
 return|;
 block|}
-DECL|method|addReviewers ( ReviewDb db, ChangeNotes notes, ChangeUpdate update, LabelTypes labelTypes, Change change, Iterable<Account.Id> wantReviewers)
+DECL|method|addReviewers ( ChangeNotes notes, ChangeUpdate update, LabelTypes labelTypes, Change change, Iterable<Account.Id> wantReviewers)
 specifier|public
 name|List
 argument_list|<
@@ -1101,9 +1080,6 @@ name|PatchSetApproval
 argument_list|>
 name|addReviewers
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -1219,8 +1195,6 @@ block|}
 return|return
 name|addReviewers
 argument_list|(
-name|db
-argument_list|,
 name|update
 argument_list|,
 name|labelTypes
@@ -1239,7 +1213,7 @@ name|existingReviewers
 argument_list|)
 return|;
 block|}
-DECL|method|addReviewers ( ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, Change change, PatchSet.Id psId, Account.Id authorId, Account.Id committerId, Iterable<Account.Id> wantReviewers, Collection<Account.Id> existingReviewers)
+DECL|method|addReviewers ( ChangeUpdate update, LabelTypes labelTypes, Change change, PatchSet.Id psId, Account.Id authorId, Account.Id committerId, Iterable<Account.Id> wantReviewers, Collection<Account.Id> existingReviewers)
 specifier|private
 name|List
 argument_list|<
@@ -1247,9 +1221,6 @@ name|PatchSetApproval
 argument_list|>
 name|addReviewers
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeUpdate
 name|update
 parameter_list|,
@@ -1496,16 +1467,6 @@ name|REVIEWER
 argument_list|)
 expr_stmt|;
 block|}
-name|db
-operator|.
-name|patchSetApprovals
-argument_list|()
-operator|.
-name|upsert
-argument_list|(
-name|cells
-argument_list|)
-expr_stmt|;
 return|return
 name|Collections
 operator|.
@@ -1758,8 +1719,8 @@ return|return
 name|need
 return|;
 block|}
-comment|/**    * Adds approvals to ChangeUpdate for a new patch set, and writes to NoteDb.    *    * @param db review database.    * @param update change update.    * @param labelTypes label types for the containing project.    * @param ps patch set being approved.    * @param user user adding approvals.    * @param approvals approvals to add.    * @throws RestApiException    * @throws OrmException    */
-DECL|method|addApprovalsForNewPatchSet ( ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, CurrentUser user, Map<String, Short> approvals)
+comment|/**    * Adds approvals to ChangeUpdate for a new patch set, and writes to NoteDb.    *    * @param update change update.    * @param labelTypes label types for the containing project.    * @param ps patch set being approved.    * @param user user adding approvals.    * @param approvals approvals to add.    * @throws RestApiException    * @throws OrmException    */
+DECL|method|addApprovalsForNewPatchSet ( ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, CurrentUser user, Map<String, Short> approvals)
 specifier|public
 name|Iterable
 argument_list|<
@@ -1767,9 +1728,6 @@ name|PatchSetApproval
 argument_list|>
 name|addApprovalsForNewPatchSet
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeUpdate
 name|update
 parameter_list|,
