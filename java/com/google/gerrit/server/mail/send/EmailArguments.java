@@ -92,22 +92,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|AnonymousUser
@@ -712,14 +696,6 @@ specifier|final
 name|ChangeQueryBuilder
 name|queryBuilder
 decl_stmt|;
-DECL|field|db
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|changeDataFactory
 specifier|final
 name|ChangeData
@@ -773,7 +749,7 @@ name|instanceNameProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments ( GitRepositoryManager server, ProjectCache projectCache, PermissionBackend permissionBackend, GroupBackend groupBackend, AccountCache accountCache, PatchListCache patchListCache, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, ChangeNotes.Factory changeNotesFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, GerritPersonIdentProvider gerritPersonIdentProvider, UrlFormatter urlFormatter, AllProjectsName allProjectsName, ChangeQueryBuilder queryBuilder, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, @MailTemplates SoyTofu soyTofu, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, SitePaths site, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners, Provider<InternalAccountQuery> accountQueryProvider, OutgoingEmailValidator validator, @GerritInstanceName Provider<String> instanceNameProvider, @GerritServerConfig Config cfg)
+DECL|method|EmailArguments ( GitRepositoryManager server, ProjectCache projectCache, PermissionBackend permissionBackend, GroupBackend groupBackend, AccountCache accountCache, PatchListCache patchListCache, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, ChangeNotes.Factory changeNotesFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, GerritPersonIdentProvider gerritPersonIdentProvider, UrlFormatter urlFormatter, AllProjectsName allProjectsName, ChangeQueryBuilder queryBuilder, ChangeData.Factory changeDataFactory, @MailTemplates SoyTofu soyTofu, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, SitePaths site, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners, Provider<InternalAccountQuery> accountQueryProvider, OutgoingEmailValidator validator, @GerritInstanceName Provider<String> instanceNameProvider, @GerritServerConfig Config cfg)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -833,12 +809,6 @@ name|allProjectsName
 parameter_list|,
 name|ChangeQueryBuilder
 name|queryBuilder
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|ChangeData
 operator|.
@@ -1003,12 +973,6 @@ operator|.
 name|queryBuilder
 operator|=
 name|queryBuilder
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
