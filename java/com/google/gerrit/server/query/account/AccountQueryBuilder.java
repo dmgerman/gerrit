@@ -4,10 +4,6 @@ comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
-comment|//
-end_comment
-
-begin_comment
 comment|// Licensed under the Apache License, Version 2.0 (the "License");
 end_comment
 
@@ -261,22 +257,6 @@ operator|.
 name|client
 operator|.
 name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
 import|;
 end_import
 
@@ -645,14 +625,6 @@ specifier|static
 class|class
 name|Arguments
 block|{
-DECL|field|db
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|changeFinder
 specifier|final
 name|ChangeFinder
@@ -680,7 +652,7 @@ name|indexes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments ( Provider<CurrentUser> self, AccountIndexCollection indexes, Provider<ReviewDb> db, ChangeFinder changeFinder, PermissionBackend permissionBackend)
+DECL|method|Arguments ( Provider<CurrentUser> self, AccountIndexCollection indexes, ChangeFinder changeFinder, PermissionBackend permissionBackend)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -692,12 +664,6 @@ name|self
 parameter_list|,
 name|AccountIndexCollection
 name|indexes
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|ChangeFinder
 name|changeFinder
@@ -717,12 +683,6 @@ operator|.
 name|indexes
 operator|=
 name|indexes
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
