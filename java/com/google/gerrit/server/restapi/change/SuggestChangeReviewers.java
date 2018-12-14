@@ -172,22 +172,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -465,17 +449,11 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SuggestChangeReviewers ( AccountVisibility av, Provider<ReviewDb> dbProvider, PermissionBackend permissionBackend, Provider<CurrentUser> self, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil, ProjectCache projectCache)
+DECL|method|SuggestChangeReviewers ( AccountVisibility av, PermissionBackend permissionBackend, Provider<CurrentUser> self, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil, ProjectCache projectCache)
 name|SuggestChangeReviewers
 parameter_list|(
 name|AccountVisibility
 name|av
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -501,8 +479,6 @@ block|{
 name|super
 argument_list|(
 name|av
-argument_list|,
-name|dbProvider
 argument_list|,
 name|cfg
 argument_list|,
