@@ -2231,20 +2231,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Remove votes from ReviewDb.
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-operator|.
-name|patchSetApprovals
-argument_list|()
-operator|.
-name|upsert
-argument_list|(
-name|approvals
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 annotation|@
