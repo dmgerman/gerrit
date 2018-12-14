@@ -303,21 +303,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getReviewDbProvider ()
-specifier|public
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|getReviewDbProvider
-parameter_list|()
-block|{
-return|return
-name|db
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|close ()
 specifier|public
 name|void
