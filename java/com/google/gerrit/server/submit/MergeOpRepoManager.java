@@ -805,8 +805,6 @@ name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|getProjectName
 argument_list|()
 argument_list|,

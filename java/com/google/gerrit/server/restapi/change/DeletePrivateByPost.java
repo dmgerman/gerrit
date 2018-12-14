@@ -110,22 +110,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ChangeMessagesUtil
@@ -200,18 +184,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Singleton
 import|;
 end_import
@@ -233,15 +205,9 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|DeletePrivateByPost ( Provider<ReviewDb> dbProvider, RetryHelper retryHelper, ChangeMessagesUtil cmUtil, PermissionBackend permissionBackend, SetPrivateOp.Factory setPrivateOpFactory)
+DECL|method|DeletePrivateByPost ( RetryHelper retryHelper, ChangeMessagesUtil cmUtil, PermissionBackend permissionBackend, SetPrivateOp.Factory setPrivateOpFactory)
 name|DeletePrivateByPost
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-parameter_list|,
 name|RetryHelper
 name|retryHelper
 parameter_list|,
@@ -259,8 +225,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|dbProvider
-argument_list|,
 name|retryHelper
 argument_list|,
 name|cmUtil

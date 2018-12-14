@@ -400,22 +400,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -962,13 +946,10 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ReviewDb db, Project.NameKey project, CurrentUser user, Timestamp when)
+DECL|method|create (Project.NameKey project, CurrentUser user, Timestamp when)
 name|BatchUpdate
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -2146,7 +2127,7 @@ name|refLogMessage
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BatchUpdate ( GitRepositoryManager repoManager, @GerritPersonIdent PersonIdent serverIdent, ChangeNotes.Factory changeNotesFactory, ChangeUpdate.Factory changeUpdateFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeIndexer indexer, GitReferenceUpdated gitRefUpdated, @SuppressWarnings(R) @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
+DECL|method|BatchUpdate ( GitRepositoryManager repoManager, @GerritPersonIdent PersonIdent serverIdent, ChangeNotes.Factory changeNotesFactory, ChangeUpdate.Factory changeUpdateFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeIndexer indexer, GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
 name|BatchUpdate
 parameter_list|(
 name|GitRepositoryManager
@@ -2177,16 +2158,6 @@ name|indexer
 parameter_list|,
 name|GitReferenceUpdated
 name|gitRefUpdated
-parameter_list|,
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-annotation|@
-name|Assisted
-name|ReviewDb
-name|db
 parameter_list|,
 annotation|@
 name|Assisted

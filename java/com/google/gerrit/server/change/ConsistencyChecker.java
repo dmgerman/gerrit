@@ -418,22 +418,6 @@ name|reviewdb
 operator|.
 name|server
 operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
 name|ReviewDbUtil
 import|;
 end_import
@@ -1167,15 +1151,6 @@ name|PersonIdent
 argument_list|>
 name|serverIdent
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|retryHelper
 specifier|private
 specifier|final
@@ -1249,7 +1224,7 @@ name|problems
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ConsistencyChecker ( @erritPersonIdent Provider<PersonIdent> serverIdent, ChangeNotes.Factory notesFactory, Accounts accounts, PluginItemContext<AccountPatchReviewStore> accountPatchReviewStore, GitRepositoryManager repoManager, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, PatchSetUtil psUtil, Provider<CurrentUser> user, Provider<ReviewDb> db, RetryHelper retryHelper)
+DECL|method|ConsistencyChecker ( @erritPersonIdent Provider<PersonIdent> serverIdent, ChangeNotes.Factory notesFactory, Accounts accounts, PluginItemContext<AccountPatchReviewStore> accountPatchReviewStore, GitRepositoryManager repoManager, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, PatchSetUtil psUtil, Provider<CurrentUser> user, RetryHelper retryHelper)
 name|ConsistencyChecker
 parameter_list|(
 annotation|@
@@ -1294,12 +1269,6 @@ name|CurrentUser
 argument_list|>
 name|user
 parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|,
 name|RetryHelper
 name|retryHelper
 parameter_list|)
@@ -1315,12 +1284,6 @@ operator|.
 name|accountPatchReviewStore
 operator|=
 name|accountPatchReviewStore
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -3830,11 +3793,6 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|change
 argument_list|()
 operator|.

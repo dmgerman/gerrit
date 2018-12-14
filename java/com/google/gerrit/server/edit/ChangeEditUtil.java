@@ -268,22 +268,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ChangeUtil
@@ -724,15 +708,6 @@ specifier|final
 name|ChangeIndexer
 name|indexer
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|userProvider
 specifier|private
 specifier|final
@@ -756,7 +731,7 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditUtil ( GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeIndexer indexer, Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeKindCache changeKindCache, PatchSetUtil psUtil)
+DECL|method|ChangeEditUtil ( GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeIndexer indexer, Provider<CurrentUser> userProvider, ChangeKindCache changeKindCache, PatchSetUtil psUtil)
 name|ChangeEditUtil
 parameter_list|(
 name|GitRepositoryManager
@@ -769,12 +744,6 @@ name|patchSetInserterFactory
 parameter_list|,
 name|ChangeIndexer
 name|indexer
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|Provider
 argument_list|<
@@ -806,12 +775,6 @@ operator|.
 name|indexer
 operator|=
 name|indexer
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -1393,11 +1356,6 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|change
 operator|.
 name|getProject

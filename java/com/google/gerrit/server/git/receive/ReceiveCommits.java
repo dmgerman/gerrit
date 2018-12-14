@@ -5178,8 +5178,6 @@ name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 operator|.
 name|getNameKey
@@ -6045,8 +6043,6 @@ name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 operator|.
 name|getNameKey
@@ -19282,8 +19278,6 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|projectState
 operator|.
 name|getNameKey

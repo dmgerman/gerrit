@@ -236,22 +236,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ChangeUtil
@@ -793,15 +777,6 @@ name|CurrentUser
 argument_list|>
 name|userProvider
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|tz
 specifier|private
 specifier|final
@@ -842,7 +817,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutMessage ( RetryHelper retryHelper, GitRepositoryManager repositoryManager, Provider<CurrentUser> userProvider, Provider<ReviewDb> db, PatchSetInserter.Factory psInserterFactory, PermissionBackend permissionBackend, @GerritPersonIdent PersonIdent gerritIdent, PatchSetUtil psUtil, NotifyUtil notifyUtil, ProjectCache projectCache)
+DECL|method|PutMessage ( RetryHelper retryHelper, GitRepositoryManager repositoryManager, Provider<CurrentUser> userProvider, PatchSetInserter.Factory psInserterFactory, PermissionBackend permissionBackend, @GerritPersonIdent PersonIdent gerritIdent, PatchSetUtil psUtil, NotifyUtil notifyUtil, ProjectCache projectCache)
 name|PutMessage
 parameter_list|(
 name|RetryHelper
@@ -856,12 +831,6 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|userProvider
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|PatchSetInserter
 operator|.
@@ -902,12 +871,6 @@ operator|.
 name|userProvider
 operator|=
 name|userProvider
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -1211,11 +1174,6 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|resource
 operator|.
 name|getChange

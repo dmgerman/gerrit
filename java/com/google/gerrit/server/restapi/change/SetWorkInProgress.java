@@ -210,22 +210,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ChangeUtil
@@ -511,15 +495,6 @@ operator|.
 name|Factory
 name|opFactory
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -537,7 +512,7 @@ name|user
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetWorkInProgress ( WorkInProgressOp.Factory opFactory, RetryHelper retryHelper, Provider<ReviewDb> db, PermissionBackend permissionBackend, Provider<CurrentUser> user)
+DECL|method|SetWorkInProgress ( WorkInProgressOp.Factory opFactory, RetryHelper retryHelper, PermissionBackend permissionBackend, Provider<CurrentUser> user)
 name|SetWorkInProgress
 parameter_list|(
 name|WorkInProgressOp
@@ -547,12 +522,6 @@ name|opFactory
 parameter_list|,
 name|RetryHelper
 name|retryHelper
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -574,12 +543,6 @@ operator|.
 name|opFactory
 operator|=
 name|opFactory
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -699,11 +662,6 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rsrc
 operator|.
 name|getProject

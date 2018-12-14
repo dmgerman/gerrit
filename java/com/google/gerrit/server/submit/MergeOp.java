@@ -5749,8 +5749,6 @@ name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|destProject
 argument_list|,
 name|internalUserFactory
