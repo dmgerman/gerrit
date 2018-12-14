@@ -144,9 +144,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -378,7 +376,7 @@ literal|10003
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 name|proto
@@ -390,12 +388,12 @@ argument_list|(
 name|changeMessage
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 operator|.
@@ -404,7 +402,7 @@ argument_list|()
 operator|.
 name|setKey
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage_Key
 operator|.
@@ -413,7 +411,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -434,7 +432,7 @@ argument_list|)
 operator|.
 name|setAuthorId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -459,7 +457,7 @@ argument_list|)
 operator|.
 name|setPatchset
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 operator|.
@@ -468,7 +466,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -494,7 +492,7 @@ argument_list|)
 operator|.
 name|setRealAuthor
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -582,7 +580,7 @@ literal|13
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 name|proto
@@ -594,12 +592,12 @@ argument_list|(
 name|changeMessage
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 operator|.
@@ -608,7 +606,7 @@ argument_list|()
 operator|.
 name|setKey
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage_Key
 operator|.
@@ -617,7 +615,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -638,7 +636,7 @@ argument_list|)
 operator|.
 name|setAuthorId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -658,7 +656,7 @@ argument_list|)
 operator|.
 name|setPatchset
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 operator|.
@@ -667,7 +665,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -744,7 +742,7 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 name|proto
@@ -756,12 +754,12 @@ argument_list|(
 name|changeMessage
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 operator|.
@@ -770,7 +768,7 @@ argument_list|()
 operator|.
 name|setKey
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage_Key
 operator|.
@@ -779,7 +777,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -800,7 +798,7 @@ argument_list|)
 operator|.
 name|setAuthorId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -866,7 +864,7 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 name|proto
@@ -878,12 +876,12 @@ argument_list|(
 name|changeMessage
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 operator|.
@@ -892,7 +890,7 @@ argument_list|()
 operator|.
 name|setKey
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage_Key
 operator|.
@@ -901,7 +899,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -1208,12 +1206,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 name|proto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 operator|.
@@ -1222,7 +1220,7 @@ argument_list|()
 operator|.
 name|setKey
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage_Key
 operator|.
@@ -1231,7 +1229,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -1264,7 +1262,7 @@ argument_list|()
 decl_stmt|;
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 argument_list|>
@@ -1275,7 +1273,7 @@ operator|.
 name|getParser
 argument_list|()
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage
 name|parsedProto

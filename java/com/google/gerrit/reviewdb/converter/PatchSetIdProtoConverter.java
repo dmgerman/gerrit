@@ -76,9 +76,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -134,7 +132,7 @@ name|PatchSetIdProtoConverter
 implements|implements
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 argument_list|,
@@ -151,7 +149,7 @@ specifier|private
 specifier|final
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 argument_list|,
@@ -169,7 +167,7 @@ annotation|@
 name|Override
 DECL|method|toProto (PatchSet.Id patchSetId)
 specifier|public
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 name|toProto
@@ -181,7 +179,7 @@ name|patchSetId
 parameter_list|)
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 operator|.
@@ -215,14 +213,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|fromProto (Reviewdb.PatchSet_Id proto)
+DECL|method|fromProto (Entities.PatchSet_Id proto)
 specifier|public
 name|PatchSet
 operator|.
 name|Id
 name|fromProto
 parameter_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 name|proto
@@ -257,7 +255,7 @@ DECL|method|getParser ()
 specifier|public
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 argument_list|>
@@ -265,7 +263,7 @@ name|getParser
 parameter_list|()
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 operator|.

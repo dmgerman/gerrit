@@ -144,9 +144,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -241,7 +239,7 @@ argument_list|(
 literal|"change-1"
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 name|proto
@@ -253,12 +251,12 @@ argument_list|(
 name|changeKey
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 operator|.
@@ -343,12 +341,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 name|proto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 operator|.
@@ -374,7 +372,7 @@ argument_list|()
 decl_stmt|;
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 argument_list|>
@@ -385,7 +383,7 @@ operator|.
 name|getParser
 argument_list|()
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 name|parsedProto

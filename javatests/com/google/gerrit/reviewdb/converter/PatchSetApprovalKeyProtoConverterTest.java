@@ -144,9 +144,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -345,7 +343,7 @@ literal|"label-8"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval_Key
 name|proto
@@ -357,12 +355,12 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval_Key
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval_Key
 operator|.
@@ -371,7 +369,7 @@ argument_list|()
 operator|.
 name|setPatchSetId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 operator|.
@@ -380,7 +378,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -401,7 +399,7 @@ argument_list|)
 operator|.
 name|setAccountId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -416,7 +414,7 @@ argument_list|)
 operator|.
 name|setCategoryId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 operator|.
@@ -530,12 +528,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval_Key
 name|proto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval_Key
 operator|.
@@ -544,7 +542,7 @@ argument_list|()
 operator|.
 name|setPatchSetId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 operator|.
@@ -553,7 +551,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -574,7 +572,7 @@ argument_list|)
 operator|.
 name|setAccountId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -589,7 +587,7 @@ argument_list|)
 operator|.
 name|setCategoryId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 operator|.
@@ -616,7 +614,7 @@ argument_list|()
 decl_stmt|;
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval_Key
 argument_list|>
@@ -627,7 +625,7 @@ operator|.
 name|getParser
 argument_list|()
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval_Key
 name|parsedProto

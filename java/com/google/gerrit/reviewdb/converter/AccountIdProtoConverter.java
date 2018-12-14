@@ -76,9 +76,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -118,7 +116,7 @@ name|AccountIdProtoConverter
 implements|implements
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 argument_list|,
@@ -134,7 +132,7 @@ annotation|@
 name|Override
 DECL|method|toProto (Account.Id accountId)
 specifier|public
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 name|toProto
@@ -146,7 +144,7 @@ name|accountId
 parameter_list|)
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -167,14 +165,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|fromProto (Reviewdb.Account_Id proto)
+DECL|method|fromProto (Entities.Account_Id proto)
 specifier|public
 name|Account
 operator|.
 name|Id
 name|fromProto
 parameter_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 name|proto
@@ -199,7 +197,7 @@ DECL|method|getParser ()
 specifier|public
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 argument_list|>
@@ -207,7 +205,7 @@ name|getParser
 parameter_list|()
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.

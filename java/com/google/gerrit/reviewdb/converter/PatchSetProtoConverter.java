@@ -76,9 +76,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -170,7 +168,7 @@ name|PatchSetProtoConverter
 implements|implements
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 argument_list|,
@@ -185,7 +183,7 @@ specifier|private
 specifier|final
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 argument_list|,
@@ -204,7 +202,7 @@ specifier|private
 specifier|final
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|RevId
 argument_list|,
@@ -221,7 +219,7 @@ specifier|private
 specifier|final
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 argument_list|,
@@ -239,7 +237,7 @@ annotation|@
 name|Override
 DECL|method|toProto (PatchSet patchSet)
 specifier|public
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 name|toProto
@@ -248,14 +246,14 @@ name|PatchSet
 name|patchSet
 parameter_list|)
 block|{
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 operator|.
 name|Builder
 name|builder
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 operator|.
@@ -447,12 +445,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|fromProto (Reviewdb.PatchSet proto)
+DECL|method|fromProto (Entities.PatchSet proto)
 specifier|public
 name|PatchSet
 name|fromProto
 parameter_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 name|proto
@@ -618,7 +616,7 @@ DECL|method|getParser ()
 specifier|public
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 argument_list|>
@@ -626,7 +624,7 @@ name|getParser
 parameter_list|()
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 operator|.
