@@ -1157,6 +1157,18 @@ name|refs
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|hasReadOnRefsStar
+init|=
+name|checkProjectPermission
+argument_list|(
+name|permissionBackendForProject
+argument_list|,
+name|ProjectPermission
+operator|.
+name|READ
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|skipFullRefEvaluationIfAllRefsAreVisible
@@ -1175,14 +1187,7 @@ operator|.
 name|statePermitsRead
 argument_list|()
 operator|&&
-name|checkProjectPermission
-argument_list|(
-name|permissionBackendForProject
-argument_list|,
-name|ProjectPermission
-operator|.
-name|READ
-argument_list|)
+name|hasReadOnRefsStar
 condition|)
 block|{
 name|skipFilterCount
@@ -1610,6 +1615,32 @@ name|ref
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|hasReadOnRefsStar
+condition|)
+block|{
+comment|// The user has READ on refs/*. This is the broadest permission one can assign. There is
+comment|// no way to grant access to (specific) tags in Gerrit, so we have to assume that these
+comment|// users can see all tags because there could be tags that aren't reachable by any visible
+comment|// ref while the user can see all non-Gerrit refs. This matches Gerrit's historic
+comment|// behavior.
+comment|// This makes it so that these users could see commits that they can't see otherwise
+comment|// (e.g. a private change ref) if a tag was attached to it. Tags are meant to be used on
+comment|// the regular Git tree that users interact with, not on any of the Gerrit trees, so this
+comment|// is a negligible risk.
+name|result
+operator|.
+name|put
+argument_list|(
+name|name
+argument_list|,
+name|ref
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 comment|// If its a tag, consider it later.
 if|if
 condition|(
@@ -1628,6 +1659,7 @@ argument_list|(
 name|ref
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
