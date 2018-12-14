@@ -852,16 +852,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|sql
 operator|.
 name|Timestamp
@@ -1908,8 +1898,6 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|ChangeColumns
 name|c
