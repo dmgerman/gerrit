@@ -118,22 +118,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -258,12 +242,6 @@ comment|/**    * Get the time zone in which this update takes place.    *    *<p
 DECL|method|getTimeZone ()
 name|TimeZone
 name|getTimeZone
-parameter_list|()
-function_decl|;
-comment|/**    * Get the ReviewDb database.    *    *<p>Callers should not manage transactions or call mutating methods on the Changes table.    * Mutations on other tables (including other entities in the change entity group) are fine.    *    * @return open database instance.    */
-DECL|method|getDb ()
-name|ReviewDb
-name|getDb
 parameter_list|()
 function_decl|;
 comment|/**    * Get the user performing the update.    *    *<p>In the current implementation, this is always an {@link IdentifiedUser} or {@link    * com.google.gerrit.server.InternalUser}.    *    * @return user.    */

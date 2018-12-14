@@ -1711,18 +1711,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getDb ()
-specifier|public
-name|ReviewDb
-name|getDb
-parameter_list|()
-block|{
-return|return
-name|db
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|getUser ()
 specifier|public
 name|CurrentUser
@@ -2044,12 +2032,6 @@ specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|project
 specifier|private
 specifier|final
@@ -2164,7 +2146,7 @@ name|refLogMessage
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BatchUpdate ( GitRepositoryManager repoManager, @GerritPersonIdent PersonIdent serverIdent, ChangeNotes.Factory changeNotesFactory, ChangeUpdate.Factory changeUpdateFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeIndexer indexer, GitReferenceUpdated gitRefUpdated, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
+DECL|method|BatchUpdate ( GitRepositoryManager repoManager, @GerritPersonIdent PersonIdent serverIdent, ChangeNotes.Factory changeNotesFactory, ChangeUpdate.Factory changeUpdateFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeIndexer indexer, GitReferenceUpdated gitRefUpdated, @SuppressWarnings(R) @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
 name|BatchUpdate
 parameter_list|(
 name|GitRepositoryManager
@@ -2196,6 +2178,11 @@ parameter_list|,
 name|GitReferenceUpdated
 name|gitRefUpdated
 parameter_list|,
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Assisted
 name|ReviewDb
@@ -2254,12 +2241,6 @@ operator|.
 name|gitRefUpdated
 operator|=
 name|gitRefUpdated
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
