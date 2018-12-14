@@ -270,22 +270,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -909,14 +893,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|completeWithoutTopic ( ReviewDb db, MergeOpRepoManager orm, ChangeSet changeSet, CurrentUser user)
+DECL|method|completeWithoutTopic ( MergeOpRepoManager orm, ChangeSet changeSet, CurrentUser user)
 specifier|public
 name|ChangeSet
 name|completeWithoutTopic
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|MergeOpRepoManager
 name|orm
 parameter_list|,

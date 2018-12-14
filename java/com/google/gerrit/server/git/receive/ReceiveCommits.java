@@ -5470,8 +5470,6 @@ name|orm
 operator|.
 name|setContext
 argument_list|(
-name|db
-argument_list|,
 name|TimeUtil
 operator|.
 name|nowTs
@@ -15979,8 +15977,6 @@ name|op
 operator|.
 name|merge
 argument_list|(
-name|db
-argument_list|,
 name|tipChange
 argument_list|,
 name|user

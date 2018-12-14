@@ -178,22 +178,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -663,14 +647,11 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|completeChangeSet (ReviewDb db, Change change, CurrentUser user)
+DECL|method|completeChangeSet (Change change, CurrentUser user)
 specifier|public
 name|ChangeSet
 name|completeChangeSet
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -844,8 +825,6 @@ block|{
 return|return
 name|completeChangeSetIncludingTopics
 argument_list|(
-name|db
-argument_list|,
 name|changeSet
 argument_list|,
 name|user
@@ -873,8 +852,6 @@ argument_list|()
 operator|.
 name|completeWithoutTopic
 argument_list|(
-name|db
-argument_list|,
 name|orm
 argument_list|,
 name|changeSet
@@ -907,7 +884,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Completes {@code changeSet} with any additional changes from its topics    *    *<p>{@link #completeChangeSetIncludingTopics} calls this repeatedly, alternating with {@link    * MergeSuperSetComputation#completeWithoutTopic(ReviewDb, MergeOpRepoManager, ChangeSet,    * CurrentUser)}, to discover what additional changes should be submitted with a change until the    * set stops growing.    *    *<p>{@code topicsSeen} and {@code visibleTopicsSeen} keep track of topics already explored to    * avoid wasted work.    *    * @return the resulting larger {@link ChangeSet}    */
+comment|/**    * Completes {@code changeSet} with any additional changes from its topics    *    *<p>{@link #completeChangeSetIncludingTopics} calls this repeatedly, alternating with {@link    * MergeSuperSetComputation#completeWithoutTopic(MergeOpRepoManager, ChangeSet, CurrentUser)}, to    * discover what additional changes should be submitted with a change until the set stops growing.    *    *<p>{@code topicsSeen} and {@code visibleTopicsSeen} keep track of topics already explored to    * avoid wasted work.    *    * @return the resulting larger {@link ChangeSet}    */
 DECL|method|topicClosure ( ChangeSet changeSet, CurrentUser user, Set<String> topicsSeen, Set<String> visibleTopicsSeen)
 specifier|private
 name|ChangeSet
@@ -1148,14 +1125,11 @@ name|nonVisibleChanges
 argument_list|)
 return|;
 block|}
-DECL|method|completeChangeSetIncludingTopics ( ReviewDb db, ChangeSet changeSet, CurrentUser user)
+DECL|method|completeChangeSetIncludingTopics (ChangeSet changeSet, CurrentUser user)
 specifier|private
 name|ChangeSet
 name|completeChangeSetIncludingTopics
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeSet
 name|changeSet
 parameter_list|,
@@ -1250,8 +1224,6 @@ argument_list|()
 operator|.
 name|completeWithoutTopic
 argument_list|(
-name|db
-argument_list|,
 name|orm
 argument_list|,
 name|changeSet

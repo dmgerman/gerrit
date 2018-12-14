@@ -90,22 +90,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -164,14 +148,11 @@ specifier|public
 interface|interface
 name|MergeSuperSetComputation
 block|{
-comment|/**    * Compute the set of changes that should be submitted together. As input a set of changes is    * provided for which it is known that they should be submitted together. This method should    * complete the set by including open predecessor changes that need to be submitted as well. To    * decide whether open predecessor changes should be included the method must take the submit type    * into account (e.g. for changes with submit type "Cherry-Pick" open predecessor changes must not    * be included).    *    *<p>This method is invoked iteratively while new changes to be submitted together are discovered    * by expanding the topics of the changes. This method must not do any topic expansion on its own.    *    * @param db {@link ReviewDb} instance    * @param orm {@link MergeOpRepoManager} that should be used to access repositories    * @param changeSet A set of changes for which it is known that they should be submitted together    * @param user The user for which the visibility checks should be performed    * @return the completed set of changes that should be submitted together    */
-DECL|method|completeWithoutTopic ( ReviewDb db, MergeOpRepoManager orm, ChangeSet changeSet, CurrentUser user)
+comment|/**    * Compute the set of changes that should be submitted together. As input a set of changes is    * provided for which it is known that they should be submitted together. This method should    * complete the set by including open predecessor changes that need to be submitted as well. To    * decide whether open predecessor changes should be included the method must take the submit type    * into account (e.g. for changes with submit type "Cherry-Pick" open predecessor changes must not    * be included).    *    *<p>This method is invoked iteratively while new changes to be submitted together are discovered    * by expanding the topics of the changes. This method must not do any topic expansion on its own.    *    * @param orm {@link MergeOpRepoManager} that should be used to access repositories    * @param changeSet A set of changes for which it is known that they should be submitted together    * @param user The user for which the visibility checks should be performed    * @return the completed set of changes that should be submitted together    */
+DECL|method|completeWithoutTopic (MergeOpRepoManager orm, ChangeSet changeSet, CurrentUser user)
 name|ChangeSet
 name|completeWithoutTopic
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|MergeOpRepoManager
 name|orm
 parameter_list|,

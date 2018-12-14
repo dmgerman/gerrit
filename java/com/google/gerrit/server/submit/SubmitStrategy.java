@@ -230,22 +230,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ApprovalsUtil
@@ -843,7 +827,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( SubmitType submitType, Branch.NameKey destBranch, CommitStatus commitStatus, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, RevFlag canMergeFlag, ReviewDb db, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, RequestId submissionId, SubmitInput submitInput, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create ( SubmitType submitType, Branch.NameKey destBranch, CommitStatus commitStatus, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, RequestId submissionId, SubmitInput submitInput, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
 name|Arguments
 name|create
 parameter_list|(
@@ -869,9 +853,6 @@ name|mergeTip
 parameter_list|,
 name|RevFlag
 name|canMergeFlag
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|Set
 argument_list|<
@@ -1032,11 +1013,6 @@ specifier|final
 name|RevFlag
 name|canMergeFlag
 decl_stmt|;
-DECL|field|db
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|alreadyAccepted
 specifier|final
 name|Set
@@ -1104,7 +1080,7 @@ name|dryrun
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, Provider<InternalChangeQuery> queryProvider, ProjectConfig.Factory projectConfigFactory, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted SubmitInput submitInput, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
+DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, Provider<InternalChangeQuery> queryProvider, ProjectConfig.Factory projectConfigFactory, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted SubmitInput submitInput, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
 name|Arguments
 parameter_list|(
 name|AccountCache
@@ -1204,11 +1180,6 @@ annotation|@
 name|Assisted
 name|RevFlag
 name|canMergeFlag
-parameter_list|,
-annotation|@
-name|Assisted
-name|ReviewDb
-name|db
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1389,12 +1360,6 @@ operator|.
 name|canMergeFlag
 operator|=
 name|canMergeFlag
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.

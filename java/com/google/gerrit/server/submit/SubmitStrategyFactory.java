@@ -186,22 +186,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -408,16 +392,13 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create ( SubmitType submitType, ReviewDb db, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, SubmitInput submitInput, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create ( SubmitType submitType, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, SubmitInput submitInput, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|public
 name|SubmitStrategy
 name|create
 parameter_list|(
 name|SubmitType
 name|submitType
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|CodeReviewRevWalk
 name|rw
@@ -498,8 +479,6 @@ argument_list|,
 name|mergeTip
 argument_list|,
 name|canMergeFlag
-argument_list|,
-name|db
 argument_list|,
 name|alreadyAccepted
 argument_list|,

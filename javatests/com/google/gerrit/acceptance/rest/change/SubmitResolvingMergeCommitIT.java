@@ -1970,8 +1970,6 @@ argument_list|()
 operator|.
 name|completeChangeSet
 argument_list|(
-name|db
-argument_list|,
 name|change
 operator|.
 name|change
