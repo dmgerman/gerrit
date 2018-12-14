@@ -692,11 +692,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rsrc
 operator|.
 name|getChangeResource
@@ -880,11 +875,6 @@ name|approvalsUtil
 operator|.
 name|byPatchSetUser
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|cd
 operator|.
 name|notes

@@ -236,22 +236,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|change
@@ -570,16 +554,13 @@ operator|=
 name|psUtil
 expr_stmt|;
 block|}
-DECL|method|getForPatchSet ( ReviewDb db, ChangeNotes notes, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
+DECL|method|getForPatchSet ( ChangeNotes notes, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 name|Iterable
 argument_list|<
 name|PatchSetApproval
 argument_list|>
 name|getForPatchSet
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -604,8 +585,6 @@ block|{
 return|return
 name|getForPatchSet
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|psId
@@ -624,16 +603,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getForPatchSet ( ReviewDb db, ChangeNotes notes, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
+DECL|method|getForPatchSet ( ChangeNotes notes, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
 name|Iterable
 argument_list|<
 name|PatchSetApproval
 argument_list|>
 name|getForPatchSet
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -690,8 +666,6 @@ block|}
 return|return
 name|getForPatchSet
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|ps
@@ -704,7 +678,7 @@ name|dontCopy
 argument_list|)
 return|;
 block|}
-DECL|method|getForPatchSet ( ReviewDb db, ChangeNotes notes, PatchSet ps, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
+DECL|method|getForPatchSet ( ChangeNotes notes, PatchSet ps, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
 specifier|private
 name|Iterable
 argument_list|<
@@ -712,9 +686,6 @@ name|PatchSetApproval
 argument_list|>
 name|getForPatchSet
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -754,8 +725,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 decl_stmt|;

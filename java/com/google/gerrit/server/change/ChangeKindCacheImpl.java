@@ -1011,8 +1011,6 @@ name|getChangeKindInternal
 argument_list|(
 name|this
 argument_list|,
-name|db
-argument_list|,
 name|change
 argument_list|,
 name|patch
@@ -2389,8 +2387,6 @@ name|getChangeKindInternal
 argument_list|(
 name|this
 argument_list|,
-name|db
-argument_list|,
 name|change
 argument_list|,
 name|patch
@@ -2655,7 +2651,7 @@ return|return
 name|kind
 return|;
 block|}
-DECL|method|getChangeKindInternal ( ChangeKindCache cache, ReviewDb db, Change change, PatchSet patch, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager)
+DECL|method|getChangeKindInternal ( ChangeKindCache cache, Change change, PatchSet patch, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager)
 specifier|private
 specifier|static
 name|ChangeKind
@@ -2663,9 +2659,6 @@ name|getChangeKindInternal
 parameter_list|(
 name|ChangeKindCache
 name|cache
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|Change
 name|change
@@ -2739,8 +2732,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|)
 argument_list|,

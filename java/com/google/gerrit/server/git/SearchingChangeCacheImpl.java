@@ -224,22 +224,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ReviewerSet
@@ -761,8 +745,8 @@ operator|=
 name|changeDataFactory
 expr_stmt|;
 block|}
-comment|/**    * Read changes for the project from the secondary index.    *    *<p>Returned changes only include the {@code Change} object (with id, branch) and the reviewers.    * Additional stored fields are not loaded from the index.    *    * @param db database handle to populate missing change data (probably unused).    * @param project project to read.    * @return list of known changes; empty if no changes.    */
-DECL|method|getChangeData (ReviewDb db, Project.NameKey project)
+comment|/**    * Read changes for the project from the secondary index.    *    *<p>Returned changes only include the {@code Change} object (with id, branch) and the reviewers.    * Additional stored fields are not loaded from the index.    *    * @param project project to read.    * @return list of known changes; empty if no changes.    */
+DECL|method|getChangeData (Project.NameKey project)
 specifier|public
 name|List
 argument_list|<
@@ -770,9 +754,6 @@ name|ChangeData
 argument_list|>
 name|getChangeData
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -825,8 +806,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|cc
 operator|.
 name|change

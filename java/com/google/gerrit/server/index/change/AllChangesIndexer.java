@@ -1650,8 +1650,6 @@ name|r
 lambda|->
 name|index
 argument_list|(
-name|db
-argument_list|,
 name|r
 argument_list|)
 argument_list|)
@@ -1681,14 +1679,11 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|index (ReviewDb db, ChangeNotesResult r)
+DECL|method|index (ChangeNotesResult r)
 specifier|private
 name|void
 name|index
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotesResult
 name|r
 parameter_list|)
@@ -1738,8 +1733,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|r
 operator|.
 name|notes

@@ -1415,15 +1415,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param change change to index.    */
-DECL|method|index (ReviewDb db, Change change)
+comment|/**    * Synchronously index a change.    *    * @param change change to index.    */
+DECL|method|index (Change change)
 specifier|public
 name|void
 name|index
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|)
@@ -1436,22 +1433,17 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param project the project to which the change belongs.    * @param changeId ID of the change to index.    */
-DECL|method|index (ReviewDb db, Project.NameKey project, Change.Id changeId)
+comment|/**    * Synchronously index a change.    *    * @param project the project to which the change belongs.    * @param changeId ID of the change to index.    */
+DECL|method|index (Project.NameKey project, Change.Id changeId)
 specifier|public
 name|void
 name|index
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -1471,8 +1463,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|changeId
@@ -2147,11 +2137,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|project
 argument_list|,
 name|id
@@ -2369,11 +2354,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|project
 argument_list|,
 name|id

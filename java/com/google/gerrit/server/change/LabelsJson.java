@@ -2063,11 +2063,6 @@ name|approvalsUtil
 operator|.
 name|byPatchSetUser
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|lazyLoad
 condition|?
 name|cd

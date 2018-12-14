@@ -1200,8 +1200,6 @@ name|byCommitsOnBranchNotMerged
 argument_list|(
 name|or
 argument_list|,
-name|db
-argument_list|,
 name|b
 argument_list|,
 name|visibleHashes
@@ -1542,16 +1540,13 @@ operator|.
 name|type
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, ReviewDb db, Branch.NameKey branch, Set<String> visibleHashes, Set<String> nonVisibleHashes)
+DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, Branch.NameKey branch, Set<String> visibleHashes, Set<String> nonVisibleHashes)
 specifier|private
 name|ChangeSet
 name|byCommitsOnBranchNotMerged
 parameter_list|(
 name|OpenRepo
 name|or
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|Branch
 operator|.
@@ -1585,8 +1580,6 @@ name|byCommitsOnBranchNotMerged
 argument_list|(
 name|or
 argument_list|,
-name|db
-argument_list|,
 name|branch
 argument_list|,
 name|visibleHashes
@@ -1605,8 +1598,6 @@ argument_list|(
 name|byCommitsOnBranchNotMerged
 argument_list|(
 name|or
-argument_list|,
-name|db
 argument_list|,
 name|branch
 argument_list|,
@@ -1677,7 +1668,7 @@ name|invisibleChanges
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, ReviewDb db, Branch.NameKey branch, Set<String> hashes)
+DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, Branch.NameKey branch, Set<String> hashes)
 specifier|private
 name|ImmutableList
 argument_list|<
@@ -1687,9 +1678,6 @@ name|byCommitsOnBranchNotMerged
 parameter_list|(
 name|OpenRepo
 name|or
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|Branch
 operator|.
@@ -1773,8 +1761,6 @@ argument_list|(
 name|or
 operator|.
 name|repo
-argument_list|,
-name|db
 argument_list|,
 name|branch
 argument_list|,

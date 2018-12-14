@@ -2460,8 +2460,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|resource
 operator|.
 name|getNotes

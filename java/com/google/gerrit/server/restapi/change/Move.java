@@ -2103,11 +2103,6 @@ name|byPatchSet
 argument_list|(
 name|ctx
 operator|.
-name|getDb
-argument_list|()
-argument_list|,
-name|ctx
-operator|.
 name|getNotes
 argument_list|()
 argument_list|,

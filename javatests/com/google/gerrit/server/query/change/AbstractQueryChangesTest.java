@@ -13580,8 +13580,6 @@ name|indexer
 operator|.
 name|index
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|id
@@ -17628,8 +17626,6 @@ name|repo
 operator|.
 name|getRepository
 argument_list|()
-argument_list|,
-name|db
 argument_list|,
 name|dest
 argument_list|,

@@ -3396,11 +3396,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|revision
 operator|.
 name|getProject
@@ -7849,11 +7844,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|ctx
 operator|.
 name|getNotes
@@ -9348,11 +9338,6 @@ name|approvalsUtil
 operator|.
 name|byPatchSetUser
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|ctx
 operator|.
 name|getNotes

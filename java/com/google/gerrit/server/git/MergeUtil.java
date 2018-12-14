@@ -500,22 +500,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ApprovalsUtil
@@ -721,18 +705,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -1598,15 +1570,6 @@ name|useContentMerge
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|identifiedUserFactory
 specifier|private
 specifier|final
@@ -1653,19 +1616,13 @@ name|commitMessageGenerator
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|MergeUtil ( @erritServerConfig Config serverConfig, Provider<ReviewDb> db, IdentifiedUser.GenericFactory identifiedUserFactory, UrlFormatter urlFormatter, ApprovalsUtil approvalsUtil, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted ProjectState project)
+DECL|method|MergeUtil ( @erritServerConfig Config serverConfig, IdentifiedUser.GenericFactory identifiedUserFactory, UrlFormatter urlFormatter, ApprovalsUtil approvalsUtil, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted ProjectState project)
 name|MergeUtil
 parameter_list|(
 annotation|@
 name|GerritServerConfig
 name|Config
 name|serverConfig
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|IdentifiedUser
 operator|.
@@ -1691,8 +1648,6 @@ name|this
 argument_list|(
 name|serverConfig
 argument_list|,
-name|db
-argument_list|,
 name|identifiedUserFactory
 argument_list|,
 name|urlFormatter
@@ -1716,19 +1671,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|MergeUtil ( @erritServerConfig Config serverConfig, Provider<ReviewDb> db, IdentifiedUser.GenericFactory identifiedUserFactory, UrlFormatter urlFormatter, ApprovalsUtil approvalsUtil, @Assisted ProjectState project, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted boolean useContentMerge)
+DECL|method|MergeUtil ( @erritServerConfig Config serverConfig, IdentifiedUser.GenericFactory identifiedUserFactory, UrlFormatter urlFormatter, ApprovalsUtil approvalsUtil, @Assisted ProjectState project, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted boolean useContentMerge)
 name|MergeUtil
 parameter_list|(
 annotation|@
 name|GerritServerConfig
 name|Config
 name|serverConfig
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|IdentifiedUser
 operator|.
@@ -1755,12 +1704,6 @@ name|boolean
 name|useContentMerge
 parameter_list|)
 block|{
-name|this
-operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
 name|this
 operator|.
 name|identifiedUserFactory
@@ -3944,11 +3887,6 @@ name|approvalsUtil
 operator|.
 name|byPatchSet
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|notes
 argument_list|,
 name|psId

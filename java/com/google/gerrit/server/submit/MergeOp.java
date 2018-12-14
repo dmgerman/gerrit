@@ -3779,8 +3779,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|c
 operator|.
 name|project
@@ -3811,8 +3809,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|c
 operator|.
 name|project

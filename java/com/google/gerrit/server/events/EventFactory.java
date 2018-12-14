@@ -1225,77 +1225,11 @@ name|indexConfig
 expr_stmt|;
 block|}
 comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to JSON.    *    * @param change    * @return object suitable for serialization to JSON    */
-DECL|method|asChangeAttribute (Change change, ChangeNotes notes)
+DECL|method|asChangeAttribute (Change change)
 specifier|public
 name|ChangeAttribute
 name|asChangeAttribute
 parameter_list|(
-name|Change
-name|change
-parameter_list|,
-name|ChangeNotes
-name|notes
-parameter_list|)
-block|{
-try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|schema
-operator|.
-name|open
-argument_list|()
-init|)
-block|{
-return|return
-name|asChangeAttribute
-argument_list|(
-name|db
-argument_list|,
-name|change
-argument_list|,
-name|notes
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atSevere
-argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|e
-argument_list|)
-operator|.
-name|log
-argument_list|(
-literal|"Cannot open database connection"
-argument_list|)
-expr_stmt|;
-return|return
-operator|new
-name|ChangeAttribute
-argument_list|()
-return|;
-block|}
-block|}
-comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to JSON.    *    * @param db Review database    * @param change    * @return object suitable for serialization to JSON    */
-DECL|method|asChangeAttribute (ReviewDb db, Change change)
-specifier|public
-name|ChangeAttribute
-name|asChangeAttribute
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|)
@@ -1383,8 +1317,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|)
 operator|.
@@ -1504,15 +1436,12 @@ return|return
 name|a
 return|;
 block|}
-comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to JSON.    *    * @param db Review database    * @param change    * @param notes    * @return object suitable for serialization to JSON    */
-DECL|method|asChangeAttribute (ReviewDb db, Change change, ChangeNotes notes)
+comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to JSON.    *    * @param change    * @param notes    * @return object suitable for serialization to JSON    */
+DECL|method|asChangeAttribute (Change change, ChangeNotes notes)
 specifier|public
 name|ChangeAttribute
 name|asChangeAttribute
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -1527,8 +1456,6 @@ name|a
 init|=
 name|asChangeAttribute
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|)
 decl_stmt|;

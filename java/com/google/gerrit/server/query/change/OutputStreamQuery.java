@@ -1457,8 +1457,6 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
-name|db
-argument_list|,
 name|d
 operator|.
 name|change

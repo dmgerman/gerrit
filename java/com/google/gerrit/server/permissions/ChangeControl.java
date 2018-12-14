@@ -72,22 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|server
@@ -390,18 +374,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Singleton
 import|;
 end_import
@@ -622,7 +594,7 @@ operator|=
 name|notes
 expr_stmt|;
 block|}
-DECL|method|asForChange (@ullable ChangeData cd, @Nullable Provider<ReviewDb> db)
+DECL|method|asForChange (@ullable ChangeData cd)
 name|ForChange
 name|asForChange
 parameter_list|(
@@ -630,14 +602,6 @@ annotation|@
 name|Nullable
 name|ChangeData
 name|cd
-parameter_list|,
-annotation|@
-name|Nullable
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|)
 block|{
 return|return
@@ -645,8 +609,6 @@ operator|new
 name|ForChangeImpl
 argument_list|(
 name|cd
-argument_list|,
-name|db
 argument_list|)
 return|;
 block|}
@@ -690,14 +652,11 @@ argument_list|()
 return|;
 block|}
 comment|/** Can this user see this change? */
-DECL|method|isVisible (ReviewDb db, @Nullable ChangeData cd)
+DECL|method|isVisible (@ullable ChangeData cd)
 specifier|private
 name|boolean
 name|isVisible
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 annotation|@
 name|Nullable
 name|ChangeData
@@ -717,8 +676,6 @@ operator|&&
 operator|!
 name|isPrivateVisible
 argument_list|(
-name|db
-argument_list|,
 name|cd
 argument_list|)
 condition|)
@@ -1011,14 +968,11 @@ literal|false
 return|;
 block|}
 comment|/** Is this user a reviewer for the change? */
-DECL|method|isReviewer (ReviewDb db, @Nullable ChangeData cd)
+DECL|method|isReviewer (@ullable ChangeData cd)
 specifier|private
 name|boolean
 name|isReviewer
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 annotation|@
 name|Nullable
 name|ChangeData
@@ -1048,8 +1002,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|)
 expr_stmt|;
@@ -1266,14 +1218,11 @@ name|isAdmin
 argument_list|()
 return|;
 block|}
-DECL|method|isPrivateVisible (ReviewDb db, ChangeData cd)
+DECL|method|isPrivateVisible (ChangeData cd)
 specifier|private
 name|boolean
 name|isPrivateVisible
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
@@ -1286,8 +1235,6 @@ argument_list|()
 operator|||
 name|isReviewer
 argument_list|(
-name|db
-argument_list|,
 name|cd
 argument_list|)
 operator|||
@@ -1334,21 +1281,13 @@ specifier|private
 name|String
 name|resourcePath
 decl_stmt|;
-DECL|method|ForChangeImpl (@ullable ChangeData cd, @Nullable Provider<ReviewDb> db)
+DECL|method|ForChangeImpl (@ullable ChangeData cd)
 name|ForChangeImpl
 parameter_list|(
 annotation|@
 name|Nullable
 name|ChangeData
 name|cd
-parameter_list|,
-annotation|@
-name|Nullable
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|)
 block|{
 name|this
@@ -1356,12 +1295,6 @@ operator|.
 name|cd
 operator|=
 name|cd
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 block|}
 DECL|method|db ()
@@ -1384,27 +1317,9 @@ name|get
 argument_list|()
 return|;
 block|}
-elseif|else
-if|if
-condition|(
-name|cd
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-name|cd
-operator|.
-name|db
-argument_list|()
-return|;
-block|}
-else|else
-block|{
 return|return
 literal|null
 return|;
-block|}
 block|}
 DECL|method|changeData ()
 specifier|private
@@ -1419,29 +1334,12 @@ operator|==
 literal|null
 condition|)
 block|{
-name|ReviewDb
-name|reviewDb
-init|=
-name|db
-argument_list|()
-decl_stmt|;
-name|checkState
-argument_list|(
-name|reviewDb
-operator|!=
-literal|null
-argument_list|,
-literal|"need ReviewDb"
-argument_list|)
-expr_stmt|;
 name|cd
 operator|=
 name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|reviewDb
-argument_list|,
 name|notes
 argument_list|)
 expr_stmt|;
@@ -1727,9 +1625,6 @@ case|:
 return|return
 name|isVisible
 argument_list|(
-name|db
-argument_list|()
-argument_list|,
 name|changeData
 argument_list|()
 argument_list|)

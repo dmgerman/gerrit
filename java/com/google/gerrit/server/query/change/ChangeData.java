@@ -540,22 +540,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ApprovalsUtil
@@ -1762,14 +1746,11 @@ operator|=
 name|assistedFactory
 expr_stmt|;
 block|}
-DECL|method|create (ReviewDb db, Project.NameKey project, Change.Id id)
+DECL|method|create (Project.NameKey project, Change.Id id)
 specifier|public
 name|ChangeData
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -1786,8 +1767,6 @@ name|assistedFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|id
@@ -1798,14 +1777,11 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|create (ReviewDb db, Change change)
+DECL|method|create (Change change)
 specifier|public
 name|ChangeData
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|)
@@ -1815,8 +1791,6 @@ name|assistedFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|change
 operator|.
 name|getProject
@@ -1833,14 +1807,11 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|create (ReviewDb db, ChangeNotes notes)
+DECL|method|create (ChangeNotes notes)
 specifier|public
 name|ChangeData
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|)
@@ -1850,8 +1821,6 @@ name|assistedFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|notes
 operator|.
 name|getChange
@@ -1880,13 +1849,10 @@ specifier|public
 interface|interface
 name|AssistedFactory
 block|{
-DECL|method|create ( ReviewDb db, Project.NameKey project, Change.Id id, @Nullable Change change, @Nullable ChangeNotes notes)
+DECL|method|create ( Project.NameKey project, Change.Id id, @Nullable Change change, @Nullable ChangeNotes notes)
 name|ChangeData
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -1936,8 +1902,6 @@ init|=
 operator|new
 name|ChangeData
 argument_list|(
-literal|null
-argument_list|,
 literal|null
 argument_list|,
 literal|null
@@ -2099,12 +2063,6 @@ name|Factory
 name|submitRuleEvaluatorFactory
 decl_stmt|;
 comment|// Required assisted injected fields.
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|project
 specifier|private
 specifier|final
@@ -2418,7 +2376,7 @@ name|refStatePatterns
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeData ( @ullable StarredChangesUtil starredChangesUtil, ApprovalsUtil approvalsUtil, AllUsersName allUsersName, ChangeMessagesUtil cmUtil, ChangeNotes.Factory notesFactory, CommentsUtil commentsUtil, GitRepositoryManager repoManager, MergeUtil.Factory mergeUtilFactory, MergeabilityCache mergeabilityCache, PatchListCache patchListCache, PatchSetUtil psUtil, ProjectCache projectCache, TrackingFooters trackingFooters, PureRevert pureRevert, SubmitRuleEvaluator.Factory submitRuleEvaluatorFactory, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable Change change, @Assisted @Nullable ChangeNotes notes)
+DECL|method|ChangeData ( @ullable StarredChangesUtil starredChangesUtil, ApprovalsUtil approvalsUtil, AllUsersName allUsersName, ChangeMessagesUtil cmUtil, ChangeNotes.Factory notesFactory, CommentsUtil commentsUtil, GitRepositoryManager repoManager, MergeUtil.Factory mergeUtilFactory, MergeabilityCache mergeabilityCache, PatchListCache patchListCache, PatchSetUtil psUtil, ProjectCache projectCache, TrackingFooters trackingFooters, PureRevert pureRevert, SubmitRuleEvaluator.Factory submitRuleEvaluatorFactory, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable Change change, @Assisted @Nullable ChangeNotes notes)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -2474,11 +2432,6 @@ name|SubmitRuleEvaluator
 operator|.
 name|Factory
 name|submitRuleEvaluatorFactory
-parameter_list|,
-annotation|@
-name|Assisted
-name|ReviewDb
-name|db
 parameter_list|,
 annotation|@
 name|Assisted
@@ -2599,15 +2552,6 @@ name|submitRuleEvaluatorFactory
 operator|=
 name|submitRuleEvaluatorFactory
 expr_stmt|;
-comment|// May be null in tests when created via createForTest above, in which case lazy-loading will
-comment|// intentionally fail with NPE. Still not marked @Nullable in the constructor, to force callers
-comment|// using Guice to pass a non-null value.
-name|this
-operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
 name|this
 operator|.
 name|project
@@ -2649,16 +2593,6 @@ name|load
 expr_stmt|;
 return|return
 name|this
-return|;
-block|}
-DECL|method|db ()
-specifier|public
-name|ReviewDb
-name|db
-parameter_list|()
-block|{
-return|return
-name|db
 return|;
 block|}
 DECL|method|getAllUsersNameForIndexing ()
@@ -3474,8 +3408,6 @@ name|approvalsUtil
 operator|.
 name|byPatchSet
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|()
 argument_list|,

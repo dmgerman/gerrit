@@ -3011,8 +3011,6 @@ name|indexer
 operator|.
 name|index
 argument_list|(
-name|db
-argument_list|,
 name|c
 operator|.
 name|getProject

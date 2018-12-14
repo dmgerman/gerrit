@@ -2201,7 +2201,7 @@ name|getApprovals
 argument_list|()
 return|;
 block|}
-DECL|method|byPatchSet ( ReviewDb db, ChangeNotes notes, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
+DECL|method|byPatchSet ( ChangeNotes notes, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 specifier|public
 name|Iterable
 argument_list|<
@@ -2209,9 +2209,6 @@ name|PatchSetApproval
 argument_list|>
 name|byPatchSet
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -2238,8 +2235,6 @@ name|copier
 operator|.
 name|getForPatchSet
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|psId
@@ -2250,7 +2245,7 @@ name|repoConfig
 argument_list|)
 return|;
 block|}
-DECL|method|byPatchSetUser ( ReviewDb db, ChangeNotes notes, PatchSet.Id psId, Account.Id accountId, @Nullable RevWalk rw, @Nullable Config repoConfig)
+DECL|method|byPatchSetUser ( ChangeNotes notes, PatchSet.Id psId, Account.Id accountId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 specifier|public
 name|Iterable
 argument_list|<
@@ -2258,9 +2253,6 @@ name|PatchSetApproval
 argument_list|>
 name|byPatchSetUser
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -2292,8 +2284,6 @@ name|filterApprovals
 argument_list|(
 name|byPatchSet
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|psId

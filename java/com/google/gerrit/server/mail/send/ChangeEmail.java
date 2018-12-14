@@ -818,13 +818,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|ea
-operator|.
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|project
 argument_list|,
 name|id
