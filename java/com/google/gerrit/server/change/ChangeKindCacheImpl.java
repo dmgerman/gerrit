@@ -266,22 +266,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|cache
@@ -991,14 +975,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (ReviewDb db, Change change, PatchSet patch)
+DECL|method|getChangeKind (Change change, PatchSet patch)
 specifier|public
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -2367,14 +2348,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (ReviewDb db, Change change, PatchSet patch)
+DECL|method|getChangeKind (Change change, PatchSet patch)
 specifier|public
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|,
