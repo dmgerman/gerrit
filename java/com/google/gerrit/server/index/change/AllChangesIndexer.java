@@ -302,22 +302,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|git
@@ -443,20 +427,6 @@ operator|.
 name|change
 operator|.
 name|ChangeData
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|SchemaFactory
 import|;
 end_import
 
@@ -667,15 +637,6 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-DECL|field|schemaFactory
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schemaFactory
-decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -720,15 +681,9 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AllChangesIndexer ( SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor(BATCH) ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory, ChangeNotes.Factory notesFactory, ProjectCache projectCache)
+DECL|method|AllChangesIndexer ( ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor(BATCH) ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory, ChangeNotes.Factory notesFactory, ProjectCache projectCache)
 name|AllChangesIndexer
 parameter_list|(
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schemaFactory
-parameter_list|,
 name|ChangeData
 operator|.
 name|Factory
@@ -759,12 +714,6 @@ name|ProjectCache
 name|projectCache
 parameter_list|)
 block|{
-name|this
-operator|.
-name|schemaFactory
-operator|=
-name|schemaFactory
-expr_stmt|;
 name|this
 operator|.
 name|changeDataFactory
@@ -1620,14 +1569,6 @@ name|openRepository
 argument_list|(
 name|project
 argument_list|)
-init|;
-name|ReviewDb
-name|db
-operator|=
-name|schemaFactory
-operator|.
-name|open
-argument_list|()
 init|)
 block|{
 comment|// Order of scanning changes is undefined. This is ok if we assume that packfile locality is
