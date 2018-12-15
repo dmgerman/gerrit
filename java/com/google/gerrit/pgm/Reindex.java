@@ -1175,14 +1175,9 @@ name|modules
 operator|.
 name|add
 argument_list|(
-name|dbInjector
-operator|.
-name|getInstance
-argument_list|(
+operator|new
 name|BatchProgramModule
-operator|.
-name|class
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|modules
