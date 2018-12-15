@@ -5905,8 +5905,6 @@ name|atrScope
 operator|.
 name|newContext
 argument_list|(
-name|reviewDbProvider
-argument_list|,
 operator|new
 name|SshSession
 argument_list|(
@@ -5993,8 +5991,6 @@ name|atrScope
 operator|.
 name|newContext
 argument_list|(
-name|reviewDbProvider
-argument_list|,
 literal|null
 argument_list|,
 name|anonymousUser
