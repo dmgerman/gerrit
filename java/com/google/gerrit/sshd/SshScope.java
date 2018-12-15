@@ -72,22 +72,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -185,20 +169,6 @@ operator|.
 name|time
 operator|.
 name|TimeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|SchemaFactory
 import|;
 end_import
 
@@ -346,15 +316,6 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|schemaFactory
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schemaFactory
-decl_stmt|;
 DECL|field|session
 specifier|private
 specifier|final
@@ -382,16 +343,10 @@ specifier|volatile
 name|long
 name|finished
 decl_stmt|;
-DECL|method|Context (SchemaFactory<ReviewDb> sf, SshSession s, String c, long at)
+DECL|method|Context (SshSession s, String c, long at)
 specifier|private
 name|Context
 parameter_list|(
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|sf
-parameter_list|,
 name|SshSession
 name|s
 parameter_list|,
@@ -402,10 +357,6 @@ name|long
 name|at
 parameter_list|)
 block|{
-name|schemaFactory
-operator|=
-name|sf
-expr_stmt|;
 name|session
 operator|=
 name|s
@@ -448,10 +399,6 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|p
-operator|.
-name|schemaFactory
-argument_list|,
 name|s
 argument_list|,
 name|c
@@ -867,16 +814,10 @@ operator|=
 name|userFactory
 expr_stmt|;
 block|}
-DECL|method|newContext (SchemaFactory<ReviewDb> sf, SshSession s, String cmd)
+DECL|method|newContext (SshSession s, String cmd)
 name|Context
 name|newContext
 parameter_list|(
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|sf
-parameter_list|,
 name|SshSession
 name|s
 parameter_list|,
@@ -888,8 +829,6 @@ return|return
 operator|new
 name|Context
 argument_list|(
-name|sf
-argument_list|,
 name|s
 argument_list|,
 name|cmd

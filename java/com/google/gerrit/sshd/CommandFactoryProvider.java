@@ -150,22 +150,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|config
@@ -219,20 +203,6 @@ operator|.
 name|SshScope
 operator|.
 name|Context
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|SchemaFactory
 import|;
 end_import
 
@@ -562,15 +532,6 @@ specifier|final
 name|ExecutorService
 name|destroyExecutor
 decl_stmt|;
-DECL|field|schemaFactory
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schemaFactory
-decl_stmt|;
 DECL|field|createCommandInterceptor
 specifier|private
 specifier|final
@@ -582,7 +543,7 @@ name|createCommandInterceptor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommandFactoryProvider ( @ommandNameCommands.ROOT) DispatchCommandProvider d, @GerritServerConfig Config cfg, WorkQueue workQueue, SshLog l, SshScope s, SchemaFactory<ReviewDb> sf, DynamicItem<SshCreateCommandInterceptor> i)
+DECL|method|CommandFactoryProvider ( @ommandNameCommands.ROOT) DispatchCommandProvider d, @GerritServerConfig Config cfg, WorkQueue workQueue, SshLog l, SshScope s, DynamicItem<SshCreateCommandInterceptor> i)
 name|CommandFactoryProvider
 parameter_list|(
 annotation|@
@@ -609,12 +570,6 @@ parameter_list|,
 name|SshScope
 name|s
 parameter_list|,
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|sf
-parameter_list|,
 name|DynamicItem
 argument_list|<
 name|SshCreateCommandInterceptor
@@ -633,10 +588,6 @@ expr_stmt|;
 name|sshScope
 operator|=
 name|s
-expr_stmt|;
-name|schemaFactory
-operator|=
-name|sf
 expr_stmt|;
 name|createCommandInterceptor
 operator|=
@@ -995,8 +946,6 @@ name|sshScope
 operator|.
 name|newContext
 argument_list|(
-name|schemaFactory
-argument_list|,
 name|s
 argument_list|,
 name|commandLine
