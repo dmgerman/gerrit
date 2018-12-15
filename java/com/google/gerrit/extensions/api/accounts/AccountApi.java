@@ -758,6 +758,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|setName (String name)
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -1493,6 +1503,25 @@ name|deleteDraftComments
 parameter_list|(
 name|DeleteDraftCommentsInput
 name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setName (String name)
+specifier|public
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
 parameter_list|)
 throws|throws
 name|RestApiException
