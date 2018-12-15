@@ -859,11 +859,6 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Test
