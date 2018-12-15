@@ -4622,8 +4622,6 @@ name|InProcessProtocol
 operator|.
 name|Context
 argument_list|(
-name|reviewDbProvider
-argument_list|,
 name|identifiedUserFactory
 argument_list|,
 name|testAccount
