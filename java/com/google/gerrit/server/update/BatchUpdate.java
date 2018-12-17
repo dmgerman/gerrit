@@ -1933,17 +1933,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|dontBumpLastUpdatedOn ()
-specifier|public
-name|void
-name|dontBumpLastUpdatedOn
-parameter_list|()
-block|{
-comment|// Do nothing; NoteDb effectively updates timestamp if and only if a commit was written to the
-comment|// change meta ref.
-block|}
-annotation|@
-name|Override
 DECL|method|deleteChange ()
 specifier|public
 name|void

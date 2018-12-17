@@ -171,12 +171,6 @@ name|ChangeNotes
 name|getNotes
 parameter_list|()
 function_decl|;
-comment|/**    * Don't bump the value of {@link Change#getLastUpdatedOn()}.    *    *<p>If called, don't bump the timestamp before storing to ReviewDb. Only has an effect in    * ReviewDb, and the only usage should be to match the behavior of NoteDb. Specifically, in NoteDb    * the timestamp is updated if and only if the change meta graph is updated, and is not updated    * when only drafts are modified.    */
-DECL|method|dontBumpLastUpdatedOn ()
-name|void
-name|dontBumpLastUpdatedOn
-parameter_list|()
-function_decl|;
 comment|/**    * Instruct {@link BatchUpdate} to delete this change.    *    *<p>If called, all other updates are ignored.    */
 DECL|method|deleteChange ()
 name|void
