@@ -1732,6 +1732,25 @@ name|Level
 operator|.
 name|WARN
 argument_list|)
+comment|// Silence non-critical messages from JGit.
+decl|.
+name|put
+argument_list|(
+literal|"org.eclipse.jgit.transport.PacketLineIn"
+argument_list|,
+name|Level
+operator|.
+name|WARN
+argument_list|)
+decl|.
+name|put
+argument_list|(
+literal|"org.eclipse.jgit.transport.PacketLineOut"
+argument_list|,
+name|Level
+operator|.
+name|WARN
+argument_list|)
 decl|.
 name|build
 argument_list|()
