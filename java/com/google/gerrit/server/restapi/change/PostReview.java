@@ -8819,18 +8819,7 @@ name|psa
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-comment|// Set postSubmit bit in ReviewDb; not required for NoteDb, which sets
-comment|// it automatically.
-name|psa
-operator|.
-name|setPostSubmit
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
+comment|// No need to set postSubmit bit, which is set automatically when parsing from NoteDb.
 block|}
 if|if
 condition|(
