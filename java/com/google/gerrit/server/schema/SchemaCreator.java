@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Populates initial repository data. */
+comment|/** Populates initial NoteDb schema, {@code All-Projects} configuration, etc. */
 end_comment
 
 begin_interface
@@ -114,9 +114,22 @@ specifier|public
 interface|interface
 name|SchemaCreator
 block|{
+comment|/**    * Create the schema, assuming it does not already exist.    *    *<p>Fails if the schema does exist.    *    * @throws OrmException an error occurred.    * @throws IOException an error occurred.    * @throws ConfigInvalidException an error occurred.    */
 DECL|method|create ()
 name|void
 name|create
+parameter_list|()
+throws|throws
+name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
+function_decl|;
+comment|/**    * Create the schema only if it does not already exist.    *    *<p>Succeeds if the schema does exist.    *    * @throws OrmException an error occurred.    * @throws IOException an error occurred.    * @throws ConfigInvalidException an error occurred.    */
+DECL|method|ensureCreated ()
+name|void
+name|ensureCreated
 parameter_list|()
 throws|throws
 name|OrmException
