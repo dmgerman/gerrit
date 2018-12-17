@@ -92,20 +92,6 @@ name|gwtorm
 operator|.
 name|server
 operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
 name|Relation
 import|;
 end_import
@@ -121,20 +107,6 @@ operator|.
 name|server
 operator|.
 name|Schema
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|Sequence
 import|;
 end_import
 
@@ -247,23 +219,6 @@ name|FIRST_CHANGE_ID
 init|=
 literal|1
 decl_stmt|;
-comment|/**    * Next unique id for a {@link Change}.    *    * @deprecated use {@link com.google.gerrit.server.Sequences#nextChangeId()}.    */
-annotation|@
-name|Sequence
-argument_list|(
-name|startWith
-operator|=
-name|FIRST_CHANGE_ID
-argument_list|)
-annotation|@
-name|Deprecated
-DECL|method|nextChangeId ()
-name|int
-name|nextChangeId
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
 block|}
 end_interface
 
