@@ -90,22 +90,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -151,7 +135,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper to create one-off request contexts.  *  *<p>Each call to {@link #open()} opens a new {@link ReviewDb}, so this class should only be used  * in a bounded try/finally block.  *  *<p>The user in the request context is {@link InternalUser} or the {@link IdentifiedUser}  * associated to the userId passed as parameter.  */
+comment|/**  * Helper to create one-off request contexts.  *  *<p>The user in the request context is {@link InternalUser} or the {@link IdentifiedUser}  * associated to the userId passed as parameter.  */
 end_comment
 
 begin_class
