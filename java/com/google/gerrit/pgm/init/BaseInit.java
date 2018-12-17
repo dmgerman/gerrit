@@ -552,20 +552,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|StatementExecutor
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|AbstractModule
@@ -2416,26 +2402,6 @@ operator|.
 name|isBatch
 argument_list|()
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|pruneSchema (StatementExecutor e, List<String> prune)
-specifier|public
-name|void
-name|pruneSchema
-parameter_list|(
-name|StatementExecutor
-name|e
-parameter_list|,
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|prune
-parameter_list|)
-block|{
-comment|// Do nothing in NoteDb.
-comment|// TODO(dborowitz): Remove this method in the base class.
 block|}
 block|}
 block|}
