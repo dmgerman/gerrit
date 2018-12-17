@@ -201,24 +201,6 @@ function_decl|;
 comment|// Deleted @Relation(id = 28)
 comment|// Deleted @Relation(id = 29)
 comment|// Deleted @Relation(id = 30)
-DECL|field|FIRST_ACCOUNT_ID
-name|int
-name|FIRST_ACCOUNT_ID
-init|=
-literal|1000000
-decl_stmt|;
-DECL|field|FIRST_GROUP_ID
-name|int
-name|FIRST_GROUP_ID
-init|=
-literal|1
-decl_stmt|;
-DECL|field|FIRST_CHANGE_ID
-name|int
-name|FIRST_CHANGE_ID
-init|=
-literal|1
-decl_stmt|;
 block|}
 end_interface
 
