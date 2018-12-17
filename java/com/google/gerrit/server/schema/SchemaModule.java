@@ -285,18 +285,14 @@ import|;
 end_import
 
 begin_comment
-comment|// TODO(dborowitz): Rename, since this no longer has anything to do with ReviewDb.
-end_comment
-
-begin_comment
-comment|/** Validate the schema and connect to Git. */
+comment|/** Bindings for low-level Gerrit schema data. */
 end_comment
 
 begin_class
-DECL|class|ReviewDbSchemaModule
+DECL|class|SchemaModule
 specifier|public
 class|class
-name|ReviewDbSchemaModule
+name|SchemaModule
 extends|extends
 name|FactoryModule
 block|{

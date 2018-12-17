@@ -1115,7 +1115,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// GroupIndexCollection is already bound very high up in ReviewDbSchemaModule.
+comment|// GroupIndexCollection is already bound very high up in SchemaModule.
 name|listener
 argument_list|()
 operator|.

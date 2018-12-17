@@ -258,7 +258,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|ReviewDbSchemaModule
+name|SchemaCreator
 import|;
 end_import
 
@@ -274,7 +274,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|SchemaCreator
+name|SchemaModule
 import|;
 end_import
 
@@ -621,7 +621,7 @@ expr_stmt|;
 name|install
 argument_list|(
 operator|new
-name|ReviewDbSchemaModule
+name|SchemaModule
 argument_list|()
 argument_list|)
 expr_stmt|;

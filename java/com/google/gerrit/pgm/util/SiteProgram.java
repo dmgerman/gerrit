@@ -232,7 +232,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|ReviewDbSchemaModule
+name|SchemaModule
 import|;
 end_import
 
@@ -792,7 +792,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ReviewDbSchemaModule
+name|SchemaModule
 argument_list|()
 argument_list|)
 expr_stmt|;

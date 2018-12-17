@@ -2283,7 +2283,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Copy of ReviewDbSchemaModule with a slightly different server ID provider. */
+comment|/** Copy of SchemaModule with a slightly different server ID provider. */
 comment|// TODO(dborowitz): Better code sharing.
 DECL|class|InMemorySchemaModule
 specifier|private
