@@ -434,6 +434,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|channel
+operator|.
+name|ChannelSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|kohsuke
 operator|.
 name|args4j
@@ -557,11 +573,14 @@ name|maxCommandWidth
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|start (Environment env)
+DECL|method|start (ChannelSession channel, Environment env)
 specifier|public
 name|void
 name|start
 parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|,
 name|Environment
 name|env
 parameter_list|)
@@ -624,6 +643,8 @@ name|super
 operator|.
 name|start
 argument_list|(
+name|channel
+argument_list|,
 name|env
 argument_list|)
 expr_stmt|;

@@ -420,6 +420,22 @@ name|sshd
 operator|.
 name|server
 operator|.
+name|channel
+operator|.
+name|ChannelSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
 name|command
 operator|.
 name|Command
@@ -680,11 +696,15 @@ name|get
 parameter_list|()
 block|{
 return|return
+parameter_list|(
+name|channelSession
+parameter_list|,
 name|requestCommand
+parameter_list|)
 lambda|->
 block|{
 name|String
-name|c
+name|command
 init|=
 name|requestCommand
 decl_stmt|;
@@ -703,13 +723,13 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|c
+name|command
 operator|=
 name|interceptor
 operator|.
 name|intercept
 argument_list|(
-name|c
+name|command
 argument_list|)
 expr_stmt|;
 block|}
@@ -717,7 +737,7 @@ return|return
 operator|new
 name|Trampoline
 argument_list|(
-name|c
+name|command
 argument_list|)
 return|;
 block|}
@@ -942,11 +962,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|start (Environment env)
+DECL|method|start (ChannelSession channel, Environment env)
 specifier|public
 name|void
 name|start
 parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|,
 name|Environment
 name|env
 parameter_list|)
@@ -989,7 +1012,9 @@ block|{
 try|try
 block|{
 name|onStart
-argument_list|()
+argument_list|(
+name|channel
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -1054,11 +1079,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|onStart ()
+DECL|method|onStart (ChannelSession channel)
 specifier|private
 name|void
 name|onStart
-parameter_list|()
+parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -1187,6 +1215,8 @@ name|cmd
 operator|.
 name|start
 argument_list|(
+name|channel
+argument_list|,
 name|env
 argument_list|)
 expr_stmt|;
@@ -1288,11 +1318,14 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|destroy ()
+DECL|method|destroy (ChannelSession channel)
 specifier|public
 name|void
 name|destroy
-parameter_list|()
+parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|)
 block|{
 name|Future
 argument_list|<
@@ -1325,18 +1358,24 @@ name|destroyExecutor
 operator|.
 name|execute
 argument_list|(
-name|this
-operator|::
+parameter_list|()
+lambda|->
 name|onDestroy
+argument_list|(
+name|channel
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|onDestroy ()
+DECL|method|onDestroy (ChannelSession channel)
 specifier|private
 name|void
 name|onDestroy
-parameter_list|()
+parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|)
 block|{
 synchronized|synchronized
 init|(
@@ -1366,7 +1405,9 @@ block|{
 name|cmd
 operator|.
 name|destroy
-argument_list|()
+argument_list|(
+name|channel
+argument_list|)
 expr_stmt|;
 name|log
 argument_list|(

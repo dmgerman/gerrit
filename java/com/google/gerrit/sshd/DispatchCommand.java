@@ -332,6 +332,22 @@ name|sshd
 operator|.
 name|server
 operator|.
+name|channel
+operator|.
+name|ChannelSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
 name|command
 operator|.
 name|Command
@@ -534,11 +550,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|start (Environment env)
+DECL|method|start (ChannelSession channel, Environment env)
 specifier|public
 name|void
 name|start
 parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|,
 name|Environment
 name|env
 parameter_list|)
@@ -794,6 +813,8 @@ name|cmd
 operator|.
 name|start
 argument_list|(
+name|channel
+argument_list|,
 name|env
 argument_list|)
 expr_stmt|;
@@ -955,11 +976,14 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|destroy ()
+DECL|method|destroy (ChannelSession channel)
 specifier|public
 name|void
 name|destroy
-parameter_list|()
+parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|)
 block|{
 name|Command
 name|cmd
@@ -983,7 +1007,9 @@ block|{
 name|cmd
 operator|.
 name|destroy
-argument_list|()
+argument_list|(
+name|channel
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
