@@ -3109,8 +3109,6 @@ name|PatchListNotAvailableException
 decl||
 name|GpgException
 decl||
-name|StorageException
-decl||
 name|IOException
 decl||
 name|PermissionBackendException
@@ -3413,8 +3411,6 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|StorageException
-decl||
 name|RuntimeException
 name|e
 parameter_list|)

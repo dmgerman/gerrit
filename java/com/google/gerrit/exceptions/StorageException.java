@@ -74,7 +74,7 @@ specifier|public
 class|class
 name|StorageException
 extends|extends
-name|Exception
+name|RuntimeException
 block|{
 DECL|field|serialVersionUID
 specifier|private

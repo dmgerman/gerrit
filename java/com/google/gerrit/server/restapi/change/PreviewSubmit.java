@@ -1075,8 +1075,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|StorageException
-decl||
 name|RestApiException
 decl||
 name|UpdateException
