@@ -583,7 +583,7 @@ specifier|private
 name|String
 name|status
 decl_stmt|;
-comment|/**    * ID of the user branch from which the account was read, {@code null} if the account was read    * from ReviewDb.    */
+comment|/** ID of the user branch from which the account was read. */
 DECL|field|metaId
 specifier|private
 name|String

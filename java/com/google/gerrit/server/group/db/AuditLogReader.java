@@ -531,8 +531,8 @@ name|allUsersName
 expr_stmt|;
 block|}
 comment|// Having separate methods for reading the two types of audit records mirrors the split in
-comment|// ReviewDb. Once ReviewDb is gone, the audit record interface becomes more flexible and we can
-comment|// revisit this, e.g. to do only a single walk, or even change the record types.
+comment|// ReviewDb. Now that ReviewDb is gone, the audit record interface is more flexible and this may
+comment|// be changed, e.g. to do only a single walk, or even change the record types.
 DECL|method|getMembersAudit ( Repository allUsersRepo, AccountGroup.UUID uuid)
 specifier|public
 name|ImmutableList
@@ -1118,8 +1118,8 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-comment|// Only report audit events from identified users, since this is a non-nullable field in
-comment|// ReviewDb. May be revisited after groups are fully migrated to NoteDb.
+comment|// Only report audit events from identified users, since this was a non-nullable field in
+comment|// ReviewDb. May be revisited.
 return|return
 name|Optional
 operator|.

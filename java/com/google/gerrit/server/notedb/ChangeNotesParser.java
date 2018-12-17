@@ -5396,12 +5396,8 @@ throw|throw
 name|pe
 throw|;
 block|}
-comment|// Store an actual 0-vote approval in the map for a removed approval, for
-comment|// several reasons:
-comment|//  - This is closer to the ReviewDb representation, which leads to less
-comment|//    confusion and special-casing of NoteDb.
-comment|//  - More importantly, ApprovalCopier needs an actual approval in order to
-comment|//    block copying an earlier approval over a later delete.
+comment|// Store an actual 0-vote approval in the map for a removed approval, because ApprovalCopier
+comment|// needs an actual approval in order to block copying an earlier approval over a later delete.
 name|PatchSetApproval
 name|remove
 init|=

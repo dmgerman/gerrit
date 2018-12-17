@@ -790,7 +790,8 @@ operator|.
 name|create
 argument_list|()
 expr_stmt|;
-comment|// Don't rely on injection to construct Sequences, as it requires ReviewDb.
+comment|// Don't rely on injection to construct Sequences, as the default GitReferenceUpdated has a
+comment|// thick dependency stack which may not all be available at schema creation time.
 name|Sequences
 name|seqs
 init|=

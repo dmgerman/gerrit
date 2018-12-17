@@ -305,7 +305,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An in-memory test environment for integration tests.  *  *<p>This test environment emulates the internals of a Gerrit server without starting a Gerrit  * site. ReviewDb as well as NoteDb are represented by in-memory representations.  *  *<p>Each test is executed with a fresh and clean test environment. Hence, modifications applied in  * one test don't carry over to subsequent ones.  */
+comment|/**  * An in-memory test environment for integration tests.  *  *<p>This test environment emulates the internals of a Gerrit server without starting a Gerrit  * site. Git repositories, including NoteDb, are stored in memory.  *  *<p>Each test is executed with a fresh and clean test environment. Hence, modifications applied in  * one test don't carry over to subsequent ones.  */
 end_comment
 
 begin_class
@@ -581,7 +581,8 @@ name|getAccountId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Inject target members after setting API user, so it can @Inject a ReviewDb if it wants.
+comment|// Inject target members after setting API user, so it can @Inject request-scoped objects if it
+comment|// wants.
 name|injector
 operator|.
 name|injectMembers

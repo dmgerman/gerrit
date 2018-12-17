@@ -133,7 +133,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A comment left by a user on a specific line of a {@link Patch}.  *  *<p>This class represents an inline comment in ReviewDb. It should only be used for  * writing/reading inline comments to/from ReviewDb. For all other purposes inline comments should  * be represented by {@link Comment}.  *  * @see Comment  */
+comment|/**  * A comment left by a user on a specific line of a {@link Patch}.  *  *<p>New APIs should not expose this class.  *  * @see Comment  */
 end_comment
 
 begin_class
@@ -942,7 +942,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/**    * The RevId for the commit to which this comment is referring.    *    *<p>Note that this field is not stored in the database. It is just provided for users of this    * class to avoid a lookup when they don't have easy access to a ReviewDb.    */
+comment|/** The RevId for the commit to which this comment is referring. */
 end_comment
 
 begin_decl_stmt

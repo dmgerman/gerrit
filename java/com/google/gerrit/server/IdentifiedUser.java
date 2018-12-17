@@ -870,7 +870,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Create an IdentifiedUser, relying on current request state.    *    *<p>Can only be used from within a module that has defined request scoped {@code @RemotePeer    * SocketAddress} and {@code ReviewDb} providers.    */
+comment|/**    * Create an IdentifiedUser, relying on current request state.    *    *<p>Can only be used from within a module that has defined a request scoped {@code @RemotePeer    * SocketAddress} provider.    */
 annotation|@
 name|Singleton
 DECL|class|RequestFactory

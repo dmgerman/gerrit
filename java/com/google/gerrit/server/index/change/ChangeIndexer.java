@@ -1891,7 +1891,7 @@ name|id
 return|;
 block|}
 block|}
-comment|// Not AbstractIndexTask as it doesn't need ReviewDb.
+comment|// Not AbstractIndexTask as it doesn't need a request context.
 DECL|class|DeleteTask
 specifier|private
 class|class

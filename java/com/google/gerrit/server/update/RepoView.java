@@ -255,7 +255,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Restricted view of a {@link Repository} for use by {@link BatchUpdateOp} implementations.  *  *<p>This class serves two purposes in the context of {@link BatchUpdate}. First, the subset of  * normal Repository functionality is purely read-only, which prevents implementors from modifying  * the repository outside of {@link BatchUpdateOp#updateRepo}. Write operations can only be  * performed by calling methods on {@link RepoContext}.  *  *<p>Second, the read methods take into account any pending operations on the repository that  * implementations have staged using the write methods on {@link RepoContext}. Callers do not have  * to worry about whether operations have been performed yet, and the implementation details may  * differ between ReviewDb and NoteDb, but callers just don't need to care.  */
+comment|/**  * Restricted view of a {@link Repository} for use by {@link BatchUpdateOp} implementations.  *  *<p>This class serves two purposes in the context of {@link BatchUpdate}. First, the subset of  * normal Repository functionality is purely read-only, which prevents implementors from modifying  * the repository outside of {@link BatchUpdateOp#updateRepo}. Write operations can only be  * performed by calling methods on {@link RepoContext}.  *  *<p>Second, the read methods take into account any pending operations on the repository that  * implementations have staged using the write methods on {@link RepoContext}. Callers do not have  * to worry about whether operations have been performed yet.  */
 end_comment
 
 begin_class
