@@ -68,6 +68,36 @@ name|project
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
 begin_comment
 comment|/**  * Operations for constructing projects in tests. This does not necessarily use the project REST  * API, so don't use it for testing that.  */
 end_comment
@@ -86,6 +116,39 @@ name|Builder
 name|newProject
 parameter_list|()
 function_decl|;
+DECL|method|project (Project.NameKey key)
+name|PerProjectOperations
+name|project
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|key
+parameter_list|)
+function_decl|;
+DECL|interface|PerProjectOperations
+interface|interface
+name|PerProjectOperations
+block|{
+comment|/**      * Returns the commit for this project. branchName can either be shortened ("HEAD", "master") or      * a fully qualified refname ("refs/heads/master"). The branch must exist.      */
+DECL|method|getHead (String branchName)
+name|RevCommit
+name|getHead
+parameter_list|(
+name|String
+name|branchName
+parameter_list|)
+function_decl|;
+comment|/**      * Returns true if a branch exists. branchName can either be shortened ("HEAD", "master") or a      * fully qualified refname ("refs/heads/master").      */
+DECL|method|hasHead (String branchName)
+name|boolean
+name|hasHead
+parameter_list|(
+name|String
+name|branchName
+parameter_list|)
+function_decl|;
+block|}
 block|}
 end_interface
 
