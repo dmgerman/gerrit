@@ -628,22 +628,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ChangeMessagesUtil
@@ -2153,11 +2137,6 @@ specifier|private
 name|CommitStatus
 name|commitStatus
 decl_stmt|;
-DECL|field|db
-specifier|private
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|submitInput
 specifier|private
 name|SubmitInput
@@ -3187,15 +3166,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Merges the given change.    *    *<p>Depending on the server configuration, more changes may be affected, e.g. by submission of a    * topic or via superproject subscriptions. All affected changes are integrated using the projects    * integration strategy.    *    * @param db the review database.    * @param change the change to be merged.    * @param caller the identity of the caller    * @param checkSubmitRules whether the prolog submit rules should be evaluated    * @param submitInput parameters regarding the merge    * @throws OrmException an error occurred reading or writing the database.    * @throws RestApiException if an error occurred.    * @throws PermissionBackendException if permissions can't be checked    * @throws IOException an error occurred reading from NoteDb.    */
-DECL|method|merge ( ReviewDb db, Change change, IdentifiedUser caller, boolean checkSubmitRules, SubmitInput submitInput, boolean dryrun)
+comment|/**    * Merges the given change.    *    *<p>Depending on the server configuration, more changes may be affected, e.g. by submission of a    * topic or via superproject subscriptions. All affected changes are integrated using the projects    * integration strategy.    *    * @param change the change to be merged.    * @param caller the identity of the caller    * @param checkSubmitRules whether the prolog submit rules should be evaluated    * @param submitInput parameters regarding the merge    * @throws OrmException an error occurred reading or writing the database.    * @throws RestApiException if an error occurred.    * @throws PermissionBackendException if permissions can't be checked    * @throws IOException an error occurred reading from NoteDb.    */
+DECL|method|merge ( Change change, IdentifiedUser caller, boolean checkSubmitRules, SubmitInput submitInput, boolean dryrun)
 specifier|public
 name|void
 name|merge
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -3266,12 +3242,6 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
-name|this
-operator|.
 name|submissionId
 operator|=
 operator|new
@@ -3337,8 +3307,6 @@ argument_list|)
 operator|.
 name|completeChangeSet
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|,
 name|caller
@@ -3707,8 +3675,6 @@ name|orm
 operator|.
 name|setContext
 argument_list|(
-name|db
-argument_list|,
 name|ts
 argument_list|,
 name|caller
@@ -3779,8 +3745,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|c
 operator|.
 name|project
@@ -3811,8 +3775,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|c
 operator|.
 name|project
@@ -4500,8 +4462,6 @@ name|submitting
 operator|.
 name|submitType
 argument_list|()
-argument_list|,
-name|db
 argument_list|,
 name|or
 operator|.
@@ -5753,8 +5713,6 @@ name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|destProject
 argument_list|,
 name|internalUserFactory

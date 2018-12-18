@@ -188,22 +188,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -255,18 +239,6 @@ operator|.
 name|util
 operator|.
 name|LabelVote
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -346,15 +318,6 @@ operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
-DECL|field|dbProvider
-specifier|protected
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|value
 specifier|protected
 specifier|final
@@ -380,7 +343,7 @@ operator|.
 name|UUID
 name|group
 decl_stmt|;
-DECL|method|Args ( ProjectCache projectCache, PermissionBackend permissionBackend, IdentifiedUser.GenericFactory userFactory, Provider<ReviewDb> dbProvider, String value, Set<Account.Id> accounts, AccountGroup.UUID group)
+DECL|method|Args ( ProjectCache projectCache, PermissionBackend permissionBackend, IdentifiedUser.GenericFactory userFactory, String value, Set<Account.Id> accounts, AccountGroup.UUID group)
 specifier|protected
 name|Args
 parameter_list|(
@@ -394,12 +357,6 @@ name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|userFactory
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 name|String
 name|value
@@ -435,12 +392,6 @@ operator|.
 name|userFactory
 operator|=
 name|userFactory
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -570,10 +521,6 @@ argument_list|,
 name|a
 operator|.
 name|userFactory
-argument_list|,
-name|a
-operator|.
-name|db
 argument_list|,
 name|value
 argument_list|,

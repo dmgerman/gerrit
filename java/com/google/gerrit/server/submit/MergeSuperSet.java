@@ -178,22 +178,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -663,14 +647,11 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|completeChangeSet (ReviewDb db, Change change, CurrentUser user)
+DECL|method|completeChangeSet (Change change, CurrentUser user)
 specifier|public
 name|ChangeSet
 name|completeChangeSet
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -800,11 +781,6 @@ argument_list|(
 name|cd
 argument_list|)
 operator|.
-name|database
-argument_list|(
-name|db
-argument_list|)
-operator|.
 name|check
 argument_list|(
 name|ChangePermission
@@ -849,8 +825,6 @@ block|{
 return|return
 name|completeChangeSetIncludingTopics
 argument_list|(
-name|db
-argument_list|,
 name|changeSet
 argument_list|,
 name|user
@@ -878,8 +852,6 @@ argument_list|()
 operator|.
 name|completeWithoutTopic
 argument_list|(
-name|db
-argument_list|,
 name|orm
 argument_list|,
 name|changeSet
@@ -912,15 +884,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Completes {@code changeSet} with any additional changes from its topics    *    *<p>{@link #completeChangeSetIncludingTopics} calls this repeatedly, alternating with {@link    * MergeSuperSetComputation#completeWithoutTopic(ReviewDb, MergeOpRepoManager, ChangeSet,    * CurrentUser)}, to discover what additional changes should be submitted with a change until the    * set stops growing.    *    *<p>{@code topicsSeen} and {@code visibleTopicsSeen} keep track of topics already explored to    * avoid wasted work.    *    * @return the resulting larger {@link ChangeSet}    */
-DECL|method|topicClosure ( ReviewDb db, ChangeSet changeSet, CurrentUser user, Set<String> topicsSeen, Set<String> visibleTopicsSeen)
+comment|/**    * Completes {@code changeSet} with any additional changes from its topics    *    *<p>{@link #completeChangeSetIncludingTopics} calls this repeatedly, alternating with {@link    * MergeSuperSetComputation#completeWithoutTopic(MergeOpRepoManager, ChangeSet, CurrentUser)}, to    * discover what additional changes should be submitted with a change until the set stops growing.    *    *<p>{@code topicsSeen} and {@code visibleTopicsSeen} keep track of topics already explored to    * avoid wasted work.    *    * @return the resulting larger {@link ChangeSet}    */
+DECL|method|topicClosure ( ChangeSet changeSet, CurrentUser user, Set<String> topicsSeen, Set<String> visibleTopicsSeen)
 specifier|private
 name|ChangeSet
 name|topicClosure
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeSet
 name|changeSet
 parameter_list|,
@@ -1031,8 +1000,6 @@ if|if
 condition|(
 name|canRead
 argument_list|(
-name|db
-argument_list|,
 name|user
 argument_list|,
 name|topicCd
@@ -1158,14 +1125,11 @@ name|nonVisibleChanges
 argument_list|)
 return|;
 block|}
-DECL|method|completeChangeSetIncludingTopics ( ReviewDb db, ChangeSet changeSet, CurrentUser user)
+DECL|method|completeChangeSetIncludingTopics (ChangeSet changeSet, CurrentUser user)
 specifier|private
 name|ChangeSet
 name|completeChangeSetIncludingTopics
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeSet
 name|changeSet
 parameter_list|,
@@ -1211,8 +1175,6 @@ name|changeSet
 operator|=
 name|topicClosure
 argument_list|(
-name|db
-argument_list|,
 name|changeSet
 argument_list|,
 name|user
@@ -1262,8 +1224,6 @@ argument_list|()
 operator|.
 name|completeWithoutTopic
 argument_list|(
-name|db
-argument_list|,
 name|orm
 argument_list|,
 name|changeSet
@@ -1276,8 +1236,6 @@ name|changeSet
 operator|=
 name|topicClosure
 argument_list|(
-name|db
-argument_list|,
 name|changeSet
 argument_list|,
 name|user
@@ -1337,14 +1295,11 @@ name|topic
 argument_list|)
 return|;
 block|}
-DECL|method|canRead (ReviewDb db, CurrentUser user, ChangeData cd)
+DECL|method|canRead (CurrentUser user, ChangeData cd)
 specifier|private
 name|boolean
 name|canRead
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|CurrentUser
 name|user
 parameter_list|,
@@ -1398,11 +1353,6 @@ operator|.
 name|change
 argument_list|(
 name|cd
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|check

@@ -1923,8 +1923,6 @@ name|indexer
 operator|.
 name|index
 argument_list|(
-name|db
-argument_list|,
 name|c
 operator|.
 name|getProject
@@ -4814,8 +4812,6 @@ name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|userFactory
@@ -5331,8 +5327,6 @@ name|indexer
 operator|.
 name|index
 argument_list|(
-name|db
-argument_list|,
 name|c
 operator|.
 name|getProject

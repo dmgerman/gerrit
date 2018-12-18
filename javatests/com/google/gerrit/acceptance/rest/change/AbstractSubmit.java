@@ -1573,20 +1573,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|After
-DECL|method|cleanup ()
-specifier|public
-name|void
-name|cleanup
-parameter_list|()
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|After
 DECL|method|removeOnSubmitValidator ()
 specifier|public
 name|void
@@ -7818,8 +7804,6 @@ name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|userFactory

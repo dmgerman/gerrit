@@ -200,22 +200,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|DynamicOptions
@@ -676,12 +660,6 @@ block|,
 DECL|enumConstant|JSON
 name|JSON
 block|}
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -790,12 +768,9 @@ name|out
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OutputStreamQuery ( ReviewDb db, GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, ChangeQueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, SubmitRuleEvaluator.Factory submitRuleEvaluatorFactory)
+DECL|method|OutputStreamQuery ( GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, ChangeQueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, SubmitRuleEvaluator.Factory submitRuleEvaluatorFactory)
 name|OutputStreamQuery
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
@@ -817,12 +792,6 @@ name|Factory
 name|submitRuleEvaluatorFactory
 parameter_list|)
 block|{
-name|this
-operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
 name|this
 operator|.
 name|repoManager
@@ -1457,8 +1426,6 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
-name|db
-argument_list|,
 name|d
 operator|.
 name|change
@@ -1677,8 +1644,6 @@ name|eventFactory
 operator|.
 name|addPatchSets
 argument_list|(
-name|db
-argument_list|,
 name|rw
 argument_list|,
 name|c
@@ -1739,8 +1704,6 @@ name|eventFactory
 operator|.
 name|asPatchSetAttribute
 argument_list|(
-name|db
-argument_list|,
 name|rw
 argument_list|,
 name|d
@@ -1840,8 +1803,6 @@ name|eventFactory
 operator|.
 name|addPatchSets
 argument_list|(
-name|db
-argument_list|,
 name|rw
 argument_list|,
 name|c

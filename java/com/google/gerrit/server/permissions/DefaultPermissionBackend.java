@@ -812,11 +812,6 @@ name|control
 operator|.
 name|asForProject
 argument_list|()
-operator|.
-name|database
-argument_list|(
-name|db
-argument_list|)
 return|;
 block|}
 catch|catch

@@ -300,22 +300,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ApprovalsUtil
@@ -756,15 +740,6 @@ name|User
 argument_list|>
 name|metaDataUpdateFactory
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|setAccess
 specifier|private
 specifier|final
@@ -795,7 +770,7 @@ name|projectConfigFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccessChange ( PermissionBackend permissionBackend, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Sequences seq, Provider<MetaDataUpdate.User> metaDataUpdateFactory, Provider<ReviewDb> db, SetAccessUtil accessUtil, ChangeJson.Factory jsonFactory, ProjectCache projectCache, ProjectConfig.Factory projectConfigFactory)
+DECL|method|CreateAccessChange ( PermissionBackend permissionBackend, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Sequences seq, Provider<MetaDataUpdate.User> metaDataUpdateFactory, SetAccessUtil accessUtil, ChangeJson.Factory jsonFactory, ProjectCache projectCache, ProjectConfig.Factory projectConfigFactory)
 name|CreateAccessChange
 parameter_list|(
 name|PermissionBackend
@@ -821,12 +796,6 @@ operator|.
 name|User
 argument_list|>
 name|metaDataUpdateFactory
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|SetAccessUtil
 name|accessUtil
@@ -874,12 +843,6 @@ operator|.
 name|metaDataUpdateFactory
 operator|=
 name|metaDataUpdateFactory
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -1338,11 +1301,6 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rsrc
 operator|.
 name|getNameKey

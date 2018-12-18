@@ -426,34 +426,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|OutOfScopeException
@@ -469,18 +441,6 @@ operator|.
 name|inject
 operator|.
 name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|ProvisionException
 import|;
 end_import
 
@@ -509,20 +469,6 @@ operator|.
 name|assistedinject
 operator|.
 name|AssistedInject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|util
-operator|.
-name|Providers
 import|;
 end_import
 
@@ -768,15 +714,6 @@ specifier|final
 name|ChangeIndex
 name|index
 decl_stmt|;
-DECL|field|schemaFactory
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schemaFactory
-decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -826,19 +763,13 @@ name|autoReindexIfStale
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer ( @erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, PluginSetContext<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndex index)
+DECL|method|ChangeIndexer ( @erritServerConfig Config cfg, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, PluginSetContext<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndex index)
 name|ChangeIndexer
 parameter_list|(
 annotation|@
 name|GerritServerConfig
 name|Config
 name|cfg
-parameter_list|,
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schemaFactory
 parameter_list|,
 name|ChangeData
 operator|.
@@ -881,12 +812,6 @@ operator|.
 name|executor
 operator|=
 name|executor
-expr_stmt|;
-name|this
-operator|.
-name|schemaFactory
-operator|=
-name|schemaFactory
 expr_stmt|;
 name|this
 operator|.
@@ -942,15 +867,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer ( SchemaFactory<ReviewDb> schemaFactory, @GerritServerConfig Config cfg, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, PluginSetContext<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
+DECL|method|ChangeIndexer ( @erritServerConfig Config cfg, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, PluginSetContext<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
 name|ChangeIndexer
 parameter_list|(
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schemaFactory
-parameter_list|,
 annotation|@
 name|GerritServerConfig
 name|Config
@@ -997,12 +916,6 @@ operator|.
 name|executor
 operator|=
 name|executor
-expr_stmt|;
-name|this
-operator|.
-name|schemaFactory
-operator|=
-name|schemaFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1415,15 +1328,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param change change to index.    */
-DECL|method|index (ReviewDb db, Change change)
+comment|/**    * Synchronously index a change.    *    * @param change change to index.    */
+DECL|method|index (Change change)
 specifier|public
 name|void
 name|index
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|)
@@ -1436,22 +1346,17 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param project the project to which the change belongs.    * @param changeId ID of the change to index.    */
-DECL|method|index (ReviewDb db, Project.NameKey project, Change.Id changeId)
+comment|/**    * Synchronously index a change.    *    * @param project the project to which the change belongs.    * @param changeId ID of the change to index.    */
+DECL|method|index (Project.NameKey project, Change.Id changeId)
 specifier|public
 name|void
 name|index
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -1471,8 +1376,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|changeId
@@ -1855,18 +1758,12 @@ operator|=
 name|id
 expr_stmt|;
 block|}
-DECL|method|callImpl (Provider<ReviewDb> db)
+DECL|method|callImpl ()
 specifier|protected
 specifier|abstract
 name|T
 name|callImpl
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
@@ -1917,77 +1814,6 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|getReviewDbProvider
-parameter_list|()
-block|{
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-init|=
-name|dbRef
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|db
-operator|==
-literal|null
-condition|)
-block|{
-try|try
-block|{
-name|db
-operator|=
-name|Providers
-operator|.
-name|of
-argument_list|(
-name|schemaFactory
-operator|.
-name|open
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|ProvisionException
-argument_list|(
-literal|"error opening ReviewDb"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-name|dbRef
-operator|.
-name|set
-argument_list|(
-name|db
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|db
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
 name|CurrentUser
 name|getUser
 parameter_list|()
@@ -2016,12 +1842,7 @@ try|try
 block|{
 return|return
 name|callImpl
-argument_list|(
-name|newCtx
-operator|.
-name|getReviewDbProvider
 argument_list|()
-argument_list|)
 return|;
 block|}
 finally|finally
@@ -2126,17 +1947,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|callImpl (Provider<ReviewDb> db)
+DECL|method|callImpl ()
 specifier|public
 name|Void
 name|callImpl
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|Exception
 block|{
@@ -2147,11 +1962,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|project
 argument_list|,
 name|id
@@ -2337,17 +2147,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|callImpl (Provider<ReviewDb> db)
+DECL|method|callImpl ()
 specifier|public
 name|Boolean
 name|callImpl
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|Exception
 block|{
@@ -2369,11 +2173,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|project
 argument_list|,
 name|id

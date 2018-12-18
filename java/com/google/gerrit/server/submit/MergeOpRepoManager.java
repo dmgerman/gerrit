@@ -152,22 +152,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -785,7 +769,7 @@ parameter_list|()
 block|{
 name|checkState
 argument_list|(
-name|db
+name|caller
 operator|!=
 literal|null
 argument_list|,
@@ -805,8 +789,6 @@ name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|getProjectName
 argument_list|()
 argument_list|,
@@ -1079,11 +1061,6 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|db
-specifier|private
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|ts
 specifier|private
 name|Timestamp
@@ -1148,14 +1125,11 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setContext (ReviewDb db, Timestamp ts, IdentifiedUser caller)
+DECL|method|setContext (Timestamp ts, IdentifiedUser caller)
 specifier|public
 name|void
 name|setContext
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Timestamp
 name|ts
 parameter_list|,
@@ -1163,12 +1137,6 @@ name|IdentifiedUser
 name|caller
 parameter_list|)
 block|{
-name|this
-operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
 name|this
 operator|.
 name|ts

@@ -298,22 +298,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CommentsUtil
@@ -804,12 +788,6 @@ specifier|final
 name|PatchListCache
 name|patchListCache
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|commentsUtil
 specifier|private
 specifier|final
@@ -939,7 +917,7 @@ name|comments
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PatchScriptFactory ( GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, CommentsUtil commentsUtil, ChangeEditUtil editReader, Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted String fileName, @Assisted(R) @Nullable PatchSet.Id patchSetA, @Assisted(R) PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
+DECL|method|PatchScriptFactory ( GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, CommentsUtil commentsUtil, ChangeEditUtil editReader, Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted String fileName, @Assisted(R) @Nullable PatchSet.Id patchSetA, @Assisted(R) PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
 name|PatchScriptFactory
 parameter_list|(
 name|GitRepositoryManager
@@ -956,9 +934,6 @@ name|builderFactory
 parameter_list|,
 name|PatchListCache
 name|patchListCache
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|CommentsUtil
 name|commentsUtil
@@ -1042,12 +1017,6 @@ name|patchListCache
 expr_stmt|;
 name|this
 operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
-name|this
-operator|.
 name|notes
 operator|=
 name|notes
@@ -1123,7 +1092,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PatchScriptFactory ( GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, CommentsUtil commentsUtil, ChangeEditUtil editReader, Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted String fileName, @Assisted int parentNum, @Assisted PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
+DECL|method|PatchScriptFactory ( GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, CommentsUtil commentsUtil, ChangeEditUtil editReader, Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, ProjectCache projectCache, @Assisted ChangeNotes notes, @Assisted String fileName, @Assisted int parentNum, @Assisted PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
 name|PatchScriptFactory
 parameter_list|(
 name|GitRepositoryManager
@@ -1140,9 +1109,6 @@ name|builderFactory
 parameter_list|,
 name|PatchListCache
 name|patchListCache
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|CommentsUtil
 name|commentsUtil
@@ -1213,12 +1179,6 @@ operator|.
 name|patchListCache
 operator|=
 name|patchListCache
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -1433,11 +1393,6 @@ operator|.
 name|change
 argument_list|(
 name|notes
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|check

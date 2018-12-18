@@ -358,22 +358,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|change
@@ -1372,15 +1356,6 @@ specifier|final
 name|AllUsersName
 name|allUsers
 decl_stmt|;
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|serverIdent
 specifier|private
 specifier|final
@@ -1407,7 +1382,7 @@ name|queryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|StarredChangesUtil ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllUsersName allUsers, Provider<ReviewDb> dbProvider, @GerritPersonIdent Provider<PersonIdent> serverIdent, ChangeIndexer indexer, Provider<InternalChangeQuery> queryProvider)
+DECL|method|StarredChangesUtil ( GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, AllUsersName allUsers, @GerritPersonIdent Provider<PersonIdent> serverIdent, ChangeIndexer indexer, Provider<InternalChangeQuery> queryProvider)
 name|StarredChangesUtil
 parameter_list|(
 name|GitRepositoryManager
@@ -1418,12 +1393,6 @@ name|gitRefUpdated
 parameter_list|,
 name|AllUsersName
 name|allUsers
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -1460,12 +1429,6 @@ operator|.
 name|allUsers
 operator|=
 name|allUsers
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -1739,11 +1702,6 @@ name|indexer
 operator|.
 name|index
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|project
 argument_list|,
 name|changeId
@@ -2004,11 +1962,6 @@ name|indexer
 operator|.
 name|index
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|project
 argument_list|,
 name|changeId

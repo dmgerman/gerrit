@@ -2175,11 +2175,6 @@ name|create
 argument_list|(
 name|ctx
 operator|.
-name|getDb
-argument_list|()
-argument_list|,
-name|ctx
-operator|.
 name|getNotes
 argument_list|()
 argument_list|)
@@ -2525,11 +2520,6 @@ name|approvalsUtil
 operator|.
 name|addApprovalsForNewPatchSet
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|update
 argument_list|,
 name|projectState
@@ -2553,11 +2543,6 @@ name|reviewerAdder
 operator|.
 name|prepare
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|ctx
 operator|.
 name|getNotes
@@ -3277,11 +3262,6 @@ name|approvalsUtil
 operator|.
 name|byPatchSetUser
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|ctx
 operator|.
 name|getNotes

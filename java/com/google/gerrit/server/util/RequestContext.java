@@ -74,37 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -121,14 +93,6 @@ block|{
 DECL|method|getUser ()
 name|CurrentUser
 name|getUser
-parameter_list|()
-function_decl|;
-DECL|method|getReviewDbProvider ()
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|getReviewDbProvider
 parameter_list|()
 function_decl|;
 block|}

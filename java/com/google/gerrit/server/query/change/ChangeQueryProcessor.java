@@ -262,22 +262,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|AnonymousUser
@@ -580,15 +564,6 @@ name|plugin
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|userProvider
 specifier|private
 specifier|final
@@ -691,7 +666,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<AnonymousUser> anonymousUserProvider)
+DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<AnonymousUser> anonymousUserProvider)
 name|ChangeQueryProcessor
 parameter_list|(
 name|Provider
@@ -716,12 +691,6 @@ name|indexes
 parameter_list|,
 name|ChangeIndexRewriter
 name|rewriter
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|ChangeNotes
 operator|.
@@ -778,12 +747,6 @@ operator|.
 name|getQueryLimit
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -1134,8 +1097,6 @@ argument_list|,
 operator|new
 name|ChangeIsVisibleToPredicate
 argument_list|(
-name|db
-argument_list|,
 name|notesFactory
 argument_list|,
 name|userProvider

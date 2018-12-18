@@ -266,22 +266,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|cache
@@ -991,14 +975,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (ReviewDb db, Change change, PatchSet patch)
+DECL|method|getChangeKind (Change change, PatchSet patch)
 specifier|public
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -1010,8 +991,6 @@ return|return
 name|getChangeKindInternal
 argument_list|(
 name|this
-argument_list|,
-name|db
 argument_list|,
 name|change
 argument_list|,
@@ -2369,14 +2348,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (ReviewDb db, Change change, PatchSet patch)
+DECL|method|getChangeKind (Change change, PatchSet patch)
 specifier|public
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -2388,8 +2364,6 @@ return|return
 name|getChangeKindInternal
 argument_list|(
 name|this
-argument_list|,
-name|db
 argument_list|,
 name|change
 argument_list|,
@@ -2655,7 +2629,7 @@ return|return
 name|kind
 return|;
 block|}
-DECL|method|getChangeKindInternal ( ChangeKindCache cache, ReviewDb db, Change change, PatchSet patch, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager)
+DECL|method|getChangeKindInternal ( ChangeKindCache cache, Change change, PatchSet patch, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager)
 specifier|private
 specifier|static
 name|ChangeKind
@@ -2663,9 +2637,6 @@ name|getChangeKindInternal
 parameter_list|(
 name|ChangeKindCache
 name|cache
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|Change
 name|change
@@ -2739,8 +2710,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|)
 argument_list|,

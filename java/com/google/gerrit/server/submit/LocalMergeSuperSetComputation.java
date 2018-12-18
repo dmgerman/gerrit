@@ -270,22 +270,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -909,14 +893,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|completeWithoutTopic ( ReviewDb db, MergeOpRepoManager orm, ChangeSet changeSet, CurrentUser user)
+DECL|method|completeWithoutTopic ( MergeOpRepoManager orm, ChangeSet changeSet, CurrentUser user)
 specifier|public
 name|ChangeSet
 name|completeWithoutTopic
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|MergeOpRepoManager
 name|orm
 parameter_list|,
@@ -1051,8 +1032,6 @@ name|visible
 init|=
 name|isVisible
 argument_list|(
-name|db
-argument_list|,
 name|changeSet
 argument_list|,
 name|cd
@@ -1199,8 +1178,6 @@ init|=
 name|byCommitsOnBranchNotMerged
 argument_list|(
 name|or
-argument_list|,
-name|db
 argument_list|,
 name|b
 argument_list|,
@@ -1375,14 +1352,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|isVisible (ReviewDb db, ChangeSet changeSet, ChangeData cd, CurrentUser user)
+DECL|method|isVisible (ChangeSet changeSet, ChangeData cd, CurrentUser user)
 specifier|private
 name|boolean
 name|isVisible
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeSet
 name|changeSet
 parameter_list|,
@@ -1461,11 +1435,6 @@ argument_list|(
 name|cd
 argument_list|)
 operator|.
-name|database
-argument_list|(
-name|db
-argument_list|)
-operator|.
 name|check
 argument_list|(
 name|ChangePermission
@@ -1542,16 +1511,13 @@ operator|.
 name|type
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, ReviewDb db, Branch.NameKey branch, Set<String> visibleHashes, Set<String> nonVisibleHashes)
+DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, Branch.NameKey branch, Set<String> visibleHashes, Set<String> nonVisibleHashes)
 specifier|private
 name|ChangeSet
 name|byCommitsOnBranchNotMerged
 parameter_list|(
 name|OpenRepo
 name|or
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|Branch
 operator|.
@@ -1585,8 +1551,6 @@ name|byCommitsOnBranchNotMerged
 argument_list|(
 name|or
 argument_list|,
-name|db
-argument_list|,
 name|branch
 argument_list|,
 name|visibleHashes
@@ -1605,8 +1569,6 @@ argument_list|(
 name|byCommitsOnBranchNotMerged
 argument_list|(
 name|or
-argument_list|,
-name|db
 argument_list|,
 name|branch
 argument_list|,
@@ -1677,7 +1639,7 @@ name|invisibleChanges
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, ReviewDb db, Branch.NameKey branch, Set<String> hashes)
+DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, Branch.NameKey branch, Set<String> hashes)
 specifier|private
 name|ImmutableList
 argument_list|<
@@ -1687,9 +1649,6 @@ name|byCommitsOnBranchNotMerged
 parameter_list|(
 name|OpenRepo
 name|or
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|Branch
 operator|.
@@ -1773,8 +1732,6 @@ argument_list|(
 name|or
 operator|.
 name|repo
-argument_list|,
-name|db
 argument_list|,
 name|branch
 argument_list|,

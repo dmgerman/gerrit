@@ -362,22 +362,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ApprovalsUtil
@@ -838,20 +822,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1090,15 +1060,6 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 decl_stmt|;
-DECL|field|schema
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-decl_stmt|;
 DECL|field|indexConfig
 specifier|private
 specifier|final
@@ -1107,7 +1068,7 @@ name|indexConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventFactory ( AccountCache accountCache, Emails emails, UrlFormatter urlFormatter, PatchListCache patchListCache, @GerritPersonIdent Provider<PersonIdent> myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schema, IndexConfig indexConfig)
+DECL|method|EventFactory ( AccountCache accountCache, Emails emails, UrlFormatter urlFormatter, PatchListCache patchListCache, @GerritPersonIdent Provider<PersonIdent> myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, IndexConfig indexConfig)
 name|EventFactory
 parameter_list|(
 name|AccountCache
@@ -1147,12 +1108,6 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-parameter_list|,
 name|IndexConfig
 name|indexConfig
 parameter_list|)
@@ -1213,89 +1168,17 @@ name|queryProvider
 expr_stmt|;
 name|this
 operator|.
-name|schema
-operator|=
-name|schema
-expr_stmt|;
-name|this
-operator|.
 name|indexConfig
 operator|=
 name|indexConfig
 expr_stmt|;
 block|}
 comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to JSON.    *    * @param change    * @return object suitable for serialization to JSON    */
-DECL|method|asChangeAttribute (Change change, ChangeNotes notes)
+DECL|method|asChangeAttribute (Change change)
 specifier|public
 name|ChangeAttribute
 name|asChangeAttribute
 parameter_list|(
-name|Change
-name|change
-parameter_list|,
-name|ChangeNotes
-name|notes
-parameter_list|)
-block|{
-try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|schema
-operator|.
-name|open
-argument_list|()
-init|)
-block|{
-return|return
-name|asChangeAttribute
-argument_list|(
-name|db
-argument_list|,
-name|change
-argument_list|,
-name|notes
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atSevere
-argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|e
-argument_list|)
-operator|.
-name|log
-argument_list|(
-literal|"Cannot open database connection"
-argument_list|)
-expr_stmt|;
-return|return
-operator|new
-name|ChangeAttribute
-argument_list|()
-return|;
-block|}
-block|}
-comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to JSON.    *    * @param db Review database    * @param change    * @return object suitable for serialization to JSON    */
-DECL|method|asChangeAttribute (ReviewDb db, Change change)
-specifier|public
-name|ChangeAttribute
-name|asChangeAttribute
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|)
@@ -1383,8 +1266,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|)
 operator|.
@@ -1504,15 +1385,12 @@ return|return
 name|a
 return|;
 block|}
-comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to JSON.    *    * @param db Review database    * @param change    * @param notes    * @return object suitable for serialization to JSON    */
-DECL|method|asChangeAttribute (ReviewDb db, Change change, ChangeNotes notes)
+comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to JSON.    *    * @param change    * @param notes    * @return object suitable for serialization to JSON    */
+DECL|method|asChangeAttribute (Change change, ChangeNotes notes)
 specifier|public
 name|ChangeAttribute
 name|asChangeAttribute
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -1527,8 +1405,6 @@ name|a
 init|=
 name|asChangeAttribute
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|)
 decl_stmt|;
@@ -2880,14 +2756,11 @@ operator|=
 name|commitMessage
 expr_stmt|;
 block|}
-DECL|method|addPatchSets ( ReviewDb db, RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, LabelTypes labelTypes)
+DECL|method|addPatchSets ( RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|RevWalk
 name|revWalk
 parameter_list|,
@@ -2919,8 +2792,6 @@ parameter_list|)
 block|{
 name|addPatchSets
 argument_list|(
-name|db
-argument_list|,
 name|revWalk
 argument_list|,
 name|ca
@@ -2937,14 +2808,11 @@ name|labelTypes
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPatchSets ( ReviewDb db, RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, boolean includeFiles, Change change, LabelTypes labelTypes)
+DECL|method|addPatchSets ( RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, boolean includeFiles, Change change, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|RevWalk
 name|revWalk
 parameter_list|,
@@ -3016,8 +2884,6 @@ name|psa
 init|=
 name|asPatchSetAttribute
 argument_list|(
-name|db
-argument_list|,
 name|revWalk
 argument_list|,
 name|change
@@ -3367,83 +3233,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Create a PatchSetAttribute for the given patchset suitable for serialization to JSON.    *    * @param revWalk    * @param patchSet    * @return object suitable for serialization to JSON    */
+comment|/**    * Create a PatchSetAttribute for the given patchset suitable for serialization to JSON.    *    * @param patchSet    * @return object suitable for serialization to JSON    */
 DECL|method|asPatchSetAttribute (RevWalk revWalk, Change change, PatchSet patchSet)
 specifier|public
 name|PatchSetAttribute
 name|asPatchSetAttribute
 parameter_list|(
-name|RevWalk
-name|revWalk
-parameter_list|,
-name|Change
-name|change
-parameter_list|,
-name|PatchSet
-name|patchSet
-parameter_list|)
-block|{
-try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|schema
-operator|.
-name|open
-argument_list|()
-init|)
-block|{
-return|return
-name|asPatchSetAttribute
-argument_list|(
-name|db
-argument_list|,
-name|revWalk
-argument_list|,
-name|change
-argument_list|,
-name|patchSet
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atSevere
-argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|e
-argument_list|)
-operator|.
-name|log
-argument_list|(
-literal|"Cannot open database connection"
-argument_list|)
-expr_stmt|;
-return|return
-operator|new
-name|PatchSetAttribute
-argument_list|()
-return|;
-block|}
-block|}
-comment|/**    * Create a PatchSetAttribute for the given patchset suitable for serialization to JSON.    *    * @param db Review database    * @param patchSet    * @return object suitable for serialization to JSON    */
-DECL|method|asPatchSetAttribute ( ReviewDb db, RevWalk revWalk, Change change, PatchSet patchSet)
-specifier|public
-name|PatchSetAttribute
-name|asPatchSetAttribute
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|RevWalk
 name|revWalk
 parameter_list|,
@@ -3724,8 +3519,6 @@ name|changeKindCache
 operator|.
 name|getChangeKind
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|,
 name|patchSet

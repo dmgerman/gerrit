@@ -204,22 +204,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CommentsUtil
@@ -554,15 +538,6 @@ name|CurrentUser
 argument_list|>
 name|userProvider
 decl_stmt|;
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -594,7 +569,7 @@ name|notesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteComment ( Provider<CurrentUser> userProvider, Provider<ReviewDb> dbProvider, PermissionBackend permissionBackend, RetryHelper retryHelper, CommentsUtil commentsUtil, Provider<CommentJson> commentJson, ChangeNotes.Factory notesFactory)
+DECL|method|DeleteComment ( Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, RetryHelper retryHelper, CommentsUtil commentsUtil, Provider<CommentJson> commentJson, ChangeNotes.Factory notesFactory)
 specifier|public
 name|DeleteComment
 parameter_list|(
@@ -603,12 +578,6 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|userProvider
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -641,12 +610,6 @@ operator|.
 name|userProvider
 operator|=
 name|userProvider
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -778,11 +741,6 @@ name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rsrc
 operator|.
 name|getRevisionResource

@@ -1122,22 +1122,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|AnonymousUser
@@ -1913,20 +1897,6 @@ operator|.
 name|server
 operator|.
 name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|SchemaFactory
 import|;
 end_import
 
@@ -3104,11 +3074,6 @@ specifier|protected
 name|RestSession
 name|anonymousRestSession
 decl_stmt|;
-DECL|field|db
-specifier|protected
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|adminSshSession
 specifier|protected
 name|SshSession
@@ -3208,16 +3173,6 @@ argument_list|<
 name|AnonymousUser
 argument_list|>
 name|anonymousUser
-decl_stmt|;
-DECL|field|reviewDbProvider
-annotation|@
-name|Inject
-specifier|private
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|reviewDbProvider
 decl_stmt|;
 DECL|field|accountIndexer
 annotation|@
@@ -3905,19 +3860,12 @@ argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|db
-operator|=
-name|reviewDbProvider
-operator|.
-name|open
-argument_list|()
-expr_stmt|;
 comment|// All groups which were added during the server start (e.g. in SchemaCreatorImpl) aren't
 comment|// contained in the instance of the group index which is available here and in tests. There are
 comment|// two reasons:
 comment|// 1) No group index is available in SchemaCreatorImpl when using an in-memory database.
-comment|// (This could be fixed by using the IndexManagerOnInit in InMemoryDatabase similar as BaseInit
-comment|// uses it.)
+comment|// (This could be fixed by using the IndexManagerOnInit in InMemoryTestingDatabaseModule similar
+comment|// to how BaseInit uses it.)
 comment|// 2) During the on-init part of the server start, we use another instance of the index than
 comment|// later on. As test indexes are non-permanent, closing an instance and opening another one
 comment|// removes all indexed data.
@@ -4633,8 +4581,6 @@ name|InProcessProtocol
 operator|.
 name|Context
 argument_list|(
-name|reviewDbProvider
-argument_list|,
 name|identifiedUserFactory
 argument_list|,
 name|testAccount
@@ -4705,11 +4651,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 name|closeSsh
 argument_list|()
 expr_stmt|;
@@ -5916,8 +5857,6 @@ name|atrScope
 operator|.
 name|newContext
 argument_list|(
-name|reviewDbProvider
-argument_list|,
 operator|new
 name|SshSession
 argument_list|(
@@ -6004,8 +5943,6 @@ name|atrScope
 operator|.
 name|newContext
 argument_list|(
-name|reviewDbProvider
-argument_list|,
 literal|null
 argument_list|,
 name|anonymousUser
@@ -8059,8 +7996,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|psId

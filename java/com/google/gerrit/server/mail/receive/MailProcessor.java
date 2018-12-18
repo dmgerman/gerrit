@@ -2034,11 +2034,6 @@ name|buf
 operator|.
 name|create
 argument_list|(
-name|cd
-operator|.
-name|db
-argument_list|()
-argument_list|,
 name|project
 argument_list|,
 name|ctx
@@ -2430,11 +2425,6 @@ name|approvalsUtil
 operator|.
 name|byPatchSetUser
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|notes
 argument_list|,
 name|psId

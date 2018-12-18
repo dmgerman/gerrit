@@ -2018,11 +2018,6 @@ argument_list|)
 operator|.
 name|asForRef
 argument_list|()
-operator|.
-name|database
-argument_list|(
-name|db
-argument_list|)
 return|;
 block|}
 annotation|@

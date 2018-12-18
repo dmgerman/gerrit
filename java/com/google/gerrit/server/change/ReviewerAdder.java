@@ -652,22 +652,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|AnonymousUser
@@ -1590,15 +1574,12 @@ operator|=
 name|validator
 expr_stmt|;
 block|}
-comment|/**    * Prepare application of a single {@link AddReviewerInput}.    *    * @param db database.    * @param notes change notes.    * @param user user performing the reviewer addition.    * @param input input describing user or group to add as a reviewer.    * @param allowGroup whether to allow    * @return handle describing the addition operation. If the {@code op} field is present, this    *     operation may be added to a {@code BatchUpdate}. Otherwise, the {@code error} field    *     contains information about an error that occurred    * @throws OrmException    * @throws IOException    * @throws PermissionBackendException    * @throws ConfigInvalidException    */
-DECL|method|prepare ( ReviewDb db, ChangeNotes notes, CurrentUser user, AddReviewerInput input, boolean allowGroup)
+comment|/**    * Prepare application of a single {@link AddReviewerInput}.    *    * @param notes change notes.    * @param user user performing the reviewer addition.    * @param input input describing user or group to add as a reviewer.    * @param allowGroup whether to allow    * @return handle describing the addition operation. If the {@code op} field is present, this    *     operation may be added to a {@code BatchUpdate}. Otherwise, the {@code error} field    *     contains information about an error that occurred    * @throws OrmException    * @throws IOException    * @throws PermissionBackendException    * @throws ConfigInvalidException    */
+DECL|method|prepare ( ChangeNotes notes, CurrentUser user, AddReviewerInput input, boolean allowGroup)
 specifier|public
 name|ReviewerAddition
 name|prepare
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -1706,8 +1687,6 @@ name|byAccountId
 init|=
 name|addByAccountId
 argument_list|(
-name|db
-argument_list|,
 name|input
 argument_list|,
 name|notes
@@ -1742,8 +1721,6 @@ name|wholeGroup
 operator|=
 name|addWholeGroup
 argument_list|(
-name|db
-argument_list|,
 name|input
 argument_list|,
 name|notes
@@ -1800,8 +1777,6 @@ block|}
 return|return
 name|addByEmail
 argument_list|(
-name|db
-argument_list|,
 name|input
 argument_list|,
 name|notes
@@ -1880,14 +1855,11 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|addByAccountId ( ReviewDb db, AddReviewerInput input, ChangeNotes notes, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean allowGroup, boolean allowByEmail)
+DECL|method|addByAccountId ( AddReviewerInput input, ChangeNotes notes, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean allowGroup, boolean allowByEmail)
 specifier|private
 name|ReviewerAddition
 name|addByAccountId
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|AddReviewerInput
 name|input
 parameter_list|,
@@ -2035,8 +2007,6 @@ if|if
 condition|(
 name|isValidReviewer
 argument_list|(
-name|db
-argument_list|,
 name|notes
 operator|.
 name|getChange
@@ -2164,14 +2134,11 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|addWholeGroup ( ReviewDb db, AddReviewerInput input, ChangeNotes notes, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean confirmed, boolean allowGroup, boolean allowByEmail)
+DECL|method|addWholeGroup ( AddReviewerInput input, ChangeNotes notes, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify, boolean confirmed, boolean allowGroup, boolean allowByEmail)
 specifier|private
 name|ReviewerAddition
 name|addWholeGroup
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|AddReviewerInput
 name|input
 parameter_list|,
@@ -2551,8 +2518,6 @@ if|if
 condition|(
 name|isValidReviewer
 argument_list|(
-name|db
-argument_list|,
 name|notes
 operator|.
 name|getChange
@@ -2599,14 +2564,11 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|addByEmail ( ReviewDb db, AddReviewerInput input, ChangeNotes notes, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|addByEmail ( AddReviewerInput input, ChangeNotes notes, CurrentUser user, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|private
 name|ReviewerAddition
 name|addByEmail
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|AddReviewerInput
 name|input
 parameter_list|,
@@ -2639,11 +2601,6 @@ name|anonymousProvider
 operator|.
 name|get
 argument_list|()
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|change
@@ -2774,14 +2731,11 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|isValidReviewer (ReviewDb db, Branch.NameKey branch, Account member)
+DECL|method|isValidReviewer (Branch.NameKey branch, Account member)
 specifier|private
 name|boolean
 name|isValidReviewer
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Branch
 operator|.
 name|NameKey
@@ -2819,11 +2773,6 @@ name|member
 operator|.
 name|getId
 argument_list|()
-argument_list|)
-operator|.
-name|database
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|ref
@@ -3655,14 +3604,11 @@ name|groupUUID
 argument_list|)
 return|;
 block|}
-DECL|method|prepare ( ReviewDb db, ChangeNotes notes, CurrentUser user, Iterable<? extends AddReviewerInput> inputs, boolean allowGroup)
+DECL|method|prepare ( ChangeNotes notes, CurrentUser user, Iterable<? extends AddReviewerInput> inputs, boolean allowGroup)
 specifier|public
 name|ReviewerAdditionList
 name|prepare
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
@@ -3766,8 +3712,6 @@ name|add
 argument_list|(
 name|prepare
 argument_list|(
-name|db
-argument_list|,
 name|notes
 argument_list|,
 name|user

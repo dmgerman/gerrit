@@ -88,22 +88,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -171,20 +155,6 @@ operator|.
 name|SshScope
 operator|.
 name|Context
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|SchemaFactory
 import|;
 end_import
 
@@ -453,15 +423,6 @@ name|MessageFactory
 argument_list|>
 name|messageFactory
 decl_stmt|;
-DECL|field|schemaFactory
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schemaFactory
-decl_stmt|;
 DECL|field|sshScope
 specifier|private
 specifier|final
@@ -495,7 +456,7 @@ name|context
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SendMessage ( Provider<MessageFactory> messageFactory, SchemaFactory<ReviewDb> sf, SshScope sshScope)
+DECL|method|SendMessage (Provider<MessageFactory> messageFactory, SshScope sshScope)
 name|SendMessage
 parameter_list|(
 name|Provider
@@ -503,12 +464,6 @@ argument_list|<
 name|MessageFactory
 argument_list|>
 name|messageFactory
-parameter_list|,
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|sf
 parameter_list|,
 name|SshScope
 name|sshScope
@@ -519,12 +474,6 @@ operator|.
 name|messageFactory
 operator|=
 name|messageFactory
-expr_stmt|;
-name|this
-operator|.
-name|schemaFactory
-operator|=
-name|sf
 expr_stmt|;
 name|this
 operator|.
@@ -636,8 +585,6 @@ name|sshScope
 operator|.
 name|newContext
 argument_list|(
-name|schemaFactory
-argument_list|,
 name|s
 argument_list|,
 literal|""

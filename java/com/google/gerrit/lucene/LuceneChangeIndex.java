@@ -608,22 +608,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|StarredChangesUtil
@@ -851,18 +835,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -1642,15 +1614,6 @@ specifier|final
 name|ListeningExecutorService
 name|executor
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -1691,7 +1654,7 @@ name|closedIndex
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LuceneChangeIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor(INTERACTIVE) ListeningExecutorService executor, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, @Assisted Schema<ChangeData> schema)
+DECL|method|LuceneChangeIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor(INTERACTIVE) ListeningExecutorService executor, ChangeData.Factory changeDataFactory, @Assisted Schema<ChangeData> schema)
 name|LuceneChangeIndex
 parameter_list|(
 annotation|@
@@ -1709,12 +1672,6 @@ name|INTERACTIVE
 argument_list|)
 name|ListeningExecutorService
 name|executor
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|ChangeData
 operator|.
@@ -1737,12 +1694,6 @@ operator|.
 name|executor
 operator|=
 name|executor
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -3430,11 +3381,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|CHANGE_CODEC
 operator|.
 name|decode
@@ -3518,11 +3464,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 operator|new
 name|Project
 operator|.

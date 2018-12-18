@@ -360,22 +360,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|index
@@ -1277,7 +1261,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMerged ( Repository repo, ReviewDb db, Branch.NameKey branch, Collection<String> hashes)
+DECL|method|byCommitsOnBranchNotMerged ( Repository repo, Branch.NameKey branch, Collection<String> hashes)
 specifier|public
 name|Iterable
 argument_list|<
@@ -1287,9 +1271,6 @@ name|byCommitsOnBranchNotMerged
 parameter_list|(
 name|Repository
 name|repo
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|Branch
 operator|.
@@ -1312,8 +1293,6 @@ name|byCommitsOnBranchNotMerged
 argument_list|(
 name|repo
 argument_list|,
-name|db
-argument_list|,
 name|branch
 argument_list|,
 name|hashes
@@ -1330,7 +1309,7 @@ return|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|byCommitsOnBranchNotMerged ( Repository repo, ReviewDb db, Branch.NameKey branch, Collection<String> hashes, int indexLimit)
+DECL|method|byCommitsOnBranchNotMerged ( Repository repo, Branch.NameKey branch, Collection<String> hashes, int indexLimit)
 name|Iterable
 argument_list|<
 name|ChangeData
@@ -1339,9 +1318,6 @@ name|byCommitsOnBranchNotMerged
 parameter_list|(
 name|Repository
 name|repo
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|Branch
 operator|.
@@ -1377,8 +1353,6 @@ name|byCommitsOnBranchNotMergedFromDatabase
 argument_list|(
 name|repo
 argument_list|,
-name|db
-argument_list|,
 name|branch
 argument_list|,
 name|hashes
@@ -1394,7 +1368,7 @@ name|hashes
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMergedFromDatabase ( Repository repo, ReviewDb db, Branch.NameKey branch, Collection<String> hashes)
+DECL|method|byCommitsOnBranchNotMergedFromDatabase ( Repository repo, Branch.NameKey branch, Collection<String> hashes)
 specifier|private
 name|Iterable
 argument_list|<
@@ -1404,9 +1378,6 @@ name|byCommitsOnBranchNotMergedFromDatabase
 parameter_list|(
 name|Repository
 name|repo
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|Branch
 operator|.
@@ -1622,8 +1593,6 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|n
 argument_list|)
 argument_list|)

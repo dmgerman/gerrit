@@ -374,20 +374,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|util
-operator|.
-name|Providers
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -2178,16 +2164,6 @@ operator|.
 name|asForChange
 argument_list|(
 name|cd
-argument_list|,
-name|Providers
-operator|.
-name|of
-argument_list|(
-name|cd
-operator|.
-name|db
-argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -2276,8 +2252,6 @@ operator|.
 name|asForChange
 argument_list|(
 literal|null
-argument_list|,
-name|db
 argument_list|)
 return|;
 block|}
@@ -2307,8 +2281,6 @@ operator|.
 name|asForChange
 argument_list|(
 name|cd
-argument_list|,
-name|db
 argument_list|)
 return|;
 block|}

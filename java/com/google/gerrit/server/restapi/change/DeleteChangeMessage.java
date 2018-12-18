@@ -276,22 +276,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ChangeMessagesUtil
@@ -625,15 +609,6 @@ name|CurrentUser
 argument_list|>
 name|userProvider
 decl_stmt|;
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -664,7 +639,7 @@ name|notesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteChangeMessage ( Provider<CurrentUser> userProvider, Provider<ReviewDb> dbProvider, PermissionBackend permissionBackend, ChangeMessagesUtil changeMessagesUtil, AccountLoader.Factory accountLoaderFactory, ChangeNotes.Factory notesFactory, RetryHelper retryHelper)
+DECL|method|DeleteChangeMessage ( Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, ChangeMessagesUtil changeMessagesUtil, AccountLoader.Factory accountLoaderFactory, ChangeNotes.Factory notesFactory, RetryHelper retryHelper)
 specifier|public
 name|DeleteChangeMessage
 parameter_list|(
@@ -673,12 +648,6 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|userProvider
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -710,12 +679,6 @@ operator|.
 name|userProvider
 operator|=
 name|userProvider
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -837,11 +800,6 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|resource
 operator|.
 name|getChangeResource

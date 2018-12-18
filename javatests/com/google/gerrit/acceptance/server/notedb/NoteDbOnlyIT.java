@@ -1980,8 +1980,6 @@ name|buf
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|project
 argument_list|,
 name|identifiedUserFactory
