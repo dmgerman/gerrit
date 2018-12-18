@@ -74,13 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|common
 operator|.
-name|client
-operator|.
-name|Comment
-operator|.
-name|Range
+name|Nullable
 import|;
 end_import
 
@@ -90,11 +86,15 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
+operator|.
+name|extensions
 operator|.
 name|client
 operator|.
-name|Column
+name|Comment
+operator|.
+name|Range
 import|;
 end_import
 
@@ -214,19 +214,6 @@ name|uuid
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|,
-name|name
-operator|=
-name|Column
-operator|.
-name|NONE
-argument_list|)
 DECL|field|patchKey
 specifier|protected
 name|Patch
@@ -234,17 +221,6 @@ operator|.
 name|Key
 name|patchKey
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|2
-argument_list|,
-name|length
-operator|=
-literal|40
-argument_list|)
 DECL|field|uuid
 specifier|protected
 name|String
@@ -682,19 +658,6 @@ block|}
 end_function
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|,
-name|name
-operator|=
-name|Column
-operator|.
-name|NONE
-argument_list|)
 DECL|field|key
 specifier|protected
 name|Key
@@ -707,13 +670,6 @@ comment|/** Line number this comment applies to; it should display after the lin
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|2
-argument_list|)
 DECL|field|lineNbr
 specifier|protected
 name|int
@@ -726,17 +682,6 @@ comment|/** Who wrote this comment. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|3
-argument_list|,
-name|name
-operator|=
-literal|"author_id"
-argument_list|)
 DECL|field|author
 specifier|protected
 name|Account
@@ -751,13 +696,6 @@ comment|/** When this comment was drafted. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|4
-argument_list|)
 DECL|field|writtenOn
 specifier|protected
 name|Timestamp
@@ -770,13 +708,6 @@ comment|/** Current publication state of the comment; see {@link Status}. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|5
-argument_list|)
 DECL|field|status
 specifier|protected
 name|char
@@ -789,13 +720,6 @@ comment|/** Which file is this comment; 0 is ancestor, 1 is new version. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|6
-argument_list|)
 DECL|field|side
 specifier|protected
 name|short
@@ -808,24 +732,9 @@ comment|/** The text left by the user. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|7
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|,
-name|length
-operator|=
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|)
 DECL|field|message
+annotation|@
+name|Nullable
 specifier|protected
 name|String
 name|message
@@ -837,22 +746,9 @@ comment|/** The parent of this comment, or null if this is the first comment on 
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|8
-argument_list|,
-name|length
-operator|=
-literal|40
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|parentUuid
+annotation|@
+name|Nullable
 specifier|protected
 name|String
 name|parentUuid
@@ -860,18 +756,9 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|9
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|range
+annotation|@
+name|Nullable
 specifier|protected
 name|CommentRange
 name|range
@@ -879,18 +766,9 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|10
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|tag
+annotation|@
+name|Nullable
 specifier|protected
 name|String
 name|tag
@@ -902,18 +780,9 @@ comment|/** Real user that added this comment on behalf of the user recorded in 
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|11
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|realAuthor
+annotation|@
+name|Nullable
 specifier|protected
 name|Account
 operator|.
@@ -927,13 +796,6 @@ comment|/** True if this comment requires further action. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|12
-argument_list|)
 DECL|field|unresolved
 specifier|protected
 name|boolean

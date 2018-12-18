@@ -66,20 +66,6 @@ name|client
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|Column
-import|;
-end_import
-
 begin_comment
 comment|/** A revision identifier for a file or a change. */
 end_comment
@@ -109,17 +95,6 @@ name|LEN
 init|=
 literal|40
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|,
-name|length
-operator|=
-name|LEN
-argument_list|)
 DECL|field|id
 specifier|protected
 name|String

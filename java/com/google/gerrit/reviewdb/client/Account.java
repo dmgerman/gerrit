@@ -146,20 +146,6 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|Column
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
 name|IntKey
 import|;
 end_import
@@ -195,7 +181,7 @@ specifier|final
 class|class
 name|Account
 block|{
-comment|/**    * Key local to Gerrit to identify a user.    *    *<p>Fields in this type must be annotated with {@link Column} so that account IDs can be    * converted into protos (protobuf requires the {@link Column} annotations for decoding/encoding).    * We need to be able to store account IDs as protos because we store change protos in the change    * index and a change references account IDs for the change owner and the assignee.    */
+comment|/** Key local to Gerrit to identify a user. */
 DECL|class|Id
 specifier|public
 specifier|static
@@ -227,13 +213,6 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
 DECL|field|id
 specifier|protected
 name|int

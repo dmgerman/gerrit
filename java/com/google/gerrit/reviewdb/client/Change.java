@@ -92,11 +92,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|common
 operator|.
-name|client
-operator|.
-name|ChangeStatus
+name|Nullable
 import|;
 end_import
 
@@ -106,11 +104,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
+operator|.
+name|extensions
 operator|.
 name|client
 operator|.
-name|Column
+name|ChangeStatus
 import|;
 end_import
 
@@ -204,13 +204,6 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
 DECL|field|id
 specifier|public
 name|int
@@ -1188,17 +1181,6 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|,
-name|length
-operator|=
-literal|60
-argument_list|)
 DECL|field|id
 specifier|protected
 name|String
@@ -1751,13 +1733,6 @@ comment|/** Locally assigned unique identifier of the change */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
 DECL|field|changeId
 specifier|protected
 name|Id
@@ -1770,13 +1745,6 @@ comment|/** Globally assigned unique identifier of the change */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|2
-argument_list|)
 DECL|field|changeKey
 specifier|protected
 name|Key
@@ -1789,13 +1757,6 @@ comment|/** optimistic locking */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|3
-argument_list|)
 DECL|field|rowVersion
 specifier|protected
 name|int
@@ -1808,13 +1769,6 @@ comment|/** When this change was first introduced into the database. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|4
-argument_list|)
 DECL|field|createdOn
 specifier|protected
 name|Timestamp
@@ -1827,13 +1781,6 @@ comment|/**    * When was a meaningful modification last made to this record's d
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|5
-argument_list|)
 DECL|field|lastUpdatedOn
 specifier|protected
 name|Timestamp
@@ -1846,17 +1793,6 @@ comment|// DELETED: id = 6 (sortkey)
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|7
-argument_list|,
-name|name
-operator|=
-literal|"owner_account_id"
-argument_list|)
 DECL|field|owner
 specifier|protected
 name|Account
@@ -1871,13 +1807,6 @@ comment|/** The branch (and project) this change merges into. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|8
-argument_list|)
 DECL|field|dest
 specifier|protected
 name|Branch
@@ -1896,13 +1825,6 @@ comment|/** Current state code; see {@link Status}. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|10
-argument_list|)
 DECL|field|status
 specifier|protected
 name|char
@@ -1919,13 +1841,6 @@ comment|/** The current patch set. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|12
-argument_list|)
 DECL|field|currentPatchSetId
 specifier|protected
 name|int
@@ -1938,13 +1853,6 @@ comment|/** Subject from the current patch set. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|13
-argument_list|)
 DECL|field|subject
 specifier|protected
 name|String
@@ -1957,18 +1865,9 @@ comment|/** Topic name assigned by the user, if any. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|14
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|topic
+annotation|@
+name|Nullable
 specifier|protected
 name|String
 name|topic
@@ -1988,18 +1887,9 @@ comment|/**    * First line of first patch set's commit message.    *    *<p>Unl
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|17
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|originalSubject
+annotation|@
+name|Nullable
 specifier|protected
 name|String
 name|originalSubject
@@ -2011,18 +1901,9 @@ comment|/**    * Unique id for the changes submitted together assigned during me
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|18
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|submissionId
+annotation|@
+name|Nullable
 specifier|protected
 name|String
 name|submissionId
@@ -2034,18 +1915,9 @@ comment|/** Allows assigning a change to a user. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|19
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|assignee
+annotation|@
+name|Nullable
 specifier|protected
 name|Account
 operator|.
@@ -2059,13 +1931,6 @@ comment|/** Whether the change is private. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|20
-argument_list|)
 DECL|field|isPrivate
 specifier|protected
 name|boolean
@@ -2078,13 +1943,6 @@ comment|/** Whether the change is work in progress. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|21
-argument_list|)
 DECL|field|workInProgress
 specifier|protected
 name|boolean
@@ -2097,13 +1955,6 @@ comment|/** Whether the change has started review. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|22
-argument_list|)
 DECL|field|reviewStarted
 specifier|protected
 name|boolean
@@ -2116,18 +1967,9 @@ comment|/** References a change that this change reverts. */
 end_comment
 
 begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|23
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|revertOf
+annotation|@
+name|Nullable
 specifier|protected
 name|Id
 name|revertOf

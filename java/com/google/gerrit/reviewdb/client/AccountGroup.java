@@ -72,11 +72,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|client
+name|common
 operator|.
-name|Column
+name|Nullable
 import|;
 end_import
 
@@ -212,13 +212,6 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
 DECL|field|name
 specifier|protected
 name|String
@@ -303,13 +296,6 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
 DECL|field|uuid
 specifier|protected
 name|String
@@ -541,13 +527,6 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
 DECL|field|id
 specifier|protected
 name|int
@@ -633,26 +612,12 @@ return|;
 block|}
 block|}
 comment|/** Unique name of this group within the system. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
 DECL|field|name
 specifier|protected
 name|NameKey
 name|name
 decl_stmt|;
 comment|/** Unique identity, to link entities as {@link #name} can change. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|2
-argument_list|)
 DECL|field|groupId
 specifier|protected
 name|Id
@@ -660,37 +625,15 @@ name|groupId
 decl_stmt|;
 comment|// DELETED: id = 3 (ownerGroupId)
 comment|/** A textual description of the group's purpose. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|4
-argument_list|,
-name|length
-operator|=
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|description
+annotation|@
+name|Nullable
 specifier|protected
 name|String
 name|description
 decl_stmt|;
 comment|// DELETED: id = 5 (groupType)
 comment|// DELETED: id = 6 (externalName)
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|7
-argument_list|)
 DECL|field|visibleToAll
 specifier|protected
 name|boolean
@@ -698,43 +641,20 @@ name|visibleToAll
 decl_stmt|;
 comment|// DELETED: id = 8 (emailOnlyAuthors)
 comment|/** Globally unique identifier name for this group. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|9
-argument_list|)
 DECL|field|groupUUID
 specifier|protected
 name|UUID
 name|groupUUID
 decl_stmt|;
 comment|/**    * Identity of the group whose members can manage this group.    *    *<p>This can be a self-reference to indicate the group's members manage itself.    */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|10
-argument_list|)
 DECL|field|ownerGroupUUID
 specifier|protected
 name|UUID
 name|ownerGroupUUID
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|11
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|createdOn
+annotation|@
+name|Nullable
 specifier|protected
 name|Timestamp
 name|createdOn
