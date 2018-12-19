@@ -256,9 +256,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtjsonrpc
+name|gerrit
 operator|.
 name|server
+operator|.
+name|mail
 operator|.
 name|SignedToken
 import|;
