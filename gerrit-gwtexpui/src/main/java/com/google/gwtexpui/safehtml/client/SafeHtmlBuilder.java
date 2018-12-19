@@ -87,11 +87,6 @@ comment|/** Safely constructs a {@link SafeHtml}, escaping user provided content
 end_comment
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|SafeHtmlBuilder
 specifier|public
 class|class
@@ -99,6 +94,15 @@ name|SafeHtmlBuilder
 extends|extends
 name|SafeHtml
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|impl
 specifier|private
 specifier|static

@@ -261,11 +261,6 @@ comment|/** Immutable string safely placed as HTML without further escaping. */
 end_comment
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|SafeHtml
 specifier|public
 specifier|abstract
@@ -284,6 +279,15 @@ name|shared
 operator|.
 name|SafeHtml
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|RESOURCES
 specifier|public
 specifier|static

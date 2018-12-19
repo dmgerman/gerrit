@@ -419,11 +419,6 @@ comment|/** Base JSON servlet to ensure the current user is not forged. */
 end_comment
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|GerritJsonServlet
 specifier|final
 class|class
@@ -436,6 +431,15 @@ operator|.
 name|GerritCall
 argument_list|>
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|log
 specifier|private
 specifier|static

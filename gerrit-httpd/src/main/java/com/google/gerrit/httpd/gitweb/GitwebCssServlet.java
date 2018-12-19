@@ -275,11 +275,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|GitwebCssServlet
 specifier|abstract
 class|class
@@ -287,6 +282,15 @@ name|GitwebCssServlet
 extends|extends
 name|HttpServlet
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 annotation|@
 name|Singleton
 DECL|class|Site
@@ -296,6 +300,15 @@ name|Site
 extends|extends
 name|GitwebCssServlet
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|Site (SitePaths paths)
@@ -325,6 +338,15 @@ name|Default
 extends|extends
 name|GitwebCssServlet
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|Default (GitwebCgiConfig gwcc)

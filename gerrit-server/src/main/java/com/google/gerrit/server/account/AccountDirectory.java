@@ -160,11 +160,6 @@ parameter_list|)
 throws|throws
 name|DirectoryException
 function_decl|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|DirectoryException
 specifier|public
 specifier|static
@@ -173,6 +168,15 @@ name|DirectoryException
 extends|extends
 name|Exception
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|DirectoryException (String message, Throwable why)
 specifier|public
 name|DirectoryException

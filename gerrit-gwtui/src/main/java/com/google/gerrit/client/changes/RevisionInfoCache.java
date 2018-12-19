@@ -242,11 +242,6 @@ name|String
 argument_list|>
 name|psToCommit
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|method|RevisionInfoCache ()
 specifier|private
 name|RevisionInfoCache
@@ -267,6 +262,14 @@ argument_list|(
 name|LIMIT
 argument_list|)
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 annotation|@
 name|Override
 specifier|protected

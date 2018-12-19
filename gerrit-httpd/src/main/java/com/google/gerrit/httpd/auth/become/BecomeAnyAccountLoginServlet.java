@@ -610,11 +610,6 @@ end_import
 
 begin_class
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
-annotation|@
 name|Singleton
 DECL|class|BecomeAnyAccountLoginServlet
 class|class
@@ -622,6 +617,15 @@ name|BecomeAnyAccountLoginServlet
 extends|extends
 name|HttpServlet
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|webSession
 specifier|private
 specifier|final
