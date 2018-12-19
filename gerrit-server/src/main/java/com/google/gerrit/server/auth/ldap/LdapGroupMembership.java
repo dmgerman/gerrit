@@ -178,6 +178,20 @@ name|ExecutionException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_class
 DECL|class|LdapGroupMembership
 class|class
@@ -213,12 +227,18 @@ specifier|final
 name|String
 name|id
 decl_stmt|;
+DECL|field|guessRelevantGroups
+specifier|private
+specifier|final
+name|boolean
+name|guessRelevantGroups
+decl_stmt|;
 DECL|field|membership
 specifier|private
 name|GroupMembership
 name|membership
 decl_stmt|;
-DECL|method|LdapGroupMembership ( LoadingCache<String, Set<AccountGroup.UUID>> membershipCache, ProjectCache projectCache, String id)
+DECL|method|LdapGroupMembership ( LoadingCache<String, Set<AccountGroup.UUID>> membershipCache, ProjectCache projectCache, String id, Config gerritConfig)
 name|LdapGroupMembership
 parameter_list|(
 name|LoadingCache
@@ -239,6 +259,9 @@ name|projectCache
 parameter_list|,
 name|String
 name|id
+parameter_list|,
+name|Config
+name|gerritConfig
 parameter_list|)
 block|{
 name|this
@@ -258,6 +281,21 @@ operator|.
 name|id
 operator|=
 name|id
+expr_stmt|;
+name|this
+operator|.
+name|guessRelevantGroups
+operator|=
+name|gerritConfig
+operator|.
+name|getBoolean
+argument_list|(
+literal|"ldap"
+argument_list|,
+literal|"guessRelevantGroups"
+argument_list|,
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -372,6 +410,11 @@ name|getKnownGroups
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|guessRelevantGroups
+condition|)
+block|{
 name|g
 operator|.
 name|retainAll
@@ -382,6 +425,7 @@ name|guessRelevantGroupUUIDs
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|g
 return|;
