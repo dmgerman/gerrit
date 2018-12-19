@@ -1037,7 +1037,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|parseProtoFrom ( byte[] bytes, ProtoConverter<P, T> converter)
-specifier|private
+specifier|protected
 specifier|static
 parameter_list|<
 name|P
