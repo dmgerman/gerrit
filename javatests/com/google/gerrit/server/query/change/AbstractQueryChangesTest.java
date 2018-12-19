@@ -12035,6 +12035,8 @@ argument_list|,
 literal|"bar"
 argument_list|,
 literal|"a tag"
+argument_list|,
+literal|"ACamelCaseTag"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -12170,6 +12172,30 @@ expr_stmt|;
 name|assertQuery
 argument_list|(
 literal|"hashtag:\"# #a tag\""
+argument_list|,
+name|changes
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"hashtag:acamelcasetag"
+argument_list|,
+name|changes
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"hashtag:ACamelCaseTAg"
 argument_list|,
 name|changes
 operator|.
