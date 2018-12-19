@@ -138,20 +138,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|ResultSet
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
