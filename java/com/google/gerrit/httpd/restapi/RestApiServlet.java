@@ -11109,11 +11109,6 @@ block|}
 end_function
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|AmbiguousViewException
 specifier|private
 specifier|static
@@ -11122,6 +11117,15 @@ name|AmbiguousViewException
 extends|extends
 name|Exception
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|AmbiguousViewException (String message)
 name|AmbiguousViewException
 parameter_list|(
