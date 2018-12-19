@@ -68,11 +68,15 @@ end_package
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|ArrayList
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
 import|;
 end_import
 
@@ -112,17 +116,16 @@ argument_list|>
 block|{
 DECL|field|items
 specifier|private
-name|List
+name|ImmutableList
 argument_list|<
 name|T
 argument_list|>
 name|items
 decl_stmt|;
-DECL|method|ListResultSet (final List<T> r)
+DECL|method|ListResultSet (List<T> r)
 specifier|public
 name|ListResultSet
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|T
@@ -132,7 +135,12 @@ parameter_list|)
 block|{
 name|items
 operator|=
+name|ImmutableList
+operator|.
+name|copyOf
+argument_list|(
 name|r
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -158,7 +166,7 @@ annotation|@
 name|Override
 DECL|method|toList ()
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|T
 argument_list|>
@@ -180,19 +188,13 @@ literal|"Results already obtained"
 argument_list|)
 throw|;
 block|}
-specifier|final
-name|List
+name|ImmutableList
 argument_list|<
 name|T
 argument_list|>
 name|r
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
 name|items
-argument_list|)
 decl_stmt|;
 name|items
 operator|=

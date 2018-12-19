@@ -1521,7 +1521,7 @@ name|i
 operator|++
 control|)
 block|{
-name|List
+name|ImmutableList
 argument_list|<
 name|T
 argument_list|>

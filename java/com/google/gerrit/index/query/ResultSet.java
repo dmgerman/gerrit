@@ -68,11 +68,15 @@ end_package
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|Iterator
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
 import|;
 end_import
 
@@ -82,7 +86,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Iterator
 import|;
 end_import
 
@@ -115,9 +119,9 @@ argument_list|>
 name|iterator
 parameter_list|()
 function_decl|;
-comment|/**    * Materialize all results as a single list.    *    *<p>Prior to returning {@link #close()} is invoked. This method must not be combined with {@link    * #iterator()} on the same instance.    *    * @return mutable list of the complete results.    */
+comment|/**    * Materialize all results as a single list.    *    *<p>Prior to returning {@link #close()} is invoked. This method must not be combined with {@link    * #iterator()} on the same instance.    *    * @return immutable list of the complete results.    */
 DECL|method|toList ()
-name|List
+name|ImmutableList
 argument_list|<
 name|T
 argument_list|>

@@ -86,6 +86,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -120,7 +134,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-DECL|method|create ( @ullable String query, Predicate<T> predicate, int limit, List<T> entites)
+DECL|method|create ( @ullable String query, Predicate<T> predicate, int limit, List<T> entities)
 specifier|public
 specifier|static
 parameter_list|<
@@ -150,7 +164,7 @@ name|List
 argument_list|<
 name|T
 argument_list|>
-name|entites
+name|entities
 parameter_list|)
 block|{
 name|boolean
@@ -158,7 +172,7 @@ name|more
 decl_stmt|;
 if|if
 condition|(
-name|entites
+name|entities
 operator|.
 name|size
 argument_list|()
@@ -170,9 +184,9 @@ name|more
 operator|=
 literal|true
 expr_stmt|;
-name|entites
+name|entities
 operator|=
-name|entites
+name|entities
 operator|.
 name|subList
 argument_list|(
@@ -198,7 +212,12 @@ name|query
 argument_list|,
 name|predicate
 argument_list|,
-name|entites
+name|ImmutableList
+operator|.
+name|copyOf
+argument_list|(
+name|entities
+argument_list|)
 argument_list|,
 name|more
 argument_list|)
@@ -229,7 +248,7 @@ comment|/** @return the query results. */
 DECL|method|entities ()
 specifier|public
 specifier|abstract
-name|List
+name|ImmutableList
 argument_list|<
 name|T
 argument_list|>
