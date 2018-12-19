@@ -132,6 +132,8 @@ name|String
 name|hashtag
 parameter_list|)
 block|{
+comment|// Use toLowerCase without locale to match behavior in ChangeField.
+comment|// TODO(dborowitz): Change both.
 name|super
 argument_list|(
 name|ChangeField
@@ -144,6 +146,9 @@ name|cleanupHashtag
 argument_list|(
 name|hashtag
 argument_list|)
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
