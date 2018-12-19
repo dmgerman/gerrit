@@ -376,6 +376,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectCache
@@ -572,6 +588,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -681,9 +711,15 @@ name|CurrentUser
 argument_list|>
 name|userProvider
 decl_stmt|;
+DECL|field|gerritConfig
+specifier|private
+specifier|final
+name|Config
+name|gerritConfig
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LdapGroupBackend ( Helper helper, @Named(GROUP_CACHE) LoadingCache<String, Set<AccountGroup.UUID>> membershipCache, @Named(GROUP_EXIST_CACHE) LoadingCache<String, Boolean> existsCache, ProjectCache projectCache, Provider<CurrentUser> userProvider)
+DECL|method|LdapGroupBackend ( Helper helper, @Named(GROUP_CACHE) LoadingCache<String, Set<AccountGroup.UUID>> membershipCache, @Named(GROUP_EXIST_CACHE) LoadingCache<String, Boolean> existsCache, ProjectCache projectCache, Provider<CurrentUser> userProvider, @GerritServerConfig Config gerritConfig)
 name|LdapGroupBackend
 parameter_list|(
 name|Helper
@@ -728,6 +764,11 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|userProvider
+parameter_list|,
+annotation|@
+name|GerritServerConfig
+name|Config
+name|gerritConfig
 parameter_list|)
 block|{
 name|this
@@ -759,6 +800,12 @@ operator|.
 name|userProvider
 operator|=
 name|userProvider
+expr_stmt|;
+name|this
+operator|.
+name|gerritConfig
+operator|=
+name|gerritConfig
 expr_stmt|;
 block|}
 DECL|method|isLdapUUID (AccountGroup.UUID uuid)
@@ -1295,6 +1342,8 @@ argument_list|,
 name|projectCache
 argument_list|,
 name|id
+argument_list|,
+name|gerritConfig
 argument_list|)
 return|;
 block|}
