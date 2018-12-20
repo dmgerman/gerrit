@@ -133,6 +133,13 @@ argument_list|,
 name|revision
 argument_list|)
 operator|.
+name|add
+argument_list|(
+literal|"canDelete"
+argument_list|,
+name|canDelete
+argument_list|)
+operator|.
 name|toString
 argument_list|()
 return|;
