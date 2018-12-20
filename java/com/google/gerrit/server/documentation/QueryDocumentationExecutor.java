@@ -871,11 +871,6 @@ operator|!=
 literal|null
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|DocQueryException
 specifier|public
 specifier|static
@@ -884,6 +879,15 @@ name|DocQueryException
 extends|extends
 name|Exception
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|DocQueryException ()
 name|DocQueryException
 parameter_list|()
