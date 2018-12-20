@@ -320,11 +320,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|json
 operator|.
-name|client
-operator|.
-name|PatchSet
+name|OutputFormat
 import|;
 end_import
 
@@ -336,9 +334,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|OutputFormat
+name|client
+operator|.
+name|PatchSet
 import|;
 end_import
 

@@ -86,9 +86,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtjsonrpc
+name|gerrit
 operator|.
-name|common
+name|json
 operator|.
 name|JavaSqlTimestampHelper
 import|;

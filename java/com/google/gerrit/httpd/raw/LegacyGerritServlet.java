@@ -102,11 +102,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtjsonrpc
+name|gerrit
 operator|.
-name|server
+name|util
 operator|.
-name|RPCServletUtils
+name|http
+operator|.
+name|RequestUtil
 import|;
 end_import
 
@@ -328,7 +330,7 @@ name|tosend
 decl_stmt|;
 if|if
 condition|(
-name|RPCServletUtils
+name|RequestUtil
 operator|.
 name|acceptsGzipEncoding
 argument_list|(

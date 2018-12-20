@@ -142,7 +142,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|json
 operator|.
 name|OutputFormat
 import|;
