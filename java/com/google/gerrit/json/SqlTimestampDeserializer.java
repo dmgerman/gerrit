@@ -176,6 +176,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|text
 operator|.
 name|SimpleDateFormat
@@ -199,19 +209,11 @@ name|SqlTimestampDeserializer
 implements|implements
 name|JsonDeserializer
 argument_list|<
-name|java
-operator|.
-name|sql
-operator|.
 name|Timestamp
 argument_list|>
 implements|,
 name|JsonSerializer
 argument_list|<
-name|java
-operator|.
-name|sql
-operator|.
 name|Timestamp
 argument_list|>
 block|{
@@ -233,10 +235,6 @@ annotation|@
 name|Override
 DECL|method|deserialize ( final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
 specifier|public
-name|java
-operator|.
-name|sql
-operator|.
 name|Timestamp
 name|deserialize
 parameter_list|(
@@ -324,16 +322,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|serialize ( final java.sql.Timestamp src, final Type typeOfSrc, final JsonSerializationContext context)
+DECL|method|serialize ( final Timestamp src, final Type typeOfSrc, final JsonSerializationContext context)
 specifier|public
 name|JsonElement
 name|serialize
 parameter_list|(
 specifier|final
-name|java
-operator|.
-name|sql
-operator|.
 name|Timestamp
 name|src
 parameter_list|,
