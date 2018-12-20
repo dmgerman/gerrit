@@ -180,22 +180,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|AllProjectsName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|AllUsersName
 import|;
 end_import
@@ -350,12 +334,6 @@ specifier|final
 name|Config
 name|cfg
 decl_stmt|;
-DECL|field|allProjectsName
-specifier|private
-specifier|final
-name|AllProjectsName
-name|allProjectsName
-decl_stmt|;
 DECL|field|allUsersName
 specifier|private
 specifier|final
@@ -406,7 +384,7 @@ name|schemaVersions
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NoteDbSchemaUpdater ( @erritServerConfig Config cfg, AllUsersName allUsersName, AllProjectsName allProjectsName, GitRepositoryManager repoManager, SchemaCreator schemaCreator, NoteDbSchemaVersionManager versionManager, NoteDbSchemaVersion.Arguments args)
+DECL|method|NoteDbSchemaUpdater ( @erritServerConfig Config cfg, AllUsersName allUsersName, GitRepositoryManager repoManager, SchemaCreator schemaCreator, NoteDbSchemaVersionManager versionManager, NoteDbSchemaVersion.Arguments args)
 name|NoteDbSchemaUpdater
 parameter_list|(
 annotation|@
@@ -416,9 +394,6 @@ name|cfg
 parameter_list|,
 name|AllUsersName
 name|allUsersName
-parameter_list|,
-name|AllProjectsName
-name|allProjectsName
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -439,8 +414,6 @@ name|this
 argument_list|(
 name|cfg
 argument_list|,
-name|allProjectsName
-argument_list|,
 name|allUsersName
 argument_list|,
 name|repoManager
@@ -457,14 +430,11 @@ name|ALL
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoteDbSchemaUpdater ( Config cfg, AllProjectsName allProjectsName, AllUsersName allUsersName, GitRepositoryManager repoManager, SchemaCreator schemaCreator, NoteDbSchemaVersionManager versionManager, NoteDbSchemaVersion.Arguments args, ImmutableSortedMap<Integer, Class<? extends NoteDbSchemaVersion>> schemaVersions)
+DECL|method|NoteDbSchemaUpdater ( Config cfg, AllUsersName allUsersName, GitRepositoryManager repoManager, SchemaCreator schemaCreator, NoteDbSchemaVersionManager versionManager, NoteDbSchemaVersion.Arguments args, ImmutableSortedMap<Integer, Class<? extends NoteDbSchemaVersion>> schemaVersions)
 name|NoteDbSchemaUpdater
 parameter_list|(
 name|Config
 name|cfg
-parameter_list|,
-name|AllProjectsName
-name|allProjectsName
 parameter_list|,
 name|AllUsersName
 name|allUsersName
@@ -502,12 +472,6 @@ operator|.
 name|cfg
 operator|=
 name|cfg
-expr_stmt|;
-name|this
-operator|.
-name|allProjectsName
-operator|=
-name|allProjectsName
 expr_stmt|;
 name|this
 operator|.

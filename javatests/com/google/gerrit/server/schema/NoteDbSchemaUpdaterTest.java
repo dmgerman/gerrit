@@ -915,8 +915,6 @@ name|NoteDbSchemaUpdater
 argument_list|(
 name|cfg
 argument_list|,
-name|allProjectsName
-argument_list|,
 name|allUsersName
 argument_list|,
 name|repoManager
