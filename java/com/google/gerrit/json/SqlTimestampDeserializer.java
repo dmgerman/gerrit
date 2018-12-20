@@ -176,6 +176,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|text
 operator|.
 name|SimpleDateFormat
@@ -199,19 +209,11 @@ name|SqlTimestampDeserializer
 implements|implements
 name|JsonDeserializer
 argument_list|<
-name|java
-operator|.
-name|sql
-operator|.
 name|Timestamp
 argument_list|>
 implements|,
 name|JsonSerializer
 argument_list|<
-name|java
-operator|.
-name|sql
-operator|.
 name|Timestamp
 argument_list|>
 block|{
@@ -231,24 +233,17 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|deserialize ( final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+DECL|method|deserialize (JsonElement json, Type typeOfT, JsonDeserializationContext context)
 specifier|public
-name|java
-operator|.
-name|sql
-operator|.
 name|Timestamp
 name|deserialize
 parameter_list|(
-specifier|final
 name|JsonElement
 name|json
 parameter_list|,
-specifier|final
 name|Type
 name|typeOfT
 parameter_list|,
-specifier|final
 name|JsonDeserializationContext
 name|context
 parameter_list|)
@@ -284,7 +279,6 @@ literal|"Expected string for timestamp type"
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|JsonPrimitive
 name|p
 init|=
@@ -324,24 +318,17 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|serialize ( final java.sql.Timestamp src, final Type typeOfSrc, final JsonSerializationContext context)
+DECL|method|serialize (Timestamp src, Type typeOfSrc, JsonSerializationContext context)
 specifier|public
 name|JsonElement
 name|serialize
 parameter_list|(
-specifier|final
-name|java
-operator|.
-name|sql
-operator|.
 name|Timestamp
 name|src
 parameter_list|,
-specifier|final
 name|Type
 name|typeOfSrc
 parameter_list|,
-specifier|final
 name|JsonSerializationContext
 name|context
 parameter_list|)
@@ -354,9 +341,9 @@ literal|null
 condition|)
 block|{
 return|return
-operator|new
 name|JsonNull
-argument_list|()
+operator|.
+name|INSTANCE
 return|;
 block|}
 return|return
@@ -382,7 +369,6 @@ name|SimpleDateFormat
 name|newFormat
 parameter_list|()
 block|{
-specifier|final
 name|SimpleDateFormat
 name|f
 init|=
