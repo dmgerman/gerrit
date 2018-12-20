@@ -1033,8 +1033,6 @@ name|Id
 argument_list|>
 name|existingReviewers
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|addReviewers
@@ -1261,8 +1259,6 @@ name|Id
 argument_list|>
 name|existingReviewers
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
