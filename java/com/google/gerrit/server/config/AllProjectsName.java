@@ -87,11 +87,6 @@ comment|/** Special name of the project that all projects derive from. */
 end_comment
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|AllProjectsName
 specifier|public
 class|class
@@ -101,6 +96,15 @@ name|Project
 operator|.
 name|NameKey
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|AllProjectsName (String name)
 specifier|public
 name|AllProjectsName
