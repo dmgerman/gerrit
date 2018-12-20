@@ -2132,6 +2132,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// By UUID is used for the index and hence should be evicted before refreshing the index.
 name|groupCache
 operator|.
 name|evict
@@ -2142,6 +2143,21 @@ name|getGroupUUID
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|indexer
+operator|.
+name|get
+argument_list|()
+operator|.
+name|index
+argument_list|(
+name|createdGroup
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// These caches use the result from the index and hence must be evicted after refreshing the
+comment|// index.
 name|groupCache
 operator|.
 name|evict
@@ -2159,19 +2175,6 @@ argument_list|(
 name|createdGroup
 operator|.
 name|getNameKey
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|indexer
-operator|.
-name|get
-argument_list|()
-operator|.
-name|index
-argument_list|(
-name|createdGroup
-operator|.
-name|getGroupUUID
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2235,13 +2238,6 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|groupCache
-operator|.
-name|evict
-argument_list|(
-name|previousName
-argument_list|)
-expr_stmt|;
 comment|// TODO(aliceks): After switching to NoteDb, consider to use a BatchRefUpdate.
 annotation|@
 name|SuppressWarnings
@@ -2289,6 +2285,7 @@ name|MILLISECONDS
 argument_list|)
 decl_stmt|;
 block|}
+comment|// By UUID is used for the index and hence should be evicted before refreshing the index.
 name|groupCache
 operator|.
 name|evict
@@ -2299,6 +2296,21 @@ name|getGroupUuid
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|indexer
+operator|.
+name|get
+argument_list|()
+operator|.
+name|index
+argument_list|(
+name|result
+operator|.
+name|getGroupUuid
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// These caches use the result from the index and hence must be evicted after refreshing the
+comment|// index.
 name|groupCache
 operator|.
 name|evict
@@ -2319,17 +2331,16 @@ name|getGroupName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|indexer
-operator|.
-name|get
-argument_list|()
-operator|.
-name|index
-argument_list|(
 name|result
 operator|.
-name|getGroupUuid
+name|getPreviousGroupName
 argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|groupCache
+operator|::
+name|evict
 argument_list|)
 expr_stmt|;
 name|result
