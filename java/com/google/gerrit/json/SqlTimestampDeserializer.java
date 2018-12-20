@@ -233,20 +233,17 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|deserialize ( final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+DECL|method|deserialize (JsonElement json, Type typeOfT, JsonDeserializationContext context)
 specifier|public
 name|Timestamp
 name|deserialize
 parameter_list|(
-specifier|final
 name|JsonElement
 name|json
 parameter_list|,
-specifier|final
 name|Type
 name|typeOfT
 parameter_list|,
-specifier|final
 name|JsonDeserializationContext
 name|context
 parameter_list|)
@@ -282,7 +279,6 @@ literal|"Expected string for timestamp type"
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|JsonPrimitive
 name|p
 init|=
@@ -322,20 +318,17 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|serialize ( final Timestamp src, final Type typeOfSrc, final JsonSerializationContext context)
+DECL|method|serialize (Timestamp src, Type typeOfSrc, JsonSerializationContext context)
 specifier|public
 name|JsonElement
 name|serialize
 parameter_list|(
-specifier|final
 name|Timestamp
 name|src
 parameter_list|,
-specifier|final
 name|Type
 name|typeOfSrc
 parameter_list|,
-specifier|final
 name|JsonSerializationContext
 name|context
 parameter_list|)
@@ -376,7 +369,6 @@ name|SimpleDateFormat
 name|newFormat
 parameter_list|()
 block|{
-specifier|final
 name|SimpleDateFormat
 name|f
 init|=
