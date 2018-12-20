@@ -71,11 +71,6 @@ comment|/** Indicates the requested method is not known. */
 end_comment
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|XsrfException
 specifier|public
 class|class
@@ -83,6 +78,15 @@ name|XsrfException
 extends|extends
 name|Exception
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|XsrfException (final String message, final Throwable why)
 name|XsrfException
 parameter_list|(
