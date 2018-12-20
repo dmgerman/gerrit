@@ -76,9 +76,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -154,7 +152,7 @@ name|PatchSetApprovalProtoConverter
 implements|implements
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval
 argument_list|,
@@ -168,7 +166,7 @@ specifier|private
 specifier|final
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval_Key
 argument_list|,
@@ -188,7 +186,7 @@ specifier|private
 specifier|final
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 argument_list|,
@@ -206,7 +204,7 @@ annotation|@
 name|Override
 DECL|method|toProto (PatchSetApproval patchSetApproval)
 specifier|public
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval
 name|toProto
@@ -215,14 +213,14 @@ name|PatchSetApproval
 name|patchSetApproval
 parameter_list|)
 block|{
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval
 operator|.
 name|Builder
 name|builder
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval
 operator|.
@@ -348,12 +346,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|fromProto (Reviewdb.PatchSetApproval proto)
+DECL|method|fromProto (Entities.PatchSetApproval proto)
 specifier|public
 name|PatchSetApproval
 name|fromProto
 parameter_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval
 name|proto
@@ -465,7 +463,7 @@ DECL|method|getParser ()
 specifier|public
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval
 argument_list|>
@@ -473,7 +471,7 @@ name|getParser
 parameter_list|()
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSetApproval
 operator|.

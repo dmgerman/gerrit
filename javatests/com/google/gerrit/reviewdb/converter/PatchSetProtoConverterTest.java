@@ -156,9 +156,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -394,7 +392,7 @@ argument_list|(
 literal|"This is a patch set description."
 argument_list|)
 expr_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 name|proto
@@ -406,12 +404,12 @@ argument_list|(
 name|patchSet
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 operator|.
@@ -420,7 +418,7 @@ argument_list|()
 operator|.
 name|setId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 operator|.
@@ -429,7 +427,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -450,7 +448,7 @@ argument_list|)
 operator|.
 name|setRevision
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|RevId
 operator|.
@@ -465,7 +463,7 @@ argument_list|)
 operator|.
 name|setUploaderAccountId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -543,7 +541,7 @@ literal|73
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 name|proto
@@ -555,12 +553,12 @@ argument_list|(
 name|patchSet
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 operator|.
@@ -569,7 +567,7 @@ argument_list|()
 operator|.
 name|setId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 operator|.
@@ -578,7 +576,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -800,12 +798,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 name|proto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 operator|.
@@ -814,7 +812,7 @@ argument_list|()
 operator|.
 name|setId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet_Id
 operator|.
@@ -823,7 +821,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -856,7 +854,7 @@ argument_list|()
 decl_stmt|;
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 argument_list|>
@@ -867,7 +865,7 @@ operator|.
 name|getParser
 argument_list|()
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|PatchSet
 name|parsedProto

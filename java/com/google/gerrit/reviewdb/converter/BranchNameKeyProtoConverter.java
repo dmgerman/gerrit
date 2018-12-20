@@ -76,9 +76,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -134,7 +132,7 @@ name|BranchNameKeyProtoConverter
 implements|implements
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 argument_list|,
@@ -151,7 +149,7 @@ specifier|private
 specifier|final
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 argument_list|,
@@ -169,7 +167,7 @@ annotation|@
 name|Override
 DECL|method|toProto (Branch.NameKey nameKey)
 specifier|public
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 name|toProto
@@ -181,7 +179,7 @@ name|nameKey
 parameter_list|)
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 operator|.
@@ -215,14 +213,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|fromProto (Reviewdb.Branch_NameKey proto)
+DECL|method|fromProto (Entities.Branch_NameKey proto)
 specifier|public
 name|Branch
 operator|.
 name|NameKey
 name|fromProto
 parameter_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 name|proto
@@ -257,7 +255,7 @@ DECL|method|getParser ()
 specifier|public
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 argument_list|>
@@ -265,7 +263,7 @@ name|getParser
 parameter_list|()
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 operator|.

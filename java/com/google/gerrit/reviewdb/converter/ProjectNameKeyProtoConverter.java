@@ -76,9 +76,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -118,7 +116,7 @@ name|ProjectNameKeyProtoConverter
 implements|implements
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 argument_list|,
@@ -134,7 +132,7 @@ annotation|@
 name|Override
 DECL|method|toProto (Project.NameKey nameKey)
 specifier|public
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 name|toProto
@@ -146,7 +144,7 @@ name|nameKey
 parameter_list|)
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 operator|.
@@ -167,14 +165,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|fromProto (Reviewdb.Project_NameKey proto)
+DECL|method|fromProto (Entities.Project_NameKey proto)
 specifier|public
 name|Project
 operator|.
 name|NameKey
 name|fromProto
 parameter_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 name|proto
@@ -199,7 +197,7 @@ DECL|method|getParser ()
 specifier|public
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 argument_list|>
@@ -207,7 +205,7 @@ name|getParser
 parameter_list|()
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 operator|.

@@ -76,9 +76,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -118,7 +116,7 @@ name|LabelIdProtoConverter
 implements|implements
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 argument_list|,
@@ -132,7 +130,7 @@ annotation|@
 name|Override
 DECL|method|toProto (LabelId labelId)
 specifier|public
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 name|toProto
@@ -142,7 +140,7 @@ name|labelId
 parameter_list|)
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 operator|.
@@ -163,12 +161,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|fromProto (Reviewdb.LabelId proto)
+DECL|method|fromProto (Entities.LabelId proto)
 specifier|public
 name|LabelId
 name|fromProto
 parameter_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 name|proto
@@ -191,7 +189,7 @@ DECL|method|getParser ()
 specifier|public
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 argument_list|>
@@ -199,7 +197,7 @@ name|getParser
 parameter_list|()
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 operator|.

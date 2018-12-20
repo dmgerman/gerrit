@@ -76,9 +76,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -134,7 +132,7 @@ name|ChangeMessageKeyProtoConverter
 implements|implements
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage_Key
 argument_list|,
@@ -151,7 +149,7 @@ specifier|private
 specifier|final
 name|ProtoConverter
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 argument_list|,
@@ -169,7 +167,7 @@ annotation|@
 name|Override
 DECL|method|toProto (ChangeMessage.Key messageKey)
 specifier|public
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage_Key
 name|toProto
@@ -181,7 +179,7 @@ name|messageKey
 parameter_list|)
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage_Key
 operator|.
@@ -215,14 +213,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|fromProto (Reviewdb.ChangeMessage_Key proto)
+DECL|method|fromProto (Entities.ChangeMessage_Key proto)
 specifier|public
 name|ChangeMessage
 operator|.
 name|Key
 name|fromProto
 parameter_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage_Key
 name|proto
@@ -257,7 +255,7 @@ DECL|method|getParser ()
 specifier|public
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage_Key
 argument_list|>
@@ -265,7 +263,7 @@ name|getParser
 parameter_list|()
 block|{
 return|return
-name|Reviewdb
+name|Entities
 operator|.
 name|ChangeMessage_Key
 operator|.

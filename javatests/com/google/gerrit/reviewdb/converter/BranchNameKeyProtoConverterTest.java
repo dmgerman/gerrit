@@ -144,9 +144,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -277,7 +275,7 @@ argument_list|,
 literal|"branch-72"
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 name|proto
@@ -289,12 +287,12 @@ argument_list|(
 name|nameKey
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 operator|.
@@ -303,7 +301,7 @@ argument_list|()
 operator|.
 name|setProjectName
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 operator|.
@@ -402,12 +400,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 name|proto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 operator|.
@@ -416,7 +414,7 @@ argument_list|()
 operator|.
 name|setProjectName
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 operator|.
@@ -448,7 +446,7 @@ argument_list|()
 decl_stmt|;
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 argument_list|>
@@ -459,7 +457,7 @@ operator|.
 name|getParser
 argument_list|()
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 name|parsedProto

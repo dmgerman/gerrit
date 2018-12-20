@@ -144,9 +144,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -237,7 +235,7 @@ argument_list|(
 literal|"Label ID 42"
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 name|proto
@@ -249,12 +247,12 @@ argument_list|(
 name|labelId
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 operator|.
@@ -333,12 +331,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 name|proto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 operator|.
@@ -364,7 +362,7 @@ argument_list|()
 decl_stmt|;
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 argument_list|>
@@ -375,7 +373,7 @@ operator|.
 name|getParser
 argument_list|()
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|LabelId
 name|parsedProto

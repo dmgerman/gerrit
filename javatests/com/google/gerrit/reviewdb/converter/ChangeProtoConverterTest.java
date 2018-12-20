@@ -144,9 +144,7 @@ name|gerrit
 operator|.
 name|proto
 operator|.
-name|reviewdb
-operator|.
-name|Reviewdb
+name|Entities
 import|;
 end_import
 
@@ -475,7 +473,7 @@ literal|180
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|proto
@@ -487,12 +485,12 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 operator|.
@@ -501,7 +499,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -516,7 +514,7 @@ argument_list|)
 operator|.
 name|setChangeKey
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 operator|.
@@ -546,7 +544,7 @@ argument_list|)
 operator|.
 name|setOwnerAccountId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -561,7 +559,7 @@ argument_list|)
 operator|.
 name|setDest
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 operator|.
@@ -570,7 +568,7 @@ argument_list|()
 operator|.
 name|setProjectName
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 operator|.
@@ -623,7 +621,7 @@ argument_list|)
 operator|.
 name|setAssignee
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -653,7 +651,7 @@ argument_list|)
 operator|.
 name|setRevertOf
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -741,7 +739,7 @@ literal|987654L
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|proto
@@ -753,12 +751,12 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 operator|.
@@ -767,7 +765,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -782,7 +780,7 @@ argument_list|)
 operator|.
 name|setChangeKey
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 operator|.
@@ -808,7 +806,7 @@ argument_list|)
 operator|.
 name|setOwnerAccountId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -823,7 +821,7 @@ argument_list|)
 operator|.
 name|setDest
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 operator|.
@@ -832,7 +830,7 @@ argument_list|()
 operator|.
 name|setProjectName
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 operator|.
@@ -986,7 +984,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|proto
@@ -998,12 +996,12 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 operator|.
@@ -1012,7 +1010,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -1027,7 +1025,7 @@ argument_list|)
 operator|.
 name|setChangeKey
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 operator|.
@@ -1053,7 +1051,7 @@ argument_list|)
 operator|.
 name|setOwnerAccountId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -1068,7 +1066,7 @@ argument_list|)
 operator|.
 name|setDest
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 operator|.
@@ -1077,7 +1075,7 @@ argument_list|()
 operator|.
 name|setProjectName
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 operator|.
@@ -1230,7 +1228,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|proto
@@ -1242,12 +1240,12 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|expectedProto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 operator|.
@@ -1256,7 +1254,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -1271,7 +1269,7 @@ argument_list|)
 operator|.
 name|setChangeKey
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 operator|.
@@ -1297,7 +1295,7 @@ argument_list|)
 operator|.
 name|setOwnerAccountId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -1312,7 +1310,7 @@ argument_list|)
 operator|.
 name|setDest
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 operator|.
@@ -1321,7 +1319,7 @@ argument_list|()
 operator|.
 name|setProjectName
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 operator|.
@@ -1678,12 +1676,12 @@ name|void
 name|protoWithOnlyRequiredValuesCanBeConvertedBack
 parameter_list|()
 block|{
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|proto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 operator|.
@@ -1692,7 +1690,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -1894,12 +1892,12 @@ name|void
 name|unsetLastUpdatedOnIsAutomaticallySetToCreatedOnWhenConvertedBack
 parameter_list|()
 block|{
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|proto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 operator|.
@@ -1908,7 +1906,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -1923,7 +1921,7 @@ argument_list|)
 operator|.
 name|setChangeKey
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 operator|.
@@ -1943,7 +1941,7 @@ argument_list|)
 operator|.
 name|setOwnerAccountId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -1958,7 +1956,7 @@ argument_list|)
 operator|.
 name|setDest
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 operator|.
@@ -1967,7 +1965,7 @@ argument_list|()
 operator|.
 name|setProjectName
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 operator|.
@@ -2027,12 +2025,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|proto
 init|=
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 operator|.
@@ -2041,7 +2039,7 @@ argument_list|()
 operator|.
 name|setChangeId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -2056,7 +2054,7 @@ argument_list|)
 operator|.
 name|setChangeKey
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Key
 operator|.
@@ -2086,7 +2084,7 @@ argument_list|)
 operator|.
 name|setOwnerAccountId
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -2101,7 +2099,7 @@ argument_list|)
 operator|.
 name|setDest
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Branch_NameKey
 operator|.
@@ -2110,7 +2108,7 @@ argument_list|()
 operator|.
 name|setProjectName
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Project_NameKey
 operator|.
@@ -2163,7 +2161,7 @@ argument_list|)
 operator|.
 name|setAssignee
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Account_Id
 operator|.
@@ -2193,7 +2191,7 @@ argument_list|)
 operator|.
 name|setRevertOf
 argument_list|(
-name|Reviewdb
+name|Entities
 operator|.
 name|Change_Id
 operator|.
@@ -2220,7 +2218,7 @@ argument_list|()
 decl_stmt|;
 name|Parser
 argument_list|<
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 argument_list|>
@@ -2231,7 +2229,7 @@ operator|.
 name|getParser
 argument_list|()
 decl_stmt|;
-name|Reviewdb
+name|Entities
 operator|.
 name|Change
 name|parsedProto
