@@ -176,15 +176,6 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 function_decl|;
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 block|}
 end_class
 
