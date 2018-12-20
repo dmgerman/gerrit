@@ -67,17 +67,21 @@ package|;
 end_package
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|SafeHtmlString
 class|class
 name|SafeHtmlString
 extends|extends
 name|SafeHtml
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|html
 specifier|private
 specifier|final

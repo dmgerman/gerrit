@@ -1782,11 +1782,6 @@ literal|50
 return|;
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|RowSafeHtml
 specifier|private
 class|class
@@ -1794,6 +1789,15 @@ name|RowSafeHtml
 implements|implements
 name|SafeHtml
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|html
 specifier|private
 name|String

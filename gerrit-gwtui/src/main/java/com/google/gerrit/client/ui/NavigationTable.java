@@ -564,11 +564,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|field|savedPositions
 specifier|private
 specifier|static
@@ -596,6 +591,14 @@ argument_list|,
 literal|true
 argument_list|)
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 annotation|@
 name|Override
 specifier|protected

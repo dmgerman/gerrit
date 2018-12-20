@@ -474,11 +474,6 @@ end_comment
 
 begin_class
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
-annotation|@
 name|Singleton
 DECL|class|LdapLoginServlet
 class|class
@@ -486,6 +481,15 @@ name|LdapLoginServlet
 extends|extends
 name|HttpServlet
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|logger
 specifier|private
 specifier|static

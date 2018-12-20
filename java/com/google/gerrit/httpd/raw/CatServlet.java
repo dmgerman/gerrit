@@ -446,11 +446,6 @@ end_comment
 
 begin_class
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
-annotation|@
 name|Singleton
 DECL|class|CatServlet
 specifier|public
@@ -459,6 +454,15 @@ name|CatServlet
 extends|extends
 name|HttpServlet
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|requestDb
 specifier|private
 specifier|final
