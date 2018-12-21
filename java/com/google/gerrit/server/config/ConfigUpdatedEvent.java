@@ -190,7 +190,7 @@ DECL|field|NO_UPDATES
 specifier|public
 specifier|static
 specifier|final
-name|Multimap
+name|ImmutableMultimap
 argument_list|<
 name|UpdateResult
 argument_list|,
