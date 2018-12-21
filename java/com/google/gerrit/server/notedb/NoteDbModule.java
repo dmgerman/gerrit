@@ -315,13 +315,6 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
-operator|<
-name|ChangeNotesCache
-operator|.
-name|Key
-argument_list|,
-name|ChangeNotesState
-operator|>
 name|build
 argument_list|()
 argument_list|)

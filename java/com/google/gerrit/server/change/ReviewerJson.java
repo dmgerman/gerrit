@@ -769,9 +769,6 @@ name|format
 argument_list|(
 name|ImmutableList
 operator|.
-expr|<
-name|ReviewerResource
-operator|>
 name|of
 argument_list|(
 name|rsrc

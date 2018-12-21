@@ -440,12 +440,6 @@ name|copy
 argument_list|(
 name|Collections
 operator|.
-expr|<
-name|Predicate
-argument_list|<
-name|String
-argument_list|>
-operator|>
 name|emptyList
 argument_list|()
 argument_list|)

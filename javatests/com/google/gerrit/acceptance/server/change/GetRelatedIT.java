@@ -4670,9 +4670,6 @@ name|ps
 argument_list|,
 name|ImmutableList
 operator|.
-expr|<
-name|String
-operator|>
 name|of
 argument_list|()
 argument_list|)

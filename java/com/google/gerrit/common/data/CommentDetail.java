@@ -564,9 +564,6 @@ argument_list|)
 else|:
 name|Collections
 operator|.
-expr|<
-name|Comment
-operator|>
 name|emptyList
 argument_list|()
 return|;

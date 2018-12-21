@@ -228,9 +228,6 @@ name|patternOps
 operator|=
 name|Collections
 operator|.
-expr|<
-name|Format
-operator|>
 name|singletonList
 argument_list|(
 name|c

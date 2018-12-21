@@ -752,9 +752,6 @@ argument_list|()
 argument_list|,
 name|Ordering
 operator|.
-expr|<
-name|String
-operator|>
 name|natural
 argument_list|()
 argument_list|)

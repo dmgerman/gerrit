@@ -1417,11 +1417,6 @@ block|{
 return|return
 name|ImmutableMap
 operator|.
-expr|<
-name|String
-operator|,
-name|Object
-operator|>
 name|of
 argument_list|(
 literal|"level"

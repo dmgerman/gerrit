@@ -679,15 +679,6 @@ argument_list|<>
 argument_list|(
 name|Collections
 operator|.
-expr|<
-name|AtomicReference
-argument_list|<
-name|Extension
-argument_list|<
-name|T
-argument_list|>
-argument_list|>
-operator|>
 name|emptySet
 argument_list|()
 argument_list|)

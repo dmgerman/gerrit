@@ -650,9 +650,6 @@ name|ADMINISTRATE_SERVER
 argument_list|,
 name|ImmutableList
 operator|.
-expr|<
-name|PermissionRule
-operator|>
 name|of
 argument_list|()
 argument_list|)
@@ -966,9 +963,6 @@ name|r
 else|:
 name|ImmutableList
 operator|.
-expr|<
-name|PermissionRule
-operator|>
 name|of
 argument_list|()
 return|;

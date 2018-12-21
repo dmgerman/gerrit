@@ -595,9 +595,6 @@ name|repoConfig
 argument_list|,
 name|Collections
 operator|.
-expr|<
-name|PatchSetApproval
-operator|>
 name|emptyList
 argument_list|()
 argument_list|)

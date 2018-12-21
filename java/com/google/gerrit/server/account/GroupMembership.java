@@ -121,11 +121,6 @@ name|ListGroupMembership
 argument_list|(
 name|Collections
 operator|.
-expr|<
-name|AccountGroup
-operator|.
-name|UUID
-operator|>
 name|emptySet
 argument_list|()
 argument_list|)

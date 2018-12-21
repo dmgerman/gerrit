@@ -1409,11 +1409,6 @@ argument_list|)
 else|:
 name|Collections
 operator|.
-expr|<
-name|Account
-operator|.
-name|Id
-operator|>
 name|emptySet
 argument_list|()
 expr_stmt|;

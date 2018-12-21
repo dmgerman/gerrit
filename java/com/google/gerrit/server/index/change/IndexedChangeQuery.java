@@ -483,9 +483,6 @@ literal|1
 argument_list|,
 name|ImmutableSet
 operator|.
-expr|<
-name|String
-operator|>
 name|of
 argument_list|()
 argument_list|)

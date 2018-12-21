@@ -302,9 +302,6 @@ block|}
 argument_list|,
 name|Collections
 operator|.
-expr|<
-name|String
-operator|>
 name|emptyList
 argument_list|()
 argument_list|,

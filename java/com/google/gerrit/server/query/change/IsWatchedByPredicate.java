@@ -643,9 +643,6 @@ block|}
 return|return
 name|Collections
 operator|.
-expr|<
-name|ProjectWatchKey
-operator|>
 name|emptySet
 argument_list|()
 return|;

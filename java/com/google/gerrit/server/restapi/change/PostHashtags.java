@@ -482,12 +482,6 @@ expr_stmt|;
 return|return
 name|Response
 operator|.
-expr|<
-name|ImmutableSortedSet
-argument_list|<
-name|String
-argument_list|>
-operator|>
 name|ok
 argument_list|(
 name|op

@@ -132,20 +132,6 @@ name|gerrit
 operator|.
 name|metrics
 operator|.
-name|CallbackMetric
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|metrics
-operator|.
 name|CallbackMetric0
 import|;
 end_import
@@ -776,12 +762,6 @@ name|newTrigger
 argument_list|(
 name|ImmutableSet
 operator|.
-expr|<
-name|CallbackMetric
-argument_list|<
-name|?
-argument_list|>
-operator|>
 name|of
 argument_list|(
 name|heapCommitted
@@ -794,7 +774,7 @@ name|nonHeapUsed
 argument_list|,
 name|objectPendingFinalizationCount
 argument_list|)
-operator|,
+argument_list|,
 parameter_list|()
 lambda|->
 block|{
@@ -876,13 +856,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|)
-class|;
-end_class
-
-begin_function
-unit|}    private
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|procJvmGc (MetricMaker metrics)
+specifier|private
 name|void
 name|procJvmGc
 parameter_list|(
@@ -1056,9 +1034,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|procJvmThread (MetricMaker metrics)
 specifier|private
 name|void
@@ -1106,8 +1081,8 @@ name|getThreadCount
 argument_list|)
 expr_stmt|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

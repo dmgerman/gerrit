@@ -866,9 +866,6 @@ expr_stmt|;
 return|return
 name|Response
 operator|.
-expr|<
-name|SshKeyInfo
-operator|>
 name|created
 argument_list|(
 name|GetSshKeys

@@ -252,15 +252,6 @@ name|ReviewerSet
 argument_list|(
 name|ImmutableTable
 operator|.
-expr|<
-name|ReviewerStateInternal
-argument_list|,
-name|Account
-operator|.
-name|Id
-argument_list|,
-name|Timestamp
-operator|>
 name|of
 argument_list|()
 argument_list|)

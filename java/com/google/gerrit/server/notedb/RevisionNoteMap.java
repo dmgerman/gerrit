@@ -504,11 +504,6 @@ argument_list|()
 argument_list|,
 name|ImmutableMap
 operator|.
-expr|<
-name|RevId
-argument_list|,
-name|T
-operator|>
 name|of
 argument_list|()
 argument_list|)

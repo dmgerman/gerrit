@@ -422,11 +422,6 @@ name|changes
 argument_list|,
 name|ImmutableList
 operator|.
-expr|<
-name|Change
-operator|.
-name|Id
-operator|>
 name|of
 argument_list|()
 argument_list|)
@@ -468,9 +463,6 @@ argument_list|)
 else|:
 name|ImmutableList
 operator|.
-expr|<
-name|ChangeData
-operator|>
 name|of
 argument_list|()
 argument_list|,

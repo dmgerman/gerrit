@@ -599,9 +599,6 @@ argument_list|)
 condition|?
 name|Response
 operator|.
-expr|<
-name|String
-operator|>
 name|none
 argument_list|()
 else|:

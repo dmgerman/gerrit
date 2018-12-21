@@ -629,9 +629,6 @@ name|rsrc
 argument_list|,
 name|ImmutableList
 operator|.
-expr|<
-name|CommitInfo
-operator|>
 name|of
 argument_list|()
 argument_list|)

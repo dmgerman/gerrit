@@ -637,9 +637,6 @@ literal|null
 condition|?
 name|ImmutableSet
 operator|.
-expr|<
-name|RevCommit
-operator|>
 name|of
 argument_list|()
 else|:

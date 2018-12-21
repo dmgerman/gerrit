@@ -488,12 +488,6 @@ name|cacheMetrics
 init|=
 name|ImmutableSet
 operator|.
-expr|<
-name|CallbackMetric
-argument_list|<
-name|?
-argument_list|>
-operator|>
 name|of
 argument_list|(
 name|memEnt

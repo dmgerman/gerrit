@@ -1324,9 +1324,6 @@ name|toProvider
 argument_list|(
 name|Providers
 operator|.
-expr|<
-name|ProjectCache
-operator|>
 name|of
 argument_list|(
 literal|null

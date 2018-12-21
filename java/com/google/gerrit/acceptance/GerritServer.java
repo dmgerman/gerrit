@@ -2494,9 +2494,6 @@ name|setDatabaseForTesting
 argument_list|(
 name|ImmutableList
 operator|.
-expr|<
-name|Module
-operator|>
 name|of
 argument_list|(
 operator|new

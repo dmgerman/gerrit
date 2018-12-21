@@ -1880,9 +1880,6 @@ argument_list|()
 else|:
 name|ImmutableSet
 operator|.
-expr|<
-name|String
-operator|>
 name|of
 argument_list|()
 return|;

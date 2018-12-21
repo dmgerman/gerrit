@@ -2159,9 +2159,6 @@ argument_list|()
 else|:
 name|ImmutableList
 operator|.
-expr|<
-name|String
-operator|>
 name|of
 argument_list|()
 expr_stmt|;

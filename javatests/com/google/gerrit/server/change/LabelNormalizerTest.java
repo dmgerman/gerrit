@@ -1787,9 +1787,6 @@ block|{
 return|return
 name|ImmutableList
 operator|.
-expr|<
-name|PatchSetApproval
-operator|>
 name|copyOf
 argument_list|(
 name|psas
