@@ -2255,11 +2255,6 @@ name|lastIndexOf
 argument_list|(
 literal|'/'
 argument_list|)
-argument_list|,
-name|name
-operator|.
-name|length
-argument_list|()
 argument_list|)
 argument_list|,
 name|tmp

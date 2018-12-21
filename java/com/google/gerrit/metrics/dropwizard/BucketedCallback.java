@@ -685,9 +685,6 @@ name|cells
 argument_list|,
 name|in
 lambda|->
-operator|(
-name|Metric
-operator|)
 name|in
 argument_list|)
 return|;

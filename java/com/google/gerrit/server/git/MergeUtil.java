@@ -1032,20 +1032,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|AnyObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|CommitBuilder
 import|;
 end_import
@@ -4098,14 +4084,9 @@ argument_list|)
 operator|.
 name|merge
 argument_list|(
-operator|new
-name|AnyObjectId
-index|[]
-block|{
 name|mergeTip
-block|,
+argument_list|,
 name|toMerge
-block|}
 argument_list|)
 return|;
 block|}
@@ -4527,16 +4508,11 @@ name|m
 operator|.
 name|merge
 argument_list|(
-operator|new
-name|AnyObjectId
-index|[]
-block|{
 name|mergeTip
-operator|,
+argument_list|,
 name|n
-block|}
-block|)
-block|)
+argument_list|)
+condition|)
 block|{
 return|return
 name|writeMergeCommit
@@ -4563,22 +4539,19 @@ argument_list|)
 return|;
 block|}
 name|failed
-parameter_list|(
+argument_list|(
 name|rw
-parameter_list|,
+argument_list|,
 name|mergeTip
-parameter_list|,
+argument_list|,
 name|n
-parameter_list|,
+argument_list|,
 name|CommitMergeStatus
 operator|.
 name|PATH_CONFLICT
-parameter_list|)
-constructor_decl|;
+argument_list|)
+expr_stmt|;
 block|}
-end_class
-
-begin_catch
 catch|catch
 parameter_list|(
 name|NoMergeBaseException
@@ -4627,9 +4600,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-end_catch
-
-begin_catch
 catch|catch
 parameter_list|(
 name|IOException
@@ -4651,17 +4621,12 @@ name|e
 argument_list|)
 throw|;
 block|}
-end_catch
-
-begin_return
 return|return
 name|mergeTip
 return|;
-end_return
-
-begin_function
-unit|}    private
+block|}
 DECL|method|getCommitMergeStatus (MergeBaseFailureReason reason)
+specifier|private
 specifier|static
 name|CommitMergeStatus
 name|getCommitMergeStatus
@@ -4697,9 +4662,6 @@ name|PATH_CONFLICT
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|failed ( CodeReviewRevWalk rw, CodeReviewCommit mergeTip, CodeReviewCommit n, CommitMergeStatus failure)
 specifier|private
 specifier|static
@@ -4773,9 +4735,6 @@ return|return
 name|failed
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|writeMergeCommit ( PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, Branch.NameKey destBranch, CodeReviewCommit mergeTip, ObjectId treeId, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
@@ -5065,9 +5024,6 @@ return|return
 name|mergeResult
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|summarize (RevWalk rw, List<CodeReviewCommit> merged)
 specifier|private
 name|String
@@ -5300,9 +5256,6 @@ argument_list|)
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|newThreeWayMerger (ObjectInserter inserter, Config repoConfig)
 specifier|public
 name|ThreeWayMerger
@@ -5327,9 +5280,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|mergeStrategyName ()
 specifier|public
 name|String
@@ -5345,9 +5295,6 @@ name|useRecursiveMerge
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|mergeStrategyName (boolean useContentMerge, boolean useRecursiveMerge)
 specifier|public
 specifier|static
@@ -5403,9 +5350,6 @@ name|getName
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|newThreeWayMerger ( ObjectInserter inserter, Config repoConfig, String strategyName)
 specifier|public
 specifier|static
@@ -5452,9 +5396,6 @@ operator|)
 name|m
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|newMerger (ObjectInserter inserter, Config repoConfig, String strategyName)
 specifier|public
 specifier|static
@@ -5534,9 +5475,6 @@ name|repoConfig
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|markCleanMerges ( RevWalk rw, RevFlag canMergeFlag, CodeReviewCommit mergeTip, Set<RevCommit> alreadyAccepted)
 specifier|public
 name|void
@@ -5706,9 +5644,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|findUnmergedChanges ( Set<Change.Id> expected, CodeReviewRevWalk rw, RevFlag canMergeFlag, CodeReviewCommit oldTip, CodeReviewCommit mergeTip, Iterable<Change.Id> alreadyMerged)
 specifier|public
 name|Set
@@ -5939,9 +5874,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|findAnyMergedInto ( CodeReviewRevWalk rw, Iterable<CodeReviewCommit> commits, CodeReviewCommit tip)
 specifier|public
 specifier|static
@@ -5994,9 +5926,6 @@ return|return
 literal|null
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|resolveCommit (Repository repo, RevWalk rw, String str)
 specifier|public
 specifier|static
@@ -6098,9 +6027,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|matchAuthorToCommitterDate (ProjectState project, CommitBuilder commit)
 specifier|private
 specifier|static
@@ -6158,8 +6084,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

@@ -9940,9 +9940,6 @@ argument_list|(
 name|X_GERRIT_TRACE
 argument_list|,
 name|traceId
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;

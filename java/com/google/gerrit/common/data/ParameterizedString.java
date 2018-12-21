@@ -351,13 +351,10 @@ operator|.
 name|append
 argument_list|(
 name|pattern
-operator|.
-name|substring
-argument_list|(
+argument_list|,
 name|i
 argument_list|,
 name|b
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|ops

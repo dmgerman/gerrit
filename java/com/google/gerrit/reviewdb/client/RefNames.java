@@ -1969,11 +1969,6 @@ operator|.
 name|substring
 argument_list|(
 name|i
-argument_list|,
-name|name
-operator|.
-name|length
-argument_list|()
 argument_list|)
 argument_list|)
 return|;

@@ -857,11 +857,6 @@ argument_list|(
 name|equalsIndex
 operator|+
 literal|1
-argument_list|,
-name|attribute
-operator|.
-name|length
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|attributeValues

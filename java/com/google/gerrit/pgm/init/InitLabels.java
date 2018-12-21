@@ -400,16 +400,11 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
 literal|"-1 Fails"
-block|,
+argument_list|,
 literal|"0 No score"
-block|,
+argument_list|,
 literal|"+1 Verified"
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;

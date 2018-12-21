@@ -855,11 +855,6 @@ name|key
 operator|.
 name|length
 argument_list|()
-argument_list|,
-name|line
-operator|.
-name|length
-argument_list|()
 argument_list|)
 operator|.
 name|trim

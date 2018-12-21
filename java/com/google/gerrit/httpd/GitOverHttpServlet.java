@@ -1633,15 +1633,6 @@ index|[]
 argument_list|>
 name|parameterMap
 init|=
-operator|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-index|[]
-argument_list|>
-operator|)
 name|request
 operator|.
 name|getParameterMap

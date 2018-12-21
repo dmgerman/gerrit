@@ -2541,11 +2541,6 @@ argument_list|(
 name|i2
 operator|+
 literal|1
-argument_list|,
-name|v
-operator|.
-name|length
-argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2838,11 +2833,6 @@ argument_list|(
 name|i2
 operator|+
 literal|1
-argument_list|,
-name|v
-operator|.
-name|length
-argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;

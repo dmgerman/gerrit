@@ -759,9 +759,6 @@ name|Providers
 operator|.
 name|of
 argument_list|(
-operator|(
-name|SocketAddress
-operator|)
 literal|null
 argument_list|)
 argument_list|,
@@ -785,9 +782,6 @@ block|{
 return|return
 name|create
 argument_list|(
-operator|(
-name|SocketAddress
-operator|)
 literal|null
 argument_list|,
 name|id

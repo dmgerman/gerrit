@@ -295,16 +295,8 @@ operator|.
 name|getMethod
 argument_list|(
 literal|"getProcessCpuTime"
-argument_list|,
-operator|new
-name|Class
-argument_list|<
-name|?
-argument_list|>
-index|[]
-block|{}
-block|)
-empty_stmt|;
+argument_list|)
+expr_stmt|;
 name|getProcessCpuTime
 operator|.
 name|setAccessible
@@ -322,19 +314,8 @@ operator|.
 name|getMethod
 argument_list|(
 literal|"getOpenFileDescriptorCount"
-argument_list|,
-operator|new
-name|Class
-argument_list|<
-name|?
-argument_list|>
-index|[]
-block|{}
-block|)
-class|;
-end_class
-
-begin_expr_stmt
+argument_list|)
+expr_stmt|;
 name|getOpenFileDescriptorCount
 operator|.
 name|setAccessible
@@ -342,11 +323,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_function
-unit|}    public
+block|}
 DECL|method|getProcessCpuTime ()
+specifier|public
 name|long
 name|getProcessCpuTime
 parameter_list|()
@@ -382,9 +361,6 @@ literal|1
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|getOpenFileDescriptorCount ()
 specifier|public
 name|long
@@ -422,8 +398,8 @@ literal|1
 return|;
 block|}
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

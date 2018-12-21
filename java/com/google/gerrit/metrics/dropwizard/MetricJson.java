@@ -926,9 +926,6 @@ argument_list|()
 expr_stmt|;
 name|avg
 operator|=
-operator|(
-name|double
-operator|)
 name|s
 operator|.
 name|getMean
