@@ -152,6 +152,24 @@ name|extensions
 operator|.
 name|api
 operator|.
+name|changes
+operator|.
+name|IncludedInInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
 name|projects
 operator|.
 name|CommitApi
@@ -187,6 +205,22 @@ operator|.
 name|change
 operator|.
 name|CherryPickCommit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|CommitIncludedIn
 import|;
 end_import
 
@@ -266,6 +300,12 @@ specifier|final
 name|CherryPickCommit
 name|cherryPickCommit
 decl_stmt|;
+DECL|field|includedIn
+specifier|private
+specifier|final
+name|CommitIncludedIn
+name|includedIn
+decl_stmt|;
 DECL|field|commitResource
 specifier|private
 specifier|final
@@ -274,7 +314,7 @@ name|commitResource
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommitApiImpl ( Changes changes, CherryPickCommit cherryPickCommit, @Assisted CommitResource commitResource)
+DECL|method|CommitApiImpl ( Changes changes, CherryPickCommit cherryPickCommit, CommitIncludedIn includedIn, @Assisted CommitResource commitResource)
 name|CommitApiImpl
 parameter_list|(
 name|Changes
@@ -282,6 +322,9 @@ name|changes
 parameter_list|,
 name|CherryPickCommit
 name|cherryPickCommit
+parameter_list|,
+name|CommitIncludedIn
+name|includedIn
 parameter_list|,
 annotation|@
 name|Assisted
@@ -300,6 +343,12 @@ operator|.
 name|cherryPickCommit
 operator|=
 name|cherryPickCommit
+expr_stmt|;
+name|this
+operator|.
+name|includedIn
+operator|=
+name|includedIn
 expr_stmt|;
 name|this
 operator|.
@@ -351,6 +400,43 @@ throw|throw
 name|asRestApiException
 argument_list|(
 literal|"Cannot cherry pick"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|includedIn ()
+specifier|public
+name|IncludedInInfo
+name|includedIn
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+try|try
+block|{
+return|return
+name|includedIn
+operator|.
+name|apply
+argument_list|(
+name|commitResource
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|asRestApiException
+argument_list|(
+literal|"Could not extract IncludedIn data"
 argument_list|,
 name|e
 argument_list|)
