@@ -4558,6 +4558,21 @@ argument_list|()
 argument_list|)
 argument_list|)
 block|;
+name|logger
+operator|.
+name|atFinest
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Calling user: %s"
+argument_list|,
+name|user
+operator|.
+name|getLoggableName
+argument_list|()
+argument_list|)
+block|;
 comment|// Log the push options here, rather than in parsePushOptions(), so that they are included
 comment|// into the trace if tracing is enabled.
 name|logger
