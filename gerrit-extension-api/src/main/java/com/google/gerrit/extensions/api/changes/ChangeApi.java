@@ -459,6 +459,25 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|setPrivate (boolean value)
+specifier|default
+name|void
+name|setPrivate
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+name|setPrivate
+argument_list|(
+name|value
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|setWorkInProgress (@ullable String message)
 name|void
 name|setWorkInProgress
