@@ -459,20 +459,24 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|setWorkInProgress (String message)
+DECL|method|setWorkInProgress (@ullable String message)
 name|void
 name|setWorkInProgress
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|message
 parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|setReadyForReview (String message)
+DECL|method|setReadyForReview (@ullable String message)
 name|void
 name|setReadyForReview
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|message
 parameter_list|)
