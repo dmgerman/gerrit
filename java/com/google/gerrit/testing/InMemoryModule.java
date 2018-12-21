@@ -1068,7 +1068,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|InMemoryAccountPatchReviewStore
+name|JdbcAccountPatchReviewStore
 import|;
 end_import
 
@@ -1441,6 +1441,21 @@ name|Config
 name|cfg
 parameter_list|)
 block|{
+name|cfg
+operator|.
+name|setString
+argument_list|(
+literal|"accountPatchReviewDb"
+argument_list|,
+literal|null
+argument_list|,
+literal|"url"
+argument_list|,
+name|JdbcAccountPatchReviewStore
+operator|.
+name|TEST_IN_MEMORY_URL
+argument_list|)
+expr_stmt|;
 name|cfg
 operator|.
 name|setEnum
@@ -2097,15 +2112,6 @@ name|GpgModule
 argument_list|(
 name|cfg
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|install
-argument_list|(
-operator|new
-name|InMemoryAccountPatchReviewStore
-operator|.
-name|Module
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|install

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright 2008 Google Inc.
 end_comment
 
 begin_comment
@@ -72,54 +72,67 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|common
 operator|.
-name|index
+name|collect
 operator|.
-name|QueryOptions
+name|ImmutableList
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
+name|Iterator
 import|;
 end_import
 
+begin_comment
+comment|/**  * Result from any data store query function.  *  * @param<T> type of entity being returned by the query.  */
+end_comment
+
 begin_interface
-DECL|interface|Paginated
+DECL|interface|ResultSet
 specifier|public
 interface|interface
-name|Paginated
+name|ResultSet
 parameter_list|<
 name|T
 parameter_list|>
-block|{
-DECL|method|getOptions ()
-name|QueryOptions
-name|getOptions
-parameter_list|()
-function_decl|;
-DECL|method|restart (int start)
-name|ResultSet
+extends|extends
+name|Iterable
 argument_list|<
 name|T
 argument_list|>
-name|restart
-parameter_list|(
-name|int
-name|start
-parameter_list|)
-throws|throws
-name|OrmException
+block|{
+comment|/**    * Obtain an iterator to loop through the results.    *    *<p>The iterator can be obtained only once. When the iterator completes (<code>hasNext()</code>    * returns false) {@link #close()} will be automatically called.    */
+annotation|@
+name|Override
+DECL|method|iterator ()
+name|Iterator
+argument_list|<
+name|T
+argument_list|>
+name|iterator
+parameter_list|()
+function_decl|;
+comment|/**    * Materialize all results as a single list.    *    *<p>Prior to returning {@link #close()} is invoked. This method must not be combined with {@link    * #iterator()} on the same instance.    *    * @return immutable list of the complete results.    */
+DECL|method|toList ()
+name|ImmutableList
+argument_list|<
+name|T
+argument_list|>
+name|toList
+parameter_list|()
+function_decl|;
+comment|/**    * Close the result, discarding any further results.    *    *<p>This method may be invoked more than once. Its main use is to stop obtaining results before    * the iterator has finished.    */
+DECL|method|close ()
+name|void
+name|close
+parameter_list|()
 function_decl|;
 block|}
 end_interface

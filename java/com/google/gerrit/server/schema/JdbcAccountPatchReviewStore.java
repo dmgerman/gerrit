@@ -102,6 +102,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|ImmutableSet
@@ -464,6 +478,19 @@ name|FluentLogger
 operator|.
 name|forEnclosingClass
 argument_list|()
+decl_stmt|;
+comment|// DB_CLOSE_DELAY=-1: By default the content of an in-memory H2 database is lost at the moment the
+comment|// last connection is closed. This option keeps the content as long as the VM lives.
+annotation|@
+name|VisibleForTesting
+DECL|field|TEST_IN_MEMORY_URL
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TEST_IN_MEMORY_URL
+init|=
+literal|"jdbc:h2:mem:account_patch_reviews;DB_CLOSE_DELAY=-1"
 decl_stmt|;
 DECL|field|ACCOUNT_PATCH_REVIEW_DB
 specifier|private
@@ -855,21 +882,6 @@ name|sitePaths
 argument_list|,
 name|threadSettingsConfig
 argument_list|)
-expr_stmt|;
-block|}
-DECL|method|JdbcAccountPatchReviewStore (DataSource ds)
-specifier|protected
-name|JdbcAccountPatchReviewStore
-parameter_list|(
-name|DataSource
-name|ds
-parameter_list|)
-block|{
-name|this
-operator|.
-name|ds
-operator|=
-name|ds
 expr_stmt|;
 block|}
 DECL|method|getUrl (@erritServerConfig Config cfg, SitePaths sitePaths)

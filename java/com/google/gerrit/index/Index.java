@@ -70,6 +70,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|index
@@ -165,16 +179,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -300,7 +304,7 @@ argument_list|(
 literal|2
 argument_list|)
 expr_stmt|;
-name|List
+name|ImmutableList
 argument_list|<
 name|V
 argument_list|>
@@ -423,7 +427,7 @@ argument_list|(
 literal|2
 argument_list|)
 expr_stmt|;
-name|List
+name|ImmutableList
 argument_list|<
 name|FieldBundle
 argument_list|>
