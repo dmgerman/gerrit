@@ -181,6 +181,8 @@ argument_list|)
 decl_stmt|;
 comment|// Bump Lucene version requires reindexing
 DECL|field|V3
+annotation|@
+name|Deprecated
 specifier|static
 specifier|final
 name|Schema
@@ -192,6 +194,21 @@ init|=
 name|schema
 argument_list|(
 name|V2
+argument_list|)
+decl_stmt|;
+comment|// Lucene index was changed to add an additional field for sorting.
+DECL|field|V4
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ProjectData
+argument_list|>
+name|V4
+init|=
+name|schema
+argument_list|(
+name|V3
 argument_list|)
 decl_stmt|;
 DECL|field|INSTANCE
