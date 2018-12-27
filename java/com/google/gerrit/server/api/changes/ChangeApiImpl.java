@@ -2623,11 +2623,13 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|setWorkInProgress (String message)
+DECL|method|setWorkInProgress (@ullable String message)
 specifier|public
 name|void
 name|setWorkInProgress
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|message
 parameter_list|)
@@ -2670,11 +2672,13 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|setReadyForReview (String message)
+DECL|method|setReadyForReview (@ullable String message)
 specifier|public
 name|void
 name|setReadyForReview
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|message
 parameter_list|)

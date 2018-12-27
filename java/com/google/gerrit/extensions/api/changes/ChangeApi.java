@@ -534,20 +534,43 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|setWorkInProgress (String message)
+DECL|method|setPrivate (boolean value)
+specifier|default
+name|void
+name|setPrivate
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+name|setPrivate
+argument_list|(
+name|value
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setWorkInProgress (@ullable String message)
 name|void
 name|setWorkInProgress
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|message
 parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|setReadyForReview (String message)
+DECL|method|setReadyForReview (@ullable String message)
 name|void
 name|setReadyForReview
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|message
 parameter_list|)

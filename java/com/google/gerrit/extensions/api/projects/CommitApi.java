@@ -114,6 +114,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|IncludedInInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|NotImplementedException
@@ -152,6 +170,13 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|includedIn ()
+name|IncludedInInfo
+name|includedIn
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/** A default implementation for source compatibility when adding new methods to the interface. */
 DECL|class|NotImplemented
 class|class
@@ -169,6 +194,22 @@ parameter_list|(
 name|CherryPickInput
 name|input
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|includedIn ()
+specifier|public
+name|IncludedInInfo
+name|includedIn
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
