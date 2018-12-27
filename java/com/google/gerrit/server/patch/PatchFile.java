@@ -322,6 +322,15 @@ specifier|final
 name|RevTree
 name|bTree
 decl_stmt|;
+comment|// Full text of both sides of the file. For standard files, these are not directly reconstructable
+comment|// from the PatchListEntry, which comes from the PatchListCache and only contains the diff between
+comment|// the two blobs. This is intentional, to avoid storing entire large blobs in the cache. For
+comment|// regular files, the full text is initialized from the repo lazily only when necessary, e.g. in
+comment|// getLine. Although it's a safe assumption that any caller constructing a PatchSet will want to
+comment|// read some content, we don't know in advance which side they are interested in.
+comment|//
+comment|// For special files like COMMIT_MSG, the full text is loaded eagerly during the constructor.
+comment|// TODO(dborowitz): I see why the logic is different, but I don't see why it needs to be eager.
 DECL|field|a
 specifier|private
 name|Text
