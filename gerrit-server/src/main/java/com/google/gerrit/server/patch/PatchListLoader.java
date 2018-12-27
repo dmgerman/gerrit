@@ -1350,7 +1350,7 @@ finally|finally
 block|{
 name|reader
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -2103,7 +2103,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|release
+name|close
 parameter_list|()
 block|{         }
 block|}
@@ -2370,6 +2370,8 @@ name|TemporaryBuffer
 operator|.
 name|LocalFile
 argument_list|(
+literal|null
+argument_list|,
 literal|10
 operator|*
 literal|1024
@@ -2719,7 +2721,7 @@ finally|finally
 block|{
 name|ins
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -2818,7 +2820,7 @@ finally|finally
 block|{
 name|oi
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}

@@ -1847,12 +1847,12 @@ finally|finally
 block|{
 name|tw
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|rw
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|repo

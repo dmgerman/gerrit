@@ -639,7 +639,7 @@ finally|finally
 block|{
 name|reader
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|reader
@@ -1498,7 +1498,7 @@ condition|)
 block|{
 name|inserter
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|inserter
@@ -1515,7 +1515,7 @@ condition|)
 block|{
 name|reader
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|reader

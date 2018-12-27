@@ -1907,7 +1907,7 @@ finally|finally
 block|{
 name|walk
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -2002,7 +2002,7 @@ finally|finally
 block|{
 name|walk
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -2294,7 +2294,7 @@ finally|finally
 block|{
 name|walk
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -2408,7 +2408,7 @@ finally|finally
 block|{
 name|walk
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}

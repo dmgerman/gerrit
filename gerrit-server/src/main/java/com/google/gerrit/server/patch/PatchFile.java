@@ -531,7 +531,7 @@ finally|finally
 block|{
 name|reader
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}

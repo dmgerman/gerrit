@@ -2133,7 +2133,7 @@ finally|finally
 block|{
 name|oi
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -2594,7 +2594,7 @@ finally|finally
 block|{
 name|revWalk
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -2934,7 +2934,7 @@ finally|finally
 block|{
 name|oi
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -3070,7 +3070,7 @@ finally|finally
 block|{
 name|revWalk
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}

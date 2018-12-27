@@ -861,7 +861,11 @@ argument_list|,
 name|MergeUtil
 operator|.
 name|createDryRunInserter
-argument_list|()
+argument_list|(
+name|key
+operator|.
+name|repo
+argument_list|)
 argument_list|,
 name|key
 operator|.
@@ -935,7 +939,7 @@ literal|null
 expr_stmt|;
 name|walk
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}

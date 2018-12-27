@@ -858,7 +858,7 @@ finally|finally
 block|{
 name|rw
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -874,7 +874,7 @@ condition|)
 block|{
 name|inserter
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|inserter
@@ -891,7 +891,7 @@ condition|)
 block|{
 name|reader
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|reader
