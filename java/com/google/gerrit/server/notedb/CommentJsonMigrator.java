@@ -84,24 +84,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|RevisionNote
-operator|.
-name|MAX_NOTE_SZ
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|eclipse
@@ -421,6 +403,20 @@ operator|.
 name|lib
 operator|.
 name|ObjectInserter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectLoader
 import|;
 end_import
 
@@ -1579,9 +1575,8 @@ name|noteMap
 control|)
 block|{
 comment|// Match pre-parsing logic in RevisionNote#parse().
-name|byte
-index|[]
-name|raw
+name|ObjectLoader
+name|objectLoader
 init|=
 name|reader
 operator|.
@@ -1594,11 +1589,41 @@ argument_list|()
 argument_list|,
 name|OBJ_BLOB
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|objectLoader
+operator|.
+name|isLarge
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Comment note %s is too large"
+argument_list|,
+name|note
+operator|.
+name|name
+argument_list|()
+argument_list|)
+argument_list|)
+throw|;
+block|}
+name|byte
+index|[]
+name|raw
+init|=
+name|objectLoader
 operator|.
 name|getCachedBytes
-argument_list|(
-name|MAX_NOTE_SZ
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|MutableInteger
 name|p
