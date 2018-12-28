@@ -4762,7 +4762,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Assert that refs seen by a non-admin user match expected.    *    * @param expectedWithMeta expected refs, in order. If NoteDb is disabled by the configuration,    *     any NoteDb refs (i.e. ending in "/meta") are removed from the expected list before    *     comparing to the actual results.    * @throws Exception    */
+comment|/**    * Assert that refs seen by a non-admin user match expected.    *    * @param expectedWithMeta expected refs, in order.    * @throws Exception    */
 DECL|method|assertUploadPackRefs (String... expectedWithMeta)
 specifier|private
 name|void
