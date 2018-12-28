@@ -1045,6 +1045,7 @@ name|setUpChanges
 argument_list|()
 expr_stmt|;
 block|}
+comment|// This method is idempotent, so it is safe to call it on every test setup.
 DECL|method|setUpPermissions ()
 specifier|private
 name|void
@@ -1053,8 +1054,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Remove read permissions for all users besides admin. This method is idempotent, so is safe
-comment|// to call on every test setup.
+comment|// Remove read permissions for all users besides admin.
 try|try
 init|(
 name|ProjectConfigUpdate
@@ -1114,8 +1114,7 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Remove all read permissions on All-Users. This method is idempotent, so is safe to call on
-comment|// every test setup.
+comment|// Remove all read permissions on All-Users.
 try|try
 init|(
 name|ProjectConfigUpdate
