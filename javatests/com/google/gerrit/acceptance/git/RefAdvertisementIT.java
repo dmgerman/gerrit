@@ -4762,7 +4762,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Assert that refs seen by a non-admin user match the expected refs.    *    * @param expectedRefs expected refs, in order.    * @throws Exception    */
+comment|/**    * Assert that refs seen by a non-admin user match the expected refs.    *    * @param expectedRefs expected refs.    * @throws Exception    */
 DECL|method|assertUploadPackRefs (String... expectedRefs)
 specifier|private
 name|void
