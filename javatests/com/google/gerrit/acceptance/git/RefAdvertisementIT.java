@@ -2517,7 +2517,7 @@ argument_list|)
 operator|.
 name|containsExactly
 argument_list|(
-comment|// meta refs are excluded even when NoteDb is enabled.
+comment|// meta refs are excluded
 literal|"HEAD"
 argument_list|,
 literal|"refs/heads/branch"
