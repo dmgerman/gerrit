@@ -3223,17 +3223,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"noteDb.groups.write"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|advertisedReferencesDontShowGroupBranchToOwnerWithoutRead ()
 specifier|public
 name|void
@@ -3288,17 +3277,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"noteDb.groups.write"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|advertisedReferencesOmitGroupBranchesOfNonOwnedGroups ()
 specifier|public
 name|void
@@ -3415,17 +3393,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"noteDb.groups.write"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|advertisedReferencesIncludeAllGroupBranchesWithAccessDatabase ()
 specifier|public
 name|void
@@ -3515,17 +3482,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"noteDb.groups.write"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|advertisedReferencesIncludeAllGroupBranchesForAdmins ()
 specifier|public
 name|void
@@ -3632,17 +3588,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"noteDb.groups.write"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|advertisedReferencesOmitNoteDbNotesBranches ()
 specifier|public
 name|void
@@ -4340,17 +4285,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"noteDb.groups.write"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|hideMetadata ()
 specifier|public
 name|void
