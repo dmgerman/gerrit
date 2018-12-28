@@ -4762,15 +4762,15 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Assert that refs seen by a non-admin user match expected.    *    * @param expectedWithMeta expected refs, in order.    * @throws Exception    */
-DECL|method|assertUploadPackRefs (String... expectedWithMeta)
+comment|/**    * Assert that refs seen by a non-admin user match the expected refs.    *    * @param expectedRefs expected refs, in order.    * @throws Exception    */
+DECL|method|assertUploadPackRefs (String... expectedRefs)
 specifier|private
 name|void
 name|assertUploadPackRefs
 parameter_list|(
 name|String
 modifier|...
-name|expectedWithMeta
+name|expectedRefs
 parameter_list|)
 throws|throws
 name|Exception
@@ -4809,12 +4809,12 @@ argument_list|)
 argument_list|,
 literal|true
 argument_list|,
-name|expectedWithMeta
+name|expectedRefs
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|assertRefs ( Repository repo, PermissionBackend.ForProject forProject, boolean disableDb, String... expectedWithMeta)
+DECL|method|assertRefs ( Repository repo, PermissionBackend.ForProject forProject, boolean disableDb, String... expectedRefs)
 specifier|private
 name|void
 name|assertRefs
@@ -4832,7 +4832,7 @@ name|disableDb
 parameter_list|,
 name|String
 modifier|...
-name|expectedWithMeta
+name|expectedRefs
 parameter_list|)
 throws|throws
 name|Exception
@@ -4847,7 +4847,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|expectedWithMeta
+name|expectedRefs
 operator|.
 name|length
 argument_list|)
@@ -4857,7 +4857,7 @@ control|(
 name|String
 name|r
 range|:
-name|expectedWithMeta
+name|expectedRefs
 control|)
 block|{
 name|expected
