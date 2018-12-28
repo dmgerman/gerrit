@@ -4762,15 +4762,15 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Assert that refs seen by a non-admin user match expected.    *    * @param expectedWithMeta expected refs, in order. If NoteDb is disabled by the configuration,    *     any NoteDb refs (i.e. ending in "/meta") are removed from the expected list before    *     comparing to the actual results.    * @throws Exception    */
-DECL|method|assertUploadPackRefs (String... expectedWithMeta)
+comment|/**    * Assert that refs seen by a non-admin user match the expected refs.    *    * @param expectedRefs expected refs.    * @throws Exception    */
+DECL|method|assertUploadPackRefs (String... expectedRefs)
 specifier|private
 name|void
 name|assertUploadPackRefs
 parameter_list|(
 name|String
 modifier|...
-name|expectedWithMeta
+name|expectedRefs
 parameter_list|)
 throws|throws
 name|Exception
@@ -4809,12 +4809,12 @@ argument_list|)
 argument_list|,
 literal|true
 argument_list|,
-name|expectedWithMeta
+name|expectedRefs
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|assertRefs ( Repository repo, PermissionBackend.ForProject forProject, boolean disableDb, String... expectedWithMeta)
+DECL|method|assertRefs ( Repository repo, PermissionBackend.ForProject forProject, boolean disableDb, String... expectedRefs)
 specifier|private
 name|void
 name|assertRefs
@@ -4832,42 +4832,11 @@ name|disableDb
 parameter_list|,
 name|String
 modifier|...
-name|expectedWithMeta
+name|expectedRefs
 parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|expected
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
-name|expectedWithMeta
-operator|.
-name|length
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|String
-name|r
-range|:
-name|expectedWithMeta
-control|)
-block|{
-name|expected
-operator|.
-name|add
-argument_list|(
-name|r
-argument_list|)
-expr_stmt|;
-block|}
 name|AcceptanceTestRequestScope
 operator|.
 name|Context
@@ -4923,7 +4892,7 @@ argument_list|)
 operator|.
 name|containsExactlyElementsIn
 argument_list|(
-name|expected
+name|expectedRefs
 argument_list|)
 expr_stmt|;
 block|}
