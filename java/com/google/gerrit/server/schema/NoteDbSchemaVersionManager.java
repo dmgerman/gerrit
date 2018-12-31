@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.notedb
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
+name|schema
 package|;
 end_package
 
@@ -145,6 +145,22 @@ operator|.
 name|git
 operator|.
 name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|IntBlob
 import|;
 end_import
 
@@ -456,13 +472,9 @@ name|zeroId
 argument_list|()
 argument_list|)
 argument_list|,
-comment|// TODO(dborowitz): Find some way to not hard-code this constant here. We can't depend on
-comment|// NoteDbSchemaVersions from this package, because the schema java_library depends on the
-comment|// server java_library, so that would add a circular dependency. But *this* class must
-comment|// live in the server library, because it's used by things like NoteDbMigrator. One
-comment|// option: once NoteDbMigrator goes away, this class could move back to the schema
-comment|// subpackage.
-literal|180
+name|NoteDbSchemaVersions
+operator|.
+name|LATEST
 argument_list|,
 name|GitReferenceUpdated
 operator|.
