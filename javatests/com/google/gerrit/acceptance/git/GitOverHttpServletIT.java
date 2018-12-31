@@ -90,6 +90,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|Sandboxed
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|AuditEvent
@@ -109,6 +123,20 @@ operator|.
 name|audit
 operator|.
 name|HttpAuditEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|FakeGroupAuditService
 import|;
 end_import
 
@@ -249,14 +277,11 @@ operator|.
 name|HTTP
 argument_list|)
 expr_stmt|;
-name|auditService
-operator|.
-name|clearEvents
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Sandboxed
 DECL|method|receivePackAuditEventLog ()
 specifier|public
 name|void
@@ -265,6 +290,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|FakeGroupAuditService
+name|auditService
+init|=
+name|clearAuditService
+argument_list|()
+decl_stmt|;
 name|testRepo
 operator|.
 name|git
@@ -291,7 +322,9 @@ name|call
 argument_list|()
 expr_stmt|;
 name|waitForAudit
-argument_list|()
+argument_list|(
+name|auditService
+argument_list|)
 expr_stmt|;
 comment|// Git smart protocol makes two requests:
 comment|// https://github.com/git/git/blob/master/Documentation/technical/http-protocol.txt
@@ -383,6 +416,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Sandboxed
 DECL|method|uploadPackAuditEventLog ()
 specifier|public
 name|void
@@ -391,6 +426,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|FakeGroupAuditService
+name|auditService
+init|=
+name|clearAuditService
+argument_list|()
+decl_stmt|;
 name|testRepo
 operator|.
 name|git
@@ -403,7 +444,9 @@ name|call
 argument_list|()
 expr_stmt|;
 name|waitForAudit
-argument_list|()
+argument_list|(
+name|auditService
+argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -501,11 +544,44 @@ name|SC_OK
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|waitForAudit ()
+DECL|method|clearAuditService ()
+specifier|private
+name|FakeGroupAuditService
+name|clearAuditService
+parameter_list|()
+block|{
+name|FakeGroupAuditService
+name|auditService
+init|=
+name|server
+operator|.
+name|getTestInjector
+argument_list|()
+operator|.
+name|getInstance
+argument_list|(
+name|FakeGroupAuditService
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+name|auditService
+operator|.
+name|clearEvents
+argument_list|()
+expr_stmt|;
+return|return
+name|auditService
+return|;
+block|}
+DECL|method|waitForAudit (FakeGroupAuditService auditService)
 specifier|private
 name|void
 name|waitForAudit
-parameter_list|()
+parameter_list|(
+name|FakeGroupAuditService
+name|auditService
+parameter_list|)
 throws|throws
 name|InterruptedException
 block|{
