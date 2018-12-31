@@ -9912,6 +9912,19 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+name|assertThat
+argument_list|(
+name|pr
+operator|.
+name|getMessages
+argument_list|()
+argument_list|)
+operator|.
+name|containsMatch
+argument_list|(
+literal|"changes: .*new: 1.*done"
+argument_list|)
+expr_stmt|;
 comment|// BatchUpdate implementations differ in how they hook into progress monitors. We mostly just
 comment|// care that there is a new change.
 name|assertThat
