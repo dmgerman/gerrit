@@ -2245,9 +2245,7 @@ literal|"x"
 argument_list|,
 operator|new
 name|ArrayList
-argument_list|<
-name|RevCommit
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|,
 literal|"refs/for/master"

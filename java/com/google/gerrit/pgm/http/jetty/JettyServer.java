@@ -2496,9 +2496,7 @@ name|idleTimeout
 argument_list|,
 operator|new
 name|BlockingArrayQueue
-argument_list|<
-name|Runnable
-argument_list|>
+argument_list|<>
 argument_list|(
 name|minThreads
 argument_list|,

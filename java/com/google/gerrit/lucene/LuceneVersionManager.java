@@ -754,9 +754,7 @@ name|v
 argument_list|,
 operator|new
 name|Version
-argument_list|<
-name|V
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|null
 argument_list|,

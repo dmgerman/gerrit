@@ -445,14 +445,7 @@ block|{
 return|return
 operator|new
 name|HashSet
-argument_list|<
-name|NodeRenderingHandler
-argument_list|<
-name|?
-extends|extends
-name|Node
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -467,13 +460,13 @@ operator|.
 name|class
 argument_list|,
 parameter_list|(
-lambda|node
-argument_list|,
+name|node
+parameter_list|,
 name|context
-argument_list|,
+parameter_list|,
 name|html
-argument_list|)
-operator|->
+parameter_list|)
+lambda|->
 name|HeadingNodeRenderer
 operator|.
 name|this
@@ -501,7 +494,7 @@ operator|::
 name|render
 argument_list|)
 argument_list|)
-condition|)
+argument_list|)
 return|;
 block|}
 DECL|method|render (final AnchorLink node, final NodeRendererContext context)

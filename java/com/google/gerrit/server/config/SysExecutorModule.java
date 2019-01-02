@@ -531,9 +531,7 @@ name|MINUTES
 argument_list|,
 operator|new
 name|ArrayBlockingQueue
-argument_list|<
-name|Runnable
-argument_list|>
+argument_list|<>
 argument_list|(
 name|poolSize
 argument_list|)

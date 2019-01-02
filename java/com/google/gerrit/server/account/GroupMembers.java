@@ -469,11 +469,7 @@ literal|null
 argument_list|,
 operator|new
 name|HashSet
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|)
 return|;
@@ -526,11 +522,7 @@ name|project
 argument_list|,
 operator|new
 name|HashSet
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|)
 return|;

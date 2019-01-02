@@ -630,11 +630,7 @@ name|name
 argument_list|,
 operator|new
 name|ReflectionFactory
-argument_list|<
-name|T
-argument_list|,
-name|Q
-argument_list|>
+argument_list|<>
 argument_list|(
 name|name
 argument_list|,
