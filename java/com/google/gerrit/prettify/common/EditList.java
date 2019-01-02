@@ -202,24 +202,8 @@ name|getHunks
 parameter_list|()
 block|{
 return|return
-operator|new
-name|Iterable
-argument_list|<
-name|Hunk
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|Iterator
-argument_list|<
-name|Hunk
-argument_list|>
-name|iterator
 parameter_list|()
-block|{
-return|return
+lambda|->
 operator|new
 name|Iterator
 argument_list|<
@@ -230,7 +214,7 @@ block|{
 specifier|private
 name|int
 name|curIdx
-decl_stmt|;
+return|;
 annotation|@
 name|Override
 specifier|public
@@ -299,11 +283,11 @@ argument_list|()
 throw|;
 block|}
 block|}
-return|;
+empty_stmt|;
 block|}
-block|}
-return|;
-block|}
+end_class
+
+begin_function
 DECL|method|findCombinedEnd (int i)
 specifier|private
 name|int
@@ -352,6 +336,9 @@ operator|-
 literal|1
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|combineA (int i)
 specifier|private
 name|boolean
@@ -404,6 +391,9 @@ operator|+
 literal|1
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|combineB (int i)
 specifier|private
 name|boolean
@@ -456,6 +446,9 @@ operator|+
 literal|1
 return|;
 block|}
+end_function
+
+begin_class
 DECL|class|Hunk
 specifier|public
 class|class
@@ -846,8 +839,8 @@ argument_list|()
 return|;
 block|}
 block|}
-block|}
 end_class
 
+unit|}
 end_unit
 

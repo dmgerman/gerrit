@@ -1384,16 +1384,8 @@ name|handle
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|RegistrationHandle
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|remove
 parameter_list|()
+lambda|->
 block|{
 name|handle
 operator|.
@@ -1407,7 +1399,6 @@ argument_list|(
 name|handle
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|;
 block|}

@@ -855,30 +855,8 @@ name|iterator
 argument_list|()
 decl_stmt|;
 return|return
-operator|new
-name|Iterable
-argument_list|<
-name|Extension
-argument_list|<
-name|T
-argument_list|>
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|Iterator
-argument_list|<
-name|Extension
-argument_list|<
-name|T
-argument_list|>
-argument_list|>
-name|iterator
 parameter_list|()
-block|{
-return|return
+lambda|->
 operator|new
 name|Iterator
 argument_list|<
@@ -895,7 +873,7 @@ argument_list|<
 name|T
 argument_list|>
 name|next
-decl_stmt|;
+return|;
 annotation|@
 name|Override
 specifier|public
@@ -1000,12 +978,15 @@ argument_list|()
 throw|;
 block|}
 block|}
-return|;
+empty_stmt|;
 block|}
-block|}
-return|;
-block|}
+end_class
+
+begin_comment
 comment|/**    * Returns {@code true} if this set contains the given item.    *    * @param item item to check whether or not it is contained.    * @return {@code true} if this set contains the given item.    */
+end_comment
+
+begin_function
 DECL|method|contains (T item)
 specifier|public
 name|boolean
@@ -1056,7 +1037,13 @@ return|return
 literal|false
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Get the names of all running plugins supplying this type.    *    * @return sorted set of active plugins that supply at least one item.    */
+end_comment
+
+begin_function
 DECL|method|plugins ()
 specifier|public
 name|ImmutableSortedSet
@@ -1095,7 +1082,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Get the items exported by a single plugin.    *    * @param pluginName name of the plugin.    * @return items exported by a plugin.    */
+end_comment
+
+begin_function
 DECL|method|byPlugin (String pluginName)
 specifier|public
 name|ImmutableSet
@@ -1155,7 +1148,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Add one new element to the set.    *    * @param item the item to add to the collection. Must not be null.    * @return handle to remove the item at a later point in time.    */
+end_comment
+
+begin_function
 DECL|method|add (String pluginName, T item)
 specifier|public
 name|RegistrationHandle
@@ -1182,7 +1181,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Add one new element to the set.    *    * @param item the item to add to the collection. Must not be null.    * @return handle to remove the item at a later point in time.    */
+end_comment
+
+begin_function
 DECL|method|add (String pluginName, Provider<T> item)
 specifier|public
 name|RegistrationHandle
@@ -1230,16 +1235,8 @@ name|ref
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|RegistrationHandle
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|remove
 parameter_list|()
+lambda|->
 block|{
 if|if
 condition|(
@@ -1265,10 +1262,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Add one new element that may be hot-replaceable in the future.    *    * @param pluginName unique name of the plugin providing the item.    * @param key unique description from the item's Guice binding. This can be later obtained from    *     the registration handle to facilitate matching with the new equivalent instance during a    *     hot reload.    * @param item the item to add to the collection right now. Must not be null.    * @return a handle that can remove this item later, or hot-swap the item without it ever leaving    *     the collection.    */
+end_comment
+
+begin_function
 DECL|method|add (String pluginName, Key<T> key, Provider<T> item)
 specifier|public
 name|ReloadableRegistrationHandle
@@ -1338,6 +1340,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_class
 DECL|class|ReloadableHandle
 specifier|private
 class|class
@@ -1533,8 +1538,8 @@ literal|null
 return|;
 block|}
 block|}
-block|}
 end_class
 
+unit|}
 end_unit
 

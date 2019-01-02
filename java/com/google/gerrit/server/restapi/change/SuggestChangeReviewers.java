@@ -156,22 +156,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -591,21 +575,8 @@ name|rsrc
 parameter_list|)
 block|{
 return|return
-operator|new
-name|VisibilityControl
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|isVisibleTo
-parameter_list|(
-name|Account
-operator|.
-name|Id
 name|account
-parameter_list|)
+lambda|->
 block|{
 comment|// Use the destination reference, not the change, as private changes deny anyone who is not
 comment|// already a reviewer.
@@ -635,7 +606,6 @@ operator|.
 name|READ
 argument_list|)
 return|;
-block|}
 block|}
 return|;
 block|}
