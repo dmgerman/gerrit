@@ -805,9 +805,7 @@ literal|null
 condition|?
 operator|new
 name|HashSet
-argument_list|<
-name|Fingerprint
-argument_list|>
+argument_list|<>
 argument_list|()
 else|:
 literal|null
