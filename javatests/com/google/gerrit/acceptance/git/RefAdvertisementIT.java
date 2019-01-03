@@ -2372,8 +2372,45 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|uploadPackNoSearchingChangeCacheImpl ()
+DECL|method|uploadPackNoSearchingChangeCacheImplMaster ()
 specifier|public
+name|void
+name|uploadPackNoSearchingChangeCacheImplMaster
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|uploadPackNoSearchingChangeCacheImpl
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
+literal|"container.slave"
+argument_list|,
+name|value
+operator|=
+literal|"true"
+argument_list|)
+DECL|method|uploadPackNoSearchingChangeCacheImplSlave ()
+specifier|public
+name|void
+name|uploadPackNoSearchingChangeCacheImplSlave
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|uploadPackNoSearchingChangeCacheImpl
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|uploadPackNoSearchingChangeCacheImpl ()
+specifier|private
 name|void
 name|uploadPackNoSearchingChangeCacheImpl
 parameter_list|()
