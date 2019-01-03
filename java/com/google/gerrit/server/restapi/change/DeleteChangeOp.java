@@ -350,6 +350,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -423,6 +437,21 @@ name|DeleteChangeOp
 implements|implements
 name|BatchUpdateOp
 block|{
+DECL|interface|Factory
+interface|interface
+name|Factory
+block|{
+DECL|method|create (Change.Id id)
+name|DeleteChangeOp
+name|create
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+function_decl|;
+block|}
 DECL|field|psUtil
 specifier|private
 specifier|final
@@ -452,6 +481,7 @@ name|changeDeleted
 decl_stmt|;
 DECL|field|id
 specifier|private
+specifier|final
 name|Change
 operator|.
 name|Id
@@ -459,7 +489,7 @@ name|id
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteChangeOp ( PatchSetUtil psUtil, StarredChangesUtil starredChangesUtil, PluginItemContext<AccountPatchReviewStore> accountPatchReviewStore, ChangeDeleted changeDeleted)
+DECL|method|DeleteChangeOp ( PatchSetUtil psUtil, StarredChangesUtil starredChangesUtil, PluginItemContext<AccountPatchReviewStore> accountPatchReviewStore, ChangeDeleted changeDeleted, @Assisted Change.Id id)
 name|DeleteChangeOp
 parameter_list|(
 name|PatchSetUtil
@@ -476,6 +506,13 @@ name|accountPatchReviewStore
 parameter_list|,
 name|ChangeDeleted
 name|changeDeleted
+parameter_list|,
+annotation|@
+name|Assisted
+name|Change
+operator|.
+name|Id
+name|id
 parameter_list|)
 block|{
 name|this
@@ -501,6 +538,12 @@ operator|.
 name|changeDeleted
 operator|=
 name|changeDeleted
+expr_stmt|;
+name|this
+operator|.
+name|id
+operator|=
+name|id
 expr_stmt|;
 block|}
 annotation|@
@@ -533,25 +576,6 @@ name|DB_BEFORE_REPO
 argument_list|,
 literal|"must use DeleteChangeOp with DB_BEFORE_REPO"
 argument_list|)
-expr_stmt|;
-name|checkState
-argument_list|(
-name|id
-operator|==
-literal|null
-argument_list|,
-literal|"cannot reuse DeleteChangeOp"
-argument_list|)
-expr_stmt|;
-name|id
-operator|=
-name|ctx
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
-argument_list|()
 expr_stmt|;
 name|Collection
 argument_list|<
