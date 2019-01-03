@@ -250,12 +250,6 @@ name|CurrentUser
 name|getUser
 parameter_list|()
 function_decl|;
-comment|/**    * Get the order in which operations are executed in this update.    *    * @return order of operations.    */
-DECL|method|getOrder ()
-name|Order
-name|getOrder
-parameter_list|()
-function_decl|;
 comment|/**    * Get the identified user performing the update.    *    *<p>Convenience method for {@code getUser().asIdentifiedUser()}.    *    * @see CurrentUser#asIdentifiedUser()    * @return user.    */
 DECL|method|getIdentifiedUser ()
 specifier|default

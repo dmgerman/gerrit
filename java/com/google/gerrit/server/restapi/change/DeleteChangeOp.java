@@ -69,22 +69,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -287,22 +271,6 @@ operator|.
 name|update
 operator|.
 name|ChangeContext
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
-name|Order
 import|;
 end_import
 
@@ -546,6 +514,9 @@ operator|=
 name|id
 expr_stmt|;
 block|}
+comment|// The relative order of updateChange and updateRepo doesn't matter as long as all operations are
+comment|// executed in a single atomic BatchRefUpdate. Actually deleting the change refs first would not
+comment|// fail gracefully if the second delete fails, but fortunately that's not what happens.
 annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
@@ -563,20 +534,6 @@ name|OrmException
 throws|,
 name|IOException
 block|{
-name|checkState
-argument_list|(
-name|ctx
-operator|.
-name|getOrder
-argument_list|()
-operator|==
-name|Order
-operator|.
-name|DB_BEFORE_REPO
-argument_list|,
-literal|"must use DeleteChangeOp with DB_BEFORE_REPO"
-argument_list|)
-expr_stmt|;
 name|Collection
 argument_list|<
 name|PatchSet
