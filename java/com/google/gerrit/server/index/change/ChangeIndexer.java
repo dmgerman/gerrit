@@ -236,20 +236,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|GerritServerConfig
@@ -1734,16 +1720,8 @@ block|{
 name|RequestContext
 name|newCtx
 init|=
-operator|new
-name|RequestContext
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|CurrentUser
-name|getUser
 parameter_list|()
+lambda|->
 block|{
 throw|throw
 operator|new
@@ -1752,7 +1730,6 @@ argument_list|(
 literal|"No user during ChangeIndexer"
 argument_list|)
 throw|;
-block|}
 block|}
 decl_stmt|;
 name|RequestContext

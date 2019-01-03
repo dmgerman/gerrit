@@ -253,41 +253,12 @@ name|pluginName
 argument_list|,
 name|cacheName
 argument_list|,
-operator|new
-name|Provider
-argument_list|<
-name|Cache
-argument_list|<
-name|?
-argument_list|,
-name|?
-argument_list|>
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|Cache
-argument_list|<
-name|?
-argument_list|,
-name|?
-argument_list|>
-name|get
 parameter_list|()
-block|{
-return|return
+lambda|->
 name|cache
-return|;
+argument_list|)
+expr_stmt|;
 block|}
-block|}
-block|)
-empty_stmt|;
-block|}
-end_class
-
-begin_function
 DECL|method|getName ()
 specifier|public
 name|String
@@ -298,9 +269,6 @@ return|return
 name|name
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getCache ()
 specifier|public
 name|Cache
@@ -319,9 +287,6 @@ name|get
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|cacheNameOf (String plugin, String name)
 specifier|public
 specifier|static
@@ -359,8 +324,8 @@ operator|+
 name|name
 return|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

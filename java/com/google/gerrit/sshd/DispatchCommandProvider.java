@@ -355,17 +355,8 @@ argument_list|)
 throw|;
 block|}
 return|return
-operator|new
-name|RegistrationHandle
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|remove
 parameter_list|()
-block|{
+lambda|->
 name|m
 operator|.
 name|remove
@@ -377,9 +368,6 @@ argument_list|()
 argument_list|,
 name|commandProvider
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 return|;
 block|}
 DECL|method|replace (CommandName name, Provider<Command> cmd)
@@ -434,17 +422,8 @@ name|commandProvider
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|RegistrationHandle
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|remove
 parameter_list|()
-block|{
+lambda|->
 name|m
 operator|.
 name|remove
@@ -456,9 +435,6 @@ argument_list|()
 argument_list|,
 name|commandProvider
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 return|;
 block|}
 DECL|method|getMap ()

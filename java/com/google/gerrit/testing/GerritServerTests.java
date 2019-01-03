@@ -108,18 +108,6 @@ name|junit
 operator|.
 name|runner
 operator|.
-name|Description
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|runner
-operator|.
 name|RunWith
 import|;
 end_import
@@ -178,34 +166,18 @@ specifier|public
 name|TestRule
 name|testRunner
 init|=
-operator|new
-name|TestRule
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|Statement
-name|apply
 parameter_list|(
-name|Statement
 name|base
 parameter_list|,
-name|Description
 name|description
 parameter_list|)
-block|{
-return|return
+lambda|->
 operator|new
 name|Statement
 argument_list|()
 block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|evaluate
-parameter_list|()
+block|@Override             public void evaluate(
+init|)
 throws|throws
 name|Throwable
 block|{
@@ -213,15 +185,10 @@ name|base
 operator|.
 name|evaluate
 argument_list|()
-expr_stmt|;
-block|}
-block|}
-return|;
-block|}
-block|}
 decl_stmt|;
 block|}
 end_class
 
+unit|}; }
 end_unit
 

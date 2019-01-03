@@ -206,18 +206,8 @@ name|IOException
 block|{
 name|startThread
 argument_list|(
-operator|new
-name|CommandRunnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
-throws|throws
-name|Exception
+lambda|->
 block|{
 name|parseCommandLine
 argument_list|()
@@ -265,7 +255,6 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|,

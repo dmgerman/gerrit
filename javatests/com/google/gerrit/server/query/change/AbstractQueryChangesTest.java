@@ -2431,22 +2431,9 @@ name|requestUserId
 argument_list|)
 decl_stmt|;
 return|return
-operator|new
-name|RequestContext
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|CurrentUser
-name|getUser
 parameter_list|()
-block|{
-return|return
+lambda|->
 name|requestUser
-return|;
-block|}
-block|}
 return|;
 block|}
 DECL|method|resetUser ()

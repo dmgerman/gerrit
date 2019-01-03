@@ -762,38 +762,22 @@ specifier|final
 name|TestRule
 name|testRunner
 init|=
-operator|new
-name|TestRule
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|Statement
-name|apply
 parameter_list|(
-name|Statement
 name|base
 parameter_list|,
-name|Description
 name|description
 parameter_list|)
-block|{
-return|return
+lambda|->
 operator|new
 name|Statement
 argument_list|()
 block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|evaluate
-parameter_list|()
+block|@Override             public void evaluate(
+init|)
 throws|throws
 name|Throwable
 block|{
-try|try
+decl|try
 block|{
 name|beforeTest
 argument_list|(
@@ -813,11 +797,10 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-block|}
-return|;
-block|}
-block|}
-decl_stmt|;
+end_class
+
+begin_decl_stmt
+unit|};
 DECL|field|ruleChain
 annotation|@
 name|Rule
@@ -837,11 +820,17 @@ argument_list|(
 name|testRunner
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|sitePaths
 specifier|protected
 name|SitePaths
 name|sitePaths
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|adminId
 specifier|protected
 name|Account
@@ -849,6 +838,9 @@ operator|.
 name|Id
 name|adminId
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|serverDesc
 specifier|private
 name|GerritServer
@@ -856,11 +848,17 @@ operator|.
 name|Description
 name|serverDesc
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|oldSystemReader
 specifier|private
 name|SystemReader
 name|oldSystemReader
 decl_stmt|;
+end_decl_stmt
+
+begin_function
 DECL|method|beforeTest (Description description)
 specifier|private
 name|void
@@ -925,6 +923,9 @@ name|site_path
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setFakeSystemReader (File tempDir)
 specifier|private
 specifier|static
@@ -1111,6 +1112,9 @@ return|return
 name|oldSystemReader
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|afterTest ()
 specifier|private
 name|void
@@ -1131,6 +1135,9 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|startServer ()
 specifier|protected
 name|ServerContext
@@ -1146,6 +1153,9 @@ literal|null
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|startServer (@ullable Module testSysModule, String... additionalArgs)
 specifier|protected
 name|ServerContext
@@ -1176,6 +1186,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|assertServerStartupFails ()
 specifier|protected
 name|void
@@ -1212,6 +1225,9 @@ block|{
 comment|// Expected.
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|startImpl (@ullable Module testSysModule, String... additionalArgs)
 specifier|private
 name|GerritServer
@@ -1250,6 +1266,9 @@ name|additionalArgs
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|runGerrit (String... args)
 specifier|protected
 specifier|static
@@ -1309,6 +1328,9 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|SafeVarargs
 DECL|method|runGerrit (Iterable<String>.... multiArgs)
@@ -1353,8 +1375,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
