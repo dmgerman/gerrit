@@ -360,7 +360,7 @@ literal|4
 argument_list|)
 return|;
 block|}
-comment|/**    * Get the next patch set ID from a previously-read map of all refs.    *    * @param allRefs map of full ref name to ref, in the same format returned by {@link    *     org.eclipse.jgit.lib.RefDatabase#getRefs(String)} when passing {@code ""}.    * @param id previous patch set ID.    * @return next unused patch set ID for the same change, skipping any IDs whose corresponding ref    *     names appear in the {@code allRefs} map.    */
+comment|/**    * Get the next patch set ID from a previously-read map of all refs.    *    * @param allRefs map of full ref name to ref.    * @param id previous patch set ID.    * @return next unused patch set ID for the same change, skipping any IDs whose corresponding ref    *     names appear in the {@code allRefs} map.    */
 DECL|method|nextPatchSetIdFromAllRefsMap (Map<String, Ref> allRefs, PatchSet.Id id)
 specifier|public
 specifier|static
@@ -418,7 +418,7 @@ return|return
 name|next
 return|;
 block|}
-comment|/**    * Get the next patch set ID from a previously-read map of refs below the change prefix.    *    * @param changeRefs map of ref suffix to SHA-1, where the keys are ref names with the {@code    *     refs/changes/CD/ABCD/} prefix stripped. All refs should be under {@code id}'s change ref    *     prefix. The keys match the format returned by {@link    *     org.eclipse.jgit.lib.RefDatabase#getRefs(String)} when passing the appropriate {@code    *     refs/changes/CD/ABCD}.    * @param id previous patch set ID.    * @return next unused patch set ID for the same change, skipping any IDs whose corresponding ref    *     names appear in the {@code changeRefs} map.    */
+comment|/**    * Get the next patch set ID from a previously-read map of refs below the change prefix.    *    * @param changeRefs map of ref suffix to SHA-1, where the keys are ref names with the {@code    *     refs/changes/CD/ABCD/} prefix stripped. All refs should be under {@code id}'s change ref    *     prefix.    * @param id previous patch set ID.    * @return next unused patch set ID for the same change, skipping any IDs whose corresponding ref    *     names appear in the {@code changeRefs} map.    */
 DECL|method|nextPatchSetIdFromChangeRefsMap ( Map<String, ObjectId> changeRefs, PatchSet.Id id)
 specifier|public
 specifier|static
