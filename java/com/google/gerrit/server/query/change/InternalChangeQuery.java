@@ -482,6 +482,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -2101,14 +2113,18 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byProjectGroups (Project.NameKey project, Collection<String> groups)
+DECL|method|byProjectGroupsPredicate ( IndexConfig indexConfig, Project.NameKey project, Collection<String> groups)
 specifier|private
-name|List
+specifier|static
+name|Predicate
 argument_list|<
 name|ChangeData
 argument_list|>
-name|byProjectGroups
+name|byProjectGroupsPredicate
 parameter_list|(
+name|IndexConfig
+name|indexConfig
+parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -2120,8 +2136,6 @@ name|String
 argument_list|>
 name|groups
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|int
 name|n
@@ -2184,8 +2198,6 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|query
-argument_list|(
 name|and
 argument_list|(
 name|project
@@ -2198,11 +2210,8 @@ argument_list|(
 name|groupPredicates
 argument_list|)
 argument_list|)
-argument_list|)
 return|;
 block|}
-comment|// Batching via multiple queries requires passing in a Provider since the underlying
-comment|// QueryProcessor instance is not reusable.
 DECL|method|byProjectGroups ( Provider<InternalChangeQuery> queryProvider, IndexConfig indexConfig, Project.NameKey project, Collection<String> groups)
 specifier|public
 specifier|static
@@ -2235,6 +2244,31 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+comment|// These queries may be complex along multiple dimensions:
+comment|//  * Many groups per change, if there are very many patch sets. This requires partitioning the
+comment|//    list of predicates and combining results.
+comment|//  * Many changes with the same set of groups, if the relation chain is very long. This
+comment|//    requires querying exhaustively with pagination.
+comment|// For both cases, we need to invoke the queryProvider multiple times, since each
+comment|// InternalChangeQuery is single-use.
+name|Supplier
+argument_list|<
+name|InternalChangeQuery
+argument_list|>
+name|querySupplier
+init|=
+parameter_list|()
+lambda|->
+name|queryProvider
+operator|.
+name|get
+argument_list|()
+operator|.
+name|enforceVisibility
+argument_list|(
+literal|true
+argument_list|)
+decl_stmt|;
 name|int
 name|batchSize
 init|=
@@ -2256,21 +2290,18 @@ name|batchSize
 condition|)
 block|{
 return|return
-name|queryProvider
-operator|.
-name|get
-argument_list|()
-operator|.
-name|enforceVisibility
+name|queryExhaustively
 argument_list|(
-literal|true
-argument_list|)
-operator|.
-name|byProjectGroups
+name|querySupplier
+argument_list|,
+name|byProjectGroupsPredicate
 argument_list|(
+name|indexConfig
+argument_list|,
 name|project
 argument_list|,
 name|groups
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -2321,21 +2352,18 @@ control|(
 name|ChangeData
 name|cd
 range|:
-name|queryProvider
-operator|.
-name|get
-argument_list|()
-operator|.
-name|enforceVisibility
+name|queryExhaustively
 argument_list|(
-literal|true
-argument_list|)
-operator|.
-name|byProjectGroups
+name|querySupplier
+argument_list|,
+name|byProjectGroupsPredicate
 argument_list|(
+name|indexConfig
+argument_list|,
 name|project
 argument_list|,
 name|part
+argument_list|)
 argument_list|)
 control|)
 block|{
