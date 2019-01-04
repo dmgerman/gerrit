@@ -464,6 +464,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1949,11 +1961,14 @@ specifier|final
 name|Key
 name|key
 decl_stmt|;
-DECL|field|rw
+DECL|field|walkSupplier
 specifier|private
 specifier|final
+name|Supplier
+argument_list|<
 name|ChangeNotesRevWalk
-name|rw
+argument_list|>
+name|walkSupplier
 decl_stmt|;
 DECL|field|revisionNoteMap
 specifier|private
@@ -1963,15 +1978,18 @@ name|ChangeRevisionNote
 argument_list|>
 name|revisionNoteMap
 decl_stmt|;
-DECL|method|Loader (Key key, ChangeNotesRevWalk rw)
+DECL|method|Loader (Key key, Supplier<ChangeNotesRevWalk> walkSupplier)
 specifier|private
 name|Loader
 parameter_list|(
 name|Key
 name|key
 parameter_list|,
+name|Supplier
+argument_list|<
 name|ChangeNotesRevWalk
-name|rw
+argument_list|>
+name|walkSupplier
 parameter_list|)
 block|{
 name|this
@@ -1982,9 +2000,9 @@ name|key
 expr_stmt|;
 name|this
 operator|.
-name|rw
+name|walkSupplier
 operator|=
-name|rw
+name|walkSupplier
 expr_stmt|;
 block|}
 annotation|@
@@ -2035,7 +2053,10 @@ operator|.
 name|id
 argument_list|()
 argument_list|,
-name|rw
+name|walkSupplier
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|args
 operator|.
@@ -2124,7 +2145,7 @@ operator|=
 name|args
 expr_stmt|;
 block|}
-DECL|method|get (Project.NameKey project, Change.Id changeId, ObjectId metaId, ChangeNotesRevWalk rw)
+DECL|method|get ( Project.NameKey project, Change.Id changeId, ObjectId metaId, Supplier<ChangeNotesRevWalk> walkSupplier)
 name|Value
 name|get
 parameter_list|(
@@ -2141,8 +2162,11 @@ parameter_list|,
 name|ObjectId
 name|metaId
 parameter_list|,
+name|Supplier
+argument_list|<
 name|ChangeNotesRevWalk
-name|rw
+argument_list|>
+name|walkSupplier
 parameter_list|)
 throws|throws
 name|IOException
@@ -2171,7 +2195,7 @@ name|Loader
 argument_list|(
 name|key
 argument_list|,
-name|rw
+name|walkSupplier
 argument_list|)
 decl_stmt|;
 name|ChangeNotesState
