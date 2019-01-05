@@ -1181,7 +1181,7 @@ name|rebasedPatchSetId
 operator|=
 name|ChangeUtil
 operator|.
-name|nextPatchSetIdFromChangeRefsMap
+name|nextPatchSetIdFromChangeRefs
 argument_list|(
 name|ctx
 operator|.
@@ -1201,6 +1201,9 @@ operator|.
 name|toRefPrefix
 argument_list|()
 argument_list|)
+operator|.
+name|keySet
+argument_list|()
 argument_list|,
 name|notes
 operator|.
