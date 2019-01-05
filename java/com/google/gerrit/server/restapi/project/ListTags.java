@@ -108,7 +108,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMap
+name|ImmutableList
 import|;
 end_import
 
@@ -998,7 +998,7 @@ operator|.
 name|getRefDatabase
 argument_list|()
 operator|.
-name|getRefs
+name|getRefsByPrefix
 argument_list|(
 name|Constants
 operator|.
@@ -1200,15 +1200,10 @@ argument_list|()
 argument_list|,
 name|repo
 argument_list|,
-name|ImmutableMap
+name|ImmutableList
 operator|.
 name|of
 argument_list|(
-name|ref
-operator|.
-name|getName
-argument_list|()
-argument_list|,
 name|ref
 argument_list|)
 argument_list|)
@@ -1566,7 +1561,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-DECL|method|visibleTags ( Project.NameKey project, Repository repo, Map<String, Ref> tags)
+DECL|method|visibleTags (Project.NameKey project, Repository repo, List<Ref> tags)
 specifier|private
 name|Map
 argument_list|<
@@ -1584,10 +1579,8 @@ parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|tags
