@@ -1070,6 +1070,22 @@ name|server
 operator|.
 name|index
 operator|.
+name|OnlineUpgrader
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
 name|VersionManager
 import|;
 end_import
@@ -2888,26 +2904,6 @@ name|Module
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Plugin module needs to be inserted *before* the index module.
-comment|// There is the concept of LifecycleModule, in Gerrit's own extension
-comment|// to Guice, which has these:
-comment|//  listener().to(SomeClassImplementingLifecycleListener.class);
-comment|// and the start() methods of each such listener are executed in the
-comment|// order they are declared.
-comment|// Makes sure that PluginLoader.start() is executed before the
-comment|// LuceneIndexModule.start() so that plugins get loaded and the respective
-comment|// Guice modules installed so that the on-line reindexing will happen
-comment|// with the proper classes (e.g. group backends, custom Prolog
-comment|// predicates) and the associated rules ready to be evaluated.
-name|modules
-operator|.
-name|add
-argument_list|(
-operator|new
-name|PluginModule
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// Index module shutdown must happen before work queue shutdown, otherwise
 comment|// work queue can get stuck waiting on index futures that will never return.
 name|modules
@@ -3157,6 +3153,37 @@ name|Module
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|modules
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PluginModule
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|VersionManager
+operator|.
+name|getOnlineUpgrade
+argument_list|(
+name|config
+argument_list|)
+condition|)
+block|{
+name|modules
+operator|.
+name|add
+argument_list|(
+operator|new
+name|OnlineUpgrader
+operator|.
+name|Module
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|modules
 operator|.
 name|add
@@ -3526,16 +3553,6 @@ return|return
 name|luceneModule
 return|;
 block|}
-name|boolean
-name|onlineUpgrade
-init|=
-name|VersionManager
-operator|.
-name|getOnlineUpgrade
-argument_list|(
-name|config
-argument_list|)
-decl_stmt|;
 switch|switch
 condition|(
 name|indexType
@@ -3545,18 +3562,9 @@ case|case
 name|LUCENE
 case|:
 return|return
-name|onlineUpgrade
-condition|?
 name|LuceneIndexModule
 operator|.
-name|latestVersionWithOnlineUpgrade
-argument_list|(
-name|slave
-argument_list|)
-else|:
-name|LuceneIndexModule
-operator|.
-name|latestVersionWithoutOnlineUpgrade
+name|latestVersion
 argument_list|(
 name|slave
 argument_list|)
@@ -3565,18 +3573,9 @@ case|case
 name|ELASTICSEARCH
 case|:
 return|return
-name|onlineUpgrade
-condition|?
 name|ElasticIndexModule
 operator|.
-name|latestVersionWithOnlineUpgrade
-argument_list|(
-name|slave
-argument_list|)
-else|:
-name|ElasticIndexModule
-operator|.
-name|latestVersionWithoutOnlineUpgrade
+name|latestVersion
 argument_list|(
 name|slave
 argument_list|)

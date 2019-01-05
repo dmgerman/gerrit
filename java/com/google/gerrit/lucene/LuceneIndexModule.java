@@ -280,8 +280,6 @@ argument_list|()
 argument_list|,
 name|threads
 argument_list|,
-literal|false
-argument_list|,
 name|slave
 argument_list|)
 return|;
@@ -315,17 +313,15 @@ name|versions
 argument_list|,
 name|threads
 argument_list|,
-literal|false
-argument_list|,
 name|slave
 argument_list|)
 return|;
 block|}
-DECL|method|latestVersionWithOnlineUpgrade (boolean slave)
+DECL|method|latestVersion (boolean slave)
 specifier|public
 specifier|static
 name|LuceneIndexModule
-name|latestVersionWithOnlineUpgrade
+name|latestVersion
 parameter_list|(
 name|boolean
 name|slave
@@ -338,32 +334,6 @@ argument_list|(
 literal|null
 argument_list|,
 literal|0
-argument_list|,
-literal|true
-argument_list|,
-name|slave
-argument_list|)
-return|;
-block|}
-DECL|method|latestVersionWithoutOnlineUpgrade (boolean slave)
-specifier|public
-specifier|static
-name|LuceneIndexModule
-name|latestVersionWithoutOnlineUpgrade
-parameter_list|(
-name|boolean
-name|slave
-parameter_list|)
-block|{
-return|return
-operator|new
-name|LuceneIndexModule
-argument_list|(
-literal|null
-argument_list|,
-literal|0
-argument_list|,
-literal|false
 argument_list|,
 name|slave
 argument_list|)
@@ -393,7 +363,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|LuceneIndexModule ( Map<String, Integer> singleVersions, int threads, boolean onlineUpgrade, boolean slave)
+DECL|method|LuceneIndexModule (Map<String, Integer> singleVersions, int threads, boolean slave)
 specifier|private
 name|LuceneIndexModule
 parameter_list|(
@@ -409,9 +379,6 @@ name|int
 name|threads
 parameter_list|,
 name|boolean
-name|onlineUpgrade
-parameter_list|,
-name|boolean
 name|slave
 parameter_list|)
 block|{
@@ -420,8 +387,6 @@ argument_list|(
 name|singleVersions
 argument_list|,
 name|threads
-argument_list|,
-name|onlineUpgrade
 argument_list|,
 name|slave
 argument_list|)
