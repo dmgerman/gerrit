@@ -70,17 +70,15 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|java
 operator|.
-name|eclipse
+name|util
 operator|.
-name|jgit
+name|stream
 operator|.
-name|lib
+name|Collectors
 operator|.
-name|RefDatabase
-operator|.
-name|ALL
+name|toMap
 import|;
 end_import
 
@@ -439,8 +437,23 @@ name|getRefDatabase
 argument_list|()
 operator|.
 name|getRefs
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|collect
 argument_list|(
-name|ALL
+name|toMap
+argument_list|(
+name|Ref
+operator|::
+name|getName
+argument_list|,
+name|x
+lambda|->
+name|x
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
