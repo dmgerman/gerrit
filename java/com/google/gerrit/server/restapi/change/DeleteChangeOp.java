@@ -400,12 +400,14 @@ end_import
 
 begin_class
 DECL|class|DeleteChangeOp
+specifier|public
 class|class
 name|DeleteChangeOp
 implements|implements
 name|BatchUpdateOp
 block|{
 DECL|interface|Factory
+specifier|public
 interface|interface
 name|Factory
 block|{
