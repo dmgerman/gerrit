@@ -849,6 +849,8 @@ parameter_list|,
 name|RevCommit
 name|commit
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|Project
 operator|.
@@ -953,7 +955,10 @@ name|commit
 argument_list|,
 name|repo
 operator|.
-name|getAllRefs
+name|getRefDatabase
+argument_list|()
+operator|.
+name|getRefs
 argument_list|()
 argument_list|)
 return|;
