@@ -1429,6 +1429,14 @@ argument_list|,
 name|r
 lambda|->
 name|r
+argument_list|,
+parameter_list|(
+name|a
+parameter_list|,
+name|b
+parameter_list|)
+lambda|->
+name|b
 argument_list|)
 argument_list|)
 argument_list|,
