@@ -839,7 +839,9 @@ comment|// not effectively "pushing" more objects, so they can create the ref
 comment|// even if they don't have push permission.
 return|return;
 block|}
-throw|throw
+name|AuthException
+name|e
+init|=
 operator|new
 name|AuthException
 argument_list|(
@@ -857,6 +859,28 @@ name|describeForException
 argument_list|()
 argument_list|)
 argument_list|)
+decl_stmt|;
+name|e
+operator|.
+name|setAdvice
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"use a SHA1 visible to you, or get %s permission on the ref"
+argument_list|,
+name|RefPermission
+operator|.
+name|UPDATE
+operator|.
+name|describeForException
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
 throw|;
 block|}
 block|}
