@@ -3240,9 +3240,8 @@ argument_list|,
 name|rev
 argument_list|,
 name|handle
-operator|.
+operator|::
 name|walk
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|state
