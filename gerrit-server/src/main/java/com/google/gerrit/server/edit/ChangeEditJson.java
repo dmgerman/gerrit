@@ -422,6 +422,15 @@ operator|.
 name|getPatchSetId
 argument_list|()
 expr_stmt|;
+name|out
+operator|.
+name|ref
+operator|=
+name|edit
+operator|.
+name|getRefName
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|downloadCommands

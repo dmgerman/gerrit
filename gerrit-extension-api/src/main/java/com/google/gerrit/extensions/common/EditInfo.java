@@ -97,6 +97,11 @@ specifier|public
 name|String
 name|baseRevision
 decl_stmt|;
+DECL|field|ref
+specifier|public
+name|String
+name|ref
+decl_stmt|;
 DECL|field|fetch
 specifier|public
 name|Map
