@@ -324,8 +324,8 @@ parameter_list|(
 name|Ref
 name|tagRef
 parameter_list|)
-block|{
-try|try
+throws|throws
+name|IOException
 block|{
 name|tagRef
 operator|=
@@ -339,15 +339,6 @@ argument_list|(
 name|tagRef
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|// Ignore
-block|}
 name|ObjectId
 name|tagObj
 init|=
