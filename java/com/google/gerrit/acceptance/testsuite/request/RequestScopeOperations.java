@@ -69,18 +69,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
-operator|.
-name|requireNonNull
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -138,7 +126,7 @@ specifier|public
 interface|interface
 name|RequestScopeOperations
 block|{
-comment|/**    * Sets the Guice request scope to the given account.    *    *<p>The resulting scope has no SSH session attached.    *    * @param accountId account ID. Must exist; throws an unchecked exception otherwise.    * @return the previous request scope.    */
+comment|/**    * Sets the Guice request scope to the given account.    *    *<p>The resulting context has an SSH session attached. In order to use the SSH session returned    * by {@link AcceptanceTestRequestScope.Context#getSession()}, SSH must be enabled in the test and    * the account must have a username set. However, these are not requirements simply to call this    * method.    *    * @param accountId account ID. Must exist; throws an unchecked exception otherwise.    * @return the previous request scope.    */
 DECL|method|setApiUser (Account.Id accountId)
 name|AcceptanceTestRequestScope
 operator|.
@@ -151,9 +139,8 @@ name|Id
 name|accountId
 parameter_list|)
 function_decl|;
-comment|/**    * Sets the Guice request scope to the given account.    *    *<p>The resulting scope has no SSH session attached.    *    * @param testAccount test account from {@code AccountOperations}.    * @return the previous request scope.    */
+comment|/**    * Sets the Guice request scope to the given account.    *    *<p>The resulting context has an SSH session attached. In order to use the SSH session returned    * by {@link AcceptanceTestRequestScope.Context#getSession()}, SSH must be enabled in the test and    * the account must have a username set. However, these are not requirements simply to call this    * method.    *    * @param testAccount test account from {@code AccountOperations}.    * @return the previous request scope.    */
 DECL|method|setApiUser (TestAccount testAccount)
-specifier|default
 name|AcceptanceTestRequestScope
 operator|.
 name|Context
@@ -162,20 +149,23 @@ parameter_list|(
 name|TestAccount
 name|testAccount
 parameter_list|)
-block|{
-return|return
-name|setApiUser
-argument_list|(
-name|requireNonNull
-argument_list|(
-name|testAccount
-argument_list|)
+function_decl|;
+comment|/**    * Enforces a new request context for the current API user.    *    *<p>This recreates the {@code IdentifiedUser}, hence everything which is cached in the {@code    * IdentifiedUser} is reloaded (e.g. the email addresses of the user).    *    *<p>The current user must be an identified user.    *    * @return the previous request scope.    */
+DECL|method|resetCurrentApiUser ()
+name|AcceptanceTestRequestScope
 operator|.
-name|accountId
-argument_list|()
-argument_list|)
-return|;
-block|}
+name|Context
+name|resetCurrentApiUser
+parameter_list|()
+function_decl|;
+comment|/**    * Sets the Guice request scope to the anonymous user.    *    * @return the previous request scope.    */
+DECL|method|setApiUserAnonymous ()
+name|AcceptanceTestRequestScope
+operator|.
+name|Context
+name|setApiUserAnonymous
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
