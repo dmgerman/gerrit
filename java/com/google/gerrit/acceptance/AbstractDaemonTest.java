@@ -5858,62 +5858,6 @@ name|get
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Deprecated
-comment|// Tests should inject and use their own RequestScopeOperations.
-DECL|method|resetCurrentApiUser ()
-specifier|protected
-name|Context
-name|resetCurrentApiUser
-parameter_list|()
-block|{
-return|return
-name|requestScopeOperations
-operator|.
-name|resetCurrentApiUser
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Deprecated
-comment|// Tests should inject and use their own RequestScopeOperations.
-DECL|method|setApiUser (TestAccount account)
-specifier|protected
-name|Context
-name|setApiUser
-parameter_list|(
-name|TestAccount
-name|account
-parameter_list|)
-block|{
-return|return
-name|requestScopeOperations
-operator|.
-name|setApiUser
-argument_list|(
-name|account
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Deprecated
-comment|// Tests should inject and use their own RequestScopeOperations.
-DECL|method|setApiUserAnonymous ()
-specifier|protected
-name|Context
-name|setApiUserAnonymous
-parameter_list|()
-block|{
-return|return
-name|requestScopeOperations
-operator|.
-name|setApiUserAnonymous
-argument_list|()
-return|;
-block|}
 DECL|method|getAccount (Account.Id accountId)
 specifier|protected
 name|Account
