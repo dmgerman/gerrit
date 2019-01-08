@@ -297,6 +297,8 @@ extends|extends
 name|InternalQuery
 argument_list|<
 name|InternalGroup
+argument_list|,
+name|InternalGroupQuery
 argument_list|>
 block|{
 DECL|field|logger
