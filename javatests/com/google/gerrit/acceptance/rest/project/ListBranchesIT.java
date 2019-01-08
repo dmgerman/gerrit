@@ -152,6 +152,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|testsuite
+operator|.
+name|request
+operator|.
+name|RequestScopeOperations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -232,6 +250,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -250,6 +280,13 @@ name|ListBranchesIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|requestScopeOperations
+annotation|@
+name|Inject
+specifier|private
+name|RequestScopeOperations
+name|requestScopeOperations
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|listBranchesOfNonExistingProject_NotFound ()
@@ -301,9 +338,14 @@ argument_list|(
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|exception
@@ -527,9 +569,14 @@ argument_list|(
 literal|"refs/heads/dev"
 argument_list|)
 expr_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// refs/meta/config is hidden since user is no project owner
@@ -600,9 +647,14 @@ operator|.
 name|name
 argument_list|()
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// refs/meta/config is hidden since user is no project owner

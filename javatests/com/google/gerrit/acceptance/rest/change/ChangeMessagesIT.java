@@ -296,6 +296,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|testsuite
+operator|.
+name|request
+operator|.
+name|RequestScopeOperations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|data
@@ -482,6 +500,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|nio
@@ -617,6 +647,13 @@ name|ChangeMessagesIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|requestScopeOperations
+annotation|@
+name|Inject
+specifier|private
+name|RequestScopeOperations
+name|requestScopeOperations
+decl_stmt|;
 DECL|field|systemTimeZone
 specifier|private
 name|String
@@ -1223,9 +1260,14 @@ init|=
 name|createOneChangeWithMultipleChangeMessagesInHistory
 argument_list|()
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 try|try
@@ -1293,9 +1335,14 @@ init|=
 name|createOneChangeWithMultipleChangeMessagesInHistory
 argument_list|()
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|deleteOneChangeMessage
@@ -1598,9 +1645,14 @@ throws|throws
 name|Exception
 block|{
 comment|// Creates the following commit history on the meta branch of the test change.
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Commit 1: create a change.
@@ -1621,9 +1673,14 @@ name|getChangeId
 argument_list|()
 decl_stmt|;
 comment|// Commit 2: post a review with message "message 1".
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|addOneReview
@@ -1634,9 +1691,14 @@ literal|"message 1"
 argument_list|)
 expr_stmt|;
 comment|// Commit 3: amend a new patch set.
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|amendChange
@@ -1659,9 +1721,14 @@ name|changeId
 argument_list|)
 expr_stmt|;
 comment|// Commit 6: approve the change.
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi

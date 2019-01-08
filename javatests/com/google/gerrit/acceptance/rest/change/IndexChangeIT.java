@@ -188,6 +188,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|testsuite
+operator|.
+name|request
+operator|.
+name|RequestScopeOperations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|data
@@ -337,7 +355,7 @@ block|{
 DECL|field|groupOperations
 annotation|@
 name|Inject
-specifier|protected
+specifier|private
 name|GroupOperations
 name|groupOperations
 decl_stmt|;
@@ -347,6 +365,13 @@ name|Inject
 specifier|private
 name|ProjectOperations
 name|projectOperations
+decl_stmt|;
+DECL|field|requestScopeOperations
+annotation|@
+name|Inject
+specifier|private
+name|RequestScopeOperations
+name|requestScopeOperations
 decl_stmt|;
 annotation|@
 name|Test
@@ -655,9 +680,14 @@ name|getChangeId
 argument_list|()
 decl_stmt|;
 comment|// User can see the change and it is mergeable
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
@@ -705,9 +735,14 @@ name|isNotNull
 argument_list|()
 expr_stmt|;
 comment|// Other user can see the change and it is mergeable
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user2
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|changes
@@ -751,9 +786,14 @@ name|isTrue
 argument_list|()
 expr_stmt|;
 comment|// Remove the user from the group so they can no longer see the project
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -772,9 +812,14 @@ literal|"user"
 argument_list|)
 expr_stmt|;
 comment|// User can no longer see the change
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|changes
@@ -801,9 +846,14 @@ name|isEmpty
 argument_list|()
 expr_stmt|;
 comment|// Reindex the change
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -820,9 +870,14 @@ name|index
 argument_list|()
 expr_stmt|;
 comment|// Other user can still see the change and it is still mergeable
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user2
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|changes

@@ -5858,7 +5858,9 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**    * Enforce a new request context for the current API user.    *    *<p>This recreates the IdentifiedUser, hence everything which is cached in the IdentifiedUser is    * reloaded (e.g. the email addresses of the user).    */
+annotation|@
+name|Deprecated
+comment|// Tests should inject and use their own RequestScopeOperations.
 DECL|method|resetCurrentApiUser ()
 specifier|protected
 name|Context
@@ -5872,6 +5874,9 @@ name|resetCurrentApiUser
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Deprecated
+comment|// Tests should inject and use their own RequestScopeOperations.
 DECL|method|setApiUser (TestAccount account)
 specifier|protected
 name|Context
@@ -5893,6 +5898,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
+comment|// Tests should inject and use their own RequestScopeOperations.
 DECL|method|setApiUserAnonymous ()
 specifier|protected
 name|Context
