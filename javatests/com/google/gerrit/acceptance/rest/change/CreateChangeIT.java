@@ -262,6 +262,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|testsuite
+operator|.
+name|request
+operator|.
+name|RequestScopeOperations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -632,6 +650,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -782,6 +812,13 @@ name|CreateChangeIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|requestScopeOperations
+annotation|@
+name|Inject
+specifier|private
+name|RequestScopeOperations
+name|requestScopeOperations
+decl_stmt|;
 annotation|@
 name|BeforeClass
 DECL|method|setTimeForTesting ()
@@ -1255,9 +1292,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|watch
@@ -1269,9 +1311,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// check that watcher is notified
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertCreateSucceeds
@@ -3558,6 +3605,8 @@ name|isNull
 argument_list|()
 expr_stmt|;
 block|}
+name|requestScopeOperations
+operator|.
 name|resetCurrentApiUser
 argument_list|()
 expr_stmt|;

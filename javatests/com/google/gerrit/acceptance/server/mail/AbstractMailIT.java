@@ -132,6 +132,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|testsuite
+operator|.
+name|request
+operator|.
+name|RequestScopeOperations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -210,6 +228,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|time
@@ -248,6 +278,13 @@ name|AbstractMailIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|requestScopeOperations
+annotation|@
+name|Inject
+specifier|private
+name|RequestScopeOperations
+name|requestScopeOperations
+decl_stmt|;
 DECL|method|messageBuilderWithDefaultFields ()
 specifier|protected
 name|MailMessage
@@ -392,9 +429,14 @@ name|getChangeId
 argument_list|()
 decl_stmt|;
 comment|// Review it
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|reviewer
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ReviewInput

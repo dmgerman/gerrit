@@ -210,6 +210,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|testsuite
+operator|.
+name|request
+operator|.
+name|RequestScopeOperations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|RawInputUtil
@@ -727,6 +745,13 @@ specifier|private
 name|GroupOperations
 name|groupOperations
 decl_stmt|;
+DECL|field|requestScopeOperations
+annotation|@
+name|Inject
+specifier|private
+name|RequestScopeOperations
+name|requestScopeOperations
+decl_stmt|;
 DECL|method|setUseContributorAgreements (InheritableBoolean value)
 specifier|protected
 name|void
@@ -1120,9 +1145,14 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1416,9 +1446,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Explicitly reset the user to force a new request context
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Verify that the agreement was signed
@@ -1591,6 +1626,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|requestScopeOperations
+operator|.
 name|setApiUserAnonymous
 argument_list|()
 expr_stmt|;
@@ -1780,9 +1817,14 @@ name|get
 argument_list|()
 decl_stmt|;
 comment|// Approve and submit it
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -1831,9 +1873,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Revert is not allowed when CLA is required but not signed
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|setUseContributorAgreements
@@ -1926,9 +1973,14 @@ name|get
 argument_list|()
 decl_stmt|;
 comment|// Approve and submit it
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -1977,9 +2029,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Revert in excluded project is allowed even when CLA is required but not signed
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|setUseContributorAgreements
@@ -2028,9 +2085,14 @@ name|isTrue
 argument_list|()
 expr_stmt|;
 comment|// Create a new branch
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|BranchInfo
@@ -2136,9 +2198,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Cherry-pick is not allowed when CLA is required but not signed
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|setUseContributorAgreements
@@ -2314,9 +2381,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Explicitly reset the user to force a new request context
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Create a change succeeds after signing the agreement
@@ -2537,6 +2609,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|requestScopeOperations
+operator|.
 name|setApiUserAnonymous
 argument_list|()
 expr_stmt|;

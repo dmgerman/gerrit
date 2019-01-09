@@ -196,6 +196,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|testsuite
+operator|.
+name|request
+operator|.
+name|RequestScopeOperations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|data
@@ -442,6 +460,13 @@ name|Inject
 specifier|private
 name|ProjectOperations
 name|projectOperations
+decl_stmt|;
+DECL|field|requestScopeOperations
+annotation|@
+name|Inject
+specifier|private
+name|RequestScopeOperations
+name|requestScopeOperations
 decl_stmt|;
 annotation|@
 name|Test
@@ -864,9 +889,14 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ReviewInput
@@ -1245,9 +1275,14 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ReviewInput
@@ -1502,9 +1537,14 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|watch
@@ -1513,9 +1553,14 @@ name|watchedProject
 argument_list|)
 expr_stmt|;
 comment|// push a change to watched project -> should trigger email notification
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|TestRepository
@@ -1747,9 +1792,14 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// watch file in project as user
@@ -1768,9 +1818,14 @@ argument_list|)
 expr_stmt|;
 comment|// push a change to watched file -> should trigger email notification for
 comment|// user
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|TestRepository
@@ -1918,9 +1973,14 @@ argument_list|,
 literal|"User2"
 argument_list|)
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user2
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|watch
@@ -2053,9 +2113,14 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// watch keyword in project as user
@@ -2067,9 +2132,14 @@ literal|"multimaster"
 argument_list|)
 expr_stmt|;
 comment|// push a change with keyword -> should trigger email notification
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|TestRepository
@@ -2270,9 +2340,14 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// watch the All-Projects project to watch all projects
@@ -2285,9 +2360,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// push a change to any project -> should trigger email notification
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|TestRepository
@@ -2440,9 +2520,14 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// watch file in All-Projects project as user to watch the file in all
@@ -2459,9 +2544,14 @@ argument_list|)
 expr_stmt|;
 comment|// push a change to watched file in any project -> should trigger email
 comment|// notification for user
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|TestRepository
@@ -2609,9 +2699,14 @@ argument_list|,
 literal|"User2"
 argument_list|)
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user2
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|watch
@@ -2744,9 +2839,14 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// watch keyword in project as user
@@ -2762,9 +2862,14 @@ argument_list|)
 expr_stmt|;
 comment|// push a change with keyword to any project -> should trigger email
 comment|// notification
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|TestRepository
@@ -2967,9 +3072,14 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|watch
@@ -2978,9 +3088,14 @@ name|watchedProject
 argument_list|)
 expr_stmt|;
 comment|// push a change to watched project
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|TestRepository
@@ -3036,9 +3151,14 @@ name|assertOkStatus
 argument_list|()
 expr_stmt|;
 comment|// ignore the change
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -3074,9 +3194,14 @@ name|clear
 argument_list|()
 expr_stmt|;
 comment|// post a comment -> should not trigger email notification since user ignored the change
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ReviewInput
@@ -3151,9 +3276,14 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|watch
@@ -3162,9 +3292,14 @@ name|watchedProject
 argument_list|)
 expr_stmt|;
 comment|// push a private change to watched project -> should not trigger email notification
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|TestRepository
@@ -3303,9 +3438,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// watch project as user that can't view private changes
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|watch
@@ -3332,9 +3472,14 @@ operator|.
 name|name
 argument_list|)
 decl_stmt|;
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|userThatCanViewPrivateChanges
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|watch
@@ -3344,9 +3489,14 @@ argument_list|)
 expr_stmt|;
 comment|// push a private change to watched project -> should trigger email notification for
 comment|// userThatCanViewPrivateChanges, but not for user
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|TestRepository

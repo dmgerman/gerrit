@@ -410,6 +410,7 @@ name|finished
 expr_stmt|;
 block|}
 DECL|method|getSession ()
+specifier|public
 name|SshSession
 name|getSession
 parameter_list|()

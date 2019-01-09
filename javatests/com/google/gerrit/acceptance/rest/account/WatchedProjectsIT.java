@@ -138,6 +138,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|testsuite
+operator|.
+name|request
+operator|.
+name|RequestScopeOperations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -234,6 +252,13 @@ name|Inject
 specifier|private
 name|ProjectOperations
 name|projectOperations
+decl_stmt|;
+DECL|field|requestScopeOperations
+annotation|@
+name|Inject
+specifier|private
+name|RequestScopeOperations
+name|requestScopeOperations
 decl_stmt|;
 DECL|field|NEW_PROJECT_NAME
 specifier|private
@@ -966,9 +991,14 @@ name|get
 argument_list|()
 decl_stmt|;
 comment|// Let another user watch a project
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
@@ -1061,9 +1091,14 @@ name|d
 argument_list|)
 expr_stmt|;
 comment|// Check that trying to delete a non-existing watch doesn't fail
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -1099,9 +1134,14 @@ name|get
 argument_list|()
 decl_stmt|;
 comment|// Let another user watch a project
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
