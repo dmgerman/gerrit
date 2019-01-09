@@ -239,6 +239,15 @@ class|class
 name|InternalQuery
 parameter_list|<
 name|T
+parameter_list|,
+name|Q
+extends|extends
+name|InternalQuery
+parameter_list|<
+name|T
+parameter_list|,
+name|Q
+parameter_list|>
 parameter_list|>
 block|{
 DECL|field|queryProcessor
@@ -331,12 +340,29 @@ operator|=
 name|indexConfig
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+DECL|method|self ()
+specifier|protected
+specifier|final
+name|Q
+name|self
+parameter_list|()
+block|{
+return|return
+operator|(
+name|Q
+operator|)
+name|this
+return|;
+block|}
 DECL|method|setLimit (int n)
 specifier|public
-name|InternalQuery
-argument_list|<
-name|T
-argument_list|>
+specifier|final
+name|Q
 name|setLimit
 parameter_list|(
 name|int
@@ -351,15 +377,14 @@ name|n
 argument_list|)
 expr_stmt|;
 return|return
-name|this
+name|self
+argument_list|()
 return|;
 block|}
 DECL|method|enforceVisibility (boolean enforce)
 specifier|public
-name|InternalQuery
-argument_list|<
-name|T
-argument_list|>
+specifier|final
+name|Q
 name|enforceVisibility
 parameter_list|(
 name|boolean
@@ -374,21 +399,16 @@ name|enforce
 argument_list|)
 expr_stmt|;
 return|return
-name|this
+name|self
+argument_list|()
 return|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-comment|// Can't set @SafeVarargs on a non-final method.
+name|SafeVarargs
 DECL|method|setRequestedFields (FieldDef<T, ?>.... fields)
 specifier|public
-name|InternalQuery
-argument_list|<
-name|T
-argument_list|>
+specifier|final
+name|Q
 name|setRequestedFields
 parameter_list|(
 name|FieldDef
@@ -438,15 +458,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|this
+name|self
+argument_list|()
 return|;
 block|}
 DECL|method|noFields ()
 specifier|public
-name|InternalQuery
-argument_list|<
-name|T
-argument_list|>
+specifier|final
+name|Q
 name|noFields
 parameter_list|()
 block|{
@@ -461,11 +480,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|this
+name|self
+argument_list|()
 return|;
 block|}
 DECL|method|query (Predicate<T> p)
 specifier|public
+specifier|final
 name|List
 argument_list|<
 name|T
@@ -513,6 +534,7 @@ block|}
 comment|/**    * Run multiple queries in parallel.    *    *<p>If a limit was specified using {@link #setLimit(int)}, that limit is applied to each query    * independently.    *    * @param queries list of queries.    * @return results of the queries, one list of results per input query, in the same order as the    *     input.    */
 DECL|method|query (List<Predicate<T>> queries)
 specifier|public
+specifier|final
 name|List
 argument_list|<
 name|List
@@ -571,6 +593,7 @@ block|}
 block|}
 DECL|method|schema ()
 specifier|protected
+specifier|final
 name|Schema
 argument_list|<
 name|T
