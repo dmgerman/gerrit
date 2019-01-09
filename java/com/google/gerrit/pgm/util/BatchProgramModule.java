@@ -738,7 +738,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MergeUtil
+name|ChangeRefCache
 import|;
 end_import
 
@@ -754,7 +754,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|SearchingChangeCacheImpl
+name|MergeUtil
 import|;
 end_import
 
@@ -1546,7 +1546,7 @@ end_comment
 begin_expr_stmt
 name|bind
 argument_list|(
-name|SearchingChangeCacheImpl
+name|ChangeRefCache
 operator|.
 name|class
 argument_list|)

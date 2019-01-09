@@ -972,7 +972,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|GarbageCollectionModule
+name|ChangeRefCache
 import|;
 end_import
 
@@ -988,7 +988,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|SearchingChangeCacheImpl
+name|GarbageCollectionModule
 import|;
 end_import
 
@@ -3024,12 +3024,10 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|SearchingChangeCacheImpl
+name|ChangeRefCache
 operator|.
 name|Module
-argument_list|(
-name|slave
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|modules
