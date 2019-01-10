@@ -806,10 +806,11 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|disableDb ()
+comment|/**    * Disables read and write access to NoteDb and returns the context prior to that modification.    */
+DECL|method|disableNoteDb ()
 specifier|public
 name|Context
-name|disableDb
+name|disableNoteDb
 parameter_list|()
 block|{
 name|Context

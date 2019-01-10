@@ -5928,10 +5928,10 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|disableDb ()
+DECL|method|disableNoteDb ()
 specifier|protected
-name|Context
-name|disableDb
+name|AutoCloseable
+name|disableNoteDb
 parameter_list|()
 block|{
 name|changeNotesArgs
@@ -5943,21 +5943,27 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-return|return
+name|Context
+name|oldContext
+init|=
 name|atrScope
 operator|.
-name|disableDb
+name|disableNoteDb
 argument_list|()
-return|;
-block|}
-DECL|method|enableDb (Context preDisableContext)
-specifier|protected
+decl_stmt|;
+return|return
+operator|new
+name|AutoCloseable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
 name|void
-name|enableDb
-parameter_list|(
-name|Context
-name|preDisableContext
-parameter_list|)
+name|close
+parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|changeNotesArgs
 operator|.
@@ -5972,9 +5978,12 @@ name|atrScope
 operator|.
 name|set
 argument_list|(
-name|preDisableContext
+name|oldContext
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+return|;
 block|}
 DECL|method|disableChangeIndexWrites ()
 specifier|protected
