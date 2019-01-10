@@ -730,6 +730,17 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Retrieve reviewers ({@code ReviewerState.REVIEWER} and {@code ReviewerState.CC}) on the change.    */
+DECL|method|reviewers ()
+name|List
+argument_list|<
+name|ReviewerInfo
+argument_list|>
+name|reviewers
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|get (EnumSet<ListChangesOption> options)
 name|ChangeInfo
 name|get
@@ -1573,6 +1584,25 @@ parameter_list|(
 name|String
 name|query
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|reviewers ()
+specifier|public
+name|List
+argument_list|<
+name|ReviewerInfo
+argument_list|>
+name|reviewers
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
