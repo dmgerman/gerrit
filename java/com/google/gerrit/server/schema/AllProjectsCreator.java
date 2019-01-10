@@ -1104,6 +1104,14 @@ argument_list|,
 name|codeReviewLabel
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|input
+operator|.
+name|initDefaultAcls
+argument_list|()
+condition|)
+block|{
 comment|// init access sections.
 name|initDefaultAcls
 argument_list|(
@@ -1112,6 +1120,7 @@ argument_list|,
 name|input
 argument_list|)
 expr_stmt|;
+block|}
 comment|// commit all the above configs as a commit in "refs/meta/config" branch of the All-Projects.
 name|config
 operator|.

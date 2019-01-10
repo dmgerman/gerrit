@@ -491,6 +491,14 @@ argument_list|>
 name|booleanProjectConfigs
 parameter_list|()
 function_decl|;
+comment|/** Whether initializing default access sections in All-Projects. */
+DECL|method|initDefaultAcls ()
+specifier|public
+specifier|abstract
+name|boolean
+name|initDefaultAcls
+parameter_list|()
+function_decl|;
 DECL|method|toBuilder ()
 specifier|public
 specifier|abstract
@@ -525,6 +533,11 @@ argument_list|(
 name|Sequences
 operator|.
 name|FIRST_CHANGE_ID
+argument_list|)
+operator|.
+name|initDefaultAcls
+argument_list|(
+literal|true
 argument_list|)
 decl_stmt|;
 name|DEFAULT_BOOLEAN_PROJECT_CONFIGS
@@ -684,6 +697,25 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|GOOGLE
+argument_list|)
+DECL|method|initDefaultAcls (boolean initDefaultACLs)
+specifier|public
+specifier|abstract
+name|Builder
+name|initDefaultAcls
+parameter_list|(
+name|boolean
+name|initDefaultACLs
+parameter_list|)
+function_decl|;
 DECL|method|build ()
 specifier|public
 specifier|abstract
