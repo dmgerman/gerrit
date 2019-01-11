@@ -160,6 +160,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|testsuite
+operator|.
+name|request
+operator|.
+name|RequestScopeOperations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -366,6 +384,13 @@ name|ChangeRefCacheIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|changeRefCache
+annotation|@
+name|Inject
+specifier|private
+name|ChangeRefCache
+name|changeRefCache
+decl_stmt|;
 DECL|field|permissionBackend
 annotation|@
 name|Inject
@@ -373,12 +398,12 @@ specifier|private
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|changeRefCache
+DECL|field|requestScopeOperations
 annotation|@
 name|Inject
 specifier|private
-name|ChangeRefCache
-name|changeRefCache
+name|RequestScopeOperations
+name|requestScopeOperations
 decl_stmt|;
 annotation|@
 name|Before
@@ -1070,9 +1095,14 @@ argument_list|()
 init|)
 block|{
 comment|// user can see public change
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertUploadPackRefs
@@ -1105,9 +1135,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Delta reload: No index access as we expect it to use NoteDb.
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -1140,9 +1175,14 @@ argument_list|()
 init|)
 block|{
 comment|// user can't see private change from admin
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertUploadPackRefs
@@ -1154,9 +1194,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// admin adds the user as reviewer
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|admin
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -1191,9 +1236,14 @@ argument_list|()
 init|)
 block|{
 comment|// Use can see private change
+name|requestScopeOperations
+operator|.
 name|setApiUser
 argument_list|(
 name|user
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertUploadPackRefs
