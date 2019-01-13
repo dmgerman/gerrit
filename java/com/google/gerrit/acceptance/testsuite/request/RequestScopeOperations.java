@@ -126,7 +126,7 @@ specifier|public
 interface|interface
 name|RequestScopeOperations
 block|{
-comment|/**    * Sets the Guice request scope to the given account.    *    *<p>The resulting context has an SSH session attached. In order to use the SSH session returned    * by {@link AcceptanceTestRequestScope.Context#getSession()}, SSH must be enabled in the test and    * the account must have a username set. However, these are not requirements simply to call this    * method.    *    * @param accountId account ID. Must exist; throws an unchecked exception otherwise.    * @return the previous request scope.    */
+comment|/**    * Sets the Guice request scope to the given account.    *    *<p>The resulting context has an SSH session attached. In order to use the SSH session returned    * by {@link com.google.gerrit.acceptance.AcceptanceTestRequestScope.Context#getSession()}, SSH    * must be enabled in the test and the account must have a username set. However, these are not    * requirements simply to call this method.    *    * @param accountId account ID. Must exist; throws an unchecked exception otherwise.    * @return the previous request scope.    */
 DECL|method|setApiUser (Account.Id accountId)
 name|AcceptanceTestRequestScope
 operator|.
@@ -139,7 +139,7 @@ name|Id
 name|accountId
 parameter_list|)
 function_decl|;
-comment|/**    * Sets the Guice request scope to the given account.    *    *<p>The resulting context has an SSH session attached. In order to use the SSH session returned    * by {@link AcceptanceTestRequestScope.Context#getSession()}, SSH must be enabled in the test and    * the account must have a username set. However, these are not requirements simply to call this    * method.    *    * @param testAccount test account from {@code AccountOperations}.    * @return the previous request scope.    */
+comment|/**    * Sets the Guice request scope to the given account.    *    *<p>The resulting context has an SSH session attached. In order to use the SSH session returned    * by {@link com.google.gerrit.acceptance.AcceptanceTestRequestScope.Context#getSession()}, SSH    * must be enabled in the test and the account must have a username set. However, these are not    * requirements simply to call this method.    *    * @param testAccount test account from {@code AccountOperations}.    * @return the previous request scope.    */
 DECL|method|setApiUser (TestAccount testAccount)
 name|AcceptanceTestRequestScope
 operator|.
