@@ -2284,14 +2284,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|config
-operator|.
-name|enableProtocolV2
-argument_list|()
-condition|)
-block|{
 name|String
 name|header
 init|=
@@ -2332,7 +2324,6 @@ name|params
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|ProjectState
 name|state
