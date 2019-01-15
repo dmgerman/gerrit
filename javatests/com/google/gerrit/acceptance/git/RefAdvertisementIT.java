@@ -2397,6 +2397,8 @@ name|project
 argument_list|)
 argument_list|,
 comment|// Can't use stored values from the index so DB must be enabled.
+literal|false
+argument_list|,
 literal|"HEAD"
 argument_list|,
 name|psRef1
@@ -2459,6 +2461,8 @@ name|allProjects
 argument_list|,
 name|user
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|allowGlobalCapabilities
@@ -2480,6 +2484,8 @@ name|allProjects
 argument_list|,
 name|user
 argument_list|)
+argument_list|,
+literal|true
 argument_list|,
 literal|"refs/sequences/changes"
 argument_list|)
@@ -4854,12 +4860,14 @@ argument_list|(
 name|project
 argument_list|)
 argument_list|,
+literal|true
+argument_list|,
 name|expectedRefs
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|assertRefs ( Repository repo, PermissionBackend.ForProject forProject, String... expectedRefs)
+DECL|method|assertRefs ( Repository repo, PermissionBackend.ForProject forProject, boolean disableDb, String... expectedRefs)
 specifier|private
 name|void
 name|assertRefs
@@ -4872,12 +4880,33 @@ operator|.
 name|ForProject
 name|forProject
 parameter_list|,
+name|boolean
+name|disableDb
+parameter_list|,
 name|String
 modifier|...
 name|expectedRefs
 parameter_list|)
 throws|throws
 name|Exception
+block|{
+name|AutoCloseable
+name|ctx
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|disableDb
+condition|)
+block|{
+name|ctx
+operator|=
+name|disableNoteDb
+argument_list|()
+expr_stmt|;
+block|}
+try|try
 block|{
 name|Map
 argument_list|<
@@ -4917,6 +4946,21 @@ argument_list|(
 name|expectedRefs
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|disableDb
+condition|)
+block|{
+name|ctx
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 DECL|method|getReceivePackRefs ()
 specifier|private
