@@ -318,7 +318,7 @@ operator|=
 name|permissionBackend
 expr_stmt|;
 block|}
-comment|/**    * @return true if a commit is reachable from a given set of refs. This method enforces    *     permissions on the given set of refs and performs a reachability check.    */
+comment|/**    * @return true if a commit is reachable from a given set of refs. This method enforces    *     permissions on the given set of refs and performs a reachability check. Tags are not    *     filtered separately and will only be returned if reachable by a provided ref.    */
 DECL|method|fromRefs ( Project.NameKey project, Repository repo, RevCommit commit, List<Ref> refs)
 specifier|public
 name|boolean
@@ -380,15 +380,7 @@ name|repo
 argument_list|,
 name|RefFilterOptions
 operator|.
-name|builder
-argument_list|()
-operator|.
-name|setFilterTagsSeparately
-argument_list|(
-literal|true
-argument_list|)
-operator|.
-name|build
+name|defaults
 argument_list|()
 argument_list|)
 decl_stmt|;
