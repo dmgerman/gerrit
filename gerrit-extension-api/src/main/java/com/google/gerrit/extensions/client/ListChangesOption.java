@@ -87,7 +87,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Output options available for retrieval change details. */
+comment|/** Output options available for retrieval of change details. */
 end_comment
 
 begin_enum
