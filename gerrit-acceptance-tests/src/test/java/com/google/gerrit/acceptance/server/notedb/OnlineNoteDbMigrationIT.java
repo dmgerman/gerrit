@@ -2728,11 +2728,6 @@ operator|.
 name|getId
 argument_list|()
 decl_stmt|;
-name|String
-name|invalidState
-init|=
-literal|"deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
-decl_stmt|;
 try|try
 init|(
 name|ReviewDb
@@ -2761,7 +2756,7 @@ name|c1
 operator|.
 name|setNoteDbState
 argument_list|(
-name|invalidState
+name|INVALID_STATE
 argument_list|)
 expr_stmt|;
 name|Change
@@ -2781,7 +2776,7 @@ name|c2
 operator|.
 name|setNoteDbState
 argument_list|(
-name|invalidState
+name|INVALID_STATE
 argument_list|)
 expr_stmt|;
 name|db
@@ -2865,7 +2860,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|invalidState
+name|INVALID_STATE
 argument_list|)
 expr_stmt|;
 name|NoteDbChangeState
@@ -2899,7 +2894,7 @@ argument_list|)
 operator|.
 name|isNotEqualTo
 argument_list|(
-name|invalidState
+name|INVALID_STATE
 argument_list|)
 expr_stmt|;
 block|}
