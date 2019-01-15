@@ -2917,6 +2917,8 @@ throws|throws
 name|RestApiException
 throws|,
 name|IOException
+throws|,
+name|OrmException
 block|{
 if|if
 condition|(
