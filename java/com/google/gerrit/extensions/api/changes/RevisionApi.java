@@ -771,6 +771,13 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|related ()
+name|RelatedChangesInfo
+name|related
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|class|MergeListRequest
 specifier|abstract
 class|class
@@ -1639,6 +1646,22 @@ DECL|method|getMergeList ()
 specifier|public
 name|MergeListRequest
 name|getMergeList
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|related ()
+specifier|public
+name|RelatedChangesInfo
+name|related
 parameter_list|()
 throws|throws
 name|RestApiException
