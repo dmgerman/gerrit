@@ -152,9 +152,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|EmailException
 import|;

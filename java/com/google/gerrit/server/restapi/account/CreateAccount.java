@@ -190,9 +190,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|InvalidSshKeyException
 import|;
@@ -206,9 +204,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|NoSuchGroupException
 import|;
