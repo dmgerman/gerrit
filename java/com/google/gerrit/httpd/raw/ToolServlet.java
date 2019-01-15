@@ -228,24 +228,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|tools
-operator|.
-name|ToolsCatalog
-operator|.
-name|Entry
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|util
 operator|.
 name|http
@@ -419,6 +401,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|ToolsCatalog
+operator|.
 name|Entry
 name|ent
 init|=
@@ -491,11 +475,13 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-DECL|method|doGetFile (Entry ent, HttpServletResponse rsp)
+DECL|method|doGetFile (ToolsCatalog.Entry ent, HttpServletResponse rsp)
 specifier|private
 name|void
 name|doGetFile
 parameter_list|(
+name|ToolsCatalog
+operator|.
 name|Entry
 name|ent
 parameter_list|,
@@ -577,11 +563,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|doGetDirectory (Entry ent, HttpServletRequest req, HttpServletResponse rsp)
+DECL|method|doGetDirectory ( ToolsCatalog.Entry ent, HttpServletRequest req, HttpServletResponse rsp)
 specifier|private
 name|void
 name|doGetDirectory
 parameter_list|(
+name|ToolsCatalog
+operator|.
 name|Entry
 name|ent
 parameter_list|,
@@ -733,6 +721,8 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
+name|ToolsCatalog
+operator|.
 name|Entry
 name|e
 range|:
@@ -757,6 +747,8 @@ operator|.
 name|getType
 argument_list|()
 operator|==
+name|ToolsCatalog
+operator|.
 name|Entry
 operator|.
 name|Type

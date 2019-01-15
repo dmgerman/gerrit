@@ -348,24 +348,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Comment
 import|;
 end_import
@@ -1471,12 +1453,14 @@ specifier|private
 name|DeletedDraftCommentInfo
 name|result
 decl_stmt|;
-DECL|method|Op (CommentFormatter commentFormatter, Id accountId)
+DECL|method|Op (CommentFormatter commentFormatter, Account.Id accountId)
 name|Op
 parameter_list|(
 name|CommentFormatter
 name|commentFormatter
 parameter_list|,
+name|Account
+operator|.
 name|Id
 name|accountId
 parameter_list|)

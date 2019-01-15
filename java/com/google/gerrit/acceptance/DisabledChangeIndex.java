@@ -164,24 +164,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|index
@@ -328,11 +310,13 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|delete (Id key)
+DECL|method|delete (Change.Id key)
 specifier|public
 name|void
 name|delete
 parameter_list|(
+name|Change
+operator|.
 name|Id
 name|key
 parameter_list|)

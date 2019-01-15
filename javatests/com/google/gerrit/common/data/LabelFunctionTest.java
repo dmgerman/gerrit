@@ -172,24 +172,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|PatchSetApproval
 import|;
 end_import
@@ -805,7 +787,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|makeKey (Id psId, Account.Id accountId, LabelId labelId)
+DECL|method|makeKey ( PatchSet.Id psId, Account.Id accountId, LabelId labelId)
 specifier|private
 specifier|static
 name|PatchSetApproval
@@ -813,6 +795,8 @@ operator|.
 name|Key
 name|makeKey
 parameter_list|(
+name|PatchSet
+operator|.
 name|Id
 name|psId
 parameter_list|,

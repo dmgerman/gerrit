@@ -165,8 +165,6 @@ operator|.
 name|client
 operator|.
 name|Account
-operator|.
-name|Id
 import|;
 end_import
 
@@ -339,6 +337,8 @@ argument_list|()
 expr_stmt|;
 name|ImmutableSet
 argument_list|<
+name|Account
+operator|.
 name|Id
 argument_list|>
 name|reviewers

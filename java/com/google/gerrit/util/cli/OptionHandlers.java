@@ -197,8 +197,6 @@ operator|.
 name|util
 operator|.
 name|Map
-operator|.
-name|Entry
 import|;
 end_import
 
@@ -423,6 +421,8 @@ control|)
 block|{
 for|for
 control|(
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|Key
