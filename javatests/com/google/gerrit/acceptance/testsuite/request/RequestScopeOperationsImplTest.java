@@ -294,6 +294,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
 name|Sequences
 import|;
 end_import
