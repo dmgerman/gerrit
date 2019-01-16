@@ -570,9 +570,9 @@ literal|"--project"
 argument_list|,
 name|usage
 operator|=
-literal|"Only rebuild these projects, do no other migration; incompatible with --change;"
+literal|"Only rebuild these projects, do no other migration; incompatible with --change"
 operator|+
-literal|" recommended for debugging only"
+literal|" and --skip-project; recommended for debugging only"
 argument_list|)
 DECL|field|projects
 specifier|private
@@ -592,13 +592,37 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--skip-project"
+argument_list|,
+name|usage
+operator|=
+literal|"Rebuild all projects except these; incompatible with the --project and --change"
+argument_list|)
+DECL|field|skipProjects
+specifier|private
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|skipProjects
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
 literal|"--change"
 argument_list|,
 name|usage
 operator|=
-literal|"Only rebuild these changes, do no other migration; incompatible with --project;"
+literal|"Only rebuild these changes, do no other migration; incompatible with --project and"
 operator|+
-literal|" recommended for debugging only"
+literal|" --skip-project; recommended for debugging only"
 argument_list|)
 DECL|field|changes
 specifier|private
@@ -873,6 +897,29 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
+name|setSkipProjects
+argument_list|(
+name|skipProjects
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|Project
+operator|.
+name|NameKey
+operator|::
+operator|new
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toList
+argument_list|()
+argument_list|)
+argument_list|)
+operator|.
 name|setChanges
 argument_list|(
 name|changes
@@ -925,6 +972,12 @@ argument_list|()
 operator|||
 operator|!
 name|changes
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
+operator|!
+name|skipProjects
 operator|.
 name|isEmpty
 argument_list|()
