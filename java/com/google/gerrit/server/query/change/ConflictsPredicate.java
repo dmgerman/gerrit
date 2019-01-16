@@ -596,8 +596,6 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
 name|StorageException
 name|e
 parameter_list|)
