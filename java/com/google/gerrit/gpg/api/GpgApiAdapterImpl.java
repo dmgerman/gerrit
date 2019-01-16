@@ -74,20 +74,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -554,8 +540,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|StorageException
-decl||
 name|PGPException
 decl||
 name|IOException
@@ -642,8 +626,6 @@ catch|catch
 parameter_list|(
 name|PGPException
 decl||
-name|StorageException
-decl||
 name|IOException
 decl||
 name|ConfigInvalidException
@@ -701,8 +683,6 @@ block|}
 catch|catch
 parameter_list|(
 name|PGPException
-decl||
-name|StorageException
 decl||
 name|IOException
 name|e
