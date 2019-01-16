@@ -565,8 +565,6 @@ parameter_list|(
 name|ChangeData
 name|obj
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 throw|throw
 operator|new
@@ -588,8 +586,6 @@ operator|.
 name|Id
 name|key
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 throw|throw
 operator|new

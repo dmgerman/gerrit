@@ -166,20 +166,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -1041,7 +1027,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|StorageException
+name|RuntimeException
 name|e
 parameter_list|)
 block|{

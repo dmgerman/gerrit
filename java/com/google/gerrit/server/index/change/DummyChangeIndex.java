@@ -164,16 +164,6 @@ name|ChangeDataSource
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|DummyChangeIndex
 specifier|public
@@ -217,8 +207,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|IOException
 block|{}
 annotation|@
 name|Override
@@ -232,8 +220,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|IOException
 block|{}
 annotation|@
 name|Override
@@ -242,8 +228,6 @@ specifier|public
 name|void
 name|deleteAll
 parameter_list|()
-throws|throws
-name|IOException
 block|{}
 annotation|@
 name|Override
@@ -278,8 +262,6 @@ parameter_list|(
 name|boolean
 name|ready
 parameter_list|)
-throws|throws
-name|IOException
 block|{}
 DECL|method|getMaxLimit ()
 specifier|public

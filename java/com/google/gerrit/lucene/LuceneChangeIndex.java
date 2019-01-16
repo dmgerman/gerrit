@@ -1911,8 +1911,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Term
 name|id
@@ -2004,8 +2002,6 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|StorageException
-decl||
 name|ExecutionException
 decl||
 name|InterruptedException
@@ -2014,7 +2010,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -2033,8 +2029,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Term
 name|idTerm
@@ -2081,7 +2075,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -2095,8 +2089,6 @@ specifier|public
 name|void
 name|deleteAll
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|openIndex
 operator|.
@@ -2233,8 +2225,6 @@ parameter_list|(
 name|boolean
 name|ready
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 comment|// Arbitrary done on open index, as ready bit is set
 comment|// per index and not sub index

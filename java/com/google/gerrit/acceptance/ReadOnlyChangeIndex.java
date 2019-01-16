@@ -192,16 +192,6 @@ name|ChangeData
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|ReadOnlyChangeIndex
 class|class
@@ -280,8 +270,6 @@ parameter_list|(
 name|ChangeData
 name|obj
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 comment|// do nothing
 block|}
@@ -297,8 +285,6 @@ operator|.
 name|Id
 name|key
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 comment|// do nothing
 block|}
@@ -309,8 +295,6 @@ specifier|public
 name|void
 name|deleteAll
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 comment|// do nothing
 block|}
@@ -357,8 +341,6 @@ parameter_list|(
 name|boolean
 name|ready
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 comment|// do nothing
 block|}

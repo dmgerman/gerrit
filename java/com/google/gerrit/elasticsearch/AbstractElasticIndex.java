@@ -1416,8 +1416,6 @@ parameter_list|(
 name|boolean
 name|ready
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|IndexUtils
 operator|.
@@ -1446,8 +1444,6 @@ parameter_list|(
 name|K
 name|id
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|String
 name|uri
@@ -1497,7 +1493,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|StorageException
 argument_list|(
 name|String
 operator|.
@@ -1522,8 +1518,6 @@ specifier|public
 name|void
 name|deleteAll
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 comment|// Delete the index, if it exists.
 name|String
@@ -1599,7 +1593,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|StorageException
 argument_list|(
 name|String
 operator|.
@@ -1682,7 +1676,7 @@ argument_list|)
 decl_stmt|;
 throw|throw
 operator|new
-name|IOException
+name|StorageException
 argument_list|(
 name|error
 argument_list|)
@@ -2482,8 +2476,8 @@ parameter_list|,
 name|String
 name|request
 parameter_list|)
-throws|throws
-name|UnsupportedEncodingException
+block|{
+try|try
 block|{
 name|String
 name|encodedIndexName
@@ -2553,6 +2547,21 @@ operator|+
 name|request
 return|;
 block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|StorageException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 DECL|method|postRequest (String uri, Object payload)
 specifier|protected
 name|Response
@@ -2564,8 +2573,6 @@ parameter_list|,
 name|Object
 name|payload
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 return|return
 name|performRequest
@@ -2597,8 +2604,6 @@ name|String
 argument_list|>
 name|params
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 return|return
 name|performRequest
@@ -2661,8 +2666,6 @@ parameter_list|,
 name|String
 name|uri
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 return|return
 name|performRequest
@@ -2691,8 +2694,6 @@ name|Nullable
 name|Object
 name|payload
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 return|return
 name|performRequest
@@ -2734,8 +2735,6 @@ name|String
 argument_list|>
 name|params
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Request
 name|request
@@ -2833,6 +2832,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+block|{
 return|return
 name|client
 operator|.
@@ -2844,6 +2845,21 @@ argument_list|(
 name|request
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|StorageException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 DECL|class|ElasticQuerySource
 specifier|protected
