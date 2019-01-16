@@ -1465,14 +1465,6 @@ name|boolean
 name|filterMeta
 parameter_list|()
 function_decl|;
-comment|/** Separately add reachable tags. */
-DECL|method|filterTagsSeparately ()
-specifier|public
-specifier|abstract
-name|boolean
-name|filterTagsSeparately
-parameter_list|()
-function_decl|;
 comment|/**      * Select only refs with names matching prefixes per {@link      * org.eclipse.jgit.lib.RefDatabase#getRefsByPrefix}.      */
 DECL|method|prefixes ()
 specifier|public
@@ -1510,11 +1502,6 @@ argument_list|(
 literal|false
 argument_list|)
 operator|.
-name|setFilterTagsSeparately
-argument_list|(
-literal|false
-argument_list|)
-operator|.
 name|setPrefixes
 argument_list|(
 name|Collections
@@ -1542,16 +1529,6 @@ specifier|public
 specifier|abstract
 name|Builder
 name|setFilterMeta
-parameter_list|(
-name|boolean
-name|val
-parameter_list|)
-function_decl|;
-DECL|method|setFilterTagsSeparately (boolean val)
-specifier|public
-specifier|abstract
-name|Builder
-name|setFilterTagsSeparately
 parameter_list|(
 name|boolean
 name|val

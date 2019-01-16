@@ -4933,17 +4933,6 @@ name|RefFilterOptions
 operator|.
 name|defaults
 argument_list|()
-operator|.
-name|toBuilder
-argument_list|()
-operator|.
-name|setFilterTagsSeparately
-argument_list|(
-literal|true
-argument_list|)
-operator|.
-name|build
-argument_list|()
 argument_list|)
 operator|.
 name|keySet
