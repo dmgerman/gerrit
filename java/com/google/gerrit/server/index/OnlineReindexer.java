@@ -182,16 +182,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -434,7 +424,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|RuntimeException
 name|e
 parameter_list|)
 block|{
@@ -583,8 +573,6 @@ specifier|private
 name|void
 name|reindex
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|listeners
 operator|.
