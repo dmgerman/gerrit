@@ -463,7 +463,10 @@ argument_list|)
 DECL|method|codeReviewLabel ()
 specifier|public
 specifier|abstract
+name|Optional
+argument_list|<
 name|LabelType
+argument_list|>
 name|codeReviewLabel
 parameter_list|()
 function_decl|;
