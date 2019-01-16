@@ -1441,6 +1441,8 @@ operator|=
 operator|new
 name|MergeSorter
 argument_list|(
+name|caller
+argument_list|,
 name|rw
 argument_list|,
 name|alreadyAccepted
@@ -1459,6 +1461,8 @@ operator|=
 operator|new
 name|RebaseSorter
 argument_list|(
+name|caller
+argument_list|,
 name|rw
 argument_list|,
 name|mergeTip
