@@ -186,6 +186,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|conditions
@@ -321,20 +335,6 @@ operator|.
 name|change
 operator|.
 name|ChangeData
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -481,7 +481,7 @@ name|Id
 name|changeId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|create
@@ -647,7 +647,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -963,7 +963,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -1238,7 +1238,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|isOwner
@@ -1734,7 +1734,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{

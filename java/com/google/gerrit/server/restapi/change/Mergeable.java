@@ -106,6 +106,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -417,20 +431,6 @@ operator|.
 name|change
 operator|.
 name|ChangeData
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -772,7 +772,7 @@ name|ResourceConflictException
 throws|,
 name|BadRequestException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -1122,7 +1122,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|SubmitTypeRecord
 name|rec
@@ -1149,7 +1149,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Submit type rule failed: "
 operator|+

@@ -150,6 +150,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|query
@@ -404,20 +418,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -568,7 +568,7 @@ name|boolean
 name|includeWatchersFromNotifyConfig
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Watchers
 name|matching
@@ -1091,7 +1091,7 @@ name|NotifyConfig
 name|nc
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|QueryParseException
 block|{
@@ -1436,7 +1436,7 @@ name|NotifyType
 name|type
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|IdentifiedUser
 name|user
@@ -1518,7 +1518,7 @@ name|String
 name|filter
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|QueryParseException
 block|{

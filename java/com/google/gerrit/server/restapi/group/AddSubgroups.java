@@ -162,6 +162,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|common
@@ -461,20 +475,6 @@ operator|.
 name|AddSubgroups
 operator|.
 name|Input
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -801,7 +801,7 @@ name|AuthException
 throws|,
 name|UnprocessableEntityException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|ResourceNotFoundException
 throws|,
@@ -1005,7 +1005,7 @@ argument_list|>
 name|newSubgroupUuids
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|NoSuchGroupException
 throws|,
@@ -1114,7 +1114,7 @@ name|MethodNotAllowedException
 throws|,
 name|ResourceNotFoundException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -1263,7 +1263,7 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{

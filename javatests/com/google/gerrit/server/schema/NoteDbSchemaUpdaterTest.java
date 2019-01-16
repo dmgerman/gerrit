@@ -182,6 +182,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -343,20 +357,6 @@ operator|.
 name|testing
 operator|.
 name|TestUpdateUI
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -669,13 +669,13 @@ argument_list|()
 operator|.
 name|fail
 argument_list|(
-literal|"expected OrmException"
+literal|"expected StorageException"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -755,13 +755,13 @@ argument_list|()
 operator|.
 name|fail
 argument_list|(
-literal|"expected OrmException"
+literal|"expected StorageException"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -982,7 +982,7 @@ name|void
 name|create
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -1052,7 +1052,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -1080,7 +1080,7 @@ name|void
 name|ensureCreated
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -1174,7 +1174,7 @@ name|void
 name|seedGroupSequenceRef
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 operator|new
 name|RepoSequence
@@ -1202,14 +1202,14 @@ name|next
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Test-specific setup.      *      * @throws OrmException if an error occurs.      */
+comment|/**      * Test-specific setup.      *      * @throws StorageException if an error occurs.      */
 DECL|method|setUp ()
 specifier|protected
 name|void
 name|setUp
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{}
 DECL|method|update ()
 name|ImmutableList
@@ -1406,7 +1406,7 @@ name|void
 name|setUp
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|setNotesMigrationConfig
 argument_list|()
@@ -1482,7 +1482,7 @@ name|void
 name|setUp
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|seedGroupSequenceRef
 argument_list|()
@@ -1502,13 +1502,13 @@ argument_list|()
 operator|.
 name|fail
 argument_list|(
-literal|"expected OrmException"
+literal|"expected StorageException"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -1596,13 +1596,13 @@ argument_list|()
 operator|.
 name|fail
 argument_list|(
-literal|"expected OrmException"
+literal|"expected StorageException"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{

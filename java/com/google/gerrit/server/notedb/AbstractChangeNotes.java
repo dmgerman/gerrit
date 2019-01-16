@@ -146,6 +146,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|metrics
 operator|.
 name|Timer1
@@ -247,20 +261,6 @@ operator|.
 name|project
 operator|.
 name|NoSuchChangeException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -769,7 +769,7 @@ name|T
 name|load
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -793,7 +793,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Reading from NoteDb is disabled"
 argument_list|)
@@ -868,7 +868,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -971,7 +971,7 @@ name|T
 name|reload
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|loaded
 operator|=
@@ -988,7 +988,7 @@ name|ObjectId
 name|loadRevision
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -1051,7 +1051,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)

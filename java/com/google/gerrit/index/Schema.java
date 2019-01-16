@@ -170,11 +170,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 operator|.
-name|OrmException
+name|StorageException
 import|;
 end_import
 
@@ -1041,7 +1041,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{

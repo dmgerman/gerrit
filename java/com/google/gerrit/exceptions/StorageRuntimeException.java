@@ -52,15 +52,15 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtorm.server
+DECL|package|com.google.gerrit.exceptions
 package|package
 name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 package|;
 end_package
 
@@ -69,10 +69,10 @@ comment|/** Any data store read or write error. */
 end_comment
 
 begin_class
-DECL|class|OrmRuntimeException
+DECL|class|StorageRuntimeException
 specifier|public
 class|class
-name|OrmRuntimeException
+name|StorageRuntimeException
 extends|extends
 name|RuntimeException
 block|{
@@ -85,9 +85,9 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|OrmRuntimeException (String message)
+DECL|method|StorageRuntimeException (String message)
 specifier|public
-name|OrmRuntimeException
+name|StorageRuntimeException
 parameter_list|(
 name|String
 name|message
@@ -99,9 +99,9 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OrmRuntimeException (String message, Throwable why)
+DECL|method|StorageRuntimeException (String message, Throwable why)
 specifier|public
-name|OrmRuntimeException
+name|StorageRuntimeException
 parameter_list|(
 name|String
 name|message
@@ -118,9 +118,9 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OrmRuntimeException (Throwable why)
+DECL|method|StorageRuntimeException (Throwable why)
 specifier|public
-name|OrmRuntimeException
+name|StorageRuntimeException
 parameter_list|(
 name|Throwable
 name|why

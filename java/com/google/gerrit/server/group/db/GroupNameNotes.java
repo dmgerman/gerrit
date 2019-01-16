@@ -276,6 +276,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|DuplicateKeyException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -331,20 +345,6 @@ operator|.
 name|meta
 operator|.
 name|VersionedMetaData
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmDuplicateKeyException
 import|;
 end_import
 
@@ -669,7 +669,7 @@ name|UNIQUE_REF_ERROR
 init|=
 literal|"GroupReference collection must contain unique references"
 decl_stmt|;
-comment|/**    * Creates an instance of {@code GroupNameNotes} for use when renaming a group.    *    *<p><strong>Note:</strong>The returned instance of {@code GroupNameNotes} has to be committed    * via {@link #commit(com.google.gerrit.server.git.meta.MetaDataUpdate) commit(MetaDataUpdate)} in    * order to claim the new name and free up the old one.    *    * @param projectName the name of the project which holds the commits of the notes    * @param repository the repository which holds the commits of the notes    * @param groupUuid the UUID of the group which is renamed    * @param oldName the current name of the group    * @param newName the new name of the group    * @return an instance of {@code GroupNameNotes} configured for a specific renaming of a group    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if the note for the specified group doesn't exist or is in an    *     invalid state    * @throws OrmDuplicateKeyException if a group with the new name already exists    */
+comment|/**    * Creates an instance of {@code GroupNameNotes} for use when renaming a group.    *    *<p><strong>Note:</strong>The returned instance of {@code GroupNameNotes} has to be committed    * via {@link #commit(com.google.gerrit.server.git.meta.MetaDataUpdate) commit(MetaDataUpdate)} in    * order to claim the new name and free up the old one.    *    * @param projectName the name of the project which holds the commits of the notes    * @param repository the repository which holds the commits of the notes    * @param groupUuid the UUID of the group which is renamed    * @param oldName the current name of the group    * @param newName the new name of the group    * @return an instance of {@code GroupNameNotes} configured for a specific renaming of a group    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if the note for the specified group doesn't exist or is in an    *     invalid state    * @throws DuplicateKeyException if a group with the new name already exists    */
 DECL|method|forRename ( Project.NameKey projectName, Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey oldName, AccountGroup.NameKey newName)
 specifier|public
 specifier|static
@@ -704,7 +704,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 block|{
 name|requireNonNull
 argument_list|(
@@ -747,7 +747,7 @@ return|return
 name|groupNameNotes
 return|;
 block|}
-comment|/**    * Creates an instance of {@code GroupNameNotes} for use when creating a new group.    *    *<p><strong>Note:</strong>The returned instance of {@code GroupNameNotes} has to be committed    * via {@link #commit(com.google.gerrit.server.git.meta.MetaDataUpdate) commit(MetaDataUpdate)} in    * order to claim the new name.    *    * @param projectName the name of the project which holds the commits of the notes    * @param repository the repository which holds the commits of the notes    * @param groupUuid the UUID of the new group    * @param groupName the name of the new group    * @return an instance of {@code GroupNameNotes} configured for a specific group creation    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException in no case so far    * @throws OrmDuplicateKeyException if a group with the new name already exists    */
+comment|/**    * Creates an instance of {@code GroupNameNotes} for use when creating a new group.    *    *<p><strong>Note:</strong>The returned instance of {@code GroupNameNotes} has to be committed    * via {@link #commit(com.google.gerrit.server.git.meta.MetaDataUpdate) commit(MetaDataUpdate)} in    * order to claim the new name.    *    * @param projectName the name of the project which holds the commits of the notes    * @param repository the repository which holds the commits of the notes    * @param groupUuid the UUID of the new group    * @param groupName the name of the new group    * @return an instance of {@code GroupNameNotes} configured for a specific group creation    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException in no case so far    * @throws DuplicateKeyException if a group with the new name already exists    */
 DECL|method|forNewGroup ( Project.NameKey projectName, Repository repository, AccountGroup.UUID groupUuid, AccountGroup.NameKey groupName)
 specifier|public
 specifier|static
@@ -777,7 +777,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 block|{
 name|requireNonNull
 argument_list|(
@@ -1848,7 +1848,7 @@ name|void
 name|ensureNewNameIsNotUsed
 parameter_list|()
 throws|throws
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 block|{
 if|if
 condition|(
@@ -1862,7 +1862,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 argument_list|(
 name|String
 operator|.

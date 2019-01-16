@@ -176,6 +176,20 @@ name|gerrit
 operator|.
 name|exceptions
 operator|.
+name|DuplicateKeyException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|exceptions
+operator|.
 name|NoSuchGroupException
 import|;
 end_import
@@ -547,20 +561,6 @@ operator|.
 name|time
 operator|.
 name|TimeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmDuplicateKeyException
 import|;
 end_import
 
@@ -1409,7 +1409,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Creates the specified group for the specified members (accounts).    *    * @param groupCreation an {@code InternalGroupCreation} which specifies all mandatory properties    *     of the group    * @param groupUpdate an {@code InternalGroupUpdate} which specifies optional properties of the    *     group. If this {@code InternalGroupUpdate} updates a property which was already specified    *     by the {@code InternalGroupCreation}, the value of this {@code InternalGroupUpdate} wins.    * @throws OrmDuplicateKeyException if a group with the chosen name already exists    * @throws IOException if indexing fails, or an error occurs while reading/writing from/to NoteDb    * @return the created {@code InternalGroup}    */
+comment|/**    * Creates the specified group for the specified members (accounts).    *    * @param groupCreation an {@code InternalGroupCreation} which specifies all mandatory properties    *     of the group    * @param groupUpdate an {@code InternalGroupUpdate} which specifies optional properties of the    *     group. If this {@code InternalGroupUpdate} updates a property which was already specified    *     by the {@code InternalGroupCreation}, the value of this {@code InternalGroupUpdate} wins.    * @throws DuplicateKeyException if a group with the chosen name already exists    * @throws IOException if indexing fails, or an error occurs while reading/writing from/to NoteDb    * @return the created {@code InternalGroup}    */
 DECL|method|createGroup ( InternalGroupCreation groupCreation, InternalGroupUpdate groupUpdate)
 specifier|public
 name|InternalGroup
@@ -1422,7 +1422,7 @@ name|InternalGroupUpdate
 name|groupUpdate
 parameter_list|)
 throws|throws
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 throws|,
 name|IOException
 throws|,
@@ -1478,7 +1478,7 @@ name|createdGroup
 return|;
 block|}
 block|}
-comment|/**    * Updates the specified group.    *    * @param groupUuid the UUID of the group to update    * @param groupUpdate an {@code InternalGroupUpdate} which indicates the desired updates on the    *     group    * @throws OrmDuplicateKeyException if the new name of the group is used by another group    * @throws IOException if indexing fails, or an error occurs while reading/writing from/to NoteDb    * @throws NoSuchGroupException if the specified group doesn't exist    */
+comment|/**    * Updates the specified group.    *    * @param groupUuid the UUID of the group to update    * @param groupUpdate an {@code InternalGroupUpdate} which indicates the desired updates on the    *     group    * @throws DuplicateKeyException if the new name of the group is used by another group    * @throws IOException if indexing fails, or an error occurs while reading/writing from/to NoteDb    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|updateGroup (AccountGroup.UUID groupUuid, InternalGroupUpdate groupUpdate)
 specifier|public
 name|void
@@ -1493,7 +1493,7 @@ name|InternalGroupUpdate
 name|groupUpdate
 parameter_list|)
 throws|throws
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 throws|,
 name|IOException
 throws|,
@@ -1615,7 +1615,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 block|{
 try|try
 block|{
@@ -1688,7 +1688,7 @@ name|throwIfInstanceOf
 argument_list|(
 name|e
 argument_list|,
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 operator|.
 name|class
 argument_list|)
@@ -1720,7 +1720,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 block|{
 try|try
 init|(
@@ -1840,7 +1840,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 throws|,
 name|NoSuchGroupException
 block|{
@@ -1915,7 +1915,7 @@ name|throwIfInstanceOf
 argument_list|(
 name|e
 argument_list|,
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 operator|.
 name|class
 argument_list|)
@@ -1960,7 +1960,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 throws|,
 name|NoSuchGroupException
 block|{

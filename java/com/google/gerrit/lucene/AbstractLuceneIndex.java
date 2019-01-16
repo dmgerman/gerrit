@@ -314,6 +314,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|FieldDef
@@ -517,20 +531,6 @@ operator|.
 name|logging
 operator|.
 name|LoggingContextAwareScheduledExecutorService
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -3228,7 +3228,7 @@ argument_list|>
 name|read
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|readImpl
@@ -3252,7 +3252,7 @@ argument_list|>
 name|readRaw
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|readImpl
@@ -3285,7 +3285,7 @@ argument_list|>
 name|mapper
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|IndexSearcher
 name|searcher
@@ -3440,7 +3440,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)

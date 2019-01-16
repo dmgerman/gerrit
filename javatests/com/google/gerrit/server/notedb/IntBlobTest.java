@@ -122,6 +122,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|git
 operator|.
 name|LockFailureException
@@ -159,20 +173,6 @@ operator|.
 name|events
 operator|.
 name|GitReferenceUpdated
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -648,13 +648,13 @@ argument_list|()
 operator|.
 name|fail
 argument_list|(
-literal|"Expected OrmException"
+literal|"Expected StorageException"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{

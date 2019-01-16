@@ -96,11 +96,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|exceptions
 operator|.
-name|client
-operator|.
-name|Change
+name|StorageException
 import|;
 end_import
 
@@ -110,11 +108,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|OrmException
+name|client
+operator|.
+name|Change
 import|;
 end_import
 
@@ -153,7 +153,7 @@ name|ChangeData
 name|object
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Change
 name|change

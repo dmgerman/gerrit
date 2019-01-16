@@ -160,11 +160,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 operator|.
-name|OrmException
+name|StorageException
 import|;
 end_import
 
@@ -174,11 +174,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 operator|.
-name|OrmRuntimeException
+name|StorageRuntimeException
 import|;
 end_import
 
@@ -539,7 +539,7 @@ argument_list|>
 name|read
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 block|{
@@ -550,7 +550,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmRuntimeException
+name|StorageRuntimeException
 name|err
 parameter_list|)
 block|{
@@ -573,7 +573,7 @@ operator|.
 name|getCause
 argument_list|()
 argument_list|,
-name|OrmException
+name|StorageException
 operator|.
 name|class
 argument_list|)
@@ -581,7 +581,7 @@ expr_stmt|;
 block|}
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|err
 argument_list|)
@@ -599,7 +599,7 @@ argument_list|>
 name|readRaw
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 comment|// TOOD(hiesel): Implement
 throw|throw
@@ -619,7 +619,7 @@ argument_list|>
 name|readImpl
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -630,7 +630,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"No DataSource: "
 operator|+
@@ -911,7 +911,7 @@ name|T
 name|object
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -1009,7 +1009,7 @@ argument_list|>
 name|buffer
 parameter_list|)
 throws|throws
-name|OrmRuntimeException
+name|StorageRuntimeException
 block|{
 return|return
 name|buffer

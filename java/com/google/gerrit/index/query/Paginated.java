@@ -74,9 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|index
+name|exceptions
 operator|.
-name|QueryOptions
+name|StorageException
 import|;
 end_import
 
@@ -86,11 +86,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|index
 operator|.
-name|OrmException
+name|QueryOptions
 import|;
 end_import
 
@@ -119,7 +119,7 @@ name|int
 name|start
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
 block|}
 end_interface

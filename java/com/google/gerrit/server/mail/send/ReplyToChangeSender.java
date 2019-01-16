@@ -90,6 +90,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -150,20 +164,6 @@ name|ChangeData
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
 begin_comment
 comment|/** Alert a user to a reply to a change, usually commentary made during review. */
 end_comment
@@ -217,7 +217,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|super
 argument_list|(

@@ -104,6 +104,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|annotations
@@ -355,20 +369,6 @@ operator|.
 name|sshd
 operator|.
 name|SshCommand
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -724,7 +724,7 @@ parameter_list|()
 throws|throws
 name|Failure
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -793,7 +793,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -894,7 +894,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -953,7 +953,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,

@@ -242,6 +242,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -495,20 +509,6 @@ operator|.
 name|ssh
 operator|.
 name|SshKeyCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1228,7 +1228,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|ConfigInvalidException
 name|e
@@ -1523,7 +1523,7 @@ name|ExternalId
 name|extId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -1914,7 +1914,7 @@ argument_list|(
 parameter_list|()
 lambda|->
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Account "
 operator|+
@@ -1938,7 +1938,7 @@ name|AuthRequest
 name|who
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|AccountException
 throws|,
@@ -2468,7 +2468,7 @@ name|IdentifiedUser
 name|user
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -2571,7 +2571,7 @@ parameter_list|)
 throws|throws
 name|AccountException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -2751,7 +2751,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**    * Update the link to another unique authentication identity to an existing account.    *    *<p>Existing external identities with the same scheme will be removed and replaced with the new    * one.    *    * @param to account to link the identity onto.    * @param who the additional identity.    * @return the result of linking the identity to the user.    * @throws OrmException    * @throws AccountException the identity belongs to a different account, or it cannot be linked at    *     this time.    */
+comment|/**    * Update the link to another unique authentication identity to an existing account.    *    *<p>Existing external identities with the same scheme will be removed and replaced with the new    * one.    *    * @param to account to link the identity onto.    * @param who the additional identity.    * @return the result of linking the identity to the user.    * @throws StorageException    * @throws AccountException the identity belongs to a different account, or it cannot be linked at    *     this time.    */
 DECL|method|updateLink (Account.Id to, AuthRequest who)
 specifier|public
 name|AuthResult
@@ -2766,7 +2766,7 @@ name|AuthRequest
 name|who
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|AccountException
 throws|,
@@ -2902,7 +2902,7 @@ parameter_list|)
 throws|throws
 name|AccountException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -2949,7 +2949,7 @@ parameter_list|)
 throws|throws
 name|AccountException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,

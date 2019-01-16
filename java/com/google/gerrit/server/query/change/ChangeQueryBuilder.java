@@ -336,6 +336,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|registration
@@ -1005,20 +1019,6 @@ operator|.
 name|submit
 operator|.
 name|SubmitDryRun
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -3901,7 +3901,7 @@ name|String
 name|value
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|QueryParseException
 block|{
@@ -4804,7 +4804,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -5395,7 +5395,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -5519,7 +5519,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -5662,7 +5662,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -5768,7 +5768,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -5999,7 +5999,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6028,7 +6028,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6122,7 +6122,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6181,7 +6181,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6435,7 +6435,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6464,7 +6464,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6493,7 +6493,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6525,7 +6525,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6630,7 +6630,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6919,7 +6919,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -7015,7 +7015,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -7204,7 +7204,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -7819,7 +7819,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|IOException
 decl||
@@ -7874,7 +7874,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|IOException
 decl||
@@ -7911,7 +7911,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|IOException
 decl||
@@ -8281,7 +8281,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -8403,7 +8403,7 @@ name|String
 name|value
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|QueryParseException
 block|{
@@ -8594,7 +8594,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,

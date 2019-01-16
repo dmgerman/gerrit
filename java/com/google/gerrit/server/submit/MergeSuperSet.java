@@ -130,6 +130,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|registration
@@ -345,20 +359,6 @@ operator|.
 name|change
 operator|.
 name|InternalChangeQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -661,7 +661,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -909,7 +909,7 @@ argument_list|>
 name|visibleTopicsSeen
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -1139,7 +1139,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1281,7 +1281,7 @@ name|String
 name|topic
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|queryProvider

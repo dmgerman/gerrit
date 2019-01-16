@@ -146,6 +146,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|FieldDef
@@ -205,20 +219,6 @@ operator|.
 name|index
 operator|.
 name|Schema
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -547,7 +547,7 @@ argument_list|>
 name|p
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|queryResults
@@ -574,7 +574,7 @@ argument_list|>
 name|p
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 block|{
@@ -595,7 +595,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -625,7 +625,7 @@ argument_list|>
 name|queries
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 block|{
@@ -655,7 +655,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -704,7 +704,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**    * Query a predicate repeatedly until all results are exhausted.    *    *<p>Capable of iterating through all results regardless of limits. The passed {@code    * querySupplier} may choose to pre-set limits or not; this only affects the number of queries    * that may be issued, not the size of the final results.    *    *<p>Since multiple queries may be issued, this method is subject to races when the result set    * changes mid-iteration. This may result in skipped results, if an entity gets modified to jump    * to the front of the list after this method has passed it. It may also result in duplicate    * results, if an entity at the end of one batch of results gets pushed back further, putting it    * at the beginning of the next batch. This race cannot be avoided unless we change the underlying    * index interface to support true continuation tokens.    *    * @param querySupplier supplier for queries. Callers will generally pass a lambda that invokes an    *     underlying {@code Provider<InternalFooQuery>}, since the instances are not reusable. The    *     lambda may also call additional methods on the newly-created query, such as {@link    *     #enforceVisibility(boolean)}.    * @param predicate predicate to search for.    * @param<T> result type.    * @return exhaustive list of results, subject to the race condition described above.    * @throws OrmException if an error occurred.    */
+comment|/**    * Query a predicate repeatedly until all results are exhausted.    *    *<p>Capable of iterating through all results regardless of limits. The passed {@code    * querySupplier} may choose to pre-set limits or not; this only affects the number of queries    * that may be issued, not the size of the final results.    *    *<p>Since multiple queries may be issued, this method is subject to races when the result set    * changes mid-iteration. This may result in skipped results, if an entity gets modified to jump    * to the front of the list after this method has passed it. It may also result in duplicate    * results, if an entity at the end of one batch of results gets pushed back further, putting it    * at the beginning of the next batch. This race cannot be avoided unless we change the underlying    * index interface to support true continuation tokens.    *    * @param querySupplier supplier for queries. Callers will generally pass a lambda that invokes an    *     underlying {@code Provider<InternalFooQuery>}, since the instances are not reusable. The    *     lambda may also call additional methods on the newly-created query, such as {@link    *     #enforceVisibility(boolean)}.    * @param predicate predicate to search for.    * @param<T> result type.    * @return exhaustive list of results, subject to the race condition described above.    * @throws StorageException if an error occurred.    */
 DECL|method|queryExhaustively ( Supplier<? extends InternalQuery<T, ?>> querySupplier, Predicate<T> predicate)
 specifier|protected
 specifier|static
@@ -737,7 +737,7 @@ argument_list|>
 name|predicate
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|ImmutableList
 operator|.

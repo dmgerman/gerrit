@@ -100,6 +100,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -140,20 +154,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -188,7 +188,7 @@ name|void
 name|prefixOnlyOptimization
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|RegexPathPredicate
 name|p
@@ -261,7 +261,7 @@ name|void
 name|prefixReducesSearchSpace
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|RegexPathPredicate
 name|p
@@ -336,7 +336,7 @@ name|void
 name|fileExtension_Constant
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|RegexPathPredicate
 name|p
@@ -394,7 +394,7 @@ name|void
 name|fileExtension_CharacterGroup
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|RegexPathPredicate
 name|p
@@ -452,7 +452,7 @@ name|void
 name|endOfString
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|assertTrue
 argument_list|(
@@ -527,7 +527,7 @@ name|void
 name|exactMatch
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|RegexPathPredicate
 name|p
@@ -606,7 +606,7 @@ modifier|...
 name|files
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Arrays
 operator|.

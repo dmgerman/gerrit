@@ -102,6 +102,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -123,20 +137,6 @@ operator|.
 name|client
 operator|.
 name|PatchSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -226,7 +226,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Marks the given file in the given patch set as reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @param path file path    * @return {@code true} if the reviewed flag was updated, {@code false} if the reviewed flag was    *     already set    * @throws OrmException thrown if updating the reviewed flag failed    */
+comment|/**    * Marks the given file in the given patch set as reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @param path file path    * @return {@code true} if the reviewed flag was updated, {@code false} if the reviewed flag was    *     already set    * @throws StorageException thrown if updating the reviewed flag failed    */
 DECL|method|markReviewed (PatchSet.Id psId, Account.Id accountId, String path)
 name|boolean
 name|markReviewed
@@ -245,9 +245,9 @@ name|String
 name|path
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
-comment|/**    * Marks the given files in the given patch set as reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @param paths file paths    * @throws OrmException thrown if updating the reviewed flag failed    */
+comment|/**    * Marks the given files in the given patch set as reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @param paths file paths    * @throws StorageException thrown if updating the reviewed flag failed    */
 DECL|method|markReviewed (PatchSet.Id psId, Account.Id accountId, Collection<String> paths)
 name|void
 name|markReviewed
@@ -269,9 +269,9 @@ argument_list|>
 name|paths
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
-comment|/**    * Clears the reviewed flag for the given file in the given patch set for the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @param path file path    * @throws OrmException thrown if clearing the reviewed flag failed    */
+comment|/**    * Clears the reviewed flag for the given file in the given patch set for the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @param path file path    * @throws StorageException thrown if clearing the reviewed flag failed    */
 DECL|method|clearReviewed (PatchSet.Id psId, Account.Id accountId, String path)
 name|void
 name|clearReviewed
@@ -290,9 +290,9 @@ name|String
 name|path
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
-comment|/**    * Clears the reviewed flags for all files in the given patch set for all users.    *    * @param psId patch set ID    * @throws OrmException thrown if clearing the reviewed flags failed    */
+comment|/**    * Clears the reviewed flags for all files in the given patch set for all users.    *    * @param psId patch set ID    * @throws StorageException thrown if clearing the reviewed flags failed    */
 DECL|method|clearReviewed (PatchSet.Id psId)
 name|void
 name|clearReviewed
@@ -303,9 +303,9 @@ name|Id
 name|psId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
-comment|/**    * Find the latest patch set, that is smaller or equals to the given patch set, where at least,    * one file has been reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @return optionally, all files the have been reviewed by the given user that belong to the patch    *     set that is smaller or equals to the given patch set    * @throws OrmException thrown if accessing the reviewed flags failed    */
+comment|/**    * Find the latest patch set, that is smaller or equals to the given patch set, where at least,    * one file has been reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @return optionally, all files the have been reviewed by the given user that belong to the patch    *     set that is smaller or equals to the given patch set    * @throws StorageException thrown if accessing the reviewed flags failed    */
 DECL|method|findReviewed (PatchSet.Id psId, Account.Id accountId)
 name|Optional
 argument_list|<
@@ -324,7 +324,7 @@ name|Id
 name|accountId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
 block|}
 end_interface

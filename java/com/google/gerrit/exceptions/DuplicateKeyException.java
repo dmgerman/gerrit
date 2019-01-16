@@ -52,15 +52,15 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtorm.server
+DECL|package|com.google.gerrit.exceptions
 package|package
 name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 package|;
 end_package
 
@@ -69,12 +69,12 @@ comment|/** Indicates one or more entities were concurrently inserted with the s
 end_comment
 
 begin_class
-DECL|class|OrmDuplicateKeyException
+DECL|class|DuplicateKeyException
 specifier|public
 class|class
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 extends|extends
-name|OrmException
+name|StorageException
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -85,9 +85,9 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|OrmDuplicateKeyException (String msg)
+DECL|method|DuplicateKeyException (String msg)
 specifier|public
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 parameter_list|(
 name|String
 name|msg
@@ -99,9 +99,9 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OrmDuplicateKeyException (String msg, Throwable why)
+DECL|method|DuplicateKeyException (String msg, Throwable why)
 specifier|public
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 parameter_list|(
 name|String
 name|msg

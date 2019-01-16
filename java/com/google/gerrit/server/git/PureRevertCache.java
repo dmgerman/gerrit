@@ -130,6 +130,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -323,20 +337,6 @@ operator|.
 name|project
 operator|.
 name|ProjectCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -738,7 +738,7 @@ operator|=
 name|notesFactory
 expr_stmt|;
 block|}
-comment|/**    * Returns {@code true} if {@code claimedRevert} is a pure (clean) revert of the change that is    * referenced in {@link Change#getRevertOf()}.    *    * @return {@code true} if {@code claimedRevert} is a pure (clean) revert.    * @throws IOException if there was a problem with the storage layer    * @throws OrmException if there was a problem with the storage layer    * @throws BadRequestException if there is a problem with the provided {@link ChangeNotes}    */
+comment|/**    * Returns {@code true} if {@code claimedRevert} is a pure (clean) revert of the change that is    * referenced in {@link Change#getRevertOf()}.    *    * @return {@code true} if {@code claimedRevert} is a pure (clean) revert.    * @throws IOException if there was a problem with the storage layer    * @throws StorageException if there was a problem with the storage layer    * @throws BadRequestException if there is a problem with the provided {@link ChangeNotes}    */
 DECL|method|isPureRevert (ChangeNotes claimedRevert)
 specifier|public
 name|boolean
@@ -748,7 +748,7 @@ name|ChangeNotes
 name|claimedRevert
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,

@@ -192,6 +192,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -577,20 +591,6 @@ operator|.
 name|update
 operator|.
 name|RepoContext
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1965,7 +1965,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|err
 parameter_list|)
 block|{
@@ -2024,7 +2024,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 name|PatchSet
 operator|.
@@ -2202,7 +2202,7 @@ name|IdentifiedUser
 name|user
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -2374,7 +2374,7 @@ name|ChangeUpdate
 name|update
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -2814,7 +2814,7 @@ name|CommitMergeStatus
 name|s
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|requireNonNull
 argument_list|(

@@ -88,11 +88,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 operator|.
-name|OrmException
+name|StorageException
 import|;
 end_import
 
@@ -343,7 +343,7 @@ name|T
 name|object
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|checkState
 argument_list|(

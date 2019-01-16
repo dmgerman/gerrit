@@ -72,11 +72,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 operator|.
-name|OrmException
+name|StorageException
 import|;
 end_import
 
@@ -104,7 +104,7 @@ argument_list|>
 name|read
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
 comment|/** @return read from the database and return the raw results. */
 DECL|method|readRaw ()
@@ -115,7 +115,7 @@ argument_list|>
 name|readRaw
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
 block|}
 end_interface

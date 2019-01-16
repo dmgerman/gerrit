@@ -894,6 +894,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -2005,20 +2019,6 @@ operator|.
 name|testing
 operator|.
 name|TestTimeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -17098,7 +17098,7 @@ name|IOException
 decl||
 name|ConfigInvalidException
 decl||
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -17451,7 +17451,7 @@ name|IOException
 decl||
 name|ConfigInvalidException
 decl||
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -17826,7 +17826,7 @@ name|IOException
 decl||
 name|ConfigInvalidException
 decl||
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -18281,7 +18281,7 @@ name|IOException
 decl||
 name|ConfigInvalidException
 decl||
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{

@@ -298,6 +298,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -1021,20 +1035,6 @@ operator|.
 name|util
 operator|.
 name|RequestScopePropagator
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -2084,7 +2084,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -2916,7 +2916,7 @@ name|String
 name|reviewMessage
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -3222,7 +3222,7 @@ argument_list|>
 name|approvals
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -3496,7 +3496,7 @@ name|boolean
 name|workInProgress
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<

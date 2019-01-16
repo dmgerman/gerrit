@@ -152,6 +152,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -605,20 +619,6 @@ operator|.
 name|update
 operator|.
 name|RepoContext
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1274,7 +1274,7 @@ name|ResourceConflictException
 throws|,
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1315,7 +1315,7 @@ parameter_list|)
 throws|throws
 name|ResourceConflictException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -1816,7 +1816,7 @@ name|IOException
 throws|,
 name|PermissionBackendException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 comment|// Not allowed to create a new patch set if the current patch set is locked.
 name|psUtil

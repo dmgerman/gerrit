@@ -376,6 +376,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -1050,20 +1064,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1414,7 +1414,7 @@ name|boolean
 name|allowClosed
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|checkArgument
 argument_list|(
@@ -2360,7 +2360,7 @@ parameter_list|)
 throws|throws
 name|ResourceConflictException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 name|PatchSet
 name|patchSet
@@ -2623,7 +2623,7 @@ name|SubmitRecord
 name|record
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -2723,7 +2723,7 @@ argument_list|>
 name|labels
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -3018,7 +3018,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -3159,7 +3159,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Merges the given change.    *    *<p>Depending on the server configuration, more changes may be affected, e.g. by submission of a    * topic or via superproject subscriptions. All affected changes are integrated using the projects    * integration strategy.    *    * @param change the change to be merged.    * @param caller the identity of the caller    * @param checkSubmitRules whether the prolog submit rules should be evaluated    * @param submitInput parameters regarding the merge    * @throws OrmException an error occurred reading or writing the database.    * @throws RestApiException if an error occurred.    * @throws PermissionBackendException if permissions can't be checked    * @throws IOException an error occurred reading from NoteDb.    */
+comment|/**    * Merges the given change.    *    *<p>Depending on the server configuration, more changes may be affected, e.g. by submission of a    * topic or via superproject subscriptions. All affected changes are integrated using the projects    * integration strategy.    *    * @param change the change to be merged.    * @param caller the identity of the caller    * @param checkSubmitRules whether the prolog submit rules should be evaluated    * @param submitInput parameters regarding the merge    * @throws StorageException an error occurred reading or writing the database.    * @throws RestApiException if an error occurred.    * @throws PermissionBackendException if permissions can't be checked    * @throws IOException an error occurred reading from NoteDb.    */
 DECL|method|merge ( Change change, IdentifiedUser caller, boolean checkSubmitRules, SubmitInput submitInput, boolean dryrun)
 specifier|public
 name|void
@@ -3181,7 +3181,7 @@ name|boolean
 name|dryrun
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|RestApiException
 throws|,
@@ -3641,7 +3641,7 @@ block|{
 comment|// Anything before the merge attempt is an error
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -3981,7 +3981,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -4892,7 +4892,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -5041,7 +5041,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -5564,7 +5564,7 @@ catch|catch
 parameter_list|(
 name|IOException
 decl||
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -5875,7 +5875,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{

@@ -346,6 +346,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -952,20 +966,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1282,7 +1282,7 @@ argument_list|>
 name|changeDatas
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -1378,7 +1378,7 @@ argument_list|>
 name|changes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|ChangeData
 name|first
@@ -1429,7 +1429,7 @@ argument_list|>
 name|changes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|ChangeData
 name|first
@@ -1480,7 +1480,7 @@ argument_list|>
 name|changes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|ChangeData
 name|first
@@ -1531,7 +1531,7 @@ argument_list|>
 name|changes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|ChangeData
 name|first
@@ -1582,7 +1582,7 @@ argument_list|>
 name|changes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|ChangeData
 name|first
@@ -1633,7 +1633,7 @@ argument_list|>
 name|changes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -2614,7 +2614,7 @@ argument_list|>
 name|filePaths
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|PatchSet
 name|ps
@@ -2651,7 +2651,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -2715,7 +2715,7 @@ argument_list|>
 name|getDiffSummary
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -2883,7 +2883,7 @@ argument_list|>
 name|computeChangedLines
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -2935,7 +2935,7 @@ argument_list|>
 name|changedLines
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -3068,7 +3068,7 @@ name|Change
 name|change
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3107,7 +3107,7 @@ name|Change
 name|reloadChange
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 block|{
@@ -3131,7 +3131,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Unable to load change "
 operator|+
@@ -3163,7 +3163,7 @@ name|LabelTypes
 name|getLabelTypes
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3196,7 +3196,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"project state not available"
 argument_list|,
@@ -3228,7 +3228,7 @@ name|ChangeNotes
 name|notes
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3245,7 +3245,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"ChangeNotes not available, lazyLoad = false"
 argument_list|)
@@ -3274,7 +3274,7 @@ name|PatchSet
 name|currentPatchSet
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3348,7 +3348,7 @@ argument_list|>
 name|currentApprovals
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3422,7 +3422,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -3482,7 +3482,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3518,7 +3518,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3556,7 +3556,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|trackingFooters
@@ -3576,7 +3576,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3609,7 +3609,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3640,7 +3640,7 @@ name|boolean
 name|loadCommitData
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|RepositoryNotFoundException
 throws|,
@@ -3756,7 +3756,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * @return patches for the change, in patch set ID order.    * @throws OrmException an error occurred reading the database.    */
+comment|/**    * @return patches for the change, in patch set ID order.    * @throws StorageException an error occurred reading the database.    */
 DECL|method|patchSets ()
 specifier|public
 name|Collection
@@ -3766,7 +3766,7 @@ argument_list|>
 name|patchSets
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3815,7 +3815,7 @@ operator|=
 name|patchSets
 expr_stmt|;
 block|}
-comment|/**    * @return patch with the given ID, or null if it does not exist.    * @throws OrmException an error occurred reading the database.    */
+comment|/**    * @return patch with the given ID, or null if it does not exist.    * @throws StorageException an error occurred reading the database.    */
 DECL|method|patchSet (PatchSet.Id psId)
 specifier|public
 name|PatchSet
@@ -3827,7 +3827,7 @@ name|Id
 name|psId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3881,7 +3881,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * @return all patch set approvals for the change, keyed by ID, ordered by timestamp within each    *     patch set.    * @throws OrmException an error occurred reading the database.    */
+comment|/**    * @return all patch set approvals for the change, keyed by ID, ordered by timestamp within each    *     patch set.    * @throws StorageException an error occurred reading the database.    */
 DECL|method|approvals ()
 specifier|public
 name|ListMultimap
@@ -3895,7 +3895,7 @@ argument_list|>
 name|approvals
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3932,7 +3932,7 @@ return|return
 name|allApprovals
 return|;
 block|}
-comment|/**    * @return The submit ('SUBM') approval label    * @throws OrmException an error occurred reading the database.    */
+comment|/**    * @return The submit ('SUBM') approval label    * @throws StorageException an error occurred reading the database.    */
 DECL|method|getSubmitApproval ()
 specifier|public
 name|Optional
@@ -3942,7 +3942,7 @@ argument_list|>
 name|getSubmitApproval
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|currentApprovals
@@ -3968,7 +3968,7 @@ name|ReviewerSet
 name|reviewers
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -4043,7 +4043,7 @@ name|ReviewerByEmailSet
 name|reviewersByEmail
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -4138,7 +4138,7 @@ name|ReviewerSet
 name|pendingReviewers
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -4205,7 +4205,7 @@ name|ReviewerByEmailSet
 name|pendingReviewersByEmail
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -4249,7 +4249,7 @@ argument_list|>
 name|reviewerUpdates
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -4327,7 +4327,7 @@ argument_list|>
 name|publishedComments
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -4373,7 +4373,7 @@ argument_list|>
 name|robotComments
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -4416,7 +4416,7 @@ name|Integer
 name|unresolvedCommentCount
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -4715,7 +4715,7 @@ name|Integer
 name|totalCommentCount
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -4787,7 +4787,7 @@ argument_list|>
 name|messages
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -5004,7 +5004,7 @@ name|Boolean
 name|isMergeable
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -5215,7 +5215,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -5238,7 +5238,7 @@ argument_list|>
 name|editsByUser
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|editRefs
@@ -5261,7 +5261,7 @@ argument_list|>
 name|editRefs
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -5432,7 +5432,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -5454,7 +5454,7 @@ argument_list|>
 name|draftsByUser
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|draftRefs
@@ -5477,7 +5477,7 @@ argument_list|>
 name|draftRefs
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -5613,7 +5613,7 @@ name|Id
 name|accountId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Collection
 argument_list|<
@@ -5707,7 +5707,7 @@ argument_list|>
 name|reviewedBy
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -5888,7 +5888,7 @@ argument_list|>
 name|hashtags
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -5955,7 +5955,7 @@ argument_list|>
 name|stars
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -6086,7 +6086,7 @@ argument_list|>
 name|starRefs
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -6139,7 +6139,7 @@ name|Id
 name|accountId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -6250,7 +6250,7 @@ name|Boolean
 name|isPureRevert
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -6296,7 +6296,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"could not compute pure revert"
 argument_list|,

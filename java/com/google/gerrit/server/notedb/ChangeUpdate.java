@@ -658,6 +658,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|mail
 operator|.
 name|Address
@@ -863,20 +877,6 @@ operator|.
 name|client
 operator|.
 name|IntKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1687,7 +1687,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 try|try
 init|(
@@ -2857,7 +2857,7 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -3081,7 +3081,7 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -3239,7 +3239,7 @@ argument_list|>
 name|toUpdate
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 comment|// Prohibit various kinds of illegal operations on comments.
 name|Set
@@ -3362,7 +3362,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Cannot update existing published comment: "
 operator|+
@@ -3406,7 +3406,7 @@ name|ObjectId
 name|curr
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -4311,7 +4311,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)

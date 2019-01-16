@@ -106,6 +106,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|config
@@ -161,20 +175,6 @@ operator|.
 name|notedb
 operator|.
 name|IntBlob
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -308,7 +308,7 @@ name|int
 name|read
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 init|(
@@ -354,7 +354,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Failed to read "
 operator|+
@@ -373,7 +373,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 try|try
 init|(
@@ -424,7 +424,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.
@@ -496,7 +496,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 try|try
 init|(
@@ -557,7 +557,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.

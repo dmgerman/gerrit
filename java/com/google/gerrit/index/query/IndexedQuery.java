@@ -102,6 +102,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|Index
@@ -119,20 +133,6 @@ operator|.
 name|index
 operator|.
 name|QueryOptions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -392,7 +392,7 @@ argument_list|>
 name|read
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|source
@@ -412,7 +412,7 @@ argument_list|>
 name|readRaw
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|source
@@ -435,7 +435,7 @@ name|int
 name|start
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|opts
 operator|=
@@ -471,7 +471,7 @@ comment|// changed about pred was its start, and any other QPEs that might happe
 comment|// should have already thrown from the constructor.
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)

@@ -236,6 +236,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|IndexConfig
@@ -369,20 +383,6 @@ operator|.
 name|notedb
 operator|.
 name|ChangeNotes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -751,7 +751,7 @@ name|Key
 name|key
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|byKeyPrefix
@@ -775,7 +775,7 @@ name|String
 name|prefix
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -802,7 +802,7 @@ name|Id
 name|id
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -832,7 +832,7 @@ argument_list|>
 name|ids
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -904,7 +904,7 @@ name|Key
 name|key
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -940,7 +940,7 @@ name|Key
 name|key
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -1071,7 +1071,7 @@ name|NameKey
 name|project
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -1097,7 +1097,7 @@ name|NameKey
 name|branch
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -1137,7 +1137,7 @@ name|NameKey
 name|branch
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -1192,7 +1192,7 @@ argument_list|>
 name|hashes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -1242,7 +1242,7 @@ name|int
 name|indexLimit
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -1299,7 +1299,7 @@ argument_list|>
 name|hashes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -1521,7 +1521,7 @@ argument_list|>
 name|hashes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -1639,7 +1639,7 @@ name|NameKey
 name|project
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -1669,7 +1669,7 @@ name|String
 name|topic
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -1700,7 +1700,7 @@ name|ObjectId
 name|id
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|byCommit
@@ -1724,7 +1724,7 @@ name|String
 name|hash
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -1753,7 +1753,7 @@ name|ObjectId
 name|id
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|byProjectCommit
@@ -1784,7 +1784,7 @@ name|String
 name|hash
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -1824,7 +1824,7 @@ argument_list|>
 name|hashes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|int
 name|n
@@ -1889,7 +1889,7 @@ name|String
 name|hash
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -1922,7 +1922,7 @@ name|String
 name|hash
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|byBranchCommit
@@ -1962,7 +1962,7 @@ name|String
 name|hash
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -2078,7 +2078,7 @@ name|String
 name|cs
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -2237,7 +2237,7 @@ argument_list|>
 name|groups
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 comment|// These queries may be complex along multiple dimensions:
 comment|//  * Many groups per change, if there are very many patch sets. This requires partitioning the

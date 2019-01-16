@@ -234,6 +234,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|common
@@ -717,20 +731,6 @@ operator|.
 name|account
 operator|.
 name|AccountQueryBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1238,7 +1238,7 @@ name|Id
 name|account
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
 block|}
 DECL|method|suggestReviewers ( @ullable ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, VisibilityControl visibilityControl, boolean excludeGroups)
@@ -1269,7 +1269,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|ConfigInvalidException
 throws|,
@@ -1617,7 +1617,7 @@ name|SuggestReviewers
 name|suggestReviewers
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 init|(
@@ -1829,7 +1829,7 @@ argument_list|>
 name|filteredRecommendations
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -1970,7 +1970,7 @@ argument_list|>
 name|candidateList
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -2167,7 +2167,7 @@ name|int
 name|limit
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -2413,7 +2413,7 @@ name|VisibilityControl
 name|visibilityControl
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{

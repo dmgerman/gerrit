@@ -174,6 +174,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -339,20 +353,6 @@ operator|.
 name|project
 operator|.
 name|ProjectState
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -567,7 +567,7 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|get
@@ -598,7 +598,7 @@ name|Id
 name|psId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|notes
@@ -627,7 +627,7 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|notes
@@ -658,7 +658,7 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|notes
@@ -694,7 +694,7 @@ argument_list|>
 name|patchSetIds
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|ImmutableMap
@@ -1002,7 +1002,7 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -1045,7 +1045,7 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{

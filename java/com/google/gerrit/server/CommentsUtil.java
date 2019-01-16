@@ -188,6 +188,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -481,20 +495,6 @@ operator|.
 name|update
 operator|.
 name|ChangeContext
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1068,7 +1068,7 @@ name|String
 name|parentUuid
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|UnprocessableEntityException
 block|{
@@ -1336,7 +1336,7 @@ name|Key
 name|key
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|publishedByChange
@@ -1385,7 +1385,7 @@ name|Key
 name|key
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|draftByChangeAuthor
@@ -1431,7 +1431,7 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|notes
 operator|.
@@ -1468,7 +1468,7 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|notes
 operator|.
@@ -1505,7 +1505,7 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -1594,7 +1594,7 @@ name|Id
 name|psId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -1695,7 +1695,7 @@ name|String
 name|file
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|commentsOnFile
@@ -1732,7 +1732,7 @@ name|Id
 name|psId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|removeCommentsOnAncestorOfCommitMessage
@@ -1772,7 +1772,7 @@ name|Id
 name|psId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|commentsOnPatchSet
@@ -1868,7 +1868,7 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|commentsOnPatchSet
@@ -1910,7 +1910,7 @@ name|Id
 name|author
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|commentsOnFile
@@ -1949,7 +1949,7 @@ name|Id
 name|author
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -2435,7 +2435,7 @@ name|Id
 name|changeId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 init|(
@@ -2467,7 +2467,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)

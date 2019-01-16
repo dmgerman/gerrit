@@ -72,11 +72,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 operator|.
-name|OrmException
+name|StorageException
 import|;
 end_import
 
@@ -89,7 +89,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-comment|/**    * Does this predicate match this object?    *    * @throws OrmException    */
+comment|/**    * Does this predicate match this object?    *    * @throws StorageException    */
 DECL|method|match (T object)
 name|boolean
 name|match
@@ -98,7 +98,7 @@ name|T
 name|object
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
 comment|/** @return a cost estimate to run this predicate, higher figures cost more. */
 DECL|method|getCost ()

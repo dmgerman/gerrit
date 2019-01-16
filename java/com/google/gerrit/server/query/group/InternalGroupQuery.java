@@ -134,6 +134,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|IndexConfig
@@ -235,20 +249,6 @@ operator|.
 name|group
 operator|.
 name|GroupIndexCollection
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -352,7 +352,7 @@ name|NameKey
 name|groupName
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|getOnlyGroup
@@ -389,7 +389,7 @@ name|Id
 name|groupId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|getOnlyGroup
@@ -423,7 +423,7 @@ name|Id
 name|memberId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -451,7 +451,7 @@ name|UUID
 name|subgroupId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|query
@@ -483,7 +483,7 @@ name|String
 name|groupDescription
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<

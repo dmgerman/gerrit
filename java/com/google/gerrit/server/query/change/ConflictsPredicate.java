@@ -152,6 +152,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|query
@@ -392,20 +406,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -598,7 +598,7 @@ catch|catch
 parameter_list|(
 name|IOException
 decl||
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -1173,7 +1173,7 @@ name|IntegrationException
 decl||
 name|NoSuchProjectException
 decl||
-name|OrmException
+name|StorageException
 decl||
 name|IOException
 name|e
@@ -1319,7 +1319,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|IOException
 name|e
@@ -1401,7 +1401,7 @@ name|ObjectId
 name|getTestAgainst
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(

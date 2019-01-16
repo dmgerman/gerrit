@@ -158,6 +158,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -413,20 +427,6 @@ operator|.
 name|change
 operator|.
 name|InternalChangeQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -864,7 +864,7 @@ name|String
 name|id
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -900,7 +900,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**    * Find changes matching the given identifier.    *    * @param id change identifier.    * @return possibly-empty list of notes for all matching changes; may or may not be visible.    * @throws OrmException if an error occurred querying the database.    */
+comment|/**    * Find changes matching the given identifier.    *    * @param id change identifier.    * @return possibly-empty list of notes for all matching changes; may or may not be visible.    * @throws StorageException if an error occurred querying the database.    */
 DECL|method|find (String id)
 specifier|public
 name|List
@@ -913,7 +913,7 @@ name|String
 name|id
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 block|{
@@ -935,14 +935,14 @@ block|{
 comment|// This can't happen because we don't enforce deprecation
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Find changes matching the given identifier.    *    * @param id change identifier.    * @param enforceDeprecation boolean to see if we should throw {@link    *     DeprecatedIdentifierException} in case the identifier is deprecated    * @return possibly-empty list of notes for all matching changes; may or may not be visible.    * @throws OrmException if an error occurred querying the database    * @throws DeprecatedIdentifierException if the identifier is deprecated.    */
+comment|/**    * Find changes matching the given identifier.    *    * @param id change identifier.    * @param enforceDeprecation boolean to see if we should throw {@link    *     DeprecatedIdentifierException} in case the identifier is deprecated    * @return possibly-empty list of notes for all matching changes; may or may not be visible.    * @throws StorageException if an error occurred querying the database    * @throws DeprecatedIdentifierException if the identifier is deprecated.    */
 DECL|method|find (String id, boolean enforceDeprecation)
 specifier|public
 name|List
@@ -958,7 +958,7 @@ name|boolean
 name|enforceDeprecation
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|DeprecatedIdentifierException
 block|{
@@ -1327,7 +1327,7 @@ name|int
 name|changeNumber
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Change
 operator|.
@@ -1382,12 +1382,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
 comment|// Distinguish between a RepositoryNotFoundException (project argument invalid) and
-comment|// other OrmExceptions (failure in the persistence layer).
+comment|// other StorageExceptions (failure in the persistence layer).
 if|if
 condition|(
 name|Throwables
@@ -1423,7 +1423,7 @@ name|Id
 name|id
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -1477,7 +1477,7 @@ name|Id
 name|id
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|String
 name|project
@@ -1592,7 +1592,7 @@ argument_list|>
 name|cds
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<

@@ -72,11 +72,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 operator|.
-name|OrmException
+name|StorageException
 import|;
 end_import
 
@@ -114,25 +114,25 @@ specifier|public
 interface|interface
 name|SchemaCreator
 block|{
-comment|/**    * Create the schema, assuming it does not already exist.    *    *<p>Fails if the schema does exist.    *    * @throws OrmException an error occurred.    * @throws IOException an error occurred.    * @throws ConfigInvalidException an error occurred.    */
+comment|/**    * Create the schema, assuming it does not already exist.    *    *<p>Fails if the schema does exist.    *    * @throws StorageException an error occurred.    * @throws IOException an error occurred.    * @throws ConfigInvalidException an error occurred.    */
 DECL|method|create ()
 name|void
 name|create
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
 function_decl|;
-comment|/**    * Create the schema only if it does not already exist.    *    *<p>Succeeds if the schema does exist.    *    * @throws OrmException an error occurred.    * @throws IOException an error occurred.    * @throws ConfigInvalidException an error occurred.    */
+comment|/**    * Create the schema only if it does not already exist.    *    *<p>Succeeds if the schema does exist.    *    * @throws StorageException an error occurred.    * @throws IOException an error occurred.    * @throws ConfigInvalidException an error occurred.    */
 DECL|method|ensureCreated ()
 name|void
 name|ensureCreated
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,

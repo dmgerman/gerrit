@@ -140,6 +140,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -372,20 +386,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -565,7 +565,7 @@ catch|catch
 parameter_list|(
 name|IOException
 decl||
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -872,7 +872,7 @@ name|RestApiException
 throws|,
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1471,7 +1471,7 @@ name|NoSuchChangeException
 throws|,
 name|ResourceConflictException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -1631,7 +1631,7 @@ name|Context
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(

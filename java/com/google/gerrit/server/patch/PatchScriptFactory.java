@@ -150,6 +150,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -505,20 +519,6 @@ operator|.
 name|project
 operator|.
 name|ProjectCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1299,7 +1299,7 @@ name|PatchScript
 name|call
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|LargeObjectException
 throws|,
@@ -1857,7 +1857,7 @@ name|AuthException
 throws|,
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -1964,7 +1964,7 @@ name|AuthException
 throws|,
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 name|edit
 operator|=
@@ -2068,7 +2068,7 @@ name|String
 name|newName
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Map
 argument_list|<
@@ -2476,7 +2476,7 @@ name|String
 name|file
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 for|for
 control|(
@@ -2602,7 +2602,7 @@ name|String
 name|file
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 for|for
 control|(

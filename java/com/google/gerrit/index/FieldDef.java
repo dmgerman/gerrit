@@ -126,11 +126,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 operator|.
-name|OrmException
+name|StorageException
 import|;
 end_import
 
@@ -409,7 +409,7 @@ name|I
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 function_decl|;
@@ -780,7 +780,7 @@ return|return
 name|stored
 return|;
 block|}
-comment|/**    * Get the field contents from the input object.    *    * @param input input object.    * @return the field value(s) to index.    * @throws OrmException    */
+comment|/**    * Get the field contents from the input object.    *    * @param input input object.    * @return the field value(s) to index.    * @throws StorageException    */
 annotation|@
 name|Nullable
 DECL|method|get (I input)
@@ -792,7 +792,7 @@ name|I
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 block|{
@@ -813,7 +813,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)

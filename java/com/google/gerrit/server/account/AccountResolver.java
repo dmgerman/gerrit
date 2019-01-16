@@ -230,6 +230,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -345,20 +359,6 @@ operator|.
 name|account
 operator|.
 name|InternalAccountQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1294,7 +1294,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 function_decl|;
 DECL|method|search (I input)
 name|Stream
@@ -1307,7 +1307,7 @@ name|I
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -1333,7 +1333,7 @@ name|String
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -1884,7 +1884,7 @@ name|String
 name|nameOrEmail
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -2095,7 +2095,7 @@ name|String
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -2213,7 +2213,7 @@ name|String
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -2347,7 +2347,7 @@ name|String
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 comment|// At this point we have no clue. Just perform a whole bunch of suggestions and pray we come
 comment|// up with a reasonable result list.
@@ -2633,7 +2633,7 @@ operator|=
 name|anonymousCowardName
 expr_stmt|;
 block|}
-comment|/**    * Resolves all accounts matching the input string.    *    *<p>The following input formats are recognized:    *    *<ul>    *<li>The strings {@code "self"} and {@code "me"}, if the current user is an {@link    *       IdentifiedUser}. In this case, may return exactly one inactive account.    *<li>A bare account ID ({@code "18419"}). In this case, may return exactly one inactive    *       account. This case short-circuits if the input matches.    *<li>An account ID in parentheses following a full name ({@code "Full Name (18419)"}). This    *       case short-circuits if the input matches.    *<li>A username ({@code "username"}).    *<li>A full name and email address ({@code "Full Name<email@example>"}). This case    *       short-circuits if the input matches.    *<li>An email address ({@code "email@example"}. This case short-circuits if the input matches.    *<li>An account name recognized by the configured {@link Realm#lookup(String)} Realm}.    *<li>A full name ({@code "Full Name"}).    *<li>As a fallback, a {@link    *       com.google.gerrit.server.query.account.AccountPredicates#defaultPredicate(Schema,    *       boolean, String) default search} against the account index.    *</ul>    *    * @param input input string.    * @return a result describing matching accounts. Never null even if the result set is empty.    * @throws OrmException if an error occurs.    * @throws ConfigInvalidException if an error occurs.    * @throws IOException if an error occurs.    */
+comment|/**    * Resolves all accounts matching the input string.    *    *<p>The following input formats are recognized:    *    *<ul>    *<li>The strings {@code "self"} and {@code "me"}, if the current user is an {@link    *       IdentifiedUser}. In this case, may return exactly one inactive account.    *<li>A bare account ID ({@code "18419"}). In this case, may return exactly one inactive    *       account. This case short-circuits if the input matches.    *<li>An account ID in parentheses following a full name ({@code "Full Name (18419)"}). This    *       case short-circuits if the input matches.    *<li>A username ({@code "username"}).    *<li>A full name and email address ({@code "Full Name<email@example>"}). This case    *       short-circuits if the input matches.    *<li>An email address ({@code "email@example"}. This case short-circuits if the input matches.    *<li>An account name recognized by the configured {@link Realm#lookup(String)} Realm}.    *<li>A full name ({@code "Full Name"}).    *<li>As a fallback, a {@link    *       com.google.gerrit.server.query.account.AccountPredicates#defaultPredicate(Schema,    *       boolean, String) default search} against the account index.    *</ul>    *    * @param input input string.    * @return a result describing matching accounts. Never null even if the result set is empty.    * @throws StorageException if an error occurs.    * @throws ConfigInvalidException if an error occurs.    * @throws IOException if an error occurs.    */
 DECL|method|resolve (String input)
 specifier|public
 name|Result
@@ -2643,7 +2643,7 @@ name|String
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|ConfigInvalidException
 throws|,
@@ -2661,7 +2661,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Resolves all accounts matching the input string by name or email.    *    *<p>The following input formats are recognized:    *    *<ul>    *<li>A full name and email address ({@code "Full Name<email@example>"}). This case    *       short-circuits if the input matches.    *<li>An email address ({@code "email@example"}. This case short-circuits if the input matches.    *<li>An account name recognized by the configured {@link Realm#lookup(String)} Realm}.    *<li>A full name ({@code "Full Name"}).    *<li>As a fallback, a {@link    *       com.google.gerrit.server.query.account.AccountPredicates#defaultPredicate(Schema,    *       boolean, String) default search} against the account index.    *</ul>    *    * @param input input string.    * @return a result describing matching accounts. Never null even if the result set is empty.    * @throws OrmException if an error occurs.    * @throws ConfigInvalidException if an error occurs.    * @throws IOException if an error occurs.    * @deprecated for use only by MailUtil for parsing commit footers; that class needs to be    *     reevaluated.    */
+comment|/**    * Resolves all accounts matching the input string by name or email.    *    *<p>The following input formats are recognized:    *    *<ul>    *<li>A full name and email address ({@code "Full Name<email@example>"}). This case    *       short-circuits if the input matches.    *<li>An email address ({@code "email@example"}. This case short-circuits if the input matches.    *<li>An account name recognized by the configured {@link Realm#lookup(String)} Realm}.    *<li>A full name ({@code "Full Name"}).    *<li>As a fallback, a {@link    *       com.google.gerrit.server.query.account.AccountPredicates#defaultPredicate(Schema,    *       boolean, String) default search} against the account index.    *</ul>    *    * @param input input string.    * @return a result describing matching accounts. Never null even if the result set is empty.    * @throws StorageException if an error occurs.    * @throws ConfigInvalidException if an error occurs.    * @throws IOException if an error occurs.    * @deprecated for use only by MailUtil for parsing commit footers; that class needs to be    *     reevaluated.    */
 annotation|@
 name|Deprecated
 DECL|method|resolveByNameOrEmail (String input)
@@ -2673,7 +2673,7 @@ name|String
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|ConfigInvalidException
 throws|,
@@ -2742,7 +2742,7 @@ argument_list|>
 name|visibilitySupplier
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|ConfigInvalidException
 throws|,

@@ -92,9 +92,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testing
+name|exceptions
 operator|.
-name|GerritBaseTests
+name|StorageException
 import|;
 end_import
 
@@ -104,11 +104,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|testing
 operator|.
-name|OrmException
+name|GerritBaseTests
 import|;
 end_import
 
@@ -152,7 +152,7 @@ DECL|method|TestSender ()
 name|TestSender
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|super
 argument_list|(

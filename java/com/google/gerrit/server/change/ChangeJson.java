@@ -616,6 +616,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -1361,20 +1375,6 @@ operator|.
 name|ChangeData
 operator|.
 name|ChangedLines
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -2284,7 +2284,7 @@ name|ChangeResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|format
@@ -2310,7 +2310,7 @@ name|Change
 name|change
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|format
@@ -2340,7 +2340,7 @@ name|Id
 name|id
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|format
@@ -2364,7 +2364,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|format
@@ -2393,7 +2393,7 @@ name|RevisionResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|ChangeData
 name|cd
@@ -2638,7 +2638,7 @@ argument_list|>
 name|in
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -2741,7 +2741,7 @@ argument_list|>
 name|changeInfoSupplier
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|ChangeNotes
 name|notes
@@ -2762,7 +2762,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -3050,7 +3050,7 @@ argument_list|>
 name|changeInfoSupplier
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 block|{
@@ -3109,7 +3109,7 @@ name|PatchListNotAvailableException
 decl||
 name|GpgException
 decl||
-name|OrmException
+name|StorageException
 decl||
 name|IOException
 decl||
@@ -3134,14 +3134,14 @@ name|throwIfInstanceOf
 argument_list|(
 name|e
 argument_list|,
-name|OrmException
+name|StorageException
 operator|.
 name|class
 argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -3169,7 +3169,7 @@ argument_list|>
 name|all
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -3413,7 +3413,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|RuntimeException
 name|e
@@ -3481,7 +3481,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -3822,7 +3822,7 @@ name|PatchListNotAvailableException
 throws|,
 name|GpgException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -3887,7 +3887,7 @@ name|PatchListNotAvailableException
 throws|,
 name|GpgException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -5018,7 +5018,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -5158,7 +5158,7 @@ name|ChangeInfo
 name|out
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Optional
 argument_list|<
@@ -5224,7 +5224,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|List
 argument_list|<
@@ -5315,7 +5315,7 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 comment|// Although this is called removableReviewers, this method also determines
 comment|// which CCs are removable.
@@ -5804,7 +5804,7 @@ argument_list|>
 name|limitToPsId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Collection
 argument_list|<
@@ -5867,7 +5867,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"missing patch set "
 operator|+
@@ -5897,7 +5897,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"missing current patch set for change "
 operator|+
@@ -5979,7 +5979,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|PermissionBackend
 operator|.

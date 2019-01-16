@@ -88,6 +88,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|metrics
 operator|.
 name|Description
@@ -231,20 +245,6 @@ operator|.
 name|git
 operator|.
 name|GitRepositoryManager
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -565,7 +565,7 @@ name|int
 name|nextAccountId
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 init|(
@@ -600,7 +600,7 @@ name|int
 name|nextChangeId
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 init|(
@@ -641,7 +641,7 @@ name|int
 name|count
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 init|(
@@ -680,7 +680,7 @@ name|int
 name|nextGroupId
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 init|(

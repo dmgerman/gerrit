@@ -76,6 +76,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|query
@@ -154,20 +168,6 @@ name|IndexedChangeQuery
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
 begin_comment
 comment|/** Predicate to match changes that contains specified text in commit messages body. */
 end_comment
@@ -224,7 +224,7 @@ name|ChangeData
 name|object
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 block|{
@@ -301,7 +301,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)

@@ -72,11 +72,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 operator|.
-name|OrmException
+name|StorageException
 import|;
 end_import
 
@@ -177,7 +177,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 throws|,
-name|OrmException
+name|StorageException
 function_decl|;
 block|}
 end_interface

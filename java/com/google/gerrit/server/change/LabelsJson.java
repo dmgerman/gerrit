@@ -378,6 +378,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -605,20 +619,6 @@ operator|.
 name|change
 operator|.
 name|ChangeData
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -908,7 +908,7 @@ name|boolean
 name|detailed
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1015,7 +1015,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1568,7 +1568,7 @@ name|boolean
 name|detailed
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1958,7 +1958,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Map
 argument_list|<
@@ -2061,7 +2061,7 @@ name|boolean
 name|detailed
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -3069,7 +3069,7 @@ argument_list|>
 name|labels
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -3502,7 +3502,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|PermissionBackend
 operator|.

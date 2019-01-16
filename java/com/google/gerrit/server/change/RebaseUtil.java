@@ -116,6 +116,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -283,20 +297,6 @@ operator|.
 name|change
 operator|.
 name|InternalChangeQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -537,7 +537,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|IOException
 name|e
@@ -640,7 +640,7 @@ name|String
 name|base
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 comment|// Try parsing the base as a ref string.
 name|PatchSet
@@ -891,7 +891,7 @@ name|Id
 name|id
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -930,7 +930,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**    * Find the commit onto which a patch set should be rebased.    *    *<p>This is defined as the latest patch set of the change corresponding to this commit's parent,    * or the destination branch tip in the case where the parent's change is merged.    *    * @param patchSet patch set for which the new base commit should be found.    * @param destBranch the destination branch.    * @param git the repository.    * @param rw the RevWalk.    * @return the commit onto which the patch set should be rebased.    * @throws RestApiException if rebase is not possible.    * @throws IOException if accessing the repository fails.    * @throws OrmException if accessing the database fails.    */
+comment|/**    * Find the commit onto which a patch set should be rebased.    *    *<p>This is defined as the latest patch set of the change corresponding to this commit's parent,    * or the destination branch tip in the case where the parent's change is merged.    *    * @param patchSet patch set for which the new base commit should be found.    * @param destBranch the destination branch.    * @param git the repository.    * @param rw the RevWalk.    * @return the commit onto which the patch set should be rebased.    * @throws RestApiException if rebase is not possible.    * @throws IOException if accessing the repository fails.    * @throws StorageException if accessing the database fails.    */
 DECL|method|findBaseRevision ( PatchSet patchSet, Branch.NameKey destBranch, Repository git, RevWalk rw)
 specifier|public
 name|ObjectId
@@ -955,7 +955,7 @@ name|RestApiException
 throws|,
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 name|String
 name|baseRev

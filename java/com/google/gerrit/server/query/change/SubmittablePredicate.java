@@ -92,13 +92,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|exceptions
 operator|.
-name|index
-operator|.
-name|change
-operator|.
-name|ChangeField
+name|StorageException
 import|;
 end_import
 
@@ -108,11 +104,15 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|server
 operator|.
-name|OrmException
+name|index
+operator|.
+name|change
+operator|.
+name|ChangeField
 import|;
 end_import
 
@@ -172,7 +172,7 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|cd

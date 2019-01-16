@@ -146,6 +146,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|common
@@ -613,20 +627,6 @@ operator|.
 name|plugincontext
 operator|.
 name|PluginItemContext
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1258,7 +1258,7 @@ name|BadRequestException
 throws|,
 name|ResourceNotFoundException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|RepositoryNotFoundException
 throws|,
@@ -1721,7 +1721,7 @@ parameter_list|)
 throws|throws
 name|AuthException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 name|CurrentUser
 name|user
@@ -1794,7 +1794,7 @@ argument_list|,
 name|userId
 argument_list|)
 argument_list|,
-name|OrmException
+name|StorageException
 operator|.
 name|class
 argument_list|)
@@ -1945,7 +1945,7 @@ name|IOException
 throws|,
 name|PatchListNotAvailableException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 name|Project
 operator|.
@@ -2394,7 +2394,7 @@ argument_list|,
 name|pathList
 argument_list|)
 argument_list|,
-name|OrmException
+name|StorageException
 operator|.
 name|class
 argument_list|)

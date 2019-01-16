@@ -260,6 +260,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -327,20 +341,6 @@ operator|.
 name|notedb
 operator|.
 name|ChangeNotes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -573,7 +573,7 @@ name|Id
 name|psId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
 block|}
 DECL|field|patchSetsBySha
@@ -1178,7 +1178,7 @@ argument_list|>
 name|getGroups
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|done
 operator|=
@@ -1384,7 +1384,7 @@ argument_list|>
 name|candidates
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Set
 argument_list|<
@@ -1611,7 +1611,7 @@ name|String
 name|group
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|ObjectId
 name|id

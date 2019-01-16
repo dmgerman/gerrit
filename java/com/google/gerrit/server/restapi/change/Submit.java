@@ -190,6 +190,34 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|exceptions
+operator|.
+name|StorageRuntimeException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -751,34 +779,6 @@ operator|.
 name|update
 operator|.
 name|UpdateException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmRuntimeException
 import|;
 end_import
 
@@ -1531,7 +1531,7 @@ name|RepositoryNotFoundException
 throws|,
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -1642,7 +1642,7 @@ name|SubmitInput
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|RestApiException
 throws|,
@@ -2231,7 +2231,7 @@ catch|catch
 parameter_list|(
 name|PermissionBackendException
 decl||
-name|OrmException
+name|StorageException
 decl||
 name|IOException
 name|e
@@ -2254,7 +2254,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|StorageRuntimeException
 argument_list|(
 literal|"Could not determine problems for the change"
 argument_list|,
@@ -2373,7 +2373,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|StorageRuntimeException
 argument_list|(
 literal|"Could not determine problems for the change"
 argument_list|,
@@ -2419,7 +2419,7 @@ comment|// submit not visible
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -2440,7 +2440,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|StorageRuntimeException
 argument_list|(
 literal|"Could not determine problems for the change"
 argument_list|,
@@ -2476,7 +2476,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|IOException
 decl||
@@ -2486,7 +2486,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|StorageRuntimeException
 argument_list|(
 literal|"Could not determine complete set of changes to be submitted"
 argument_list|,
@@ -2584,13 +2584,13 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|StorageRuntimeException
 argument_list|(
 literal|"Could not determine mergeability"
 argument_list|,
@@ -2893,7 +2893,7 @@ name|ChangeSet
 name|cs
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -3186,7 +3186,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 name|HashMap
 argument_list|<
@@ -3296,7 +3296,7 @@ name|AuthException
 throws|,
 name|UnprocessableEntityException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -3438,13 +3438,13 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|StorageRuntimeException
 argument_list|(
 name|e
 argument_list|)
@@ -3540,7 +3540,7 @@ name|RepositoryNotFoundException
 throws|,
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,

@@ -74,6 +74,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|FieldDef
@@ -95,20 +109,6 @@ operator|.
 name|RangeUtil
 operator|.
 name|Range
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -203,7 +203,7 @@ name|T
 name|object
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 function_decl|;
 DECL|method|match (T object)
 specifier|public
@@ -214,7 +214,7 @@ name|T
 name|object
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Integer
 name|valueInt

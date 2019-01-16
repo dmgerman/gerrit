@@ -416,6 +416,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -1722,20 +1736,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -2372,7 +2372,7 @@ name|RestApiException
 throws|,
 name|UpdateException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -2425,7 +2425,7 @@ name|RestApiException
 throws|,
 name|UpdateException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -3708,7 +3708,7 @@ name|AuthException
 throws|,
 name|UnprocessableEntityException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -6062,7 +6062,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|ResourceConflictException
 throws|,
@@ -6150,7 +6150,7 @@ name|Context
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -6252,7 +6252,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|UnprocessableEntityException
 throws|,
@@ -6669,7 +6669,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|PatchListNotAvailableException
 block|{
@@ -6738,7 +6738,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|PatchListNotAvailableException
 block|{
@@ -7190,7 +7190,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|commentsUtil
@@ -7232,7 +7232,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|commentsUtil
@@ -7276,7 +7276,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Map
 argument_list|<
@@ -7352,7 +7352,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Map
 argument_list|<
@@ -7698,7 +7698,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 if|if
 condition|(
@@ -7782,7 +7782,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|ResourceConflictException
 throws|,
@@ -9117,7 +9117,7 @@ argument_list|>
 name|del
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{

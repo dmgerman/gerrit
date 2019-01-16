@@ -134,6 +134,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -245,20 +259,6 @@ operator|.
 name|server
 operator|.
 name|InternalUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1042,7 +1042,7 @@ name|String
 name|getRefName
 parameter_list|()
 function_decl|;
-comment|/**    * Apply this update to the given inserter.    *    * @param rw walk for reading back any objects needed for the update.    * @param ins inserter to write to; callers should not flush.    * @param curr the current tip of the branch prior to this update.    * @return commit ID produced by inserting this update's commit, or null if this update is a no-op    *     and should be skipped. The zero ID is a valid return value, and indicates the ref should be    *     deleted.    * @throws OrmException if a Gerrit-level error occurred.    * @throws IOException if a lower-level error occurred.    */
+comment|/**    * Apply this update to the given inserter.    *    * @param rw walk for reading back any objects needed for the update.    * @param ins inserter to write to; callers should not flush.    * @param curr the current tip of the branch prior to this update.    * @return commit ID produced by inserting this update's commit, or null if this update is a no-op    *     and should be skipped. The zero ID is a valid return value, and indicates the ref should be    *     deleted.    * @throws StorageException if a Gerrit-level error occurred.    * @throws IOException if a lower-level error occurred.    */
 DECL|method|apply (RevWalk rw, ObjectInserter ins, ObjectId curr)
 specifier|final
 name|ObjectId
@@ -1058,7 +1058,7 @@ name|ObjectId
 name|curr
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 block|{
@@ -1277,7 +1277,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * Create a commit containing the contents of this update.    *    * @param ins inserter to write to; callers should not flush.    * @return a new commit builder representing this commit, or null to indicate the meta ref should    *     be deleted as a result of this update. The parent, author, and committer fields in the    *     return value are always overwritten. The tree ID may be unset by this method, which    *     indicates to the caller that it should be copied from the parent commit. To indicate that    *     this update is a no-op (but this could not be determined by {@link #isEmpty()}), return the    *     sentinel {@link #NO_OP_UPDATE}.    * @throws OrmException if a Gerrit-level error occurred.    * @throws IOException if a lower-level error occurred.    */
+comment|/**    * Create a commit containing the contents of this update.    *    * @param ins inserter to write to; callers should not flush.    * @return a new commit builder representing this commit, or null to indicate the meta ref should    *     be deleted as a result of this update. The parent, author, and committer fields in the    *     return value are always overwritten. The tree ID may be unset by this method, which    *     indicates to the caller that it should be copied from the parent commit. To indicate that    *     this update is a no-op (but this could not be determined by {@link #isEmpty()}), return the    *     sentinel {@link #NO_OP_UPDATE}.    * @throws StorageException if a Gerrit-level error occurred.    * @throws IOException if a lower-level error occurred.    */
 DECL|method|applyImpl (RevWalk rw, ObjectInserter ins, ObjectId curr)
 specifier|protected
 specifier|abstract
@@ -1294,7 +1294,7 @@ name|ObjectId
 name|curr
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|IOException
 function_decl|;

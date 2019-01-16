@@ -52,27 +52,27 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtorm.server
+DECL|package|com.google.gerrit.exceptions
 package|package
 name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 package|;
 end_package
 
 begin_comment
-comment|/** Any data store read or write error. */
+comment|/**  * Any read/write error in a storage layer.  *  *<p>This includes but is not limited to:  *  *<ul>  *<li>NoteDb exceptions  *<li>Secondary index exceptions  *<li>{@code AccountPatchReviewStore} exceptions  *<li>Wrapped JGit exceptions  *<li>Other wrapped {@code IOException}s  *</ul>  */
 end_comment
 
 begin_class
-DECL|class|OrmException
+DECL|class|StorageException
 specifier|public
 class|class
-name|OrmException
+name|StorageException
 extends|extends
 name|Exception
 block|{
@@ -85,9 +85,9 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|OrmException (String message)
+DECL|method|StorageException (String message)
 specifier|public
-name|OrmException
+name|StorageException
 parameter_list|(
 name|String
 name|message
@@ -99,9 +99,9 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OrmException (String message, Throwable why)
+DECL|method|StorageException (String message, Throwable why)
 specifier|public
-name|OrmException
+name|StorageException
 parameter_list|(
 name|String
 name|message
@@ -118,9 +118,9 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OrmException (Throwable why)
+DECL|method|StorageException (Throwable why)
 specifier|public
-name|OrmException
+name|StorageException
 parameter_list|(
 name|Throwable
 name|why

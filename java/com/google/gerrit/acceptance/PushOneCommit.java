@@ -200,6 +200,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -319,20 +333,6 @@ operator|.
 name|change
 operator|.
 name|InternalChangeQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1936,7 +1936,7 @@ name|ChangeData
 name|getChange
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|Iterables
@@ -1961,7 +1961,7 @@ name|PatchSet
 name|getPatchSet
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|getChange
@@ -1979,7 +1979,7 @@ name|Id
 name|getPatchSetId
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 name|getChange
@@ -2051,7 +2051,7 @@ modifier|...
 name|expectedReviewers
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|assertChange
 argument_list|(
@@ -2099,7 +2099,7 @@ argument_list|>
 name|expectedCcs
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Change
 name|c
@@ -2195,7 +2195,7 @@ argument_list|>
 name|expectedReviewers
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Iterable
 argument_list|<

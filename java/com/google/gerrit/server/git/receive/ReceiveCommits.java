@@ -844,6 +844,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -2361,20 +2375,6 @@ operator|.
 name|cli
 operator|.
 name|CmdLineParser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -6947,7 +6947,7 @@ catch|catch
 parameter_list|(
 name|RestApiException
 decl||
-name|OrmException
+name|StorageException
 decl||
 name|UpdateException
 decl||
@@ -12748,7 +12748,7 @@ return|return;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -14314,7 +14314,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -14566,7 +14566,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -14614,7 +14614,7 @@ argument_list|>
 name|existingRefs
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 for|for
 control|(
@@ -15457,7 +15457,7 @@ name|Key
 name|key
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 operator|new
@@ -15495,7 +15495,7 @@ name|RevCommit
 name|c
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 return|return
 operator|new
@@ -16205,7 +16205,7 @@ argument_list|>
 name|replace
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 throws|,
 name|RestApiException
 throws|,
@@ -16443,7 +16443,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|err
 parameter_list|)
 block|{
@@ -16625,7 +16625,7 @@ name|void
 name|readChangesForReplace
 parameter_list|()
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Collection
 argument_list|<
@@ -16937,7 +16937,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Validate the new patch set commit for this change.      *      *<p><strong>Side effects:</strong>      *      *<ul>      *<li>May add error or warning messages to the progress monitor      *<li>Will reject {@code cmd} prior to returning false      *<li>May reset {@code receivePack.getRevWalk()}; do not call in the middle of a walk.      *</ul>      *      * @return whether the new commit is valid      * @throws IOException      * @throws OrmException      * @throws PermissionBackendException      */
+comment|/**      * Validate the new patch set commit for this change.      *      *<p><strong>Side effects:</strong>      *      *<ul>      *<li>May add error or warning messages to the progress monitor      *<li>Will reject {@code cmd} prior to returning false      *<li>May reset {@code receivePack.getRevWalk()}; do not call in the middle of a walk.      *</ul>      *      * @return whether the new commit is valid      * @throws IOException      * @throws StorageException      * @throws PermissionBackendException      */
 DECL|method|validateNewPatchSet ()
 name|boolean
 name|validateNewPatchSet
@@ -16945,7 +16945,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -17018,7 +17018,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -17049,7 +17049,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -17913,7 +17913,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|OrmException
+name|StorageException
 block|{
 name|RevCommit
 name|newCommit
@@ -18297,7 +18297,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|PatchSet
 name|ps
@@ -20262,7 +20262,7 @@ catch|catch
 parameter_list|(
 name|IOException
 decl||
-name|OrmException
+name|StorageException
 decl||
 name|PermissionBackendException
 name|e
@@ -20409,7 +20409,7 @@ name|Id
 name|changeId
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 block|{
@@ -20464,7 +20464,7 @@ argument_list|>
 name|action
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 try|try
 block|{
@@ -20479,7 +20479,7 @@ name|INDEX_QUERY
 argument_list|,
 name|action
 argument_list|,
-name|OrmException
+name|StorageException
 operator|.
 name|class
 operator|::
@@ -20506,14 +20506,14 @@ name|throwIfInstanceOf
 argument_list|(
 name|e
 argument_list|,
-name|OrmException
+name|StorageException
 operator|.
 name|class
 argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -20541,7 +20541,7 @@ name|NameKey
 name|branch
 parameter_list|)
 throws|throws
-name|OrmException
+name|StorageException
 block|{
 name|Map
 argument_list|<
