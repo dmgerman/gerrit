@@ -82,16 +82,6 @@ name|Project
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_interface
 DECL|interface|ProjectIndexer
 specifier|public
@@ -108,8 +98,6 @@ operator|.
 name|NameKey
 name|nameKey
 parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
 block|}
 end_interface
