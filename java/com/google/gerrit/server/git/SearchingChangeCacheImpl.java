@@ -498,6 +498,10 @@ name|ExecutionException
 import|;
 end_import
 
+begin_comment
+comment|/**  * Cache based on an index query of the most recent changes. The number of cached items depends on  * the index implementation and configuration.  *  *<p>This cache is intended to be used when filtering references. By design it returns only a  * fraction of all changes. These are the changes that were modified last.  */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
