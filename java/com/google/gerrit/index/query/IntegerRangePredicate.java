@@ -74,20 +74,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|index
 operator|.
 name|FieldDef
@@ -202,8 +188,6 @@ parameter_list|(
 name|T
 name|object
 parameter_list|)
-throws|throws
-name|StorageException
 function_decl|;
 DECL|method|match (T object)
 specifier|public
@@ -213,8 +197,6 @@ parameter_list|(
 name|T
 name|object
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Integer
 name|valueInt

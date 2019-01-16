@@ -514,8 +514,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|Collection
@@ -792,8 +790,6 @@ argument_list|>
 name|patchSets
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|NoSuchChangeException
 block|{
 for|for

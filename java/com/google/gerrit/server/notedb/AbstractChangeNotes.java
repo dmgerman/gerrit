@@ -768,8 +768,6 @@ specifier|public
 name|T
 name|load
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -970,8 +968,6 @@ specifier|public
 name|T
 name|reload
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 name|loaded
 operator|=
@@ -987,8 +983,6 @@ specifier|public
 name|ObjectId
 name|loadRevision
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(

@@ -966,8 +966,6 @@ name|RebaseInput
 name|input
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|UpdateException
 throws|,
 name|RestApiException
@@ -1248,8 +1246,6 @@ name|input
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -2114,8 +2110,6 @@ name|RebaseInput
 name|input
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|UpdateException
 throws|,
 name|RestApiException

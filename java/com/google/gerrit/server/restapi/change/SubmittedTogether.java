@@ -868,8 +868,6 @@ name|ResourceConflictException
 throws|,
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|SubmittedTogetherInfo
@@ -910,8 +908,6 @@ throws|throws
 name|AuthException
 throws|,
 name|IOException
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1138,8 +1134,6 @@ name|int
 name|hidden
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 if|if
@@ -1299,8 +1293,6 @@ name|ChangeData
 argument_list|>
 name|cds
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 comment|// TODO(hiesel): Instead of calling these manually, either implement a helper that brings a
 comment|// database-backed change on-par with an index-backed change in terms of the populated fields in

@@ -90,20 +90,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -942,8 +928,6 @@ name|UpdateException
 throws|,
 name|PermissionBackendException
 throws|,
-name|StorageException
-throws|,
 name|ConfigInvalidException
 block|{
 name|PatchSet
@@ -1308,8 +1292,6 @@ parameter_list|)
 throws|throws
 name|BadRequestException
 throws|,
-name|StorageException
-throws|,
 name|ConfigInvalidException
 throws|,
 name|IOException
@@ -1479,8 +1461,6 @@ throws|,
 name|IOException
 throws|,
 name|ResourceConflictException
-throws|,
-name|StorageException
 block|{
 if|if
 condition|(

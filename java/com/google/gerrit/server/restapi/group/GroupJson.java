@@ -156,20 +156,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|client
@@ -573,8 +559,6 @@ name|GroupResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 return|return
@@ -602,8 +586,6 @@ name|Basic
 name|group
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 return|return
@@ -644,8 +626,6 @@ argument_list|>
 name|groupControlSupplier
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|GroupInfo
@@ -781,8 +761,6 @@ argument_list|>
 name|groupControlSupplier
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|info

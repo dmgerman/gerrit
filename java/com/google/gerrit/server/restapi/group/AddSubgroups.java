@@ -162,20 +162,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|common
@@ -801,8 +787,6 @@ name|AuthException
 throws|,
 name|UnprocessableEntityException
 throws|,
-name|StorageException
-throws|,
 name|ResourceNotFoundException
 throws|,
 name|IOException
@@ -1005,8 +989,6 @@ argument_list|>
 name|newSubgroupUuids
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|NoSuchGroupException
 throws|,
 name|IOException
@@ -1113,8 +1095,6 @@ throws|,
 name|MethodNotAllowedException
 throws|,
 name|ResourceNotFoundException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -1263,8 +1243,6 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 comment|// Do nothing, the group is already included.

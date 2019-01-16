@@ -1114,8 +1114,6 @@ parameter_list|)
 throws|throws
 name|AccountException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException

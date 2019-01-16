@@ -150,20 +150,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|client
@@ -1299,8 +1285,6 @@ name|PatchScript
 name|call
 parameter_list|()
 throws|throws
-name|StorageException
-throws|,
 name|LargeObjectException
 throws|,
 name|AuthException
@@ -1856,8 +1840,6 @@ throws|throws
 name|AuthException
 throws|,
 name|IOException
-throws|,
-name|StorageException
 block|{
 if|if
 condition|(
@@ -1963,8 +1945,6 @@ throws|throws
 name|AuthException
 throws|,
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|edit
 operator|=
@@ -2067,8 +2047,6 @@ parameter_list|,
 name|String
 name|newName
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Map
 argument_list|<
@@ -2475,8 +2453,6 @@ parameter_list|,
 name|String
 name|file
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 for|for
 control|(
@@ -2601,8 +2577,6 @@ parameter_list|,
 name|String
 name|file
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 for|for
 control|(

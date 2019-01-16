@@ -591,8 +591,6 @@ DECL|method|get ()
 name|int
 name|get
 parameter_list|()
-throws|throws
-name|StorageException
 function_decl|;
 block|}
 annotation|@
@@ -1125,8 +1123,6 @@ specifier|public
 name|int
 name|next
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 name|counterLock
 operator|.
@@ -1173,8 +1169,6 @@ parameter_list|(
 name|int
 name|count
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -1320,8 +1314,6 @@ parameter_list|(
 name|int
 name|val
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 comment|// Don't bother spinning. This is only for tests, and a test that calls set
 comment|// concurrently with other writes is doing it wrong.
@@ -1410,8 +1402,6 @@ parameter_list|(
 name|int
 name|val
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|counterLock
 operator|.
@@ -1559,8 +1549,6 @@ parameter_list|(
 name|int
 name|count
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(

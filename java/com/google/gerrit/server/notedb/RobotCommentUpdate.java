@@ -715,8 +715,6 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|RevisionNoteMap
@@ -1021,8 +1019,6 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 block|{
 if|if
@@ -1210,8 +1206,6 @@ name|ObjectId
 name|curr
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|CommitBuilder

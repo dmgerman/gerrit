@@ -1686,8 +1686,6 @@ name|commit
 parameter_list|()
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 try|try
 init|(
@@ -2857,8 +2855,6 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 block|{
 if|if
@@ -3081,8 +3077,6 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 block|{
 if|if
@@ -3238,8 +3232,6 @@ name|RevisionNoteBuilder
 argument_list|>
 name|toUpdate
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 comment|// Prohibit various kinds of illegal operations on comments.
 name|Set
@@ -3406,8 +3398,6 @@ name|ObjectId
 name|curr
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|checkState

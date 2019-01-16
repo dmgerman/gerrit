@@ -1308,8 +1308,6 @@ name|MailMessage
 name|message
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|UpdateException
 throws|,
 name|RestApiException
@@ -1679,8 +1677,6 @@ name|Id
 name|sender
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|UpdateException
 throws|,
 name|RestApiException
@@ -2163,8 +2159,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|UnprocessableEntityException
 throws|,
 name|PatchListNotAvailableException
@@ -2619,8 +2613,6 @@ parameter_list|,
 name|PatchSet
 name|current
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -2686,8 +2678,6 @@ name|PatchSet
 name|patchSetForComment
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|UnprocessableEntityException
 throws|,
 name|PatchListNotAvailableException
@@ -2930,8 +2920,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Set
 argument_list|<

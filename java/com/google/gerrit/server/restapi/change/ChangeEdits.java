@@ -90,20 +90,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|common
@@ -992,8 +978,6 @@ throws|,
 name|AuthException
 throws|,
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|Optional
 argument_list|<
@@ -1119,8 +1103,6 @@ name|ResourceConflictException
 throws|,
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|putEdit
@@ -1209,8 +1191,6 @@ throws|,
 name|AuthException
 throws|,
 name|ResourceConflictException
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1416,8 +1396,6 @@ throws|,
 name|IOException
 throws|,
 name|ResourceNotFoundException
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1673,8 +1651,6 @@ throws|,
 name|IOException
 throws|,
 name|ResourceConflictException
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1951,8 +1927,6 @@ name|ResourceConflictException
 throws|,
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 return|return
@@ -1997,8 +1971,6 @@ throws|,
 name|AuthException
 throws|,
 name|IOException
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -2163,8 +2135,6 @@ name|AuthException
 throws|,
 name|ResourceConflictException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
@@ -2202,8 +2172,6 @@ throws|throws
 name|AuthException
 throws|,
 name|IOException
-throws|,
-name|StorageException
 throws|,
 name|ResourceConflictException
 throws|,
@@ -2682,8 +2650,6 @@ name|BadRequestException
 throws|,
 name|ResourceConflictException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 if|if
@@ -2861,8 +2827,6 @@ throws|,
 name|IOException
 throws|,
 name|ResourceNotFoundException
-throws|,
-name|StorageException
 block|{
 name|Optional
 argument_list|<

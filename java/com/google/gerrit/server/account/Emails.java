@@ -407,8 +407,6 @@ name|email
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 return|return
 name|Streams
@@ -490,8 +488,6 @@ name|emails
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|ImmutableSetMultimap
 operator|.
@@ -656,8 +652,6 @@ name|T
 argument_list|>
 name|action
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{

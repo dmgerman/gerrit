@@ -88,20 +88,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|metrics
 operator|.
 name|Description
@@ -564,8 +550,6 @@ specifier|public
 name|int
 name|nextAccountId
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -599,8 +583,6 @@ specifier|public
 name|int
 name|nextChangeId
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -640,8 +622,6 @@ parameter_list|(
 name|int
 name|count
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -679,8 +659,6 @@ specifier|public
 name|int
 name|nextGroupId
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(

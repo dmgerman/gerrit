@@ -982,8 +982,6 @@ name|void
 name|create
 parameter_list|()
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 try|try
@@ -1080,8 +1078,6 @@ name|void
 name|ensureCreated
 parameter_list|()
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 try|try
@@ -1173,8 +1169,6 @@ specifier|protected
 name|void
 name|seedGroupSequenceRef
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 operator|new
 name|RepoSequence
@@ -1202,14 +1196,12 @@ name|next
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Test-specific setup.      *      * @throws StorageException if an error occurs.      */
+comment|/** Test-specific setup. */
 DECL|method|setUp ()
 specifier|protected
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|StorageException
 block|{}
 DECL|method|update ()
 name|ImmutableList
@@ -1405,8 +1397,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 name|setNotesMigrationConfig
 argument_list|()
@@ -1481,8 +1471,6 @@ specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 name|seedGroupSequenceRef
 argument_list|()

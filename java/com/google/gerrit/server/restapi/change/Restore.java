@@ -784,8 +784,6 @@ name|RestApiException
 throws|,
 name|UpdateException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 throws|,
 name|IOException
@@ -948,8 +946,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|ResourceConflictException
 block|{
 name|change
@@ -1160,8 +1156,6 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{

@@ -174,20 +174,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|restapi
@@ -566,8 +552,6 @@ parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|get
@@ -597,8 +581,6 @@ operator|.
 name|Id
 name|psId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|notes
@@ -626,8 +608,6 @@ parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|notes
@@ -657,8 +637,6 @@ parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|notes
@@ -693,8 +671,6 @@ name|Id
 argument_list|>
 name|patchSetIds
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|ImmutableMap
@@ -1002,8 +978,6 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ResourceConflictException
@@ -1045,8 +1019,6 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|Change

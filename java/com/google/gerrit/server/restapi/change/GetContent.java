@@ -76,20 +76,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|restapi
@@ -546,8 +532,6 @@ throws|,
 name|IOException
 throws|,
 name|BadRequestException
-throws|,
-name|StorageException
 block|{
 name|String
 name|path
@@ -710,8 +694,6 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|Change
@@ -829,8 +811,6 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|Change

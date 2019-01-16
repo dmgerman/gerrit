@@ -84,20 +84,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -473,8 +459,6 @@ parameter_list|(
 name|T
 name|object
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 for|for
 control|(

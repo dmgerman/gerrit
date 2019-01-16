@@ -391,8 +391,6 @@ name|T
 argument_list|>
 name|read
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 return|return
 name|source
@@ -411,8 +409,6 @@ name|FieldBundle
 argument_list|>
 name|readRaw
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 return|return
 name|source
@@ -434,8 +430,6 @@ parameter_list|(
 name|int
 name|start
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|opts
 operator|=

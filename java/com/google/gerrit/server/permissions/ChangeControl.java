@@ -480,8 +480,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|create
@@ -646,8 +644,6 @@ name|Nullable
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -962,8 +958,6 @@ name|Nullable
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -1237,8 +1231,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|isOwner

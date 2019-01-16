@@ -863,8 +863,6 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -900,7 +898,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**    * Find changes matching the given identifier.    *    * @param id change identifier.    * @return possibly-empty list of notes for all matching changes; may or may not be visible.    * @throws StorageException if an error occurred querying the database.    */
+comment|/**    * Find changes matching the given identifier.    *    * @param id change identifier.    * @return possibly-empty list of notes for all matching changes; may or may not be visible.    */
 DECL|method|find (String id)
 specifier|public
 name|List
@@ -912,8 +910,6 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{
@@ -942,7 +938,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Find changes matching the given identifier.    *    * @param id change identifier.    * @param enforceDeprecation boolean to see if we should throw {@link    *     DeprecatedIdentifierException} in case the identifier is deprecated    * @return possibly-empty list of notes for all matching changes; may or may not be visible.    * @throws StorageException if an error occurred querying the database    * @throws DeprecatedIdentifierException if the identifier is deprecated.    */
+comment|/**    * Find changes matching the given identifier.    *    * @param id change identifier.    * @param enforceDeprecation boolean to see if we should throw {@link    *     DeprecatedIdentifierException} in case the identifier is deprecated    * @return possibly-empty list of notes for all matching changes; may or may not be visible.    * @throws DeprecatedIdentifierException if the identifier is deprecated.    */
 DECL|method|find (String id, boolean enforceDeprecation)
 specifier|public
 name|List
@@ -958,8 +954,6 @@ name|boolean
 name|enforceDeprecation
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|DeprecatedIdentifierException
 block|{
 if|if
@@ -1326,8 +1320,6 @@ parameter_list|,
 name|int
 name|changeNumber
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Change
 operator|.
@@ -1422,8 +1414,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -1476,8 +1466,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|String
 name|project
@@ -1591,8 +1579,6 @@ name|ChangeData
 argument_list|>
 name|cds
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<

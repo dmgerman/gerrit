@@ -1400,8 +1400,6 @@ DECL|method|getTestAgainst ()
 name|ObjectId
 name|getTestAgainst
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(

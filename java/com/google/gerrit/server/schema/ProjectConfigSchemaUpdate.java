@@ -765,8 +765,6 @@ parameter_list|,
 name|String
 name|commitMessage
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(

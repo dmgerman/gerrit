@@ -76,20 +76,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -638,8 +624,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 throws|,
 name|IOException
@@ -810,8 +794,6 @@ name|BadRequestException
 throws|,
 name|AuthException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 if|if
@@ -947,8 +929,6 @@ name|rsrc
 parameter_list|)
 throws|throws
 name|AuthException
-throws|,
-name|StorageException
 block|{
 if|if
 condition|(
@@ -1081,8 +1061,6 @@ throws|throws
 name|AuthException
 throws|,
 name|BadRequestException
-throws|,
-name|StorageException
 block|{
 if|if
 condition|(

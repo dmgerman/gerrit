@@ -877,8 +877,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|ChangeNotes

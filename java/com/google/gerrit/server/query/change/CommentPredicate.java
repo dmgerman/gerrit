@@ -219,8 +219,6 @@ parameter_list|(
 name|ChangeData
 name|object
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{

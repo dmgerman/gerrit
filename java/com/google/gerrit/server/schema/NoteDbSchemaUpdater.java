@@ -504,8 +504,6 @@ parameter_list|(
 name|UpdateUI
 name|ui
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|ensureSchemaCreated
 argument_list|()
@@ -620,8 +618,6 @@ specifier|private
 name|void
 name|ensureSchemaCreated
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{
@@ -665,8 +661,6 @@ specifier|private
 name|void
 name|checkNoteDbConfigFor216
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 comment|// Check that the NoteDb migration config matches what we expect from a site that both:
 comment|// * Completed the change migration to NoteDB.
@@ -841,8 +835,6 @@ name|Integer
 argument_list|>
 name|allVersions
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|int
 name|firstVersion

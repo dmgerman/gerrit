@@ -999,8 +999,6 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|RestApiException
 block|{
 name|CheckProjectResultInfo
@@ -1052,8 +1050,6 @@ name|input
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 throws|,
 name|RestApiException
 block|{
@@ -1725,8 +1721,6 @@ name|ObjectId
 argument_list|>
 name|mergedSha1s
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(

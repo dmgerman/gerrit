@@ -1092,8 +1092,6 @@ name|key
 parameter_list|)
 throws|throws
 name|PGPException
-throws|,
-name|StorageException
 block|{
 name|List
 argument_list|<

@@ -872,8 +872,6 @@ name|RestApiException
 throws|,
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 if|if
@@ -1471,8 +1469,6 @@ name|NoSuchChangeException
 throws|,
 name|ResourceConflictException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 block|{
 if|if
@@ -1630,8 +1626,6 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(

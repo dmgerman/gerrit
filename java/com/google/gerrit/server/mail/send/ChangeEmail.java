@@ -899,8 +899,6 @@ parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|super
 argument_list|(
@@ -2219,8 +2217,6 @@ parameter_list|,
 name|boolean
 name|includeWatchersFromNotifyConfig
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(

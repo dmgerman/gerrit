@@ -3901,8 +3901,6 @@ name|String
 name|value
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|QueryParseException
 block|{
 name|List
@@ -4804,8 +4802,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -5395,8 +5391,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -5518,8 +5512,6 @@ name|who
 parameter_list|)
 throws|throws
 name|QueryParseException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -5662,8 +5654,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -5767,8 +5757,6 @@ name|who
 parameter_list|)
 throws|throws
 name|QueryParseException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -5999,8 +5987,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -6027,8 +6013,6 @@ name|who
 parameter_list|)
 throws|throws
 name|QueryParseException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6122,8 +6106,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -6180,8 +6162,6 @@ name|who
 parameter_list|)
 throws|throws
 name|QueryParseException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6435,8 +6415,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -6464,8 +6442,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -6492,8 +6468,6 @@ name|who
 parameter_list|)
 throws|throws
 name|QueryParseException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6524,8 +6498,6 @@ name|forDefaultField
 parameter_list|)
 throws|throws
 name|QueryParseException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6629,8 +6601,6 @@ name|who
 parameter_list|)
 throws|throws
 name|QueryParseException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -6919,8 +6889,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -7014,8 +6982,6 @@ name|who
 parameter_list|)
 throws|throws
 name|QueryParseException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -7203,8 +7169,6 @@ name|who
 parameter_list|)
 throws|throws
 name|QueryParseException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -8281,8 +8245,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -8403,8 +8365,6 @@ name|String
 name|value
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|QueryParseException
 block|{
 if|if
@@ -8593,8 +8553,6 @@ name|forDefaultField
 parameter_list|)
 throws|throws
 name|QueryParseException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,

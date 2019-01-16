@@ -531,8 +531,6 @@ parameter_list|,
 name|boolean
 name|includeWatchersFromNotifyConfig
 parameter_list|)
-throws|throws
-name|StorageException
 function_decl|;
 comment|/** Add users or email addresses to the TO, CC, or BCC list. */
 DECL|method|add (RecipientType type, Watchers.List list)

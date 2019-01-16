@@ -338,8 +338,6 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IllegalLabelException
 block|{
 if|if

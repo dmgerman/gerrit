@@ -168,20 +168,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -573,8 +559,6 @@ argument_list|>
 name|rsrcs
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|List
@@ -760,8 +744,6 @@ name|ReviewerResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 return|return
@@ -793,8 +775,6 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|PatchSet
@@ -862,8 +842,6 @@ argument_list|>
 name|approvals
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|LabelTypes

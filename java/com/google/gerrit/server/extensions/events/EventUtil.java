@@ -104,20 +104,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|client
@@ -588,8 +574,6 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|changeJsonFactory
@@ -617,8 +601,6 @@ name|PatchSet
 name|ps
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PatchListNotAvailableException
 throws|,
 name|GpgException
@@ -653,8 +635,6 @@ name|PatchSet
 name|ps
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PatchListNotAvailableException
 throws|,
 name|GpgException

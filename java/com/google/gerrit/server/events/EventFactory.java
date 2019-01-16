@@ -1419,8 +1419,6 @@ parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|ChangeAttribute
 name|a
@@ -1622,8 +1620,6 @@ parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Collection
 argument_list|<
@@ -2140,8 +2136,6 @@ name|PatchSet
 name|currentPs
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|RevCommit
@@ -2371,8 +2365,6 @@ name|PatchSet
 name|currentPs
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 if|if
@@ -3637,8 +3629,6 @@ name|who
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|UserIdentity
 name|u

@@ -76,20 +76,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|common
@@ -619,8 +605,6 @@ name|RestApiException
 throws|,
 name|UpdateException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|rsrc
@@ -756,8 +740,6 @@ name|ctx
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|StorageException
 block|{
 name|change
 operator|=
@@ -924,8 +906,6 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|assigneeChanged
 operator|.

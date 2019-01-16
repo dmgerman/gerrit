@@ -1230,8 +1230,6 @@ specifier|public
 name|void
 name|createTableIfNotExists
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -1312,8 +1310,6 @@ specifier|public
 name|void
 name|dropTableIfExists
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -1386,8 +1382,6 @@ parameter_list|,
 name|String
 name|path
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -1526,8 +1520,6 @@ name|String
 argument_list|>
 name|paths
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -1686,8 +1678,6 @@ parameter_list|,
 name|String
 name|path
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -1796,8 +1786,6 @@ operator|.
 name|Id
 name|psId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -1891,8 +1879,6 @@ operator|.
 name|Id
 name|accountId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(

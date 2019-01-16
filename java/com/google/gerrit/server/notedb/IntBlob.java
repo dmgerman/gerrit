@@ -414,8 +414,6 @@ name|refName
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 try|try
 init|(
@@ -460,8 +458,6 @@ name|rw
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 return|return
 name|parse
@@ -497,8 +493,6 @@ name|or
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|Ref
 name|ref

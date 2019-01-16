@@ -687,8 +687,6 @@ argument_list|>
 name|in
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|ListMultimap
@@ -839,8 +837,6 @@ argument_list|>
 name|in
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 try|try
@@ -1410,8 +1406,6 @@ argument_list|>
 name|in
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|ListMultimap

@@ -321,7 +321,7 @@ name|labelTypes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergedSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|MergedSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|MergedSender
 parameter_list|(
@@ -342,8 +342,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|super
 argument_list|(

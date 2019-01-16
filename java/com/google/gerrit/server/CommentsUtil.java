@@ -1068,8 +1068,6 @@ name|String
 name|parentUuid
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|UnprocessableEntityException
 block|{
 if|if
@@ -1335,8 +1333,6 @@ operator|.
 name|Key
 name|key
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|publishedByChange
@@ -1384,8 +1380,6 @@ operator|.
 name|Key
 name|key
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|draftByChangeAuthor
@@ -1430,8 +1424,6 @@ parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|notes
 operator|.
@@ -1467,8 +1459,6 @@ parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|notes
 operator|.
@@ -1504,8 +1494,6 @@ parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -1593,8 +1581,6 @@ operator|.
 name|Id
 name|psId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -1694,8 +1680,6 @@ parameter_list|,
 name|String
 name|file
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|commentsOnFile
@@ -1731,8 +1715,6 @@ operator|.
 name|Id
 name|psId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|removeCommentsOnAncestorOfCommitMessage
@@ -1771,8 +1753,6 @@ operator|.
 name|Id
 name|psId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|commentsOnPatchSet
@@ -1846,7 +1826,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|draftByPatchSetAuthor (PatchSet.Id psId, Account.Id author, ChangeNotes notes)
+DECL|method|draftByPatchSetAuthor ( PatchSet.Id psId, Account.Id author, ChangeNotes notes)
 specifier|public
 name|List
 argument_list|<
@@ -1867,8 +1847,6 @@ parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|commentsOnPatchSet
@@ -1909,8 +1887,6 @@ operator|.
 name|Id
 name|author
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|commentsOnFile
@@ -1948,8 +1924,6 @@ operator|.
 name|Id
 name|author
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -2434,8 +2408,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(

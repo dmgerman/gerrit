@@ -267,8 +267,6 @@ parameter_list|,
 name|Input
 name|input
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|boolean
 name|reviewFlagUpdated
@@ -388,8 +386,6 @@ parameter_list|,
 name|Input
 name|input
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|accountPatchReviewStore
 operator|.

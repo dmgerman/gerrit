@@ -88,20 +88,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -445,8 +431,6 @@ name|branch
 parameter_list|)
 throws|throws
 name|UnloggedFailure
-throws|,
-name|StorageException
 block|{
 comment|// By commit?
 comment|//
@@ -881,8 +865,6 @@ name|Id
 name|changeId
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|UnloggedFailure
 block|{
 if|if

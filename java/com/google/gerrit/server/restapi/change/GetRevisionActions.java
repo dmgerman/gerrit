@@ -482,8 +482,6 @@ parameter_list|(
 name|RevisionResource
 name|rsrc
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|Response

@@ -104,20 +104,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|registration
@@ -632,8 +618,6 @@ name|ResourceNotFoundException
 throws|,
 name|AuthException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
@@ -880,8 +864,6 @@ name|String
 name|id
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|AuthException
@@ -1086,8 +1068,6 @@ parameter_list|,
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|PatchSet
 name|ps

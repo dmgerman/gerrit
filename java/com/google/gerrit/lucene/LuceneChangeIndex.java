@@ -2480,8 +2480,6 @@ name|ChangeData
 argument_list|>
 name|read
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -2589,8 +2587,6 @@ name|FieldBundle
 argument_list|>
 name|readRaw
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<

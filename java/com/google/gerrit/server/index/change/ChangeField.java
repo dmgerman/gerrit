@@ -1528,8 +1528,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -1793,8 +1791,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|extensions
@@ -1845,8 +1841,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|extensions
@@ -1882,8 +1876,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{
@@ -1977,8 +1969,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{
@@ -2072,8 +2062,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -3529,8 +3517,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Set
 argument_list|<
@@ -3672,8 +3658,6 @@ parameter_list|,
 name|boolean
 name|owners
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Set
 argument_list|<
@@ -3835,8 +3819,6 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 return|return
@@ -3864,8 +3846,6 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 return|return
@@ -3891,8 +3871,6 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 return|return
@@ -3920,8 +3898,6 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 return|return
@@ -6086,8 +6062,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|formatSubmitRecordValues
@@ -6666,8 +6640,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Change
 name|c

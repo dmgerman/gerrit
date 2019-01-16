@@ -260,20 +260,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -572,8 +558,6 @@ operator|.
 name|Id
 name|psId
 parameter_list|)
-throws|throws
-name|StorageException
 function_decl|;
 block|}
 DECL|field|patchSetsBySha
@@ -1177,8 +1161,6 @@ name|String
 argument_list|>
 name|getGroups
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 name|done
 operator|=
@@ -1383,8 +1365,6 @@ name|String
 argument_list|>
 name|candidates
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Set
 argument_list|<
@@ -1610,8 +1590,6 @@ parameter_list|,
 name|String
 name|group
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|ObjectId
 name|id

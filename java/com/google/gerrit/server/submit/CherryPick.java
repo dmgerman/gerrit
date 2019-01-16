@@ -136,20 +136,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|restapi
@@ -702,8 +688,6 @@ name|IntegrationException
 throws|,
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|MethodNotAllowedException
 block|{
 comment|// If there is only one parent, a cherry-pick can be done by taking the
@@ -1009,8 +993,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|NoSuchChangeException
 throws|,
 name|IOException

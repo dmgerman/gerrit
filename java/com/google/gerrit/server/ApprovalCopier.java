@@ -579,8 +579,6 @@ name|Nullable
 name|Config
 name|repoConfig
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|getForPatchSet
@@ -631,8 +629,6 @@ name|PatchSetApproval
 argument_list|>
 name|dontCopy
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|PatchSet
 name|ps
@@ -705,8 +701,6 @@ name|PatchSetApproval
 argument_list|>
 name|dontCopy
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|requireNonNull
 argument_list|(
@@ -1158,8 +1152,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Collection
 argument_list|<

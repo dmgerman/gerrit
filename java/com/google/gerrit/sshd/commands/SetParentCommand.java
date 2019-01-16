@@ -1016,8 +1016,6 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 throws|,
-name|StorageException
-throws|,
 name|RestApiException
 block|{
 specifier|final

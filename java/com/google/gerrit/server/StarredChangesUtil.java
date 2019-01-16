@@ -1467,8 +1467,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -1570,8 +1568,6 @@ argument_list|>
 name|labelsToRemove
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IllegalLabelException
 block|{
 try|try
@@ -1763,8 +1759,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -2012,8 +2006,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -2168,8 +2160,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -2400,8 +2390,6 @@ name|ChangeResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IllegalLabelException
 block|{
 name|star
@@ -2453,8 +2441,6 @@ name|ChangeResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IllegalLabelException
 block|{
 name|star
@@ -2512,8 +2498,6 @@ operator|.
 name|Id
 name|accountId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|getLabels
@@ -2537,8 +2521,6 @@ parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|isIgnoredBy
@@ -2655,8 +2637,6 @@ name|ChangeResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IllegalLabelException
 block|{
 name|star
@@ -2722,8 +2702,6 @@ name|ChangeResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IllegalLabelException
 block|{
 name|star
@@ -3303,8 +3281,6 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|InvalidLabelsException
 block|{
 try|try
@@ -3492,8 +3468,6 @@ name|oldObjectId
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 if|if
 condition|(

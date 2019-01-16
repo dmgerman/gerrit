@@ -66,20 +66,6 @@ name|query
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
 begin_interface
 DECL|interface|DataSource
 specifier|public
@@ -103,8 +89,6 @@ name|T
 argument_list|>
 name|read
 parameter_list|()
-throws|throws
-name|StorageException
 function_decl|;
 comment|/** @return read from the database and return the raw results. */
 DECL|method|readRaw ()
@@ -114,8 +98,6 @@ name|FieldBundle
 argument_list|>
 name|readRaw
 parameter_list|()
-throws|throws
-name|StorageException
 function_decl|;
 block|}
 end_interface

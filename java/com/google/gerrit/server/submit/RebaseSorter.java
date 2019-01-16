@@ -477,8 +477,6 @@ name|toSort
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 specifier|final
 name|List

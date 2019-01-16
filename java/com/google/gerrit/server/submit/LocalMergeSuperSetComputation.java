@@ -908,8 +908,6 @@ name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
@@ -1240,8 +1238,6 @@ name|ChangeData
 argument_list|>
 name|changes
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|ImmutableListMultimap
 operator|.
@@ -1468,8 +1464,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|SubmitTypeRecord
 name|str
@@ -1537,8 +1531,6 @@ argument_list|>
 name|nonVisibleHashes
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|List
@@ -1662,8 +1654,6 @@ argument_list|>
 name|hashes
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 if|if
@@ -2017,8 +2007,6 @@ parameter_list|(
 name|String
 name|msg
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|logger
 operator|.

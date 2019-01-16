@@ -772,8 +772,6 @@ name|ResourceConflictException
 throws|,
 name|BadRequestException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|Change
@@ -1121,8 +1119,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|SubmitTypeRecord
 name|rec

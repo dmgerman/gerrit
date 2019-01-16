@@ -1992,15 +1992,13 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Stage updates in the manager's internal list of commands.    *    * @throws StorageException if a database layer error occurs.    * @throws IOException if a storage layer error occurs.    */
+comment|/**    * Stage updates in the manager's internal list of commands.    *    * @throws IOException if a storage layer error occurs.    */
 DECL|method|stage ()
 specifier|private
 name|void
 name|stage
 parameter_list|()
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 try|try
@@ -2101,8 +2099,6 @@ name|BatchRefUpdate
 name|execute
 parameter_list|()
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 return|return
@@ -2123,8 +2119,6 @@ name|boolean
 name|dryrun
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|checkNotExecuted
@@ -2618,8 +2612,6 @@ name|void
 name|addCommands
 parameter_list|()
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 if|if
@@ -2916,8 +2908,6 @@ name|OpenRepo
 name|or
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 for|for
@@ -3120,8 +3110,6 @@ name|OpenRepo
 name|openRepo
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 for|for

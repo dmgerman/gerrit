@@ -639,8 +639,6 @@ parameter_list|,
 name|String
 name|base
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 comment|// Try parsing the base as a ref string.
 name|PatchSet
@@ -890,8 +888,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -930,7 +926,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**    * Find the commit onto which a patch set should be rebased.    *    *<p>This is defined as the latest patch set of the change corresponding to this commit's parent,    * or the destination branch tip in the case where the parent's change is merged.    *    * @param patchSet patch set for which the new base commit should be found.    * @param destBranch the destination branch.    * @param git the repository.    * @param rw the RevWalk.    * @return the commit onto which the patch set should be rebased.    * @throws RestApiException if rebase is not possible.    * @throws IOException if accessing the repository fails.    * @throws StorageException if accessing the database fails.    */
+comment|/**    * Find the commit onto which a patch set should be rebased.    *    *<p>This is defined as the latest patch set of the change corresponding to this commit's parent,    * or the destination branch tip in the case where the parent's change is merged.    *    * @param patchSet patch set for which the new base commit should be found.    * @param destBranch the destination branch.    * @param git the repository.    * @param rw the RevWalk.    * @return the commit onto which the patch set should be rebased.    * @throws RestApiException if rebase is not possible.    * @throws IOException if accessing the repository fails.    */
 DECL|method|findBaseRevision ( PatchSet patchSet, Branch.NameKey destBranch, Repository git, RevWalk rw)
 specifier|public
 name|ObjectId
@@ -954,8 +950,6 @@ throws|throws
 name|RestApiException
 throws|,
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|String
 name|baseRev

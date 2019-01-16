@@ -782,8 +782,6 @@ name|String
 name|query
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|QueryParseException
 block|{
 name|Collection

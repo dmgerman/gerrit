@@ -162,20 +162,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -1334,8 +1320,6 @@ name|NameKey
 name|dest
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|InvalidChangeOperationException
@@ -1413,8 +1397,6 @@ name|NameKey
 name|dest
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|InvalidChangeOperationException
@@ -2114,8 +2096,6 @@ throws|throws
 name|RestApiException
 throws|,
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|RevCommit
 name|destRefTip
@@ -2474,8 +2454,6 @@ name|CherryPickInput
 name|input
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|Change
@@ -2710,8 +2688,6 @@ name|input
 parameter_list|)
 throws|throws
 name|BadRequestException
-throws|,
-name|StorageException
 throws|,
 name|ConfigInvalidException
 throws|,

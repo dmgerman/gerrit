@@ -164,20 +164,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -1614,8 +1600,6 @@ name|ChangeInput
 name|input
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|InvalidChangeOperationException
@@ -2213,8 +2197,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 throws|,
 name|IOException
@@ -2639,8 +2621,6 @@ name|String
 name|baseChange
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|UnprocessableEntityException
 throws|,
 name|PermissionBackendException
@@ -3274,8 +3254,6 @@ throws|throws
 name|RestApiException
 throws|,
 name|IOException
-throws|,
-name|StorageException
 block|{
 if|if
 condition|(

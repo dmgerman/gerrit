@@ -1182,8 +1182,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|StorageException
-throws|,
 name|UpdateException
 throws|,
 name|PermissionBackendException
@@ -1519,8 +1517,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|ResourceConflictException
 throws|,
 name|IOException
@@ -2003,8 +1999,6 @@ name|project
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|List
 argument_list|<

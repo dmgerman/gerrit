@@ -104,20 +104,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|annotations
@@ -724,8 +710,6 @@ parameter_list|()
 throws|throws
 name|Failure
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -792,8 +776,6 @@ name|createGroup
 parameter_list|()
 throws|throws
 name|RestApiException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -894,8 +876,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -952,8 +932,6 @@ name|rsrc
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,

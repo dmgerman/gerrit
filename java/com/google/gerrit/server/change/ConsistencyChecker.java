@@ -3671,8 +3671,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|ctx
 operator|.
@@ -4324,8 +4322,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PatchSetInfoNotAvailableException
 block|{
 comment|// Delete dangling key references.
@@ -4476,8 +4472,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PatchSetInfoNotAvailableException
 throws|,
 name|NoPatchSetsWouldRemainException

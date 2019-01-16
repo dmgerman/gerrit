@@ -130,20 +130,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|registration
@@ -661,8 +647,6 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 try|try
@@ -909,8 +893,6 @@ argument_list|>
 name|visibleTopicsSeen
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 throws|,
 name|IOException
@@ -1139,8 +1121,6 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|Set
@@ -1280,8 +1260,6 @@ parameter_list|(
 name|String
 name|topic
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|queryProvider

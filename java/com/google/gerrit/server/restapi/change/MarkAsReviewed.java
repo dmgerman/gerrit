@@ -394,8 +394,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|StorageException
-throws|,
 name|IllegalLabelException
 block|{
 name|stars

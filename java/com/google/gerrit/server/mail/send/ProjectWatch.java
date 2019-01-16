@@ -150,20 +150,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|index
 operator|.
 name|query
@@ -567,8 +553,6 @@ parameter_list|,
 name|boolean
 name|includeWatchersFromNotifyConfig
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Watchers
 name|matching
@@ -1091,8 +1075,6 @@ name|NotifyConfig
 name|nc
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|QueryParseException
 block|{
 for|for
@@ -1435,8 +1417,6 @@ parameter_list|,
 name|NotifyType
 name|type
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|IdentifiedUser
 name|user
@@ -1518,8 +1498,6 @@ name|String
 name|filter
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|QueryParseException
 block|{
 name|ChangeQueryBuilder

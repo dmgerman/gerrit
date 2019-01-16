@@ -1001,7 +1001,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param updateFactory factory for creating updates.    * @param notes the {@code ChangeNotes} of the change to which the change edit belongs    * @param user the current user    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications should be sent after the    *     change edit is published.    * @throws IOException    * @throws StorageException    * @throws UpdateException    * @throws RestApiException    */
+comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param updateFactory factory for creating updates.    * @param notes the {@code ChangeNotes} of the change to which the change edit belongs    * @param user the current user    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications should be sent after the    *     change edit is published.    * @throws IOException    * @throws UpdateException    * @throws RestApiException    */
 DECL|method|publish ( BatchUpdate.Factory updateFactory, ChangeNotes notes, CurrentUser user, ChangeEdit edit, NotifyResolver.Result notify)
 specifier|public
 name|void
@@ -1028,8 +1028,6 @@ name|notify
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 throws|,
 name|RestApiException
 throws|,
@@ -1399,7 +1397,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Delete change edit.    *    * @param edit change edit to delete    * @throws IOException    * @throws StorageException    */
+comment|/**    * Delete change edit.    *    * @param edit change edit to delete    * @throws IOException    */
 DECL|method|delete (ChangeEdit edit)
 specifier|public
 name|void
@@ -1410,8 +1408,6 @@ name|edit
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|Change
 name|change

@@ -479,8 +479,6 @@ name|psi
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|rw
 operator|.
@@ -737,8 +735,6 @@ name|who
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 specifier|final
 name|UserIdentity

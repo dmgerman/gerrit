@@ -893,8 +893,6 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|changeControlFactory

@@ -130,20 +130,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -1509,8 +1495,6 @@ name|void
 name|setAccount
 parameter_list|()
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|UnloggedFailure
@@ -1802,8 +1786,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1867,8 +1849,6 @@ name|sshKeys
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|StorageException
 throws|,
 name|RepositoryNotFoundException
 throws|,
@@ -1982,8 +1962,6 @@ parameter_list|)
 throws|throws
 name|AuthException
 throws|,
-name|StorageException
-throws|,
 name|RepositoryNotFoundException
 throws|,
 name|IOException
@@ -2046,8 +2024,6 @@ throws|throws
 name|UnloggedFailure
 throws|,
 name|RestApiException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -2120,8 +2096,6 @@ name|email
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -2222,8 +2196,6 @@ name|email
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,

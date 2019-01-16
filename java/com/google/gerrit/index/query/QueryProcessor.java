@@ -949,8 +949,6 @@ argument_list|>
 name|query
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|QueryParseException
 block|{
 return|return
@@ -992,8 +990,6 @@ argument_list|>
 name|queries
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|QueryParseException
 block|{
 try|try
@@ -1072,8 +1068,6 @@ argument_list|>
 name|queries
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|QueryParseException
 block|{
 name|long

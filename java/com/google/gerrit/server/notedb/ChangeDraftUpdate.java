@@ -906,8 +906,6 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|RevisionNoteMap
@@ -1261,8 +1259,6 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 block|{
 comment|// The old DraftCommentNotes already parsed the revision notes. We can reuse them as long as
@@ -1444,8 +1440,6 @@ name|ObjectId
 name|curr
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|CommitBuilder

@@ -669,8 +669,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 throws|,
 name|IOException
@@ -922,8 +920,6 @@ name|in
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 block|{
@@ -1294,8 +1290,6 @@ name|in
 parameter_list|)
 throws|throws
 name|AuthException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,

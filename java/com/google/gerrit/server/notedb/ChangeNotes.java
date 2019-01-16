@@ -1057,8 +1057,6 @@ parameter_list|(
 name|Change
 name|c
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|createChecked
@@ -1090,8 +1088,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Change
 name|change
@@ -1130,8 +1126,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|InternalChangeQuery
 name|query
@@ -1274,8 +1268,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|checkArgument
 argument_list|(
@@ -1343,8 +1335,6 @@ parameter_list|,
 name|boolean
 name|shouldExist
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 operator|new
@@ -1374,8 +1364,6 @@ parameter_list|,
 name|RefCache
 name|refs
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 operator|new
@@ -1410,8 +1398,6 @@ name|Id
 argument_list|>
 name|changeIds
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -1487,8 +1473,6 @@ name|ChangeNotes
 argument_list|>
 name|predicate
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -2804,8 +2788,6 @@ operator|.
 name|Id
 name|author
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|getDraftComments
@@ -2836,8 +2818,6 @@ name|Nullable
 name|Ref
 name|ref
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|loadDraftComments
 argument_list|(
@@ -2892,8 +2872,6 @@ name|RobotComment
 argument_list|>
 name|getRobotComments
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 name|loadRobotComments
 argument_list|()
@@ -2921,8 +2899,6 @@ name|Nullable
 name|Ref
 name|ref
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -2973,8 +2949,6 @@ specifier|private
 name|void
 name|loadRobotComments
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -3029,8 +3003,6 @@ parameter_list|(
 name|Comment
 name|c
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(

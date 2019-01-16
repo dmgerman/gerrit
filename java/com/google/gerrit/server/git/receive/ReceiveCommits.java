@@ -14613,8 +14613,6 @@ name|Ref
 argument_list|>
 name|existingRefs
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 for|for
 control|(
@@ -15456,8 +15454,6 @@ operator|.
 name|Key
 name|key
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 operator|new
@@ -15494,8 +15490,6 @@ parameter_list|(
 name|RevCommit
 name|c
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 operator|new
@@ -16205,8 +16199,6 @@ argument_list|>
 name|replace
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|RestApiException
 throws|,
 name|UpdateException
@@ -16624,8 +16616,6 @@ specifier|private
 name|void
 name|readChangesForReplace
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 name|Collection
 argument_list|<
@@ -16937,15 +16927,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Validate the new patch set commit for this change.      *      *<p><strong>Side effects:</strong>      *      *<ul>      *<li>May add error or warning messages to the progress monitor      *<li>Will reject {@code cmd} prior to returning false      *<li>May reset {@code receivePack.getRevWalk()}; do not call in the middle of a walk.      *</ul>      *      * @return whether the new commit is valid      * @throws IOException      * @throws StorageException      * @throws PermissionBackendException      */
+comment|/**      * Validate the new patch set commit for this change.      *      *<p><strong>Side effects:</strong>      *      *<ul>      *<li>May add error or warning messages to the progress monitor      *<li>Will reject {@code cmd} prior to returning false      *<li>May reset {@code receivePack.getRevWalk()}; do not call in the middle of a walk.      *</ul>      *      * @return whether the new commit is valid      * @throws IOException      * @throws PermissionBackendException      */
 DECL|method|validateNewPatchSet ()
 name|boolean
 name|validateNewPatchSet
 parameter_list|()
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -17018,8 +17006,6 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 if|if
@@ -17048,8 +17034,6 @@ name|validateNewPatchSetNoteDb
 parameter_list|()
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 block|{
@@ -17912,8 +17896,6 @@ name|newPatchSet
 parameter_list|()
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|RevCommit
 name|newCommit
@@ -18296,8 +18278,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|PatchSet
 name|ps
@@ -20408,8 +20388,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{
@@ -20463,8 +20441,6 @@ name|T
 argument_list|>
 name|action
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{
@@ -20540,8 +20516,6 @@ operator|.
 name|NameKey
 name|branch
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Map
 argument_list|<

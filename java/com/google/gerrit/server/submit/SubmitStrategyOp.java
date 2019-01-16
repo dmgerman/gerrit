@@ -2023,8 +2023,6 @@ name|ctx
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|PatchSet
 operator|.
@@ -2202,8 +2200,6 @@ name|IdentifiedUser
 name|user
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|Change
@@ -2374,8 +2370,6 @@ name|ChangeUpdate
 name|update
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|PatchSet
@@ -2813,8 +2807,6 @@ parameter_list|,
 name|CommitMergeStatus
 name|s
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|requireNonNull
 argument_list|(

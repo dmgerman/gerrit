@@ -90,20 +90,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|restapi
@@ -1008,8 +994,6 @@ name|RestApiException
 throws|,
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|NoSuchChangeException
 throws|,
 name|PermissionBackendException
@@ -1361,8 +1345,6 @@ parameter_list|)
 throws|throws
 name|ResourceConflictException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|boolean
@@ -1396,8 +1378,6 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|patchSetInserter
 operator|.

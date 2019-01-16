@@ -281,8 +281,6 @@ name|ChangeData
 argument_list|>
 name|read
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 comment|// TODO(spearce) This probably should be more lazy.
 comment|//
@@ -400,8 +398,6 @@ name|FieldBundle
 argument_list|>
 name|readRaw
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 throw|throw
 operator|new

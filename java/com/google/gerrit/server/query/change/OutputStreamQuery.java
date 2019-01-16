@@ -1435,8 +1435,6 @@ argument_list|>
 name|revWalks
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|LabelTypes

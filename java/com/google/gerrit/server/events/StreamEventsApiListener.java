@@ -1333,8 +1333,6 @@ parameter_list|(
 name|ChangeInfo
 name|info
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{
@@ -1381,8 +1379,6 @@ parameter_list|,
 name|RevisionInfo
 name|info
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|psUtil

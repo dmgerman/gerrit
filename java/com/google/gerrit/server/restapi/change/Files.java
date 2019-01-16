@@ -1258,8 +1258,6 @@ name|BadRequestException
 throws|,
 name|ResourceNotFoundException
 throws|,
-name|StorageException
-throws|,
 name|RepositoryNotFoundException
 throws|,
 name|IOException
@@ -1720,8 +1718,6 @@ name|resource
 parameter_list|)
 throws|throws
 name|AuthException
-throws|,
-name|StorageException
 block|{
 name|CurrentUser
 name|user
@@ -1944,8 +1940,6 @@ throws|throws
 name|IOException
 throws|,
 name|PatchListNotAvailableException
-throws|,
-name|StorageException
 block|{
 name|Project
 operator|.

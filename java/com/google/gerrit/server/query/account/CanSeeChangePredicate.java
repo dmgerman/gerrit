@@ -265,8 +265,6 @@ parameter_list|(
 name|AccountState
 name|accountState
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{

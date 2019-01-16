@@ -1413,8 +1413,6 @@ parameter_list|,
 name|boolean
 name|allowClosed
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|checkArgument
 argument_list|(
@@ -2359,8 +2357,6 @@ name|allowClosed
 parameter_list|)
 throws|throws
 name|ResourceConflictException
-throws|,
-name|StorageException
 block|{
 name|PatchSet
 name|patchSet
@@ -2622,8 +2618,6 @@ parameter_list|,
 name|SubmitRecord
 name|record
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -2722,8 +2716,6 @@ name|Label
 argument_list|>
 name|labels
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -3159,7 +3151,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Merges the given change.    *    *<p>Depending on the server configuration, more changes may be affected, e.g. by submission of a    * topic or via superproject subscriptions. All affected changes are integrated using the projects    * integration strategy.    *    * @param change the change to be merged.    * @param caller the identity of the caller    * @param checkSubmitRules whether the prolog submit rules should be evaluated    * @param submitInput parameters regarding the merge    * @throws StorageException an error occurred reading or writing the database.    * @throws RestApiException if an error occurred.    * @throws PermissionBackendException if permissions can't be checked    * @throws IOException an error occurred reading from NoteDb.    */
+comment|/**    * Merges the given change.    *    *<p>Depending on the server configuration, more changes may be affected, e.g. by submission of a    * topic or via superproject subscriptions. All affected changes are integrated using the projects    * integration strategy.    *    * @param change the change to be merged.    * @param caller the identity of the caller    * @param checkSubmitRules whether the prolog submit rules should be evaluated    * @param submitInput parameters regarding the merge    * @throws RestApiException if an error occurred.    * @throws PermissionBackendException if permissions can't be checked    * @throws IOException an error occurred reading from NoteDb.    */
 DECL|method|merge ( Change change, IdentifiedUser caller, boolean checkSubmitRules, SubmitInput submitInput, boolean dryrun)
 specifier|public
 name|void
@@ -3181,8 +3173,6 @@ name|boolean
 name|dryrun
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|RestApiException
 throws|,
 name|UpdateException

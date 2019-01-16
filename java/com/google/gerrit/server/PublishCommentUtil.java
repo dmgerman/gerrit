@@ -366,8 +366,6 @@ name|Nullable
 name|String
 name|tag
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|ChangeNotes
 name|notes

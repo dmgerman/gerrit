@@ -2283,8 +2283,6 @@ parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|format
@@ -2309,8 +2307,6 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|format
@@ -2339,8 +2335,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|format
@@ -2363,8 +2357,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|format
@@ -2392,8 +2384,6 @@ parameter_list|(
 name|RevisionResource
 name|rsrc
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|ChangeData
 name|cd
@@ -2638,8 +2628,6 @@ argument_list|>
 name|in
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|accountLoader
@@ -2740,8 +2728,6 @@ name|I
 argument_list|>
 name|changeInfoSupplier
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|ChangeNotes
 name|notes
@@ -3049,8 +3035,6 @@ name|I
 argument_list|>
 name|changeInfoSupplier
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{
@@ -3166,8 +3150,6 @@ name|ChangeData
 argument_list|>
 name|all
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -3818,8 +3800,6 @@ name|PatchListNotAvailableException
 throws|,
 name|GpgException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 throws|,
 name|IOException
@@ -3882,8 +3862,6 @@ throws|throws
 name|PatchListNotAvailableException
 throws|,
 name|GpgException
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -5013,8 +4991,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -5153,8 +5129,6 @@ parameter_list|,
 name|ChangeInfo
 name|out
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Optional
 argument_list|<
@@ -5219,8 +5193,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -5310,8 +5282,6 @@ name|out
 parameter_list|)
 throws|throws
 name|PermissionBackendException
-throws|,
-name|StorageException
 block|{
 comment|// Although this is called removableReviewers, this method also determines
 comment|// which CCs are removable.
@@ -5776,7 +5746,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|loadPatchSets (ChangeData cd, Optional<PatchSet.Id> limitToPsId)
+DECL|method|loadPatchSets ( ChangeData cd, Optional<PatchSet.Id> limitToPsId)
 specifier|private
 name|Map
 argument_list|<
@@ -5799,8 +5769,6 @@ name|Id
 argument_list|>
 name|limitToPsId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|Collection
 argument_list|<
@@ -5974,8 +5942,6 @@ parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|PermissionBackend
 operator|.

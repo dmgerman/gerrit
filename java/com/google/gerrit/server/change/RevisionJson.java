@@ -360,20 +360,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|client
@@ -1459,8 +1445,6 @@ name|PatchListNotAvailableException
 throws|,
 name|GpgException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
@@ -1807,8 +1791,6 @@ name|PatchListNotAvailableException
 throws|,
 name|GpgException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
@@ -1985,8 +1967,6 @@ name|in
 parameter_list|)
 throws|throws
 name|PermissionBackendException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 block|{
@@ -2191,8 +2171,6 @@ throws|throws
 name|PatchListNotAvailableException
 throws|,
 name|GpgException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -2736,8 +2714,6 @@ parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|lazyLoad
@@ -2776,8 +2752,6 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 throws|,
 name|IOException

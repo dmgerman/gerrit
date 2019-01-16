@@ -622,8 +622,6 @@ name|RestApiException
 throws|,
 name|UpdateException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 throws|,
 name|IOException

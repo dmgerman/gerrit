@@ -307,8 +307,6 @@ specifier|public
 name|int
 name|read
 parameter_list|()
-throws|throws
-name|StorageException
 block|{
 try|try
 init|(
@@ -372,8 +370,6 @@ name|init
 parameter_list|()
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 try|try
 init|(
@@ -495,8 +491,6 @@ name|expectedOldVersion
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 try|try
 init|(

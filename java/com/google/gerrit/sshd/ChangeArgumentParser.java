@@ -72,20 +72,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|restapi
@@ -464,8 +450,6 @@ parameter_list|)
 throws|throws
 name|UnloggedFailure
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 throws|,
 name|IOException
@@ -503,8 +487,6 @@ name|projectState
 parameter_list|)
 throws|throws
 name|UnloggedFailure
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -548,8 +530,6 @@ name|useIndex
 parameter_list|)
 throws|throws
 name|UnloggedFailure
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -839,8 +819,6 @@ name|String
 name|id
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|UnloggedFailure
 block|{
 return|return

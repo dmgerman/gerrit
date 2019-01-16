@@ -88,20 +88,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|registration
@@ -608,8 +594,6 @@ name|ChangeEvent
 name|event
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|fireEvent
@@ -681,8 +665,6 @@ name|Event
 name|event
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 name|fireEvent
@@ -727,8 +709,6 @@ name|ChangeEvent
 name|event
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 for|for
@@ -935,8 +915,6 @@ name|Event
 name|event
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 for|for
@@ -1085,8 +1063,6 @@ name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 if|if
@@ -1265,8 +1241,6 @@ name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|PermissionBackendException
 block|{
 if|if

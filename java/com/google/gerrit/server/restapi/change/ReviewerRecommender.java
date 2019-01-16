@@ -194,20 +194,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|index
 operator|.
 name|query
@@ -907,8 +893,6 @@ argument_list|>
 name|candidateList
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1581,8 +1565,6 @@ name|double
 name|baseWeight
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1769,8 +1751,6 @@ name|double
 name|baseWeight
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException

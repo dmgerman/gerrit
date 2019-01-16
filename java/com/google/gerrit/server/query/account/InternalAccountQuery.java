@@ -160,20 +160,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|index
 operator|.
 name|FieldDef
@@ -405,8 +391,6 @@ parameter_list|(
 name|String
 name|query
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|query
@@ -439,8 +423,6 @@ parameter_list|,
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|byExternalId
@@ -471,8 +453,6 @@ operator|.
 name|Key
 name|externalId
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|query
@@ -500,8 +480,6 @@ parameter_list|(
 name|String
 name|fullName
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|query
@@ -515,7 +493,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Queries for accounts that have a preferred email that exactly matches the given email.    *    * @param email preferred email by which accounts should be found    * @return list of accounts that have a preferred email that exactly matches the given email    * @throws StorageException if query cannot be parsed    */
+comment|/**    * Queries for accounts that have a preferred email that exactly matches the given email.    *    * @param email preferred email by which accounts should be found    * @return list of accounts that have a preferred email that exactly matches the given email    */
 DECL|method|byPreferredEmail (String email)
 specifier|public
 name|List
@@ -527,8 +505,6 @@ parameter_list|(
 name|String
 name|email
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 if|if
 condition|(
@@ -601,7 +577,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Makes multiple queries for accounts by preferred email (exact match).    *    * @param emails preferred emails by which accounts should be found    * @return multimap of the given emails to accounts that have a preferred email that exactly    *     matches this email    * @throws StorageException if query cannot be parsed    */
+comment|/**    * Makes multiple queries for accounts by preferred email (exact match).    *    * @param emails preferred emails by which accounts should be found    * @return multimap of the given emails to accounts that have a preferred email that exactly    *     matches this email    */
 DECL|method|byPreferredEmail (String... emails)
 specifier|public
 name|Multimap
@@ -616,8 +592,6 @@ name|String
 modifier|...
 name|emails
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
@@ -875,8 +849,6 @@ operator|.
 name|NameKey
 name|project
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 return|return
 name|query

@@ -1507,8 +1507,6 @@ name|RepositoryNotFoundException
 throws|,
 name|IOException
 throws|,
-name|StorageException
-throws|,
 name|PermissionBackendException
 throws|,
 name|UpdateException
@@ -1618,8 +1616,6 @@ name|SubmitInput
 name|input
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|RestApiException
 throws|,
 name|IOException
@@ -2816,8 +2812,6 @@ name|ChangeSet
 name|cs
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|Set
@@ -3108,8 +3102,6 @@ name|project
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|StorageException
 block|{
 name|HashMap
 argument_list|<
@@ -3218,8 +3210,6 @@ throws|throws
 name|AuthException
 throws|,
 name|UnprocessableEntityException
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -3421,8 +3411,6 @@ throws|,
 name|RepositoryNotFoundException
 throws|,
 name|IOException
-throws|,
-name|StorageException
 throws|,
 name|PermissionBackendException
 throws|,

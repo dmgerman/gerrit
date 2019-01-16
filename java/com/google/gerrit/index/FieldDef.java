@@ -409,8 +409,6 @@ name|I
 name|input
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 function_decl|;
 block|}
@@ -780,7 +778,7 @@ return|return
 name|stored
 return|;
 block|}
-comment|/**    * Get the field contents from the input object.    *    * @param input input object.    * @return the field value(s) to index.    * @throws StorageException    */
+comment|/**    * Get the field contents from the input object.    *    * @param input input object.    * @return the field value(s) to index.    */
 annotation|@
 name|Nullable
 DECL|method|get (I input)
@@ -791,8 +789,6 @@ parameter_list|(
 name|I
 name|input
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 try|try
 block|{

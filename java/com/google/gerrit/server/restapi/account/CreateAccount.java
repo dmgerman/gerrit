@@ -218,20 +218,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|annotations
@@ -1006,8 +992,6 @@ name|ResourceConflictException
 throws|,
 name|UnprocessableEntityException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1051,8 +1035,6 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|UnprocessableEntityException
-throws|,
-name|StorageException
 throws|,
 name|IOException
 throws|,
@@ -1580,8 +1562,6 @@ name|Id
 name|accountId
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|NoSuchGroupException

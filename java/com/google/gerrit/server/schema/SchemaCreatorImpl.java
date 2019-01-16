@@ -132,20 +132,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|git
 operator|.
 name|RefUpdateUtil
@@ -744,8 +730,6 @@ name|void
 name|create
 parameter_list|()
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -874,8 +858,6 @@ name|void
 name|ensureCreated
 parameter_list|()
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -919,8 +901,6 @@ name|GroupReference
 name|groupReference
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -981,8 +961,6 @@ name|UUID
 name|adminsGroupUuid
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1043,8 +1021,6 @@ name|InternalGroupUpdate
 name|groupUpdate
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|ConfigInvalidException
 throws|,
 name|IOException
@@ -1406,8 +1382,6 @@ parameter_list|,
 name|GroupReference
 name|groupReference
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|int
 name|next

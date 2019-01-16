@@ -298,20 +298,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -2084,8 +2070,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|StorageException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
@@ -2916,8 +2900,6 @@ name|String
 name|reviewMessage
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|String
@@ -3222,8 +3204,6 @@ argument_list|>
 name|approvals
 parameter_list|)
 throws|throws
-name|StorageException
-throws|,
 name|IOException
 block|{
 name|Map
@@ -3495,8 +3475,6 @@ parameter_list|,
 name|boolean
 name|workInProgress
 parameter_list|)
-throws|throws
-name|StorageException
 block|{
 name|List
 argument_list|<
