@@ -1808,7 +1808,7 @@ argument_list|()
 condition|?
 name|filter
 argument_list|(
-name|getAllRefsMap
+name|getTaggableRefsMap
 argument_list|(
 name|repo
 argument_list|)
@@ -1892,7 +1892,8 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getAllRefsMap (Repository repo)
+comment|/**    * Returns all refs tag we regard as starting points for reachability computation for tags. In    * general, these are all refs not managed by Gerrit.    */
+DECL|method|getTaggableRefsMap (Repository repo)
 specifier|private
 specifier|static
 name|Map
@@ -1901,7 +1902,7 @@ name|String
 argument_list|,
 name|Ref
 argument_list|>
-name|getAllRefsMap
+name|getTaggableRefsMap
 parameter_list|(
 name|Repository
 name|repo
@@ -1922,6 +1923,35 @@ argument_list|()
 operator|.
 name|stream
 argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|r
+lambda|->
+operator|!
+name|RefNames
+operator|.
+name|isGerritRef
+argument_list|(
+name|r
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|&&
+operator|!
+name|r
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_TAGS
+argument_list|)
+argument_list|)
 operator|.
 name|collect
 argument_list|(
