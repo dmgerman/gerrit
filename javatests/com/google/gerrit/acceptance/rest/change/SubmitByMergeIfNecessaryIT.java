@@ -4058,7 +4058,13 @@ argument_list|()
 operator|+
 literal|" which cannot be merged."
 operator|+
-literal|" Is the change of this commit not visible or was it deleted?"
+literal|" Is the change of this commit not visible to '"
+operator|+
+name|admin
+operator|.
+name|username
+operator|+
+literal|"' or was it deleted?"
 argument_list|)
 expr_stmt|;
 name|assertRefUpdatedEvents
@@ -4374,7 +4380,13 @@ argument_list|()
 operator|+
 literal|" which cannot be merged."
 operator|+
-literal|" Is the change of this commit not visible or was it deleted?"
+literal|" Is the change of this commit not visible to '"
+operator|+
+name|user
+operator|.
+name|username
+operator|+
+literal|"' or was it deleted?"
 argument_list|)
 expr_stmt|;
 name|assertRefUpdatedEvents

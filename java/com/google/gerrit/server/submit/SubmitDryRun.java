@@ -130,6 +130,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -151,6 +165,20 @@ operator|.
 name|client
 operator|.
 name|Branch
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|CurrentUser
 import|;
 end_import
 
@@ -817,11 +845,16 @@ operator|=
 name|queryProvider
 expr_stmt|;
 block|}
-DECL|method|run ( SubmitType submitType, Repository repo, CodeReviewRevWalk rw, Branch.NameKey destBranch, ObjectId tip, ObjectId toMerge, Set<RevCommit> alreadyAccepted)
+DECL|method|run ( @ullable CurrentUser caller, SubmitType submitType, Repository repo, CodeReviewRevWalk rw, Branch.NameKey destBranch, ObjectId tip, ObjectId toMerge, Set<RevCommit> alreadyAccepted)
 specifier|public
 name|boolean
 name|run
 parameter_list|(
+annotation|@
+name|Nullable
+name|CurrentUser
+name|caller
+parameter_list|,
 name|SubmitType
 name|submitType
 parameter_list|,
@@ -915,6 +948,8 @@ argument_list|,
 operator|new
 name|MergeSorter
 argument_list|(
+name|caller
+argument_list|,
 name|rw
 argument_list|,
 name|alreadyAccepted

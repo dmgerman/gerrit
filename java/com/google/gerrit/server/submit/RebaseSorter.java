@@ -124,6 +124,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|CodeReviewCommit
@@ -336,6 +350,12 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
+DECL|field|caller
+specifier|private
+specifier|final
+name|CurrentUser
+name|caller
+decl_stmt|;
 DECL|field|rw
 specifier|private
 specifier|final
@@ -381,10 +401,13 @@ name|CodeReviewCommit
 argument_list|>
 name|incoming
 decl_stmt|;
-DECL|method|RebaseSorter ( CodeReviewRevWalk rw, RevCommit initialTip, Set<RevCommit> alreadyAccepted, RevFlag canMergeFlag, Provider<InternalChangeQuery> queryProvider, Set<CodeReviewCommit> incoming)
+DECL|method|RebaseSorter ( CurrentUser caller, CodeReviewRevWalk rw, RevCommit initialTip, Set<RevCommit> alreadyAccepted, RevFlag canMergeFlag, Provider<InternalChangeQuery> queryProvider, Set<CodeReviewCommit> incoming)
 specifier|public
 name|RebaseSorter
 parameter_list|(
+name|CurrentUser
+name|caller
+parameter_list|,
 name|CodeReviewRevWalk
 name|rw
 parameter_list|,
@@ -413,6 +436,12 @@ argument_list|>
 name|incoming
 parameter_list|)
 block|{
+name|this
+operator|.
+name|caller
+operator|=
+name|caller
+expr_stmt|;
 name|this
 operator|.
 name|rw
@@ -636,6 +665,8 @@ name|CommitMergeStatus
 operator|.
 name|createMissingDependencyMessage
 argument_list|(
+name|caller
+argument_list|,
 name|queryProvider
 argument_list|,
 name|n

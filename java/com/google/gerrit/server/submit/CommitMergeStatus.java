@@ -88,11 +88,39 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
 operator|.
 name|PatchSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|CurrentUser
 import|;
 end_import
 
@@ -324,12 +352,17 @@ return|return
 name|description
 return|;
 block|}
-DECL|method|createMissingDependencyMessage ( Provider<InternalChangeQuery> queryProvider, String commit, String otherCommit)
+DECL|method|createMissingDependencyMessage ( @ullable CurrentUser caller, Provider<InternalChangeQuery> queryProvider, String commit, String otherCommit)
 specifier|public
 specifier|static
 name|String
 name|createMissingDependencyMessage
 parameter_list|(
+annotation|@
+name|Nullable
+name|CurrentUser
+name|caller
+parameter_list|,
 name|Provider
 argument_list|<
 name|InternalChangeQuery
@@ -381,11 +414,22 @@ name|format
 argument_list|(
 literal|"Commit %s depends on commit %s which cannot be merged."
 operator|+
-literal|" Is the change of this commit not visible or was it deleted?"
+literal|" Is the change of this commit not visible to '%s' or was it deleted?"
 argument_list|,
 name|commit
 argument_list|,
 name|otherCommit
+argument_list|,
+name|caller
+operator|!=
+literal|null
+condition|?
+name|caller
+operator|.
+name|getLoggableName
+argument_list|()
+else|:
+literal|"<user-not-available>"
 argument_list|)
 return|;
 block|}
