@@ -159,8 +159,6 @@ operator|.
 name|client
 operator|.
 name|Account
-operator|.
-name|Id
 import|;
 end_import
 
@@ -618,11 +616,13 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|absentUser (Id id)
+DECL|method|absentUser (Account.Id id)
 specifier|public
 name|WithUser
 name|absentUser
 parameter_list|(
+name|Account
+operator|.
 name|Id
 name|id
 parameter_list|)

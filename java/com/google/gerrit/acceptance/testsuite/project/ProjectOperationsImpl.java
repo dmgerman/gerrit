@@ -130,24 +130,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Project
-operator|.
-name|NameKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|RefNames
 import|;
 end_import
@@ -517,13 +499,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|project (NameKey key)
+DECL|method|project (Project.NameKey key)
 specifier|public
 name|ProjectOperations
 operator|.
 name|PerProjectOperations
 name|project
 parameter_list|(
+name|Project
+operator|.
 name|NameKey
 name|key
 parameter_list|)

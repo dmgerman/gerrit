@@ -104,24 +104,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
-operator|.
-name|NameKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|change
@@ -351,11 +333,13 @@ name|permissionBackend
 expr_stmt|;
 block|}
 comment|/** @return true if a commit is reachable from a given set of refs. */
-DECL|method|fromRefs (NameKey project, Repository repo, RevCommit commit, List<Ref> refs)
+DECL|method|fromRefs ( Project.NameKey project, Repository repo, RevCommit commit, List<Ref> refs)
 specifier|public
 name|boolean
 name|fromRefs
 parameter_list|(
+name|Project
+operator|.
 name|NameKey
 name|project
 parameter_list|,

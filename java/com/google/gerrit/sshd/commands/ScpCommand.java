@@ -88,24 +88,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|tools
-operator|.
-name|ToolsCatalog
-operator|.
-name|Entry
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|sshd
 operator|.
 name|BaseCommand
@@ -522,6 +504,8 @@ literal|""
 expr_stmt|;
 block|}
 specifier|final
+name|ToolsCatalog
+operator|.
 name|Entry
 name|ent
 init|=
@@ -552,6 +536,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|ToolsCatalog
+operator|.
 name|Entry
 operator|.
 name|Type
@@ -573,6 +559,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|ToolsCatalog
+operator|.
 name|Entry
 operator|.
 name|Type
@@ -798,11 +786,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|readFile (Entry ent)
+DECL|method|readFile (ToolsCatalog.Entry ent)
 specifier|private
 name|void
 name|readFile
 parameter_list|(
+name|ToolsCatalog
+operator|.
 name|Entry
 name|ent
 parameter_list|)
@@ -862,11 +852,13 @@ name|readAck
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|readDir (Entry dir)
+DECL|method|readDir (ToolsCatalog.Entry dir)
 specifier|private
 name|void
 name|readDir
 parameter_list|(
+name|ToolsCatalog
+operator|.
 name|Entry
 name|dir
 parameter_list|)
@@ -885,6 +877,8 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
+name|ToolsCatalog
+operator|.
 name|Entry
 name|e
 range|:
@@ -896,6 +890,8 @@ control|)
 block|{
 if|if
 condition|(
+name|ToolsCatalog
+operator|.
 name|Entry
 operator|.
 name|Type
@@ -944,11 +940,13 @@ name|readAck
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|header (Entry dir, int len)
+DECL|method|header (ToolsCatalog.Entry dir, int len)
 specifier|private
 name|void
 name|header
 parameter_list|(
+name|ToolsCatalog
+operator|.
 name|Entry
 name|dir
 parameter_list|,

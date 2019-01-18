@@ -614,18 +614,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-operator|.
-name|Entry
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Queue
 import|;
 end_import
@@ -2862,7 +2850,7 @@ name|cleanInBackground
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|addAllEntries (Map<String, Path> from, TreeSet<Entry<String, Path>> to)
+DECL|method|addAllEntries (Map<String, Path> from, TreeSet<Map.Entry<String, Path>> to)
 specifier|private
 name|void
 name|addAllEntries
@@ -2877,6 +2865,8 @@ name|from
 parameter_list|,
 name|TreeSet
 argument_list|<
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|String
@@ -2889,6 +2879,8 @@ parameter_list|)
 block|{
 name|Iterator
 argument_list|<
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|String
@@ -2914,6 +2906,8 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|String
@@ -2951,10 +2945,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|jarsFirstSortedPluginsSet (Map<String, Path> activePlugins)
+DECL|method|jarsFirstSortedPluginsSet ( Map<String, Path> activePlugins)
 specifier|private
 name|TreeSet
 argument_list|<
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|String
@@ -2975,6 +2971,8 @@ parameter_list|)
 block|{
 name|TreeSet
 argument_list|<
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|String
@@ -2991,6 +2989,8 @@ argument_list|(
 operator|new
 name|Comparator
 argument_list|<
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|String
@@ -3006,6 +3006,8 @@ specifier|public
 name|int
 name|compare
 parameter_list|(
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|String
@@ -3014,6 +3016,8 @@ name|Path
 argument_list|>
 name|e1
 parameter_list|,
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|String

@@ -986,24 +986,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Branch
 import|;
 end_import
@@ -18854,10 +18836,12 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|draftAndDeleteCommentBy (Id commenterId)
+DECL|method|draftAndDeleteCommentBy (Account.Id commenterId)
 name|DashboardChangeState
 name|draftAndDeleteCommentBy
 parameter_list|(
+name|Account
+operator|.
 name|Id
 name|commenterId
 parameter_list|)

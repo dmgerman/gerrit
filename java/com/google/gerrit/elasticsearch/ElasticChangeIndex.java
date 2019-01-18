@@ -460,24 +460,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Project
 import|;
 end_import
@@ -1554,11 +1536,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getDeleteActions (Id c)
+DECL|method|getDeleteActions (Change.Id c)
 specifier|protected
 name|String
 name|getDeleteActions
 parameter_list|(
+name|Change
+operator|.
 name|Id
 name|c
 parameter_list|)

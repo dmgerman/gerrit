@@ -155,8 +155,6 @@ operator|.
 name|client
 operator|.
 name|Project
-operator|.
-name|NameKey
 import|;
 end_import
 
@@ -796,13 +794,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|project (NameKey project)
+DECL|method|project (Project.NameKey project)
 specifier|public
 name|QuotaBackend
 operator|.
 name|WithResource
 name|project
 parameter_list|(
+name|Project
+operator|.
 name|NameKey
 name|project
 parameter_list|)
@@ -835,7 +835,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|change (Change.Id change, NameKey project)
+DECL|method|change (Change.Id change, Project.NameKey project)
 specifier|public
 name|QuotaBackend
 operator|.
@@ -847,6 +847,8 @@ operator|.
 name|Id
 name|change
 parameter_list|,
+name|Project
+operator|.
 name|NameKey
 name|project
 parameter_list|)

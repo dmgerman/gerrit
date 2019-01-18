@@ -346,24 +346,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
-operator|.
-name|NameKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Change
 import|;
 end_import
@@ -1405,7 +1387,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|forGerritCommits ( PermissionBackend.ForProject forProject, NameKey branch, IdentifiedUser user, SshInfo sshInfo, RevWalk rw, @Nullable Change change)
+DECL|method|forGerritCommits ( PermissionBackend.ForProject forProject, Branch.NameKey branch, IdentifiedUser user, SshInfo sshInfo, RevWalk rw, @Nullable Change change)
 specifier|public
 name|CommitValidators
 name|forGerritCommits
@@ -1415,6 +1397,8 @@ operator|.
 name|ForProject
 name|forProject
 parameter_list|,
+name|Branch
+operator|.
 name|NameKey
 name|branch
 parameter_list|,

@@ -604,24 +604,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Project
 import|;
 end_import
@@ -1784,7 +1766,7 @@ name|info
 return|;
 block|}
 comment|/**    * Returns multiple {@link RevisionInfo}s for a single change. Uses the provided {@link    * AccountLoader} to lazily populate accounts. Callers have to call {@link AccountLoader#fill()}    * afterwards to populate all accounts in the returned {@link RevisionInfo}s.    */
-DECL|method|getRevisions ( AccountLoader accountLoader, ChangeData cd, Map<PatchSet.Id, PatchSet> map, Optional<Id> limitToPsId, ChangeInfo changeInfo)
+DECL|method|getRevisions ( AccountLoader accountLoader, ChangeData cd, Map<PatchSet.Id, PatchSet> map, Optional<PatchSet.Id> limitToPsId, ChangeInfo changeInfo)
 name|Map
 argument_list|<
 name|String
@@ -1811,6 +1793,8 @@ name|map
 parameter_list|,
 name|Optional
 argument_list|<
+name|PatchSet
+operator|.
 name|Id
 argument_list|>
 name|limitToPsId

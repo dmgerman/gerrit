@@ -470,24 +470,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|PatchSetApproval
 import|;
 end_import
@@ -3759,7 +3741,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Creates a commit message for a change, which can be customized by plugins.    *    *<p>By default, adds footers to existing commit message based on the state of the change.    * Plugins implementing {@link ChangeMessageModifier} can modify the resulting commit message    * arbitrarily.    *    * @param n    * @param mergeTip    * @param notes    * @param id    * @return new message    */
-DECL|method|createCommitMessageOnSubmit ( RevCommit n, RevCommit mergeTip, ChangeNotes notes, Id id)
+DECL|method|createCommitMessageOnSubmit ( RevCommit n, RevCommit mergeTip, ChangeNotes notes, PatchSet.Id id)
 specifier|public
 name|String
 name|createCommitMessageOnSubmit
@@ -3773,6 +3755,8 @@ parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|,
+name|PatchSet
+operator|.
 name|Id
 name|id
 parameter_list|)

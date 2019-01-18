@@ -804,18 +804,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-operator|.
-name|Entry
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -1628,6 +1616,8 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|String
@@ -1683,7 +1673,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getApprovalAttribute ( LabelTypes labelTypes, Entry<String, Short> approval, Map<String, Short> oldApprovals)
+DECL|method|getApprovalAttribute ( LabelTypes labelTypes, Map.Entry<String, Short> approval, Map<String, Short> oldApprovals)
 specifier|private
 name|ApprovalAttribute
 name|getApprovalAttribute
@@ -1691,6 +1681,8 @@ parameter_list|(
 name|LabelTypes
 name|labelTypes
 parameter_list|,
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|String
@@ -1931,6 +1923,8 @@ literal|0
 decl_stmt|;
 for|for
 control|(
+name|Map
+operator|.
 name|Entry
 argument_list|<
 name|String

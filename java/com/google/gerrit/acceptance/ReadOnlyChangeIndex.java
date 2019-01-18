@@ -153,8 +153,6 @@ operator|.
 name|client
 operator|.
 name|Change
-operator|.
-name|Id
 import|;
 end_import
 
@@ -289,11 +287,13 @@ comment|// do nothing
 block|}
 annotation|@
 name|Override
-DECL|method|delete (Id key)
+DECL|method|delete (Change.Id key)
 specifier|public
 name|void
 name|delete
 parameter_list|(
+name|Change
+operator|.
 name|Id
 name|key
 parameter_list|)

@@ -108,24 +108,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|AccountGroup
 import|;
 end_import
@@ -168,7 +150,7 @@ name|AuditEvent
 name|action
 parameter_list|)
 function_decl|;
-DECL|method|dispatchAddMembers ( Account.Id actor, AccountGroup.UUID updatedGroup, ImmutableSet<Id> addedMembers, Timestamp addedOn)
+DECL|method|dispatchAddMembers ( Account.Id actor, AccountGroup.UUID updatedGroup, ImmutableSet<Account.Id> addedMembers, Timestamp addedOn)
 name|void
 name|dispatchAddMembers
 parameter_list|(
@@ -184,6 +166,8 @@ name|updatedGroup
 parameter_list|,
 name|ImmutableSet
 argument_list|<
+name|Account
+operator|.
 name|Id
 argument_list|>
 name|addedMembers

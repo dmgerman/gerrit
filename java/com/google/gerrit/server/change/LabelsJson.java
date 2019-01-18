@@ -462,24 +462,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Change
 import|;
 end_import
@@ -2158,6 +2140,8 @@ argument_list|()
 decl_stmt|;
 name|SetMultimap
 argument_list|<
+name|Account
+operator|.
 name|Id
 argument_list|,
 name|PatchSetApproval
@@ -3136,6 +3120,8 @@ comment|//  - They are an explicit reviewer.
 comment|//  - They ever voted on this change.
 name|Set
 argument_list|<
+name|Account
+operator|.
 name|Id
 argument_list|>
 name|allUsers
@@ -3189,6 +3175,8 @@ expr_stmt|;
 block|}
 name|Table
 argument_list|<
+name|Account
+operator|.
 name|Id
 argument_list|,
 name|String
