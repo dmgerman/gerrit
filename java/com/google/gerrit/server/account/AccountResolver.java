@@ -785,6 +785,7 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
+comment|// Short circuit if the format matched.
 return|return
 name|Streams
 operator|.
@@ -857,6 +858,7 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
+comment|// Short circuit if the format matched.
 return|return
 name|Streams
 operator|.
@@ -950,6 +952,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|// Don't short-circuit just because the format matches.
 block|}
 return|return
 name|findAllByNameOrEmail
@@ -1209,6 +1212,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// Short circuit if the format matched.
 return|return
 name|nameMatches
 operator|.
@@ -1230,6 +1234,7 @@ literal|"@"
 argument_list|)
 condition|)
 block|{
+comment|// Short circuit if the format matched.
 return|return
 name|emails
 operator|.
@@ -1251,6 +1256,7 @@ argument_list|(
 name|nameOrEmail
 argument_list|)
 decl_stmt|;
+comment|// Short circuit only if it returned a result.
 if|if
 condition|(
 name|id
@@ -1283,6 +1289,7 @@ argument_list|(
 name|nameOrEmail
 argument_list|)
 decl_stmt|;
+comment|// Short circuit only if it returned exactly one result.
 if|if
 condition|(
 name|m

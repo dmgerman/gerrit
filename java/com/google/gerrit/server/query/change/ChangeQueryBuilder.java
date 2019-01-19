@@ -658,7 +658,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver
+name|AccountResolver2
 import|;
 end_import
 
@@ -1905,7 +1905,7 @@ name|accountCache
 decl_stmt|;
 DECL|field|accountResolver
 specifier|final
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 decl_stmt|;
 DECL|field|allProjectsName
@@ -2054,7 +2054,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments ( Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider)
+DECL|method|Arguments ( Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver2 accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -2106,7 +2106,7 @@ parameter_list|,
 name|CommentsUtil
 name|commentsUtil
 parameter_list|,
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 parameter_list|,
 name|GroupBackend
@@ -2223,7 +2223,7 @@ name|anonymousUserProvider
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider)
+DECL|method|Arguments ( Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver2 accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2275,7 +2275,7 @@ parameter_list|,
 name|CommentsUtil
 name|commentsUtil
 parameter_list|,
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 parameter_list|,
 name|GroupBackend
@@ -5631,10 +5631,13 @@ name|args
 operator|.
 name|accountResolver
 operator|.
-name|findAll
+name|resolve
 argument_list|(
 name|who
 argument_list|)
+operator|.
+name|asIdSet
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -8152,10 +8155,13 @@ name|args
 operator|.
 name|accountResolver
 operator|.
-name|findAll
+name|resolve
 argument_list|(
 name|who
 argument_list|)
+operator|.
+name|asIdSet
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

@@ -208,22 +208,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|UnprocessableEntityException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -260,7 +244,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver
+name|AccountResolver2
 import|;
 end_import
 
@@ -508,7 +492,7 @@ block|{
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 decl_stmt|;
 DECL|field|permissionBackend
@@ -525,10 +509,10 @@ name|gitRepositoryManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CheckAccess ( AccountResolver resolver, PermissionBackend permissionBackend, GitRepositoryManager gitRepositoryManager)
+DECL|method|CheckAccess ( AccountResolver2 resolver, PermissionBackend permissionBackend, GitRepositoryManager gitRepositoryManager)
 name|CheckAccess
 parameter_list|(
-name|AccountResolver
+name|AccountResolver2
 name|resolver
 parameter_list|,
 name|PermissionBackend
@@ -642,41 +626,28 @@ argument_list|)
 throw|;
 block|}
 name|Account
+operator|.
+name|Id
 name|match
 init|=
 name|accountResolver
 operator|.
-name|find
+name|resolve
 argument_list|(
 name|input
 operator|.
 name|account
 argument_list|)
+operator|.
+name|asUnique
+argument_list|()
+operator|.
+name|getAccount
+argument_list|()
+operator|.
+name|getId
+argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|match
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|UnprocessableEntityException
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"cannot find account %s"
-argument_list|,
-name|input
-operator|.
-name|account
-argument_list|)
-argument_list|)
-throw|;
-block|}
 name|AccessCheckInfo
 name|info
 init|=
@@ -691,9 +662,6 @@ operator|.
 name|absentUser
 argument_list|(
 name|match
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 operator|.
 name|project
@@ -729,9 +697,6 @@ argument_list|(
 literal|"user %s cannot see project %s"
 argument_list|,
 name|match
-operator|.
-name|getId
-argument_list|()
 argument_list|,
 name|rsrc
 operator|.
@@ -865,9 +830,6 @@ operator|.
 name|absentUser
 argument_list|(
 name|match
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 operator|.
 name|ref
@@ -919,9 +881,6 @@ argument_list|(
 literal|"user %s lacks permission %s for %s in project %s"
 argument_list|,
 name|match
-operator|.
-name|getId
-argument_list|()
 argument_list|,
 name|input
 operator|.

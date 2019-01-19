@@ -250,7 +250,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver
+name|AccountResolver2
 import|;
 end_import
 
@@ -510,12 +510,12 @@ name|groupBackend
 decl_stmt|;
 DECL|field|accountResolver
 specifier|final
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments (GroupCache groupCache, GroupBackend groupBackend, AccountResolver accountResolver)
+DECL|method|Arguments (GroupCache groupCache, GroupBackend groupBackend, AccountResolver2 accountResolver)
 name|Arguments
 parameter_list|(
 name|GroupCache
@@ -524,7 +524,7 @@ parameter_list|,
 name|GroupBackend
 name|groupBackend
 parameter_list|,
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 parameter_list|)
 block|{
@@ -1090,10 +1090,13 @@ name|args
 operator|.
 name|accountResolver
 operator|.
-name|findAll
+name|resolve
 argument_list|(
 name|nameOrEmail
 argument_list|)
+operator|.
+name|asIdSet
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
