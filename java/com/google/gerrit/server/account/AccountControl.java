@@ -537,6 +537,7 @@ name|Boolean
 name|viewAll
 decl_stmt|;
 DECL|method|AccountControl ( PermissionBackend permissionBackend, ProjectCache projectCache, GroupControl.Factory groupControlFactory, CurrentUser user, IdentifiedUser.GenericFactory userFactory, AccountVisibility accountVisibility)
+specifier|private
 name|AccountControl
 parameter_list|(
 name|PermissionBackend
