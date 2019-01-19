@@ -624,26 +624,6 @@ name|user
 return|;
 block|}
 comment|/**    * Returns true if the current user is allowed to see the otherUser, based on the account    * visibility policy. Depending on the group membership realms supported, this may not be able to    * determine SAME_GROUP or VISIBLE_GROUP correctly (defaulting to not being visible). This is    * because {@link GroupMembership#getKnownGroups()} may only return a subset of the effective    * groups.    */
-DECL|method|canSee (Account otherUser)
-specifier|public
-name|boolean
-name|canSee
-parameter_list|(
-name|Account
-name|otherUser
-parameter_list|)
-block|{
-return|return
-name|canSee
-argument_list|(
-name|otherUser
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-return|;
-block|}
-comment|/**    * Returns true if the current user is allowed to see the otherUser, based on the account    * visibility policy. Depending on the group membership realms supported, this may not be able to    * determine SAME_GROUP or VISIBLE_GROUP correctly (defaulting to not being visible). This is    * because {@link GroupMembership#getKnownGroups()} may only return a subset of the effective    * groups.    */
 DECL|method|canSee (Account.Id otherUser)
 specifier|public
 name|boolean
