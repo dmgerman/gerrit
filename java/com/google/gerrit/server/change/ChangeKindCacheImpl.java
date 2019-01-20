@@ -801,8 +801,6 @@ block|}
 block|}
 return|;
 block|}
-annotation|@
-name|VisibleForTesting
 DECL|class|NoCache
 specifier|public
 specifier|static
