@@ -483,6 +483,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/** Set an option on the request, appending to existing options. */
 DECL|method|withOption (ListAccountsOption options)
 specifier|public
 name|QueryRequest
@@ -505,6 +506,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/** Set options on the request, appending to existing options. */
 DECL|method|withOptions (ListAccountsOption... options)
 specifier|public
 name|QueryRequest
@@ -533,6 +535,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/** Set options on the request, replacing existing options. */
 DECL|method|withOptions (EnumSet<ListAccountsOption> options)
 specifier|public
 name|QueryRequest

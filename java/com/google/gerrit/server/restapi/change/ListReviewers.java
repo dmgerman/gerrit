@@ -282,6 +282,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|ListReviewers
+specifier|public
 class|class
 name|ListReviewers
 implements|implements
