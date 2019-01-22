@@ -6365,6 +6365,8 @@ parameter_list|(
 name|BadRequestException
 decl||
 name|UnprocessableEntityException
+decl||
+name|AuthException
 name|e
 parameter_list|)
 block|{
