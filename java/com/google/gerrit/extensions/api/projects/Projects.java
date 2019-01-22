@@ -254,9 +254,6 @@ block|{
 DECL|enumConstant|CODE
 name|CODE
 block|,
-DECL|enumConstant|PARENT_CANDIDATES
-name|PARENT_CANDIDATES
-block|,
 DECL|enumConstant|PERMISSIONS
 name|PERMISSIONS
 block|,

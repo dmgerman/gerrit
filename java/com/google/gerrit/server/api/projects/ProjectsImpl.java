@@ -811,16 +811,6 @@ name|CODE
 expr_stmt|;
 break|break;
 case|case
-name|PARENT_CANDIDATES
-case|:
-name|type
-operator|=
-name|FilterType
-operator|.
-name|PARENT_CANDIDATES
-expr_stmt|;
-break|break;
-case|case
 name|PERMISSIONS
 case|:
 name|type
