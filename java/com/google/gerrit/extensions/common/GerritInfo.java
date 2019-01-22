@@ -141,6 +141,11 @@ name|UiType
 argument_list|>
 name|webUis
 decl_stmt|;
+DECL|field|primaryWeblinkName
+specifier|public
+name|String
+name|primaryWeblinkName
+decl_stmt|;
 block|}
 end_class
 
