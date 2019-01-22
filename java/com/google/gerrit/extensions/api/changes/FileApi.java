@@ -211,6 +211,17 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/** Set the file reviewed or not reviewed */
+DECL|method|setReviewed (boolean reviewed)
+name|void
+name|setReviewed
+parameter_list|(
+name|boolean
+name|reviewed
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|class|DiffRequest
 specifier|abstract
 class|class
@@ -490,6 +501,25 @@ specifier|public
 name|DiffRequest
 name|diffRequest
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setReviewed (boolean reviewed)
+specifier|public
+name|void
+name|setReviewed
+parameter_list|(
+name|boolean
+name|reviewed
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
