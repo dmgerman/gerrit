@@ -124,11 +124,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|extensions
 operator|.
-name|errors
+name|restapi
 operator|.
-name|NoSuchAccountException
+name|UnprocessableEntityException
 import|;
 end_import
 
@@ -174,7 +174,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver
+name|AccountResolver2
 import|;
 end_import
 
@@ -262,6 +262,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|revwalk
 operator|.
 name|FooterKey
@@ -288,13 +302,13 @@ specifier|public
 class|class
 name|MailUtil
 block|{
-DECL|method|getRecipientsFromFooters ( AccountResolver accountResolver, List<FooterLine> footerLines)
+DECL|method|getRecipientsFromFooters ( AccountResolver2 accountResolver, List<FooterLine> footerLines)
 specifier|public
 specifier|static
 name|MailRecipients
 name|getRecipientsFromFooters
 parameter_list|(
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 parameter_list|,
 name|List
@@ -307,6 +321,8 @@ throws|throws
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|MailRecipients
 name|recipients
@@ -391,7 +407,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|NoSuchAccountException
+name|UnprocessableEntityException
 name|e
 parameter_list|)
 block|{
@@ -451,7 +467,7 @@ return|return
 name|recipients
 return|;
 block|}
-DECL|method|toAccountId (AccountResolver accountResolver, String nameOrEmail)
+DECL|method|toAccountId (AccountResolver2 accountResolver, String nameOrEmail)
 specifier|private
 specifier|static
 name|Account
@@ -459,7 +475,7 @@ operator|.
 name|Id
 name|toAccountId
 parameter_list|(
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 parameter_list|,
 name|String
@@ -468,41 +484,25 @@ parameter_list|)
 throws|throws
 name|OrmException
 throws|,
-name|NoSuchAccountException
+name|UnprocessableEntityException
 throws|,
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
-name|Account
-name|a
-init|=
+return|return
 name|accountResolver
 operator|.
-name|findByNameOrEmail
+name|resolveByNameOrEmail
 argument_list|(
 name|nameOrEmail
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|a
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|NoSuchAccountException
-argument_list|(
-literal|"\""
-operator|+
-name|nameOrEmail
-operator|+
-literal|"\" is not registered"
-argument_list|)
-throw|;
-block|}
-return|return
-name|a
+operator|.
+name|asUnique
+argument_list|()
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getId
 argument_list|()
