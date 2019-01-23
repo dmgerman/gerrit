@@ -987,6 +987,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/** Set an option on the request, appending to existing options. */
 DECL|method|withOption (ListGroupsOption options)
 specifier|public
 name|QueryRequest
@@ -1009,6 +1010,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/** Set options on the request, appending to existing options. */
 DECL|method|withOptions (ListGroupsOption... options)
 specifier|public
 name|QueryRequest
@@ -1037,6 +1039,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/** Set options on the request, replacing existing options. */
 DECL|method|withOptions (EnumSet<ListGroupsOption> options)
 specifier|public
 name|QueryRequest
