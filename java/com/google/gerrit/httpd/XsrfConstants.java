@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.data
+DECL|package|com.google.gerrit.httpd
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|data
+name|httpd
 package|;
 end_package
 
@@ -71,10 +69,10 @@ comment|/** XSRF Constants. */
 end_comment
 
 begin_class
-DECL|class|HostPageData
+DECL|class|XsrfConstants
 specifier|public
 class|class
-name|HostPageData
+name|XsrfConstants
 block|{
 comment|/**    * Name of the cookie in which the XSRF token is sent from the server to the client during host    * page bootstrapping.    */
 DECL|field|XSRF_COOKIE_NAME
