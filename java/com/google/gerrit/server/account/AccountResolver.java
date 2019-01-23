@@ -711,9 +711,8 @@ return|return
 name|match
 return|;
 block|}
-comment|/**    * Find all accounts matching the input string.    *    * @param input a string of the format "Full Name&lt;email@example&gt;", just the email address    *     ("email@example"), a full name ("Full Name"), an account ID ("18419") or a user name    *     ("username").    * @return the accounts that match, empty set if none. Never null. If {@code input} is a numeric    *     string, returns a singleton set if that number corresponds to a real account ID, and an    *     empty set otherwise if it does not.    */
 DECL|method|findAll (String input)
-specifier|public
+specifier|private
 name|Set
 argument_list|<
 name|Account
@@ -961,9 +960,8 @@ name|input
 argument_list|)
 return|;
 block|}
-comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format "Full Name&lt;email@example&gt;", just the email    *     address ("email@example"), a full name ("Full Name").    * @return the accounts that match, empty collection if none. Never null.    */
 DECL|method|findAllByNameOrEmail (String nameOrEmail)
-specifier|public
+specifier|private
 name|Set
 argument_list|<
 name|Account
