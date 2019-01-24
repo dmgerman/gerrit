@@ -635,6 +635,8 @@ name|this
 argument_list|)
 expr_stmt|;
 comment|// Creates an empty All-Projects.
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -644,12 +646,10 @@ name|createRepository
 argument_list|(
 name|allProjectsName
 argument_list|)
-decl_stmt|;
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+init|)
+block|{
+comment|// Intentionally empty.
+block|}
 block|}
 annotation|@
 name|Test
