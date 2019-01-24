@@ -298,7 +298,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -314,7 +314,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|Result
 import|;
@@ -332,7 +332,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|UnresolvableAccountException
 import|;
@@ -477,10 +477,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|AccountResolver2IT
+DECL|class|AccountResolverIT
 specifier|public
 class|class
-name|AccountResolver2IT
+name|AccountResolverIT
 extends|extends
 name|AbstractDaemonTest
 block|{
@@ -544,7 +544,7 @@ DECL|field|accountResolver
 annotation|@
 name|Inject
 specifier|private
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 DECL|field|self

@@ -1294,7 +1294,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -3242,7 +3242,7 @@ comment|// Injected fields.
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 DECL|field|allProjectsName
@@ -3660,10 +3660,10 @@ name|resultChangeIds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver2 accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender, @Assisted ResultChangeIds resultChangeIds)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender, @Assisted ResultChangeIds resultChangeIds)
 name|ReceiveCommits
 parameter_list|(
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|,
 name|AllProjectsName

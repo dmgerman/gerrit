@@ -192,7 +192,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -486,7 +486,7 @@ DECL|field|accountResolver
 annotation|@
 name|Inject
 specifier|private
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 DECL|field|requestContext

@@ -274,7 +274,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -561,7 +561,7 @@ block|{
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 DECL|field|assigneeFactory
@@ -594,10 +594,10 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutAssignee ( AccountResolver2 accountResolver, SetAssigneeOp.Factory assigneeFactory, RetryHelper retryHelper, ReviewerAdder reviewerAdder, AccountLoader.Factory accountLoaderFactory, PermissionBackend permissionBackend)
+DECL|method|PutAssignee ( AccountResolver accountResolver, SetAssigneeOp.Factory assigneeFactory, RetryHelper retryHelper, ReviewerAdder reviewerAdder, AccountLoader.Factory accountLoaderFactory, PermissionBackend permissionBackend)
 name|PutAssignee
 parameter_list|(
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|,
 name|SetAssigneeOp

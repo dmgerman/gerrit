@@ -266,7 +266,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -282,7 +282,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|UnresolvableAccountException
 import|;
@@ -544,12 +544,12 @@ name|groupBackend
 decl_stmt|;
 DECL|field|accountResolver
 specifier|final
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments (GroupCache groupCache, GroupBackend groupBackend, AccountResolver2 accountResolver)
+DECL|method|Arguments (GroupCache groupCache, GroupBackend groupBackend, AccountResolver accountResolver)
 name|Arguments
 parameter_list|(
 name|GroupCache
@@ -558,7 +558,7 @@ parameter_list|,
 name|GroupBackend
 name|groupBackend
 parameter_list|,
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|)
 block|{

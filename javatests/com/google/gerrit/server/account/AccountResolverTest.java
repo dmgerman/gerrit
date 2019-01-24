@@ -200,7 +200,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|Result
 import|;
@@ -218,7 +218,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|Searcher
 import|;
@@ -236,7 +236,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|StringSearcher
 import|;
@@ -254,7 +254,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|UnresolvableAccountException
 import|;
@@ -365,10 +365,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|AccountResolver2Test
+DECL|class|AccountResolverTest
 specifier|public
 class|class
-name|AccountResolver2Test
+name|AccountResolverTest
 extends|extends
 name|GerritBaseTests
 block|{
@@ -1934,7 +1934,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|AccountResolver2
+name|AccountResolver
 name|resolver
 init|=
 name|newAccountResolver
@@ -1984,7 +1984,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|AccountResolver2
+name|AccountResolver
 name|resolver
 init|=
 name|newAccountResolver
@@ -2050,7 +2050,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|AccountResolver2
+name|AccountResolver
 name|resolver
 init|=
 name|newAccountResolver
@@ -2116,7 +2116,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|AccountResolver2
+name|AccountResolver
 name|resolver
 init|=
 name|newAccountResolver
@@ -2176,7 +2176,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|AccountResolver2
+name|AccountResolver
 name|resolver
 init|=
 name|newAccountResolver
@@ -2278,13 +2278,13 @@ block|}
 DECL|method|newAccountResolver ()
 specifier|private
 specifier|static
-name|AccountResolver2
+name|AccountResolver
 name|newAccountResolver
 parameter_list|()
 block|{
 return|return
 operator|new
-name|AccountResolver2
+name|AccountResolver
 argument_list|(
 literal|null
 argument_list|,

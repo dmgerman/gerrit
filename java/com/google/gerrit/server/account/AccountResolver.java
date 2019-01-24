@@ -539,10 +539,10 @@ end_comment
 begin_class
 annotation|@
 name|Singleton
-DECL|class|AccountResolver2
+DECL|class|AccountResolver
 specifier|public
 class|class
-name|AccountResolver2
+name|AccountResolver
 block|{
 DECL|class|UnresolvableAccountException
 specifier|public
@@ -986,7 +986,7 @@ name|isSelf
 parameter_list|()
 block|{
 return|return
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|isSelf
 argument_list|(
@@ -1241,12 +1241,12 @@ return|;
 block|}
 DECL|method|accountResolver ()
 specifier|private
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|()
 block|{
 return|return
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|this
 return|;
@@ -2534,8 +2534,8 @@ name|anonymousCowardName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountResolver2 ( AccountCache byId, Emails emails, AccountControl.Factory accountControlFactory, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, Provider<InternalAccountQuery> accountQueryProvider, Realm realm, @AnonymousCowardName String anonymousCowardName)
-name|AccountResolver2
+DECL|method|AccountResolver ( AccountCache byId, Emails emails, AccountControl.Factory accountControlFactory, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, Provider<InternalAccountQuery> accountQueryProvider, Realm realm, @AnonymousCowardName String anonymousCowardName)
+name|AccountResolver
 parameter_list|(
 name|AccountCache
 name|byId

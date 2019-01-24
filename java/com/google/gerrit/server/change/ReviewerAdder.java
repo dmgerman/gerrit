@@ -714,7 +714,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -1374,7 +1374,7 @@ block|}
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 DECL|field|permissionBackend
@@ -1452,10 +1452,10 @@ name|validator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerAdder ( AccountResolver2 accountResolver, PermissionBackend permissionBackend, GroupResolver groupResolver, GroupMembers groupMembers, AccountLoader.Factory accountLoaderFactory, @GerritServerConfig Config cfg, ReviewerJson json, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, AddReviewersOp.Factory addReviewersOpFactory, OutgoingEmailValidator validator)
+DECL|method|ReviewerAdder ( AccountResolver accountResolver, PermissionBackend permissionBackend, GroupResolver groupResolver, GroupMembers groupMembers, AccountLoader.Factory accountLoaderFactory, @GerritServerConfig Config cfg, ReviewerJson json, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, AddReviewersOp.Factory addReviewersOpFactory, OutgoingEmailValidator validator)
 name|ReviewerAdder
 parameter_list|(
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|,
 name|PermissionBackend

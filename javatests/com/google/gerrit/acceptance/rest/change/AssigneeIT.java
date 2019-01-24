@@ -334,7 +334,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|UnresolvableAccountException
 import|;

@@ -250,7 +250,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -357,15 +357,15 @@ block|{
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NotifyUtil (AccountResolver2 accountResolver)
+DECL|method|NotifyUtil (AccountResolver accountResolver)
 name|NotifyUtil
 parameter_list|(
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|)
 block|{

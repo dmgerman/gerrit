@@ -598,7 +598,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -1365,7 +1365,7 @@ decl_stmt|;
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 DECL|field|approvalsUtil
@@ -1626,10 +1626,10 @@ name|oldRecipients
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplaceOp ( AccountResolver2 accountResolver, ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, EmailReviewComments.Factory emailCommentsFactory, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, ProjectCache projectCache, @SendEmailExecutor ExecutorService sendEmailExecutor, ReviewerAdder reviewerAdder, @Assisted ProjectState projectState, @Assisted Branch.NameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommitId, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
+DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, EmailReviewComments.Factory emailCommentsFactory, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, ProjectCache projectCache, @SendEmailExecutor ExecutorService sendEmailExecutor, ReviewerAdder reviewerAdder, @Assisted ProjectState projectState, @Assisted Branch.NameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommitId, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
 name|ReplaceOp
 parameter_list|(
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|,
 name|ApprovalsUtil

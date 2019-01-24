@@ -268,7 +268,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -488,7 +488,7 @@ block|{
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 DECL|field|groupsUpdateProvider
@@ -502,10 +502,10 @@ name|groupsUpdateProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteMembers ( AccountResolver2 accountResolver, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
+DECL|method|DeleteMembers ( AccountResolver accountResolver, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
 name|DeleteMembers
 parameter_list|(
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|,
 annotation|@

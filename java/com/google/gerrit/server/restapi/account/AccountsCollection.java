@@ -192,7 +192,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -208,7 +208,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|UnresolvableAccountException
 import|;
@@ -322,7 +322,7 @@ block|{
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 DECL|field|list
@@ -348,11 +348,11 @@ name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountsCollection ( AccountResolver2 accountResolver, Provider<QueryAccounts> list, DynamicMap<RestView<AccountResource>> views)
+DECL|method|AccountsCollection ( AccountResolver accountResolver, Provider<QueryAccounts> list, DynamicMap<RestView<AccountResource>> views)
 specifier|public
 name|AccountsCollection
 parameter_list|(
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|,
 name|Provider

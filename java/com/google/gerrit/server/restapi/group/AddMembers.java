@@ -424,7 +424,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -440,7 +440,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|UnresolvableAccountException
 import|;
@@ -909,7 +909,7 @@ decl_stmt|;
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 DECL|field|accountCache
@@ -937,7 +937,7 @@ name|groupsUpdateProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddMembers ( AccountManager accountManager, AuthConfig authConfig, AccountResolver2 accountResolver, AccountCache accountCache, AccountLoader.Factory infoFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
+DECL|method|AddMembers ( AccountManager accountManager, AuthConfig authConfig, AccountResolver accountResolver, AccountCache accountCache, AccountLoader.Factory infoFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
 name|AddMembers
 parameter_list|(
 name|AccountManager
@@ -946,7 +946,7 @@ parameter_list|,
 name|AuthConfig
 name|authConfig
 parameter_list|,
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|,
 name|AccountCache
@@ -1225,7 +1225,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-name|AccountResolver2
+name|AccountResolver
 operator|.
 name|Result
 name|result

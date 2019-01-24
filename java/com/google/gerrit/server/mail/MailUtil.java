@@ -174,7 +174,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -302,13 +302,13 @@ specifier|public
 class|class
 name|MailUtil
 block|{
-DECL|method|getRecipientsFromFooters ( AccountResolver2 accountResolver, List<FooterLine> footerLines)
+DECL|method|getRecipientsFromFooters ( AccountResolver accountResolver, List<FooterLine> footerLines)
 specifier|public
 specifier|static
 name|MailRecipients
 name|getRecipientsFromFooters
 parameter_list|(
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|,
 name|List
@@ -467,7 +467,7 @@ return|return
 name|recipients
 return|;
 block|}
-DECL|method|toAccountId (AccountResolver2 accountResolver, String nameOrEmail)
+DECL|method|toAccountId (AccountResolver accountResolver, String nameOrEmail)
 specifier|private
 specifier|static
 name|Account
@@ -475,7 +475,7 @@ operator|.
 name|Id
 name|toAccountId
 parameter_list|(
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|,
 name|String

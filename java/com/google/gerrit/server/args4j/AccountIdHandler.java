@@ -176,7 +176,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver2
+name|AccountResolver
 import|;
 end_import
 
@@ -388,7 +388,7 @@ block|{
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 decl_stmt|;
 DECL|field|accountManager
@@ -405,11 +405,11 @@ name|authType
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountIdHandler ( AccountResolver2 accountResolver, AccountManager accountManager, AuthConfig authConfig, @Assisted CmdLineParser parser, @Assisted OptionDef option, @Assisted Setter<Account.Id> setter)
+DECL|method|AccountIdHandler ( AccountResolver accountResolver, AccountManager accountManager, AuthConfig authConfig, @Assisted CmdLineParser parser, @Assisted OptionDef option, @Assisted Setter<Account.Id> setter)
 specifier|public
 name|AccountIdHandler
 parameter_list|(
-name|AccountResolver2
+name|AccountResolver
 name|accountResolver
 parameter_list|,
 name|AccountManager
