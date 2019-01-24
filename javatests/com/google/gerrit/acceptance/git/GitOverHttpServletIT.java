@@ -118,20 +118,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
-operator|.
-name|Sandboxed
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|AnonymousUser
@@ -323,8 +309,6 @@ comment|// Don't clear audit events here, since we can't guarantee all test setu
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|receivePackAuditEventLog ()
 specifier|public
 name|void
@@ -517,8 +501,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Sandboxed
 DECL|method|uploadPackAuditEventLog ()
 specifier|public
 name|void
