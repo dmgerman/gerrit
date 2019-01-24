@@ -545,6 +545,33 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--no-limit"
+argument_list|,
+name|usage
+operator|=
+literal|"Return all results, overriding the default limit"
+argument_list|)
+DECL|method|setNoLimit (boolean on)
+name|void
+name|setNoLimit
+parameter_list|(
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|processor
+operator|.
+name|setNoLimit
+argument_list|(
+name|on
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
 name|Argument
 argument_list|(
 name|index

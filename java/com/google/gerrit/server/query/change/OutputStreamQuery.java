@@ -845,6 +845,23 @@ name|n
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setNoLimit (boolean on)
+specifier|public
+name|void
+name|setNoLimit
+parameter_list|(
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|queryProcessor
+operator|.
+name|setNoLimit
+argument_list|(
+name|on
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|setStart (int n)
 specifier|public
 name|void
