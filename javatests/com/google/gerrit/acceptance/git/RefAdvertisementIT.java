@@ -2004,8 +2004,6 @@ literal|"refs/heads/master"
 argument_list|,
 literal|"refs/tags/master-tag"
 argument_list|,
-literal|"refs/tags/branch-tag"
-argument_list|,
 literal|"refs/users/01/1000001/edit-"
 operator|+
 name|cd3
@@ -2153,8 +2151,6 @@ argument_list|,
 literal|"refs/heads/master"
 argument_list|,
 literal|"refs/tags/master-tag"
-argument_list|,
-literal|"refs/tags/branch-tag"
 argument_list|,
 literal|"refs/users/00/1000000/edit-"
 operator|+
@@ -4936,6 +4932,17 @@ argument_list|,
 name|RefFilterOptions
 operator|.
 name|defaults
+argument_list|()
+operator|.
+name|toBuilder
+argument_list|()
+operator|.
+name|setFilterTagsSeparately
+argument_list|(
+literal|true
+argument_list|)
+operator|.
+name|build
 argument_list|()
 argument_list|)
 operator|.
