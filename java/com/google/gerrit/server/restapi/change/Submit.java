@@ -474,7 +474,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver
+name|AccountResolver2
 import|;
 end_import
 
@@ -1162,7 +1162,7 @@ decl_stmt|;
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 decl_stmt|;
 DECL|field|label
@@ -1230,7 +1230,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Submit ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, ChangeData.Factory changeDataFactory, ChangeNotes.Factory changeNotesFactory, Provider<MergeOp> mergeOpProvider, Provider<MergeSuperSet> mergeSuperSet, AccountResolver accountResolver, @GerritServerConfig Config cfg, Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil, ProjectCache projectCache)
+DECL|method|Submit ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, ChangeData.Factory changeDataFactory, ChangeNotes.Factory changeNotesFactory, Provider<MergeOp> mergeOpProvider, Provider<MergeSuperSet> mergeSuperSet, AccountResolver2 accountResolver, @GerritServerConfig Config cfg, Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil, ProjectCache projectCache)
 name|Submit
 parameter_list|(
 name|GitRepositoryManager
@@ -1261,7 +1261,7 @@ name|MergeSuperSet
 argument_list|>
 name|mergeSuperSet
 parameter_list|,
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 parameter_list|,
 annotation|@
@@ -3357,13 +3357,16 @@ name|submitter
 init|=
 name|accountResolver
 operator|.
-name|parseOnBehalfOf
+name|resolve
 argument_list|(
-name|caller
-argument_list|,
 name|in
 operator|.
 name|onBehalfOf
+argument_list|)
+operator|.
+name|asUniqueUserOnBehalfOf
+argument_list|(
+name|caller
 argument_list|)
 decl_stmt|;
 try|try

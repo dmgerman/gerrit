@@ -226,22 +226,6 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
-operator|.
-name|UnprocessableEntityException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
 name|webui
 operator|.
 name|UiAction
@@ -290,7 +274,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver
+name|AccountResolver2
 import|;
 end_import
 
@@ -577,7 +561,7 @@ block|{
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 decl_stmt|;
 DECL|field|assigneeFactory
@@ -610,10 +594,10 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutAssignee ( AccountResolver accountResolver, SetAssigneeOp.Factory assigneeFactory, RetryHelper retryHelper, ReviewerAdder reviewerAdder, AccountLoader.Factory accountLoaderFactory, PermissionBackend permissionBackend)
+DECL|method|PutAssignee ( AccountResolver2 accountResolver, SetAssigneeOp.Factory assigneeFactory, RetryHelper retryHelper, ReviewerAdder reviewerAdder, AccountLoader.Factory accountLoaderFactory, PermissionBackend permissionBackend)
 name|PutAssignee
 parameter_list|(
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 parameter_list|,
 name|SetAssigneeOp
@@ -754,37 +738,16 @@ name|assignee
 init|=
 name|accountResolver
 operator|.
-name|parse
+name|resolve
 argument_list|(
 name|input
 operator|.
 name|assignee
 argument_list|)
+operator|.
+name|asUniqueUser
+argument_list|()
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|assignee
-operator|.
-name|getAccount
-argument_list|()
-operator|.
-name|isActive
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|UnprocessableEntityException
-argument_list|(
-name|input
-operator|.
-name|assignee
-operator|+
-literal|" is not active"
-argument_list|)
-throw|;
-block|}
 try|try
 block|{
 name|permissionBackend

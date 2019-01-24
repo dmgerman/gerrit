@@ -3561,7 +3561,10 @@ name|id
 argument_list|(
 name|foo2
 operator|.
-name|username
+name|id
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|getActive

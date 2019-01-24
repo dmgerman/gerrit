@@ -1196,7 +1196,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver
+name|AccountResolver2
 import|;
 end_import
 
@@ -2109,7 +2109,7 @@ decl_stmt|;
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 decl_stmt|;
 DECL|field|email
@@ -2178,7 +2178,7 @@ name|strictLabels
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview ( RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountResolver accountResolver, EmailReviewComments.Factory email, CommentAdded commentAdded, ReviewerAdder reviewerAdder, AddReviewersEmail addReviewersEmail, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
+DECL|method|PostReview ( RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountResolver2 accountResolver, EmailReviewComments.Factory email, CommentAdded commentAdded, ReviewerAdder reviewerAdder, AddReviewersEmail addReviewersEmail, NotifyUtil notifyUtil, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend)
 name|PostReview
 parameter_list|(
 name|RetryHelper
@@ -2212,7 +2212,7 @@ parameter_list|,
 name|PatchListCache
 name|patchListCache
 parameter_list|,
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 parameter_list|,
 name|EmailReviewComments
@@ -3989,13 +3989,16 @@ name|reviewer
 init|=
 name|accountResolver
 operator|.
-name|parseOnBehalfOf
+name|resolve
 argument_list|(
-name|caller
-argument_list|,
 name|in
 operator|.
 name|onBehalfOf
+argument_list|)
+operator|.
+name|asUniqueUserOnBehalfOf
+argument_list|(
+name|caller
 argument_list|)
 decl_stmt|;
 try|try

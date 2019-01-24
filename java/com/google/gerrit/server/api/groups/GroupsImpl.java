@@ -260,7 +260,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver
+name|AccountResolver2
 import|;
 end_import
 
@@ -486,7 +486,7 @@ block|{
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 decl_stmt|;
 DECL|field|groups
@@ -547,10 +547,10 @@ name|api
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsImpl ( AccountResolver accountResolver, GroupsCollection groups, GroupResolver groupResolver, ProjectsCollection projects, Provider<ListGroups> listGroups, Provider<QueryGroups> queryGroups, PermissionBackend permissionBackend, CreateGroup createGroup, GroupApiImpl.Factory api)
+DECL|method|GroupsImpl ( AccountResolver2 accountResolver, GroupsCollection groups, GroupResolver groupResolver, ProjectsCollection projects, Provider<ListGroups> listGroups, Provider<QueryGroups> queryGroups, PermissionBackend permissionBackend, CreateGroup createGroup, GroupApiImpl.Factory api)
 name|GroupsImpl
 parameter_list|(
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 parameter_list|,
 name|GroupsCollection
@@ -1030,7 +1030,7 @@ name|setUser
 argument_list|(
 name|accountResolver
 operator|.
-name|parse
+name|resolve
 argument_list|(
 name|req
 operator|.
@@ -1038,7 +1038,13 @@ name|getUser
 argument_list|()
 argument_list|)
 operator|.
-name|getAccountId
+name|asUnique
+argument_list|()
+operator|.
+name|getAccount
+argument_list|()
+operator|.
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;

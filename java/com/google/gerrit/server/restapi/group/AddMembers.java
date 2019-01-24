@@ -424,7 +424,25 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver
+name|AccountResolver2
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|AccountResolver2
+operator|.
+name|UnresolvableAccountException
 import|;
 end_import
 
@@ -891,7 +909,7 @@ decl_stmt|;
 DECL|field|accountResolver
 specifier|private
 specifier|final
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 decl_stmt|;
 DECL|field|accountCache
@@ -919,7 +937,7 @@ name|groupsUpdateProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddMembers ( AccountManager accountManager, AuthConfig authConfig, AccountResolver accountResolver, AccountCache accountCache, AccountLoader.Factory infoFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
+DECL|method|AddMembers ( AccountManager accountManager, AuthConfig authConfig, AccountResolver2 accountResolver, AccountCache accountCache, AccountLoader.Factory infoFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider)
 name|AddMembers
 parameter_list|(
 name|AccountManager
@@ -928,7 +946,7 @@ parameter_list|,
 name|AuthConfig
 name|authConfig
 parameter_list|,
-name|AccountResolver
+name|AccountResolver2
 name|accountResolver
 parameter_list|,
 name|AccountCache
@@ -1199,8 +1217,6 @@ name|String
 name|nameOrEmailOrId
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
 name|UnprocessableEntityException
 throws|,
 name|OrmException
@@ -1209,15 +1225,25 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-try|try
-block|{
-return|return
+name|AccountResolver2
+operator|.
+name|Result
+name|result
+init|=
 name|accountResolver
 operator|.
-name|parse
+name|resolve
 argument_list|(
 name|nameOrEmailOrId
 argument_list|)
+decl_stmt|;
+try|try
+block|{
+return|return
+name|result
+operator|.
+name|asUnique
+argument_list|()
 operator|.
 name|getAccount
 argument_list|()
@@ -1225,12 +1251,10 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|UnprocessableEntityException
+name|UnresolvableAccountException
 name|e
 parameter_list|)
 block|{
-comment|// might be because the account does not exist or because the account is
-comment|// not visible
 switch|switch
 condition|(
 name|authType
@@ -1247,17 +1271,23 @@ name|LDAP
 case|:
 if|if
 condition|(
-name|accountResolver
+operator|!
+name|e
 operator|.
-name|find
-argument_list|(
-name|nameOrEmailOrId
-argument_list|)
-operator|==
-literal|null
+name|isSelf
+argument_list|()
+operator|&&
+name|result
+operator|.
+name|asList
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
-comment|// account does not exist, try to create it
+comment|// Account does not exist, try to create it. This may leak account existence, since we
+comment|// can't distinguish between a nonexistent account and one that the caller can't see.
 name|Optional
 argument_list|<
 name|Account
