@@ -529,6 +529,27 @@ argument_list|,
 name|InternalChangeQuery
 argument_list|>
 block|{
+annotation|@
+name|FunctionalInterface
+DECL|interface|ChangeIdPredicateFactory
+specifier|static
+interface|interface
+name|ChangeIdPredicateFactory
+block|{
+DECL|method|create (Change.Id id)
+name|Predicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|create
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+function_decl|;
+block|}
 DECL|method|ref (BranchNameKey branch)
 specifier|private
 specifier|static
@@ -666,6 +687,13 @@ operator|.
 name|Factory
 name|notesFactory
 decl_stmt|;
+comment|// TODO(davido): Remove the below fields when support for legacy numeric fields is removed.
+DECL|field|predicateFactory
+specifier|private
+specifier|final
+name|ChangeIdPredicateFactory
+name|predicateFactory
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|InternalChangeQuery ( ChangeQueryProcessor queryProcessor, ChangeIndexCollection indexes, IndexConfig indexConfig, ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory)
@@ -711,6 +739,30 @@ operator|.
 name|notesFactory
 operator|=
 name|notesFactory
+expr_stmt|;
+name|predicateFactory
+operator|=
+operator|(
+name|id
+operator|)
+operator|->
+name|schema
+argument_list|()
+operator|.
+name|useLegacyNumericFields
+argument_list|()
+condition|?
+operator|new
+name|LegacyChangeIdPredicate
+argument_list|(
+name|id
+argument_list|)
+else|:
+operator|new
+name|LegacyChangeIdStrPredicate
+argument_list|(
+name|id
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|byKey (Change.Key key)
@@ -777,8 +829,9 @@ block|{
 return|return
 name|query
 argument_list|(
-operator|new
-name|LegacyChangeIdPredicate
+name|predicateFactory
+operator|.
+name|create
 argument_list|(
 name|id
 argument_list|)
@@ -835,8 +888,9 @@ name|preds
 operator|.
 name|add
 argument_list|(
-operator|new
-name|LegacyChangeIdPredicate
+name|predicateFactory
+operator|.
+name|create
 argument_list|(
 name|id
 argument_list|)

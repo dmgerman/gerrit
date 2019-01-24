@@ -575,6 +575,8 @@ operator|new
 name|Schema
 argument_list|<>
 argument_list|(
+literal|true
+argument_list|,
 name|ImmutableList
 operator|.
 name|copyOf
@@ -619,6 +621,8 @@ operator|new
 name|Schema
 argument_list|<>
 argument_list|(
+literal|true
+argument_list|,
 operator|new
 name|ImmutableList
 operator|.
@@ -684,8 +688,12 @@ name|fields
 parameter_list|)
 block|{
 return|return
-name|schema
+operator|new
+name|Schema
+argument_list|<>
 argument_list|(
+literal|true
+argument_list|,
 name|ImmutableList
 operator|.
 name|copyOf
