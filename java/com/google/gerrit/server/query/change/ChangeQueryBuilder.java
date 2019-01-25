@@ -1324,8 +1324,8 @@ name|MAX_ACCOUNTS_PER_DEFAULT_FIELD
 init|=
 literal|10
 decl_stmt|;
-comment|// NOTE: As new search operations are added, please keep the
-comment|// SearchSuggestOracle up to date.
+comment|// NOTE: As new search operations are added, please keep the suggestions in
+comment|// gr-search-bar.js up to date.
 DECL|field|FIELD_ADDED
 specifier|public
 specifier|static
