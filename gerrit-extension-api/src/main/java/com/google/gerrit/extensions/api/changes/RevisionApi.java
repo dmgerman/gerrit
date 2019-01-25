@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ListMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -97,6 +111,22 @@ operator|.
 name|common
 operator|.
 name|ActionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|ApprovalInfo
 import|;
 end_import
 
@@ -719,6 +749,19 @@ function_decl|;
 DECL|method|related ()
 name|RelatedChangesInfo
 name|related
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** Returns votes on the revision. */
+DECL|method|votes ()
+name|ListMultimap
+argument_list|<
+name|String
+argument_list|,
+name|ApprovalInfo
+argument_list|>
+name|votes
 parameter_list|()
 throws|throws
 name|RestApiException
@@ -1566,6 +1609,27 @@ DECL|method|related ()
 specifier|public
 name|RelatedChangesInfo
 name|related
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|votes ()
+specifier|public
+name|ListMultimap
+argument_list|<
+name|String
+argument_list|,
+name|ApprovalInfo
+argument_list|>
+name|votes
 parameter_list|()
 throws|throws
 name|RestApiException
