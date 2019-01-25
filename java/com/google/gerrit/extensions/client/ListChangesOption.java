@@ -249,12 +249,15 @@ literal|21
 argument_list|)
 block|,
 comment|/** Skip mergeability data */
+DECL|enumConstant|Deprecated
+annotation|@
+name|Deprecated
 DECL|enumConstant|SKIP_MERGEABLE
 name|SKIP_MERGEABLE
 argument_list|(
 literal|22
 argument_list|)
-block|;
+decl_stmt|;
 DECL|field|value
 specifier|private
 specifier|final
