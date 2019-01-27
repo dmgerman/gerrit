@@ -4002,6 +4002,15 @@ operator|.
 name|name
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|classDesc
+operator|.
+name|skipProjectClone
+argument_list|()
+condition|)
+block|{
 name|testRepo
 operator|=
 name|cloneProject
@@ -4014,6 +4023,7 @@ name|description
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/** Override to bind an additional Guice module */
 DECL|method|createModule ()
