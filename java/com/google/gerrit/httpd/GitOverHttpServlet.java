@@ -72,6 +72,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|cache
 operator|.
 name|Cache
@@ -637,6 +651,20 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicLong
 import|;
 end_import
 
@@ -1285,6 +1313,55 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|// Don't bind Metrics, which is bound in a parent injector in tests.
+block|}
+block|}
+annotation|@
+name|VisibleForTesting
+annotation|@
+name|Singleton
+DECL|class|Metrics
+specifier|public
+specifier|static
+class|class
+name|Metrics
+block|{
+comment|// Recording requests separately in this class is only necessary because of a bug in the
+comment|// implementation of the generic RequestMetricsFilter; see
+comment|// https://gerrit-review.googlesource.com/c/gerrit/+/211692
+DECL|field|requestsStarted
+specifier|private
+specifier|final
+name|AtomicLong
+name|requestsStarted
+init|=
+operator|new
+name|AtomicLong
+argument_list|()
+decl_stmt|;
+DECL|method|requestStarted ()
+name|void
+name|requestStarted
+parameter_list|()
+block|{
+name|requestsStarted
+operator|.
+name|incrementAndGet
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|getRequestsStarted ()
+specifier|public
+name|long
+name|getRequestsStarted
+parameter_list|()
+block|{
+return|return
+name|requestsStarted
+operator|.
+name|get
+argument_list|()
+return|;
 block|}
 block|}
 DECL|class|HttpServletResponseWithStatusWrapper
@@ -2270,9 +2347,15 @@ specifier|final
 name|GroupAuditService
 name|groupAuditService
 decl_stmt|;
+DECL|field|metrics
+specifier|private
+specifier|final
+name|Metrics
+name|metrics
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UploadFilter ( UploadValidators.Factory uploadValidatorsFactory, PermissionBackend permissionBackend, Provider<CurrentUser> userProvider, GroupAuditService groupAuditService)
+DECL|method|UploadFilter ( UploadValidators.Factory uploadValidatorsFactory, PermissionBackend permissionBackend, Provider<CurrentUser> userProvider, GroupAuditService groupAuditService, Metrics metrics)
 name|UploadFilter
 parameter_list|(
 name|UploadValidators
@@ -2291,6 +2374,9 @@ name|userProvider
 parameter_list|,
 name|GroupAuditService
 name|groupAuditService
+parameter_list|,
+name|Metrics
+name|metrics
 parameter_list|)
 block|{
 name|this
@@ -2316,6 +2402,12 @@ operator|.
 name|groupAuditService
 operator|=
 name|groupAuditService
+expr_stmt|;
+name|this
+operator|.
+name|metrics
+operator|=
+name|metrics
 expr_stmt|;
 block|}
 annotation|@
@@ -2339,6 +2431,11 @@ name|IOException
 throws|,
 name|ServletException
 block|{
+name|metrics
+operator|.
+name|requestStarted
+argument_list|()
+expr_stmt|;
 comment|// The Resolver above already checked READ access for us.
 name|Repository
 name|repo
@@ -2856,9 +2953,15 @@ specifier|final
 name|GroupAuditService
 name|groupAuditService
 decl_stmt|;
+DECL|field|metrics
+specifier|private
+specifier|final
+name|Metrics
+name|metrics
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveFilter ( @amedID_CACHE) Cache<AdvertisedObjectsCacheKey, Set<ObjectId>> cache, PermissionBackend permissionBackend, Provider<CurrentUser> userProvider, GroupAuditService groupAuditService)
+DECL|method|ReceiveFilter ( @amedID_CACHE) Cache<AdvertisedObjectsCacheKey, Set<ObjectId>> cache, PermissionBackend permissionBackend, Provider<CurrentUser> userProvider, GroupAuditService groupAuditService, Metrics metrics)
 name|ReceiveFilter
 parameter_list|(
 annotation|@
@@ -2888,6 +2991,9 @@ name|userProvider
 parameter_list|,
 name|GroupAuditService
 name|groupAuditService
+parameter_list|,
+name|Metrics
+name|metrics
 parameter_list|)
 block|{
 name|this
@@ -2913,6 +3019,12 @@ operator|.
 name|groupAuditService
 operator|=
 name|groupAuditService
+expr_stmt|;
+name|this
+operator|.
+name|metrics
+operator|=
+name|metrics
 expr_stmt|;
 block|}
 annotation|@
@@ -2936,6 +3048,11 @@ name|IOException
 throws|,
 name|ServletException
 block|{
+name|metrics
+operator|.
+name|requestStarted
+argument_list|()
+expr_stmt|;
 name|boolean
 name|isGet
 init|=
