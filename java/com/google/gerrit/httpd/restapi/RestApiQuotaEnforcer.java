@@ -203,7 +203,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Enforces quota on specific REST API endpoints.  *  *<p>Examples:  *  *<ul>  *<li>GET /a/accounts/self/detail => /restapi/accounts/detail:GET  *<li>GET /changes/123/revisions/current/detail => /restapi/changes/revisions/detail:GET  *<li>PUT /changes/10/reviewed => /changes/reviewed:PUT  *</ul>  *  *<p>Adds context (change, project, account) to the quota check if the call is for an existing  * entity that was successfully parsed. This quota check is generally enforced after the resource  * was parsed, but before the view is executed. If a quota enforcer desires to throttle earlier,  * they should consider quota groups in the {@code /http/*} space.  */
+comment|/**  * Enforces quota on specific REST API endpoints.  *  *<p>Examples:  *  *<ul>  *<li>GET /a/accounts/self/detail => /restapi/accounts/detail:GET  *<li>GET /changes/123/revisions/current/detail => /restapi/changes/revisions/detail:GET  *<li>PUT /changes/10/reviewed => /restapi/changes/reviewed:PUT  *</ul>  *  *<p>Adds context (change, project, account) to the quota check if the call is for an existing  * entity that was successfully parsed. This quota check is generally enforced after the resource  * was parsed, but before the view is executed. If a quota enforcer desires to throttle earlier,  * they should consider quota groups in the {@code /http/*} space.  */
 end_comment
 
 begin_class
