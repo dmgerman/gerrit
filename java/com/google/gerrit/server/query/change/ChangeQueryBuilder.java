@@ -4538,6 +4538,8 @@ parameter_list|(
 name|String
 name|ext
 parameter_list|)
+throws|throws
+name|QueryParseException
 block|{
 return|return
 name|extension
@@ -4559,6 +4561,23 @@ parameter_list|(
 name|String
 name|ext
 parameter_list|)
+throws|throws
+name|QueryParseException
+block|{
+if|if
+condition|(
+name|args
+operator|.
+name|getSchema
+argument_list|()
+operator|.
+name|hasField
+argument_list|(
+name|ChangeField
+operator|.
+name|EXTENSION
+argument_list|)
+condition|)
 block|{
 return|return
 operator|new
@@ -4567,6 +4586,14 @@ argument_list|(
 name|ext
 argument_list|)
 return|;
+block|}
+throw|throw
+operator|new
+name|QueryParseException
+argument_list|(
+literal|"'extension' operator is not supported by change index version"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Operator
