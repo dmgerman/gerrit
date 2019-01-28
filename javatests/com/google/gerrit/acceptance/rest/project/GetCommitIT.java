@@ -387,37 +387,7 @@ name|project
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|projectOperations
-operator|.
-name|project
-argument_list|(
-name|project
-argument_list|)
-operator|.
-name|forUpdate
-argument_list|()
-operator|.
-name|add
-argument_list|(
-name|block
-argument_list|(
-name|Permission
-operator|.
-name|READ
-argument_list|)
-operator|.
-name|ref
-argument_list|(
-literal|"refs/*"
-argument_list|)
-operator|.
-name|group
-argument_list|(
-name|REGISTERED_USERS
-argument_list|)
-argument_list|)
-operator|.
-name|update
+name|blockRead
 argument_list|()
 expr_stmt|;
 block|}
@@ -972,6 +942,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// Need to unblock read to allow the push operation to succeed if not, when retrieving the
+comment|// advertised refs during
+comment|// the push, the client won't be sent the initial commit and will send it again as part of the
+comment|// change.
+name|unblockRead
+argument_list|()
+expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
@@ -997,6 +974,10 @@ decl_stmt|;
 name|r
 operator|.
 name|assertOkStatus
+argument_list|()
+expr_stmt|;
+comment|// Re-blocking the read
+name|blockRead
 argument_list|()
 expr_stmt|;
 name|assertNotFound
@@ -1054,6 +1035,46 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+DECL|method|blockRead ()
+specifier|private
+name|void
+name|blockRead
+parameter_list|()
+block|{
+name|projectOperations
+operator|.
+name|project
+argument_list|(
+name|project
+argument_list|)
+operator|.
+name|forUpdate
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|block
+argument_list|(
+name|Permission
+operator|.
+name|READ
+argument_list|)
+operator|.
+name|ref
+argument_list|(
+literal|"refs/*"
+argument_list|)
+operator|.
+name|group
+argument_list|(
+name|REGISTERED_USERS
+argument_list|)
+argument_list|)
+operator|.
+name|update
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|assertNotFound (ObjectId id)
 specifier|private

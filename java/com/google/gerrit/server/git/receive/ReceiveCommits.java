@@ -3276,7 +3276,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ProjectState projectState, IdentifiedUser user, ReceivePack receivePack, AllRefsWatcher allRefsWatcher, MessageSender messageSender, ResultChangeIds resultChangeIds)
+DECL|method|create ( ProjectState projectState, IdentifiedUser user, ReceivePack receivePack, Repository repository, AllRefsWatcher allRefsWatcher, MessageSender messageSender, ResultChangeIds resultChangeIds)
 name|ReceiveCommits
 name|create
 parameter_list|(
@@ -3288,6 +3288,9 @@ name|user
 parameter_list|,
 name|ReceivePack
 name|receivePack
+parameter_list|,
+name|Repository
+name|repository
 parameter_list|,
 name|AllRefsWatcher
 name|allRefsWatcher
@@ -3981,7 +3984,7 @@ name|loggingTags
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config config, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommentsUtil commentsUtil, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, PluginSetContext<CommentValidator> commentValidators, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, DynamicSet<PerformanceLogger> performanceLoggers, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, PluginSetContext<RequestListener> requestListeners, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, SetPrivateOp.Factory setPrivateOpFactory, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender, @Assisted ResultChangeIds resultChangeIds)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config config, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommentsUtil commentsUtil, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, PluginSetContext<CommentValidator> commentValidators, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, DynamicSet<PerformanceLogger> performanceLoggers, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, PluginSetContext<RequestListener> requestListeners, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, SetPrivateOp.Factory setPrivateOpFactory, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted Repository repository, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender, @Assisted ResultChangeIds resultChangeIds)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -4165,6 +4168,11 @@ annotation|@
 name|Assisted
 name|ReceivePack
 name|rp
+parameter_list|,
+annotation|@
+name|Assisted
+name|Repository
+name|repository
 parameter_list|,
 annotation|@
 name|Assisted
@@ -4443,14 +4451,15 @@ name|receivePack
 operator|=
 name|rp
 expr_stmt|;
-comment|// Immutable fields derived from constructor arguments.
+comment|// This repository instance in unwrapped, while the repository instance in
+comment|// receivePack.getRepo() is wrapped in PermissionAwareRepository instance.
+name|this
+operator|.
 name|repo
 operator|=
-name|rp
-operator|.
-name|getRepository
-argument_list|()
+name|repository
 expr_stmt|;
+comment|// Immutable fields derived from constructor arguments.
 name|project
 operator|=
 name|projectState
@@ -4488,10 +4497,7 @@ name|BanCommit
 operator|.
 name|loadRejectCommitsMap
 argument_list|(
-name|rp
-operator|.
-name|getRepository
-argument_list|()
+name|repo
 argument_list|,
 name|rp
 operator|.

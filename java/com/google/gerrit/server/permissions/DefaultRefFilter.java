@@ -2889,6 +2889,21 @@ name|isIdentifiedUser
 argument_list|()
 condition|)
 block|{
+comment|// User self symref is already there
+if|if
+condition|(
+name|refs
+operator|.
+name|containsKey
+argument_list|(
+name|REFS_USERS_SELF
+argument_list|)
+condition|)
+block|{
+return|return
+name|refs
+return|;
+block|}
 name|String
 name|refName
 init|=
