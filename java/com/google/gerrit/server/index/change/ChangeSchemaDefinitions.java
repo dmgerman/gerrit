@@ -631,6 +631,8 @@ name|FOOTER
 argument_list|)
 decl_stmt|;
 DECL|field|V55
+annotation|@
+name|Deprecated
 specifier|static
 specifier|final
 name|Schema
@@ -646,6 +648,21 @@ argument_list|,
 name|ChangeField
 operator|.
 name|DIRECTORY
+argument_list|)
+decl_stmt|;
+comment|// The computation of the 'extension' field is changed, hence reindexing is required.
+DECL|field|V56
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|V56
+init|=
+name|schema
+argument_list|(
+name|V55
 argument_list|)
 decl_stmt|;
 DECL|field|NAME

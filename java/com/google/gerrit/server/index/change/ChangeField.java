@@ -1802,17 +1802,6 @@ argument_list|(
 name|cd
 argument_list|)
 operator|.
-name|filter
-argument_list|(
-name|e
-lambda|->
-operator|!
-name|e
-operator|.
-name|isEmpty
-argument_list|()
-argument_list|)
-operator|.
 name|collect
 argument_list|(
 name|toSet

@@ -10695,6 +10695,8 @@ argument_list|(
 name|repo
 argument_list|,
 literal|"Quux.java"
+argument_list|,
+literal|"foo"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -10744,6 +10746,28 @@ argument_list|,
 name|change1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|getSchemaVersion
+argument_list|()
+operator|>=
+literal|56
+condition|)
+block|{
+comment|// matching changes with files that have no extension is possible
+name|assertQuery
+argument_list|(
+literal|"ext:\"\""
+argument_list|,
+name|change4
+argument_list|)
+expr_stmt|;
+name|assertFailingQuery
+argument_list|(
+literal|"ext:"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
