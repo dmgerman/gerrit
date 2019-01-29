@@ -1469,7 +1469,7 @@ name|Streams
 operator|.
 name|stream
 argument_list|(
-name|byId
+name|accountCache
 operator|.
 name|get
 argument_list|(
@@ -1783,7 +1783,7 @@ name|Streams
 operator|.
 name|stream
 argument_list|(
-name|byId
+name|accountCache
 operator|.
 name|getByUsername
 argument_list|(
@@ -2474,11 +2474,11 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-DECL|field|byId
+DECL|field|accountCache
 specifier|private
 specifier|final
 name|AccountCache
-name|byId
+name|accountCache
 decl_stmt|;
 DECL|field|accountControlFactory
 specifier|private
@@ -2534,11 +2534,11 @@ name|anonymousCowardName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountResolver ( AccountCache byId, Emails emails, AccountControl.Factory accountControlFactory, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, Provider<InternalAccountQuery> accountQueryProvider, Realm realm, @AnonymousCowardName String anonymousCowardName)
+DECL|method|AccountResolver ( AccountCache accountCache, Emails emails, AccountControl.Factory accountControlFactory, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, Provider<InternalAccountQuery> accountQueryProvider, Realm realm, @AnonymousCowardName String anonymousCowardName)
 name|AccountResolver
 parameter_list|(
 name|AccountCache
-name|byId
+name|accountCache
 parameter_list|,
 name|Emails
 name|emails
@@ -2582,9 +2582,9 @@ name|realm
 expr_stmt|;
 name|this
 operator|.
-name|byId
+name|accountCache
 operator|=
-name|byId
+name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -3039,7 +3039,7 @@ name|ids
 parameter_list|)
 block|{
 return|return
-name|byId
+name|accountCache
 operator|.
 name|get
 argument_list|(
