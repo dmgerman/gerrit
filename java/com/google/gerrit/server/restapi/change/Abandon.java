@@ -901,8 +901,6 @@ argument_list|(
 name|accountState
 argument_list|,
 name|msgTxt
-argument_list|,
-name|notify
 argument_list|)
 decl_stmt|;
 try|try
@@ -928,6 +926,13 @@ argument_list|()
 argument_list|)
 init|)
 block|{
+name|u
+operator|.
+name|setNotify
+argument_list|(
+name|notify
+argument_list|)
+expr_stmt|;
 name|u
 operator|.
 name|addOp

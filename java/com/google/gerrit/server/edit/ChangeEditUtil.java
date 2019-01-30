@@ -1164,11 +1164,6 @@ name|psId
 argument_list|,
 name|squashed
 argument_list|)
-operator|.
-name|setNotify
-argument_list|(
-name|notify
-argument_list|)
 decl_stmt|;
 name|StringBuilder
 name|message
@@ -1315,6 +1310,13 @@ argument_list|,
 name|rw
 argument_list|,
 name|oi
+argument_list|)
+expr_stmt|;
+name|bu
+operator|.
+name|setNotify
+argument_list|(
+name|notify
 argument_list|)
 expr_stmt|;
 name|bu

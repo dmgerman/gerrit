@@ -366,6 +366,13 @@ argument_list|()
 argument_list|)
 init|)
 block|{
+name|u
+operator|.
+name|setNotify
+argument_list|(
+name|notify
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|ChangeData
@@ -430,8 +437,6 @@ argument_list|(
 name|accountState
 argument_list|,
 name|msgTxt
-argument_list|,
-name|notify
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -1249,23 +1249,16 @@ argument_list|(
 literal|"Edit commit message"
 argument_list|)
 expr_stmt|;
-name|NotifyResolver
+name|bu
 operator|.
-name|Result
-name|notify
-init|=
+name|setNotify
+argument_list|(
 name|resolveNotify
 argument_list|(
 name|input
 argument_list|,
 name|resource
 argument_list|)
-decl_stmt|;
-name|inserter
-operator|.
-name|setNotify
-argument_list|(
-name|notify
 argument_list|)
 expr_stmt|;
 name|bu

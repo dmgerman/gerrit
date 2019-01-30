@@ -440,14 +440,6 @@ specifier|final
 name|String
 name|msgTxt
 decl_stmt|;
-DECL|field|notify
-specifier|private
-specifier|final
-name|NotifyResolver
-operator|.
-name|Result
-name|notify
-decl_stmt|;
 DECL|field|accountState
 specifier|private
 specifier|final
@@ -474,7 +466,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( @ssisted @ullable AccountState accountState, @Assisted @Nullable String msgTxt, @Assisted NotifyResolver.Result notify)
+DECL|method|create ( @ssisted @ullable AccountState accountState, @Assisted @Nullable String msgTxt)
 name|AbandonOp
 name|create
 parameter_list|(
@@ -491,19 +483,12 @@ annotation|@
 name|Nullable
 name|String
 name|msgTxt
-parameter_list|,
-annotation|@
-name|Assisted
-name|NotifyResolver
-operator|.
-name|Result
-name|notify
 parameter_list|)
 function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AbandonOp ( AbandonedSender.Factory abandonedSenderFactory, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, ChangeAbandoned changeAbandoned, @Assisted @Nullable AccountState accountState, @Assisted @Nullable String msgTxt, @Assisted NotifyResolver.Result notify)
+DECL|method|AbandonOp ( AbandonedSender.Factory abandonedSenderFactory, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, ChangeAbandoned changeAbandoned, @Assisted @Nullable AccountState accountState, @Assisted @Nullable String msgTxt)
 name|AbandonOp
 parameter_list|(
 name|AbandonedSender
@@ -533,13 +518,6 @@ annotation|@
 name|Nullable
 name|String
 name|msgTxt
-parameter_list|,
-annotation|@
-name|Assisted
-name|NotifyResolver
-operator|.
-name|Result
-name|notify
 parameter_list|)
 block|{
 name|this
@@ -582,12 +560,6 @@ name|nullToEmpty
 argument_list|(
 name|msgTxt
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|notify
-operator|=
-name|notify
 expr_stmt|;
 block|}
 annotation|@
@@ -825,6 +797,21 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|NotifyResolver
+operator|.
+name|Result
+name|notify
+init|=
+name|ctx
+operator|.
+name|getNotify
+argument_list|(
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 name|ReplyToChangeSender

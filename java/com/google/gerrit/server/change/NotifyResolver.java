@@ -481,6 +481,25 @@ argument_list|>
 name|accounts
 parameter_list|()
 function_decl|;
+DECL|method|withHandling (NotifyHandling notifyHandling)
+specifier|public
+name|Result
+name|withHandling
+parameter_list|(
+name|NotifyHandling
+name|notifyHandling
+parameter_list|)
+block|{
+return|return
+name|create
+argument_list|(
+name|notifyHandling
+argument_list|,
+name|accounts
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|shouldNotify ()
 specifier|public
 name|boolean

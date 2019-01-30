@@ -106,6 +106,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|Project
 import|;
 end_import
@@ -151,6 +167,22 @@ operator|.
 name|account
 operator|.
 name|AccountState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|NotifyResolver
 import|;
 end_import
 
@@ -249,6 +281,19 @@ DECL|method|getUser ()
 name|CurrentUser
 name|getUser
 parameter_list|()
+function_decl|;
+comment|/**    * Get the notification settings configured by the caller.    *    *<p>If there are multiple changes in a batch, they may have different settings. For example, WIP    * changes may have reduced {@code NotifyHandling} levels, and may be in a batch with non-WIP    * changes.    *    * @param changeId change ID    * @return notification settings.    */
+DECL|method|getNotify (Change.Id changeId)
+name|NotifyResolver
+operator|.
+name|Result
+name|getNotify
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|)
 function_decl|;
 comment|/**    * Get the identified user performing the update.    *    *<p>Convenience method for {@code getUser().asIdentifiedUser()}.    *    * @see CurrentUser#asIdentifiedUser()    * @return user.    */
 DECL|method|getIdentifiedUser ()

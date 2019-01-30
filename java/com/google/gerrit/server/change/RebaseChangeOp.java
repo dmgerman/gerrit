@@ -1214,16 +1214,6 @@ argument_list|(
 literal|"Rebase"
 argument_list|)
 operator|.
-name|setNotify
-argument_list|(
-name|NotifyResolver
-operator|.
-name|Result
-operator|.
-name|none
-argument_list|()
-argument_list|)
-operator|.
 name|setFireRevisionCreated
 argument_list|(
 name|fireRevisionCreated

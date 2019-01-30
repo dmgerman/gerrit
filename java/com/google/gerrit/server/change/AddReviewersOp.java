@@ -607,8 +607,8 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-comment|/**      * Create a new op.      *      *<p>Users may be added by account or by email addresses, as determined by {@code accountIds}      * and {@code addresses}. The reviewer state for both accounts and email addresses is determined      * by {@code state}.      *      * @param accountIds account IDs to add.      * @param addresses email addresses to add.      * @param state resulting reviewer state.      * @param notify notification handling.      * @return batch update operation.      */
-DECL|method|create ( Set<Account.Id> accountIds, Collection<Address> addresses, ReviewerState state, NotifyResolver.Result notify)
+comment|/**      * Create a new op.      *      *<p>Users may be added by account or by email addresses, as determined by {@code accountIds}      * and {@code addresses}. The reviewer state for both accounts and email addresses is determined      * by {@code state}.      *      * @param accountIds account IDs to add.      * @param addresses email addresses to add.      * @param state resulting reviewer state.      * @return batch update operation.      */
+DECL|method|create ( Set<Account.Id> accountIds, Collection<Address> addresses, ReviewerState state)
 name|AddReviewersOp
 name|create
 parameter_list|(
@@ -628,11 +628,6 @@ name|addresses
 parameter_list|,
 name|ReviewerState
 name|state
-parameter_list|,
-name|NotifyResolver
-operator|.
-name|Result
-name|notify
 parameter_list|)
 function_decl|;
 block|}
@@ -831,14 +826,6 @@ specifier|final
 name|ReviewerState
 name|state
 decl_stmt|;
-DECL|field|notify
-specifier|private
-specifier|final
-name|NotifyResolver
-operator|.
-name|Result
-name|notify
-decl_stmt|;
 comment|// Unlike addedCCs, addedReviewers is a PatchSetApproval because the AddReviewerResult returned
 comment|// via the REST API is supposed to include vote information.
 DECL|field|addedReviewers
@@ -895,6 +882,13 @@ operator|.
 name|of
 argument_list|()
 decl_stmt|;
+DECL|field|sendEmail
+specifier|private
+name|boolean
+name|sendEmail
+init|=
+literal|true
+decl_stmt|;
 DECL|field|change
 specifier|private
 name|Change
@@ -912,7 +906,7 @@ name|opResult
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, ProjectCache projectCache, AddReviewersEmail addReviewersEmail, @Assisted Set<Account.Id> accountIds, @Assisted Collection<Address> addresses, @Assisted ReviewerState state, @Assisted NotifyResolver.Result notify)
+DECL|method|AddReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, ProjectCache projectCache, AddReviewersEmail addReviewersEmail, @Assisted Set<Account.Id> accountIds, @Assisted Collection<Address> addresses, @Assisted ReviewerState state)
 name|AddReviewersOp
 parameter_list|(
 name|ApprovalsUtil
@@ -955,13 +949,6 @@ annotation|@
 name|Assisted
 name|ReviewerState
 name|state
-parameter_list|,
-annotation|@
-name|Assisted
-name|NotifyResolver
-operator|.
-name|Result
-name|notify
 parameter_list|)
 block|{
 name|checkArgument
@@ -1037,11 +1024,21 @@ name|state
 operator|=
 name|state
 expr_stmt|;
+block|}
+comment|// TODO(dborowitz): This mutable setter is ugly, but a) it's less ugly than adding boolean args
+comment|// all the way through the constructor stack, and b) this class is slated to be completely
+comment|// rewritten.
+DECL|method|suppressEmail ()
+specifier|public
+name|void
+name|suppressEmail
+parameter_list|()
+block|{
 name|this
 operator|.
-name|notify
+name|sendEmail
 operator|=
-name|notify
+literal|false
 expr_stmt|;
 block|}
 DECL|method|setPatchSet (PatchSet patchSet)
@@ -1461,6 +1458,11 @@ operator|.
 name|build
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|sendEmail
+condition|)
+block|{
 name|addReviewersEmail
 operator|.
 name|emailReviewers
@@ -1492,9 +1494,18 @@ name|addedReviewersByEmail
 argument_list|,
 name|addedCCsByEmail
 argument_list|,
-name|notify
+name|ctx
+operator|.
+name|getNotify
+argument_list|(
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!

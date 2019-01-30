@@ -154,22 +154,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
-operator|.
-name|NotifyResolver
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|CodeReviewCommit
@@ -360,7 +344,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create ( SubmitType submitType, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, SubmitInput submitInput, NotifyResolver.Result notify, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create ( SubmitType submitType, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, SubmitInput submitInput, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -406,11 +390,6 @@ parameter_list|,
 name|SubmitInput
 name|submitInput
 parameter_list|,
-name|NotifyResolver
-operator|.
-name|Result
-name|notify
-parameter_list|,
 name|SubmoduleOp
 name|submoduleOp
 parameter_list|,
@@ -450,8 +429,6 @@ argument_list|,
 name|submissionId
 argument_list|,
 name|submitInput
-argument_list|,
-name|notify
 argument_list|,
 name|submoduleOp
 argument_list|,

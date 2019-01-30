@@ -1995,13 +1995,6 @@ argument_list|(
 literal|"Uploaded patch set 1."
 argument_list|)
 expr_stmt|;
-name|ins
-operator|.
-name|setNotify
-argument_list|(
-name|notify
-argument_list|)
-expr_stmt|;
 name|ReviewerSet
 name|reviewerSet
 init|=
@@ -2137,6 +2130,13 @@ argument_list|)
 expr_stmt|;
 name|bu
 operator|.
+name|setNotify
+argument_list|(
+name|notify
+argument_list|)
+expr_stmt|;
+name|bu
+operator|.
 name|insertChange
 argument_list|(
 name|ins
@@ -2154,8 +2154,6 @@ argument_list|(
 name|changeToRevert
 argument_list|,
 name|ins
-argument_list|,
-name|notify
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2355,15 +2353,7 @@ specifier|final
 name|ChangeInserter
 name|ins
 decl_stmt|;
-DECL|field|notify
-specifier|private
-specifier|final
-name|NotifyResolver
-operator|.
-name|Result
-name|notify
-decl_stmt|;
-DECL|method|NotifyOp (Change change, ChangeInserter ins, NotifyResolver.Result notify)
+DECL|method|NotifyOp (Change change, ChangeInserter ins)
 name|NotifyOp
 parameter_list|(
 name|Change
@@ -2371,11 +2361,6 @@ name|change
 parameter_list|,
 name|ChangeInserter
 name|ins
-parameter_list|,
-name|NotifyResolver
-operator|.
-name|Result
-name|notify
 parameter_list|)
 block|{
 name|this
@@ -2389,12 +2374,6 @@ operator|.
 name|ins
 operator|=
 name|ins
-expr_stmt|;
-name|this
-operator|.
-name|notify
-operator|=
-name|notify
 expr_stmt|;
 block|}
 annotation|@
@@ -2461,7 +2440,15 @@ name|cm
 operator|.
 name|setNotify
 argument_list|(
-name|notify
+name|ctx
+operator|.
+name|getNotify
+argument_list|(
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|cm

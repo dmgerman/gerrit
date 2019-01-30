@@ -3684,6 +3684,8 @@ argument_list|(
 name|ts
 argument_list|,
 name|caller
+argument_list|,
+name|notify
 argument_list|)
 expr_stmt|;
 block|}
@@ -4501,8 +4503,6 @@ argument_list|,
 name|submissionId
 argument_list|,
 name|submitInput
-argument_list|,
-name|notify
 argument_list|,
 name|submoduleOp
 argument_list|,
