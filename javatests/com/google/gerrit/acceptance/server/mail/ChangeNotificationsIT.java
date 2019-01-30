@@ -8104,13 +8104,26 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-return|return
+name|StagedChange
+name|sc
+init|=
 name|stageChangeWithExtraReviewer
 argument_list|(
 name|this
 operator|::
 name|stageWipChange
 argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|sender
+argument_list|)
+operator|.
+name|didNotSend
+argument_list|()
+expr_stmt|;
+return|return
+name|sc
 return|;
 block|}
 DECL|method|removeReviewer (StagedChange sc, TestAccount account)
