@@ -164,6 +164,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|PluginConfigFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -904,6 +920,12 @@ specifier|final
 name|GitRepositoryManager
 name|repositoryManager
 decl_stmt|;
+DECL|field|pluginConfigFactory
+specifier|private
+specifier|final
+name|PluginConfigFactory
+name|pluginConfigFactory
+decl_stmt|;
 DECL|field|patchListCache
 specifier|private
 specifier|final
@@ -958,7 +980,7 @@ name|emails
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Args ( ProjectCache projectCache, PermissionBackend permissionBackend, GitRepositoryManager repositoryManager, PatchListCache patchListCache, PatchSetInfoFactory patchSetInfoFactory, IdentifiedUser.GenericFactory userFactory, Provider<AnonymousUser> anonymousUser, @GerritServerConfig Config config, PatchSetUtil patchsetUtil, Emails emails)
+DECL|method|Args ( ProjectCache projectCache, PermissionBackend permissionBackend, GitRepositoryManager repositoryManager, PluginConfigFactory pluginConfigFactory, PatchListCache patchListCache, PatchSetInfoFactory patchSetInfoFactory, IdentifiedUser.GenericFactory userFactory, Provider<AnonymousUser> anonymousUser, @GerritServerConfig Config config, PatchSetUtil patchsetUtil, Emails emails)
 name|Args
 parameter_list|(
 name|ProjectCache
@@ -969,6 +991,9 @@ name|permissionBackend
 parameter_list|,
 name|GitRepositoryManager
 name|repositoryManager
+parameter_list|,
+name|PluginConfigFactory
+name|pluginConfigFactory
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -1016,6 +1041,12 @@ operator|.
 name|repositoryManager
 operator|=
 name|repositoryManager
+expr_stmt|;
+name|this
+operator|.
+name|pluginConfigFactory
+operator|=
+name|pluginConfigFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1178,6 +1209,16 @@ parameter_list|()
 block|{
 return|return
 name|repositoryManager
+return|;
+block|}
+DECL|method|getPluginConfigFactory ()
+specifier|public
+name|PluginConfigFactory
+name|getPluginConfigFactory
+parameter_list|()
+block|{
+return|return
+name|pluginConfigFactory
 return|;
 block|}
 DECL|method|getPatchListCache ()
