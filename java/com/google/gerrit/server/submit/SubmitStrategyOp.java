@@ -3391,16 +3391,6 @@ argument_list|,
 name|args
 operator|.
 name|notify
-operator|.
-name|handling
-argument_list|()
-argument_list|,
-name|args
-operator|.
-name|notify
-operator|.
-name|accounts
-argument_list|()
 argument_list|)
 operator|.
 name|sendAsync

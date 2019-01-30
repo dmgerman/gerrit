@@ -420,6 +420,9 @@ expr_stmt|;
 switch|switch
 condition|(
 name|notify
+operator|.
+name|handling
+argument_list|()
 condition|)
 block|{
 case|case

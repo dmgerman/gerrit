@@ -376,6 +376,7 @@ class|class
 name|Result
 block|{
 DECL|method|none ()
+specifier|public
 specifier|static
 name|Result
 name|none
@@ -387,6 +388,22 @@ argument_list|(
 name|NotifyHandling
 operator|.
 name|NONE
+argument_list|)
+return|;
+block|}
+DECL|method|all ()
+specifier|public
+specifier|static
+name|Result
+name|all
+parameter_list|()
+block|{
+return|return
+name|create
+argument_list|(
+name|NotifyHandling
+operator|.
+name|ALL
 argument_list|)
 return|;
 block|}
@@ -413,7 +430,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|create ( NotifyHandling handling, ImmutableListMultimap<RecipientType, Account.Id> recipients)
-specifier|private
+specifier|public
 specifier|static
 name|Result
 name|create

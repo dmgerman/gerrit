@@ -1168,17 +1168,6 @@ operator|.
 name|setNotify
 argument_list|(
 name|notify
-operator|.
-name|handling
-argument_list|()
-argument_list|)
-operator|.
-name|setAccountsToNotify
-argument_list|(
-name|notify
-operator|.
-name|accounts
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|StringBuilder

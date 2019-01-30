@@ -236,6 +236,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|change
+operator|.
+name|NotifyResolver
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchListNotAvailableException
@@ -397,7 +413,9 @@ parameter_list|,
 name|Timestamp
 name|when
 parameter_list|,
-name|NotifyHandling
+name|NotifyResolver
+operator|.
+name|Result
 name|notify
 parameter_list|)
 block|{}
@@ -464,7 +482,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-DECL|method|fire ( Change change, PatchSet patchSet, AccountState uploader, Timestamp when, NotifyHandling notify)
+DECL|method|fire ( Change change, PatchSet patchSet, AccountState uploader, Timestamp when, NotifyResolver.Result notify)
 specifier|public
 name|void
 name|fire
@@ -481,7 +499,9 @@ parameter_list|,
 name|Timestamp
 name|when
 parameter_list|,
-name|NotifyHandling
+name|NotifyResolver
+operator|.
+name|Result
 name|notify
 parameter_list|)
 block|{
@@ -532,6 +552,9 @@ argument_list|,
 name|when
 argument_list|,
 name|notify
+operator|.
+name|handling
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|listeners
