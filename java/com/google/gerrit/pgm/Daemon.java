@@ -1750,6 +1750,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -2768,7 +2778,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|addAdditionalSysModuleForTesting (@ullable Module m)
+DECL|method|addAdditionalSysModuleForTesting (@ullable Module... modules)
 specifier|public
 name|void
 name|addAdditionalSysModuleForTesting
@@ -2776,14 +2786,20 @@ parameter_list|(
 annotation|@
 name|Nullable
 name|Module
-name|m
+modifier|...
+name|modules
 parameter_list|)
 block|{
 name|testSysModules
 operator|.
-name|add
+name|addAll
 argument_list|(
-name|m
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|modules
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

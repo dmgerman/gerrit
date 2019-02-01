@@ -2616,6 +2616,12 @@ name|ReindexProjectsAtStartup
 operator|.
 name|Module
 argument_list|()
+argument_list|,
+operator|new
+name|ReindexGroupsAtStartup
+operator|.
+name|Module
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|daemon
