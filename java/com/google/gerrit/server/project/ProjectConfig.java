@@ -622,6 +622,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|GroupBackend
@@ -9763,6 +9777,15 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|GOOGLE
+argument_list|)
 DECL|method|hasLegacyPermissions ()
 specifier|public
 name|boolean
