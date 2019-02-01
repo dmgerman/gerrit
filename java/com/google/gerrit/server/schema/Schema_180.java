@@ -75,26 +75,15 @@ implements|implements
 name|NoteDbSchemaVersion
 block|{
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-DECL|method|Schema_180 (Arguments args)
-name|Schema_180
-parameter_list|(
-name|Arguments
-name|args
-parameter_list|)
-block|{
-comment|// Do nothing.
-block|}
-annotation|@
 name|Override
-DECL|method|upgrade (UpdateUI ui)
+DECL|method|upgrade (Arguments args, UpdateUI ui)
 specifier|public
 name|void
 name|upgrade
 parameter_list|(
+name|Arguments
+name|args
+parameter_list|,
 name|UpdateUI
 name|ui
 parameter_list|)

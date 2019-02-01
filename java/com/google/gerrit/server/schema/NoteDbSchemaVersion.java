@@ -123,7 +123,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Schema upgrade implementation.  *  *<p>Implementations must define a single public constructor that takes an {@link Arguments}. The  * recommended idiom is to pull out whichever individual fields from the {@code Arguments} are  * required by this implementation.  */
+comment|/**  * Schema upgrade implementation.  *  *<p>Implementations must have a single non-private constructor with no arguments (e.g. the default  * constructor).  */
 end_comment
 
 begin_interface
@@ -173,10 +173,13 @@ name|allProjects
 expr_stmt|;
 block|}
 block|}
-DECL|method|upgrade (UpdateUI ui)
+DECL|method|upgrade (Arguments args, UpdateUI ui)
 name|void
 name|upgrade
 parameter_list|(
+name|Arguments
+name|args
+parameter_list|,
 name|UpdateUI
 name|ui
 parameter_list|)

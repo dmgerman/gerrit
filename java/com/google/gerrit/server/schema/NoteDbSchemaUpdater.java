@@ -571,12 +571,12 @@ argument_list|(
 name|schemaVersions
 argument_list|,
 name|nextVersion
-argument_list|,
-name|args
 argument_list|)
 operator|.
 name|upgrade
 argument_list|(
+name|args
+argument_list|,
 name|ui
 argument_list|)
 expr_stmt|;

@@ -342,7 +342,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|get ( ImmutableSortedMap<Integer, Class<? extends NoteDbSchemaVersion>> schemaVersions, int i, NoteDbSchemaVersion.Arguments args)
+DECL|method|get ( ImmutableSortedMap<Integer, Class<? extends NoteDbSchemaVersion>> schemaVersions, int i)
 specifier|public
 specifier|static
 name|NoteDbSchemaVersion
@@ -363,11 +363,6 @@ name|schemaVersions
 parameter_list|,
 name|int
 name|i
-parameter_list|,
-name|NoteDbSchemaVersion
-operator|.
-name|Arguments
-name|args
 parameter_list|)
 block|{
 name|Class
@@ -402,18 +397,10 @@ return|return
 name|clazz
 operator|.
 name|getDeclaredConstructor
-argument_list|(
-name|NoteDbSchemaVersion
-operator|.
-name|Arguments
-operator|.
-name|class
-argument_list|)
+argument_list|()
 operator|.
 name|newInstance
-argument_list|(
-name|args
-argument_list|)
+argument_list|()
 return|;
 block|}
 catch|catch

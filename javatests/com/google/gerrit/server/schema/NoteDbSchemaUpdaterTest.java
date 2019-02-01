@@ -1317,7 +1317,6 @@ return|;
 block|}
 block|}
 DECL|class|TestSchema_10
-specifier|private
 specifier|static
 class|class
 name|TestSchema_10
@@ -1325,26 +1324,15 @@ implements|implements
 name|NoteDbSchemaVersion
 block|{
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-DECL|method|TestSchema_10 (Arguments args)
-name|TestSchema_10
-parameter_list|(
-name|Arguments
-name|args
-parameter_list|)
-block|{
-comment|// Do nothing.
-block|}
-annotation|@
 name|Override
-DECL|method|upgrade (UpdateUI ui)
+DECL|method|upgrade (Arguments args, UpdateUI ui)
 specifier|public
 name|void
 name|upgrade
 parameter_list|(
+name|Arguments
+name|args
+parameter_list|,
 name|UpdateUI
 name|ui
 parameter_list|)
@@ -1359,7 +1347,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|TestSchema_11
-specifier|private
 specifier|static
 class|class
 name|TestSchema_11
@@ -1367,26 +1354,15 @@ implements|implements
 name|NoteDbSchemaVersion
 block|{
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-DECL|method|TestSchema_11 (Arguments args)
-name|TestSchema_11
-parameter_list|(
-name|Arguments
-name|args
-parameter_list|)
-block|{
-comment|// Do nothing.
-block|}
-annotation|@
 name|Override
-DECL|method|upgrade (UpdateUI ui)
+DECL|method|upgrade (Arguments args, UpdateUI ui)
 specifier|public
 name|void
 name|upgrade
 parameter_list|(
+name|Arguments
+name|args
+parameter_list|,
 name|UpdateUI
 name|ui
 parameter_list|)
