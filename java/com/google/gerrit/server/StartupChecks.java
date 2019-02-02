@@ -316,12 +316,9 @@ name|startupChecks
 operator|.
 name|runEach
 argument_list|(
-name|c
-lambda|->
-name|c
-operator|.
+name|StartupCheck
+operator|::
 name|check
-argument_list|()
 argument_list|,
 name|StartupException
 operator|.

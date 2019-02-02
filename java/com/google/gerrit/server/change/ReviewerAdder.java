@@ -3659,12 +3659,9 @@ name|sorted
 argument_list|(
 name|comparing
 argument_list|(
-name|i
-lambda|->
-name|i
-operator|.
+name|AddReviewerInput
+operator|::
 name|state
-argument_list|()
 argument_list|,
 name|Ordering
 operator|.

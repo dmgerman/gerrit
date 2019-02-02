@@ -457,12 +457,9 @@ argument_list|)
 operator|.
 name|buildRepeatable
 argument_list|(
-name|p
-lambda|->
-name|p
-operator|.
+name|ProjectData
+operator|::
 name|getParentNames
-argument_list|()
 argument_list|)
 decl_stmt|;
 comment|/**    * All values of all refs that were used in the course of indexing this document. This covers    * {@code refs/meta/config} of the current project and all of its parents.    *    *<p>Emitted as UTF-8 encoded strings of the form {@code project:ref/name:[hex sha]}.    */

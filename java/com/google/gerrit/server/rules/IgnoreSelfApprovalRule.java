@@ -533,12 +533,9 @@ argument_list|()
 operator|.
 name|anyMatch
 argument_list|(
-name|l
-lambda|->
-name|l
-operator|.
+name|LabelType
+operator|::
 name|ignoreSelfApproval
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

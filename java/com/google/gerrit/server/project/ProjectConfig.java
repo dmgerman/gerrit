@@ -7751,12 +7751,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|gr
-lambda|->
-name|gr
-operator|.
+name|GroupReference
+operator|::
 name|getUUID
-argument_list|()
 argument_list|)
 operator|.
 name|filter

@@ -610,12 +610,9 @@ name|session
 operator|.
 name|call
 argument_list|(
-name|s
-lambda|->
-name|s
-operator|.
+name|WebSession
+operator|::
 name|isSignedIn
-argument_list|()
 argument_list|)
 condition|?
 name|Optional
