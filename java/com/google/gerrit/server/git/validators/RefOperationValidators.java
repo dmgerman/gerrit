@@ -619,7 +619,7 @@ operator|.
 name|addAll
 argument_list|(
 operator|new
-name|DisallowCreationAndDeletionOfUserBranches
+name|DisallowCreationAndDeletionOfGerritMaintainedBranches
 argument_list|(
 name|perm
 argument_list|,
@@ -808,11 +808,11 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|class|DisallowCreationAndDeletionOfUserBranches
+DECL|class|DisallowCreationAndDeletionOfGerritMaintainedBranches
 specifier|private
 specifier|static
 class|class
-name|DisallowCreationAndDeletionOfUserBranches
+name|DisallowCreationAndDeletionOfGerritMaintainedBranches
 implements|implements
 name|RefOperationValidationListener
 block|{
@@ -830,8 +830,8 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
-DECL|method|DisallowCreationAndDeletionOfUserBranches ( PermissionBackend.WithUser perm, AllUsersName allUsersName)
-name|DisallowCreationAndDeletionOfUserBranches
+DECL|method|DisallowCreationAndDeletionOfGerritMaintainedBranches ( PermissionBackend.WithUser perm, AllUsersName allUsersName)
+name|DisallowCreationAndDeletionOfGerritMaintainedBranches
 parameter_list|(
 name|PermissionBackend
 operator|.
