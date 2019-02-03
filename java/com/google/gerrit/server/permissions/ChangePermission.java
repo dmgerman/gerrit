@@ -149,6 +149,9 @@ name|SUBMIT_AS
 argument_list|(
 literal|"submit on behalf of other users"
 argument_list|)
+block|,
+DECL|enumConstant|TOGGLE_WORK_IN_PROGRESS_STATE
+name|TOGGLE_WORK_IN_PROGRESS_STATE
 block|;
 DECL|field|description
 specifier|private
