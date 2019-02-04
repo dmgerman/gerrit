@@ -433,10 +433,10 @@ name|usage
 operator|=
 literal|"project query"
 argument_list|)
-DECL|method|setQuery (String query)
+DECL|method|withQuery (String query)
 specifier|public
-name|void
-name|setQuery
+name|QueryProjects
+name|withQuery
 parameter_list|(
 name|String
 name|query
@@ -448,6 +448,9 @@ name|query
 operator|=
 name|query
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 annotation|@
 name|Option
@@ -470,10 +473,10 @@ name|usage
 operator|=
 literal|"maximum number of projects to list"
 argument_list|)
-DECL|method|setLimit (int limit)
+DECL|method|withLimit (int limit)
 specifier|public
-name|void
-name|setLimit
+name|QueryProjects
+name|withLimit
 parameter_list|(
 name|int
 name|limit
@@ -485,6 +488,9 @@ name|limit
 operator|=
 name|limit
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 annotation|@
 name|Option
@@ -507,10 +513,10 @@ name|usage
 operator|=
 literal|"number of projects to skip"
 argument_list|)
-DECL|method|setStart (int start)
+DECL|method|withStart (int start)
 specifier|public
-name|void
-name|setStart
+name|QueryProjects
+name|withStart
 parameter_list|(
 name|int
 name|start
@@ -522,6 +528,9 @@ name|start
 operator|=
 name|start
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 annotation|@
 name|Inject
