@@ -226,7 +226,7 @@ name|server
 operator|.
 name|audit
 operator|.
-name|AuditService
+name|RpcAuditEvent
 import|;
 end_import
 
@@ -240,9 +240,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|audit
+name|group
 operator|.
-name|RpcAuditEvent
+name|GroupAuditService
 import|;
 end_import
 
@@ -502,12 +502,12 @@ decl_stmt|;
 DECL|field|audit
 specifier|private
 specifier|final
-name|AuditService
+name|GroupAuditService
 name|audit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritJsonServlet (final DynamicItem<WebSession> w, RemoteJsonService s, AuditService a)
+DECL|method|GerritJsonServlet (final DynamicItem<WebSession> w, RemoteJsonService s, GroupAuditService a)
 name|GerritJsonServlet
 parameter_list|(
 specifier|final
@@ -520,7 +520,7 @@ parameter_list|,
 name|RemoteJsonService
 name|s
 parameter_list|,
-name|AuditService
+name|GroupAuditService
 name|a
 parameter_list|)
 block|{

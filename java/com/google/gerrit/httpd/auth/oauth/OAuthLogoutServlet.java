@@ -136,22 +136,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|audit
-operator|.
-name|AuditService
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|AuthConfig
@@ -171,6 +155,22 @@ operator|.
 name|config
 operator|.
 name|CanonicalWebUrl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|GroupAuditService
 import|;
 end_import
 
@@ -273,7 +273,7 @@ name|oauthSession
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OAuthLogoutServlet ( AuthConfig authConfig, DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AuditService audit, Provider<OAuthSession> oauthSession)
+DECL|method|OAuthLogoutServlet ( AuthConfig authConfig, DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable Provider<String> urlProvider, GroupAuditService audit, Provider<OAuthSession> oauthSession)
 name|OAuthLogoutServlet
 parameter_list|(
 name|AuthConfig
@@ -295,7 +295,7 @@ name|String
 argument_list|>
 name|urlProvider
 parameter_list|,
-name|AuditService
+name|GroupAuditService
 name|audit
 parameter_list|,
 name|Provider

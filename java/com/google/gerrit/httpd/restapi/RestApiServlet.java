@@ -1402,22 +1402,6 @@ name|server
 operator|.
 name|audit
 operator|.
-name|AuditService
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|audit
-operator|.
 name|ExtendedHttpAuditEvent
 import|;
 end_import
@@ -1467,6 +1451,22 @@ operator|.
 name|git
 operator|.
 name|LockFailureException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|GroupAuditService
 import|;
 end_import
 
@@ -2523,7 +2523,7 @@ name|permissionBackend
 decl_stmt|;
 DECL|field|auditService
 specifier|final
-name|AuditService
+name|GroupAuditService
 name|auditService
 decl_stmt|;
 DECL|field|metrics
@@ -2538,7 +2538,7 @@ name|allowOrigin
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Globals ( Provider<CurrentUser> currentUser, DynamicItem<WebSession> webSession, Provider<ParameterParser> paramParser, PermissionBackend permissionBackend, AuditService auditService, RestApiMetrics metrics, @GerritServerConfig Config cfg)
+DECL|method|Globals ( Provider<CurrentUser> currentUser, DynamicItem<WebSession> webSession, Provider<ParameterParser> paramParser, PermissionBackend permissionBackend, GroupAuditService auditService, RestApiMetrics metrics, @GerritServerConfig Config cfg)
 name|Globals
 parameter_list|(
 name|Provider
@@ -2562,7 +2562,7 @@ parameter_list|,
 name|PermissionBackend
 name|permissionBackend
 parameter_list|,
-name|AuditService
+name|GroupAuditService
 name|auditService
 parameter_list|,
 name|RestApiMetrics
