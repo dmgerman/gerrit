@@ -7574,7 +7574,7 @@ return|return
 name|ai
 return|;
 block|}
-DECL|method|getApprovalInfo ( Account.Id id, Integer value, VotingRangeInfo permittedVotingRange, String tag, Timestamp date)
+DECL|method|getApprovalInfo ( Account.Id id, Integer value, @Nullable VotingRangeInfo permittedVotingRange, @Nullable String tag, Timestamp date)
 specifier|public
 specifier|static
 name|ApprovalInfo
@@ -7588,9 +7588,13 @@ parameter_list|,
 name|Integer
 name|value
 parameter_list|,
+annotation|@
+name|Nullable
 name|VotingRangeInfo
 name|permittedVotingRange
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|tag
 parameter_list|,
