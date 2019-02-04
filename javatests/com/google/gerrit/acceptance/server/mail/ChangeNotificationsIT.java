@@ -2794,14 +2794,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addReviewerToReviewableWipChange (Adder adder)
-specifier|private
+annotation|@
+name|Test
+DECL|method|addReviewerToReviewableWipChangeSingly ()
+specifier|public
 name|void
-name|addReviewerToReviewableWipChange
-parameter_list|(
-name|Adder
-name|adder
-parameter_list|)
+name|addReviewerToReviewableWipChangeSingly
+parameter_list|()
 throws|throws
 name|Exception
 block|{
@@ -2827,7 +2826,8 @@ argument_list|)
 decl_stmt|;
 name|addReviewer
 argument_list|(
-name|adder
+name|singly
+argument_list|()
 argument_list|,
 name|sc
 operator|.
@@ -2842,6 +2842,10 @@ operator|.
 name|email
 argument_list|)
 expr_stmt|;
+comment|// TODO(dborowitz): In theory this should match the batch case, but we don't currently pass
+comment|// enough info into AddReviewersEmail#emailReviewers to distinguish the reviewStarted case.
+comment|// Complicating the emailReviewers arguments is not the answer; this needs to be rewritten.
+comment|// Tolerate the difference for now.
 name|assertThat
 argument_list|(
 name|sender
@@ -2849,23 +2853,6 @@ argument_list|)
 operator|.
 name|didNotSend
 argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|addReviewerToReviewableWipChangeSingly ()
-specifier|public
-name|void
-name|addReviewerToReviewableWipChangeSingly
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|addReviewerToReviewableWipChange
-argument_list|(
-name|singly
-argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -2878,11 +2865,84 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|addReviewerToReviewableWipChange
+name|StagedChange
+name|sc
+init|=
+name|stageReviewableWipChange
+argument_list|()
+decl_stmt|;
+name|TestAccount
+name|reviewer
+init|=
+name|accountCreator
+operator|.
+name|create
+argument_list|(
+literal|"added"
+argument_list|,
+literal|"added@example.com"
+argument_list|,
+literal|"added"
+argument_list|)
+decl_stmt|;
+name|addReviewer
 argument_list|(
 name|batch
 argument_list|()
+argument_list|,
+name|sc
+operator|.
+name|changeId
+argument_list|,
+name|sc
+operator|.
+name|owner
+argument_list|,
+name|reviewer
+operator|.
+name|email
 argument_list|)
+expr_stmt|;
+comment|// For a review-started WIP change, same as in the notify=ALL case. It's not especially
+comment|// important to notify just because a reviewer is added, but we do want to notify in the other
+comment|// case that hits this codepath: posting an actual review.
+name|assertThat
+argument_list|(
+name|sender
+argument_list|)
+operator|.
+name|sent
+argument_list|(
+literal|"newchange"
+argument_list|,
+name|sc
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|reviewer
+argument_list|)
+operator|.
+name|cc
+argument_list|(
+name|sc
+operator|.
+name|reviewer
+argument_list|)
+operator|.
+name|cc
+argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
+name|sc
+operator|.
+name|ccerByEmail
+argument_list|)
+operator|.
+name|noOneElse
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|addReviewerToWipChangeNotifyAll (Adder adder)

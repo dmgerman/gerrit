@@ -2635,13 +2635,6 @@ name|robotComments
 argument_list|)
 expr_stmt|;
 block|}
-name|NotifyHandling
-name|reviewerNotify
-init|=
-name|input
-operator|.
-name|notify
-decl_stmt|;
 if|if
 condition|(
 name|input
@@ -3406,7 +3399,9 @@ argument_list|()
 argument_list|,
 name|reviewerResults
 argument_list|,
-name|reviewerNotify
+name|input
+operator|.
+name|notify
 argument_list|,
 name|accountsToNotify
 argument_list|,
@@ -3503,14 +3498,15 @@ name|hasReviewStarted
 argument_list|()
 condition|)
 block|{
-comment|// If review hasn't started we want to minimize recipients, no matter who
-comment|// the author is.
+comment|// If review hasn't started we want to eliminate notifications, no matter who the author is.
 return|return
 name|NotifyHandling
 operator|.
-name|OWNER
+name|NONE
 return|;
 block|}
+comment|// Otherwise, it's either a non-WIP change, or a WIP change where review has started. Notify
+comment|// everyone.
 return|return
 name|NotifyHandling
 operator|.
