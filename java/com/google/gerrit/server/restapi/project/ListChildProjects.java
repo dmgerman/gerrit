@@ -435,10 +435,10 @@ operator|=
 name|queryProvider
 expr_stmt|;
 block|}
-DECL|method|setRecursive (boolean recursive)
+DECL|method|withRecursive (boolean recursive)
 specifier|public
-name|void
-name|setRecursive
+name|ListChildProjects
+name|withRecursive
 parameter_list|(
 name|boolean
 name|recursive
@@ -450,6 +450,9 @@ name|recursive
 operator|=
 name|recursive
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 DECL|method|withLimit (int limit)
 specifier|public
