@@ -114,6 +114,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|ImplementedBy
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -123,6 +135,13 @@ import|;
 end_import
 
 begin_interface
+annotation|@
+name|ImplementedBy
+argument_list|(
+name|AuditServiceImpl
+operator|.
+name|class
+argument_list|)
 DECL|interface|AuditService
 specifier|public
 interface|interface
