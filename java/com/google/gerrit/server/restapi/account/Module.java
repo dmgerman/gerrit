@@ -1166,10 +1166,8 @@ block|{
 return|return
 name|accountsUpdateFactory
 operator|.
-name|create
+name|createWithServerIdent
 argument_list|(
-literal|null
-argument_list|,
 name|extIdNotesFactory
 argument_list|)
 return|;

@@ -16804,7 +16804,10 @@ name|repoManager
 argument_list|,
 name|gitReferenceUpdated
 argument_list|,
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 name|allUsers
 argument_list|,
@@ -17138,7 +17141,10 @@ name|repoManager
 argument_list|,
 name|gitReferenceUpdated
 argument_list|,
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 name|allUsers
 argument_list|,
@@ -17520,7 +17526,10 @@ name|repoManager
 argument_list|,
 name|gitReferenceUpdated
 argument_list|,
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 name|allUsers
 argument_list|,
@@ -17968,7 +17977,10 @@ name|repoManager
 argument_list|,
 name|gitReferenceUpdated
 argument_list|,
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|,
 name|allUsers
 argument_list|,
