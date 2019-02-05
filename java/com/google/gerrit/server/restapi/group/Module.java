@@ -838,10 +838,8 @@ block|{
 return|return
 name|groupsUpdateFactory
 operator|.
-name|create
-argument_list|(
-literal|null
-argument_list|)
+name|createWithServerIdent
+argument_list|()
 return|;
 block|}
 annotation|@
