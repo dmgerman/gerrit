@@ -630,7 +630,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableListMultimap
+name|ImmutableSet
 import|;
 end_import
 
@@ -644,7 +644,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableSet
+name|ImmutableSetMultimap
 import|;
 end_import
 
@@ -10546,7 +10546,7 @@ operator|.
 name|ALL
 argument_list|)
 argument_list|,
-name|ImmutableListMultimap
+name|ImmutableSetMultimap
 operator|.
 expr|<
 name|RecipientType

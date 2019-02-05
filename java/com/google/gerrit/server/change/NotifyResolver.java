@@ -130,7 +130,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableListMultimap
+name|ImmutableSetMultimap
 import|;
 end_import
 
@@ -422,14 +422,14 @@ name|create
 argument_list|(
 name|notifyHandling
 argument_list|,
-name|ImmutableListMultimap
+name|ImmutableSetMultimap
 operator|.
 name|of
 argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|create ( NotifyHandling handling, ImmutableListMultimap<RecipientType, Account.Id> recipients)
+DECL|method|create ( NotifyHandling handling, ImmutableSetMultimap<RecipientType, Account.Id> recipients)
 specifier|public
 specifier|static
 name|Result
@@ -438,7 +438,7 @@ parameter_list|(
 name|NotifyHandling
 name|handling
 parameter_list|,
-name|ImmutableListMultimap
+name|ImmutableSetMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -470,7 +470,7 @@ comment|// TODO(dborowitz): Should be ImmutableSetMultimap.
 DECL|method|accounts ()
 specifier|public
 specifier|abstract
-name|ImmutableListMultimap
+name|ImmutableSetMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -582,7 +582,7 @@ argument_list|(
 name|handling
 argument_list|)
 expr_stmt|;
-name|ImmutableListMultimap
+name|ImmutableSetMultimap
 operator|.
 name|Builder
 argument_list|<
@@ -594,7 +594,7 @@ name|Id
 argument_list|>
 name|b
 init|=
-name|ImmutableListMultimap
+name|ImmutableSetMultimap
 operator|.
 name|builder
 argument_list|()
