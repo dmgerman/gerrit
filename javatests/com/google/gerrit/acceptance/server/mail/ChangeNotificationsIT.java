@@ -14151,32 +14151,6 @@ operator|.
 name|setReadyForReview
 argument_list|()
 expr_stmt|;
-comment|// PolyGerrit current immediately follows up with a review.
-name|gApi
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|id
-argument_list|(
-name|sc
-operator|.
-name|changeId
-argument_list|)
-operator|.
-name|revision
-argument_list|(
-literal|"current"
-argument_list|)
-operator|.
-name|review
-argument_list|(
-name|ReviewInput
-operator|.
-name|noScore
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|setWorkInProgressByDefault (Project.NameKey p, InheritableBoolean v)
 specifier|private
