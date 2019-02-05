@@ -210,6 +210,36 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|parent (Project.NameKey parentNameKey)
+specifier|public
+specifier|static
+name|Predicate
+argument_list|<
+name|ProjectData
+argument_list|>
+name|parent
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|parentNameKey
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ProjectPredicate
+argument_list|(
+name|ProjectField
+operator|.
+name|PARENT_NAME
+argument_list|,
+name|parentNameKey
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|inname (String name)
 specifier|public
 specifier|static

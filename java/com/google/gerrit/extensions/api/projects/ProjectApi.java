@@ -555,6 +555,19 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|children (int limit)
+name|List
+argument_list|<
+name|ProjectInfo
+argument_list|>
+name|children
+parameter_list|(
+name|int
+name|limit
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|child (String name)
 name|ChildProjectApi
 name|child
@@ -995,6 +1008,28 @@ name|children
 parameter_list|(
 name|boolean
 name|recursive
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|children (int limit)
+specifier|public
+name|List
+argument_list|<
+name|ProjectInfo
+argument_list|>
+name|children
+parameter_list|(
+name|int
+name|limit
 parameter_list|)
 throws|throws
 name|RestApiException

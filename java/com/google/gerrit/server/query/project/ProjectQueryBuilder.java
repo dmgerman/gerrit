@@ -336,6 +336,35 @@ return|;
 block|}
 annotation|@
 name|Operator
+DECL|method|parent (String parentName)
+specifier|public
+name|Predicate
+argument_list|<
+name|ProjectData
+argument_list|>
+name|parent
+parameter_list|(
+name|String
+name|parentName
+parameter_list|)
+block|{
+return|return
+name|ProjectPredicates
+operator|.
+name|parent
+argument_list|(
+operator|new
+name|Project
+operator|.
+name|NameKey
+argument_list|(
+name|parentName
+argument_list|)
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Operator
 DECL|method|inname (String namePart)
 specifier|public
 name|Predicate
