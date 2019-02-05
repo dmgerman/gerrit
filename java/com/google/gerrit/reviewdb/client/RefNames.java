@@ -559,6 +559,26 @@ return|return
 literal|false
 return|;
 block|}
+comment|/** True if the provided ref is in {@code refs/changes/*}. */
+DECL|method|isRefsChanges (String ref)
+specifier|public
+specifier|static
+name|boolean
+name|isRefsChanges
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+block|{
+return|return
+name|ref
+operator|.
+name|startsWith
+argument_list|(
+name|REFS_CHANGES
+argument_list|)
+return|;
+block|}
 DECL|method|refsGroups (AccountGroup.UUID groupUuid)
 specifier|public
 specifier|static
