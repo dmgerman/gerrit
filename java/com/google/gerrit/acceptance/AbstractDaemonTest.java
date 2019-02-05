@@ -1520,24 +1520,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
-operator|.
-name|db
-operator|.
-name|Groups
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|index
 operator|.
 name|account
@@ -1633,24 +1615,6 @@ operator|.
 name|change
 operator|.
 name|ChangeIndexer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|group
-operator|.
-name|GroupIndexer
 import|;
 end_import
 
@@ -3165,20 +3129,6 @@ operator|.
 name|Factory
 name|eventRecorderFactory
 decl_stmt|;
-DECL|field|groupIndexer
-annotation|@
-name|Inject
-specifier|private
-name|GroupIndexer
-name|groupIndexer
-decl_stmt|;
-DECL|field|groups
-annotation|@
-name|Inject
-specifier|private
-name|Groups
-name|groups
-decl_stmt|;
 DECL|field|inProcessProtocol
 annotation|@
 name|Inject
@@ -3527,49 +3477,6 @@ name|accountId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|reindexAllGroups ()
-specifier|private
-name|void
-name|reindexAllGroups
-parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|ConfigInvalidException
-block|{
-name|Iterable
-argument_list|<
-name|GroupReference
-argument_list|>
-name|allGroups
-init|=
-name|groups
-operator|.
-name|getAllGroupReferences
-argument_list|()
-operator|::
-name|iterator
-decl_stmt|;
-for|for
-control|(
-name|GroupReference
-name|group
-range|:
-name|allGroups
-control|)
-block|{
-name|groupIndexer
-operator|.
-name|index
-argument_list|(
-name|group
-operator|.
-name|getUUID
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 DECL|method|submitWholeTopicEnabledConfig ()
 specifier|protected
 specifier|static
@@ -3853,19 +3760,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 argument_list|)
-expr_stmt|;
-comment|// All groups which were added during the server start (e.g. in SchemaCreatorImpl) aren't
-comment|// contained in the instance of the group index which is available here and in tests. There are
-comment|// two reasons:
-comment|// 1) No group index is available in SchemaCreatorImpl when using an in-memory database.
-comment|// (This could be fixed by using the IndexManagerOnInit in InMemoryTestingDatabaseModule similar
-comment|// to how BaseInit uses it.)
-comment|// 2) During the on-init part of the server start, we use another instance of the index than
-comment|// later on. As test indexes are non-permanent, closing an instance and opening another one
-comment|// removes all indexed data.
-comment|// As a workaround, we simply reindex all available groups here.
-name|reindexAllGroups
-argument_list|()
 expr_stmt|;
 name|admin
 operator|=
