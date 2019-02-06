@@ -1746,10 +1746,6 @@ block|}
 block|}
 if|if
 condition|(
-name|byAccountId
-operator|!=
-literal|null
-operator|&&
 name|wholeGroup
 operator|!=
 literal|null
@@ -1800,10 +1796,6 @@ return|;
 block|}
 if|if
 condition|(
-name|byAccountId
-operator|!=
-literal|null
-operator|&&
 name|byAccountId
 operator|.
 name|failureType
