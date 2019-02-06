@@ -158,9 +158,37 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Splitter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Iterables
 import|;
 end_import
 
@@ -303,22 +331,6 @@ operator|.
 name|client
 operator|.
 name|RefNames
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
 import|;
 end_import
 
@@ -1599,16 +1611,7 @@ specifier|final
 name|String
 name|MISSING_CHANGE_ID_MSG
 init|=
-literal|"[%s] missing "
-operator|+
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" in commit message footer"
+literal|"missing Change-Id in message footer"
 decl_stmt|;
 DECL|field|MISSING_SUBJECT_MSG
 specifier|private
@@ -1617,16 +1620,7 @@ specifier|final
 name|String
 name|MISSING_SUBJECT_MSG
 init|=
-literal|"[%s] missing subject; "
-operator|+
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" must be in commit message footer"
+literal|"missing subject; Change-Id must be in message footer"
 decl_stmt|;
 DECL|field|MULTIPLE_CHANGE_ID_MSG
 specifier|private
@@ -1635,16 +1629,7 @@ specifier|final
 name|String
 name|MULTIPLE_CHANGE_ID_MSG
 init|=
-literal|"[%s] multiple "
-operator|+
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" lines in commit message footer"
+literal|"multiple Change-Id lines in message footer"
 decl_stmt|;
 DECL|field|INVALID_CHANGE_ID_MSG
 specifier|private
@@ -1653,16 +1638,7 @@ specifier|final
 name|String
 name|INVALID_CHANGE_ID_MSG
 init|=
-literal|"[%s] invalid "
-operator|+
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" line format in commit message footer"
+literal|"invalid Change-Id line format in message footer"
 decl_stmt|;
 DECL|field|CHANGE_ID
 specifier|private
@@ -1824,21 +1800,6 @@ operator|.
 name|CHANGE_ID
 argument_list|)
 decl_stmt|;
-name|String
-name|sha1
-init|=
-name|commit
-operator|.
-name|abbreviate
-argument_list|(
-name|RevId
-operator|.
-name|ABBREV_LEN
-argument_list|)
-operator|.
-name|name
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|idList
@@ -1886,23 +1847,11 @@ name|matches
 argument_list|()
 condition|)
 block|{
-name|String
-name|errMsg
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-name|MISSING_SUBJECT_MSG
-argument_list|,
-name|sha1
-argument_list|)
-decl_stmt|;
 throw|throw
 operator|new
 name|CommitValidationException
 argument_list|(
-name|errMsg
+name|MISSING_SUBJECT_MSG
 argument_list|)
 throw|;
 block|}
@@ -1914,25 +1863,13 @@ name|isRequireChangeID
 argument_list|()
 condition|)
 block|{
-name|String
-name|errMsg
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-name|MISSING_CHANGE_ID_MSG
-argument_list|,
-name|sha1
-argument_list|)
-decl_stmt|;
 name|messages
 operator|.
 name|add
 argument_list|(
 name|getMissingChangeIdErrorMsg
 argument_list|(
-name|errMsg
+name|MISSING_CHANGE_ID_MSG
 argument_list|,
 name|commit
 argument_list|)
@@ -1942,7 +1879,7 @@ throw|throw
 operator|new
 name|CommitValidationException
 argument_list|(
-name|errMsg
+name|MISSING_CHANGE_ID_MSG
 argument_list|,
 name|messages
 argument_list|)
@@ -1960,23 +1897,11 @@ operator|>
 literal|1
 condition|)
 block|{
-name|String
-name|errMsg
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-name|MULTIPLE_CHANGE_ID_MSG
-argument_list|,
-name|sha1
-argument_list|)
-decl_stmt|;
 throw|throw
 operator|new
 name|CommitValidationException
 argument_list|(
-name|errMsg
+name|MULTIPLE_CHANGE_ID_MSG
 argument_list|,
 name|messages
 argument_list|)
@@ -2025,25 +1950,13 @@ literal|"^I00*$"
 argument_list|)
 condition|)
 block|{
-name|String
-name|errMsg
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-name|INVALID_CHANGE_ID_MSG
-argument_list|,
-name|sha1
-argument_list|)
-decl_stmt|;
 name|messages
 operator|.
 name|add
 argument_list|(
 name|getMissingChangeIdErrorMsg
 argument_list|(
-name|errMsg
+name|INVALID_CHANGE_ID_MSG
 argument_list|,
 name|receiveEvent
 operator|.
@@ -2055,7 +1968,7 @@ throw|throw
 operator|new
 name|CommitValidationException
 argument_list|(
-name|errMsg
+name|INVALID_CHANGE_ID_MSG
 argument_list|,
 name|messages
 argument_list|)
@@ -2138,190 +2051,130 @@ name|append
 argument_list|(
 name|errMsg
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|c
 operator|.
-name|getFullMessage
-argument_list|()
-operator|.
-name|indexOf
-argument_list|(
-name|CHANGE_ID_PREFIX
-argument_list|)
-operator|>=
-literal|0
-condition|)
-block|{
-name|String
-index|[]
-name|lines
-init|=
-name|c
-operator|.
-name|getFullMessage
-argument_list|()
-operator|.
-name|trim
-argument_list|()
-operator|.
-name|split
+name|append
 argument_list|(
 literal|"\n"
 argument_list|)
-decl_stmt|;
-name|String
-name|lastLine
+expr_stmt|;
+name|boolean
+name|hinted
 init|=
-name|lines
-operator|.
-name|length
-operator|>
-literal|0
-condition|?
-name|lines
-index|[
-name|lines
-operator|.
-name|length
-operator|-
-literal|1
-index|]
-else|:
-literal|""
+literal|false
 decl_stmt|;
 if|if
 condition|(
-name|lastLine
+name|c
 operator|.
-name|indexOf
+name|getFullMessage
+argument_list|()
+operator|.
+name|contains
 argument_list|(
 name|CHANGE_ID_PREFIX
 argument_list|)
-operator|==
-operator|-
-literal|1
+condition|)
+block|{
+name|String
+name|lastLine
+init|=
+name|Iterables
+operator|.
+name|getLast
+argument_list|(
+name|Splitter
+operator|.
+name|on
+argument_list|(
+literal|'\n'
+argument_list|)
+operator|.
+name|split
+argument_list|(
+name|c
+operator|.
+name|getFullMessage
+argument_list|()
+argument_list|)
+argument_list|,
+literal|""
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|lastLine
+operator|.
+name|contains
+argument_list|(
+name|CHANGE_ID_PREFIX
+argument_list|)
+condition|)
+block|{
+name|hinted
+operator|=
+literal|true
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"\n"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"Hint: run\n"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"  git commit --amend\n"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"and move 'Change-Id: Ixxx..' to the bottom on a separate line\n"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|// Print only one hint to avoid overwhelming the user.
+if|if
+condition|(
+operator|!
+name|hinted
 condition|)
 block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|'\n'
+literal|"\nHint: to automatically insert a Change-Id, install the hook:\n"
 argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|'\n'
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"Hint: A potential "
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|" was found, but it was not in the "
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"footer (last paragraph) of the commit message."
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|'\n'
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|'\n'
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"Hint: To automatically insert "
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|FooterConstants
-operator|.
-name|CHANGE_ID
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|", install the hook:\n"
-argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
 name|getCommitMessageHookInstallationHint
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
-literal|'\n'
+literal|"\n"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
-literal|"And then amend the commit:\n"
+literal|"and then amend the commit:\n"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
 literal|"  git commit --amend\n"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 operator|new
 name|CommitValidationMessage
@@ -3450,7 +3303,7 @@ throw|throw
 operator|new
 name|CommitValidationException
 argument_list|(
-literal|"not Signed-off-by author/committer/uploader in commit message footer"
+literal|"not Signed-off-by author/committer/uploader in message footer"
 argument_list|)
 throw|;
 block|}
@@ -3628,10 +3481,6 @@ literal|"invalid author"
 argument_list|,
 name|invalidEmail
 argument_list|(
-name|receiveEvent
-operator|.
-name|commit
-argument_list|,
 literal|"author"
 argument_list|,
 name|author
@@ -3810,10 +3659,6 @@ literal|"invalid committer"
 argument_list|,
 name|invalidEmail
 argument_list|(
-name|receiveEvent
-operator|.
-name|commit
-argument_list|,
 literal|"committer"
 argument_list|,
 name|committer
@@ -4634,15 +4479,12 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|invalidEmail ( RevCommit c, String type, PersonIdent who, IdentifiedUser currentUser, String canonicalWebUrl)
+DECL|method|invalidEmail ( String type, PersonIdent who, IdentifiedUser currentUser, String canonicalWebUrl)
 specifier|private
 specifier|static
 name|CommitValidationMessage
 name|invalidEmail
 parameter_list|(
-name|RevCommit
-name|c
-parameter_list|,
 name|String
 name|type
 parameter_list|,
@@ -4667,44 +4509,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:  In commit "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|c
-operator|.
-name|name
-argument_list|()
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:  "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|type
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|" email address "
+literal|"email address "
 argument_list|)
 operator|.
 name|append
@@ -4717,14 +4522,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:  does not match your user account and you have no 'forge "
+literal|" is not registered in your account, and you lack 'forge "
 argument_list|)
 operator|.
 name|append
@@ -4735,13 +4533,6 @@ operator|.
 name|append
 argument_list|(
 literal|"' permission.\n"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:\n"
 argument_list|)
 expr_stmt|;
 if|if
@@ -4759,7 +4550,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"ERROR:  You have not registered any email addresses.\n"
+literal|"You have not registered any email addresses.\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4769,7 +4560,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"ERROR:  The following addresses are currently registered:\n"
+literal|"The following addresses are currently registered:\n"
 argument_list|)
 expr_stmt|;
 for|for
@@ -4787,7 +4578,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"ERROR:    "
+literal|"   "
 argument_list|)
 operator|.
 name|append
@@ -4802,13 +4593,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:\n"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|canonicalWebUrl
@@ -4820,15 +4604,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"ERROR:  To register an email address, please visit:\n"
+literal|"To register an email address, visit:\n"
 argument_list|)
 expr_stmt|;
 name|sb
-operator|.
-name|append
-argument_list|(
-literal|"ERROR:  "
-argument_list|)
 operator|.
 name|append
 argument_list|(
@@ -4869,7 +4648,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 return|;
 block|}
