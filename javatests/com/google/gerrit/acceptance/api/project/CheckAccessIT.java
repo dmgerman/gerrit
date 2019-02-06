@@ -997,7 +997,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"cannot find account doesnotexist@invalid.com"
+literal|"Account 'doesnotexist@invalid.com' not found"
 argument_list|)
 expr_stmt|;
 name|gApi

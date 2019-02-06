@@ -166,6 +166,14 @@ name|Context
 name|setApiUserAnonymous
 parameter_list|()
 function_decl|;
+comment|/**    * Sets the Guice request scope to the internal server user.    *    * @return the previous request scope.    */
+DECL|method|setApiUserInternal ()
+name|AcceptanceTestRequestScope
+operator|.
+name|Context
+name|setApiUserInternal
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

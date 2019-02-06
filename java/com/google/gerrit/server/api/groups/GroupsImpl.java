@@ -1030,7 +1030,7 @@ name|setUser
 argument_list|(
 name|accountResolver
 operator|.
-name|parse
+name|resolve
 argument_list|(
 name|req
 operator|.
@@ -1038,7 +1038,13 @@ name|getUser
 argument_list|()
 argument_list|)
 operator|.
-name|getAccountId
+name|asUnique
+argument_list|()
+operator|.
+name|getAccount
+argument_list|()
+operator|.
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;

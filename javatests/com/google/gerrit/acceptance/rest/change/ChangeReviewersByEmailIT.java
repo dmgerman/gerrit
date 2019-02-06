@@ -2431,7 +2431,11 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Foo Bar<foo.bar@gerritcodereview.com> does not identify a registered user or group"
+literal|"Account 'Foo Bar<foo.bar@gerritcodereview.com>' not found\n"
+operator|+
+literal|"Foo Bar<foo.bar@gerritcodereview.com> does not identify a registered user or"
+operator|+
+literal|" group"
 argument_list|)
 expr_stmt|;
 name|assertThat
