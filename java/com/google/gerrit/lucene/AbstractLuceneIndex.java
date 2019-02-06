@@ -300,6 +300,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|FieldDef
@@ -2094,6 +2108,9 @@ return|return
 name|result
 return|;
 block|}
+comment|/**    * Trasform an index document into a target object type.    *    * @param doc index document    * @return target object, or null if the target object was not found or failed to load from the    *     underlying store.    */
+annotation|@
+name|Nullable
 DECL|method|fromDocument (Document doc)
 specifier|protected
 specifier|abstract
