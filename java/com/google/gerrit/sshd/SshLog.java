@@ -176,22 +176,6 @@ name|server
 operator|.
 name|audit
 operator|.
-name|AuditService
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|audit
-operator|.
 name|SshAuditEvent
 import|;
 end_import
@@ -293,6 +277,22 @@ operator|.
 name|config
 operator|.
 name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|GroupAuditService
 import|;
 end_import
 
@@ -588,7 +588,7 @@ decl_stmt|;
 DECL|field|auditService
 specifier|private
 specifier|final
-name|AuditService
+name|GroupAuditService
 name|auditService
 decl_stmt|;
 DECL|field|systemLog
@@ -609,7 +609,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshLog ( final Provider<SshSession> session, final Provider<Context> context, SystemLog systemLog, @GerritServerConfig Config config, AuditService auditService)
+DECL|method|SshLog ( final Provider<SshSession> session, final Provider<Context> context, SystemLog systemLog, @GerritServerConfig Config config, GroupAuditService auditService)
 name|SshLog
 parameter_list|(
 specifier|final
@@ -634,7 +634,7 @@ name|GerritServerConfig
 name|Config
 name|config
 parameter_list|,
-name|AuditService
+name|GroupAuditService
 name|auditService
 parameter_list|)
 block|{

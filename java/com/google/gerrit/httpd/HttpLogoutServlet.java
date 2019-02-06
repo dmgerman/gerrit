@@ -146,22 +146,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|audit
-operator|.
-name|AuditService
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|AuthConfig
@@ -181,6 +165,22 @@ operator|.
 name|config
 operator|.
 name|CanonicalWebUrl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|GroupAuditService
 import|;
 end_import
 
@@ -330,12 +330,12 @@ decl_stmt|;
 DECL|field|audit
 specifier|private
 specifier|final
-name|AuditService
+name|GroupAuditService
 name|audit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpLogoutServlet ( AuthConfig authConfig, DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AuditService audit)
+DECL|method|HttpLogoutServlet ( AuthConfig authConfig, DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable Provider<String> urlProvider, GroupAuditService audit)
 specifier|protected
 name|HttpLogoutServlet
 parameter_list|(
@@ -358,7 +358,7 @@ name|String
 argument_list|>
 name|urlProvider
 parameter_list|,
-name|AuditService
+name|GroupAuditService
 name|audit
 parameter_list|)
 block|{
