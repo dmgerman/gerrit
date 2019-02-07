@@ -68,6 +68,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -123,7 +137,7 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ApprovalInfo ( Integer id, Integer value, VotingRangeInfo permittedVotingRange, String tag, Timestamp date)
+DECL|method|ApprovalInfo ( Integer id, Integer value, @Nullable VotingRangeInfo permittedVotingRange, @Nullable String tag, Timestamp date)
 specifier|public
 name|ApprovalInfo
 parameter_list|(
@@ -133,9 +147,13 @@ parameter_list|,
 name|Integer
 name|value
 parameter_list|,
+annotation|@
+name|Nullable
 name|VotingRangeInfo
 name|permittedVotingRange
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|tag
 parameter_list|,
