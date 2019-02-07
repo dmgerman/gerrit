@@ -94,6 +94,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|conditions
@@ -422,7 +436,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, SetPrivateOp.Input input)
+DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, @Nullable SetPrivateOp.Input input)
 specifier|protected
 name|Response
 argument_list|<
@@ -438,6 +452,8 @@ parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,
+annotation|@
+name|Nullable
 name|SetPrivateOp
 operator|.
 name|Input
