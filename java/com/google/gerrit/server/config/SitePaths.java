@@ -283,12 +283,6 @@ specifier|final
 name|Path
 name|static_dir
 decl_stmt|;
-DECL|field|themes_dir
-specifier|public
-specifier|final
-name|Path
-name|themes_dir
-decl_stmt|;
 DECL|field|index_dir
 specifier|public
 specifier|final
@@ -403,13 +397,13 @@ specifier|final
 name|Path
 name|site_footer
 decl_stmt|;
-comment|// For PolyGerrit UI only.
 DECL|field|site_theme
 specifier|public
 specifier|final
 name|Path
 name|site_theme
 decl_stmt|;
+comment|// For PolyGerrit UI only.
 DECL|field|site_gitweb
 specifier|public
 specifier|final
@@ -543,15 +537,6 @@ operator|.
 name|resolve
 argument_list|(
 literal|"static"
-argument_list|)
-expr_stmt|;
-name|themes_dir
-operator|=
-name|p
-operator|.
-name|resolve
-argument_list|(
-literal|"themes"
 argument_list|)
 expr_stmt|;
 name|index_dir

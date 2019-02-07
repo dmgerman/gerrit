@@ -300,11 +300,6 @@ name|CommentLinkInfo
 argument_list|>
 name|commentlinks
 decl_stmt|;
-DECL|field|theme
-specifier|public
-name|ThemeInfo
-name|theme
-decl_stmt|;
 DECL|field|extensionPanelNames
 specifier|public
 name|Map
