@@ -1207,7 +1207,7 @@ argument_list|)
 expr_stmt|;
 name|listProjects
 operator|.
-name|display
+name|displayToStream
 argument_list|(
 name|displayOut
 argument_list|)
@@ -1392,7 +1392,7 @@ argument_list|)
 expr_stmt|;
 name|listProjects
 operator|.
-name|display
+name|displayToStream
 argument_list|(
 name|displayOut
 argument_list|)

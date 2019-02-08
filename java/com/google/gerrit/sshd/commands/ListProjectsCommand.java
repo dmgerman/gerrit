@@ -283,7 +283,7 @@ block|}
 block|}
 name|impl
 operator|.
-name|display
+name|displayToStream
 argument_list|(
 name|out
 argument_list|)
