@@ -533,7 +533,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper for resolving accounts given arbitrary user-provided input.  *  *<p>The {@code resolve*} methods each define a list of accepted formats for account resolution.  * The algorithm for resolving accounts from a list of formats is as follows:  *  *<ol>  *<li>For each recognized format in the order listed in the method Javadoc, check whether the  *       input matches that format.  *<li>If so, resolve accounts according to that format.  *<li>Filter out invisible and inactive accounts.  *<li>If the result list is non-empty, return.  *<li>If the format is listed above as being short-circuiting, return.  *<li>Otherwise, return to step 1 with the next format.  *</ol>  *  *<p>The result never includes accounts that are not visible to the calling user. It also never  * includes inactive accounts, with one specific exception noted in method Javadoc.  */
+comment|/**  * Helper for resolving accounts given arbitrary user-provided input.  *  *<p>The {@code resolve*} methods each define a list of accepted formats for account resolution.  * The algorithm for resolving accounts from a list of formats is as follows:  *  *<ol>  *<li>For each recognized format in the order listed in the method Javadoc, check whether the  *       input matches that format.  *<li>If so, resolve accounts according to that format.  *<li>Filter out invisible and inactive accounts.  *<li>If the result list is non-empty, return.  *<li>If the format is listed above as being short-circuiting, return.  *<li>Otherwise, return to step 1 with the next format.  *</ol>  *  *<p>The result never includes accounts that are not visible to the calling user. It also never  * includes inactive accounts, with a small number of specific exceptions noted in method Javadoc.  */
 end_comment
 
 begin_class
@@ -1488,6 +1488,18 @@ name|StringSearcher
 block|{
 annotation|@
 name|Override
+DECL|method|callerShouldFilterOutInactiveCandidates ()
+specifier|public
+name|boolean
+name|callerShouldFilterOutInactiveCandidates
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|callerMayAssumeCandidatesAreVisible ()
 specifier|public
 name|boolean
@@ -1606,8 +1618,6 @@ name|boolean
 name|callerShouldFilterOutInactiveCandidates
 parameter_list|()
 block|{
-comment|// The only case where we *don't* enforce that the account is active is when passing an exact
-comment|// numeric account ID.
 return|return
 literal|false
 return|;
@@ -2623,7 +2633,7 @@ operator|=
 name|anonymousCowardName
 expr_stmt|;
 block|}
-comment|/**    * Resolves all accounts matching the input string.    *    *<p>The following input formats are recognized:    *    *<ul>    *<li>The strings {@code "self"} and {@code "me"}, if the current user is an {@link    *       IdentifiedUser}.    *<li>A bare account ID ({@code "18419"}). In this case, and<strong>only</strong> this case,    *       may return exactly one inactive account. This case short-circuits if the input matches.    *<li>An account ID in parentheses following a full name ({@code "Full Name (18419)"}). This    *       case short-circuits if the input matches.    *<li>A username ({@code "username"}).    *<li>A full name and email address ({@code "Full Name<email@example>"}). This case    *       short-circuits if the input matches.    *<li>An email address ({@code "email@example"}. This case short-circuits if the input matches.    *<li>An account name recognized by the configured {@link Realm#lookup(String)} Realm}.    *<li>A full name ({@code "Full Name"}).    *<li>As a fallback, a {@link    *       com.google.gerrit.server.query.account.AccountPredicates#defaultPredicate(Schema,    *       boolean, String) default search} against the account index.    *</ul>    *    * @param input input string.    * @return a result describing matching accounts. Never null even if the result set is empty.    * @throws OrmException if an error occurs.    * @throws ConfigInvalidException if an error occurs.    * @throws IOException if an error occurs.    */
+comment|/**    * Resolves all accounts matching the input string.    *    *<p>The following input formats are recognized:    *    *<ul>    *<li>The strings {@code "self"} and {@code "me"}, if the current user is an {@link    *       IdentifiedUser}. In this case, may return exactly one inactive account.    *<li>A bare account ID ({@code "18419"}). In this case, may return exactly one inactive    *       account. This case short-circuits if the input matches.    *<li>An account ID in parentheses following a full name ({@code "Full Name (18419)"}). This    *       case short-circuits if the input matches.    *<li>A username ({@code "username"}).    *<li>A full name and email address ({@code "Full Name<email@example>"}). This case    *       short-circuits if the input matches.    *<li>An email address ({@code "email@example"}. This case short-circuits if the input matches.    *<li>An account name recognized by the configured {@link Realm#lookup(String)} Realm}.    *<li>A full name ({@code "Full Name"}).    *<li>As a fallback, a {@link    *       com.google.gerrit.server.query.account.AccountPredicates#defaultPredicate(Schema,    *       boolean, String) default search} against the account index.    *</ul>    *    * @param input input string.    * @return a result describing matching accounts. Never null even if the result set is empty.    * @throws OrmException if an error occurs.    * @throws ConfigInvalidException if an error occurs.    * @throws IOException if an error occurs.    */
 DECL|method|resolve (String input)
 specifier|public
 name|Result
