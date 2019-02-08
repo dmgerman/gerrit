@@ -596,6 +596,26 @@ name|MethodNotAllowedException
 throws|,
 name|OrmException
 block|{
+return|return
+name|apply
+argument_list|()
+return|;
+block|}
+DECL|method|apply ()
+specifier|public
+name|List
+argument_list|<
+name|ProjectInfo
+argument_list|>
+name|apply
+parameter_list|()
+throws|throws
+name|BadRequestException
+throws|,
+name|MethodNotAllowedException
+throws|,
+name|OrmException
+block|{
 if|if
 condition|(
 name|Strings
