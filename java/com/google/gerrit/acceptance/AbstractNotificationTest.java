@@ -914,10 +914,10 @@ name|target
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|notSent ()
+DECL|method|didNotSend ()
 specifier|public
 name|FakeEmailSenderSubject
-name|notSent
+name|didNotSend
 parameter_list|()
 block|{
 name|Message
