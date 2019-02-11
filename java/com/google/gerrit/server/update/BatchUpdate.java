@@ -2295,7 +2295,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Override the {@link NotifyHandling} on a per-change basis.    *    *<p>Only the handling enum can be overridden; all changes share the same value for {@link    * NotifyResolver.Result#accounts()}.    *    * @param changeId change ID.    * @param notifyHandling notify handling.    * @return this.    */
+comment|/**    * Override the {@link NotifyHandling} on a per-change basis.    *    *<p>Only the handling enum can be overridden; all changes share the same value for {@link    * com.google.gerrit.server.change.NotifyResolver.Result#accounts()}.    *    * @param changeId change ID.    * @param notifyHandling notify handling.    * @return this.    */
 DECL|method|setNotifyHandling (Change.Id changeId, NotifyHandling notifyHandling)
 specifier|public
 name|BatchUpdate
