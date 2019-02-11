@@ -112,6 +112,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -385,6 +399,8 @@ parameter_list|,
 name|T
 parameter_list|>
 block|{
+annotation|@
+name|Nullable
 DECL|method|get (I input)
 name|T
 name|get
@@ -765,6 +781,8 @@ name|stored
 return|;
 block|}
 comment|/**    * Get the field contents from the input object.    *    * @param input input object.    * @return the field value(s) to index.    * @throws OrmException    */
+annotation|@
+name|Nullable
 DECL|method|get (I input)
 specifier|public
 name|T
