@@ -69,6 +69,40 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|NotifyHandling
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -162,7 +196,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|NotifyUtil
+name|NotifyResolver
 import|;
 end_import
 
@@ -392,11 +426,11 @@ specifier|final
 name|ChangeEditUtil
 name|editUtil
 decl_stmt|;
-DECL|field|notifyUtil
+DECL|field|notifyResolver
 specifier|private
 specifier|final
-name|NotifyUtil
-name|notifyUtil
+name|NotifyResolver
+name|notifyResolver
 decl_stmt|;
 DECL|field|contributorAgreementsChecker
 specifier|private
@@ -406,7 +440,7 @@ name|contributorAgreementsChecker
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PublishChangeEdit ( RetryHelper retryHelper, ChangeEditUtil editUtil, NotifyUtil notifyUtil, ContributorAgreementsChecker contributorAgreementsChecker)
+DECL|method|PublishChangeEdit ( RetryHelper retryHelper, ChangeEditUtil editUtil, NotifyResolver notifyResolver, ContributorAgreementsChecker contributorAgreementsChecker)
 name|PublishChangeEdit
 parameter_list|(
 name|RetryHelper
@@ -415,8 +449,8 @@ parameter_list|,
 name|ChangeEditUtil
 name|editUtil
 parameter_list|,
-name|NotifyUtil
-name|notifyUtil
+name|NotifyResolver
+name|notifyResolver
 parameter_list|,
 name|ContributorAgreementsChecker
 name|contributorAgreementsChecker
@@ -435,9 +469,9 @@ name|editUtil
 expr_stmt|;
 name|this
 operator|.
-name|notifyUtil
+name|notifyResolver
 operator|=
-name|notifyUtil
+name|notifyResolver
 expr_stmt|;
 name|this
 operator|.
@@ -581,14 +615,21 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
+name|notifyResolver
+operator|.
+name|resolve
+argument_list|(
+name|firstNonNull
+argument_list|(
 name|in
 operator|.
 name|notify
 argument_list|,
-name|notifyUtil
+name|NotifyHandling
 operator|.
-name|resolveAccounts
-argument_list|(
+name|ALL
+argument_list|)
+argument_list|,
 name|in
 operator|.
 name|notifyDetails

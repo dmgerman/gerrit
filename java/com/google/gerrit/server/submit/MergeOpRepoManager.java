@@ -83,6 +83,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -155,6 +167,22 @@ operator|.
 name|server
 operator|.
 name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|NotifyResolver
 import|;
 end_import
 
@@ -806,6 +834,11 @@ argument_list|,
 name|ins
 argument_list|)
 operator|.
+name|setNotify
+argument_list|(
+name|notify
+argument_list|)
+operator|.
 name|setOnSubmitValidators
 argument_list|(
 name|onSubmitValidatorsFactory
@@ -1071,6 +1104,13 @@ specifier|private
 name|IdentifiedUser
 name|caller
 decl_stmt|;
+DECL|field|notify
+specifier|private
+name|NotifyResolver
+operator|.
+name|Result
+name|notify
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|MergeOpRepoManager ( GitRepositoryManager repoManager, ProjectCache projectCache, BatchUpdate.Factory batchUpdateFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory)
@@ -1125,7 +1165,7 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setContext (Timestamp ts, IdentifiedUser caller)
+DECL|method|setContext (Timestamp ts, IdentifiedUser caller, NotifyResolver.Result notify)
 specifier|public
 name|void
 name|setContext
@@ -1135,19 +1175,39 @@ name|ts
 parameter_list|,
 name|IdentifiedUser
 name|caller
+parameter_list|,
+name|NotifyResolver
+operator|.
+name|Result
+name|notify
 parameter_list|)
 block|{
 name|this
 operator|.
 name|ts
 operator|=
+name|requireNonNull
+argument_list|(
 name|ts
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|caller
 operator|=
+name|requireNonNull
+argument_list|(
 name|caller
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|notify
+operator|=
+name|requireNonNull
+argument_list|(
+name|notify
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getRepo (Project.NameKey project)
@@ -1315,6 +1375,11 @@ argument_list|)
 operator|.
 name|getUpdate
 argument_list|()
+operator|.
+name|setNotify
+argument_list|(
+name|notify
+argument_list|)
 operator|.
 name|setRefLogMessage
 argument_list|(

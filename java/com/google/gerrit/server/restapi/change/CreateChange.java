@@ -70,6 +70,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|eclipse
@@ -95,20 +111,6 @@ operator|.
 name|base
 operator|.
 name|Joiner
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|MoreObjects
 import|;
 end_import
 
@@ -151,6 +153,24 @@ operator|.
 name|common
 operator|.
 name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|NotifyHandling
 import|;
 end_import
 
@@ -590,7 +610,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|NotifyUtil
+name|NotifyResolver
 import|;
 end_import
 
@@ -1347,11 +1367,11 @@ specifier|final
 name|SubmitType
 name|submitType
 decl_stmt|;
-DECL|field|notifyUtil
+DECL|field|notifyResolver
 specifier|private
 specifier|final
-name|NotifyUtil
-name|notifyUtil
+name|NotifyResolver
+name|notifyResolver
 decl_stmt|;
 DECL|field|contributorAgreements
 specifier|private
@@ -1367,7 +1387,7 @@ name|disablePrivateChanges
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateChange ( @nonymousCowardName String anonymousCowardName, GitRepositoryManager gitManager, Sequences seq, @GerritPersonIdent PersonIdent myIdent, PermissionBackend permissionBackend, Provider<CurrentUser> user, ProjectsCollection projectsCollection, CommitsCollection commits, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeFinder changeFinder, RetryHelper retryHelper, PatchSetUtil psUtil, @GerritServerConfig Config config, MergeUtil.Factory mergeUtilFactory, NotifyUtil notifyUtil, ContributorAgreementsChecker contributorAgreements)
+DECL|method|CreateChange ( @nonymousCowardName String anonymousCowardName, GitRepositoryManager gitManager, Sequences seq, @GerritPersonIdent PersonIdent myIdent, PermissionBackend permissionBackend, Provider<CurrentUser> user, ProjectsCollection projectsCollection, CommitsCollection commits, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeFinder changeFinder, RetryHelper retryHelper, PatchSetUtil psUtil, @GerritServerConfig Config config, MergeUtil.Factory mergeUtilFactory, NotifyResolver notifyResolver, ContributorAgreementsChecker contributorAgreements)
 name|CreateChange
 parameter_list|(
 annotation|@
@@ -1430,8 +1450,8 @@ operator|.
 name|Factory
 name|mergeUtilFactory
 parameter_list|,
-name|NotifyUtil
-name|notifyUtil
+name|NotifyResolver
+name|notifyResolver
 parameter_list|,
 name|ContributorAgreementsChecker
 name|contributorAgreements
@@ -1561,9 +1581,9 @@ name|mergeUtilFactory
 expr_stmt|;
 name|this
 operator|.
-name|notifyUtil
+name|notifyResolver
 operator|=
-name|notifyUtil
+name|notifyResolver
 expr_stmt|;
 name|this
 operator|.
@@ -2018,8 +2038,6 @@ name|input
 operator|.
 name|workInProgress
 operator|=
-name|MoreObjects
-operator|.
 name|firstNonNull
 argument_list|(
 name|me
@@ -2518,29 +2536,6 @@ argument_list|(
 name|groups
 argument_list|)
 expr_stmt|;
-name|ins
-operator|.
-name|setNotify
-argument_list|(
-name|input
-operator|.
-name|notify
-argument_list|)
-expr_stmt|;
-name|ins
-operator|.
-name|setAccountsToNotify
-argument_list|(
-name|notifyUtil
-operator|.
-name|resolveAccounts
-argument_list|(
-name|input
-operator|.
-name|notifyDetails
-argument_list|)
-argument_list|)
-expr_stmt|;
 try|try
 init|(
 name|BatchUpdate
@@ -2570,6 +2565,31 @@ argument_list|,
 name|rw
 argument_list|,
 name|oi
+argument_list|)
+expr_stmt|;
+name|bu
+operator|.
+name|setNotify
+argument_list|(
+name|notifyResolver
+operator|.
+name|resolve
+argument_list|(
+name|firstNonNull
+argument_list|(
+name|input
+operator|.
+name|notify
+argument_list|,
+name|NotifyHandling
+operator|.
+name|ALL
+argument_list|)
+argument_list|,
+name|input
+operator|.
+name|notifyDetails
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|bu
@@ -3334,8 +3354,6 @@ comment|// default merge strategy from project settings
 name|String
 name|mergeStrategy
 init|=
-name|MoreObjects
-operator|.
 name|firstNonNull
 argument_list|(
 name|Strings

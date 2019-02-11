@@ -1169,6 +1169,9 @@ if|if
 condition|(
 name|notify
 operator|.
+name|handling
+argument_list|()
+operator|.
 name|compareTo
 argument_list|(
 name|NotifyHandling
@@ -1186,6 +1189,9 @@ block|}
 if|if
 condition|(
 name|notify
+operator|.
+name|handling
+argument_list|()
 operator|.
 name|compareTo
 argument_list|(

@@ -857,6 +857,13 @@ operator|.
 name|assignee
 argument_list|)
 decl_stmt|;
+name|reviewersAddition
+operator|.
+name|op
+operator|.
+name|suppressEmail
+argument_list|()
+expr_stmt|;
 name|bu
 operator|.
 name|addOp

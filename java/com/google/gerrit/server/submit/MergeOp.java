@@ -76,6 +76,22 @@ name|common
 operator|.
 name|base
 operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Preconditions
 operator|.
 name|checkArgument
@@ -366,7 +382,7 @@ name|api
 operator|.
 name|changes
 operator|.
-name|RecipientType
+name|NotifyHandling
 import|;
 end_import
 
@@ -536,22 +552,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Branch
 import|;
 end_import
@@ -674,7 +674,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|NotifyUtil
+name|NotifyResolver
 import|;
 end_import
 
@@ -2092,11 +2092,11 @@ name|MergeOpRepoManager
 argument_list|>
 name|ormProvider
 decl_stmt|;
-DECL|field|notifyUtil
+DECL|field|notifyResolver
 specifier|private
 specifier|final
-name|NotifyUtil
-name|notifyUtil
+name|NotifyResolver
+name|notifyResolver
 decl_stmt|;
 DECL|field|retryHelper
 specifier|private
@@ -2142,17 +2142,12 @@ specifier|private
 name|SubmitInput
 name|submitInput
 decl_stmt|;
-DECL|field|accountsToNotify
+DECL|field|notify
 specifier|private
-name|ListMultimap
-argument_list|<
-name|RecipientType
-argument_list|,
-name|Account
+name|NotifyResolver
 operator|.
-name|Id
-argument_list|>
-name|accountsToNotify
+name|Result
+name|notify
 decl_stmt|;
 DECL|field|allProjects
 specifier|private
@@ -2176,7 +2171,7 @@ name|topicMetrics
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp ( ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, Provider<InternalChangeQuery> queryProvider, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, Provider<MergeOpRepoManager> ormProvider, NotifyUtil notifyUtil, TopicMetrics topicMetrics, RetryHelper retryHelper, ChangeData.Factory changeDataFactory)
+DECL|method|MergeOp ( ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, Provider<InternalChangeQuery> queryProvider, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, Provider<MergeOpRepoManager> ormProvider, NotifyResolver notifyResolver, TopicMetrics topicMetrics, RetryHelper retryHelper, ChangeData.Factory changeDataFactory)
 name|MergeOp
 parameter_list|(
 name|ChangeMessagesUtil
@@ -2220,8 +2215,8 @@ name|MergeOpRepoManager
 argument_list|>
 name|ormProvider
 parameter_list|,
-name|NotifyUtil
-name|notifyUtil
+name|NotifyResolver
+name|notifyResolver
 parameter_list|,
 name|TopicMetrics
 name|topicMetrics
@@ -2291,9 +2286,9 @@ name|ormProvider
 expr_stmt|;
 name|this
 operator|.
-name|notifyUtil
+name|notifyResolver
 operator|=
-name|notifyUtil
+name|notifyResolver
 expr_stmt|;
 name|this
 operator|.
@@ -3208,12 +3203,23 @@ name|submitInput
 expr_stmt|;
 name|this
 operator|.
-name|accountsToNotify
+name|notify
 operator|=
-name|notifyUtil
+name|notifyResolver
 operator|.
-name|resolveAccounts
+name|resolve
 argument_list|(
+name|firstNonNull
+argument_list|(
+name|submitInput
+operator|.
+name|notify
+argument_list|,
+name|NotifyHandling
+operator|.
+name|ALL
+argument_list|)
+argument_list|,
 name|submitInput
 operator|.
 name|notifyDetails
@@ -3678,6 +3684,8 @@ argument_list|(
 name|ts
 argument_list|,
 name|caller
+argument_list|,
+name|notify
 argument_list|)
 expr_stmt|;
 block|}
@@ -4495,8 +4503,6 @@ argument_list|,
 name|submissionId
 argument_list|,
 name|submitInput
-argument_list|,
-name|accountsToNotify
 argument_list|,
 name|submoduleOp
 argument_list|,
