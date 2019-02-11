@@ -2292,7 +2292,7 @@ argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"Internal error while processing the query '{}' request"
+literal|"Internal error while processing the query '%s' request"
 argument_list|,
 name|query
 argument_list|)
@@ -2406,7 +2406,7 @@ argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"Internal error while processing the query '{}' request"
+literal|"Internal error while processing the query '%s' request"
 argument_list|,
 name|query
 argument_list|)
