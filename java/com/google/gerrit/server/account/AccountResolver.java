@@ -805,7 +805,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isSelf (String input)
-specifier|private
+specifier|public
 specifier|static
 name|boolean
 name|isSelf
