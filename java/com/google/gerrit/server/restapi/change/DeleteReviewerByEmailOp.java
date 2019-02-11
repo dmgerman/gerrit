@@ -90,24 +90,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|api
-operator|.
-name|changes
-operator|.
-name|DeleteReviewerInput
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|mail
 operator|.
 name|Address
@@ -333,15 +315,12 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Address reviewer, DeleteReviewerInput input)
+DECL|method|create (Address reviewer)
 name|DeleteReviewerByEmailOp
 name|create
 parameter_list|(
 name|Address
 name|reviewer
-parameter_list|,
-name|DeleteReviewerInput
-name|input
 parameter_list|)
 function_decl|;
 block|}
@@ -359,12 +338,6 @@ specifier|final
 name|Address
 name|reviewer
 decl_stmt|;
-DECL|field|input
-specifier|private
-specifier|final
-name|DeleteReviewerInput
-name|input
-decl_stmt|;
 DECL|field|changeMessage
 specifier|private
 name|ChangeMessage
@@ -377,7 +350,7 @@ name|change
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteReviewerByEmailOp ( DeleteReviewerSender.Factory deleteReviewerSenderFactory, @Assisted Address reviewer, @Assisted DeleteReviewerInput input)
+DECL|method|DeleteReviewerByEmailOp ( DeleteReviewerSender.Factory deleteReviewerSenderFactory, @Assisted Address reviewer)
 name|DeleteReviewerByEmailOp
 parameter_list|(
 name|DeleteReviewerSender
@@ -389,11 +362,6 @@ annotation|@
 name|Assisted
 name|Address
 name|reviewer
-parameter_list|,
-annotation|@
-name|Assisted
-name|DeleteReviewerInput
-name|input
 parameter_list|)
 block|{
 name|this
@@ -407,12 +375,6 @@ operator|.
 name|reviewer
 operator|=
 name|reviewer
-expr_stmt|;
-name|this
-operator|.
-name|input
-operator|=
-name|input
 expr_stmt|;
 block|}
 annotation|@
