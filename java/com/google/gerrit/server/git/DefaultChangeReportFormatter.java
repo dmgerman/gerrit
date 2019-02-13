@@ -175,6 +175,15 @@ name|SUBJECT_CROP_RANGE
 init|=
 literal|10
 decl_stmt|;
+DECL|field|NEW_CHANGE_INDICATOR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|NEW_CHANGE_INDICATOR
+init|=
+literal|" [NEW]"
+decl_stmt|;
 DECL|field|urlFormatter
 specifier|private
 specifier|final
@@ -215,6 +224,8 @@ name|formatChangeUrl
 argument_list|(
 name|input
 argument_list|)
+operator|+
+name|NEW_CHANGE_INDICATOR
 return|;
 block|}
 annotation|@
