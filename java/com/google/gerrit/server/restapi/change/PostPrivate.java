@@ -743,6 +743,11 @@ name|change
 operator|.
 name|isPrivate
 argument_list|()
+operator|&&
+name|change
+operator|.
+name|isNew
+argument_list|()
 argument_list|,
 name|canSetPrivate
 argument_list|(
