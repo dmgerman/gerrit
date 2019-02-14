@@ -1689,8 +1689,19 @@ name|ByteArrayOutputStream
 argument_list|(
 literal|4096
 argument_list|)
-init|;           ArmoredOutputStream aout = new ArmoredOutputStream(out)
-block|)
+init|)
+block|{
+try|try
+init|(
+name|ArmoredOutputStream
+name|aout
+init|=
+operator|new
+name|ArmoredOutputStream
+argument_list|(
+name|out
+argument_list|)
+init|)
 block|{
 comment|// This is not exactly the key stored in the store, but is equivalent. In
 comment|// particular, it will have a Bouncy Castle version string. The armored
@@ -1703,6 +1714,7 @@ argument_list|(
 name|aout
 argument_list|)
 expr_stmt|;
+block|}
 name|info
 operator|.
 name|key
@@ -1742,9 +1754,6 @@ return|return
 name|info
 return|;
 block|}
-end_class
-
-begin_function
 DECL|method|toJson (PGPPublicKey key, PublicKeyChecker checker, PublicKeyStore store)
 specifier|static
 name|GpgKeyInfo
@@ -1781,9 +1790,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|toJson (GpgKeyInfo info, CheckResult checkResult)
 specifier|public
 specifier|static
@@ -1816,8 +1822,8 @@ name|getProblems
 argument_list|()
 expr_stmt|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 
