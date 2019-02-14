@@ -490,6 +490,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ChangeUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|AccountLoader
@@ -3072,13 +3086,15 @@ argument_list|()
 argument_list|,
 literal|"should not call setAllApprovals on %s change"
 argument_list|,
+name|ChangeUtil
+operator|.
+name|status
+argument_list|(
 name|cd
 operator|.
 name|change
 argument_list|()
-operator|.
-name|getStatus
-argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Include a user in the output for this label if either:
