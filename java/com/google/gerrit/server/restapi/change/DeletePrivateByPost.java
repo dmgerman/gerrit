@@ -112,20 +112,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ChangeMessagesUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|change
 operator|.
 name|ChangeResource
@@ -221,14 +207,11 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|DeletePrivateByPost ( RetryHelper retryHelper, ChangeMessagesUtil cmUtil, PermissionBackend permissionBackend, SetPrivateOp.Factory setPrivateOpFactory)
+DECL|method|DeletePrivateByPost ( RetryHelper retryHelper, PermissionBackend permissionBackend, SetPrivateOp.Factory setPrivateOpFactory)
 name|DeletePrivateByPost
 parameter_list|(
 name|RetryHelper
 name|retryHelper
-parameter_list|,
-name|ChangeMessagesUtil
-name|cmUtil
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -242,8 +225,6 @@ block|{
 name|super
 argument_list|(
 name|retryHelper
-argument_list|,
-name|cmUtil
 argument_list|,
 name|permissionBackend
 argument_list|,

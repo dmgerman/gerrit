@@ -1592,10 +1592,6 @@ name|setPrivateOpFactory
 operator|.
 name|create
 argument_list|(
-name|args
-operator|.
-name|cmUtil
-argument_list|,
 literal|false
 argument_list|,
 literal|null
@@ -1649,10 +1645,6 @@ name|setPrivateOpFactory
 operator|.
 name|create
 argument_list|(
-name|args
-operator|.
-name|cmUtil
-argument_list|,
 literal|false
 argument_list|,
 literal|null

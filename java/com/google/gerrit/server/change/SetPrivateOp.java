@@ -384,13 +384,10 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ChangeMessagesUtil cmUtil, boolean isPrivate, @Nullable Input input)
+DECL|method|create (boolean isPrivate, @Nullable Input input)
 name|SetPrivateOp
 name|create
 parameter_list|(
-name|ChangeMessagesUtil
-name|cmUtil
-parameter_list|,
 name|boolean
 name|isPrivate
 parameter_list|,
@@ -450,7 +447,7 @@ name|isNoOp
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetPrivateOp ( PrivateStateChanged privateStateChanged, PatchSetUtil psUtil, @Assisted ChangeMessagesUtil cmUtil, @Assisted boolean isPrivate, @Assisted @Nullable Input input)
+DECL|method|SetPrivateOp ( PrivateStateChanged privateStateChanged, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, @Assisted boolean isPrivate, @Assisted @Nullable Input input)
 name|SetPrivateOp
 parameter_list|(
 name|PrivateStateChanged
@@ -459,8 +456,6 @@ parameter_list|,
 name|PatchSetUtil
 name|psUtil
 parameter_list|,
-annotation|@
-name|Assisted
 name|ChangeMessagesUtil
 name|cmUtil
 parameter_list|,
