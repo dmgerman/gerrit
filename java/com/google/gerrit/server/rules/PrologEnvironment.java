@@ -593,14 +593,31 @@ argument_list|(
 name|goal
 argument_list|)
 expr_stmt|;
-name|setReductionLimit
-argument_list|(
+name|int
+name|reductionLimit
+init|=
 name|args
 operator|.
 name|reductionLimit
 argument_list|(
 name|goal
 argument_list|)
+decl_stmt|;
+name|logger
+operator|.
+name|atInfo
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"setting reductionLimit %d"
+argument_list|,
+name|reductionLimit
+argument_list|)
+expr_stmt|;
+name|setReductionLimit
+argument_list|(
+name|reductionLimit
 argument_list|)
 expr_stmt|;
 block|}
@@ -1152,6 +1169,20 @@ operator|.
 name|MAX_VALUE
 else|:
 name|limit
+expr_stmt|;
+name|logger
+operator|.
+name|atInfo
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"reductionLimit: %d, compileLimit: %d"
+argument_list|,
+name|reductionLimit
+argument_list|,
+name|compileLimit
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|reductionLimit (Predicate goal)
