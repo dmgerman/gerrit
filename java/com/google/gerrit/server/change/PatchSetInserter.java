@@ -881,6 +881,13 @@ specifier|private
 name|boolean
 name|allowClosed
 decl_stmt|;
+DECL|field|sendEmail
+specifier|private
+name|boolean
+name|sendEmail
+init|=
+literal|true
+decl_stmt|;
 comment|// Fields set during some phase of BatchUpdate.Op.
 DECL|field|change
 specifier|private
@@ -1188,6 +1195,25 @@ operator|.
 name|allowClosed
 operator|=
 name|allowClosed
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setSendEmail (boolean sendEmail)
+specifier|public
+name|PatchSetInserter
+name|setSendEmail
+parameter_list|(
+name|boolean
+name|sendEmail
+parameter_list|)
+block|{
+name|this
+operator|.
+name|sendEmail
+operator|=
+name|sendEmail
 expr_stmt|;
 return|return
 name|this
@@ -1595,8 +1621,6 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|NotifyResolver
 operator|.
@@ -1619,8 +1643,15 @@ name|notify
 operator|.
 name|shouldNotify
 argument_list|()
+operator|&&
+name|sendEmail
 condition|)
 block|{
+name|requireNonNull
+argument_list|(
+name|changeMessage
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|ReplacePatchSetSender

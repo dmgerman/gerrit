@@ -1262,6 +1262,11 @@ argument_list|(
 literal|false
 argument_list|)
 operator|.
+name|setSendEmail
+argument_list|(
+literal|false
+argument_list|)
+operator|.
 name|setMatchAuthorToCommitterDate
 argument_list|(
 name|args
