@@ -1595,14 +1595,8 @@ operator|.
 name|getChange
 argument_list|()
 operator|.
-name|getStatus
+name|isMerged
 argument_list|()
-operator|==
-name|Change
-operator|.
-name|Status
-operator|.
-name|MERGED
 condition|)
 block|{
 comment|// Either another thread won a race, or we are retrying a whole topic submission after one

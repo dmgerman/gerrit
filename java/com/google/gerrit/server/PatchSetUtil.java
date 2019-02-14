@@ -1061,14 +1061,8 @@ if|if
 condition|(
 name|change
 operator|.
-name|getStatus
+name|isMerged
 argument_list|()
-operator|==
-name|Change
-operator|.
-name|Status
-operator|.
-name|MERGED
 condition|)
 block|{
 return|return

@@ -1667,10 +1667,7 @@ condition|(
 operator|!
 name|change
 operator|.
-name|getStatus
-argument_list|()
-operator|.
-name|isOpen
+name|isNew
 argument_list|()
 condition|)
 block|{
@@ -1837,41 +1834,34 @@ argument_list|)
 throw|;
 block|}
 block|}
-switch|switch
+if|if
 condition|(
 name|change
 operator|.
-name|getStatus
+name|isMerged
 argument_list|()
 condition|)
 block|{
-case|case
-name|MERGED
-case|:
 return|return
 name|change
 return|;
-case|case
-name|NEW
-case|:
+block|}
+if|if
+condition|(
+name|change
+operator|.
+name|isNew
+argument_list|()
+condition|)
+block|{
 throw|throw
 operator|new
 name|RestApiException
 argument_list|(
-literal|"change unexpectedly had status "
-operator|+
-name|change
-operator|.
-name|getStatus
-argument_list|()
-operator|+
-literal|" after submit attempt"
+literal|"change unexpectedly had status NEW after submit attempt"
 argument_list|)
 throw|;
-case|case
-name|ABANDONED
-case|:
-default|default:
+block|}
 throw|throw
 operator|new
 name|ResourceConflictException
@@ -1886,7 +1876,6 @@ name|change
 argument_list|)
 argument_list|)
 throw|;
-block|}
 block|}
 comment|/**    * Returns a message describing what prevents the current change from being submitted - or null.    * This method only considers parent changes, and changes in the same topic. The caller is    * responsible for making sure the current change to be submitted can indeed be submitted    * (permissions, submit rules, is not a WIP...)    *    * @param cd the change the user is currently looking at    * @param cs set of changes to be submitted at once    * @param user the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
 DECL|method|problemsForSubmittingChangeset (ChangeData cd, ChangeSet cs, CurrentUser user)
@@ -2301,10 +2290,7 @@ condition|(
 operator|!
 name|change
 operator|.
-name|getStatus
-argument_list|()
-operator|.
-name|isOpen
+name|isNew
 argument_list|()
 operator|||
 name|change

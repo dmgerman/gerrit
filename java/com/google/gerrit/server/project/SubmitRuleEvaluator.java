@@ -596,9 +596,6 @@ argument_list|()
 operator|&&
 name|change
 operator|.
-name|getStatus
-argument_list|()
-operator|.
 name|isClosed
 argument_list|()
 condition|)
