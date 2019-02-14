@@ -443,6 +443,11 @@ specifier|private
 name|PatchSet
 name|ps
 decl_stmt|;
+DECL|field|isNoOp
+specifier|private
+name|boolean
+name|isNoOp
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|SetPrivateOp ( PrivateStateChanged privateStateChanged, PatchSetUtil psUtil, @Assisted ChangeMessagesUtil cmUtil, @Assisted boolean isPrivate, @Assisted @Nullable Input input)
@@ -527,6 +532,28 @@ operator|.
 name|getChange
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|ctx
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|isPrivate
+argument_list|()
+operator|==
+name|isPrivate
+condition|)
+block|{
+comment|// No-op
+name|isNoOp
+operator|=
+literal|true
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 if|if
 condition|(
 name|isPrivate
@@ -627,6 +654,12 @@ name|Context
 name|ctx
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|isNoOp
+condition|)
+block|{
 name|privateStateChanged
 operator|.
 name|fire
@@ -646,6 +679,7 @@ name|getWhen
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|addMessage (ChangeContext ctx, ChangeUpdate update)
 specifier|private
