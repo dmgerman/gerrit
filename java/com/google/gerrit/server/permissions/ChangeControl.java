@@ -1034,10 +1034,7 @@ condition|(
 name|getChange
 argument_list|()
 operator|.
-name|getStatus
-argument_list|()
-operator|.
-name|isOpen
+name|isNew
 argument_list|()
 condition|)
 block|{
@@ -1095,10 +1092,7 @@ condition|(
 name|getChange
 argument_list|()
 operator|.
-name|getStatus
-argument_list|()
-operator|.
-name|isOpen
+name|isNew
 argument_list|()
 condition|)
 block|{
