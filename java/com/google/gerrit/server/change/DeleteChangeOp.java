@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.restapi.change
+DECL|package|com.google.gerrit.server.change
 package|package
 name|com
 operator|.
@@ -61,8 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|server
-operator|.
-name|restapi
 operator|.
 name|change
 package|;
@@ -205,22 +203,6 @@ operator|.
 name|server
 operator|.
 name|StarredChangesUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|AccountPatchReviewStore
 import|;
 end_import
 
@@ -450,6 +432,7 @@ end_import
 
 begin_class
 DECL|class|DeleteChangeOp
+specifier|public
 class|class
 name|DeleteChangeOp
 implements|implements
