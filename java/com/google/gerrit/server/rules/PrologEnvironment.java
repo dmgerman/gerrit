@@ -589,7 +589,7 @@ argument_list|)
 decl_stmt|;
 name|logger
 operator|.
-name|atInfo
+name|atFine
 argument_list|()
 operator|.
 name|log
