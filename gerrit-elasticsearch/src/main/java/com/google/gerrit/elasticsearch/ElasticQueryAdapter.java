@@ -144,6 +144,12 @@ specifier|final
 name|String
 name|versionDiscoveryUrl
 decl_stmt|;
+DECL|field|includeTypeNameParam
+specifier|private
+specifier|final
+name|String
+name|includeTypeNameParam
+decl_stmt|;
 DECL|method|ElasticQueryAdapter (ElasticVersion version)
 name|ElasticQueryAdapter
 parameter_list|(
@@ -217,6 +223,19 @@ operator|.
 name|indexProperty
 operator|=
 literal|"true"
+expr_stmt|;
+name|this
+operator|.
+name|includeTypeNameParam
+operator|=
+name|version
+operator|.
+name|isV7OrLater
+argument_list|()
+condition|?
+literal|"?include_type_name=true"
+else|:
+literal|""
 expr_stmt|;
 block|}
 DECL|method|setIgnoreUnmapped (JsonObject properties)
@@ -370,6 +389,15 @@ name|versionDiscoveryUrl
 argument_list|,
 name|name
 argument_list|)
+return|;
+block|}
+DECL|method|includeTypeNameParam ()
+name|String
+name|includeTypeNameParam
+parameter_list|()
+block|{
+return|return
+name|includeTypeNameParam
 return|;
 block|}
 block|}
