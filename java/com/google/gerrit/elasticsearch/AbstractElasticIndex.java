@@ -1635,6 +1635,14 @@ argument_list|(
 literal|"PUT"
 argument_list|,
 name|indexName
+operator|+
+name|client
+operator|.
+name|adapter
+argument_list|()
+operator|.
+name|includeTypeNameParam
+argument_list|()
 argument_list|,
 name|indexCreationFields
 argument_list|)

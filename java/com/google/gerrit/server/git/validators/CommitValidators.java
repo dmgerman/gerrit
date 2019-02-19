@@ -2443,7 +2443,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"  git commit --amend\n"
+literal|"  git commit --amend --no-edit\n"
 argument_list|)
 operator|.
 name|append
