@@ -30385,7 +30385,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"no ID was provided and change isn't a revert"
+literal|"revertOf not set"
 argument_list|)
 expr_stmt|;
 name|gApi

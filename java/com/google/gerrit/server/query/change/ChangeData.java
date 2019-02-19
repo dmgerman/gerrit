@@ -6277,10 +6277,11 @@ argument_list|(
 name|notes
 argument_list|()
 argument_list|,
-literal|null
-argument_list|)
+name|Optional
 operator|.
-name|isPureRevert
+name|empty
+argument_list|()
+argument_list|)
 return|;
 block|}
 catch|catch
