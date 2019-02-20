@@ -334,9 +334,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
+name|common
 operator|.
-name|HtmlDomUtil
+name|UsedAt
 import|;
 end_import
 
@@ -348,9 +348,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|httpd
 operator|.
-name|UsedAt
+name|HtmlDomUtil
 import|;
 end_import
 
