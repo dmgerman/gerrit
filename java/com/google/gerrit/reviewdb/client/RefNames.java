@@ -66,6 +66,20 @@ name|client
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|UsedAt
+import|;
+end_import
+
 begin_comment
 comment|/** Constants and utilities for Gerrit-specific ref names. */
 end_comment
@@ -963,8 +977,17 @@ return|return
 name|sb
 return|;
 block|}
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|PLUGINS_ALL
+argument_list|)
 DECL|method|shardUuid (String uuid)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|shardUuid
