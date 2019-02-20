@@ -294,6 +294,22 @@ name|extensions
 operator|.
 name|registration
 operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
 name|DynamicSet
 import|;
 end_import
@@ -1618,7 +1634,10 @@ decl_stmt|;
 DECL|field|urlFormatter
 specifier|private
 specifier|final
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 decl_stmt|;
 DECL|field|approvalsUtil
@@ -1653,7 +1672,7 @@ name|commitMessageGenerator
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|MergeUtil ( @erritServerConfig Config serverConfig, Provider<ReviewDb> db, IdentifiedUser.GenericFactory identifiedUserFactory, UrlFormatter urlFormatter, ApprovalsUtil approvalsUtil, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted ProjectState project)
+DECL|method|MergeUtil ( @erritServerConfig Config serverConfig, Provider<ReviewDb> db, IdentifiedUser.GenericFactory identifiedUserFactory, DynamicItem<UrlFormatter> urlFormatter, ApprovalsUtil approvalsUtil, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted ProjectState project)
 name|MergeUtil
 parameter_list|(
 annotation|@
@@ -1672,7 +1691,10 @@ operator|.
 name|GenericFactory
 name|identifiedUserFactory
 parameter_list|,
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 parameter_list|,
 name|ApprovalsUtil
@@ -1716,7 +1738,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|MergeUtil ( @erritServerConfig Config serverConfig, Provider<ReviewDb> db, IdentifiedUser.GenericFactory identifiedUserFactory, UrlFormatter urlFormatter, ApprovalsUtil approvalsUtil, @Assisted ProjectState project, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted boolean useContentMerge)
+DECL|method|MergeUtil ( @erritServerConfig Config serverConfig, Provider<ReviewDb> db, IdentifiedUser.GenericFactory identifiedUserFactory, DynamicItem<UrlFormatter> urlFormatter, ApprovalsUtil approvalsUtil, @Assisted ProjectState project, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted boolean useContentMerge)
 name|MergeUtil
 parameter_list|(
 annotation|@
@@ -1735,7 +1757,10 @@ operator|.
 name|GenericFactory
 name|identifiedUserFactory
 parameter_list|,
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 parameter_list|,
 name|ApprovalsUtil
@@ -3367,6 +3392,9 @@ argument_list|>
 name|url
 init|=
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getChangeViewUrl
 argument_list|(

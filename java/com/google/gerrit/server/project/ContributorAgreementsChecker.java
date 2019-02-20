@@ -126,6 +126,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -359,7 +375,10 @@ block|{
 DECL|field|urlFormatter
 specifier|private
 specifier|final
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 decl_stmt|;
 DECL|field|projectCache
@@ -423,10 +442,13 @@ block|}
 block|}
 annotation|@
 name|Inject
-DECL|method|ContributorAgreementsChecker ( UrlFormatter urlFormatter, ProjectCache projectCache, Metrics metrics)
+DECL|method|ContributorAgreementsChecker ( DynamicItem<UrlFormatter> urlFormatter, ProjectCache projectCache, Metrics metrics)
 name|ContributorAgreementsChecker
 parameter_list|(
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 parameter_list|,
 name|ProjectCache
@@ -725,6 +747,9 @@ operator|.
 name|append
 argument_list|(
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getSettingsUrl
 argument_list|(

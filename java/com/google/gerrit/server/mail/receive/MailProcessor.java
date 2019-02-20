@@ -184,6 +184,22 @@ name|extensions
 operator|.
 name|registration
 operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
 name|DynamicMap
 import|;
 end_import
@@ -1113,12 +1129,15 @@ decl_stmt|;
 DECL|field|urlFormatter
 specifier|private
 specifier|final
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MailProcessor ( Emails emails, InboundEmailRejectionSender.Factory emailRejectionSender, RetryHelper retryHelper, ChangeMessagesUtil changeMessagesUtil, CommentsUtil commentsUtil, OneOffRequestContext oneOffRequestContext, PatchListCache patchListCache, PatchSetUtil psUtil, Provider<InternalChangeQuery> queryProvider, DynamicMap<MailFilter> mailFilters, EmailReviewComments.Factory outgoingMailFactory, ApprovalsUtil approvalsUtil, CommentAdded commentAdded, AccountCache accountCache, UrlFormatter urlFormatter)
+DECL|method|MailProcessor ( Emails emails, InboundEmailRejectionSender.Factory emailRejectionSender, RetryHelper retryHelper, ChangeMessagesUtil changeMessagesUtil, CommentsUtil commentsUtil, OneOffRequestContext oneOffRequestContext, PatchListCache patchListCache, PatchSetUtil psUtil, Provider<InternalChangeQuery> queryProvider, DynamicMap<MailFilter> mailFilters, EmailReviewComments.Factory outgoingMailFactory, ApprovalsUtil approvalsUtil, CommentAdded commentAdded, AccountCache accountCache, DynamicItem<UrlFormatter> urlFormatter)
 specifier|public
 name|MailProcessor
 parameter_list|(
@@ -1174,7 +1193,10 @@ parameter_list|,
 name|AccountCache
 name|accountCache
 parameter_list|,
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 parameter_list|)
 block|{
@@ -1899,6 +1921,9 @@ name|String
 name|changeUrl
 init|=
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getChangeViewUrl
 argument_list|(
