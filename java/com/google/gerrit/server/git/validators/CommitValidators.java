@@ -280,6 +280,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -1021,7 +1037,10 @@ decl_stmt|;
 DECL|field|urlFormatter
 specifier|private
 specifier|final
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 decl_stmt|;
 DECL|field|pluginValidators
@@ -1077,7 +1096,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory ( @erritPersonIdent PersonIdent gerritIdent, UrlFormatter urlFormatter, @GerritServerConfig Config cfg, PluginSetContext<CommitValidationListener> pluginValidators, GitRepositoryManager repoManager, AllUsersName allUsers, AllProjectsName allProjects, ExternalIdsConsistencyChecker externalIdsConsistencyChecker, AccountValidator accountValidator, ProjectCache projectCache)
+DECL|method|Factory ( @erritPersonIdent PersonIdent gerritIdent, DynamicItem<UrlFormatter> urlFormatter, @GerritServerConfig Config cfg, PluginSetContext<CommitValidationListener> pluginValidators, GitRepositoryManager repoManager, AllUsersName allUsers, AllProjectsName allProjects, ExternalIdsConsistencyChecker externalIdsConsistencyChecker, AccountValidator accountValidator, ProjectCache projectCache)
 name|Factory
 parameter_list|(
 annotation|@
@@ -1085,7 +1104,10 @@ name|GerritPersonIdent
 name|PersonIdent
 name|gerritIdent
 parameter_list|,
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 parameter_list|,
 annotation|@
@@ -1293,6 +1315,9 @@ argument_list|,
 name|perm
 argument_list|,
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|,
 operator|new
@@ -1303,6 +1328,9 @@ argument_list|,
 name|perm
 argument_list|,
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|,
 operator|new
@@ -1323,6 +1351,9 @@ argument_list|,
 name|user
 argument_list|,
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|installCommitMsgHookCommand
 argument_list|,
@@ -1478,6 +1509,9 @@ argument_list|,
 name|perm
 argument_list|,
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|,
 operator|new
@@ -1506,6 +1540,9 @@ argument_list|,
 name|user
 argument_list|,
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|installCommitMsgHookCommand
 argument_list|,
@@ -1646,6 +1683,9 @@ argument_list|,
 name|perm
 argument_list|,
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|,
 operator|new
@@ -1656,6 +1696,9 @@ argument_list|,
 name|perm
 argument_list|,
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
