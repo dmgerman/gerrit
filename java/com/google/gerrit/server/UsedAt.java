@@ -122,18 +122,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|BindingAnnotation
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -161,8 +149,6 @@ comment|/**  * A marker for a method that is public solely because it is called 
 end_comment
 
 begin_annotation_defn
-annotation|@
-name|BindingAnnotation
 annotation|@
 name|Target
 argument_list|(
