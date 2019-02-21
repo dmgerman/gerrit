@@ -214,7 +214,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Returns a URL pointing to a section of the settings page. */
-DECL|method|getSettingsUrl (String section)
+DECL|method|getSettingsUrl (@ullable String section)
 specifier|default
 name|Optional
 argument_list|<
@@ -222,6 +222,8 @@ name|String
 argument_list|>
 name|getSettingsUrl
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|section
 parameter_list|)
