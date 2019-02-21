@@ -178,6 +178,9 @@ block|{
 DECL|enumConstant|GOOGLE
 name|GOOGLE
 block|,
+DECL|enumConstant|PLUGIN_CHECKS
+name|PLUGIN_CHECKS
+block|,
 DECL|enumConstant|PLUGIN_DELETE_PROJECT
 name|PLUGIN_DELETE_PROJECT
 block|,
