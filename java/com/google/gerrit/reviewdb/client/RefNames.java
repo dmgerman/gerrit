@@ -1562,7 +1562,17 @@ return|return
 name|id
 return|;
 block|}
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|PLUGINS_ALL
+argument_list|)
 DECL|method|parseShardedUuidFromRefPart (String name)
+specifier|public
 specifier|static
 name|String
 name|parseShardedUuidFromRefPart
