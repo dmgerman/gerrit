@@ -156,7 +156,7 @@ name|getWebUrl
 parameter_list|()
 function_decl|;
 comment|/** Returns the URL for viewing a change. */
-DECL|method|getChangeViewUrl (@ullable Project.NameKey project, Change.Id id)
+DECL|method|getChangeViewUrl (Project.NameKey project, Change.Id id)
 specifier|default
 name|Optional
 argument_list|<
@@ -164,8 +164,6 @@ name|String
 argument_list|>
 name|getChangeViewUrl
 parameter_list|(
-annotation|@
-name|Nullable
 name|Project
 operator|.
 name|NameKey
@@ -191,20 +189,12 @@ name|url
 operator|+
 literal|"c/"
 operator|+
-operator|(
-name|project
-operator|!=
-literal|null
-condition|?
 name|project
 operator|.
 name|get
 argument_list|()
 operator|+
 literal|"/+/"
-else|:
-literal|""
-operator|)
 operator|+
 name|id
 operator|.
