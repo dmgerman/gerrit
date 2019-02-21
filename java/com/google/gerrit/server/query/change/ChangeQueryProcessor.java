@@ -105,6 +105,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MINUTES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -129,6 +143,20 @@ operator|.
 name|collect
 operator|.
 name|Multimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
 import|;
 end_import
 
@@ -543,6 +571,18 @@ name|BeanReceiver
 implements|,
 name|PluginDefinedAttributesFactory
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 comment|/**    * Register a ChangeAttributeFactory in a config Module like this:    *    *<p>bind(ChangeAttributeFactory.class) .annotatedWith(Exports.named("export-name"))    * .to(YourClass.class);    */
 DECL|interface|ChangeAttributeFactory
 specifier|public
@@ -1030,7 +1070,36 @@ name|RuntimeException
 name|ex
 parameter_list|)
 block|{
-comment|/* Eat runtime exceptions so that queries don't fail. */
+comment|// Log once a minute, to avoid spamming logs with one stack trace per change.
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|atMostEvery
+argument_list|(
+literal|1
+argument_list|,
+name|MINUTES
+argument_list|)
+operator|.
+name|withCause
+argument_list|(
+name|ex
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"error populating attribute on change %s from plugin %s"
+argument_list|,
+name|cd
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|plugin
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
