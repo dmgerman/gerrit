@@ -20739,10 +20739,15 @@ argument_list|(
 name|userIds
 argument_list|)
 expr_stmt|;
-name|assertThat
-argument_list|(
+name|String
+name|key
+init|=
 name|actual
 operator|.
+name|key
+decl_stmt|;
+name|assertThat
+argument_list|(
 name|key
 argument_list|)
 operator|.
@@ -20754,6 +20759,21 @@ operator|.
 name|startsWith
 argument_list|(
 literal|"-----BEGIN PGP PUBLIC KEY BLOCK-----\n"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|key
+argument_list|)
+operator|.
+name|named
+argument_list|(
+name|id
+argument_list|)
+operator|.
+name|endsWith
+argument_list|(
+literal|"-----END PGP PUBLIC KEY BLOCK-----\n"
 argument_list|)
 expr_stmt|;
 name|assertThat
