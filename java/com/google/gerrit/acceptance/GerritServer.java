@@ -1078,9 +1078,14 @@ literal|null
 argument_list|,
 comment|// @GlobalPluginConfig is only valid on methods.
 literal|null
+argument_list|,
+comment|// @GlobalPluginConfigs is only valid on methods.
+name|getLogLevelThresholdAnnotation
+argument_list|(
+name|testDesc
+argument_list|)
 argument_list|)
 return|;
-comment|// @GlobalPluginConfigs is only valid on methods.
 block|}
 DECL|method|forTestMethod ( org.junit.runner.Description testDesc, String configName)
 specifier|public
@@ -1244,6 +1249,11 @@ name|GlobalPluginConfigs
 operator|.
 name|class
 argument_list|)
+argument_list|,
+name|getLogLevelThresholdAnnotation
+argument_list|(
+name|testDesc
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1302,6 +1312,62 @@ block|}
 block|}
 return|return
 literal|false
+return|;
+block|}
+DECL|method|getLogLevelThresholdAnnotation (org.junit.runner.Description testDesc)
+specifier|private
+specifier|static
+name|Level
+name|getLogLevelThresholdAnnotation
+parameter_list|(
+name|org
+operator|.
+name|junit
+operator|.
+name|runner
+operator|.
+name|Description
+name|testDesc
+parameter_list|)
+block|{
+name|LogThreshold
+name|logLevelThreshold
+init|=
+name|testDesc
+operator|.
+name|getTestClass
+argument_list|()
+operator|.
+name|getAnnotation
+argument_list|(
+name|LogThreshold
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|logLevelThreshold
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|Level
+operator|.
+name|DEBUG
+return|;
+block|}
+return|return
+name|Level
+operator|.
+name|toLevel
+argument_list|(
+name|logLevelThreshold
+operator|.
+name|level
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|testDescription ()
@@ -1393,6 +1459,12 @@ DECL|method|pluginConfigs ()
 specifier|abstract
 name|GlobalPluginConfigs
 name|pluginConfigs
+parameter_list|()
+function_decl|;
+DECL|method|logLevelThreshold ()
+specifier|abstract
+name|Level
+name|logLevelThreshold
 parameter_list|()
 function_decl|;
 DECL|method|checkValidAnnotations ()
@@ -2233,7 +2305,12 @@ name|checkValidAnnotations
 argument_list|()
 expr_stmt|;
 name|configureLogging
+argument_list|(
+name|desc
+operator|.
+name|logLevelThreshold
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|CyclicBarrier
 name|serverStarted
@@ -2864,12 +2941,15 @@ name|daemonService
 argument_list|)
 return|;
 block|}
-DECL|method|configureLogging ()
+DECL|method|configureLogging (Level threshold)
 specifier|private
 specifier|static
 name|void
 name|configureLogging
-parameter_list|()
+parameter_list|(
+name|Level
+name|threshold
+parameter_list|)
 block|{
 name|LogManager
 operator|.
@@ -2915,9 +2995,7 @@ name|dst
 operator|.
 name|setThreshold
 argument_list|(
-name|Level
-operator|.
-name|DEBUG
+name|threshold
 argument_list|)
 expr_stmt|;
 name|dst
