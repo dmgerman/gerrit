@@ -128,22 +128,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Comment
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -235,8 +219,6 @@ class|class
 name|RevisionNote
 parameter_list|<
 name|T
-extends|extends
-name|Comment
 parameter_list|>
 block|{
 DECL|field|MAX_NOTE_SZ
