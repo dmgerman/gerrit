@@ -120,6 +120,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -205,7 +219,17 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|PLUGIN_CHECKS
+argument_list|)
 DECL|class|RevisionNote
+specifier|public
 specifier|abstract
 class|class
 name|RevisionNote
@@ -293,6 +317,7 @@ argument_list|>
 name|comments
 decl_stmt|;
 DECL|method|RevisionNote (ObjectReader reader, ObjectId noteId)
+specifier|public
 name|RevisionNote
 parameter_list|(
 name|ObjectReader
