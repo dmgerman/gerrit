@@ -290,13 +290,13 @@ name|byte
 index|[]
 name|raw
 decl_stmt|;
-DECL|field|comments
+DECL|field|entities
 specifier|private
 name|ImmutableList
 argument_list|<
 name|T
 argument_list|>
-name|comments
+name|entities
 decl_stmt|;
 DECL|method|RevisionNote (ObjectReader reader, ObjectId noteId)
 specifier|public
@@ -336,20 +336,20 @@ return|return
 name|raw
 return|;
 block|}
-DECL|method|getComments ()
+DECL|method|getEntities ()
 specifier|public
 name|ImmutableList
 argument_list|<
 name|T
 argument_list|>
-name|getComments
+name|getEntities
 parameter_list|()
 block|{
 name|checkParsed
 argument_list|()
 expr_stmt|;
 return|return
-name|comments
+name|entities
 return|;
 block|}
 DECL|method|parse ()
@@ -403,7 +403,7 @@ operator|.
 name|length
 condition|)
 block|{
-name|comments
+name|entities
 operator|=
 name|ImmutableList
 operator|.
@@ -412,7 +412,7 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-name|comments
+name|entities
 operator|=
 name|ImmutableList
 operator|.

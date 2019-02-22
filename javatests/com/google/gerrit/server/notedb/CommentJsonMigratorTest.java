@@ -3868,7 +3868,7 @@ name|crn
 lambda|->
 name|crn
 operator|.
-name|getComments
+name|getEntities
 argument_list|()
 operator|.
 name|stream

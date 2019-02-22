@@ -4785,7 +4785,7 @@ operator|.
 name|getValue
 argument_list|()
 operator|.
-name|getComments
+name|getEntities
 argument_list|()
 control|)
 block|{

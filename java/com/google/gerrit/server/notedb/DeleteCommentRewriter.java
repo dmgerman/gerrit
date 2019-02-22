@@ -906,7 +906,7 @@ name|n
 lambda|->
 name|n
 operator|.
-name|getComments
+name|getEntities
 argument_list|()
 operator|.
 name|stream

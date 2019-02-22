@@ -907,7 +907,7 @@ name|c
 range|:
 name|rn
 operator|.
-name|getComments
+name|getEntities
 argument_list|()
 control|)
 block|{

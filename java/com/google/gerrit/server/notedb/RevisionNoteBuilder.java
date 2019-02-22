@@ -503,7 +503,7 @@ name|baseComments
 operator|=
 name|base
 operator|.
-name|getComments
+name|getEntities
 argument_list|()
 expr_stmt|;
 name|put
