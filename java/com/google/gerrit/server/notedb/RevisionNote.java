@@ -336,6 +336,45 @@ return|return
 name|raw
 return|;
 block|}
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|PLUGIN_CHECKS
+argument_list|)
+DECL|method|getOnlyEntity ()
+specifier|public
+name|T
+name|getOnlyEntity
+parameter_list|()
+block|{
+name|checkParsed
+argument_list|()
+expr_stmt|;
+name|checkState
+argument_list|(
+name|entities
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|1
+argument_list|,
+literal|"expected exactly one entity"
+argument_list|)
+expr_stmt|;
+return|return
+name|entities
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+return|;
+block|}
 DECL|method|getEntities ()
 specifier|public
 name|ImmutableList
