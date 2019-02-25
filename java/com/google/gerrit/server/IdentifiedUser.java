@@ -338,7 +338,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|DisableReverseDnsLookup
+name|EnableReverseDnsLookup
 import|;
 end_import
 
@@ -642,15 +642,15 @@ specifier|final
 name|GroupBackend
 name|groupBackend
 decl_stmt|;
-DECL|field|disableReverseDnsLookup
+DECL|field|enableReverseDnsLookup
 specifier|private
 specifier|final
 name|Boolean
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory ( AuthConfig authConfig, Realm realm, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, @DisableReverseDnsLookup Boolean disableReverseDnsLookup, AccountCache accountCache, GroupBackend groupBackend)
+DECL|method|GenericFactory ( AuthConfig authConfig, Realm realm, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, @EnableReverseDnsLookup Boolean enableReverseDnsLookup, AccountCache accountCache, GroupBackend groupBackend)
 specifier|public
 name|GenericFactory
 parameter_list|(
@@ -674,9 +674,9 @@ argument_list|>
 name|canonicalUrl
 parameter_list|,
 annotation|@
-name|DisableReverseDnsLookup
+name|EnableReverseDnsLookup
 name|Boolean
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 parameter_list|,
 name|AccountCache
 name|accountCache
@@ -723,9 +723,9 @@ name|groupBackend
 expr_stmt|;
 name|this
 operator|.
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 operator|=
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 expr_stmt|;
 block|}
 DECL|method|create (AccountState state)
@@ -753,7 +753,7 @@ name|accountCache
 argument_list|,
 name|groupBackend
 argument_list|,
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 argument_list|,
 name|Providers
 operator|.
@@ -848,7 +848,7 @@ name|accountCache
 argument_list|,
 name|groupBackend
 argument_list|,
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 argument_list|,
 name|Providers
 operator|.
@@ -912,11 +912,11 @@ specifier|final
 name|GroupBackend
 name|groupBackend
 decl_stmt|;
-DECL|field|disableReverseDnsLookup
+DECL|field|enableReverseDnsLookup
 specifier|private
 specifier|final
 name|Boolean
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 decl_stmt|;
 DECL|field|remotePeerProvider
 specifier|private
@@ -929,7 +929,7 @@ name|remotePeerProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestFactory ( AuthConfig authConfig, Realm realm, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, @DisableReverseDnsLookup Boolean disableReverseDnsLookup, @RemotePeer Provider<SocketAddress> remotePeerProvider)
+DECL|method|RequestFactory ( AuthConfig authConfig, Realm realm, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, @EnableReverseDnsLookup Boolean enableReverseDnsLookup, @RemotePeer Provider<SocketAddress> remotePeerProvider)
 name|RequestFactory
 parameter_list|(
 name|AuthConfig
@@ -958,9 +958,9 @@ name|GroupBackend
 name|groupBackend
 parameter_list|,
 annotation|@
-name|DisableReverseDnsLookup
+name|EnableReverseDnsLookup
 name|Boolean
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 parameter_list|,
 annotation|@
 name|RemotePeer
@@ -1009,9 +1009,9 @@ name|groupBackend
 expr_stmt|;
 name|this
 operator|.
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 operator|=
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 expr_stmt|;
 name|this
 operator|.
@@ -1047,7 +1047,7 @@ name|accountCache
 argument_list|,
 name|groupBackend
 argument_list|,
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 argument_list|,
 name|remotePeerProvider
 argument_list|,
@@ -1087,7 +1087,7 @@ name|accountCache
 argument_list|,
 name|groupBackend
 argument_list|,
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 argument_list|,
 name|remotePeerProvider
 argument_list|,
@@ -1161,11 +1161,11 @@ specifier|final
 name|String
 name|anonymousCowardName
 decl_stmt|;
-DECL|field|disableReverseDnsLookup
+DECL|field|enableReverseDnsLookup
 specifier|private
 specifier|final
 name|Boolean
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 decl_stmt|;
 DECL|field|validEmails
 specifier|private
@@ -1245,7 +1245,7 @@ name|Object
 argument_list|>
 name|properties
 decl_stmt|;
-DECL|method|IdentifiedUser ( AuthConfig authConfig, Realm realm, String anonymousCowardName, Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, Boolean disableReverseDnsLookup, @Nullable Provider<SocketAddress> remotePeerProvider, AccountState state, @Nullable CurrentUser realUser)
+DECL|method|IdentifiedUser ( AuthConfig authConfig, Realm realm, String anonymousCowardName, Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, Boolean enableReverseDnsLookup, @Nullable Provider<SocketAddress> remotePeerProvider, AccountState state, @Nullable CurrentUser realUser)
 specifier|private
 name|IdentifiedUser
 parameter_list|(
@@ -1271,7 +1271,7 @@ name|GroupBackend
 name|groupBackend
 parameter_list|,
 name|Boolean
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 parameter_list|,
 annotation|@
 name|Nullable
@@ -1304,7 +1304,7 @@ name|accountCache
 argument_list|,
 name|groupBackend
 argument_list|,
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 argument_list|,
 name|remotePeerProvider
 argument_list|,
@@ -1326,7 +1326,7 @@ operator|=
 name|state
 expr_stmt|;
 block|}
-DECL|method|IdentifiedUser ( AuthConfig authConfig, Realm realm, String anonymousCowardName, Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, Boolean disableReverseDnsLookup, @Nullable Provider<SocketAddress> remotePeerProvider, Account.Id id, @Nullable CurrentUser realUser)
+DECL|method|IdentifiedUser ( AuthConfig authConfig, Realm realm, String anonymousCowardName, Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, Boolean enableReverseDnsLookup, @Nullable Provider<SocketAddress> remotePeerProvider, Account.Id id, @Nullable CurrentUser realUser)
 specifier|private
 name|IdentifiedUser
 parameter_list|(
@@ -1352,7 +1352,7 @@ name|GroupBackend
 name|groupBackend
 parameter_list|,
 name|Boolean
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 parameter_list|,
 annotation|@
 name|Nullable
@@ -1411,9 +1411,9 @@ name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 operator|=
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 expr_stmt|;
 name|this
 operator|.
@@ -2502,7 +2502,7 @@ name|accountCache
 argument_list|,
 name|groupBackend
 argument_list|,
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 argument_list|,
 name|remotePeer
 argument_list|,
@@ -2646,11 +2646,11 @@ if|if
 condition|(
 name|Boolean
 operator|.
-name|FALSE
+name|TRUE
 operator|.
 name|equals
 argument_list|(
-name|disableReverseDnsLookup
+name|enableReverseDnsLookup
 argument_list|)
 condition|)
 block|{
