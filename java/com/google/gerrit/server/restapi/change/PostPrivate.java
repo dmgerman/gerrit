@@ -226,20 +226,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ChangeMessagesUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|change
 operator|.
 name|ChangeResource
@@ -457,12 +443,6 @@ argument_list|<
 name|ChangeResource
 argument_list|>
 block|{
-DECL|field|cmUtil
-specifier|private
-specifier|final
-name|ChangeMessagesUtil
-name|cmUtil
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -485,14 +465,11 @@ name|disablePrivateChanges
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostPrivate ( RetryHelper retryHelper, ChangeMessagesUtil cmUtil, PermissionBackend permissionBackend, SetPrivateOp.Factory setPrivateOpFactory, @GerritServerConfig Config config)
+DECL|method|PostPrivate ( RetryHelper retryHelper, PermissionBackend permissionBackend, SetPrivateOp.Factory setPrivateOpFactory, @GerritServerConfig Config config)
 name|PostPrivate
 parameter_list|(
 name|RetryHelper
 name|retryHelper
-parameter_list|,
-name|ChangeMessagesUtil
-name|cmUtil
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -512,12 +489,6 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|cmUtil
-operator|=
-name|cmUtil
 expr_stmt|;
 name|this
 operator|.
@@ -637,8 +608,6 @@ name|setPrivateOpFactory
 operator|.
 name|create
 argument_list|(
-name|cmUtil
-argument_list|,
 literal|true
 argument_list|,
 name|input
