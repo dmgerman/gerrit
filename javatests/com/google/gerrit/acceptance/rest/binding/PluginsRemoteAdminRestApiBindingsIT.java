@@ -219,14 +219,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests for checking the bindings of the plugins REST API.  *  *<p>These tests only verify that the plugin REST endpoints are correctly bound, they do no test  * the functionality of the plugin REST endpoints.  */
+comment|/**  * Tests for checking the remote administration bindings of the plugins REST API.  *  *<p>These tests only verify that the plugin REST endpoints are correctly bound, they do no test  * the functionality of the plugin REST endpoints.  */
 end_comment
 
 begin_class
-DECL|class|PluginsRestApiBindingsIT
+DECL|class|PluginsRemoteAdminRestApiBindingsIT
 specifier|public
 class|class
-name|PluginsRestApiBindingsIT
+name|PluginsRemoteAdminRestApiBindingsIT
 extends|extends
 name|AbstractDaemonTest
 block|{
