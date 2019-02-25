@@ -524,6 +524,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -977,6 +993,20 @@ operator|.
 name|errors
 operator|.
 name|RepositoryNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -1794,9 +1824,15 @@ name|QueryProjects
 argument_list|>
 name|queryProjectsProvider
 decl_stmt|;
+DECL|field|listProjectsFromIndex
+specifier|private
+specifier|final
+name|boolean
+name|listProjectsFromIndex
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListProjects ( CurrentUser currentUser, ProjectCache projectCache, GroupResolver groupResolver, GroupControl.Factory groupControlFactory, GitRepositoryManager repoManager, PermissionBackend permissionBackend, ProjectNode.Factory projectNodeFactory, WebLinks webLinks, Provider<QueryProjects> queryProjectsProvider)
+DECL|method|ListProjects ( CurrentUser currentUser, ProjectCache projectCache, GroupResolver groupResolver, GroupControl.Factory groupControlFactory, GitRepositoryManager repoManager, PermissionBackend permissionBackend, ProjectNode.Factory projectNodeFactory, WebLinks webLinks, Provider<QueryProjects> queryProjectsProvider, @GerritServerConfig Config config)
 specifier|protected
 name|ListProjects
 parameter_list|(
@@ -1833,6 +1869,11 @@ argument_list|<
 name|QueryProjects
 argument_list|>
 name|queryProjectsProvider
+parameter_list|,
+annotation|@
+name|GerritServerConfig
+name|Config
+name|config
 parameter_list|)
 block|{
 name|this
@@ -1888,6 +1929,21 @@ operator|.
 name|queryProjectsProvider
 operator|=
 name|queryProjectsProvider
+expr_stmt|;
+name|this
+operator|.
+name|listProjectsFromIndex
+operator|=
+name|config
+operator|.
+name|getBoolean
+argument_list|(
+literal|"gerrit"
+argument_list|,
+literal|"listProjectsFromIndex"
+argument_list|,
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getShowBranch ()
@@ -2078,6 +2134,8 @@ name|expressAsProjectsQuery
 parameter_list|()
 block|{
 return|return
+name|listProjectsFromIndex
+operator|&&
 operator|!
 name|all
 operator|&&
