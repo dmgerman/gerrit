@@ -474,9 +474,9 @@ name|abandonMessage
 else|:
 name|abandonMessage
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\$\\{URL\\}"
+literal|"${URL}"
 argument_list|,
 name|docUrl
 argument_list|)
