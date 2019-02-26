@@ -622,9 +622,9 @@ literal|"DC="
 operator|+
 name|name
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\."
+literal|"."
 argument_list|,
 literal|",DC="
 argument_list|)

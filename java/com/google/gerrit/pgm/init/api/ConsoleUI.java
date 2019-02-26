@@ -1265,7 +1265,7 @@ name|fmt
 operator|=
 name|fmt
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
