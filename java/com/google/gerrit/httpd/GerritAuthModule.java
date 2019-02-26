@@ -165,7 +165,6 @@ extends|extends
 name|ServletModule
 block|{
 DECL|field|NOT_AUTHORIZED_LFS_URL_REGEX
-specifier|private
 specifier|static
 specifier|final
 name|String

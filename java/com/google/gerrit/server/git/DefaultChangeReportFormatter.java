@@ -90,6 +90,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -187,15 +203,21 @@ decl_stmt|;
 DECL|field|urlFormatter
 specifier|private
 specifier|final
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DefaultChangeReportFormatter (UrlFormatter urlFormatter)
+DECL|method|DefaultChangeReportFormatter (DynamicItem<UrlFormatter> urlFormatter)
 name|DefaultChangeReportFormatter
 parameter_list|(
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 parameter_list|)
 block|{
@@ -277,6 +299,9 @@ argument_list|(
 literal|"change %s closed"
 argument_list|,
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getChangeViewUrl
 argument_list|(
@@ -422,6 +447,9 @@ argument_list|>
 name|changeUrl
 init|=
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getChangeViewUrl
 argument_list|(

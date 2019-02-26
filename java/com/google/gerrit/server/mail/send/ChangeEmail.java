@@ -1570,6 +1570,9 @@ name|args
 operator|.
 name|urlFormatter
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getChangeViewUrl
 argument_list|(
 name|change

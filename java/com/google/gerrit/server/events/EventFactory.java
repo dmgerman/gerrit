@@ -204,6 +204,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|IndexConfig
@@ -1007,7 +1023,10 @@ decl_stmt|;
 DECL|field|urlFormatter
 specifier|private
 specifier|final
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 decl_stmt|;
 DECL|field|emails
@@ -1068,7 +1087,7 @@ name|indexConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventFactory ( AccountCache accountCache, Emails emails, UrlFormatter urlFormatter, PatchListCache patchListCache, @GerritPersonIdent Provider<PersonIdent> myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, IndexConfig indexConfig)
+DECL|method|EventFactory ( AccountCache accountCache, Emails emails, DynamicItem<UrlFormatter> urlFormatter, PatchListCache patchListCache, @GerritPersonIdent Provider<PersonIdent> myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, IndexConfig indexConfig)
 name|EventFactory
 parameter_list|(
 name|AccountCache
@@ -1077,7 +1096,10 @@ parameter_list|,
 name|Emails
 name|emails
 parameter_list|,
+name|DynamicItem
+argument_list|<
 name|UrlFormatter
+argument_list|>
 name|urlFormatter
 parameter_list|,
 name|PatchListCache
@@ -4279,6 +4301,9 @@ condition|)
 block|{
 return|return
 name|urlFormatter
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getChangeViewUrl
 argument_list|(
