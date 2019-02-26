@@ -434,7 +434,7 @@ operator|.
 name|getMessage
 argument_list|()
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
@@ -453,7 +453,7 @@ literal|"fatal: "
 operator|+
 name|diemsg
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,

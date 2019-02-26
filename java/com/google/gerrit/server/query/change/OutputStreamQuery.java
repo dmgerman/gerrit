@@ -2309,7 +2309,7 @@ operator|)
 name|value
 operator|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
