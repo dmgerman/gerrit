@@ -7103,7 +7103,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Change %s with commit %s is %s"
+literal|"Change %s with commit %s is abandoned"
 argument_list|,
 name|change2
 operator|.
@@ -7119,10 +7119,6 @@ argument_list|,
 name|input
 operator|.
 name|base
-argument_list|,
-name|ChangeStatus
-operator|.
-name|ABANDONED
 argument_list|)
 argument_list|)
 expr_stmt|;
