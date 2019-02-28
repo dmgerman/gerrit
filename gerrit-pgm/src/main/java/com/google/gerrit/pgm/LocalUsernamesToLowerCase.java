@@ -112,6 +112,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|config
+operator|.
+name|FactoryModule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|lifecycle
 operator|.
 name|LifecycleManager
@@ -216,6 +232,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|GitReferenceUpdated
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|index
 operator|.
 name|account
@@ -237,18 +271,6 @@ operator|.
 name|schema
 operator|.
 name|SchemaVersionCheck
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|AbstractModule
 import|;
 end_import
 
@@ -415,7 +437,7 @@ operator|.
 name|createChildInjector
 argument_list|(
 operator|new
-name|AbstractModule
+name|FactoryModule
 argument_list|()
 block|{
 annotation|@
@@ -425,6 +447,20 @@ name|void
 name|configure
 parameter_list|()
 block|{
+name|bind
+argument_list|(
+name|GitReferenceUpdated
+operator|.
+name|class
+argument_list|)
+operator|.
+name|toInstance
+argument_list|(
+name|GitReferenceUpdated
+operator|.
+name|DISABLED
+argument_list|)
+expr_stmt|;
 comment|// The LocalUsernamesToLowerCase program needs to access all external IDs only
 comment|// once to update them. After the update they are not accessed again. Hence the
 comment|// LocalUsernamesToLowerCase program doesn't benefit from caching external IDs and
