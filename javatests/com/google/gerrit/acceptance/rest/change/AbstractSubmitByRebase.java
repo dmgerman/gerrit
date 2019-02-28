@@ -577,8 +577,13 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|submitWithRebase (TestAccount submitter)
-specifier|private
-name|void
+specifier|protected
+name|ImmutableList
+argument_list|<
+name|PushOneCommit
+operator|.
+name|Result
+argument_list|>
 name|submitWithRebase
 parameter_list|(
 name|TestAccount
@@ -794,6 +799,16 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+name|change
+argument_list|,
+name|change2
+argument_list|)
+return|;
 block|}
 annotation|@
 name|Test
