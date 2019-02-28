@@ -1266,7 +1266,9 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|".OnSubmit returned null instead of new commit message"
+literal|".onSubmit from plugin modifier-1 returned null instead of new commit"
+operator|+
+literal|" message"
 argument_list|)
 expr_stmt|;
 block|}
