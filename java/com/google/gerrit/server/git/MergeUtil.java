@@ -2369,6 +2369,12 @@ return|return
 name|commit
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
+comment|// TemporaryBuffer requires calling close before reading.
 DECL|method|mergeWithConflicts ( RevWalk rw, ObjectInserter ins, DirCache dc, String oursName, RevCommit ours, String theirsName, RevCommit theirs, Map<String, MergeResult<? extends Sequence>> mergeResults)
 specifier|public
 specifier|static
@@ -2606,11 +2612,16 @@ operator|.
 name|getValue
 argument_list|()
 decl_stmt|;
-try|try
-init|(
 name|TemporaryBuffer
 name|buf
 init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+comment|// TODO(dborowitz): Respect inCoreLimit here.
+name|buf
+operator|=
 operator|new
 name|TemporaryBuffer
 operator|.
@@ -2624,8 +2635,7 @@ literal|1024
 operator|*
 literal|1024
 argument_list|)
-init|)
-block|{
+expr_stmt|;
 name|fmt
 operator|.
 name|formatMerge
@@ -2687,6 +2697,22 @@ argument_list|,
 name|in
 argument_list|)
 argument_list|)
+expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|buf
+operator|!=
+literal|null
+condition|)
+block|{
+name|buf
+operator|.
+name|destroy
+argument_list|()
 expr_stmt|;
 block|}
 block|}
