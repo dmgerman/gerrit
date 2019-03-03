@@ -136,6 +136,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|PluginPermissionsUtil
+operator|.
+name|isPluginPermission
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -4754,7 +4772,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|isPermission
+name|isCoreOrPluginPermission
 argument_list|(
 name|n
 argument_list|)
@@ -4802,7 +4820,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|isPermission
+name|isCoreOrPluginPermission
 argument_list|(
 name|convertedName
 argument_list|)
@@ -4941,6 +4959,29 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|isCoreOrPluginPermission (String permission)
+specifier|private
+name|boolean
+name|isCoreOrPluginPermission
+parameter_list|(
+name|String
+name|permission
+parameter_list|)
+block|{
+comment|// Since plugins are loaded dynamically, here we can't load all plugin permissions and verify
+comment|// their existence.
+return|return
+name|isPermission
+argument_list|(
+name|permission
+argument_list|)
+operator|||
+name|isPluginPermission
+argument_list|(
+name|permission
+argument_list|)
+return|;
 block|}
 DECL|method|isValidRegex (String refPattern)
 specifier|private
@@ -8670,7 +8711,7 @@ control|)
 block|{
 if|if
 condition|(
-name|isPermission
+name|isCoreOrPluginPermission
 argument_list|(
 name|convertLegacyPermission
 argument_list|(
