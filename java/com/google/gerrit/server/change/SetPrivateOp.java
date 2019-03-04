@@ -198,6 +198,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ChangeUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|PatchSetUtil
 import|;
 end_import
@@ -564,7 +578,19 @@ throw|throw
 operator|new
 name|BadRequestException
 argument_list|(
-literal|"cannot set a non-open change to private"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"cannot set %s change to private"
+argument_list|,
+name|ChangeUtil
+operator|.
+name|status
+argument_list|(
+name|change
+argument_list|)
+argument_list|)
 argument_list|)
 throw|;
 block|}
