@@ -868,10 +868,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|setMergedChangePrivate ()
+DECL|method|cannotSetMergedChangePrivate ()
 specifier|public
 name|void
-name|setMergedChangePrivate
+name|cannotSetMergedChangePrivate
 parameter_list|()
 throws|throws
 name|Exception
