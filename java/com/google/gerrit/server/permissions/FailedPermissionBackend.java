@@ -80,6 +80,24 @@ name|api
 operator|.
 name|access
 operator|.
+name|CoreOrPluginProjectPermission
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|access
+operator|.
 name|GlobalOrPluginPermission
 import|;
 end_import
@@ -707,12 +725,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|check (ProjectPermission perm)
+DECL|method|check (CoreOrPluginProjectPermission perm)
 specifier|public
 name|void
 name|check
 parameter_list|(
-name|ProjectPermission
+name|CoreOrPluginProjectPermission
 name|perm
 parameter_list|)
 throws|throws
@@ -730,17 +748,22 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|test (Collection<ProjectPermission> permSet)
+DECL|method|test (Collection<T> permSet)
 specifier|public
+parameter_list|<
+name|T
+extends|extends
+name|CoreOrPluginProjectPermission
+parameter_list|>
 name|Set
 argument_list|<
-name|ProjectPermission
+name|T
 argument_list|>
 name|test
 parameter_list|(
 name|Collection
 argument_list|<
-name|ProjectPermission
+name|T
 argument_list|>
 name|permSet
 parameter_list|)
@@ -759,12 +782,12 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|testCond (ProjectPermission perm)
+DECL|method|testCond (CoreOrPluginProjectPermission perm)
 specifier|public
 name|BooleanCondition
 name|testCond
 parameter_list|(
-name|ProjectPermission
+name|CoreOrPluginProjectPermission
 name|perm
 parameter_list|)
 block|{

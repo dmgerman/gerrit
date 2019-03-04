@@ -92,6 +92,24 @@ name|api
 operator|.
 name|access
 operator|.
+name|CoreOrPluginProjectPermission
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|access
+operator|.
 name|GerritPermission
 import|;
 end_import
@@ -118,7 +136,7 @@ specifier|public
 enum|enum
 name|ProjectPermission
 implements|implements
-name|GerritPermission
+name|CoreOrPluginProjectPermission
 block|{
 comment|/**    * Can access at least one reference or change within the repository.    *    *<p>Checking this permission instead of {@link #READ} may require filtering to hide specific    * references or changes, which can be expensive.    */
 DECL|enumConstant|ACCESS

@@ -80,6 +80,24 @@ name|api
 operator|.
 name|access
 operator|.
+name|CoreOrPluginProjectPermission
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|access
+operator|.
 name|GlobalOrPluginPermission
 import|;
 end_import
@@ -431,7 +449,7 @@ decl_stmt|;
 DECL|field|perm
 specifier|private
 specifier|final
-name|ProjectPermission
+name|CoreOrPluginProjectPermission
 name|perm
 decl_stmt|;
 DECL|field|user
@@ -440,7 +458,7 @@ specifier|final
 name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|ForProject (PermissionBackend.ForProject impl, ProjectPermission perm, CurrentUser user)
+DECL|method|ForProject ( PermissionBackend.ForProject impl, CoreOrPluginProjectPermission perm, CurrentUser user)
 specifier|public
 name|ForProject
 parameter_list|(
@@ -449,7 +467,7 @@ operator|.
 name|ForProject
 name|impl
 parameter_list|,
-name|ProjectPermission
+name|CoreOrPluginProjectPermission
 name|perm
 parameter_list|,
 name|CurrentUser
@@ -489,7 +507,7 @@ return|;
 block|}
 DECL|method|permission ()
 specifier|public
-name|ProjectPermission
+name|CoreOrPluginProjectPermission
 name|permission
 parameter_list|()
 block|{

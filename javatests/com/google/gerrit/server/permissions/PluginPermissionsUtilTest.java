@@ -96,7 +96,7 @@ name|permissions
 operator|.
 name|PluginPermissionsUtil
 operator|.
-name|isPluginPermission
+name|isValidPluginPermission
 import|;
 end_import
 
@@ -169,7 +169,7 @@ control|)
 block|{
 name|assertThat
 argument_list|(
-name|isPluginPermission
+name|isValidPluginPermission
 argument_list|(
 name|permission
 argument_list|)
@@ -199,7 +199,7 @@ name|ImmutableList
 argument_list|<
 name|String
 argument_list|>
-name|inValidPluginPermissions
+name|invalidPluginPermissions
 init|=
 name|ImmutableList
 operator|.
@@ -223,12 +223,12 @@ control|(
 name|String
 name|permission
 range|:
-name|inValidPluginPermissions
+name|invalidPluginPermissions
 control|)
 block|{
 name|assertThat
 argument_list|(
-name|isPluginPermission
+name|isValidPluginPermission
 argument_list|(
 name|permission
 argument_list|)

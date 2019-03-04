@@ -136,7 +136,7 @@ name|permissions
 operator|.
 name|DefaultPermissionMappings
 operator|.
-name|pluginPermissionName
+name|pluginCapabilityName
 import|;
 end_import
 
@@ -993,7 +993,7 @@ if|if
 condition|(
 name|want
 argument_list|(
-name|pluginPermissionName
+name|pluginCapabilityName
 argument_list|(
 name|p
 argument_list|)
