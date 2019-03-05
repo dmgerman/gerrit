@@ -114,6 +114,22 @@ name|Matchable
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
+name|query
+operator|.
+name|Predicate
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeIndexPredicate
 specifier|public
@@ -131,6 +147,23 @@ argument_list|<
 name|ChangeData
 argument_list|>
 block|{
+comment|/**    * Returns an index predicate that matches no changes in the index.    *    *<p>This predicate should be used in preference to a non-index predicate (such as {@code    * Predicate.not(Predicate.any())}), since it can be matched efficiently against the index.    *    * @return an index predicate matching no changes.    */
+DECL|method|none ()
+specifier|public
+specifier|static
+name|Predicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|none
+parameter_list|()
+block|{
+return|return
+name|ChangeStatusPredicate
+operator|.
+name|NONE
+return|;
+block|}
 DECL|method|ChangeIndexPredicate (FieldDef<ChangeData, ?> def, String value)
 specifier|protected
 name|ChangeIndexPredicate

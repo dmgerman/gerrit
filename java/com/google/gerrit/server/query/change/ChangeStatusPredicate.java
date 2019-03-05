@@ -275,7 +275,6 @@ init|=
 literal|"__invalid__"
 decl_stmt|;
 DECL|field|NONE
-specifier|private
 specifier|static
 specifier|final
 name|Predicate

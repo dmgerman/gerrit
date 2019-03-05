@@ -620,15 +620,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|Predicate
+name|ChangeIndexPredicate
 operator|.
-name|not
-argument_list|(
-name|Predicate
-operator|.
-name|any
+name|none
 argument_list|()
-argument_list|)
 return|;
 block|}
 if|if
