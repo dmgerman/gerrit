@@ -78,6 +78,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkState
 import|;
 end_import
@@ -393,6 +409,18 @@ argument_list|>
 name|that
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+operator|(
+name|that
+operator|instanceof
+name|Any
+operator|)
+argument_list|,
+literal|"negating any() is unsafe because it post-filters all results"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|that
