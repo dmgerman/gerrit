@@ -2369,6 +2369,13 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|totalChanges
+operator|+=
+name|autoclosed
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
 block|}
 if|if
 condition|(
