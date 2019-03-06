@@ -88,6 +88,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -111,13 +125,15 @@ specifier|private
 name|CommitMessageUtil
 parameter_list|()
 block|{}
-comment|/**    * Checks for null or empty commit messages and appends a newline character to the commit message.    *    * @throws BadRequestException if the commit message is null or empty    * @returns the trimmed message with a trailing newline character    */
-DECL|method|checkAndSanitizeCommitMessage (String commitMessage)
+comment|/**    * Checks for invalid (empty or containing \0) commit messages and appends a newline character to    * the commit message.    *    * @throws BadRequestException if the commit message is null or empty    * @returns the trimmed message with a trailing newline character    */
+DECL|method|checkAndSanitizeCommitMessage (@ullable String commitMessage)
 specifier|public
 specifier|static
 name|String
 name|checkAndSanitizeCommitMessage
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|commitMessage
 parameter_list|)
@@ -125,7 +141,7 @@ throws|throws
 name|BadRequestException
 block|{
 name|String
-name|wellFormedMessage
+name|trimmed
 init|=
 name|Strings
 operator|.
@@ -139,7 +155,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|wellFormedMessage
+name|trimmed
 operator|.
 name|isEmpty
 argument_list|()
@@ -153,14 +169,34 @@ literal|"Commit message cannot be null or empty"
 argument_list|)
 throw|;
 block|}
-name|wellFormedMessage
+if|if
+condition|(
+name|trimmed
+operator|.
+name|indexOf
+argument_list|(
+literal|0
+argument_list|)
+operator|>=
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+literal|"Commit message cannot have NUL character"
+argument_list|)
+throw|;
+block|}
+name|trimmed
 operator|=
-name|wellFormedMessage
+name|trimmed
 operator|+
 literal|"\n"
 expr_stmt|;
 return|return
-name|wellFormedMessage
+name|trimmed
 return|;
 block|}
 block|}
