@@ -3564,6 +3564,10 @@ name|req
 argument_list|)
 condition|)
 block|{
+comment|// TODO: Here and on other collection methods: There is a bug that binds child views
+comment|// with pluginName="gerrit" instead of the real plugin name. This has never worked
+comment|// correctly and should be fixed where the binding gets created (DynamicMapProvider)
+comment|// and here.
 name|RestView
 argument_list|<
 name|RestResource
@@ -3577,9 +3581,9 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|viewData
+name|PluginName
 operator|.
-name|pluginName
+name|GERRIT
 argument_list|,
 literal|"POST_ON_COLLECTION./"
 argument_list|)
@@ -3634,9 +3638,9 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|viewData
+name|PluginName
 operator|.
-name|pluginName
+name|GERRIT
 argument_list|,
 literal|"DELETE_ON_COLLECTION./"
 argument_list|)
@@ -9243,6 +9247,8 @@ name|core
 argument_list|)
 return|;
 block|}
+comment|// Check if we want to delegate to a child collection. Child collections are bound with
+comment|// GET.name so we have to check for this since we haven't found any other views.
 name|core
 operator|=
 name|views
@@ -9340,6 +9346,68 @@ argument_list|,
 name|action
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|r
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// Check if we want to delegate to a child collection. Child collections are bound with
+comment|// GET.name so we have to check for this since we haven't found any other views.
+for|for
+control|(
+name|String
+name|plugin
+range|:
+name|views
+operator|.
+name|plugins
+argument_list|()
+control|)
+block|{
+name|RestView
+argument_list|<
+name|RestResource
+argument_list|>
+name|action
+init|=
+name|views
+operator|.
+name|get
+argument_list|(
+name|plugin
+argument_list|,
+literal|"GET."
+operator|+
+name|p
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|action
+operator|!=
+literal|null
+condition|)
+block|{
+name|r
+operator|.
+name|put
+argument_list|(
+name|plugin
+argument_list|,
+name|action
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 if|if
