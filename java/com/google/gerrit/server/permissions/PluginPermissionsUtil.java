@@ -219,6 +219,7 @@ annotation|@
 name|Singleton
 DECL|class|PluginPermissionsUtil
 specifier|public
+specifier|final
 class|class
 name|PluginPermissionsUtil
 block|{
