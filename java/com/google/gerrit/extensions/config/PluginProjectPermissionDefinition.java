@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2019 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -83,17 +83,17 @@ import|;
 end_import
 
 begin_comment
-comment|/** Specifies a capability declared by a plugin. */
+comment|/** Specifies a repository permission declared by a plugin. */
 end_comment
 
 begin_class
 annotation|@
 name|ExtensionPoint
-DECL|class|CapabilityDefinition
+DECL|class|PluginProjectPermissionDefinition
 specifier|public
 specifier|abstract
 class|class
-name|CapabilityDefinition
+name|PluginProjectPermissionDefinition
 implements|implements
 name|PluginPermissionDefinition
 block|{}
