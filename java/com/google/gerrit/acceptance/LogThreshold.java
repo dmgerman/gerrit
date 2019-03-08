@@ -114,6 +114,18 @@ name|lang
 operator|.
 name|annotation
 operator|.
+name|Inherited
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
 name|Retention
 import|;
 end_import
@@ -145,6 +157,8 @@ name|Retention
 argument_list|(
 name|RUNTIME
 argument_list|)
+annotation|@
+name|Inherited
 DECL|annotation|LogThreshold
 specifier|public
 annotation_defn|@interface
