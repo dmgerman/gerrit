@@ -808,6 +808,17 @@ operator|.
 name|SUBMIT_AS
 argument_list|)
 decl|.
+name|put
+argument_list|(
+name|ChangePermission
+operator|.
+name|TOGGLE_WORK_IN_PROGRESS_STATE
+argument_list|,
+name|Permission
+operator|.
+name|TOGGLE_WORK_IN_PROGRESS_STATE
+argument_list|)
+decl|.
 name|build
 argument_list|()
 decl_stmt|;

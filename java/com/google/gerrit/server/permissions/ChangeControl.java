@@ -1080,6 +1080,39 @@ name|canForceEditTopicName
 argument_list|()
 return|;
 block|}
+comment|/** Can this user toggle WorkInProgress state? */
+DECL|method|canToggleWorkInProgressState ()
+specifier|private
+name|boolean
+name|canToggleWorkInProgressState
+parameter_list|()
+block|{
+return|return
+name|isOwner
+argument_list|()
+operator|||
+name|getProjectControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+operator|||
+name|refControl
+operator|.
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|TOGGLE_WORK_IN_PROGRESS_STATE
+argument_list|)
+operator|||
+name|getProjectControl
+argument_list|()
+operator|.
+name|isAdmin
+argument_list|()
+return|;
+block|}
 comment|/** Can this user edit the description? */
 DECL|method|canEditDescription ()
 specifier|private
@@ -1672,6 +1705,13 @@ argument_list|(
 name|isOwner
 argument_list|()
 argument_list|)
+return|;
+case|case
+name|TOGGLE_WORK_IN_PROGRESS_STATE
+case|:
+return|return
+name|canToggleWorkInProgressState
+argument_list|()
 return|;
 case|case
 name|REMOVE_REVIEWER
