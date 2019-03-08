@@ -868,15 +868,6 @@ expr_stmt|;
 block|}
 name|this
 operator|.
-name|theme
-operator|=
-name|projectState
-operator|.
-name|getTheme
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
 name|extensionPanelNames
 operator|=
 name|projectState
