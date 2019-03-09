@@ -1073,7 +1073,7 @@ name|setProjectName
 argument_list|(
 name|ProjectUtil
 operator|.
-name|stripGitSuffix
+name|sanitizeProjectName
 argument_list|(
 name|name
 argument_list|)
