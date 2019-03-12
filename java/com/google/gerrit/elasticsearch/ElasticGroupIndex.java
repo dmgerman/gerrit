@@ -761,7 +761,7 @@ operator|::
 name|groupFields
 argument_list|)
 argument_list|,
-name|GROUPS
+name|type
 argument_list|,
 name|sortArray
 argument_list|)

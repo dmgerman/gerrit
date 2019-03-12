@@ -781,7 +781,7 @@ operator|::
 name|accountFields
 argument_list|)
 argument_list|,
-name|ACCOUNTS
+name|type
 argument_list|,
 name|sortArray
 argument_list|)
