@@ -1970,10 +1970,14 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
+comment|// Be generous here with the exceptions that we log and swallow. RebaseUtil#canRebase uses the
+comment|// change index and this UI action is on the critical path of rendering a change details page.
+comment|// If the index is broken, we log and disable the UI action, but still show the page to the
+comment|// user.
 name|logger
 operator|.
 name|atSevere
