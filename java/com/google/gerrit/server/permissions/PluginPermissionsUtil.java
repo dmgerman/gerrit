@@ -67,6 +67,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|access
+operator|.
+name|PluginProjectPermission
+operator|.
+name|PLUGIN_PERMISSION_NAME_PATTERN_STRING
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -260,7 +280,11 @@ literal|"^plugin-"
 operator|+
 name|PLUGIN_NAME_PATTERN_STRING
 operator|+
-literal|"-[a-zA-Z]+$"
+literal|"-"
+operator|+
+name|PLUGIN_PERMISSION_NAME_PATTERN_STRING
+operator|+
+literal|"$"
 argument_list|)
 decl_stmt|;
 comment|/** Name pattern for a Gerrit plugin. */
@@ -504,11 +528,11 @@ argument_list|()
 return|;
 block|}
 comment|/**    * Checks if a given name matches the plugin declared permission name pattern for configs.    *    * @param name a config name which may stand for a plugin permission.    * @return whether the name matches the plugin permission name pattern for configs.    */
-DECL|method|isPluginPermission (String name)
+DECL|method|isValidPluginPermission (String name)
 specifier|public
 specifier|static
 name|boolean
-name|isPluginPermission
+name|isValidPluginPermission
 parameter_list|(
 name|String
 name|name

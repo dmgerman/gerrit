@@ -192,6 +192,24 @@ name|api
 operator|.
 name|access
 operator|.
+name|CoreOrPluginProjectPermission
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|access
+operator|.
 name|GlobalOrPluginPermission
 import|;
 end_import
@@ -1238,13 +1256,13 @@ argument_list|)
 return|;
 block|}
 comment|/** Verify scoped user can {@code perm}, throwing if denied. */
-DECL|method|check (ProjectPermission perm)
+DECL|method|check (CoreOrPluginProjectPermission perm)
 specifier|public
 specifier|abstract
 name|void
 name|check
 parameter_list|(
-name|ProjectPermission
+name|CoreOrPluginProjectPermission
 name|perm
 parameter_list|)
 throws|throws
@@ -1253,34 +1271,46 @@ throws|,
 name|PermissionBackendException
 function_decl|;
 comment|/** Filter {@code permSet} to permissions scoped user might be able to perform. */
-DECL|method|test (Collection<ProjectPermission> permSet)
+DECL|method|test (Collection<T> permSet)
 specifier|public
 specifier|abstract
+parameter_list|<
+name|T
+extends|extends
+name|CoreOrPluginProjectPermission
+parameter_list|>
 name|Set
 argument_list|<
-name|ProjectPermission
+name|T
 argument_list|>
 name|test
 parameter_list|(
 name|Collection
 argument_list|<
-name|ProjectPermission
+name|T
 argument_list|>
 name|permSet
 parameter_list|)
 throws|throws
 name|PermissionBackendException
 function_decl|;
-DECL|method|test (ProjectPermission perm)
+DECL|method|test (CoreOrPluginProjectPermission perm)
 specifier|public
 name|boolean
 name|test
 parameter_list|(
-name|ProjectPermission
+name|CoreOrPluginProjectPermission
 name|perm
 parameter_list|)
 throws|throws
 name|PermissionBackendException
+block|{
+if|if
+condition|(
+name|perm
+operator|instanceof
+name|ProjectPermission
+condition|)
 block|{
 return|return
 name|test
@@ -1289,6 +1319,9 @@ name|EnumSet
 operator|.
 name|of
 argument_list|(
+operator|(
+name|ProjectPermission
+operator|)
 name|perm
 argument_list|)
 argument_list|)
@@ -1299,12 +1332,17 @@ name|perm
 argument_list|)
 return|;
 block|}
-DECL|method|testOrFalse (ProjectPermission perm)
+comment|// TODO(xchangcheng): implement for plugin defined project permissions.
+return|return
+literal|false
+return|;
+block|}
+DECL|method|testOrFalse (CoreOrPluginProjectPermission perm)
 specifier|public
 name|boolean
 name|testOrFalse
 parameter_list|(
-name|ProjectPermission
+name|CoreOrPluginProjectPermission
 name|perm
 parameter_list|)
 block|{
@@ -1345,13 +1383,13 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|testCond (ProjectPermission perm)
+DECL|method|testCond (CoreOrPluginProjectPermission perm)
 specifier|public
 specifier|abstract
 name|BooleanCondition
 name|testCond
 parameter_list|(
-name|ProjectPermission
+name|CoreOrPluginProjectPermission
 name|perm
 parameter_list|)
 function_decl|;

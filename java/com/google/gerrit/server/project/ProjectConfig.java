@@ -148,7 +148,7 @@ name|permissions
 operator|.
 name|PluginPermissionsUtil
 operator|.
-name|isPluginPermission
+name|isValidPluginPermission
 import|;
 end_import
 
@@ -4977,7 +4977,7 @@ argument_list|(
 name|permission
 argument_list|)
 operator|||
-name|isPluginPermission
+name|isValidPluginPermission
 argument_list|(
 name|permission
 argument_list|)
