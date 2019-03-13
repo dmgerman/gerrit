@@ -426,20 +426,6 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
-name|PluginCommandModule
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|sshd
-operator|.
 name|commands
 operator|.
 name|Query
@@ -467,20 +453,6 @@ operator|.
 name|inject
 operator|.
 name|AbstractModule
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|servlet
-operator|.
-name|ServletModule
 import|;
 end_import
 
@@ -894,10 +866,10 @@ name|String
 name|opt
 decl_stmt|;
 block|}
-DECL|class|OptionAttributeSysModule
+DECL|class|OptionAttributeModule
 specifier|static
 class|class
-name|OptionAttributeSysModule
+name|OptionAttributeModule
 extends|extends
 name|AbstractModule
 block|{
@@ -970,23 +942,6 @@ return|;
 block|}
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-DECL|class|OptionAttributeSshModule
-specifier|static
-class|class
-name|OptionAttributeSshModule
-extends|extends
-name|PluginCommandModule
-block|{
-annotation|@
-name|Override
-DECL|method|configureCommands ()
-specifier|protected
-name|void
-name|configureCommands
-parameter_list|()
-block|{
 name|bind
 argument_list|(
 name|DynamicBean
@@ -1013,23 +968,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-DECL|class|OptionAttributeHttpModule
-specifier|static
-class|class
-name|OptionAttributeHttpModule
-extends|extends
-name|ServletModule
-block|{
-annotation|@
-name|Override
-DECL|method|configureServlets ()
-specifier|protected
-name|void
-name|configureServlets
-parameter_list|()
-block|{
 name|bind
 argument_list|(
 name|DynamicBean
@@ -1833,11 +1771,7 @@ expr_stmt|;
 block|}
 comment|// No tests for /detail via the extension API, since the extension API doesn't have that method.
 comment|// No tests for getting a single change over SSH, since the only API is the query API.
-comment|// No test for plugin-provided options over the extension API. There are currently two separate
-comment|// DynamicMap<DynamicBean> maps initialized in the SSH and HTTP injectors, and plugins have to
-comment|// define separate SSH/HTTP modules and bind their DynamicBeans in each one. To use the extension
-comment|// API, we would have to move everything into the sys injector.
-comment|// TODO(dborowitz): Determine whether this is possible without breaking existing plugins.
+comment|// TODO(dborowitz): Add extension API support for passing plugin options.
 DECL|method|getChangeWithOption ( PluginInfoGetter getterWithoutOptions, PluginInfoGetterWithOptions getterWithOptions)
 specifier|private
 name|void
@@ -1888,15 +1822,7 @@ name|installPlugin
 argument_list|(
 literal|"my-plugin"
 argument_list|,
-name|OptionAttributeSysModule
-operator|.
-name|class
-argument_list|,
-name|OptionAttributeHttpModule
-operator|.
-name|class
-argument_list|,
-name|OptionAttributeSshModule
+name|OptionAttributeModule
 operator|.
 name|class
 argument_list|)
