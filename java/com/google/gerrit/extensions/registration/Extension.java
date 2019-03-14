@@ -129,7 +129,7 @@ argument_list|>
 name|provider
 decl_stmt|;
 DECL|method|Extension (String pluginName, Provider<T> provider)
-specifier|protected
+specifier|public
 name|Extension
 parameter_list|(
 name|String
