@@ -316,6 +316,20 @@ name|dynamicBean
 parameter_list|)
 function_decl|;
 block|}
+DECL|interface|BeanProvider
+specifier|public
+interface|interface
+name|BeanProvider
+block|{
+DECL|method|getDynamicBean (String plugin)
+name|DynamicBean
+name|getDynamicBean
+parameter_list|(
+name|String
+name|plugin
+parameter_list|)
+function_decl|;
+block|}
 comment|/**    * MergedClassloaders allow us to load classes from both plugin classloaders. Store the merged    * classloaders in a Map to avoid creating a new classloader for each invocation. Use a    * WeakHashMap to avoid leaking these MergedClassLoaders once either plugin is unloaded. Since the    * WeakHashMap only takes care of ensuring the Keys can get garbage collected, use WeakReferences    * to store the MergedClassloaders in the WeakHashMap.    *    *<p>Outter keys are the bean plugin's classloaders (the plugin being extended)    *    *<p>Inner keys are the dynamicBeans plugin's classloaders (the extending plugin)    *    *<p>The value is the MergedClassLoader representing the merging of the outter and inner key    * classloaders.    */
 DECL|field|mergedClByCls
 specifier|protected

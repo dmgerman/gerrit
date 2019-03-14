@@ -356,11 +356,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
-operator|.
 name|change
-operator|.
-name|ChangeQueryProcessor
 operator|.
 name|ChangeAttributeFactory
 import|;
@@ -760,7 +756,7 @@ name|Exports
 operator|.
 name|named
 argument_list|(
-literal|"always-null"
+literal|"null"
 argument_list|)
 argument_list|)
 operator|.
@@ -769,7 +765,7 @@ argument_list|(
 parameter_list|(
 name|cd
 parameter_list|,
-name|qp
+name|bp
 parameter_list|,
 name|p
 parameter_list|)
@@ -816,7 +812,7 @@ argument_list|(
 parameter_list|(
 name|cd
 parameter_list|,
-name|qp
+name|bp
 parameter_list|,
 name|p
 parameter_list|)
@@ -892,7 +888,7 @@ argument_list|(
 parameter_list|(
 name|cd
 parameter_list|,
-name|qp
+name|bp
 parameter_list|,
 name|p
 parameter_list|)
@@ -904,7 +900,7 @@ init|=
 operator|(
 name|MyOptions
 operator|)
-name|qp
+name|bp
 operator|.
 name|getDynamicBean
 argument_list|(
