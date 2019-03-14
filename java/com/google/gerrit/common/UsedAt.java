@@ -108,20 +108,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|annotations
-operator|.
-name|GwtCompatible
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -163,8 +149,6 @@ name|Retention
 argument_list|(
 name|RUNTIME
 argument_list|)
-annotation|@
-name|GwtCompatible
 DECL|annotation|UsedAt
 specifier|public
 annotation_defn|@interface

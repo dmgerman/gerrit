@@ -72,20 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|annotations
-operator|.
-name|GwtIncompatible
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -171,11 +157,6 @@ comment|/** Portion of a {@link Project} describing superproject subscription ru
 end_comment
 
 begin_class
-annotation|@
-name|GwtIncompatible
-argument_list|(
-literal|"Unemulated org.eclipse.jgit.transport.RefSpec"
-argument_list|)
 DECL|class|SubscribeSection
 specifier|public
 class|class
