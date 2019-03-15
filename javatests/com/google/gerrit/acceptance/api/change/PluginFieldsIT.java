@@ -2536,13 +2536,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|Gson
-name|gson
-init|=
-name|OutputStreamQuery
-operator|.
-name|GSON
-decl_stmt|;
 name|List
 argument_list|<
 name|Map
@@ -2586,7 +2579,7 @@ name|Object
 argument_list|>
 name|changeAttr
 init|=
-name|gson
+name|SSH_GSON
 operator|.
 name|fromJson
 argument_list|(
@@ -2671,11 +2664,11 @@ literal|null
 return|;
 block|}
 return|return
-name|gson
+name|SSH_GSON
 operator|.
 name|fromJson
 argument_list|(
-name|gson
+name|SSH_GSON
 operator|.
 name|toJson
 argument_list|(
