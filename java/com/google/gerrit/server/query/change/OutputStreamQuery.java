@@ -1918,6 +1918,9 @@ name|plugins
 operator|=
 name|queryProcessor
 operator|.
+name|getAttributesFactory
+argument_list|()
+operator|.
 name|create
 argument_list|(
 name|d

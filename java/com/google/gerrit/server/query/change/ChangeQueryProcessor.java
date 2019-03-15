@@ -114,6 +114,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|ImmutableListMultimap
 import|;
 end_import
@@ -538,16 +552,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -584,8 +588,6 @@ implements|,
 name|DynamicOptions
 operator|.
 name|BeanProvider
-implements|,
-name|PluginDefinedAttributesFactory
 block|{
 DECL|field|userProvider
 specifier|private
@@ -938,15 +940,25 @@ name|plugin
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|create (ChangeData cd)
+DECL|method|getAttributesFactory ()
 specifier|public
-name|List
+name|PluginDefinedAttributesFactory
+name|getAttributesFactory
+parameter_list|()
+block|{
+return|return
+name|this
+operator|::
+name|buildPluginInfo
+return|;
+block|}
+DECL|method|buildPluginInfo (ChangeData cd)
+specifier|private
+name|ImmutableList
 argument_list|<
 name|PluginDefinedInfo
 argument_list|>
-name|create
+name|buildPluginInfo
 parameter_list|(
 name|ChangeData
 name|cd
