@@ -72,20 +72,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|annotations
-operator|.
-name|GwtIncompatible
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|Sets
@@ -229,11 +215,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|GwtIncompatible
-argument_list|(
-literal|"Unemulated methods in Class and OutputStream"
-argument_list|)
 DECL|class|IoUtil
 specifier|public
 specifier|final

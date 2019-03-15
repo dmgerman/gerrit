@@ -104,20 +104,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|annotations
-operator|.
-name|GwtIncompatible
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|base
 operator|.
 name|CharMatcher
@@ -153,8 +139,6 @@ comment|/** Describes a requirement to submit a change. */
 end_comment
 
 begin_class
-annotation|@
-name|GwtIncompatible
 annotation|@
 name|AutoValue
 annotation|@

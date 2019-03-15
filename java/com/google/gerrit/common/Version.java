@@ -88,20 +88,6 @@ name|common
 operator|.
 name|annotations
 operator|.
-name|GwtIncompatible
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|annotations
-operator|.
 name|VisibleForTesting
 import|;
 end_import
@@ -161,11 +147,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|GwtIncompatible
-argument_list|(
-literal|"Unemulated com.google.gerrit.common.Version"
-argument_list|)
 DECL|class|Version
 specifier|public
 class|class
