@@ -326,11 +326,11 @@ argument_list|>
 argument_list|()
 block|{}
 decl_stmt|;
-DECL|method|createNonCachable (ChangeResource change, PatchSet ps)
+DECL|method|createNonCacheable (ChangeResource change, PatchSet ps)
 specifier|public
 specifier|static
 name|RevisionResource
-name|createNonCachable
+name|createNonCacheable
 parameter_list|(
 name|ChangeResource
 name|change
@@ -436,7 +436,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|RevisionResource ( ChangeResource change, PatchSet ps, Optional<ChangeEdit> edit, boolean cachable)
+DECL|method|RevisionResource ( ChangeResource change, PatchSet ps, Optional<ChangeEdit> edit, boolean cacheable)
 specifier|private
 name|RevisionResource
 parameter_list|(
@@ -453,7 +453,7 @@ argument_list|>
 name|edit
 parameter_list|,
 name|boolean
-name|cachable
+name|cacheable
 parameter_list|)
 block|{
 name|this
@@ -478,7 +478,7 @@ name|this
 operator|.
 name|cacheable
 operator|=
-name|cachable
+name|cacheable
 expr_stmt|;
 block|}
 DECL|method|isCacheable ()

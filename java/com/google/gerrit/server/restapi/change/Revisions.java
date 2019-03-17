@@ -679,7 +679,7 @@ block|{
 return|return
 name|RevisionResource
 operator|.
-name|createNonCachable
+name|createNonCacheable
 argument_list|(
 name|change
 argument_list|,

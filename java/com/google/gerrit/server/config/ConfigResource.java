@@ -170,7 +170,7 @@ argument_list|>
 argument_list|()
 block|{}
 decl_stmt|;
-comment|/**    * Default cache control that gets set on the 'Cache-Control' header for responses on this    * resource that are cachable.    *    *<p>Not all resources are cacheable and in fact the vast majority might not be. Caching is a    * trade-off between the freshness of data and the number of QPS that the web UI sends.    */
+comment|/**    * Default cache control that gets set on the 'Cache-Control' header for responses on this    * resource that are cacheable.    *    *<p>Not all resources are cacheable and in fact the vast majority might not be. Caching is a    * trade-off between the freshness of data and the number of QPS that the web UI sends.    */
 DECL|field|DEFAULT_CACHE_CONTROL
 specifier|public
 specifier|static
