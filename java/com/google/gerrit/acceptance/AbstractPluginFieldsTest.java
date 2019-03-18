@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.api.change
+DECL|package|com.google.gerrit.acceptance
 package|package
 name|com
 operator|.
@@ -61,10 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|acceptance
-operator|.
-name|api
-operator|.
-name|change
 package|;
 end_package
 
@@ -137,20 +133,6 @@ operator|.
 name|collect
 operator|.
 name|ImmutableListMultimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|AbstractDaemonTest
 import|;
 end_import
 
@@ -380,16 +362,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
-operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|kohsuke
 operator|.
 name|args4j
@@ -399,8 +371,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Ignore
 DECL|class|AbstractPluginFieldsTest
 specifier|public
 class|class
@@ -423,6 +393,7 @@ name|String
 name|theAttribute
 decl_stmt|;
 DECL|method|MyInfo (@ullable String theAttribute)
+specifier|public
 name|MyInfo
 parameter_list|(
 annotation|@

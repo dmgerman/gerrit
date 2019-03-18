@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.api.change
+DECL|package|com.google.gerrit.acceptance.ssh
 package|package
 name|com
 operator|.
@@ -62,9 +62,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|api
-operator|.
-name|change
+name|ssh
 package|;
 end_package
 
@@ -123,6 +121,20 @@ operator|.
 name|io
 operator|.
 name|CharStreams
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|AbstractPluginFieldsTest
 import|;
 end_import
 
@@ -279,10 +291,10 @@ end_import
 begin_class
 annotation|@
 name|UseSsh
-DECL|class|PluginFieldsSshIT
+DECL|class|PluginChangeFieldsIT
 specifier|public
 class|class
-name|PluginFieldsSshIT
+name|PluginChangeFieldsIT
 extends|extends
 name|AbstractPluginFieldsTest
 block|{

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.api.change
+DECL|package|com.google.gerrit.acceptance.rest.change
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|api
+name|rest
 operator|.
 name|change
 package|;
@@ -109,6 +109,20 @@ operator|.
 name|collect
 operator|.
 name|ImmutableListMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|AbstractPluginFieldsTest
 import|;
 end_import
 
@@ -227,10 +241,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|PluginFieldsRestIT
+DECL|class|PluginFieldsIT
 specifier|public
 class|class
-name|PluginFieldsRestIT
+name|PluginFieldsIT
 extends|extends
 name|AbstractPluginFieldsTest
 block|{
