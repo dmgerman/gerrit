@@ -1319,7 +1319,7 @@ argument_list|(
 operator|new
 name|TypeLiteral
 argument_list|<
-name|DynamicMap
+name|DynamicSet
 argument_list|<
 name|ChangeAttributeFactory
 argument_list|>
@@ -1330,9 +1330,9 @@ argument_list|)
 operator|.
 name|toInstance
 argument_list|(
-name|DynamicMap
+name|DynamicSet
 operator|.
-name|emptyMap
+name|emptySet
 argument_list|()
 argument_list|)
 expr_stmt|;

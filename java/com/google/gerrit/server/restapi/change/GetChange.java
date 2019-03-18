@@ -172,7 +172,7 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicMap
+name|DynamicSet
 import|;
 end_import
 
@@ -434,7 +434,7 @@ decl_stmt|;
 DECL|field|attrFactories
 specifier|private
 specifier|final
-name|DynamicMap
+name|DynamicSet
 argument_list|<
 name|ChangeAttributeFactory
 argument_list|>
@@ -547,7 +547,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|GetChange (ChangeJson.Factory json, DynamicMap<ChangeAttributeFactory> attrFactories)
+DECL|method|GetChange (ChangeJson.Factory json, DynamicSet<ChangeAttributeFactory> attrFactories)
 name|GetChange
 parameter_list|(
 name|ChangeJson
@@ -555,7 +555,7 @@ operator|.
 name|Factory
 name|json
 parameter_list|,
-name|DynamicMap
+name|DynamicSet
 argument_list|<
 name|ChangeAttributeFactory
 argument_list|>
@@ -725,6 +725,9 @@ operator|.
 name|stream
 argument_list|(
 name|attrFactories
+operator|.
+name|entries
+argument_list|()
 argument_list|)
 argument_list|)
 return|;

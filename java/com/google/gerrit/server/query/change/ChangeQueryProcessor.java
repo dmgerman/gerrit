@@ -160,7 +160,7 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicMap
+name|DynamicSet
 import|;
 end_import
 
@@ -677,7 +677,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<AnonymousUser> anonymousUserProvider)
+DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, ChangeNotes.Factory notesFactory, DynamicSet<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<AnonymousUser> anonymousUserProvider)
 name|ChangeQueryProcessor
 parameter_list|(
 name|Provider
@@ -708,7 +708,7 @@ operator|.
 name|Factory
 name|notesFactory
 parameter_list|,
-name|DynamicMap
+name|DynamicSet
 argument_list|<
 name|ChangeAttributeFactory
 argument_list|>
@@ -807,6 +807,9 @@ decl_stmt|;
 comment|// Eagerly call Extension#get() rather than storing Extensions, since that method invokes the
 comment|// Provider on every call, which could be expensive if we invoke it once for every change.
 name|attributeFactories
+operator|.
+name|entries
+argument_list|()
 operator|.
 name|forEach
 argument_list|(

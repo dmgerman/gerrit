@@ -5038,9 +5038,9 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|DynamicMap
+name|DynamicSet
 operator|.
-name|mapOf
+name|setOf
 argument_list|(
 name|binder
 argument_list|()

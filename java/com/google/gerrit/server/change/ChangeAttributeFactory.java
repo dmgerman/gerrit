@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface for plugins to provide additional fields in {@link  * com.google.gerrit.extensions.common.ChangeInfo ChangeInfo}.  *  *<p>Register a {@code ChangeAttributeFactory} in a plugin {@code Module} like this:  *  *<pre>  * bind(ChangeAttributeFactory.class)  *     .annotatedWith(Exports.named("export-name"))  *     .to(YourClass.class);  *</pre>  *  * The export name can be anything unique to your plugin; the name is not exposed.  *  *<p>See the<a  * href="https://gerrit-review.googlesource.com/Documentation/dev-plugins.html#query_attributes">plugin  * developer documentation for more details and examples.  */
+comment|/**  * Interface for plugins to provide additional fields in {@link  * com.google.gerrit.extensions.common.ChangeInfo ChangeInfo}.  *  *<p>Register a {@code ChangeAttributeFactory} in a plugin {@code Module} like this:  *  *<pre>  * DynamicSet.bind(binder(), ChangeAttributeFactory.class).to(YourClass.class);  *</pre>  *  *<p>See the<a  * href="https://gerrit-review.googlesource.com/Documentation/dev-plugins.html#query_attributes">plugin  * developer documentation for more details and examples.  */
 end_comment
 
 begin_interface
