@@ -1324,7 +1324,6 @@ block|,
 DECL|enumConstant|AUTOCLOSE
 name|AUTOCLOSE
 block|,   }
-empty_stmt|;
 annotation|@
 name|Singleton
 DECL|class|Metrics
