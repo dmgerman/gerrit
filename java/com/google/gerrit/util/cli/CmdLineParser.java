@@ -24,6 +24,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|util
@@ -2313,6 +2329,23 @@ operator|.
 name|prefix
 operator|=
 name|prefix
+expr_stmt|;
+name|checkArgument
+argument_list|(
+name|o
+operator|.
+name|name
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"-"
+argument_list|)
+argument_list|,
+literal|"Option name must start with '-': %s"
+argument_list|,
+name|o
+argument_list|)
 expr_stmt|;
 name|this
 operator|.

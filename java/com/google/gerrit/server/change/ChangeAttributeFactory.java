@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2019 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.query.change
+DECL|package|com.google.gerrit.server.change
 package|package
 name|com
 operator|.
@@ -61,8 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|server
-operator|.
-name|query
 operator|.
 name|change
 package|;
@@ -86,29 +84,61 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|List
+name|gerrit
+operator|.
+name|server
+operator|.
+name|DynamicOptions
+operator|.
+name|BeanProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|ChangeData
+import|;
+end_import
+
+begin_comment
+comment|/**  * Interface for plugins to provide additional fields in {@link  * com.google.gerrit.extensions.common.ChangeInfo ChangeInfo}.  *  *<p>Register a {@code ChangeAttributeFactory} in a plugin {@code Module} like this:  *  *<pre>  * DynamicSet.bind(binder(), ChangeAttributeFactory.class).to(YourClass.class);  *</pre>  *  *<p>See the<a  * href="https://gerrit-review.googlesource.com/Documentation/dev-plugins.html#query_attributes">plugin  * developer documentation for more details and examples.  */
+end_comment
+
 begin_interface
-DECL|interface|PluginDefinedAttributesFactory
+DECL|interface|ChangeAttributeFactory
 specifier|public
 interface|interface
-name|PluginDefinedAttributesFactory
+name|ChangeAttributeFactory
 block|{
-DECL|method|create (ChangeData cd)
-name|List
-argument_list|<
+comment|/**    * Create a plugin-provided info field.    *    *<p>Typically, implementations will subclass {@code PluginDefinedInfo} to add additional fields.    *    * @param cd change.    * @param beanProvider provider of {@code DynamicBean}s, which may be used for reading options.    * @param plugin plugin name.    * @return the plugin's special change info.    */
+DECL|method|create (ChangeData cd, BeanProvider beanProvider, String plugin)
 name|PluginDefinedInfo
-argument_list|>
 name|create
 parameter_list|(
 name|ChangeData
 name|cd
+parameter_list|,
+name|BeanProvider
+name|beanProvider
+parameter_list|,
+name|String
+name|plugin
 parameter_list|)
 function_decl|;
 block|}
