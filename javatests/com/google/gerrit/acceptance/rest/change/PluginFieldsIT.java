@@ -264,10 +264,10 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|queryChangeRestWithNullAttribute ()
+DECL|method|queryChangeWithNullAttribute ()
 specifier|public
 name|void
-name|queryChangeRestWithNullAttribute
+name|queryChangeWithNullAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -276,7 +276,7 @@ name|getChangeWithNullAttribute
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromSingletonListRest
+name|pluginInfoFromSingletonList
 argument_list|(
 name|adminRestSession
 operator|.
@@ -293,10 +293,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getChangeRestWithNullAttribute ()
+DECL|method|getChangeWithNullAttribute ()
 specifier|public
 name|void
-name|getChangeRestWithNullAttribute
+name|getChangeWithNullAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -305,7 +305,7 @@ name|getChangeWithNullAttribute
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromChangeInfoRest
+name|pluginInfoFromChangeInfo
 argument_list|(
 name|adminRestSession
 operator|.
@@ -322,10 +322,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getChangeDetailRestWithNullAttribute ()
+DECL|method|getChangeDetailWithNullAttribute ()
 specifier|public
 name|void
-name|getChangeDetailRestWithNullAttribute
+name|getChangeDetailWithNullAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -334,7 +334,7 @@ name|getChangeWithNullAttribute
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromChangeInfoRest
+name|pluginInfoFromChangeInfo
 argument_list|(
 name|adminRestSession
 operator|.
@@ -351,10 +351,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|queryChangeRestWithSimpleAttribute ()
+DECL|method|queryChangeWithSimpleAttribute ()
 specifier|public
 name|void
-name|queryChangeRestWithSimpleAttribute
+name|queryChangeWithSimpleAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -363,7 +363,7 @@ name|getChangeWithSimpleAttribute
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromSingletonListRest
+name|pluginInfoFromSingletonList
 argument_list|(
 name|adminRestSession
 operator|.
@@ -380,10 +380,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getChangeRestWithSimpleAttribute ()
+DECL|method|getChangeWithSimpleAttribute ()
 specifier|public
 name|void
-name|getChangeRestWithSimpleAttribute
+name|getChangeWithSimpleAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -392,7 +392,7 @@ name|getChangeWithSimpleAttribute
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromChangeInfoRest
+name|pluginInfoFromChangeInfo
 argument_list|(
 name|adminRestSession
 operator|.
@@ -409,10 +409,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getChangeDetailRestWithSimpleAttribute ()
+DECL|method|getChangeDetailWithSimpleAttribute ()
 specifier|public
 name|void
-name|getChangeDetailRestWithSimpleAttribute
+name|getChangeDetailWithSimpleAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -421,7 +421,7 @@ name|getChangeWithSimpleAttribute
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromChangeInfoRest
+name|pluginInfoFromChangeInfo
 argument_list|(
 name|adminRestSession
 operator|.
@@ -438,10 +438,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|queryChangeRestWithOption ()
+DECL|method|queryChangeWithOption ()
 specifier|public
 name|void
-name|queryChangeRestWithOption
+name|queryChangeWithOption
 parameter_list|()
 throws|throws
 name|Exception
@@ -450,7 +450,7 @@ name|getChangeWithOption
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromSingletonListRest
+name|pluginInfoFromSingletonList
 argument_list|(
 name|adminRestSession
 operator|.
@@ -469,7 +469,7 @@ parameter_list|,
 name|opts
 parameter_list|)
 lambda|->
-name|pluginInfoFromSingletonListRest
+name|pluginInfoFromSingletonList
 argument_list|(
 name|adminRestSession
 operator|.
@@ -488,10 +488,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getChangeRestWithOption ()
+DECL|method|getChangeWithOption ()
 specifier|public
 name|void
-name|getChangeRestWithOption
+name|getChangeWithOption
 parameter_list|()
 throws|throws
 name|Exception
@@ -500,7 +500,7 @@ name|getChangeWithOption
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromChangeInfoRest
+name|pluginInfoFromChangeInfo
 argument_list|(
 name|adminRestSession
 operator|.
@@ -519,7 +519,7 @@ parameter_list|,
 name|opts
 parameter_list|)
 lambda|->
-name|pluginInfoFromChangeInfoRest
+name|pluginInfoFromChangeInfo
 argument_list|(
 name|adminRestSession
 operator|.
@@ -538,10 +538,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getChangeDetailRestWithOption ()
+DECL|method|getChangeDetailWithOption ()
 specifier|public
 name|void
-name|getChangeDetailRestWithOption
+name|getChangeDetailWithOption
 parameter_list|()
 throws|throws
 name|Exception
@@ -550,7 +550,7 @@ name|getChangeWithOption
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromChangeInfoRest
+name|pluginInfoFromChangeInfo
 argument_list|(
 name|adminRestSession
 operator|.
@@ -569,7 +569,7 @@ parameter_list|,
 name|opts
 parameter_list|)
 lambda|->
-name|pluginInfoFromChangeInfoRest
+name|pluginInfoFromChangeInfo
 argument_list|(
 name|adminRestSession
 operator|.
@@ -871,14 +871,14 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|pluginInfoFromSingletonListRest (RestResponse res)
+DECL|method|pluginInfoFromSingletonList (RestResponse res)
 specifier|private
 specifier|static
 name|List
 argument_list|<
 name|MyInfo
 argument_list|>
-name|pluginInfoFromSingletonListRest
+name|pluginInfoFromSingletonList
 parameter_list|(
 name|RestResponse
 name|res
@@ -957,13 +957,13 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|pluginInfoFromChangeInfoRest (RestResponse res)
+DECL|method|pluginInfoFromChangeInfo (RestResponse res)
 specifier|private
 name|List
 argument_list|<
 name|MyInfo
 argument_list|>
-name|pluginInfoFromChangeInfoRest
+name|pluginInfoFromChangeInfo
 parameter_list|(
 name|RestResponse
 name|res

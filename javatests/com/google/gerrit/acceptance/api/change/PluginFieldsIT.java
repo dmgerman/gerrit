@@ -163,10 +163,10 @@ block|{
 comment|// No tests for /detail via the extension API, since the extension API doesn't have that method.
 annotation|@
 name|Test
-DECL|method|queryChangeApiWithNullAttribute ()
+DECL|method|queryChangeWithNullAttribute ()
 specifier|public
 name|void
-name|queryChangeApiWithNullAttribute
+name|queryChangeWithNullAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -198,10 +198,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getChangeApiWithNullAttribute ()
+DECL|method|getChangeWithNullAttribute ()
 specifier|public
 name|void
-name|getChangeApiWithNullAttribute
+name|getChangeWithNullAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -233,10 +233,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|queryChangeApiWithSimpleAttribute ()
+DECL|method|queryChangeWithSimpleAttribute ()
 specifier|public
 name|void
-name|queryChangeApiWithSimpleAttribute
+name|queryChangeWithSimpleAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -268,10 +268,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getChangeApiWithSimpleAttribute ()
+DECL|method|getChangeWithSimpleAttribute ()
 specifier|public
 name|void
-name|getChangeApiWithSimpleAttribute
+name|getChangeWithSimpleAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -303,10 +303,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|queryChangeApiWithOption ()
+DECL|method|queryChangeWithOption ()
 specifier|public
 name|void
-name|queryChangeApiWithOption
+name|queryChangeWithOption
 parameter_list|()
 throws|throws
 name|Exception
@@ -368,10 +368,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getChangeApiWithOption ()
+DECL|method|getChangeWithOption ()
 specifier|public
 name|void
-name|getChangeApiWithOption
+name|getChangeWithOption
 parameter_list|()
 throws|throws
 name|Exception
@@ -486,10 +486,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|getChangeApiWithSimpleAttributeWithExplicitExport ()
+DECL|method|getChangeWithSimpleAttributeWithExplicitExport ()
 specifier|public
 name|void
-name|getChangeApiWithSimpleAttributeWithExplicitExport
+name|getChangeWithSimpleAttributeWithExplicitExport
 parameter_list|()
 throws|throws
 name|Exception

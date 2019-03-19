@@ -312,10 +312,10 @@ name|GSON
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|queryChangeSshWithNullAttribute ()
+DECL|method|queryChangeWithNullAttribute ()
 specifier|public
 name|void
-name|queryChangeSshWithNullAttribute
+name|queryChangeWithNullAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -324,7 +324,7 @@ name|getChangeWithNullAttribute
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromSingletonListSsh
+name|pluginInfoFromSingletonList
 argument_list|(
 name|adminSshSession
 operator|.
@@ -341,10 +341,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|queryChangeSshWithSimpleAttribute ()
+DECL|method|queryChangeWithSimpleAttribute ()
 specifier|public
 name|void
-name|queryChangeSshWithSimpleAttribute
+name|queryChangeWithSimpleAttribute
 parameter_list|()
 throws|throws
 name|Exception
@@ -353,7 +353,7 @@ name|getChangeWithSimpleAttribute
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromSingletonListSsh
+name|pluginInfoFromSingletonList
 argument_list|(
 name|adminSshSession
 operator|.
@@ -370,10 +370,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|queryChangeSshWithOption ()
+DECL|method|queryChangeWithOption ()
 specifier|public
 name|void
-name|queryChangeSshWithOption
+name|queryChangeWithOption
 parameter_list|()
 throws|throws
 name|Exception
@@ -382,7 +382,7 @@ name|getChangeWithOption
 argument_list|(
 name|id
 lambda|->
-name|pluginInfoFromSingletonListSsh
+name|pluginInfoFromSingletonList
 argument_list|(
 name|adminSshSession
 operator|.
@@ -401,7 +401,7 @@ parameter_list|,
 name|opts
 parameter_list|)
 lambda|->
-name|pluginInfoFromSingletonListSsh
+name|pluginInfoFromSingletonList
 argument_list|(
 name|adminSshSession
 operator|.
@@ -508,14 +508,14 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|pluginInfoFromSingletonListSsh (String sshOutput)
+DECL|method|pluginInfoFromSingletonList (String sshOutput)
 specifier|private
 specifier|static
 name|List
 argument_list|<
 name|MyInfo
 argument_list|>
-name|pluginInfoFromSingletonListSsh
+name|pluginInfoFromSingletonList
 parameter_list|(
 name|String
 name|sshOutput
