@@ -66,6 +66,20 @@ name|annotations
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|auto
+operator|.
+name|value
+operator|.
+name|AutoAnnotation
+import|;
+end_import
+
 begin_comment
 comment|/** Static constructors for {@link Export} annotations. */
 end_comment
@@ -78,21 +92,23 @@ class|class
 name|Exports
 block|{
 comment|/** Create an annotation to export under a specific name. */
-DECL|method|named (String name)
+annotation|@
+name|AutoAnnotation
+DECL|method|named (String value)
 specifier|public
 specifier|static
 name|Export
 name|named
 parameter_list|(
 name|String
-name|name
+name|value
 parameter_list|)
 block|{
 return|return
 operator|new
-name|ExportImpl
+name|AutoAnnotation_Exports_named
 argument_list|(
-name|name
+name|value
 argument_list|)
 return|;
 block|}
