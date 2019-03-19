@@ -504,6 +504,26 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Returns the current timestamp.    *    * @return current timestamp    */
+DECL|method|getCurrentTimestamp ()
+specifier|public
+specifier|static
+specifier|synchronized
+name|Timestamp
+name|getCurrentTimestamp
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Timestamp
+argument_list|(
+name|clockMs
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/** Reset the clock to use the actual system clock. */
 DECL|method|useSystemTime ()
 specifier|public
