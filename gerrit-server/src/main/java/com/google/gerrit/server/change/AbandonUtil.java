@@ -539,6 +539,8 @@ range|:
 name|changesToAbandon
 control|)
 block|{
+try|try
+block|{
 name|ChangeControl
 name|control
 init|=
@@ -564,6 +566,23 @@ argument_list|,
 name|control
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Failed to query inactive open change for auto-abandoning."
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|int
 name|count
