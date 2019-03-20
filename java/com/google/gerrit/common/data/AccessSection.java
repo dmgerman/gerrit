@@ -169,6 +169,7 @@ end_comment
 begin_class
 DECL|class|AccessSection
 specifier|public
+specifier|final
 class|class
 name|AccessSection
 extends|extends
@@ -190,7 +191,7 @@ init|=
 literal|"GLOBAL_CAPABILITIES"
 decl_stmt|;
 DECL|field|permissions
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|Permission
@@ -198,7 +199,7 @@ argument_list|>
 name|permissions
 decl_stmt|;
 DECL|method|AccessSection ()
-specifier|protected
+specifier|public
 name|AccessSection
 parameter_list|()
 block|{}
