@@ -232,6 +232,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|kohsuke
@@ -336,7 +346,9 @@ name|OrmException
 throws|,
 name|AuthException
 block|{
-return|return
+name|boolean
+name|isPureRevert
+init|=
 name|pureRevert
 operator|.
 name|get
@@ -346,7 +358,19 @@ operator|.
 name|getNotes
 argument_list|()
 argument_list|,
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|claimedOriginal
+argument_list|)
+argument_list|)
+decl_stmt|;
+return|return
+operator|new
+name|PureRevertInfo
+argument_list|(
+name|isPureRevert
 argument_list|)
 return|;
 block|}
