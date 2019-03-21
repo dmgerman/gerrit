@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2019 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.annotations
+DECL|package|com.google.gerrit.util.cli
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|util
 operator|.
-name|annotations
+name|cli
 package|;
 end_package
 
@@ -80,67 +80,120 @@ name|AutoAnnotation
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|spi
+operator|.
+name|OptionHandler
+import|;
+end_import
+
 begin_comment
-comment|/** Static constructors for {@link Export} annotations. */
+comment|/** Utilities to support creating new {@link Option} instances. */
 end_comment
 
 begin_class
-DECL|class|Exports
+DECL|class|OptionUtil
 specifier|public
-specifier|final
 class|class
-name|Exports
+name|OptionUtil
 block|{
-comment|/** Create an annotation to export under a specific name. */
 annotation|@
 name|AutoAnnotation
-DECL|method|named (String value)
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
+DECL|method|newOption ( String name, String[] aliases, String usage, String metaVar, boolean required, boolean help, boolean hidden, Class<? extends OptionHandler> handler, String[] depends, String[] forbids)
 specifier|public
 specifier|static
-name|Export
-name|named
+name|Option
+name|newOption
 parameter_list|(
 name|String
-name|value
+name|name
+parameter_list|,
+name|String
+index|[]
+name|aliases
+parameter_list|,
+name|String
+name|usage
+parameter_list|,
+name|String
+name|metaVar
+parameter_list|,
+name|boolean
+name|required
+parameter_list|,
+name|boolean
+name|help
+parameter_list|,
+name|boolean
+name|hidden
+parameter_list|,
+name|Class
+argument_list|<
+name|?
+extends|extends
+name|OptionHandler
+argument_list|>
+name|handler
+parameter_list|,
+name|String
+index|[]
+name|depends
+parameter_list|,
+name|String
+index|[]
+name|forbids
 parameter_list|)
 block|{
 return|return
 operator|new
-name|AutoAnnotation_Exports_named
+name|AutoAnnotation_OptionUtil_newOption
 argument_list|(
-name|value
+name|name
+argument_list|,
+name|aliases
+argument_list|,
+name|usage
+argument_list|,
+name|metaVar
+argument_list|,
+name|required
+argument_list|,
+name|help
+argument_list|,
+name|hidden
+argument_list|,
+name|handler
+argument_list|,
+name|depends
+argument_list|,
+name|forbids
 argument_list|)
 return|;
 block|}
-comment|/** Create an annotation to export based on a cannonical class name. */
-DECL|method|named (Class<?> clazz)
-specifier|public
-specifier|static
-name|Export
-name|named
-parameter_list|(
-name|Class
-argument_list|<
-name|?
-argument_list|>
-name|clazz
-parameter_list|)
-block|{
-return|return
-name|named
-argument_list|(
-name|clazz
-operator|.
-name|getCanonicalName
-argument_list|()
-argument_list|)
-return|;
-block|}
-DECL|method|Exports ()
-specifier|private
-name|Exports
-parameter_list|()
-block|{}
 block|}
 end_class
 
