@@ -108,6 +108,26 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|testing
+operator|.
+name|GroupReferenceSubject
+operator|.
+name|groupReferences
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|common
@@ -117,6 +137,26 @@ operator|.
 name|CommitInfoSubject
 operator|.
 name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|testing
+operator|.
+name|CommitInfoSubject
+operator|.
+name|commits
 import|;
 end_import
 
@@ -4250,9 +4290,8 @@ name|assertThat
 argument_list|(
 name|group
 argument_list|,
-name|GroupReferenceSubject
-operator|::
-name|assertThat
+name|groupReferences
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -4281,9 +4320,8 @@ name|assertThat
 argument_list|(
 name|commits
 argument_list|,
-name|CommitInfoSubject
-operator|::
-name|assertThat
+name|commits
+argument_list|()
 argument_list|)
 return|;
 block|}
