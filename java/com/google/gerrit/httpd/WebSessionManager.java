@@ -1308,7 +1308,9 @@ return|return
 name|expiresAt
 return|;
 block|}
+comment|/**      * Parse an Account.Id.      *      *<p>This is public so that plugins that implement a web session, can also implement a way to      * clear per user sessions.      *      * @return account ID.      */
 DECL|method|getAccountId ()
+specifier|public
 name|Account
 operator|.
 name|Id
