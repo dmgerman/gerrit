@@ -144,6 +144,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -717,6 +731,18 @@ name|currentUser
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -2137,6 +2163,21 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"evict caches on creation of group %s"
+argument_list|,
+name|createdGroup
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// By UUID is used for the index and hence should be evicted before refreshing the index.
 name|groupCache
 operator|.
@@ -2219,6 +2260,21 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"evict caches on update of group %s"
+argument_list|,
+name|result
+operator|.
+name|getGroupUuid
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// By UUID is used for the index and hence should be evicted before refreshing the index.
 name|groupCache
 operator|.
