@@ -90,22 +90,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|Truth
-operator|.
-name|assertWithMessage
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -306,7 +290,7 @@ name|fixId
 parameter_list|()
 block|{
 return|return
-name|assertWithMessage
+name|check
 argument_list|(
 literal|"fixId"
 argument_list|)
@@ -337,7 +321,7 @@ expr_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"replacements()"
+literal|"replacements"
 argument_list|)
 operator|.
 name|about
@@ -384,7 +368,7 @@ expr_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"description()"
+literal|"description"
 argument_list|)
 operator|.
 name|that

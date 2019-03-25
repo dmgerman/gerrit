@@ -249,7 +249,7 @@ expr_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"path()"
+literal|"path"
 argument_list|)
 operator|.
 name|that
@@ -273,7 +273,7 @@ expr_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"range()"
+literal|"range"
 argument_list|)
 operator|.
 name|about
@@ -303,7 +303,7 @@ expr_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"replacement()"
+literal|"replacement"
 argument_list|)
 operator|.
 name|that

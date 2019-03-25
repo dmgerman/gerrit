@@ -415,7 +415,7 @@ argument_list|()
 expr_stmt|;
 name|check
 argument_list|(
-literal|"messages()"
+literal|"trimmedMessages()"
 argument_list|)
 operator|.
 name|that
@@ -482,7 +482,7 @@ argument_list|)
 decl_stmt|;
 name|check
 argument_list|(
-literal|"messages()"
+literal|"trimmedMessages()"
 argument_list|)
 operator|.
 name|that

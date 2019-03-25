@@ -217,7 +217,7 @@ argument_list|()
 decl_stmt|;
 name|check
 argument_list|(
-literal|"name()"
+literal|"getName()"
 argument_list|)
 operator|.
 name|that

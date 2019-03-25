@@ -309,7 +309,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"commit()"
+literal|"commit"
 argument_list|)
 operator|.
 name|about
@@ -344,7 +344,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"baseRevision()"
+literal|"baseRevision"
 argument_list|)
 operator|.
 name|that

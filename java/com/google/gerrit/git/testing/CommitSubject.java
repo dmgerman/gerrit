@@ -294,7 +294,7 @@ argument_list|()
 decl_stmt|;
 name|check
 argument_list|(
-literal|"commitMessage()"
+literal|"getFullMessage()"
 argument_list|)
 operator|.
 name|that

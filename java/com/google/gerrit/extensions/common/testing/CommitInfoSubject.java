@@ -285,7 +285,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"commit()"
+literal|"commit"
 argument_list|)
 operator|.
 name|that
@@ -319,7 +319,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"parents()"
+literal|"parents"
 argument_list|)
 operator|.
 name|about
@@ -357,7 +357,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"committer()"
+literal|"committer"
 argument_list|)
 operator|.
 name|about
@@ -392,7 +392,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"author()"
+literal|"author"
 argument_list|)
 operator|.
 name|about

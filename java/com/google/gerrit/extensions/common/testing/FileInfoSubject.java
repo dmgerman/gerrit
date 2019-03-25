@@ -230,7 +230,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"linesInserted()"
+literal|"linesInserted"
 argument_list|)
 operator|.
 name|that
@@ -259,7 +259,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"linesDeleted()"
+literal|"linesDeleted"
 argument_list|)
 operator|.
 name|that
@@ -293,7 +293,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"status()"
+literal|"status"
 argument_list|)
 operator|.
 name|that
