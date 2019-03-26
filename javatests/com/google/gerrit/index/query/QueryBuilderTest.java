@@ -402,9 +402,9 @@ operator|.
 name|hasMessageThat
 argument_list|()
 operator|.
-name|isEqualTo
+name|contains
 argument_list|(
-literal|"line 1:2 no viable alternative at input '('"
+literal|"no viable alternative"
 argument_list|)
 expr_stmt|;
 block|}
