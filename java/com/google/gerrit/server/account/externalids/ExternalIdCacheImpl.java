@@ -809,6 +809,19 @@ argument_list|>
 name|update
 parameter_list|)
 block|{
+if|if
+condition|(
+name|oldNotesRev
+operator|.
+name|equals
+argument_list|(
+name|newNotesRev
+argument_list|)
+condition|)
+block|{
+comment|// No need to update external id cache since there is no update to those external ids.
+return|return;
+block|}
 name|lock
 operator|.
 name|lock
