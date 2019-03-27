@@ -1165,7 +1165,7 @@ argument_list|,
 name|groupUpdate
 argument_list|)
 decl_stmt|;
-name|updateCachesOnGroupCreation
+name|evictCachesOnGroupCreation
 argument_list|(
 name|createdGroup
 argument_list|)
@@ -1268,7 +1268,7 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
-name|updateCachesOnGroupUpdate
+name|evictCachesOnGroupUpdate
 argument_list|(
 name|result
 argument_list|)
@@ -2126,10 +2126,10 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateCachesOnGroupCreation (InternalGroup createdGroup)
+DECL|method|evictCachesOnGroupCreation (InternalGroup createdGroup)
 specifier|private
 name|void
-name|updateCachesOnGroupCreation
+name|evictCachesOnGroupCreation
 parameter_list|(
 name|InternalGroup
 name|createdGroup
@@ -2208,10 +2208,10 @@ name|evictParentGroupsOf
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateCachesOnGroupUpdate (UpdateResult result)
+DECL|method|evictCachesOnGroupUpdate (UpdateResult result)
 specifier|private
 name|void
-name|updateCachesOnGroupUpdate
+name|evictCachesOnGroupUpdate
 parameter_list|(
 name|UpdateResult
 name|result
