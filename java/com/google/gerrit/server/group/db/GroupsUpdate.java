@@ -144,6 +144,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -480,6 +494,40 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|logging
+operator|.
+name|TraceContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|logging
+operator|.
+name|TraceContext
+operator|.
+name|TraceTimer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|update
 operator|.
 name|RetryHelper
@@ -719,6 +767,18 @@ name|createWithServerIdent
 parameter_list|()
 function_decl|;
 block|}
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -1370,6 +1430,31 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+try|try
+init|(
+name|TraceTimer
+name|timer
+init|=
+name|TraceContext
+operator|.
+name|newTimer
+argument_list|(
+literal|"Creating group '%s'"
+argument_list|,
+name|groupUpdate
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|orElseGet
+argument_list|(
+name|groupCreation
+operator|::
+name|getNameKey
+argument_list|)
+argument_list|)
+init|)
+block|{
 name|InternalGroup
 name|createdGroup
 init|=
@@ -1380,7 +1465,7 @@ argument_list|,
 name|groupUpdate
 argument_list|)
 decl_stmt|;
-name|updateCachesOnGroupCreation
+name|evictCachesOnGroupCreation
 argument_list|(
 name|createdGroup
 argument_list|)
@@ -1393,6 +1478,7 @@ expr_stmt|;
 return|return
 name|createdGroup
 return|;
+block|}
 block|}
 comment|/**    * Updates the specified group.    *    * @param groupUuid the UUID of the group to update    * @param groupUpdate an {@code InternalGroupUpdate} which indicates the desired updates on the    *     group    * @throws OrmDuplicateKeyException if the new name of the group is used by another group    * @throws IOException if indexing fails, or an error occurs while reading/writing from/to NoteDb    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|updateGroup (AccountGroup.UUID groupUuid, InternalGroupUpdate groupUpdate)
@@ -1416,6 +1502,21 @@ throws|,
 name|NoSuchGroupException
 throws|,
 name|ConfigInvalidException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|timer
+init|=
+name|TraceContext
+operator|.
+name|newTimer
+argument_list|(
+literal|"Updating group %s"
+argument_list|,
+name|groupUuid
+argument_list|)
+init|)
 block|{
 name|Optional
 argument_list|<
@@ -1483,7 +1584,7 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
-name|updateCachesOnGroupUpdate
+name|evictCachesOnGroupUpdate
 argument_list|(
 name|result
 argument_list|)
@@ -1498,6 +1599,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|createGroupInNoteDbWithRetry ( InternalGroupCreation groupCreation, InternalGroupUpdate groupUpdate)
 specifier|private
@@ -2347,10 +2449,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateCachesOnGroupCreation (InternalGroup createdGroup)
+DECL|method|evictCachesOnGroupCreation (InternalGroup createdGroup)
 specifier|private
 name|void
-name|updateCachesOnGroupCreation
+name|evictCachesOnGroupCreation
 parameter_list|(
 name|InternalGroup
 name|createdGroup
@@ -2358,6 +2460,21 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"evict caches on creation of group %s"
+argument_list|,
+name|createdGroup
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// By UUID is used for the index and hence should be evicted before refreshing the index.
 name|groupCache
 operator|.
@@ -2429,10 +2546,10 @@ name|evictParentGroupsOf
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateCachesOnGroupUpdate (UpdateResult result)
+DECL|method|evictCachesOnGroupUpdate (UpdateResult result)
 specifier|private
 name|void
-name|updateCachesOnGroupUpdate
+name|evictCachesOnGroupUpdate
 parameter_list|(
 name|UpdateResult
 name|result
@@ -2440,6 +2557,21 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"evict caches on update of group %s"
+argument_list|,
+name|result
+operator|.
+name|getGroupUuid
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// By UUID is used for the index and hence should be evicted before refreshing the index.
 name|groupCache
 operator|.
