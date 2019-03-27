@@ -189,7 +189,7 @@ case|case
 name|V5_6
 case|:
 return|return
-literal|"docker.elastic.co/elasticsearch/elasticsearch:5.6.15"
+literal|"docker.elastic.co/elasticsearch/elasticsearch:5.6.16"
 return|;
 case|case
 name|V6_2
