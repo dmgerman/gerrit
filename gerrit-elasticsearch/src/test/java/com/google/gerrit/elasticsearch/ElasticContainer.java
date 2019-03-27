@@ -222,6 +222,12 @@ return|return
 literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.2"
 return|;
 case|case
+name|V6_7
+case|:
+return|return
+literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.7.0"
+return|;
+case|case
 name|V7_0
 case|:
 return|return
