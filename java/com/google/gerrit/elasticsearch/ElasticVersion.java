@@ -132,6 +132,12 @@ argument_list|(
 literal|"6.6.*"
 argument_list|)
 block|,
+DECL|enumConstant|V6_7
+name|V6_7
+argument_list|(
+literal|"6.7.*"
+argument_list|)
+block|,
 DECL|enumConstant|V7_0
 name|V7_0
 argument_list|(

@@ -187,7 +187,7 @@ case|case
 name|V5_6
 case|:
 return|return
-literal|"docker.elastic.co/elasticsearch/elasticsearch:5.6.15"
+literal|"docker.elastic.co/elasticsearch/elasticsearch:5.6.16"
 return|;
 case|case
 name|V6_2
@@ -220,10 +220,16 @@ return|return
 literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.2"
 return|;
 case|case
+name|V6_7
+case|:
+return|return
+literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.7.0"
+return|;
+case|case
 name|V7_0
 case|:
 return|return
-literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0-beta1"
+literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0-rc1"
 return|;
 block|}
 throw|throw
