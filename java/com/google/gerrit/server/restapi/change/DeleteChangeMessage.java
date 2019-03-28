@@ -785,7 +785,7 @@ name|DeleteChangeMessageOp
 argument_list|(
 name|resource
 operator|.
-name|getChangeMessageIndex
+name|getChangeMessageId
 argument_list|()
 argument_list|,
 name|newChangeMessage
@@ -1019,11 +1019,11 @@ name|DeleteChangeMessageOp
 implements|implements
 name|BatchUpdateOp
 block|{
-DECL|field|targetMessageIdx
+DECL|field|targetMessageId
 specifier|private
 specifier|final
-name|int
-name|targetMessageIdx
+name|String
+name|targetMessageId
 decl_stmt|;
 DECL|field|newMessage
 specifier|private
@@ -1031,10 +1031,10 @@ specifier|final
 name|String
 name|newMessage
 decl_stmt|;
-DECL|method|DeleteChangeMessageOp (int targetMessageIdx, String newMessage)
+DECL|method|DeleteChangeMessageOp (String targetMessageIdx, String newMessage)
 name|DeleteChangeMessageOp
 parameter_list|(
-name|int
+name|String
 name|targetMessageIdx
 parameter_list|,
 name|String
@@ -1043,7 +1043,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|targetMessageIdx
+name|targetMessageId
 operator|=
 name|targetMessageIdx
 expr_stmt|;
@@ -1089,7 +1089,7 @@ argument_list|(
 name|psId
 argument_list|)
 argument_list|,
-name|targetMessageIdx
+name|targetMessageId
 argument_list|,
 name|newMessage
 argument_list|)
