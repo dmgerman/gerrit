@@ -4903,10 +4903,10 @@ init|=
 literal|null
 decl_stmt|;
 comment|// Parse for:
-comment|// label:CodeReview=1,user=jsmith or
-comment|// label:CodeReview=1,jsmith or
-comment|// label:CodeReview=1,group=android_approvers or
-comment|// label:CodeReview=1,android_approvers
+comment|// label:Code-Review=1,user=jsmith or
+comment|// label:Code-Review=1,jsmith or
+comment|// label:Code-Review=1,group=android_approvers or
+comment|// label:Code-Review=1,android_approvers
 comment|// user/groups without a label will first attempt to match user
 comment|// Special case: votes by owners can be tracked with ",owner":
 comment|// label:Code-Review+2,owner
