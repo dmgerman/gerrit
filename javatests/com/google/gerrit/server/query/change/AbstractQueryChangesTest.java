@@ -13883,6 +13883,13 @@ argument_list|,
 name|expected
 argument_list|)
 expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"Code-Review:+1"
+argument_list|,
+name|change4
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
