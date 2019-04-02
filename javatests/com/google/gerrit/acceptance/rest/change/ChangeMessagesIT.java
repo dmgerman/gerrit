@@ -1161,6 +1161,77 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|listChangeMessagesSkippedEmpty ()
+specifier|public
+name|void
+name|listChangeMessagesSkippedEmpty
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// Change message 1: create a change.
+name|PushOneCommit
+operator|.
+name|Result
+name|result
+init|=
+name|createChange
+argument_list|()
+decl_stmt|;
+name|String
+name|changeId
+init|=
+name|result
+operator|.
+name|getChangeId
+argument_list|()
+decl_stmt|;
+comment|// Will be a new commit with empty change message on the meta branch.
+name|addOneReviewWithEmptyChangeMessage
+argument_list|(
+name|changeId
+argument_list|)
+expr_stmt|;
+comment|// Change Message 2: post a review with message "message 1".
+name|addOneReview
+argument_list|(
+name|changeId
+argument_list|,
+literal|"message"
+argument_list|)
+expr_stmt|;
+name|List
+argument_list|<
+name|ChangeMessageInfo
+argument_list|>
+name|messages
+init|=
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|changeId
+argument_list|)
+operator|.
+name|messages
+argument_list|()
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|messages
+argument_list|)
+operator|.
+name|hasSize
+argument_list|(
+literal|2
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|getOneChangeMessage ()
 specifier|public
 name|void
@@ -1672,7 +1743,7 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-comment|// Commit 2: post a review with message "message 1".
+comment|// Commit 2: post an empty change message.
 name|requestScopeOperations
 operator|.
 name|setApiUser
@@ -1683,6 +1754,12 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|addOneReviewWithEmptyChangeMessage
+argument_list|(
+name|changeId
+argument_list|)
+expr_stmt|;
+comment|// Commit 3: post a review with message "message 1".
 name|addOneReview
 argument_list|(
 name|changeId
@@ -1690,7 +1767,7 @@ argument_list|,
 literal|"message 1"
 argument_list|)
 expr_stmt|;
-comment|// Commit 3: amend a new patch set.
+comment|// Commit 4: amend a new patch set.
 name|requestScopeOperations
 operator|.
 name|setApiUser
@@ -1706,7 +1783,7 @@ argument_list|(
 name|changeId
 argument_list|)
 expr_stmt|;
-comment|// Commit 4: post a review with message "message 2".
+comment|// Commit 5: post a review with message "message 2".
 name|addOneReview
 argument_list|(
 name|changeId
@@ -1714,13 +1791,13 @@ argument_list|,
 literal|"message 2"
 argument_list|)
 expr_stmt|;
-comment|// Commit 5: amend a new patch set.
+comment|// Commit 6: amend a new patch set.
 name|amendChange
 argument_list|(
 name|changeId
 argument_list|)
 expr_stmt|;
-comment|// Commit 6: approve the change.
+comment|// Commit 7: approve the change.
 name|requestScopeOperations
 operator|.
 name|setApiUser
@@ -1752,7 +1829,7 @@ name|approve
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// commit 7: submit the change.
+comment|// commit 8: submit the change.
 name|gApi
 operator|.
 name|changes
@@ -1768,6 +1845,36 @@ argument_list|()
 operator|.
 name|submit
 argument_list|()
+expr_stmt|;
+comment|// Verifies there is only 7 change messages although there are 8 commits.
+name|List
+argument_list|<
+name|ChangeMessageInfo
+argument_list|>
+name|messages
+init|=
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|changeId
+argument_list|)
+operator|.
+name|messages
+argument_list|()
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|messages
+argument_list|)
+operator|.
+name|hasSize
+argument_list|(
+literal|7
+argument_list|)
 expr_stmt|;
 return|return
 name|result
@@ -1881,6 +1988,38 @@ operator|.
 name|review
 argument_list|(
 name|reviewInput
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|addOneReviewWithEmptyChangeMessage (String changeId)
+specifier|private
+name|void
+name|addOneReviewWithEmptyChangeMessage
+parameter_list|(
+name|String
+name|changeId
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|changeId
+argument_list|)
+operator|.
+name|current
+argument_list|()
+operator|.
+name|review
+argument_list|(
+operator|new
+name|ReviewInput
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2109,7 +2248,7 @@ name|commitsBefore
 argument_list|,
 name|changeNum
 argument_list|,
-name|deletedMessageIndex
+name|id
 argument_list|,
 name|deletedBy
 argument_list|,
@@ -2329,7 +2468,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|assertMetaCommitsAfterDeletion ( List<RevCommit> commitsBeforeDeletion, int changeNum, int deletedMessageIndex, TestAccount deletedBy, String deleteReason)
+DECL|method|assertMetaCommitsAfterDeletion ( List<RevCommit> commitsBeforeDeletion, int changeNum, String deletedMessageId, TestAccount deletedBy, String deleteReason)
 specifier|private
 name|void
 name|assertMetaCommitsAfterDeletion
@@ -2343,8 +2482,8 @@ parameter_list|,
 name|int
 name|changeNum
 parameter_list|,
-name|int
-name|deletedMessageIndex
+name|String
+name|deletedMessageId
 parameter_list|,
 name|TestAccount
 name|deletedBy
@@ -2425,9 +2564,18 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|i
-operator|==
-name|deletedMessageIndex
+name|commitBefore
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|deletedMessageId
+argument_list|)
 condition|)
 block|{
 name|byte

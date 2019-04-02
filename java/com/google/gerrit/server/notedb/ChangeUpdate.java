@@ -2528,13 +2528,13 @@ name|newMessage
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteChangeMessageByRewritingHistory (int targetMessageIdx, String newMessage)
+DECL|method|deleteChangeMessageByRewritingHistory (String targetMessageId, String newMessage)
 specifier|public
 name|void
 name|deleteChangeMessageByRewritingHistory
 parameter_list|(
-name|int
-name|targetMessageIdx
+name|String
+name|targetMessageId
 parameter_list|,
 name|String
 name|newMessage
@@ -2551,7 +2551,7 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|targetMessageIdx
+name|targetMessageId
 argument_list|,
 name|newMessage
 argument_list|)

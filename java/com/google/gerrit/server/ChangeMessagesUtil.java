@@ -774,9 +774,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Replace an existing change message with the provided new message.    *    *<p>The ID of a change message is different between NoteDb and ReviewDb. In NoteDb, it's the    * commit SHA-1, but in ReviewDb it was generated randomly. Taking the target message as an index    * rather than an ID allowed us to delete the message from both NoteDb and ReviewDb.    *    * @param update change update.    * @param targetMessageIdx the index of the target change message.    * @param newMessage the new message which is going to replace the old.    */
-comment|// TODO(xchangcheng): Reconsider implementation now that there is only a single ID.
-DECL|method|replaceChangeMessage (ChangeUpdate update, int targetMessageIdx, String newMessage)
+comment|/**    * Replace an existing change message with the provided new message.    *    *<p>The ID of a change message is different between NoteDb and ReviewDb. In NoteDb, it's the    * commit SHA-1, but in ReviewDb it was generated randomly. Taking the target message as an index    * rather than an ID allowed us to delete the message from both NoteDb and ReviewDb.    *    * @param update change update.    * @param targetMessageId the id of the target change message.    * @param newMessage the new message which is going to replace the old.    */
+DECL|method|replaceChangeMessage (ChangeUpdate update, String targetMessageId, String newMessage)
 specifier|public
 name|void
 name|replaceChangeMessage
@@ -784,8 +783,8 @@ parameter_list|(
 name|ChangeUpdate
 name|update
 parameter_list|,
-name|int
-name|targetMessageIdx
+name|String
+name|targetMessageId
 parameter_list|,
 name|String
 name|newMessage
@@ -795,7 +794,7 @@ name|update
 operator|.
 name|deleteChangeMessageByRewritingHistory
 argument_list|(
-name|targetMessageIdx
+name|targetMessageId
 argument_list|,
 name|newMessage
 argument_list|)
