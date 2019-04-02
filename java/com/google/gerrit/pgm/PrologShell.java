@@ -239,6 +239,22 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"-q"
+argument_list|,
+name|usage
+operator|=
+literal|"quiet mode without banner"
+argument_list|)
+DECL|field|quiet
+specifier|private
+name|boolean
+name|quiet
+decl_stmt|;
+annotation|@
 name|Override
 DECL|method|run ()
 specifier|public
@@ -246,9 +262,16 @@ name|int
 name|run
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
+name|quiet
+condition|)
+block|{
 name|banner
 argument_list|()
 expr_stmt|;
+block|}
 name|BufferingPrologControl
 name|pcl
 init|=
@@ -412,11 +435,18 @@ argument_list|,
 literal|"cafeteria"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|quiet
+condition|)
+block|{
 name|write
 argument_list|(
 literal|"% halt\n"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|0
 return|;
