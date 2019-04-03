@@ -3286,11 +3286,16 @@ name|runEach
 argument_list|(
 name|l
 lambda|->
+name|messages
+operator|.
+name|addAll
+argument_list|(
 name|l
 operator|.
 name|onCommitReceived
 argument_list|(
 name|receiveEvent
+argument_list|)
 argument_list|)
 argument_list|,
 name|CommitValidationException
