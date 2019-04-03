@@ -69,6 +69,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_NOT_FOUND
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -143,6 +157,26 @@ operator|.
 name|util
 operator|.
 name|RestCall
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|rest
+operator|.
+name|util
+operator|.
+name|RestCall
+operator|.
+name|Method
 import|;
 end_import
 
@@ -589,6 +623,29 @@ name|PLUGIN_NAME
 operator|+
 literal|"/test-collection/1/update"
 argument_list|)
+argument_list|,
+name|RestCall
+operator|.
+name|builder
+argument_list|(
+name|Method
+operator|.
+name|GET
+argument_list|,
+literal|"/plugins/"
+operator|+
+name|PLUGIN_NAME
+operator|+
+literal|"/not-found"
+argument_list|)
+operator|.
+name|expectedResponseCode
+argument_list|(
+name|SC_NOT_FOUND
+argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|/** Module for all HTTP bindings. */
