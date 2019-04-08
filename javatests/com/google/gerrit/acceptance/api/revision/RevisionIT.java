@@ -5086,8 +5086,6 @@ operator|+
 name|PushOneCommit
 operator|.
 name|FILE_NAME
-operator|+
-literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
