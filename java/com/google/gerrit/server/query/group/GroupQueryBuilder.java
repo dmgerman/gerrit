@@ -445,6 +445,8 @@ extends|extends
 name|QueryBuilder
 argument_list|<
 name|InternalGroup
+argument_list|,
+name|GroupQueryBuilder
 argument_list|>
 block|{
 DECL|field|FIELD_UUID
@@ -600,6 +602,8 @@ block|{
 name|super
 argument_list|(
 name|mydef
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|this
