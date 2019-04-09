@@ -223,13 +223,13 @@ case|case
 name|V6_7
 case|:
 return|return
-literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.7.0"
+literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:6.7.1"
 return|;
 case|case
 name|V7_0
 case|:
 return|return
-literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0-rc1"
+literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0-rc2"
 return|;
 block|}
 throw|throw

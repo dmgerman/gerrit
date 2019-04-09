@@ -2842,7 +2842,7 @@ name|stringBuilder
 operator|.
 name|append
 argument_list|(
-literal|"\n\nThe following files contain Git conflicts:\n"
+literal|"\n\nThe following files contain Git conflicts:"
 argument_list|)
 expr_stmt|;
 name|cherryPickCommit
@@ -2864,17 +2864,12 @@ name|stringBuilder
 operator|.
 name|append
 argument_list|(
-literal|"* "
+literal|"\n* "
 argument_list|)
 operator|.
 name|append
 argument_list|(
 name|filePath
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"\n"
 argument_list|)
 argument_list|)
 expr_stmt|;
