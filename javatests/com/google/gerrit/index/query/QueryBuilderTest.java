@@ -308,6 +308,8 @@ extends|extends
 name|QueryBuilder
 argument_list|<
 name|Object
+argument_list|,
+name|TestQueryBuilder
 argument_list|>
 block|{
 DECL|method|TestQueryBuilder ()
@@ -326,6 +328,8 @@ name|TestQueryBuilder
 operator|.
 name|class
 argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

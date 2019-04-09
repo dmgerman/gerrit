@@ -257,6 +257,8 @@ extends|extends
 name|QueryBuilder
 argument_list|<
 name|ProjectData
+argument_list|,
+name|ProjectQueryBuilder
 argument_list|>
 block|{
 DECL|field|FIELD_LIMIT
@@ -302,6 +304,8 @@ block|{
 name|super
 argument_list|(
 name|mydef
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

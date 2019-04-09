@@ -499,6 +499,8 @@ extends|extends
 name|QueryBuilder
 argument_list|<
 name|AccountState
+argument_list|,
+name|AccountQueryBuilder
 argument_list|>
 block|{
 DECL|field|logger
@@ -850,6 +852,8 @@ block|{
 name|super
 argument_list|(
 name|mydef
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|this

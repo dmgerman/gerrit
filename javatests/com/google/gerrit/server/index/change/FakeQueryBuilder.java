@@ -166,7 +166,7 @@ block|{
 name|super
 argument_list|(
 operator|new
-name|FakeQueryBuilder
+name|ChangeQueryBuilder
 operator|.
 name|Definition
 argument_list|<>
