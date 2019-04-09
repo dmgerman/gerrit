@@ -495,7 +495,7 @@ name|keySet
 argument_list|()
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|ImmutableSet
 operator|.
@@ -590,7 +590,7 @@ name|keySet
 argument_list|()
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|ImmutableSet
 operator|.
@@ -671,7 +671,7 @@ name|keySet
 argument_list|()
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|ImmutableSet
 operator|.

@@ -2194,7 +2194,7 @@ name|keySet
 argument_list|()
 argument_list|)
 operator|.
-name|containsAllOf
+name|containsAtLeast
 argument_list|(
 literal|"followup"
 argument_list|,
@@ -2547,7 +2547,7 @@ name|keySet
 argument_list|()
 argument_list|)
 operator|.
-name|containsAllOf
+name|containsAtLeast
 argument_list|(
 literal|"cherrypick"
 argument_list|,

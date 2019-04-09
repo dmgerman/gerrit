@@ -198,6 +198,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Correspondence
+operator|.
+name|BinaryPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|acceptance
@@ -5116,8 +5132,12 @@ name|getRelatedChangeToStatusCorrespondence
 parameter_list|()
 block|{
 return|return
-operator|new
 name|Correspondence
+operator|.
+name|from
+argument_list|(
+operator|new
+name|BinaryPredicate
 argument_list|<
 name|RelatedChangeAndCommitInfo
 argument_list|,
@@ -5129,7 +5149,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|compare
+name|apply
 parameter_list|(
 name|RelatedChangeAndCommitInfo
 name|relatedChangeAndCommitInfo
@@ -5151,18 +5171,10 @@ name|status
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
+block|}
+argument_list|,
 literal|"has status"
-return|;
-block|}
-block|}
+argument_list|)
 return|;
 block|}
 DECL|method|parseBody (RevCommit c)

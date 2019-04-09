@@ -647,7 +647,7 @@ name|asUniqueUser
 argument_list|()
 argument_list|)
 operator|.
-name|isSameAs
+name|isSameInstanceAs
 argument_list|(
 name|self
 operator|.
@@ -696,7 +696,7 @@ name|asUniqueUser
 argument_list|()
 argument_list|)
 operator|.
-name|isSameAs
+name|isSameInstanceAs
 argument_list|(
 name|self
 operator|.
@@ -983,7 +983,7 @@ name|asUniqueUser
 argument_list|()
 argument_list|)
 operator|.
-name|isSameAs
+name|isSameInstanceAs
 argument_list|(
 name|self
 operator|.
