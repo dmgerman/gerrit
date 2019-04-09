@@ -330,6 +330,22 @@ name|google
 operator|.
 name|common
 operator|.
+name|truth
+operator|.
+name|Correspondence
+operator|.
+name|BinaryPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -6773,7 +6789,7 @@ argument_list|(
 name|names
 argument_list|)
 operator|.
-name|containsAllOf
+name|containsAtLeast
 argument_list|(
 literal|"Administrators"
 argument_list|,
@@ -11160,8 +11176,12 @@ name|getAccountToUsernameCorrespondence
 parameter_list|()
 block|{
 return|return
-operator|new
 name|Correspondence
+operator|.
+name|from
+argument_list|(
+operator|new
+name|BinaryPredicate
 argument_list|<
 name|AccountInfo
 argument_list|,
@@ -11173,7 +11193,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|compare
+name|apply
 parameter_list|(
 name|AccountInfo
 name|actualAccount
@@ -11206,18 +11226,10 @@ name|expectedName
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
+block|}
+argument_list|,
 literal|"has username"
-return|;
-block|}
-block|}
+argument_list|)
 return|;
 block|}
 DECL|method|assertStaleGroupAndReindex (AccountGroup.UUID groupUuid)

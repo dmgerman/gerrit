@@ -576,6 +576,22 @@ name|google
 operator|.
 name|common
 operator|.
+name|truth
+operator|.
+name|Correspondence
+operator|.
+name|BinaryPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -8077,7 +8093,7 @@ name|getEmails
 argument_list|()
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|emails
 argument_list|)
@@ -8839,7 +8855,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
-name|containsAllOf
+name|containsAtLeast
 argument_list|(
 name|extId1
 argument_list|,
@@ -20350,8 +20366,12 @@ name|getGroupToNameCorrespondence
 parameter_list|()
 block|{
 return|return
-operator|new
 name|Correspondence
+operator|.
+name|from
+argument_list|(
+operator|new
+name|BinaryPredicate
 argument_list|<
 name|GroupInfo
 argument_list|,
@@ -20363,7 +20383,7 @@ annotation|@
 name|Override
 specifier|public
 name|boolean
-name|compare
+name|apply
 parameter_list|(
 name|GroupInfo
 name|actualGroup
@@ -20396,18 +20416,10 @@ name|expectedName
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
+block|}
+argument_list|,
 literal|"has name"
-return|;
-block|}
-block|}
+argument_list|)
 return|;
 block|}
 DECL|method|assertSequenceNumbers (List<SshKeyInfo> sshKeys)

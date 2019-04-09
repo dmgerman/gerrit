@@ -3895,7 +3895,7 @@ argument_list|(
 name|commitsInRepo
 argument_list|)
 operator|.
-name|containsAllOf
+name|containsAtLeast
 argument_list|(
 literal|"Initial empty repository"
 argument_list|,

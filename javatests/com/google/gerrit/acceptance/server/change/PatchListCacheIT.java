@@ -2068,7 +2068,7 @@ name|key
 argument_list|)
 argument_list|)
 operator|.
-name|isSameAs
+name|isSameInstanceAs
 argument_list|(
 name|tombstone
 argument_list|)

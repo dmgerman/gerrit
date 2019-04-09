@@ -634,7 +634,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|isSameAs
+name|isSameInstanceAs
 argument_list|(
 name|out
 operator|.
@@ -754,7 +754,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|isSameAs
+name|isSameInstanceAs
 argument_list|(
 name|out
 operator|.
@@ -836,7 +836,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|isSameAs
+name|isSameInstanceAs
 argument_list|(
 name|out
 operator|.
@@ -963,7 +963,7 @@ name|getClass
 argument_list|()
 argument_list|)
 operator|.
-name|isSameAs
+name|isSameInstanceAs
 argument_list|(
 name|AndChangeSource
 operator|.
@@ -1042,7 +1042,7 @@ name|getClass
 argument_list|()
 argument_list|)
 operator|.
-name|isSameAs
+name|isSameInstanceAs
 argument_list|(
 name|OrSource
 operator|.
@@ -1137,7 +1137,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|isSameAs
+name|isSameInstanceAs
 argument_list|(
 name|out
 operator|.

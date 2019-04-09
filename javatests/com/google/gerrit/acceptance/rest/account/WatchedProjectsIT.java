@@ -431,7 +431,7 @@ argument_list|(
 name|persistedWatchedProjects
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|projectsToWatch
 argument_list|)
@@ -643,7 +643,7 @@ argument_list|(
 name|persistedWatchedProjects
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|projectsToWatch
 argument_list|)
@@ -875,7 +875,7 @@ argument_list|(
 name|persistedWatchedProjects
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|projectsToWatch
 argument_list|)
@@ -1252,7 +1252,7 @@ argument_list|(
 name|watchedProjects
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|projectsToWatch
 argument_list|)
@@ -1447,7 +1447,7 @@ argument_list|(
 name|persistedWatchedProjects
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|projectsToWatch
 argument_list|)

@@ -361,7 +361,7 @@ argument_list|(
 name|curr2
 argument_list|)
 operator|.
-name|isNotSameAs
+name|isNotSameInstanceAs
 argument_list|(
 name|curr1
 argument_list|)

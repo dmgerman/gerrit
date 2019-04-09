@@ -1204,7 +1204,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
-name|containsAllOf
+name|containsAtLeast
 argument_list|(
 name|HttpStatus
 operator|.

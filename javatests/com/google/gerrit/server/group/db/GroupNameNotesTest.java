@@ -2033,7 +2033,7 @@ argument_list|(
 name|commitsAfterFurtherGroup
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|commitsAfterCreation
 argument_list|)
@@ -2114,7 +2114,7 @@ argument_list|(
 name|commitsAfterRename
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|commitsAfterCreation
 argument_list|)

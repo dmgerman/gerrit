@@ -343,7 +343,9 @@ name|hasNoMessages
 parameter_list|()
 block|{
 name|check
-argument_list|()
+argument_list|(
+literal|"hasNoMessages()"
+argument_list|)
 operator|.
 name|withMessage
 argument_list|(
@@ -468,7 +470,7 @@ argument_list|(
 name|got
 argument_list|)
 operator|.
-name|containsAllIn
+name|containsAtLeastElementsIn
 argument_list|(
 name|expectedLines
 argument_list|)

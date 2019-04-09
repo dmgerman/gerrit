@@ -3736,7 +3736,7 @@ operator|.
 name|commonLines
 argument_list|()
 operator|.
-name|containsAllOf
+name|containsAtLeast
 argument_list|(
 literal|"Line 1"
 argument_list|,
@@ -22176,7 +22176,7 @@ operator|.
 name|commonLines
 argument_list|()
 operator|.
-name|containsAllOf
+name|containsAtLeast
 argument_list|(
 literal|"Line 1"
 argument_list|,
@@ -22362,7 +22362,7 @@ operator|.
 name|commonLines
 argument_list|()
 operator|.
-name|containsAllOf
+name|containsAtLeast
 argument_list|(
 literal|"Line 1"
 argument_list|,
