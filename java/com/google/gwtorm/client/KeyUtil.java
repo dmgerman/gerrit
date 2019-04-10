@@ -84,23 +84,6 @@ operator|new
 name|StandardKeyEncoder
 argument_list|()
 decl_stmt|;
-comment|/**    * Set the encoder implementation to a valid implementation.    *    *<p>Server-side code needs to set the encoder to a {@link    * com.google.gwtorm.server.StandardKeyEncoder} instance prior to invoking any methods in this    * class. Typically this is done by the {@link com.google.gwtorm.server.SchemaFactory}    * implementation's static initializer.    */
-DECL|method|setEncoderImpl (final Encoder e)
-specifier|public
-specifier|static
-name|void
-name|setEncoderImpl
-parameter_list|(
-specifier|final
-name|Encoder
-name|e
-parameter_list|)
-block|{
-name|ENCODER_IMPL
-operator|=
-name|e
-expr_stmt|;
-block|}
 comment|/**    * Determine if two keys are equal, supporting null references.    *    * @param<T> type of the key entity.    * @param a first key to test; may be null.    * @param b second key to test; may be null.    * @return true if both<code>a</code> and<code>b</code> are null, or if both are not-null and    *<code>a.equals(b)</code> is true. Otherwise false.    */
 DECL|method|eq (final T a, final T b)
 specifier|public
