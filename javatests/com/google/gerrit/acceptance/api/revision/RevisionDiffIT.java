@@ -3736,13 +3736,15 @@ operator|.
 name|commonLines
 argument_list|()
 operator|.
-name|containsAtLeast
+name|containsExactly
 argument_list|(
 literal|"Line 1"
 argument_list|,
 literal|"Line 2"
 argument_list|,
 literal|"Line 3"
+argument_list|,
+literal|""
 argument_list|)
 operator|.
 name|inOrder
