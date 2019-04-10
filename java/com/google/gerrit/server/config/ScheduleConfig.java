@@ -935,6 +935,23 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
+comment|// We only need to log the exception message; it already includes the
+comment|// section.subsection.key and bad value.
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"%s"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|INVALID_CONFIG
 return|;
@@ -1172,6 +1189,21 @@ name|DateTimeParseException
 name|e
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Invalid start time: %s"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|INVALID_CONFIG
 return|;
