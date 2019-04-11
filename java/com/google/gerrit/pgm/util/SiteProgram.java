@@ -758,6 +758,9 @@ name|get
 argument_list|(
 name|path
 argument_list|)
+operator|.
+name|normalize
+argument_list|()
 expr_stmt|;
 block|}
 DECL|field|dsProvider
@@ -785,21 +788,6 @@ specifier|protected
 name|SiteProgram
 parameter_list|()
 block|{}
-DECL|method|SiteProgram (Path sitePath)
-specifier|protected
-name|SiteProgram
-parameter_list|(
-name|Path
-name|sitePath
-parameter_list|)
-block|{
-name|this
-operator|.
-name|sitePath
-operator|=
-name|sitePath
-expr_stmt|;
-block|}
 DECL|method|SiteProgram (Path sitePath, Provider<DataSource> dsProvider)
 specifier|protected
 name|SiteProgram
@@ -819,12 +807,31 @@ operator|.
 name|sitePath
 operator|=
 name|sitePath
+operator|.
+name|normalize
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
 name|dsProvider
 operator|=
 name|dsProvider
+expr_stmt|;
+block|}
+DECL|method|SiteProgram (Path sitePath)
+specifier|protected
+name|SiteProgram
+parameter_list|(
+name|Path
+name|sitePath
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|sitePath
+argument_list|,
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 comment|/** @return the site path specified on the command line. */
