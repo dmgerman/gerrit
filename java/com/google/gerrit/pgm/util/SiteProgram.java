@@ -451,6 +451,9 @@ name|get
 argument_list|(
 name|path
 argument_list|)
+operator|.
+name|normalize
+argument_list|()
 expr_stmt|;
 block|}
 DECL|field|sitePath
@@ -483,6 +486,9 @@ operator|.
 name|sitePath
 operator|=
 name|sitePath
+operator|.
+name|normalize
+argument_list|()
 expr_stmt|;
 block|}
 comment|/** @return the site path specified on the command line. */
