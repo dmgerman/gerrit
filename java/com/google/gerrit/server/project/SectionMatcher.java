@@ -150,7 +150,7 @@ if|if
 condition|(
 name|AccessSection
 operator|.
-name|isValid
+name|isValidRefSectionName
 argument_list|(
 name|ref
 argument_list|)

@@ -78,7 +78,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|RefConfigSection
+name|AccessSection
 import|;
 end_import
 
@@ -135,7 +135,7 @@ name|MostSpecificComparator
 implements|implements
 name|Comparator
 argument_list|<
-name|RefConfigSection
+name|AccessSection
 argument_list|>
 block|{
 DECL|field|refName
@@ -161,15 +161,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|compare (RefConfigSection a, RefConfigSection b)
+DECL|method|compare (AccessSection a, AccessSection b)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-name|RefConfigSection
+name|AccessSection
 name|a
 parameter_list|,
-name|RefConfigSection
+name|AccessSection
 name|b
 parameter_list|)
 block|{

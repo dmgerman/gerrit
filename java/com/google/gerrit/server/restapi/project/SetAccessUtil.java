@@ -1106,7 +1106,7 @@ condition|(
 operator|!
 name|AccessSection
 operator|.
-name|isValid
+name|isValidRefSectionName
 argument_list|(
 name|name
 argument_list|)
