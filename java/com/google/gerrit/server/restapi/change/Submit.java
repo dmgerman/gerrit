@@ -1796,6 +1796,9 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
+comment|// Read the ChangeNotes only after MergeOp is fully done (including MergeOp#close) to be sure
+comment|// to have the correct state of the repo.
 try|try
 block|{
 name|change
@@ -1832,7 +1835,6 @@ argument_list|(
 literal|"change is deleted"
 argument_list|)
 throw|;
-block|}
 block|}
 if|if
 condition|(
