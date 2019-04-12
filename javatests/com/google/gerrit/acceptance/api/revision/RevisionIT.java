@@ -2364,7 +2364,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2387,7 +2387,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2410,7 +2410,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2429,6 +2429,7 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|)
 operator|.
 name|deleteVote
@@ -2472,6 +2473,7 @@ operator|==
 name|user
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -2517,7 +2519,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2593,7 +2595,7 @@ name|_accountId
 operator|==
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -2986,7 +2988,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3987,7 +3989,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -4484,7 +4486,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -4657,7 +4659,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -4712,7 +4714,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -5152,7 +5154,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -5242,7 +5244,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -6042,7 +6044,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6198,6 +6200,7 @@ argument_list|(
 name|userToNotify
 operator|.
 name|email
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
@@ -6273,7 +6276,7 @@ operator|.
 name|admin2
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6292,6 +6295,7 @@ argument_list|(
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|ReviewerState
 operator|.
@@ -6331,7 +6335,7 @@ operator|.
 name|user2
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6500,6 +6504,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -6515,6 +6520,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -6525,6 +6531,7 @@ name|admin2
 argument_list|()
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -6951,7 +6958,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -7381,7 +7388,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -7412,7 +7419,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -7491,7 +7498,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -7566,7 +7573,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -7713,7 +7720,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -7883,7 +7890,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -7943,7 +7950,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -8889,7 +8896,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -9207,7 +9214,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -9303,7 +9310,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -10297,6 +10304,7 @@ argument_list|(
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|draftApi
@@ -10542,6 +10550,7 @@ argument_list|(
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -11441,7 +11450,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -11460,7 +11469,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -11508,7 +11517,7 @@ name|reviewer
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -11588,7 +11597,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -11606,7 +11615,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -11630,7 +11639,7 @@ name|reviewer
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -11670,7 +11679,7 @@ name|reviewer
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -11744,7 +11753,7 @@ name|isEqualTo
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -11788,12 +11797,12 @@ name|of
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -11932,6 +11941,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -11949,6 +11959,7 @@ argument_list|(
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -11963,6 +11974,7 @@ argument_list|(
 name|admin
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Also vote on it with another user
@@ -11972,7 +11984,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -12004,7 +12016,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -12084,6 +12096,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -12091,6 +12104,7 @@ argument_list|,
 name|user
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -12325,7 +12339,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -12505,7 +12519,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -12542,7 +12556,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -12570,7 +12584,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo

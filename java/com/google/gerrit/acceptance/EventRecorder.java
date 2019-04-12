@@ -476,6 +476,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 argument_list|)
 return|;

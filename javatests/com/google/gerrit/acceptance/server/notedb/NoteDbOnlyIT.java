@@ -1988,7 +1988,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|,

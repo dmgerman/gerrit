@@ -911,6 +911,7 @@ argument_list|,
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -966,7 +967,7 @@ literal|"Add Email"
 argument_list|,
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|u
@@ -988,7 +989,7 @@ name|email
 argument_list|,
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|email
@@ -1002,7 +1003,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

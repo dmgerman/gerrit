@@ -473,7 +473,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|userRepo
@@ -490,7 +490,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1084,7 +1084,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|userRepo
@@ -1147,7 +1147,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1202,7 +1202,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1277,7 +1277,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|userRepo
@@ -1294,7 +1294,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1361,7 +1361,7 @@ name|addReviewer
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -1375,7 +1375,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1421,7 +1421,7 @@ name|reviewer
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -1522,7 +1522,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1679,7 +1679,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|userRepo
@@ -1730,7 +1730,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1928,7 +1928,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|userRepo
@@ -1961,7 +1961,7 @@ name|addReviewer
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -2003,7 +2003,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2091,7 +2091,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -2170,6 +2170,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 argument_list|,
 name|TimeUtil

@@ -739,7 +739,7 @@ name|assertPersonEquals
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|updatedHead
@@ -752,7 +752,7 @@ name|assertPersonEquals
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|updatedHead
@@ -953,7 +953,7 @@ name|assertPersonEquals
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|headAfterFirstSubmit
@@ -966,7 +966,7 @@ name|assertPersonEquals
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|headAfterFirstSubmit
@@ -1063,7 +1063,7 @@ name|assertPersonEquals
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|headAfterSecondSubmit
@@ -3087,7 +3087,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -3515,7 +3515,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -3734,7 +3734,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -3778,7 +3778,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -3939,7 +3939,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -3973,7 +3973,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -4063,6 +4063,7 @@ operator|+
 name|admin
 operator|.
 name|username
+argument_list|()
 operator|+
 literal|"' or was it deleted?"
 argument_list|)
@@ -4129,7 +4130,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -4171,7 +4172,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -4282,7 +4283,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4385,6 +4386,7 @@ operator|+
 name|user
 operator|.
 name|username
+argument_list|()
 operator|+
 literal|"' or was it deleted?"
 argument_list|)
@@ -4451,7 +4453,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -4493,7 +4495,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -4552,7 +4554,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4855,7 +4857,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|repo2
@@ -4942,7 +4944,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -305,6 +305,7 @@ argument_list|(
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

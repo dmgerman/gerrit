@@ -1571,6 +1571,7 @@ operator|=
 name|user
 operator|.
 name|email
+argument_list|()
 expr_stmt|;
 name|RestApiCallHelper
 operator|.
@@ -1660,6 +1661,7 @@ argument_list|,
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|,
 literal|"Code-Review"
 argument_list|)
@@ -1731,6 +1733,7 @@ operator|=
 name|user
 operator|.
 name|email
+argument_list|()
 expr_stmt|;
 name|RestApiCallHelper
 operator|.
@@ -1824,6 +1827,7 @@ argument_list|,
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|,
 literal|"Code-Review"
 argument_list|)

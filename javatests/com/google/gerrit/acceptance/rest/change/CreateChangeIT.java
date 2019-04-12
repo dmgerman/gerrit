@@ -1314,7 +1314,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1333,7 +1333,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1390,7 +1390,8 @@ name|containsExactly
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1406,6 +1407,7 @@ argument_list|(
 name|admin
 operator|.
 name|fullName
+argument_list|()
 operator|+
 literal|" has uploaded this change for review."
 argument_list|)
@@ -1516,7 +1518,7 @@ name|SIGNED_OFF_BY_TAG
 argument_list|,
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 operator|.
 name|getEmailAddress
@@ -1646,7 +1648,7 @@ name|SIGNED_OFF_BY_TAG
 argument_list|,
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 operator|.
 name|getEmailAddress
@@ -2108,6 +2110,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 argument_list|,
 name|c
@@ -3197,6 +3200,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ChangeInput
@@ -3249,6 +3253,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ChangeInput
@@ -3628,6 +3633,7 @@ operator|+
 name|admin
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|"/preferences"
 argument_list|)
@@ -3672,6 +3678,7 @@ operator|+
 name|admin
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|"/preferences"
 argument_list|,
@@ -3873,7 +3880,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -3932,7 +3939,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -3966,7 +3973,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo

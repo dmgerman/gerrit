@@ -482,7 +482,7 @@ literal|"gerrit:commit_author(user(%d), '%s', '%s')"
 argument_list|,
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -491,10 +491,12 @@ argument_list|,
 name|user
 operator|.
 name|fullName
+argument_list|()
 argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -575,7 +577,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -744,7 +746,7 @@ name|author
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -752,7 +754,7 @@ name|committer
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.

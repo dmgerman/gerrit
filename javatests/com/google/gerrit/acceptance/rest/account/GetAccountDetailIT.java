@@ -204,6 +204,7 @@ operator|+
 name|admin
 operator|.
 name|username
+argument_list|()
 operator|+
 literal|"/detail/"
 argument_list|)
@@ -240,7 +241,7 @@ name|getAccount
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 decl_stmt|;

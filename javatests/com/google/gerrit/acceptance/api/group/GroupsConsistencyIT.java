@@ -571,6 +571,7 @@ argument_list|(
 name|user
 operator|.
 name|fullName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -588,6 +589,7 @@ argument_list|(
 name|admin
 operator|.
 name|fullName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi

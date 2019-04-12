@@ -518,6 +518,7 @@ argument_list|,
 name|user2
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Create a project and restrict its visibility to the group
@@ -627,7 +628,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|repo
@@ -669,6 +670,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|String
@@ -686,7 +688,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -741,7 +743,7 @@ name|setApiUser
 argument_list|(
 name|user2
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -792,7 +794,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -818,7 +820,7 @@ name|setApiUser
 argument_list|(
 name|user
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -852,7 +854,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -876,7 +878,7 @@ name|setApiUser
 argument_list|(
 name|user2
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

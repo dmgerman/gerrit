@@ -1102,6 +1102,7 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|u
 lambda|->
@@ -1122,6 +1123,7 @@ argument_list|,
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|email
 argument_list|)
@@ -1270,6 +1272,7 @@ operator|+
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -1285,6 +1288,7 @@ argument_list|(
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 operator|.
 name|setPreferred
@@ -1461,6 +1465,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|email
 argument_list|)
@@ -1521,6 +1526,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1576,10 +1582,12 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -1609,10 +1617,12 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1647,6 +1657,7 @@ argument_list|(
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 operator|.
 name|setPreferred
@@ -2132,6 +2143,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)

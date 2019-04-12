@@ -1928,7 +1928,7 @@ name|setApiUser
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1945,6 +1945,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -1969,6 +1970,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -2998,7 +3000,7 @@ name|author
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -3006,7 +3008,7 @@ name|committer
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -3239,7 +3241,7 @@ name|author
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -3247,7 +3249,7 @@ name|committer
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -3484,7 +3486,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -3743,7 +3745,7 @@ name|author
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -3754,7 +3756,7 @@ name|PersonIdent
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -4101,7 +4103,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -4335,7 +4337,7 @@ name|setApiUser
 argument_list|(
 name|user3
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4368,12 +4370,14 @@ operator|+
 name|user
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|",cc="
 operator|+
 name|user2
 operator|.
 name|email
+argument_list|()
 decl_stmt|;
 name|sender
 operator|.
@@ -4508,7 +4512,8 @@ name|containsExactly
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|sender
@@ -4571,15 +4576,18 @@ name|containsExactly
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|,
 name|user2
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|,
 name|user3
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|sender
@@ -4604,6 +4612,7 @@ operator|+
 name|user3
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|r
@@ -4638,6 +4647,7 @@ operator|+
 name|user3
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|r
@@ -4672,6 +4682,7 @@ operator|+
 name|user3
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|r
@@ -4706,6 +4717,7 @@ operator|+
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertNotifyTo
@@ -4735,6 +4747,7 @@ operator|+
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|r
@@ -4769,6 +4782,7 @@ operator|+
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|r
@@ -4814,6 +4828,7 @@ operator|+
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|r
@@ -4860,12 +4875,14 @@ operator|+
 name|admin
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|",cc="
 operator|+
 name|user
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|",cc="
 operator|+
@@ -4875,6 +4892,7 @@ name|user2
 argument_list|()
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|r
@@ -4932,6 +4950,7 @@ operator|+
 name|admin
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|",cc="
 operator|+
@@ -4942,6 +4961,7 @@ operator|+
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|r
@@ -5202,10 +5222,12 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|,
 name|user2
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gin
@@ -5302,6 +5324,7 @@ operator|+
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|r
@@ -5352,18 +5375,21 @@ operator|+
 name|admin
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|",r="
 operator|+
 name|user
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|",r="
 operator|+
 name|user2
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|r
@@ -5408,6 +5434,7 @@ operator|+
 name|admin
 operator|.
 name|email
+argument_list|()
 operator|+
 literal|",r="
 operator|+
@@ -5418,6 +5445,7 @@ operator|+
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|r
@@ -5678,10 +5706,12 @@ argument_list|(
 name|user
 operator|.
 name|username
+argument_list|()
 argument_list|,
 name|user2
 operator|.
 name|username
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|gin
@@ -6356,7 +6386,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|userRepo
@@ -6391,6 +6421,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -6504,7 +6535,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|userRepo
@@ -7044,7 +7075,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -7085,7 +7116,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -7614,7 +7645,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -7754,7 +7785,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -7848,7 +7879,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -8013,7 +8044,7 @@ name|author
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -8021,7 +8052,7 @@ name|committer
 argument_list|(
 name|user2
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -8082,6 +8113,7 @@ argument_list|(
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -8101,10 +8133,12 @@ argument_list|(
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|user2
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -8140,11 +8174,13 @@ name|containsExactly
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|,
 name|user2
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -8193,6 +8229,7 @@ argument_list|(
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -8220,7 +8257,7 @@ name|author
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -8228,7 +8265,7 @@ name|committer
 argument_list|(
 name|user2
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -8271,6 +8308,7 @@ argument_list|(
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -8293,10 +8331,12 @@ argument_list|(
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|user2
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -8332,11 +8372,13 @@ name|containsExactly
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|,
 name|user2
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -8362,7 +8404,7 @@ name|author
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -8370,7 +8412,7 @@ name|committer
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -8466,6 +8508,7 @@ init|=
 name|admin
 operator|.
 name|fullName
+argument_list|()
 operator|.
 name|equals
 argument_list|(
@@ -8515,6 +8558,7 @@ argument_list|(
 name|admin
 operator|.
 name|fullName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -8558,6 +8602,7 @@ argument_list|(
 name|user
 operator|.
 name|fullName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -8741,7 +8786,7 @@ name|author
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -8749,7 +8794,7 @@ name|committer
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -8993,7 +9038,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -9069,7 +9114,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -9338,7 +9383,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -9535,7 +9580,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -9637,7 +9682,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -9696,7 +9741,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -9714,10 +9759,12 @@ argument_list|,
 name|admin
 operator|.
 name|fullName
+argument_list|()
 argument_list|,
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 argument_list|,
 literal|"b.txt"
@@ -9747,7 +9794,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -9800,7 +9847,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -9839,7 +9886,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -9938,7 +9985,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -10023,7 +10070,7 @@ name|create
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|userRepo
@@ -10139,7 +10186,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -10237,7 +10284,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -10276,7 +10323,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -10343,7 +10390,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -10382,7 +10429,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -11187,7 +11234,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -11537,7 +11584,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -12342,7 +12389,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -12697,7 +12744,8 @@ name|pushWithReviewerInFooter
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 operator|.
 name|toString
 argument_list|()
@@ -12721,6 +12769,7 @@ argument_list|(
 name|user
 operator|.
 name|fullName
+argument_list|()
 argument_list|,
 name|user
 argument_list|)
@@ -12855,7 +12904,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -14107,6 +14156,7 @@ argument_list|(
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|sender
@@ -15107,6 +15157,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -15131,6 +15182,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -15236,6 +15288,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -15260,6 +15313,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -16632,7 +16686,7 @@ name|author
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 operator|.
@@ -17159,7 +17213,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -17518,6 +17572,7 @@ argument_list|(
 name|reviewer
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -17651,7 +17706,7 @@ name|containsExactly
 argument_list|(
 name|expectedReviewer
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -17676,7 +17731,7 @@ name|reviewer
 argument_list|(
 name|expectedReviewer
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -17796,7 +17851,7 @@ name|containsExactly
 argument_list|(
 name|expectedReviewer
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -392,6 +392,7 @@ argument_list|(
 name|account
 operator|.
 name|username
+argument_list|()
 operator|!=
 literal|null
 argument_list|,
@@ -400,6 +401,7 @@ argument_list|,
 name|account
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|String
@@ -408,6 +410,7 @@ init|=
 name|account
 operator|.
 name|username
+argument_list|()
 decl_stmt|;
 name|KeyPair
 name|keyPair
@@ -433,12 +436,14 @@ argument_list|(
 name|account
 operator|.
 name|id
+argument_list|()
 argument_list|,
 name|username
 argument_list|,
 name|account
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|sshKeyPairs

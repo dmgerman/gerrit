@@ -483,6 +483,7 @@ argument_list|(
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|RestApiCallHelper
@@ -498,6 +499,7 @@ argument_list|,
 name|admin
 operator|.
 name|email
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

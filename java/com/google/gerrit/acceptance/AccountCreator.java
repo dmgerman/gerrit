@@ -794,8 +794,9 @@ block|}
 block|}
 name|account
 operator|=
-operator|new
 name|TestAccount
+operator|.
+name|create
 argument_list|(
 name|id
 argument_list|,
@@ -1045,6 +1046,7 @@ argument_list|(
 name|a
 operator|.
 name|id
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

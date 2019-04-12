@@ -316,7 +316,8 @@ name|from
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|b
@@ -325,7 +326,8 @@ name|addTo
 argument_list|(
 name|user
 operator|.
-name|emailAddress
+name|getEmailAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Not evaluated
@@ -396,7 +398,7 @@ name|create
 argument_list|(
 name|admin
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 name|testRepo
@@ -435,7 +437,7 @@ name|setApiUser
 argument_list|(
 name|reviewer
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

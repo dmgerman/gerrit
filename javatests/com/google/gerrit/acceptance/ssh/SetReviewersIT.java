@@ -325,6 +325,7 @@ argument_list|,
 name|user
 operator|.
 name|email
+argument_list|()
 argument_list|,
 name|id
 argument_list|)
@@ -369,6 +370,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -384,6 +386,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

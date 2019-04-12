@@ -1456,6 +1456,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1473,6 +1474,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 return|;
 block|}

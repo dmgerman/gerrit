@@ -441,6 +441,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|resetToStrict
@@ -553,6 +554,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 operator|.
 name|build
@@ -599,6 +601,7 @@ argument_list|(
 name|user
 operator|.
 name|id
+argument_list|()
 argument_list|)
 operator|.
 name|requestToken

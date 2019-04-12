@@ -771,6 +771,7 @@ operator|=
 name|user
 operator|.
 name|email
+argument_list|()
 expr_stmt|;
 name|gApi
 operator|.

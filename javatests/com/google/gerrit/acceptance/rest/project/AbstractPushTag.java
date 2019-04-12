@@ -1121,7 +1121,7 @@ name|commit
 argument_list|(
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|,
 literal|"subject"
@@ -1175,7 +1175,7 @@ name|tagName
 argument_list|,
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1190,7 +1190,7 @@ name|tagName
 argument_list|,
 name|user
 operator|.
-name|getIdent
+name|newIdent
 argument_list|()
 argument_list|)
 expr_stmt|;

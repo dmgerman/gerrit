@@ -228,7 +228,7 @@ name|id
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -435,7 +435,7 @@ name|id
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -479,7 +479,7 @@ name|id
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -608,7 +608,7 @@ name|id
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -735,7 +735,7 @@ name|id
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -798,7 +798,7 @@ name|id
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -842,7 +842,7 @@ name|id
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -899,7 +899,7 @@ name|id
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -945,7 +945,7 @@ name|id
 argument_list|(
 name|admin
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString

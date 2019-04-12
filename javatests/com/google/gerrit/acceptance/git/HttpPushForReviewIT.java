@@ -289,10 +289,12 @@ argument_list|(
 name|admin
 operator|.
 name|username
+argument_list|()
 argument_list|,
 name|admin
 operator|.
 name|httpPassword
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -391,6 +393,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -458,6 +461,7 @@ argument_list|(
 name|admin
 operator|.
 name|id
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat

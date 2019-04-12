@@ -178,6 +178,7 @@ argument_list|(
 name|a
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -195,6 +196,7 @@ argument_list|(
 name|a
 operator|.
 name|fullName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -209,6 +211,7 @@ argument_list|(
 name|a
 operator|.
 name|email
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo

@@ -1615,6 +1615,7 @@ operator|+
 name|admin
 operator|.
 name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
