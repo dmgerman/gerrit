@@ -2367,6 +2367,12 @@ return|return
 name|commit
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
+comment|// TemporaryBuffer requires calling close before reading.
 DECL|method|mergeWithConflicts ( RevWalk rw, ObjectInserter ins, DirCache dc, String oursName, RevCommit ours, String theirsName, RevCommit theirs, Map<String, MergeResult<? extends Sequence>> mergeResults)
 specifier|public
 specifier|static
@@ -2604,12 +2610,6 @@ operator|.
 name|getValue
 argument_list|()
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"resource"
-argument_list|)
-comment|// TemporaryBuffer requires calling close before reading.
 name|TemporaryBuffer
 name|buf
 init|=
