@@ -612,6 +612,7 @@ name|permissionBackend
 decl_stmt|;
 DECL|field|notesBranchUtilFactory
 specifier|private
+specifier|final
 name|NotesBranchUtil
 operator|.
 name|Factory
