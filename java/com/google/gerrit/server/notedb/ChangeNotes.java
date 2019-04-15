@@ -2773,6 +2773,19 @@ return|return
 name|commentKeys
 return|;
 block|}
+DECL|method|getUpdateCount ()
+specifier|public
+name|int
+name|getUpdateCount
+parameter_list|()
+block|{
+return|return
+name|state
+operator|.
+name|updateCount
+argument_list|()
+return|;
+block|}
 DECL|method|getDraftComments (Account.Id author)
 specifier|public
 name|ImmutableListMultimap

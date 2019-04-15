@@ -1686,6 +1686,11 @@ operator|.
 name|Id
 name|revertOf
 decl_stmt|;
+DECL|field|updateCount
+specifier|private
+name|int
+name|updateCount
+decl_stmt|;
 DECL|method|ChangeNotesParser ( Change.Id changeId, ObjectId tip, ChangeNotesRevWalk walk, ChangeNoteJson changeNoteJson, LegacyChangeNoteRead legacyChangeNoteRead, NoteDbMetrics metrics)
 name|ChangeNotesParser
 parameter_list|(
@@ -2149,6 +2154,8 @@ literal|true
 argument_list|)
 argument_list|,
 name|revertOf
+argument_list|,
+name|updateCount
 argument_list|)
 return|;
 block|}
@@ -2458,6 +2465,9 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 block|{
+name|updateCount
+operator|++
+expr_stmt|;
 name|Timestamp
 name|ts
 init|=
