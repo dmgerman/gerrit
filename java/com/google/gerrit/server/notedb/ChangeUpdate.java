@@ -644,6 +644,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|SubmitRecord
@@ -1161,6 +1175,18 @@ specifier|public
 interface|interface
 name|Factory
 block|{
+annotation|@
+name|Deprecated
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|GOOGLE
+argument_list|)
+comment|// TODO(dborowitz): Remove usage, then delete method.
 DECL|method|create (ChangeNotes notes, CurrentUser user)
 name|ChangeUpdate
 name|create
