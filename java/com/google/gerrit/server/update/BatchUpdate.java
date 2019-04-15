@@ -646,6 +646,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|NoteDbUpdateManager
+operator|.
+name|TooManyUpdatesException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|InvalidChangeOperationException
@@ -1362,44 +1380,17 @@ name|UpdateException
 throws|,
 name|RestApiException
 block|{
-name|Throwables
-operator|.
-name|throwIfUnchecked
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
-comment|// Propagate REST API exceptions thrown by operations; they commonly throw exceptions like
-comment|// ResourceConflictException to indicate an atomic update failure.
-name|Throwables
-operator|.
-name|throwIfInstanceOf
-argument_list|(
-name|e
-argument_list|,
-name|UpdateException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|Throwables
-operator|.
-name|throwIfInstanceOf
-argument_list|(
-name|e
-argument_list|,
-name|RestApiException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-comment|// Convert other common non-REST exception types with user-visible messages to corresponding
-comment|// REST exception types
+comment|// Convert common non-REST exception types with user-visible messages to corresponding REST
+comment|// exception types.
 if|if
 condition|(
 name|e
 operator|instanceof
 name|InvalidChangeOperationException
+operator|||
+name|e
+operator|instanceof
+name|TooManyUpdatesException
 condition|)
 block|{
 throw|throw
@@ -1444,6 +1435,37 @@ name|e
 argument_list|)
 throw|;
 block|}
+name|Throwables
+operator|.
+name|throwIfUnchecked
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+comment|// Propagate REST API exceptions thrown by operations; they commonly throw exceptions like
+comment|// ResourceConflictException to indicate an atomic update failure.
+name|Throwables
+operator|.
+name|throwIfInstanceOf
+argument_list|(
+name|e
+argument_list|,
+name|UpdateException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|Throwables
+operator|.
+name|throwIfInstanceOf
+argument_list|(
+name|e
+argument_list|,
+name|RestApiException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 comment|// Otherwise, wrap in a generic UpdateException, which does not include a user-visible message.
 throw|throw
 operator|new
