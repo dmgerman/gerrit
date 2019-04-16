@@ -68,13 +68,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
 import|;
 end_import
 
@@ -376,7 +380,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-specifier|final
 name|RevCommit
 name|masterCommit
 init|=
@@ -393,7 +396,6 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-specifier|final
 name|RevCommit
 name|branchCommit
 init|=
@@ -485,7 +487,7 @@ name|execute
 argument_list|()
 expr_stmt|;
 block|}
-name|assertEquals
+name|assertThat
 argument_list|(
 name|repo
 operator|.
@@ -499,7 +501,10 @@ argument_list|)
 operator|.
 name|getObjectId
 argument_list|()
-argument_list|,
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
 name|branchCommit
 operator|.
 name|getId
