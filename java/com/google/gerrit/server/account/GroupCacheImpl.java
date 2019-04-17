@@ -1168,10 +1168,9 @@ argument_list|()
 operator|.
 name|byName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|name
 argument_list|)

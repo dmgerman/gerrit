@@ -520,10 +520,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"contributors"
 argument_list|)
@@ -785,10 +784,9 @@ argument_list|)
 operator|.
 name|setNameKey
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|groupName
 argument_list|)

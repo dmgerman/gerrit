@@ -1065,10 +1065,9 @@ name|GroupNameNotes
 operator|.
 name|getNoteKey
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|g1
 operator|.
@@ -1425,10 +1424,9 @@ name|GroupNameNotes
 operator|.
 name|getNoteKey
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|bogusName
 argument_list|)

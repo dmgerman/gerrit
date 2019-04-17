@@ -1190,10 +1190,9 @@ name|GroupNameNotes
 operator|.
 name|getNoteKey
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|gRef
 operator|.

@@ -1249,10 +1249,9 @@ operator|.
 name|NameKey
 name|nameKey
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|e
 operator|.

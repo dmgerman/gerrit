@@ -1712,10 +1712,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"ABC-789-this-name-must-be-unique"
 argument_list|)

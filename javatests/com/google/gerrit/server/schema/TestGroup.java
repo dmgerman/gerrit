@@ -278,10 +278,9 @@ block|{
 return|return
 name|setNameKey
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|name
 argument_list|)
@@ -385,10 +384,9 @@ argument_list|()
 operator|.
 name|orElse
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"users"
 argument_list|)

@@ -672,10 +672,9 @@ operator|.
 name|NameKey
 name|groupName
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"users"
 argument_list|)
@@ -906,10 +905,9 @@ operator|.
 name|NameKey
 name|anotherName
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -1000,95 +998,11 @@ argument_list|()
 operator|.
 name|setNameKey
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|""
-argument_list|)
-argument_list|)
-operator|.
-name|build
-argument_list|()
-decl_stmt|;
-name|GroupConfig
-name|groupConfig
-init|=
-name|GroupConfig
-operator|.
-name|createForNewGroup
-argument_list|(
-name|projectName
-argument_list|,
-name|repository
-argument_list|,
-name|groupCreation
-argument_list|)
-decl_stmt|;
-try|try
-init|(
-name|MetaDataUpdate
-name|metaDataUpdate
-init|=
-name|createMetaDataUpdate
-argument_list|()
-init|)
-block|{
-name|exception
-operator|.
-name|expectCause
-argument_list|(
-name|instanceOf
-argument_list|(
-name|ConfigInvalidException
-operator|.
-name|class
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Name of the group "
-operator|+
-name|groupUuid
-argument_list|)
-expr_stmt|;
-name|groupConfig
-operator|.
-name|commit
-argument_list|(
-name|metaDataUpdate
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-annotation|@
-name|Test
-DECL|method|nameOfNewGroupMustNotBeNull ()
-specifier|public
-name|void
-name|nameOfNewGroupMustNotBeNull
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|InternalGroupCreation
-name|groupCreation
-init|=
-name|getPrefilledGroupCreationBuilder
-argument_list|()
-operator|.
-name|setNameKey
-argument_list|(
-operator|new
-name|AccountGroup
-operator|.
-name|NameKey
-argument_list|(
-literal|null
 argument_list|)
 argument_list|)
 operator|.
@@ -3454,10 +3368,9 @@ operator|.
 name|NameKey
 name|newName
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"New name"
 argument_list|)
@@ -3515,105 +3428,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|nameCannotBeUpdatedToNull ()
-specifier|public
-name|void
-name|nameCannotBeUpdatedToNull
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|createArbitraryGroup
-argument_list|(
-name|groupUuid
-argument_list|)
-expr_stmt|;
-name|GroupConfig
-name|groupConfig
-init|=
-name|GroupConfig
-operator|.
-name|loadForGroup
-argument_list|(
-name|projectName
-argument_list|,
-name|repository
-argument_list|,
-name|groupUuid
-argument_list|)
-decl_stmt|;
-name|InternalGroupUpdate
-name|groupUpdate
-init|=
-name|InternalGroupUpdate
-operator|.
-name|builder
-argument_list|()
-operator|.
-name|setName
-argument_list|(
-operator|new
-name|AccountGroup
-operator|.
-name|NameKey
-argument_list|(
-literal|null
-argument_list|)
-argument_list|)
-operator|.
-name|build
-argument_list|()
-decl_stmt|;
-name|groupConfig
-operator|.
-name|setGroupUpdate
-argument_list|(
-name|groupUpdate
-argument_list|,
-name|auditLogFormatter
-argument_list|)
-expr_stmt|;
-try|try
-init|(
-name|MetaDataUpdate
-name|metaDataUpdate
-init|=
-name|createMetaDataUpdate
-argument_list|()
-init|)
-block|{
-name|exception
-operator|.
-name|expectCause
-argument_list|(
-name|instanceOf
-argument_list|(
-name|ConfigInvalidException
-operator|.
-name|class
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Name of the group "
-operator|+
-name|groupUuid
-argument_list|)
-expr_stmt|;
-name|groupConfig
-operator|.
-name|commit
-argument_list|(
-name|metaDataUpdate
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-annotation|@
-name|Test
 DECL|method|nameCannotBeUpdatedToEmptyString ()
 specifier|public
 name|void
@@ -3651,10 +3465,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|""
 argument_list|)
@@ -3731,10 +3544,9 @@ operator|.
 name|NameKey
 name|emptyName
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|""
 argument_list|)
@@ -4419,10 +4231,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -5192,10 +5003,9 @@ argument_list|)
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -5341,10 +5151,9 @@ argument_list|)
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -5492,10 +5301,9 @@ argument_list|)
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -5575,10 +5383,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -5681,10 +5488,9 @@ operator|.
 name|NameKey
 name|name
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Robots"
 argument_list|)
@@ -5928,10 +5734,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -6647,10 +6452,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -7085,10 +6889,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -7316,10 +7119,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -7484,10 +7286,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -7559,10 +7360,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -7692,10 +7492,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -7902,10 +7701,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -8105,10 +7903,9 @@ operator|.
 name|NameKey
 name|firstName
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Bots"
 argument_list|)
@@ -8154,10 +7951,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Robots"
 argument_list|)
@@ -8324,10 +8120,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Another name"
 argument_list|)
@@ -9380,10 +9175,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Old name"
 argument_list|)
@@ -9409,10 +9203,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"New name"
 argument_list|)
@@ -9589,10 +9382,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"Old name"
 argument_list|)
@@ -9650,10 +9442,9 @@ argument_list|()
 operator|.
 name|setName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"New name"
 argument_list|)

@@ -723,10 +723,9 @@ operator|.
 name|NameKey
 name|k
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|n
 argument_list|)
