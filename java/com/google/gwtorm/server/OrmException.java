@@ -69,11 +69,6 @@ comment|/** Any data store read or write error. */
 end_comment
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|OrmException
 specifier|public
 class|class
@@ -81,6 +76,15 @@ name|OrmException
 extends|extends
 name|Exception
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|OrmException (final String message)
 specifier|public
 name|OrmException

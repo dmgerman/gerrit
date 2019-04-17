@@ -69,11 +69,6 @@ comment|/** Indicates one or more entities were concurrently inserted with the s
 end_comment
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|class|OrmDuplicateKeyException
 specifier|public
 class|class
@@ -81,6 +76,15 @@ name|OrmDuplicateKeyException
 extends|extends
 name|OrmException
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|OrmDuplicateKeyException (final String msg)
 specifier|public
 name|OrmDuplicateKeyException
