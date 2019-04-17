@@ -152,6 +152,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|ImmutableList
@@ -801,6 +815,35 @@ name|TooManyUpdatesException
 extends|extends
 name|StorageException
 block|{
+annotation|@
+name|VisibleForTesting
+DECL|method|message (Change.Id id, int maxUpdates)
+specifier|public
+specifier|static
+name|String
+name|message
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|int
+name|maxUpdates
+parameter_list|)
+block|{
+return|return
+literal|"Change "
+operator|+
+name|id
+operator|+
+literal|" may not exceed "
+operator|+
+name|maxUpdates
+operator|+
+literal|" updates. It may still be abandoned or submitted."
+return|;
+block|}
 DECL|field|serialVersionUID
 specifier|private
 specifier|static
@@ -825,15 +868,12 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|"Change "
-operator|+
+name|message
+argument_list|(
 name|id
-operator|+
-literal|" may not exceed "
-operator|+
+argument_list|,
 name|maxUpdates
-operator|+
-literal|" updates"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3267,6 +3307,12 @@ operator|>
 name|maxUpdates
 operator|.
 name|get
+argument_list|()
+operator|&&
+operator|!
+name|u
+operator|.
+name|bypassMaxUpdates
 argument_list|()
 condition|)
 block|{

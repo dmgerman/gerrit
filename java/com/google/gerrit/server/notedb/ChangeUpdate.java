@@ -3383,6 +3383,26 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|bypassMaxUpdates ()
+specifier|protected
+name|boolean
+name|bypassMaxUpdates
+parameter_list|()
+block|{
+comment|// Allow abandoning or submitting a change even if it would exceed the max update count.
+return|return
+name|status
+operator|!=
+literal|null
+operator|&&
+name|status
+operator|.
+name|isClosed
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|applyImpl (RevWalk rw, ObjectInserter ins, ObjectId curr)
 specifier|protected
 name|CommitBuilder

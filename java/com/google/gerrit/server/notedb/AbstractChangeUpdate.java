@@ -1028,6 +1028,17 @@ name|String
 name|getRefName
 parameter_list|()
 function_decl|;
+comment|/**    * Whether to allow bypassing the check that an update does not exceed the max update count on an    * object.    */
+DECL|method|bypassMaxUpdates ()
+specifier|protected
+name|boolean
+name|bypassMaxUpdates
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 comment|/**    * Apply this update to the given inserter.    *    * @param rw walk for reading back any objects needed for the update.    * @param ins inserter to write to; callers should not flush.    * @param curr the current tip of the branch prior to this update.    * @return commit ID produced by inserting this update's commit, or null if this update is a no-op    *     and should be skipped. The zero ID is a valid return value, and indicates the ref should be    *     deleted.    * @throws IOException if a lower-level error occurred.    */
 DECL|method|apply (RevWalk rw, ObjectInserter ins, ObjectId curr)
 specifier|final
