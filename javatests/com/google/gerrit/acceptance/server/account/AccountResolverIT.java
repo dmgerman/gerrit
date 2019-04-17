@@ -1046,10 +1046,9 @@ operator|.
 name|Id
 name|nonexistentId
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|sequences
 operator|.
@@ -1160,10 +1159,9 @@ operator|.
 name|Id
 name|nonexistentId
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|sequences
 operator|.

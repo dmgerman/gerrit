@@ -769,10 +769,9 @@ name|account
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|account
 argument_list|)

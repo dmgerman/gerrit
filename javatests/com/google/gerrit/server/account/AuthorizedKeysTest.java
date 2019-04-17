@@ -258,10 +258,9 @@ operator|.
 name|Id
 name|accountId
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1
 argument_list|)
@@ -998,10 +997,9 @@ operator|.
 name|Id
 name|accountId
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1
 argument_list|)
@@ -1126,10 +1124,9 @@ name|AccountSshKey
 operator|.
 name|create
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1
 argument_list|)
@@ -1192,10 +1189,9 @@ name|AccountSshKey
 operator|.
 name|createInvalid
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1
 argument_list|)

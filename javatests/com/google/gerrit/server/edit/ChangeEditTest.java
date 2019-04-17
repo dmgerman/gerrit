@@ -189,10 +189,9 @@ operator|.
 name|Id
 name|accountId
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1000042
 argument_list|)

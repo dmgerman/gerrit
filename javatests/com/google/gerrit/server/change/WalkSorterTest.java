@@ -426,10 +426,9 @@ parameter_list|()
 block|{
 name|userId
 operator|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1
 argument_list|)

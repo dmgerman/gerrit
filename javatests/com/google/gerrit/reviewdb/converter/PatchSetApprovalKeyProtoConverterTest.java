@@ -327,10 +327,9 @@ argument_list|,
 literal|14
 argument_list|)
 argument_list|,
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|100013
 argument_list|)
@@ -474,10 +473,9 @@ argument_list|,
 literal|14
 argument_list|)
 argument_list|,
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|100013
 argument_list|)

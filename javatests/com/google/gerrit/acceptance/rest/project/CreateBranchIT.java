@@ -874,10 +874,9 @@ name|RefNames
 operator|.
 name|refsUsers
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1
 argument_list|)

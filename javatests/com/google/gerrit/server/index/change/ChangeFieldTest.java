@@ -449,10 +449,9 @@ name|ReviewerStateInternal
 operator|.
 name|REVIEWER
 argument_list|,
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1
 argument_list|)
@@ -476,10 +475,9 @@ name|ReviewerStateInternal
 operator|.
 name|CC
 argument_list|,
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|2
 argument_list|)
@@ -618,10 +616,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 argument_list|,
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1
 argument_list|)
@@ -1006,10 +1003,9 @@ name|l
 operator|.
 name|appliedBy
 operator|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|appliedBy
 argument_list|)

@@ -1268,10 +1268,9 @@ operator|.
 name|Id
 name|id
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|doc
 operator|.

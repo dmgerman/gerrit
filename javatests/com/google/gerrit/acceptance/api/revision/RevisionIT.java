@@ -12770,10 +12770,9 @@ name|r
 argument_list|,
 name|a
 lambda|->
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|a
 operator|.

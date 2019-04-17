@@ -426,10 +426,8 @@ operator|::
 name|get
 argument_list|,
 name|Account
-operator|.
-name|Id
 operator|::
-operator|new
+name|id
 argument_list|)
 argument_list|)
 argument_list|)

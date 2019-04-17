@@ -518,7 +518,7 @@ name|util
 operator|.
 name|Comparator
 operator|.
-name|comparing
+name|naturalOrder
 import|;
 end_import
 
@@ -863,20 +863,6 @@ operator|.
 name|util
 operator|.
 name|LabelVote
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|IntKey
 import|;
 end_import
 
@@ -1565,12 +1551,8 @@ name|create
 argument_list|(
 name|nameComparator
 argument_list|,
-name|comparing
-argument_list|(
-name|IntKey
-operator|::
-name|get
-argument_list|)
+name|naturalOrder
+argument_list|()
 argument_list|)
 return|;
 block|}

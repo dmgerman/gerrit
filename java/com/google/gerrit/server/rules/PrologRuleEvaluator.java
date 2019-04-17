@@ -3129,10 +3129,9 @@ name|label
 operator|.
 name|appliedBy
 operator|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|(
 operator|(

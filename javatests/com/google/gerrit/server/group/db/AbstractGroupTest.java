@@ -597,10 +597,9 @@ argument_list|)
 expr_stmt|;
 name|serverAccountId
 operator|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|SERVER_ACCOUNT_NUMBER
 argument_list|)
@@ -624,10 +623,9 @@ argument_list|)
 expr_stmt|;
 name|userId
 operator|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|USER_ACCOUNT_NUMBER
 argument_list|)

@@ -346,10 +346,9 @@ name|patchSet
 operator|.
 name|setUploader
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|452
 argument_list|)
@@ -655,10 +654,9 @@ name|patchSet
 operator|.
 name|setUploader
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|452
 argument_list|)

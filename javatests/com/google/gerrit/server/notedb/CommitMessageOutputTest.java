@@ -1289,10 +1289,9 @@ init|=
 operator|new
 name|Account
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|3
 argument_list|)

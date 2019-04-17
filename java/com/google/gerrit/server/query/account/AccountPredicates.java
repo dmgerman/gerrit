@@ -411,10 +411,9 @@ name|add
 argument_list|(
 name|id
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|)

@@ -231,10 +231,9 @@ operator|.
 name|Id
 name|accountId
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|24
 argument_list|)
@@ -295,10 +294,9 @@ operator|.
 name|Id
 name|accountId
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|34832
 argument_list|)
@@ -409,10 +407,10 @@ block|}
 comment|/** See {@link SerializedClassSubject} for background and what to do if this test fails. */
 annotation|@
 name|Test
-DECL|method|fieldsExistAsExpected ()
+DECL|method|methodsExistAsExpected ()
 specifier|public
 name|void
-name|fieldsExistAsExpected
+name|methodsExistAsExpected
 parameter_list|()
 block|{
 name|assertThatSerializedClass
@@ -424,7 +422,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|hasFields
+name|hasAutoValueMethods
 argument_list|(
 name|ImmutableMap
 operator|.

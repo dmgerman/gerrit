@@ -382,10 +382,9 @@ name|ProjectWatches
 operator|.
 name|parse
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1000000
 argument_list|)
@@ -619,10 +618,9 @@ name|ProjectWatches
 operator|.
 name|parse
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1000000
 argument_list|)
@@ -1175,10 +1173,9 @@ name|NotifyValue
 operator|.
 name|parse
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1000000
 argument_list|)

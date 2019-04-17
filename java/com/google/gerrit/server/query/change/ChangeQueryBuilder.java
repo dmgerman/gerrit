@@ -1904,10 +1904,9 @@ operator|.
 name|Id
 name|OWNER_ACCOUNT_ID
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|0
 argument_list|)
@@ -3694,10 +3693,9 @@ argument_list|(
 operator|new
 name|AssigneePredicate
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|ChangeField
 operator|.
@@ -3721,10 +3719,9 @@ return|return
 operator|new
 name|AssigneePredicate
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|ChangeField
 operator|.
