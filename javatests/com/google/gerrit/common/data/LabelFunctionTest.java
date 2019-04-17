@@ -264,8 +264,9 @@ specifier|final
 name|LabelId
 name|LABEL_ID
 init|=
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 name|LABEL_NAME
 argument_list|)

@@ -173,8 +173,9 @@ name|proto
 parameter_list|)
 block|{
 return|return
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 name|proto
 operator|.

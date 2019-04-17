@@ -356,8 +356,9 @@ argument_list|(
 literal|100013
 argument_list|)
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"label-8"
 argument_list|)
@@ -587,8 +588,9 @@ argument_list|(
 literal|100013
 argument_list|)
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"label-8"
 argument_list|)
@@ -772,8 +774,9 @@ argument_list|(
 literal|100013
 argument_list|)
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"label-8"
 argument_list|)
@@ -886,8 +889,9 @@ argument_list|(
 literal|100013
 argument_list|)
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"label-8"
 argument_list|)
@@ -1092,8 +1096,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"label-8"
 argument_list|)

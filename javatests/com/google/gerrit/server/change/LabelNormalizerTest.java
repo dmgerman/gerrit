@@ -1664,8 +1664,9 @@ argument_list|()
 argument_list|,
 name|accountId
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 name|label
 argument_list|)

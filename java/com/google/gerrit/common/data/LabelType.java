@@ -1541,8 +1541,9 @@ name|getLabelId
 parameter_list|()
 block|{
 return|return
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 name|name
 argument_list|)

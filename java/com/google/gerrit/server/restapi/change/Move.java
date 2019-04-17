@@ -2136,8 +2136,9 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 name|psa
 operator|.

@@ -2743,8 +2743,9 @@ argument_list|(
 literal|2001
 argument_list|)
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"Code-Review"
 argument_list|)
@@ -2815,8 +2816,9 @@ argument_list|(
 literal|2002
 argument_list|)
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"Verified"
 argument_list|)

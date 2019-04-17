@@ -5153,8 +5153,9 @@ name|psId
 argument_list|,
 name|effectiveAccountId
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 name|l
 operator|.
@@ -5418,8 +5419,9 @@ name|psId
 argument_list|,
 name|effectiveAccountId
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 name|label
 argument_list|)

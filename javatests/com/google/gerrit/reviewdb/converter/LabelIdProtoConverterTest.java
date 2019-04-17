@@ -229,8 +229,9 @@ block|{
 name|LabelId
 name|labelId
 init|=
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"Label ID 42"
 argument_list|)
@@ -289,8 +290,9 @@ block|{
 name|LabelId
 name|labelId
 init|=
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"label-5"
 argument_list|)
@@ -399,10 +401,10 @@ block|}
 comment|/** See {@link SerializedClassSubject} for background and what to do if this test fails. */
 annotation|@
 name|Test
-DECL|method|fieldsExistAsExpected ()
+DECL|method|methodsExistAsExpected ()
 specifier|public
 name|void
-name|fieldsExistAsExpected
+name|methodsExistAsExpected
 parameter_list|()
 block|{
 name|assertThatSerializedClass
@@ -412,7 +414,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|hasFields
+name|hasAutoValueMethods
 argument_list|(
 name|ImmutableMap
 operator|.

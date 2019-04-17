@@ -175,8 +175,9 @@ argument_list|(
 literal|3
 argument_list|)
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"My-Label"
 argument_list|)
@@ -215,8 +216,9 @@ argument_list|(
 literal|3
 argument_list|)
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"My-Label"
 argument_list|)
@@ -255,8 +257,9 @@ argument_list|(
 literal|3
 argument_list|)
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 literal|"Other-Label"
 argument_list|)
