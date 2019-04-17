@@ -938,10 +938,9 @@ operator|.
 name|NameKey
 name|name
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|rsrc
 operator|.
@@ -1178,7 +1177,7 @@ name|fire
 argument_list|(
 name|name
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|,
 name|u
@@ -1361,7 +1360,7 @@ name|isConfigRef
 argument_list|(
 name|name
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 condition|)

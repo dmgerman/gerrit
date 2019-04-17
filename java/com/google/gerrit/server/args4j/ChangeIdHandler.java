@@ -511,10 +511,9 @@ operator|.
 name|NameKey
 name|branch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,

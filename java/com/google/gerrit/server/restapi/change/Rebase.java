@@ -1337,7 +1337,7 @@ name|exactRef
 argument_list|(
 name|destRefKey
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1356,7 +1356,7 @@ literal|"can't rebase onto tip of branch "
 operator|+
 name|destRefKey
 operator|.
-name|get
+name|branch
 argument_list|()
 operator|+
 literal|"; branch doesn't exist"
@@ -1914,7 +1914,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 init|;

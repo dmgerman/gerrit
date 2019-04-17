@@ -5471,10 +5471,9 @@ name|branches
 operator|.
 name|add
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -8723,10 +8722,9 @@ operator|.
 name|NameKey
 name|branch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -8810,10 +8808,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -8914,10 +8911,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -9294,10 +9290,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -11393,10 +11388,9 @@ name|magicBranch
 operator|.
 name|dest
 operator|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -11726,7 +11720,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 try|try
@@ -11781,7 +11775,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 operator|+
 literal|" not found"
@@ -12090,7 +12084,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 operator|+
 literal|" not found"
@@ -12265,7 +12259,7 @@ name|get
 argument_list|(
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -12532,7 +12526,7 @@ name|get
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -13789,7 +13783,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|newProgress
@@ -14243,7 +14237,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|newProgress
@@ -14862,7 +14856,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 else|:
 literal|null
@@ -14934,7 +14928,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -14958,7 +14952,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|targetRef
@@ -15031,7 +15025,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -19302,7 +19296,7 @@ name|ref
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 argument_list|,
@@ -19748,10 +19742,9 @@ operator|.
 name|NameKey
 name|branch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.

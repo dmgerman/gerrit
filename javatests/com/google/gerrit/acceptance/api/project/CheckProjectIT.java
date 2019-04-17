@@ -480,7 +480,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 name|ChangeInfo
@@ -1014,7 +1014,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 name|RevCommit
@@ -1222,7 +1222,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 name|RevCommit
@@ -1443,7 +1443,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 name|RevCommit
@@ -1757,7 +1757,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 name|RevCommit

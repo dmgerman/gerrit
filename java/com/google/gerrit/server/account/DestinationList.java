@@ -397,12 +397,12 @@ name|Row
 argument_list|(
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|dest
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -470,10 +470,9 @@ name|dests
 operator|.
 name|add
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project

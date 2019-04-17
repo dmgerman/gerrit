@@ -3364,7 +3364,7 @@ name|match
 argument_list|(
 name|destination
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 literal|null

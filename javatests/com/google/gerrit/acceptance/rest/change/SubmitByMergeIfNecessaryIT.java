@@ -1538,10 +1538,9 @@ argument_list|)
 operator|.
 name|containsKey
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|p1
 argument_list|,
@@ -1563,10 +1562,9 @@ argument_list|)
 operator|.
 name|containsKey
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|p2
 argument_list|,
@@ -1588,10 +1586,9 @@ argument_list|)
 operator|.
 name|containsKey
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|p3
 argument_list|,
@@ -1657,10 +1654,9 @@ name|preview
 operator|.
 name|get
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|p1
 argument_list|,
@@ -4203,10 +4199,9 @@ operator|.
 name|NameKey
 name|secretBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -4222,7 +4217,7 @@ name|name
 argument_list|(
 name|secretBranch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -4233,7 +4228,7 @@ name|branch
 argument_list|(
 name|secretBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -4261,7 +4256,7 @@ name|move
 argument_list|(
 name|secretBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4269,7 +4264,7 @@ name|block
 argument_list|(
 name|secretBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 literal|"read"

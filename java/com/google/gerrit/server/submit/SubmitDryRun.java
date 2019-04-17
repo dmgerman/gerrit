@@ -1118,7 +1118,7 @@ name|get
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1135,7 +1135,7 @@ name|NoSuchProjectException
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 throw|;

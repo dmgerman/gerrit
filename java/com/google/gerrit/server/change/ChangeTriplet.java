@@ -208,7 +208,7 @@ block|{
 return|return
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -218,7 +218,7 @@ literal|"~"
 operator|+
 name|branch
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 operator|+
 literal|"~"
@@ -376,10 +376,9 @@ argument_list|(
 operator|new
 name|AutoValue_ChangeTriplet
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project
@@ -416,7 +415,7 @@ return|return
 name|branch
 argument_list|()
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 return|;
 block|}

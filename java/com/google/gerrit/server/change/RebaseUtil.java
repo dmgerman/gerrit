@@ -1182,7 +1182,7 @@ name|exactRef
 argument_list|(
 name|destBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1201,7 +1201,7 @@ literal|"The destination branch does not exist: "
 operator|+
 name|destBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 throw|;

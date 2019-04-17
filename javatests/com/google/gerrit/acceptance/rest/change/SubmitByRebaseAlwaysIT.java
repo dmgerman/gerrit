@@ -821,7 +821,7 @@ literal|"Dest: "
 operator|+
 name|dest
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 operator|+
 literal|"\n"

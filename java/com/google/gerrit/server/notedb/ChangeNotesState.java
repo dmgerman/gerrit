@@ -1877,10 +1877,9 @@ operator|.
 name|owner
 argument_list|()
 argument_list|,
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -1959,10 +1958,9 @@ name|change
 operator|.
 name|setDest
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|change
 operator|.

@@ -648,7 +648,7 @@ name|project
 argument_list|(
 name|ref
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 operator|.
@@ -656,7 +656,7 @@ name|ref
 argument_list|(
 name|ref
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 return|;
@@ -1160,7 +1160,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -1209,7 +1209,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -1243,7 +1243,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.

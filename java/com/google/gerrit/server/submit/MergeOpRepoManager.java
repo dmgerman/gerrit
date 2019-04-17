@@ -939,7 +939,7 @@ name|updateRef
 argument_list|(
 name|name
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -984,7 +984,7 @@ argument_list|()
 argument_list|,
 name|name
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|||
@@ -998,7 +998,7 @@ name|REFS_CONFIG
 argument_list|,
 name|name
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 condition|)

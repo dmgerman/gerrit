@@ -2003,7 +2003,7 @@ name|ctx
 argument_list|,
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|commit

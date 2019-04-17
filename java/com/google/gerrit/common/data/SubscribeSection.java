@@ -332,7 +332,7 @@ name|matchSource
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 condition|)
@@ -358,7 +358,7 @@ name|matchSource
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 condition|)

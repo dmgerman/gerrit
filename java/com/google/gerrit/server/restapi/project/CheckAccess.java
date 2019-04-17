@@ -818,10 +818,9 @@ argument_list|)
 operator|.
 name|ref
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|rsrc
 operator|.

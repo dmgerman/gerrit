@@ -947,7 +947,7 @@ name|c
 argument_list|,
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1703,7 +1703,7 @@ name|put
 argument_list|(
 name|superBranch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|,
 name|superBranch
@@ -1997,7 +1997,7 @@ name|matchSource
 argument_list|(
 name|src
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 condition|)
@@ -2017,10 +2017,9 @@ name|ret
 operator|.
 name|add
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|s
 operator|.
@@ -2033,7 +2032,7 @@ name|expandFromSource
 argument_list|(
 name|src
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -2073,10 +2072,9 @@ name|ret
 operator|.
 name|add
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|s
 operator|.
@@ -2121,7 +2119,7 @@ name|matchSource
 argument_list|(
 name|src
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 condition|)
@@ -2205,10 +2203,9 @@ operator|.
 name|NameKey
 name|b
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|s
 operator|.
@@ -2318,7 +2315,7 @@ name|srcProject
 init|=
 name|srcBranch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 decl_stmt|;
 for|for
@@ -2383,7 +2380,7 @@ name|targetProject
 init|=
 name|targetBranch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 decl_stmt|;
 try|try
@@ -2409,7 +2406,7 @@ name|resolve
 argument_list|(
 name|targetBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2706,7 +2703,7 @@ name|getRepo
 argument_list|(
 name|subscriber
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2765,7 +2762,7 @@ name|exactRef
 argument_list|(
 name|subscriber
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3150,7 +3147,7 @@ name|getRepo
 argument_list|(
 name|subscriber
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3436,7 +3433,7 @@ operator|.
 name|getSubmodule
 argument_list|()
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3517,7 +3514,7 @@ operator|.
 name|getSubmodule
 argument_list|()
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -3650,7 +3647,7 @@ operator|.
 name|getSubmodule
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3859,7 +3856,7 @@ operator|.
 name|getSubmodule
 argument_list|()
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4236,7 +4233,7 @@ name|add
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4381,7 +4378,7 @@ operator|.
 name|getSubmodule
 argument_list|()
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -3599,7 +3599,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 expr_stmt|;
 name|info
@@ -3987,7 +3987,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 expr_stmt|;
 name|out

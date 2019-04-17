@@ -420,7 +420,7 @@ name|branch
 operator|=
 name|superProjectBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 expr_stmt|;
 block|}
@@ -442,7 +442,7 @@ literal|'/'
 operator|+
 name|superProjectBranch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -707,10 +707,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|superProjectBranch
 argument_list|,
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|projectKey
 argument_list|,

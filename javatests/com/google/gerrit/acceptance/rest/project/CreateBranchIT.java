@@ -448,10 +448,9 @@ name|Exception
 block|{
 name|testBranch
 operator|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -805,10 +804,9 @@ argument_list|)
 expr_stmt|;
 name|assertCreateSucceeds
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -863,10 +861,9 @@ argument_list|)
 expr_stmt|;
 name|assertCreateFails
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|allUsers
 argument_list|,
@@ -947,10 +944,9 @@ argument_list|)
 expr_stmt|;
 name|assertCreateFails
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|allUsers
 argument_list|,
@@ -1046,7 +1042,7 @@ name|name
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -1057,7 +1053,7 @@ name|branch
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 return|;
@@ -1104,7 +1100,7 @@ name|isEqualTo
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;

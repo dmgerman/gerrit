@@ -2400,10 +2400,9 @@ argument_list|)
 operator|.
 name|containsKey
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -4331,10 +4330,9 @@ argument_list|()
 decl_stmt|;
 name|createBranch
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,

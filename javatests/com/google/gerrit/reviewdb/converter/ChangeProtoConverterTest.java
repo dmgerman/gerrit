@@ -341,10 +341,9 @@ argument_list|(
 literal|35
 argument_list|)
 argument_list|,
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project
@@ -564,7 +563,7 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
-name|setProjectName
+name|setProject
 argument_list|(
 name|Entities
 operator|.
@@ -579,7 +578,7 @@ literal|"project 67"
 argument_list|)
 argument_list|)
 operator|.
-name|setBranchName
+name|setBranch
 argument_list|(
 literal|"refs/heads/branch 74"
 argument_list|)
@@ -713,10 +712,9 @@ argument_list|(
 literal|35
 argument_list|)
 argument_list|,
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project
@@ -825,7 +823,7 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
-name|setProjectName
+name|setProject
 argument_list|(
 name|Entities
 operator|.
@@ -840,7 +838,7 @@ literal|"project 67"
 argument_list|)
 argument_list|)
 operator|.
-name|setBranchName
+name|setBranch
 argument_list|(
 literal|"refs/heads/branch-74"
 argument_list|)
@@ -931,10 +929,9 @@ argument_list|(
 literal|35
 argument_list|)
 argument_list|,
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project
@@ -1069,7 +1066,7 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
-name|setProjectName
+name|setProject
 argument_list|(
 name|Entities
 operator|.
@@ -1084,7 +1081,7 @@ literal|"project 67"
 argument_list|)
 argument_list|)
 operator|.
-name|setBranchName
+name|setBranch
 argument_list|(
 literal|"refs/heads/branch-74"
 argument_list|)
@@ -1175,10 +1172,9 @@ argument_list|(
 literal|35
 argument_list|)
 argument_list|,
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project
@@ -1312,7 +1308,7 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
-name|setProjectName
+name|setProject
 argument_list|(
 name|Entities
 operator|.
@@ -1327,7 +1323,7 @@ literal|"project 67"
 argument_list|)
 argument_list|)
 operator|.
-name|setBranchName
+name|setBranch
 argument_list|(
 literal|"refs/heads/branch-74"
 argument_list|)
@@ -1422,10 +1418,9 @@ argument_list|(
 literal|35
 argument_list|)
 argument_list|,
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project
@@ -1612,10 +1607,9 @@ argument_list|(
 literal|35
 argument_list|)
 argument_list|,
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project
@@ -1949,7 +1943,7 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
-name|setProjectName
+name|setProject
 argument_list|(
 name|Entities
 operator|.
@@ -1964,7 +1958,7 @@ literal|"project 67"
 argument_list|)
 argument_list|)
 operator|.
-name|setBranchName
+name|setBranch
 argument_list|(
 literal|"branch 74"
 argument_list|)
@@ -2092,7 +2086,7 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
-name|setProjectName
+name|setProject
 argument_list|(
 name|Entities
 operator|.
@@ -2107,7 +2101,7 @@ literal|"project 67"
 argument_list|)
 argument_list|)
 operator|.
-name|setBranchName
+name|setBranch
 argument_list|(
 literal|"branch 74"
 argument_list|)

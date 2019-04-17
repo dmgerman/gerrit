@@ -769,7 +769,7 @@ literal|"Custom: "
 operator|+
 name|destination
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;

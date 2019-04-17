@@ -1361,7 +1361,7 @@ name|get
 argument_list|(
 name|destBranch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 argument_list|,
@@ -1375,7 +1375,7 @@ literal|"project not found: %s"
 argument_list|,
 name|destBranch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 argument_list|)

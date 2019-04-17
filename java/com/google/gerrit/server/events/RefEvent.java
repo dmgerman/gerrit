@@ -114,10 +114,9 @@ name|getBranchNameKey
 parameter_list|()
 block|{
 return|return
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|getProjectNameKey
 argument_list|()

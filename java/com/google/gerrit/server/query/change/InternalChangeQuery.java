@@ -558,7 +558,7 @@ name|RefPredicate
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 return|;
@@ -923,10 +923,9 @@ name|and
 argument_list|(
 name|byBranchKeyPred
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -970,10 +969,9 @@ name|and
 argument_list|(
 name|byBranchKeyPred
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -1020,7 +1018,7 @@ name|project
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 argument_list|,
@@ -1083,7 +1081,7 @@ name|project
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 argument_list|,
@@ -1121,7 +1119,7 @@ name|project
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 argument_list|,
@@ -1409,7 +1407,7 @@ name|create
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|,
 name|changeIds
@@ -1497,7 +1495,7 @@ name|project
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 argument_list|,
@@ -1871,7 +1869,7 @@ name|byBranchCommit
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -1879,7 +1877,7 @@ argument_list|()
 argument_list|,
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|hash

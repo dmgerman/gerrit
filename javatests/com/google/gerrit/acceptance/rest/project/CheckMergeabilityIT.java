@@ -333,10 +333,9 @@ name|Exception
 block|{
 name|branch
 operator|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -352,7 +351,7 @@ name|name
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -363,7 +362,7 @@ name|branch
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.

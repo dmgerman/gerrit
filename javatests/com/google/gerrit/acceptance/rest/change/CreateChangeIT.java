@@ -3177,10 +3177,9 @@ name|Exception
 block|{
 name|createBranch
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -3905,10 +3904,9 @@ expr_stmt|;
 comment|// create two new branches
 name|createBranch
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -3918,10 +3916,9 @@ argument_list|)
 expr_stmt|;
 name|createBranch
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,

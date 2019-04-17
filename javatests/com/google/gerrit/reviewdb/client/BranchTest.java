@@ -108,10 +108,9 @@ parameter_list|()
 block|{
 name|assertThat
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project
@@ -124,7 +123,7 @@ argument_list|,
 literal|"bar"
 argument_list|)
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -135,10 +134,9 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project
@@ -151,7 +149,7 @@ argument_list|,
 literal|"refs/heads/bar"
 argument_list|)
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -171,10 +169,9 @@ parameter_list|()
 block|{
 name|assertThat
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project
@@ -198,10 +195,9 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project
@@ -225,10 +221,9 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 operator|new
 name|Project

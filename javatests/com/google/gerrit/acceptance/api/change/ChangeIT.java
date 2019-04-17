@@ -23402,7 +23402,7 @@ literal|"Custom: "
 operator|+
 name|destination
 operator|.
-name|get
+name|branch
 argument_list|()
 return|;
 block|}
@@ -34272,10 +34272,9 @@ block|{
 return|return
 name|createBranch
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,

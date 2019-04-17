@@ -1172,7 +1172,7 @@ name|get
 argument_list|(
 name|branchName
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 decl_stmt|;

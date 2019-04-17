@@ -1112,7 +1112,7 @@ name|equals
 argument_list|(
 name|destBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 condition|)
@@ -1808,7 +1808,7 @@ name|fromRef
 argument_list|(
 name|destBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2092,7 +2092,7 @@ name|isGroupRef
 argument_list|(
 name|destBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 condition|)

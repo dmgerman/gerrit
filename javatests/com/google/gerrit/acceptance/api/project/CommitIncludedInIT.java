@@ -501,15 +501,11 @@ argument_list|)
 expr_stmt|;
 name|createBranch
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
-operator|.
-name|get
-argument_list|()
 argument_list|,
 literal|"test-branch"
 argument_list|)

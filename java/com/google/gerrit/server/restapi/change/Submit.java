@@ -1690,7 +1690,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2699,7 +2699,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 argument_list|,
 literal|"commit"
@@ -2904,7 +2904,7 @@ name|targetBranch
 argument_list|,
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 decl_stmt|;

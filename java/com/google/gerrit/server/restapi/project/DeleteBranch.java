@@ -384,7 +384,7 @@ operator|.
 name|getBranchKey
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 condition|)
@@ -401,7 +401,7 @@ operator|.
 name|getBranchKey
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 throw|;
