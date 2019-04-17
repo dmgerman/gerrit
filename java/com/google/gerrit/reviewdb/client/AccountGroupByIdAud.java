@@ -261,7 +261,7 @@ name|include
 init|=
 name|m
 operator|.
-name|getIncludeUUID
+name|getIncludeUuid
 argument_list|()
 decl_stmt|;
 name|key
