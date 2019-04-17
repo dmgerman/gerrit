@@ -85,11 +85,10 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|OrmDuplicateKeyException (final String msg)
+DECL|method|OrmDuplicateKeyException (String msg)
 specifier|public
 name|OrmDuplicateKeyException
 parameter_list|(
-specifier|final
 name|String
 name|msg
 parameter_list|)
@@ -100,15 +99,13 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OrmDuplicateKeyException (final String msg, final Throwable why)
+DECL|method|OrmDuplicateKeyException (String msg, Throwable why)
 specifier|public
 name|OrmDuplicateKeyException
 parameter_list|(
-specifier|final
 name|String
 name|msg
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)

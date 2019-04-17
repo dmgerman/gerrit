@@ -85,11 +85,10 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|OrmRuntimeException (final String message)
+DECL|method|OrmRuntimeException (String message)
 specifier|public
 name|OrmRuntimeException
 parameter_list|(
-specifier|final
 name|String
 name|message
 parameter_list|)
@@ -100,15 +99,13 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OrmRuntimeException (final String message, final Throwable why)
+DECL|method|OrmRuntimeException (String message, Throwable why)
 specifier|public
 name|OrmRuntimeException
 parameter_list|(
-specifier|final
 name|String
 name|message
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)
@@ -121,11 +118,10 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OrmRuntimeException (final Throwable why)
+DECL|method|OrmRuntimeException (Throwable why)
 specifier|public
 name|OrmRuntimeException
 parameter_list|(
-specifier|final
 name|Throwable
 name|why
 parameter_list|)
