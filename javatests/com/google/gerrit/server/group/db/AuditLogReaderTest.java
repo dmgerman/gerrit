@@ -2172,10 +2172,9 @@ return|return
 operator|new
 name|AccountGroupMemberAudit
 argument_list|(
-operator|new
 name|AccountGroupMemberAudit
 operator|.
-name|Key
+name|key
 argument_list|(
 name|id
 argument_list|,
