@@ -376,9 +376,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NoteDbUpdateManager
-operator|.
-name|TooManyUpdatesException
+name|Sequences
 import|;
 end_import
 
@@ -394,7 +392,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|Sequences
+name|TooManyUpdatesException
 import|;
 end_import
 
