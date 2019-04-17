@@ -5145,10 +5145,9 @@ init|=
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 name|psId
 argument_list|,
@@ -5411,10 +5410,9 @@ init|=
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 name|psId
 argument_list|,

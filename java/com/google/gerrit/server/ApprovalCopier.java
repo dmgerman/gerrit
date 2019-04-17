@@ -1234,7 +1234,7 @@ operator|.
 name|getKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 operator|.
 name|get
@@ -1400,7 +1400,7 @@ operator|.
 name|getKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 operator|.
 name|equals

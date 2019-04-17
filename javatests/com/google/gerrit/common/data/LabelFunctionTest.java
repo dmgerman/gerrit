@@ -810,10 +810,9 @@ name|labelId
 parameter_list|)
 block|{
 return|return
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 name|psId
 argument_list|,

@@ -2721,10 +2721,9 @@ init|=
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet
@@ -2794,10 +2793,9 @@ init|=
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet
@@ -5204,7 +5202,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|hasFields
+name|hasAutoValueMethods
 argument_list|(
 name|ImmutableMap
 operator|.
@@ -5240,7 +5238,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"categoryId"
+literal|"labelId"
 argument_list|,
 name|LabelId
 operator|.

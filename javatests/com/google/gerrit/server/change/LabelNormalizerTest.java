@@ -1653,10 +1653,9 @@ return|return
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 name|change
 operator|.
@@ -1707,7 +1706,7 @@ operator|.
 name|getKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 argument_list|,
 name|src

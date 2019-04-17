@@ -328,10 +328,9 @@ init|=
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet
@@ -481,7 +480,7 @@ literal|100013
 argument_list|)
 argument_list|)
 operator|.
-name|setCategoryId
+name|setLabelId
 argument_list|(
 name|Entities
 operator|.
@@ -560,10 +559,9 @@ init|=
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet
@@ -686,7 +684,7 @@ literal|100013
 argument_list|)
 argument_list|)
 operator|.
-name|setCategoryId
+name|setLabelId
 argument_list|(
 name|Entities
 operator|.
@@ -746,10 +744,9 @@ init|=
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet
@@ -861,10 +858,9 @@ init|=
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet
@@ -1011,7 +1007,7 @@ literal|100013
 argument_list|)
 argument_list|)
 operator|.
-name|setCategoryId
+name|setLabelId
 argument_list|(
 name|Entities
 operator|.
@@ -1224,7 +1220,7 @@ literal|100013
 argument_list|)
 argument_list|)
 operator|.
-name|setCategoryId
+name|setLabelId
 argument_list|(
 name|Entities
 operator|.

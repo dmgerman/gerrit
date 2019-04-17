@@ -147,10 +147,9 @@ operator|.
 name|Key
 name|k1
 init|=
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet
@@ -188,10 +187,9 @@ operator|.
 name|Key
 name|k2
 init|=
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet
@@ -229,10 +227,9 @@ operator|.
 name|Key
 name|k3
 init|=
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet

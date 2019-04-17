@@ -569,7 +569,7 @@ operator|.
 name|getKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 operator|.
 name|getParentKey

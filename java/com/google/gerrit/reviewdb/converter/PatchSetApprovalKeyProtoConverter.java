@@ -262,7 +262,7 @@ name|toProto
 argument_list|(
 name|key
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -275,12 +275,12 @@ name|toProto
 argument_list|(
 name|key
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 argument_list|)
 operator|.
-name|setCategoryId
+name|setLabelId
 argument_list|(
 name|labelIdConverter
 operator|.
@@ -288,7 +288,7 @@ name|toProto
 argument_list|(
 name|key
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -313,10 +313,9 @@ name|proto
 parameter_list|)
 block|{
 return|return
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 name|patchSetIdConverter
 operator|.
@@ -344,7 +343,7 @@ name|fromProto
 argument_list|(
 name|proto
 operator|.
-name|getCategoryId
+name|getLabelId
 argument_list|()
 argument_list|)
 argument_list|)
