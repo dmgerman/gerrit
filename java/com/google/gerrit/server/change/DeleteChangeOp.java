@@ -232,22 +232,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|NoSuchChangeException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|update
 operator|.
 name|BatchUpdateOp
@@ -545,8 +529,6 @@ comment|// Cleaning up is only possible as long as the change and its elements a
 comment|// still part of the database.
 name|cleanUpReferences
 argument_list|(
-name|ctx
-argument_list|,
 name|id
 argument_list|,
 name|patchSets
@@ -770,14 +752,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|cleanUpReferences (ChangeContext ctx, Change.Id id, Collection<PatchSet> patchSets)
+DECL|method|cleanUpReferences (Change.Id id, Collection<PatchSet> patchSets)
 specifier|private
 name|void
 name|cleanUpReferences
 parameter_list|(
-name|ChangeContext
-name|ctx
-parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -790,7 +769,7 @@ argument_list|>
 name|patchSets
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
+name|IOException
 block|{
 for|for
 control|(
@@ -822,20 +801,11 @@ name|class
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Non-atomic operation on Accounts table; not much we can do to make it
-comment|// atomic.
+comment|// Non-atomic operation on All-Users refs; not much we can do to make it atomic.
 name|starredChangesUtil
 operator|.
-name|unstarAll
+name|unstarAllForChangeDeletion
 argument_list|(
-name|ctx
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getProject
-argument_list|()
-argument_list|,
 name|id
 argument_list|)
 expr_stmt|;

@@ -1744,21 +1744,19 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|unstarAll (Project.NameKey project, Change.Id changeId)
+comment|/**    * Unstar the given change for all users.    *    *<p>Intended for use only when we're about to delete a change. For that reason, the change is    * not reindexed.    *    * @param changeId change ID.    * @throws IOException if an error occurred.    */
+DECL|method|unstarAllForChangeDeletion (Change.Id changeId)
 specifier|public
 name|void
-name|unstarAll
+name|unstarAllForChangeDeletion
 parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
 name|Change
 operator|.
 name|Id
 name|changeId
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 try|try
 init|(
@@ -1952,41 +1950,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-name|indexer
-operator|.
-name|index
-argument_list|(
-name|project
-argument_list|,
-name|changeId
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|StorageException
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Unstar change %d failed"
-argument_list|,
-name|changeId
-operator|.
-name|get
-argument_list|()
-argument_list|)
-argument_list|,
-name|e
-argument_list|)
-throw|;
 block|}
 block|}
 DECL|method|byChange (Change.Id changeId)
