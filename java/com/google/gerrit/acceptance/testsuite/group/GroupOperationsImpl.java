@@ -526,10 +526,9 @@ operator|.
 name|Id
 name|groupId
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|Id
+name|id
 argument_list|(
 name|seq
 operator|.

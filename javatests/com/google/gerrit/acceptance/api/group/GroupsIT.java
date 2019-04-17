@@ -10881,10 +10881,9 @@ argument_list|)
 operator|.
 name|setId
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|Id
+name|id
 argument_list|(
 name|seq
 operator|.

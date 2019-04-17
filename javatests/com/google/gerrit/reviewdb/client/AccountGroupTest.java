@@ -660,10 +660,9 @@ parameter_list|()
 block|{
 name|assertThat
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|123
 argument_list|)
