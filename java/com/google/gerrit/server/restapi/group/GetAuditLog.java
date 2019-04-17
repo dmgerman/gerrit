@@ -961,7 +961,7 @@ operator|.
 name|getKey
 argument_list|()
 operator|.
-name|getAddedOn
+name|addedOn
 argument_list|()
 argument_list|,
 name|member

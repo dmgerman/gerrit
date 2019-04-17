@@ -951,10 +951,9 @@ init|=
 operator|new
 name|AccountGroupByIdAud
 argument_list|(
-operator|new
 name|AccountGroupByIdAud
 operator|.
-name|Key
+name|key
 argument_list|(
 name|groupId
 argument_list|,
