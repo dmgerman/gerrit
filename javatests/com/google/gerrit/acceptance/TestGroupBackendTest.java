@@ -243,10 +243,9 @@ operator|.
 name|UUID
 name|testUUID
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"testbackend:test"
 argument_list|)
@@ -338,10 +337,9 @@ name|testGroupBackend
 operator|.
 name|handles
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"ldap:1234"
 argument_list|)

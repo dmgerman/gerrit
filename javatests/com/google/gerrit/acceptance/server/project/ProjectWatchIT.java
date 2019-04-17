@@ -3434,10 +3434,9 @@ name|VIEW_PRIVATE_CHANGES
 argument_list|,
 literal|false
 argument_list|,
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|groupThatCanViewPrivateChanges
 operator|.

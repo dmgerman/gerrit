@@ -542,10 +542,9 @@ argument_list|()
 decl_stmt|;
 name|updateGroup
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"users-UUID"
 argument_list|)
@@ -612,10 +611,9 @@ argument_list|)
 expr_stmt|;
 name|updateGroup
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"nonexistent-group-UUID"
 argument_list|)
@@ -773,10 +771,9 @@ argument_list|()
 operator|.
 name|setGroupUUID
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|groupUuid
 argument_list|)

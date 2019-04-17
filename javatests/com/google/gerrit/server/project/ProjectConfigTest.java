@@ -836,10 +836,9 @@ init|=
 operator|new
 name|GroupReference
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"X"
 argument_list|)
@@ -856,10 +855,9 @@ init|=
 operator|new
 name|GroupReference
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"Y"
 argument_list|)

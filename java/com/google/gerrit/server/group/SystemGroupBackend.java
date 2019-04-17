@@ -537,10 +537,9 @@ operator|.
 name|UUID
 name|ANONYMOUS_USERS
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|SYSTEM_GROUP_SCHEME
 operator|+
@@ -557,10 +556,9 @@ operator|.
 name|UUID
 name|REGISTERED_USERS
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|SYSTEM_GROUP_SCHEME
 operator|+
@@ -577,10 +575,9 @@ operator|.
 name|UUID
 name|PROJECT_OWNERS
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|SYSTEM_GROUP_SCHEME
 operator|+
@@ -597,10 +594,9 @@ operator|.
 name|UUID
 name|CHANGE_OWNER
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|SYSTEM_GROUP_SCHEME
 operator|+

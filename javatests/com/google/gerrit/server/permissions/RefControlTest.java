@@ -1937,10 +1937,9 @@ operator|.
 name|UUID
 name|fixers
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"test.fixers"
 argument_list|)

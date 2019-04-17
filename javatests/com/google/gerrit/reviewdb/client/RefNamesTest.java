@@ -483,10 +483,9 @@ operator|.
 name|UUID
 name|groupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"ABCDEFG"
 argument_list|)
@@ -527,10 +526,9 @@ operator|.
 name|UUID
 name|groupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"A"
 argument_list|)
@@ -567,10 +565,9 @@ operator|.
 name|UUID
 name|groupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"ABCDEFG"
 argument_list|)
@@ -611,10 +608,9 @@ operator|.
 name|UUID
 name|groupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"A"
 argument_list|)

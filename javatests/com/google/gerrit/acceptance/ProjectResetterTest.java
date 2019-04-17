@@ -2609,10 +2609,9 @@ operator|.
 name|UUID
 name|uuid1
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"abcd1"
 argument_list|)
@@ -2622,10 +2621,9 @@ operator|.
 name|UUID
 name|uuid2
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"abcd2"
 argument_list|)
@@ -2635,10 +2633,9 @@ operator|.
 name|UUID
 name|uuid3
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"abcd3"
 argument_list|)

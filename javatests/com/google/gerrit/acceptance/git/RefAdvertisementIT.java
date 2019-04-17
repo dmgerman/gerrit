@@ -5274,10 +5274,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|gApi
 operator|.

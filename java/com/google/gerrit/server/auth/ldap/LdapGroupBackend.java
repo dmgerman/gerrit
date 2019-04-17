@@ -856,10 +856,9 @@ return|return
 operator|new
 name|GroupReference
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|LDAP_UUID
 operator|+
@@ -1223,10 +1222,9 @@ operator|.
 name|UUID
 name|uuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|name
 argument_list|)

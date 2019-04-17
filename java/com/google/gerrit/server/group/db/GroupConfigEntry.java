@@ -658,10 +658,9 @@ name|group
 operator|.
 name|setOwnerGroupUUID
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|ownerGroupUuid
 argument_list|)

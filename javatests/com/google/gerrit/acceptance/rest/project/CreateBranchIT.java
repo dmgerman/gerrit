@@ -959,10 +959,9 @@ name|RefNames
 operator|.
 name|refsGroups
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"foo"
 argument_list|)

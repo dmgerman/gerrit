@@ -2557,10 +2557,9 @@ operator|.
 name|UUID
 name|groupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|group1
 operator|.
@@ -2673,10 +2672,9 @@ operator|.
 name|UUID
 name|uuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|group1
 operator|.
@@ -2785,10 +2783,9 @@ operator|.
 name|UUID
 name|uuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|group
 operator|.

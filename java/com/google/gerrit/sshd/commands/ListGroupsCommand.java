@@ -464,10 +464,9 @@ name|groupCache
 operator|.
 name|get
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|Url
 operator|.
