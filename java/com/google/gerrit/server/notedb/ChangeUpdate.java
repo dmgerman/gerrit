@@ -1991,25 +1991,6 @@ literal|"no submit records specified at submit time"
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Deprecated
-comment|// Only until we improve ChangeRebuilder to call merge().
-DECL|method|setSubmissionId (String submissionId)
-specifier|public
-name|void
-name|setSubmissionId
-parameter_list|(
-name|String
-name|submissionId
-parameter_list|)
-block|{
-name|this
-operator|.
-name|submissionId
-operator|=
-name|submissionId
-expr_stmt|;
-block|}
 DECL|method|setSubjectForCommit (String commitSubject)
 specifier|public
 name|void
