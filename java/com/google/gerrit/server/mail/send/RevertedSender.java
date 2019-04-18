@@ -76,9 +76,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|EmailException
 import|;
@@ -131,20 +129,6 @@ operator|.
 name|ProjectWatches
 operator|.
 name|NotifyType
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -230,8 +214,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|super
 argument_list|(

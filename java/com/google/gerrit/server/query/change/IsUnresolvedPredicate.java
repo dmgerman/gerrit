@@ -102,20 +102,6 @@ name|ChangeField
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
 begin_class
 DECL|class|IsUnresolvedPredicate
 specifier|public
@@ -167,8 +153,6 @@ parameter_list|(
 name|ChangeData
 name|changeData
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|ChangeField

@@ -190,6 +190,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -760,34 +774,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmRuntimeException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -865,16 +851,6 @@ operator|.
 name|util
 operator|.
 name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -1531,8 +1507,6 @@ name|RepositoryNotFoundException
 throws|,
 name|IOException
 throws|,
-name|OrmException
-throws|,
 name|PermissionBackendException
 throws|,
 name|UpdateException
@@ -1642,8 +1616,6 @@ name|SubmitInput
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|RestApiException
 throws|,
 name|IOException
@@ -2231,8 +2203,6 @@ catch|catch
 parameter_list|(
 name|PermissionBackendException
 decl||
-name|OrmException
-decl||
 name|IOException
 name|e
 parameter_list|)
@@ -2254,7 +2224,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|StorageException
 argument_list|(
 literal|"Could not determine problems for the change"
 argument_list|,
@@ -2373,7 +2343,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|StorageException
 argument_list|(
 literal|"Could not determine problems for the change"
 argument_list|,
@@ -2417,37 +2387,6 @@ literal|null
 return|;
 comment|// submit not visible
 block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|atSevere
-argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|e
-argument_list|)
-operator|.
-name|log
-argument_list|(
-literal|"Error checking if change is submittable"
-argument_list|)
-expr_stmt|;
-throw|throw
-operator|new
-name|OrmRuntimeException
-argument_list|(
-literal|"Could not determine problems for the change"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 name|ChangeSet
 name|cs
 decl_stmt|;
@@ -2476,8 +2415,6 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
 name|IOException
 decl||
 name|PermissionBackendException
@@ -2486,7 +2423,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|StorageException
 argument_list|(
 literal|"Could not determine complete set of changes to be submitted"
 argument_list|,
@@ -2520,7 +2457,15 @@ condition|)
 block|{
 name|topicSize
 operator|=
-name|getChangesByTopic
+name|queryProvider
+operator|.
+name|get
+argument_list|()
+operator|.
+name|noFields
+argument_list|()
+operator|.
+name|byTopicOpen
 argument_list|(
 name|topic
 argument_list|)
@@ -2561,43 +2506,20 @@ name|getUser
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// Recheck mergeability rather than using value stored in the index, which may be stale.
+comment|// TODO(dborowitz): This is ugly; consider providing a way to not read stored fields from the
+comment|// index in the first place.
+comment|// cd.setMergeable(null);
+comment|// That was done in unmergeableChanges which was called by problemsForSubmittingChangeset, so
+comment|// now it is safe to read from the cache, as it yields the same result.
 name|Boolean
 name|enabled
-decl_stmt|;
-try|try
-block|{
-comment|// Recheck mergeability rather than using value stored in the index,
-comment|// which may be stale.
-comment|// TODO(dborowitz): This is ugly; consider providing a way to not read
-comment|// stored fields from the index in the first place.
-comment|// cd.setMergeable(null);
-comment|// That was done in unmergeableChanges which was called by
-comment|// problemsForSubmittingChangeset, so now it is safe to read from
-comment|// the cache, as it yields the same result.
-name|enabled
-operator|=
+init|=
 name|cd
 operator|.
 name|isMergeable
 argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|OrmRuntimeException
-argument_list|(
-literal|"Could not determine mergeability"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
+decl_stmt|;
 if|if
 condition|(
 name|submitProblems
@@ -2893,8 +2815,6 @@ name|ChangeSet
 name|cs
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|Set
@@ -3185,8 +3105,6 @@ name|project
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|HashMap
 argument_list|<
@@ -3295,8 +3213,6 @@ throws|throws
 name|AuthException
 throws|,
 name|UnprocessableEntityException
-throws|,
-name|OrmException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -3410,47 +3326,6 @@ return|return
 name|submitter
 return|;
 block|}
-DECL|method|getChangesByTopic (String topic)
-specifier|private
-name|List
-argument_list|<
-name|ChangeData
-argument_list|>
-name|getChangesByTopic
-parameter_list|(
-name|String
-name|topic
-parameter_list|)
-block|{
-try|try
-block|{
-return|return
-name|queryProvider
-operator|.
-name|get
-argument_list|()
-operator|.
-name|byTopicOpen
-argument_list|(
-name|topic
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|OrmRuntimeException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
 DECL|class|CurrentRevision
 specifier|public
 specifier|static
@@ -3539,8 +3414,6 @@ throws|,
 name|RepositoryNotFoundException
 throws|,
 name|IOException
-throws|,
-name|OrmException
 throws|,
 name|PermissionBackendException
 throws|,

@@ -166,20 +166,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|sql
@@ -304,8 +290,6 @@ parameter_list|(
 name|ChangeData
 name|object
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Change
 name|change

@@ -74,6 +74,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -221,20 +235,6 @@ operator|.
 name|notedb
 operator|.
 name|ChangeNotes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -479,8 +479,6 @@ name|psi
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|rw
 operator|.
@@ -602,7 +600,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -713,7 +711,7 @@ catch|catch
 parameter_list|(
 name|IOException
 decl||
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -737,8 +735,6 @@ name|who
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 specifier|final
 name|UserIdentity

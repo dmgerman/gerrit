@@ -962,20 +962,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1614,8 +1600,6 @@ name|ChangeInput
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|InvalidChangeOperationException
@@ -2213,8 +2197,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|OrmException
-throws|,
 name|PermissionBackendException
 throws|,
 name|IOException
@@ -2639,8 +2621,6 @@ name|String
 name|baseChange
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|UnprocessableEntityException
 throws|,
 name|PermissionBackendException
@@ -3274,8 +3254,6 @@ throws|throws
 name|RestApiException
 throws|,
 name|IOException
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(

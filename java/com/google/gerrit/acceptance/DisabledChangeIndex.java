@@ -196,16 +196,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Optional
@@ -297,8 +287,6 @@ parameter_list|(
 name|ChangeData
 name|obj
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 throw|throw
 operator|new
@@ -320,8 +308,6 @@ operator|.
 name|Id
 name|key
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 throw|throw
 operator|new
@@ -338,8 +324,6 @@ specifier|public
 name|void
 name|deleteAll
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 throw|throw
 operator|new
@@ -389,8 +373,6 @@ parameter_list|(
 name|boolean
 name|ready
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 throw|throw
 operator|new
@@ -418,8 +400,6 @@ parameter_list|,
 name|QueryOptions
 name|opts
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 throw|throw
 operator|new

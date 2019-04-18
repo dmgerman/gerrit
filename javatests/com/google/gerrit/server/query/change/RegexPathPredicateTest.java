@@ -140,20 +140,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -187,8 +173,6 @@ specifier|public
 name|void
 name|prefixOnlyOptimization
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|RegexPathPredicate
 name|p
@@ -260,8 +244,6 @@ specifier|public
 name|void
 name|prefixReducesSearchSpace
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|RegexPathPredicate
 name|p
@@ -335,8 +317,6 @@ specifier|public
 name|void
 name|fileExtension_Constant
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|RegexPathPredicate
 name|p
@@ -393,8 +373,6 @@ specifier|public
 name|void
 name|fileExtension_CharacterGroup
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|RegexPathPredicate
 name|p
@@ -451,8 +429,6 @@ specifier|public
 name|void
 name|endOfString
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|assertTrue
 argument_list|(
@@ -526,8 +502,6 @@ specifier|public
 name|void
 name|exactMatch
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|RegexPathPredicate
 name|p
@@ -605,8 +579,6 @@ name|String
 modifier|...
 name|files
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Arrays
 operator|.

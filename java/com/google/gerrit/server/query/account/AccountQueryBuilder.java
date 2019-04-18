@@ -128,11 +128,23 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|NotSignedInException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|exceptions
+operator|.
+name|StorageException
 import|;
 end_import
 
@@ -433,20 +445,6 @@ operator|.
 name|permissions
 operator|.
 name|PermissionBackendException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -878,8 +876,6 @@ name|change
 parameter_list|)
 throws|throws
 name|QueryParseException
-throws|,
-name|OrmException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1342,7 +1338,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|QueryParseException
 decl||

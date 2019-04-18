@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.errors
+DECL|package|com.google.gerrit.exceptions
 package|package
 name|com
 operator|.
@@ -60,21 +60,19 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 package|;
 end_package
 
 begin_comment
-comment|/** Error indicating entity name is already taken by another entity. */
+comment|/** Error indicating the entity requested doesn't exist. */
 end_comment
 
 begin_class
-DECL|class|NameAlreadyUsedException
+DECL|class|NoSuchEntityException
 specifier|public
 class|class
-name|NameAlreadyUsedException
+name|NoSuchEntityException
 extends|extends
 name|Exception
 block|{
@@ -94,21 +92,30 @@ specifier|final
 name|String
 name|MESSAGE
 init|=
-literal|"Name Already Used: "
+literal|"Not Found"
 decl_stmt|;
-DECL|method|NameAlreadyUsedException (String name)
+DECL|method|NoSuchEntityException ()
 specifier|public
-name|NameAlreadyUsedException
-parameter_list|(
-name|String
-name|name
-parameter_list|)
+name|NoSuchEntityException
+parameter_list|()
 block|{
 name|super
 argument_list|(
 name|MESSAGE
-operator|+
-name|name
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|NoSuchEntityException (String message)
+specifier|public
+name|NoSuchEntityException
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
 argument_list|)
 expr_stmt|;
 block|}

@@ -122,11 +122,23 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|NoSuchGroupException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|exceptions
+operator|.
+name|StorageException
 import|;
 end_import
 
@@ -237,20 +249,6 @@ operator|.
 name|group
 operator|.
 name|GroupJson
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -503,7 +501,7 @@ catch|catch
 parameter_list|(
 name|NoSuchGroupException
 decl||
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{

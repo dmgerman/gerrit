@@ -282,6 +282,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -559,20 +573,6 @@ operator|.
 name|util
 operator|.
 name|LabelVote
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -919,7 +919,7 @@ operator|=
 name|projectCache
 expr_stmt|;
 block|}
-comment|/**    * Get all reviewers for a change.    *    * @param notes change notes.    * @return reviewers for the change.    * @throws OrmException if reviewers for the change could not be read.    */
+comment|/**    * Get all reviewers for a change.    *    * @param notes change notes.    * @return reviewers for the change.    */
 DECL|method|getReviewers (ChangeNotes notes)
 specifier|public
 name|ReviewerSet
@@ -928,8 +928,6 @@ parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|notes
@@ -941,7 +939,7 @@ name|getReviewers
 argument_list|()
 return|;
 block|}
-comment|/**    * Get all reviewers and CCed accounts for a change.    *    * @param allApprovals all approvals to consider; must all belong to the same change.    * @return reviewers for the change.    * @throws OrmException if reviewers for the change could not be read.    */
+comment|/**    * Get all reviewers and CCed accounts for a change.    *    * @param allApprovals all approvals to consider; must all belong to the same change.    * @return reviewers for the change.    */
 DECL|method|getReviewers (ChangeNotes notes, Iterable<PatchSetApproval> allApprovals)
 specifier|public
 name|ReviewerSet
@@ -956,8 +954,6 @@ name|PatchSetApproval
 argument_list|>
 name|allApprovals
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|notes
@@ -969,7 +965,7 @@ name|getReviewers
 argument_list|()
 return|;
 block|}
-comment|/**    * Get updates to reviewer set.    *    * @param notes change notes.    * @return reviewer updates for the change.    * @throws OrmException if reviewer updates for the change could not be read.    */
+comment|/**    * Get updates to reviewer set.    *    * @param notes change notes.    * @return reviewer updates for the change.    */
 DECL|method|getReviewerUpdates (ChangeNotes notes)
 specifier|public
 name|List
@@ -981,8 +977,6 @@ parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|notes
@@ -1098,8 +1092,6 @@ name|Id
 argument_list|>
 name|wantReviewers
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|PatchSet
 operator|.
@@ -1583,7 +1575,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**    * Adds accounts to a change as reviewers in the CC state.    *    * @param notes change notes.    * @param update change update.    * @param wantCCs accounts to CC.    * @return whether a change was made.    * @throws OrmException    */
+comment|/**    * Adds accounts to a change as reviewers in the CC state.    *    * @param notes change notes.    * @param update change update.    * @param wantCCs accounts to CC.    * @return whether a change was made.    */
 DECL|method|addCcs ( ChangeNotes notes, ChangeUpdate update, Collection<Account.Id> wantCCs)
 specifier|public
 name|Collection
@@ -1608,8 +1600,6 @@ name|Id
 argument_list|>
 name|wantCCs
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|addCcs
@@ -1715,7 +1705,7 @@ return|return
 name|need
 return|;
 block|}
-comment|/**    * Adds approvals to ChangeUpdate for a new patch set, and writes to NoteDb.    *    * @param update change update.    * @param labelTypes label types for the containing project.    * @param ps patch set being approved.    * @param user user adding approvals.    * @param approvals approvals to add.    * @throws RestApiException    * @throws OrmException    */
+comment|/**    * Adds approvals to ChangeUpdate for a new patch set, and writes to NoteDb.    *    * @param update change update.    * @param labelTypes label types for the containing project.    * @param ps patch set being approved.    * @param user user adding approvals.    * @param approvals approvals to add.    * @throws RestApiException    */
 DECL|method|addApprovalsForNewPatchSet ( ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, CurrentUser user, Map<String, Short> approvals)
 specifier|public
 name|Iterable
@@ -1746,8 +1736,6 @@ name|approvals
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|OrmException
 throws|,
 name|PermissionBackendException
 block|{
@@ -2125,8 +2113,6 @@ parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|notes
@@ -2164,8 +2150,6 @@ name|Nullable
 name|Config
 name|repoConfig
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|copier
@@ -2213,8 +2197,6 @@ name|Nullable
 name|Config
 name|repoConfig
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|filterApprovals
@@ -2281,7 +2263,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{

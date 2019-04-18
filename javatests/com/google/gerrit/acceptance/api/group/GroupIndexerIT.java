@@ -158,9 +158,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|NoSuchGroupException
 import|;
@@ -405,20 +403,6 @@ operator|.
 name|truth
 operator|.
 name|OptionalSubject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1184,8 +1168,6 @@ name|InternalGroupUpdate
 name|groupUpdate
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|NoSuchGroupException
 throws|,
 name|IOException

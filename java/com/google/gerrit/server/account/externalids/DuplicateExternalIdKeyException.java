@@ -74,11 +74,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 operator|.
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 import|;
 end_import
 
@@ -92,7 +92,7 @@ specifier|public
 class|class
 name|DuplicateExternalIdKeyException
 extends|extends
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 block|{
 DECL|field|serialVersionUID
 specifier|private

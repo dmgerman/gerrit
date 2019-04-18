@@ -158,6 +158,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|DuplicateKeyException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -367,20 +381,6 @@ operator|.
 name|time
 operator|.
 name|TimeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmDuplicateKeyException
 import|;
 end_import
 
@@ -985,14 +985,14 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Creates a new account.    *    * @return the new account    * @throws OrmDuplicateKeyException if the user branch already exists    */
+comment|/**    * Creates a new account.    *    * @return the new account    * @throws DuplicateKeyException if the user branch already exists    */
 DECL|method|getNewAccount ()
 specifier|public
 name|Account
 name|getNewAccount
 parameter_list|()
 throws|throws
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 block|{
 return|return
 name|getNewAccount
@@ -1004,7 +1004,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Creates a new account.    *    * @return the new account    * @throws OrmDuplicateKeyException if the user branch already exists    */
+comment|/**    * Creates a new account.    *    * @return the new account    * @throws DuplicateKeyException if the user branch already exists    */
 DECL|method|getNewAccount (Timestamp registeredOn)
 name|Account
 name|getNewAccount
@@ -1013,7 +1013,7 @@ name|Timestamp
 name|registeredOn
 parameter_list|)
 throws|throws
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 block|{
 name|checkLoaded
 argument_list|()
@@ -1027,7 +1027,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 argument_list|(
 name|String
 operator|.

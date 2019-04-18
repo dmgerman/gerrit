@@ -66,20 +66,6 @@ name|query
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
 begin_interface
 DECL|interface|Matchable
 specifier|public
@@ -89,7 +75,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-comment|/**    * Does this predicate match this object?    *    * @throws OrmException    */
+comment|/** Does this predicate match this object? */
 DECL|method|match (T object)
 name|boolean
 name|match
@@ -97,8 +83,6 @@ parameter_list|(
 name|T
 name|object
 parameter_list|)
-throws|throws
-name|OrmException
 function_decl|;
 comment|/** @return a cost estimate to run this predicate, higher figures cost more. */
 DECL|method|getCost ()

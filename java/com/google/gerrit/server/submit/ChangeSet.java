@@ -218,20 +218,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -522,8 +508,6 @@ name|ChangeData
 argument_list|>
 name|changesByBranch
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|ListMultimap
 argument_list|<

@@ -614,20 +614,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1274,8 +1260,6 @@ name|ResourceConflictException
 throws|,
 name|IOException
 throws|,
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 name|validate
@@ -1314,8 +1298,6 @@ name|ctx
 parameter_list|)
 throws|throws
 name|ResourceConflictException
-throws|,
-name|OrmException
 throws|,
 name|IOException
 block|{
@@ -1815,8 +1797,6 @@ throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
-throws|,
-name|OrmException
 block|{
 comment|// Not allowed to create a new patch set if the current patch set is locked.
 name|psUtil

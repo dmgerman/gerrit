@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright 2009 Google Inc.
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,29 +52,25 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtorm.server
+DECL|package|com.google.gerrit.exceptions
 package|package
 name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|exceptions
 package|;
 end_package
 
-begin_comment
-comment|/** Indicates one or more entities were concurrently inserted with the same key. */
-end_comment
-
 begin_class
-DECL|class|OrmDuplicateKeyException
+DECL|class|EmailException
 specifier|public
 class|class
-name|OrmDuplicateKeyException
+name|EmailException
 extends|extends
-name|OrmException
+name|Exception
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -85,9 +81,18 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|OrmDuplicateKeyException (String msg)
+DECL|field|MESSAGE
 specifier|public
-name|OrmDuplicateKeyException
+specifier|static
+specifier|final
+name|String
+name|MESSAGE
+init|=
+literal|"Mail Error: "
+decl_stmt|;
+DECL|method|EmailException (String msg)
+specifier|public
+name|EmailException
 parameter_list|(
 name|String
 name|msg
@@ -95,13 +100,15 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|MESSAGE
+operator|+
 name|msg
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OrmDuplicateKeyException (String msg, Throwable why)
+DECL|method|EmailException (String msg, Throwable why)
 specifier|public
-name|OrmDuplicateKeyException
+name|EmailException
 parameter_list|(
 name|String
 name|msg
@@ -112,6 +119,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|MESSAGE
+operator|+
 name|msg
 argument_list|,
 name|why

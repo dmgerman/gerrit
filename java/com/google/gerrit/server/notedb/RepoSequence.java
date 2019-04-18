@@ -296,6 +296,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|git
 operator|.
 name|RefUpdateUtil
@@ -365,20 +379,6 @@ operator|.
 name|git
 operator|.
 name|GitRepositoryManager
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -591,8 +591,6 @@ DECL|method|get ()
 name|int
 name|get
 parameter_list|()
-throws|throws
-name|OrmException
 function_decl|;
 block|}
 annotation|@
@@ -1125,8 +1123,6 @@ specifier|public
 name|int
 name|next
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|counterLock
 operator|.
@@ -1173,8 +1169,6 @@ parameter_list|(
 name|int
 name|count
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -1320,8 +1314,6 @@ parameter_list|(
 name|int
 name|val
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 comment|// Don't bother spinning. This is only for tests, and a test that calls set
 comment|// concurrently with other writes is doing it wrong.
@@ -1386,7 +1378,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -1410,8 +1402,6 @@ parameter_list|(
 name|int
 name|val
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|counterLock
 operator|.
@@ -1513,7 +1503,7 @@ operator|.
 name|getCause
 argument_list|()
 argument_list|,
-name|OrmException
+name|StorageException
 operator|.
 name|class
 argument_list|)
@@ -1521,7 +1511,7 @@ expr_stmt|;
 block|}
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -1535,7 +1525,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -1559,8 +1549,6 @@ parameter_list|(
 name|int
 name|count
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 try|try
 init|(
@@ -1652,7 +1640,7 @@ operator|.
 name|getCause
 argument_list|()
 argument_list|,
-name|OrmException
+name|StorageException
 operator|.
 name|class
 argument_list|)
@@ -1660,7 +1648,7 @@ expr_stmt|;
 block|}
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -1674,7 +1662,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)

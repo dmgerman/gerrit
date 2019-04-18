@@ -172,6 +172,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -323,20 +337,6 @@ operator|.
 name|change
 operator|.
 name|ChangeData
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -579,8 +579,6 @@ name|Nullable
 name|Config
 name|repoConfig
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|getForPatchSet
@@ -631,8 +629,6 @@ name|PatchSetApproval
 argument_list|>
 name|dontCopy
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|PatchSet
 name|ps
@@ -705,8 +701,6 @@ name|PatchSetApproval
 argument_list|>
 name|dontCopy
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|requireNonNull
 argument_list|(
@@ -1137,7 +1131,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -1158,8 +1152,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Collection
 argument_list|<

@@ -202,6 +202,34 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|DuplicateKeyException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|git
 operator|.
 name|LockFailureException
@@ -473,34 +501,6 @@ operator|.
 name|RetryHelper
 operator|.
 name|ActionType
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmDuplicateKeyException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1338,7 +1338,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Inserts a new account.    *    * @param message commit message for the account creation, must not be {@code null or empty}    * @param accountId ID of the new account    * @param init consumer to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws OrmException if creating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+comment|/**    * Inserts a new account.    *    * @param message commit message for the account creation, must not be {@code null or empty}    * @param accountId ID of the new account    * @param init consumer to populate the new account    * @return the newly created account    * @throws DuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|insert ( String message, Account.Id accountId, Consumer<InternalAccountUpdate.Builder> init)
 specifier|public
 name|AccountState
@@ -1361,8 +1361,6 @@ argument_list|>
 name|init
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1383,7 +1381,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Inserts a new account.    *    * @param message commit message for the account creation, must not be {@code null or empty}    * @param accountId ID of the new account    * @param updater updater to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws OrmException if creating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+comment|/**    * Inserts a new account.    *    * @param message commit message for the account creation, must not be {@code null or empty}    * @param accountId ID of the new account    * @param updater updater to populate the new account    * @return the newly created account    * @throws DuplicateKeyException if the account already exists    * @throws IOException if creating the user branch fails due to an IO error    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|insert (String message, Account.Id accountId, AccountUpdater updater)
 specifier|public
 name|AccountState
@@ -1401,8 +1399,6 @@ name|AccountUpdater
 name|updater
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1540,7 +1536,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param update consumer to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty()} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws LockFailureException if updating the user branch still fails due to concurrent updates    *     after the retry timeout exceeded    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param update consumer to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty()} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws LockFailureException if updating the user branch still fails due to concurrent updates    *     after the retry timeout exceeded    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|update ( String message, Account.Id accountId, Consumer<InternalAccountUpdate.Builder> update)
 specifier|public
 name|Optional
@@ -1566,8 +1562,6 @@ argument_list|>
 name|update
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|LockFailureException
 throws|,
 name|IOException
@@ -1590,7 +1584,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param updater updater to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws LockFailureException if updating the user branch still fails due to concurrent updates    *     after the retry timeout exceeded    * @throws OrmException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param message commit message for the account update, must not be {@code null or empty}    * @param accountId ID of the account    * @param updater updater to update the account, only invoked if the account exists    * @return the updated account, {@link Optional#empty} if the account doesn't exist    * @throws IOException if updating the user branch fails due to an IO error    * @throws LockFailureException if updating the user branch still fails due to concurrent updates    *     after the retry timeout exceeded    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|update (String message, Account.Id accountId, AccountUpdater updater)
 specifier|public
 name|Optional
@@ -1611,8 +1605,6 @@ name|AccountUpdater
 name|updater
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|LockFailureException
 throws|,
 name|IOException
@@ -1801,8 +1793,6 @@ throws|throws
 name|IOException
 throws|,
 name|ConfigInvalidException
-throws|,
-name|OrmException
 block|{
 return|return
 name|executeAccountUpdate
@@ -1891,8 +1881,6 @@ throws|throws
 name|IOException
 throws|,
 name|ConfigInvalidException
-throws|,
-name|OrmException
 block|{
 try|try
 block|{
@@ -1956,14 +1944,14 @@ name|throwIfInstanceOf
 argument_list|(
 name|e
 argument_list|,
-name|OrmException
+name|StorageException
 operator|.
 name|class
 argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -1997,7 +1985,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 block|{
 name|ExternalIdNotes
 operator|.
@@ -2556,8 +2544,6 @@ throws|throws
 name|IOException
 throws|,
 name|ConfigInvalidException
-throws|,
-name|OrmException
 function_decl|;
 block|}
 DECL|class|UpdatedAccount

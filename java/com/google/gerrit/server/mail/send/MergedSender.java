@@ -152,11 +152,23 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|EmailException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|exceptions
+operator|.
+name|StorageException
 import|;
 end_import
 
@@ -248,20 +260,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -323,7 +321,7 @@ name|labelTypes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergedSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|MergedSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|MergedSender
 parameter_list|(
@@ -344,8 +342,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|super
 argument_list|(
@@ -611,7 +607,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|err
 parameter_list|)
 block|{

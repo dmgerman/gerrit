@@ -540,20 +540,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -984,8 +970,6 @@ name|IOException
 throws|,
 name|InvalidChangeOperationException
 throws|,
-name|OrmException
-throws|,
 name|PermissionBackendException
 throws|,
 name|ResourceConflictException
@@ -1083,8 +1067,6 @@ throws|,
 name|InvalidChangeOperationException
 throws|,
 name|IOException
-throws|,
-name|OrmException
 throws|,
 name|MergeConflictException
 throws|,
@@ -1367,8 +1349,6 @@ name|IOException
 throws|,
 name|UnchangedCommitMessageException
 throws|,
-name|OrmException
-throws|,
 name|PermissionBackendException
 throws|,
 name|BadRequestException
@@ -1558,8 +1538,6 @@ name|InvalidChangeOperationException
 throws|,
 name|IOException
 throws|,
-name|OrmException
-throws|,
 name|PermissionBackendException
 throws|,
 name|ResourceConflictException
@@ -1601,8 +1579,6 @@ throws|,
 name|InvalidChangeOperationException
 throws|,
 name|IOException
-throws|,
-name|OrmException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -1647,8 +1623,6 @@ name|InvalidChangeOperationException
 throws|,
 name|IOException
 throws|,
-name|OrmException
-throws|,
 name|PermissionBackendException
 throws|,
 name|ResourceConflictException
@@ -1691,8 +1665,6 @@ name|InvalidChangeOperationException
 throws|,
 name|IOException
 throws|,
-name|OrmException
-throws|,
 name|PermissionBackendException
 throws|,
 name|ResourceConflictException
@@ -1729,8 +1701,6 @@ throws|throws
 name|AuthException
 throws|,
 name|IOException
-throws|,
-name|OrmException
 throws|,
 name|InvalidChangeOperationException
 throws|,
@@ -1909,8 +1879,6 @@ throws|,
 name|InvalidChangeOperationException
 throws|,
 name|MergeConflictException
-throws|,
-name|OrmException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -2113,8 +2081,6 @@ throws|,
 name|IOException
 throws|,
 name|ResourceConflictException
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(
@@ -2407,8 +2373,6 @@ parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Optional
 argument_list|<
@@ -2450,8 +2414,6 @@ parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|patchSetUtil

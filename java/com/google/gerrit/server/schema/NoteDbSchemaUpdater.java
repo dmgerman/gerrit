@@ -146,6 +146,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -215,20 +229,6 @@ operator|.
 name|notedb
 operator|.
 name|Sequences
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -504,8 +504,6 @@ parameter_list|(
 name|UpdateUI
 name|ui
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|ensureSchemaCreated
 argument_list|()
@@ -598,7 +596,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.
@@ -620,8 +618,6 @@ specifier|private
 name|void
 name|ensureSchemaCreated
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 try|try
 block|{
@@ -641,7 +637,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Cannot initialize Gerrit site"
 argument_list|)
@@ -665,8 +661,6 @@ specifier|private
 name|void
 name|checkNoteDbConfigFor216
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 comment|// Check that the NoteDb migration config matches what we expect from a site that both:
 comment|// * Completed the change migration to NoteDB.
@@ -737,7 +731,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"You appear to be upgrading from a 2.x site, but the NoteDb change migration was"
 operator|+
@@ -796,7 +790,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"You appear to be upgrading to 3.x from a version prior to 2.16; you must upgrade to"
 operator|+
@@ -813,7 +807,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Failed to check NoteDb migration state"
 argument_list|,
@@ -841,8 +835,6 @@ name|Integer
 argument_list|>
 name|allVersions
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|int
 name|firstVersion
@@ -884,7 +876,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.
@@ -928,7 +920,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.

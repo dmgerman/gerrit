@@ -614,20 +614,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -908,8 +894,6 @@ name|boolean
 name|detailed
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 if|if
@@ -1015,8 +999,6 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 name|boolean
@@ -1568,8 +1550,6 @@ name|boolean
 name|detailed
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 name|Map
@@ -1957,8 +1937,6 @@ parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Map
 argument_list|<
@@ -2061,8 +2039,6 @@ name|boolean
 name|detailed
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 name|Set
@@ -3069,8 +3045,6 @@ argument_list|>
 name|labels
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 name|checkState
@@ -3501,8 +3475,6 @@ parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|PermissionBackend
 operator|.

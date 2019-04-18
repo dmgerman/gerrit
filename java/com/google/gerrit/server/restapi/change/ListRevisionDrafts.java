@@ -182,20 +182,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -313,8 +299,6 @@ parameter_list|(
 name|RevisionResource
 name|rsrc
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|commentsUtil
@@ -370,8 +354,6 @@ name|RevisionResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 return|return
@@ -410,8 +392,6 @@ name|RevisionResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 return|return

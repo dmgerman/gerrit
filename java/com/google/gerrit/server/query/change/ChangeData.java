@@ -346,6 +346,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -952,20 +966,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1128,48 +1128,6 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|errors
-operator|.
-name|IncorrectObjectTypeException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|MissingObjectException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|RepositoryNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
 name|lib
 operator|.
 name|ObjectId
@@ -1281,8 +1239,6 @@ name|ChangeData
 argument_list|>
 name|changeDatas
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
@@ -1377,8 +1333,6 @@ name|ChangeData
 argument_list|>
 name|changes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|ChangeData
 name|first
@@ -1428,8 +1382,6 @@ name|ChangeData
 argument_list|>
 name|changes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|ChangeData
 name|first
@@ -1479,8 +1431,6 @@ name|ChangeData
 argument_list|>
 name|changes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|ChangeData
 name|first
@@ -1530,8 +1480,6 @@ name|ChangeData
 argument_list|>
 name|changes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|ChangeData
 name|first
@@ -1581,8 +1529,6 @@ name|ChangeData
 argument_list|>
 name|changes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|ChangeData
 name|first
@@ -1632,8 +1578,6 @@ name|ChangeData
 argument_list|>
 name|changes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
@@ -2613,8 +2557,6 @@ name|String
 argument_list|>
 name|filePaths
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|PatchSet
 name|ps
@@ -2648,10 +2590,6 @@ name|String
 argument_list|>
 name|currentFilePaths
 parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(
@@ -2714,10 +2652,6 @@ name|DiffSummary
 argument_list|>
 name|getDiffSummary
 parameter_list|()
-throws|throws
-name|OrmException
-throws|,
-name|IOException
 block|{
 if|if
 condition|(
@@ -2882,10 +2816,6 @@ name|ChangedLines
 argument_list|>
 name|computeChangedLines
 parameter_list|()
-throws|throws
-name|OrmException
-throws|,
-name|IOException
 block|{
 name|Optional
 argument_list|<
@@ -2934,10 +2864,6 @@ name|ChangedLines
 argument_list|>
 name|changedLines
 parameter_list|()
-throws|throws
-name|OrmException
-throws|,
-name|IOException
 block|{
 if|if
 condition|(
@@ -3067,8 +2993,6 @@ specifier|public
 name|Change
 name|change
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3106,8 +3030,6 @@ specifier|public
 name|Change
 name|reloadChange
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 try|try
 block|{
@@ -3131,7 +3053,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Unable to load change "
 operator|+
@@ -3162,8 +3084,6 @@ specifier|public
 name|LabelTypes
 name|getLabelTypes
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3196,7 +3116,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"project state not available"
 argument_list|,
@@ -3227,8 +3147,6 @@ specifier|public
 name|ChangeNotes
 name|notes
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3245,7 +3163,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"ChangeNotes not available, lazyLoad = false"
 argument_list|)
@@ -3273,8 +3191,6 @@ specifier|public
 name|PatchSet
 name|currentPatchSet
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3347,8 +3263,6 @@ name|PatchSetApproval
 argument_list|>
 name|currentApprovals
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3422,7 +3336,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -3479,10 +3393,6 @@ specifier|public
 name|String
 name|commitMessage
 parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3515,10 +3425,6 @@ name|FooterLine
 argument_list|>
 name|commitFooters
 parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3553,10 +3459,6 @@ name|String
 argument_list|>
 name|trackingFooters
 parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|OrmException
 block|{
 return|return
 name|trackingFooters
@@ -3573,10 +3475,6 @@ specifier|public
 name|PersonIdent
 name|getAuthor
 parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3606,10 +3504,6 @@ specifier|public
 name|PersonIdent
 name|getCommitter
 parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3639,16 +3533,6 @@ specifier|private
 name|boolean
 name|loadCommitData
 parameter_list|()
-throws|throws
-name|OrmException
-throws|,
-name|RepositoryNotFoundException
-throws|,
-name|IOException
-throws|,
-name|MissingObjectException
-throws|,
-name|IncorrectObjectTypeException
 block|{
 name|PatchSet
 name|ps
@@ -3752,11 +3636,25 @@ name|getParentCount
 argument_list|()
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|StorageException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 return|return
 literal|true
 return|;
 block|}
-comment|/**    * @return patches for the change, in patch set ID order.    * @throws OrmException an error occurred reading the database.    */
+comment|/** @return patches for the change, in patch set ID order. */
 DECL|method|patchSets ()
 specifier|public
 name|Collection
@@ -3765,8 +3663,6 @@ name|PatchSet
 argument_list|>
 name|patchSets
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3815,7 +3711,7 @@ operator|=
 name|patchSets
 expr_stmt|;
 block|}
-comment|/**    * @return patch with the given ID, or null if it does not exist.    * @throws OrmException an error occurred reading the database.    */
+comment|/** @return patch with the given ID, or null if it does not exist. */
 DECL|method|patchSet (PatchSet.Id psId)
 specifier|public
 name|PatchSet
@@ -3826,8 +3722,6 @@ operator|.
 name|Id
 name|psId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3881,7 +3775,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * @return all patch set approvals for the change, keyed by ID, ordered by timestamp within each    *     patch set.    * @throws OrmException an error occurred reading the database.    */
+comment|/**    * @return all patch set approvals for the change, keyed by ID, ordered by timestamp within each    *     patch set.    */
 DECL|method|approvals ()
 specifier|public
 name|ListMultimap
@@ -3894,8 +3788,6 @@ name|PatchSetApproval
 argument_list|>
 name|approvals
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3932,7 +3824,7 @@ return|return
 name|allApprovals
 return|;
 block|}
-comment|/**    * @return The submit ('SUBM') approval label    * @throws OrmException an error occurred reading the database.    */
+comment|/** @return The submit ('SUBM') approval label */
 DECL|method|getSubmitApproval ()
 specifier|public
 name|Optional
@@ -3941,8 +3833,6 @@ name|PatchSetApproval
 argument_list|>
 name|getSubmitApproval
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 return|return
 name|currentApprovals
@@ -3967,8 +3857,6 @@ specifier|public
 name|ReviewerSet
 name|reviewers
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -4042,8 +3930,6 @@ specifier|public
 name|ReviewerByEmailSet
 name|reviewersByEmail
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -4137,8 +4023,6 @@ specifier|public
 name|ReviewerSet
 name|pendingReviewers
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -4204,8 +4088,6 @@ specifier|public
 name|ReviewerByEmailSet
 name|pendingReviewersByEmail
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -4248,8 +4130,6 @@ name|ReviewerStatusUpdate
 argument_list|>
 name|reviewerUpdates
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -4326,8 +4206,6 @@ name|Comment
 argument_list|>
 name|publishedComments
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -4372,8 +4250,6 @@ name|RobotComment
 argument_list|>
 name|robotComments
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -4415,8 +4291,6 @@ specifier|public
 name|Integer
 name|unresolvedCommentCount
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -4714,8 +4588,6 @@ specifier|public
 name|Integer
 name|totalCommentCount
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -4786,8 +4658,6 @@ name|ChangeMessage
 argument_list|>
 name|messages
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -5003,8 +4873,6 @@ specifier|public
 name|Boolean
 name|isMergeable
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -5215,7 +5083,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -5237,8 +5105,6 @@ name|Id
 argument_list|>
 name|editsByUser
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 return|return
 name|editRefs
@@ -5260,8 +5126,6 @@ name|Ref
 argument_list|>
 name|editRefs
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -5432,7 +5296,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -5453,8 +5317,6 @@ name|Id
 argument_list|>
 name|draftsByUser
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 return|return
 name|draftRefs
@@ -5476,8 +5338,6 @@ name|Ref
 argument_list|>
 name|draftRefs
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -5612,8 +5472,6 @@ operator|.
 name|Id
 name|accountId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Collection
 argument_list|<
@@ -5706,8 +5564,6 @@ name|Id
 argument_list|>
 name|reviewedBy
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -5887,8 +5743,6 @@ name|String
 argument_list|>
 name|hashtags
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -5954,8 +5808,6 @@ name|String
 argument_list|>
 name|stars
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -6085,8 +5937,6 @@ name|StarRef
 argument_list|>
 name|starRefs
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -6138,8 +5988,6 @@ operator|.
 name|Id
 name|accountId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -6249,8 +6097,6 @@ specifier|public
 name|Boolean
 name|isPureRevert
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -6296,7 +6142,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"could not compute pure revert"
 argument_list|,

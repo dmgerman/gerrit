@@ -244,20 +244,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -351,8 +337,6 @@ operator|.
 name|NameKey
 name|groupName
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|getOnlyGroup
@@ -388,8 +372,6 @@ operator|.
 name|Id
 name|groupId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|getOnlyGroup
@@ -422,8 +404,6 @@ operator|.
 name|Id
 name|memberId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -450,8 +430,6 @@ operator|.
 name|UUID
 name|subgroupId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -482,8 +460,6 @@ parameter_list|,
 name|String
 name|groupDescription
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<

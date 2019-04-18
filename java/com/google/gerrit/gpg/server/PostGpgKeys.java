@@ -238,9 +238,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|EmailException
 import|;
@@ -603,20 +601,6 @@ operator|.
 name|account
 operator|.
 name|InternalAccountQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1078,8 +1062,6 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|PGPException
-throws|,
-name|OrmException
 throws|,
 name|IOException
 throws|,
@@ -2064,8 +2046,6 @@ operator|.
 name|Key
 name|extIdKey
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<

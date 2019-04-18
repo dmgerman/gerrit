@@ -84,16 +84,6 @@ name|Account
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_interface
 DECL|interface|AccountIndexer
 specifier|public
@@ -110,8 +100,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
 comment|/**    * Synchronously reindex an account if it is stale.    *    * @param id account id to index.    * @return whether the account was reindexed    */
 DECL|method|reindexIfStale (Account.Id id)
@@ -123,8 +111,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
 block|}
 end_interface

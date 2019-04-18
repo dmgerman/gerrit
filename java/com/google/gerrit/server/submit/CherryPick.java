@@ -304,20 +304,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -702,8 +688,6 @@ name|IntegrationException
 throws|,
 name|IOException
 throws|,
-name|OrmException
-throws|,
 name|MethodNotAllowedException
 block|{
 comment|// If there is only one parent, a cherry-pick can be done by taking the
@@ -1009,8 +993,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|NoSuchChangeException
 throws|,
 name|IOException

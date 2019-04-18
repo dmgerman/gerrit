@@ -116,9 +116,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|EmailException
 import|;
@@ -667,20 +665,6 @@ operator|.
 name|sshd
 operator|.
 name|SshCommand
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1511,8 +1495,6 @@ name|void
 name|setAccount
 parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|UnloggedFailure
@@ -1804,8 +1786,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1869,8 +1849,6 @@ name|sshKeys
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|OrmException
 throws|,
 name|RepositoryNotFoundException
 throws|,
@@ -1984,8 +1962,6 @@ parameter_list|)
 throws|throws
 name|AuthException
 throws|,
-name|OrmException
-throws|,
 name|RepositoryNotFoundException
 throws|,
 name|IOException
@@ -2048,8 +2024,6 @@ throws|throws
 name|UnloggedFailure
 throws|,
 name|RestApiException
-throws|,
-name|OrmException
 throws|,
 name|IOException
 throws|,
@@ -2122,8 +2096,6 @@ name|email
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|OrmException
 throws|,
 name|IOException
 throws|,
@@ -2224,8 +2196,6 @@ name|email
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|OrmException
 throws|,
 name|IOException
 throws|,

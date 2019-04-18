@@ -294,6 +294,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -535,20 +549,6 @@ operator|.
 name|change
 operator|.
 name|InternalChangeQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1467,8 +1467,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 try|try
 init|(
@@ -1510,7 +1508,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.
@@ -1570,8 +1568,6 @@ argument_list|>
 name|labelsToRemove
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IllegalLabelException
 block|{
 try|try
@@ -1724,7 +1720,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.
@@ -1763,8 +1759,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 try|try
 init|(
@@ -1976,7 +1970,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.
@@ -2012,8 +2006,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 try|try
 init|(
@@ -2132,7 +2124,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.
@@ -2168,8 +2160,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
@@ -2400,8 +2390,6 @@ name|ChangeResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IllegalLabelException
 block|{
 name|star
@@ -2453,8 +2441,6 @@ name|ChangeResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IllegalLabelException
 block|{
 name|star
@@ -2512,8 +2498,6 @@ operator|.
 name|Id
 name|accountId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|getLabels
@@ -2537,8 +2521,6 @@ parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|isIgnoredBy
@@ -2655,8 +2637,6 @@ name|ChangeResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IllegalLabelException
 block|{
 name|star
@@ -2722,8 +2702,6 @@ name|ChangeResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IllegalLabelException
 block|{
 name|star
@@ -3303,8 +3281,6 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|OrmException
-throws|,
 name|InvalidLabelsException
 block|{
 try|try
@@ -3456,7 +3432,7 @@ case|:
 default|default:
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.
@@ -3492,8 +3468,6 @@ name|oldObjectId
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3635,7 +3609,7 @@ case|:
 default|default:
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.

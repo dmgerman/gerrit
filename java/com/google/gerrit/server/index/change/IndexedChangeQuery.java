@@ -374,20 +374,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -681,8 +667,6 @@ name|ChangeData
 argument_list|>
 name|read
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 specifier|final
 name|DataSource
@@ -821,8 +805,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(

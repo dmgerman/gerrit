@@ -376,6 +376,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -667,20 +681,6 @@ operator|.
 name|change
 operator|.
 name|InternalChangeQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1057,8 +1057,6 @@ parameter_list|(
 name|Change
 name|c
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|createChecked
@@ -1090,8 +1088,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Change
 name|change
@@ -1130,8 +1126,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|InternalChangeQuery
 name|query
@@ -1274,8 +1268,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|checkArgument
 argument_list|(
@@ -1343,8 +1335,6 @@ parameter_list|,
 name|boolean
 name|shouldExist
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 operator|new
@@ -1374,8 +1364,6 @@ parameter_list|,
 name|RefCache
 name|refs
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 operator|new
@@ -1410,8 +1398,6 @@ name|Id
 argument_list|>
 name|changeIds
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
@@ -1487,8 +1473,6 @@ name|ChangeNotes
 argument_list|>
 name|predicate
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
@@ -1864,7 +1848,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -1901,7 +1885,7 @@ specifier|static
 class|class
 name|ChangeNotesResult
 block|{
-DECL|method|error (Change.Id id, OrmException e)
+DECL|method|error (Change.Id id, StorageException e)
 specifier|static
 name|ChangeNotesResult
 name|error
@@ -1911,7 +1895,7 @@ operator|.
 name|Id
 name|id
 parameter_list|,
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -1975,7 +1959,7 @@ specifier|public
 specifier|abstract
 name|Optional
 argument_list|<
-name|OrmException
+name|StorageException
 argument_list|>
 name|error
 parameter_list|()
@@ -2804,8 +2788,6 @@ operator|.
 name|Id
 name|author
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|getDraftComments
@@ -2836,8 +2818,6 @@ name|Nullable
 name|Ref
 name|ref
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|loadDraftComments
 argument_list|(
@@ -2892,8 +2872,6 @@ name|RobotComment
 argument_list|>
 name|getRobotComments
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|loadRobotComments
 argument_list|()
@@ -2921,8 +2899,6 @@ name|Nullable
 name|Ref
 name|ref
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -2973,8 +2949,6 @@ specifier|private
 name|void
 name|loadRobotComments
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -3029,8 +3003,6 @@ parameter_list|(
 name|Comment
 name|c
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(

@@ -124,6 +124,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|config
@@ -173,20 +187,6 @@ operator|.
 name|testing
 operator|.
 name|InMemoryRepositoryManager
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -413,13 +413,13 @@ argument_list|()
 operator|.
 name|fail
 argument_list|(
-literal|"expected OrmException"
+literal|"expected StorageException"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -557,13 +557,13 @@ argument_list|()
 operator|.
 name|fail
 argument_list|(
-literal|"expected OrmException"
+literal|"expected StorageException"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{

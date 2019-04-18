@@ -402,6 +402,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|QueryOptions
@@ -809,34 +823,6 @@ operator|.
 name|change
 operator|.
 name|ChangeDataSource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmRuntimeException
 import|;
 end_import
 
@@ -1925,8 +1911,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Term
 name|id
@@ -2018,8 +2002,6 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
 name|ExecutionException
 decl||
 name|InterruptedException
@@ -2028,7 +2010,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -2047,8 +2029,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Term
 name|idTerm
@@ -2095,7 +2075,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -2109,8 +2089,6 @@ specifier|public
 name|void
 name|deleteAll
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|openIndex
 operator|.
@@ -2247,8 +2225,6 @@ parameter_list|(
 name|boolean
 name|ready
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 comment|// Arbitrary done on open index, as ready bit is set
 comment|// per index and not sub index
@@ -2494,8 +2470,6 @@ name|ChangeData
 argument_list|>
 name|read
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -2515,7 +2489,7 @@ argument_list|()
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"interrupted"
 argument_list|)
@@ -2603,8 +2577,6 @@ name|FieldBundle
 argument_list|>
 name|readRaw
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
@@ -2635,7 +2607,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -3191,7 +3163,7 @@ argument_list|()
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -3215,7 +3187,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmRuntimeException
+name|StorageException
 argument_list|(
 name|e
 operator|.

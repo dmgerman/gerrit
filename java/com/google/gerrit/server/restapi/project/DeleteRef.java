@@ -436,20 +436,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1176,7 +1162,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**    * Deletes a set of refs from the repository.    *    * @param projectState the {@code ProjectState} of the project whose refs are to be deleted.    * @param refsToDelete the refs to be deleted.    * @param prefix the prefix of the refs.    * @throws OrmException    * @throws IOException    * @throws ResourceConflictException    * @throws PermissionBackendException    */
+comment|/**    * Deletes a set of refs from the repository.    *    * @param projectState the {@code ProjectState} of the project whose refs are to be deleted.    * @param refsToDelete the refs to be deleted.    * @param prefix the prefix of the refs.    * @throws IOException    * @throws ResourceConflictException    * @throws PermissionBackendException    */
 DECL|method|deleteMultipleRefs ( ProjectState projectState, ImmutableSet<String> refsToDelete, String prefix)
 specifier|public
 name|void
@@ -1195,8 +1181,6 @@ name|String
 name|prefix
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ResourceConflictException
@@ -1453,8 +1437,6 @@ name|String
 name|refName
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ResourceConflictException

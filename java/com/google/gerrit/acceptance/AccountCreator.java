@@ -140,9 +140,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|NoSuchGroupException
 import|;
@@ -309,20 +307,6 @@ operator|.
 name|notedb
 operator|.
 name|Sequences
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1088,8 +1072,6 @@ name|Id
 name|accountId
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|NoSuchGroupException

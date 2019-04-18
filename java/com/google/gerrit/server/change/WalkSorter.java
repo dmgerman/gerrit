@@ -202,6 +202,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -257,20 +271,6 @@ operator|.
 name|change
 operator|.
 name|ChangeData
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -566,7 +566,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -687,8 +687,6 @@ argument_list|>
 name|in
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|ListMultimap
@@ -839,8 +837,6 @@ argument_list|>
 name|in
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 try|try
@@ -1410,8 +1406,6 @@ argument_list|>
 name|in
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|ListMultimap

@@ -280,20 +280,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -445,8 +431,6 @@ name|branch
 parameter_list|)
 throws|throws
 name|UnloggedFailure
-throws|,
-name|OrmException
 block|{
 comment|// By commit?
 comment|//
@@ -881,8 +865,6 @@ name|Id
 name|changeId
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|UnloggedFailure
 block|{
 if|if

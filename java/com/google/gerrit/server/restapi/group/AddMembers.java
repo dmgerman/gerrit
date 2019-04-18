@@ -134,9 +134,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|NoSuchGroupException
 import|;
@@ -638,20 +636,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1029,8 +1013,6 @@ name|NotInternalGroupException
 throws|,
 name|UnprocessableEntityException
 throws|,
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1219,8 +1201,6 @@ parameter_list|)
 throws|throws
 name|UnprocessableEntityException
 throws|,
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1363,8 +1343,6 @@ argument_list|>
 name|newMemberIds
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|NoSuchGroupException
@@ -1633,8 +1611,6 @@ name|MethodNotAllowedException
 throws|,
 name|ResourceNotFoundException
 throws|,
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1771,8 +1747,6 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 comment|// Do nothing, the user is already a member.

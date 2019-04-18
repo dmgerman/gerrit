@@ -268,22 +268,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|index
-operator|.
-name|IndexUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|logging
 operator|.
 name|TraceContext
@@ -411,16 +395,6 @@ operator|.
 name|assistedinject
 operator|.
 name|AssistedInject
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -565,66 +539,6 @@ name|ChangeIndexCollection
 name|indexes
 parameter_list|)
 function_decl|;
-block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-DECL|method|allAsList ( List<? extends ListenableFuture<?>> futures)
-specifier|public
-specifier|static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CheckedFuture
-argument_list|<
-name|?
-argument_list|,
-name|IOException
-argument_list|>
-name|allAsList
-parameter_list|(
-name|List
-argument_list|<
-name|?
-extends|extends
-name|ListenableFuture
-argument_list|<
-name|?
-argument_list|>
-argument_list|>
-name|futures
-parameter_list|)
-block|{
-comment|// allAsList propagates the first seen exception, wrapped in
-comment|// ExecutionException, so we can reuse the same mapper as for a single
-comment|// future. Assume the actual contents of the exception are not useful to
-comment|// callers. All exceptions are already logged by IndexTask.
-return|return
-name|Futures
-operator|.
-name|makeChecked
-argument_list|(
-name|Futures
-operator|.
-name|allAsList
-argument_list|(
-name|futures
-argument_list|)
-argument_list|,
-name|IndexUtils
-operator|.
-name|MAPPER
-argument_list|)
-return|;
 block|}
 DECL|field|indexes
 annotation|@
@@ -923,28 +837,11 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Start indexing a change.    *    * @param id change to index.    * @return future for the indexing task.    */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-DECL|method|indexAsync ( Project.NameKey project, Change.Id id)
+DECL|method|indexAsync (Project.NameKey project, Change.Id id)
 specifier|public
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CheckedFuture
+name|ListenableFuture
 argument_list|<
 name|?
-argument_list|,
-name|IOException
 argument_list|>
 name|indexAsync
 parameter_list|(
@@ -973,28 +870,11 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Start indexing multiple changes in parallel.    *    * @param ids changes to index.    * @return future for completing indexing of all changes.    */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-DECL|method|indexAsync ( Project.NameKey project, Collection<Change.Id> ids)
+DECL|method|indexAsync (Project.NameKey project, Collection<Change.Id> ids)
 specifier|public
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CheckedFuture
+name|ListenableFuture
 argument_list|<
 name|?
-argument_list|,
-name|IOException
 argument_list|>
 name|indexAsync
 parameter_list|(
@@ -1055,6 +935,8 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|Futures
+operator|.
 name|allAsList
 argument_list|(
 name|futures
@@ -1070,8 +952,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|indexImpl
 argument_list|(
@@ -1110,8 +990,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|logger
 operator|.
@@ -1265,8 +1143,6 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|index
 argument_list|(
@@ -1295,8 +1171,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|index
 argument_list|(
@@ -1312,28 +1186,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Start deleting a change.    *    * @param id change to delete.    * @return future for the deleting task.    */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|deleteAsync (Change.Id id)
 specifier|public
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CheckedFuture
+name|ListenableFuture
 argument_list|<
 name|?
-argument_list|,
-name|IOException
 argument_list|>
 name|deleteAsync
 parameter_list|(
@@ -1365,8 +1222,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 operator|new
 name|DeleteTask
@@ -1379,28 +1234,11 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**    * Asynchronously check if a change is stale, and reindex if it is.    *    *<p>Always run on the batch executor, even if this indexer instance is configured to use a    * different executor.    *    * @param project the project to which the change belongs.    * @param id ID of the change to index.    * @return future for reindexing the change; returns true if the change was stale.    */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-DECL|method|reindexIfStale ( Project.NameKey project, Change.Id id)
+DECL|method|reindexIfStale (Project.NameKey project, Change.Id id)
 specifier|public
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CheckedFuture
+name|ListenableFuture
 argument_list|<
 name|Boolean
-argument_list|,
-name|IOException
 argument_list|>
 name|reindexIfStale
 parameter_list|(
@@ -1522,31 +1360,14 @@ name|index
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-DECL|method|submit ( Callable<T> task)
+DECL|method|submit (Callable<T> task)
 specifier|private
 parameter_list|<
 name|T
 parameter_list|>
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CheckedFuture
+name|ListenableFuture
 argument_list|<
 name|T
-argument_list|,
-name|IOException
 argument_list|>
 name|submit
 parameter_list|(
@@ -1566,32 +1387,15 @@ name|executor
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|submit ( Callable<T> task, ListeningExecutorService executor)
 specifier|private
 specifier|static
 parameter_list|<
 name|T
 parameter_list|>
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CheckedFuture
+name|ListenableFuture
 argument_list|<
 name|T
-argument_list|,
-name|IOException
 argument_list|>
 name|submit
 parameter_list|(
@@ -1608,10 +1412,6 @@ block|{
 return|return
 name|Futures
 operator|.
-name|makeChecked
-argument_list|(
-name|Futures
-operator|.
 name|nonCancellationPropagating
 argument_list|(
 name|executor
@@ -1620,11 +1420,6 @@ name|submit
 argument_list|(
 name|task
 argument_list|)
-argument_list|)
-argument_list|,
-name|IndexUtils
-operator|.
-name|MAPPER
 argument_list|)
 return|;
 block|}
@@ -1911,8 +1706,6 @@ specifier|public
 name|Void
 name|call
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|logger
 operator|.

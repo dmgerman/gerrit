@@ -298,20 +298,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -573,8 +559,6 @@ name|GroupResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 return|return
@@ -602,8 +586,6 @@ name|Basic
 name|group
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 return|return
@@ -644,8 +626,6 @@ argument_list|>
 name|groupControlSupplier
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 name|GroupInfo
@@ -781,8 +761,6 @@ argument_list|>
 name|groupControlSupplier
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 name|info

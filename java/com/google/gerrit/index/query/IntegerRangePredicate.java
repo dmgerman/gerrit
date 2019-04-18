@@ -98,20 +98,6 @@ name|Range
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
 begin_class
 DECL|class|IntegerRangePredicate
 specifier|public
@@ -202,8 +188,6 @@ parameter_list|(
 name|T
 name|object
 parameter_list|)
-throws|throws
-name|OrmException
 function_decl|;
 DECL|method|match (T object)
 specifier|public
@@ -213,8 +197,6 @@ parameter_list|(
 name|T
 name|object
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Integer
 name|valueInt

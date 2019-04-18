@@ -132,6 +132,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -842,20 +856,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1308,8 +1308,6 @@ name|MailMessage
 name|message
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|UpdateException
 throws|,
 name|RestApiException
@@ -1679,8 +1677,6 @@ name|Id
 name|sender
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|UpdateException
 throws|,
 name|RestApiException
@@ -2163,8 +2159,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|UnprocessableEntityException
 throws|,
 name|PatchListNotAvailableException
@@ -2199,7 +2193,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"patch set not found: "
 operator|+
@@ -2619,8 +2613,6 @@ parameter_list|,
 name|PatchSet
 name|current
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -2686,8 +2678,6 @@ name|PatchSet
 name|patchSetForComment
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|UnprocessableEntityException
 throws|,
 name|PatchListNotAvailableException
@@ -2930,8 +2920,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Set
 argument_list|<

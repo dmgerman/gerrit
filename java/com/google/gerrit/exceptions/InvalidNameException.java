@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.errors
+DECL|package|com.google.gerrit.exceptions
 package|package
 name|com
 operator|.
@@ -60,21 +60,19 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 package|;
 end_package
 
 begin_comment
-comment|/** Error indicating the entity requested doesn't exist. */
+comment|/** Error indicating the entity name is invalid as supplied. */
 end_comment
 
 begin_class
-DECL|class|NoSuchEntityException
+DECL|class|InvalidNameException
 specifier|public
 class|class
-name|NoSuchEntityException
+name|InvalidNameException
 extends|extends
 name|Exception
 block|{
@@ -94,11 +92,11 @@ specifier|final
 name|String
 name|MESSAGE
 init|=
-literal|"Not Found"
+literal|"Invalid Name"
 decl_stmt|;
-DECL|method|NoSuchEntityException ()
+DECL|method|InvalidNameException ()
 specifier|public
-name|NoSuchEntityException
+name|InvalidNameException
 parameter_list|()
 block|{
 name|super
@@ -107,17 +105,21 @@ name|MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoSuchEntityException (String message)
+DECL|method|InvalidNameException (String invalidName)
 specifier|public
-name|NoSuchEntityException
+name|InvalidNameException
 parameter_list|(
 name|String
-name|message
+name|invalidName
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|message
+name|MESSAGE
+operator|+
+literal|": "
+operator|+
+name|invalidName
 argument_list|)
 expr_stmt|;
 block|}

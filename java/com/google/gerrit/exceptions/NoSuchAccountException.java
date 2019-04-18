@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.errors
+DECL|package|com.google.gerrit.exceptions
 package|package
 name|com
 operator|.
@@ -60,21 +60,19 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 package|;
 end_package
 
 begin_comment
-comment|/** Error indicating the entity name is invalid as supplied. */
+comment|/** Error indicating the account requested doesn't exist. */
 end_comment
 
 begin_class
-DECL|class|InvalidNameException
+DECL|class|NoSuchAccountException
 specifier|public
 class|class
-name|InvalidNameException
+name|NoSuchAccountException
 extends|extends
 name|Exception
 block|{
@@ -94,34 +92,21 @@ specifier|final
 name|String
 name|MESSAGE
 init|=
-literal|"Invalid Name"
+literal|"Not Found: "
 decl_stmt|;
-DECL|method|InvalidNameException ()
+DECL|method|NoSuchAccountException (String who)
 specifier|public
-name|InvalidNameException
-parameter_list|()
-block|{
-name|super
-argument_list|(
-name|MESSAGE
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|InvalidNameException (String invalidName)
-specifier|public
-name|InvalidNameException
+name|NoSuchAccountException
 parameter_list|(
 name|String
-name|invalidName
+name|who
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|MESSAGE
 operator|+
-literal|": "
-operator|+
-name|invalidName
+name|who
 argument_list|)
 expr_stmt|;
 block|}

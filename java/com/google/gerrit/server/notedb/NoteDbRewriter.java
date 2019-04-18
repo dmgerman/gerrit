@@ -68,20 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -176,8 +162,6 @@ throws|throws
 name|IOException
 throws|,
 name|ConfigInvalidException
-throws|,
-name|OrmException
 function_decl|;
 block|}
 end_interface

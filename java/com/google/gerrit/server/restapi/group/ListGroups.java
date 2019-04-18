@@ -194,9 +194,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|NoSuchGroupException
 import|;
@@ -551,20 +549,6 @@ operator|.
 name|account
 operator|.
 name|GetGroups
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1624,8 +1608,6 @@ name|TopLevelResource
 name|resource
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|RestApiException
 throws|,
 name|IOException
@@ -1703,8 +1685,6 @@ argument_list|>
 name|get
 parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|RestApiException
 throws|,
 name|IOException
@@ -1835,8 +1815,6 @@ argument_list|>
 name|getAllGroups
 parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -2046,8 +2024,6 @@ argument_list|>
 name|suggestGroups
 parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|BadRequestException
 throws|,
 name|PermissionBackendException
@@ -2335,8 +2311,6 @@ argument_list|>
 name|filter
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -2538,8 +2512,6 @@ name|String
 name|id
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|RestApiException
 throws|,
 name|IOException
@@ -2596,8 +2568,6 @@ name|IdentifiedUser
 name|user
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException

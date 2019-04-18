@@ -458,20 +458,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -619,8 +605,6 @@ name|RestApiException
 throws|,
 name|UpdateException
 throws|,
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 name|rsrc
@@ -756,8 +740,6 @@ name|ctx
 parameter_list|)
 throws|throws
 name|RestApiException
-throws|,
-name|OrmException
 block|{
 name|change
 operator|=
@@ -924,8 +906,6 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|assigneeChanged
 operator|.

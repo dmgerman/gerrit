@@ -76,6 +76,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -180,20 +194,6 @@ name|PermissionBackendException
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
 begin_class
 DECL|class|CanSeeChangePredicate
 specifier|public
@@ -265,8 +265,6 @@ parameter_list|(
 name|AccountState
 name|accountState
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 try|try
 block|{
@@ -307,7 +305,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Failed to check if account can see change"
 argument_list|,

@@ -76,6 +76,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|query
@@ -161,20 +175,6 @@ operator|.
 name|client
 operator|.
 name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -281,8 +281,6 @@ name|ChangeData
 argument_list|>
 name|read
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 comment|// TODO(spearce) This probably should be more lazy.
 comment|//
@@ -372,7 +370,7 @@ else|else
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"No ChangeDataSource: "
 operator|+
@@ -400,8 +398,6 @@ name|FieldBundle
 argument_list|>
 name|readRaw
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 throw|throw
 operator|new

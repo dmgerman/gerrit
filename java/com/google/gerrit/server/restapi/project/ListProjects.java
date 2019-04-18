@@ -256,11 +256,23 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|NoSuchGroupException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|exceptions
+operator|.
+name|StorageException
 import|;
 end_import
 
@@ -717,20 +729,6 @@ operator|.
 name|reflect
 operator|.
 name|TypeToken
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -2332,7 +2330,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|MethodNotAllowedException
 name|e
@@ -2446,7 +2444,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|MethodNotAllowedException
 name|e
@@ -2490,8 +2488,6 @@ name|String
 name|query
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|MethodNotAllowedException
 throws|,
 name|BadRequestException

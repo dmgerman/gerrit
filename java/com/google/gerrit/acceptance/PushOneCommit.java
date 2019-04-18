@@ -328,20 +328,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Provider
@@ -1935,8 +1921,6 @@ specifier|public
 name|ChangeData
 name|getChange
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 return|return
 name|Iterables
@@ -1960,8 +1944,6 @@ specifier|public
 name|PatchSet
 name|getPatchSet
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 return|return
 name|getChange
@@ -1978,8 +1960,6 @@ operator|.
 name|Id
 name|getPatchSetId
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 return|return
 name|getChange
@@ -2050,8 +2030,6 @@ name|TestAccount
 modifier|...
 name|expectedReviewers
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|assertChange
 argument_list|(
@@ -2098,8 +2076,6 @@ name|TestAccount
 argument_list|>
 name|expectedCcs
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Change
 name|c
@@ -2194,8 +2170,6 @@ name|TestAccount
 argument_list|>
 name|expectedReviewers
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Iterable
 argument_list|<

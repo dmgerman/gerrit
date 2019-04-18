@@ -378,20 +378,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -750,8 +736,6 @@ operator|.
 name|Key
 name|key
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|byKeyPrefix
@@ -774,8 +758,6 @@ parameter_list|(
 name|String
 name|prefix
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -801,8 +783,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -831,8 +811,6 @@ name|Id
 argument_list|>
 name|ids
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
@@ -903,8 +881,6 @@ operator|.
 name|Key
 name|key
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -939,8 +915,6 @@ operator|.
 name|Key
 name|key
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -1070,8 +1044,6 @@ operator|.
 name|NameKey
 name|project
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -1096,8 +1068,6 @@ operator|.
 name|NameKey
 name|branch
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -1136,8 +1106,6 @@ operator|.
 name|NameKey
 name|branch
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -1192,8 +1160,6 @@ argument_list|>
 name|hashes
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 return|return
@@ -1242,8 +1208,6 @@ name|int
 name|indexLimit
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 if|if
@@ -1299,8 +1263,6 @@ argument_list|>
 name|hashes
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|Set
@@ -1520,8 +1482,6 @@ name|String
 argument_list|>
 name|hashes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -1638,8 +1598,6 @@ operator|.
 name|NameKey
 name|project
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -1668,8 +1626,6 @@ parameter_list|(
 name|String
 name|topic
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -1699,8 +1655,6 @@ parameter_list|(
 name|ObjectId
 name|id
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|byCommit
@@ -1723,8 +1677,6 @@ parameter_list|(
 name|String
 name|hash
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -1752,8 +1704,6 @@ parameter_list|,
 name|ObjectId
 name|id
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|byProjectCommit
@@ -1783,8 +1733,6 @@ parameter_list|,
 name|String
 name|hash
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -1823,8 +1771,6 @@ name|String
 argument_list|>
 name|hashes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|int
 name|n
@@ -1888,8 +1834,6 @@ parameter_list|,
 name|String
 name|hash
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -1921,8 +1865,6 @@ parameter_list|,
 name|String
 name|hash
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|byBranchCommit
@@ -1961,8 +1903,6 @@ parameter_list|,
 name|String
 name|hash
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|query
@@ -2077,8 +2017,6 @@ parameter_list|(
 name|String
 name|cs
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -2236,8 +2174,6 @@ name|String
 argument_list|>
 name|groups
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 comment|// These queries may be complex along multiple dimensions:
 comment|//  * Many groups per change, if there are very many patch sets. This requires partitioning the

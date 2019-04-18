@@ -532,20 +532,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -942,8 +928,6 @@ name|UpdateException
 throws|,
 name|PermissionBackendException
 throws|,
-name|OrmException
-throws|,
 name|ConfigInvalidException
 block|{
 name|PatchSet
@@ -1308,8 +1292,6 @@ parameter_list|)
 throws|throws
 name|BadRequestException
 throws|,
-name|OrmException
-throws|,
 name|ConfigInvalidException
 throws|,
 name|IOException
@@ -1479,8 +1461,6 @@ throws|,
 name|IOException
 throws|,
 name|ResourceConflictException
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(

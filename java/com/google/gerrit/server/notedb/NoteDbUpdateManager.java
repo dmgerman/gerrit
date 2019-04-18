@@ -222,6 +222,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -413,20 +427,6 @@ operator|.
 name|update
 operator|.
 name|RetryingRestModifyView
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1992,15 +1992,13 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Stage updates in the manager's internal list of commands.    *    * @throws OrmException if a database layer error occurs.    * @throws IOException if a storage layer error occurs.    */
+comment|/**    * Stage updates in the manager's internal list of commands.    *    * @throws IOException if a storage layer error occurs.    */
 DECL|method|stage ()
 specifier|private
 name|void
 name|stage
 parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 try|try
@@ -2101,8 +2099,6 @@ name|BatchRefUpdate
 name|execute
 parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 return|return
@@ -2123,8 +2119,6 @@ name|boolean
 name|dryrun
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|checkNotExecuted
@@ -2618,8 +2612,6 @@ name|void
 name|addCommands
 parameter_list|()
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 if|if
@@ -2916,8 +2908,6 @@ name|OpenRepo
 name|or
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 for|for
@@ -3033,7 +3023,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Given ChangeUpdate is only allowed on initial commit"
 argument_list|)
@@ -3120,8 +3110,6 @@ name|OpenRepo
 name|openRepo
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 for|for
@@ -3191,7 +3179,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|String
 operator|.
@@ -3262,7 +3250,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"Cannot rewrite commit history"
 argument_list|,

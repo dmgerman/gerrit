@@ -292,20 +292,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -554,8 +540,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
 name|PGPException
 decl||
 name|IOException
@@ -642,8 +626,6 @@ catch|catch
 parameter_list|(
 name|PGPException
 decl||
-name|OrmException
-decl||
 name|IOException
 decl||
 name|ConfigInvalidException
@@ -701,8 +683,6 @@ block|}
 catch|catch
 parameter_list|(
 name|PGPException
-decl||
-name|OrmException
 decl||
 name|IOException
 name|e

@@ -372,20 +372,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -631,8 +617,6 @@ throws|throws
 name|ResourceNotFoundException
 throws|,
 name|AuthException
-throws|,
-name|OrmException
 throws|,
 name|IOException
 throws|,
@@ -880,8 +864,6 @@ name|String
 name|id
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|AuthException
@@ -1086,8 +1068,6 @@ parameter_list|,
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|PatchSet
 name|ps

@@ -76,9 +76,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|EmailException
 import|;
@@ -152,20 +150,6 @@ name|ChangeData
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
 begin_comment
 comment|/** Alert a user to a reply to a change, usually commentary made during review. */
 end_comment
@@ -218,8 +202,6 @@ parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|super
 argument_list|(

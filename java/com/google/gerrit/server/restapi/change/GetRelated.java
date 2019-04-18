@@ -402,20 +402,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -635,8 +621,6 @@ name|RepositoryNotFoundException
 throws|,
 name|IOException
 throws|,
-name|OrmException
-throws|,
 name|NoSuchProjectException
 throws|,
 name|PermissionBackendException
@@ -673,8 +657,6 @@ name|RevisionResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
@@ -1025,8 +1007,6 @@ parameter_list|,
 name|PatchSetUtil
 name|psUtil
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|psUtil
@@ -1073,8 +1053,6 @@ parameter_list|,
 name|PatchSet
 name|wantedPs
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 for|for
 control|(

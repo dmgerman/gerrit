@@ -1722,20 +1722,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -2372,8 +2358,6 @@ name|RestApiException
 throws|,
 name|UpdateException
 throws|,
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
@@ -2424,8 +2408,6 @@ throws|throws
 name|RestApiException
 throws|,
 name|UpdateException
-throws|,
-name|OrmException
 throws|,
 name|IOException
 throws|,
@@ -3707,8 +3689,6 @@ throws|,
 name|AuthException
 throws|,
 name|UnprocessableEntityException
-throws|,
-name|OrmException
 throws|,
 name|PermissionBackendException
 throws|,
@@ -6062,8 +6042,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|ResourceConflictException
 throws|,
 name|UnprocessableEntityException
@@ -6149,8 +6127,6 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -6252,8 +6228,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|UnprocessableEntityException
 throws|,
 name|PatchListNotAvailableException
@@ -6669,8 +6643,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PatchListNotAvailableException
 block|{
 if|if
@@ -6738,8 +6710,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PatchListNotAvailableException
 block|{
 name|List
@@ -7189,8 +7159,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|commentsUtil
@@ -7231,8 +7199,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|commentsUtil
@@ -7275,8 +7241,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Map
 argument_list|<
@@ -7351,8 +7315,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Map
 argument_list|<
@@ -7697,8 +7659,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -7782,8 +7742,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|ResourceConflictException
 throws|,
 name|IOException
@@ -9117,8 +9075,6 @@ argument_list|>
 name|del
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|LabelTypes

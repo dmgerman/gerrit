@@ -90,9 +90,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|NoSuchGroupException
 import|;
@@ -194,20 +192,6 @@ name|AccountQueryBuilder
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
 begin_class
 DECL|class|GroupIsVisibleToPredicate
 specifier|public
@@ -295,8 +279,6 @@ parameter_list|(
 name|InternalGroup
 name|group
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 try|try
 block|{

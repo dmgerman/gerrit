@@ -474,20 +474,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -809,8 +795,6 @@ name|RevisionResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|RestApiException
 throws|,
 name|UpdateException
@@ -965,8 +949,6 @@ name|ArchiveFormat
 name|f
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|RestApiException
 throws|,
 name|UpdateException
@@ -1075,8 +1057,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
 name|RestApiException
 decl||
 name|UpdateException

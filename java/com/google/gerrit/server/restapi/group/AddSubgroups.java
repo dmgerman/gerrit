@@ -148,9 +148,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|NoSuchGroupException
 import|;
@@ -463,20 +461,6 @@ operator|.
 name|AddSubgroups
 operator|.
 name|Input
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -803,8 +787,6 @@ name|AuthException
 throws|,
 name|UnprocessableEntityException
 throws|,
-name|OrmException
-throws|,
 name|ResourceNotFoundException
 throws|,
 name|IOException
@@ -1007,8 +989,6 @@ argument_list|>
 name|newSubgroupUuids
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|NoSuchGroupException
 throws|,
 name|IOException
@@ -1115,8 +1095,6 @@ throws|,
 name|MethodNotAllowedException
 throws|,
 name|ResourceNotFoundException
-throws|,
-name|OrmException
 throws|,
 name|IOException
 throws|,
@@ -1265,8 +1243,6 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 comment|// Do nothing, the group is already included.

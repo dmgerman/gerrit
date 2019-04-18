@@ -102,20 +102,6 @@ name|ChangeField
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
 begin_comment
 comment|/** Predicate over Change-Id strings (aka Change.Key). */
 end_comment
@@ -160,8 +146,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Change
 name|change

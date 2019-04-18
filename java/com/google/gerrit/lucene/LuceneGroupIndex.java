@@ -108,6 +108,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|index
 operator|.
 name|FieldDef
@@ -899,8 +913,6 @@ parameter_list|(
 name|InternalGroup
 name|group
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 try|try
 block|{
@@ -931,7 +943,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)
@@ -950,8 +962,6 @@ operator|.
 name|UUID
 name|key
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 try|try
 block|{
@@ -977,7 +987,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)

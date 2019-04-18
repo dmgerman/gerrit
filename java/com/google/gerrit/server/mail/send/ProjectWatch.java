@@ -404,20 +404,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -567,8 +553,6 @@ parameter_list|,
 name|boolean
 name|includeWatchersFromNotifyConfig
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Watchers
 name|matching
@@ -1091,8 +1075,6 @@ name|NotifyConfig
 name|nc
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|QueryParseException
 block|{
 for|for
@@ -1435,8 +1417,6 @@ parameter_list|,
 name|NotifyType
 name|type
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|IdentifiedUser
 name|user
@@ -1518,8 +1498,6 @@ name|String
 name|filter
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|QueryParseException
 block|{
 name|ChangeQueryBuilder

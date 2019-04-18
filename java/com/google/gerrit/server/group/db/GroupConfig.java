@@ -204,6 +204,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|DuplicateKeyException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -327,20 +341,6 @@ operator|.
 name|time
 operator|.
 name|TimeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmDuplicateKeyException
 import|;
 end_import
 
@@ -577,7 +577,7 @@ argument_list|(
 literal|"\\R"
 argument_list|)
 decl_stmt|;
-comment|/**    * Creates a {@code GroupConfig} for a new group from the {@code InternalGroupCreation} blueprint.    * Further, optional properties can be specified by setting an {@code InternalGroupUpdate} via    * {@link #setGroupUpdate(InternalGroupUpdate, AuditLogFormatter)} on the returned {@code    * GroupConfig}.    *    *<p><strong>Note:</strong> The returned {@code GroupConfig} has to be committed via {@link    * #commit(MetaDataUpdate)} in order to create the group for real.    *    * @param projectName the name of the project which holds the NoteDb commits for groups    * @param repository the repository which holds the NoteDb commits for groups    * @param groupCreation an {@code InternalGroupCreation} specifying all properties which are    *     required for a new group    * @return a {@code GroupConfig} for a group creation    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if a group with the same UUID already exists but can't be read    *     due to an invalid format    * @throws OrmDuplicateKeyException if a group with the same UUID already exists    */
+comment|/**    * Creates a {@code GroupConfig} for a new group from the {@code InternalGroupCreation} blueprint.    * Further, optional properties can be specified by setting an {@code InternalGroupUpdate} via    * {@link #setGroupUpdate(InternalGroupUpdate, AuditLogFormatter)} on the returned {@code    * GroupConfig}.    *    *<p><strong>Note:</strong> The returned {@code GroupConfig} has to be committed via {@link    * #commit(MetaDataUpdate)} in order to create the group for real.    *    * @param projectName the name of the project which holds the NoteDb commits for groups    * @param repository the repository which holds the NoteDb commits for groups    * @param groupCreation an {@code InternalGroupCreation} specifying all properties which are    *     required for a new group    * @return a {@code GroupConfig} for a group creation    * @throws IOException if the repository can't be accessed for some reason    * @throws ConfigInvalidException if a group with the same UUID already exists but can't be read    *     due to an invalid format    * @throws DuplicateKeyException if a group with the same UUID already exists    */
 DECL|method|createForNewGroup ( Project.NameKey projectName, Repository repository, InternalGroupCreation groupCreation)
 specifier|public
 specifier|static
@@ -600,7 +600,7 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 throws|,
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 block|{
 name|GroupConfig
 name|groupConfig
@@ -908,7 +908,7 @@ name|InternalGroupCreation
 name|groupCreation
 parameter_list|)
 throws|throws
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 block|{
 name|checkLoaded
 argument_list|()
@@ -923,7 +923,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmDuplicateKeyException
+name|DuplicateKeyException
 argument_list|(
 name|String
 operator|.

@@ -906,20 +906,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1497,7 +1483,7 @@ operator|=
 name|validator
 expr_stmt|;
 block|}
-comment|/**    * Prepare application of a single {@link AddReviewerInput}.    *    * @param notes change notes.    * @param user user performing the reviewer addition.    * @param input input describing user or group to add as a reviewer.    * @param allowGroup whether to allow    * @return handle describing the addition operation. If the {@code op} field is present, this    *     operation may be added to a {@code BatchUpdate}. Otherwise, the {@code error} field    *     contains information about an error that occurred    * @throws OrmException    * @throws IOException    * @throws PermissionBackendException    * @throws ConfigInvalidException    */
+comment|/**    * Prepare application of a single {@link AddReviewerInput}.    *    * @param notes change notes.    * @param user user performing the reviewer addition.    * @param input input describing user or group to add as a reviewer.    * @param allowGroup whether to allow    * @return handle describing the addition operation. If the {@code op} field is present, this    *     operation may be added to a {@code BatchUpdate}. Otherwise, the {@code error} field    *     contains information about an error that occurred    * @throws IOException    * @throws PermissionBackendException    * @throws ConfigInvalidException    */
 DECL|method|prepare ( ChangeNotes notes, CurrentUser user, AddReviewerInput input, boolean allowGroup)
 specifier|public
 name|ReviewerAddition
@@ -1516,8 +1502,6 @@ name|boolean
 name|allowGroup
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
@@ -1782,8 +1766,6 @@ name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 throws|,
 name|IOException
@@ -3001,8 +2983,6 @@ name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 name|checkState
@@ -3390,8 +3370,6 @@ name|boolean
 name|allowGroup
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
@@ -3608,8 +3586,6 @@ name|PatchSet
 name|patchSet
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|RestApiException
 throws|,
 name|IOException

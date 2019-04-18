@@ -148,9 +148,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|EmailException
 import|;
@@ -164,11 +162,23 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
+name|exceptions
 operator|.
 name|NoSuchEntityException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|exceptions
+operator|.
+name|StorageException
 import|;
 end_import
 
@@ -471,20 +481,6 @@ operator|.
 name|client
 operator|.
 name|KeyUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -964,8 +960,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|super
 argument_list|(
@@ -1045,8 +1039,6 @@ name|Comment
 argument_list|>
 name|comments
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|inlineComments
 operator|=
@@ -2141,7 +2133,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{

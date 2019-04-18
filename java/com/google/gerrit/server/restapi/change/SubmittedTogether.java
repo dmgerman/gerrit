@@ -136,6 +136,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -407,20 +421,6 @@ operator|.
 name|submit
 operator|.
 name|MergeSuperSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -868,8 +868,6 @@ name|ResourceConflictException
 throws|,
 name|IOException
 throws|,
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 name|SubmittedTogetherInfo
@@ -910,8 +908,6 @@ throws|throws
 name|AuthException
 throws|,
 name|IOException
-throws|,
-name|OrmException
 throws|,
 name|PermissionBackendException
 block|{
@@ -1094,7 +1090,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|IOException
 name|e
@@ -1138,8 +1134,6 @@ name|int
 name|hidden
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 if|if
@@ -1299,8 +1293,6 @@ name|ChangeData
 argument_list|>
 name|cds
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 comment|// TODO(hiesel): Instead of calling these manually, either implement a helper that brings a
 comment|// database-backed change on-par with an index-backed change in terms of the populated fields in

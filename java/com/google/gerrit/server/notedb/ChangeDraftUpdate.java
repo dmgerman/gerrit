@@ -134,6 +134,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -265,20 +279,6 @@ operator|.
 name|config
 operator|.
 name|AllUsersName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -906,8 +906,6 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 throws|,
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|RevisionNoteMap
@@ -1261,8 +1259,6 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 throws|,
-name|OrmException
-throws|,
 name|IOException
 block|{
 comment|// The old DraftCommentNotes already parsed the revision notes. We can reuse them as long as
@@ -1444,8 +1440,6 @@ name|ObjectId
 name|curr
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|CommitBuilder
@@ -1485,7 +1479,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|e
 argument_list|)

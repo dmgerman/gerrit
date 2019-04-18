@@ -358,20 +358,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -588,8 +574,6 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|changeJsonFactory
@@ -617,8 +601,6 @@ name|PatchSet
 name|ps
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PatchListNotAvailableException
 throws|,
 name|GpgException
@@ -653,8 +635,6 @@ name|PatchSet
 name|ps
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PatchListNotAvailableException
 throws|,
 name|GpgException

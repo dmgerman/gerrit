@@ -174,6 +174,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|git
 operator|.
 name|RefUpdateUtil
@@ -211,20 +225,6 @@ operator|.
 name|events
 operator|.
 name|GitReferenceUpdated
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -414,8 +414,6 @@ name|refName
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 try|try
 init|(
@@ -460,8 +458,6 @@ name|rw
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 return|return
 name|parse
@@ -497,8 +493,6 @@ name|or
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|Ref
 name|ref
@@ -607,7 +601,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 literal|"invalid value in "
 operator|+

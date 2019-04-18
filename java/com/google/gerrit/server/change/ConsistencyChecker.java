@@ -290,6 +290,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -677,20 +691,6 @@ operator|.
 name|time
 operator|.
 name|TimeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1712,7 +1712,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -1845,7 +1845,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -2886,7 +2886,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 name|e
 parameter_list|)
 block|{
@@ -3591,7 +3591,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|StorageException
 decl||
 name|IOException
 decl||
@@ -3671,8 +3671,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|ctx
 operator|.
@@ -4324,8 +4322,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PatchSetInfoNotAvailableException
 block|{
 comment|// Delete dangling key references.
@@ -4342,7 +4338,7 @@ argument_list|(
 name|psId
 argument_list|)
 argument_list|,
-name|OrmException
+name|StorageException
 operator|.
 name|class
 argument_list|)
@@ -4476,8 +4472,6 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PatchSetInfoNotAvailableException
 throws|,
 name|NoPatchSetsWouldRemainException

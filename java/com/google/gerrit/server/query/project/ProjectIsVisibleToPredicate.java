@@ -194,20 +194,6 @@ name|AccountQueryBuilder
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
 begin_class
 DECL|class|ProjectIsVisibleToPredicate
 specifier|public
@@ -291,8 +277,6 @@ parameter_list|(
 name|ProjectData
 name|pd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(

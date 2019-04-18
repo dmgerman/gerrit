@@ -770,20 +770,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1334,8 +1320,6 @@ name|NameKey
 name|dest
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|InvalidChangeOperationException
@@ -1413,8 +1397,6 @@ name|NameKey
 name|dest
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|InvalidChangeOperationException
@@ -2114,8 +2096,6 @@ throws|throws
 name|RestApiException
 throws|,
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|RevCommit
 name|destRefTip
@@ -2474,8 +2454,6 @@ name|CherryPickInput
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|Change
@@ -2710,8 +2688,6 @@ name|input
 parameter_list|)
 throws|throws
 name|BadRequestException
-throws|,
-name|OrmException
 throws|,
 name|ConfigInvalidException
 throws|,

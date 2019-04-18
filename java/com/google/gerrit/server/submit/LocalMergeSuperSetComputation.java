@@ -190,6 +190,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -441,20 +455,6 @@ operator|.
 name|MergeOpRepoManager
 operator|.
 name|OpenRepo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -908,8 +908,6 @@ name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
@@ -1240,8 +1238,6 @@ name|ChangeData
 argument_list|>
 name|changes
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|ImmutableListMultimap
 operator|.
@@ -1468,8 +1464,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|SubmitTypeRecord
 name|str
@@ -1537,8 +1531,6 @@ argument_list|>
 name|nonVisibleHashes
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|List
@@ -1662,8 +1654,6 @@ argument_list|>
 name|hashes
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 if|if
@@ -2017,8 +2007,6 @@ parameter_list|(
 name|String
 name|msg
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|logger
 operator|.
@@ -2032,7 +2020,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|OrmException
+name|StorageException
 argument_list|(
 name|msg
 argument_list|)
