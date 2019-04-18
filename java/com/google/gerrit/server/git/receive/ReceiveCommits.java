@@ -12152,7 +12152,7 @@ argument_list|(
 operator|new
 name|ValidationMessage
 argument_list|(
-literal|"WARNING: deprecated topic syntax. Use %topic=TOPIC instead"
+literal|"WARNING: deprecated topic syntax. Use -o topic=TOPIC instead"
 argument_list|,
 literal|false
 argument_list|)
