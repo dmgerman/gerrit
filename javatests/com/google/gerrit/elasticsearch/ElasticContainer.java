@@ -229,7 +229,7 @@ case|case
 name|V7_0
 case|:
 return|return
-literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0-rc2"
+literal|"docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0"
 return|;
 block|}
 throw|throw
