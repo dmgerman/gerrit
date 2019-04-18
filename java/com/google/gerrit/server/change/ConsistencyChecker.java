@@ -4337,10 +4337,6 @@ name|clearReviewed
 argument_list|(
 name|psId
 argument_list|)
-argument_list|,
-name|StorageException
-operator|.
-name|class
 argument_list|)
 expr_stmt|;
 comment|// For NoteDb setting the state to deleted is sufficient to filter everything out.

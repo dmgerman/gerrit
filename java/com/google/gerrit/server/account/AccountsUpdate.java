@@ -1938,17 +1938,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|Throwables
-operator|.
-name|throwIfInstanceOf
-argument_list|(
-name|e
-argument_list|,
-name|StorageException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 throw|throw
 operator|new
 name|StorageException
