@@ -2462,6 +2462,9 @@ operator|.
 name|get
 argument_list|()
 operator|.
+name|noFields
+argument_list|()
+operator|.
 name|byTopicOpen
 argument_list|(
 name|topic
