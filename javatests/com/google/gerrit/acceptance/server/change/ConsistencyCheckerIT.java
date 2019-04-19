@@ -4830,10 +4830,9 @@ operator|.
 name|Id
 name|id
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|sequences
 operator|.

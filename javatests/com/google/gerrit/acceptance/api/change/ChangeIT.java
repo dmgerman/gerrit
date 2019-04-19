@@ -10108,10 +10108,9 @@ expr_stmt|;
 name|String
 name|ref
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|)
@@ -24424,10 +24423,9 @@ name|exactRef
 argument_list|(
 name|changeMetaRef
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|c
 operator|.
@@ -24990,7 +24988,8 @@ operator|.
 name|getId
 argument_list|()
 operator|.
-name|id
+name|get
+argument_list|()
 operator|+
 literal|"."
 argument_list|)

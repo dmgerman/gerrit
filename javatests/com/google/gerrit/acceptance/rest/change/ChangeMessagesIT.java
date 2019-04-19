@@ -2081,10 +2081,9 @@ name|commitsBefore
 init|=
 name|getChangeMetaCommitsInReverseOrder
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeNum
 argument_list|)
@@ -2504,10 +2503,9 @@ name|commitsAfterDeletion
 init|=
 name|getChangeMetaCommitsInReverseOrder
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeNum
 argument_list|)

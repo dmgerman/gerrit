@@ -3111,10 +3111,9 @@ return|return
 operator|new
 name|LegacyChangeIdPredicate
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|)

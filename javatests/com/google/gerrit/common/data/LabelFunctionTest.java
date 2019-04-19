@@ -280,10 +280,9 @@ operator|.
 name|Id
 name|CHANGE_ID
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|100
 argument_list|)

@@ -604,7 +604,8 @@ operator|.
 name|getId
 argument_list|()
 operator|.
-name|id
+name|get
+argument_list|()
 decl_stmt|;
 name|RestResponse
 name|res
@@ -659,7 +660,8 @@ operator|.
 name|getId
 argument_list|()
 operator|.
-name|id
+name|get
+argument_list|()
 decl_stmt|;
 name|RestResponse
 name|res
@@ -783,7 +785,8 @@ name|id
 argument_list|(
 name|changeId
 operator|.
-name|id
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|setPrivate
@@ -804,7 +807,8 @@ literal|"/"
 operator|+
 name|changeId
 operator|.
-name|id
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|res

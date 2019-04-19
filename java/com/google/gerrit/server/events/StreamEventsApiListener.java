@@ -1341,10 +1341,9 @@ name|changeNotesFactory
 operator|.
 name|createChecked
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|info
 operator|.

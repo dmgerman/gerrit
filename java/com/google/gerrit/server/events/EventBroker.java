@@ -1355,7 +1355,8 @@ literal|"Change %s cannot be found, falling back on ref visibility check"
 argument_list|,
 name|cid
 operator|.
-name|id
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

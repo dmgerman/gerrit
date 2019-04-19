@@ -18757,10 +18757,9 @@ name|PatchSet
 operator|.
 name|id
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|987654
 argument_list|)
@@ -20002,10 +20001,9 @@ name|changeToRevert
 operator|.
 name|_number
 argument_list|,
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeThatReverts
 operator|.
@@ -23900,10 +23898,9 @@ operator|.
 name|Id
 name|id
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|seq
 operator|.
@@ -25223,10 +25220,9 @@ name|map
 argument_list|(
 name|c
 lambda|->
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|c
 operator|.

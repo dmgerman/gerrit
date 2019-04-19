@@ -3596,10 +3596,9 @@ operator|.
 name|Id
 name|changeId
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|proto
 operator|.
@@ -4296,10 +4295,9 @@ name|b
 operator|.
 name|revertOf
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|proto
 operator|.

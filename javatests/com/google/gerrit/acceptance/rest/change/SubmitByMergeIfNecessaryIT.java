@@ -4657,7 +4657,8 @@ operator|.
 name|getId
 argument_list|()
 operator|.
-name|id
+name|get
+argument_list|()
 operator|+
 literal|" is not visible"
 argument_list|)
@@ -5047,7 +5048,8 @@ operator|.
 name|getId
 argument_list|()
 operator|.
-name|id
+name|get
+argument_list|()
 operator|+
 literal|" is not visible"
 argument_list|)

@@ -263,10 +263,9 @@ name|ChangeMessage
 operator|.
 name|key
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|704
 argument_list|)
@@ -349,10 +348,9 @@ name|ChangeMessage
 operator|.
 name|key
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|704
 argument_list|)
