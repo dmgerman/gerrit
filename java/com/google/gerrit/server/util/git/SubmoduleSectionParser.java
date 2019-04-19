@@ -693,10 +693,9 @@ operator|.
 name|NameKey
 name|projectKey
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|)

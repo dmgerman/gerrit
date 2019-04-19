@@ -263,10 +263,9 @@ name|Branch
 operator|.
 name|nameKey
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"project-13"
 argument_list|)
@@ -349,10 +348,9 @@ name|Branch
 operator|.
 name|nameKey
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"project-52"
 argument_list|)

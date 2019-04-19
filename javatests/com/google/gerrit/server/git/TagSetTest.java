@@ -610,10 +610,9 @@ init|=
 operator|new
 name|TagSet
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"project"
 argument_list|)

@@ -711,10 +711,9 @@ name|Exception
 block|{
 name|project
 operator|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"test"
 argument_list|)

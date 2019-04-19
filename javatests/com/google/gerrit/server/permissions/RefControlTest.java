@@ -1969,10 +1969,9 @@ operator|.
 name|NameKey
 name|localKey
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"local"
 argument_list|)
@@ -1989,10 +1988,9 @@ operator|.
 name|NameKey
 name|parentKey
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"parent"
 argument_list|)
@@ -2368,10 +2366,9 @@ name|projectConfigFactory
 operator|.
 name|create
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|allProjectsName
 operator|.

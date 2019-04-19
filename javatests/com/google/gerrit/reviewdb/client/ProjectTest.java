@@ -248,10 +248,9 @@ parameter_list|()
 block|{
 name|assertThat
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"foo"
 argument_list|)
@@ -267,10 +266,9 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"foo bar"
 argument_list|)
@@ -286,10 +284,9 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"foo/bar"
 argument_list|)
@@ -305,10 +302,9 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"foo^bar"
 argument_list|)
@@ -324,10 +320,9 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"foo%bar"
 argument_list|)

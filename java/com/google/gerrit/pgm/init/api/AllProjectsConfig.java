@@ -388,10 +388,9 @@ name|get
 argument_list|()
 argument_list|)
 argument_list|,
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|allProjects
 operator|.
@@ -497,10 +496,9 @@ name|GroupList
 operator|.
 name|parse
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|)

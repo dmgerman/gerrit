@@ -231,10 +231,9 @@ operator|.
 name|NameKey
 name|nameKey
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"project-72"
 argument_list|)
@@ -295,10 +294,9 @@ operator|.
 name|NameKey
 name|nameKey
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"project-52"
 argument_list|)

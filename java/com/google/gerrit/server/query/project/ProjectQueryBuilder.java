@@ -328,10 +328,9 @@ name|ProjectPredicates
 operator|.
 name|name
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|name
 argument_list|)
@@ -357,10 +356,9 @@ name|ProjectPredicates
 operator|.
 name|parent
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|parentName
 argument_list|)

@@ -1086,10 +1086,9 @@ argument_list|)
 expr_stmt|;
 name|project
 operator|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"test-project"
 argument_list|)

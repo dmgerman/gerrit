@@ -780,10 +780,9 @@ name|subKey
 argument_list|,
 literal|"refs/heads/*"
 argument_list|,
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"not-existing-super-project"
 argument_list|)
@@ -2190,10 +2189,9 @@ name|subKey
 argument_list|,
 literal|"refs/heads/master"
 argument_list|,
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"wrong-super-project"
 argument_list|)

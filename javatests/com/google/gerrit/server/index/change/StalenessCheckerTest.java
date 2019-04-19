@@ -409,10 +409,9 @@ operator|.
 name|NameKey
 name|P1
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"project1"
 argument_list|)
@@ -426,10 +425,9 @@ operator|.
 name|NameKey
 name|P2
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"project2"
 argument_list|)

@@ -2616,10 +2616,9 @@ name|factory
 operator|.
 name|create
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"test"
 argument_list|)
@@ -3621,10 +3620,9 @@ name|factory
 operator|.
 name|create
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"test"
 argument_list|)
@@ -3771,10 +3769,9 @@ name|factory
 operator|.
 name|create
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"test"
 argument_list|)

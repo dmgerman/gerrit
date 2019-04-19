@@ -1051,10 +1051,9 @@ literal|null
 condition|?
 literal|null
 else|:
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|input
 operator|.

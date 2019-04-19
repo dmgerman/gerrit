@@ -183,10 +183,9 @@ name|getProjectNameKey
 parameter_list|()
 block|{
 return|return
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|refUpdate
 operator|.

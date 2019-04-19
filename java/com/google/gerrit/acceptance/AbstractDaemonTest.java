@@ -3973,10 +3973,9 @@ argument_list|)
 expr_stmt|;
 name|project
 operator|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|in
 operator|.
@@ -4468,10 +4467,9 @@ name|in
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|in
 operator|.
@@ -8554,10 +8552,9 @@ operator|.
 name|NameKey
 name|proj
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|repoName
 argument_list|)
