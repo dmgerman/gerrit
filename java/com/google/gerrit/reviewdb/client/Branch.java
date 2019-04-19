@@ -80,20 +80,6 @@ name|AutoValue
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|StandardKeyEncoder
-import|;
-end_import
-
 begin_comment
 comment|/** Line of development within a {@link Project}. */
 end_comment
@@ -249,9 +235,7 @@ argument_list|()
 operator|+
 literal|","
 operator|+
-operator|new
-name|StandardKeyEncoder
-argument_list|()
+name|KeyUtil
 operator|.
 name|encode
 argument_list|(

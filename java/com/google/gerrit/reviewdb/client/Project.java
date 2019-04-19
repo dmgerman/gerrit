@@ -128,20 +128,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|StandardKeyEncoder
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -249,9 +235,7 @@ block|{
 return|return
 name|nameKey
 argument_list|(
-operator|new
-name|StandardKeyEncoder
-argument_list|()
+name|KeyUtil
 operator|.
 name|decode
 argument_list|(
@@ -410,9 +394,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-operator|new
-name|StandardKeyEncoder
-argument_list|()
+name|KeyUtil
 operator|.
 name|encode
 argument_list|(
