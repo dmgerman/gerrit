@@ -853,7 +853,7 @@ operator|.
 name|getPatchsetId
 argument_list|()
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 expr_stmt|;

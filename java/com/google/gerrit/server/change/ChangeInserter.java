@@ -1542,10 +1542,9 @@ name|this
 operator|.
 name|psId
 operator|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeId
 argument_list|,

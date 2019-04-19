@@ -1215,7 +1215,7 @@ name|parse
 argument_list|(
 name|ps1_1
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 operator|.
@@ -1257,7 +1257,7 @@ name|parse
 argument_list|(
 name|ps1_1
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 operator|.
@@ -3927,10 +3927,9 @@ operator|.
 name|Id
 name|ps2_edit
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|ch2
 operator|.
@@ -4017,10 +4016,9 @@ argument_list|)
 argument_list|,
 name|changeAndCommit
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|ch2
 operator|.
@@ -4188,7 +4186,7 @@ name|project
 argument_list|,
 name|psId1_1
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -4416,14 +4414,14 @@ operator|.
 name|Id
 name|psId2_2
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|psId2_1
 operator|.
 name|changeId
+argument_list|()
 argument_list|,
 name|psId2_1
 operator|.
@@ -5245,7 +5243,7 @@ name|_changeNumber
 operator|=
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 operator|.
 name|get
@@ -5337,7 +5335,7 @@ name|addOp
 argument_list|(
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|,
 operator|new
@@ -5466,7 +5464,7 @@ name|id
 argument_list|(
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 operator|.
 name|get

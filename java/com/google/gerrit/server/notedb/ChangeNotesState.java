@@ -4130,10 +4130,9 @@ name|b
 operator|.
 name|currentPatchSetId
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeId
 argument_list|,

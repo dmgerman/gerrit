@@ -314,10 +314,9 @@ init|=
 operator|new
 name|PatchSet
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -439,7 +438,7 @@ literal|103
 argument_list|)
 argument_list|)
 operator|.
-name|setPatchSetId
+name|setId
 argument_list|(
 literal|73
 argument_list|)
@@ -523,10 +522,9 @@ init|=
 operator|new
 name|PatchSet
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -588,7 +586,7 @@ literal|103
 argument_list|)
 argument_list|)
 operator|.
-name|setPatchSetId
+name|setId
 argument_list|(
 literal|73
 argument_list|)
@@ -622,10 +620,9 @@ init|=
 operator|new
 name|PatchSet
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -741,10 +738,9 @@ init|=
 operator|new
 name|PatchSet
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -832,7 +828,7 @@ literal|103
 argument_list|)
 argument_list|)
 operator|.
-name|setPatchSetId
+name|setId
 argument_list|(
 literal|73
 argument_list|)

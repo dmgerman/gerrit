@@ -18758,10 +18758,9 @@ name|repo
 operator|.
 name|branch
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -24216,10 +24215,9 @@ argument_list|(
 name|c
 argument_list|)
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|c
 operator|.

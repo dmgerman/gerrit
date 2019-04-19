@@ -4241,10 +4241,9 @@ argument_list|)
 throw|;
 block|}
 return|return
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,
@@ -4573,7 +4572,7 @@ name|key
 argument_list|(
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|,
 name|commit
@@ -6708,10 +6707,9 @@ argument_list|()
 argument_list|,
 name|c
 lambda|->
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,

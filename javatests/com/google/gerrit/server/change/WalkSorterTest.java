@@ -2412,10 +2412,9 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|cd1
 operator|.
@@ -2425,10 +2424,9 @@ argument_list|,
 literal|1
 argument_list|)
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|cd2
 operator|.
@@ -3126,10 +3124,9 @@ name|cd
 operator|.
 name|patchSet
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|cd
 operator|.

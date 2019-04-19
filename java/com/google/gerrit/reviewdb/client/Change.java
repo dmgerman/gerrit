@@ -2507,10 +2507,9 @@ literal|0
 condition|)
 block|{
 return|return
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeId
 argument_list|,
@@ -2609,7 +2608,7 @@ condition|(
 operator|!
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 operator|.
 name|equals

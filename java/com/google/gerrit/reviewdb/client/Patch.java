@@ -323,10 +323,9 @@ expr_stmt|;
 return|return
 name|key
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change

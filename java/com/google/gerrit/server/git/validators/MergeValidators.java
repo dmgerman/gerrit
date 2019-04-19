@@ -1849,7 +1849,7 @@ argument_list|()
 argument_list|,
 name|patchSetId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 decl_stmt|;

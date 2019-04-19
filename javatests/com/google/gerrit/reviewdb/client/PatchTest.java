@@ -230,10 +230,9 @@ name|Patch
 operator|.
 name|key
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -268,10 +267,9 @@ name|Patch
 operator|.
 name|key
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change

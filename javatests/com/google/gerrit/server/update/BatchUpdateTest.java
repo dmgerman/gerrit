@@ -1080,10 +1080,9 @@ name|AddMessageOp
 argument_list|(
 literal|"Update on PS1"
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,
@@ -1103,10 +1102,9 @@ name|AddMessageOp
 argument_list|(
 literal|"Update on PS2"
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,
@@ -1589,10 +1587,9 @@ name|AddMessageOp
 argument_list|(
 literal|"Message on PS1"
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,
@@ -2092,10 +2089,9 @@ name|create
 argument_list|(
 name|notes
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,

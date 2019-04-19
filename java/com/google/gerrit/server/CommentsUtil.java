@@ -902,10 +902,9 @@ name|comment
 parameter_list|)
 block|{
 return|return
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeId
 argument_list|,
@@ -1109,7 +1108,8 @@ name|path
 argument_list|,
 name|psId
 operator|.
-name|patchSetId
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Optional

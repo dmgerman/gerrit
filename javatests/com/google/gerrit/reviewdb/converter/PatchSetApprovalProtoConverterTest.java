@@ -332,10 +332,9 @@ name|PatchSetApproval
 operator|.
 name|key
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -458,7 +457,7 @@ literal|42
 argument_list|)
 argument_list|)
 operator|.
-name|setPatchSetId
+name|setId
 argument_list|(
 literal|14
 argument_list|)
@@ -562,10 +561,9 @@ name|PatchSetApproval
 operator|.
 name|key
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -662,7 +660,7 @@ literal|42
 argument_list|)
 argument_list|)
 operator|.
-name|setPatchSetId
+name|setId
 argument_list|(
 literal|14
 argument_list|)
@@ -747,10 +745,9 @@ name|PatchSetApproval
 operator|.
 name|key
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -860,10 +857,9 @@ name|PatchSetApproval
 operator|.
 name|key
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -984,7 +980,7 @@ literal|42
 argument_list|)
 argument_list|)
 operator|.
-name|setPatchSetId
+name|setId
 argument_list|(
 literal|14
 argument_list|)
@@ -1044,10 +1040,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -1197,7 +1192,7 @@ literal|42
 argument_list|)
 argument_list|)
 operator|.
-name|setPatchSetId
+name|setId
 argument_list|(
 literal|14
 argument_list|)

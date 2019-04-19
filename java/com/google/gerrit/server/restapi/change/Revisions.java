@@ -1081,10 +1081,9 @@ operator|.
 name|getNotes
 argument_list|()
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|change
 operator|.
@@ -1183,10 +1182,9 @@ init|=
 operator|new
 name|PatchSet
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|change
 operator|.

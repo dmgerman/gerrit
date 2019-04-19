@@ -570,10 +570,9 @@ name|c
 parameter_list|)
 block|{
 return|return
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|notes
 operator|.

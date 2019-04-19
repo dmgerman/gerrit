@@ -808,10 +808,9 @@ block|{
 name|String
 name|prefix
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,

@@ -1973,10 +1973,9 @@ name|ps1Id
 init|=
 name|forceFetch
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,

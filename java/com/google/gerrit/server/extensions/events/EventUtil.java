@@ -657,7 +657,7 @@ operator|.
 name|getId
 argument_list|()
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 decl_stmt|;

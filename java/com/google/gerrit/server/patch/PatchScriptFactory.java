@@ -1072,7 +1072,7 @@ name|changeId
 operator|=
 name|patchSetB
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 expr_stmt|;
 block|}
@@ -1236,7 +1236,7 @@ name|changeId
 operator|=
 name|patchSetB
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 expr_stmt|;
 name|checkArgument
@@ -2015,7 +2015,7 @@ name|equals
 argument_list|(
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 condition|)
@@ -2211,14 +2211,13 @@ name|Patch
 operator|.
 name|key
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|psb
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|,
 literal|0
@@ -2484,10 +2483,9 @@ operator|.
 name|Id
 name|psId
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|notes
 operator|.
@@ -2609,10 +2607,9 @@ operator|.
 name|Id
 name|psId
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|notes
 operator|.

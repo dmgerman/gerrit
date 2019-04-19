@@ -669,7 +669,7 @@ name|baseChangeId
 init|=
 name|basePatchSetId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 decl_stmt|;
 name|ChangeNotes
@@ -700,7 +700,7 @@ name|rsrc
 argument_list|,
 name|basePatchSetId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 argument_list|,

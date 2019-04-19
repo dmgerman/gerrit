@@ -259,10 +259,9 @@ operator|.
 name|Id
 name|patchSetId
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -314,7 +313,7 @@ literal|103
 argument_list|)
 argument_list|)
 operator|.
-name|setPatchSetId
+name|setId
 argument_list|(
 literal|73
 argument_list|)
@@ -346,10 +345,9 @@ operator|.
 name|Id
 name|patchSetId
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -427,7 +425,7 @@ literal|103
 argument_list|)
 argument_list|)
 operator|.
-name|setPatchSetId
+name|setId
 argument_list|(
 literal|73
 argument_list|)
@@ -483,10 +481,10 @@ block|}
 comment|/** See {@link SerializedClassSubject} for background and what to do if this test fails. */
 annotation|@
 name|Test
-DECL|method|fieldsExistAsExpected ()
+DECL|method|methodsExistAsExpected ()
 specifier|public
 name|void
-name|fieldsExistAsExpected
+name|methodsExistAsExpected
 parameter_list|()
 block|{
 name|assertThatSerializedClass
@@ -498,7 +496,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|hasFields
+name|hasAutoValueMethods
 argument_list|(
 name|ImmutableMap
 operator|.
@@ -523,7 +521,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"patchSetId"
+literal|"id"
 argument_list|,
 name|int
 operator|.

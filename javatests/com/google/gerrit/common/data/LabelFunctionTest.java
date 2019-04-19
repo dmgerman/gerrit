@@ -297,10 +297,9 @@ operator|.
 name|Id
 name|PS_ID
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|CHANGE_ID
 argument_list|,

@@ -1044,10 +1044,9 @@ operator|.
 name|Id
 name|psId
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|ctx
 operator|.

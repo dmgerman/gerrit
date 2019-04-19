@@ -8570,10 +8570,9 @@ block|{
 name|String
 name|refName
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 operator|new
 name|Change
@@ -9008,10 +9007,9 @@ name|getSubmitter
 argument_list|(
 name|cn
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|cn
 operator|.
@@ -9110,10 +9108,9 @@ name|getSubmitter
 argument_list|(
 name|cn
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|cn
 operator|.

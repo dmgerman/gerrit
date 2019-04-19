@@ -295,10 +295,9 @@ init|=
 operator|new
 name|PatchSet
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|cd
 operator|.
@@ -317,10 +316,9 @@ init|=
 operator|new
 name|PatchSet
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|cd
 operator|.

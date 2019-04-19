@@ -1993,10 +1993,9 @@ init|=
 operator|new
 name|Op
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|cd
 operator|.
@@ -2634,10 +2633,9 @@ operator|.
 name|getNotes
 argument_list|()
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|ctx
 operator|.
