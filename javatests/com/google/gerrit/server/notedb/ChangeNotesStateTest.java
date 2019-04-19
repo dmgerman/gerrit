@@ -858,10 +858,9 @@ argument_list|()
 operator|.
 name|changeKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|CHANGE_KEY
 argument_list|)
@@ -991,10 +990,9 @@ argument_list|()
 operator|.
 name|changeKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"Ieeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
 argument_list|)

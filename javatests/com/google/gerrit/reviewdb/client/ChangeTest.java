@@ -676,10 +676,9 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|key
 argument_list|)

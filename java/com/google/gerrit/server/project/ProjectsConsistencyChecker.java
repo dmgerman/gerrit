@@ -1568,10 +1568,9 @@ operator|.
 name|Key
 name|changeKey
 init|=
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|changeId
 argument_list|)

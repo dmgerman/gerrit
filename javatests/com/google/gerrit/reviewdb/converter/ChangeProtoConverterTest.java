@@ -318,10 +318,9 @@ init|=
 operator|new
 name|Change
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"change 1"
 argument_list|)
@@ -687,10 +686,9 @@ init|=
 operator|new
 name|Change
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"change 1"
 argument_list|)
@@ -903,10 +901,9 @@ init|=
 operator|new
 name|Change
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"change 1"
 argument_list|)
@@ -1144,10 +1141,9 @@ init|=
 operator|new
 name|Change
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"change 1"
 argument_list|)
@@ -1388,10 +1384,9 @@ init|=
 operator|new
 name|Change
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"change 1"
 argument_list|)
@@ -1575,10 +1570,9 @@ init|=
 operator|new
 name|Change
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"change 1"
 argument_list|)

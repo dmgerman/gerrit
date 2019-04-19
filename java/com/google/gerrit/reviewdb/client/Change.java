@@ -90,6 +90,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|auto
+operator|.
+name|value
+operator|.
+name|AutoValue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -138,7 +152,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|StringKey
+name|StandardKeyEncoder
 import|;
 end_import
 
@@ -1149,65 +1163,68 @@ name|i
 return|;
 block|}
 block|}
+DECL|method|key (String key)
+specifier|public
+specifier|static
+name|Key
+name|key
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+return|return
+operator|new
+name|AutoValue_Change_Key
+argument_list|(
+name|key
+argument_list|)
+return|;
+block|}
 comment|/**    * Globally unique identification of this change. This generally takes the form of a string    * "Ixxxxxx...", and is stored in the Change-Id footer of a commit.    */
+annotation|@
+name|AutoValue
 DECL|class|Key
 specifier|public
+specifier|abstract
 specifier|static
 class|class
 name|Key
-extends|extends
-name|StringKey
-argument_list|<
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|Key
-argument_list|<
-name|?
-argument_list|>
-argument_list|>
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
-DECL|field|id
-specifier|protected
-name|String
-name|id
-decl_stmt|;
-DECL|method|Key ()
-specifier|protected
-name|Key
-parameter_list|()
-block|{}
-DECL|method|Key (String id)
+comment|// TODO(dborowitz): This hardly seems worth it: why would someone pass a URL-encoded change key?
+comment|// Ideally the standard key() factory method would enforce the format and throw IAE.
+DECL|method|parse (String str)
 specifier|public
+specifier|static
 name|Key
+name|parse
 parameter_list|(
 name|String
-name|id
+name|str
 parameter_list|)
 block|{
-name|this
+return|return
+name|Change
 operator|.
-name|id
-operator|=
-name|id
-expr_stmt|;
+name|key
+argument_list|(
+operator|new
+name|StandardKeyEncoder
+argument_list|()
+operator|.
+name|decode
+argument_list|(
+name|str
+argument_list|)
+argument_list|)
+return|;
 block|}
-annotation|@
-name|Override
+DECL|method|key ()
+specifier|abstract
+name|String
+name|key
+parameter_list|()
+function_decl|;
 DECL|method|get ()
 specifier|public
 name|String
@@ -1215,24 +1232,9 @@ name|get
 parameter_list|()
 block|{
 return|return
-name|id
+name|key
+argument_list|()
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|set (String newValue)
-specifier|protected
-name|void
-name|set
-parameter_list|(
-name|String
-name|newValue
-parameter_list|)
-block|{
-name|id
-operator|=
-name|newValue
-expr_stmt|;
 block|}
 comment|/** Construct a key that is after all keys prefixed by this key. */
 DECL|method|max ()
@@ -1273,8 +1275,9 @@ literal|'\u9fa5'
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|Key
+name|Change
+operator|.
+name|key
 argument_list|(
 name|revEnd
 operator|.
@@ -1318,34 +1321,17 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/** Parse a Change.Key out of a string representation. */
-DECL|method|parse (String str)
+annotation|@
+name|Override
+DECL|method|toString ()
 specifier|public
-specifier|static
-name|Key
-name|parse
-parameter_list|(
 name|String
-name|str
-parameter_list|)
+name|toString
+parameter_list|()
 block|{
-specifier|final
-name|Key
-name|r
-init|=
-operator|new
-name|Key
-argument_list|()
-decl_stmt|;
-name|r
-operator|.
-name|fromString
-argument_list|(
-name|str
-argument_list|)
-expr_stmt|;
 return|return
-name|r
+name|get
+argument_list|()
 return|;
 block|}
 block|}

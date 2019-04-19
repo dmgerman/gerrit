@@ -13508,10 +13508,9 @@ name|lookupByChangeKey
 argument_list|(
 name|c
 argument_list|,
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|idList
 operator|.
@@ -20032,10 +20031,9 @@ name|byKey
 operator|.
 name|get
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|changeId
 operator|.

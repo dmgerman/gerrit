@@ -1215,10 +1215,9 @@ argument_list|()
 operator|.
 name|byKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|changeId
 argument_list|)

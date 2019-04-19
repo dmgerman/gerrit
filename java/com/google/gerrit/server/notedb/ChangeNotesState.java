@@ -4061,10 +4061,9 @@ argument_list|()
 operator|.
 name|changeKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|proto
 operator|.

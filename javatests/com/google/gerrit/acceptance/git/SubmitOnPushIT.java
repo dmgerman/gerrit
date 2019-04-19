@@ -1214,10 +1214,9 @@ argument_list|()
 operator|.
 name|byKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|r
 operator|.
@@ -1436,10 +1435,9 @@ argument_list|()
 operator|.
 name|byKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|r
 operator|.
@@ -1515,10 +1513,9 @@ argument_list|()
 operator|.
 name|byKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|r
 operator|.

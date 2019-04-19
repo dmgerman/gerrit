@@ -1798,10 +1798,9 @@ argument_list|()
 decl_stmt|;
 name|changeKey
 operator|=
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|idStr
 argument_list|)
@@ -1811,10 +1810,9 @@ else|else
 block|{
 name|changeKey
 operator|=
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"I"
 operator|+

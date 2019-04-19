@@ -517,10 +517,9 @@ init|=
 operator|new
 name|Change
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"Iabcd1234abcd1234abcd1234abcd1234abcd1234"
 argument_list|)
