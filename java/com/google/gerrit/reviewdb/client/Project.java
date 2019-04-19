@@ -193,7 +193,7 @@ name|SubmitType
 operator|.
 name|MERGE_IF_NECESSARY
 decl_stmt|;
-comment|/** Project name key */
+comment|/**    * Project name key.    *    *<p>This class has subclasses such as {@code AllProjectsName}, which make Guice injection more    * convenient. Subclasses must compare equal if they have the same name, regardless of the    * specific class. This implies that subclasses may not add additional fields.    */
 DECL|class|NameKey
 specifier|public
 specifier|static
@@ -280,6 +280,7 @@ annotation|@
 name|Override
 DECL|method|hashCode ()
 specifier|public
+specifier|final
 name|int
 name|hashCode
 parameter_list|()
@@ -296,6 +297,7 @@ annotation|@
 name|Override
 DECL|method|equals (Object b)
 specifier|public
+specifier|final
 name|boolean
 name|equals
 parameter_list|(
