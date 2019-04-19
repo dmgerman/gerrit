@@ -7804,7 +7804,7 @@ operator|.
 name|id
 argument_list|()
 operator|.
-name|hashCode
+name|get
 argument_list|()
 argument_list|)
 operator|.
@@ -7972,7 +7972,7 @@ operator|.
 name|id
 argument_list|()
 operator|.
-name|hashCode
+name|get
 argument_list|()
 argument_list|)
 operator|.
