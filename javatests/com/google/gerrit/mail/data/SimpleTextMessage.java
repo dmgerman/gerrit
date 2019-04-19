@@ -182,7 +182,7 @@ literal|"\n"
 operator|+
 literal|"  Error in GET /changes/90018/detail?O=10004\n"
 operator|+
-literal|"  com.google.gwtorm.OrmException: java.lang.NullPointerException\n"
+literal|"  com.google.gerrit.exceptions.StorageException: java.lang.NullPointerException\n"
 operator|+
 literal|"\tat com.google.gerrit.change.ChangeJson.format(ChangeJson.java:303)\n"
 operator|+
