@@ -2218,8 +2218,6 @@ specifier|private
 name|void
 name|evictAndReindexGroups
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 if|if
 condition|(
@@ -2314,8 +2312,6 @@ operator|.
 name|Id
 name|accountId
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 if|if
 condition|(
@@ -2373,8 +2369,6 @@ operator|.
 name|UUID
 name|uuid
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 if|if
 condition|(

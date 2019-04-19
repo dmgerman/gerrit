@@ -598,8 +598,6 @@ operator|.
 name|Id
 name|id
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|ChangeIndex
 name|i

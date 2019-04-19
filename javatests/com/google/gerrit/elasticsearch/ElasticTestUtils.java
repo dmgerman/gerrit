@@ -136,16 +136,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Collection
@@ -358,8 +348,6 @@ parameter_list|(
 name|Injector
 name|injector
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Collection
 argument_list|<

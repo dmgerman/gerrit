@@ -3548,8 +3548,6 @@ operator|.
 name|Id
 name|accountId
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|accountCache
 operator|.

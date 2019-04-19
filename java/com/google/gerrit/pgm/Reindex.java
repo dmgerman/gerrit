@@ -402,16 +402,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -888,8 +878,6 @@ specifier|private
 name|boolean
 name|reindex
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|boolean
 name|ok
@@ -1325,8 +1313,6 @@ name|I
 argument_list|>
 name|def
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|I
 name|index
