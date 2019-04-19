@@ -874,6 +874,16 @@ name|P
 init|=
 literal|8
 decl_stmt|;
+comment|// Single int overhead.
+DECL|field|I
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|I
+init|=
+literal|4
+decl_stmt|;
 comment|// Single IntKey overhead.
 DECL|field|K
 specifier|private
@@ -884,7 +894,7 @@ name|K
 init|=
 name|O
 operator|+
-literal|4
+name|I
 decl_stmt|;
 comment|// Single Timestamp overhead.
 DECL|field|T
@@ -1221,8 +1231,11 @@ literal|1
 comment|// workInProgress
 operator|+
 literal|1
-return|;
 comment|// reviewStarted
+operator|+
+name|I
+return|;
+comment|// updateCount
 block|}
 DECL|method|ptr (Object o, int size)
 specifier|private

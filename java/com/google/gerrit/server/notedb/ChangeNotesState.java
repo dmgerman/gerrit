@@ -953,7 +953,7 @@ name|Builder
 argument_list|()
 return|;
 block|}
-DECL|method|create ( ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> changeMessages, ListMultimap<RevId, Comment> publishedComments, boolean isPrivate, boolean workInProgress, boolean reviewStarted, @Nullable Change.Id revertOf)
+DECL|method|create ( ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> changeMessages, ListMultimap<RevId, Comment> publishedComments, boolean isPrivate, boolean workInProgress, boolean reviewStarted, @Nullable Change.Id revertOf, int updateCount)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -1119,6 +1119,9 @@ name|Change
 operator|.
 name|Id
 name|revertOf
+parameter_list|,
+name|int
+name|updateCount
 parameter_list|)
 block|{
 name|requireNonNull
@@ -1320,6 +1323,11 @@ operator|.
 name|publishedComments
 argument_list|(
 name|publishedComments
+argument_list|)
+operator|.
+name|updateCount
+argument_list|(
+name|updateCount
 argument_list|)
 operator|.
 name|build
@@ -1823,6 +1831,12 @@ argument_list|>
 name|publishedComments
 parameter_list|()
 function_decl|;
+DECL|method|updateCount ()
+specifier|abstract
+name|int
+name|updateCount
+parameter_list|()
+function_decl|;
 DECL|method|newChange (Project.NameKey project)
 name|Change
 name|newChange
@@ -2282,6 +2296,11 @@ operator|.
 name|of
 argument_list|()
 argument_list|)
+operator|.
+name|updateCount
+argument_list|(
+literal|0
+argument_list|)
 return|;
 block|}
 DECL|method|metaId (ObjectId metaId)
@@ -2479,6 +2498,15 @@ argument_list|,
 name|Comment
 argument_list|>
 name|publishedComments
+parameter_list|)
+function_decl|;
+DECL|method|updateCount (int updateCount)
+specifier|abstract
+name|Builder
+name|updateCount
+parameter_list|(
+name|int
+name|updateCount
 parameter_list|)
 function_decl|;
 DECL|method|build ()
@@ -2954,6 +2982,16 @@ argument_list|(
 name|c
 argument_list|)
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|b
+operator|.
+name|setUpdateCount
+argument_list|(
+name|object
+operator|.
+name|updateCount
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -3936,6 +3974,14 @@ lambda|->
 name|c
 argument_list|)
 argument_list|)
+argument_list|)
+operator|.
+name|updateCount
+argument_list|(
+name|proto
+operator|.
+name|getUpdateCount
+argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
