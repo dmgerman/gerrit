@@ -258,10 +258,9 @@ operator|.
 name|Key
 name|patchKey
 init|=
-operator|new
 name|Patch
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet
@@ -1277,7 +1276,7 @@ name|uuid
 argument_list|,
 name|patchKey
 operator|.
-name|getFileName
+name|fileName
 argument_list|()
 argument_list|,
 name|patchKey

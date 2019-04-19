@@ -329,7 +329,7 @@ operator|.
 name|getPatchKey
 argument_list|()
 operator|.
-name|get
+name|fileName
 argument_list|()
 decl_stmt|;
 name|RevisionResource

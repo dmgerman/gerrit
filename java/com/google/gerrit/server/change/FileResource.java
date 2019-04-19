@@ -209,10 +209,9 @@ name|this
 operator|.
 name|key
 operator|=
-operator|new
 name|Patch
 operator|.
-name|Key
+name|key
 argument_list|(
 name|rev
 operator|.

@@ -2156,10 +2156,9 @@ init|=
 operator|new
 name|Patch
 argument_list|(
-operator|new
 name|Patch
 operator|.
-name|Key
+name|key
 argument_list|(
 name|ps
 operator|.
@@ -2208,10 +2207,9 @@ init|=
 operator|new
 name|Patch
 argument_list|(
-operator|new
 name|Patch
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet
@@ -2508,10 +2506,9 @@ operator|.
 name|Key
 name|pKey
 init|=
-operator|new
 name|Patch
 operator|.
-name|Key
+name|key
 argument_list|(
 name|psId
 argument_list|,
@@ -2634,10 +2631,9 @@ operator|.
 name|Key
 name|pKey
 init|=
-operator|new
 name|Patch
 operator|.
-name|Key
+name|key
 argument_list|(
 name|psId
 argument_list|,

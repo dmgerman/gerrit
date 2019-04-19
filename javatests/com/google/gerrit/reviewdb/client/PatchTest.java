@@ -226,10 +226,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-operator|new
 name|Patch
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet
@@ -265,10 +264,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-operator|new
 name|Patch
 operator|.
-name|Key
+name|key
 argument_list|(
 operator|new
 name|PatchSet

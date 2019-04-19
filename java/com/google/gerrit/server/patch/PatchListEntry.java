@@ -1401,10 +1401,9 @@ init|=
 operator|new
 name|Patch
 argument_list|(
-operator|new
 name|Patch
 operator|.
-name|Key
+name|key
 argument_list|(
 name|setId
 argument_list|,

@@ -928,7 +928,7 @@ name|path
 init|=
 name|patchKey
 operator|.
-name|getFileName
+name|fileName
 argument_list|()
 decl_stmt|;
 name|String
