@@ -194,7 +194,7 @@ name|toProto
 argument_list|(
 name|messageKey
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -203,7 +203,7 @@ name|setUuid
 argument_list|(
 name|messageKey
 operator|.
-name|get
+name|uuid
 argument_list|()
 argument_list|)
 operator|.
@@ -227,10 +227,9 @@ name|proto
 parameter_list|)
 block|{
 return|return
-operator|new
 name|ChangeMessage
 operator|.
-name|Key
+name|key
 argument_list|(
 name|changeIdConverter
 operator|.

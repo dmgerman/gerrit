@@ -4567,10 +4567,9 @@ init|=
 operator|new
 name|ChangeMessage
 argument_list|(
-operator|new
 name|ChangeMessage
 operator|.
-name|Key
+name|key
 argument_list|(
 name|psId
 operator|.

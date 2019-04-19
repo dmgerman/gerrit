@@ -605,10 +605,9 @@ init|=
 operator|new
 name|ChangeMessage
 argument_list|(
-operator|new
 name|ChangeMessage
 operator|.
-name|Key
+name|key
 argument_list|(
 name|psId
 operator|.
@@ -849,7 +848,7 @@ operator|.
 name|getKey
 argument_list|()
 operator|.
-name|get
+name|uuid
 argument_list|()
 expr_stmt|;
 name|cmi

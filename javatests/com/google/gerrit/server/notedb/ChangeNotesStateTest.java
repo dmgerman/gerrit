@@ -4091,10 +4091,9 @@ init|=
 operator|new
 name|ChangeMessage
 argument_list|(
-operator|new
 name|ChangeMessage
 operator|.
-name|Key
+name|key
 argument_list|(
 name|ID
 argument_list|,
@@ -4156,10 +4155,9 @@ init|=
 operator|new
 name|ChangeMessage
 argument_list|(
-operator|new
 name|ChangeMessage
 operator|.
-name|Key
+name|key
 argument_list|(
 name|ID
 argument_list|,
@@ -5671,7 +5669,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|hasFields
+name|hasAutoValueMethods
 argument_list|(
 name|ImmutableMap
 operator|.
