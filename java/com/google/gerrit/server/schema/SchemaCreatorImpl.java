@@ -1315,8 +1315,6 @@ parameter_list|(
 name|InternalGroup
 name|group
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 for|for
 control|(

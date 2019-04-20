@@ -2455,8 +2455,6 @@ parameter_list|(
 name|InternalGroup
 name|createdGroup
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|logger
 operator|.
@@ -2552,8 +2550,6 @@ parameter_list|(
 name|UpdateResult
 name|result
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|logger
 operator|.
