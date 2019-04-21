@@ -1512,7 +1512,7 @@ argument_list|(
 name|masterKeyId
 argument_list|)
 decl_stmt|;
-name|saveSubkeyMaping
+name|saveSubkeyMapping
 argument_list|(
 name|ins
 argument_list|,
@@ -2138,7 +2138,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|saveSubkeyMaping
+name|saveSubkeyMapping
 argument_list|(
 name|ins
 argument_list|,
@@ -2150,10 +2150,10 @@ name|masterKeyObjectId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|saveSubkeyMaping ( ObjectInserter ins, PGPPublicKeyRing keyRing, long masterKeyId, ObjectId masterKeyObjectId)
+DECL|method|saveSubkeyMapping ( ObjectInserter ins, PGPPublicKeyRing keyRing, long masterKeyId, ObjectId masterKeyObjectId)
 specifier|private
 name|void
-name|saveSubkeyMaping
+name|saveSubkeyMapping
 parameter_list|(
 name|ObjectInserter
 name|ins
