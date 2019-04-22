@@ -859,6 +859,16 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
+literal|"DeleteKey.soy"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
+literal|"DeleteKeyHtml.soy"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
 literal|"DeleteReviewer.soy"
 argument_list|)
 expr_stmt|;
