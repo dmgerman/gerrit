@@ -881,6 +881,8 @@ argument_list|(
 name|repoManager
 argument_list|,
 name|allProjectsName
+argument_list|,
+name|allUsersName
 argument_list|)
 expr_stmt|;
 name|NoteDbSchemaVersionManager
