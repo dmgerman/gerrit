@@ -819,6 +819,11 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
+literal|"AddKeyHtml.soy"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
 literal|"ChangeFooter.soy"
 argument_list|)
 expr_stmt|;
