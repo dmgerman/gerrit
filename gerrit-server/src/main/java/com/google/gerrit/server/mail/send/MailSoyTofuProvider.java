@@ -329,6 +329,10 @@ literal|"FooterHtml.soy"
 block|,
 literal|"HeaderHtml.soy"
 block|,
+literal|"HttpPasswordUpdate.soy"
+block|,
+literal|"HttpPasswordUpdateHtml.soy"
+block|,
 literal|"Merged.soy"
 block|,
 literal|"MergedHtml.soy"

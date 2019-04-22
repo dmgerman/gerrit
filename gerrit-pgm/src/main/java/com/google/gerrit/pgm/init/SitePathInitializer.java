@@ -904,6 +904,16 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
+literal|"HttpPasswordUpdate.soy"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
+literal|"HttpPasswordUpdateHtml.soy"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
 literal|"Merged.soy"
 argument_list|)
 expr_stmt|;
