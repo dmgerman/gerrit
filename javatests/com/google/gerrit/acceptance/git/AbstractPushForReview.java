@@ -360,6 +360,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|git
+operator|.
+name|ObjectIds
+operator|.
+name|abbreviateName
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|git
@@ -1223,22 +1239,6 @@ operator|.
 name|client
 operator|.
 name|RefNames
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
 import|;
 end_import
 
@@ -11162,18 +11162,10 @@ name|format
 argument_list|(
 literal|"commit %s: missing Change-Id in message footer"
 argument_list|,
-name|c
-operator|.
-name|toObjectId
-argument_list|()
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-literal|7
+name|c
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -11306,20 +11298,13 @@ name|format
 argument_list|(
 literal|"commit %s: %s"
 argument_list|,
+name|abbreviateName
+argument_list|(
 name|r
 operator|.
 name|getCommit
 argument_list|()
-operator|.
-name|abbreviate
-argument_list|(
-name|RevId
-operator|.
-name|ABBREV_LEN
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|,
 name|ChangeIdValidator
 operator|.
@@ -16424,27 +16409,17 @@ name|contains
 argument_list|(
 literal|"warning: no changes between prior commit "
 operator|+
-name|c
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-literal|7
+name|c
 argument_list|)
-operator|.
-name|name
-argument_list|()
 operator|+
 literal|" and new commit "
 operator|+
-name|amended
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-literal|7
+name|amended
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -16601,15 +16576,10 @@ name|contains
 argument_list|(
 literal|"warning: "
 operator|+
-name|amended
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-literal|7
+name|amended
 argument_list|)
-operator|.
-name|name
-argument_list|()
 operator|+
 literal|": no files changed, message updated"
 argument_list|)
@@ -16746,15 +16716,10 @@ name|contains
 argument_list|(
 literal|"warning: "
 operator|+
-name|amended
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-literal|7
+name|amended
 argument_list|)
-operator|.
-name|name
-argument_list|()
 operator|+
 literal|": no files changed, author changed"
 argument_list|)
@@ -16956,15 +16921,10 @@ name|contains
 argument_list|(
 literal|"warning: "
 operator|+
-name|amended
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-literal|7
+name|amended
 argument_list|)
-operator|.
-name|name
-argument_list|()
 operator|+
 literal|": no files changed, was rebased"
 argument_list|)

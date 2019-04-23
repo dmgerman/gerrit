@@ -200,6 +200,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|git
+operator|.
+name|ObjectIds
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -937,9 +951,9 @@ operator|.
 name|length
 argument_list|()
 operator|>
-name|RevId
+name|ObjectIds
 operator|.
-name|LEN
+name|STR_LEN
 condition|)
 block|{
 comment|// Require a minimum of 4 digits.
@@ -1031,9 +1045,9 @@ operator|.
 name|length
 argument_list|()
 operator|==
-name|RevId
+name|ObjectIds
 operator|.
-name|LEN
+name|STR_LEN
 condition|)
 block|{
 return|return

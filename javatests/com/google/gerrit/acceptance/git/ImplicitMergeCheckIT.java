@@ -99,6 +99,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
+operator|.
+name|abbreviateName
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -569,15 +585,10 @@ block|{
 return|return
 literal|"implicit merge of "
 operator|+
-name|commit
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-literal|7
+name|commit
 argument_list|)
-operator|.
-name|name
-argument_list|()
 return|;
 block|}
 DECL|method|setRejectImplicitMerges ()

@@ -116,6 +116,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
+operator|.
+name|abbreviateName
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -2477,15 +2493,12 @@ literal|"s (%s %s)"
 argument_list|,
 name|oursName
 argument_list|,
-name|ours
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
+name|ours
+argument_list|,
 literal|6
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|,
 name|oursMsg
 operator|.
@@ -2522,15 +2535,12 @@ literal|"s (%s %s)"
 argument_list|,
 name|theirsName
 argument_list|,
-name|theirs
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
+name|theirs
+argument_list|,
 literal|6
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|,
 name|theirsMsg
 operator|.

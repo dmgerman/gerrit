@@ -109,18 +109,16 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
+import|import
+name|com
 operator|.
-name|eclipse
+name|google
 operator|.
-name|jgit
+name|gerrit
 operator|.
-name|lib
+name|git
 operator|.
-name|Constants
-operator|.
-name|OBJECT_ID_STRING_LENGTH
+name|ObjectIds
 import|;
 end_import
 
@@ -183,7 +181,9 @@ operator|.
 name|length
 argument_list|()
 operator|==
-name|OBJECT_ID_STRING_LENGTH
+name|ObjectIds
+operator|.
+name|STR_LEN
 condition|)
 block|{
 return|return

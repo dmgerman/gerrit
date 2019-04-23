@@ -69,6 +69,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
+operator|.
+name|abbreviateName
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -691,20 +707,15 @@ name|format
 argument_list|(
 literal|"%s%s"
 argument_list|,
+name|abbreviateName
+argument_list|(
+name|commit
+argument_list|,
 name|rw
 operator|.
 name|getObjectReader
 argument_list|()
-operator|.
-name|abbreviate
-argument_list|(
-name|commit
-argument_list|,
-literal|7
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|,
 name|format
 operator|.

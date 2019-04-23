@@ -70,6 +70,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
+operator|.
+name|abbreviateName
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|eclipse
@@ -159,22 +175,6 @@ operator|.
 name|client
 operator|.
 name|Project
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
 import|;
 end_import
 
@@ -848,17 +848,10 @@ name|format
 argument_list|(
 literal|"commit %s: %s"
 argument_list|,
-name|c
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-name|RevId
-operator|.
-name|ABBREV_LEN
+name|c
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|,
 name|msg
 argument_list|)

@@ -70,6 +70,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
+operator|.
+name|abbreviateName
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -275,20 +291,6 @@ operator|.
 name|diff
 operator|.
 name|DiffFormatter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|AbbreviatedObjectId
 import|;
 end_import
 
@@ -1223,26 +1225,16 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|AbbreviatedObjectId
-name|id
-init|=
+return|return
+name|abbreviateName
+argument_list|(
+name|commit
+argument_list|,
 name|rw
 operator|.
 name|getObjectReader
 argument_list|()
-operator|.
-name|abbreviate
-argument_list|(
-name|commit
-argument_list|,
-literal|7
 argument_list|)
-decl_stmt|;
-return|return
-name|id
-operator|.
-name|name
-argument_list|()
 operator|+
 literal|".diff"
 return|;

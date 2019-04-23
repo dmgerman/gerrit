@@ -70,6 +70,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
+operator|.
+name|abbreviateName
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -2704,6 +2720,8 @@ argument_list|()
 argument_list|,
 literal|"commit"
 argument_list|,
+name|abbreviateName
+argument_list|(
 name|ObjectId
 operator|.
 name|fromString
@@ -2713,14 +2731,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
-operator|.
-name|abbreviate
-argument_list|(
-literal|7
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|,
 literal|"submitSize"
 argument_list|,
