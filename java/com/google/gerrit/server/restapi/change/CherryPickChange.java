@@ -1473,7 +1473,7 @@ name|exactRef
 argument_list|(
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1496,7 +1496,7 @@ literal|"Branch %s does not exist."
 argument_list|,
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1651,7 +1651,7 @@ name|checkedGet
 argument_list|(
 name|dest
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1668,7 +1668,7 @@ name|NoSuchProjectException
 argument_list|(
 name|dest
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 throw|;
@@ -1798,10 +1798,9 @@ argument_list|()
 decl_stmt|;
 name|changeKey
 operator|=
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|idStr
 argument_list|)
@@ -1811,10 +1810,9 @@ else|else
 block|{
 name|changeKey
 operator|=
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"I"
 operator|+
@@ -1830,10 +1828,9 @@ operator|.
 name|NameKey
 name|newDest
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -2005,7 +2002,7 @@ literal|"-"
 operator|+
 name|newDest
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 expr_stmt|;
 block|}
@@ -2019,7 +2016,7 @@ name|cherryPickCommit
 argument_list|,
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|newTopic
@@ -2461,10 +2458,9 @@ operator|.
 name|Id
 name|changeId
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|seq
 operator|.
@@ -2772,7 +2768,7 @@ name|append
 argument_list|(
 name|sourceBranch
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -1316,7 +1316,7 @@ operator|.
 name|getPatchKey
 argument_list|()
 operator|.
-name|getFileName
+name|fileName
 argument_list|()
 decl_stmt|;
 name|ChangeNotes
@@ -1764,7 +1764,7 @@ operator|.
 name|getParentKey
 argument_list|()
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 operator|.
 name|get

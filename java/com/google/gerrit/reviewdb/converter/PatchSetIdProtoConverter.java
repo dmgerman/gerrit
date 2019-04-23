@@ -194,12 +194,12 @@ name|toProto
 argument_list|(
 name|patchSetId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 argument_list|)
 operator|.
-name|setPatchSetId
+name|setId
 argument_list|(
 name|patchSetId
 operator|.
@@ -227,10 +227,9 @@ name|proto
 parameter_list|)
 block|{
 return|return
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeIdConverter
 operator|.
@@ -244,7 +243,7 @@ argument_list|)
 argument_list|,
 name|proto
 operator|.
-name|getPatchSetId
+name|getId
 argument_list|()
 argument_list|)
 return|;

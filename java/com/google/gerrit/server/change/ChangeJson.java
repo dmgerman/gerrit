@@ -2550,10 +2550,9 @@ name|cache
 operator|.
 name|put
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|c
 operator|.
@@ -3599,7 +3598,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 expr_stmt|;
 name|info
@@ -3987,7 +3986,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 expr_stmt|;
 name|out
@@ -5399,10 +5398,9 @@ operator|.
 name|Id
 name|id
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|ai
 operator|.
@@ -5509,10 +5507,9 @@ operator|.
 name|Id
 name|id
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|ai
 operator|.

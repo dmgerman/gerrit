@@ -563,10 +563,9 @@ name|groupCache
 operator|.
 name|get
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|group
 argument_list|)

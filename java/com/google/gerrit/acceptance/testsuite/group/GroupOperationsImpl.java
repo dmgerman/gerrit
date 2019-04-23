@@ -526,10 +526,9 @@ operator|.
 name|Id
 name|groupId
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|Id
+name|id
 argument_list|(
 name|seq
 operator|.
@@ -574,10 +573,9 @@ operator|.
 name|NameKey
 name|nameKey
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|groupName
 argument_list|)
@@ -1003,10 +1001,8 @@ operator|.
 name|map
 argument_list|(
 name|AccountGroup
-operator|.
-name|NameKey
 operator|::
-operator|new
+name|nameKey
 argument_list|)
 operator|.
 name|ifPresent

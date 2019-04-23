@@ -900,10 +900,9 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|change
 operator|.
@@ -1514,10 +1513,9 @@ name|get
 argument_list|(
 name|notes
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|notes
 operator|.

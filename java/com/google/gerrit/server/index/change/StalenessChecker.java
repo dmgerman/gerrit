@@ -1045,10 +1045,9 @@ name|result
 operator|.
 name|put
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|Url
 operator|.

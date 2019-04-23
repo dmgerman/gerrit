@@ -370,7 +370,7 @@ literal|"<gerrit-"
 operator|+
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -661,7 +661,7 @@ name|projectName
 init|=
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -751,7 +751,7 @@ literal|"shortName"
 argument_list|,
 name|branch
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -777,7 +777,7 @@ argument_list|()
 operator|+
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -792,7 +792,7 @@ literal|"Gerrit-Branch: "
 operator|+
 name|branch
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 argument_list|)
 expr_stmt|;

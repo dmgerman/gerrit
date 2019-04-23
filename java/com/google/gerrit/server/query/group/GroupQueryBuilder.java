@@ -618,10 +618,9 @@ name|GroupPredicates
 operator|.
 name|uuid
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|uuid
 argument_list|)
@@ -1180,10 +1179,9 @@ name|groupCache
 operator|.
 name|get
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|groupNameOrUuid
 argument_list|)

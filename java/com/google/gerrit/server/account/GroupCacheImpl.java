@@ -1168,10 +1168,9 @@ argument_list|()
 operator|.
 name|byName
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|name
 argument_list|)
@@ -1253,10 +1252,9 @@ name|groups
 operator|.
 name|getGroup
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|uuid
 argument_list|)

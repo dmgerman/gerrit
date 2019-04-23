@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright 2008 Google Inc.
+comment|// Copyright (C) 2019 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,33 +52,19 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtorm.client
+DECL|package|com.google.gerrit.reviewdb.client
 package|package
 name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
+operator|.
+name|reviewdb
 operator|.
 name|client
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|KeyUtil
-operator|.
-name|Encoder
-import|;
-end_import
 
 begin_import
 import|import
@@ -101,12 +87,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|StandardKeyEncoder
+DECL|class|KeyUtil
 specifier|public
 class|class
-name|StandardKeyEncoder
-extends|extends
-name|Encoder
+name|KeyUtil
 block|{
 DECL|field|hexc
 specifier|private
@@ -432,10 +416,9 @@ literal|10
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|encode (final String e)
 specifier|public
+specifier|static
 name|String
 name|encode
 parameter_list|(
@@ -583,10 +566,9 @@ name|toString
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Override
 DECL|method|decode (final String e)
 specifier|public
+specifier|static
 name|String
 name|decode
 parameter_list|(

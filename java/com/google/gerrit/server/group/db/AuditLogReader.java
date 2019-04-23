@@ -664,10 +664,9 @@ init|=
 operator|new
 name|AccountGroupMemberAudit
 argument_list|(
-operator|new
 name|AccountGroupMemberAudit
 operator|.
-name|Key
+name|key
 argument_list|(
 name|id
 argument_list|,
@@ -779,10 +778,9 @@ init|=
 operator|new
 name|AccountGroupMemberAudit
 argument_list|(
-operator|new
 name|AccountGroupMemberAudit
 operator|.
-name|Key
+name|key
 argument_list|(
 name|id
 argument_list|,
@@ -953,10 +951,9 @@ init|=
 operator|new
 name|AccountGroupByIdAud
 argument_list|(
-operator|new
 name|AccountGroupByIdAud
 operator|.
-name|Key
+name|key
 argument_list|(
 name|groupId
 argument_list|,
@@ -1515,10 +1512,9 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|ident
 operator|.

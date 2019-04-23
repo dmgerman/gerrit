@@ -462,7 +462,7 @@ name|project
 init|=
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 decl_stmt|;
 name|logger
@@ -502,7 +502,7 @@ name|resolve
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -521,7 +521,7 @@ literal|"Cannot open branch "
 operator|+
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 throw|;
@@ -642,7 +642,7 @@ literal|"Could not read .gitmodules of super project: "
 operator|+
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|,
 name|e

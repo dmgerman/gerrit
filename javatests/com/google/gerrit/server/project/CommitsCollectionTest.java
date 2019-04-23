@@ -676,10 +676,9 @@ operator|.
 name|NameKey
 name|name
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"project"
 argument_list|)

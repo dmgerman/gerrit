@@ -347,10 +347,9 @@ name|actual
 argument_list|,
 name|p
 lambda|->
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|p
 operator|.
@@ -428,10 +427,9 @@ name|project
 operator|.
 name|getParent
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"All-Projects"
 argument_list|)

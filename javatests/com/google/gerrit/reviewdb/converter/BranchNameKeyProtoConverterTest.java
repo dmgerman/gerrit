@@ -259,15 +259,13 @@ operator|.
 name|NameKey
 name|nameKey
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"project-13"
 argument_list|)
@@ -299,7 +297,7 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
-name|setProjectName
+name|setProject
 argument_list|(
 name|Entities
 operator|.
@@ -314,7 +312,7 @@ literal|"project-13"
 argument_list|)
 argument_list|)
 operator|.
-name|setBranchName
+name|setBranch
 argument_list|(
 literal|"refs/heads/branch-72"
 argument_list|)
@@ -346,15 +344,13 @@ operator|.
 name|NameKey
 name|nameKey
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"project-52"
 argument_list|)
@@ -412,7 +408,7 @@ operator|.
 name|newBuilder
 argument_list|()
 operator|.
-name|setProjectName
+name|setProject
 argument_list|(
 name|Entities
 operator|.
@@ -427,7 +423,7 @@ literal|"project 1"
 argument_list|)
 argument_list|)
 operator|.
-name|setBranchName
+name|setBranch
 argument_list|(
 literal|"branch 36"
 argument_list|)
@@ -483,10 +479,10 @@ block|}
 comment|/** See {@link SerializedClassSubject} for background and what to do if this test fails. */
 annotation|@
 name|Test
-DECL|method|fieldsExistAsExpected ()
+DECL|method|methodsExistAsExpected ()
 specifier|public
 name|void
-name|fieldsExistAsExpected
+name|methodsExistAsExpected
 parameter_list|()
 block|{
 name|assertThatSerializedClass
@@ -498,7 +494,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|hasFields
+name|hasAutoValueMethods
 argument_list|(
 name|ImmutableMap
 operator|.
@@ -512,7 +508,7 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-literal|"projectName"
+literal|"project"
 argument_list|,
 name|Project
 operator|.
@@ -523,7 +519,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"branchName"
+literal|"branch"
 argument_list|,
 name|String
 operator|.

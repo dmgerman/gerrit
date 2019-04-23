@@ -798,10 +798,9 @@ name|ProjectWatchKey
 operator|.
 name|create
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|projectName
 argument_list|)

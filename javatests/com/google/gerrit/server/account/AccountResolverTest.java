@@ -2327,10 +2327,9 @@ argument_list|,
 operator|new
 name|Account
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|)
@@ -2358,10 +2357,9 @@ init|=
 operator|new
 name|Account
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|)
@@ -2421,10 +2419,8 @@ operator|.
 name|mapToObj
 argument_list|(
 name|Account
-operator|.
-name|Id
 operator|::
-operator|new
+name|id
 argument_list|)
 operator|.
 name|collect
@@ -2490,10 +2486,8 @@ operator|.
 name|mapToObj
 argument_list|(
 name|Account
-operator|.
-name|Id
 operator|::
-operator|new
+name|id
 argument_list|)
 operator|.
 name|collect

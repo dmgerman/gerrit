@@ -440,10 +440,9 @@ operator|.
 name|UUID
 name|uuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|n
 argument_list|)

@@ -814,7 +814,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -967,7 +967,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 condition|)
@@ -1182,7 +1182,7 @@ argument_list|()
 argument_list|,
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 decl_stmt|;

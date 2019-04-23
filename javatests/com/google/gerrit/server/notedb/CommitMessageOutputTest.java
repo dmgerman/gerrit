@@ -1289,10 +1289,9 @@ init|=
 operator|new
 name|Account
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|3
 argument_list|)
@@ -1820,7 +1819,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1938,7 +1937,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;

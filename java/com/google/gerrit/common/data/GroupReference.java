@@ -67,6 +67,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -226,13 +238,11 @@ specifier|protected
 name|GroupReference
 parameter_list|()
 block|{}
-comment|/**    * Create a group reference.    *    * @param uuid UUID of the group, may be {@code null} if the group name couldn't be resolved    * @param name the group name, must not be {@code null}    */
-DECL|method|GroupReference (@ullable AccountGroup.UUID uuid, String name)
+comment|/**    * Create a group reference.    *    * @param uuid UUID of the group, must not be {@code null}    * @param name the group name, must not be {@code null}    */
+DECL|method|GroupReference (AccountGroup.UUID uuid, String name)
 specifier|public
 name|GroupReference
 parameter_list|(
-annotation|@
-name|Nullable
 name|AccountGroup
 operator|.
 name|UUID
@@ -244,7 +254,30 @@ parameter_list|)
 block|{
 name|setUUID
 argument_list|(
+name|requireNonNull
+argument_list|(
 name|uuid
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|setName
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Create a group reference where the group's name couldn't be resolved.    *    * @param name the group name, must not be {@code null}    */
+DECL|method|GroupReference (String name)
+specifier|public
+name|GroupReference
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|setUUID
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 name|setName
@@ -268,10 +301,9 @@ name|uuid
 operator|!=
 literal|null
 condition|?
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|uuid
 argument_list|)

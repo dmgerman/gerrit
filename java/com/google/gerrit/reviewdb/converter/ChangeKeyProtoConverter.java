@@ -179,10 +179,9 @@ name|proto
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|proto
 operator|.

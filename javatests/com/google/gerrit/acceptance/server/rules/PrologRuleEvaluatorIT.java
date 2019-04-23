@@ -918,10 +918,9 @@ name|createForTest
 argument_list|(
 name|project
 argument_list|,
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1
 argument_list|)

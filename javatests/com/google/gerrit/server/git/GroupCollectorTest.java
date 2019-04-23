@@ -2635,15 +2635,13 @@ name|p
 parameter_list|)
 block|{
 return|return
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|c
 argument_list|)

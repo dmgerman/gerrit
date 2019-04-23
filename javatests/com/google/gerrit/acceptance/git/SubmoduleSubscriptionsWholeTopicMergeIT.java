@@ -933,10 +933,9 @@ argument_list|)
 operator|.
 name|containsKey
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|superKey
 argument_list|,
@@ -951,10 +950,9 @@ argument_list|)
 operator|.
 name|containsKey
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|subKey
 argument_list|,
@@ -5558,10 +5556,9 @@ name|s
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|name
 argument_list|(

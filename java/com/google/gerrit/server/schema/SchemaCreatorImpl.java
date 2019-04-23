@@ -1397,10 +1397,9 @@ argument_list|()
 operator|.
 name|setNameKey
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|groupReference
 operator|.
@@ -1411,10 +1410,9 @@ argument_list|)
 operator|.
 name|setId
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|Id
+name|id
 argument_list|(
 name|next
 argument_list|)

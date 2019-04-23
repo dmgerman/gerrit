@@ -357,10 +357,9 @@ name|Exception
 block|{
 name|projectName
 operator|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"repo"
 argument_list|)

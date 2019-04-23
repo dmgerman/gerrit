@@ -453,10 +453,9 @@ operator|.
 name|UUID
 name|OTHER_UUID
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"other"
 argument_list|)
@@ -810,10 +809,9 @@ operator|.
 name|UUID
 name|handled
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"handled"
 argument_list|)
@@ -824,10 +822,9 @@ operator|.
 name|UUID
 name|notHandled
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"not handled"
 argument_list|)

@@ -1789,10 +1789,9 @@ operator|.
 name|NameKey
 name|start
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|pfx
 argument_list|)
@@ -1802,10 +1801,9 @@ operator|.
 name|NameKey
 name|end
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|pfx
 operator|+
@@ -1990,10 +1988,9 @@ operator|.
 name|NameKey
 name|key
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|projectName
 argument_list|)

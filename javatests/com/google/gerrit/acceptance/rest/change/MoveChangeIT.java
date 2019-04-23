@@ -569,10 +569,9 @@ operator|.
 name|NameKey
 name|newBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|r
 operator|.
@@ -602,7 +601,7 @@ argument_list|()
 argument_list|,
 name|newBranch
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -650,10 +649,9 @@ operator|.
 name|NameKey
 name|newBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|r
 operator|.
@@ -683,7 +681,7 @@ argument_list|()
 argument_list|,
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -731,10 +729,9 @@ operator|.
 name|NameKey
 name|newBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|r
 operator|.
@@ -769,7 +766,7 @@ argument_list|()
 argument_list|,
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|moveMessage
@@ -903,7 +900,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -932,10 +929,9 @@ operator|.
 name|NameKey
 name|newBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|r
 operator|.
@@ -974,7 +970,7 @@ name|createChange
 argument_list|(
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|r
@@ -1000,7 +996,7 @@ literal|"Destination "
 operator|+
 name|newBranch
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 operator|+
 literal|" has a different change with same change key "
@@ -1017,7 +1013,7 @@ name|changeNum
 argument_list|,
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1046,10 +1042,9 @@ operator|.
 name|NameKey
 name|newBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|r
 operator|.
@@ -1082,7 +1077,7 @@ literal|"Destination "
 operator|+
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 operator|+
 literal|" not found in the project"
@@ -1097,7 +1092,7 @@ argument_list|()
 argument_list|,
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1126,10 +1121,9 @@ operator|.
 name|NameKey
 name|newBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|r
 operator|.
@@ -1180,7 +1174,7 @@ argument_list|()
 argument_list|,
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1307,10 +1301,9 @@ operator|.
 name|NameKey
 name|newBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|r1
 operator|.
@@ -1363,7 +1356,7 @@ argument_list|()
 argument_list|,
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1392,10 +1385,9 @@ operator|.
 name|NameKey
 name|newBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|r
 operator|.
@@ -1422,7 +1414,7 @@ literal|"refs/for/"
 operator|+
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|Permission
@@ -1465,7 +1457,7 @@ argument_list|()
 argument_list|,
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1494,10 +1486,9 @@ operator|.
 name|NameKey
 name|newBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|r
 operator|.
@@ -1531,7 +1522,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|Permission
@@ -1584,7 +1575,7 @@ argument_list|()
 argument_list|,
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1630,10 +1621,9 @@ operator|.
 name|NameKey
 name|newBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|r
 operator|.
@@ -1677,7 +1667,7 @@ name|name
 argument_list|(
 name|newBranch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -1688,7 +1678,7 @@ name|branch
 argument_list|(
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -1715,7 +1705,7 @@ literal|"Current patchset revision is reachable from tip of "
 operator|+
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1725,7 +1715,7 @@ name|changeNum
 argument_list|,
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1754,10 +1744,9 @@ operator|.
 name|NameKey
 name|newBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|r
 operator|.
@@ -1934,7 +1923,7 @@ argument_list|()
 argument_list|,
 name|newBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1953,10 +1942,9 @@ comment|// A vote for a label will be kept after moving if the label's function 
 comment|// vote holds the minimum value.
 name|createBranch
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -2516,10 +2504,9 @@ name|Exception
 block|{
 name|createBranch
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,

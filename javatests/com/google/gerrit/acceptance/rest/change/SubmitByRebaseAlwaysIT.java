@@ -821,7 +821,7 @@ literal|"Dest: "
 operator|+
 name|dest
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 operator|+
 literal|"\n"
@@ -914,10 +914,9 @@ name|cd2
 operator|.
 name|patchSet
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|cd2
 operator|.

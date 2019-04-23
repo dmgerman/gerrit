@@ -1407,10 +1407,9 @@ operator|.
 name|UUID
 name|notExistingGroupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"not-existing-group"
 argument_list|)
@@ -1452,10 +1451,9 @@ operator|.
 name|UUID
 name|notExistingGroupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"not-existing-group"
 argument_list|)
@@ -1712,10 +1710,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"ABC-789-this-name-must-be-unique"
 argument_list|)
@@ -1849,10 +1846,9 @@ operator|.
 name|UUID
 name|originalOwnerGroupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"owner group"
 argument_list|)
@@ -2041,10 +2037,9 @@ operator|.
 name|UUID
 name|groupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|group
 operator|.
@@ -2095,10 +2090,9 @@ operator|.
 name|Id
 name|memberId1
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1000
 argument_list|)
@@ -2108,10 +2102,9 @@ operator|.
 name|Id
 name|memberId2
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|2000
 argument_list|)
@@ -2121,10 +2114,9 @@ operator|.
 name|Id
 name|memberId3
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|3000
 argument_list|)
@@ -2258,10 +2250,9 @@ operator|.
 name|UUID
 name|subgroupUuid1
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 1"
 argument_list|)
@@ -2271,10 +2262,9 @@ operator|.
 name|UUID
 name|subgroupUuid2
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 2"
 argument_list|)
@@ -2284,10 +2274,9 @@ operator|.
 name|UUID
 name|subgroupUuid3
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 3"
 argument_list|)
@@ -2782,10 +2771,9 @@ operator|.
 name|UUID
 name|originalOwnerGroupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"original owner"
 argument_list|)
@@ -2813,10 +2801,9 @@ operator|.
 name|UUID
 name|updatedOwnerGroupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"updated owner"
 argument_list|)
@@ -2970,10 +2957,9 @@ operator|.
 name|Id
 name|memberId1
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1000
 argument_list|)
@@ -2983,10 +2969,9 @@ operator|.
 name|Id
 name|memberId2
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|2000
 argument_list|)
@@ -3063,10 +3048,9 @@ operator|.
 name|Id
 name|memberId1
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1000
 argument_list|)
@@ -3076,10 +3060,9 @@ operator|.
 name|Id
 name|memberId2
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|2000
 argument_list|)
@@ -3169,10 +3152,9 @@ operator|.
 name|Id
 name|memberId1
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1000
 argument_list|)
@@ -3182,10 +3164,9 @@ operator|.
 name|Id
 name|memberId2
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|2000
 argument_list|)
@@ -3215,10 +3196,9 @@ operator|.
 name|Id
 name|memberId3
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|3000
 argument_list|)
@@ -3295,10 +3275,9 @@ operator|.
 name|Id
 name|memberId1
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1000
 argument_list|)
@@ -3308,10 +3287,9 @@ operator|.
 name|Id
 name|memberId2
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|2000
 argument_list|)
@@ -3397,10 +3375,9 @@ operator|.
 name|Id
 name|memberId1
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1000
 argument_list|)
@@ -3410,10 +3387,9 @@ operator|.
 name|Id
 name|memberId2
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|2000
 argument_list|)
@@ -3443,10 +3419,9 @@ operator|.
 name|Id
 name|memberId3
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|3000
 argument_list|)
@@ -3535,10 +3510,9 @@ operator|.
 name|UUID
 name|subgroupUuid1
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 1"
 argument_list|)
@@ -3548,10 +3522,9 @@ operator|.
 name|UUID
 name|subgroupUuid2
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 2"
 argument_list|)
@@ -3628,10 +3601,9 @@ operator|.
 name|UUID
 name|subgroupUuid1
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 1"
 argument_list|)
@@ -3641,10 +3613,9 @@ operator|.
 name|UUID
 name|subgroupUuid2
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 2"
 argument_list|)
@@ -3734,10 +3705,9 @@ operator|.
 name|UUID
 name|subgroupUuid1
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 1"
 argument_list|)
@@ -3747,10 +3717,9 @@ operator|.
 name|UUID
 name|subgroupUuid2
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 2"
 argument_list|)
@@ -3780,10 +3749,9 @@ operator|.
 name|UUID
 name|subgroupUuid3
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 3"
 argument_list|)
@@ -3860,10 +3828,9 @@ operator|.
 name|UUID
 name|subgroupUuid1
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 1"
 argument_list|)
@@ -3873,10 +3840,9 @@ operator|.
 name|UUID
 name|subgroupUuid2
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 2"
 argument_list|)
@@ -3962,10 +3928,9 @@ operator|.
 name|UUID
 name|subgroupUuid1
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 1"
 argument_list|)
@@ -3975,10 +3940,9 @@ operator|.
 name|UUID
 name|subgroupUuid2
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 2"
 argument_list|)
@@ -4008,10 +3972,9 @@ operator|.
 name|UUID
 name|subgroupUuid3
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"subgroup 3"
 argument_list|)
@@ -4159,10 +4122,9 @@ name|detail
 argument_list|()
 decl_stmt|;
 return|return
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|group
 operator|.
@@ -4220,10 +4182,8 @@ operator|.
 name|map
 argument_list|(
 name|Account
-operator|.
-name|Id
 operator|::
-operator|new
+name|id
 argument_list|)
 operator|.
 name|orElse
@@ -4297,10 +4257,8 @@ operator|.
 name|map
 argument_list|(
 name|AccountGroup
-operator|.
-name|UUID
 operator|::
-operator|new
+name|uuid
 argument_list|)
 operator|.
 name|orElse

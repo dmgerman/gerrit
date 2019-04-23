@@ -1143,10 +1143,9 @@ name|get
 argument_list|()
 decl_stmt|;
 return|return
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|account
 operator|.

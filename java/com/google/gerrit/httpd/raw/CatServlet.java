@@ -713,7 +713,7 @@ operator|.
 name|getParentKey
 argument_list|()
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 decl_stmt|;
 name|String
@@ -928,7 +928,7 @@ name|path
 init|=
 name|patchKey
 operator|.
-name|getFileName
+name|fileName
 argument_list|()
 decl_stmt|;
 name|String

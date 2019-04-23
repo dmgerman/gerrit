@@ -711,10 +711,9 @@ name|Exception
 block|{
 name|project
 operator|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"test"
 argument_list|)
@@ -1080,10 +1079,9 @@ name|AddMessageOp
 argument_list|(
 literal|"Update on PS1"
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,
@@ -1103,10 +1101,9 @@ name|AddMessageOp
 argument_list|(
 literal|"Update on PS2"
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,
@@ -1589,10 +1586,9 @@ name|AddMessageOp
 argument_list|(
 literal|"Message on PS1"
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,
@@ -1828,10 +1824,9 @@ operator|.
 name|Id
 name|id
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|sequences
 operator|.
@@ -2092,10 +2087,9 @@ name|create
 argument_list|(
 name|notes
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,

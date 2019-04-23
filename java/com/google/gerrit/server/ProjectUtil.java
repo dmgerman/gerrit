@@ -188,7 +188,7 @@ name|openRepository
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 init|)
@@ -205,7 +205,7 @@ name|exactRef
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|!=
@@ -228,7 +228,7 @@ name|equals
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|||
@@ -240,7 +240,7 @@ name|equals
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;

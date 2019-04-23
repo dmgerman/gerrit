@@ -4995,7 +4995,7 @@ name|equals
 argument_list|(
 name|destBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 condition|)
@@ -5013,7 +5013,7 @@ name|append
 argument_list|(
 name|destBranch
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5931,7 +5931,7 @@ operator|.
 name|getPatchsetId
 argument_list|()
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 decl_stmt|;
 if|if

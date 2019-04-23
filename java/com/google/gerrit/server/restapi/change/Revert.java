@@ -1878,10 +1878,9 @@ operator|.
 name|Id
 name|changeId
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|seq
 operator|.
@@ -1953,7 +1952,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.

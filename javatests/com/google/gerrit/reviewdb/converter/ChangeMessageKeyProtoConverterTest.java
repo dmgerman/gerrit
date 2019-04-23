@@ -259,15 +259,13 @@ operator|.
 name|Key
 name|messageKey
 init|=
-operator|new
 name|ChangeMessage
 operator|.
-name|Key
+name|key
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|704
 argument_list|)
@@ -346,15 +344,13 @@ operator|.
 name|Key
 name|messageKey
 init|=
-operator|new
 name|ChangeMessage
 operator|.
-name|Key
+name|key
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|704
 argument_list|)
@@ -483,10 +479,10 @@ block|}
 comment|/** See {@link SerializedClassSubject} for background and what to do if this test fails. */
 annotation|@
 name|Test
-DECL|method|fieldsExistAsExpected ()
+DECL|method|methodsExistAsExpected ()
 specifier|public
 name|void
-name|fieldsExistAsExpected
+name|methodsExistAsExpected
 parameter_list|()
 block|{
 name|assertThatSerializedClass
@@ -498,7 +494,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|hasFields
+name|hasAutoValueMethods
 argument_list|(
 name|ImmutableMap
 operator|.

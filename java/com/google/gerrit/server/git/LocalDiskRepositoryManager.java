@@ -1703,10 +1703,9 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|projectName
 argument_list|)

@@ -227,10 +227,9 @@ name|group
 operator|.
 name|setId
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|)
@@ -361,10 +360,9 @@ name|group
 operator|.
 name|setNameKey
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|name
 argument_list|)
@@ -659,10 +657,9 @@ name|group
 operator|.
 name|setOwnerGroupUUID
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|ownerGroupUuid
 argument_list|)

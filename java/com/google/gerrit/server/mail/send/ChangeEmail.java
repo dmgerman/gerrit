@@ -1925,10 +1925,9 @@ operator|.
 name|notes
 argument_list|()
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|change
 operator|.
@@ -2250,7 +2249,7 @@ name|args
 argument_list|,
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|,
 name|projectState

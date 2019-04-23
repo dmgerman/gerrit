@@ -471,7 +471,7 @@ name|checkedGet
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -488,7 +488,7 @@ name|NoSuchProjectException
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 throw|;
@@ -610,7 +610,7 @@ literal|"RevWalk(%s) parsing %s:"
 argument_list|,
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|,
 name|tag

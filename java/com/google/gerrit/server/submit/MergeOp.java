@@ -4015,7 +4015,7 @@ name|openRepo
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -4359,7 +4359,7 @@ name|getRepo
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 argument_list|)
 decl_stmt|;

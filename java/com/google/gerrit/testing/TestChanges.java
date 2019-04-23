@@ -503,10 +503,9 @@ operator|.
 name|Id
 name|changeId
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|)
@@ -517,10 +516,9 @@ init|=
 operator|new
 name|Change
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"Iabcd1234abcd1234abcd1234abcd1234abcd1234"
 argument_list|)
@@ -529,10 +527,9 @@ name|changeId
 argument_list|,
 name|userId
 argument_list|,
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -904,7 +901,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -943,7 +940,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1006,10 +1003,9 @@ init|=
 operator|new
 name|PatchSetInfo
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|change
 operator|.

@@ -962,7 +962,7 @@ name|controlForRef
 argument_list|(
 name|ref
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 return|;

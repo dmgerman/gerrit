@@ -299,10 +299,9 @@ operator|.
 name|Id
 name|CHANGE_ID
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|100
 argument_list|)
@@ -316,10 +315,9 @@ operator|.
 name|Id
 name|PS_ID
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|CHANGE_ID
 argument_list|,
@@ -744,10 +742,9 @@ name|labelId
 parameter_list|)
 block|{
 return|return
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 name|psId
 argument_list|,
@@ -770,10 +767,9 @@ name|account
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|account
 argument_list|)

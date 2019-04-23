@@ -3404,10 +3404,9 @@ operator|.
 name|Id
 name|id
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|f
 operator|.
@@ -3444,10 +3443,9 @@ name|changeDataFactory
 operator|.
 name|create
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -4117,10 +4115,9 @@ name|accounts
 operator|.
 name|add
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|)

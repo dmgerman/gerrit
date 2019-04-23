@@ -1724,10 +1724,9 @@ name|map
 argument_list|(
 name|f
 lambda|->
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|f
 operator|.

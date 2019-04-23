@@ -2487,7 +2487,8 @@ operator|.
 name|getId
 argument_list|()
 operator|.
-name|id
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|delete
@@ -2826,10 +2827,9 @@ operator|.
 name|Id
 name|psId
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|cd3
 operator|.
@@ -5097,10 +5097,9 @@ operator|.
 name|Id
 name|psId
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|cd
 operator|.
@@ -5274,10 +5273,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|gApi
 operator|.

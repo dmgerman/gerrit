@@ -740,10 +740,9 @@ name|getKey
 argument_list|()
 argument_list|)
 argument_list|,
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|proto
 operator|.

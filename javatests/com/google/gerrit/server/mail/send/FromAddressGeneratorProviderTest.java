@@ -2540,10 +2540,9 @@ operator|.
 name|Id
 name|userId
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|42
 argument_list|)

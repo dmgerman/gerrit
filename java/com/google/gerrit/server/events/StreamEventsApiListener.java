@@ -1341,10 +1341,9 @@ name|changeNotesFactory
 operator|.
 name|createChecked
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|info
 operator|.
@@ -1482,10 +1481,9 @@ name|eventFactory
 operator|.
 name|asAccountAttribute
 argument_list|(
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|account
 operator|.
@@ -2919,10 +2917,9 @@ operator|.
 name|NameKey
 name|refName
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|ev
 operator|.

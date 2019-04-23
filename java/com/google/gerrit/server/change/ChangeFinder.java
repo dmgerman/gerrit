@@ -1111,10 +1111,9 @@ expr_stmt|;
 return|return
 name|find
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|n
 argument_list|)
@@ -1326,10 +1325,9 @@ operator|.
 name|Id
 name|cId
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeNumber
 argument_list|)

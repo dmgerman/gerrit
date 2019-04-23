@@ -143,6 +143,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
+operator|.
+name|id
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -601,27 +619,6 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
-block|}
-DECL|method|id (int n)
-specifier|private
-name|Account
-operator|.
-name|Id
-name|id
-parameter_list|(
-name|int
-name|n
-parameter_list|)
-block|{
-return|return
-operator|new
-name|Account
-operator|.
-name|Id
-argument_list|(
-name|n
-argument_list|)
-return|;
 block|}
 block|}
 end_class

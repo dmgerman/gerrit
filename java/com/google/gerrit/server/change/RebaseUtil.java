@@ -669,7 +669,7 @@ name|baseChangeId
 init|=
 name|basePatchSetId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 decl_stmt|;
 name|ChangeNotes
@@ -700,7 +700,7 @@ name|rsrc
 argument_list|,
 name|basePatchSetId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 argument_list|,
@@ -741,10 +741,9 @@ name|notesFor
 argument_list|(
 name|rsrc
 argument_list|,
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|baseChangeId
 argument_list|)
@@ -1182,7 +1181,7 @@ name|exactRef
 argument_list|(
 name|destBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1201,7 +1200,7 @@ literal|"The destination branch does not exist: "
 operator|+
 name|destBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 throw|;

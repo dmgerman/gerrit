@@ -1214,10 +1214,9 @@ argument_list|()
 operator|.
 name|byKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|r
 operator|.
@@ -1436,10 +1435,9 @@ argument_list|()
 operator|.
 name|byKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|r
 operator|.
@@ -1515,10 +1513,9 @@ argument_list|()
 operator|.
 name|byKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|r
 operator|.
@@ -1538,7 +1535,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 operator|.
 name|equals
@@ -1970,7 +1967,7 @@ name|assertThat
 argument_list|(
 name|psId2
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 operator|.
@@ -1978,7 +1975,7 @@ name|isEqualTo
 argument_list|(
 name|psId1
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2026,7 +2023,7 @@ name|project
 argument_list|,
 name|psId1
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2515,7 +2512,7 @@ name|project
 argument_list|,
 name|patchSetId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 operator|.

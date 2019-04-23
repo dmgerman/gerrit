@@ -1334,7 +1334,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 argument_list|)
@@ -5578,10 +5578,9 @@ name|appliedBy
 operator|!=
 literal|null
 condition|?
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|label
 operator|.

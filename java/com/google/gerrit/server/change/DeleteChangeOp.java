@@ -673,7 +673,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -808,10 +808,9 @@ block|{
 name|String
 name|prefix
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,

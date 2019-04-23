@@ -1929,7 +1929,7 @@ name|exactRef
 argument_list|(
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;

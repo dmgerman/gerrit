@@ -1566,10 +1566,9 @@ literal|1
 case|:
 name|accountId
 operator|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|readVarInt32
 argument_list|(

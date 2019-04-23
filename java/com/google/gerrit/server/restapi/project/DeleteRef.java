@@ -1629,10 +1629,9 @@ operator|.
 name|NameKey
 name|branchKey
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|projectState
 operator|.

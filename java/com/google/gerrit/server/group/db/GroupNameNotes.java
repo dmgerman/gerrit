@@ -1249,10 +1249,9 @@ operator|.
 name|NameKey
 name|nameKey
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|e
 operator|.
@@ -2358,10 +2357,9 @@ return|return
 operator|new
 name|GroupReference
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|uuid
 argument_list|)

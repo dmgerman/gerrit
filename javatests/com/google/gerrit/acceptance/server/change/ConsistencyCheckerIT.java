@@ -1873,7 +1873,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 operator|+
 literal|"\n"
@@ -2390,7 +2390,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -2479,7 +2479,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -2602,7 +2602,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -2744,7 +2744,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -2896,7 +2896,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -2996,7 +2996,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 name|String
@@ -3168,10 +3168,9 @@ operator|.
 name|Id
 name|psId2
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|notes
 operator|.
@@ -3258,7 +3257,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 name|String
@@ -3460,10 +3459,9 @@ operator|.
 name|Id
 name|psId2
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|notes
 operator|.
@@ -3589,7 +3587,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -3684,10 +3682,9 @@ operator|.
 name|Id
 name|psId3
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|notes
 operator|.
@@ -3806,10 +3803,9 @@ operator|.
 name|Id
 name|psId2
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|notes
 operator|.
@@ -3895,7 +3891,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -3990,10 +3986,9 @@ operator|.
 name|Id
 name|psId4
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|notes
 operator|.
@@ -4117,10 +4112,9 @@ operator|.
 name|Id
 name|psId2
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|notes
 operator|.
@@ -4173,7 +4167,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -4352,7 +4346,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 name|RevCommit
@@ -4593,7 +4587,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 name|String
@@ -4836,10 +4830,9 @@ operator|.
 name|Id
 name|id
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|sequences
 operator|.
@@ -4869,10 +4862,9 @@ name|commit
 init|=
 name|patchSetCommit
 argument_list|(
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|,
@@ -5465,7 +5457,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -5527,7 +5519,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 try|try

@@ -939,8 +939,10 @@ argument_list|(
 name|patchSetId
 operator|.
 name|changeId
+argument_list|()
 operator|.
-name|id
+name|get
+argument_list|()
 argument_list|)
 argument_list|,
 name|String
@@ -949,7 +951,8 @@ name|valueOf
 argument_list|(
 name|patchSetId
 operator|.
-name|patchSetId
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

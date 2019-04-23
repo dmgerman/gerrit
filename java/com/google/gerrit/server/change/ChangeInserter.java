@@ -1542,10 +1542,9 @@ name|this
 operator|.
 name|psId
 operator|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeId
 argument_list|,
@@ -1639,10 +1638,9 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|ctx
 operator|.
@@ -1775,10 +1773,9 @@ argument_list|()
 condition|)
 block|{
 return|return
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|idList
 operator|.
@@ -1852,10 +1849,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|changeIdStr
 operator|.
@@ -2604,7 +2600,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3417,7 +3413,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|ctx
@@ -3459,10 +3455,9 @@ name|getProject
 argument_list|()
 argument_list|)
 argument_list|,
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|ctx
 operator|.

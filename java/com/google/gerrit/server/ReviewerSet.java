@@ -320,10 +320,10 @@ operator|.
 name|getKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 operator|.
 name|equals
@@ -333,10 +333,10 @@ operator|.
 name|getKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 argument_list|,

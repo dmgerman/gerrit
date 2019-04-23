@@ -569,10 +569,10 @@ operator|.
 name|getKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 decl_stmt|;
 name|checkArgument

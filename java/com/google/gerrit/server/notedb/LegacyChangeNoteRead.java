@@ -914,7 +914,7 @@ name|changeId
 init|=
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 decl_stmt|;
 comment|// Check if there is a new file.
@@ -2028,10 +2028,9 @@ operator|=
 name|endOfLine
 expr_stmt|;
 return|return
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeId
 argument_list|,

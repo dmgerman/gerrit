@@ -728,10 +728,9 @@ name|getAccountId
 parameter_list|()
 block|{
 return|return
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1
 argument_list|)

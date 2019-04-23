@@ -758,10 +758,9 @@ name|map
 argument_list|(
 name|a
 lambda|->
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|a
 operator|.
@@ -805,10 +804,9 @@ operator|.
 name|Id
 name|id
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|info
 operator|.

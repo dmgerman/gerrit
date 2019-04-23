@@ -4764,10 +4764,9 @@ name|Permission
 operator|.
 name|READ
 argument_list|,
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|group
 operator|.

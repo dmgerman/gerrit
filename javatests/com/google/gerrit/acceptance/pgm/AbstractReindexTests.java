@@ -1215,10 +1215,9 @@ argument_list|()
 operator|.
 name|byKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|changeId
 argument_list|)
@@ -1469,10 +1468,9 @@ name|Exception
 block|{
 name|project
 operator|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"reindex-project-test"
 argument_list|)

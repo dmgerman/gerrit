@@ -123,6 +123,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountGroup
+operator|.
+name|uuid
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -585,10 +603,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-operator|new
-name|AccountGroup
-operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"foo"
 argument_list|)
@@ -608,10 +623,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-operator|new
-name|AccountGroup
-operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"foo bar"
 argument_list|)
@@ -631,10 +643,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-operator|new
-name|AccountGroup
-operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"foo:bar"
 argument_list|)
@@ -651,10 +660,9 @@ parameter_list|()
 block|{
 name|assertThat
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|123
 argument_list|)
@@ -679,10 +687,9 @@ parameter_list|()
 block|{
 name|assertThat
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"foo"
 argument_list|)
@@ -698,10 +705,9 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"foo bar"
 argument_list|)
@@ -717,10 +723,9 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 literal|"foo:bar"
 argument_list|)
@@ -734,27 +739,6 @@ argument_list|(
 literal|"foo%3Abar"
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|uuid (String uuid)
-specifier|private
-name|AccountGroup
-operator|.
-name|UUID
-name|uuid
-parameter_list|(
-name|String
-name|uuid
-parameter_list|)
-block|{
-return|return
-operator|new
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|(
-name|uuid
-argument_list|)
-return|;
 block|}
 block|}
 end_class

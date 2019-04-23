@@ -189,10 +189,9 @@ operator|.
 name|Id
 name|accountId
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|1000042
 argument_list|)
@@ -202,10 +201,9 @@ operator|.
 name|Id
 name|changeId
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 literal|56414
 argument_list|)
@@ -215,10 +213,9 @@ operator|.
 name|Id
 name|psId
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeId
 argument_list|,

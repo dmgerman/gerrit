@@ -3973,10 +3973,9 @@ argument_list|)
 expr_stmt|;
 name|project
 operator|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|in
 operator|.
@@ -4468,10 +4467,9 @@ name|in
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|in
 operator|.
@@ -5358,7 +5356,7 @@ name|name
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -5369,7 +5367,7 @@ name|branch
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -5420,7 +5418,7 @@ name|name
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -5431,7 +5429,7 @@ name|branch
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 operator|.
@@ -7937,7 +7935,7 @@ name|project
 argument_list|,
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 operator|.
@@ -8088,7 +8086,7 @@ name|parseRevisionResource
 argument_list|(
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 operator|.
 name|toString
@@ -8554,10 +8552,9 @@ operator|.
 name|NameKey
 name|proj
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|repoName
 argument_list|)
@@ -8680,10 +8677,9 @@ name|ret
 operator|.
 name|put
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|proj
 argument_list|,
@@ -8792,7 +8788,7 @@ condition|(
 operator|!
 name|b
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|equals
@@ -8815,7 +8811,7 @@ name|exactRef
 argument_list|(
 name|b
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -9700,10 +9696,9 @@ name|groupCache
 operator|.
 name|get
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|groupName
 argument_list|)
@@ -9747,10 +9742,9 @@ name|groupCache
 operator|.
 name|get
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|groupName
 argument_list|)
@@ -9863,10 +9857,9 @@ name|groupCache
 operator|.
 name|get
 argument_list|(
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|groupName
 argument_list|)

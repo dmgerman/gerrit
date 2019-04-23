@@ -1135,10 +1135,9 @@ operator|.
 name|NameKey
 name|childName
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|child
 operator|.

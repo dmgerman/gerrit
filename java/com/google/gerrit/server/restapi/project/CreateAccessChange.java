@@ -1051,10 +1051,9 @@ literal|null
 condition|?
 literal|null
 else|:
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|input
 operator|.
@@ -1191,10 +1190,9 @@ operator|.
 name|Id
 name|changeId
 init|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|seq
 operator|.
@@ -1211,10 +1209,9 @@ name|commitToNewRef
 argument_list|(
 name|md
 argument_list|,
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|changeId
 argument_list|,

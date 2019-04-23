@@ -1996,10 +1996,9 @@ name|MEMBERS_FILE
 argument_list|,
 name|entry
 lambda|->
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|Integer
 operator|.
@@ -2032,10 +2031,8 @@ argument_list|(
 name|SUBGROUPS_FILE
 argument_list|,
 name|AccountGroup
-operator|.
-name|UUID
 operator|::
-operator|new
+name|uuid
 argument_list|)
 return|;
 block|}

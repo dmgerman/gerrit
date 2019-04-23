@@ -1069,10 +1069,9 @@ name|createChecked
 argument_list|(
 name|allProjects
 argument_list|,
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|info
 operator|.
@@ -1653,10 +1652,9 @@ return|return
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 name|change
 operator|.
@@ -1665,8 +1663,9 @@ argument_list|()
 argument_list|,
 name|accountId
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 name|label
 argument_list|)
@@ -1707,7 +1706,7 @@ operator|.
 name|getKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 argument_list|,
 name|src

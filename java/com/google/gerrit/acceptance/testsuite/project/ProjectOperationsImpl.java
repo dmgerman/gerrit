@@ -488,10 +488,9 @@ name|args
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|name
 argument_list|)

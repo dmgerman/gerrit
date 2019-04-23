@@ -723,7 +723,7 @@ name|projectState
 argument_list|,
 name|patchSetId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1003,7 +1003,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|get
+name|branch
 argument_list|()
 operator|.
 name|equals

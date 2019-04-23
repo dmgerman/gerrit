@@ -5471,10 +5471,9 @@ name|branches
 operator|.
 name|add
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -8723,10 +8722,9 @@ operator|.
 name|NameKey
 name|branch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -8810,10 +8808,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -8914,10 +8911,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -9294,10 +9290,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -11393,10 +11388,9 @@ name|magicBranch
 operator|.
 name|dest
 operator|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -11726,7 +11720,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 decl_stmt|;
 try|try
@@ -11781,7 +11775,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 operator|+
 literal|" not found"
@@ -12090,7 +12084,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 operator|+
 literal|" not found"
@@ -12265,7 +12259,7 @@ name|get
 argument_list|(
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -12532,7 +12526,7 @@ name|get
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -13514,10 +13508,9 @@ name|lookupByChangeKey
 argument_list|(
 name|c
 argument_list|,
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|idList
 operator|.
@@ -13789,7 +13782,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|newProgress
@@ -14243,7 +14236,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|newProgress
@@ -14862,7 +14855,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 else|:
 literal|null
@@ -14934,7 +14927,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -14958,7 +14951,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|targetRef
@@ -15031,7 +15024,7 @@ name|magicBranch
 operator|.
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -15621,10 +15614,9 @@ argument_list|()
 expr_stmt|;
 name|changeId
 operator|=
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|id
 argument_list|)
@@ -18262,7 +18254,7 @@ name|addOp
 argument_list|(
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|,
 operator|new
@@ -18875,7 +18867,7 @@ name|put
 argument_list|(
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|,
 name|ref
@@ -19302,7 +19294,7 @@ name|ref
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 argument_list|,
@@ -19748,10 +19740,9 @@ operator|.
 name|NameKey
 name|branch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 operator|.
@@ -19920,7 +19911,7 @@ name|getChangeNotes
 argument_list|(
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -19979,7 +19970,7 @@ name|addOp
 argument_list|(
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|,
 name|mergedByPushOpFactory
@@ -20039,10 +20030,9 @@ name|byKey
 operator|.
 name|get
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|changeId
 operator|.

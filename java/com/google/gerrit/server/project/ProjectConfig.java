@@ -4506,8 +4506,6 @@ operator|=
 operator|new
 name|GroupReference
 argument_list|(
-literal|null
-argument_list|,
 name|groupName
 argument_list|)
 expr_stmt|;
@@ -6406,10 +6404,9 @@ operator|.
 name|NameKey
 name|p
 init|=
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|projectName
 argument_list|)

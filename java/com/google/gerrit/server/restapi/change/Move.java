@@ -1292,10 +1292,9 @@ operator|.
 name|NameKey
 name|newDest
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -1564,10 +1563,9 @@ argument_list|()
 decl_stmt|;
 name|newDestKey
 operator|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|projectKey
 argument_list|,
@@ -1793,7 +1791,7 @@ literal|"Destination "
 operator|+
 name|newDestKey
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 operator|+
 literal|" has a different change with same change key "
@@ -1850,7 +1848,7 @@ name|setBranch
 argument_list|(
 name|newDestKey
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1892,7 +1890,7 @@ name|append
 argument_list|(
 name|changePrevDest
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1909,7 +1907,7 @@ name|append
 argument_list|(
 name|newDestKey
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2125,10 +2123,9 @@ argument_list|(
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 name|psId
 argument_list|,
@@ -2137,8 +2134,9 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-operator|new
 name|LabelId
+operator|.
+name|create
 argument_list|(
 name|psa
 operator|.

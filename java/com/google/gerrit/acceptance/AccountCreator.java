@@ -593,10 +593,9 @@ operator|.
 name|Id
 name|id
 init|=
-operator|new
 name|Account
 operator|.
-name|Id
+name|id
 argument_list|(
 name|sequences
 operator|.
@@ -723,10 +722,9 @@ operator|.
 name|NameKey
 name|k
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|n
 argument_list|)

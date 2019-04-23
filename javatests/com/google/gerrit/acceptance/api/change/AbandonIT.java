@@ -924,10 +924,9 @@ name|project1
 init|=
 name|cloneProject
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project1Name
 argument_list|)
@@ -941,10 +940,9 @@ name|project2
 init|=
 name|cloneProject
 argument_list|(
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project2Name
 argument_list|)
@@ -1053,10 +1051,9 @@ name|batchAbandon
 argument_list|(
 name|batchUpdateFactory
 argument_list|,
-operator|new
 name|Project
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project1Name
 argument_list|)

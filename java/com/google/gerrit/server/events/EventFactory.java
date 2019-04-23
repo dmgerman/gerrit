@@ -1233,7 +1233,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 expr_stmt|;
 name|a
@@ -1552,7 +1552,7 @@ name|project
 operator|=
 name|refName
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -1564,7 +1564,7 @@ name|refName
 operator|=
 name|refName
 operator|.
-name|get
+name|branch
 argument_list|()
 expr_stmt|;
 return|return

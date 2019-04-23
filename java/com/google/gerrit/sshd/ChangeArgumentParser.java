@@ -856,10 +856,9 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Id
+name|id
 argument_list|(
 name|Integer
 operator|.

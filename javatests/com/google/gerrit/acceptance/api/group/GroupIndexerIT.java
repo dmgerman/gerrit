@@ -576,10 +576,9 @@ operator|.
 name|UUID
 name|subgroupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"contributors"
 argument_list|)
@@ -677,10 +676,9 @@ operator|.
 name|UUID
 name|subgroupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"contributors"
 argument_list|)
@@ -851,10 +849,9 @@ operator|.
 name|UUID
 name|subgroupUuid
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"contributors"
 argument_list|)
@@ -1084,10 +1081,9 @@ name|get
 argument_list|()
 decl_stmt|;
 return|return
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 name|group
 operator|.

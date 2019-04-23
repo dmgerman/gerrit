@@ -1428,7 +1428,7 @@ literal|2
 argument_list|,
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 operator|.
 name|get
@@ -1588,7 +1588,7 @@ literal|2
 argument_list|,
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 operator|.
 name|get
@@ -1724,7 +1724,7 @@ literal|2
 argument_list|,
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 operator|.
 name|get
@@ -1818,7 +1818,7 @@ literal|1
 argument_list|,
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 operator|.
 name|get
@@ -1931,7 +1931,7 @@ literal|2
 argument_list|,
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 operator|.
 name|get
@@ -1974,14 +1974,13 @@ operator|.
 name|Id
 name|id
 init|=
-operator|new
 name|PatchSet
 operator|.
-name|Id
+name|id
 argument_list|(
 name|psId
 operator|.
-name|getParentKey
+name|changeId
 argument_list|()
 argument_list|,
 name|rs

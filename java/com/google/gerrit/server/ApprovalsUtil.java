@@ -729,7 +729,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility functions to manipulate patchset approvals.  *  *<p>Approvals are overloaded, they represent both approvals and reviewers which should be CCed on  * a change. To ensure that reviewers are not lost there must always be an approval on each patchset  * for each reviewer, even if the reviewer hasn't actually given a score to the change. To mark the  * "no score" case, a dummy approval, which may live in any of the available categories, with a  * score of 0 is used.  *  *<p>The methods in this class only modify the gwtorm database.  */
+comment|/**  * Utility functions to manipulate patchset approvals.  *  *<p>Approvals are overloaded, they represent both approvals and reviewers which should be CCed on  * a change. To ensure that reviewers are not lost there must always be an approval on each patchset  * for each reviewer, even if the reviewer hasn't actually given a score to the change. To mark the  * "no score" case, a dummy approval, which may live in any of the available categories, with a  * score of 0 is used.  */
 end_comment
 
 begin_class
@@ -782,10 +782,9 @@ init|=
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 name|psId
 argument_list|,
@@ -1421,10 +1420,9 @@ argument_list|(
 operator|new
 name|PatchSetApproval
 argument_list|(
-operator|new
 name|PatchSetApproval
 operator|.
-name|Key
+name|key
 argument_list|(
 name|psId
 argument_list|,

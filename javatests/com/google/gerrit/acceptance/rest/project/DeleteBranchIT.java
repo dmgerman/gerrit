@@ -431,10 +431,9 @@ argument_list|()
 expr_stmt|;
 name|testBranch
 operator|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -652,7 +651,7 @@ name|ref
 init|=
 name|testBranch
 operator|.
-name|getShortName
+name|shortName
 argument_list|()
 decl_stmt|;
 name|assertThat
@@ -692,7 +691,7 @@ name|testBranch
 argument_list|,
 name|testBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -728,7 +727,7 @@ literal|"/branches/"
 operator|+
 name|testBranch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -792,10 +791,9 @@ operator|.
 name|NameKey
 name|metaBranch
 init|=
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|project
 argument_list|,
@@ -887,10 +885,9 @@ argument_list|)
 expr_stmt|;
 name|branch
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|allUsers
 argument_list|,
@@ -972,10 +969,9 @@ argument_list|)
 expr_stmt|;
 name|branch
 argument_list|(
-operator|new
 name|Branch
 operator|.
-name|NameKey
+name|nameKey
 argument_list|(
 name|allUsers
 argument_list|,
@@ -1105,7 +1101,7 @@ name|name
 argument_list|(
 name|branch
 operator|.
-name|getParentKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -1116,7 +1112,7 @@ name|branch
 argument_list|(
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|)
 return|;
@@ -1256,7 +1252,7 @@ argument_list|()
 argument_list|,
 name|branch
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 literal|null

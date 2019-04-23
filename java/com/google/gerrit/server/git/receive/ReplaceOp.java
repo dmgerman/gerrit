@@ -2003,7 +2003,7 @@ name|ctx
 argument_list|,
 name|dest
 operator|.
-name|get
+name|branch
 argument_list|()
 argument_list|,
 name|commit
@@ -3416,10 +3416,9 @@ name|change
 operator|.
 name|setKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 literal|"I"
 operator|+
@@ -3437,10 +3436,9 @@ name|change
 operator|.
 name|setKey
 argument_list|(
-operator|new
 name|Change
 operator|.
-name|Key
+name|key
 argument_list|(
 name|idList
 operator|.

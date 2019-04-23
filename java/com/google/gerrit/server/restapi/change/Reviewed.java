@@ -285,7 +285,7 @@ operator|.
 name|getPatchKey
 argument_list|()
 operator|.
-name|getFileName
+name|fileName
 argument_list|()
 argument_list|)
 argument_list|)
@@ -397,7 +397,7 @@ operator|.
 name|getPatchKey
 argument_list|()
 operator|.
-name|getFileName
+name|fileName
 argument_list|()
 argument_list|)
 argument_list|)

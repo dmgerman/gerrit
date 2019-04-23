@@ -269,10 +269,9 @@ operator|.
 name|UUID
 name|ADMIN
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"test.admin"
 argument_list|)
@@ -286,10 +285,9 @@ operator|.
 name|UUID
 name|DEVS
 init|=
-operator|new
 name|AccountGroup
 operator|.
-name|UUID
+name|uuid
 argument_list|(
 literal|"test.devs"
 argument_list|)
