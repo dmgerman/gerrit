@@ -76,7 +76,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assertThat
+name|assertWithMessage
 import|;
 end_import
 
@@ -1285,24 +1285,7 @@ block|{
 comment|// Use invokeProgram with the current classloader, rather than mainImpl, which would create a
 comment|// new classloader. This is necessary so that static state, particularly the SystemReader, is
 comment|// shared with the test method.
-name|assertThat
-argument_list|(
-name|GerritLauncher
-operator|.
-name|invokeProgram
-argument_list|(
-name|StandaloneSiteTest
-operator|.
-name|class
-operator|.
-name|getClassLoader
-argument_list|()
-argument_list|,
-name|args
-argument_list|)
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"gerrit.war "
 operator|+
@@ -1319,6 +1302,23 @@ name|joining
 argument_list|(
 literal|" "
 argument_list|)
+argument_list|)
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|GerritLauncher
+operator|.
+name|invokeProgram
+argument_list|(
+name|StandaloneSiteTest
+operator|.
+name|class
+operator|.
+name|getClassLoader
+argument_list|()
+argument_list|,
+name|args
 argument_list|)
 argument_list|)
 operator|.
