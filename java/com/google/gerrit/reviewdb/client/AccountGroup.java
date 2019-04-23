@@ -180,6 +180,24 @@ name|AUDIT_CREATION_INSTANT_MS
 argument_list|)
 return|;
 block|}
+DECL|method|nameKey (String n)
+specifier|public
+specifier|static
+name|NameKey
+name|nameKey
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+block|{
+return|return
+operator|new
+name|NameKey
+argument_list|(
+name|n
+argument_list|)
+return|;
+block|}
 comment|/** Group name key */
 DECL|class|NameKey
 specifier|public
@@ -263,6 +281,24 @@ operator|=
 name|newValue
 expr_stmt|;
 block|}
+block|}
+DECL|method|uuid (String n)
+specifier|public
+specifier|static
+name|UUID
+name|uuid
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+block|{
+return|return
+operator|new
+name|UUID
+argument_list|(
+name|n
+argument_list|)
+return|;
 block|}
 comment|/** Globally unique identifier. */
 DECL|class|UUID
@@ -492,6 +528,24 @@ operator|.
 name|matches
 argument_list|(
 literal|"^[0-9a-f]{40}$"
+argument_list|)
+return|;
+block|}
+DECL|method|id (int id)
+specifier|public
+specifier|static
+name|Id
+name|id
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Id
+argument_list|(
+name|id
 argument_list|)
 return|;
 block|}

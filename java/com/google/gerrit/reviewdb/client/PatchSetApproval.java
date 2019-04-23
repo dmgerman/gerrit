@@ -135,6 +135,38 @@ specifier|final
 class|class
 name|PatchSetApproval
 block|{
+DECL|method|key (PatchSet.Id patchSetId, Account.Id accountId, LabelId labelId)
+specifier|public
+specifier|static
+name|Key
+name|key
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|,
+name|LabelId
+name|labelId
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Key
+argument_list|(
+name|patchSetId
+argument_list|,
+name|accountId
+argument_list|,
+name|labelId
+argument_list|)
+return|;
+block|}
 DECL|class|Key
 specifier|public
 specifier|static
@@ -255,6 +287,19 @@ return|return
 name|patchSetId
 return|;
 block|}
+DECL|method|patchSetId ()
+specifier|public
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|()
+block|{
+return|return
+name|getParentKey
+argument_list|()
+return|;
+block|}
 DECL|method|getAccountId ()
 specifier|public
 name|Account
@@ -267,6 +312,19 @@ return|return
 name|accountId
 return|;
 block|}
+DECL|method|accountId ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|()
+block|{
+return|return
+name|getAccountId
+argument_list|()
+return|;
+block|}
 DECL|method|getLabelId ()
 specifier|public
 name|LabelId
@@ -275,6 +333,17 @@ parameter_list|()
 block|{
 return|return
 name|categoryId
+return|;
+block|}
+DECL|method|labelId ()
+specifier|public
+name|LabelId
+name|labelId
+parameter_list|()
+block|{
+return|return
+name|getLabelId
+argument_list|()
 return|;
 block|}
 annotation|@

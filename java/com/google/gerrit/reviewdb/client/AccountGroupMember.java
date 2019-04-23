@@ -101,6 +101,33 @@ specifier|final
 class|class
 name|AccountGroupMember
 block|{
+DECL|method|key (Account.Id accountId, AccountGroup.Id groupId)
+specifier|public
+specifier|static
+name|Key
+name|key
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|,
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Key
+argument_list|(
+name|accountId
+argument_list|,
+name|groupId
+argument_list|)
+return|;
+block|}
 DECL|class|Key
 specifier|public
 specifier|static
@@ -197,6 +224,19 @@ return|return
 name|accountId
 return|;
 block|}
+DECL|method|accountId ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|()
+block|{
+return|return
+name|getParentKey
+argument_list|()
+return|;
+block|}
 DECL|method|getAccountGroupId ()
 specifier|public
 name|AccountGroup
@@ -207,6 +247,19 @@ parameter_list|()
 block|{
 return|return
 name|groupId
+return|;
+block|}
+DECL|method|groupId ()
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+parameter_list|()
+block|{
+return|return
+name|getAccountGroupId
+argument_list|()
 return|;
 block|}
 annotation|@

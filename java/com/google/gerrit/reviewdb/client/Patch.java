@@ -138,6 +138,31 @@ name|path
 argument_list|)
 return|;
 block|}
+DECL|method|key (PatchSet.Id patchSetId, String fileName)
+specifier|public
+specifier|static
+name|Key
+name|key
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|,
+name|String
+name|fileName
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Key
+argument_list|(
+name|patchSetId
+argument_list|,
+name|fileName
+argument_list|)
+return|;
+block|}
 DECL|class|Key
 specifier|public
 specifier|static
@@ -226,6 +251,19 @@ return|return
 name|patchSetId
 return|;
 block|}
+DECL|method|patchSetId ()
+specifier|public
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|()
+block|{
+return|return
+name|getParentKey
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|get ()
@@ -236,6 +274,17 @@ parameter_list|()
 block|{
 return|return
 name|fileName
+return|;
+block|}
+DECL|method|fileName ()
+specifier|public
+name|String
+name|fileName
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|()
 return|;
 block|}
 annotation|@

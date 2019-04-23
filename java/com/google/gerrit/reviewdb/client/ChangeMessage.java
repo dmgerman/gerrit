@@ -125,6 +125,31 @@ specifier|final
 class|class
 name|ChangeMessage
 block|{
+DECL|method|key (Change.Id changeId, String uuid)
+specifier|public
+specifier|static
+name|Key
+name|key
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|,
+name|String
+name|uuid
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Key
+argument_list|(
+name|changeId
+argument_list|,
+name|uuid
+argument_list|)
+return|;
+block|}
 DECL|class|Key
 specifier|public
 specifier|static
@@ -213,6 +238,19 @@ return|return
 name|changeId
 return|;
 block|}
+DECL|method|changeId ()
+specifier|public
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|()
+block|{
+return|return
+name|getParentKey
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|get ()
@@ -223,6 +261,17 @@ parameter_list|()
 block|{
 return|return
 name|uuid
+return|;
+block|}
+DECL|method|uuid ()
+specifier|public
+name|String
+name|uuid
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|()
 return|;
 block|}
 annotation|@

@@ -195,6 +195,24 @@ specifier|final
 class|class
 name|Account
 block|{
+DECL|method|id (int id)
+specifier|public
+specifier|static
+name|Id
+name|id
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Id
+argument_list|(
+name|id
+argument_list|)
+return|;
+block|}
 comment|/** Key local to Gerrit to identify a user. */
 DECL|class|Id
 specifier|public

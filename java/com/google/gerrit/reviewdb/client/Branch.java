@@ -91,6 +91,63 @@ specifier|final
 class|class
 name|Branch
 block|{
+DECL|method|nameKey (Project.NameKey projectName, String branchName)
+specifier|public
+specifier|static
+name|NameKey
+name|nameKey
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
+name|String
+name|branchName
+parameter_list|)
+block|{
+return|return
+operator|new
+name|NameKey
+argument_list|(
+name|projectName
+argument_list|,
+name|RefNames
+operator|.
+name|fullName
+argument_list|(
+name|branchName
+argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|nameKey (String projectName, String branchName)
+specifier|public
+specifier|static
+name|NameKey
+name|nameKey
+parameter_list|(
+name|String
+name|projectName
+parameter_list|,
+name|String
+name|branchName
+parameter_list|)
+block|{
+return|return
+name|nameKey
+argument_list|(
+name|Project
+operator|.
+name|nameKey
+argument_list|(
+name|projectName
+argument_list|)
+argument_list|,
+name|branchName
+argument_list|)
+return|;
+block|}
 comment|/** Branch name key */
 DECL|class|NameKey
 specifier|public
@@ -200,6 +257,17 @@ return|return
 name|branchName
 return|;
 block|}
+DECL|method|branch ()
+specifier|public
+name|String
+name|branch
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|set (String newValue)
@@ -233,6 +301,19 @@ parameter_list|()
 block|{
 return|return
 name|projectName
+return|;
+block|}
+DECL|method|project ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|()
+block|{
+return|return
+name|getParentKey
+argument_list|()
 return|;
 block|}
 DECL|method|getShortName ()

@@ -173,6 +173,24 @@ specifier|final
 class|class
 name|Change
 block|{
+DECL|method|id (int id)
+specifier|public
+specifier|static
+name|Id
+name|id
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Id
+argument_list|(
+name|id
+argument_list|)
+return|;
+block|}
 DECL|class|Id
 specifier|public
 specifier|static
@@ -1148,6 +1166,24 @@ return|return
 name|i
 return|;
 block|}
+block|}
+DECL|method|key (String key)
+specifier|public
+specifier|static
+name|Key
+name|key
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Key
+argument_list|(
+name|key
+argument_list|)
+return|;
 block|}
 comment|/**    * Globally unique identification of this change. This generally takes the form of a string    * "Ixxxxxx...", and is stored in the Change-Id footer of a commit.    */
 DECL|class|Key

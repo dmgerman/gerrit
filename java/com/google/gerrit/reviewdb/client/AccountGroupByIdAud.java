@@ -125,6 +125,38 @@ specifier|final
 class|class
 name|AccountGroupByIdAud
 block|{
+DECL|method|key (AccountGroup.Id groupId, AccountGroup.UUID includeUuid, Timestamp addedOn)
+specifier|public
+specifier|static
+name|Key
+name|key
+parameter_list|(
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+parameter_list|,
+name|AccountGroup
+operator|.
+name|UUID
+name|includeUuid
+parameter_list|,
+name|Timestamp
+name|addedOn
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Key
+argument_list|(
+name|groupId
+argument_list|,
+name|includeUuid
+argument_list|,
+name|addedOn
+argument_list|)
+return|;
+block|}
 DECL|class|Key
 specifier|public
 specifier|static
@@ -233,6 +265,19 @@ return|return
 name|groupId
 return|;
 block|}
+DECL|method|groupId ()
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+parameter_list|()
+block|{
+return|return
+name|getParentKey
+argument_list|()
+return|;
+block|}
 DECL|method|getIncludeUUID ()
 specifier|public
 name|AccountGroup
@@ -245,6 +290,19 @@ return|return
 name|includeUUID
 return|;
 block|}
+DECL|method|includeUuid ()
+specifier|public
+name|AccountGroup
+operator|.
+name|UUID
+name|includeUuid
+parameter_list|()
+block|{
+return|return
+name|getIncludeUUID
+argument_list|()
+return|;
+block|}
 DECL|method|getAddedOn ()
 specifier|public
 name|Timestamp
@@ -253,6 +311,17 @@ parameter_list|()
 block|{
 return|return
 name|addedOn
+return|;
+block|}
+DECL|method|addedOn ()
+specifier|public
+name|Timestamp
+name|addedOn
+parameter_list|()
+block|{
+return|return
+name|getAddedOn
+argument_list|()
 return|;
 block|}
 annotation|@

@@ -193,6 +193,24 @@ name|SubmitType
 operator|.
 name|MERGE_IF_NECESSARY
 decl_stmt|;
+DECL|method|nameKey (String name)
+specifier|public
+specifier|static
+name|NameKey
+name|nameKey
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+operator|new
+name|NameKey
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
 comment|/** Project name key */
 DECL|class|NameKey
 specifier|public

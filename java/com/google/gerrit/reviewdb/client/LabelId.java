@@ -119,6 +119,24 @@ name|LEGACY_SUBMIT_NAME
 init|=
 literal|"SUBM"
 decl_stmt|;
+DECL|method|create (String n)
+specifier|public
+specifier|static
+name|LabelId
+name|create
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+block|{
+return|return
+operator|new
+name|LabelId
+argument_list|(
+name|n
+argument_list|)
+return|;
+block|}
 DECL|method|legacySubmit ()
 specifier|public
 specifier|static
