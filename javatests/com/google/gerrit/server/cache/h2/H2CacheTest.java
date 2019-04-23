@@ -85,6 +85,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -464,7 +480,12 @@ argument_list|(
 literal|"bar"
 argument_list|)
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"Callable was called"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|called
 operator|.
@@ -472,15 +493,15 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|named
-argument_list|(
-literal|"Callable was called"
-argument_list|)
-operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"in-memory value"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|impl
 operator|.
@@ -488,11 +509,6 @@ name|getIfPresent
 argument_list|(
 literal|"foo"
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"in-memory value"
 argument_list|)
 operator|.
 name|isEqualTo
@@ -507,7 +523,12 @@ argument_list|(
 literal|"foo"
 argument_list|)
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"persistent value"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|impl
 operator|.
@@ -515,11 +536,6 @@ name|getIfPresent
 argument_list|(
 literal|"foo"
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"persistent value"
 argument_list|)
 operator|.
 name|isEqualTo
@@ -534,7 +550,12 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"cached value"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|impl
 operator|.
@@ -559,27 +580,22 @@ block|}
 argument_list|)
 argument_list|)
 operator|.
-name|named
-argument_list|(
-literal|"cached value"
-argument_list|)
-operator|.
 name|isEqualTo
 argument_list|(
 literal|"bar"
 argument_list|)
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"Callable was called"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|called
 operator|.
 name|get
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"Callable was called"
 argument_list|)
 operator|.
 name|isFalse

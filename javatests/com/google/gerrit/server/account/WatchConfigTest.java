@@ -83,6 +83,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1136,16 +1152,16 @@ argument_list|(
 name|notifyValue
 argument_list|)
 expr_stmt|;
-name|assertThat
-argument_list|(
-name|validationErrors
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"expected validation error for notifyValue: "
 operator|+
 name|notifyValue
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|validationErrors
 argument_list|)
 operator|.
 name|isNotEmpty

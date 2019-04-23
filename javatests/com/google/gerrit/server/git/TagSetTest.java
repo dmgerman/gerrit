@@ -1266,7 +1266,12 @@ operator|.
 name|getRefsForTesting
 argument_list|()
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"ref name set"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|ImmutableSortedSet
 operator|.
@@ -1277,11 +1282,6 @@ operator|.
 name|keySet
 argument_list|()
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"ref name set"
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1328,19 +1328,19 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"value of ref %s"
+argument_list|,
+name|name
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|aRef
 operator|.
 name|get
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"value of ref %s"
-argument_list|,
-name|name
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1351,18 +1351,18 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertThat
-argument_list|(
-name|aRef
-operator|.
-name|flag
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"flag of ref %s"
 argument_list|,
 name|name
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|aRef
+operator|.
+name|flag
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1395,17 +1395,17 @@ operator|.
 name|getTagsForTesting
 argument_list|()
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"tag ID set"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|getTagIds
 argument_list|(
 name|aTags
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"tag ID set"
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1434,14 +1434,7 @@ argument_list|(
 name|aTag
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|aTag
-operator|.
-name|refFlags
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"flags for tag %s"
 argument_list|,
@@ -1449,6 +1442,13 @@ name|aTag
 operator|.
 name|name
 argument_list|()
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|aTag
+operator|.
+name|refFlags
 argument_list|)
 operator|.
 name|isEqualTo

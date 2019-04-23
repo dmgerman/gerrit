@@ -99,6 +99,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -882,6 +898,11 @@ argument_list|(
 literal|"setOfRefs()"
 argument_list|)
 operator|.
+name|withMessage
+argument_list|(
+literal|"set of refs"
+argument_list|)
+operator|.
 name|about
 argument_list|(
 name|StreamSubject
@@ -907,11 +928,6 @@ name|RemoteRefUpdate
 operator|::
 name|getRemoteName
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"set of refs"
 argument_list|)
 operator|.
 name|containsExactly
@@ -1000,17 +1016,7 @@ init|=
 name|actual
 argument_list|()
 decl_stmt|;
-name|Truth
-operator|.
-name|assertThat
-argument_list|(
-name|u
-operator|.
-name|getStatus
-argument_list|()
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"status of ref update for %s%s"
 argument_list|,
@@ -1033,6 +1039,14 @@ else|:
 literal|""
 argument_list|)
 operator|.
+name|that
+argument_list|(
+name|u
+operator|.
+name|getStatus
+argument_list|()
+argument_list|)
+operator|.
 name|isEqualTo
 argument_list|(
 name|status
@@ -1045,22 +1059,20 @@ name|void
 name|hasNoMessage
 parameter_list|()
 block|{
-name|Truth
+name|assertWithMessage
+argument_list|(
+literal|"message of ref update for %s"
+argument_list|,
+name|refName
+argument_list|)
 operator|.
-name|assertThat
+name|that
 argument_list|(
 name|actual
 argument_list|()
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"message of ref update for %s"
-argument_list|,
-name|refName
 argument_list|)
 operator|.
 name|isNull
@@ -1076,22 +1088,20 @@ name|String
 name|expected
 parameter_list|)
 block|{
-name|Truth
+name|assertWithMessage
+argument_list|(
+literal|"message of ref update for %s"
+argument_list|,
+name|refName
+argument_list|)
 operator|.
-name|assertThat
+name|that
 argument_list|(
 name|actual
 argument_list|()
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"message of ref update for %s"
-argument_list|,
-name|refName
 argument_list|)
 operator|.
 name|isEqualTo

@@ -96,6 +96,22 @@ name|truth
 operator|.
 name|Truth
 operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
 name|assert_
 import|;
 end_import
@@ -2079,19 +2095,19 @@ range|:
 name|inputs
 control|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"results for %s (active)"
+argument_list|,
+name|input
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|resolve
 argument_list|(
 name|input
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"results for %s (active)"
-argument_list|,
-name|input
 argument_list|)
 operator|.
 name|containsExactly
@@ -2152,19 +2168,19 @@ argument_list|(
 name|input
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"results for %s (inactive)"
+argument_list|,
+name|input
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|result
 operator|.
 name|asIdSet
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"results for %s (inactive)"
-argument_list|,
-name|input
 argument_list|)
 operator|.
 name|isEmpty
@@ -2218,19 +2234,19 @@ name|nameEmail
 argument_list|)
 expr_stmt|;
 block|}
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"results by name or email for %s (inactive)"
+argument_list|,
+name|input
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|resolveByNameOrEmail
 argument_list|(
 name|input
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"results by name or email for %s (inactive)"
-argument_list|,
-name|input
 argument_list|)
 operator|.
 name|isEmpty

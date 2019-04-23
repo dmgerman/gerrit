@@ -94,6 +94,22 @@ name|common
 operator|.
 name|truth
 operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
 name|Truth8
 operator|.
 name|assertThat
@@ -2232,7 +2248,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"performsAtomicTransactions on %s"
+argument_list|,
+name|repo
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|repo
 operator|.
@@ -2241,13 +2264,6 @@ argument_list|()
 operator|.
 name|performsAtomicTransactions
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"performsAtomicTransactions on %s"
-argument_list|,
-name|repo
 argument_list|)
 operator|.
 name|isTrue

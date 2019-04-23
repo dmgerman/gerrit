@@ -86,6 +86,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -1073,7 +1089,14 @@ name|toList
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"JSON %s"
+operator|+
+name|stored
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|ChangeField
 operator|.
@@ -1081,13 +1104,6 @@ name|parseSubmitRecords
 argument_list|(
 name|stored
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"JSON %s"
-operator|+
-name|stored
 argument_list|)
 operator|.
 name|isEqualTo

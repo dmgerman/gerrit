@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -2563,7 +2579,12 @@ name|int
 name|misses
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"hits"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|cache
 operator|.
@@ -2574,17 +2595,17 @@ name|hitCount
 argument_list|()
 argument_list|)
 operator|.
-name|named
-argument_list|(
-literal|"hits"
-argument_list|)
-operator|.
 name|isEqualTo
 argument_list|(
 name|hits
 argument_list|)
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"misses"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|cache
 operator|.
@@ -2593,11 +2614,6 @@ argument_list|()
 operator|.
 name|missCount
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"misses"
 argument_list|)
 operator|.
 name|isEqualTo
