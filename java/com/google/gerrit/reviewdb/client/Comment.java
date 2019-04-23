@@ -154,6 +154,20 @@ name|AnyObjectId
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class represents inline comments in NoteDb. This means it determines the JSON format for  * inline comments in the revision notes that NoteDb uses to persist inline comments.  *  *<p>Changing fields in this class changes the storage format of inline comments in NoteDb and may  * require a corresponding data migration (adding new optional fields is generally okay).  *  *<p>{@link PatchLineComment} historically represented comments in ReviewDb. There are a few  * notable differences:  *  *<ul>  *<li>PatchLineComment knows the comment status (published or draft). For comments in NoteDb the  *       status is determined by the branch in which they are stored (published comments are stored  *       in the change meta ref; draft comments are store in refs/draft-comments branches in  *       All-Users). Hence Comment doesn't need to contain the status, but the status is implicitly  *       known by where the comments are read from.  *<li>PatchLineComment knows the change ID. For comments in NoteDb, the change ID is determined  *       by the branch in which they are stored (the ref name contains the change ID). Hence Comment  *       doesn't need to contain the change ID, but the change ID is implicitly known by where the  *       comments are read from.  *</ul>  *  *<p>For all utility classes and middle layer functionality using Comment over PatchLineComment is  * preferred, as ReviewDb is gone so PatchLineComment is slated for deletion as well. This means  * Comment should be used everywhere and only for storing inline comment in ReviewDb a conversion to  * PatchLineComment is done. Converting Comments to PatchLineComments and vice verse is done by  * CommentsUtil#toPatchLineComments(Change.Id, PatchLineComment.Status, Iterable) and  * CommentsUtil#toComments(String, Iterable).  */
 end_comment
@@ -920,9 +934,10 @@ name|tag
 decl_stmt|;
 comment|// Hex commit SHA1 of the commit of the patchset to which this comment applies. Other classes call
 comment|// this "commitId", but this class uses the old ReviewDb term "revId", and this field name is
-comment|// serialized into JSON in NoteDb, so it can't easily be changed.
+comment|// serialized into JSON in NoteDb, so it can't easily be changed. Callers do not access this field
+comment|// directly, and instead use the public getter/setter that wraps an ObjectId.
 DECL|field|revId
-specifier|public
+specifier|private
 name|String
 name|revId
 decl_stmt|;
@@ -1232,26 +1247,49 @@ else|:
 literal|null
 expr_stmt|;
 block|}
-DECL|method|setRevId (@ullable AnyObjectId revId)
+annotation|@
+name|Nullable
+DECL|method|getCommitId ()
+specifier|public
+name|ObjectId
+name|getCommitId
+parameter_list|()
+block|{
+return|return
+name|revId
+operator|!=
+literal|null
+condition|?
+name|ObjectId
+operator|.
+name|fromString
+argument_list|(
+name|revId
+argument_list|)
+else|:
+literal|null
+return|;
+block|}
+DECL|method|setCommitId (@ullable AnyObjectId commitId)
 specifier|public
 name|void
-name|setRevId
+name|setCommitId
 parameter_list|(
 annotation|@
 name|Nullable
 name|AnyObjectId
-name|revId
+name|commitId
 parameter_list|)
 block|{
 name|this
 operator|.
 name|revId
 operator|=
-name|revId
+name|commitId
 operator|!=
 literal|null
 condition|?
-name|revId
+name|commitId
 operator|.
 name|name
 argument_list|()

@@ -112,7 +112,7 @@ name|server
 operator|.
 name|CommentsUtil
 operator|.
-name|setCommentRevId
+name|setCommentCommitId
 import|;
 end_import
 
@@ -6487,7 +6487,7 @@ operator|.
 name|message
 expr_stmt|;
 block|}
-name|setCommentRevId
+name|setCommentCommitId
 argument_list|(
 name|e
 argument_list|,
@@ -6932,7 +6932,7 @@ name|in
 operator|.
 name|tag
 expr_stmt|;
-name|setCommentRevId
+name|setCommentCommitId
 argument_list|(
 name|robotComment
 argument_list|,

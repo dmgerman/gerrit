@@ -838,6 +838,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|PersonIdent
 import|;
 end_import
@@ -1961,7 +1975,7 @@ return|return
 name|label
 return|;
 block|}
-DECL|method|newComment ( PatchSet.Id psId, String filename, String UUID, CommentRange range, int line, IdentifiedUser commenter, String parentUUID, Timestamp t, String message, short side, String commitSHA1, boolean unresolved)
+DECL|method|newComment ( PatchSet.Id psId, String filename, String UUID, CommentRange range, int line, IdentifiedUser commenter, String parentUUID, Timestamp t, String message, short side, ObjectId commitId, boolean unresolved)
 specifier|protected
 name|Comment
 name|newComment
@@ -1998,8 +2012,8 @@ parameter_list|,
 name|short
 name|side
 parameter_list|,
-name|String
-name|commitSHA1
+name|ObjectId
+name|commitId
 parameter_list|,
 name|boolean
 name|unresolved
@@ -2056,9 +2070,10 @@ name|parentUUID
 expr_stmt|;
 name|c
 operator|.
-name|revId
-operator|=
-name|commitSHA1
+name|setCommitId
+argument_list|(
+name|commitId
+argument_list|)
 expr_stmt|;
 name|c
 operator|.

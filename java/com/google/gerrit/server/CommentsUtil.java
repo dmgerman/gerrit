@@ -2248,11 +2248,11 @@ name|result
 argument_list|)
 return|;
 block|}
-DECL|method|setCommentRevId (Comment c, PatchListCache cache, Change change, PatchSet ps)
+DECL|method|setCommentCommitId (Comment c, PatchListCache cache, Change change, PatchSet ps)
 specifier|public
 specifier|static
 name|void
-name|setCommentRevId
+name|setCommentCommitId
 parameter_list|(
 name|Comment
 name|c
@@ -2285,7 +2285,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-literal|"cannot set RevId for patch set %s on comment %s"
+literal|"cannot set commit ID for patch set %s on comment %s"
 argument_list|,
 name|ps
 operator|.
@@ -2299,7 +2299,8 @@ if|if
 condition|(
 name|c
 operator|.
-name|revId
+name|getCommitId
+argument_list|()
 operator|==
 literal|null
 condition|)
@@ -2331,11 +2332,7 @@ condition|)
 block|{
 name|c
 operator|.
-name|revId
-operator|=
-name|ObjectId
-operator|.
-name|toString
+name|setCommitId
 argument_list|(
 name|cache
 operator|.
@@ -2357,11 +2354,7 @@ else|else
 block|{
 name|c
 operator|.
-name|revId
-operator|=
-name|ObjectId
-operator|.
-name|toString
+name|setCommitId
 argument_list|(
 name|cache
 operator|.
@@ -2381,8 +2374,12 @@ else|else
 block|{
 name|c
 operator|.
-name|revId
-operator|=
+name|setCommitId
+argument_list|(
+name|ObjectId
+operator|.
+name|fromString
+argument_list|(
 name|ps
 operator|.
 name|getRevision
@@ -2390,6 +2387,8 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 block|}

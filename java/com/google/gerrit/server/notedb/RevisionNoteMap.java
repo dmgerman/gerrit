@@ -130,22 +130,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -185,6 +169,20 @@ operator|.
 name|errors
 operator|.
 name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -254,7 +252,7 @@ DECL|field|revisionNotes
 specifier|final
 name|ImmutableMap
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|T
 argument_list|>
@@ -297,7 +295,7 @@ name|IOException
 block|{
 name|Map
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|ChangeRevisionNote
 argument_list|>
@@ -347,14 +345,10 @@ name|result
 operator|.
 name|put
 argument_list|(
-operator|new
-name|RevId
-argument_list|(
 name|note
 operator|.
-name|name
+name|copy
 argument_list|()
-argument_list|)
 argument_list|,
 name|rn
 argument_list|)
@@ -400,7 +394,7 @@ name|IOException
 block|{
 name|Map
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|RobotCommentsRevisionNote
 argument_list|>
@@ -444,14 +438,10 @@ name|result
 operator|.
 name|put
 argument_list|(
-operator|new
-name|RevId
-argument_list|(
 name|note
 operator|.
-name|name
+name|copy
 argument_list|()
-argument_list|)
 argument_list|,
 name|rn
 argument_list|)
@@ -509,7 +499,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|RevisionNoteMap (NoteMap noteMap, ImmutableMap<RevId, T> revisionNotes)
+DECL|method|RevisionNoteMap (NoteMap noteMap, ImmutableMap<ObjectId, T> revisionNotes)
 specifier|private
 name|RevisionNoteMap
 parameter_list|(
@@ -518,7 +508,7 @@ name|noteMap
 parameter_list|,
 name|ImmutableMap
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|T
 argument_list|>

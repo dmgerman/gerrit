@@ -1470,7 +1470,7 @@ specifier|private
 specifier|final
 name|ListMultimap
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|Comment
 argument_list|>
@@ -4754,7 +4754,7 @@ argument_list|)
 expr_stmt|;
 name|Map
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|ChangeRevisionNote
 argument_list|>
@@ -4770,7 +4770,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|ChangeRevisionNote
 argument_list|>
@@ -4828,10 +4828,18 @@ name|rns
 operator|.
 name|get
 argument_list|(
+name|ObjectId
+operator|.
+name|fromString
+argument_list|(
 name|ps
 operator|.
 name|getRevision
 argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

@@ -1397,7 +1397,7 @@ name|tag
 expr_stmt|;
 name|c
 operator|.
-name|setRevId
+name|setCommitId
 argument_list|(
 name|commitId
 argument_list|)

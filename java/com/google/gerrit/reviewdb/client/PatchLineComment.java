@@ -419,14 +419,10 @@ name|plc
 operator|.
 name|setCommitId
 argument_list|(
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
 name|c
 operator|.
-name|revId
-argument_list|)
+name|getCommitId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|plc
@@ -1336,7 +1332,7 @@ argument_list|)
 decl_stmt|;
 name|c
 operator|.
-name|setRevId
+name|setCommitId
 argument_list|(
 name|commitId
 argument_list|)
