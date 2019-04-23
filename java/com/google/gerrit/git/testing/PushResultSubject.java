@@ -92,9 +92,9 @@ name|common
 operator|.
 name|truth
 operator|.
-name|Truth
+name|Fact
 operator|.
-name|assertAbout
+name|fact
 import|;
 end_import
 
@@ -110,7 +110,27 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assertWithMessage
+name|assertAbout
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|testing
+operator|.
+name|PushResultSubject
+operator|.
+name|RemoteRefUpdateSubject
+operator|.
+name|refs
 import|;
 end_import
 
@@ -246,20 +266,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|Truth
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|common
@@ -358,14 +364,12 @@ name|void
 name|hasNoMessages
 parameter_list|()
 block|{
+name|isNotNull
+argument_list|()
+expr_stmt|;
 name|check
 argument_list|(
 literal|"hasNoMessages()"
-argument_list|)
-operator|.
-name|withMessage
-argument_list|(
-literal|"expected no messages"
 argument_list|)
 operator|.
 name|that
@@ -588,6 +592,9 @@ argument_list|>
 name|expected
 parameter_list|)
 block|{
+name|isNotNull
+argument_list|()
+expr_stmt|;
 name|ImmutableMap
 argument_list|<
 name|String
@@ -621,22 +628,18 @@ name|RuntimeException
 name|e
 parameter_list|)
 block|{
-name|Truth
-operator|.
-name|assert_
-argument_list|()
-operator|.
-name|fail
+name|failWithActual
 argument_list|(
-literal|"failed to parse \"Processing changes\" line from messages: %s\n%s"
-argument_list|,
-name|messages
+name|fact
+argument_list|(
+literal|"failed to parse \"Processing changes\" line from messages, reason:"
 argument_list|,
 name|Throwables
 operator|.
 name|getStackTraceAsString
 argument_list|(
 name|e
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -850,26 +853,21 @@ name|String
 name|refName
 parameter_list|)
 block|{
+name|isNotNull
+argument_list|()
+expr_stmt|;
 return|return
-name|assertAbout
+name|check
 argument_list|(
-parameter_list|(
-name|FailureMetadata
-name|m
-parameter_list|,
-name|RemoteRefUpdate
-name|a
-parameter_list|)
-lambda|->
-operator|new
-name|RemoteRefUpdateSubject
-argument_list|(
+literal|"getRemoteUpdate(%s)"
+argument_list|,
 name|refName
-argument_list|,
-name|m
-argument_list|,
-name|a
 argument_list|)
+operator|.
+name|about
+argument_list|(
+name|refs
+argument_list|()
 argument_list|)
 operator|.
 name|that
@@ -893,14 +891,12 @@ name|String
 name|refName
 parameter_list|)
 block|{
+name|isNotNull
+argument_list|()
+expr_stmt|;
 name|check
 argument_list|(
 literal|"setOfRefs()"
-argument_list|)
-operator|.
-name|withMessage
-argument_list|(
-literal|"set of refs"
 argument_list|)
 operator|.
 name|about
@@ -955,19 +951,10 @@ argument_list|,
 name|RemoteRefUpdate
 argument_list|>
 block|{
-DECL|field|refName
-specifier|private
-specifier|final
-name|String
-name|refName
-decl_stmt|;
-DECL|method|RemoteRefUpdateSubject ( String refName, FailureMetadata metadata, RemoteRefUpdate actual)
+DECL|method|RemoteRefUpdateSubject (FailureMetadata metadata, RemoteRefUpdate actual)
 specifier|private
 name|RemoteRefUpdateSubject
 parameter_list|(
-name|String
-name|refName
-parameter_list|,
 name|FailureMetadata
 name|metadata
 parameter_list|,
@@ -982,22 +969,23 @@ argument_list|,
 name|actual
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|refName
-operator|=
-name|refName
-expr_stmt|;
-name|named
-argument_list|(
-literal|"ref update for %s"
+block|}
+DECL|method|refs ()
+specifier|static
+name|Factory
+argument_list|<
+name|RemoteRefUpdateSubject
 argument_list|,
-name|refName
-argument_list|)
-operator|.
-name|isNotNull
-argument_list|()
-expr_stmt|;
+name|RemoteRefUpdate
+argument_list|>
+name|refs
+parameter_list|()
+block|{
+return|return
+name|RemoteRefUpdateSubject
+operator|::
+operator|new
+return|;
 block|}
 DECL|method|hasStatus (RemoteRefUpdate.Status status)
 specifier|public
@@ -1010,17 +998,23 @@ name|Status
 name|status
 parameter_list|)
 block|{
+name|isNotNull
+argument_list|()
+expr_stmt|;
 name|RemoteRefUpdate
 name|u
 init|=
 name|actual
 argument_list|()
 decl_stmt|;
-name|assertWithMessage
+name|check
 argument_list|(
-literal|"status of ref update for %s%s"
-argument_list|,
-name|refName
+literal|"getStatus()"
+argument_list|)
+operator|.
+name|withMessage
+argument_list|(
+literal|"status message: %s"
 argument_list|,
 name|u
 operator|.
@@ -1036,7 +1030,7 @@ operator|.
 name|getMessage
 argument_list|()
 else|:
-literal|""
+literal|"<emtpy>"
 argument_list|)
 operator|.
 name|that
@@ -1059,11 +1053,12 @@ name|void
 name|hasNoMessage
 parameter_list|()
 block|{
-name|assertWithMessage
+name|isNotNull
+argument_list|()
+expr_stmt|;
+name|check
 argument_list|(
-literal|"message of ref update for %s"
-argument_list|,
-name|refName
+literal|"getMessage()"
 argument_list|)
 operator|.
 name|that
@@ -1088,11 +1083,12 @@ name|String
 name|expected
 parameter_list|)
 block|{
-name|assertWithMessage
+name|isNotNull
+argument_list|()
+expr_stmt|;
+name|check
 argument_list|(
-literal|"message of ref update for %s"
-argument_list|,
-name|refName
+literal|"getMessage()"
 argument_list|)
 operator|.
 name|that
@@ -1116,6 +1112,9 @@ name|void
 name|isOk
 parameter_list|()
 block|{
+name|isNotNull
+argument_list|()
+expr_stmt|;
 name|hasStatus
 argument_list|(
 name|RemoteRefUpdate
@@ -1135,6 +1134,9 @@ name|String
 name|expectedMessage
 parameter_list|)
 block|{
+name|isNotNull
+argument_list|()
+expr_stmt|;
 name|hasStatus
 argument_list|(
 name|RemoteRefUpdate
