@@ -200,22 +200,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|config
@@ -317,6 +301,20 @@ operator|.
 name|errors
 operator|.
 name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -626,11 +624,12 @@ argument_list|(
 name|UTF_8
 argument_list|)
 decl_stmt|;
-name|RevId
-name|revId
+name|ObjectId
+name|commitId
 init|=
-operator|new
-name|RevId
+name|ObjectId
+operator|.
+name|fromString
 argument_list|(
 name|parseStringField
 argument_list|(
@@ -822,7 +821,7 @@ name|fileName
 argument_list|,
 name|psId
 argument_list|,
-name|revId
+name|commitId
 argument_list|,
 name|isForBase
 argument_list|,
@@ -875,7 +874,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|parseComment ( byte[] note, MutableInteger curr, String currentFileName, PatchSet.Id psId, RevId revId, boolean isForBase, Integer parentNumber)
+DECL|method|parseComment ( byte[] note, MutableInteger curr, String currentFileName, PatchSet.Id psId, ObjectId commitId, boolean isForBase, Integer parentNumber)
 specifier|private
 name|Comment
 name|parseComment
@@ -895,8 +894,8 @@ operator|.
 name|Id
 name|psId
 parameter_list|,
-name|RevId
-name|revId
+name|ObjectId
+name|commitId
 parameter_list|,
 name|boolean
 name|isForBase
@@ -1400,7 +1399,7 @@ name|c
 operator|.
 name|setRevId
 argument_list|(
-name|revId
+name|commitId
 argument_list|)
 expr_stmt|;
 if|if

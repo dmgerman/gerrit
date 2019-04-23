@@ -4327,8 +4327,9 @@ name|c1
 operator|.
 name|setRevId
 argument_list|(
-operator|new
-name|RevId
+name|ObjectId
+operator|.
+name|fromString
 argument_list|(
 literal|"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 argument_list|)
@@ -4393,8 +4394,9 @@ name|c2
 operator|.
 name|setRevId
 argument_list|(
-operator|new
-name|RevId
+name|ObjectId
+operator|.
+name|fromString
 argument_list|(
 literal|"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
 argument_list|)

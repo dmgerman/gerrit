@@ -98,6 +98,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -123,6 +137,20 @@ operator|.
 name|util
 operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|AnyObjectId
 import|;
 end_import
 
@@ -890,7 +918,9 @@ specifier|public
 name|String
 name|tag
 decl_stmt|;
-comment|// Hex commit SHA1 of the commit of the patchset to which this comment applies.
+comment|// Hex commit SHA1 of the commit of the patchset to which this comment applies. Other classes call
+comment|// this "commitId", but this class uses the old ReviewDb term "revId", and this field name is
+comment|// serialized into JSON in NoteDb, so it can't easily be changed.
 DECL|field|revId
 specifier|public
 name|String
@@ -1202,12 +1232,14 @@ else|:
 literal|null
 expr_stmt|;
 block|}
-DECL|method|setRevId (RevId revId)
+DECL|method|setRevId (@ullable AnyObjectId revId)
 specifier|public
 name|void
 name|setRevId
 parameter_list|(
-name|RevId
+annotation|@
+name|Nullable
+name|AnyObjectId
 name|revId
 parameter_list|)
 block|{
@@ -1221,7 +1253,7 @@ literal|null
 condition|?
 name|revId
 operator|.
-name|get
+name|name
 argument_list|()
 else|:
 literal|null

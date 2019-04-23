@@ -118,6 +118,34 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|AnyObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_comment
 comment|/**  * A comment left by a user on a specific line of a {@link Patch}.  *  *<p>New APIs should not expose this class.  *  * @see Comment  */
 end_comment
@@ -389,10 +417,11 @@ argument_list|)
 expr_stmt|;
 name|plc
 operator|.
-name|setRevId
+name|setCommitId
 argument_list|(
-operator|new
-name|RevId
+name|ObjectId
+operator|.
+name|fromString
 argument_list|(
 name|c
 operator|.
@@ -592,14 +621,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/** The RevId for the commit to which this comment is referring. */
+comment|/** The ID of the commit to which this comment is referring. */
 end_comment
 
 begin_decl_stmt
-DECL|field|revId
+DECL|field|commitId
 specifier|protected
-name|RevId
-name|revId
+name|ObjectId
+name|commitId
 decl_stmt|;
 end_decl_stmt
 
@@ -748,11 +777,11 @@ name|o
 operator|.
 name|parentUuid
 expr_stmt|;
-name|revId
+name|commitId
 operator|=
 name|o
 operator|.
-name|revId
+name|commitId
 expr_stmt|;
 if|if
 condition|(
@@ -1157,31 +1186,36 @@ block|}
 end_function
 
 begin_function
-DECL|method|setRevId (RevId rev)
+DECL|method|setCommitId (AnyObjectId commitId)
 specifier|public
 name|void
-name|setRevId
+name|setCommitId
 parameter_list|(
-name|RevId
-name|rev
+name|AnyObjectId
+name|commitId
 parameter_list|)
 block|{
-name|revId
+name|this
+operator|.
+name|commitId
 operator|=
-name|rev
+name|commitId
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 block|}
 end_function
 
 begin_function
-DECL|method|getRevId ()
+DECL|method|getCommitId ()
 specifier|public
-name|RevId
-name|getRevId
+name|ObjectId
+name|getCommitId
 parameter_list|()
 block|{
 return|return
-name|revId
+name|commitId
 return|;
 block|}
 end_function
@@ -1304,7 +1338,7 @@ name|c
 operator|.
 name|setRevId
 argument_list|(
-name|revId
+name|commitId
 argument_list|)
 expr_stmt|;
 name|c
@@ -1499,11 +1533,11 @@ name|Objects
 operator|.
 name|equals
 argument_list|(
-name|revId
+name|commitId
 argument_list|,
 name|c
 operator|.
-name|getRevId
+name|getCommitId
 argument_list|()
 argument_list|)
 operator|&&
@@ -1815,13 +1849,13 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|revId
+name|commitId
 operator|!=
 literal|null
 condition|?
-name|revId
+name|commitId
 operator|.
-name|get
+name|name
 argument_list|()
 else|:
 literal|""
