@@ -85,6 +85,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -284,20 +300,20 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|assertThat
-argument_list|(
-name|actual
-operator|.
-name|revision
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"revision of "
 operator|+
 name|actual
 operator|.
 name|ref
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|actual
+operator|.
+name|revision
 argument_list|)
 operator|.
 name|isEqualTo
@@ -308,7 +324,16 @@ name|revision
 argument_list|)
 expr_stmt|;
 block|}
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"can delete "
+operator|+
+name|actual
+operator|.
+name|ref
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|toBoolean
 argument_list|(
@@ -316,15 +341,6 @@ name|actual
 operator|.
 name|canDelete
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"can delete "
-operator|+
-name|actual
-operator|.
-name|ref
 argument_list|)
 operator|.
 name|isEqualTo

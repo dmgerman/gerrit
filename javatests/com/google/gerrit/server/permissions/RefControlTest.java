@@ -88,6 +88,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -1140,7 +1156,12 @@ argument_list|,
 name|ADMIN
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"not owner"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|uBlah
 operator|.
@@ -1148,25 +1169,20 @@ name|isOwner
 argument_list|()
 argument_list|)
 operator|.
-name|named
-argument_list|(
-literal|"not owner"
-argument_list|)
-operator|.
 name|isFalse
 argument_list|()
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"is owner"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|uAdmin
 operator|.
 name|isOwner
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"is owner"
 argument_list|)
 operator|.
 name|isTrue
@@ -1185,7 +1201,14 @@ name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"OWN "
+operator|+
+name|ref
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
@@ -1196,13 +1219,6 @@ argument_list|)
 operator|.
 name|isOwner
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"OWN "
-operator|+
-name|ref
 argument_list|)
 operator|.
 name|isTrue
@@ -1218,17 +1234,17 @@ name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"not owner"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
 name|isOwner
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"not owner"
 argument_list|)
 operator|.
 name|isFalse
@@ -1247,7 +1263,14 @@ name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"NOT OWN "
+operator|+
+name|ref
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
@@ -1258,13 +1281,6 @@ argument_list|)
 operator|.
 name|isOwner
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"NOT OWN "
-operator|+
-name|ref
 argument_list|)
 operator|.
 name|isFalse
@@ -1295,14 +1311,14 @@ operator|.
 name|ACCESS
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|access
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"can access"
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|access
 argument_list|)
 operator|.
 name|isTrue
@@ -1333,14 +1349,14 @@ operator|.
 name|ACCESS
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|access
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"cannot access"
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|access
 argument_list|)
 operator|.
 name|isFalse
@@ -1359,7 +1375,14 @@ name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"can read "
+operator|+
+name|ref
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
@@ -1370,13 +1393,6 @@ argument_list|)
 operator|.
 name|isVisible
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"can read "
-operator|+
-name|ref
 argument_list|)
 operator|.
 name|isTrue
@@ -1395,7 +1411,14 @@ name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"cannot read "
+operator|+
+name|ref
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
@@ -1406,13 +1429,6 @@ argument_list|)
 operator|.
 name|isVisible
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"cannot read "
-operator|+
-name|ref
 argument_list|)
 operator|.
 name|isFalse
@@ -1431,7 +1447,14 @@ name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"can submit "
+operator|+
+name|ref
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
@@ -1444,13 +1467,6 @@ name|canSubmit
 argument_list|(
 literal|false
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"can submit "
-operator|+
-name|ref
 argument_list|)
 operator|.
 name|isTrue
@@ -1469,7 +1485,14 @@ name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"can submit "
+operator|+
+name|ref
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
@@ -1482,13 +1505,6 @@ name|canSubmit
 argument_list|(
 literal|false
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"can submit "
-operator|+
-name|ref
 argument_list|)
 operator|.
 name|isFalse
@@ -1504,17 +1520,17 @@ name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"can upload"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
 name|canPushToAtLeastOneRef
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"can upload"
 argument_list|)
 operator|.
 name|isTrue
@@ -1553,16 +1569,16 @@ operator|.
 name|CREATE_CHANGE
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|create
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"can create change "
 operator|+
 name|ref
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|create
 argument_list|)
 operator|.
 name|isTrue
@@ -1578,17 +1594,17 @@ name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"cannot upload"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
 name|canPushToAtLeastOneRef
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"cannot upload"
 argument_list|)
 operator|.
 name|isFalse
@@ -1627,16 +1643,16 @@ operator|.
 name|CREATE_CHANGE
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|create
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"cannot create change "
 operator|+
 name|ref
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|create
 argument_list|)
 operator|.
 name|isFalse
@@ -1675,16 +1691,16 @@ operator|.
 name|UPDATE
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|update
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"can update "
 operator|+
 name|ref
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|update
 argument_list|)
 operator|.
 name|isTrue
@@ -1723,16 +1739,16 @@ operator|.
 name|UPDATE
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|update
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"cannot update "
 operator|+
 name|ref
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|update
 argument_list|)
 operator|.
 name|isFalse
@@ -1771,16 +1787,16 @@ operator|.
 name|FORCE_UPDATE
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|update
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"can force push "
 operator|+
 name|ref
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|update
 argument_list|)
 operator|.
 name|isTrue
@@ -1819,16 +1835,16 @@ operator|.
 name|FORCE_UPDATE
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|update
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"cannot force push "
 operator|+
 name|ref
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|update
 argument_list|)
 operator|.
 name|isFalse
@@ -1847,7 +1863,14 @@ name|PermissionRange
 name|range
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"can vote "
+operator|+
+name|score
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|range
 operator|.
@@ -1855,13 +1878,6 @@ name|contains
 argument_list|(
 name|score
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"can vote "
-operator|+
-name|score
 argument_list|)
 operator|.
 name|isTrue
@@ -1880,7 +1896,14 @@ name|PermissionRange
 name|range
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"cannot vote "
+operator|+
+name|score
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|range
 operator|.
@@ -1888,13 +1911,6 @@ name|contains
 argument_list|(
 name|score
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"cannot vote "
-operator|+
-name|score
 argument_list|)
 operator|.
 name|isFalse
@@ -3136,7 +3152,12 @@ argument_list|,
 name|ADMIN
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"push is allowed"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|a
 operator|.
@@ -3151,15 +3172,15 @@ name|PUSH
 argument_list|)
 argument_list|)
 operator|.
-name|named
-argument_list|(
-literal|"push is allowed"
-argument_list|)
-operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"push is not allowed"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
@@ -3172,11 +3193,6 @@ name|canPerform
 argument_list|(
 name|PUSH
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"push is not allowed"
 argument_list|)
 operator|.
 name|isFalse
@@ -4319,7 +4335,12 @@ argument_list|(
 name|local
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"submit is allowed"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
@@ -4332,11 +4353,6 @@ name|canPerform
 argument_list|(
 name|SUBMIT
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"submit is allowed"
 argument_list|)
 operator|.
 name|isTrue
@@ -5275,7 +5291,12 @@ argument_list|,
 name|DEVS
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"u can edit topic name"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
@@ -5286,11 +5307,6 @@ argument_list|)
 operator|.
 name|canForceEditTopicName
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"u can edit topic name"
 argument_list|)
 operator|.
 name|isTrue
@@ -5342,7 +5358,12 @@ argument_list|,
 name|REGISTERED_USERS
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"u can't edit topic name"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|u
 operator|.
@@ -5353,11 +5374,6 @@ argument_list|)
 operator|.
 name|canForceEditTopicName
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"u can't edit topic name"
 argument_list|)
 operator|.
 name|isFalse

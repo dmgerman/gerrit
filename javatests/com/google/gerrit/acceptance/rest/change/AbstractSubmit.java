@@ -110,6 +110,22 @@ name|common
 operator|.
 name|truth
 operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
 name|Truth8
 operator|.
 name|assertThat
@@ -8355,7 +8371,12 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"submit bit on ChangeInfo"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|get
 argument_list|(
@@ -8365,11 +8386,6 @@ name|SUBMITTABLE
 argument_list|)
 operator|.
 name|submittable
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"submit bit on ChangeInfo"
 argument_list|)
 operator|.
 name|isTrue
@@ -8395,7 +8411,12 @@ argument_list|(
 name|rsrc
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"visible bit on submit action"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|desc
 operator|.
@@ -8403,25 +8424,20 @@ name|isVisible
 argument_list|()
 argument_list|)
 operator|.
-name|named
-argument_list|(
-literal|"visible bit on submit action"
-argument_list|)
-operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"enabled bit on submit action"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|desc
 operator|.
 name|isEnabled
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"enabled bit on submit action"
 argument_list|)
 operator|.
 name|isTrue
@@ -8598,14 +8614,14 @@ argument_list|(
 name|refName
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|ref
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 name|refName
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|ref
 argument_list|)
 operator|.
 name|isNotNull

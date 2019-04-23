@@ -80,7 +80,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assertThat
+name|assertWithMessage
 import|;
 end_import
 
@@ -253,16 +253,16 @@ argument_list|(
 name|update
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"signedOffBy"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|result
 operator|.
 name|signedOffBy
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"signedOffBy"
 argument_list|)
 operator|.
 name|isEqualTo

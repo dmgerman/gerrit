@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -587,15 +603,7 @@ control|)
 block|{
 try|try
 block|{
-name|assertThat
-argument_list|(
-name|s
-operator|.
-name|next
-argument_list|()
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"i="
 operator|+
@@ -604,6 +612,14 @@ operator|+
 literal|" for "
 operator|+
 name|name
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|s
+operator|.
+name|next
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -635,18 +651,18 @@ argument_list|)
 throw|;
 block|}
 block|}
-name|assertThat
-argument_list|(
-name|s
-operator|.
-name|acquireCount
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"acquireCount for "
 operator|+
 name|name
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|s
+operator|.
+name|acquireCount
 argument_list|)
 operator|.
 name|isEqualTo

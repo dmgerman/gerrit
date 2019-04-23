@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -3036,14 +3052,14 @@ argument_list|(
 name|refName
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|ref
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 name|refName
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|ref
 argument_list|)
 operator|.
 name|isNotNull

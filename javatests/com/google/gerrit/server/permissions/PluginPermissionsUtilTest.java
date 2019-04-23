@@ -78,7 +78,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assertThat
+name|assertWithMessage
 import|;
 end_import
 
@@ -167,19 +167,19 @@ range|:
 name|validPluginPermissions
 control|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"valid plugin permission: %s"
+argument_list|,
+name|permission
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|isValidPluginPermission
 argument_list|(
 name|permission
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"valid plugin permission: %s"
-argument_list|,
-name|permission
 argument_list|)
 operator|.
 name|isTrue
@@ -226,19 +226,19 @@ range|:
 name|invalidPluginPermissions
 control|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"invalid plugin permission: %s"
+argument_list|,
+name|permission
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|isValidPluginPermission
 argument_list|(
 name|permission
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"invalid plugin permission: %s"
-argument_list|,
-name|permission
 argument_list|)
 operator|.
 name|isFalse
