@@ -813,7 +813,7 @@ block|{
 return|return
 name|patchKey
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 return|;
 block|}
@@ -1280,7 +1280,7 @@ argument_list|()
 argument_list|,
 name|patchKey
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 operator|.
 name|get
