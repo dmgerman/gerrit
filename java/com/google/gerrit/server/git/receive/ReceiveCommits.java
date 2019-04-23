@@ -1128,7 +1128,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -5379,9 +5379,7 @@ expr_stmt|;
 block|}
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -5471,9 +5469,9 @@ name|branches
 operator|.
 name|add
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -8717,14 +8715,12 @@ condition|)
 block|{
 return|return;
 block|}
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -8808,9 +8804,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -8911,9 +8907,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -9290,9 +9286,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -9639,9 +9635,7 @@ name|boolean
 name|defaultPublishComments
 decl_stmt|;
 DECL|field|dest
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 decl_stmt|;
 DECL|field|perm
@@ -11388,9 +11382,9 @@ name|magicBranch
 operator|.
 name|dest
 operator|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -12220,7 +12214,7 @@ comment|// commits and the target branch head.
 end_comment
 
 begin_function
-DECL|method|validateConnected (ReceiveCommand cmd, Branch.NameKey dest, RevCommit tip)
+DECL|method|validateConnected (ReceiveCommand cmd, BranchNameKey dest, RevCommit tip)
 specifier|private
 name|boolean
 name|validateConnected
@@ -12228,9 +12222,7 @@ parameter_list|(
 name|ReceiveCommand
 name|cmd
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 parameter_list|,
 name|RevCommit
@@ -12503,14 +12495,12 @@ block|}
 end_function
 
 begin_function
-DECL|method|readBranchTip (Branch.NameKey branch)
+DECL|method|readBranchTip (BranchNameKey branch)
 specifier|private
 name|RevCommit
 name|readBranchTip
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 throws|throws
@@ -19192,14 +19182,12 @@ comment|/**    * Validates the commits that a regular push brings in.    *    *<
 end_comment
 
 begin_function
-DECL|method|validateRegularPushCommits (Branch.NameKey branch, ReceiveCommand cmd)
+DECL|method|validateRegularPushCommits (BranchNameKey branch, ReceiveCommand cmd)
 specifier|private
 name|void
 name|validateRegularPushCommits
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|ReceiveCommand
@@ -19735,14 +19723,12 @@ name|getNewId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -20478,7 +20464,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|openChangesByKeyByBranch (Branch.NameKey branch)
+DECL|method|openChangesByKeyByBranch (BranchNameKey branch)
 specifier|private
 name|Map
 argument_list|<
@@ -20490,9 +20476,7 @@ name|ChangeNotes
 argument_list|>
 name|openChangesByKeyByBranch
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{

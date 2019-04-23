@@ -162,7 +162,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -500,9 +500,7 @@ DECL|method|changesByBranch ()
 specifier|public
 name|ListMultimap
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ChangeData
 argument_list|>
@@ -511,9 +509,7 @@ parameter_list|()
 block|{
 name|ListMultimap
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ChangeData
 argument_list|>

@@ -226,7 +226,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -860,9 +860,7 @@ block|}
 DECL|method|getDest ()
 specifier|protected
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|getDest
 parameter_list|()
 block|{

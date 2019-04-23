@@ -380,7 +380,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1388,9 +1388,7 @@ expr_stmt|;
 comment|// get a preview before submitting:
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ObjectId
 argument_list|>
@@ -1538,9 +1536,9 @@ argument_list|)
 operator|.
 name|containsKey
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p1
 argument_list|,
@@ -1562,9 +1560,9 @@ argument_list|)
 operator|.
 name|containsKey
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p2
 argument_list|,
@@ -1586,9 +1584,9 @@ argument_list|)
 operator|.
 name|containsKey
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p3
 argument_list|,
@@ -1654,9 +1652,9 @@ name|preview
 operator|.
 name|get
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p1
 argument_list|,
@@ -4194,14 +4192,12 @@ argument_list|)
 decl_stmt|;
 comment|// Move the first change to a destination branch that is non-visible to user so that user cannot
 comment|// this change anymore.
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|secretBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,

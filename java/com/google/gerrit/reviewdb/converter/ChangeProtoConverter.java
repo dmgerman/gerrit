@@ -108,7 +108,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -250,9 +250,7 @@ name|Entities
 operator|.
 name|Branch_NameKey
 argument_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branchNameConverter
 init|=
@@ -662,9 +660,7 @@ argument_list|)
 else|:
 literal|null
 decl_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destination
 init|=
 name|proto

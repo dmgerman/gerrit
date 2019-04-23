@@ -206,7 +206,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -883,17 +883,13 @@ block|{
 DECL|field|branch
 specifier|private
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 decl_stmt|;
-DECL|method|GitlinkOp (Branch.NameKey branch)
+DECL|method|GitlinkOp (BranchNameKey branch)
 name|GitlinkOp
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{
@@ -1050,16 +1046,14 @@ operator|=
 name|projectCache
 expr_stmt|;
 block|}
-DECL|method|create (Set<Branch.NameKey> updatedBranches, MergeOpRepoManager orm)
+DECL|method|create (Set<BranchNameKey> updatedBranches, MergeOpRepoManager orm)
 specifier|public
 name|SubmoduleOp
 name|create
 parameter_list|(
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|updatedBranches
 parameter_list|,
@@ -1146,9 +1140,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|GitModules
 argument_list|>
@@ -1160,9 +1152,7 @@ specifier|private
 specifier|final
 name|ImmutableSet
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|updatedBranches
 decl_stmt|;
@@ -1172,9 +1162,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|CodeReviewCommit
 argument_list|>
@@ -1186,9 +1174,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|affectedBranches
 decl_stmt|;
@@ -1198,9 +1184,7 @@ specifier|private
 specifier|final
 name|ImmutableSet
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|sortedBranches
 decl_stmt|;
@@ -1210,9 +1194,7 @@ specifier|private
 specifier|final
 name|SetMultimap
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|SubmoduleSubscription
 argument_list|>
@@ -1228,13 +1210,11 @@ name|Project
 operator|.
 name|NameKey
 argument_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branchesByProject
 decl_stmt|;
-DECL|method|SubmoduleOp ( GitModules.Factory gitmodulesFactory, PersonIdent myIdent, Config cfg, ProjectCache projectCache, Set<Branch.NameKey> updatedBranches, MergeOpRepoManager orm)
+DECL|method|SubmoduleOp ( GitModules.Factory gitmodulesFactory, PersonIdent myIdent, Config cfg, ProjectCache projectCache, Set<BranchNameKey> updatedBranches, MergeOpRepoManager orm)
 specifier|private
 name|SubmoduleOp
 parameter_list|(
@@ -1254,9 +1234,7 @@ name|projectCache
 parameter_list|,
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|updatedBranches
 parameter_list|,
@@ -1451,9 +1429,7 @@ DECL|method|calculateSubscriptionMaps ()
 specifier|private
 name|ImmutableSet
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|calculateSubscriptionMaps
 parameter_list|()
@@ -1492,9 +1468,7 @@ argument_list|)
 expr_stmt|;
 name|LinkedHashSet
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|allVisited
 init|=
@@ -1505,9 +1479,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|updatedBranch
 range|:
 name|updatedBranches
@@ -1563,29 +1535,23 @@ name|allVisited
 argument_list|)
 return|;
 block|}
-DECL|method|searchForSuperprojects ( Branch.NameKey current, LinkedHashSet<Branch.NameKey> currentVisited, LinkedHashSet<Branch.NameKey> allVisited)
+DECL|method|searchForSuperprojects ( BranchNameKey current, LinkedHashSet<BranchNameKey> currentVisited, LinkedHashSet<BranchNameKey> allVisited)
 specifier|private
 name|void
 name|searchForSuperprojects
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|current
 parameter_list|,
 name|LinkedHashSet
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|currentVisited
 parameter_list|,
 name|LinkedHashSet
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|allVisited
 parameter_list|)
@@ -1669,9 +1635,7 @@ range|:
 name|subscriptions
 control|)
 block|{
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|superBranch
 init|=
 name|sub
@@ -1919,19 +1883,15 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|getDestinationBranches (Branch.NameKey src, SubscribeSection s)
+DECL|method|getDestinationBranches (BranchNameKey src, SubscribeSection s)
 specifier|private
 name|Collection
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|getDestinationBranches
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|src
 parameter_list|,
 name|SubscribeSection
@@ -1942,9 +1902,7 @@ name|IOException
 block|{
 name|Collection
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|ret
 init|=
@@ -2017,9 +1975,9 @@ name|ret
 operator|.
 name|add
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|s
 operator|.
@@ -2072,9 +2030,9 @@ name|ret
 operator|.
 name|add
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|s
 operator|.
@@ -2198,14 +2156,12 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|b
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|s
 operator|.
@@ -2269,7 +2225,7 @@ name|Project
 operator|.
 name|PLUGIN_DELETE_PROJECT
 argument_list|)
-DECL|method|superProjectSubscriptionsForSubmoduleBranch ( Branch.NameKey srcBranch)
+DECL|method|superProjectSubscriptionsForSubmoduleBranch ( BranchNameKey srcBranch)
 specifier|public
 name|Collection
 argument_list|<
@@ -2277,9 +2233,7 @@ name|SubmoduleSubscription
 argument_list|>
 name|superProjectSubscriptionsForSubmoduleBranch
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|srcBranch
 parameter_list|)
 throws|throws
@@ -2350,9 +2304,7 @@ argument_list|)
 expr_stmt|;
 name|Collection
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -2365,9 +2317,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 range|:
 name|branches
@@ -2606,9 +2556,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 range|:
 name|branchesByProject
@@ -2675,14 +2623,12 @@ throw|;
 block|}
 block|}
 comment|/** Create a separate gitlink commit */
-DECL|method|composeGitlinksCommit (Branch.NameKey subscriber)
+DECL|method|composeGitlinksCommit (BranchNameKey subscriber)
 specifier|private
 name|CodeReviewCommit
 name|composeGitlinksCommit
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|subscriber
 parameter_list|)
 throws|throws
@@ -3117,13 +3063,11 @@ argument_list|)
 return|;
 block|}
 comment|/** Amend an existing commit with gitlink updates */
-DECL|method|composeGitlinksCommit (Branch.NameKey subscriber, CodeReviewCommit currentCommit)
+DECL|method|composeGitlinksCommit (BranchNameKey subscriber, CodeReviewCommit currentCommit)
 name|CodeReviewCommit
 name|composeGitlinksCommit
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|subscriber
 parameter_list|,
 name|CodeReviewCommit
@@ -4219,9 +4163,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 range|:
 name|updatedBranches
@@ -4335,9 +4277,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 range|:
 name|branchesByProject
@@ -4422,18 +4362,14 @@ block|}
 DECL|method|getBranchesInOrder ()
 name|ImmutableSet
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|getBranchesInOrder
 parameter_list|()
 block|{
 name|LinkedHashSet
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -4473,13 +4409,11 @@ name|branches
 argument_list|)
 return|;
 block|}
-DECL|method|hasSubscription (Branch.NameKey branch)
+DECL|method|hasSubscription (BranchNameKey branch)
 name|boolean
 name|hasSubscription
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{
@@ -4492,13 +4426,11 @@ name|branch
 argument_list|)
 return|;
 block|}
-DECL|method|addBranchTip (Branch.NameKey branch, CodeReviewCommit tip)
+DECL|method|addBranchTip (BranchNameKey branch, CodeReviewCommit tip)
 name|void
 name|addBranchTip
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|CodeReviewCommit
@@ -4515,16 +4447,14 @@ name|tip
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addOp (BatchUpdate bu, Branch.NameKey branch)
+DECL|method|addOp (BatchUpdate bu, BranchNameKey branch)
 name|void
 name|addOp
 parameter_list|(
 name|BatchUpdate
 name|bu
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{

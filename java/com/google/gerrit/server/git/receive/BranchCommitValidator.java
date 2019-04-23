@@ -126,7 +126,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -483,9 +483,7 @@ decl_stmt|;
 DECL|field|branch
 specifier|private
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 decl_stmt|;
 DECL|field|sshInfo
@@ -498,16 +496,14 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ProjectState projectState, Branch.NameKey branch, IdentifiedUser user)
+DECL|method|create ( ProjectState projectState, BranchNameKey branch, IdentifiedUser user)
 name|BranchCommitValidator
 name|create
 parameter_list|(
 name|ProjectState
 name|projectState
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|IdentifiedUser
@@ -517,7 +513,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|BranchCommitValidator ( CommitValidators.Factory commitValidatorsFactory, PermissionBackend permissionBackend, SshInfo sshInfo, @Assisted ProjectState projectState, @Assisted Branch.NameKey branch, @Assisted IdentifiedUser user)
+DECL|method|BranchCommitValidator ( CommitValidators.Factory commitValidatorsFactory, PermissionBackend permissionBackend, SshInfo sshInfo, @Assisted ProjectState projectState, @Assisted BranchNameKey branch, @Assisted IdentifiedUser user)
 name|BranchCommitValidator
 parameter_list|(
 name|CommitValidators
@@ -538,9 +534,7 @@ name|projectState
 parameter_list|,
 annotation|@
 name|Assisted
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 annotation|@

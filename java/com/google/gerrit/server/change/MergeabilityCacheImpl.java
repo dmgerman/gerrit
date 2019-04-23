@@ -236,7 +236,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1261,7 +1261,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|get ( ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy, Branch.NameKey dest, Repository repo)
+DECL|method|get ( ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy, BranchNameKey dest, Repository repo)
 specifier|public
 name|boolean
 name|get
@@ -1278,9 +1278,7 @@ parameter_list|,
 name|String
 name|mergeStrategy
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 parameter_list|,
 name|Repository

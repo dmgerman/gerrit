@@ -176,7 +176,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -254,14 +254,12 @@ name|void
 name|allValuesConvertedToProto
 parameter_list|()
 block|{
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|nameKey
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -339,14 +337,12 @@ name|void
 name|allValuesConvertedToProtoAndBackAgain
 parameter_list|()
 block|{
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|nameKey
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -358,9 +354,7 @@ argument_list|,
 literal|"branch 14"
 argument_list|)
 decl_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|convertedNameKey
 init|=
 name|branchNameKeyProtoConverter
@@ -487,9 +481,7 @@ parameter_list|()
 block|{
 name|assertThatSerializedClass
 argument_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 operator|.
 name|class
 argument_list|)

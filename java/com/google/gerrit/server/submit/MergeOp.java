@@ -566,7 +566,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1361,9 +1361,7 @@ specifier|private
 specifier|final
 name|ImmutableSetMultimap
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|Change
 operator|.
@@ -1436,9 +1434,7 @@ name|ImmutableSetMultimap
 operator|.
 name|Builder
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|Change
 operator|.
@@ -1544,7 +1540,7 @@ name|keySet
 argument_list|()
 return|;
 block|}
-DECL|method|getChangeIds (Branch.NameKey branch)
+DECL|method|getChangeIds (BranchNameKey branch)
 specifier|public
 name|ImmutableSet
 argument_list|<
@@ -1554,9 +1550,7 @@ name|Id
 argument_list|>
 name|getChangeIds
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{
@@ -3936,9 +3930,7 @@ argument_list|)
 expr_stmt|;
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|BranchBatch
 argument_list|>
@@ -3951,9 +3943,7 @@ argument_list|()
 decl_stmt|;
 name|ListMultimap
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ChangeData
 argument_list|>
@@ -3987,9 +3977,7 @@ throw|;
 block|}
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -4000,9 +3988,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 range|:
 name|branches
@@ -4251,7 +4237,7 @@ return|return
 name|orm
 return|;
 block|}
-DECL|method|getSubmitStrategies ( Map<Branch.NameKey, BranchBatch> toSubmit, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|getSubmitStrategies ( Map<BranchNameKey, BranchBatch> toSubmit, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|private
 name|List
 argument_list|<
@@ -4261,9 +4247,7 @@ name|getSubmitStrategies
 parameter_list|(
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|BranchBatch
 argument_list|>
@@ -4295,9 +4279,7 @@ argument_list|()
 decl_stmt|;
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|allBranches
 init|=
@@ -4342,9 +4324,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 range|:
 name|allBranches
@@ -5009,9 +4989,7 @@ block|}
 name|PatchSet
 name|ps
 decl_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 init|=
 name|chg

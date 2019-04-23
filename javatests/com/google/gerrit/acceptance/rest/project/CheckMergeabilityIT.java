@@ -240,7 +240,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -316,9 +316,7 @@ name|AbstractDaemonTest
 block|{
 DECL|field|branch
 specifier|private
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 decl_stmt|;
 annotation|@
@@ -333,9 +331,9 @@ name|Exception
 block|{
 name|branch
 operator|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,

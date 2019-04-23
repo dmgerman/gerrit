@@ -450,7 +450,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -2586,14 +2586,12 @@ argument_list|)
 return|;
 block|}
 comment|/** All available label types for this branch. */
-DECL|method|getLabelTypes (Branch.NameKey destination)
+DECL|method|getLabelTypes (BranchNameKey destination)
 specifier|public
 name|LabelTypes
 name|getLabelTypes
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destination
 parameter_list|)
 block|{
@@ -2926,7 +2924,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|getSubscribeSections (Branch.NameKey branch)
+DECL|method|getSubscribeSections (BranchNameKey branch)
 specifier|public
 name|Collection
 argument_list|<
@@ -2934,9 +2932,7 @@ name|SubscribeSection
 argument_list|>
 name|getSubscribeSections
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{
@@ -3338,14 +3334,12 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|match (Branch.NameKey destination, String refPattern)
+DECL|method|match (BranchNameKey destination, String refPattern)
 specifier|private
 name|boolean
 name|match
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destination
 parameter_list|,
 name|String

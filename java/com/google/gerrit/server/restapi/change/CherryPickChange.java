@@ -298,7 +298,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1295,7 +1295,7 @@ operator|=
 name|notifyResolver
 expr_stmt|;
 block|}
-DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, Change change, PatchSet patch, CherryPickInput input, Branch.NameKey dest)
+DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, Change change, PatchSet patch, CherryPickInput input, BranchNameKey dest)
 specifier|public
 name|Result
 name|cherryPick
@@ -1314,9 +1314,7 @@ parameter_list|,
 name|CherryPickInput
 name|input
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 parameter_list|)
 throws|throws
@@ -1365,7 +1363,7 @@ name|dest
 argument_list|)
 return|;
 block|}
-DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, @Nullable Change sourceChange, Project.NameKey project, ObjectId sourceCommit, CherryPickInput input, Branch.NameKey dest)
+DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, @Nullable Change sourceChange, Project.NameKey project, ObjectId sourceCommit, CherryPickInput input, BranchNameKey dest)
 specifier|public
 name|Result
 name|cherryPick
@@ -1391,9 +1389,7 @@ parameter_list|,
 name|CherryPickInput
 name|input
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 parameter_list|)
 throws|throws
@@ -1823,14 +1819,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|newDest
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -2482,9 +2476,7 @@ argument_list|,
 name|refName
 argument_list|)
 decl_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|sourceBranch
 init|=
 name|sourceChange
@@ -2711,7 +2703,7 @@ name|notifyDetails
 argument_list|)
 return|;
 block|}
-DECL|method|messageForDestinationChange ( PatchSet.Id patchSetId, Branch.NameKey sourceBranch, ObjectId sourceCommit, CodeReviewCommit cherryPickCommit)
+DECL|method|messageForDestinationChange ( PatchSet.Id patchSetId, BranchNameKey sourceBranch, ObjectId sourceCommit, CodeReviewCommit cherryPickCommit)
 specifier|private
 name|String
 name|messageForDestinationChange
@@ -2721,9 +2713,7 @@ operator|.
 name|Id
 name|patchSetId
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|sourceBranch
 parameter_list|,
 name|ObjectId

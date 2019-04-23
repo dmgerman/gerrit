@@ -182,7 +182,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -488,7 +488,7 @@ operator|=
 name|psUtil
 expr_stmt|;
 block|}
-DECL|method|canRebase (PatchSet patchSet, Branch.NameKey dest, Repository git, RevWalk rw)
+DECL|method|canRebase (PatchSet patchSet, BranchNameKey dest, Repository git, RevWalk rw)
 specifier|public
 name|boolean
 name|canRebase
@@ -496,9 +496,7 @@ parameter_list|(
 name|PatchSet
 name|patchSet
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 parameter_list|,
 name|Repository
@@ -926,7 +924,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Find the commit onto which a patch set should be rebased.    *    *<p>This is defined as the latest patch set of the change corresponding to this commit's parent,    * or the destination branch tip in the case where the parent's change is merged.    *    * @param patchSet patch set for which the new base commit should be found.    * @param destBranch the destination branch.    * @param git the repository.    * @param rw the RevWalk.    * @return the commit onto which the patch set should be rebased.    * @throws RestApiException if rebase is not possible.    * @throws IOException if accessing the repository fails.    */
-DECL|method|findBaseRevision ( PatchSet patchSet, Branch.NameKey destBranch, Repository git, RevWalk rw)
+DECL|method|findBaseRevision ( PatchSet patchSet, BranchNameKey destBranch, Repository git, RevWalk rw)
 specifier|public
 name|ObjectId
 name|findBaseRevision
@@ -934,9 +932,7 @@ parameter_list|(
 name|PatchSet
 name|patchSet
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|Repository

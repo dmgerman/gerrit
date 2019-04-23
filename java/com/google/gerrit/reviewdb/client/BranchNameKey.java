@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2019 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -81,21 +81,28 @@ import|;
 end_import
 
 begin_comment
-comment|/** Line of development within a {@link Project}. */
+comment|/** Branch name key */
 end_comment
 
 begin_class
-DECL|class|Branch
+annotation|@
+name|AutoValue
+DECL|class|BranchNameKey
 specifier|public
-specifier|final
+specifier|abstract
 class|class
-name|Branch
+name|BranchNameKey
+implements|implements
+name|Comparable
+argument_list|<
+name|BranchNameKey
+argument_list|>
 block|{
-DECL|method|nameKey (Project.NameKey projectName, String branchName)
+DECL|method|create (Project.NameKey projectName, String branchName)
 specifier|public
 specifier|static
-name|NameKey
-name|nameKey
+name|BranchNameKey
+name|create
 parameter_list|(
 name|Project
 operator|.
@@ -108,7 +115,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|AutoValue_Branch_NameKey
+name|AutoValue_BranchNameKey
 argument_list|(
 name|projectName
 argument_list|,
@@ -121,11 +128,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|nameKey (String projectName, String branchName)
+DECL|method|create (String projectName, String branchName)
 specifier|public
 specifier|static
-name|NameKey
-name|nameKey
+name|BranchNameKey
+name|create
 parameter_list|(
 name|String
 name|projectName
@@ -135,7 +142,7 @@ name|branchName
 parameter_list|)
 block|{
 return|return
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -148,21 +155,6 @@ name|branchName
 argument_list|)
 return|;
 block|}
-comment|/** Branch name key */
-annotation|@
-name|AutoValue
-DECL|class|NameKey
-specifier|public
-specifier|abstract
-specifier|static
-class|class
-name|NameKey
-implements|implements
-name|Comparable
-argument_list|<
-name|NameKey
-argument_list|>
-block|{
 DECL|method|project ()
 specifier|public
 specifier|abstract
@@ -197,12 +189,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|compareTo (NameKey o)
+DECL|method|compareTo (BranchNameKey o)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|NameKey
+name|BranchNameKey
 name|o
 parameter_list|)
 block|{
@@ -243,130 +235,6 @@ name|branch
 argument_list|()
 argument_list|)
 return|;
-block|}
-block|}
-DECL|field|name
-specifier|protected
-name|NameKey
-name|name
-decl_stmt|;
-DECL|field|revision
-specifier|protected
-name|RevId
-name|revision
-decl_stmt|;
-DECL|field|canDelete
-specifier|protected
-name|boolean
-name|canDelete
-decl_stmt|;
-DECL|method|Branch ()
-specifier|protected
-name|Branch
-parameter_list|()
-block|{}
-DECL|method|Branch (Branch.NameKey newName)
-specifier|public
-name|Branch
-parameter_list|(
-name|Branch
-operator|.
-name|NameKey
-name|newName
-parameter_list|)
-block|{
-name|name
-operator|=
-name|newName
-expr_stmt|;
-block|}
-DECL|method|getNameKey ()
-specifier|public
-name|Branch
-operator|.
-name|NameKey
-name|getNameKey
-parameter_list|()
-block|{
-return|return
-name|name
-return|;
-block|}
-DECL|method|getName ()
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-name|name
-operator|.
-name|branch
-argument_list|()
-return|;
-block|}
-DECL|method|getShortName ()
-specifier|public
-name|String
-name|getShortName
-parameter_list|()
-block|{
-return|return
-name|name
-operator|.
-name|shortName
-argument_list|()
-return|;
-block|}
-DECL|method|getRevision ()
-specifier|public
-name|RevId
-name|getRevision
-parameter_list|()
-block|{
-return|return
-name|revision
-return|;
-block|}
-DECL|method|setRevision (RevId id)
-specifier|public
-name|void
-name|setRevision
-parameter_list|(
-name|RevId
-name|id
-parameter_list|)
-block|{
-name|revision
-operator|=
-name|id
-expr_stmt|;
-block|}
-DECL|method|getCanDelete ()
-specifier|public
-name|boolean
-name|getCanDelete
-parameter_list|()
-block|{
-return|return
-name|canDelete
-return|;
-block|}
-DECL|method|setCanDelete (boolean canDelete)
-specifier|public
-name|void
-name|setCanDelete
-parameter_list|(
-name|boolean
-name|canDelete
-parameter_list|)
-block|{
-name|this
-operator|.
-name|canDelete
-operator|=
-name|canDelete
-expr_stmt|;
 block|}
 block|}
 end_class

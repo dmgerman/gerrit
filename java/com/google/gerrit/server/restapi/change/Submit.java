@@ -338,7 +338,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -2849,9 +2849,7 @@ expr_stmt|;
 block|}
 name|ListMultimap
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ChangeData
 argument_list|>
@@ -2864,9 +2862,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 range|:
 name|cbb

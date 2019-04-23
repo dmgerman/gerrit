@@ -80,7 +80,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -209,12 +209,10 @@ decl_stmt|;
 DECL|field|superProjectBranch
 specifier|private
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|superProjectBranch
 decl_stmt|;
-DECL|method|SubmoduleSectionParser ( Config config, String canonicalWebUrl, Branch.NameKey superProjectBranch)
+DECL|method|SubmoduleSectionParser ( Config config, String canonicalWebUrl, BranchNameKey superProjectBranch)
 specifier|public
 name|SubmoduleSectionParser
 parameter_list|(
@@ -224,9 +222,7 @@ parameter_list|,
 name|String
 name|canonicalWebUrl
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|superProjectBranch
 parameter_list|)
 block|{
@@ -706,9 +702,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|superProjectBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|projectKey
 argument_list|,

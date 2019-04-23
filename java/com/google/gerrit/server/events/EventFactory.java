@@ -268,7 +268,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1480,7 +1480,7 @@ name|a
 return|;
 block|}
 comment|/**    * Create a RefUpdateAttribute for the given old ObjectId, new ObjectId, and branch that is    * suitable for serialization to JSON.    *    * @param oldId    * @param newId    * @param refName    * @return object suitable for serialization to JSON    */
-DECL|method|asRefUpdateAttribute ( ObjectId oldId, ObjectId newId, Branch.NameKey refName)
+DECL|method|asRefUpdateAttribute ( ObjectId oldId, ObjectId newId, BranchNameKey refName)
 specifier|public
 name|RefUpdateAttribute
 name|asRefUpdateAttribute
@@ -1491,9 +1491,7 @@ parameter_list|,
 name|ObjectId
 name|newId
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|refName
 parameter_list|)
 block|{

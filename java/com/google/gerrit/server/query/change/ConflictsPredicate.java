@@ -234,7 +234,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -838,9 +838,7 @@ decl_stmt|;
 DECL|field|dest
 specifier|private
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 decl_stmt|;
 DECL|field|changeDataCache

@@ -1154,7 +1154,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -5365,14 +5365,12 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|createBranch (Branch.NameKey branch)
+DECL|method|createBranch (BranchNameKey branch)
 specifier|protected
 name|BranchApi
 name|createBranch
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 throws|throws
@@ -5411,14 +5409,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|createBranchWithRevision (Branch.NameKey branch, String revision)
+DECL|method|createBranchWithRevision (BranchNameKey branch, String revision)
 specifier|protected
 name|BranchApi
 name|createBranchWithRevision
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|String
@@ -8355,9 +8351,7 @@ DECL|method|fetchFromSubmitPreview (String changeId)
 specifier|protected
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ObjectId
 argument_list|>
@@ -8404,9 +8398,7 @@ DECL|method|fetchFromBundles (BinaryResult bundles)
 specifier|protected
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ObjectId
 argument_list|>
@@ -8472,9 +8464,7 @@ expr_stmt|;
 block|}
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ObjectId
 argument_list|>
@@ -8715,9 +8705,9 @@ name|ret
 operator|.
 name|put
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|proj
 argument_list|,
@@ -8750,7 +8740,7 @@ name|ret
 return|;
 block|}
 comment|/** Assert that the given branches have the given tree ids. */
-DECL|method|assertTrees (Project.NameKey proj, Map<Branch.NameKey, ObjectId> trees)
+DECL|method|assertTrees (Project.NameKey proj, Map<BranchNameKey, ObjectId> trees)
 specifier|protected
 name|void
 name|assertTrees
@@ -8762,9 +8752,7 @@ name|proj
 parameter_list|,
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ObjectId
 argument_list|>
@@ -8795,9 +8783,7 @@ argument_list|)
 expr_stmt|;
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|RevTree
 argument_list|>
@@ -8810,9 +8796,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|b
 range|:
 name|trees

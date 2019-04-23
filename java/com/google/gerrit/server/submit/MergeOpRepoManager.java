@@ -120,7 +120,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -595,9 +595,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|OpenBranch
 argument_list|>
@@ -702,13 +700,11 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getBranch (Branch.NameKey branch)
+DECL|method|getBranch (BranchNameKey branch)
 name|OpenBranch
 name|getBranch
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 throws|throws
@@ -913,15 +909,13 @@ DECL|field|mergeTip
 name|MergeTip
 name|mergeTip
 decl_stmt|;
-DECL|method|OpenBranch (OpenRepo or, Branch.NameKey name)
+DECL|method|OpenBranch (OpenRepo or, BranchNameKey name)
 name|OpenBranch
 parameter_list|(
 name|OpenRepo
 name|or
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|name
 parameter_list|)
 throws|throws

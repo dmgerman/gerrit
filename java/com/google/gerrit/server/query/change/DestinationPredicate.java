@@ -96,7 +96,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -141,21 +141,17 @@ DECL|field|destinations
 specifier|protected
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|destinations
 decl_stmt|;
-DECL|method|DestinationPredicate (Set<Branch.NameKey> destinations, String value)
+DECL|method|DestinationPredicate (Set<BranchNameKey> destinations, String value)
 specifier|public
 name|DestinationPredicate
 parameter_list|(
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|destinations
 parameter_list|,

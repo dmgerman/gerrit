@@ -256,7 +256,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -719,15 +719,13 @@ specifier|static
 class|class
 name|QueryKey
 block|{
-DECL|method|create (Branch.NameKey branch, Iterable<String> hashes)
+DECL|method|create (BranchNameKey branch, Iterable<String> hashes)
 specifier|private
 specifier|static
 name|QueryKey
 name|create
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Iterable
@@ -754,9 +752,7 @@ return|;
 block|}
 DECL|method|branch ()
 specifier|abstract
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|()
 function_decl|;
@@ -804,9 +800,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|Optional
 argument_list|<
@@ -938,9 +932,7 @@ comment|// For each target branch we run a separate rev walk to find open change
 comment|// reachable from changes already in the merge super set.
 name|ImmutableListMultimap
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ChangeData
 argument_list|>
@@ -966,9 +958,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|b
 range|:
 name|bc
@@ -1224,9 +1214,7 @@ specifier|private
 specifier|static
 name|ImmutableListMultimap
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ChangeData
 argument_list|>
@@ -1243,9 +1231,7 @@ name|ImmutableListMultimap
 operator|.
 name|Builder
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|,
 name|ChangeData
 argument_list|>
@@ -1505,7 +1491,7 @@ operator|.
 name|type
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, Branch.NameKey branch, Set<String> visibleHashes, Set<String> nonVisibleHashes)
+DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, BranchNameKey branch, Set<String> visibleHashes, Set<String> nonVisibleHashes)
 specifier|private
 name|ChangeSet
 name|byCommitsOnBranchNotMerged
@@ -1513,9 +1499,7 @@ parameter_list|(
 name|OpenRepo
 name|or
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Set
@@ -1631,7 +1615,7 @@ name|invisibleChanges
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, Branch.NameKey branch, Set<String> hashes)
+DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, BranchNameKey branch, Set<String> hashes)
 specifier|private
 name|ImmutableList
 argument_list|<
@@ -1642,9 +1626,7 @@ parameter_list|(
 name|OpenRepo
 name|or
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Set
@@ -1742,7 +1724,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|walkChangesByHashes ( Collection<RevCommit> sourceCommits, Set<String> ignoreHashes, OpenRepo or, Branch.NameKey b)
+DECL|method|walkChangesByHashes ( Collection<RevCommit> sourceCommits, Set<String> ignoreHashes, OpenRepo or, BranchNameKey b)
 specifier|private
 name|Set
 argument_list|<
@@ -1765,9 +1747,7 @@ parameter_list|,
 name|OpenRepo
 name|or
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|b
 parameter_list|)
 throws|throws
@@ -1885,7 +1865,7 @@ return|return
 name|destHashes
 return|;
 block|}
-DECL|method|markHeadUninteresting (OpenRepo or, Branch.NameKey b)
+DECL|method|markHeadUninteresting (OpenRepo or, BranchNameKey b)
 specifier|private
 name|void
 name|markHeadUninteresting
@@ -1893,9 +1873,7 @@ parameter_list|(
 name|OpenRepo
 name|or
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|b
 parameter_list|)
 throws|throws

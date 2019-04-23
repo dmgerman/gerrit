@@ -218,7 +218,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -744,7 +744,7 @@ operator|=
 name|groupValidatorFactory
 expr_stmt|;
 block|}
-DECL|method|validatePreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|validatePreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|validatePreMerge
@@ -758,9 +758,7 @@ parameter_list|,
 name|ProjectState
 name|destProject
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|PatchSet
@@ -1067,7 +1065,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( final Repository repo, final CodeReviewCommit commit, final ProjectState destProject, final Branch.NameKey destBranch, final PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( final Repository repo, final CodeReviewCommit commit, final ProjectState destProject, final BranchNameKey destBranch, final PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -1085,9 +1083,7 @@ name|ProjectState
 name|destProject
 parameter_list|,
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 specifier|final
@@ -1627,7 +1623,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -1641,9 +1637,7 @@ parameter_list|,
 name|ProjectState
 name|destProject
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|PatchSet
@@ -1765,7 +1759,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -1779,9 +1773,7 @@ parameter_list|,
 name|ProjectState
 name|destProject
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|PatchSet
@@ -2041,7 +2033,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -2055,9 +2047,7 @@ parameter_list|,
 name|ProjectState
 name|destProject
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|PatchSet

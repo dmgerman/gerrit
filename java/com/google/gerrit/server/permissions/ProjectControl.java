@@ -272,7 +272,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -947,13 +947,11 @@ name|notes
 argument_list|)
 return|;
 block|}
-DECL|method|controlForRef (Branch.NameKey ref)
+DECL|method|controlForRef (BranchNameKey ref)
 name|RefControl
 name|controlForRef
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|ref
 parameter_list|)
 block|{

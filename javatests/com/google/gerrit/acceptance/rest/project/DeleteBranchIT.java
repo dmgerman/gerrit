@@ -328,7 +328,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -404,9 +404,7 @@ name|requestScopeOperations
 decl_stmt|;
 DECL|field|testBranch
 specifier|private
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|testBranch
 decl_stmt|;
 annotation|@
@@ -431,9 +429,9 @@ argument_list|()
 expr_stmt|;
 name|testBranch
 operator|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -786,14 +784,12 @@ argument_list|,
 name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|metaBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -885,9 +881,9 @@ argument_list|)
 expr_stmt|;
 name|branch
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|allUsers
 argument_list|,
@@ -969,9 +965,9 @@ argument_list|)
 expr_stmt|;
 name|branch
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|allUsers
 argument_list|,
@@ -1078,14 +1074,12 @@ name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|branch (Branch.NameKey branch)
+DECL|method|branch (BranchNameKey branch)
 specifier|private
 name|BranchApi
 name|branch
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 throws|throws
@@ -1117,14 +1111,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|assertDeleteByRestSucceeds (Branch.NameKey branch, String ref)
+DECL|method|assertDeleteByRestSucceeds (BranchNameKey branch, String ref)
 specifier|private
 name|void
 name|assertDeleteByRestSucceeds
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|String
@@ -1191,14 +1183,12 @@ name|get
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertDeleteSucceeds (Branch.NameKey branch)
+DECL|method|assertDeleteSucceeds (BranchNameKey branch)
 specifier|private
 name|void
 name|assertDeleteSucceeds
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 throws|throws
@@ -1282,14 +1272,12 @@ name|get
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertDeleteForbidden (Branch.NameKey branch)
+DECL|method|assertDeleteForbidden (BranchNameKey branch)
 specifier|private
 name|void
 name|assertDeleteForbidden
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 throws|throws

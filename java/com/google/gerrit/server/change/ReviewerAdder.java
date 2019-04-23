@@ -530,7 +530,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -2505,14 +2505,12 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|isValidReviewer (Branch.NameKey branch, Account member)
+DECL|method|isValidReviewer (BranchNameKey branch, Account member)
 specifier|private
 name|boolean
 name|isValidReviewer
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Account

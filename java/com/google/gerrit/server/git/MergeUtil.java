@@ -452,7 +452,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1385,7 +1385,7 @@ operator|=
 name|changeMessageModifiers
 expr_stmt|;
 block|}
-DECL|method|generate ( RevCommit original, RevCommit mergeTip, Branch.NameKey dest, String originalMessage)
+DECL|method|generate ( RevCommit original, RevCommit mergeTip, BranchNameKey dest, String originalMessage)
 specifier|public
 name|String
 name|generate
@@ -1396,9 +1396,7 @@ parameter_list|,
 name|RevCommit
 name|mergeTip
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 parameter_list|,
 name|String
@@ -4585,7 +4583,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|mergeOneCommit ( PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, Config repoConfig, Branch.NameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
+DECL|method|mergeOneCommit ( PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, Config repoConfig, BranchNameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
 name|mergeOneCommit
@@ -4605,9 +4603,7 @@ parameter_list|,
 name|Config
 name|repoConfig
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|CodeReviewCommit
@@ -4864,7 +4860,7 @@ return|return
 name|failed
 return|;
 block|}
-DECL|method|writeMergeCommit ( PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, Branch.NameKey destBranch, CodeReviewCommit mergeTip, ObjectId treeId, CodeReviewCommit n)
+DECL|method|writeMergeCommit ( PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, BranchNameKey destBranch, CodeReviewCommit mergeTip, ObjectId treeId, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
 name|writeMergeCommit
@@ -4881,9 +4877,7 @@ parameter_list|,
 name|ObjectInserter
 name|inserter
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|CodeReviewCommit

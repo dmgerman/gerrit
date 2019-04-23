@@ -89,9 +89,7 @@ name|SubmoduleSubscription
 block|{
 DECL|field|superProject
 specifier|protected
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|superProject
 decl_stmt|;
 DECL|field|submodulePath
@@ -101,23 +99,17 @@ name|submodulePath
 decl_stmt|;
 DECL|field|submodule
 specifier|protected
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|submodule
 decl_stmt|;
-DECL|method|SubmoduleSubscription (Branch.NameKey superProject, Branch.NameKey submodule, String path)
+DECL|method|SubmoduleSubscription (BranchNameKey superProject, BranchNameKey submodule, String path)
 specifier|public
 name|SubmoduleSubscription
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|superProject
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|submodule
 parameter_list|,
 name|String
@@ -146,9 +138,7 @@ block|}
 comment|/**    * Indicates the super project, aka subscriber: the project owner of the gitlinks to the    * submodules.    */
 DECL|method|getSuperProject ()
 specifier|public
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|getSuperProject
 parameter_list|()
 block|{
@@ -168,9 +158,7 @@ return|;
 block|}
 DECL|method|getSubmodule ()
 specifier|public
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|getSubmodule
 parameter_list|()
 block|{

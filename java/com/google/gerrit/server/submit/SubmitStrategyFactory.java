@@ -126,7 +126,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -344,7 +344,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create ( SubmitType submitType, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, SubmitInput submitInput, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create ( SubmitType submitType, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, BranchNameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, SubmitInput submitInput, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -370,9 +370,7 @@ name|CodeReviewCommit
 argument_list|>
 name|incoming
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|IdentifiedUser

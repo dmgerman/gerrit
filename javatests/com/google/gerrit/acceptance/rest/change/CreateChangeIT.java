@@ -582,7 +582,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -3176,9 +3176,9 @@ name|Exception
 block|{
 name|createBranch
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -3903,9 +3903,9 @@ expr_stmt|;
 comment|// create two new branches
 name|createBranch
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -3915,9 +3915,9 @@ argument_list|)
 expr_stmt|;
 name|createBranch
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,

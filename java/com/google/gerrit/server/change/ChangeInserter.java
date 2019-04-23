@@ -406,7 +406,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1638,9 +1638,9 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|ctx
 operator|.
@@ -3455,9 +3455,9 @@ name|getProject
 argument_list|()
 argument_list|)
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|ctx
 operator|.

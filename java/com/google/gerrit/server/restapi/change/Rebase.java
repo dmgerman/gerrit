@@ -266,7 +266,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1255,9 +1255,7 @@ name|AuthException
 throws|,
 name|PermissionBackendException
 block|{
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destRefKey
 init|=
 name|rsrc
