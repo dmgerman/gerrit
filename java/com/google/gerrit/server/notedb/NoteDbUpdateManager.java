@@ -841,7 +841,9 @@ literal|" may not exceed "
 operator|+
 name|maxUpdates
 operator|+
-literal|" updates. It may still be abandoned or submitted."
+literal|" updates. It may still be abandoned or submitted. To continue working on this "
+operator|+
+literal|"change, recreate it with a new Change-Id, then abandon this one."
 return|;
 block|}
 DECL|field|serialVersionUID
