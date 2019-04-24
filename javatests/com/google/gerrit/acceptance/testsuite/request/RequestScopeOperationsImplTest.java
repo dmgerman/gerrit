@@ -96,6 +96,22 @@ name|truth
 operator|.
 name|Truth
 operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
 name|assert_
 import|;
 end_import
@@ -802,7 +818,12 @@ name|expected
 parameter_list|)
 block|{
 comment|// Check current user quickly, since the full check requires creating changes and is quite slow.
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"user from provider is an IdentifiedUser"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|userProvider
 operator|.
@@ -813,15 +834,15 @@ name|isIdentifiedUser
 argument_list|()
 argument_list|)
 operator|.
-name|named
-argument_list|(
-literal|"user from provider is an IdentifiedUser"
-argument_list|)
-operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"user from provider"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|userProvider
 operator|.
@@ -830,11 +851,6 @@ argument_list|()
 operator|.
 name|getAccountId
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"user from provider"
 argument_list|)
 operator|.
 name|isEqualTo
@@ -862,7 +878,12 @@ argument_list|(
 name|expected
 argument_list|)
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"user from GerritApi"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|gApi
 operator|.
@@ -876,11 +897,6 @@ name|get
 argument_list|()
 operator|.
 name|_accountId
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"user from GerritApi"
 argument_list|)
 operator|.
 name|isEqualTo
@@ -901,7 +917,12 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"user from AcceptanceTestRequestScope.Context is an IdentifiedUser"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|ctx
 operator|.
@@ -912,15 +933,15 @@ name|isIdentifiedUser
 argument_list|()
 argument_list|)
 operator|.
-name|named
-argument_list|(
-literal|"user from AcceptanceTestRequestScope.Context is an IdentifiedUser"
-argument_list|)
-operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"user from AcceptanceTestRequestScope.Context"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|ctx
 operator|.
@@ -929,11 +950,6 @@ argument_list|()
 operator|.
 name|getAccountId
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"user from AcceptanceTestRequestScope.Context"
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1059,7 +1075,14 @@ operator|+
 name|changeId
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"Change-Ids in query results:\n%s"
+argument_list|,
+name|queryResults
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|findDistinct
 argument_list|(
@@ -1067,13 +1090,6 @@ name|queryResults
 argument_list|,
 literal|"I[0-9a-f]{40}"
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"Change-Ids in query results:\n%s"
-argument_list|,
-name|queryResults
 argument_list|)
 operator|.
 name|containsExactly

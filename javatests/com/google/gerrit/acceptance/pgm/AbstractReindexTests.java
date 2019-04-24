@@ -92,6 +92,22 @@ name|common
 operator|.
 name|truth
 operator|.
+name|StreamSubject
+operator|.
+name|streams
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
 name|Truth
 operator|.
 name|assertThat
@@ -1703,7 +1719,12 @@ name|int
 name|expected
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"search version"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|ctx
 operator|.
@@ -1727,11 +1748,6 @@ name|getVersion
 argument_list|()
 argument_list|)
 operator|.
-name|named
-argument_list|(
-literal|"search version"
-argument_list|)
-operator|.
 name|isEqualTo
 argument_list|(
 name|expected
@@ -1751,7 +1767,18 @@ modifier|...
 name|expected
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"write versions"
+argument_list|)
+operator|.
+name|about
+argument_list|(
+name|streams
+argument_list|()
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|ctx
 operator|.
@@ -1783,11 +1810,6 @@ operator|.
 name|getVersion
 argument_list|()
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"write versions"
 argument_list|)
 operator|.
 name|containsExactlyElementsIn
@@ -1837,7 +1859,12 @@ argument_list|(
 name|sitePaths
 argument_list|)
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"ready state for index versions"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|allVersions
 operator|.
@@ -1864,11 +1891,6 @@ name|v
 argument_list|)
 argument_list|)
 argument_list|)
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"ready state for index versions"
 argument_list|)
 operator|.
 name|isEqualTo

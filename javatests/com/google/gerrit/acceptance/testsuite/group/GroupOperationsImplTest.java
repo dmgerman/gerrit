@@ -94,6 +94,22 @@ name|common
 operator|.
 name|truth
 operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
 name|Truth8
 operator|.
 name|assertThat
@@ -1972,7 +1988,12 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"visibility of visible group"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|visibleGroup
 operator|.
@@ -1980,25 +2001,20 @@ name|visibleToAll
 argument_list|()
 argument_list|)
 operator|.
-name|named
-argument_list|(
-literal|"visibility of visible group"
-argument_list|)
-operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"visibility of invisible group"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|invisibleGroup
 operator|.
 name|visibleToAll
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"visibility of invisible group"
 argument_list|)
 operator|.
 name|isFalse

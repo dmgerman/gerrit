@@ -80,7 +80,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assertThat
+name|assertWithMessage
 import|;
 end_import
 
@@ -2746,12 +2746,7 @@ argument_list|(
 name|result
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|names
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 name|format
 argument_list|(
@@ -2761,6 +2756,11 @@ name|result
 argument_list|,
 name|projects
 argument_list|)
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|names
 argument_list|)
 operator|.
 name|containsExactlyElementsIn

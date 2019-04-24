@@ -80,7 +80,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assertThat
+name|assertWithMessage
 import|;
 end_import
 
@@ -310,12 +310,7 @@ argument_list|(
 name|serialized
 argument_list|)
 decl_stmt|;
-name|assertThat
-argument_list|(
-name|result
-argument_list|)
-operator|.
-name|named
+name|assertWithMessage
 argument_list|(
 literal|"round-trip of %s via \"%s\""
 argument_list|,
@@ -327,6 +322,11 @@ name|escapeBytes
 argument_list|(
 name|serialized
 argument_list|)
+argument_list|)
+operator|.
+name|that
+argument_list|(
+name|result
 argument_list|)
 operator|.
 name|isEqualTo
