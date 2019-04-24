@@ -949,12 +949,17 @@ operator|.
 name|getProject
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
+name|ObjectId
+name|b
+init|=
 name|patchSet
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|b
 operator|==
 literal|null
 condition|)
@@ -963,7 +968,7 @@ throw|throw
 operator|new
 name|PatchListNotAvailableException
 argument_list|(
-literal|"revision is null for "
+literal|"commit ID is null for "
 operator|+
 name|patchSet
 operator|.
@@ -972,22 +977,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-name|ObjectId
-name|b
-init|=
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
-name|patchSet
-operator|.
-name|getRevision
-argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|Whitespace
 name|ws
 init|=

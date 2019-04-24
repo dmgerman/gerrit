@@ -667,7 +667,7 @@ expr_stmt|;
 comment|// Map of all patch sets, keyed by commit SHA-1.
 name|Map
 argument_list|<
-name|String
+name|ObjectId
 argument_list|,
 name|PatchSetData
 argument_list|>
@@ -687,10 +687,7 @@ name|get
 argument_list|(
 name|startPs
 operator|.
-name|getRevision
-argument_list|()
-operator|.
-name|get
+name|getCommitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -803,10 +800,7 @@ name|get
 argument_list|(
 name|ps
 operator|.
-name|getRevision
-argument_list|()
-operator|.
-name|get
+name|getCommitId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -871,9 +865,6 @@ operator|.
 name|get
 argument_list|(
 name|p
-operator|.
-name|name
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -985,7 +976,7 @@ DECL|method|collectById (List<ChangeData> in)
 specifier|private
 name|Map
 argument_list|<
-name|String
+name|ObjectId
 argument_list|,
 name|PatchSetData
 argument_list|>
@@ -1020,7 +1011,7 @@ argument_list|()
 decl_stmt|;
 name|Map
 argument_list|<
-name|String
+name|ObjectId
 argument_list|,
 name|PatchSetData
 argument_list|>
@@ -1119,17 +1110,6 @@ name|patchSets
 argument_list|()
 control|)
 block|{
-name|String
-name|id
-init|=
-name|ps
-operator|.
-name|getRevision
-argument_list|()
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 name|RevCommit
 name|c
 init|=
@@ -1137,12 +1117,10 @@ name|rw
 operator|.
 name|parseCommit
 argument_list|(
-name|ObjectId
+name|ps
 operator|.
-name|fromString
-argument_list|(
-name|id
-argument_list|)
+name|getCommitId
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|PatchSetData
@@ -1163,7 +1141,10 @@ name|result
 operator|.
 name|put
 argument_list|(
-name|id
+name|ps
+operator|.
+name|getCommitId
+argument_list|()
 argument_list|,
 name|psd
 argument_list|)

@@ -7678,7 +7678,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// PatchSetId -> RevId must be a one to one mapping
+comment|// PatchSetId -> ObjectId must be a one to one mapping
 name|Change
 name|c
 init|=
@@ -7779,21 +7779,21 @@ name|class
 argument_list|,
 literal|"Multiple revisions parsed for patch set 1:"
 operator|+
-literal|" RevId{"
+literal|" "
 operator|+
 name|commit
 operator|.
 name|name
 argument_list|()
 operator|+
-literal|"} and "
+literal|" and "
 operator|+
 name|ps
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8026,10 +8026,7 @@ name|assertThat
 argument_list|(
 name|ps2
 operator|.
-name|getRevision
-argument_list|()
-operator|.
-name|get
+name|getCommitId
 argument_list|()
 argument_list|)
 operator|.
@@ -8037,7 +8034,7 @@ name|isNotEqualTo
 argument_list|(
 name|ps1
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8045,19 +8042,13 @@ name|assertThat
 argument_list|(
 name|ps2
 operator|.
-name|getRevision
-argument_list|()
-operator|.
-name|get
+name|getCommitId
 argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
 name|commit
-operator|.
-name|name
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -11496,10 +11487,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|patchLineCommentNotesFormatMultiplePatchSetsSameRevId ()
+DECL|method|patchLineCommentNotesFormatMultiplePatchSetsSameCommitId ()
 specifier|public
 name|void
-name|patchLineCommentNotesFormatMultiplePatchSetsSameRevId
+name|patchLineCommentNotesFormatMultiplePatchSetsSameCommitId
 parameter_list|()
 throws|throws
 name|Exception

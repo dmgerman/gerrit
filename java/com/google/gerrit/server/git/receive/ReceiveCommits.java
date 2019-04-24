@@ -1236,22 +1236,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ApprovalsUtil
@@ -14023,7 +14007,7 @@ condition|)
 block|{
 comment|// Schedule as a replacement to this one matching change.
 comment|//
-name|RevId
+name|ObjectId
 name|currentPs
 init|=
 name|changes
@@ -14036,7 +14020,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 decl_stmt|;
 comment|// If Commit is already current PatchSet of target Change.
@@ -14046,15 +14030,9 @@ name|p
 operator|.
 name|commit
 operator|.
-name|name
-argument_list|()
-operator|.
 name|equals
 argument_list|(
 name|currentPs
-operator|.
-name|get
-argument_list|()
 argument_list|)
 condition|)
 block|{

@@ -140,6 +140,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -185,6 +199,34 @@ operator|.
 name|util
 operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|AnyObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -914,12 +956,12 @@ specifier|protected
 name|Id
 name|id
 decl_stmt|;
-DECL|field|revision
+DECL|field|commitId
 annotation|@
 name|Nullable
 specifier|protected
-name|RevId
-name|revision
+name|ObjectId
+name|commitId
 decl_stmt|;
 DECL|field|uploader
 specifier|protected
@@ -997,11 +1039,11 @@ name|id
 expr_stmt|;
 name|this
 operator|.
-name|revision
+name|commitId
 operator|=
 name|src
 operator|.
-name|revision
+name|commitId
 expr_stmt|;
 name|this
 operator|.
@@ -1069,28 +1111,38 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|getRevision ()
+comment|/**    * Get the ID of the commit associated with this patch set.    *    *<p>The commit associated with a patch set is also known as the<strong>revision</strong>.    *    * @return the commit ID.    */
+DECL|method|getCommitId ()
 specifier|public
-name|RevId
-name|getRevision
+name|ObjectId
+name|getCommitId
 parameter_list|()
 block|{
 return|return
-name|revision
+name|commitId
 return|;
 block|}
-DECL|method|setRevision (RevId i)
+DECL|method|setCommitId (@ullable AnyObjectId commitId)
 specifier|public
 name|void
-name|setRevision
+name|setCommitId
 parameter_list|(
-name|RevId
-name|i
+annotation|@
+name|Nullable
+name|AnyObjectId
+name|commitId
 parameter_list|)
 block|{
-name|revision
+name|this
+operator|.
+name|commitId
 operator|=
-name|i
+name|ObjectIds
+operator|.
+name|copyOrNull
+argument_list|(
+name|commitId
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getUploader ()
@@ -1324,11 +1376,11 @@ name|Objects
 operator|.
 name|equals
 argument_list|(
-name|revision
+name|commitId
 argument_list|,
 name|p
 operator|.
-name|revision
+name|commitId
 argument_list|)
 operator|&&
 name|Objects
@@ -1402,7 +1454,7 @@ name|hash
 argument_list|(
 name|id
 argument_list|,
-name|revision
+name|commitId
 argument_list|,
 name|uploader
 argument_list|,

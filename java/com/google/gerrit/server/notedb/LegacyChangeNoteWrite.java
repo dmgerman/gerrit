@@ -553,7 +553,7 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Build a note that contains the metadata for and the contents of all of the comments in the    * given comments.    *    * @param comments Comments to be written to the output stream, keyed by patch set ID; multiple    *     patch sets are allowed since base revisions may be shared across patch sets. All of the    *     comments must share the same RevId, and all the comments for a given patch set must have    *     the same side.    * @param out output stream to write to.    */
+comment|/**    * Build a note that contains the metadata for and the contents of all of the comments in the    * given comments.    *    * @param comments Comments to be written to the output stream, keyed by patch set ID; multiple    *     patch sets are allowed since base revisions may be shared across patch sets. All of the    *     comments must share the same commitId, and all the comments for a given patch set must have    *     the same side.    * @param out output stream to write to.    */
 annotation|@
 name|UsedAt
 argument_list|(
@@ -789,9 +789,9 @@ name|getCommitId
 argument_list|()
 argument_list|)
 argument_list|,
-literal|"All comments being added must have all the same RevId. The "
+literal|"All comments being added must have all the same commitId. The "
 operator|+
-literal|"comment below does not have the same RevId as the others "
+literal|"comment below does not have the same commitId as the others "
 operator|+
 literal|"(%s).\n%s"
 argument_list|,

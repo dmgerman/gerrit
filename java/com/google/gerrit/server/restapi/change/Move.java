@@ -1636,10 +1636,6 @@ name|revWalk
 operator|.
 name|parseCommit
 argument_list|(
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
 name|psUtil
 operator|.
 name|current
@@ -1650,12 +1646,8 @@ name|getNotes
 argument_list|()
 argument_list|)
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

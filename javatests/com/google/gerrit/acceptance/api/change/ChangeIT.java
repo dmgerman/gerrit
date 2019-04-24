@@ -11545,10 +11545,10 @@ name|base
 operator|=
 name|ps2
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 expr_stmt|;
 name|gApi
@@ -11642,10 +11642,10 @@ name|revision
 argument_list|(
 name|ps1
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 argument_list|)
 operator|.

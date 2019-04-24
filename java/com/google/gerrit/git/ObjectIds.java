@@ -392,6 +392,43 @@ name|zeroId
 argument_list|()
 return|;
 block|}
+comment|/**    * Return whether the given ID matches the given abbreviation.    *    * @param id object ID.    * @param abbreviation abbreviated hex object ID. May not be null, but may be an invalid hex SHA-1    *     abbreviation string.    * @return true if {@code id} is not null and {@code abbreviation} is a valid hex SHA-1    *     abbreviation that matches {@code id}, false otherwise.    */
+DECL|method|matchesAbbreviation (@ullable AnyObjectId id, String abbreviation)
+specifier|public
+specifier|static
+name|boolean
+name|matchesAbbreviation
+parameter_list|(
+annotation|@
+name|Nullable
+name|AnyObjectId
+name|id
+parameter_list|,
+name|String
+name|abbreviation
+parameter_list|)
+block|{
+name|requireNonNull
+argument_list|(
+name|abbreviation
+argument_list|)
+expr_stmt|;
+return|return
+name|id
+operator|!=
+literal|null
+operator|&&
+name|id
+operator|.
+name|name
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|abbreviation
+argument_list|)
+return|;
+block|}
 DECL|method|checkValidLength (int n)
 specifier|private
 specifier|static

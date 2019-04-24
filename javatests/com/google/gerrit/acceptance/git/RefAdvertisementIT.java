@@ -5140,18 +5140,10 @@ name|isNotNull
 argument_list|()
 expr_stmt|;
 return|return
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
 name|ps
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
 return|;
 block|}
 DECL|method|createSelfOwnedGroup (String name, TestAccount... members)

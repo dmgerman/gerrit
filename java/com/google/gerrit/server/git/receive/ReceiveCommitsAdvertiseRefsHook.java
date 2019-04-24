@@ -809,22 +809,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|ObjectId
-name|id
-init|=
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
-name|ps
-operator|.
-name|getRevision
-argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
-decl_stmt|;
 comment|// Ensure we actually observed a patch set ref pointing to this
 comment|// object, in case the database is out of sync with the repo and the
 comment|// object doesn't actually exist.
@@ -834,7 +818,10 @@ name|allPatchSets
 operator|.
 name|contains
 argument_list|(
-name|id
+name|ps
+operator|.
+name|getCommitId
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -842,7 +829,10 @@ name|r
 operator|.
 name|add
 argument_list|(
-name|id
+name|ps
+operator|.
+name|getCommitId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

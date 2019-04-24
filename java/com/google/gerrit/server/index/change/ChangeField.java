@@ -3448,7 +3448,7 @@ if|if
 condition|(
 name|ps
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|!=
 literal|null
@@ -3460,10 +3460,10 @@ name|add
 argument_list|(
 name|ps
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
