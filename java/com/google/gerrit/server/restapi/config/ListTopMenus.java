@@ -214,6 +214,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|ListTopMenus
+specifier|public
 class|class
 name|ListTopMenus
 implements|implements
