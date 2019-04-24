@@ -5029,13 +5029,6 @@ condition|(
 name|ps
 operator|==
 literal|null
-operator|||
-name|ps
-operator|.
-name|getCommitId
-argument_list|()
-operator|==
-literal|null
 condition|)
 block|{
 name|commitStatus
@@ -5044,7 +5037,7 @@ name|logProblem
 argument_list|(
 name|changeId
 argument_list|,
-literal|"Missing patch set or revision on change"
+literal|"Missing patch set on change"
 argument_list|)
 expr_stmt|;
 continue|continue;

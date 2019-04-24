@@ -957,26 +957,6 @@ operator|.
 name|getCommitId
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|b
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|PatchListNotAvailableException
-argument_list|(
-literal|"commit ID is null for "
-operator|+
-name|patchSet
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-throw|;
-block|}
 name|Whitespace
 name|ws
 init|=

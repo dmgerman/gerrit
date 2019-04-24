@@ -1481,13 +1481,6 @@ condition|(
 name|patchSet
 operator|!=
 literal|null
-operator|&&
-name|patchSet
-operator|.
-name|getCommitId
-argument_list|()
-operator|!=
-literal|null
 condition|)
 block|{
 name|setHeader

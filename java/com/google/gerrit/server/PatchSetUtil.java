@@ -760,15 +760,10 @@ operator|new
 name|PatchSet
 argument_list|(
 name|psId
-argument_list|)
-decl_stmt|;
-name|ps
-operator|.
-name|setCommitId
-argument_list|(
+argument_list|,
 name|commit
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|ps
 operator|.
 name|setUploader

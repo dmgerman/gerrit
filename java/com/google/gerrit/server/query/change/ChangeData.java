@@ -1817,7 +1817,7 @@ parameter_list|)
 function_decl|;
 block|}
 comment|/**    * Create an instance for testing only.    *    *<p>Attempting to lazy load data will fail with NPEs. Callers may consider manually setting    * fields that can be set.    *    * @param id change ID    * @return instance for testing.    */
-DECL|method|createForTest ( Project.NameKey project, Change.Id id, int currentPatchSetId)
+DECL|method|createForTest ( Project.NameKey project, Change.Id id, int currentPatchSetId, ObjectId commitId)
 specifier|public
 specifier|static
 name|ChangeData
@@ -1835,6 +1835,9 @@ name|id
 parameter_list|,
 name|int
 name|currentPatchSetId
+parameter_list|,
+name|ObjectId
+name|commitId
 parameter_list|)
 block|{
 name|ChangeData
@@ -1897,6 +1900,8 @@ name|id
 argument_list|,
 name|currentPatchSetId
 argument_list|)
+argument_list|,
+name|commitId
 argument_list|)
 expr_stmt|;
 return|return

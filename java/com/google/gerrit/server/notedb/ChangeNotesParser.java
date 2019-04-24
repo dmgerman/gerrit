@@ -3427,6 +3427,8 @@ operator|new
 name|PatchSet
 argument_list|(
 name|psId
+argument_list|,
+name|rev
 argument_list|)
 decl_stmt|;
 name|patchSets
@@ -3436,13 +3438,6 @@ argument_list|(
 name|psId
 argument_list|,
 name|ps
-argument_list|)
-expr_stmt|;
-name|ps
-operator|.
-name|setCommitId
-argument_list|(
-name|rev
 argument_list|)
 expr_stmt|;
 name|ps

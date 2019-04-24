@@ -83,6 +83,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -140,20 +152,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|git
-operator|.
-name|ObjectIds
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|sql
@@ -199,20 +197,6 @@ operator|.
 name|util
 operator|.
 name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|AnyObjectId
 import|;
 end_import
 
@@ -951,14 +935,35 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|/**    * Create a patch set with no commit ID.    *    *<p>It is illegal to call {@link #getCommitId()} on the returned instance.    *    * @deprecated This method only exists to preserve behavior of one specific codepath in {@code    *     PatchScriptFactory}.    * @param id patch set ID.    * @return new patch set.    */
+annotation|@
+name|Deprecated
+DECL|method|createWithNoCommitId (PatchSet.Id id)
+specifier|public
+specifier|static
+name|PatchSet
+name|createWithNoCommitId
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+return|return
+operator|new
+name|PatchSet
+argument_list|(
+name|id
+argument_list|)
+return|;
+block|}
 DECL|field|id
 specifier|protected
 name|Id
 name|id
 decl_stmt|;
 DECL|field|commitId
-annotation|@
-name|Nullable
 specifier|protected
 name|ObjectId
 name|commitId
@@ -1006,19 +1011,62 @@ specifier|protected
 name|PatchSet
 parameter_list|()
 block|{}
-DECL|method|PatchSet (PatchSet.Id k)
+DECL|method|PatchSet (PatchSet.Id id)
+specifier|private
+name|PatchSet
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|this
+operator|.
+name|id
+operator|=
+name|requireNonNull
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|commitId
+operator|=
+literal|null
+expr_stmt|;
+block|}
+DECL|method|PatchSet (PatchSet.Id id, ObjectId commitId)
 specifier|public
 name|PatchSet
 parameter_list|(
 name|PatchSet
 operator|.
 name|Id
-name|k
+name|id
+parameter_list|,
+name|ObjectId
+name|commitId
 parameter_list|)
 block|{
+name|this
+operator|.
 name|id
 operator|=
-name|k
+name|requireNonNull
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|commitId
+operator|=
+name|commitId
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|PatchSet (PatchSet src)
@@ -1111,39 +1159,21 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**    * Get the ID of the commit associated with this patch set.    *    *<p>The commit associated with a patch set is also known as the<strong>revision</strong>.    *    * @return the commit ID.    */
+comment|/**    * Get the ID of the commit associated with this patch set.    *    *<p>The commit associated with a patch set is also known as the<strong>revision</strong>.    *    * @return the commit ID, never null.    */
 DECL|method|getCommitId ()
 specifier|public
 name|ObjectId
 name|getCommitId
 parameter_list|()
 block|{
-return|return
-name|commitId
-return|;
-block|}
-DECL|method|setCommitId (@ullable AnyObjectId commitId)
-specifier|public
-name|void
-name|setCommitId
-parameter_list|(
-annotation|@
-name|Nullable
-name|AnyObjectId
-name|commitId
-parameter_list|)
-block|{
-name|this
-operator|.
-name|commitId
-operator|=
-name|ObjectIds
-operator|.
-name|copyOrNull
+name|requireNonNull
 argument_list|(
 name|commitId
 argument_list|)
 expr_stmt|;
+return|return
+name|commitId
+return|;
 block|}
 DECL|method|getUploader ()
 specifier|public

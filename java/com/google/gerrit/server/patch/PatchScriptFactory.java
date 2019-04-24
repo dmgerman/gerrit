@@ -1331,6 +1331,13 @@ argument_list|)
 else|:
 literal|null
 decl_stmt|;
+comment|// TODO(dborowitz): Shouldn't be creating a PatchSet with no commitId, but the logic depends on
+comment|// it somehow in a way that I don't follow, so old behavior is preserved for now.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 name|PatchSet
 name|psEntityB
 init|=
@@ -1341,8 +1348,9 @@ argument_list|()
 operator|==
 literal|0
 condition|?
-operator|new
 name|PatchSet
+operator|.
+name|createWithNoCommitId
 argument_list|(
 name|psb
 argument_list|)
@@ -1858,24 +1866,6 @@ return|return
 name|getEditRev
 argument_list|()
 return|;
-block|}
-if|if
-condition|(
-name|ps
-operator|.
-name|getCommitId
-argument_list|()
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|NoSuchChangeException
-argument_list|(
-name|changeId
-argument_list|)
-throw|;
 block|}
 return|return
 name|ps

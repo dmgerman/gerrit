@@ -1996,22 +1996,6 @@ operator|.
 name|getCommitId
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|objId
-operator|==
-literal|null
-condition|)
-block|{
-name|problem
-argument_list|(
-literal|"Null commitId on patch set "
-operator|+
-name|psNum
-argument_list|)
-expr_stmt|;
-continue|continue;
-block|}
 name|patchSetsBySha
 operator|.
 name|put

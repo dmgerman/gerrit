@@ -596,12 +596,7 @@ operator|new
 name|PatchSet
 argument_list|(
 name|id
-argument_list|)
-decl_stmt|;
-name|ps
-operator|.
-name|setCommitId
-argument_list|(
+argument_list|,
 name|ObjectId
 operator|.
 name|fromString
@@ -609,7 +604,7 @@ argument_list|(
 name|revision
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|ps
 operator|.
 name|setUploader
