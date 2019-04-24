@@ -1368,6 +1368,16 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
+comment|/**    * Length of abbreviated hex SHA-1s in merged filenames.    *    *<p>This is a constant so output is stable over time even if the SHA-1 prefix becomes ambiguous.    */
+DECL|field|NAME_ABBREV_LEN
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|NAME_ABBREV_LEN
+init|=
+literal|6
+decl_stmt|;
 DECL|class|PluggableCommitMessageGenerator
 specifier|static
 class|class
@@ -2497,7 +2507,7 @@ name|abbreviateName
 argument_list|(
 name|ours
 argument_list|,
-literal|6
+name|NAME_ABBREV_LEN
 argument_list|)
 argument_list|,
 name|oursMsg
@@ -2539,7 +2549,7 @@ name|abbreviateName
 argument_list|(
 name|theirs
 argument_list|,
-literal|6
+name|NAME_ABBREV_LEN
 argument_list|)
 argument_list|,
 name|theirsMsg

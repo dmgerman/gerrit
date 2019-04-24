@@ -99,22 +99,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|git
-operator|.
-name|ObjectIds
-operator|.
-name|abbreviateName
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -155,6 +139,20 @@ operator|.
 name|client
 operator|.
 name|InheritableBoolean
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
 import|;
 end_import
 
@@ -574,20 +572,31 @@ expr_stmt|;
 block|}
 DECL|method|implicitMergeOf (ObjectId commit)
 specifier|private
-specifier|static
 name|String
 name|implicitMergeOf
 parameter_list|(
 name|ObjectId
 name|commit
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 return|return
 literal|"implicit merge of "
 operator|+
+name|ObjectIds
+operator|.
 name|abbreviateName
 argument_list|(
 name|commit
+argument_list|,
+name|testRepo
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|getObjectReader
+argument_list|()
 argument_list|)
 return|;
 block|}

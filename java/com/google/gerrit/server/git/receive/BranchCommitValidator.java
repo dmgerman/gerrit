@@ -734,6 +734,8 @@ name|m
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|objectReader
 argument_list|)
 argument_list|,
 name|m
@@ -794,6 +796,8 @@ name|m
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|objectReader
 argument_list|)
 argument_list|,
 name|m
@@ -818,6 +822,8 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|objectReader
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -829,7 +835,7 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|messageForCommit (RevCommit c, String msg)
+DECL|method|messageForCommit (RevCommit c, String msg, ObjectReader objectReader)
 specifier|private
 name|String
 name|messageForCommit
@@ -839,7 +845,12 @@ name|c
 parameter_list|,
 name|String
 name|msg
+parameter_list|,
+name|ObjectReader
+name|objectReader
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 return|return
 name|String
@@ -851,6 +862,8 @@ argument_list|,
 name|abbreviateName
 argument_list|(
 name|c
+argument_list|,
+name|objectReader
 argument_list|)
 argument_list|,
 name|msg

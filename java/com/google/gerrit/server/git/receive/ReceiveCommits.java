@@ -15157,6 +15157,11 @@ operator|+
 name|abbreviateName
 argument_list|(
 name|c
+argument_list|,
+name|rw
+operator|.
+name|getObjectReader
+argument_list|()
 argument_list|)
 operator|+
 literal|" "
