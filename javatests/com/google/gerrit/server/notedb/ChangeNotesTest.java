@@ -120,6 +120,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth8
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -1043,7 +1059,7 @@ name|getDescription
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasValue
 argument_list|(
 name|description
 argument_list|)
@@ -1091,7 +1107,7 @@ name|getDescription
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasValue
 argument_list|(
 name|description
 argument_list|)
@@ -8859,7 +8875,7 @@ name|getPushCertificate
 argument_list|()
 argument_list|)
 operator|.
-name|isNull
+name|isEmpty
 argument_list|()
 expr_stmt|;
 name|assertThat
@@ -8875,7 +8891,7 @@ name|getPushCertificate
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasValue
 argument_list|(
 name|pushCert
 argument_list|)
@@ -8997,7 +9013,7 @@ name|getPushCertificate
 argument_list|()
 argument_list|)
 operator|.
-name|isNull
+name|isEmpty
 argument_list|()
 expr_stmt|;
 name|assertThat
@@ -9013,7 +9029,7 @@ name|getPushCertificate
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasValue
 argument_list|(
 name|pushCert
 argument_list|)

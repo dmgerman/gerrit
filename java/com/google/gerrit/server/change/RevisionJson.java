@@ -2297,6 +2297,11 @@ name|in
 operator|.
 name|getDescription
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 name|boolean
 name|setCommit
@@ -2635,8 +2640,9 @@ name|in
 operator|.
 name|getPushCertificate
 argument_list|()
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|out
@@ -2650,6 +2656,9 @@ argument_list|(
 name|in
 operator|.
 name|getPushCertificate
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|,
 name|userFactory

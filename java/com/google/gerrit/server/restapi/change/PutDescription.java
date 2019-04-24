@@ -708,10 +708,6 @@ argument_list|)
 expr_stmt|;
 name|oldDescription
 operator|=
-name|Strings
-operator|.
-name|nullToEmpty
-argument_list|(
 name|psUtil
 operator|.
 name|get
@@ -726,6 +722,10 @@ argument_list|)
 operator|.
 name|getDescription
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|""
 argument_list|)
 expr_stmt|;
 if|if
