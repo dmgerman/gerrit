@@ -154,6 +154,18 @@ specifier|public
 class|class
 name|ObjectIds
 block|{
+comment|/** Length of a binary SHA-1 byte array. */
+DECL|field|LEN
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|LEN
+init|=
+name|Constants
+operator|.
+name|OBJECT_ID_LENGTH
+decl_stmt|;
 comment|/** Length of a hex SHA-1 string. */
 DECL|field|STR_LEN
 specifier|public

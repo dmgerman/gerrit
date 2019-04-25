@@ -70,15 +70,15 @@ end_package
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|eclipse
+name|google
 operator|.
-name|jgit
+name|gerrit
 operator|.
-name|lib
+name|git
 operator|.
-name|Constants
+name|ObjectIds
 import|;
 end_import
 
@@ -129,9 +129,9 @@ init|=
 operator|new
 name|byte
 index|[
-name|Constants
+name|ObjectIds
 operator|.
-name|OBJECT_ID_LENGTH
+name|LEN
 index|]
 decl_stmt|;
 name|object
@@ -169,9 +169,9 @@ name|in
 operator|.
 name|length
 operator|!=
-name|Constants
+name|ObjectIds
 operator|.
-name|OBJECT_ID_LENGTH
+name|LEN
 condition|)
 block|{
 throw|throw

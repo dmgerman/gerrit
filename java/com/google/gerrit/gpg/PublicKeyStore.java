@@ -140,6 +140,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -421,20 +435,6 @@ operator|.
 name|lib
 operator|.
 name|CommitBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
 import|;
 end_import
 
@@ -2686,9 +2686,9 @@ init|=
 operator|new
 name|byte
 index|[
-name|Constants
+name|ObjectIds
 operator|.
-name|OBJECT_ID_LENGTH
+name|LEN
 index|]
 decl_stmt|;
 name|NB
