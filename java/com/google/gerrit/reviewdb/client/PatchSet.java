@@ -935,29 +935,6 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * Create a patch set with no commit ID.    *    *<p>It is illegal to call {@link #getCommitId()} on the returned instance.    *    * @deprecated This method only exists to preserve behavior of one specific codepath in {@code    *     PatchScriptFactory}.    * @param id patch set ID.    * @return new patch set.    */
-annotation|@
-name|Deprecated
-DECL|method|createWithNoCommitId (PatchSet.Id id)
-specifier|public
-specifier|static
-name|PatchSet
-name|createWithNoCommitId
-parameter_list|(
-name|PatchSet
-operator|.
-name|Id
-name|id
-parameter_list|)
-block|{
-return|return
-operator|new
-name|PatchSet
-argument_list|(
-name|id
-argument_list|)
-return|;
-block|}
 DECL|field|id
 specifier|protected
 name|Id
@@ -1006,37 +983,6 @@ specifier|protected
 name|String
 name|description
 decl_stmt|;
-DECL|method|PatchSet ()
-specifier|protected
-name|PatchSet
-parameter_list|()
-block|{}
-DECL|method|PatchSet (PatchSet.Id id)
-specifier|private
-name|PatchSet
-parameter_list|(
-name|PatchSet
-operator|.
-name|Id
-name|id
-parameter_list|)
-block|{
-name|this
-operator|.
-name|id
-operator|=
-name|requireNonNull
-argument_list|(
-name|id
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|commitId
-operator|=
-literal|null
-expr_stmt|;
-block|}
 DECL|method|PatchSet (PatchSet.Id id, ObjectId commitId)
 specifier|public
 name|PatchSet
@@ -1166,11 +1112,6 @@ name|ObjectId
 name|getCommitId
 parameter_list|()
 block|{
-name|requireNonNull
-argument_list|(
-name|commitId
-argument_list|)
-expr_stmt|;
 return|return
 name|commitId
 return|;
