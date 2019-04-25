@@ -365,7 +365,9 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
-literal|"group1, group2"
+literal|"group1"
+argument_list|,
+literal|" group2"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -687,7 +689,9 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
-literal|"group1, group2"
+literal|"group1"
+argument_list|,
+literal|" group2"
 argument_list|)
 argument_list|)
 expr_stmt|;
