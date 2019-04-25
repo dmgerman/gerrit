@@ -1055,7 +1055,7 @@ name|map
 argument_list|(
 name|PatchSet
 operator|::
-name|getUploader
+name|uploader
 argument_list|)
 operator|.
 name|forEach

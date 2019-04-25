@@ -142,7 +142,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getDescription
+name|description
 argument_list|()
 operator|.
 name|orElse

@@ -555,7 +555,7 @@ literal|"Error checking if patch set %s on %s can be rebased"
 argument_list|,
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|dest
@@ -816,7 +816,7 @@ name|matchesAbbreviation
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 name|base
@@ -836,7 +836,7 @@ operator|.
 name|patchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -844,7 +844,7 @@ argument_list|()
 operator|<
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -960,7 +960,7 @@ name|parseCommit
 argument_list|(
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1050,7 +1050,7 @@ condition|(
 operator|!
 name|depPatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|equals
@@ -1102,7 +1102,7 @@ if|if
 condition|(
 name|depPatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -1129,7 +1129,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 expr_stmt|;
 block|}

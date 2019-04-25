@@ -1848,7 +1848,7 @@ name|id
 init|=
 name|in
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -1918,7 +1918,7 @@ name|put
 argument_list|(
 name|in
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2083,7 +2083,7 @@ name|refName
 init|=
 name|in
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 decl_stmt|;
 name|FetchInfo
@@ -2197,7 +2197,7 @@ name|isCurrent
 operator|=
 name|in
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -2214,7 +2214,7 @@ name|_number
 operator|=
 name|in
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -2226,7 +2226,7 @@ name|ref
 operator|=
 name|in
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 expr_stmt|;
 name|out
@@ -2235,7 +2235,7 @@ name|created
 operator|=
 name|in
 operator|.
-name|getCreatedOn
+name|createdOn
 argument_list|()
 expr_stmt|;
 name|out
@@ -2248,7 +2248,7 @@ name|get
 argument_list|(
 name|in
 operator|.
-name|getUploader
+name|uploader
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2295,7 +2295,7 @@ name|description
 operator|=
 name|in
 operator|.
-name|getDescription
+name|description
 argument_list|()
 operator|.
 name|orElse
@@ -2370,7 +2370,7 @@ name|rev
 init|=
 name|in
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2509,7 +2509,7 @@ argument_list|()
 argument_list|,
 name|in
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2638,7 +2638,7 @@ if|if
 condition|(
 name|in
 operator|.
-name|getPushCertificate
+name|pushCertificate
 argument_list|()
 operator|.
 name|isPresent
@@ -2655,7 +2655,7 @@ name|checkPushCertificate
 argument_list|(
 name|in
 operator|.
-name|getPushCertificate
+name|pushCertificate
 argument_list|()
 operator|.
 name|get
@@ -2667,7 +2667,7 @@ name|create
 argument_list|(
 name|in
 operator|.
-name|getUploader
+name|uploader
 argument_list|()
 argument_list|)
 argument_list|)

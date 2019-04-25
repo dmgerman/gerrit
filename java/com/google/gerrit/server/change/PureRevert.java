@@ -361,7 +361,7 @@ operator|.
 name|getCurrentPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 name|claimedOriginalObjectId

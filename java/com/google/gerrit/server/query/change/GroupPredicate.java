@@ -168,7 +168,7 @@ name|groups
 init|=
 name|ps
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 decl_stmt|;
 if|if

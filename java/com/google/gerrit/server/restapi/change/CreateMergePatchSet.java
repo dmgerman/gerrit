@@ -1454,7 +1454,7 @@ name|parseCommit
 argument_list|(
 name|basePS
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1462,7 +1462,7 @@ name|groups
 operator|=
 name|basePS
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 expr_stmt|;
 block|}
@@ -1476,7 +1476,7 @@ name|parseCommit
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1565,7 +1565,7 @@ name|nextPatchSetId
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 decl_stmt|;

@@ -2852,7 +2852,7 @@ name|newMessage
 argument_list|(
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|ctx
@@ -2862,7 +2862,7 @@ argument_list|()
 argument_list|,
 name|patchSet
 operator|.
-name|getCreatedOn
+name|createdOn
 argument_list|()
 argument_list|,
 name|message

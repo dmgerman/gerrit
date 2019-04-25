@@ -1924,7 +1924,7 @@ name|map
 argument_list|(
 name|PatchSet
 operator|::
-name|getCommitId
+name|commitId
 argument_list|)
 operator|.
 name|collect

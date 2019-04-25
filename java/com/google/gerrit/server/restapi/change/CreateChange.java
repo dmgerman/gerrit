@@ -2294,7 +2294,7 @@ name|groups
 operator|=
 name|basePatchSet
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 expr_stmt|;
 block|}
@@ -2757,7 +2757,7 @@ block|{
 return|return
 name|basePatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 return|;
 block|}

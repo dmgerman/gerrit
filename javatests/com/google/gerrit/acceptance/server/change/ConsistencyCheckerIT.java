@@ -1119,7 +1119,7 @@ literal|"Ref missing: "
 operator|+
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -1176,7 +1176,7 @@ name|refName
 init|=
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -1235,7 +1235,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1299,7 +1299,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|serverSideTestRepo
@@ -1445,7 +1445,7 @@ literal|"Ref missing: "
 operator|+
 name|ps2
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -1500,7 +1500,7 @@ name|notes
 argument_list|,
 name|ps1
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1518,7 +1518,7 @@ name|notes
 argument_list|,
 name|ps2
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1635,7 +1635,7 @@ literal|"Ref missing: "
 operator|+
 name|ps2
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -1659,7 +1659,7 @@ literal|"Ref missing: "
 operator|+
 name|ps4
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -1714,7 +1714,7 @@ name|notes
 argument_list|,
 name|ps1
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1732,7 +1732,7 @@ name|notes
 argument_list|,
 name|ps2
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1750,7 +1750,7 @@ name|notes
 argument_list|,
 name|ps3
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1768,7 +1768,7 @@ name|notes
 argument_list|,
 name|ps4
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1944,7 +1944,7 @@ literal|"Ref missing: "
 operator|+
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -2044,7 +2044,7 @@ name|parseCommit
 argument_list|(
 name|ps1
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2061,7 +2061,7 @@ literal|"Multiple patch sets pointing to "
 operator|+
 name|ps1
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2295,7 +2295,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2341,7 +2341,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|serverSideTestRepo
@@ -2428,7 +2428,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|serverSideTestRepo
@@ -2549,7 +2549,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|serverSideTestRepo
@@ -2683,7 +2683,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|serverSideTestRepo
@@ -2825,7 +2825,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2961,7 +2961,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3139,7 +3139,7 @@ argument_list|,
 name|psId2
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -3203,7 +3203,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3411,7 +3411,7 @@ argument_list|,
 name|psId2
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -3454,7 +3454,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|notes
@@ -3647,7 +3647,7 @@ name|containsExactly
 argument_list|(
 name|ps2
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|psId3
@@ -3664,7 +3664,7 @@ argument_list|,
 name|psId3
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -3762,7 +3762,7 @@ name|assertThat
 argument_list|(
 name|ps3
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -3939,12 +3939,12 @@ name|containsExactly
 argument_list|(
 name|ps1
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|ps3
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|psId4
@@ -3961,7 +3961,7 @@ argument_list|,
 name|psId4
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -4168,7 +4168,7 @@ name|containsExactly
 argument_list|(
 name|ps1
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|psId2
@@ -4185,7 +4185,7 @@ argument_list|,
 name|psId2
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -4263,7 +4263,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -4436,7 +4436,7 @@ argument_list|(
 name|notes1
 argument_list|)
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 name|String
@@ -4470,7 +4470,7 @@ argument_list|(
 name|notes1
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -4513,7 +4513,7 @@ argument_list|(
 name|notes2
 argument_list|)
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 name|ChangeNotes
@@ -4543,7 +4543,7 @@ argument_list|(
 name|notes3
 argument_list|)
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 name|FixInput
@@ -5344,7 +5344,7 @@ argument_list|(
 name|notes
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|String

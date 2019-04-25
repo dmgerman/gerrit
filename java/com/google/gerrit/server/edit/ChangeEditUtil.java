@@ -1094,7 +1094,7 @@ condition|(
 operator|!
 name|basePatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -1193,7 +1193,7 @@ name|prior
 init|=
 name|basePatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|ChangeKind
@@ -1257,7 +1257,7 @@ name|append
 argument_list|(
 name|basePatchSet
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 argument_list|)
 operator|.
@@ -1575,7 +1575,7 @@ name|parseCommit
 argument_list|(
 name|basePatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;

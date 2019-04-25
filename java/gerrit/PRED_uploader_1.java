@@ -367,7 +367,7 @@ name|uploaderId
 init|=
 name|patchSet
 operator|.
-name|getUploader
+name|uploader
 argument_list|()
 decl_stmt|;
 if|if

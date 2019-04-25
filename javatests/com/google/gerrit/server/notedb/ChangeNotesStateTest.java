@@ -2615,14 +2615,14 @@ name|of
 argument_list|(
 name|ps2
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|ps2
 argument_list|,
 name|ps1
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|ps1
@@ -5057,7 +5057,7 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-literal|"getId"
+literal|"id"
 argument_list|,
 name|PatchSet
 operator|.
@@ -5068,7 +5068,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"getCommitId"
+literal|"commitId"
 argument_list|,
 name|ObjectId
 operator|.
@@ -5077,7 +5077,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"getUploader"
+literal|"uploader"
 argument_list|,
 name|Account
 operator|.
@@ -5088,7 +5088,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"getCreatedOn"
+literal|"createdOn"
 argument_list|,
 name|Timestamp
 operator|.
@@ -5097,7 +5097,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"getGroups"
+literal|"groups"
 argument_list|,
 operator|new
 name|TypeLiteral
@@ -5116,7 +5116,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"getPushCertificate"
+literal|"pushCertificate"
 argument_list|,
 operator|new
 name|TypeLiteral
@@ -5135,7 +5135,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"getDescription"
+literal|"description"
 argument_list|,
 operator|new
 name|TypeLiteral

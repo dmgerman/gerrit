@@ -1138,7 +1138,7 @@ name|equals
 argument_list|(
 name|currPs
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|&&
@@ -1255,7 +1255,7 @@ name|getUpdate
 argument_list|(
 name|currPs
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 decl_stmt|;

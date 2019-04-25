@@ -820,7 +820,7 @@ name|contains
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 condition|)
@@ -831,7 +831,7 @@ name|add
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 expr_stmt|;

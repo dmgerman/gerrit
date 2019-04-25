@@ -14020,7 +14020,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 comment|// If Commit is already current PatchSet of target Change.
@@ -17737,7 +17737,7 @@ operator|.
 name|getBasePatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -18269,7 +18269,7 @@ name|oldGroups
 init|=
 name|ps
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 decl_stmt|;
 if|if

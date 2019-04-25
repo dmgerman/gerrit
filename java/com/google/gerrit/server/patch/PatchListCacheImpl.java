@@ -954,7 +954,7 @@ name|b
 init|=
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|Whitespace

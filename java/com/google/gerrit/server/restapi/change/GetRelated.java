@@ -859,14 +859,14 @@ name|isEdit
 operator|&&
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
 argument_list|(
 name|basePs
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 condition|)
@@ -970,7 +970,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -1025,7 +1025,7 @@ name|ps
 lambda|->
 name|ps
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 operator|.
 name|stream
@@ -1073,7 +1073,7 @@ name|equals
 argument_list|(
 name|wantedPs
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|changeId
@@ -1089,7 +1089,7 @@ name|patchSet
 argument_list|(
 name|wantedPs
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|==
@@ -1183,7 +1183,7 @@ literal|null
 condition|?
 name|ps
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 else|:
 literal|null

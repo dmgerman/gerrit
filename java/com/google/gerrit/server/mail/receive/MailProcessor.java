@@ -2752,7 +2752,7 @@ name|fileName
 argument_list|,
 name|patchSetForComment
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 operator|(

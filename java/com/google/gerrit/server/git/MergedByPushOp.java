@@ -1252,7 +1252,7 @@ argument_list|()
 argument_list|,
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -1296,7 +1296,7 @@ argument_list|(
 name|patchSet
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;

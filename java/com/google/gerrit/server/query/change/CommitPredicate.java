@@ -302,7 +302,7 @@ block|{
 return|return
 name|p
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -319,7 +319,7 @@ name|matchesAbbreviation
 argument_list|(
 name|p
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 name|id

@@ -1038,7 +1038,7 @@ name|change
 argument_list|,
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|info
@@ -1755,7 +1755,7 @@ name|equals
 argument_list|(
 name|ps
 operator|.
-name|getUploader
+name|uploader
 argument_list|()
 argument_list|)
 argument_list|,
@@ -1765,7 +1765,7 @@ name|accountId
 argument_list|,
 name|ps
 operator|.
-name|getUploader
+name|uploader
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1867,7 +1867,7 @@ name|newApproval
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|user

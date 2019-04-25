@@ -1055,7 +1055,7 @@ operator|.
 name|getCurrentPatchSet
 argument_list|()
 operator|.
-name|getDescription
+name|description
 argument_list|()
 argument_list|)
 operator|.
@@ -1103,7 +1103,7 @@ operator|.
 name|getCurrentPatchSet
 argument_list|()
 operator|.
-name|getDescription
+name|description
 argument_list|()
 argument_list|)
 operator|.
@@ -7818,7 +7818,7 @@ literal|" and "
 operator|+
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -7874,7 +7874,7 @@ name|isEqualTo
 argument_list|(
 name|ps1
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -7914,7 +7914,7 @@ name|assertThat
 argument_list|(
 name|ps1
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|.
@@ -7937,7 +7937,7 @@ name|assertThat
 argument_list|(
 name|ps1
 operator|.
-name|getUploader
+name|uploader
 argument_list|()
 argument_list|)
 operator|.
@@ -7979,7 +7979,7 @@ name|assertThat
 argument_list|(
 name|ps2
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|.
@@ -8045,7 +8045,7 @@ name|isEqualTo
 argument_list|(
 name|ps2
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8053,7 +8053,7 @@ name|assertThat
 argument_list|(
 name|ps2
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -8061,7 +8061,7 @@ name|isNotEqualTo
 argument_list|(
 name|ps1
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8069,7 +8069,7 @@ name|assertThat
 argument_list|(
 name|ps2
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -8082,7 +8082,7 @@ name|assertThat
 argument_list|(
 name|ps2
 operator|.
-name|getUploader
+name|uploader
 argument_list|()
 argument_list|)
 operator|.
@@ -8098,7 +8098,7 @@ name|assertThat
 argument_list|(
 name|ps2
 operator|.
-name|getCreatedOn
+name|createdOn
 argument_list|()
 argument_list|)
 operator|.
@@ -8130,7 +8130,7 @@ name|setPatchSetId
 argument_list|(
 name|ps1
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8168,7 +8168,7 @@ name|isEqualTo
 argument_list|(
 name|ps2
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8538,7 +8538,7 @@ argument_list|(
 name|psId1
 argument_list|)
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 argument_list|)
 operator|.
@@ -8594,7 +8594,7 @@ argument_list|(
 name|psId1
 argument_list|)
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 argument_list|)
 operator|.
@@ -8688,7 +8688,7 @@ argument_list|(
 name|psId2
 argument_list|)
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 argument_list|)
 operator|.
@@ -8709,7 +8709,7 @@ argument_list|(
 name|psId1
 argument_list|)
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 argument_list|)
 operator|.
@@ -8871,7 +8871,7 @@ argument_list|(
 name|psId1
 argument_list|)
 operator|.
-name|getPushCertificate
+name|pushCertificate
 argument_list|()
 argument_list|)
 operator|.
@@ -8887,7 +8887,7 @@ argument_list|(
 name|psId2
 argument_list|)
 operator|.
-name|getPushCertificate
+name|pushCertificate
 argument_list|()
 argument_list|)
 operator|.
@@ -9009,7 +9009,7 @@ argument_list|(
 name|psId1
 argument_list|)
 operator|.
-name|getPushCertificate
+name|pushCertificate
 argument_list|()
 argument_list|)
 operator|.
@@ -9025,7 +9025,7 @@ argument_list|(
 name|psId2
 argument_list|)
 operator|.
-name|getPushCertificate
+name|pushCertificate
 argument_list|()
 argument_list|)
 operator|.

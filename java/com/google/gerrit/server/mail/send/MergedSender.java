@@ -500,7 +500,7 @@ argument_list|()
 argument_list|,
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 literal|null

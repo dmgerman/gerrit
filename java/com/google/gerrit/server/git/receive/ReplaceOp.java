@@ -2131,7 +2131,7 @@ literal|null
 condition|?
 name|prevPs
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 else|:
 name|ImmutableList
@@ -3945,7 +3945,7 @@ literal|"Cannot send email for new patch set %s"
 argument_list|,
 name|newPatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

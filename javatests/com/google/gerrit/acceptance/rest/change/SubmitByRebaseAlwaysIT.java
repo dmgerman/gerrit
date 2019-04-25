@@ -901,7 +901,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -927,7 +927,7 @@ literal|1
 argument_list|)
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name

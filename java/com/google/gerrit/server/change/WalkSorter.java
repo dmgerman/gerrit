@@ -1458,7 +1458,7 @@ literal|null
 operator|||
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1466,7 +1466,7 @@ argument_list|()
 operator|>
 name|maxPs
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1501,7 +1501,7 @@ name|parseCommit
 argument_list|(
 name|maxPs
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1548,7 +1548,7 @@ literal|"missing commit %s for patch set %s"
 argument_list|,
 name|maxPs
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -1556,7 +1556,7 @@ argument_list|()
 argument_list|,
 name|maxPs
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1587,7 +1587,7 @@ name|contains
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 return|;

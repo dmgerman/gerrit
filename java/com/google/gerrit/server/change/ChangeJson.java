@@ -2412,7 +2412,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|,
@@ -5914,7 +5914,7 @@ name|put
 argument_list|(
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|patchSet

@@ -539,7 +539,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -720,7 +720,7 @@ argument_list|,
 name|psId
 argument_list|)
 operator|.
-name|getDescription
+name|description
 argument_list|()
 operator|.
 name|orElse

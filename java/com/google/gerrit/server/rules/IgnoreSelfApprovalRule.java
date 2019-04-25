@@ -566,7 +566,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getUploader
+name|uploader
 argument_list|()
 expr_stmt|;
 block|}

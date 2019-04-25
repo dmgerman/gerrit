@@ -280,7 +280,7 @@ name|toProto
 argument_list|(
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -293,7 +293,7 @@ name|toProto
 argument_list|(
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -306,7 +306,7 @@ name|toProto
 argument_list|(
 name|patchSet
 operator|.
-name|getUploader
+name|uploader
 argument_list|()
 argument_list|)
 argument_list|)
@@ -315,7 +315,7 @@ name|setCreatedOn
 argument_list|(
 name|patchSet
 operator|.
-name|getCreatedOn
+name|createdOn
 argument_list|()
 operator|.
 name|getTime
@@ -330,7 +330,7 @@ name|groups
 init|=
 name|patchSet
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 decl_stmt|;
 if|if
@@ -357,7 +357,7 @@ expr_stmt|;
 block|}
 name|patchSet
 operator|.
-name|getPushCertificate
+name|pushCertificate
 argument_list|()
 operator|.
 name|ifPresent
@@ -369,7 +369,7 @@ argument_list|)
 expr_stmt|;
 name|patchSet
 operator|.
-name|getDescription
+name|description
 argument_list|()
 operator|.
 name|ifPresent

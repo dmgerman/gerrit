@@ -630,7 +630,7 @@ name|id
 argument_list|,
 name|patchSet
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 argument_list|)
 argument_list|)
@@ -709,7 +709,7 @@ name|parseCommit
 argument_list|(
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 argument_list|,
@@ -764,7 +764,7 @@ name|clearReviewed
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)

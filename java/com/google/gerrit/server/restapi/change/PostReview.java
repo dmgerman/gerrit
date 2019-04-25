@@ -3233,7 +3233,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|input
@@ -4561,7 +4561,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 name|ensurePathRefersToAvailableOrMagicFile
@@ -4642,7 +4642,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|DiffSummaryKey

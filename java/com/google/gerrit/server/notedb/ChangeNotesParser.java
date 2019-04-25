@@ -2222,7 +2222,7 @@ name|put
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|ps
@@ -3482,7 +3482,7 @@ argument_list|(
 name|psId
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|orElseThrow
@@ -3624,7 +3624,7 @@ if|if
 condition|(
 name|pending
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 operator|.
 name|isEmpty
@@ -4533,7 +4533,7 @@ condition|(
 operator|!
 name|pending
 operator|.
-name|getDescription
+name|description
 argument_list|()
 operator|.
 name|isPresent
@@ -4884,7 +4884,7 @@ name|commitId
 init|=
 name|b
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|orElseThrow
@@ -4898,7 +4898,7 @@ literal|"never parsed commit ID for patch set "
 operator|+
 name|b
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -7181,7 +7181,7 @@ literal|null
 operator|&&
 name|pending
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|isPresent

@@ -532,7 +532,7 @@ name|input
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Parse a PatchSet.Id from a {@link #getRefName()} result. */
+comment|/** Parse a PatchSet.Id from a {@link #refName()} result. */
 DECL|method|fromRef (String ref)
 specifier|public
 specifier|static
@@ -891,11 +891,11 @@ name|Id
 name|id
 parameter_list|)
 function_decl|;
-DECL|method|getId ()
+DECL|method|id ()
 specifier|public
 specifier|abstract
 name|Id
-name|getId
+name|id
 parameter_list|()
 function_decl|;
 DECL|method|commitId (ObjectId commitId)
@@ -908,14 +908,14 @@ name|ObjectId
 name|commitId
 parameter_list|)
 function_decl|;
-DECL|method|getCommitId ()
+DECL|method|commitId ()
 specifier|public
 specifier|abstract
 name|Optional
 argument_list|<
 name|ObjectId
 argument_list|>
-name|getCommitId
+name|commitId
 parameter_list|()
 function_decl|;
 DECL|method|uploader (Account.Id uploader)
@@ -953,14 +953,14 @@ argument_list|>
 name|groups
 parameter_list|)
 function_decl|;
-DECL|method|getGroups ()
+DECL|method|groups ()
 specifier|public
 specifier|abstract
 name|ImmutableList
 argument_list|<
 name|String
 argument_list|>
-name|getGroups
+name|groups
 parameter_list|()
 function_decl|;
 DECL|method|pushCertificate (Optional<String> pushCertificate)
@@ -1009,14 +1009,14 @@ name|String
 name|description
 parameter_list|)
 function_decl|;
-DECL|method|getDescription ()
+DECL|method|description ()
 specifier|public
 specifier|abstract
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|getDescription
+name|description
 parameter_list|()
 function_decl|;
 DECL|method|build ()
@@ -1028,81 +1028,81 @@ parameter_list|()
 function_decl|;
 block|}
 comment|/** ID of the patch set. */
-DECL|method|getId ()
+DECL|method|id ()
 specifier|public
 specifier|abstract
 name|Id
-name|getId
+name|id
 parameter_list|()
 function_decl|;
 comment|/**    * Commit ID of the patch set, also known as the revision.    *    *<p>If this is a deserialized instance that was originally serialized by an older version of    * Gerrit, and the old data erroneously did not include a {@code commitId}, then this method will    * return {@link ObjectId#zeroId()}.    */
-DECL|method|getCommitId ()
+DECL|method|commitId ()
 specifier|public
 specifier|abstract
 name|ObjectId
-name|getCommitId
+name|commitId
 parameter_list|()
 function_decl|;
 comment|/**    * Account that uploaded the patch set.    *    *<p>If this is a deserialized instance that was originally serialized by an older version of    * Gerrit, and the old data erroneously did not include an {@code uploader}, then this method will    * return an account ID of 0.    */
-DECL|method|getUploader ()
+DECL|method|uploader ()
 specifier|public
 specifier|abstract
 name|Account
 operator|.
 name|Id
-name|getUploader
+name|uploader
 parameter_list|()
 function_decl|;
 comment|/**    * When this patch set was first introduced onto the change.    *    *<p>If this is a deserialized instance that was originally serialized by an older version of    * Gerrit, and the old data erroneously did not include a {@code createdOn}, then this method will    * return a timestamp of 0.    */
-DECL|method|getCreatedOn ()
+DECL|method|createdOn ()
 specifier|public
 specifier|abstract
 name|Timestamp
-name|getCreatedOn
+name|createdOn
 parameter_list|()
 function_decl|;
 comment|/**    * Opaque group identifier, usually assigned during creation.    *    *<p>This field is actually a comma-separated list of values, as in rare cases involving merge    * commits a patch set may belong to multiple groups.    *    *<p>Changes on the same branch having patch sets with intersecting groups are considered    * related, as in the "Related Changes" tab.    */
-DECL|method|getGroups ()
+DECL|method|groups ()
 specifier|public
 specifier|abstract
 name|ImmutableList
 argument_list|<
 name|String
 argument_list|>
-name|getGroups
+name|groups
 parameter_list|()
 function_decl|;
 comment|/** Certificate sent with a push that created this patch set. */
-DECL|method|getPushCertificate ()
+DECL|method|pushCertificate ()
 specifier|public
 specifier|abstract
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|getPushCertificate
+name|pushCertificate
 parameter_list|()
 function_decl|;
 comment|/**    * Optional user-supplied description for this patch set.    *    *<p>When this field is an empty {@code Optional}, the description was never set on the patch    * set. When this field is present but an empty string, the description was set and later cleared.    */
-DECL|method|getDescription ()
+DECL|method|description ()
 specifier|public
 specifier|abstract
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|getDescription
+name|description
 parameter_list|()
 function_decl|;
 comment|/** Patch set number. */
-DECL|method|getPatchSetId ()
+DECL|method|number ()
 specifier|public
 name|int
-name|getPatchSetId
+name|number
 parameter_list|()
 block|{
 return|return
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1110,14 +1110,14 @@ argument_list|()
 return|;
 block|}
 comment|/** Name of the corresponding patch set ref. */
-DECL|method|getRefName ()
+DECL|method|refName ()
 specifier|public
 name|String
-name|getRefName
+name|refName
 parameter_list|()
 block|{
 return|return
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName

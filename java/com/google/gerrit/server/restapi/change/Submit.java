@@ -1705,7 +1705,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -1733,7 +1733,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2677,7 +2677,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 argument_list|)
 argument_list|,
@@ -2700,7 +2700,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 argument_list|,
@@ -3146,7 +3146,7 @@ name|notes
 argument_list|()
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;

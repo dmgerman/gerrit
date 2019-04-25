@@ -1001,7 +1001,7 @@ name|parseCommit
 argument_list|(
 name|originalPatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1068,7 +1068,7 @@ name|notes
 argument_list|,
 name|originalPatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1139,7 +1139,7 @@ name|getRefs
 argument_list|(
 name|originalPatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|changeId
@@ -1219,7 +1219,7 @@ literal|": Patch Set "
 operator|+
 name|originalPatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1273,7 +1273,7 @@ operator|.
 name|patchSet
 argument_list|()
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 argument_list|)
 expr_stmt|;

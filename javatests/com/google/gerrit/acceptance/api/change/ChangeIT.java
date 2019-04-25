@@ -11632,7 +11632,7 @@ name|assertThat
 argument_list|(
 name|ps3
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -11651,7 +11651,7 @@ name|base
 operator|=
 name|ps3
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -11698,7 +11698,7 @@ name|assertThat
 argument_list|(
 name|ps2
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -11717,7 +11717,7 @@ name|base
 operator|=
 name|ps2
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -11764,7 +11764,7 @@ name|assertThat
 argument_list|(
 name|ps1
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -11814,7 +11814,7 @@ name|revision
 argument_list|(
 name|ps1
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -25219,7 +25219,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 operator|+
 literal|":ps"
@@ -25355,7 +25355,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 operator|+
 literal|":ps"
@@ -25491,7 +25491,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 operator|+
 literal|":ps"

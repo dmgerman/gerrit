@@ -2762,7 +2762,7 @@ name|id
 init|=
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|Whitespace
@@ -3271,7 +3271,7 @@ if|if
 condition|(
 name|p
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -3625,7 +3625,7 @@ name|parseCommit
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3760,7 +3760,7 @@ literal|null
 operator|&&
 name|currentPatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -3786,7 +3786,7 @@ if|if
 condition|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -5076,7 +5076,7 @@ name|get
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 name|ref
@@ -5532,7 +5532,7 @@ literal|"/"
 operator|+
 name|ps
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 argument_list|)
 condition|)
@@ -5555,7 +5555,7 @@ literal|"/"
 operator|+
 name|ps
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 argument_list|)
 condition|)

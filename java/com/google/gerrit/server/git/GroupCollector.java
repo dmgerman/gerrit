@@ -527,7 +527,7 @@ operator|.
 name|getBasePatchSet
 argument_list|()
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 return|;
 block|}
@@ -537,7 +537,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 return|;
 block|}
@@ -681,7 +681,7 @@ literal|null
 condition|?
 name|ps
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 else|:
 literal|null

@@ -801,7 +801,7 @@ condition|(
 operator|!
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -861,7 +861,7 @@ name|commit
 init|=
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|Ref

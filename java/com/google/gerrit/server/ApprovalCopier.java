@@ -819,7 +819,7 @@ name|get
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 control|)
@@ -891,7 +891,7 @@ name|tailMap
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -923,7 +923,7 @@ name|get
 argument_list|(
 name|priorPs
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -955,12 +955,12 @@ name|repoConfig
 argument_list|,
 name|priorPs
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1023,7 +1023,7 @@ name|psa
 argument_list|,
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|kind
@@ -1069,7 +1069,7 @@ name|psa
 argument_list|,
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1161,7 +1161,7 @@ name|put
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get

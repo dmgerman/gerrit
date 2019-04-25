@@ -654,7 +654,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 name|path
@@ -743,7 +743,7 @@ name|parseCommit
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -860,7 +860,7 @@ argument_list|()
 argument_list|,
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.

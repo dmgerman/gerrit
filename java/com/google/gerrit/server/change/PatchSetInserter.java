@@ -1407,7 +1407,7 @@ name|newGroups
 operator|=
 name|prevPs
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 expr_stmt|;
 block|}
@@ -1489,7 +1489,7 @@ name|newMessage
 argument_list|(
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|ctx

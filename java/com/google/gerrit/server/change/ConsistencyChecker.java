@@ -1908,7 +1908,7 @@ name|ps
 lambda|->
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -1971,7 +1971,7 @@ name|psNum
 init|=
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1982,7 +1982,7 @@ name|refName
 init|=
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -1993,7 +1993,7 @@ name|objId
 init|=
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|patchSetsBySha
@@ -2146,7 +2146,7 @@ argument_list|()
 argument_list|,
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2178,7 +2178,7 @@ if|if
 condition|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -2268,7 +2268,7 @@ argument_list|()
 argument_list|,
 name|PatchSet
 operator|::
-name|getPatchSetId
+name|number
 argument_list|)
 argument_list|)
 argument_list|)
@@ -2423,7 +2423,7 @@ literal|"Error checking whether patch set "
 operator|+
 name|currPs
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -2438,7 +2438,7 @@ name|checkMergedBitMatchesStatus
 argument_list|(
 name|currPs
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|currPsCommit
@@ -2591,7 +2591,7 @@ literal|" destination ref %s (%s), but change status is %s"
 argument_list|,
 name|currPs
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -3879,7 +3879,7 @@ name|updateRef
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -3899,7 +3899,7 @@ name|setNewObjectId
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4035,7 +4035,7 @@ name|msg
 argument_list|,
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -4540,7 +4540,7 @@ name|contains
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 condition|)
@@ -4551,7 +4551,7 @@ name|add
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

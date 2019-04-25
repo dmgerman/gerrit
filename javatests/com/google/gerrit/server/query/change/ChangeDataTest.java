@@ -302,7 +302,7 @@ name|currId
 init|=
 name|curr1
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get

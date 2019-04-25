@@ -2265,7 +2265,7 @@ name|patchSetId
 operator|==
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -2275,7 +2275,7 @@ literal|"cannot set commit ID for patch set %s on comment %s"
 argument_list|,
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|c
@@ -2364,7 +2364,7 @@ name|setCommitId
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 expr_stmt|;

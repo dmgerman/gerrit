@@ -3437,7 +3437,7 @@ name|ps
 lambda|->
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -4909,7 +4909,7 @@ name|ps
 lambda|->
 name|ps
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 operator|.
 name|stream

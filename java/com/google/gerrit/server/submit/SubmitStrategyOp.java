@@ -1781,7 +1781,7 @@ name|n
 init|=
 name|newPatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 name|checkState
@@ -2145,7 +2145,7 @@ literal|null
 condition|?
 name|prevPs
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 else|:
 name|GroupCollector

@@ -2145,7 +2145,7 @@ name|parseCommit
 argument_list|(
 name|currentPs
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2235,7 +2235,7 @@ condition|(
 operator|!
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2361,7 +2361,7 @@ if|if
 condition|(
 name|currentPs
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 operator|.
 name|isEmpty
@@ -2375,7 +2375,7 @@ name|rev
 init|=
 name|currentPs
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2403,7 +2403,7 @@ argument_list|()
 argument_list|,
 name|currentPs
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 argument_list|)
 control|)
@@ -2430,7 +2430,7 @@ name|parseCommit
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2516,7 +2516,7 @@ name|isCurrentPatchSet
 operator|=
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -2601,7 +2601,7 @@ name|revision
 operator|=
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2613,7 +2613,7 @@ name|ref
 operator|=
 name|ps
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 expr_stmt|;
 return|return
@@ -2897,7 +2897,7 @@ name|psa
 argument_list|,
 name|p
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|approvals
@@ -3255,7 +3255,7 @@ name|revision
 operator|=
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -3267,7 +3267,7 @@ name|number
 operator|=
 name|patchSet
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 expr_stmt|;
 name|p
@@ -3276,7 +3276,7 @@ name|ref
 operator|=
 name|patchSet
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 expr_stmt|;
 name|p
@@ -3287,7 +3287,7 @@ name|asAccountAttribute
 argument_list|(
 name|patchSet
 operator|.
-name|getUploader
+name|uploader
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3297,7 +3297,7 @@ name|createdOn
 operator|=
 name|patchSet
 operator|.
-name|getCreatedOn
+name|createdOn
 argument_list|()
 operator|.
 name|getTime
@@ -3312,7 +3312,7 @@ name|pId
 init|=
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 try|try
@@ -3542,7 +3542,7 @@ literal|"Cannot load patch set data for %s"
 argument_list|,
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

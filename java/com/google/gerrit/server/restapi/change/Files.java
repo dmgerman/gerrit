@@ -1336,7 +1336,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 name|baseResource
@@ -1375,7 +1375,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 name|parentNum
@@ -1590,7 +1590,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1748,7 +1748,7 @@ name|findReviewed
 argument_list|(
 name|patchSetId
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|userId
@@ -1782,7 +1782,7 @@ name|equals
 argument_list|(
 name|patchSetId
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 condition|)
@@ -2340,7 +2340,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|userId

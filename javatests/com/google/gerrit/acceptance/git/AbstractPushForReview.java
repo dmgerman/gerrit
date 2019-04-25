@@ -6481,7 +6481,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 operator|+
 literal|":ps"
@@ -6608,7 +6608,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 operator|+
 literal|":ps"
@@ -6714,7 +6714,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 operator|+
 literal|":ps"
@@ -10077,7 +10077,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 operator|+
 literal|":change"
@@ -12176,7 +12176,7 @@ name|patchSets
 argument_list|()
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -12300,7 +12300,7 @@ name|patchSets
 argument_list|()
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -18415,12 +18415,12 @@ name|put
 argument_list|(
 name|ps
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 argument_list|,
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
