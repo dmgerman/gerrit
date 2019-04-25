@@ -402,20 +402,6 @@ name|gerrit
 operator|.
 name|metrics
 operator|.
-name|Histogram1
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|metrics
-operator|.
 name|MetricMaker
 import|;
 end_import
@@ -687,7 +673,7 @@ name|Metrics
 block|{
 DECL|field|attemptCounts
 specifier|final
-name|Histogram1
+name|Counter1
 argument_list|<
 name|ActionType
 argument_list|>
@@ -731,16 +717,16 @@ name|attemptCounts
 operator|=
 name|metricMaker
 operator|.
-name|newHistogram
+name|newCounter
 argument_list|(
-literal|"action/retry_attempt_counts"
+literal|"action/retry_attempt_count"
 argument_list|,
 operator|new
 name|Description
 argument_list|(
-literal|"Distribution of number of attempts made by RetryHelper to execute an action"
+literal|"Number of retry attempts made by RetryHelper to execute an action"
 operator|+
-literal|" (1 == single attempt, no retry)"
+literal|" (0 == single attempt, no retry)"
 argument_list|)
 operator|.
 name|setCumulative
@@ -1463,12 +1449,11 @@ name|getAttemptCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|metrics
 operator|.
 name|attemptCounts
 operator|.
-name|record
+name|incrementBy
 argument_list|(
 name|actionType
 argument_list|,
@@ -1476,8 +1461,11 @@ name|listener
 operator|.
 name|getAttemptCount
 argument_list|()
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_function
