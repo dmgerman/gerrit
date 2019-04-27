@@ -72,6 +72,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -464,7 +478,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addChange ( String id, Map<Change.Id, ChangeResource> changes, ProjectState projectState)
+DECL|method|addChange ( String id, Map<Change.Id, ChangeResource> changes, @Nullable ProjectState projectState)
 specifier|public
 name|void
 name|addChange
@@ -482,6 +496,8 @@ name|ChangeResource
 argument_list|>
 name|changes
 parameter_list|,
+annotation|@
+name|Nullable
 name|ProjectState
 name|projectState
 parameter_list|)
@@ -504,7 +520,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addChange ( String id, Map<Change.Id, ChangeResource> changes, ProjectState projectState, boolean useIndex)
+DECL|method|addChange ( String id, Map<Change.Id, ChangeResource> changes, @Nullable ProjectState projectState, boolean useIndex)
 specifier|public
 name|void
 name|addChange
@@ -522,6 +538,8 @@ name|ChangeResource
 argument_list|>
 name|changes
 parameter_list|,
+annotation|@
+name|Nullable
 name|ProjectState
 name|projectState
 parameter_list|,
@@ -654,6 +672,10 @@ continue|continue;
 block|}
 if|if
 condition|(
+name|projectState
+operator|!=
+literal|null
+operator|&&
 operator|!
 name|projectState
 operator|.
