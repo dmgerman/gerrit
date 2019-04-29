@@ -279,7 +279,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|PatchSetApproval (PatchSet.Id psId, PatchSetApproval src)
-specifier|public
+specifier|private
 name|PatchSetApproval
 parameter_list|(
 name|PatchSet
@@ -340,24 +340,40 @@ operator|.
 name|postSubmit
 expr_stmt|;
 block|}
-DECL|method|PatchSetApproval (PatchSetApproval src)
+DECL|method|copyWithPatchSet (PatchSet.Id psId)
 specifier|public
 name|PatchSetApproval
+name|copyWithPatchSet
 parameter_list|(
-name|PatchSetApproval
-name|src
+name|PatchSet
+operator|.
+name|Id
+name|psId
 parameter_list|)
 block|{
-name|this
+return|return
+operator|new
+name|PatchSetApproval
 argument_list|(
-name|src
-operator|.
+name|psId
+argument_list|,
+name|this
+argument_list|)
+return|;
+block|}
+DECL|method|copy ()
+specifier|public
+name|PatchSetApproval
+name|copy
+parameter_list|()
+block|{
+return|return
+name|copyWithPatchSet
+argument_list|(
 name|getPatchSetId
 argument_list|()
-argument_list|,
-name|src
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 DECL|method|getKey ()
 specifier|public

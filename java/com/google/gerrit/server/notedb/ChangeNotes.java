@@ -2446,14 +2446,13 @@ operator|.
 name|getKey
 argument_list|()
 argument_list|,
-operator|new
-name|PatchSetApproval
-argument_list|(
 name|e
 operator|.
 name|getValue
 argument_list|()
-argument_list|)
+operator|.
+name|copy
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
