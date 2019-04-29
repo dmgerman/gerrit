@@ -516,14 +516,14 @@ argument_list|)
 operator|.
 name|annotatedWith
 argument_list|(
-name|GsonEventDeserializer
+name|EventGson
 operator|.
 name|class
 argument_list|)
 operator|.
 name|toProvider
 argument_list|(
-name|GsonEventDeserializerProvider
+name|EventGsonProvider
 operator|.
 name|class
 argument_list|)
