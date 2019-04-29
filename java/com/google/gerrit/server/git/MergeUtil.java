@@ -116,6 +116,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
+operator|.
+name|abbreviateName
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -452,7 +468,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1352,6 +1368,16 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
+comment|/**    * Length of abbreviated hex SHA-1s in merged filenames.    *    *<p>This is a constant so output is stable over time even if the SHA-1 prefix becomes ambiguous.    */
+DECL|field|NAME_ABBREV_LEN
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|NAME_ABBREV_LEN
+init|=
+literal|6
+decl_stmt|;
 DECL|class|PluggableCommitMessageGenerator
 specifier|static
 class|class
@@ -1385,7 +1411,7 @@ operator|=
 name|changeMessageModifiers
 expr_stmt|;
 block|}
-DECL|method|generate ( RevCommit original, RevCommit mergeTip, Branch.NameKey dest, String originalMessage)
+DECL|method|generate ( RevCommit original, RevCommit mergeTip, BranchNameKey dest, String originalMessage)
 specifier|public
 name|String
 name|generate
@@ -1396,9 +1422,7 @@ parameter_list|,
 name|RevCommit
 name|mergeTip
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 parameter_list|,
 name|String
@@ -2479,15 +2503,12 @@ literal|"s (%s %s)"
 argument_list|,
 name|oursName
 argument_list|,
-name|ours
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-literal|6
+name|ours
+argument_list|,
+name|NAME_ABBREV_LEN
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|,
 name|oursMsg
 operator|.
@@ -2524,15 +2545,12 @@ literal|"s (%s %s)"
 argument_list|,
 name|theirsName
 argument_list|,
-name|theirs
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-literal|6
+name|theirs
+argument_list|,
+name|NAME_ABBREV_LEN
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|,
 name|theirsMsg
 operator|.
@@ -4585,7 +4603,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|mergeOneCommit ( PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, Config repoConfig, Branch.NameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
+DECL|method|mergeOneCommit ( PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, Config repoConfig, BranchNameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
 name|mergeOneCommit
@@ -4605,9 +4623,7 @@ parameter_list|,
 name|Config
 name|repoConfig
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|CodeReviewCommit
@@ -4864,7 +4880,7 @@ return|return
 name|failed
 return|;
 block|}
-DECL|method|writeMergeCommit ( PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, Branch.NameKey destBranch, CodeReviewCommit mergeTip, ObjectId treeId, CodeReviewCommit n)
+DECL|method|writeMergeCommit ( PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, BranchNameKey destBranch, CodeReviewCommit mergeTip, ObjectId treeId, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
 name|writeMergeCommit
@@ -4881,9 +4897,7 @@ parameter_list|,
 name|ObjectInserter
 name|inserter
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|CodeReviewCommit

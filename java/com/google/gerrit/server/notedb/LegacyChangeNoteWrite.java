@@ -328,6 +328,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|PersonIdent
 import|;
 end_import
@@ -539,7 +553,7 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Build a note that contains the metadata for and the contents of all of the comments in the    * given comments.    *    * @param comments Comments to be written to the output stream, keyed by patch set ID; multiple    *     patch sets are allowed since base revisions may be shared across patch sets. All of the    *     comments must share the same RevId, and all the comments for a given patch set must have    *     the same side.    * @param out output stream to write to.    */
+comment|/**    * Build a note that contains the metadata for and the contents of all of the comments in the    * given comments.    *    * @param comments Comments to be written to the output stream, keyed by patch set ID; multiple    *     patch sets are allowed since base revisions may be shared across patch sets. All of the    *     comments must share the same commitId, and all the comments for a given patch set must have    *     the same side.    * @param out output stream to write to.    */
 annotation|@
 name|UsedAt
 argument_list|(
@@ -622,8 +636,8 @@ name|streamWriter
 argument_list|)
 init|)
 block|{
-name|String
-name|revId
+name|ObjectId
+name|commitId
 init|=
 name|comments
 operator|.
@@ -636,7 +650,16 @@ operator|.
 name|next
 argument_list|()
 operator|.
-name|revId
+name|getCommitId
+argument_list|()
+decl_stmt|;
+name|String
+name|commitName
+init|=
+name|commitId
+operator|.
+name|name
+argument_list|()
 decl_stmt|;
 name|appendHeaderField
 argument_list|(
@@ -646,7 +669,7 @@ name|ChangeNoteUtil
 operator|.
 name|REVISION
 argument_list|,
-name|revId
+name|commitName
 argument_list|)
 expr_stmt|;
 for|for
@@ -756,22 +779,23 @@ control|)
 block|{
 name|checkArgument
 argument_list|(
-name|revId
+name|commitId
 operator|.
 name|equals
 argument_list|(
 name|c
 operator|.
-name|revId
+name|getCommitId
+argument_list|()
 argument_list|)
 argument_list|,
-literal|"All comments being added must have all the same RevId. The "
+literal|"All comments being added must have all the same commitId. The "
 operator|+
-literal|"comment below does not have the same RevId as the others "
+literal|"comment below does not have the same commitId as the others "
 operator|+
 literal|"(%s).\n%s"
 argument_list|,
-name|revId
+name|commitId
 argument_list|,
 name|c
 argument_list|)

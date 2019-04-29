@@ -356,7 +356,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1287,14 +1287,12 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|newDest
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -1474,9 +1472,7 @@ name|change
 decl_stmt|;
 DECL|field|newDestKey
 specifier|private
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|newDestKey
 decl_stmt|;
 DECL|method|Op (MoveInput input)
@@ -1563,9 +1559,9 @@ argument_list|()
 decl_stmt|;
 name|newDestKey
 operator|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|projectKey
 argument_list|,
@@ -1574,9 +1570,7 @@ operator|.
 name|destinationBranch
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|changePrevDest
 init|=
 name|change
@@ -1642,10 +1636,6 @@ name|revWalk
 operator|.
 name|parseCommit
 argument_list|(
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
 name|psUtil
 operator|.
 name|current
@@ -1656,12 +1646,8 @@ name|getNotes
 argument_list|()
 argument_list|)
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

@@ -264,7 +264,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1624,14 +1624,12 @@ name|R_TAGS
 argument_list|)
 condition|)
 block|{
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branchKey
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|projectState
 operator|.

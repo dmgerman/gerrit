@@ -298,7 +298,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1318,9 +1318,7 @@ operator|.
 name|getProject
 argument_list|()
 decl_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 init|=
 name|change
@@ -1454,18 +1452,10 @@ name|rw
 operator|.
 name|parseCommit
 argument_list|(
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
 name|basePS
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|groups
@@ -1484,18 +1474,10 @@ name|rw
 operator|.
 name|parseCommit
 argument_list|(
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
 name|ps
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1827,7 +1809,7 @@ name|change
 argument_list|)
 return|;
 block|}
-DECL|method|createMergeCommit ( MergePatchSetInput in, ProjectState projectState, Branch.NameKey dest, Repository git, ObjectInserter oi, RevWalk rw, RevCommit currentPsCommit, RevCommit sourceCommit, PersonIdent author, ObjectId changeId)
+DECL|method|createMergeCommit ( MergePatchSetInput in, ProjectState projectState, BranchNameKey dest, Repository git, ObjectInserter oi, RevWalk rw, RevCommit currentPsCommit, RevCommit sourceCommit, PersonIdent author, ObjectId changeId)
 specifier|private
 name|RevCommit
 name|createMergeCommit
@@ -1838,9 +1820,7 @@ parameter_list|,
 name|ProjectState
 name|projectState
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 parameter_list|,
 name|Repository

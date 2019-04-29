@@ -362,7 +362,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -431,9 +431,7 @@ name|requestScopeOperations
 decl_stmt|;
 DECL|field|testBranch
 specifier|private
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|testBranch
 decl_stmt|;
 annotation|@
@@ -448,9 +446,9 @@ name|Exception
 block|{
 name|testBranch
 operator|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -804,9 +802,9 @@ argument_list|)
 expr_stmt|;
 name|assertCreateSucceeds
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -861,9 +859,9 @@ argument_list|)
 expr_stmt|;
 name|assertCreateFails
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|allUsers
 argument_list|,
@@ -944,9 +942,9 @@ argument_list|)
 expr_stmt|;
 name|assertCreateFails
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|allUsers
 argument_list|,
@@ -1019,14 +1017,12 @@ name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|branch (Branch.NameKey branch)
+DECL|method|branch (BranchNameKey branch)
 specifier|private
 name|BranchApi
 name|branch
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 throws|throws
@@ -1058,14 +1054,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|assertCreateSucceeds (Branch.NameKey branch)
+DECL|method|assertCreateSucceeds (BranchNameKey branch)
 specifier|private
 name|void
 name|assertCreateSucceeds
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 throws|throws
@@ -1105,14 +1099,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertCreateFails ( Branch.NameKey branch, Class<? extends RestApiException> errType, String errMsg)
+DECL|method|assertCreateFails ( BranchNameKey branch, Class<? extends RestApiException> errType, String errMsg)
 specifier|private
 name|void
 name|assertCreateFails
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Class
@@ -1141,14 +1133,12 @@ name|errMsg
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertCreateFails ( Branch.NameKey branch, String revision, Class<? extends RestApiException> errType, String errMsg)
+DECL|method|assertCreateFails ( BranchNameKey branch, String revision, Class<? extends RestApiException> errType, String errMsg)
 specifier|private
 name|void
 name|assertCreateFails
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|String
@@ -1214,14 +1204,12 @@ name|in
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertCreateFails (Branch.NameKey branch, Class<? extends RestApiException> errType)
+DECL|method|assertCreateFails (BranchNameKey branch, Class<? extends RestApiException> errType)
 specifier|private
 name|void
 name|assertCreateFails
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Class

@@ -212,7 +212,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -301,12 +301,10 @@ argument_list|()
 decl_stmt|;
 DECL|field|branch
 specifier|protected
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 decl_stmt|;
-DECL|method|NotificationEmail (EmailArguments ea, String mc, Branch.NameKey branch)
+DECL|method|NotificationEmail (EmailArguments ea, String mc, BranchNameKey branch)
 specifier|protected
 name|NotificationEmail
 parameter_list|(
@@ -316,9 +314,7 @@ parameter_list|,
 name|String
 name|mc
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{

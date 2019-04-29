@@ -710,7 +710,7 @@ name|changeId
 init|=
 name|patchKey
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 operator|.
 name|changeId
@@ -765,7 +765,7 @@ if|if
 condition|(
 name|patchKey
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 operator|.
 name|get
@@ -839,7 +839,7 @@ name|notes
 argument_list|,
 name|patchKey
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -865,10 +865,10 @@ name|revision
 operator|=
 name|patchSet
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 expr_stmt|;
 block|}

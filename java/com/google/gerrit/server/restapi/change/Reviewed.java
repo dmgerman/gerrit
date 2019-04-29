@@ -272,7 +272,7 @@ operator|.
 name|getPatchKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 argument_list|,
 name|resource
@@ -384,7 +384,7 @@ operator|.
 name|getPatchKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 argument_list|,
 name|resource

@@ -76,7 +76,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -157,7 +157,7 @@ class|class
 name|ProjectUtil
 block|{
 comment|/**    * Checks whether the specified branch exists.    *    * @param repoManager Git repository manager to open the git repository    * @param branch the branch for which it should be checked if it exists    * @return {@code true} if the specified branch exists or if {@code HEAD} points to this branch,    *     otherwise {@code false}    * @throws RepositoryNotFoundException the repository of the branch's project does not exist.    * @throws IOException error while retrieving the branch from the repository.    */
-DECL|method|branchExists (final GitRepositoryManager repoManager, Branch.NameKey branch)
+DECL|method|branchExists (final GitRepositoryManager repoManager, BranchNameKey branch)
 specifier|public
 specifier|static
 name|boolean
@@ -167,9 +167,7 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 throws|throws

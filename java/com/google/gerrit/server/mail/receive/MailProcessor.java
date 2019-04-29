@@ -2838,7 +2838,7 @@ expr_stmt|;
 block|}
 name|CommentsUtil
 operator|.
-name|setCommentRevId
+name|setCommentCommitId
 argument_list|(
 name|comment
 argument_list|,

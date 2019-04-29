@@ -286,7 +286,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -537,7 +537,7 @@ argument_list|,
 name|InternalChangeQuery
 argument_list|>
 block|{
-DECL|method|ref (Branch.NameKey branch)
+DECL|method|ref (BranchNameKey branch)
 specifier|private
 specifier|static
 name|Predicate
@@ -546,9 +546,7 @@ name|ChangeData
 argument_list|>
 name|ref
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{
@@ -863,7 +861,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byBranchKey (Branch.NameKey branch, Change.Key key)
+DECL|method|byBranchKey (BranchNameKey branch, Change.Key key)
 specifier|public
 name|List
 argument_list|<
@@ -871,9 +869,7 @@ name|ChangeData
 argument_list|>
 name|byBranchKey
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Change
@@ -923,9 +919,9 @@ name|and
 argument_list|(
 name|byBranchKeyPred
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -969,9 +965,9 @@ name|and
 argument_list|(
 name|byBranchKeyPred
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -986,7 +982,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|byBranchKeyPred (Branch.NameKey branch, Change.Key key)
+DECL|method|byBranchKeyPred (BranchNameKey branch, Change.Key key)
 specifier|private
 specifier|static
 name|Predicate
@@ -995,9 +991,7 @@ name|ChangeData
 argument_list|>
 name|byBranchKeyPred
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Change
@@ -1053,7 +1047,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byBranchOpen (Branch.NameKey branch)
+DECL|method|byBranchOpen (BranchNameKey branch)
 specifier|public
 name|List
 argument_list|<
@@ -1061,9 +1055,7 @@ name|ChangeData
 argument_list|>
 name|byBranchOpen
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{
@@ -1091,7 +1083,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byBranchNew (Branch.NameKey branch)
+DECL|method|byBranchNew (BranchNameKey branch)
 specifier|public
 name|List
 argument_list|<
@@ -1099,9 +1091,7 @@ name|ChangeData
 argument_list|>
 name|byBranchNew
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{
@@ -1135,7 +1125,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMerged ( Repository repo, Branch.NameKey branch, Collection<String> hashes)
+DECL|method|byCommitsOnBranchNotMerged ( Repository repo, BranchNameKey branch, Collection<String> hashes)
 specifier|public
 name|Iterable
 argument_list|<
@@ -1146,9 +1136,7 @@ parameter_list|(
 name|Repository
 name|repo
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Collection
@@ -1181,7 +1169,7 @@ return|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|byCommitsOnBranchNotMerged ( Repository repo, Branch.NameKey branch, Collection<String> hashes, int indexLimit)
+DECL|method|byCommitsOnBranchNotMerged ( Repository repo, BranchNameKey branch, Collection<String> hashes, int indexLimit)
 name|Iterable
 argument_list|<
 name|ChangeData
@@ -1191,9 +1179,7 @@ parameter_list|(
 name|Repository
 name|repo
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Collection
@@ -1238,7 +1224,7 @@ name|hashes
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMergedFromDatabase ( Repository repo, Branch.NameKey branch, Collection<String> hashes)
+DECL|method|byCommitsOnBranchNotMergedFromDatabase ( Repository repo, BranchNameKey branch, Collection<String> hashes)
 specifier|private
 name|Iterable
 argument_list|<
@@ -1249,9 +1235,7 @@ parameter_list|(
 name|Repository
 name|repo
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Collection
@@ -1461,7 +1445,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMergedFromIndex ( Branch.NameKey branch, Collection<String> hashes)
+DECL|method|byCommitsOnBranchNotMergedFromIndex ( BranchNameKey branch, Collection<String> hashes)
 specifier|private
 name|Iterable
 argument_list|<
@@ -1469,9 +1453,7 @@ name|ChangeData
 argument_list|>
 name|byCommitsOnBranchNotMergedFromIndex
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Collection
@@ -1847,7 +1829,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byBranchCommit (Branch.NameKey branch, String hash)
+DECL|method|byBranchCommit (BranchNameKey branch, String hash)
 specifier|public
 name|List
 argument_list|<
@@ -1855,9 +1837,7 @@ name|ChangeData
 argument_list|>
 name|byBranchCommit
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|String

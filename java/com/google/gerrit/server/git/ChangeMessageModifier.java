@@ -94,7 +94,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -125,7 +125,7 @@ interface|interface
 name|ChangeMessageModifier
 block|{
 comment|/**    * Implementation must return non-Null commit message.    *    *<p>mergeTip and original commit are guaranteed to have their body parsed, meaning that their    * commit messages and footers can be accessed.    *    * @param newCommitMessage the new commit message that was result of either    *<ul>    *<li>{@link MergeUtil#createDetailedCommitMessage} called before    *<li>other extensions or plugins implementing the same point and called before.    *</ul>    *    * @param original the commit of the change being submitted.<b>Note that its commit message may    *     be different than newCommitMessage argument.</b>    * @param mergeTip the current HEAD of the destination branch, which will be a parent of a new    *     commit being generated    * @param destination the branch onto which the change is being submitted    * @return a new not null commit message.    */
-DECL|method|onSubmit ( String newCommitMessage, RevCommit original, RevCommit mergeTip, Branch.NameKey destination)
+DECL|method|onSubmit ( String newCommitMessage, RevCommit original, RevCommit mergeTip, BranchNameKey destination)
 name|String
 name|onSubmit
 parameter_list|(
@@ -138,9 +138,7 @@ parameter_list|,
 name|RevCommit
 name|mergeTip
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destination
 parameter_list|)
 function_decl|;

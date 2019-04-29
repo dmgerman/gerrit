@@ -80,7 +80,7 @@ name|server
 operator|.
 name|CommentsUtil
 operator|.
-name|setCommentRevId
+name|setCommentCommitId
 import|;
 end_import
 
@@ -1026,7 +1026,7 @@ name|in
 operator|.
 name|tag
 expr_stmt|;
-name|setCommentRevId
+name|setCommentCommitId
 argument_list|(
 name|comment
 argument_list|,

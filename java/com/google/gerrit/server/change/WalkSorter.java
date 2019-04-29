@@ -414,20 +414,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|Repository
 import|;
 end_import
@@ -1504,22 +1490,6 @@ block|{
 continue|continue;
 comment|// No patch sets matched.
 block|}
-name|ObjectId
-name|id
-init|=
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
-name|maxPs
-operator|.
-name|getRevision
-argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
-decl_stmt|;
 try|try
 block|{
 name|RevCommit
@@ -1529,7 +1499,10 @@ name|rw
 operator|.
 name|parseCommit
 argument_list|(
-name|id
+name|maxPs
+operator|.
+name|getCommitId
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|byCommit
@@ -1573,7 +1546,10 @@ name|log
 argument_list|(
 literal|"missing commit %s for patch set %s"
 argument_list|,
-name|id
+name|maxPs
+operator|.
+name|getCommitId
+argument_list|()
 operator|.
 name|name
 argument_list|()

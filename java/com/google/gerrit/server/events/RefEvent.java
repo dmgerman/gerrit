@@ -78,7 +78,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -107,16 +107,14 @@ expr_stmt|;
 block|}
 DECL|method|getBranchNameKey ()
 specifier|public
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|getBranchNameKey
 parameter_list|()
 block|{
 return|return
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|getProjectNameKey
 argument_list|()

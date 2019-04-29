@@ -67,12 +67,52 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|AnyObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -93,22 +133,22 @@ specifier|static
 class|class
 name|ParentInfo
 block|{
-DECL|field|id
+DECL|field|commitId
 specifier|public
-name|RevId
-name|id
+name|ObjectId
+name|commitId
 decl_stmt|;
 DECL|field|shortMessage
 specifier|public
 name|String
 name|shortMessage
 decl_stmt|;
-DECL|method|ParentInfo (RevId id, String shortMessage)
+DECL|method|ParentInfo (AnyObjectId commitId, String shortMessage)
 specifier|public
 name|ParentInfo
 parameter_list|(
-name|RevId
-name|id
+name|AnyObjectId
+name|commitId
 parameter_list|,
 name|String
 name|shortMessage
@@ -116,15 +156,21 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|id
+name|commitId
 operator|=
-name|id
+name|commitId
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
 name|shortMessage
 operator|=
+name|requireNonNull
+argument_list|(
 name|shortMessage
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|ParentInfo ()
@@ -173,11 +219,11 @@ name|ParentInfo
 argument_list|>
 name|parents
 decl_stmt|;
-comment|/** SHA-1 of commit */
-DECL|field|revId
+comment|/** ID of commit. */
+DECL|field|commitId
 specifier|protected
-name|String
-name|revId
+name|ObjectId
+name|commitId
 decl_stmt|;
 comment|/** Optional user-supplied description for the patch set. */
 DECL|field|description
@@ -372,28 +418,33 @@ return|return
 name|parents
 return|;
 block|}
-DECL|method|setRevId (String s)
+DECL|method|setCommitId (AnyObjectId commitId)
 specifier|public
 name|void
-name|setRevId
+name|setCommitId
 parameter_list|(
-name|String
-name|s
+name|AnyObjectId
+name|commitId
 parameter_list|)
 block|{
-name|revId
+name|this
+operator|.
+name|commitId
 operator|=
-name|s
+name|commitId
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getRevId ()
+DECL|method|getCommitId ()
 specifier|public
-name|String
-name|getRevId
+name|ObjectId
+name|getCommitId
 parameter_list|()
 block|{
 return|return
-name|revId
+name|commitId
 return|;
 block|}
 DECL|method|setDescription (String description)

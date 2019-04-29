@@ -78,7 +78,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -155,13 +155,11 @@ throws|throws
 name|PermissionBackendException
 function_decl|;
 comment|/**    * Post a stream event that is related to a branch    *    * @param branchName The branch that the event is related to    * @param event The event to post    * @throws PermissionBackendException on failure of permission checks    */
-DECL|method|postEvent (Branch.NameKey branchName, RefEvent event)
+DECL|method|postEvent (BranchNameKey branchName, RefEvent event)
 name|void
 name|postEvent
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branchName
 parameter_list|,
 name|RefEvent

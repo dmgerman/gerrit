@@ -154,22 +154,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ChangeUtil
@@ -1000,14 +984,6 @@ name|PermissionBackendException
 block|{
 comment|// Ok that originalPatchSet was not read in a transaction, since we just
 comment|// need its revision.
-name|RevId
-name|oldRev
-init|=
-name|originalPatchSet
-operator|.
-name|getRevision
-argument_list|()
-decl_stmt|;
 name|RevWalk
 name|rw
 init|=
@@ -1023,15 +999,10 @@ name|rw
 operator|.
 name|parseCommit
 argument_list|(
-name|ObjectId
+name|originalPatchSet
 operator|.
-name|fromString
-argument_list|(
-name|oldRev
-operator|.
-name|get
+name|getCommitId
 argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|rw

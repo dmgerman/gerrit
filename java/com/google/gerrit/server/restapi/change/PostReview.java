@@ -112,7 +112,7 @@ name|server
 operator|.
 name|CommentsUtil
 operator|.
-name|setCommentRevId
+name|setCommentCommitId
 import|;
 end_import
 
@@ -4637,21 +4637,13 @@ block|{
 name|ObjectId
 name|newId
 init|=
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
 name|revision
 operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
 decl_stmt|;
 name|DiffSummaryKey
 name|key
@@ -6487,7 +6479,7 @@ operator|.
 name|message
 expr_stmt|;
 block|}
-name|setCommentRevId
+name|setCommentCommitId
 argument_list|(
 name|e
 argument_list|,
@@ -6932,7 +6924,7 @@ name|in
 operator|.
 name|tag
 expr_stmt|;
-name|setCommentRevId
+name|setCommentCommitId
 argument_list|(
 name|robotComment
 argument_list|,

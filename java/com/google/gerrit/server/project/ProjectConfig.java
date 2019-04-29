@@ -590,7 +590,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -2593,7 +2593,7 @@ return|return
 name|subscribeSections
 return|;
 block|}
-DECL|method|getSubscribeSections (Branch.NameKey branch)
+DECL|method|getSubscribeSections (BranchNameKey branch)
 specifier|public
 name|Collection
 argument_list|<
@@ -2601,9 +2601,7 @@ name|SubscribeSection
 argument_list|>
 name|getSubscribeSections
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{

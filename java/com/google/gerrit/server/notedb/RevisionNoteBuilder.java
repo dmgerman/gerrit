@@ -172,22 +172,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -286,6 +270,34 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|AnyObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_class
 DECL|class|RevisionNoteBuilder
 class|class
@@ -317,7 +329,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|RevisionNoteBuilder
 argument_list|>
@@ -356,12 +368,12 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|get (RevId revId)
+DECL|method|get (AnyObjectId commitId)
 name|RevisionNoteBuilder
 name|get
 parameter_list|(
-name|RevId
-name|revId
+name|AnyObjectId
+name|commitId
 parameter_list|)
 block|{
 name|RevisionNoteBuilder
@@ -371,7 +383,7 @@ name|builders
 operator|.
 name|get
 argument_list|(
-name|revId
+name|commitId
 argument_list|)
 decl_stmt|;
 if|if
@@ -392,7 +404,7 @@ name|revisionNotes
 operator|.
 name|get
 argument_list|(
-name|revId
+name|commitId
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -400,7 +412,10 @@ name|builders
 operator|.
 name|put
 argument_list|(
-name|revId
+name|commitId
+operator|.
+name|copy
+argument_list|()
 argument_list|,
 name|b
 argument_list|)
@@ -413,7 +428,7 @@ block|}
 DECL|method|getBuilders ()
 name|Map
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|RevisionNoteBuilder
 argument_list|>

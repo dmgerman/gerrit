@@ -1642,10 +1642,10 @@ name|revision
 argument_list|(
 name|patchSet
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 argument_list|)
 operator|.
@@ -2092,10 +2092,10 @@ name|revision
 argument_list|(
 name|patchSet
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 argument_list|)
 return|;

@@ -154,7 +154,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -795,16 +795,14 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( SubmitType submitType, Branch.NameKey destBranch, CommitStatus commitStatus, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, RequestId submissionId, SubmitInput submitInput, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create ( SubmitType submitType, BranchNameKey destBranch, CommitStatus commitStatus, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, RequestId submissionId, SubmitInput submitInput, SubmoduleOp submoduleOp, boolean dryrun)
 name|Arguments
 name|create
 parameter_list|(
 name|SubmitType
 name|submitType
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|CommitStatus
@@ -948,9 +946,7 @@ name|setPrivateOpFactory
 decl_stmt|;
 DECL|field|destBranch
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 decl_stmt|;
 DECL|field|rw
@@ -1033,7 +1029,7 @@ name|dryrun
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, Provider<InternalChangeQuery> queryProvider, ProjectConfig.Factory projectConfigFactory, SetPrivateOp.Factory setPrivateOpFactory, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted SubmitInput submitInput, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
+DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, Provider<InternalChangeQuery> queryProvider, ProjectConfig.Factory projectConfigFactory, SetPrivateOp.Factory setPrivateOpFactory, @Assisted BranchNameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted SubmitInput submitInput, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
 name|Arguments
 parameter_list|(
 name|AccountCache
@@ -1109,9 +1105,7 @@ name|setPrivateOpFactory
 parameter_list|,
 annotation|@
 name|Assisted
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 annotation|@

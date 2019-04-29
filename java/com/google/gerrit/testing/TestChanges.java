@@ -138,7 +138,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -203,22 +203,6 @@ operator|.
 name|client
 operator|.
 name|Project
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
 import|;
 end_import
 
@@ -527,9 +511,9 @@ name|changeId
 argument_list|,
 name|userId
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -612,19 +596,15 @@ operator|new
 name|PatchSet
 argument_list|(
 name|id
-argument_list|)
-decl_stmt|;
-name|ps
+argument_list|,
+name|ObjectId
 operator|.
-name|setRevision
-argument_list|(
-operator|new
-name|RevId
+name|fromString
 argument_list|(
 name|revision
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|ps
 operator|.
 name|setUploader

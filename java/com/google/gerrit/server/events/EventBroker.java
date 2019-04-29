@@ -138,7 +138,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -624,14 +624,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|postEvent (Branch.NameKey branchName, RefEvent event)
+DECL|method|postEvent (BranchNameKey branchName, RefEvent event)
 specifier|public
 name|void
 name|postEvent
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branchName
 parameter_list|,
 name|RefEvent
@@ -853,14 +851,12 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fireEvent (Branch.NameKey branchName, RefEvent event)
+DECL|method|fireEvent (BranchNameKey branchName, RefEvent event)
 specifier|protected
 name|void
 name|fireEvent
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branchName
 parameter_list|,
 name|RefEvent
@@ -1165,14 +1161,12 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|isVisibleTo (Branch.NameKey branchName, CurrentUser user)
+DECL|method|isVisibleTo (BranchNameKey branchName, CurrentUser user)
 specifier|protected
 name|boolean
 name|isVisibleTo
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branchName
 parameter_list|,
 name|CurrentUser

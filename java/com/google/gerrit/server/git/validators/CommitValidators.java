@@ -318,7 +318,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1189,7 +1189,7 @@ operator|=
 name|projectConfigFactory
 expr_stmt|;
 block|}
-DECL|method|forReceiveCommits ( PermissionBackend.ForProject forProject, Branch.NameKey branch, IdentifiedUser user, SshInfo sshInfo, NoteMap rejectCommits, RevWalk rw, @Nullable Change change)
+DECL|method|forReceiveCommits ( PermissionBackend.ForProject forProject, BranchNameKey branch, IdentifiedUser user, SshInfo sshInfo, NoteMap rejectCommits, RevWalk rw, @Nullable Change change)
 specifier|public
 name|CommitValidators
 name|forReceiveCommits
@@ -1199,9 +1199,7 @@ operator|.
 name|ForProject
 name|forProject
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|IdentifiedUser
@@ -1390,7 +1388,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|forGerritCommits ( PermissionBackend.ForProject forProject, Branch.NameKey branch, IdentifiedUser user, SshInfo sshInfo, RevWalk rw, @Nullable Change change)
+DECL|method|forGerritCommits ( PermissionBackend.ForProject forProject, BranchNameKey branch, IdentifiedUser user, SshInfo sshInfo, RevWalk rw, @Nullable Change change)
 specifier|public
 name|CommitValidators
 name|forGerritCommits
@@ -1400,9 +1398,7 @@ operator|.
 name|ForProject
 name|forProject
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|IdentifiedUser
@@ -1577,7 +1573,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|forMergedCommits ( PermissionBackend.ForProject forProject, Branch.NameKey branch, IdentifiedUser user)
+DECL|method|forMergedCommits ( PermissionBackend.ForProject forProject, BranchNameKey branch, IdentifiedUser user)
 specifier|public
 name|CommitValidators
 name|forMergedCommits
@@ -1587,9 +1583,7 @@ operator|.
 name|ForProject
 name|forProject
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|IdentifiedUser
@@ -2626,9 +2620,7 @@ decl_stmt|;
 DECL|field|branch
 specifier|private
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 decl_stmt|;
 DECL|field|user
@@ -2655,7 +2647,7 @@ specifier|final
 name|AllProjectsName
 name|allProjects
 decl_stmt|;
-DECL|method|ConfigValidator ( ProjectConfig.Factory projectConfigFactory, Branch.NameKey branch, IdentifiedUser user, RevWalk rw, AllUsersName allUsers, AllProjectsName allProjects)
+DECL|method|ConfigValidator ( ProjectConfig.Factory projectConfigFactory, BranchNameKey branch, IdentifiedUser user, RevWalk rw, AllUsersName allUsers, AllProjectsName allProjects)
 specifier|public
 name|ConfigValidator
 parameter_list|(
@@ -2664,9 +2656,7 @@ operator|.
 name|Factory
 name|projectConfigFactory
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|IdentifiedUser

@@ -249,7 +249,9 @@ block|,
 DECL|enumConstant|SKIPPED_IDENTICAL_TREE
 name|SKIPPED_IDENTICAL_TREE
 argument_list|(
-literal|"Marking change merged without cherry-picking to branch, as the resulting commit would be empty."
+literal|"Marking change merged without cherry-picking to branch, as the resulting commit would be"
+operator|+
+literal|" empty."
 argument_list|)
 block|,
 DECL|enumConstant|MISSING_DEPENDENCY
@@ -445,10 +447,10 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 operator|.
 name|equals
@@ -498,10 +500,10 @@ name|ps
 lambda|->
 name|ps
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 operator|.
 name|equals

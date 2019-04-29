@@ -85,18 +85,16 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
+import|import
+name|com
 operator|.
-name|eclipse
+name|google
 operator|.
-name|jgit
+name|gerrit
 operator|.
-name|lib
+name|git
 operator|.
-name|Constants
-operator|.
-name|OBJECT_ID_LENGTH
+name|ObjectIds
 import|;
 end_import
 
@@ -159,7 +157,9 @@ init|=
 operator|new
 name|byte
 index|[
-name|OBJECT_ID_LENGTH
+name|ObjectIds
+operator|.
+name|LEN
 index|]
 decl_stmt|;
 DECL|method|ObjectIdConverter ()
@@ -210,11 +210,15 @@ operator|.
 name|size
 argument_list|()
 operator|==
-name|OBJECT_ID_LENGTH
+name|ObjectIds
+operator|.
+name|LEN
 argument_list|,
 literal|"expected ByteString of length %s: %s"
 argument_list|,
-name|OBJECT_ID_LENGTH
+name|ObjectIds
+operator|.
+name|LEN
 argument_list|,
 name|in
 argument_list|)

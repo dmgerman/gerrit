@@ -410,7 +410,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -523,22 +523,6 @@ operator|.
 name|client
 operator|.
 name|RefNames
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
 import|;
 end_import
 
@@ -1239,9 +1223,9 @@ name|changeId
 argument_list|,
 literal|null
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -2685,7 +2669,7 @@ DECL|method|getComments ()
 specifier|public
 name|ImmutableListMultimap
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|Comment
 argument_list|>
@@ -2789,7 +2773,7 @@ DECL|method|getDraftComments (Account.Id author)
 specifier|public
 name|ImmutableListMultimap
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|Comment
 argument_list|>
@@ -2814,7 +2798,7 @@ DECL|method|getDraftComments ( Account.Id author, @Nullable Ref ref)
 specifier|public
 name|ImmutableListMultimap
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|Comment
 argument_list|>
@@ -2878,7 +2862,7 @@ DECL|method|getRobotComments ()
 specifier|public
 name|ImmutableListMultimap
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|RobotComment
 argument_list|>

@@ -1362,11 +1362,12 @@ name|checkArgument
 argument_list|(
 name|c
 operator|.
-name|revId
+name|getCommitId
+argument_list|()
 operator|!=
 literal|null
 argument_list|,
-literal|"RevId required for comment: %s"
+literal|"commit ID required for comment: %s"
 argument_list|,
 name|c
 argument_list|)

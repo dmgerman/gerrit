@@ -1918,10 +1918,10 @@ name|put
 argument_list|(
 name|in
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 argument_list|,
 name|toRevisionInfo
@@ -2365,10 +2365,10 @@ name|rev
 init|=
 name|in
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 decl_stmt|;
 name|RevCommit

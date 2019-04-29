@@ -92,7 +92,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -136,9 +136,7 @@ name|Entities
 operator|.
 name|Branch_NameKey
 argument_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 block|{
 DECL|enumConstant|INSTANCE
@@ -165,16 +163,14 @@ name|INSTANCE
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|toProto (Branch.NameKey nameKey)
+DECL|method|toProto (BranchNameKey nameKey)
 specifier|public
 name|Entities
 operator|.
 name|Branch_NameKey
 name|toProto
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|nameKey
 parameter_list|)
 block|{
@@ -215,9 +211,7 @@ annotation|@
 name|Override
 DECL|method|fromProto (Entities.Branch_NameKey proto)
 specifier|public
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|fromProto
 parameter_list|(
 name|Entities
@@ -227,9 +221,9 @@ name|proto
 parameter_list|)
 block|{
 return|return
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|projectNameConverter
 operator|.

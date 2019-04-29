@@ -507,7 +507,7 @@ try|try
 block|{
 name|CommentsUtil
 operator|.
-name|setCommentRevId
+name|setCommentCommitId
 argument_list|(
 name|d
 argument_list|,

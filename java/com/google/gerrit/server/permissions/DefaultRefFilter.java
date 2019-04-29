@@ -422,7 +422,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -958,9 +958,7 @@ name|Change
 operator|.
 name|Id
 argument_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|visibleChanges
 decl_stmt|;
@@ -2559,9 +2557,7 @@ name|Change
 operator|.
 name|Id
 argument_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|visibleChangesBySearch
 parameter_list|()
@@ -2586,9 +2582,7 @@ name|Change
 operator|.
 name|Id
 argument_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|visibleChanges
 init|=
@@ -2723,9 +2717,7 @@ name|Change
 operator|.
 name|Id
 argument_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|visibleChangesByScan
 parameter_list|(
@@ -2807,9 +2799,7 @@ name|Change
 operator|.
 name|Id
 argument_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|result
 init|=

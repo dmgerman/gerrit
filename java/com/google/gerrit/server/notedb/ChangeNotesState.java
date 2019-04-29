@@ -426,7 +426,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -523,22 +523,6 @@ operator|.
 name|client
 operator|.
 name|Project
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
 import|;
 end_import
 
@@ -953,7 +937,7 @@ name|Builder
 argument_list|()
 return|;
 block|}
-DECL|method|create ( ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> changeMessages, ListMultimap<RevId, Comment> publishedComments, boolean isPrivate, boolean workInProgress, boolean reviewStarted, @Nullable Change.Id revertOf, int updateCount)
+DECL|method|create ( ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> changeMessages, ListMultimap<ObjectId, Comment> publishedComments, boolean isPrivate, boolean workInProgress, boolean reviewStarted, @Nullable Change.Id revertOf, int updateCount)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -1098,7 +1082,7 @@ name|changeMessages
 parameter_list|,
 name|ListMultimap
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|Comment
 argument_list|>
@@ -1824,7 +1808,7 @@ DECL|method|publishedComments ()
 specifier|abstract
 name|ImmutableListMultimap
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|Comment
 argument_list|>
@@ -1877,9 +1861,9 @@ operator|.
 name|owner
 argument_list|()
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 argument_list|,
@@ -1958,9 +1942,9 @@ name|change
 operator|.
 name|setDest
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|change
 operator|.
@@ -2484,14 +2468,14 @@ argument_list|>
 name|changeMessages
 parameter_list|)
 function_decl|;
-DECL|method|publishedComments (ListMultimap<RevId, Comment> publishedComments)
+DECL|method|publishedComments (ListMultimap<ObjectId, Comment> publishedComments)
 specifier|abstract
 name|Builder
 name|publishedComments
 parameter_list|(
 name|ListMultimap
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|Comment
 argument_list|>
@@ -3952,15 +3936,9 @@ name|collect
 argument_list|(
 name|toImmutableListMultimap
 argument_list|(
-name|c
-lambda|->
-operator|new
-name|RevId
-argument_list|(
-name|c
-operator|.
-name|revId
-argument_list|)
+name|Comment
+operator|::
+name|getCommitId
 argument_list|,
 name|c
 lambda|->

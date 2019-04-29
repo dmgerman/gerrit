@@ -164,7 +164,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -845,7 +845,7 @@ operator|=
 name|queryProvider
 expr_stmt|;
 block|}
-DECL|method|run ( @ullable CurrentUser caller, SubmitType submitType, Repository repo, CodeReviewRevWalk rw, Branch.NameKey destBranch, ObjectId tip, ObjectId toMerge, Set<RevCommit> alreadyAccepted)
+DECL|method|run ( @ullable CurrentUser caller, SubmitType submitType, Repository repo, CodeReviewRevWalk rw, BranchNameKey destBranch, ObjectId tip, ObjectId toMerge, Set<RevCommit> alreadyAccepted)
 specifier|public
 name|boolean
 name|run
@@ -864,9 +864,7 @@ parameter_list|,
 name|CodeReviewRevWalk
 name|rw
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|ObjectId
@@ -1096,14 +1094,12 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getProject (Branch.NameKey branch)
+DECL|method|getProject (BranchNameKey branch)
 specifier|private
 name|ProjectState
 name|getProject
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 throws|throws

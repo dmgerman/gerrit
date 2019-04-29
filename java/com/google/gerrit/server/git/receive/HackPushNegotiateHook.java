@@ -112,6 +112,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -157,20 +171,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
 import|;
 end_import
 
@@ -320,9 +320,9 @@ name|HAVE_LINE_LEN
 init|=
 literal|4
 operator|+
-name|Constants
+name|ObjectIds
 operator|.
-name|OBJECT_ID_STRING_LENGTH
+name|STR_LEN
 operator|+
 literal|1
 operator|+

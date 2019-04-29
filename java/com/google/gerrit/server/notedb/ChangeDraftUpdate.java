@@ -244,22 +244,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|GerritPersonIdent
@@ -582,10 +566,10 @@ specifier|static
 class|class
 name|Key
 block|{
-DECL|method|revId ()
+DECL|method|commitId ()
 specifier|abstract
-name|String
-name|revId
+name|ObjectId
+name|commitId
 parameter_list|()
 function_decl|;
 DECL|method|key ()
@@ -613,7 +597,8 @@ name|AutoValue_ChangeDraftUpdate_Key
 argument_list|(
 name|c
 operator|.
-name|revId
+name|getCommitId
+argument_list|()
 argument_list|,
 name|c
 operator|.
@@ -858,13 +843,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteComment (String revId, Comment.Key key)
+DECL|method|deleteComment (ObjectId commitId, Comment.Key key)
 specifier|public
 name|void
 name|deleteComment
 parameter_list|(
-name|String
-name|revId
+name|ObjectId
+name|commitId
 parameter_list|,
 name|Comment
 operator|.
@@ -879,7 +864,7 @@ argument_list|(
 operator|new
 name|AutoValue_ChangeDraftUpdate_Key
 argument_list|(
-name|revId
+name|commitId
 argument_list|,
 name|key
 argument_list|)
@@ -923,9 +908,9 @@ argument_list|)
 decl_stmt|;
 name|Set
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|>
-name|updatedRevs
+name|updatedCommits
 init|=
 name|Sets
 operator|.
@@ -978,13 +963,10 @@ name|cache
 operator|.
 name|get
 argument_list|(
-operator|new
-name|RevId
-argument_list|(
 name|c
 operator|.
-name|revId
-argument_list|)
+name|getCommitId
+argument_list|()
 argument_list|)
 operator|.
 name|putComment
@@ -1006,14 +988,10 @@ name|cache
 operator|.
 name|get
 argument_list|(
-operator|new
-name|RevId
-argument_list|(
 name|k
 operator|.
-name|revId
+name|commitId
 argument_list|()
-argument_list|)
 argument_list|)
 operator|.
 name|deleteComment
@@ -1027,7 +1005,7 @@ expr_stmt|;
 block|}
 name|Map
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|RevisionNoteBuilder
 argument_list|>
@@ -1054,7 +1032,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|RevId
+name|ObjectId
 argument_list|,
 name|RevisionNoteBuilder
 argument_list|>
@@ -1066,7 +1044,7 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|updatedRevs
+name|updatedCommits
 operator|.
 name|add
 argument_list|(
@@ -1079,18 +1057,10 @@ expr_stmt|;
 name|ObjectId
 name|id
 init|=
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
 name|e
 operator|.
 name|getKey
 argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
 decl_stmt|;
 name|byte
 index|[]
@@ -1200,7 +1170,7 @@ comment|// caller to delete the entire ref.
 name|boolean
 name|touchedAllRevs
 init|=
-name|updatedRevs
+name|updatedCommits
 operator|.
 name|equals
 argument_list|(

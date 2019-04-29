@@ -268,7 +268,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1480,7 +1480,7 @@ name|a
 return|;
 block|}
 comment|/**    * Create a RefUpdateAttribute for the given old ObjectId, new ObjectId, and branch that is    * suitable for serialization to JSON.    *    * @param oldId    * @param newId    * @param refName    * @return object suitable for serialization to JSON    */
-DECL|method|asRefUpdateAttribute ( ObjectId oldId, ObjectId newId, Branch.NameKey refName)
+DECL|method|asRefUpdateAttribute ( ObjectId oldId, ObjectId newId, BranchNameKey refName)
 specifier|public
 name|RefUpdateAttribute
 name|asRefUpdateAttribute
@@ -1491,9 +1491,7 @@ parameter_list|,
 name|ObjectId
 name|newId
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|refName
 parameter_list|)
 block|{
@@ -2145,18 +2143,10 @@ name|rw
 operator|.
 name|parseCommit
 argument_list|(
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
 name|currentPs
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -2245,10 +2235,10 @@ condition|(
 operator|!
 name|ps
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 operator|.
 name|equals
@@ -2385,10 +2375,10 @@ name|rev
 init|=
 name|currentPs
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 decl_stmt|;
 comment|// Find changes in the same related group as this patch set, having a patch
@@ -2438,18 +2428,10 @@ name|rw
 operator|.
 name|parseCommit
 argument_list|(
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
 name|ps
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 for|for
@@ -2619,10 +2601,10 @@ name|revision
 operator|=
 name|ps
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 expr_stmt|;
 name|d
@@ -3273,10 +3255,10 @@ name|revision
 operator|=
 name|patchSet
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 operator|.
-name|get
+name|name
 argument_list|()
 expr_stmt|;
 name|p

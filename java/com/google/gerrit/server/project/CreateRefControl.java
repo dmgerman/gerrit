@@ -124,7 +124,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -427,7 +427,7 @@ name|reachable
 expr_stmt|;
 block|}
 comment|/**    * Checks whether the {@link CurrentUser} can create a new Git ref.    *    * @param user the user performing the operation    * @param repo repository on which user want to create    * @param branch the branch the new {@link RevObject} should be created on    * @param object the object the user will start the reference with    * @throws AuthException if creation is denied; the message explains the denial.    * @throws PermissionBackendException on failure of permission checks.    * @throws ResourceConflictException if the project state does not permit the operation    */
-DECL|method|checkCreateRef ( Provider<? extends CurrentUser> user, Repository repo, Branch.NameKey branch, RevObject object)
+DECL|method|checkCreateRef ( Provider<? extends CurrentUser> user, Repository repo, BranchNameKey branch, RevObject object)
 specifier|public
 name|void
 name|checkCreateRef
@@ -443,9 +443,7 @@ parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|RevObject

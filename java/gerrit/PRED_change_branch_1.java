@@ -70,7 +70,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -230,9 +230,7 @@ operator|.
 name|dereference
 argument_list|()
 decl_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|name
 init|=
 name|StoredValues

@@ -532,7 +532,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -2912,14 +2912,12 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|refName
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|ev
 operator|.

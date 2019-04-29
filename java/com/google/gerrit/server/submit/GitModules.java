@@ -106,7 +106,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -397,13 +397,11 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Branch.NameKey project, MergeOpRepoManager m)
+DECL|method|create (BranchNameKey project, MergeOpRepoManager m)
 name|GitModules
 name|create
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|project
 parameter_list|,
 name|MergeOpRepoManager
@@ -430,7 +428,7 @@ name|subscriptions
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitModules ( @anonicalWebUrl @ullable String canonicalWebUrl, @Assisted Branch.NameKey branch, @Assisted MergeOpRepoManager orm)
+DECL|method|GitModules ( @anonicalWebUrl @ullable String canonicalWebUrl, @Assisted BranchNameKey branch, @Assisted MergeOpRepoManager orm)
 name|GitModules
 parameter_list|(
 annotation|@
@@ -442,9 +440,7 @@ name|canonicalWebUrl
 parameter_list|,
 annotation|@
 name|Assisted
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 annotation|@
@@ -680,16 +676,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|subscribedTo (Branch.NameKey src)
+DECL|method|subscribedTo (BranchNameKey src)
 name|Collection
 argument_list|<
 name|SubmoduleSubscription
 argument_list|>
 name|subscribedTo
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|src
 parameter_list|)
 block|{

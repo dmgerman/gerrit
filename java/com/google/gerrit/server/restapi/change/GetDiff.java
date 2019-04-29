@@ -1305,7 +1305,7 @@ operator|.
 name|getPatchKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 decl_stmt|;
 name|String
@@ -1761,7 +1761,7 @@ operator|.
 name|getPatchKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 operator|.
 name|changeId
@@ -1806,7 +1806,7 @@ operator|.
 name|getPatchKey
 argument_list|()
 operator|.
-name|getParentKey
+name|patchSetId
 argument_list|()
 operator|.
 name|get

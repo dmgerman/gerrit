@@ -96,7 +96,7 @@ name|server
 operator|.
 name|CommentsUtil
 operator|.
-name|setCommentRevId
+name|setCommentCommitId
 import|;
 end_import
 
@@ -1541,7 +1541,7 @@ operator|.
 name|patchSetId
 argument_list|)
 decl_stmt|;
-name|setCommentRevId
+name|setCommentCommitId
 argument_list|(
 name|c
 argument_list|,

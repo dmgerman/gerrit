@@ -172,6 +172,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|git
+operator|.
+name|ObjectIds
+operator|.
+name|abbreviateName
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -1128,7 +1144,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -1209,22 +1225,6 @@ operator|.
 name|client
 operator|.
 name|RefNames
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
 import|;
 end_import
 
@@ -5379,9 +5379,7 @@ expr_stmt|;
 block|}
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -5471,9 +5469,9 @@ name|branches
 operator|.
 name|add
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -8717,14 +8715,12 @@ condition|)
 block|{
 return|return;
 block|}
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -8808,9 +8804,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -8911,9 +8907,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -9290,9 +9286,9 @@ condition|)
 block|{
 name|validateRegularPushCommits
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -9639,9 +9635,7 @@ name|boolean
 name|defaultPublishComments
 decl_stmt|;
 DECL|field|dest
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 decl_stmt|;
 DECL|field|perm
@@ -11388,9 +11382,9 @@ name|magicBranch
 operator|.
 name|dest
 operator|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -12220,7 +12214,7 @@ comment|// commits and the target branch head.
 end_comment
 
 begin_function
-DECL|method|validateConnected (ReceiveCommand cmd, Branch.NameKey dest, RevCommit tip)
+DECL|method|validateConnected (ReceiveCommand cmd, BranchNameKey dest, RevCommit tip)
 specifier|private
 name|boolean
 name|validateConnected
@@ -12228,9 +12222,7 @@ parameter_list|(
 name|ReceiveCommand
 name|cmd
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 parameter_list|,
 name|RevCommit
@@ -12503,14 +12495,12 @@ block|}
 end_function
 
 begin_function
-DECL|method|readBranchTip (Branch.NameKey branch)
+DECL|method|readBranchTip (BranchNameKey branch)
 specifier|private
 name|RevCommit
 name|readBranchTip
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 throws|throws
@@ -14017,7 +14007,7 @@ condition|)
 block|{
 comment|// Schedule as a replacement to this one matching change.
 comment|//
-name|RevId
+name|ObjectId
 name|currentPs
 init|=
 name|changes
@@ -14030,7 +14020,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getRevision
+name|getCommitId
 argument_list|()
 decl_stmt|;
 comment|// If Commit is already current PatchSet of target Change.
@@ -14040,15 +14030,9 @@ name|p
 operator|.
 name|commit
 operator|.
-name|name
-argument_list|()
-operator|.
 name|equals
 argument_list|(
 name|currentPs
-operator|.
-name|get
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -15148,15 +15132,15 @@ name|CommitValidationMessage
 argument_list|(
 literal|"Implicit Merge of "
 operator|+
-name|c
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-literal|7
-argument_list|)
+name|c
+argument_list|,
+name|rw
 operator|.
-name|name
+name|getObjectReader
 argument_list|()
+argument_list|)
 operator|+
 literal|" "
 operator|+
@@ -17561,25 +17545,19 @@ name|format
 argument_list|(
 literal|"warning: no changes between prior commit %s and new commit %s"
 argument_list|,
-name|reader
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
 name|priorCommit
-argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|,
 name|reader
-operator|.
-name|abbreviate
+argument_list|)
+argument_list|,
+name|abbreviateName
 argument_list|(
 name|newCommit
+argument_list|,
+name|reader
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -17602,15 +17580,12 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|reader
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
 name|newCommit
+argument_list|,
+name|reader
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|msg
@@ -19192,14 +19167,12 @@ comment|/**    * Validates the commits that a regular push brings in.    *    *<
 end_comment
 
 begin_function
-DECL|method|validateRegularPushCommits (Branch.NameKey branch, ReceiveCommand cmd)
+DECL|method|validateRegularPushCommits (BranchNameKey branch, ReceiveCommand cmd)
 specifier|private
 name|void
 name|validateRegularPushCommits
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|ReceiveCommand
@@ -19735,14 +19708,12 @@ name|getNewId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|project
 operator|.
@@ -20478,7 +20449,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|openChangesByKeyByBranch (Branch.NameKey branch)
+DECL|method|openChangesByKeyByBranch (BranchNameKey branch)
 specifier|private
 name|Map
 argument_list|<
@@ -20490,9 +20461,7 @@ name|ChangeNotes
 argument_list|>
 name|openChangesByKeyByBranch
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{

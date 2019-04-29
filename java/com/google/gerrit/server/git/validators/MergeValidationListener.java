@@ -96,7 +96,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -189,7 +189,7 @@ interface|interface
 name|MergeValidationListener
 block|{
 comment|/**    * Validate a commit before it is merged.    *    * @param repo the repository    * @param commit commit details    * @param destProject the destination project    * @param destBranch the destination branch    * @param patchSetId the patch set ID    * @param caller the user who initiated the merge request    * @throws MergeValidationException if the commit fails to validate    */
-DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 name|void
 name|onPreMerge
 parameter_list|(
@@ -202,9 +202,7 @@ parameter_list|,
 name|ProjectState
 name|destProject
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|destBranch
 parameter_list|,
 name|PatchSet

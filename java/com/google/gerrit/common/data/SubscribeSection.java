@@ -78,7 +78,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -305,14 +305,12 @@ name|project
 return|;
 block|}
 comment|/**    * Determines if the<code>branch</code> could trigger a superproject update as allowed via this    * subscribe section.    *    * @param branch the branch to check    * @return if the branch could trigger a superproject update    */
-DECL|method|appliesTo (Branch.NameKey branch)
+DECL|method|appliesTo (BranchNameKey branch)
 specifier|public
 name|boolean
 name|appliesTo
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|)
 block|{

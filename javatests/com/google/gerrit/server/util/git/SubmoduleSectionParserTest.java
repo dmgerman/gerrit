@@ -110,7 +110,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -262,14 +262,12 @@ operator|+
 literal|"branch = master\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -315,9 +313,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p
 argument_list|,
@@ -390,14 +388,12 @@ operator|+
 literal|"branch = .\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch1
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -443,9 +439,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch1
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p
 argument_list|,
@@ -466,14 +462,12 @@ argument_list|(
 name|expected1
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch2
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -519,9 +513,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch2
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p
 argument_list|,
@@ -594,14 +588,12 @@ operator|+
 literal|"branch = anotherbranch\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -647,9 +639,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p
 argument_list|,
@@ -722,14 +714,12 @@ operator|+
 literal|"branch = master\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -775,9 +765,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p
 argument_list|,
@@ -850,14 +840,12 @@ operator|+
 literal|"branch = master\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -903,9 +891,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p
 argument_list|,
@@ -978,14 +966,12 @@ operator|+
 literal|"branch = master\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -1031,9 +1017,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p
 argument_list|,
@@ -1133,14 +1119,12 @@ operator|+
 literal|"		branch = master\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -1186,9 +1170,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p1
 argument_list|,
@@ -1203,9 +1187,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p2
 argument_list|,
@@ -1305,14 +1289,12 @@ operator|+
 literal|"branch = .\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -1358,9 +1340,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p2
 argument_list|,
@@ -1375,9 +1357,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p1
 argument_list|,
@@ -1536,14 +1518,12 @@ operator|+
 literal|"    branch = refs/heads/master\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -1589,9 +1569,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p1
 argument_list|,
@@ -1606,9 +1586,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p4
 argument_list|,
@@ -1663,14 +1643,12 @@ operator|+
 literal|"branch = .\\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -1761,14 +1739,12 @@ operator|+
 literal|"branch = ."
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -1859,14 +1835,12 @@ operator|+
 literal|"branch = master\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -1912,9 +1886,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p1
 argument_list|,
@@ -1987,14 +1961,12 @@ operator|+
 literal|"branch = master\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -2040,9 +2012,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p1
 argument_list|,
@@ -2115,14 +2087,12 @@ operator|+
 literal|"branch = master\n"
 argument_list|)
 expr_stmt|;
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|targetBranch
 init|=
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -2168,9 +2138,9 @@ name|SubmoduleSubscription
 argument_list|(
 name|targetBranch
 argument_list|,
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|p1
 argument_list|,

@@ -385,19 +385,6 @@ name|String
 name|fileName
 parameter_list|()
 function_decl|;
-DECL|method|getParentKey ()
-specifier|public
-name|PatchSet
-operator|.
-name|Id
-name|getParentKey
-parameter_list|()
-block|{
-return|return
-name|patchSetId
-argument_list|()
-return|;
-block|}
 block|}
 comment|/** Type of modification made to the file path. */
 DECL|enum|ChangeType

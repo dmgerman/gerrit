@@ -134,7 +134,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -241,9 +241,7 @@ name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|destinations
 init|=
@@ -262,9 +260,7 @@ DECL|method|getDestinations (String label)
 specifier|public
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|getDestinations
 parameter_list|(
@@ -335,9 +331,7 @@ parameter_list|)
 block|{
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|dests
 init|=
@@ -377,9 +371,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 range|:
 name|sort
@@ -427,9 +419,7 @@ specifier|private
 specifier|static
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|toSet
 parameter_list|(
@@ -442,9 +432,7 @@ parameter_list|)
 block|{
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|dests
 init|=
@@ -470,9 +458,9 @@ name|dests
 operator|.
 name|add
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.

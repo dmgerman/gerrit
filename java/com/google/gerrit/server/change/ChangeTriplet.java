@@ -108,7 +108,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -188,15 +188,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|format (Branch.NameKey branch, Change.Key change)
+DECL|method|format (BranchNameKey branch, Change.Key change)
 specifier|private
 specifier|static
 name|String
 name|format
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|Change
@@ -376,9 +374,9 @@ argument_list|(
 operator|new
 name|AutoValue_ChangeTriplet
 argument_list|(
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -420,9 +418,7 @@ block|}
 DECL|method|branch ()
 specifier|public
 specifier|abstract
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|()
 function_decl|;

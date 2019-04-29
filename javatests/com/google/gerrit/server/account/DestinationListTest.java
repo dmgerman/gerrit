@@ -94,7 +94,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -448,9 +448,7 @@ DECL|field|B_FOO
 specifier|public
 specifier|static
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|B_FOO
 init|=
 name|dest
@@ -464,9 +462,7 @@ DECL|field|B_BAR
 specifier|public
 specifier|static
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|B_BAR
 init|=
 name|dest
@@ -480,9 +476,7 @@ DECL|field|B_COMPLEX
 specifier|public
 specifier|static
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|B_COMPLEX
 init|=
 name|dest
@@ -498,9 +492,7 @@ specifier|static
 specifier|final
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|D_SIMPLE
 init|=
@@ -534,9 +526,7 @@ block|}
 DECL|method|dest (String project, String ref)
 specifier|private
 specifier|static
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 parameter_list|(
 name|String
@@ -547,9 +537,9 @@ name|ref
 parameter_list|)
 block|{
 return|return
-name|Branch
+name|BranchNameKey
 operator|.
-name|nameKey
+name|create
 argument_list|(
 name|Project
 operator|.
@@ -592,9 +582,7 @@ argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -648,9 +636,7 @@ argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -706,9 +692,7 @@ argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -764,9 +748,7 @@ argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -828,9 +810,7 @@ argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -882,9 +862,7 @@ argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -936,9 +914,7 @@ argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=
@@ -1045,9 +1021,7 @@ argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|branches
 init|=

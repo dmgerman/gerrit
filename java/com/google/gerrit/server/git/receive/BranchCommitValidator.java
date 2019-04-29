@@ -70,6 +70,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|ObjectIds
+operator|.
+name|abbreviateName
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|eclipse
@@ -126,7 +142,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -159,22 +175,6 @@ operator|.
 name|client
 operator|.
 name|Project
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RevId
 import|;
 end_import
 
@@ -483,9 +483,7 @@ decl_stmt|;
 DECL|field|branch
 specifier|private
 specifier|final
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 decl_stmt|;
 DECL|field|sshInfo
@@ -498,16 +496,14 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ProjectState projectState, Branch.NameKey branch, IdentifiedUser user)
+DECL|method|create ( ProjectState projectState, BranchNameKey branch, IdentifiedUser user)
 name|BranchCommitValidator
 name|create
 parameter_list|(
 name|ProjectState
 name|projectState
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 name|IdentifiedUser
@@ -517,7 +513,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|BranchCommitValidator ( CommitValidators.Factory commitValidatorsFactory, PermissionBackend permissionBackend, SshInfo sshInfo, @Assisted ProjectState projectState, @Assisted Branch.NameKey branch, @Assisted IdentifiedUser user)
+DECL|method|BranchCommitValidator ( CommitValidators.Factory commitValidatorsFactory, PermissionBackend permissionBackend, SshInfo sshInfo, @Assisted ProjectState projectState, @Assisted BranchNameKey branch, @Assisted IdentifiedUser user)
 name|BranchCommitValidator
 parameter_list|(
 name|CommitValidators
@@ -538,9 +534,7 @@ name|projectState
 parameter_list|,
 annotation|@
 name|Assisted
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|branch
 parameter_list|,
 annotation|@
@@ -740,6 +734,8 @@ name|m
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|objectReader
 argument_list|)
 argument_list|,
 name|m
@@ -800,6 +796,8 @@ name|m
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|objectReader
 argument_list|)
 argument_list|,
 name|m
@@ -824,6 +822,8 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|objectReader
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -835,7 +835,7 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|messageForCommit (RevCommit c, String msg)
+DECL|method|messageForCommit (RevCommit c, String msg, ObjectReader objectReader)
 specifier|private
 name|String
 name|messageForCommit
@@ -845,7 +845,12 @@ name|c
 parameter_list|,
 name|String
 name|msg
+parameter_list|,
+name|ObjectReader
+name|objectReader
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 return|return
 name|String
@@ -854,17 +859,12 @@ name|format
 argument_list|(
 literal|"commit %s: %s"
 argument_list|,
-name|c
-operator|.
-name|abbreviate
+name|abbreviateName
 argument_list|(
-name|RevId
-operator|.
-name|ABBREV_LEN
+name|c
+argument_list|,
+name|objectReader
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|,
 name|msg
 argument_list|)

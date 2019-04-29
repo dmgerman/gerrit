@@ -538,7 +538,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -7239,9 +7239,7 @@ argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 argument_list|>
 name|destinations
 init|=

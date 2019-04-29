@@ -304,7 +304,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -632,14 +632,12 @@ name|project
 parameter_list|)
 function_decl|;
 comment|/** Returns an instance scoped for the {@code ref}, and its parent project. */
-DECL|method|ref (Branch.NameKey ref)
+DECL|method|ref (BranchNameKey ref)
 specifier|public
 name|ForRef
 name|ref
 parameter_list|(
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|ref
 parameter_list|)
 block|{

@@ -106,7 +106,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|BranchNameKey
 import|;
 end_import
 
@@ -721,7 +721,7 @@ return|return
 name|sorted
 return|;
 block|}
-DECL|method|isAlreadyMerged (CodeReviewCommit commit, Branch.NameKey dest)
+DECL|method|isAlreadyMerged (CodeReviewCommit commit, BranchNameKey dest)
 specifier|private
 name|boolean
 name|isAlreadyMerged
@@ -729,9 +729,7 @@ parameter_list|(
 name|CodeReviewCommit
 name|commit
 parameter_list|,
-name|Branch
-operator|.
-name|NameKey
+name|BranchNameKey
 name|dest
 parameter_list|)
 throws|throws
