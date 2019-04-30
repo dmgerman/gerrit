@@ -8990,9 +8990,6 @@ name|c
 operator|.
 name|setValue
 argument_list|(
-operator|(
-name|short
-operator|)
 literal|0
 argument_list|)
 expr_stmt|;

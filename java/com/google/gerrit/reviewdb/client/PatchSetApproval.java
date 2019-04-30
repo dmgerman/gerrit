@@ -86,6 +86,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|primitives
+operator|.
+name|Shorts
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -500,6 +514,26 @@ block|{
 name|value
 operator|=
 name|v
+expr_stmt|;
+block|}
+DECL|method|setValue (int v)
+specifier|public
+name|void
+name|setValue
+parameter_list|(
+name|int
+name|v
+parameter_list|)
+block|{
+name|setValue
+argument_list|(
+name|Shorts
+operator|.
+name|checkedCast
+argument_list|(
+name|v
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getGranted ()

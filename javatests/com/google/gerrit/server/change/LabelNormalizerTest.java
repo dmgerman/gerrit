@@ -1691,9 +1691,6 @@ name|result
 operator|.
 name|setValue
 argument_list|(
-operator|(
-name|short
-operator|)
 name|newValue
 argument_list|)
 expr_stmt|;
