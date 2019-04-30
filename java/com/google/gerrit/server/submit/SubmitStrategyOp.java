@@ -2449,6 +2449,9 @@ operator|.
 name|getWhen
 argument_list|()
 argument_list|)
+operator|.
+name|build
+argument_list|()
 expr_stmt|;
 name|byKey
 operator|.
