@@ -3174,7 +3174,7 @@ name|ReviewerInfo
 argument_list|(
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 operator|.
 name|get
@@ -3183,7 +3183,7 @@ argument_list|)
 argument_list|,
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|,
 name|cd

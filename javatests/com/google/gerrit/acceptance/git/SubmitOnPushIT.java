@@ -2524,7 +2524,7 @@ name|assertThat
 argument_list|(
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 operator|.
@@ -2540,7 +2540,7 @@ name|assertThat
 argument_list|(
 name|a
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 operator|.

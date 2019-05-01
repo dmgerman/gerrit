@@ -566,7 +566,7 @@ name|changeId
 init|=
 name|psa
 operator|.
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|patchSetId
@@ -591,7 +591,7 @@ literal|"Approval %s does not match change %s"
 argument_list|,
 name|psa
 operator|.
-name|getKey
+name|key
 argument_list|()
 argument_list|,
 name|notes
@@ -629,7 +629,7 @@ name|byLabel
 argument_list|(
 name|psa
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -663,12 +663,12 @@ if|if
 condition|(
 name|copy
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|!=
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 condition|)
 block|{
@@ -742,7 +742,7 @@ literal|null
 operator|&&
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|<
 name|atMin
@@ -778,7 +778,7 @@ literal|null
 operator|&&
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|>
 name|atMax

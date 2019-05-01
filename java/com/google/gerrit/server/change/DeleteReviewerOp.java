@@ -1131,7 +1131,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|getPatchSetId
+name|patchSetId
 argument_list|()
 operator|.
 name|equals
@@ -1144,7 +1144,7 @@ argument_list|)
 operator|&&
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|!=
 literal|0
@@ -1156,12 +1156,12 @@ name|put
 argument_list|(
 name|a
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1176,7 +1176,7 @@ name|append
 argument_list|(
 name|a
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 operator|.
@@ -1186,7 +1186,7 @@ name|formatLabelValue
 argument_list|(
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1204,7 +1204,7 @@ name|create
 argument_list|(
 name|a
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 operator|.
@@ -1513,7 +1513,7 @@ name|equals
 argument_list|(
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 argument_list|)

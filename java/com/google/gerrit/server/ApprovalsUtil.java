@@ -850,7 +850,7 @@ name|equals
 argument_list|(
 name|a
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|,
 name|accountId
@@ -1909,12 +1909,12 @@ name|putApproval
 argument_list|(
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2324,7 +2324,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|getPatchSetId
+name|patchSetId
 argument_list|()
 operator|.
 name|equals
@@ -2334,7 +2334,7 @@ argument_list|)
 operator|&&
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|>
 literal|0
@@ -2353,14 +2353,14 @@ literal|null
 operator|||
 name|a
 operator|.
-name|getGranted
+name|granted
 argument_list|()
 operator|.
 name|compareTo
 argument_list|(
 name|submitter
 operator|.
-name|getGranted
+name|granted
 argument_list|()
 argument_list|)
 operator|>
@@ -2469,7 +2469,7 @@ name|getKey
 argument_list|()
 argument_list|)
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|==
 name|e

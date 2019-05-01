@@ -1462,7 +1462,7 @@ name|byLabel
 argument_list|(
 name|a
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 operator|==
@@ -1478,7 +1478,7 @@ condition|(
 operator|!
 name|a
 operator|.
-name|getLabel
+name|label
 argument_list|()
 operator|.
 name|equals
@@ -1494,12 +1494,12 @@ name|put
 argument_list|(
 name|a
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1551,7 +1551,7 @@ name|put
 argument_list|(
 name|a
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 operator|(
@@ -1571,12 +1571,12 @@ name|put
 argument_list|(
 name|a
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;

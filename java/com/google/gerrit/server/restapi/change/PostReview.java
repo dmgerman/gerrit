@@ -7416,12 +7416,12 @@ name|put
 argument_list|(
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8009,7 +8009,7 @@ if|if
 condition|(
 name|c
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|!=
 literal|0
@@ -8070,7 +8070,7 @@ literal|null
 operator|&&
 name|c
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|!=
 name|ent
@@ -8149,7 +8149,7 @@ name|normName
 argument_list|,
 name|c
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8175,7 +8175,7 @@ name|normName
 argument_list|,
 name|c
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8201,7 +8201,7 @@ literal|null
 operator|&&
 name|c
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|==
 name|ent
@@ -8236,7 +8236,7 @@ name|normName
 argument_list|,
 name|c
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8311,7 +8311,7 @@ name|normName
 argument_list|,
 name|c
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8337,7 +8337,7 @@ name|normName
 argument_list|,
 name|c
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8586,7 +8586,7 @@ name|byLabel
 argument_list|(
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 argument_list|)
@@ -8665,7 +8665,7 @@ name|byLabel
 argument_list|(
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 argument_list|)
@@ -8720,7 +8720,7 @@ name|prev
 operator|!=
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8731,7 +8731,7 @@ name|prev
 operator|>
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 condition|)
 block|{
@@ -8805,7 +8805,7 @@ name|map
 argument_list|(
 name|PatchSetApproval
 operator|::
-name|getLabel
+name|label
 argument_list|)
 operator|.
 name|distinct
@@ -9173,7 +9173,7 @@ name|byLabel
 argument_list|(
 name|a
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;

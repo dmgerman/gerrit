@@ -2284,7 +2284,7 @@ name|patchSetCommitParsed
 argument_list|(
 name|a
 operator|.
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|patchSetId
@@ -2304,7 +2304,7 @@ name|contains
 argument_list|(
 name|a
 operator|.
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|accountId
@@ -2318,7 +2318,7 @@ name|containsRow
 argument_list|(
 name|a
 operator|.
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|accountId
@@ -2335,7 +2335,7 @@ name|put
 argument_list|(
 name|a
 operator|.
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|patchSetId
@@ -4153,7 +4153,7 @@ condition|(
 operator|!
 name|psa
 operator|.
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|isLegacySubmit
@@ -5257,7 +5257,7 @@ name|putIfAbsent
 argument_list|(
 name|psa
 operator|.
-name|getKey
+name|key
 argument_list|()
 argument_list|,
 name|psa
@@ -5498,7 +5498,7 @@ name|putIfAbsent
 argument_list|(
 name|remove
 operator|.
-name|getKey
+name|key
 argument_list|()
 argument_list|,
 name|remove
@@ -6699,7 +6699,7 @@ name|psa
 lambda|->
 name|psa
 operator|.
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|patchSetId

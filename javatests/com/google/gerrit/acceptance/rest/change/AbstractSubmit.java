@@ -9070,7 +9070,7 @@ name|assertThat
 argument_list|(
 name|submitter
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 operator|.

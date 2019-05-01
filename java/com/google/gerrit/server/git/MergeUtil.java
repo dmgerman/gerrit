@@ -3529,7 +3529,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|<=
 literal|0
@@ -3556,14 +3556,14 @@ literal|null
 operator|||
 name|a
 operator|.
-name|getGranted
+name|granted
 argument_list|()
 operator|.
 name|compareTo
 argument_list|(
 name|submitAudit
 operator|.
-name|getGranted
+name|granted
 argument_list|()
 argument_list|)
 operator|>
@@ -3587,7 +3587,7 @@ name|create
 argument_list|(
 name|a
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 operator|.
@@ -3752,7 +3752,7 @@ name|isCodeReview
 argument_list|(
 name|a
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 condition|)
@@ -3769,7 +3769,7 @@ name|isVerified
 argument_list|(
 name|a
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 condition|)
@@ -3794,7 +3794,7 @@ name|byLabel
 argument_list|(
 name|a
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;

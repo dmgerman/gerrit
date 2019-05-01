@@ -2869,14 +2869,14 @@ name|of
 argument_list|(
 name|a2
 operator|.
-name|getPatchSetId
+name|patchSetId
 argument_list|()
 argument_list|,
 name|a2
 argument_list|,
 name|a1
 operator|.
-name|getPatchSetId
+name|patchSetId
 argument_list|()
 argument_list|,
 name|a1
@@ -5264,7 +5264,7 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-literal|"getKey"
+literal|"key"
 argument_list|,
 name|PatchSetApproval
 operator|.
@@ -5275,7 +5275,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"getValue"
+literal|"value"
 argument_list|,
 name|short
 operator|.
@@ -5284,7 +5284,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"getGranted"
+literal|"granted"
 argument_list|,
 name|Timestamp
 operator|.
@@ -5293,7 +5293,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"getTag"
+literal|"tag"
 argument_list|,
 operator|new
 name|TypeLiteral
@@ -5312,7 +5312,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"getRealAccountId"
+literal|"realAccountId"
 argument_list|,
 name|Account
 operator|.
@@ -5323,7 +5323,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-literal|"isPostSubmit"
+literal|"postSubmit"
 argument_list|,
 name|boolean
 operator|.

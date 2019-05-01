@@ -2053,7 +2053,7 @@ name|byLabel
 argument_list|(
 name|psa
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2093,12 +2093,12 @@ name|removeApprovalFor
 argument_list|(
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|,
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2121,7 +2121,7 @@ name|psId
 argument_list|,
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|,
 name|LabelId
@@ -2130,7 +2130,7 @@ name|create
 argument_list|(
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 argument_list|)

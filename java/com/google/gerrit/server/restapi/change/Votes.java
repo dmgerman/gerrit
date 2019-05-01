@@ -607,12 +607,12 @@ name|put
 argument_list|(
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;

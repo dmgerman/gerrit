@@ -936,7 +936,7 @@ name|input
 lambda|->
 name|input
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|<
 literal|0
@@ -944,7 +944,7 @@ operator|||
 operator|!
 name|input
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 operator|.
 name|equals
@@ -992,7 +992,7 @@ name|input
 lambda|->
 name|input
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 operator|.
 name|get

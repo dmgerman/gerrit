@@ -3281,7 +3281,7 @@ name|byLabel
 argument_list|(
 name|a
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3867,7 +3867,7 @@ name|map
 argument_list|(
 name|PatchSetApproval
 operator|::
-name|getAccountId
+name|accountId
 argument_list|)
 argument_list|)
 operator|.

@@ -3746,7 +3746,7 @@ name|immutableEntry
 argument_list|(
 name|a
 operator|.
-name|getPatchSetId
+name|patchSetId
 argument_list|()
 argument_list|,
 name|a

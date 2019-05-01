@@ -1086,7 +1086,7 @@ name|byLabel
 argument_list|(
 name|ap
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1098,7 +1098,7 @@ literal|null
 operator|&&
 name|ap
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|==
 literal|1

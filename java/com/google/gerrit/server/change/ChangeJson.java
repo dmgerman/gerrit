@@ -5160,7 +5160,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getGranted
+name|granted
 argument_list|()
 expr_stmt|;
 name|out
@@ -5176,7 +5176,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -3016,7 +3016,7 @@ name|map
 argument_list|(
 name|PatchSetApproval
 operator|::
-name|getAccountId
+name|accountId
 argument_list|)
 operator|.
 name|collect

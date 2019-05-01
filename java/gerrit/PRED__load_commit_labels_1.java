@@ -371,7 +371,7 @@ name|byLabel
 argument_list|(
 name|a
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -407,7 +407,7 @@ name|IntegerTerm
 argument_list|(
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 argument_list|)
@@ -425,7 +425,7 @@ name|IntegerTerm
 argument_list|(
 name|a
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 operator|.
 name|get

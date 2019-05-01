@@ -592,7 +592,7 @@ name|isEqualTo
 argument_list|(
 name|APPROVAL_2
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -837,7 +837,7 @@ name|isEqualTo
 argument_list|(
 name|APPROVAL_M2
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1082,7 +1082,7 @@ name|isEqualTo
 argument_list|(
 name|APPROVAL_2
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 expr_stmt|;

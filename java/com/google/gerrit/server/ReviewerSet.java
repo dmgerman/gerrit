@@ -317,7 +317,7 @@ name|checkArgument
 argument_list|(
 name|first
 operator|.
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|patchSetId
@@ -330,7 +330,7 @@ name|equals
 argument_list|(
 name|psa
 operator|.
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|patchSetId
@@ -344,12 +344,12 @@ literal|"multiple change IDs: %s, %s"
 argument_list|,
 name|first
 operator|.
-name|getKey
+name|key
 argument_list|()
 argument_list|,
 name|psa
 operator|.
-name|getKey
+name|key
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -361,7 +361,7 @@ name|id
 init|=
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 decl_stmt|;
 name|reviewers
@@ -374,7 +374,7 @@ name|id
 argument_list|,
 name|psa
 operator|.
-name|getGranted
+name|granted
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -382,7 +382,7 @@ if|if
 condition|(
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|!=
 literal|0

@@ -888,7 +888,7 @@ name|comparing
 argument_list|(
 name|PatchSetApproval
 operator|::
-name|getGranted
+name|granted
 argument_list|)
 argument_list|)
 decl_stmt|;

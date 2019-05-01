@@ -572,12 +572,12 @@ name|object
 argument_list|,
 name|p
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|,
 name|p
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 condition|)

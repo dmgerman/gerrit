@@ -2880,7 +2880,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getPatchSetId
+name|patchSetId
 argument_list|()
 operator|.
 name|get
@@ -2896,7 +2896,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 operator|.
@@ -2909,7 +2909,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 operator|.
@@ -2922,7 +2922,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|isPostSubmit
+name|postSubmit
 argument_list|()
 argument_list|)
 operator|.

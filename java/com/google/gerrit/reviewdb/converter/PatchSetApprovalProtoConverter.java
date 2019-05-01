@@ -235,7 +235,7 @@ name|toProto
 argument_list|(
 name|patchSetApproval
 operator|.
-name|getKey
+name|key
 argument_list|()
 argument_list|)
 argument_list|)
@@ -244,7 +244,7 @@ name|setValue
 argument_list|(
 name|patchSetApproval
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 operator|.
@@ -252,7 +252,7 @@ name|setGranted
 argument_list|(
 name|patchSetApproval
 operator|.
-name|getGranted
+name|granted
 argument_list|()
 operator|.
 name|getTime
@@ -263,13 +263,13 @@ name|setPostSubmit
 argument_list|(
 name|patchSetApproval
 operator|.
-name|isPostSubmit
+name|postSubmit
 argument_list|()
 argument_list|)
 decl_stmt|;
 name|patchSetApproval
 operator|.
-name|getTag
+name|tag
 argument_list|()
 operator|.
 name|ifPresent
@@ -286,7 +286,7 @@ name|realAccountId
 init|=
 name|patchSetApproval
 operator|.
-name|getRealAccountId
+name|realAccountId
 argument_list|()
 decl_stmt|;
 comment|// PatchSetApproval#getRealAccountId automatically delegates to PatchSetApproval#getAccountId if
@@ -308,7 +308,7 @@ name|realAccountId
 argument_list|,
 name|patchSetApproval
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 condition|)

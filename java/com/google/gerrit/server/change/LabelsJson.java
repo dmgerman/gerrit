@@ -1657,7 +1657,7 @@ name|val
 init|=
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 decl_stmt|;
 name|Account
@@ -1667,7 +1667,7 @@ name|accountId
 init|=
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 decl_stmt|;
 name|setLabelScores
@@ -1999,12 +1999,12 @@ name|put
 argument_list|(
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2083,7 +2083,7 @@ name|add
 argument_list|(
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2138,7 +2138,7 @@ name|add
 argument_list|(
 name|a
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2151,7 +2151,7 @@ name|byLabel
 argument_list|(
 name|a
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2180,7 +2180,7 @@ name|put
 argument_list|(
 name|a
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|,
 name|a
@@ -2456,7 +2456,7 @@ name|byLabel
 argument_list|(
 name|psa
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2474,7 +2474,7 @@ name|val
 init|=
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 decl_stmt|;
 name|ApprovalInfo
@@ -2530,7 +2530,7 @@ name|date
 operator|=
 name|psa
 operator|.
-name|getGranted
+name|granted
 argument_list|()
 expr_stmt|;
 name|info
@@ -2539,7 +2539,7 @@ name|tag
 operator|=
 name|psa
 operator|.
-name|getTag
+name|tag
 argument_list|()
 operator|.
 name|orElse
@@ -2551,7 +2551,7 @@ if|if
 condition|(
 name|psa
 operator|.
-name|isPostSubmit
+name|postSubmit
 argument_list|()
 condition|)
 block|{
@@ -3129,7 +3129,7 @@ name|add
 argument_list|(
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3184,12 +3184,12 @@ name|put
 argument_list|(
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|,
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 name|psa
@@ -3344,7 +3344,7 @@ name|valueOf
 argument_list|(
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3380,7 +3380,7 @@ name|tag
 operator|=
 name|psa
 operator|.
-name|getTag
+name|tag
 argument_list|()
 operator|.
 name|orElse
@@ -3392,14 +3392,14 @@ name|date
 operator|=
 name|psa
 operator|.
-name|getGranted
+name|granted
 argument_list|()
 expr_stmt|;
 if|if
 condition|(
 name|psa
 operator|.
-name|isPostSubmit
+name|postSubmit
 argument_list|()
 condition|)
 block|{

@@ -266,11 +266,11 @@ name|Key
 name|key
 parameter_list|)
 function_decl|;
-DECL|method|getKey ()
+DECL|method|key ()
 specifier|public
 specifier|abstract
 name|Key
-name|getKey
+name|key
 parameter_list|()
 function_decl|;
 DECL|method|value (short value)
@@ -372,7 +372,7 @@ name|Id
 name|realAccountId
 parameter_list|)
 function_decl|;
-DECL|method|getRealAccountId ()
+DECL|method|realAccountId ()
 specifier|abstract
 name|Optional
 argument_list|<
@@ -380,7 +380,7 @@ name|Account
 operator|.
 name|Id
 argument_list|>
-name|getRealAccountId
+name|realAccountId
 parameter_list|()
 function_decl|;
 DECL|method|postSubmit (boolean isPostSubmit)
@@ -408,7 +408,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|getRealAccountId
+name|realAccountId
 argument_list|()
 operator|.
 name|isPresent
@@ -417,7 +417,7 @@ condition|)
 block|{
 name|realAccountId
 argument_list|(
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|accountId
@@ -431,53 +431,53 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|getKey ()
+DECL|method|key ()
 specifier|public
 specifier|abstract
 name|Key
-name|getKey
+name|key
 parameter_list|()
 function_decl|;
 comment|/**    * Value assigned by the user.    *    *<p>The precise meaning of "value" is up to each category.    *    *<p>In general:    *    *<ul>    *<li><b>&lt; 0:</b> The approval is rejected/revoked.    *<li><b>= 0:</b> No indication either way is provided.    *<li><b>&gt; 0:</b> The approval is approved/positive.    *</ul>    *    * and in the negative and positive direction a magnitude can be assumed.The further from 0 the    * more assertive the approval.    */
-DECL|method|getValue ()
+DECL|method|value ()
 specifier|public
 specifier|abstract
 name|short
-name|getValue
+name|value
 parameter_list|()
 function_decl|;
-DECL|method|getGranted ()
+DECL|method|granted ()
 specifier|public
 specifier|abstract
 name|Timestamp
-name|getGranted
+name|granted
 parameter_list|()
 function_decl|;
-DECL|method|getTag ()
+DECL|method|tag ()
 specifier|public
 specifier|abstract
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|getTag
+name|tag
 parameter_list|()
 function_decl|;
 comment|/** Real user that made this approval on behalf of the user recorded in {@link Key#accountId}. */
-DECL|method|getRealAccountId ()
+DECL|method|realAccountId ()
 specifier|public
 specifier|abstract
 name|Account
 operator|.
 name|Id
-name|getRealAccountId
+name|realAccountId
 parameter_list|()
 function_decl|;
-DECL|method|isPostSubmit ()
+DECL|method|postSubmit ()
 specifier|public
 specifier|abstract
 name|boolean
-name|isPostSubmit
+name|postSubmit
 parameter_list|()
 function_decl|;
 DECL|method|toBuilder ()
@@ -508,13 +508,13 @@ name|key
 argument_list|(
 name|psId
 argument_list|,
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|accountId
 argument_list|()
 argument_list|,
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|labelId
@@ -526,60 +526,60 @@ name|build
 argument_list|()
 return|;
 block|}
-DECL|method|getPatchSetId ()
+DECL|method|patchSetId ()
 specifier|public
 name|PatchSet
 operator|.
 name|Id
-name|getPatchSetId
+name|patchSetId
 parameter_list|()
 block|{
 return|return
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|patchSetId
 argument_list|()
 return|;
 block|}
-DECL|method|getAccountId ()
+DECL|method|accountId ()
 specifier|public
 name|Account
 operator|.
 name|Id
-name|getAccountId
+name|accountId
 parameter_list|()
 block|{
 return|return
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|accountId
 argument_list|()
 return|;
 block|}
-DECL|method|getLabelId ()
+DECL|method|labelId ()
 specifier|public
 name|LabelId
-name|getLabelId
+name|labelId
 parameter_list|()
 block|{
 return|return
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|labelId
 argument_list|()
 return|;
 block|}
-DECL|method|getLabel ()
+DECL|method|label ()
 specifier|public
 name|String
-name|getLabel
+name|label
 parameter_list|()
 block|{
 return|return
-name|getLabelId
+name|labelId
 argument_list|()
 operator|.
 name|get
@@ -593,7 +593,7 @@ name|isLegacySubmit
 parameter_list|()
 block|{
 return|return
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|isLegacySubmit

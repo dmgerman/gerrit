@@ -2444,12 +2444,12 @@ name|put
 argument_list|(
 name|a
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 argument_list|)

@@ -3829,7 +3829,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|!=
 literal|0
@@ -4038,7 +4038,7 @@ name|type
 operator|=
 name|approval
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 operator|.
 name|get
@@ -4054,7 +4054,7 @@ name|toString
 argument_list|(
 name|approval
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4066,7 +4066,7 @@ name|asAccountAttribute
 argument_list|(
 name|approval
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4076,7 +4076,7 @@ name|grantedOn
 operator|=
 name|approval
 operator|.
-name|getGranted
+name|granted
 argument_list|()
 operator|.
 name|getTime
@@ -4099,7 +4099,7 @@ name|byLabel
 argument_list|(
 name|approval
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;
