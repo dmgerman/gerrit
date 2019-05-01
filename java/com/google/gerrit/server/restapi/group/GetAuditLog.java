@@ -804,6 +804,11 @@ name|auditEvent
 operator|.
 name|getRemovedBy
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 argument_list|,
 name|auditEvent
@@ -993,6 +998,11 @@ name|auditEvent
 operator|.
 name|getRemovedBy
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 argument_list|,
 name|auditEvent

@@ -114,6 +114,16 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/** Inclusion of an {@link AccountGroup} in another {@link AccountGroup}. */
 end_comment
@@ -410,24 +420,40 @@ return|;
 block|}
 DECL|method|getRemovedBy ()
 specifier|public
+name|Optional
+argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|>
 name|getRemovedBy
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|removedBy
+argument_list|)
 return|;
 block|}
 DECL|method|getRemovedOn ()
 specifier|public
+name|Optional
+argument_list|<
 name|Timestamp
+argument_list|>
 name|getRemovedOn
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|removedOn
+argument_list|)
 return|;
 block|}
 annotation|@

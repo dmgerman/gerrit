@@ -76,6 +76,16 @@ name|Timestamp
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_class
 DECL|class|GroupAuditEventInfo
 specifier|public
@@ -141,13 +151,18 @@ name|ADD_USER
 argument_list|,
 name|user
 argument_list|,
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|date
+argument_list|)
 argument_list|,
 name|member
 argument_list|)
 return|;
 block|}
-DECL|method|createRemoveUserEvent ( AccountInfo user, Timestamp date, AccountInfo member)
+DECL|method|createRemoveUserEvent ( AccountInfo user, Optional<Timestamp> date, AccountInfo member)
 specifier|public
 specifier|static
 name|UserMemberAuditEventInfo
@@ -156,7 +171,10 @@ parameter_list|(
 name|AccountInfo
 name|user
 parameter_list|,
+name|Optional
+argument_list|<
 name|Timestamp
+argument_list|>
 name|date
 parameter_list|,
 name|AccountInfo
@@ -205,13 +223,18 @@ name|ADD_GROUP
 argument_list|,
 name|user
 argument_list|,
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|date
+argument_list|)
 argument_list|,
 name|member
 argument_list|)
 return|;
 block|}
-DECL|method|createRemoveGroupEvent ( AccountInfo user, Timestamp date, GroupInfo member)
+DECL|method|createRemoveGroupEvent ( AccountInfo user, Optional<Timestamp> date, GroupInfo member)
 specifier|public
 specifier|static
 name|GroupMemberAuditEventInfo
@@ -220,7 +243,10 @@ parameter_list|(
 name|AccountInfo
 name|user
 parameter_list|,
+name|Optional
+argument_list|<
 name|Timestamp
+argument_list|>
 name|date
 parameter_list|,
 name|GroupInfo
@@ -243,7 +269,7 @@ name|member
 argument_list|)
 return|;
 block|}
-DECL|method|GroupAuditEventInfo (Type type, AccountInfo user, Timestamp date)
+DECL|method|GroupAuditEventInfo (Type type, AccountInfo user, Optional<Timestamp> date)
 specifier|protected
 name|GroupAuditEventInfo
 parameter_list|(
@@ -253,7 +279,10 @@ parameter_list|,
 name|AccountInfo
 name|user
 parameter_list|,
+name|Optional
+argument_list|<
 name|Timestamp
+argument_list|>
 name|date
 parameter_list|)
 block|{
@@ -274,6 +303,11 @@ operator|.
 name|date
 operator|=
 name|date
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 DECL|class|UserMemberAuditEventInfo
@@ -289,8 +323,8 @@ specifier|public
 name|AccountInfo
 name|member
 decl_stmt|;
-DECL|method|UserMemberAuditEventInfo ( Type type, AccountInfo user, Timestamp date, AccountInfo member)
-specifier|public
+DECL|method|UserMemberAuditEventInfo ( Type type, AccountInfo user, Optional<Timestamp> date, AccountInfo member)
+specifier|private
 name|UserMemberAuditEventInfo
 parameter_list|(
 name|Type
@@ -299,7 +333,10 @@ parameter_list|,
 name|AccountInfo
 name|user
 parameter_list|,
+name|Optional
+argument_list|<
 name|Timestamp
+argument_list|>
 name|date
 parameter_list|,
 name|AccountInfo
@@ -336,8 +373,8 @@ specifier|public
 name|GroupInfo
 name|member
 decl_stmt|;
-DECL|method|GroupMemberAuditEventInfo ( Type type, AccountInfo user, Timestamp date, GroupInfo member)
-specifier|public
+DECL|method|GroupMemberAuditEventInfo ( Type type, AccountInfo user, Optional<Timestamp> date, GroupInfo member)
+specifier|private
 name|GroupMemberAuditEventInfo
 parameter_list|(
 name|Type
@@ -346,7 +383,10 @@ parameter_list|,
 name|AccountInfo
 name|user
 parameter_list|,
+name|Optional
+argument_list|<
 name|Timestamp
+argument_list|>
 name|date
 parameter_list|,
 name|GroupInfo
