@@ -113,73 +113,6 @@ specifier|abstract
 class|class
 name|AccountGroupByIdAudit
 block|{
-DECL|method|key (AccountGroup.Id groupId, AccountGroup.UUID includeUuid, Timestamp addedOn)
-specifier|public
-specifier|static
-name|Key
-name|key
-parameter_list|(
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|,
-name|AccountGroup
-operator|.
-name|UUID
-name|includeUuid
-parameter_list|,
-name|Timestamp
-name|addedOn
-parameter_list|)
-block|{
-return|return
-operator|new
-name|AutoValue_AccountGroupByIdAudit_Key
-argument_list|(
-name|groupId
-argument_list|,
-name|includeUuid
-argument_list|,
-name|addedOn
-argument_list|)
-return|;
-block|}
-annotation|@
-name|AutoValue
-DECL|class|Key
-specifier|public
-specifier|abstract
-specifier|static
-class|class
-name|Key
-block|{
-DECL|method|groupId ()
-specifier|public
-specifier|abstract
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|()
-function_decl|;
-DECL|method|includeUuid ()
-specifier|public
-specifier|abstract
-name|AccountGroup
-operator|.
-name|UUID
-name|includeUuid
-parameter_list|()
-function_decl|;
-DECL|method|addedOn ()
-specifier|public
-specifier|abstract
-name|Timestamp
-name|addedOn
-parameter_list|()
-function_decl|;
-block|}
 DECL|method|builder ()
 specifier|public
 specifier|static
@@ -206,14 +139,28 @@ specifier|static
 class|class
 name|Builder
 block|{
-DECL|method|key (Key key)
+DECL|method|groupId (AccountGroup.Id groupId)
 specifier|public
 specifier|abstract
 name|Builder
-name|key
+name|groupId
 parameter_list|(
-name|Key
-name|key
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+parameter_list|)
+function_decl|;
+DECL|method|includeUuid (AccountGroup.UUID includeUuid)
+specifier|public
+specifier|abstract
+name|Builder
+name|includeUuid
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|includeUuid
 parameter_list|)
 function_decl|;
 DECL|method|addedBy (Account.Id addedBy)
@@ -226,6 +173,16 @@ name|Account
 operator|.
 name|Id
 name|addedBy
+parameter_list|)
+function_decl|;
+DECL|method|addedOn (Timestamp addedOn)
+specifier|public
+specifier|abstract
+name|Builder
+name|addedOn
+parameter_list|(
+name|Timestamp
+name|addedOn
 parameter_list|)
 function_decl|;
 DECL|method|removedBy (Account.Id removedBy)
@@ -282,13 +239,22 @@ name|build
 parameter_list|()
 function_decl|;
 block|}
-DECL|method|key ()
+DECL|method|groupId ()
 specifier|public
 specifier|abstract
-name|AccountGroupByIdAudit
+name|AccountGroup
 operator|.
-name|Key
-name|key
+name|Id
+name|groupId
+parameter_list|()
+function_decl|;
+DECL|method|includeUuid ()
+specifier|public
+specifier|abstract
+name|AccountGroup
+operator|.
+name|UUID
+name|includeUuid
 parameter_list|()
 function_decl|;
 DECL|method|addedBy ()
@@ -298,6 +264,13 @@ name|Account
 operator|.
 name|Id
 name|addedBy
+parameter_list|()
+function_decl|;
+DECL|method|addedOn ()
+specifier|public
+specifier|abstract
+name|Timestamp
+name|addedOn
 parameter_list|()
 function_decl|;
 DECL|method|removedBy ()
@@ -329,52 +302,6 @@ name|Builder
 name|toBuilder
 parameter_list|()
 function_decl|;
-DECL|method|groupId ()
-specifier|public
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|()
-block|{
-return|return
-name|key
-argument_list|()
-operator|.
-name|groupId
-argument_list|()
-return|;
-block|}
-DECL|method|getAddedOn ()
-specifier|public
-name|Timestamp
-name|getAddedOn
-parameter_list|()
-block|{
-return|return
-name|key
-argument_list|()
-operator|.
-name|addedOn
-argument_list|()
-return|;
-block|}
-DECL|method|includeUuid ()
-specifier|public
-name|AccountGroup
-operator|.
-name|UUID
-name|includeUuid
-parameter_list|()
-block|{
-return|return
-name|key
-argument_list|()
-operator|.
-name|includeUuid
-argument_list|()
-return|;
-block|}
 DECL|method|isActive ()
 specifier|public
 name|boolean

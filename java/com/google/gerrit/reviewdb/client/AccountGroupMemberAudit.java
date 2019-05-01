@@ -113,73 +113,6 @@ specifier|abstract
 class|class
 name|AccountGroupMemberAudit
 block|{
-DECL|method|key (Account.Id accountId, AccountGroup.Id groupId, Timestamp addedOn)
-specifier|public
-specifier|static
-name|Key
-name|key
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|accountId
-parameter_list|,
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|,
-name|Timestamp
-name|addedOn
-parameter_list|)
-block|{
-return|return
-operator|new
-name|AutoValue_AccountGroupMemberAudit_Key
-argument_list|(
-name|accountId
-argument_list|,
-name|groupId
-argument_list|,
-name|addedOn
-argument_list|)
-return|;
-block|}
-annotation|@
-name|AutoValue
-DECL|class|Key
-specifier|public
-specifier|abstract
-specifier|static
-class|class
-name|Key
-block|{
-DECL|method|accountId ()
-specifier|public
-specifier|abstract
-name|Account
-operator|.
-name|Id
-name|accountId
-parameter_list|()
-function_decl|;
-DECL|method|groupId ()
-specifier|public
-specifier|abstract
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|()
-function_decl|;
-DECL|method|addedOn ()
-specifier|public
-specifier|abstract
-name|Timestamp
-name|addedOn
-parameter_list|()
-function_decl|;
-block|}
 DECL|method|builder ()
 specifier|public
 specifier|static
@@ -206,21 +139,29 @@ specifier|static
 class|class
 name|Builder
 block|{
-DECL|method|key (Key key)
+DECL|method|groupId (AccountGroup.Id groupId)
 specifier|public
 specifier|abstract
 name|Builder
-name|key
+name|groupId
 parameter_list|(
-name|Key
-name|key
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
 parameter_list|)
 function_decl|;
-DECL|method|key ()
+DECL|method|memberId (Account.Id accountId)
+specifier|public
 specifier|abstract
-name|Key
-name|key
-parameter_list|()
+name|Builder
+name|memberId
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|)
 function_decl|;
 DECL|method|addedBy (Account.Id addedBy)
 specifier|public
@@ -240,6 +181,22 @@ name|Account
 operator|.
 name|Id
 name|addedBy
+parameter_list|()
+function_decl|;
+DECL|method|addedOn (Timestamp addedOn)
+specifier|public
+specifier|abstract
+name|Builder
+name|addedOn
+parameter_list|(
+name|Timestamp
+name|addedOn
+parameter_list|)
+function_decl|;
+DECL|method|addedOn ()
+specifier|abstract
+name|Timestamp
+name|addedOn
 parameter_list|()
 function_decl|;
 DECL|method|removedBy (Account.Id removedBy)
@@ -300,9 +257,6 @@ argument_list|(
 name|addedBy
 argument_list|()
 argument_list|,
-name|key
-argument_list|()
-operator|.
 name|addedOn
 argument_list|()
 argument_list|)
@@ -316,13 +270,22 @@ name|build
 parameter_list|()
 function_decl|;
 block|}
-DECL|method|key ()
+DECL|method|groupId ()
 specifier|public
 specifier|abstract
-name|AccountGroupMemberAudit
+name|AccountGroup
 operator|.
-name|Key
-name|key
+name|Id
+name|groupId
+parameter_list|()
+function_decl|;
+DECL|method|memberId ()
+specifier|public
+specifier|abstract
+name|Account
+operator|.
+name|Id
+name|memberId
 parameter_list|()
 function_decl|;
 DECL|method|addedBy ()
@@ -332,6 +295,13 @@ name|Account
 operator|.
 name|Id
 name|addedBy
+parameter_list|()
+function_decl|;
+DECL|method|addedOn ()
+specifier|public
+specifier|abstract
+name|Timestamp
+name|addedOn
 parameter_list|()
 function_decl|;
 DECL|method|removedBy ()
@@ -363,52 +333,6 @@ name|Builder
 name|toBuilder
 parameter_list|()
 function_decl|;
-DECL|method|groupId ()
-specifier|public
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|()
-block|{
-return|return
-name|key
-argument_list|()
-operator|.
-name|groupId
-argument_list|()
-return|;
-block|}
-DECL|method|memberId ()
-specifier|public
-name|Account
-operator|.
-name|Id
-name|memberId
-parameter_list|()
-block|{
-return|return
-name|key
-argument_list|()
-operator|.
-name|accountId
-argument_list|()
-return|;
-block|}
-DECL|method|addedOn ()
-specifier|public
-name|Timestamp
-name|addedOn
-parameter_list|()
-block|{
-return|return
-name|key
-argument_list|()
-operator|.
-name|addedOn
-argument_list|()
-return|;
-block|}
 DECL|method|isActive ()
 specifier|public
 name|boolean

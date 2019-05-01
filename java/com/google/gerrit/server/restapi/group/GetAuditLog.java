@@ -963,9 +963,6 @@ argument_list|)
 argument_list|,
 name|auditEvent
 operator|.
-name|key
-argument_list|()
-operator|.
 name|addedOn
 argument_list|()
 argument_list|,
