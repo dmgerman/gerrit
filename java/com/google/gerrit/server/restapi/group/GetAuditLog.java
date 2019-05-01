@@ -748,7 +748,7 @@ name|get
 argument_list|(
 name|auditEvent
 operator|.
-name|getMemberId
+name|memberId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -766,13 +766,13 @@ name|get
 argument_list|(
 name|auditEvent
 operator|.
-name|getAddedBy
+name|addedBy
 argument_list|()
 argument_list|)
 argument_list|,
 name|auditEvent
 operator|.
-name|getAddedOn
+name|addedOn
 argument_list|()
 argument_list|,
 name|member
@@ -802,7 +802,7 @@ name|get
 argument_list|(
 name|auditEvent
 operator|.
-name|getRemovedBy
+name|removedBy
 argument_list|()
 operator|.
 name|orElse
@@ -813,7 +813,7 @@ argument_list|)
 argument_list|,
 name|auditEvent
 operator|.
-name|getRemovedOn
+name|removedOn
 argument_list|()
 argument_list|,
 name|member
@@ -847,7 +847,7 @@ name|includedGroupUUID
 init|=
 name|auditEvent
 operator|.
-name|getIncludeUUID
+name|includeUuid
 argument_list|()
 decl_stmt|;
 name|Optional
@@ -957,13 +957,13 @@ name|get
 argument_list|(
 name|auditEvent
 operator|.
-name|getAddedBy
+name|addedBy
 argument_list|()
 argument_list|)
 argument_list|,
 name|auditEvent
 operator|.
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|addedOn
@@ -996,7 +996,7 @@ name|get
 argument_list|(
 name|auditEvent
 operator|.
-name|getRemovedBy
+name|removedBy
 argument_list|()
 operator|.
 name|orElse
@@ -1007,7 +1007,7 @@ argument_list|)
 argument_list|,
 name|auditEvent
 operator|.
-name|getRemovedOn
+name|removedOn
 argument_list|()
 argument_list|,
 name|member

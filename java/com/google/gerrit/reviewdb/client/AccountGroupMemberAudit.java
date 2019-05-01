@@ -216,10 +216,10 @@ name|Key
 name|key
 parameter_list|)
 function_decl|;
-DECL|method|getKey ()
+DECL|method|key ()
 specifier|abstract
 name|Key
-name|getKey
+name|key
 parameter_list|()
 function_decl|;
 DECL|method|addedBy (Account.Id addedBy)
@@ -234,12 +234,12 @@ name|Id
 name|addedBy
 parameter_list|)
 function_decl|;
-DECL|method|getAddedBy ()
+DECL|method|addedBy ()
 specifier|abstract
 name|Account
 operator|.
 name|Id
-name|getAddedBy
+name|addedBy
 parameter_list|()
 function_decl|;
 DECL|method|removedBy (Account.Id removedBy)
@@ -297,10 +297,10 @@ block|{
 return|return
 name|removed
 argument_list|(
-name|getAddedBy
+name|addedBy
 argument_list|()
 argument_list|,
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|addedOn
@@ -316,25 +316,25 @@ name|build
 parameter_list|()
 function_decl|;
 block|}
-DECL|method|getKey ()
+DECL|method|key ()
 specifier|public
 specifier|abstract
 name|AccountGroupMemberAudit
 operator|.
 name|Key
-name|getKey
+name|key
 parameter_list|()
 function_decl|;
-DECL|method|getAddedBy ()
+DECL|method|addedBy ()
 specifier|public
 specifier|abstract
 name|Account
 operator|.
 name|Id
-name|getAddedBy
+name|addedBy
 parameter_list|()
 function_decl|;
-DECL|method|getRemovedBy ()
+DECL|method|removedBy ()
 specifier|public
 specifier|abstract
 name|Optional
@@ -343,17 +343,17 @@ name|Account
 operator|.
 name|Id
 argument_list|>
-name|getRemovedBy
+name|removedBy
 parameter_list|()
 function_decl|;
-DECL|method|getRemovedOn ()
+DECL|method|removedOn ()
 specifier|public
 specifier|abstract
 name|Optional
 argument_list|<
 name|Timestamp
 argument_list|>
-name|getRemovedOn
+name|removedOn
 parameter_list|()
 function_decl|;
 DECL|method|toBuilder ()
@@ -363,46 +363,46 @@ name|Builder
 name|toBuilder
 parameter_list|()
 function_decl|;
-DECL|method|getGroupId ()
+DECL|method|groupId ()
 specifier|public
 name|AccountGroup
 operator|.
 name|Id
-name|getGroupId
+name|groupId
 parameter_list|()
 block|{
 return|return
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|groupId
 argument_list|()
 return|;
 block|}
-DECL|method|getMemberId ()
+DECL|method|memberId ()
 specifier|public
 name|Account
 operator|.
 name|Id
-name|getMemberId
+name|memberId
 parameter_list|()
 block|{
 return|return
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|accountId
 argument_list|()
 return|;
 block|}
-DECL|method|getAddedOn ()
+DECL|method|addedOn ()
 specifier|public
 name|Timestamp
-name|getAddedOn
+name|addedOn
 parameter_list|()
 block|{
 return|return
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|addedOn
@@ -417,7 +417,7 @@ parameter_list|()
 block|{
 return|return
 operator|!
-name|getRemovedOn
+name|removedOn
 argument_list|()
 operator|.
 name|isPresent

@@ -282,25 +282,25 @@ name|build
 parameter_list|()
 function_decl|;
 block|}
-DECL|method|getKey ()
+DECL|method|key ()
 specifier|public
 specifier|abstract
 name|AccountGroupByIdAud
 operator|.
 name|Key
-name|getKey
+name|key
 parameter_list|()
 function_decl|;
-DECL|method|getAddedBy ()
+DECL|method|addedBy ()
 specifier|public
 specifier|abstract
 name|Account
 operator|.
 name|Id
-name|getAddedBy
+name|addedBy
 parameter_list|()
 function_decl|;
-DECL|method|getRemovedBy ()
+DECL|method|removedBy ()
 specifier|public
 specifier|abstract
 name|Optional
@@ -309,17 +309,17 @@ name|Account
 operator|.
 name|Id
 argument_list|>
-name|getRemovedBy
+name|removedBy
 parameter_list|()
 function_decl|;
-DECL|method|getRemovedOn ()
+DECL|method|removedOn ()
 specifier|public
 specifier|abstract
 name|Optional
 argument_list|<
 name|Timestamp
 argument_list|>
-name|getRemovedOn
+name|removedOn
 parameter_list|()
 function_decl|;
 DECL|method|toBuilder ()
@@ -329,16 +329,16 @@ name|Builder
 name|toBuilder
 parameter_list|()
 function_decl|;
-DECL|method|getGroupId ()
+DECL|method|groupId ()
 specifier|public
 name|AccountGroup
 operator|.
 name|Id
-name|getGroupId
+name|groupId
 parameter_list|()
 block|{
 return|return
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|groupId
@@ -352,23 +352,23 @@ name|getAddedOn
 parameter_list|()
 block|{
 return|return
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|addedOn
 argument_list|()
 return|;
 block|}
-DECL|method|getIncludeUUID ()
+DECL|method|includeUuid ()
 specifier|public
 name|AccountGroup
 operator|.
 name|UUID
-name|getIncludeUUID
+name|includeUuid
 parameter_list|()
 block|{
 return|return
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|includeUuid
@@ -383,7 +383,7 @@ parameter_list|()
 block|{
 return|return
 operator|!
-name|getRemovedOn
+name|removedOn
 argument_list|()
 operator|.
 name|isPresent
