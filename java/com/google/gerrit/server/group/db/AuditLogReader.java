@@ -198,7 +198,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 import|;
 end_import
 
@@ -877,7 +877,7 @@ DECL|method|getSubgroupsAudit ( Repository repo, AccountGroup.UUID uuid)
 specifier|public
 name|ImmutableList
 argument_list|<
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 argument_list|>
 name|getSubgroupsAudit
 parameter_list|(
@@ -917,7 +917,7 @@ DECL|method|getSubgroupsAudit ( AccountGroup.Id groupId, List<ParsedCommit> comm
 specifier|private
 name|ImmutableList
 argument_list|<
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 argument_list|>
 name|getSubgroupsAudit
 parameter_list|(
@@ -937,7 +937,7 @@ name|ListMultimap
 argument_list|<
 name|SubgroupKey
 argument_list|,
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 operator|.
 name|Builder
 argument_list|>
@@ -956,7 +956,7 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 operator|.
 name|Builder
 argument_list|>
@@ -1000,19 +1000,19 @@ argument_list|,
 name|uuid
 argument_list|)
 decl_stmt|;
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 operator|.
 name|Builder
 name|audit
 init|=
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 operator|.
 name|builder
 argument_list|()
 operator|.
 name|key
 argument_list|(
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 operator|.
 name|key
 argument_list|(
@@ -1067,7 +1067,7 @@ control|)
 block|{
 name|List
 argument_list|<
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 operator|.
 name|Builder
 argument_list|>
@@ -1096,7 +1096,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 operator|.
 name|Builder
 name|audit
@@ -1138,7 +1138,7 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 operator|.
 name|Builder
 operator|::

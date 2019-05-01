@@ -140,7 +140,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 import|;
 end_import
 
@@ -720,7 +720,7 @@ DECL|method|getSubgroupsAudit (Repository repo, AccountGroup.UUID groupUuid)
 specifier|public
 name|List
 argument_list|<
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 argument_list|>
 name|getSubgroupsAudit
 parameter_list|(

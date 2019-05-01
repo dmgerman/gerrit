@@ -156,7 +156,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 import|;
 end_import
 
@@ -837,7 +837,7 @@ name|subgroupUuid
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 name|expAudit
 init|=
 name|createExpGroupAudit
@@ -1008,7 +1008,7 @@ name|subgroupUuid2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 name|expAudit1
 init|=
 name|createExpGroupAudit
@@ -1028,7 +1028,7 @@ name|uuid
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 name|expAudit2
 init|=
 name|createExpGroupAudit
@@ -1327,7 +1327,7 @@ name|subgroupUuid1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 name|expGroupAudit1
 init|=
 name|createExpGroupAudit
@@ -1436,7 +1436,7 @@ name|subgroupUuid3
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 name|expGroupAudit2
 init|=
 name|createExpGroupAudit
@@ -1456,7 +1456,7 @@ name|uuid
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 name|expGroupAudit3
 init|=
 name|createExpGroupAudit
@@ -1669,7 +1669,7 @@ name|subgroupUuid1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 name|expGroupAudit4
 init|=
 name|createExpGroupAudit
@@ -2232,7 +2232,7 @@ block|}
 DECL|method|createExpGroupAudit ( AccountGroup.Id groupId, AccountGroup.UUID uuid, Account.Id addedBy, Timestamp addedOn)
 specifier|private
 specifier|static
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 name|createExpGroupAudit
 parameter_list|(
 name|AccountGroup
@@ -2255,14 +2255,14 @@ name|addedOn
 parameter_list|)
 block|{
 return|return
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 operator|.
 name|builder
 argument_list|()
 operator|.
 name|key
 argument_list|(
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 operator|.
 name|key
 argument_list|(

@@ -107,11 +107,11 @@ end_comment
 begin_class
 annotation|@
 name|AutoValue
-DECL|class|AccountGroupByIdAud
+DECL|class|AccountGroupByIdAudit
 specifier|public
 specifier|abstract
 class|class
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 block|{
 DECL|method|key (AccountGroup.Id groupId, AccountGroup.UUID includeUuid, Timestamp addedOn)
 specifier|public
@@ -135,7 +135,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|AutoValue_AccountGroupByIdAud_Key
+name|AutoValue_AccountGroupByIdAudit_Key
 argument_list|(
 name|groupId
 argument_list|,
@@ -189,7 +189,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|AutoValue_AccountGroupByIdAud
+name|AutoValue_AccountGroupByIdAudit
 operator|.
 name|Builder
 argument_list|()
@@ -277,7 +277,7 @@ block|}
 DECL|method|build ()
 specifier|public
 specifier|abstract
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 name|build
 parameter_list|()
 function_decl|;
@@ -285,7 +285,7 @@ block|}
 DECL|method|key ()
 specifier|public
 specifier|abstract
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 operator|.
 name|Key
 name|key

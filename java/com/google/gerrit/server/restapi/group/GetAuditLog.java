@@ -220,7 +220,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 import|;
 end_import
 
@@ -824,7 +824,7 @@ block|}
 block|}
 for|for
 control|(
-name|AccountGroupByIdAud
+name|AccountGroupByIdAudit
 name|auditEvent
 range|:
 name|groups
