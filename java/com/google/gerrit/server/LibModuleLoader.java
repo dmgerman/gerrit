@@ -212,7 +212,7 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-DECL|method|loadModules (Injector parent)
+DECL|method|loadModules (Injector parent, LibModuleType moduleType)
 specifier|public
 specifier|static
 name|List
@@ -223,6 +223,9 @@ name|loadModules
 parameter_list|(
 name|Injector
 name|parent
+parameter_list|,
+name|LibModuleType
+name|moduleType
 parameter_list|)
 block|{
 name|Config
@@ -246,7 +249,12 @@ literal|"gerrit"
 argument_list|,
 literal|null
 argument_list|,
-literal|"installModule"
+literal|"install"
+operator|+
+name|moduleType
+operator|.
+name|getConfigKey
+argument_list|()
 argument_list|)
 argument_list|)
 operator|.
