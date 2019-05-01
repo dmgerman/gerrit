@@ -1434,7 +1434,7 @@ name|getTag
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasValue
 argument_list|(
 name|tag2
 argument_list|)
@@ -1700,7 +1700,7 @@ name|getTag
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasValue
 argument_list|(
 name|integrationTag
 argument_list|)

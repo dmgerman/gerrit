@@ -2541,6 +2541,11 @@ name|psa
 operator|.
 name|getTag
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -3377,6 +3382,11 @@ name|psa
 operator|.
 name|getTag
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 name|date
 operator|=

@@ -138,6 +138,16 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/** An approval (or negative approval) on a patch set. */
 end_comment
@@ -633,12 +643,20 @@ return|;
 block|}
 DECL|method|getTag ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getTag
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|tag
+argument_list|)
 return|;
 block|}
 DECL|method|setPostSubmit (boolean postSubmit)
