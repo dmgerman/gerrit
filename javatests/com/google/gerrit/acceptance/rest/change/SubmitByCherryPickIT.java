@@ -438,7 +438,7 @@ name|void
 name|submitWithCherryPickIfFastForwardPossible
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -527,7 +527,7 @@ name|void
 name|submitWithCherryPick
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -734,7 +734,7 @@ name|void
 name|changeMessageOnSubmit
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|PushOneCommit
 operator|.
@@ -901,7 +901,7 @@ name|void
 name|submitWithContentMerge
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -1131,7 +1131,7 @@ name|void
 name|submitWithContentMerge_Conflict
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -1279,7 +1279,7 @@ name|void
 name|submitOutOfOrder
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -1464,7 +1464,7 @@ name|void
 name|submitOutOfOrder_Conflict
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -1621,7 +1621,7 @@ name|void
 name|submitMultipleChanges
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -1825,7 +1825,7 @@ name|void
 name|submitDependentNonConflictingChangesOutOfOrder
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -2092,7 +2092,7 @@ name|void
 name|submitDependentConflictingChangesOutOfOrder
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -2266,7 +2266,7 @@ name|void
 name|submitSubsetOfDependentChanges
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -2401,7 +2401,7 @@ name|void
 name|submitIdenticalTree
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead

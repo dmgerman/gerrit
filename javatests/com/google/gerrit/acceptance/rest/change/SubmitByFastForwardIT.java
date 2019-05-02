@@ -270,7 +270,7 @@ name|void
 name|submitWithFastForward
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -370,7 +370,7 @@ name|void
 name|submitMultipleChangesWithFastForward
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -613,7 +613,7 @@ name|void
 name|submitTwoChangesWithFastForward_missingDependency
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -703,7 +703,7 @@ name|void
 name|submitFastForwardNotPossible_Conflict
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -903,7 +903,7 @@ name|void
 name|submitSameCommitsAsInExperimentalBranch
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead

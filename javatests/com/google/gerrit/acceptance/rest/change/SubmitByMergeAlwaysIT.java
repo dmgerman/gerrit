@@ -168,7 +168,7 @@ name|void
 name|submitWithMergeIfFastForwardPossible
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -309,7 +309,7 @@ name|void
 name|submitMultipleChanges
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead

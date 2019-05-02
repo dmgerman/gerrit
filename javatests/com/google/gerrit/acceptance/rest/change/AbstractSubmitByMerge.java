@@ -185,7 +185,7 @@ name|void
 name|submitWithMerge
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -320,7 +320,7 @@ name|void
 name|submitWithContentMerge
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|PushOneCommit
 operator|.
@@ -474,7 +474,7 @@ name|void
 name|submitWithContentMerge_Conflict
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -586,7 +586,7 @@ name|void
 name|submitMultipleCommitsToEmptyRepoAsFastForward
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|PushOneCommit
 operator|.
@@ -653,7 +653,7 @@ name|void
 name|submitMultipleCommitsToEmptyRepoWithOneMerge
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
