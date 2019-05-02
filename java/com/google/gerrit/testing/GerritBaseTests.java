@@ -74,28 +74,6 @@ name|Ignore
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|rules
-operator|.
-name|ExpectedException
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Ignore
@@ -104,23 +82,7 @@ specifier|public
 specifier|abstract
 class|class
 name|GerritBaseTests
-block|{
-annotation|@
-name|Deprecated
-comment|// Use GerritJUnit#assertThrows
-annotation|@
-name|Rule
-DECL|field|exception
-specifier|public
-name|ExpectedException
-name|exception
-init|=
-name|ExpectedException
-operator|.
-name|none
-argument_list|()
-decl_stmt|;
-block|}
+block|{}
 end_class
 
 end_unit
