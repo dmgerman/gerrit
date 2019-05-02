@@ -138,8 +138,6 @@ DECL|class|GerritServerTests
 specifier|public
 class|class
 name|GerritServerTests
-extends|extends
-name|GerritBaseTests
 block|{
 DECL|field|config
 annotation|@

@@ -270,20 +270,6 @@ name|gerrit
 operator|.
 name|testing
 operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
 name|TestTimeUtil
 import|;
 end_import
@@ -565,8 +551,6 @@ DECL|class|VersionedMetaDataTest
 specifier|public
 class|class
 name|VersionedMetaDataTest
-extends|extends
-name|GerritBaseTests
 block|{
 comment|// If you're considering fleshing out this test and making it more comprehensive, please consider
 comment|// instead coming up with a replacement interface for

@@ -194,20 +194,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -221,8 +207,6 @@ DECL|class|RawMailParserTest
 specifier|public
 class|class
 name|RawMailParserTest
-extends|extends
-name|GerritBaseTests
 block|{
 annotation|@
 name|Test

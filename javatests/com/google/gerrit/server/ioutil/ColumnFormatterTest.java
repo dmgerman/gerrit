@@ -68,20 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -125,8 +111,6 @@ DECL|class|ColumnFormatterTest
 specifier|public
 class|class
 name|ColumnFormatterTest
-extends|extends
-name|GerritBaseTests
 block|{
 comment|/**    * Holds an in-memory {@link java.io.PrintWriter} object and allows comparisons of its contents to    * a supplied string via an assert statement.    */
 DECL|class|PrintWriterComparator

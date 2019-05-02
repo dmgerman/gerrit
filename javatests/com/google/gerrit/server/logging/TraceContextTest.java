@@ -130,20 +130,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -197,8 +183,6 @@ DECL|class|TraceContextTest
 specifier|public
 class|class
 name|TraceContextTest
-extends|extends
-name|GerritBaseTests
 block|{
 annotation|@
 name|After

@@ -102,20 +102,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -231,8 +217,6 @@ DECL|class|IncludedInResolverTest
 specifier|public
 class|class
 name|IncludedInResolverTest
-extends|extends
-name|GerritBaseTests
 block|{
 comment|// Branch names
 DECL|field|BRANCH_MASTER

@@ -912,20 +912,6 @@ name|gerrit
 operator|.
 name|testing
 operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
 name|InMemoryModule
 import|;
 end_import
@@ -1141,8 +1127,6 @@ DECL|class|RefControlTest
 specifier|public
 class|class
 name|RefControlTest
-extends|extends
-name|GerritBaseTests
 block|{
 DECL|method|assertAdminsAreOwnersAndDevsAreNot ()
 specifier|private

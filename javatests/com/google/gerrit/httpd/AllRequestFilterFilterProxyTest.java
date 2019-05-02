@@ -156,20 +156,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|util
 operator|.
 name|http
@@ -323,8 +309,6 @@ DECL|class|AllRequestFilterFilterProxyTest
 specifier|public
 class|class
 name|AllRequestFilterFilterProxyTest
-extends|extends
-name|GerritBaseTests
 block|{
 comment|/**    * Set of filters for FilterProxy    *    *<p>This set is used to as set of filters when fetching an {@link AllRequestFilter.FilterProxy}    * instance through {@link #getFilterProxy()}.    */
 DECL|field|filters

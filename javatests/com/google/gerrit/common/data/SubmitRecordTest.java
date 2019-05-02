@@ -84,20 +84,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -131,8 +117,6 @@ DECL|class|SubmitRecordTest
 specifier|public
 class|class
 name|SubmitRecordTest
-extends|extends
-name|GerritBaseTests
 block|{
 DECL|field|OK_RECORD
 specifier|private

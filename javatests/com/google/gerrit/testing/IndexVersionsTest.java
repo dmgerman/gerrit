@@ -213,8 +213,6 @@ DECL|class|IndexVersionsTest
 specifier|public
 class|class
 name|IndexVersionsTest
-extends|extends
-name|GerritBaseTests
 block|{
 DECL|field|SCHEMA_DEF
 specifier|private
