@@ -214,15 +214,32 @@ block|{
 return|return
 name|assertAbout
 argument_list|(
-name|ChangeFileContentModificationSubject
-operator|::
-operator|new
+name|modifications
+argument_list|()
 argument_list|)
 operator|.
 name|that
 argument_list|(
 name|modification
 argument_list|)
+return|;
+block|}
+specifier|public
+specifier|static
+name|Factory
+argument_list|<
+name|ChangeFileContentModificationSubject
+argument_list|,
+name|ChangeFileContentModification
+argument_list|>
+DECL|method|modifications ()
+name|modifications
+parameter_list|()
+block|{
+return|return
+name|ChangeFileContentModificationSubject
+operator|::
+operator|new
 return|;
 block|}
 DECL|method|ChangeFileContentModificationSubject ( FailureMetadata failureMetadata, ChangeFileContentModification modification)
