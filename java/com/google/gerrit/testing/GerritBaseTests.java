@@ -105,9 +105,12 @@ specifier|abstract
 class|class
 name|GerritBaseTests
 block|{
-DECL|field|exception
+annotation|@
+name|Deprecated
+comment|// Use GerritJUnit#assertThrows
 annotation|@
 name|Rule
+DECL|field|exception
 specifier|public
 name|ExpectedException
 name|exception

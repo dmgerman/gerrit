@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|easymock
@@ -1342,18 +1358,20 @@ block|}
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|IllegalStateException
-operator|.
-name|class
-argument_list|)
 DECL|method|testRelativeAlternateLocation ()
 specifier|public
 name|void
 name|testRelativeAlternateLocation
 parameter_list|()
+block|{
+name|assertThrows
+argument_list|(
+name|IllegalStateException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 block|{
 name|configMock
 operator|=
@@ -1405,6 +1423,9 @@ argument_list|,
 name|cfg
 argument_list|,
 name|configMock
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}

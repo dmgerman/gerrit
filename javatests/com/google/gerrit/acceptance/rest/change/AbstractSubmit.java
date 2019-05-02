@@ -240,6 +240,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -7244,18 +7260,35 @@ name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|ResourceConflictException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|ResourceConflictException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
+argument_list|,
+parameter_list|()
+lambda|->
+name|revert2
 operator|.
-name|expectMessage
+name|current
+argument_list|()
+operator|.
+name|submit
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
 argument_list|(
 literal|"Change "
 operator|+
@@ -7266,18 +7299,10 @@ argument_list|()
 operator|.
 name|_number
 operator|+
-literal|": Change could not be merged because the commit is empty. "
+literal|": Change could not be merged because the commit is empty. Project policy"
 operator|+
-literal|"Project policy requires all commits to contain modifications to at least one file."
+literal|" requires all commits to contain modifications to at least one file."
 argument_list|)
-expr_stmt|;
-name|revert2
-operator|.
-name|current
-argument_list|()
-operator|.
-name|submit
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -7425,18 +7450,35 @@ name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|ResourceConflictException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|ResourceConflictException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
+argument_list|,
+parameter_list|()
+lambda|->
+name|change
 operator|.
-name|expectMessage
+name|current
+argument_list|()
+operator|.
+name|submit
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
 argument_list|(
 literal|"Change "
 operator|+
@@ -7447,18 +7489,10 @@ argument_list|()
 operator|.
 name|_number
 operator|+
-literal|": Change could not be merged because the commit is empty. "
+literal|": Change could not be merged because the commit is empty. Project policy"
 operator|+
-literal|"Project policy requires all commits to contain modifications to at least one file."
+literal|" requires all commits to contain modifications to at least one file."
 argument_list|)
-expr_stmt|;
-name|change
-operator|.
-name|current
-argument_list|()
-operator|.
-name|submit
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@

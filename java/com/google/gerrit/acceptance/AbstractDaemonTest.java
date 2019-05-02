@@ -2714,9 +2714,12 @@ specifier|private
 name|String
 name|configName
 decl_stmt|;
-DECL|field|exception
+annotation|@
+name|Deprecated
+comment|// Use GerritJUnit#assertThrows
 annotation|@
 name|Rule
+DECL|field|exception
 specifier|public
 name|ExpectedException
 name|exception

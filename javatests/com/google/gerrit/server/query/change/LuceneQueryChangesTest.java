@@ -69,6 +69,38 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -589,22 +621,17 @@ operator|.
 name|getNameEmail
 argument_list|()
 decl_stmt|;
-name|exception
-operator|.
-name|expect
+name|BadRequestException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|BadRequestException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Cannot create full-text query with value: \\"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|assertQuery
 argument_list|(
 literal|"owner: \""
@@ -614,6 +641,20 @@ operator|+
 literal|"\"\\"
 argument_list|,
 name|change1
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"Cannot create full-text query with value: \\"
 argument_list|)
 expr_stmt|;
 block|}

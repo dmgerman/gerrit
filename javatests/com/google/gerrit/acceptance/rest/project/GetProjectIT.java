@@ -85,6 +85,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -371,13 +387,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|ResourceNotFoundException
-operator|.
-name|class
-argument_list|)
 DECL|method|getProjectNotExisting ()
 specifier|public
 name|void
@@ -386,6 +395,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assertThrows
+argument_list|(
+name|ResourceNotFoundException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|projects
@@ -398,6 +415,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}

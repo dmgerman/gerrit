@@ -86,6 +86,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -1217,22 +1233,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|exception
-operator|.
-name|expect
+name|MethodNotAllowedException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|MethodNotAllowedException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"remote plugin administration is disabled"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|plugins
@@ -1246,6 +1257,20 @@ operator|new
 name|InstallPluginInput
 argument_list|()
 argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"remote plugin administration is disabled"
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -1258,15 +1283,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|exception
-operator|.
-name|expect
+name|assertThrows
 argument_list|(
 name|ResourceNotFoundException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|plugins
@@ -1275,6 +1299,7 @@ operator|.
 name|name
 argument_list|(
 literal|"does-not-exist"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

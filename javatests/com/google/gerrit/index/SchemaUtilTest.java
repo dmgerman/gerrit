@@ -129,6 +129,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -362,15 +378,14 @@ operator|.
 name|V4
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|assertThrows
 argument_list|(
 name|IllegalArgumentException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|SchemaUtil
 operator|.
 name|schemasFromClass
@@ -382,6 +397,7 @@ argument_list|,
 name|Object
 operator|.
 name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
