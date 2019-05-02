@@ -15106,7 +15106,7 @@ name|admin
 argument_list|)
 decl_stmt|;
 name|String
-name|inital
+name|initial
 init|=
 name|TestSshKeys
 operator|.
@@ -15128,7 +15128,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|inital
+name|initial
 argument_list|)
 expr_stmt|;
 name|accountIndexedCounter
@@ -15257,7 +15257,7 @@ argument_list|()
 operator|.
 name|addSshKey
 argument_list|(
-name|inital
+name|initial
 argument_list|)
 expr_stmt|;
 name|info
