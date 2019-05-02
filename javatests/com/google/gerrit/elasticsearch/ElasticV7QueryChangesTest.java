@@ -122,6 +122,20 @@ name|gerrit
 operator|.
 name|testing
 operator|.
+name|GerritTestName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
 name|InMemoryModule
 import|;
 end_import
@@ -276,6 +290,16 @@ name|BeforeClass
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Rule
+import|;
+end_import
+
 begin_class
 DECL|class|ElasticV7QueryChangesTest
 specifier|public
@@ -400,6 +424,18 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+DECL|field|testName
+annotation|@
+name|Rule
+specifier|public
+specifier|final
+name|GerritTestName
+name|testName
+init|=
+operator|new
+name|GerritTestName
+argument_list|()
+decl_stmt|;
 annotation|@
 name|After
 DECL|method|closeIndex ()
@@ -425,6 +461,8 @@ name|nodeInfo
 operator|.
 name|port
 argument_list|,
+name|testName
+operator|.
 name|getSanitizedMethodName
 argument_list|()
 argument_list|)
@@ -489,6 +527,8 @@ expr_stmt|;
 name|String
 name|indicesPrefix
 init|=
+name|testName
+operator|.
 name|getSanitizedMethodName
 argument_list|()
 decl_stmt|;
