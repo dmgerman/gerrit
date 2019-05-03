@@ -768,6 +768,25 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Generate a new HTTP password.    *    * @return the generated password.    */
+DECL|method|generateHttpPassword ()
+name|String
+name|generateHttpPassword
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set a new HTTP password.    *    *<p>May only be invoked by administrators.    *    * @param httpPassword the new password, {@code null} to remove the password.    * @return the new password, {@code null} if the password was removed.    */
+DECL|method|setHttpPassword (String httpPassword)
+name|String
+name|setHttpPassword
+parameter_list|(
+name|String
+name|httpPassword
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -1522,6 +1541,41 @@ name|setName
 parameter_list|(
 name|String
 name|name
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|generateHttpPassword ()
+specifier|public
+name|String
+name|generateHttpPassword
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setHttpPassword (String httpPassword)
+specifier|public
+name|String
+name|setHttpPassword
+parameter_list|(
+name|String
+name|httpPassword
 parameter_list|)
 throws|throws
 name|RestApiException
