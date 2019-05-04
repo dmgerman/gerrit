@@ -305,7 +305,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"content()"
+literal|"content"
 argument_list|)
 operator|.
 name|about
@@ -350,7 +350,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"changeType()"
+literal|"changeType"
 argument_list|)
 operator|.
 name|that
@@ -379,7 +379,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"metaA()"
+literal|"metaA"
 argument_list|)
 operator|.
 name|about
@@ -414,7 +414,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"metaB()"
+literal|"metaB"
 argument_list|)
 operator|.
 name|about

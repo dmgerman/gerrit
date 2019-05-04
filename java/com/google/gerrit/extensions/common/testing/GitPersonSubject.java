@@ -311,7 +311,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"name()"
+literal|"name"
 argument_list|)
 operator|.
 name|that
@@ -340,7 +340,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"email()"
+literal|"email"
 argument_list|)
 operator|.
 name|that
@@ -374,7 +374,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"date()"
+literal|"date"
 argument_list|)
 operator|.
 name|that
@@ -403,7 +403,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"tz()"
+literal|"tz"
 argument_list|)
 operator|.
 name|that

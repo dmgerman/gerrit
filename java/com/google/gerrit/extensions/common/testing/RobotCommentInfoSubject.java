@@ -301,7 +301,7 @@ block|{
 return|return
 name|check
 argument_list|(
-literal|"fixSuggestions()"
+literal|"fixSuggestions"
 argument_list|)
 operator|.
 name|about

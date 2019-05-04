@@ -338,7 +338,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"groupUuid()"
+literal|"getGroupUUID()"
 argument_list|)
 operator|.
 name|that
@@ -375,7 +375,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"nameKey()"
+literal|"getNameKey()"
 argument_list|)
 operator|.
 name|that
@@ -405,7 +405,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"name()"
+literal|"getName()"
 argument_list|)
 operator|.
 name|that
@@ -440,7 +440,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"id()"
+literal|"getId()"
 argument_list|)
 operator|.
 name|that
@@ -470,7 +470,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"description()"
+literal|"getDescription()"
 argument_list|)
 operator|.
 name|that
@@ -507,7 +507,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"ownerGroupUuid()"
+literal|"getOwnerGroupUUID()"
 argument_list|)
 operator|.
 name|that
@@ -537,7 +537,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"visibleToAll()"
+literal|"isVisibleToAll()"
 argument_list|)
 operator|.
 name|that
@@ -572,7 +572,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"createdOn()"
+literal|"getCreatedOn()"
 argument_list|)
 operator|.
 name|that
@@ -602,7 +602,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"members()"
+literal|"getMembers()"
 argument_list|)
 operator|.
 name|that
@@ -632,7 +632,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"subgroups()"
+literal|"getSubgroups()"
 argument_list|)
 operator|.
 name|that
@@ -667,7 +667,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"refState()"
+literal|"getRefState()"
 argument_list|)
 operator|.
 name|that

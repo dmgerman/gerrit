@@ -272,7 +272,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"groupUuid()"
+literal|"getUUID()"
 argument_list|)
 operator|.
 name|that
@@ -302,7 +302,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"name()"
+literal|"getName()"
 argument_list|)
 operator|.
 name|that

@@ -273,7 +273,7 @@ expr_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"filePath()"
+literal|"getFilePath()"
 argument_list|)
 operator|.
 name|that
@@ -308,7 +308,7 @@ argument_list|()
 decl_stmt|;
 name|check
 argument_list|(
-literal|"newContent()"
+literal|"getNewContent()"
 argument_list|)
 operator|.
 name|that
@@ -343,7 +343,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-literal|"newContent()"
+literal|"getNewContent()"
 argument_list|)
 operator|.
 name|that

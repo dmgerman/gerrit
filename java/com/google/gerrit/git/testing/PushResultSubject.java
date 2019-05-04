@@ -378,7 +378,7 @@ name|Strings
 operator|.
 name|nullToEmpty
 argument_list|(
-name|trimMessages
+name|getTrimmedMessages
 argument_list|()
 argument_list|)
 argument_list|)
@@ -415,12 +415,12 @@ argument_list|()
 expr_stmt|;
 name|check
 argument_list|(
-literal|"messages()"
+literal|"getTrimmedMessages()"
 argument_list|)
 operator|.
 name|that
 argument_list|(
-name|trimMessages
+name|getTrimmedMessages
 argument_list|()
 argument_list|)
 operator|.
@@ -476,13 +476,13 @@ argument_list|)
 operator|.
 name|split
 argument_list|(
-name|trimMessages
+name|getTrimmedMessages
 argument_list|()
 argument_list|)
 decl_stmt|;
 name|check
 argument_list|(
-literal|"messages()"
+literal|"getTrimmedMessages()"
 argument_list|)
 operator|.
 name|that
@@ -499,10 +499,10 @@ name|inOrder
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|trimMessages ()
+DECL|method|getTrimmedMessages ()
 specifier|private
 name|String
-name|trimMessages
+name|getTrimmedMessages
 parameter_list|()
 block|{
 return|return

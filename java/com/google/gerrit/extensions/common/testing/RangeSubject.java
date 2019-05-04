@@ -250,7 +250,7 @@ block|{
 return|return
 name|check
 argument_list|(
-literal|"startLine()"
+literal|"startLine"
 argument_list|)
 operator|.
 name|that
@@ -271,7 +271,7 @@ block|{
 return|return
 name|check
 argument_list|(
-literal|"startCharacter()"
+literal|"startCharacter"
 argument_list|)
 operator|.
 name|that
@@ -292,7 +292,7 @@ block|{
 return|return
 name|check
 argument_list|(
-literal|"endLine()"
+literal|"endLine"
 argument_list|)
 operator|.
 name|that
@@ -313,7 +313,7 @@ block|{
 return|return
 name|check
 argument_list|(
-literal|"endCharacter()"
+literal|"endCharacter"
 argument_list|)
 operator|.
 name|that
