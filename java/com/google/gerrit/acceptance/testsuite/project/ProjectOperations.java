@@ -190,6 +190,14 @@ name|Config
 name|getConfig
 parameter_list|()
 function_decl|;
+comment|/**      * Starts the fluent chain to update a project. The returned builder can be used to specify how      * the attributes of the project should be modified. To update the project for real, the {@link      * TestProjectUpdate.Builder#update()} must be called.      *      *<p>Example:      *      *<pre>      * projectOperations      *     .forUpdate()      *     .add(allow(ABANDON).ref("refs/*").group(REGISTERED_USERS))      *     .update();      *</pre>      *      * @return a builder to update the check.      */
+DECL|method|forUpdate ()
+name|TestProjectUpdate
+operator|.
+name|Builder
+name|forUpdate
+parameter_list|()
+function_decl|;
 block|}
 block|}
 end_interface
