@@ -648,8 +648,6 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NoteDbUpdateManager
-operator|.
 name|TooManyUpdatesException
 import|;
 end_import

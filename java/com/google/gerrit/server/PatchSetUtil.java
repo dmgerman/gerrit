@@ -838,9 +838,6 @@ name|changeId
 init|=
 name|update
 operator|.
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 decl_stmt|;

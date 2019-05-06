@@ -2103,13 +2103,9 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|// Always delete the corresponding comment from drafts. Published comments
-comment|// are immutable, meaning in normal operation we only hit this path when
-comment|// publishing a comment. It's exactly in that case that we have to delete
-comment|// the draft.
 name|draftUpdate
 operator|.
-name|deleteComment
+name|markCommentPublished
 argument_list|(
 name|c
 argument_list|)
@@ -2755,9 +2751,6 @@ block|{
 name|int
 name|ownId
 init|=
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 operator|.
