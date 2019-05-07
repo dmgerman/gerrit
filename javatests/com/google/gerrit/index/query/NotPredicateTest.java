@@ -357,9 +357,6 @@ argument_list|(
 name|p
 argument_list|)
 decl_stmt|;
-name|UnsupportedOperationException
-name|e
-init|=
 name|assertThrows
 argument_list|(
 name|UnsupportedOperationException
@@ -376,7 +373,7 @@ operator|.
 name|clear
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|assertOnlyChild
 argument_list|(
 literal|"clear"
@@ -386,8 +383,6 @@ argument_list|,
 name|n
 argument_list|)
 expr_stmt|;
-name|e
-operator|=
 name|assertThrows
 argument_list|(
 name|UnsupportedOperationException
@@ -416,8 +411,6 @@ argument_list|,
 name|n
 argument_list|)
 expr_stmt|;
-name|e
-operator|=
 name|assertThrows
 argument_list|(
 name|UnsupportedOperationException
