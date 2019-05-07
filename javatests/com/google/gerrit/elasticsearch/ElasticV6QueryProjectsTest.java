@@ -122,20 +122,6 @@ name|gerrit
 operator|.
 name|testing
 operator|.
-name|GerritTestName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
 name|InMemoryModule
 import|;
 end_import
@@ -209,16 +195,6 @@ operator|.
 name|junit
 operator|.
 name|BeforeClass
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Rule
 import|;
 end_import
 
@@ -328,18 +304,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|field|testName
-annotation|@
-name|Rule
-specifier|public
-specifier|final
-name|GerritTestName
-name|testName
-init|=
-operator|new
-name|GerritTestName
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|initAfterLifecycleStart ()
