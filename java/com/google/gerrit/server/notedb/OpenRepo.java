@@ -378,11 +378,6 @@ implements|implements
 name|AutoCloseable
 block|{
 comment|/** Returns a {@link OpenRepo} wrapping around an open {@link Repository}. */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"resource"
-argument_list|)
 DECL|method|open (GitRepositoryManager repoManager, Project.NameKey project)
 specifier|static
 name|OpenRepo
