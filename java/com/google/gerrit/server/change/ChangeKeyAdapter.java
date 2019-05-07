@@ -197,7 +197,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Adapter that serializes {@link Change.Key}'s {@code key} field as {@code id}, for backwards  * compatibility in stream-events.  */
+comment|/**  * Adapter that serializes {@link com.google.gerrit.reviewdb.client.Change.Key}'s {@code key} field  * as {@code id}, for backwards compatibility in stream-events.  */
 end_comment
 
 begin_comment
