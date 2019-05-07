@@ -89,6 +89,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -168,13 +184,6 @@ name|AbstractDaemonTest
 block|{
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|ResourceNotFoundException
-operator|.
-name|class
-argument_list|)
 DECL|method|getNonExistingAccount_NotFound ()
 specifier|public
 name|void
@@ -183,6 +192,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assertThrows
+argument_list|(
+name|ResourceNotFoundException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|accounts
@@ -195,6 +212,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

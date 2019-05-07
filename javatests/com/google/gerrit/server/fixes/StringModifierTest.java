@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -92,7 +92,9 @@ name|gerrit
 operator|.
 name|testing
 operator|.
-name|GerritBaseTests
+name|GerritJUnit
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -121,8 +123,6 @@ DECL|class|StringModifierTest
 specifier|public
 class|class
 name|StringModifierTest
-extends|extends
-name|GerritBaseTests
 block|{
 DECL|field|originalString
 specifier|private
@@ -358,15 +358,14 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|assertThrows
 argument_list|(
 name|StringIndexOutOfBoundsException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|stringModifier
 operator|.
 name|replace
@@ -376,6 +375,7 @@ argument_list|,
 literal|32
 argument_list|,
 literal|"The modified"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -387,15 +387,14 @@ name|void
 name|startIndexMustNotBeGreaterThanEndIndex
 parameter_list|()
 block|{
-name|exception
-operator|.
-name|expect
+name|assertThrows
 argument_list|(
 name|StringIndexOutOfBoundsException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|stringModifier
 operator|.
 name|replace
@@ -405,6 +404,7 @@ argument_list|,
 literal|9
 argument_list|,
 literal|"something"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -416,15 +416,14 @@ name|void
 name|startIndexMustNotBeNegative
 parameter_list|()
 block|{
-name|exception
-operator|.
-name|expect
+name|assertThrows
 argument_list|(
 name|StringIndexOutOfBoundsException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|stringModifier
 operator|.
 name|replace
@@ -435,6 +434,7 @@ argument_list|,
 literal|9
 argument_list|,
 literal|"something"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -490,15 +490,14 @@ name|void
 name|startIndexMustNotBeGreaterThanLengthOfString
 parameter_list|()
 block|{
-name|exception
-operator|.
-name|expect
+name|assertThrows
 argument_list|(
 name|StringIndexOutOfBoundsException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|stringModifier
 operator|.
 name|replace
@@ -519,6 +518,7 @@ literal|1
 argument_list|,
 literal|"something"
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -529,15 +529,14 @@ name|void
 name|endIndexMustNotBeGreaterThanLengthOfString
 parameter_list|()
 block|{
-name|exception
-operator|.
-name|expect
+name|assertThrows
 argument_list|(
 name|StringIndexOutOfBoundsException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|stringModifier
 operator|.
 name|replace
@@ -552,6 +551,7 @@ operator|+
 literal|1
 argument_list|,
 literal|"something"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -90,7 +90,9 @@ name|gerrit
 operator|.
 name|testing
 operator|.
-name|GerritBaseTests
+name|GerritJUnit
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -109,8 +111,6 @@ DECL|class|ElasticVersionTest
 specifier|public
 class|class
 name|ElasticVersionTest
-extends|extends
-name|GerritBaseTests
 block|{
 annotation|@
 name|Test
@@ -405,20 +405,38 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|exception
+name|ElasticVersion
 operator|.
-name|expect
+name|UnsupportedVersion
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|ElasticVersion
 operator|.
 name|UnsupportedVersion
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
+argument_list|,
+parameter_list|()
+lambda|->
+name|ElasticVersion
 operator|.
-name|expectMessage
+name|forVersion
+argument_list|(
+literal|"4.0.0"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
 argument_list|(
 literal|"Unsupported version: [4.0.0]. Supported versions: "
 operator|+
@@ -426,13 +444,6 @@ name|ElasticVersion
 operator|.
 name|supportedVersions
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|ElasticVersion
-operator|.
-name|forVersion
-argument_list|(
-literal|"4.0.0"
 argument_list|)
 expr_stmt|;
 block|}

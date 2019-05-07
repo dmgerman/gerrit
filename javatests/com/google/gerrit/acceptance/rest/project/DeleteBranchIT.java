@@ -122,6 +122,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|eclipse
@@ -863,22 +879,17 @@ argument_list|,
 name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|ResourceConflictException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|ResourceConflictException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Not allowed to delete user branch."
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|branch
 argument_list|(
 name|BranchNameKey
@@ -901,6 +912,20 @@ argument_list|)
 operator|.
 name|delete
 argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"Not allowed to delete user branch."
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -947,22 +972,17 @@ argument_list|,
 name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|ResourceConflictException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|ResourceConflictException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Not allowed to delete group branch."
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|branch
 argument_list|(
 name|BranchNameKey
@@ -983,6 +1003,20 @@ argument_list|)
 operator|.
 name|delete
 argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"Not allowed to delete group branch."
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|blockForcePush ()
@@ -1165,15 +1199,14 @@ operator|.
 name|assertNoContent
 argument_list|()
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|assertThrows
 argument_list|(
 name|ResourceNotFoundException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|branch
 argument_list|(
 name|branch
@@ -1181,6 +1214,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|assertDeleteSucceeds (BranchNameKey branch)
@@ -1254,15 +1288,14 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|assertThrows
 argument_list|(
 name|ResourceNotFoundException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|branch
 argument_list|(
 name|branch
@@ -1270,6 +1303,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|assertDeleteForbidden (BranchNameKey branch)
@@ -1299,22 +1333,17 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|AuthException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|AuthException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"not permitted: delete"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|branch
 argument_list|(
 name|branch
@@ -1322,6 +1351,20 @@ argument_list|)
 operator|.
 name|delete
 argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"not permitted: delete"
+argument_list|)
 expr_stmt|;
 block|}
 block|}

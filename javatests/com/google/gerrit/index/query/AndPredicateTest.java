@@ -102,6 +102,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -157,18 +173,6 @@ operator|.
 name|Assert
 operator|.
 name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -323,8 +327,14 @@ argument_list|,
 name|b
 argument_list|)
 decl_stmt|;
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|UnsupportedOperationException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|n
 operator|.
 name|getChildren
@@ -332,21 +342,8 @@ argument_list|()
 operator|.
 name|clear
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected UnsupportedOperationException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedOperationException
-name|e
-parameter_list|)
-block|{
-comment|// Expected
-block|}
 name|assertChildren
 argument_list|(
 literal|"clear"
@@ -361,8 +358,14 @@ name|b
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|UnsupportedOperationException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|n
 operator|.
 name|getChildren
@@ -372,21 +375,8 @@ name|remove
 argument_list|(
 literal|0
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected UnsupportedOperationException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedOperationException
-name|e
-parameter_list|)
-block|{
-comment|// Expected
-block|}
 name|assertChildren
 argument_list|(
 literal|"remove(0)"
@@ -401,8 +391,14 @@ name|b
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|UnsupportedOperationException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|n
 operator|.
 name|getChildren
@@ -413,21 +409,8 @@ argument_list|()
 operator|.
 name|remove
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected UnsupportedOperationException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedOperationException
-name|e
-parameter_list|)
-block|{
-comment|// Expected
-block|}
 name|assertChildren
 argument_list|(
 literal|"iterator().remove()"

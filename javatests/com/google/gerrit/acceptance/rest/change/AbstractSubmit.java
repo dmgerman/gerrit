@@ -240,6 +240,34 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -453,6 +481,20 @@ operator|.
 name|request
 operator|.
 name|RequestScopeOperations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -1150,6 +1192,22 @@ name|gerrit
 operator|.
 name|testing
 operator|.
+name|GerritJUnit
+operator|.
+name|ThrowingRunnable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
 name|TestTimeUtil
 import|;
 end_import
@@ -1642,7 +1700,7 @@ name|void
 name|submitToEmptyRepo
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assertThat
 argument_list|(
@@ -1769,7 +1827,7 @@ name|void
 name|submitSingleChange
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -1893,7 +1951,7 @@ name|void
 name|submitMultipleChangesOtherMergeConflictPreview
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -2278,7 +2336,7 @@ name|void
 name|submitMultipleChangesPreview
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -2536,7 +2594,7 @@ name|void
 name|submitNoPermission
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|// create project where submit is blocked
 name|Project
@@ -2637,7 +2695,7 @@ name|void
 name|noSelfSubmit
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|// create project where submit is blocked for the change owner
 name|Project
@@ -2862,7 +2920,7 @@ name|void
 name|onlySelfSubmit
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|// create project where only the change owner can submit
 name|Project
@@ -3097,7 +3155,7 @@ name|void
 name|submitWholeTopicMultipleProjects
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -3360,7 +3418,7 @@ name|void
 name|submitWholeTopicMultipleBranchesOnSameProject
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -3658,7 +3716,7 @@ name|void
 name|submitWholeTopic
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -3937,7 +3995,7 @@ name|void
 name|submitReusingOldTopic
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -4198,7 +4256,7 @@ argument_list|>
 name|expected
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assertThat
 argument_list|(
@@ -4242,7 +4300,7 @@ name|void
 name|submitWorkInProgressChange
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|PushOneCommit
 operator|.
@@ -4296,7 +4354,7 @@ name|void
 name|submitWithHiddenBranchInSameTopic
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -4409,7 +4467,7 @@ name|void
 name|submitChangeWhenParentOfOtherBranchTip
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|// Chain of two commits
 comment|// Push both to topic-branch
@@ -4579,7 +4637,7 @@ name|void
 name|submitMergeOfNonChangeBranchTip
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|// Merge a branch with commits that have not been submitted as
 comment|// changes.
@@ -4743,7 +4801,7 @@ name|void
 name|submitMergeOfNonChangeBranchNonTip
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|// Merge a branch with commits that have not been submitted as
 comment|// changes.
@@ -4968,7 +5026,7 @@ name|void
 name|submitChangeWithCommitThatWasAlreadyMerged
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|// create and submit a change
 name|PushOneCommit
@@ -5030,7 +5088,7 @@ name|void
 name|submitChangesWithCommitsThatWereAlreadyMerged
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|// create and submit 2 changes
 name|PushOneCommit
@@ -5145,7 +5203,7 @@ name|void
 name|submitTopicWithCommitsThatWereAlreadyMerged
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -5260,7 +5318,7 @@ name|void
 name|submitWithValidation
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|AtomicBoolean
 name|called
@@ -5407,7 +5465,7 @@ name|void
 name|submitWithValidationMultiRepo
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -5907,7 +5965,7 @@ name|void
 name|submitWithCommitAndItsMergeCommitTogether
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -6360,7 +6418,7 @@ name|void
 name|retrySubmitSingleChangeOnLockFailure
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|PushOneCommit
 operator|.
@@ -6508,7 +6566,7 @@ name|void
 name|retrySubmitAfterTornTopicOnLockFailure
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -6856,7 +6914,7 @@ name|void
 name|authorAndCommitDateAreEqual
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -7014,7 +7072,7 @@ name|void
 name|submitEmptyCommitPatchSetCanNotFastForward_emptyCommitAllowed
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -7142,7 +7200,7 @@ name|void
 name|submitEmptyCommitPatchSetCanNotFastForward_emptyCommitNotAllowed
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assume
 argument_list|()
@@ -7244,18 +7302,35 @@ name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|ResourceConflictException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|ResourceConflictException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
+argument_list|,
+parameter_list|()
+lambda|->
+name|revert2
 operator|.
-name|expectMessage
+name|current
+argument_list|()
+operator|.
+name|submit
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
 argument_list|(
 literal|"Change "
 operator|+
@@ -7266,18 +7341,10 @@ argument_list|()
 operator|.
 name|_number
 operator|+
-literal|": Change could not be merged because the commit is empty. "
+literal|": Change could not be merged because the commit is empty. Project policy"
 operator|+
-literal|"Project policy requires all commits to contain modifications to at least one file."
+literal|" requires all commits to contain modifications to at least one file."
 argument_list|)
-expr_stmt|;
-name|revert2
-operator|.
-name|current
-argument_list|()
-operator|.
-name|submit
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -7297,7 +7364,7 @@ name|void
 name|submitEmptyCommitPatchSetCanFastForward_emptyCommitAllowed
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|ChangeInput
 name|ci
@@ -7374,7 +7441,7 @@ name|void
 name|submitEmptyCommitPatchSetCanFastForward_emptyCommitNotAllowed
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|ChangeInput
 name|ci
@@ -7425,18 +7492,35 @@ name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|ResourceConflictException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|ResourceConflictException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
+argument_list|,
+parameter_list|()
+lambda|->
+name|change
 operator|.
-name|expectMessage
+name|current
+argument_list|()
+operator|.
+name|submit
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
 argument_list|(
 literal|"Change "
 operator|+
@@ -7447,18 +7531,10 @@ argument_list|()
 operator|.
 name|_number
 operator|+
-literal|": Change could not be merged because the commit is empty. "
+literal|": Change could not be merged because the commit is empty. Project policy"
 operator|+
-literal|"Project policy requires all commits to contain modifications to at least one file."
+literal|" requires all commits to contain modifications to at least one file."
 argument_list|)
-expr_stmt|;
-name|change
-operator|.
-name|current
-argument_list|()
-operator|.
-name|submit
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -7482,7 +7558,7 @@ name|void
 name|submitNonemptyCommitToEmptyRepoWithRejectEmptyCommit_allowed
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assertThat
 argument_list|(
@@ -7622,7 +7698,7 @@ name|void
 name|submitEmptyCommitToEmptyRepoWithRejectEmptyCommit_allowed
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assertThat
 argument_list|(
@@ -7787,7 +7863,7 @@ modifier|...
 name|changes
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 for|for
 control|(
@@ -7915,7 +7991,7 @@ name|Result
 name|change
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|ChangeInfo
 name|info
@@ -8088,7 +8164,7 @@ name|String
 name|changeId
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|submit
 argument_list|(
@@ -8116,7 +8192,7 @@ name|SubmitInput
 name|input
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|submit
 argument_list|(
@@ -8142,7 +8218,7 @@ name|String
 name|expectedError
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|submit
 argument_list|(
@@ -8160,7 +8236,7 @@ name|expectedError
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|submit ( String changeId, SubmitInput input, Class<? extends RestApiException> expectedExceptionType, String expectedExceptionMsg)
+DECL|method|submit ( String changeId, SubmitInput input, @Nullable Class<? extends RestApiException> expectedExceptionType, String expectedExceptionMsg)
 specifier|protected
 name|void
 name|submit
@@ -8171,6 +8247,8 @@ parameter_list|,
 name|SubmitInput
 name|input
 parameter_list|,
+annotation|@
+name|Nullable
 name|Class
 argument_list|<
 name|?
@@ -8183,7 +8261,7 @@ name|String
 name|expectedExceptionMsg
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|approve
 argument_list|(
@@ -8203,8 +8281,19 @@ name|changeId
 argument_list|)
 expr_stmt|;
 block|}
-try|try
+else|else
 block|{
+name|requireNonNull
+argument_list|(
+name|expectedExceptionMsg
+argument_list|)
+expr_stmt|;
+block|}
+name|ThrowingRunnable
+name|submit
+init|=
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|changes
@@ -8222,7 +8311,7 @@ name|submit
 argument_list|(
 name|input
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|expectedExceptionType
@@ -8230,102 +8319,36 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|fail
+name|RestApiException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
-literal|"Expected exception of type "
-operator|+
 name|expectedExceptionType
+argument_list|,
+name|submit
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
 operator|.
-name|getSimpleName
+name|hasMessageThat
 argument_list|()
+operator|.
+name|isEqualTo
+argument_list|(
+name|expectedExceptionMsg
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|RestApiException
-name|e
-parameter_list|)
-block|{
-if|if
-condition|(
-name|expectedExceptionType
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-name|e
-throw|;
-block|}
-comment|// More verbose than using assertThat and/or ExpectedException, but gives
-comment|// us the stack trace.
-if|if
-condition|(
-operator|!
-name|expectedExceptionType
-operator|.
-name|isAssignableFrom
-argument_list|(
-name|e
-operator|.
-name|getClass
-argument_list|()
-argument_list|)
-operator|||
-operator|!
-name|e
-operator|.
-name|getMessage
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|expectedExceptionMsg
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|AssertionError
-argument_list|(
-literal|"Expected exception of type "
-operator|+
-name|expectedExceptionType
-operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|" with message: \""
-operator|+
-name|expectedExceptionMsg
-operator|+
-literal|"\" but got exception of type "
-operator|+
-name|e
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|" with message \""
-operator|+
-name|e
-operator|.
-name|getMessage
-argument_list|()
-operator|+
-literal|"\""
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 return|return;
 block|}
+name|submit
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
 name|ChangeInfo
 name|change
 init|=
@@ -8359,7 +8382,7 @@ name|String
 name|changeId
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assertWithMessage
 argument_list|(
@@ -8444,7 +8467,7 @@ modifier|...
 name|expected
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|eventRecorder
 operator|.
@@ -8471,7 +8494,7 @@ modifier|...
 name|expected
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|eventRecorder
 operator|.
@@ -8503,7 +8526,7 @@ name|ObjectId
 name|expectedId
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|ChangeInfo
 name|c
@@ -8641,7 +8664,7 @@ name|String
 name|changeId
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assertThat
 argument_list|(
@@ -8670,7 +8693,7 @@ name|String
 name|changeId
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assertApproved
 argument_list|(
@@ -8692,7 +8715,7 @@ name|TestAccount
 name|user
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|ChangeInfo
 name|c
@@ -8944,7 +8967,7 @@ name|int
 name|psId
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assertSubmitter
 argument_list|(
@@ -8971,7 +8994,7 @@ name|TestAccount
 name|user
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|Change
 name|c
@@ -9072,7 +9095,7 @@ name|int
 name|psId
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|Change
 name|c
@@ -9149,7 +9172,7 @@ name|boolean
 name|contentMerge
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|assertRebase
 argument_list|(
@@ -9206,7 +9229,7 @@ name|boolean
 name|contentMerge
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|Repository
 name|repo
@@ -9316,7 +9339,7 @@ name|String
 name|branch
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 try|try
 init|(
@@ -9381,7 +9404,7 @@ argument_list|>
 name|getRemoteLog
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 return|return
 name|getRemoteLog
@@ -9430,7 +9453,7 @@ name|Repository
 name|repo
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|ObjectId
 name|oldTreeId
@@ -9469,7 +9492,7 @@ name|String
 name|getLatestRemoteDiff
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 try|try
 init|(
@@ -9540,7 +9563,7 @@ name|ObjectId
 name|newTreeId
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|ByteArrayOutputStream
 name|out
@@ -9602,7 +9625,7 @@ name|SubmitType
 name|submitType
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|Project
 operator|.
@@ -9668,7 +9691,7 @@ name|String
 name|topic
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|PushOneCommit
 name|push

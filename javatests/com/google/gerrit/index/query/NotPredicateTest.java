@@ -104,6 +104,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -159,18 +175,6 @@ operator|.
 name|Assert
 operator|.
 name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -353,8 +357,17 @@ argument_list|(
 name|p
 argument_list|)
 decl_stmt|;
-try|try
-block|{
+name|UnsupportedOperationException
+name|e
+init|=
+name|assertThrows
+argument_list|(
+name|UnsupportedOperationException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|n
 operator|.
 name|getChildren
@@ -362,19 +375,8 @@ argument_list|()
 operator|.
 name|clear
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected UnsupportedOperationException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedOperationException
-name|e
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertOnlyChild
 argument_list|(
 literal|"clear"
@@ -384,9 +386,16 @@ argument_list|,
 name|n
 argument_list|)
 expr_stmt|;
-block|}
-try|try
-block|{
+name|e
+operator|=
+name|assertThrows
+argument_list|(
+name|UnsupportedOperationException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|n
 operator|.
 name|getChildren
@@ -396,19 +405,8 @@ name|remove
 argument_list|(
 literal|0
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected UnsupportedOperationException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedOperationException
-name|e
-parameter_list|)
-block|{
 name|assertOnlyChild
 argument_list|(
 literal|"remove(0)"
@@ -418,9 +416,16 @@ argument_list|,
 name|n
 argument_list|)
 expr_stmt|;
-block|}
-try|try
-block|{
+name|e
+operator|=
+name|assertThrows
+argument_list|(
+name|UnsupportedOperationException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|n
 operator|.
 name|getChildren
@@ -431,19 +436,8 @@ argument_list|()
 operator|.
 name|remove
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected UnsupportedOperationException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedOperationException
-name|e
-parameter_list|)
-block|{
 name|assertOnlyChild
 argument_list|(
 literal|"remove()"
@@ -453,7 +447,6 @@ argument_list|,
 name|n
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|assertOnlyChild (String o, Predicate<String> c, Predicate<String> p)
 specifier|private
@@ -839,8 +832,17 @@ name|getChildren
 argument_list|()
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|IllegalArgumentException
+name|e
+init|=
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|n
 operator|.
 name|copy
@@ -850,19 +852,8 @@ operator|.
 name|emptyList
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected IllegalArgumentException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Expected exactly one child"
@@ -873,9 +864,16 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-try|try
-block|{
+name|e
+operator|=
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|n
 operator|.
 name|copy
@@ -890,19 +888,8 @@ operator|.
 name|getChildren
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected IllegalArgumentException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
 name|assertEquals
 argument_list|(
 literal|"Expected exactly one child"
@@ -913,7 +900,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class

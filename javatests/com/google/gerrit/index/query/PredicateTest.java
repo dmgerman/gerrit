@@ -68,20 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -98,8 +84,6 @@ specifier|public
 specifier|abstract
 class|class
 name|PredicateTest
-extends|extends
-name|GerritBaseTests
 block|{
 DECL|class|TestPredicate
 specifier|protected

@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -121,20 +137,6 @@ operator|.
 name|collect
 operator|.
 name|ImmutableSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
 import|;
 end_import
 
@@ -205,8 +207,6 @@ DECL|class|IntraLineLoaderTest
 specifier|public
 class|class
 name|IntraLineLoaderTest
-extends|extends
-name|GerritBaseTests
 block|{
 annotation|@
 name|Test
@@ -581,13 +581,6 @@ comment|// the current code does not work on the first line
 comment|// and the insert marker is in the wrong location
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|AssertionError
-operator|.
-name|class
-argument_list|)
 DECL|method|preferInsertAtLineBreak2 ()
 specifier|public
 name|void
@@ -595,6 +588,15 @@ name|preferInsertAtLineBreak2
 parameter_list|()
 throws|throws
 name|Exception
+block|{
+name|assertThrows
+argument_list|(
+name|AssertionError
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 block|{
 name|String
 name|a
@@ -645,17 +647,13 @@ name|edits
 argument_list|)
 expr_stmt|;
 block|}
+argument_list|)
+expr_stmt|;
+block|}
 comment|// TODO: expected failure
 comment|// the current code does not work on the first line
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|AssertionError
-operator|.
-name|class
-argument_list|)
 DECL|method|preferDeleteAtLineBreak ()
 specifier|public
 name|void
@@ -663,6 +661,15 @@ name|preferDeleteAtLineBreak
 parameter_list|()
 throws|throws
 name|Exception
+block|{
+name|assertThrows
+argument_list|(
+name|AssertionError
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 block|{
 name|String
 name|a
@@ -710,6 +717,9 @@ literal|"  def\n"
 argument_list|)
 operator|.
 name|edits
+argument_list|)
+expr_stmt|;
+block|}
 argument_list|)
 expr_stmt|;
 block|}

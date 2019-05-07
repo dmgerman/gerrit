@@ -380,20 +380,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -441,8 +427,6 @@ DECL|class|UniversalGroupBackendTest
 specifier|public
 class|class
 name|UniversalGroupBackendTest
-extends|extends
-name|GerritBaseTests
 block|{
 DECL|field|OTHER_UUID
 specifier|private

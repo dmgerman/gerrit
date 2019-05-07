@@ -178,6 +178,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -201,20 +217,6 @@ operator|.
 name|collect
 operator|.
 name|ImmutableList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
 import|;
 end_import
 
@@ -281,8 +283,6 @@ DECL|class|ElasticConfigurationTest
 specifier|public
 class|class
 name|ElasticConfigurationTest
-extends|extends
-name|GerritBaseTests
 block|{
 annotation|@
 name|Test
@@ -837,29 +837,36 @@ parameter_list|(
 name|Config
 name|cfg
 parameter_list|)
-throws|throws
-name|Exception
 block|{
-name|exception
-operator|.
-name|expect
+name|ProvisionException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|ProvisionException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"No valid Elasticsearch servers configured"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 operator|new
 name|ElasticConfiguration
 argument_list|(
 name|cfg
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"No valid Elasticsearch servers configured"
 argument_list|)
 expr_stmt|;
 block|}

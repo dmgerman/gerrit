@@ -99,6 +99,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -111,20 +127,6 @@ operator|.
 name|ioutil
 operator|.
 name|HostPlatform
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
 import|;
 end_import
 
@@ -201,8 +203,6 @@ DECL|class|SitePathsTest
 specifier|public
 class|class
 name|SitePathsTest
-extends|extends
-name|GerritBaseTests
 block|{
 annotation|@
 name|Test
@@ -462,19 +462,19 @@ argument_list|(
 name|root
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|assertThrows
 argument_list|(
 name|NotDirectoryException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 operator|new
 name|SitePaths
 argument_list|(
 name|root
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -142,20 +142,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -209,8 +195,6 @@ DECL|class|MutableTagsTest
 specifier|public
 class|class
 name|MutableTagsTest
-extends|extends
-name|GerritBaseTests
 block|{
 DECL|field|tags
 specifier|private

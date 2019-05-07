@@ -137,6 +137,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -664,7 +680,7 @@ name|void
 name|submitWithFastForward
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -790,7 +806,7 @@ name|void
 name|submitMultipleChanges
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -1159,7 +1175,7 @@ name|void
 name|submitChangesAcrossRepos
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|Project
 operator|.
@@ -1676,7 +1692,7 @@ name|void
 name|submitChangesAcrossReposBlocked
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|Project
 operator|.
@@ -2011,11 +2027,17 @@ operator|+
 literal|"and upload the rebased commit for review."
 decl_stmt|;
 comment|// Get a preview before submitting:
-try|try
-init|(
-name|BinaryResult
-name|r
+name|RestApiException
+name|thrown
 init|=
+name|assertThrows
+argument_list|(
+name|RestApiException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|changes
@@ -2034,26 +2056,14 @@ argument_list|()
 operator|.
 name|submitPreview
 argument_list|()
-init|)
-block|{
-comment|// We cannot just use the ExpectedException infrastructure as provided
-comment|// by AbstractDaemonTest, as then we'd stop early and not test the
-comment|// actual submit.
-name|fail
-argument_list|(
-literal|"expected failure"
+operator|.
+name|close
+argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RestApiException
-name|e
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
-name|e
+name|thrown
 operator|.
 name|getMessage
 argument_list|()
@@ -2064,7 +2074,6 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-block|}
 name|submitWithConflict
 argument_list|(
 name|change1b
@@ -2326,7 +2335,7 @@ name|void
 name|submitWithMergedAncestorsOnOtherBranch
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -2623,7 +2632,7 @@ name|void
 name|submitWithOpenAncestorsOnOtherBranch
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -3034,7 +3043,7 @@ name|void
 name|gerritWorkflow
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -3472,7 +3481,7 @@ name|void
 name|openChangeForTargetBranchPreventsMerge
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|gApi
 operator|.
@@ -3716,7 +3725,7 @@ name|void
 name|dependencyOnOutdatedPatchSetPreventsMerge
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|// Create a change
 name|PushOneCommit
@@ -3921,7 +3930,7 @@ name|void
 name|dependencyOnDeletedChangePreventsMerge
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|// Create a change
 name|PushOneCommit
@@ -4077,7 +4086,7 @@ name|void
 name|dependencyOnChangeForNonVisibleBranchPreventsMerge
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|grantLabel
 argument_list|(
@@ -4397,7 +4406,7 @@ name|void
 name|dependencyOnHiddenChangePreventsMerge
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|grantLabel
 argument_list|(
@@ -4675,7 +4684,7 @@ name|void
 name|dependencyOnHiddenChangeUsingTopicPreventsMerge
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|// Construct a topic where a change included by topic depends on a private change that is not
 comment|// visible to the submitting user
@@ -5066,7 +5075,7 @@ name|void
 name|testPreviewSubmitTgz
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|Project
 operator|.

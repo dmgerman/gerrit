@@ -200,6 +200,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -392,20 +408,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -459,8 +461,6 @@ DECL|class|ChangeIndexRewriterTest
 specifier|public
 class|class
 name|ChangeIndexRewriterTest
-extends|extends
-name|GerritBaseTests
 block|{
 DECL|field|CONFIG
 specifier|private
@@ -1785,25 +1785,34 @@ name|V1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|QueryParseException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|QueryParseException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Unsupported index predicate: file:a"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|rewrite
 argument_list|(
 name|in
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"Unsupported index predicate: file:a"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1846,22 +1855,17 @@ name|in
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|QueryParseException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|QueryParseException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"too many terms in query"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|rewrite
 argument_list|(
 name|parse
@@ -1870,6 +1874,20 @@ name|q
 operator|+
 literal|" OR file:d"
 argument_list|)
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"too many terms in query"
 argument_list|)
 expr_stmt|;
 block|}

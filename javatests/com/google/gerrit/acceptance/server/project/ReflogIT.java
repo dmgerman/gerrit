@@ -119,6 +119,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -753,15 +769,14 @@ name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|assertThrows
 argument_list|(
 name|AuthException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|projects
@@ -782,6 +797,7 @@ argument_list|)
 operator|.
 name|reflog
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

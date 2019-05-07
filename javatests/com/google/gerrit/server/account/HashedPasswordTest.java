@@ -83,6 +83,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -93,20 +109,6 @@ operator|.
 name|base
 operator|.
 name|Strings
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
 import|;
 end_import
 
@@ -139,8 +141,6 @@ DECL|class|HashedPasswordTest
 specifier|public
 class|class
 name|HashedPasswordTest
-extends|extends
-name|GerritBaseTests
 block|{
 annotation|@
 name|Test
@@ -277,13 +277,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|DecoderException
-operator|.
-name|class
-argument_list|)
 DECL|method|invalidDecode ()
 specifier|public
 name|void
@@ -292,11 +285,20 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assertThrows
+argument_list|(
+name|DecoderException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|HashedPassword
 operator|.
 name|decode
 argument_list|(
 literal|"invalid"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

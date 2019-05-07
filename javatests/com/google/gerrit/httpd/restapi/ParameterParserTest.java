@@ -84,13 +84,17 @@ end_import
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|gerrit
 operator|.
-name|assertEquals
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -102,7 +106,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|fail
+name|assertEquals
 import|;
 end_import
 
@@ -176,20 +180,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|util
 operator|.
 name|http
@@ -251,8 +241,6 @@ DECL|class|ParameterParserTest
 specifier|public
 class|class
 name|ParameterParserTest
-extends|extends
-name|GerritBaseTests
 block|{
 annotation|@
 name|Test
@@ -881,27 +869,25 @@ argument_list|(
 literal|"$m=PUT&$m=DELETE"
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|BadRequestException
+name|bad
+init|=
+name|assertThrows
+argument_list|(
+name|BadRequestException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|ParameterParser
 operator|.
 name|getQueryParams
 argument_list|(
 name|req
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected BadRequestException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|BadRequestException
-name|bad
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
 name|bad
@@ -915,7 +901,6 @@ argument_list|(
 literal|"duplicate $m"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -939,27 +924,25 @@ argument_list|(
 literal|"$ct=json&$ct=string"
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|BadRequestException
+name|bad
+init|=
+name|assertThrows
+argument_list|(
+name|BadRequestException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|ParameterParser
 operator|.
 name|getQueryParams
 argument_list|(
 name|req
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected BadRequestException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|BadRequestException
-name|bad
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
 name|bad
@@ -973,7 +956,6 @@ argument_list|(
 literal|"duplicate $ct"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -997,27 +979,25 @@ argument_list|(
 literal|"$m=CONNECT"
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|BadRequestException
+name|bad
+init|=
+name|assertThrows
+argument_list|(
+name|BadRequestException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|ParameterParser
 operator|.
 name|getQueryParams
 argument_list|(
 name|req
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected BadRequestException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|BadRequestException
-name|bad
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
 name|bad
@@ -1031,7 +1011,6 @@ argument_list|(
 literal|"invalid $m"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class

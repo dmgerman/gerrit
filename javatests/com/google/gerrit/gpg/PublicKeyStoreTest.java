@@ -282,20 +282,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -549,8 +535,6 @@ DECL|class|PublicKeyStoreTest
 specifier|public
 class|class
 name|PublicKeyStoreTest
-extends|extends
-name|GerritBaseTests
 block|{
 DECL|field|tr
 specifier|private

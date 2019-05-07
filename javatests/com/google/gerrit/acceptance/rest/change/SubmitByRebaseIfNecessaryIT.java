@@ -207,7 +207,7 @@ name|void
 name|submitWithFastForward
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|oldHead
@@ -362,7 +362,7 @@ name|void
 name|submitWithContentMerge
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead

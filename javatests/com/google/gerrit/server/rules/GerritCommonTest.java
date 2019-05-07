@@ -68,6 +68,38 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|easymock
@@ -599,22 +631,17 @@ name|nameTerm
 argument_list|)
 throw|;
 block|}
-name|exception
-operator|.
-name|expect
+name|ReductionLimitException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|ReductionLimitException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"exceeded reduction limit of 1300"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|env
 operator|.
 name|once
@@ -644,6 +671,20 @@ argument_list|(
 literal|"loopy"
 argument_list|)
 argument_list|)
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"exceeded reduction limit of 1300"
 argument_list|)
 expr_stmt|;
 block|}

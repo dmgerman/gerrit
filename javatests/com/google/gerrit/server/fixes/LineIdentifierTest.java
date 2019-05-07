@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -92,7 +92,9 @@ name|gerrit
 operator|.
 name|testing
 operator|.
-name|GerritBaseTests
+name|GerritJUnit
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -111,8 +113,6 @@ DECL|class|LineIdentifierTest
 specifier|public
 class|class
 name|LineIdentifierTest
-extends|extends
-name|GerritBaseTests
 block|{
 annotation|@
 name|Test
@@ -131,27 +131,36 @@ argument_list|(
 literal|"First line\nSecond line"
 argument_list|)
 decl_stmt|;
-name|exception
-operator|.
-name|expect
+name|StringIndexOutOfBoundsException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|StringIndexOutOfBoundsException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"positive"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|lineIdentifier
 operator|.
 name|getStartIndexOfLine
 argument_list|(
 literal|0
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"positive"
 argument_list|)
 expr_stmt|;
 block|}
@@ -172,27 +181,36 @@ argument_list|(
 literal|"First line\nSecond line"
 argument_list|)
 decl_stmt|;
-name|exception
-operator|.
-name|expect
+name|StringIndexOutOfBoundsException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|StringIndexOutOfBoundsException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Line 3 isn't available"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|lineIdentifier
 operator|.
 name|getStartIndexOfLine
 argument_list|(
 literal|3
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"Line 3 isn't available"
 argument_list|)
 expr_stmt|;
 block|}

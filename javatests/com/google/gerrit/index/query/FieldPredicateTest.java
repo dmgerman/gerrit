@@ -68,6 +68,38 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -460,22 +492,17 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|IllegalArgumentException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|IllegalArgumentException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Expected 0 children"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|f
 operator|.
 name|copy
@@ -491,6 +518,20 @@ argument_list|,
 literal|"bob"
 argument_list|)
 argument_list|)
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"Expected 0 children"
 argument_list|)
 expr_stmt|;
 block|}

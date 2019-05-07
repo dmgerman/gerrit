@@ -495,7 +495,7 @@ name|void
 name|submitWithPossibleFastForward
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|oldHead
@@ -660,7 +660,7 @@ name|void
 name|alwaysAddFooters
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|PushOneCommit
 operator|.
@@ -752,7 +752,7 @@ name|void
 name|rebaseInvokesChangeMessageModifiers
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|ChangeMessageModifier
 name|modifier1
@@ -1037,7 +1037,7 @@ name|void
 name|failingChangeMessageModifierShortCircuits
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|ChangeMessageModifier
 name|modifier1
@@ -1158,7 +1158,7 @@ name|void
 name|changeMessageModifierReturningNullShortCircuits
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|ChangeMessageModifier
 name|modifier1
@@ -1375,7 +1375,7 @@ name|Result
 name|change
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|c
@@ -1442,7 +1442,7 @@ name|Result
 name|change
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|testRepo
 operator|.

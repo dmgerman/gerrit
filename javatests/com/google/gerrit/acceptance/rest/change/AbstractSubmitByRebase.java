@@ -458,7 +458,7 @@ name|void
 name|submitWithRebase
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|submitWithRebase
 argument_list|(
@@ -483,7 +483,7 @@ name|void
 name|submitWithRebaseWithoutAddPatchSetPermission
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 try|try
 init|(
@@ -590,7 +590,7 @@ name|TestAccount
 name|submitter
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|requestScopeOperations
 operator|.
@@ -818,7 +818,7 @@ name|void
 name|submitWithRebaseMultipleChanges
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -1284,7 +1284,7 @@ name|void
 name|submitWithRebaseMergeCommit
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 comment|/*        *  (HEAD, origin/master, origin/HEAD) Merge changes X,Y        |\        | *   Merge branch 'master' into origin/master        | |\        | | * SHA Added a        | |/        * | Before        |/        * Initial empty repository     */
 name|RevCommit
@@ -1662,7 +1662,7 @@ name|void
 name|submitWithContentMerge_Conflict
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -1810,7 +1810,7 @@ name|ObjectId
 name|id
 parameter_list|)
 throws|throws
-name|Exception
+name|Throwable
 block|{
 try|try
 init|(
@@ -1864,7 +1864,7 @@ name|void
 name|submitAfterReorderOfCommits
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -2035,7 +2035,7 @@ name|void
 name|submitChangesAfterBranchOnSecond
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -2205,7 +2205,7 @@ name|void
 name|submitFastForwardIdenticalTree
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead
@@ -2460,7 +2460,7 @@ name|void
 name|submitChainOneByOne
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|PushOneCommit
 operator|.
@@ -2524,7 +2524,7 @@ name|void
 name|submitChainFailsOnRework
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|PushOneCommit
 operator|.
@@ -2649,7 +2649,7 @@ name|void
 name|submitChainOneByOneManualRebase
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 block|{
 name|RevCommit
 name|initialHead

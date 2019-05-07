@@ -85,6 +85,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -233,22 +249,17 @@ name|isPrivate
 operator|=
 literal|true
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|MethodNotAllowedException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|MethodNotAllowedException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"private changes are disabled"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|changes
@@ -257,6 +268,20 @@ operator|.
 name|create
 argument_list|(
 name|input
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"private changes are disabled"
 argument_list|)
 expr_stmt|;
 block|}
@@ -785,22 +810,17 @@ init|=
 name|createChange
 argument_list|()
 decl_stmt|;
-name|exception
-operator|.
-name|expect
+name|MethodNotAllowedException
+name|thrown
+init|=
+name|assertThrows
 argument_list|(
 name|MethodNotAllowedException
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"private changes are disabled"
-argument_list|)
-expr_stmt|;
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|changes
@@ -819,6 +839,20 @@ argument_list|(
 literal|true
 argument_list|,
 literal|"set private"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"private changes are disabled"
 argument_list|)
 expr_stmt|;
 block|}

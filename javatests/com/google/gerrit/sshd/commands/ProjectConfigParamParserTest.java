@@ -102,20 +102,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|GerritBaseTests
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -159,8 +145,6 @@ DECL|class|ProjectConfigParamParserTest
 specifier|public
 class|class
 name|ProjectConfigParamParserTest
-extends|extends
-name|GerritBaseTests
 block|{
 DECL|field|cmd
 specifier|private
