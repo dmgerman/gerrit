@@ -254,7 +254,13 @@ name|expectedSha1
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|CommitSubject (FailureMetadata metadata, RevCommit actual)
+DECL|field|commit
+specifier|private
+specifier|final
+name|RevCommit
+name|commit
+decl_stmt|;
+DECL|method|CommitSubject (FailureMetadata metadata, RevCommit commit)
 specifier|private
 name|CommitSubject
 parameter_list|(
@@ -262,15 +268,21 @@ name|FailureMetadata
 name|metadata
 parameter_list|,
 name|RevCommit
-name|actual
+name|commit
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|metadata
 argument_list|,
-name|actual
+name|commit
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|commit
+operator|=
+name|commit
 expr_stmt|;
 block|}
 comment|/**    * Asserts that the commit has the given commit message.    *    * @param expectedCommitMessage exact expected commit message.    */
@@ -286,12 +298,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|RevCommit
-name|commit
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 name|check
 argument_list|(
 literal|"getFullMessage()"
@@ -324,12 +330,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|RevCommit
-name|commit
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 name|long
 name|timestampDiffMs
 init|=
@@ -384,12 +384,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|RevCommit
-name|commit
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 name|check
 argument_list|(
 literal|"sha1()"

@@ -207,6 +207,12 @@ name|actual
 argument_list|)
 return|;
 block|}
+DECL|field|tree
+specifier|private
+specifier|final
+name|Tree
+name|tree
+decl_stmt|;
 DECL|method|TreeSubject (FailureMetadata failureMetadata, Tree tree)
 specifier|private
 name|TreeSubject
@@ -224,6 +230,12 @@ name|failureMetadata
 argument_list|,
 name|tree
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|tree
+operator|=
+name|tree
 expr_stmt|;
 block|}
 DECL|method|hasType (int expectedType)
@@ -247,8 +259,7 @@ name|that
 argument_list|(
 name|typeName
 argument_list|(
-name|actual
-argument_list|()
+name|tree
 operator|.
 name|getType
 argument_list|()
@@ -288,8 +299,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|tree
 operator|.
 name|getText
 argument_list|()
@@ -317,8 +327,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|tree
 operator|.
 name|getChildCount
 argument_list|()
@@ -360,8 +369,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|tree
 operator|.
 name|getChildCount
 argument_list|()
@@ -402,8 +410,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|tree
 operator|.
 name|getChild
 argument_list|(

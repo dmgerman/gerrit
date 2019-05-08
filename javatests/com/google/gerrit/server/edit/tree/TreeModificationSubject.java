@@ -220,6 +220,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|field|treeModification
+specifier|private
+specifier|final
+name|TreeModification
+name|treeModification
+decl_stmt|;
 DECL|method|TreeModificationSubject ( FailureMetadata failureMetadata, TreeModification treeModification)
 specifier|private
 name|TreeModificationSubject
@@ -237,6 +243,12 @@ name|failureMetadata
 argument_list|,
 name|treeModification
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|treeModification
+operator|=
+name|treeModification
 expr_stmt|;
 block|}
 DECL|method|asChangeFileContentModification ()
@@ -271,8 +283,7 @@ argument_list|(
 operator|(
 name|ChangeFileContentModification
 operator|)
-name|actual
-argument_list|()
+name|treeModification
 argument_list|)
 return|;
 block|}

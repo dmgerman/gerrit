@@ -178,7 +178,13 @@ operator|::
 operator|new
 return|;
 block|}
-DECL|method|ObjectIdSubject (FailureMetadata metadata, ObjectId actual)
+DECL|field|objectId
+specifier|private
+specifier|final
+name|ObjectId
+name|objectId
+decl_stmt|;
+DECL|method|ObjectIdSubject (FailureMetadata metadata, ObjectId objectId)
 specifier|private
 name|ObjectIdSubject
 parameter_list|(
@@ -186,15 +192,21 @@ name|FailureMetadata
 name|metadata
 parameter_list|,
 name|ObjectId
-name|actual
+name|objectId
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|metadata
 argument_list|,
-name|actual
+name|objectId
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|objectId
+operator|=
+name|objectId
 expr_stmt|;
 block|}
 DECL|method|hasName (String expectedName)
@@ -209,12 +221,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|ObjectId
-name|objectId
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 name|check
 argument_list|(
 literal|"getName()"

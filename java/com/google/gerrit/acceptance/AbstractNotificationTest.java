@@ -845,6 +845,12 @@ argument_list|,
 name|FakeEmailSender
 argument_list|>
 block|{
+DECL|field|fakeEmailSender
+specifier|private
+specifier|final
+name|FakeEmailSender
+name|fakeEmailSender
+decl_stmt|;
 DECL|field|message
 specifier|private
 name|Message
@@ -903,6 +909,10 @@ argument_list|,
 name|target
 argument_list|)
 expr_stmt|;
+name|fakeEmailSender
+operator|=
+name|target
+expr_stmt|;
 block|}
 DECL|method|didNotSend ()
 specifier|public
@@ -913,8 +923,7 @@ block|{
 name|Message
 name|message
 init|=
-name|actual
-argument_list|()
+name|fakeEmailSender
 operator|.
 name|peekMessage
 argument_list|()
@@ -955,8 +964,7 @@ parameter_list|)
 block|{
 name|message
 operator|=
-name|actual
-argument_list|()
+name|fakeEmailSender
 operator|.
 name|nextMessage
 argument_list|()

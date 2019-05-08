@@ -228,6 +228,12 @@ operator|::
 operator|new
 return|;
 block|}
+DECL|field|group
+specifier|private
+specifier|final
+name|GroupReference
+name|group
+decl_stmt|;
 DECL|method|GroupReferenceSubject (FailureMetadata metadata, GroupReference group)
 specifier|private
 name|GroupReferenceSubject
@@ -246,6 +252,12 @@ argument_list|,
 name|group
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|group
+operator|=
+name|group
+expr_stmt|;
 block|}
 DECL|method|groupUuid ()
 specifier|public
@@ -263,12 +275,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|GroupReference
-name|group
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -293,12 +299,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|GroupReference
-name|group
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(

@@ -264,6 +264,12 @@ operator|::
 operator|new
 return|;
 block|}
+DECL|field|fixSuggestionInfo
+specifier|private
+specifier|final
+name|FixSuggestionInfo
+name|fixSuggestionInfo
+decl_stmt|;
 DECL|method|FixSuggestionInfoSubject ( FailureMetadata failureMetadata, FixSuggestionInfo fixSuggestionInfo)
 specifier|private
 name|FixSuggestionInfoSubject
@@ -282,6 +288,12 @@ argument_list|,
 name|fixSuggestionInfo
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|fixSuggestionInfo
+operator|=
+name|fixSuggestionInfo
+expr_stmt|;
 block|}
 DECL|method|fixId ()
 specifier|public
@@ -297,8 +309,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|fixSuggestionInfo
 operator|.
 name|fixId
 argument_list|)
@@ -332,8 +343,7 @@ argument_list|)
 operator|.
 name|thatCustom
 argument_list|(
-name|actual
-argument_list|()
+name|fixSuggestionInfo
 operator|.
 name|replacements
 argument_list|,
@@ -373,8 +383,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|fixSuggestionInfo
 operator|.
 name|description
 argument_list|)

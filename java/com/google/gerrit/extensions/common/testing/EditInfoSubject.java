@@ -272,6 +272,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|field|editInfo
+specifier|private
+specifier|final
+name|EditInfo
+name|editInfo
+decl_stmt|;
 DECL|method|EditInfoSubject (FailureMetadata failureMetadata, EditInfo editInfo)
 specifier|private
 name|EditInfoSubject
@@ -290,6 +296,12 @@ argument_list|,
 name|editInfo
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|editInfo
+operator|=
+name|editInfo
+expr_stmt|;
 block|}
 DECL|method|commit ()
 specifier|public
@@ -300,12 +312,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|EditInfo
-name|editInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -335,12 +341,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|EditInfo
-name|editInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(

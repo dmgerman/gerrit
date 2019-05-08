@@ -242,6 +242,12 @@ operator|::
 operator|new
 return|;
 block|}
+DECL|field|modification
+specifier|private
+specifier|final
+name|ChangeFileContentModification
+name|modification
+decl_stmt|;
 DECL|method|ChangeFileContentModificationSubject ( FailureMetadata failureMetadata, ChangeFileContentModification modification)
 specifier|private
 name|ChangeFileContentModificationSubject
@@ -259,6 +265,12 @@ name|failureMetadata
 argument_list|,
 name|modification
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|modification
+operator|=
+name|modification
 expr_stmt|;
 block|}
 DECL|method|filePath ()
@@ -278,8 +290,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|modification
 operator|.
 name|getFilePath
 argument_list|()
@@ -300,8 +311,7 @@ expr_stmt|;
 name|RawInput
 name|newContent
 init|=
-name|actual
-argument_list|()
+name|modification
 operator|.
 name|getNewContent
 argument_list|()

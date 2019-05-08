@@ -200,6 +200,12 @@ operator|::
 operator|new
 return|;
 block|}
+DECL|field|fileMeta
+specifier|private
+specifier|final
+name|FileMeta
+name|fileMeta
+decl_stmt|;
 DECL|method|FileMetaSubject (FailureMetadata failureMetadata, FileMeta fileMeta)
 specifier|private
 name|FileMetaSubject
@@ -218,6 +224,12 @@ argument_list|,
 name|fileMeta
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|fileMeta
+operator|=
+name|fileMeta
+expr_stmt|;
 block|}
 DECL|method|totalLineCount ()
 specifier|public
@@ -228,12 +240,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|FileMeta
-name|fileMeta
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(

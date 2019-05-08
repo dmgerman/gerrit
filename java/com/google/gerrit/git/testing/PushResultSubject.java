@@ -339,7 +339,13 @@ name|actual
 argument_list|)
 return|;
 block|}
-DECL|method|PushResultSubject (FailureMetadata metadata, PushResult actual)
+DECL|field|pushResult
+specifier|private
+specifier|final
+name|PushResult
+name|pushResult
+decl_stmt|;
+DECL|method|PushResultSubject (FailureMetadata metadata, PushResult pushResult)
 specifier|private
 name|PushResultSubject
 parameter_list|(
@@ -347,15 +353,21 @@ name|FailureMetadata
 name|metadata
 parameter_list|,
 name|PushResult
-name|actual
+name|pushResult
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|metadata
 argument_list|,
-name|actual
+name|pushResult
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|pushResult
+operator|=
+name|pushResult
 expr_stmt|;
 block|}
 DECL|method|hasNoMessages ()
@@ -508,8 +520,7 @@ block|{
 return|return
 name|trimMessages
 argument_list|(
-name|actual
-argument_list|()
+name|pushResult
 operator|.
 name|getMessages
 argument_list|()
@@ -606,8 +617,7 @@ decl_stmt|;
 name|String
 name|messages
 init|=
-name|actual
-argument_list|()
+name|pushResult
 operator|.
 name|getMessages
 argument_list|()
@@ -872,8 +882,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|pushResult
 operator|.
 name|getRemoteUpdate
 argument_list|(
@@ -909,8 +918,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|pushResult
 operator|.
 name|getRemoteUpdates
 argument_list|()
@@ -951,7 +959,13 @@ argument_list|,
 name|RemoteRefUpdate
 argument_list|>
 block|{
-DECL|method|RemoteRefUpdateSubject (FailureMetadata metadata, RemoteRefUpdate actual)
+DECL|field|remoteRefUpdate
+specifier|private
+specifier|final
+name|RemoteRefUpdate
+name|remoteRefUpdate
+decl_stmt|;
+DECL|method|RemoteRefUpdateSubject (FailureMetadata metadata, RemoteRefUpdate remoteRefUpdate)
 specifier|private
 name|RemoteRefUpdateSubject
 parameter_list|(
@@ -959,15 +973,21 @@ name|FailureMetadata
 name|metadata
 parameter_list|,
 name|RemoteRefUpdate
-name|actual
+name|remoteRefUpdate
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|metadata
 argument_list|,
-name|actual
+name|remoteRefUpdate
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|remoteRefUpdate
+operator|=
+name|remoteRefUpdate
 expr_stmt|;
 block|}
 DECL|method|refs ()
@@ -1004,8 +1024,7 @@ expr_stmt|;
 name|RemoteRefUpdate
 name|u
 init|=
-name|actual
-argument_list|()
+name|remoteRefUpdate
 decl_stmt|;
 name|check
 argument_list|(
@@ -1063,8 +1082,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|remoteRefUpdate
 operator|.
 name|getMessage
 argument_list|()
@@ -1093,8 +1111,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|remoteRefUpdate
 operator|.
 name|getMessage
 argument_list|()

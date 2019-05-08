@@ -220,6 +220,14 @@ operator|::
 operator|new
 return|;
 block|}
+DECL|field|range
+specifier|private
+specifier|final
+name|Comment
+operator|.
+name|Range
+name|range
+decl_stmt|;
 DECL|method|RangeSubject (FailureMetadata failureMetadata, Comment.Range range)
 specifier|private
 name|RangeSubject
@@ -240,6 +248,12 @@ argument_list|,
 name|range
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|range
+operator|=
+name|range
+expr_stmt|;
 block|}
 DECL|method|startLine ()
 specifier|public
@@ -255,8 +269,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|range
 operator|.
 name|startLine
 argument_list|)
@@ -276,8 +289,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|range
 operator|.
 name|startCharacter
 argument_list|)
@@ -297,8 +309,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|range
 operator|.
 name|endLine
 argument_list|)
@@ -318,8 +329,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|range
 operator|.
 name|endCharacter
 argument_list|)
@@ -337,8 +347,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|actual
-argument_list|()
+name|range
 operator|.
 name|isValid
 argument_list|()
@@ -365,8 +374,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|actual
-argument_list|()
+name|range
 operator|.
 name|isValid
 argument_list|()

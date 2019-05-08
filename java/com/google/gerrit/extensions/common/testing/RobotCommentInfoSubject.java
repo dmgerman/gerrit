@@ -268,6 +268,12 @@ operator|::
 operator|new
 return|;
 block|}
+DECL|field|robotCommentInfo
+specifier|private
+specifier|final
+name|RobotCommentInfo
+name|robotCommentInfo
+decl_stmt|;
 DECL|method|RobotCommentInfoSubject ( FailureMetadata failureMetadata, RobotCommentInfo robotCommentInfo)
 specifier|private
 name|RobotCommentInfoSubject
@@ -285,6 +291,12 @@ name|failureMetadata
 argument_list|,
 name|robotCommentInfo
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|robotCommentInfo
+operator|=
+name|robotCommentInfo
 expr_stmt|;
 block|}
 DECL|method|fixSuggestions ()
@@ -312,8 +324,7 @@ argument_list|)
 operator|.
 name|thatCustom
 argument_list|(
-name|actual
-argument_list|()
+name|robotCommentInfo
 operator|.
 name|fixSuggestions
 argument_list|,

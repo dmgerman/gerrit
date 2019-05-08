@@ -274,6 +274,12 @@ operator|::
 operator|new
 return|;
 block|}
+DECL|field|gitPerson
+specifier|private
+specifier|final
+name|GitPerson
+name|gitPerson
+decl_stmt|;
 DECL|method|GitPersonSubject (FailureMetadata failureMetadata, GitPerson gitPerson)
 specifier|private
 name|GitPersonSubject
@@ -292,6 +298,12 @@ argument_list|,
 name|gitPerson
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|gitPerson
+operator|=
+name|gitPerson
+expr_stmt|;
 block|}
 DECL|method|name ()
 specifier|public
@@ -302,12 +314,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|GitPerson
-name|gitPerson
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -331,12 +337,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|GitPerson
-name|gitPerson
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -365,12 +365,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|GitPerson
-name|gitPerson
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -394,12 +388,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|GitPerson
-name|gitPerson
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -498,8 +486,7 @@ argument_list|(
 operator|new
 name|Date
 argument_list|(
-name|actual
-argument_list|()
+name|gitPerson
 operator|.
 name|date
 operator|.

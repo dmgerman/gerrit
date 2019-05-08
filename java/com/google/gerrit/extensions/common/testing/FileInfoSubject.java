@@ -193,6 +193,12 @@ name|fileInfo
 argument_list|)
 return|;
 block|}
+DECL|field|fileInfo
+specifier|private
+specifier|final
+name|FileInfo
+name|fileInfo
+decl_stmt|;
 DECL|method|FileInfoSubject (FailureMetadata failureMetadata, FileInfo fileInfo)
 specifier|private
 name|FileInfoSubject
@@ -211,6 +217,12 @@ argument_list|,
 name|fileInfo
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|fileInfo
+operator|=
+name|fileInfo
+expr_stmt|;
 block|}
 DECL|method|linesInserted ()
 specifier|public
@@ -221,12 +233,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|FileInfo
-name|fileInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -250,12 +256,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|FileInfo
-name|fileInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -284,12 +284,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|FileInfo
-name|fileInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(

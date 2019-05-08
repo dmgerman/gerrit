@@ -286,6 +286,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|field|binaryResult
+specifier|private
+specifier|final
+name|BinaryResult
+name|binaryResult
+decl_stmt|;
 DECL|method|BinaryResultSubject (FailureMetadata failureMetadata, BinaryResult binaryResult)
 specifier|private
 name|BinaryResultSubject
@@ -304,6 +310,12 @@ argument_list|,
 name|binaryResult
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|binaryResult
+operator|=
+name|binaryResult
+expr_stmt|;
 block|}
 DECL|method|asString ()
 specifier|public
@@ -319,12 +331,6 @@ expr_stmt|;
 comment|// We shouldn't close the BinaryResult within this method as it might still
 comment|// be used afterwards. Besides, closing it doesn't have an effect for most
 comment|// implementations of a BinaryResult.
-name|BinaryResult
-name|binaryResult
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -354,12 +360,6 @@ expr_stmt|;
 comment|// We shouldn't close the BinaryResult within this method as it might still
 comment|// be used afterwards. Besides, closing it doesn't have an effect for most
 comment|// implementations of a BinaryResult.
-name|BinaryResult
-name|binaryResult
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 name|ByteArrayOutputStream
 name|byteArrayOutputStream
 init|=

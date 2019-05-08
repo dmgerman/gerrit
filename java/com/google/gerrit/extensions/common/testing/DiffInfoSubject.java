@@ -263,6 +263,12 @@ name|diffInfo
 argument_list|)
 return|;
 block|}
+DECL|field|diffInfo
+specifier|private
+specifier|final
+name|DiffInfo
+name|diffInfo
+decl_stmt|;
 DECL|method|DiffInfoSubject (FailureMetadata failureMetadata, DiffInfo diffInfo)
 specifier|private
 name|DiffInfoSubject
@@ -281,6 +287,12 @@ argument_list|,
 name|diffInfo
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|diffInfo
+operator|=
+name|diffInfo
+expr_stmt|;
 block|}
 DECL|method|content ()
 specifier|public
@@ -296,12 +308,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|DiffInfo
-name|diffInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -341,12 +347,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|DiffInfo
-name|diffInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -370,12 +370,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|DiffInfo
-name|diffInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -405,12 +399,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|DiffInfo
-name|diffInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(

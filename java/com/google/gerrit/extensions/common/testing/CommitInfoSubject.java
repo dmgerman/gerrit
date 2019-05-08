@@ -248,6 +248,12 @@ operator|::
 operator|new
 return|;
 block|}
+DECL|field|commitInfo
+specifier|private
+specifier|final
+name|CommitInfo
+name|commitInfo
+decl_stmt|;
 DECL|method|CommitInfoSubject (FailureMetadata failureMetadata, CommitInfo commitInfo)
 specifier|private
 name|CommitInfoSubject
@@ -266,6 +272,12 @@ argument_list|,
 name|commitInfo
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|commitInfo
+operator|=
+name|commitInfo
+expr_stmt|;
 block|}
 DECL|method|commit ()
 specifier|public
@@ -276,12 +288,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|CommitInfo
-name|commitInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -310,12 +316,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|CommitInfo
-name|commitInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -348,12 +348,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|CommitInfo
-name|commitInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -383,12 +377,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|CommitInfo
-name|commitInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(
@@ -418,12 +406,6 @@ block|{
 name|isNotNull
 argument_list|()
 expr_stmt|;
-name|CommitInfo
-name|commitInfo
-init|=
-name|actual
-argument_list|()
-decl_stmt|;
 return|return
 name|check
 argument_list|(

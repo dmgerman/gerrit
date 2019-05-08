@@ -303,7 +303,16 @@ name|actual
 argument_list|)
 return|;
 block|}
-DECL|method|SerializedClassSubject (FailureMetadata metadata, Class<?> actual)
+DECL|field|clazz
+specifier|private
+specifier|final
+name|Class
+argument_list|<
+name|?
+argument_list|>
+name|clazz
+decl_stmt|;
+DECL|method|SerializedClassSubject (FailureMetadata metadata, Class<?> clazz)
 specifier|private
 name|SerializedClassSubject
 parameter_list|(
@@ -314,15 +323,21 @@ name|Class
 argument_list|<
 name|?
 argument_list|>
-name|actual
+name|clazz
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|metadata
 argument_list|,
-name|actual
+name|clazz
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|clazz
+operator|=
+name|clazz
 expr_stmt|;
 block|}
 DECL|method|isAbstract ()
@@ -341,8 +356,7 @@ name|Modifier
 operator|.
 name|isAbstract
 argument_list|(
-name|actual
-argument_list|()
+name|clazz
 operator|.
 name|getModifiers
 argument_list|()
@@ -374,8 +388,7 @@ name|Modifier
 operator|.
 name|isAbstract
 argument_list|(
-name|actual
-argument_list|()
+name|clazz
 operator|.
 name|getModifiers
 argument_list|()
@@ -420,8 +433,7 @@ name|FieldUtils
 operator|.
 name|getAllFieldsList
 argument_list|(
-name|actual
-argument_list|()
+name|clazz
 argument_list|)
 operator|.
 name|stream
@@ -493,8 +505,7 @@ name|Arrays
 operator|.
 name|stream
 argument_list|(
-name|actual
-argument_list|()
+name|clazz
 operator|.
 name|getDeclaredMethods
 argument_list|()
@@ -585,8 +596,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|clazz
 operator|.
 name|getGenericSuperclass
 argument_list|()

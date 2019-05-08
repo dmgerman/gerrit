@@ -254,6 +254,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|field|stats
+specifier|private
+specifier|final
+name|CacheStats
+name|stats
+decl_stmt|;
 DECL|field|start
 specifier|private
 name|CacheStats
@@ -292,6 +298,12 @@ name|failureMetadata
 argument_list|,
 name|stats
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|stats
+operator|=
+name|stats
 expr_stmt|;
 block|}
 DECL|method|since (CacheStats start)
@@ -335,8 +347,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|stats
 operator|.
 name|minus
 argument_list|(
@@ -372,8 +383,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|stats
 operator|.
 name|minus
 argument_list|(

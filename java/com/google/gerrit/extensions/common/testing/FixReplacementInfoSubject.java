@@ -218,6 +218,12 @@ operator|::
 operator|new
 return|;
 block|}
+DECL|field|fixReplacementInfo
+specifier|private
+specifier|final
+name|FixReplacementInfo
+name|fixReplacementInfo
+decl_stmt|;
 DECL|method|FixReplacementInfoSubject ( FailureMetadata failureMetadata, FixReplacementInfo fixReplacementInfo)
 specifier|private
 name|FixReplacementInfoSubject
@@ -235,6 +241,12 @@ name|failureMetadata
 argument_list|,
 name|fixReplacementInfo
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|fixReplacementInfo
+operator|=
+name|fixReplacementInfo
 expr_stmt|;
 block|}
 DECL|method|path ()
@@ -254,8 +266,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|fixReplacementInfo
 operator|.
 name|path
 argument_list|)
@@ -284,8 +295,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|fixReplacementInfo
 operator|.
 name|range
 argument_list|)
@@ -308,8 +318,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|actual
-argument_list|()
+name|fixReplacementInfo
 operator|.
 name|replacement
 argument_list|)
