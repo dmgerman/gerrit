@@ -69,16 +69,14 @@ package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Objects
 operator|.
-name|base
-operator|.
-name|Preconditions
+name|requireNonNull
 import|;
 end_import
 
@@ -562,9 +560,7 @@ name|branch
 parameter_list|)
 block|{
 return|return
-name|Preconditions
-operator|.
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|headOrNull
 argument_list|(
