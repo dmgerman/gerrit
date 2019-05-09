@@ -1646,7 +1646,7 @@ name|id
 init|=
 name|approval
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 decl_stmt|;
 if|if

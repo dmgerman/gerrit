@@ -1346,7 +1346,7 @@ argument_list|()
 argument_list|,
 name|patch
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 name|input

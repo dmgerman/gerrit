@@ -2182,7 +2182,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -9070,7 +9070,7 @@ name|assertThat
 argument_list|(
 name|submitter
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 operator|.

@@ -777,7 +777,7 @@ name|input
 lambda|->
 name|input
 operator|.
-name|getLabel
+name|label
 argument_list|()
 operator|.
 name|equals

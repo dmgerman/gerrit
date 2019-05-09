@@ -495,7 +495,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|==
 literal|0
@@ -521,7 +521,7 @@ name|appliedBy
 operator|=
 name|a
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 expr_stmt|;
 name|submitRecordLabel
@@ -559,7 +559,7 @@ name|appliedBy
 operator|=
 name|a
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 expr_stmt|;
 name|submitRecordLabel

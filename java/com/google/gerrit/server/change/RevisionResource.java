@@ -687,7 +687,7 @@ name|s
 init|=
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -721,7 +721,7 @@ block|{
 return|return
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals

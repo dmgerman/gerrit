@@ -372,7 +372,7 @@ name|change
 argument_list|,
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 literal|null
@@ -412,7 +412,7 @@ literal|null
 condition|?
 name|base
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 else|:
 literal|null

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2011 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -101,17 +101,17 @@ import|;
 end_import
 
 begin_comment
-comment|/** Membership of an {@link Account} in an {@link AccountGroup}. */
+comment|/** Inclusion of an {@link AccountGroup} in another {@link AccountGroup}. */
 end_comment
 
 begin_class
 annotation|@
 name|AutoValue
-DECL|class|AccountGroupMemberAudit
+DECL|class|AccountGroupByIdAudit
 specifier|public
 specifier|abstract
 class|class
-name|AccountGroupMemberAudit
+name|AccountGroupByIdAudit
 block|{
 DECL|method|builder ()
 specifier|public
@@ -122,7 +122,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|AutoValue_AccountGroupMemberAudit
+name|AutoValue_AccountGroupByIdAudit
 operator|.
 name|Builder
 argument_list|()
@@ -151,16 +151,16 @@ name|Id
 name|groupId
 parameter_list|)
 function_decl|;
-DECL|method|memberId (Account.Id accountId)
+DECL|method|includeUuid (AccountGroup.UUID includeUuid)
 specifier|public
 specifier|abstract
 name|Builder
-name|memberId
+name|includeUuid
 parameter_list|(
-name|Account
+name|AccountGroup
 operator|.
-name|Id
-name|accountId
+name|UUID
+name|includeUuid
 parameter_list|)
 function_decl|;
 DECL|method|addedBy (Account.Id addedBy)
@@ -175,14 +175,6 @@ name|Id
 name|addedBy
 parameter_list|)
 function_decl|;
-DECL|method|addedBy ()
-specifier|abstract
-name|Account
-operator|.
-name|Id
-name|addedBy
-parameter_list|()
-function_decl|;
 DECL|method|addedOn (Timestamp addedOn)
 specifier|public
 specifier|abstract
@@ -192,12 +184,6 @@ parameter_list|(
 name|Timestamp
 name|addedOn
 parameter_list|)
-function_decl|;
-DECL|method|addedOn ()
-specifier|abstract
-name|Timestamp
-name|addedOn
-parameter_list|()
 function_decl|;
 DECL|method|removedBy (Account.Id removedBy)
 specifier|abstract
@@ -245,27 +231,10 @@ name|removedOn
 argument_list|)
 return|;
 block|}
-DECL|method|removedLegacy ()
-specifier|public
-name|Builder
-name|removedLegacy
-parameter_list|()
-block|{
-return|return
-name|removed
-argument_list|(
-name|addedBy
-argument_list|()
-argument_list|,
-name|addedOn
-argument_list|()
-argument_list|)
-return|;
-block|}
 DECL|method|build ()
 specifier|public
 specifier|abstract
-name|AccountGroupMemberAudit
+name|AccountGroupByIdAudit
 name|build
 parameter_list|()
 function_decl|;
@@ -279,13 +248,13 @@ name|Id
 name|groupId
 parameter_list|()
 function_decl|;
-DECL|method|memberId ()
+DECL|method|includeUuid ()
 specifier|public
 specifier|abstract
-name|Account
+name|AccountGroup
 operator|.
-name|Id
-name|memberId
+name|UUID
+name|includeUuid
 parameter_list|()
 function_decl|;
 DECL|method|addedBy ()

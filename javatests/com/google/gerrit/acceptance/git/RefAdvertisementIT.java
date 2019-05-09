@@ -1291,7 +1291,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -1350,7 +1350,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -1407,7 +1407,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -1463,7 +1463,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -3681,7 +3681,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 decl_stmt|;
 name|assertWithMessage
@@ -3813,7 +3813,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 decl_stmt|;
 name|assertWithMessage
@@ -3936,7 +3936,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 decl_stmt|;
 name|assertWithMessage
@@ -5142,7 +5142,7 @@ expr_stmt|;
 return|return
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 return|;
 block|}

@@ -1022,7 +1022,7 @@ block|{
 return|return
 name|psa
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 operator|.
 name|get
@@ -1473,7 +1473,7 @@ name|maxNegative
 operator|==
 name|ca
 operator|.
-name|getValue
+name|value
 argument_list|()
 return|;
 block|}
@@ -1491,7 +1491,7 @@ name|maxPositive
 operator|==
 name|ca
 operator|.
-name|getValue
+name|value
 argument_list|()
 return|;
 block|}
@@ -1529,7 +1529,7 @@ name|get
 argument_list|(
 name|ca
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 return|;

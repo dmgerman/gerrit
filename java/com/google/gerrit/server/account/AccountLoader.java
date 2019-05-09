@@ -104,6 +104,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|common
@@ -454,12 +468,16 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|get (Account.Id id)
+annotation|@
+name|Nullable
+DECL|method|get (@ullable Account.Id id)
 specifier|public
 specifier|synchronized
 name|AccountInfo
 name|get
 parameter_list|(
+annotation|@
+name|Nullable
 name|Account
 operator|.
 name|Id
@@ -610,11 +628,15 @@ name|fill
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|fillOne (Account.Id id)
+annotation|@
+name|Nullable
+DECL|method|fillOne (@ullable Account.Id id)
 specifier|public
 name|AccountInfo
 name|fillOne
 parameter_list|(
+annotation|@
+name|Nullable
 name|Account
 operator|.
 name|Id

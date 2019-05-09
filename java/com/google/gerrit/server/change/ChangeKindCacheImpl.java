@@ -2451,7 +2451,7 @@ if|if
 condition|(
 name|patch
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -2490,7 +2490,7 @@ if|if
 condition|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -2498,7 +2498,7 @@ argument_list|()
 operator|<
 name|patch
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -2507,7 +2507,7 @@ operator|&&
 operator|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -2515,7 +2515,7 @@ argument_list|()
 operator|>
 name|priorPs
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -2562,12 +2562,12 @@ name|repoConfig
 argument_list|,
 name|priorPs
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 name|patch
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2596,7 +2596,7 @@ literal|"Unable to get change kind for patchSet %s of change %s"
 argument_list|,
 name|patch
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 argument_list|,
 name|change
@@ -2649,7 +2649,7 @@ if|if
 condition|(
 name|patch
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -2722,7 +2722,7 @@ literal|"Unable to get change kind for patchSet %s of change %s"
 argument_list|,
 name|patch
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 argument_list|,
 name|change

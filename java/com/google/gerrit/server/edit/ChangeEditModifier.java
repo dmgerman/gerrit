@@ -1029,7 +1029,7 @@ name|patchSetCommitId
 init|=
 name|currentPatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|createEdit
@@ -1160,7 +1160,7 @@ argument_list|()
 argument_list|,
 name|currentPatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2267,12 +2267,12 @@ operator|.
 name|getBasePatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2288,7 +2288,7 @@ name|patchSetId
 init|=
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 name|PatchSet
@@ -2448,14 +2448,14 @@ decl_stmt|;
 return|return
 name|editBasePatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
 argument_list|(
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 return|;
@@ -2480,7 +2480,7 @@ name|patchSetCommitId
 init|=
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 return|return
@@ -2638,7 +2638,7 @@ name|basePatchSetCommitId
 init|=
 name|basePatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|ObjectId
@@ -2965,7 +2965,7 @@ argument_list|()
 argument_list|,
 name|basePatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 return|;

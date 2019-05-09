@@ -823,7 +823,7 @@ literal|"Cannot email comments for %s"
 argument_list|,
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

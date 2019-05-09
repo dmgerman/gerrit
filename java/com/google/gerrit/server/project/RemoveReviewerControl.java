@@ -340,12 +340,12 @@ name|currentUser
 argument_list|,
 name|approval
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|,
 name|approval
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;

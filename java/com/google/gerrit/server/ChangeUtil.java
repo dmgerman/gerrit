@@ -323,7 +323,7 @@ name|comparingInt
 argument_list|(
 name|PatchSet
 operator|::
-name|getPatchSetId
+name|number
 argument_list|)
 argument_list|)
 decl_stmt|;

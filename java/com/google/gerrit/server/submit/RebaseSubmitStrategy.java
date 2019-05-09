@@ -1564,7 +1564,7 @@ literal|null
 condition|?
 name|prevPs
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 else|:
 name|ImmutableList

@@ -1244,7 +1244,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 name|assertThat
@@ -1301,7 +1301,7 @@ argument_list|(
 name|psId
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -1814,7 +1814,7 @@ argument_list|(
 name|psId1
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -1832,7 +1832,7 @@ argument_list|(
 name|psId2
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -2055,7 +2055,7 @@ name|map
 argument_list|(
 name|PatchSet
 operator|::
-name|getId
+name|id
 argument_list|)
 operator|.
 name|collect
@@ -2334,7 +2334,7 @@ argument_list|(
 name|psId2_1
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -2352,7 +2352,7 @@ argument_list|(
 name|psId2_2
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -2418,7 +2418,7 @@ argument_list|(
 name|psId1_1
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -2436,7 +2436,7 @@ argument_list|(
 name|psId1_2
 argument_list|)
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 operator|.
@@ -2524,7 +2524,7 @@ name|assertThat
 argument_list|(
 name|a
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 operator|.
@@ -2540,7 +2540,7 @@ name|assertThat
 argument_list|(
 name|a
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 operator|.

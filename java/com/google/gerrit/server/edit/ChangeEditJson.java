@@ -420,7 +420,7 @@ operator|.
 name|getBasePatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -435,7 +435,7 @@ operator|.
 name|getBasePatchSet
 argument_list|()
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 expr_stmt|;
 name|out

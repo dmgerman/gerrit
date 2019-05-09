@@ -1190,7 +1190,7 @@ argument_list|()
 argument_list|,
 name|patchSet
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 operator|+
 literal|""
@@ -1220,7 +1220,7 @@ argument_list|()
 argument_list|,
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1494,7 +1494,7 @@ argument_list|()
 argument_list|,
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -1869,7 +1869,7 @@ name|patchSetId
 operator|==
 name|patchSet
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 condition|)
 block|{
@@ -2582,7 +2582,7 @@ name|add
 argument_list|(
 name|patchSet
 operator|.
-name|getUploader
+name|uploader
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2932,7 +2932,7 @@ literal|"patchSetId"
 argument_list|,
 name|patchSet
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2944,7 +2944,7 @@ literal|"refName"
 argument_list|,
 name|patchSet
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3064,7 +3064,7 @@ argument_list|()
 operator|+
 name|patchSet
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 argument_list|)
 expr_stmt|;

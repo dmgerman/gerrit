@@ -1068,7 +1068,7 @@ name|parseCommit
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1166,7 +1166,7 @@ name|repository
 argument_list|,
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 decl_stmt|;

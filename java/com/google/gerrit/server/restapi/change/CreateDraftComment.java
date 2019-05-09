@@ -802,7 +802,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|in
@@ -983,7 +983,7 @@ name|path
 argument_list|,
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|in

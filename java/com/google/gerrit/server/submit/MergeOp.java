@@ -2432,7 +2432,7 @@ argument_list|()
 argument_list|,
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|cd
@@ -2527,7 +2527,7 @@ name|status
 argument_list|,
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|getId
@@ -5047,7 +5047,7 @@ name|id
 init|=
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 if|if
@@ -5061,7 +5061,7 @@ name|id
 argument_list|,
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 condition|)
@@ -5074,7 +5074,7 @@ name|containsValue
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 condition|)
@@ -5099,14 +5099,14 @@ literal|" of patch set "
 operator|+
 name|ps
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 operator|+
 literal|" does not match the revision of the patch set ref "
 operator|+
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -5129,7 +5129,7 @@ literal|"Patch set ref "
 operator|+
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toRefName
@@ -5139,7 +5139,7 @@ literal|" not found. Expected patch set ref of "
 operator|+
 name|ps
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 operator|+
 literal|" to point to revision "
@@ -5199,7 +5199,7 @@ name|setPatchsetId
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5238,7 +5238,7 @@ name|destBranch
 argument_list|,
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|caller

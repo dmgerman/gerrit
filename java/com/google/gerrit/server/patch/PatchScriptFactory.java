@@ -1867,7 +1867,7 @@ block|}
 return|return
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 return|;
 block|}
@@ -2055,7 +2055,7 @@ if|if
 condition|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -2097,7 +2097,7 @@ name|key
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|name

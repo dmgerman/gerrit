@@ -310,7 +310,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|rsrc

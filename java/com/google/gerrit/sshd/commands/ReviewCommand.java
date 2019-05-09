@@ -1534,7 +1534,7 @@ literal|"no such change "
 operator|+
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|changeId
@@ -1563,7 +1563,7 @@ literal|"internal server error while reviewing "
 operator|+
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|+
 literal|"\n"
@@ -1585,7 +1585,7 @@ literal|"internal error while reviewing %s"
 argument_list|,
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1628,7 +1628,7 @@ name|id
 argument_list|(
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|changeId
@@ -1642,7 +1642,7 @@ name|revision
 argument_list|(
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2060,7 +2060,7 @@ name|id
 argument_list|(
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|changeId
@@ -2092,7 +2092,7 @@ name|revision
 argument_list|(
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name

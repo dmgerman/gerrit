@@ -1379,7 +1379,7 @@ name|fileName
 argument_list|,
 name|basePatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|pId
@@ -1695,7 +1695,7 @@ literal|null
 condition|?
 name|basePatchSet
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 else|:
 name|content
@@ -1738,7 +1738,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 decl_stmt|;
 name|List
@@ -1776,7 +1776,7 @@ literal|null
 condition|?
 name|basePatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get

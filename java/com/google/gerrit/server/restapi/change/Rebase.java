@@ -1407,7 +1407,7 @@ operator|.
 name|patchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 if|if
@@ -1593,7 +1593,7 @@ operator|.
 name|patchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 return|;
 block|}
@@ -1619,7 +1619,7 @@ name|baseId
 init|=
 name|base
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 name|ObjectId
@@ -1627,7 +1627,7 @@ name|tipId
 init|=
 name|tip
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 decl_stmt|;
 return|return
@@ -1675,7 +1675,7 @@ name|parseCommit
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;

@@ -1722,7 +1722,7 @@ name|assertThat
 argument_list|(
 name|newCurrentPatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|.
@@ -1730,7 +1730,7 @@ name|isNotEqualTo
 argument_list|(
 name|oldCurrentPatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2055,7 +2055,7 @@ name|isEqualTo
 argument_list|(
 name|previousPatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2142,7 +2142,7 @@ name|isEqualTo
 argument_list|(
 name|currentPatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2264,7 +2264,7 @@ name|isEqualTo
 argument_list|(
 name|previousPatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2348,7 +2348,7 @@ name|isEqualTo
 argument_list|(
 name|currentPatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -2452,7 +2452,7 @@ name|isEqualTo
 argument_list|(
 name|currentPatchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -3317,7 +3317,7 @@ name|fromString
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name

@@ -1469,7 +1469,7 @@ name|addedReviewers
 argument_list|,
 name|PatchSetApproval
 operator|::
-name|getAccountId
+name|accountId
 argument_list|)
 argument_list|,
 name|addedCCs
@@ -1520,7 +1520,7 @@ name|get
 argument_list|(
 name|r
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 argument_list|)

@@ -2131,7 +2131,7 @@ literal|null
 condition|?
 name|prevPs
 operator|.
-name|getGroups
+name|groups
 argument_list|()
 else|:
 name|ImmutableList
@@ -3281,7 +3281,7 @@ name|byLabel
 argument_list|(
 name|a
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3867,7 +3867,7 @@ name|map
 argument_list|(
 name|PatchSetApproval
 operator|::
-name|getAccountId
+name|accountId
 argument_list|)
 argument_list|)
 operator|.
@@ -3945,7 +3945,7 @@ literal|"Cannot send email for new patch set %s"
 argument_list|,
 name|newPatchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

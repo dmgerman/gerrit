@@ -2344,7 +2344,7 @@ operator|.
 name|getBasePatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 else|:
 name|edit
@@ -2476,7 +2476,7 @@ operator|.
 name|getBasePatchSet
 argument_list|()
 operator|.
-name|getPatchSetId
+name|number
 argument_list|()
 argument_list|,
 name|edit
@@ -2484,7 +2484,7 @@ operator|.
 name|getBasePatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 argument_list|,
 name|rsrc
@@ -2875,7 +2875,7 @@ operator|.
 name|getBasePatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;

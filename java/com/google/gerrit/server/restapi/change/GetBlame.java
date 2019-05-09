@@ -780,7 +780,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getRefName
+name|refName
 argument_list|()
 decl_stmt|;
 name|Ref

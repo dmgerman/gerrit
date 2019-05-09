@@ -500,7 +500,7 @@ argument_list|()
 argument_list|,
 name|patchSet
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 literal|null
@@ -518,7 +518,7 @@ name|byLabel
 argument_list|(
 name|ca
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -535,7 +535,7 @@ if|if
 condition|(
 name|ca
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|>
 literal|0
@@ -547,7 +547,7 @@ name|put
 argument_list|(
 name|ca
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|,
 name|lt
@@ -564,7 +564,7 @@ if|if
 condition|(
 name|ca
 operator|.
-name|getValue
+name|value
 argument_list|()
 operator|<
 literal|0
@@ -576,7 +576,7 @@ name|put
 argument_list|(
 name|ca
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|,
 name|lt
@@ -823,7 +823,7 @@ name|formatValue
 argument_list|(
 name|ca
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 argument_list|)

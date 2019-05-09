@@ -1144,7 +1144,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getPatchSetId
+name|patchSetId
 argument_list|()
 operator|.
 name|get
@@ -1160,7 +1160,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 operator|.
@@ -1173,7 +1173,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 operator|.
@@ -1189,7 +1189,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 operator|.
@@ -1202,7 +1202,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getRealAccountId
+name|realAccountId
 argument_list|()
 argument_list|)
 operator|.
@@ -1913,7 +1913,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getPatchSetId
+name|patchSetId
 argument_list|()
 operator|.
 name|get
@@ -1929,7 +1929,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 operator|.
@@ -1942,7 +1942,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 operator|.
@@ -1958,7 +1958,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 operator|.
@@ -1971,7 +1971,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getRealAccountId
+name|realAccountId
 argument_list|()
 argument_list|)
 operator|.
@@ -3002,7 +3002,7 @@ name|assertThat
 argument_list|(
 name|submitter
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 operator|.
@@ -3018,7 +3018,7 @@ name|assertThat
 argument_list|(
 name|submitter
 operator|.
-name|getRealAccountId
+name|realAccountId
 argument_list|()
 argument_list|)
 operator|.
@@ -4339,7 +4339,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getPatchSetId
+name|patchSetId
 argument_list|()
 operator|.
 name|get
@@ -4355,7 +4355,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 operator|.
@@ -4368,7 +4368,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 argument_list|)
 operator|.
@@ -4384,7 +4384,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 operator|.
@@ -4397,7 +4397,7 @@ name|assertThat
 argument_list|(
 name|psa
 operator|.
-name|getRealAccountId
+name|realAccountId
 argument_list|()
 argument_list|)
 operator|.

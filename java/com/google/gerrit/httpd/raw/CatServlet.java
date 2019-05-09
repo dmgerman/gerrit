@@ -865,7 +865,7 @@ name|revision
 operator|=
 name|patchSet
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name

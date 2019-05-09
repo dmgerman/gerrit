@@ -687,7 +687,7 @@ name|get
 argument_list|(
 name|startPs
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -800,7 +800,7 @@ name|get
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -823,7 +823,7 @@ operator|&&
 operator|!
 name|ps
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -1119,7 +1119,7 @@ name|parseCommit
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1143,7 +1143,7 @@ name|put
 argument_list|(
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 argument_list|,
 name|psd
@@ -1876,7 +1876,7 @@ return|return
 name|patchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 return|;
 block|}
@@ -1911,7 +1911,7 @@ argument_list|(
 name|patchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|commit
@@ -1960,7 +1960,7 @@ argument_list|(
 name|patchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|o
@@ -1968,7 +1968,7 @@ operator|.
 name|patchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|&&

@@ -1017,7 +1017,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 expr_stmt|;
 name|ConflictKey
@@ -1403,7 +1403,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 expr_stmt|;
 block|}

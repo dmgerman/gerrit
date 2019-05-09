@@ -2546,7 +2546,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2923,8 +2923,9 @@ expr_stmt|;
 name|PatchSet
 name|ps
 init|=
-operator|new
-name|PatchSet
+name|TestChanges
+operator|.
+name|newPatchSet
 argument_list|(
 name|cd
 operator|.
@@ -2935,6 +2936,11 @@ name|currentPatchSetId
 argument_list|()
 argument_list|,
 name|id
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|userId
 argument_list|)
 decl_stmt|;
 name|List

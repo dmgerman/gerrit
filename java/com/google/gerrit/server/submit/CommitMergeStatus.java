@@ -447,7 +447,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -500,7 +500,7 @@ name|ps
 lambda|->
 name|ps
 operator|.
-name|getCommitId
+name|commitId
 argument_list|()
 operator|.
 name|name
@@ -541,7 +541,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -560,7 +560,7 @@ operator|.
 name|currentPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get

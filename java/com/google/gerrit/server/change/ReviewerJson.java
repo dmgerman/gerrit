@@ -883,7 +883,7 @@ name|byLabel
 argument_list|(
 name|ca
 operator|.
-name|getLabelId
+name|labelId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -909,7 +909,7 @@ name|formatValue
 argument_list|(
 name|ca
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 argument_list|)

@@ -3468,7 +3468,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -4032,7 +4032,7 @@ operator|.
 name|getPatchSet
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 literal|null
@@ -4082,7 +4082,7 @@ name|label
 init|=
 name|approval
 operator|.
-name|getLabel
+name|label
 argument_list|()
 decl_stmt|;
 name|ApprovalInfo
@@ -4093,7 +4093,7 @@ name|ApprovalInfo
 argument_list|(
 name|approval
 operator|.
-name|getAccountId
+name|accountId
 argument_list|()
 operator|.
 name|get
@@ -4105,7 +4105,7 @@ name|valueOf
 argument_list|(
 name|approval
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 argument_list|,
@@ -4113,12 +4113,17 @@ literal|null
 argument_list|,
 name|approval
 operator|.
-name|getTag
+name|tag
 argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|,
 name|approval
 operator|.
-name|getGranted
+name|granted
 argument_list|()
 argument_list|)
 decl_stmt|;
