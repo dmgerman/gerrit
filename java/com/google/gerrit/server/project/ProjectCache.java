@@ -198,7 +198,6 @@ name|IOException
 function_decl|;
 comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @param strict true when any error generates an exception    * @throws Exception in case of any error (strict = true) or only for I/O or other internal    *     errors.    * @return the cached data or null when strict = false    */
 DECL|method|checkedGet (Project.NameKey projectName, boolean strict)
-specifier|public
 name|ProjectState
 name|checkedGet
 parameter_list|(
