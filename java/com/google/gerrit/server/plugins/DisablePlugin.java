@@ -124,6 +124,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|MethodNotAllowedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -243,9 +259,15 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|mandatoryPluginsCollection
+specifier|private
+specifier|final
+name|MandatoryPluginsCollection
+name|mandatoryPluginsCollection
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DisablePlugin (PluginLoader loader, PermissionBackend permissionBackend)
+DECL|method|DisablePlugin ( PluginLoader loader, PermissionBackend permissionBackend, MandatoryPluginsCollection mandatoryPluginsCollection)
 name|DisablePlugin
 parameter_list|(
 name|PluginLoader
@@ -253,6 +275,9 @@ name|loader
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|MandatoryPluginsCollection
+name|mandatoryPluginsCollection
 parameter_list|)
 block|{
 name|this
@@ -266,6 +291,12 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
+name|mandatoryPluginsCollection
+operator|=
+name|mandatoryPluginsCollection
 expr_stmt|;
 block|}
 annotation|@
@@ -328,6 +359,28 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|mandatoryPluginsCollection
+operator|.
+name|contains
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|MethodNotAllowedException
+argument_list|(
+literal|"Plugin "
+operator|+
+name|name
+operator|+
+literal|" is mandatory"
+argument_list|)
+throw|;
+block|}
 name|loader
 operator|.
 name|disablePlugins
