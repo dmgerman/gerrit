@@ -689,12 +689,6 @@ literal|true
 expr_stmt|;
 name|i
 operator|.
-name|useFlashClipboard
-operator|^=
-literal|true
-expr_stmt|;
-name|i
-operator|.
 name|downloadCommand
 operator|=
 name|DownloadCommand

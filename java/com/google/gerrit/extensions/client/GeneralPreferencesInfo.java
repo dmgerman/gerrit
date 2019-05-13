@@ -437,12 +437,6 @@ specifier|public
 name|Boolean
 name|showSiteHeader
 decl_stmt|;
-comment|/** Should the Flash helper movie be used to copy text to the clipboard? */
-DECL|field|useFlashClipboard
-specifier|public
-name|Boolean
-name|useFlashClipboard
-decl_stmt|;
 comment|/** Type of download URL the user prefers to use. */
 DECL|field|downloadScheme
 specifier|public
@@ -737,12 +731,6 @@ expr_stmt|;
 name|p
 operator|.
 name|showSiteHeader
-operator|=
-literal|true
-expr_stmt|;
-name|p
-operator|.
-name|useFlashClipboard
 operator|=
 literal|true
 expr_stmt|;
