@@ -214,6 +214,14 @@ name|KEY_ABANDON_MESSAGE
 init|=
 literal|"abandonMessage"
 decl_stmt|;
+DECL|field|KEY_CLEANUP_ACCOUNT_PATCH_REVIEW
+specifier|private
+specifier|static
+name|String
+name|KEY_CLEANUP_ACCOUNT_PATCH_REVIEW
+init|=
+literal|"cleanupAccountPatchReview"
+decl_stmt|;
 DECL|field|DEFAULT_ABANDON_MESSAGE
 specifier|private
 specifier|static
@@ -257,6 +265,12 @@ specifier|private
 specifier|final
 name|boolean
 name|abandonIfMergeable
+decl_stmt|;
+DECL|field|cleanupAccountPatchReview
+specifier|private
+specifier|final
+name|boolean
+name|cleanupAccountPatchReview
 decl_stmt|;
 DECL|field|abandonMessage
 specifier|private
@@ -318,6 +332,21 @@ argument_list|,
 name|KEY_ABANDON_IF_MERGEABLE
 argument_list|,
 literal|true
+argument_list|)
+expr_stmt|;
+name|cleanupAccountPatchReview
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+name|SECTION
+argument_list|,
+literal|null
+argument_list|,
+name|KEY_CLEANUP_ACCOUNT_PATCH_REVIEW
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|abandonMessage
@@ -436,6 +465,16 @@ parameter_list|()
 block|{
 return|return
 name|abandonIfMergeable
+return|;
+block|}
+DECL|method|getCleanupAccountPatchReview ()
+specifier|public
+name|boolean
+name|getCleanupAccountPatchReview
+parameter_list|()
+block|{
+return|return
+name|cleanupAccountPatchReview
 return|;
 block|}
 DECL|method|getAbandonMessage ()
