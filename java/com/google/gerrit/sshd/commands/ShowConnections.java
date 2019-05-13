@@ -1119,12 +1119,20 @@ name|stdout
 operator|.
 name|print
 argument_list|(
-literal|"SSHD Backend: "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|" %d connections; SSHD Backend: %s\n"
+argument_list|,
+name|list
+operator|.
+name|size
+argument_list|()
+argument_list|,
 name|getBackend
 argument_list|()
-operator|+
-literal|"\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
