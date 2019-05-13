@@ -5082,10 +5082,15 @@ name|destSha1
 init|=
 name|abbreviateName
 argument_list|(
-name|getRemoteHead
+name|projectOperations
+operator|.
+name|project
 argument_list|(
 name|project
-argument_list|,
+argument_list|)
+operator|.
+name|getHead
+argument_list|(
 name|destBranch
 argument_list|)
 argument_list|,

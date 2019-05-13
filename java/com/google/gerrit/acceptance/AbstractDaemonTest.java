@@ -7011,54 +7011,6 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|// TODO(hanwen): push this down.
-DECL|method|getRemoteHead (Project.NameKey project, String branch)
-specifier|protected
-name|RevCommit
-name|getRemoteHead
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
-name|String
-name|branch
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-return|return
-name|projectOperations
-operator|.
-name|project
-argument_list|(
-name|project
-argument_list|)
-operator|.
-name|getHead
-argument_list|(
-name|branch
-argument_list|)
-return|;
-block|}
-DECL|method|getRemoteHead ()
-specifier|protected
-name|RevCommit
-name|getRemoteHead
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-return|return
-name|getRemoteHead
-argument_list|(
-name|project
-argument_list|,
-literal|"master"
-argument_list|)
-return|;
-block|}
 DECL|method|assertMailReplyTo (Message message, String email)
 specifier|protected
 name|void
