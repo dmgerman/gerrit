@@ -140,6 +140,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|GlobalCapability
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|LabelType
 import|;
 end_import
@@ -157,6 +173,22 @@ operator|.
 name|data
 operator|.
 name|Permission
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|PermissionRange
 import|;
 end_import
 
@@ -192,6 +224,16 @@ name|AccountGroup
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_class
 annotation|@
 name|AutoValue
@@ -201,6 +243,300 @@ specifier|abstract
 class|class
 name|TestProjectUpdate
 block|{
+comment|/** Starts a builder for allowing a capability. */
+DECL|method|allowCapability (String name)
+specifier|public
+specifier|static
+name|TestCapability
+operator|.
+name|Builder
+name|allowCapability
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|TestCapability
+operator|.
+name|builder
+argument_list|()
+operator|.
+name|name
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
+comment|/** Records a global capability to be updated. */
+annotation|@
+name|AutoValue
+DECL|class|TestCapability
+specifier|public
+specifier|abstract
+specifier|static
+class|class
+name|TestCapability
+block|{
+DECL|method|builder ()
+specifier|private
+specifier|static
+name|Builder
+name|builder
+parameter_list|()
+block|{
+return|return
+operator|new
+name|AutoValue_TestProjectUpdate_TestCapability
+operator|.
+name|Builder
+argument_list|()
+return|;
+block|}
+DECL|method|name ()
+specifier|abstract
+name|String
+name|name
+parameter_list|()
+function_decl|;
+DECL|method|group ()
+specifier|abstract
+name|AccountGroup
+operator|.
+name|UUID
+name|group
+parameter_list|()
+function_decl|;
+DECL|method|min ()
+specifier|abstract
+name|int
+name|min
+parameter_list|()
+function_decl|;
+DECL|method|max ()
+specifier|abstract
+name|int
+name|max
+parameter_list|()
+function_decl|;
+comment|/** Builder for {@link TestCapability}. */
+annotation|@
+name|AutoValue
+operator|.
+name|Builder
+DECL|class|Builder
+specifier|public
+specifier|abstract
+specifier|static
+class|class
+name|Builder
+block|{
+comment|/** Sets the name of the capability. */
+DECL|method|name (String name)
+specifier|public
+specifier|abstract
+name|Builder
+name|name
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+DECL|method|name ()
+specifier|abstract
+name|String
+name|name
+parameter_list|()
+function_decl|;
+comment|/** Sets the group to which the capability applies. */
+DECL|method|group (AccountGroup.UUID group)
+specifier|public
+specifier|abstract
+name|Builder
+name|group
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|group
+parameter_list|)
+function_decl|;
+DECL|method|min (int min)
+specifier|abstract
+name|Builder
+name|min
+parameter_list|(
+name|int
+name|min
+parameter_list|)
+function_decl|;
+DECL|method|min ()
+specifier|abstract
+name|Optional
+argument_list|<
+name|Integer
+argument_list|>
+name|min
+parameter_list|()
+function_decl|;
+DECL|method|max (int max)
+specifier|abstract
+name|Builder
+name|max
+parameter_list|(
+name|int
+name|max
+parameter_list|)
+function_decl|;
+DECL|method|max ()
+specifier|abstract
+name|Optional
+argument_list|<
+name|Integer
+argument_list|>
+name|max
+parameter_list|()
+function_decl|;
+comment|/** Sets the minimum and maximum values for the capability. */
+DECL|method|range (int min, int max)
+specifier|public
+name|Builder
+name|range
+parameter_list|(
+name|int
+name|min
+parameter_list|,
+name|int
+name|max
+parameter_list|)
+block|{
+return|return
+name|min
+argument_list|(
+name|min
+argument_list|)
+operator|.
+name|max
+argument_list|(
+name|max
+argument_list|)
+return|;
+block|}
+comment|/** Builds the {@link TestCapability}. */
+DECL|method|autoBuild ()
+specifier|abstract
+name|TestCapability
+name|autoBuild
+parameter_list|()
+function_decl|;
+DECL|method|build ()
+specifier|public
+name|TestCapability
+name|build
+parameter_list|()
+block|{
+if|if
+condition|(
+name|min
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+operator|||
+name|max
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|checkArgument
+argument_list|(
+name|GlobalCapability
+operator|.
+name|hasRange
+argument_list|(
+name|name
+argument_list|()
+argument_list|)
+argument_list|,
+literal|"capability %s does not support ranges"
+argument_list|,
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|PermissionRange
+operator|.
+name|WithDefaults
+name|withDefaults
+init|=
+name|GlobalCapability
+operator|.
+name|getRange
+argument_list|(
+name|name
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|min
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|min
+argument_list|(
+name|withDefaults
+operator|!=
+literal|null
+condition|?
+name|withDefaults
+operator|.
+name|getDefaultMin
+argument_list|()
+else|:
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|max
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|max
+argument_list|(
+name|withDefaults
+operator|!=
+literal|null
+condition|?
+name|withDefaults
+operator|.
+name|getDefaultMax
+argument_list|()
+else|:
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|autoBuild
+argument_list|()
+return|;
+block|}
+block|}
+block|}
 comment|/** Starts a builder for allowing a permission. */
 DECL|method|allow (String name)
 specifier|public
@@ -813,6 +1149,17 @@ argument_list|>
 name|addedLabelPermissionsBuilder
 parameter_list|()
 function_decl|;
+DECL|method|addedCapabilitiesBuilder ()
+specifier|abstract
+name|ImmutableList
+operator|.
+name|Builder
+argument_list|<
+name|TestCapability
+argument_list|>
+name|addedCapabilitiesBuilder
+parameter_list|()
+function_decl|;
 comment|/** Adds a permission to be included in this update. */
 DECL|method|add (TestPermission testPermission)
 specifier|public
@@ -901,6 +1248,50 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/** Adds a capability to be included in this update. */
+DECL|method|add (TestCapability testCapability)
+specifier|public
+name|Builder
+name|add
+parameter_list|(
+name|TestCapability
+name|testCapability
+parameter_list|)
+block|{
+name|addedCapabilitiesBuilder
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|testCapability
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/** Adds a capability to be included in this update. */
+DECL|method|add (TestCapability.Builder testCapabilityBuilder)
+specifier|public
+name|Builder
+name|add
+parameter_list|(
+name|TestCapability
+operator|.
+name|Builder
+name|testCapabilityBuilder
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|testCapabilityBuilder
+operator|.
+name|build
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|projectUpdater (ThrowingConsumer<TestProjectUpdate> projectUpdater)
 specifier|abstract
 name|Builder
@@ -960,6 +1351,15 @@ argument_list|<
 name|TestLabelPermission
 argument_list|>
 name|addedLabelPermissions
+parameter_list|()
+function_decl|;
+DECL|method|addedCapabilities ()
+specifier|abstract
+name|ImmutableList
+argument_list|<
+name|TestCapability
+argument_list|>
+name|addedCapabilities
 parameter_list|()
 function_decl|;
 DECL|method|projectUpdater ()
