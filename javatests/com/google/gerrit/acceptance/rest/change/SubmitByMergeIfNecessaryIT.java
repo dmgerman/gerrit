@@ -4101,8 +4101,6 @@ name|project
 argument_list|,
 literal|"refs/heads/*"
 argument_list|,
-literal|false
-argument_list|,
 name|REGISTERED_USERS
 argument_list|,
 literal|false
@@ -4420,8 +4418,6 @@ argument_list|,
 name|project
 argument_list|,
 literal|"refs/heads/*"
-argument_list|,
-literal|false
 argument_list|,
 name|REGISTERED_USERS
 argument_list|,
@@ -4742,8 +4738,6 @@ name|p1
 argument_list|,
 literal|"refs/heads/*"
 argument_list|,
-literal|false
-argument_list|,
 name|REGISTERED_USERS
 argument_list|,
 literal|false
@@ -4776,8 +4770,6 @@ argument_list|,
 name|p2
 argument_list|,
 literal|"refs/heads/*"
-argument_list|,
-literal|false
 argument_list|,
 name|REGISTERED_USERS
 argument_list|,

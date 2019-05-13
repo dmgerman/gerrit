@@ -11969,8 +11969,6 @@ name|allUsers
 argument_list|,
 name|userRef
 argument_list|,
-literal|false
-argument_list|,
 name|adminGroupUuid
 argument_list|()
 argument_list|,

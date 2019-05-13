@@ -69,6 +69,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -109,6 +125,38 @@ operator|.
 name|testsuite
 operator|.
 name|ThrowingConsumer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|LabelType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|Permission
 import|;
 end_import
 
@@ -396,6 +444,316 @@ parameter_list|()
 function_decl|;
 block|}
 block|}
+comment|/** Starts a builder for allowing a label permission. */
+DECL|method|allowLabel (String name)
+specifier|public
+specifier|static
+name|TestLabelPermission
+operator|.
+name|Builder
+name|allowLabel
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|TestLabelPermission
+operator|.
+name|builder
+argument_list|()
+operator|.
+name|name
+argument_list|(
+name|name
+argument_list|)
+operator|.
+name|action
+argument_list|(
+name|PermissionRule
+operator|.
+name|Action
+operator|.
+name|ALLOW
+argument_list|)
+return|;
+block|}
+comment|/** Starts a builder for denying a label permission. */
+DECL|method|blockLabel (String name)
+specifier|public
+specifier|static
+name|TestLabelPermission
+operator|.
+name|Builder
+name|blockLabel
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|TestLabelPermission
+operator|.
+name|builder
+argument_list|()
+operator|.
+name|name
+argument_list|(
+name|name
+argument_list|)
+operator|.
+name|action
+argument_list|(
+name|PermissionRule
+operator|.
+name|Action
+operator|.
+name|BLOCK
+argument_list|)
+return|;
+block|}
+comment|/** Records a label permission to be updated. */
+annotation|@
+name|AutoValue
+DECL|class|TestLabelPermission
+specifier|public
+specifier|abstract
+specifier|static
+class|class
+name|TestLabelPermission
+block|{
+DECL|method|builder ()
+specifier|private
+specifier|static
+name|Builder
+name|builder
+parameter_list|()
+block|{
+return|return
+operator|new
+name|AutoValue_TestProjectUpdate_TestLabelPermission
+operator|.
+name|Builder
+argument_list|()
+operator|.
+name|exclusive
+argument_list|(
+literal|false
+argument_list|)
+return|;
+block|}
+DECL|method|name ()
+specifier|abstract
+name|String
+name|name
+parameter_list|()
+function_decl|;
+DECL|method|ref ()
+specifier|abstract
+name|String
+name|ref
+parameter_list|()
+function_decl|;
+DECL|method|group ()
+specifier|abstract
+name|AccountGroup
+operator|.
+name|UUID
+name|group
+parameter_list|()
+function_decl|;
+DECL|method|action ()
+specifier|abstract
+name|PermissionRule
+operator|.
+name|Action
+name|action
+parameter_list|()
+function_decl|;
+DECL|method|min ()
+specifier|abstract
+name|int
+name|min
+parameter_list|()
+function_decl|;
+DECL|method|max ()
+specifier|abstract
+name|int
+name|max
+parameter_list|()
+function_decl|;
+DECL|method|exclusive ()
+specifier|abstract
+name|boolean
+name|exclusive
+parameter_list|()
+function_decl|;
+comment|/** Builder for {@link TestLabelPermission}. */
+annotation|@
+name|AutoValue
+operator|.
+name|Builder
+DECL|class|Builder
+specifier|public
+specifier|abstract
+specifier|static
+class|class
+name|Builder
+block|{
+DECL|method|name (String name)
+specifier|abstract
+name|Builder
+name|name
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/** Sets the ref pattern used on the permission. */
+DECL|method|ref (String ref)
+specifier|public
+specifier|abstract
+name|Builder
+name|ref
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+function_decl|;
+comment|/** Sets the group to which the permission applies. */
+DECL|method|group (AccountGroup.UUID group)
+specifier|public
+specifier|abstract
+name|Builder
+name|group
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|group
+parameter_list|)
+function_decl|;
+DECL|method|action (PermissionRule.Action action)
+specifier|abstract
+name|Builder
+name|action
+parameter_list|(
+name|PermissionRule
+operator|.
+name|Action
+name|action
+parameter_list|)
+function_decl|;
+DECL|method|min (int min)
+specifier|abstract
+name|Builder
+name|min
+parameter_list|(
+name|int
+name|min
+parameter_list|)
+function_decl|;
+DECL|method|max (int max)
+specifier|abstract
+name|Builder
+name|max
+parameter_list|(
+name|int
+name|max
+parameter_list|)
+function_decl|;
+comment|/** Sets the minimum and maximum values for the permission. */
+DECL|method|range (int min, int max)
+specifier|public
+name|Builder
+name|range
+parameter_list|(
+name|int
+name|min
+parameter_list|,
+name|int
+name|max
+parameter_list|)
+block|{
+return|return
+name|min
+argument_list|(
+name|min
+argument_list|)
+operator|.
+name|max
+argument_list|(
+name|max
+argument_list|)
+return|;
+block|}
+comment|/** Adds the permission to the exclusive group permission set on the access section. */
+DECL|method|exclusive (boolean exclusive)
+specifier|public
+specifier|abstract
+name|Builder
+name|exclusive
+parameter_list|(
+name|boolean
+name|exclusive
+parameter_list|)
+function_decl|;
+DECL|method|autoBuild ()
+specifier|abstract
+name|TestLabelPermission
+name|autoBuild
+parameter_list|()
+function_decl|;
+comment|/** Builds the {@link TestPermission}. */
+DECL|method|build ()
+specifier|public
+name|TestLabelPermission
+name|build
+parameter_list|()
+block|{
+name|TestLabelPermission
+name|result
+init|=
+name|autoBuild
+argument_list|()
+decl_stmt|;
+name|checkArgument
+argument_list|(
+operator|!
+name|Permission
+operator|.
+name|isLabel
+argument_list|(
+name|result
+operator|.
+name|name
+argument_list|()
+argument_list|)
+argument_list|,
+literal|"expected label name, got permission name: %s"
+argument_list|,
+name|result
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LabelType
+operator|.
+name|checkName
+argument_list|(
+name|result
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+name|result
+return|;
+block|}
+block|}
+block|}
 DECL|method|builder (ThrowingConsumer<TestProjectUpdate> projectUpdater)
 specifier|static
 name|Builder
@@ -444,6 +802,17 @@ argument_list|>
 name|addedPermissionsBuilder
 parameter_list|()
 function_decl|;
+DECL|method|addedLabelPermissionsBuilder ()
+specifier|abstract
+name|ImmutableList
+operator|.
+name|Builder
+argument_list|<
+name|TestLabelPermission
+argument_list|>
+name|addedLabelPermissionsBuilder
+parameter_list|()
+function_decl|;
 comment|/** Adds a permission to be included in this update. */
 DECL|method|add (TestPermission testPermission)
 specifier|public
@@ -482,6 +851,50 @@ return|return
 name|add
 argument_list|(
 name|testPermissionBuilder
+operator|.
+name|build
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/** Adds a label permission to be included in this update. */
+DECL|method|add (TestLabelPermission testLabelPermission)
+specifier|public
+name|Builder
+name|add
+parameter_list|(
+name|TestLabelPermission
+name|testLabelPermission
+parameter_list|)
+block|{
+name|addedLabelPermissionsBuilder
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|testLabelPermission
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/** Adds a label permission to be included in this update. */
+DECL|method|add (TestLabelPermission.Builder testLabelPermissionBuilder)
+specifier|public
+name|Builder
+name|add
+parameter_list|(
+name|TestLabelPermission
+operator|.
+name|Builder
+name|testLabelPermissionBuilder
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|testLabelPermissionBuilder
 operator|.
 name|build
 argument_list|()
@@ -538,6 +951,15 @@ argument_list|<
 name|TestPermission
 argument_list|>
 name|addedPermissions
+parameter_list|()
+function_decl|;
+DECL|method|addedLabelPermissions ()
+specifier|abstract
+name|ImmutableList
+argument_list|<
+name|TestLabelPermission
+argument_list|>
+name|addedLabelPermissions
 parameter_list|()
 function_decl|;
 DECL|method|projectUpdater ()
