@@ -85,6 +85,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -125,6 +137,22 @@ operator|.
 name|testsuite
 operator|.
 name|ThrowingConsumer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|AccessSection
 import|;
 end_import
 
@@ -231,6 +259,20 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
 import|;
 end_import
 
@@ -1053,30 +1095,7 @@ init|=
 name|autoBuild
 argument_list|()
 decl_stmt|;
-name|checkArgument
-argument_list|(
-operator|!
-name|Permission
-operator|.
-name|isLabel
-argument_list|(
-name|result
-operator|.
-name|name
-argument_list|()
-argument_list|)
-argument_list|,
-literal|"expected label name, got permission name: %s"
-argument_list|,
-name|result
-operator|.
-name|name
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|LabelType
-operator|.
-name|checkName
+name|checkLabelName
 argument_list|(
 name|result
 operator|.
@@ -1088,6 +1107,271 @@ return|return
 name|result
 return|;
 block|}
+block|}
+block|}
+comment|/**    * Starts a builder for describing a permission key for deletion. Not for label permissions or    * global capabilities.    */
+DECL|method|permissionKey (String name)
+specifier|public
+specifier|static
+name|TestPermissionKey
+operator|.
+name|Builder
+name|permissionKey
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|TestPermissionKey
+operator|.
+name|builder
+argument_list|()
+operator|.
+name|name
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
+comment|/** Starts a builder for describing a label permission key for deletion. */
+DECL|method|labelPermissionKey (String name)
+specifier|public
+specifier|static
+name|TestPermissionKey
+operator|.
+name|Builder
+name|labelPermissionKey
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|checkLabelName
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+return|return
+name|TestPermissionKey
+operator|.
+name|builder
+argument_list|()
+operator|.
+name|name
+argument_list|(
+name|Permission
+operator|.
+name|forLabel
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/** Starts a builder for describing a capability key for deletion. */
+DECL|method|capabilityKey (String name)
+specifier|public
+specifier|static
+name|TestPermissionKey
+operator|.
+name|Builder
+name|capabilityKey
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|TestPermissionKey
+operator|.
+name|builder
+argument_list|()
+operator|.
+name|name
+argument_list|(
+name|name
+argument_list|)
+operator|.
+name|section
+argument_list|(
+name|AccessSection
+operator|.
+name|GLOBAL_CAPABILITIES
+argument_list|)
+return|;
+block|}
+comment|/** Records the key of a permission (of any type) for deletion. */
+annotation|@
+name|AutoValue
+DECL|class|TestPermissionKey
+specifier|public
+specifier|abstract
+specifier|static
+class|class
+name|TestPermissionKey
+block|{
+DECL|method|builder ()
+specifier|private
+specifier|static
+name|Builder
+name|builder
+parameter_list|()
+block|{
+return|return
+operator|new
+name|AutoValue_TestProjectUpdate_TestPermissionKey
+operator|.
+name|Builder
+argument_list|()
+return|;
+block|}
+DECL|method|section ()
+specifier|abstract
+name|String
+name|section
+parameter_list|()
+function_decl|;
+DECL|method|name ()
+specifier|abstract
+name|String
+name|name
+parameter_list|()
+function_decl|;
+DECL|method|group ()
+specifier|abstract
+name|Optional
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+name|group
+parameter_list|()
+function_decl|;
+annotation|@
+name|AutoValue
+operator|.
+name|Builder
+DECL|class|Builder
+specifier|public
+specifier|abstract
+specifier|static
+class|class
+name|Builder
+block|{
+DECL|method|section (String section)
+specifier|abstract
+name|Builder
+name|section
+parameter_list|(
+name|String
+name|section
+parameter_list|)
+function_decl|;
+DECL|method|section ()
+specifier|abstract
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|section
+parameter_list|()
+function_decl|;
+comment|/** Sets the ref pattern used on the permission. Not for global capabilities. */
+DECL|method|ref (String ref)
+specifier|public
+name|Builder
+name|ref
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+block|{
+name|requireNonNull
+argument_list|(
+name|ref
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+name|ref
+operator|.
+name|startsWith
+argument_list|(
+name|Constants
+operator|.
+name|R_REFS
+argument_list|)
+argument_list|,
+literal|"must be a ref: %s"
+argument_list|,
+name|ref
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+operator|!
+name|section
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+operator|||
+operator|!
+name|section
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|AccessSection
+operator|.
+name|GLOBAL_CAPABILITIES
+argument_list|)
+argument_list|,
+literal|"can't set ref on global capability"
+argument_list|)
+expr_stmt|;
+return|return
+name|section
+argument_list|(
+name|ref
+argument_list|)
+return|;
+block|}
+DECL|method|name (String name)
+specifier|abstract
+name|Builder
+name|name
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/** Sets the group to which the permission applies. */
+DECL|method|group (AccountGroup.UUID group)
+specifier|public
+specifier|abstract
+name|Builder
+name|group
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|group
+parameter_list|)
+function_decl|;
+comment|/** Builds the {@link TestPermissionKey}. */
+DECL|method|build ()
+specifier|public
+specifier|abstract
+name|TestPermissionKey
+name|build
+parameter_list|()
+function_decl|;
 block|}
 block|}
 DECL|method|builder (ThrowingConsumer<TestProjectUpdate> projectUpdater)
@@ -1158,6 +1442,17 @@ argument_list|<
 name|TestCapability
 argument_list|>
 name|addedCapabilitiesBuilder
+parameter_list|()
+function_decl|;
+DECL|method|removedPermissionsBuilder ()
+specifier|abstract
+name|ImmutableList
+operator|.
+name|Builder
+argument_list|<
+name|TestPermissionKey
+argument_list|>
+name|removedPermissionsBuilder
 parameter_list|()
 function_decl|;
 comment|/** Adds a permission to be included in this update. */
@@ -1292,6 +1587,50 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/** Removes a permission, label permission, or capability as part of this update. */
+DECL|method|remove (TestPermissionKey testPermissionKey)
+specifier|public
+name|Builder
+name|remove
+parameter_list|(
+name|TestPermissionKey
+name|testPermissionKey
+parameter_list|)
+block|{
+name|removedPermissionsBuilder
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|testPermissionKey
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/** Removes a permission, label permission, or capability as part of this update. */
+DECL|method|remove (TestPermissionKey.Builder testPermissionKeyBuilder)
+specifier|public
+name|Builder
+name|remove
+parameter_list|(
+name|TestPermissionKey
+operator|.
+name|Builder
+name|testPermissionKeyBuilder
+parameter_list|)
+block|{
+return|return
+name|remove
+argument_list|(
+name|testPermissionKeyBuilder
+operator|.
+name|build
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|projectUpdater (ThrowingConsumer<TestProjectUpdate> projectUpdater)
 specifier|abstract
 name|Builder
@@ -1362,6 +1701,15 @@ argument_list|>
 name|addedCapabilities
 parameter_list|()
 function_decl|;
+DECL|method|removedPermissions ()
+specifier|abstract
+name|ImmutableList
+argument_list|<
+name|TestPermissionKey
+argument_list|>
+name|removedPermissions
+parameter_list|()
+function_decl|;
 DECL|method|projectUpdater ()
 specifier|abstract
 name|ThrowingConsumer
@@ -1371,6 +1719,39 @@ argument_list|>
 name|projectUpdater
 parameter_list|()
 function_decl|;
+DECL|method|checkLabelName (String name)
+specifier|private
+specifier|static
+name|void
+name|checkLabelName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|Permission
+operator|.
+name|isLabel
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+literal|"expected label name, got permission name: %s"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+name|LabelType
+operator|.
+name|checkName
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
