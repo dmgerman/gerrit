@@ -3176,6 +3176,14 @@ lambda|->
 block|{}
 decl_stmt|;
 comment|// Don't sleep in tests.
+comment|// TODO(dborowitz): Push down into callers that need it.
+DECL|field|projectOperations
+annotation|@
+name|Inject
+specifier|protected
+name|ProjectOperations
+name|projectOperations
+decl_stmt|;
 DECL|field|changeNotesArgs
 annotation|@
 name|Inject
@@ -3244,13 +3252,6 @@ name|Inject
 specifier|private
 name|ProjectIndexCollection
 name|projectIndexes
-decl_stmt|;
-DECL|field|projectOperations
-annotation|@
-name|Inject
-specifier|private
-name|ProjectOperations
-name|projectOperations
 decl_stmt|;
 DECL|field|requestScopeOperations
 annotation|@
