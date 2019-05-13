@@ -646,8 +646,6 @@ argument_list|,
 name|Permission
 operator|.
 name|PUSH
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|assertDeleteRef
