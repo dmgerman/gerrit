@@ -86,6 +86,36 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -147,6 +177,18 @@ parameter_list|(
 name|String
 name|branchName
 parameter_list|)
+function_decl|;
+comment|/** Returns a fresh {@link ProjectConfig} read from the tip of {@code refs/meta/config}. */
+DECL|method|getProjectConfig ()
+name|ProjectConfig
+name|getProjectConfig
+parameter_list|()
+function_decl|;
+comment|/**      * Returns a fresh JGit {@link Config} instance read from {@code project.config} at the tip of      * {@code refs/meta/config}. Does not have a base config, i.e. does not respect {@code      * $site_path/etc/project.config}.      */
+DECL|method|getConfig ()
+name|Config
+name|getConfig
+parameter_list|()
 function_decl|;
 block|}
 block|}
