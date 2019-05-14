@@ -201,6 +201,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|truth
+operator|.
+name|ConfigSubject
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -874,15 +890,15 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|config
+argument_list|)
 operator|.
-name|getString
+name|stringValue
 argument_list|(
 literal|"project"
 argument_list|,
 literal|null
 argument_list|,
 literal|"description"
-argument_list|)
 argument_list|)
 operator|.
 name|isEqualTo
@@ -961,8 +977,9 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|config
+argument_list|)
 operator|.
-name|getBoolean
+name|booleanValue
 argument_list|(
 literal|"submit"
 argument_list|,
@@ -971,7 +988,6 @@ argument_list|,
 literal|"rejectEmptyCommit"
 argument_list|,
 literal|false
-argument_list|)
 argument_list|)
 operator|.
 name|isTrue
