@@ -130,6 +130,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableMap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|acceptance
@@ -913,11 +927,6 @@ name|AutoValue_TestProjectUpdate_TestLabelPermission
 operator|.
 name|Builder
 argument_list|()
-operator|.
-name|exclusive
-argument_list|(
-literal|false
-argument_list|)
 return|;
 block|}
 DECL|method|name ()
@@ -958,12 +967,6 @@ DECL|method|max ()
 specifier|abstract
 name|int
 name|max
-parameter_list|()
-function_decl|;
-DECL|method|exclusive ()
-specifier|abstract
-name|boolean
-name|exclusive
 parameter_list|()
 function_decl|;
 comment|/** Builder for {@link TestLabelPermission}. */
@@ -1065,17 +1068,6 @@ name|max
 argument_list|)
 return|;
 block|}
-comment|/** Adds the permission to the exclusive group permission set on the access section. */
-DECL|method|exclusive (boolean exclusive)
-specifier|public
-specifier|abstract
-name|Builder
-name|exclusive
-parameter_list|(
-name|boolean
-name|exclusive
-parameter_list|)
-function_decl|;
 DECL|method|autoBuild ()
 specifier|abstract
 name|TestLabelPermission
@@ -1455,6 +1447,19 @@ argument_list|>
 name|removedPermissionsBuilder
 parameter_list|()
 function_decl|;
+DECL|method|exclusiveGroupPermissionsBuilder ()
+specifier|abstract
+name|ImmutableMap
+operator|.
+name|Builder
+argument_list|<
+name|TestPermissionKey
+argument_list|,
+name|Boolean
+argument_list|>
+name|exclusiveGroupPermissionsBuilder
+parameter_list|()
+function_decl|;
 comment|/** Adds a permission to be included in this update. */
 DECL|method|add (TestPermission testPermission)
 specifier|public
@@ -1631,6 +1636,96 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/** Sets the exclusive bit bit for the given permission key. */
+DECL|method|setExclusiveGroup ( TestPermissionKey.Builder testPermissionKeyBuilder, boolean exclusive)
+specifier|public
+name|Builder
+name|setExclusiveGroup
+parameter_list|(
+name|TestPermissionKey
+operator|.
+name|Builder
+name|testPermissionKeyBuilder
+parameter_list|,
+name|boolean
+name|exclusive
+parameter_list|)
+block|{
+return|return
+name|setExclusiveGroup
+argument_list|(
+name|testPermissionKeyBuilder
+operator|.
+name|build
+argument_list|()
+argument_list|,
+name|exclusive
+argument_list|)
+return|;
+block|}
+comment|/** Sets the exclusive bit bit for the given permission key. */
+DECL|method|setExclusiveGroup (TestPermissionKey testPermissionKey, boolean exclusive)
+specifier|public
+name|Builder
+name|setExclusiveGroup
+parameter_list|(
+name|TestPermissionKey
+name|testPermissionKey
+parameter_list|,
+name|boolean
+name|exclusive
+parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|testPermissionKey
+operator|.
+name|group
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+argument_list|,
+literal|"do not specify group for setExclusiveGroup: %s"
+argument_list|,
+name|testPermissionKey
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+operator|!
+name|testPermissionKey
+operator|.
+name|section
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|AccessSection
+operator|.
+name|GLOBAL_CAPABILITIES
+argument_list|)
+argument_list|,
+literal|"setExclusiveGroup not valid for global capabilities: %s"
+argument_list|,
+name|testPermissionKey
+argument_list|)
+expr_stmt|;
+name|exclusiveGroupPermissionsBuilder
+argument_list|()
+operator|.
+name|put
+argument_list|(
+name|testPermissionKey
+argument_list|,
+name|exclusive
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|projectUpdater (ThrowingConsumer<TestProjectUpdate> projectUpdater)
 specifier|abstract
 name|Builder
@@ -1708,6 +1803,17 @@ argument_list|<
 name|TestPermissionKey
 argument_list|>
 name|removedPermissions
+parameter_list|()
+function_decl|;
+DECL|method|exclusiveGroupPermissions ()
+specifier|abstract
+name|ImmutableMap
+argument_list|<
+name|TestPermissionKey
+argument_list|,
+name|Boolean
+argument_list|>
+name|exclusiveGroupPermissions
 parameter_list|()
 function_decl|;
 DECL|method|projectUpdater ()
