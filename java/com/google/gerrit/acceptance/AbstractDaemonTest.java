@@ -486,24 +486,6 @@ name|acceptance
 operator|.
 name|testsuite
 operator|.
-name|project
-operator|.
-name|ProjectOperations
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|testsuite
-operator|.
 name|request
 operator|.
 name|RequestScopeOperations
@@ -3096,14 +3078,6 @@ lambda|->
 block|{}
 decl_stmt|;
 comment|// Don't sleep in tests.
-comment|// TODO(dborowitz): Push down into callers that need it.
-DECL|field|projectOperations
-annotation|@
-name|Inject
-specifier|protected
-name|ProjectOperations
-name|projectOperations
-decl_stmt|;
 DECL|field|changeNotesArgs
 annotation|@
 name|Inject

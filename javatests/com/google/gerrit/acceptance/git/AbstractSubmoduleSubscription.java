@@ -683,6 +683,13 @@ name|AbstractSubmoduleSubscription
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|projectOperations
+annotation|@
+name|Inject
+specifier|private
+name|ProjectOperations
+name|projectOperations
+decl_stmt|;
 DECL|field|superRepo
 specifier|protected
 name|TestRepository
@@ -712,13 +719,6 @@ name|Project
 operator|.
 name|NameKey
 name|subKey
-decl_stmt|;
-DECL|field|projectOperations
-annotation|@
-name|Inject
-specifier|protected
-name|ProjectOperations
-name|projectOperations
 decl_stmt|;
 DECL|method|getSubmitType ()
 specifier|protected

@@ -156,6 +156,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|testsuite
+operator|.
+name|project
+operator|.
+name|ProjectOperations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|data
@@ -209,6 +227,18 @@ operator|.
 name|client
 operator|.
 name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 
@@ -268,6 +298,13 @@ name|SubmitByFastForwardIT
 extends|extends
 name|AbstractSubmit
 block|{
+DECL|field|projectOperations
+annotation|@
+name|Inject
+specifier|private
+name|ProjectOperations
+name|projectOperations
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getSubmitType ()
