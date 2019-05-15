@@ -74,6 +74,20 @@ name|annotation
 operator|.
 name|ElementType
 operator|.
+name|FIELD
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|ElementType
+operator|.
 name|METHOD
 import|;
 end_import
@@ -131,7 +145,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A marker for a method that is public solely because it is called from inside a project or an  * organisation using Gerrit.  */
+comment|/**  * A marker to say a method/type/field is added or is increased to public solely because it is  * called from inside a project or an organisation using Gerrit.  */
 end_comment
 
 begin_annotation_defn
@@ -142,6 +156,8 @@ block|{
 name|METHOD
 block|,
 name|TYPE
+block|,
+name|FIELD
 block|}
 argument_list|)
 annotation|@
@@ -154,7 +170,7 @@ specifier|public
 annotation_defn|@interface
 name|UsedAt
 block|{
-comment|/** Enumeration of projects that call a method that would otherwise be private. */
+comment|/** Enumeration of projects that call a method/type/field. */
 DECL|enum|Project
 enum|enum
 name|Project
