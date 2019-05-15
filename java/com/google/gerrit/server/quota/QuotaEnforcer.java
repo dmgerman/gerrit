@@ -124,6 +124,18 @@ name|long
 name|numTokens
 parameter_list|)
 function_decl|;
+comment|/**    * Returns available tokens that can be later requested.    *    *<p>This is used as a pre-flight check for the exceptional case when the requested number of    * tokens is not known in advance. Implementation should not deduct tokens from a bucket. It    * should be followed by a call to {@link #requestTokens(String, QuotaRequestContext, long)} with    * the number of tokens that were eventually used. It is in {@link QuotaBackend} callers    * discretion to ensure that {@link    * com.google.gerrit.server.quota.QuotaBackend.WithResource#requestTokens(String, long)} is    * called.    */
+DECL|method|availableTokens (String quotaGroup, QuotaRequestContext ctx)
+name|QuotaResponse
+name|availableTokens
+parameter_list|(
+name|String
+name|quotaGroup
+parameter_list|,
+name|QuotaRequestContext
+name|ctx
+parameter_list|)
+function_decl|;
 comment|/**    * A previously requested and deducted quota has to be refilled (if possible) because the request    * failed other quota checks. Implementations can choose to leave this a no-op in case they are    * the first line of defence (e.g. always deduct HTTP quota even if the request failed for other    * quota issues so that the user gets throttled).    *    *<p>Will not be called if the {@link #requestTokens(String, QuotaRequestContext, long)} call    * returned {@link QuotaResponse.Status#NO_OP}.    */
 DECL|method|refill (String quotaGroup, QuotaRequestContext ctx, long numTokens)
 name|void
