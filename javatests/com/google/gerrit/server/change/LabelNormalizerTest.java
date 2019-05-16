@@ -138,7 +138,7 @@ name|testing
 operator|.
 name|TestLabels
 operator|.
-name|category
+name|label
 import|;
 end_import
 
@@ -964,7 +964,7 @@ block|}
 name|LabelType
 name|lt
 init|=
-name|category
+name|label
 argument_list|(
 literal|"Verified"
 argument_list|,

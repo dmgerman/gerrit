@@ -764,7 +764,7 @@ name|testing
 operator|.
 name|TestLabels
 operator|.
-name|category
+name|label
 import|;
 end_import
 
@@ -18188,7 +18188,7 @@ block|{
 name|LabelType
 name|verified
 init|=
-name|category
+name|label
 argument_list|(
 literal|"Verified"
 argument_list|,
@@ -20605,7 +20605,7 @@ block|{
 name|LabelType
 name|verified
 init|=
-name|category
+name|label
 argument_list|(
 literal|"Verified"
 argument_list|,
@@ -23503,7 +23503,7 @@ block|{
 name|LabelType
 name|verified
 init|=
-name|category
+name|label
 argument_list|(
 literal|"Verified"
 argument_list|,
@@ -23533,7 +23533,7 @@ decl_stmt|;
 name|LabelType
 name|custom1
 init|=
-name|category
+name|label
 argument_list|(
 literal|"Custom1"
 argument_list|,
@@ -23563,7 +23563,7 @@ decl_stmt|;
 name|LabelType
 name|custom2
 init|=
-name|category
+name|label
 argument_list|(
 literal|"Custom2"
 argument_list|,

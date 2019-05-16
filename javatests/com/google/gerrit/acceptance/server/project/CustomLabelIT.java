@@ -320,7 +320,7 @@ name|testing
 operator|.
 name|TestLabels
 operator|.
-name|category
+name|label
 import|;
 end_import
 
@@ -685,7 +685,7 @@ specifier|final
 name|LabelType
 name|label
 init|=
-name|category
+name|label
 argument_list|(
 literal|"CustomLabel"
 argument_list|,
@@ -718,7 +718,7 @@ specifier|final
 name|LabelType
 name|P
 init|=
-name|category
+name|label
 argument_list|(
 literal|"CustomLabel2"
 argument_list|,

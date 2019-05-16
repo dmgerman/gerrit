@@ -2195,7 +2195,7 @@ literal|"My-Label"
 argument_list|,
 name|TestLabels
 operator|.
-name|category
+name|label
 argument_list|(
 literal|"My-Label"
 argument_list|,

@@ -314,7 +314,7 @@ name|testing
 operator|.
 name|TestLabels
 operator|.
-name|category
+name|label
 import|;
 end_import
 
@@ -810,7 +810,7 @@ comment|// This way changes to the "Code Review" label don't affect other tests.
 name|LabelType
 name|codeReview
 init|=
-name|category
+name|label
 argument_list|(
 literal|"Code-Review"
 argument_list|,
@@ -880,7 +880,7 @@ expr_stmt|;
 name|LabelType
 name|verified
 init|=
-name|category
+name|label
 argument_list|(
 literal|"Verified"
 argument_list|,

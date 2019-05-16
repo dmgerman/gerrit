@@ -504,7 +504,7 @@ name|testing
 operator|.
 name|TestLabels
 operator|.
-name|category
+name|label
 import|;
 end_import
 
@@ -8855,7 +8855,7 @@ block|{
 name|LabelType
 name|Q
 init|=
-name|category
+name|label
 argument_list|(
 literal|"Custom-Label"
 argument_list|,

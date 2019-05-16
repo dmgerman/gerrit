@@ -140,7 +140,7 @@ name|codeReview
 parameter_list|()
 block|{
 return|return
-name|category
+name|label
 argument_list|(
 literal|"Code-Review"
 argument_list|,
@@ -191,7 +191,7 @@ name|verified
 parameter_list|()
 block|{
 return|return
-name|category
+name|label
 argument_list|(
 literal|"Verified"
 argument_list|,
@@ -229,7 +229,7 @@ block|{
 name|LabelType
 name|label
 init|=
-name|category
+name|label
 argument_list|(
 literal|"Patch-Set-Lock"
 argument_list|,
@@ -287,11 +287,11 @@ name|text
 argument_list|)
 return|;
 block|}
-DECL|method|category (String name, LabelValue... values)
+DECL|method|label (String name, LabelValue... values)
 specifier|public
 specifier|static
 name|LabelType
-name|category
+name|label
 parameter_list|(
 name|String
 name|name
