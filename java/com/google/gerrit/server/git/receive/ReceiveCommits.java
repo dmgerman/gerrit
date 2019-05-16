@@ -522,20 +522,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|Function
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Joiner
 import|;
 end_import
@@ -3232,24 +3218,19 @@ comment|// Ignore write failures (matching JGit behavior).
 block|}
 block|}
 block|}
-DECL|field|INSERT_EXCEPTION
+DECL|method|asRestApiException (Exception e)
 specifier|private
 specifier|static
-specifier|final
-name|Function
-argument_list|<
-name|Exception
-argument_list|,
 name|RestApiException
-argument_list|>
-name|INSERT_EXCEPTION
-init|=
-name|input
-lambda|->
+name|asRestApiException
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
 block|{
 if|if
 condition|(
-name|input
+name|e
 operator|instanceof
 name|RestApiException
 condition|)
@@ -3258,20 +3239,20 @@ return|return
 operator|(
 name|RestApiException
 operator|)
-name|input
+name|e
 return|;
 block|}
 elseif|else
 if|if
 condition|(
 operator|(
-name|input
+name|e
 operator|instanceof
 name|ExecutionException
 operator|)
 operator|&&
 operator|(
-name|input
+name|e
 operator|.
 name|getCause
 argument_list|()
@@ -3284,7 +3265,7 @@ return|return
 operator|(
 name|RestApiException
 operator|)
-name|input
+name|e
 operator|.
 name|getCause
 argument_list|()
@@ -3296,11 +3277,10 @@ name|RestApiException
 argument_list|(
 literal|"Error inserting change/patchset"
 argument_list|,
-name|input
+name|e
 argument_list|)
 return|;
 block|}
-decl_stmt|;
 comment|// ReceiveCommits has a lot of fields, sorry. Here and in the constructor they are split up
 comment|// somewhat, and kept sorted lexicographically within sections, except where later assignments
 comment|// depend on previous ones.
@@ -6645,9 +6625,7 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-name|INSERT_EXCEPTION
-operator|.
-name|apply
+name|asRestApiException
 argument_list|(
 name|e
 argument_list|)
@@ -16144,9 +16122,7 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-name|INSERT_EXCEPTION
-operator|.
-name|apply
+name|asRestApiException
 argument_list|(
 name|e
 argument_list|)
