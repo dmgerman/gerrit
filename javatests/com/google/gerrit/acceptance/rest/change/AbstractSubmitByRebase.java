@@ -412,7 +412,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 import|;
 end_import
 
@@ -624,7 +624,7 @@ name|add
 argument_list|(
 name|allowLabel
 argument_list|(
-name|Util
+name|TestLabels
 operator|.
 name|codeReview
 argument_list|()

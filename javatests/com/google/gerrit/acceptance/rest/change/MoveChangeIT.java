@@ -492,7 +492,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 import|;
 end_import
 
@@ -1897,7 +1897,7 @@ expr_stmt|;
 name|LabelType
 name|patchSetLock
 init|=
-name|Util
+name|TestLabels
 operator|.
 name|patchSetLock
 argument_list|()

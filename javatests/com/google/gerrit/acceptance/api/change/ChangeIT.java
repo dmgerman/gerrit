@@ -762,7 +762,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 operator|.
 name|category
 import|;
@@ -782,7 +782,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 operator|.
 name|value
 import|;
@@ -2434,7 +2434,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 import|;
 end_import
 
@@ -27054,7 +27054,7 @@ decl_stmt|;
 name|LabelType
 name|verified
 init|=
-name|Util
+name|TestLabels
 operator|.
 name|verified
 argument_list|()
@@ -27628,7 +27628,7 @@ expr_stmt|;
 name|LabelType
 name|verified
 init|=
-name|Util
+name|TestLabels
 operator|.
 name|verified
 argument_list|()
@@ -28252,7 +28252,7 @@ name|add
 argument_list|(
 name|allowLabel
 argument_list|(
-name|Util
+name|TestLabels
 operator|.
 name|codeReview
 argument_list|()

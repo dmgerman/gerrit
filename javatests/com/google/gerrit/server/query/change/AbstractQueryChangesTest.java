@@ -220,7 +220,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 operator|.
 name|category
 import|;
@@ -240,7 +240,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 operator|.
 name|value
 import|;

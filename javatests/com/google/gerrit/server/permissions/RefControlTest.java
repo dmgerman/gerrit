@@ -734,7 +734,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 import|;
 end_import
 
@@ -1983,7 +1983,7 @@ expr_stmt|;
 name|LabelType
 name|cr
 init|=
-name|Util
+name|TestLabels
 operator|.
 name|codeReview
 argument_list|()

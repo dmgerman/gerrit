@@ -926,7 +926,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 import|;
 end_import
 
@@ -1741,7 +1741,7 @@ block|{
 name|LabelType
 name|verified
 init|=
-name|Util
+name|TestLabels
 operator|.
 name|verified
 argument_list|()
@@ -4808,7 +4808,7 @@ name|add
 argument_list|(
 name|allowLabel
 argument_list|(
-name|Util
+name|TestLabels
 operator|.
 name|codeReview
 argument_list|()
@@ -4912,7 +4912,7 @@ name|add
 argument_list|(
 name|allowLabel
 argument_list|(
-name|Util
+name|TestLabels
 operator|.
 name|codeReview
 argument_list|()

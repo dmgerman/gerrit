@@ -127,10 +127,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|Util
+DECL|class|TestLabels
 specifier|public
 class|class
-name|Util
+name|TestLabels
 block|{
 DECL|method|codeReview ()
 specifier|public
@@ -316,9 +316,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|Util ()
+DECL|method|TestLabels ()
 specifier|private
-name|Util
+name|TestLabels
 parameter_list|()
 block|{}
 block|}

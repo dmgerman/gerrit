@@ -502,7 +502,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 operator|.
 name|category
 import|;
@@ -522,7 +522,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 operator|.
 name|value
 import|;
@@ -1438,7 +1438,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 import|;
 end_import
 
@@ -1959,7 +1959,7 @@ init|)
 block|{
 name|patchSetLock
 operator|=
-name|Util
+name|TestLabels
 operator|.
 name|patchSetLock
 argument_list|()
@@ -13083,7 +13083,7 @@ block|{
 name|LabelType
 name|codeReview
 init|=
-name|Util
+name|TestLabels
 operator|.
 name|codeReview
 argument_list|()
