@@ -19103,15 +19103,10 @@ name|messages
 operator|.
 name|addAll
 argument_list|(
-name|Lists
-operator|.
-name|newArrayList
-argument_list|(
 name|e
 operator|.
 name|getMessages
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|reject
