@@ -82,11 +82,11 @@ specifier|public
 class|class
 name|ElasticQueryAdapter
 block|{
-DECL|field|POST_V5_TYPE
+DECL|field|V6_TYPE
 specifier|static
 specifier|final
 name|String
-name|POST_V5_TYPE
+name|V6_TYPE
 init|=
 literal|"_doc"
 decl_stmt|;
@@ -96,17 +96,23 @@ specifier|final
 name|boolean
 name|ignoreUnmapped
 decl_stmt|;
-DECL|field|usePostV5Type
+DECL|field|useV5Type
 specifier|private
 specifier|final
 name|boolean
-name|usePostV5Type
+name|useV5Type
 decl_stmt|;
-DECL|field|omitTypeFromSearch
+DECL|field|useV6Type
 specifier|private
 specifier|final
 name|boolean
-name|omitTypeFromSearch
+name|useV6Type
+decl_stmt|;
+DECL|field|omitType
+specifier|private
+specifier|final
+name|boolean
+name|omitType
 decl_stmt|;
 DECL|field|searchFilteringName
 specifier|private
@@ -165,8 +171,9 @@ literal|false
 expr_stmt|;
 name|this
 operator|.
-name|usePostV5Type
+name|useV5Type
 operator|=
+operator|!
 name|version
 operator|.
 name|isV6OrLater
@@ -174,7 +181,16 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|omitTypeFromSearch
+name|useV6Type
+operator|=
+name|version
+operator|.
+name|isV6
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|omitType
 operator|=
 name|version
 operator|.
@@ -230,7 +246,7 @@ name|includeTypeNameParam
 operator|=
 name|version
 operator|.
-name|isV7OrLater
+name|isV6
 argument_list|()
 condition|?
 literal|"?include_type_name=true"
@@ -276,8 +292,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|usePostV5Type
+name|useV5Type
 condition|)
 block|{
 name|properties
@@ -337,22 +352,52 @@ return|return
 name|indexProperty
 return|;
 block|}
-DECL|method|usePostV5Type ()
+DECL|method|deleteToReplace ()
 name|boolean
-name|usePostV5Type
+name|deleteToReplace
 parameter_list|()
 block|{
 return|return
-name|usePostV5Type
+name|useV5Type
 return|;
 block|}
-DECL|method|omitTypeFromSearch ()
+DECL|method|useV5Type ()
 name|boolean
-name|omitTypeFromSearch
+name|useV5Type
 parameter_list|()
 block|{
 return|return
-name|omitTypeFromSearch
+name|useV5Type
+return|;
+block|}
+DECL|method|useV6Type ()
+name|boolean
+name|useV6Type
+parameter_list|()
+block|{
+return|return
+name|useV6Type
+return|;
+block|}
+DECL|method|omitType ()
+name|boolean
+name|omitType
+parameter_list|()
+block|{
+return|return
+name|omitType
+return|;
+block|}
+DECL|method|getType ()
+name|String
+name|getType
+parameter_list|()
+block|{
+return|return
+name|getType
+argument_list|(
+literal|""
+argument_list|)
 return|;
 block|}
 DECL|method|getType (String type)
@@ -363,13 +408,23 @@ name|String
 name|type
 parameter_list|)
 block|{
+if|if
+condition|(
+name|useV6Type
+argument_list|()
+condition|)
+block|{
 return|return
-name|usePostV5Type
+name|V6_TYPE
+return|;
+block|}
+return|return
+name|useV5Type
 argument_list|()
 condition|?
-name|POST_V5_TYPE
-else|:
 name|type
+else|:
+literal|""
 return|;
 block|}
 DECL|method|getVersionDiscoveryUrl (String name)
