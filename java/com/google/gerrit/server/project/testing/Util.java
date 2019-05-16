@@ -135,7 +135,6 @@ block|{
 DECL|method|codeReview ()
 specifier|public
 specifier|static
-specifier|final
 name|LabelType
 name|codeReview
 parameter_list|()
@@ -187,7 +186,6 @@ block|}
 DECL|method|verified ()
 specifier|public
 specifier|static
-specifier|final
 name|LabelType
 name|verified
 parameter_list|()
@@ -224,7 +222,6 @@ block|}
 DECL|method|patchSetLock ()
 specifier|public
 specifier|static
-specifier|final
 name|LabelType
 name|patchSetLock
 parameter_list|()
