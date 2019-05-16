@@ -485,7 +485,6 @@ argument_list|(
 name|cfg
 argument_list|)
 expr_stmt|;
-comment|// TODO(dborowitz): Use jimfs.
 name|bind
 argument_list|(
 name|Path
