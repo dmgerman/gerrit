@@ -927,6 +927,11 @@ name|AutoValue_TestProjectUpdate_TestLabelPermission
 operator|.
 name|Builder
 argument_list|()
+operator|.
+name|impersonation
+argument_list|(
+literal|false
+argument_list|)
 return|;
 block|}
 DECL|method|name ()
@@ -967,6 +972,12 @@ DECL|method|max ()
 specifier|abstract
 name|int
 name|max
+parameter_list|()
+function_decl|;
+DECL|method|impersonation ()
+specifier|abstract
+name|boolean
+name|impersonation
 parameter_list|()
 function_decl|;
 comment|/** Builder for {@link TestLabelPermission}. */
@@ -1068,6 +1079,17 @@ name|max
 argument_list|)
 return|;
 block|}
+comment|/** Sets whether this permission should be for impersonating another user's votes. */
+DECL|method|impersonation (boolean impersonation)
+specifier|public
+specifier|abstract
+name|Builder
+name|impersonation
+parameter_list|(
+name|boolean
+name|impersonation
+parameter_list|)
+function_decl|;
 DECL|method|autoBuild ()
 specifier|abstract
 name|TestLabelPermission
