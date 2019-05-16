@@ -986,7 +986,7 @@ annotation|@
 name|Override
 DECL|method|apply (ProjectResource rsrc)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|BranchInfo
 argument_list|>

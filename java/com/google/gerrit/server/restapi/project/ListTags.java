@@ -898,7 +898,7 @@ annotation|@
 name|Override
 DECL|method|apply (ProjectResource resource)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|TagInfo
 argument_list|>
