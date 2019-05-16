@@ -609,15 +609,6 @@ name|CACHE
 init|=
 literal|"static_content"
 decl_stmt|;
-DECL|field|GERRIT_UI_COOKIE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|GERRIT_UI_COOKIE
-init|=
-literal|"GERRIT_UI"
-decl_stmt|;
 comment|/**    * Paths at which we should serve the main PolyGerrit application {@code index.html}.    *    *<p>Supports {@code "/*"} as a trailing wildcard.    */
 DECL|field|POLYGERRIT_INDEX_PATHS
 specifier|public
