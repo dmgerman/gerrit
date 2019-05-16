@@ -1365,10 +1365,8 @@ argument_list|,
 literal|".perl"
 argument_list|)
 decl_stmt|;
-comment|// To make our configuration file only readable or writable by us;
-comment|// this reduces the chances of someone tampering with the file.
-comment|//
-comment|// TODO(dborowitz): Is there a portable way to do this with NIO?
+comment|// To make our configuration file only readable or writable by us; this reduces the chances of
+comment|// someone tampering with the file.
 name|File
 name|myconfFile
 init|=

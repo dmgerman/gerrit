@@ -294,7 +294,6 @@ name|Path
 name|path
 parameter_list|)
 block|{
-comment|// TODO(dborowitz): Is there a portable way to do this with NIO?
 name|chmod
 argument_list|(
 name|mode
