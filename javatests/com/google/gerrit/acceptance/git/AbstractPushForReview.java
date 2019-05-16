@@ -1770,7 +1770,12 @@ specifier|protected
 enum|enum
 name|Protocol
 block|{
-comment|// TODO(dborowitz): TEST.
+comment|// Only test protocols which are actually served by the Gerrit server, since each separate test
+comment|// class is large and slow.
+comment|//
+comment|// This list excludes the test InProcessProtocol, which is used by large numbers of other
+comment|// acceptance tests. Small tests of InProcessProtocol are still possible, without incurring a
+comment|// new large slow test.
 DECL|enumConstant|SSH
 name|SSH
 block|,
