@@ -65,30 +65,18 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
 operator|.
 name|common
 operator|.
-name|base
+name|collect
 operator|.
-name|Function
-import|;
-end_import
-
-begin_import
-import|import
-name|com
+name|ImmutableList
 operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Predicate
+name|toImmutableList
 import|;
 end_import
 
@@ -116,7 +104,21 @@ name|common
 operator|.
 name|collect
 operator|.
-name|FluentIterable
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Streams
 import|;
 end_import
 
@@ -388,7 +390,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|function
+operator|.
+name|Function
 import|;
 end_import
 
@@ -398,7 +402,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|function
+operator|.
+name|Predicate
 import|;
 end_import
 
@@ -674,7 +680,7 @@ block|}
 comment|/**    * @param project Project name.    * @param commit SHA1 of commit.    * @return Links for patch sets.    */
 DECL|method|getPatchSetLinks (Project.NameKey project, String commit)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -713,7 +719,7 @@ block|}
 comment|/**    * @param project Project name.    * @param revision SHA1 of the parent revision.    * @return Links for patch sets.    */
 DECL|method|getParentLinks (Project.NameKey project, String revision)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -752,7 +758,7 @@ block|}
 comment|/**    * @param project Project name.    * @param revision SHA1 of revision.    * @param file File name.    * @return Links for files.    */
 DECL|method|getFileLinks (String project, String revision, String file)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -776,9 +782,9 @@ argument_list|(
 name|file
 argument_list|)
 condition|?
-name|Collections
+name|ImmutableList
 operator|.
-name|emptyList
+name|of
 argument_list|()
 else|:
 name|filterLinks
@@ -801,9 +807,9 @@ argument_list|)
 return|;
 block|}
 comment|/**    * @param project Project name.    * @param revision SHA1 of revision.    * @param file File name.    * @return Links for file history    */
-DECL|method|getFileHistoryLinks (String project, String revision, String file)
+DECL|method|getFileHistoryLinks ( String project, String revision, String file)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -830,21 +836,21 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|Collections
+name|ImmutableList
 operator|.
-name|emptyList
+name|of
 argument_list|()
 return|;
 block|}
 return|return
-name|FluentIterable
+name|Streams
 operator|.
-name|from
+name|stream
 argument_list|(
 name|fileHistoryLinks
 argument_list|)
 operator|.
-name|transform
+name|map
 argument_list|(
 name|webLink
 lambda|->
@@ -865,48 +871,43 @@ argument_list|(
 name|INVALID_WEBLINK
 argument_list|)
 operator|.
-name|toList
+name|collect
+argument_list|(
+name|toImmutableList
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**    * @param project Project name.    * @param patchSetIdA Patch set ID of side A,<code>null</code> if no base patch set was selected.    * @param revisionA SHA1 of revision of side A.    * @param fileA File name of side A.    * @param patchSetIdB Patch set ID of side B.    * @param revisionB SHA1 of revision of side B.    * @param fileB File name of side B.    * @return Links for file diffs.    */
-DECL|method|getDiffLinks ( final String project, final int changeId, final Integer patchSetIdA, final String revisionA, final String fileA, final int patchSetIdB, final String revisionB, final String fileB)
+DECL|method|getDiffLinks ( String project, int changeId, Integer patchSetIdA, String revisionA, String fileA, int patchSetIdB, String revisionB, String fileB)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|DiffWebLinkInfo
 argument_list|>
 name|getDiffLinks
 parameter_list|(
-specifier|final
 name|String
 name|project
 parameter_list|,
-specifier|final
 name|int
 name|changeId
 parameter_list|,
-specifier|final
 name|Integer
 name|patchSetIdA
 parameter_list|,
-specifier|final
 name|String
 name|revisionA
 parameter_list|,
-specifier|final
 name|String
 name|fileA
 parameter_list|,
-specifier|final
 name|int
 name|patchSetIdB
 parameter_list|,
-specifier|final
 name|String
 name|revisionB
 parameter_list|,
-specifier|final
 name|String
 name|fileB
 parameter_list|)
@@ -929,21 +930,21 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|Collections
+name|ImmutableList
 operator|.
-name|emptyList
+name|of
 argument_list|()
 return|;
 block|}
 return|return
-name|FluentIterable
+name|Streams
 operator|.
-name|from
+name|stream
 argument_list|(
 name|diffLinks
 argument_list|)
 operator|.
-name|transform
+name|map
 argument_list|(
 name|webLink
 lambda|->
@@ -974,14 +975,17 @@ argument_list|(
 name|INVALID_WEBLINK
 argument_list|)
 operator|.
-name|toList
+name|collect
+argument_list|(
+name|toImmutableList
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**    * @param project Project name.    * @return Links for projects.    */
 DECL|method|getProjectLinks (String project)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -1010,7 +1014,7 @@ block|}
 comment|/**    * @param project Project name    * @param branch Branch name    * @return Links for branches.    */
 DECL|method|getBranchLinks (String project, String branch)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -1044,7 +1048,7 @@ block|}
 comment|/**    * @param project Project name    * @param tag Tag name    * @return Links for tags.    */
 DECL|method|getTagLinks (String project, String tag)
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -1082,7 +1086,7 @@ name|T
 extends|extends
 name|WebLink
 parameter_list|>
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -1104,14 +1108,14 @@ name|transformer
 parameter_list|)
 block|{
 return|return
-name|FluentIterable
+name|Streams
 operator|.
-name|from
+name|stream
 argument_list|(
 name|links
 argument_list|)
 operator|.
-name|transform
+name|map
 argument_list|(
 name|transformer
 argument_list|)
@@ -1121,8 +1125,11 @@ argument_list|(
 name|INVALID_WEBLINK
 argument_list|)
 operator|.
-name|toList
+name|collect
+argument_list|(
+name|toImmutableList
 argument_list|()
+argument_list|)
 return|;
 block|}
 block|}

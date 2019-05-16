@@ -306,6 +306,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|ImmutableSet
 import|;
 end_import
@@ -937,16 +951,6 @@ operator|.
 name|util
 operator|.
 name|LinkedHashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -1623,7 +1627,7 @@ condition|(
 name|addLinks
 condition|)
 block|{
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -1703,7 +1707,7 @@ condition|(
 name|addLinks
 condition|)
 block|{
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>

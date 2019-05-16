@@ -1341,7 +1341,7 @@ else|:
 literal|null
 expr_stmt|;
 block|}
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>

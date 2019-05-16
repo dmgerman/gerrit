@@ -3163,7 +3163,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>

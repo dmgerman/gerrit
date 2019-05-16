@@ -1741,7 +1741,7 @@ operator|.
 name|refName
 argument_list|()
 decl_stmt|;
-name|List
+name|ImmutableList
 argument_list|<
 name|DiffWebLinkInfo
 argument_list|>
@@ -2297,7 +2297,7 @@ name|String
 name|file
 parameter_list|)
 block|{
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>

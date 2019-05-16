@@ -1930,7 +1930,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>

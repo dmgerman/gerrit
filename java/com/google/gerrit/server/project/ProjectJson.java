@@ -100,6 +100,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -267,16 +281,6 @@ operator|.
 name|util
 operator|.
 name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -517,7 +521,7 @@ operator|.
 name|name
 argument_list|)
 expr_stmt|;
-name|List
+name|ImmutableList
 argument_list|<
 name|WebLinkInfo
 argument_list|>
