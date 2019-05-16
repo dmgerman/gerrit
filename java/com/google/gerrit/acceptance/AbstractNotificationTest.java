@@ -723,15 +723,34 @@ block|{
 return|return
 name|assertAbout
 argument_list|(
-name|FakeEmailSenderSubject
-operator|::
-operator|new
+name|fakeEmailSenders
+argument_list|()
 argument_list|)
 operator|.
 name|that
 argument_list|(
 name|sender
 argument_list|)
+return|;
+block|}
+DECL|method|fakeEmailSenders ()
+specifier|protected
+specifier|static
+name|Subject
+operator|.
+name|Factory
+argument_list|<
+name|FakeEmailSenderSubject
+argument_list|,
+name|FakeEmailSender
+argument_list|>
+name|fakeEmailSenders
+parameter_list|()
+block|{
+return|return
+name|FakeEmailSenderSubject
+operator|::
+operator|new
 return|;
 block|}
 DECL|method|setEmailStrategy (TestAccount account, EmailStrategy strategy)
@@ -1178,20 +1197,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Return a named subject that displays a human-readable table of
-comment|// recipients.
 return|return
-name|named
-argument_list|(
-name|recipientMapToString
-argument_list|(
-name|recipients
-argument_list|,
-name|users
-operator|::
-name|emailToName
-argument_list|)
-argument_list|)
+name|this
 return|;
 block|}
 DECL|method|recipientMapToString ( Map<RecipientType, List<String>> recipients, Function<String, String> emailToName)
@@ -1622,9 +1629,9 @@ name|fact
 argument_list|(
 name|expected
 condition|?
-literal|"should notify"
+literal|"expected to notify"
 else|:
-literal|"shouldn't notify"
+literal|"expected not to notify"
 argument_list|,
 name|type
 operator|+
@@ -1635,6 +1642,20 @@ operator|.
 name|emailToName
 argument_list|(
 name|email
+argument_list|)
+argument_list|)
+argument_list|,
+name|fact
+argument_list|(
+literal|"but notified"
+argument_list|,
+name|recipientMapToString
+argument_list|(
+name|recipients
+argument_list|,
+name|users
+operator|::
+name|emailToName
 argument_list|)
 argument_list|)
 argument_list|)

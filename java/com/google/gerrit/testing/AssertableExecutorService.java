@@ -76,7 +76,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assertThat
+name|assertWithMessage
 import|;
 end_import
 
@@ -315,17 +315,17 @@ name|int
 name|expectedNumInteractions
 parameter_list|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"expectedRunnablesSubmittedOnExecutor"
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|numInteractions
 operator|.
 name|get
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"expectedRunnablesSubmittedOnExecutor"
 argument_list|)
 operator|.
 name|isEqualTo
