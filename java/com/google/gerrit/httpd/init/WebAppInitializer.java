@@ -1946,9 +1946,9 @@ expr_stmt|;
 block|}
 try|try
 block|{
-name|dbInjector
+name|cfgInjector
 operator|=
-name|createDbInjector
+name|createCfgInjector
 argument_list|()
 expr_stmt|;
 block|}
@@ -2097,9 +2097,9 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-name|cfgInjector
+name|dbInjector
 operator|=
-name|createCfgInjector
+name|createDbInjector
 argument_list|()
 expr_stmt|;
 name|initIndexType
@@ -2303,10 +2303,10 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-DECL|method|createDbInjector ()
+DECL|method|createCfgInjector ()
 specifier|private
 name|Injector
-name|createDbInjector
+name|createCfgInjector
 parameter_list|()
 block|{
 specifier|final
@@ -2422,10 +2422,10 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|createCfgInjector ()
+DECL|method|createDbInjector ()
 specifier|private
 name|Injector
-name|createCfgInjector
+name|createDbInjector
 parameter_list|()
 block|{
 specifier|final
@@ -2469,7 +2469,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|dbInjector
+name|cfgInjector
 operator|.
 name|createChildInjector
 argument_list|(
@@ -2973,7 +2973,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|cfgInjector
+name|dbInjector
 operator|.
 name|createChildInjector
 argument_list|(
