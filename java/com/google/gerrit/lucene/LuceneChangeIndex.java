@@ -2274,16 +2274,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getClosedChangesIndex ()
-specifier|public
-name|ChangeSubIndex
-name|getClosedChangesIndex
-parameter_list|()
-block|{
-return|return
-name|closedIndex
-return|;
-block|}
 DECL|class|QuerySource
 specifier|private
 class|class
