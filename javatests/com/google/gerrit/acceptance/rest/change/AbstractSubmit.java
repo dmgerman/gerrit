@@ -295,6 +295,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
+operator|.
+name|EMPTY_TREE_ID
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -7727,7 +7743,6 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
-comment|// TODO(dborowitz): Use EMPTY_TREE_ID after upgrading to https://git.eclipse.org/r/127473
 name|assertThat
 argument_list|(
 name|change
@@ -7741,12 +7756,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
-literal|"4b825dc642cb6eb9a060e54bf8d69288fbee4904"
-argument_list|)
+name|EMPTY_TREE_ID
 argument_list|)
 expr_stmt|;
 name|Map

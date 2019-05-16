@@ -106,6 +106,22 @@ name|lib
 operator|.
 name|Constants
 operator|.
+name|EMPTY_TREE_ID
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
+operator|.
 name|OBJ_BLOB
 import|;
 end_import
@@ -604,20 +620,6 @@ name|PublicKeyStore
 implements|implements
 name|AutoCloseable
 block|{
-DECL|field|EMPTY_TREE
-specifier|private
-specifier|static
-specifier|final
-name|ObjectId
-name|EMPTY_TREE
-init|=
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
-literal|"4b825dc642cb6eb9a060e54bf8d69288fbee4904"
-argument_list|)
-decl_stmt|;
 comment|/** Ref where GPG public keys are stored. */
 DECL|field|REFS_GPG_KEYS
 specifier|public
@@ -1793,7 +1795,7 @@ operator|.
 name|getTree
 argument_list|()
 else|:
-name|EMPTY_TREE
+name|EMPTY_TREE_ID
 argument_list|)
 condition|)
 block|{
