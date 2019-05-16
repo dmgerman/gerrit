@@ -927,8 +927,6 @@ name|SocketAddress
 name|getSocketAddress
 parameter_list|()
 block|{
-comment|// TODO(dborowitz): Could potentially fake this with thread ID or
-comment|// something.
 throw|throw
 operator|new
 name|OutOfScopeException
