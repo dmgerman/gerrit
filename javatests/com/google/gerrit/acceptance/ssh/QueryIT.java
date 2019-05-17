@@ -83,6 +83,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertWithMessage
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -2723,7 +2739,14 @@ name|values
 argument_list|()
 control|)
 block|{
-name|assertThat
+name|assertWithMessage
+argument_list|(
+literal|"Option: "
+operator|+
+name|option
+argument_list|)
+operator|.
+name|that
 argument_list|(
 name|gApi
 operator|.
@@ -2745,13 +2768,6 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
-argument_list|)
-operator|.
-name|named
-argument_list|(
-literal|"Option: "
-operator|+
-name|option
 argument_list|)
 operator|.
 name|hasSize
