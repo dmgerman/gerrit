@@ -390,6 +390,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|truth
+operator|.
+name|ConfigSubject
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -4560,8 +4576,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getString
+name|stringValue
 argument_list|(
 name|AccountProperties
 operator|.
@@ -4573,7 +4590,6 @@ name|AccountProperties
 operator|.
 name|KEY_FULL_NAME
 argument_list|)
-argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
@@ -4583,8 +4599,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getString
+name|stringValue
 argument_list|(
 name|AccountProperties
 operator|.
@@ -4595,7 +4612,6 @@ argument_list|,
 name|AccountProperties
 operator|.
 name|KEY_STATUS
-argument_list|)
 argument_list|)
 operator|.
 name|isEqualTo
@@ -11952,8 +11968,6 @@ argument_list|,
 name|allUsers
 argument_list|,
 name|userRef
-argument_list|,
-literal|false
 argument_list|,
 name|adminGroupUuid
 argument_list|()

@@ -11416,8 +11416,6 @@ name|REFS_GROUPS
 operator|+
 literal|"*"
 argument_list|,
-literal|false
-argument_list|,
 name|REGISTERED_USERS
 argument_list|,
 literal|false

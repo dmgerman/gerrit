@@ -958,8 +958,6 @@ name|project
 argument_list|,
 literal|"refs/heads/*"
 argument_list|,
-literal|false
-argument_list|,
 name|groupUUID
 argument_list|,
 name|exclusive

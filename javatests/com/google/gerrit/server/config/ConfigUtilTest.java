@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|truth
+operator|.
+name|ConfigSubject
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -570,8 +586,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getString
+name|stringValue
 argument_list|(
 name|SECT
 argument_list|,
@@ -579,7 +596,6 @@ name|SUB
 argument_list|,
 literal|"CONSTANT"
 argument_list|)
-argument_list|)
 operator|.
 name|isNull
 argument_list|()
@@ -587,8 +603,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getString
+name|stringValue
 argument_list|(
 name|SECT
 argument_list|,
@@ -596,7 +613,6 @@ name|SUB
 argument_list|,
 literal|"missing"
 argument_list|)
-argument_list|)
 operator|.
 name|isNull
 argument_list|()
@@ -604,8 +620,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getBoolean
+name|booleanValue
 argument_list|(
 name|SECT
 argument_list|,
@@ -614,7 +631,6 @@ argument_list|,
 literal|"b"
 argument_list|,
 literal|false
-argument_list|)
 argument_list|)
 operator|.
 name|isEqualTo
@@ -627,8 +643,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getBoolean
+name|booleanValue
 argument_list|(
 name|SECT
 argument_list|,
@@ -637,7 +654,6 @@ argument_list|,
 literal|"bb"
 argument_list|,
 literal|false
-argument_list|)
 argument_list|)
 operator|.
 name|isEqualTo
@@ -650,8 +666,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getInt
+name|intValue
 argument_list|(
 name|SECT
 argument_list|,
@@ -660,7 +677,6 @@ argument_list|,
 literal|"i"
 argument_list|,
 literal|0
-argument_list|)
 argument_list|)
 operator|.
 name|isEqualTo
@@ -671,8 +687,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getInt
+name|intValue
 argument_list|(
 name|SECT
 argument_list|,
@@ -681,7 +698,6 @@ argument_list|,
 literal|"ii"
 argument_list|,
 literal|0
-argument_list|)
 argument_list|)
 operator|.
 name|isEqualTo
@@ -694,8 +710,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getLong
+name|longValue
 argument_list|(
 name|SECT
 argument_list|,
@@ -704,7 +721,6 @@ argument_list|,
 literal|"l"
 argument_list|,
 literal|0L
-argument_list|)
 argument_list|)
 operator|.
 name|isEqualTo
@@ -715,8 +731,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getLong
+name|longValue
 argument_list|(
 name|SECT
 argument_list|,
@@ -725,7 +742,6 @@ argument_list|,
 literal|"ll"
 argument_list|,
 literal|0L
-argument_list|)
 argument_list|)
 operator|.
 name|isEqualTo
@@ -738,15 +754,15 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getString
+name|stringValue
 argument_list|(
 name|SECT
 argument_list|,
 name|SUB
 argument_list|,
 literal|"s"
-argument_list|)
 argument_list|)
 operator|.
 name|isEqualTo
@@ -759,15 +775,15 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getString
+name|stringValue
 argument_list|(
 name|SECT
 argument_list|,
 name|SUB
 argument_list|,
 literal|"sd"
-argument_list|)
 argument_list|)
 operator|.
 name|isNull
@@ -776,15 +792,15 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|cfg
+argument_list|)
 operator|.
-name|getString
+name|stringValue
 argument_list|(
 name|SECT
 argument_list|,
 name|SUB
 argument_list|,
 literal|"nd"
-argument_list|)
 argument_list|)
 operator|.
 name|isNull
