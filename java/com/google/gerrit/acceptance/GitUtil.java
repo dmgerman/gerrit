@@ -863,7 +863,9 @@ literal|null
 argument_list|)
 expr_stmt|;
 name|InMemoryRepository
-name|dest
+operator|.
+name|Builder
+name|b
 init|=
 operator|new
 name|InMemoryRepository
@@ -875,14 +877,31 @@ name|setRepositoryDescription
 argument_list|(
 name|desc
 argument_list|)
-comment|// SshTransport depends on a real FS to read ~/.ssh/config, but
-comment|// InMemoryRepository by default uses a null FS.
-comment|// TODO(dborowitz): Remove when we no longer depend on SSH.
+decl_stmt|;
+if|if
+condition|(
+name|uri
+operator|.
+name|startsWith
+argument_list|(
+literal|"ssh://"
+argument_list|)
+condition|)
+block|{
+comment|// SshTransport depends on a real FS to read ~/.ssh/config, but InMemoryRepository by default
+comment|// uses a null FS.
+name|b
 operator|.
 name|setFS
 argument_list|(
 name|fs
 argument_list|)
+expr_stmt|;
+block|}
+name|InMemoryRepository
+name|dest
+init|=
+name|b
 operator|.
 name|build
 argument_list|()
@@ -978,45 +997,6 @@ expr_stmt|;
 block|}
 return|return
 name|testRepo
-return|;
-block|}
-DECL|method|cloneProject ( Project.NameKey project, SshSession sshSession)
-specifier|public
-specifier|static
-name|TestRepository
-argument_list|<
-name|InMemoryRepository
-argument_list|>
-name|cloneProject
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
-name|SshSession
-name|sshSession
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-return|return
-name|cloneProject
-argument_list|(
-name|project
-argument_list|,
-name|sshSession
-operator|.
-name|getUrl
-argument_list|()
-operator|+
-literal|"/"
-operator|+
-name|project
-operator|.
-name|get
-argument_list|()
-argument_list|)
 return|;
 block|}
 DECL|method|createAnnotatedTag (TestRepository<?> testRepo, String name, PersonIdent tagger)

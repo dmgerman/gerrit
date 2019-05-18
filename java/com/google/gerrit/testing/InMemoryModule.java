@@ -1831,8 +1831,8 @@ operator|.
 name|REQUEST
 argument_list|)
 expr_stmt|;
-comment|// TODO(dborowitz): Use Jimfs. The biggest blocker is that JGit does not support Path-based
-comment|// Configs, only FileBasedConfig.
+comment|// It would be nice to use Jimfs for the SitePath, but the biggest blocker is that JGit does not
+comment|// support Path-based Configs, only FileBasedConfig.
 name|bind
 argument_list|(
 name|Path
