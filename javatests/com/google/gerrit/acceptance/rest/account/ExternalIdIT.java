@@ -6824,10 +6824,6 @@ specifier|private
 name|void
 name|allowPushOfExternalIds
 parameter_list|()
-throws|throws
-name|IOException
-throws|,
-name|ConfigInvalidException
 block|{
 name|grant
 argument_list|(
