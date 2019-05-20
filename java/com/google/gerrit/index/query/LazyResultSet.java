@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright 2008 Google Inc.
+comment|// Copyright (C) 2019 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -108,19 +108,21 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|function
+operator|.
+name|Supplier
 import|;
 end_import
 
 begin_comment
-comment|/**  * Result set for queries that run synchronously or for cases where the result is already known and  * we just need to pipe it back through our interfaces.  *  *<p>If your implementation benefits from asynchronous execution (i.e. dispatching a query and  * awaiting results only when {@link ResultSet#toList()} is called, consider using {@link  * LazyResultSet}.  */
+comment|/**  * Result set that allows for asynchronous execution of the actual query. Callers should dispatch  * the query and call the constructor of this class with a supplier that fetches the result and  * blocks on it if necessary.  *  *<p>If the execution is synchronous or the results are known a priori, consider using {@link  * ListResultSet}.  */
 end_comment
 
 begin_class
-DECL|class|ListResultSet
+DECL|class|LazyResultSet
 specifier|public
 class|class
-name|ListResultSet
+name|LazyResultSet
 parameter_list|<
 name|T
 parameter_list|>
@@ -130,37 +132,46 @@ argument_list|<
 name|T
 argument_list|>
 block|{
-DECL|field|results
+DECL|field|resultsCallback
 specifier|private
+specifier|final
+name|Supplier
+argument_list|<
 name|ImmutableList
 argument_list|<
 name|T
 argument_list|>
-name|results
+argument_list|>
+name|resultsCallback
 decl_stmt|;
-DECL|method|ListResultSet (List<T> r)
+DECL|field|resultsReturned
+specifier|private
+name|boolean
+name|resultsReturned
+init|=
+literal|false
+decl_stmt|;
+DECL|method|LazyResultSet (Supplier<ImmutableList<T>> r)
 specifier|public
-name|ListResultSet
+name|LazyResultSet
 parameter_list|(
-name|List
+name|Supplier
+argument_list|<
+name|ImmutableList
 argument_list|<
 name|T
+argument_list|>
 argument_list|>
 name|r
 parameter_list|)
 block|{
-name|results
+name|resultsCallback
 operator|=
-name|ImmutableList
-operator|.
-name|copyOf
-argument_list|(
 name|requireNonNull
 argument_list|(
 name|r
 argument_list|,
 literal|"results can't be null"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -196,9 +207,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|results
-operator|==
-literal|null
+name|resultsReturned
 condition|)
 block|{
 throw|throw
@@ -209,20 +218,15 @@ literal|"Results already obtained"
 argument_list|)
 throw|;
 block|}
-name|ImmutableList
-argument_list|<
-name|T
-argument_list|>
-name|r
-init|=
-name|results
-decl_stmt|;
-name|results
+name|resultsReturned
 operator|=
-literal|null
+literal|true
 expr_stmt|;
 return|return
-name|r
+name|resultsCallback
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -232,12 +236,7 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-block|{
-name|results
-operator|=
-literal|null
-expr_stmt|;
-block|}
+block|{}
 block|}
 end_class
 
