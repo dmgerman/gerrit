@@ -297,6 +297,19 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|isV6 ()
+specifier|public
+name|boolean
+name|isV6
+parameter_list|()
+block|{
+return|return
+name|getMajor
+argument_list|()
+operator|==
+literal|6
+return|;
+block|}
 DECL|method|isV6OrLater ()
 specifier|public
 name|boolean
@@ -333,6 +346,19 @@ name|v
 parameter_list|)
 block|{
 return|return
+name|getMajor
+argument_list|()
+operator|>=
+name|v
+return|;
+block|}
+DECL|method|getMajor ()
+specifier|private
+name|Integer
+name|getMajor
+parameter_list|()
+block|{
+return|return
 name|Integer
 operator|.
 name|valueOf
@@ -347,8 +373,6 @@ index|[
 literal|0
 index|]
 argument_list|)
-operator|>=
-name|v
 return|;
 block|}
 annotation|@
