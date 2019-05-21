@@ -466,6 +466,19 @@ name|int
 name|max
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|min
+operator|!=
+literal|0
+operator|||
+name|max
+operator|!=
+literal|0
+argument_list|,
+literal|"empty range"
+argument_list|)
+expr_stmt|;
 return|return
 name|min
 argument_list|(
@@ -1760,10 +1773,10 @@ argument_list|>
 name|projectUpdater
 parameter_list|)
 function_decl|;
-DECL|method|autoBuild ()
+DECL|method|build ()
 specifier|abstract
 name|TestProjectUpdate
-name|autoBuild
+name|build
 parameter_list|()
 function_decl|;
 comment|/** Executes the update, updating the underlying project. */
@@ -1776,7 +1789,7 @@ block|{
 name|TestProjectUpdate
 name|projectUpdate
 init|=
-name|autoBuild
+name|build
 argument_list|()
 decl_stmt|;
 name|projectUpdate
@@ -1857,6 +1870,8 @@ name|String
 name|name
 parameter_list|)
 block|{
+comment|// "label-Code-Review" is technically a valid label name, and we don't prevent users from
+comment|// using it in production, but specifying it in a test is programmer error.
 name|checkArgument
 argument_list|(
 operator|!
