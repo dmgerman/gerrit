@@ -360,6 +360,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|AllProjectsName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -652,6 +668,12 @@ name|ProjectOperationsImpl
 implements|implements
 name|ProjectOperations
 block|{
+DECL|field|allProjectsName
+specifier|private
+specifier|final
+name|AllProjectsName
+name|allProjectsName
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -688,9 +710,12 @@ name|projectCreator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectOperationsImpl ( GitRepositoryManager repoManager, MetaDataUpdate.Server metaDataUpdateFactory, ProjectCache projectCache, ProjectConfig.Factory projectConfigFactory, ProjectCreator projectCreator)
+DECL|method|ProjectOperationsImpl ( AllProjectsName allProjectsName, GitRepositoryManager repoManager, MetaDataUpdate.Server metaDataUpdateFactory, ProjectCache projectCache, ProjectConfig.Factory projectConfigFactory, ProjectCreator projectCreator)
 name|ProjectOperationsImpl
 parameter_list|(
+name|AllProjectsName
+name|allProjectsName
+parameter_list|,
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
@@ -711,6 +736,12 @@ name|ProjectCreator
 name|projectCreator
 parameter_list|)
 block|{
+name|this
+operator|.
+name|allProjectsName
+operator|=
+name|allProjectsName
+expr_stmt|;
 name|this
 operator|.
 name|repoManager
@@ -1005,6 +1036,10 @@ name|TestProjectUpdate
 operator|.
 name|builder
 argument_list|(
+name|nameKey
+argument_list|,
+name|allProjectsName
+argument_list|,
 name|this
 operator|::
 name|updateProject

@@ -86,6 +86,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|AccessSection
+operator|.
+name|GLOBAL_CAPABILITIES
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -151,22 +169,6 @@ operator|.
 name|testsuite
 operator|.
 name|ThrowingConsumer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|AccessSection
 import|;
 end_import
 
@@ -263,6 +265,38 @@ operator|.
 name|client
 operator|.
 name|AccountGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AllProjectsName
 import|;
 end_import
 
@@ -1230,8 +1264,6 @@ argument_list|)
 operator|.
 name|section
 argument_list|(
-name|AccessSection
-operator|.
 name|GLOBAL_CAPABILITIES
 argument_list|)
 return|;
@@ -1362,8 +1394,6 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|AccessSection
-operator|.
 name|GLOBAL_CAPABILITIES
 argument_list|)
 argument_list|,
@@ -1409,11 +1439,19 @@ parameter_list|()
 function_decl|;
 block|}
 block|}
-DECL|method|builder (ThrowingConsumer<TestProjectUpdate> projectUpdater)
+DECL|method|builder ( Project.NameKey nameKey, AllProjectsName allProjectsName, ThrowingConsumer<TestProjectUpdate> projectUpdater)
 specifier|static
 name|Builder
 name|builder
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|nameKey
+parameter_list|,
+name|AllProjectsName
+name|allProjectsName
+parameter_list|,
 name|ThrowingConsumer
 argument_list|<
 name|TestProjectUpdate
@@ -1427,6 +1465,16 @@ name|AutoValue_TestProjectUpdate
 operator|.
 name|Builder
 argument_list|()
+operator|.
+name|nameKey
+argument_list|(
+name|nameKey
+argument_list|)
+operator|.
+name|allProjectsName
+argument_list|(
+name|allProjectsName
+argument_list|)
 operator|.
 name|projectUpdater
 argument_list|(
@@ -1446,6 +1494,26 @@ specifier|static
 class|class
 name|Builder
 block|{
+DECL|method|nameKey (Project.NameKey project)
+specifier|abstract
+name|Builder
+name|nameKey
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|)
+function_decl|;
+DECL|method|allProjectsName (AllProjectsName allProjects)
+specifier|abstract
+name|Builder
+name|allProjectsName
+parameter_list|(
+name|AllProjectsName
+name|allProjects
+parameter_list|)
+function_decl|;
 DECL|method|addedPermissionsBuilder ()
 specifier|abstract
 name|ImmutableList
@@ -1745,8 +1813,6 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|AccessSection
-operator|.
 name|GLOBAL_CAPABILITIES
 argument_list|)
 argument_list|,
@@ -1781,12 +1847,66 @@ argument_list|>
 name|projectUpdater
 parameter_list|)
 function_decl|;
-DECL|method|build ()
+DECL|method|autoBuild ()
 specifier|abstract
+name|TestProjectUpdate
+name|autoBuild
+parameter_list|()
+function_decl|;
+DECL|method|build ()
 name|TestProjectUpdate
 name|build
 parameter_list|()
-function_decl|;
+block|{
+name|TestProjectUpdate
+name|projectUpdate
+init|=
+name|autoBuild
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|projectUpdate
+operator|.
+name|hasCapabilityUpdates
+argument_list|()
+condition|)
+block|{
+name|checkArgument
+argument_list|(
+name|projectUpdate
+operator|.
+name|nameKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|projectUpdate
+operator|.
+name|allProjectsName
+argument_list|()
+argument_list|)
+argument_list|,
+literal|"cannot update global capabilities on %s, only %s: %s"
+argument_list|,
+name|projectUpdate
+operator|.
+name|nameKey
+argument_list|()
+argument_list|,
+name|projectUpdate
+operator|.
+name|allProjectsName
+argument_list|()
+argument_list|,
+name|projectUpdate
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|projectUpdate
+return|;
+block|}
 comment|/** Executes the update, updating the underlying project. */
 DECL|method|update ()
 specifier|public
@@ -1812,6 +1932,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|nameKey ()
+specifier|abstract
+name|Project
+operator|.
+name|NameKey
+name|nameKey
+parameter_list|()
+function_decl|;
+DECL|method|allProjectsName ()
+specifier|abstract
+name|AllProjectsName
+name|allProjectsName
+parameter_list|()
+function_decl|;
 DECL|method|addedPermissions ()
 specifier|abstract
 name|ImmutableList
@@ -1868,6 +2002,41 @@ argument_list|>
 name|projectUpdater
 parameter_list|()
 function_decl|;
+DECL|method|hasCapabilityUpdates ()
+name|boolean
+name|hasCapabilityUpdates
+parameter_list|()
+block|{
+return|return
+operator|!
+name|addedCapabilities
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
+name|removedPermissions
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|anyMatch
+argument_list|(
+name|k
+lambda|->
+name|k
+operator|.
+name|section
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|GLOBAL_CAPABILITIES
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|checkLabelName (String name)
 specifier|private
 specifier|static
