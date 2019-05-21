@@ -846,22 +846,6 @@ name|get
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|FS
-name|fs
-init|=
-name|FS
-operator|.
-name|detect
-argument_list|()
-decl_stmt|;
-comment|// Avoid leaking user state into our tests.
-name|fs
-operator|.
-name|setUserHome
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 name|InMemoryRepository
 operator|.
 name|Builder
@@ -890,11 +874,20 @@ condition|)
 block|{
 comment|// SshTransport depends on a real FS to read ~/.ssh/config, but InMemoryRepository by default
 comment|// uses a null FS.
+comment|// Avoid leaking user state into our tests.
 name|b
 operator|.
 name|setFS
 argument_list|(
-name|fs
+name|FS
+operator|.
+name|detect
+argument_list|()
+operator|.
+name|setUserHome
+argument_list|(
+literal|null
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
