@@ -172,7 +172,7 @@ name|common
 operator|.
 name|truth
 operator|.
-name|ListMultimapSubject
+name|LongSubject
 import|;
 end_import
 
@@ -186,7 +186,7 @@ name|common
 operator|.
 name|truth
 operator|.
-name|LongSubject
+name|MultimapSubject
 import|;
 end_import
 
@@ -386,7 +386,7 @@ return|;
 block|}
 DECL|method|sectionValues (String section)
 specifier|public
-name|ListMultimapSubject
+name|MultimapSubject
 name|sectionValues
 parameter_list|(
 name|String
@@ -409,7 +409,7 @@ return|;
 block|}
 DECL|method|subsectionValues (String section, String subsection)
 specifier|public
-name|ListMultimapSubject
+name|MultimapSubject
 name|subsectionValues
 parameter_list|(
 name|String
@@ -440,7 +440,7 @@ return|;
 block|}
 DECL|method|sectionValuesImpl (String section, @Nullable String subsection)
 specifier|private
-name|ListMultimapSubject
+name|MultimapSubject
 name|sectionValuesImpl
 parameter_list|(
 name|String
