@@ -90,13 +90,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gerrit
 operator|.
-name|truth
+name|testing
 operator|.
-name|Truth
+name|GerritJUnit
 operator|.
-name|assert_
+name|assertThrows
 import|;
 end_import
 
@@ -111,18 +111,6 @@ operator|.
 name|StandardCharsets
 operator|.
 name|UTF_8
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|protobuf
-operator|.
-name|TextFormat
 import|;
 end_import
 
@@ -387,8 +375,14 @@ index|[]
 name|in
 parameter_list|)
 block|{
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|RuntimeException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|BooleanCacheSerializer
 operator|.
 name|INSTANCE
@@ -397,31 +391,8 @@ name|deserialize
 argument_list|(
 name|in
 argument_list|)
-expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|(
-literal|"expected deserialization to fail for \"%s\""
-argument_list|,
-name|TextFormat
-operator|.
-name|escapeBytes
-argument_list|(
-name|in
-argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 block|}
 end_class

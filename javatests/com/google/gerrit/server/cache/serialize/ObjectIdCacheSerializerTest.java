@@ -90,22 +90,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|Truth
-operator|.
-name|assert_
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|server
@@ -117,6 +101,22 @@ operator|.
 name|CacheSerializerTestUtil
 operator|.
 name|byteArray
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -338,8 +338,14 @@ index|[]
 name|bytes
 parameter_list|)
 block|{
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|ObjectIdCacheSerializer
 operator|.
 name|INSTANCE
@@ -348,24 +354,8 @@ name|deserialize
 argument_list|(
 name|bytes
 argument_list|)
-expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|(
-literal|"expected IllegalArgumentException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 block|}
 end_class
