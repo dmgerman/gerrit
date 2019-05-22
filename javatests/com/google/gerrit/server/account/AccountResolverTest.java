@@ -120,13 +120,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gerrit
 operator|.
-name|truth
+name|testing
 operator|.
-name|Truth
+name|GerritJUnit
 operator|.
-name|assert_
+name|assertThrows
 import|;
 end_import
 
@@ -1670,8 +1670,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
 name|String
 name|input
 init|=
@@ -1703,6 +1701,17 @@ init|=
 name|allVisible
 argument_list|()
 decl_stmt|;
+name|UnresolvableAccountException
+name|thrown
+init|=
+name|assertThrows
+argument_list|(
+name|UnresolvableAccountException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|search
 argument_list|(
 name|input
@@ -1714,25 +1723,11 @@ argument_list|)
 operator|.
 name|asUnique
 argument_list|()
-expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|(
-literal|"Expected UnresolvableAccountException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnresolvableAccountException
-name|e
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
-name|e
+name|thrown
 argument_list|)
 operator|.
 name|hasMessageThat
@@ -1743,7 +1738,6 @@ argument_list|(
 literal|"Account 'foo' not found"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -1863,8 +1857,17 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-try|try
-block|{
+name|UnresolvableAccountException
+name|thrown
+init|=
+name|assertThrows
+argument_list|(
+name|UnresolvableAccountException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|search
 argument_list|(
 literal|"foo"
@@ -1877,25 +1880,11 @@ argument_list|)
 operator|.
 name|asUnique
 argument_list|()
-expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|(
-literal|"Expected UnresolvableAccountException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnresolvableAccountException
-name|e
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
-name|e
+name|thrown
 argument_list|)
 operator|.
 name|hasMessageThat
@@ -1906,7 +1895,6 @@ argument_list|(
 literal|"Account 'foo' is ambiguous:\n1: Anonymous Name (1)\n2: Anonymous Name (2)"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
