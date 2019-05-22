@@ -110,9 +110,9 @@ name|common
 operator|.
 name|truth
 operator|.
-name|Truth
+name|Truth8
 operator|.
-name|assert_
+name|assertThat
 import|;
 end_import
 
@@ -122,13 +122,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gerrit
 operator|.
-name|truth
+name|testing
 operator|.
-name|Truth8
+name|GerritJUnit
 operator|.
-name|assertThat
+name|assertThrows
 import|;
 end_import
 
@@ -601,8 +601,14 @@ name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|RuntimeException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|requestScopeOperations
 operator|.
 name|setApiUser
@@ -617,24 +623,8 @@ name|nextAccountId
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|(
-literal|"expected RuntimeException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 name|checkCurrentUser
 argument_list|(
 name|admin
