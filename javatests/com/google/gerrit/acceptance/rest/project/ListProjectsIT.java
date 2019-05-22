@@ -124,6 +124,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -2896,27 +2912,20 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|BadRequestException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|req
 operator|.
 name|get
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected BadRequestException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|BadRequestException
-name|expected
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 block|}
 end_class
