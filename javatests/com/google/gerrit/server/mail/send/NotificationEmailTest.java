@@ -85,6 +85,46 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|send
+operator|.
+name|NotificationEmail
+operator|.
+name|getInstanceAndProjectName
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|send
+operator|.
+name|NotificationEmail
+operator|.
+name|getShortProjectName
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -102,27 +142,22 @@ name|NotificationEmailTest
 block|{
 annotation|@
 name|Test
-DECL|method|getInstanceAndProjectName_returnsTheRightValue ()
+DECL|method|instanceAndProjectName ()
 specifier|public
 name|void
-name|getInstanceAndProjectName_returnsTheRightValue
-parameter_list|()
-block|{
-name|String
 name|instanceAndProjectName
-init|=
-name|NotificationEmail
-operator|.
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertThat
+argument_list|(
 name|getInstanceAndProjectName
 argument_list|(
 literal|"test"
 argument_list|,
 literal|"/my/api"
 argument_list|)
-decl_stmt|;
-name|assertThat
-argument_list|(
-name|instanceAndProjectName
 argument_list|)
 operator|.
 name|isEqualTo
@@ -133,27 +168,22 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getInstanceAndProjectName_handlesNull ()
+DECL|method|instanceAndProjectNameNull ()
 specifier|public
 name|void
-name|getInstanceAndProjectName_handlesNull
+name|instanceAndProjectNameNull
 parameter_list|()
+throws|throws
+name|Exception
 block|{
-name|String
-name|instanceAndProjectName
-init|=
-name|NotificationEmail
-operator|.
+name|assertThat
+argument_list|(
 name|getInstanceAndProjectName
 argument_list|(
 literal|null
 argument_list|,
 literal|"/my/api"
 argument_list|)
-decl_stmt|;
-name|assertThat
-argument_list|(
-name|instanceAndProjectName
 argument_list|)
 operator|.
 name|isEqualTo
@@ -164,16 +194,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|getShortProjectName ()
+DECL|method|shortProjectName ()
 specifier|public
 name|void
-name|getShortProjectName
+name|shortProjectName
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|assertThat
 argument_list|(
-name|NotificationEmail
-operator|.
 name|getShortProjectName
 argument_list|(
 literal|"/api"
@@ -187,8 +217,6 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|NotificationEmail
-operator|.
 name|getShortProjectName
 argument_list|(
 literal|"/my/api"
@@ -202,8 +230,6 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|NotificationEmail
-operator|.
 name|getShortProjectName
 argument_list|(
 literal|"/my/sub/project"
