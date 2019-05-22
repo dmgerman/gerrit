@@ -86,13 +86,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gerrit
 operator|.
-name|truth
+name|json
 operator|.
-name|Truth
+name|JavaSqlTimestampHelper
 operator|.
-name|assert_
+name|parseTimestamp
 import|;
 end_import
 
@@ -104,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|json
+name|testing
 operator|.
-name|JavaSqlTimestampHelper
+name|GerritJUnit
 operator|.
-name|parseTimestamp
+name|assertThrows
 import|;
 end_import
 
@@ -384,32 +384,20 @@ name|String
 name|input
 parameter_list|)
 block|{
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|parseTimestamp
 argument_list|(
 name|input
 argument_list|)
-expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|(
-literal|"Expected IllegalArgumentException for: "
-operator|+
-name|input
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// Expected;
-block|}
 block|}
 DECL|method|reformat (String input)
 specifier|private
