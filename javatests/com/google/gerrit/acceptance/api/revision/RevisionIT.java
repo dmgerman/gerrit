@@ -2120,8 +2120,17 @@ name|isNull
 argument_list|()
 expr_stmt|;
 comment|// Reducing vote is not allowed.
-try|try
-block|{
+name|ResourceConflictException
+name|thrown
+init|=
+name|assertThrows
+argument_list|(
+name|ResourceConflictException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|changes
@@ -2142,22 +2151,11 @@ operator|.
 name|dislike
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected ResourceConflictException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceConflictException
-name|e
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
-name|e
+name|thrown
 argument_list|)
 operator|.
 name|hasMessageThat
@@ -2168,7 +2166,6 @@ argument_list|(
 literal|"Cannot reduce vote on labels for closed change: Code-Review"
 argument_list|)
 expr_stmt|;
-block|}
 name|approval
 operator|=
 name|getApproval
@@ -2276,8 +2273,16 @@ literal|2
 argument_list|)
 expr_stmt|;
 comment|// Decreasing to previous post-submit vote is still not allowed.
-try|try
-block|{
+name|thrown
+operator|=
+name|assertThrows
+argument_list|(
+name|ResourceConflictException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|changes
@@ -2298,22 +2303,11 @@ operator|.
 name|dislike
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected ResourceConflictException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceConflictException
-name|e
-parameter_list|)
-block|{
 name|assertThat
 argument_list|(
-name|e
+name|thrown
 argument_list|)
 operator|.
 name|hasMessageThat
@@ -2324,7 +2318,6 @@ argument_list|(
 literal|"Cannot reduce vote on labels for closed change: Code-Review"
 argument_list|)
 expr_stmt|;
-block|}
 name|approval
 operator|=
 name|getApproval
@@ -4886,8 +4879,17 @@ name|message
 operator|=
 literal|"Cherry-Pick"
 expr_stmt|;
-try|try
-block|{
+name|ResourceConflictException
+name|thrown
+init|=
+name|assertThrows
+argument_list|(
+name|ResourceConflictException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|changeApi
 operator|.
 name|revision
@@ -4905,33 +4907,21 @@ name|cherryPickAsInfo
 argument_list|(
 name|in
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected ResourceConflictException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceConflictException
-name|e
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
+name|thrown
 argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
 operator|.
 name|isEqualTo
 argument_list|(
 literal|"Cherry pick failed: merge conflict"
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Cherry-pick with auto merge should succeed.
 name|in
 operator|.
@@ -5390,8 +5380,17 @@ operator|.
 name|getFullMessage
 argument_list|()
 expr_stmt|;
-try|try
-block|{
+name|ResourceConflictException
+name|thrown
+init|=
+name|assertThrows
+argument_list|(
+name|ResourceConflictException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|changes
@@ -5409,26 +5408,15 @@ name|cherryPick
 argument_list|(
 name|in
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected ResourceConflictException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceConflictException
-name|e
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
+name|thrown
 argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
 operator|.
 name|isEqualTo
 argument_list|(
@@ -5444,7 +5432,6 @@ operator|+
 literal|" because it is abandoned"
 argument_list|)
 expr_stmt|;
-block|}
 name|gApi
 operator|.
 name|changes
