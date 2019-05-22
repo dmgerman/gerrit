@@ -8654,8 +8654,14 @@ name|index
 argument_list|()
 expr_stmt|;
 comment|// Verify "sub-group" has been deleted.
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|ResourceNotFoundException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|groups
@@ -8671,19 +8677,8 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected ResourceNotFoundException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceNotFoundException
-name|e
-parameter_list|)
-block|{     }
 block|}
 comment|// reindex is tested by {@link AbstractQueryGroupsTest#reindex}
 annotation|@
@@ -12233,27 +12228,20 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|BadRequestException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|req
 operator|.
 name|get
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected BadRequestException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|BadRequestException
-name|e
-parameter_list|)
-block|{
-comment|// Expected
-block|}
 block|}
 annotation|@
 name|Target
