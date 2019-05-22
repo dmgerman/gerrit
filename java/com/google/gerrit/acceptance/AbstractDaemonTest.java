@@ -10903,6 +10903,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**    * @deprecated Use {@code assert_().fail()} from {@link com.google.common.truth.Truth} instead.    */
+annotation|@
+name|Deprecated
 DECL|method|fail (@ullable String format, Object... args)
 specifier|protected
 name|void

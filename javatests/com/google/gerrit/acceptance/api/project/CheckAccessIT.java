@@ -90,6 +90,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assert_
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|testing
@@ -1745,6 +1761,9 @@ name|RestApiException
 name|e
 parameter_list|)
 block|{
+name|assert_
+argument_list|()
+operator|.
 name|fail
 argument_list|(
 name|String
@@ -1780,6 +1799,9 @@ operator|.
 name|status
 condition|)
 block|{
+name|assert_
+argument_list|()
+operator|.
 name|fail
 argument_list|(
 name|String
@@ -1869,6 +1891,9 @@ argument_list|()
 expr_stmt|;
 break|break;
 default|default:
+name|assert_
+argument_list|()
+operator|.
 name|fail
 argument_list|(
 name|String

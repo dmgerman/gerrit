@@ -83,6 +83,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assert_
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -750,6 +766,9 @@ operator|!=
 literal|1
 condition|)
 block|{
+name|assert_
+argument_list|()
+operator|.
 name|fail
 argument_list|(
 literal|"got packet on channel "
