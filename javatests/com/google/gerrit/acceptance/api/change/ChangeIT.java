@@ -13189,8 +13189,14 @@ name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|ResourceNotFoundException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|changes
@@ -13206,21 +13212,8 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected ResourceNotFoundException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceNotFoundException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 comment|// check that the author/committer was NOT added as reviewer (he can't see
 comment|// the change)
 name|assertThat
@@ -13707,8 +13700,14 @@ name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|ResourceNotFoundException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|changes
@@ -13724,21 +13723,8 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected ResourceNotFoundException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceNotFoundException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 comment|// check that 'user' was NOT added as cc ('user' can't see the change)
 name|requestScopeOperations
 operator|.
@@ -13946,8 +13932,14 @@ name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|ResourceNotFoundException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|changes
@@ -13963,21 +13955,8 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected ResourceNotFoundException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceNotFoundException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 comment|// try to add user as reviewer
 name|requestScopeOperations
 operator|.
