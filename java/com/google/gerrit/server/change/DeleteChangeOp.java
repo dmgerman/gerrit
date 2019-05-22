@@ -534,8 +534,6 @@ argument_list|(
 name|ctx
 argument_list|,
 name|id
-argument_list|,
-name|patchSets
 argument_list|)
 expr_stmt|;
 name|ctx
@@ -756,7 +754,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|cleanUpReferences (ChangeContext ctx, Change.Id id, Collection<PatchSet> patchSets)
+DECL|method|cleanUpReferences (ChangeContext ctx, Change.Id id)
 specifier|private
 name|void
 name|cleanUpReferences
@@ -768,23 +766,9 @@ name|Change
 operator|.
 name|Id
 name|id
-parameter_list|,
-name|Collection
-argument_list|<
-name|PatchSet
-argument_list|>
-name|patchSets
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
-block|{
-for|for
-control|(
-name|PatchSet
-name|ps
-range|:
-name|patchSets
-control|)
 block|{
 name|accountPatchReviewStore
 operator|.
@@ -796,14 +780,10 @@ name|s
 operator|.
 name|clearReviewed
 argument_list|(
-name|ps
-operator|.
-name|getId
-argument_list|()
+name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Non-atomic operation on Accounts table; not much we can do to make it
 comment|// atomic.
 name|starredChangesUtil

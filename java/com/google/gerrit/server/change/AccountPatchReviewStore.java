@@ -122,6 +122,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -281,6 +297,17 @@ name|PatchSet
 operator|.
 name|Id
 name|psId
+parameter_list|)
+function_decl|;
+comment|/**    * Clears the reviewed flags for all files in all patch sets in the given change for all users.    *    * @param changeId change ID    */
+DECL|method|clearReviewed (Change.Id changeId)
+name|void
+name|clearReviewed
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|changeId
 parameter_list|)
 function_decl|;
 comment|/**    * Find the latest patch set, that is smaller or equals to the given patch set, where at least,    * one file has been reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @return optionally, all files the have been reviewed by the given user that belong to the patch    *     set that is smaller or equals to the given patch set    */
