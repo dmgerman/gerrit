@@ -1530,7 +1530,7 @@ operator|.
 name|adapter
 argument_list|()
 operator|.
-name|indicesExistParam
+name|indicesExistParams
 argument_list|()
 decl_stmt|;
 name|Response

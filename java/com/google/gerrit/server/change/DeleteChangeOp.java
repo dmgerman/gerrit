@@ -516,8 +516,6 @@ comment|// still part of the database.
 name|cleanUpReferences
 argument_list|(
 name|id
-argument_list|,
-name|patchSets
 argument_list|)
 expr_stmt|;
 name|ctx
@@ -725,7 +723,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|cleanUpReferences (Change.Id id, Collection<PatchSet> patchSets)
+DECL|method|cleanUpReferences (Change.Id id)
 specifier|private
 name|void
 name|cleanUpReferences
@@ -734,23 +732,9 @@ name|Change
 operator|.
 name|Id
 name|id
-parameter_list|,
-name|Collection
-argument_list|<
-name|PatchSet
-argument_list|>
-name|patchSets
 parameter_list|)
 throws|throws
 name|IOException
-block|{
-for|for
-control|(
-name|PatchSet
-name|ps
-range|:
-name|patchSets
-control|)
 block|{
 name|accountPatchReviewStore
 operator|.
@@ -762,14 +746,10 @@ name|s
 operator|.
 name|clearReviewed
 argument_list|(
-name|ps
-operator|.
 name|id
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Non-atomic operation on All-Users refs; not much we can do to make it atomic.
 name|starredChangesUtil
 operator|.
