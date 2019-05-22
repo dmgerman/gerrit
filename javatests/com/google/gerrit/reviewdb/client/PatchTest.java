@@ -88,13 +88,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gerrit
 operator|.
-name|truth
+name|testing
 operator|.
-name|Truth
+name|GerritJUnit
 operator|.
-name|assert_
+name|assertThrows
 import|;
 end_import
 
@@ -344,8 +344,14 @@ name|String
 name|str
 parameter_list|)
 block|{
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|RuntimeException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|Patch
 operator|.
 name|Key
@@ -354,24 +360,8 @@ name|parse
 argument_list|(
 name|str
 argument_list|)
-expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|(
-literal|"expected RuntimeException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 block|}
 end_class
