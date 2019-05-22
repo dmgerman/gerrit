@@ -86,6 +86,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|easymock
@@ -724,8 +740,17 @@ argument_list|(
 name|quotaEnforcerB
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|NullPointerException
+name|thrown
+init|=
+name|assertThrows
+argument_list|(
+name|NullPointerException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|quotaBackend
 operator|.
 name|user
@@ -737,19 +762,8 @@ name|requestToken
 argument_list|(
 literal|"testGroup"
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected a NullPointerException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NullPointerException
-name|e
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
 name|exception
@@ -757,10 +771,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|e
+name|thrown
 argument_list|)
 expr_stmt|;
-block|}
 name|verify
 argument_list|(
 name|quotaEnforcerA
