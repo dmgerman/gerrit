@@ -2254,6 +2254,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+specifier|final
 name|TestRepository
 argument_list|<
 name|InMemoryRepository
@@ -2268,8 +2269,17 @@ name|user
 argument_list|)
 decl_stmt|;
 comment|// refs/meta/external-ids is only visible to users with the 'Access Database' capability
-try|try
-block|{
+name|TransportException
+name|thrown
+init|=
+name|assertThrows
+argument_list|(
+name|TransportException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|fetch
 argument_list|(
 name|allUsersRepo
@@ -2278,26 +2288,15 @@ name|RefNames
 operator|.
 name|REFS_EXTERNAL_IDS
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected TransportException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|TransportException
-name|e
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
+name|thrown
 argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
 operator|.
 name|isEqualTo
 argument_list|(
@@ -2310,7 +2309,6 @@ operator|+
 literal|" available for fetch."
 argument_list|)
 expr_stmt|;
-block|}
 name|allowGlobalCapabilities
 argument_list|(
 name|REGISTERED_USERS
@@ -2322,18 +2320,22 @@ argument_list|)
 expr_stmt|;
 comment|// re-clone to get new request context, otherwise the old global capabilities are still cached
 comment|// in the IdentifiedUser object
-name|allUsersRepo
-operator|=
+name|TestRepository
+argument_list|<
+name|InMemoryRepository
+argument_list|>
+name|allUsersRepo2
+init|=
 name|cloneProject
 argument_list|(
 name|allUsers
 argument_list|,
 name|user
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|fetch
 argument_list|(
-name|allUsersRepo
+name|allUsersRepo2
 argument_list|,
 name|RefNames
 operator|.
