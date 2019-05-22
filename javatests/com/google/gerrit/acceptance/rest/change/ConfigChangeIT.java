@@ -110,6 +110,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|truth
 operator|.
 name|ConfigSubject
@@ -1058,8 +1074,17 @@ name|approve
 argument_list|()
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|ResourceConflictException
+name|thrown
+init|=
+name|assertThrows
+argument_list|(
+name|ResourceConflictException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|gApi
 operator|.
 name|changes
@@ -1075,22 +1100,22 @@ argument_list|()
 operator|.
 name|submit
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected submit to fail"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceConflictException
-name|e
-parameter_list|)
-block|{
-name|int
-name|n
-init|=
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Failed to submit 1 change due to the following problems:\n"
+operator|+
+literal|"Change "
+operator|+
 name|gApi
 operator|.
 name|changes
@@ -1105,22 +1130,6 @@ name|info
 argument_list|()
 operator|.
 name|_number
-decl_stmt|;
-name|assertThat
-argument_list|(
-name|e
-argument_list|)
-operator|.
-name|hasMessageThat
-argument_list|()
-operator|.
-name|isEqualTo
-argument_list|(
-literal|"Failed to submit 1 change due to the following problems:\n"
-operator|+
-literal|"Change "
-operator|+
-name|n
 operator|+
 literal|": Change contains a project configuration that"
 operator|+
@@ -1129,7 +1138,6 @@ operator|+
 literal|"The change must be submitted by a Gerrit administrator."
 argument_list|)
 expr_stmt|;
-block|}
 name|assertThat
 argument_list|(
 name|gApi
