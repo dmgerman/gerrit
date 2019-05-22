@@ -86,13 +86,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gerrit
 operator|.
-name|truth
+name|git
 operator|.
-name|Truth
+name|ObjectIds
 operator|.
-name|assert_
+name|abbreviateName
 import|;
 end_import
 
@@ -104,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|git
+name|testing
 operator|.
-name|ObjectIds
+name|GerritJUnit
 operator|.
-name|abbreviateName
+name|assertThrows
 import|;
 end_import
 
@@ -1060,30 +1060,20 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|RuntimeException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|func
 operator|.
 name|call
 argument_list|()
-expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|(
-literal|"Expected RuntimeException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 DECL|method|newReaderWithAmbiguousIds ()
 specifier|private
