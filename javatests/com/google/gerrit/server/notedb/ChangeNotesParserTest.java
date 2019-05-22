@@ -84,13 +84,17 @@ end_import
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|gerrit
 operator|.
-name|fail
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -1957,8 +1961,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|ConfigInvalidException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|newParser
 argument_list|(
 name|commit
@@ -1966,26 +1976,8 @@ argument_list|)
 operator|.
 name|parseAll
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected parse to fail:\n"
-operator|+
-name|commit
-operator|.
-name|getFullMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ConfigInvalidException
-name|e
-parameter_list|)
-block|{
-comment|// Expected
-block|}
 block|}
 DECL|method|newParser (ObjectId tip)
 specifier|private
