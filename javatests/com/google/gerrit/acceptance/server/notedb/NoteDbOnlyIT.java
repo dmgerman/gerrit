@@ -136,6 +136,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -1093,28 +1109,26 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|ResourceConflictException
+name|thrown
+init|=
+name|assertThrows
+argument_list|(
+name|ResourceConflictException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|bu
 operator|.
 name|execute
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected ResourceConflictException"
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceConflictException
-name|e
-parameter_list|)
-block|{
+decl_stmt|;
 name|assertThat
 argument_list|(
-name|e
+name|thrown
 argument_list|)
 operator|.
 name|hasMessageThat
@@ -1125,7 +1139,6 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// If updateChange hadn't failed, backup would have been updated to master2.
 name|assertThat
@@ -1514,27 +1527,20 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|NoSuchChangeException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|callable
 operator|.
 name|call
 argument_list|()
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected NoSuchChangeException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NoSuchChangeException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 DECL|class|ConcurrentWritingListener
 specifier|private
