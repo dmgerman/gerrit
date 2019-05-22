@@ -311,6 +311,10 @@ literal|"CommentFooter.soy"
 block|,
 literal|"CommentFooterHtml.soy"
 block|,
+literal|"DeleteKey.soy"
+block|,
+literal|"DeleteKeyHtml.soy"
+block|,
 literal|"DeleteReviewer.soy"
 block|,
 literal|"DeleteReviewerHtml.soy"
@@ -328,6 +332,10 @@ block|,
 literal|"FooterHtml.soy"
 block|,
 literal|"HeaderHtml.soy"
+block|,
+literal|"HttpPasswordUpdate.soy"
+block|,
+literal|"HttpPasswordUpdateHtml.soy"
 block|,
 literal|"Merged.soy"
 block|,

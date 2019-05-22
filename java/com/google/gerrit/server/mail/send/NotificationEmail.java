@@ -832,6 +832,19 @@ argument_list|)
 return|;
 comment|// Remove the first slash
 block|}
+if|if
+condition|(
+name|lastIndexSlash
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+comment|// No slash in the project name
+return|return
+name|projectName
+return|;
+block|}
 return|return
 literal|"..."
 operator|+
