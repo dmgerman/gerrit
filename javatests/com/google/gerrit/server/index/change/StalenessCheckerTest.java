@@ -90,22 +90,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|Truth
-operator|.
-name|assert_
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|server
@@ -117,6 +101,22 @@ operator|.
 name|StalenessChecker
 operator|.
 name|refsAreStale
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
 import|;
 end_import
 
@@ -630,8 +630,14 @@ name|String
 name|state
 parameter_list|)
 block|{
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|RefState
 operator|.
 name|parseStates
@@ -641,24 +647,8 @@ argument_list|(
 name|state
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|(
-literal|"expected IllegalArgumentException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 annotation|@
 name|Test
@@ -1195,8 +1185,14 @@ name|String
 name|state
 parameter_list|)
 block|{
-try|try
-block|{
+name|assertThrows
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|StalenessChecker
 operator|.
 name|parsePatterns
@@ -1206,24 +1202,8 @@ argument_list|(
 name|state
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|(
-literal|"expected IllegalArgumentException"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 annotation|@
 name|Test
