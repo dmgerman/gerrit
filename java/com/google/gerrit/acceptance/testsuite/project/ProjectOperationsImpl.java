@@ -949,6 +949,26 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|allProjectsForUpdate ()
+specifier|public
+name|TestProjectUpdate
+operator|.
+name|Builder
+name|allProjectsForUpdate
+parameter_list|()
+block|{
+return|return
+name|project
+argument_list|(
+name|allProjectsName
+argument_list|)
+operator|.
+name|forUpdate
+argument_list|()
+return|;
+block|}
 DECL|class|PerProjectOperations
 specifier|private
 class|class

@@ -987,12 +987,7 @@ name|Exception
 block|{
 name|projectOperations
 operator|.
-name|project
-argument_list|(
-name|allProjects
-argument_list|)
-operator|.
-name|forUpdate
+name|allProjectsForUpdate
 argument_list|()
 operator|.
 name|add
@@ -1095,12 +1090,7 @@ finally|finally
 block|{
 name|projectOperations
 operator|.
-name|project
-argument_list|(
-name|allProjects
-argument_list|)
-operator|.
-name|forUpdate
+name|allProjectsForUpdate
 argument_list|()
 operator|.
 name|remove

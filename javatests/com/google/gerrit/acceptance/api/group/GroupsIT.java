@@ -9019,12 +9019,7 @@ block|{
 comment|// refs/meta/group-names isn't usually available for fetch, so grant ACCESS_DATABASE
 name|projectOperations
 operator|.
-name|project
-argument_list|(
-name|allProjects
-argument_list|)
-operator|.
-name|forUpdate
+name|allProjectsForUpdate
 argument_list|()
 operator|.
 name|add
@@ -10017,12 +10012,7 @@ block|}
 comment|// refs/meta/group-names is only visible with ACCESS_DATABASE
 name|projectOperations
 operator|.
-name|project
-argument_list|(
-name|allProjects
-argument_list|)
-operator|.
-name|forUpdate
+name|allProjectsForUpdate
 argument_list|()
 operator|.
 name|add
@@ -10292,12 +10282,7 @@ block|{
 comment|// refs/meta/group-names is only visible with ACCESS_DATABASE
 name|projectOperations
 operator|.
-name|project
-argument_list|(
-name|allProjects
-argument_list|)
-operator|.
-name|forUpdate
+name|allProjectsForUpdate
 argument_list|()
 operator|.
 name|add
