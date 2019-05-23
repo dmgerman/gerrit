@@ -382,7 +382,7 @@ block|{
 return|return
 name|current
 operator|.
-name|openSystemConfig
+name|openUserConfig
 argument_list|(
 name|parent
 argument_list|,
