@@ -877,7 +877,7 @@ specifier|final
 name|String
 name|LUCENE
 init|=
-literal|"LUCENE"
+literal|"lucene"
 decl_stmt|;
 DECL|field|ELASTICSEARCH
 specifier|private
@@ -886,7 +886,7 @@ specifier|final
 name|String
 name|ELASTICSEARCH
 init|=
-literal|"ELASTICSEARCH"
+literal|"elasticsearch"
 decl_stmt|;
 DECL|field|type
 specifier|private
@@ -916,6 +916,9 @@ name|getDefault
 argument_list|()
 else|:
 name|type
+operator|.
+name|toLowerCase
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getDefault ()
@@ -959,7 +962,7 @@ block|{
 return|return
 name|type
 operator|.
-name|equalsIgnoreCase
+name|equals
 argument_list|(
 name|LUCENE
 argument_list|)
@@ -974,7 +977,7 @@ block|{
 return|return
 name|type
 operator|.
-name|equalsIgnoreCase
+name|equals
 argument_list|(
 name|ELASTICSEARCH
 argument_list|)

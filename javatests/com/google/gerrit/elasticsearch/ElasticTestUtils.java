@@ -212,7 +212,7 @@ literal|null
 argument_list|,
 literal|"type"
 argument_list|,
-literal|"ELASTICSEARCH"
+literal|"elasticsearch"
 argument_list|)
 expr_stmt|;
 name|config
