@@ -66,6 +66,18 @@ name|restapi
 package|;
 end_package
 
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
+import|;
+end_import
+
 begin_comment
 comment|/** Root exception type for REST API failures. */
 end_comment
@@ -144,35 +156,24 @@ return|return
 name|caching
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-DECL|method|caching (CacheControl c)
-specifier|public
-parameter_list|<
-name|T
-extends|extends
-name|RestApiException
-parameter_list|>
-name|T
-name|caching
+DECL|method|setCaching (CacheControl caching)
+specifier|protected
+name|void
+name|setCaching
 parameter_list|(
 name|CacheControl
-name|c
+name|caching
 parameter_list|)
 block|{
+name|this
+operator|.
 name|caching
 operator|=
-name|c
+name|requireNonNull
+argument_list|(
+name|caching
+argument_list|)
 expr_stmt|;
-return|return
-operator|(
-name|T
-operator|)
-name|this
-return|;
 block|}
 block|}
 end_class

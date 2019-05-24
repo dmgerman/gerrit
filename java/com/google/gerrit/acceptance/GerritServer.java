@@ -3413,7 +3413,7 @@ block|{
 name|Injector
 name|sysInjector
 init|=
-name|get
+name|getInjector
 argument_list|(
 name|daemon
 argument_list|,
@@ -3633,19 +3633,11 @@ name|module
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-DECL|method|get (Object obj, String field)
+DECL|method|getInjector (Object obj, String field)
 specifier|private
 specifier|static
-parameter_list|<
-name|T
-parameter_list|>
-name|T
-name|get
+name|Injector
+name|getInjector
 parameter_list|(
 name|Object
 name|obj
@@ -3682,9 +3674,30 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|Object
+name|v
+init|=
+name|f
+operator|.
+name|get
+argument_list|(
+name|obj
+argument_list|)
+decl_stmt|;
+name|checkArgument
+argument_list|(
+name|v
+operator|instanceof
+name|Injector
+argument_list|,
+literal|"not an Injector: %s"
+argument_list|,
+name|v
+argument_list|)
+expr_stmt|;
 return|return
 operator|(
-name|T
+name|Injector
 operator|)
 name|f
 operator|.

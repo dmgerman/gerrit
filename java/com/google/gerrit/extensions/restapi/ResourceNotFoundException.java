@@ -146,13 +146,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
-name|Override
 DECL|method|caching (CacheControl c)
 specifier|public
 name|ResourceNotFoundException
@@ -162,13 +155,13 @@ name|CacheControl
 name|c
 parameter_list|)
 block|{
-return|return
-name|super
-operator|.
-name|caching
+name|setCaching
 argument_list|(
 name|c
 argument_list|)
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
 block|}
