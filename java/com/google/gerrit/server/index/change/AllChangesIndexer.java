@@ -208,6 +208,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|primitives
+operator|.
+name|Ints
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -931,7 +945,7 @@ name|name
 argument_list|)
 init|)
 block|{
-name|long
+name|int
 name|size
 init|=
 name|estimateSize
@@ -1049,7 +1063,7 @@ return|;
 block|}
 DECL|method|estimateSize (Repository repo)
 specifier|private
-name|long
+name|int
 name|estimateSize
 parameter_list|(
 name|Repository
@@ -1061,7 +1075,9 @@ block|{
 comment|// Estimate size based on IDs that show up in ref names. This is not perfect, since patch set
 comment|// refs may exist for changes whose metadata was never successfully stored. But that's ok, as
 comment|// the estimate is just used as a heuristic for sorting projects.
-return|return
+name|long
+name|size
+init|=
 name|repo
 operator|.
 name|getRefDatabase
@@ -1106,6 +1122,14 @@ argument_list|()
 operator|.
 name|count
 argument_list|()
+decl_stmt|;
+return|return
+name|Ints
+operator|.
+name|saturatedCast
+argument_list|(
+name|size
+argument_list|)
 return|;
 block|}
 DECL|method|indexAll (ChangeIndex index, SortedSet<ProjectHolder> projects)

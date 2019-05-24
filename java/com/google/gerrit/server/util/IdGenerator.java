@@ -228,6 +228,10 @@ argument_list|)
 decl_stmt|;
 name|v0
 operator|+=
+call|(
+name|short
+call|)
+argument_list|(
 operator|(
 operator|(
 name|v1
@@ -251,9 +255,14 @@ operator|)
 operator|)
 operator|+
 literal|1
+argument_list|)
 expr_stmt|;
 name|v1
 operator|+=
+call|(
+name|short
+call|)
+argument_list|(
 operator|(
 operator|(
 name|v0
@@ -277,6 +286,7 @@ operator|)
 operator|)
 operator|+
 literal|3
+argument_list|)
 expr_stmt|;
 return|return
 name|result
@@ -315,6 +325,10 @@ argument_list|)
 decl_stmt|;
 name|v1
 operator|-=
+call|(
+name|short
+call|)
+argument_list|(
 operator|(
 operator|(
 name|v0
@@ -338,9 +352,14 @@ operator|)
 operator|)
 operator|+
 literal|3
+argument_list|)
 expr_stmt|;
 name|v0
 operator|-=
+call|(
+name|short
+call|)
+argument_list|(
 operator|(
 operator|(
 name|v1
@@ -364,6 +383,7 @@ operator|)
 operator|)
 operator|+
 literal|1
+argument_list|)
 expr_stmt|;
 return|return
 name|result
