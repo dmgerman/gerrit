@@ -2413,10 +2413,6 @@ decl_stmt|;
 if|if
 condition|(
 name|magicBranch
-operator|!=
-literal|null
-operator|&&
-name|magicBranch
 operator|.
 name|workInProgress
 condition|)
