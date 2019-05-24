@@ -4190,7 +4190,7 @@ literal|"a.txt"
 argument_list|,
 literal|"content"
 argument_list|,
-name|topic2
+name|topic1
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -4206,7 +4206,7 @@ literal|"b.txt"
 argument_list|,
 literal|"content"
 argument_list|,
-name|topic2
+name|topic1
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -4222,7 +4222,7 @@ literal|"c.txt"
 argument_list|,
 literal|"content"
 argument_list|,
-name|topic1
+name|topic2
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -4238,7 +4238,7 @@ literal|"d.txt"
 argument_list|,
 literal|"content"
 argument_list|,
-name|topic1
+name|topic2
 argument_list|)
 decl_stmt|;
 name|approve
@@ -4317,7 +4317,7 @@ name|Status
 operator|.
 name|NEW
 argument_list|,
-name|expectedTopic2
+name|expectedTopic1
 argument_list|,
 name|admin
 argument_list|)
@@ -4332,7 +4332,7 @@ name|Status
 operator|.
 name|NEW
 argument_list|,
-name|expectedTopic2
+name|expectedTopic1
 argument_list|,
 name|admin
 argument_list|)
@@ -4350,7 +4350,7 @@ name|Status
 operator|.
 name|MERGED
 argument_list|,
-name|expectedTopic2
+name|expectedTopic1
 argument_list|,
 name|admin
 argument_list|)
@@ -4365,7 +4365,7 @@ name|Status
 operator|.
 name|MERGED
 argument_list|,
-name|expectedTopic2
+name|expectedTopic1
 argument_list|,
 name|admin
 argument_list|)
