@@ -1019,12 +1019,16 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|// JGit API depends on reference equality with sentinel.
 annotation|@
 name|SuppressWarnings
 argument_list|(
+block|{
+literal|"ReferenceEquality"
+block|,
 literal|"StringEquality"
+block|}
 argument_list|)
-comment|// JGit API depends on reference equality with sentinel.
 DECL|method|isPacketLineEnd (String s)
 specifier|private
 specifier|static

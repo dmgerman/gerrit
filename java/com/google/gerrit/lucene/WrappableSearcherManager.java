@@ -539,7 +539,11 @@ comment|/**    * Expert: creates a searcher from the provided {@link IndexReader
 annotation|@
 name|SuppressWarnings
 argument_list|(
+block|{
 literal|"resource"
+block|,
+literal|"ReferenceEquality"
+block|}
 argument_list|)
 DECL|method|getSearcher (SearcherFactory searcherFactory, IndexReader reader)
 specifier|public
