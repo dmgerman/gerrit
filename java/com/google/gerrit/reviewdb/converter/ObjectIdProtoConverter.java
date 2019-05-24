@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|errorprone
+operator|.
+name|annotations
+operator|.
+name|Immutable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|proto
@@ -111,6 +125,8 @@ comment|/**  * Proto converter for {@code ObjectId}s.  *  *<p>This converter use
 end_comment
 
 begin_enum
+annotation|@
+name|Immutable
 DECL|enum|ObjectIdProtoConverter
 specifier|public
 enum|enum

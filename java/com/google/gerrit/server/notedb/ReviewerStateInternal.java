@@ -120,11 +120,7 @@ comment|/** The user has contributed at least one nonzero vote on the change. */
 DECL|enumConstant|REVIEWER
 name|REVIEWER
 argument_list|(
-operator|new
-name|FooterKey
-argument_list|(
 literal|"Reviewer"
-argument_list|)
 argument_list|,
 name|ReviewerState
 operator|.
@@ -135,11 +131,7 @@ comment|/** The reviewer was added to the change, but has not voted. */
 DECL|enumConstant|CC
 name|CC
 argument_list|(
-operator|new
-name|FooterKey
-argument_list|(
 literal|"CC"
-argument_list|)
 argument_list|,
 name|ReviewerState
 operator|.
@@ -150,11 +142,7 @@ comment|/** The user was previously a reviewer on the change, but was removed. *
 DECL|enumConstant|REMOVED
 name|REMOVED
 argument_list|(
-operator|new
-name|FooterKey
-argument_list|(
 literal|"Removed"
-argument_list|)
 argument_list|,
 name|ReviewerState
 operator|.
@@ -294,11 +282,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|field|footerKey
+DECL|field|footer
 specifier|private
 specifier|final
-name|FooterKey
-name|footerKey
+name|String
+name|footer
 decl_stmt|;
 DECL|field|state
 specifier|private
@@ -306,11 +294,11 @@ specifier|final
 name|ReviewerState
 name|state
 decl_stmt|;
-DECL|method|ReviewerStateInternal (FooterKey footerKey, ReviewerState state)
+DECL|method|ReviewerStateInternal (String footer, ReviewerState state)
 name|ReviewerStateInternal
 parameter_list|(
-name|FooterKey
-name|footerKey
+name|String
+name|footer
 parameter_list|,
 name|ReviewerState
 name|state
@@ -318,9 +306,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|footerKey
+name|footer
 operator|=
-name|footerKey
+name|footer
 expr_stmt|;
 name|this
 operator|.
@@ -335,7 +323,11 @@ name|getFooterKey
 parameter_list|()
 block|{
 return|return
-name|footerKey
+operator|new
+name|FooterKey
+argument_list|(
+name|footer
+argument_list|)
 return|;
 block|}
 DECL|method|getByEmailFooterKey ()
@@ -347,10 +339,7 @@ return|return
 operator|new
 name|FooterKey
 argument_list|(
-name|footerKey
-operator|.
-name|getName
-argument_list|()
+name|footer
 operator|+
 literal|"-email"
 argument_list|)

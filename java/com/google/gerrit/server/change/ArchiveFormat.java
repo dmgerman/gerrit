@@ -296,6 +296,12 @@ name|ZipFormat
 argument_list|()
 argument_list|)
 block|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"ImmutableEnumChecker"
+argument_list|)
+comment|// ArchiveCommand.Format is effectively immutable.
 DECL|field|format
 specifier|private
 specifier|final

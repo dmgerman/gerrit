@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|errorprone
+operator|.
+name|annotations
+operator|.
+name|Immutable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|proto
@@ -145,6 +159,8 @@ import|;
 end_import
 
 begin_enum
+annotation|@
+name|Immutable
 DECL|enum|PatchSetApprovalProtoConverter
 specifier|public
 enum|enum
