@@ -1343,7 +1343,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading account %s"
+literal|"Loading account"
+argument_list|,
+literal|"accountId"
 argument_list|,
 name|who
 argument_list|)

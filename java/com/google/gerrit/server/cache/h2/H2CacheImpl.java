@@ -1500,7 +1500,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading value for %s from cache"
+literal|"Loading value from cache"
+argument_list|,
+literal|"key"
 argument_list|,
 name|key
 argument_list|)

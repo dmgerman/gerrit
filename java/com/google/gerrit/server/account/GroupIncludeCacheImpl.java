@@ -1098,7 +1098,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading groups with member %s"
+literal|"Loading groups with member"
+argument_list|,
+literal|"memberId"
 argument_list|,
 name|memberId
 argument_list|)
@@ -1208,7 +1210,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading parent groups of %s"
+literal|"Loading parent groups"
+argument_list|,
+literal|"groupUuid"
 argument_list|,
 name|key
 argument_list|)

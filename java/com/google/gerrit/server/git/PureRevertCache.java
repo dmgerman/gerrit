@@ -1042,7 +1042,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading pure revert for %s"
+literal|"Loading pure revert"
+argument_list|,
+literal|"key"
 argument_list|,
 name|key
 argument_list|)

@@ -1002,7 +1002,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading external IDs (revision=%s)"
+literal|"Loading external IDs"
+argument_list|,
+literal|"revision"
 argument_list|,
 name|notesRev
 argument_list|)

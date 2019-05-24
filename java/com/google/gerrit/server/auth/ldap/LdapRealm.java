@@ -2456,7 +2456,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading account for username %s"
+literal|"Loading account for username"
+argument_list|,
+literal|"username"
 argument_list|,
 name|username
 argument_list|)
@@ -2555,7 +2557,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading group for member with username %s"
+literal|"Loading group for member with username"
+argument_list|,
+literal|"username"
 argument_list|,
 name|username
 argument_list|)
@@ -2654,7 +2658,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading groupDn %s"
+literal|"Loading groupDn"
+argument_list|,
+literal|"groupDn"
 argument_list|,
 name|groupDn
 argument_list|)

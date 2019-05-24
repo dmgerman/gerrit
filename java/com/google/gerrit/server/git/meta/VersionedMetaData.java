@@ -2454,14 +2454,22 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Read file '%s' from ref '%s' of project '%s' from revision '%s'"
+literal|"Read file"
+argument_list|,
+literal|"fileName"
 argument_list|,
 name|fileName
+argument_list|,
+literal|"ref"
 argument_list|,
 name|getRefName
 argument_list|()
 argument_list|,
+literal|"projectName"
+argument_list|,
 name|projectName
+argument_list|,
+literal|"revision"
 argument_list|,
 name|revision
 operator|.
@@ -2941,12 +2949,18 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Save file '%s' in ref '%s' of project '%s'"
+literal|"Save file"
+argument_list|,
+literal|"fileName"
 argument_list|,
 name|fileName
 argument_list|,
+literal|"ref"
+argument_list|,
 name|getRefName
 argument_list|()
+argument_list|,
+literal|"projectName"
 argument_list|,
 name|projectName
 argument_list|)
