@@ -866,11 +866,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|isPacketLineEnd
+argument_list|(
 name|s
-operator|==
-name|PacketLineIn
-operator|.
-name|END
+argument_list|)
 condition|)
 block|{
 break|break;
@@ -1019,6 +1018,30 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"StringEquality"
+argument_list|)
+comment|// JGit API depends on reference equality with sentinel.
+DECL|method|isPacketLineEnd (String s)
+specifier|private
+specifier|static
+name|boolean
+name|isPacketLineEnd
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+return|return
+name|s
+operator|==
+name|PacketLineIn
+operator|.
+name|END
+return|;
 block|}
 annotation|@
 name|Override
