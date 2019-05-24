@@ -140,7 +140,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 import|;
 end_import
 
@@ -471,12 +471,12 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|Util
+name|TestLabels
 operator|.
 name|codeReview
 argument_list|()
 argument_list|,
-name|Util
+name|TestLabels
 operator|.
 name|verified
 argument_list|()

@@ -156,6 +156,14 @@ name|NameKey
 name|key
 parameter_list|)
 function_decl|;
+comment|/** Starts a fluent chain for updating All-Projects. */
+DECL|method|allProjectsForUpdate ()
+name|TestProjectUpdate
+operator|.
+name|Builder
+name|allProjectsForUpdate
+parameter_list|()
+function_decl|;
 DECL|interface|PerProjectOperations
 interface|interface
 name|PerProjectOperations

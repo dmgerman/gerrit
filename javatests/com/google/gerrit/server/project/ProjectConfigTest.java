@@ -418,7 +418,7 @@ name|project
 operator|.
 name|testing
 operator|.
-name|Util
+name|TestLabels
 import|;
 end_import
 
@@ -2193,13 +2193,13 @@ name|put
 argument_list|(
 literal|"My-Label"
 argument_list|,
-name|Util
+name|TestLabels
 operator|.
-name|category
+name|label
 argument_list|(
 literal|"My-Label"
 argument_list|,
-name|Util
+name|TestLabels
 operator|.
 name|value
 argument_list|(
@@ -2209,7 +2209,7 @@ argument_list|,
 literal|"Negative"
 argument_list|)
 argument_list|,
-name|Util
+name|TestLabels
 operator|.
 name|value
 argument_list|(
@@ -2218,7 +2218,7 @@ argument_list|,
 literal|"No score"
 argument_list|)
 argument_list|,
-name|Util
+name|TestLabels
 operator|.
 name|value
 argument_list|(

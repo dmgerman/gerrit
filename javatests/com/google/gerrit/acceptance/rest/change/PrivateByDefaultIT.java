@@ -972,10 +972,15 @@ expr_stmt|;
 name|RevCommit
 name|initialHead
 init|=
-name|getRemoteHead
+name|projectOperations
+operator|.
+name|project
 argument_list|(
 name|project2
-argument_list|,
+argument_list|)
+operator|.
+name|getHead
+argument_list|(
 literal|"master"
 argument_list|)
 decl_stmt|;
