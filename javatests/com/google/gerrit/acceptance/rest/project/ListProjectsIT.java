@@ -162,6 +162,20 @@ begin_import
 import|import static
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
 name|util
 operator|.
 name|stream
@@ -1381,6 +1395,8 @@ name|displayOut
 operator|.
 name|toByteArray
 argument_list|()
+argument_list|,
+name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1551,6 +1567,8 @@ name|displayOut
 operator|.
 name|toByteArray
 argument_list|()
+argument_list|,
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|Gson
