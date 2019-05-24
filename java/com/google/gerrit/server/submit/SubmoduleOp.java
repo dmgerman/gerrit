@@ -3980,6 +3980,7 @@ name|newSize
 operator|>
 name|maxCombinedCommitMessageSize
 operator|||
+operator|(
 name|iter
 operator|.
 name|hasNext
@@ -3995,6 +3996,7 @@ argument_list|()
 operator|)
 operator|>
 name|maxCombinedCommitMessageSize
+operator|)
 condition|)
 block|{
 name|msgbuf
