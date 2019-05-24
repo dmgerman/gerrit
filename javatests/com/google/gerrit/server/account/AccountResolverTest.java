@@ -358,6 +358,7 @@ name|AccountResolverTest
 block|{
 DECL|class|TestSearcher
 specifier|private
+specifier|static
 class|class
 name|TestSearcher
 extends|extends
