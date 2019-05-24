@@ -319,7 +319,11 @@ block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
+block|{
 literal|"all"
+block|,
+literal|"MissingOverride"
+block|}
 argument_list|)
 comment|// @Override is omitted for backwards compatibility with servlet-api 2.5
 comment|// TODO: Remove @SuppressWarnings and add @Override when Google upgrades
