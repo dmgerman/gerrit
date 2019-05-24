@@ -174,6 +174,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|GerritApi
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|httpd
 operator|.
 name|XsrfCookieFilter
@@ -421,16 +437,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URISyntaxException
 import|;
 end_import
 
@@ -1392,7 +1398,7 @@ name|Named
 argument_list|(
 name|POLYGERRIT_INDEX_SERVLET
 argument_list|)
-DECL|method|getPolyGerritUiIndexServlet ( @anonicalWebUrl @ullable String canonicalUrl, @GerritServerConfig Config cfg)
+DECL|method|getPolyGerritUiIndexServlet ( @anonicalWebUrl @ullable String canonicalUrl, @GerritServerConfig Config cfg, GerritApi gerritApi)
 name|HttpServlet
 name|getPolyGerritUiIndexServlet
 parameter_list|(
@@ -1407,9 +1413,10 @@ annotation|@
 name|GerritServerConfig
 name|Config
 name|cfg
+parameter_list|,
+name|GerritApi
+name|gerritApi
 parameter_list|)
-throws|throws
-name|URISyntaxException
 block|{
 name|String
 name|cdnPath
@@ -1448,6 +1455,8 @@ argument_list|,
 name|cdnPath
 argument_list|,
 name|faviconPath
+argument_list|,
+name|gerritApi
 argument_list|)
 return|;
 block|}
