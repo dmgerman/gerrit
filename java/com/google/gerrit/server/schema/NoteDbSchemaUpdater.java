@@ -146,9 +146,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
+name|entities
 operator|.
-name|StorageException
+name|RefNames
 import|;
 end_import
 
@@ -160,11 +160,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|exceptions
 operator|.
-name|client
-operator|.
-name|RefNames
+name|StorageException
 import|;
 end_import
 

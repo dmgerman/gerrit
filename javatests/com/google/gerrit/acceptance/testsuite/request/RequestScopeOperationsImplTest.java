@@ -232,11 +232,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|common
-operator|.
-name|ChangeInput
+name|Account
 import|;
 end_import
 
@@ -248,11 +246,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|common
 operator|.
-name|Account
+name|ChangeInput
 import|;
 end_import
 

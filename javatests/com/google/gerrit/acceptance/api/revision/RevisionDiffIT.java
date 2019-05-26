@@ -108,6 +108,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|entities
+operator|.
+name|Patch
+operator|.
+name|COMMIT_MSG
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|common
@@ -153,24 +169,6 @@ operator|.
 name|ObjectIds
 operator|.
 name|abbreviateName
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Patch
-operator|.
-name|COMMIT_MSG
 import|;
 end_import
 

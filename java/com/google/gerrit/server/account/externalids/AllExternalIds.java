@@ -162,9 +162,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|proto
+name|entities
 operator|.
-name|Protos
+name|Account
 import|;
 end_import
 
@@ -176,11 +176,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|proto
 operator|.
-name|client
-operator|.
-name|Account
+name|Protos
 import|;
 end_import
 

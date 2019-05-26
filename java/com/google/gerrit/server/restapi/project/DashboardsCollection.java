@@ -76,9 +76,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|RefNames
 operator|.
@@ -167,6 +165,20 @@ operator|.
 name|common
 operator|.
 name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|entities
+operator|.
+name|Project
 import|;
 end_import
 
@@ -347,22 +359,6 @@ operator|.
 name|restapi
 operator|.
 name|Url
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
 import|;
 end_import
 

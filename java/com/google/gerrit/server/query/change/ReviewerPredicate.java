@@ -92,11 +92,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|index
+name|entities
 operator|.
-name|query
-operator|.
-name|Predicate
+name|Account
 import|;
 end_import
 
@@ -108,11 +106,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|index
 operator|.
-name|client
+name|query
 operator|.
-name|Account
+name|Predicate
 import|;
 end_import
 

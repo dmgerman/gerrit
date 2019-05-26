@@ -92,11 +92,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|git
+name|entities
 operator|.
-name|ObjectIds
+name|Patch
 operator|.
-name|abbreviateName
+name|MERGE_LIST
 import|;
 end_import
 
@@ -108,13 +108,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|git
 operator|.
-name|client
+name|ObjectIds
 operator|.
-name|Patch
-operator|.
-name|MERGE_LIST
+name|abbreviateName
 import|;
 end_import
 

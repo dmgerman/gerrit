@@ -174,11 +174,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|events
-operator|.
-name|ChangeMergedListener
+name|RefNames
 import|;
 end_import
 
@@ -190,11 +188,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|events
 operator|.
-name|RefNames
+name|ChangeMergedListener
 import|;
 end_import
 

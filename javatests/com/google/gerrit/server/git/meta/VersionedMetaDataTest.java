@@ -182,9 +182,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|git
+name|entities
 operator|.
-name|RefUpdateUtil
+name|Project
 import|;
 end_import
 
@@ -196,11 +196,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|git
 operator|.
-name|client
-operator|.
-name|Project
+name|RefUpdateUtil
 import|;
 end_import
 

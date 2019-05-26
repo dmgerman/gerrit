@@ -74,15 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|api
-operator|.
-name|config
-operator|.
-name|ConsistencyCheckInfo
-operator|.
-name|ConsistencyProblemInfo
+name|Account
 import|;
 end_import
 
@@ -94,11 +88,15 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|api
 operator|.
-name|Account
+name|config
+operator|.
+name|ConsistencyCheckInfo
+operator|.
+name|ConsistencyProblemInfo
 import|;
 end_import
 

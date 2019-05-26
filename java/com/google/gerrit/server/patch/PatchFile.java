@@ -88,9 +88,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
+name|entities
 operator|.
-name|NoSuchEntityException
+name|Patch
 import|;
 end_import
 
@@ -102,11 +102,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|exceptions
 operator|.
-name|client
-operator|.
-name|Patch
+name|NoSuchEntityException
 import|;
 end_import
 

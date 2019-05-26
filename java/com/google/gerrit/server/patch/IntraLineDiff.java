@@ -174,11 +174,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|jgit
+name|entities
 operator|.
-name|diff
-operator|.
-name|ReplaceEdit
+name|CodedEnum
 import|;
 end_import
 
@@ -190,11 +188,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|jgit
 operator|.
-name|client
+name|diff
 operator|.
-name|CodedEnum
+name|ReplaceEdit
 import|;
 end_import
 

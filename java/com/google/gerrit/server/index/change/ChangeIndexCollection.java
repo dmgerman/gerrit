@@ -90,9 +90,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|index
+name|entities
 operator|.
-name|IndexCollection
+name|Change
 import|;
 end_import
 
@@ -104,11 +104,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|index
 operator|.
-name|client
-operator|.
-name|Change
+name|IndexCollection
 import|;
 end_import
 

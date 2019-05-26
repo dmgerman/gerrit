@@ -76,9 +76,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|RefNames
 operator|.
@@ -125,6 +123,20 @@ operator|.
 name|collect
 operator|.
 name|Sets
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|entities
+operator|.
+name|RefNames
 import|;
 end_import
 
@@ -323,22 +335,6 @@ operator|.
 name|webui
 operator|.
 name|UiAction
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RefNames
 import|;
 end_import
 

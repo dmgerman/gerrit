@@ -102,9 +102,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|proto
+name|entities
 operator|.
-name|Protos
+name|Project
 import|;
 end_import
 
@@ -116,11 +116,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|proto
 operator|.
-name|client
-operator|.
-name|Project
+name|Protos
 import|;
 end_import
 

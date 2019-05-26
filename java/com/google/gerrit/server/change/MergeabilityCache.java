@@ -74,11 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|client
-operator|.
-name|SubmitType
+name|BranchNameKey
 import|;
 end_import
 
@@ -90,11 +88,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|BranchNameKey
+name|SubmitType
 import|;
 end_import
 

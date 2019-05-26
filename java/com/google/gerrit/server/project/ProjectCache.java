@@ -102,9 +102,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|AccountGroup
 import|;
@@ -118,9 +116,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|Project
 import|;
@@ -168,7 +164,7 @@ name|ProjectState
 name|getAllUsers
 parameter_list|()
 function_decl|;
-comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @return the cached data; null if no such project exists, projectName is null or an error    *     occurred.    * @see #checkedGet(com.google.gerrit.reviewdb.client.Project.NameKey)    */
+comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @return the cached data; null if no such project exists, projectName is null or an error    *     occurred.    * @see #checkedGet(com.google.gerrit.entities.Project.NameKey)    */
 DECL|method|get (@ullable Project.NameKey projectName)
 name|ProjectState
 name|get
