@@ -256,6 +256,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|revwalk
 operator|.
 name|RevBlob
@@ -1102,9 +1116,11 @@ name|Exception
 block|{
 comment|// Recipe for creating ambiguous IDs courtesy of git core:
 comment|// https://github.com/git/git/blob/df799f5d99ac51d4fc791d546de3f936088582fc/t/t1512-rev-parse-disambiguation.sh
+try|try
+init|(
 name|TestRepository
 argument_list|<
-name|?
+name|Repository
 argument_list|>
 name|tr
 init|=
@@ -1122,7 +1138,8 @@ literal|"repo"
 argument_list|)
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|blobData
 init|=
@@ -1191,6 +1208,7 @@ operator|.
 name|getObjectReader
 argument_list|()
 return|;
+block|}
 block|}
 DECL|class|MyObjectId
 specifier|private

@@ -285,14 +285,13 @@ name|RevWalk
 argument_list|(
 name|allUsersRepo
 argument_list|)
-init|)
-block|{
+init|;
 name|TestRepository
 argument_list|<
 name|Repository
 argument_list|>
 name|testRepository
-init|=
+operator|=
 operator|new
 name|TestRepository
 argument_list|<>
@@ -301,7 +300,8 @@ name|allUsersRepo
 argument_list|,
 name|rw
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|TestRepository
 argument_list|<
 name|Repository

@@ -9660,14 +9660,10 @@ name|openRepository
 argument_list|(
 name|project
 argument_list|)
-init|)
+init|;             TestRepository<Repository> tr = new TestRepository<>(repo)
+block|)
 block|{
-operator|new
-name|TestRepository
-argument_list|<>
-argument_list|(
-name|repo
-argument_list|)
+name|tr
 operator|.
 name|branch
 argument_list|(
@@ -9780,6 +9776,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_class
+
+begin_function
 annotation|@
 name|Test
 DECL|method|mergeByOwnerCcingSelf ()
@@ -9878,6 +9877,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|mergeByReviewer ()
@@ -9968,6 +9970,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|mergeByReviewerCcingSelf ()
@@ -10066,6 +10071,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|mergeByOtherNotifyOwnerReviewers ()
@@ -10146,6 +10154,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|mergeByOtherNotifyOwner ()
@@ -10204,6 +10215,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|mergeByOtherCcingSelfNotifyOwner ()
@@ -10271,6 +10285,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|mergeByOtherNotifyNone ()
@@ -10307,6 +10324,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|mergeByOtherCcingSelfNotifyNone ()
@@ -10352,6 +10372,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|merge (String changeId, TestAccount by)
 specifier|private
 name|void
@@ -10376,6 +10399,9 @@ name|ENABLED
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|merge (String changeId, TestAccount by, EmailStrategy emailStrategy)
 specifier|private
 name|void
@@ -10429,6 +10455,9 @@ name|submit
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|merge (String changeId, TestAccount by, NotifyHandling notify)
 specifier|private
 name|void
@@ -10458,6 +10487,9 @@ name|notify
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|merge ( String changeId, TestAccount by, EmailStrategy emailStrategy, NotifyHandling notify)
 specifier|private
 name|void
@@ -10529,6 +10561,9 @@ name|in
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|stageChangeReadyForMerge ()
 specifier|private
 name|StagedChange
@@ -10589,7 +10624,13 @@ return|return
 name|sc
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/*    * ReplacePatchSetSender tests.    */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetByOwnerOnReviewableChange ()
@@ -10678,6 +10719,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetByOtherOnReviewableChange ()
@@ -10774,6 +10818,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetByOtherOnReviewableChangeOwnerSelfCc ()
@@ -10874,6 +10921,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetByOtherOnReviewableChangeNotifyOwnerReviewers ()
@@ -10961,6 +11011,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetByOtherOnReviewableChangeOwnerSelfCcNotifyOwnerReviewers ()
@@ -11052,6 +11105,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetByOtherOnReviewableChangeNotifyOwner ()
@@ -11086,6 +11142,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetByOtherOnReviewableChangeOwnerSelfCcNotifyOwner ()
@@ -11126,6 +11185,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetByOtherOnReviewableChangeNotifyNone ()
@@ -11162,6 +11224,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetByOtherOnReviewableChangeOwnerSelfCcNotifyNone ()
@@ -11200,6 +11265,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetByOwnerOnReviewableChangeToWip ()
@@ -11236,6 +11304,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetOnWipChange ()
@@ -11272,6 +11343,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetOnWipChangeNotifyAll ()
@@ -11360,6 +11434,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetOnWipChangeToReady ()
@@ -11448,6 +11525,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetOnReviewableWipChange ()
@@ -11484,6 +11564,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetOnReviewableChangeAddingReviewer ()
@@ -11589,6 +11672,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetOnWipChangeAddingReviewer ()
@@ -11640,6 +11726,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetOnWipChangeAddingReviewerNotifyAll ()
@@ -11745,6 +11834,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|newPatchSetOnWipChangeSettingReady ()
@@ -11833,6 +11925,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|pushTo (StagedChange sc, String ref, TestAccount by)
 specifier|private
 name|void
@@ -11862,6 +11957,9 @@ name|ENABLED
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|pushTo (StagedChange sc, String ref, TestAccount by, EmailStrategy emailStrategy)
 specifier|private
 name|void
@@ -11916,6 +12014,9 @@ name|assertOkStatus
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageEditByOwnerOnReviewableChange ()
@@ -12002,6 +12103,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageEditByOtherOnReviewableChange ()
@@ -12090,6 +12194,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageByOtherOnReviewableChangeOwnerSelfCc ()
@@ -12182,6 +12289,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageByOtherOnReviewableChangeNotifyOwnerReviewers ()
@@ -12260,6 +12370,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageByOtherOnReviewableChangeOwnerSelfCcNotifyOwnerReviewers ()
@@ -12342,6 +12455,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageByOtherOnReviewableChangeNotifyOwner ()
@@ -12398,6 +12514,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageByOtherOnReviewableChangeOwnerSelfCcNotifyOwner ()
@@ -12461,6 +12580,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageByOtherOnReviewableChangeNotifyNone ()
@@ -12495,6 +12617,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageByOtherOnReviewableChangeOwnerSelfCcNotifyNone ()
@@ -12531,6 +12656,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageOnWipChange ()
@@ -12565,6 +12693,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageByOtherOnWipChange ()
@@ -12619,6 +12750,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageByOtherOnWipChangeSelfCc ()
@@ -12680,6 +12814,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|editCommitMessageOnWipChangeNotifyAll ()
@@ -12768,6 +12905,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|editCommitMessage (StagedChange sc, TestAccount by)
 specifier|private
 name|void
@@ -12794,6 +12934,9 @@ name|ENABLED
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|editCommitMessage (StagedChange sc, TestAccount by, @Nullable NotifyHandling notify)
 specifier|private
 name|void
@@ -12825,6 +12968,9 @@ name|ENABLED
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|editCommitMessage (StagedChange sc, TestAccount by, EmailStrategy emailStrategy)
 specifier|private
 name|void
@@ -12854,6 +13000,9 @@ name|emailStrategy
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|editCommitMessage ( StagedChange sc, TestAccount by, @Nullable NotifyHandling notify, EmailStrategy emailStrategy)
 specifier|private
 name|void
@@ -12949,7 +13098,13 @@ name|in
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/*    * RestoredSender tests.    */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|restoreReviewableChange ()
@@ -13035,6 +13190,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|restoreReviewableWipChange ()
@@ -13120,6 +13278,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|restoreWipChange ()
@@ -13205,6 +13366,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|restoreReviewableChangeByAdmin ()
@@ -13295,6 +13459,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|restoreReviewableChangeByOwnerCcingSelf ()
@@ -13389,6 +13556,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|restoreReviewableChangeByAdminCcingSelf ()
@@ -13483,6 +13653,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|restore (String changeId, TestAccount by)
 specifier|private
 name|void
@@ -13507,6 +13680,9 @@ name|ENABLED
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|restore (String changeId, TestAccount by, EmailStrategy emailStrategy)
 specifier|private
 name|void
@@ -13555,7 +13731,13 @@ name|restore
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/*    * RevertedSender tests.    */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|revertChangeByOwner ()
@@ -13685,6 +13867,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|revertChangeByOwnerCcingSelf ()
@@ -13827,6 +14012,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|revertChangeByOther ()
@@ -13965,6 +14153,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|revertChangeByOtherCcingSelf ()
@@ -14109,6 +14300,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|stageChange ()
 specifier|private
 name|StagedChange
@@ -14187,6 +14381,9 @@ return|return
 name|sc
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|revert (StagedChange sc, TestAccount by)
 specifier|private
 name|void
@@ -14211,6 +14408,9 @@ name|ENABLED
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|revert (StagedChange sc, TestAccount by, EmailStrategy emailStrategy)
 specifier|private
 name|void
@@ -14261,7 +14461,13 @@ name|revert
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/*    * SetAssigneeSender tests.    */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|setAssigneeOnReviewableChange ()
@@ -14334,6 +14540,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|setAssigneeOnReviewableChangeByOwnerCcingSelf ()
@@ -14415,6 +14624,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|setAssigneeOnReviewableChangeByAdmin ()
@@ -14485,6 +14697,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|setAssigneeOnReviewableChangeByAdminCcingSelf ()
@@ -14562,6 +14777,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|setAssigneeToSelfOnReviewableChange ()
@@ -14627,6 +14845,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|changeAssigneeOnReviewableChange ()
@@ -14729,6 +14950,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|changeAssigneeToSelfOnReviewableChange ()
@@ -14812,6 +15036,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|setAssigneeOnReviewableWipChange ()
@@ -14884,6 +15111,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|setAssigneeOnWipChange ()
@@ -14956,6 +15186,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|assign (StagedChange sc, TestAccount by, TestAccount to)
 specifier|private
 name|void
@@ -14985,6 +15218,9 @@ name|ENABLED
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|assign (StagedChange sc, TestAccount by, TestAccount to, EmailStrategy emailStrategy)
 specifier|private
 name|void
@@ -15056,7 +15292,13 @@ name|in
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/*    * Start review and WIP tests.    */
+end_comment
+
+begin_function
 annotation|@
 name|Test
 DECL|method|startReviewOnWipChange ()
@@ -15136,6 +15378,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|startReviewOnWipChangeCcingSelf ()
@@ -15231,6 +15476,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Test
 DECL|method|setWorkInProgress ()
@@ -15271,6 +15519,9 @@ name|didNotSend
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|startReview (StagedChange sc)
 specifier|private
 name|void
@@ -15310,6 +15561,9 @@ name|setReadyForReview
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setWorkInProgressByDefault (Project.NameKey p, InheritableBoolean v)
 specifier|private
 name|void
@@ -15358,8 +15612,8 @@ name|input
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
