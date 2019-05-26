@@ -11951,21 +11951,21 @@ name|openRepository
 argument_list|(
 name|project
 argument_list|)
-init|)
-block|{
+init|;
 name|TestRepository
 argument_list|<
 name|?
 argument_list|>
 name|tr
-init|=
+operator|=
 operator|new
 name|TestRepository
 argument_list|<>
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|tr
 operator|.
 name|branch
@@ -12593,25 +12593,25 @@ name|openRepository
 argument_list|(
 name|project
 argument_list|)
-init|)
-block|{
-comment|// Create a new patch set of the change directly in Gerrit's repository,
-comment|// without pushing it. In reality it's more likely that the client would
-comment|// create and push this behind Gerrit's back (e.g. an admin accidentally
-comment|// using direct ssh access to the repo), but that's harder to do in tests.
+init|;
 name|TestRepository
 argument_list|<
 name|?
 argument_list|>
 name|tr
-init|=
+operator|=
 operator|new
 name|TestRepository
 argument_list|<>
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
+init|)
+block|{
+comment|// Create a new patch set of the change directly in Gerrit's repository,
+comment|// without pushing it. In reality it's more likely that the client would
+comment|// create and push this behind Gerrit's back (e.g. an admin accidentally
+comment|// using direct ssh access to the repo), but that's harder to do in tests.
 name|ps2Commit
 operator|=
 name|tr
@@ -13404,21 +13404,21 @@ name|openRepository
 argument_list|(
 name|project
 argument_list|)
-init|)
-block|{
+init|;
 name|TestRepository
 argument_list|<
-name|?
+name|Repository
 argument_list|>
 name|tr
-init|=
+operator|=
 operator|new
 name|TestRepository
 argument_list|<>
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|tr
 operator|.
 name|branch
@@ -13824,21 +13824,21 @@ name|openRepository
 argument_list|(
 name|project
 argument_list|)
-init|)
-block|{
+init|;
 name|TestRepository
 argument_list|<
-name|?
+name|Repository
 argument_list|>
 name|tr
-init|=
+operator|=
 operator|new
 name|TestRepository
 argument_list|<>
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|RevCommit
 name|commit2
 init|=

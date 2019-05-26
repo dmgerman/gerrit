@@ -3163,6 +3163,8 @@ argument_list|(
 literal|"b"
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|TestRepository
 argument_list|<
 name|?
@@ -3175,7 +3177,8 @@ argument_list|<>
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|ObjectId
 name|k1
 init|=
@@ -3403,6 +3406,7 @@ argument_list|(
 name|ident
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Old note content was overwritten.
 name|assertThat
 argument_list|(
