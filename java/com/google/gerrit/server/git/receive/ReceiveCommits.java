@@ -816,6 +816,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|LabelType
@@ -10340,6 +10354,31 @@ expr_stmt|;
 block|}
 comment|// TODO(dpursehouse): validate hashtags
 block|}
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|GOOGLE
+argument_list|)
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--create-cod-token"
+argument_list|,
+name|usage
+operator|=
+literal|"create a token for consistency-on-demand"
+argument_list|)
+DECL|field|createCodToken
+specifier|private
+name|boolean
+name|createCodToken
+decl_stmt|;
 DECL|method|MagicBranchInput (IdentifiedUser user, ReceiveCommand cmd, LabelTypes labelTypes)
 name|MagicBranchInput
 parameter_list|(
