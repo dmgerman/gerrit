@@ -124,12 +124,6 @@ name|INDICES
 init|=
 literal|"?allow_no_indices=false"
 decl_stmt|;
-DECL|field|ignoreUnmapped
-specifier|private
-specifier|final
-name|boolean
-name|ignoreUnmapped
-decl_stmt|;
 DECL|field|useV5Type
 specifier|private
 specifier|final
@@ -197,12 +191,6 @@ name|ElasticVersion
 name|version
 parameter_list|)
 block|{
-name|this
-operator|.
-name|ignoreUnmapped
-operator|=
-literal|false
-expr_stmt|;
 name|this
 operator|.
 name|useV5Type
@@ -304,30 +292,6 @@ name|INCLUDE_TYPE
 else|:
 literal|""
 expr_stmt|;
-block|}
-DECL|method|setIgnoreUnmapped (JsonObject properties)
-name|void
-name|setIgnoreUnmapped
-parameter_list|(
-name|JsonObject
-name|properties
-parameter_list|)
-block|{
-if|if
-condition|(
-name|ignoreUnmapped
-condition|)
-block|{
-name|properties
-operator|.
-name|addProperty
-argument_list|(
-literal|"ignore_unmapped"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|setType (JsonObject properties, String type)
 specifier|public
