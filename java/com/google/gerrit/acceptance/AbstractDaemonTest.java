@@ -138,22 +138,6 @@ name|common
 operator|.
 name|truth
 operator|.
-name|Truth
-operator|.
-name|assert_
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|truth
-operator|.
 name|Truth8
 operator|.
 name|assertThat
@@ -9751,35 +9735,6 @@ name|save
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-comment|/**    * @deprecated Use {@code assert_().fail()} from {@link com.google.common.truth.Truth} instead.    */
-annotation|@
-name|Deprecated
-DECL|method|fail (@ullable String format, Object... args)
-specifier|protected
-name|void
-name|fail
-parameter_list|(
-annotation|@
-name|Nullable
-name|String
-name|format
-parameter_list|,
-name|Object
-modifier|...
-name|args
-parameter_list|)
-block|{
-name|assert_
-argument_list|()
-operator|.
-name|fail
-argument_list|(
-name|format
-argument_list|,
-name|args
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|enableCreateNewChangeForAllNotInTarget ()
 specifier|protected
