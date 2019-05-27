@@ -65,6 +65,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|elasticsearch
+operator|.
+name|ElasticVersion
+operator|.
+name|V6_7
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -240,8 +256,10 @@ name|indicesExistParams
 operator|=
 name|version
 operator|.
-name|isV6
-argument_list|()
+name|isAtLeastMinorVersion
+argument_list|(
+name|V6_7
+argument_list|)
 condition|?
 name|INDICES
 operator|+
@@ -275,8 +293,10 @@ name|includeTypeNameParam
 operator|=
 name|version
 operator|.
-name|isV6
-argument_list|()
+name|isAtLeastMinorVersion
+argument_list|(
+name|V6_7
+argument_list|)
 condition|?
 literal|"?"
 operator|+
