@@ -76,6 +76,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|ImmutableSetMultimap
 import|;
 end_import
@@ -141,7 +155,20 @@ specifier|final
 name|boolean
 name|forceLogging
 decl_stmt|;
-DECL|method|LoggingContextAwareCallable (Callable<T> callable)
+DECL|field|performanceLogging
+specifier|private
+specifier|final
+name|boolean
+name|performanceLogging
+decl_stmt|;
+DECL|field|mutablePerformanceLogRecords
+specifier|private
+specifier|final
+name|MutablePerformanceLogRecords
+name|mutablePerformanceLogRecords
+decl_stmt|;
+comment|/**    * Creates a LoggingContextAwareCallable that wraps the given {@link Callable}.    *    * @param callable Callable that should be wrapped.    * @param mutablePerformanceLogRecords instance of {@link MutablePerformanceLogRecords} to which    *     performance log records that are created from the runnable are added    */
+DECL|method|LoggingContextAwareCallable ( Callable<T> callable, MutablePerformanceLogRecords mutablePerformanceLogRecords)
 name|LoggingContextAwareCallable
 parameter_list|(
 name|Callable
@@ -149,6 +176,9 @@ argument_list|<
 name|T
 argument_list|>
 name|callable
+parameter_list|,
+name|MutablePerformanceLogRecords
+name|mutablePerformanceLogRecords
 parameter_list|)
 block|{
 name|this
@@ -189,6 +219,24 @@ argument_list|()
 operator|.
 name|isLoggingForced
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|performanceLogging
+operator|=
+name|LoggingContext
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|isPerformanceLogging
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|mutablePerformanceLogRecords
+operator|=
+name|mutablePerformanceLogRecords
 expr_stmt|;
 block|}
 annotation|@
@@ -252,6 +300,25 @@ operator|.
 name|isLoggingForced
 argument_list|()
 decl_stmt|;
+name|boolean
+name|oldPerformanceLogging
+init|=
+name|loggingCtx
+operator|.
+name|isPerformanceLogging
+argument_list|()
+decl_stmt|;
+name|ImmutableList
+argument_list|<
+name|PerformanceLogRecord
+argument_list|>
+name|oldPerformanceLogRecords
+init|=
+name|loggingCtx
+operator|.
+name|getPerformanceLogRecords
+argument_list|()
+decl_stmt|;
 name|loggingCtx
 operator|.
 name|setTags
@@ -264,6 +331,26 @@ operator|.
 name|forceLogging
 argument_list|(
 name|forceLogging
+argument_list|)
+expr_stmt|;
+name|loggingCtx
+operator|.
+name|performanceLogging
+argument_list|(
+name|performanceLogging
+argument_list|)
+expr_stmt|;
+comment|// For the performance log records use the {@link MutablePerformanceLogRecords} instance from
+comment|// the logging context of the calling thread in the logging context of the new thread. This way
+comment|// performance log records that are created from the new thread are available from the logging
+comment|// context of the calling thread. This is important since performance log records are processed
+comment|// only at the end of the request and performance log records that are created in another thread
+comment|// should not get lost.
+name|loggingCtx
+operator|.
+name|setMutablePerformanceLogRecords
+argument_list|(
+name|mutablePerformanceLogRecords
 argument_list|)
 expr_stmt|;
 try|try
@@ -289,6 +376,20 @@ operator|.
 name|forceLogging
 argument_list|(
 name|oldForceLogging
+argument_list|)
+expr_stmt|;
+name|loggingCtx
+operator|.
+name|performanceLogging
+argument_list|(
+name|oldPerformanceLogging
+argument_list|)
+expr_stmt|;
+name|loggingCtx
+operator|.
+name|setPerformanceLogRecords
+argument_list|(
+name|oldPerformanceLogRecords
 argument_list|)
 expr_stmt|;
 block|}

@@ -1016,6 +1016,22 @@ name|extensions
 operator|.
 name|registration
 operator|.
+name|DynamicSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
 name|Extension
 import|;
 end_import
@@ -1707,6 +1723,38 @@ operator|.
 name|change
 operator|.
 name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|logging
+operator|.
+name|PerformanceLogContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|logging
+operator|.
+name|PerformanceLogger
 import|;
 end_import
 
@@ -3419,6 +3467,15 @@ specifier|final
 name|PatchSetUtil
 name|psUtil
 decl_stmt|;
+DECL|field|performanceLoggers
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|PerformanceLogger
+argument_list|>
+name|performanceLoggers
+decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -3728,7 +3785,7 @@ name|resultChangeIds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, SetPrivateOp.Factory setPrivateOpFactory, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender, @Assisted ResultChangeIds resultChangeIds)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, DynamicSet<PerformanceLogger> performanceLoggers, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, SetPrivateOp.Factory setPrivateOpFactory, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender, @Assisted ResultChangeIds resultChangeIds)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -3812,6 +3869,12 @@ name|patchSetInfoFactory
 parameter_list|,
 name|PatchSetUtil
 name|psUtil
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|PerformanceLogger
+argument_list|>
+name|performanceLoggers
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -4047,6 +4110,12 @@ operator|.
 name|psUtil
 operator|=
 name|psUtil
+expr_stmt|;
+name|this
+operator|.
+name|performanceLoggers
+operator|=
+name|performanceLoggers
 expr_stmt|;
 name|this
 operator|.
@@ -4594,6 +4663,15 @@ operator|+
 name|traceId
 argument_list|)
 argument_list|)
+init|;
+name|PerformanceLogContext
+name|performanceLogContext
+operator|=
+operator|new
+name|PerformanceLogContext
+argument_list|(
+name|performanceLoggers
+argument_list|)
 init|)
 block|{
 name|traceContext
@@ -4618,7 +4696,7 @@ name|get
 argument_list|()
 argument_list|)
 argument_list|)
-block|;
+expr_stmt|;
 name|logger
 operator|.
 name|atFinest
@@ -4633,7 +4711,7 @@ operator|.
 name|getLoggableName
 argument_list|()
 argument_list|)
-block|;
+expr_stmt|;
 comment|// Log the push options here, rather than in parsePushOptions(), so that they are included
 comment|// into the trace if tracing is enabled.
 name|logger
@@ -4650,7 +4728,7 @@ operator|.
 name|getPushOptions
 argument_list|()
 argument_list|)
-block|;
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -5012,37 +5090,37 @@ block|}
 comment|// Commit validation has already happened, so any changes without Change-Id are for the
 comment|// deprecated feature.
 name|warnAboutMissingChangeId
-parameter_list|(
+argument_list|(
 name|newChanges
-parameter_list|)
-constructor_decl|;
+argument_list|)
+expr_stmt|;
 name|preparePatchSetsForReplace
-parameter_list|(
+argument_list|(
 name|newChanges
-parameter_list|)
-constructor_decl|;
+argument_list|)
+expr_stmt|;
 name|insertChangesAndPatchSets
-parameter_list|(
+argument_list|(
 name|newChanges
-parameter_list|,
+argument_list|,
 name|replaceProgress
-parameter_list|)
-constructor_decl|;
+argument_list|)
+expr_stmt|;
 name|newProgress
 operator|.
 name|end
-parameter_list|()
-constructor_decl|;
+argument_list|()
+expr_stmt|;
 name|replaceProgress
 operator|.
 name|end
-parameter_list|()
-constructor_decl|;
+argument_list|()
+expr_stmt|;
 name|queueSuccessMessages
-parameter_list|(
+argument_list|(
 name|newChanges
-parameter_list|)
-constructor_decl|;
+argument_list|)
+expr_stmt|;
 name|logger
 operator|.
 name|atFine
@@ -5079,11 +5157,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_class
-
-begin_function
-unit|}    private
+block|}
 DECL|method|sendErrorMessages ()
+specifier|private
 name|void
 name|sendErrorMessages
 parameter_list|()
@@ -5169,9 +5245,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|handleRegularCommands (List<ReceiveCommand> cmds, MultiProgressMonitor progress)
 specifier|private
 name|void
@@ -5569,13 +5642,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/** Appends messages for successful change creation/updates. */
-end_comment
-
-begin_function
 DECL|method|queueSuccessMessages (List<CreateRequest> newChanges)
 specifier|private
 name|void
@@ -6127,9 +6194,6 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|addCreatedMessage (CreateRequest c)
 specifier|private
 name|void
@@ -6165,9 +6229,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|addReplacedMessage (ReplaceRequest u, boolean edit, Boolean isPrivate, Boolean wip)
 specifier|private
 name|void
@@ -6328,9 +6389,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|insertChangesAndPatchSets (List<CreateRequest> newChanges, Task replaceProgress)
 specifier|private
 name|void
@@ -6978,9 +7036,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|buildError (String error, List<String> branches)
 specifier|private
 name|String
@@ -7088,13 +7143,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/** Parses push options specified as "git push -o OPTION" */
-end_comment
-
-begin_function
 DECL|method|parsePushOptions ()
 specifier|private
 name|void
@@ -7326,9 +7375,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|isDirectChangesPush (String refname)
 specifier|private
 specifier|static
@@ -7356,9 +7402,6 @@ name|matches
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|parseDirectChangesPush (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -7446,13 +7489,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|// Wrap ReceiveCommand so the progress counter works automatically.
-end_comment
-
-begin_function
 DECL|method|wrapReceiveCommand (ReceiveCommand cmd, Task progress)
 specifier|private
 name|ReceiveCommand
@@ -7602,13 +7639,7 @@ block|}
 block|}
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/*    * Interpret a normal push.    */
-end_comment
-
-begin_function
 DECL|method|parseRegularCommand (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -7893,13 +7924,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/** Validates a push to refs/meta/config, and reject the command if it fails. */
-end_comment
-
-begin_function
 DECL|method|validateConfigPush (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -8338,13 +8363,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**    * validates a push to refs/meta/config for plugin configuration, and rejects the push if it    * fails.    */
-end_comment
-
-begin_function
 DECL|method|validatePluginConfig (ReceiveCommand cmd, ProjectConfig cfg)
 specifier|private
 name|void
@@ -8597,9 +8616,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|parseCreate (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -8816,9 +8832,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|parseUpdate (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -8933,9 +8946,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|isCommit (ReceiveCommand cmd)
 specifier|private
 name|boolean
@@ -9033,9 +9043,6 @@ return|return
 literal|false
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|parseDelete (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -9168,9 +9175,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|parseRewind (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -9353,9 +9357,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|checkRefPermission (ReceiveCommand cmd, RefPermission perm)
 specifier|private
 name|Optional
@@ -9390,9 +9391,6 @@ name|perm
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|checkRefPermission ( PermissionBackend.ForRef forRef, RefPermission perm)
 specifier|private
 name|Optional
@@ -9444,9 +9442,6 @@ argument_list|)
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|rejectProhibited (ReceiveCommand cmd, AuthException err)
 specifier|private
 name|void
@@ -9497,9 +9492,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|prohibited (AuthException e, String alreadyDisplayedResource)
 specifier|private
 specifier|static
@@ -9581,9 +9573,6 @@ operator|+
 name|msg
 return|;
 block|}
-end_function
-
-begin_class
 DECL|class|MagicBranchInput
 specifier|static
 class|class
@@ -11030,13 +11019,7 @@ name|ALL
 return|;
 block|}
 block|}
-end_class
-
-begin_comment
 comment|/**    * Parse the magic branch data (refs/for/BRANCH/OPTIONALTOPIC%OPTIONS) into the magicBranch    * member.    *    *<p>Assumes we are handling a magic branch here.    */
-end_comment
-
-begin_function
 DECL|method|parseMagicBranch (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -12212,25 +12195,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|// Validate that the new commits are connected with the target
-end_comment
-
-begin_comment
 comment|// branch.  If they aren't, we want to abort. We do this check by
-end_comment
-
-begin_comment
 comment|// looking to see if we can compute a merge base between the new
-end_comment
-
-begin_comment
 comment|// commits and the target branch head.
-end_comment
-
-begin_function
 DECL|method|validateConnected (ReceiveCommand cmd, BranchNameKey dest, RevCommit tip)
 specifier|private
 name|boolean
@@ -12444,9 +12412,6 @@ return|return
 literal|true
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|readHEAD (Repository repo)
 specifier|private
 specifier|static
@@ -12509,9 +12474,6 @@ literal|null
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|readBranchTip (BranchNameKey branch)
 specifier|private
 name|RevCommit
@@ -12563,13 +12525,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_comment
 comment|// Handle an upload to refs/changes/XX/CHANGED-NUMBER.
-end_comment
-
-begin_function
 DECL|method|parseReplaceCommand (ReceiveCommand cmd, Change.Id changeId)
 specifier|private
 name|void
@@ -12922,13 +12878,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**    * Add an update for an existing change. Returns true if it succeeded; rejects the command if it    * failed.    */
-end_comment
-
-begin_function
 DECL|method|requestReplace ( ReceiveCommand cmd, boolean checkMergedInto, Change change, RevCommit newCommit)
 specifier|private
 name|boolean
@@ -13040,9 +12990,6 @@ return|return
 literal|true
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|warnAboutMissingChangeId (List<CreateRequest> newChanges)
 specifier|private
 name|void
@@ -13128,9 +13075,6 @@ break|break;
 block|}
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|selectNewAndReplacedChangesFromMagicBranch (Task newProgress)
 specifier|private
 name|List
@@ -14629,9 +14573,6 @@ return|return
 name|newChanges
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|foundInExistingRef (Collection<Ref> existingRefs)
 specifier|private
 name|boolean
@@ -14751,9 +14692,6 @@ return|return
 literal|false
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|setUpWalkForSelectingChanges ()
 specifier|private
 name|RevCommit
@@ -14903,9 +14841,6 @@ return|return
 name|start
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|markExplicitBasesUninteresting ()
 specifier|private
 name|void
@@ -15023,9 +14958,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|rejectImplicitMerges (Set<RevCommit> mergedParents)
 specifier|private
 name|void
@@ -15224,17 +15156,8 @@ block|}
 block|}
 block|}
 block|}
-end_function
-
-begin_comment
 comment|// Mark all branch tips as uninteresting in the given revwalk,
-end_comment
-
-begin_comment
 comment|// so we get only the new commits when walking rw.
-end_comment
-
-begin_function
 DECL|method|markHeadsAsUninteresting (RevWalk rw, @Nullable String forRef)
 specifier|private
 name|void
@@ -15366,9 +15289,6 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|isValidChangeId (String idStr)
 specifier|private
 specifier|static
@@ -15396,9 +15316,6 @@ literal|"^I00*$"
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_class
 DECL|class|ChangeLookup
 specifier|private
 specifier|static
@@ -15468,9 +15385,6 @@ name|destChanges
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_function
 DECL|method|lookupByChangeKey (RevCommit c, Change.Key key)
 specifier|private
 name|ChangeLookup
@@ -15509,9 +15423,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|lookupByCommit (RevCommit c)
 specifier|private
 name|ChangeLookup
@@ -15548,13 +15459,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/** Represents a commit for which a Change should be created. */
-end_comment
-
-begin_class
 DECL|class|CreateRequest
 specifier|private
 class|class
@@ -16205,9 +16110,6 @@ throw|;
 block|}
 block|}
 block|}
-end_class
-
-begin_function
 DECL|method|submit (Collection<CreateRequest> create, Collection<ReplaceRequest> replace)
 specifier|private
 name|void
@@ -16409,9 +16311,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|preparePatchSetsForReplace (List<CreateRequest> newChanges)
 specifier|private
 name|void
@@ -16635,9 +16534,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|readChangesForReplace ()
 specifier|private
 name|void
@@ -16702,13 +16598,7 @@ name|notes
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/** Represents a commit that should be stored in a new patchset of an existing change. */
-end_comment
-
-begin_class
 DECL|class|ReplaceRequest
 specifier|private
 class|class
@@ -18197,9 +18087,6 @@ literal|null
 return|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|UpdateGroupsRequest
 specifier|private
 class|class
@@ -18415,9 +18302,6 @@ argument_list|)
 return|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|UpdateOneRefOp
 specifier|private
 class|class
@@ -18711,9 +18595,6 @@ block|}
 block|}
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|ReindexOnlyOp
 specifier|private
 specifier|static
@@ -18739,9 +18620,6 @@ literal|true
 return|;
 block|}
 block|}
-end_class
-
-begin_function
 DECL|method|refs (Change.Id changeId)
 specifier|private
 name|List
@@ -18766,9 +18644,6 @@ name|changeId
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|initChangeRefMaps ()
 specifier|private
 name|void
@@ -18900,9 +18775,6 @@ block|}
 block|}
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|refsByChange ()
 specifier|private
 name|ListMultimap
@@ -18923,9 +18795,6 @@ return|return
 name|refsByChange
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|changeRefsById ()
 specifier|private
 name|ListMultimap
@@ -18944,9 +18813,6 @@ return|return
 name|refsById
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|parentsEqual (RevCommit a, RevCommit b)
 specifier|private
 specifier|static
@@ -19025,9 +18891,6 @@ return|return
 literal|true
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|authorEqual (RevCommit a, RevCommit b)
 specifier|private
 specifier|static
@@ -19120,17 +18983,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_comment
 comment|// Run RefValidators on the command. If any validator fails, the command status is set to
-end_comment
-
-begin_comment
 comment|// REJECTED, and the return value is 'false'
-end_comment
-
-begin_function
 DECL|method|validRefOperation (ReceiveCommand cmd)
 specifier|private
 name|boolean
@@ -19202,13 +19056,7 @@ return|return
 literal|true
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**    * Validates the commits that a regular push brings in.    *    *<p>On validation failure, the command is rejected.    */
-end_comment
-
-begin_function
 DECL|method|validateRegularPushCommits (BranchNameKey branch, ReceiveCommand cmd)
 specifier|private
 name|void
@@ -19638,9 +19486,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|autoCloseChanges (ReceiveCommand cmd, Task progress)
 specifier|private
 name|void
@@ -20393,9 +20238,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|getChangeNotes (Change.Id changeId)
 specifier|private
 name|Optional
@@ -20445,9 +20287,6 @@ argument_list|()
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|executeIndexQuery (Action<T> action)
 specifier|private
 parameter_list|<
@@ -20506,9 +20345,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|openChangesByKeyByBranch (BranchNameKey branch)
 specifier|private
 name|Map
@@ -20590,21 +20426,9 @@ return|return
 name|r
 return|;
 block|}
-end_function
-
-begin_comment
 comment|// allRefsWatcher hooks into the protocol negotation to get a list of all known refs.
-end_comment
-
-begin_comment
 comment|// This is used as a cache of ref -> sha1 values, and to build an inverse index
-end_comment
-
-begin_comment
 comment|// of (change => list of refs) and a (SHA1 => refs).
-end_comment
-
-begin_function
 DECL|method|allRefs ()
 specifier|private
 name|Map
@@ -20623,9 +20447,6 @@ name|getAllRefs
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|reject (ReceiveCommand cmd, String why)
 specifier|private
 specifier|static
@@ -20649,9 +20470,6 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|rejectRemaining (Collection<ReceiveCommand> commands, String why)
 specifier|private
 specifier|static
@@ -20679,9 +20497,6 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|rejectRemaining (Stream<ReceiveCommand> commands, String why)
 specifier|private
 specifier|static
@@ -20725,9 +20540,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|rejectRemainingRequests (Collection<ReplaceRequest> requests, String why)
 specifier|private
 specifier|static
@@ -20764,9 +20576,6 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|isHead (ReceiveCommand cmd)
 specifier|private
 specifier|static
@@ -20791,9 +20600,6 @@ name|R_HEADS
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|isConfig (ReceiveCommand cmd)
 specifier|private
 specifier|static
@@ -20818,9 +20624,6 @@ name|REFS_CONFIG
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|commandToString (ReceiveCommand cmd)
 specifier|private
 specifier|static
@@ -20900,8 +20703,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 
