@@ -168,6 +168,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|Permission
+operator|.
+name|READ
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|group
@@ -1465,7 +1483,7 @@ name|add
 argument_list|(
 name|block
 argument_list|(
-literal|"read"
+name|READ
 argument_list|)
 operator|.
 name|ref
@@ -1483,7 +1501,7 @@ name|add
 argument_list|(
 name|allow
 argument_list|(
-literal|"read"
+name|READ
 argument_list|)
 operator|.
 name|ref
