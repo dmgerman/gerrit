@@ -2359,16 +2359,6 @@ argument_list|,
 literal|"asc"
 argument_list|)
 expr_stmt|;
-name|client
-operator|.
-name|adapter
-argument_list|()
-operator|.
-name|setIgnoreUnmapped
-argument_list|(
-name|properties
-argument_list|)
-expr_stmt|;
 name|JsonArray
 name|sortArray
 init|=

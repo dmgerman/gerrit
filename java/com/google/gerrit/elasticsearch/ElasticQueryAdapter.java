@@ -65,6 +65,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|elasticsearch
+operator|.
+name|ElasticVersion
+operator|.
+name|V6_7
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -107,12 +123,6 @@ name|String
 name|INDICES
 init|=
 literal|"?allow_no_indices=false"
-decl_stmt|;
-DECL|field|ignoreUnmapped
-specifier|private
-specifier|final
-name|boolean
-name|ignoreUnmapped
 decl_stmt|;
 DECL|field|useV5Type
 specifier|private
@@ -189,12 +199,6 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|ignoreUnmapped
-operator|=
-literal|false
-expr_stmt|;
-name|this
-operator|.
 name|useV5Type
 operator|=
 operator|!
@@ -246,8 +250,10 @@ name|indicesExistParams
 operator|=
 name|version
 operator|.
-name|isV6
-argument_list|()
+name|isAtLeastMinorVersion
+argument_list|(
+name|V6_7
+argument_list|)
 condition|?
 name|INDICES
 operator|+
@@ -287,8 +293,10 @@ name|includeTypeNameParam
 operator|=
 name|version
 operator|.
-name|isV6
-argument_list|()
+name|isAtLeastMinorVersion
+argument_list|(
+name|V6_7
+argument_list|)
 condition|?
 literal|"?"
 operator|+
@@ -296,30 +304,6 @@ name|INCLUDE_TYPE
 else|:
 literal|""
 expr_stmt|;
-block|}
-DECL|method|setIgnoreUnmapped (JsonObject properties)
-name|void
-name|setIgnoreUnmapped
-parameter_list|(
-name|JsonObject
-name|properties
-parameter_list|)
-block|{
-if|if
-condition|(
-name|ignoreUnmapped
-condition|)
-block|{
-name|properties
-operator|.
-name|addProperty
-argument_list|(
-literal|"ignore_unmapped"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|setType (JsonObject properties, String type)
 specifier|public
