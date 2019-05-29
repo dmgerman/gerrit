@@ -3621,7 +3621,7 @@ name|accountId
 argument_list|()
 argument_list|)
 argument_list|,
-literal|"external id %s belongs to account %s, expected account %s"
+literal|"external id %s belongs to account %s, but expected account %s"
 argument_list|,
 name|extId
 operator|.
@@ -3976,7 +3976,7 @@ argument_list|(
 name|actualExtId
 argument_list|)
 argument_list|,
-literal|"external id %s should be removed, but it's not matching the actual external id %s"
+literal|"external id %s should be removed, but it doesn't match the actual external id %s"
 argument_list|,
 name|extId
 operator|.
