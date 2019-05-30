@@ -14827,6 +14827,8 @@ operator|+
 name|userId
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|TestRepository
 argument_list|<
 name|Repo
@@ -14844,7 +14846,8 @@ argument_list|(
 name|allUsersName
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|Ref
 name|draftsRef
 init|=
@@ -14980,6 +14983,7 @@ operator|.
 name|isNotNull
 argument_list|()
 expr_stmt|;
+block|}
 name|indexer
 operator|.
 name|index
@@ -22596,6 +22600,8 @@ name|destination5
 init|=
 literal|"refs/heads/other\trepo1"
 decl_stmt|;
+try|try
+init|(
 name|TestRepository
 argument_list|<
 name|Repo
@@ -22613,7 +22619,8 @@ argument_list|(
 name|allUsersName
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|refsUsers
 init|=
@@ -22745,6 +22752,7 @@ operator|.
 name|isNotNull
 argument_list|()
 expr_stmt|;
+block|}
 name|assertQuery
 argument_list|(
 literal|"destination:destination1"
@@ -22839,6 +22847,8 @@ literal|"query3\tproject:repo branch:stable\n"
 operator|+
 literal|"query4\tproject:repo branch:other"
 decl_stmt|;
+try|try
+init|(
 name|TestRepository
 argument_list|<
 name|Repo
@@ -22856,7 +22866,8 @@ argument_list|(
 name|allUsersName
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|refsUsers
 init|=
@@ -22908,6 +22919,7 @@ operator|.
 name|isNotNull
 argument_list|()
 expr_stmt|;
+block|}
 name|assertThatQueryException
 argument_list|(
 literal|"query:foo"
