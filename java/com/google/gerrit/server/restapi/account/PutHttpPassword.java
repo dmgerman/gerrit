@@ -833,8 +833,15 @@ name|newPassword
 argument_list|)
 return|;
 block|}
-comment|// Used by the admin console plugin
-comment|// TODO(dpursehouse): Replace comment with @UsedAt
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|PLUGIN_SERVICEUSER
+argument_list|)
 DECL|method|apply (IdentifiedUser user, String newPassword)
 specifier|public
 name|Response
