@@ -301,8 +301,6 @@ operator|.
 name|client
 operator|.
 name|Project
-operator|.
-name|NameKey
 import|;
 end_import
 
@@ -1550,11 +1548,13 @@ name|value
 argument_list|)
 return|;
 block|}
-DECL|method|emailReviewers ( NameKey projectName, Change change, ChangeMessage changeMessage, NotifyResolver.Result notify)
+DECL|method|emailReviewers ( Project.NameKey projectName, Change change, ChangeMessage changeMessage, NotifyResolver.Result notify)
 specifier|private
 name|void
 name|emailReviewers
 parameter_list|(
+name|Project
+operator|.
 name|NameKey
 name|projectName
 parameter_list|,

@@ -88,24 +88,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-operator|.
-name|Key
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gson
 operator|.
 name|JsonDeserializationContext
@@ -274,6 +256,8 @@ annotation|@
 name|Override
 DECL|method|deserialize (JsonElement json, Type typeOfT, JsonDeserializationContext context)
 specifier|public
+name|Change
+operator|.
 name|Key
 name|deserialize
 parameter_list|(
