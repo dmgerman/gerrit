@@ -826,7 +826,7 @@ name|newPassword
 argument_list|)
 return|;
 block|}
-comment|// Used by the admin console plugin
+comment|// Used by the serviceuser plugin
 comment|// TODO(dpursehouse): Replace comment with @UsedAt
 DECL|method|apply (IdentifiedUser user, String newPassword)
 specifier|public
