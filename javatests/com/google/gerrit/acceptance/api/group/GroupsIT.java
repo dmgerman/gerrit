@@ -12399,7 +12399,7 @@ argument_list|(
 name|names
 argument_list|)
 operator|.
-name|isOrdered
+name|isInOrder
 argument_list|()
 expr_stmt|;
 block|}

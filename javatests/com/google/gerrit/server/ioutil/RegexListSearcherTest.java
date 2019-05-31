@@ -432,7 +432,7 @@ argument_list|(
 name|inputs
 argument_list|)
 operator|.
-name|isOrdered
+name|isInOrder
 argument_list|()
 expr_stmt|;
 name|assertThat

@@ -733,7 +733,7 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|isOrdered
+name|isInOrder
 argument_list|()
 expr_stmt|;
 block|}
