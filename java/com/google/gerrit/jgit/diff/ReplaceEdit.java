@@ -52,11 +52,13 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|org.eclipse.jgit.diff
+DECL|package|com.google.gerrit.jgit.diff
 package|package
-name|org
+name|com
 operator|.
-name|eclipse
+name|google
+operator|.
+name|gerrit
 operator|.
 name|jgit
 operator|.
@@ -71,6 +73,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|diff
+operator|.
+name|Edit
 import|;
 end_import
 
