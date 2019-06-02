@@ -208,6 +208,12 @@ specifier|final
 name|RefPermissionBackend
 name|refPermissionBackend
 decl_stmt|;
+DECL|field|enableProtocolV2
+specifier|private
+specifier|final
+name|boolean
+name|enableProtocolV2
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|TransferConfig (@erritServerConfig Config cfg)
@@ -300,6 +306,19 @@ operator|.
 name|ADVERTISE_REF_HOOK
 argument_list|)
 expr_stmt|;
+name|enableProtocolV2
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"receive"
+argument_list|,
+literal|"enableProtocolV2"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 name|packConfig
 operator|=
 operator|new
@@ -387,6 +406,16 @@ parameter_list|()
 block|{
 return|return
 name|refPermissionBackend
+return|;
+block|}
+DECL|method|enableProtocolV2 ()
+specifier|public
+name|boolean
+name|enableProtocolV2
+parameter_list|()
+block|{
+return|return
+name|enableProtocolV2
 return|;
 block|}
 block|}
