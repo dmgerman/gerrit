@@ -636,7 +636,7 @@ argument_list|(
 name|rangeList
 argument_list|)
 operator|.
-name|isStrictlyOrdered
+name|isInStrictOrder
 argument_list|()
 expr_stmt|;
 name|assertThat

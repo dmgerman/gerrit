@@ -477,7 +477,7 @@ argument_list|(
 name|allGroupNames
 argument_list|)
 operator|.
-name|containsAllOf
+name|containsAtLeast
 argument_list|(
 literal|"users"
 argument_list|,
@@ -558,7 +558,7 @@ argument_list|(
 name|allGroupNames
 argument_list|)
 operator|.
-name|containsAllOf
+name|containsAtLeast
 argument_list|(
 literal|"contributors"
 argument_list|,
