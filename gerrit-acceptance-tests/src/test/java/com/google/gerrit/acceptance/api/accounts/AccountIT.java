@@ -5819,7 +5819,7 @@ block|{
 name|String
 name|email
 init|=
-literal|"foo.bar@example.com"
+literal|"foo.bar.baz@example.com"
 decl_stmt|;
 name|EmailInput
 name|input
