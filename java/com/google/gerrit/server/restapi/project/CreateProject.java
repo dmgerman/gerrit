@@ -1313,7 +1313,10 @@ decl_stmt|;
 DECL|field|serverIdent
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
+argument_list|>
 name|serverIdent
 decl_stmt|;
 DECL|field|identifiedUser
@@ -1357,7 +1360,7 @@ name|lockManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateProject ( Provider<ProjectsCollection> projectsCollection, Provider<GroupResolver> groupResolver, ProjectJson json, PluginSetContext<ProjectCreationValidationListener> projectCreationValidationListeners, GitRepositoryManager repoManager, PluginSetContext<NewProjectCreatedListener> createdListeners, ProjectCache projectCache, GroupBackend groupBackend, ProjectOwnerGroupsProvider.Factory projectOwnerGroups, MetaDataUpdate.User metaDataUpdateFactory, GitReferenceUpdated referenceUpdated, RepositoryConfig repositoryCfg, @GerritPersonIdent PersonIdent serverIdent, Provider<IdentifiedUser> identifiedUser, Provider<PutConfig> putConfig, AllProjectsName allProjects, AllUsersName allUsers, PluginItemContext<ProjectNameLockManager> lockManager)
+DECL|method|CreateProject ( Provider<ProjectsCollection> projectsCollection, Provider<GroupResolver> groupResolver, ProjectJson json, PluginSetContext<ProjectCreationValidationListener> projectCreationValidationListeners, GitRepositoryManager repoManager, PluginSetContext<NewProjectCreatedListener> createdListeners, ProjectCache projectCache, GroupBackend groupBackend, ProjectOwnerGroupsProvider.Factory projectOwnerGroups, MetaDataUpdate.User metaDataUpdateFactory, GitReferenceUpdated referenceUpdated, RepositoryConfig repositoryCfg, @GerritPersonIdent Provider<PersonIdent> serverIdent, Provider<IdentifiedUser> identifiedUser, Provider<PutConfig> putConfig, AllProjectsName allProjects, AllUsersName allUsers, PluginItemContext<ProjectNameLockManager> lockManager)
 name|CreateProject
 parameter_list|(
 name|Provider
@@ -1414,7 +1417,10 @@ name|repositoryCfg
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
+name|Provider
+argument_list|<
 name|PersonIdent
+argument_list|>
 name|serverIdent
 parameter_list|,
 name|Provider
@@ -3006,6 +3012,9 @@ operator|.
 name|setCommitter
 argument_list|(
 name|serverIdent
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|cb
