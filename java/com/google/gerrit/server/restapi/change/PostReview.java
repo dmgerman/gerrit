@@ -1894,6 +1894,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1967,7 +1979,7 @@ name|forEnclosingClass
 argument_list|()
 decl_stmt|;
 DECL|field|ERROR_ADDING_REVIEWER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -2872,7 +2884,7 @@ operator|.
 name|stream
 argument_list|()
 operator|.
-name|filter
+name|anyMatch
 argument_list|(
 name|v
 lambda|->
@@ -2880,12 +2892,6 @@ name|v
 operator|!=
 literal|0
 argument_list|)
-operator|.
-name|findFirst
-argument_list|()
-operator|.
-name|isPresent
-argument_list|()
 expr_stmt|;
 block|}
 if|if
@@ -5740,7 +5746,7 @@ name|endCharacter
 expr_stmt|;
 block|}
 block|}
-comment|/** Used to compare Comments with CommentInput comments. */
+comment|/**    * Used to compare existing {@link Comment}-s with {@link CommentInput} comments by copying only    * the fields to compare.    */
 annotation|@
 name|AutoValue
 DECL|class|CommentSetEntry
@@ -6083,15 +6089,11 @@ expr_stmt|;
 name|boolean
 name|dirty
 init|=
-literal|false
-decl_stmt|;
-name|dirty
-operator||=
 name|insertComments
 argument_list|(
 name|ctx
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|dirty
 operator||=
 name|insertRobotComments
@@ -6243,7 +6245,7 @@ argument_list|<
 name|CommentInput
 argument_list|>
 argument_list|>
-name|map
+name|inputComments
 init|=
 name|in
 operator|.
@@ -6251,12 +6253,12 @@ name|comments
 decl_stmt|;
 if|if
 condition|(
-name|map
+name|inputComments
 operator|==
 literal|null
 condition|)
 block|{
-name|map
+name|inputComments
 operator|=
 name|Collections
 operator|.
@@ -6264,6 +6266,8 @@ name|emptyMap
 argument_list|()
 expr_stmt|;
 block|}
+comment|// HashMap instead of Collections.emptyMap() avoids warning about remove() on immutable
+comment|// object.
 name|Map
 argument_list|<
 name|String
@@ -6272,15 +6276,17 @@ name|Comment
 argument_list|>
 name|drafts
 init|=
-name|Collections
-operator|.
-name|emptyMap
+operator|new
+name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
+comment|// If there are inputComments we need the deduplication loop below, so we have to read (and
+comment|// publish) drafts here.
 if|if
 condition|(
 operator|!
-name|map
+name|inputComments
 operator|.
 name|isEmpty
 argument_list|()
@@ -6339,7 +6345,7 @@ name|Set
 argument_list|<
 name|CommentSetEntry
 argument_list|>
-name|existingIds
+name|existingComments
 init|=
 name|in
 operator|.
@@ -6355,6 +6361,9 @@ operator|.
 name|emptySet
 argument_list|()
 decl_stmt|;
+comment|// Deduplication:
+comment|// - Ignore drafts with the same ID as an inputComment here. These are deleted later.
+comment|// - Swallow comments that already exist.
 for|for
 control|(
 name|Map
@@ -6368,9 +6377,9 @@ argument_list|<
 name|CommentInput
 argument_list|>
 argument_list|>
-name|ent
+name|entry
 range|:
-name|map
+name|inputComments
 operator|.
 name|entrySet
 argument_list|()
@@ -6379,7 +6388,7 @@ block|{
 name|String
 name|path
 init|=
-name|ent
+name|entry
 operator|.
 name|getKey
 argument_list|()
@@ -6387,28 +6396,16 @@ decl_stmt|;
 for|for
 control|(
 name|CommentInput
-name|c
+name|inputComment
 range|:
-name|ent
+name|entry
 operator|.
 name|getValue
 argument_list|()
 control|)
 block|{
-name|String
-name|parent
-init|=
-name|Url
-operator|.
-name|decode
-argument_list|(
-name|c
-operator|.
-name|inReplyTo
-argument_list|)
-decl_stmt|;
 name|Comment
-name|e
+name|comment
 init|=
 name|drafts
 operator|.
@@ -6418,7 +6415,7 @@ name|Url
 operator|.
 name|decode
 argument_list|(
-name|c
+name|inputComment
 operator|.
 name|id
 argument_list|)
@@ -6426,12 +6423,24 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|e
+name|comment
 operator|==
 literal|null
 condition|)
 block|{
-name|e
+name|String
+name|parent
+init|=
+name|Url
+operator|.
+name|decode
+argument_list|(
+name|inputComment
+operator|.
+name|inReplyTo
+argument_list|)
+decl_stmt|;
+name|comment
 operator|=
 name|commentsUtil
 operator|.
@@ -6443,16 +6452,16 @@ name|path
 argument_list|,
 name|psId
 argument_list|,
-name|c
+name|inputComment
 operator|.
 name|side
 argument_list|()
 argument_list|,
-name|c
+name|inputComment
 operator|.
 name|message
 argument_list|,
-name|c
+name|inputComment
 operator|.
 name|unresolved
 argument_list|,
@@ -6462,7 +6471,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|e
+comment|// In ChangeUpdate#putComment() the draft with the same ID will be deleted.
+name|comment
 operator|.
 name|writtenOn
 operator|=
@@ -6471,27 +6481,27 @@ operator|.
 name|getWhen
 argument_list|()
 expr_stmt|;
-name|e
+name|comment
 operator|.
 name|side
 operator|=
-name|c
+name|inputComment
 operator|.
 name|side
 argument_list|()
 expr_stmt|;
-name|e
+name|comment
 operator|.
 name|message
 operator|=
-name|c
+name|inputComment
 operator|.
 name|message
 expr_stmt|;
 block|}
 name|setCommentCommitId
 argument_list|(
-name|e
+name|comment
 argument_list|,
 name|patchListCache
 argument_list|,
@@ -6503,20 +6513,20 @@ argument_list|,
 name|ps
 argument_list|)
 expr_stmt|;
-name|e
+name|comment
 operator|.
 name|setLineNbrAndRange
 argument_list|(
-name|c
+name|inputComment
 operator|.
 name|line
 argument_list|,
-name|c
+name|inputComment
 operator|.
 name|range
 argument_list|)
 expr_stmt|;
-name|e
+name|comment
 operator|.
 name|tag
 operator|=
@@ -6526,7 +6536,7 @@ name|tag
 expr_stmt|;
 if|if
 condition|(
-name|existingIds
+name|existingComments
 operator|.
 name|contains
 argument_list|(
@@ -6534,7 +6544,7 @@ name|CommentSetEntry
 operator|.
 name|create
 argument_list|(
-name|e
+name|comment
 argument_list|)
 argument_list|)
 condition|)
@@ -6545,7 +6555,7 @@ name|toPublish
 operator|.
 name|add
 argument_list|(
-name|e
+name|comment
 argument_list|)
 expr_stmt|;
 block|}
@@ -6599,7 +6609,7 @@ default|default:
 break|break;
 block|}
 name|ChangeUpdate
-name|u
+name|changeUpdate
 init|=
 name|ctx
 operator|.
@@ -6612,7 +6622,7 @@ name|commentsUtil
 operator|.
 name|putComments
 argument_list|(
-name|u
+name|changeUpdate
 argument_list|,
 name|Status
 operator|.
@@ -7244,24 +7254,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 block|{
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Comment
-argument_list|>
-name|drafts
-init|=
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|Comment
-name|c
-range|:
+return|return
 name|commentsUtil
 operator|.
 name|draftByChangeAuthor
@@ -7276,7 +7269,26 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
-control|)
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toMap
+argument_list|(
+name|c
+lambda|->
+name|c
+operator|.
+name|key
+operator|.
+name|uuid
+argument_list|,
+name|c
+lambda|->
 block|{
 name|c
 operator|.
@@ -7285,27 +7297,18 @@ operator|=
 name|in
 operator|.
 name|tag
-expr_stmt|;
-name|drafts
-operator|.
-name|put
-argument_list|(
+argument_list|;                     return
 name|c
-operator|.
-name|key
-operator|.
-name|uuid
-argument_list|,
-name|c
-argument_list|)
-expr_stmt|;
+argument_list|;
 block|}
-return|return
-name|drafts
-return|;
-block|}
+block|)
+block|)
+class|;
+end_class
+
+begin_function
+unit|}      private
 DECL|method|patchSetDrafts (ChangeContext ctx)
-specifier|private
 name|Map
 argument_list|<
 name|String
@@ -7318,24 +7321,7 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 block|{
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Comment
-argument_list|>
-name|drafts
-init|=
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|Comment
-name|c
-range|:
+return|return
 name|commentsUtil
 operator|.
 name|draftByPatchSetAuthor
@@ -7352,12 +7338,18 @@ operator|.
 name|getNotes
 argument_list|()
 argument_list|)
-control|)
-block|{
-name|drafts
 operator|.
-name|put
+name|stream
+argument_list|()
+operator|.
+name|collect
 argument_list|(
+name|Collectors
+operator|.
+name|toMap
+argument_list|(
+name|c
+lambda|->
 name|c
 operator|.
 name|key
@@ -7365,13 +7357,15 @@ operator|.
 name|uuid
 argument_list|,
 name|c
+lambda|->
+name|c
 argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|drafts
+argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|approvalsByKey (Collection<PatchSetApproval> patchsetApprovals)
 specifier|private
 name|Map
@@ -7430,6 +7424,9 @@ return|return
 name|labels
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getAllApprovals ( LabelTypes labelTypes, Map<String, Short> current, Map<String, Short> input)
 specifier|private
 name|Map
@@ -7536,6 +7533,9 @@ return|return
 name|allApprovals
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getPreviousApprovals ( Map<String, Short> allApprovals, Map<String, Short> current)
 specifier|private
 name|Map
@@ -7653,6 +7653,9 @@ return|return
 name|previous
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|isReviewer (ChangeContext ctx)
 specifier|private
 name|boolean
@@ -7706,8 +7709,7 @@ operator|.
 name|reviewers
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
+return|return
 name|reviewers
 operator|.
 name|byState
@@ -7722,16 +7724,11 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
-condition|)
-block|{
-return|return
-literal|true
 return|;
 block|}
-return|return
-literal|false
-return|;
-block|}
+end_function
+
+begin_function
 DECL|method|updateLabels (ProjectState projectState, ChangeContext ctx)
 specifier|private
 name|boolean
@@ -8437,6 +8434,9 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|validatePostSubmitLabels ( ChangeContext ctx, LabelTypes labelTypes, Map<String, Short> previous, List<PatchSetApproval> ups, List<PatchSetApproval> del)
 specifier|private
 name|void
@@ -8825,6 +8825,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|forceCallerAsReviewer ( ProjectState projectState, ChangeContext ctx, Map<String, PatchSetApproval> current, List<PatchSetApproval> ups, List<PatchSetApproval> del)
 specifier|private
 name|void
@@ -9067,6 +9070,9 @@ name|REVIEWER
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|scanLabels ( ProjectState projectState, ChangeContext ctx, List<PatchSetApproval> del)
 specifier|private
 name|Map
@@ -9212,6 +9218,9 @@ return|return
 name|current
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|insertMessage (ChangeContext ctx)
 specifier|private
 name|boolean
@@ -9417,6 +9426,9 @@ return|return
 literal|true
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|addLabelDelta (String name, short value)
 specifier|private
 name|void
@@ -9444,9 +9456,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-end_class
+end_function
 
+unit|} }
 end_unit
 
