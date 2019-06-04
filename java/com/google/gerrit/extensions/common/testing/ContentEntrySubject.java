@@ -239,11 +239,6 @@ class|class
 name|ContentEntrySubject
 extends|extends
 name|Subject
-argument_list|<
-name|ContentEntrySubject
-argument_list|,
-name|ContentEntry
-argument_list|>
 block|{
 DECL|method|assertThat (ContentEntry contentEntry)
 specifier|public

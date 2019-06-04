@@ -143,11 +143,6 @@ class|class
 name|TreeModificationSubject
 extends|extends
 name|Subject
-argument_list|<
-name|TreeModificationSubject
-argument_list|,
-name|TreeModification
-argument_list|>
 block|{
 DECL|method|assertThat (TreeModification treeModification)
 specifier|public

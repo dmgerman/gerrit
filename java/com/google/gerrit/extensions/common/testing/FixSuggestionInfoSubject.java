@@ -215,11 +215,6 @@ class|class
 name|FixSuggestionInfoSubject
 extends|extends
 name|Subject
-argument_list|<
-name|FixSuggestionInfoSubject
-argument_list|,
-name|FixSuggestionInfo
-argument_list|>
 block|{
 DECL|method|assertThat (FixSuggestionInfo fixSuggestionInfo)
 specifier|public

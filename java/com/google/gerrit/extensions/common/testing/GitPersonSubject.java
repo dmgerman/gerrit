@@ -186,16 +186,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Date
@@ -223,11 +213,6 @@ class|class
 name|GitPersonSubject
 extends|extends
 name|Subject
-argument_list|<
-name|GitPersonSubject
-argument_list|,
-name|GitPerson
-argument_list|>
 block|{
 DECL|method|assertThat (GitPerson gitPerson)
 specifier|public
@@ -350,11 +335,6 @@ block|}
 DECL|method|date ()
 specifier|public
 name|ComparableSubject
-argument_list|<
-name|?
-argument_list|,
-name|Timestamp
-argument_list|>
 name|date
 parameter_list|()
 block|{

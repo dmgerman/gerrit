@@ -193,11 +193,6 @@ class|class
 name|EditInfoSubject
 extends|extends
 name|Subject
-argument_list|<
-name|EditInfoSubject
-argument_list|,
-name|EditInfo
-argument_list|>
 block|{
 DECL|method|assertThat (EditInfo editInfo)
 specifier|public

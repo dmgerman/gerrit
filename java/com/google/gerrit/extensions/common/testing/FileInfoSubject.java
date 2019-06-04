@@ -163,11 +163,6 @@ class|class
 name|FileInfoSubject
 extends|extends
 name|Subject
-argument_list|<
-name|FileInfoSubject
-argument_list|,
-name|FileInfo
-argument_list|>
 block|{
 DECL|method|assertThat (FileInfo fileInfo)
 specifier|public
@@ -273,11 +268,6 @@ block|}
 DECL|method|status ()
 specifier|public
 name|ComparableSubject
-argument_list|<
-name|?
-argument_list|,
-name|Character
-argument_list|>
 name|status
 parameter_list|()
 block|{

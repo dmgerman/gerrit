@@ -199,11 +199,6 @@ class|class
 name|CommitInfoSubject
 extends|extends
 name|Subject
-argument_list|<
-name|CommitInfoSubject
-argument_list|,
-name|CommitInfo
-argument_list|>
 block|{
 DECL|method|assertThat (CommitInfo commitInfo)
 specifier|public

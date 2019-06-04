@@ -191,11 +191,6 @@ class|class
 name|RobotCommentInfoSubject
 extends|extends
 name|Subject
-argument_list|<
-name|RobotCommentInfoSubject
-argument_list|,
-name|RobotCommentInfo
-argument_list|>
 block|{
 DECL|method|assertThatList ( List<RobotCommentInfo> robotCommentInfos)
 specifier|public

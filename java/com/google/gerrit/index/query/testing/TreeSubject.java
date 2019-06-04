@@ -177,11 +177,6 @@ class|class
 name|TreeSubject
 extends|extends
 name|Subject
-argument_list|<
-name|TreeSubject
-argument_list|,
-name|Tree
-argument_list|>
 block|{
 DECL|method|assertThat (Tree actual)
 specifier|public

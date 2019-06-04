@@ -207,11 +207,6 @@ class|class
 name|BinaryResultSubject
 extends|extends
 name|Subject
-argument_list|<
-name|BinaryResultSubject
-argument_list|,
-name|BinaryResult
-argument_list|>
 block|{
 DECL|method|assertThat (BinaryResult binaryResult)
 specifier|public

@@ -309,11 +309,6 @@ class|class
 name|PushResultSubject
 extends|extends
 name|Subject
-argument_list|<
-name|PushResultSubject
-argument_list|,
-name|PushResult
-argument_list|>
 block|{
 DECL|method|assertThat (PushResult actual)
 specifier|public
@@ -953,11 +948,6 @@ class|class
 name|RemoteRefUpdateSubject
 extends|extends
 name|Subject
-argument_list|<
-name|RemoteRefUpdateSubject
-argument_list|,
-name|RemoteRefUpdate
-argument_list|>
 block|{
 DECL|field|remoteRefUpdate
 specifier|private

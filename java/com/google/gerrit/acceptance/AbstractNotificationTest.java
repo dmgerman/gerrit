@@ -858,11 +858,6 @@ class|class
 name|FakeEmailSenderSubject
 extends|extends
 name|Subject
-argument_list|<
-name|FakeEmailSenderSubject
-argument_list|,
-name|FakeEmailSender
-argument_list|>
 block|{
 DECL|field|fakeEmailSender
 specifier|private

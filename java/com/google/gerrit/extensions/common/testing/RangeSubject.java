@@ -165,13 +165,6 @@ class|class
 name|RangeSubject
 extends|extends
 name|Subject
-argument_list|<
-name|RangeSubject
-argument_list|,
-name|Comment
-operator|.
-name|Range
-argument_list|>
 block|{
 DECL|method|assertThat (Comment.Range range)
 specifier|public

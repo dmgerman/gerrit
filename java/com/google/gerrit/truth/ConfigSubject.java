@@ -263,11 +263,6 @@ class|class
 name|ConfigSubject
 extends|extends
 name|Subject
-argument_list|<
-name|ConfigSubject
-argument_list|,
-name|Config
-argument_list|>
 block|{
 DECL|method|assertThat (Config config)
 specifier|public

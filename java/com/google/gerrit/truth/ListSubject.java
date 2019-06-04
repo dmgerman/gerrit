@@ -227,11 +227,6 @@ parameter_list|<
 name|S
 extends|extends
 name|Subject
-parameter_list|<
-name|S
-parameter_list|,
-name|E
-parameter_list|>
 parameter_list|,
 name|E
 parameter_list|>
@@ -267,11 +262,6 @@ parameter_list|<
 name|S
 extends|extends
 name|Subject
-argument_list|<
-name|S
-argument_list|,
-name|E
-argument_list|>
 parameter_list|,
 name|E
 parameter_list|>
@@ -533,11 +523,6 @@ parameter_list|<
 name|S
 extends|extends
 name|Subject
-argument_list|<
-name|S
-argument_list|,
-name|E
-argument_list|>
 parameter_list|,
 name|E
 parameter_list|>
@@ -597,11 +582,6 @@ parameter_list|<
 name|S
 extends|extends
 name|Subject
-argument_list|<
-name|S
-argument_list|,
-name|E
-argument_list|>
 parameter_list|,
 name|E
 parameter_list|>

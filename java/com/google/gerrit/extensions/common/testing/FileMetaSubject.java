@@ -151,11 +151,6 @@ class|class
 name|FileMetaSubject
 extends|extends
 name|Subject
-argument_list|<
-name|FileMetaSubject
-argument_list|,
-name|FileMeta
-argument_list|>
 block|{
 DECL|method|assertThat (FileMeta fileMeta)
 specifier|public

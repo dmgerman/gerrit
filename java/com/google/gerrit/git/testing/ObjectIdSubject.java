@@ -131,11 +131,6 @@ class|class
 name|ObjectIdSubject
 extends|extends
 name|Subject
-argument_list|<
-name|ObjectIdSubject
-argument_list|,
-name|ObjectId
-argument_list|>
 block|{
 DECL|method|assertThat (ObjectId objectId)
 specifier|public

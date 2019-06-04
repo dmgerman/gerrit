@@ -174,22 +174,6 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|ChangeType
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
 name|DiffInfo
 import|;
 end_import
@@ -233,11 +217,6 @@ class|class
 name|DiffInfoSubject
 extends|extends
 name|Subject
-argument_list|<
-name|DiffInfoSubject
-argument_list|,
-name|DiffInfo
-argument_list|>
 block|{
 DECL|method|assertThat (DiffInfo diffInfo)
 specifier|public
@@ -336,11 +315,6 @@ block|}
 DECL|method|changeType ()
 specifier|public
 name|ComparableSubject
-argument_list|<
-name|?
-argument_list|,
-name|ChangeType
-argument_list|>
 name|changeType
 parameter_list|()
 block|{

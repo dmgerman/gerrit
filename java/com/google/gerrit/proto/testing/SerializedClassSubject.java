@@ -237,14 +237,6 @@ class|class
 name|SerializedClassSubject
 extends|extends
 name|Subject
-argument_list|<
-name|SerializedClassSubject
-argument_list|,
-name|Class
-argument_list|<
-name|?
-argument_list|>
-argument_list|>
 block|{
 DECL|method|assertThatSerializedClass (Class<?> actual)
 specifier|public

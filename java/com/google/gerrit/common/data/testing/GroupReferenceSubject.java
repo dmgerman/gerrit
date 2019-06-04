@@ -156,22 +156,6 @@ name|GroupReference
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountGroup
-import|;
-end_import
-
 begin_class
 DECL|class|GroupReferenceSubject
 specifier|public
@@ -179,11 +163,6 @@ class|class
 name|GroupReferenceSubject
 extends|extends
 name|Subject
-argument_list|<
-name|GroupReferenceSubject
-argument_list|,
-name|GroupReference
-argument_list|>
 block|{
 DECL|method|assertThat (GroupReference group)
 specifier|public
@@ -262,13 +241,6 @@ block|}
 DECL|method|groupUuid ()
 specifier|public
 name|ComparableSubject
-argument_list|<
-name|?
-argument_list|,
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
 name|groupUuid
 parameter_list|()
 block|{

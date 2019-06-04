@@ -169,11 +169,6 @@ class|class
 name|FixReplacementInfoSubject
 extends|extends
 name|Subject
-argument_list|<
-name|FixReplacementInfoSubject
-argument_list|,
-name|FixReplacementInfo
-argument_list|>
 block|{
 DECL|method|assertThat (FixReplacementInfo fixReplacementInfo)
 specifier|public

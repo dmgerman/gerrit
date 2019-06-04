@@ -178,11 +178,6 @@ class|class
 name|CacheStatsSubject
 extends|extends
 name|Subject
-argument_list|<
-name|CacheStatsSubject
-argument_list|,
-name|CacheStats
-argument_list|>
 block|{
 DECL|method|assertThat (CacheStats stats)
 specifier|public

@@ -195,11 +195,6 @@ class|class
 name|ChangeFileContentModificationSubject
 extends|extends
 name|Subject
-argument_list|<
-name|ChangeFileContentModificationSubject
-argument_list|,
-name|ChangeFileContentModification
-argument_list|>
 block|{
 DECL|method|assertThat ( ChangeFileContentModification modification)
 specifier|public

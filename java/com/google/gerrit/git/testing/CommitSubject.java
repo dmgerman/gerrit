@@ -173,11 +173,6 @@ class|class
 name|CommitSubject
 extends|extends
 name|Subject
-argument_list|<
-name|CommitSubject
-argument_list|,
-name|RevCommit
-argument_list|>
 block|{
 comment|/**    * Constructs a new subject.    *    * @param commit the commit.    * @return a new subject over the commit.    */
 DECL|method|assertThat (RevCommit commit)
