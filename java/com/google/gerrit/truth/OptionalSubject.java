@@ -297,7 +297,7 @@ name|valueSubjectFactory
 argument_list|)
 return|;
 block|}
-DECL|method|assertThat ( Optional<T> optional, Subject.Factory<S, T> valueSubjectFactory)
+DECL|method|assertThat ( Optional<T> optional, Subject.Factory<? extends S, ? super T> valueSubjectFactory)
 specifier|public
 specifier|static
 parameter_list|<
@@ -325,8 +325,12 @@ name|Subject
 operator|.
 name|Factory
 argument_list|<
+name|?
+extends|extends
 name|S
 argument_list|,
+name|?
+super|super
 name|T
 argument_list|>
 name|valueSubjectFactory
@@ -563,7 +567,7 @@ name|failureMetadata
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|thatCustom ( Optional<T> optional, Subject.Factory<S, T> valueSubjectFactory)
+DECL|method|thatCustom ( Optional<T> optional, Subject.Factory<? extends S, ? super T> valueSubjectFactory)
 specifier|public
 parameter_list|<
 name|S
@@ -590,8 +594,12 @@ name|Subject
 operator|.
 name|Factory
 argument_list|<
+name|?
+extends|extends
 name|S
 argument_list|,
+name|?
+super|super
 name|T
 argument_list|>
 name|valueSubjectFactory

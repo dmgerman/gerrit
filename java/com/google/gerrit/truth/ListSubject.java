@@ -249,13 +249,17 @@ name|BiFunction
 argument_list|<
 name|StandardSubjectBuilder
 argument_list|,
+name|?
+super|super
 name|E
 argument_list|,
+name|?
+extends|extends
 name|S
 argument_list|>
 name|elementSubjectCreator
 decl_stmt|;
-DECL|method|assertThat ( List<E> list, Subject.Factory<S, E> subjectFactory)
+DECL|method|assertThat ( List<E> list, Subject.Factory<? extends S, ? super E> subjectFactory)
 specifier|public
 specifier|static
 parameter_list|<
@@ -283,8 +287,12 @@ name|Subject
 operator|.
 name|Factory
 argument_list|<
+name|?
+extends|extends
 name|S
 argument_list|,
+name|?
+super|super
 name|E
 argument_list|>
 name|subjectFactory
@@ -323,7 +331,7 @@ operator|::
 operator|new
 return|;
 block|}
-DECL|method|ListSubject ( FailureMetadata failureMetadata, List<E> list, BiFunction<StandardSubjectBuilder, E, S> elementSubjectCreator)
+DECL|method|ListSubject ( FailureMetadata failureMetadata, List<E> list, BiFunction<StandardSubjectBuilder, ? super E, ? extends S> elementSubjectCreator)
 specifier|private
 name|ListSubject
 parameter_list|(
@@ -340,8 +348,12 @@ name|BiFunction
 argument_list|<
 name|StandardSubjectBuilder
 argument_list|,
+name|?
+super|super
 name|E
 argument_list|,
+name|?
+extends|extends
 name|S
 argument_list|>
 name|elementSubjectCreator
@@ -517,7 +529,7 @@ name|failureMetadata
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|thatCustom ( List<E> list, Subject.Factory<S, E> subjectFactory)
+DECL|method|thatCustom ( List<E> list, Subject.Factory<? extends S, ? super E> subjectFactory)
 specifier|public
 parameter_list|<
 name|S
@@ -544,8 +556,12 @@ name|Subject
 operator|.
 name|Factory
 argument_list|<
+name|?
+extends|extends
 name|S
 argument_list|,
+name|?
+super|super
 name|E
 argument_list|>
 name|subjectFactory
@@ -576,7 +592,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|that ( List<E> list, BiFunction<StandardSubjectBuilder, E, S> elementSubjectCreator)
+DECL|method|that ( List<E> list, BiFunction<StandardSubjectBuilder, ? super E, ? extends S> elementSubjectCreator)
 specifier|public
 parameter_list|<
 name|S
@@ -603,8 +619,12 @@ name|BiFunction
 argument_list|<
 name|StandardSubjectBuilder
 argument_list|,
+name|?
+super|super
 name|E
 argument_list|,
+name|?
+extends|extends
 name|S
 argument_list|>
 name|elementSubjectCreator
