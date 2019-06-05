@@ -1027,7 +1027,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Generate a candidate list at 2x the size of what the user wants to see to
+comment|// Generate a candidate list at 3x the size of what the user wants to see to
 comment|// give the ranking algorithm a good set of candidates it can work with
 DECL|field|CANDIDATE_LIST_MULTIPLIER
 specifier|private
@@ -1036,7 +1036,7 @@ specifier|final
 name|int
 name|CANDIDATE_LIST_MULTIPLIER
 init|=
-literal|2
+literal|3
 decl_stmt|;
 DECL|field|accountLoaderFactory
 specifier|private
