@@ -142,6 +142,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|jgit
+operator|.
+name|diff
+operator|.
+name|ReplaceEdit
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -175,20 +191,6 @@ operator|.
 name|diff
 operator|.
 name|EditList
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|diff
-operator|.
-name|ReplaceEdit
 import|;
 end_import
 
