@@ -108,7 +108,7 @@ specifier|public
 interface|interface
 name|CommentValidator
 block|{
-comment|/**    * Validate the specified commits.    *    * @return An empty list if all commits are valid, or else a list of validation failures.    */
+comment|/**    * Validate the specified comments.    *    * @return An empty list if all comments are valid, or else a list of validation failures.    */
 DECL|method|validateComments ( ImmutableList<CommentForValidation> comments)
 name|ImmutableList
 argument_list|<
