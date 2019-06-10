@@ -237,7 +237,7 @@ class|class
 name|ReceiveCommitsAdvertiseRefsHookChain
 block|{
 comment|/**    * Returns a single {@link AdvertiseRefsHook} that encompasses a chain of {@link    * AdvertiseRefsHook} to be used for advertising when processing a Git push.    */
-DECL|method|create ( AllRefsWatcher allRefsWatcher, PermissionBackend.ForProject perm, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName)
+DECL|method|create ( AllRefsWatcher allRefsWatcher, PermissionBackend.ForProject perm, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName, boolean skipDefaultAdvertiseRefsHook)
 specifier|public
 specifier|static
 name|AdvertiseRefsHook
@@ -261,6 +261,9 @@ name|Project
 operator|.
 name|NameKey
 name|projectName
+parameter_list|,
+name|boolean
+name|skipDefaultAdvertiseRefsHook
 parameter_list|)
 block|{
 return|return
@@ -274,6 +277,8 @@ name|queryProvider
 argument_list|,
 name|projectName
 argument_list|,
+name|skipDefaultAdvertiseRefsHook
+argument_list|,
 literal|false
 argument_list|)
 return|;
@@ -281,7 +286,7 @@ block|}
 comment|/**    * Returns a single {@link AdvertiseRefsHook} that encompasses a chain of {@link    * AdvertiseRefsHook} to be used for advertising when processing a Git push. Omits {@link    * HackPushNegotiateHook} as that does not advertise refs on it's own but adds {@code .have} based    * on history which is not relevant for the tests we have.    */
 annotation|@
 name|VisibleForTesting
-DECL|method|createForTest ( PermissionBackend.ForProject perm, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName)
+DECL|method|createForTest ( PermissionBackend.ForProject perm, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName, boolean skipDefaultAdvertiseRefsHook)
 specifier|public
 specifier|static
 name|AdvertiseRefsHook
@@ -302,6 +307,9 @@ name|Project
 operator|.
 name|NameKey
 name|projectName
+parameter_list|,
+name|boolean
+name|skipDefaultAdvertiseRefsHook
 parameter_list|)
 block|{
 return|return
@@ -317,11 +325,13 @@ name|queryProvider
 argument_list|,
 name|projectName
 argument_list|,
+name|skipDefaultAdvertiseRefsHook
+argument_list|,
 literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|create ( AllRefsWatcher allRefsWatcher, PermissionBackend.ForProject perm, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName, boolean skipHackPushNegotiateHook)
+DECL|method|create ( AllRefsWatcher allRefsWatcher, PermissionBackend.ForProject perm, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName, boolean skipDefaultAdvertiseRefsHook, boolean skipHackPushNegotiateHook)
 specifier|private
 specifier|static
 name|AdvertiseRefsHook
@@ -347,6 +357,9 @@ name|NameKey
 name|projectName
 parameter_list|,
 name|boolean
+name|skipDefaultAdvertiseRefsHook
+parameter_list|,
+name|boolean
 name|skipHackPushNegotiateHook
 parameter_list|)
 block|{
@@ -368,6 +381,12 @@ argument_list|(
 name|allRefsWatcher
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|skipDefaultAdvertiseRefsHook
+condition|)
+block|{
 name|advHooks
 operator|.
 name|add
@@ -392,6 +411,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|advHooks
 operator|.
 name|add
