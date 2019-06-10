@@ -1233,11 +1233,11 @@ annotation|@
 name|ConfigSuite
 operator|.
 name|Config
-DECL|method|enableRefPermissionBackend ()
+DECL|method|enableAdvertiseRefsHook ()
 specifier|public
 specifier|static
 name|Config
-name|enableRefPermissionBackend
+name|enableAdvertiseRefsHook
 parameter_list|()
 block|{
 name|Config
@@ -1259,7 +1259,7 @@ literal|"refPermissionBackend"
 argument_list|,
 name|RefPermissionBackend
 operator|.
-name|PERMISSION_AWARE_REF_DATABASE
+name|ADVERTISE_REF_HOOK
 operator|.
 name|name
 argument_list|()

@@ -303,7 +303,7 @@ literal|"refPermissionBackend"
 argument_list|,
 name|RefPermissionBackend
 operator|.
-name|ADVERTISE_REF_HOOK
+name|PERMISSION_AWARE_REF_DATABASE
 argument_list|)
 expr_stmt|;
 name|enableProtocolV2
