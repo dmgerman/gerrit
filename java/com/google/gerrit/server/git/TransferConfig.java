@@ -316,7 +316,7 @@ literal|"receive"
 argument_list|,
 literal|"enableProtocolV2"
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 name|packConfig
