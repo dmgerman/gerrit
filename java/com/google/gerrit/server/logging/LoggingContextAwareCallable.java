@@ -82,6 +82,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -109,6 +123,18 @@ argument_list|<
 name|T
 argument_list|>
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|field|callable
 specifier|private
 specifier|final
@@ -256,7 +282,6 @@ name|call
 argument_list|()
 return|;
 block|}
-comment|// propagate logging context
 name|LoggingContext
 name|loggingCtx
 init|=
@@ -265,6 +290,29 @@ operator|.
 name|getInstance
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|loggingCtx
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Logging context is not empty: %s"
+argument_list|,
+name|loggingCtx
+argument_list|)
+expr_stmt|;
+block|}
+comment|// propagate logging context
 name|loggingCtx
 operator|.
 name|setTags
@@ -313,26 +361,7 @@ block|{
 comment|// Cleanup logging context. This is important if the thread is pooled and reused.
 name|loggingCtx
 operator|.
-name|clearTags
-argument_list|()
-expr_stmt|;
-name|loggingCtx
-operator|.
-name|forceLogging
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|loggingCtx
-operator|.
-name|performanceLogging
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|loggingCtx
-operator|.
-name|clearPerformanceLogEntries
+name|clear
 argument_list|()
 expr_stmt|;
 block|}
