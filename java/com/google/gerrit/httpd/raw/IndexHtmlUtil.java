@@ -373,7 +373,7 @@ name|forEnclosingClass
 argument_list|()
 decl_stmt|;
 comment|/**    * Returns both static and dynamic parameters of {@code index.html}. The result is to be used when    * rendering the soy template.    */
-DECL|method|templateData ( GerritApi gerritApi, String canonicalURL, String cdnPath, String faviconPath, Function<String, SanitizedContent> urlInScriptTagOrdainer)
+DECL|method|templateData ( GerritApi gerritApi, String canonicalURL, String cdnPath, String faviconPath, Map<String, String[]> urlParameterMap, Function<String, SanitizedContent> urlInScriptTagOrdainer)
 specifier|public
 specifier|static
 name|ImmutableMap
@@ -395,6 +395,15 @@ name|cdnPath
 parameter_list|,
 name|String
 name|faviconPath
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+index|[]
+argument_list|>
+name|urlParameterMap
 parameter_list|,
 name|Function
 argument_list|<
@@ -429,6 +438,8 @@ argument_list|,
 name|cdnPath
 argument_list|,
 name|faviconPath
+argument_list|,
+name|urlParameterMap
 argument_list|,
 name|urlInScriptTagOrdainer
 argument_list|)
@@ -680,7 +691,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Returns all static parameters of {@code index.html}. */
-DECL|method|staticTemplateData ( String canonicalURL, String cdnPath, String faviconPath, Function<String, SanitizedContent> urlInScriptTagOrdainer)
+DECL|method|staticTemplateData ( String canonicalURL, String cdnPath, String faviconPath, Map<String, String[]> urlParameterMap, Function<String, SanitizedContent> urlInScriptTagOrdainer)
 specifier|static
 name|Map
 argument_list|<
@@ -698,6 +709,15 @@ name|cdnPath
 parameter_list|,
 name|String
 name|faviconPath
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+index|[]
+argument_list|>
+name|urlParameterMap
 parameter_list|,
 name|Function
 argument_list|<
@@ -821,6 +841,26 @@ argument_list|(
 literal|"faviconPath"
 argument_list|,
 name|faviconPath
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|urlParameterMap
+operator|.
+name|containsKey
+argument_list|(
+literal|"p2"
+argument_list|)
+condition|)
+block|{
+name|data
+operator|.
+name|put
+argument_list|(
+literal|"polymer2"
+argument_list|,
+literal|"true"
 argument_list|)
 expr_stmt|;
 block|}
