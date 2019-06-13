@@ -1437,7 +1437,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Creating group '%s'"
+literal|"Creating group"
+argument_list|,
+literal|"groupName"
 argument_list|,
 name|groupUpdate
 operator|.
@@ -1510,7 +1512,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Updating group %s"
+literal|"Updating group"
+argument_list|,
+literal|"groupUuid"
 argument_list|,
 name|groupUuid
 argument_list|)

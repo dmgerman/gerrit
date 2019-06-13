@@ -82,6 +82,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -109,6 +123,18 @@ argument_list|<
 name|T
 argument_list|>
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|field|callable
 specifier|private
 specifier|final
@@ -141,7 +167,20 @@ specifier|final
 name|boolean
 name|forceLogging
 decl_stmt|;
-DECL|method|LoggingContextAwareCallable (Callable<T> callable)
+DECL|field|performanceLogging
+specifier|private
+specifier|final
+name|boolean
+name|performanceLogging
+decl_stmt|;
+DECL|field|mutablePerformanceLogRecords
+specifier|private
+specifier|final
+name|MutablePerformanceLogRecords
+name|mutablePerformanceLogRecords
+decl_stmt|;
+comment|/**    * Creates a LoggingContextAwareCallable that wraps the given {@link Callable}.    *    * @param callable Callable that should be wrapped.    * @param mutablePerformanceLogRecords instance of {@link MutablePerformanceLogRecords} to which    *     performance log records that are created from the runnable are added    */
+DECL|method|LoggingContextAwareCallable ( Callable<T> callable, MutablePerformanceLogRecords mutablePerformanceLogRecords)
 name|LoggingContextAwareCallable
 parameter_list|(
 name|Callable
@@ -149,6 +188,9 @@ argument_list|<
 name|T
 argument_list|>
 name|callable
+parameter_list|,
+name|MutablePerformanceLogRecords
+name|mutablePerformanceLogRecords
 parameter_list|)
 block|{
 name|this
@@ -190,6 +232,24 @@ operator|.
 name|isLoggingForced
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|performanceLogging
+operator|=
+name|LoggingContext
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|isPerformanceLogging
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|mutablePerformanceLogRecords
+operator|=
+name|mutablePerformanceLogRecords
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -222,7 +282,6 @@ name|call
 argument_list|()
 return|;
 block|}
-comment|// propagate logging context
 name|LoggingContext
 name|loggingCtx
 init|=
@@ -231,27 +290,29 @@ operator|.
 name|getInstance
 argument_list|()
 decl_stmt|;
-name|ImmutableSetMultimap
-argument_list|<
-name|String
+if|if
+condition|(
+operator|!
+name|loggingCtx
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Logging context is not empty: %s"
 argument_list|,
-name|String
-argument_list|>
-name|oldTags
-init|=
 name|loggingCtx
-operator|.
-name|getTagsAsMap
-argument_list|()
-decl_stmt|;
-name|boolean
-name|oldForceLogging
-init|=
-name|loggingCtx
-operator|.
-name|isLoggingForced
-argument_list|()
-decl_stmt|;
+argument_list|)
+expr_stmt|;
+block|}
+comment|// propagate logging context
 name|loggingCtx
 operator|.
 name|setTags
@@ -266,6 +327,26 @@ argument_list|(
 name|forceLogging
 argument_list|)
 expr_stmt|;
+name|loggingCtx
+operator|.
+name|performanceLogging
+argument_list|(
+name|performanceLogging
+argument_list|)
+expr_stmt|;
+comment|// For the performance log records use the {@link MutablePerformanceLogRecords} instance from
+comment|// the logging context of the calling thread in the logging context of the new thread. This way
+comment|// performance log records that are created from the new thread are available from the logging
+comment|// context of the calling thread. This is important since performance log records are processed
+comment|// only at the end of the request and performance log records that are created in another thread
+comment|// should not get lost.
+name|loggingCtx
+operator|.
+name|setMutablePerformanceLogRecords
+argument_list|(
+name|mutablePerformanceLogRecords
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 return|return
@@ -277,19 +358,11 @@ return|;
 block|}
 finally|finally
 block|{
+comment|// Cleanup logging context. This is important if the thread is pooled and reused.
 name|loggingCtx
 operator|.
-name|setTags
-argument_list|(
-name|oldTags
-argument_list|)
-expr_stmt|;
-name|loggingCtx
-operator|.
-name|forceLogging
-argument_list|(
-name|oldForceLogging
-argument_list|)
+name|clear
+argument_list|()
 expr_stmt|;
 block|}
 block|}

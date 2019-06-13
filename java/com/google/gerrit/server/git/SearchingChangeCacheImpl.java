@@ -1027,7 +1027,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading changes of project %s"
+literal|"Loading changes of project"
+argument_list|,
+literal|"projectName"
 argument_list|,
 name|key
 argument_list|)

@@ -620,12 +620,16 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Replacing account %d in index version %d"
+literal|"Replacing account in index"
+argument_list|,
+literal|"accountId"
 argument_list|,
 name|id
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|"indexVersion"
 argument_list|,
 name|i
 operator|.
@@ -660,12 +664,16 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Deleteing account %d in index version %d"
+literal|"Deleting account in index"
+argument_list|,
+literal|"accountId"
 argument_list|,
 name|id
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|"indexVersion"
 argument_list|,
 name|i
 operator|.

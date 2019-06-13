@@ -812,7 +812,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading SSH keys for account with username %s"
+literal|"Loading SSH keys for account with username"
+argument_list|,
+literal|"username"
 argument_list|,
 name|username
 argument_list|)

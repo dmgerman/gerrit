@@ -2743,7 +2743,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Read star labels from %s"
+literal|"Read star labels"
+argument_list|,
+literal|"ref"
 argument_list|,
 name|refName
 argument_list|)
@@ -3253,9 +3255,13 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Update star labels in %s (labels=%s)"
+literal|"Update star labels"
+argument_list|,
+literal|"ref"
 argument_list|,
 name|refName
+argument_list|,
+literal|"labels"
 argument_list|,
 name|labels
 argument_list|)
@@ -3455,7 +3461,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Delete star labels in %s"
+literal|"Delete star labels"
+argument_list|,
+literal|"ref"
 argument_list|,
 name|refName
 argument_list|)

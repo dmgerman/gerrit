@@ -852,6 +852,22 @@ name|extensions
 operator|.
 name|registration
 operator|.
+name|DynamicSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
 name|PluginName
 import|;
 end_import
@@ -1465,6 +1481,38 @@ operator|.
 name|group
 operator|.
 name|GroupAuditService
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|logging
+operator|.
+name|PerformanceLogContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|logging
+operator|.
+name|PerformanceLogger
 import|;
 end_import
 
@@ -2555,9 +2603,17 @@ specifier|final
 name|RestApiQuotaEnforcer
 name|quotaChecker
 decl_stmt|;
+DECL|field|performanceLoggers
+specifier|final
+name|DynamicSet
+argument_list|<
+name|PerformanceLogger
+argument_list|>
+name|performanceLoggers
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Globals ( Provider<CurrentUser> currentUser, DynamicItem<WebSession> webSession, Provider<ParameterParser> paramParser, PermissionBackend permissionBackend, GroupAuditService auditService, RestApiMetrics metrics, RestApiQuotaEnforcer quotaChecker, @GerritServerConfig Config cfg)
+DECL|method|Globals ( Provider<CurrentUser> currentUser, DynamicItem<WebSession> webSession, Provider<ParameterParser> paramParser, PermissionBackend permissionBackend, GroupAuditService auditService, RestApiMetrics metrics, RestApiQuotaEnforcer quotaChecker, @GerritServerConfig Config cfg, DynamicSet<PerformanceLogger> performanceLoggers)
 name|Globals
 parameter_list|(
 name|Provider
@@ -2594,6 +2650,12 @@ annotation|@
 name|GerritServerConfig
 name|Config
 name|cfg
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|PerformanceLogger
+argument_list|>
+name|performanceLoggers
 parameter_list|)
 block|{
 name|this
@@ -2637,6 +2699,12 @@ operator|.
 name|quotaChecker
 operator|=
 name|quotaChecker
+expr_stmt|;
+name|this
+operator|.
+name|performanceLoggers
+operator|=
+name|performanceLoggers
 expr_stmt|;
 name|allowOrigin
 operator|=
@@ -2944,6 +3012,25 @@ name|PerThreadCache
 operator|.
 name|create
 argument_list|()
+init|)
+block|{
+comment|// It's important that the PerformanceLogContext is closed before the response is sent to
+comment|// the client. Only this way it is ensured that the invocation of the PerformanceLogger
+comment|// plugins happens before the client sees the response. This is needed for being able to
+comment|// test performance logging from an acceptance test (see
+comment|// TraceIT#performanceLoggingForRestCall()).
+try|try
+init|(
+name|PerformanceLogContext
+name|performanceLogContext
+init|=
+operator|new
+name|PerformanceLogContext
+argument_list|(
+name|globals
+operator|.
+name|performanceLoggers
+argument_list|)
 init|)
 block|{
 name|logger
@@ -4328,9 +4415,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_class
-
-begin_elseif
 elseif|else
 if|if
 condition|(
@@ -4432,10 +4516,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_elseif
+block|}
+end_class
 
-begin_block
-unit|} else
+begin_else
+else|else
 block|{
 throw|throw
 operator|new
@@ -4443,7 +4528,7 @@ name|ResourceNotFoundException
 argument_list|()
 throw|;
 block|}
-end_block
+end_else
 
 begin_if
 if|if
@@ -4644,16 +4729,16 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
-begin_if
-if|if
-condition|(
+begin_expr_stmt
+unit|}          if
+operator|(
 name|result
 operator|!=
 name|Response
 operator|.
 name|none
 argument_list|()
-condition|)
+operator|)
 block|{
 name|result
 operator|=
@@ -4663,7 +4748,7 @@ name|unwrap
 argument_list|(
 name|result
 argument_list|)
-expr_stmt|;
+block|;
 if|if
 condition|(
 name|result
@@ -4686,6 +4771,9 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
+end_expr_stmt
+
+begin_else
 else|else
 block|{
 name|responseBytes
@@ -4707,17 +4795,17 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_if
+end_else
 
-begin_expr_stmt
-unit|} catch
-operator|(
+begin_catch
+unit|}       }
+catch|catch
+parameter_list|(
 name|MalformedJsonException
-operator||
+decl||
 name|JsonParseException
 name|e
-operator|)
+parameter_list|)
 block|{
 name|responseBytes
 operator|=
@@ -4739,8 +4827,9 @@ literal|" in request"
 argument_list|,
 name|e
 argument_list|)
-block|;       }
-end_expr_stmt
+expr_stmt|;
+block|}
+end_catch
 
 begin_catch
 catch|catch

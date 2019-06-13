@@ -1066,7 +1066,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading group %s by ID"
+literal|"Loading group by ID"
+argument_list|,
+literal|"groupId"
 argument_list|,
 name|key
 argument_list|)
@@ -1154,7 +1156,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading group '%s' by name"
+literal|"Loading group by name"
+argument_list|,
+literal|"groupName"
 argument_list|,
 name|name
 argument_list|)
@@ -1241,7 +1245,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Loading group %s by UUID"
+literal|"Loading group by UUID"
+argument_list|,
+literal|"groupUuid"
 argument_list|,
 name|uuid
 argument_list|)

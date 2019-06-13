@@ -1032,7 +1032,9 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Replacing change %d in index version %d"
+literal|"Replacing change in index"
+argument_list|,
+literal|"changeId"
 argument_list|,
 name|cd
 operator|.
@@ -1041,6 +1043,8 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|"indexVersion"
 argument_list|,
 name|i
 operator|.
@@ -1743,12 +1747,16 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Deleteing change %d in index version %d"
+literal|"Deleting change in index"
+argument_list|,
+literal|"changeId"
 argument_list|,
 name|id
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|"indexVersion"
 argument_list|,
 name|i
 operator|.
