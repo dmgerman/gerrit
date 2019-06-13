@@ -2415,22 +2415,6 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|// Initialize if it wasn't yet
-if|if
-condition|(
-name|visibleChanges
-operator|==
-literal|null
-condition|)
-block|{
-name|visible
-argument_list|(
-name|repo
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|id
@@ -2478,6 +2462,22 @@ block|{
 return|return
 literal|true
 return|;
+block|}
+comment|// Initialize visibleChanges if it wasn't initialized yet.
+if|if
+condition|(
+name|visibleChanges
+operator|==
+literal|null
+condition|)
+block|{
+name|visible
+argument_list|(
+name|repo
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
