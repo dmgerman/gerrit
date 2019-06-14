@@ -4717,16 +4717,24 @@ parameter_list|)
 block|{
 name|logger
 operator|.
-name|atFinest
+name|atFine
 argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"Calling user: %s"
+literal|"Calling user: %s (groups = %s)"
 argument_list|,
 name|user
 operator|.
 name|getLoggableName
+argument_list|()
+argument_list|,
+name|user
+operator|.
+name|getEffectiveGroups
+argument_list|()
+operator|.
+name|getKnownGroups
 argument_list|()
 argument_list|)
 expr_stmt|;
