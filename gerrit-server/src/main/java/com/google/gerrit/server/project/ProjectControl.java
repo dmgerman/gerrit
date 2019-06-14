@@ -90,6 +90,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|AccessSection
+operator|.
+name|ALL
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -97,6 +115,24 @@ operator|.
 name|RefNames
 operator|.
 name|REFS_TAGS
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|MagicBranch
+operator|.
+name|NEW_CHANGE
 import|;
 end_import
 
@@ -1518,7 +1554,7 @@ operator|&&
 operator|!
 name|controlForRef
 argument_list|(
-literal|"refs/*"
+name|ALL
 argument_list|)
 operator|.
 name|isBlocked
@@ -1783,7 +1819,7 @@ argument_list|()
 operator|.
 name|startsWith
 argument_list|(
-literal|"refs/for/"
+name|NEW_CHANGE
 argument_list|)
 condition|)
 block|{
@@ -2174,8 +2210,6 @@ name|patterns
 operator|.
 name|contains
 argument_list|(
-name|AccessSection
-operator|.
 name|ALL
 argument_list|)
 condition|)
