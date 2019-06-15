@@ -1549,10 +1549,14 @@ argument_list|)
 condition|)
 block|{
 name|SslContextFactory
+operator|.
+name|Server
 name|ssl
 init|=
 operator|new
 name|SslContextFactory
+operator|.
+name|Server
 argument_list|()
 decl_stmt|;
 specifier|final
