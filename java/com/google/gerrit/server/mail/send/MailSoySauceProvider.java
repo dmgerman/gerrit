@@ -184,9 +184,11 @@ name|template
 operator|.
 name|soy
 operator|.
-name|shared
+name|jbcsrc
 operator|.
-name|SoyAstCache
+name|api
+operator|.
+name|SoySauce
 import|;
 end_import
 
@@ -200,9 +202,9 @@ name|template
 operator|.
 name|soy
 operator|.
-name|tofu
+name|shared
 operator|.
-name|SoyTofu
+name|SoyAstCache
 import|;
 end_import
 
@@ -263,20 +265,20 @@ import|;
 end_import
 
 begin_comment
-comment|/** Configures Soy Tofu object for rendering email templates. */
+comment|/** Configures Soy Sauce object for rendering email templates. */
 end_comment
 
 begin_class
 annotation|@
 name|Singleton
-DECL|class|MailSoyTofuProvider
+DECL|class|MailSoySauceProvider
 specifier|public
 class|class
-name|MailSoyTofuProvider
+name|MailSoySauceProvider
 implements|implements
 name|Provider
 argument_list|<
-name|SoyTofu
+name|SoySauce
 argument_list|>
 block|{
 comment|// Note: will fail to construct the tofu object if this array is empty.
@@ -384,8 +386,8 @@ name|cache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MailSoyTofuProvider (SitePaths site, SoyAstCache cache)
-name|MailSoyTofuProvider
+DECL|method|MailSoySauceProvider (SitePaths site, SoyAstCache cache)
+name|MailSoySauceProvider
 parameter_list|(
 name|SitePaths
 name|site
@@ -411,7 +413,7 @@ annotation|@
 name|Override
 DECL|method|get ()
 specifier|public
-name|SoyTofu
+name|SoySauce
 name|get
 parameter_list|()
 throws|throws
@@ -456,7 +458,7 @@ operator|.
 name|build
 argument_list|()
 operator|.
-name|compileToTofu
+name|compileTemplates
 argument_list|()
 return|;
 block|}

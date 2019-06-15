@@ -2186,7 +2186,7 @@ name|mail
 operator|.
 name|send
 operator|.
-name|MailSoyTofuProvider
+name|MailSoySauceProvider
 import|;
 end_import
 
@@ -2938,9 +2938,11 @@ name|template
 operator|.
 name|soy
 operator|.
-name|tofu
+name|jbcsrc
 operator|.
-name|SoyTofu
+name|api
+operator|.
+name|SoySauce
 import|;
 end_import
 
@@ -3607,7 +3609,7 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
-name|SoyTofu
+name|SoySauce
 operator|.
 name|class
 argument_list|)
@@ -3621,7 +3623,7 @@ argument_list|)
 operator|.
 name|toProvider
 argument_list|(
-name|MailSoyTofuProvider
+name|MailSoySauceProvider
 operator|.
 name|class
 argument_list|)
