@@ -202,12 +202,6 @@ specifier|final
 name|boolean
 name|inheritProjectMaxObjectSizeLimit
 decl_stmt|;
-DECL|field|refPermissionBackend
-specifier|private
-specifier|final
-name|RefPermissionBackend
-name|refPermissionBackend
-decl_stmt|;
 DECL|field|enableProtocolV2
 specifier|private
 specifier|final
@@ -287,23 +281,6 @@ argument_list|,
 literal|"inheritProjectMaxObjectSizeLimit"
 argument_list|,
 literal|false
-argument_list|)
-expr_stmt|;
-name|refPermissionBackend
-operator|=
-name|cfg
-operator|.
-name|getEnum
-argument_list|(
-literal|"receive"
-argument_list|,
-literal|null
-argument_list|,
-literal|"refPermissionBackend"
-argument_list|,
-name|RefPermissionBackend
-operator|.
-name|PERMISSION_AWARE_REF_DATABASE
 argument_list|)
 expr_stmt|;
 name|enableProtocolV2
@@ -396,16 +373,6 @@ parameter_list|()
 block|{
 return|return
 name|inheritProjectMaxObjectSizeLimit
-return|;
-block|}
-DECL|method|getRefPermissionBackend ()
-specifier|public
-name|RefPermissionBackend
-name|getRefPermissionBackend
-parameter_list|()
-block|{
-return|return
-name|refPermissionBackend
 return|;
 block|}
 DECL|method|enableProtocolV2 ()
