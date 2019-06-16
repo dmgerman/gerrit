@@ -682,11 +682,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|config
-operator|.
-name|enableProtocolV2
-argument_list|()
-operator|&&
 name|extraParameters
 operator|!=
 literal|null
