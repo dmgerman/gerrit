@@ -203,25 +203,6 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getCount (ChangeInfo info)
-name|long
-name|getCount
-parameter_list|(
-name|ChangeInfo
-name|info
-parameter_list|)
-block|{
-return|return
-name|countsByChange
-operator|.
-name|get
-argument_list|(
-name|info
-operator|.
-name|_number
-argument_list|)
-return|;
-block|}
 DECL|method|assertReindexOf (ChangeInfo info)
 specifier|public
 name|void
@@ -239,7 +220,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertReindexOf (ChangeInfo info, int expectedCount)
+DECL|method|assertReindexOf (ChangeInfo info, long expectedCount)
 specifier|public
 name|void
 name|assertReindexOf
@@ -247,31 +228,25 @@ parameter_list|(
 name|ChangeInfo
 name|info
 parameter_list|,
-name|int
+name|long
 name|expectedCount
 parameter_list|)
 block|{
 name|assertThat
 argument_list|(
-name|getCount
+name|countsByChange
+operator|.
+name|asMap
+argument_list|()
+argument_list|)
+operator|.
+name|containsExactly
 argument_list|(
 name|info
-argument_list|)
-argument_list|)
 operator|.
-name|isEqualTo
-argument_list|(
+name|_number
+argument_list|,
 name|expectedCount
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|countsByChange
-argument_list|)
-operator|.
-name|hasSize
-argument_list|(
-literal|1
 argument_list|)
 expr_stmt|;
 name|clear
