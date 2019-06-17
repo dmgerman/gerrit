@@ -213,7 +213,10 @@ name|UNKNOWN_ACCOUNT
 block|,
 DECL|enumConstant|INTERNAL_EXCEPTION
 name|INTERNAL_EXCEPTION
-block|;   }
+block|,
+DECL|enumConstant|COMMENT_REJECTED
+name|COMMENT_REJECTED
+block|}
 DECL|interface|Factory
 specifier|public
 interface|interface
