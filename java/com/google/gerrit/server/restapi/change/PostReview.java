@@ -6913,7 +6913,7 @@ name|toImmutableList
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|List
+name|ImmutableList
 argument_list|<
 name|CommentValidationFailure
 argument_list|>
@@ -9634,7 +9634,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|List
+name|ImmutableList
 argument_list|<
 name|CommentValidationFailure
 argument_list|>
