@@ -142,6 +142,12 @@ specifier|final
 name|boolean
 name|omitType
 decl_stmt|;
+DECL|field|defaultNumberOfShards
+specifier|private
+specifier|final
+name|int
+name|defaultNumberOfShards
+decl_stmt|;
 DECL|field|searchFilteringName
 specifier|private
 specifier|final
@@ -218,6 +224,19 @@ name|version
 operator|.
 name|isV7OrLater
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|defaultNumberOfShards
+operator|=
+name|version
+operator|.
+name|isV7OrLater
+argument_list|()
+condition|?
+literal|1
+else|:
+literal|5
 expr_stmt|;
 name|this
 operator|.
@@ -401,6 +420,15 @@ parameter_list|()
 block|{
 return|return
 name|omitType
+return|;
+block|}
+DECL|method|getDefaultNumberOfShards ()
+name|int
+name|getDefaultNumberOfShards
+parameter_list|()
+block|{
+return|return
+name|defaultNumberOfShards
 return|;
 block|}
 DECL|method|getType ()
