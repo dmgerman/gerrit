@@ -253,10 +253,10 @@ parameter_list|)
 block|{
 switch|switch
 condition|(
-name|getSQLStateInt
-argument_list|(
 name|err
-argument_list|)
+operator|.
+name|getErrorCode
+argument_list|()
 condition|)
 block|{
 case|case
