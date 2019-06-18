@@ -224,9 +224,11 @@ name|template
 operator|.
 name|soy
 operator|.
-name|tofu
+name|jbcsrc
 operator|.
-name|SoyTofu
+name|api
+operator|.
+name|SoySauce
 import|;
 end_import
 
@@ -365,11 +367,11 @@ specifier|final
 name|GerritApi
 name|gerritApi
 decl_stmt|;
-DECL|field|soyTofu
+DECL|field|soySauce
 specifier|private
 specifier|final
-name|SoyTofu
-name|soyTofu
+name|SoySauce
+name|soySauce
 decl_stmt|;
 DECL|field|urlOrdainer
 specifier|private
@@ -430,7 +432,7 @@ name|gerritApi
 expr_stmt|;
 name|this
 operator|.
-name|soyTofu
+name|soySauce
 operator|=
 name|SoyFileSet
 operator|.
@@ -450,7 +452,7 @@ operator|.
 name|build
 argument_list|()
 operator|.
-name|compileToTofu
+name|compileTemplates
 argument_list|()
 expr_stmt|;
 name|this
@@ -491,7 +493,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|SoyTofu
+name|SoySauce
 operator|.
 name|Renderer
 name|renderer
@@ -540,14 +542,14 @@ argument_list|)
 decl_stmt|;
 name|renderer
 operator|=
-name|soyTofu
+name|soySauce
 operator|.
-name|newRenderer
+name|renderTemplate
 argument_list|(
 literal|"com.google.gerrit.httpd.raw.Index"
 argument_list|)
 operator|.
-name|setContentKind
+name|setExpectedContentKind
 argument_list|(
 name|SanitizedContent
 operator|.
@@ -620,6 +622,9 @@ argument_list|(
 name|renderer
 operator|.
 name|render
+argument_list|()
+operator|.
+name|get
 argument_list|()
 operator|.
 name|getBytes

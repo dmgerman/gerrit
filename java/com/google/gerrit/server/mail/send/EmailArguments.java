@@ -560,9 +560,11 @@ name|template
 operator|.
 name|soy
 operator|.
-name|tofu
+name|jbcsrc
 operator|.
-name|SoyTofu
+name|api
+operator|.
+name|SoySauce
 import|;
 end_import
 
@@ -741,10 +743,10 @@ operator|.
 name|Factory
 name|changeDataFactory
 decl_stmt|;
-DECL|field|soyTofu
+DECL|field|soySauce
 specifier|final
-name|SoyTofu
-name|soyTofu
+name|SoySauce
+name|soySauce
 decl_stmt|;
 DECL|field|settings
 specifier|final
@@ -787,7 +789,7 @@ name|instanceNameProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments ( GitRepositoryManager server, ProjectCache projectCache, PermissionBackend permissionBackend, GroupBackend groupBackend, AccountCache accountCache, PatchListCache patchListCache, PatchSetUtil patchSetUtil, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, ChangeNotes.Factory changeNotesFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, GerritPersonIdentProvider gerritPersonIdentProvider, DynamicItem<UrlFormatter> urlFormatter, AllProjectsName allProjectsName, ChangeQueryBuilder queryBuilder, ChangeData.Factory changeDataFactory, @MailTemplates SoyTofu soyTofu, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, SitePaths site, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners, Provider<InternalAccountQuery> accountQueryProvider, OutgoingEmailValidator validator, @GerritInstanceName Provider<String> instanceNameProvider, @GerritServerConfig Config cfg)
+DECL|method|EmailArguments ( GitRepositoryManager server, ProjectCache projectCache, PermissionBackend permissionBackend, GroupBackend groupBackend, AccountCache accountCache, PatchListCache patchListCache, PatchSetUtil patchSetUtil, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, ChangeNotes.Factory changeNotesFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, GerritPersonIdentProvider gerritPersonIdentProvider, DynamicItem<UrlFormatter> urlFormatter, AllProjectsName allProjectsName, ChangeQueryBuilder queryBuilder, ChangeData.Factory changeDataFactory, @MailTemplates SoySauce soySauce, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, SitePaths site, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners, Provider<InternalAccountQuery> accountQueryProvider, OutgoingEmailValidator validator, @GerritInstanceName Provider<String> instanceNameProvider, @GerritServerConfig Config cfg)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -861,8 +863,8 @@ name|changeDataFactory
 parameter_list|,
 annotation|@
 name|MailTemplates
-name|SoyTofu
-name|soyTofu
+name|SoySauce
+name|soySauce
 parameter_list|,
 name|EmailSettings
 name|settings
@@ -1032,9 +1034,9 @@ name|changeDataFactory
 expr_stmt|;
 name|this
 operator|.
-name|soyTofu
+name|soySauce
 operator|=
-name|soyTofu
+name|soySauce
 expr_stmt|;
 name|this
 operator|.
