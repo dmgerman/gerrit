@@ -313,6 +313,30 @@ argument_list|)
 return|;
 block|}
 comment|/** Returns a URL pointing to a section of the settings page. */
+DECL|method|getSettingsUrl ()
+specifier|default
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getSettingsUrl
+parameter_list|()
+block|{
+return|return
+name|getWebUrl
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|url
+lambda|->
+name|url
+operator|+
+literal|"settings"
+argument_list|)
+return|;
+block|}
+comment|/**    * Returns a URL pointing to a section of the settings page, or the settings page if {@code    * section} is null.    */
 DECL|method|getSettingsUrl (@ullable String section)
 specifier|default
 name|Optional
@@ -328,7 +352,17 @@ name|section
 parameter_list|)
 block|{
 return|return
-name|getWebUrl
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|section
+argument_list|)
+condition|?
+name|getSettingsUrl
+argument_list|()
+else|:
+name|getSettingsUrl
 argument_list|()
 operator|.
 name|map
@@ -337,22 +371,9 @@ name|url
 lambda|->
 name|url
 operator|+
-literal|"settings"
-operator|+
-operator|(
-name|Strings
-operator|.
-name|isNullOrEmpty
-argument_list|(
-name|section
-argument_list|)
-condition|?
-literal|""
-else|:
 literal|"#"
 operator|+
 name|section
-operator|)
 argument_list|)
 return|;
 block|}
