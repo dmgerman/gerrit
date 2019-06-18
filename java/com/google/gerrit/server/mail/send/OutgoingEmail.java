@@ -2007,7 +2007,7 @@ literal|null
 return|;
 block|}
 DECL|method|getGerritUrl ()
-specifier|public
+specifier|private
 name|String
 name|getGerritUrl
 parameter_list|()
