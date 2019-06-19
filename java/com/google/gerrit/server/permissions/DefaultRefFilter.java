@@ -1634,6 +1634,8 @@ name|refs
 operator|=
 name|addUsersSelfSymref
 argument_list|(
+name|repo
+argument_list|,
 name|refs
 argument_list|)
 expr_stmt|;
@@ -2845,7 +2847,7 @@ return|return
 name|refs
 return|;
 block|}
-DECL|method|addUsersSelfSymref (Map<String, Ref> refs)
+DECL|method|addUsersSelfSymref (Repository repo, Map<String, Ref> refs)
 specifier|private
 name|Map
 argument_list|<
@@ -2855,6 +2857,9 @@ name|Ref
 argument_list|>
 name|addUsersSelfSymref
 parameter_list|(
+name|Repository
+name|repo
+parameter_list|,
 name|Map
 argument_list|<
 name|String
@@ -2863,6 +2868,8 @@ name|Ref
 argument_list|>
 name|refs
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 block|{
 if|if
 condition|(
@@ -2885,12 +2892,14 @@ name|getAccountId
 argument_list|()
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|Ref
 name|r
 init|=
-name|refs
+name|repo
 operator|.
-name|get
+name|exactRef
 argument_list|(
 name|refName
 argument_list|)
@@ -2964,6 +2973,21 @@ argument_list|,
 name|refName
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|PermissionBackendException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 return|return
 name|refs
