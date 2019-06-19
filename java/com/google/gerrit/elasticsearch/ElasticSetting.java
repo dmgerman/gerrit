@@ -119,13 +119,16 @@ argument_list|,
 literal|"\\u0020"
 argument_list|)
 decl_stmt|;
-DECL|method|createSetting (ElasticConfiguration config)
+DECL|method|createSetting (ElasticConfiguration config, ElasticQueryAdapter adapter)
 specifier|static
 name|SettingProperties
 name|createSetting
 parameter_list|(
 name|ElasticConfiguration
 name|config
+parameter_list|,
+name|ElasticQueryAdapter
+name|adapter
 parameter_list|)
 block|{
 return|return
@@ -144,6 +147,8 @@ operator|.
 name|build
 argument_list|(
 name|config
+argument_list|,
+name|adapter
 argument_list|)
 return|;
 block|}
@@ -172,12 +177,15 @@ name|Builder
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|build (ElasticConfiguration config)
+DECL|method|build (ElasticConfiguration config, ElasticQueryAdapter adapter)
 name|SettingProperties
 name|build
 parameter_list|(
 name|ElasticConfiguration
 name|config
+parameter_list|,
+name|ElasticQueryAdapter
+name|adapter
 parameter_list|)
 block|{
 name|SettingProperties
@@ -202,7 +210,10 @@ name|numberOfShards
 operator|=
 name|config
 operator|.
-name|numberOfShards
+name|getNumberOfShards
+argument_list|(
+name|adapter
+argument_list|)
 expr_stmt|;
 name|properties
 operator|.
