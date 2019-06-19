@@ -1616,7 +1616,12 @@ init|=
 name|concatJsonString
 argument_list|(
 name|getSettings
+argument_list|(
+name|client
+operator|.
+name|adapter
 argument_list|()
+argument_list|)
 argument_list|,
 name|getMappings
 argument_list|()
@@ -1700,11 +1705,14 @@ name|String
 name|getMappings
 parameter_list|()
 function_decl|;
-DECL|method|getSettings ()
+DECL|method|getSettings (ElasticQueryAdapter adapter)
 specifier|private
 name|String
 name|getSettings
-parameter_list|()
+parameter_list|(
+name|ElasticQueryAdapter
+name|adapter
+parameter_list|)
 block|{
 return|return
 name|gson
@@ -1722,6 +1730,8 @@ operator|.
 name|createSetting
 argument_list|(
 name|config
+argument_list|,
+name|adapter
 argument_list|)
 argument_list|)
 argument_list|)
