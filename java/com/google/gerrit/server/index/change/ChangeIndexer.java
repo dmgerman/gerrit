@@ -1384,7 +1384,7 @@ block|}
 return|return
 name|Futures
 operator|.
-name|immediateCheckedFuture
+name|immediateFuture
 argument_list|(
 literal|false
 argument_list|)
