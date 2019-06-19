@@ -1910,6 +1910,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|logging
+operator|.
+name|TraceContext
+operator|.
+name|TraceTimer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|MailUtil
@@ -4726,6 +4744,21 @@ name|traceId
 argument_list|)
 argument_list|)
 init|;
+name|TraceTimer
+name|traceTimer
+operator|=
+name|newTimer
+argument_list|(
+literal|"processCommands"
+argument_list|,
+literal|"commandCount"
+argument_list|,
+name|commands
+operator|.
+name|size
+argument_list|()
+argument_list|)
+init|;
 name|PerformanceLogContext
 name|performanceLogContext
 operator|=
@@ -5097,20 +5130,11 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-for|for
-control|(
-name|ReceiveCommand
-name|cmd
-range|:
-name|directPatchSetPushCommands
-control|)
-block|{
-name|parseDirectChangesPush
+name|parseDirectChangesPushCommands
 argument_list|(
-name|cmd
+name|directPatchSetPushCommands
 argument_list|)
 expr_stmt|;
-block|}
 name|boolean
 name|first
 init|=
@@ -5419,6 +5443,24 @@ throws|,
 name|IOException
 throws|,
 name|NoSuchProjectException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"handleRegularCommands"
+argument_list|,
+literal|"commandCount"
+argument_list|,
+name|cmds
+operator|.
+name|size
+argument_list|()
+argument_list|)
+init|)
 block|{
 name|resultChangeIds
 operator|.
@@ -5793,6 +5835,7 @@ argument_list|(
 literal|"Can't update the superprojects"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -6558,6 +6601,24 @@ name|Task
 name|replaceProgress
 parameter_list|)
 block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"insertChangesAndPatchSets"
+argument_list|,
+literal|"changeCount"
+argument_list|,
+name|newChanges
+operator|.
+name|size
+argument_list|()
+argument_list|)
+init|)
+block|{
 name|ReceiveCommand
 name|magicBranchCmd
 init|=
@@ -7190,6 +7251,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 DECL|method|buildError (String error, List<String> branches)
 specifier|private
 name|String
@@ -7556,6 +7618,52 @@ name|matches
 argument_list|()
 return|;
 block|}
+DECL|method|parseDirectChangesPushCommands (List<ReceiveCommand> cmds)
+specifier|private
+name|void
+name|parseDirectChangesPushCommands
+parameter_list|(
+name|List
+argument_list|<
+name|ReceiveCommand
+argument_list|>
+name|cmds
+parameter_list|)
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"parseDirectChangesPushCommands"
+argument_list|,
+literal|"commandCount"
+argument_list|,
+name|cmds
+operator|.
+name|size
+argument_list|()
+argument_list|)
+init|)
+block|{
+for|for
+control|(
+name|ReceiveCommand
+name|cmd
+range|:
+name|cmds
+control|)
+block|{
+name|parseDirectChangesPush
+argument_list|(
+name|cmd
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 DECL|method|parseDirectChangesPush (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -7564,6 +7672,21 @@ parameter_list|(
 name|ReceiveCommand
 name|cmd
 parameter_list|)
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"parseDirectChangesPush"
+argument_list|,
+literal|"allowPushToRefsChanges"
+argument_list|,
+name|allowPushToRefsChanges
+argument_list|)
+init|)
 block|{
 name|Matcher
 name|m
@@ -7641,6 +7764,7 @@ argument_list|,
 literal|"upload to refs/changes not allowed"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Wrap ReceiveCommand so the progress counter works automatically.
@@ -7808,6 +7932,17 @@ throws|,
 name|NoSuchProjectException
 throws|,
 name|IOException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"parseRegularCommand"
+argument_list|)
+init|)
 block|{
 if|if
 condition|(
@@ -8078,6 +8213,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|/** Validates a push to refs/meta/config, and reject the command if it fails. */
 DECL|method|validateConfigPush (ReceiveCommand cmd)
 specifier|private
@@ -8089,6 +8225,17 @@ name|cmd
 parameter_list|)
 throws|throws
 name|PermissionBackendException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"validateConfigPush"
+argument_list|)
+init|)
 block|{
 name|logger
 operator|.
@@ -8517,6 +8664,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|/**    * validates a push to refs/meta/config for plugin configuration, and rejects the push if it    * fails.    */
 DECL|method|validatePluginConfig (ReceiveCommand cmd, ProjectConfig cfg)
 specifier|private
@@ -8785,6 +8933,17 @@ name|NoSuchProjectException
 throws|,
 name|IOException
 block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"parseCreate"
+argument_list|)
+init|)
+block|{
 name|RevObject
 name|obj
 decl_stmt|;
@@ -8986,6 +9145,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|method|parseUpdate (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -8996,6 +9156,19 @@ name|cmd
 parameter_list|)
 throws|throws
 name|PermissionBackendException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|TraceContext
+operator|.
+name|newTimer
+argument_list|(
+literal|"parseUpdate"
+argument_list|)
+init|)
 block|{
 name|logger
 operator|.
@@ -9098,6 +9271,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|isCommit (ReceiveCommand cmd)
@@ -9207,6 +9381,17 @@ name|cmd
 parameter_list|)
 throws|throws
 name|PermissionBackendException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"parseDelete"
+argument_list|)
+init|)
 block|{
 name|logger
 operator|.
@@ -9329,6 +9514,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|method|parseRewind (ReceiveCommand cmd)
 specifier|private
 name|void
@@ -9339,6 +9525,17 @@ name|cmd
 parameter_list|)
 throws|throws
 name|PermissionBackendException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"parseRewind"
+argument_list|)
+init|)
 block|{
 name|RevCommit
 name|newObject
@@ -9509,6 +9706,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|checkRefPermission (ReceiveCommand cmd, RefPermission perm)
@@ -11219,6 +11417,17 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"parseMagicBranch"
+argument_list|)
+init|)
+block|{
 name|logger
 operator|.
 name|atFine
@@ -12229,8 +12438,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// The target branch does not exist. Usually pushing changes for review requires that the
-comment|// target branch exists, but there is an exception for the branch to which HEAD points to
+comment|// The target branch does not exist. Usually pushing changes for review requires that
+comment|// the
+comment|// target branch exists, but there is an exception for the branch to which HEAD points
+comment|// to
 comment|// and for refs/meta/config. Pushing for review to these branches is allowed even if the
 comment|// branch does not exist yet. This allows to push initial code for review to an empty
 comment|// repository and to review an initial project configuration.
@@ -12383,6 +12594,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|// Validate that the new commits are connected with the target
 comment|// branch.  If they aren't, we want to abort. We do this check by
 comment|// looking to see if we can compute a merge base between the new
@@ -12401,6 +12613,24 @@ parameter_list|,
 name|RevCommit
 name|tip
 parameter_list|)
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"validateConnected"
+argument_list|,
+literal|"branch"
+argument_list|,
+name|dest
+operator|.
+name|branch
+argument_list|()
+argument_list|)
+init|)
 block|{
 name|RevWalk
 name|walk
@@ -12600,6 +12830,7 @@ return|return
 literal|true
 return|;
 block|}
+block|}
 DECL|method|readHEAD (Repository repo)
 specifier|private
 specifier|static
@@ -12727,6 +12958,17 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"parseReplaceCommand"
+argument_list|)
+init|)
 block|{
 name|logger
 operator|.
@@ -13066,6 +13308,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|/**    * Update an existing change. If draft comments are to be published, these are validated and may    * be withheld.    *    * @return True if the command succeeded, false if it was rejected.    */
 DECL|method|requestReplaceAndValidateComments ( ReceiveCommand cmd, boolean checkMergedInto, Change change, RevCommit newCommit)
 specifier|private
@@ -13403,6 +13646,17 @@ parameter_list|(
 name|Task
 name|newProgress
 parameter_list|)
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"selectNewAndReplacedChangesFromMagicBranch"
+argument_list|)
+init|)
 block|{
 name|logger
 operator|.
@@ -14892,6 +15146,7 @@ return|return
 name|newChanges
 return|;
 block|}
+block|}
 DECL|method|foundInExistingRef (Collection<Ref> existingRefs)
 specifier|private
 name|boolean
@@ -15018,6 +15273,17 @@ name|setUpWalkForSelectingChanges
 parameter_list|()
 throws|throws
 name|IOException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"setUpWalkForSelectingChanges"
+argument_list|)
+init|)
 block|{
 name|RevWalk
 name|rw
@@ -15160,6 +15426,7 @@ return|return
 name|start
 return|;
 block|}
+block|}
 DECL|method|markExplicitBasesUninteresting ()
 specifier|private
 name|void
@@ -15167,6 +15434,17 @@ name|markExplicitBasesUninteresting
 parameter_list|()
 throws|throws
 name|IOException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"markExplicitBasesUninteresting"
+argument_list|)
+init|)
 block|{
 name|logger
 operator|.
@@ -15277,6 +15555,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|method|rejectImplicitMerges (Set<RevCommit> mergedParents)
 specifier|private
 name|void
@@ -15290,6 +15569,17 @@ name|mergedParents
 parameter_list|)
 throws|throws
 name|IOException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"rejectImplicitMerges"
+argument_list|)
+init|)
 block|{
 if|if
 condition|(
@@ -15475,6 +15765,7 @@ block|}
 block|}
 block|}
 block|}
+block|}
 comment|// Mark all branch tips as uninteresting in the given revwalk,
 comment|// so we get only the new commits when walking rw.
 DECL|method|markHeadsAsUninteresting (RevWalk rw, @Nullable String forRef)
@@ -15490,6 +15781,21 @@ name|Nullable
 name|String
 name|forRef
 parameter_list|)
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"markHeadsAsUninteresting"
+argument_list|,
+literal|"forRef"
+argument_list|,
+name|forRef
+argument_list|)
+init|)
 block|{
 name|int
 name|i
@@ -15607,6 +15913,7 @@ argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|isValidChangeId (String idStr)
 specifier|private
@@ -15870,6 +16177,21 @@ name|int
 name|id
 parameter_list|)
 block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+name|CreateRequest
+operator|.
+name|class
+argument_list|,
+literal|"setChangeId"
+argument_list|)
+init|)
+block|{
 name|possiblyOverrideWorkInProgress
 argument_list|()
 expr_stmt|;
@@ -15985,6 +16307,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|method|possiblyOverrideWorkInProgress ()
 specifier|private
 name|void
@@ -16044,6 +16367,21 @@ name|bu
 parameter_list|)
 throws|throws
 name|RestApiException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+name|CreateRequest
+operator|.
+name|class
+argument_list|,
+literal|"addOps"
+argument_list|)
+init|)
 block|{
 name|checkState
 argument_list|(
@@ -16429,6 +16767,7 @@ throw|;
 block|}
 block|}
 block|}
+block|}
 DECL|method|submit (Collection<CreateRequest> create, Collection<ReplaceRequest> replace)
 specifier|private
 name|void
@@ -16456,6 +16795,17 @@ throws|,
 name|ConfigInvalidException
 throws|,
 name|PermissionBackendException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"submit"
+argument_list|)
+init|)
 block|{
 name|Map
 argument_list|<
@@ -16630,6 +16980,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|method|preparePatchSetsForReplace (List<CreateRequest> newChanges)
 specifier|private
 name|void
@@ -16641,6 +16992,24 @@ name|CreateRequest
 argument_list|>
 name|newChanges
 parameter_list|)
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"preparePatchSetsForReplace"
+argument_list|,
+literal|"changeCount"
+argument_list|,
+name|newChanges
+operator|.
+name|size
+argument_list|()
+argument_list|)
+init|)
 block|{
 try|try
 block|{
@@ -16853,11 +17222,23 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 DECL|method|readChangesForReplace ()
 specifier|private
 name|void
 name|readChangesForReplace
 parameter_list|()
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"readChangesForReplace"
+argument_list|)
+init|)
 block|{
 name|Collection
 argument_list|<
@@ -16915,6 +17296,7 @@ name|notes
 operator|=
 name|notes
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/** Represents a commit that should be stored in a new patchset of an existing change. */
@@ -17173,6 +17555,21 @@ name|IOException
 throws|,
 name|PermissionBackendException
 block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+name|ReplaceRequest
+operator|.
+name|class
+argument_list|,
+literal|"validateNewPatchSet"
+argument_list|)
+init|)
+block|{
 if|if
 condition|(
 operator|!
@@ -17234,6 +17631,7 @@ expr_stmt|;
 return|return
 literal|true
 return|;
+block|}
 block|}
 DECL|method|validateNewPatchSetForAutoClose ()
 name|boolean
@@ -18205,6 +18603,21 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+name|ReplaceRequest
+operator|.
+name|class
+argument_list|,
+literal|"addOps"
+argument_list|)
+init|)
+block|{
 if|if
 condition|(
 name|magicBranch
@@ -18385,6 +18798,7 @@ name|progress
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|getRejectMessage ()
@@ -19313,6 +19727,17 @@ name|ReceiveCommand
 name|cmd
 parameter_list|)
 block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"validRefOperation"
+argument_list|)
+init|)
+block|{
 name|RefOperationValidators
 name|refValidators
 init|=
@@ -19375,6 +19800,7 @@ return|return
 literal|true
 return|;
 block|}
+block|}
 comment|/**    * Validates the commits that a regular push brings in.    *    *<p>On validation failure, the command is rejected.    */
 DECL|method|validateRegularPushCommits (BranchNameKey branch, ReceiveCommand cmd)
 specifier|private
@@ -19389,6 +19815,24 @@ name|cmd
 parameter_list|)
 throws|throws
 name|PermissionBackendException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"validateRegularPushCommits"
+argument_list|,
+literal|"branch"
+argument_list|,
+name|branch
+operator|.
+name|branch
+argument_list|()
+argument_list|)
+init|)
 block|{
 if|if
 condition|(
@@ -19805,6 +20249,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|method|autoCloseChanges (ReceiveCommand cmd, Task progress)
 specifier|private
 name|void
@@ -19816,6 +20261,17 @@ parameter_list|,
 name|Task
 name|progress
 parameter_list|)
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"autoCloseChanges"
+argument_list|)
+init|)
 block|{
 name|logger
 operator|.
@@ -20559,6 +21015,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|method|getChangeNotes (Change.Id changeId)
 specifier|private
 name|Optional
@@ -20624,6 +21081,15 @@ name|action
 parameter_list|)
 block|{
 try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"executeIndexQuery"
+argument_list|)
+init|)
 block|{
 return|return
 name|retryHelper
@@ -20681,6 +21147,24 @@ parameter_list|(
 name|BranchNameKey
 name|branch
 parameter_list|)
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"openChangesByKeyByBranch"
+argument_list|,
+literal|"branch"
+argument_list|,
+name|branch
+operator|.
+name|branch
+argument_list|()
+argument_list|)
+init|)
 block|{
 name|Map
 argument_list|<
@@ -20747,6 +21231,7 @@ return|return
 name|r
 return|;
 block|}
+block|}
 comment|// allRefsWatcher hooks into the protocol negotation to get a list of all known refs.
 comment|// This is used as a cache of ref -> sha1 values, and to build an inverse index
 comment|// of (change => list of refs) and a (SHA1 => refs).
@@ -20766,6 +21251,138 @@ name|allRefsWatcher
 operator|.
 name|getAllRefs
 argument_list|()
+return|;
+block|}
+DECL|method|newTimer (String name)
+specifier|private
+name|TraceTimer
+name|newTimer
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|newTimer
+argument_list|(
+name|getClass
+argument_list|()
+argument_list|,
+name|name
+argument_list|)
+return|;
+block|}
+DECL|method|newTimer (Class<?> clazz, String name)
+specifier|private
+name|TraceTimer
+name|newTimer
+parameter_list|(
+name|Class
+argument_list|<
+name|?
+argument_list|>
+name|clazz
+parameter_list|,
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|TraceContext
+operator|.
+name|newTimer
+argument_list|(
+name|clazz
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|"#"
+operator|+
+name|name
+argument_list|,
+literal|"project"
+argument_list|,
+name|project
+argument_list|)
+return|;
+block|}
+DECL|method|newTimer (String name, String key, @Nullable Object value)
+specifier|private
+name|TraceTimer
+name|newTimer
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|String
+name|key
+parameter_list|,
+annotation|@
+name|Nullable
+name|Object
+name|value
+parameter_list|)
+block|{
+return|return
+name|newTimer
+argument_list|(
+name|getClass
+argument_list|()
+argument_list|,
+name|name
+argument_list|,
+name|key
+argument_list|,
+name|value
+argument_list|)
+return|;
+block|}
+DECL|method|newTimer (Class<?> clazz, String name, String key, @Nullable Object value)
+specifier|private
+name|TraceTimer
+name|newTimer
+parameter_list|(
+name|Class
+argument_list|<
+name|?
+argument_list|>
+name|clazz
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+name|String
+name|key
+parameter_list|,
+annotation|@
+name|Nullable
+name|Object
+name|value
+parameter_list|)
+block|{
+return|return
+name|TraceContext
+operator|.
+name|newTimer
+argument_list|(
+name|clazz
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|"#"
+operator|+
+name|name
+argument_list|,
+literal|"project"
+argument_list|,
+name|project
+argument_list|,
+name|key
+argument_list|,
+name|value
+argument_list|)
 return|;
 block|}
 DECL|method|reject (ReceiveCommand cmd, String why)
