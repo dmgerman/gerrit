@@ -2006,26 +2006,6 @@ name|changes
 argument_list|()
 control|)
 block|{
-if|if
-condition|(
-name|cd
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|c
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-condition|)
-block|{
-comment|// We ignore the change about to be submitted, as these checks are already done in the
-comment|// #apply and #getDescription methods.
-continue|continue;
-block|}
 name|Set
 argument_list|<
 name|ChangePermission
