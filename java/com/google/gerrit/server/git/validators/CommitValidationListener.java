@@ -136,6 +136,17 @@ parameter_list|)
 throws|throws
 name|CommitValidationException
 function_decl|;
+comment|/**    * Whether this validator should validate all commits.    *    * @return {@code true} if this validator should validate all commits, even when the {@code    *     skip-validation} push option was specified.    */
+DECL|method|shouldValidateAllCommits ()
+specifier|default
+name|boolean
+name|shouldValidateAllCommits
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_interface
 

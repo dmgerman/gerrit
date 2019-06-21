@@ -194,6 +194,18 @@ name|SortedSet
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Stream
+import|;
+end_import
+
 begin_comment
 comment|/**  * Context to invoke extensions from a {@link DynamicSet}.  *  *<p>When a plugin extension is invoked a logging tag with the plugin name is set. This way any  * errors that are triggered by the plugin extension (even if they happen in Gerrit code which is  * called by the plugin extension) can be easily attributed to the plugin.  *  *<p>Example if all exceptions should be caught and logged:  *  *<pre>  * fooPluginSetContext.runEach(foo -> foo.doFoo());  *</pre>  *  *<p>Example if all exceptions, but one, should be caught and logged:  *  *<pre>  * try {  *   fooPluginSetContext.runEach(foo -> foo.doFoo(), MyException.class);  * } catch (MyException e) {  *   // handle the exception  * }  *</pre>  *  *<p>Example if return values should be handled:  *  *<pre>  * for (PluginSetEntryContext<Foo> c : fooPluginSetContext) {  *   if (c.call(foo -> foo.handles(x))) {  *     c.run(foo -> foo.doFoo());  *   }  * }  *</pre>  *  *<p>Example if return values and a single exception should be handled:  *  *<pre>  * try {  *   for (PluginSetEntryContext<Foo> c : fooPluginSetContext) {  *     if (c.call(foo -> foo.handles(x), MyException.class)) {  *       c.run(foo -> foo.doFoo(), MyException.class);  *     }  *   }  * } catch (MyException e) {  *   // handle the exception  * }  *</pre>  *  *<p>Example if several exceptions should be handled:  *  *<pre>  * for (Extension<Foo> fooExtension : fooDynamicSet.entries()) {  *   try (TraceContext traceContext = PluginContext.newTrace(fooExtension)) {  *     fooExtension.get().doFoo();  *   } catch (MyException1 | MyException2 | MyException3 e) {  *     // handle the exception  *   }  * }  *</pre>  */
 end_comment
@@ -371,6 +383,22 @@ name|extensionImplConsumer
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|stream ()
+specifier|public
+name|Stream
+argument_list|<
+name|T
+argument_list|>
+name|stream
+parameter_list|()
+block|{
+return|return
+name|dynamicSet
+operator|.
+name|stream
+argument_list|()
+return|;
 block|}
 comment|/**    * Invokes each extension in the set. All exceptions from the plugin extensions except exceptions    * of the specified type are caught and logged.    *    *<p>The consumer gets the extension implementation provided that should be invoked.    *    *<p>All extension in the set are invoked, even if invoking some of the extensions failed.    *    * @param extensionImplConsumer consumer that invokes the extension    * @param exceptionClass type of the exceptions that should be thrown    * @throws X expected exception from the plugin extension    */
 DECL|method|runEach ( ExtensionImplConsumer<T> extensionImplConsumer, Class<X> exceptionClass)
