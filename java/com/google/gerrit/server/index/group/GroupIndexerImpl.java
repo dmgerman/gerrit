@@ -620,12 +620,16 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Replacing group %s in index version %d"
+literal|"Replacing group"
+argument_list|,
+literal|"groupUuid"
 argument_list|,
 name|uuid
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|"indexVersion"
 argument_list|,
 name|i
 operator|.
@@ -660,12 +664,16 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Deleting group %s in index version %d"
+literal|"Deleting group"
+argument_list|,
+literal|"groupUuid"
 argument_list|,
 name|uuid
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|"indexVersion"
 argument_list|,
 name|i
 operator|.
