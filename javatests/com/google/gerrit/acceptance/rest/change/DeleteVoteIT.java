@@ -563,7 +563,7 @@ name|admin
 operator|.
 name|fullName
 operator|+
-literal|" has removed a vote on this change.\n"
+literal|" has removed a vote on this change."
 argument_list|)
 expr_stmt|;
 name|assertThat
