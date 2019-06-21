@@ -2603,6 +2603,11 @@ specifier|final
 name|RestApiQuotaEnforcer
 name|quotaChecker
 decl_stmt|;
+DECL|field|config
+specifier|final
+name|Config
+name|config
+decl_stmt|;
 DECL|field|performanceLoggers
 specifier|final
 name|DynamicSet
@@ -2613,7 +2618,7 @@ name|performanceLoggers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Globals ( Provider<CurrentUser> currentUser, DynamicItem<WebSession> webSession, Provider<ParameterParser> paramParser, PermissionBackend permissionBackend, GroupAuditService auditService, RestApiMetrics metrics, RestApiQuotaEnforcer quotaChecker, @GerritServerConfig Config cfg, DynamicSet<PerformanceLogger> performanceLoggers)
+DECL|method|Globals ( Provider<CurrentUser> currentUser, DynamicItem<WebSession> webSession, Provider<ParameterParser> paramParser, PermissionBackend permissionBackend, GroupAuditService auditService, RestApiMetrics metrics, RestApiQuotaEnforcer quotaChecker, @GerritServerConfig Config config, DynamicSet<PerformanceLogger> performanceLoggers)
 name|Globals
 parameter_list|(
 name|Provider
@@ -2649,7 +2654,7 @@ parameter_list|,
 annotation|@
 name|GerritServerConfig
 name|Config
-name|cfg
+name|config
 parameter_list|,
 name|DynamicSet
 argument_list|<
@@ -2702,6 +2707,12 @@ name|quotaChecker
 expr_stmt|;
 name|this
 operator|.
+name|config
+operator|=
+name|config
+expr_stmt|;
+name|this
+operator|.
 name|performanceLoggers
 operator|=
 name|performanceLoggers
@@ -2710,7 +2721,7 @@ name|allowOrigin
 operator|=
 name|makeAllowOrigin
 argument_list|(
-name|cfg
+name|config
 argument_list|)
 expr_stmt|;
 block|}
@@ -3027,6 +3038,10 @@ init|=
 operator|new
 name|PerformanceLogContext
 argument_list|(
+name|globals
+operator|.
+name|config
+argument_list|,
 name|globals
 operator|.
 name|performanceLoggers
