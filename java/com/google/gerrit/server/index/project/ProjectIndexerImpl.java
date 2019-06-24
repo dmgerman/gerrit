@@ -574,12 +574,16 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Replacing project %s in index version %d"
+literal|"Replacing project"
+argument_list|,
+literal|"projectName"
 argument_list|,
 name|nameKey
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|"indexVersion"
 argument_list|,
 name|i
 operator|.
@@ -644,12 +648,16 @@ name|TraceContext
 operator|.
 name|newTimer
 argument_list|(
-literal|"Deleting project %s in index version %d"
+literal|"Deleting project"
+argument_list|,
+literal|"projectName"
 argument_list|,
 name|nameKey
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|"indexVersion"
 argument_list|,
 name|i
 operator|.

@@ -140,6 +140,20 @@ name|Extension
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_comment
 comment|/**  * Context for capturing performance log records. When the context is closed the performance log  * records are handed over to the registered {@link PerformanceLogger}s.  *  *<p>Capturing performance log records is disabled if there are no {@link PerformanceLogger}  * registered (in this case the captured performance log records would never be used).  *  *<p>It's important to enable capturing of performance log records in a context that ensures to  * consume the captured performance log records. Otherwise captured performance log records might  * leak into other requests that are executed by the same thread (if a thread pool is used to  * process requests).  */
 end_comment
@@ -191,10 +205,13 @@ name|PerformanceLogRecord
 argument_list|>
 name|oldPerformanceLogRecords
 decl_stmt|;
-DECL|method|PerformanceLogContext (DynamicSet<PerformanceLogger> performanceLoggers)
+DECL|method|PerformanceLogContext ( Config gerritConfig, DynamicSet<PerformanceLogger> performanceLoggers)
 specifier|public
 name|PerformanceLogContext
 parameter_list|(
+name|Config
+name|gerritConfig
+parameter_list|,
 name|DynamicSet
 argument_list|<
 name|PerformanceLogger
@@ -241,7 +258,22 @@ operator|.
 name|clearPerformanceLogEntries
 argument_list|()
 expr_stmt|;
-comment|// Do not create performance log entries if no PerformanceLogger is registered.
+comment|// Do not create performance log entries if performance logging is disabled or if no
+comment|// PerformanceLogger is registered.
+name|boolean
+name|enablePerformanceLogging
+init|=
+name|gerritConfig
+operator|.
+name|getBoolean
+argument_list|(
+literal|"tracing"
+argument_list|,
+literal|"performanceLogging"
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
 name|LoggingContext
 operator|.
 name|getInstance
@@ -249,6 +281,8 @@ argument_list|()
 operator|.
 name|performanceLogging
 argument_list|(
+name|enablePerformanceLogging
+operator|&&
 operator|!
 name|Iterables
 operator|.

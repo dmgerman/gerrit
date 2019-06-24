@@ -3560,6 +3560,12 @@ operator|.
 name|Factory
 name|commitValidatorFactory
 decl_stmt|;
+DECL|field|config
+specifier|private
+specifier|final
+name|Config
+name|config
+decl_stmt|;
 DECL|field|createGroupPermissionSyncer
 specifier|private
 specifier|final
@@ -3928,7 +3934,7 @@ name|resultChangeIds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config cfg, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommentsUtil commentsUtil, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, PluginSetContext<CommentValidator> commentValidators, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, DynamicSet<PerformanceLogger> performanceLoggers, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, SetPrivateOp.Factory setPrivateOpFactory, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender, @Assisted ResultChangeIds resultChangeIds)
+DECL|method|ReceiveCommits ( AccountResolver accountResolver, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ProjectConfig.Factory projectConfigFactory, @GerritServerConfig Config config, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, DynamicItem<ChangeReportFormatter> changeFormatterProvider, CmdLineParser.Factory optionParserFactory, CommentsUtil commentsUtil, BranchCommitValidator.Factory commitValidatorFactory, CreateGroupPermissionSyncer createGroupPermissionSyncer, CreateRefControl createRefControl, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginSetContext<ReceivePackInitializer> initializers, PluginSetContext<CommentValidator> commentValidators, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, DynamicSet<PerformanceLogger> performanceLoggers, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RetryHelper retryHelper, RequestScopePropagator requestScopePropagator, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, SetPrivateOp.Factory setPrivateOpFactory, @Assisted ProjectState projectState, @Assisted IdentifiedUser user, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Nullable @Assisted MessageSender messageSender, @Assisted ResultChangeIds resultChangeIds)
 name|ReceiveCommits
 parameter_list|(
 name|AccountResolver
@@ -3950,7 +3956,7 @@ parameter_list|,
 annotation|@
 name|GerritServerConfig
 name|Config
-name|cfg
+name|config
 parameter_list|,
 name|ChangeEditUtil
 name|editUtil
@@ -4181,6 +4187,12 @@ name|commitValidatorFactory
 expr_stmt|;
 name|this
 operator|.
+name|config
+operator|=
+name|config
+expr_stmt|;
+name|this
+operator|.
 name|createRefControl
 operator|=
 name|createRefControl
@@ -4375,7 +4387,7 @@ expr_stmt|;
 comment|// Immutable fields derived from constructor arguments.
 name|allowPushToRefsChanges
 operator|=
-name|cfg
+name|config
 operator|.
 name|getBoolean
 argument_list|(
@@ -4487,7 +4499,7 @@ name|this
 operator|.
 name|allowProjectOwnersToChangeParent
 operator|=
-name|cfg
+name|config
 operator|.
 name|getBoolean
 argument_list|(
@@ -4765,6 +4777,8 @@ operator|=
 operator|new
 name|PerformanceLogContext
 argument_list|(
+name|config
+argument_list|,
 name|performanceLoggers
 argument_list|)
 init|)
@@ -21301,7 +21315,7 @@ literal|"#"
 operator|+
 name|name
 argument_list|,
-literal|"project"
+literal|"projectName"
 argument_list|,
 name|project
 argument_list|)
@@ -21375,7 +21389,7 @@ literal|"#"
 operator|+
 name|name
 argument_list|,
-literal|"project"
+literal|"projectName"
 argument_list|,
 name|project
 argument_list|,
