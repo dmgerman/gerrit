@@ -447,6 +447,8 @@ name|F1
 argument_list|>
 argument_list|(
 name|name
+argument_list|,
+name|field1
 argument_list|)
 block|{
 annotation|@
@@ -521,6 +523,10 @@ name|F2
 argument_list|>
 argument_list|(
 name|name
+argument_list|,
+name|field1
+argument_list|,
+name|field2
 argument_list|)
 block|{
 annotation|@
@@ -610,6 +616,12 @@ name|F3
 argument_list|>
 argument_list|(
 name|name
+argument_list|,
+name|field1
+argument_list|,
+name|field2
+argument_list|,
+name|field3
 argument_list|)
 block|{
 annotation|@

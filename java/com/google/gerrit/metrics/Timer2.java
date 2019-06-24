@@ -201,24 +201,24 @@ name|Object
 argument_list|>
 name|timer
 decl_stmt|;
-DECL|field|field1
+DECL|field|fieldValue1
 specifier|private
 specifier|final
 name|Object
-name|field1
+name|fieldValue1
 decl_stmt|;
-DECL|field|field2
+DECL|field|fieldValue2
 specifier|private
 specifier|final
 name|Object
-name|field2
+name|fieldValue2
 decl_stmt|;
 annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|Context (Timer2<F1, F2> timer, F1 field1, F2 field2)
+DECL|method|Context (Timer2<F1, F2> timer, F1 fieldValue1, F2 fieldValue2)
 parameter_list|<
 name|F1
 parameter_list|,
@@ -235,10 +235,10 @@ argument_list|>
 name|timer
 parameter_list|,
 name|F1
-name|field1
+name|fieldValue1
 parameter_list|,
 name|F2
-name|field2
+name|fieldValue2
 parameter_list|)
 block|{
 name|this
@@ -257,15 +257,15 @@ name|timer
 expr_stmt|;
 name|this
 operator|.
-name|field1
+name|fieldValue1
 operator|=
-name|field1
+name|fieldValue1
 expr_stmt|;
 name|this
 operator|.
-name|field2
+name|fieldValue2
 operator|=
-name|field2
+name|fieldValue2
 expr_stmt|;
 block|}
 annotation|@
@@ -283,9 +283,9 @@ name|timer
 operator|.
 name|record
 argument_list|(
-name|field1
+name|fieldValue1
 argument_list|,
-name|field2
+name|fieldValue2
 argument_list|,
 name|elapsed
 argument_list|,
@@ -300,12 +300,42 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
-DECL|method|Timer2 (String name)
+DECL|field|field1
+specifier|protected
+specifier|final
+name|Field
+argument_list|<
+name|F1
+argument_list|>
+name|field1
+decl_stmt|;
+DECL|field|field2
+specifier|protected
+specifier|final
+name|Field
+argument_list|<
+name|F2
+argument_list|>
+name|field2
+decl_stmt|;
+DECL|method|Timer2 (String name, Field<F1> field1, Field<F2> field2)
 specifier|public
 name|Timer2
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|Field
+argument_list|<
+name|F1
+argument_list|>
+name|field1
+parameter_list|,
+name|Field
+argument_list|<
+name|F2
+argument_list|>
+name|field2
 parameter_list|)
 block|{
 name|this
@@ -314,18 +344,30 @@ name|name
 operator|=
 name|name
 expr_stmt|;
+name|this
+operator|.
+name|field1
+operator|=
+name|field1
+expr_stmt|;
+name|this
+operator|.
+name|field2
+operator|=
+name|field2
+expr_stmt|;
 block|}
-comment|/**    * Begin a timer for the current block, value will be recorded when closed.    *    * @param field1 bucket to record the timer    * @param field2 bucket to record the timer    * @return timer context    */
-DECL|method|start (F1 field1, F2 field2)
+comment|/**    * Begin a timer for the current block, value will be recorded when closed.    *    * @param fieldValue1 bucket to record the timer    * @param fieldValue2 bucket to record the timer    * @return timer context    */
+DECL|method|start (F1 fieldValue1, F2 fieldValue2)
 specifier|public
 name|Context
 name|start
 parameter_list|(
 name|F1
-name|field1
+name|fieldValue1
 parameter_list|,
 name|F2
-name|field2
+name|fieldValue2
 parameter_list|)
 block|{
 return|return
@@ -334,24 +376,24 @@ name|Context
 argument_list|(
 name|this
 argument_list|,
-name|field1
+name|fieldValue1
 argument_list|,
-name|field2
+name|fieldValue2
 argument_list|)
 return|;
 block|}
-comment|/**    * Record a value in the distribution.    *    * @param field1 bucket to record the timer    * @param field2 bucket to record the timer    * @param value value to record    * @param unit time unit of the value    */
-DECL|method|record (F1 field1, F2 field2, long value, TimeUnit unit)
+comment|/**    * Record a value in the distribution.    *    * @param fieldValue1 bucket to record the timer    * @param fieldValue2 bucket to record the timer    * @param value value to record    * @param unit time unit of the value    */
+DECL|method|record (F1 fieldValue1, F2 fieldValue2, long value, TimeUnit unit)
 specifier|public
 specifier|final
 name|void
 name|record
 parameter_list|(
 name|F1
-name|field1
+name|fieldValue1
 parameter_list|,
 name|F2
-name|field2
+name|fieldValue2
 parameter_list|,
 name|long
 name|value
@@ -370,7 +412,6 @@ argument_list|(
 name|value
 argument_list|)
 decl_stmt|;
-comment|// TODO(ekempin): We don't know the field names here. Check whether we can make them available.
 name|LoggingContext
 operator|.
 name|getInstance
@@ -388,13 +429,19 @@ name|name
 argument_list|,
 name|durationMs
 argument_list|,
-literal|"field1"
-argument_list|,
 name|field1
+operator|.
+name|name
+argument_list|()
 argument_list|,
-literal|"field2"
+name|fieldValue1
 argument_list|,
 name|field2
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|fieldValue2
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -405,22 +452,32 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"%s (%s, %s) took %dms"
+literal|"%s (%s = %s, %s = %s) took %dms"
 argument_list|,
 name|name
 argument_list|,
 name|field1
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|fieldValue1
 argument_list|,
 name|field2
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|fieldValue2
 argument_list|,
 name|durationMs
 argument_list|)
 expr_stmt|;
 name|doRecord
 argument_list|(
-name|field1
+name|fieldValue1
 argument_list|,
-name|field2
+name|fieldValue2
 argument_list|,
 name|value
 argument_list|,
@@ -428,18 +485,18 @@ name|unit
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Record a value in the distribution.    *    * @param field1 bucket to record the timer    * @param field2 bucket to record the timer    * @param value value to record    * @param unit time unit of the value    */
-DECL|method|doRecord (F1 field1, F2 field2, long value, TimeUnit unit)
+comment|/**    * Record a value in the distribution.    *    * @param fieldValue1 bucket to record the timer    * @param fieldValue2 bucket to record the timer    * @param value value to record    * @param unit time unit of the value    */
+DECL|method|doRecord (F1 fieldValue1, F2 fieldValue2, long value, TimeUnit unit)
 specifier|protected
 specifier|abstract
 name|void
 name|doRecord
 parameter_list|(
 name|F1
-name|field1
+name|fieldValue1
 parameter_list|,
 name|F2
-name|field2
+name|fieldValue2
 parameter_list|,
 name|long
 name|value
