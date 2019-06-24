@@ -329,13 +329,13 @@ name|this
 operator|.
 name|min
 operator|=
-name|max
+literal|0
 expr_stmt|;
 name|this
 operator|.
 name|max
 operator|=
-name|min
+literal|0
 expr_stmt|;
 block|}
 block|}
