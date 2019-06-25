@@ -2199,8 +2199,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|// TODO(dpursehouse): Add @UsedAt annotation
 DECL|method|createProject (CreateProjectArgs args)
-specifier|private
+specifier|public
 name|ProjectState
 name|createProject
 parameter_list|(
