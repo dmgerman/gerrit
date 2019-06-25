@@ -86,6 +86,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * Represents a closed interval [min, max] with a name. The special value [0, 0] is understood to be  * the empty range.  */
+end_comment
+
 begin_class
 DECL|class|PermissionRange
 specifier|public
