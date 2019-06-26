@@ -196,6 +196,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|logging
+operator|.
+name|Metadata
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|lang
@@ -849,6 +865,12 @@ operator|.
 name|ofString
 argument_list|(
 literal|"gc_name"
+argument_list|,
+name|Metadata
+operator|.
+name|Builder
+operator|::
+name|garbageCollectorName
 argument_list|)
 operator|.
 name|description

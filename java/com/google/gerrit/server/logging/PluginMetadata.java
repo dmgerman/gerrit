@@ -72,71 +72,100 @@ name|com
 operator|.
 name|google
 operator|.
+name|auto
+operator|.
+name|value
+operator|.
+name|AutoValue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
-name|extensions
+name|common
 operator|.
-name|annotations
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|ExtensionPoint
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
 begin_comment
-comment|/**  * Extension point for logging performance records.  *  *<p>This extension point is invoked for all operations for which the execution time is measured.  * The invocation of the extension point does not happen immediately, but only at the end of a  * request (REST call, SSH call, git push). Implementors can write the execution times into a  * performance log for further analysis.  *  *<p>For optimal performance implementors should overwrite the default<code>log</code> methods to  * avoid an unneeded instantiation of Metadata.  */
+comment|/**  * Key-value pair for custom metadata that is provided by plugins.  *  *<p>PluginMetadata allows plugins to include custom metadata into the {@link Metadata} instances  * that are provided as context for performance tracing.  *  *<p>Plugins should use PluginMetadata only for metadata kinds that are not known to Gerrit core  * (metadata for which {@link Metadata} doesn't have a dedicated field).  */
 end_comment
 
-begin_interface
+begin_class
 annotation|@
-name|ExtensionPoint
-DECL|interface|PerformanceLogger
+name|AutoValue
+DECL|class|PluginMetadata
 specifier|public
-interface|interface
-name|PerformanceLogger
+specifier|abstract
+class|class
+name|PluginMetadata
 block|{
-comment|/**    * Record the execution time of an operation in a performance log.    *    * @param operation operation that was performed    * @param durationMs time that the execution of the operation took (in milliseconds)    */
-DECL|method|log (String operation, long durationMs)
-specifier|default
-name|void
-name|log
+DECL|method|create (String key, @Nullable String value)
+specifier|public
+specifier|static
+name|PluginMetadata
+name|create
 parameter_list|(
 name|String
-name|operation
+name|key
 parameter_list|,
-name|long
-name|durationMs
+annotation|@
+name|Nullable
+name|String
+name|value
 parameter_list|)
 block|{
-name|log
+return|return
+operator|new
+name|AutoValue_PluginMetadata
 argument_list|(
-name|operation
+name|key
 argument_list|,
-name|durationMs
-argument_list|,
-name|Metadata
+name|Optional
 operator|.
-name|empty
-argument_list|()
+name|ofNullable
+argument_list|(
+name|value
 argument_list|)
-expr_stmt|;
+argument_list|)
+return|;
 block|}
-comment|/**    * Record the execution time of an operation in a performance log.    *    * @param operation operation that was performed    * @param durationMs time that the execution of the operation took (in milliseconds)    * @param metadata metadata    */
-DECL|method|log (String operation, long durationMs, Metadata metadata)
-name|void
-name|log
-parameter_list|(
+DECL|method|key ()
+specifier|public
+specifier|abstract
 name|String
-name|operation
-parameter_list|,
-name|long
-name|durationMs
-parameter_list|,
-name|Metadata
-name|metadata
-parameter_list|)
+name|key
+parameter_list|()
+function_decl|;
+DECL|method|value ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|value
+parameter_list|()
 function_decl|;
 block|}
-end_interface
+end_class
 
 end_unit
 

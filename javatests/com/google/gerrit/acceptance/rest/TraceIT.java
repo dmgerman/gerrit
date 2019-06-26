@@ -134,20 +134,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|ImmutableSet
 import|;
 end_import
@@ -414,6 +400,22 @@ name|server
 operator|.
 name|logging
 operator|.
+name|Metadata
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|logging
+operator|.
 name|PerformanceLogger
 import|;
 end_import
@@ -511,26 +513,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
 import|;
 end_import
 
@@ -2598,7 +2580,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|log (String operation, long durationMs, Map<String, Optional<Object>> metaData)
+DECL|method|log (String operation, long durationMs, Metadata metadata)
 specifier|public
 name|void
 name|log
@@ -2609,16 +2591,8 @@ parameter_list|,
 name|long
 name|durationMs
 parameter_list|,
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Optional
-argument_list|<
-name|Object
-argument_list|>
-argument_list|>
-name|metaData
+name|Metadata
+name|metadata
 parameter_list|)
 block|{
 name|logEntries
@@ -2631,7 +2605,7 @@ name|create
 argument_list|(
 name|operation
 argument_list|,
-name|metaData
+name|metadata
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2662,7 +2636,7 @@ specifier|static
 class|class
 name|PerformanceLogEntry
 block|{
-DECL|method|create (String operation, Map<String, Optional<Object>> metaData)
+DECL|method|create (String operation, Metadata metadata)
 specifier|static
 name|PerformanceLogEntry
 name|create
@@ -2670,16 +2644,8 @@ parameter_list|(
 name|String
 name|operation
 parameter_list|,
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Optional
-argument_list|<
-name|Object
-argument_list|>
-argument_list|>
-name|metaData
+name|Metadata
+name|metadata
 parameter_list|)
 block|{
 return|return
@@ -2688,12 +2654,7 @@ name|AutoValue_TraceIT_PerformanceLogEntry
 argument_list|(
 name|operation
 argument_list|,
-name|ImmutableMap
-operator|.
-name|copyOf
-argument_list|(
-name|metaData
-argument_list|)
+name|metadata
 argument_list|)
 return|;
 block|}
@@ -2703,15 +2664,10 @@ name|String
 name|operation
 parameter_list|()
 function_decl|;
-DECL|method|metaData ()
+DECL|method|metadata ()
 specifier|abstract
-name|ImmutableMap
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|metaData
+name|Metadata
+name|metadata
 parameter_list|()
 function_decl|;
 block|}

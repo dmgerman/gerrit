@@ -96,11 +96,39 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|logging
+operator|.
+name|Metadata
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|BiConsumer
 import|;
 end_import
 
@@ -132,8 +160,35 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
+DECL|method|ignoreMetadata ()
+specifier|public
+specifier|static
+parameter_list|<
+name|T
+parameter_list|>
+name|BiConsumer
+argument_list|<
+name|Metadata
+operator|.
+name|Builder
+argument_list|,
+name|T
+argument_list|>
+name|ignoreMetadata
+parameter_list|()
+block|{
+return|return
+parameter_list|(
+name|metadataBuilder
+parameter_list|,
+name|fieldValue
+parameter_list|)
+lambda|->
+block|{}
+return|;
+block|}
 comment|/**    * Break down metrics by boolean true/false.    *    * @param name field name    * @return builder for the boolean field    */
-DECL|method|ofBoolean (String name)
+DECL|method|ofBoolean ( String name, BiConsumer<Metadata.Builder, Boolean> metadataMapper)
 specifier|public
 specifier|static
 name|Field
@@ -146,6 +201,16 @@ name|ofBoolean
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|BiConsumer
+argument_list|<
+name|Metadata
+operator|.
+name|Builder
+argument_list|,
+name|Boolean
+argument_list|>
+name|metadataMapper
 parameter_list|)
 block|{
 return|return
@@ -176,10 +241,15 @@ name|name
 argument_list|(
 name|name
 argument_list|)
+operator|.
+name|metadataMapper
+argument_list|(
+name|metadataMapper
+argument_list|)
 return|;
 block|}
 comment|/**    * Break down metrics by cases of an enum.    *    * @param enumType type of enum    * @param name field name    * @return builder for the enum field    */
-DECL|method|ofEnum (Class<E> enumType, String name)
+DECL|method|ofEnum ( Class<E> enumType, String name, BiConsumer<Metadata.Builder, String> metadataMapper)
 specifier|public
 specifier|static
 parameter_list|<
@@ -206,6 +276,16 @@ name|enumType
 parameter_list|,
 name|String
 name|name
+parameter_list|,
+name|BiConsumer
+argument_list|<
+name|Metadata
+operator|.
+name|Builder
+argument_list|,
+name|String
+argument_list|>
+name|metadataMapper
 parameter_list|)
 block|{
 return|return
@@ -234,10 +314,31 @@ name|name
 argument_list|(
 name|name
 argument_list|)
+operator|.
+name|metadataMapper
+argument_list|(
+parameter_list|(
+name|metadataBuilder
+parameter_list|,
+name|fieldValue
+parameter_list|)
+lambda|->
+name|metadataMapper
+operator|.
+name|accept
+argument_list|(
+name|metadataBuilder
+argument_list|,
+name|fieldValue
+operator|.
+name|name
+argument_list|()
+argument_list|)
+argument_list|)
 return|;
 block|}
 comment|/**    * Break down metrics by integer.    *    *<p>Each unique integer will allocate a new submetric.<b>Do not use user content as a field    * value</b> as field values are never reclaimed.    *    * @param name field name    * @return builder for the integer field    */
-DECL|method|ofInteger (String name)
+DECL|method|ofInteger ( String name, BiConsumer<Metadata.Builder, Integer> metadataMapper)
 specifier|public
 specifier|static
 name|Field
@@ -250,6 +351,16 @@ name|ofInteger
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|BiConsumer
+argument_list|<
+name|Metadata
+operator|.
+name|Builder
+argument_list|,
+name|Integer
+argument_list|>
+name|metadataMapper
 parameter_list|)
 block|{
 return|return
@@ -280,10 +391,15 @@ name|name
 argument_list|(
 name|name
 argument_list|)
+operator|.
+name|metadataMapper
+argument_list|(
+name|metadataMapper
+argument_list|)
 return|;
 block|}
 comment|/**    * Break down metrics by string.    *    *<p>Each unique string will allocate a new submetric.<b>Do not use user content as a field    * value</b> as field values are never reclaimed.    *    * @param name field name    * @return builder for the string field    */
-DECL|method|ofString (String name)
+DECL|method|ofString ( String name, BiConsumer<Metadata.Builder, String> metadataMapper)
 specifier|public
 specifier|static
 name|Field
@@ -296,6 +412,16 @@ name|ofString
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|BiConsumer
+argument_list|<
+name|Metadata
+operator|.
+name|Builder
+argument_list|,
+name|String
+argument_list|>
+name|metadataMapper
 parameter_list|)
 block|{
 return|return
@@ -326,6 +452,11 @@ name|name
 argument_list|(
 name|name
 argument_list|)
+operator|.
+name|metadataMapper
+argument_list|(
+name|metadataMapper
+argument_list|)
 return|;
 block|}
 comment|/** @return name of this field within the metric. */
@@ -345,6 +476,21 @@ argument_list|<
 name|T
 argument_list|>
 name|valueType
+parameter_list|()
+function_decl|;
+comment|/** @return mapper that maps a field value to a field in the {@link Metadata} class. */
+DECL|method|metadataMapper ()
+specifier|public
+specifier|abstract
+name|BiConsumer
+argument_list|<
+name|Metadata
+operator|.
+name|Builder
+argument_list|,
+name|T
+argument_list|>
+name|metadataMapper
 parameter_list|()
 function_decl|;
 comment|/** @return description text for the field explaining its range of values. */
@@ -427,6 +573,25 @@ argument_list|,
 name|String
 argument_list|>
 name|formatter
+parameter_list|)
+function_decl|;
+DECL|method|metadataMapper (BiConsumer<Metadata.Builder, T> metadataMapper)
+specifier|abstract
+name|Builder
+argument_list|<
+name|T
+argument_list|>
+name|metadataMapper
+parameter_list|(
+name|BiConsumer
+argument_list|<
+name|Metadata
+operator|.
+name|Builder
+argument_list|,
+name|T
+argument_list|>
+name|metadataMapper
 parameter_list|)
 function_decl|;
 DECL|method|description (String description)
