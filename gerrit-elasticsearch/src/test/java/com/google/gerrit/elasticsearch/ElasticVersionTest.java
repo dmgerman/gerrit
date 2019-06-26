@@ -456,10 +456,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|version6 ()
+DECL|method|version6OrLater ()
 specifier|public
 name|void
-name|version6
+name|version6OrLater
 parameter_list|()
 throws|throws
 name|Exception
@@ -718,10 +718,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|version7 ()
+DECL|method|version7OrLater ()
 specifier|public
 name|void
-name|version7
+name|version7OrLater
 parameter_list|()
 throws|throws
 name|Exception
