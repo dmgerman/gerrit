@@ -607,7 +607,7 @@ operator|.
 name|fullName
 argument_list|()
 operator|+
-literal|" has removed a vote on this change.\n"
+literal|" has removed a vote from this change."
 argument_list|)
 expr_stmt|;
 name|assertThat
