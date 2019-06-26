@@ -7672,6 +7672,11 @@ name|ReceiveCommand
 name|cmd
 parameter_list|)
 block|{
+if|if
+condition|(
+name|allowPushToRefsChanges
+condition|)
+block|{
 try|try
 init|(
 name|TraceTimer
@@ -7680,10 +7685,6 @@ init|=
 name|newTimer
 argument_list|(
 literal|"parseDirectChangesPush"
-argument_list|,
-literal|"allowPushToRefsChanges"
-argument_list|,
-name|allowPushToRefsChanges
 argument_list|)
 init|)
 block|{
@@ -7708,11 +7709,6 @@ name|matches
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|allowPushToRefsChanges
-condition|)
-block|{
 comment|// The referenced change must exist and must still be open.
 name|Change
 operator|.
@@ -7754,6 +7750,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
 block|{
 name|reject
@@ -7763,7 +7760,6 @@ argument_list|,
 literal|"upload to refs/changes not allowed"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|// Wrap ReceiveCommand so the progress counter works automatically.
