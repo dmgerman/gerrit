@@ -635,6 +635,9 @@ name|ofString
 argument_list|(
 literal|"action"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Counter
@@ -810,6 +813,9 @@ name|ofString
 argument_list|(
 literal|"action"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Counter

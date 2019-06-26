@@ -321,16 +321,22 @@ name|Field
 argument_list|<
 name|String
 argument_list|>
-name|view
+name|viewField
 init|=
 name|Field
 operator|.
 name|ofString
 argument_list|(
 literal|"view"
-argument_list|,
+argument_list|)
+operator|.
+name|description
+argument_list|(
 literal|"view implementation class"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|count
 operator|=
@@ -349,7 +355,7 @@ operator|.
 name|setRate
 argument_list|()
 argument_list|,
-name|view
+name|viewField
 argument_list|)
 expr_stmt|;
 name|errorCount
@@ -369,16 +375,22 @@ operator|.
 name|setRate
 argument_list|()
 argument_list|,
-name|view
+name|viewField
 argument_list|,
 name|Field
 operator|.
 name|ofInteger
 argument_list|(
 literal|"error_code"
-argument_list|,
+argument_list|)
+operator|.
+name|description
+argument_list|(
 literal|"HTTP status code"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|serverLatency
@@ -405,7 +417,7 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 argument_list|,
-name|view
+name|viewField
 argument_list|)
 expr_stmt|;
 name|responseBytes
@@ -432,7 +444,7 @@ operator|.
 name|BYTES
 argument_list|)
 argument_list|,
-name|view
+name|viewField
 argument_list|)
 expr_stmt|;
 block|}

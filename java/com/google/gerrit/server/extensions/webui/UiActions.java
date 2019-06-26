@@ -685,6 +685,9 @@ name|ofString
 argument_list|(
 literal|"view"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

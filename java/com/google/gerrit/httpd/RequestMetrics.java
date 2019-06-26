@@ -178,6 +178,27 @@ name|MetricMaker
 name|metricMaker
 parameter_list|)
 block|{
+name|Field
+argument_list|<
+name|Integer
+argument_list|>
+name|statusCodeField
+init|=
+name|Field
+operator|.
+name|ofInteger
+argument_list|(
+literal|"status"
+argument_list|)
+operator|.
+name|description
+argument_list|(
+literal|"HTTP status code"
+argument_list|)
+operator|.
+name|build
+argument_list|()
+decl_stmt|;
 name|errors
 operator|=
 name|metricMaker
@@ -200,14 +221,7 @@ argument_list|(
 literal|"errors"
 argument_list|)
 argument_list|,
-name|Field
-operator|.
-name|ofInteger
-argument_list|(
-literal|"status"
-argument_list|,
-literal|"HTTP status code"
-argument_list|)
+name|statusCodeField
 argument_list|)
 expr_stmt|;
 name|successes
@@ -232,14 +246,7 @@ argument_list|(
 literal|"successes"
 argument_list|)
 argument_list|,
-name|Field
-operator|.
-name|ofInteger
-argument_list|(
-literal|"status"
-argument_list|,
-literal|"HTTP status code"
-argument_list|)
+name|statusCodeField
 argument_list|)
 expr_stmt|;
 block|}

@@ -218,7 +218,7 @@ name|Field
 argument_list|<
 name|NoteDbTable
 argument_list|>
-name|view
+name|tableField
 init|=
 name|Field
 operator|.
@@ -230,6 +230,9 @@ name|class
 argument_list|,
 literal|"table"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|updateLatency
 operator|=
@@ -255,7 +258,7 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 argument_list|,
-name|view
+name|tableField
 argument_list|)
 expr_stmt|;
 name|stageUpdateLatency
@@ -282,7 +285,7 @@ operator|.
 name|MICROSECONDS
 argument_list|)
 argument_list|,
-name|view
+name|tableField
 argument_list|)
 expr_stmt|;
 name|readLatency
@@ -309,7 +312,7 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 argument_list|,
-name|view
+name|tableField
 argument_list|)
 expr_stmt|;
 name|parseLatency
@@ -336,7 +339,7 @@ operator|.
 name|MICROSECONDS
 argument_list|)
 argument_list|,
-name|view
+name|tableField
 argument_list|)
 expr_stmt|;
 block|}

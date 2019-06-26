@@ -806,6 +806,9 @@ name|class
 argument_list|,
 literal|"change_id_type"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
