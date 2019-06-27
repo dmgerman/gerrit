@@ -638,6 +638,8 @@ literal|"/admin/*"
 argument_list|,
 literal|"/dashboard/*"
 argument_list|,
+literal|"/groups/self"
+argument_list|,
 literal|"/settings/*"
 argument_list|,
 literal|"/Documentation/q/*"
