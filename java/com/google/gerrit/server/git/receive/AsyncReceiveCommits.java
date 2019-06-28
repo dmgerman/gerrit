@@ -1357,6 +1357,8 @@ name|MetricMaker
 name|metricMaker
 parameter_list|)
 block|{
+comment|// For the changes metric the push type field is never set to PushType.NORMAL, hence it is not
+comment|// mentioned in the field description.
 name|changes
 operator|=
 name|metricMaker
@@ -1424,7 +1426,7 @@ name|class
 argument_list|,
 literal|"type"
 argument_list|,
-literal|"type of push (create/replace, autoclose)"
+literal|"type of push (create/replace, autoclose, normal)"
 argument_list|)
 argument_list|)
 expr_stmt|;
