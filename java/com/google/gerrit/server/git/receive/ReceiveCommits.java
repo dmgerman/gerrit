@@ -19754,6 +19754,15 @@ argument_list|()
 expr_stmt|;
 name|rw
 operator|.
+name|sort
+argument_list|(
+name|RevSort
+operator|.
+name|REVERSE
+argument_list|)
+expr_stmt|;
+name|rw
+operator|.
 name|markStart
 argument_list|(
 name|newTip
