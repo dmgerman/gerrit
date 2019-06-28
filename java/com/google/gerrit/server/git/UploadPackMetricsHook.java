@@ -312,7 +312,7 @@ name|Field
 argument_list|<
 name|Operation
 argument_list|>
-name|operation
+name|operationField
 init|=
 name|Field
 operator|.
@@ -324,6 +324,9 @@ name|class
 argument_list|,
 literal|"operation"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|requestCount
 operator|=
@@ -347,7 +350,7 @@ argument_list|(
 literal|"requests"
 argument_list|)
 argument_list|,
-name|operation
+name|operationField
 argument_list|)
 expr_stmt|;
 name|counting
@@ -374,7 +377,7 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 argument_list|,
-name|operation
+name|operationField
 argument_list|)
 expr_stmt|;
 name|compressing
@@ -401,7 +404,7 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 argument_list|,
-name|operation
+name|operationField
 argument_list|)
 expr_stmt|;
 name|writing
@@ -428,7 +431,7 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 argument_list|,
-name|operation
+name|operationField
 argument_list|)
 expr_stmt|;
 name|packBytes
@@ -455,7 +458,7 @@ operator|.
 name|BYTES
 argument_list|)
 argument_list|,
-name|operation
+name|operationField
 argument_list|)
 expr_stmt|;
 block|}

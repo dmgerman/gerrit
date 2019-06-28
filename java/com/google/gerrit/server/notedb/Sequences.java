@@ -535,6 +535,9 @@ name|class
 argument_list|,
 literal|"sequence"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -542,6 +545,9 @@ name|ofBoolean
 argument_list|(
 literal|"multiple"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

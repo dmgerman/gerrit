@@ -301,6 +301,9 @@ name|ofString
 argument_list|(
 literal|"cache_name"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|CallbackMetric1
 argument_list|<

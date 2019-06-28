@@ -535,21 +535,6 @@ name|MetricMaker
 name|metricMaker
 parameter_list|)
 block|{
-name|Field
-argument_list|<
-name|String
-argument_list|>
-name|index
-init|=
-name|Field
-operator|.
-name|ofString
-argument_list|(
-literal|"index"
-argument_list|,
-literal|"index name"
-argument_list|)
-decl_stmt|;
 name|executionTime
 operator|=
 name|metricMaker
@@ -576,7 +561,20 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 argument_list|,
-name|index
+name|Field
+operator|.
+name|ofString
+argument_list|(
+literal|"index"
+argument_list|)
+operator|.
+name|description
+argument_list|(
+literal|"index name"
+argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

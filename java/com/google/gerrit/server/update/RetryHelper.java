@@ -698,7 +698,7 @@ name|Field
 argument_list|<
 name|ActionType
 argument_list|>
-name|view
+name|actionTypeField
 init|=
 name|Field
 operator|.
@@ -710,6 +710,9 @@ name|class
 argument_list|,
 literal|"action_type"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|attemptCounts
 operator|=
@@ -735,7 +738,7 @@ argument_list|(
 literal|"attempts"
 argument_list|)
 argument_list|,
-name|view
+name|actionTypeField
 argument_list|)
 expr_stmt|;
 name|timeoutCount
@@ -760,7 +763,7 @@ argument_list|(
 literal|"timeouts"
 argument_list|)
 argument_list|,
-name|view
+name|actionTypeField
 argument_list|)
 expr_stmt|;
 block|}

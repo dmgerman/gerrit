@@ -838,6 +838,27 @@ name|MetricMaker
 name|metrics
 parameter_list|)
 block|{
+name|Field
+argument_list|<
+name|String
+argument_list|>
+name|gcNameField
+init|=
+name|Field
+operator|.
+name|ofString
+argument_list|(
+literal|"gc_name"
+argument_list|)
+operator|.
+name|description
+argument_list|(
+literal|"The name of the garbage collector"
+argument_list|)
+operator|.
+name|build
+argument_list|()
+decl_stmt|;
 name|CallbackMetric1
 argument_list|<
 name|String
@@ -865,14 +886,7 @@ operator|.
 name|setCumulative
 argument_list|()
 argument_list|,
-name|Field
-operator|.
-name|ofString
-argument_list|(
-literal|"gc_name"
-argument_list|,
-literal|"The name of the garbage collector"
-argument_list|)
+name|gcNameField
 argument_list|)
 decl_stmt|;
 name|CallbackMetric1
@@ -909,14 +923,7 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 argument_list|,
-name|Field
-operator|.
-name|ofString
-argument_list|(
-literal|"gc_name"
-argument_list|,
-literal|"The name of the garbage collector"
-argument_list|)
+name|gcNameField
 argument_list|)
 decl_stmt|;
 name|metrics

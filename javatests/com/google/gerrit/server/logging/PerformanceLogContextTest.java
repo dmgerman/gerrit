@@ -1726,6 +1726,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer1
@@ -1764,6 +1767,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -1771,6 +1777,9 @@ name|ofString
 argument_list|(
 literal|"bar"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer2
@@ -1813,6 +1822,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -1820,6 +1832,9 @@ name|ofString
 argument_list|(
 literal|"bar"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -1827,6 +1842,9 @@ name|ofString
 argument_list|(
 literal|"baz"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer3
@@ -2093,6 +2111,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer1
@@ -2131,6 +2152,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -2138,6 +2162,9 @@ name|ofString
 argument_list|(
 literal|"bar"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer2
@@ -2180,6 +2207,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -2187,6 +2217,9 @@ name|ofString
 argument_list|(
 literal|"bar"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -2194,6 +2227,9 @@ name|ofString
 argument_list|(
 literal|"baz"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer3
@@ -2432,6 +2468,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer1
@@ -2470,6 +2509,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -2477,6 +2519,9 @@ name|ofString
 argument_list|(
 literal|"bar"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer2
@@ -2519,6 +2564,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -2526,6 +2574,9 @@ name|ofString
 argument_list|(
 literal|"bar"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -2533,6 +2584,9 @@ name|ofString
 argument_list|(
 literal|"baz"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer3
@@ -2707,6 +2761,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer1
@@ -2745,6 +2802,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -2752,6 +2812,9 @@ name|ofString
 argument_list|(
 literal|"bar"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer2
@@ -2794,6 +2857,9 @@ name|ofString
 argument_list|(
 literal|"foo"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -2801,6 +2867,9 @@ name|ofString
 argument_list|(
 literal|"bar"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|Field
 operator|.
@@ -2808,6 +2877,9 @@ name|ofString
 argument_list|(
 literal|"baz"
 argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|timer3
