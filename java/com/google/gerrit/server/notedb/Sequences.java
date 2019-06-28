@@ -562,6 +562,11 @@ init|(
 name|Timer2
 operator|.
 name|Context
+argument_list|<
+name|SequenceType
+argument_list|,
+name|Boolean
+argument_list|>
 name|timer
 init|=
 name|nextIdLatency
@@ -595,6 +600,11 @@ init|(
 name|Timer2
 operator|.
 name|Context
+argument_list|<
+name|SequenceType
+argument_list|,
+name|Boolean
+argument_list|>
 name|timer
 init|=
 name|nextIdLatency
@@ -634,6 +644,11 @@ init|(
 name|Timer2
 operator|.
 name|Context
+argument_list|<
+name|SequenceType
+argument_list|,
+name|Boolean
+argument_list|>
 name|timer
 init|=
 name|nextIdLatency
@@ -671,6 +686,11 @@ init|(
 name|Timer2
 operator|.
 name|Context
+argument_list|<
+name|SequenceType
+argument_list|,
+name|Boolean
+argument_list|>
 name|timer
 init|=
 name|nextIdLatency

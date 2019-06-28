@@ -1528,6 +1528,9 @@ init|(
 name|Timer1
 operator|.
 name|Context
+argument_list|<
+name|NoteDbTable
+argument_list|>
 name|timer
 init|=
 name|metrics
@@ -1665,6 +1668,9 @@ init|(
 name|Timer1
 operator|.
 name|Context
+argument_list|<
+name|NoteDbTable
+argument_list|>
 name|timer
 init|=
 name|metrics

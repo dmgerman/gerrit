@@ -1174,6 +1174,9 @@ init|(
 name|Timer1
 operator|.
 name|Context
+argument_list|<
+name|String
+argument_list|>
 name|ignored
 init|=
 name|uiActionLatency
