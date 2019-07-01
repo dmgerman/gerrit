@@ -413,6 +413,9 @@ operator|==
 literal|null
 operator|&&
 name|performanceLogRecords
+operator|.
+name|get
+argument_list|()
 operator|==
 literal|null
 return|;
