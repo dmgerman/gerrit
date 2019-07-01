@@ -1468,6 +1468,7 @@ annotation|@
 name|Override
 DECL|method|toString ()
 specifier|public
+specifier|final
 name|String
 name|toString
 parameter_list|()

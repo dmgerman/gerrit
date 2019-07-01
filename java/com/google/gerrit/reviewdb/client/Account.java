@@ -493,6 +493,7 @@ annotation|@
 name|Override
 DECL|method|compareTo (Id o)
 specifier|public
+specifier|final
 name|int
 name|compareTo
 parameter_list|(
@@ -519,6 +520,7 @@ annotation|@
 name|Override
 DECL|method|toString ()
 specifier|public
+specifier|final
 name|String
 name|toString
 parameter_list|()

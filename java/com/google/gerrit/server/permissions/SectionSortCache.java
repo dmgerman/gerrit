@@ -870,6 +870,7 @@ annotation|@
 name|Override
 DECL|method|hashCode ()
 specifier|public
+specifier|final
 name|int
 name|hashCode
 parameter_list|()
