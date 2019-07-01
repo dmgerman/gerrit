@@ -3261,9 +3261,12 @@ literal|"ref"
 argument_list|,
 name|refName
 argument_list|,
-literal|"labels"
+literal|"labelCount"
 argument_list|,
 name|labels
+operator|.
+name|size
+argument_list|()
 argument_list|)
 init|;
 name|RevWalk

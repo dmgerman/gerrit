@@ -185,6 +185,9 @@ specifier|public
 specifier|static
 class|class
 name|Context
+parameter_list|<
+name|F1
+parameter_list|>
 extends|extends
 name|TimerContext
 block|{
@@ -193,25 +196,17 @@ specifier|private
 specifier|final
 name|Timer1
 argument_list|<
-name|Object
+name|F1
 argument_list|>
 name|timer
 decl_stmt|;
 DECL|field|fieldValue
 specifier|private
 specifier|final
-name|Object
+name|F1
 name|fieldValue
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|Context (Timer1<F1> timer, F1 fieldValue)
-parameter_list|<
-name|F1
-parameter_list|>
 name|Context
 parameter_list|(
 name|Timer1
@@ -228,12 +223,6 @@ name|this
 operator|.
 name|timer
 operator|=
-operator|(
-name|Timer1
-argument_list|<
-name|Object
-argument_list|>
-operator|)
 name|timer
 expr_stmt|;
 name|this
@@ -313,6 +302,9 @@ comment|/**    * Begin a timer for the current block, value will be recorded whe
 DECL|method|start (F1 fieldValue)
 specifier|public
 name|Context
+argument_list|<
+name|F1
+argument_list|>
 name|start
 parameter_list|(
 name|F1
@@ -322,6 +314,7 @@ block|{
 return|return
 operator|new
 name|Context
+argument_list|<>
 argument_list|(
 name|this
 argument_list|,

@@ -2201,6 +2201,9 @@ init|(
 name|Timer1
 operator|.
 name|Context
+argument_list|<
+name|String
+argument_list|>
 name|ignored
 init|=
 name|computationLatency
@@ -2246,6 +2249,9 @@ init|(
 name|Timer1
 operator|.
 name|Context
+argument_list|<
+name|String
+argument_list|>
 name|ignored2
 init|=
 name|computationLatency
