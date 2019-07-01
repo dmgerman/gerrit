@@ -179,6 +179,11 @@ name|field1
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|timer ()
 name|Timer1
 argument_list|<
@@ -195,6 +200,17 @@ name|F1
 argument_list|>
 argument_list|(
 name|name
+argument_list|,
+operator|(
+name|Field
+argument_list|<
+name|F1
+argument_list|>
+operator|)
+name|fields
+index|[
+literal|0
+index|]
 argument_list|)
 block|{
 annotation|@
