@@ -10389,6 +10389,11 @@ operator|.
 name|atFinest
 argument_list|()
 operator|.
+name|withCause
+argument_list|(
+name|err
+argument_list|)
+operator|.
 name|log
 argument_list|(
 literal|"REST call failed: %d"
