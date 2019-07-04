@@ -96,6 +96,7 @@ name|String
 argument_list|>
 name|accounts
 decl_stmt|;
+comment|/**    * @param accounts may be either just a list of: account IDs, Full names, usernames, or emails.    *     Also could be a list of those: "Full name<email@example.com>" or "Full name (<ID>)"    */
 DECL|method|NotifyInfo (List<String> accounts)
 specifier|public
 name|NotifyInfo
