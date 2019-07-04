@@ -94,7 +94,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertWithMessage
 import|;
 end_import
 
@@ -766,10 +766,7 @@ operator|!=
 literal|1
 condition|)
 block|{
-name|assert_
-argument_list|()
-operator|.
-name|fail
+name|assertWithMessage
 argument_list|(
 literal|"got packet on channel "
 operator|+
@@ -780,6 +777,9 @@ name|channel
 argument_list|,
 name|packet
 argument_list|)
+operator|.
+name|fail
+argument_list|()
 expr_stmt|;
 block|}
 block|}

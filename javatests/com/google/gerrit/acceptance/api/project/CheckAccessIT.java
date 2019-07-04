@@ -96,7 +96,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertWithMessage
 import|;
 end_import
 
@@ -1791,10 +1791,7 @@ name|RestApiException
 name|e
 parameter_list|)
 block|{
-name|assert_
-argument_list|()
-operator|.
-name|fail
+name|assertWithMessage
 argument_list|(
 name|String
 operator|.
@@ -1811,6 +1808,9 @@ argument_list|,
 name|e
 argument_list|)
 argument_list|)
+operator|.
+name|fail
+argument_list|()
 expr_stmt|;
 block|}
 name|int
@@ -1829,10 +1829,7 @@ operator|.
 name|status
 condition|)
 block|{
-name|assert_
-argument_list|()
-operator|.
-name|fail
+name|assertWithMessage
 argument_list|(
 name|String
 operator|.
@@ -1853,6 +1850,9 @@ argument_list|,
 name|want
 argument_list|)
 argument_list|)
+operator|.
+name|fail
+argument_list|()
 expr_stmt|;
 block|}
 switch|switch
@@ -1921,10 +1921,7 @@ argument_list|()
 expr_stmt|;
 break|break;
 default|default:
-name|assert_
-argument_list|()
-operator|.
-name|fail
+name|assertWithMessage
 argument_list|(
 name|String
 operator|.
@@ -1935,6 +1932,9 @@ argument_list|,
 name|want
 argument_list|)
 argument_list|)
+operator|.
+name|fail
+argument_list|()
 expr_stmt|;
 block|}
 block|}

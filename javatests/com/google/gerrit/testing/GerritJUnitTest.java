@@ -92,7 +92,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertWithMessage
 import|;
 end_import
 
@@ -319,13 +319,13 @@ throw|;
 block|}
 argument_list|)
 expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
+name|assertWithMessage
 argument_list|(
 literal|"expected AssertionError"
 argument_list|)
+operator|.
+name|fail
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -424,13 +424,13 @@ lambda|->
 block|{}
 argument_list|)
 expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|fail
+name|assertWithMessage
 argument_list|(
 literal|"expected AssertionError"
 argument_list|)
+operator|.
+name|fail
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch

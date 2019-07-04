@@ -104,22 +104,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|Truth
-operator|.
-name|assert_
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|acceptance
@@ -2969,10 +2953,7 @@ case|case
 name|RENAMED
 case|:
 default|default:
-name|assert_
-argument_list|()
-operator|.
-name|fail
+name|assertWithMessage
 argument_list|(
 literal|"fetch failed to update local %s: %s"
 argument_list|,
@@ -2983,6 +2964,9 @@ operator|.
 name|getResult
 argument_list|()
 argument_list|)
+operator|.
+name|fail
+argument_list|()
 expr_stmt|;
 break|break;
 block|}
