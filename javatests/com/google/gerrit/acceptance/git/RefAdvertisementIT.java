@@ -3681,8 +3681,6 @@ operator|.
 name|Result
 name|r
 init|=
-name|r
-operator|=
 name|pushFactory
 operator|.
 name|create
@@ -3908,8 +3906,6 @@ operator|.
 name|Result
 name|r
 init|=
-name|r
-operator|=
 name|pushFactory
 operator|.
 name|create
@@ -4134,8 +4130,6 @@ operator|.
 name|Result
 name|r
 init|=
-name|r
-operator|=
 name|pushFactory
 operator|.
 name|create
@@ -4918,14 +4912,6 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
-name|RevCommit
-name|tagRc
-init|=
-name|r
-operator|.
-name|getCommit
-argument_list|()
-decl_stmt|;
 block|}
 name|assertUploadPackRefs
 argument_list|(
