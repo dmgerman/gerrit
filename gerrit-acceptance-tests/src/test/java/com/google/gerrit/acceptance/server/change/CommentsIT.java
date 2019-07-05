@@ -4943,6 +4943,49 @@ block|{
 name|PushOneCommit
 operator|.
 name|Result
+name|result
+init|=
+name|createChange
+argument_list|()
+decl_stmt|;
+name|String
+name|changeId
+init|=
+name|result
+operator|.
+name|getChangeId
+argument_list|()
+decl_stmt|;
+name|pushFactory
+operator|.
+name|create
+argument_list|(
+name|db
+argument_list|,
+name|admin
+operator|.
+name|getIdent
+argument_list|()
+argument_list|,
+name|testRepo
+argument_list|,
+name|SUBJECT
+argument_list|,
+name|FILE_NAME
+argument_list|,
+literal|"old\ncontent\n"
+argument_list|,
+name|changeId
+argument_list|)
+operator|.
+name|to
+argument_list|(
+literal|"refs/heads/master"
+argument_list|)
+expr_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
 name|r1
 init|=
 name|createChange
@@ -4970,7 +5013,7 @@ name|SUBJECT
 argument_list|,
 name|FILE_NAME
 argument_list|,
-literal|"new\ncntent\n"
+literal|"new \ncntent\n"
 argument_list|,
 name|r1
 operator|.
@@ -5006,7 +5049,14 @@ name|Side
 operator|.
 name|REVISION
 argument_list|,
+name|range
+argument_list|(
 literal|1
+argument_list|,
+literal|0
+argument_list|,
+literal|4
+argument_list|)
 argument_list|,
 literal|"nit: trailing whitespace"
 argument_list|)
@@ -5035,9 +5085,16 @@ name|Side
 operator|.
 name|PARENT
 argument_list|,
-literal|2
+name|range
+argument_list|(
+literal|1
 argument_list|,
-literal|"what happened to this?"
+literal|0
+argument_list|,
+literal|3
+argument_list|)
+argument_list|,
+literal|"why is this removed?"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5093,7 +5150,14 @@ name|Side
 operator|.
 name|REVISION
 argument_list|,
+name|range
+argument_list|(
 literal|2
+argument_list|,
+literal|0
+argument_list|,
+literal|6
+argument_list|)
 argument_list|,
 literal|"typo: content"
 argument_list|)
@@ -5124,7 +5188,7 @@ name|PARENT
 argument_list|,
 literal|1
 argument_list|,
-literal|"comment 1 on base"
+literal|"line comment 1 on base"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5153,7 +5217,7 @@ name|PARENT
 argument_list|,
 literal|2
 argument_list|,
-literal|"comment 2 on base"
+literal|"line comment 2 on base"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5398,7 +5462,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"what happened to this?"
+literal|"why is this removed?"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -5573,7 +5637,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"comment 1 on base"
+literal|"line comment 1 on base"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -5590,7 +5654,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"comment 2 on base"
+literal|"line comment 2 on base"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -5725,11 +5789,11 @@ literal|"#/c/"
 operator|+
 name|c
 operator|+
-literal|"/1/a.txt@a2\n"
+literal|"/1/a.txt@a1\n"
 operator|+
-literal|"PS1, Line 2: \n"
+literal|"PS1, Line 1: old\n"
 operator|+
-literal|"what happened to this?\n"
+literal|"why is this removed?\n"
 operator|+
 literal|"\n"
 operator|+
@@ -5743,7 +5807,7 @@ name|c
 operator|+
 literal|"/1/a.txt@1\n"
 operator|+
-literal|"PS1, Line 1: ew\n"
+literal|"PS1, Line 1: new \n"
 operator|+
 literal|"nit: trailing whitespace\n"
 operator|+
@@ -5771,9 +5835,9 @@ name|c
 operator|+
 literal|"/2/a.txt@a1\n"
 operator|+
-literal|"PS2, Line 1: \n"
+literal|"PS2, Line 1: old\n"
 operator|+
-literal|"comment 1 on base\n"
+literal|"line comment 1 on base\n"
 operator|+
 literal|"\n"
 operator|+
@@ -5787,9 +5851,9 @@ name|c
 operator|+
 literal|"/2/a.txt@a2\n"
 operator|+
-literal|"PS2, Line 2: \n"
+literal|"PS2, Line 2: content\n"
 operator|+
-literal|"comment 2 on base\n"
+literal|"line comment 2 on base\n"
 operator|+
 literal|"\n"
 operator|+
@@ -5803,7 +5867,7 @@ name|c
 operator|+
 literal|"/2/a.txt@1\n"
 operator|+
-literal|"PS2, Line 1: ew\n"
+literal|"PS2, Line 1: new \n"
 operator|+
 literal|"join lines\n"
 operator|+
@@ -5819,7 +5883,7 @@ name|c
 operator|+
 literal|"/2/a.txt@2\n"
 operator|+
-literal|"PS2, Line 2: nten\n"
+literal|"PS2, Line 2: cntent\n"
 operator|+
 literal|"typo: content\n"
 operator|+
@@ -9271,6 +9335,56 @@ literal|false
 argument_list|)
 return|;
 block|}
+DECL|method|newDraft (String path, Side side, Comment.Range range, String message)
+specifier|private
+name|DraftInput
+name|newDraft
+parameter_list|(
+name|String
+name|path
+parameter_list|,
+name|Side
+name|side
+parameter_list|,
+name|Comment
+operator|.
+name|Range
+name|range
+parameter_list|,
+name|String
+name|message
+parameter_list|)
+block|{
+name|DraftInput
+name|d
+init|=
+operator|new
+name|DraftInput
+argument_list|()
+decl_stmt|;
+return|return
+name|populate
+argument_list|(
+name|d
+argument_list|,
+name|path
+argument_list|,
+name|side
+argument_list|,
+literal|null
+argument_list|,
+name|range
+operator|.
+name|startLine
+argument_list|,
+name|range
+argument_list|,
+name|message
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
 DECL|method|newDraftOnParent (String path, int parent, int line, String message)
 specifier|private
 name|DraftInput
@@ -9322,6 +9436,63 @@ literal|false
 argument_list|)
 return|;
 block|}
+DECL|method|range (int line, int startCharacter, int endCharacter)
+specifier|private
+specifier|static
+name|Comment
+operator|.
+name|Range
+name|range
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|int
+name|startCharacter
+parameter_list|,
+name|int
+name|endCharacter
+parameter_list|)
+block|{
+name|Comment
+operator|.
+name|Range
+name|range
+init|=
+operator|new
+name|Comment
+operator|.
+name|Range
+argument_list|()
+decl_stmt|;
+name|range
+operator|.
+name|startLine
+operator|=
+name|line
+expr_stmt|;
+name|range
+operator|.
+name|startCharacter
+operator|=
+name|startCharacter
+expr_stmt|;
+name|range
+operator|.
+name|endLine
+operator|=
+name|line
+expr_stmt|;
+name|range
+operator|.
+name|endCharacter
+operator|=
+name|endCharacter
+expr_stmt|;
+return|return
+name|range
+return|;
+block|}
 DECL|method|populate ( C c, String path, Side side, Integer parent, int line, String message, Boolean unresolved)
 specifier|private
 specifier|static
@@ -9347,6 +9518,65 @@ name|parent
 parameter_list|,
 name|int
 name|line
+parameter_list|,
+name|String
+name|message
+parameter_list|,
+name|Boolean
+name|unresolved
+parameter_list|)
+block|{
+return|return
+name|populate
+argument_list|(
+name|c
+argument_list|,
+name|path
+argument_list|,
+name|side
+argument_list|,
+name|parent
+argument_list|,
+name|line
+argument_list|,
+literal|null
+argument_list|,
+name|message
+argument_list|,
+name|unresolved
+argument_list|)
+return|;
+block|}
+DECL|method|populate ( C c, String path, Side side, Integer parent, int line, Comment.Range range, String message, Boolean unresolved)
+specifier|private
+specifier|static
+parameter_list|<
+name|C
+extends|extends
+name|Comment
+parameter_list|>
+name|C
+name|populate
+parameter_list|(
+name|C
+name|c
+parameter_list|,
+name|String
+name|path
+parameter_list|,
+name|Side
+name|side
+parameter_list|,
+name|Integer
+name|parent
+parameter_list|,
+name|int
+name|line
+parameter_list|,
+name|Comment
+operator|.
+name|Range
+name|range
 parameter_list|,
 name|String
 name|message
@@ -9399,46 +9629,11 @@ name|unresolved
 expr_stmt|;
 if|if
 condition|(
-name|line
+name|range
 operator|!=
-literal|0
+literal|null
 condition|)
 block|{
-name|Comment
-operator|.
-name|Range
-name|range
-init|=
-operator|new
-name|Comment
-operator|.
-name|Range
-argument_list|()
-decl_stmt|;
-name|range
-operator|.
-name|startLine
-operator|=
-name|line
-expr_stmt|;
-name|range
-operator|.
-name|startCharacter
-operator|=
-literal|1
-expr_stmt|;
-name|range
-operator|.
-name|endLine
-operator|=
-name|line
-expr_stmt|;
-name|range
-operator|.
-name|endCharacter
-operator|=
-literal|5
-expr_stmt|;
 name|c
 operator|.
 name|range
