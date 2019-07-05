@@ -3422,7 +3422,9 @@ argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"Failed to get line number of file on side %d"
+literal|"Failed to get line number %d of file on side %d"
+argument_list|,
+name|lineNbr
 argument_list|,
 name|side
 argument_list|)

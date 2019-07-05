@@ -628,6 +628,38 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|getOldName ()
+specifier|private
+name|String
+name|getOldName
+parameter_list|()
+block|{
+name|String
+name|name
+init|=
+name|entry
+operator|.
+name|getOldName
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|name
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|name
+return|;
+block|}
+return|return
+name|entry
+operator|.
+name|getNewName
+argument_list|()
+return|;
+block|}
 comment|/**    * Extract a line from the file, as a string.    *    * @param file the file index to extract.    * @param line the line number to extract (1 based; 1 is the first line).    * @return the string version of the file line.    * @throws IOException the patch or complete file content cannot be read.    * @throws NoSuchEntityException    */
 DECL|method|getLine (int file, int line)
 specifier|public
@@ -666,8 +698,6 @@ name|load
 argument_list|(
 name|aTree
 argument_list|,
-name|entry
-operator|.
 name|getOldName
 argument_list|()
 argument_list|)
@@ -759,8 +789,6 @@ name|load
 argument_list|(
 name|aTree
 argument_list|,
-name|entry
-operator|.
 name|getOldName
 argument_list|()
 argument_list|)
