@@ -6064,23 +6064,6 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getCount (String projectName)
-name|long
-name|getCount
-parameter_list|(
-name|String
-name|projectName
-parameter_list|)
-block|{
-return|return
-name|countsByProject
-operator|.
-name|get
-argument_list|(
-name|projectName
-argument_list|)
-return|;
-block|}
 DECL|method|assertReindexOf (String projectName)
 name|void
 name|assertReindexOf
