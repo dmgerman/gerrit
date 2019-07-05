@@ -5155,6 +5155,47 @@ block|{
 name|PushOneCommit
 operator|.
 name|Result
+name|result
+init|=
+name|createChange
+argument_list|()
+decl_stmt|;
+name|String
+name|changeId
+init|=
+name|result
+operator|.
+name|getChangeId
+argument_list|()
+decl_stmt|;
+name|pushFactory
+operator|.
+name|create
+argument_list|(
+name|admin
+operator|.
+name|newIdent
+argument_list|()
+argument_list|,
+name|testRepo
+argument_list|,
+name|SUBJECT
+argument_list|,
+name|FILE_NAME
+argument_list|,
+literal|"initial content\n"
+argument_list|,
+name|changeId
+argument_list|)
+operator|.
+name|to
+argument_list|(
+literal|"refs/heads/master"
+argument_list|)
+expr_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
 name|r1
 init|=
 name|pushFactory
@@ -5272,7 +5313,14 @@ name|Side
 operator|.
 name|PARENT
 argument_list|,
-literal|2
+name|createLineRange
+argument_list|(
+literal|1
+argument_list|,
+literal|0
+argument_list|,
+literal|7
+argument_list|)
 argument_list|,
 literal|"what happened to this?"
 argument_list|)
@@ -5993,9 +6041,9 @@ literal|"/+/"
 operator|+
 name|c
 operator|+
-literal|"/1/a.txt@a2 \n"
+literal|"/1/a.txt@a1 \n"
 operator|+
-literal|"PS1, Line 2: \n"
+literal|"PS1, Line 1: initial\n"
 operator|+
 literal|"what happened to this?\n"
 operator|+
@@ -6060,7 +6108,7 @@ name|c
 operator|+
 literal|"/2/a.txt@a1 \n"
 operator|+
-literal|"PS2, Line 1: \n"
+literal|"PS2, Line 1: initial content\n"
 operator|+
 literal|"comment 1 on base\n"
 operator|+
@@ -6129,7 +6177,7 @@ name|c
 operator|+
 literal|"/2/a.txt@2 \n"
 operator|+
-literal|"PS2, Line 2: nten\n"
+literal|"PS2, Line 2: cntent\n"
 operator|+
 literal|"typo: content\n"
 operator|+
@@ -9533,6 +9581,10 @@ argument_list|,
 literal|null
 argument_list|,
 name|range
+operator|.
+name|startLine
+argument_list|,
+name|range
 argument_list|,
 name|message
 argument_list|,
@@ -9591,7 +9643,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|populate ( C c, String path, Side side, Integer parent, Comment.Range range, String message, Boolean unresolved)
+DECL|method|populate ( C c, String path, Side side, Integer parent, int line, Comment.Range range, String message, Boolean unresolved)
 specifier|private
 specifier|static
 parameter_list|<
@@ -9614,6 +9666,9 @@ parameter_list|,
 name|Integer
 name|parent
 parameter_list|,
+name|int
+name|line
+parameter_list|,
 name|Comment
 operator|.
 name|Range
@@ -9626,13 +9681,6 @@ name|Boolean
 name|unresolved
 parameter_list|)
 block|{
-name|int
-name|line
-init|=
-name|range
-operator|.
-name|startLine
-decl_stmt|;
 name|c
 operator|.
 name|path
@@ -9677,16 +9725,18 @@ name|unresolved
 expr_stmt|;
 if|if
 condition|(
-name|line
+name|range
 operator|!=
-literal|0
+literal|null
 condition|)
+block|{
 name|c
 operator|.
 name|range
 operator|=
 name|range
 expr_stmt|;
+block|}
 return|return
 name|c
 return|;
@@ -9735,14 +9785,9 @@ name|side
 argument_list|,
 name|parent
 argument_list|,
-name|createLineRange
-argument_list|(
 name|line
 argument_list|,
-literal|1
-argument_list|,
-literal|5
-argument_list|)
+literal|null
 argument_list|,
 name|message
 argument_list|,
