@@ -3906,7 +3906,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to get line number of file on side {}"
+literal|"Failed to get line number {} of file on side {}"
+argument_list|,
+name|lineNbr
 argument_list|,
 name|side
 argument_list|,
