@@ -887,6 +887,7 @@ specifier|public
 name|Key
 name|key
 decl_stmt|;
+comment|/** The line number (1-based) to which the comment refers, or 0 for a file comment. */
 DECL|field|lineNbr
 specifier|public
 name|int

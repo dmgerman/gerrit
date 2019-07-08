@@ -129,12 +129,12 @@ specifier|public
 name|Integer
 name|parent
 decl_stmt|;
+comment|/** Value 0 or null indicates a file comment, normal lines start at 1. */
 DECL|field|line
 specifier|public
 name|Integer
 name|line
 decl_stmt|;
-comment|// value 0 or null indicates a file comment, normal lines start at 1
 DECL|field|range
 specifier|public
 name|Range
