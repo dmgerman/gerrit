@@ -464,6 +464,16 @@ argument_list|)
 expr_stmt|;
 name|traceConfig
 operator|.
+name|requestUriPatterns
+argument_list|(
+name|parseRequestUriPatterns
+argument_list|(
+name|traceId
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|traceConfig
+operator|.
 name|accountIds
 argument_list|(
 name|parseAccounts
@@ -550,6 +560,29 @@ name|traceId
 argument_list|,
 literal|"requestType"
 argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|parseRequestUriPatterns (String traceId)
+specifier|private
+name|ImmutableSet
+argument_list|<
+name|Pattern
+argument_list|>
+name|parseRequestUriPatterns
+parameter_list|(
+name|String
+name|traceId
+parameter_list|)
+throws|throws
+name|ConfigInvalidException
+block|{
+return|return
+name|parsePatterns
+argument_list|(
+name|traceId
+argument_list|,
+literal|"requestUriPattern"
 argument_list|)
 return|;
 block|}
@@ -682,13 +715,39 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 block|{
+return|return
+name|parsePatterns
+argument_list|(
+name|traceId
+argument_list|,
+literal|"projectPattern"
+argument_list|)
+return|;
+block|}
+DECL|method|parsePatterns (String traceId, String name)
+specifier|private
+name|ImmutableSet
+argument_list|<
+name|Pattern
+argument_list|>
+name|parsePatterns
+parameter_list|(
+name|String
+name|traceId
+parameter_list|,
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|ConfigInvalidException
+block|{
 name|ImmutableSet
 operator|.
 name|Builder
 argument_list|<
 name|Pattern
 argument_list|>
-name|projectPatterns
+name|patterns
 init|=
 name|ImmutableSet
 operator|.
@@ -697,7 +756,7 @@ argument_list|()
 decl_stmt|;
 name|String
 index|[]
-name|projectPatternRegExs
+name|patternRegExs
 init|=
 name|cfg
 operator|.
@@ -707,20 +766,20 @@ literal|"tracing"
 argument_list|,
 name|traceId
 argument_list|,
-literal|"projectPattern"
+name|name
 argument_list|)
 decl_stmt|;
 for|for
 control|(
 name|String
-name|projectPatternRegEx
+name|patternRegEx
 range|:
-name|projectPatternRegExs
+name|patternRegExs
 control|)
 block|{
 try|try
 block|{
-name|projectPatterns
+name|patterns
 operator|.
 name|add
 argument_list|(
@@ -728,7 +787,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-name|projectPatternRegEx
+name|patternRegEx
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -747,11 +806,13 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Invalid tracing config ('tracing.%s.projectPattern = %s'): %s"
+literal|"Invalid tracing config ('tracing.%s.%s = %s'): %s"
 argument_list|,
 name|traceId
 argument_list|,
-name|projectPatternRegEx
+name|name
+argument_list|,
+name|patternRegEx
 argument_list|,
 name|e
 operator|.
@@ -763,7 +824,7 @@ throw|;
 block|}
 block|}
 return|return
-name|projectPatterns
+name|patterns
 operator|.
 name|build
 argument_list|()
@@ -792,6 +853,16 @@ argument_list|<
 name|String
 argument_list|>
 name|requestTypes
+parameter_list|()
+function_decl|;
+comment|/** pattern matching request URIs */
+DECL|method|requestUriPatterns ()
+specifier|abstract
+name|ImmutableSet
+argument_list|<
+name|Pattern
+argument_list|>
+name|requestUriPatterns
 parameter_list|()
 function_decl|;
 comment|/** accounts IDs matching calling user */
@@ -875,6 +946,70 @@ block|{
 return|return
 literal|false
 return|;
+block|}
+comment|// If in the trace config request URI patterns are set and none of them matches, then the
+comment|// request is not matched.
+if|if
+condition|(
+operator|!
+name|requestUriPatterns
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|requestInfo
+operator|.
+name|requestUri
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// The request has no request URI, hence it cannot match a request URI pattern.
+return|return
+literal|false
+return|;
+block|}
+if|if
+condition|(
+name|requestUriPatterns
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|noneMatch
+argument_list|(
+name|p
+lambda|->
+name|p
+operator|.
+name|matcher
+argument_list|(
+name|requestInfo
+operator|.
+name|requestUri
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+operator|.
+name|matches
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 comment|// If in the trace config accounts are set and none of them matches, then the request is not
 comment|// matched.
@@ -1001,8 +1136,9 @@ literal|false
 return|;
 block|}
 block|}
-comment|// For any match criteria (request type, account, project pattern) that was specified in the
-comment|// trace config, at least one of the configured value matched the request.
+comment|// For any match criteria (request type, request URI pattern, account, project pattern) that
+comment|// was specified in the trace config, at least one of the configured value matched the
+comment|// request.
 return|return
 literal|true
 return|;
@@ -1036,6 +1172,18 @@ argument_list|<
 name|String
 argument_list|>
 name|requestTypes
+parameter_list|)
+function_decl|;
+DECL|method|requestUriPatterns (ImmutableSet<Pattern> requestUriPatterns)
+specifier|abstract
+name|Builder
+name|requestUriPatterns
+parameter_list|(
+name|ImmutableSet
+argument_list|<
+name|Pattern
+argument_list|>
+name|requestUriPatterns
 parameter_list|)
 function_decl|;
 DECL|method|accountIds (ImmutableSet<Account.Id> accountIds)
