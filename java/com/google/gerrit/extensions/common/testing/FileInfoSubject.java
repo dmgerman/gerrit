@@ -268,6 +268,9 @@ block|}
 DECL|method|status ()
 specifier|public
 name|ComparableSubject
+argument_list|<
+name|Character
+argument_list|>
 name|status
 parameter_list|()
 block|{
