@@ -4885,6 +4885,14 @@ argument_list|,
 name|m
 argument_list|)
 expr_stmt|;
+name|assert_
+argument_list|()
+operator|.
+name|fail
+argument_list|(
+literal|"expected MigrationException"
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
