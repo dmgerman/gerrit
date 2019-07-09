@@ -102,11 +102,6 @@ specifier|public
 name|String
 name|reportBugUrl
 decl_stmt|;
-DECL|field|reportBugText
-specifier|public
-name|String
-name|reportBugText
-decl_stmt|;
 DECL|field|primaryWeblinkName
 specifier|public
 name|String
