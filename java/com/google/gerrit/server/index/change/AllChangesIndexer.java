@@ -386,6 +386,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|OnlineReindexMode
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -1630,6 +1646,11 @@ name|open
 argument_list|()
 init|)
 block|{
+name|OnlineReindexMode
+operator|.
+name|begin
+argument_list|()
+expr_stmt|;
 comment|// Order of scanning changes is undefined. This is ok if we assume that packfile locality is
 comment|// not important for indexing, since sites should have a fully populated DiffSummary cache.
 comment|// It does mean that reindexing after invalidating the DiffSummary cache will be expensive,
@@ -1677,6 +1698,14 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|OnlineReindexMode
+operator|.
+name|end
+argument_list|()
 expr_stmt|;
 block|}
 return|return
