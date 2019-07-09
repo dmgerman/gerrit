@@ -554,17 +554,6 @@ name|GerritConfig
 argument_list|(
 name|name
 operator|=
-literal|"gerrit.reportBugText"
-argument_list|,
-name|value
-operator|=
-literal|"REPORT BUG"
-argument_list|)
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
 literal|"gerrit.reportBugUrl"
 argument_list|,
 name|value
@@ -916,20 +905,6 @@ operator|.
 name|isEqualTo
 argument_list|(
 literal|"https://example.com/report"
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|i
-operator|.
-name|gerrit
-operator|.
-name|reportBugText
-argument_list|)
-operator|.
-name|isEqualTo
-argument_list|(
-literal|"REPORT BUG"
 argument_list|)
 expr_stmt|;
 comment|// plugin
@@ -1415,18 +1390,6 @@ operator|.
 name|gerrit
 operator|.
 name|reportBugUrl
-argument_list|)
-operator|.
-name|isNull
-argument_list|()
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|i
-operator|.
-name|gerrit
-operator|.
-name|reportBugText
 argument_list|)
 operator|.
 name|isNull
