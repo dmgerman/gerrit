@@ -156,6 +156,22 @@ name|GroupReference
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountGroup
+import|;
+end_import
+
 begin_class
 DECL|class|GroupReferenceSubject
 specifier|public
@@ -241,6 +257,11 @@ block|}
 DECL|method|groupUuid ()
 specifier|public
 name|ComparableSubject
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
 name|groupUuid
 parameter_list|()
 block|{

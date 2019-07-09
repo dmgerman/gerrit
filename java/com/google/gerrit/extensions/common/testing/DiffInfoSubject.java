@@ -174,6 +174,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|ChangeType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|DiffInfo
 import|;
 end_import
@@ -315,6 +331,9 @@ block|}
 DECL|method|changeType ()
 specifier|public
 name|ComparableSubject
+argument_list|<
+name|ChangeType
+argument_list|>
 name|changeType
 parameter_list|()
 block|{

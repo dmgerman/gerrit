@@ -186,6 +186,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Date
@@ -335,6 +345,9 @@ block|}
 DECL|method|date ()
 specifier|public
 name|ComparableSubject
+argument_list|<
+name|Timestamp
+argument_list|>
 name|date
 parameter_list|()
 block|{

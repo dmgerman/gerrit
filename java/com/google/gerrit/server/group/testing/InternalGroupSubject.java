@@ -176,11 +176,51 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|group
 operator|.
 name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -269,6 +309,11 @@ block|}
 DECL|method|groupUuid ()
 specifier|public
 name|ComparableSubject
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
 name|groupUuid
 parameter_list|()
 block|{
@@ -293,6 +338,11 @@ block|}
 DECL|method|nameKey ()
 specifier|public
 name|ComparableSubject
+argument_list|<
+name|AccountGroup
+operator|.
+name|NameKey
+argument_list|>
 name|nameKey
 parameter_list|()
 block|{
@@ -389,6 +439,11 @@ block|}
 DECL|method|ownerGroupUuid ()
 specifier|public
 name|ComparableSubject
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
 name|ownerGroupUuid
 parameter_list|()
 block|{
@@ -437,6 +492,9 @@ block|}
 DECL|method|createdOn ()
 specifier|public
 name|ComparableSubject
+argument_list|<
+name|Timestamp
+argument_list|>
 name|createdOn
 parameter_list|()
 block|{
@@ -509,6 +567,9 @@ block|}
 DECL|method|refState ()
 specifier|public
 name|ComparableSubject
+argument_list|<
+name|ObjectId
+argument_list|>
 name|refState
 parameter_list|()
 block|{
