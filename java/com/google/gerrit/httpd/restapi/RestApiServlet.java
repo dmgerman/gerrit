@@ -5266,12 +5266,7 @@ name|status
 operator|=
 name|SC_SERVICE_UNAVAILABLE
 argument_list|,
-name|messageOr
-argument_list|(
-name|t
-argument_list|,
 literal|"Lock failure"
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
