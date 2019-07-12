@@ -1069,7 +1069,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * {@link #get(ListChangesOption...)} with all options included, except for the following.    *    *<ul>    *<li>{@code CHECK} is omitted, to skip consistency checks.    *<li>{@code SKIP_MERGEABLE} is omitted, so the {@code mergeable} bit<em>is</em> set.    *</ul>    */
+comment|/**    * {@link #get(ListChangesOption...)} with all options included, except for the following.    *    *<ul>    *<li>{@code CHECK} is omitted, to skip consistency checks.    *<li>{@code SKIP_MERGEABLE} is omitted, so the {@code mergeable} bit<em>is</em> set.    *<li>{@code SKIP_DIFFSTAT} is omitted to ensure diffstat calculations.    *</ul>    */
 DECL|method|get ()
 specifier|default
 name|ChangeInfo
@@ -1096,6 +1096,10 @@ argument_list|,
 name|ListChangesOption
 operator|.
 name|SKIP_MERGEABLE
+argument_list|,
+name|ListChangesOption
+operator|.
+name|SKIP_DIFFSTAT
 argument_list|)
 argument_list|)
 argument_list|)

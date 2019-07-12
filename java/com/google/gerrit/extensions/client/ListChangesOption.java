@@ -236,6 +236,13 @@ name|SKIP_MERGEABLE
 argument_list|(
 literal|22
 argument_list|)
+block|,
+comment|/**    * Skip diffstat computation that compute the insertions field (number of lines inserted) and    * deletions field (number of lines deleted)    */
+DECL|enumConstant|SKIP_DIFFSTAT
+name|SKIP_DIFFSTAT
+argument_list|(
+literal|23
+argument_list|)
 block|;
 DECL|field|value
 specifier|private
