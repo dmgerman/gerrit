@@ -634,6 +634,11 @@ operator|.
 name|ofString
 argument_list|(
 literal|"action"
+argument_list|,
+name|Field
+operator|.
+name|ignoreMetadata
+argument_list|()
 argument_list|)
 operator|.
 name|build
@@ -812,6 +817,11 @@ operator|.
 name|ofString
 argument_list|(
 literal|"action"
+argument_list|,
+name|Field
+operator|.
+name|ignoreMetadata
+argument_list|()
 argument_list|)
 operator|.
 name|build
