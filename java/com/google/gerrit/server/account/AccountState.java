@@ -400,22 +400,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AllUsersName
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -494,8 +478,8 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-comment|/**    * Creates an AccountState from the given account config.    *    * @param allUsersName the name of the All-Users repository    * @param externalIds class to access external IDs    * @param accountConfig the account config, must already be loaded    * @return the account state, {@link Optional#empty()} if the account doesn't exist    * @throws IOException if accessing the external IDs fails    */
-DECL|method|fromAccountConfig ( AllUsersName allUsersName, ExternalIds externalIds, AccountConfig accountConfig)
+comment|/**    * Creates an AccountState from the given account config.    *    * @param externalIds class to access external IDs    * @param accountConfig the account config, must already be loaded    * @return the account state, {@link Optional#empty()} if the account doesn't exist    * @throws IOException if accessing the external IDs fails    */
+DECL|method|fromAccountConfig ( ExternalIds externalIds, AccountConfig accountConfig)
 specifier|public
 specifier|static
 name|Optional
@@ -504,9 +488,6 @@ name|AccountState
 argument_list|>
 name|fromAccountConfig
 parameter_list|(
-name|AllUsersName
-name|allUsersName
-parameter_list|,
 name|ExternalIds
 name|externalIds
 parameter_list|,
@@ -519,8 +500,6 @@ block|{
 return|return
 name|fromAccountConfig
 argument_list|(
-name|allUsersName
-argument_list|,
 name|externalIds
 argument_list|,
 name|accountConfig
@@ -529,8 +508,8 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Creates an AccountState from the given account config.    *    *<p>If external ID notes are provided the revision of the external IDs branch from which the    * external IDs for the account should be loaded is taken from the external ID notes. If external    * ID notes are not given the revision of the external IDs branch is taken from the account    * config. Updating external IDs is done via {@link ExternalIdNotes} and if external IDs were    * updated the revision of the external IDs branch in account config is outdated. Hence after    * updating external IDs the external ID notes must be provided.    *    * @param allUsersName the name of the All-Users repository    * @param externalIds class to access external IDs    * @param accountConfig the account config, must already be loaded    * @param extIdNotes external ID notes, must already be loaded, may be {@code null}    * @return the account state, {@link Optional#empty()} if the account doesn't exist    * @throws IOException if accessing the external IDs fails    */
-DECL|method|fromAccountConfig ( AllUsersName allUsersName, ExternalIds externalIds, AccountConfig accountConfig, @Nullable ExternalIdNotes extIdNotes)
+comment|/**    * Creates an AccountState from the given account config.    *    *<p>If external ID notes are provided the revision of the external IDs branch from which the    * external IDs for the account should be loaded is taken from the external ID notes. If external    * ID notes are not given the revision of the external IDs branch is taken from the account    * config. Updating external IDs is done via {@link ExternalIdNotes} and if external IDs were    * updated the revision of the external IDs branch in account config is outdated. Hence after    * updating external IDs the external ID notes must be provided.    *    * @param externalIds class to access external IDs    * @param accountConfig the account config, must already be loaded    * @param extIdNotes external ID notes, must already be loaded, may be {@code null}    * @return the account state, {@link Optional#empty()} if the account doesn't exist    * @throws IOException if accessing the external IDs fails    */
+DECL|method|fromAccountConfig ( ExternalIds externalIds, AccountConfig accountConfig, @Nullable ExternalIdNotes extIdNotes)
 specifier|public
 specifier|static
 name|Optional
@@ -539,9 +518,6 @@ name|AccountState
 argument_list|>
 name|fromAccountConfig
 parameter_list|(
-name|AllUsersName
-name|allUsersName
-parameter_list|,
 name|ExternalIds
 name|externalIds
 parameter_list|,
@@ -697,8 +673,6 @@ argument_list|(
 operator|new
 name|AccountState
 argument_list|(
-name|allUsersName
-argument_list|,
 name|account
 argument_list|,
 name|extIds
@@ -714,16 +688,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Creates an AccountState for a given account with no external IDs, no project watches and    * default preferences.    *    * @param allUsersName the name of the All-Users repository    * @param account the account    * @return the account state    */
-DECL|method|forAccount (AllUsersName allUsersName, Account account)
+comment|/**    * Creates an AccountState for a given account with no external IDs, no project watches and    * default preferences.    *    * @param account the account    * @return the account state    */
+DECL|method|forAccount (Account account)
 specifier|public
 specifier|static
 name|AccountState
 name|forAccount
 parameter_list|(
-name|AllUsersName
-name|allUsersName
-parameter_list|,
 name|Account
 name|account
 parameter_list|)
@@ -731,8 +702,6 @@ block|{
 return|return
 name|forAccount
 argument_list|(
-name|allUsersName
-argument_list|,
 name|account
 argument_list|,
 name|ImmutableSet
@@ -742,16 +711,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Creates an AccountState for a given account with no project watches and default preferences.    *    * @param allUsersName the name of the All-Users repository    * @param account the account    * @param extIds the external IDs    * @return the account state    */
-DECL|method|forAccount ( AllUsersName allUsersName, Account account, Collection<ExternalId> extIds)
+comment|/**    * Creates an AccountState for a given account with no project watches and default preferences.    *    * @param account the account    * @param extIds the external IDs    * @return the account state    */
+DECL|method|forAccount (Account account, Collection<ExternalId> extIds)
 specifier|public
 specifier|static
 name|AccountState
 name|forAccount
 parameter_list|(
-name|AllUsersName
-name|allUsersName
-parameter_list|,
 name|Account
 name|account
 parameter_list|,
@@ -766,8 +732,6 @@ return|return
 operator|new
 name|AccountState
 argument_list|(
-name|allUsersName
-argument_list|,
 name|account
 argument_list|,
 name|ImmutableSet
@@ -799,12 +763,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|field|allUsersName
-specifier|private
-specifier|final
-name|AllUsersName
-name|allUsersName
-decl_stmt|;
 DECL|field|account
 specifier|private
 specifier|final
@@ -876,13 +834,10 @@ name|Object
 argument_list|>
 name|properties
 decl_stmt|;
-DECL|method|AccountState ( AllUsersName allUsersName, Account account, ImmutableSet<ExternalId> externalIds, ImmutableMap<ProjectWatchKey, ImmutableSet<NotifyType>> projectWatches, GeneralPreferencesInfo generalPreferences, DiffPreferencesInfo diffPreferences, EditPreferencesInfo editPreferences)
+DECL|method|AccountState ( Account account, ImmutableSet<ExternalId> externalIds, ImmutableMap<ProjectWatchKey, ImmutableSet<NotifyType>> projectWatches, GeneralPreferencesInfo generalPreferences, DiffPreferencesInfo diffPreferences, EditPreferencesInfo editPreferences)
 specifier|private
 name|AccountState
 parameter_list|(
-name|AllUsersName
-name|allUsersName
-parameter_list|,
 name|Account
 name|account
 parameter_list|,
@@ -913,12 +868,6 @@ name|EditPreferencesInfo
 name|editPreferences
 parameter_list|)
 block|{
-name|this
-operator|.
-name|allUsersName
-operator|=
-name|allUsersName
-expr_stmt|;
 name|this
 operator|.
 name|account
@@ -966,16 +915,6 @@ name|editPreferences
 operator|=
 name|editPreferences
 expr_stmt|;
-block|}
-DECL|method|getAllUsersNameForIndexing ()
-specifier|public
-name|AllUsersName
-name|getAllUsersNameForIndexing
-parameter_list|()
-block|{
-return|return
-name|allUsersName
-return|;
 block|}
 comment|/** Get the cached account metadata. */
 DECL|method|getAccount ()

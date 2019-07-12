@@ -248,22 +248,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|AllUsersName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|logging
 operator|.
 name|Metadata
@@ -624,12 +608,6 @@ block|}
 block|}
 return|;
 block|}
-DECL|field|allUsersName
-specifier|private
-specifier|final
-name|AllUsersName
-name|allUsersName
-decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -660,12 +638,9 @@ name|executor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCacheImpl ( AllUsersName allUsersName, ExternalIds externalIds, @Named(BYID_NAME) LoadingCache<Account.Id, Optional<AccountState>> byId, @FanOutExecutor ExecutorService executor)
+DECL|method|AccountCacheImpl ( ExternalIds externalIds, @Named(BYID_NAME) LoadingCache<Account.Id, Optional<AccountState>> byId, @FanOutExecutor ExecutorService executor)
 name|AccountCacheImpl
 parameter_list|(
-name|AllUsersName
-name|allUsersName
-parameter_list|,
 name|ExternalIds
 name|externalIds
 parameter_list|,
@@ -693,12 +668,6 @@ name|ExecutorService
 name|executor
 parameter_list|)
 block|{
-name|this
-operator|.
-name|allUsersName
-operator|=
-name|allUsersName
-expr_stmt|;
 name|this
 operator|.
 name|externalIds
@@ -1287,8 +1256,6 @@ name|AccountState
 operator|.
 name|forAccount
 argument_list|(
-name|allUsersName
-argument_list|,
 name|account
 argument_list|)
 return|;

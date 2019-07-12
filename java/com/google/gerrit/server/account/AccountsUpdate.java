@@ -1446,8 +1446,6 @@ name|AccountState
 operator|.
 name|forAccount
 argument_list|(
-name|allUsersName
-argument_list|,
 name|account
 argument_list|)
 decl_stmt|;
@@ -1637,8 +1635,6 @@ name|AccountState
 operator|.
 name|fromAccountConfig
 argument_list|(
-name|allUsersName
-argument_list|,
 name|externalIds
 argument_list|,
 name|accountConfig
@@ -2688,8 +2684,6 @@ name|AccountState
 operator|.
 name|fromAccountConfig
 argument_list|(
-name|allUsersName
-argument_list|,
 name|externalIds
 argument_list|,
 name|accountConfig

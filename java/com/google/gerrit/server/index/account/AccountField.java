@@ -314,6 +314,38 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AllUsersNameProvider
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -990,13 +1022,20 @@ name|getMetaId
 argument_list|()
 argument_list|)
 argument_list|)
+comment|// We use the default AllUsers name to avoid having to pass around that
+comment|// variable just for indexing.
+comment|// This field is only used for staleness detection which will discover the
+comment|// default name and replace it with the actually configured name.
 operator|.
 name|toByteArray
 argument_list|(
-name|a
+operator|new
+name|AllUsersName
+argument_list|(
+name|AllUsersNameProvider
 operator|.
-name|getAllUsersNameForIndexing
-argument_list|()
+name|DEFAULT
+argument_list|)
 argument_list|)
 argument_list|)
 return|;

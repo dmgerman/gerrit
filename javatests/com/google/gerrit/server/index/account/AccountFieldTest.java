@@ -380,8 +380,6 @@ name|AccountState
 operator|.
 name|forAccount
 argument_list|(
-name|allUsersName
-argument_list|,
 name|account
 argument_list|)
 argument_list|)
@@ -559,8 +557,6 @@ name|AccountState
 operator|.
 name|forAccount
 argument_list|(
-literal|null
-argument_list|,
 name|account
 argument_list|,
 name|ImmutableSet

@@ -827,8 +827,6 @@ name|AccountState
 operator|.
 name|fromAccountConfig
 argument_list|(
-name|allUsersName
-argument_list|,
 name|externalIds
 argument_list|,
 operator|new
