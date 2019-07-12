@@ -835,6 +835,11 @@ name|add
 argument_list|(
 name|matching
 argument_list|,
+name|state
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
 name|nc
 argument_list|)
 expr_stmt|;
@@ -1063,7 +1068,7 @@ return|;
 block|}
 block|}
 block|}
-DECL|method|add (Watchers matching, NotifyConfig nc)
+DECL|method|add (Watchers matching, Project.NameKey projectName, NotifyConfig nc)
 specifier|private
 name|void
 name|add
@@ -1071,16 +1076,35 @@ parameter_list|(
 name|Watchers
 name|matching
 parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|NotifyConfig
 name|nc
 parameter_list|)
 throws|throws
 name|QueryParseException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Checking watchers for notify config %s from project %s"
+argument_list|,
+name|nc
+argument_list|,
+name|projectName
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|GroupReference
-name|ref
+name|groupRef
 range|:
 name|nc
 operator|.
@@ -1094,7 +1118,7 @@ init|=
 operator|new
 name|SingleGroupUser
 argument_list|(
-name|ref
+name|groupRef
 operator|.
 name|getUUID
 argument_list|()
@@ -1125,10 +1149,37 @@ name|getHeader
 argument_list|()
 argument_list|)
 argument_list|,
-name|ref
+name|groupRef
 operator|.
 name|getUUID
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Added watchers for group %s"
+argument_list|,
+name|groupRef
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"The filter did not match for group %s; skip notification"
+argument_list|,
+name|groupRef
 argument_list|)
 expr_stmt|;
 block|}
@@ -1172,6 +1223,39 @@ name|emails
 operator|.
 name|addAll
 argument_list|(
+name|nc
+operator|.
+name|getAddresses
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Added watchers for these addresses: %s"
+argument_list|,
+name|nc
+operator|.
+name|getAddresses
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"The filter did not match; skip notification for these addresses: %s"
+argument_list|,
 name|nc
 operator|.
 name|getAddresses
@@ -1284,6 +1368,18 @@ operator|==
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"group %s not found, skip notification"
+argument_list|,
+name|uuid
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 if|if
@@ -1317,6 +1413,21 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"notify group email address %s; skip expanding to members"
+argument_list|,
+name|group
+operator|.
+name|getEmailAddress
+argument_list|()
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 if|if
@@ -1332,8 +1443,32 @@ operator|)
 condition|)
 block|{
 comment|// Non-internal groups cannot be expanded by the server.
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"group %s is not an internal group, skip notification"
+argument_list|,
+name|uuid
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"adding the members of group %s as watchers"
+argument_list|,
+name|uuid
+argument_list|)
+expr_stmt|;
 name|GroupDescription
 operator|.
 name|Internal
@@ -1418,6 +1553,20 @@ name|NotifyType
 name|type
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Checking project watch %s of account %s"
+argument_list|,
+name|key
+argument_list|,
+name|accountId
+argument_list|)
+expr_stmt|;
 name|IdentifiedUser
 name|user
 init|=
@@ -1469,10 +1618,34 @@ name|accountId
 argument_list|)
 expr_stmt|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Added account %s as watcher"
+argument_list|,
+name|accountId
+argument_list|)
+expr_stmt|;
 return|return
 literal|true
 return|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"The filter did not match for account %s; skip notification"
+argument_list|,
+name|accountId
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1481,6 +1654,20 @@ name|e
 parameter_list|)
 block|{
 comment|// Ignore broken filter expressions.
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Account %s has invalid filter in project watch %s"
+argument_list|,
+name|accountId
+argument_list|,
+name|key
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 literal|false
