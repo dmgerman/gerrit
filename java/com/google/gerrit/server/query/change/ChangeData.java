@@ -130,6 +130,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|base
 operator|.
 name|MoreObjects
@@ -2596,6 +2610,8 @@ return|return
 name|allUsersName
 return|;
 block|}
+annotation|@
+name|VisibleForTesting
 DECL|method|setCurrentFilePaths (List<String> filePaths)
 specifier|public
 name|void
