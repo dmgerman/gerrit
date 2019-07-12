@@ -1776,7 +1776,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|isBoolean
+name|isBooleanOption
 argument_list|(
 name|name
 argument_list|)
@@ -1903,27 +1903,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|isBoolean (String name)
-specifier|public
-name|boolean
-name|isBoolean
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-return|return
-name|findHandler
-argument_list|(
-name|makeOption
-argument_list|(
-name|name
-argument_list|)
-argument_list|)
-operator|instanceof
-name|BooleanOptionHandler
-return|;
-block|}
 DECL|method|parseWithPrefix (String prefix, Object bean)
 specifier|public
 name|void
@@ -1957,6 +1936,27 @@ operator|.
 name|addOptionsWithMetRequirements
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|isBooleanOption (String name)
+specifier|private
+name|boolean
+name|isBooleanOption
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|findHandler
+argument_list|(
+name|makeOption
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+operator|instanceof
+name|BooleanOptionHandler
+return|;
 block|}
 DECL|method|makeOption (String name)
 specifier|private
