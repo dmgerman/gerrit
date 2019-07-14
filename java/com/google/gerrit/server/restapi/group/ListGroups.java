@@ -85,6 +85,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toList
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -109,20 +123,6 @@ operator|.
 name|base
 operator|.
 name|Strings
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterables
 import|;
 end_import
 
@@ -2048,14 +2048,6 @@ name|GroupReference
 argument_list|>
 name|groupRefs
 init|=
-name|Lists
-operator|.
-name|newArrayList
-argument_list|(
-name|Iterables
-operator|.
-name|limit
-argument_list|(
 name|groupBackend
 operator|.
 name|suggest
@@ -2075,7 +2067,12 @@ argument_list|(
 literal|null
 argument_list|)
 argument_list|)
-argument_list|,
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|limit
+argument_list|(
 name|limit
 operator|<=
 literal|0
@@ -2091,6 +2088,11 @@ argument_list|,
 literal|10
 argument_list|)
 argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toList
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|List
