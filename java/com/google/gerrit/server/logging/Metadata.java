@@ -363,15 +363,15 @@ argument_list|>
 name|multiple
 parameter_list|()
 function_decl|;
-comment|// Name of a metadata file in NoteDb.
-DECL|method|noteDbFileName ()
+comment|// Path of a metadata file in NoteDb.
+DECL|method|noteDbFilePath ()
 specifier|public
 specifier|abstract
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|noteDbFileName
+name|noteDbFilePath
 parameter_list|()
 function_decl|;
 comment|// Name of a metadata ref in NoteDb.
@@ -778,16 +778,16 @@ name|boolean
 name|multiple
 parameter_list|)
 function_decl|;
-DECL|method|noteDbFileName (@ullable String noteDbFileName)
+DECL|method|noteDbFilePath (@ullable String noteDbFilePath)
 specifier|public
 specifier|abstract
 name|Builder
-name|noteDbFileName
+name|noteDbFilePath
 parameter_list|(
 annotation|@
 name|Nullable
 name|String
-name|noteDbFileName
+name|noteDbFilePath
 parameter_list|)
 function_decl|;
 DECL|method|noteDbRefName (@ullable String noteDbRefName)
