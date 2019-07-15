@@ -1506,8 +1506,6 @@ init|=
 operator|new
 name|UpdatedAccount
 argument_list|(
-name|allUsersName
-argument_list|,
 name|externalIds
 argument_list|,
 name|message
@@ -1713,8 +1711,6 @@ init|=
 operator|new
 name|UpdatedAccount
 argument_list|(
-name|allUsersName
-argument_list|,
 name|externalIds
 argument_list|,
 name|message
@@ -2537,12 +2533,6 @@ specifier|static
 class|class
 name|UpdatedAccount
 block|{
-DECL|field|allUsersName
-specifier|private
-specifier|final
-name|AllUsersName
-name|allUsersName
-decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -2572,13 +2562,10 @@ specifier|private
 name|boolean
 name|created
 decl_stmt|;
-DECL|method|UpdatedAccount ( AllUsersName allUsersName, ExternalIds externalIds, String message, AccountConfig accountConfig, ExternalIdNotes extIdNotes)
+DECL|method|UpdatedAccount ( ExternalIds externalIds, String message, AccountConfig accountConfig, ExternalIdNotes extIdNotes)
 specifier|private
 name|UpdatedAccount
 parameter_list|(
-name|AllUsersName
-name|allUsersName
-parameter_list|,
 name|ExternalIds
 name|externalIds
 parameter_list|,
@@ -2603,15 +2590,6 @@ name|message
 argument_list|)
 argument_list|,
 literal|"message for account update must be set"
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|allUsersName
-operator|=
-name|requireNonNull
-argument_list|(
-name|allUsersName
 argument_list|)
 expr_stmt|;
 name|this
