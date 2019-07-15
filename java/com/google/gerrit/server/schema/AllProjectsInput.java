@@ -256,14 +256,6 @@ name|of
 argument_list|(
 name|BooleanProjectConfig
 operator|.
-name|REQUIRE_CHANGE_ID
-argument_list|,
-name|InheritableBoolean
-operator|.
-name|TRUE
-argument_list|,
-name|BooleanProjectConfig
-operator|.
 name|USE_CONTENT_MERGE
 argument_list|,
 name|InheritableBoolean
