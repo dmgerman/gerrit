@@ -2499,7 +2499,7 @@ name|name
 argument_list|()
 argument_list|)
 operator|.
-name|noteDbFileName
+name|noteDbFilePath
 argument_list|(
 name|fileName
 argument_list|)
@@ -3001,7 +3001,7 @@ name|getRefName
 argument_list|()
 argument_list|)
 operator|.
-name|noteDbFileName
+name|noteDbFilePath
 argument_list|(
 name|fileName
 argument_list|)

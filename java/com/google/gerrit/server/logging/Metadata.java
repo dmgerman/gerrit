@@ -253,6 +253,17 @@ argument_list|>
 name|exportValue
 parameter_list|()
 function_decl|;
+comment|// Path of a file in a repository.
+DECL|method|filePath ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|filePath
+parameter_list|()
+function_decl|;
 comment|// Garbage collector name.
 DECL|method|garbageCollectorName ()
 specifier|public
@@ -363,15 +374,15 @@ argument_list|>
 name|multiple
 parameter_list|()
 function_decl|;
-comment|// Name of a metadata file in NoteDb.
-DECL|method|noteDbFileName ()
+comment|// Path of a metadata file in NoteDb.
+DECL|method|noteDbFilePath ()
 specifier|public
 specifier|abstract
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|noteDbFileName
+name|noteDbFilePath
 parameter_list|()
 function_decl|;
 comment|// Name of a metadata ref in NoteDb.
@@ -405,6 +416,17 @@ argument_list|<
 name|String
 argument_list|>
 name|noteDbTable
+parameter_list|()
+function_decl|;
+comment|// The ID of a patch set.
+DECL|method|patchSetId ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|Integer
+argument_list|>
+name|patchSetId
 parameter_list|()
 function_decl|;
 comment|// Plugin metadata that doesn't fit into any other category.
@@ -666,6 +688,18 @@ name|String
 name|exportValue
 parameter_list|)
 function_decl|;
+DECL|method|filePath (@ullable String filePath)
+specifier|public
+specifier|abstract
+name|Builder
+name|filePath
+parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|filePath
+parameter_list|)
+function_decl|;
 DECL|method|garbageCollectorName (@ullable String garbageCollectorName)
 specifier|public
 specifier|abstract
@@ -778,16 +812,16 @@ name|boolean
 name|multiple
 parameter_list|)
 function_decl|;
-DECL|method|noteDbFileName (@ullable String noteDbFileName)
+DECL|method|noteDbFilePath (@ullable String noteDbFilePath)
 specifier|public
 specifier|abstract
 name|Builder
-name|noteDbFileName
+name|noteDbFilePath
 parameter_list|(
 annotation|@
 name|Nullable
 name|String
-name|noteDbFileName
+name|noteDbFilePath
 parameter_list|)
 function_decl|;
 DECL|method|noteDbRefName (@ullable String noteDbRefName)
@@ -824,6 +858,16 @@ annotation|@
 name|Nullable
 name|String
 name|noteDbTable
+parameter_list|)
+function_decl|;
+DECL|method|patchSetId (int patchSetId)
+specifier|public
+specifier|abstract
+name|Builder
+name|patchSetId
+parameter_list|(
+name|int
+name|patchSetId
 parameter_list|)
 function_decl|;
 DECL|method|pluginMetadataBuilder ()
