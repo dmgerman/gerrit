@@ -160,11 +160,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|api
+name|common
 operator|.
-name|projects
-operator|.
-name|ProjectInput
+name|Input
 import|;
 end_import
 
@@ -401,7 +399,7 @@ name|RestModifyView
 argument_list|<
 name|ProjectResource
 argument_list|,
-name|ProjectInput
+name|Input
 argument_list|>
 block|{
 DECL|field|allChangesIndexerProvider
@@ -469,7 +467,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ProjectResource resource, ProjectInput input)
+DECL|method|apply (ProjectResource resource, Input input)
 specifier|public
 name|Response
 operator|.
@@ -479,7 +477,7 @@ parameter_list|(
 name|ProjectResource
 name|resource
 parameter_list|,
-name|ProjectInput
+name|Input
 name|input
 parameter_list|)
 block|{
