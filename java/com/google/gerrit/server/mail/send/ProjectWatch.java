@@ -855,9 +855,14 @@ operator|.
 name|atWarning
 argument_list|()
 operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
 name|log
 argument_list|(
-literal|"Project %s has invalid notify %s filter \"%s\": %s"
+literal|"Project %s has invalid notify %s filter \"%s\""
 argument_list|,
 name|state
 operator|.
@@ -872,11 +877,6 @@ argument_list|,
 name|nc
 operator|.
 name|getFilter
-argument_list|()
-argument_list|,
-name|e
-operator|.
-name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1658,6 +1658,11 @@ name|logger
 operator|.
 name|atWarning
 argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
 operator|.
 name|log
 argument_list|(
