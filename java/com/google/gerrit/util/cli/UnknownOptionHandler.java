@@ -90,47 +90,6 @@ specifier|public
 interface|interface
 name|UnknownOptionHandler
 block|{
-comment|/**    * Checks whether the given option name matches the naming pattern of options that are defined by    * plugins that were defined by registering a {@link    * com.google.gerrit.server.DynamicOptions.DynamicBean}.    *    * @param optionName name of the option    * @return {@code true} if it's a plugin option, otherwise {@code false}    */
-DECL|method|isPluginOption (String optionName)
-specifier|public
-specifier|static
-name|boolean
-name|isPluginOption
-parameter_list|(
-name|String
-name|optionName
-parameter_list|)
-block|{
-comment|// Options from plugins have the following name pattern: '--<plugin-name>--<option-name>'
-if|if
-condition|(
-name|optionName
-operator|.
-name|startsWith
-argument_list|(
-literal|"--"
-argument_list|)
-condition|)
-block|{
-name|optionName
-operator|=
-name|optionName
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|optionName
-operator|.
-name|contains
-argument_list|(
-literal|"--"
-argument_list|)
-return|;
-block|}
 comment|/**    * Whether an unknown option should be accepted.    *    *<p>If an unknown option is not accepted, the parsing of the command-line options fails and the    * user gets an error.    *    *<p>This method can be used to ignore unknown options (without failure for the user) or to    * handle them.    *    * @param name the name of an unknown option that was provided by the user    * @param value the value of the unknown option that was provided by the user    * @return whether this unknown options is accepted    */
 DECL|method|accept (String name, @Nullable String value)
 name|boolean
