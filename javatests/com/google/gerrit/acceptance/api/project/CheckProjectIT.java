@@ -2379,6 +2379,9 @@ argument_list|(
 literal|"A change"
 argument_list|)
 operator|.
+name|insertChangeId
+argument_list|()
+operator|.
 name|author
 argument_list|(
 name|admin
