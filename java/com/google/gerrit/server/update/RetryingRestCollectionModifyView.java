@@ -126,6 +126,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -217,7 +233,10 @@ name|Override
 DECL|method|apply (P parentResource, I input)
 specifier|public
 specifier|final
+name|Response
+argument_list|<
 name|O
+argument_list|>
 name|apply
 parameter_list|(
 name|P
@@ -288,10 +307,13 @@ name|retryOptions
 argument_list|)
 return|;
 block|}
-DECL|method|applyImpl (BatchUpdate.Factory updateFactory, P parentResource, I input)
+DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, P parentResource, I input)
 specifier|protected
 specifier|abstract
+name|Response
+argument_list|<
 name|O
+argument_list|>
 name|applyImpl
 parameter_list|(
 name|BatchUpdate

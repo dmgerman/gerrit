@@ -282,6 +282,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 block|}

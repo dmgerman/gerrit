@@ -218,6 +218,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -951,7 +967,10 @@ annotation|@
 name|Override
 DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, RevisionResource rsrc, RebaseInput input)
 specifier|protected
+name|Response
+argument_list|<
 name|ChangeInfo
+argument_list|>
 name|applyImpl
 parameter_list|(
 name|BatchUpdate
@@ -1206,6 +1225,10 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|json
 operator|.
 name|create
@@ -1224,6 +1247,7 @@ name|change
 operator|.
 name|getId
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -2061,7 +2085,10 @@ annotation|@
 name|Override
 DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, RebaseInput input)
 specifier|protected
+name|Response
+argument_list|<
 name|ChangeInfo
+argument_list|>
 name|applyImpl
 parameter_list|(
 name|BatchUpdate
@@ -2113,6 +2140,10 @@ argument_list|)
 throw|;
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|rebase
 operator|.
 name|applyImpl
@@ -2128,6 +2159,10 @@ name|ps
 argument_list|)
 argument_list|,
 name|input
+argument_list|)
+operator|.
+name|value
+argument_list|()
 argument_list|)
 return|;
 block|}

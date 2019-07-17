@@ -2096,10 +2096,7 @@ name|RevisionResource
 argument_list|,
 name|ReviewInput
 argument_list|,
-name|Response
-argument_list|<
 name|ReviewResult
-argument_list|>
 argument_list|>
 block|{
 DECL|field|logger

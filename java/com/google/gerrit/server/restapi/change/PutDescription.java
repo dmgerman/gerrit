@@ -422,10 +422,7 @@ name|RevisionResource
 argument_list|,
 name|DescriptionInput
 argument_list|,
-name|Response
-argument_list|<
 name|String
-argument_list|>
 argument_list|>
 implements|implements
 name|UiAction

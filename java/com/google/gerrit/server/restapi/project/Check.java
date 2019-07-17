@@ -164,6 +164,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestModifyView
 import|;
 end_import
@@ -312,7 +328,10 @@ annotation|@
 name|Override
 DECL|method|apply (ProjectResource rsrc, CheckProjectInput input)
 specifier|public
+name|Response
+argument_list|<
 name|CheckProjectResultInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ProjectResource
@@ -348,6 +367,10 @@ name|ADMINISTRATE_SERVER
 argument_list|)
 expr_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|projectsConsistencyChecker
 operator|.
 name|check
@@ -358,6 +381,7 @@ name|getNameKey
 argument_list|()
 argument_list|,
 name|input
+argument_list|)
 argument_list|)
 return|;
 block|}

@@ -240,6 +240,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -988,6 +1004,10 @@ argument_list|>
 operator|)
 name|resource
 lambda|->
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|ImmutableList
 operator|.
 name|of
@@ -995,6 +1015,7 @@ argument_list|(
 literal|"one"
 argument_list|,
 literal|"two"
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1059,7 +1080,10 @@ annotation|@
 name|Override
 DECL|method|apply (TopLevelResource parentResource, String input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|String
+argument_list|>
 name|apply
 parameter_list|(
 name|TopLevelResource
@@ -1072,7 +1096,12 @@ throws|throws
 name|Exception
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 literal|"test"
+argument_list|)
 return|;
 block|}
 block|}
@@ -1094,7 +1123,10 @@ annotation|@
 name|Override
 DECL|method|apply (TestPluginResource resource, String input)
 specifier|public
+name|Response
+argument_list|<
 name|String
+argument_list|>
 name|apply
 parameter_list|(
 name|TestPluginResource
@@ -1107,7 +1139,12 @@ throws|throws
 name|Exception
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 literal|"test"
+argument_list|)
 return|;
 block|}
 block|}
@@ -1127,7 +1164,10 @@ annotation|@
 name|Override
 DECL|method|apply (TestPluginResource resource)
 specifier|public
+name|Response
+argument_list|<
 name|String
+argument_list|>
 name|apply
 parameter_list|(
 name|TestPluginResource
@@ -1137,7 +1177,12 @@ throws|throws
 name|Exception
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 literal|"test"
+argument_list|)
 return|;
 block|}
 block|}

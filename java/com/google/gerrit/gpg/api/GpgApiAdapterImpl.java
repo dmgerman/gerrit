@@ -536,6 +536,9 @@ name|apply
 argument_list|(
 name|account
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -620,6 +623,9 @@ name|account
 argument_list|,
 name|in
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch

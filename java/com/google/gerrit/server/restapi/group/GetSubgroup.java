@@ -96,6 +96,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -195,7 +211,10 @@ annotation|@
 name|Override
 DECL|method|apply (SubgroupResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|GroupInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|SubgroupResource
@@ -205,6 +224,10 @@ throws|throws
 name|PermissionBackendException
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|json
 operator|.
 name|format
@@ -213,6 +236,7 @@ name|rsrc
 operator|.
 name|getMemberDescription
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}

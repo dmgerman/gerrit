@@ -444,10 +444,7 @@ name|DraftCommentResource
 argument_list|,
 name|Input
 argument_list|,
-name|Response
-argument_list|<
 name|CommentInfo
-argument_list|>
 argument_list|>
 block|{
 DECL|field|commentsUtil

@@ -944,6 +944,9 @@ name|TopLevelResource
 operator|.
 name|INSTANCE
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -1118,6 +1121,9 @@ name|TopLevelResource
 operator|.
 name|INSTANCE
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch

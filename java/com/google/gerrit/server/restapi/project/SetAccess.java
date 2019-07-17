@@ -238,6 +238,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestModifyView
 import|;
 end_import
@@ -700,7 +716,10 @@ annotation|@
 name|Override
 DECL|method|apply (ProjectResource rsrc, ProjectAccessInput input)
 specifier|public
+name|Response
+argument_list|<
 name|ProjectAccessInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ProjectResource
@@ -1059,6 +1078,10 @@ argument_list|)
 throw|;
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|getAccess
 operator|.
 name|apply
@@ -1067,6 +1090,7 @@ name|rsrc
 operator|.
 name|getNameKey
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}

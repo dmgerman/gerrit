@@ -112,6 +112,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -539,9 +555,12 @@ annotation|@
 name|Override
 DECL|method|apply (AccountResource rsrc, List<ProjectWatchInfo> input)
 specifier|public
+name|Response
+argument_list|<
 name|List
 argument_list|<
 name|ProjectWatchInfo
+argument_list|>
 argument_list|>
 name|apply
 parameter_list|(

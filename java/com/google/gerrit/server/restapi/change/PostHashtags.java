@@ -332,12 +332,9 @@ name|ChangeResource
 argument_list|,
 name|HashtagsInput
 argument_list|,
-name|Response
-argument_list|<
 name|ImmutableSortedSet
 argument_list|<
 name|String
-argument_list|>
 argument_list|>
 argument_list|>
 implements|implements

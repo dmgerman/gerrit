@@ -378,6 +378,9 @@ name|apply
 argument_list|(
 name|parent
 argument_list|)
+operator|.
+name|value
+argument_list|()
 decl_stmt|;
 name|int
 name|index

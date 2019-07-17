@@ -80,6 +80,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -129,9 +145,12 @@ annotation|@
 name|Override
 DECL|method|apply (CacheResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|ListCaches
 operator|.
 name|CacheInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|CacheResource
@@ -139,6 +158,10 @@ name|rsrc
 parameter_list|)
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 operator|new
 name|ListCaches
 operator|.
@@ -153,6 +176,7 @@ name|rsrc
 operator|.
 name|getCache
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}

@@ -432,10 +432,7 @@ name|ChangeResource
 argument_list|,
 name|Input
 argument_list|,
-name|Response
-argument_list|<
-name|?
-argument_list|>
+name|String
 argument_list|>
 implements|implements
 name|UiAction
@@ -483,7 +480,7 @@ DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, 
 specifier|protected
 name|Response
 argument_list|<
-name|?
+name|String
 argument_list|>
 name|applyImpl
 parameter_list|(

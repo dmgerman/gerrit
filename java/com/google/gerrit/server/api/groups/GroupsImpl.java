@@ -787,6 +787,9 @@ argument_list|)
 argument_list|,
 name|in
 argument_list|)
+operator|.
+name|value
+argument_list|()
 decl_stmt|;
 return|return
 name|id
@@ -1139,6 +1142,9 @@ name|apply
 argument_list|(
 name|tlr
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -1299,6 +1305,9 @@ name|TopLevelResource
 operator|.
 name|INSTANCE
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch

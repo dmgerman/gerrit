@@ -670,6 +670,9 @@ operator|new
 name|ConfigResource
 argument_list|()
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -709,6 +712,9 @@ operator|new
 name|ConfigResource
 argument_list|()
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -753,6 +759,9 @@ argument_list|()
 argument_list|,
 name|in
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -792,6 +801,9 @@ operator|new
 name|ConfigResource
 argument_list|()
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -836,6 +848,9 @@ argument_list|()
 argument_list|,
 name|in
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -875,6 +890,9 @@ operator|new
 name|ConfigResource
 argument_list|()
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -919,6 +937,9 @@ argument_list|()
 argument_list|,
 name|in
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -966,6 +987,9 @@ argument_list|()
 argument_list|,
 name|in
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch

@@ -742,10 +742,7 @@ name|ChangeResource
 argument_list|,
 name|CommitMessageInput
 argument_list|,
-name|Response
-argument_list|<
-name|?
-argument_list|>
+name|String
 argument_list|>
 block|{
 DECL|field|repositoryManager

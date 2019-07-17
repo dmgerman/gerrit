@@ -212,6 +212,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestCollectionCreateView
 import|;
 end_import
@@ -761,7 +777,10 @@ annotation|@
 name|Override
 DECL|method|apply (ProjectResource rsrc, IdString id, BranchInput input)
 specifier|public
+name|Response
+argument_list|<
 name|BranchInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ProjectResource
@@ -1408,7 +1427,12 @@ literal|null
 expr_stmt|;
 block|}
 return|return
+name|Response
+operator|.
+name|created
+argument_list|(
 name|info
+argument_list|)
 return|;
 block|}
 catch|catch

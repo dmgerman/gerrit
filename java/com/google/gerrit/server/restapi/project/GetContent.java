@@ -128,6 +128,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -237,7 +253,10 @@ annotation|@
 name|Override
 DECL|method|apply (FileResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|BinaryResult
+argument_list|>
 name|apply
 parameter_list|(
 name|FileResource
@@ -251,6 +270,10 @@ throws|,
 name|IOException
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|fileContentUtil
 operator|.
 name|getContent
@@ -271,6 +294,7 @@ name|getPath
 argument_list|()
 argument_list|,
 literal|null
+argument_list|)
 argument_list|)
 return|;
 block|}

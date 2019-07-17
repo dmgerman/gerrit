@@ -80,6 +80,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -195,7 +211,10 @@ annotation|@
 name|Override
 DECL|method|apply (ProjectResource resource)
 specifier|public
+name|Response
+argument_list|<
 name|String
+argument_list|>
 name|apply
 parameter_list|(
 name|ProjectResource
@@ -226,6 +245,10 @@ name|allProjectsName
 argument_list|)
 decl_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|parentName
 operator|!=
 literal|null
@@ -236,6 +259,7 @@ name|get
 argument_list|()
 else|:
 literal|""
+argument_list|)
 return|;
 block|}
 block|}

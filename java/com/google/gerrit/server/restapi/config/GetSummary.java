@@ -112,6 +112,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -518,7 +534,10 @@ annotation|@
 name|Override
 DECL|method|apply (ConfigResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|SummaryInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ConfigResource
@@ -588,7 +607,12 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|summary
+argument_list|)
 return|;
 block|}
 DECL|method|getTaskSummary ()

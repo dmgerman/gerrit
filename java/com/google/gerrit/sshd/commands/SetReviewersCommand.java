@@ -970,6 +970,9 @@ argument_list|,
 name|input
 argument_list|)
 operator|.
+name|value
+argument_list|()
+operator|.
 name|error
 expr_stmt|;
 block|}

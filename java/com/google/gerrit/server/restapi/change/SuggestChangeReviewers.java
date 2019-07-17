@@ -144,6 +144,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -478,9 +494,12 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|List
 argument_list|<
 name|SuggestedReviewerInfo
+argument_list|>
 argument_list|>
 name|apply
 parameter_list|(
@@ -519,6 +538,10 @@ argument_list|)
 throw|;
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|reviewersUtil
 operator|.
 name|suggestReviewers
@@ -546,6 +569,7 @@ name|rsrc
 argument_list|)
 argument_list|,
 name|excludeGroups
+argument_list|)
 argument_list|)
 return|;
 block|}

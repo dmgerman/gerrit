@@ -88,9 +88,12 @@ argument_list|<
 name|R
 argument_list|>
 block|{
-comment|/**    * Process the view operation by altering the resource.    *    * @param resource resource to modify.    * @param input input after parsing from request.    * @return result to return to the client. Use {@link BinaryResult} to avoid automatic conversion    *     to JSON.    * @throws AuthException the client is not permitted to access this view.    * @throws BadRequestException the request was incorrectly specified and cannot be handled by this    *     view.    * @throws ResourceConflictException the resource state does not permit this view to make the    *     changes at this time.    * @throws Exception the implementation of the view failed. The exception will be logged and HTTP    *     500 Internal Server Error will be returned to the client.    */
+comment|/**    * Process the view operation by altering the resource.    *    *<p>The value of the returned response is automatically converted to JSON unless it is a {@link    * BinaryResult}.    *    *<p>The returned response defines the status code that is returned to the client. For    * RestModifyViews this is usually {@code 200 OK}, but other 2XX or 3XX status codes are also    * possible (e.g. {@code 202 Accepted} if a background task was scheduled, {@code 204 No Content}    * if no content is returned, {@code 302 Found} for a redirect).    *    *<p>Throwing a subclass of {@link RestApiException} results in a 4XX response to the client. For    * any other exception the client will get a {@code 500 Internal Server Error} response.    *    * @param resource resource to modify    * @param input input after parsing from request    * @return response to return to the client    * @throws AuthException the caller is not permitted to access this view.    * @throws BadRequestException the request was incorrectly specified and cannot be handled by this    *     view.    * @throws ResourceConflictException the resource state does not permit this view to make the    *     changes at this time.    * @throws Exception the implementation of the view failed. The exception will be logged and HTTP    *     500 Internal Server Error will be returned to the client.    */
 DECL|method|apply (R resource, I input)
-name|Object
+name|Response
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|R

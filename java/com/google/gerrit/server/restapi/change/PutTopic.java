@@ -474,10 +474,7 @@ name|ChangeResource
 argument_list|,
 name|TopicInput
 argument_list|,
-name|Response
-argument_list|<
 name|String
-argument_list|>
 argument_list|>
 implements|implements
 name|UiAction

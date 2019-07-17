@@ -160,6 +160,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -626,7 +642,10 @@ annotation|@
 name|Override
 DECL|method|applyImpl ( BatchUpdate.Factory batchUpdateFactory, CommentResource rsrc, DeleteCommentInput input)
 specifier|public
+name|Response
+argument_list|<
 name|CommentInfo
+argument_list|>
 name|applyImpl
 parameter_list|(
 name|BatchUpdate
@@ -855,6 +874,10 @@ argument_list|)
 throw|;
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|commentJson
 operator|.
 name|get
@@ -869,6 +892,7 @@ name|updatedComment
 operator|.
 name|get
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}

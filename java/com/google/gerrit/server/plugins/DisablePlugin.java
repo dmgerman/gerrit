@@ -140,6 +140,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -303,7 +319,10 @@ annotation|@
 name|Override
 DECL|method|apply (PluginResource resource, Input input)
 specifier|public
+name|Response
+argument_list|<
 name|PluginInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|PluginResource
@@ -394,6 +413,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|ListPlugins
 operator|.
 name|toPluginInfo
@@ -403,6 +426,7 @@ operator|.
 name|get
 argument_list|(
 name|name
+argument_list|)
 argument_list|)
 argument_list|)
 return|;

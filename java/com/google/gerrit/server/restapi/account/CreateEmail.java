@@ -819,6 +819,10 @@ argument_list|)
 throw|;
 block|}
 return|return
+name|Response
+operator|.
+name|created
+argument_list|(
 name|apply
 argument_list|(
 name|rsrc
@@ -830,15 +834,13 @@ name|id
 argument_list|,
 name|input
 argument_list|)
+argument_list|)
 return|;
 block|}
 comment|/** To be used from plugins that want to create emails without permission checks. */
 DECL|method|apply (IdentifiedUser user, IdString id, EmailInput input)
 specifier|public
-name|Response
-argument_list|<
 name|EmailInfo
-argument_list|>
 name|apply
 parameter_list|(
 name|IdentifiedUser
@@ -1117,12 +1119,7 @@ throw|;
 block|}
 block|}
 return|return
-name|Response
-operator|.
-name|created
-argument_list|(
 name|info
-argument_list|)
 return|;
 block|}
 block|}

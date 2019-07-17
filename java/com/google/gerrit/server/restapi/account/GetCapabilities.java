@@ -298,6 +298,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -707,11 +723,14 @@ annotation|@
 name|Override
 DECL|method|apply (AccountResource resource)
 specifier|public
+name|Response
+argument_list|<
 name|Map
 argument_list|<
 name|String
 argument_list|,
 name|Object
+argument_list|>
 argument_list|>
 name|apply
 parameter_list|(
@@ -848,7 +867,12 @@ name|limits
 argument_list|)
 expr_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|have
+argument_list|)
 return|;
 block|}
 DECL|method|permissionsToTest ()
@@ -1231,7 +1255,10 @@ annotation|@
 name|Override
 DECL|method|apply (Capability resource)
 specifier|public
+name|Response
+argument_list|<
 name|BinaryResult
+argument_list|>
 name|apply
 parameter_list|(
 name|Capability
@@ -1246,11 +1273,16 @@ name|checkUsesDefaultCapabilities
 argument_list|()
 expr_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|BinaryResult
 operator|.
 name|create
 argument_list|(
 literal|"ok\n"
+argument_list|)
 argument_list|)
 return|;
 block|}

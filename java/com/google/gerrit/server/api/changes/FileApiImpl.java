@@ -395,6 +395,9 @@ name|apply
 argument_list|(
 name|file
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch

@@ -454,6 +454,9 @@ name|TopLevelResource
 operator|.
 name|INSTANCE
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 block|}
