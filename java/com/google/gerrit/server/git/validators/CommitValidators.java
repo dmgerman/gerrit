@@ -2172,18 +2172,6 @@ name|messages
 argument_list|)
 throw|;
 block|}
-if|if
-condition|(
-name|projectState
-operator|.
-name|is
-argument_list|(
-name|BooleanProjectConfig
-operator|.
-name|REQUIRE_CHANGE_ID
-argument_list|)
-condition|)
-block|{
 name|messages
 operator|.
 name|add
@@ -2203,7 +2191,6 @@ argument_list|,
 name|messages
 argument_list|)
 throw|;
-block|}
 block|}
 elseif|else
 if|if

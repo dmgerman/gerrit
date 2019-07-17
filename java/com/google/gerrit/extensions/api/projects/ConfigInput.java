@@ -157,11 +157,6 @@ specifier|public
 name|InheritableBoolean
 name|createNewChangeForAllNotInTarget
 decl_stmt|;
-DECL|field|requireChangeId
-specifier|public
-name|InheritableBoolean
-name|requireChangeId
-decl_stmt|;
 DECL|field|enableSignedPush
 specifier|public
 name|InheritableBoolean

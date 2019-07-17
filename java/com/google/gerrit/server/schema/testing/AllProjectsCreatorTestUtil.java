@@ -337,8 +337,6 @@ literal|"  requireContributorAgreement = false"
 argument_list|,
 literal|"  requireSignedOffBy = false"
 argument_list|,
-literal|"  requireChangeId = true"
-argument_list|,
 literal|"  enableSignedPush = false"
 argument_list|)
 decl_stmt|;

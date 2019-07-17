@@ -187,11 +187,6 @@ specifier|public
 name|InheritableBoolean
 name|useContentMerge
 decl_stmt|;
-DECL|field|requireChangeId
-specifier|public
-name|InheritableBoolean
-name|requireChangeId
-decl_stmt|;
 DECL|field|createNewChangeForAllNotInTarget
 specifier|public
 name|InheritableBoolean
