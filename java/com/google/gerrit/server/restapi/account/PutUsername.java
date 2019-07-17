@@ -162,7 +162,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|AuthException
+name|BadRequestException
 import|;
 end_import
 
@@ -195,6 +195,22 @@ operator|.
 name|restapi
 operator|.
 name|ResourceConflictException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
 import|;
 end_import
 
@@ -632,13 +648,7 @@ name|UsernameInput
 name|input
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
-name|MethodNotAllowedException
-throws|,
-name|UnprocessableEntityException
-throws|,
-name|ResourceConflictException
+name|RestApiException
 throws|,
 name|IOException
 throws|,
@@ -697,20 +707,6 @@ literal|"realm does not allow editing username"
 argument_list|)
 throw|;
 block|}
-if|if
-condition|(
-name|input
-operator|==
-literal|null
-condition|)
-block|{
-name|input
-operator|=
-operator|new
-name|UsernameInput
-argument_list|()
-expr_stmt|;
-block|}
 name|Account
 operator|.
 name|Id
@@ -750,6 +746,10 @@ throw|;
 block|}
 if|if
 condition|(
+name|input
+operator|==
+literal|null
+operator|||
 name|Strings
 operator|.
 name|isNullOrEmpty
@@ -760,11 +760,13 @@ name|username
 argument_list|)
 condition|)
 block|{
-return|return
-name|input
-operator|.
-name|username
-return|;
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+literal|"input required"
+argument_list|)
+throw|;
 block|}
 if|if
 condition|(
