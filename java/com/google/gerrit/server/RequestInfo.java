@@ -163,6 +163,17 @@ name|String
 name|requestType
 parameter_list|()
 function_decl|;
+comment|/**    * Request URI.    *    *<p>Only set if request type is {@link RequestType#REST}.    *    *<p>Never includes the "/a" prefix.    */
+DECL|method|requestUri ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|requestUri
+parameter_list|()
+function_decl|;
 comment|/** The user that has sent the request. */
 DECL|method|callingUser ()
 specifier|public
@@ -273,6 +284,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|requestUri (String requestUri)
+specifier|public
+specifier|abstract
+name|Builder
+name|requestUri
+parameter_list|(
+name|String
+name|requestUri
+parameter_list|)
+function_decl|;
 DECL|method|callingUser (CurrentUser callingUser)
 specifier|public
 specifier|abstract

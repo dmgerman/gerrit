@@ -3194,6 +3194,11 @@ name|createRequestInfo
 argument_list|(
 name|traceContext
 argument_list|,
+name|requestUri
+argument_list|(
+name|req
+argument_list|)
+argument_list|,
 name|path
 argument_list|)
 decl_stmt|;
@@ -10399,13 +10404,16 @@ block|}
 end_function
 
 begin_function
-DECL|method|createRequestInfo (TraceContext traceContext, List<IdString> path)
+DECL|method|createRequestInfo ( TraceContext traceContext, String requestUri, List<IdString> path)
 specifier|private
 name|RequestInfo
 name|createRequestInfo
 parameter_list|(
 name|TraceContext
 name|traceContext
+parameter_list|,
+name|String
+name|requestUri
 parameter_list|,
 name|List
 argument_list|<
@@ -10437,6 +10445,11 @@ name|get
 argument_list|()
 argument_list|,
 name|traceContext
+argument_list|)
+operator|.
+name|requestUri
+argument_list|(
+name|requestUri
 argument_list|)
 decl_stmt|;
 if|if
