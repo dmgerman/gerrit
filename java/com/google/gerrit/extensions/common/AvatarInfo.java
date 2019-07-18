@@ -80,7 +80,7 @@ specifier|final
 name|int
 name|DEFAULT_SIZE
 init|=
-literal|26
+literal|32
 decl_stmt|;
 DECL|field|url
 specifier|public

@@ -1163,9 +1163,7 @@ operator|=
 operator|new
 name|ArrayList
 argument_list|<>
-argument_list|(
-literal|3
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|IdentifiedUser
 name|user
@@ -1180,7 +1178,11 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// GWT UI uses DEFAULT_SIZE (26px).
+comment|// PolyGerrit UI uses the following sizes for avatars:
+comment|// - 32px for avatars next to names e.g. on the dashboard. This is also Gerrit's default.
+comment|// - 56px for the user's own avatar in the menu
+comment|// - 100ox for other user's avatars on dashboards
+comment|// - 120px for the user's own profile settings page
 name|addAvatar
 argument_list|(
 name|ap
@@ -1194,7 +1196,6 @@ operator|.
 name|DEFAULT_SIZE
 argument_list|)
 expr_stmt|;
-comment|// PolyGerrit UI prefers 32px and 100px.
 if|if
 condition|(
 operator|!
@@ -1206,15 +1207,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-literal|32
-operator|!=
-name|AvatarInfo
-operator|.
-name|DEFAULT_SIZE
-condition|)
-block|{
 name|addAvatar
 argument_list|(
 name|ap
@@ -1223,19 +1215,9 @@ name|info
 argument_list|,
 name|user
 argument_list|,
-literal|32
+literal|56
 argument_list|)
 expr_stmt|;
-block|}
-if|if
-condition|(
-literal|100
-operator|!=
-name|AvatarInfo
-operator|.
-name|DEFAULT_SIZE
-condition|)
-block|{
 name|addAvatar
 argument_list|(
 name|ap
@@ -1247,7 +1229,17 @@ argument_list|,
 literal|100
 argument_list|)
 expr_stmt|;
-block|}
+name|addAvatar
+argument_list|(
+name|ap
+argument_list|,
+name|info
+argument_list|,
+name|user
+argument_list|,
+literal|120
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
