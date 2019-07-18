@@ -410,16 +410,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -583,6 +573,22 @@ operator|.
 name|revwalk
 operator|.
 name|RevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|io
+operator|.
+name|DisabledOutputStream
 import|;
 end_import
 
@@ -1305,8 +1311,7 @@ literal|false
 return|;
 block|}
 comment|// Any differences between claimed original's parent and the rebase result indicate that
-comment|// the
-comment|// claimedRevert is not a pure revert but made content changes
+comment|// the claimedRevert is not a pure revert but made content changes
 try|try
 init|(
 name|DiffFormatter
@@ -1315,9 +1320,9 @@ init|=
 operator|new
 name|DiffFormatter
 argument_list|(
-operator|new
-name|ByteArrayOutputStream
-argument_list|()
+name|DisabledOutputStream
+operator|.
+name|INSTANCE
 argument_list|)
 init|)
 block|{
