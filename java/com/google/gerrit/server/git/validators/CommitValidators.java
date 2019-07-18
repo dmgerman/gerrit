@@ -1320,8 +1320,6 @@ argument_list|,
 operator|new
 name|ChangeIdValidator
 argument_list|(
-name|projectState
-argument_list|,
 name|user
 argument_list|,
 name|urlFormatter
@@ -1513,8 +1511,6 @@ argument_list|,
 operator|new
 name|ChangeIdValidator
 argument_list|(
-name|projectState
-argument_list|,
 name|user
 argument_list|,
 name|urlFormatter
@@ -1906,12 +1902,6 @@ argument_list|(
 name|CHANGE_ID_PATTERN
 argument_list|)
 decl_stmt|;
-DECL|field|projectState
-specifier|private
-specifier|final
-name|ProjectState
-name|projectState
-decl_stmt|;
 DECL|field|urlFormatter
 specifier|private
 specifier|final
@@ -1942,13 +1932,10 @@ specifier|final
 name|Change
 name|change
 decl_stmt|;
-DECL|method|ChangeIdValidator ( ProjectState projectState, IdentifiedUser user, UrlFormatter urlFormatter, String installCommitMsgHookCommand, SshInfo sshInfo, Change change)
+DECL|method|ChangeIdValidator ( IdentifiedUser user, UrlFormatter urlFormatter, String installCommitMsgHookCommand, SshInfo sshInfo, Change change)
 specifier|public
 name|ChangeIdValidator
 parameter_list|(
-name|ProjectState
-name|projectState
-parameter_list|,
 name|IdentifiedUser
 name|user
 parameter_list|,
@@ -1965,12 +1952,6 @@ name|Change
 name|change
 parameter_list|)
 block|{
-name|this
-operator|.
-name|projectState
-operator|=
-name|projectState
-expr_stmt|;
 name|this
 operator|.
 name|urlFormatter

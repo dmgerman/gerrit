@@ -18763,35 +18763,6 @@ literal|0
 argument_list|)
 return|;
 block|}
-DECL|method|pushForReviewOk (TestRepository<?> testRepo)
-specifier|private
-specifier|static
-name|void
-name|pushForReviewOk
-parameter_list|(
-name|TestRepository
-argument_list|<
-name|?
-argument_list|>
-name|testRepo
-parameter_list|)
-throws|throws
-name|GitAPIException
-block|{
-name|pushForReview
-argument_list|(
-name|testRepo
-argument_list|,
-name|RemoteRefUpdate
-operator|.
-name|Status
-operator|.
-name|OK
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|pushForReviewRejected (TestRepository<?> testRepo, String expectedMessage)
 specifier|private
 specifier|static
