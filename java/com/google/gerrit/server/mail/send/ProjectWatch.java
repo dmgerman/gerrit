@@ -852,17 +852,12 @@ parameter_list|)
 block|{
 name|logger
 operator|.
-name|atWarning
+name|atInfo
 argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|e
-argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"Project %s has invalid notify %s filter \"%s\""
+literal|"Project %s has invalid notify %s filter \"%s\": %s"
 argument_list|,
 name|state
 operator|.
@@ -877,6 +872,11 @@ argument_list|,
 name|nc
 operator|.
 name|getFilter
+argument_list|()
+argument_list|,
+name|e
+operator|.
+name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1656,21 +1656,21 @@ block|{
 comment|// Ignore broken filter expressions.
 name|logger
 operator|.
-name|atWarning
+name|atInfo
 argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|e
-argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"Account %s has invalid filter in project watch %s"
+literal|"Account %s has invalid filter in project watch %s: %s"
 argument_list|,
 name|accountId
 argument_list|,
 name|key
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
