@@ -363,7 +363,7 @@ argument_list|>
 name|methodName
 parameter_list|()
 function_decl|;
-comment|// Boolean: one or more
+comment|// One or more resources
 DECL|method|multiple ()
 specifier|public
 specifier|abstract
@@ -372,6 +372,17 @@ argument_list|<
 name|Boolean
 argument_list|>
 name|multiple
+parameter_list|()
+function_decl|;
+comment|// Partial or full computation
+DECL|method|partial ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|Boolean
+argument_list|>
+name|partial
 parameter_list|()
 function_decl|;
 comment|// Path of a metadata file in NoteDb.
@@ -810,6 +821,16 @@ name|multiple
 parameter_list|(
 name|boolean
 name|multiple
+parameter_list|)
+function_decl|;
+DECL|method|partial (boolean partial)
+specifier|public
+specifier|abstract
+name|Builder
+name|partial
+parameter_list|(
+name|boolean
+name|partial
 parameter_list|)
 function_decl|;
 DECL|method|noteDbFilePath (@ullable String noteDbFilePath)

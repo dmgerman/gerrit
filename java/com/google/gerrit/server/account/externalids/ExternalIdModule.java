@@ -78,26 +78,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|externalids
-operator|.
-name|ExternalIdCacheImpl
-operator|.
-name|Loader
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|cache
 operator|.
 name|CacheModule
@@ -198,6 +178,9 @@ comment|// threads to observe different values of the meta ref, and hence reques
 comment|// from the cache. Extend the cache size by 1 to cover this case, but expire the extra
 comment|// object after a short period of time, since it may be a potentially large amount of
 comment|// memory.
+comment|// When loading a new value because the primary data advanced, we want to leverage the old
+comment|// cache state to recompute only what changed. This doesn't affect cache size though as
+comment|// Guava calls the loader first and evicts later on.
 operator|.
 name|maximumWeight
 argument_list|(
@@ -216,7 +199,7 @@ argument_list|)
 operator|.
 name|loader
 argument_list|(
-name|Loader
+name|ExternalIdCacheLoader
 operator|.
 name|class
 argument_list|)
