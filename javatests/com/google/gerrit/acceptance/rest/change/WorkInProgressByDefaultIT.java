@@ -1189,7 +1189,7 @@ expr_stmt|;
 name|setWorkInProgressByDefaultForUser
 argument_list|()
 expr_stmt|;
-comment|// Create new patch set on existing change, this shoudn't mark the change as WIP.
+comment|// Create new patch set on existing change, this shouldn't mark the change as WIP.
 name|result
 operator|=
 name|pushFactory
