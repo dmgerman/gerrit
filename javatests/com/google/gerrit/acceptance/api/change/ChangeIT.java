@@ -35911,6 +35911,10 @@ argument_list|,
 name|ListChangesOption
 operator|.
 name|SKIP_MERGEABLE
+argument_list|,
+name|ListChangesOption
+operator|.
+name|SKIP_DIFFSTAT
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
