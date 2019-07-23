@@ -819,7 +819,7 @@ name|map
 argument_list|(
 name|Account
 operator|::
-name|getFullName
+name|fullName
 argument_list|)
 operator|.
 name|orElse
@@ -836,7 +836,7 @@ name|map
 argument_list|(
 name|Account
 operator|::
-name|getPreferredEmail
+name|preferredEmail
 argument_list|)
 operator|.
 name|orElse
@@ -1261,7 +1261,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 operator|.

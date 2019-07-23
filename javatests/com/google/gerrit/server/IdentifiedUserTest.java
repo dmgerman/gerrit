@@ -737,8 +737,9 @@ expr_stmt|;
 name|Account
 name|account
 init|=
-operator|new
 name|Account
+operator|.
+name|builder
 argument_list|(
 name|Account
 operator|.
@@ -752,6 +753,14 @@ operator|.
 name|nowTs
 argument_list|()
 argument_list|)
+operator|.
+name|setMetaId
+argument_list|(
+literal|"1234567812345678123456781234567812345678"
+argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|Account
 operator|.
@@ -760,7 +769,7 @@ name|ownerId
 init|=
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 name|identifiedUser

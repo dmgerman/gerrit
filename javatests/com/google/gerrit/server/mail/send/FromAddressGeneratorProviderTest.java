@@ -2413,7 +2413,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2435,7 +2435,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 return|;
 block|}
@@ -2470,7 +2470,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 return|;
 block|}
@@ -2501,10 +2501,13 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|Account
+operator|.
+name|Builder
 name|account
 init|=
-operator|new
 name|Account
+operator|.
+name|builder
 argument_list|(
 name|userId
 argument_list|,
@@ -2534,6 +2537,9 @@ operator|.
 name|forAccount
 argument_list|(
 name|account
+operator|.
+name|build
+argument_list|()
 argument_list|)
 return|;
 block|}

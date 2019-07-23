@@ -294,7 +294,7 @@ name|AccountDetailInfo
 argument_list|(
 name|a
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -307,7 +307,7 @@ name|registeredOn
 operator|=
 name|a
 operator|.
-name|getRegisteredOn
+name|registeredOn
 argument_list|()
 expr_stmt|;
 name|info

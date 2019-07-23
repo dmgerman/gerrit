@@ -507,7 +507,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 decl_stmt|;
 if|if

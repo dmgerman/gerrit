@@ -1028,7 +1028,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|s
@@ -1231,10 +1231,13 @@ name|accountId
 parameter_list|)
 block|{
 name|Account
+operator|.
+name|Builder
 name|account
 init|=
-operator|new
 name|Account
+operator|.
+name|builder
 argument_list|(
 name|accountId
 argument_list|,
@@ -1257,6 +1260,9 @@ operator|.
 name|forAccount
 argument_list|(
 name|account
+operator|.
+name|build
+argument_list|()
 argument_list|)
 return|;
 block|}

@@ -4149,7 +4149,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 operator|.
@@ -4465,7 +4465,7 @@ name|assertThat
 argument_list|(
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 operator|.
@@ -4476,7 +4476,7 @@ name|assertThat
 argument_list|(
 name|account
 operator|.
-name|getStatus
+name|status
 argument_list|()
 argument_list|)
 operator|.
@@ -4629,7 +4629,7 @@ argument_list|(
 name|accountId
 argument_list|)
 operator|.
-name|getRegisteredOn
+name|registeredOn
 argument_list|()
 operator|.
 name|getTime
@@ -5235,7 +5235,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 decl_stmt|;
 if|if
@@ -5282,7 +5282,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 decl_stmt|;
 if|if
@@ -7674,7 +7674,7 @@ name|id
 argument_list|()
 argument_list|)
 operator|.
-name|getRegisteredOn
+name|registeredOn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -18227,7 +18227,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getMetaId
+name|metaId
 argument_list|()
 argument_list|)
 operator|.
@@ -18289,7 +18289,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getMetaId
+name|metaId
 argument_list|()
 argument_list|)
 operator|.
@@ -18352,7 +18352,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getMetaId
+name|metaId
 argument_list|()
 argument_list|)
 operator|.
@@ -18360,7 +18360,7 @@ name|isNotEqualTo
 argument_list|(
 name|updatedAccount
 operator|.
-name|getMetaId
+name|metaId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -18368,7 +18368,7 @@ name|assertThat
 argument_list|(
 name|updatedAccount
 operator|.
-name|getMetaId
+name|metaId
 argument_list|()
 argument_list|)
 operator|.
@@ -19208,7 +19208,7 @@ name|assertThat
 argument_list|(
 name|updatedAccount
 operator|.
-name|getStatus
+name|status
 argument_list|()
 argument_list|)
 operator|.
@@ -19221,7 +19221,7 @@ name|assertThat
 argument_list|(
 name|updatedAccount
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 operator|.
@@ -19570,7 +19570,7 @@ name|assertThat
 argument_list|(
 name|updatedAccount
 operator|.
-name|getStatus
+name|status
 argument_list|()
 argument_list|)
 operator|.
@@ -19588,7 +19588,7 @@ name|assertThat
 argument_list|(
 name|updatedAccount
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 operator|.
@@ -19897,7 +19897,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getStatus
+name|status
 argument_list|()
 argument_list|)
 condition|)
@@ -19926,7 +19926,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getStatus
+name|status
 argument_list|()
 argument_list|)
 condition|)
@@ -19991,7 +19991,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getStatus
+name|status
 argument_list|()
 argument_list|)
 operator|.
@@ -20018,7 +20018,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getStatus
+name|status
 argument_list|()
 argument_list|)
 operator|.

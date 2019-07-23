@@ -618,7 +618,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 expr_stmt|;
 block|}

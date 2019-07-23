@@ -2561,7 +2561,7 @@ name|isVisibleTo
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 condition|)

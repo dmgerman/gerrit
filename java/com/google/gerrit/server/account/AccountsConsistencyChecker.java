@@ -231,7 +231,7 @@ if|if
 condition|(
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 operator|!=
 literal|null
@@ -254,7 +254,7 @@ name|e
 lambda|->
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 operator|.
 name|equals
@@ -277,7 +277,7 @@ literal|"Account '%s' has no external ID for its preferred email '%s'"
 argument_list|,
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -285,7 +285,7 @@ argument_list|()
 argument_list|,
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 argument_list|,

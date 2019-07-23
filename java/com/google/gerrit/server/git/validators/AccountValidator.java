@@ -636,7 +636,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 decl_stmt|;
 if|if
@@ -662,7 +662,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 operator|)

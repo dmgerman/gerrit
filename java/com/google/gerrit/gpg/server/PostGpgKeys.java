@@ -1380,7 +1380,7 @@ condition|(
 operator|!
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -2240,7 +2240,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2311,7 +2311,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2472,7 +2472,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString

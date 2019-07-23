@@ -256,7 +256,7 @@ name|isEqualTo
 argument_list|(
 name|account
 operator|.
-name|getRegisteredOn
+name|registeredOn
 argument_list|()
 argument_list|)
 expr_stmt|;

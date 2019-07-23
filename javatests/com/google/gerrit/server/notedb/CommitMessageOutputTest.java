@@ -438,7 +438,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|REVIEWER
@@ -453,7 +453,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|CC
@@ -1286,8 +1286,9 @@ block|{
 name|Account
 name|anon
 init|=
-operator|new
 name|Account
+operator|.
+name|builder
 argument_list|(
 name|Account
 operator|.
@@ -1301,6 +1302,14 @@ operator|.
 name|nowTs
 argument_list|()
 argument_list|)
+operator|.
+name|setMetaId
+argument_list|(
+literal|"1234567812345678123456781234567812345678"
+argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 name|accountCache
 operator|.
@@ -1328,7 +1337,7 @@ name|create
 argument_list|(
 name|anon
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1526,7 +1535,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|REVIEWER

@@ -864,10 +864,15 @@ name|extIds
 argument_list|)
 expr_stmt|;
 name|Account
-name|a
+name|persistedAccount
 init|=
-operator|new
+name|accounts
+operator|.
+name|insert
+argument_list|(
 name|Account
+operator|.
+name|builder
 argument_list|(
 name|id
 argument_list|,
@@ -876,28 +881,18 @@ operator|.
 name|nowTs
 argument_list|()
 argument_list|)
-decl_stmt|;
-name|a
 operator|.
 name|setFullName
 argument_list|(
 name|name
 argument_list|)
-expr_stmt|;
-name|a
 operator|.
 name|setPreferredEmail
 argument_list|(
 name|email
 argument_list|)
-expr_stmt|;
-name|accounts
-operator|.
-name|insert
-argument_list|(
-name|a
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// Only two groups should exist at this point in time and hence iterating over all of them
 comment|// is cheap.
 name|Optional
@@ -963,7 +958,7 @@ operator|.
 name|getUUID
 argument_list|()
 argument_list|,
-name|a
+name|persistedAccount
 argument_list|)
 expr_stmt|;
 if|if
@@ -1011,7 +1006,7 @@ name|AccountState
 operator|.
 name|forAccount
 argument_list|(
-name|a
+name|persistedAccount
 argument_list|,
 name|extIds
 argument_list|)

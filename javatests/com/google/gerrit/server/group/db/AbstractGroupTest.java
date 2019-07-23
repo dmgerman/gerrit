@@ -1028,10 +1028,13 @@ name|id
 parameter_list|)
 block|{
 name|Account
+operator|.
+name|Builder
 name|account
 init|=
-operator|new
 name|Account
+operator|.
+name|builder
 argument_list|(
 name|id
 argument_list|,
@@ -1056,6 +1059,9 @@ operator|.
 name|of
 argument_list|(
 name|account
+operator|.
+name|build
+argument_list|()
 argument_list|)
 return|;
 block|}

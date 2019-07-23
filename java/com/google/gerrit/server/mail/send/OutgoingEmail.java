@@ -1084,12 +1084,12 @@ name|Address
 argument_list|(
 name|thisUserAccount
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|,
 name|thisUserAccount
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1730,7 +1730,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 decl_stmt|;
 name|String
@@ -1741,7 +1741,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 decl_stmt|;
 if|if
@@ -2145,7 +2145,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 expr_stmt|;
 if|if
@@ -2162,7 +2162,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 expr_stmt|;
 block|}
@@ -2239,7 +2239,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 decl_stmt|;
 name|String
@@ -2250,7 +2250,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 decl_stmt|;
 if|if
@@ -2365,7 +2365,7 @@ name|name
 init|=
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 decl_stmt|;
 name|String
@@ -2373,7 +2373,7 @@ name|email
 init|=
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 decl_stmt|;
 if|if
@@ -3158,7 +3158,7 @@ name|e
 init|=
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 decl_stmt|;
 if|if
@@ -3184,7 +3184,7 @@ name|Address
 argument_list|(
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|,
 name|e
@@ -3394,7 +3394,7 @@ name|fromEmail
 init|=
 name|user
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 decl_stmt|;
 for|for

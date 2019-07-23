@@ -697,7 +697,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|==
 literal|null
@@ -723,7 +723,7 @@ name|AccountInfo
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -736,7 +736,7 @@ name|email
 operator|=
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 expr_stmt|;
 name|accountInfo
@@ -745,7 +745,7 @@ name|name
 operator|=
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 expr_stmt|;
 name|accountInfo
@@ -861,7 +861,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get

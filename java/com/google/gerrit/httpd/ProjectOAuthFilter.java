@@ -1144,7 +1144,7 @@ name|setEmailAddress
 argument_list|(
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1154,7 +1154,7 @@ name|setDisplayName
 argument_list|(
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 expr_stmt|;

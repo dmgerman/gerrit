@@ -542,7 +542,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -1784,7 +1784,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|.
@@ -1795,7 +1795,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2275,8 +2275,9 @@ name|AccountState
 operator|.
 name|forAccount
 argument_list|(
-operator|new
 name|Account
+operator|.
+name|builder
 argument_list|(
 name|Account
 operator|.
@@ -2290,6 +2291,14 @@ operator|.
 name|nowTs
 argument_list|()
 argument_list|)
+operator|.
+name|setMetaId
+argument_list|(
+literal|"1234567812345678123456781234567812345678"
+argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -2303,10 +2312,13 @@ name|id
 parameter_list|)
 block|{
 name|Account
+operator|.
+name|Builder
 name|a
 init|=
-operator|new
 name|Account
+operator|.
+name|builder
 argument_list|(
 name|Account
 operator|.
@@ -2334,6 +2346,9 @@ operator|.
 name|forAccount
 argument_list|(
 name|a
+operator|.
+name|build
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -2455,7 +2470,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 return|;
@@ -2493,7 +2508,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|.
