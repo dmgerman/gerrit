@@ -187,7 +187,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Project.NameKey project, Change.Id id, Account.Id assignee)
+DECL|method|create (Project.NameKey project, Change.Id changeId, Account.Id assignee)
 name|SetAssigneeSender
 name|create
 parameter_list|(
@@ -199,7 +199,7 @@ parameter_list|,
 name|Change
 operator|.
 name|Id
-name|id
+name|changeId
 parameter_list|,
 name|Account
 operator|.
@@ -218,12 +218,12 @@ name|assignee
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetAssigneeSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted Account.Id assignee)
+DECL|method|SetAssigneeSender ( EmailArguments args, @Assisted Project.NameKey project, @Assisted Change.Id changeId, @Assisted Account.Id assignee)
 specifier|public
 name|SetAssigneeSender
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 annotation|@
 name|Assisted
@@ -237,7 +237,7 @@ name|Assisted
 name|Change
 operator|.
 name|Id
-name|id
+name|changeId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -249,17 +249,17 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ea
+name|args
 argument_list|,
 literal|"setassignee"
 argument_list|,
 name|newChangeData
 argument_list|(
-name|ea
+name|args
 argument_list|,
 name|project
 argument_list|,
-name|id
+name|changeId
 argument_list|)
 argument_list|)
 expr_stmt|;

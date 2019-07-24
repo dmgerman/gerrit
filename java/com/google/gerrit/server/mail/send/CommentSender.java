@@ -683,7 +683,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Project.NameKey project, Change.Id id)
+DECL|method|create (Project.NameKey project, Change.Id changeId)
 name|CommentSender
 name|create
 parameter_list|(
@@ -695,7 +695,7 @@ parameter_list|,
 name|Change
 operator|.
 name|Id
-name|id
+name|changeId
 parameter_list|)
 function_decl|;
 block|}
@@ -913,12 +913,12 @@ name|replyToAddress
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommentSender ( EmailArguments ea, CommentsUtil commentsUtil, @GerritServerConfig Config cfg, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|CommentSender ( EmailArguments args, CommentsUtil commentsUtil, @GerritServerConfig Config cfg, @Assisted Project.NameKey project, @Assisted Change.Id changeId)
 specifier|public
 name|CommentSender
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 name|CommentsUtil
 name|commentsUtil
@@ -940,22 +940,22 @@ name|Assisted
 name|Change
 operator|.
 name|Id
-name|id
+name|changeId
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ea
+name|args
 argument_list|,
 literal|"comment"
 argument_list|,
 name|newChangeData
 argument_list|(
-name|ea
+name|args
 argument_list|,
 name|project
 argument_list|,
-name|id
+name|changeId
 argument_list|)
 argument_list|)
 expr_stmt|;

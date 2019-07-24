@@ -257,12 +257,12 @@ name|threadId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InboundEmailRejectionSender ( EmailArguments ea, @Assisted Address to, @Assisted String threadId, @Assisted Error reason)
+DECL|method|InboundEmailRejectionSender ( EmailArguments args, @Assisted Address to, @Assisted String threadId, @Assisted Error reason)
 specifier|public
 name|InboundEmailRejectionSender
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 annotation|@
 name|Assisted
@@ -282,7 +282,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ea
+name|args
 argument_list|,
 literal|"error"
 argument_list|)

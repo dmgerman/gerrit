@@ -271,24 +271,24 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|NewChangeSender (EmailArguments ea, ChangeData cd)
+DECL|method|NewChangeSender (EmailArguments args, ChangeData changeData)
 specifier|protected
 name|NewChangeSender
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 name|ChangeData
-name|cd
+name|changeData
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ea
+name|args
 argument_list|,
 literal|"newchange"
 argument_list|,
-name|cd
+name|changeData
 argument_list|)
 expr_stmt|;
 block|}

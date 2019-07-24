@@ -708,25 +708,31 @@ operator|.
 name|all
 argument_list|()
 decl_stmt|;
-DECL|method|OutgoingEmail (EmailArguments ea, String mc)
+DECL|method|OutgoingEmail (EmailArguments args, String messageClass)
 specifier|protected
 name|OutgoingEmail
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 name|String
-name|mc
+name|messageClass
 parameter_list|)
 block|{
+name|this
+operator|.
 name|args
 operator|=
-name|ea
+name|args
 expr_stmt|;
+name|this
+operator|.
 name|messageClass
 operator|=
-name|mc
+name|messageClass
 expr_stmt|;
+name|this
+operator|.
 name|headers
 operator|=
 operator|new

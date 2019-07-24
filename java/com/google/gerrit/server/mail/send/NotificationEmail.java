@@ -304,15 +304,15 @@ specifier|protected
 name|BranchNameKey
 name|branch
 decl_stmt|;
-DECL|method|NotificationEmail (EmailArguments ea, String mc, BranchNameKey branch)
+DECL|method|NotificationEmail (EmailArguments args, String messageClass, BranchNameKey branch)
 specifier|protected
 name|NotificationEmail
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 name|String
-name|mc
+name|messageClass
 parameter_list|,
 name|BranchNameKey
 name|branch
@@ -320,9 +320,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ea
+name|args
 argument_list|,
-name|mc
+name|messageClass
 argument_list|)
 expr_stmt|;
 name|this

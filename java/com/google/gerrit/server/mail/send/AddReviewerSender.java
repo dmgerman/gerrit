@@ -157,7 +157,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Project.NameKey project, Change.Id id)
+DECL|method|create (Project.NameKey project, Change.Id changeId)
 name|AddReviewerSender
 name|create
 parameter_list|(
@@ -169,18 +169,18 @@ parameter_list|,
 name|Change
 operator|.
 name|Id
-name|id
+name|changeId
 parameter_list|)
 function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AddReviewerSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|AddReviewerSender ( EmailArguments args, @Assisted Project.NameKey project, @Assisted Change.Id changeId)
 specifier|public
 name|AddReviewerSender
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 annotation|@
 name|Assisted
@@ -194,20 +194,20 @@ name|Assisted
 name|Change
 operator|.
 name|Id
-name|id
+name|changeId
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ea
+name|args
 argument_list|,
 name|newChangeData
 argument_list|(
-name|ea
+name|args
 argument_list|,
 name|project
 argument_list|,
-name|id
+name|changeId
 argument_list|)
 argument_list|)
 expr_stmt|;

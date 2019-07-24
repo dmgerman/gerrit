@@ -189,27 +189,27 @@ name|id
 parameter_list|)
 function_decl|;
 block|}
-DECL|method|ReplyToChangeSender (EmailArguments ea, String mc, ChangeData cd)
+DECL|method|ReplyToChangeSender (EmailArguments args, String messageClass, ChangeData changeData)
 specifier|protected
 name|ReplyToChangeSender
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 name|String
-name|mc
+name|messageClass
 parameter_list|,
 name|ChangeData
-name|cd
+name|changeData
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ea
+name|args
 argument_list|,
-name|mc
+name|messageClass
 argument_list|,
-name|cd
+name|changeData
 argument_list|)
 expr_stmt|;
 block|}

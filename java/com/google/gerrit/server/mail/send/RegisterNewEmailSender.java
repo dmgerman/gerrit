@@ -229,15 +229,15 @@ name|emailToken
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RegisterNewEmailSender ( EmailArguments ea, EmailTokenVerifier etv, IdentifiedUser callingUser, @Assisted final String address)
+DECL|method|RegisterNewEmailSender ( EmailArguments args, EmailTokenVerifier tokenVerifier, IdentifiedUser callingUser, @Assisted final String address)
 specifier|public
 name|RegisterNewEmailSender
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 name|EmailTokenVerifier
-name|etv
+name|tokenVerifier
 parameter_list|,
 name|IdentifiedUser
 name|callingUser
@@ -251,19 +251,25 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ea
+name|args
 argument_list|,
 literal|"registernewemail"
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|tokenVerifier
 operator|=
-name|etv
+name|tokenVerifier
 expr_stmt|;
+name|this
+operator|.
 name|user
 operator|=
 name|callingUser
 expr_stmt|;
+name|this
+operator|.
 name|addr
 operator|=
 name|address

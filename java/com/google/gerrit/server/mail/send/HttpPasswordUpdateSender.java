@@ -195,12 +195,12 @@ name|operation
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|HttpPasswordUpdateSender ( EmailArguments ea, @Assisted IdentifiedUser user, @Assisted String operation)
+DECL|method|HttpPasswordUpdateSender ( EmailArguments args, @Assisted IdentifiedUser user, @Assisted String operation)
 specifier|public
 name|HttpPasswordUpdateSender
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 annotation|@
 name|Assisted
@@ -215,7 +215,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ea
+name|args
 argument_list|,
 literal|"HttpPasswordUpdate"
 argument_list|)

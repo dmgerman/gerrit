@@ -268,12 +268,12 @@ name|gpgKeyFingerprints
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|DeleteKeySender ( EmailArguments ea, @Assisted IdentifiedUser user, @Assisted AccountSshKey sshKey)
+DECL|method|DeleteKeySender ( EmailArguments args, @Assisted IdentifiedUser user, @Assisted AccountSshKey sshKey)
 specifier|public
 name|DeleteKeySender
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 annotation|@
 name|Assisted
@@ -288,7 +288,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ea
+name|args
 argument_list|,
 literal|"deletekey"
 argument_list|)
@@ -317,12 +317,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|DeleteKeySender ( EmailArguments ea, @Assisted IdentifiedUser user, @Assisted List<String> gpgKeyFingerprints)
+DECL|method|DeleteKeySender ( EmailArguments args, @Assisted IdentifiedUser user, @Assisted List<String> gpgKeyFingerprints)
 specifier|public
 name|DeleteKeySender
 parameter_list|(
 name|EmailArguments
-name|ea
+name|args
 parameter_list|,
 annotation|@
 name|Assisted
@@ -340,7 +340,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ea
+name|args
 argument_list|,
 literal|"deletekey"
 argument_list|)
