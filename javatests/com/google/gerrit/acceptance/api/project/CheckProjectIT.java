@@ -268,6 +268,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|client
+operator|.
+name|InheritableBoolean
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|common
 operator|.
 name|ChangeInfo
@@ -610,7 +626,7 @@ block|{
 name|RevCommit
 name|commit
 init|=
-name|pushCommitForReview
+name|pushCommitWithoutChangeIdForReview
 argument_list|()
 decl_stmt|;
 name|ChangeInfo
@@ -799,7 +815,7 @@ block|{
 name|RevCommit
 name|commit
 init|=
-name|pushCommitForReview
+name|pushCommitWithoutChangeIdForReview
 argument_list|()
 decl_stmt|;
 name|ChangeInfo
@@ -2330,14 +2346,21 @@ name|AUTO_CLOSE_MAX_COMMITS_LIMIT
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|pushCommitForReview ()
+DECL|method|pushCommitWithoutChangeIdForReview ()
 specifier|private
 name|RevCommit
-name|pushCommitForReview
+name|pushCommitWithoutChangeIdForReview
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|setRequireChangeId
+argument_list|(
+name|InheritableBoolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
 name|RevCommit
 name|commit
 init|=

@@ -231,6 +231,16 @@ name|InheritableBoolean
 operator|.
 name|INHERIT
 function_decl|;
+DECL|method|requireChangeId ()
+DECL|field|InheritableBoolean.INHERIT
+name|InheritableBoolean
+name|requireChangeId
+parameter_list|()
+default|default
+name|InheritableBoolean
+operator|.
+name|INHERIT
+function_decl|;
 DECL|method|rejectEmptyCommit ()
 DECL|field|InheritableBoolean.INHERIT
 name|InheritableBoolean

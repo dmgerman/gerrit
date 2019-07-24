@@ -213,6 +213,11 @@ specifier|public
 name|InheritableBoolean
 name|newChangeForAllNotInTarget
 decl_stmt|;
+DECL|field|changeIdRequired
+specifier|public
+name|InheritableBoolean
+name|changeIdRequired
+decl_stmt|;
 DECL|field|rejectEmptyCommit
 specifier|public
 name|InheritableBoolean
@@ -256,6 +261,12 @@ operator|.
 name|INHERIT
 expr_stmt|;
 name|contentMerge
+operator|=
+name|InheritableBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|changeIdRequired
 operator|=
 name|InheritableBoolean
 operator|.

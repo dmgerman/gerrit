@@ -197,6 +197,11 @@ specifier|public
 name|InheritedBooleanInfo
 name|createNewChangeForAllNotInTarget
 decl_stmt|;
+DECL|field|requireChangeId
+specifier|public
+name|InheritedBooleanInfo
+name|requireChangeId
+decl_stmt|;
 DECL|field|enableSignedPush
 specifier|public
 name|InheritedBooleanInfo
