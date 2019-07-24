@@ -112,7 +112,7 @@ name|client
 operator|.
 name|BooleanProjectConfig
 operator|.
-name|USE_CONTRIBUTOR_AGREEMENTS
+name|REQUIRE_CHANGE_ID
 import|;
 end_import
 
@@ -3541,7 +3541,7 @@ argument_list|()
 operator|.
 name|getBooleanConfig
 argument_list|(
-name|USE_CONTRIBUTOR_AGREEMENTS
+name|REQUIRE_CHANGE_ID
 argument_list|)
 argument_list|)
 operator|.
@@ -3556,7 +3556,7 @@ name|writeDefaultAllProjectsConfig
 argument_list|(
 literal|"[receive]"
 argument_list|,
-literal|"requireContributorAgreement = false"
+literal|"requireChangeId = false"
 argument_list|)
 expr_stmt|;
 name|cfg
@@ -3575,7 +3575,7 @@ argument_list|()
 operator|.
 name|getBooleanConfig
 argument_list|(
-name|USE_CONTRIBUTOR_AGREEMENTS
+name|REQUIRE_CHANGE_ID
 argument_list|)
 argument_list|)
 operator|.
@@ -3628,7 +3628,7 @@ argument_list|()
 operator|.
 name|getBooleanConfig
 argument_list|(
-name|USE_CONTRIBUTOR_AGREEMENTS
+name|REQUIRE_CHANGE_ID
 argument_list|)
 argument_list|)
 operator|.
@@ -3643,7 +3643,7 @@ name|writeDefaultAllProjectsConfig
 argument_list|(
 literal|"[receive]"
 argument_list|,
-literal|"requireContributorAgreement = false"
+literal|"requireChangeId = false"
 argument_list|)
 expr_stmt|;
 name|cfg
@@ -3666,7 +3666,7 @@ argument_list|()
 operator|.
 name|getBooleanConfig
 argument_list|(
-name|USE_CONTRIBUTOR_AGREEMENTS
+name|REQUIRE_CHANGE_ID
 argument_list|)
 argument_list|)
 operator|.

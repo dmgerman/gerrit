@@ -100,6 +100,14 @@ argument_list|,
 literal|"mergeContent"
 argument_list|)
 block|,
+DECL|enumConstant|REQUIRE_CHANGE_ID
+name|REQUIRE_CHANGE_ID
+argument_list|(
+literal|"receive"
+argument_list|,
+literal|"requireChangeId"
+argument_list|)
+block|,
 DECL|enumConstant|CREATE_NEW_CHANGE_FOR_ALL_NOT_IN_TARGET
 name|CREATE_NEW_CHANGE_FOR_ALL_NOT_IN_TARGET
 argument_list|(
