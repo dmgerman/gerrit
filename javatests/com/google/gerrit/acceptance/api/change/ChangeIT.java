@@ -31499,10 +31499,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|changeCommitMessageWithNoChangeIdFails ()
+DECL|method|changeCommitMessageWithNoChangeIdRetainsChangeID ()
 specifier|public
 name|void
-name|changeCommitMessageWithNoChangeIdFails
+name|changeCommitMessageWithNoChangeIdRetainsChangeID
 parameter_list|()
 throws|throws
 name|Exception
@@ -31538,17 +31538,6 @@ operator|+
 literal|"\n"
 argument_list|)
 expr_stmt|;
-name|ResourceConflictException
-name|thrown
-init|=
-name|assertThrows
-argument_list|(
-name|ResourceConflictException
-operator|.
-name|class
-argument_list|,
-parameter_list|()
-lambda|->
 name|gApi
 operator|.
 name|changes
@@ -31566,19 +31555,28 @@ name|setMessage
 argument_list|(
 literal|"modified commit\n"
 argument_list|)
-argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|assertThat
 argument_list|(
-name|thrown
+name|getCommitMessage
+argument_list|(
+name|r
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
 argument_list|)
 operator|.
-name|hasMessageThat
-argument_list|()
-operator|.
-name|contains
+name|isEqualTo
 argument_list|(
-literal|"missing Change-Id footer"
+literal|"modified commit\n\nChange-Id: "
+operator|+
+name|r
+operator|.
+name|getChangeId
+argument_list|()
+operator|+
+literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
