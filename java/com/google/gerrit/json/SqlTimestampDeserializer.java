@@ -304,15 +304,42 @@ literal|"Expected string for timestamp type"
 argument_list|)
 throw|;
 block|}
+name|String
+name|input
+init|=
+name|p
+operator|.
+name|getAsString
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|input
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// Magic timestamp to indicate no timestamp. (-> null object)
+comment|// Always create a new object as timestamps are mutable. Don't use TimeUtil.never() to not
+comment|// introduce an undesired dependency.
+return|return
+operator|new
+name|Timestamp
+argument_list|(
+literal|0
+argument_list|)
+return|;
+block|}
 return|return
 name|JavaSqlTimestampHelper
 operator|.
 name|parseTimestamp
 argument_list|(
-name|p
-operator|.
-name|getAsString
-argument_list|()
+name|input
 argument_list|)
 return|;
 block|}

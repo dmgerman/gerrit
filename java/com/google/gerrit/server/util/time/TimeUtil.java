@@ -84,6 +84,36 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|UsedAt
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -248,6 +278,30 @@ name|Timestamp
 argument_list|(
 name|nowMs
 argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**    * Returns the magic timestamp representing no specific time.    *    *<p>This "null object" is helpful in contexts where using {@code null} directly is not possible.    */
+annotation|@
+name|UsedAt
+argument_list|(
+name|Project
+operator|.
+name|PLUGIN_CHECKS
+argument_list|)
+DECL|method|never ()
+specifier|public
+specifier|static
+name|Timestamp
+name|never
+parameter_list|()
+block|{
+comment|// Always create a new object as timestamps are mutable.
+return|return
+operator|new
+name|Timestamp
+argument_list|(
+literal|0
 argument_list|)
 return|;
 block|}
