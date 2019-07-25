@@ -457,7 +457,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -593,7 +593,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 argument_list|)
@@ -625,7 +625,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -716,7 +716,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 argument_list|)
@@ -769,7 +769,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 decl_stmt|;
 return|return
@@ -813,7 +813,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -843,7 +843,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getRegisteredOn
+name|registeredOn
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -974,7 +974,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getMetaId
+name|metaId
 argument_list|()
 operator|==
 literal|null
@@ -1005,7 +1005,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|,
@@ -1018,7 +1018,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getMetaId
+name|metaId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1130,7 +1130,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 decl_stmt|;
 name|Set

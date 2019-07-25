@@ -8250,7 +8250,7 @@ name|map
 argument_list|(
 name|Account
 operator|::
-name|getId
+name|id
 argument_list|)
 operator|.
 name|collect

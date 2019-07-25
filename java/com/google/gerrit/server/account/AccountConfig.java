@@ -916,12 +916,12 @@ name|AccountProperties
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|account
 operator|.
-name|getRegisteredOn
+name|registeredOn
 argument_list|()
 argument_list|,
 operator|new
@@ -957,7 +957,7 @@ name|setFullName
 argument_list|(
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 operator|.
@@ -965,7 +965,7 @@ name|setPreferredEmail
 argument_list|(
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 operator|.
@@ -973,7 +973,7 @@ name|setStatus
 argument_list|(
 name|account
 operator|.
-name|getStatus
+name|status
 argument_list|()
 argument_list|)
 operator|.

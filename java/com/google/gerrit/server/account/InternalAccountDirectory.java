@@ -853,7 +853,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|||
@@ -963,7 +963,7 @@ name|_accountId
 operator|=
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1002,7 +1002,7 @@ name|emptyToNull
 argument_list|(
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1049,7 +1049,7 @@ name|email
 operator|=
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 expr_stmt|;
 block|}
@@ -1125,7 +1125,7 @@ name|status
 operator|=
 name|account
 operator|.
-name|getStatus
+name|status
 argument_list|()
 expr_stmt|;
 block|}
@@ -1174,7 +1174,7 @@ name|create
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1281,7 +1281,7 @@ name|equals
 argument_list|(
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 argument_list|)

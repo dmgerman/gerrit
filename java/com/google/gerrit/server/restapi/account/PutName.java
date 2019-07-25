@@ -688,7 +688,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 condition|?
@@ -706,7 +706,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 return|;

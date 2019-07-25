@@ -2324,7 +2324,7 @@ name|add
 argument_list|(
 name|member
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2530,7 +2530,7 @@ name|absentUser
 argument_list|(
 name|member
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|.

@@ -549,7 +549,7 @@ name|account
 lambda|->
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|equals
@@ -782,7 +782,7 @@ argument_list|()
 argument_list|,
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|personIdent

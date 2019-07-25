@@ -1482,7 +1482,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1502,7 +1502,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getMetaId
+name|metaId
 argument_list|()
 argument_list|,
 name|ZERO_ID_STRING

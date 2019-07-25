@@ -8174,12 +8174,12 @@ name|of
 argument_list|(
 name|account13
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|account7
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -8505,12 +8505,12 @@ name|of
 argument_list|(
 name|account13
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|account7
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -8644,12 +8644,12 @@ name|of
 argument_list|(
 name|account13
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|account7
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -8684,7 +8684,7 @@ name|of
 argument_list|(
 name|account7
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -9294,7 +9294,7 @@ name|of
 argument_list|(
 name|account7
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -9354,7 +9354,7 @@ name|of
 argument_list|(
 name|account13
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
@@ -10062,10 +10062,13 @@ name|name
 parameter_list|)
 block|{
 name|Account
+operator|.
+name|Builder
 name|account
 init|=
-operator|new
 name|Account
+operator|.
+name|builder
 argument_list|(
 name|id
 argument_list|,
@@ -10084,6 +10087,9 @@ argument_list|)
 expr_stmt|;
 return|return
 name|account
+operator|.
+name|build
+argument_list|()
 return|;
 block|}
 DECL|method|createGroup (AccountGroup.UUID uuid, String name)

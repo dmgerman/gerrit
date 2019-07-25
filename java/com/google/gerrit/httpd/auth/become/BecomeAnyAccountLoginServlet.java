@@ -1208,7 +1208,7 @@ if|if
 condition|(
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 operator|!=
 literal|null
@@ -1216,7 +1216,7 @@ operator|&&
 operator|!
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 operator|.
 name|isEmpty
@@ -1227,7 +1227,7 @@ name|displayName
 operator|=
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 expr_stmt|;
 block|}
@@ -1236,7 +1236,7 @@ if|if
 condition|(
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 operator|!=
 literal|null
@@ -1246,7 +1246,7 @@ name|displayName
 operator|=
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 expr_stmt|;
 block|}
@@ -1280,7 +1280,7 @@ literal|"?account_id="
 operator|+
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -1353,7 +1353,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 literal|null
@@ -1487,7 +1487,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 return|;

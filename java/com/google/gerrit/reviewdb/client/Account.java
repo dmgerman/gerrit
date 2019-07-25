@@ -156,6 +156,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -189,9 +203,11 @@ comment|/**  * Information about a single user.  *  *<p>A user may have multiple
 end_comment
 
 begin_class
+annotation|@
+name|AutoValue
 DECL|class|Account
 specifier|public
-specifier|final
+specifier|abstract
 class|class
 name|Account
 block|{
@@ -536,56 +552,77 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|field|accountId
-specifier|private
+DECL|method|id ()
+specifier|public
+specifier|abstract
 name|Id
-name|accountId
-decl_stmt|;
+name|id
+parameter_list|()
+function_decl|;
 comment|/** Date and time the user registered with the review server. */
-DECL|field|registeredOn
-specifier|private
+DECL|method|registeredOn ()
+specifier|public
+specifier|abstract
 name|Timestamp
 name|registeredOn
-decl_stmt|;
+parameter_list|()
+function_decl|;
 comment|/** Full name of the user ("Given-name Surname" style). */
-DECL|field|fullName
-specifier|private
+annotation|@
+name|Nullable
+DECL|method|fullName ()
+specifier|public
+specifier|abstract
 name|String
 name|fullName
-decl_stmt|;
+parameter_list|()
+function_decl|;
 comment|/** Email address the user prefers to be contacted through. */
-DECL|field|preferredEmail
-specifier|private
+annotation|@
+name|Nullable
+DECL|method|preferredEmail ()
+specifier|public
+specifier|abstract
 name|String
 name|preferredEmail
-decl_stmt|;
+parameter_list|()
+function_decl|;
 comment|/**    * Is this user inactive? This is used to avoid showing some users (eg. former employees) in    * auto-suggest.    */
-DECL|field|inactive
-specifier|private
+DECL|method|inactive ()
+specifier|public
+specifier|abstract
 name|boolean
 name|inactive
-decl_stmt|;
+parameter_list|()
+function_decl|;
 comment|/** The user-settable status of this account (e.g. busy, OOO, available) */
-DECL|field|status
-specifier|private
+annotation|@
+name|Nullable
+DECL|method|status ()
+specifier|public
+specifier|abstract
 name|String
 name|status
-decl_stmt|;
+parameter_list|()
+function_decl|;
 comment|/** ID of the user branch from which the account was read. */
-DECL|field|metaId
-specifier|private
+annotation|@
+name|Nullable
+DECL|method|metaId ()
+specifier|public
+specifier|abstract
 name|String
 name|metaId
-decl_stmt|;
-DECL|method|Account ()
-specifier|protected
-name|Account
 parameter_list|()
-block|{}
+function_decl|;
 comment|/**    * Create a new account.    *    * @param newId unique id, see {@link com.google.gerrit.server.notedb.Sequences#nextAccountId()}.    * @param registeredOn when the account was registered.    */
-DECL|method|Account (Account.Id newId, Timestamp registeredOn)
+DECL|method|builder (Account.Id newId, Timestamp registeredOn)
 specifier|public
+specifier|static
 name|Account
+operator|.
+name|Builder
+name|builder
 parameter_list|(
 name|Account
 operator|.
@@ -596,110 +633,28 @@ name|Timestamp
 name|registeredOn
 parameter_list|)
 block|{
-name|this
+return|return
+operator|new
+name|AutoValue_Account
 operator|.
-name|accountId
-operator|=
+name|Builder
+argument_list|()
+operator|.
+name|setInactive
+argument_list|(
+literal|false
+argument_list|)
+operator|.
+name|setId
+argument_list|(
 name|newId
-expr_stmt|;
-name|this
+argument_list|)
 operator|.
+name|setRegisteredOn
+argument_list|(
 name|registeredOn
-operator|=
-name|registeredOn
-expr_stmt|;
-block|}
-comment|/** Get local id of this account, to link with in other entities */
-DECL|method|getId ()
-specifier|public
-name|Account
-operator|.
-name|Id
-name|getId
-parameter_list|()
-block|{
-return|return
-name|accountId
+argument_list|)
 return|;
-block|}
-comment|/** Get the full name of the user ("Given-name Surname" style). */
-DECL|method|getFullName ()
-specifier|public
-name|String
-name|getFullName
-parameter_list|()
-block|{
-return|return
-name|fullName
-return|;
-block|}
-comment|/** Set the full name of the user ("Given-name Surname" style). */
-DECL|method|setFullName (String name)
-specifier|public
-name|void
-name|setFullName
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-if|if
-condition|(
-name|name
-operator|!=
-literal|null
-operator|&&
-operator|!
-name|name
-operator|.
-name|trim
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-name|fullName
-operator|=
-name|name
-operator|.
-name|trim
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|fullName
-operator|=
-literal|null
-expr_stmt|;
-block|}
-block|}
-comment|/** Email address the user prefers to be contacted through. */
-DECL|method|getPreferredEmail ()
-specifier|public
-name|String
-name|getPreferredEmail
-parameter_list|()
-block|{
-return|return
-name|preferredEmail
-return|;
-block|}
-comment|/** Set the email address the user prefers to be contacted through. */
-DECL|method|setPreferredEmail (String addr)
-specifier|public
-name|void
-name|setPreferredEmail
-parameter_list|(
-name|String
-name|addr
-parameter_list|)
-block|{
-name|preferredEmail
-operator|=
-name|addr
-expr_stmt|;
 block|}
 comment|/**    * Formats an account name.    *    *<p>The return value goes into NoteDb commits and audit logs, so it should not be changed.    *    *<p>This method deliberately does not use {@code Anonymous Coward} because it can be changed    * using a {@code gerrit.config} option which is a problem for NoteDb commits that still refer to    * a previously defined value.    *    * @return the fullname, if present, otherwise the preferred email, if present, as a last resort a    *     generic string containing the accountId.    */
 DECL|method|getName ()
@@ -711,29 +666,34 @@ block|{
 if|if
 condition|(
 name|fullName
+argument_list|()
 operator|!=
 literal|null
 condition|)
 block|{
 return|return
 name|fullName
+argument_list|()
 return|;
 block|}
 if|if
 condition|(
 name|preferredEmail
+argument_list|()
 operator|!=
 literal|null
 condition|)
 block|{
 return|return
 name|preferredEmail
+argument_list|()
 return|;
 block|}
 return|return
 name|getName
 argument_list|(
-name|accountId
+name|id
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -772,10 +732,12 @@ name|String
 name|name
 init|=
 name|fullName
+argument_list|()
 operator|!=
 literal|null
 condition|?
 name|fullName
+argument_list|()
 else|:
 name|anonymousCowardName
 decl_stmt|;
@@ -796,6 +758,7 @@ expr_stmt|;
 if|if
 condition|(
 name|preferredEmail
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -812,6 +775,7 @@ operator|.
 name|append
 argument_list|(
 name|preferredEmail
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|b
@@ -835,7 +799,8 @@ name|b
 operator|.
 name|append
 argument_list|(
-name|accountId
+name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -856,43 +821,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** Get the date and time the user first registered. */
-DECL|method|getRegisteredOn ()
-specifier|public
-name|Timestamp
-name|getRegisteredOn
-parameter_list|()
-block|{
-return|return
-name|registeredOn
-return|;
-block|}
-DECL|method|getMetaId ()
-specifier|public
-name|String
-name|getMetaId
-parameter_list|()
-block|{
-return|return
-name|metaId
-return|;
-block|}
-DECL|method|setMetaId (String metaId)
-specifier|public
-name|void
-name|setMetaId
-parameter_list|(
-name|String
-name|metaId
-parameter_list|)
-block|{
-name|this
-operator|.
-name|metaId
-operator|=
-name|metaId
-expr_stmt|;
-block|}
 DECL|method|isActive ()
 specifier|public
 name|boolean
@@ -902,97 +830,178 @@ block|{
 return|return
 operator|!
 name|inactive
+argument_list|()
 return|;
 block|}
+DECL|method|toBuilder ()
+specifier|public
+specifier|abstract
+name|Builder
+name|toBuilder
+parameter_list|()
+function_decl|;
+annotation|@
+name|AutoValue
+operator|.
+name|Builder
+DECL|class|Builder
+specifier|public
+specifier|abstract
+specifier|static
+class|class
+name|Builder
+block|{
+DECL|method|id ()
+specifier|public
+specifier|abstract
+name|Id
+name|id
+parameter_list|()
+function_decl|;
+DECL|method|setId (Id id)
+specifier|abstract
+name|Builder
+name|setId
+parameter_list|(
+name|Id
+name|id
+parameter_list|)
+function_decl|;
+DECL|method|registeredOn ()
+specifier|public
+specifier|abstract
+name|Timestamp
+name|registeredOn
+parameter_list|()
+function_decl|;
+DECL|method|setRegisteredOn (Timestamp registeredOn)
+specifier|abstract
+name|Builder
+name|setRegisteredOn
+parameter_list|(
+name|Timestamp
+name|registeredOn
+parameter_list|)
+function_decl|;
+annotation|@
+name|Nullable
+DECL|method|fullName ()
+specifier|public
+specifier|abstract
+name|String
+name|fullName
+parameter_list|()
+function_decl|;
+DECL|method|setFullName (String fullName)
+specifier|public
+specifier|abstract
+name|Builder
+name|setFullName
+parameter_list|(
+name|String
+name|fullName
+parameter_list|)
+function_decl|;
+annotation|@
+name|Nullable
+DECL|method|preferredEmail ()
+specifier|public
+specifier|abstract
+name|String
+name|preferredEmail
+parameter_list|()
+function_decl|;
+DECL|method|setPreferredEmail (String preferredEmail)
+specifier|public
+specifier|abstract
+name|Builder
+name|setPreferredEmail
+parameter_list|(
+name|String
+name|preferredEmail
+parameter_list|)
+function_decl|;
+DECL|method|inactive ()
+specifier|public
+specifier|abstract
+name|boolean
+name|inactive
+parameter_list|()
+function_decl|;
+DECL|method|setInactive (boolean inactive)
+specifier|public
+specifier|abstract
+name|Builder
+name|setInactive
+parameter_list|(
+name|boolean
+name|inactive
+parameter_list|)
+function_decl|;
 DECL|method|setActive (boolean active)
 specifier|public
-name|void
+name|Builder
 name|setActive
 parameter_list|(
 name|boolean
 name|active
 parameter_list|)
 block|{
-name|inactive
-operator|=
+return|return
+name|setInactive
+argument_list|(
 operator|!
 name|active
-expr_stmt|;
-block|}
-DECL|method|getStatus ()
-specifier|public
-name|String
-name|getStatus
-parameter_list|()
-block|{
-return|return
-name|status
+argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
+DECL|method|status ()
+specifier|public
+specifier|abstract
+name|String
+name|status
+parameter_list|()
+function_decl|;
 DECL|method|setStatus (String status)
 specifier|public
-name|void
+specifier|abstract
+name|Builder
 name|setStatus
 parameter_list|(
 name|String
 name|status
 parameter_list|)
-block|{
-name|this
-operator|.
-name|status
-operator|=
-name|status
-expr_stmt|;
-block|}
+function_decl|;
 annotation|@
-name|Override
-DECL|method|equals (Object o)
+name|Nullable
+DECL|method|metaId ()
 specifier|public
-name|boolean
-name|equals
-parameter_list|(
-name|Object
-name|o
-parameter_list|)
-block|{
-return|return
-name|o
-operator|instanceof
-name|Account
-operator|&&
-operator|(
-operator|(
-name|Account
-operator|)
-name|o
-operator|)
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|getId
-argument_list|()
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|hashCode ()
-specifier|public
-name|int
-name|hashCode
+specifier|abstract
+name|String
+name|metaId
 parameter_list|()
-block|{
-return|return
-name|getId
-argument_list|()
-operator|.
-name|get
-argument_list|()
-return|;
+function_decl|;
+DECL|method|setMetaId (@ullable String metaId)
+specifier|public
+specifier|abstract
+name|Builder
+name|setMetaId
+parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|metaId
+parameter_list|)
+function_decl|;
+DECL|method|build ()
+specifier|public
+specifier|abstract
+name|Account
+name|build
+parameter_list|()
+function_decl|;
 block|}
 block|}
 end_class

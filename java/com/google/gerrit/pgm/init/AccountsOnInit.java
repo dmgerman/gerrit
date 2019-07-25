@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -596,12 +612,14 @@ name|get
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|insert (Account account)
+DECL|method|insert (Account.Builder account)
 specifier|public
-name|void
+name|Account
 name|insert
 parameter_list|(
 name|Account
+operator|.
+name|Builder
 name|account
 parameter_list|)
 throws|throws
@@ -613,13 +631,6 @@ init|=
 name|getPath
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|path
-operator|!=
-literal|null
-condition|)
-block|{
 try|try
 init|(
 name|Repository
@@ -630,8 +641,15 @@ name|FileRepository
 argument_list|(
 name|path
 argument_list|)
-init|;           ObjectInserter oi = repo.newObjectInserter()
-block|)
+init|;
+name|ObjectInserter
+name|oi
+operator|=
+name|repo
+operator|.
+name|newObjectInserter
+argument_list|()
+init|)
 block|{
 name|PersonIdent
 name|ident
@@ -652,7 +670,7 @@ argument_list|()
 argument_list|,
 name|account
 operator|.
-name|getRegisteredOn
+name|registeredOn
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -674,9 +692,10 @@ argument_list|()
 operator|.
 name|setActive
 argument_list|(
+operator|!
 name|account
 operator|.
-name|isActive
+name|inactive
 argument_list|()
 argument_list|)
 operator|.
@@ -684,7 +703,7 @@ name|setFullName
 argument_list|(
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 operator|.
@@ -692,7 +711,7 @@ name|setPreferredEmail
 argument_list|(
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 operator|.
@@ -700,7 +719,7 @@ name|setStatus
 argument_list|(
 name|account
 operator|.
-name|getStatus
+name|status
 argument_list|()
 argument_list|)
 operator|.
@@ -865,7 +884,7 @@ name|refsUsers
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -958,13 +977,18 @@ operator|.
 name|name
 argument_list|()
 argument_list|)
+operator|.
+name|build
+argument_list|()
 expr_stmt|;
 block|}
+return|return
+name|account
+operator|.
+name|build
+argument_list|()
+return|;
 block|}
-block|}
-end_class
-
-begin_function
 DECL|method|hasAnyAccount ()
 specifier|public
 name|boolean
@@ -1012,9 +1036,6 @@ argument_list|)
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|getPath ()
 specifier|private
 name|File
@@ -1051,7 +1072,9 @@ argument_list|,
 literal|"gerrit.basePath must be configured"
 argument_list|)
 expr_stmt|;
-return|return
+name|File
+name|file
+init|=
 name|FileKey
 operator|.
 name|resolve
@@ -1070,10 +1093,27 @@ name|FS
 operator|.
 name|DETECTED
 argument_list|)
+decl_stmt|;
+name|checkState
+argument_list|(
+name|file
+operator|!=
+literal|null
+argument_list|,
+literal|"%s does not exist"
+argument_list|,
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+name|file
 return|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

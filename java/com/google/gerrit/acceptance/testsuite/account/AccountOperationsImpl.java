@@ -402,7 +402,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -420,7 +420,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 return|;
 block|}
@@ -815,7 +815,7 @@ name|accountId
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|.
@@ -827,7 +827,7 @@ name|ofNullable
 argument_list|(
 name|account
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 argument_list|)
@@ -840,7 +840,7 @@ name|ofNullable
 argument_list|(
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 argument_list|)

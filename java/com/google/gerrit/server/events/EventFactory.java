@@ -3940,7 +3940,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 expr_stmt|;
 name|who
@@ -3952,7 +3952,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 expr_stmt|;
 name|who

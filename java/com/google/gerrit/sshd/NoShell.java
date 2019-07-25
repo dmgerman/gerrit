@@ -817,7 +817,7 @@ name|name
 init|=
 name|account
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 decl_stmt|;
 if|if

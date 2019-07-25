@@ -163,7 +163,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getStatus
+name|status
 argument_list|()
 argument_list|)
 return|;

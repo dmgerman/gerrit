@@ -1313,7 +1313,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|realUser
@@ -1613,7 +1613,7 @@ argument_list|(
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|,
 literal|"a/"
@@ -1958,7 +1958,7 @@ name|name
 init|=
 name|ua
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 decl_stmt|;
 if|if
@@ -1977,7 +1977,7 @@ name|name
 operator|=
 name|ua
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 expr_stmt|;
 block|}
@@ -2013,7 +2013,7 @@ literal|"|account-"
 operator|+
 name|ua
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString
@@ -2062,7 +2062,7 @@ name|name
 init|=
 name|ua
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 decl_stmt|;
 name|String
@@ -2070,7 +2070,7 @@ name|email
 init|=
 name|ua
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 decl_stmt|;
 if|if
@@ -2103,7 +2103,7 @@ literal|"account-"
 operator|+
 name|ua
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|toString

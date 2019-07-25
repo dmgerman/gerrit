@@ -288,8 +288,9 @@ block|}
 return|return
 name|newState
 argument_list|(
-operator|new
 name|Account
+operator|.
+name|builder
 argument_list|(
 name|accountId
 argument_list|,
@@ -298,6 +299,14 @@ operator|.
 name|nowTs
 argument_list|()
 argument_list|)
+operator|.
+name|setMetaId
+argument_list|(
+literal|"1234567812345678123456781234567812345678"
+argument_list|)
+operator|.
+name|build
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -466,7 +475,7 @@ name|put
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|state

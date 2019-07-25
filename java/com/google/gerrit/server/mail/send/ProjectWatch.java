@@ -602,7 +602,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 for|for
@@ -747,7 +747,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 if|if

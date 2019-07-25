@@ -2704,7 +2704,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 operator|!=
 literal|null
@@ -2718,7 +2718,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 return|;
 block|}

@@ -769,7 +769,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|+
 literal|": "
@@ -928,7 +928,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get
@@ -1053,7 +1053,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|.
@@ -1198,7 +1198,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|requireNonNull
@@ -1990,7 +1990,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 argument_list|)

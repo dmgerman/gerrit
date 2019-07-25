@@ -1003,7 +1003,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|,
 literal|"n/a"

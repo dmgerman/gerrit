@@ -1410,7 +1410,7 @@ name|activate
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1429,7 +1429,7 @@ literal|"Unable to activate account "
 operator|+
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|e
@@ -1447,7 +1447,7 @@ name|deactivate
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1466,7 +1466,7 @@ literal|"Unable to deactivate account "
 operator|+
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|e
@@ -1481,7 +1481,7 @@ name|get
 argument_list|(
 name|account
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 operator|.
@@ -1653,7 +1653,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 argument_list|)
 condition|)
@@ -1697,7 +1697,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|,
 name|who
@@ -1770,7 +1770,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|,
 name|who
@@ -2706,7 +2706,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 operator|==
 literal|null
@@ -3103,7 +3103,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 operator|!=
 literal|null
@@ -3122,7 +3122,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|preferredEmail
 argument_list|()
 operator|.
 name|equals

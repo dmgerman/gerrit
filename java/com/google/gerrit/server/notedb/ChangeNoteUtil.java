@@ -733,12 +733,12 @@ literal|"Gerrit User "
 operator|+
 name|author
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|,
 name|author
 operator|.
-name|getId
+name|id
 argument_list|()
 operator|.
 name|get

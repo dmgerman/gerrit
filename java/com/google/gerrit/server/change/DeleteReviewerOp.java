@@ -918,7 +918,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 decl_stmt|;
 comment|// Check of removing this reviewer (even if there is no vote processed by the loop below) is OK
@@ -1053,7 +1053,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getFullName
+name|fullName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1596,7 +1596,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 condition|)
@@ -1639,7 +1639,7 @@ operator|.
 name|getAccount
 argument_list|()
 operator|.
-name|getId
+name|id
 argument_list|()
 argument_list|)
 argument_list|)
