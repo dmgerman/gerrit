@@ -19051,6 +19051,9 @@ literal|null
 condition|;
 control|)
 block|{
+comment|// Even if skipValidation is set, we still get here when at least one plugin
+comment|// commit validator requires to validate all commits. In this case, however,
+comment|// we don't need to check the commit limit.
 if|if
 condition|(
 operator|++
