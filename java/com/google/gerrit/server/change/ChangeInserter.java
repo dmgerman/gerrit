@@ -1794,6 +1794,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|// A Change-Id is computed for the review, but not appended to the commit message.
+comment|// This can happen if requireChangeId is false.
 name|ObjectId
 name|changeId
 init|=
