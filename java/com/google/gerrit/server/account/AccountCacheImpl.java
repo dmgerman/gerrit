@@ -801,7 +801,10 @@ name|accountId
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
@@ -1145,7 +1148,10 @@ name|username
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}

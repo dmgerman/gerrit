@@ -709,7 +709,10 @@ name|permissionBackend
 operator|.
 name|user
 argument_list|(
-name|user
+name|ctx
+operator|.
+name|getUser
+argument_list|()
 argument_list|)
 operator|.
 name|project

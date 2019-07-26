@@ -452,7 +452,6 @@ name|NotifyHandling
 name|handling
 parameter_list|()
 function_decl|;
-comment|// TODO(dborowitz): Should be ImmutableSetMultimap.
 DECL|method|accounts ()
 specifier|public
 specifier|abstract
