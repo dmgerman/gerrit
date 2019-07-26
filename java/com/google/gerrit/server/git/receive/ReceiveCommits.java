@@ -18085,6 +18085,18 @@ argument_list|()
 argument_list|,
 name|checkMergedInto
 argument_list|,
+name|checkMergedInto
+condition|?
+name|inputCommand
+operator|.
+name|getNewId
+argument_list|()
+operator|.
+name|name
+argument_list|()
+else|:
+literal|null
+argument_list|,
 name|priorPatchSet
 argument_list|,
 name|priorCommit
@@ -19469,6 +19481,9 @@ literal|null
 condition|;
 control|)
 block|{
+comment|// Even if skipValidation is set, we still get here when at least one plugin
+comment|// commit validator requires to validate all commits. In this case, however,
+comment|// we don't need to check the commit limit.
 if|if
 condition|(
 operator|++
@@ -19986,6 +20001,14 @@ argument_list|,
 name|psId
 argument_list|,
 name|refName
+argument_list|,
+name|newTip
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -20180,6 +20203,14 @@ operator|.
 name|psId
 argument_list|,
 name|refName
+argument_list|,
+name|newTip
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|setPatchSetProvider
