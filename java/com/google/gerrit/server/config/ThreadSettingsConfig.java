@@ -168,9 +168,16 @@ literal|"sshd"
 argument_list|,
 literal|"threads"
 argument_list|,
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|4
+argument_list|,
 literal|2
 operator|*
 name|cores
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|httpdMaxThreads

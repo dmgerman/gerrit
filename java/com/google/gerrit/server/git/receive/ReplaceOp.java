@@ -1269,7 +1269,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ProjectState projectState, BranchNameKey dest, boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, PatchSetInfo info, List<String> groups, @Nullable MagicBranchInput magicBranch, @Nullable PushCertificate pushCertificate)
+DECL|method|create ( ProjectState projectState, BranchNameKey dest, boolean checkMergedInto, @Nullable String mergeResultRevId, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, PatchSetInfo info, List<String> groups, @Nullable MagicBranchInput magicBranch, @Nullable PushCertificate pushCertificate)
 name|ReplaceOp
 name|create
 parameter_list|(
@@ -1281,6 +1281,11 @@ name|dest
 parameter_list|,
 name|boolean
 name|checkMergedInto
+parameter_list|,
+annotation|@
+name|Nullable
+name|String
+name|mergeResultRevId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1470,6 +1475,12 @@ specifier|final
 name|boolean
 name|checkMergedInto
 decl_stmt|;
+DECL|field|mergeResultRevId
+specifier|private
+specifier|final
+name|String
+name|mergeResultRevId
+decl_stmt|;
 DECL|field|priorPatchSetId
 specifier|private
 specifier|final
@@ -1610,7 +1621,7 @@ name|oldRecipients
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, EmailReviewComments.Factory emailCommentsFactory, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, ProjectCache projectCache, @SendEmailExecutor ExecutorService sendEmailExecutor, ReviewerAdder reviewerAdder, @Assisted ProjectState projectState, @Assisted BranchNameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommitId, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
+DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, EmailReviewComments.Factory emailCommentsFactory, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, ProjectCache projectCache, @SendEmailExecutor ExecutorService sendEmailExecutor, ReviewerAdder reviewerAdder, @Assisted ProjectState projectState, @Assisted BranchNameKey dest, @Assisted boolean checkMergedInto, @Assisted @Nullable String mergeResultRevId, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommitId, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
 name|ReplaceOp
 parameter_list|(
 name|AccountResolver
@@ -1685,6 +1696,13 @@ annotation|@
 name|Assisted
 name|boolean
 name|checkMergedInto
+parameter_list|,
+annotation|@
+name|Assisted
+annotation|@
+name|Nullable
+name|String
+name|mergeResultRevId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1866,6 +1884,12 @@ name|checkMergedInto
 expr_stmt|;
 name|this
 operator|.
+name|mergeResultRevId
+operator|=
+name|mergeResultRevId
+expr_stmt|;
+name|this
+operator|.
 name|priorPatchSetId
 operator|=
 name|priorPatchSetId
@@ -2021,6 +2045,8 @@ argument_list|,
 name|patchSetId
 argument_list|,
 name|mergedInto
+argument_list|,
+name|mergeResultRevId
 argument_list|)
 expr_stmt|;
 block|}

@@ -501,7 +501,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( RequestScopePropagator requestScopePropagator, PatchSet.Id psId, String refName)
+DECL|method|create ( RequestScopePropagator requestScopePropagator, PatchSet.Id psId, @Assisted(R) String refName, @Assisted(R) String mergeResultRevId)
 name|MergedByPushOp
 name|create
 parameter_list|(
@@ -513,8 +513,21 @@ operator|.
 name|Id
 name|psId
 parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"refName"
+argument_list|)
 name|String
 name|refName
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"mergeResultRevId"
+argument_list|)
+name|String
+name|mergeResultRevId
 parameter_list|)
 function_decl|;
 block|}
@@ -576,6 +589,12 @@ specifier|final
 name|String
 name|refName
 decl_stmt|;
+DECL|field|mergeResultRevId
+specifier|private
+specifier|final
+name|String
+name|mergeResultRevId
+decl_stmt|;
 DECL|field|change
 specifier|private
 name|Change
@@ -606,7 +625,7 @@ name|info
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergedByPushOp ( PatchSetInfoFactory patchSetInfoFactory, ChangeMessagesUtil cmUtil, MergedSender.Factory mergedSenderFactory, PatchSetUtil psUtil, @SendEmailExecutor ExecutorService sendEmailExecutor, ChangeMerged changeMerged, @Assisted RequestScopePropagator requestScopePropagator, @Assisted PatchSet.Id psId, @Assisted String refName)
+DECL|method|MergedByPushOp ( PatchSetInfoFactory patchSetInfoFactory, ChangeMessagesUtil cmUtil, MergedSender.Factory mergedSenderFactory, PatchSetUtil psUtil, @SendEmailExecutor ExecutorService sendEmailExecutor, ChangeMerged changeMerged, @Assisted RequestScopePropagator requestScopePropagator, @Assisted PatchSet.Id psId, @Assisted(R) String refName, @Assisted(R) String mergeResultRevId)
 name|MergedByPushOp
 parameter_list|(
 name|PatchSetInfoFactory
@@ -645,8 +664,19 @@ name|psId
 parameter_list|,
 annotation|@
 name|Assisted
+argument_list|(
+literal|"refName"
+argument_list|)
 name|String
 name|refName
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"mergeResultRevId"
+argument_list|)
+name|String
+name|mergeResultRevId
 parameter_list|)
 block|{
 name|this
@@ -702,6 +732,12 @@ operator|.
 name|refName
 operator|=
 name|refName
+expr_stmt|;
+name|this
+operator|.
+name|mergeResultRevId
+operator|=
+name|mergeResultRevId
 expr_stmt|;
 block|}
 DECL|method|getMergedIntoRef ()
@@ -1216,13 +1252,7 @@ operator|.
 name|getAccount
 argument_list|()
 argument_list|,
-name|patchSet
-operator|.
-name|commitId
-argument_list|()
-operator|.
-name|name
-argument_list|()
+name|mergeResultRevId
 argument_list|,
 name|ctx
 operator|.

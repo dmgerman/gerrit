@@ -88,6 +88,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|FluentIterable
@@ -777,8 +791,10 @@ return|return
 name|events
 return|;
 block|}
+annotation|@
+name|VisibleForTesting
 DECL|method|getChangeMergedEvents ( String project, String branch, int expectedSize)
-specifier|private
+specifier|public
 name|ImmutableList
 argument_list|<
 name|ChangeMergedEvent
