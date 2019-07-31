@@ -141,6 +141,35 @@ operator|=
 name|add
 expr_stmt|;
 block|}
+DECL|method|HashtagsInput (Set<String> add, Set<String> remove)
+specifier|public
+name|HashtagsInput
+parameter_list|(
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|add
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|remove
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|add
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|remove
+operator|=
+name|remove
+expr_stmt|;
+block|}
 block|}
 end_class
 
