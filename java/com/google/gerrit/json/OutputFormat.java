@@ -202,6 +202,13 @@ operator|new
 name|SqlTimestampDeserializer
 argument_list|()
 argument_list|)
+operator|.
+name|registerTypeAdapterFactory
+argument_list|(
+operator|new
+name|EnumTypeAdapterFactory
+argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
