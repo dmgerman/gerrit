@@ -1262,7 +1262,7 @@ argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"Failure in %s of plugin invoke%s"
+literal|"Failure in %s of plugin %s"
 argument_list|,
 name|extensionImpl
 operator|.
