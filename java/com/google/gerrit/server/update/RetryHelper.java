@@ -1626,7 +1626,7 @@ argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"%s failed, retry with tracing eanbled"
+literal|"%s failed, retry with tracing enabled"
 argument_list|,
 name|opts
 operator|.
