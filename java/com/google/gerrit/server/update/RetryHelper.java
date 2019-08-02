@@ -1586,7 +1586,10 @@ name|test
 argument_list|(
 name|t
 argument_list|)
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 operator|!
 name|traceContext
 operator|.
@@ -1648,6 +1651,45 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|true
+return|;
+block|}
+comment|// A non-recoverable failure occurred. We retried the operation with tracing
+comment|// enabled and it failed again. Log the failure so that admin can see if it
+comment|// differs from the failure that triggered the retry.
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|t
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"auto-retry of %s has failed"
+argument_list|,
+name|opts
+operator|.
+name|caller
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|Class
+operator|::
+name|getSimpleName
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|"N/A"
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
 return|;
 block|}
 return|return
