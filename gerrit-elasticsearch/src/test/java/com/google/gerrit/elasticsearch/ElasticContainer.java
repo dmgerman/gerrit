@@ -251,6 +251,12 @@ case|:
 return|return
 literal|"blacktop/elasticsearch:7.2.1"
 return|;
+case|case
+name|V7_3
+case|:
+return|return
+literal|"blacktop/elasticsearch:7.3.0"
+return|;
 block|}
 throw|throw
 operator|new
