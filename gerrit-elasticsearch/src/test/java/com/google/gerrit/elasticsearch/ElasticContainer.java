@@ -228,6 +228,12 @@ return|return
 literal|"blacktop/elasticsearch:6.7.2"
 return|;
 case|case
+name|V6_8
+case|:
+return|return
+literal|"blacktop/elasticsearch:6.8.1"
+return|;
+case|case
 name|V7_0
 case|:
 return|return
