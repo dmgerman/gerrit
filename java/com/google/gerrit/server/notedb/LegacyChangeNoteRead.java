@@ -443,8 +443,6 @@ operator|.
 name|parseIdent
 argument_list|(
 name|ident
-argument_list|,
-name|serverId
 argument_list|)
 operator|.
 name|orElseThrow
@@ -455,9 +453,7 @@ name|parseException
 argument_list|(
 name|changeId
 argument_list|,
-literal|"invalid identity, expected<id>@%s: %s"
-argument_list|,
-name|serverId
+literal|"cannot retrieve account id: %s"
 argument_list|,
 name|ident
 operator|.

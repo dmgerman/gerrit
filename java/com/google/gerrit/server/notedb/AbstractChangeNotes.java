@@ -224,6 +224,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|GerritServerId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -450,6 +466,12 @@ specifier|final
 name|NoteDbMetrics
 name|metrics
 decl_stmt|;
+DECL|field|serverId
+specifier|public
+specifier|final
+name|String
+name|serverId
+decl_stmt|;
 comment|// Providers required to avoid dependency cycles.
 comment|// ChangeNoteCache -> Args
 DECL|field|cache
@@ -463,7 +485,7 @@ name|cache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Args ( GitRepositoryManager repoManager, AllUsersName allUsers, ChangeNoteJson changeNoteJson, LegacyChangeNoteRead legacyChangeNoteRead, NoteDbMetrics metrics, Provider<ChangeNotesCache> cache)
+DECL|method|Args ( GitRepositoryManager repoManager, AllUsersName allUsers, ChangeNoteJson changeNoteJson, LegacyChangeNoteRead legacyChangeNoteRead, NoteDbMetrics metrics, Provider<ChangeNotesCache> cache, @GerritServerId String serverId)
 name|Args
 parameter_list|(
 name|GitRepositoryManager
@@ -486,6 +508,11 @@ argument_list|<
 name|ChangeNotesCache
 argument_list|>
 name|cache
+parameter_list|,
+annotation|@
+name|GerritServerId
+name|String
+name|serverId
 parameter_list|)
 block|{
 name|this
@@ -531,6 +558,12 @@ operator|.
 name|cache
 operator|=
 name|cache
+expr_stmt|;
+name|this
+operator|.
+name|serverId
+operator|=
+name|serverId
 expr_stmt|;
 block|}
 block|}
