@@ -664,17 +664,6 @@ name|MAX_HISTORY_LOOKBACK
 init|=
 literal|10
 decl_stmt|;
-comment|// Maximum number of changes we perform using the differential approach. If more updates need to
-comment|// be applied, we fall back to reading everything from scratch.
-DECL|field|MAX_DIFF_UPDATES
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|MAX_DIFF_UPDATES
-init|=
-literal|50
-decl_stmt|;
 DECL|field|externalIdReader
 specifier|private
 specifier|final
