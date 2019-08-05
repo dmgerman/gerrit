@@ -418,8 +418,11 @@ name|inherited
 operator|=
 name|inherited
 expr_stmt|;
-comment|// TODO(ekempin): This should return Response.created(...) since it creates a new dashboard.
 return|return
+name|Response
+operator|.
+name|created
+argument_list|(
 name|set
 operator|.
 name|apply
@@ -440,6 +443,10 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|input
+argument_list|)
+operator|.
+name|value
+argument_list|()
 argument_list|)
 return|;
 block|}
