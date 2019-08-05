@@ -565,15 +565,6 @@ argument_list|(
 name|goal
 argument_list|)
 decl_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"setting reductionLimit {}"
-argument_list|,
-name|reductionLimit
-argument_list|)
-expr_stmt|;
 name|setReductionLimit
 argument_list|(
 name|reductionLimit
@@ -1110,6 +1101,15 @@ operator|==
 name|CONSULT_STREAM_2
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"predicate class is CONSULT_STREAM_2: override reductionLimit with compileLimit ({})"
+argument_list|,
+name|compileLimit
+argument_list|)
+expr_stmt|;
 return|return
 name|compileLimit
 return|;
