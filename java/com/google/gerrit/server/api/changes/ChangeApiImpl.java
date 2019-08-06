@@ -2942,6 +2942,9 @@ argument_list|,
 name|in
 argument_list|)
 operator|.
+name|value
+argument_list|()
+operator|.
 name|_number
 argument_list|)
 return|;
@@ -3165,6 +3168,9 @@ name|apply
 argument_list|(
 name|change
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -3240,6 +3246,9 @@ name|apply
 argument_list|(
 name|change
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3282,6 +3291,9 @@ name|change
 argument_list|,
 name|in
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3384,6 +3396,9 @@ name|apply
 argument_list|(
 name|change
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3424,6 +3439,9 @@ name|apply
 argument_list|(
 name|change
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3690,6 +3708,9 @@ name|change
 argument_list|,
 name|input
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3890,6 +3911,9 @@ name|apply
 argument_list|(
 name|change
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3935,6 +3959,9 @@ name|apply
 argument_list|(
 name|change
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3980,6 +4007,9 @@ name|apply
 argument_list|(
 name|change
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -4362,6 +4392,9 @@ name|apply
 argument_list|(
 name|change
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -4405,6 +4438,9 @@ name|apply
 argument_list|(
 name|change
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch

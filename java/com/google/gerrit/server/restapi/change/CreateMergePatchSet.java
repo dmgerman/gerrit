@@ -960,10 +960,7 @@ name|ChangeResource
 argument_list|,
 name|MergePatchSetInput
 argument_list|,
-name|Response
-argument_list|<
 name|ChangeInfo
-argument_list|>
 argument_list|>
 block|{
 DECL|field|gitManager

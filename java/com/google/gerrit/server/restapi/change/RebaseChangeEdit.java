@@ -338,10 +338,7 @@ name|ChangeResource
 argument_list|,
 name|Input
 argument_list|,
-name|Response
-argument_list|<
-name|?
-argument_list|>
+name|Object
 argument_list|>
 block|{
 DECL|field|repositoryManager
@@ -391,11 +388,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl (BatchUpdate.Factory updateFactory, ChangeResource rsrc, Input in)
+DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, Input in)
 specifier|protected
 name|Response
 argument_list|<
-name|?
+name|Object
 argument_list|>
 name|applyImpl
 parameter_list|(

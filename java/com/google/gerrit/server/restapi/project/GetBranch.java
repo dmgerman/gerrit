@@ -114,6 +114,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -241,7 +257,10 @@ annotation|@
 name|Override
 DECL|method|apply (BranchResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|BranchInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|BranchResource
@@ -255,6 +274,10 @@ throws|,
 name|PermissionBackendException
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|list
 operator|.
 name|get
@@ -263,6 +286,7 @@ operator|.
 name|toBranchInfo
 argument_list|(
 name|rsrc
+argument_list|)
 argument_list|)
 return|;
 block|}

@@ -276,6 +276,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -1596,11 +1612,14 @@ annotation|@
 name|Override
 DECL|method|apply (TopLevelResource resource)
 specifier|public
+name|Response
+argument_list|<
 name|SortedMap
 argument_list|<
 name|String
 argument_list|,
 name|GroupInfo
+argument_list|>
 argument_list|>
 name|apply
 parameter_list|(
@@ -1673,7 +1692,12 @@ literal|null
 expr_stmt|;
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|output
+argument_list|)
 return|;
 block|}
 DECL|method|get ()
@@ -1799,6 +1823,9 @@ name|user
 argument_list|)
 argument_list|)
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 return|return

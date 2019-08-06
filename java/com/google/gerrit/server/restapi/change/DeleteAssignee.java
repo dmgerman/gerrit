@@ -490,10 +490,7 @@ name|ChangeResource
 argument_list|,
 name|Input
 argument_list|,
-name|Response
-argument_list|<
 name|AccountInfo
-argument_list|>
 argument_list|>
 block|{
 DECL|field|cmUtil

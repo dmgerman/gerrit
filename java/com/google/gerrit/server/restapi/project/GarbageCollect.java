@@ -590,7 +590,10 @@ annotation|@
 name|Override
 DECL|method|apply (ProjectResource rsrc, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|ProjectResource
@@ -627,11 +630,16 @@ argument_list|)
 return|;
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|applySync
 argument_list|(
 name|project
 argument_list|,
 name|input
+argument_list|)
 argument_list|)
 return|;
 block|}

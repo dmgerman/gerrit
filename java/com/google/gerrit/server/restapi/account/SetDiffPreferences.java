@@ -144,6 +144,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -463,7 +479,10 @@ annotation|@
 name|Override
 DECL|method|apply (AccountResource rsrc, DiffPreferencesInfo input)
 specifier|public
+name|Response
+argument_list|<
 name|DiffPreferencesInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|AccountResource
@@ -542,6 +561,10 @@ name|getAccountId
 argument_list|()
 decl_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|accountsUpdateProvider
 operator|.
 name|get
@@ -585,6 +608,7 @@ name|id
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)

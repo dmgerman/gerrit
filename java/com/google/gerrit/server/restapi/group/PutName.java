@@ -218,6 +218,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestModifyView
 import|;
 end_import
@@ -413,7 +429,10 @@ annotation|@
 name|Override
 DECL|method|apply (GroupResource rsrc, NameInput input)
 specifier|public
+name|Response
+argument_list|<
 name|String
+argument_list|>
 name|apply
 parameter_list|(
 name|GroupResource
@@ -539,7 +558,12 @@ argument_list|)
 condition|)
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|newName
+argument_list|)
 return|;
 block|}
 name|renameGroup
@@ -550,7 +574,12 @@ name|newName
 argument_list|)
 expr_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|newName
+argument_list|)
 return|;
 block|}
 DECL|method|renameGroup (GroupDescription.Internal group, String newName)

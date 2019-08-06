@@ -96,6 +96,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -165,7 +181,10 @@ annotation|@
 name|Override
 DECL|method|apply (SshKey rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|SshKeyInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|SshKey
@@ -173,6 +192,10 @@ name|rsrc
 parameter_list|)
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|GetSshKeys
 operator|.
 name|newSshKeyInfo
@@ -181,6 +204,7 @@ name|rsrc
 operator|.
 name|getSshKey
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}

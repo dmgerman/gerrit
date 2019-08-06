@@ -544,10 +544,7 @@ name|RevisionResource
 argument_list|,
 name|DraftInput
 argument_list|,
-name|Response
-argument_list|<
 name|CommentInfo
-argument_list|>
 argument_list|>
 block|{
 DECL|field|commentJson

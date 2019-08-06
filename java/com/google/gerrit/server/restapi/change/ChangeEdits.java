@@ -2432,7 +2432,10 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeEditResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|FileInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ChangeEditResource
@@ -2533,7 +2536,12 @@ else|:
 name|links
 expr_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|r
+argument_list|)
 return|;
 block|}
 DECL|class|FileInfo
@@ -2624,7 +2632,10 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc, Input input)
 specifier|public
+name|Response
+argument_list|<
 name|Object
+argument_list|>
 name|apply
 parameter_list|(
 name|ChangeResource
@@ -2807,7 +2818,10 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|BinaryResult
+argument_list|>
 name|apply
 parameter_list|(
 name|ChangeResource
@@ -2919,6 +2933,10 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|BinaryResult
 operator|.
 name|create
@@ -2935,6 +2953,7 @@ argument_list|)
 operator|.
 name|base64
 argument_list|()
+argument_list|)
 return|;
 block|}
 throw|throw

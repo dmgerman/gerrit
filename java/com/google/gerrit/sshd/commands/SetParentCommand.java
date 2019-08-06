@@ -1127,6 +1127,9 @@ argument_list|,
 name|user
 argument_list|)
 argument_list|)
+operator|.
+name|value
+argument_list|()
 control|)
 block|{
 specifier|final

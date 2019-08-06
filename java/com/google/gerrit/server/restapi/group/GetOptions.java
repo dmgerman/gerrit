@@ -96,6 +96,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -145,7 +161,10 @@ annotation|@
 name|Override
 DECL|method|apply (GroupResource resource)
 specifier|public
+name|Response
+argument_list|<
 name|GroupOptionsInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|GroupResource
@@ -153,6 +172,10 @@ name|resource
 parameter_list|)
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|GroupJson
 operator|.
 name|createOptions
@@ -161,6 +184,7 @@ name|resource
 operator|.
 name|getGroup
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}

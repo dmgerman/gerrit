@@ -112,6 +112,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -301,6 +317,8 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|Map
 argument_list|<
 name|String
@@ -308,6 +326,7 @@ argument_list|,
 name|List
 argument_list|<
 name|RobotCommentInfo
+argument_list|>
 argument_list|>
 argument_list|>
 name|apply
@@ -334,6 +353,10 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|commentJson
 operator|.
 name|get
@@ -362,6 +385,7 @@ name|cd
 operator|.
 name|notes
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 return|;

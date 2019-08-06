@@ -1870,6 +1870,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -2125,6 +2128,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -2214,6 +2220,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 control|)
 block|{
 if|if

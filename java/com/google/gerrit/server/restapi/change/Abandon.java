@@ -160,6 +160,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -603,7 +619,10 @@ annotation|@
 name|Override
 DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, AbandonInput input)
 specifier|protected
+name|Response
+argument_list|<
 name|ChangeInfo
+argument_list|>
 name|applyImpl
 parameter_list|(
 name|BatchUpdate
@@ -706,6 +725,10 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|json
 operator|.
 name|noOptions
@@ -714,6 +737,7 @@ operator|.
 name|format
 argument_list|(
 name|change
+argument_list|)
 argument_list|)
 return|;
 block|}

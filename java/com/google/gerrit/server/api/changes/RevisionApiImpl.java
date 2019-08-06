@@ -2249,6 +2249,9 @@ name|apply
 argument_list|(
 name|revision
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -2295,6 +2298,9 @@ name|revision
 argument_list|,
 name|in
 argument_list|)
+operator|.
+name|value
+argument_list|()
 operator|.
 name|_number
 argument_list|)
@@ -2420,6 +2426,9 @@ argument_list|,
 name|in
 argument_list|)
 operator|.
+name|value
+argument_list|()
+operator|.
 name|_number
 argument_list|)
 return|;
@@ -2464,6 +2473,9 @@ name|revision
 argument_list|,
 name|in
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -2700,6 +2712,9 @@ name|apply
 argument_list|(
 name|revision
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -2744,6 +2759,9 @@ name|apply
 argument_list|(
 name|revision
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3074,6 +3092,9 @@ name|apply
 argument_list|(
 name|revision
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3119,6 +3140,9 @@ name|apply
 argument_list|(
 name|revision
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3204,6 +3228,9 @@ name|apply
 argument_list|(
 name|revision
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3620,6 +3647,9 @@ name|apply
 argument_list|(
 name|revision
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3665,6 +3695,9 @@ name|apply
 argument_list|(
 name|revision
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3747,6 +3780,9 @@ name|apply
 argument_list|(
 name|revision
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3789,6 +3825,9 @@ name|revision
 argument_list|,
 name|in
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3837,6 +3876,9 @@ name|revision
 argument_list|,
 name|in
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -3958,6 +4000,9 @@ name|apply
 argument_list|(
 name|revision
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -4243,6 +4288,9 @@ name|apply
 argument_list|(
 name|revision
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 annotation|@

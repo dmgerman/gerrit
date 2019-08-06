@@ -112,6 +112,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -241,7 +257,10 @@ annotation|@
 name|Override
 DECL|method|apply (ChildProjectResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|ProjectInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ChildProjectResource
@@ -261,6 +280,10 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|json
 operator|.
 name|format
@@ -272,6 +295,7 @@ argument_list|()
 operator|.
 name|getProject
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}

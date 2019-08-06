@@ -98,6 +98,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -266,7 +282,10 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|IncludedInInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ChangeResource
@@ -291,6 +310,10 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|includedIn
 operator|.
 name|apply
@@ -307,6 +330,7 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}

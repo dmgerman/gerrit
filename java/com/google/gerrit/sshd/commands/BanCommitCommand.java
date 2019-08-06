@@ -468,6 +468,9 @@ argument_list|)
 argument_list|,
 name|input
 argument_list|)
+operator|.
+name|value
+argument_list|()
 decl_stmt|;
 name|printCommits
 argument_list|(

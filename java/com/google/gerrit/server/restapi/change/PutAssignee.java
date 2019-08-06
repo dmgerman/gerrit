@@ -212,6 +212,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -646,7 +662,10 @@ annotation|@
 name|Override
 DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, AssigneeInput input)
 specifier|protected
+name|Response
+argument_list|<
 name|AccountInfo
+argument_list|>
 name|applyImpl
 parameter_list|(
 name|BatchUpdate
@@ -868,6 +887,10 @@ name|execute
 argument_list|()
 expr_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|accountLoaderFactory
 operator|.
 name|create
@@ -881,6 +904,7 @@ name|assignee
 operator|.
 name|getAccountId
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}

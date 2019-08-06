@@ -580,10 +580,7 @@ name|ChangeMessageResource
 argument_list|,
 name|DeleteChangeMessageInput
 argument_list|,
-name|Response
-argument_list|<
 name|ChangeMessageInfo
-argument_list|>
 argument_list|>
 block|{
 DECL|field|userProvider
@@ -1095,10 +1092,7 @@ name|ChangeMessageResource
 argument_list|,
 name|Input
 argument_list|,
-name|Response
-argument_list|<
 name|ChangeMessageInfo
-argument_list|>
 argument_list|>
 block|{
 DECL|field|deleteChangeMessage

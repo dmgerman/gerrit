@@ -1254,10 +1254,7 @@ name|ChangeResource
 argument_list|,
 name|ChangeInput
 argument_list|,
-name|Response
-argument_list|<
 name|ChangeInfo
-argument_list|>
 argument_list|>
 block|{
 DECL|field|anonymousCowardName

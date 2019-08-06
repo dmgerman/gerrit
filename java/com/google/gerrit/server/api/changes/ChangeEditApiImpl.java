@@ -1449,6 +1449,9 @@ name|apply
 argument_list|(
 name|changeResource
 argument_list|)
+operator|.
+name|value
+argument_list|()
 init|)
 block|{
 return|return

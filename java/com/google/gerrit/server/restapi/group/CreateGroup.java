@@ -314,6 +314,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestCollectionCreateView
 import|;
 end_import
@@ -1142,7 +1158,10 @@ annotation|@
 name|Override
 DECL|method|apply (TopLevelResource resource, IdString id, GroupInput input)
 specifier|public
+name|Response
+argument_list|<
 name|GroupInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|TopLevelResource
@@ -1440,6 +1459,10 @@ argument_list|)
 throw|;
 block|}
 return|return
+name|Response
+operator|.
+name|created
+argument_list|(
 name|json
 operator|.
 name|format
@@ -1450,6 +1473,7 @@ argument_list|(
 name|createGroup
 argument_list|(
 name|args
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)

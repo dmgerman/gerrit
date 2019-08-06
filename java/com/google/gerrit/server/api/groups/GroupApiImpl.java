@@ -959,6 +959,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -996,6 +999,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -1031,6 +1037,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -1106,6 +1115,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -1195,6 +1207,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -1268,6 +1283,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -1363,6 +1381,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -1505,6 +1526,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -1649,6 +1673,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch

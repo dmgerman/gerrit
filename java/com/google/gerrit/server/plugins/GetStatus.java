@@ -94,6 +94,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -127,7 +143,10 @@ annotation|@
 name|Override
 DECL|method|apply (PluginResource resource)
 specifier|public
+name|Response
+argument_list|<
 name|PluginInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|PluginResource
@@ -135,6 +154,10 @@ name|resource
 parameter_list|)
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|ListPlugins
 operator|.
 name|toPluginInfo
@@ -143,6 +166,7 @@ name|resource
 operator|.
 name|getPlugin
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}

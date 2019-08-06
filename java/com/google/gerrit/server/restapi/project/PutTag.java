@@ -132,6 +132,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestModifyView
 import|;
 end_import
@@ -169,7 +185,10 @@ annotation|@
 name|Override
 DECL|method|apply (TagResource resource, TagInput input)
 specifier|public
+name|Response
+argument_list|<
 name|TagInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|TagResource

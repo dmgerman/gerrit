@@ -400,10 +400,7 @@ name|ChangeResource
 argument_list|,
 name|PublishChangeEditInput
 argument_list|,
-name|Response
-argument_list|<
-name|?
-argument_list|>
+name|Object
 argument_list|>
 block|{
 DECL|field|editUtil
@@ -472,7 +469,7 @@ DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, 
 specifier|protected
 name|Response
 argument_list|<
-name|?
+name|Object
 argument_list|>
 name|applyImpl
 parameter_list|(

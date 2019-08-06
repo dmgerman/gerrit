@@ -970,6 +970,9 @@ name|TopLevelResource
 operator|.
 name|INSTANCE
 argument_list|)
+operator|.
+name|value
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

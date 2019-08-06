@@ -444,6 +444,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -1172,13 +1188,19 @@ name|get
 argument_list|()
 argument_list|)
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 annotation|@
 name|Override
 DECL|method|apply (ProjectResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|ProjectAccessInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ProjectResource
@@ -2109,7 +2131,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|info
+argument_list|)
 return|;
 block|}
 DECL|method|loadGroup (Map<AccountGroup.UUID, GroupInfo> groups, AccountGroup.UUID id)

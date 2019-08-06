@@ -706,6 +706,9 @@ operator|new
 name|ConfigResource
 argument_list|()
 argument_list|)
+operator|.
+name|value
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch

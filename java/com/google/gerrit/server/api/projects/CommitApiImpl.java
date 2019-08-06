@@ -390,6 +390,9 @@ argument_list|,
 name|input
 argument_list|)
 operator|.
+name|value
+argument_list|()
+operator|.
 name|_number
 argument_list|)
 return|;
@@ -429,6 +432,9 @@ name|apply
 argument_list|(
 name|commitResource
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch

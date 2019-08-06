@@ -699,6 +699,9 @@ argument_list|(
 name|resource
 argument_list|()
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -798,6 +801,9 @@ name|apply
 argument_list|(
 name|resource
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -839,6 +845,9 @@ argument_list|(
 name|resource
 argument_list|()
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch

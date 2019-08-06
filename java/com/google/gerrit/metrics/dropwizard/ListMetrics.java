@@ -106,6 +106,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -347,11 +363,14 @@ annotation|@
 name|Override
 DECL|method|apply (ConfigResource resource)
 specifier|public
+name|Response
+argument_list|<
 name|Map
 argument_list|<
 name|String
 argument_list|,
 name|MetricJson
+argument_list|>
 argument_list|>
 name|apply
 parameter_list|(
@@ -524,7 +543,12 @@ block|}
 block|}
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|out
+argument_list|)
 return|;
 block|}
 DECL|method|toJson (String q, Metric m)

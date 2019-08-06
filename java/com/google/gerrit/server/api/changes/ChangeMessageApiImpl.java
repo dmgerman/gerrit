@@ -325,6 +325,9 @@ name|apply
 argument_list|(
 name|changeMessageResource
 argument_list|)
+operator|.
+name|value
+argument_list|()
 return|;
 block|}
 catch|catch

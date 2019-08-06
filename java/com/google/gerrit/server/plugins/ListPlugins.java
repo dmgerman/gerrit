@@ -200,6 +200,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -680,11 +696,14 @@ annotation|@
 name|Override
 DECL|method|apply (TopLevelResource resource)
 specifier|public
+name|Response
+argument_list|<
 name|SortedMap
 argument_list|<
 name|String
 argument_list|,
 name|PluginInfo
+argument_list|>
 argument_list|>
 name|apply
 parameter_list|(
@@ -909,6 +928,10 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 operator|new
 name|TreeMap
 argument_list|<>
@@ -926,6 +949,7 @@ argument_list|,
 name|ListPlugins
 operator|::
 name|toPluginInfo
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)

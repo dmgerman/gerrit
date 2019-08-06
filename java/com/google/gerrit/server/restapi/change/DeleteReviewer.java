@@ -352,10 +352,7 @@ name|ReviewerResource
 argument_list|,
 name|DeleteReviewerInput
 argument_list|,
-name|Response
-argument_list|<
-name|?
-argument_list|>
+name|Object
 argument_list|>
 block|{
 DECL|field|deleteReviewerOpFactory
@@ -417,7 +414,7 @@ DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ReviewerResource rsrc
 specifier|protected
 name|Response
 argument_list|<
-name|?
+name|Object
 argument_list|>
 name|applyImpl
 parameter_list|(

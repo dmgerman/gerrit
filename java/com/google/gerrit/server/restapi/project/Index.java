@@ -520,6 +520,9 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 control|)
 block|{
 name|reindex

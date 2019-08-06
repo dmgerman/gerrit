@@ -194,6 +194,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -780,9 +796,12 @@ literal|"unchecked"
 argument_list|)
 DECL|method|apply (AccountResource rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|List
 argument_list|<
 name|ChangeInfo
+argument_list|>
 argument_list|>
 name|apply
 parameter_list|(
@@ -821,6 +840,13 @@ literal|"not allowed to list stars of another account"
 argument_list|)
 throw|;
 block|}
+comment|// The type of the value in the response that is returned by QueryChanges depends on the
+comment|// number of queries that is provided as input. If a single query is provided as input the
+comment|// value type is {@code List<ChangeInfo>}, if multiple queries are provided as input the value
+comment|// type is {@code List<List<ChangeInfo>>) (one {@code List<ChangeInfo>} as result to each
+comment|// query). Since in this case we provide exactly one query ("has:stars") as input we know that
+comment|// the value always has the type {@code List<ChangeInfo>} and hence we can safely cast the
+comment|// value to this type.
 name|QueryChanges
 name|query
 init|=
@@ -836,13 +862,12 @@ argument_list|(
 literal|"has:stars"
 argument_list|)
 expr_stmt|;
-return|return
-operator|(
-name|List
+name|Response
 argument_list|<
-name|ChangeInfo
+name|?
 argument_list|>
-operator|)
+name|response
+init|=
 name|query
 operator|.
 name|apply
@@ -850,6 +875,31 @@ argument_list|(
 name|TopLevelResource
 operator|.
 name|INSTANCE
+argument_list|)
+decl_stmt|;
+name|List
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|value
+init|=
+operator|(
+name|List
+argument_list|<
+name|ChangeInfo
+argument_list|>
+operator|)
+name|response
+operator|.
+name|value
+argument_list|()
+decl_stmt|;
+return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
+name|value
 argument_list|)
 return|;
 block|}
@@ -916,9 +966,12 @@ annotation|@
 name|Override
 DECL|method|apply (AccountResource.Star rsrc)
 specifier|public
+name|Response
+argument_list|<
 name|SortedSet
 argument_list|<
 name|String
+argument_list|>
 argument_list|>
 name|apply
 parameter_list|(
@@ -956,6 +1009,10 @@ argument_list|)
 throw|;
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|starredChangesUtil
 operator|.
 name|getLabels
@@ -975,6 +1032,7 @@ argument_list|()
 operator|.
 name|getId
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1043,9 +1101,12 @@ annotation|@
 name|Override
 DECL|method|apply (AccountResource.Star rsrc, StarsInput in)
 specifier|public
+name|Response
+argument_list|<
 name|Collection
 argument_list|<
 name|String
+argument_list|>
 argument_list|>
 name|apply
 parameter_list|(
@@ -1090,6 +1151,10 @@ block|}
 try|try
 block|{
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|starredChangesUtil
 operator|.
 name|star
@@ -1125,6 +1190,7 @@ argument_list|,
 name|in
 operator|.
 name|remove
+argument_list|)
 argument_list|)
 return|;
 block|}

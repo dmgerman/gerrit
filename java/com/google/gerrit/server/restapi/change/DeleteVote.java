@@ -804,10 +804,7 @@ name|VoteResource
 argument_list|,
 name|DeleteVoteInput
 argument_list|,
-name|Response
-argument_list|<
-name|?
-argument_list|>
+name|Object
 argument_list|>
 block|{
 DECL|field|logger
@@ -986,7 +983,7 @@ DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, VoteResource rsrc, De
 specifier|protected
 name|Response
 argument_list|<
-name|?
+name|Object
 argument_list|>
 name|applyImpl
 parameter_list|(
