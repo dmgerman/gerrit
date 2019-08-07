@@ -374,6 +374,17 @@ argument_list|>
 name|multiple
 parameter_list|()
 function_decl|;
+comment|// The name of an operation that is performed.
+DECL|method|operationName ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|operationName
+parameter_list|()
+function_decl|;
 comment|// Partial or full computation
 DECL|method|partial ()
 specifier|public
@@ -821,6 +832,16 @@ name|multiple
 parameter_list|(
 name|boolean
 name|multiple
+parameter_list|)
+function_decl|;
+DECL|method|operationName (String operationName)
+specifier|public
+specifier|abstract
+name|Builder
+name|operationName
+parameter_list|(
+name|String
+name|operationName
 parameter_list|)
 function_decl|;
 DECL|method|partial (boolean partial)
