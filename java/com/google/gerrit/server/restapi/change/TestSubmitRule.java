@@ -382,22 +382,6 @@ name|server
 operator|.
 name|rules
 operator|.
-name|DefaultSubmitRule
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|rules
-operator|.
 name|PrologRule
 import|;
 end_import
@@ -503,12 +487,6 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|defaultSubmitRule
-specifier|private
-specifier|final
-name|DefaultSubmitRule
-name|defaultSubmitRule
-decl_stmt|;
 DECL|field|prologRule
 specifier|private
 specifier|final
@@ -537,7 +515,7 @@ name|RUN
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|TestSubmitRule ( ChangeData.Factory changeDataFactory, RulesCache rules, AccountLoader.Factory infoFactory, ProjectCache projectCache, DefaultSubmitRule defaultSubmitRule, PrologRule prologRule)
+DECL|method|TestSubmitRule ( ChangeData.Factory changeDataFactory, RulesCache rules, AccountLoader.Factory infoFactory, ProjectCache projectCache, PrologRule prologRule)
 name|TestSubmitRule
 parameter_list|(
 name|ChangeData
@@ -555,9 +533,6 @@ name|infoFactory
 parameter_list|,
 name|ProjectCache
 name|projectCache
-parameter_list|,
-name|DefaultSubmitRule
-name|defaultSubmitRule
 parameter_list|,
 name|PrologRule
 name|prologRule
@@ -586,12 +561,6 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
-expr_stmt|;
-name|this
-operator|.
-name|defaultSubmitRule
-operator|=
-name|defaultSubmitRule
 expr_stmt|;
 name|this
 operator|.
@@ -645,9 +614,20 @@ condition|(
 name|input
 operator|.
 name|rule
-operator|!=
+operator|==
 literal|null
-operator|&&
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+literal|"rule is required"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 operator|!
 name|rules
 operator|.
@@ -758,23 +738,7 @@ argument_list|<
 name|SubmitRecord
 argument_list|>
 name|records
-decl_stmt|;
-if|if
-condition|(
-name|projectState
-operator|.
-name|hasPrologRules
-argument_list|()
-operator|||
-name|input
-operator|.
-name|rule
-operator|!=
-literal|null
-condition|)
-block|{
-name|records
-operator|=
+init|=
 name|ImmutableList
 operator|.
 name|copyOf
@@ -788,30 +752,7 @@ argument_list|,
 name|opts
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// No rules were provided as input and we have no rules.pl. This means we are supposed to run
-comment|// the default rules. Nowadays, the default rules are implemented in Java, not Prolog.
-comment|// Therefore, we call the DefaultRuleEvaluator instead.
-name|records
-operator|=
-name|ImmutableList
-operator|.
-name|copyOf
-argument_list|(
-name|defaultSubmitRule
-operator|.
-name|evaluate
-argument_list|(
-name|cd
-argument_list|,
-name|opts
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 name|List
 argument_list|<
 name|TestSubmitRuleInfo
