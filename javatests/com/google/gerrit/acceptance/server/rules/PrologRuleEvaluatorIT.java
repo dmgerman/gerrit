@@ -168,9 +168,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|query
 operator|.
-name|SubmitRuleOptions
+name|change
+operator|.
+name|ChangeData
 import|;
 end_import
 
@@ -184,11 +186,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
+name|rules
 operator|.
-name|change
-operator|.
-name|ChangeData
+name|PrologOptions
 import|;
 end_import
 
@@ -982,9 +982,9 @@ argument_list|(
 name|makeChangeData
 argument_list|()
 argument_list|,
-name|SubmitRuleOptions
+name|PrologOptions
 operator|.
-name|defaults
+name|defaultOptions
 argument_list|()
 argument_list|)
 return|;

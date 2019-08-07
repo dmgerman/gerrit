@@ -674,8 +674,6 @@ operator|.
 name|evaluate
 argument_list|(
 name|cd
-argument_list|,
-name|opts
 argument_list|)
 argument_list|)
 argument_list|)
@@ -711,14 +709,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-if|if
-condition|(
-name|opts
-operator|.
-name|logErrors
-argument_list|()
-condition|)
-block|{
 name|logger
 operator|.
 name|atSevere
@@ -737,13 +727,6 @@ expr_stmt|;
 return|return
 name|defaultRuleError
 argument_list|()
-return|;
-block|}
-return|return
-name|createRuleError
-argument_list|(
-name|err
-argument_list|)
 return|;
 block|}
 comment|/**    * Evaluate the submit type rules to get the submit type.    *    * @return record from the evaluated rules.    * @param cd    */
@@ -818,8 +801,6 @@ operator|.
 name|getSubmitType
 argument_list|(
 name|cd
-argument_list|,
-name|opts
 argument_list|)
 return|;
 block|}
@@ -834,14 +815,6 @@ parameter_list|,
 name|Exception
 name|e
 parameter_list|)
-block|{
-if|if
-condition|(
-name|opts
-operator|.
-name|logErrors
-argument_list|()
-condition|)
 block|{
 name|logger
 operator|.
@@ -861,15 +834,6 @@ expr_stmt|;
 return|return
 name|defaultTypeError
 argument_list|()
-return|;
-block|}
-return|return
-name|SubmitTypeRecord
-operator|.
-name|error
-argument_list|(
-name|err
-argument_list|)
 return|;
 block|}
 block|}

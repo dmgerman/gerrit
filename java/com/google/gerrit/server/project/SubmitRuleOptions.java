@@ -80,20 +80,6 @@ name|AutoValue
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
 begin_comment
 comment|/**  * Stable identifier for options passed to a particular submit rule evaluator.  *  *<p>Used to test whether it is ok to reuse a cached list of submit records. Does not include a  * change or patch set ID; callers are responsible for checking those on their own.  */
 end_comment
@@ -123,21 +109,6 @@ operator|.
 name|allowClosed
 argument_list|(
 literal|false
-argument_list|)
-operator|.
-name|skipFilters
-argument_list|(
-literal|false
-argument_list|)
-operator|.
-name|logErrors
-argument_list|(
-literal|true
-argument_list|)
-operator|.
-name|rule
-argument_list|(
-literal|null
 argument_list|)
 operator|.
 name|build
@@ -175,29 +146,6 @@ name|boolean
 name|allowClosed
 parameter_list|()
 function_decl|;
-DECL|method|skipFilters ()
-specifier|public
-specifier|abstract
-name|boolean
-name|skipFilters
-parameter_list|()
-function_decl|;
-DECL|method|logErrors ()
-specifier|public
-specifier|abstract
-name|boolean
-name|logErrors
-parameter_list|()
-function_decl|;
-annotation|@
-name|Nullable
-DECL|method|rule ()
-specifier|public
-specifier|abstract
-name|String
-name|rule
-parameter_list|()
-function_decl|;
 DECL|method|toBuilder ()
 specifier|public
 specifier|abstract
@@ -226,44 +174,6 @@ name|allowClosed
 parameter_list|(
 name|boolean
 name|allowClosed
-parameter_list|)
-function_decl|;
-DECL|method|skipFilters (boolean skipFilters)
-specifier|public
-specifier|abstract
-name|SubmitRuleOptions
-operator|.
-name|Builder
-name|skipFilters
-parameter_list|(
-name|boolean
-name|skipFilters
-parameter_list|)
-function_decl|;
-DECL|method|rule (@ullable String rule)
-specifier|public
-specifier|abstract
-name|SubmitRuleOptions
-operator|.
-name|Builder
-name|rule
-parameter_list|(
-annotation|@
-name|Nullable
-name|String
-name|rule
-parameter_list|)
-function_decl|;
-DECL|method|logErrors (boolean logErrors)
-specifier|public
-specifier|abstract
-name|SubmitRuleOptions
-operator|.
-name|Builder
-name|logErrors
-parameter_list|(
-name|boolean
-name|logErrors
 parameter_list|)
 function_decl|;
 DECL|method|build ()

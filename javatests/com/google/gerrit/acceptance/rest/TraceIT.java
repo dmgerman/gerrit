@@ -554,22 +554,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|SubmitRuleOptions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|query
 operator|.
 name|change
@@ -5194,7 +5178,7 @@ name|failOnce
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|evaluate (ChangeData changeData, SubmitRuleOptions options)
+DECL|method|evaluate (ChangeData changeData)
 specifier|public
 name|Collection
 argument_list|<
@@ -5204,9 +5188,6 @@ name|evaluate
 parameter_list|(
 name|ChangeData
 name|changeData
-parameter_list|,
-name|SubmitRuleOptions
-name|options
 parameter_list|)
 block|{
 if|if

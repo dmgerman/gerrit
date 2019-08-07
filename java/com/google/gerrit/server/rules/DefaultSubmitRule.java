@@ -248,22 +248,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|SubmitRuleOptions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|query
 operator|.
 name|change
@@ -429,7 +413,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|evaluate (ChangeData cd, SubmitRuleOptions options)
+DECL|method|evaluate (ChangeData cd)
 specifier|public
 name|Collection
 argument_list|<
@@ -439,9 +423,6 @@ name|evaluate
 parameter_list|(
 name|ChangeData
 name|cd
-parameter_list|,
-name|SubmitRuleOptions
-name|options
 parameter_list|)
 block|{
 name|ProjectState
