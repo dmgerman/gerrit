@@ -1412,7 +1412,7 @@ name|accountId
 init|=
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

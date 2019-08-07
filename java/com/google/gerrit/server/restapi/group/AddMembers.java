@@ -1233,7 +1233,7 @@ operator|.
 name|asUnique
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 return|;
 block|}
@@ -1466,7 +1466,7 @@ name|map
 argument_list|(
 name|AccountState
 operator|::
-name|getAccount
+name|account
 argument_list|)
 return|;
 block|}

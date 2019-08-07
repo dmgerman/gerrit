@@ -630,7 +630,7 @@ condition|(
 operator|!
 name|accountState
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 operator|.
 name|isPresent
@@ -646,7 +646,7 @@ name|userName
 init|=
 name|accountState
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 operator|.
 name|get
@@ -674,7 +674,7 @@ name|accountBelongsToRealm
 argument_list|(
 name|accountState
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 argument_list|)
 operator|&&
@@ -693,7 +693,7 @@ name|deactivate
 argument_list|(
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -760,7 +760,7 @@ name|userName
 argument_list|,
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

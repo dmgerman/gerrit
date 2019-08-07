@@ -1337,7 +1337,7 @@ name|id
 argument_list|()
 argument_list|)
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 decl_stmt|;
 name|List
@@ -1520,7 +1520,7 @@ name|id
 argument_list|()
 argument_list|)
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 decl_stmt|;
 name|List

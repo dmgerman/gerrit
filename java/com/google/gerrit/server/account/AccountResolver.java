@@ -766,7 +766,7 @@ block|{
 return|return
 name|state
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -776,7 +776,7 @@ literal|": "
 operator|+
 name|state
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|getNameEmail
@@ -925,7 +925,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -1050,7 +1050,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -1195,7 +1195,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -1987,7 +1987,7 @@ name|equals
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|fullName
@@ -2738,7 +2738,7 @@ parameter_list|)
 lambda|->
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive

@@ -1169,7 +1169,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 name|String
@@ -1182,7 +1182,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 operator|.
 name|isPresent
@@ -1196,7 +1196,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 operator|.
 name|get
@@ -1350,7 +1350,7 @@ name|AuthResult
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -1484,7 +1484,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

@@ -313,7 +313,7 @@ name|asIdentifiedUser
 argument_list|()
 return|;
 block|}
-comment|/**    * Get the account of the user performing the update.    *    *<p>Convenience method for {@code getIdentifiedUser().getAccount()}.    *    * @see CurrentUser#asIdentifiedUser()    * @return account.    */
+comment|/**    * Get the account of the user performing the update.    *    *<p>Convenience method for {@code getIdentifiedUser().account()}.    *    * @see CurrentUser#asIdentifiedUser()    * @return account.    */
 DECL|method|getAccount ()
 specifier|default
 name|AccountState

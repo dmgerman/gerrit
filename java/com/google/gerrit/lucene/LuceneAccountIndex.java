@@ -691,7 +691,7 @@ name|idTerm
 argument_list|(
 name|as
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

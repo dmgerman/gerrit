@@ -539,7 +539,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -1159,7 +1159,7 @@ name|asList
 argument_list|()
 argument_list|)
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive
@@ -1299,7 +1299,7 @@ name|asList
 argument_list|()
 argument_list|)
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive
@@ -1921,7 +1921,7 @@ operator|.
 name|asUnique
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -1932,7 +1932,7 @@ name|isEqualTo
 argument_list|(
 name|account
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -2619,7 +2619,7 @@ parameter_list|)
 lambda|->
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive
@@ -2682,7 +2682,7 @@ name|contains
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -2720,7 +2720,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

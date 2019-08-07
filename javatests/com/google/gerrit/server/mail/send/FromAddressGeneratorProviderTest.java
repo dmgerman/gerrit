@@ -2310,7 +2310,7 @@ name|eq
 argument_list|(
 name|s
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -2332,7 +2332,7 @@ expr_stmt|;
 return|return
 name|s
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -2392,7 +2392,7 @@ decl_stmt|;
 return|return
 name|s
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

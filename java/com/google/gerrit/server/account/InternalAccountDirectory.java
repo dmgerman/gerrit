@@ -850,7 +850,7 @@ name|currentUserId
 argument_list|,
 name|state
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -942,7 +942,7 @@ name|account
 init|=
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 if|if
@@ -1021,7 +1021,7 @@ name|name
 operator|=
 name|accountState
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 operator|.
 name|orElse
@@ -1075,7 +1075,7 @@ name|account
 argument_list|,
 name|accountState
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1098,7 +1098,7 @@ name|username
 operator|=
 name|accountState
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 operator|.
 name|orElse

@@ -694,7 +694,7 @@ literal|null
 operator|||
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -712,7 +712,7 @@ name|account
 init|=
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 name|AccountInfo
@@ -754,7 +754,7 @@ name|username
 operator|=
 name|accountState
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 operator|.
 name|orElse
@@ -858,7 +858,7 @@ name|ApprovalInfo
 argument_list|(
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

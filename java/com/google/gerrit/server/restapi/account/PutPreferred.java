@@ -742,7 +742,7 @@ name|equals
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -773,7 +773,7 @@ name|email
 range|:
 name|a
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 operator|.
 name|stream
@@ -947,7 +947,7 @@ name|createEmail
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

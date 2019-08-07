@@ -541,7 +541,7 @@ name|map
 argument_list|(
 name|AccountState
 operator|::
-name|getGeneralPreferences
+name|generalPreferences
 argument_list|)
 operator|.
 name|orElseThrow

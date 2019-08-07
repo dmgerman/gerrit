@@ -1526,7 +1526,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -1698,7 +1698,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|fullName
@@ -2284,7 +2284,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive
@@ -2439,7 +2439,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive
@@ -2618,7 +2618,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive
@@ -3158,7 +3158,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail

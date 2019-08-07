@@ -10795,7 +10795,7 @@ operator|.
 name|state
 argument_list|()
 operator|.
-name|getGeneralPreferences
+name|generalPreferences
 argument_list|()
 decl_stmt|;
 name|this
@@ -10813,7 +10813,7 @@ operator|.
 name|state
 argument_list|()
 operator|.
-name|getGeneralPreferences
+name|generalPreferences
 argument_list|()
 operator|.
 name|publishCommentsOnPush
@@ -11331,7 +11331,7 @@ operator|.
 name|state
 argument_list|()
 operator|.
-name|getGeneralPreferences
+name|generalPreferences
 argument_list|()
 operator|.
 name|workInProgressByDefault

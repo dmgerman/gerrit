@@ -600,7 +600,7 @@ name|ok
 argument_list|(
 name|account
 operator|.
-name|getProjectWatches
+name|projectWatches
 argument_list|()
 operator|.
 name|entrySet

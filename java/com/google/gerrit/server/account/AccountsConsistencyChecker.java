@@ -224,7 +224,7 @@ name|account
 init|=
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 if|if
@@ -242,7 +242,7 @@ condition|(
 operator|!
 name|accountState
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 operator|.
 name|stream

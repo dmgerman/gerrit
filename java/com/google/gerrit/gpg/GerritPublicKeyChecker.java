@@ -1388,7 +1388,7 @@ operator|.
 name|state
 argument_list|()
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 control|)
 block|{

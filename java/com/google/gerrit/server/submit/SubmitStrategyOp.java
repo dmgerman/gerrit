@@ -2708,7 +2708,7 @@ name|map
 argument_list|(
 name|AccountState
 operator|::
-name|getAccount
+name|account
 argument_list|)
 decl_stmt|;
 if|if

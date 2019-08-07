@@ -345,7 +345,7 @@ condition|(
 operator|!
 name|who
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive
@@ -373,7 +373,7 @@ name|checkPassword
 argument_list|(
 name|who
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 argument_list|,
 name|username

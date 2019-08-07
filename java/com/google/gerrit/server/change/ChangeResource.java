@@ -1479,7 +1479,7 @@ name|putInt
 argument_list|(
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -1499,7 +1499,7 @@ name|firstNonNull
 argument_list|(
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|metaId
@@ -1513,7 +1513,7 @@ argument_list|)
 expr_stmt|;
 name|accountState
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 operator|.
 name|stream

@@ -1034,7 +1034,7 @@ name|put
 argument_list|(
 name|s
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

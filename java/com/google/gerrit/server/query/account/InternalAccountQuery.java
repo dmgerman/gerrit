@@ -620,7 +620,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -744,7 +744,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -979,7 +979,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
