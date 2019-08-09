@@ -398,21 +398,6 @@ DECL|field|value
 name|TestEnum
 name|value
 decl_stmt|;
-DECL|method|TestData (TestEnum value)
-specifier|public
-name|TestData
-parameter_list|(
-name|TestEnum
-name|value
-parameter_list|)
-block|{
-name|this
-operator|.
-name|value
-operator|=
-name|value
-expr_stmt|;
-block|}
 block|}
 DECL|enum|TestEnum
 specifier|private

@@ -224,6 +224,8 @@ annotation|@
 name|SuppressWarnings
 argument_list|(
 block|{
+literal|"rawtypes"
+block|,
 literal|"unchecked"
 block|}
 argument_list|)
@@ -280,12 +282,6 @@ literal|null
 return|;
 block|}
 return|return
-operator|(
-name|TypeAdapter
-argument_list|<
-name|T
-argument_list|>
-operator|)
 operator|new
 name|EnumTypeAdapter
 argument_list|(
