@@ -128,7 +128,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|Preferences
+name|StoredPreferences
 import|;
 end_import
 
@@ -329,7 +329,7 @@ name|Response
 operator|.
 name|ok
 argument_list|(
-name|Preferences
+name|StoredPreferences
 operator|.
 name|readDefaultGeneralPreferences
 argument_list|(

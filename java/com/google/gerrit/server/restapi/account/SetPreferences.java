@@ -346,7 +346,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|Preferences
+name|StoredPreferences
 import|;
 end_import
 
@@ -622,7 +622,7 @@ operator|.
 name|downloadScheme
 argument_list|)
 expr_stmt|;
-name|Preferences
+name|StoredPreferences
 operator|.
 name|validateMy
 argument_list|(

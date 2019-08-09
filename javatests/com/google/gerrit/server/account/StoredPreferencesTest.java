@@ -181,10 +181,10 @@ comment|/** Tests for parsing user preferences from Git. */
 end_comment
 
 begin_class
-DECL|class|PreferencesTest
+DECL|class|StoredPreferencesTest
 specifier|public
 class|class
-name|PreferencesTest
+name|StoredPreferencesTest
 block|{
 DECL|enum|Unknown
 enum|enum
@@ -217,11 +217,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|Preferences
+name|StoredPreferences
 name|preferences
 init|=
 operator|new
-name|Preferences
+name|StoredPreferences
 argument_list|(
 name|Account
 operator|.
@@ -296,11 +296,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|Preferences
+name|StoredPreferences
 name|preferences
 init|=
 operator|new
-name|Preferences
+name|StoredPreferences
 argument_list|(
 name|Account
 operator|.

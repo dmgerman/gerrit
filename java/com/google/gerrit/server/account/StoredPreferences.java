@@ -677,10 +677,10 @@ comment|/**  * Parses/writes preferences from/to a {@link Config} file.  *  *<p>
 end_comment
 
 begin_class
-DECL|class|Preferences
+DECL|class|StoredPreferences
 specifier|public
 class|class
-name|Preferences
+name|StoredPreferences
 block|{
 DECL|field|logger
 specifier|private
@@ -746,8 +746,8 @@ specifier|private
 name|EditPreferencesInfo
 name|editPreferences
 decl_stmt|;
-DECL|method|Preferences ( Account.Id accountId, Config cfg, Config defaultCfg, ValidationError.Sink validationErrorSink)
-name|Preferences
+DECL|method|StoredPreferences ( Account.Id accountId, Config cfg, Config defaultCfg, ValidationError.Sink validationErrorSink)
+name|StoredPreferences
 parameter_list|(
 name|Account
 operator|.
