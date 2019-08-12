@@ -181,7 +181,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Returns the username to be authenticated.    *    * @return username for authentication or null for anonymous access.    */
+comment|/**    * Returns the username to be authenticated.    *    * @return username for authentication or {@code empty} for anonymous access.    */
 DECL|method|getUsername ()
 specifier|public
 specifier|final
@@ -196,7 +196,7 @@ return|return
 name|username
 return|;
 block|}
-comment|/**    * Returns the user's credentials    *    * @return user's credentials or null    */
+comment|/**    * Returns the user's credentials    *    * @return user's credentials or {@code empty}.    */
 DECL|method|getPassword ()
 specifier|public
 specifier|final
