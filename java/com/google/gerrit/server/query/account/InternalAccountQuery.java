@@ -314,16 +314,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -578,7 +568,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Makes multiple queries for accounts by preferred email (exact match).    *    * @param emails preferred emails by which accounts should be found    * @return multimap of the given emails to accounts that have a preferred email that exactly    *     matches this email    */
-DECL|method|byPreferredEmail (String... emails)
+DECL|method|byPreferredEmail (List<String> emails)
 specifier|public
 name|Multimap
 argument_list|<
@@ -588,24 +578,13 @@ name|AccountState
 argument_list|>
 name|byPreferredEmail
 parameter_list|(
-name|String
-modifier|...
-name|emails
-parameter_list|)
-block|{
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|emailList
-init|=
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|emails
-argument_list|)
-decl_stmt|;
+parameter_list|)
+block|{
 if|if
 condition|(
 name|hasPreferredEmailExact
@@ -623,7 +602,7 @@ name|r
 init|=
 name|query
 argument_list|(
-name|emailList
+name|emails
 operator|.
 name|stream
 argument_list|()
@@ -664,7 +643,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|emailList
+name|emails
 operator|.
 name|size
 argument_list|()
@@ -677,7 +656,7 @@ name|accountsByEmail
 operator|.
 name|putAll
 argument_list|(
-name|emailList
+name|emails
 operator|.
 name|get
 argument_list|(
@@ -722,7 +701,7 @@ name|r
 init|=
 name|query
 argument_list|(
-name|emailList
+name|emails
 operator|.
 name|stream
 argument_list|()
@@ -763,7 +742,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|emailList
+name|emails
 operator|.
 name|size
 argument_list|()
@@ -775,7 +754,7 @@ block|{
 name|String
 name|email
 init|=
-name|emailList
+name|emails
 operator|.
 name|get
 argument_list|(
