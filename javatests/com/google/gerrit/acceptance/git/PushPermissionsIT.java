@@ -1988,6 +1988,7 @@ operator|+
 literal|":refs/for/master"
 argument_list|)
 decl_stmt|;
+comment|// Admin had ADD_PATCH_SET removed in setup.
 name|assertThat
 argument_list|(
 name|r
