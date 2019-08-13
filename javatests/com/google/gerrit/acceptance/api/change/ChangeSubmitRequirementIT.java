@@ -298,7 +298,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
+name|Optional
 import|;
 end_import
 
@@ -488,7 +488,7 @@ annotation|@
 name|Override
 DECL|method|evaluate (ChangeData changeData)
 specifier|public
-name|Collection
+name|Optional
 argument_list|<
 name|SubmitRecord
 argument_list|>
@@ -536,7 +536,7 @@ name|req
 argument_list|)
 expr_stmt|;
 return|return
-name|ImmutableList
+name|Optional
 operator|.
 name|of
 argument_list|(

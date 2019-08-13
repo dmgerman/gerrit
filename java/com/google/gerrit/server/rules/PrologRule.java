@@ -178,17 +178,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
+name|Optional
 import|;
 end_import
 
@@ -248,7 +238,7 @@ annotation|@
 name|Override
 DECL|method|evaluate (ChangeData cd)
 specifier|public
-name|Collection
+name|Optional
 argument_list|<
 name|SubmitRecord
 argument_list|>
@@ -288,13 +278,17 @@ operator|)
 condition|)
 block|{
 return|return
-name|Collections
+name|Optional
 operator|.
-name|emptyList
+name|empty
 argument_list|()
 return|;
 block|}
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|evaluate
 argument_list|(
 name|cd
@@ -304,14 +298,12 @@ operator|.
 name|defaultOptions
 argument_list|()
 argument_list|)
+argument_list|)
 return|;
 block|}
 DECL|method|evaluate (ChangeData cd, PrologOptions opts)
 specifier|public
-name|Collection
-argument_list|<
 name|SubmitRecord
-argument_list|>
 name|evaluate
 parameter_list|(
 name|ChangeData

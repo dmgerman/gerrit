@@ -1964,10 +1964,7 @@ operator|=
 literal|"invalid prolog rule"
 expr_stmt|;
 comment|// We have no rules.pl by default. The fact that the default rules are showing up here is a bug.
-name|List
-argument_list|<
 name|TestSubmitRuleInfo
-argument_list|>
 name|response
 init|=
 name|gApi
@@ -1993,7 +1990,7 @@ argument_list|(
 name|response
 argument_list|)
 operator|.
-name|containsExactly
+name|isEqualTo
 argument_list|(
 name|invalidPrologRuleInfo
 argument_list|()
@@ -2041,10 +2038,7 @@ name|rule
 operator|=
 literal|"invalid prolog rule"
 expr_stmt|;
-name|List
-argument_list|<
 name|TestSubmitRuleInfo
-argument_list|>
 name|response
 init|=
 name|gApi
@@ -2070,7 +2064,7 @@ argument_list|(
 name|response
 argument_list|)
 operator|.
-name|containsExactly
+name|isEqualTo
 argument_list|(
 name|invalidPrologRuleInfo
 argument_list|()

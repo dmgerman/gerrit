@@ -306,7 +306,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|List
 import|;
 end_import
 
@@ -316,7 +316,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Optional
 import|;
 end_import
 
@@ -415,7 +415,7 @@ annotation|@
 name|Override
 DECL|method|evaluate (ChangeData cd)
 specifier|public
-name|Collection
+name|Optional
 argument_list|<
 name|SubmitRecord
 argument_list|>
@@ -453,9 +453,9 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|Collections
+name|Optional
 operator|.
-name|emptyList
+name|empty
 argument_list|()
 return|;
 block|}
@@ -551,9 +551,9 @@ operator|.
 name|RULE_ERROR
 expr_stmt|;
 return|return
-name|Collections
+name|Optional
 operator|.
-name|singletonList
+name|of
 argument_list|(
 name|submitRecord
 argument_list|)
@@ -638,9 +638,9 @@ operator|.
 name|RULE_ERROR
 expr_stmt|;
 return|return
-name|Collections
+name|Optional
 operator|.
-name|singletonList
+name|of
 argument_list|(
 name|submitRecord
 argument_list|)
@@ -719,9 +719,9 @@ break|break;
 block|}
 block|}
 return|return
-name|Collections
+name|Optional
 operator|.
-name|singletonList
+name|of
 argument_list|(
 name|submitRecord
 argument_list|)

@@ -3850,10 +3850,7 @@ annotation|@
 name|Override
 DECL|method|testSubmitRule (TestSubmitRuleInput in)
 specifier|public
-name|List
-argument_list|<
 name|TestSubmitRuleInfo
-argument_list|>
 name|testSubmitRule
 parameter_list|(
 name|TestSubmitRuleInput

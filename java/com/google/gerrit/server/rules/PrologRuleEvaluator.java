@@ -72,6 +72,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -596,16 +612,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -1016,13 +1022,10 @@ return|return
 name|submitRule
 return|;
 block|}
-comment|/**    * Evaluate the submit rules.    *    * @return List of {@link SubmitRecord} objects returned from the evaluated rules, including any    *     errors.    */
+comment|/**    * Evaluate the submit rules.    *    * @return {@link SubmitRecord} returned from the evaluated rules. Can include errors.    */
 DECL|method|evaluate ()
 specifier|public
-name|Collection
-argument_list|<
 name|SubmitRecord
-argument_list|>
 name|evaluate
 parameter_list|()
 block|{
@@ -1203,10 +1206,7 @@ block|}
 comment|/**    * Convert the results from Prolog Cafe's format to Gerrit's common format.    *    *<p>can_submit/1 terminates when an ok(P) record is found. Therefore walk the results backwards,    * using only that ok(P) record if it exists. This skips partial results that occur early in the    * output. Later after the loop the out collection is reversed to restore it to the original    * ordering.    */
 DECL|method|resultsToSubmitRecord (Term submitRule, List<Term> results)
 specifier|public
-name|List
-argument_list|<
 name|SubmitRecord
-argument_list|>
 name|resultsToSubmitRecord
 parameter_list|(
 name|Term
@@ -1219,27 +1219,33 @@ argument_list|>
 name|results
 parameter_list|)
 block|{
-name|boolean
-name|foundOk
-init|=
-literal|false
-decl_stmt|;
-name|List
-argument_list|<
+name|checkState
+argument_list|(
+operator|!
+name|results
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|,
+literal|"the list of Prolog terms must not be empty"
+argument_list|)
+expr_stmt|;
 name|SubmitRecord
-argument_list|>
-name|out
+name|resultSubmitRecord
 init|=
+operator|new
+name|SubmitRecord
+argument_list|()
+decl_stmt|;
+name|resultSubmitRecord
+operator|.
+name|labels
+operator|=
 operator|new
 name|ArrayList
 argument_list|<>
-argument_list|(
-name|results
-operator|.
-name|size
 argument_list|()
-argument_list|)
-decl_stmt|;
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -1270,20 +1276,6 @@ argument_list|(
 name|resultIdx
 argument_list|)
 decl_stmt|;
-name|SubmitRecord
-name|rec
-init|=
-operator|new
-name|SubmitRecord
-argument_list|()
-decl_stmt|;
-name|out
-operator|.
-name|add
-argument_list|(
-name|rec
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1312,6 +1304,44 @@ return|;
 block|}
 if|if
 condition|(
+operator|!
+literal|"ok"
+operator|.
+name|equals
+argument_list|(
+name|submitRecord
+operator|.
+name|name
+argument_list|()
+argument_list|)
+operator|&&
+operator|!
+literal|"not_ready"
+operator|.
+name|equals
+argument_list|(
+name|submitRecord
+operator|.
+name|name
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+name|invalidResult
+argument_list|(
+name|submitRule
+argument_list|,
+name|submitRecord
+argument_list|)
+return|;
+block|}
+comment|// This transformation is required to adapt Prolog's behavior to the way Gerrit handles
+comment|// SubmitRecords, as defined in the SubmitRecord#allRecordsOK method.
+comment|// When several rules are defined in Prolog, they are all matched to a SubmitRecord. We want
+comment|// the change to be submittable when at least one result is OK.
+if|if
+condition|(
 literal|"ok"
 operator|.
 name|equals
@@ -1323,7 +1353,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|rec
+name|resultSubmitRecord
 operator|.
 name|status
 operator|=
@@ -1346,9 +1376,15 @@ operator|.
 name|name
 argument_list|()
 argument_list|)
+operator|&&
+name|resultSubmitRecord
+operator|.
+name|status
+operator|==
+literal|null
 condition|)
 block|{
-name|rec
+name|resultSubmitRecord
 operator|.
 name|status
 operator|=
@@ -1358,17 +1394,6 @@ name|Status
 operator|.
 name|NOT_READY
 expr_stmt|;
-block|}
-else|else
-block|{
-return|return
-name|invalidResult
-argument_list|(
-name|submitRule
-argument_list|,
-name|submitRecord
-argument_list|)
-return|;
 block|}
 comment|// Unpack the one argument. This should also be a structure with one
 comment|// argument per label that needs to be reported on to the caller.
@@ -1401,20 +1426,6 @@ name|submitRecord
 argument_list|)
 return|;
 block|}
-name|rec
-operator|.
-name|labels
-operator|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
-name|submitRecord
-operator|.
-name|arity
-argument_list|()
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|Term
@@ -1479,7 +1490,7 @@ operator|.
 name|Label
 argument_list|()
 decl_stmt|;
-name|rec
+name|resultSubmitRecord
 operator|.
 name|labels
 operator|.
@@ -1700,7 +1711,7 @@ block|}
 block|}
 if|if
 condition|(
-name|rec
+name|resultSubmitRecord
 operator|.
 name|status
 operator|==
@@ -1711,10 +1722,6 @@ operator|.
 name|OK
 condition|)
 block|{
-name|foundOk
-operator|=
-literal|true
-expr_stmt|;
 break|break;
 block|}
 block|}
@@ -1722,40 +1729,13 @@ name|Collections
 operator|.
 name|reverse
 argument_list|(
-name|out
+name|resultSubmitRecord
+operator|.
+name|labels
 argument_list|)
 expr_stmt|;
-comment|// This transformation is required to adapt Prolog's behavior to the way Gerrit handles
-comment|// SubmitRecords, as defined in the SubmitRecord#allRecordsOK method.
-comment|// When several rules are defined in Prolog, they are all matched to a SubmitRecord. We want
-comment|// the change to be submittable when at least one result is OK.
-if|if
-condition|(
-name|foundOk
-condition|)
-block|{
-for|for
-control|(
-name|SubmitRecord
-name|record
-range|:
-name|out
-control|)
-block|{
-name|record
-operator|.
-name|status
-operator|=
-name|SubmitRecord
-operator|.
-name|Status
-operator|.
-name|OK
-expr_stmt|;
-block|}
-block|}
 return|return
-name|out
+name|resultSubmitRecord
 return|;
 block|}
 annotation|@
@@ -1834,10 +1814,7 @@ return|;
 block|}
 DECL|method|invalidResult (Term rule, Term record, String reason)
 specifier|private
-name|List
-argument_list|<
 name|SubmitRecord
-argument_list|>
 name|invalidResult
 parameter_list|(
 name|Term
@@ -1893,10 +1870,7 @@ return|;
 block|}
 DECL|method|invalidResult (Term rule, Term record)
 specifier|private
-name|List
-argument_list|<
 name|SubmitRecord
-argument_list|>
 name|invalidResult
 parameter_list|(
 name|Term
@@ -1919,10 +1893,7 @@ return|;
 block|}
 DECL|method|ruleError (String err)
 specifier|private
-name|List
-argument_list|<
 name|SubmitRecord
-argument_list|>
 name|ruleError
 parameter_list|(
 name|String
@@ -1940,10 +1911,7 @@ return|;
 block|}
 DECL|method|ruleError (String err, Exception e)
 specifier|private
-name|List
-argument_list|<
 name|SubmitRecord
-argument_list|>
 name|ruleError
 parameter_list|(
 name|String
