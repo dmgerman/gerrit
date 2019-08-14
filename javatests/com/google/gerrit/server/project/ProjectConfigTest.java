@@ -2124,20 +2124,6 @@ literal|"  upload = group Developers\n"
 operator|+
 literal|"  read = group Developers\n"
 operator|+
-literal|"[accounts]\n"
-operator|+
-literal|"  sameGroupVisibility = group Staff\n"
-operator|+
-literal|"[contributor-agreement \"Individual\"]\n"
-operator|+
-literal|"  description = A new description\n"
-operator|+
-literal|"  accepted = group Staff\n"
-operator|+
-literal|"  agreementUrl = http://www.example.com/agree\n"
-operator|+
-literal|"\texcludeProjects = ^/theirproject\n"
-operator|+
 literal|"[label \"CustomLabel\"]\n"
 operator|+
 name|LABEL_SCORES_CONFIG
@@ -2146,9 +2132,23 @@ literal|"\tfunction = MaxWithBlock\n"
 comment|// label gets this function when it is created
 operator|+
 literal|"\tdefaultValue = 0\n"
+comment|//  label gets this value when it is created
+operator|+
+literal|"[accounts]\n"
+operator|+
+literal|"\tsameGroupVisibility = group Staff\n"
+operator|+
+literal|"[contributor-agreement \"Individual\"]\n"
+operator|+
+literal|"\tdescription = A new description\n"
+operator|+
+literal|"\tagreementUrl = http://www.example.com/agree\n"
+operator|+
+literal|"\taccepted = group Staff\n"
+operator|+
+literal|"\texcludeProjects = ^/theirproject\n"
 argument_list|)
 expr_stmt|;
-comment|//  label gets this value when it is created
 block|}
 annotation|@
 name|Test
@@ -2745,93 +2745,6 @@ operator|+
 literal|"\tkey2 = updatedValue2a\n"
 operator|+
 literal|"\tkey2 = updatedValue2b\n"
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|pluginSectionIsUnsetIfAllPluginConfigsAreEmpty ()
-specifier|public
-name|void
-name|pluginSectionIsUnsetIfAllPluginConfigsAreEmpty
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|RevCommit
-name|rev
-init|=
-name|tr
-operator|.
-name|commit
-argument_list|()
-operator|.
-name|add
-argument_list|(
-literal|"project.config"
-argument_list|,
-literal|"[commentlink \"bugzilla\"]\n"
-operator|+
-literal|"  match = \"(bugs#?)(d+)\"\n"
-operator|+
-literal|"[plugin \"somePlugin\"]\n"
-operator|+
-literal|"  key = value\n"
-argument_list|)
-operator|.
-name|create
-argument_list|()
-decl_stmt|;
-name|update
-argument_list|(
-name|rev
-argument_list|)
-expr_stmt|;
-name|ProjectConfig
-name|cfg
-init|=
-name|read
-argument_list|(
-name|rev
-argument_list|)
-decl_stmt|;
-name|PluginConfig
-name|pluginCfg
-init|=
-name|cfg
-operator|.
-name|getPluginConfig
-argument_list|(
-literal|"somePlugin"
-argument_list|)
-decl_stmt|;
-name|pluginCfg
-operator|.
-name|unset
-argument_list|(
-literal|"key"
-argument_list|)
-expr_stmt|;
-name|rev
-operator|=
-name|commit
-argument_list|(
-name|cfg
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|text
-argument_list|(
-name|rev
-argument_list|,
-literal|"project.config"
-argument_list|)
-argument_list|)
-operator|.
-name|isEqualTo
-argument_list|(
-literal|"[commentlink \"bugzilla\"]\n  match = \"(bugs#?)(d+)\"\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3762,6 +3675,434 @@ argument_list|(
 name|InheritableBoolean
 operator|.
 name|INHERIT
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|accountsSectionIsUnsetIfNoSameGroupVisibilityIsSet ()
+specifier|public
+name|void
+name|accountsSectionIsUnsetIfNoSameGroupVisibilityIsSet
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|RevCommit
+name|rev
+init|=
+name|tr
+operator|.
+name|commit
+argument_list|()
+operator|.
+name|add
+argument_list|(
+literal|"project.config"
+argument_list|,
+literal|"[commentlink \"bugzilla\"]\n"
+operator|+
+literal|"\tmatch = \"(bug\\\\s+#?)(\\\\d+)\"\n"
+operator|+
+literal|"\tlink = http://bugs.example.com/show_bug.cgi?id=$2\n"
+operator|+
+literal|"[accounts]\n"
+operator|+
+literal|"  sameGroupVisibility = group Staff\n"
+argument_list|)
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|update
+argument_list|(
+name|rev
+argument_list|)
+expr_stmt|;
+name|ProjectConfig
+name|cfg
+init|=
+name|read
+argument_list|(
+name|rev
+argument_list|)
+decl_stmt|;
+name|cfg
+operator|.
+name|getAccountsSection
+argument_list|()
+operator|.
+name|setSameGroupVisibility
+argument_list|(
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|rev
+operator|=
+name|commit
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|text
+argument_list|(
+name|rev
+argument_list|,
+literal|"project.config"
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"[commentlink \"bugzilla\"]\n\tmatch = \"(bug\\\\s+#?)(\\\\d+)\"\n\tlink = http://bugs.example.com/show_bug.cgi?id=$2\n"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|contributorSectionIsUnsetIfNoContributorAgreementIsSet ()
+specifier|public
+name|void
+name|contributorSectionIsUnsetIfNoContributorAgreementIsSet
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|RevCommit
+name|rev
+init|=
+name|tr
+operator|.
+name|commit
+argument_list|()
+operator|.
+name|add
+argument_list|(
+literal|"project.config"
+argument_list|,
+literal|"[commentlink \"bugzilla\"]\n"
+operator|+
+literal|"\tmatch = \"(bug\\\\s+#?)(\\\\d+)\"\n"
+operator|+
+literal|"\tlink = http://bugs.example.com/show_bug.cgi?id=$2\n"
+operator|+
+literal|"[contributor-agreement \"Individual\"]\n"
+operator|+
+literal|"  accepted = group Developers\n"
+operator|+
+literal|"  accepted = group Staff\n"
+argument_list|)
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|update
+argument_list|(
+name|rev
+argument_list|)
+expr_stmt|;
+name|ProjectConfig
+name|cfg
+init|=
+name|read
+argument_list|(
+name|rev
+argument_list|)
+decl_stmt|;
+name|ContributorAgreement
+name|section
+init|=
+name|cfg
+operator|.
+name|getContributorAgreement
+argument_list|(
+literal|"Individual"
+argument_list|)
+decl_stmt|;
+name|section
+operator|.
+name|setAccepted
+argument_list|(
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|rev
+operator|=
+name|commit
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|text
+argument_list|(
+name|rev
+argument_list|,
+literal|"project.config"
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"[commentlink \"bugzilla\"]\n\tmatch = \"(bug\\\\s+#?)(\\\\d+)\"\n\tlink = http://bugs.example.com/show_bug.cgi?id=$2\n"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|notifySectionIsUnsetIfNoNotificationsAreSet ()
+specifier|public
+name|void
+name|notifySectionIsUnsetIfNoNotificationsAreSet
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|RevCommit
+name|rev
+init|=
+name|tr
+operator|.
+name|commit
+argument_list|()
+operator|.
+name|add
+argument_list|(
+literal|"project.config"
+argument_list|,
+literal|"[commentlink \"bugzilla\"]\n"
+operator|+
+literal|"\tmatch = \"(bug\\\\s+#?)(\\\\d+)\"\n"
+operator|+
+literal|"\tlink = http://bugs.example.com/show_bug.cgi?id=$2\n"
+operator|+
+literal|"[notify \"name\"]\n"
+operator|+
+literal|"  email = example@example.com\n"
+argument_list|)
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|update
+argument_list|(
+name|rev
+argument_list|)
+expr_stmt|;
+name|ProjectConfig
+name|cfg
+init|=
+name|read
+argument_list|(
+name|rev
+argument_list|)
+decl_stmt|;
+name|cfg
+operator|.
+name|getNotifyConfigs
+argument_list|()
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|rev
+operator|=
+name|commit
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|text
+argument_list|(
+name|rev
+argument_list|,
+literal|"project.config"
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"[commentlink \"bugzilla\"]\n\tmatch = \"(bug\\\\s+#?)(\\\\d+)\"\n\tlink = http://bugs.example.com/show_bug.cgi?id=$2\n"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|commentLinkSectionIsUnsetIfNoCommentLinksAreSet ()
+specifier|public
+name|void
+name|commentLinkSectionIsUnsetIfNoCommentLinksAreSet
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|RevCommit
+name|rev
+init|=
+name|tr
+operator|.
+name|commit
+argument_list|()
+operator|.
+name|add
+argument_list|(
+literal|"project.config"
+argument_list|,
+literal|"[commentlink \"bugzilla\"]\n"
+operator|+
+literal|"\tmatch = \"(bug\\\\s+#?)(\\\\d+)\"\n"
+operator|+
+literal|"\tlink = http://bugs.example.com/show_bug.cgi?id=$2\n"
+operator|+
+literal|"[notify \"name\"]\n"
+operator|+
+literal|"  email = example@example.com\n"
+argument_list|)
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|update
+argument_list|(
+name|rev
+argument_list|)
+expr_stmt|;
+name|ProjectConfig
+name|cfg
+init|=
+name|read
+argument_list|(
+name|rev
+argument_list|)
+decl_stmt|;
+name|cfg
+operator|.
+name|getCommentLinkSections
+argument_list|()
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|rev
+operator|=
+name|commit
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|text
+argument_list|(
+name|rev
+argument_list|,
+literal|"project.config"
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"[notify \"name\"]\n\temail = example@example.com\n"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|pluginSectionIsUnsetIfAllPluginConfigsAreEmpty ()
+specifier|public
+name|void
+name|pluginSectionIsUnsetIfAllPluginConfigsAreEmpty
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|RevCommit
+name|rev
+init|=
+name|tr
+operator|.
+name|commit
+argument_list|()
+operator|.
+name|add
+argument_list|(
+literal|"project.config"
+argument_list|,
+literal|"[commentlink \"bugzilla\"]\n"
+operator|+
+literal|"\tmatch = \"(bug\\\\s+#?)(\\\\d+)\"\n"
+operator|+
+literal|"\tlink = http://bugs.example.com/show_bug.cgi?id=$2\n"
+operator|+
+literal|"[plugin \"somePlugin\"]\n"
+operator|+
+literal|"  key = value\n"
+argument_list|)
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|update
+argument_list|(
+name|rev
+argument_list|)
+expr_stmt|;
+name|ProjectConfig
+name|cfg
+init|=
+name|read
+argument_list|(
+name|rev
+argument_list|)
+decl_stmt|;
+name|PluginConfig
+name|pluginCfg
+init|=
+name|cfg
+operator|.
+name|getPluginConfig
+argument_list|(
+literal|"somePlugin"
+argument_list|)
+decl_stmt|;
+name|pluginCfg
+operator|.
+name|unset
+argument_list|(
+literal|"key"
+argument_list|)
+expr_stmt|;
+name|rev
+operator|=
+name|commit
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|text
+argument_list|(
+name|rev
+argument_list|,
+literal|"project.config"
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"[commentlink \"bugzilla\"]\n\tmatch = \"(bug\\\\s+#?)(\\\\d+)\"\n\tlink = http://bugs.example.com/show_bug.cgi?id=$2\n"
 argument_list|)
 expr_stmt|;
 block|}
