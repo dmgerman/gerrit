@@ -1274,6 +1274,17 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Get all published comments on a change as a list.    *    * @return comments as a list; comments have the {@code revision} field set to indicate their    *     patch set.    * @throws RestApiException    */
+DECL|method|commentsAsList ()
+name|List
+argument_list|<
+name|CommentInfo
+argument_list|>
+name|commentsAsList
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Get all robot comments on a change.    *    * @return robot comments in a map keyed by path; robot comments have the {@code revision} field    *     set to indicate their patch set.    * @throws RestApiException    */
 DECL|method|robotComments ()
 name|Map
@@ -1302,6 +1313,17 @@ name|CommentInfo
 argument_list|>
 argument_list|>
 name|drafts
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Get all draft comments for the current user on a change as a list.    *    * @return drafts as a list; comments have the {@code revision} field set to indicate their patch    *     set.    * @throws RestApiException    */
+DECL|method|draftsAsList ()
+name|List
+argument_list|<
+name|CommentInfo
+argument_list|>
+name|draftsAsList
 parameter_list|()
 throws|throws
 name|RestApiException
@@ -2012,6 +2034,25 @@ throw|;
 block|}
 annotation|@
 name|Override
+DECL|method|commentsAsList ()
+specifier|public
+name|List
+argument_list|<
+name|CommentInfo
+argument_list|>
+name|commentsAsList
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|robotComments ()
 specifier|public
 name|Map
@@ -2048,6 +2089,25 @@ name|CommentInfo
 argument_list|>
 argument_list|>
 name|drafts
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|draftsAsList ()
+specifier|public
+name|List
+argument_list|<
+name|CommentInfo
+argument_list|>
+name|draftsAsList
 parameter_list|()
 throws|throws
 name|RestApiException
