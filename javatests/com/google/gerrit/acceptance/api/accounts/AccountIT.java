@@ -2959,10 +2959,7 @@ name|Account
 operator|.
 name|Id
 argument_list|,
-name|Optional
-argument_list|<
 name|AccountState
-argument_list|>
 argument_list|>
 name|accountsCache
 decl_stmt|;
