@@ -1860,7 +1860,7 @@ operator|.
 name|getRefDatabase
 argument_list|()
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|refName
 argument_list|)
