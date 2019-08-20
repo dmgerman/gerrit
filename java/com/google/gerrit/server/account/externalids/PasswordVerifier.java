@@ -156,20 +156,6 @@ name|Collection
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|codec
-operator|.
-name|DecoderException
-import|;
-end_import
-
 begin_comment
 comment|/** Checks if a given username and password match a user's external IDs. */
 end_comment
@@ -298,6 +284,8 @@ return|;
 block|}
 catch|catch
 parameter_list|(
+name|HashedPassword
+operator|.
 name|DecoderException
 name|e
 parameter_list|)

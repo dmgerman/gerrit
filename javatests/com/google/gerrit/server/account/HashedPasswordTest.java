@@ -114,13 +114,17 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|commons
+name|gerrit
 operator|.
-name|codec
+name|server
+operator|.
+name|account
+operator|.
+name|HashedPassword
 operator|.
 name|DecoderException
 import|;
