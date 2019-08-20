@@ -1588,6 +1588,8 @@ if|if
 condition|(
 name|isSameDeltaAndTree
 argument_list|(
+name|rw
+argument_list|,
 name|prior
 argument_list|,
 name|next
@@ -1610,6 +1612,8 @@ if|if
 condition|(
 name|isSameDeltaAndTree
 argument_list|(
+name|rw
+argument_list|,
 name|prior
 argument_list|,
 name|next
@@ -1985,18 +1989,23 @@ name|toSet
 argument_list|()
 return|;
 block|}
-DECL|method|isSameDeltaAndTree (RevCommit prior, RevCommit next)
+DECL|method|isSameDeltaAndTree (RevWalk rw, RevCommit prior, RevCommit next)
 specifier|private
 specifier|static
 name|boolean
 name|isSameDeltaAndTree
 parameter_list|(
+name|RevWalk
+name|rw
+parameter_list|,
 name|RevCommit
 name|prior
 parameter_list|,
 name|RevCommit
 name|next
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 if|if
 condition|(
@@ -2067,6 +2076,31 @@ name|i
 operator|++
 control|)
 block|{
+comment|// Parse parent commits so that their trees are available.
+name|rw
+operator|.
+name|parseCommit
+argument_list|(
+name|prior
+operator|.
+name|getParent
+argument_list|(
+name|i
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|rw
+operator|.
+name|parseCommit
+argument_list|(
+name|next
+operator|.
+name|getParent
+argument_list|(
+name|i
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|next
