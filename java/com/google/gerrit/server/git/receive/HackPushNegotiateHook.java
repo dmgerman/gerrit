@@ -382,6 +382,11 @@ argument_list|)
 throw|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+annotation|@
 name|Override
 DECL|method|advertiseRefs (BaseReceivePack rp)
 specifier|public
@@ -534,6 +539,11 @@ name|alreadySending
 return|;
 block|}
 comment|// Scan history until the advertisement is full.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 name|RevWalk
 name|rw
 init|=
