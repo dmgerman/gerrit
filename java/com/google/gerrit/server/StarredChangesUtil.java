@@ -1893,6 +1893,13 @@ argument_list|(
 name|refName
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|ref
+operator|!=
+literal|null
+condition|)
+block|{
 name|batchUpdate
 operator|.
 name|addCommand
@@ -1914,6 +1921,7 @@ name|refName
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|batchUpdate
 operator|.
