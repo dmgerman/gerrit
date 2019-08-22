@@ -1164,6 +1164,17 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
+name|patchSetId
+argument_list|(
+name|cd
+operator|.
+name|currentPatchSet
+argument_list|()
+operator|.
+name|number
+argument_list|()
+argument_list|)
+operator|.
 name|indexVersion
 argument_list|(
 name|i
