@@ -1775,7 +1775,7 @@ argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"%s failed, retry with tracing enabled"
+literal|"AutoRetry: %s failed, retry with tracing enabled"
 argument_list|,
 name|caller
 argument_list|)
@@ -1810,7 +1810,7 @@ argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"auto-retry of %s has failed"
+literal|"AutoRetry: auto-retry of %s has failed"
 argument_list|,
 name|caller
 argument_list|)
