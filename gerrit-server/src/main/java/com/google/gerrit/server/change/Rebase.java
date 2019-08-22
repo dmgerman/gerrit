@@ -1403,6 +1403,8 @@ name|input
 operator|.
 name|base
 argument_list|)
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
