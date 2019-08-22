@@ -628,6 +628,9 @@ argument_list|,
 name|operation
 argument_list|,
 name|metadata
+operator|.
+name|toStringForLogging
+argument_list|()
 argument_list|,
 name|elapsedMs
 argument_list|)
