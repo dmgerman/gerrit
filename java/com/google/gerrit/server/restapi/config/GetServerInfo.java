@@ -1870,11 +1870,14 @@ name|info
 operator|.
 name|submitWholeTopic
 operator|=
+name|toBoolean
+argument_list|(
 name|MergeSuperSet
 operator|.
 name|wholeTopicEnabled
 argument_list|(
 name|config
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|info
