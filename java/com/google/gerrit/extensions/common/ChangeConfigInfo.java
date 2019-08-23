@@ -112,6 +112,11 @@ specifier|public
 name|Boolean
 name|submitWholeTopic
 decl_stmt|;
+DECL|field|excludeMergeableInChangeInfo
+specifier|public
+name|Boolean
+name|excludeMergeableInChangeInfo
+decl_stmt|;
 block|}
 end_class
 
