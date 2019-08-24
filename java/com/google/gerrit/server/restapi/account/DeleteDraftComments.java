@@ -1741,6 +1741,11 @@ name|build
 argument_list|()
 expr_stmt|;
 block|}
+name|ctx
+operator|.
+name|dontBumpLastUpdatedOn
+argument_list|()
+expr_stmt|;
 return|return
 name|dirty
 return|;
