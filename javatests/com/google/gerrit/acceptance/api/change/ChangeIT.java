@@ -30566,7 +30566,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|submittableAfterLosingPermissions (String label)
-specifier|public
+specifier|private
 name|void
 name|submittableAfterLosingPermissions
 parameter_list|(
