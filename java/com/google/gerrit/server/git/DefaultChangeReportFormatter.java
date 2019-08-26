@@ -201,7 +201,7 @@ init|=
 literal|" [NEW]"
 decl_stmt|;
 DECL|field|urlFormatter
-specifier|private
+specifier|protected
 specifier|final
 name|DynamicItem
 argument_list|<
@@ -212,6 +212,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|DefaultChangeReportFormatter (DynamicItem<UrlFormatter> urlFormatter)
+specifier|public
 name|DefaultChangeReportFormatter
 parameter_list|(
 name|DynamicItem
