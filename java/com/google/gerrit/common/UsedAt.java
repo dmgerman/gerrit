@@ -162,6 +162,9 @@ block|{
 DECL|enumConstant|GOOGLE
 name|GOOGLE
 block|,
+DECL|enumConstant|COLLABNET
+name|COLLABNET
+block|,
 DECL|enumConstant|PLUGIN_CHECKS
 name|PLUGIN_CHECKS
 block|,
