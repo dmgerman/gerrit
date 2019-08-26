@@ -104,20 +104,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|collect
-operator|.
-name|ImmutableList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|flogger
 operator|.
 name|FluentLogger
@@ -338,6 +324,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * Rule to require an approval from a user that did not upload the current patch set or block  * submission.  */
 end_comment
@@ -434,7 +430,7 @@ annotation|@
 name|Override
 DECL|method|evaluate (ChangeData cd)
 specifier|public
-name|Collection
+name|Optional
 argument_list|<
 name|SubmitRecord
 argument_list|>
@@ -498,7 +494,7 @@ name|E_UNABLE_TO_FETCH_LABELS
 argument_list|)
 expr_stmt|;
 return|return
-name|singletonRuleError
+name|ruleError
 argument_list|(
 name|E_UNABLE_TO_FETCH_LABELS
 argument_list|)
@@ -527,9 +523,9 @@ condition|)
 block|{
 comment|// Shortcut to avoid further processing if no label should ignore uploader approvals
 return|return
-name|ImmutableList
+name|Optional
 operator|.
-name|of
+name|empty
 argument_list|()
 return|;
 block|}
@@ -573,7 +569,7 @@ name|E_UNABLE_TO_FETCH_UPLOADER
 argument_list|)
 expr_stmt|;
 return|return
-name|singletonRuleError
+name|ruleError
 argument_list|(
 name|E_UNABLE_TO_FETCH_UPLOADER
 argument_list|)
@@ -778,14 +774,14 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|ImmutableList
+name|Optional
 operator|.
-name|of
+name|empty
 argument_list|()
 return|;
 block|}
 return|return
-name|ImmutableList
+name|Optional
 operator|.
 name|of
 argument_list|(
@@ -838,14 +834,14 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|singletonRuleError (String reason)
+DECL|method|ruleError (String reason)
 specifier|private
 specifier|static
-name|Collection
+name|Optional
 argument_list|<
 name|SubmitRecord
 argument_list|>
-name|singletonRuleError
+name|ruleError
 parameter_list|(
 name|String
 name|reason
@@ -875,7 +871,7 @@ operator|.
 name|RULE_ERROR
 expr_stmt|;
 return|return
-name|ImmutableList
+name|Optional
 operator|.
 name|of
 argument_list|(

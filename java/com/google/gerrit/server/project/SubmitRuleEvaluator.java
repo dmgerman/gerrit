@@ -328,16 +328,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -349,6 +339,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -558,10 +558,7 @@ block|}
 DECL|method|defaultRuleError ()
 specifier|public
 specifier|static
-name|List
-argument_list|<
 name|SubmitRecord
-argument_list|>
 name|defaultRuleError
 parameter_list|()
 block|{
@@ -575,10 +572,7 @@ block|}
 DECL|method|createRuleError (String err)
 specifier|public
 specifier|static
-name|List
-argument_list|<
 name|SubmitRecord
-argument_list|>
 name|createRuleError
 parameter_list|(
 name|String
@@ -609,12 +603,7 @@ operator|=
 name|err
 expr_stmt|;
 return|return
-name|Collections
-operator|.
-name|singletonList
-argument_list|(
 name|rec
-argument_list|)
 return|;
 block|}
 DECL|method|defaultTypeError ()
@@ -729,6 +718,10 @@ name|e
 parameter_list|)
 block|{
 return|return
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 name|ruleError
 argument_list|(
 literal|"Error looking up change "
@@ -739,6 +732,7 @@ name|getId
 argument_list|()
 argument_list|,
 name|e
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -818,11 +812,18 @@ argument_list|)
 argument_list|)
 argument_list|)
 operator|.
-name|flatMap
+name|filter
 argument_list|(
-name|Collection
+name|Optional
 operator|::
-name|stream
+name|isPresent
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|Optional
+operator|::
+name|get
 argument_list|)
 operator|.
 name|collect
@@ -837,10 +838,7 @@ block|}
 block|}
 DECL|method|ruleError (String err, Exception e)
 specifier|private
-name|List
-argument_list|<
 name|SubmitRecord
-argument_list|>
 name|ruleError
 parameter_list|(
 name|String

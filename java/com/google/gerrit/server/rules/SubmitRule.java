@@ -122,12 +122,12 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
+name|Optional
 import|;
 end_import
 
 begin_comment
-comment|/**  * Allows plugins to decide whether a change is ready to be submitted or not.  *  *<p>For a given {@link ChangeData}, each plugin is called and returns a {@link Collection} of  * {@link SubmitRecord}. This collection can be empty, or contain one or several values.  *  *<p>A Change can only be submitted if all the plugins give their consent.  *  *<p>Each {@link SubmitRecord} represents a decision made by the plugin. If the plugin rejects a  * change, it should hold valuable informations to help the end user understand and correct the  * blocking points.  *  *<p>It should be noted that each plugin can handle rules inheritance.  *  *<p>This interface should be used to write pre-submit validation rules. This includes both simple  * checks, coded in Java, and more complex fully fledged expression evaluators (think: Prolog,  * JavaCC, or even JavaScript rules).  */
+comment|/**  * Allows plugins to decide whether a change is ready to be submitted or not.  *  *<p>For a given {@link ChangeData}, each plugin is called and returns a {@link Optional} of {@link  * SubmitRecord}.  *  *<p>A Change can only be submitted if all the plugins give their consent.  *  *<p>Each {@link SubmitRecord} represents a decision made by the plugin. If the plugin rejects a  * change, it should hold valuable informations to help the end user understand and correct the  * blocking points.  *  *<p>It should be noted that each plugin can handle rules inheritance.  *  *<p>This interface should be used to write pre-submit validation rules. This includes both simple  * checks, coded in Java, and more complex fully fledged expression evaluators (think: Prolog,  * JavaCC, or even JavaScript rules).  */
 end_comment
 
 begin_interface
@@ -138,9 +138,9 @@ specifier|public
 interface|interface
 name|SubmitRule
 block|{
-comment|/** Returns a {@link Collection} of {@link SubmitRecord} status for the change. */
+comment|/**    * Returns a {@link Optional} of {@link SubmitRecord} status for the change. {@code    * Optional#empty()} if the SubmitRule was a no-op.    */
 DECL|method|evaluate (ChangeData changeData)
-name|Collection
+name|Optional
 argument_list|<
 name|SubmitRecord
 argument_list|>

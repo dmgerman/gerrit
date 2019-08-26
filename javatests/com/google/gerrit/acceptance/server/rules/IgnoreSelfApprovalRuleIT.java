@@ -85,6 +85,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth8
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -208,7 +224,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
+name|Map
 import|;
 end_import
 
@@ -218,7 +234,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|Optional
 import|;
 end_import
 
@@ -314,11 +330,11 @@ name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Collection
+name|Optional
 argument_list|<
 name|SubmitRecord
 argument_list|>
-name|submitRecords
+name|submitRecord
 init|=
 name|rule
 operator|.
@@ -332,23 +348,18 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|submitRecords
+name|submitRecord
 argument_list|)
 operator|.
-name|hasSize
-argument_list|(
-literal|1
-argument_list|)
+name|isPresent
+argument_list|()
 expr_stmt|;
 name|SubmitRecord
 name|result
 init|=
-name|submitRecords
+name|submitRecord
 operator|.
-name|iterator
-argument_list|()
-operator|.
-name|next
+name|get
 argument_list|()
 decl_stmt|;
 name|assertThat
@@ -473,11 +484,11 @@ name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Collection
+name|Optional
 argument_list|<
 name|SubmitRecord
 argument_list|>
-name|submitRecords
+name|submitRecord
 init|=
 name|rule
 operator|.
@@ -491,7 +502,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|submitRecords
+name|submitRecord
 argument_list|)
 operator|.
 name|isEmpty
@@ -531,11 +542,11 @@ name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Collection
+name|Optional
 argument_list|<
 name|SubmitRecord
 argument_list|>
-name|submitRecords
+name|submitRecord
 init|=
 name|rule
 operator|.
@@ -549,7 +560,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|submitRecords
+name|submitRecord
 argument_list|)
 operator|.
 name|isEmpty

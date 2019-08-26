@@ -857,10 +857,7 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|testSubmitRule (TestSubmitRuleInput in)
-name|List
-argument_list|<
 name|TestSubmitRuleInfo
-argument_list|>
 name|testSubmitRule
 parameter_list|(
 name|TestSubmitRuleInput
@@ -1635,10 +1632,7 @@ annotation|@
 name|Override
 DECL|method|testSubmitRule (TestSubmitRuleInput in)
 specifier|public
-name|List
-argument_list|<
 name|TestSubmitRuleInfo
-argument_list|>
 name|testSubmitRule
 parameter_list|(
 name|TestSubmitRuleInput
