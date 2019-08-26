@@ -253,7 +253,7 @@ case|case
 name|V7_3
 case|:
 return|return
-literal|"blacktop/elasticsearch:7.3.0"
+literal|"blacktop/elasticsearch:7.3.1"
 return|;
 block|}
 throw|throw
