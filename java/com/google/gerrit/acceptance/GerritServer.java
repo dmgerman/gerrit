@@ -1864,6 +1864,15 @@ operator|.
 name|WARN
 argument_list|)
 decl|.
+name|put
+argument_list|(
+literal|"org.eclipse.jgit.internal.storage.file.FileSnapshot"
+argument_list|,
+name|Level
+operator|.
+name|WARN
+argument_list|)
+decl|.
 name|build
 argument_list|()
 decl_stmt|;
