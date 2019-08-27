@@ -3726,7 +3726,9 @@ operator|=
 operator|new
 name|ViewData
 argument_list|(
-literal|null
+name|viewData
+operator|.
+name|pluginName
 argument_list|,
 name|createView
 argument_list|)
@@ -3791,7 +3793,9 @@ operator|=
 operator|new
 name|ViewData
 argument_list|(
-literal|null
+name|viewData
+operator|.
+name|pluginName
 argument_list|,
 name|deleteView
 argument_list|)
