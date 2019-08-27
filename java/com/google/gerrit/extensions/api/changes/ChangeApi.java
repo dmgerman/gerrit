@@ -1390,6 +1390,11 @@ specifier|private
 name|int
 name|limit
 decl_stmt|;
+DECL|field|excludeGroups
+specifier|private
+name|boolean
+name|excludeGroups
+decl_stmt|;
 DECL|method|get ()
 specifier|public
 specifier|abstract
@@ -1440,6 +1445,25 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|excludeGroups (boolean excludeGroups)
+specifier|public
+name|SuggestedReviewersRequest
+name|excludeGroups
+parameter_list|(
+name|boolean
+name|excludeGroups
+parameter_list|)
+block|{
+name|this
+operator|.
+name|excludeGroups
+operator|=
+name|excludeGroups
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|getQuery ()
 specifier|public
 name|String
@@ -1458,6 +1482,16 @@ parameter_list|()
 block|{
 return|return
 name|limit
+return|;
+block|}
+DECL|method|getExcludeGroups ()
+specifier|public
+name|boolean
+name|getExcludeGroups
+parameter_list|()
+block|{
+return|return
+name|excludeGroups
 return|;
 block|}
 block|}
