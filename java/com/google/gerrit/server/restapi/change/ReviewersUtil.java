@@ -208,6 +208,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|client
+operator|.
+name|ReviewerState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|common
 operator|.
 name|GroupBaseInfo
@@ -1197,7 +1213,7 @@ name|account
 parameter_list|)
 function_decl|;
 block|}
-DECL|method|suggestReviewers ( @ullable ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, VisibilityControl visibilityControl, boolean excludeGroups)
+DECL|method|suggestReviewers ( ReviewerState reviewerState, @Nullable ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, VisibilityControl visibilityControl, boolean excludeGroups)
 specifier|public
 name|List
 argument_list|<
@@ -1205,6 +1221,9 @@ name|SuggestedReviewerInfo
 argument_list|>
 name|suggestReviewers
 parameter_list|(
+name|ReviewerState
+name|reviewerState
+parameter_list|,
 annotation|@
 name|Nullable
 name|ChangeNotes
@@ -1399,6 +1418,8 @@ name|sortedRecommendations
 init|=
 name|recommendAccounts
 argument_list|(
+name|reviewerState
+argument_list|,
 name|changeNotes
 argument_list|,
 name|suggestReviewers
@@ -1889,7 +1910,7 @@ return|return
 name|suggestedReviewers
 return|;
 block|}
-DECL|method|recommendAccounts ( @ullable ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, List<Account.Id> candidateList)
+DECL|method|recommendAccounts ( ReviewerState reviewerState, @Nullable ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, List<Account.Id> candidateList)
 specifier|private
 name|List
 argument_list|<
@@ -1899,6 +1920,9 @@ name|Id
 argument_list|>
 name|recommendAccounts
 parameter_list|(
+name|ReviewerState
+name|reviewerState
+parameter_list|,
 annotation|@
 name|Nullable
 name|ChangeNotes
@@ -1943,6 +1967,8 @@ name|reviewerRecommender
 operator|.
 name|suggestReviewers
 argument_list|(
+name|reviewerState
+argument_list|,
 name|changeNotes
 argument_list|,
 name|suggestReviewers

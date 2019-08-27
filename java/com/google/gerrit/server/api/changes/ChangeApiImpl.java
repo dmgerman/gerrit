@@ -3399,6 +3399,16 @@ name|getExcludeGroups
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|suggestReviewers
+operator|.
+name|setReviewerState
+argument_list|(
+name|r
+operator|.
+name|getReviewerState
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|suggestReviewers
 operator|.

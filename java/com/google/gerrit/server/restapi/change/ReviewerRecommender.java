@@ -70,24 +70,6 @@ end_package
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|ReviewerStateInternal
-operator|.
-name|REVIEWER
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -183,6 +165,22 @@ operator|.
 name|data
 operator|.
 name|LabelType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ReviewerState
 import|;
 end_import
 
@@ -357,6 +355,22 @@ operator|.
 name|notedb
 operator|.
 name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ReviewerStateInternal
 import|;
 end_import
 
@@ -863,7 +877,7 @@ operator|=
 name|approvalsUtil
 expr_stmt|;
 block|}
-DECL|method|suggestReviewers ( @ullable ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, List<Account.Id> candidateList)
+DECL|method|suggestReviewers ( ReviewerState reviewerState, @Nullable ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, List<Account.Id> candidateList)
 specifier|public
 name|List
 argument_list|<
@@ -873,6 +887,9 @@ name|Id
 argument_list|>
 name|suggestReviewers
 parameter_list|(
+name|ReviewerState
+name|reviewerState
+parameter_list|,
 annotation|@
 name|Nullable
 name|ChangeNotes
@@ -1432,7 +1449,12 @@ argument_list|)
 operator|.
 name|byState
 argument_list|(
-name|REVIEWER
+name|ReviewerStateInternal
+operator|.
+name|fromReviewerState
+argument_list|(
+name|reviewerState
+argument_list|)
 argument_list|)
 operator|.
 name|forEach
