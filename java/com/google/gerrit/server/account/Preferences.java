@@ -2194,7 +2194,7 @@ name|MenuItem
 argument_list|(
 literal|"Groups"
 argument_list|,
-literal|"#/groups/self"
+literal|"#/settings/#Groups"
 argument_list|,
 literal|null
 argument_list|)
