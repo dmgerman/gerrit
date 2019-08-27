@@ -1589,16 +1589,23 @@ name|POLYGERRIT_INDEX_PATHS
 control|)
 block|{
 comment|// Skip XsrfCookieFilter for /, since that is already done in the GWT UI
-comment|// path (UrlModule).
+comment|// path (UrlModule) if it is enabled.
 if|if
 condition|(
 operator|!
+operator|(
 name|p
 operator|.
 name|equals
 argument_list|(
 literal|"/"
 argument_list|)
+operator|&&
+name|options
+operator|.
+name|enableGwtUi
+argument_list|()
+operator|)
 condition|)
 block|{
 name|filter
