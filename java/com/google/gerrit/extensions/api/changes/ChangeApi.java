@@ -136,6 +136,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|client
+operator|.
+name|ReviewerState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|common
 operator|.
 name|AccountInfo
@@ -925,6 +941,30 @@ name|query
 argument_list|)
 return|;
 block|}
+DECL|method|suggestCcs (String query)
+specifier|default
+name|SuggestedReviewersRequest
+name|suggestCcs
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+return|return
+name|suggestReviewers
+argument_list|()
+operator|.
+name|forCc
+argument_list|()
+operator|.
+name|withQuery
+argument_list|(
+name|query
+argument_list|)
+return|;
+block|}
 comment|/**    * Retrieve reviewers ({@code ReviewerState.REVIEWER} and {@code ReviewerState.CC}) on the change.    */
 DECL|method|reviewers ()
 name|List
@@ -1395,6 +1435,15 @@ specifier|private
 name|boolean
 name|excludeGroups
 decl_stmt|;
+DECL|field|reviewerState
+specifier|private
+name|ReviewerState
+name|reviewerState
+init|=
+name|ReviewerState
+operator|.
+name|REVIEWER
+decl_stmt|;
 DECL|method|get ()
 specifier|public
 specifier|abstract
@@ -1464,6 +1513,24 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|forCc ()
+specifier|public
+name|SuggestedReviewersRequest
+name|forCc
+parameter_list|()
+block|{
+name|this
+operator|.
+name|reviewerState
+operator|=
+name|ReviewerState
+operator|.
+name|CC
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|getQuery ()
 specifier|public
 name|String
@@ -1492,6 +1559,16 @@ parameter_list|()
 block|{
 return|return
 name|excludeGroups
+return|;
+block|}
+DECL|method|getReviewerState ()
+specifier|public
+name|ReviewerState
+name|getReviewerState
+parameter_list|()
+block|{
+return|return
+name|reviewerState
 return|;
 block|}
 block|}
