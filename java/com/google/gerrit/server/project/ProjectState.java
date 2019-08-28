@@ -787,7 +787,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Cached information on a project. Must not contain any data derived from parents other than it's  * immediate parent's {@link Project.NameKey}.  */
+comment|/**  * Cached information on a project. Must not contain any data derived from parents other than it's  * immediate parent's {@link com.google.gerrit.reviewdb.client.Project.NameKey}.  */
 end_comment
 
 begin_class
