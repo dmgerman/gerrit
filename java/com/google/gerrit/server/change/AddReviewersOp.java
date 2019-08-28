@@ -593,8 +593,8 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-comment|/**      * Create a new op.      *      *<p>Users may be added by account or by email addresses, as determined by {@code accountIds}      * and {@code addresses}. The reviewer state for both accounts and email addresses is determined      * by {@code state}.      *      * @param accountIds account IDs to add.      * @param addresses email addresses to add.      * @param state resulting reviewer state.      * @return batch update operation.      */
-DECL|method|create ( Set<Account.Id> accountIds, Collection<Address> addresses, ReviewerState state)
+comment|/**      * Create a new op.      *      *<p>Users may be added by account or by email addresses, as determined by {@code accountIds}      * and {@code addresses}. The reviewer state for both accounts and email addresses is determined      * by {@code state}.      *      * @param accountIds account IDs to add.      * @param addresses email addresses to add.      * @param state resulting reviewer state.      * @param forGroup whether this reviewer addition adds accounts for a group      * @return batch update operation.      */
+DECL|method|create ( Set<Account.Id> accountIds, Collection<Address> addresses, ReviewerState state, boolean forGroup)
 name|AddReviewersOp
 name|create
 parameter_list|(
@@ -614,6 +614,9 @@ name|addresses
 parameter_list|,
 name|ReviewerState
 name|state
+parameter_list|,
+name|boolean
+name|forGroup
 parameter_list|)
 function_decl|;
 block|}
@@ -812,6 +815,12 @@ specifier|final
 name|ReviewerState
 name|state
 decl_stmt|;
+DECL|field|forGroup
+specifier|private
+specifier|final
+name|boolean
+name|forGroup
+decl_stmt|;
 comment|// Unlike addedCCs, addedReviewers is a PatchSetApproval because the AddReviewerResult returned
 comment|// via the REST API is supposed to include vote information.
 DECL|field|addedReviewers
@@ -892,7 +901,7 @@ name|opResult
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, ProjectCache projectCache, AddReviewersEmail addReviewersEmail, @Assisted Set<Account.Id> accountIds, @Assisted Collection<Address> addresses, @Assisted ReviewerState state)
+DECL|method|AddReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, ProjectCache projectCache, AddReviewersEmail addReviewersEmail, @Assisted Set<Account.Id> accountIds, @Assisted Collection<Address> addresses, @Assisted ReviewerState state, @Assisted boolean forGroup)
 name|AddReviewersOp
 parameter_list|(
 name|ApprovalsUtil
@@ -935,6 +944,11 @@ annotation|@
 name|Assisted
 name|ReviewerState
 name|state
+parameter_list|,
+annotation|@
+name|Assisted
+name|boolean
+name|forGroup
 parameter_list|)
 block|{
 name|checkArgument
@@ -1009,6 +1023,12 @@ operator|.
 name|state
 operator|=
 name|state
+expr_stmt|;
+name|this
+operator|.
+name|forGroup
+operator|=
+name|forGroup
 expr_stmt|;
 block|}
 comment|// TODO(dborowitz): This mutable setter is ugly, but a) it's less ugly than adding boolean args
@@ -1105,6 +1125,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|accountIds
+argument_list|,
+name|forGroup
 argument_list|)
 expr_stmt|;
 block|}
