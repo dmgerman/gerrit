@@ -2118,6 +2118,20 @@ operator|.
 name|Factory
 name|changeDataFactory
 decl_stmt|;
+comment|// Changes that were updated by this MergeOp.
+DECL|field|updatedChanges
+specifier|private
+specifier|final
+name|Map
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|,
+name|Change
+argument_list|>
+name|updatedChanges
+decl_stmt|;
 DECL|field|ts
 specifier|private
 name|Timestamp
@@ -2313,6 +2327,15 @@ operator|.
 name|changeDataFactory
 operator|=
 name|changeDataFactory
+expr_stmt|;
+name|this
+operator|.
+name|updatedChanges
+operator|=
+operator|new
+name|HashMap
+argument_list|<>
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -3145,10 +3168,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Merges the given change.    *    *<p>Depending on the server configuration, more changes may be affected, e.g. by submission of a    * topic or via superproject subscriptions. All affected changes are integrated using the projects    * integration strategy.    *    * @param change the change to be merged.    * @param caller the identity of the caller    * @param checkSubmitRules whether the prolog submit rules should be evaluated    * @param submitInput parameters regarding the merge    * @throws RestApiException if an error occurred.    * @throws PermissionBackendException if permissions can't be checked    * @throws IOException an error occurred reading from NoteDb.    */
+comment|/**    * Merges the given change.    *    *<p>Depending on the server configuration, more changes may be affected, e.g. by submission of a    * topic or via superproject subscriptions. All affected changes are integrated using the projects    * integration strategy.    *    * @param change the change to be merged.    * @param caller the identity of the caller    * @param checkSubmitRules whether the prolog submit rules should be evaluated    * @param submitInput parameters regarding the merge    * @throws RestApiException if an error occurred.    * @throws PermissionBackendException if permissions can't be checked    * @throws IOException an error occurred reading from NoteDb.    * @return the merged change    */
 DECL|method|merge ( Change change, IdentifiedUser caller, boolean checkSubmitRules, SubmitInput submitInput, boolean dryrun)
 specifier|public
-name|void
+name|Change
 name|merge
 parameter_list|(
 name|Change
@@ -3633,6 +3656,33 @@ name|increment
 argument_list|()
 expr_stmt|;
 block|}
+comment|// It's expected that callers invoke this method only for open changes and that the provided
+comment|// change either gets updated to merged or that this method fails with an exception. For
+comment|// safety, fall-back to return the provided change if there was no update for this change
+comment|// (e.g. caller provided a change that was already merged).
+return|return
+name|updatedChanges
+operator|.
+name|containsKey
+argument_list|(
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+condition|?
+name|updatedChanges
+operator|.
+name|get
+argument_list|(
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+else|:
+name|change
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -4095,6 +4145,8 @@ operator|.
 name|getProjectsInOrder
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|BatchUpdate
 operator|.
 name|execute
@@ -4119,6 +4171,30 @@ argument_list|,
 name|dryrun
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+comment|// If the BatchUpdate fails it can be that merging some of the changes was actually
+comment|// successful. This is why we must to collect the updated changes also when an exception was
+comment|// thrown.
+name|strategies
+operator|.
+name|forEach
+argument_list|(
+name|s
+lambda|->
+name|updatedChanges
+operator|.
+name|putAll
+argument_list|(
+name|s
+operator|.
+name|getUpdatedChanges
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

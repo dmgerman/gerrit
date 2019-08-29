@@ -1997,6 +1997,25 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**    * Returns the updated change after this op has been executed.    *    * @return the updated change after this op has been executed, {@link Optional#empty()} if the op    *     was not executed yet, or if the execution has failed    */
+DECL|method|getUpdatedChange ()
+specifier|public
+name|Optional
+argument_list|<
+name|Change
+argument_list|>
+name|getUpdatedChange
+parameter_list|()
+block|{
+return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
+name|updatedChange
+argument_list|)
+return|;
+block|}
 DECL|method|getOrCreateAlreadyMergedPatchSet (ChangeContext ctx)
 specifier|private
 name|PatchSet
