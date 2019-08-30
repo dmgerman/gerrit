@@ -82,6 +82,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|kohsuke
@@ -123,7 +137,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"rawtypes"
 argument_list|)
-DECL|method|newOption ( String name, String[] aliases, String usage, String metaVar, boolean required, boolean help, boolean hidden, Class<? extends OptionHandler> handler, String[] depends, String[] forbids)
+DECL|method|newOption ( String name, ImmutableList<String> aliases, String usage, String metaVar, boolean required, boolean help, boolean hidden, Class<? extends OptionHandler> handler, ImmutableList<String> depends, ImmutableList<String> forbids)
 specifier|public
 specifier|static
 name|Option
@@ -132,8 +146,10 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+name|ImmutableList
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|aliases
 parameter_list|,
 name|String
@@ -159,12 +175,16 @@ name|OptionHandler
 argument_list|>
 name|handler
 parameter_list|,
+name|ImmutableList
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|depends
 parameter_list|,
+name|ImmutableList
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|forbids
 parameter_list|)
 block|{
