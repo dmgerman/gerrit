@@ -196,7 +196,7 @@ name|getConfig
 argument_list|(
 name|ElasticVersion
 operator|.
-name|V6_7
+name|V6_8
 argument_list|)
 return|;
 block|}
@@ -216,7 +216,7 @@ name|getConfig
 argument_list|(
 name|ElasticVersion
 operator|.
-name|V7_2
+name|V7_3
 argument_list|)
 return|;
 block|}
