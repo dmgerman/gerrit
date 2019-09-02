@@ -226,6 +226,12 @@ return|return
 literal|"blacktop/elasticsearch:6.7.2"
 return|;
 case|case
+name|V6_8
+case|:
+return|return
+literal|"blacktop/elasticsearch:6.8.2"
+return|;
+case|case
 name|V7_0
 case|:
 return|return
@@ -241,7 +247,13 @@ case|case
 name|V7_2
 case|:
 return|return
-literal|"blacktop/elasticsearch:7.2.0"
+literal|"blacktop/elasticsearch:7.2.1"
+return|;
+case|case
+name|V7_3
+case|:
+return|return
+literal|"blacktop/elasticsearch:7.3.1"
 return|;
 block|}
 throw|throw

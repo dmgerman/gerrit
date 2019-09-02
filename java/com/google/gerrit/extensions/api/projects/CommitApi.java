@@ -132,6 +132,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|CommitInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|NotImplementedException
@@ -160,6 +176,13 @@ specifier|public
 interface|interface
 name|CommitApi
 block|{
+DECL|method|get ()
+name|CommitInfo
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|cherryPick (CherryPickInput input)
 name|ChangeApi
 name|cherryPick
@@ -184,6 +207,22 @@ name|NotImplemented
 implements|implements
 name|CommitApi
 block|{
+annotation|@
+name|Override
+DECL|method|get ()
+specifier|public
+name|CommitInfo
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
 annotation|@
 name|Override
 DECL|method|cherryPick (CherryPickInput input)

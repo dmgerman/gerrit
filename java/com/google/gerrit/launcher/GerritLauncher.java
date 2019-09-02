@@ -543,7 +543,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Invokes a proram.    *    *<p>Creates a new classloader to load and run the program class. To reuse a classloader across    * calls (e.g. from tests), use {@link #invokeProgram(ClassLoader, String[])}.    *    * @param argv arguments, as would be passed to {@code gerrit.war}. The first argument is the    *     program name.    * @return program return code.    * @throws Exception if any error occurs.    */
+comment|/**    * Invokes a program.    *    *<p>Creates a new classloader to load and run the program class. To reuse a classloader across    * calls (e.g. from tests), use {@link #invokeProgram(ClassLoader, String[])}.    *    * @param argv arguments, as would be passed to {@code gerrit.war}. The first argument is the    *     program name.    * @return program return code.    * @throws Exception if any error occurs.    */
 DECL|method|mainImpl (String[] argv)
 specifier|public
 specifier|static
@@ -1236,7 +1236,7 @@ literal|""
 return|;
 block|}
 block|}
-comment|/**    * Invokes a proram in the provided {@code ClassLoader}.    *    * @param loader classloader to load program class from.    * @param origArgv arguments, as would be passed to {@code gerrit.war}. The first argument is the    *     program name.    * @return program return code.    * @throws Exception if any error occurs.    */
+comment|/**    * Invokes a program in the provided {@code ClassLoader}.    *    * @param loader classloader to load program class from.    * @param origArgv arguments, as would be passed to {@code gerrit.war}. The first argument is the    *     program name.    * @return program return code.    * @throws Exception if any error occurs.    */
 DECL|method|invokeProgram (ClassLoader loader, String[] origArgv)
 specifier|public
 specifier|static

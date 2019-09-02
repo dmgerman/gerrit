@@ -138,6 +138,12 @@ argument_list|(
 literal|"6.7.*"
 argument_list|)
 block|,
+DECL|enumConstant|V6_8
+name|V6_8
+argument_list|(
+literal|"6.8.*"
+argument_list|)
+block|,
 DECL|enumConstant|V7_0
 name|V7_0
 argument_list|(
@@ -154,6 +160,12 @@ DECL|enumConstant|V7_2
 name|V7_2
 argument_list|(
 literal|"7.2.*"
+argument_list|)
+block|,
+DECL|enumConstant|V7_3
+name|V7_3
+argument_list|(
+literal|"7.3.*"
 argument_list|)
 block|;
 DECL|field|version
