@@ -880,6 +880,8 @@ name|self
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|readRef (Repository repo)
 specifier|protected
 name|ObjectId
