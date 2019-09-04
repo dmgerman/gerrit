@@ -178,6 +178,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|time
+operator|.
+name|Instant
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -527,7 +537,9 @@ name|dirCacheEntry
 operator|.
 name|setLastModified
 argument_list|(
-literal|0
+name|Instant
+operator|.
+name|EPOCH
 argument_list|)
 expr_stmt|;
 name|ObjectId
