@@ -1680,7 +1680,12 @@ name|outputBuffer
 operator|.
 name|append
 argument_list|(
+name|Character
+operator|.
+name|toChars
+argument_list|(
 name|b
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
