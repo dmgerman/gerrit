@@ -3452,8 +3452,7 @@ argument_list|(
 literal|2
 argument_list|)
 expr_stmt|;
-comment|// Verify reviewer and CC were added. If not in NoteDb read mode, both
-comment|// parties will be returned as CCed.
+comment|// Verify reviewer and CC were added.
 name|ChangeInfo
 name|c
 init|=
@@ -4376,10 +4375,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|noteDbAddReviewerToReviewerChangeInfo ()
+DECL|method|addReviewerToReviewerChangeInfo ()
 specifier|public
 name|void
-name|noteDbAddReviewerToReviewerChangeInfo
+name|addReviewerToReviewerChangeInfo
 parameter_list|()
 throws|throws
 name|Exception
@@ -4473,7 +4472,7 @@ name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// NoteDb adds reviewer to a change on every review.
+comment|// By posting a review the user is added as reviewer.
 name|gApi
 operator|.
 name|changes

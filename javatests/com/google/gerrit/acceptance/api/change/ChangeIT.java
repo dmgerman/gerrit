@@ -5069,10 +5069,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|pendingReviewersInNoteDb ()
+DECL|method|pendingReviewers ()
 specifier|public
 name|void
-name|pendingReviewersInNoteDb
+name|pendingReviewers
 parameter_list|()
 throws|throws
 name|Exception
@@ -16466,10 +16466,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-comment|// When NoteDb is enabled adding a reviewer records that user as reviewer
-comment|// in NoteDb. When NoteDb is disabled adding a reviewer results in a dummy 0
-comment|// approval on the change which is treated as CC when the ChangeInfo is
-comment|// created.
+comment|// Adding a reviewer records that user as reviewer.
 name|Collection
 argument_list|<
 name|AccountInfo
@@ -17332,10 +17329,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-comment|// When NoteDb is enabled adding a reviewer records that user as reviewer
-comment|// in NoteDb. When NoteDb is disabled adding a reviewer results in a dummy 0
-comment|// approval on the change which is treated as CC when the ChangeInfo is
-comment|// created.
+comment|// Adding a reviewer records that user as reviewer.
 name|Collection
 argument_list|<
 name|AccountInfo
@@ -17761,10 +17755,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-comment|// When NoteDb is enabled adding a reviewer records that user as reviewer
-comment|// in NoteDb. When NoteDb is disabled adding a reviewer results in a dummy 0
-comment|// approval on the change which is treated as CC when the ChangeInfo is
-comment|// created.
+comment|// Adding a reviewer records that user as reviewer.
 name|Collection
 argument_list|<
 name|AccountInfo
@@ -17967,10 +17958,7 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
-comment|// When NoteDb is enabled adding a reviewer records that user as reviewer
-comment|// in NoteDb. When NoteDb is disabled adding a reviewer results in a dummy 0
-comment|// approval on the change which is treated as CC when the ChangeInfo is
-comment|// created.
+comment|// Adding a reviewer records that user as reviewer.
 name|ChangeInfo
 name|c
 init|=
@@ -18417,7 +18405,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Further test: remove the vote, then comment again. The user should be
-comment|// implicitly re-added to the ReviewerSet, as a CC if we're using NoteDb.
+comment|// implicitly re-added to the ReviewerSet, as a CC.
 name|requestScopeOperations
 operator|.
 name|setApiUser
@@ -26617,10 +26605,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|noteDbCommitsOnPatchSetCreation ()
+DECL|method|commitsOnPatchSetCreation ()
 specifier|public
 name|void
-name|noteDbCommitsOnPatchSetCreation
+name|commitsOnPatchSetCreation
 parameter_list|()
 throws|throws
 name|Exception
@@ -35325,15 +35313,7 @@ operator|.
 name|getChange
 argument_list|()
 decl_stmt|;
-comment|// Change status in database.
-name|change
-operator|.
-name|setStatus
-argument_list|(
-name|newStatus
-argument_list|)
-expr_stmt|;
-comment|// Change status in NoteDb.
+comment|// Change status.
 name|PatchSet
 operator|.
 name|Id
