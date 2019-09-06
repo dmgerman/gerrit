@@ -146,10 +146,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|BuckPrologCompiler
+DECL|class|BazelPrologCompiler
 specifier|public
 class|class
-name|BuckPrologCompiler
+name|BazelPrologCompiler
 block|{
 DECL|field|tmpdir
 specifier|private
