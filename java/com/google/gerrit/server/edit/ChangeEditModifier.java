@@ -1962,7 +1962,7 @@ if|if
 condition|(
 name|ObjectId
 operator|.
-name|equals
+name|isEqual
 argument_list|(
 name|newTreeId
 argument_list|,
@@ -2582,7 +2582,7 @@ if|if
 condition|(
 name|ObjectId
 operator|.
-name|equals
+name|isEqual
 argument_list|(
 name|newTreeId
 argument_list|,

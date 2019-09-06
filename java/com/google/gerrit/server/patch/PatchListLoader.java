@@ -2066,7 +2066,7 @@ block|{
 return|return
 name|ObjectId
 operator|.
-name|equals
+name|isEqual
 argument_list|(
 name|commitA
 operator|.
@@ -2080,7 +2080,7 @@ argument_list|)
 operator|||
 name|ObjectId
 operator|.
-name|equals
+name|isEqual
 argument_list|(
 name|commitB
 operator|.
@@ -2109,7 +2109,7 @@ block|{
 return|return
 name|ObjectId
 operator|.
-name|equals
+name|isEqual
 argument_list|(
 name|commitA
 operator|.
