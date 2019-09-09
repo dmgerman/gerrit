@@ -1578,8 +1578,8 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**    * Adds accounts to a change as reviewers in the CC state.    *    * @param notes change notes.    * @param update change update.    * @param wantCCs accounts to CC.    * @return whether a change was made.    */
-DECL|method|addCcs ( ChangeNotes notes, ChangeUpdate update, Collection<Account.Id> wantCCs)
+comment|/**    * Adds accounts to a change as reviewers in the CC state.    *    * @param notes change notes.    * @param update change update.    * @param wantCCs accounts to CC.    * @param keepExistingReviewers whether provided accounts that are already reviewer should be kept    *     as reviewer or be downgraded to CC    * @return whether a change was made.    */
+DECL|method|addCcs ( ChangeNotes notes, ChangeUpdate update, Collection<Account.Id> wantCCs, boolean keepExistingReviewers)
 specifier|public
 name|Collection
 argument_list|<
@@ -1602,6 +1602,9 @@ operator|.
 name|Id
 argument_list|>
 name|wantCCs
+parameter_list|,
+name|boolean
+name|keepExistingReviewers
 parameter_list|)
 block|{
 return|return
@@ -1618,10 +1621,12 @@ argument_list|()
 operator|.
 name|getReviewers
 argument_list|()
+argument_list|,
+name|keepExistingReviewers
 argument_list|)
 return|;
 block|}
-DECL|method|addCcs ( ChangeUpdate update, Collection<Account.Id> wantCCs, ReviewerSet existingReviewers)
+DECL|method|addCcs ( ChangeUpdate update, Collection<Account.Id> wantCCs, ReviewerSet existingReviewers, boolean keepExistingReviewers)
 specifier|private
 name|Collection
 argument_list|<
@@ -1644,6 +1649,9 @@ name|wantCCs
 parameter_list|,
 name|ReviewerSet
 name|existingReviewers
+parameter_list|,
+name|boolean
+name|keepExistingReviewers
 parameter_list|)
 block|{
 name|Set
@@ -1667,10 +1675,30 @@ name|removeAll
 argument_list|(
 name|existingReviewers
 operator|.
-name|all
-argument_list|()
+name|byState
+argument_list|(
+name|CC
+argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|keepExistingReviewers
+condition|)
+block|{
+name|need
+operator|.
+name|removeAll
+argument_list|(
+name|existingReviewers
+operator|.
+name|byState
+argument_list|(
+name|REVIEWER
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|need
 operator|.
 name|removeAll

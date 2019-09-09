@@ -1746,6 +1746,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -1900,6 +1902,8 @@ argument_list|,
 literal|null
 argument_list|,
 name|exactMatchFound
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -2345,6 +2349,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|true
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
@@ -2502,6 +2508,8 @@ name|adr
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -2770,7 +2778,7 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-DECL|method|ReviewerAddition ( AddReviewerInput input, ChangeNotes notes, CurrentUser caller, @Nullable Iterable<Account.Id> reviewers, @Nullable Iterable<Address> reviewersByEmail, boolean exactMatchFound)
+DECL|method|ReviewerAddition ( AddReviewerInput input, ChangeNotes notes, CurrentUser caller, @Nullable Iterable<Account.Id> reviewers, @Nullable Iterable<Address> reviewersByEmail, boolean exactMatchFound, boolean forGroup)
 specifier|private
 name|ReviewerAddition
 parameter_list|(
@@ -2803,6 +2811,9 @@ name|reviewersByEmail
 parameter_list|,
 name|boolean
 name|exactMatchFound
+parameter_list|,
+name|boolean
+name|forGroup
 parameter_list|)
 block|{
 name|checkArgument
@@ -2898,6 +2909,8 @@ name|reviewersByEmail
 argument_list|,
 name|state
 argument_list|()
+argument_list|,
+name|forGroup
 argument_list|)
 expr_stmt|;
 name|this
