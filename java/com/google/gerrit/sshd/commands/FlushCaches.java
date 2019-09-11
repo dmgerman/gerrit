@@ -692,6 +692,9 @@ operator|new
 name|ConfigResource
 argument_list|()
 argument_list|)
+operator|.
+name|value
+argument_list|()
 control|)
 block|{
 name|stderr
