@@ -567,10 +567,7 @@ argument_list|,
 operator|new
 name|TypeLiteral
 argument_list|<
-name|Optional
-argument_list|<
 name|AccountState
-argument_list|>
 argument_list|>
 argument_list|()
 block|{}
@@ -623,10 +620,7 @@ name|Account
 operator|.
 name|Id
 argument_list|,
-name|Optional
-argument_list|<
 name|AccountState
-argument_list|>
 argument_list|>
 name|byId
 decl_stmt|;
@@ -638,7 +632,7 @@ name|executor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCacheImpl ( ExternalIds externalIds, @Named(BYID_NAME) LoadingCache<Account.Id, Optional<AccountState>> byId, @FanOutExecutor ExecutorService executor)
+DECL|method|AccountCacheImpl ( ExternalIds externalIds, @Named(BYID_NAME) LoadingCache<Account.Id, AccountState> byId, @FanOutExecutor ExecutorService executor)
 name|AccountCacheImpl
 parameter_list|(
 name|ExternalIds
@@ -655,10 +649,7 @@ name|Account
 operator|.
 name|Id
 argument_list|,
-name|Optional
-argument_list|<
 name|AccountState
-argument_list|>
 argument_list|>
 name|byId
 parameter_list|,
@@ -709,14 +700,6 @@ name|get
 argument_list|(
 name|accountId
 argument_list|)
-operator|.
-name|orElse
-argument_list|(
-name|missing
-argument_list|(
-name|accountId
-argument_list|)
-argument_list|)
 return|;
 block|}
 catch|catch
@@ -724,6 +707,19 @@ parameter_list|(
 name|ExecutionException
 name|e
 parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+operator|(
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|instanceof
+name|AccountNotFoundException
+operator|)
+condition|)
 block|{
 name|logger
 operator|.
@@ -742,6 +738,7 @@ argument_list|,
 name|accountId
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|missing
 argument_list|(
@@ -769,11 +766,16 @@ block|{
 try|try
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|byId
 operator|.
 name|get
 argument_list|(
 name|accountId
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -782,6 +784,19 @@ parameter_list|(
 name|ExecutionException
 name|e
 parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+operator|(
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|instanceof
+name|AccountNotFoundException
+operator|)
+condition|)
 block|{
 name|logger
 operator|.
@@ -795,11 +810,12 @@ argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"Cannot load AccountState for ID %s"
+literal|"Cannot load AccountState for %s"
 argument_list|,
 name|accountId
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|Optional
 operator|.
@@ -878,10 +894,7 @@ range|:
 name|accountIds
 control|)
 block|{
-name|Optional
-argument_list|<
 name|AccountState
-argument_list|>
 name|state
 init|=
 name|byId
@@ -899,20 +912,13 @@ literal|null
 condition|)
 block|{
 comment|// The value is in-memory, so we just get the state
-name|state
-operator|.
-name|ifPresent
-argument_list|(
-name|s
-lambda|->
 name|accountStates
 operator|.
 name|put
 argument_list|(
 name|accountId
 argument_list|,
-name|s
-argument_list|)
+name|state
 argument_list|)
 expr_stmt|;
 block|}
@@ -1283,10 +1289,7 @@ name|Account
 operator|.
 name|Id
 argument_list|,
-name|Optional
-argument_list|<
 name|AccountState
-argument_list|>
 argument_list|>
 block|{
 DECL|field|accounts
@@ -1315,10 +1318,7 @@ annotation|@
 name|Override
 DECL|method|load (Account.Id who)
 specifier|public
-name|Optional
-argument_list|<
 name|AccountState
-argument_list|>
 name|load
 parameter_list|(
 name|Account
@@ -1365,8 +1365,45 @@ name|get
 argument_list|(
 name|who
 argument_list|)
+operator|.
+name|orElseThrow
+argument_list|(
+parameter_list|()
+lambda|->
+operator|new
+name|AccountNotFoundException
+argument_list|(
+name|who
+operator|+
+literal|" not found"
+argument_list|)
+argument_list|)
 return|;
 block|}
+block|}
+block|}
+comment|/** Signals that the account was not found in the primary storage. */
+DECL|class|AccountNotFoundException
+specifier|private
+specifier|static
+class|class
+name|AccountNotFoundException
+extends|extends
+name|Exception
+block|{
+DECL|method|AccountNotFoundException (String message)
+specifier|public
+name|AccountNotFoundException
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
