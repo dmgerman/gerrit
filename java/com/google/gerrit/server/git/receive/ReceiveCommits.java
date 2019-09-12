@@ -4980,6 +4980,16 @@ operator|.
 name|end
 argument_list|()
 expr_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Processing commands done."
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// Process as many commands as possible, but may leave some commands in state NOT_ATTEMPTED.
