@@ -21118,6 +21118,20 @@ name|String
 name|why
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Rejecting command '%s': %s"
+argument_list|,
+name|cmd
+argument_list|,
+name|why
+argument_list|)
+expr_stmt|;
 name|cmd
 operator|.
 name|setResult
