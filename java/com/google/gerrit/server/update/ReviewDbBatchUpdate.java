@@ -3306,6 +3306,17 @@ range|:
 name|tasks
 control|)
 block|{
+if|if
+condition|(
+name|task
+operator|.
+name|noteDbResult
+operator|==
+literal|null
+condition|)
+block|{
+continue|continue;
+block|}
 for|for
 control|(
 name|ReceiveCommand
