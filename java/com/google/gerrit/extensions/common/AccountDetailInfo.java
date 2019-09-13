@@ -89,11 +89,6 @@ specifier|public
 name|Timestamp
 name|registeredOn
 decl_stmt|;
-DECL|field|inactive
-specifier|public
-name|Boolean
-name|inactive
-decl_stmt|;
 DECL|method|AccountDetailInfo (Integer id)
 specifier|public
 name|AccountDetailInfo
