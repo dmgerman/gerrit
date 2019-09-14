@@ -4689,8 +4689,10 @@ name|X_GERRIT_TRACE
 argument_list|)
 argument_list|)
 operator|.
-name|isNull
-argument_list|()
+name|startsWith
+argument_list|(
+literal|"retry-on-failure-"
+argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
