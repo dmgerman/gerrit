@@ -138,6 +138,11 @@ specifier|public
 name|String
 name|status
 decl_stmt|;
+DECL|field|inactive
+specifier|public
+name|Boolean
+name|inactive
+decl_stmt|;
 DECL|method|AccountInfo (Integer id)
 specifier|public
 name|AccountInfo

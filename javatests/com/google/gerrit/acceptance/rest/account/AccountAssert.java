@@ -160,29 +160,30 @@ specifier|public
 class|class
 name|AccountAssert
 block|{
-DECL|method|assertAccountInfo (TestAccount a, AccountInfo ai)
+comment|/**    * Asserts an AccountInfo for an active account.    *    * @param testAccount the TestAccount which the provided AccountInfo is expected to match    * @param accountInfo the AccountInfo that should be asserted    */
+DECL|method|assertAccountInfo (TestAccount testAccount, AccountInfo accountInfo)
 specifier|public
 specifier|static
 name|void
 name|assertAccountInfo
 parameter_list|(
 name|TestAccount
-name|a
+name|testAccount
 parameter_list|,
 name|AccountInfo
-name|ai
+name|accountInfo
 parameter_list|)
 block|{
 name|assertThat
 argument_list|(
-name|ai
+name|accountInfo
 operator|.
 name|_accountId
 argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|a
+name|testAccount
 operator|.
 name|id
 argument_list|()
@@ -193,14 +194,14 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|ai
+name|accountInfo
 operator|.
 name|name
 argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|a
+name|testAccount
 operator|.
 name|fullName
 argument_list|()
@@ -208,20 +209,31 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|ai
+name|accountInfo
 operator|.
 name|email
 argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|a
+name|testAccount
 operator|.
 name|email
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|accountInfo
+operator|.
+name|inactive
+argument_list|)
+operator|.
+name|isNull
+argument_list|()
+expr_stmt|;
 block|}
+comment|/**    * Asserts an AccountInfos for active accounts.    *    * @param expected the TestAccounts which the provided AccountInfos are expected to match    * @param actual the AccountInfos that should be asserted    */
 DECL|method|assertAccountInfos (List<TestAccount> expected, List<AccountInfo> actual)
 specifier|public
 specifier|static
