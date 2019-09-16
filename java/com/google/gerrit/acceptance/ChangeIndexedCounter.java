@@ -203,6 +203,26 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|getCount (ChangeInfo info)
+specifier|public
+name|long
+name|getCount
+parameter_list|(
+name|ChangeInfo
+name|info
+parameter_list|)
+block|{
+return|return
+name|countsByChange
+operator|.
+name|get
+argument_list|(
+name|info
+operator|.
+name|_number
+argument_list|)
+return|;
+block|}
 DECL|method|assertReindexOf (ChangeInfo info)
 specifier|public
 name|void

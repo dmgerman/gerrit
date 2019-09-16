@@ -471,6 +471,13 @@ name|get
 argument_list|(
 literal|"/config/server/tasks"
 argument_list|)
+argument_list|,
+name|RestCall
+operator|.
+name|post
+argument_list|(
+literal|"/config/server/index.changes"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/**    * Cache REST endpoints to be tested, the URLs contain a placeholder for the cache identifier.    * Since there is only supported a single supported config identifier ('server') it can be    * hard-coded.    */
