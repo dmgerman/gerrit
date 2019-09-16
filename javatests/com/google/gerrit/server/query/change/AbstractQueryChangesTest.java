@@ -4679,11 +4679,6 @@ operator|.
 name|REVIEWER
 argument_list|)
 argument_list|,
-name|userId
-operator|.
-name|toString
-argument_list|()
-argument_list|,
 name|user1
 operator|.
 name|toString
