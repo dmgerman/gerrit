@@ -2036,13 +2036,6 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|directory
-operator|.
-name|append
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
 name|r
 operator|.
 name|add
