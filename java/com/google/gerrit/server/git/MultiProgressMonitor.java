@@ -1401,6 +1401,23 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Sending progress to client failed. Stop sending updates for task %s"
+argument_list|,
+name|taskName
+argument_list|)
+expr_stmt|;
 name|write
 operator|=
 literal|false
