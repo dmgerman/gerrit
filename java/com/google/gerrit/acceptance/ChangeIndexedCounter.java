@@ -204,6 +204,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getCount (ChangeInfo info)
+specifier|public
 name|long
 name|getCount
 parameter_list|(
