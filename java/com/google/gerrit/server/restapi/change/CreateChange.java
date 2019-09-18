@@ -1609,6 +1609,26 @@ name|PermissionBackendException
 throws|,
 name|ConfigInvalidException
 block|{
+if|if
+condition|(
+operator|!
+name|user
+operator|.
+name|get
+argument_list|()
+operator|.
+name|isIdentifiedUser
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|AuthException
+argument_list|(
+literal|"Authentication required"
+argument_list|)
+throw|;
+block|}
 name|IdentifiedUser
 name|me
 init|=
