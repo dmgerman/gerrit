@@ -94,6 +94,29 @@ specifier|public
 interface|interface
 name|ChangeIndexedListener
 block|{
+comment|/**    * Invoked when a change is scheduled for indexing.    *    * @param projectName project containing the change    * @param id id of the change that was scheduled for indexing    */
+DECL|method|onChangeScheduledForIndexing (String projectName, int id)
+specifier|default
+name|void
+name|onChangeScheduledForIndexing
+parameter_list|(
+name|String
+name|projectName
+parameter_list|,
+name|int
+name|id
+parameter_list|)
+block|{}
+comment|/**    * Invoked when a change is scheduled for deletion from indexing.    *    * @param id id of the change that was scheduled for deletion from indexing    */
+DECL|method|onChangeScheduledForDeletionFromIndex (int id)
+specifier|default
+name|void
+name|onChangeScheduledForDeletionFromIndex
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+block|{}
 comment|/**    * Invoked when a change is indexed.    *    * @param projectName project containing the change    * @param id indexed change id    */
 DECL|method|onChangeIndexed (String projectName, int id)
 name|void
