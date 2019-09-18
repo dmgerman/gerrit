@@ -102,11 +102,23 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
+name|Mockito
 operator|.
-name|expect
+name|mock
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|when
 import|;
 end_import
 
@@ -285,16 +297,6 @@ operator|.
 name|util
 operator|.
 name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|easymock
-operator|.
-name|EasyMock
 import|;
 end_import
 
@@ -486,16 +488,14 @@ decl_stmt|;
 name|ChangeData
 name|cd
 init|=
-name|EasyMock
-operator|.
-name|createMock
+name|mock
 argument_list|(
 name|ChangeData
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|expect
+name|when
 argument_list|(
 name|cd
 operator|.
@@ -503,16 +503,9 @@ name|getLabelTypes
 argument_list|()
 argument_list|)
 operator|.
-name|andStubReturn
+name|thenReturn
 argument_list|(
 name|labelTypes
-argument_list|)
-expr_stmt|;
-name|EasyMock
-operator|.
-name|replay
-argument_list|(
-name|cd
 argument_list|)
 expr_stmt|;
 name|env
