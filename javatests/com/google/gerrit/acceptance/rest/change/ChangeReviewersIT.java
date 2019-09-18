@@ -3004,8 +3004,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// Verify reviewer state. Both admin and user should be REVIEWERs now,
-comment|// because admin gets forced into REVIEWER state by virtue of being owner.
+comment|// Verify reviewer state.
 name|c
 operator|=
 name|gApi
@@ -3029,8 +3028,6 @@ argument_list|(
 name|c
 argument_list|,
 name|REVIEWER
-argument_list|,
-name|admin
 argument_list|,
 name|user
 argument_list|)
@@ -3080,7 +3077,7 @@ argument_list|)
 operator|.
 name|hasSize
 argument_list|(
-literal|2
+literal|1
 argument_list|)
 expr_stmt|;
 name|Map
@@ -3120,24 +3117,6 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-name|assertThat
-argument_list|(
-name|approvals
-argument_list|)
-operator|.
-name|containsEntry
-argument_list|(
-name|admin
-operator|.
-name|id
-argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 name|assertThat
 argument_list|(
 name|approvals
@@ -3246,8 +3225,6 @@ name|c
 argument_list|,
 name|REVIEWER
 argument_list|,
-name|admin
-argument_list|,
 name|user
 argument_list|)
 expr_stmt|;
@@ -3296,7 +3273,7 @@ argument_list|)
 operator|.
 name|hasSize
 argument_list|(
-literal|2
+literal|1
 argument_list|)
 expr_stmt|;
 name|approvals
@@ -3328,24 +3305,6 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-name|assertThat
-argument_list|(
-name|approvals
-argument_list|)
-operator|.
-name|containsEntry
-argument_list|(
-name|admin
-operator|.
-name|id
-argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 name|assertThat
 argument_list|(
 name|approvals
