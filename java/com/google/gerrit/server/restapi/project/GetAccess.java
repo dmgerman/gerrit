@@ -1138,13 +1138,7 @@ name|NameKey
 name|nameKey
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
-throws|,
-name|ResourceConflictException
-throws|,
-name|IOException
-throws|,
-name|PermissionBackendException
+name|Exception
 block|{
 name|ProjectState
 name|state

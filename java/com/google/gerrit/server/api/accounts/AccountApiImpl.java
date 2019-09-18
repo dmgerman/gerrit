@@ -2138,6 +2138,8 @@ parameter_list|()
 throws|throws
 name|RestApiException
 block|{
+try|try
+block|{
 name|Response
 argument_list|<
 name|String
@@ -2169,6 +2171,22 @@ argument_list|(
 literal|"ok"
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|asRestApiException
+argument_list|(
+literal|"Cannot get active"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
