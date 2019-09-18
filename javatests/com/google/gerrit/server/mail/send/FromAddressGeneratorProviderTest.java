@@ -88,21 +88,9 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
-operator|.
-name|createStrictMock
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|easymock
-operator|.
-name|EasyMock
+name|ArgumentMatchers
 operator|.
 name|eq
 import|;
@@ -112,11 +100,11 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
+name|Mockito
 operator|.
-name|expect
+name|mock
 import|;
 end_import
 
@@ -124,23 +112,35 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
-operator|.
-name|replay
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|easymock
-operator|.
-name|EasyMock
+name|Mockito
 operator|.
 name|verify
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|verifyZeroInteractions
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|when
 import|;
 end_import
 
@@ -355,7 +355,7 @@ argument_list|)
 expr_stmt|;
 name|accountCache
 operator|=
-name|createStrictMock
+name|mock
 argument_list|(
 name|AccountCache
 operator|.
@@ -566,11 +566,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -617,9 +612,9 @@ argument_list|(
 name|email
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -655,11 +650,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -704,9 +694,9 @@ argument_list|(
 name|email
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -742,11 +732,6 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -798,9 +783,9 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -815,11 +800,6 @@ block|{
 name|setFrom
 argument_list|(
 literal|"USER"
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|accountCache
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -874,7 +854,7 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyZeroInteractions
 argument_list|(
 name|accountCache
 argument_list|)
@@ -928,11 +908,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -979,9 +954,9 @@ argument_list|(
 name|email
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -1033,11 +1008,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -1089,9 +1059,9 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -1153,11 +1123,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -1204,9 +1169,9 @@ argument_list|(
 name|email
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -1268,11 +1233,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -1324,9 +1284,9 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -1380,11 +1340,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -1431,9 +1386,9 @@ argument_list|(
 name|email
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -1544,11 +1499,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -1601,7 +1551,7 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyZeroInteractions
 argument_list|(
 name|accountCache
 argument_list|)
@@ -1618,11 +1568,6 @@ block|{
 name|setFrom
 argument_list|(
 literal|"SERVER"
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|accountCache
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -1677,7 +1622,7 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyZeroInteractions
 argument_list|(
 name|accountCache
 argument_list|)
@@ -1790,11 +1735,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -1846,9 +1786,9 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -1884,11 +1824,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -1938,9 +1873,9 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -1976,11 +1911,6 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -2032,9 +1962,9 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -2049,11 +1979,6 @@ block|{
 name|setFrom
 argument_list|(
 literal|"MIXED"
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|accountCache
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -2108,7 +2033,7 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyZeroInteractions
 argument_list|(
 name|accountCache
 argument_list|)
@@ -2152,11 +2077,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -2207,9 +2127,9 @@ argument_list|(
 literal|"my.server@email.address"
 argument_list|)
 expr_stmt|;
-name|verify
+name|verifyAccountCacheGet
 argument_list|(
-name|accountCache
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -2245,11 +2165,6 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|replay
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Address
 name|r
@@ -2296,11 +2211,6 @@ argument_list|(
 literal|"my.server@email.address"
 argument_list|)
 expr_stmt|;
-name|verify
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -2313,11 +2223,6 @@ block|{
 name|setFrom
 argument_list|(
 literal|"A ${user} B<my.server@email.address>"
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|accountCache
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -2369,11 +2274,6 @@ argument_list|(
 literal|"my.server@email.address"
 argument_list|)
 expr_stmt|;
-name|verify
-argument_list|(
-name|accountCache
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|user (String name, String email)
 specifier|private
@@ -2400,7 +2300,7 @@ argument_list|,
 name|email
 argument_list|)
 decl_stmt|;
-name|expect
+name|when
 argument_list|(
 name|accountCache
 operator|.
@@ -2419,7 +2319,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 operator|.
-name|andReturn
+name|thenReturn
 argument_list|(
 name|Optional
 operator|.
@@ -2438,6 +2338,31 @@ operator|.
 name|id
 argument_list|()
 return|;
+block|}
+DECL|method|verifyAccountCacheGet (Account.Id id)
+specifier|private
+name|void
+name|verifyAccountCacheGet
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|verify
+argument_list|(
+name|accountCache
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|eq
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|userNoLookup (String name, String email)
 specifier|private
