@@ -6533,10 +6533,8 @@ argument_list|(
 name|id
 argument_list|)
 operator|.
-name|revision
-argument_list|(
-literal|"current"
-argument_list|)
+name|current
+argument_list|()
 operator|.
 name|review
 argument_list|(
@@ -6568,10 +6566,8 @@ argument_list|(
 name|id
 argument_list|)
 operator|.
-name|revision
-argument_list|(
-literal|"current"
-argument_list|)
+name|current
+argument_list|()
 operator|.
 name|review
 argument_list|(

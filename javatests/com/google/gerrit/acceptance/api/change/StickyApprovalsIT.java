@@ -4377,10 +4377,8 @@ argument_list|(
 name|changeId
 argument_list|)
 operator|.
-name|revision
-argument_list|(
-literal|"current"
-argument_list|)
+name|current
+argument_list|()
 operator|.
 name|cherryPick
 argument_list|(
