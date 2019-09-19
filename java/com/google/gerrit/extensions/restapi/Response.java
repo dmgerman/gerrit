@@ -385,6 +385,8 @@ parameter_list|(
 name|T
 name|obj
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 while|while
 condition|(
@@ -480,6 +482,8 @@ specifier|abstract
 name|T
 name|value
 parameter_list|()
+throws|throws
+name|Exception
 function_decl|;
 DECL|method|caching ()
 specifier|public
@@ -1202,10 +1206,11 @@ specifier|public
 name|T
 name|value
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 throw|throw
-operator|new
-name|UnsupportedOperationException
+name|cause
 argument_list|()
 throw|;
 block|}

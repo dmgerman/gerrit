@@ -809,11 +809,7 @@ name|AccountResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|BadRequestException
-throws|,
-name|AuthException
-throws|,
-name|PermissionBackendException
+name|Exception
 block|{
 if|if
 condition|(

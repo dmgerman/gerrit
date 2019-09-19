@@ -2149,13 +2149,7 @@ name|RebaseInput
 name|input
 parameter_list|)
 throws|throws
-name|UpdateException
-throws|,
-name|RestApiException
-throws|,
-name|IOException
-throws|,
-name|PermissionBackendException
+name|Exception
 block|{
 name|PatchSet
 name|ps

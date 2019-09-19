@@ -523,11 +523,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|PermissionBackendException
-decl||
-name|ConfigInvalidException
+name|Exception
 name|e
 parameter_list|)
 block|{

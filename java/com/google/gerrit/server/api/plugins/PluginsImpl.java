@@ -69,6 +69,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|api
+operator|.
+name|ApiUtil
+operator|.
+name|asRestApiException
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -267,16 +285,6 @@ operator|.
 name|inject
 operator|.
 name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -437,6 +445,8 @@ parameter_list|()
 throws|throws
 name|RestApiException
 block|{
+try|try
+block|{
 return|return
 name|listProvider
 operator|.
@@ -458,6 +468,22 @@ operator|.
 name|value
 argument_list|()
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|asRestApiException
+argument_list|(
+literal|"Cannot list plugins"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 return|;
@@ -617,15 +643,14 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
-literal|"could not install plugin"
+literal|"Cannot install plugin"
 argument_list|,
 name|e
 argument_list|)
