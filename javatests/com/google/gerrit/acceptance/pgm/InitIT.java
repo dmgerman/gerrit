@@ -76,7 +76,7 @@ name|common
 operator|.
 name|truth
 operator|.
-name|Truth
+name|Truth8
 operator|.
 name|assertThat
 import|;
@@ -391,12 +391,9 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|allProjectsData
-operator|.
-name|isPresent
-argument_list|()
 argument_list|)
 operator|.
-name|isTrue
+name|isPresent
 argument_list|()
 expr_stmt|;
 name|Optional
@@ -420,12 +417,9 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|allUsersData
-operator|.
-name|isPresent
-argument_list|()
 argument_list|)
 operator|.
-name|isTrue
+name|isPresent
 argument_list|()
 expr_stmt|;
 block|}
