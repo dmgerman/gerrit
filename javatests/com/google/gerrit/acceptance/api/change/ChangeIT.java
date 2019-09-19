@@ -12476,12 +12476,9 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|result
-operator|.
-name|isPresent
-argument_list|()
 argument_list|)
 operator|.
-name|isTrue
+name|isPresent
 argument_list|()
 expr_stmt|;
 name|gApi
@@ -12525,12 +12522,9 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|result
-operator|.
-name|isPresent
-argument_list|()
 argument_list|)
 operator|.
-name|isFalse
+name|isEmpty
 argument_list|()
 expr_stmt|;
 block|}
