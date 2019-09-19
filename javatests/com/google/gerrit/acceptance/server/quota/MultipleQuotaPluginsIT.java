@@ -776,12 +776,12 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|exception
+name|thrown
 argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|thrown
+name|exception
 argument_list|)
 expr_stmt|;
 name|verify
