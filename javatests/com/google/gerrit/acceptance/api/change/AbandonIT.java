@@ -176,20 +176,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|SECONDS
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
 name|stream
 operator|.
 name|Collectors
@@ -265,6 +251,20 @@ operator|.
 name|acceptance
 operator|.
 name|PushOneCommit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|UseClockStep
 import|;
 end_import
 
@@ -1146,6 +1146,8 @@ block|}
 annotation|@
 name|Test
 annotation|@
+name|UseClockStep
+annotation|@
 name|GerritConfig
 argument_list|(
 name|name
@@ -1164,15 +1166,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|TestTimeUtil
-operator|.
-name|resetWithClockStep
-argument_list|(
-literal|1
-argument_list|,
-name|SECONDS
-argument_list|)
-expr_stmt|;
 comment|// create 2 changes which will be abandoned ...
 name|int
 name|id1

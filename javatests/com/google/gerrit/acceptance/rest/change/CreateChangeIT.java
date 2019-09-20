@@ -176,20 +176,6 @@ end_import
 
 begin_import
 import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|SECONDS
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|eclipse
@@ -287,6 +273,20 @@ operator|.
 name|acceptance
 operator|.
 name|RestResponse
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|UseClockStep
 import|;
 end_import
 
@@ -660,20 +660,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|TestTimeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -790,31 +776,13 @@ name|org
 operator|.
 name|junit
 operator|.
-name|AfterClass
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|BeforeClass
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
 
 begin_class
+annotation|@
+name|UseClockStep
 DECL|class|CreateChangeIT
 specifier|public
 class|class
@@ -836,40 +804,6 @@ specifier|private
 name|RequestScopeOperations
 name|requestScopeOperations
 decl_stmt|;
-annotation|@
-name|BeforeClass
-DECL|method|setTimeForTesting ()
-specifier|public
-specifier|static
-name|void
-name|setTimeForTesting
-parameter_list|()
-block|{
-name|TestTimeUtil
-operator|.
-name|resetWithClockStep
-argument_list|(
-literal|1
-argument_list|,
-name|SECONDS
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|AfterClass
-DECL|method|restoreTime ()
-specifier|public
-specifier|static
-name|void
-name|restoreTime
-parameter_list|()
-block|{
-name|TestTimeUtil
-operator|.
-name|useSystemTime
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Test
 DECL|method|createEmptyChange_MissingBranch ()

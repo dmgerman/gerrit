@@ -99,20 +99,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|SECONDS
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -178,6 +164,20 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
+name|UseClockStep
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
 name|testsuite
 operator|.
 name|project
@@ -213,20 +213,6 @@ operator|.
 name|testing
 operator|.
 name|ConfigSuite
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testing
-operator|.
-name|TestTimeUtil
 import|;
 end_import
 
@@ -2810,6 +2796,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|UseClockStep
 DECL|method|superRepoCommitHasSameAuthorAsSubmoduleCommit ()
 specifier|public
 name|void
@@ -2819,17 +2807,6 @@ throws|throws
 name|Exception
 block|{
 comment|// Make sure that the commit is created at an earlier timestamp than the submit timestamp.
-name|TestTimeUtil
-operator|.
-name|resetWithClockStep
-argument_list|(
-literal|1
-argument_list|,
-name|SECONDS
-argument_list|)
-expr_stmt|;
-try|try
-block|{
 name|allowMatchingSubmoduleSubscription
 argument_list|(
 name|subKey
@@ -2966,17 +2943,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|TestTimeUtil
-operator|.
-name|useSystemTime
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 annotation|@
 name|Test
+annotation|@
+name|UseClockStep
 DECL|method|superRepoCommitHasSameAuthorAsSubmoduleCommits ()
 specifier|public
 name|void
@@ -2997,19 +2967,6 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-comment|// Make sure that the commits are created at different timestamps and that the submit timestamp
-comment|// is afterwards.
-name|TestTimeUtil
-operator|.
-name|resetWithClockStep
-argument_list|(
-literal|1
-argument_list|,
-name|SECONDS
-argument_list|)
-expr_stmt|;
-try|try
-block|{
 name|Project
 operator|.
 name|NameKey
@@ -3262,17 +3219,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|TestTimeUtil
-operator|.
-name|useSystemTime
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 annotation|@
 name|Test
+annotation|@
+name|UseClockStep
 DECL|method|superRepoCommitHasGerritAsAuthorIfAuthorsOfSubmoduleCommitsDiffer ()
 specifier|public
 name|void
@@ -3293,19 +3243,6 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
-comment|// Make sure that the commits are created at different timestamps and that the submit timestamp
-comment|// is afterwards.
-name|TestTimeUtil
-operator|.
-name|resetWithClockStep
-argument_list|(
-literal|1
-argument_list|,
-name|SECONDS
-argument_list|)
-expr_stmt|;
-try|try
-block|{
 name|Project
 operator|.
 name|NameKey
@@ -3585,15 +3522,6 @@ name|getWhen
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|TestTimeUtil
-operator|.
-name|useSystemTime
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
