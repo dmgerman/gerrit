@@ -16198,6 +16198,26 @@ operator|.
 name|submit
 argument_list|()
 expr_stmt|;
+comment|// If a change gets submitted, the remaining open changes get reindexed asynchronously to update
+comment|// their mergeability information. If the further assertions in this test are done before the
+comment|// asynchronous reindex completed they fail because the mergeability information in the index
+comment|// was not updated yet. To avoid this flakiness we index change2 synchronously here.
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|change2
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+operator|.
+name|index
+argument_list|()
+expr_stmt|;
 name|assertQuery
 argument_list|(
 literal|"status:open conflicts:"

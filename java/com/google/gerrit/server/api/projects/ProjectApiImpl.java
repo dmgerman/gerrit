@@ -580,6 +580,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|Input
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|ProjectInfo
 import|;
 end_import
@@ -1009,6 +1025,24 @@ operator|.
 name|project
 operator|.
 name|Index
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|restapi
+operator|.
+name|project
+operator|.
+name|IndexChanges
 import|;
 end_import
 
@@ -1482,9 +1516,15 @@ specifier|final
 name|Index
 name|index
 decl_stmt|;
+DECL|field|indexChanges
+specifier|private
+specifier|final
+name|IndexChanges
+name|indexChanges
+decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, IndexChanges indexChanges, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
 name|PermissionBackend
@@ -1600,6 +1640,9 @@ name|setParent
 parameter_list|,
 name|Index
 name|index
+parameter_list|,
+name|IndexChanges
+name|indexChanges
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1673,13 +1716,15 @@ name|setParent
 argument_list|,
 name|index
 argument_list|,
+name|indexChanges
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, @Assisted String name)
+DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, IndexChanges indexChanges, @Assisted String name)
 name|ProjectApiImpl
 parameter_list|(
 name|PermissionBackend
@@ -1796,6 +1841,9 @@ parameter_list|,
 name|Index
 name|index
 parameter_list|,
+name|IndexChanges
+name|indexChanges
+parameter_list|,
 annotation|@
 name|Assisted
 name|String
@@ -1868,11 +1916,13 @@ name|setParent
 argument_list|,
 name|index
 argument_list|,
+name|indexChanges
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, ProjectResource project, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, String name)
+DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, ProjectResource project, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, IndexChanges indexChanges, String name)
 specifier|private
 name|ProjectApiImpl
 parameter_list|(
@@ -1992,6 +2042,9 @@ name|setParent
 parameter_list|,
 name|Index
 name|index
+parameter_list|,
+name|IndexChanges
+name|indexChanges
 parameter_list|,
 name|String
 name|name
@@ -2194,6 +2247,12 @@ operator|.
 name|index
 operator|=
 name|index
+expr_stmt|;
+name|this
+operator|.
+name|indexChanges
+operator|=
+name|indexChanges
 expr_stmt|;
 block|}
 annotation|@
@@ -3805,6 +3864,47 @@ throw|throw
 name|asRestApiException
 argument_list|(
 literal|"Cannot index project"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|indexChanges ()
+specifier|public
+name|void
+name|indexChanges
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+try|try
+block|{
+name|indexChanges
+operator|.
+name|apply
+argument_list|(
+name|checkExists
+argument_list|()
+argument_list|,
+operator|new
+name|Input
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|asRestApiException
+argument_list|(
+literal|"Cannot index changes"
 argument_list|,
 name|e
 argument_list|)
