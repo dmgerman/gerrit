@@ -1202,12 +1202,22 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"Calling user: %s (groups = %s)"
+literal|"Calling user: %s"
 argument_list|,
 name|user
 operator|.
 name|getLoggableName
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|logger
+operator|.
+name|atFinest
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Groups: %s"
 argument_list|,
 name|user
 operator|.
