@@ -528,14 +528,14 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-DECL|field|logFn
+DECL|field|doneLogFn
 specifier|private
 specifier|final
 name|Consumer
 argument_list|<
 name|Long
 argument_list|>
-name|logFn
+name|doneLogFn
 decl_stmt|;
 DECL|field|stopwatch
 specifier|private
@@ -553,6 +553,20 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+parameter_list|()
+lambda|->
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Starting timer for %s"
+argument_list|,
+name|operation
+argument_list|)
+argument_list|,
 name|elapsedMs
 lambda|->
 block|{
@@ -574,7 +588,7 @@ argument_list|,
 name|elapsedMs
 argument_list|)
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|logger
 operator|.
 name|atFine
@@ -582,17 +596,20 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"%s (%d ms)"
+literal|"%s done (%d ms)"
 argument_list|,
 name|operation
 argument_list|,
 name|elapsedMs
 argument_list|)
-expr_stmt|;
+argument_list|;
 block|}
-argument_list|)
-expr_stmt|;
+block|)
+class|;
 block|}
+end_class
+
+begin_constructor
 DECL|method|TraceTimer (String operation, Metadata metadata)
 specifier|private
 name|TraceTimer
@@ -606,6 +623,25 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+parameter_list|()
+lambda|->
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Starting timer for %s (%s)"
+argument_list|,
+name|operation
+argument_list|,
+name|metadata
+operator|.
+name|toStringForLogging
+argument_list|()
+argument_list|)
+argument_list|,
 name|elapsedMs
 lambda|->
 block|{
@@ -629,7 +665,7 @@ argument_list|,
 name|metadata
 argument_list|)
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|logger
 operator|.
 name|atFine
@@ -637,7 +673,7 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"%s (%s) (%d ms)"
+literal|"%s (%s) done (%d ms)"
 argument_list|,
 name|operation
 argument_list|,
@@ -648,28 +684,41 @@ argument_list|()
 argument_list|,
 name|elapsedMs
 argument_list|)
-expr_stmt|;
+argument_list|;
 block|}
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|TraceTimer (Consumer<Long> logFn)
-specifier|private
+end_constructor
+
+begin_empty_stmt
+unit|)
+empty_stmt|;
+end_empty_stmt
+
+begin_expr_stmt
+unit|}      private
+DECL|method|TraceTimer (Runnable startLogFn, Consumer<Long> doneLogFn)
 name|TraceTimer
-parameter_list|(
+argument_list|(
+name|Runnable
+name|startLogFn
+argument_list|,
 name|Consumer
 argument_list|<
 name|Long
 argument_list|>
-name|logFn
-parameter_list|)
+name|doneLogFn
+argument_list|)
 block|{
+name|startLogFn
+operator|.
+name|run
+argument_list|()
+block|;
 name|this
 operator|.
-name|logFn
+name|doneLogFn
 operator|=
-name|logFn
-expr_stmt|;
+name|doneLogFn
+block|;
 name|this
 operator|.
 name|stopwatch
@@ -678,22 +727,21 @@ name|Stopwatch
 operator|.
 name|createStarted
 argument_list|()
-expr_stmt|;
-block|}
-annotation|@
+block|;     }
+expr|@
 name|Override
 DECL|method|close ()
 specifier|public
 name|void
 name|close
-parameter_list|()
+argument_list|()
 block|{
 name|stopwatch
 operator|.
 name|stop
 argument_list|()
-expr_stmt|;
-name|logFn
+block|;
+name|doneLogFn
 operator|.
 name|accept
 argument_list|(
@@ -706,12 +754,17 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-block|}
+block|;     }
+end_expr_stmt
+
+begin_comment
+unit|}
 comment|// Table<TAG_NAME, TAG_VALUE, REMOVE_ON_CLOSE>
+end_comment
+
+begin_decl_stmt
 DECL|field|tags
-specifier|private
+unit|private
 specifier|final
 name|Table
 argument_list|<
@@ -728,16 +781,25 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|stopForceLoggingOnClose
 specifier|private
 name|boolean
 name|stopForceLoggingOnClose
 decl_stmt|;
+end_decl_stmt
+
+begin_constructor
 DECL|method|TraceContext ()
 specifier|private
 name|TraceContext
 parameter_list|()
 block|{}
+end_constructor
+
+begin_function
 DECL|method|addTag (RequestId.Type requestId, Object tagValue)
 specifier|public
 name|TraceContext
@@ -769,6 +831,9 @@ name|tagValue
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|addTag (String tagName, Object tagValue)
 specifier|public
 name|TraceContext
@@ -829,6 +894,9 @@ return|return
 name|this
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getTags ()
 specifier|public
 name|ImmutableMap
@@ -887,6 +955,9 @@ name|build
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|addPluginTag (String pluginName)
 specifier|public
 name|TraceContext
@@ -905,6 +976,9 @@ name|pluginName
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|forceLogging ()
 specifier|public
 name|TraceContext
@@ -937,6 +1011,9 @@ return|return
 name|this
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|isTracing ()
 specifier|public
 name|boolean
@@ -953,6 +1030,9 @@ name|isLoggingForced
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getTraceId ()
 specifier|public
 name|Optional
@@ -990,6 +1070,9 @@ name|findFirst
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|close ()
@@ -1063,8 +1146,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
