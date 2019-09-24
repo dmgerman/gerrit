@@ -2845,15 +2845,9 @@ argument_list|(
 name|baseConfig
 argument_list|)
 operator|||
-name|cfg
-operator|.
-name|getBoolean
+name|isSlave
 argument_list|(
-literal|"container"
-argument_list|,
-literal|"slave"
-argument_list|,
-literal|false
+name|cfg
 argument_list|)
 argument_list|)
 expr_stmt|;
