@@ -4591,6 +4591,8 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Test
+annotation|@
 name|GerritConfig
 argument_list|(
 name|name
@@ -4632,7 +4634,7 @@ argument_list|()
 decl_stmt|;
 name|traceSubmitRule
 operator|.
-name|failOnce
+name|failAlways
 operator|=
 literal|true
 expr_stmt|;
@@ -4674,7 +4676,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|SC_OK
+name|SC_INTERNAL_SERVER_ERROR
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -4836,7 +4838,7 @@ operator|.
 name|isLoggingForced
 argument_list|)
 operator|.
-name|isNull
+name|isFalse
 argument_list|()
 expr_stmt|;
 block|}
@@ -5178,6 +5180,10 @@ DECL|field|failOnce
 name|boolean
 name|failOnce
 decl_stmt|;
+DECL|field|failAlways
+name|boolean
+name|failAlways
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|evaluate (ChangeData changeData)
@@ -5192,23 +5198,6 @@ name|ChangeData
 name|changeData
 parameter_list|)
 block|{
-if|if
-condition|(
-name|failOnce
-condition|)
-block|{
-name|failOnce
-operator|=
-literal|false
-expr_stmt|;
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"forced failure from test"
-argument_list|)
-throw|;
-block|}
 name|this
 operator|.
 name|traceId
@@ -5251,6 +5240,25 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|failOnce
+operator|||
+name|failAlways
+condition|)
+block|{
+name|failOnce
+operator|=
+literal|false
+expr_stmt|;
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"forced failure from test"
+argument_list|)
+throw|;
+block|}
 name|SubmitRecord
 name|submitRecord
 init|=
