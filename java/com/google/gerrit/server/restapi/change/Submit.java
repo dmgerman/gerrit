@@ -192,6 +192,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|ParameterizedString
@@ -1574,6 +1588,15 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|GOOGLE
+argument_list|)
 DECL|method|mergeChange (RevisionResource rsrc, IdentifiedUser submitter, SubmitInput input)
 specifier|public
 name|Change
