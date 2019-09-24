@@ -937,7 +937,7 @@ name|Builder
 argument_list|()
 return|;
 block|}
-DECL|method|create ( ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> changeMessages, ListMultimap<ObjectId, Comment> publishedComments, boolean isPrivate, boolean workInProgress, boolean reviewStarted, @Nullable Change.Id revertOf, int updateCount)
+DECL|method|create ( ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String serverId, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, Set<Account.Id> pastAssignees, Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> changeMessages, ListMultimap<ObjectId, Comment> publishedComments, boolean isPrivate, boolean workInProgress, boolean reviewStarted, @Nullable Change.Id revertOf, int updateCount)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -965,6 +965,9 @@ name|Account
 operator|.
 name|Id
 name|owner
+parameter_list|,
+name|String
+name|serverId
 parameter_list|,
 name|String
 name|branch
@@ -1246,6 +1249,11 @@ operator|.
 name|hashtags
 argument_list|(
 name|hashtags
+argument_list|)
+operator|.
+name|serverId
+argument_list|(
+name|serverId
 argument_list|)
 operator|.
 name|patchSets
@@ -1704,6 +1712,14 @@ argument_list|<
 name|String
 argument_list|>
 name|hashtags
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nullable
+DECL|method|serverId ()
+specifier|abstract
+name|String
+name|serverId
 parameter_list|()
 function_decl|;
 DECL|method|patchSets ()
@@ -2314,6 +2330,15 @@ name|ChangeColumns
 name|columns
 parameter_list|)
 function_decl|;
+DECL|method|serverId (String serverId)
+specifier|abstract
+name|Builder
+name|serverId
+parameter_list|(
+name|String
+name|serverId
+parameter_list|)
+function_decl|;
 DECL|method|pastAssignees (Set<Account.Id> pastAssignees)
 specifier|abstract
 name|Builder
@@ -2661,6 +2686,34 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|object
+operator|.
+name|serverId
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|b
+operator|.
+name|setServerId
+argument_list|(
+name|object
+operator|.
+name|serverId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|b
+operator|.
+name|setHasServerId
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 name|object
 operator|.
 name|pastAssignees
@@ -3630,6 +3683,21 @@ operator|.
 name|getColumns
 argument_list|()
 argument_list|)
+argument_list|)
+operator|.
+name|serverId
+argument_list|(
+name|proto
+operator|.
+name|getHasServerId
+argument_list|()
+condition|?
+name|proto
+operator|.
+name|getServerId
+argument_list|()
+else|:
+literal|null
 argument_list|)
 operator|.
 name|pastAssignees
