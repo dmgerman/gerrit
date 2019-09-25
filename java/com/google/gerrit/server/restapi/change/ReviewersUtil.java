@@ -618,6 +618,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|account
+operator|.
+name|AccountIndexRewriter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -1040,6 +1058,12 @@ specifier|final
 name|AccountQueryBuilder
 name|accountQueryBuilder
 decl_stmt|;
+DECL|field|accountIndexRewriter
+specifier|private
+specifier|final
+name|AccountIndexRewriter
+name|accountIndexRewriter
+decl_stmt|;
 DECL|field|groupBackend
 specifier|private
 specifier|final
@@ -1095,7 +1119,7 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewersUtil ( AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder accountQueryBuilder, GroupBackend groupBackend, GroupMembers groupMembers, ReviewerRecommender reviewerRecommender, Metrics metrics, AccountIndexCollection accountIndexes, IndexConfig indexConfig, AccountControl.Factory accountControlFactory, Provider<CurrentUser> self)
+DECL|method|ReviewersUtil ( AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder accountQueryBuilder, AccountIndexRewriter accountIndexRewriter, GroupBackend groupBackend, GroupMembers groupMembers, ReviewerRecommender reviewerRecommender, Metrics metrics, AccountIndexCollection accountIndexes, IndexConfig indexConfig, AccountControl.Factory accountControlFactory, Provider<CurrentUser> self)
 name|ReviewersUtil
 parameter_list|(
 name|AccountLoader
@@ -1105,6 +1129,9 @@ name|accountLoaderFactory
 parameter_list|,
 name|AccountQueryBuilder
 name|accountQueryBuilder
+parameter_list|,
+name|AccountIndexRewriter
+name|accountIndexRewriter
 parameter_list|,
 name|GroupBackend
 name|groupBackend
@@ -1147,6 +1174,12 @@ operator|.
 name|accountQueryBuilder
 operator|=
 name|accountQueryBuilder
+expr_stmt|;
+name|this
+operator|.
+name|accountIndexRewriter
+operator|=
+name|accountIndexRewriter
 expr_stmt|;
 name|this
 operator|.
@@ -1607,8 +1640,6 @@ name|start
 argument_list|()
 init|)
 block|{
-try|try
-block|{
 comment|// For performance reasons we don't use AccountQueryProvider as it would always load the
 comment|// complete account from the cache (or worse, from NoteDb) even though we only need the ID
 comment|// which we can directly get from the returned results.
@@ -1647,6 +1678,13 @@ name|log
 argument_list|(
 literal|"accounts index query: %s"
 argument_list|,
+name|pred
+argument_list|)
+expr_stmt|;
+name|accountIndexRewriter
+operator|.
+name|validateMaxTermsInQuery
+argument_list|(
 name|pred
 argument_list|)
 expr_stmt|;
@@ -1769,7 +1807,6 @@ operator|.
 name|of
 argument_list|()
 return|;
-block|}
 block|}
 block|}
 DECL|method|suggestReviewers ( SuggestReviewers suggestReviewers, ProjectState projectState, VisibilityControl visibilityControl, boolean excludeGroups, List<Account.Id> filteredRecommendations)
