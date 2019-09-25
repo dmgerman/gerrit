@@ -198,6 +198,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testing
+operator|.
+name|GerritJUnit
+operator|.
+name|assertThrows
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -467,6 +483,22 @@ operator|.
 name|common
 operator|.
 name|SuggestedReviewerInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|BadRequestException
 import|;
 end_import
 
@@ -1328,9 +1360,7 @@ name|isNotEmpty
 argument_list|()
 expr_stmt|;
 comment|// Do a query which exceed index.maxTerms succeeds (10 terms plus 'inactive:1' term which is
-comment|// implicitly added). If index.maxTerms is exceeded a QueryParseException is thrown ("too many
-comment|// terms in query") but it is caught in ReviewersUtil which then returns an empty result to the
-comment|// client. Hence assert that no result is returned.
+comment|// implicitly added).
 name|query
 operator|.
 name|append
@@ -1341,8 +1371,17 @@ literal|"u"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertThat
+name|BadRequestException
+name|exception
+init|=
+name|assertThrows
 argument_list|(
+name|BadRequestException
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
 name|suggestReviewers
 argument_list|(
 name|changeId
@@ -1353,9 +1392,19 @@ name|toString
 argument_list|()
 argument_list|)
 argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|exception
+argument_list|)
 operator|.
-name|isEmpty
+name|hasMessageThat
 argument_list|()
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"too many terms in query"
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

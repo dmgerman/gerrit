@@ -178,6 +178,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|index
+operator|.
+name|query
+operator|.
+name|TooManyTermsInQueryException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|account
@@ -373,7 +389,7 @@ name|MutableInteger
 name|leafTerms
 parameter_list|)
 throws|throws
-name|QueryParseException
+name|TooManyTermsInQueryException
 block|{
 if|if
 condition|(
@@ -400,10 +416,8 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|QueryParseException
-argument_list|(
-literal|"too many terms in query"
-argument_list|)
+name|TooManyTermsInQueryException
+argument_list|()
 throw|;
 block|}
 block|}
