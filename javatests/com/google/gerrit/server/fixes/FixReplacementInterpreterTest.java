@@ -106,11 +106,11 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
+name|Mockito
 operator|.
-name|createMock
+name|mock
 import|;
 end_import
 
@@ -118,11 +118,11 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
+name|Mockito
 operator|.
-name|replay
+name|when
 import|;
 end_import
 
@@ -290,16 +290,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|easymock
-operator|.
-name|EasyMock
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|eclipse
 operator|.
 name|jgit
@@ -356,7 +346,7 @@ specifier|final
 name|FileContentUtil
 name|fileContentUtil
 init|=
-name|createMock
+name|mock
 argument_list|(
 name|FileContentUtil
 operator|.
@@ -369,7 +359,7 @@ specifier|final
 name|Repository
 name|repository
 init|=
-name|createMock
+name|mock
 argument_list|(
 name|Repository
 operator|.
@@ -382,7 +372,7 @@ specifier|final
 name|ProjectState
 name|projectState
 init|=
-name|createMock
+name|mock
 argument_list|(
 name|ProjectState
 operator|.
@@ -395,7 +385,7 @@ specifier|final
 name|ObjectId
 name|patchSetCommitId
 init|=
-name|createMock
+name|mock
 argument_list|(
 name|ObjectId
 operator|.
@@ -561,11 +551,6 @@ argument_list|,
 literal|"1st line\n2nd line\n3rd line\n"
 argument_list|)
 expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|TreeModification
@@ -717,11 +702,6 @@ argument_list|,
 literal|"First line\nSecond line\nThird line\n"
 argument_list|)
 expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|TreeModification
@@ -793,11 +773,6 @@ argument_list|,
 literal|"First line\nSecond line\nThird line\n"
 argument_list|)
 expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|TreeModification
@@ -867,11 +842,6 @@ argument_list|(
 name|filePath1
 argument_list|,
 literal|"First line\nSecond line\nThird line\n"
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
 argument_list|)
 expr_stmt|;
 name|List
@@ -966,11 +936,6 @@ argument_list|(
 name|filePath1
 argument_list|,
 literal|"First line\nSecond line\nThird line\n"
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
 argument_list|)
 expr_stmt|;
 name|List
@@ -1069,11 +1034,6 @@ argument_list|,
 literal|"First line\nSecond line\nThird line\n"
 argument_list|)
 expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|TreeModification
@@ -1145,11 +1105,6 @@ argument_list|(
 name|filePath1
 argument_list|,
 literal|"First line\nSecond line\nThird line\n"
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
 argument_list|)
 expr_stmt|;
 name|List
@@ -1276,11 +1231,6 @@ argument_list|,
 literal|"1st line\n2nd line\n3rd line\n"
 argument_list|)
 expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|TreeModification
@@ -1388,11 +1338,6 @@ argument_list|(
 name|filePath1
 argument_list|,
 literal|"First line\nSecond line\nThird line\n"
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
 argument_list|)
 expr_stmt|;
 name|List
@@ -1512,11 +1457,6 @@ argument_list|,
 literal|"First line\nSecond line\nThird line\nFourth line\nFifth line\n"
 argument_list|)
 expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|TreeModification
@@ -1592,11 +1532,6 @@ argument_list|,
 literal|"First line\nSecond line\nThird line\n"
 argument_list|)
 expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
-argument_list|)
-expr_stmt|;
 name|assertThrows
 argument_list|(
 name|ResourceConflictException
@@ -1650,11 +1585,6 @@ argument_list|(
 name|filePath1
 argument_list|,
 literal|"First line\nSecond line\nThird line\n"
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
 argument_list|)
 expr_stmt|;
 name|assertThrows
@@ -1712,11 +1642,6 @@ argument_list|,
 literal|"First line\nSecond line\nThird line\n"
 argument_list|)
 expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
-argument_list|)
-expr_stmt|;
 name|assertThrows
 argument_list|(
 name|ResourceConflictException
@@ -1770,11 +1695,6 @@ argument_list|(
 name|filePath1
 argument_list|,
 literal|"First line\nSecond line\nThird line\n"
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
 argument_list|)
 expr_stmt|;
 name|assertThrows
@@ -1833,11 +1753,6 @@ argument_list|,
 literal|"First line\nSecond line\nThird line\n"
 argument_list|)
 expr_stmt|;
-name|replay
-argument_list|(
-name|fileContentUtil
-argument_list|)
-expr_stmt|;
 name|assertThrows
 argument_list|(
 name|ResourceConflictException
@@ -1867,9 +1782,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|EasyMock
-operator|.
-name|expect
+name|when
 argument_list|(
 name|fileContentUtil
 operator|.
@@ -1885,7 +1798,7 @@ name|filePath
 argument_list|)
 argument_list|)
 operator|.
-name|andReturn
+name|thenReturn
 argument_list|(
 name|BinaryResult
 operator|.
