@@ -591,7 +591,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Reads/writes account data from/to a user branch in the {@code All-Users} repository.  *  *<p>This is the low-level API for account creation and account updates. Most callers should use  * {@link AccountsUpdate} for creating and updating accounts.  *  *<p>This class can read/write account properties, preferences (general, diff and edit preferences)  * and project watches.  *  *<p>The following files are read/written:  *  *<ul>  *<li>'account.config': Contains the account properties. Parsing and writing it is delegated to  *       {@link AccountProperties}.  *<li>'preferences.config': Contains the preferences. Parsing and writing it is delegated to  *       {@link Preferences}.  *<li>'account.config': Contains the project watches. Parsing and writing it is delegated to  *       {@link ProjectWatches}.  *</ul>  *  *<p>The commit date of the first commit on the user branch is used as registration date of the  * account. The first commit may be an empty commit (since all config files are optional).  */
+comment|/**  * Reads/writes account data from/to a user branch in the {@code All-Users} repository.  *  *<p>This is the low-level API for account creation and account updates. Most callers should use  * {@link AccountsUpdate} for creating and updating accounts.  *  *<p>This class can read/write account properties, preferences (general, diff and edit preferences)  * and project watches.  *  *<p>The following files are read/written:  *  *<ul>  *<li>'account.config': Contains the account properties. Parsing and writing it is delegated to  *       {@link AccountProperties}.  *<li>'preferences.config': Contains the preferences. Parsing and writing it is delegated to  *       {@link StoredPreferences}.  *<li>'account.config': Contains the project watches. Parsing and writing it is delegated to  *       {@link ProjectWatches}.  *</ul>  *  *<p>The commit date of the first commit on the user branch is used as registration date of the  * account. The first commit may be an empty commit (since all config files are optional).  */
 end_comment
 
 begin_class
@@ -655,7 +655,7 @@ name|projectWatches
 decl_stmt|;
 DECL|field|preferences
 specifier|private
-name|Preferences
+name|StoredPreferences
 name|preferences
 decl_stmt|;
 DECL|field|accountUpdate
@@ -1207,18 +1207,18 @@ expr_stmt|;
 name|preferences
 operator|=
 operator|new
-name|Preferences
+name|StoredPreferences
 argument_list|(
 name|accountId
 argument_list|,
 name|readConfig
 argument_list|(
-name|Preferences
+name|StoredPreferences
 operator|.
 name|PREFERENCES_CONFIG
 argument_list|)
 argument_list|,
-name|Preferences
+name|StoredPreferences
 operator|.
 name|readDefaultConfig
 argument_list|(
@@ -1267,7 +1267,7 @@ expr_stmt|;
 name|preferences
 operator|=
 operator|new
-name|Preferences
+name|StoredPreferences
 argument_list|(
 name|accountId
 argument_list|,
@@ -1275,7 +1275,7 @@ operator|new
 name|Config
 argument_list|()
 argument_list|,
-name|Preferences
+name|StoredPreferences
 operator|.
 name|readDefaultConfig
 argument_list|(
@@ -1709,7 +1709,7 @@ return|return;
 block|}
 name|saveConfig
 argument_list|(
-name|Preferences
+name|StoredPreferences
 operator|.
 name|PREFERENCES_CONFIG
 argument_list|,
