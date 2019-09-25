@@ -1621,6 +1621,11 @@ argument_list|)
 decl_stmt|;
 name|checkEmailNotUsed
 argument_list|(
+name|extId
+operator|.
+name|accountId
+argument_list|()
+argument_list|,
 name|extIdWithNewEmail
 argument_list|)
 expr_stmt|;
@@ -2008,6 +2013,8 @@ argument_list|)
 expr_stmt|;
 name|checkEmailNotUsed
 argument_list|(
+name|newId
+argument_list|,
 name|extId
 argument_list|)
 expr_stmt|;
@@ -2345,11 +2352,16 @@ name|accountId
 argument_list|)
 return|;
 block|}
-DECL|method|checkEmailNotUsed (ExternalId extIdToBeCreated)
+DECL|method|checkEmailNotUsed (Account.Id accountId, ExternalId extIdToBeCreated)
 specifier|private
 name|void
 name|checkEmailNotUsed
 parameter_list|(
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|,
 name|ExternalId
 name|extIdToBeCreated
 parameter_list|)
@@ -2398,6 +2410,30 @@ condition|)
 block|{
 return|return;
 block|}
+for|for
+control|(
+name|ExternalId
+name|externalId
+range|:
+name|existingExtIdsWithEmail
+control|)
+block|{
+if|if
+condition|(
+name|externalId
+operator|.
+name|accountId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|!=
+name|accountId
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
 name|logger
 operator|.
 name|atWarning
@@ -2411,13 +2447,7 @@ literal|" cannot create external ID %s with the same email for account %s."
 argument_list|,
 name|email
 argument_list|,
-name|existingExtIdsWithEmail
-operator|.
-name|iterator
-argument_list|()
-operator|.
-name|next
-argument_list|()
+name|externalId
 operator|.
 name|accountId
 argument_list|()
@@ -2453,6 +2483,8 @@ operator|+
 literal|"' in use by another account"
 argument_list|)
 throw|;
+block|}
+block|}
 block|}
 DECL|method|addGroupMember (AccountGroup.UUID groupUuid, IdentifiedUser user)
 specifier|private
@@ -2673,6 +2705,8 @@ argument_list|)
 decl_stmt|;
 name|checkEmailNotUsed
 argument_list|(
+name|to
+argument_list|,
 name|newExtId
 argument_list|)
 expr_stmt|;
