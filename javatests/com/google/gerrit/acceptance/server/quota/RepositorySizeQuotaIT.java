@@ -140,9 +140,9 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
+name|ArgumentMatchers
 operator|.
 name|anyLong
 import|;
@@ -152,9 +152,9 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
+name|ArgumentMatchers
 operator|.
 name|eq
 import|;
@@ -164,11 +164,11 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
+name|Mockito
 operator|.
-name|expect
+name|clearInvocations
 import|;
 end_import
 
@@ -176,11 +176,11 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
+name|Mockito
 operator|.
-name|replay
+name|mock
 import|;
 end_import
 
@@ -188,11 +188,11 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
+name|Mockito
 operator|.
-name|resetToStrict
+name|times
 import|;
 end_import
 
@@ -200,11 +200,23 @@ begin_import
 import|import static
 name|org
 operator|.
-name|easymock
+name|mockito
 operator|.
-name|EasyMock
+name|Mockito
 operator|.
 name|verify
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|when
 import|;
 end_import
 
@@ -324,16 +336,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|easymock
-operator|.
-name|EasyMock
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|eclipse
 operator|.
 name|jgit
@@ -401,9 +403,7 @@ operator|.
 name|WithResource
 name|quotaBackendWithResource
 init|=
-name|EasyMock
-operator|.
-name|createStrictMock
+name|mock
 argument_list|(
 name|QuotaBackend
 operator|.
@@ -421,9 +421,7 @@ operator|.
 name|WithUser
 name|quotaBackendWithUser
 init|=
-name|EasyMock
-operator|.
-name|createStrictMock
+name|mock
 argument_list|(
 name|QuotaBackend
 operator|.
@@ -505,12 +503,12 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|resetToStrict
+name|clearInvocations
 argument_list|(
 name|quotaBackendWithResource
 argument_list|)
 expr_stmt|;
-name|resetToStrict
+name|clearInvocations
 argument_list|(
 name|quotaBackendWithUser
 argument_list|)
@@ -526,7 +524,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|expect
+name|when
 argument_list|(
 name|quotaBackendWithResource
 operator|.
@@ -536,7 +534,7 @@ name|REPOSITORY_SIZE_GROUP
 argument_list|)
 argument_list|)
 operator|.
-name|andReturn
+name|thenReturn
 argument_list|(
 name|singletonAggregation
 argument_list|(
@@ -546,13 +544,8 @@ literal|276L
 argument_list|)
 argument_list|)
 argument_list|)
-operator|.
-name|times
-argument_list|(
-literal|2
-argument_list|)
 expr_stmt|;
-name|expect
+name|when
 argument_list|(
 name|quotaBackendWithResource
 operator|.
@@ -568,7 +561,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
-name|andReturn
+name|thenReturn
 argument_list|(
 name|singletonAggregation
 argument_list|(
@@ -577,7 +570,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|expect
+name|when
 argument_list|(
 name|quotaBackendWithUser
 operator|.
@@ -587,22 +580,9 @@ name|project
 argument_list|)
 argument_list|)
 operator|.
-name|andReturn
+name|thenReturn
 argument_list|(
 name|quotaBackendWithResource
-argument_list|)
-operator|.
-name|anyTimes
-argument_list|()
-expr_stmt|;
-name|replay
-argument_list|(
-name|quotaBackendWithResource
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|quotaBackendWithUser
 argument_list|)
 expr_stmt|;
 name|pushCommit
@@ -610,12 +590,17 @@ argument_list|()
 expr_stmt|;
 name|verify
 argument_list|(
-name|quotaBackendWithUser
-argument_list|)
-expr_stmt|;
-name|verify
-argument_list|(
 name|quotaBackendWithResource
+argument_list|,
+name|times
+argument_list|(
+literal|2
+argument_list|)
+argument_list|)
+operator|.
+name|availableTokens
+argument_list|(
+name|REPOSITORY_SIZE_GROUP
 argument_list|)
 expr_stmt|;
 block|}
@@ -634,7 +619,7 @@ name|availableTokens
 init|=
 literal|1L
 decl_stmt|;
-name|expect
+name|when
 argument_list|(
 name|quotaBackendWithResource
 operator|.
@@ -644,7 +629,7 @@ name|REPOSITORY_SIZE_GROUP
 argument_list|)
 argument_list|)
 operator|.
-name|andReturn
+name|thenReturn
 argument_list|(
 name|singletonAggregation
 argument_list|(
@@ -654,11 +639,8 @@ name|availableTokens
 argument_list|)
 argument_list|)
 argument_list|)
-operator|.
-name|anyTimes
-argument_list|()
 expr_stmt|;
-name|expect
+name|when
 argument_list|(
 name|quotaBackendWithUser
 operator|.
@@ -668,22 +650,9 @@ name|project
 argument_list|)
 argument_list|)
 operator|.
-name|andReturn
+name|thenReturn
 argument_list|(
 name|quotaBackendWithResource
-argument_list|)
-operator|.
-name|anyTimes
-argument_list|()
-expr_stmt|;
-name|replay
-argument_list|(
-name|quotaBackendWithResource
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|quotaBackendWithUser
 argument_list|)
 expr_stmt|;
 name|TooLargeObjectInPackException
@@ -734,16 +703,6 @@ name|availableTokens
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|verify
-argument_list|(
-name|quotaBackendWithUser
-argument_list|)
-expr_stmt|;
-name|verify
-argument_list|(
-name|quotaBackendWithResource
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -760,7 +719,7 @@ name|msg
 init|=
 literal|"quota error"
 decl_stmt|;
-name|expect
+name|when
 argument_list|(
 name|quotaBackendWithResource
 operator|.
@@ -770,7 +729,7 @@ name|REPOSITORY_SIZE_GROUP
 argument_list|)
 argument_list|)
 operator|.
-name|andReturn
+name|thenReturn
 argument_list|(
 name|singletonAggregation
 argument_list|(
@@ -782,11 +741,8 @@ name|msg
 argument_list|)
 argument_list|)
 argument_list|)
-operator|.
-name|anyTimes
-argument_list|()
 expr_stmt|;
-name|expect
+name|when
 argument_list|(
 name|quotaBackendWithUser
 operator|.
@@ -796,22 +752,9 @@ name|project
 argument_list|)
 argument_list|)
 operator|.
-name|andReturn
+name|thenReturn
 argument_list|(
 name|quotaBackendWithResource
-argument_list|)
-operator|.
-name|anyTimes
-argument_list|()
-expr_stmt|;
-name|replay
-argument_list|(
-name|quotaBackendWithResource
-argument_list|)
-expr_stmt|;
-name|replay
-argument_list|(
-name|quotaBackendWithUser
 argument_list|)
 expr_stmt|;
 name|assertThrows
@@ -824,16 +767,6 @@ parameter_list|()
 lambda|->
 name|pushCommit
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|verify
-argument_list|(
-name|quotaBackendWithUser
-argument_list|)
-expr_stmt|;
-name|verify
-argument_list|(
-name|quotaBackendWithResource
 argument_list|)
 expr_stmt|;
 block|}
