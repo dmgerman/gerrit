@@ -1854,6 +1854,21 @@ name|QueryParseException
 name|e
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Suggesting accounts failed, return empty result."
+argument_list|)
+expr_stmt|;
 return|return
 name|ImmutableList
 operator|.
