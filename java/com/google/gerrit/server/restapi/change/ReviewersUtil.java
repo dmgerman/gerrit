@@ -1607,8 +1607,6 @@ name|start
 argument_list|()
 init|)
 block|{
-try|try
-block|{
 comment|// For performance reasons we don't use AccountQueryProvider as it would always load the
 comment|// complete account from the cache (or worse, from NoteDb) even though we only need the ID
 comment|// which we can directly get from the returned results.
@@ -1769,7 +1767,6 @@ operator|.
 name|of
 argument_list|()
 return|;
-block|}
 block|}
 block|}
 DECL|method|suggestReviewers ( SuggestReviewers suggestReviewers, ProjectState projectState, VisibilityControl visibilityControl, boolean excludeGroups, List<Account.Id> filteredRecommendations)
