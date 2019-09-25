@@ -2212,6 +2212,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -2922,6 +2932,14 @@ name|RestResource
 argument_list|>
 argument_list|>
 name|members
+decl_stmt|;
+DECL|field|traceId
+specifier|private
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|traceId
 decl_stmt|;
 DECL|method|RestApiServlet ( Globals globals, RestCollection<? extends RestResource, ? extends RestResource> members)
 specifier|public
@@ -4711,10 +4729,17 @@ block|}
 end_else
 
 begin_expr_stmt
+name|traceId
+operator|=
 name|response
 operator|.
 name|traceId
 argument_list|()
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|traceId
 operator|.
 name|ifPresent
 argument_list|(
@@ -10814,9 +10839,8 @@ block|}
 end_function
 
 begin_function
-DECL|method|handleException ( Throwable err, HttpServletRequest req, HttpServletResponse res)
+DECL|method|handleException (Throwable err, HttpServletRequest req, HttpServletResponse res)
 specifier|private
-specifier|static
 name|long
 name|handleException
 parameter_list|(
@@ -10870,6 +10894,22 @@ name|res
 operator|.
 name|reset
 argument_list|()
+expr_stmt|;
+name|traceId
+operator|.
+name|ifPresent
+argument_list|(
+name|traceId
+lambda|->
+name|res
+operator|.
+name|addHeader
+argument_list|(
+name|X_GERRIT_TRACE
+argument_list|,
+name|traceId
+argument_list|)
+argument_list|)
 expr_stmt|;
 return|return
 name|replyError
