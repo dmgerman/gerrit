@@ -427,10 +427,12 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|GitUpdateFailureException
 argument_list|(
 literal|"Update failed: "
 operator|+
+name|bru
+argument_list|,
 name|bru
 argument_list|)
 throw|;
@@ -534,7 +536,7 @@ name|REJECTED_OTHER_REASON
 case|:
 throw|throw
 operator|new
-name|IOException
+name|GitUpdateFailureException
 argument_list|(
 literal|"Failed to update "
 operator|+
@@ -549,6 +551,8 @@ name|ru
 operator|.
 name|getResult
 argument_list|()
+argument_list|,
+name|ru
 argument_list|)
 throw|;
 block|}
@@ -657,7 +661,7 @@ case|:
 default|default:
 throw|throw
 operator|new
-name|IOException
+name|GitUpdateFailureException
 argument_list|(
 literal|"Failed to delete "
 operator|+
@@ -669,6 +673,8 @@ name|ru
 operator|.
 name|getResult
 argument_list|()
+argument_list|,
+name|ru
 argument_list|)
 throw|;
 block|}

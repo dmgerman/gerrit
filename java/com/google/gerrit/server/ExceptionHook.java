@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2019 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.git
+DECL|package|com.google.gerrit.server
 package|package
 name|com
 operator|.
@@ -60,99 +60,54 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|git
+name|server
 package|;
 end_package
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|eclipse
+name|google
 operator|.
-name|jgit
+name|gerrit
 operator|.
-name|lib
+name|extensions
 operator|.
-name|BatchRefUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|annotations
 operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|RefUpdate
+name|ExtensionPoint
 import|;
 end_import
 
 begin_comment
-comment|/** Thrown when updating a ref in Git fails with LOCK_FAILURE. */
+comment|/**  * Allows implementors to control how certain exceptions should be handled.  *  *<p>This interface is intended to be implemented for multi-master setups to control the behavior  * for handling exceptions that are thrown by a lower layer that handles the consensus and  * synchronization between different server nodes. E.g. if an operation fails because consensus for  * a Git update could not be achieved (e.g. due to slow responding server nodes) this interface can  * be used to retry the request instead of failing it immediately.  */
 end_comment
 
-begin_class
-DECL|class|LockFailureException
+begin_interface
+annotation|@
+name|ExtensionPoint
+DECL|interface|ExceptionHook
 specifier|public
-class|class
-name|LockFailureException
-extends|extends
-name|GitUpdateFailureException
+interface|interface
+name|ExceptionHook
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
-DECL|method|LockFailureException (String message, RefUpdate refUpdate)
-specifier|public
-name|LockFailureException
+comment|/**    * Whether an operation should be retried if it failed with the given throwable.    *    *<p>Only affects operations that are executed with {@link    * com.google.gerrit.server.update.RetryHelper}.    *    * @param throwable throwable that was thrown while executing the operation    * @return whether the operation should be retried    */
+DECL|method|shouldRetry (Throwable throwable)
+specifier|default
+name|boolean
+name|shouldRetry
 parameter_list|(
-name|String
-name|message
-parameter_list|,
-name|RefUpdate
-name|refUpdate
+name|Throwable
+name|throwable
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|message
-argument_list|,
-name|refUpdate
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|LockFailureException (String message, BatchRefUpdate batchRefUpdate)
-specifier|public
-name|LockFailureException
-parameter_list|(
-name|String
-name|message
-parameter_list|,
-name|BatchRefUpdate
-name|batchRefUpdate
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|message
-argument_list|,
-name|batchRefUpdate
-argument_list|)
-expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
 block|}
-end_class
+end_interface
 
 end_unit
 

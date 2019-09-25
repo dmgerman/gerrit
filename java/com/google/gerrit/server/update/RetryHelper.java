@@ -416,6 +416,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ExceptionHook
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|GerritServerConfig
@@ -467,6 +481,22 @@ operator|.
 name|logging
 operator|.
 name|TraceContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugincontext
+operator|.
+name|PluginSetContext
 import|;
 end_import
 
@@ -1079,6 +1109,15 @@ operator|.
 name|Factory
 name|updateFactory
 decl_stmt|;
+DECL|field|exceptionHooks
+specifier|private
+specifier|final
+name|PluginSetContext
+argument_list|<
+name|ExceptionHook
+argument_list|>
+name|exceptionHooks
+decl_stmt|;
 DECL|field|defaultTimeouts
 specifier|private
 specifier|final
@@ -1118,7 +1157,7 @@ name|retryWithTraceOnFailure
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RetryHelper (@erritServerConfig Config cfg, Metrics metrics, BatchUpdate.Factory updateFactory)
+DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, PluginSetContext<ExceptionHook> exceptionHooks, BatchUpdate.Factory updateFactory)
 name|RetryHelper
 parameter_list|(
 annotation|@
@@ -1128,6 +1167,12 @@ name|cfg
 parameter_list|,
 name|Metrics
 name|metrics
+parameter_list|,
+name|PluginSetContext
+argument_list|<
+name|ExceptionHook
+argument_list|>
+name|exceptionHooks
 parameter_list|,
 name|BatchUpdate
 operator|.
@@ -1143,13 +1188,15 @@ name|metrics
 argument_list|,
 name|updateFactory
 argument_list|,
+name|exceptionHooks
+argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, BatchUpdate.Factory updateFactory, @Nullable Consumer<RetryerBuilder<?>> overwriteDefaultRetryerStrategySetup)
+DECL|method|RetryHelper ( @erritServerConfig Config cfg, Metrics metrics, BatchUpdate.Factory updateFactory, PluginSetContext<ExceptionHook> exceptionHooks, @Nullable Consumer<RetryerBuilder<?>> overwriteDefaultRetryerStrategySetup)
 specifier|public
 name|RetryHelper
 parameter_list|(
@@ -1165,6 +1212,12 @@ name|BatchUpdate
 operator|.
 name|Factory
 name|updateFactory
+parameter_list|,
+name|PluginSetContext
+argument_list|<
+name|ExceptionHook
+argument_list|>
+name|exceptionHooks
 parameter_list|,
 annotation|@
 name|Nullable
@@ -1189,6 +1242,12 @@ operator|.
 name|updateFactory
 operator|=
 name|updateFactory
+expr_stmt|;
+name|this
+operator|.
+name|exceptionHooks
+operator|=
+name|exceptionHooks
 expr_stmt|;
 name|Duration
 name|defaultTimeout
@@ -1711,6 +1770,31 @@ return|return
 literal|true
 return|;
 block|}
+comment|// Exception hooks may identify additional exceptions for retry.
+if|if
+condition|(
+name|exceptionHooks
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|anyMatch
+argument_list|(
+name|h
+lambda|->
+name|h
+operator|.
+name|shouldRetry
+argument_list|(
+name|t
+argument_list|)
+argument_list|)
+argument_list|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 comment|// A non-recoverable failure occurred. Check if we should retry to capture a trace
 comment|// of the failure. If a trace was already done there is no need to retry.
 if|if
@@ -1881,8 +1965,11 @@ return|return
 literal|false
 return|;
 block|}
-argument_list|)
-decl_stmt|;
+block|)
+function|;
+end_function
+
+begin_expr_stmt
 name|retryerBuilder
 operator|.
 name|withRetryListener
@@ -1890,6 +1977,9 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_return
 return|return
 name|executeWithTimeoutCount
 argument_list|(
@@ -1903,8 +1993,10 @@ name|build
 argument_list|()
 argument_list|)
 return|;
-block|}
-finally|finally
+end_return
+
+begin_block
+unit|} finally
 block|{
 if|if
 condition|(
@@ -1951,16 +2043,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-end_function
+end_block
 
 begin_comment
+unit|}
 comment|/**    * Executes an action and records the timeout as metric.    *    * @param actionType the type of the action    * @param action the action which should be executed and retried on failure    * @param retryer the retryer    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
 end_comment
 
 begin_function
 DECL|method|executeWithTimeoutCount (ActionType actionType, Action<T> action, Retryer<T> retryer)
-specifier|private
+unit|private
 parameter_list|<
 name|T
 parameter_list|>

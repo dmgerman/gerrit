@@ -122,6 +122,20 @@ name|gerrit
 operator|.
 name|git
 operator|.
+name|GitUpdateFailureException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
 name|LockFailureException
 import|;
 end_import
@@ -2142,7 +2156,7 @@ case|:
 default|default:
 throw|throw
 operator|new
-name|IOException
+name|GitUpdateFailureException
 argument_list|(
 literal|"Cannot update "
 operator|+
@@ -2164,6 +2178,8 @@ name|ru
 operator|.
 name|getResult
 argument_list|()
+argument_list|,
+name|ru
 argument_list|)
 throw|;
 block|}
