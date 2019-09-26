@@ -66,16 +66,6 @@ name|common
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_class
 DECL|class|ServerInfo
 specifier|public
@@ -126,16 +116,6 @@ DECL|field|suggest
 specifier|public
 name|SuggestInfo
 name|suggest
-decl_stmt|;
-DECL|field|urlAliases
-specifier|public
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|urlAliases
 decl_stmt|;
 DECL|field|user
 specifier|public
