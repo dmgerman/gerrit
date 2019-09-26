@@ -326,6 +326,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|index
+operator|.
+name|query
+operator|.
+name|TooManyTermsInQueryException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -1342,10 +1358,8 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|QueryParseException
-argument_list|(
-literal|"too many terms in query"
-argument_list|)
+name|TooManyTermsInQueryException
+argument_list|()
 throw|;
 block|}
 return|return
