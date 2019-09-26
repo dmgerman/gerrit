@@ -76,16 +76,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_comment
 comment|/** Preferences about a single user. */
 end_comment
@@ -513,16 +503,6 @@ argument_list|<
 name|String
 argument_list|>
 name|changeTable
-decl_stmt|;
-DECL|field|urlAliases
-specifier|public
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|urlAliases
 decl_stmt|;
 DECL|method|getDateFormat ()
 specifier|public
