@@ -2838,14 +2838,14 @@ argument_list|)
 decl_stmt|;
 name|daemon
 operator|.
-name|setSlave
+name|setReplica
 argument_list|(
-name|isSlave
+name|isReplica
 argument_list|(
 name|baseConfig
 argument_list|)
 operator|||
-name|isSlave
+name|isReplica
 argument_list|(
 name|cfg
 argument_list|)
@@ -2969,7 +2969,7 @@ name|singleVersionAllLatest
 argument_list|(
 literal|0
 argument_list|,
-name|isSlave
+name|isReplica
 argument_list|(
 name|baseConfig
 argument_list|)
@@ -3065,11 +3065,11 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|isSlave (Config baseConfig)
+DECL|method|isReplica (Config baseConfig)
 specifier|private
 specifier|static
 name|boolean
-name|isSlave
+name|isReplica
 parameter_list|(
 name|Config
 name|baseConfig

@@ -1855,16 +1855,22 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--replica"
+argument_list|,
+name|aliases
+operator|=
+block|{
 literal|"--slave"
+block|}
 argument_list|,
 name|usage
 operator|=
 literal|"Support fetch only"
 argument_list|)
-DECL|field|slave
+DECL|field|replica
 specifier|private
 name|boolean
-name|slave
+name|replica
 decl_stmt|;
 annotation|@
 name|Option
@@ -2153,20 +2159,20 @@ operator|=
 name|enable
 expr_stmt|;
 block|}
-DECL|method|setSlave (boolean slave)
+DECL|method|setReplica (boolean replica)
 specifier|public
 name|void
-name|setSlave
+name|setReplica
 parameter_list|(
 name|boolean
-name|slave
+name|replica
 parameter_list|)
 block|{
 name|this
 operator|.
-name|slave
+name|replica
 operator|=
-name|slave
+name|replica
 expr_stmt|;
 block|}
 annotation|@
@@ -2294,7 +2300,7 @@ block|{
 name|httpd
 operator|=
 operator|!
-name|slave
+name|replica
 expr_stmt|;
 block|}
 if|if
@@ -2887,14 +2893,14 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|slave
+name|replica
 condition|)
 block|{
 name|versionParts
 operator|.
 name|add
 argument_list|(
-literal|"[slave]"
+literal|"[replica]"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3143,7 +3149,7 @@ name|SearchingChangeCacheImpl
 operator|.
 name|Module
 argument_list|(
-name|slave
+name|replica
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3488,7 +3494,7 @@ name|GerritOptions
 argument_list|(
 name|headless
 argument_list|,
-name|slave
+name|replica
 argument_list|,
 name|polyGerritDev
 argument_list|)
@@ -3553,7 +3559,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|slave
+name|replica
 condition|)
 block|{
 name|modules
@@ -3677,7 +3683,7 @@ name|LuceneIndexModule
 operator|.
 name|latestVersion
 argument_list|(
-name|slave
+name|replica
 argument_list|)
 return|;
 block|}
@@ -3694,7 +3700,7 @@ name|ElasticIndexModule
 operator|.
 name|latestVersion
 argument_list|(
-name|slave
+name|replica
 argument_list|)
 return|;
 block|}
@@ -3837,7 +3843,7 @@ argument_list|(
 operator|new
 name|DefaultCommandModule
 argument_list|(
-name|slave
+name|replica
 argument_list|,
 name|sysInjector
 operator|.
@@ -3864,7 +3870,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|slave
+name|replica
 condition|)
 block|{
 name|modules
