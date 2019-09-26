@@ -7408,6 +7408,9 @@ name|newFileSystem
 argument_list|(
 name|previewPath
 argument_list|,
+operator|(
+name|ClassLoader
+operator|)
 literal|null
 argument_list|)
 init|;
