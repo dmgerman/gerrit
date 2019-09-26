@@ -2586,6 +2586,15 @@ name|XD_METHOD
 init|=
 literal|"$m"
 decl_stmt|;
+DECL|field|SC_TOO_MANY_REQUESTS
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|SC_TOO_MANY_REQUESTS
+init|=
+literal|429
+decl_stmt|;
 DECL|field|HEAP_EST_SIZE
 specifier|private
 specifier|static
@@ -5522,7 +5531,7 @@ name|res
 argument_list|,
 name|status
 operator|=
-literal|429
+name|SC_TOO_MANY_REQUESTS
 argument_list|,
 name|messageOr
 argument_list|(

@@ -70,6 +70,24 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
+name|restapi
+operator|.
+name|RestApiServlet
+operator|.
+name|SC_TOO_MANY_REQUESTS
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|mockito
@@ -843,7 +861,7 @@ argument_list|)
 operator|.
 name|assertStatus
 argument_list|(
-literal|429
+name|SC_TOO_MANY_REQUESTS
 argument_list|)
 expr_stmt|;
 name|verify
