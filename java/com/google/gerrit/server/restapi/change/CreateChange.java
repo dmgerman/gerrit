@@ -2208,7 +2208,7 @@ operator|.
 name|state
 argument_list|()
 operator|.
-name|getGeneralPreferences
+name|generalPreferences
 argument_list|()
 operator|.
 name|workInProgressByDefault
@@ -3254,7 +3254,7 @@ operator|.
 name|state
 argument_list|()
 operator|.
-name|getGeneralPreferences
+name|generalPreferences
 argument_list|()
 operator|.
 name|signedOffBy
@@ -3290,7 +3290,7 @@ operator|.
 name|state
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|getNameEmail

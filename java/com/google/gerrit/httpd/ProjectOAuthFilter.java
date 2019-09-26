@@ -1069,7 +1069,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive
@@ -1123,7 +1123,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 name|AuthRequest

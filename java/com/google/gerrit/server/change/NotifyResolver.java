@@ -742,7 +742,7 @@ operator|.
 name|asUnique
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

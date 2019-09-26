@@ -4262,7 +4262,7 @@ name|assertThat
 argument_list|(
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|fullName
@@ -4565,7 +4565,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 name|assertThat
@@ -5447,7 +5447,7 @@ name|preferredEmail
 init|=
 name|account
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -5494,7 +5494,7 @@ name|preferredEmail
 init|=
 name|account
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -18439,7 +18439,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|metaId
@@ -18501,7 +18501,7 @@ name|assertThat
 argument_list|(
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|metaId
@@ -18557,14 +18557,14 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 name|assertThat
 argument_list|(
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|metaId
@@ -19430,7 +19430,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 name|assertThat
@@ -19806,7 +19806,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 name|assertThat
@@ -20151,7 +20151,7 @@ name|equals
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|status
@@ -20180,7 +20180,7 @@ name|equals
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|status
@@ -20245,7 +20245,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|status
@@ -20272,7 +20272,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|status
@@ -20673,7 +20673,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 operator|.
 name|contains
@@ -20701,7 +20701,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 operator|.
 name|contains
@@ -20769,7 +20769,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 argument_list|)
 operator|.
@@ -20790,7 +20790,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 argument_list|)
 operator|.

@@ -700,7 +700,7 @@ block|{
 return|return
 name|otherUser
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

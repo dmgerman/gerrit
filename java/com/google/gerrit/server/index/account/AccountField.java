@@ -454,7 +454,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -495,7 +495,7 @@ name|transform
 argument_list|(
 name|a
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 argument_list|,
 name|id
@@ -545,7 +545,7 @@ name|transform
 argument_list|(
 name|a
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 argument_list|,
 name|ExternalId
@@ -590,7 +590,7 @@ name|asList
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -622,7 +622,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|fullName
@@ -652,7 +652,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive
@@ -694,7 +694,7 @@ name|from
 argument_list|(
 name|a
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 argument_list|)
 operator|.
@@ -713,7 +713,7 @@ name|singleton
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -766,7 +766,7 @@ name|preferredEmail
 init|=
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -810,7 +810,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -840,7 +840,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|registeredOn
@@ -870,7 +870,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 operator|.
 name|map
@@ -916,7 +916,7 @@ name|from
 argument_list|(
 name|a
 operator|.
-name|getProjectWatches
+name|projectWatches
 argument_list|()
 operator|.
 name|keySet
@@ -971,7 +971,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|metaId
@@ -1002,7 +1002,7 @@ name|refsUsers
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -1015,7 +1015,7 @@ name|fromString
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|metaId
@@ -1070,7 +1070,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 operator|.
 name|stream
@@ -1127,7 +1127,7 @@ name|fullName
 init|=
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|fullName

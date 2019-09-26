@@ -599,7 +599,7 @@ name|isNullOrEmpty
 argument_list|(
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|status
@@ -617,7 +617,7 @@ name|ok
 argument_list|(
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|status

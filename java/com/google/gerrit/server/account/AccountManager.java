@@ -1173,7 +1173,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1505,7 +1505,7 @@ name|map
 argument_list|(
 name|AccountState
 operator|::
-name|getAccount
+name|account
 argument_list|)
 return|;
 block|}
@@ -2269,7 +2269,7 @@ name|who
 argument_list|,
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2719,7 +2719,7 @@ literal|null
 operator|&&
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -2805,7 +2805,7 @@ name|filteredExtIdsByScheme
 init|=
 name|a
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 operator|.
 name|stream
@@ -3138,7 +3138,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -3157,7 +3157,7 @@ name|e
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail

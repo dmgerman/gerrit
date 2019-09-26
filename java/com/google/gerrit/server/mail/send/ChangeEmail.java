@@ -2166,7 +2166,7 @@ name|removeUser
 argument_list|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 argument_list|)
 argument_list|)

@@ -3937,7 +3937,7 @@ name|name
 operator|=
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|fullName
@@ -3949,7 +3949,7 @@ name|email
 operator|=
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|preferredEmail
@@ -3961,7 +3961,7 @@ name|username
 operator|=
 name|accountState
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 operator|.
 name|orElse

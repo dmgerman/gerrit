@@ -640,7 +640,7 @@ operator|.
 name|state
 argument_list|()
 operator|.
-name|getProjectWatches
+name|projectWatches
 argument_list|()
 operator|.
 name|keySet

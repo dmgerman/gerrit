@@ -838,7 +838,7 @@ literal|null
 condition|?
 name|deletedAssignee
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

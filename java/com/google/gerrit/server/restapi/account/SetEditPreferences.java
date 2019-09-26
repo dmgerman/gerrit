@@ -590,7 +590,7 @@ name|map
 argument_list|(
 name|AccountState
 operator|::
-name|getEditPreferences
+name|editPreferences
 argument_list|)
 operator|.
 name|orElseThrow

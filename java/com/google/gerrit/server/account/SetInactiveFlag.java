@@ -436,7 +436,7 @@ condition|(
 operator|!
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive
@@ -639,7 +639,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive

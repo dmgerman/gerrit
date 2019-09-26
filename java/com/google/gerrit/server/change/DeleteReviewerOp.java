@@ -915,7 +915,7 @@ name|reviewerId
 init|=
 name|reviewer
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -1050,7 +1050,7 @@ literal|"Removed reviewer "
 operator|+
 name|reviewer
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|fullName
@@ -1593,7 +1593,7 @@ name|equals
 argument_list|(
 name|reviewer
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -1636,7 +1636,7 @@ name|singleton
 argument_list|(
 name|reviewer
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

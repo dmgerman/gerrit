@@ -912,7 +912,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getGeneralPreferences
+name|generalPreferences
 argument_list|()
 decl_stmt|;
 if|if
@@ -975,7 +975,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1026,7 +1026,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 name|GeneralPreferencesInfo
@@ -1037,7 +1037,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getGeneralPreferences
+name|generalPreferences
 argument_list|()
 decl_stmt|;
 if|if
@@ -1717,7 +1717,7 @@ name|map
 argument_list|(
 name|AccountState
 operator|::
-name|getAccount
+name|account
 argument_list|)
 decl_stmt|;
 if|if
@@ -2128,7 +2128,7 @@ name|map
 argument_list|(
 name|AccountState
 operator|::
-name|getAccount
+name|account
 argument_list|)
 decl_stmt|;
 name|String
@@ -2226,7 +2226,7 @@ name|map
 argument_list|(
 name|AccountState
 operator|::
-name|getAccount
+name|account
 argument_list|)
 decl_stmt|;
 if|if
@@ -2363,7 +2363,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 name|String
@@ -2433,7 +2433,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 operator|.
 name|orElse
@@ -3135,7 +3135,7 @@ name|map
 argument_list|(
 name|AccountState
 operator|::
-name|getAccount
+name|account
 argument_list|)
 decl_stmt|;
 if|if

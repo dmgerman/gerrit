@@ -2493,7 +2493,7 @@ name|a
 lambda|->
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -2531,7 +2531,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getAccount
+name|account
 argument_list|()
 return|;
 block|}

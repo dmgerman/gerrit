@@ -1438,7 +1438,7 @@ name|deleteExternalIds
 argument_list|(
 name|a
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 argument_list|)
 argument_list|)

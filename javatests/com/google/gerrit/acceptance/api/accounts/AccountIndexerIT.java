@@ -639,7 +639,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -756,7 +756,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -827,7 +827,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|status
@@ -856,7 +856,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|status
@@ -968,7 +968,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

@@ -399,7 +399,7 @@ name|accountCreation
 argument_list|,
 name|account
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -417,7 +417,7 @@ decl_stmt|;
 return|return
 name|createdAccount
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -802,7 +802,7 @@ name|account
 init|=
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 decl_stmt|;
 return|return
@@ -849,7 +849,7 @@ name|username
 argument_list|(
 name|accountState
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 argument_list|)
 operator|.
@@ -857,7 +857,7 @@ name|active
 argument_list|(
 name|accountState
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|isActive

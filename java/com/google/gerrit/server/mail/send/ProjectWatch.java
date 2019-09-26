@@ -599,7 +599,7 @@ name|accountId
 init|=
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -622,7 +622,7 @@ name|e
 range|:
 name|a
 operator|.
-name|getProjectWatches
+name|projectWatches
 argument_list|()
 operator|.
 name|entrySet
@@ -712,7 +712,7 @@ name|e
 range|:
 name|a
 operator|.
-name|getProjectWatches
+name|projectWatches
 argument_list|()
 operator|.
 name|entrySet
@@ -744,7 +744,7 @@ name|accountId
 init|=
 name|a
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

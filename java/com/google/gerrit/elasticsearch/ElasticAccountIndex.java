@@ -719,7 +719,7 @@ literal|"Failed to replace account %s in index %s: %s"
 argument_list|,
 name|as
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -844,7 +844,7 @@ block|{
 return|return
 name|as
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id

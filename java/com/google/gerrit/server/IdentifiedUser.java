@@ -1310,7 +1310,7 @@ name|remotePeerProvider
 argument_list|,
 name|state
 operator|.
-name|getAccount
+name|account
 argument_list|()
 operator|.
 name|id
@@ -1587,7 +1587,7 @@ return|return
 name|state
 argument_list|()
 operator|.
-name|getUserName
+name|userName
 argument_list|()
 return|;
 block|}
@@ -1638,7 +1638,7 @@ return|return
 name|state
 argument_list|()
 operator|.
-name|getAccount
+name|account
 argument_list|()
 return|;
 block|}
@@ -1834,7 +1834,7 @@ argument_list|(
 name|state
 argument_list|()
 operator|.
-name|getExternalIds
+name|externalIds
 argument_list|()
 argument_list|)
 condition|)
