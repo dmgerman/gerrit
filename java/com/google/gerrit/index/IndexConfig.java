@@ -102,6 +102,18 @@ name|util
 operator|.
 name|function
 operator|.
+name|Consumer
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
 name|IntConsumer
 import|;
 end_import
@@ -206,6 +218,15 @@ operator|::
 name|maxTerms
 argument_list|)
 expr_stmt|;
+name|setTypeOrDefault
+argument_list|(
+name|cfg
+argument_list|,
+name|b
+operator|::
+name|type
+argument_list|)
+expr_stmt|;
 return|return
 name|b
 return|;
@@ -258,6 +279,37 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|setTypeOrDefault (Config cfg, Consumer<String> setter)
+specifier|private
+specifier|static
+name|void
+name|setTypeOrDefault
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|,
+name|Consumer
+argument_list|<
+name|String
+argument_list|>
+name|setter
+parameter_list|)
+block|{
+name|setter
+operator|.
+name|accept
+argument_list|(
+operator|new
+name|IndexType
+argument_list|(
+name|cfg
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|builder ()
 specifier|public
 specifier|static
@@ -289,6 +341,14 @@ operator|.
 name|maxTerms
 argument_list|(
 name|DEFAULT_MAX_TERMS
+argument_list|)
+operator|.
+name|type
+argument_list|(
+name|IndexType
+operator|.
+name|getDefault
+argument_list|()
 argument_list|)
 operator|.
 name|separateChangeSubIndexes
@@ -359,6 +419,23 @@ name|int
 name|maxTerms
 parameter_list|()
 function_decl|;
+DECL|method|type (String type)
+specifier|public
+specifier|abstract
+name|Builder
+name|type
+parameter_list|(
+name|String
+name|type
+parameter_list|)
+function_decl|;
+DECL|method|type ()
+specifier|public
+specifier|abstract
+name|String
+name|type
+parameter_list|()
+function_decl|;
 DECL|method|separateChangeSubIndexes (boolean separate)
 specifier|public
 specifier|abstract
@@ -417,6 +494,11 @@ argument_list|,
 literal|"maxTerms"
 argument_list|)
 expr_stmt|;
+name|checkTypeLimit
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
 return|return
 name|cfg
 return|;
@@ -449,6 +531,50 @@ name|limit
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|checkTypeLimit (IndexConfig cfg)
+specifier|private
+specifier|static
+name|void
+name|checkTypeLimit
+parameter_list|(
+name|IndexConfig
+name|cfg
+parameter_list|)
+block|{
+name|String
+name|limit
+init|=
+name|cfg
+operator|.
+name|type
+argument_list|()
+decl_stmt|;
+name|boolean
+name|known
+init|=
+name|IndexType
+operator|.
+name|getKnownTypes
+argument_list|()
+operator|.
+name|asList
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|limit
+argument_list|)
+decl_stmt|;
+name|checkArgument
+argument_list|(
+name|known
+argument_list|,
+literal|"type must be known: %s"
+argument_list|,
+name|limit
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**    * @return maximum limit supported by the underlying index, or limited for performance reasons.    */
 DECL|method|maxLimit ()
 specifier|public
@@ -471,6 +597,14 @@ specifier|public
 specifier|abstract
 name|int
 name|maxTerms
+parameter_list|()
+function_decl|;
+comment|/** @return index type, limited to be either one of the known types. */
+DECL|method|type ()
+specifier|public
+specifier|abstract
+name|String
+name|type
 parameter_list|()
 function_decl|;
 comment|/**    * @return whether different subsets of changes may be stored in different physical sub-indexes.    */
