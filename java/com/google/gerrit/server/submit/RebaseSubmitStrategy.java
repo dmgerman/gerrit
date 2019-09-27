@@ -1900,20 +1900,6 @@ block|{
 comment|// Test for merge instead of cherry pick to avoid false negatives
 comment|// on commit chains.
 return|return
-operator|!
-name|args
-operator|.
-name|mergeUtil
-operator|.
-name|hasMissingDependencies
-argument_list|(
-name|args
-operator|.
-name|mergeSorter
-argument_list|,
-name|toMerge
-argument_list|)
-operator|&&
 name|args
 operator|.
 name|mergeUtil
