@@ -116,6 +116,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
+name|restapi
+operator|.
+name|RestApiServlet
+operator|.
+name|SC_UNPROCESSABLE_ENTITY
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -125,6 +143,146 @@ operator|.
 name|StandardCharsets
 operator|.
 name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_BAD_REQUEST
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_CONFLICT
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_CREATED
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_FORBIDDEN
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_METHOD_NOT_ALLOWED
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_MOVED_TEMPORARILY
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_NOT_FOUND
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_NO_CONTENT
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_OK
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_PRECONDITION_FAILED
 import|;
 end_import
 
@@ -165,18 +323,6 @@ operator|.
 name|net
 operator|.
 name|URI
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|http
-operator|.
-name|HttpStatus
 import|;
 end_import
 
@@ -308,8 +454,6 @@ name|Exception
 block|{
 name|assertStatus
 argument_list|(
-name|HttpStatus
-operator|.
 name|SC_OK
 argument_list|)
 expr_stmt|;
@@ -324,8 +468,6 @@ name|Exception
 block|{
 name|assertStatus
 argument_list|(
-name|HttpStatus
-operator|.
 name|SC_NOT_FOUND
 argument_list|)
 expr_stmt|;
@@ -340,8 +482,6 @@ name|Exception
 block|{
 name|assertStatus
 argument_list|(
-name|HttpStatus
-operator|.
 name|SC_CONFLICT
 argument_list|)
 expr_stmt|;
@@ -356,8 +496,6 @@ name|Exception
 block|{
 name|assertStatus
 argument_list|(
-name|HttpStatus
-operator|.
 name|SC_FORBIDDEN
 argument_list|)
 expr_stmt|;
@@ -372,8 +510,6 @@ name|Exception
 block|{
 name|assertStatus
 argument_list|(
-name|HttpStatus
-operator|.
 name|SC_NO_CONTENT
 argument_list|)
 expr_stmt|;
@@ -388,8 +524,6 @@ name|Exception
 block|{
 name|assertStatus
 argument_list|(
-name|HttpStatus
-operator|.
 name|SC_BAD_REQUEST
 argument_list|)
 expr_stmt|;
@@ -404,8 +538,6 @@ name|Exception
 block|{
 name|assertStatus
 argument_list|(
-name|HttpStatus
-operator|.
 name|SC_UNPROCESSABLE_ENTITY
 argument_list|)
 expr_stmt|;
@@ -420,8 +552,6 @@ name|Exception
 block|{
 name|assertStatus
 argument_list|(
-name|HttpStatus
-operator|.
 name|SC_METHOD_NOT_ALLOWED
 argument_list|)
 expr_stmt|;
@@ -436,8 +566,6 @@ name|Exception
 block|{
 name|assertStatus
 argument_list|(
-name|HttpStatus
-operator|.
 name|SC_CREATED
 argument_list|)
 expr_stmt|;
@@ -452,8 +580,6 @@ name|Exception
 block|{
 name|assertStatus
 argument_list|(
-name|HttpStatus
-operator|.
 name|SC_PRECONDITION_FAILED
 argument_list|)
 expr_stmt|;
@@ -471,8 +597,6 @@ name|Exception
 block|{
 name|assertStatus
 argument_list|(
-name|HttpStatus
-operator|.
 name|SC_MOVED_TEMPORARILY
 argument_list|)
 expr_stmt|;

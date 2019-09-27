@@ -2461,17 +2461,6 @@ name|X_GERRIT_TRACE
 init|=
 literal|"X-Gerrit-Trace"
 decl_stmt|;
-comment|// HTTP 422 Unprocessable Entity.
-comment|// TODO: Remove when HttpServletResponse.SC_UNPROCESSABLE_ENTITY is available
-DECL|field|SC_UNPROCESSABLE_ENTITY
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|SC_UNPROCESSABLE_ENTITY
-init|=
-literal|422
-decl_stmt|;
 DECL|field|X_REQUESTED_WITH
 specifier|private
 specifier|static
@@ -2585,6 +2574,15 @@ name|String
 name|XD_METHOD
 init|=
 literal|"$m"
+decl_stmt|;
+DECL|field|SC_UNPROCESSABLE_ENTITY
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|SC_UNPROCESSABLE_ENTITY
+init|=
+literal|422
 decl_stmt|;
 DECL|field|SC_TOO_MANY_REQUESTS
 specifier|public

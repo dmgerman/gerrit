@@ -1842,23 +1842,6 @@ name|s
 return|;
 block|}
 block|}
-comment|// TODO(davido): Remove in 3.0, after all sites upgraded to version,
-comment|// where DRAFT status was removed. This code path is still needed,
-comment|// when changes are deserialized from the secondary index, during
-comment|// the online migration to the new schema version wasn't completed.
-if|if
-condition|(
-name|c
-operator|==
-literal|'d'
-condition|)
-block|{
-return|return
-name|Status
-operator|.
-name|NEW
-return|;
-block|}
 return|return
 literal|null
 return|;

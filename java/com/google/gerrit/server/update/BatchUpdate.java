@@ -1024,7 +1024,6 @@ block|}
 block|}
 return|;
 block|}
-comment|// TODO(dborowitz): Make this package-private to force all callers to use RetryHelper.
 DECL|interface|Factory
 specifier|public
 interface|interface
