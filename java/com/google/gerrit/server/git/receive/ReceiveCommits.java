@@ -10698,7 +10698,6 @@ name|hashtag
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO(dpursehouse): validate hashtags
 block|}
 annotation|@
 name|UsedAt
