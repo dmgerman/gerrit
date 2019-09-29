@@ -533,7 +533,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|accountFields (QueryOptions opts)
+DECL|method|accountFields (QueryOptions opts, boolean useLegacyNumericFields)
 specifier|public
 specifier|static
 name|Set
@@ -544,6 +544,9 @@ name|accountFields
 parameter_list|(
 name|QueryOptions
 name|opts
+parameter_list|,
+name|boolean
+name|useLegacyNumericFields
 parameter_list|)
 block|{
 return|return
@@ -553,10 +556,12 @@ name|opts
 operator|.
 name|fields
 argument_list|()
+argument_list|,
+name|useLegacyNumericFields
 argument_list|)
 return|;
 block|}
-DECL|method|accountFields (Set<String> fields)
+DECL|method|accountFields (Set<String> fields, boolean useLegacyNumericFields)
 specifier|public
 specifier|static
 name|Set
@@ -570,19 +575,36 @@ argument_list|<
 name|String
 argument_list|>
 name|fields
+parameter_list|,
+name|boolean
+name|useLegacyNumericFields
 parameter_list|)
 block|{
-return|return
-name|fields
-operator|.
-name|contains
-argument_list|(
+name|String
+name|idFieldName
+init|=
+name|useLegacyNumericFields
+condition|?
 name|AccountField
 operator|.
 name|ID
 operator|.
 name|getName
 argument_list|()
+else|:
+name|AccountField
+operator|.
+name|ID_STR
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+return|return
+name|fields
+operator|.
+name|contains
+argument_list|(
+name|idFieldName
 argument_list|)
 condition|?
 name|fields
@@ -597,12 +619,7 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
-name|AccountField
-operator|.
-name|ID
-operator|.
-name|getName
-argument_list|()
+name|idFieldName
 argument_list|)
 argument_list|)
 return|;

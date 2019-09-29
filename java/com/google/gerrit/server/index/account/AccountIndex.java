@@ -214,6 +214,9 @@ name|AccountPredicates
 operator|.
 name|id
 argument_list|(
+name|getSchema
+argument_list|()
+argument_list|,
 name|id
 argument_list|)
 return|;

@@ -407,6 +407,8 @@ name|add
 argument_list|(
 name|id
 argument_list|(
+name|schema
+argument_list|,
 name|Account
 operator|.
 name|id
@@ -520,7 +522,7 @@ name|preds
 argument_list|)
 return|;
 block|}
-DECL|method|id (Account.Id accountId)
+DECL|method|id (Schema<AccountState> schema, Account.Id accountId)
 specifier|public
 specifier|static
 name|Predicate
@@ -529,6 +531,12 @@ name|AccountState
 argument_list|>
 name|id
 parameter_list|(
+name|Schema
+argument_list|<
+name|AccountState
+argument_list|>
+name|schema
+parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -539,9 +547,18 @@ return|return
 operator|new
 name|AccountPredicate
 argument_list|(
+name|schema
+operator|.
+name|useLegacyNumericFields
+argument_list|()
+condition|?
 name|AccountField
 operator|.
 name|ID
+else|:
+name|AccountField
+operator|.
+name|ID_STR
 argument_list|,
 name|AccountQueryBuilder
 operator|.

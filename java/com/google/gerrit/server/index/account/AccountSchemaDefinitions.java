@@ -292,6 +292,8 @@ argument_list|)
 decl_stmt|;
 comment|// Lucene index was changed to add additional fields for sorting.
 DECL|field|V10
+annotation|@
+name|Deprecated
 specifier|static
 specifier|final
 name|Schema
@@ -304,6 +306,54 @@ name|schema
 argument_list|(
 name|V9
 argument_list|)
+decl_stmt|;
+comment|// New numeric types: use dimensional points using the k-d tree geo-spatial data structure
+comment|// to offer fast single- and multi-dimensional numeric range. As the consequense, integer
+comment|// document id type is replaced with string document id type.
+DECL|field|V11
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|AccountState
+argument_list|>
+name|V11
+init|=
+operator|new
+name|Schema
+operator|.
+name|Builder
+argument_list|<
+name|AccountState
+argument_list|>
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|V10
+argument_list|)
+operator|.
+name|remove
+argument_list|(
+name|AccountField
+operator|.
+name|ID
+argument_list|)
+operator|.
+name|add
+argument_list|(
+name|AccountField
+operator|.
+name|ID_STR
+argument_list|)
+operator|.
+name|legacyNumericFields
+argument_list|(
+literal|false
+argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 DECL|field|NAME
 specifier|public

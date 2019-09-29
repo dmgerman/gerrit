@@ -2176,6 +2176,19 @@ literal|60000
 argument_list|)
 return|;
 block|}
+DECL|method|getSchema ()
+specifier|public
+name|Schema
+argument_list|<
+name|V
+argument_list|>
+name|getSchema
+parameter_list|()
+block|{
+return|return
+name|schema
+return|;
+block|}
 block|}
 end_class
 
