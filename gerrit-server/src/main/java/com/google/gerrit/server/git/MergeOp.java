@@ -5458,11 +5458,11 @@ operator|.
 name|getLastUpdatedOn
 argument_list|()
 argument_list|,
+literal|"Project was deleted."
+argument_list|,
 name|ChangeMessagesUtil
 operator|.
 name|TAG_MERGED
-argument_list|,
-literal|"Project was deleted."
 argument_list|)
 decl_stmt|;
 name|cmUtil
