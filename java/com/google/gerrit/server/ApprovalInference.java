@@ -423,16 +423,16 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Copies approvals between patch sets.  *  *<p>The result of a copy may either be stored, as when stamping approvals in the database at  * submit time, or refreshed on demand, as when reading approvals from the NoteDb.  */
+comment|/**  * Computes approvals for a given patch set by looking at approvals applied to the given patch set  * and by additionally inferring approvals from the patch set's parents. The latter is done by  * asserting a change's kind and checking the project config for allowed forward-inference.  *  *<p>The result of a copy may either be stored, as when stamping approvals in the database at  * submit time, or refreshed on demand, as when reading approvals from the NoteDb.  */
 end_comment
 
 begin_class
 annotation|@
 name|Singleton
-DECL|class|ApprovalCopier
+DECL|class|ApprovalInference
 specifier|public
 class|class
-name|ApprovalCopier
+name|ApprovalInference
 block|{
 DECL|field|projectCache
 specifier|private
@@ -468,8 +468,8 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ApprovalCopier ( ProjectCache projectCache, ChangeKindCache changeKindCache, LabelNormalizer labelNormalizer, ChangeData.Factory changeDataFactory, PatchSetUtil psUtil)
-name|ApprovalCopier
+DECL|method|ApprovalInference ( ProjectCache projectCache, ChangeKindCache changeKindCache, LabelNormalizer labelNormalizer, ChangeData.Factory changeDataFactory, PatchSetUtil psUtil)
+name|ApprovalInference
 parameter_list|(
 name|ProjectCache
 name|projectCache
@@ -520,12 +520,13 @@ operator|=
 name|psUtil
 expr_stmt|;
 block|}
-DECL|method|getForPatchSet ( ChangeNotes notes, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
+comment|/**    * Returns all approvals that apply to the given patch set. Honors direct and indirect (approval    * on parents) approvals.    */
+DECL|method|forPatchSet ( ChangeNotes notes, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 name|Iterable
 argument_list|<
 name|PatchSetApproval
 argument_list|>
-name|getForPatchSet
+name|forPatchSet
 parameter_list|(
 name|ChangeNotes
 name|notes

@@ -861,7 +861,7 @@ block|}
 DECL|field|copier
 specifier|private
 specifier|final
-name|ApprovalCopier
+name|ApprovalInference
 name|copier
 decl_stmt|;
 DECL|field|permissionBackend
@@ -880,11 +880,11 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|ApprovalsUtil ( ApprovalCopier copier, PermissionBackend permissionBackend, ProjectCache projectCache)
+DECL|method|ApprovalsUtil ( ApprovalInference copier, PermissionBackend permissionBackend, ProjectCache projectCache)
 specifier|public
 name|ApprovalsUtil
 parameter_list|(
-name|ApprovalCopier
+name|ApprovalInference
 name|copier
 parameter_list|,
 name|PermissionBackend
@@ -2188,7 +2188,7 @@ block|{
 return|return
 name|copier
 operator|.
-name|getForPatchSet
+name|forPatchSet
 argument_list|(
 name|notes
 argument_list|,
