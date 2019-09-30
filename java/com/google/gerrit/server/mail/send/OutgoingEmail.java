@@ -142,6 +142,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|exceptions
 operator|.
 name|EmailException
@@ -2082,11 +2096,13 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Lookup a human readable name for an account, usually the "full name". */
-DECL|method|getNameFor (Account.Id accountId)
+DECL|method|getNameFor (@ullable Account.Id accountId)
 specifier|protected
 name|String
 name|getNameFor
 parameter_list|(
+annotation|@
+name|Nullable
 name|Account
 operator|.
 name|Id
@@ -2196,17 +2212,46 @@ name|name
 return|;
 block|}
 comment|/**    * Gets the human readable name and email for an account; if neither are available, returns the    * Anonymous Coward name.    *    * @param accountId user to fetch.    * @return name/email of account, or Anonymous Coward if unset.    */
-DECL|method|getNameEmailFor (Account.Id accountId)
+DECL|method|getNameEmailFor (@ullable Account.Id accountId)
 specifier|protected
 name|String
 name|getNameEmailFor
 parameter_list|(
+annotation|@
+name|Nullable
 name|Account
 operator|.
 name|Id
 name|accountId
 parameter_list|)
 block|{
+if|if
+condition|(
+name|accountId
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|args
+operator|.
+name|gerritPersonIdent
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"<"
+operator|+
+name|args
+operator|.
+name|gerritPersonIdent
+operator|.
+name|getEmailAddress
+argument_list|()
+operator|+
+literal|">"
+return|;
+block|}
 name|Optional
 argument_list|<
 name|Account
