@@ -494,11 +494,6 @@ argument_list|,
 literal|"maxTerms"
 argument_list|)
 expr_stmt|;
-name|checkTypeLimit
-argument_list|(
-name|cfg
-argument_list|)
-expr_stmt|;
 return|return
 name|cfg
 return|;
@@ -531,50 +526,6 @@ name|limit
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|checkTypeLimit (IndexConfig cfg)
-specifier|private
-specifier|static
-name|void
-name|checkTypeLimit
-parameter_list|(
-name|IndexConfig
-name|cfg
-parameter_list|)
-block|{
-name|String
-name|limit
-init|=
-name|cfg
-operator|.
-name|type
-argument_list|()
-decl_stmt|;
-name|boolean
-name|known
-init|=
-name|IndexType
-operator|.
-name|getKnownTypes
-argument_list|()
-operator|.
-name|asList
-argument_list|()
-operator|.
-name|contains
-argument_list|(
-name|limit
-argument_list|)
-decl_stmt|;
-name|checkArgument
-argument_list|(
-name|known
-argument_list|,
-literal|"type must be known: %s"
-argument_list|,
-name|limit
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**    * @return maximum limit supported by the underlying index, or limited for performance reasons.    */
 DECL|method|maxLimit ()
 specifier|public
@@ -599,7 +550,7 @@ name|int
 name|maxTerms
 parameter_list|()
 function_decl|;
-comment|/** @return index type, limited to be either one of the known types. */
+comment|/** @return index type. */
 DECL|method|type ()
 specifier|public
 specifier|abstract
