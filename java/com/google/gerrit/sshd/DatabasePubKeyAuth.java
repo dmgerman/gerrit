@@ -286,6 +286,16 @@ name|java
 operator|.
 name|security
 operator|.
+name|GeneralSecurityException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
 name|KeyPair
 import|;
 end_import
@@ -631,7 +641,6 @@ name|KeyPairProvider
 name|p
 parameter_list|)
 block|{
-specifier|final
 name|Set
 argument_list|<
 name|PublicKey
@@ -645,6 +654,8 @@ argument_list|(
 literal|6
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|addPublicKey
 argument_list|(
 name|keys
@@ -711,17 +722,35 @@ operator|.
 name|SSH_DSS
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+decl||
+name|GeneralSecurityException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot load SSHD host key"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 return|return
 name|keys
 return|;
 block|}
-DECL|method|addPublicKey ( final Collection<PublicKey> out, KeyPairProvider p, String type)
+DECL|method|addPublicKey (Collection<PublicKey> out, KeyPairProvider p, String type)
 specifier|private
 specifier|static
 name|void
 name|addPublicKey
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|PublicKey
@@ -734,8 +763,11 @@ parameter_list|,
 name|String
 name|type
 parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|GeneralSecurityException
 block|{
-specifier|final
 name|KeyPair
 name|pair
 init|=
@@ -743,6 +775,8 @@ name|p
 operator|.
 name|loadKey
 argument_list|(
+literal|null
+argument_list|,
 name|type
 argument_list|)
 decl_stmt|;

@@ -240,20 +240,6 @@ name|apache
 operator|.
 name|sshd
 operator|.
-name|common
-operator|.
-name|Factory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
 name|server
 operator|.
 name|Environment
@@ -298,6 +284,22 @@ name|sshd
 operator|.
 name|server
 operator|.
+name|channel
+operator|.
+name|ChannelSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
 name|command
 operator|.
 name|Command
@@ -317,6 +319,22 @@ operator|.
 name|session
 operator|.
 name|ServerSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|shell
+operator|.
+name|ShellFactory
 import|;
 end_import
 
@@ -357,10 +375,7 @@ DECL|class|NoShell
 class|class
 name|NoShell
 implements|implements
-name|Factory
-argument_list|<
-name|Command
-argument_list|>
+name|ShellFactory
 block|{
 DECL|field|shell
 specifier|private
@@ -392,11 +407,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|create ()
+DECL|method|createShell (ChannelSession channel)
 specifier|public
 name|Command
-name|create
-parameter_list|()
+name|createShell
+parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|)
 block|{
 return|return
 name|shell
@@ -593,11 +611,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|start (Environment env)
+DECL|method|start (ChannelSession channel, Environment env)
 specifier|public
 name|void
 name|start
 parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|,
 name|Environment
 name|env
 parameter_list|)
@@ -682,11 +703,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|destroy ()
+DECL|method|destroy (ChannelSession channel)
 specifier|public
 name|void
 name|destroy
-parameter_list|()
+parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|)
 block|{}
 block|}
 DECL|class|MessageFactory

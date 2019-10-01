@@ -656,6 +656,22 @@ name|sshd
 operator|.
 name|server
 operator|.
+name|channel
+operator|.
+name|ChannelSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
 name|command
 operator|.
 name|Command
@@ -1189,11 +1205,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|destroy ()
+DECL|method|destroy (ChannelSession channel)
 specifier|public
 name|void
 name|destroy
-parameter_list|()
+parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|)
 block|{
 name|Future
 argument_list|<
@@ -1458,7 +1477,7 @@ name|options
 argument_list|)
 return|;
 block|}
-comment|/**    * Spawn a function into its own thread.    *    *<p>Typically this should be invoked within {@link Command#start(Environment)}, such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * },    * accessPath);    *</pre>    *    *<p>If the function throws an exception, it is translated to a simple message for the client, a    * non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    * @param accessPath the path used by the end user for running the SSH command    */
+comment|/**    * Spawn a function into its own thread.    *    *<p>Typically this should be invoked within {@link Command#start(ChannelSession, Environment)},    * such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * },    * accessPath);    *</pre>    *    *<p>If the function throws an exception, it is translated to a simple message for the client, a    * non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    * @param accessPath the path used by the end user for running the SSH command    */
 DECL|method|startThread (final CommandRunnable thunk, AccessPath accessPath)
 specifier|protected
 name|void

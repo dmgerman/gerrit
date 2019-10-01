@@ -132,7 +132,7 @@ name|sshd
 operator|.
 name|common
 operator|.
-name|AttributeStore
+name|AttributeRepository
 operator|.
 name|AttributeKey
 import|;

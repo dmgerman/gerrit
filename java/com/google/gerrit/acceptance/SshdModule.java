@@ -191,7 +191,9 @@ expr_stmt|;
 name|keys
 operator|.
 name|loadKeys
-argument_list|()
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 return|return

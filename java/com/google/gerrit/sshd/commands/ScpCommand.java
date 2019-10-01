@@ -160,6 +160,22 @@ name|Environment
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|channel
+operator|.
+name|ChannelSession
+import|;
+end_import
+
 begin_class
 DECL|class|ScpCommand
 specifier|final
@@ -393,11 +409,14 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|start (Environment env)
+DECL|method|start (ChannelSession channel, Environment env)
 specifier|public
 name|void
 name|start
 parameter_list|(
+name|ChannelSession
+name|channel
+parameter_list|,
 name|Environment
 name|env
 parameter_list|)
