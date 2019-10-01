@@ -1591,6 +1591,14 @@ name|input
 operator|.
 name|pluginConfigValues
 expr_stmt|;
+name|in
+operator|.
+name|description
+operator|=
+name|args
+operator|.
+name|projectDescription
+expr_stmt|;
 name|putConfig
 operator|.
 name|get
