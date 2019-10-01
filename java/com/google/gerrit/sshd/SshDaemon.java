@@ -1930,6 +1930,20 @@ operator|.
 name|NIO2
 argument_list|)
 decl_stmt|;
+name|boolean
+name|channelIdTracking
+init|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"sshd"
+argument_list|,
+literal|"enableChannelIdTracking"
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
 name|System
 operator|.
 name|setProperty
@@ -1989,7 +2003,9 @@ name|initChannels
 argument_list|()
 expr_stmt|;
 name|initUnknownChannelReferenceHandler
-argument_list|()
+argument_list|(
+name|channelIdTracking
+argument_list|)
 expr_stmt|;
 name|initForwarding
 argument_list|()
@@ -4425,14 +4441,23 @@ name|DEFAULT_CHANNEL_FACTORIES
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initUnknownChannelReferenceHandler ()
+DECL|method|initUnknownChannelReferenceHandler (boolean enableChannelIdTracking)
 specifier|private
 name|void
 name|initUnknownChannelReferenceHandler
-parameter_list|()
+parameter_list|(
+name|boolean
+name|enableChannelIdTracking
+parameter_list|)
 block|{
 name|setUnknownChannelReferenceHandler
 argument_list|(
+name|enableChannelIdTracking
+condition|?
+name|ChannelIdTrackingUnknownChannelReferenceHandler
+operator|.
+name|TRACKER
+else|:
 name|DefaultUnknownChannelReferenceHandler
 operator|.
 name|INSTANCE
