@@ -167,6 +167,12 @@ name|V7_3
 argument_list|(
 literal|"7.3.*"
 argument_list|)
+block|,
+DECL|enumConstant|V7_4
+name|V7_4
+argument_list|(
+literal|"7.4.*"
+argument_list|)
 block|;
 DECL|field|version
 specifier|private

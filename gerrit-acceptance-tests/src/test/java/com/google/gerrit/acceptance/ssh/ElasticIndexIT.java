@@ -216,7 +216,7 @@ name|getConfig
 argument_list|(
 name|ElasticVersion
 operator|.
-name|V7_3
+name|V7_4
 argument_list|)
 return|;
 block|}
