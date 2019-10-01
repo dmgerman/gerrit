@@ -715,7 +715,10 @@ argument_list|)
 operator|.
 name|containsExactly
 argument_list|(
-name|adminId
+name|admin
+operator|.
+name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -769,7 +772,10 @@ argument_list|)
 operator|.
 name|containsExactly
 argument_list|(
-name|adminId
+name|admin
+operator|.
+name|id
+argument_list|()
 operator|.
 name|get
 argument_list|()
