@@ -516,6 +516,7 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|/**    * The Range class defines continuous range of character.    *    *<p>The pair (startLine, startChar) defines the first character in the range. The pair (endLine,    * endChar) defines the first character AFTER the range (i.e. it doesn't belong the range).    * (endLine, endChar) must be a valid character inside text, except EOF case.</p>    *<p>Special cases:</p>    *<ul>    *<li>Zero length range: (startLine, startChar) = (endLine, endChar). Range defines insert    *       position right before the (startLine, startChar) character (for {@link FixReplacement)    *<li>EOF case - range includes the last character in the file:    *<ul>    *<li>if a file ends with EOL mark, then (endLine, endChar) = (num_of_lines + 1, 0)    *<li>if a file doesn't end with EOL mark, then    *             (endLine, endChar) = (num_of_lines, num_of_chars_in_last_line)    *</ul>    *</ul>    */
 DECL|class|Range
 specifier|public
 specifier|static
@@ -583,25 +584,25 @@ specifier|public
 name|int
 name|startLine
 decl_stmt|;
-comment|// 1-based, inclusive
+comment|// 1-based
 DECL|field|startChar
 specifier|public
 name|int
 name|startChar
 decl_stmt|;
-comment|// 0-based, inclusive
+comment|// 0-based
 DECL|field|endLine
 specifier|public
 name|int
 name|endLine
 decl_stmt|;
-comment|// 1-based, exclusive
+comment|// 1-based
 DECL|field|endChar
 specifier|public
 name|int
 name|endChar
 decl_stmt|;
-comment|// 0-based, exclusive
+comment|// 0-based
 DECL|method|Range (Range r)
 specifier|public
 name|Range
