@@ -274,7 +274,7 @@ name|prettify
 operator|.
 name|common
 operator|.
-name|SparseFileContent
+name|SparseFileContentBuilder
 import|;
 end_import
 
@@ -1274,10 +1274,16 @@ argument_list|,
 name|a
 operator|.
 name|dst
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|b
 operator|.
 name|dst
+operator|.
+name|build
+argument_list|()
 argument_list|,
 name|edits
 argument_list|,
@@ -2735,11 +2741,11 @@ name|fileMode
 decl_stmt|;
 DECL|field|dst
 specifier|final
-name|SparseFileContent
+name|SparseFileContentBuilder
 name|dst
 decl_stmt|;
 DECL|method|Side ( String path, ObjectId id, FileMode mode, byte[] srcContent, Text src, MimeType mimeType, DisplayMethod displayMethod, PatchScript.FileMode fileMode)
-specifier|public
+specifier|private
 name|Side
 parameter_list|(
 name|String
@@ -2821,12 +2827,7 @@ expr_stmt|;
 name|dst
 operator|=
 operator|new
-name|SparseFileContent
-argument_list|()
-expr_stmt|;
-name|dst
-operator|.
-name|setSize
+name|SparseFileContentBuilder
 argument_list|(
 name|size
 argument_list|()
