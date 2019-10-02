@@ -1449,11 +1449,11 @@ operator|.
 name|call
 argument_list|()
 decl_stmt|;
-name|Content
-name|content
+name|ContentCollector
+name|contentCollector
 init|=
 operator|new
-name|Content
+name|ContentCollector
 argument_list|(
 name|ps
 argument_list|)
@@ -1496,7 +1496,7 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|content
+name|contentCollector
 operator|.
 name|addCommon
 argument_list|(
@@ -1508,7 +1508,7 @@ argument_list|)
 expr_stmt|;
 name|checkState
 argument_list|(
-name|content
+name|contentCollector
 operator|.
 name|nextA
 operator|==
@@ -1519,7 +1519,7 @@ argument_list|()
 argument_list|,
 literal|"nextA = %s; want %s"
 argument_list|,
-name|content
+name|contentCollector
 operator|.
 name|nextA
 argument_list|,
@@ -1531,7 +1531,7 @@ argument_list|)
 expr_stmt|;
 name|checkState
 argument_list|(
-name|content
+name|contentCollector
 operator|.
 name|nextB
 operator|==
@@ -1542,7 +1542,7 @@ argument_list|()
 argument_list|,
 literal|"nextB = %s; want %s"
 argument_list|,
-name|content
+name|contentCollector
 operator|.
 name|nextB
 argument_list|,
@@ -1601,7 +1601,7 @@ argument_list|(
 name|edit
 argument_list|)
 decl_stmt|;
-name|content
+name|contentCollector
 operator|.
 name|addDiff
 argument_list|(
@@ -1632,7 +1632,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-name|content
+name|contentCollector
 operator|.
 name|addCommon
 argument_list|(
@@ -1683,9 +1683,12 @@ operator|.
 name|refName
 argument_list|()
 else|:
-name|content
+name|ps
 operator|.
-name|commitIdA
+name|getFileInfoA
+argument_list|()
+operator|.
+name|commitId
 decl_stmt|;
 name|String
 name|revB
@@ -1945,9 +1948,12 @@ name|metaA
 operator|.
 name|commitId
 operator|=
-name|content
+name|ps
 operator|.
-name|commitIdA
+name|getFileInfoA
+argument_list|()
+operator|.
+name|commitId
 expr_stmt|;
 block|}
 if|if
@@ -2052,9 +2058,12 @@ name|metaB
 operator|.
 name|commitId
 operator|=
-name|content
+name|ps
 operator|.
-name|commitIdB
+name|getFileInfoB
+argument_list|()
+operator|.
+name|commitId
 expr_stmt|;
 block|}
 if|if
@@ -2172,7 +2181,7 @@ name|result
 operator|.
 name|content
 operator|=
-name|content
+name|contentCollector
 operator|.
 name|lines
 expr_stmt|;
@@ -2401,11 +2410,11 @@ return|return
 name|this
 return|;
 block|}
-DECL|class|Content
+DECL|class|ContentCollector
 specifier|private
 specifier|static
 class|class
-name|Content
+name|ContentCollector
 block|{
 DECL|field|lines
 specifier|final
@@ -2430,16 +2439,6 @@ specifier|final
 name|boolean
 name|ignoreWS
 decl_stmt|;
-DECL|field|commitIdA
-specifier|final
-name|String
-name|commitIdA
-decl_stmt|;
-DECL|field|commitIdB
-specifier|final
-name|String
-name|commitIdB
-decl_stmt|;
 DECL|field|nextA
 name|int
 name|nextA
@@ -2448,8 +2447,8 @@ DECL|field|nextB
 name|int
 name|nextB
 decl_stmt|;
-DECL|method|Content (PatchScript ps)
-name|Content
+DECL|method|ContentCollector (PatchScript ps)
+name|ContentCollector
 parameter_list|(
 name|PatchScript
 name|ps
@@ -2491,20 +2490,6 @@ operator|=
 name|ps
 operator|.
 name|isIgnoreWhitespace
-argument_list|()
-expr_stmt|;
-name|commitIdA
-operator|=
-name|ps
-operator|.
-name|getCommitIdA
-argument_list|()
-expr_stmt|;
-name|commitIdB
-operator|=
-name|ps
-operator|.
-name|getCommitIdB
 argument_list|()
 expr_stmt|;
 block|}
