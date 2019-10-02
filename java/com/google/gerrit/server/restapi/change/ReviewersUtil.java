@@ -1765,8 +1765,6 @@ name|suggestReviewers
 operator|.
 name|getLimit
 argument_list|()
-operator|*
-name|CANDIDATE_LIST_MULTIPLIER
 argument_list|,
 name|ImmutableSet
 operator|.
