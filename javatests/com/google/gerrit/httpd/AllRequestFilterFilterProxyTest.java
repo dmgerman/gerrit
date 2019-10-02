@@ -2013,7 +2013,7 @@ argument_list|(
 name|plugin
 argument_list|)
 expr_stmt|;
-comment|// Request #1 only with filterB
+comment|// Request #2 only with filterB
 name|filterProxy
 operator|.
 name|doFilter
@@ -2025,7 +2025,7 @@ argument_list|,
 name|chain
 argument_list|)
 expr_stmt|;
-name|capturedChainA1
+name|capturedChainB2
 operator|.
 name|getValue
 argument_list|()
@@ -2050,7 +2050,7 @@ argument_list|(
 name|plugin
 argument_list|)
 expr_stmt|;
-comment|// Request #1 with no additional filters
+comment|// Request #3 with no additional filters
 name|filterProxy
 operator|.
 name|doFilter
