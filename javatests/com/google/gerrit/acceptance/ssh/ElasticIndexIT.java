@@ -120,6 +120,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|index
+operator|.
+name|IndexType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|testing
 operator|.
 name|ConfigSuite
@@ -151,6 +165,10 @@ operator|.
 name|Config
 import|;
 end_import
+
+begin_comment
+comment|/** Tests for every supported {@link IndexType#isElasticsearch()} most recent index version. */
+end_comment
 
 begin_class
 DECL|class|ElasticIndexIT

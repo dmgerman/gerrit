@@ -74,6 +74,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|index
+operator|.
+name|IndexType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|testing
 operator|.
 name|ConfigSuite
@@ -105,6 +119,10 @@ operator|.
 name|Config
 import|;
 end_import
+
+begin_comment
+comment|/**  * Tests for a defaulted custom index configuration. This unknown type is the opposite of {@link  * IndexType#getKnownTypes()}.  */
+end_comment
 
 begin_class
 DECL|class|CustomIndexIT
