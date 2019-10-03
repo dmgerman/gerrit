@@ -92,20 +92,6 @@ name|Nullable
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
 begin_comment
 comment|/**  * Index types supported by the secondary index.  *  *<p>The explicitly known index types are Lucene (the default) and Elasticsearch.  *  *<p>The third supported index type is any other type String value, deemed as custom. This is for  * configuring index types that are internal or not to be disclosed. Supporting custom index types  * allows to not break that case upon core implementation changes.  */
 end_comment
@@ -165,37 +151,6 @@ name|type
 operator|.
 name|toLowerCase
 argument_list|()
-expr_stmt|;
-block|}
-DECL|method|IndexType (@ullable Config cfg)
-specifier|public
-name|IndexType
-parameter_list|(
-annotation|@
-name|Nullable
-name|Config
-name|cfg
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|cfg
-operator|!=
-literal|null
-condition|?
-name|cfg
-operator|.
-name|getString
-argument_list|(
-literal|"index"
-argument_list|,
-literal|null
-argument_list|,
-literal|"type"
-argument_list|)
-else|:
-literal|null
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getDefault ()
