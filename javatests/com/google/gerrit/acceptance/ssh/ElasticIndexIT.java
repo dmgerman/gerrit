@@ -248,8 +248,6 @@ parameter_list|(
 name|Injector
 name|injector
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|createAllIndexes
 argument_list|(

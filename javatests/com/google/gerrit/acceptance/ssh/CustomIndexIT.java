@@ -96,18 +96,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Injector
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -167,19 +155,6 @@ return|return
 name|config
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|configureIndex (Injector injector)
-specifier|public
-name|void
-name|configureIndex
-parameter_list|(
-name|Injector
-name|injector
-parameter_list|)
-throws|throws
-name|Exception
-block|{}
 block|}
 end_class
 
