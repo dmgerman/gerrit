@@ -273,6 +273,9 @@ block|{
 return|return
 name|type
 operator|.
+name|toLowerCase
+argument_list|()
+operator|.
 name|equals
 argument_list|(
 name|ELASTICSEARCH
