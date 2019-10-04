@@ -3372,6 +3372,13 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|changeInfos
+operator|.
+name|add
+argument_list|(
+name|i
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 try|try
