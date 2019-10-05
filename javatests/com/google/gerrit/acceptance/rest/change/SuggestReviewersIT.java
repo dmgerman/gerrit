@@ -4255,21 +4255,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|String
-name|secondaryEmail
-init|=
-literal|"foo.secondary@example.com"
-decl_stmt|;
-name|TestAccount
-name|foo
-init|=
+comment|// Test that even if the account exists, the result is still empty since
+comment|// it shouldn't match to that account based only on the secondary email.
 name|createAccountWithSecondaryEmail
 argument_list|(
 literal|"foo"
 argument_list|,
-name|secondaryEmail
+literal|"foo.secondary@example.com"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|requestScopeOperations
 operator|.
 name|setApiUser
