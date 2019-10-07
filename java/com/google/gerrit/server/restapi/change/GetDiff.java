@@ -1147,17 +1147,6 @@ name|boolean
 name|intraline
 decl_stmt|;
 annotation|@
-name|Option
-argument_list|(
-name|name
-operator|=
-literal|"--weblinks-only"
-argument_list|)
-DECL|field|webLinksOnly
-name|boolean
-name|webLinksOnly
-decl_stmt|;
-annotation|@
 name|Inject
 DECL|method|GetDiff ( ProjectCache projectCache, PatchScriptFactory.Factory patchScriptFactoryFactory, Revisions revisions, WebLinks webLinks)
 name|GetDiff
@@ -1837,12 +1826,6 @@ name|links
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|webLinksOnly
-condition|)
-block|{
-if|if
-condition|(
 name|ps
 operator|.
 name|isBinary
@@ -2199,7 +2182,6 @@ name|content
 operator|.
 name|lines
 expr_stmt|;
-block|}
 name|Response
 argument_list|<
 name|DiffInfo
