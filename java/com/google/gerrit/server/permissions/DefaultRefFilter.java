@@ -1988,18 +1988,6 @@ name|REFS_CACHE_AUTOMERGE
 argument_list|)
 condition|)
 block|{
-name|logger
-operator|.
-name|atFinest
-argument_list|()
-operator|.
-name|log
-argument_list|(
-literal|"Filter out ref %s"
-argument_list|,
-name|name
-argument_list|)
-expr_stmt|;
 continue|continue;
 block|}
 elseif|else
