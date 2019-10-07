@@ -858,11 +858,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|field|copier
+DECL|field|approvalInference
 specifier|private
 specifier|final
 name|ApprovalInference
-name|copier
+name|approvalInference
 decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
@@ -880,12 +880,12 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|ApprovalsUtil ( ApprovalInference copier, PermissionBackend permissionBackend, ProjectCache projectCache)
+DECL|method|ApprovalsUtil ( ApprovalInference approvalInference, PermissionBackend permissionBackend, ProjectCache projectCache)
 specifier|public
 name|ApprovalsUtil
 parameter_list|(
 name|ApprovalInference
-name|copier
+name|approvalInference
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -896,9 +896,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|copier
+name|approvalInference
 operator|=
-name|copier
+name|approvalInference
 expr_stmt|;
 name|this
 operator|.
@@ -2186,7 +2186,7 @@ name|repoConfig
 parameter_list|)
 block|{
 return|return
-name|copier
+name|approvalInference
 operator|.
 name|forPatchSet
 argument_list|(
