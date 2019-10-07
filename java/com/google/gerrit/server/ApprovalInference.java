@@ -382,6 +382,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -915,7 +925,16 @@ comment|// The way this algorithm is written is that any approval will be copied
 comment|// set at a time if configs and change kind allow so. Once an approval is held back - for
 comment|// example because the patch set is a REWORK - it will not be picked up again in a future
 comment|// patch set.
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|PatchSet
+operator|.
+name|Id
+argument_list|,
+name|PatchSet
+argument_list|>
 name|priorPatchSet
 init|=
 name|notes
@@ -930,9 +949,6 @@ name|lowerEntry
 argument_list|(
 name|psId
 argument_list|)
-operator|.
-name|getValue
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -961,6 +977,9 @@ argument_list|,
 name|project
 argument_list|,
 name|priorPatchSet
+operator|.
+name|getValue
+argument_list|()
 operator|.
 name|id
 argument_list|()
@@ -1008,6 +1027,9 @@ argument_list|,
 name|repoConfig
 argument_list|,
 name|priorPatchSet
+operator|.
+name|getValue
+argument_list|()
 operator|.
 name|commitId
 argument_list|()
