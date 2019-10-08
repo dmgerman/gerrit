@@ -215,28 +215,6 @@ name|ELASTICSEARCH
 argument_list|)
 return|;
 block|}
-DECL|method|isElasticsearch (String type)
-specifier|public
-specifier|static
-name|boolean
-name|isElasticsearch
-parameter_list|(
-name|String
-name|type
-parameter_list|)
-block|{
-return|return
-name|type
-operator|.
-name|toLowerCase
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|ELASTICSEARCH
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|toString ()

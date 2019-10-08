@@ -297,16 +297,6 @@ name|getValues
 argument_list|()
 argument_list|)
 operator|.
-name|filter
-argument_list|(
-name|e
-lambda|->
-name|shouldAddElement
-argument_list|(
-name|e
-argument_list|)
-argument_list|)
-operator|.
 name|collect
 argument_list|(
 name|toList

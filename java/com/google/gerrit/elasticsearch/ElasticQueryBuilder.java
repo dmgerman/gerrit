@@ -1176,6 +1176,15 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|p
+operator|.
+name|getField
+argument_list|()
+operator|.
+name|isRepeatable
+argument_list|()
+operator|&&
 name|value
 operator|.
 name|isEmpty
