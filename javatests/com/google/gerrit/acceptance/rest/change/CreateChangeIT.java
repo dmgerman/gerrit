@@ -940,6 +940,44 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|createEmptyChange_NonExistingBranch ()
+specifier|public
+name|void
+name|createEmptyChange_NonExistingBranch
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|ChangeInput
+name|ci
+init|=
+name|newChangeInput
+argument_list|(
+name|ChangeStatus
+operator|.
+name|NEW
+argument_list|)
+decl_stmt|;
+name|ci
+operator|.
+name|branch
+operator|=
+literal|"non-existing"
+expr_stmt|;
+name|assertCreateFails
+argument_list|(
+name|ci
+argument_list|,
+name|BadRequestException
+operator|.
+name|class
+argument_list|,
+literal|"Destination branch does not exist"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|createEmptyChange_MissingMessage ()
 specifier|public
 name|void
