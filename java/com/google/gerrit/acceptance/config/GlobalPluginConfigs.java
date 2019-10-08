@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance
+DECL|package|com.google.gerrit.acceptance.config
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|acceptance
+operator|.
+name|config
 package|;
 end_package
 

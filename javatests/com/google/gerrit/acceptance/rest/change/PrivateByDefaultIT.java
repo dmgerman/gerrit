@@ -124,7 +124,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GerritConfig
+name|PushOneCommit
 import|;
 end_import
 
@@ -138,7 +138,9 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|PushOneCommit
+name|config
+operator|.
+name|GerritConfig
 import|;
 end_import
 

@@ -180,7 +180,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GerritConfig
+name|UseSsh
 import|;
 end_import
 
@@ -194,7 +194,9 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|UseSsh
+name|config
+operator|.
+name|GerritConfig
 import|;
 end_import
 

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.annotation
+DECL|package|com.google.gerrit.acceptance.config
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|annotation
+name|config
 package|;
 end_package
 
@@ -93,20 +93,6 @@ operator|.
 name|acceptance
 operator|.
 name|AbstractDaemonTest
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|GlobalPluginConfig
 import|;
 end_import
 

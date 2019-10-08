@@ -278,7 +278,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GerritConfig
+name|TestAccount
 import|;
 end_import
 
@@ -292,7 +292,9 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|TestAccount
+name|config
+operator|.
+name|GerritConfig
 import|;
 end_import
 
