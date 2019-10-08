@@ -3003,7 +3003,7 @@ throw|throw
 operator|new
 name|BadRequestException
 argument_list|(
-literal|"Must provide a destination branch"
+literal|"Destination branch does not exist"
 argument_list|)
 throw|;
 block|}
