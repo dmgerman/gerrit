@@ -2828,6 +2828,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Queue
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -2839,6 +2849,18 @@ operator|.
 name|util
 operator|.
 name|TreeSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentLinkedQueue
 import|;
 end_import
 
@@ -3865,7 +3887,7 @@ decl_stmt|;
 DECL|field|messages
 specifier|private
 specifier|final
-name|List
+name|Queue
 argument_list|<
 name|ValidationMessage
 argument_list|>
@@ -4522,7 +4544,7 @@ expr_stmt|;
 name|messages
 operator|=
 operator|new
-name|ArrayList
+name|ConcurrentLinkedQueue
 argument_list|<>
 argument_list|()
 expr_stmt|;
