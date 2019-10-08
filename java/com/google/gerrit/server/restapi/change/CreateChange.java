@@ -2350,6 +2350,10 @@ argument_list|,
 name|input
 operator|.
 name|baseCommit
+argument_list|,
+name|input
+operator|.
+name|merge
 argument_list|)
 decl_stmt|;
 name|RevCommit
@@ -2740,7 +2744,7 @@ return|;
 block|}
 annotation|@
 name|Nullable
-DECL|method|getParentCommit ( Repository repo, RevWalk revWalk, String inputBranch, @Nullable Boolean newBranch, @Nullable PatchSet basePatchSet, @Nullable String baseCommit)
+DECL|method|getParentCommit ( Repository repo, RevWalk revWalk, String inputBranch, @Nullable Boolean newBranch, @Nullable PatchSet basePatchSet, @Nullable String baseCommit, @Nullable MergeInput mergeInput)
 specifier|private
 name|ObjectId
 name|getParentCommit
@@ -2768,6 +2772,11 @@ annotation|@
 name|Nullable
 name|String
 name|baseCommit
+parameter_list|,
+annotation|@
+name|Nullable
+name|MergeInput
+name|mergeInput
 parameter_list|)
 throws|throws
 name|BadRequestException
@@ -2968,6 +2977,21 @@ name|newBranch
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|mergeInput
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+literal|"Cannot create merge: destination branch does not exist"
+argument_list|)
+throw|;
+block|}
 name|parentCommit
 operator|=
 literal|null
