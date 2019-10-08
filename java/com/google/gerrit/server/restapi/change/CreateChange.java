@@ -3039,6 +3039,21 @@ argument_list|(
 name|parentCommit
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|destRef
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+literal|"Destination branch does not exist"
+argument_list|)
+throw|;
+block|}
 name|RevCommit
 name|destRefRevCommit
 init|=
