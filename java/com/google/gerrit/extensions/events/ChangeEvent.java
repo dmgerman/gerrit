@@ -120,7 +120,7 @@ name|ChangeEvent
 extends|extends
 name|GerritEvent
 block|{
-comment|/**    * Information about the change. Some fields might be null. {@see    * com.google.gerrit.server.extensions.events.EventUtil}.    */
+comment|/**    * Information about the change. Some fields might be null.    *    * @see com.google.gerrit.server.extensions.events.EventUtil    */
 DECL|method|getChange ()
 name|ChangeInfo
 name|getChange

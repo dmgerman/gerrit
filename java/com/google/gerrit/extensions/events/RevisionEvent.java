@@ -94,7 +94,7 @@ name|RevisionEvent
 extends|extends
 name|ChangeEvent
 block|{
-comment|/**    * Information about the revision. Some fields might be null. {@see    * com.google.gerrit.server.extensions.events.EventUtil}.    */
+comment|/**    * Information about the revision. Some fields might be null.    *    * @see com.google.gerrit.server.extensions.events.EventUtil    */
 DECL|method|getRevision ()
 name|RevisionInfo
 name|getRevision
