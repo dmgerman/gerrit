@@ -127,6 +127,11 @@ name|NotifyInfo
 argument_list|>
 name|notifyDetails
 decl_stmt|;
+DECL|field|topic
+specifier|public
+name|String
+name|topic
+decl_stmt|;
 block|}
 end_class
 
