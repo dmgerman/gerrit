@@ -2372,6 +2372,8 @@ literal|"ref %s not found"
 argument_list|,
 name|refName
 argument_list|)
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -2828,6 +2830,8 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -2921,6 +2925,8 @@ argument_list|(
 literal|"Read not permitted for "
 operator|+
 name|baseChange
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -3040,6 +3046,8 @@ literal|"Base %s doesn't represent a valid SHA-1"
 argument_list|,
 name|baseCommit
 argument_list|)
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -3076,6 +3084,8 @@ literal|"Base %s doesn't exist"
 argument_list|,
 name|baseCommit
 argument_list|)
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
