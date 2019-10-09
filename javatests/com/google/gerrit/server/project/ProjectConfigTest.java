@@ -733,6 +733,15 @@ specifier|final
 name|String
 name|LABEL_SCORES_CONFIG
 init|=
+literal|"  copyAnyScore = "
+operator|+
+operator|!
+name|LabelType
+operator|.
+name|DEF_COPY_ANY_SCORE
+operator|+
+literal|"\n"
+operator|+
 literal|"  copyMinScore = "
 operator|+
 operator|!
@@ -1795,6 +1804,21 @@ operator|.
 name|getValue
 argument_list|()
 decl_stmt|;
+name|assertThat
+argument_list|(
+name|type
+operator|.
+name|isCopyAnyScore
+argument_list|()
+argument_list|)
+operator|.
+name|isNotEqualTo
+argument_list|(
+name|LabelType
+operator|.
+name|DEF_COPY_ANY_SCORE
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|type
