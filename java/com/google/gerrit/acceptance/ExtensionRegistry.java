@@ -110,6 +110,22 @@ name|extensions
 operator|.
 name|events
 operator|.
+name|AccountIndexedListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|events
+operator|.
 name|ChangeIndexedListener
 import|;
 end_import
@@ -408,6 +424,15 @@ specifier|public
 class|class
 name|ExtensionRegistry
 block|{
+DECL|field|accountIndexedListeners
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|AccountIndexedListener
+argument_list|>
+name|accountIndexedListeners
+decl_stmt|;
 DECL|field|changeIndexedListeners
 specifier|private
 specifier|final
@@ -536,9 +561,15 @@ name|commentAddedListeners
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExtensionRegistry ( DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<GroupIndexedListener> groupIndexedListeners, DynamicSet<ProjectIndexedListener> projectIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes, DynamicSet<RefOperationValidationListener> refOperationValidationListeners, DynamicSet<CommentAddedListener> commentAddedListeners)
+DECL|method|ExtensionRegistry ( DynamicSet<AccountIndexedListener> accountIndexedListeners, DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<GroupIndexedListener> groupIndexedListeners, DynamicSet<ProjectIndexedListener> projectIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes, DynamicSet<RefOperationValidationListener> refOperationValidationListeners, DynamicSet<CommentAddedListener> commentAddedListeners)
 name|ExtensionRegistry
 parameter_list|(
+name|DynamicSet
+argument_list|<
+name|AccountIndexedListener
+argument_list|>
+name|accountIndexedListeners
+parameter_list|,
 name|DynamicSet
 argument_list|<
 name|ChangeIndexedListener
@@ -624,6 +655,12 @@ argument_list|>
 name|commentAddedListeners
 parameter_list|)
 block|{
+name|this
+operator|.
+name|accountIndexedListeners
+operator|=
+name|accountIndexedListeners
+expr_stmt|;
 name|this
 operator|.
 name|changeIndexedListeners
@@ -747,6 +784,24 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|method|add (AccountIndexedListener accountIndexedListener)
+specifier|public
+name|Registration
+name|add
+parameter_list|(
+name|AccountIndexedListener
+name|accountIndexedListener
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|accountIndexedListeners
+argument_list|,
+name|accountIndexedListener
+argument_list|)
+return|;
+block|}
 DECL|method|add (ChangeIndexedListener changeIndexedListener)
 specifier|public
 name|Registration
