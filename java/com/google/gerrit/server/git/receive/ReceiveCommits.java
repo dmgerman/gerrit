@@ -3255,17 +3255,6 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
-DECL|field|CODE_REVIEW_ERROR
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|CODE_REVIEW_ERROR
-init|=
-literal|"You need 'Push' rights to upload code review requests.\n"
-operator|+
-literal|"Verify that you are pushing to the right branch."
-decl_stmt|;
 DECL|field|CANNOT_DELETE_CHANGES
 specifier|private
 specifier|static
@@ -6474,15 +6463,9 @@ name|magicBranch
 operator|!=
 literal|null
 operator|&&
-operator|(
 name|magicBranch
 operator|.
 name|edit
-operator|||
-name|magicBranch
-operator|.
-name|draft
-operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -10140,23 +10123,6 @@ name|Option
 argument_list|(
 name|name
 operator|=
-literal|"--draft"
-argument_list|,
-name|usage
-operator|=
-literal|"Will be removed. Before that, this option will be mapped to '--private'"
-operator|+
-literal|"for new changes and '--edit' for existing changes"
-argument_list|)
-DECL|field|draft
-name|boolean
-name|draft
-decl_stmt|;
-annotation|@
-name|Option
-argument_list|(
-name|name
-operator|=
 literal|"--private"
 argument_list|,
 name|usage
@@ -10791,22 +10757,6 @@ operator|.
 name|cmd
 operator|=
 name|cmd
-expr_stmt|;
-name|this
-operator|.
-name|draft
-operator|=
-name|cmd
-operator|.
-name|getRefName
-argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-name|MagicBranch
-operator|.
-name|NEW_DRAFT_CHANGE
-argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -11932,38 +11882,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|// TODO(davido): Remove legacy support for drafts magic branch option
-comment|// after repo-tool supports private and work-in-progress changes.
-if|if
-condition|(
-name|magicBranch
-operator|.
-name|draft
-operator|&&
-operator|!
-name|receiveConfig
-operator|.
-name|allowDrafts
-condition|)
-block|{
-name|errors
-operator|.
-name|put
-argument_list|(
-name|CODE_REVIEW_ERROR
-argument_list|,
-name|ref
-argument_list|)
-expr_stmt|;
-name|reject
-argument_list|(
-name|cmd
-argument_list|,
-literal|"draft workflow is disabled"
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
 if|if
 condition|(
 name|magicBranch
@@ -12006,10 +11924,6 @@ argument_list|)
 decl_stmt|;
 name|setChangeAsPrivate
 operator|=
-name|magicBranch
-operator|.
-name|draft
-operator|||
 name|magicBranch
 operator|.
 name|isPrivate
@@ -16976,7 +16890,7 @@ operator|!=
 name|NOT_ATTEMPTED
 condition|)
 block|{
-comment|// Cancel creations tied to refs/for/ or refs/drafts/ command.
+comment|// Cancel creations tied to refs/for/ command.
 for|for
 control|(
 name|ReplaceRequest
@@ -17435,10 +17349,6 @@ condition|(
 name|magicBranch
 operator|.
 name|edit
-operator|||
-name|magicBranch
-operator|.
-name|draft
 condition|)
 block|{
 return|return
@@ -18446,15 +18356,9 @@ name|magicBranch
 operator|!=
 literal|null
 operator|&&
-operator|(
 name|magicBranch
 operator|.
 name|edit
-operator|||
-name|magicBranch
-operator|.
-name|draft
-operator|)
 condition|)
 block|{
 name|bu
