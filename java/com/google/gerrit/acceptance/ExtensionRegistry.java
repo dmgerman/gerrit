@@ -138,6 +138,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|ChangeMessageModifier
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|validators
 operator|.
 name|CommitValidationListener
@@ -284,9 +300,18 @@ name|SubmitRule
 argument_list|>
 name|submitRules
 decl_stmt|;
+DECL|field|changeMessageModifiers
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|ChangeMessageModifier
+argument_list|>
+name|changeMessageModifiers
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExtensionRegistry ( DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules)
+DECL|method|ExtensionRegistry ( DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers)
 name|ExtensionRegistry
 parameter_list|(
 name|DynamicSet
@@ -324,6 +349,12 @@ argument_list|<
 name|SubmitRule
 argument_list|>
 name|submitRules
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|ChangeMessageModifier
+argument_list|>
+name|changeMessageModifiers
 parameter_list|)
 block|{
 name|this
@@ -361,6 +392,12 @@ operator|.
 name|submitRules
 operator|=
 name|submitRules
+expr_stmt|;
+name|this
+operator|.
+name|changeMessageModifiers
+operator|=
+name|changeMessageModifiers
 expr_stmt|;
 block|}
 DECL|method|newRegistration ()
@@ -501,6 +538,24 @@ argument_list|(
 name|submitRules
 argument_list|,
 name|submitRule
+argument_list|)
+return|;
+block|}
+DECL|method|add (ChangeMessageModifier changeMessageModifier)
+specifier|public
+name|Registration
+name|add
+parameter_list|(
+name|ChangeMessageModifier
+name|changeMessageModifier
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|changeMessageModifiers
+argument_list|,
+name|changeMessageModifier
 argument_list|)
 return|;
 block|}
