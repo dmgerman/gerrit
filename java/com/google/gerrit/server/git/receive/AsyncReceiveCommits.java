@@ -2042,8 +2042,6 @@ name|create
 argument_list|(
 name|allRefsWatcher
 argument_list|,
-name|perm
-argument_list|,
 name|queryProvider
 argument_list|,
 name|projectName

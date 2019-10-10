@@ -5403,9 +5403,7 @@ name|Result
 name|r
 init|=
 name|getReceivePackRefs
-argument_list|(
-name|admin
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|assertThat
 argument_list|(
@@ -5536,9 +5534,7 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|getReceivePackRefs
-argument_list|(
-name|user
-argument_list|)
+argument_list|()
 operator|.
 name|additionalHaves
 argument_list|()
@@ -5611,9 +5607,7 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|getReceivePackRefs
-argument_list|(
-name|admin
-argument_list|)
+argument_list|()
 operator|.
 name|additionalHaves
 argument_list|()
@@ -5842,9 +5836,7 @@ block|}
 name|assertThat
 argument_list|(
 name|getReceivePackRefs
-argument_list|(
-name|admin
-argument_list|)
+argument_list|()
 operator|.
 name|additionalHaves
 argument_list|()
@@ -8153,16 +8145,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|getReceivePackRefs (TestAccount u)
+DECL|method|getReceivePackRefs ()
 specifier|private
 name|TestRefAdvertiser
 operator|.
 name|Result
 name|getReceivePackRefs
-parameter_list|(
-name|TestAccount
-name|u
-parameter_list|)
+parameter_list|()
 throws|throws
 name|Exception
 block|{
@@ -8186,13 +8175,6 @@ name|ReceiveCommitsAdvertiseRefsHookChain
 operator|.
 name|createForTest
 argument_list|(
-name|newFilter
-argument_list|(
-name|project
-argument_list|,
-name|u
-argument_list|)
-argument_list|,
 name|queryProvider
 argument_list|,
 name|project

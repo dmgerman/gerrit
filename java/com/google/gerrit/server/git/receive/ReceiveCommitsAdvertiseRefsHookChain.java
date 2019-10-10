@@ -108,56 +108,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|DefaultAdvertiseRefsHook
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|permissions
-operator|.
-name|PermissionBackend
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|permissions
-operator|.
-name|PermissionBackend
-operator|.
-name|RefFilterOptions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|query
 operator|.
 name|change
@@ -237,7 +187,7 @@ class|class
 name|ReceiveCommitsAdvertiseRefsHookChain
 block|{
 comment|/**    * Returns a single {@link AdvertiseRefsHook} that encompasses a chain of {@link    * AdvertiseRefsHook} to be used for advertising when processing a Git push.    */
-DECL|method|create ( AllRefsWatcher allRefsWatcher, PermissionBackend.ForProject perm, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName)
+DECL|method|create ( AllRefsWatcher allRefsWatcher, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName)
 specifier|public
 specifier|static
 name|AdvertiseRefsHook
@@ -245,11 +195,6 @@ name|create
 parameter_list|(
 name|AllRefsWatcher
 name|allRefsWatcher
-parameter_list|,
-name|PermissionBackend
-operator|.
-name|ForProject
-name|perm
 parameter_list|,
 name|Provider
 argument_list|<
@@ -268,8 +213,6 @@ name|create
 argument_list|(
 name|allRefsWatcher
 argument_list|,
-name|perm
-argument_list|,
 name|queryProvider
 argument_list|,
 name|projectName
@@ -281,17 +224,12 @@ block|}
 comment|/**    * Returns a single {@link AdvertiseRefsHook} that encompasses a chain of {@link    * AdvertiseRefsHook} to be used for advertising when processing a Git push. Omits {@link    * HackPushNegotiateHook} as that does not advertise refs on it's own but adds {@code .have} based    * on history which is not relevant for the tests we have.    */
 annotation|@
 name|VisibleForTesting
-DECL|method|createForTest ( PermissionBackend.ForProject perm, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName)
+DECL|method|createForTest ( Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName)
 specifier|public
 specifier|static
 name|AdvertiseRefsHook
 name|createForTest
 parameter_list|(
-name|PermissionBackend
-operator|.
-name|ForProject
-name|perm
-parameter_list|,
 name|Provider
 argument_list|<
 name|InternalChangeQuery
@@ -311,8 +249,6 @@ operator|new
 name|AllRefsWatcher
 argument_list|()
 argument_list|,
-name|perm
-argument_list|,
 name|queryProvider
 argument_list|,
 name|projectName
@@ -321,7 +257,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|create ( AllRefsWatcher allRefsWatcher, PermissionBackend.ForProject perm, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName, boolean skipHackPushNegotiateHook)
+DECL|method|create ( AllRefsWatcher allRefsWatcher, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName, boolean skipHackPushNegotiateHook)
 specifier|private
 specifier|static
 name|AdvertiseRefsHook
@@ -329,11 +265,6 @@ name|create
 parameter_list|(
 name|AllRefsWatcher
 name|allRefsWatcher
-parameter_list|,
-name|PermissionBackend
-operator|.
-name|ForProject
-name|perm
 parameter_list|,
 name|Provider
 argument_list|<
@@ -366,30 +297,6 @@ operator|.
 name|add
 argument_list|(
 name|allRefsWatcher
-argument_list|)
-expr_stmt|;
-name|advHooks
-operator|.
-name|add
-argument_list|(
-operator|new
-name|DefaultAdvertiseRefsHook
-argument_list|(
-name|perm
-argument_list|,
-name|RefFilterOptions
-operator|.
-name|builder
-argument_list|()
-operator|.
-name|setFilterMeta
-argument_list|(
-literal|true
-argument_list|)
-operator|.
-name|build
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|advHooks
