@@ -12988,6 +12988,17 @@ name|RevCommit
 name|newCommit
 parameter_list|)
 block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"requestReplaceAndValidateComments"
+argument_list|)
+init|)
+block|{
 if|if
 condition|(
 name|change
@@ -13209,6 +13220,7 @@ expr_stmt|;
 return|return
 literal|true
 return|;
+block|}
 block|}
 DECL|method|warnAboutMissingChangeId (List<CreateRequest> newChanges)
 specifier|private
@@ -14819,6 +14831,17 @@ argument_list|>
 name|existingRefs
 parameter_list|)
 block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"foundInExistingRef"
+argument_list|)
+init|)
+block|{
 for|for
 control|(
 name|Ref
@@ -14925,6 +14948,7 @@ block|}
 return|return
 literal|false
 return|;
+block|}
 block|}
 DECL|method|setUpWalkForSelectingChanges ()
 specifier|private
@@ -15691,6 +15715,17 @@ name|Key
 name|key
 parameter_list|)
 block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"lookupByChangeKey"
+argument_list|)
+init|)
+block|{
 return|return
 operator|new
 name|ChangeLookup
@@ -15715,6 +15750,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+block|}
 DECL|method|lookupByCommit (RevCommit c)
 specifier|private
 name|ChangeLookup
@@ -15723,6 +15759,17 @@ parameter_list|(
 name|RevCommit
 name|c
 parameter_list|)
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"lookupByCommit"
+argument_list|)
+init|)
 block|{
 return|return
 operator|new
@@ -15750,6 +15797,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 return|;
+block|}
 block|}
 comment|/** Represents a commit for which a Change should be created. */
 DECL|class|CreateRequest
@@ -17310,10 +17358,6 @@ name|traceTimer
 init|=
 name|newTimer
 argument_list|(
-name|ReplaceRequest
-operator|.
-name|class
-argument_list|,
 literal|"validateNewPatchSet"
 argument_list|)
 init|)
@@ -17414,6 +17458,17 @@ throws|throws
 name|IOException
 throws|,
 name|PermissionBackendException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"validateNewPatchSetNoteDb"
+argument_list|)
+init|)
 block|{
 if|if
 condition|(
@@ -17644,6 +17699,17 @@ literal|false
 return|;
 block|}
 block|}
+try|try
+init|(
+name|TraceTimer
+name|traceTimer2
+init|=
+name|newTimer
+argument_list|(
+literal|"validateNewPatchSetNoteDb#isMergedInto"
+argument_list|)
+init|)
+block|{
 for|for
 control|(
 name|RevCommit
@@ -17685,9 +17751,11 @@ literal|false
 return|;
 block|}
 block|}
+block|}
 return|return
 literal|true
 return|;
+block|}
 block|}
 comment|/** Validates whether the WIP change is allowed. Rejects inputCommand if not. */
 DECL|method|validateMagicBranchWipStatusChange ()
@@ -17819,6 +17887,17 @@ name|sameTreeWarning
 parameter_list|()
 throws|throws
 name|IOException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"sameTreeWarning"
+argument_list|)
+init|)
 block|{
 name|RevWalk
 name|rw
@@ -18057,12 +18136,24 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 comment|/**      * Sets cmd and prev to the ReceiveCommands for change edits. Returns false if there was a      * failure.      */
 DECL|method|newEdit ()
 specifier|private
 name|boolean
 name|newEdit
 parameter_list|()
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"newEdit"
+argument_list|)
+init|)
 block|{
 name|psId
 operator|=
@@ -18219,6 +18310,7 @@ return|return
 literal|true
 return|;
 block|}
+block|}
 comment|/** Creates a ReceiveCommand for a new edit. */
 DECL|method|createEditCommand ()
 specifier|private
@@ -18265,6 +18357,17 @@ name|newPatchSet
 parameter_list|()
 throws|throws
 name|IOException
+block|{
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"newPatchSet"
+argument_list|)
+init|)
 block|{
 name|RevCommit
 name|newCommit
@@ -18332,6 +18435,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|method|addOps (BatchUpdate bu, @Nullable Task progress)
 name|void
 name|addOps
@@ -18354,10 +18458,6 @@ name|traceTimer
 init|=
 name|newTimer
 argument_list|(
-name|ReplaceRequest
-operator|.
-name|class
-argument_list|,
 literal|"addOps"
 argument_list|)
 init|)
@@ -19136,9 +19236,22 @@ block|{
 if|if
 condition|(
 name|refsByChange
-operator|==
+operator|!=
 literal|null
 condition|)
+block|{
+return|return;
+block|}
+try|try
+init|(
+name|TraceTimer
+name|traceTimer
+init|=
+name|newTimer
+argument_list|(
+literal|"initChangeRefMaps"
+argument_list|)
+init|)
 block|{
 name|int
 name|estRefsPerChange
