@@ -74,6 +74,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|ActionVisitor
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|events
 operator|.
 name|ChangeIndexedListener
@@ -334,9 +352,18 @@ name|ChangeETagComputation
 argument_list|>
 name|changeETagComputations
 decl_stmt|;
+DECL|field|actionVisitors
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|ActionVisitor
+argument_list|>
+name|actionVisitors
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExtensionRegistry ( DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations)
+DECL|method|ExtensionRegistry ( DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors)
 name|ExtensionRegistry
 parameter_list|(
 name|DynamicSet
@@ -386,6 +413,12 @@ argument_list|<
 name|ChangeETagComputation
 argument_list|>
 name|changeETagComputations
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|ActionVisitor
+argument_list|>
+name|actionVisitors
 parameter_list|)
 block|{
 name|this
@@ -435,6 +468,12 @@ operator|.
 name|changeETagComputations
 operator|=
 name|changeETagComputations
+expr_stmt|;
+name|this
+operator|.
+name|actionVisitors
+operator|=
+name|actionVisitors
 expr_stmt|;
 block|}
 DECL|method|newRegistration ()
@@ -611,6 +650,24 @@ argument_list|(
 name|changeETagComputations
 argument_list|,
 name|changeETagComputation
+argument_list|)
+return|;
+block|}
+DECL|method|add (ActionVisitor actionVisitor)
+specifier|public
+name|Registration
+name|add
+parameter_list|(
+name|ActionVisitor
+name|actionVisitor
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|actionVisitors
+argument_list|,
+name|actionVisitor
 argument_list|)
 return|;
 block|}
