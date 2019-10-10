@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2018 The Android Open Source Project
+comment|// Copyright (C) 2019 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -67,52 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|elasticsearch
-operator|.
-name|ElasticTestUtils
-operator|.
-name|createAllIndexes
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|elasticsearch
-operator|.
-name|ElasticTestUtils
-operator|.
-name|getConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|elasticsearch
-operator|.
-name|ElasticVersion
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -142,18 +96,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Injector
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -167,14 +109,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** Tests for every supported {@link IndexType#isElasticsearch()} most recent index version. */
+comment|/**  * Tests for a defaulted custom index configuration. This unknown type is the opposite of {@link  * IndexType#getKnownTypes()}.  */
 end_comment
 
 begin_class
-DECL|class|ElasticIndexIT
+DECL|class|CustomIndexIT
 specifier|public
 class|class
-name|ElasticIndexIT
+name|CustomIndexIT
 extends|extends
 name|AbstractIndexTests
 block|{
@@ -182,78 +124,36 @@ annotation|@
 name|ConfigSuite
 operator|.
 name|Default
-DECL|method|elasticsearchV5 ()
+DECL|method|customIndexType ()
 specifier|public
 specifier|static
 name|Config
-name|elasticsearchV5
+name|customIndexType
 parameter_list|()
 block|{
-return|return
-name|getConfig
-argument_list|(
-name|ElasticVersion
-operator|.
-name|V5_6
-argument_list|)
-return|;
-block|}
-annotation|@
-name|ConfigSuite
-operator|.
 name|Config
-DECL|method|elasticsearchV6 ()
-specifier|public
-specifier|static
+name|config
+init|=
+operator|new
 name|Config
-name|elasticsearchV6
-parameter_list|()
-block|{
-return|return
-name|getConfig
-argument_list|(
-name|ElasticVersion
+argument_list|()
+decl_stmt|;
+name|config
 operator|.
-name|V6_8
-argument_list|)
-return|;
-block|}
-annotation|@
-name|ConfigSuite
-operator|.
-name|Config
-DECL|method|elasticsearchV7 ()
-specifier|public
-specifier|static
-name|Config
-name|elasticsearchV7
-parameter_list|()
-block|{
-return|return
-name|getConfig
+name|setString
 argument_list|(
-name|ElasticVersion
-operator|.
-name|V7_4
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|configureIndex (Injector injector)
-specifier|public
-name|void
-name|configureIndex
-parameter_list|(
-name|Injector
-name|injector
-parameter_list|)
-block|{
-name|createAllIndexes
-argument_list|(
-name|injector
+literal|"index"
+argument_list|,
+literal|null
+argument_list|,
+literal|"type"
+argument_list|,
+literal|"custom"
 argument_list|)
 expr_stmt|;
+return|return
+name|config
+return|;
 block|}
 block|}
 end_class

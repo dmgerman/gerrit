@@ -72,11 +72,17 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|Injector
+name|index
+operator|.
+name|IndexType
 import|;
 end_import
+
+begin_comment
+comment|/** Tests for the default {@link IndexType#isLucene()} index configuration. */
+end_comment
 
 begin_class
 DECL|class|IndexIT
@@ -85,21 +91,7 @@ class|class
 name|IndexIT
 extends|extends
 name|AbstractIndexTests
-block|{
-annotation|@
-name|Override
-DECL|method|configureIndex (Injector injector)
-specifier|public
-name|void
-name|configureIndex
-parameter_list|(
-name|Injector
-name|injector
-parameter_list|)
-throws|throws
-name|Exception
 block|{}
-block|}
 end_class
 
 end_unit

@@ -376,16 +376,13 @@ decl_stmt|;
 comment|/** @param injector injector */
 DECL|method|configureIndex (Injector injector)
 specifier|public
-specifier|abstract
 name|void
 name|configureIndex
 parameter_list|(
 name|Injector
 name|injector
 parameter_list|)
-throws|throws
-name|Exception
-function_decl|;
+block|{}
 annotation|@
 name|Before
 DECL|method|addChangeIndexedCounter ()
