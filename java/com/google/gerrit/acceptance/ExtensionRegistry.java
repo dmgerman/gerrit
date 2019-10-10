@@ -252,6 +252,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|validators
+operator|.
+name|RefOperationValidationListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|logging
 operator|.
 name|PerformanceLogger
@@ -432,9 +450,18 @@ name|DownloadScheme
 argument_list|>
 name|downloadSchemes
 decl_stmt|;
+DECL|field|refOperationValidationListeners
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|RefOperationValidationListener
+argument_list|>
+name|refOperationValidationListeners
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExtensionRegistry ( DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes)
+DECL|method|ExtensionRegistry ( DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes, DynamicSet<RefOperationValidationListener> refOperationValidationListeners)
 name|ExtensionRegistry
 parameter_list|(
 name|DynamicSet
@@ -496,6 +523,12 @@ argument_list|<
 name|DownloadScheme
 argument_list|>
 name|downloadSchemes
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|RefOperationValidationListener
+argument_list|>
+name|refOperationValidationListeners
 parameter_list|)
 block|{
 name|this
@@ -557,6 +590,12 @@ operator|.
 name|downloadSchemes
 operator|=
 name|downloadSchemes
+expr_stmt|;
+name|this
+operator|.
+name|refOperationValidationListeners
+operator|=
+name|refOperationValidationListeners
 expr_stmt|;
 block|}
 DECL|method|newRegistration ()
@@ -774,6 +813,24 @@ argument_list|,
 name|downloadScheme
 argument_list|,
 name|exportName
+argument_list|)
+return|;
+block|}
+DECL|method|add (RefOperationValidationListener refOperationValidationListener)
+specifier|public
+name|Registration
+name|add
+parameter_list|(
+name|RefOperationValidationListener
+name|refOperationValidationListener
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|refOperationValidationListeners
+argument_list|,
+name|refOperationValidationListener
 argument_list|)
 return|;
 block|}
