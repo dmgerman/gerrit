@@ -124,6 +124,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|events
+operator|.
+name|CommentAddedListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|registration
 operator|.
 name|DynamicMap
@@ -459,9 +475,18 @@ name|RefOperationValidationListener
 argument_list|>
 name|refOperationValidationListeners
 decl_stmt|;
+DECL|field|commentAddedListeners
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|CommentAddedListener
+argument_list|>
+name|commentAddedListeners
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExtensionRegistry ( DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes, DynamicSet<RefOperationValidationListener> refOperationValidationListeners)
+DECL|method|ExtensionRegistry ( DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes, DynamicSet<RefOperationValidationListener> refOperationValidationListeners, DynamicSet<CommentAddedListener> commentAddedListeners)
 name|ExtensionRegistry
 parameter_list|(
 name|DynamicSet
@@ -529,6 +554,12 @@ argument_list|<
 name|RefOperationValidationListener
 argument_list|>
 name|refOperationValidationListeners
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|CommentAddedListener
+argument_list|>
+name|commentAddedListeners
 parameter_list|)
 block|{
 name|this
@@ -596,6 +627,12 @@ operator|.
 name|refOperationValidationListeners
 operator|=
 name|refOperationValidationListeners
+expr_stmt|;
+name|this
+operator|.
+name|commentAddedListeners
+operator|=
+name|commentAddedListeners
 expr_stmt|;
 block|}
 DECL|method|newRegistration ()
@@ -831,6 +868,24 @@ argument_list|(
 name|refOperationValidationListeners
 argument_list|,
 name|refOperationValidationListener
+argument_list|)
+return|;
+block|}
+DECL|method|add (CommentAddedListener commentAddedListener)
+specifier|public
+name|Registration
+name|add
+parameter_list|(
+name|CommentAddedListener
+name|commentAddedListener
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|commentAddedListeners
+argument_list|,
+name|commentAddedListener
 argument_list|)
 return|;
 block|}
