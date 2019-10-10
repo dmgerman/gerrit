@@ -262,6 +262,15 @@ name|DEF_COPY_ALL_SCORES_ON_MERGE_FIRST_PARENT_UPDATE
 init|=
 literal|false
 decl_stmt|;
+DECL|field|DEF_COPY_ANY_SCORE
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|DEF_COPY_ANY_SCORE
+init|=
+literal|false
+decl_stmt|;
 DECL|field|DEF_COPY_MAX_SCORE
 specifier|public
 specifier|static
@@ -699,6 +708,11 @@ specifier|protected
 name|LabelFunction
 name|function
 decl_stmt|;
+DECL|field|copyAnyScore
+specifier|protected
+name|boolean
+name|copyAnyScore
+decl_stmt|;
 DECL|field|copyMinScore
 specifier|protected
 name|boolean
@@ -949,6 +963,11 @@ expr_stmt|;
 name|setCopyAllScoresOnMergeFirstParentUpdate
 argument_list|(
 name|DEF_COPY_ALL_SCORES_ON_MERGE_FIRST_PARENT_UPDATE
+argument_list|)
+expr_stmt|;
+name|setCopyAnyScore
+argument_list|(
+name|DEF_COPY_ANY_SCORE
 argument_list|)
 expr_stmt|;
 name|setCopyMaxScore
@@ -1301,6 +1320,32 @@ operator|.
 name|defaultValue
 operator|=
 name|defaultValue
+expr_stmt|;
+block|}
+DECL|method|isCopyAnyScore ()
+specifier|public
+name|boolean
+name|isCopyAnyScore
+parameter_list|()
+block|{
+return|return
+name|copyAnyScore
+return|;
+block|}
+DECL|method|setCopyAnyScore (boolean copyAnyScore)
+specifier|public
+name|void
+name|setCopyAnyScore
+parameter_list|(
+name|boolean
+name|copyAnyScore
+parameter_list|)
+block|{
+name|this
+operator|.
+name|copyAnyScore
+operator|=
+name|copyAnyScore
 expr_stmt|;
 block|}
 DECL|method|isCopyMinScore ()
