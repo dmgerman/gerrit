@@ -604,6 +604,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableMap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|ImmutableSet
 import|;
 end_import
@@ -3985,7 +3999,7 @@ name|resultChangeIds
 decl_stmt|;
 DECL|field|loggingTags
 specifier|private
-name|Map
+name|ImmutableMap
 argument_list|<
 name|String
 argument_list|,
@@ -4610,9 +4624,9 @@ name|this
 operator|.
 name|loggingTags
 operator|=
-operator|new
-name|HashMap
-argument_list|<>
+name|ImmutableMap
+operator|.
+name|of
 argument_list|()
 expr_stmt|;
 block|}
@@ -4735,6 +4749,7 @@ name|ERROR
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Sends all messages which have been collected while processing the push to the client.    *    *<p><strong>Attention:</strong>{@link AsyncReceiveCommits} may call this method while {@link    * #processCommands(Collection, MultiProgressMonitor)} is still running (if the execution of    * processCommands takes too long and AsyncReceiveCommits gets a timeout). This means that local    * variables that are accessed in this method must be thread-safe (otherwise we may hit a {@link    * java.util.ConcurrentModificationException} if we read a variable here that at the same time is    * updated by the background thread that still executes processCommands).    */
 DECL|method|sendMessages ()
 name|void
 name|sendMessages
@@ -5097,14 +5112,11 @@ name|end
 argument_list|()
 expr_stmt|;
 name|loggingTags
-operator|.
-name|putAll
-argument_list|(
+operator|=
 name|traceContext
 operator|.
 name|getTags
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|logger
 operator|.
