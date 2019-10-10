@@ -136,6 +136,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|change
+operator|.
+name|ChangeETagComputation
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|ChangeMessageModifier
@@ -309,9 +325,18 @@ name|ChangeMessageModifier
 argument_list|>
 name|changeMessageModifiers
 decl_stmt|;
+DECL|field|changeETagComputations
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|ChangeETagComputation
+argument_list|>
+name|changeETagComputations
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExtensionRegistry ( DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers)
+DECL|method|ExtensionRegistry ( DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations)
 name|ExtensionRegistry
 parameter_list|(
 name|DynamicSet
@@ -355,6 +380,12 @@ argument_list|<
 name|ChangeMessageModifier
 argument_list|>
 name|changeMessageModifiers
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|ChangeETagComputation
+argument_list|>
+name|changeETagComputations
 parameter_list|)
 block|{
 name|this
@@ -398,6 +429,12 @@ operator|.
 name|changeMessageModifiers
 operator|=
 name|changeMessageModifiers
+expr_stmt|;
+name|this
+operator|.
+name|changeETagComputations
+operator|=
+name|changeETagComputations
 expr_stmt|;
 block|}
 DECL|method|newRegistration ()
@@ -556,6 +593,24 @@ argument_list|(
 name|changeMessageModifiers
 argument_list|,
 name|changeMessageModifier
+argument_list|)
+return|;
+block|}
+DECL|method|add (ChangeETagComputation changeETagComputation)
+specifier|public
+name|Registration
+name|add
+parameter_list|(
+name|ChangeETagComputation
+name|changeETagComputation
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|changeETagComputations
+argument_list|,
+name|changeETagComputation
 argument_list|)
 return|;
 block|}
