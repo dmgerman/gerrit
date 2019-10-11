@@ -131,7 +131,10 @@ name|assertThat
 argument_list|(
 name|metadata
 operator|.
-name|toStringForLogging
+name|toStringForLoggingLazy
+argument_list|()
+operator|.
+name|evaluate
 argument_list|()
 argument_list|)
 operator|.
@@ -164,7 +167,10 @@ name|assertThat
 argument_list|(
 name|metadata
 operator|.
-name|toStringForLogging
+name|toStringForLoggingLazy
+argument_list|()
+operator|.
+name|evaluate
 argument_list|()
 argument_list|)
 operator|.

@@ -638,7 +638,7 @@ name|operation
 argument_list|,
 name|metadata
 operator|.
-name|toStringForLogging
+name|toStringForLoggingLazy
 argument_list|()
 argument_list|)
 argument_list|,
@@ -679,7 +679,7 @@ name|operation
 argument_list|,
 name|metadata
 operator|.
-name|toStringForLogging
+name|toStringForLoggingLazy
 argument_list|()
 argument_list|,
 name|elapsedMs

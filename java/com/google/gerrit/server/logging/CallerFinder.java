@@ -207,7 +207,7 @@ name|boolean
 name|matchInnerClasses
 parameter_list|()
 function_decl|;
-comment|/**    * The minimum number of calls known to have occurred between the first call to the target class    * and the call of {@link #findCaller()}. If in doubt, specify zero here to avoid accidentally    * skipping past the caller.    *    * @return the number of stack elements to skip when computing the caller    */
+comment|/**    * The minimum number of calls known to have occurred between the first call to the target class    * and the call of {@link #findCallerLazy()}. If in doubt, specify zero here to avoid accidentally    * skipping past the caller.    *    * @return the number of stack elements to skip when computing the caller    */
 DECL|method|skip ()
 specifier|public
 specifier|abstract
@@ -394,13 +394,13 @@ name|build
 parameter_list|()
 function_decl|;
 block|}
-DECL|method|findCaller ()
+DECL|method|findCallerLazy ()
 specifier|public
 name|LazyArg
 argument_list|<
 name|String
 argument_list|>
-name|findCaller
+name|findCallerLazy
 parameter_list|()
 block|{
 return|return

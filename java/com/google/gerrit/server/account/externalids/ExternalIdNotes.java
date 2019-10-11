@@ -3131,7 +3131,7 @@ literal|"Reading external ID note map (caller: %s)"
 argument_list|,
 name|callerFinder
 operator|.
-name|findCaller
+name|findCallerLazy
 argument_list|()
 argument_list|)
 expr_stmt|;
