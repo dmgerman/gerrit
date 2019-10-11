@@ -314,6 +314,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|GroupBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|ChangeETagComputation
@@ -634,9 +650,18 @@ name|RevisionCreatedListener
 argument_list|>
 name|revisionCreatedListeners
 decl_stmt|;
+DECL|field|groupBackends
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|GroupBackend
+argument_list|>
+name|groupBackends
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExtensionRegistry ( DynamicSet<AccountIndexedListener> accountIndexedListeners, DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<GroupIndexedListener> groupIndexedListeners, DynamicSet<ProjectIndexedListener> projectIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes, DynamicSet<RefOperationValidationListener> refOperationValidationListeners, DynamicSet<CommentAddedListener> commentAddedListeners, DynamicSet<GitReferenceUpdatedListener> refUpdatedListeners, DynamicSet<FileHistoryWebLink> fileHistoryWebLinks, DynamicSet<RevisionCreatedListener> revisionCreatedListeners)
+DECL|method|ExtensionRegistry ( DynamicSet<AccountIndexedListener> accountIndexedListeners, DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<GroupIndexedListener> groupIndexedListeners, DynamicSet<ProjectIndexedListener> projectIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes, DynamicSet<RefOperationValidationListener> refOperationValidationListeners, DynamicSet<CommentAddedListener> commentAddedListeners, DynamicSet<GitReferenceUpdatedListener> refUpdatedListeners, DynamicSet<FileHistoryWebLink> fileHistoryWebLinks, DynamicSet<RevisionCreatedListener> revisionCreatedListeners, DynamicSet<GroupBackend> groupBackends)
 name|ExtensionRegistry
 parameter_list|(
 name|DynamicSet
@@ -746,6 +771,12 @@ argument_list|<
 name|RevisionCreatedListener
 argument_list|>
 name|revisionCreatedListeners
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|GroupBackend
+argument_list|>
+name|groupBackends
 parameter_list|)
 block|{
 name|this
@@ -855,6 +886,12 @@ operator|.
 name|revisionCreatedListeners
 operator|=
 name|revisionCreatedListeners
+expr_stmt|;
+name|this
+operator|.
+name|groupBackends
+operator|=
+name|groupBackends
 expr_stmt|;
 block|}
 DECL|method|newRegistration ()
@@ -1244,6 +1281,24 @@ argument_list|(
 name|revisionCreatedListeners
 argument_list|,
 name|revisionCreatedListener
+argument_list|)
+return|;
+block|}
+DECL|method|add (GroupBackend groupBackend)
+specifier|public
+name|Registration
+name|add
+parameter_list|(
+name|GroupBackend
+name|groupBackend
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|groupBackends
+argument_list|,
+name|groupBackend
 argument_list|)
 return|;
 block|}
