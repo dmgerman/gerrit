@@ -400,6 +400,24 @@ name|git
 operator|.
 name|validators
 operator|.
+name|OnSubmitValidationListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|validators
+operator|.
 name|RefOperationValidationListener
 import|;
 end_import
@@ -709,9 +727,18 @@ argument_list|>
 DECL|field|accountActivationValidationListeners
 name|accountActivationValidationListeners
 decl_stmt|;
+DECL|field|onSubmitValidationListeners
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|OnSubmitValidationListener
+argument_list|>
+name|onSubmitValidationListeners
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExtensionRegistry ( DynamicSet<AccountIndexedListener> accountIndexedListeners, DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<GroupIndexedListener> groupIndexedListeners, DynamicSet<ProjectIndexedListener> projectIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes, DynamicSet<RefOperationValidationListener> refOperationValidationListeners, DynamicSet<CommentAddedListener> commentAddedListeners, DynamicSet<GitReferenceUpdatedListener> refUpdatedListeners, DynamicSet<FileHistoryWebLink> fileHistoryWebLinks, DynamicSet<PatchSetWebLink> patchSetWebLinks, DynamicSet<RevisionCreatedListener> revisionCreatedListeners, DynamicSet<GroupBackend> groupBackends, DynamicSet<AccountActivationValidationListener> accountActivationValidationListeners)
+DECL|method|ExtensionRegistry ( DynamicSet<AccountIndexedListener> accountIndexedListeners, DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<GroupIndexedListener> groupIndexedListeners, DynamicSet<ProjectIndexedListener> projectIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes, DynamicSet<RefOperationValidationListener> refOperationValidationListeners, DynamicSet<CommentAddedListener> commentAddedListeners, DynamicSet<GitReferenceUpdatedListener> refUpdatedListeners, DynamicSet<FileHistoryWebLink> fileHistoryWebLinks, DynamicSet<PatchSetWebLink> patchSetWebLinks, DynamicSet<RevisionCreatedListener> revisionCreatedListeners, DynamicSet<GroupBackend> groupBackends, DynamicSet<AccountActivationValidationListener> accountActivationValidationListeners, DynamicSet<OnSubmitValidationListener> onSubmitValidationListeners)
 name|ExtensionRegistry
 parameter_list|(
 name|DynamicSet
@@ -839,6 +866,12 @@ argument_list|<
 name|AccountActivationValidationListener
 argument_list|>
 name|accountActivationValidationListeners
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|OnSubmitValidationListener
+argument_list|>
+name|onSubmitValidationListeners
 parameter_list|)
 block|{
 name|this
@@ -966,6 +999,12 @@ operator|.
 name|accountActivationValidationListeners
 operator|=
 name|accountActivationValidationListeners
+expr_stmt|;
+name|this
+operator|.
+name|onSubmitValidationListeners
+operator|=
+name|onSubmitValidationListeners
 expr_stmt|;
 block|}
 DECL|method|newRegistration ()
@@ -1409,6 +1448,24 @@ argument_list|(
 name|accountActivationValidationListeners
 argument_list|,
 name|accountActivationValidationListener
+argument_list|)
+return|;
+block|}
+DECL|method|add (OnSubmitValidationListener onSubmitValidationListener)
+specifier|public
+name|Registration
+name|add
+parameter_list|(
+name|OnSubmitValidationListener
+name|onSubmitValidationListener
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|onSubmitValidationListeners
+argument_list|,
+name|onSubmitValidationListener
 argument_list|)
 return|;
 block|}
