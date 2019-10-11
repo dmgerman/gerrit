@@ -138,7 +138,7 @@ name|String
 name|version
 parameter_list|)
 block|{
-comment|// "git version x.y.z"
+comment|// "git version x.y.z", at Google "git version x.y.z.gXXXXXXXXXX-goog"
 name|String
 name|parts
 index|[]
@@ -158,14 +158,27 @@ argument_list|(
 literal|"\\."
 argument_list|)
 decl_stmt|;
+name|int
+name|numParts
+init|=
+name|Math
+operator|.
+name|min
+argument_list|(
+name|parts
+operator|.
+name|length
+argument_list|,
+literal|3
+argument_list|)
+decl_stmt|;
+comment|// ignore Google-specific part of the version
 name|v
 operator|=
 operator|new
 name|int
 index|[
-name|parts
-operator|.
-name|length
+name|numParts
 index|]
 expr_stmt|;
 for|for
@@ -177,9 +190,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|parts
-operator|.
-name|length
+name|numParts
 condition|;
 name|i
 operator|++
