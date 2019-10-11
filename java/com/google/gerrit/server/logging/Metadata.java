@@ -662,13 +662,25 @@ argument_list|>
 name|toStringForLoggingLazy
 parameter_list|()
 block|{
+comment|// Don't use a lambda because different compilers generate different method names for lambdas,
+comment|// e.g. "lambda$myFunction$0" vs. just "lambda$0" in Eclipse. We need to identify the method
+comment|// by name to skip it and avoid infinite recursion.
 return|return
 name|LazyArgs
 operator|.
 name|lazy
 argument_list|(
+name|this
+operator|::
+name|toStringForLoggingImpl
+argument_list|)
+return|;
+block|}
+DECL|method|toStringForLoggingImpl ()
+specifier|private
+name|String
+name|toStringForLoggingImpl
 parameter_list|()
-lambda|->
 block|{
 comment|// Append class name.
 name|String
@@ -769,13 +781,23 @@ operator|.
 name|getName
 argument_list|()
 operator|.
-name|matches
+name|equals
 argument_list|(
-literal|"(lambda\\$)?toStringForLoggingLazy(\\$0)?"
+literal|"toStringForLoggingLazy"
+argument_list|)
+operator|||
+name|method
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"toStringForLoggingImpl"
 argument_list|)
 condition|)
 block|{
-comment|// skip toStringForLoggingLazy() and the lambda itself
+comment|// Don't call myself in infinite recursion.
 continue|continue;
 block|}
 if|if
@@ -916,9 +938,6 @@ name|stringHelper
 operator|.
 name|toString
 argument_list|()
-return|;
-block|}
-argument_list|)
 return|;
 block|}
 DECL|method|builder ()
