@@ -20764,7 +20764,7 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"Auto-closing %s changes with existing patch sets and %s with new patch sets"
+literal|"Auto-closing %d changes with existing patch sets and %d with new patch sets"
 argument_list|,
 name|existingPatchSets
 argument_list|,
