@@ -448,6 +448,22 @@ name|server
 operator|.
 name|validators
 operator|.
+name|AccountActivationValidationListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|validators
+operator|.
 name|ProjectCreationValidationListener
 import|;
 end_import
@@ -684,9 +700,18 @@ name|GroupBackend
 argument_list|>
 name|groupBackends
 decl_stmt|;
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|AccountActivationValidationListener
+argument_list|>
+DECL|field|accountActivationValidationListeners
+name|accountActivationValidationListeners
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExtensionRegistry ( DynamicSet<AccountIndexedListener> accountIndexedListeners, DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<GroupIndexedListener> groupIndexedListeners, DynamicSet<ProjectIndexedListener> projectIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes, DynamicSet<RefOperationValidationListener> refOperationValidationListeners, DynamicSet<CommentAddedListener> commentAddedListeners, DynamicSet<GitReferenceUpdatedListener> refUpdatedListeners, DynamicSet<FileHistoryWebLink> fileHistoryWebLinks, DynamicSet<PatchSetWebLink> patchSetWebLinks, DynamicSet<RevisionCreatedListener> revisionCreatedListeners, DynamicSet<GroupBackend> groupBackends)
+DECL|method|ExtensionRegistry ( DynamicSet<AccountIndexedListener> accountIndexedListeners, DynamicSet<ChangeIndexedListener> changeIndexedListeners, DynamicSet<GroupIndexedListener> groupIndexedListeners, DynamicSet<ProjectIndexedListener> projectIndexedListeners, DynamicSet<CommitValidationListener> commitValidationListeners, DynamicSet<ExceptionHook> exceptionHooks, DynamicSet<PerformanceLogger> performanceLoggers, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, DynamicSet<SubmitRule> submitRules, DynamicSet<ChangeMessageModifier> changeMessageModifiers, DynamicSet<ChangeETagComputation> changeETagComputations, DynamicSet<ActionVisitor> actionVisitors, DynamicMap<DownloadScheme> downloadSchemes, DynamicSet<RefOperationValidationListener> refOperationValidationListeners, DynamicSet<CommentAddedListener> commentAddedListeners, DynamicSet<GitReferenceUpdatedListener> refUpdatedListeners, DynamicSet<FileHistoryWebLink> fileHistoryWebLinks, DynamicSet<PatchSetWebLink> patchSetWebLinks, DynamicSet<RevisionCreatedListener> revisionCreatedListeners, DynamicSet<GroupBackend> groupBackends, DynamicSet<AccountActivationValidationListener> accountActivationValidationListeners)
 name|ExtensionRegistry
 parameter_list|(
 name|DynamicSet
@@ -808,6 +833,12 @@ argument_list|<
 name|GroupBackend
 argument_list|>
 name|groupBackends
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|AccountActivationValidationListener
+argument_list|>
+name|accountActivationValidationListeners
 parameter_list|)
 block|{
 name|this
@@ -929,6 +960,12 @@ operator|.
 name|groupBackends
 operator|=
 name|groupBackends
+expr_stmt|;
+name|this
+operator|.
+name|accountActivationValidationListeners
+operator|=
+name|accountActivationValidationListeners
 expr_stmt|;
 block|}
 DECL|method|newRegistration ()
@@ -1354,6 +1391,24 @@ argument_list|(
 name|groupBackends
 argument_list|,
 name|groupBackend
+argument_list|)
+return|;
+block|}
+DECL|method|add ( AccountActivationValidationListener accountActivationValidationListener)
+specifier|public
+name|Registration
+name|add
+parameter_list|(
+name|AccountActivationValidationListener
+name|accountActivationValidationListener
+parameter_list|)
+block|{
+return|return
+name|add
+argument_list|(
+name|accountActivationValidationListeners
+argument_list|,
+name|accountActivationValidationListener
 argument_list|)
 return|;
 block|}
