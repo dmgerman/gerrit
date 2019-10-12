@@ -579,8 +579,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-comment|// TODO(fishywang): Currently as we don't have much documentation, we just use MAX_VALUE here
-comment|// and skipped paging. Maybe add paging later.
+comment|// We don't have much documentation, so we just use MAX_VALUE here and skip paging.
 name|TopDocs
 name|results
 init|=
