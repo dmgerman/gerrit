@@ -112,6 +112,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|io
+operator|.
+name|BaseEncoding
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -119,20 +133,6 @@ operator|.
 name|http
 operator|.
 name|HttpServletRequest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|Base64
 import|;
 end_import
 
@@ -282,7 +282,10 @@ operator|=
 operator|new
 name|String
 argument_list|(
-name|Base64
+name|BaseEncoding
+operator|.
+name|base64
+argument_list|()
 operator|.
 name|decode
 argument_list|(
