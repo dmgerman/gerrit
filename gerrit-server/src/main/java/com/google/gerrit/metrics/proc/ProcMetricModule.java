@@ -483,13 +483,10 @@ name|MetricMaker
 name|metrics
 parameter_list|)
 block|{
-specifier|final
-name|OperatingSystemMXBeanProvider
+name|OperatingSystemMXBeanInterface
 name|provider
 init|=
-name|OperatingSystemMXBeanProvider
-operator|.
-name|Factory
+name|OperatingSystemMXBeanFactory
 operator|.
 name|create
 argument_list|()
