@@ -1633,7 +1633,7 @@ literal|"container"
 argument_list|,
 literal|null
 argument_list|,
-literal|"slave"
+literal|"replica"
 argument_list|,
 literal|true
 argument_list|)
