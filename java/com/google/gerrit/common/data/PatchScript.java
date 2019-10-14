@@ -345,11 +345,6 @@ specifier|private
 name|boolean
 name|hugeFile
 decl_stmt|;
-DECL|field|intralineDifference
-specifier|private
-name|boolean
-name|intralineDifference
-decl_stmt|;
 DECL|field|intralineFailure
 specifier|private
 name|boolean
@@ -377,7 +372,7 @@ specifier|transient
 name|String
 name|commitIdB
 decl_stmt|;
-DECL|method|PatchScript ( Change.Key ck, ChangeType ct, String on, String nn, FileMode om, FileMode nm, List<String> h, DiffPreferencesInfo dp, SparseFileContent ca, SparseFileContent cb, List<Edit> e, Set<Edit> editsDueToRebase, DisplayMethod ma, DisplayMethod mb, String mta, String mtb, CommentDetail cd, List<Patch> hist, boolean hf, boolean id, boolean idf, boolean idt, boolean bin, String cma, String cmb)
+DECL|method|PatchScript ( Change.Key ck, ChangeType ct, String on, String nn, FileMode om, FileMode nm, List<String> h, DiffPreferencesInfo dp, SparseFileContent ca, SparseFileContent cb, List<Edit> e, Set<Edit> editsDueToRebase, DisplayMethod ma, DisplayMethod mb, String mta, String mtb, CommentDetail cd, List<Patch> hist, boolean hf, boolean idf, boolean idt, boolean bin, String cma, String cmb)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -451,9 +446,6 @@ name|hist
 parameter_list|,
 name|boolean
 name|hf
-parameter_list|,
-name|boolean
-name|id
 parameter_list|,
 name|boolean
 name|idf
@@ -548,10 +540,6 @@ expr_stmt|;
 name|hugeFile
 operator|=
 name|hf
-expr_stmt|;
-name|intralineDifference
-operator|=
-name|id
 expr_stmt|;
 name|intralineFailure
 operator|=
@@ -745,16 +733,6 @@ operator|!=
 name|Whitespace
 operator|.
 name|IGNORE_NONE
-return|;
-block|}
-DECL|method|hasIntralineDifference ()
-specifier|public
-name|boolean
-name|hasIntralineDifference
-parameter_list|()
-block|{
-return|return
-name|intralineDifference
 return|;
 block|}
 DECL|method|hasIntralineFailure ()
