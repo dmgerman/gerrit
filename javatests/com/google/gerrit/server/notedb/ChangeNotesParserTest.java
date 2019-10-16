@@ -806,6 +806,51 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|parseAssignee ()
+specifier|public
+name|void
+name|parseAssignee
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Assignee: Change Owner<1@gerrit>\n"
+operator|+
+literal|"Subject: This is a test change\n"
+argument_list|)
+expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
+literal|"Patch-set: 2\n"
+operator|+
+literal|"Assignee:\n"
+operator|+
+literal|"Subject: This is a test change\n"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|parseTopic ()
 specifier|public
 name|void

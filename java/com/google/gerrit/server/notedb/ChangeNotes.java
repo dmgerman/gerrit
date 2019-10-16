@@ -104,6 +104,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+operator|.
+name|toImmutableSet
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|entities
@@ -261,6 +277,20 @@ operator|.
 name|collect
 operator|.
 name|ListMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
 import|;
 end_import
 
@@ -531,6 +561,20 @@ operator|.
 name|exceptions
 operator|.
 name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|AssigneeStatusUpdate
 import|;
 end_import
 
@@ -2470,7 +2514,7 @@ name|reviewerUpdates
 argument_list|()
 return|;
 block|}
-comment|/** @return an ImmutableSet of Account.Ids of all users that have been assigned to this change. */
+comment|/**    * @return an ImmutableSet of Account.Ids of all users that have been assigned to this change. The    *     order of the set is the order in which they were assigned.    */
 DECL|method|getPastAssignees ()
 specifier|public
 name|ImmutableSet
@@ -2483,9 +2527,61 @@ name|getPastAssignees
 parameter_list|()
 block|{
 return|return
+name|Lists
+operator|.
+name|reverse
+argument_list|(
 name|state
 operator|.
-name|pastAssignees
+name|assigneeUpdates
+argument_list|()
+argument_list|)
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|AssigneeStatusUpdate
+operator|::
+name|currentAssignee
+argument_list|)
+operator|.
+name|filter
+argument_list|(
+name|Optional
+operator|::
+name|isPresent
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|Optional
+operator|::
+name|get
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toImmutableSet
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**    * @return an ImmutableList of AssigneeStatusUpdate of all the updates to the assignee field to    *     this change. The order of the list is from most recent updates to least recent.    */
+DECL|method|getAssigneeUpdates ()
+specifier|public
+name|ImmutableList
+argument_list|<
+name|AssigneeStatusUpdate
+argument_list|>
+name|getAssigneeUpdates
+parameter_list|()
+block|{
+return|return
+name|state
+operator|.
+name|assigneeUpdates
 argument_list|()
 return|;
 block|}
