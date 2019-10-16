@@ -1820,6 +1820,46 @@ return|return
 name|r
 return|;
 block|}
+comment|// TODO(dpursehouse): Add @UsedAt annotation
+DECL|method|read (Repository repo, Project.NameKey name)
+specifier|public
+specifier|static
+name|ProjectConfig
+name|read
+parameter_list|(
+name|Repository
+name|repo
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|name
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|ConfigInvalidException
+block|{
+name|ProjectConfig
+name|r
+init|=
+operator|new
+name|ProjectConfig
+argument_list|(
+name|name
+argument_list|)
+decl_stmt|;
+name|r
+operator|.
+name|load
+argument_list|(
+name|repo
+argument_list|)
+expr_stmt|;
+return|return
+name|r
+return|;
+block|}
 DECL|method|buildCommentLink (Config cfg, String name, boolean allowRaw)
 specifier|public
 specifier|static
