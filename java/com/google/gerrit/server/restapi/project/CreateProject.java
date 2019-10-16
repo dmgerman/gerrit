@@ -576,6 +576,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|GroupBackend
@@ -2199,7 +2213,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|// TODO(dpursehouse): Add @UsedAt annotation
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|COLLABNET
+argument_list|)
 DECL|method|createProject (CreateProjectArgs args)
 specifier|public
 name|ProjectState
