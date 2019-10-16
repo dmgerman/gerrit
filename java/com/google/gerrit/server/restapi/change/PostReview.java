@@ -2650,6 +2650,20 @@ operator|.
 name|KEEP
 argument_list|)
 expr_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"draft handling = %s"
+argument_list|,
+name|input
+operator|.
+name|drafts
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|input
