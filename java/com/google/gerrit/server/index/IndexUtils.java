@@ -122,6 +122,26 @@ name|change
 operator|.
 name|ChangeField
 operator|.
+name|LEGACY_ID_STR
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|change
+operator|.
+name|ChangeField
+operator|.
 name|PROJECT
 import|;
 end_import
@@ -179,6 +199,20 @@ operator|.
 name|exceptions
 operator|.
 name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
+name|FieldDef
 import|;
 end_import
 
@@ -275,6 +309,24 @@ operator|.
 name|group
 operator|.
 name|GroupField
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|ChangeData
 import|;
 end_import
 
@@ -481,7 +533,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|accountFields (QueryOptions opts)
+DECL|method|accountFields (QueryOptions opts, boolean useLegacyNumericFields)
 specifier|public
 specifier|static
 name|Set
@@ -492,6 +544,9 @@ name|accountFields
 parameter_list|(
 name|QueryOptions
 name|opts
+parameter_list|,
+name|boolean
+name|useLegacyNumericFields
 parameter_list|)
 block|{
 return|return
@@ -501,10 +556,12 @@ name|opts
 operator|.
 name|fields
 argument_list|()
+argument_list|,
+name|useLegacyNumericFields
 argument_list|)
 return|;
 block|}
-DECL|method|accountFields (Set<String> fields)
+DECL|method|accountFields (Set<String> fields, boolean useLegacyNumericFields)
 specifier|public
 specifier|static
 name|Set
@@ -518,19 +575,36 @@ argument_list|<
 name|String
 argument_list|>
 name|fields
+parameter_list|,
+name|boolean
+name|useLegacyNumericFields
 parameter_list|)
 block|{
-return|return
-name|fields
-operator|.
-name|contains
-argument_list|(
+name|String
+name|idFieldName
+init|=
+name|useLegacyNumericFields
+condition|?
 name|AccountField
 operator|.
 name|ID
 operator|.
 name|getName
 argument_list|()
+else|:
+name|AccountField
+operator|.
+name|ID_STR
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+return|return
+name|fields
+operator|.
+name|contains
+argument_list|(
+name|idFieldName
 argument_list|)
 condition|?
 name|fields
@@ -545,17 +619,12 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
-name|AccountField
-operator|.
-name|ID
-operator|.
-name|getName
-argument_list|()
+name|idFieldName
 argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|changeFields (QueryOptions opts)
+DECL|method|changeFields (QueryOptions opts, boolean useLegacyNumericFields)
 specifier|public
 specifier|static
 name|Set
@@ -566,8 +635,25 @@ name|changeFields
 parameter_list|(
 name|QueryOptions
 name|opts
+parameter_list|,
+name|boolean
+name|useLegacyNumericFields
 parameter_list|)
 block|{
+name|FieldDef
+argument_list|<
+name|ChangeData
+argument_list|,
+name|?
+argument_list|>
+name|idField
+init|=
+name|useLegacyNumericFields
+condition|?
+name|LEGACY_ID
+else|:
+name|LEGACY_ID_STR
+decl_stmt|;
 comment|// Ensure we request enough fields to construct a ChangeData. We need both
 comment|// change ID and project, which can either come via the Change field or
 comment|// separate fields.
@@ -616,7 +702,7 @@ name|fs
 operator|.
 name|contains
 argument_list|(
-name|LEGACY_ID
+name|idField
 operator|.
 name|getName
 argument_list|()
@@ -638,7 +724,7 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
-name|LEGACY_ID
+name|idField
 operator|.
 name|getName
 argument_list|()

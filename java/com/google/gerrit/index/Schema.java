@@ -263,6 +263,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|useLegacyNumericFields
+specifier|private
+name|boolean
+name|useLegacyNumericFields
+decl_stmt|;
 DECL|method|add (Schema<T> schema)
 specifier|public
 name|Builder
@@ -375,6 +380,28 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|legacyNumericFields (boolean useLegacyNumericFields)
+specifier|public
+name|Builder
+argument_list|<
+name|T
+argument_list|>
+name|legacyNumericFields
+parameter_list|(
+name|boolean
+name|useLegacyNumericFields
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useLegacyNumericFields
+operator|=
+name|useLegacyNumericFields
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|build ()
 specifier|public
 name|Schema
@@ -389,6 +416,8 @@ operator|new
 name|Schema
 argument_list|<>
 argument_list|(
+name|useLegacyNumericFields
+argument_list|,
 name|ImmutableList
 operator|.
 name|copyOf
@@ -574,15 +603,24 @@ argument_list|>
 argument_list|>
 name|storedFields
 decl_stmt|;
+DECL|field|useLegacyNumericFields
+specifier|private
+specifier|final
+name|boolean
+name|useLegacyNumericFields
+decl_stmt|;
 DECL|field|version
 specifier|private
 name|int
 name|version
 decl_stmt|;
-DECL|method|Schema (Iterable<FieldDef<T, ?>> fields)
+DECL|method|Schema (boolean useLegacyNumericFields, Iterable<FieldDef<T, ?>> fields)
 specifier|public
 name|Schema
 parameter_list|(
+name|boolean
+name|useLegacyNumericFields
+parameter_list|,
 name|Iterable
 argument_list|<
 name|FieldDef
@@ -599,16 +637,21 @@ name|this
 argument_list|(
 literal|0
 argument_list|,
+name|useLegacyNumericFields
+argument_list|,
 name|fields
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Schema (int version, Iterable<FieldDef<T, ?>> fields)
+DECL|method|Schema (int version, boolean useLegacyNumericFields, Iterable<FieldDef<T, ?>> fields)
 specifier|public
 name|Schema
 parameter_list|(
 name|int
 name|version
+parameter_list|,
+name|boolean
+name|useLegacyNumericFields
 parameter_list|,
 name|Iterable
 argument_list|<
@@ -733,6 +776,12 @@ operator|.
 name|build
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|useLegacyNumericFields
+operator|=
+name|useLegacyNumericFields
+expr_stmt|;
 block|}
 DECL|method|getVersion ()
 specifier|public
@@ -743,6 +792,17 @@ parameter_list|()
 block|{
 return|return
 name|version
+return|;
+block|}
+DECL|method|useLegacyNumericFields ()
+specifier|public
+specifier|final
+name|boolean
+name|useLegacyNumericFields
+parameter_list|()
+block|{
+return|return
+name|useLegacyNumericFields
 return|;
 block|}
 comment|/**    * Get all fields in this schema.    *    *<p>This is primarily useful for iteration. Most callers should prefer one of the helper methods    * {@link #getField(FieldDef, FieldDef...)} or {@link #hasField(FieldDef)} to looking up fields by    * name    *    * @return all fields in this schema indexed by name.    */

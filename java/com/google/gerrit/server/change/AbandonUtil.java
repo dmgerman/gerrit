@@ -365,11 +365,17 @@ name|ChangeQueryProcessor
 argument_list|>
 name|queryProvider
 decl_stmt|;
-DECL|field|queryBuilder
+comment|// Provider is needed, because AbandonUtil is singleton, but ChangeQueryBuilder accesses
+comment|// index collection, that is only provided when multiversion index module is started.
+comment|// TODO(davido); Remove provider again, when support for legacy numeric fields is removed.
+DECL|field|queryBuilderProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ChangeQueryBuilder
-name|queryBuilder
+argument_list|>
+name|queryBuilderProvider
 decl_stmt|;
 DECL|field|batchAbandon
 specifier|private
@@ -385,7 +391,7 @@ name|internalUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, Provider<ChangeQueryProcessor> queryProvider, ChangeQueryBuilder queryBuilder, BatchAbandon batchAbandon)
+DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, Provider<ChangeQueryProcessor> queryProvider, Provider<ChangeQueryBuilder> queryBuilderProvider, BatchAbandon batchAbandon)
 name|AbandonUtil
 parameter_list|(
 name|ChangeCleanupConfig
@@ -402,8 +408,11 @@ name|ChangeQueryProcessor
 argument_list|>
 name|queryProvider
 parameter_list|,
+name|Provider
+argument_list|<
 name|ChangeQueryBuilder
-name|queryBuilder
+argument_list|>
+name|queryBuilderProvider
 parameter_list|,
 name|BatchAbandon
 name|batchAbandon
@@ -423,9 +432,9 @@ name|queryProvider
 expr_stmt|;
 name|this
 operator|.
-name|queryBuilder
+name|queryBuilderProvider
 operator|=
-name|queryBuilder
+name|queryBuilderProvider
 expr_stmt|;
 name|this
 operator|.
@@ -517,7 +526,10 @@ argument_list|)
 operator|.
 name|query
 argument_list|(
-name|queryBuilder
+name|queryBuilderProvider
+operator|.
+name|get
+argument_list|()
 operator|.
 name|parse
 argument_list|(
@@ -831,7 +843,10 @@ argument_list|)
 operator|.
 name|query
 argument_list|(
-name|queryBuilder
+name|queryBuilderProvider
+operator|.
+name|get
+argument_list|()
 operator|.
 name|parse
 argument_list|(

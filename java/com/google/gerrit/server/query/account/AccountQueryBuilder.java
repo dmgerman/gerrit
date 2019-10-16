@@ -1377,6 +1377,11 @@ name|AccountPredicates
 operator|.
 name|id
 argument_list|(
+name|args
+operator|.
+name|schema
+argument_list|()
+argument_list|,
 name|self
 argument_list|()
 argument_list|)

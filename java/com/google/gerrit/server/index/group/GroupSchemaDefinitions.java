@@ -264,6 +264,8 @@ argument_list|)
 decl_stmt|;
 comment|// Lucene index was changed to add an additional field for sorting.
 DECL|field|V7
+annotation|@
+name|Deprecated
 specifier|static
 specifier|final
 name|Schema
@@ -275,6 +277,24 @@ init|=
 name|schema
 argument_list|(
 name|V6
+argument_list|)
+decl_stmt|;
+comment|// New numeric types: use dimensional points using the k-d tree geo-spatial data structure
+comment|// to offer fast single- and multi-dimensional numeric range.
+DECL|field|V8
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|InternalGroup
+argument_list|>
+name|V8
+init|=
+name|schema
+argument_list|(
+name|V7
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|INSTANCE

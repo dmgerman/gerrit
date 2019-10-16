@@ -393,6 +393,8 @@ argument_list|)
 decl_stmt|;
 comment|// The computation of the 'extension' field is changed, hence reindexing is required.
 DECL|field|V56
+annotation|@
+name|Deprecated
 specifier|static
 specifier|final
 name|Schema
@@ -405,6 +407,54 @@ name|schema
 argument_list|(
 name|V55
 argument_list|)
+decl_stmt|;
+comment|// New numeric types: use dimensional points using the k-d tree geo-spatial data structure
+comment|// to offer fast single- and multi-dimensional numeric range. As the consequense, integer
+comment|// document id type is replaced with string document id type.
+DECL|field|V57
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|V57
+init|=
+operator|new
+name|Schema
+operator|.
+name|Builder
+argument_list|<
+name|ChangeData
+argument_list|>
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|V56
+argument_list|)
+operator|.
+name|remove
+argument_list|(
+name|ChangeField
+operator|.
+name|LEGACY_ID
+argument_list|)
+operator|.
+name|add
+argument_list|(
+name|ChangeField
+operator|.
+name|LEGACY_ID_STR
+argument_list|)
+operator|.
+name|legacyNumericFields
+argument_list|(
+literal|false
+argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 DECL|field|NAME
 specifier|public
