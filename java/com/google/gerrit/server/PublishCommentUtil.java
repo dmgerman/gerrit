@@ -414,7 +414,7 @@ operator|=
 name|patchListCache
 expr_stmt|;
 block|}
-DECL|method|publish ( ChangeContext ctx, PatchSet.Id psId, Collection<Comment> drafts, @Nullable String tag)
+DECL|method|publish ( ChangeContext ctx, PatchSet.Id psId, Collection<Comment> draftComments, @Nullable String tag)
 specifier|public
 name|void
 name|publish
@@ -431,7 +431,7 @@ name|Collection
 argument_list|<
 name|Comment
 argument_list|>
-name|drafts
+name|draftComments
 parameter_list|,
 annotation|@
 name|Nullable
@@ -456,7 +456,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|drafts
+name|draftComments
 operator|.
 name|isEmpty
 argument_list|()
@@ -480,7 +480,7 @@ name|getAsMap
 argument_list|(
 name|notes
 argument_list|,
-name|drafts
+name|draftComments
 operator|.
 name|stream
 argument_list|()
@@ -507,11 +507,23 @@ decl_stmt|;
 for|for
 control|(
 name|Comment
-name|d
+name|draftComment
 range|:
-name|drafts
+name|draftComments
 control|)
 block|{
+name|PatchSet
+operator|.
+name|Id
+name|psIdOfDraftComment
+init|=
+name|psId
+argument_list|(
+name|notes
+argument_list|,
+name|draftComment
+argument_list|)
+decl_stmt|;
 name|PatchSet
 name|ps
 init|=
@@ -519,12 +531,7 @@ name|patchSets
 operator|.
 name|get
 argument_list|(
-name|psId
-argument_list|(
-name|notes
-argument_list|,
-name|d
-argument_list|)
+name|psIdOfDraftComment
 argument_list|)
 decl_stmt|;
 if|if
@@ -540,13 +547,13 @@ name|StorageException
 argument_list|(
 literal|"patch set "
 operator|+
-name|ps
+name|psIdOfDraftComment
 operator|+
 literal|" not found"
 argument_list|)
 throw|;
 block|}
-name|d
+name|draftComment
 operator|.
 name|writtenOn
 operator|=
@@ -555,7 +562,7 @@ operator|.
 name|getWhen
 argument_list|()
 expr_stmt|;
-name|d
+name|draftComment
 operator|.
 name|tag
 operator|=
@@ -570,7 +577,7 @@ argument_list|()
 operator|.
 name|updateRealAccountId
 argument_list|(
-name|d
+name|draftComment
 operator|::
 name|setRealAuthor
 argument_list|)
@@ -581,7 +588,7 @@ name|CommentsUtil
 operator|.
 name|setCommentCommitId
 argument_list|(
-name|d
+name|draftComment
 argument_list|,
 name|patchListCache
 argument_list|,
@@ -622,7 +629,7 @@ argument_list|)
 argument_list|,
 name|PUBLISHED
 argument_list|,
-name|drafts
+name|draftComments
 argument_list|)
 expr_stmt|;
 block|}
