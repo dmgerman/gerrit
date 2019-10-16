@@ -74,11 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|restapi
-operator|.
-name|RestView
+name|BranchNameKey
 import|;
 end_import
 
@@ -90,11 +88,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|restapi
 operator|.
-name|BranchNameKey
+name|RestView
 import|;
 end_import
 

@@ -90,9 +90,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lifecycle
+name|entities
 operator|.
-name|LifecycleModule
+name|Project
 import|;
 end_import
 
@@ -104,11 +104,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|lifecycle
 operator|.
-name|client
-operator|.
-name|Project
+name|LifecycleModule
 import|;
 end_import
 

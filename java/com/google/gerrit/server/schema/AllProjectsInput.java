@@ -178,11 +178,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|client
-operator|.
-name|InheritableBoolean
+name|BooleanProjectConfig
 import|;
 end_import
 
@@ -194,11 +192,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|BooleanProjectConfig
+name|InheritableBoolean
 import|;
 end_import
 

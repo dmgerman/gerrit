@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Interface for {@link BatchUpdate} operations that touch a change.  *  *<p>Each operation has {@link #updateChange(ChangeContext)} called once the change is read in a  * transaction. Ops are associated with updates via {@link  * BatchUpdate#addOp(com.google.gerrit.reviewdb.client.Change.Id, BatchUpdateOp)}.  *  *<p>Usually, a single {@code BatchUpdateOp} instance is only associated with a single change, i.e.  * {@code addOp} is only called once with that instance. Additionally, each method in {@code  * BatchUpdateOp} is called at most once per {@link BatchUpdate} execution.  *  *<p>Taken together, these two properties mean an instance may communicate between phases by  * storing data in private fields, and a single instance must not be reused.  */
+comment|/**  * Interface for {@link BatchUpdate} operations that touch a change.  *  *<p>Each operation has {@link #updateChange(ChangeContext)} called once the change is read in a  * transaction. Ops are associated with updates via {@link  * BatchUpdate#addOp(com.google.gerrit.entities.Change.Id, BatchUpdateOp)}.  *  *<p>Usually, a single {@code BatchUpdateOp} instance is only associated with a single change, i.e.  * {@code addOp} is only called once with that instance. Additionally, each method in {@code  * BatchUpdateOp} is called at most once per {@link BatchUpdate} execution.  *  *<p>Taken together, these two properties mean an instance may communicate between phases by  * storing data in private fields, and a single instance must not be reused.  */
 end_comment
 
 begin_interface

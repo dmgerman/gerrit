@@ -86,9 +86,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
+name|entities
 operator|.
-name|InvalidSshKeyException
+name|Account
 import|;
 end_import
 
@@ -100,11 +100,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|exceptions
 operator|.
-name|client
-operator|.
-name|Account
+name|InvalidSshKeyException
 import|;
 end_import
 

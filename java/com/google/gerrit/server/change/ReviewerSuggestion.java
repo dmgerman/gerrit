@@ -88,25 +88,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|annotations
-operator|.
-name|ExtensionPoint
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|Account
 import|;
@@ -120,9 +102,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|Change
 import|;
@@ -136,11 +116,25 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|annotations
+operator|.
+name|ExtensionPoint
 import|;
 end_import
 
@@ -166,7 +160,7 @@ specifier|public
 interface|interface
 name|ReviewerSuggestion
 block|{
-comment|/**    * Suggest reviewers to add to a change.    *    * @param project The name key of the project the suggestion is for.    * @param changeId The changeId that the suggestion is for. Can be {@code null}.    * @param query The query as typed by the user. Can be {@code null}.    * @param candidates A set of candidates for the ranking. Can be empty.    * @return Set of {@link SuggestedReviewer}s. The {@link    *     com.google.gerrit.reviewdb.client.Account.Id}s listed here don't have to be included in    *     {@code candidates}.    */
+comment|/**    * Suggest reviewers to add to a change.    *    * @param project The name key of the project the suggestion is for.    * @param changeId The changeId that the suggestion is for. Can be {@code null}.    * @param query The query as typed by the user. Can be {@code null}.    * @param candidates A set of candidates for the ranking. Can be empty.    * @return Set of {@link SuggestedReviewer}s. The {@link com.google.gerrit.entities.Account.Id}s    *     listed here don't have to be included in {@code candidates}.    */
 DECL|method|suggestReviewers ( Project.NameKey project, @Nullable Change.Id changeId, @Nullable String query, Set<Account.Id> candidates)
 name|Set
 argument_list|<

@@ -76,9 +76,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|Account
 import|;
@@ -92,9 +90,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|AccountGroup
 import|;
@@ -120,7 +116,7 @@ specifier|public
 interface|interface
 name|GroupAuditEvent
 block|{
-comment|/**    * Gets the acting user who is updating the group.    *    * @return the {@link com.google.gerrit.reviewdb.client.Account.Id} of the acting user.    */
+comment|/**    * Gets the acting user who is updating the group.    *    * @return the {@link com.google.gerrit.entities.Account.Id} of the acting user.    */
 DECL|method|getActor ()
 name|Account
 operator|.
@@ -128,7 +124,7 @@ name|Id
 name|getActor
 parameter_list|()
 function_decl|;
-comment|/**    * Gets the {@link com.google.gerrit.reviewdb.client.AccountGroup.UUID} of the updated group.    *    * @return the {@link com.google.gerrit.reviewdb.client.AccountGroup.UUID} of the updated group.    */
+comment|/**    * Gets the {@link com.google.gerrit.entities.AccountGroup.UUID} of the updated group.    *    * @return the {@link com.google.gerrit.entities.AccountGroup.UUID} of the updated group.    */
 DECL|method|getUpdatedGroup ()
 name|AccountGroup
 operator|.

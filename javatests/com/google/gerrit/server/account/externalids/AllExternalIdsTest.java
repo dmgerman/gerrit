@@ -178,9 +178,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|Account
 import|;

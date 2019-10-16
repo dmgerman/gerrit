@@ -74,11 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|annotations
-operator|.
-name|ExtensionPoint
+name|Change
 import|;
 end_import
 
@@ -90,11 +88,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|annotations
 operator|.
-name|Change
+name|ExtensionPoint
 import|;
 end_import
 

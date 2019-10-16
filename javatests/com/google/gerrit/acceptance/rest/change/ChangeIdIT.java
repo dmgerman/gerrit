@@ -118,13 +118,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|api
-operator|.
-name|changes
-operator|.
-name|ChangeApi
+name|Change
 import|;
 end_import
 
@@ -136,11 +132,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|api
 operator|.
-name|Change
+name|changes
+operator|.
+name|ChangeApi
 import|;
 end_import
 

@@ -132,11 +132,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|restapi
-operator|.
-name|AuthException
+name|Account
 import|;
 end_import
 
@@ -148,11 +146,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|restapi
 operator|.
-name|Account
+name|AuthException
 import|;
 end_import
 

@@ -90,11 +90,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|registration
-operator|.
-name|DynamicItem
+name|Project
 import|;
 end_import
 
@@ -106,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|registration
 operator|.
-name|Project
+name|DynamicItem
 import|;
 end_import
 

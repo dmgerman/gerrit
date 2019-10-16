@@ -204,9 +204,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|index
+name|entities
 operator|.
-name|SiteIndexer
+name|AccountGroup
 import|;
 end_import
 
@@ -218,11 +218,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|index
 operator|.
-name|client
-operator|.
-name|AccountGroup
+name|SiteIndexer
 import|;
 end_import
 

@@ -162,9 +162,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|json
+name|entities
 operator|.
-name|OutputFormat
+name|Change
 import|;
 end_import
 
@@ -176,11 +176,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|json
 operator|.
-name|client
-operator|.
-name|Change
+name|OutputFormat
 import|;
 end_import
 

@@ -118,11 +118,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|events
-operator|.
-name|GarbageCollectorListener
+name|Project
 import|;
 end_import
 
@@ -134,11 +132,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|events
 operator|.
-name|Project
+name|GarbageCollectorListener
 import|;
 end_import
 

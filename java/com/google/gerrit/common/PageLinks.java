@@ -72,9 +72,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|AccountGroup
 import|;
@@ -88,9 +86,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|Change
 import|;
@@ -104,9 +100,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|Change
 operator|.
@@ -122,9 +116,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|KeyUtil
 import|;
@@ -138,9 +130,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|PatchSet
 import|;
@@ -154,9 +144,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|Project
 import|;

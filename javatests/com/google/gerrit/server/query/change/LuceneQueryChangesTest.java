@@ -108,11 +108,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|restapi
-operator|.
-name|BadRequestException
+name|Change
 import|;
 end_import
 
@@ -124,11 +122,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|restapi
 operator|.
-name|Change
+name|BadRequestException
 import|;
 end_import
 

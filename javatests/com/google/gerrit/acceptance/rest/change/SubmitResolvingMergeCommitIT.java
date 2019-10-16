@@ -164,11 +164,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|client
-operator|.
-name|ChangeStatus
+name|Project
 import|;
 end_import
 
@@ -180,11 +178,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|Project
+name|ChangeStatus
 import|;
 end_import
 

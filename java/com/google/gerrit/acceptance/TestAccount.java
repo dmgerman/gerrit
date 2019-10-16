@@ -158,9 +158,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|mail
+name|entities
 operator|.
-name|Address
+name|Account
 import|;
 end_import
 
@@ -172,11 +172,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|mail
 operator|.
-name|client
-operator|.
-name|Account
+name|Address
 import|;
 end_import
 

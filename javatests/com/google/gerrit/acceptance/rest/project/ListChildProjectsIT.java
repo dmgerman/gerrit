@@ -174,11 +174,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|restapi
-operator|.
-name|ResourceNotFoundException
+name|Project
 import|;
 end_import
 
@@ -190,11 +188,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|restapi
 operator|.
-name|Project
+name|ResourceNotFoundException
 import|;
 end_import
 

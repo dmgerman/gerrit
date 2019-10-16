@@ -90,9 +90,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|PatchLineComment
 operator|.
@@ -168,9 +166,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|Change
 import|;
@@ -184,9 +180,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|Comment
 import|;
@@ -200,9 +194,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
+name|entities
 operator|.
 name|RefNames
 import|;

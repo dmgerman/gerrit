@@ -172,11 +172,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|entities
 operator|.
-name|annotations
-operator|.
-name|RequiresAnyCapability
+name|Project
 import|;
 end_import
 
@@ -188,11 +186,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|annotations
 operator|.
-name|Project
+name|RequiresAnyCapability
 import|;
 end_import
 
