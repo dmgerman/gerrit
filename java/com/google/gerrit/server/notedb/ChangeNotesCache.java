@@ -1221,31 +1221,6 @@ name|I
 return|;
 comment|// updateCount
 block|}
-DECL|method|ptr (Object o, int size)
-specifier|private
-specifier|static
-name|int
-name|ptr
-parameter_list|(
-name|Object
-name|o
-parameter_list|,
-name|int
-name|size
-parameter_list|)
-block|{
-return|return
-name|o
-operator|!=
-literal|null
-condition|?
-name|P
-operator|+
-name|size
-else|:
-name|P
-return|;
-block|}
 DECL|method|str (String s)
 specifier|private
 specifier|static
