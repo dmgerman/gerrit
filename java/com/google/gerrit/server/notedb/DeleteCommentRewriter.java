@@ -92,11 +92,9 @@ name|gerrit
 operator|.
 name|entities
 operator|.
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
-operator|.
-name|PUBLISHED
 import|;
 end_import
 
@@ -849,6 +847,8 @@ name|reader
 argument_list|,
 name|noteMap
 argument_list|,
+name|Status
+operator|.
 name|PUBLISHED
 argument_list|)
 operator|.
@@ -1178,6 +1178,8 @@ argument_list|,
 name|parentCommit
 argument_list|)
 argument_list|,
+name|Status
+operator|.
 name|PUBLISHED
 argument_list|)
 decl_stmt|;

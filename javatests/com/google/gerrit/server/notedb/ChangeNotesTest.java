@@ -496,22 +496,6 @@ name|gerrit
 operator|.
 name|entities
 operator|.
-name|PatchLineComment
-operator|.
-name|Status
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|entities
-operator|.
 name|PatchSet
 import|;
 end_import
@@ -1156,6 +1140,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -1534,6 +1520,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -8507,6 +8495,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -9171,6 +9161,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -9715,6 +9707,8 @@ name|update1
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -11250,6 +11244,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -11402,6 +11398,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -11554,6 +11552,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -11706,6 +11706,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -11995,6 +11997,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -12006,6 +12010,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -12017,6 +12023,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -12216,6 +12224,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -12434,6 +12444,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -12624,6 +12636,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -12692,6 +12706,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -12876,6 +12892,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -12941,6 +12959,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -13120,6 +13140,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -13185,6 +13207,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -13369,6 +13393,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -13456,6 +13482,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -13627,6 +13655,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -13700,6 +13730,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -13938,6 +13970,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -13949,6 +13983,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -14030,6 +14066,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -14285,6 +14323,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -14296,6 +14336,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -14374,6 +14416,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -14385,6 +14429,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -14573,6 +14619,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -14831,6 +14879,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -14918,6 +14968,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -15165,6 +15217,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -15343,6 +15397,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -15433,6 +15489,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -15567,6 +15625,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -15711,6 +15771,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -15936,6 +15998,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -15947,6 +16011,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -16013,6 +16079,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -16024,6 +16092,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -16224,6 +16294,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -16235,6 +16307,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -16308,6 +16382,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -16623,6 +16699,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -16634,6 +16712,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|DRAFT
@@ -16687,6 +16767,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -16881,6 +16963,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -17010,6 +17094,8 @@ name|update1
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -17080,6 +17166,8 @@ name|update2
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED
@@ -17495,6 +17583,8 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|Comment
+operator|.
 name|Status
 operator|.
 name|PUBLISHED

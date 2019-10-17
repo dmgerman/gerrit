@@ -90,11 +90,9 @@ name|gerrit
 operator|.
 name|entities
 operator|.
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
-operator|.
-name|PUBLISHED
 import|;
 end_import
 
@@ -627,6 +625,8 @@ argument_list|(
 name|psId
 argument_list|)
 argument_list|,
+name|Status
+operator|.
 name|PUBLISHED
 argument_list|,
 name|draftComments

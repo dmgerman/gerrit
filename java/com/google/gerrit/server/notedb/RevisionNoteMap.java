@@ -110,20 +110,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|entities
-operator|.
-name|PatchLineComment
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -252,7 +238,7 @@ name|T
 argument_list|>
 name|revisionNotes
 decl_stmt|;
-DECL|method|parse ( ChangeNoteJson noteJson, LegacyChangeNoteRead legacyChangeNoteRead, Change.Id changeId, ObjectReader reader, NoteMap noteMap, PatchLineComment.Status status)
+DECL|method|parse ( ChangeNoteJson noteJson, LegacyChangeNoteRead legacyChangeNoteRead, Change.Id changeId, ObjectReader reader, NoteMap noteMap, Comment.Status status)
 specifier|static
 name|RevisionNoteMap
 argument_list|<
@@ -277,7 +263,7 @@ parameter_list|,
 name|NoteMap
 name|noteMap
 parameter_list|,
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
 name|status

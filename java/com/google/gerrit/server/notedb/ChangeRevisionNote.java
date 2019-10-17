@@ -124,20 +124,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|entities
-operator|.
-name|PatchLineComment
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -330,7 +316,7 @@ decl_stmt|;
 DECL|field|status
 specifier|private
 specifier|final
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
 name|status
@@ -340,7 +326,7 @@ specifier|private
 name|String
 name|pushCert
 decl_stmt|;
-DECL|method|ChangeRevisionNote ( ChangeNoteJson noteJson, LegacyChangeNoteRead legacyChangeNoteRead, Change.Id changeId, ObjectReader reader, ObjectId noteId, PatchLineComment.Status status)
+DECL|method|ChangeRevisionNote ( ChangeNoteJson noteJson, LegacyChangeNoteRead legacyChangeNoteRead, Change.Id changeId, ObjectReader reader, ObjectId noteId, Comment.Status status)
 name|ChangeRevisionNote
 parameter_list|(
 name|ChangeNoteJson
@@ -360,7 +346,7 @@ parameter_list|,
 name|ObjectId
 name|noteId
 parameter_list|,
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
 name|status
@@ -476,7 +462,7 @@ if|if
 condition|(
 name|status
 operator|==
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
 operator|.
@@ -507,7 +493,7 @@ if|if
 condition|(
 name|status
 operator|==
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
 operator|.

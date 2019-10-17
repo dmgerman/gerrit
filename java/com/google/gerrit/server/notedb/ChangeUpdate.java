@@ -700,20 +700,6 @@ name|gerrit
 operator|.
 name|entities
 operator|.
-name|PatchLineComment
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|entities
-operator|.
 name|Project
 import|;
 end_import
@@ -2039,12 +2025,12 @@ operator|=
 name|psDescription
 expr_stmt|;
 block|}
-DECL|method|putComment (PatchLineComment.Status status, Comment c)
+DECL|method|putComment (Comment.Status status, Comment c)
 specifier|public
 name|void
 name|putComment
 parameter_list|(
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
 name|status
@@ -2065,7 +2051,7 @@ if|if
 condition|(
 name|status
 operator|==
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
 operator|.
@@ -3119,7 +3105,7 @@ argument_list|()
 argument_list|,
 name|noteMap
 argument_list|,
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
 operator|.
