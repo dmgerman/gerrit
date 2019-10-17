@@ -92,11 +92,9 @@ name|gerrit
 operator|.
 name|entities
 operator|.
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
-operator|.
-name|PUBLISHED
 import|;
 end_import
 
@@ -640,8 +638,6 @@ name|getPublishedComments
 argument_list|(
 name|noteUtil
 argument_list|,
-name|changeId
-argument_list|,
 name|reader
 argument_list|,
 name|NoteMap
@@ -699,8 +695,6 @@ init|=
 name|getPublishedComments
 argument_list|(
 name|noteUtil
-argument_list|,
-name|changeId
 argument_list|,
 name|reader
 argument_list|,
@@ -801,7 +795,7 @@ block|}
 comment|/**    * Gets all the comments which are presented at a commit. Note they include the comments put in by    * the previous commits.    */
 annotation|@
 name|VisibleForTesting
-DECL|method|getPublishedComments ( ChangeNoteJson changeNoteJson, LegacyChangeNoteRead legacyChangeNoteRead, Change.Id changeId, ObjectReader reader, NoteMap noteMap)
+DECL|method|getPublishedComments ( ChangeNoteJson changeNoteJson, ObjectReader reader, NoteMap noteMap)
 specifier|public
 specifier|static
 name|Map
@@ -814,14 +808,6 @@ name|getPublishedComments
 parameter_list|(
 name|ChangeNoteJson
 name|changeNoteJson
-parameter_list|,
-name|LegacyChangeNoteRead
-name|legacyChangeNoteRead
-parameter_list|,
-name|Change
-operator|.
-name|Id
-name|changeId
 parameter_list|,
 name|ObjectReader
 name|reader
@@ -841,14 +827,12 @@ name|parse
 argument_list|(
 name|changeNoteJson
 argument_list|,
-name|legacyChangeNoteRead
-argument_list|,
-name|changeId
-argument_list|,
 name|reader
 argument_list|,
 name|noteMap
 argument_list|,
+name|Status
+operator|.
 name|PUBLISHED
 argument_list|)
 operator|.
@@ -893,7 +877,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getPublishedComments ( ChangeNoteUtil noteUtil, Change.Id changeId, ObjectReader reader, NoteMap noteMap)
+DECL|method|getPublishedComments ( ChangeNoteUtil noteUtil, ObjectReader reader, NoteMap noteMap)
 specifier|public
 specifier|static
 name|Map
@@ -906,11 +890,6 @@ name|getPublishedComments
 parameter_list|(
 name|ChangeNoteUtil
 name|noteUtil
-parameter_list|,
-name|Change
-operator|.
-name|Id
-name|changeId
 parameter_list|,
 name|ObjectReader
 name|reader
@@ -930,13 +909,6 @@ name|noteUtil
 operator|.
 name|getChangeNoteJson
 argument_list|()
-argument_list|,
-name|noteUtil
-operator|.
-name|getLegacyChangeNoteRead
-argument_list|()
-argument_list|,
-name|changeId
 argument_list|,
 name|reader
 argument_list|,
@@ -1160,13 +1132,6 @@ operator|.
 name|getChangeNoteJson
 argument_list|()
 argument_list|,
-name|noteUtil
-operator|.
-name|getLegacyChangeNoteRead
-argument_list|()
-argument_list|,
-name|changeId
-argument_list|,
 name|reader
 argument_list|,
 name|NoteMap
@@ -1178,6 +1143,8 @@ argument_list|,
 name|parentCommit
 argument_list|)
 argument_list|,
+name|Status
+operator|.
 name|PUBLISHED
 argument_list|)
 decl_stmt|;

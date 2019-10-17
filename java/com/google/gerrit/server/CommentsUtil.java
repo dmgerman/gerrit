@@ -232,20 +232,6 @@ name|gerrit
 operator|.
 name|entities
 operator|.
-name|PatchLineComment
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|entities
-operator|.
 name|PatchSet
 import|;
 end_import
@@ -1914,7 +1900,7 @@ name|comments
 argument_list|)
 return|;
 block|}
-DECL|method|putComments ( ChangeUpdate update, PatchLineComment.Status status, Iterable<Comment> comments)
+DECL|method|putComments (ChangeUpdate update, Comment.Status status, Iterable<Comment> comments)
 specifier|public
 name|void
 name|putComments
@@ -1922,7 +1908,7 @@ parameter_list|(
 name|ChangeUpdate
 name|update
 parameter_list|,
-name|PatchLineComment
+name|Comment
 operator|.
 name|Status
 name|status

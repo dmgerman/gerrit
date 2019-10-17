@@ -450,12 +450,6 @@ specifier|final
 name|AllUsersName
 name|allUsers
 decl_stmt|;
-DECL|field|legacyChangeNoteRead
-specifier|public
-specifier|final
-name|LegacyChangeNoteRead
-name|legacyChangeNoteRead
-decl_stmt|;
 DECL|field|metrics
 specifier|public
 specifier|final
@@ -481,7 +475,7 @@ name|cache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Args ( GitRepositoryManager repoManager, AllUsersName allUsers, ChangeNoteJson changeNoteJson, LegacyChangeNoteRead legacyChangeNoteRead, NoteDbMetrics metrics, Provider<ChangeNotesCache> cache, @GerritServerId String serverId)
+DECL|method|Args ( GitRepositoryManager repoManager, AllUsersName allUsers, ChangeNoteJson changeNoteJson, NoteDbMetrics metrics, Provider<ChangeNotesCache> cache, @GerritServerId String serverId)
 name|Args
 parameter_list|(
 name|GitRepositoryManager
@@ -492,9 +486,6 @@ name|allUsers
 parameter_list|,
 name|ChangeNoteJson
 name|changeNoteJson
-parameter_list|,
-name|LegacyChangeNoteRead
-name|legacyChangeNoteRead
 parameter_list|,
 name|NoteDbMetrics
 name|metrics
@@ -530,12 +521,6 @@ operator|.
 name|allUsers
 operator|=
 name|allUsers
-expr_stmt|;
-name|this
-operator|.
-name|legacyChangeNoteRead
-operator|=
-name|legacyChangeNoteRead
 expr_stmt|;
 name|this
 operator|.
