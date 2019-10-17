@@ -2050,18 +2050,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|LegacyChangeNoteRead
-name|reader
-init|=
-name|injector
-operator|.
-name|getInstance
-argument_list|(
-name|LegacyChangeNoteRead
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 return|return
 operator|new
 name|ChangeNotesParser
@@ -2077,8 +2065,6 @@ argument_list|,
 name|walk
 argument_list|,
 name|changeNoteJson
-argument_list|,
-name|reader
 argument_list|,
 name|args
 operator|.

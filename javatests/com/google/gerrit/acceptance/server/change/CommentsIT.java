@@ -8804,8 +8804,6 @@ name|getPublishedComments
 argument_list|(
 name|noteUtil
 argument_list|,
-name|changeId
-argument_list|,
 name|reader
 argument_list|,
 name|NoteMap
@@ -8839,8 +8837,6 @@ operator|.
 name|getPublishedComments
 argument_list|(
 name|noteUtil
-argument_list|,
-name|changeId
 argument_list|,
 name|reader
 argument_list|,

@@ -3090,14 +3090,6 @@ operator|.
 name|getChangeNoteJson
 argument_list|()
 argument_list|,
-name|noteUtil
-operator|.
-name|getLegacyChangeNoteRead
-argument_list|()
-argument_list|,
-name|getId
-argument_list|()
-argument_list|,
 name|rw
 operator|.
 name|getObjectReader

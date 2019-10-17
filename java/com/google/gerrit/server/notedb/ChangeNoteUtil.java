@@ -585,12 +585,6 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-DECL|field|legacyChangeNoteRead
-specifier|private
-specifier|final
-name|LegacyChangeNoteRead
-name|legacyChangeNoteRead
-decl_stmt|;
 DECL|field|changeNoteJson
 specifier|private
 specifier|final
@@ -605,15 +599,12 @@ name|serverId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeNoteUtil ( ChangeNoteJson changeNoteJson, LegacyChangeNoteRead legacyChangeNoteRead, @GerritServerId String serverId)
+DECL|method|ChangeNoteUtil (ChangeNoteJson changeNoteJson, @GerritServerId String serverId)
 specifier|public
 name|ChangeNoteUtil
 parameter_list|(
 name|ChangeNoteJson
 name|changeNoteJson
-parameter_list|,
-name|LegacyChangeNoteRead
-name|legacyChangeNoteRead
 parameter_list|,
 annotation|@
 name|GerritServerId
@@ -633,22 +624,6 @@ name|changeNoteJson
 operator|=
 name|changeNoteJson
 expr_stmt|;
-name|this
-operator|.
-name|legacyChangeNoteRead
-operator|=
-name|legacyChangeNoteRead
-expr_stmt|;
-block|}
-DECL|method|getLegacyChangeNoteRead ()
-specifier|public
-name|LegacyChangeNoteRead
-name|getLegacyChangeNoteRead
-parameter_list|()
-block|{
-return|return
-name|legacyChangeNoteRead
-return|;
 block|}
 DECL|method|getChangeNoteJson ()
 specifier|public

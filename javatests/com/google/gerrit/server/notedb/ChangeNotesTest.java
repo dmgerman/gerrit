@@ -864,13 +864,6 @@ specifier|private
 name|ChangeNoteJson
 name|changeNoteJson
 decl_stmt|;
-DECL|field|legacyChangeNoteRead
-annotation|@
-name|Inject
-specifier|private
-name|LegacyChangeNoteRead
-name|legacyChangeNoteRead
-decl_stmt|;
 DECL|field|serverId
 annotation|@
 name|Inject
@@ -9847,8 +9840,6 @@ name|rw
 argument_list|,
 name|changeNoteJson
 argument_list|,
-name|legacyChangeNoteRead
-argument_list|,
 name|args
 operator|.
 name|metrics
@@ -9919,8 +9910,6 @@ argument_list|,
 name|rw
 argument_list|,
 name|changeNoteJson
-argument_list|,
-name|legacyChangeNoteRead
 argument_list|,
 name|args
 operator|.

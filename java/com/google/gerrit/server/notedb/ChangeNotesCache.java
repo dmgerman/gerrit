@@ -2061,10 +2061,6 @@ name|changeNoteJson
 argument_list|,
 name|args
 operator|.
-name|legacyChangeNoteRead
-argument_list|,
-name|args
-operator|.
 name|metrics
 argument_list|)
 decl_stmt|;

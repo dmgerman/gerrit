@@ -801,13 +801,6 @@ name|args
 operator|.
 name|changeNoteJson
 argument_list|,
-name|args
-operator|.
-name|legacyChangeNoteRead
-argument_list|,
-name|getChangeId
-argument_list|()
-argument_list|,
 name|reader
 argument_list|,
 name|NoteMap

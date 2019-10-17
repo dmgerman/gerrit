@@ -90,20 +90,6 @@ name|gerrit
 operator|.
 name|entities
 operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|entities
-operator|.
 name|Comment
 import|;
 end_import
@@ -238,7 +224,7 @@ name|T
 argument_list|>
 name|revisionNotes
 decl_stmt|;
-DECL|method|parse ( ChangeNoteJson noteJson, LegacyChangeNoteRead legacyChangeNoteRead, Change.Id changeId, ObjectReader reader, NoteMap noteMap, Comment.Status status)
+DECL|method|parse ( ChangeNoteJson noteJson, ObjectReader reader, NoteMap noteMap, Comment.Status status)
 specifier|static
 name|RevisionNoteMap
 argument_list|<
@@ -248,14 +234,6 @@ name|parse
 parameter_list|(
 name|ChangeNoteJson
 name|noteJson
-parameter_list|,
-name|LegacyChangeNoteRead
-name|legacyChangeNoteRead
-parameter_list|,
-name|Change
-operator|.
-name|Id
-name|changeId
 parameter_list|,
 name|ObjectReader
 name|reader
@@ -301,10 +279,6 @@ operator|new
 name|ChangeRevisionNote
 argument_list|(
 name|noteJson
-argument_list|,
-name|legacyChangeNoteRead
-argument_list|,
-name|changeId
 argument_list|,
 name|reader
 argument_list|,
