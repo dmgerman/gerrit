@@ -82,22 +82,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|entities
-operator|.
-name|Comment
-operator|.
-name|Status
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -130,6 +114,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|flogger
+operator|.
+name|FluentLogger
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -149,6 +147,22 @@ operator|.
 name|entities
 operator|.
 name|Comment
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|entities
+operator|.
+name|Comment
+operator|.
+name|Status
 import|;
 end_import
 
@@ -348,7 +362,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -360,6 +394,18 @@ specifier|public
 class|class
 name|PublishCommentUtil
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+specifier|final
+name|FluentLogger
+name|logger
+init|=
+name|FluentLogger
+operator|.
+name|forEnclosingClass
+argument_list|()
+decl_stmt|;
 DECL|field|patchListCache
 specifier|private
 specifier|final
@@ -502,6 +548,17 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Set
+argument_list|<
+name|Comment
+argument_list|>
+name|commentsToPublish
+init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|Comment
@@ -539,17 +596,43 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|StorageException
+comment|// This can happen if changes with the same numeric ID exist:
+comment|// - change 12345 has 3 patch sets in repo X
+comment|// - another change 12345 has 7 patch sets in repo Y
+comment|// - the user saves a draft comment on patch set 6 of the change in repo Y
+comment|// - this draft comment gets stored in:
+comment|//   AllUsers -> refs/draft-comments/45/12345/<account-id>
+comment|// - when posting a review with draft handling PUBLISH_ALL_REVISIONS on the change in
+comment|//   repo X, the draft comments are loaded from
+comment|//   AllUsers -> refs/draft-comments/45/12345/<account-id>, including the draft
+comment|//   comment that was saved for patch set 6 of the change in repo Y
+comment|// - patch set 6 does not exist for the change in repo x, hence we get null for the patch
+comment|//   set here
+comment|// Instead of failing hard (and returning an Internal Server Error) to the caller,
+comment|// just ignore that comment.
+comment|// Gerrit ensures that numeric change IDs are unique, but you can get duplicates if
+comment|// change refs of one repo are copied/pushed to another repo on the same host (this
+comment|// should never be done, but we know it happens).
+name|logger
+operator|.
+name|atWarning
+argument_list|()
+operator|.
+name|log
 argument_list|(
-literal|"patch set "
-operator|+
+literal|"Ignoring draft comment %s on non existing patch set %s (repo = %s)"
+argument_list|,
+name|draftComment
+argument_list|,
 name|psIdOfDraftComment
-operator|+
-literal|" not found"
+argument_list|,
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
 argument_list|)
-throw|;
+expr_stmt|;
+continue|continue;
 block|}
 name|draftComment
 operator|.
@@ -613,6 +696,13 @@ name|e
 argument_list|)
 throw|;
 block|}
+name|commentsToPublish
+operator|.
+name|add
+argument_list|(
+name|draftComment
+argument_list|)
+expr_stmt|;
 block|}
 name|commentsUtil
 operator|.
@@ -629,7 +719,7 @@ name|Status
 operator|.
 name|PUBLISHED
 argument_list|,
-name|draftComments
+name|commentsToPublish
 argument_list|)
 expr_stmt|;
 block|}
