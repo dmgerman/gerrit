@@ -168,6 +168,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|ReplicaUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -346,18 +362,14 @@ name|void
 name|start
 parameter_list|()
 block|{
-comment|// Gerrit slaves without a reindex
+comment|// Gerrit replicas without a reindex
 if|if
 condition|(
-name|cfg
+name|ReplicaUtil
 operator|.
-name|getBoolean
+name|isReplica
 argument_list|(
-literal|"container"
-argument_list|,
-literal|"slave"
-argument_list|,
-literal|false
+name|cfg
 argument_list|)
 operator|&&
 operator|!

@@ -2568,7 +2568,7 @@ name|getBoolean
 argument_list|(
 literal|"container"
 argument_list|,
-literal|"slave"
+literal|"replica"
 argument_list|,
 literal|false
 argument_list|)
