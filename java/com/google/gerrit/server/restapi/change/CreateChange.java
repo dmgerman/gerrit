@@ -1781,8 +1781,6 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|InvalidChangeOperationException
-throws|,
 name|RestApiException
 throws|,
 name|UpdateException
