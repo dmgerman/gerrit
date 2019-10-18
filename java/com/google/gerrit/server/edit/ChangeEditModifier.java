@@ -118,6 +118,20 @@ name|gerrit
 operator|.
 name|entities
 operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|entities
+operator|.
 name|RefNames
 import|;
 end_import
@@ -1477,6 +1491,11 @@ condition|)
 block|{
 name|updateEdit
 argument_list|(
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
 name|repository
 argument_list|,
 name|optionalChangeEdit
@@ -1814,6 +1833,11 @@ condition|)
 block|{
 name|updateEdit
 argument_list|(
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
 name|repository
 argument_list|,
 name|optionalChangeEdit
@@ -2031,6 +2055,11 @@ block|{
 return|return
 name|updateEdit
 argument_list|(
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
 name|repository
 argument_list|,
 name|optionalChangeEdit
@@ -2876,6 +2905,11 @@ argument_list|)
 decl_stmt|;
 name|updateReference
 argument_list|(
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
 name|repository
 argument_list|,
 name|editRefName
@@ -2964,11 +2998,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|updateEdit ( Repository repository, ChangeEdit changeEdit, ObjectId newEditCommitId, Timestamp timestamp)
+DECL|method|updateEdit ( Project.NameKey projectName, Repository repository, ChangeEdit changeEdit, ObjectId newEditCommitId, Timestamp timestamp)
 specifier|private
 name|ChangeEdit
 name|updateEdit
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|repository
 parameter_list|,
@@ -3002,6 +3041,8 @@ argument_list|()
 decl_stmt|;
 name|updateReference
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|editRefName
@@ -3051,11 +3092,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|updateReference ( Repository repository, String refName, ObjectId currentObjectId, ObjectId targetObjectId, Timestamp timestamp)
+DECL|method|updateReference ( Project.NameKey projectName, Repository repository, String refName, ObjectId currentObjectId, ObjectId targetObjectId, Timestamp timestamp)
 specifier|private
 name|void
 name|updateReference
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|repository
 parameter_list|,
@@ -3180,10 +3226,7 @@ argument_list|()
 operator|+
 literal|" in "
 operator|+
-name|repository
-operator|.
-name|getDirectory
-argument_list|()
+name|projectName
 operator|+
 literal|": "
 operator|+
