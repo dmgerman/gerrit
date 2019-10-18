@@ -224,6 +224,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|git
+operator|.
+name|LockFailureException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|ChangeUtil
@@ -3194,6 +3208,45 @@ argument_list|(
 name|revWalk
 argument_list|)
 decl_stmt|;
+name|String
+name|message
+init|=
+literal|"cannot update "
+operator|+
+name|ru
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" in "
+operator|+
+name|projectName
+operator|+
+literal|": "
+operator|+
+name|res
+decl_stmt|;
+if|if
+condition|(
+name|res
+operator|==
+name|RefUpdate
+operator|.
+name|Result
+operator|.
+name|LOCK_FAILURE
+condition|)
+block|{
+throw|throw
+operator|new
+name|LockFailureException
+argument_list|(
+name|message
+argument_list|,
+name|ru
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|res
@@ -3217,23 +3270,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"cannot update "
-operator|+
-name|ru
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" in "
-operator|+
-name|projectName
-operator|+
-literal|": "
-operator|+
-name|ru
-operator|.
-name|getResult
-argument_list|()
+name|message
 argument_list|)
 throw|;
 block|}
