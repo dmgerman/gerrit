@@ -706,6 +706,13 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
+name|post
+argument_list|(
+literal|"/changes/%s/revert_submission"
+argument_list|)
+argument_list|,
+name|RestCall
+operator|.
 name|get
 argument_list|(
 literal|"/changes/%s/pure_revert"
