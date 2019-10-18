@@ -195,10 +195,6 @@ literal|"canonicalPath"
 argument_list|,
 literal|""
 argument_list|,
-literal|"polymer2"
-argument_list|,
-literal|"true"
-argument_list|,
 literal|"staticResourcePath"
 argument_list|,
 name|ordain
@@ -244,10 +240,6 @@ argument_list|(
 literal|"canonicalPath"
 argument_list|,
 literal|"/gerrit"
-argument_list|,
-literal|"polymer2"
-argument_list|,
-literal|"true"
 argument_list|,
 literal|"staticResourcePath"
 argument_list|,
@@ -295,10 +287,6 @@ literal|"canonicalPath"
 argument_list|,
 literal|""
 argument_list|,
-literal|"polymer2"
-argument_list|,
-literal|"true"
-argument_list|,
 literal|"staticResourcePath"
 argument_list|,
 name|ordain
@@ -344,10 +332,6 @@ argument_list|(
 literal|"canonicalPath"
 argument_list|,
 literal|"/gerrit"
-argument_list|,
-literal|"polymer2"
-argument_list|,
-literal|"true"
 argument_list|,
 literal|"staticResourcePath"
 argument_list|,
