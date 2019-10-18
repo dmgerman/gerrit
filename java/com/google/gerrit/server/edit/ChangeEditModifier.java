@@ -118,6 +118,20 @@ name|gerrit
 operator|.
 name|entities
 operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|entities
+operator|.
 name|RefNames
 import|;
 end_import
@@ -199,6 +213,20 @@ operator|.
 name|restapi
 operator|.
 name|ResourceConflictException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|LockFailureException
 import|;
 end_import
 
@@ -1477,6 +1505,11 @@ condition|)
 block|{
 name|updateEdit
 argument_list|(
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
 name|repository
 argument_list|,
 name|optionalChangeEdit
@@ -1814,6 +1847,11 @@ condition|)
 block|{
 name|updateEdit
 argument_list|(
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
 name|repository
 argument_list|,
 name|optionalChangeEdit
@@ -2031,6 +2069,11 @@ block|{
 return|return
 name|updateEdit
 argument_list|(
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
 name|repository
 argument_list|,
 name|optionalChangeEdit
@@ -2876,6 +2919,11 @@ argument_list|)
 decl_stmt|;
 name|updateReference
 argument_list|(
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
 name|repository
 argument_list|,
 name|editRefName
@@ -2964,11 +3012,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|updateEdit ( Repository repository, ChangeEdit changeEdit, ObjectId newEditCommitId, Timestamp timestamp)
+DECL|method|updateEdit ( Project.NameKey projectName, Repository repository, ChangeEdit changeEdit, ObjectId newEditCommitId, Timestamp timestamp)
 specifier|private
 name|ChangeEdit
 name|updateEdit
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|repository
 parameter_list|,
@@ -3002,6 +3055,8 @@ argument_list|()
 decl_stmt|;
 name|updateReference
 argument_list|(
+name|projectName
+argument_list|,
 name|repository
 argument_list|,
 name|editRefName
@@ -3051,11 +3106,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|updateReference ( Repository repository, String refName, ObjectId currentObjectId, ObjectId targetObjectId, Timestamp timestamp)
+DECL|method|updateReference ( Project.NameKey projectName, Repository repository, String refName, ObjectId currentObjectId, ObjectId targetObjectId, Timestamp timestamp)
 specifier|private
 name|void
 name|updateReference
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Repository
 name|repository
 parameter_list|,
@@ -3148,6 +3208,45 @@ argument_list|(
 name|revWalk
 argument_list|)
 decl_stmt|;
+name|String
+name|message
+init|=
+literal|"cannot update "
+operator|+
+name|ru
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" in "
+operator|+
+name|projectName
+operator|+
+literal|": "
+operator|+
+name|res
+decl_stmt|;
+if|if
+condition|(
+name|res
+operator|==
+name|RefUpdate
+operator|.
+name|Result
+operator|.
+name|LOCK_FAILURE
+condition|)
+block|{
+throw|throw
+operator|new
+name|LockFailureException
+argument_list|(
+name|message
+argument_list|,
+name|ru
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|res
@@ -3171,26 +3270,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"cannot update "
-operator|+
-name|ru
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" in "
-operator|+
-name|repository
-operator|.
-name|getDirectory
-argument_list|()
-operator|+
-literal|": "
-operator|+
-name|ru
-operator|.
-name|getResult
-argument_list|()
+name|message
 argument_list|)
 throw|;
 block|}
