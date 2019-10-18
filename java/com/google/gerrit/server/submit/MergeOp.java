@@ -3557,7 +3557,7 @@ parameter_list|)
 block|{
 name|logger
 operator|.
-name|atSevere
+name|atWarning
 argument_list|()
 operator|.
 name|withCause
