@@ -793,16 +793,6 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
-comment|// TODO(taoalpha): Remove once p2 fully rolled out
-name|data
-operator|.
-name|put
-argument_list|(
-literal|"polymer2"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|canonicalPath
