@@ -2945,6 +2945,11 @@ argument_list|<
 name|String
 argument_list|>
 name|traceId
+init|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
 decl_stmt|;
 DECL|method|RestApiServlet ( Globals globals, RestCollection<? extends RestResource, ? extends RestResource> members)
 specifier|public
