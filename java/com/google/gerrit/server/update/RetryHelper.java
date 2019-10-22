@@ -728,10 +728,7 @@ DECL|method|caller ()
 specifier|abstract
 name|Optional
 argument_list|<
-name|Class
-argument_list|<
-name|?
-argument_list|>
+name|String
 argument_list|>
 name|caller
 parameter_list|()
@@ -791,9 +788,18 @@ name|Duration
 name|timeout
 parameter_list|)
 function_decl|;
-DECL|method|caller (Class<?> caller)
+DECL|method|caller (String caller)
 specifier|public
 specifier|abstract
+name|Builder
+name|caller
+parameter_list|(
+name|String
+name|caller
+parameter_list|)
+function_decl|;
+DECL|method|caller (Class<?> caller)
+specifier|public
 name|Builder
 name|caller
 parameter_list|(
@@ -803,7 +809,17 @@ name|?
 argument_list|>
 name|caller
 parameter_list|)
-function_decl|;
+block|{
+return|return
+name|caller
+argument_list|(
+name|caller
+operator|.
+name|getSimpleName
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|retryWithTrace (Predicate<Throwable> exceptionPredicate)
 specifier|public
 specifier|abstract
@@ -1833,13 +1849,6 @@ name|opts
 operator|.
 name|caller
 argument_list|()
-operator|.
-name|map
-argument_list|(
-name|Class
-operator|::
-name|getSimpleName
-argument_list|)
 operator|.
 name|orElse
 argument_list|(
