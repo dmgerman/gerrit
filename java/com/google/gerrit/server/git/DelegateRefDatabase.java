@@ -205,7 +205,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Wrapper around {@link RefDatabase} that delegates all calls to the wrapped {@link RefDatabase}.  */
+comment|/**  * Wrapper around {@link RefDatabase} that delegates all calls to the wrapped {@link Repository}'s  * {@link RefDatabase}.  */
 end_comment
 
 begin_class
@@ -263,6 +263,9 @@ name|close
 parameter_list|()
 block|{
 name|delegate
+operator|.
+name|getRefDatabase
+argument_list|()
 operator|.
 name|close
 argument_list|()
