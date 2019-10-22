@@ -2066,14 +2066,12 @@ specifier|public
 specifier|static
 class|class
 name|CurrentRevision
-extends|extends
-name|RetryingRestModifyView
+implements|implements
+name|RestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
 name|RebaseInput
-argument_list|,
-name|ChangeInfo
 argument_list|>
 block|{
 DECL|field|psUtil
@@ -2090,12 +2088,9 @@ name|rebase
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CurrentRevision (RetryHelper retryHelper, PatchSetUtil psUtil, Rebase rebase)
+DECL|method|CurrentRevision (PatchSetUtil psUtil, Rebase rebase)
 name|CurrentRevision
 parameter_list|(
-name|RetryHelper
-name|retryHelper
-parameter_list|,
 name|PatchSetUtil
 name|psUtil
 parameter_list|,
@@ -2103,11 +2098,6 @@ name|Rebase
 name|rebase
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|retryHelper
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|psUtil
@@ -2123,19 +2113,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, RebaseInput input)
-specifier|protected
+DECL|method|apply (ChangeResource rsrc, RebaseInput input)
+specifier|public
 name|Response
 argument_list|<
 name|ChangeInfo
 argument_list|>
-name|applyImpl
+name|apply
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,
@@ -2180,10 +2165,8 @@ name|ok
 argument_list|(
 name|rebase
 operator|.
-name|applyImpl
+name|apply
 argument_list|(
-name|updateFactory
-argument_list|,
 operator|new
 name|RevisionResource
 argument_list|(
