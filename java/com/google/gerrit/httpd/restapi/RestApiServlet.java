@@ -3307,72 +3307,9 @@ name|performanceLoggers
 argument_list|)
 init|)
 block|{
-name|logger
-operator|.
-name|atFinest
-argument_list|()
-operator|.
-name|log
-argument_list|(
-literal|"Received REST request: %s %s (parameters: %s)"
-argument_list|,
-name|req
-operator|.
-name|getMethod
-argument_list|()
-argument_list|,
-name|req
-operator|.
-name|getRequestURI
-argument_list|()
-argument_list|,
-name|getParameterNames
+name|traceRequestData
 argument_list|(
 name|req
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|logger
-operator|.
-name|atFinest
-argument_list|()
-operator|.
-name|log
-argument_list|(
-literal|"Calling user: %s"
-argument_list|,
-name|globals
-operator|.
-name|currentUser
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getLoggableName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|logger
-operator|.
-name|atFinest
-argument_list|()
-operator|.
-name|log
-argument_list|(
-literal|"Groups: %s"
-argument_list|,
-name|globals
-operator|.
-name|currentUser
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getEffectiveGroups
-argument_list|()
-operator|.
-name|getKnownGroups
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -4436,6 +4373,8 @@ name|response
 operator|=
 name|invokeRestModifyViewWithRetry
 argument_list|(
+name|req
+argument_list|,
 name|traceContext
 argument_list|,
 name|viewData
@@ -4760,6 +4699,8 @@ name|response
 operator|=
 name|invokeRestCollectionModifyViewWithRetry
 argument_list|(
+name|req
+argument_list|,
 name|traceContext
 argument_list|,
 name|viewData
@@ -5743,7 +5684,7 @@ end_finally
 
 begin_function
 unit|}   }
-DECL|method|invokeRestModifyViewWithRetry ( TraceContext traceContext, ViewData viewData, RestModifyView<RestResource, Object> view, RestResource rsrc, Object inputRequestBody)
+DECL|method|invokeRestModifyViewWithRetry ( HttpServletRequest req, TraceContext traceContext, ViewData viewData, RestModifyView<RestResource, Object> view, RestResource rsrc, Object inputRequestBody)
 specifier|private
 name|Response
 argument_list|<
@@ -5751,6 +5692,9 @@ name|?
 argument_list|>
 name|invokeRestModifyViewWithRetry
 parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|,
 name|TraceContext
 name|traceContext
 parameter_list|,
@@ -5777,6 +5721,8 @@ block|{
 return|return
 name|invokeRestEndpointWithRetry
 argument_list|(
+name|req
+argument_list|,
 name|traceContext
 argument_list|,
 name|viewData
@@ -5797,7 +5743,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|invokeRestCollectionModifyViewWithRetry ( TraceContext traceContext, ViewData viewData, RestCollectionModifyView<RestResource, RestResource, Object> view, RestResource rsrc, Object inputRequestBody)
+DECL|method|invokeRestCollectionModifyViewWithRetry ( HttpServletRequest req, TraceContext traceContext, ViewData viewData, RestCollectionModifyView<RestResource, RestResource, Object> view, RestResource rsrc, Object inputRequestBody)
 specifier|private
 name|Response
 argument_list|<
@@ -5805,6 +5751,9 @@ name|?
 argument_list|>
 name|invokeRestCollectionModifyViewWithRetry
 parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|,
 name|TraceContext
 name|traceContext
 parameter_list|,
@@ -5833,6 +5782,8 @@ block|{
 return|return
 name|invokeRestEndpointWithRetry
 argument_list|(
+name|req
+argument_list|,
 name|traceContext
 argument_list|,
 name|viewData
@@ -5853,7 +5804,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|invokeRestEndpointWithRetry ( TraceContext traceContext, ViewData viewData, Action<Response<?>> action)
+DECL|method|invokeRestEndpointWithRetry ( HttpServletRequest req, TraceContext traceContext, ViewData viewData, Action<Response<?>> action)
 specifier|private
 name|Response
 argument_list|<
@@ -5861,6 +5812,9 @@ name|?
 argument_list|>
 name|invokeRestEndpointWithRetry
 parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|,
 name|TraceContext
 name|traceContext
 parameter_list|,
@@ -5929,6 +5883,7 @@ name|onAutoTrace
 argument_list|(
 name|autoTraceId
 lambda|->
+block|{
 name|traceId
 operator|=
 name|Optional
@@ -5937,9 +5892,21 @@ name|of
 argument_list|(
 name|autoTraceId
 argument_list|)
+argument_list|;
+comment|// Include details of the request into the trace.
+name|traceRequestData
+argument_list|(
+name|req
 argument_list|)
 expr_stmt|;
 block|}
+block|)
+function|;
+end_function
+
+begin_block
+unit|}     try
+block|{
 return|return
 name|globals
 operator|.
@@ -5985,11 +5952,43 @@ block|}
 argument_list|)
 return|;
 block|}
-end_function
+end_block
+
+begin_finally
+finally|finally
+block|{
+comment|// If auto-tracing got triggered due to a non-recoverable failure, also trace the rest of
+comment|// this request. This means logging is forced for all further log statements and the logs are
+comment|// associated with the same trace ID.
+name|traceId
+operator|.
+name|ifPresent
+argument_list|(
+name|tid
+lambda|->
+name|traceContext
+operator|.
+name|addTag
+argument_list|(
+name|RequestId
+operator|.
+name|Type
+operator|.
+name|TRACE_ID
+argument_list|,
+name|tid
+argument_list|)
+operator|.
+name|forceLogging
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+end_finally
 
 begin_function
+unit|}    private
 DECL|method|getViewName (ViewData viewData)
-specifier|private
 name|String
 name|getViewName
 parameter_list|(
@@ -10863,6 +10862,87 @@ operator|.
 name|build
 argument_list|()
 return|;
+block|}
+end_function
+
+begin_function
+DECL|method|traceRequestData (HttpServletRequest req)
+specifier|private
+name|void
+name|traceRequestData
+parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|)
+block|{
+name|logger
+operator|.
+name|atFinest
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Received REST request: %s %s (parameters: %s)"
+argument_list|,
+name|req
+operator|.
+name|getMethod
+argument_list|()
+argument_list|,
+name|req
+operator|.
+name|getRequestURI
+argument_list|()
+argument_list|,
+name|getParameterNames
+argument_list|(
+name|req
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|logger
+operator|.
+name|atFinest
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Calling user: %s"
+argument_list|,
+name|globals
+operator|.
+name|currentUser
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getLoggableName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|logger
+operator|.
+name|atFinest
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Groups: %s"
+argument_list|,
+name|globals
+operator|.
+name|currentUser
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getEffectiveGroups
+argument_list|()
+operator|.
+name|getKnownGroups
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
