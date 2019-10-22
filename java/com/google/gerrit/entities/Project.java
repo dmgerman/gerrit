@@ -128,6 +128,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -214,11 +224,22 @@ specifier|static
 class|class
 name|NameKey
 implements|implements
+name|Serializable
+implements|,
 name|Comparable
 argument_list|<
 name|NameKey
 argument_list|>
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 comment|/** Parse a Project.NameKey out of a string representation. */
 DECL|method|parse (String str)
 specifier|public

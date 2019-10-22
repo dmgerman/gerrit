@@ -100,6 +100,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|entities
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -175,6 +189,27 @@ argument_list|(
 literal|123
 argument_list|,
 literal|"four five six"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|gerritEntities ()
+specifier|public
+name|void
+name|gerritEntities
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertRoundTrip
+argument_list|(
+name|Project
+operator|.
+name|nameKey
+argument_list|(
+literal|"foo"
 argument_list|)
 argument_list|)
 expr_stmt|;
