@@ -798,28 +798,6 @@ name|String
 name|caller
 parameter_list|)
 function_decl|;
-DECL|method|caller (Class<?> caller)
-specifier|public
-name|Builder
-name|caller
-parameter_list|(
-name|Class
-argument_list|<
-name|?
-argument_list|>
-name|caller
-parameter_list|)
-block|{
-return|return
-name|caller
-argument_list|(
-name|caller
-operator|.
-name|getSimpleName
-argument_list|()
-argument_list|)
-return|;
-block|}
 DECL|method|retryWithTrace (Predicate<Throwable> exceptionPredicate)
 specifier|public
 specifier|abstract
