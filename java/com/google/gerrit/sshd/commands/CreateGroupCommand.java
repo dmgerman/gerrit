@@ -789,7 +789,13 @@ name|GroupResource
 name|createGroup
 parameter_list|()
 throws|throws
-name|Exception
+name|RestApiException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|GroupInput
 name|input

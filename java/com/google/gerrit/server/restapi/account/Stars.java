@@ -809,7 +809,9 @@ name|AccountResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|Exception
+name|RestApiException
+throws|,
+name|PermissionBackendException
 block|{
 if|if
 condition|(

@@ -4812,35 +4812,6 @@ throw|;
 block|}
 end_else
 
-begin_expr_stmt
-name|traceId
-operator|=
-name|response
-operator|.
-name|traceId
-argument_list|()
-expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
-name|traceId
-operator|.
-name|ifPresent
-argument_list|(
-name|traceId
-lambda|->
-name|res
-operator|.
-name|addHeader
-argument_list|(
-name|X_GERRIT_TRACE
-argument_list|,
-name|traceId
-argument_list|)
-argument_list|)
-expr_stmt|;
-end_expr_stmt
-
 begin_if
 if|if
 condition|(
@@ -4958,41 +4929,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
-block|}
-elseif|else
-if|if
-condition|(
-name|response
-operator|instanceof
-name|Response
-operator|.
-name|InternalServerError
-condition|)
-block|{
-comment|// Rethrow the exception to have exactly the same error handling as if the REST endpoint
-comment|// would have thrown the exception directly, instead of returning
-comment|// Response.InternalServerError.
-name|Exception
-name|cause
-init|=
-operator|(
-operator|(
-name|Response
-operator|.
-name|InternalServerError
-argument_list|<
-name|?
-argument_list|>
-operator|)
-name|response
-operator|)
-operator|.
-name|cause
-argument_list|()
-decl_stmt|;
-throw|throw
-name|cause
-throw|;
 block|}
 end_if
 

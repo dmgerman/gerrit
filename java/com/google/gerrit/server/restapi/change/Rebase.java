@@ -2093,7 +2093,13 @@ name|RebaseInput
 name|input
 parameter_list|)
 throws|throws
-name|Exception
+name|RestApiException
+throws|,
+name|UpdateException
+throws|,
+name|IOException
+throws|,
+name|PermissionBackendException
 block|{
 name|PatchSet
 name|ps

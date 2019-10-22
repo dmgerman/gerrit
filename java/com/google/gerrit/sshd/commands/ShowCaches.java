@@ -1308,8 +1308,6 @@ name|CacheInfo
 argument_list|>
 name|getCaches
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 annotation|@
 name|SuppressWarnings
