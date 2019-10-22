@@ -622,6 +622,7 @@ specifier|private
 name|boolean
 name|done
 decl_stmt|;
+comment|/**    * Returns a new {@link GroupCollector} instance.    *    * @see GroupCollector for what this class does.    */
 DECL|method|create ( ReceivePackRefCache receivePackRefCache, PatchSetUtil psUtil, ChangeNotes.Factory notesFactory, Project.NameKey project)
 specifier|public
 specifier|static
@@ -698,6 +699,7 @@ block|}
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns a new {@link GroupCollector} instance.    *    *<p>Used in production code by using {@link ChangeNotes.Factory} to get a group SHA1 (40 bytes    * string representation) from a {@link PatchSet.Id}. Unit tests use this method directly by    * passing their own lookup function.    *    * @see GroupCollector for what this class does.    */
 annotation|@
 name|VisibleForTesting
 DECL|method|GroupCollector (ReceivePackRefCache receivePackRefCache, Lookup groupLookup)
@@ -749,6 +751,7 @@ name|build
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**    * Process the given {@link RevCommit}. Callers must call {@link #visit(RevCommit)} on all commits    * between the current branch tip and the tip of a push, in reverse topo order (parents before    * children). Once all commits have been visited, call {@link #getGroups()} for the result.    *    * @see GroupCollector for what this class does.    */
 DECL|method|visit (RevCommit c)
 specifier|public
 name|void
@@ -1049,6 +1052,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**    * Returns the groups that got collected from visiting commits using {@link #visit(RevCommit)}.    */
 DECL|method|getGroups ()
 specifier|public
 name|SortedSetMultimap
