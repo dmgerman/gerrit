@@ -1347,6 +1347,14 @@ argument_list|,
 name|ChangeInfo
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|anonymousCowardName
 specifier|private
 specifier|final
@@ -1469,9 +1477,17 @@ name|disablePrivateChanges
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateChange ( @nonymousCowardName String anonymousCowardName, GitRepositoryManager gitManager, Sequences seq, @GerritPersonIdent PersonIdent myIdent, PermissionBackend permissionBackend, Provider<CurrentUser> user, ProjectsCollection projectsCollection, CommitsCollection commits, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeFinder changeFinder, Provider<InternalChangeQuery> queryProvider, RetryHelper retryHelper, PatchSetUtil psUtil, @GerritServerConfig Config config, MergeUtil.Factory mergeUtilFactory, NotifyResolver notifyResolver, ContributorAgreementsChecker contributorAgreements)
+DECL|method|CreateChange ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager gitManager, Sequences seq, @GerritPersonIdent PersonIdent myIdent, PermissionBackend permissionBackend, Provider<CurrentUser> user, ProjectsCollection projectsCollection, CommitsCollection commits, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeFinder changeFinder, Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil, @GerritServerConfig Config config, MergeUtil.Factory mergeUtilFactory, NotifyResolver notifyResolver, ContributorAgreementsChecker contributorAgreements)
 name|CreateChange
 parameter_list|(
+name|RetryHelper
+name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 annotation|@
 name|AnonymousCowardName
 name|String
@@ -1522,9 +1538,6 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-name|RetryHelper
-name|retryHelper
-parameter_list|,
 name|PatchSetUtil
 name|psUtil
 parameter_list|,
@@ -1549,6 +1562,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1688,7 +1707,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, TopLevelResource parent, ChangeInput input)
+DECL|method|applyImpl (TopLevelResource parent, ChangeInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -1696,11 +1715,6 @@ name|ChangeInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|TopLevelResource
 name|parent
 parameter_list|,

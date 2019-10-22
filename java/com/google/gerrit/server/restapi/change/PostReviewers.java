@@ -449,6 +449,14 @@ argument_list|,
 name|AddReviewerResult
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -471,16 +479,21 @@ name|reviewerAdder
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewers ( ChangeData.Factory changeDataFactory, RetryHelper retryHelper, NotifyResolver notifyResolver, ReviewerAdder reviewerAdder)
+DECL|method|PostReviewers ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, ChangeData.Factory changeDataFactory, NotifyResolver notifyResolver, ReviewerAdder reviewerAdder)
 name|PostReviewers
 parameter_list|(
+name|RetryHelper
+name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
-parameter_list|,
-name|RetryHelper
-name|retryHelper
 parameter_list|,
 name|NotifyResolver
 name|notifyResolver
@@ -493,6 +506,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -515,7 +534,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, AddReviewerInput input)
+DECL|method|applyImpl (ChangeResource rsrc, AddReviewerInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -523,11 +542,6 @@ name|AddReviewerResult
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,
