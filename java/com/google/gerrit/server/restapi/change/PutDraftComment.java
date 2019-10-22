@@ -531,6 +531,14 @@ argument_list|,
 name|CommentInfo
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|delete
 specifier|private
 specifier|final
@@ -566,9 +574,17 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutDraftComment ( DeleteDraftComment delete, CommentsUtil commentsUtil, PatchSetUtil psUtil, RetryHelper retryHelper, Provider<CommentJson> commentJson, PatchListCache patchListCache)
+DECL|method|PutDraftComment ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, DeleteDraftComment delete, CommentsUtil commentsUtil, PatchSetUtil psUtil, Provider<CommentJson> commentJson, PatchListCache patchListCache)
 name|PutDraftComment
 parameter_list|(
+name|RetryHelper
+name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|DeleteDraftComment
 name|delete
 parameter_list|,
@@ -577,9 +593,6 @@ name|commentsUtil
 parameter_list|,
 name|PatchSetUtil
 name|psUtil
-parameter_list|,
-name|RetryHelper
-name|retryHelper
 parameter_list|,
 name|Provider
 argument_list|<
@@ -595,6 +608,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -629,7 +648,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, DraftCommentResource rsrc, DraftInput in)
+DECL|method|applyImpl (DraftCommentResource rsrc, DraftInput in)
 specifier|protected
 name|Response
 argument_list|<
@@ -637,11 +656,6 @@ name|CommentInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|DraftCommentResource
 name|rsrc
 parameter_list|,
@@ -683,8 +697,6 @@ name|delete
 operator|.
 name|applyImpl
 argument_list|(
-name|updateFactory
-argument_list|,
 name|rsrc
 argument_list|,
 literal|null

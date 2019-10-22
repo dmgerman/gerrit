@@ -608,6 +608,14 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|changeMessagesUtil
 specifier|private
 specifier|final
@@ -632,7 +640,7 @@ name|notesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteChangeMessage ( Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, ChangeMessagesUtil changeMessagesUtil, AccountLoader.Factory accountLoaderFactory, ChangeNotes.Factory notesFactory, RetryHelper retryHelper)
+DECL|method|DeleteChangeMessage ( Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, BatchUpdate.Factory updateFactory, ChangeMessagesUtil changeMessagesUtil, AccountLoader.Factory accountLoaderFactory, ChangeNotes.Factory notesFactory, RetryHelper retryHelper)
 specifier|public
 name|DeleteChangeMessage
 parameter_list|(
@@ -644,6 +652,11 @@ name|userProvider
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|ChangeMessagesUtil
 name|changeMessagesUtil
@@ -681,6 +694,12 @@ name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
+name|updateFactory
+operator|=
+name|updateFactory
+expr_stmt|;
+name|this
+operator|.
 name|changeMessagesUtil
 operator|=
 name|changeMessagesUtil
@@ -700,7 +719,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeMessageResource resource, DeleteChangeMessageInput input)
+DECL|method|applyImpl ( ChangeMessageResource resource, DeleteChangeMessageInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -708,11 +727,6 @@ name|ChangeMessageInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeMessageResource
 name|resource
 parameter_list|,

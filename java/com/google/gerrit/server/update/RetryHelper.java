@@ -694,7 +694,10 @@ name|INDEX_QUERY
 block|,
 DECL|enumConstant|PLUGIN_UPDATE
 name|PLUGIN_UPDATE
-block|}
+block|,
+DECL|enumConstant|REST_REQUEST
+name|REST_REQUEST
+block|,   }
 comment|/**    * Options for retrying a single operation.    *    *<p>This class is similar in function to upstream's {@link RetryerBuilder}, but it exists as its    * own class in Gerrit for several reasons:    *    *<ul>    *<li>Gerrit needs to support defaults for some of the options, such as a default timeout.    *       {@code RetryerBuilder} doesn't support calling the same setter multiple times, so doing    *       this with {@code RetryerBuilder} directly would not be easy.    *<li>Gerrit explicitly does not want callers to have full control over all possible options,    *       so this class exposes a curated subset.    *</ul>    */
 annotation|@
 name|AutoValue

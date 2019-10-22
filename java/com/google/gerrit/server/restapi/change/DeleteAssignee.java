@@ -487,6 +487,14 @@ argument_list|,
 name|AccountInfo
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|cmUtil
 specifier|private
 specifier|final
@@ -517,11 +525,16 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteAssignee ( RetryHelper retryHelper, ChangeMessagesUtil cmUtil, AssigneeChanged assigneeChanged, IdentifiedUser.GenericFactory userFactory, AccountLoader.Factory accountLoaderFactory)
+DECL|method|DeleteAssignee ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, ChangeMessagesUtil cmUtil, AssigneeChanged assigneeChanged, IdentifiedUser.GenericFactory userFactory, AccountLoader.Factory accountLoaderFactory)
 name|DeleteAssignee
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|ChangeMessagesUtil
 name|cmUtil
@@ -544,6 +557,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -572,7 +591,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, Input input)
+DECL|method|applyImpl (ChangeResource rsrc, Input input)
 specifier|protected
 name|Response
 argument_list|<
@@ -580,11 +599,6 @@ name|AccountInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,

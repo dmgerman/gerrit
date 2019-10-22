@@ -412,22 +412,6 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
 name|RetryHelper
 import|;
 end_import
@@ -715,7 +699,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource changeResource, RevertInput input)
+DECL|method|applyImpl (ChangeResource changeResource, RevertInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -723,11 +707,6 @@ name|RevertSubmissionInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|changeResource
 parameter_list|,

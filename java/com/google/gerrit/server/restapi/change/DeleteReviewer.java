@@ -353,6 +353,14 @@ argument_list|,
 name|Object
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|deleteReviewerOpFactory
 specifier|private
 specifier|final
@@ -371,11 +379,16 @@ name|deleteReviewerByEmailOpFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteReviewer ( RetryHelper retryHelper, DeleteReviewerOp.Factory deleteReviewerOpFactory, DeleteReviewerByEmailOp.Factory deleteReviewerByEmailOpFactory)
+DECL|method|DeleteReviewer ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, DeleteReviewerOp.Factory deleteReviewerOpFactory, DeleteReviewerByEmailOp.Factory deleteReviewerByEmailOpFactory)
 name|DeleteReviewer
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|DeleteReviewerOp
 operator|.
@@ -395,6 +408,12 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|updateFactory
+operator|=
+name|updateFactory
+expr_stmt|;
+name|this
+operator|.
 name|deleteReviewerOpFactory
 operator|=
 name|deleteReviewerOpFactory
@@ -408,7 +427,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ReviewerResource rsrc, DeleteReviewerInput input)
+DECL|method|applyImpl (ReviewerResource rsrc, DeleteReviewerInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -416,11 +435,6 @@ name|Object
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ReviewerResource
 name|rsrc
 parameter_list|,

@@ -2123,6 +2123,14 @@ literal|1024
 operator|*
 literal|1024
 decl_stmt|;
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|changeResourceFactory
 specifier|private
 specifier|final
@@ -2256,11 +2264,16 @@ name|strictLabels
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview ( RetryHelper retryHelper, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountResolver accountResolver, EmailReviewComments.Factory email, CommentAdded commentAdded, ReviewerAdder reviewerAdder, AddReviewersEmail addReviewersEmail, NotifyResolver notifyResolver, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend, PluginSetContext<CommentValidator> commentValidators)
+DECL|method|PostReview ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, ChangeResource.Factory changeResourceFactory, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountResolver accountResolver, EmailReviewComments.Factory email, CommentAdded commentAdded, ReviewerAdder reviewerAdder, AddReviewersEmail addReviewersEmail, NotifyResolver notifyResolver, @GerritServerConfig Config gerritConfig, WorkInProgressOp.Factory workInProgressOpFactory, ProjectCache projectCache, PermissionBackend permissionBackend, PluginSetContext<CommentValidator> commentValidators)
 name|PostReview
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|ChangeResource
 operator|.
@@ -2337,6 +2350,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2470,7 +2489,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, RevisionResource revision, ReviewInput input)
+DECL|method|applyImpl (RevisionResource revision, ReviewInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -2478,11 +2497,6 @@ name|ReviewResult
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|RevisionResource
 name|revision
 parameter_list|,
@@ -2505,8 +2519,6 @@ block|{
 return|return
 name|apply
 argument_list|(
-name|updateFactory
-argument_list|,
 name|revision
 argument_list|,
 name|input
@@ -2518,7 +2530,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|apply ( BatchUpdate.Factory updateFactory, RevisionResource revision, ReviewInput input, Timestamp ts)
+DECL|method|apply (RevisionResource revision, ReviewInput input, Timestamp ts)
 specifier|public
 name|Response
 argument_list|<
@@ -2526,11 +2538,6 @@ name|ReviewResult
 argument_list|>
 name|apply
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|RevisionResource
 name|revision
 parameter_list|,

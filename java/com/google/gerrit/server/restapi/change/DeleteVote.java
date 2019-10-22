@@ -809,6 +809,14 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|approvalsUtil
 specifier|private
 specifier|final
@@ -869,11 +877,16 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteVote ( RetryHelper retryHelper, ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, IdentifiedUser.GenericFactory userFactory, VoteDeleted voteDeleted, DeleteVoteSender.Factory deleteVoteSenderFactory, NotifyResolver notifyResolver, RemoveReviewerControl removeReviewerControl, ProjectCache projectCache)
+DECL|method|DeleteVote ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, IdentifiedUser.GenericFactory userFactory, VoteDeleted voteDeleted, DeleteVoteSender.Factory deleteVoteSenderFactory, NotifyResolver notifyResolver, RemoveReviewerControl removeReviewerControl, ProjectCache projectCache)
 name|DeleteVote
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
@@ -911,6 +924,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -969,7 +988,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, VoteResource rsrc, DeleteVoteInput input)
+DECL|method|applyImpl (VoteResource rsrc, DeleteVoteInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -977,11 +996,6 @@ name|Object
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|VoteResource
 name|rsrc
 parameter_list|,

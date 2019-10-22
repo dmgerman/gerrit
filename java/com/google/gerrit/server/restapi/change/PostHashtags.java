@@ -343,6 +343,14 @@ argument_list|<
 name|ChangeResource
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|hashtagsFactory
 specifier|private
 specifier|final
@@ -353,11 +361,16 @@ name|hashtagsFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostHashtags (RetryHelper retryHelper, SetHashtagsOp.Factory hashtagsFactory)
+DECL|method|PostHashtags ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, SetHashtagsOp.Factory hashtagsFactory)
 name|PostHashtags
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|SetHashtagsOp
 operator|.
@@ -372,6 +385,12 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|updateFactory
+operator|=
+name|updateFactory
+expr_stmt|;
+name|this
+operator|.
 name|hashtagsFactory
 operator|=
 name|hashtagsFactory
@@ -379,7 +398,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource req, HashtagsInput input)
+DECL|method|applyImpl (ChangeResource req, HashtagsInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -390,11 +409,6 @@ argument_list|>
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|req
 parameter_list|,

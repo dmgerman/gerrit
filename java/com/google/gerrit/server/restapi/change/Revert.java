@@ -1042,6 +1042,14 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -1128,11 +1136,16 @@ name|commitUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Revert ( PermissionBackend permissionBackend, GitRepositoryManager repoManager, ChangeInserter.Factory changeInserterFactory, ChangeMessagesUtil cmUtil, RetryHelper retryHelper, Sequences seq, PatchSetUtil psUtil, RevertedSender.Factory revertedSenderFactory, ChangeJson.Factory json, ApprovalsUtil approvalsUtil, ChangeReverted changeReverted, ContributorAgreementsChecker contributorAgreements, ProjectCache projectCache, NotifyResolver notifyResolver, CommitUtil commitUtil)
+DECL|method|Revert ( PermissionBackend permissionBackend, BatchUpdate.Factory updateFactory, GitRepositoryManager repoManager, ChangeInserter.Factory changeInserterFactory, ChangeMessagesUtil cmUtil, RetryHelper retryHelper, Sequences seq, PatchSetUtil psUtil, RevertedSender.Factory revertedSenderFactory, ChangeJson.Factory json, ApprovalsUtil approvalsUtil, ChangeReverted changeReverted, ContributorAgreementsChecker contributorAgreements, ProjectCache projectCache, NotifyResolver notifyResolver, CommitUtil commitUtil)
 name|Revert
 parameter_list|(
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -1193,6 +1206,12 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1275,7 +1294,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, RevertInput input)
+DECL|method|applyImpl (ChangeResource rsrc, RevertInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -1283,11 +1302,6 @@ name|ChangeInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,

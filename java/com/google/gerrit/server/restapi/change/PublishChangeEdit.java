@@ -403,6 +403,14 @@ argument_list|,
 name|Object
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|editUtil
 specifier|private
 specifier|final
@@ -423,11 +431,16 @@ name|contributorAgreementsChecker
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PublishChangeEdit ( RetryHelper retryHelper, ChangeEditUtil editUtil, NotifyResolver notifyResolver, ContributorAgreementsChecker contributorAgreementsChecker)
+DECL|method|PublishChangeEdit ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, ChangeEditUtil editUtil, NotifyResolver notifyResolver, ContributorAgreementsChecker contributorAgreementsChecker)
 name|PublishChangeEdit
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|ChangeEditUtil
 name|editUtil
@@ -443,6 +456,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -465,7 +484,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, PublishChangeEditInput in)
+DECL|method|applyImpl (ChangeResource rsrc, PublishChangeEditInput in)
 specifier|protected
 name|Response
 argument_list|<
@@ -473,11 +492,6 @@ name|Object
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,

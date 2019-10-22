@@ -228,22 +228,6 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
 name|RetryHelper
 import|;
 end_import
@@ -417,7 +401,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ProjectResource rsrc, BanCommitInput input)
+DECL|method|applyImpl (ProjectResource rsrc, BanCommitInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -425,11 +409,6 @@ name|BanResultInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ProjectResource
 name|rsrc
 parameter_list|,

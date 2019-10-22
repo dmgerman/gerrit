@@ -844,6 +844,14 @@ operator|.
 name|CURRENT_COMMIT
 argument_list|)
 decl_stmt|;
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -892,12 +900,17 @@ name|patchSetUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Rebase ( RetryHelper retryHelper, GitRepositoryManager repoManager, RebaseChangeOp.Factory rebaseFactory, RebaseUtil rebaseUtil, ChangeJson.Factory json, PermissionBackend permissionBackend, ProjectCache projectCache, PatchSetUtil patchSetUtil)
+DECL|method|Rebase ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, GitRepositoryManager repoManager, RebaseChangeOp.Factory rebaseFactory, RebaseUtil rebaseUtil, ChangeJson.Factory json, PermissionBackend permissionBackend, ProjectCache projectCache, PatchSetUtil patchSetUtil)
 specifier|public
 name|Rebase
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -929,6 +942,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -975,7 +994,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, RevisionResource rsrc, RebaseInput input)
+DECL|method|applyImpl (RevisionResource rsrc, RebaseInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -983,11 +1002,6 @@ name|ChangeInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|RevisionResource
 name|rsrc
 parameter_list|,

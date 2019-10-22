@@ -426,6 +426,14 @@ argument_list|<
 name|RevisionResource
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|cmUtil
 specifier|private
 specifier|final
@@ -440,14 +448,19 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutDescription (ChangeMessagesUtil cmUtil, RetryHelper retryHelper, PatchSetUtil psUtil)
+DECL|method|PutDescription ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil)
 name|PutDescription
 parameter_list|(
-name|ChangeMessagesUtil
-name|cmUtil
-parameter_list|,
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
+name|ChangeMessagesUtil
+name|cmUtil
 parameter_list|,
 name|PatchSetUtil
 name|psUtil
@@ -457,6 +470,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -473,7 +492,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, RevisionResource rsrc, DescriptionInput input)
+DECL|method|applyImpl (RevisionResource rsrc, DescriptionInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -481,11 +500,6 @@ name|String
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|RevisionResource
 name|rsrc
 parameter_list|,

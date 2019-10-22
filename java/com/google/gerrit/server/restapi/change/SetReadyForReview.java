@@ -438,6 +438,14 @@ argument_list|<
 name|ChangeResource
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|opFactory
 specifier|private
 specifier|final
@@ -448,11 +456,16 @@ name|opFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetReadyForReview (RetryHelper retryHelper, WorkInProgressOp.Factory opFactory)
+DECL|method|SetReadyForReview ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, WorkInProgressOp.Factory opFactory)
 name|SetReadyForReview
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|WorkInProgressOp
 operator|.
@@ -467,6 +480,12 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|updateFactory
+operator|=
+name|updateFactory
+expr_stmt|;
+name|this
+operator|.
 name|opFactory
 operator|=
 name|opFactory
@@ -474,7 +493,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, Input input)
+DECL|method|applyImpl (ChangeResource rsrc, Input input)
 specifier|protected
 name|Response
 argument_list|<
@@ -482,11 +501,6 @@ name|String
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,

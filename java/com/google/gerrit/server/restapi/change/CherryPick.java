@@ -586,6 +586,14 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|cherryPickChange
 specifier|private
 specifier|final
@@ -614,14 +622,19 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPick ( PermissionBackend permissionBackend, RetryHelper retryHelper, CherryPickChange cherryPickChange, ChangeJson.Factory json, ContributorAgreementsChecker contributorAgreements, ProjectCache projectCache)
+DECL|method|CherryPick ( RetryHelper retryHelper, PermissionBackend permissionBackend, BatchUpdate.Factory updateFactory, CherryPickChange cherryPickChange, ChangeJson.Factory json, ContributorAgreementsChecker contributorAgreements, ProjectCache projectCache)
 name|CherryPick
 parameter_list|(
+name|RetryHelper
+name|retryHelper
+parameter_list|,
 name|PermissionBackend
 name|permissionBackend
 parameter_list|,
-name|RetryHelper
-name|retryHelper
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|CherryPickChange
 name|cherryPickChange
@@ -651,6 +664,12 @@ name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
+name|updateFactory
+operator|=
+name|updateFactory
+expr_stmt|;
+name|this
+operator|.
 name|cherryPickChange
 operator|=
 name|cherryPickChange
@@ -676,7 +695,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, RevisionResource rsrc, CherryPickInput input)
+DECL|method|applyImpl (RevisionResource rsrc, CherryPickInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -684,11 +703,6 @@ name|CherryPickChangeInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|RevisionResource
 name|rsrc
 parameter_list|,

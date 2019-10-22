@@ -955,6 +955,14 @@ argument_list|,
 name|ChangeInfo
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|gitManager
 specifier|private
 specifier|final
@@ -1032,9 +1040,14 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateMergePatchSet ( GitRepositoryManager gitManager, CommitsCollection commits, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> user, ChangeJson.Factory json, PatchSetUtil psUtil, MergeUtil.Factory mergeUtilFactory, RetryHelper retryHelper, PatchSetInserter.Factory patchSetInserterFactory, ProjectCache projectCache, ChangeFinder changeFinder, PermissionBackend permissionBackend)
+DECL|method|CreateMergePatchSet ( BatchUpdate.Factory updateFactory, GitRepositoryManager gitManager, CommitsCollection commits, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> user, ChangeJson.Factory json, PatchSetUtil psUtil, MergeUtil.Factory mergeUtilFactory, RetryHelper retryHelper, PatchSetInserter.Factory patchSetInserterFactory, ProjectCache projectCache, ChangeFinder changeFinder, PermissionBackend permissionBackend)
 name|CreateMergePatchSet
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|GitRepositoryManager
 name|gitManager
 parameter_list|,
@@ -1087,6 +1100,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1160,7 +1179,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, MergePatchSetInput in)
+DECL|method|applyImpl (ChangeResource rsrc, MergePatchSetInput in)
 specifier|protected
 name|Response
 argument_list|<
@@ -1168,11 +1187,6 @@ name|ChangeInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,

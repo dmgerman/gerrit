@@ -542,6 +542,14 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|commentsUtil
 specifier|private
 specifier|final
@@ -567,10 +575,13 @@ name|notesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteComment ( Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, RetryHelper retryHelper, CommentsUtil commentsUtil, Provider<CommentJson> commentJson, ChangeNotes.Factory notesFactory)
+DECL|method|DeleteComment ( RetryHelper retryHelper, Provider<CurrentUser> userProvider, PermissionBackend permissionBackend, BatchUpdate.Factory updateFactory, CommentsUtil commentsUtil, Provider<CommentJson> commentJson, ChangeNotes.Factory notesFactory)
 specifier|public
 name|DeleteComment
 parameter_list|(
+name|RetryHelper
+name|retryHelper
+parameter_list|,
 name|Provider
 argument_list|<
 name|CurrentUser
@@ -580,8 +591,10 @@ parameter_list|,
 name|PermissionBackend
 name|permissionBackend
 parameter_list|,
-name|RetryHelper
-name|retryHelper
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|CommentsUtil
 name|commentsUtil
@@ -617,6 +630,12 @@ name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
+name|updateFactory
+operator|=
+name|updateFactory
+expr_stmt|;
+name|this
+operator|.
 name|commentsUtil
 operator|=
 name|commentsUtil
@@ -636,7 +655,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory batchUpdateFactory, CommentResource rsrc, DeleteCommentInput input)
+DECL|method|applyImpl (CommentResource rsrc, DeleteCommentInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -644,11 +663,6 @@ name|CommentInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-parameter_list|,
 name|CommentResource
 name|rsrc
 parameter_list|,
@@ -736,7 +750,7 @@ init|(
 name|BatchUpdate
 name|batchUpdate
 init|=
-name|batchUpdateFactory
+name|updateFactory
 operator|.
 name|create
 argument_list|(

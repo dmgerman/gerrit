@@ -146,6 +146,38 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|git
+operator|.
+name|LockFailureException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
+operator|.
+name|RetryHelper
+operator|.
+name|ActionType
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -280,36 +312,55 @@ name|retryHelper
 operator|.
 name|execute
 argument_list|(
-parameter_list|(
-name|updateFactory
-parameter_list|)
+name|ActionType
+operator|.
+name|REST_REQUEST
+argument_list|,
+parameter_list|()
 lambda|->
 name|applyImpl
 argument_list|(
-name|updateFactory
-argument_list|,
 name|resource
 argument_list|,
 name|input
 argument_list|)
 argument_list|,
 name|retryOptions
+argument_list|,
+name|t
+lambda|->
+block|{
+lambda|if (t instanceof UpdateException
 argument_list|)
+block|{
+name|t
+operator|=
+name|t
 operator|.
-name|traceId
-argument_list|(
-name|traceId
-operator|.
-name|get
+name|getCause
 argument_list|()
-argument_list|)
+block|;                 }
+return|return
+name|t
+operator|instanceof
+name|LockFailureException
 return|;
 block|}
-catch|catch
+block|)
+function|.traceId
 parameter_list|(
+function|traceId.get
+parameter_list|()
+block|)
+class|;
+end_class
+
+begin_expr_stmt
+unit|} catch
+operator|(
 name|Exception
 name|e
-parameter_list|)
+operator|)
 block|{
 name|Throwables
 operator|.
@@ -321,7 +372,7 @@ name|RestApiException
 operator|.
 name|class
 argument_list|)
-expr_stmt|;
+block|;
 return|return
 name|Response
 operator|.
@@ -342,9 +393,11 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-block|}
-DECL|method|applyImpl (BatchUpdate.Factory updateFactory, R resource, I input)
-specifier|protected
+end_expr_stmt
+
+begin_function_decl
+unit|}    protected
+DECL|method|applyImpl (R resource, I input)
 specifier|abstract
 name|Response
 argument_list|<
@@ -352,11 +405,6 @@ name|O
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|R
 name|resource
 parameter_list|,
@@ -366,8 +414,8 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-block|}
-end_class
+end_function_decl
 
+unit|}
 end_unit
 

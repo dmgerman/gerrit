@@ -527,6 +527,14 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|user
 specifier|private
 specifier|final
@@ -558,11 +566,19 @@ name|contributorAgreements
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPickCommit ( RetryHelper retryHelper, Provider<CurrentUser> user, CherryPickChange cherryPickChange, ChangeJson.Factory json, PermissionBackend permissionBackend, ContributorAgreementsChecker contributorAgreements)
+DECL|method|CherryPickCommit ( RetryHelper retryHelper, PermissionBackend permissionBackend, BatchUpdate.Factory updateFactory, Provider<CurrentUser> user, CherryPickChange cherryPickChange, ChangeJson.Factory json, ContributorAgreementsChecker contributorAgreements)
 name|CherryPickCommit
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|PermissionBackend
+name|permissionBackend
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -578,9 +594,6 @@ operator|.
 name|Factory
 name|json
 parameter_list|,
-name|PermissionBackend
-name|permissionBackend
-parameter_list|,
 name|ContributorAgreementsChecker
 name|contributorAgreements
 parameter_list|)
@@ -595,6 +608,12 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -623,7 +642,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, CommitResource rsrc, CherryPickInput input)
+DECL|method|applyImpl (CommitResource rsrc, CherryPickInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -631,11 +650,6 @@ name|CherryPickChangeInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|CommitResource
 name|rsrc
 parameter_list|,

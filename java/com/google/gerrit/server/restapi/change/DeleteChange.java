@@ -388,6 +388,14 @@ argument_list|<
 name|ChangeResource
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|opFactory
 specifier|private
 specifier|final
@@ -398,12 +406,17 @@ name|opFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteChange (RetryHelper retryHelper, DeleteChangeOp.Factory opFactory)
+DECL|method|DeleteChange ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, DeleteChangeOp.Factory opFactory)
 specifier|public
 name|DeleteChange
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|DeleteChangeOp
 operator|.
@@ -418,6 +431,12 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|updateFactory
+operator|=
+name|updateFactory
+expr_stmt|;
+name|this
+operator|.
 name|opFactory
 operator|=
 name|opFactory
@@ -425,7 +444,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, Input input)
+DECL|method|applyImpl (ChangeResource rsrc, Input input)
 specifier|protected
 name|Response
 argument_list|<
@@ -433,11 +452,6 @@ name|Object
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,

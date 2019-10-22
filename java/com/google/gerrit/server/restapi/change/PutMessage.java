@@ -741,6 +741,14 @@ argument_list|,
 name|String
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|repositoryManager
 specifier|private
 specifier|final
@@ -796,11 +804,16 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutMessage ( RetryHelper retryHelper, GitRepositoryManager repositoryManager, Provider<CurrentUser> userProvider, PatchSetInserter.Factory psInserterFactory, PermissionBackend permissionBackend, @GerritPersonIdent PersonIdent gerritIdent, PatchSetUtil psUtil, NotifyResolver notifyResolver, ProjectCache projectCache)
+DECL|method|PutMessage ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, GitRepositoryManager repositoryManager, Provider<CurrentUser> userProvider, PatchSetInserter.Factory psInserterFactory, PermissionBackend permissionBackend, @GerritPersonIdent PersonIdent gerritIdent, PatchSetUtil psUtil, NotifyResolver notifyResolver, ProjectCache projectCache)
 name|PutMessage
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|GitRepositoryManager
 name|repositoryManager
@@ -838,6 +851,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -893,7 +912,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource resource, CommitMessageInput input)
+DECL|method|applyImpl (ChangeResource resource, CommitMessageInput input)
 specifier|protected
 name|Response
 argument_list|<
@@ -901,11 +920,6 @@ name|String
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|resource
 parameter_list|,

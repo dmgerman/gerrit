@@ -525,6 +525,14 @@ argument_list|,
 name|CommentInfo
 argument_list|>
 block|{
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|commentJson
 specifier|private
 specifier|final
@@ -554,11 +562,16 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateDraftComment ( RetryHelper retryHelper, Provider<CommentJson> commentJson, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache)
+DECL|method|CreateDraftComment ( RetryHelper retryHelper, BatchUpdate.Factory updateFactory, Provider<CommentJson> commentJson, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache)
 name|CreateDraftComment
 parameter_list|(
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -580,6 +593,12 @@ name|super
 argument_list|(
 name|retryHelper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -608,7 +627,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, RevisionResource rsrc, DraftInput in)
+DECL|method|applyImpl (RevisionResource rsrc, DraftInput in)
 specifier|protected
 name|Response
 argument_list|<
@@ -616,11 +635,6 @@ name|CommentInfo
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|RevisionResource
 name|rsrc
 parameter_list|,

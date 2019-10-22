@@ -389,6 +389,14 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|setPrivateOpFactory
 specifier|private
 specifier|final
@@ -399,7 +407,7 @@ name|setPrivateOpFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeletePrivate ( RetryHelper retryHelper, PermissionBackend permissionBackend, SetPrivateOp.Factory setPrivateOpFactory)
+DECL|method|DeletePrivate ( RetryHelper retryHelper, PermissionBackend permissionBackend, BatchUpdate.Factory updateFactory, SetPrivateOp.Factory setPrivateOpFactory)
 name|DeletePrivate
 parameter_list|(
 name|RetryHelper
@@ -407,6 +415,11 @@ name|retryHelper
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
 parameter_list|,
 name|SetPrivateOp
 operator|.
@@ -427,6 +440,12 @@ name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
+name|updateFactory
+operator|=
+name|updateFactory
+expr_stmt|;
+name|this
+operator|.
 name|setPrivateOpFactory
 operator|=
 name|setPrivateOpFactory
@@ -434,7 +453,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, @Nullable InputWithMessage input)
+DECL|method|applyImpl (ChangeResource rsrc, @Nullable InputWithMessage input)
 specifier|protected
 name|Response
 argument_list|<
@@ -442,11 +461,6 @@ name|String
 argument_list|>
 name|applyImpl
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,
