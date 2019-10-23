@@ -194,16 +194,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Random
 import|;
 end_import
@@ -374,64 +364,6 @@ literal|4
 argument_list|)
 return|;
 block|}
-comment|/**    * Get the next patch set ID from a previously-read map of all refs.    *    * @param allRefs map of full ref name to ref.    * @param id previous patch set ID.    * @return next unused patch set ID for the same change, skipping any IDs whose corresponding ref    *     names appear in the {@code allRefs} map.    */
-DECL|method|nextPatchSetIdFromAllRefsMap (Map<String, Ref> allRefs, PatchSet.Id id)
-specifier|public
-specifier|static
-name|PatchSet
-operator|.
-name|Id
-name|nextPatchSetIdFromAllRefsMap
-parameter_list|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Ref
-argument_list|>
-name|allRefs
-parameter_list|,
-name|PatchSet
-operator|.
-name|Id
-name|id
-parameter_list|)
-block|{
-name|PatchSet
-operator|.
-name|Id
-name|next
-init|=
-name|nextPatchSetId
-argument_list|(
-name|id
-argument_list|)
-decl_stmt|;
-while|while
-condition|(
-name|allRefs
-operator|.
-name|containsKey
-argument_list|(
-name|next
-operator|.
-name|toRefName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|next
-operator|=
-name|nextPatchSetId
-argument_list|(
-name|next
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|next
-return|;
-block|}
 comment|/**    * Get the next patch set ID from a previously-read map of refs below the change prefix.    *    * @param changeRefNames existing full change ref names with the same change ID as {@code id}.    * @param id previous patch set ID.    * @return next unused patch set ID for the same change, skipping any IDs whose corresponding ref    *     names appear in the {@code changeRefs} map.    */
 DECL|method|nextPatchSetIdFromChangeRefs ( Collection<String> changeRefNames, PatchSet.Id id)
 specifier|public
@@ -564,7 +496,7 @@ return|return
 name|next
 return|;
 block|}
-comment|/**    * Get the next patch set ID just looking at a single previous patch set ID.    *    *<p>This patch set ID may or may not be available in the database; callers that want a    * previously-unused ID should use {@link #nextPatchSetIdFromAllRefsMap} or {@link    * #nextPatchSetIdFromChangeRefs}.    *    * @param id previous patch set ID.    * @return next patch set ID for the same change, incrementing by 1.    */
+comment|/**    * Get the next patch set ID just looking at a single previous patch set ID.    *    *<p>This patch set ID may or may not be available in the database.    *    * @param id previous patch set ID.    * @return next patch set ID for the same change, incrementing by 1.    */
 DECL|method|nextPatchSetId (PatchSet.Id id)
 specifier|public
 specifier|static
