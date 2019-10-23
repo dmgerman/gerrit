@@ -98,6 +98,44 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|annotations
+operator|.
+name|NonNull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -167,7 +205,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Wrapper around {@link RefDatabase} that delegates all calls to the wrapped {@link RefDatabase}.  */
+comment|/**  * Wrapper around {@link RefDatabase} that delegates all calls to the wrapped {@link Repository}'s  * {@link RefDatabase}.  */
 end_comment
 
 begin_class
@@ -225,6 +263,9 @@ name|close
 parameter_list|()
 block|{
 name|delegate
+operator|.
+name|getRefDatabase
+argument_list|()
 operator|.
 name|close
 argument_list|()
@@ -372,6 +413,36 @@ operator|.
 name|getRefs
 argument_list|(
 name|prefix
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+annotation|@
+name|NonNull
+DECL|method|getTipsWithSha1 (ObjectId id)
+specifier|public
+name|Set
+argument_list|<
+name|Ref
+argument_list|>
+name|getTipsWithSha1
+parameter_list|(
+name|ObjectId
+name|id
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|delegate
+operator|.
+name|getRefDatabase
+argument_list|()
+operator|.
+name|getTipsWithSha1
+argument_list|(
+name|id
 argument_list|)
 return|;
 block|}
