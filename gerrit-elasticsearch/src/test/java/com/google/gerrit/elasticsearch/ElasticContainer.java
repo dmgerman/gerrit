@@ -261,7 +261,7 @@ case|case
 name|V7_4
 case|:
 return|return
-literal|"blacktop/elasticsearch:7.4.0"
+literal|"blacktop/elasticsearch:7.4.1"
 return|;
 block|}
 throw|throw
