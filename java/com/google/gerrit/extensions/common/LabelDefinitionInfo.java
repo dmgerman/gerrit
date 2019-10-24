@@ -97,6 +97,11 @@ specifier|public
 name|String
 name|name
 decl_stmt|;
+DECL|field|projectName
+specifier|public
+name|String
+name|projectName
+decl_stmt|;
 DECL|field|function
 specifier|public
 name|String

@@ -759,6 +759,11 @@ specifier|abstract
 class|class
 name|ListLabelsRequest
 block|{
+DECL|field|inherited
+specifier|protected
+name|boolean
+name|inherited
+decl_stmt|;
 DECL|method|get ()
 specifier|public
 specifier|abstract
@@ -771,6 +776,25 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|withInherited (boolean inherited)
+specifier|public
+name|ListLabelsRequest
+name|withInherited
+parameter_list|(
+name|boolean
+name|inherited
+parameter_list|)
+block|{
+name|this
+operator|.
+name|inherited
+operator|=
+name|inherited
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 block|}
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
