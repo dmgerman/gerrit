@@ -1166,6 +1166,11 @@ name|setVisible
 argument_list|(
 name|and
 argument_list|(
+name|change
+operator|.
+name|isMerged
+argument_list|()
+operator|&&
 name|projectStatePermitsWrite
 argument_list|,
 name|permissionBackend
