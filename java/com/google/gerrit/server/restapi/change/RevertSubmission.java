@@ -1154,12 +1154,12 @@ argument_list|()
 operator|.
 name|setLabel
 argument_list|(
-literal|"Revert this change and all changes that have been submitted together with this change"
+literal|"Revert submission"
 argument_list|)
 operator|.
 name|setTitle
 argument_list|(
-literal|"Revert submission"
+literal|"Revert this change and all changes that have been submitted together with this change"
 argument_list|)
 operator|.
 name|setVisible
