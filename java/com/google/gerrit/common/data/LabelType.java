@@ -1087,6 +1087,8 @@ return|return
 name|canOverride
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|getRefPatterns ()
 specifier|public
 name|List

@@ -168,6 +168,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|LabelDefinitionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|ProjectInfo
 import|;
 end_import
@@ -731,6 +747,31 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|labels ()
+name|ListLabelsRequest
+name|labels
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|class|ListLabelsRequest
+specifier|abstract
+class|class
+name|ListLabelsRequest
+block|{
+DECL|method|get ()
+specifier|public
+specifier|abstract
+name|List
+argument_list|<
+name|LabelDefinitionInfo
+argument_list|>
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+block|}
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -1343,6 +1384,22 @@ DECL|method|indexChanges ()
 specifier|public
 name|void
 name|indexChanges
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|labels ()
+specifier|public
+name|ListLabelsRequest
+name|labels
 parameter_list|()
 throws|throws
 name|RestApiException

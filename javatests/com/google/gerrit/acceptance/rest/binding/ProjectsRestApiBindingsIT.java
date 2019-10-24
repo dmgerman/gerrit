@@ -662,6 +662,13 @@ name|RestCall
 operator|.
 name|get
 argument_list|(
+literal|"/projects/%s/labels"
+argument_list|)
+argument_list|,
+name|RestCall
+operator|.
+name|get
+argument_list|(
 literal|"/projects/%s/tags"
 argument_list|)
 argument_list|,
