@@ -94,6 +94,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|LabelDefinitionInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|NotImplementedException
@@ -129,6 +145,16 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|update (LabelDefinitionInput input)
+name|LabelDefinitionInfo
+name|update
+parameter_list|(
+name|LabelDefinitionInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -143,6 +169,25 @@ specifier|public
 name|LabelDefinitionInfo
 name|get
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|update (LabelDefinitionInput input)
+specifier|public
+name|LabelDefinitionInfo
+name|update
+parameter_list|(
+name|LabelDefinitionInput
+name|input
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
