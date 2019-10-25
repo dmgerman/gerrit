@@ -796,6 +796,16 @@ name|this
 return|;
 block|}
 block|}
+DECL|method|label (String labelName)
+name|LabelApi
+name|label
+parameter_list|(
+name|String
+name|labelName
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -1425,6 +1435,25 @@ specifier|public
 name|ListLabelsRequest
 name|labels
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|label (String labelName)
+specifier|public
+name|LabelApi
+name|label
+parameter_list|(
+name|String
+name|labelName
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
