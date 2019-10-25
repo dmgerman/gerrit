@@ -726,6 +726,13 @@ name|get
 argument_list|(
 literal|"/projects/%s/dashboards"
 argument_list|)
+argument_list|,
+name|RestCall
+operator|.
+name|put
+argument_list|(
+literal|"/projects/%s/labels/new-label"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/**    * Child project REST endpoints to be tested, each URL contains placeholders for the parent    * project identifier and the child project identifier.    */

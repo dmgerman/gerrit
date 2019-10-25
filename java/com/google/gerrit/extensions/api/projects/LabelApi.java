@@ -138,6 +138,16 @@ specifier|public
 interface|interface
 name|LabelApi
 block|{
+DECL|method|create (LabelDefinitionInput input)
+name|LabelApi
+name|create
+parameter_list|(
+name|LabelDefinitionInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|get ()
 name|LabelDefinitionInfo
 name|get
@@ -162,6 +172,25 @@ name|NotImplemented
 implements|implements
 name|LabelApi
 block|{
+annotation|@
+name|Override
+DECL|method|create (LabelDefinitionInput input)
+specifier|public
+name|LabelApi
+name|create
+parameter_list|(
+name|LabelDefinitionInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
 annotation|@
 name|Override
 DECL|method|get ()
