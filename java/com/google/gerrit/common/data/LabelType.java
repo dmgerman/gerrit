@@ -1025,6 +1025,25 @@ return|return
 name|name
 return|;
 block|}
+DECL|method|setName (String name)
+specifier|public
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|name
+operator|=
+name|checkName
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|matches (PatchSetApproval psa)
 specifier|public
 name|boolean
@@ -1087,6 +1106,8 @@ return|return
 name|canOverride
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|getRefPatterns ()
 specifier|public
 name|List
@@ -1185,6 +1206,12 @@ condition|(
 name|refPatterns
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|refPatterns
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|this
@@ -1232,6 +1259,28 @@ block|{
 return|return
 name|values
 return|;
+block|}
+DECL|method|setValues (List<LabelValue> values)
+specifier|public
+name|void
+name|setValues
+parameter_list|(
+name|List
+argument_list|<
+name|LabelValue
+argument_list|>
+name|values
+parameter_list|)
+block|{
+name|this
+operator|.
+name|values
+operator|=
+name|sortValues
+argument_list|(
+name|values
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getMin ()
 specifier|public
