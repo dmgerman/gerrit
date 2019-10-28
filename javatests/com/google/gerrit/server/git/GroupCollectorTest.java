@@ -2821,31 +2821,6 @@ name|getGroups
 argument_list|()
 return|;
 block|}
-comment|// Helper methods for constructing various map arguments, to avoid lots of
-comment|// type specifications.
-DECL|method|patchSets ()
-specifier|private
-specifier|static
-name|ImmutableListMultimap
-operator|.
-name|Builder
-argument_list|<
-name|ObjectId
-argument_list|,
-name|PatchSet
-operator|.
-name|Id
-argument_list|>
-name|patchSets
-parameter_list|()
-block|{
-return|return
-name|ImmutableListMultimap
-operator|.
-name|builder
-argument_list|()
-return|;
-block|}
 DECL|method|groups ()
 specifier|private
 specifier|static
