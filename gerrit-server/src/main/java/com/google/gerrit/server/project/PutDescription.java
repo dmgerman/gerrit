@@ -512,7 +512,7 @@ operator|.
 name|commitMessage
 argument_list|)
 argument_list|,
-literal|"Updated description.\n"
+literal|"Update description\n"
 argument_list|)
 decl_stmt|;
 if|if
