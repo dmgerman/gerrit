@@ -152,6 +152,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|BatchLabelInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|ChangeInfo
 import|;
 end_import
@@ -806,6 +822,17 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Adds, updates and deletes label definitions in a batch.    *    * @param input input that describes additions, updates and deletions of label definitions    */
+DECL|method|labels (BatchLabelInput input)
+name|void
+name|labels
+parameter_list|(
+name|BatchLabelInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -1453,6 +1480,25 @@ name|label
 parameter_list|(
 name|String
 name|labelName
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|labels (BatchLabelInput input)
+specifier|public
+name|void
+name|labels
+parameter_list|(
+name|BatchLabelInput
+name|input
 parameter_list|)
 throws|throws
 name|RestApiException

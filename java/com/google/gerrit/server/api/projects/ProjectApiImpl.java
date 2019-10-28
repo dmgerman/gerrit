@@ -582,6 +582,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|BatchLabelInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|ChangeInfo
 import|;
 end_import
@@ -1166,6 +1182,24 @@ name|restapi
 operator|.
 name|project
 operator|.
+name|PostLabels
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|restapi
+operator|.
+name|project
+operator|.
 name|ProjectsCollection
 import|;
 end_import
@@ -1583,6 +1617,12 @@ name|ListLabels
 argument_list|>
 name|listLabels
 decl_stmt|;
+DECL|field|postLabels
+specifier|private
+specifier|final
+name|PostLabels
+name|postLabels
+decl_stmt|;
 DECL|field|labelApi
 specifier|private
 specifier|final
@@ -1593,7 +1633,7 @@ name|labelApi
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, IndexChanges indexChanges, Provider<ListLabels> listLabels, LabelApiImpl.Factory labelApi, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, IndexChanges indexChanges, Provider<ListLabels> listLabels, PostLabels postLabels, LabelApiImpl.Factory labelApi, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
 name|PermissionBackend
@@ -1718,6 +1758,9 @@ argument_list|<
 name|ListLabels
 argument_list|>
 name|listLabels
+parameter_list|,
+name|PostLabels
+name|postLabels
 parameter_list|,
 name|LabelApiImpl
 operator|.
@@ -1800,6 +1843,8 @@ name|indexChanges
 argument_list|,
 name|listLabels
 argument_list|,
+name|postLabels
+argument_list|,
 name|labelApi
 argument_list|,
 literal|null
@@ -1808,7 +1853,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, IndexChanges indexChanges, Provider<ListLabels> listLabels, LabelApiImpl.Factory labelApi, @Assisted String name)
+DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, IndexChanges indexChanges, Provider<ListLabels> listLabels, PostLabels postLabels, LabelApiImpl.Factory labelApi, @Assisted String name)
 name|ProjectApiImpl
 parameter_list|(
 name|PermissionBackend
@@ -1933,6 +1978,9 @@ argument_list|<
 name|ListLabels
 argument_list|>
 name|listLabels
+parameter_list|,
+name|PostLabels
+name|postLabels
 parameter_list|,
 name|LabelApiImpl
 operator|.
@@ -2015,13 +2063,15 @@ name|indexChanges
 argument_list|,
 name|listLabels
 argument_list|,
+name|postLabels
+argument_list|,
 name|labelApi
 argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, ProjectResource project, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, IndexChanges indexChanges, Provider<ListLabels> listLabels, LabelApiImpl.Factory labelApi, String name)
+DECL|method|ProjectApiImpl ( PermissionBackend permissionBackend, CreateProject createProject, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, CreateAccessChange createAccessChange, GetConfig getConfig, PutConfig putConfig, Provider<ListBranches> listBranches, Provider<ListTags> listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, ProjectResource project, CommitsCollection commitsCollection, CommitApiImpl.Factory commitApi, DashboardApiImpl.Factory dashboardApi, CheckAccess checkAccess, Check check, Provider<ListDashboards> listDashboards, GetHead getHead, SetHead setHead, GetParent getParent, SetParent setParent, Index index, IndexChanges indexChanges, Provider<ListLabels> listLabels, PostLabels postLabels, LabelApiImpl.Factory labelApi, String name)
 specifier|private
 name|ProjectApiImpl
 parameter_list|(
@@ -2150,6 +2200,9 @@ argument_list|<
 name|ListLabels
 argument_list|>
 name|listLabels
+parameter_list|,
+name|PostLabels
+name|postLabels
 parameter_list|,
 name|LabelApiImpl
 operator|.
@@ -2369,6 +2422,12 @@ operator|.
 name|listLabels
 operator|=
 name|listLabels
+expr_stmt|;
+name|this
+operator|.
+name|postLabels
+operator|=
+name|postLabels
 expr_stmt|;
 name|this
 operator|.
@@ -4164,6 +4223,48 @@ throw|throw
 name|asRestApiException
 argument_list|(
 literal|"Cannot parse label"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|labels (BatchLabelInput input)
+specifier|public
+name|void
+name|labels
+parameter_list|(
+name|BatchLabelInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+try|try
+block|{
+name|postLabels
+operator|.
+name|apply
+argument_list|(
+name|checkExists
+argument_list|()
+argument_list|,
+name|input
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|asRestApiException
+argument_list|(
+literal|"Cannot update labels"
 argument_list|,
 name|e
 argument_list|)
