@@ -1037,6 +1037,14 @@ name|put
 argument_list|(
 literal|"/projects/%s/labels/%s"
 argument_list|)
+argument_list|,
+comment|// Label deletion must be tested last
+name|RestCall
+operator|.
+name|delete
+argument_list|(
+literal|"/projects/%s/labels/%s"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|FILENAME
