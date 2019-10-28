@@ -1030,6 +1030,13 @@ name|get
 argument_list|(
 literal|"/projects/%s/labels/%s"
 argument_list|)
+argument_list|,
+name|RestCall
+operator|.
+name|put
+argument_list|(
+literal|"/projects/%s/labels/%s"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|FILENAME
