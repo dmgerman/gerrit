@@ -699,7 +699,7 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns a new {@link GroupCollector} instance.    *    *<p>Used in production code by using {@link ChangeNotes.Factory} to get a group SHA1 (40 bytes    * string representation) from a {@link PatchSet.Id}. Unit tests use this method directly by    * passing their own lookup function.    *    * @see GroupCollector for what this class does.    */
+comment|/**    * Returns a new {@link GroupCollector} instance.    *    *<p>Used in production code by using {@link com.google.gerrit.server.notedb.ChangeNotes.Factory}    * to get a group SHA1 (40 bytes string representation) from a {@link    * com.google.gerrit.entities.PatchSet.Id}. Unit tests use this method directly by passing their    * own lookup function.    *    * @see GroupCollector for what this class does.    */
 annotation|@
 name|VisibleForTesting
 DECL|method|GroupCollector (ReceivePackRefCache receivePackRefCache, Lookup groupLookup)
