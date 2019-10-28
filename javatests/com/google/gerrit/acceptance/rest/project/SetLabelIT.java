@@ -725,7 +725,7 @@ argument_list|()
 operator|.
 name|name
 argument_list|(
-name|project
+name|allProjects
 operator|.
 name|get
 argument_list|()
@@ -844,7 +844,7 @@ argument_list|()
 operator|.
 name|name
 argument_list|(
-name|project
+name|allProjects
 operator|.
 name|get
 argument_list|()
