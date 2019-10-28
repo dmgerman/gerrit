@@ -316,7 +316,7 @@ block|{
 throw|throw
 name|asRestApiException
 argument_list|(
-literal|"Cannot child project"
+literal|"Cannot get child project"
 argument_list|,
 name|e
 argument_list|)
