@@ -1030,6 +1030,8 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Create handler that is activated when collection element is accessed but doesn't exist, e. g.    * PUT request with a path was called but change edit wasn't created yet. Change edit is created    * and PUT handler is called.    */
+annotation|@
+name|Singleton
 DECL|class|Create
 specifier|public
 specifier|static
@@ -1123,6 +1125,8 @@ argument_list|()
 return|;
 block|}
 block|}
+annotation|@
+name|Singleton
 DECL|class|DeleteFile
 specifier|public
 specifier|static
