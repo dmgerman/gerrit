@@ -128,6 +128,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|InputWithMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|conditions
 operator|.
 name|BooleanCondition
@@ -426,9 +442,7 @@ name|RetryingRestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
-name|SetPrivateOp
-operator|.
-name|Input
+name|InputWithMessage
 argument_list|,
 name|String
 argument_list|>
@@ -517,7 +531,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, SetPrivateOp.Input input)
+DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, InputWithMessage input)
 specifier|public
 name|Response
 argument_list|<
@@ -533,9 +547,7 @@ parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,
-name|SetPrivateOp
-operator|.
-name|Input
+name|InputWithMessage
 name|input
 parameter_list|)
 throws|throws

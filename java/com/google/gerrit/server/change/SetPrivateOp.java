@@ -146,6 +146,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|InputWithMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|BadRequestException
@@ -342,43 +358,12 @@ name|SetPrivateOp
 implements|implements
 name|BatchUpdateOp
 block|{
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-DECL|field|message
-name|String
-name|message
-decl_stmt|;
-DECL|method|Input ()
-specifier|public
-name|Input
-parameter_list|()
-block|{}
-DECL|method|Input (String message)
-specifier|public
-name|Input
-parameter_list|(
-name|String
-name|message
-parameter_list|)
-block|{
-name|this
-operator|.
-name|message
-operator|=
-name|message
-expr_stmt|;
-block|}
-block|}
 DECL|interface|Factory
 specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (boolean isPrivate, @Nullable Input input)
+DECL|method|create (boolean isPrivate, @Nullable InputWithMessage input)
 name|SetPrivateOp
 name|create
 parameter_list|(
@@ -387,7 +372,7 @@ name|isPrivate
 parameter_list|,
 annotation|@
 name|Nullable
-name|Input
+name|InputWithMessage
 name|input
 parameter_list|)
 function_decl|;
@@ -421,7 +406,7 @@ annotation|@
 name|Nullable
 specifier|private
 specifier|final
-name|Input
+name|InputWithMessage
 name|input
 decl_stmt|;
 DECL|field|change
@@ -441,7 +426,7 @@ name|isNoOp
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetPrivateOp ( PrivateStateChanged privateStateChanged, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, @Assisted boolean isPrivate, @Assisted @Nullable Input input)
+DECL|method|SetPrivateOp ( PrivateStateChanged privateStateChanged, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, @Assisted boolean isPrivate, @Assisted @Nullable InputWithMessage input)
 name|SetPrivateOp
 parameter_list|(
 name|PrivateStateChanged
@@ -462,7 +447,7 @@ annotation|@
 name|Assisted
 annotation|@
 name|Nullable
-name|Input
+name|InputWithMessage
 name|input
 parameter_list|)
 block|{
