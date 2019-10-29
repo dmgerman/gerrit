@@ -91,12 +91,9 @@ DECL|class|LabelDefinitionInput
 specifier|public
 class|class
 name|LabelDefinitionInput
+extends|extends
+name|InputWithCommitMessage
 block|{
-DECL|field|commitMessage
-specifier|public
-name|String
-name|commitMessage
-decl_stmt|;
 DECL|field|name
 specifier|public
 name|String
