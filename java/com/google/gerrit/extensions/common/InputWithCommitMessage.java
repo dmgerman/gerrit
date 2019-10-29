@@ -91,6 +91,8 @@ class|class
 name|InputWithCommitMessage
 block|{
 DECL|field|commitMessage
+annotation|@
+name|Nullable
 specifier|public
 name|String
 name|commitMessage
