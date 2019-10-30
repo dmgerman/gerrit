@@ -625,13 +625,6 @@ argument_list|)
 argument_list|,
 name|RestCall
 operator|.
-name|post
-argument_list|(
-literal|"/projects/%s/create.change"
-argument_list|)
-argument_list|,
-name|RestCall
-operator|.
 name|get
 argument_list|(
 literal|"/projects/%s/children"
