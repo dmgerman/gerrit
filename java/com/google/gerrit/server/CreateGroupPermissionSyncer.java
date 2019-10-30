@@ -375,7 +375,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * With groups in NoteDb, the capability of creating a group is expressed as a {@code CREATE}  * permission on {@code refs/groups/*} rather than a global capability in {@code All-Projects}.  *  *<p>During the transition phase, we have to keep these permissions in sync with the global  * capabilities that serve as the source of truth.  *  *<p><This class implements a one-way synchronization from the global {@code CREATE_GROUP}  * capability in {@code All-Projects} to a {@code CREATE} permission on {@code refs/groups/*} in  * {@code All-Users}.  */
+comment|/**  * With groups in NoteDb, the capability of creating a group is expressed as a {@code CREATE}  * permission on {@code refs/groups/*} rather than a global capability in {@code All-Projects}.  *  *<p>During the transition phase, we have to keep these permissions in sync with the global  * capabilities that serve as the source of truth.  *  *<p>This class implements a one-way synchronization from the global {@code CREATE_GROUP}  * capability in {@code All-Projects} to a {@code CREATE} permission on {@code refs/groups/*} in  * {@code All-Users}.  */
 end_comment
 
 begin_class
