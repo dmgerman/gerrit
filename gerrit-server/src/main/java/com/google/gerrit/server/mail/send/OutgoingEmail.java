@@ -1562,6 +1562,15 @@ argument_list|()
 condition|)
 block|{
 comment|// Send multipart message
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Sending multipart '{}'"
+argument_list|,
+name|messageClass
+argument_list|)
+expr_stmt|;
 name|args
 operator|.
 name|emailSender
@@ -1599,6 +1608,15 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Sending plaintext '{}'"
+argument_list|,
+name|messageClass
+argument_list|)
+expr_stmt|;
 comment|// Send plaintext message
 name|Map
 argument_list|<
