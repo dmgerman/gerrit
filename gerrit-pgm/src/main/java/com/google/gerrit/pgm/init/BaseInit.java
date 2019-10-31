@@ -1330,7 +1330,7 @@ argument_list|)
 expr_stmt|;
 name|log
 operator|.
-name|warn
+name|error
 argument_list|(
 name|msg
 argument_list|,
