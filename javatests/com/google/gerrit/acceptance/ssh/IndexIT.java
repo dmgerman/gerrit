@@ -66,18 +66,6 @@ name|ssh
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Injector
-import|;
-end_import
-
 begin_class
 DECL|class|IndexIT
 specifier|public
@@ -85,21 +73,7 @@ class|class
 name|IndexIT
 extends|extends
 name|AbstractIndexTests
-block|{
-annotation|@
-name|Override
-DECL|method|configureIndex (Injector injector)
-specifier|public
-name|void
-name|configureIndex
-parameter_list|(
-name|Injector
-name|injector
-parameter_list|)
-throws|throws
-name|Exception
 block|{}
-block|}
 end_class
 
 end_unit
