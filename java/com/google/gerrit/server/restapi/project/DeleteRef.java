@@ -254,6 +254,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|exceptions
+operator|.
+name|StorageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -1080,12 +1094,12 @@ name|REJECTED_CURRENT_BRANCH
 case|:
 name|logger
 operator|.
-name|atSevere
+name|atFine
 argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"Cannot delete %s: %s"
+literal|"Cannot delete current branch %s: %s"
 argument_list|,
 name|ref
 argument_list|,
@@ -1124,12 +1138,13 @@ case|case
 name|REJECTED_OTHER_REASON
 case|:
 default|default:
-name|logger
+throw|throw
+operator|new
+name|StorageException
+argument_list|(
+name|String
 operator|.
-name|atSevere
-argument_list|()
-operator|.
-name|log
+name|format
 argument_list|(
 literal|"Cannot delete %s: %s"
 argument_list|,
@@ -1140,17 +1155,6 @@ operator|.
 name|name
 argument_list|()
 argument_list|)
-expr_stmt|;
-throw|throw
-operator|new
-name|ResourceConflictException
-argument_list|(
-literal|"cannot delete: "
-operator|+
-name|result
-operator|.
-name|name
-argument_list|()
 argument_list|)
 throw|;
 block|}

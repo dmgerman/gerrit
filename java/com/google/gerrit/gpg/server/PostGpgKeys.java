@@ -2345,10 +2345,11 @@ name|NO_CHANGE
 case|:
 break|break;
 case|case
-name|IO_FAILURE
-case|:
-case|case
 name|LOCK_FAILURE
+case|:
+comment|// should not happen since this case is already handled by PublicKeyStore#save
+case|case
+name|IO_FAILURE
 case|:
 case|case
 name|NOT_ATTEMPTED
@@ -2371,11 +2372,16 @@ case|:
 default|default:
 throw|throw
 operator|new
-name|ResourceConflictException
+name|StorageException
 argument_list|(
-literal|"Failed to save public keys: "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Failed to save public keys: %s"
+argument_list|,
 name|saveResult
+argument_list|)
 argument_list|)
 throw|;
 block|}
