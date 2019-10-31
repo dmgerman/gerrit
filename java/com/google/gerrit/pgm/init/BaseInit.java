@@ -1310,7 +1310,7 @@ argument_list|)
 expr_stmt|;
 name|logger
 operator|.
-name|atWarning
+name|atSevere
 argument_list|()
 operator|.
 name|withCause
