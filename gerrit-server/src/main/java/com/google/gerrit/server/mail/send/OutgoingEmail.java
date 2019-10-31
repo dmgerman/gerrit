@@ -997,6 +997,21 @@ name|EmailException
 block|{
 if|if
 condition|(
+operator|!
+name|args
+operator|.
+name|emailSender
+operator|.
+name|isEnabled
+argument_list|()
+condition|)
+block|{
+comment|// Server has explicitly disabled email sending.
+comment|//
+return|return;
+block|}
+if|if
+condition|(
 name|NotifyHandling
 operator|.
 name|NONE
@@ -1012,21 +1027,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-return|return;
-block|}
-if|if
-condition|(
-operator|!
-name|args
-operator|.
-name|emailSender
-operator|.
-name|isEnabled
-argument_list|()
-condition|)
-block|{
-comment|// Server has explicitly disabled email sending.
-comment|//
 return|return;
 block|}
 name|init
