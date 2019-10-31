@@ -345,6 +345,17 @@ argument_list|>
 name|changeIdType
 parameter_list|()
 function_decl|;
+comment|// The cause of an error.
+DECL|method|cause ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|cause
+parameter_list|()
+function_decl|;
 comment|// The type of an event.
 DECL|method|eventType ()
 specifier|public
@@ -664,7 +675,7 @@ argument_list|>
 name|username
 parameter_list|()
 function_decl|;
-comment|/**    * Returns a string representation of this instance that is suitable for logging. This is wrapped    * in a {@link LazyArg} because it is expensive to evaluate.    *    *<p>{@link #toString()} formats the {@link Optional} fields as {@code key=Optional[value]} or    * {@code key=Optional.empty}. Since this class has many optional fields from which usually only a    * few are populated this leads to long string representations such as    *    *<pre>    * Metadata{accountId=Optional.empty, actionType=Optional.empty, authDomainName=Optional.empty,    * branchName=Optional.empty, cacheKey=Optional.empty, cacheName=Optional.empty,    * className=Optional.empty, changeId=Optional[9212550], changeIdType=Optional.empty,    * eventType=Optional.empty, exportValue=Optional.empty, filePath=Optional.empty,    * garbageCollectorName=Optional.empty, gitOperation=Optional.empty, groupId=Optional.empty,    * groupName=Optional.empty, groupUuid=Optional.empty, httpStatus=Optional.empty,    * indexName=Optional.empty, indexVersion=Optional[0], methodName=Optional.empty,    * multiple=Optional.empty, operationName=Optional.empty, partial=Optional.empty,    * noteDbFilePath=Optional.empty, noteDbRefName=Optional.empty,    * noteDbSequenceType=Optional.empty, noteDbTable=Optional.empty, patchSetId=Optional.empty,    * pluginMetadata=[], pluginName=Optional.empty, projectName=Optional.empty,    * pushType=Optional.empty, resourceCount=Optional.empty, restViewName=Optional.empty,    * revision=Optional.empty, username=Optional.empty}    *</pre>    *    *<p>That's hard to read in logs. This is why this method    *    *<ul>    *<li>drops fields which have {@code Optional.empty} as value and    *<li>reformats values that are {@code Optional[value]} to {@code value}.    *</ul>    *    *<p>For the example given above the formatted string would look like this:    *    *<pre>    * Metadata{changeId=9212550, indexVersion=0, pluginMetadata=[]}    *</pre>    *    * @return string representation of this instance that is suitable for logging    */
+comment|/**    * Returns a string representation of this instance that is suitable for logging. This is wrapped    * in a {@link LazyArg} because it is expensive to evaluate.    *    *<p>{@link #toString()} formats the {@link Optional} fields as {@code key=Optional[value]} or    * {@code key=Optional.empty}. Since this class has many optional fields from which usually only a    * few are populated this leads to long string representations such as    *    *<pre>    * Metadata{accountId=Optional.empty, actionType=Optional.empty, authDomainName=Optional.empty,    * branchName=Optional.empty, cacheKey=Optional.empty, cacheName=Optional.empty,    * className=Optional.empty, changeId=Optional[9212550], changeIdType=Optional.empty,    * cause=Optional.empty, eventType=Optional.empty, exportValue=Optional.empty,    * filePath=Optional.empty, garbageCollectorName=Optional.empty, gitOperation=Optional.empty,    * groupId=Optional.empty, groupName=Optional.empty, groupUuid=Optional.empty,    * httpStatus=Optional.empty, indexName=Optional.empty, indexVersion=Optional[0],    * methodName=Optional.empty, multiple=Optional.empty, operationName=Optional.empty,    * partial=Optional.empty, noteDbFilePath=Optional.empty, noteDbRefName=Optional.empty,    * noteDbSequenceType=Optional.empty, noteDbTable=Optional.empty, patchSetId=Optional.empty,    * pluginMetadata=[], pluginName=Optional.empty, projectName=Optional.empty,    * pushType=Optional.empty, resourceCount=Optional.empty, restViewName=Optional.empty,    * revision=Optional.empty, username=Optional.empty}    *</pre>    *    *<p>That's hard to read in logs. This is why this method    *    *<ul>    *<li>drops fields which have {@code Optional.empty} as value and    *<li>reformats values that are {@code Optional[value]} to {@code value}.    *</ul>    *    *<p>For the example given above the formatted string would look like this:    *    *<pre>    * Metadata{changeId=9212550, indexVersion=0, pluginMetadata=[]}    *</pre>    *    * @return string representation of this instance that is suitable for logging    */
 DECL|method|toStringForLoggingLazy ()
 name|LazyArg
 argument_list|<
@@ -1096,6 +1107,18 @@ annotation|@
 name|Nullable
 name|String
 name|changeIdType
+parameter_list|)
+function_decl|;
+DECL|method|cause (@ullable String cause)
+specifier|public
+specifier|abstract
+name|Builder
+name|cause
+parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|cause
 parameter_list|)
 function_decl|;
 DECL|method|eventType (@ullable String eventType)
