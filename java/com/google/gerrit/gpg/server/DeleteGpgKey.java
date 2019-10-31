@@ -166,11 +166,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|exceptions
 operator|.
-name|common
-operator|.
-name|Input
+name|StorageException
 import|;
 end_import
 
@@ -184,9 +182,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|common
 operator|.
-name|ResourceConflictException
+name|Input
 import|;
 end_import
 
@@ -917,13 +915,14 @@ expr_stmt|;
 block|}
 break|break;
 case|case
+name|LOCK_FAILURE
+case|:
+comment|// should not happen since this case is already handled by PublicKeyStore#save
+case|case
 name|FORCED
 case|:
 case|case
 name|IO_FAILURE
-case|:
-case|case
-name|LOCK_FAILURE
 case|:
 case|case
 name|NEW
@@ -949,11 +948,16 @@ case|:
 default|default:
 throw|throw
 operator|new
-name|ResourceConflictException
+name|StorageException
 argument_list|(
-literal|"Failed to delete public key: "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Failed to delete public key: %s"
+argument_list|,
 name|saveResult
+argument_list|)
 argument_list|)
 throw|;
 block|}
