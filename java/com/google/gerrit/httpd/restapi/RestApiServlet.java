@@ -5784,6 +5784,10 @@ argument_list|)
 operator|+
 literal|"#parse"
 argument_list|,
+name|ActionType
+operator|.
+name|REST_READ_REQUEST
+argument_list|,
 parameter_list|()
 lambda|->
 name|restCollection
@@ -5843,6 +5847,10 @@ name|getViewName
 argument_list|(
 name|viewData
 argument_list|)
+argument_list|,
+name|ActionType
+operator|.
+name|REST_READ_REQUEST
 argument_list|,
 parameter_list|()
 lambda|->
@@ -5906,6 +5914,10 @@ name|getViewName
 argument_list|(
 name|viewData
 argument_list|)
+argument_list|,
+name|ActionType
+operator|.
+name|REST_WRITE_REQUEST
 argument_list|,
 parameter_list|()
 lambda|->
@@ -5976,6 +5988,10 @@ name|getViewName
 argument_list|(
 name|viewData
 argument_list|)
+argument_list|,
+name|ActionType
+operator|.
+name|REST_WRITE_REQUEST
 argument_list|,
 parameter_list|()
 lambda|->
@@ -6049,6 +6065,10 @@ argument_list|(
 name|viewData
 argument_list|)
 argument_list|,
+name|ActionType
+operator|.
+name|REST_WRITE_REQUEST
+argument_list|,
 parameter_list|()
 lambda|->
 name|view
@@ -6118,6 +6138,10 @@ argument_list|(
 name|viewData
 argument_list|)
 argument_list|,
+name|ActionType
+operator|.
+name|REST_WRITE_REQUEST
+argument_list|,
 parameter_list|()
 lambda|->
 name|view
@@ -6137,7 +6161,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|invokeRestEndpointWithRetry ( HttpServletRequest req, TraceContext traceContext, String caller, Action<T> action, Predicate<Throwable> retryExceptionPredicate)
+DECL|method|invokeRestEndpointWithRetry ( HttpServletRequest req, TraceContext traceContext, String caller, ActionType actionType, Action<T> action, Predicate<Throwable> retryExceptionPredicate)
 specifier|private
 parameter_list|<
 name|T
@@ -6153,6 +6177,9 @@ name|traceContext
 parameter_list|,
 name|String
 name|caller
+parameter_list|,
+name|ActionType
+name|actionType
 parameter_list|,
 name|Action
 argument_list|<
@@ -6247,9 +6274,7 @@ name|retryHelper
 operator|.
 name|execute
 argument_list|(
-name|ActionType
-operator|.
-name|REST_REQUEST
+name|actionType
 argument_list|,
 name|action
 argument_list|,
