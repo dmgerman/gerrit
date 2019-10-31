@@ -1080,12 +1080,12 @@ name|REJECTED_CURRENT_BRANCH
 case|:
 name|logger
 operator|.
-name|atSevere
+name|atFine
 argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"Cannot delete %s: %s"
+literal|"Cannot delete current branch %s: %s"
 argument_list|,
 name|ref
 argument_list|,
