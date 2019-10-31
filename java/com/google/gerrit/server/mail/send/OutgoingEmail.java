@@ -128,6 +128,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|collect
+operator|.
+name|Sets
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|flogger
 operator|.
 name|FluentLogger
@@ -773,17 +787,6 @@ block|{
 if|if
 condition|(
 operator|!
-name|notify
-operator|.
-name|shouldNotify
-argument_list|()
-condition|)
-block|{
-return|return;
-block|}
-if|if
-condition|(
-operator|!
 name|args
 operator|.
 name|emailSender
@@ -794,6 +797,41 @@ condition|)
 block|{
 comment|// Server has explicitly disabled email sending.
 comment|//
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Not sending '%s': Email sending is disabled by server config"
+argument_list|,
+name|messageClass
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
+operator|!
+name|notify
+operator|.
+name|shouldNotify
+argument_list|()
+condition|)
+block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Not sending '%s': Notify handling is NONE"
+argument_list|,
+name|messageClass
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|init
@@ -1098,6 +1136,18 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Not sending '%s': No SMTP recipients"
+argument_list|,
+name|messageClass
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 block|}
@@ -1313,8 +1363,64 @@ name|ValidationException
 name|e
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Not sending '%s': Rejected by outgoing email validator: %s"
+argument_list|,
+name|messageClass
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
+block|}
+name|Set
+argument_list|<
+name|Address
+argument_list|>
+name|intersection
+init|=
+name|Sets
+operator|.
+name|intersection
+argument_list|(
+name|smtpRcptTo
+argument_list|,
+name|smtpRcptToPlaintextOnly
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|intersection
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Email '%s' will be sent twice to %s"
+argument_list|,
+name|messageClass
+argument_list|,
+name|intersection
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1326,6 +1432,18 @@ argument_list|()
 condition|)
 block|{
 comment|// Send multipart message
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Sending multipart '%s'"
+argument_list|,
+name|messageClass
+argument_list|)
+expr_stmt|;
 name|args
 operator|.
 name|emailSender
@@ -1363,6 +1481,18 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Sending plaintext '%s'"
+argument_list|,
+name|messageClass
+argument_list|)
+expr_stmt|;
 comment|// Send plaintext message
 name|Map
 argument_list|<
@@ -2442,6 +2572,18 @@ literal|0
 condition|)
 block|{
 comment|// If we have no message body, don't send.
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Not sending '%s': No message body"
+argument_list|,
+name|messageClass
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2457,6 +2599,18 @@ block|{
 comment|// If we have nobody to send this message to, then all of our
 comment|// selection filters previously for this type of message were
 comment|// unable to match a destination. Don't bother sending it.
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Not sending '%s': No recipients"
+argument_list|,
+name|messageClass
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2495,6 +2649,18 @@ condition|)
 block|{
 comment|// If the only recipient is also the sender, don't bother.
 comment|//
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Not sending '%s': Sender is only recipient"
+argument_list|,
+name|messageClass
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
