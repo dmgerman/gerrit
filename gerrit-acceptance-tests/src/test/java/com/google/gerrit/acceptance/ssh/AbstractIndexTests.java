@@ -802,7 +802,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|assertChangeQuery (String q, ChangeData change, boolean assertTrue)
-specifier|protected
+specifier|private
 name|void
 name|assertChangeQuery
 parameter_list|(
