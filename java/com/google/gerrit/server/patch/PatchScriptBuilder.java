@@ -2958,8 +2958,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|Text
 name|src
 init|=
@@ -3060,9 +3058,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-block|}
-else|else
-block|{
 specifier|final
 name|TreeWalk
 name|tw
@@ -3354,7 +3349,6 @@ argument_list|,
 name|reuse
 argument_list|)
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
