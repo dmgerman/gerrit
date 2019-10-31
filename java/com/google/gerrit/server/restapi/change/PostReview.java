@@ -2619,6 +2619,24 @@ name|getNotes
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"strict label checking is %s"
+argument_list|,
+operator|(
+name|strictLabels
+condition|?
+literal|"enabled"
+else|:
+literal|"disabled"
+operator|)
+argument_list|)
+expr_stmt|;
 name|input
 operator|.
 name|drafts
@@ -2774,6 +2792,20 @@ name|input
 argument_list|)
 expr_stmt|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"notify handling = %s"
+argument_list|,
+name|input
+operator|.
+name|notify
+argument_list|)
+expr_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -2877,6 +2909,26 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Adding %s as reviewer failed: %s"
+argument_list|,
+name|reviewerInput
+operator|.
+name|reviewer
+argument_list|,
+name|result
+operator|.
+name|result
+operator|.
+name|error
+argument_list|)
+expr_stmt|;
 name|hasError
 operator|=
 literal|true
@@ -2894,12 +2946,40 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Adding %s as reviewer requires confirmation"
+argument_list|,
+name|reviewerInput
+operator|.
+name|reviewer
+argument_list|)
+expr_stmt|;
 name|confirm
 operator|=
 literal|true
 expr_stmt|;
 continue|continue;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Adding %s as reviewer was prepared"
+argument_list|,
+name|reviewerInput
+operator|.
+name|reviewer
+argument_list|)
+expr_stmt|;
 name|reviewerResults
 operator|.
 name|add
@@ -3036,6 +3116,22 @@ operator|!=
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ccOrReviewer
+condition|)
+block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"calling user is cc/reviewer on the change due to voting on a label"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -3072,10 +3168,36 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ccOrReviewer
+condition|)
+block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"calling user is already cc/reviewer on the change"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// Apply reviewer changes first. Revision emails should be sent to the
 comment|// updated set of reviewers. Also keep track of whether the user added
 comment|// themselves as a reviewer or to the CC list.
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"adding reviewer additions"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|ReviewerAddition
@@ -3152,6 +3274,16 @@ name|_accountId
 argument_list|)
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"calling user is explicitly added as reviewer"
+argument_list|)
+expr_stmt|;
 name|ccOrReviewer
 operator|=
 literal|true
@@ -3203,6 +3335,16 @@ name|_accountId
 argument_list|)
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"calling user is explicitly added as cc"
+argument_list|)
+expr_stmt|;
 name|ccOrReviewer
 operator|=
 literal|true
@@ -3221,6 +3363,16 @@ block|{
 comment|// User posting this review isn't currently in the reviewer or CC list,
 comment|// isn't being explicitly added, and isn't voting on any label.
 comment|// Automatically CC them on this change so they receive replies.
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"CCing calling user"
+argument_list|)
+expr_stmt|;
 name|ReviewerAddition
 name|selfAddition
 init|=
@@ -3330,6 +3482,20 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"setting work-in-progress to %s"
+argument_list|,
+name|input
+operator|.
+name|workInProgress
+argument_list|)
+expr_stmt|;
 name|WorkInProgressOp
 name|wipOp
 init|=
@@ -3370,6 +3536,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Add the review op.
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"posting review"
+argument_list|)
+expr_stmt|;
 name|bu
 operator|.
 name|addOp
@@ -3855,6 +4031,20 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"request is executed on behalf of %s"
+argument_list|,
+name|in
+operator|.
+name|onBehalfOf
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|in
@@ -3907,6 +4097,20 @@ literal|"not allowed to modify other user's drafts"
 argument_list|)
 throw|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"label input: %s"
+argument_list|,
+name|in
+operator|.
+name|labels
+argument_list|)
+expr_stmt|;
 name|CurrentUser
 name|caller
 init|=
@@ -3991,6 +4195,21 @@ operator|==
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"label %s not found"
+argument_list|,
+name|ent
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|strictLabels
@@ -4014,6 +4233,21 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"ignoring input for unknown label %s"
+argument_list|,
+name|ent
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|itr
 operator|.
 name|remove
@@ -4023,12 +4257,31 @@ continue|continue;
 block|}
 if|if
 condition|(
-operator|!
 name|caller
 operator|.
 name|isInternalUser
 argument_list|()
 condition|)
+block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"skipping on behalf of permission check for label %s"
+operator|+
+literal|" because caller is an internal user"
+argument_list|,
+name|type
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 try|try
 block|{
@@ -4093,6 +4346,16 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"labels are empty after unknown labels have been removed"
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|new
 name|AuthException
@@ -4127,6 +4390,21 @@ argument_list|(
 name|caller
 argument_list|)
 decl_stmt|;
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"on behalf of user was resolved to %s"
+argument_list|,
+name|reviewer
+operator|.
+name|getLoggableName
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|permissionBackend
@@ -4225,6 +4503,18 @@ name|AuthException
 throws|,
 name|PermissionBackendException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"checking label input: %s"
+argument_list|,
+name|labels
+argument_list|)
+expr_stmt|;
 name|PermissionBackend
 operator|.
 name|ForChange
@@ -4299,6 +4589,21 @@ operator|==
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"label %s not found"
+argument_list|,
+name|ent
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|strictLabels
@@ -4322,6 +4627,21 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"ignoring input for unknown label %s"
+argument_list|,
+name|ent
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|itr
 operator|.
 name|remove
@@ -4365,6 +4685,21 @@ operator|==
 literal|null
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"label value %s not found"
+argument_list|,
+name|ent
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|strictLabels
@@ -4393,6 +4728,21 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"ignoring input for label %s because label value is unknown"
+argument_list|,
+name|ent
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|itr
 operator|.
 name|remove
@@ -4676,6 +5026,16 @@ name|BadRequestException
 throws|,
 name|PatchListNotAvailableException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"checking comments"
+argument_list|)
+expr_stmt|;
 name|Set
 argument_list|<
 name|String
@@ -5044,6 +5404,16 @@ name|BadRequestException
 throws|,
 name|PatchListNotAvailableException
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"checking robot comments"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Map
