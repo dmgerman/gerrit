@@ -604,6 +604,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1008,6 +1020,13 @@ condition|)
 block|{
 comment|// Server has explicitly disabled email sending.
 comment|//
+name|logNotSending
+argument_list|(
+parameter_list|()
+lambda|->
+literal|"Email sending is disabled by server config"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 if|if
@@ -1027,6 +1046,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|logNotSending
+argument_list|(
+parameter_list|()
+lambda|->
+literal|"Notify handling is NONE"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|init
@@ -1288,6 +1314,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|logNotSending
+argument_list|(
+parameter_list|()
+lambda|->
+literal|"No SMTP recipients"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 block|}
@@ -1499,6 +1532,23 @@ name|ValidationException
 name|e
 parameter_list|)
 block|{
+name|logNotSending
+argument_list|(
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Rejected by outgoing email validator: %s"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 block|}
@@ -2486,6 +2536,13 @@ literal|0
 condition|)
 block|{
 comment|// If we have no message body, don't send.
+name|logNotSending
+argument_list|(
+parameter_list|()
+lambda|->
+literal|"No message body"
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2501,6 +2558,13 @@ block|{
 comment|// If we have nobody to send this message to, then all of our
 comment|// selection filters previously for this type of message were
 comment|// unable to match a destination. Don't bother sending it.
+name|logNotSending
+argument_list|(
+parameter_list|()
+lambda|->
+literal|"No recipients"
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2542,6 +2606,13 @@ condition|)
 block|{
 comment|// If the only recipient is also the sender, don't bother.
 comment|//
+name|logNotSending
+argument_list|(
+parameter_list|()
+lambda|->
+literal|"Sender is only recipient"
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2549,6 +2620,42 @@ block|}
 return|return
 literal|true
 return|;
+block|}
+DECL|method|logNotSending (Supplier<String> reason)
+specifier|private
+name|void
+name|logNotSending
+parameter_list|(
+name|Supplier
+argument_list|<
+name|String
+argument_list|>
+name|reason
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Not sending '{}': {}"
+argument_list|,
+name|messageClass
+argument_list|,
+name|reason
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/** Schedule this message for delivery to the listed accounts. */
 DECL|method|add (RecipientType rt, Collection<Account.Id> list)
