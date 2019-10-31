@@ -528,8 +528,6 @@ argument_list|)
 expr_stmt|;
 name|assertChangeQuery
 argument_list|(
-literal|"message:second"
-argument_list|,
 name|change
 operator|.
 name|getChange
@@ -590,8 +588,6 @@ argument_list|)
 expr_stmt|;
 name|assertChangeQuery
 argument_list|(
-literal|"message:second"
-argument_list|,
 name|change
 operator|.
 name|getChange
@@ -684,8 +680,6 @@ argument_list|)
 expr_stmt|;
 name|assertChangeQuery
 argument_list|(
-literal|"message:second"
-argument_list|,
 name|change
 operator|.
 name|getChange
@@ -789,8 +783,6 @@ argument_list|)
 expr_stmt|;
 name|assertChangeQuery
 argument_list|(
-literal|"message:second"
-argument_list|,
 name|change
 operator|.
 name|getChange
@@ -800,14 +792,11 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertChangeQuery (String q, ChangeData change, boolean assertTrue)
-specifier|protected
+DECL|method|assertChangeQuery (ChangeData change, boolean assertTrue)
+specifier|private
 name|void
 name|assertChangeQuery
 parameter_list|(
-name|String
-name|q
-parameter_list|,
 name|ChangeData
 name|change
 parameter_list|,
@@ -825,7 +814,7 @@ name|ids
 init|=
 name|query
 argument_list|(
-name|q
+literal|"message:second"
 argument_list|)
 operator|.
 name|stream
