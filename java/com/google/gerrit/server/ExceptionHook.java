@@ -80,6 +80,16 @@ name|ExtensionPoint
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * Allows implementors to control how certain exceptions should be handled.  *  *<p>This interface is intended to be implemented for multi-master setups to control the behavior  * for handling exceptions that are thrown by a lower layer that handles the consensus and  * synchronization between different server nodes. E.g. if an operation fails because consensus for  * a Git update could not be achieved (e.g. due to slow responding server nodes) this interface can  * be used to retry the request instead of failing it immediately.  */
 end_comment
@@ -104,6 +114,26 @@ parameter_list|)
 block|{
 return|return
 literal|false
+return|;
+block|}
+comment|/**    * Formats the cause of an exception for use in metrics.    *    *<p>This method allows implementors to group exceptions that have the same cause into one metric    * bucket.    *    * @param throwable the exception cause    * @return formatted cause or {@link Optional#empty()} if no formatting was done    */
+DECL|method|formatCause (Throwable throwable)
+specifier|default
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|formatCause
+parameter_list|(
+name|Throwable
+name|throwable
+parameter_list|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
