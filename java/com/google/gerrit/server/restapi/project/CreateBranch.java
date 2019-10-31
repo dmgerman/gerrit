@@ -266,6 +266,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|git
+operator|.
+name|LockFailureException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -1303,8 +1317,22 @@ name|refPrefix
 argument_list|)
 expr_stmt|;
 block|}
-comment|// fall through
-comment|// $FALL-THROUGH$
+throw|throw
+operator|new
+name|LockFailureException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Failed to create %s"
+argument_list|,
+name|ref
+argument_list|)
+argument_list|,
+name|u
+argument_list|)
+throw|;
 case|case
 name|FORCED
 case|:
@@ -1330,18 +1358,25 @@ case|case
 name|REJECTED_OTHER_REASON
 case|:
 default|default:
-block|{
 throw|throw
 operator|new
 name|IOException
 argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Failed to create %s: %s"
+argument_list|,
+name|ref
+argument_list|,
 name|result
 operator|.
 name|name
 argument_list|()
 argument_list|)
+argument_list|)
 throw|;
-block|}
 block|}
 name|BranchInfo
 name|info
