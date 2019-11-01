@@ -178,6 +178,7 @@ name|value
 argument_list|)
 return|;
 block|}
+comment|/** HTTP 200 OK: with forced revalidation of cache. */
 DECL|method|withMustRevalidate (T value)
 specifier|public
 specifier|static
