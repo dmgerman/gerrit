@@ -358,6 +358,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -424,9 +436,12 @@ decl_stmt|;
 DECL|field|updateFactory
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|Server
+argument_list|>
 name|updateFactory
 decl_stmt|;
 DECL|field|permissionBackend
@@ -437,15 +452,18 @@ name|permissionBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutDescription ( ProjectCache cache, MetaDataUpdate.Server updateFactory, PermissionBackend permissionBackend)
+DECL|method|PutDescription ( ProjectCache cache, Provider<MetaDataUpdate.Server> updateFactory, PermissionBackend permissionBackend)
 name|PutDescription
 parameter_list|(
 name|ProjectCache
 name|cache
 parameter_list|,
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|Server
+argument_list|>
 name|updateFactory
 parameter_list|,
 name|PermissionBackend
@@ -552,6 +570,9 @@ name|MetaDataUpdate
 name|md
 init|=
 name|updateFactory
+operator|.
+name|get
+argument_list|()
 operator|.
 name|create
 argument_list|(

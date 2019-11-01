@@ -1038,9 +1038,12 @@ decl_stmt|;
 DECL|field|metaDataUpdateFactory
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|Server
+argument_list|>
 name|metaDataUpdateFactory
 decl_stmt|;
 DECL|field|groupBackend
@@ -1057,7 +1060,7 @@ name|webLinks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetAccess ( Provider<CurrentUser> self, PermissionBackend permissionBackend, AllProjectsName allProjectsName, ProjectCache projectCache, MetaDataUpdate.Server metaDataUpdateFactory, ProjectJson projectJson, GroupBackend groupBackend, WebLinks webLinks)
+DECL|method|GetAccess ( Provider<CurrentUser> self, PermissionBackend permissionBackend, AllProjectsName allProjectsName, ProjectCache projectCache, Provider<MetaDataUpdate.Server> metaDataUpdateFactory, ProjectJson projectJson, GroupBackend groupBackend, WebLinks webLinks)
 specifier|public
 name|GetAccess
 parameter_list|(
@@ -1076,9 +1079,12 @@ parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|Server
+argument_list|>
 name|metaDataUpdateFactory
 parameter_list|,
 name|ProjectJson
@@ -1276,6 +1282,9 @@ name|MetaDataUpdate
 name|md
 init|=
 name|metaDataUpdateFactory
+operator|.
+name|get
+argument_list|()
 operator|.
 name|create
 argument_list|(
