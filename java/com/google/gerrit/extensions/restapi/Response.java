@@ -178,6 +178,24 @@ name|value
 argument_list|)
 return|;
 block|}
+comment|/** HTTP 200 OK: with empty value. */
+DECL|method|ok ()
+specifier|public
+specifier|static
+name|Response
+argument_list|<
+name|String
+argument_list|>
+name|ok
+parameter_list|()
+block|{
+return|return
+name|ok
+argument_list|(
+literal|""
+argument_list|)
+return|;
+block|}
 comment|/** HTTP 200 OK: with forced revalidation of cache. */
 DECL|method|withMustRevalidate (T value)
 specifier|public
@@ -244,6 +262,24 @@ argument_list|(
 literal|201
 argument_list|,
 name|value
+argument_list|)
+return|;
+block|}
+comment|/** HTTP 201 Created: with empty value. */
+DECL|method|created ()
+specifier|public
+specifier|static
+name|Response
+argument_list|<
+name|String
+argument_list|>
+name|created
+parameter_list|()
+block|{
+return|return
+name|created
+argument_list|(
+literal|""
 argument_list|)
 return|;
 block|}

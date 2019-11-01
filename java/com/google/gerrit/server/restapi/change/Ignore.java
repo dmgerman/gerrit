@@ -445,9 +445,7 @@ return|return
 name|Response
 operator|.
 name|ok
-argument_list|(
-literal|""
-argument_list|)
+argument_list|()
 return|;
 block|}
 catch|catch

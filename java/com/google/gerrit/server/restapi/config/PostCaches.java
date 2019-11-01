@@ -609,9 +609,7 @@ return|return
 name|Response
 operator|.
 name|ok
-argument_list|(
-literal|""
-argument_list|)
+argument_list|()
 return|;
 case|case
 name|FLUSH
@@ -651,9 +649,7 @@ return|return
 name|Response
 operator|.
 name|ok
-argument_list|(
-literal|""
-argument_list|)
+argument_list|()
 return|;
 default|default:
 throw|throw

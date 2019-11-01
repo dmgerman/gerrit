@@ -603,9 +603,7 @@ return|return
 name|Response
 operator|.
 name|ok
-argument_list|(
-literal|""
-argument_list|)
+argument_list|()
 return|;
 block|}
 name|SetPrivateOp
@@ -666,9 +664,7 @@ return|return
 name|Response
 operator|.
 name|created
-argument_list|(
-literal|""
-argument_list|)
+argument_list|()
 return|;
 block|}
 annotation|@
