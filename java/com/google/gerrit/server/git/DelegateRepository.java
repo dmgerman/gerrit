@@ -394,7 +394,12 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"non-bare repository is not supported"
+literal|"non-bare repository is not supported: "
+operator|+
+name|repo
+operator|.
+name|getIdentifier
+argument_list|()
 argument_list|)
 throw|;
 block|}
