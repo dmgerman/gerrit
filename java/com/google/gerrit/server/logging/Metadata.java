@@ -466,6 +466,17 @@ argument_list|>
 name|indexVersion
 parameter_list|()
 function_decl|;
+comment|// The number of inputs to an operation, eg. Reachable.fromRefs.
+DECL|method|inputSize ()
+specifier|public
+specifier|abstract
+name|Optional
+argument_list|<
+name|Integer
+argument_list|>
+name|inputSize
+parameter_list|()
+function_decl|;
 comment|// The name of the implementation method.
 DECL|method|methodName ()
 specifier|public
@@ -1211,6 +1222,16 @@ name|indexVersion
 parameter_list|(
 name|int
 name|indexVersion
+parameter_list|)
+function_decl|;
+DECL|method|inputSize (int size)
+specifier|public
+specifier|abstract
+name|Builder
+name|inputSize
+parameter_list|(
+name|int
+name|size
 parameter_list|)
 function_decl|;
 DECL|method|methodName (@ullable String methodName)
