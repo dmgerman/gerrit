@@ -372,6 +372,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|StalenessCheckResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -648,10 +664,10 @@ operator|=
 name|indexConfig
 expr_stmt|;
 block|}
-DECL|method|isStale (Account.Id id)
+DECL|method|check (Account.Id id)
 specifier|public
-name|boolean
-name|isStale
+name|StalenessCheckResult
+name|check
 parameter_list|(
 name|Account
 operator|.
@@ -678,7 +694,10 @@ condition|)
 block|{
 comment|// No index; caller couldn't do anything if it is stale.
 return|return
-literal|false
+name|StalenessCheckResult
+operator|.
+name|notStale
+argument_list|()
 return|;
 block|}
 if|if
@@ -712,7 +731,10 @@ condition|)
 block|{
 comment|// Index version not new enough for this check.
 return|return
-literal|false
+name|StalenessCheckResult
+operator|.
+name|notStale
+argument_list|()
 return|;
 block|}
 name|boolean
@@ -810,10 +832,29 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Stale if the account actually exists.
-return|return
+if|if
+condition|(
 name|ref
-operator|!=
+operator|==
 literal|null
+condition|)
+block|{
+return|return
+name|StalenessCheckResult
+operator|.
+name|notStale
+argument_list|()
+return|;
+block|}
+return|return
+name|StalenessCheckResult
+operator|.
+name|stale
+argument_list|(
+literal|"Document missing in index, but found %s in the repo"
+argument_list|,
+name|ref
+argument_list|)
 return|;
 block|}
 block|}
@@ -908,9 +949,31 @@ name|repo
 argument_list|)
 condition|)
 block|{
-comment|// Ref was modified since the account was indexed.
 return|return
-literal|true
+name|StalenessCheckResult
+operator|.
+name|stale
+argument_list|(
+literal|"Ref was modified since the account was indexed (%s != %s)"
+argument_list|,
+name|e
+operator|.
+name|getValue
+argument_list|()
+argument_list|,
+name|repo
+operator|.
+name|exactRef
+argument_list|(
+name|e
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|ref
+argument_list|()
+argument_list|)
+argument_list|)
 return|;
 block|}
 block|}
@@ -964,9 +1027,23 @@ name|size
 argument_list|()
 condition|)
 block|{
-comment|// External IDs of the account were modified since the account was indexed.
 return|return
-literal|true
+name|StalenessCheckResult
+operator|.
+name|stale
+argument_list|(
+literal|"External IDs of the account were modified since the account was indexed. (%s != %s)"
+argument_list|,
+name|extIdStates
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|extIds
+operator|.
+name|size
+argument_list|()
+argument_list|)
 return|;
 block|}
 for|for
@@ -977,6 +1054,40 @@ range|:
 name|extIds
 control|)
 block|{
+if|if
+condition|(
+operator|!
+name|extIdStates
+operator|.
+name|containsKey
+argument_list|(
+name|extId
+operator|.
+name|key
+argument_list|()
+operator|.
+name|sha1
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+name|StalenessCheckResult
+operator|.
+name|stale
+argument_list|(
+literal|"External ID missing: %s"
+argument_list|,
+name|extId
+operator|.
+name|key
+argument_list|()
+operator|.
+name|sha1
+argument_list|()
+argument_list|)
+return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -999,14 +1110,39 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// External IDs of the account were modified since the account was indexed.
 return|return
-literal|true
+name|StalenessCheckResult
+operator|.
+name|stale
+argument_list|(
+literal|"External ID has unexpected value. (%s != %s)"
+argument_list|,
+name|extIdStates
+operator|.
+name|get
+argument_list|(
+name|extId
+operator|.
+name|key
+argument_list|()
+operator|.
+name|sha1
+argument_list|()
+argument_list|)
+argument_list|,
+name|extId
+operator|.
+name|blobId
+argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
 return|return
-literal|false
+name|StalenessCheckResult
+operator|.
+name|notStale
+argument_list|()
 return|;
 block|}
 DECL|method|parseExternalIdStates ( Iterable<byte[]> extIdStates)

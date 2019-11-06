@@ -270,6 +270,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|StalenessCheckResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectCache
@@ -385,10 +401,10 @@ operator|=
 name|indexConfig
 expr_stmt|;
 block|}
-DECL|method|isStale (Project.NameKey project)
+DECL|method|check (Project.NameKey project)
 specifier|public
-name|boolean
-name|isStale
+name|StalenessCheckResult
+name|check
 parameter_list|(
 name|Project
 operator|.
@@ -425,7 +441,10 @@ literal|null
 condition|)
 block|{
 return|return
-literal|false
+name|StalenessCheckResult
+operator|.
+name|notStale
+argument_list|()
 return|;
 comment|// No index; caller couldn't do anything if it is stale.
 block|}
@@ -465,7 +484,14 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|true
+name|StalenessCheckResult
+operator|.
+name|stale
+argument_list|(
+literal|"Document %s missing from index"
+argument_list|,
+name|project
+argument_list|)
 return|;
 block|}
 name|SetMultimap
@@ -574,12 +600,32 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-operator|!
+if|if
+condition|(
 name|currentRefStates
 operator|.
 name|equals
 argument_list|(
+name|indexedRefStates
+argument_list|)
+condition|)
+block|{
+return|return
+name|StalenessCheckResult
+operator|.
+name|notStale
+argument_list|()
+return|;
+block|}
+return|return
+name|StalenessCheckResult
+operator|.
+name|stale
+argument_list|(
+literal|"Document has unexpected ref states (%s != %s)"
+argument_list|,
+name|currentRefStates
+argument_list|,
 name|indexedRefStates
 argument_list|)
 return|;
