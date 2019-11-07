@@ -364,6 +364,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|StalenessCheckResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|query
 operator|.
 name|change
@@ -584,10 +600,10 @@ operator|=
 name|indexConfig
 expr_stmt|;
 block|}
-DECL|method|isStale (Change.Id id)
+DECL|method|check (Change.Id id)
 specifier|public
-name|boolean
-name|isStale
+name|StalenessCheckResult
+name|check
 parameter_list|(
 name|Change
 operator|.
@@ -611,7 +627,10 @@ literal|null
 condition|)
 block|{
 return|return
-literal|false
+name|StalenessCheckResult
+operator|.
+name|notStale
+argument_list|()
 return|;
 comment|// No index; caller couldn't do anything if it is stale.
 block|}
@@ -645,7 +664,10 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|false
+name|StalenessCheckResult
+operator|.
+name|notStale
+argument_list|()
 return|;
 comment|// Index version not new enough for this check.
 block|}
@@ -685,9 +707,15 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|true
+name|StalenessCheckResult
+operator|.
+name|stale
+argument_list|(
+literal|"Document %s missing from index"
+argument_list|,
+name|id
+argument_list|)
 return|;
-comment|// Not in index, but caller wants it to be.
 block|}
 name|ChangeData
 name|cd
@@ -698,7 +726,7 @@ name|get
 argument_list|()
 decl_stmt|;
 return|return
-name|isStale
+name|check
 argument_list|(
 name|repoManager
 argument_list|,
@@ -725,11 +753,11 @@ name|Project
 operator|.
 name|GOOGLE
 argument_list|)
-DECL|method|isStale ( GitRepositoryManager repoManager, Change.Id id, SetMultimap<Project.NameKey, RefState> states, ListMultimap<Project.NameKey, RefStatePattern> patterns)
+DECL|method|check ( GitRepositoryManager repoManager, Change.Id id, SetMultimap<Project.NameKey, RefState> states, ListMultimap<Project.NameKey, RefStatePattern> patterns)
 specifier|public
 specifier|static
-name|boolean
-name|isStale
+name|StalenessCheckResult
+name|check
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
@@ -777,7 +805,7 @@ annotation|@
 name|VisibleForTesting
 DECL|method|refsAreStale ( GitRepositoryManager repoManager, Change.Id id, SetMultimap<Project.NameKey, RefState> states, ListMultimap<Project.NameKey, RefStatePattern> patterns)
 specifier|static
-name|boolean
+name|StalenessCheckResult
 name|refsAreStale
 parameter_list|(
 name|GitRepositoryManager
@@ -842,8 +870,9 @@ range|:
 name|projects
 control|)
 block|{
-if|if
-condition|(
+name|StalenessCheckResult
+name|result
+init|=
 name|refsAreStale
 argument_list|(
 name|repoManager
@@ -856,15 +885,25 @@ name|states
 argument_list|,
 name|patterns
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|result
+operator|.
+name|isStale
+argument_list|()
 condition|)
 block|{
 return|return
-literal|true
+name|result
 return|;
 block|}
 block|}
 return|return
-literal|false
+name|StalenessCheckResult
+operator|.
+name|notStale
+argument_list|()
 return|;
 block|}
 DECL|method|parseStates (ChangeData cd)
@@ -1079,7 +1118,7 @@ block|}
 DECL|method|refsAreStale ( GitRepositoryManager repoManager, Change.Id id, Project.NameKey project, SetMultimap<Project.NameKey, RefState> allStates, ListMultimap<Project.NameKey, RefStatePattern> allPatterns)
 specifier|private
 specifier|static
-name|boolean
+name|StalenessCheckResult
 name|refsAreStale
 parameter_list|(
 name|GitRepositoryManager
@@ -1162,7 +1201,26 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|true
+name|StalenessCheckResult
+operator|.
+name|stale
+argument_list|(
+literal|"Ref states don't match for document %s (%s != %s)"
+argument_list|,
+name|id
+argument_list|,
+name|state
+argument_list|,
+name|repo
+operator|.
+name|exactRef
+argument_list|(
+name|state
+operator|.
+name|ref
+argument_list|()
+argument_list|)
+argument_list|)
 return|;
 block|}
 block|}
@@ -1193,12 +1251,26 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|true
+name|StalenessCheckResult
+operator|.
+name|stale
+argument_list|(
+literal|"Ref patterns don't match for document %s. Pattern: %s States: %s"
+argument_list|,
+name|id
+argument_list|,
+name|pattern
+argument_list|,
+name|states
+argument_list|)
 return|;
 block|}
 block|}
 return|return
-literal|false
+name|StalenessCheckResult
+operator|.
+name|notStale
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -1227,7 +1299,17 @@ name|project
 argument_list|)
 expr_stmt|;
 return|return
-literal|true
+name|StalenessCheckResult
+operator|.
+name|stale
+argument_list|(
+literal|"Exceptions while processing document %s"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
 return|;
 block|}
 block|}

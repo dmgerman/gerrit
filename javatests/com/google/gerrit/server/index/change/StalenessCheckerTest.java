@@ -1308,6 +1308,9 @@ operator|.
 name|of
 argument_list|()
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isFalse
@@ -1357,6 +1360,9 @@ operator|.
 name|of
 argument_list|()
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isTrue
@@ -1409,6 +1415,9 @@ operator|.
 name|of
 argument_list|()
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isTrue
@@ -1495,6 +1504,9 @@ operator|.
 name|of
 argument_list|()
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isFalse
@@ -1533,6 +1545,9 @@ operator|.
 name|of
 argument_list|()
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isFalse
@@ -1582,6 +1597,9 @@ operator|.
 name|of
 argument_list|()
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isTrue
@@ -1665,6 +1683,9 @@ literal|"refs/heads/*"
 argument_list|)
 argument_list|)
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isFalse
@@ -1737,6 +1758,9 @@ literal|"refs/heads/*"
 argument_list|)
 argument_list|)
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isTrue
@@ -1797,6 +1821,9 @@ literal|"refs/heads/*"
 argument_list|)
 argument_list|)
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isFalse
@@ -1897,6 +1924,9 @@ literal|"refs/*/foo"
 argument_list|)
 argument_list|)
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isFalse
@@ -1969,6 +1999,9 @@ literal|"refs/*/foo"
 argument_list|)
 argument_list|)
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isTrue
@@ -2029,6 +2062,9 @@ literal|"refs/*/foo"
 argument_list|)
 argument_list|)
 argument_list|)
+operator|.
+name|isStale
+argument_list|()
 argument_list|)
 operator|.
 name|isFalse
