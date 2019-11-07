@@ -1754,8 +1754,6 @@ parameter_list|)
 throws|throws
 name|BadRequestException
 throws|,
-name|ResourceConflictException
-throws|,
 name|PGPException
 throws|,
 name|IOException
