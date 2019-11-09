@@ -741,6 +741,45 @@ argument_list|()
 return|;
 block|}
 block|}
+DECL|method|currentChangeId ()
+specifier|public
+name|int
+name|currentChangeId
+parameter_list|()
+block|{
+return|return
+name|changeSeq
+operator|.
+name|current
+argument_list|()
+return|;
+block|}
+DECL|method|currentAccountId ()
+specifier|public
+name|int
+name|currentAccountId
+parameter_list|()
+block|{
+return|return
+name|accountSeq
+operator|.
+name|current
+argument_list|()
+return|;
+block|}
+DECL|method|currentGroupId ()
+specifier|public
+name|int
+name|currentGroupId
+parameter_list|()
+block|{
+return|return
+name|groupSeq
+operator|.
+name|current
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

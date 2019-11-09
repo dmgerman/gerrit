@@ -370,6 +370,8 @@ literal|"rename-group"
 argument_list|,
 literal|"review"
 argument_list|,
+literal|"sequence"
+argument_list|,
 literal|"set-account"
 argument_list|,
 literal|"set-head"
@@ -538,6 +540,18 @@ argument_list|(
 literal|"rule"
 argument_list|,
 literal|"type"
+argument_list|)
+argument_list|)
+decl|.
+name|put
+argument_list|(
+literal|"gerrit sequence"
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+literal|"show"
 argument_list|)
 argument_list|)
 decl|.
