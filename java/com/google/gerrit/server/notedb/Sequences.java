@@ -780,6 +780,57 @@ name|current
 argument_list|()
 return|;
 block|}
+DECL|method|setChangeIdValue (int value)
+specifier|public
+name|void
+name|setChangeIdValue
+parameter_list|(
+name|int
+name|value
+parameter_list|)
+block|{
+name|changeSeq
+operator|.
+name|storeNew
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setAccountIdValue (int value)
+specifier|public
+name|void
+name|setAccountIdValue
+parameter_list|(
+name|int
+name|value
+parameter_list|)
+block|{
+name|accountSeq
+operator|.
+name|storeNew
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setGroupIdValue (int value)
+specifier|public
+name|void
+name|setGroupIdValue
+parameter_list|(
+name|int
+name|value
+parameter_list|)
+block|{
+name|groupSeq
+operator|.
+name|storeNew
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

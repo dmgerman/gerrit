@@ -551,6 +551,8 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
+literal|"set"
+argument_list|,
 literal|"show"
 argument_list|)
 argument_list|)
