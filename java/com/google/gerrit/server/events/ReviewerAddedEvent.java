@@ -136,6 +136,14 @@ name|AccountAttribute
 argument_list|>
 name|reviewer
 decl_stmt|;
+DECL|field|adder
+specifier|public
+name|Supplier
+argument_list|<
+name|AccountAttribute
+argument_list|>
+name|adder
+decl_stmt|;
 DECL|method|ReviewerAddedEvent (Change change)
 specifier|public
 name|ReviewerAddedEvent
