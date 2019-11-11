@@ -917,7 +917,6 @@ break|break;
 case|case
 name|LOCK_FAILURE
 case|:
-comment|// should not happen since this case is already handled by PublicKeyStore#save
 case|case
 name|FORCED
 case|:
