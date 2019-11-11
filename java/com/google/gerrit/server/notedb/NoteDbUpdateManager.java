@@ -701,7 +701,7 @@ name|NoteDbRewriter
 argument_list|>
 name|rewriters
 decl_stmt|;
-DECL|field|toDelete
+DECL|field|changesToDelete
 specifier|private
 specifier|final
 name|Set
@@ -710,7 +710,7 @@ name|Change
 operator|.
 name|Id
 argument_list|>
-name|toDelete
+name|changesToDelete
 decl_stmt|;
 DECL|field|changeRepo
 specifier|private
@@ -888,7 +888,7 @@ operator|.
 name|build
 argument_list|()
 expr_stmt|;
-name|toDelete
+name|changesToDelete
 operator|=
 operator|new
 name|HashSet
@@ -1145,7 +1145,7 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|&&
-name|toDelete
+name|changesToDelete
 operator|.
 name|isEmpty
 argument_list|()
@@ -1500,7 +1500,7 @@ block|{
 name|checkNotExecuted
 argument_list|()
 expr_stmt|;
-name|toDelete
+name|changesToDelete
 operator|.
 name|add
 argument_list|(
@@ -1557,7 +1557,7 @@ name|isEmpty
 argument_list|()
 operator|||
 operator|!
-name|toDelete
+name|changesToDelete
 operator|.
 name|isEmpty
 argument_list|()
@@ -1999,7 +1999,7 @@ operator|.
 name|Id
 name|id
 range|:
-name|toDelete
+name|changesToDelete
 control|)
 block|{
 name|doDelete
