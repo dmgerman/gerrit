@@ -192,6 +192,22 @@ name|server
 operator|.
 name|cache
 operator|.
+name|CacheBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|cache
+operator|.
 name|CacheModule
 import|;
 end_import
@@ -382,6 +398,8 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+comment|// TODO(davido): Switch off using legacy cache backend, after fixing PatchListLoader
+comment|// to be recursion free.
 name|persist
 argument_list|(
 name|FILE_NAME
@@ -393,6 +411,10 @@ argument_list|,
 name|PatchList
 operator|.
 name|class
+argument_list|,
+name|CacheBackend
+operator|.
+name|GUAVA
 argument_list|)
 operator|.
 name|maximumWeight
