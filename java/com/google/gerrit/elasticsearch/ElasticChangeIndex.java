@@ -3316,7 +3316,7 @@ name|decodeBase64
 argument_list|(
 name|i
 operator|.
-name|toString
+name|getAsString
 argument_list|()
 argument_list|)
 argument_list|,
