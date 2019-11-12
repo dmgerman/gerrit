@@ -234,6 +234,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -744,7 +760,7 @@ operator|=
 name|groupValidatorFactory
 expr_stmt|;
 block|}
-DECL|method|validatePreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|validatePreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, Change.Id changeId, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|validatePreMerge
@@ -762,6 +778,11 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
+parameter_list|,
+name|Change
+operator|.
+name|Id
+name|changeId
 parameter_list|,
 name|PatchSet
 operator|.
@@ -825,6 +846,8 @@ argument_list|,
 name|destProject
 argument_list|,
 name|destBranch
+argument_list|,
+name|changeId
 argument_list|,
 name|patchSetId
 argument_list|,
@@ -1067,7 +1090,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( final Repository repo, final CodeReviewCommit commit, final ProjectState destProject, final Branch.NameKey destBranch, final PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( final Repository repo, final CodeReviewCommit commit, final ProjectState destProject, final Branch.NameKey destBranch, final Change.Id changeId, final PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -1089,6 +1112,12 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
+parameter_list|,
+specifier|final
+name|Change
+operator|.
+name|Id
+name|changeId
 parameter_list|,
 specifier|final
 name|PatchSet
@@ -1627,7 +1656,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, Change.Id changeId, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -1645,6 +1674,11 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
+parameter_list|,
+name|Change
+operator|.
+name|Id
+name|changeId
 parameter_list|,
 name|PatchSet
 operator|.
@@ -1674,6 +1708,8 @@ argument_list|,
 name|destProject
 argument_list|,
 name|destBranch
+argument_list|,
+name|changeId
 argument_list|,
 name|patchSetId
 argument_list|,
@@ -1765,7 +1801,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, Change.Id changeId, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -1783,6 +1819,11 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
+parameter_list|,
+name|Change
+operator|.
+name|Id
+name|changeId
 parameter_list|,
 name|PatchSet
 operator|.
@@ -2041,7 +2082,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, Change.Id changeId, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -2059,6 +2100,11 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
+parameter_list|,
+name|Change
+operator|.
+name|Id
+name|changeId
 parameter_list|,
 name|PatchSet
 operator|.
