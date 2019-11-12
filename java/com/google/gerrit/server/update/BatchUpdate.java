@@ -1103,7 +1103,7 @@ name|List
 argument_list|<
 name|ChangesHandle
 argument_list|>
-name|handles
+name|changesHandles
 init|=
 operator|new
 name|ArrayList
@@ -1144,7 +1144,7 @@ range|:
 name|updates
 control|)
 block|{
-name|handles
+name|changesHandles
 operator|.
 name|add
 argument_list|(
@@ -1162,7 +1162,7 @@ control|(
 name|ChangesHandle
 name|h
 range|:
-name|handles
+name|changesHandles
 control|)
 block|{
 name|h
@@ -1199,7 +1199,7 @@ control|(
 name|ChangesHandle
 name|h
 range|:
-name|handles
+name|changesHandles
 control|)
 block|{
 name|h
