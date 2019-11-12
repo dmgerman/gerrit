@@ -114,7 +114,7 @@ specifier|public
 interface|interface
 name|PersistentCacheFactory
 block|{
-DECL|method|build (PersistentCacheDef<K, V> def)
+DECL|method|build (PersistentCacheDef<K, V> def, CacheBackend backend)
 parameter_list|<
 name|K
 parameter_list|,
@@ -135,9 +135,12 @@ argument_list|,
 name|V
 argument_list|>
 name|def
+parameter_list|,
+name|CacheBackend
+name|backend
 parameter_list|)
 function_decl|;
-DECL|method|build (PersistentCacheDef<K, V> def, CacheLoader<K, V> loader)
+DECL|method|build ( PersistentCacheDef<K, V> def, CacheLoader<K, V> loader, CacheBackend backend)
 parameter_list|<
 name|K
 parameter_list|,
@@ -166,6 +169,9 @@ argument_list|,
 name|V
 argument_list|>
 name|loader
+parameter_list|,
+name|CacheBackend
+name|backend
 parameter_list|)
 function_decl|;
 DECL|method|onStop (String plugin)
