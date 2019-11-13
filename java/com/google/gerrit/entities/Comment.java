@@ -1036,13 +1036,6 @@ specifier|public
 name|boolean
 name|unresolved
 decl_stmt|;
-comment|/**    * Whether the comment was parsed from a JSON representation (false) or the legacy custom notes    * format (true).    */
-DECL|field|legacyFormat
-specifier|public
-specifier|transient
-name|boolean
-name|legacyFormat
-decl_stmt|;
 DECL|method|Comment (Comment c)
 specifier|public
 name|Comment
