@@ -1029,6 +1029,14 @@ name|revertOf
 expr_stmt|;
 name|copy
 operator|.
+name|submissionId
+operator|=
+name|changeInfo
+operator|.
+name|submissionId
+expr_stmt|;
+name|copy
+operator|.
 name|starred
 operator|=
 name|changeInfo
