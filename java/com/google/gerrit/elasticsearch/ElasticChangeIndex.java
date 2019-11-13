@@ -185,24 +185,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|codec
-operator|.
-name|binary
-operator|.
-name|Base64
-operator|.
-name|decodeBase64
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.

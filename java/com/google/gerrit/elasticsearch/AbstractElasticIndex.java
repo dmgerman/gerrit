@@ -109,24 +109,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|codec
-operator|.
-name|binary
-operator|.
-name|Base64
-operator|.
-name|decodeBase64
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -921,6 +903,26 @@ name|SETTINGS
 init|=
 literal|"settings"
 decl_stmt|;
+DECL|method|decodeBase64 (String base64String)
+specifier|protected
+specifier|static
+name|byte
+index|[]
+name|decodeBase64
+parameter_list|(
+name|String
+name|base64String
+parameter_list|)
+block|{
+return|return
+name|Base64
+operator|.
+name|decodeBase64
+argument_list|(
+name|base64String
+argument_list|)
+return|;
+block|}
 DECL|method|decodeProtos ( JsonObject doc, String fieldName, ProtobufCodec<T> codec)
 specifier|protected
 specifier|static
