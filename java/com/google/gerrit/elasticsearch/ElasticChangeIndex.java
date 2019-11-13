@@ -131,24 +131,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|codec
-operator|.
-name|binary
-operator|.
-name|Base64
-operator|.
-name|decodeBase64
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -795,22 +777,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|codec
-operator|.
-name|binary
-operator|.
-name|Base64
 import|;
 end_import
 
@@ -1827,8 +1793,6 @@ name|create
 argument_list|(
 name|parseProtoFrom
 argument_list|(
-name|Base64
-operator|.
 name|decodeBase64
 argument_list|(
 name|c
@@ -3196,8 +3160,6 @@ argument_list|()
 argument_list|,
 name|e
 lambda|->
-name|Base64
-operator|.
 name|decodeBase64
 argument_list|(
 name|e
@@ -3272,7 +3234,7 @@ name|decodeBase64
 argument_list|(
 name|i
 operator|.
-name|toString
+name|getAsString
 argument_list|()
 argument_list|)
 argument_list|,
