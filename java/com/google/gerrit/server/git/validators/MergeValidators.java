@@ -148,20 +148,6 @@ name|gerrit
 operator|.
 name|entities
 operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|entities
-operator|.
 name|PatchSet
 import|;
 end_import
@@ -748,7 +734,7 @@ operator|=
 name|groupValidatorFactory
 expr_stmt|;
 block|}
-DECL|method|validatePreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, Change.Id changeId, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|validatePreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|validatePreMerge
@@ -764,11 +750,6 @@ name|destProject
 parameter_list|,
 name|BranchNameKey
 name|destBranch
-parameter_list|,
-name|Change
-operator|.
-name|Id
-name|changeId
 parameter_list|,
 name|PatchSet
 operator|.
@@ -832,8 +813,6 @@ argument_list|,
 name|destProject
 argument_list|,
 name|destBranch
-argument_list|,
-name|changeId
 argument_list|,
 name|patchSetId
 argument_list|,
@@ -1076,7 +1055,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( final Repository repo, final CodeReviewCommit commit, final ProjectState destProject, final BranchNameKey destBranch, final Change.Id changeId, final PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( final Repository repo, final CodeReviewCommit commit, final ProjectState destProject, final BranchNameKey destBranch, final PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -1096,12 +1075,6 @@ parameter_list|,
 specifier|final
 name|BranchNameKey
 name|destBranch
-parameter_list|,
-specifier|final
-name|Change
-operator|.
-name|Id
-name|changeId
 parameter_list|,
 specifier|final
 name|PatchSet
@@ -1640,7 +1613,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, Change.Id changeId, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -1656,11 +1629,6 @@ name|destProject
 parameter_list|,
 name|BranchNameKey
 name|destBranch
-parameter_list|,
-name|Change
-operator|.
-name|Id
-name|changeId
 parameter_list|,
 name|PatchSet
 operator|.
@@ -1690,8 +1658,6 @@ argument_list|,
 name|destProject
 argument_list|,
 name|destBranch
-argument_list|,
-name|changeId
 argument_list|,
 name|patchSetId
 argument_list|,
@@ -1783,7 +1749,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, Change.Id changeId, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -1799,11 +1765,6 @@ name|destProject
 parameter_list|,
 name|BranchNameKey
 name|destBranch
-parameter_list|,
-name|Change
-operator|.
-name|Id
-name|changeId
 parameter_list|,
 name|PatchSet
 operator|.
@@ -2062,7 +2023,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, Change.Id changeId, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -2078,11 +2039,6 @@ name|destProject
 parameter_list|,
 name|BranchNameKey
 name|destBranch
-parameter_list|,
-name|Change
-operator|.
-name|Id
-name|changeId
 parameter_list|,
 name|PatchSet
 operator|.
