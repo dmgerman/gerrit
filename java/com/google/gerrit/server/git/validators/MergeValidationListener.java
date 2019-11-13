@@ -112,22 +112,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|PatchSet
 import|;
 end_import
@@ -204,8 +188,8 @@ specifier|public
 interface|interface
 name|MergeValidationListener
 block|{
-comment|/**    * Validate a commit before it is merged.    *    * @param repo the repository    * @param commit commit details    * @param destProject the destination project    * @param destBranch the destination branch    * @param changeId the change ID    * @param patchSetId the patch set ID    * @param caller the user who initiated the merge request    * @throws MergeValidationException if the commit fails to validate    */
-DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, Change.Id changeId, PatchSet.Id patchSetId, IdentifiedUser caller)
+comment|/**    * Validate a commit before it is merged.    *    * @param repo the repository    * @param commit commit details    * @param destProject the destination project    * @param destBranch the destination branch    * @param patchSetId the patch set ID    * @param caller the user who initiated the merge request    * @throws MergeValidationException if the commit fails to validate    */
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 name|void
 name|onPreMerge
 parameter_list|(
@@ -222,11 +206,6 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
-parameter_list|,
-name|Change
-operator|.
-name|Id
-name|changeId
 parameter_list|,
 name|PatchSet
 operator|.
