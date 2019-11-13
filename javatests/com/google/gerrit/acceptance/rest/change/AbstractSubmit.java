@@ -8779,7 +8779,7 @@ name|GerritConfig
 argument_list|(
 name|name
 operator|=
-literal|"index.reindexAfterRefUpdate"
+literal|"index.change.indexMergeable"
 argument_list|,
 name|value
 operator|=

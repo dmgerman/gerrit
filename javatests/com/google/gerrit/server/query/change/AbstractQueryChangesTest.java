@@ -336,6 +336,18 @@ begin_import
 import|import static
 name|org
 operator|.
+name|hamcrest
+operator|.
+name|MatcherAssert
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -467,6 +479,22 @@ operator|.
 name|truth
 operator|.
 name|ThrowableSubject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|config
+operator|.
+name|GerritConfig
 import|;
 end_import
 
@@ -1083,6 +1111,22 @@ operator|.
 name|query
 operator|.
 name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
+name|query
+operator|.
+name|QueryParseException
 import|;
 end_import
 
@@ -15642,6 +15686,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
+literal|"index.change.indexMergeable"
+argument_list|,
+name|value
+operator|=
+literal|"true"
+argument_list|)
 DECL|method|mergeable ()
 specifier|public
 name|void
@@ -15822,7 +15877,7 @@ expr_stmt|;
 comment|// If a change gets submitted, the remaining open changes get reindexed asynchronously to update
 comment|// their mergeability information. If the further assertions in this test are done before the
 comment|// asynchronous reindex completed they fail because the mergeability information in the index
-comment|// was not updated yet. To avoid this flakiness reindexAfterRefUpdate is switched off for the
+comment|// was not updated yet. To avoid this flakiness indexMergeable is switched off for the
 comment|// tests and we index change2 synchronously here.
 name|gApi
 operator|.
@@ -23194,6 +23249,119 @@ name|change
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Test
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
+literal|"index.change.indexMergeable"
+argument_list|,
+name|value
+operator|=
+literal|"false"
+argument_list|)
+DECL|method|mergeableFailsWhenNotIndexed ()
+specifier|public
+name|void
+name|mergeableFailsWhenNotIndexed
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|TestRepository
+argument_list|<
+name|Repo
+argument_list|>
+name|repo
+init|=
+name|createProject
+argument_list|(
+literal|"repo"
+argument_list|)
+decl_stmt|;
+name|RevCommit
+name|commit1
+init|=
+name|repo
+operator|.
+name|parseBody
+argument_list|(
+name|repo
+operator|.
+name|commit
+argument_list|()
+operator|.
+name|add
+argument_list|(
+literal|"file1"
+argument_list|,
+literal|"contents1"
+argument_list|)
+operator|.
+name|create
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|insert
+argument_list|(
+name|repo
+argument_list|,
+name|newChangeForCommit
+argument_list|(
+name|repo
+argument_list|,
+name|commit1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Throwable
+name|thrown
+init|=
+name|assertThrows
+argument_list|(
+name|Throwable
+operator|.
+name|class
+argument_list|,
+parameter_list|()
+lambda|->
+name|assertQuery
+argument_list|(
+literal|"status:open is:mergeable"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+operator|.
+name|getCause
+argument_list|()
+argument_list|)
+operator|.
+name|isInstanceOf
+argument_list|(
+name|QueryParseException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|thrown
+argument_list|)
+operator|.
+name|hasMessageThat
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"server does not support 'mergeable'. check configs"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|newChange (TestRepository<Repo> repo)
 specifier|protected

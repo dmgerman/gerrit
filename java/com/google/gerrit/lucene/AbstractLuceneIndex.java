@@ -164,6 +164,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|ListMultimap
 import|;
 end_import
@@ -1124,6 +1138,15 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
+DECL|field|skipFields
+specifier|private
+specifier|final
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|skipFields
+decl_stmt|;
 DECL|field|writerThread
 specifier|private
 specifier|final
@@ -1168,7 +1191,7 @@ specifier|private
 name|ScheduledExecutorService
 name|autoCommitExecutor
 decl_stmt|;
-DECL|method|AbstractLuceneIndex ( Schema<V> schema, SitePaths sitePaths, Directory dir, String name, String subIndex, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
+DECL|method|AbstractLuceneIndex ( Schema<V> schema, SitePaths sitePaths, Directory dir, String name, ImmutableSet<String> skipFields, String subIndex, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
 name|AbstractLuceneIndex
 parameter_list|(
 name|Schema
@@ -1185,6 +1208,12 @@ name|dir
 parameter_list|,
 name|String
 name|name
+parameter_list|,
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|skipFields
 parameter_list|,
 name|String
 name|subIndex
@@ -1221,6 +1250,12 @@ operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+name|this
+operator|.
+name|skipFields
+operator|=
+name|skipFields
 expr_stmt|;
 name|String
 name|index
@@ -2123,6 +2158,8 @@ operator|.
 name|buildFields
 argument_list|(
 name|obj
+argument_list|,
+name|skipFields
 argument_list|)
 control|)
 block|{

@@ -154,6 +154,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|entities
@@ -473,7 +487,7 @@ argument_list|>
 implements|implements
 name|ChangeIndex
 block|{
-DECL|method|ChangeSubIndex ( Schema<ChangeData> schema, SitePaths sitePaths, Path path, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
+DECL|method|ChangeSubIndex ( Schema<ChangeData> schema, SitePaths sitePaths, Path path, ImmutableSet<String> skipFields, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
 name|ChangeSubIndex
 parameter_list|(
 name|Schema
@@ -487,6 +501,12 @@ name|sitePaths
 parameter_list|,
 name|Path
 name|path
+parameter_list|,
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|skipFields
 parameter_list|,
 name|GerritIndexWriterConfig
 name|writerConfig
@@ -518,13 +538,15 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
+name|skipFields
+argument_list|,
 name|writerConfig
 argument_list|,
 name|searcherFactory
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ChangeSubIndex ( Schema<ChangeData> schema, SitePaths sitePaths, Directory dir, String subIndex, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
+DECL|method|ChangeSubIndex ( Schema<ChangeData> schema, SitePaths sitePaths, Directory dir, String subIndex, ImmutableSet<String> skipFields, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
 name|ChangeSubIndex
 parameter_list|(
 name|Schema
@@ -541,6 +563,12 @@ name|dir
 parameter_list|,
 name|String
 name|subIndex
+parameter_list|,
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|skipFields
 parameter_list|,
 name|GerritIndexWriterConfig
 name|writerConfig
@@ -560,6 +588,8 @@ argument_list|,
 name|dir
 argument_list|,
 name|NAME
+argument_list|,
+name|skipFields
 argument_list|,
 name|subIndex
 argument_list|,

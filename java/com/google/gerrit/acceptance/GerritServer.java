@@ -3712,9 +3712,9 @@ name|getString
 argument_list|(
 literal|"index"
 argument_list|,
-literal|null
+literal|"change"
 argument_list|,
-literal|"reindexAfterRefUpdate"
+literal|"indexMergeable"
 argument_list|)
 operator|==
 literal|null
@@ -3726,9 +3726,9 @@ name|setBoolean
 argument_list|(
 literal|"index"
 argument_list|,
-literal|null
+literal|"change"
 argument_list|,
-literal|"reindexAfterRefUpdate"
+literal|"indexMergeable"
 argument_list|,
 literal|false
 argument_list|)

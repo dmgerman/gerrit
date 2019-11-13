@@ -90,6 +90,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Iterables
 import|;
 end_import
@@ -190,7 +204,16 @@ specifier|final
 name|V
 name|v
 decl_stmt|;
-DECL|method|UpdateRequest (Schema<V> schema, V v)
+DECL|field|skipFields
+specifier|private
+specifier|final
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|skipFields
+decl_stmt|;
+DECL|method|UpdateRequest (Schema<V> schema, V v, ImmutableSet<String> skipFields)
 specifier|public
 name|UpdateRequest
 parameter_list|(
@@ -202,6 +225,12 @@ name|schema
 parameter_list|,
 name|V
 name|v
+parameter_list|,
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|skipFields
 parameter_list|)
 block|{
 name|this
@@ -215,6 +244,12 @@ operator|.
 name|v
 operator|=
 name|v
+expr_stmt|;
+name|this
+operator|.
+name|skipFields
+operator|=
+name|skipFields
 expr_stmt|;
 block|}
 annotation|@
@@ -256,6 +291,8 @@ operator|.
 name|buildFields
 argument_list|(
 name|v
+argument_list|,
+name|skipFields
 argument_list|)
 control|)
 block|{
