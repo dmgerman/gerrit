@@ -244,7 +244,7 @@ name|jgit
 operator|.
 name|transport
 operator|.
-name|BaseReceivePack
+name|ReceivePack
 import|;
 end_import
 
@@ -382,18 +382,13 @@ argument_list|)
 throw|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-annotation|@
 name|Override
-DECL|method|advertiseRefs (BaseReceivePack rp)
+DECL|method|advertiseRefs (ReceivePack rp)
 specifier|public
 name|void
 name|advertiseRefs
 parameter_list|(
-name|BaseReceivePack
+name|ReceivePack
 name|rp
 parameter_list|)
 throws|throws
@@ -495,7 +490,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|history (Collection<Ref> refs, BaseReceivePack rp)
+DECL|method|history (Collection<Ref> refs, ReceivePack rp)
 specifier|private
 name|Set
 argument_list|<
@@ -509,7 +504,7 @@ name|Ref
 argument_list|>
 name|refs
 parameter_list|,
-name|BaseReceivePack
+name|ReceivePack
 name|rp
 parameter_list|)
 block|{
@@ -539,11 +534,6 @@ name|alreadySending
 return|;
 block|}
 comment|// Scan history until the advertisement is full.
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 name|RevWalk
 name|rw
 init|=

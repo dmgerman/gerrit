@@ -124,7 +124,7 @@ name|jgit
 operator|.
 name|transport
 operator|.
-name|BaseReceivePack
+name|ReceivePack
 import|;
 end_import
 
@@ -153,12 +153,7 @@ class|class
 name|HookUtil
 block|{
 comment|/**    * Scan and advertise all refs in the repo if refs have not already been advertised; otherwise,    * just return the advertised map.    *    * @param rp receive-pack handler.    * @return map of refs that were advertised.    * @throws ServiceMayNotContinueException if a problem occurred.    */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-DECL|method|ensureAllRefsAdvertised (BaseReceivePack rp)
+DECL|method|ensureAllRefsAdvertised (ReceivePack rp)
 specifier|public
 specifier|static
 name|Map
@@ -169,7 +164,7 @@ name|Ref
 argument_list|>
 name|ensureAllRefsAdvertised
 parameter_list|(
-name|BaseReceivePack
+name|ReceivePack
 name|rp
 parameter_list|)
 throws|throws
