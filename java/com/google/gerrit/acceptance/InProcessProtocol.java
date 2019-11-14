@@ -2344,8 +2344,6 @@ condition|(
 name|affectsSize
 argument_list|(
 name|pack
-argument_list|,
-name|commands
 argument_list|)
 condition|)
 block|{
