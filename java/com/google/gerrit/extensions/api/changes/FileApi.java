@@ -98,6 +98,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|BlameInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|DiffInfo
 import|;
 end_import
@@ -147,6 +163,16 @@ operator|.
 name|restapi
 operator|.
 name|RestApiException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -219,6 +245,14 @@ parameter_list|(
 name|boolean
 name|reviewed
 parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Creates a request to retrieve the blame information. On the returned request formatting options    * for the blame request can be set.    */
+DECL|method|blameRequest ()
+name|BlameRequest
+name|blameRequest
+parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
@@ -417,6 +451,58 @@ name|parent
 return|;
 block|}
 block|}
+DECL|class|BlameRequest
+specifier|abstract
+class|class
+name|BlameRequest
+block|{
+DECL|field|forBase
+specifier|private
+name|boolean
+name|forBase
+decl_stmt|;
+DECL|method|get ()
+specifier|public
+specifier|abstract
+name|List
+argument_list|<
+name|BlameInfo
+argument_list|>
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|forBase (boolean forBase)
+specifier|public
+name|BlameRequest
+name|forBase
+parameter_list|(
+name|boolean
+name|forBase
+parameter_list|)
+block|{
+name|this
+operator|.
+name|forBase
+operator|=
+name|forBase
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|isForBase ()
+specifier|public
+name|boolean
+name|isForBase
+parameter_list|()
+block|{
+return|return
+name|forBase
+return|;
+block|}
+block|}
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -520,6 +606,22 @@ parameter_list|(
 name|boolean
 name|reviewed
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|blameRequest ()
+specifier|public
+name|BlameRequest
+name|blameRequest
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{

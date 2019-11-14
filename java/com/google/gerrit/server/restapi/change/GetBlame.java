@@ -665,6 +665,25 @@ operator|=
 name|autoMerger
 expr_stmt|;
 block|}
+DECL|method|setBase (boolean base)
+specifier|public
+name|GetBlame
+name|setBase
+parameter_list|(
+name|boolean
+name|base
+parameter_list|)
+block|{
+name|this
+operator|.
+name|base
+operator|=
+name|base
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|apply (FileResource resource)
