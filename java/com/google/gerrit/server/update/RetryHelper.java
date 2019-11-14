@@ -2190,6 +2190,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|t
 operator|instanceof
 name|UpdateException
@@ -2197,6 +2198,14 @@ operator|||
 name|t
 operator|instanceof
 name|StorageException
+operator|)
+operator|&&
+name|t
+operator|.
+name|getCause
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|t
