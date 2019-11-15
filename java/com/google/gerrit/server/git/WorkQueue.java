@@ -783,6 +783,10 @@ name|this
 argument_list|(
 name|idGenerator
 argument_list|,
+name|Math
+operator|.
+name|max
+argument_list|(
 name|cfg
 operator|.
 name|getInt
@@ -791,7 +795,10 @@ literal|"execution"
 argument_list|,
 literal|"defaultThreadPoolSize"
 argument_list|,
-literal|1
+literal|2
+argument_list|)
+argument_list|,
+literal|2
 argument_list|)
 argument_list|,
 name|metrics
