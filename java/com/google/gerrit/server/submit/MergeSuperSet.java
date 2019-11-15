@@ -733,8 +733,13 @@ argument_list|()
 operator|==
 literal|1
 argument_list|,
-literal|"Expected exactly one ChangeData, got "
-operator|+
+literal|"Expected exactly one ChangeData for change ID %s, got %s"
+argument_list|,
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|,
 name|cds
 operator|.
 name|size
