@@ -532,6 +532,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -656,11 +668,14 @@ specifier|final
 name|AccountQueryBuilder
 name|queryBuilder
 decl_stmt|;
-DECL|field|queryProcessor
+DECL|field|queryProcessorProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|AccountQueryProcessor
-name|queryProcessor
+argument_list|>
+name|queryProcessorProvider
 decl_stmt|;
 DECL|field|suggestConfig
 specifier|private
@@ -683,6 +698,11 @@ DECL|field|suggest
 specifier|private
 name|boolean
 name|suggest
+decl_stmt|;
+DECL|field|limit
+specifier|private
+name|Integer
+name|limit
 decl_stmt|;
 DECL|field|suggestLimit
 specifier|private
@@ -770,12 +790,11 @@ name|int
 name|n
 parameter_list|)
 block|{
-name|queryProcessor
+name|this
 operator|.
-name|setUserProvidedLimit
-argument_list|(
+name|limit
+operator|=
 name|n
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -964,7 +983,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|QueryAccounts ( PermissionBackend permissionBackend, AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder queryBuilder, AccountQueryProcessor queryProcessor, @GerritServerConfig Config cfg)
+DECL|method|QueryAccounts ( PermissionBackend permissionBackend, AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder queryBuilder, Provider<AccountQueryProcessor> queryProcessorProvider, @GerritServerConfig Config cfg)
 name|QueryAccounts
 parameter_list|(
 name|PermissionBackend
@@ -978,8 +997,11 @@ parameter_list|,
 name|AccountQueryBuilder
 name|queryBuilder
 parameter_list|,
+name|Provider
+argument_list|<
 name|AccountQueryProcessor
-name|queryProcessor
+argument_list|>
+name|queryProcessorProvider
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -1007,9 +1029,9 @@ name|queryBuilder
 expr_stmt|;
 name|this
 operator|.
-name|queryProcessor
+name|queryProcessorProvider
 operator|=
-name|queryProcessor
+name|queryProcessorProvider
 expr_stmt|;
 name|this
 operator|.
@@ -1371,6 +1393,14 @@ argument_list|(
 name|fillOptions
 argument_list|)
 expr_stmt|;
+name|AccountQueryProcessor
+name|queryProcessor
+init|=
+name|queryProcessorProvider
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|queryProcessor
@@ -1386,6 +1416,21 @@ argument_list|(
 literal|"query disabled"
 argument_list|)
 throw|;
+block|}
+if|if
+condition|(
+name|limit
+operator|!=
+literal|null
+condition|)
+block|{
+name|queryProcessor
+operator|.
+name|setUserProvidedLimit
+argument_list|(
+name|limit
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
