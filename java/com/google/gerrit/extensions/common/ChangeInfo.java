@@ -303,6 +303,11 @@ specifier|public
 name|Integer
 name|revertOf
 decl_stmt|;
+DECL|field|submissionId
+specifier|public
+name|String
+name|submissionId
+decl_stmt|;
 DECL|field|_number
 specifier|public
 name|int
