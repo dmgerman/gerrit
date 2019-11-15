@@ -981,6 +981,29 @@ comment|// If we are impersonating a user, make sure they receive a CC of
 comment|// this message so they can always review and audit what we sent
 comment|// on their behalf to others.
 comment|//
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"CC email sender %s because the email strategy of this user is %s"
+argument_list|,
+name|fromUser
+operator|.
+name|get
+argument_list|()
+operator|.
+name|account
+argument_list|()
+operator|.
+name|id
+argument_list|()
+argument_list|,
+name|CC_ON_OWN_COMMENTS
+argument_list|)
+expr_stmt|;
 name|add
 argument_list|(
 name|RecipientType
@@ -1016,6 +1039,40 @@ block|{
 comment|// If they don't want a copy, but we queued one up anyway,
 comment|// drop them from the recipient lists.
 comment|//
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Not CCing email sender %s because the email strategy of this user is not %s but %s"
+argument_list|,
+name|fromUser
+operator|.
+name|get
+argument_list|()
+operator|.
+name|account
+argument_list|()
+operator|.
+name|id
+argument_list|()
+argument_list|,
+name|CC_ON_OWN_COMMENTS
+argument_list|,
+name|senderPrefs
+operator|!=
+literal|null
+condition|?
+name|senderPrefs
+operator|.
+name|getEmailStrategy
+argument_list|()
+else|:
+literal|null
+argument_list|)
+expr_stmt|;
 name|removeUser
 argument_list|(
 name|fromUser
@@ -1102,6 +1159,20 @@ operator|==
 name|DISABLED
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Not emailing account %s because user has set email strategy to %s"
+argument_list|,
+name|id
+argument_list|,
+name|DISABLED
+argument_list|)
+expr_stmt|;
 name|removeUser
 argument_list|(
 name|thisUserAccount
@@ -1124,6 +1195,18 @@ operator|.
 name|PLAINTEXT
 condition|)
 block|{
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Removing account %s from HTML email because user prefers plain text emails"
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
 name|removeUser
 argument_list|(
 name|thisUserAccount
@@ -1466,9 +1549,17 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"Sending multipart '%s'"
+literal|"Sending multipart '%s' from %s to %s"
 argument_list|,
 name|messageClass
+argument_list|,
+name|va
+operator|.
+name|smtpFromAddress
+argument_list|,
+name|va
+operator|.
+name|smtpRcptTo
 argument_list|)
 expr_stmt|;
 name|args
@@ -1508,18 +1599,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|logger
-operator|.
-name|atFine
-argument_list|()
-operator|.
-name|log
-argument_list|(
-literal|"Sending plaintext '%s'"
-argument_list|,
-name|messageClass
-argument_list|)
-expr_stmt|;
 comment|// Send plaintext message
 name|Map
 argument_list|<
@@ -1599,6 +1678,24 @@ name|to
 argument_list|)
 expr_stmt|;
 block|}
+name|logger
+operator|.
+name|atFine
+argument_list|()
+operator|.
+name|log
+argument_list|(
+literal|"Sending plaintext '%s' from %s to %s"
+argument_list|,
+name|messageClass
+argument_list|,
+name|va
+operator|.
+name|smtpFromAddress
+argument_list|,
+name|smtpRcptToPlaintextOnly
+argument_list|)
+expr_stmt|;
 name|args
 operator|.
 name|emailSender
