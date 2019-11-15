@@ -336,6 +336,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -393,11 +405,14 @@ specifier|final
 name|GroupQueryBuilder
 name|queryBuilder
 decl_stmt|;
-DECL|field|queryProcessor
+DECL|field|queryProcessorProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|GroupQueryProcessor
-name|queryProcessor
+argument_list|>
+name|queryProcessorProvider
 decl_stmt|;
 DECL|field|json
 specifier|private
@@ -617,15 +632,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|QueryGroups ( GroupQueryBuilder queryBuilder, GroupQueryProcessor queryProcessor, GroupJson json)
+DECL|method|QueryGroups ( GroupQueryBuilder queryBuilder, Provider<GroupQueryProcessor> queryProcessorProvider, GroupJson json)
 specifier|protected
 name|QueryGroups
 parameter_list|(
 name|GroupQueryBuilder
 name|queryBuilder
 parameter_list|,
+name|Provider
+argument_list|<
 name|GroupQueryProcessor
-name|queryProcessor
+argument_list|>
+name|queryProcessorProvider
 parameter_list|,
 name|GroupJson
 name|json
@@ -639,9 +657,9 @@ name|queryBuilder
 expr_stmt|;
 name|this
 operator|.
-name|queryProcessor
+name|queryProcessorProvider
 operator|=
-name|queryProcessor
+name|queryProcessorProvider
 expr_stmt|;
 name|this
 operator|.
@@ -690,6 +708,14 @@ literal|"missing query field"
 argument_list|)
 throw|;
 block|}
+name|GroupQueryProcessor
+name|queryProcessor
+init|=
+name|queryProcessorProvider
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|queryProcessor
