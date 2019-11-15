@@ -162,6 +162,8 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
+name|config
+operator|.
 name|GerritConfig
 import|;
 end_import

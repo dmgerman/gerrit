@@ -94,7 +94,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GerritConfig
+name|NoHttpd
 import|;
 end_import
 
@@ -108,7 +108,9 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|NoHttpd
+name|config
+operator|.
+name|GerritConfig
 import|;
 end_import
 

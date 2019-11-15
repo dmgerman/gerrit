@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance
+DECL|package|com.google.gerrit.acceptance.config
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|acceptance
+operator|.
+name|config
 package|;
 end_package
 
@@ -144,22 +146,28 @@ argument_list|)
 annotation|@
 name|Repeatable
 argument_list|(
-name|GerritConfigs
+name|GlobalPluginConfigs
 operator|.
 name|class
 argument_list|)
-DECL|annotation|GerritConfig
+DECL|annotation|GlobalPluginConfig
 specifier|public
 annotation_defn|@interface
-name|GerritConfig
+name|GlobalPluginConfig
 block|{
-comment|/**    * Setting name in the form {@code "section.name"} or {@code "section.subsection.name"} where    * {@code section}, {@code subsection} and {@code name} correspond to the parameters of the same    * names in JGit's {@code Config#getString} method.    *    * @see org.eclipse.jgit.lib.Config#getString(String, String, String)    */
+comment|/** Name of the plugin, corresponding to {@code $site/etc/@pluginName.config}. */
+DECL|method|pluginName ()
+name|String
+name|pluginName
+parameter_list|()
+function_decl|;
+comment|/** @see GerritConfig#name() */
 DECL|method|name ()
 name|String
 name|name
 parameter_list|()
 function_decl|;
-comment|/** Single value. Takes precedence over values specified in {@code values}. */
+comment|/** @see GerritConfig#value() */
 DECL|method|value ()
 name|String
 name|value
@@ -167,7 +175,7 @@ parameter_list|()
 default|default
 literal|""
 function_decl|;
-comment|/** Multiple values (list). Ignored if {@code value} is specified. */
+comment|/** @see GerritConfig#values() */
 DECL|method|values ()
 name|String
 index|[]
