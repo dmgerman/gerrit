@@ -262,6 +262,31 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|openJGitConfig (Config parent, FS fs)
+specifier|public
+name|FileBasedConfig
+name|openJGitConfig
+parameter_list|(
+name|Config
+name|parent
+parameter_list|,
+name|FS
+name|fs
+parameter_list|)
+block|{
+return|return
+name|delegate
+operator|.
+name|openJGitConfig
+argument_list|(
+name|parent
+argument_list|,
+name|fs
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getCurrentTime ()
 specifier|public
 name|long
