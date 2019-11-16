@@ -2188,7 +2188,7 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
-if|if
+while|while
 condition|(
 operator|(
 name|t
@@ -2198,6 +2198,10 @@ operator|||
 name|t
 operator|instanceof
 name|StorageException
+operator|||
+name|t
+operator|instanceof
+name|ExecutionException
 operator|)
 operator|&&
 name|t
