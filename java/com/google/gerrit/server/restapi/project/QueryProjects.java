@@ -338,6 +338,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -391,11 +403,14 @@ specifier|final
 name|ProjectQueryBuilder
 name|queryBuilder
 decl_stmt|;
-DECL|field|queryProcessor
+DECL|field|queryProcessorProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ProjectQueryProcessor
-name|queryProcessor
+argument_list|>
+name|queryProcessorProvider
 decl_stmt|;
 DECL|field|json
 specifier|private
@@ -536,7 +551,7 @@ return|;
 block|}
 annotation|@
 name|Inject
-DECL|method|QueryProjects ( ProjectIndexCollection indexes, ProjectQueryBuilder queryBuilder, ProjectQueryProcessor queryProcessor, ProjectJson json)
+DECL|method|QueryProjects ( ProjectIndexCollection indexes, ProjectQueryBuilder queryBuilder, Provider<ProjectQueryProcessor> queryProcessorProvider, ProjectJson json)
 specifier|protected
 name|QueryProjects
 parameter_list|(
@@ -546,8 +561,11 @@ parameter_list|,
 name|ProjectQueryBuilder
 name|queryBuilder
 parameter_list|,
+name|Provider
+argument_list|<
 name|ProjectQueryProcessor
-name|queryProcessor
+argument_list|>
+name|queryProcessorProvider
 parameter_list|,
 name|ProjectJson
 name|json
@@ -567,9 +585,9 @@ name|queryBuilder
 expr_stmt|;
 name|this
 operator|.
-name|queryProcessor
+name|queryProcessorProvider
 operator|=
-name|queryProcessor
+name|queryProcessorProvider
 expr_stmt|;
 name|this
 operator|.
@@ -663,6 +681,14 @@ literal|"no project index"
 argument_list|)
 throw|;
 block|}
+name|ProjectQueryProcessor
+name|queryProcessor
+init|=
+name|queryProcessorProvider
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|start
