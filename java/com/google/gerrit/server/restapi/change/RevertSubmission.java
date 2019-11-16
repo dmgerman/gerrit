@@ -1242,6 +1242,13 @@ operator|.
 name|isMerged
 argument_list|()
 operator|&&
+name|change
+operator|.
+name|getSubmissionId
+argument_list|()
+operator|!=
+literal|null
+operator|&&
 name|projectStatePermitsWrite
 argument_list|,
 name|permissionBackend
