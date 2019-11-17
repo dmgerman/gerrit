@@ -140,7 +140,7 @@ name|stream
 operator|.
 name|Collectors
 operator|.
-name|toSet
+name|toList
 import|;
 end_import
 
@@ -1574,7 +1574,7 @@ argument_list|)
 operator|.
 name|collect
 argument_list|(
-name|toSet
+name|toList
 argument_list|()
 argument_list|)
 argument_list|)
