@@ -1730,7 +1730,7 @@ argument_list|,
 name|t
 lambda|->
 block|{
-lambda|if (t instanceof UpdateException
+lambda|if (t instanceof UpdateException || t instanceof StorageException
 argument_list|)
 block|{
 name|t
