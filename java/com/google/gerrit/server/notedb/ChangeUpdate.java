@@ -1748,22 +1748,42 @@ operator|=
 name|status
 expr_stmt|;
 block|}
-DECL|method|fixStatus (Change.Status status)
+DECL|method|fixStatusToMerged (RequestId submissionId)
 specifier|public
 name|void
-name|fixStatus
+name|fixStatusToMerged
 parameter_list|(
-name|Change
-operator|.
-name|Status
-name|status
+name|RequestId
+name|submissionId
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|submissionId
+operator|!=
+literal|null
+argument_list|,
+literal|"submission id must be set for merged changes"
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|status
 operator|=
-name|status
+name|Change
+operator|.
+name|Status
+operator|.
+name|MERGED
+expr_stmt|;
+name|this
+operator|.
+name|submissionId
+operator|=
+name|submissionId
+operator|.
+name|toStringForStorage
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|putApproval (String label, short value)
