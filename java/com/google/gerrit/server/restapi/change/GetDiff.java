@@ -1359,7 +1359,7 @@ argument_list|()
 operator|.
 name|log
 argument_list|(
-literal|"patchSetId = %d, fileName = %s, base = %s"
+literal|"patchSetId = %d, fileName = %s, base = %s, parentNum = %d"
 argument_list|,
 name|pId
 operator|.
