@@ -210,6 +210,10 @@ name|MutableInteger
 import|;
 end_import
 
+begin_comment
+comment|/** Implements the parsing of comment data, handling JSON decoding and push certificates. */
+end_comment
+
 begin_class
 DECL|class|ChangeRevisionNote
 class|class

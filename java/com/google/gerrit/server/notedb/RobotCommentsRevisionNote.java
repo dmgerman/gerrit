@@ -182,6 +182,10 @@ name|ObjectReader
 import|;
 end_import
 
+begin_comment
+comment|/** Like {@link RevisionNote} but for robot comments. */
+end_comment
+
 begin_class
 DECL|class|RobotCommentsRevisionNote
 specifier|public

@@ -548,6 +548,7 @@ name|serverId
 expr_stmt|;
 block|}
 block|}
+comment|/** An {@link AutoCloseable} for parsing a single commit into ChangeNotesCommits. */
 DECL|class|LoadHandle
 specifier|public
 specifier|static

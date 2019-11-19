@@ -301,6 +301,7 @@ DECL|class|RevisionNoteBuilder
 class|class
 name|RevisionNoteBuilder
 block|{
+comment|/** Construct a new RevisionNoteMap, seeding it with an existing (immutable) RevisionNoteMap */
 DECL|class|Cache
 specifier|static
 class|class

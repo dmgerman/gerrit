@@ -1239,6 +1239,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// keyed by commit ID.
 name|Map
 argument_list|<
 name|ObjectId

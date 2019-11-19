@@ -300,6 +300,7 @@ name|ChangeNotesCommit
 extends|extends
 name|RevCommit
 block|{
+comment|/** A {@link RevWalk} producing {@link ChangeNotesCommit}s. */
 DECL|method|newRevWalk (Repository repo)
 specifier|public
 specifier|static
@@ -391,6 +392,7 @@ block|}
 block|}
 return|;
 block|}
+comment|/** A {@link RevWalk} that creates {@link ChangeNotesCommit}s rather than {@link RevCommit}s */
 DECL|class|ChangeNotesRevWalk
 specifier|public
 specifier|static

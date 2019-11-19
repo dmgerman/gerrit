@@ -194,6 +194,10 @@ name|NoteMap
 import|;
 end_import
 
+begin_comment
+comment|/**  * A utility class that parses a NoteMap into commit => comment list data.  *  * @param<T> the RevisionNote for the comment type.  */
+end_comment
+
 begin_class
 DECL|class|RevisionNoteMap
 class|class
@@ -209,11 +213,13 @@ name|Comment
 parameter_list|>
 parameter_list|>
 block|{
+comment|// CommitID => blob ID
 DECL|field|noteMap
 specifier|final
 name|NoteMap
 name|noteMap
 decl_stmt|;
+comment|// CommitID => parsed data, immutable map.
 DECL|field|revisionNotes
 specifier|final
 name|ImmutableMap

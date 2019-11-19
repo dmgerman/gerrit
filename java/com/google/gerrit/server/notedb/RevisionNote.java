@@ -202,6 +202,10 @@ name|MutableInteger
 import|;
 end_import
 
+begin_comment
+comment|/**  * Data stored in a note, parsed on demand. The data type to parse into is a generic list of type T.  * The source of the data is a array of raw bytes  */
+end_comment
+
 begin_class
 annotation|@
 name|UsedAt
@@ -391,6 +395,7 @@ return|return
 name|entities
 return|;
 block|}
+comment|/** Reads the raw data, and delegates parsing to the {@link #parse(byte[], int)} method. */
 DECL|method|parse ()
 specifier|public
 name|void
