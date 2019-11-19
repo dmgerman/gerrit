@@ -2122,7 +2122,7 @@ literal|"com.google.gerrit"
 argument_list|,
 name|Level
 operator|.
-name|DEBUG
+name|INFO
 argument_list|)
 comment|// Silence non-critical messages from MINA SSHD.
 decl|.
