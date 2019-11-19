@@ -1633,6 +1633,9 @@ name|CURRENT_ACTIONS
 argument_list|,
 name|CURRENT_COMMIT
 argument_list|,
+name|DETAILED_LABELS
+argument_list|,
+comment|// may need to load ChangeNotes to check remove reviewer permissions
 name|MESSAGES
 argument_list|)
 decl_stmt|;
