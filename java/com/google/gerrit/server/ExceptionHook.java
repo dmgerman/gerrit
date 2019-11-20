@@ -136,6 +136,26 @@ name|empty
 argument_list|()
 return|;
 block|}
+comment|/**    * Returns an error message that should be returned to the user.    *    * @param throwable throwable that was thrown while executing an operation    * @return error message that should be returned to the user, {@link Optional#empty()} if no    *     message should be returned to the user    */
+DECL|method|getUserMessage (Throwable throwable)
+specifier|default
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getUserMessage
+parameter_list|(
+name|Throwable
+name|throwable
+parameter_list|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
 block|}
 end_interface
 
