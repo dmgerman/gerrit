@@ -123,15 +123,17 @@ argument_list|,
 literal|10
 argument_list|)
 expr_stmt|;
+comment|// To avoid this flakiness indexMergeable is switched off for the tests as it incurs background
+comment|// reindex calls.
 name|cfg
 operator|.
 name|setBoolean
 argument_list|(
 literal|"index"
 argument_list|,
-literal|null
+literal|"change"
 argument_list|,
-literal|"reindexAfterRefUpdate"
+literal|"indexMergeable"
 argument_list|,
 literal|false
 argument_list|)

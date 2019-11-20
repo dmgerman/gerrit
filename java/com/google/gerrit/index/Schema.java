@@ -81,16 +81,18 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
 operator|.
 name|common
 operator|.
-name|base
+name|collect
 operator|.
-name|MoreObjects
+name|ImmutableList
+operator|.
+name|toImmutableList
 import|;
 end_import
 
@@ -102,9 +104,9 @@ name|google
 operator|.
 name|common
 operator|.
-name|collect
+name|base
 operator|.
-name|FluentIterable
+name|MoreObjects
 import|;
 end_import
 
@@ -133,6 +135,20 @@ operator|.
 name|collect
 operator|.
 name|ImmutableMap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
 import|;
 end_import
 
@@ -1033,8 +1049,8 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * Build all fields in the schema from an input object.    *    *<p>Null values are omitted, as are fields which cause errors, which are logged.    *    * @param obj input object.    * @return all non-null field values from the object.    */
-DECL|method|buildFields (T obj)
+comment|/**    * Build all fields in the schema from an input object.    *    *<p>Null values are omitted, as are fields which cause errors, which are logged.    *    * @param obj input object.    * @param skipFields set of field names to skip when indexing the document    * @return all non-null field values from the object.    */
+DECL|method|buildFields (T obj, ImmutableSet<String> skipFields)
 specifier|public
 specifier|final
 name|Iterable
@@ -1048,24 +1064,45 @@ name|buildFields
 parameter_list|(
 name|T
 name|obj
+parameter_list|,
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|skipFields
 parameter_list|)
 block|{
 return|return
-name|FluentIterable
-operator|.
-name|from
-argument_list|(
 name|fields
 operator|.
 name|values
 argument_list|()
-argument_list|)
 operator|.
-name|transform
+name|stream
+argument_list|()
+operator|.
+name|map
 argument_list|(
 name|f
 lambda|->
 block|{
+if|if
+condition|(
+name|skipFields
+operator|.
+name|contains
+argument_list|(
+name|f
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|Object
 name|v
 decl_stmt|;
@@ -1176,6 +1213,12 @@ argument_list|(
 name|Objects
 operator|::
 name|nonNull
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toImmutableList
+argument_list|()
 argument_list|)
 return|;
 block|}

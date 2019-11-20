@@ -682,9 +682,9 @@ name|getBoolean
 argument_list|(
 literal|"index"
 argument_list|,
-literal|null
+literal|"change"
 argument_list|,
-literal|"reindexAfterRefUpdate"
+literal|"indexMergeable"
 argument_list|,
 literal|true
 argument_list|)

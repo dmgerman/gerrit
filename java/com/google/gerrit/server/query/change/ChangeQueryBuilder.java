@@ -810,6 +810,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|OperatorAliasConfig
 import|;
 end_import
@@ -1213,6 +1229,20 @@ operator|.
 name|errors
 operator|.
 name|RepositoryNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -2084,6 +2114,11 @@ specifier|final
 name|OperatorAliasConfig
 name|operatorAliasConfig
 decl_stmt|;
+DECL|field|indexMergeable
+specifier|final
+name|boolean
+name|indexMergeable
+decl_stmt|;
 DECL|field|self
 specifier|private
 specifier|final
@@ -2097,7 +2132,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments ( Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider, OperatorAliasConfig operatorAliasConfig)
+DECL|method|Arguments ( Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider, OperatorAliasConfig operatorAliasConfig, @GerritServerConfig Config gerritConfig)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -2202,6 +2237,11 @@ name|anonymousUserProvider
 parameter_list|,
 name|OperatorAliasConfig
 name|operatorAliasConfig
+parameter_list|,
+annotation|@
+name|GerritServerConfig
+name|Config
+name|gerritConfig
 parameter_list|)
 block|{
 name|this
@@ -2268,10 +2308,23 @@ argument_list|,
 name|anonymousUserProvider
 argument_list|,
 name|operatorAliasConfig
+argument_list|,
+name|gerritConfig
+operator|.
+name|getBoolean
+argument_list|(
+literal|"index"
+argument_list|,
+literal|"change"
+argument_list|,
+literal|"indexMergeable"
+argument_list|,
+literal|true
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider, OperatorAliasConfig operatorAliasConfig)
+DECL|method|Arguments ( Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChildProjects childProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, StarredChangesUtil starredChangesUtil, AccountCache accountCache, GroupMembers groupMembers, Provider<AnonymousUser> anonymousUserProvider, OperatorAliasConfig operatorAliasConfig, boolean indexMergeable)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2376,6 +2429,9 @@ name|anonymousUserProvider
 parameter_list|,
 name|OperatorAliasConfig
 name|operatorAliasConfig
+parameter_list|,
+name|boolean
+name|indexMergeable
 parameter_list|)
 block|{
 name|this
@@ -2539,6 +2595,12 @@ operator|.
 name|operatorAliasConfig
 operator|=
 name|operatorAliasConfig
+expr_stmt|;
+name|this
+operator|.
+name|indexMergeable
+operator|=
+name|indexMergeable
 expr_stmt|;
 block|}
 DECL|method|asUser (CurrentUser otherUser)
@@ -2611,6 +2673,8 @@ argument_list|,
 name|anonymousUserProvider
 argument_list|,
 name|operatorAliasConfig
+argument_list|,
+name|indexMergeable
 argument_list|)
 return|;
 block|}
@@ -3673,6 +3737,22 @@ name|value
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|args
+operator|.
+name|indexMergeable
+condition|)
+block|{
+throw|throw
+operator|new
+name|QueryParseException
+argument_list|(
+literal|"server does not support 'mergeable'. check configs"
+argument_list|)
+throw|;
+block|}
 return|return
 operator|new
 name|BooleanPredicate
