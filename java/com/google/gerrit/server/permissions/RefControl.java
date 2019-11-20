@@ -2142,7 +2142,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-comment|// TODO(hiesel) Force callers to call database() and use db instead of cd.db()
 return|return
 name|getProjectControl
 argument_list|()
@@ -2151,7 +2150,7 @@ name|controlFor
 argument_list|(
 name|cd
 operator|.
-name|change
+name|notes
 argument_list|()
 argument_list|)
 operator|.
