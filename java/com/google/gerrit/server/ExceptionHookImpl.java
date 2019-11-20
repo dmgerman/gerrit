@@ -142,6 +142,19 @@ name|ExceptionHookImpl
 implements|implements
 name|ExceptionHook
 block|{
+DECL|field|LOCK_FAILURE_USER_MESSAGE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|LOCK_FAILURE_USER_MESSAGE
+init|=
+literal|"Updating a ref failed with LOCK_FAILURE.\n"
+operator|+
+literal|"This may be a temporary issue due to concurrent updates.\n"
+operator|+
+literal|"Please retry later."
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|shouldRetry (Throwable throwable)
@@ -195,6 +208,44 @@ name|LOCK_FAILURE
 operator|.
 name|name
 argument_list|()
+argument_list|)
+return|;
+block|}
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getUserMessage (Throwable throwable)
+specifier|public
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getUserMessage
+parameter_list|(
+name|Throwable
+name|throwable
+parameter_list|)
+block|{
+if|if
+condition|(
+name|isLockFailure
+argument_list|(
+name|throwable
+argument_list|)
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|LOCK_FAILURE_USER_MESSAGE
 argument_list|)
 return|;
 block|}
