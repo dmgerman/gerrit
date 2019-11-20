@@ -2041,6 +2041,11 @@ argument_list|,
 name|queryProvider
 argument_list|,
 name|projectName
+argument_list|,
+name|user
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
