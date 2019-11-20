@@ -507,7 +507,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( RequestScopePropagator requestScopePropagator, PatchSet.Id psId, @Assisted(R) String refName, @Assisted(R) String mergeResultRevId)
+DECL|method|create ( RequestScopePropagator requestScopePropagator, PatchSet.Id psId, @Assisted RequestId submissionId, @Assisted(R) String refName, @Assisted(R) String mergeResultRevId)
 name|MergedByPushOp
 name|create
 parameter_list|(
@@ -518,6 +518,11 @@ name|PatchSet
 operator|.
 name|Id
 name|psId
+parameter_list|,
+annotation|@
+name|Assisted
+name|RequestId
+name|submissionId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -589,6 +594,12 @@ operator|.
 name|Id
 name|psId
 decl_stmt|;
+DECL|field|submissionId
+specifier|private
+specifier|final
+name|RequestId
+name|submissionId
+decl_stmt|;
 DECL|field|refName
 specifier|private
 specifier|final
@@ -631,7 +642,7 @@ name|info
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergedByPushOp ( PatchSetInfoFactory patchSetInfoFactory, ChangeMessagesUtil cmUtil, MergedSender.Factory mergedSenderFactory, PatchSetUtil psUtil, @SendEmailExecutor ExecutorService sendEmailExecutor, ChangeMerged changeMerged, @Assisted RequestScopePropagator requestScopePropagator, @Assisted PatchSet.Id psId, @Assisted(R) String refName, @Assisted(R) String mergeResultRevId)
+DECL|method|MergedByPushOp ( PatchSetInfoFactory patchSetInfoFactory, ChangeMessagesUtil cmUtil, MergedSender.Factory mergedSenderFactory, PatchSetUtil psUtil, @SendEmailExecutor ExecutorService sendEmailExecutor, ChangeMerged changeMerged, @Assisted RequestScopePropagator requestScopePropagator, @Assisted PatchSet.Id psId, @Assisted RequestId submissionId, @Assisted(R) String refName, @Assisted(R) String mergeResultRevId)
 name|MergedByPushOp
 parameter_list|(
 name|PatchSetInfoFactory
@@ -667,6 +678,11 @@ name|PatchSet
 operator|.
 name|Id
 name|psId
+parameter_list|,
+annotation|@
+name|Assisted
+name|RequestId
+name|submissionId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -726,6 +742,12 @@ operator|.
 name|requestScopePropagator
 operator|=
 name|requestScopePropagator
+expr_stmt|;
+name|this
+operator|.
+name|submissionId
+operator|=
+name|submissionId
 expr_stmt|;
 name|this
 operator|.
@@ -921,21 +943,6 @@ operator|.
 name|MERGED
 argument_list|)
 expr_stmt|;
-name|RequestId
-name|submissionId
-init|=
-operator|new
-name|RequestId
-argument_list|(
-name|change
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|change
 operator|.
 name|setSubmissionId
