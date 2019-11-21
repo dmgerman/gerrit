@@ -92,6 +92,20 @@ name|gerrit
 operator|.
 name|entities
 operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|entities
+operator|.
 name|Project
 import|;
 end_import
@@ -185,7 +199,7 @@ class|class
 name|ReceiveCommitsAdvertiseRefsHookChain
 block|{
 comment|/**    * Returns a single {@link AdvertiseRefsHook} that encompasses a chain of {@link    * AdvertiseRefsHook} to be used for advertising when processing a Git push.    */
-DECL|method|create ( AllRefsWatcher allRefsWatcher, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName)
+DECL|method|create ( AllRefsWatcher allRefsWatcher, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName, Account.Id user)
 specifier|public
 specifier|static
 name|AdvertiseRefsHook
@@ -204,6 +218,11 @@ name|Project
 operator|.
 name|NameKey
 name|projectName
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|user
 parameter_list|)
 block|{
 return|return
@@ -215,6 +234,8 @@ name|queryProvider
 argument_list|,
 name|projectName
 argument_list|,
+name|user
+argument_list|,
 literal|false
 argument_list|)
 return|;
@@ -222,7 +243,7 @@ block|}
 comment|/**    * Returns a single {@link AdvertiseRefsHook} that encompasses a chain of {@link    * AdvertiseRefsHook} to be used for advertising when processing a Git push. Omits {@link    * HackPushNegotiateHook} as that does not advertise refs on it's own but adds {@code .have} based    * on history which is not relevant for the tests we have.    */
 annotation|@
 name|VisibleForTesting
-DECL|method|createForTest ( Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName)
+DECL|method|createForTest ( Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName, Account.Id user)
 specifier|public
 specifier|static
 name|AdvertiseRefsHook
@@ -238,6 +259,11 @@ name|Project
 operator|.
 name|NameKey
 name|projectName
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|user
 parameter_list|)
 block|{
 return|return
@@ -251,11 +277,13 @@ name|queryProvider
 argument_list|,
 name|projectName
 argument_list|,
+name|user
+argument_list|,
 literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|create ( AllRefsWatcher allRefsWatcher, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName, boolean skipHackPushNegotiateHook)
+DECL|method|create ( AllRefsWatcher allRefsWatcher, Provider<InternalChangeQuery> queryProvider, Project.NameKey projectName, Account.Id user, boolean skipHackPushNegotiateHook)
 specifier|private
 specifier|static
 name|AdvertiseRefsHook
@@ -274,6 +302,11 @@ name|Project
 operator|.
 name|NameKey
 name|projectName
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|user
 parameter_list|,
 name|boolean
 name|skipHackPushNegotiateHook
@@ -307,6 +340,8 @@ argument_list|(
 name|queryProvider
 argument_list|,
 name|projectName
+argument_list|,
+name|user
 argument_list|)
 argument_list|)
 expr_stmt|;
