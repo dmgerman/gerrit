@@ -1800,7 +1800,7 @@ name|Status
 operator|.
 name|MERGED
 argument_list|,
-literal|"use merge(Iterable<SubmitRecord>)"
+literal|"use merge(RequestId, Iterable<SubmitRecord>)"
 argument_list|)
 expr_stmt|;
 name|this
