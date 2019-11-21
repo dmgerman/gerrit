@@ -2121,7 +2121,7 @@ block|}
 end_finally
 
 begin_function
-unit|}    private
+unit|}    public
 DECL|method|formatCause (Throwable t)
 name|String
 name|formatCause
