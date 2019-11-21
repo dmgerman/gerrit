@@ -798,13 +798,13 @@ name|commentValidators
 operator|.
 name|runEach
 argument_list|(
-name|listener
+name|validator
 lambda|->
 name|commentValidationFailures
 operator|.
 name|addAll
 argument_list|(
-name|listener
+name|validator
 operator|.
 name|validateComments
 argument_list|(
