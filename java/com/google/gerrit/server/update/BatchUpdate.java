@@ -642,7 +642,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NoteDbUpdateManager
+name|LimitExceededException
 import|;
 end_import
 
@@ -658,7 +658,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|TooManyUpdatesException
+name|NoteDbUpdateManager
 import|;
 end_import
 
@@ -1397,7 +1397,7 @@ name|InvalidChangeOperationException
 operator|||
 name|e
 operator|instanceof
-name|TooManyUpdatesException
+name|LimitExceededException
 condition|)
 block|{
 throw|throw

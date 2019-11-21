@@ -72,34 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|annotations
-operator|.
-name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|entities
-operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|exceptions
@@ -109,77 +81,27 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Exception indicating that the change has received too many updates. Further actions apart from  * {@code abandon} or {@code submit} are blocked.  */
+comment|/**  * A write operation was rejected because a limit would be exceeded. Limits are currently imposed  * on:  *  *<ul>  *<li>The number of NoteDb updates per change.  *<li>The number of patch sets per change.  *</ul>  */
 end_comment
 
 begin_class
-DECL|class|TooManyUpdatesException
+DECL|class|LimitExceededException
 specifier|public
 class|class
-name|TooManyUpdatesException
+name|LimitExceededException
 extends|extends
 name|StorageException
 block|{
-annotation|@
-name|VisibleForTesting
-DECL|method|message (Change.Id id, int maxUpdates)
-specifier|public
-specifier|static
+DECL|method|LimitExceededException (String message)
+name|LimitExceededException
+parameter_list|(
 name|String
 name|message
-parameter_list|(
-name|Change
-operator|.
-name|Id
-name|id
-parameter_list|,
-name|int
-name|maxUpdates
-parameter_list|)
-block|{
-return|return
-literal|"Change "
-operator|+
-name|id
-operator|+
-literal|" may not exceed "
-operator|+
-name|maxUpdates
-operator|+
-literal|" updates. It may still be abandoned or submitted. To continue working on this "
-operator|+
-literal|"change, recreate it with a new Change-Id, then abandon this one."
-return|;
-block|}
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
-DECL|method|TooManyUpdatesException (Change.Id id, int maxUpdates)
-name|TooManyUpdatesException
-parameter_list|(
-name|Change
-operator|.
-name|Id
-name|id
-parameter_list|,
-name|int
-name|maxUpdates
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|message
-argument_list|(
-name|id
-argument_list|,
-name|maxUpdates
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
