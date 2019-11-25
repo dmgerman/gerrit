@@ -81,6 +81,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toMap
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -104,7 +118,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMap
+name|ImmutableList
 import|;
 end_import
 
@@ -191,6 +205,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
 import|;
 end_import
 
@@ -499,10 +523,8 @@ return|return
 literal|null
 return|;
 block|}
-name|Map
+name|Collection
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|result
@@ -515,12 +537,10 @@ name|forProject
 operator|.
 name|filter
 argument_list|(
-name|ImmutableMap
+name|ImmutableList
 operator|.
 name|of
 argument_list|(
-name|name
-argument_list|,
 name|ref
 argument_list|)
 argument_list|,
@@ -605,9 +625,6 @@ operator|.
 name|getOnlyElement
 argument_list|(
 name|result
-operator|.
-name|values
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -665,10 +682,8 @@ return|return
 name|refs
 return|;
 block|}
-name|Map
+name|Collection
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|result
@@ -682,6 +697,9 @@ operator|.
 name|filter
 argument_list|(
 name|refs
+operator|.
+name|values
+argument_list|()
 argument_list|,
 name|getDelegate
 argument_list|()
@@ -709,6 +727,23 @@ throw|;
 block|}
 return|return
 name|result
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|collect
+argument_list|(
+name|toMap
+argument_list|(
+name|Ref
+operator|::
+name|getName
+argument_list|,
+name|r
+lambda|->
+name|r
+argument_list|)
+argument_list|)
 return|;
 block|}
 annotation|@

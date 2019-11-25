@@ -88,20 +88,6 @@ name|stream
 operator|.
 name|Collectors
 operator|.
-name|toMap
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
-operator|.
 name|toSet
 import|;
 end_import
@@ -425,16 +411,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -1385,22 +1361,18 @@ name|CoreOrPluginProjectPermission
 name|perm
 parameter_list|)
 function_decl|;
-comment|/**      * Filter a map of references by visibility.      *      * @param refs a map of references to filter.      * @param repo an open {@link Repository} handle for this instance's project      * @param opts further options for filtering.      * @return a partition of the provided refs that are visible to the user that this instance is      *     scoped to.      * @throws PermissionBackendException if failure consulting backend configuration.      */
-DECL|method|filter ( Map<String, Ref> refs, Repository repo, RefFilterOptions opts)
+comment|/**      * Filter a list of references by visibility.      *      * @param refs a collection of references to filter.      * @param repo an open {@link Repository} handle for this instance's project      * @param opts further options for filtering.      * @return a partition of the provided refs that are visible to the user that this instance is      *     scoped to.      * @throws PermissionBackendException if failure consulting backend configuration.      */
+DECL|method|filter ( Collection<Ref> refs, Repository repo, RefFilterOptions opts)
 specifier|public
 specifier|abstract
-name|Map
+name|Collection
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|filter
 parameter_list|(
-name|Map
+name|Collection
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|refs
@@ -1414,68 +1386,6 @@ parameter_list|)
 throws|throws
 name|PermissionBackendException
 function_decl|;
-comment|/**      * Filter a list of references by visibility.      *      * @param refs a list of references to filter.      * @param repo an open {@link Repository} handle for this instance's project      * @param opts further options for filtering.      * @return a partition of the provided refs that are visible to the user that this instance is      *     scoped to.      * @throws PermissionBackendException if failure consulting backend configuration.      */
-DECL|method|filter (List<Ref> refs, Repository repo, RefFilterOptions opts)
-specifier|public
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Ref
-argument_list|>
-name|filter
-parameter_list|(
-name|List
-argument_list|<
-name|Ref
-argument_list|>
-name|refs
-parameter_list|,
-name|Repository
-name|repo
-parameter_list|,
-name|RefFilterOptions
-name|opts
-parameter_list|)
-throws|throws
-name|PermissionBackendException
-block|{
-return|return
-name|filter
-argument_list|(
-name|refs
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|collect
-argument_list|(
-name|toMap
-argument_list|(
-name|Ref
-operator|::
-name|getName
-argument_list|,
-name|r
-lambda|->
-name|r
-argument_list|,
-parameter_list|(
-name|a
-parameter_list|,
-name|b
-parameter_list|)
-lambda|->
-name|b
-argument_list|)
-argument_list|)
-argument_list|,
-name|repo
-argument_list|,
-name|opts
-argument_list|)
-return|;
-block|}
 block|}
 comment|/** Options for filtering refs using {@link ForProject}. */
 annotation|@

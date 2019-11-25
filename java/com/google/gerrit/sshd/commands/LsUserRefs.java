@@ -374,7 +374,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|Collection
 import|;
 end_import
 
@@ -691,10 +691,8 @@ init|)
 block|{
 try|try
 block|{
-name|Map
+name|Collection
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|refsMap
@@ -734,13 +732,10 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|String
+name|Ref
 name|ref
 range|:
 name|refsMap
-operator|.
-name|keySet
-argument_list|()
 control|)
 block|{
 if|if
@@ -749,6 +744,9 @@ operator|!
 name|onlyRefsHeads
 operator|||
 name|ref
+operator|.
+name|getName
+argument_list|()
 operator|.
 name|startsWith
 argument_list|(
