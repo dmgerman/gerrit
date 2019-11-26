@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -254,15 +238,16 @@ argument_list|>
 name|serverOptionList
 parameter_list|)
 block|{
-name|checkState
-argument_list|(
+if|if
+condition|(
 name|traceContext
-operator|==
+operator|!=
 literal|null
-argument_list|,
-literal|"Trace was already started."
-argument_list|)
-expr_stmt|;
+condition|)
+block|{
+comment|// Trace was already started
+return|return;
+block|}
 name|Optional
 argument_list|<
 name|String
