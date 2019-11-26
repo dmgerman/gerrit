@@ -2304,18 +2304,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|function
-operator|.
-name|Predicate
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|regex
 operator|.
 name|Pattern
@@ -5798,9 +5786,6 @@ name|parentResource
 argument_list|,
 name|id
 argument_list|)
-argument_list|,
-name|noRetry
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -5860,9 +5845,6 @@ name|apply
 argument_list|(
 name|rsrc
 argument_list|)
-argument_list|,
-name|noRetry
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -5929,9 +5911,6 @@ name|rsrc
 argument_list|,
 name|inputRequestBody
 argument_list|)
-argument_list|,
-name|retryOnLockFailure
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -6005,9 +5984,6 @@ name|path
 argument_list|,
 name|inputRequestBody
 argument_list|)
-argument_list|,
-name|retryOnLockFailure
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -6081,9 +6057,6 @@ name|path
 argument_list|,
 name|inputRequestBody
 argument_list|)
-argument_list|,
-name|retryOnLockFailure
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -6152,16 +6125,13 @@ name|rsrc
 argument_list|,
 name|inputRequestBody
 argument_list|)
-argument_list|,
-name|retryOnLockFailure
-argument_list|()
 argument_list|)
 return|;
 block|}
 end_function
 
 begin_function
-DECL|method|invokeRestEndpointWithRetry ( HttpServletRequest req, TraceContext traceContext, String caller, ActionType actionType, Action<T> action, Predicate<Throwable> retryExceptionPredicate)
+DECL|method|invokeRestEndpointWithRetry ( HttpServletRequest req, TraceContext traceContext, String caller, ActionType actionType, Action<T> action)
 specifier|private
 parameter_list|<
 name|T
@@ -6186,12 +6156,6 @@ argument_list|<
 name|T
 argument_list|>
 name|action
-parameter_list|,
-name|Predicate
-argument_list|<
-name|Throwable
-argument_list|>
-name|retryExceptionPredicate
 parameter_list|)
 throws|throws
 name|Exception
@@ -6267,6 +6231,9 @@ end_function
 begin_block
 unit|}     try
 block|{
+comment|// ExceptionHookImpl controls on which exceptions we retry.
+comment|// The passed in exceptionPredicate allows to define additional exceptions on which retry
+comment|// should happen, but here we have none (hence pass in "t -> false" as exceptionPredicate).
 return|return
 name|globals
 operator|.
@@ -6283,7 +6250,9 @@ operator|.
 name|build
 argument_list|()
 argument_list|,
-name|retryExceptionPredicate
+name|t
+lambda|->
+literal|false
 argument_list|)
 return|;
 block|}
@@ -6323,66 +6292,7 @@ end_finally
 
 begin_function
 unit|}    private
-DECL|method|noRetry ()
-specifier|static
-name|Predicate
-argument_list|<
-name|Throwable
-argument_list|>
-name|noRetry
-parameter_list|()
-block|{
-return|return
-name|t
-lambda|->
-literal|false
-return|;
-block|}
-end_function
-
-begin_function
-DECL|method|retryOnLockFailure ()
-specifier|private
-specifier|static
-name|Predicate
-argument_list|<
-name|Throwable
-argument_list|>
-name|retryOnLockFailure
-parameter_list|()
-block|{
-return|return
-name|t
-lambda|->
-block|{
-if|if
-condition|(
-name|t
-operator|instanceof
-name|UpdateException
-condition|)
-block|{
-name|t
-operator|=
-name|t
-operator|.
-name|getCause
-argument_list|()
-expr_stmt|;
-block|}
-return|return
-name|t
-operator|instanceof
-name|LockFailureException
-return|;
-block|}
-return|;
-block|}
-end_function
-
-begin_function
 DECL|method|getViewName (ViewData viewData)
-specifier|private
 name|String
 name|getViewName
 parameter_list|(

@@ -344,20 +344,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|git
-operator|.
-name|LockFailureException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|metrics
 operator|.
 name|Counter1
@@ -639,20 +625,6 @@ operator|.
 name|lib
 operator|.
 name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|RefUpdate
 import|;
 end_import
 
@@ -1729,29 +1701,10 @@ name|opts
 argument_list|,
 name|t
 lambda|->
-block|{
-lambda|if (t instanceof UpdateException || t instanceof StorageException
+literal|false
 argument_list|)
-block|{
-name|t
-operator|=
-name|t
-operator|.
-name|getCause
-argument_list|()
-block|;             }
-return|return
-name|t
-operator|instanceof
-name|LockFailureException
 return|;
 block|}
-block|)
-function|;
-block|}
-end_class
-
-begin_catch
 catch|catch
 parameter_list|(
 name|Throwable
@@ -1795,16 +1748,10 @@ name|t
 argument_list|)
 throw|;
 block|}
-end_catch
-
-begin_comment
-unit|}
+block|}
 comment|/**    * Executes an action and records the number of attempts and the timeout as metrics.    *    * @param actionType the type of the action    * @param action the action which should be executed and retried on failure    * @param opts options for retrying the action on failure    * @param exceptionPredicate predicate to control on which exception the action should be retried    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
-end_comment
-
-begin_function
 DECL|method|executeWithAttemptAndTimeoutCount ( ActionType actionType, Action<T> action, Options opts, Predicate<Throwable> exceptionPredicate)
-unit|private
+specifier|private
 parameter_list|<
 name|T
 parameter_list|>
@@ -2083,19 +2030,13 @@ return|;
 block|}
 block|)
 function|;
-end_function
-
-begin_expr_stmt
 name|retryerBuilder
 operator|.
 name|withRetryListener
-argument_list|(
+parameter_list|(
 name|listener
-argument_list|)
-expr_stmt|;
-end_expr_stmt
-
-begin_return
+parameter_list|)
+constructor_decl|;
 return|return
 name|executeWithTimeoutCount
 argument_list|(
@@ -2109,10 +2050,11 @@ name|build
 argument_list|()
 argument_list|)
 return|;
-end_return
+block|}
+end_class
 
-begin_block
-unit|} finally
+begin_finally
+finally|finally
 block|{
 if|if
 condition|(
@@ -2176,7 +2118,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_block
+end_finally
 
 begin_function
 unit|}    private
@@ -2243,24 +2185,6 @@ return|return
 name|formattedCause
 operator|.
 name|get
-argument_list|()
-return|;
-block|}
-if|if
-condition|(
-name|t
-operator|instanceof
-name|LockFailureException
-condition|)
-block|{
-return|return
-name|RefUpdate
-operator|.
-name|Result
-operator|.
-name|LOCK_FAILURE
-operator|.
-name|name
 argument_list|()
 return|;
 block|}
