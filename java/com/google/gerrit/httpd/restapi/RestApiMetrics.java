@@ -152,7 +152,7 @@ name|gerrit
 operator|.
 name|metrics
 operator|.
-name|Counter2
+name|Counter3
 import|;
 end_import
 
@@ -314,11 +314,13 @@ name|count
 decl_stmt|;
 DECL|field|errorCount
 specifier|final
-name|Counter2
+name|Counter3
 argument_list|<
 name|String
 argument_list|,
 name|Integer
+argument_list|,
+name|String
 argument_list|>
 name|errorCount
 decl_stmt|;
@@ -429,6 +431,27 @@ operator|.
 name|description
 argument_list|(
 literal|"HTTP status code"
+argument_list|)
+operator|.
+name|build
+argument_list|()
+argument_list|,
+name|Field
+operator|.
+name|ofString
+argument_list|(
+literal|"cause"
+argument_list|,
+name|Metadata
+operator|.
+name|Builder
+operator|::
+name|cause
+argument_list|)
+operator|.
+name|description
+argument_list|(
+literal|"The cause of the error."
 argument_list|)
 operator|.
 name|build
