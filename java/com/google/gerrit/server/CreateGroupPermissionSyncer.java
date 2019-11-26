@@ -765,6 +765,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// The create permission is managed by Gerrit at this point only so there is no concern of
+comment|// overwriting user-defined permissions here.
 name|Permission
 name|createGroupPermission
 init|=
@@ -776,6 +778,13 @@ operator|.
 name|CREATE
 argument_list|)
 decl_stmt|;
+name|createGroupAccessSection
+operator|.
+name|remove
+argument_list|(
+name|createGroupPermission
+argument_list|)
+expr_stmt|;
 name|createGroupAccessSection
 operator|.
 name|addPermission
@@ -792,8 +801,6 @@ operator|::
 name|add
 argument_list|)
 expr_stmt|;
-comment|// The create permission is managed by Gerrit at this point only so there is no concern of
-comment|// overwriting user-defined permissions here.
 name|config
 operator|.
 name|replace
