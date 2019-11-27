@@ -68,38 +68,6 @@ end_package
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|nio
@@ -109,6 +77,18 @@ operator|.
 name|StandardCharsets
 operator|.
 name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+operator|.
+name|requireNonNull
 import|;
 end_import
 
@@ -1059,11 +1039,9 @@ literal|"basePath"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|checkArgument
+name|requireNonNull
 argument_list|(
 name|basePath
-operator|!=
-literal|null
 argument_list|,
 literal|"gerrit.basePath must be configured"
 argument_list|)
@@ -1071,10 +1049,6 @@ expr_stmt|;
 name|File
 name|file
 init|=
-name|FileKey
-operator|.
-name|resolve
-argument_list|(
 name|basePath
 operator|.
 name|resolve
@@ -1084,18 +1058,31 @@ argument_list|)
 operator|.
 name|toFile
 argument_list|()
+decl_stmt|;
+name|File
+name|resolvedFile
+init|=
+name|FileKey
+operator|.
+name|resolve
+argument_list|(
+name|file
 argument_list|,
 name|FS
 operator|.
 name|DETECTED
 argument_list|)
 decl_stmt|;
-name|checkState
+name|requireNonNull
 argument_list|(
-name|file
-operator|!=
-literal|null
+name|resolvedFile
 argument_list|,
+parameter_list|()
+lambda|->
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"%s does not exist"
 argument_list|,
 name|file
@@ -1103,9 +1090,10 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 return|return
-name|file
+name|resolvedFile
 return|;
 block|}
 block|}
