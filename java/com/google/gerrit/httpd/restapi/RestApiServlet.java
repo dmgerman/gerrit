@@ -2334,6 +2334,20 @@ name|java
 operator|.
 name|util
 operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicReference
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -3053,19 +3067,6 @@ name|RestResource
 argument_list|>
 argument_list|>
 name|members
-decl_stmt|;
-DECL|field|traceId
-specifier|private
-name|Optional
-argument_list|<
-name|String
-argument_list|>
-name|traceId
-init|=
-name|Optional
-operator|.
-name|empty
-argument_list|()
 decl_stmt|;
 DECL|method|RestApiServlet ( Globals globals, RestCollection<? extends RestResource, ? extends RestResource> members)
 specifier|public
@@ -5647,6 +5648,8 @@ name|responseBytes
 operator|=
 name|handleException
 argument_list|(
+name|traceContext
+argument_list|,
 name|e
 argument_list|,
 name|req
@@ -5728,6 +5731,8 @@ name|responseBytes
 operator|=
 name|handleException
 argument_list|(
+name|traceContext
+argument_list|,
 name|e
 argument_list|,
 name|req
@@ -6359,6 +6364,25 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|AtomicReference
+argument_list|<
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|traceId
+init|=
+operator|new
+name|AtomicReference
+argument_list|<>
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|RetryHelper
 operator|.
 name|Options
@@ -6408,12 +6432,15 @@ name|autoTraceId
 lambda|->
 block|{
 name|traceId
-operator|=
+operator|.
+name|set
+argument_list|(
 name|Optional
 operator|.
 name|of
 argument_list|(
 name|autoTraceId
+argument_list|)
 argument_list|)
 argument_list|;
 comment|// Include details of the request into the trace.
@@ -6464,6 +6491,9 @@ comment|// If auto-tracing got triggered due to a non-recoverable failure, also 
 comment|// this request. This means logging is forced for all further log statements and the logs are
 comment|// associated with the same trace ID.
 name|traceId
+operator|.
+name|get
+argument_list|()
 operator|.
 name|ifPresent
 argument_list|(
@@ -11706,11 +11736,14 @@ block|}
 end_function
 
 begin_function
-DECL|method|handleException (Throwable err, HttpServletRequest req, HttpServletResponse res)
+DECL|method|handleException ( TraceContext traceContext, Throwable err, HttpServletRequest req, HttpServletResponse res)
 specifier|private
 name|long
 name|handleException
 parameter_list|(
+name|TraceContext
+name|traceContext
+parameter_list|,
 name|Throwable
 name|err
 parameter_list|,
@@ -11762,7 +11795,10 @@ operator|.
 name|reset
 argument_list|()
 expr_stmt|;
-name|traceId
+name|traceContext
+operator|.
+name|getTraceId
+argument_list|()
 operator|.
 name|ifPresent
 argument_list|(
