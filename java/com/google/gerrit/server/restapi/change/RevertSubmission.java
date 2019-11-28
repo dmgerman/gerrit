@@ -834,8 +834,6 @@ block|}
 name|String
 name|submissionId
 init|=
-name|requireNonNull
-argument_list|(
 name|changeResource
 operator|.
 name|getChange
@@ -843,20 +841,24 @@ argument_list|()
 operator|.
 name|getSubmissionId
 argument_list|()
-argument_list|,
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"merged change %s has no submission ID"
-argument_list|,
-name|changeResource
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|submissionId
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+literal|"This change is merged but doesn't have a submission id,"
+operator|+
+literal|" meaning it was not submitted through Gerrit."
+argument_list|)
+throw|;
+block|}
 name|List
 argument_list|<
 name|ChangeData
