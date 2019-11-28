@@ -458,7 +458,7 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|inputSize
+name|resourceCount
 argument_list|(
 name|refs
 operator|.
