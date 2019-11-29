@@ -1842,7 +1842,7 @@ argument_list|(
 name|UTF_8
 argument_list|)
 argument_list|,
-literal|"plain/text"
+literal|"text/plain"
 argument_list|)
 expr_stmt|;
 name|addSshKey
