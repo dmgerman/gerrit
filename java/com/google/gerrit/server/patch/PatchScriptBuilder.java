@@ -950,6 +950,11 @@ operator|&&
 name|diffPrefs
 operator|.
 name|intralineDifference
+operator|&&
+name|isIntralineModeAllowed
+argument_list|(
+name|b
+argument_list|)
 condition|)
 block|{
 name|IntraLineDiff
@@ -1491,6 +1496,59 @@ name|getNewName
 argument_list|()
 return|;
 block|}
+block|}
+DECL|method|isIntralineModeAllowed (Side side)
+specifier|private
+specifier|static
+name|boolean
+name|isIntralineModeAllowed
+parameter_list|(
+name|Side
+name|side
+parameter_list|)
+block|{
+comment|// The intraline diff cache keys are the same for these cases. It's better to not show
+comment|// intraline results than showing completely wrong diffs or to run into a server error.
+return|return
+operator|!
+name|Patch
+operator|.
+name|isMagic
+argument_list|(
+name|side
+operator|.
+name|path
+argument_list|)
+operator|&&
+operator|!
+name|isSubmoduleCommit
+argument_list|(
+name|side
+operator|.
+name|mode
+argument_list|)
+return|;
+block|}
+DECL|method|isSubmoduleCommit (FileMode mode)
+specifier|private
+specifier|static
+name|boolean
+name|isSubmoduleCommit
+parameter_list|(
+name|FileMode
+name|mode
+parameter_list|)
+block|{
+return|return
+name|mode
+operator|.
+name|getObjectType
+argument_list|()
+operator|==
+name|Constants
+operator|.
+name|OBJ_COMMIT
+return|;
 block|}
 DECL|method|correctForDifferencesInNewlineAtEnd (Side a, Side b)
 specifier|private
