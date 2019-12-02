@@ -1466,6 +1466,8 @@ name|Sets
 operator|.
 name|intersection
 argument_list|(
+name|va
+operator|.
 name|smtpRcptTo
 argument_list|,
 name|smtpRcptToPlaintextOnly
@@ -1498,6 +1500,8 @@ block|}
 if|if
 condition|(
 operator|!
+name|va
+operator|.
 name|smtpRcptTo
 operator|.
 name|isEmpty
