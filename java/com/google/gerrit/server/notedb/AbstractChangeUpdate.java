@@ -434,6 +434,8 @@ name|PersonIdent
 name|serverIdent
 decl_stmt|;
 DECL|field|psId
+annotation|@
+name|Nullable
 specifier|protected
 name|PatchSet
 operator|.
@@ -446,12 +448,10 @@ name|ObjectId
 name|result
 decl_stmt|;
 DECL|field|rootOnly
-specifier|protected
 name|boolean
 name|rootOnly
 decl_stmt|;
 DECL|method|AbstractChangeUpdate ( ChangeNotes notes, CurrentUser user, PersonIdent serverIdent, ChangeNoteUtil noteUtil, Date when)
-specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
 name|ChangeNotes
@@ -560,7 +560,6 @@ name|when
 expr_stmt|;
 block|}
 DECL|method|AbstractChangeUpdate ( ChangeNoteUtil noteUtil, PersonIdent serverIdent, @Nullable ChangeNotes notes, @Nullable Change change, Account.Id accountId, Account.Id realAccountId, PersonIdent authorIdent, Date when)
-specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
 name|ChangeNoteUtil
@@ -992,7 +991,6 @@ parameter_list|()
 function_decl|;
 comment|/** Wether this update can only be a root commit. */
 DECL|method|isRootOnly ()
-specifier|public
 name|boolean
 name|isRootOnly
 parameter_list|()
@@ -1282,7 +1280,6 @@ throws|throws
 name|IOException
 function_decl|;
 DECL|field|NO_OP_UPDATE
-specifier|protected
 specifier|static
 specifier|final
 name|CommitBuilder
@@ -1340,7 +1337,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|verifyComment (Comment c)
-specifier|protected
 name|void
 name|verifyComment
 parameter_list|(
