@@ -713,6 +713,12 @@ specifier|final
 name|boolean
 name|enablePartialReloads
 decl_stmt|;
+DECL|field|isPersistentCache
+specifier|private
+specifier|final
+name|boolean
+name|isPersistentCache
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ExternalIdCacheLoader ( GitRepositoryManager gitRepositoryManager, AllUsersName allUsersName, ExternalIdReader externalIdReader, @Named(ExternalIdCacheImpl.CACHE_NAME) Provider<Cache<ObjectId, AllExternalIds>> externalIdCache, MetricMaker metricMaker, @GerritServerConfig Config config)
@@ -864,6 +870,27 @@ literal|"enablePartialReloads"
 argument_list|,
 literal|true
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|isPersistentCache
+operator|=
+name|config
+operator|.
+name|getInt
+argument_list|(
+literal|"cache"
+argument_list|,
+name|ExternalIdCacheImpl
+operator|.
+name|CACHE_NAME
+argument_list|,
+literal|"diskLimit"
+argument_list|,
+literal|0
+argument_list|)
+operator|>
+literal|0
 expr_stmt|;
 block|}
 annotation|@
@@ -1089,6 +1116,12 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|isPersistentCache
+condition|)
+block|{
+comment|// If there is no persistence, this is normal. Don't upset admins reading the logs.
 name|logger
 operator|.
 name|atWarning
@@ -1099,6 +1132,7 @@ argument_list|(
 literal|"Unable to find an old ExternalId cache state, falling back to full reload"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|reloadAllExternalIds
 argument_list|(
