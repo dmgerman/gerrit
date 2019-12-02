@@ -780,7 +780,12 @@ name|footers
 operator|.
 name|add
 argument_list|(
-literal|"Gerrit-Branch: "
+name|MailHeader
+operator|.
+name|BRANCH
+operator|.
+name|withDelimiter
+argument_list|()
 operator|+
 name|branch
 operator|.
