@@ -23347,7 +23347,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-literal|"server does not support 'mergeable'. check configs"
+literal|"'is:mergeable' operator is not supported by server"
 argument_list|)
 expr_stmt|;
 block|}

@@ -3749,7 +3749,7 @@ throw|throw
 operator|new
 name|QueryParseException
 argument_list|(
-literal|"server does not support 'mergeable'. check configs"
+literal|"'is:mergeable' operator is not supported by server"
 argument_list|)
 throw|;
 block|}
