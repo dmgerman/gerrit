@@ -2919,11 +2919,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|setApiUser
-argument_list|(
-name|admin
-argument_list|)
-expr_stmt|;
 name|String
 name|file
 init|=
