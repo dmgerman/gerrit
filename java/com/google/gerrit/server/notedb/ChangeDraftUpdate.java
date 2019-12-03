@@ -1099,11 +1099,6 @@ name|touchedAnyRevs
 init|=
 literal|false
 decl_stmt|;
-name|boolean
-name|hasComments
-init|=
-literal|false
-decl_stmt|;
 for|for
 control|(
 name|Map
@@ -1209,10 +1204,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|hasComments
-operator|=
-literal|true
-expr_stmt|;
 name|ObjectId
 name|dataBlob
 init|=
