@@ -3181,16 +3181,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|requestScopeOperations
-operator|.
-name|setApiUser
-argument_list|(
-name|admin
-operator|.
-name|id
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|String
 name|file
 init|=
