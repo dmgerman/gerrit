@@ -1043,11 +1043,6 @@ name|touchedAnyRevs
 init|=
 literal|false
 decl_stmt|;
-name|boolean
-name|hasComments
-init|=
-literal|false
-decl_stmt|;
 for|for
 control|(
 name|Map
@@ -1153,10 +1148,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|hasComments
-operator|=
-literal|true
-expr_stmt|;
 name|ObjectId
 name|dataBlob
 init|=
@@ -1195,29 +1186,20 @@ return|return
 name|NO_OP_UPDATE
 return|;
 block|}
-comment|// If we touched every revision and there are no comments left, tell the
+comment|// If there are no comments left, tell the
 comment|// caller to delete the entire ref.
-name|boolean
-name|touchedAllRevs
-init|=
-name|updatedRevs
-operator|.
-name|equals
-argument_list|(
-name|rnm
-operator|.
-name|revisionNotes
-operator|.
-name|keySet
-argument_list|()
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
-name|touchedAllRevs
-operator|&&
 operator|!
-name|hasComments
+name|rnm
+operator|.
+name|noteMap
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|hasNext
+argument_list|()
 condition|)
 block|{
 return|return
