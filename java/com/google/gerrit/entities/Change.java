@@ -210,6 +210,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -326,7 +336,9 @@ specifier|static
 class|class
 name|Id
 block|{
-comment|/** Parse a Change.Id out of a string representation. */
+comment|/**      * Parse a Change.Id out of a string representation.      *      * @deprecated use {@link #tryParse(String)} instead.      */
+annotation|@
+name|Deprecated
 DECL|method|parse (String str)
 specifier|public
 specifier|static
@@ -365,6 +377,53 @@ name|id
 argument_list|(
 name|id
 argument_list|)
+return|;
+block|}
+comment|/**      * Parse a Change.Id out of a string representation.      *      * @param str the string to parse      * @return Optional containing the Change.Id, or {@code Optional.empty()} if str does not      *     represent a valid Change.Id.      */
+DECL|method|tryParse (String str)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|Id
+argument_list|>
+name|tryParse
+parameter_list|(
+name|String
+name|str
+parameter_list|)
+block|{
+name|Integer
+name|id
+init|=
+name|Ints
+operator|.
+name|tryParse
+argument_list|(
+name|str
+argument_list|)
+decl_stmt|;
+return|return
+name|id
+operator|!=
+literal|null
+condition|?
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|Change
+operator|.
+name|id
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+else|:
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 DECL|method|fromRef (String ref)
