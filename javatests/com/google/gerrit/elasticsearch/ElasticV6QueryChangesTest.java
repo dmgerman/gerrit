@@ -65,6 +65,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MINUTES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -424,6 +438,18 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+DECL|field|testName
+annotation|@
+name|Rule
+specifier|public
+specifier|final
+name|GerritTestName
+name|testName
+init|=
+operator|new
+name|GerritTestName
+argument_list|()
+decl_stmt|;
 annotation|@
 name|After
 DECL|method|closeIndex ()
@@ -431,6 +457,8 @@ specifier|public
 name|void
 name|closeIndex
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|client
 operator|.
@@ -449,6 +477,8 @@ name|nodeInfo
 operator|.
 name|port
 argument_list|,
+name|testName
+operator|.
 name|getSanitizedMethodName
 argument_list|()
 argument_list|)
@@ -461,20 +491,15 @@ argument_list|()
 argument_list|,
 literal|null
 argument_list|)
+operator|.
+name|get
+argument_list|(
+literal|5
+argument_list|,
+name|MINUTES
+argument_list|)
 expr_stmt|;
 block|}
-DECL|field|testName
-annotation|@
-name|Rule
-specifier|public
-specifier|final
-name|GerritTestName
-name|testName
-init|=
-operator|new
-name|GerritTestName
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|initAfterLifecycleStart ()
