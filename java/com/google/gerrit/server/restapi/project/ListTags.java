@@ -464,7 +464,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Collection
 import|;
 end_import
 
@@ -474,7 +474,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|List
 import|;
 end_import
 
@@ -991,10 +991,8 @@ name|repo
 argument_list|)
 init|)
 block|{
-name|Map
+name|Collection
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|all
@@ -1027,9 +1025,6 @@ name|Ref
 name|ref
 range|:
 name|all
-operator|.
-name|values
-argument_list|()
 control|)
 block|{
 name|tags
@@ -1583,10 +1578,8 @@ block|}
 block|}
 DECL|method|visibleTags (Project.NameKey project, Repository repo, List<Ref> tags)
 specifier|private
-name|Map
+name|Collection
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|visibleTags

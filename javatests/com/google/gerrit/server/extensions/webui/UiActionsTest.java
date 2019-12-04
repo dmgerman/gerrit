@@ -390,16 +390,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Set
 import|;
 end_import
@@ -629,20 +619,16 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|filter (Map<String, Ref> refs, Repository repo, RefFilterOptions opts)
+DECL|method|filter (Collection<Ref> refs, Repository repo, RefFilterOptions opts)
 specifier|public
-name|Map
+name|Collection
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|filter
 parameter_list|(
-name|Map
+name|Collection
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|refs

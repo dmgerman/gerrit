@@ -11551,8 +11551,15 @@ name|defaults
 argument_list|()
 argument_list|)
 operator|.
-name|keySet
+name|stream
 argument_list|()
+operator|.
+name|map
+argument_list|(
+name|Ref
+operator|::
+name|getName
+argument_list|)
 argument_list|)
 operator|.
 name|containsExactly

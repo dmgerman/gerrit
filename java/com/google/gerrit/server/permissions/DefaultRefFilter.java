@@ -168,7 +168,7 @@ name|stream
 operator|.
 name|Collectors
 operator|.
-name|toMap
+name|toCollection
 import|;
 end_import
 
@@ -197,20 +197,6 @@ operator|.
 name|collect
 operator|.
 name|ImmutableList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableMap
 import|;
 end_import
 
@@ -738,6 +724,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -1132,19 +1128,15 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Filters given refs and tags by visibility. */
-DECL|method|filter (Map<String, Ref> refs, Repository repo, RefFilterOptions opts)
-name|Map
+DECL|method|filter (Collection<Ref> refs, Repository repo, RefFilterOptions opts)
+name|Collection
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|filter
 parameter_list|(
-name|Map
+name|Collection
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|refs
@@ -1264,9 +1256,6 @@ operator|.
 name|getOnlyElement
 argument_list|(
 name|refs
-operator|.
-name|values
-argument_list|()
 argument_list|)
 operator|.
 name|getName
@@ -1298,7 +1287,7 @@ name|refName
 argument_list|)
 expr_stmt|;
 return|return
-name|ImmutableMap
+name|ImmutableList
 operator|.
 name|of
 argument_list|()
@@ -1356,7 +1345,7 @@ name|refName
 argument_list|)
 expr_stmt|;
 return|return
-name|ImmutableMap
+name|ImmutableList
 operator|.
 name|of
 argument_list|()
@@ -1371,17 +1360,20 @@ name|initialRefFilter
 init|=
 name|filterRefs
 argument_list|(
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|refs
+argument_list|)
 argument_list|,
 name|repo
 argument_list|,
 name|opts
 argument_list|)
 decl_stmt|;
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|visibleRefs
@@ -1421,7 +1413,7 @@ name|allVisibleBranches
 init|=
 name|filterRefs
 argument_list|(
-name|getTaggableRefsMap
+name|getTaggableRefs
 argument_list|(
 name|repo
 argument_list|)
@@ -1472,9 +1464,6 @@ name|allVisibleBranches
 operator|.
 name|visibleRefs
 argument_list|()
-operator|.
-name|values
-argument_list|()
 argument_list|)
 decl_stmt|;
 for|for
@@ -1517,13 +1506,8 @@ argument_list|)
 expr_stmt|;
 name|visibleRefs
 operator|.
-name|put
+name|add
 argument_list|(
-name|tag
-operator|.
-name|getName
-argument_list|()
-argument_list|,
 name|tag
 argument_list|)
 expr_stmt|;
@@ -1581,14 +1565,12 @@ name|visibleRefs
 return|;
 block|}
 comment|/**    * Filters refs by visibility. Returns tags where visibility can't be trivially computed    * separately for later rev-walk-based visibility computation. Tags where visibility is trivial to    * compute will be returned as part of {@link Result#visibleRefs()}.    */
-DECL|method|filterRefs (Map<String, Ref> refs, Repository repo, RefFilterOptions opts)
+DECL|method|filterRefs (List<Ref> refs, Repository repo, RefFilterOptions opts)
 name|Result
 name|filterRefs
 parameter_list|(
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|refs
@@ -1902,18 +1884,21 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|resultRefs
 init|=
 operator|new
-name|HashMap
+name|ArrayList
 argument_list|<>
+argument_list|(
+name|refs
+operator|.
+name|size
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
@@ -1932,9 +1917,6 @@ name|Ref
 name|ref
 range|:
 name|refs
-operator|.
-name|values
-argument_list|()
 control|)
 block|{
 name|String
@@ -2038,10 +2020,8 @@ argument_list|)
 expr_stmt|;
 name|resultRefs
 operator|.
-name|put
+name|add
 argument_list|(
-name|name
-argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
@@ -2108,10 +2088,8 @@ argument_list|)
 expr_stmt|;
 name|resultRefs
 operator|.
-name|put
+name|add
 argument_list|(
-name|name
-argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
@@ -2185,10 +2163,8 @@ argument_list|)
 expr_stmt|;
 name|resultRefs
 operator|.
-name|put
+name|add
 argument_list|(
-name|name
-argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
@@ -2283,10 +2259,8 @@ argument_list|)
 expr_stmt|;
 name|resultRefs
 operator|.
-name|put
+name|add
 argument_list|(
-name|name
-argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
@@ -2344,10 +2318,8 @@ argument_list|)
 expr_stmt|;
 name|resultRefs
 operator|.
-name|put
+name|add
 argument_list|(
-name|name
-argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
@@ -2435,10 +2407,8 @@ argument_list|)
 expr_stmt|;
 name|resultRefs
 operator|.
-name|put
+name|add
 argument_list|(
-name|name
-argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
@@ -2509,10 +2479,8 @@ argument_list|)
 expr_stmt|;
 name|resultRefs
 operator|.
-name|put
+name|add
 argument_list|(
-name|name
-argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
@@ -2573,10 +2541,8 @@ argument_list|)
 expr_stmt|;
 name|resultRefs
 operator|.
-name|put
+name|add
 argument_list|(
-name|name
-argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
@@ -2611,10 +2577,8 @@ argument_list|)
 expr_stmt|;
 name|resultRefs
 operator|.
-name|put
+name|add
 argument_list|(
-name|name
-argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
@@ -2664,16 +2628,14 @@ name|result
 return|;
 block|}
 comment|/**    * Returns all refs tag we regard as starting points for reachability computation for tags. In    * general, these are all refs not managed by Gerrit excluding symbolic refs and tags.    *    *<p>We exclude symbolic refs because their target will be included and this will suffice for    * computing reachability.    */
-DECL|method|getTaggableRefsMap (Repository repo)
+DECL|method|getTaggableRefs (Repository repo)
 specifier|private
 specifier|static
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
-name|getTaggableRefsMap
+name|getTaggableRefs
 parameter_list|(
 name|Repository
 name|repo
@@ -2683,7 +2645,12 @@ name|PermissionBackendException
 block|{
 try|try
 block|{
-return|return
+name|List
+argument_list|<
+name|Ref
+argument_list|>
+name|allRefs
+init|=
 name|repo
 operator|.
 name|getRefDatabase
@@ -2691,6 +2658,9 @@ argument_list|()
 operator|.
 name|getRefs
 argument_list|()
+decl_stmt|;
+return|return
+name|allRefs
 operator|.
 name|stream
 argument_list|()
@@ -2729,18 +2699,25 @@ operator|.
 name|isSymbolic
 argument_list|()
 argument_list|)
+comment|// Don't use the default Java Collections.toList() as that is not size-aware and would
+comment|// expand an array list as new elements are added. Instead, provide a list that has the
+comment|// right size. This spares incremental list expansion which is quadratic in complexity.
 operator|.
 name|collect
 argument_list|(
-name|toMap
+name|toCollection
 argument_list|(
-name|Ref
-operator|::
-name|getName
-argument_list|,
-name|r
+parameter_list|()
 lambda|->
-name|r
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
+name|allRefs
+operator|.
+name|size
+argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 return|;
@@ -2760,20 +2737,16 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|fastHideRefsMetaConfig (Map<String, Ref> refs)
+DECL|method|fastHideRefsMetaConfig (List<Ref> refs)
 specifier|private
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|fastHideRefsMetaConfig
 parameter_list|(
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|refs
@@ -2783,13 +2756,6 @@ name|PermissionBackendException
 block|{
 if|if
 condition|(
-name|refs
-operator|.
-name|containsKey
-argument_list|(
-name|REFS_CONFIG
-argument_list|)
-operator|&&
 operator|!
 name|canReadRef
 argument_list|(
@@ -2797,42 +2763,58 @@ name|REFS_CONFIG
 argument_list|)
 condition|)
 block|{
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Ref
-argument_list|>
-name|r
-init|=
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|(
+return|return
 name|refs
-argument_list|)
-decl_stmt|;
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|r
+lambda|->
+operator|!
 name|r
 operator|.
-name|remove
+name|getName
+argument_list|()
+operator|.
+name|equals
 argument_list|(
 name|REFS_CONFIG
 argument_list|)
-expr_stmt|;
-return|return
-name|r
+argument_list|)
+comment|// Don't use the default Java Collections.toList() as that is not size-aware and would
+comment|// expand an array list as new elements are added. Instead, provide a list that has the
+comment|// right size. This spares incremental list expansion which is quadratic in complexity.
+operator|.
+name|collect
+argument_list|(
+name|toCollection
+argument_list|(
+parameter_list|()
+lambda|->
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
+name|refs
+operator|.
+name|size
+argument_list|()
+argument_list|)
+argument_list|)
+argument_list|)
 return|;
 block|}
 return|return
 name|refs
 return|;
 block|}
-DECL|method|addUsersSelfSymref (Repository repo, Map<String, Ref> refs)
+DECL|method|addUsersSelfSymref (Repository repo, List<Ref> refs)
 specifier|private
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|addUsersSelfSymref
@@ -2840,10 +2822,8 @@ parameter_list|(
 name|Repository
 name|repo
 parameter_list|,
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|refs
@@ -2859,21 +2839,6 @@ name|isIdentifiedUser
 argument_list|()
 condition|)
 block|{
-comment|// User self symref is already there
-if|if
-condition|(
-name|refs
-operator|.
-name|containsKey
-argument_list|(
-name|REFS_USERS_SELF
-argument_list|)
-condition|)
-block|{
-return|return
-name|refs
-return|;
-block|}
 name|String
 name|refName
 init|=
@@ -2936,7 +2901,7 @@ decl_stmt|;
 name|refs
 operator|=
 operator|new
-name|HashMap
+name|ArrayList
 argument_list|<>
 argument_list|(
 name|refs
@@ -2944,13 +2909,8 @@ argument_list|)
 expr_stmt|;
 name|refs
 operator|.
-name|put
+name|add
 argument_list|(
-name|s
-operator|.
-name|getName
-argument_list|()
-argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
@@ -4069,10 +4029,8 @@ block|{
 comment|/** Subset of the refs passed into the computation that is visible to the user. */
 DECL|method|visibleRefs ()
 specifier|abstract
-name|Map
+name|List
 argument_list|<
-name|String
-argument_list|,
 name|Ref
 argument_list|>
 name|visibleRefs
