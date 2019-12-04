@@ -184,6 +184,22 @@ name|server
 operator|.
 name|cache
 operator|.
+name|CacheBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|cache
+operator|.
 name|MemoryCacheFactory
 import|;
 end_import
@@ -1125,7 +1141,7 @@ block|}
 argument_list|)
 annotation|@
 name|Override
-DECL|method|build (PersistentCacheDef<K, V> in)
+DECL|method|build (PersistentCacheDef<K, V> in, CacheBackend backend)
 specifier|public
 parameter_list|<
 name|K
@@ -1147,6 +1163,9 @@ argument_list|,
 name|V
 argument_list|>
 name|in
+parameter_list|,
+name|CacheBackend
+name|backend
 parameter_list|)
 block|{
 name|long
@@ -1188,6 +1207,8 @@ operator|.
 name|build
 argument_list|(
 name|in
+argument_list|,
+name|backend
 argument_list|)
 return|;
 block|}
@@ -1258,6 +1279,8 @@ operator|.
 name|build
 argument_list|(
 name|def
+argument_list|,
+name|backend
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1285,7 +1308,7 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|build (PersistentCacheDef<K, V> in, CacheLoader<K, V> loader)
+DECL|method|build ( PersistentCacheDef<K, V> in, CacheLoader<K, V> loader, CacheBackend backend)
 specifier|public
 parameter_list|<
 name|K
@@ -1315,6 +1338,9 @@ argument_list|,
 name|V
 argument_list|>
 name|loader
+parameter_list|,
+name|CacheBackend
+name|backend
 parameter_list|)
 block|{
 name|long
@@ -1358,6 +1384,8 @@ argument_list|(
 name|in
 argument_list|,
 name|loader
+argument_list|,
+name|backend
 argument_list|)
 return|;
 block|}
@@ -1439,6 +1467,8 @@ name|store
 argument_list|,
 name|loader
 argument_list|)
+argument_list|,
+name|backend
 argument_list|)
 decl_stmt|;
 name|H2CacheImpl

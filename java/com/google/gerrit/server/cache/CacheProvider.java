@@ -266,6 +266,12 @@ specifier|final
 name|CacheModule
 name|module
 decl_stmt|;
+DECL|field|backend
+specifier|private
+specifier|final
+name|CacheBackend
+name|backend
+decl_stmt|;
 DECL|field|name
 specifier|final
 name|String
@@ -350,7 +356,7 @@ specifier|private
 name|boolean
 name|frozen
 decl_stmt|;
-DECL|method|CacheProvider (CacheModule module, String name, TypeLiteral<K> keyType, TypeLiteral<V> valType)
+DECL|method|CacheProvider ( CacheModule module, String name, TypeLiteral<K> keyType, TypeLiteral<V> valType, CacheBackend backend)
 name|CacheProvider
 parameter_list|(
 name|CacheModule
@@ -370,6 +376,9 @@ argument_list|<
 name|V
 argument_list|>
 name|valType
+parameter_list|,
+name|CacheBackend
+name|backend
 parameter_list|)
 block|{
 name|this
@@ -395,6 +404,12 @@ operator|.
 name|valType
 operator|=
 name|valType
+expr_stmt|;
+name|this
+operator|.
+name|backend
+operator|=
+name|backend
 expr_stmt|;
 block|}
 annotation|@
@@ -852,6 +867,8 @@ argument_list|(
 name|this
 argument_list|,
 name|ldr
+argument_list|,
+name|backend
 argument_list|)
 else|:
 name|memoryCacheFactory
@@ -859,6 +876,8 @@ operator|.
 name|build
 argument_list|(
 name|this
+argument_list|,
+name|backend
 argument_list|)
 return|;
 block|}
