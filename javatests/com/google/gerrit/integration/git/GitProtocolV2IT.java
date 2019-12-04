@@ -88,22 +88,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|TruthJUnit
-operator|.
-name|assume
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|acceptance
@@ -598,11 +582,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// If not found, test succeeds with assumption violation
-name|assume
-argument_list|()
-operator|.
-name|that
+comment|// If git client version cannot be updated, consider to skip this tests. Due to
+comment|// an existing issue in bazel, JUnit assumption violation feature cannot be used.
+name|assertThat
 argument_list|(
 name|actualGitVersion
 argument_list|)
