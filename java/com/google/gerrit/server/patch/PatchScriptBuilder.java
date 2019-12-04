@@ -1548,6 +1548,24 @@ comment|// consider a file addition/deletion (e.g. requesting a diff for the old
 comment|// renamed file looks like a deletion).
 return|return;
 block|}
+if|if
+condition|(
+name|edits
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+operator|(
+name|aSize
+operator|!=
+name|bSize
+operator|)
+condition|)
+block|{
+comment|// Only edits due to rebase were present. If we now added the edits for the newlines, the
+comment|// code which later assembles the file contents would fail.
+return|return;
+block|}
 name|Optional
 argument_list|<
 name|Edit
