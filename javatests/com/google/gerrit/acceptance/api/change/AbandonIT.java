@@ -1706,6 +1706,7 @@ name|id4
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * When indexMergeable is disabled then the abandonIfMergeable option is ineffective and the auto    * abandon behaves as though it were set to its default value (true).    */
 annotation|@
 name|Test
 annotation|@
@@ -1743,7 +1744,6 @@ name|value
 operator|=
 literal|"false"
 argument_list|)
-comment|/**    * When indexMergeable is disabled then the abandonIfMergeable option is ineffective and the auto    * abandon behaves as though it were set to its default value (true).    */
 DECL|method|abandonedIfMergeableWhenMergeableOperatorIsDisabled ()
 specifier|public
 name|void
