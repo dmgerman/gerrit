@@ -1851,6 +1851,32 @@ name|t
 argument_list|)
 condition|)
 block|{
+comment|// Exception hooks may identify exceptions for which retrying with trace should be
+comment|// skipped.
+if|if
+condition|(
+name|exceptionHooks
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|anyMatch
+argument_list|(
+name|h
+lambda|->
+name|h
+operator|.
+name|skipRetryWithTrace
+argument_list|(
+name|t
+argument_list|)
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 name|String
 name|caller
 init|=
