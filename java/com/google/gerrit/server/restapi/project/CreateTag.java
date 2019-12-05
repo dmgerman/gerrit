@@ -850,11 +850,14 @@ throw|;
 block|}
 if|if
 condition|(
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
 name|input
 operator|.
 name|revision
-operator|==
-literal|null
+argument_list|)
 condition|)
 block|{
 name|input
