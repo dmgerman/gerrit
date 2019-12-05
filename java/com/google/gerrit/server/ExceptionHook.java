@@ -136,7 +136,7 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns an error message that should be returned to the user.    *    * @param throwable throwable that was thrown while executing an operation    * @return error message that should be returned to the user, {@link Optional#empty()} if no    *     message should be returned to the user    */
+comment|/**    * Returns a message that should be returned to the user.    *    *<p>This message is included into the HTTP response that is sent to the user.    *    * @param throwable throwable that was thrown while executing an operation    * @return error message that should be returned to the user, {@link Optional#empty()} if no    *     message should be returned to the user    */
 DECL|method|getUserMessage (Throwable throwable)
 specifier|default
 name|Optional
@@ -144,6 +144,26 @@ argument_list|<
 name|String
 argument_list|>
 name|getUserMessage
+parameter_list|(
+name|Throwable
+name|throwable
+parameter_list|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+comment|/**    * Returns the HTTP status code that should be returned to the user.    *    *<p>If no value is returned ({@link Optional#empty()}) the HTTP status code defaults to {@code    * 500 Internal Server Error}.    *    *<p>{@link #getUserMessage(Throwable)} allows to define which message should be included into    * the body of the HTTP response.    *    *<p>Implementors may use this method to change the status code for certain exceptions (e.g.    * using this method it would be possible to return {@code 409 Conflict} for {@link    * com.google.gerrit.git.LockFailureException}s instead of {@code 500 Internal Server Error}).    *    * @param throwable throwable that was thrown while executing an operation    * @return HTTP status code that should be returned to the user, {@link Optional#empty()} if the    *     exception should result in {@code 500 Internal Server Error}    */
+DECL|method|getStatusCode (Throwable throwable)
+specifier|default
+name|Optional
+argument_list|<
+name|Integer
+argument_list|>
+name|getStatusCode
 parameter_list|(
 name|Throwable
 name|throwable
