@@ -134,6 +134,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|entities
 operator|.
 name|Project
@@ -395,7 +409,9 @@ block|{
 throw|throw
 operator|new
 name|InvalidRevisionException
-argument_list|()
+argument_list|(
+name|baseRevision
+argument_list|)
 throw|;
 block|}
 return|return
@@ -433,7 +449,9 @@ expr_stmt|;
 throw|throw
 operator|new
 name|InvalidRevisionException
-argument_list|()
+argument_list|(
+name|baseRevision
+argument_list|)
 throw|;
 block|}
 catch|catch
@@ -462,7 +480,9 @@ expr_stmt|;
 throw|throw
 operator|new
 name|InvalidRevisionException
-argument_list|()
+argument_list|(
+name|baseRevision
+argument_list|)
 throw|;
 block|}
 block|}
@@ -516,7 +536,12 @@ block|{
 throw|throw
 operator|new
 name|InvalidRevisionException
+argument_list|(
+name|revid
+operator|.
+name|name
 argument_list|()
+argument_list|)
 throw|;
 block|}
 name|RefDatabase
@@ -647,7 +672,12 @@ block|{
 throw|throw
 operator|new
 name|InvalidRevisionException
+argument_list|(
+name|revid
+operator|.
+name|name
 argument_list|()
+argument_list|)
 throw|;
 block|}
 catch|catch
@@ -679,7 +709,12 @@ expr_stmt|;
 throw|throw
 operator|new
 name|InvalidRevisionException
+argument_list|(
+name|revid
+operator|.
+name|name
 argument_list|()
+argument_list|)
 throw|;
 block|}
 block|}
@@ -873,13 +908,22 @@ name|MESSAGE
 init|=
 literal|"Invalid Revision"
 decl_stmt|;
-DECL|method|InvalidRevisionException ()
+DECL|method|InvalidRevisionException (@ullable String invalidRevision)
 name|InvalidRevisionException
-parameter_list|()
+parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|invalidRevision
+parameter_list|)
 block|{
 name|super
 argument_list|(
 name|MESSAGE
+operator|+
+literal|": "
+operator|+
+name|invalidRevision
 argument_list|)
 expr_stmt|;
 block|}
