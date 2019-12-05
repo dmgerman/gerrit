@@ -464,23 +464,6 @@ name|RevisionSyntaxException
 name|err
 parameter_list|)
 block|{
-name|logger
-operator|.
-name|atSevere
-argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|err
-argument_list|)
-operator|.
-name|log
-argument_list|(
-literal|"Invalid revision syntax \"%s\""
-argument_list|,
-name|baseRevision
-argument_list|)
-expr_stmt|;
 throw|throw
 operator|new
 name|InvalidRevisionException
