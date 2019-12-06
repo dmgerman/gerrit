@@ -120,20 +120,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|exceptions
-operator|.
-name|StorageException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|client
@@ -1118,6 +1104,8 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
+throws|throws
+name|ResourceConflictException
 block|{
 name|SubmitTypeRecord
 name|rec
@@ -1144,11 +1132,13 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|StorageException
+name|ResourceConflictException
 argument_list|(
-literal|"Submit type rule failed: "
+literal|"submit type rule error: "
 operator|+
 name|rec
+operator|.
+name|errorMessage
 argument_list|)
 throw|;
 block|}
