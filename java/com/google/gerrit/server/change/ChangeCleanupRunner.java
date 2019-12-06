@@ -470,8 +470,10 @@ comment|// actually happen. For the purposes of this class that is fine: they'll
 comment|// next time the scheduled task is run.
 name|retryHelper
 operator|.
-name|execute
+name|changeUpdate
 argument_list|(
+literal|"abandonInactiveOpenChanges"
+argument_list|,
 name|updateFactory
 lambda|->
 block|{
@@ -487,6 +489,9 @@ literal|null
 return|;
 block|}
 argument_list|)
+operator|.
+name|call
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch

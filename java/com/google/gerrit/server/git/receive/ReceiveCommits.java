@@ -2484,27 +2484,9 @@ name|server
 operator|.
 name|update
 operator|.
-name|RetryHelper
+name|RetryableAction
 operator|.
 name|Action
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
-name|RetryHelper
-operator|.
-name|ActionType
 import|;
 end_import
 
@@ -20139,8 +20121,10 @@ try|try
 block|{
 name|retryHelper
 operator|.
-name|execute
+name|changeUpdate
 argument_list|(
+literal|"autoCloseChanges"
+argument_list|,
 name|updateFactory
 lambda|->
 block|{
@@ -20535,6 +20519,8 @@ name|byKey
 operator|=
 name|executeIndexQuery
 argument_list|(
+literal|"queryOpenChangesByKeyByBranch"
+argument_list|,
 parameter_list|()
 lambda|->
 name|openChangesByKeyByBranch
@@ -20810,7 +20796,8 @@ literal|null
 return|;
 block|}
 comment|// If we are here, we didn't throw UpdateException. Record the result.
-comment|// The ordering is indeterminate due to the HashSet; unfortunately, Change.Id doesn't
+comment|// The ordering is indeterminate due to the HashSet; unfortunately, Change.Id
+comment|// doesn't
 comment|// fit into TreeSet.
 name|ids
 operator|.
@@ -20839,34 +20826,17 @@ return|return
 literal|null
 return|;
 block|}
-argument_list|,
+argument_list|)
 comment|// Use a multiple of the default timeout to account for inner retries that may otherwise
 comment|// eat up the whole timeout so that no time is left to retry this outer action.
-name|RetryHelper
 operator|.
-name|options
-argument_list|()
-operator|.
-name|timeout
-argument_list|(
-name|retryHelper
-operator|.
-name|getDefaultTimeout
-argument_list|(
-name|ActionType
-operator|.
-name|CHANGE_UPDATE
-argument_list|)
-operator|.
-name|multipliedBy
+name|defaultTimeoutMultiplier
 argument_list|(
 literal|5
 argument_list|)
-argument_list|)
 operator|.
-name|build
+name|call
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -20964,7 +20934,7 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|executeIndexQuery (Action<T> action)
+DECL|method|executeIndexQuery (String actionName, Action<T> action)
 specifier|private
 parameter_list|<
 name|T
@@ -20972,6 +20942,9 @@ parameter_list|>
 name|T
 name|executeIndexQuery
 parameter_list|(
+name|String
+name|actionName
+parameter_list|,
 name|Action
 argument_list|<
 name|T
@@ -20993,20 +20966,24 @@ block|{
 return|return
 name|retryHelper
 operator|.
-name|execute
+name|indexQuery
 argument_list|(
-name|ActionType
-operator|.
-name|INDEX_QUERY
+name|actionName
 argument_list|,
 name|action
-argument_list|,
+argument_list|)
+operator|.
+name|retryOn
+argument_list|(
 name|StorageException
 operator|.
 name|class
 operator|::
 name|isInstance
 argument_list|)
+operator|.
+name|call
+argument_list|()
 return|;
 block|}
 catch|catch

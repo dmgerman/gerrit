@@ -1415,8 +1415,10 @@ name|UpdateException
 block|{
 name|retryHelper
 operator|.
-name|execute
+name|changeUpdate
 argument_list|(
+literal|"processCommentsReceivedByEmail"
+argument_list|,
 name|buf
 lambda|->
 block|{
@@ -1432,6 +1434,9 @@ literal|null
 return|;
 block|}
 argument_list|)
+operator|.
+name|call
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|processImpl (BatchUpdate.Factory buf, MailMessage message)
