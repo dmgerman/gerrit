@@ -416,16 +416,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collection
 import|;
 end_import
@@ -1251,7 +1241,7 @@ return|;
 block|}
 DECL|method|getHeaderLines ()
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|String
 argument_list|>
@@ -1276,15 +1266,17 @@ name|length
 argument_list|)
 decl_stmt|;
 specifier|final
-name|List
+name|ImmutableList
+operator|.
+name|Builder
 argument_list|<
 name|String
 argument_list|>
 name|headerLines
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
+name|ImmutableList
+operator|.
+name|builderWithExpectedSize
 argument_list|(
 name|m
 operator|.
@@ -1374,6 +1366,9 @@ expr_stmt|;
 block|}
 return|return
 name|headerLines
+operator|.
+name|build
+argument_list|()
 return|;
 block|}
 DECL|method|toPatch (PatchSet.Id setId)
