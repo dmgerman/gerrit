@@ -396,6 +396,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|entities
+operator|.
+name|SubmissionId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -793,22 +807,6 @@ operator|.
 name|ReceiveCommits
 operator|.
 name|MagicBranchInput
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|logging
-operator|.
-name|RequestId
 import|;
 end_import
 
@@ -1271,7 +1269,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ProjectState projectState, BranchNameKey dest, boolean checkMergedInto, @Nullable String mergeResultRevId, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, PatchSetInfo info, List<String> groups, @Nullable MagicBranchInput magicBranch, @Nullable PushCertificate pushCertificate)
+DECL|method|create ( ProjectState projectState, BranchNameKey dest, boolean checkMergedInto, @Nullable String mergeResultRevId, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, PatchSetInfo info, List<String> groups, @Nullable MagicBranchInput magicBranch, @Nullable PushCertificate pushCertificate, Change change)
 name|ReplaceOp
 name|create
 parameter_list|(
@@ -1343,6 +1341,9 @@ annotation|@
 name|Nullable
 name|PushCertificate
 name|pushCertificate
+parameter_list|,
+name|Change
+name|change
 parameter_list|)
 function_decl|;
 block|}
@@ -1529,6 +1530,12 @@ specifier|final
 name|PushCertificate
 name|pushCertificate
 decl_stmt|;
+DECL|field|change
+specifier|private
+specifier|final
+name|Change
+name|change
+decl_stmt|;
 DECL|field|groups
 specifier|private
 name|List
@@ -1623,7 +1630,7 @@ name|oldRecipients
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, EmailReviewComments.Factory emailCommentsFactory, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, ProjectCache projectCache, @SendEmailExecutor ExecutorService sendEmailExecutor, ReviewerAdder reviewerAdder, @Assisted ProjectState projectState, @Assisted BranchNameKey dest, @Assisted boolean checkMergedInto, @Assisted @Nullable String mergeResultRevId, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommitId, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
+DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PublishCommentUtil publishCommentUtil, EmailReviewComments.Factory emailCommentsFactory, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, ProjectCache projectCache, @SendEmailExecutor ExecutorService sendEmailExecutor, ReviewerAdder reviewerAdder, Change change, @Assisted ProjectState projectState, @Assisted BranchNameKey dest, @Assisted boolean checkMergedInto, @Assisted @Nullable String mergeResultRevId, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommitId, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
 name|ReplaceOp
 parameter_list|(
 name|AccountResolver
@@ -1683,6 +1690,9 @@ name|sendEmailExecutor
 parameter_list|,
 name|ReviewerAdder
 name|reviewerAdder
+parameter_list|,
+name|Change
+name|change
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1944,6 +1954,12 @@ name|pushCertificate
 operator|=
 name|pushCertificate
 expr_stmt|;
+name|this
+operator|.
+name|change
+operator|=
+name|change
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -2047,15 +2063,9 @@ argument_list|,
 name|patchSetId
 argument_list|,
 operator|new
-name|RequestId
+name|SubmissionId
 argument_list|(
-name|patchSetId
-operator|.
-name|changeId
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+name|change
 argument_list|)
 argument_list|,
 name|mergedInto

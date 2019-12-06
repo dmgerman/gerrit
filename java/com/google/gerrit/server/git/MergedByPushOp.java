@@ -170,6 +170,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|entities
+operator|.
+name|SubmissionId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|ChangeMessagesUtil
@@ -221,22 +235,6 @@ operator|.
 name|events
 operator|.
 name|ChangeMerged
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|logging
-operator|.
-name|RequestId
 import|;
 end_import
 
@@ -507,7 +505,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( RequestScopePropagator requestScopePropagator, PatchSet.Id psId, @Assisted RequestId submissionId, @Assisted(R) String refName, @Assisted(R) String mergeResultRevId)
+DECL|method|create ( RequestScopePropagator requestScopePropagator, PatchSet.Id psId, @Assisted SubmissionId submissionId, @Assisted(R) String refName, @Assisted(R) String mergeResultRevId)
 name|MergedByPushOp
 name|create
 parameter_list|(
@@ -521,7 +519,7 @@ name|psId
 parameter_list|,
 annotation|@
 name|Assisted
-name|RequestId
+name|SubmissionId
 name|submissionId
 parameter_list|,
 annotation|@
@@ -597,7 +595,7 @@ decl_stmt|;
 DECL|field|submissionId
 specifier|private
 specifier|final
-name|RequestId
+name|SubmissionId
 name|submissionId
 decl_stmt|;
 DECL|field|refName
@@ -642,7 +640,7 @@ name|info
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergedByPushOp ( PatchSetInfoFactory patchSetInfoFactory, ChangeMessagesUtil cmUtil, MergedSender.Factory mergedSenderFactory, PatchSetUtil psUtil, @SendEmailExecutor ExecutorService sendEmailExecutor, ChangeMerged changeMerged, @Assisted RequestScopePropagator requestScopePropagator, @Assisted PatchSet.Id psId, @Assisted RequestId submissionId, @Assisted(R) String refName, @Assisted(R) String mergeResultRevId)
+DECL|method|MergedByPushOp ( PatchSetInfoFactory patchSetInfoFactory, ChangeMessagesUtil cmUtil, MergedSender.Factory mergedSenderFactory, PatchSetUtil psUtil, @SendEmailExecutor ExecutorService sendEmailExecutor, ChangeMerged changeMerged, @Assisted RequestScopePropagator requestScopePropagator, @Assisted PatchSet.Id psId, @Assisted SubmissionId submissionId, @Assisted(R) String refName, @Assisted(R) String mergeResultRevId)
 name|MergedByPushOp
 parameter_list|(
 name|PatchSetInfoFactory
@@ -681,7 +679,7 @@ name|psId
 parameter_list|,
 annotation|@
 name|Assisted
-name|RequestId
+name|SubmissionId
 name|submissionId
 parameter_list|,
 annotation|@
@@ -949,7 +947,7 @@ name|setSubmissionId
 argument_list|(
 name|submissionId
 operator|.
-name|toStringForStorage
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;

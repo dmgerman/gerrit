@@ -158,6 +158,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|entities
+operator|.
+name|SubmissionId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -481,22 +495,6 @@ operator|.
 name|validators
 operator|.
 name|OnSubmitValidators
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|logging
-operator|.
-name|RequestId
 import|;
 end_import
 
@@ -841,7 +839,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( SubmitType submitType, BranchNameKey destBranch, CommitStatus commitStatus, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, RequestId submissionId, SubmitInput submitInput, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create ( SubmitType submitType, BranchNameKey destBranch, CommitStatus commitStatus, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, SubmissionId submissionId, SubmitInput submitInput, SubmoduleOp submoduleOp, boolean dryrun)
 name|Arguments
 name|create
 parameter_list|(
@@ -878,7 +876,7 @@ name|CodeReviewCommit
 argument_list|>
 name|incoming
 parameter_list|,
-name|RequestId
+name|SubmissionId
 name|submissionId
 parameter_list|,
 name|SubmitInput
@@ -1030,7 +1028,7 @@ name|alreadyAccepted
 decl_stmt|;
 DECL|field|submissionId
 specifier|final
-name|RequestId
+name|SubmissionId
 name|submissionId
 decl_stmt|;
 DECL|field|submitType
@@ -1075,7 +1073,7 @@ name|dryrun
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, Provider<InternalChangeQuery> queryProvider, ProjectConfig.Factory projectConfigFactory, SetPrivateOp.Factory setPrivateOpFactory, @Assisted BranchNameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted SubmitInput submitInput, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
+DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, Provider<InternalChangeQuery> queryProvider, ProjectConfig.Factory projectConfigFactory, SetPrivateOp.Factory setPrivateOpFactory, @Assisted BranchNameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted SubmissionId submissionId, @Assisted SubmitType submitType, @Assisted SubmitInput submitInput, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
 name|Arguments
 parameter_list|(
 name|AccountCache
@@ -1197,7 +1195,7 @@ name|incoming
 parameter_list|,
 annotation|@
 name|Assisted
-name|RequestId
+name|SubmissionId
 name|submissionId
 parameter_list|,
 annotation|@
