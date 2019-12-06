@@ -428,6 +428,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|BeforeClass
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -540,11 +550,12 @@ name|Config
 name|config
 decl_stmt|;
 annotation|@
-name|Test
-DECL|method|testGitWireProtocolV2WithSsh ()
+name|BeforeClass
+DECL|method|assertGitClientVersion ()
 specifier|public
+specifier|static
 name|void
-name|testGitWireProtocolV2WithSsh
+name|assertGitClientVersion
 parameter_list|()
 throws|throws
 name|Exception
@@ -579,6 +590,12 @@ literal|"git"
 argument_list|,
 literal|"version"
 argument_list|)
+argument_list|,
+operator|new
+name|File
+argument_list|(
+literal|"/"
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -594,6 +611,17 @@ argument_list|(
 name|requiredGitVersion
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testGitWireProtocolV2WithSsh ()
+specifier|public
+name|void
+name|testGitWireProtocolV2WithSsh
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 try|try
 init|(
 name|ServerContext
