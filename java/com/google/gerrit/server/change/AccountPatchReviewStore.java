@@ -157,7 +157,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Store for reviewed flags on changes.  *  *<p>A reviewed flag is a tuple of (patch set ID, file, account ID) and records whether the user  * has reviewed a file in a patch set. Each user can easily have thousands of reviewed flags and the  * number of reviewed flags is growing without bound. The store must be able handle this data volume  * efficiently.  *  *<p>For a multi-master setup the store must replicate the data between the masters.  */
+comment|/**  * Store for reviewed flags on changes.  *  *<p>A reviewed flag is a tuple of (patch set ID, file, account ID) and records whether the user  * has reviewed a file in a patch set. Each user can easily have thousands of reviewed flags and the  * number of reviewed flags is growing without bound. The store must be able handle this data volume  * efficiently.  *  *<p>For a cluster setups with multiple primary nodes the store must replicate the data between the  * primary servers.  */
 end_comment
 
 begin_interface

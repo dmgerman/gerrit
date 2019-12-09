@@ -2144,7 +2144,7 @@ name|watch
 argument_list|(
 name|watchedProject
 argument_list|,
-literal|"multimaster"
+literal|"multiprimary"
 argument_list|)
 expr_stmt|;
 comment|// push a change with keyword -> should trigger email notification
@@ -2192,7 +2192,7 @@ argument_list|()
 argument_list|,
 name|watchedRepo
 argument_list|,
-literal|"Document multimaster setup"
+literal|"Document multiprimary setup"
 argument_list|,
 literal|"a.txt"
 argument_list|,
@@ -2267,7 +2267,7 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-literal|"Change subject: Document multimaster setup\n"
+literal|"Change subject: Document multiprimary setup\n"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -2874,7 +2874,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-literal|"multimaster"
+literal|"multiprimary"
 argument_list|)
 expr_stmt|;
 comment|// push a change with keyword to any project -> should trigger email
@@ -2923,7 +2923,7 @@ argument_list|()
 argument_list|,
 name|anyRepo
 argument_list|,
-literal|"Document multimaster setup"
+literal|"Document multiprimary setup"
 argument_list|,
 literal|"a.txt"
 argument_list|,
@@ -2998,7 +2998,7 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-literal|"Change subject: Document multimaster setup\n"
+literal|"Change subject: Document multiprimary setup\n"
 argument_list|)
 expr_stmt|;
 name|assertThat
