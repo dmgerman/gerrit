@@ -1866,15 +1866,6 @@ argument_list|,
 name|action
 argument_list|)
 operator|.
-name|retryOn
-argument_list|(
-name|LockFailureException
-operator|.
-name|class
-operator|::
-name|isInstance
-argument_list|)
-operator|.
 name|call
 argument_list|()
 return|;
