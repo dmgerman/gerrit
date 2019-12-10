@@ -102,6 +102,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|entities
+operator|.
+name|SubmissionId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -189,22 +203,6 @@ operator|.
 name|git
 operator|.
 name|MergeTip
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|logging
-operator|.
-name|RequestId
 import|;
 end_import
 
@@ -342,7 +340,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create ( SubmitType submitType, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, BranchNameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, SubmitInput submitInput, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create ( SubmitType submitType, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, BranchNameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, SubmissionId submissionId, SubmitInput submitInput, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -380,7 +378,7 @@ parameter_list|,
 name|CommitStatus
 name|commitStatus
 parameter_list|,
-name|RequestId
+name|SubmissionId
 name|submissionId
 parameter_list|,
 name|SubmitInput

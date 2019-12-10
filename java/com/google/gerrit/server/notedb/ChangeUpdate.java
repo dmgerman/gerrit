@@ -726,6 +726,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|entities
+operator|.
+name|SubmissionId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|exceptions
 operator|.
 name|StorageException
@@ -771,22 +785,6 @@ operator|.
 name|server
 operator|.
 name|GerritPersonIdent
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|logging
-operator|.
-name|RequestId
 import|;
 end_import
 
@@ -1748,12 +1746,12 @@ operator|=
 name|status
 expr_stmt|;
 block|}
-DECL|method|fixStatusToMerged (RequestId submissionId)
+DECL|method|fixStatusToMerged (SubmissionId submissionId)
 specifier|public
 name|void
 name|fixStatusToMerged
 parameter_list|(
-name|RequestId
+name|SubmissionId
 name|submissionId
 parameter_list|)
 block|{
@@ -1782,7 +1780,7 @@ name|submissionId
 operator|=
 name|submissionId
 operator|.
-name|toStringForStorage
+name|toString
 argument_list|()
 expr_stmt|;
 block|}
@@ -1890,12 +1888,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|merge (RequestId submissionId, Iterable<SubmitRecord> submitRecords)
+DECL|method|merge (SubmissionId submissionId, Iterable<SubmitRecord> submitRecords)
 specifier|public
 name|void
 name|merge
 parameter_list|(
-name|RequestId
+name|SubmissionId
 name|submissionId
 parameter_list|,
 name|Iterable
@@ -1921,7 +1919,7 @@ name|submissionId
 operator|=
 name|submissionId
 operator|.
-name|toStringForStorage
+name|toString
 argument_list|()
 expr_stmt|;
 name|this
