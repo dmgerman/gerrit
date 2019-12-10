@@ -5244,9 +5244,9 @@ expr_stmt|;
 continue|continue;
 block|}
 comment|// The patch set ref is not found but we want to merge the change. We can't safely do that
-comment|// if the patch set ref is missing. In a multi-master setup this can indicate a replication
-comment|// lag (e.g. the change meta data was already replicated, but the replication of the patch
-comment|// set ref is still pending).
+comment|// if the patch set ref is missing. In a cluster setups with multiple primary nodes this can
+comment|// indicate a replication lag (e.g. the change meta data was already replicated, but the
+comment|// replication of the patch set ref is still pending).
 name|commitStatus
 operator|.
 name|logProblem
