@@ -157,11 +157,17 @@ literal|"Please retry later."
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|shouldRetry (Throwable throwable)
+DECL|method|shouldRetry (String actionType, String actionName, Throwable throwable)
 specifier|public
 name|boolean
 name|shouldRetry
 parameter_list|(
+name|String
+name|actionType
+parameter_list|,
+name|String
+name|actionName
+parameter_list|,
 name|Throwable
 name|throwable
 parameter_list|)

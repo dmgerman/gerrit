@@ -102,12 +102,18 @@ specifier|public
 interface|interface
 name|ExceptionHook
 block|{
-comment|/**    * Whether an operation should be retried if it failed with the given throwable.    *    *<p>Only affects operations that are executed with {@link    * com.google.gerrit.server.update.RetryHelper}.    *    *<p>Should return {@code true} only for exceptions that are caused by temporary issues where a    * retry of the operation has a chance to succeed.    *    *<p>If {@code false} is returned the operation is still retried once to capture a trace, unless    * {@link #skipRetryWithTrace(Throwable)} skips the auto-retry.    *    * @param throwable throwable that was thrown while executing the operation    * @return whether the operation should be retried    */
-DECL|method|shouldRetry (Throwable throwable)
+comment|/**    * Whether an operation should be retried if it failed with the given throwable.    *    *<p>Only affects operations that are executed with {@link    * com.google.gerrit.server.update.RetryHelper}.    *    *<p>Should return {@code true} only for exceptions that are caused by temporary issues where a    * retry of the operation has a chance to succeed.    *    *<p>If {@code false} is returned the operation is still retried once to capture a trace, unless    * {@link #skipRetryWithTrace(String, String, Throwable)} skips the auto-retry.    *    * @param throwable throwable that was thrown while executing the operation    * @param actionType the type of the action for which the exception occurred    * @param actionName the name of the action for which the exception occurred    * @return whether the operation should be retried    */
+DECL|method|shouldRetry (String actionType, String actionName, Throwable throwable)
 specifier|default
 name|boolean
 name|shouldRetry
 parameter_list|(
+name|String
+name|actionType
+parameter_list|,
+name|String
+name|actionName
+parameter_list|,
 name|Throwable
 name|throwable
 parameter_list|)
@@ -116,12 +122,18 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**    * Whether auto-retrying of an operation with tracing should be skipped for the given throwable.    *    *<p>Only affects operations that are executed with {@link    * com.google.gerrit.server.update.RetryHelper}.    *    *<p>This method is only called for exceptions for which the operation should not be retried    * ({@link #shouldRetry(Throwable)} returned {@code false}).    *    *<p>By default this method returns {@code false}, so that by default traces for unexpected    * exceptions are captured, which allows to investigate them.    *    *<p>Implementors may use this method to skip retry with tracing for exceptions that occur due to    * known causes that are permanent and where a trace is not needed for the investigation. For    * example, if an operation fails because persisted data is corrupt, it makes no sense to retry    * the operation with a trace, because the trace will not help with fixing the corrupt data.    *    *<p>This method is only invoked if retry with tracing is enabled on the server ({@code    * retry.retryWithTraceOnFailure} in {@code gerrit.config} is set to {@code true}).    *    * @param throwable throwable that was thrown while executing the operation    * @return whether auto-retrying of an operation with tracing should be skipped for the given    *     throwable    */
-DECL|method|skipRetryWithTrace (Throwable throwable)
+comment|/**    * Whether auto-retrying of an operation with tracing should be skipped for the given throwable.    *    *<p>Only affects operations that are executed with {@link    * com.google.gerrit.server.update.RetryHelper}.    *    *<p>This method is only called for exceptions for which the operation should not be retried    * ({@link #shouldRetry(String, String, Throwable)} returned {@code false}).    *    *<p>By default this method returns {@code false}, so that by default traces for unexpected    * exceptions are captured, which allows to investigate them.    *    *<p>Implementors may use this method to skip retry with tracing for exceptions that occur due to    * known causes that are permanent and where a trace is not needed for the investigation. For    * example, if an operation fails because persisted data is corrupt, it makes no sense to retry    * the operation with a trace, because the trace will not help with fixing the corrupt data.    *    *<p>This method is only invoked if retry with tracing is enabled on the server ({@code    * retry.retryWithTraceOnFailure} in {@code gerrit.config} is set to {@code true}).    *    * @param throwable throwable that was thrown while executing the operation    * @param actionType the type of the action for which the exception occurred    * @param actionName the name of the action for which the exception occurred    * @return whether auto-retrying of an operation with tracing should be skipped for the given    *     throwable    */
+DECL|method|skipRetryWithTrace (String actionType, String actionName, Throwable throwable)
 specifier|default
 name|boolean
 name|skipRetryWithTrace
 parameter_list|(
+name|String
+name|actionType
+parameter_list|,
+name|String
+name|actionName
+parameter_list|,
 name|Throwable
 name|throwable
 parameter_list|)

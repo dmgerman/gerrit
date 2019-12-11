@@ -2114,6 +2114,19 @@ return|return
 literal|true
 return|;
 block|}
+name|String
+name|actionName
+init|=
+name|opts
+operator|.
+name|caller
+argument_list|()
+operator|.
+name|orElse
+argument_list|(
+literal|"N/A"
+argument_list|)
+decl_stmt|;
 comment|// Exception hooks may identify additional exceptions for retry.
 if|if
 condition|(
@@ -2130,6 +2143,10 @@ name|h
 operator|.
 name|shouldRetry
 argument_list|(
+name|actionType
+argument_list|,
+name|actionName
+argument_list|,
 name|t
 argument_list|)
 argument_list|)
@@ -2184,6 +2201,10 @@ name|h
 operator|.
 name|skipRetryWithTrace
 argument_list|(
+name|actionType
+argument_list|,
+name|actionName
+argument_list|,
 name|t
 argument_list|)
 argument_list|)
@@ -2193,19 +2214,6 @@ return|return
 literal|false
 return|;
 block|}
-name|String
-name|caller
-init|=
-name|opts
-operator|.
-name|caller
-argument_list|()
-operator|.
-name|orElse
-argument_list|(
-literal|"N/A"
-argument_list|)
-decl_stmt|;
 name|String
 name|cause
 init|=
@@ -2279,7 +2287,7 @@ name|log
 argument_list|(
 literal|"AutoRetry: %s failed, retry with tracing enabled"
 argument_list|,
-name|caller
+name|actionName
 argument_list|)
 expr_stmt|;
 name|metrics
@@ -2290,7 +2298,7 @@ name|increment
 argument_list|(
 name|actionType
 argument_list|,
-name|caller
+name|actionName
 argument_list|,
 name|cause
 argument_list|)
@@ -2316,7 +2324,7 @@ name|log
 argument_list|(
 literal|"AutoRetry: auto-retry of %s has failed"
 argument_list|,
-name|caller
+name|actionName
 argument_list|)
 expr_stmt|;
 name|metrics
@@ -2327,7 +2335,7 @@ name|increment
 argument_list|(
 name|actionType
 argument_list|,
-name|caller
+name|actionName
 argument_list|,
 name|cause
 argument_list|)

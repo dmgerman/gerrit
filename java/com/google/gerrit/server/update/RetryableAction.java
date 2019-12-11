@@ -165,7 +165,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An action that is executed with retrying.  *  *<p>Instances of this class are created via {@link RetryHelper} (see {@link  * RetryHelper#action(ActionType, String, Action)}, {@link RetryHelper#accountUpdate(String,  * Action)}, {@link RetryHelper#changeUpdate(String, Action)}, {@link  * RetryHelper#groupUpdate(String, Action)}, {@link RetryHelper#pluginUpdate(String, Action)}).  *  *<p>Which exceptions cause a retry is controlled by {@link ExceptionHook#shouldRetry(Throwable)}.  * In addition callers can specify additional exception that should cause a retry via {@link  * #retryOn(Predicate)}.  */
+comment|/**  * An action that is executed with retrying.  *  *<p>Instances of this class are created via {@link RetryHelper} (see {@link  * RetryHelper#action(ActionType, String, Action)}, {@link RetryHelper#accountUpdate(String,  * Action)}, {@link RetryHelper#changeUpdate(String, Action)}, {@link  * RetryHelper#groupUpdate(String, Action)}, {@link RetryHelper#pluginUpdate(String, Action)}).  *  *<p>Which exceptions cause a retry is controlled by {@link ExceptionHook#shouldRetry(String,  * String, Throwable)}. In addition callers can specify additional exception that should cause a  * retry via {@link #retryOn(Predicate)}.  */
 end_comment
 
 begin_class
@@ -378,7 +378,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Adds an additional condition that should trigger retries.    *    *<p>For some exceptions retrying is enabled globally (see {@link    * ExceptionHook#shouldRetry(Throwable)}). Conditions for those exceptions do not need to be    * specified here again.    *    *<p>This method can be invoked multiple times to add further conditions that should trigger    * retries.    *    * @param exceptionPredicate predicate that decides if the action should be retried for a given    *     exception    * @return this instance to enable chaining of calls    */
+comment|/**    * Adds an additional condition that should trigger retries.    *    *<p>For some exceptions retrying is enabled globally (see {@link    * ExceptionHook#shouldRetry(String, String, Throwable)}). Conditions for those exceptions do not    * need to be specified here again.    *    *<p>This method can be invoked multiple times to add further conditions that should trigger    * retries.    *    * @param exceptionPredicate predicate that decides if the action should be retried for a given    *     exception    * @return this instance to enable chaining of calls    */
 DECL|method|retryOn (Predicate<Throwable> exceptionPredicate)
 specifier|public
 name|RetryableAction
