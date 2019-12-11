@@ -20252,6 +20252,10 @@ name|retryMetrics
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|,
 name|exceptionHooks
 argument_list|,
 name|r
@@ -20592,6 +20596,10 @@ argument_list|(
 name|cfg
 argument_list|,
 name|retryMetrics
+argument_list|,
+literal|null
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -20980,6 +20988,10 @@ argument_list|(
 name|cfg
 argument_list|,
 name|retryMetrics
+argument_list|,
+literal|null
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -21451,6 +21463,10 @@ argument_list|(
 name|cfg
 argument_list|,
 name|retryMetrics
+argument_list|,
+literal|null
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|,

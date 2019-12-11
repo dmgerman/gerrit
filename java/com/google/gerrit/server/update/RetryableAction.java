@@ -165,7 +165,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An action that is executed with retrying.  *  *<p>Instances of this class are created via {@link RetryHelper} (see {@link  * RetryHelper#action(ActionType, String, Action)}, {@link RetryHelper#accountUpdate(String,  * Action)}, {@link RetryHelper#changeUpdate(String, Action)}, {@link  * RetryHelper#groupUpdate(String, Action)}, {@link RetryHelper#pluginUpdate(String, Action)},  * {@link RetryHelper#indexQuery(String, Action)}).  *  *<p>Which exceptions cause a retry is controlled by {@link ExceptionHook#shouldRetry(Throwable)}.  * In addition callers can specify additional exception that should cause a retry via {@link  * #retryOn(Predicate)}.  */
+comment|/**  * An action that is executed with retrying.  *  *<p>Instances of this class are created via {@link RetryHelper} (see {@link  * RetryHelper#action(ActionType, String, Action)}, {@link RetryHelper#accountUpdate(String,  * Action)}, {@link RetryHelper#changeUpdate(String, Action)}, {@link  * RetryHelper#groupUpdate(String, Action)}, {@link RetryHelper#pluginUpdate(String, Action)}).  *  *<p>Which exceptions cause a retry is controlled by {@link ExceptionHook#shouldRetry(Throwable)}.  * In addition callers can specify additional exception that should cause a retry via {@link  * #retryOn(Predicate)}.  */
 end_comment
 
 begin_class
