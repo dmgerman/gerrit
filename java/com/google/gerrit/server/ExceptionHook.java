@@ -91,7 +91,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Allows implementors to control how certain exceptions should be handled.  *  *<p>This interface is intended to be implemented for multi-master setups to control the behavior  * for handling exceptions that are thrown by a lower layer that handles the consensus and  * synchronization between different server nodes. E.g. if an operation fails because consensus for  * a Git update could not be achieved (e.g. due to slow responding server nodes) this interface can  * be used to retry the request instead of failing it immediately.  */
+comment|/**  * Allows implementors to control how certain exceptions should be handled.  *  *<p>This interface is intended to be implemented for cluster setups with multiple primary nodes to  * control the behavior for handling exceptions that are thrown by a lower layer that handles the  * consensus and synchronization between different server nodes. E.g. if an operation fails because  * consensus for a Git update could not be achieved (e.g. due to slow responding server nodes) this  * interface can be used to retry the request instead of failing it immediately.  */
 end_comment
 
 begin_interface
