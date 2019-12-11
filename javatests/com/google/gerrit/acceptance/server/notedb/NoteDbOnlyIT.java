@@ -1262,8 +1262,10 @@ name|result
 init|=
 name|retryHelper
 operator|.
-name|execute
+name|changeUpdate
 argument_list|(
+literal|"testUpdateRefAndAddMessageOp"
+argument_list|,
 name|batchUpdateFactory
 lambda|->
 block|{
@@ -1310,6 +1312,9 @@ literal|"Done"
 return|;
 block|}
 argument_list|)
+operator|.
+name|call
+argument_list|()
 decl_stmt|;
 name|assertThat
 argument_list|(

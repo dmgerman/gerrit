@@ -292,27 +292,9 @@ name|server
 operator|.
 name|update
 operator|.
-name|RetryHelper
+name|RetryableAction
 operator|.
 name|Action
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
-name|RetryHelper
-operator|.
-name|ActionType
 import|;
 end_import
 
@@ -551,6 +533,8 @@ block|}
 return|return
 name|executeIndexQuery
 argument_list|(
+literal|"queryAccountsByPreferredEmail"
+argument_list|,
 parameter_list|()
 lambda|->
 name|queryProvider
@@ -713,6 +697,8 @@ condition|)
 block|{
 name|executeIndexQuery
 argument_list|(
+literal|"queryAccountsByPreferredEmails"
+argument_list|,
 parameter_list|()
 lambda|->
 name|queryProvider
@@ -922,7 +908,7 @@ return|return
 name|u
 return|;
 block|}
-DECL|method|executeIndexQuery (Action<T> action)
+DECL|method|executeIndexQuery (String actionName, Action<T> action)
 specifier|private
 parameter_list|<
 name|T
@@ -930,6 +916,9 @@ parameter_list|>
 name|T
 name|executeIndexQuery
 parameter_list|(
+name|String
+name|actionName
+parameter_list|,
 name|Action
 argument_list|<
 name|T
@@ -942,20 +931,24 @@ block|{
 return|return
 name|retryHelper
 operator|.
-name|execute
+name|indexQuery
 argument_list|(
-name|ActionType
-operator|.
-name|INDEX_QUERY
+name|actionName
 argument_list|,
 name|action
-argument_list|,
+argument_list|)
+operator|.
+name|retryOn
+argument_list|(
 name|StorageException
 operator|.
 name|class
 operator|::
 name|isInstance
 argument_list|)
+operator|.
+name|call
+argument_list|()
 return|;
 block|}
 catch|catch

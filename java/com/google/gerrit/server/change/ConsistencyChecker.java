@@ -1406,8 +1406,10 @@ block|{
 return|return
 name|retryHelper
 operator|.
-name|execute
+name|changeUpdate
 argument_list|(
+literal|"checkChangeConsistency"
+argument_list|,
 name|buf
 lambda|->
 block|{
@@ -1484,6 +1486,9 @@ block|}
 block|}
 block|}
 argument_list|)
+operator|.
+name|call
+argument_list|()
 return|;
 block|}
 catch|catch
