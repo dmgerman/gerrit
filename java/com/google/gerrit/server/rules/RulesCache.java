@@ -782,6 +782,12 @@ specifier|final
 name|int
 name|maxDbSize
 decl_stmt|;
+DECL|field|compileReductionLimit
+specifier|private
+specifier|final
+name|int
+name|compileReductionLimit
+decl_stmt|;
 DECL|field|maxSrcBytes
 specifier|private
 specifier|final
@@ -888,6 +894,15 @@ argument_list|,
 literal|"maxPrologDatabaseSize"
 argument_list|,
 literal|256
+argument_list|)
+expr_stmt|;
+name|compileReductionLimit
+operator|=
+name|RuleUtil
+operator|.
+name|compileReductionLimit
+argument_list|(
+name|config
 argument_list|)
 expr_stmt|;
 name|maxSrcBytes
@@ -1903,6 +1918,15 @@ operator|.
 name|setMaxDatabaseSize
 argument_list|(
 name|maxDbSize
+argument_list|)
+expr_stmt|;
+comment|// Use the compiled reduction limit because the first term evaluation is done with
+comment|// consult_stream - an internal, combined Prolog term.
+name|ctl
+operator|.
+name|setReductionLimit
+argument_list|(
+name|compileReductionLimit
 argument_list|)
 expr_stmt|;
 name|ctl
