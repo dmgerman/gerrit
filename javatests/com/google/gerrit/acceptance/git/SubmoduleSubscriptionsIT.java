@@ -3392,7 +3392,7 @@ name|push
 operator|.
 name|to
 argument_list|(
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(

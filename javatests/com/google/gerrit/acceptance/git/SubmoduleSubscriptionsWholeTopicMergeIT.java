@@ -739,7 +739,7 @@ argument_list|(
 operator|new
 name|RefSpec
 argument_list|(
-literal|"HEAD:refs/for/master/"
+literal|"HEAD:refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -841,7 +841,7 @@ argument_list|(
 operator|new
 name|RefSpec
 argument_list|(
-literal|"HEAD:refs/for/master/"
+literal|"HEAD:refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1288,7 +1288,7 @@ argument_list|(
 operator|new
 name|RefSpec
 argument_list|(
-literal|"HEAD:refs/for/master/"
+literal|"HEAD:refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1390,7 +1390,7 @@ argument_list|(
 operator|new
 name|RefSpec
 argument_list|(
-literal|"HEAD:refs/for/master/"
+literal|"HEAD:refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1451,7 +1451,7 @@ argument_list|(
 operator|new
 name|RefSpec
 argument_list|(
-literal|"HEAD:refs/for/master/"
+literal|"HEAD:refs/for/master%topic="
 operator|+
 name|name
 argument_list|(

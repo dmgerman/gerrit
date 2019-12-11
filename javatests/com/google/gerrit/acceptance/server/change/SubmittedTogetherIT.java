@@ -1082,7 +1082,7 @@ name|pushHead
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1132,7 +1132,7 @@ name|pushHead
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1231,7 +1231,7 @@ name|pushHead
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1281,7 +1281,7 @@ name|pushHead
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1401,7 +1401,7 @@ name|pushHead
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1451,7 +1451,7 @@ name|pushHead
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1494,7 +1494,7 @@ name|pushHead
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1621,7 +1621,7 @@ name|pushHead
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1671,7 +1671,7 @@ name|pushHead
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1714,7 +1714,7 @@ name|pushHead
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -1840,7 +1840,7 @@ name|pushHead
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
