@@ -746,13 +746,13 @@ name|Duration
 name|timeout
 parameter_list|()
 function_decl|;
-DECL|method|caller ()
+DECL|method|actionName ()
 specifier|abstract
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|caller
+name|actionName
 parameter_list|()
 function_decl|;
 DECL|method|retryWithTrace ()
@@ -810,11 +810,11 @@ name|Duration
 name|timeout
 parameter_list|)
 function_decl|;
-DECL|method|caller (String caller)
+DECL|method|actionName (String caller)
 specifier|public
 specifier|abstract
 name|Builder
-name|caller
+name|actionName
 parameter_list|(
 name|String
 name|caller
@@ -2119,7 +2119,7 @@ name|actionName
 init|=
 name|opts
 operator|.
-name|caller
+name|actionName
 argument_list|()
 operator|.
 name|orElse
@@ -2415,7 +2415,7 @@ name|actionType
 argument_list|,
 name|opts
 operator|.
-name|caller
+name|actionName
 argument_list|()
 operator|.
 name|orElse
@@ -2655,7 +2655,7 @@ name|actionType
 argument_list|,
 name|opts
 operator|.
-name|caller
+name|actionName
 argument_list|()
 operator|.
 name|orElse
