@@ -4402,10 +4402,9 @@ comment|//
 comment|// However, if there are CPU in abundance and the server is reachable through
 comment|// slow networks, gits with huge amount of refs can benefit from SSH-compression
 comment|// since git does not compress the ref announcement during the handshake.
-comment|//
-comment|// Compression can be especially useful when Gerrit slaves are being used
-comment|// for the larger clones and fetches and the master server mostly takes small
-comment|// receive-packs.
+comment|// Compression can be especially useful when Gerrit replica are being used
+comment|// for the larger clones and fetches and the primary server handling write
+comment|// operations mostly takes small receive-packs.
 if|if
 condition|(
 name|enableCompression
