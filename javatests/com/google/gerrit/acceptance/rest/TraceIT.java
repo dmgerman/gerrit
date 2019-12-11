@@ -5398,6 +5398,12 @@ specifier|public
 name|boolean
 name|shouldRetry
 parameter_list|(
+name|String
+name|actionType
+parameter_list|,
+name|String
+name|actionName
+parameter_list|,
 name|Throwable
 name|t
 parameter_list|)
