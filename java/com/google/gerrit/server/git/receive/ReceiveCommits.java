@@ -20973,15 +20973,6 @@ argument_list|,
 name|action
 argument_list|)
 operator|.
-name|retryOn
-argument_list|(
-name|StorageException
-operator|.
-name|class
-operator|::
-name|isInstance
-argument_list|)
-operator|.
 name|call
 argument_list|()
 return|;
