@@ -304,6 +304,10 @@ name|ConfigInvalidException
 import|;
 end_import
 
+begin_comment
+comment|/** Toggler for account active state. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
