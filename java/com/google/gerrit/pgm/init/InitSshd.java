@@ -767,7 +767,7 @@ literal|"-t"
 argument_list|,
 literal|"ed25519"
 argument_list|,
-literal|"-P"
+literal|"-N"
 argument_list|,
 name|emptyPassphraseArg
 argument_list|,
@@ -879,7 +879,7 @@ literal|"-b"
 argument_list|,
 literal|"256"
 argument_list|,
-literal|"-P"
+literal|"-N"
 argument_list|,
 name|emptyPassphraseArg
 argument_list|,
@@ -991,7 +991,7 @@ literal|"-b"
 argument_list|,
 literal|"384"
 argument_list|,
-literal|"-P"
+literal|"-N"
 argument_list|,
 name|emptyPassphraseArg
 argument_list|,
@@ -1103,7 +1103,7 @@ literal|"-b"
 argument_list|,
 literal|"521"
 argument_list|,
-literal|"-P"
+literal|"-N"
 argument_list|,
 name|emptyPassphraseArg
 argument_list|,
