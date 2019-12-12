@@ -90,6 +90,10 @@ name|TimeUnit
 import|;
 end_import
 
+begin_comment
+comment|/**  * Wrapper class so a Runnable can schedule itself onto the Gerrit Workqueue. Subclasses must  * implement the {@code run} method.  */
+end_comment
+
 begin_class
 DECL|class|DefaultQueueOp
 specifier|public
