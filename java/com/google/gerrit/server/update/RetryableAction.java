@@ -177,6 +177,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
+comment|/**    * Type of an retryable action.    *    *<p>The action type is used for two purposes:    *    *<ul>    *<li>to determine the default timeout for executing the action (see {@link    *       RetryHelper#getDefaultTimeout(String)})    *<li>as bucket for all retry metrics (see {@link RetryHelper.Metrics})    *</ul>    */
 DECL|enum|ActionType
 specifier|public
 enum|enum
