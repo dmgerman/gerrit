@@ -10956,16 +10956,10 @@ name|defaultPublishComments
 return|;
 block|}
 comment|/**      * returns the destination ref of the magic branch, and populates options in the cmdLineParser.      */
-DECL|method|parse ( Repository repo, ReceivePackRefCache refCache, ListMultimap<String, String> pushOptions)
+DECL|method|parse (ListMultimap<String, String> pushOptions)
 name|String
 name|parse
 parameter_list|(
-name|Repository
-name|repo
-parameter_list|,
-name|ReceivePackRefCache
-name|refCache
-parameter_list|,
 name|ListMultimap
 argument_list|<
 name|String
@@ -10976,8 +10970,6 @@ name|pushOptions
 parameter_list|)
 throws|throws
 name|CmdLineException
-throws|,
-name|IOException
 block|{
 name|String
 name|ref
@@ -11394,10 +11386,6 @@ name|magicBranch
 operator|.
 name|parse
 argument_list|(
-name|repo
-argument_list|,
-name|receivePackRefCache
-argument_list|,
 name|pushOptions
 argument_list|)
 expr_stmt|;
