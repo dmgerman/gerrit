@@ -108,6 +108,10 @@ name|Change
 import|;
 end_import
 
+begin_comment
+comment|/** Formatter for git command-line progress messages. */
+end_comment
+
 begin_interface
 DECL|interface|ChangeReportFormatter
 specifier|public
