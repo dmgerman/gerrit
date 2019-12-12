@@ -456,6 +456,10 @@ name|Optional
 import|;
 end_import
 
+begin_comment
+comment|/** REST endpoint that executes GC on a project. */
+end_comment
+
 begin_class
 annotation|@
 name|RequiresCapability

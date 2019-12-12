@@ -136,6 +136,10 @@ name|Set
 import|;
 end_import
 
+begin_comment
+comment|/** A thread-safe list of projects scheduled for GC. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton

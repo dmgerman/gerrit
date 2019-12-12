@@ -104,6 +104,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|GarbageCollectionResult
@@ -370,6 +384,10 @@ name|PackConfig
 import|;
 end_import
 
+begin_comment
+comment|/** Serial execution of GC on a list of repositories. */
+end_comment
+
 begin_class
 DECL|class|GarbageCollection
 specifier|public
@@ -526,7 +544,8 @@ name|writer
 argument_list|)
 return|;
 block|}
-DECL|method|run ( List<Project.NameKey> projectNames, boolean aggressive, PrintWriter writer)
+comment|/** Runs GC on the given projects, serially. Progress is written to writer if non-null. */
+DECL|method|run ( List<Project.NameKey> projectNames, boolean aggressive, @Nullable PrintWriter writer)
 specifier|public
 name|GarbageCollectionResult
 name|run
@@ -542,6 +561,8 @@ parameter_list|,
 name|boolean
 name|aggressive
 parameter_list|,
+annotation|@
+name|Nullable
 name|PrintWriter
 name|writer
 parameter_list|)

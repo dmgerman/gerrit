@@ -100,6 +100,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/** A list of errors occurred during GC. */
+end_comment
+
 begin_class
 DECL|class|GarbageCollectionResult
 specifier|public
