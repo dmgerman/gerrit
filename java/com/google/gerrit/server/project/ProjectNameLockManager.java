@@ -94,6 +94,10 @@ name|Lock
 import|;
 end_import
 
+begin_comment
+comment|/**  * A per-repo lock mechanism.  *  *<p>This ensures that project creation (repo creation, config creation, first commit) is atomic,  * and can be used to separate creation and deletion in the delete-project plugin.  *  *<p>This is an interface because distributed setup may need something beyond an in-memory lock.  */
+end_comment
+
 begin_interface
 DECL|interface|ProjectNameLockManager
 specifier|public

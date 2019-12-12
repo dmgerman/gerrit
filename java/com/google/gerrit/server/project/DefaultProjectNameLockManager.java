@@ -150,6 +150,10 @@ name|Lock
 import|;
 end_import
 
+begin_comment
+comment|/** In-memory lock for project names. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
