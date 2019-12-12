@@ -654,6 +654,10 @@ name|ReceiveCommand
 import|;
 end_import
 
+begin_comment
+comment|/**  * Business logic for creating projects.  *  *<p>This creates the repository, the underlying configuration in {@code refs/meta/config} and  * initializes a first commit if necessary.  */
+end_comment
+
 begin_class
 DECL|class|ProjectCreator
 specifier|public
