@@ -296,6 +296,10 @@ name|ObjectId
 import|;
 end_import
 
+begin_comment
+comment|/** The REST endpoint that marks commits as banned in a project. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
