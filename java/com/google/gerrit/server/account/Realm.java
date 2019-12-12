@@ -182,6 +182,10 @@ name|LoginException
 import|;
 end_import
 
+begin_comment
+comment|/**  * Interface between Gerrit and an account system.  *  *<p>This interface provides the glue layer between the Gerrit and external account/authentication  * systems (eg. LDAP, OpenID).  */
+end_comment
+
 begin_interface
 DECL|interface|Realm
 specifier|public
