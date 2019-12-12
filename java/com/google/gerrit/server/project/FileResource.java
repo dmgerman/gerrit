@@ -238,6 +238,10 @@ name|TreeWalk
 import|;
 end_import
 
+begin_comment
+comment|/**  * A file.  *  *<p>This is in the project package because it is accessed through the project/branch/file path.  */
+end_comment
+
 begin_class
 DECL|class|FileResource
 specifier|public
