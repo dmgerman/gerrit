@@ -208,6 +208,10 @@ name|Config
 import|;
 end_import
 
+begin_comment
+comment|/**  * RepositoryManager that looks up repos stored across directories.  *  *<p>Each repository has a path configured in Gerrit server config, repository.NAME.basePath,  * indicating where the repo can be found  */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton

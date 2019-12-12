@@ -108,6 +108,10 @@ name|Inject
 import|;
 end_import
 
+begin_comment
+comment|/**  * Module to install {@link MultiBaseLocalDiskRepositoryManager} rather than {@link  * LocalDiskRepositoryManager} if needed.  */
+end_comment
+
 begin_class
 DECL|class|GitRepositoryManagerModule
 specifier|public
