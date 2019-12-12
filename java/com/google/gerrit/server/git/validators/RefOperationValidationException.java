@@ -112,6 +112,10 @@ name|ValidationException
 import|;
 end_import
 
+begin_comment
+comment|/**  * Exception to be thrown when the validation of a ref operation fails and should be aborted.  * Examples of a ref operations include creating or updating refs.  */
+end_comment
+
 begin_class
 DECL|class|RefOperationValidationException
 specifier|public

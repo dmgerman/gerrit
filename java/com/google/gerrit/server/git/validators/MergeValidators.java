@@ -620,6 +620,10 @@ name|RevWalk
 import|;
 end_import
 
+begin_comment
+comment|/**  * Collection of validators that run inside Gerrit before a change is submitted. The main purpose is  * to ensure that NoteDb data is mutated in a controlled way.  *  *<p>The difference between this and {@link OnSubmitValidators} is that this validates the original  * commit. Depending on the {@link com.google.gerrit.server.submit.SubmitStrategy} that the project  * chooses, the resulting commit in the repo might differ from this original commit. In case you  * want to validate the resulting commit, use {@link OnSubmitValidators}  */
+end_comment
+
 begin_class
 DECL|class|MergeValidators
 specifier|public
@@ -734,6 +738,7 @@ operator|=
 name|groupValidatorFactory
 expr_stmt|;
 block|}
+comment|/**    * Runs all validators and throws a {@link MergeValidationException} for the first validator that    * failed. Only the first violation is propagated and processing is stopped thereafter.    */
 DECL|method|validatePreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, BranchNameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
@@ -821,6 +826,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** Validator for any commits to {@code refs/meta/config}. */
 DECL|class|ProjectConfigValidator
 specifier|public
 specifier|static
@@ -1575,7 +1581,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/** Execute merge validation plug-ins */
+comment|/** Validator that calls to plugins that provide additional validators. */
 DECL|class|PluginMergeValidationListener
 specifier|public
 specifier|static
@@ -1979,6 +1985,7 @@ throw|;
 block|}
 block|}
 block|}
+comment|/** Validator to ensure that group refs are not mutated. */
 DECL|class|GroupMergeValidator
 specifier|public
 specifier|static

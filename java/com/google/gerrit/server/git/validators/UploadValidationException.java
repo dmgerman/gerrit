@@ -82,6 +82,10 @@ name|ServiceMayNotContinueException
 import|;
 end_import
 
+begin_comment
+comment|/** Exception to be thrown when an {@link UploadValidationListener} fails. */
+end_comment
+
 begin_class
 DECL|class|UploadValidationException
 specifier|public

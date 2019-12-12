@@ -108,6 +108,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * Exception thrown when a Git commit fails validations. Gerrit supports a wide range of validations  * (for example it validates any commits pushed to NoteDb refs for format compliance or allows to  * enforce commit message lengths to not exceed a certain length).  */
+end_comment
+
 begin_class
 DECL|class|CommitValidationException
 specifier|public
@@ -244,6 +248,7 @@ name|of
 argument_list|()
 expr_stmt|;
 block|}
+comment|/** Returns all validation messages individually. */
 DECL|method|getMessages ()
 specifier|public
 name|ImmutableList
@@ -257,7 +262,7 @@ return|return
 name|messages
 return|;
 block|}
-comment|/** @return the reason string along with all validation messages. */
+comment|/** Returns all validation as a single, formatted string. */
 DECL|method|getFullMessage ()
 specifier|public
 name|String

@@ -66,6 +66,10 @@ name|validators
 package|;
 end_package
 
+begin_comment
+comment|/**  * Exception to be thrown either directly or subclassed indicating that we failed to validate a Git  * operation. Failures range from internal checks for NoteDb format and consistency to  * plugin-provided checks.  */
+end_comment
+
 begin_class
 DECL|class|ValidationException
 specifier|public
