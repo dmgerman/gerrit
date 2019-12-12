@@ -104,6 +104,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * An ordering of branches by stability.  *  *<p>The REST API supports automatically checking if changes on development branches can be merged  * into stable branches. This is configured by the {@code branchOrder.branch} project setting. This  * class represents the ordered list of branches, by increasing stability.  */
+end_comment
+
 begin_class
 DECL|class|BranchOrderSection
 specifier|public
