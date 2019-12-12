@@ -229,7 +229,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Named Queries for user accounts. */
+comment|/**  * Named Queries for user accounts.  *  *<p>Users can define aliases for change queries. These are stored as versioned account data and  * (de)serialized with this class.  */
 end_comment
 
 begin_class

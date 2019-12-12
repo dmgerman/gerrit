@@ -228,6 +228,10 @@ name|Set
 import|;
 end_import
 
+begin_comment
+comment|/**  * File format for group name aliases.  *  *<p>Project configuration must use aliases for groups used in the permission section. The  * aliases/group mapping is stored in a file "groups", (de)serialized with this class.  */
+end_comment
+
 begin_class
 DECL|class|GroupList
 specifier|public
