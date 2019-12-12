@@ -148,20 +148,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|git
-operator|.
-name|LockFailureException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -488,6 +474,10 @@ name|RevWalk
 import|;
 end_import
 
+begin_comment
+comment|/**  * Logic for banning commits from being uploaded.  *  *<p>Gerrit has a per-project list of commits that are forbidden to be pushed. This class reads and  * writes the banned commits list in {@code refs/meta/reject-commits}.  */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -688,6 +678,7 @@ name|getTimeZone
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**    * Bans a list of commits from the given project.    *    *<p>The user must be specified, so it can be checked for the {@code BAN_COMMIT} permission.    */
 DECL|method|ban ( Project.NameKey project, CurrentUser user, List<ObjectId> commitsToBan, String reason)
 specifier|public
 name|BanCommitResult
@@ -712,8 +703,6 @@ name|reason
 parameter_list|)
 throws|throws
 name|AuthException
-throws|,
-name|LockFailureException
 throws|,
 name|IOException
 throws|,

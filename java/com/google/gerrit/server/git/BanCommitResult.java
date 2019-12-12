@@ -100,6 +100,10 @@ name|ObjectId
 import|;
 end_import
 
+begin_comment
+comment|/** The outcome of the {@link com.google.gerrit.server.git.BanCommit} operation. */
+end_comment
+
 begin_class
 DECL|class|BanCommitResult
 specifier|public

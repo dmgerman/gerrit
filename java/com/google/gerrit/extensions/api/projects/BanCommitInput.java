@@ -92,6 +92,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/** Commits that will forbidden to be uploaded. */
+end_comment
+
 begin_class
 DECL|class|BanCommitInput
 specifier|public
