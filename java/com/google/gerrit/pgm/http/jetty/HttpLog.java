@@ -497,7 +497,13 @@ comment|// level
 literal|""
 argument_list|,
 comment|// message text
-literal|"HTTPD"
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 comment|// thread name
 literal|null
