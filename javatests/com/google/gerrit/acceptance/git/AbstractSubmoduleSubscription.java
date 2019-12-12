@@ -1209,7 +1209,7 @@ condition|)
 block|{
 name|pushedRef
 operator|+=
-literal|"/"
+literal|"%topic="
 operator|+
 name|name
 argument_list|(

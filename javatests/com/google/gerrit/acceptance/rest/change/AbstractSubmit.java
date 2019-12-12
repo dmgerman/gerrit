@@ -4948,7 +4948,7 @@ name|visible
 init|=
 name|createChange
 argument_list|(
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -4988,7 +4988,7 @@ name|hidden
 init|=
 name|createChange
 argument_list|(
-literal|"refs/for/hidden/"
+literal|"refs/for/hidden%topic="
 operator|+
 name|name
 argument_list|(
@@ -5880,7 +5880,7 @@ name|change1
 init|=
 name|createChange
 argument_list|(
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|topic
 argument_list|)
@@ -5892,7 +5892,7 @@ name|change2
 init|=
 name|createChange
 argument_list|(
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|topic
 argument_list|)
@@ -6946,7 +6946,7 @@ argument_list|(
 operator|new
 name|RefSpec
 argument_list|(
-literal|"refs/heads/stable:refs/for/stable/"
+literal|"refs/heads/stable:refs/for/stable%topic="
 operator|+
 name|name
 argument_list|(
@@ -7020,7 +7020,7 @@ argument_list|(
 operator|new
 name|RefSpec
 argument_list|(
-literal|"refs/heads/master:refs/for/master/"
+literal|"refs/heads/master:refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
@@ -10946,7 +10946,7 @@ name|push
 operator|.
 name|to
 argument_list|(
-literal|"refs/for/master/"
+literal|"refs/for/master%topic="
 operator|+
 name|name
 argument_list|(
