@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Server wide capabilities. Represented as {@link Permission} objects. */
+comment|/**  * Server wide capabilities. Represented as {@link Permission} objects.  *  *<p>Contrary to {@link Permission}, global capabilities do not need a resource to check  * permissions on.  */
 end_comment
 
 begin_class
