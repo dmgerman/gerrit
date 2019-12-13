@@ -764,6 +764,10 @@ name|ConfigInvalidException
 import|;
 end_import
 
+begin_comment
+comment|/**  * REST endpoint for creating a new account.  *  *<p>This REST endpoint handles {@code PUT /accounts/<account-identifier>} requests if the  * specified account doesn't exist yet. If it already exists, the request is handled by {@link  * PutAccount}.  */
+end_comment
+
 begin_class
 annotation|@
 name|RequiresCapability
