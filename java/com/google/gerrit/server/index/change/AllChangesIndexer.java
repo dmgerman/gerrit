@@ -1034,8 +1034,9 @@ literal|"Over 50%% of the projects could not be collected: aborted"
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
 name|Result
+operator|.
+name|create
 argument_list|(
 name|sw
 argument_list|,
@@ -1453,8 +1454,9 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|new
 name|Result
+operator|.
+name|create
 argument_list|(
 name|sw
 argument_list|,

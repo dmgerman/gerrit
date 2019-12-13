@@ -732,10 +732,11 @@ literal|"Error waiting on project futures"
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
 name|SiteIndexer
 operator|.
 name|Result
+operator|.
+name|create
 argument_list|(
 name|sw
 argument_list|,
@@ -753,10 +754,11 @@ name|endTask
 argument_list|()
 expr_stmt|;
 return|return
-operator|new
 name|SiteIndexer
 operator|.
 name|Result
+operator|.
+name|create
 argument_list|(
 name|sw
 argument_list|,
