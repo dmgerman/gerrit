@@ -282,6 +282,10 @@ name|HashMap
 import|;
 end_import
 
+begin_comment
+comment|/** Collection of routines to populate {@link ProjectInfo}. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
