@@ -556,6 +556,18 @@ name|com
 operator|.
 name|google
 operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|template
 operator|.
 name|soy
@@ -610,15 +622,9 @@ begin_comment
 comment|/**  * Arguments used for sending notification emails.  *  *<p>Notification emails are sent by out by {@link OutgoingEmail} and it's subclasses, so called  * senders. To construct an email the sender class needs to get various other classes injected.  * Instead of injecting these classes into the sender classes directly, they only get {@code  * EmailArguments} injected and {@code EmailArguments} provides them all dependencies that they  * need.  *  *<p>This class is public because plugins need access to it for sending emails.  */
 end_comment
 
-begin_comment
-comment|// TODO(ekempin): Can we make this class a singleton so that we don't need to instantiate it for
-end_comment
-
-begin_comment
-comment|// each and every email?
-end_comment
-
 begin_class
+annotation|@
+name|Singleton
 annotation|@
 name|UsedAt
 argument_list|(
@@ -675,7 +681,10 @@ name|approvalsUtil
 decl_stmt|;
 DECL|field|fromAddressGenerator
 specifier|final
+name|Provider
+argument_list|<
 name|FromAddressGenerator
+argument_list|>
 name|fromAddressGenerator
 decl_stmt|;
 DECL|field|emailSender
@@ -704,7 +713,10 @@ name|changeNotesFactory
 decl_stmt|;
 DECL|field|anonymousUser
 specifier|final
+name|Provider
+argument_list|<
 name|AnonymousUser
+argument_list|>
 name|anonymousUser
 decl_stmt|;
 DECL|field|anonymousCowardName
@@ -714,7 +726,10 @@ name|anonymousCowardName
 decl_stmt|;
 DECL|field|gerritPersonIdent
 specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
+argument_list|>
 name|gerritPersonIdent
 decl_stmt|;
 DECL|field|urlFormatter
@@ -745,7 +760,10 @@ name|site
 decl_stmt|;
 DECL|field|queryBuilder
 specifier|final
+name|Provider
+argument_list|<
 name|ChangeQueryBuilder
+argument_list|>
 name|queryBuilder
 decl_stmt|;
 DECL|field|changeDataFactory
@@ -757,7 +775,10 @@ name|changeDataFactory
 decl_stmt|;
 DECL|field|soySauce
 specifier|final
+name|Provider
+argument_list|<
 name|SoySauce
+argument_list|>
 name|soySauce
 decl_stmt|;
 DECL|field|settings
@@ -801,7 +822,7 @@ name|instanceNameProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments ( GitRepositoryManager server, ProjectCache projectCache, PermissionBackend permissionBackend, GroupBackend groupBackend, AccountCache accountCache, PatchListCache patchListCache, PatchSetUtil patchSetUtil, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, ChangeNotes.Factory changeNotesFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, GerritPersonIdentProvider gerritPersonIdentProvider, DynamicItem<UrlFormatter> urlFormatter, AllProjectsName allProjectsName, ChangeQueryBuilder queryBuilder, ChangeData.Factory changeDataFactory, @MailTemplates SoySauce soySauce, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, SitePaths site, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners, Provider<InternalAccountQuery> accountQueryProvider, OutgoingEmailValidator validator, @GerritInstanceName Provider<String> instanceNameProvider, @GerritServerConfig Config cfg)
+DECL|method|EmailArguments ( GitRepositoryManager server, ProjectCache projectCache, PermissionBackend permissionBackend, GroupBackend groupBackend, AccountCache accountCache, PatchListCache patchListCache, PatchSetUtil patchSetUtil, ApprovalsUtil approvalsUtil, Provider<FromAddressGenerator> fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, ChangeNotes.Factory changeNotesFactory, Provider<AnonymousUser> anonymousUser, @AnonymousCowardName String anonymousCowardName, GerritPersonIdentProvider gerritPersonIdent, DynamicItem<UrlFormatter> urlFormatter, AllProjectsName allProjectsName, Provider<ChangeQueryBuilder> queryBuilder, ChangeData.Factory changeDataFactory, @MailTemplates Provider<SoySauce> soySauce, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, SitePaths site, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners, Provider<InternalAccountQuery> accountQueryProvider, OutgoingEmailValidator validator, @GerritInstanceName Provider<String> instanceNameProvider, @GerritServerConfig Config cfg)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -828,7 +849,10 @@ parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
 parameter_list|,
+name|Provider
+argument_list|<
 name|FromAddressGenerator
+argument_list|>
 name|fromAddressGenerator
 parameter_list|,
 name|EmailSender
@@ -845,7 +869,10 @@ operator|.
 name|Factory
 name|changeNotesFactory
 parameter_list|,
+name|Provider
+argument_list|<
 name|AnonymousUser
+argument_list|>
 name|anonymousUser
 parameter_list|,
 annotation|@
@@ -854,7 +881,7 @@ name|String
 name|anonymousCowardName
 parameter_list|,
 name|GerritPersonIdentProvider
-name|gerritPersonIdentProvider
+name|gerritPersonIdent
 parameter_list|,
 name|DynamicItem
 argument_list|<
@@ -865,7 +892,10 @@ parameter_list|,
 name|AllProjectsName
 name|allProjectsName
 parameter_list|,
+name|Provider
+argument_list|<
 name|ChangeQueryBuilder
+argument_list|>
 name|queryBuilder
 parameter_list|,
 name|ChangeData
@@ -875,7 +905,10 @@ name|changeDataFactory
 parameter_list|,
 annotation|@
 name|MailTemplates
+name|Provider
+argument_list|<
 name|SoySauce
+argument_list|>
 name|soySauce
 parameter_list|,
 name|EmailSettings
@@ -1015,10 +1048,7 @@ name|this
 operator|.
 name|gerritPersonIdent
 operator|=
-name|gerritPersonIdentProvider
-operator|.
-name|get
-argument_list|()
+name|gerritPersonIdent
 expr_stmt|;
 name|this
 operator|.
