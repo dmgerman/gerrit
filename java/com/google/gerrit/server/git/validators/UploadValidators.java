@@ -220,6 +220,10 @@ name|UploadPack
 import|;
 end_import
 
+begin_comment
+comment|/** Collection of validators to run before Gerrit sends pack data to a client. */
+end_comment
+
 begin_class
 DECL|class|UploadValidators
 specifier|public

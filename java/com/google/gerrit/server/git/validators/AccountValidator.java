@@ -340,6 +340,10 @@ name|RevWalk
 import|;
 end_import
 
+begin_comment
+comment|/**  * Validator that is used to ensure that new commits on any ref in {@code refs/users} are conforming  * to the NoteDb format for accounts. Used when a user pushes to one of the refs in {@code  * refs/users} manually.  */
+end_comment
+
 begin_class
 DECL|class|AccountValidator
 specifier|public
@@ -405,6 +409,7 @@ operator|=
 name|emailValidator
 expr_stmt|;
 block|}
+comment|/**    * Returns a list of validation messages. An empty list means that there were no issues found. If    * the list is non-empty, the commit will be rejected.    */
 DECL|method|validate ( Account.Id accountId, Repository allUsersRepo, RevWalk rw, @Nullable ObjectId oldId, ObjectId newId)
 specifier|public
 name|List

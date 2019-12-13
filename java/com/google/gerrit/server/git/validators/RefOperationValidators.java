@@ -370,6 +370,10 @@ name|ReceiveCommand
 import|;
 end_import
 
+begin_comment
+comment|/**  * Collection of validation listeners that are called before a ref update is performed with the  * command to be run. This is called from the git push path as well as Gerrit's handlers for  * creating or deleting refs. Calls out to {@link RefOperationValidationListener} provided by  * plugins.  */
+end_comment
+
 begin_class
 DECL|class|RefOperationValidators
 specifier|public
@@ -556,6 +560,7 @@ operator|=
 name|user
 expr_stmt|;
 block|}
+comment|/**    * Returns informational validation messages and throws a {@link RefOperationValidationException}    * when the first validator fails. Will not process any more validators after the first failure    * was encountered.    */
 DECL|method|validateForRefOperation ()
 specifier|public
 name|List

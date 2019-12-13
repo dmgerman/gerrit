@@ -68,6 +68,10 @@ name|validators
 package|;
 end_package
 
+begin_comment
+comment|/**  * Message used as result of a validation that run during a git operation (for example {@code git  * push}. Intended to be shown to users.  */
+end_comment
+
 begin_class
 DECL|class|ValidationMessage
 specifier|public
@@ -146,6 +150,7 @@ specifier|final
 name|Type
 name|type
 decl_stmt|;
+comment|/** @see ValidationMessage */
 DECL|method|ValidationMessage (String message, Type type)
 specifier|public
 name|ValidationMessage
@@ -170,6 +175,7 @@ operator|=
 name|type
 expr_stmt|;
 block|}
+comment|// TODO: Remove and move callers to ValidationMessage(String message, Type type)
 DECL|method|ValidationMessage (String message, boolean isError)
 specifier|public
 name|ValidationMessage
@@ -204,6 +210,7 @@ name|OTHER
 operator|)
 expr_stmt|;
 block|}
+comment|/** Returns the message to be shown to the user. */
 DECL|method|getMessage ()
 specifier|public
 name|String
@@ -214,6 +221,7 @@ return|return
 name|message
 return|;
 block|}
+comment|/**    * Returns the {@link Type}. Used to as prefix for the message in the git CLI and to color    * messages.    */
 DECL|method|getType ()
 specifier|public
 name|Type
@@ -224,6 +232,7 @@ return|return
 name|type
 return|;
 block|}
+comment|/**    * Returns {@true} if this message is an error. Used to decide if the operation should be aborted.    */
 DECL|method|isError ()
 specifier|public
 name|boolean
