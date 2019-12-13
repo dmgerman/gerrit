@@ -196,6 +196,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/** Sender that informs a user by email about the addition of an SSH or GPG key to their account. */
+end_comment
+
 begin_class
 DECL|class|AddKeySender
 specifier|public
