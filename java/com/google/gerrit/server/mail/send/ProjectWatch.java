@@ -1710,11 +1710,17 @@ name|args
 operator|.
 name|queryBuilder
 operator|.
+name|get
+argument_list|()
+operator|.
 name|asUser
 argument_list|(
 name|args
 operator|.
 name|anonymousUser
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1725,6 +1731,9 @@ operator|=
 name|args
 operator|.
 name|queryBuilder
+operator|.
+name|get
+argument_list|()
 operator|.
 name|asUser
 argument_list|(
