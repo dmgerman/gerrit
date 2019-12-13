@@ -606,6 +606,18 @@ name|PersonIdent
 import|;
 end_import
 
+begin_comment
+comment|/**  * Arguments used for sending notification emails.  *  *<p>Notification emails are sent by out by {@link OutgoingEmail} and it's subclasses, so called  * senders. To construct an email the sender class needs to get various other classes injected.  * Instead of injecting these classes into the sender classes directly, they only get {@code  * EmailArguments} injected and {@code EmailArguments} provides them all dependencies that they  * need.  *  *<p>This class is public because plugins need access to it for sending emails.  */
+end_comment
+
+begin_comment
+comment|// TODO(ekempin): Can we make this class a singleton so that we don't need to instantiate it for
+end_comment
+
+begin_comment
+comment|// each and every email?
+end_comment
+
 begin_class
 annotation|@
 name|UsedAt
