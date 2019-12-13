@@ -168,6 +168,10 @@ name|Assisted
 import|;
 end_import
 
+begin_comment
+comment|/**  * Sender that informs a user by email that they were set as assignee on a change.  *  *<p>In contrast to other change emails this email is not sent to the change authors (owner, patch  * set uploader, author). This is why this class extends {@link ChangeEmail} directly, instead of  * extending {@link ReplyToChangeSender}.  */
+end_comment
+
 begin_class
 DECL|class|SetAssigneeSender
 specifier|public
