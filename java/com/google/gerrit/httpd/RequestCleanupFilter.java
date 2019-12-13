@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2019 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -74,25 +74,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
-operator|.
-name|RequestContext
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|ThreadLocalRequestContext
+name|RequestCleanup
 import|;
 end_import
 
@@ -229,16 +211,16 @@ import|;
 end_import
 
 begin_comment
-comment|/** Set the request context for the downstream filters and invocation. */
+comment|/** Executes any pending {@link RequestCleanup} at the end of a request. */
 end_comment
 
 begin_class
 annotation|@
 name|Singleton
-DECL|class|RequestContextFilter
+DECL|class|RequestCleanupFilter
 specifier|public
 class|class
-name|RequestContextFilter
+name|RequestCleanupFilter
 implements|implements
 name|Filter
 block|{
@@ -268,7 +250,7 @@ argument_list|)
 operator|.
 name|through
 argument_list|(
-name|RequestContextFilter
+name|RequestCleanupFilter
 operator|.
 name|class
 argument_list|)
@@ -277,43 +259,30 @@ block|}
 block|}
 return|;
 block|}
-DECL|field|requestContext
+DECL|field|cleanup
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|HttpRequestContext
+name|RequestCleanup
 argument_list|>
-name|requestContext
-decl_stmt|;
-DECL|field|local
-specifier|private
-specifier|final
-name|ThreadLocalRequestContext
-name|local
+name|cleanup
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestContextFilter (Provider<HttpRequestContext> c, ThreadLocalRequestContext l)
-name|RequestContextFilter
+DECL|method|RequestCleanupFilter (Provider<RequestCleanup> r)
+name|RequestCleanupFilter
 parameter_list|(
 name|Provider
 argument_list|<
-name|HttpRequestContext
+name|RequestCleanup
 argument_list|>
-name|c
-parameter_list|,
-name|ThreadLocalRequestContext
-name|l
+name|r
 parameter_list|)
 block|{
-name|requestContext
+name|cleanup
 operator|=
-name|c
-expr_stmt|;
-name|local
-operator|=
-name|l
+name|r
 expr_stmt|;
 block|}
 annotation|@
@@ -356,19 +325,6 @@ name|IOException
 throws|,
 name|ServletException
 block|{
-name|RequestContext
-name|old
-init|=
-name|local
-operator|.
-name|setContext
-argument_list|(
-name|requestContext
-operator|.
-name|get
-argument_list|()
-argument_list|)
-decl_stmt|;
 try|try
 block|{
 name|chain
@@ -383,12 +339,13 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|local
+name|cleanup
 operator|.
-name|setContext
-argument_list|(
-name|old
-argument_list|)
+name|get
+argument_list|()
+operator|.
+name|run
+argument_list|()
 expr_stmt|;
 block|}
 block|}
