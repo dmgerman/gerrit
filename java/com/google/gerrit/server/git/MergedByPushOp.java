@@ -480,6 +480,10 @@ name|RevWalk
 import|;
 end_import
 
+begin_comment
+comment|/**  * Operation to close a change on push.  *  *<p>When we find a change corresponding to a commit that is pushed to a branch directly, we close  * the change. This class marks the change as merged, and sends out the email notification.  */
+end_comment
+
 begin_class
 DECL|class|MergedByPushOp
 specifier|public
