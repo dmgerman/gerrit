@@ -156,6 +156,10 @@ name|AssistedInject
 import|;
 end_import
 
+begin_comment
+comment|/** Sender that informs a user by email that the HTTP password of their account was updated. */
+end_comment
+
 begin_class
 DECL|class|HttpPasswordUpdateSender
 specifier|public
