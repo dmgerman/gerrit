@@ -206,6 +206,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * Sender that informs a user by email about the removal of an SSH or GPG key from their account.  */
+end_comment
+
 begin_class
 DECL|class|DeleteKeySender
 specifier|public
