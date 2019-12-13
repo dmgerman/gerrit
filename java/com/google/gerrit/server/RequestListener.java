@@ -80,6 +80,10 @@ name|ExtensionPoint
 import|;
 end_import
 
+begin_comment
+comment|/**  * Extension point that allows to listen to incoming requests.  *  *<p>This extension point is invoked each time the server executes a request from a user (REST  * request, SSH request, Git push/fetch).  */
+end_comment
+
 begin_interface
 annotation|@
 name|ExtensionPoint
