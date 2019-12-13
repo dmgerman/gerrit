@@ -323,38 +323,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getEmail ()
-specifier|public
-name|String
-name|getEmail
-parameter_list|()
-block|{
-return|return
-name|user
-operator|.
-name|getAccount
-argument_list|()
-operator|.
-name|preferredEmail
-argument_list|()
-return|;
-block|}
-DECL|method|getUserNameEmail ()
-specifier|public
-name|String
-name|getUserNameEmail
-parameter_list|()
-block|{
-return|return
-name|getUserNameEmailFor
-argument_list|(
-name|user
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|setupSoyContext ()
@@ -384,8 +352,13 @@ name|put
 argument_list|(
 literal|"userNameEmail"
 argument_list|,
-name|getUserNameEmail
+name|getUserNameEmailFor
+argument_list|(
+name|user
+operator|.
+name|getAccountId
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|soyContextEmailData
@@ -408,6 +381,22 @@ parameter_list|()
 block|{
 return|return
 literal|true
+return|;
+block|}
+DECL|method|getEmail ()
+specifier|private
+name|String
+name|getEmail
+parameter_list|()
+block|{
+return|return
+name|user
+operator|.
+name|getAccount
+argument_list|()
+operator|.
+name|preferredEmail
+argument_list|()
 return|;
 block|}
 block|}
