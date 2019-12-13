@@ -188,6 +188,10 @@ name|Config
 import|;
 end_import
 
+begin_comment
+comment|/**  * Validator that checks if an email address is valid and allowed for receiving notification emails.  *  *<p>An email address is valid if it is syntactically correct.  *  *<p>An email address is allowed if its top level domain is allowed by Gerrit's configuration.  */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
