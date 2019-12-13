@@ -182,6 +182,10 @@ name|Assisted
 import|;
 end_import
 
+begin_comment
+comment|/**  * Sender that informs a user by email about the registration of a new email address for their  * account.  */
+end_comment
+
 begin_class
 DECL|class|RegisterNewEmailSender
 specifier|public
