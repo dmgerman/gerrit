@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2018 The Android Open Source Project
+comment|// Copyright (C) 2019 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -66,11 +66,27 @@ name|git
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|UseSsh
+import|;
+end_import
+
 begin_class
-DECL|class|GitOverHttpServletIT
+annotation|@
+name|UseSsh
+DECL|class|GitOverHttpServletWithSshdEnabledIT
 specifier|public
 class|class
-name|GitOverHttpServletIT
+name|GitOverHttpServletWithSshdEnabledIT
 extends|extends
 name|AbstractGitOverHttpServlet
 block|{}
