@@ -350,6 +350,10 @@ name|Collections
 import|;
 end_import
 
+begin_comment
+comment|/**  * Implementation for indexing a Gerrit-managed repository (project). The project will be loaded  * from {@link ProjectCache}.  */
+end_comment
+
 begin_class
 DECL|class|ProjectIndexerImpl
 specifier|public

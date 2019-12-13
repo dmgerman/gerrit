@@ -492,6 +492,10 @@ name|Repository
 import|;
 end_import
 
+begin_comment
+comment|/**  * Checker that compares values stored in the change index to metadata in NoteDb to detect index  * documents that should have been updated (= stale).  */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -600,6 +604,7 @@ operator|=
 name|indexConfig
 expr_stmt|;
 block|}
+comment|/**    * Returns a {@link StalenessCheckResult} with structured information about staleness of the    * provided {@link Change.Id}.    */
 DECL|method|check (Change.Id id)
 specifier|public
 name|StalenessCheckResult
@@ -744,6 +749,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns a {@link StalenessCheckResult} with structured information about staleness of the    * provided change.    */
 annotation|@
 name|UsedAt
 argument_list|(
@@ -960,6 +966,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns a map containing the parsed version of {@link RefStatePattern}. See {@link    * RefStatePattern}.    */
 DECL|method|parsePatterns ( Iterable<byte[]> patterns)
 specifier|public
 specifier|static

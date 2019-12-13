@@ -350,6 +350,10 @@ name|Config
 import|;
 end_import
 
+begin_comment
+comment|/** Trigger for online reindexing in case the index version in use is not the latest. */
+end_comment
+
 begin_class
 DECL|class|VersionManager
 specifier|public

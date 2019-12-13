@@ -160,6 +160,10 @@ name|GroupPredicates
 import|;
 end_import
 
+begin_comment
+comment|/**  * Index for internal Gerrit groups. This class is mainly used for typing the generic parent class  * that contains actual implementations.  */
+end_comment
+
 begin_interface
 DECL|interface|GroupIndex
 specifier|public
@@ -176,7 +180,6 @@ name|InternalGroup
 argument_list|>
 block|{
 DECL|interface|Factory
-specifier|public
 interface|interface
 name|Factory
 extends|extends

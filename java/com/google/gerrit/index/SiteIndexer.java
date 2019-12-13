@@ -260,6 +260,10 @@ name|NullOutputStream
 import|;
 end_import
 
+begin_comment
+comment|/** Base class for implementations that can index all entities of a given type. */
+end_comment
+
 begin_class
 DECL|class|SiteIndexer
 specifier|public
@@ -293,6 +297,7 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
+comment|/** Result of an operation to index a subset or all of the entities of a given type. */
 DECL|class|Result
 specifier|public
 specifier|static
@@ -505,6 +510,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Indexes all entities for the provided index. */
 DECL|method|indexAll (I index)
 specifier|public
 specifier|abstract

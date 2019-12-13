@@ -492,6 +492,10 @@ name|Config
 import|;
 end_import
 
+begin_comment
+comment|/**  * Listener for ref update events that reindexes entities in case the updated Git reference was used  * to compute contents of an index document.  *  *<p>Reindexes any open changes that has a destination branch that was updated to ensure that  * 'mergeable' is still current.  *  *<p>Will reindex accounts when the account's NoteDb ref changes.  */
+end_comment
+
 begin_class
 DECL|class|ReindexAfterRefUpdate
 specifier|public

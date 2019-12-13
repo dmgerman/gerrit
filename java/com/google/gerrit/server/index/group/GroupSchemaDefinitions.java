@@ -128,6 +128,10 @@ name|InternalGroup
 import|;
 end_import
 
+begin_comment
+comment|/** Definition of group index versions (schemata). See {@link SchemaDefinitions}. */
+end_comment
+
 begin_class
 DECL|class|GroupSchemaDefinitions
 specifier|public
@@ -297,6 +301,7 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+comment|/** Singleton instance of the schema definitions. This is one per JVM. */
 DECL|field|INSTANCE
 specifier|public
 specifier|static

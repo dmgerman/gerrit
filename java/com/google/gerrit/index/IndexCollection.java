@@ -223,7 +223,7 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** @return the current search index version. */
+comment|/** Returns the current search index version. */
 DECL|method|getSearchIndex ()
 specifier|public
 name|I

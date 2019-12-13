@@ -138,6 +138,10 @@ name|Inject
 import|;
 end_import
 
+begin_comment
+comment|/** Bundle of service classes that make up the account index. */
+end_comment
+
 begin_class
 DECL|class|AccountIndexDefinition
 specifier|public

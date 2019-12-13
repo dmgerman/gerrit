@@ -156,20 +156,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|ImmutableSet
 import|;
 end_import
@@ -382,6 +368,10 @@ name|ConfigInvalidException
 import|;
 end_import
 
+begin_comment
+comment|/** Set of index-related utility methods. */
+end_comment
+
 begin_class
 DECL|class|IndexUtils
 specifier|public
@@ -389,31 +379,7 @@ specifier|final
 class|class
 name|IndexUtils
 block|{
-DECL|field|CUSTOM_CHAR_MAPPING
-specifier|public
-specifier|static
-specifier|final
-name|ImmutableMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|CUSTOM_CHAR_MAPPING
-init|=
-name|ImmutableMap
-operator|.
-name|of
-argument_list|(
-literal|"_"
-argument_list|,
-literal|" "
-argument_list|,
-literal|"."
-argument_list|,
-literal|" "
-argument_list|)
-decl_stmt|;
+comment|/** Mark an index version as ready to serve queries. */
 DECL|method|setReady (SitePaths sitePaths, String name, int version, boolean ready)
 specifier|public
 specifier|static
@@ -478,61 +444,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getReady (SitePaths sitePaths, String name, int version)
-specifier|public
-specifier|static
-name|boolean
-name|getReady
-parameter_list|(
-name|SitePaths
-name|sitePaths
-parameter_list|,
-name|String
-name|name
-parameter_list|,
-name|int
-name|version
-parameter_list|)
-block|{
-try|try
-block|{
-name|GerritIndexStatus
-name|cfg
-init|=
-operator|new
-name|GerritIndexStatus
-argument_list|(
-name|sitePaths
-argument_list|)
-decl_stmt|;
-return|return
-name|cfg
-operator|.
-name|getReady
-argument_list|(
-name|name
-argument_list|,
-name|version
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|ConfigInvalidException
-decl||
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|StorageException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
+comment|/**    * Returns a sanitized set of fields for account index queries by removing fields that the current    * index version doesn't support and accounting for numeric vs. string primary keys. The primary    * key situation is temporary and should be removed after the migration is done.    */
 DECL|method|accountFields (QueryOptions opts, boolean useLegacyNumericFields)
 specifier|public
 specifier|static
@@ -561,6 +473,7 @@ name|useLegacyNumericFields
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns a sanitized set of fields for account index queries by removing fields that the current    * index version doesn't support and accounting for numeric vs. string primary keys. The primary    * key situation is temporary and should be removed after the migration is done.    */
 DECL|method|accountFields (Set<String> fields, boolean useLegacyNumericFields)
 specifier|public
 specifier|static
@@ -624,6 +537,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns a sanitized set of fields for change index queries by removing fields that the current    * index version doesn't support and accounting for numeric vs. string primary keys. The primary    * key situation is temporary and should be removed after the migration is done.    */
 DECL|method|changeFields (QueryOptions opts, boolean useLegacyNumericFields)
 specifier|public
 specifier|static
@@ -737,6 +651,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns a sanitized set of fields for group index queries by removing fields that the index    * doesn't support and accounting for numeric vs. string primary keys. The primary key situation    * is temporary and should be removed after the migration is done.    */
 DECL|method|groupFields (QueryOptions opts)
 specifier|public
 specifier|static
@@ -796,6 +711,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/** Returns a index-friendly representation of a {@link CurrentUser} to be used in queries. */
 DECL|method|describe (CurrentUser user)
 specifier|public
 specifier|static
@@ -859,6 +775,7 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/**    * Returns a sanitized set of fields for project index queries by removing fields that the index    * doesn't support.    */
 DECL|method|projectFields (QueryOptions opts)
 specifier|public
 specifier|static

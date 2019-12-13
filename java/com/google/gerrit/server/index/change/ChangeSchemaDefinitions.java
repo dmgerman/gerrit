@@ -130,6 +130,10 @@ name|ChangeData
 import|;
 end_import
 
+begin_comment
+comment|/** Definition of change index versions (schemata). See {@link SchemaDefinitions}. */
+end_comment
+
 begin_class
 DECL|class|ChangeSchemaDefinitions
 specifier|public
@@ -456,6 +460,7 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
+comment|/**    * Name of the change index to be used when contacting index backends or loading configurations.    */
 DECL|field|NAME
 specifier|public
 specifier|static
@@ -465,6 +470,7 @@ name|NAME
 init|=
 literal|"changes"
 decl_stmt|;
+comment|/** Singleton instance of the schema definitions. This is one per JVM. */
 DECL|field|INSTANCE
 specifier|public
 specifier|static

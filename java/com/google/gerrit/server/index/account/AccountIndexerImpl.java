@@ -350,6 +350,10 @@ name|Optional
 import|;
 end_import
 
+begin_comment
+comment|/**  * Implementation for indexing a Gerrit account. The account will be loaded from {@link  * AccountCache}.  */
+end_comment
+
 begin_class
 DECL|class|AccountIndexerImpl
 specifier|public
@@ -370,6 +374,7 @@ operator|.
 name|forEnclosingClass
 argument_list|()
 decl_stmt|;
+comment|/** Factory for creating an instance. */
 DECL|interface|Factory
 specifier|public
 interface|interface

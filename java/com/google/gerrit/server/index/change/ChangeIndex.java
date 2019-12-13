@@ -180,6 +180,10 @@ name|LegacyChangeIdStrPredicate
 import|;
 end_import
 
+begin_comment
+comment|/**  * Index for Gerrit changes. This class is mainly used for typing the generic parent class that  * contains actual implementations.  */
+end_comment
+
 begin_interface
 DECL|interface|ChangeIndex
 specifier|public
@@ -196,7 +200,6 @@ name|ChangeData
 argument_list|>
 block|{
 DECL|interface|Factory
-specifier|public
 interface|interface
 name|Factory
 extends|extends

@@ -66,6 +66,10 @@ name|index
 package|;
 end_package
 
+begin_comment
+comment|/** Exception to be thrown when attempting to start a second reindex job. */
+end_comment
+
 begin_class
 DECL|class|ReindexerAlreadyRunningException
 specifier|public

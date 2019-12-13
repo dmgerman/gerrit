@@ -454,6 +454,10 @@ name|TextProgressMonitor
 import|;
 end_import
 
+begin_comment
+comment|/**  * Implementation that can index all groups on a host. Used by Gerrit's initialization and upgrade  * programs as well as by REST API endpoints that offer this functionality.  */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton

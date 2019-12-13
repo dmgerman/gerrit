@@ -82,6 +82,10 @@ name|AccountGroup
 import|;
 end_import
 
+begin_comment
+comment|/** Interface for indexing an internal Gerrit group. */
+end_comment
+
 begin_interface
 DECL|interface|GroupIndexer
 specifier|public

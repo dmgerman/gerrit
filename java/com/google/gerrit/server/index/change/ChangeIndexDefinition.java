@@ -140,6 +140,10 @@ name|Inject
 import|;
 end_import
 
+begin_comment
+comment|/** Bundle of service classes that make up the change index. */
+end_comment
+
 begin_class
 DECL|class|ChangeIndexDefinition
 specifier|public

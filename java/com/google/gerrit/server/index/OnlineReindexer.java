@@ -202,6 +202,10 @@ name|AtomicBoolean
 import|;
 end_import
 
+begin_comment
+comment|/**  * Background thread for running an index schema upgrade by reindexing all documents in an index  * using the new version. Intended to be run while Gerrit is serving traffic to prepare for a  * near-zero downtime upgrade.  */
+end_comment
+
 begin_class
 DECL|class|OnlineReindexer
 specifier|public
@@ -375,6 +379,7 @@ operator|=
 name|listeners
 expr_stmt|;
 block|}
+comment|/** Starts the background process. */
 DECL|method|start ()
 specifier|public
 name|void
@@ -398,14 +403,9 @@ name|t
 init|=
 operator|new
 name|Thread
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
+argument_list|(
 parameter_list|()
+lambda|->
 block|{
 name|boolean
 name|ok
@@ -487,7 +487,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
+argument_list|)
 decl_stmt|;
 name|t
 operator|.
@@ -520,6 +520,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/** Returns {@code true} if the background indexer is currently running. */
 DECL|method|isRunning ()
 specifier|public
 name|boolean
@@ -533,6 +534,7 @@ name|get
 argument_list|()
 return|;
 block|}
+comment|/** Returns the index version that this indexer is creating documents for. */
 DECL|method|getVersion ()
 specifier|public
 name|int
@@ -746,6 +748,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Switches the search index from the old version to the new version. This method should be called    * when the new version is fully ready.    */
 DECL|method|activateIndex ()
 specifier|public
 name|void
