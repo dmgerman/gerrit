@@ -327,19 +327,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getAssigneeName ()
-specifier|public
-name|String
-name|getAssigneeName
-parameter_list|()
-block|{
-return|return
-name|getNameFor
-argument_list|(
-name|assignee
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|setupSoyContext ()
@@ -359,8 +346,10 @@ name|put
 argument_list|(
 literal|"assigneeName"
 argument_list|,
-name|getAssigneeName
-argument_list|()
+name|getNameFor
+argument_list|(
+name|assignee
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
