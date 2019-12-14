@@ -1557,7 +1557,13 @@ comment|// level
 name|msg
 argument_list|,
 comment|// message text
-literal|"SSHD"
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 comment|// thread name
 literal|null
