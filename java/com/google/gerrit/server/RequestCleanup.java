@@ -182,19 +182,9 @@ init|(
 name|cleanup
 init|)
 block|{
-if|if
-condition|(
-name|ran
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Request has already been cleaned up"
-argument_list|)
-throw|;
-block|}
+name|assertNotRan
+argument_list|()
+expr_stmt|;
 name|cleanup
 operator|.
 name|add
@@ -217,6 +207,9 @@ init|(
 name|cleanup
 init|)
 block|{
+name|assertNotRan
+argument_list|()
+expr_stmt|;
 name|ran
 operator|=
 literal|true
@@ -280,6 +273,26 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+block|}
+DECL|method|assertNotRan ()
+specifier|private
+name|void
+name|assertNotRan
+parameter_list|()
+block|{
+if|if
+condition|(
+name|ran
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Request has already been cleaned up"
+argument_list|)
+throw|;
 block|}
 block|}
 block|}
