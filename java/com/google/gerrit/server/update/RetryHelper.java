@@ -975,7 +975,7 @@ name|Field
 argument_list|<
 name|String
 argument_list|>
-name|lastAttemptCauseField
+name|originalCauseField
 init|=
 name|Field
 operator|.
@@ -992,7 +992,7 @@ argument_list|)
 operator|.
 name|description
 argument_list|(
-literal|"The cause for the last attempt."
+literal|"The original cause that triggered the retry."
 argument_list|)
 operator|.
 name|build
@@ -1053,7 +1053,7 @@ name|actionTypeField
 argument_list|,
 name|operationNameField
 argument_list|,
-name|lastAttemptCauseField
+name|originalCauseField
 argument_list|)
 expr_stmt|;
 name|timeoutCount
@@ -1082,7 +1082,7 @@ name|actionTypeField
 argument_list|,
 name|operationNameField
 argument_list|,
-name|lastAttemptCauseField
+name|originalCauseField
 argument_list|)
 expr_stmt|;
 name|autoRetryCount
@@ -2370,6 +2370,8 @@ name|retryerBuilder
 operator|.
 name|build
 argument_list|()
+argument_list|,
+name|listener
 argument_list|)
 return|;
 block|}
@@ -2425,7 +2427,7 @@ argument_list|)
 argument_list|,
 name|listener
 operator|.
-name|getCause
+name|getOriginalCause
 argument_list|()
 operator|.
 name|map
@@ -2584,11 +2586,11 @@ block|}
 end_function
 
 begin_comment
-comment|/**    * Executes an action and records the timeout as metric.    *    * @param actionType the type of the action    * @param action the action which should be executed and retried on failure    * @param opts options for retrying the action on failure    * @param retryer the retryer    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
+comment|/**    * Executes an action and records the timeout as metric.    *    * @param actionType the type of the action    * @param action the action which should be executed and retried on failure    * @param opts options for retrying the action on failure    * @param retryer the retryer    * @param listener metric listener    * @return the result of executing the action    * @throws Throwable any error or exception that made the action fail, callers are expected to    *     catch and inspect this Throwable to decide carefully whether it should be re-thrown    */
 end_comment
 
 begin_function
-DECL|method|executeWithTimeoutCount ( String actionType, Action<T> action, Options opts, Retryer<T> retryer)
+DECL|method|executeWithTimeoutCount ( String actionType, Action<T> action, Options opts, Retryer<T> retryer, MetricListener listener)
 specifier|private
 parameter_list|<
 name|T
@@ -2613,6 +2615,9 @@ argument_list|<
 name|T
 argument_list|>
 name|retryer
+parameter_list|,
+name|MetricListener
+name|listener
 parameter_list|)
 throws|throws
 name|Throwable
@@ -2663,22 +2668,22 @@ argument_list|(
 literal|"N/A"
 argument_list|)
 argument_list|,
-name|e
+name|listener
 operator|.
-name|getCause
+name|getOriginalCause
 argument_list|()
-operator|!=
-literal|null
-condition|?
-name|formatCause
+operator|.
+name|map
 argument_list|(
-name|e
-operator|.
-name|getCause
-argument_list|()
+name|this
+operator|::
+name|formatCause
 argument_list|)
-else|:
+operator|.
+name|orElse
+argument_list|(
 literal|"_unknown"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2842,13 +2847,13 @@ specifier|private
 name|long
 name|attemptCount
 decl_stmt|;
-DECL|field|cause
+DECL|field|originalCause
 specifier|private
 name|Optional
 argument_list|<
 name|Throwable
 argument_list|>
-name|cause
+name|originalCause
 decl_stmt|;
 DECL|method|MetricListener ()
 name|MetricListener
@@ -2858,7 +2863,7 @@ name|attemptCount
 operator|=
 literal|1
 expr_stmt|;
-name|cause
+name|originalCause
 operator|=
 name|Optional
 operator|.
@@ -2892,13 +2897,17 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|attemptCount
+operator|==
+literal|1
+operator|&&
 name|attempt
 operator|.
 name|hasException
 argument_list|()
 condition|)
 block|{
-name|cause
+name|originalCause
 operator|=
 name|Optional
 operator|.
@@ -2921,16 +2930,16 @@ return|return
 name|attemptCount
 return|;
 block|}
-DECL|method|getCause ()
+DECL|method|getOriginalCause ()
 name|Optional
 argument_list|<
 name|Throwable
 argument_list|>
-name|getCause
+name|getOriginalCause
 parameter_list|()
 block|{
 return|return
-name|cause
+name|originalCause
 return|;
 block|}
 block|}
