@@ -275,7 +275,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Checks if documents in the group index are stale.  *  *<p>An index document is considered stale if the stored SHA1 differs from the HEAD SHA1 of the  * groups branch.  *  *<p>Note: This only applies to NoteDb.  */
+comment|/**  * Checks if documents in the group index are stale.  *  *<p>An index document is considered stale if the stored SHA1 differs from the HEAD SHA1 of the  * groups branch.  */
 end_comment
 
 begin_class

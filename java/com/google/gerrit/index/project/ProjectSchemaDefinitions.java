@@ -110,6 +110,10 @@ name|SchemaDefinitions
 import|;
 end_import
 
+begin_comment
+comment|/** Definition of project index versions (schemata). See {@link SchemaDefinitions}. */
+end_comment
+
 begin_class
 DECL|class|ProjectSchemaDefinitions
 specifier|public
@@ -211,6 +215,17 @@ argument_list|(
 name|V3
 argument_list|)
 decl_stmt|;
+comment|/**    * Name of the project index to be used when contacting index backends or loading configurations.    */
+DECL|field|NAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NAME
+init|=
+literal|"projects"
+decl_stmt|;
+comment|/** Singleton instance of the schema definitions. This is one per JVM. */
 DECL|field|INSTANCE
 specifier|public
 specifier|static
@@ -221,15 +236,6 @@ init|=
 operator|new
 name|ProjectSchemaDefinitions
 argument_list|()
-decl_stmt|;
-DECL|field|NAME
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NAME
-init|=
-literal|"projects"
 decl_stmt|;
 DECL|method|ProjectSchemaDefinitions ()
 specifier|private

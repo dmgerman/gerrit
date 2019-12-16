@@ -82,6 +82,10 @@ name|Account
 import|;
 end_import
 
+begin_comment
+comment|/** Interface for indexing a Gerrit account. */
+end_comment
+
 begin_interface
 DECL|interface|AccountIndexer
 specifier|public

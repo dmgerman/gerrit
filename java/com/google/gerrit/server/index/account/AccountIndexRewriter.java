@@ -240,6 +240,10 @@ name|MutableInteger
 import|;
 end_import
 
+begin_comment
+comment|/** Rewriter for the account index. See {@link IndexRewriter} for details. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton

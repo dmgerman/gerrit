@@ -302,6 +302,10 @@ name|Config
 import|;
 end_import
 
+begin_comment
+comment|/**  * Module that installs a listener to Gerrit's lifecycle events to specify which index versions to  * use.  */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -407,6 +411,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Listener to Gerrit's lifecycle events to specify which index versions to use. */
 annotation|@
 name|Singleton
 DECL|class|SingleVersionListener

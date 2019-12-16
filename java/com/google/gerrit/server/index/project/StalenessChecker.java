@@ -314,6 +314,10 @@ name|Optional
 import|;
 end_import
 
+begin_comment
+comment|/**  * Checker that compares values stored in the project index to metadata in NoteDb to detect index  * documents that should have been updated (= stale).  */
+end_comment
+
 begin_class
 DECL|class|StalenessChecker
 specifier|public
@@ -401,6 +405,7 @@ operator|=
 name|indexConfig
 expr_stmt|;
 block|}
+comment|/**    * Returns a {@link StalenessCheckResult} with structured information about staleness of the    * provided {@link Project.NameKey}.    */
 DECL|method|check (Project.NameKey project)
 specifier|public
 name|StalenessCheckResult

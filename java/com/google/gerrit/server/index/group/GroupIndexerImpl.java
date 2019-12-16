@@ -350,6 +350,10 @@ name|Optional
 import|;
 end_import
 
+begin_comment
+comment|/**  * Implementation for indexing an internal Gerrit group. The group will be loaded from {@link  * GroupCache}.  */
+end_comment
+
 begin_class
 DECL|class|GroupIndexerImpl
 specifier|public

@@ -224,6 +224,10 @@ name|Set
 import|;
 end_import
 
+begin_comment
+comment|/**  * Wrapper around {@link Predicate}s that is returned by the {@link  * com.google.gerrit.index.IndexRewriter}. See {@link IndexedQuery}.  */
+end_comment
+
 begin_class
 DECL|class|IndexedGroupQuery
 specifier|public

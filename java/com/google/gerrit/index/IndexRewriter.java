@@ -96,6 +96,10 @@ name|QueryParseException
 import|;
 end_import
 
+begin_comment
+comment|/**  * Rewriter to sanitize queries before they are sent to the index. The idea here is that the  * rewriter swaps out predicates so that the query can be processed by the index.  */
+end_comment
+
 begin_interface
 DECL|interface|IndexRewriter
 specifier|public
@@ -105,6 +109,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
+comment|/**    * Returns a sanitized version of the provided predicate. Uses {@link QueryOptions} to enforce    * index-specific limits such as {@code maxTerms}.    */
 DECL|method|rewrite (Predicate<T> in, QueryOptions opts)
 name|Predicate
 argument_list|<

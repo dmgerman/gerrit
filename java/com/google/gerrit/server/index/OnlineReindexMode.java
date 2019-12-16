@@ -76,6 +76,10 @@ name|Optional
 import|;
 end_import
 
+begin_comment
+comment|/** Per-thread singleton to signal if online reindexing is in progress. */
+end_comment
+
 begin_class
 DECL|class|OnlineReindexMode
 specifier|public

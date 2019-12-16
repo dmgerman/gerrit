@@ -128,6 +128,10 @@ name|AccountState
 import|;
 end_import
 
+begin_comment
+comment|/** Definition of account index versions (schemata). See {@link SchemaDefinitions}. */
+end_comment
+
 begin_class
 DECL|class|AccountSchemaDefinitions
 specifier|public
@@ -355,6 +359,7 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
+comment|/**    * Name of the account index to be used when contacting index backends or loading configurations.    */
 DECL|field|NAME
 specifier|public
 specifier|static
@@ -364,6 +369,7 @@ name|NAME
 init|=
 literal|"accounts"
 decl_stmt|;
+comment|/** Singleton instance of the schema definitions. This is one per JVM. */
 DECL|field|INSTANCE
 specifier|public
 specifier|static

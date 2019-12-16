@@ -140,6 +140,10 @@ name|Singleton
 import|;
 end_import
 
+begin_comment
+comment|/** Collection of active change indices. See {@link IndexCollection} for details on collections. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton

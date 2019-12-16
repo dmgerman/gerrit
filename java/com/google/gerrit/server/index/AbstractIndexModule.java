@@ -254,6 +254,10 @@ name|Config
 import|;
 end_import
 
+begin_comment
+comment|/**  * Base class to establish implementation-independent index bindings. To be subclassed by concrete  * index implementations, such as {@link com.google.gerrit.lucene.LuceneIndexModule}.  */
+end_comment
+
 begin_class
 DECL|class|AbstractIndexModule
 specifier|public
