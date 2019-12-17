@@ -405,7 +405,7 @@ operator|=
 name|indexConfig
 expr_stmt|;
 block|}
-comment|/**    * Returns a {@link StalenessCheckResult} with structured information about staleness of the    * provided {@link Project.NameKey}.    */
+comment|/**    * Returns a {@link StalenessCheckResult} with structured information about staleness of the    * provided {@link com.google.gerrit.entities.Project.NameKey}.    */
 DECL|method|check (Project.NameKey project)
 specifier|public
 name|StalenessCheckResult
