@@ -604,7 +604,7 @@ operator|=
 name|indexConfig
 expr_stmt|;
 block|}
-comment|/**    * Returns a {@link StalenessCheckResult} with structured information about staleness of the    * provided {@link Change.Id}.    */
+comment|/**    * Returns a {@link StalenessCheckResult} with structured information about staleness of the    * provided {@link com.google.gerrit.entities.Change.Id}.    */
 DECL|method|check (Change.Id id)
 specifier|public
 name|StalenessCheckResult
