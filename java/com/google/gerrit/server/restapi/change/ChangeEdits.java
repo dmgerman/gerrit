@@ -148,6 +148,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|FileContentInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|common
 operator|.
 name|DiffWebLinkInfo
@@ -1044,9 +1062,7 @@ name|ChangeResource
 argument_list|,
 name|ChangeEditResource
 argument_list|,
-name|Put
-operator|.
-name|Input
+name|FileContentInput
 argument_list|>
 block|{
 DECL|field|putEdit
@@ -1073,7 +1089,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource resource, IdString id, Put.Input input)
+DECL|method|apply (ChangeResource resource, IdString id, FileContentInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -1087,9 +1103,7 @@ parameter_list|,
 name|IdString
 name|id
 parameter_list|,
-name|Put
-operator|.
-name|Input
+name|FileContentInput
 name|input
 parameter_list|)
 throws|throws
@@ -1846,25 +1860,9 @@ name|RestModifyView
 argument_list|<
 name|ChangeEditResource
 argument_list|,
-name|Put
-operator|.
-name|Input
+name|FileContentInput
 argument_list|>
 block|{
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-DECL|field|content
-annotation|@
-name|DefaultInput
-specifier|public
-name|RawInput
-name|content
-decl_stmt|;
-block|}
 DECL|field|editModifier
 specifier|private
 specifier|final
@@ -1904,7 +1902,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeEditResource rsrc, Input input)
+DECL|method|apply (ChangeEditResource rsrc, FileContentInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -1915,7 +1913,7 @@ parameter_list|(
 name|ChangeEditResource
 name|rsrc
 parameter_list|,
-name|Input
+name|FileContentInput
 name|input
 parameter_list|)
 throws|throws
