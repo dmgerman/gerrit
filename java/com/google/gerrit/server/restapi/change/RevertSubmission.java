@@ -992,6 +992,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayDeque
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|ArrayList
 import|;
 end_import
@@ -1023,16 +1033,6 @@ operator|.
 name|util
 operator|.
 name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedList
 import|;
 end_import
 
@@ -2514,7 +2514,7 @@ argument_list|>
 name|commitsToSearch
 init|=
 operator|new
-name|LinkedList
+name|ArrayDeque
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2928,7 +2928,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Couldn't find a non-merge commit after encountering commit %s when trying to revert the submission of change %d"
+literal|"Couldn't find a non-merge commit after encountering commit %s when trying to revert"
+operator|+
+literal|" the submission of change %d"
 argument_list|,
 name|potentialCommitToReturn
 operator|.
