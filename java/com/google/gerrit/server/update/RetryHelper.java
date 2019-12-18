@@ -1869,9 +1869,6 @@ argument_list|(
 name|this
 argument_list|,
 name|internalAccountQuery
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|actionName
 argument_list|,
@@ -1913,9 +1910,6 @@ argument_list|(
 name|this
 argument_list|,
 name|internalChangeQuery
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|actionName
 argument_list|,

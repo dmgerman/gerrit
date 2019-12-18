@@ -126,6 +126,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -198,13 +210,16 @@ throws|throws
 name|Exception
 function_decl|;
 block|}
-DECL|method|RetryableIndexQueryAction ( RetryHelper retryHelper, Q internalQuery, String actionName, IndexQueryAction<T, Q> indexQuery)
+DECL|method|RetryableIndexQueryAction ( RetryHelper retryHelper, Provider<Q> internalQuery, String actionName, IndexQueryAction<T, Q> indexQuery)
 name|RetryableIndexQueryAction
 parameter_list|(
 name|RetryHelper
 name|retryHelper
 parameter_list|,
+name|Provider
+argument_list|<
 name|Q
+argument_list|>
 name|internalQuery
 parameter_list|,
 name|String
@@ -236,6 +251,9 @@ operator|.
 name|call
 argument_list|(
 name|internalQuery
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
