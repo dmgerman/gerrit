@@ -102,20 +102,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|flogger
-operator|.
-name|FluentLogger
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|common
@@ -500,18 +486,6 @@ specifier|public
 class|class
 name|AutoMerger
 block|{
-DECL|field|logger
-specifier|private
-specifier|static
-specifier|final
-name|FluentLogger
-name|logger
-init|=
-name|FluentLogger
-operator|.
-name|forEnclosingClass
-argument_list|()
-decl_stmt|;
 annotation|@
 name|UsedAt
 argument_list|(
@@ -603,9 +577,7 @@ operator|=
 name|gerritIdent
 expr_stmt|;
 block|}
-comment|/**    * Creates an auto-merge commit of the parents of the given merge commit.    *    *<p>In case of an exception the creation of the auto-merge commit is retried a few times. E.g.    * this allows the operation to succeed if a Git update fails due to a temporary issue.    *    * @return auto-merge commit or {@code null} if an auto-merge commit couldn't be created. Headers    *     of the returned RevCommit are parsed.    */
-annotation|@
-name|Nullable
+comment|/**    * Creates an auto-merge commit of the parents of the given merge commit.    *    *<p>In case of an exception the creation of the auto-merge commit is retried a few times. E.g.    * this allows the operation to succeed if a Git update fails due to a temporary issue.    *    * @return auto-merge commit. Headers of the returned RevCommit are parsed.    */
 DECL|method|merge ( Repository repo, RevWalk rw, ObjectInserter ins, RevCommit merge, ThreeWayMergeStrategy mergeStrategy)
 specifier|public
 name|RevCommit
@@ -695,9 +667,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Creates an auto-merge commit of the parents of the given merge commit.    *    * @return auto-merge commit or {@code null} if an auto-merge commit couldn't be created. Headers    *     of the returned RevCommit are parsed.    */
-annotation|@
-name|Nullable
+comment|/**    * Creates an auto-merge commit of the parents of the given merge commit.    *    * @return auto-merge commit. Headers of the returned RevCommit are parsed.    */
 DECL|method|createAutoMergeCommit ( Repository repo, RevWalk rw, ObjectInserter ins, RevCommit merge, ThreeWayMergeStrategy mergeStrategy)
 specifier|private
 name|RevCommit
@@ -921,11 +891,7 @@ argument_list|)
 expr_stmt|;
 name|boolean
 name|couldMerge
-decl_stmt|;
-try|try
-block|{
-name|couldMerge
-operator|=
+init|=
 name|m
 operator|.
 name|merge
@@ -935,41 +901,7 @@ operator|.
 name|getParents
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-decl||
-name|RuntimeException
-name|e
-parameter_list|)
-block|{
-comment|// It is not safe to continue further down in this method as throwing
-comment|// an exception most likely means that the merge tree was not created
-comment|// and m.getMergeResults() is empty. This would mean that all paths are
-comment|// unmerged and Gerrit UI would show all paths in the patch list.
-name|logger
-operator|.
-name|atWarning
-argument_list|()
-operator|.
-name|withCause
-argument_list|(
-name|e
-argument_list|)
-operator|.
-name|log
-argument_list|(
-literal|"Error attempting automerge %s"
-argument_list|,
-name|refName
-argument_list|)
-expr_stmt|;
-return|return
-literal|null
-return|;
-block|}
+decl_stmt|;
 name|ObjectId
 name|treeId
 decl_stmt|;
