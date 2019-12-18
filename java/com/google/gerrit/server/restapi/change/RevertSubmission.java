@@ -2426,7 +2426,7 @@ name|c
 lambda|->
 name|c
 operator|.
-name|updated
+name|revertOf
 argument_list|)
 argument_list|)
 expr_stmt|;

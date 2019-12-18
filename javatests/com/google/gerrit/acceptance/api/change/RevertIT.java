@@ -204,20 +204,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|UseClockStep
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
 name|config
 operator|.
 name|GerritConfig
@@ -5858,10 +5844,6 @@ name|value
 operator|=
 literal|"true"
 argument_list|)
-comment|// In this test and some of the following, we use @UseClockStep because the test depends on the
-comment|// update time.
-annotation|@
-name|UseClockStep
 DECL|method|revertSubmissionDifferentRepositoriesWithDependantChange ()
 specifier|public
 name|void
@@ -6063,30 +6045,25 @@ argument_list|(
 literal|3
 argument_list|)
 expr_stmt|;
-comment|// Ensures that revertChanges[i] is the revert of resultCommits[i] because the reverts are by
-comment|// update time.
-name|Collections
-operator|.
-name|reverse
-argument_list|(
-name|resultCommits
-argument_list|)
-expr_stmt|;
 name|String
-name|sha1FirstChange
+name|sha1RevertOfTheSecondChange
 init|=
-name|resultCommits
+name|revertChanges
 operator|.
 name|get
 argument_list|(
-literal|0
+literal|1
 argument_list|)
 operator|.
-name|getCommit
+name|current
 argument_list|()
 operator|.
-name|getName
-argument_list|()
+name|commit
+argument_list|(
+literal|false
+argument_list|)
+operator|.
+name|commit
 decl_stmt|;
 name|String
 name|sha1SecondChange
@@ -6105,24 +6082,20 @@ name|getName
 argument_list|()
 decl_stmt|;
 name|String
-name|sha1SecondRevert
+name|sha1ThirdChange
 init|=
-name|revertChanges
+name|resultCommits
 operator|.
 name|get
 argument_list|(
-literal|1
+literal|2
 argument_list|)
 operator|.
-name|current
+name|getCommit
 argument_list|()
 operator|.
-name|commit
-argument_list|(
-literal|false
-argument_list|)
-operator|.
-name|commit
+name|getName
+argument_list|()
 decl_stmt|;
 name|assertThat
 argument_list|(
@@ -6153,7 +6126,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|sha1FirstChange
+name|sha1RevertOfTheSecondChange
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -6217,7 +6190,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|sha1SecondRevert
+name|sha1ThirdChange
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -6777,6 +6750,13 @@ name|revertSubmission
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Collections
+operator|.
+name|reverse
+argument_list|(
+name|revertChanges
+argument_list|)
+expr_stmt|;
 name|String
 name|sha1SecondChange
 init|=
@@ -7131,6 +7111,13 @@ name|revertSubmission
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Collections
+operator|.
+name|reverse
+argument_list|(
+name|revertChanges
+argument_list|)
+expr_stmt|;
 name|String
 name|sha1SecondChange
 init|=
@@ -7364,8 +7351,6 @@ name|value
 operator|=
 literal|"true"
 argument_list|)
-annotation|@
-name|UseClockStep
 DECL|method|revertSubmissionDifferentRepositories ()
 specifier|public
 name|void
@@ -7767,8 +7752,6 @@ name|value
 operator|=
 literal|"true"
 argument_list|)
-annotation|@
-name|UseClockStep
 DECL|method|revertSubmissionMultipleBranches ()
 specifier|public
 name|void
@@ -7993,7 +7976,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-literal|"b.txt"
+literal|"a.txt"
 argument_list|)
 operator|.
 name|linesDeleted
@@ -8021,7 +8004,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-literal|"a.txt"
+literal|"b.txt"
 argument_list|)
 operator|.
 name|linesDeleted
@@ -8071,7 +8054,7 @@ name|revertChanges
 operator|.
 name|get
 argument_list|(
-literal|1
+literal|2
 argument_list|)
 operator|.
 name|current
@@ -8122,7 +8105,7 @@ name|revertChanges
 operator|.
 name|get
 argument_list|(
-literal|1
+literal|2
 argument_list|)
 operator|.
 name|current
@@ -8154,7 +8137,7 @@ name|revertChanges
 operator|.
 name|get
 argument_list|(
-literal|2
+literal|1
 argument_list|)
 operator|.
 name|current
@@ -8204,8 +8187,6 @@ name|value
 operator|=
 literal|"true"
 argument_list|)
-annotation|@
-name|UseClockStep
 DECL|method|revertSubmissionDependantAndUnrelatedWithMerge ()
 specifier|public
 name|void
@@ -8431,6 +8412,13 @@ name|revertSubmission
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Collections
+operator|.
+name|reverse
+argument_list|(
+name|revertChanges
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|revertChanges
@@ -8677,8 +8665,6 @@ name|value
 operator|=
 literal|"true"
 argument_list|)
-annotation|@
-name|UseClockStep
 DECL|method|revertSubmissionUnrelatedWithTwoMergeCommits ()
 specifier|public
 name|void
@@ -8911,6 +8897,13 @@ name|revertSubmission
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Collections
+operator|.
+name|reverse
+argument_list|(
+name|revertChanges
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|revertChanges
