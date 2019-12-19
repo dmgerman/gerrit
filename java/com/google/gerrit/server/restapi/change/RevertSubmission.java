@@ -1983,6 +1983,11 @@ name|keySet
 argument_list|()
 control|)
 block|{
+name|String
+name|groupName
+init|=
+literal|null
+decl_stmt|;
 name|Project
 operator|.
 name|NameKey
@@ -2192,6 +2197,12 @@ operator|.
 name|getName
 argument_list|()
 expr_stmt|;
+name|groupName
+operator|=
+name|cherryPickInput
+operator|.
+name|base
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -2285,6 +2296,20 @@ name|nextChangeId
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|groupName
+operator|==
+literal|null
+condition|)
+block|{
+name|groupName
+operator|=
+name|cherryPickInput
+operator|.
+name|base
+expr_stmt|;
+block|}
 comment|// TODO (paiking): In the the future, the timestamp should be the same for all the revert
 comment|// changes.
 try|try
@@ -2359,6 +2384,8 @@ argument_list|,
 name|generatedChangeId
 argument_list|,
 name|cherryPickRevertChangeId
+argument_list|,
+name|groupName
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3179,7 +3206,13 @@ operator|.
 name|Id
 name|cherryPickRevertChangeId
 decl_stmt|;
-DECL|method|CreateCherryPickOp ( ObjectId revCommitId, String topic, ObjectId computedChangeId, Change.Id cherryPickRevertChangeId)
+DECL|field|groupName
+specifier|private
+specifier|final
+name|String
+name|groupName
+decl_stmt|;
+DECL|method|CreateCherryPickOp ( ObjectId revCommitId, String topic, ObjectId computedChangeId, Change.Id cherryPickRevertChangeId, String groupName)
 name|CreateCherryPickOp
 parameter_list|(
 name|ObjectId
@@ -3195,6 +3228,9 @@ name|Change
 operator|.
 name|Id
 name|cherryPickRevertChangeId
+parameter_list|,
+name|String
+name|groupName
 parameter_list|)
 block|{
 name|this
@@ -3220,6 +3256,12 @@ operator|.
 name|cherryPickRevertChangeId
 operator|=
 name|cherryPickRevertChangeId
+expr_stmt|;
+name|this
+operator|.
+name|groupName
+operator|=
+name|groupName
 expr_stmt|;
 block|}
 annotation|@
@@ -3294,6 +3336,8 @@ argument_list|,
 name|computedChangeId
 argument_list|,
 name|cherryPickRevertChangeId
+argument_list|,
+name|groupName
 argument_list|)
 decl_stmt|;
 comment|// save the commit as base for next cherryPick of that branch
