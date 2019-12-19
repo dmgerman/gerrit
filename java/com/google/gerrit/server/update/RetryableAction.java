@@ -189,6 +189,9 @@ block|,
 DECL|enumConstant|CHANGE_UPDATE
 name|CHANGE_UPDATE
 block|,
+DECL|enumConstant|GIT_UPDATE
+name|GIT_UPDATE
+block|,
 DECL|enumConstant|GROUP_UPDATE
 name|GROUP_UPDATE
 block|,
