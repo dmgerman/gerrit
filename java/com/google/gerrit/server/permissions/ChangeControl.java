@@ -894,8 +894,6 @@ operator|.
 name|Id
 name|currentAssignee
 init|=
-name|notes
-operator|.
 name|getChange
 argument_list|()
 operator|.
