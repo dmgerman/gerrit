@@ -628,13 +628,11 @@ argument_list|()
 return|;
 block|}
 comment|/** Can this user see this change? */
-DECL|method|isVisible (@ullable ChangeData cd)
+DECL|method|isVisible (ChangeData cd)
 specifier|private
 name|boolean
 name|isVisible
 parameter_list|(
-annotation|@
-name|Nullable
 name|ChangeData
 name|cd
 parameter_list|)
@@ -942,13 +940,11 @@ literal|false
 return|;
 block|}
 comment|/** Is this user a reviewer for the change? */
-DECL|method|isReviewer (@ullable ChangeData cd)
+DECL|method|isReviewer (ChangeData cd)
 specifier|private
 name|boolean
 name|isReviewer
 parameter_list|(
-annotation|@
-name|Nullable
 name|ChangeData
 name|cd
 parameter_list|)
@@ -962,21 +958,6 @@ name|isIdentifiedUser
 argument_list|()
 condition|)
 block|{
-name|cd
-operator|=
-name|cd
-operator|!=
-literal|null
-condition|?
-name|cd
-else|:
-name|changeDataFactory
-operator|.
-name|create
-argument_list|(
-name|notes
-argument_list|)
-expr_stmt|;
 name|Collection
 argument_list|<
 name|Account
