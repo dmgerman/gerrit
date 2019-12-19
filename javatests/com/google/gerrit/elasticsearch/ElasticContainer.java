@@ -229,7 +229,7 @@ case|case
 name|V6_8
 case|:
 return|return
-literal|"blacktop/elasticsearch:6.8.5"
+literal|"blacktop/elasticsearch:6.8.6"
 return|;
 case|case
 name|V7_0
