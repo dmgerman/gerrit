@@ -100,22 +100,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -3303,8 +3287,9 @@ argument_list|,
 name|caller
 argument_list|)
 decl_stmt|;
-name|checkState
-argument_list|(
+if|if
+condition|(
+operator|!
 name|indexBackedChangeSet
 operator|.
 name|ids
@@ -3317,7 +3302,54 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
-argument_list|,
+condition|)
+block|{
+comment|// indexBackedChangeSet contains only open changes, if the change is missing in this set
+comment|// it might be that the change was concurrently submitted in the meantime.
+name|change
+operator|=
+name|changeDataFactory
+operator|.
+name|create
+argument_list|(
+name|change
+argument_list|)
+operator|.
+name|reloadChange
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|change
+operator|.
+name|isNew
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+literal|"change is "
+operator|+
+name|ChangeUtil
+operator|.
+name|status
+argument_list|(
+name|change
+argument_list|)
+argument_list|)
+throw|;
+block|}
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
 literal|"change %s missing from %s"
 argument_list|,
 name|change
@@ -3327,7 +3359,9 @@ argument_list|()
 argument_list|,
 name|indexBackedChangeSet
 argument_list|)
-expr_stmt|;
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|indexBackedChangeSet
