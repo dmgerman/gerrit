@@ -400,6 +400,7 @@ name|RestApiException
 function_decl|;
 comment|/**    * Modify the contents of the specified file of the change edit. If no content is provided, the    * content of the file is erased but the file isn't deleted. If the change edit doesn't exist, it    * will be created based on the current patch set of the change.    *    * @param filePath the path of the file which should be modified    * @param newContent the desired content of the file    * @throws RestApiException if the content of the file couldn't be modified    */
 DECL|method|modifyFile (String filePath, RawInput newContent)
+specifier|default
 name|void
 name|modifyFile
 parameter_list|(
@@ -408,6 +409,41 @@ name|filePath
 parameter_list|,
 name|RawInput
 name|newContent
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+name|FileContentInput
+name|input
+init|=
+operator|new
+name|FileContentInput
+argument_list|()
+decl_stmt|;
+name|input
+operator|.
+name|content
+operator|=
+name|newContent
+expr_stmt|;
+name|modifyFile
+argument_list|(
+name|filePath
+argument_list|,
+name|input
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Modify the contents of the specified file of the change edit. If no content is provided, the    * content of the file is erased but the file isn't deleted. If the change edit doesn't exist, it    * will be created based on the current patch set of the change.    *    * @param filePath the path of the file which should be modified    * @param input the desired content of the file    * @throws RestApiException if the content of the file couldn't be modified    */
+DECL|method|modifyFile (String filePath, FileContentInput input)
+name|void
+name|modifyFile
+parameter_list|(
+name|String
+name|filePath
+parameter_list|,
+name|FileContentInput
+name|input
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -632,7 +668,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|modifyFile (String filePath, RawInput newContent)
+DECL|method|modifyFile (String filePath, FileContentInput input)
 specifier|public
 name|void
 name|modifyFile
@@ -640,8 +676,8 @@ parameter_list|(
 name|String
 name|filePath
 parameter_list|,
-name|RawInput
-name|newContent
+name|FileContentInput
+name|input
 parameter_list|)
 throws|throws
 name|RestApiException
