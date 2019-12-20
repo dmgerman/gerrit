@@ -12131,6 +12131,14 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|res
+operator|.
+name|isCommitted
+argument_list|()
+condition|)
+block|{
 name|logger
 operator|.
 name|atSevere
@@ -12143,7 +12151,7 @@ argument_list|)
 operator|.
 name|log
 argument_list|(
-literal|"Error in %s %s"
+literal|"Error in %s %s, response already committed"
 argument_list|,
 name|req
 operator|.
@@ -12156,15 +12164,10 @@ name|req
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|res
-operator|.
-name|isCommitted
-argument_list|()
-condition|)
-block|{
+return|return
+literal|0
+return|;
+block|}
 name|res
 operator|.
 name|reset
@@ -12392,6 +12395,31 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+name|logger
+operator|.
+name|atSevere
+argument_list|()
+operator|.
+name|withCause
+argument_list|(
+name|err
+argument_list|)
+operator|.
+name|log
+argument_list|(
+literal|"Error in %s %s"
+argument_list|,
+name|req
+operator|.
+name|getMethod
+argument_list|()
+argument_list|,
+name|uriForLogging
+argument_list|(
+name|req
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|StringBuilder
 name|msg
 init|=
@@ -12451,10 +12479,6 @@ argument_list|()
 argument_list|,
 name|err
 argument_list|)
-return|;
-block|}
-return|return
-literal|0
 return|;
 block|}
 end_function
