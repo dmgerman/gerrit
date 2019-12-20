@@ -1127,8 +1127,6 @@ name|get
 argument_list|()
 argument_list|,
 name|input
-operator|.
-name|content
 argument_list|)
 expr_stmt|;
 return|return
@@ -1939,12 +1937,10 @@ name|getPath
 argument_list|()
 argument_list|,
 name|input
-operator|.
-name|content
 argument_list|)
 return|;
 block|}
-DECL|method|apply (ChangeResource rsrc, String path, RawInput newContent)
+DECL|method|apply (ChangeResource rsrc, String path, FileContentInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -1958,8 +1954,8 @@ parameter_list|,
 name|String
 name|path
 parameter_list|,
-name|RawInput
-name|newContent
+name|FileContentInput
+name|input
 parameter_list|)
 throws|throws
 name|ResourceConflictException
@@ -1999,6 +1995,13 @@ name|path
 argument_list|)
 throw|;
 block|}
+name|RawInput
+name|newContent
+init|=
+name|input
+operator|.
+name|content
+decl_stmt|;
 try|try
 init|(
 name|Repository
