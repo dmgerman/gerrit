@@ -2474,6 +2474,8 @@ argument_list|,
 name|cherryPickRevertChangeId
 argument_list|,
 name|groupName
+argument_list|,
+name|timestamp
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3492,7 +3494,13 @@ specifier|final
 name|String
 name|groupName
 decl_stmt|;
-DECL|method|CreateCherryPickOp ( ObjectId revCommitId, String topic, ObjectId computedChangeId, Change.Id cherryPickRevertChangeId, String groupName)
+DECL|field|timestamp
+specifier|private
+specifier|final
+name|Timestamp
+name|timestamp
+decl_stmt|;
+DECL|method|CreateCherryPickOp ( ObjectId revCommitId, String topic, ObjectId computedChangeId, Change.Id cherryPickRevertChangeId, String groupName, Timestamp timestamp)
 name|CreateCherryPickOp
 parameter_list|(
 name|ObjectId
@@ -3511,6 +3519,9 @@ name|cherryPickRevertChangeId
 parameter_list|,
 name|String
 name|groupName
+parameter_list|,
+name|Timestamp
+name|timestamp
 parameter_list|)
 block|{
 name|this
@@ -3542,6 +3553,12 @@ operator|.
 name|groupName
 operator|=
 name|groupName
+expr_stmt|;
+name|this
+operator|.
+name|timestamp
+operator|=
+name|timestamp
 expr_stmt|;
 block|}
 annotation|@
@@ -3605,6 +3622,8 @@ argument_list|)
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|timestamp
 argument_list|,
 name|topic
 argument_list|,
