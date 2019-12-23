@@ -2213,6 +2213,13 @@ name|groupName
 init|=
 literal|null
 decl_stmt|;
+name|String
+name|initialMessage
+init|=
+name|revertInput
+operator|.
+name|message
+decl_stmt|;
 while|while
 condition|(
 name|sortedChangesInProjectAndBranch
@@ -2265,7 +2272,7 @@ name|message
 operator|=
 name|getMessage
 argument_list|(
-name|revertInput
+name|initialMessage
 argument_list|,
 name|changeNotes
 argument_list|)
@@ -2673,13 +2680,13 @@ return|return
 name|cherryPickInput
 return|;
 block|}
-DECL|method|getMessage (RevertInput revertInput, ChangeNotes changeNotes)
+DECL|method|getMessage (String initialMessage, ChangeNotes changeNotes)
 specifier|private
 name|String
 name|getMessage
 parameter_list|(
-name|RevertInput
-name|revertInput
+name|String
+name|initialMessage
 parameter_list|,
 name|ChangeNotes
 name|changeNotes
@@ -2722,9 +2729,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|revertInput
-operator|.
-name|message
+name|initialMessage
 operator|==
 literal|null
 condition|)
@@ -2765,9 +2770,7 @@ literal|"Revert \"%s\"\n\n%s"
 argument_list|,
 name|subject
 argument_list|,
-name|revertInput
-operator|.
-name|message
+name|initialMessage
 argument_list|)
 return|;
 block|}
