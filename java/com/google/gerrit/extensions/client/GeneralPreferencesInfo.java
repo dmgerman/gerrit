@@ -407,12 +407,6 @@ specifier|public
 name|String
 name|downloadScheme
 decl_stmt|;
-comment|/** Type of download command the user prefers to use. */
-DECL|field|downloadCommand
-specifier|public
-name|DownloadCommand
-name|downloadCommand
-decl_stmt|;
 DECL|field|dateFormat
 specifier|public
 name|DateFormat
@@ -644,14 +638,6 @@ operator|.
 name|downloadScheme
 operator|=
 literal|null
-expr_stmt|;
-name|p
-operator|.
-name|downloadCommand
-operator|=
-name|DownloadCommand
-operator|.
-name|CHECKOUT
 expr_stmt|;
 name|p
 operator|.
