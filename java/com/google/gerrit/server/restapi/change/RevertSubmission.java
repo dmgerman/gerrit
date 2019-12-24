@@ -254,22 +254,6 @@ name|gerrit
 operator|.
 name|entities
 operator|.
-name|Project
-operator|.
-name|NameKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|entities
-operator|.
 name|RefNames
 import|;
 end_import
@@ -1012,6 +996,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|text
 operator|.
 name|MessageFormat
@@ -1350,14 +1344,6 @@ operator|.
 name|Factory
 name|changeNotesFactory
 decl_stmt|;
-DECL|field|changeResourceFactory
-specifier|private
-specifier|final
-name|ChangeResource
-operator|.
-name|Factory
-name|changeResourceFactory
-decl_stmt|;
 DECL|field|changeReverted
 specifier|private
 specifier|final
@@ -1384,12 +1370,6 @@ specifier|final
 name|NotifyResolver
 name|notifyResolver
 decl_stmt|;
-DECL|field|revert
-specifier|private
-specifier|final
-name|Revert
-name|revert
-decl_stmt|;
 DECL|field|updateFactory
 specifier|private
 specifier|final
@@ -1413,7 +1393,7 @@ name|results
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RevertSubmission ( Provider<InternalChangeQuery> queryProvider, Provider<CurrentUser> user, PermissionBackend permissionBackend, ProjectCache projectCache, PatchSetUtil psUtil, ContributorAgreementsChecker contributorAgreements, CherryPickChange cherryPickChange, ChangeJson.Factory json, GitRepositoryManager repoManager, WalkSorter sorter, ChangeMessagesUtil cmUtil, CommitUtil commitUtil, ChangeNotes.Factory changeNotesFactory, ChangeResource.Factory changeResourceFactory, ChangeReverted changeReverted, RevertedSender.Factory revertedSenderFactory, Sequences seq, NotifyResolver notifyResolver, Revert revert, BatchUpdate.Factory updateFactory)
+DECL|method|RevertSubmission ( Provider<InternalChangeQuery> queryProvider, Provider<CurrentUser> user, PermissionBackend permissionBackend, ProjectCache projectCache, PatchSetUtil psUtil, ContributorAgreementsChecker contributorAgreements, CherryPickChange cherryPickChange, ChangeJson.Factory json, GitRepositoryManager repoManager, WalkSorter sorter, ChangeMessagesUtil cmUtil, CommitUtil commitUtil, ChangeNotes.Factory changeNotesFactory, ChangeReverted changeReverted, RevertedSender.Factory revertedSenderFactory, Sequences seq, NotifyResolver notifyResolver, BatchUpdate.Factory updateFactory)
 name|RevertSubmission
 parameter_list|(
 name|Provider
@@ -1465,11 +1445,6 @@ operator|.
 name|Factory
 name|changeNotesFactory
 parameter_list|,
-name|ChangeResource
-operator|.
-name|Factory
-name|changeResourceFactory
-parameter_list|,
 name|ChangeReverted
 name|changeReverted
 parameter_list|,
@@ -1483,9 +1458,6 @@ name|seq
 parameter_list|,
 name|NotifyResolver
 name|notifyResolver
-parameter_list|,
-name|Revert
-name|revert
 parameter_list|,
 name|BatchUpdate
 operator|.
@@ -1573,12 +1545,6 @@ name|changeNotesFactory
 expr_stmt|;
 name|this
 operator|.
-name|changeResourceFactory
-operator|=
-name|changeResourceFactory
-expr_stmt|;
-name|this
-operator|.
 name|changeReverted
 operator|=
 name|changeReverted
@@ -1600,12 +1566,6 @@ operator|.
 name|notifyResolver
 operator|=
 name|notifyResolver
-expr_stmt|;
-name|this
-operator|.
-name|revert
-operator|=
-name|revert
 expr_stmt|;
 name|this
 operator|.
@@ -2029,6 +1989,14 @@ argument_list|(
 name|revertInput
 argument_list|)
 expr_stmt|;
+name|Timestamp
+name|timestamp
+init|=
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|BranchNameKey
@@ -2136,6 +2104,8 @@ argument_list|,
 name|sortedChangesInProjectAndBranch
 argument_list|,
 name|commitIdsInProjectAndBranch
+argument_list|,
+name|timestamp
 argument_list|)
 expr_stmt|;
 block|}
@@ -2172,7 +2142,7 @@ return|return
 name|revertSubmissionInfo
 return|;
 block|}
-DECL|method|revertAllChangesInProjectAndBranch ( RevertInput revertInput, NameKey project, Iterator<PatchSetData> sortedChangesInProjectAndBranch, Set<ObjectId> commitIdsInProjectAndBranch)
+DECL|method|revertAllChangesInProjectAndBranch ( RevertInput revertInput, Project.NameKey project, Iterator<PatchSetData> sortedChangesInProjectAndBranch, Set<ObjectId> commitIdsInProjectAndBranch, Timestamp timestamp)
 specifier|private
 name|void
 name|revertAllChangesInProjectAndBranch
@@ -2180,6 +2150,8 @@ parameter_list|(
 name|RevertInput
 name|revertInput
 parameter_list|,
+name|Project
+operator|.
 name|NameKey
 name|project
 parameter_list|,
@@ -2194,6 +2166,9 @@ argument_list|<
 name|ObjectId
 argument_list|>
 name|commitIdsInProjectAndBranch
+parameter_list|,
+name|Timestamp
+name|timestamp
 parameter_list|)
 throws|throws
 name|IOException
@@ -2201,10 +2176,6 @@ throws|,
 name|RestApiException
 throws|,
 name|UpdateException
-throws|,
-name|PermissionBackendException
-throws|,
-name|NoSuchProjectException
 throws|,
 name|ConfigInvalidException
 block|{
@@ -2305,6 +2276,8 @@ argument_list|(
 name|revertInput
 argument_list|,
 name|changeNotes
+argument_list|,
+name|timestamp
 argument_list|)
 expr_stmt|;
 name|groupName
@@ -2340,12 +2313,14 @@ argument_list|,
 name|groupName
 argument_list|,
 name|changeNotes
+argument_list|,
+name|timestamp
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|createCherryPickedRevert ( RevertInput revertInput, NameKey project, String groupName, ChangeNotes changeNotes)
+DECL|method|createCherryPickedRevert ( RevertInput revertInput, Project.NameKey project, String groupName, ChangeNotes changeNotes, Timestamp timestamp)
 specifier|private
 name|void
 name|createCherryPickedRevert
@@ -2353,6 +2328,8 @@ parameter_list|(
 name|RevertInput
 name|revertInput
 parameter_list|,
+name|Project
+operator|.
 name|NameKey
 name|project
 parameter_list|,
@@ -2361,6 +2338,9 @@ name|groupName
 parameter_list|,
 name|ChangeNotes
 name|changeNotes
+parameter_list|,
+name|Timestamp
+name|timestamp
 parameter_list|)
 throws|throws
 name|IOException
@@ -2388,6 +2368,8 @@ name|user
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|timestamp
 argument_list|)
 decl_stmt|;
 comment|// TODO (paiking): As a future change, the revert should just be done directly on the
@@ -2499,6 +2481,8 @@ argument_list|,
 name|cherryPickRevertChangeId
 argument_list|,
 name|groupName
+argument_list|,
+name|timestamp
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2546,7 +2530,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|craeteNormalRevert (RevertInput revertInput, ChangeNotes changeNotes)
+DECL|method|craeteNormalRevert ( RevertInput revertInput, ChangeNotes changeNotes, Timestamp timestamp)
 specifier|private
 name|void
 name|craeteNormalRevert
@@ -2556,6 +2540,9 @@ name|revertInput
 parameter_list|,
 name|ChangeNotes
 name|changeNotes
+parameter_list|,
+name|Timestamp
+name|timestamp
 parameter_list|)
 throws|throws
 name|IOException
@@ -2564,22 +2551,16 @@ name|RestApiException
 throws|,
 name|UpdateException
 throws|,
-name|PermissionBackendException
-throws|,
-name|NoSuchProjectException
-throws|,
 name|ConfigInvalidException
 block|{
-name|ChangeInfo
-name|revertChangeInfo
+name|Change
+operator|.
+name|Id
+name|revertId
 init|=
-name|revert
+name|commitUtil
 operator|.
-name|apply
-argument_list|(
-name|changeResourceFactory
-operator|.
-name|create
+name|createRevertChange
 argument_list|(
 name|changeNotes
 argument_list|,
@@ -2587,19 +2568,30 @@ name|user
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|revertInput
+argument_list|,
+name|timestamp
 argument_list|)
-operator|.
-name|value
-argument_list|()
 decl_stmt|;
 name|results
 operator|.
 name|add
 argument_list|(
-name|revertChangeInfo
+name|json
+operator|.
+name|noOptions
+argument_list|()
+operator|.
+name|format
+argument_list|(
+name|changeNotes
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
+name|revertId
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|cherryPickInput
@@ -2610,14 +2602,7 @@ name|changeNotesFactory
 operator|.
 name|createChecked
 argument_list|(
-name|Change
-operator|.
-name|id
-argument_list|(
-name|revertChangeInfo
-operator|.
-name|_number
-argument_list|)
+name|revertId
 argument_list|)
 operator|.
 name|getCurrentPatchSet
@@ -3512,7 +3497,13 @@ specifier|final
 name|String
 name|groupName
 decl_stmt|;
-DECL|method|CreateCherryPickOp ( ObjectId revCommitId, String topic, ObjectId computedChangeId, Change.Id cherryPickRevertChangeId, String groupName)
+DECL|field|timestamp
+specifier|private
+specifier|final
+name|Timestamp
+name|timestamp
+decl_stmt|;
+DECL|method|CreateCherryPickOp ( ObjectId revCommitId, String topic, ObjectId computedChangeId, Change.Id cherryPickRevertChangeId, String groupName, Timestamp timestamp)
 name|CreateCherryPickOp
 parameter_list|(
 name|ObjectId
@@ -3531,6 +3522,9 @@ name|cherryPickRevertChangeId
 parameter_list|,
 name|String
 name|groupName
+parameter_list|,
+name|Timestamp
+name|timestamp
 parameter_list|)
 block|{
 name|this
@@ -3562,6 +3556,12 @@ operator|.
 name|groupName
 operator|=
 name|groupName
+expr_stmt|;
+name|this
+operator|.
+name|timestamp
+operator|=
+name|timestamp
 expr_stmt|;
 block|}
 annotation|@
@@ -3625,6 +3625,8 @@ argument_list|)
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|timestamp
 argument_list|,
 name|topic
 argument_list|,
