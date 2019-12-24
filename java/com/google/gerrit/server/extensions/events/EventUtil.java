@@ -463,7 +463,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Formats change and revision info objects to serve as payload for Gerrit events.  *  *<p>Uses configurable options ({@code event.payload.listChangeOptions}) to decide which fields to  * populate.  */
+comment|/**  * Formats change and revision info objects to serve as payload for Gerrit events.  *  *<p>Uses configurable options ({@code event.payload.listChangeOptions}) to decide which change  * fields to populate.  */
 end_comment
 
 begin_class

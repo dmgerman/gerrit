@@ -156,6 +156,10 @@ name|Singleton
 import|;
 end_import
 
+begin_comment
+comment|/** Helper class to fire an event when a user has signed a contributor agreement. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -260,6 +264,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Event to be fired when a user has signed a contributor agreement. */
 DECL|class|Event
 specifier|private
 specifier|static

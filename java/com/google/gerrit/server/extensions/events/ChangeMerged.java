@@ -344,6 +344,10 @@ name|Timestamp
 import|;
 end_import
 
+begin_comment
+comment|/** Helper class to fire an event when a change has been merged. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -545,6 +549,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** Event to be fired when a change has been merged. */
 DECL|class|Event
 specifier|private
 specifier|static

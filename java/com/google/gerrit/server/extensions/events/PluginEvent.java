@@ -76,6 +76,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|UsedAt
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|events
@@ -124,9 +138,22 @@ name|Singleton
 import|;
 end_import
 
+begin_comment
+comment|/** Helper class to let plugins fire a plugin-specific event. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
+annotation|@
+name|UsedAt
+argument_list|(
+name|UsedAt
+operator|.
+name|Project
+operator|.
+name|PLUGINS_ALL
+argument_list|)
 DECL|class|PluginEvent
 specifier|public
 class|class
@@ -217,6 +244,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Event to be fired by plugins. */
 DECL|class|Event
 specifier|private
 specifier|static
