@@ -386,6 +386,10 @@ name|RevWalk
 import|;
 end_import
 
+begin_comment
+comment|/** An object blob in a Git repository that stores a single integer value. */
+end_comment
+
 begin_class
 annotation|@
 name|AutoValue
