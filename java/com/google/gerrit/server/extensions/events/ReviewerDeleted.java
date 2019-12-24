@@ -370,6 +370,10 @@ name|Map
 import|;
 end_import
 
+begin_comment
+comment|/** Helper class to fire an event when a reviewer has been deleted from a change. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -624,6 +628,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** Event to be fired when a reviewer has been deleted from a change. */
 DECL|class|Event
 specifier|private
 specifier|static

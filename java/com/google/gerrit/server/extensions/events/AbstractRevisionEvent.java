@@ -160,6 +160,10 @@ name|Timestamp
 import|;
 end_import
 
+begin_comment
+comment|/** Base class for all revision events. */
+end_comment
+
 begin_class
 DECL|class|AbstractRevisionEvent
 specifier|public

@@ -124,6 +124,10 @@ name|Singleton
 import|;
 end_import
 
+begin_comment
+comment|/** Helper class to let plugins fire a plugin-specific event. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -217,6 +221,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Event to be fired by plugins. */
 DECL|class|Event
 specifier|private
 specifier|static

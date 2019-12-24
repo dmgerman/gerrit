@@ -244,6 +244,10 @@ name|ReceiveCommand
 import|;
 end_import
 
+begin_comment
+comment|/** Helper class to fire an event when a Git reference has been updated. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -821,6 +825,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Event to be fired when a Git reference has been updated. */
 DECL|class|Event
 specifier|public
 specifier|static

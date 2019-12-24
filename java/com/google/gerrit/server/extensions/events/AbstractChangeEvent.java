@@ -144,6 +144,10 @@ name|Timestamp
 import|;
 end_import
 
+begin_comment
+comment|/** Base class for all change events. */
+end_comment
+
 begin_class
 DECL|class|AbstractChangeEvent
 specifier|public
