@@ -3592,8 +3592,6 @@ name|cherryPickChange
 operator|.
 name|cherryPick
 argument_list|(
-name|updateFactory
-argument_list|,
 name|change
 argument_list|,
 name|change

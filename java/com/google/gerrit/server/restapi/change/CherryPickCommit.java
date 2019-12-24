@@ -408,22 +408,6 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
 name|UpdateException
 import|;
 end_import
@@ -509,14 +493,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|updateFactory
-specifier|private
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-decl_stmt|;
 DECL|field|user
 specifier|private
 specifier|final
@@ -548,16 +524,11 @@ name|contributorAgreements
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPickCommit ( PermissionBackend permissionBackend, BatchUpdate.Factory updateFactory, Provider<CurrentUser> user, CherryPickChange cherryPickChange, ChangeJson.Factory json, ContributorAgreementsChecker contributorAgreements)
+DECL|method|CherryPickCommit ( PermissionBackend permissionBackend, Provider<CurrentUser> user, CherryPickChange cherryPickChange, ChangeJson.Factory json, ContributorAgreementsChecker contributorAgreements)
 name|CherryPickCommit
 parameter_list|(
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -582,12 +553,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|updateFactory
-operator|=
-name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -766,8 +731,6 @@ name|cherryPickChange
 operator|.
 name|cherryPick
 argument_list|(
-name|updateFactory
-argument_list|,
 literal|null
 argument_list|,
 name|projectName

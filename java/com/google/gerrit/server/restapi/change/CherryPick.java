@@ -818,8 +818,6 @@ name|cherryPickChange
 operator|.
 name|cherryPick
 argument_list|(
-name|updateFactory
-argument_list|,
 name|rsrc
 operator|.
 name|getChange

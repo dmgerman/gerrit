@@ -1179,9 +1179,17 @@ specifier|final
 name|NotifyResolver
 name|notifyResolver
 decl_stmt|;
+DECL|field|batchUpdateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|batchUpdateFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPickChange ( Sequences seq, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory changeNotesFactory, ProjectCache projectCache, ApprovalsUtil approvalsUtil, NotifyResolver notifyResolver)
+DECL|method|CherryPickChange ( Sequences seq, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory changeNotesFactory, ProjectCache projectCache, ApprovalsUtil approvalsUtil, NotifyResolver notifyResolver, BatchUpdate.Factory batchUpdateFactory)
 name|CherryPickChange
 parameter_list|(
 name|Sequences
@@ -1235,6 +1243,11 @@ name|approvalsUtil
 parameter_list|,
 name|NotifyResolver
 name|notifyResolver
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|batchUpdateFactory
 parameter_list|)
 block|{
 name|this
@@ -1312,18 +1325,19 @@ name|notifyResolver
 operator|=
 name|notifyResolver
 expr_stmt|;
+name|this
+operator|.
+name|batchUpdateFactory
+operator|=
+name|batchUpdateFactory
+expr_stmt|;
 block|}
-comment|/**    * This function is used for cherry picking a change.    *    * @param batchUpdateFactory Used for applying changes to the database.    * @param change Change to cherry pick.    * @param patch The patch of that change.    * @param input Input object for different configurations of cherry pick.    * @param dest Destination branch for the cherry pick.    * @return Result object that describes the cherry pick.    * @throws IOException Unable to open repository or read from the database.    * @throws InvalidChangeOperationException Parent or branch don't exist, or two changes with same    *     key exist in the branch.    * @throws IntegrationException Merge conflict or trees are identical after cherry pick.    * @throws UpdateException Problem updating the database using batchUpdateFactory.    * @throws RestApiException Error such as invalid SHA1    * @throws ConfigInvalidException Can't find account to notify.    * @throws NoSuchProjectException Can't find project state.    */
-DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, Change change, PatchSet patch, CherryPickInput input, BranchNameKey dest)
+comment|/**    * This function is used for cherry picking a change.    *    * @param change Change to cherry pick.    * @param patch The patch of that change.    * @param input Input object for different configurations of cherry pick.    * @param dest Destination branch for the cherry pick.    * @return Result object that describes the cherry pick.    * @throws IOException Unable to open repository or read from the database.    * @throws InvalidChangeOperationException Parent or branch don't exist, or two changes with same    *     key exist in the branch.    * @throws IntegrationException Merge conflict or trees are identical after cherry pick.    * @throws UpdateException Problem updating the database using batchUpdateFactory.    * @throws RestApiException Error such as invalid SHA1    * @throws ConfigInvalidException Can't find account to notify.    * @throws NoSuchProjectException Can't find project state.    */
+DECL|method|cherryPick (Change change, PatchSet patch, CherryPickInput input, BranchNameKey dest)
 specifier|public
 name|Result
 name|cherryPick
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -1354,8 +1368,6 @@ block|{
 return|return
 name|cherryPick
 argument_list|(
-name|batchUpdateFactory
-argument_list|,
 name|change
 argument_list|,
 name|change
@@ -1391,17 +1403,12 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * This function is called directly to cherry pick a commit. Also, it is used to cherry pick a    * change as well as long as sourceChange is not null.    *    * @param batchUpdateFactory Used for applying changes to the database.    * @param sourceChange Change to cherry pick. Can be null, and then the function will only cherry    *     pick a commit.    * @param project Project name    * @param sourceCommit Id of the commit to be cherry picked.    * @param input Input object for different configurations of cherry pick.    * @param dest Destination branch for the cherry pick.    * @return Result object that describes the cherry pick.    * @throws IOException Unable to open repository or read from the database.    * @throws InvalidChangeOperationException Parent or branch don't exist, or two changes with same    *     key exist in the branch.    * @throws IntegrationException Merge conflict or trees are identical after cherry pick.    * @throws UpdateException Problem updating the database using batchUpdateFactory.    * @throws RestApiException Error such as invalid SHA1    * @throws ConfigInvalidException Can't find account to notify.    * @throws NoSuchProjectException Can't find project state.    */
-DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, @Nullable Change sourceChange, Project.NameKey project, ObjectId sourceCommit, CherryPickInput input, BranchNameKey dest)
+comment|/**    * This function is called directly to cherry pick a commit. Also, it is used to cherry pick a    * change as well as long as sourceChange is not null.    *    * @param sourceChange Change to cherry pick. Can be null, and then the function will only cherry    *     pick a commit.    * @param project Project name    * @param sourceCommit Id of the commit to be cherry picked.    * @param input Input object for different configurations of cherry pick.    * @param dest Destination branch for the cherry pick.    * @return Result object that describes the cherry pick.    * @throws IOException Unable to open repository or read from the database.    * @throws InvalidChangeOperationException Parent or branch don't exist, or two changes with same    *     key exist in the branch.    * @throws IntegrationException Merge conflict or trees are identical after cherry pick.    * @throws UpdateException Problem updating the database using batchUpdateFactory.    * @throws RestApiException Error such as invalid SHA1    * @throws ConfigInvalidException Can't find account to notify.    * @throws NoSuchProjectException Can't find project state.    */
+DECL|method|cherryPick ( @ullable Change sourceChange, Project.NameKey project, ObjectId sourceCommit, CherryPickInput input, BranchNameKey dest)
 specifier|public
 name|Result
 name|cherryPick
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-parameter_list|,
 annotation|@
 name|Nullable
 name|Change
@@ -1439,8 +1446,6 @@ block|{
 return|return
 name|cherryPick
 argument_list|(
-name|batchUpdateFactory
-argument_list|,
 name|sourceChange
 argument_list|,
 name|project
@@ -1470,17 +1475,12 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * This function can be called directly to cherry-pick a change (or commit if sourceChange is    * null) with a few other parameters that are especially useful for cherry-picking a commit that    * is the revert-of another change.    *    * @param batchUpdateFactory Used for applying changes to the database.    * @param sourceChange Change to cherry pick. Can be null, and then the function will only cherry    *     pick a commit.    * @param project Project name    * @param sourceCommit Id of the commit to be cherry picked.    * @param input Input object for different configurations of cherry pick.    * @param dest Destination branch for the cherry pick.    * @param ignoreIdenticalTree When false, we throw an error when trying to cherry-pick creates an    *     empty commit. When true, we allow creation of an empty commit.    * @param timestamp the current timestamp.    * @param topic Topic name for the change created.    * @param revertedChange The id of the change that is reverted. This is used for the "revertOf"    *     field to mark the created cherry pick change as "revertOf" the original change that was    *     reverted.    * @param changeIdForNewChange The Change-Id that the new change of the cherry pick will have.    * @param idForNewChange The ID that the new change of the cherry pick will have. If provided and    *     the cherry-pick doesn't result in creating a new change, then    *     InvalidChangeOperationException is thrown.    * @param groupName The name of the group for grouping related changes (used by GetRelated    *     endpoint).    * @return Result object that describes the cherry pick.    * @throws IOException Unable to open repository or read from the database.    * @throws InvalidChangeOperationException Parent or branch don't exist, or two changes with same    *     key exist in the branch. Also thrown when idForNewChange is not null but cherry-pick only    *     creates a new patchset rather than a new change.    * @throws IntegrationException Merge conflict or trees are identical after cherry pick.    * @throws UpdateException Problem updating the database using batchUpdateFactory.    * @throws RestApiException Error such as invalid SHA1    * @throws ConfigInvalidException Can't find account to notify.    * @throws NoSuchProjectException Can't find project state.    */
-DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, @Nullable Change sourceChange, Project.NameKey project, ObjectId sourceCommit, CherryPickInput input, BranchNameKey dest, boolean ignoreIdenticalTree, Timestamp timestamp, @Nullable String topic, @Nullable Change.Id revertedChange, @Nullable ObjectId changeIdForNewChange, @Nullable Change.Id idForNewChange, @Nullable String groupName)
+comment|/**    * This function can be called directly to cherry-pick a change (or commit if sourceChange is    * null) with a few other parameters that are especially useful for cherry-picking a commit that    * is the revert-of another change.    *    * @param sourceChange Change to cherry pick. Can be null, and then the function will only cherry    *     pick a commit.    * @param project Project name    * @param sourceCommit Id of the commit to be cherry picked.    * @param input Input object for different configurations of cherry pick.    * @param dest Destination branch for the cherry pick.    * @param ignoreIdenticalTree When false, we throw an error when trying to cherry-pick creates an    *     empty commit. When true, we allow creation of an empty commit.    * @param timestamp the current timestamp.    * @param topic Topic name for the change created.    * @param revertedChange The id of the change that is reverted. This is used for the "revertOf"    *     field to mark the created cherry pick change as "revertOf" the original change that was    *     reverted.    * @param changeIdForNewChange The Change-Id that the new change of the cherry pick will have.    * @param idForNewChange The ID that the new change of the cherry pick will have. If provided and    *     the cherry-pick doesn't result in creating a new change, then    *     InvalidChangeOperationException is thrown.    * @param groupName The name of the group for grouping related changes (used by GetRelated    *     endpoint).    * @return Result object that describes the cherry pick.    * @throws IOException Unable to open repository or read from the database.    * @throws InvalidChangeOperationException Parent or branch don't exist, or two changes with same    *     key exist in the branch. Also thrown when idForNewChange is not null but cherry-pick only    *     creates a new patchset rather than a new change.    * @throws IntegrationException Merge conflict or trees are identical after cherry pick.    * @throws UpdateException Problem updating the database using batchUpdateFactory.    * @throws RestApiException Error such as invalid SHA1    * @throws ConfigInvalidException Can't find account to notify.    * @throws NoSuchProjectException Can't find project state.    */
+DECL|method|cherryPick ( @ullable Change sourceChange, Project.NameKey project, ObjectId sourceCommit, CherryPickInput input, BranchNameKey dest, boolean ignoreIdenticalTree, Timestamp timestamp, @Nullable String topic, @Nullable Change.Id revertedChange, @Nullable ObjectId changeIdForNewChange, @Nullable Change.Id idForNewChange, @Nullable String groupName)
 specifier|public
 name|Result
 name|cherryPick
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-parameter_list|,
 annotation|@
 name|Nullable
 name|Change
