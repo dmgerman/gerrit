@@ -1936,10 +1936,6 @@ name|IOException
 throws|,
 name|UpdateException
 throws|,
-name|PermissionBackendException
-throws|,
-name|NoSuchProjectException
-throws|,
 name|ConfigInvalidException
 throws|,
 name|StorageException
